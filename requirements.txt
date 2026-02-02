@@ -57,12 +57,20 @@ python-dotenv>=1.0.0
 # Retry логика
 tenacity>=8.2.0
 
-# ===== ОПЦИОНАЛЬНО (для будущих версий) =====
+# ===== VOICE / LIVEKIT =====
 
-# LiveKit для WebRTC аудио (пока не используется, будет в следующих версиях)
-# Раскомментируйте когда понадобится:
-# livekit>=0.12.0
-# livekit-agents>=0.8.0
+# LiveKit для WebRTC аудио
+livekit>=0.12.0
+livekit-api>=0.6.0
+
+# JWT для создания токенов LiveKit
+PyJWT>=2.8.0
+
+# ===== WEB PARSING =====
+
+# Парсинг веб-страниц
+beautifulsoup4>=4.12.0
+lxml>=5.1.0
 
 # Azure Cognitive Search для RAG (опционально)
 # Раскомментируйте если нужен RAG:

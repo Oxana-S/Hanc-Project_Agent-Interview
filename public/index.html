@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Консультант | Voice Interviewer</title>
+    <script src="https://unpkg.com/livekit-client@2.0.0/dist/livekit-client.umd.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>AI-Консультант</h1>
+            <span class="version">v3.0</span>
+        </header>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-indicator" id="connection-status">
+                <span class="dot"></span>
+                <span class="text">Не подключен</span>
+            </div>
+            <div class="phase-indicator" id="phase-indicator">
+                <span class="phase">—</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-card">
+                    <div class="icon">🎤</div>
+                    <h2>Добро пожаловать!</h2>
+                    <p>Я помогу создать голосового агента для вашего бизнеса.</p>
+                    <p class="phases">
+                        <span class="phase-tag discovery">Знакомство</span>
+                        <span class="arrow">→</span>
+                        <span class="phase-tag analysis">Анализ</span>
+                        <span class="arrow">→</span>
+                        <span class="phase-tag proposal">Предложение</span>
+                        <span class="arrow">→</span>
+                        <span class="phase-tag refinement">Анкета</span>
+                    </p>
+                    <button id="start-btn" class="btn btn-primary">
+                        Начать консультацию
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interview Screen -->
+            <div id="interview-screen" class="screen">
+                <!-- Progress -->
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">0% заполнено</div>
+                </div>
+
+                <!-- Dialogue -->
+                <div class="dialogue-container" id="dialogue-container">
+                    <!-- Messages will be added here -->
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <div class="voice-indicator" id="voice-indicator">
+                        <div class="wave">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <span class="status-text" id="voice-status">Нажмите и говорите</span>
+                    </div>
+
+                    <div class="buttons">
+                        <button id="mic-btn" class="btn btn-mic">
+                            <span class="icon">🎤</span>
+                        </button>
+                        <button id="stop-btn" class="btn btn-stop" disabled>
+                            <span class="icon">⏹</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-card">
+                    <div class="icon">✅</div>
+                    <h2>Консультация завершена!</h2>
+                    <div class="stats" id="results-stats">
+                        <!-- Stats will be added here -->
+                    </div>
+                    <div class="files" id="results-files">
+                        <!-- File links will be added here -->
+                    </div>
+                    <button id="new-btn" class="btn btn-primary">
+                        Новая консультация
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Voice Interviewer Agent &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

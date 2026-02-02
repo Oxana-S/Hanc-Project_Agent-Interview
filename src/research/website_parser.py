@@ -1,0 +1,172 @@
+"""
+Website Parser.
+
+Парсинг сайтов клиентов для извлечения информации.
+"""
+
+import re
+from typing import Any, Dict, List, Optional
+from urllib.parse import urljoin, urlparse
+
+import httpx
+
+
+class WebsiteParser:
+    """Парсер веб-сайтов."""
+
+    def __init__(self, timeout: float = 30.0):
+        """
+        Инициализация парсера.
+
+        Args:
+            timeout: Таймаут запросов в секундах
+        """
+        self.timeout = timeout
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (compatible; VoiceInterviewerBot/1.0)"
+        }
+
+    async def parse(self, url: str) -> Dict[str, Any]:
+        """
+        Парсить сайт и извлечь информацию.
+
+        Args:
+            url: URL сайта
+
+        Returns:
+            Словарь с извлечённой информацией
+        """
+        # Нормализуем URL
+        if not url.startswith(('http://', 'https://')):
+            url = f"https://{url}"
+
+        async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=True) as client:
+            try:
+                response = await client.get(url, headers=self.headers)
+                response.raise_for_status()
+                html = response.text
+            except Exception as e:
+                return {"error": str(e), "url": url}
+
+        # Извлекаем данные
+        result = {
+            "url": url,
+            "title": self._extract_title(html),
+            "description": self._extract_meta_description(html),
+            "services": self._extract_services(html),
+            "contacts": self._extract_contacts(html),
+            "social_links": self._extract_social_links(html, url),
+        }
+
+        return result
+
+    def _extract_title(self, html: str) -> Optional[str]:
+        """Извлечь title страницы."""
+        match = re.search(r'<title[^>]*>([^<]+)</title>', html, re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+        return None
+
+    def _extract_meta_description(self, html: str) -> Optional[str]:
+        """Извлечь meta description."""
+        match = re.search(
+            r'<meta[^>]*name=["\']description["\'][^>]*content=["\']([^"\']+)["\']',
+            html, re.IGNORECASE
+        )
+        if match:
+            return match.group(1).strip()
+
+        # Альтернативный формат
+        match = re.search(
+            r'<meta[^>]*content=["\']([^"\']+)["\'][^>]*name=["\']description["\']',
+            html, re.IGNORECASE
+        )
+        if match:
+            return match.group(1).strip()
+
+        return None
+
+    def _extract_services(self, html: str) -> List[str]:
+        """Извлечь список услуг/продуктов."""
+        services = []
+
+        # Ищем в списках
+        list_items = re.findall(r'<li[^>]*>([^<]{10,100})</li>', html)
+        for item in list_items[:10]:
+            clean = re.sub(r'<[^>]+>', '', item).strip()
+            if clean and len(clean) > 5:
+                services.append(clean)
+
+        # Ищем в заголовках h2, h3
+        headings = re.findall(r'<h[23][^>]*>([^<]{5,50})</h[23]>', html)
+        for heading in headings[:5]:
+            clean = re.sub(r'<[^>]+>', '', heading).strip()
+            if clean:
+                services.append(clean)
+
+        return list(set(services))[:10]  # Уникальные, макс 10
+
+    def _extract_contacts(self, html: str) -> Dict[str, Optional[str]]:
+        """Извлечь контактную информацию."""
+        contacts = {
+            "phone": None,
+            "email": None,
+            "address": None,
+        }
+
+        # Телефон
+        phone_patterns = [
+            r'\+7[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}',
+            r'8[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}',
+            r'\+\d{1,3}[\s\-]?\(?\d{2,4}\)?[\s\-]?\d{3,4}[\s\-]?\d{2,4}',
+        ]
+        for pattern in phone_patterns:
+            match = re.search(pattern, html)
+            if match:
+                contacts["phone"] = match.group(0)
+                break
+
+        # Email
+        email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', html)
+        if email_match:
+            contacts["email"] = email_match.group(0)
+
+        return contacts
+
+    def _extract_social_links(self, html: str, base_url: str) -> Dict[str, Optional[str]]:
+        """Извлечь ссылки на соцсети."""
+        social = {
+            "telegram": None,
+            "whatsapp": None,
+            "vk": None,
+            "instagram": None,
+        }
+
+        patterns = {
+            "telegram": r'https?://t\.me/[\w_]+',
+            "whatsapp": r'https?://wa\.me/\d+',
+            "vk": r'https?://vk\.com/[\w_]+',
+            "instagram": r'https?://(?:www\.)?instagram\.com/[\w_]+',
+        }
+
+        for name, pattern in patterns.items():
+            match = re.search(pattern, html, re.IGNORECASE)
+            if match:
+                social[name] = match.group(0)
+
+        return social
+
+    async def parse_multiple_pages(self, base_url: str, max_pages: int = 3) -> Dict[str, Any]:
+        """
+        Парсить несколько страниц сайта.
+
+        Args:
+            base_url: Базовый URL
+            max_pages: Максимум страниц
+
+        Returns:
+            Объединённые данные
+        """
+        # Простая реализация — парсим только главную
+        # TODO: Добавить обход ссылок
+        return await self.parse(base_url)

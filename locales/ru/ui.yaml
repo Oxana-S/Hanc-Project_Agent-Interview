@@ -1,0 +1,85 @@
+# UI тексты (русский)
+
+app:
+  name: "Voice Interviewer Agent"
+  title: "AI-Консультант"
+  version: "3.0"
+
+phases:
+  discovery:
+    name: "DISCOVERY"
+    title: "Знакомство с бизнесом"
+    description: |
+      Давайте познакомимся с вашим бизнесом!
+      Расскажите о компании, и я помогу определить,
+      какой голосовой агент вам нужен.
+
+  analysis:
+    name: "ANALYSIS"
+    title: "Анализ бизнеса"
+    description: |
+      Анализирую собранную информацию
+      и провожу исследование вашей отрасли...
+
+  proposal:
+    name: "PROPOSAL"
+    title: "Предложение решения"
+    description: |
+      На основе анализа предлагаю
+      оптимальное решение для вашего бизнеса.
+
+  refinement:
+    name: "REFINEMENT"
+    title: "Финализация анкеты"
+    description: |
+      Почти готово! Уточним оставшиеся детали
+      для создания вашего агента.
+
+status:
+  thinking: "Думаю..."
+  analyzing: "Анализирую..."
+  researching: "Исследую..."
+  generating: "Генерирую..."
+  listening: "Слушаю..."
+  speaking: "Говорю..."
+
+progress:
+  complete: "Заполнено"
+  partial: "Частично"
+  empty: "Не заполнено"
+  ai_suggested: "Предложено AI"
+
+commands:
+  done: "Достаточно, переходим дальше"
+  status: "Показать прогресс"
+  skip: "Пропустить"
+  quit: "Завершить"
+  help: "Помощь"
+
+buttons:
+  start: "Начать консультацию"
+  stop: "Остановить"
+  mute: "Выключить микрофон"
+  unmute: "Включить микрофон"
+
+messages:
+  welcome: "Добро пожаловать!"
+  goodbye: "Спасибо за консультацию!"
+  error: "Произошла ошибка"
+  retry: "Попробуйте ещё раз"
+  connection_lost: "Соединение потеряно"
+  reconnecting: "Переподключение..."
+
+confirmations:
+  yes: "Да"
+  no: "Нет"
+  correct: "Верно"
+  incorrect: "Неверно"
+  accept: "Согласен"
+  modify: "Хочу изменить"
+
+errors:
+  api_error: "Ошибка API: {{message}}"
+  connection_error: "Ошибка соединения"
+  timeout: "Превышено время ожидания"
+  invalid_input: "Некорректный ввод"
