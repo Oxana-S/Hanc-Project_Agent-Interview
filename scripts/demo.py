@@ -1,6 +1,9 @@
 """
-Демо-скрипт для тестирования Voice Interviewer Agent без реальных API
-Использует MOCK данные для всех внешних сервисов
+Демо-скрипт для тестирования Voice Interviewer Agent.
+
+Доступные режимы:
+1. MOCK demo - симуляция без API
+2. MAXIMUM - полноценный режим с DeepSeek AI (Discovery + Structured + Synthesis)
 """
 
 import asyncio
@@ -8,15 +11,16 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from rich.console import Console
+from rich.prompt import Prompt
 
-from models import (
+from src.models import (
     InterviewPattern, InterviewContext, InterviewStatus,
     QuestionResponse, QuestionStatus, AnswerAnalysis, AnalysisStatus,
     CompletedAnketa
 )
-from redis_storage import RedisStorageManager
-from postgres_storage import PostgreSQLStorageManager
-from cli_interface import InterviewCLI, print_welcome_banner
+from src.storage.redis import RedisStorageManager
+from src.storage.postgres import PostgreSQLStorageManager
+from src.cli.interface import InterviewCLI, print_welcome_banner
 
 console = Console()
 load_dotenv()
@@ -33,10 +37,10 @@ class MockVoiceInterviewerAgent:
         
         # Загружаем вопросы
         if pattern == InterviewPattern.INTERACTION:
-            from interview_questions_interaction import get_all_questions
+            from src.interview.questions.interaction import get_all_questions
             self.questions = get_all_questions()[:10]  # Берём первые 10 для демо
         else:
-            from interview_questions_management import get_all_questions
+            from src.interview.questions.management import get_all_questions
             self.questions = get_all_questions()[:10]
     
     async def start_interview(self, session_id=None):
@@ -186,38 +190,71 @@ class MockVoiceInterviewerAgent:
         console.print("\n[green]✅ DEMO interview completed![/green]\n")
 
 
-async def main():
-    """Главная функция демо"""
-    print_welcome_banner()
-    
-    console.print("[bold yellow]🎬 DEMO MODE[/bold yellow]")
-    console.print("[yellow]This is a simulated demo without real API calls[/yellow]\n")
-    
+async def run_maximum_interview():
+    """Запуск Maximum Interview Mode."""
+    from maximum_interview import MaximumInterviewer
+    from deepseek_client import DeepSeekClient
+
+    console.print("\n[bold cyan]🎯 MAXIMUM INTERVIEW MODE[/bold cyan]")
+    console.print("[dim]Discovery + Structured + Synthesis[/dim]\n")
+
+    # Проверяем DeepSeek
+    try:
+        deepseek = DeepSeekClient()
+        console.print("[green]✓ DeepSeek AI подключен[/green]\n")
+    except Exception as e:
+        console.print(f"[red]✗ DeepSeek недоступен: {e}[/red]")
+        console.print("[yellow]Maximum режим требует DeepSeek API![/yellow]")
+        console.print("[dim]Установите DEEPSEEK_API_KEY в .env[/dim]")
+        return
+
+    # Выбор паттерна
+    console.print("[bold]Выберите тип агента:[/bold]")
+    console.print("  [1] INTERACTION - для работы с клиентами")
+    console.print("  [2] MANAGEMENT - для работы с сотрудниками\n")
+
+    choice = Prompt.ask("Выбор", choices=["1", "2"], default="1")
+    pattern = InterviewPattern.INTERACTION if choice == "1" else InterviewPattern.MANAGEMENT
+
+    console.print(f"\n[green]✓ Выбран: {pattern.value}[/green]\n")
+
+    # Запуск
+    interviewer = MaximumInterviewer(pattern=pattern, deepseek_client=deepseek)
+    result = await interviewer.run()
+
+    if result.get('status') == 'completed':
+        console.print("\n[bold green]🎉 Maximum Interview завершён![/bold green]")
+    else:
+        console.print(f"\n[yellow]Статус: {result.get('status')}[/yellow]")
+
+
+async def run_mock_demo():
+    """Запуск MOCK демо без API."""
+    console.print("\n[bold yellow]🎬 MOCK DEMO MODE[/bold yellow]")
+    console.print("[yellow]Симуляция без реальных API[/yellow]\n")
+
     # Выбор паттерна
     console.print("[bold]Select pattern:[/bold]")
     console.print("  [1] INTERACTION")
     console.print("  [2] MANAGEMENT\n")
-    
-    choice = input("Enter choice (1 or 2): ").strip()
-    
+
+    choice = Prompt.ask("Enter choice", choices=["1", "2"], default="1")
+
     if choice == "1":
         pattern = InterviewPattern.INTERACTION
         console.print("[green]✓ Selected: INTERACTION[/green]\n")
-    elif choice == "2":
+    else:
         pattern = InterviewPattern.MANAGEMENT
         console.print("[green]✓ Selected: MANAGEMENT[/green]\n")
-    else:
-        console.print("[red]Invalid choice[/red]")
-        return
-    
+
     # Инициализация storage
     console.print("[yellow]Initializing storage...[/yellow]")
-    
+
     redis_manager = RedisStorageManager(
         host=os.getenv("REDIS_HOST", "localhost"),
         port=int(os.getenv("REDIS_PORT", "6379"))
     )
-    
+
     postgres_manager = PostgreSQLStorageManager(
         database_url=os.getenv(
             "DATABASE_URL",
@@ -228,41 +265,37 @@ async def main():
             f"{os.getenv('POSTGRES_DB', 'voice_interviewer')}"
         )
     )
-    
+
     console.print("[green]✓ Storage initialized[/green]\n")
-    
+
     # Создаём демо-агента
     agent = MockVoiceInterviewerAgent(pattern, redis_manager, postgres_manager)
-    
+
     # Запускаем интервью
     await agent.start_interview()
-    
+
     # CLI
     cli = InterviewCLI(agent)
-    
+
     # Запускаем с мониторингом
     agent_task = asyncio.create_task(agent.run_interview_cycle())
     monitor_task = asyncio.create_task(cli.monitor_interview(update_interval=0.5))
-    
+
     await asyncio.gather(agent_task, monitor_task)
-    
+
     # Финальная сводка
     cli.show_completion_summary()
-    
+
     console.print("\n[bold cyan]📊 Viewing results in database...[/bold cyan]\n")
-    
+
     # Показываем сохранённую анкету
-    anketa = await postgres_manager.get_anketa(
-        list((await postgres_manager.get_statistics()).pattern_breakdown.keys())[0]
-    )
-    
     if agent.context:
         from rich.table import Table
-        
+
         table = Table(title="📋 Completed Anketa Preview", show_header=False)
         table.add_column("Field", style="cyan", width=25)
         table.add_column("Value", style="white")
-        
+
         table.add_row("Company Name", "TechSolutions Inc.")
         table.add_row("Industry", "IT / Технологии")
         table.add_row("Language", "Русский")
@@ -270,12 +303,26 @@ async def main():
         table.add_row("Tone", "Адаптивный")
         table.add_row("Duration", f"{agent.context.total_duration_seconds:.1f}s")
         table.add_row("Questions Answered", f"{agent.context.answered_questions}/{agent.context.total_questions}")
-        
+
         console.print(table)
-    
+
     console.print("\n[green]✅ Demo completed successfully![/green]")
-    console.print("[yellow]Check PostgreSQL database for full results[/yellow]\n")
 
 
+async def main():
+    """Главная функция демо"""
+    print_welcome_banner()
+
+    console.print("[bold]Выберите режим:[/bold]")
+    console.print("  [1] [cyan]MAXIMUM[/cyan] - полноценное AI-интервью (рекомендуется)")
+    console.print("  [2] [yellow]MOCK[/yellow] - симуляция без AI\n")
+
+    mode = Prompt.ask("Режим", choices=["1", "2"], default="1")
+
+    if mode == "1":
+        await run_maximum_interview()
+    else:
+        await run_mock_demo()
+    
 if __name__ == "__main__":
     asyncio.run(main())

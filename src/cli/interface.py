@@ -14,8 +14,9 @@ from rich.text import Text
 from datetime import datetime
 import structlog
 
-from models import InterviewContext, InterviewStatus, QuestionStatus
-from voice_interviewer_agent import VoiceInterviewerAgent
+from src.models import InterviewContext, InterviewStatus, QuestionStatus
+# VoiceInterviewerAgent был удалён, теперь используется MaximumInterviewer
+from typing import Any
 
 logger = structlog.get_logger()
 console = Console()
@@ -26,7 +27,7 @@ class InterviewCLI:
     CLI интерфейс для мониторинга интервью
     """
     
-    def __init__(self, agent: VoiceInterviewerAgent):
+    def __init__(self, agent: Any):
         """
         Args:
             agent: Агент-интервьюер

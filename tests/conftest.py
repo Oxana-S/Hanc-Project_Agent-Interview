@@ -13,7 +13,7 @@ from typing import Generator
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from models import (
+from src.models import (
     InterviewContext, InterviewPattern, InterviewStatus,
     QuestionResponse, QuestionStatus, AnswerAnalysis, AnalysisStatus,
     Clarification, CompletedAnketa, InterviewStatistics
@@ -151,7 +151,7 @@ def mock_redis_client():
 def mock_redis_manager(mock_redis_client):
     """Create a RedisStorageManager with mocked client."""
     with patch('redis.Redis', return_value=mock_redis_client):
-        from redis_storage import RedisStorageManager
+        from src.storage.redis import RedisStorageManager
         manager = RedisStorageManager(
             host="localhost",
             port=6379,
@@ -181,62 +181,18 @@ def mock_db_session():
 @pytest.fixture
 def mock_postgres_manager(mock_db_session):
     """Create a PostgreSQLStorageManager with mocked session."""
-    with patch('postgres_storage.create_engine') as mock_engine, \
-         patch('postgres_storage.sessionmaker') as mock_sessionmaker, \
-         patch('postgres_storage.Base'):
+    with patch('src.storage.postgres.create_engine') as mock_engine, \
+         patch('src.storage.postgres.sessionmaker') as mock_sessionmaker, \
+         patch('src.storage.postgres.Base'):
 
         mock_sessionmaker.return_value = lambda: mock_db_session
 
-        from postgres_storage import PostgreSQLStorageManager
+        from src.storage.postgres import PostgreSQLStorageManager
         manager = PostgreSQLStorageManager(
             database_url="postgresql://test:test@localhost:5432/test"
         )
         manager._get_session = lambda: mock_db_session
         return manager
-
-
-# ============ MOCK VOICE INTERVIEWER AGENT ============
-
-@pytest.fixture
-def mock_agent_dependencies():
-    """Create all mocked dependencies for VoiceInterviewerAgent."""
-    return {
-        "azure_openai_config": {
-            "api_key": "test-api-key",
-            "endpoint": "https://test.openai.azure.com",
-            "deployment_name": "gpt-4o-realtime",
-            "api_version": "2024-10-01-preview"
-        },
-        "deepseek_config": {
-            "api_key": "test-deepseek-key",
-            "endpoint": "https://api.deepseek.com/v1",
-            "model": "deepseek-reasoner"
-        },
-        "livekit_config": {
-            "api_key": "test-livekit-key",
-            "api_secret": "test-secret",
-            "url": "wss://test.livekit.cloud"
-        }
-    }
-
-
-@pytest.fixture
-def mock_voice_agent(mock_redis_manager, mock_postgres_manager, mock_agent_dependencies):
-    """Create a VoiceInterviewerAgent with mocked dependencies."""
-    from voice_interviewer_agent import VoiceInterviewerAgent
-
-    agent = VoiceInterviewerAgent(
-        pattern=InterviewPattern.INTERACTION,
-        redis_manager=mock_redis_manager,
-        postgres_manager=mock_postgres_manager,
-        **mock_agent_dependencies
-    )
-
-    # Mock the async speech/listen methods
-    agent._speak = AsyncMock()
-    agent._listen_for_answer = AsyncMock(return_value="This is a mock answer for testing purposes with enough words")
-
-    return agent
 
 
 # ============ ASYNC HELPERS ============

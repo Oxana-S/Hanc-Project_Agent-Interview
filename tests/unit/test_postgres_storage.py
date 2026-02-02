@@ -18,7 +18,7 @@ except ImportError:
         """Mock SQLAlchemy error for testing when sqlalchemy is not installed."""
         pass
 
-from models import (
+from src.models import (
     InterviewPattern, InterviewStatus, CompletedAnketa, InterviewStatistics
 )
 

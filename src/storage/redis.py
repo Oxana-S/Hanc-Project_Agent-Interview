@@ -6,7 +6,7 @@ import json
 import redis
 from typing import Optional
 from datetime import timedelta
-from models import InterviewContext
+from src.models import InterviewContext
 import structlog
 
 logger = structlog.get_logger()

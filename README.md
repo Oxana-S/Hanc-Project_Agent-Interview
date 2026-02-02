@@ -1,155 +1,207 @@
-# 🎙️ Voice Interviewer Agent
+# Voice Interviewer Agent
 
 Голосовой агент-интервьюер с активным анализом и уточнениями для создания анкет голосовых помощников.
 
-## 📋 Описание
+## Описание
 
-Система для проведения голосовых интервью с клиентами или сотрудниками компании для сбора требований к голосовому агенту. Агент:
+Система для проведения интервью с клиентами или сотрудниками компании для сбора требований к голосовому агенту.
 
-- ✅ **Активно слушает** и анализирует ответы через DeepSeek
-- ✅ **Задаёт уточняющие вопросы** при неполных ответах
-- ✅ **Визуализирует прогресс** в реальном времени
-- ✅ **Сохраняет контекст** в Redis и PostgreSQL
-- ✅ **Поддерживает два паттерна**: Interaction (клиенты) и Management (сотрудники)
+**Maximum Interview Mode** — единый режим с тремя фазами:
+1. **DISCOVERY** — свободный консультативный диалог
+2. **STRUCTURED** — целенаправленный сбор недостающих данных
+3. **SYNTHESIS** — генерация полной анкеты
 
-## 🏗️ Архитектура
+### Ключевые возможности:
+- **Активный анализ** через DeepSeek LLM
+- **Уточняющие вопросы** при неполных ответах
+- **Визуализация прогресса** в реальном времени (Rich CLI)
+- **Сохранение контекста** в Redis и PostgreSQL
+- **Два паттерна**: INTERACTION (клиенты) и MANAGEMENT (сотрудники)
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                  ГОЛОСОВОЙ АГЕНТ-ИНТЕРВЬЮЕР             │
-│                                                         │
-│  1. 🎤 Слушаю клиента (Azure OpenAI STT)               │
-│  2. 📝 Сохраняю транскрипцию (Redis)                   │
-│  3. ⚡ Анализирую через DeepSeek                        │
-│  4. ❓ Задаю уточняющие вопросы                        │
-│  5. ✅ Перехожу к следующему вопросу                   │
-│  6. 💾 Сохраняю анкету (PostgreSQL)                    │
-└─────────────────────────────────────────────────────────┘
-```
+## Быстрый старт
 
-## 🚀 Быстрый старт
-
-### 1. Установка зависимостей
+### 1. Установка
 
 ```bash
-# Клонируйте репозиторий
 git clone <repo-url>
 cd voice-interviewer-agent
 
-# Создайте виртуальное окружение
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
-# или
-venv\Scripts\activate  # Windows
-
-# Установите зависимости
 pip install -r requirements.txt
 ```
 
-### 2. Настройка окружения
+### 2. Конфигурация
 
 ```bash
-# Скопируйте пример конфигурации
 cp .env.example .env
-
-# Отредактируйте .env и заполните ключи API
-nano .env
+nano .env  # Заполните API ключи
 ```
 
 **Обязательные параметры:**
-- `AZURE_OPENAI_API_KEY` - ключ Azure OpenAI
-- `AZURE_OPENAI_ENDPOINT` - endpoint Azure OpenAI
-- `DEEPSEEK_API_KEY` - ключ DeepSeek API
+```env
+DEEPSEEK_API_KEY=your_key
+DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
+DEEPSEEK_MODEL=deepseek-chat
+```
 
 ### 3. Запуск инфраструктуры
 
 ```bash
-# Запустите Redis и PostgreSQL через Docker
-docker-compose up -d
-
-# Проверьте статус
-docker-compose ps
+docker-compose -f config/docker-compose.yml up -d
 ```
 
-### 4. Запуск агента
+### 4. Запуск
 
 ```bash
-# Запустите главный скрипт
-python main.py
+# Maximum Interview Mode (с DeepSeek AI)
+python3 scripts/demo.py
+
+# Проверка здоровья системы
+python3 scripts/healthcheck.py
 ```
 
-## 📖 Использование
-
-### Новое интервью
-
-```bash
-python main.py
-```
-
-Выберите паттерн:
-- **1** - INTERACTION (агент для клиентов компании)
-- **2** - MANAGEMENT (агент для сотрудников)
-
-### Возобновление прерванного интервью
-
-```bash
-python main.py resume <session_id>
-```
-
-## 🗂️ Структура проекта
+## Структура проекта
 
 ```
-voice-interviewer-agent/
-├── main.py                              # Главный файл запуска
-├── voice_interviewer_agent.py           # Основной класс агента
-├── cli_interface.py                     # CLI интерфейс с визуализацией
-├── models.py                            # Модели данных (Pydantic)
-├── redis_storage.py                     # Менеджер Redis
-├── postgres_storage.py                  # Менеджер PostgreSQL
-├── interview_questions_interaction.py   # Вопросы для паттерна Interaction
-├── interview_questions_management.py    # Вопросы для паттерна Management
-├── requirements.txt                     # Зависимости Python
-├── .env.example                         # Пример конфигурации
-├── docker-compose.yml                   # Docker compose для инфраструктуры
-└── README.md                            # Документация
+voice_interviewer/
+├── src/                          # Исходный код
+│   ├── __init__.py
+│   ├── models.py                 # Базовые модели (Pydantic)
+│   │
+│   ├── interview/                # Логика интервью
+│   │   ├── maximum.py            # MaximumInterviewer (главный класс)
+│   │   ├── phases.py             # InterviewPhase, FieldStatus, CollectedInfo
+│   │   └── questions/            # Вопросы по паттернам
+│   │       ├── interaction.py    # 40 вопросов для клиентов
+│   │       └── management.py     # 38 вопросов для сотрудников
+│   │
+│   ├── storage/                  # Хранение данных
+│   │   ├── redis.py              # RedisStorageManager
+│   │   └── postgres.py           # PostgreSQLStorageManager
+│   │
+│   ├── llm/                      # LLM клиенты
+│   │   ├── deepseek.py           # DeepSeekClient
+│   │   └── anketa_generator.py   # Генерация полной анкеты
+│   │
+│   └── cli/                      # CLI интерфейсы
+│       ├── interface.py          # Базовый CLI
+│       └── maximum.py            # CLI для Maximum режима
+│
+├── scripts/                      # Точки входа
+│   ├── demo.py                   # Главный скрипт запуска
+│   └── healthcheck.py            # Проверка системы
+│
+├── docs/                         # Документация
+│   ├── QUICKSTART.md
+│   ├── PROJECT_OVERVIEW.md
+│   └── example_anketa.md
+│
+├── config/                       # Конфигурация
+│   ├── docker-compose.yml
+│   └── init_db.sql
+│
+├── tests/                        # Тесты (123 теста)
+├── output/                       # Результаты интервью
+│
+├── .env.example
+├── requirements.txt
+└── README.md
 ```
 
-## 🔧 Конфигурация
+## Maximum Interview Mode
 
-### Azure OpenAI
+### Три фазы
 
+```
+DISCOVERY → STRUCTURED → SYNTHESIS
+   │            │           │
+   ▼            ▼           ▼
+Свободный   Сбор       Генерация
+диалог      данных     анкеты
+```
+
+### Discovery Phase
+- Консультативный диалог без жёсткой структуры
+- Клиент рассказывает о бизнесе в свободной форме
+- AI извлекает информацию из контекста
+- 5-15 ходов (настраивается)
+
+### Structured Phase
+- Целенаправленные вопросы по недостающим полям
+- Приоритизация: REQUIRED → IMPORTANT → OPTIONAL
+- До 3 уточнений на вопрос
+
+### Synthesis Phase
+- Генерация полной анкеты через DeepSeek
+- Экспорт в JSON и Markdown
+- Сохранение в PostgreSQL
+
+## Паттерны интервью
+
+### INTERACTION (Клиенты компании)
+Для агентов, работающих с внешними клиентами:
+- Продажи и запись на услуги
+- Бронирование
+- Техподдержка
+- Справочная
+
+### MANAGEMENT (Сотрудники компании)
+Для внутренних агентов:
+- HR и рекрутинг
+- IT поддержка
+- Координация задач
+- Секретарь руководителя
+
+## CLI Dashboard
+
+```
+╔════════════════════════════════════════════╗
+║     MAXIMUM INTERVIEW MODE                 ║
+║     TechSolutions Inc.                     ║
+║                                            ║
+║     discovery → [STRUCTURED] → synthesis   ║
+╚════════════════════════════════════════════╝
+
+📊 bas: ✓✓✓✓ | agt: ✓◐○○ | cli: ○○○ | oth: ○○○
+
+╔════════════════════════════════════════════╗
+║ Progress: 45% [████████░░░░░░░░░]          ║
+║ Required: 8/15  Important: 3/10  Optional: 0/5 ║
+╚════════════════════════════════════════════╝
+```
+
+## Анализ ответов
+
+DeepSeek анализирует каждый ответ:
+
+```python
+{
+    "completeness_score": 0.75,      # 0-1
+    "needs_clarification": True,
+    "extracted_fields": {...},
+    "clarification_questions": [
+        "Какие конкретно услуги вы предлагаете?",
+        "Каков ценовой диапазон?"
+    ]
+}
+```
+
+## Конфигурация
+
+### DeepSeek API
 ```env
-AZURE_OPENAI_API_KEY=your_key
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4-realtime-preview
-AZURE_OPENAI_API_VERSION=2024-10-01-preview
-```
-
-### DeepSeek
-
-```env
-DEEPSEEK_API_KEY=your_key
+DEEPSEEK_API_KEY=sk-...
 DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
-DEEPSEEK_MODEL=deepseek-reasoner
-```
-
-### LiveKit (опционально)
-
-```env
-LIVEKIT_API_KEY=your_key
-LIVEKIT_API_SECRET=your_secret
-LIVEKIT_URL=wss://your-server.livekit.cloud
+DEEPSEEK_MODEL=deepseek-chat
 ```
 
 ### Storage
-
 ```env
-# Redis
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_SESSION_TTL=7200
 
-# PostgreSQL
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_DB=voice_interviewer
@@ -157,216 +209,55 @@ POSTGRES_USER=interviewer_user
 POSTGRES_PASSWORD=your_password
 ```
 
-## 📊 CLI Интерфейс
-
-Агент предоставляет rich CLI интерфейс с:
-
-```
-╔════════════════════════════════════════════╗
-║ 📊 Interview Info                          ║
-║ Session ID: abc12345                       ║
-║ Pattern: INTERACTION                       ║
-║ Status: ▶️ In Progress                     ║
-╚════════════════════════════════════════════╝
-
-╔════════════════════════════════════════════╗
-║ 📈 Progress                                ║
-║ Progress: 60% [████████████░░░░░░░]        ║
-║ Questions: 24/40                           ║
-║                                            ║
-║ Sections:                                  ║
-║ ✅ Базовая информация: 5/5                ║
-║ ⏳ Клиенты и услуги: 8/15                 ║
-║ ◻️ Интеграции: 0/12                       ║
-╚════════════════════════════════════════════╝
-
-╔════════════════════════════════════════════╗
-║ 🎤 Current Question                        ║
-║ Section: Клиенты и услуги                  ║
-║                                            ║
-║ Question:                                  ║
-║ Перечислите основные услуги или продукты...║
-║                                            ║
-║ Status: 💬 Answered                        ║
-╚════════════════════════════════════════════╝
-
-╔════════════════════════════════════════════╗
-║ 📊 Metrics                                 ║
-║ Duration:           15.3 min               ║
-║ Clarifications:     8                      ║
-║ Avg Answer Length:  42.3 words             ║
-║ Completeness:       87%                    ║
-╚════════════════════════════════════════════╝
-```
-
-## 🎯 Паттерны интервью
-
-### INTERACTION (Взаимодействие с клиентами)
-
-Для создания агента, который будет общаться с **клиентами компании**:
-- Продажи и запись на услуги
-- Бронирование и резервирование
-- Техподдержка
-- Заказы и доставка
-- Справочная и маршрутизация
-
-**Секции анкеты:**
-1. Базовая информация (компания, отрасль, язык, цель)
-2. Клиенты и услуги (тип бизнеса, услуги, клиенты)
-3. Интеграции (email, calendar, SMS, WhatsApp, переадресация)
-4. Дополнительная информация (примеры диалогов, ограничения)
-
-### MANAGEMENT (Внутренние коммуникации)
-
-Для создания агента для **сотрудников компании**:
-- HR и рекрутинг
-- Онбординг новых сотрудников
-- Секретарь руководителя
-- Координация задач
-- IT поддержка
-
-**Секции анкеты:**
-1. Базовая информация (компания, отрасль, язык, цель)
-2. Структура и функции (размер, отделы, функции)
-3. Интеграции (email, calendar, SMS, WhatsApp, переадресация)
-4. Дополнительная информация (примеры диалогов, ограничения)
-
-## 🧪 Разработка
-
-### Запуск тестов
+## Тестирование
 
 ```bash
-pytest
+# Все тесты
+python3 -m pytest tests/ -v
+
+# С покрытием
+python3 -m pytest tests/ -v --cov=src
 ```
 
-### Линтинг
+## Разработка
 
-```bash
-black .
-flake8 .
-mypy .
-```
-
-### Pre-commit hooks
-
-```bash
-pre-commit install
-pre-commit run --all-files
-```
-
-## 📦 Хранение данных
-
-### Redis (Текущие сессии)
-- **Ключ:** `interview:session:{session_id}`
-- **TTL:** 2 часа (настраивается)
-- **Данные:** Полный контекст интервью (InterviewContext)
-
-### PostgreSQL (Долгосрочное хранение)
-
-**Таблица `anketas`:**
-- Заполненные анкеты
-- Полные ответы клиентов
-- Метрики качества
-
-**Таблица `interview_sessions`:**
-- История всех интервью
-- Статистика и метрики
-- Статус завершения
-
-## 🔍 Анализ ответов
-
-Агент использует **DeepSeek** для анализа каждого ответа:
-
+### Импорты
 ```python
-{
-  "status": "complete|incomplete|vague|needs_examples",
-  "completeness_score": 0.0-1.0,
-  "has_examples": true/false,
-  "has_specifics": true/false,
-  "contradictions": [],
-  "missing_details": [],
-  "clarification_questions": [],
-  "confidence": 0.0-1.0,
-  "reasoning": "подробное объяснение"
-}
+from src.interview.maximum import MaximumInterviewer
+from src.models import InterviewPattern
+from src.llm.deepseek import DeepSeekClient
+
+# Создание интервьюера
+interviewer = MaximumInterviewer(
+    pattern=InterviewPattern.INTERACTION,
+    deepseek_client=DeepSeekClient()
+)
+
+# Запуск
+result = await interviewer.run()
 ```
 
-**Критерии для уточнений:**
-- Ответ короче минимальной длины (< 15 слов)
-- Нет конкретных примеров
-- Противоречия с предыдущими ответами
-- Неясные термины
-- Пропущены обязательные детали
-
-## 📈 Метрики успеха
-
-1. **Полнота анкеты:** 100% обязательных полей заполнены
-2. **Качество ответов:** 80%+ ответов имеют конкретные примеры
-3. **Глубина уточнений:** 1-2 уточнения на важный блок
-4. **Время интервью:** 25-40 минут для полной анкеты
-5. **Удовлетворённость:** Клиент подтверждает полноту без правок
-
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Redis connection failed
 ```bash
-# Проверьте статус Redis
-docker-compose ps redis
-
-# Перезапустите Redis
-docker-compose restart redis
-
-# Проверьте логи
-docker-compose logs redis
+docker-compose -f config/docker-compose.yml ps
+docker-compose -f config/docker-compose.yml restart redis
 ```
 
-### PostgreSQL connection failed
+### DeepSeek API errors
 ```bash
-# Проверьте статус PostgreSQL
-docker-compose ps postgres
+# Проверьте API ключ
+echo $DEEPSEEK_API_KEY
 
-# Проверьте DATABASE_URL в .env
-echo $DATABASE_URL
+# Тест подключения
+python3 -c "from src.llm.deepseek import DeepSeekClient; print('OK')"
 ```
 
-### Azure OpenAI errors
-```bash
-# Проверьте ключ API
-echo $AZURE_OPENAI_API_KEY
-
-# Проверьте endpoint
-curl -H "api-key: $AZURE_OPENAI_API_KEY" $AZURE_OPENAI_ENDPOINT
-```
-
-## 📝 TODO / Roadmap
-
-- [ ] Полная интеграция с Azure OpenAI Realtime API
-- [ ] Полная интеграция с LiveKit
-- [ ] RAG через Azure Cognitive Search
-- [ ] Websocket API для web интерфейса
-- [ ] Экспорт анкет в PDF/DOCX
-- [ ] Multi-язычная поддержка (EN, DE, RU)
-- [ ] A/B тестирование различных стратегий уточнений
-- [ ] Автоматическая генерация промптов для итоговых агентов
-
-## 📄 Лицензия
+## Лицензия
 
 MIT
 
-## 🤝 Контрибуция
-
-Pull requests приветствуются!
-
-1. Fork репозиторий
-2. Создайте feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit изменения (`git commit -m 'Add amazing feature'`)
-4. Push в branch (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
-
-## 📧 Контакты
-
-Для вопросов и предложений: [your-email@example.com](mailto:your-email@example.com)
-
 ---
 
-**Создано с ❤️ для автоматизации сбора требований к голосовым агентам**
+**Создано для автоматизации сбора требований к голосовым агентам**

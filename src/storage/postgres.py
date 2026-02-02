@@ -10,7 +10,7 @@ from datetime import datetime
 from typing import Optional, List
 import structlog
 
-from models import CompletedAnketa, InterviewPattern, InterviewStatistics
+from src.models import CompletedAnketa, InterviewPattern, InterviewStatistics
 
 logger = structlog.get_logger()
 

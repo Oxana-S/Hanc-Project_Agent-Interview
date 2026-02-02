@@ -11,7 +11,7 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from models import InterviewContext, InterviewPattern, InterviewStatus
+from src.models import InterviewContext, InterviewPattern, InterviewStatus
 
 
 class TestRedisStorageManagerInit:
