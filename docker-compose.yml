@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # ===== REDIS =====
+  redis:
+    image: redis:7-alpine
+    container_name: voice_interviewer_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - voice_interviewer_network
+
+  # ===== POSTGRESQL =====
+  postgres:
+    image: postgres:16-alpine
+    container_name: voice_interviewer_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-voice_interviewer}
+      POSTGRES_USER: ${POSTGRES_USER:-interviewer_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_production}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-interviewer_user} -d ${POSTGRES_DB:-voice_interviewer}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - voice_interviewer_network
+
+  # ===== PGADMIN (Опционально, для удобства) =====
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: voice_interviewer_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - voice_interviewer_network
+    profiles:
+      - tools
+
+  # ===== REDIS COMMANDER (Опционально, для удобства) =====
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: voice_interviewer_redis_commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - voice_interviewer_network
+    profiles:
+      - tools
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  voice_interviewer_network:
+    driver: bridge
