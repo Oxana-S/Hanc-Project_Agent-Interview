@@ -29,22 +29,25 @@ python scripts/run_test.py vitalbox --no-save
 ## Структура файлов
 
 ```
-tests/
-├── simulation/                 # Фреймворк симуляции
+src/
+├── agent_client_simulator/          # Фреймворк симуляции
 │   ├── __init__.py
-│   ├── client.py              # SimulatedClient - AI-клиент
-│   ├── runner.py              # ConsultationTester - запуск тестов
-│   └── reporter.py            # TestReporter - генерация отчётов
-│
+│   ├── client.py               # SimulatedClient - AI-клиент
+│   ├── runner.py               # ConsultationTester - запуск тестов
+│   ├── reporter.py             # TestReporter - генерация отчётов
+│   └── validator.py            # TestValidator - валидация результатов
+
+tests/
 └── scenarios/                  # Сценарии тестирования
-    ├── _template.yaml         # Шаблон для новых сценариев
-    └── vitalbox.yaml          # Пример: франшиза Vitalbox
+    ├── _template.yaml          # Шаблон для новых сценариев
+    └── vitalbox.yaml           # Пример: франшиза Vitalbox
 
 scripts/
-└── run_test.py                # CLI для запуска тестов
+├── run_test.py                 # CLI для запуска тестов
+└── run_pipeline.py             # Интегрированный pipeline (Test → Review)
 
 output/
-└── tests/                     # Сохранённые отчёты
+└── tests/                      # Сохранённые отчёты
     ├── vitalbox_20260203_001234.json
     └── vitalbox_20260203_001234.md
 ```
@@ -147,7 +150,7 @@ python scripts/run_test.py my_company
 AI-клиент, который генерирует реалистичные ответы на основе персоны.
 
 ```python
-from tests.simulation.client import SimulatedClient
+from src.agent_client_simulator.client import SimulatedClient
 
 # Загрузка из YAML
 client = SimulatedClient.from_yaml("tests/scenarios/vitalbox.yaml")
@@ -183,13 +186,13 @@ response = await client.respond(
 Запускает полную симуляцию консультации.
 
 ```python
-from tests.simulation.runner import ConsultationTester, run_test_scenario
+from src.agent_client_simulator.runner import ConsultationTester, run_test_scenario
 
 # Простой запуск
 result = await run_test_scenario("tests/scenarios/vitalbox.yaml")
 
 # Расширенная настройка
-from tests.simulation.client import SimulatedClient
+from src.agent_client_simulator.client import SimulatedClient
 from src.models import InterviewPattern
 
 client = SimulatedClient.from_yaml("tests/scenarios/vitalbox.yaml")
@@ -207,7 +210,7 @@ result = await tester.run(scenario_name="vitalbox")
 Генерирует отчёты о результатах теста.
 
 ```python
-from tests.simulation.reporter import TestReporter
+from src.agent_client_simulator.reporter import TestReporter
 
 reporter = TestReporter(output_dir="output/tests")
 

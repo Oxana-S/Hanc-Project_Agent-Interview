@@ -3,16 +3,31 @@ AnketaExtractor - extracts structured data from consultation dialogue using LLM.
 
 Takes the full dialogue history, business analysis, and proposed solution,
 then extracts clean structured data into FinalAnketa format.
+
+v3.1 Improvements:
+- JSONRepair for robust JSON parsing with multiple repair strategies
+- DialogueCleaner for removing dialogue markers from field values
+- SmartExtractor for role-based data extraction from dialogue
+- AnketaPostProcessor for comprehensive post-processing pipeline
 """
 
 import json
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import structlog
 
 from src.llm.deepseek import DeepSeekClient
-from src.anketa.schema import FinalAnketa, AgentFunction, Integration
+from src.anketa.schema import (
+    FinalAnketa, AgentFunction, Integration,
+    # v2.0 models
+    FAQItem, ObjectionHandler, DialogueExample, FinancialMetric,
+    Competitor, MarketInsight, EscalationRule, KPIMetric,
+    ChecklistItem, AIRecommendation, TargetAudienceSegment
+)
+from src.anketa.data_cleaner import (
+    JSONRepair, DialogueCleaner, SmartExtractor, AnketaPostProcessor
+)
 
 logger = structlog.get_logger()
 
@@ -20,14 +35,35 @@ logger = structlog.get_logger()
 class AnketaExtractor:
     """Extracts structured questionnaire data from consultation dialogue."""
 
-    def __init__(self, llm: Optional[DeepSeekClient] = None):
+    def __init__(
+        self,
+        llm: Optional[DeepSeekClient] = None,
+        strict_cleaning: bool = True,
+        use_smart_extraction: bool = True,
+        max_json_retries: int = 3
+    ):
         """
-        Initialize extractor.
+        Initialize extractor with v3.1 improvements.
 
         Args:
             llm: DeepSeek client instance. Creates new one if not provided.
+            strict_cleaning: If True, aggressively remove dialogue contamination
+            use_smart_extraction: If True, use SmartExtractor for dialogue parsing
+            max_json_retries: Number of JSON repair attempts
         """
         self.llm = llm or DeepSeekClient()
+        self.strict_cleaning = strict_cleaning
+        self.use_smart_extraction = use_smart_extraction
+        self.max_json_retries = max_json_retries
+
+        # Initialize v3.1 components
+        self.cleaner = DialogueCleaner(strict_mode=strict_cleaning)
+        self.smart_extractor = SmartExtractor() if use_smart_extraction else None
+        self.post_processor = AnketaPostProcessor(
+            strict_cleaning=strict_cleaning,
+            normalize_values=True,
+            inject_defaults=True
+        )
 
     async def extract(
         self,
@@ -60,18 +96,59 @@ class AnketaExtractor:
             proposed_solution or {}
         )
 
+        system_prompt = """Ты — эксперт по извлечению структурированных данных из бизнес-консультаций.
+Твоя задача — проанализировать диалог и извлечь ВСЕ упомянутые данные в JSON формат.
+
+ПРАВИЛА:
+1. Извлекай КОНКРЕТНЫЕ значения из диалога, не придумывай
+2. Если информация упомянута несколько раз — бери последнюю версию
+3. Списки заполняй краткими пунктами (не целыми предложениями)
+4. Возвращай ТОЛЬКО валидный JSON без markdown-обёртки и комментариев"""
+
         try:
+            logger.info("Starting anketa extraction v3.1", dialogue_turns=len(dialogue_history))
+
+            # Step 1: Smart extraction from dialogue (if enabled)
+            dialogue_extracted = {}
+            if self.smart_extractor and dialogue_history:
+                dialogue_extracted = self.smart_extractor.extract_from_dialogue(dialogue_history)
+                logger.debug("Smart extraction completed", fields=list(dialogue_extracted.keys()))
+
             response = await self.llm.chat(
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,  # Low temperature for accuracy
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.1,
                 max_tokens=4096
             )
 
-            # Parse JSON from response
-            anketa_data = self._parse_json_response(response)
+            logger.debug("LLM response received", response_length=len(response))
 
-            # Build FinalAnketa from extracted data
+            # Step 2: Parse JSON with robust repair
+            anketa_data, was_repaired = self._parse_json_with_repair(response)
+            if was_repaired:
+                logger.info("JSON was repaired during parsing")
+
+            # Step 3: Merge with smart-extracted data
+            if dialogue_extracted:
+                anketa_data = self.smart_extractor.merge_with_llm_data(
+                    dialogue_extracted, anketa_data
+                )
+
+            # Step 4: Post-process to clean dialogue contamination
+            anketa_data, processing_report = self.post_processor.process(anketa_data)
+            if processing_report['cleaning_changes']:
+                logger.info(
+                    "Dialogue contamination cleaned",
+                    changes=len(processing_report['cleaning_changes'])
+                )
+
+            # Build FinalAnketa from cleaned data
             anketa = self._build_anketa(anketa_data, duration_seconds)
+
+            # Generate AI expert content for v2.0 blocks
+            anketa = await self._generate_expert_content(anketa)
 
             logger.info(
                 "Anketa extracted successfully",
@@ -81,15 +158,35 @@ class AnketaExtractor:
 
             return anketa
 
-        except Exception as e:
-            logger.error("Anketa extraction failed", error=str(e))
-            # Return minimal anketa with what we have
-            return self._build_fallback_anketa(
+        except json.JSONDecodeError as e:
+            logger.error("JSON parsing failed after repair attempts", error=str(e), response_preview=response[:500] if response else "empty")
+            anketa = self._build_fallback_anketa(
                 dialogue_history,
                 business_analysis,
                 proposed_solution,
                 duration_seconds
             )
+            # Still try to generate expert content for fallback anketa
+            anketa = await self._generate_expert_content(anketa)
+            return anketa
+        except Exception as e:
+            import traceback
+            logger.error(
+                "Anketa extraction failed",
+                error=str(e),
+                error_type=type(e).__name__,
+                traceback=traceback.format_exc()
+            )
+            # Return minimal anketa with what we have
+            anketa = self._build_fallback_anketa(
+                dialogue_history,
+                business_analysis,
+                proposed_solution,
+                duration_seconds
+            )
+            # Still try to generate expert content for fallback anketa
+            anketa = await self._generate_expert_content(anketa)
+            return anketa
 
     def _build_extraction_prompt(
         self,
@@ -215,25 +312,78 @@ class AnketaExtractor:
                 results.append(str(o))
         return str(results)
 
-    def _parse_json_response(self, response: str) -> Dict[str, Any]:
-        """Parse JSON from LLM response."""
-        json_text = response.strip()
-
-        # Remove markdown code blocks
-        if "```json" in json_text:
-            json_text = json_text.split("```json")[1].split("```")[0]
-        elif "```" in json_text:
-            parts = json_text.split("```")
+    def _extract_json_from_markdown(self, text: str) -> str:
+        """Extract JSON content from markdown code blocks."""
+        if "```json" in text:
+            return text.split("```json")[1].split("```")[0]
+        if "```" in text:
+            parts = text.split("```")
             if len(parts) >= 2:
-                json_text = parts[1]
+                return parts[1]
+        return text
 
-        # Find JSON object
-        json_text = json_text.strip()
+    def _fix_common_json_errors(self, text: str) -> str:
+        """Fix common JSON syntax errors."""
+        import re
+        # Fix trailing commas before ] or }
+        fixed = re.sub(r',\s*([}\]])', r'\1', text)
+        return fixed
+
+    def _find_balanced_json(self, text: str) -> str:
+        """Find the first balanced JSON object in text."""
+        brace_count = 0
+        for i, char in enumerate(text):
+            if char == '{':
+                brace_count += 1
+            elif char == '}':
+                brace_count -= 1
+                if brace_count == 0:
+                    return text[:i + 1]
+        return text
+
+    def _parse_json_with_repair(self, response: str) -> Tuple[Dict[str, Any], bool]:
+        """
+        Parse JSON with v3.1 robust repair mechanism.
+
+        Uses JSONRepair class for multiple repair strategies.
+
+        Returns:
+            Tuple of (parsed_data, was_repaired)
+        """
+        return JSONRepair.parse(response, max_retries=self.max_json_retries)
+
+    def _parse_json_response(self, response: str) -> Dict[str, Any]:
+        """Parse JSON from LLM response with robust error handling (legacy method)."""
+        json_text = self._extract_json_from_markdown(response.strip())
+
+        # Find JSON object boundaries
         start = json_text.find('{')
         end = json_text.rfind('}')
         if start != -1 and end != -1:
             json_text = json_text[start:end + 1]
 
+        # Try direct parse
+        try:
+            return json.loads(json_text)
+        except json.JSONDecodeError:
+            pass
+
+        # Try with fixes
+        fixed_json = self._fix_common_json_errors(json_text)
+        try:
+            return json.loads(fixed_json)
+        except json.JSONDecodeError:
+            pass
+
+        # Try partial extraction
+        partial = self._find_balanced_json(json_text)
+        partial = self._fix_common_json_errors(partial)
+        try:
+            return json.loads(partial)
+        except json.JSONDecodeError:
+            pass
+
+        # Last resort: raise original error
         return json.loads(json_text)
 
     def _build_anketa(self, data: Dict[str, Any], duration_seconds: float) -> FinalAnketa:
@@ -320,47 +470,736 @@ class AnketaExtractor:
             consultation_duration_seconds=duration_seconds
         )
 
+    def _extract_string_list(self, items: List, key: str = 'description') -> List[str]:
+        """Extract string list from mixed list of dicts/strings."""
+        result = []
+        for item in items:
+            if isinstance(item, str) and item:
+                result.append(item)
+            elif isinstance(item, dict):
+                value = item.get(key, item.get('name', item.get('type', '')))
+                if value:
+                    result.append(str(value))
+        return result
+
+    def _extract_functions_list(self, items: List, default_priority: str = 'medium') -> List[AgentFunction]:
+        """Extract AgentFunction list from dict list."""
+        result = []
+        for func in items:
+            if isinstance(func, dict):
+                result.append(AgentFunction(
+                    name=func.get('name', ''),
+                    description=func.get('description', ''),
+                    priority=func.get('priority', default_priority)
+                ))
+        return result
+
+    def _extract_integrations_list(self, items: List) -> List[Integration]:
+        """Extract Integration list from dict list."""
+        result = []
+        for intg in items:
+            if isinstance(intg, dict):
+                # ProposedIntegration uses 'reason', Integration uses 'purpose'
+                purpose = intg.get('purpose', '') or intg.get('reason', '') or intg.get('details', '')
+                # Also check 'needed' (ProposedIntegration) vs 'required' (Integration)
+                required = intg.get('required', intg.get('needed', True))
+                result.append(Integration(
+                    name=intg.get('name', ''),
+                    purpose=purpose,
+                    required=required if isinstance(required, bool) else True
+                ))
+        return result
+
+    def _extract_from_analysis(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract all relevant fields from business_analysis."""
+        # Basic company info
+        company_name = analysis.get('company_name', '')
+        industry = analysis.get('industry', '')
+        specialization = analysis.get('specialization', '')
+
+        # Extract pain points and opportunities
+        current_problems = self._extract_string_list(analysis.get('pain_points', []))
+        business_goals = self._extract_string_list(analysis.get('opportunities', []))
+        constraints = self._extract_string_list(analysis.get('constraints', []))
+
+        # Extract client type (may be single string or list)
+        client_type = analysis.get('client_type', '')
+        client_types = self._extract_string_list(analysis.get('client_types', []), key='name')
+        if client_type and client_type not in ['unknown', '']:
+            client_types = [client_type] if not client_types else client_types
+
+        # Services
+        services = self._extract_string_list(analysis.get('services', []), key='name')
+
+        # Generate business_description from available data
+        business_description = ""
+        if specialization:
+            business_description = specialization
+        elif industry:
+            business_description = f"Компания в сфере {industry}"
+
+        # Add industry insights to constraints if valuable
+        industry_insights = analysis.get('industry_insights', [])
+        if industry_insights and not constraints:
+            constraints = industry_insights[:3]
+
+        return {
+            'company_name': company_name,
+            'industry': industry,
+            'specialization': specialization,
+            'business_description': business_description,
+            'current_problems': current_problems,
+            'business_goals': business_goals,
+            'constraints': constraints,
+            'client_types': client_types,
+            'services': services,
+        }
+
+    def _extract_from_solution(self, solution: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract all relevant fields from proposed_solution."""
+        main_func_data = solution.get('main_function', {})
+        main_function = None
+        agent_purpose = ""
+
+        if main_func_data and isinstance(main_func_data, dict):
+            main_function = AgentFunction(
+                name=main_func_data.get('name', ''),
+                description=main_func_data.get('description', ''),
+                priority='high'
+            )
+            agent_purpose = main_func_data.get('description', '')
+
+        # Get agent name - generate if not provided
+        agent_name = solution.get('agent_name', '')
+        if not agent_name and main_function:
+            # Generate a generic name based on function
+            agent_name = "Виртуальный ассистент"
+
+        # Extract integrations with proper purpose
+        integrations = self._extract_integrations_list(solution.get('integrations', []))
+
+        # Extract additional functions
+        additional_functions = self._extract_functions_list(solution.get('additional_functions', []))
+
+        # Build unified agent_functions list (main + additional)
+        agent_functions = []
+        if main_function:
+            agent_functions.append(main_function)
+        agent_functions.extend(additional_functions)
+
+        # Extract expected_results for additional context
+        expected_results = solution.get('expected_results', '')
+
+        # Typical questions from FAQ or generate from context
+        typical_questions = solution.get('typical_questions', [])
+
+        return {
+            'main_function': main_function,
+            'additional_functions': additional_functions,
+            'agent_functions': agent_functions,
+            'agent_name': agent_name,
+            'agent_purpose': solution.get('agent_purpose', agent_purpose),
+            'integrations': integrations,
+            'typical_questions': typical_questions,
+            'expected_results': expected_results,
+        }
+
+    def _generate_typical_questions(
+        self,
+        industry: str,
+        specialization: str,
+        main_function: Optional[AgentFunction],
+        client_types: List[str]
+    ) -> List[str]:
+        """Generate typical FAQ questions based on business context."""
+        questions = []
+
+        # Industry-specific questions
+        industry_lower = industry.lower() if industry else ""
+        spec_lower = specialization.lower() if specialization else ""
+
+        # Common questions for all businesses
+        if main_function:
+            func_name = main_function.name.lower()
+            if "квалификац" in func_name or "лид" in func_name:
+                questions.extend([
+                    "Какие условия сотрудничества?",
+                    "Какой бюджет нужен для начала?",
+                    "Какие документы потребуются?"
+                ])
+            elif "запис" in func_name or "бронирован" in func_name:
+                questions.extend([
+                    "Как записаться на приём?",
+                    "Какие есть свободные окна?",
+                    "Можно ли перенести запись?"
+                ])
+            elif "поддержк" in func_name or "консультац" in func_name:
+                questions.extend([
+                    "Как связаться с менеджером?",
+                    "Какой график работы?",
+                    "Где находится ваш офис?"
+                ])
+
+        # Industry-specific questions
+        if "wellness" in industry_lower or "массаж" in spec_lower or "здоров" in industry_lower:
+            questions.extend([
+                "Сколько длится сеанс?",
+                "Какие виды массажа вы предлагаете?",
+                "Есть ли противопоказания?"
+            ])
+        elif "франчайз" in spec_lower or "франшиз" in spec_lower:
+            questions.extend([
+                "Какой размер паушального взноса?",
+                "Какие требования к локации?",
+                "Какая окупаемость проекта?"
+            ])
+        elif "b2b" in " ".join(client_types).lower():
+            questions.extend([
+                "Работаете ли вы с юрлицами?",
+                "Предоставляете ли закрывающие документы?",
+                "Какие условия для оптовых заказов?"
+            ])
+
+        # Deduplicate and limit
+        seen = set()
+        unique_questions = []
+        for q in questions:
+            if q not in seen:
+                seen.add(q)
+                unique_questions.append(q)
+
+        return unique_questions[:5]  # Max 5 questions
+
+    def _generate_services_from_context(
+        self,
+        specialization: str,
+        industry: str,
+        business_description: str
+    ) -> List[str]:
+        """Generate services list from business context when not explicitly provided."""
+        services = []
+
+        spec_lower = specialization.lower() if specialization else ""
+        industry_lower = industry.lower() if industry else ""
+        desc_lower = business_description.lower() if business_description else ""
+
+        combined = f"{spec_lower} {industry_lower} {desc_lower}"
+
+        # Extract services based on keywords
+        if "массаж" in combined:
+            services.append("Экспресс-массаж (15 минут)")
+        if "франчайз" in combined or "франшиз" in combined:
+            services.append("Продажа франшизы")
+            services.append("Обучение и поддержка франчайзи")
+        if "консультац" in combined:
+            services.append("Консультационные услуги")
+        if "wellness" in combined or "здоров" in combined:
+            services.append("Wellness-услуги")
+        if "бронирован" in combined or "запис" in combined:
+            services.append("Онлайн-бронирование")
+
+        # If we found something specific, return it; otherwise generate generic
+        if not services:
+            if industry:
+                services.append(f"Основные услуги в сфере {industry}")
+            if specialization and specialization not in str(services):
+                services.append(specialization)
+
+        return services
+
+    def _extract_voice_settings_from_constraints(self, constraints: List[str]) -> Dict[str, str]:
+        """Extract voice settings from constraints text."""
+        voice_gender = "female"  # default
+        voice_tone = "professional"  # default
+
+        constraints_text = " ".join(constraints).lower()
+
+        # Check for gender preferences
+        if "мужск" in constraints_text or "male" in constraints_text:
+            voice_gender = "male"
+        elif "женск" in constraints_text or "female" in constraints_text:
+            voice_gender = "female"
+
+        # Check for tone preferences
+        if "дружелюбн" in constraints_text or "friendly" in constraints_text:
+            voice_tone = "friendly"
+        elif "спокойн" in constraints_text or "calm" in constraints_text:
+            voice_tone = "calm"
+        elif "уверенн" in constraints_text or "confident" in constraints_text:
+            voice_tone = "confident, professional"
+        elif "делов" in constraints_text or "professional" in constraints_text:
+            voice_tone = "professional"
+
+        return {"voice_gender": voice_gender, "voice_tone": voice_tone}
+
     def _build_fallback_anketa(
         self,
-        dialogue: List[Dict[str, str]],
+        _dialogue: List[Dict[str, str]],  # Reserved for future dialogue-based extraction
         analysis: Optional[Dict[str, Any]],
         solution: Optional[Dict[str, Any]],
         duration_seconds: float
     ) -> FinalAnketa:
-        """Build minimal anketa from available data when LLM extraction fails."""
+        """Build comprehensive anketa from available data when LLM extraction fails."""
+        logger.info("Building fallback anketa from available data")
 
-        company_name = ""
-        industry = ""
+        # Extract from business_analysis
+        analysis_data = self._extract_from_analysis(analysis) if analysis else {}
 
-        if analysis:
-            company_name = analysis.get('company_name', '')
-            industry = analysis.get('industry', '')
+        # Extract from proposed_solution
+        solution_data = self._extract_from_solution(solution) if solution else {}
 
-        main_function = None
-        additional_functions = []
+        # Extract voice settings from constraints
+        voice_settings = self._extract_voice_settings_from_constraints(
+            analysis_data.get('constraints', [])
+        )
 
-        if solution:
-            main_func_data = solution.get('main_function', {})
-            if main_func_data:
-                main_function = AgentFunction(
-                    name=main_func_data.get('name', ''),
-                    description=main_func_data.get('description', ''),
-                    priority='high'
-                )
+        # Determine call_direction from context
+        call_direction = self._determine_call_direction(
+            analysis_data.get('constraints', []),
+            analysis_data.get('business_goals', [])
+        )
 
-            for func in solution.get('additional_functions', []):
-                if isinstance(func, dict):
-                    additional_functions.append(AgentFunction(
-                        name=func.get('name', ''),
-                        description=func.get('description', ''),
-                        priority='medium'
-                    ))
+        # Generate agent name if empty
+        agent_name = solution_data.get('agent_name', '')
+        if not agent_name:
+            company = analysis_data.get('company_name', '')
+            agent_name = f"Ассистент {company}" if company else "Виртуальный ассистент"
+
+        # Generate business description if empty
+        business_description = analysis_data.get('business_description', '')
+        if not business_description:
+            spec = analysis_data.get('specialization', '')
+            industry = analysis_data.get('industry', '')
+            if spec:
+                business_description = spec
+            elif industry:
+                business_description = f"Компания в сфере {industry}"
+
+        # Generate services if empty
+        services = analysis_data.get('services', [])
+        if not services:
+            services = self._generate_services_from_context(
+                analysis_data.get('specialization', ''),
+                analysis_data.get('industry', ''),
+                business_description
+            )
+
+        # Generate typical questions if empty
+        typical_questions = solution_data.get('typical_questions', [])
+        if not typical_questions:
+            typical_questions = self._generate_typical_questions(
+                analysis_data.get('industry', ''),
+                analysis_data.get('specialization', ''),
+                solution_data.get('main_function'),
+                analysis_data.get('client_types', [])
+            )
+
+        logger.info(
+            "Fallback anketa built",
+            company=analysis_data.get('company_name', ''),
+            problems_count=len(analysis_data.get('current_problems', [])),
+            goals_count=len(analysis_data.get('business_goals', [])),
+            functions_count=len(solution_data.get('agent_functions', []))
+        )
 
         return FinalAnketa(
-            company_name=company_name,
-            industry=industry,
-            main_function=main_function,
-            additional_functions=additional_functions,
+            # Company info
+            company_name=analysis_data.get('company_name', ''),
+            industry=analysis_data.get('industry', ''),
+            specialization=analysis_data.get('specialization', ''),
+
+            # Business context
+            business_description=business_description,
+            services=services,
+            client_types=analysis_data.get('client_types', []),
+            current_problems=analysis_data.get('current_problems', []),
+            business_goals=analysis_data.get('business_goals', []),
+            constraints=analysis_data.get('constraints', []),
+
+            # Agent config
+            agent_name=agent_name,
+            agent_purpose=solution_data.get('agent_purpose', ''),
+            agent_functions=solution_data.get('agent_functions', []),
+            typical_questions=typical_questions,
+
+            # Voice parameters
+            voice_gender=voice_settings['voice_gender'],
+            voice_tone=voice_settings['voice_tone'],
+            language="ru",
+            call_direction=call_direction,
+
+            # Proposed solution
+            main_function=solution_data.get('main_function'),
+            additional_functions=solution_data.get('additional_functions', []),
+
+            # Integrations
+            integrations=solution_data.get('integrations', []),
+
+            # Metadata
             created_at=datetime.now(),
             consultation_duration_seconds=duration_seconds
         )
+
+    def _determine_call_direction(self, constraints: List[str], business_goals: List[str]) -> str:
+        """Determine call direction from context."""
+        constraints_text = " ".join(constraints).lower()
+        goals_text = " ".join(business_goals).lower()
+
+        if "исходящ" in constraints_text or "outbound" in constraints_text:
+            return "outbound"
+        if "входящ" in goals_text or "inbound" in goals_text:
+            return "inbound"
+        return "inbound"  # default
+
+    # =========================================================================
+    # V2.0: AI EXPERT CONTENT GENERATION
+    # =========================================================================
+
+    async def _generate_expert_content(self, anketa: FinalAnketa) -> FinalAnketa:
+        """
+        Generate AI expert content for v2.0 blocks.
+
+        This transforms a basic anketa into a comprehensive expert consultation
+        deliverable with FAQ answers, objection handling, financial model, etc.
+        """
+        logger.info("Generating expert content for anketa v2.0",
+                   company=anketa.company_name, industry=anketa.industry)
+
+        # Build context for AI generation
+        context = self._build_expert_context(anketa)
+
+        # Generate all expert blocks in a single LLM call for efficiency
+        prompt = self._build_expert_generation_prompt(context)
+
+        system_prompt = """Ты — эксперт-консультант по голосовым агентам.
+
+КРИТИЧЕСКИ ВАЖНО ДЛЯ JSON:
+- НЕ используй комментарии в JSON
+- Все строки в двойных кавычках
+- После последнего элемента массива НЕТ запятой
+- null пишется без кавычек
+- true/false пишутся без кавычек
+- Проверь все запятые перед ] и }
+
+Генерируй контент на русском языке.
+Возвращай ТОЛЬКО валидный JSON без markdown-блоков."""
+
+        try:
+            response = await self.llm.chat(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=8000
+            )
+
+            expert_data = self._parse_json_response(response)
+            anketa = self._merge_expert_content(anketa, expert_data)
+
+            logger.info("Expert content generated successfully",
+                       faq_count=len(anketa.faq_items),
+                       objections_count=len(anketa.objection_handlers),
+                       kpis_count=len(anketa.success_kpis))
+
+        except Exception as e:
+            logger.warning("Expert content generation failed, using fallback",
+                          error=str(e))
+            anketa = self._generate_fallback_expert_content(anketa)
+
+        return anketa
+
+    def _build_expert_context(self, anketa: FinalAnketa) -> Dict[str, Any]:
+        """Build context dict for expert content generation."""
+        return {
+            "company_name": anketa.company_name,
+            "industry": anketa.industry,
+            "specialization": anketa.specialization,
+            "business_description": anketa.business_description,
+            "services": anketa.services,
+            "client_types": anketa.client_types,
+            "current_problems": anketa.current_problems,
+            "business_goals": anketa.business_goals,
+            "agent_name": anketa.agent_name,
+            "agent_purpose": anketa.agent_purpose,
+            "main_function": anketa.main_function.model_dump() if anketa.main_function else None,
+            "additional_functions": [f.model_dump() for f in anketa.additional_functions],
+            "integrations": [i.model_dump() for i in anketa.integrations],
+            "call_direction": anketa.call_direction,
+        }
+
+    def _build_expert_generation_prompt(self, context: Dict[str, Any]) -> str:
+        """Build comprehensive prompt for expert content generation."""
+        company = context.get('company_name', 'компания')
+        industry = context.get('industry', 'бизнес')
+        purpose = context.get('agent_purpose', 'консультирование клиентов')
+
+        return f"""Компания: {company}
+Отрасль: {industry}
+Назначение агента: {purpose}
+
+Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{industry}".
+
+{{"faq_items":[{{"question":"вопрос","answer":"ответ 2-3 предложения","category":"pricing"}}],
+"objection_handlers":[{{"objection":"возражение","response":"ответ","follow_up":"действие"}}],
+"sample_dialogue":[{{"role":"bot","message":"текст","intent":"greeting"}}],
+"financial_metrics":[{{"name":"метрика","value":"значение","source":"ai_benchmark","note":null}}],
+"competitors":[{{"name":"конкурент","strengths":["сила"],"weaknesses":["слабость"],"price_range":null}}],
+"market_insights":[{{"insight":"инсайт","source":"ai_analysis","relevance":"high"}}],
+"escalation_rules":[{{"trigger":"триггер","urgency":"immediate","action":"действие"}}],
+"success_kpis":[{{"name":"KPI","target":"цель","benchmark":null,"measurement":"как измерять"}}],
+"launch_checklist":[{{"item":"пункт","required":true,"responsible":"client"}}],
+"ai_recommendations":[{{"recommendation":"рекомендация","impact":"эффект","priority":"high","effort":"low"}}],
+"target_segments":[{{"name":"сегмент","description":"описание","pain_points":["боль"],"triggers":["триггер"]}}],
+"tone_of_voice":{{"do":"что делать","dont":"чего не делать"}},
+"error_handling_scripts":{{"not_understood":"не понял","technical_issue":"проблема","out_of_scope":"вне компетенции"}},
+"follow_up_sequence":["шаг 1","шаг 2"],
+"competitive_advantages":["преимущество"]}}
+
+ТРЕБОВАНИЯ:
+- faq_items: 6-8 вопросов релевантных для {industry}
+- objection_handlers: 4-5 возражений
+- sample_dialogue: 8-10 реплик (чередуй bot/client)
+- success_kpis: 4-5 KPI
+- ai_recommendations: 4-5 рекомендаций
+
+Верни ТОЛЬКО JSON:"""
+
+    def _merge_expert_content(self, anketa: FinalAnketa, data: Dict[str, Any]) -> FinalAnketa:
+        """Merge AI-generated expert content into anketa."""
+
+        # FAQ Items
+        faq_items = []
+        for item in data.get('faq_items', []):
+            if isinstance(item, dict):
+                faq_items.append(FAQItem(
+                    question=item.get('question', ''),
+                    answer=item.get('answer', ''),
+                    category=item.get('category', 'general')
+                ))
+        anketa.faq_items = faq_items
+
+        # Objection Handlers
+        objection_handlers = []
+        for item in data.get('objection_handlers', []):
+            if isinstance(item, dict):
+                objection_handlers.append(ObjectionHandler(
+                    objection=item.get('objection', ''),
+                    response=item.get('response', ''),
+                    follow_up=item.get('follow_up')
+                ))
+        anketa.objection_handlers = objection_handlers
+
+        # Sample Dialogue
+        sample_dialogue = []
+        for item in data.get('sample_dialogue', []):
+            if isinstance(item, dict):
+                sample_dialogue.append(DialogueExample(
+                    role=item.get('role', 'bot'),
+                    message=item.get('message', ''),
+                    intent=item.get('intent')
+                ))
+        anketa.sample_dialogue = sample_dialogue
+
+        # Financial Metrics
+        financial_metrics = []
+        for item in data.get('financial_metrics', []):
+            if isinstance(item, dict):
+                financial_metrics.append(FinancialMetric(
+                    name=item.get('name', ''),
+                    value=item.get('value', ''),
+                    source=item.get('source', 'ai_benchmark'),
+                    note=item.get('note')
+                ))
+        anketa.financial_metrics = financial_metrics
+
+        # Competitors
+        competitors = []
+        for item in data.get('competitors', []):
+            if isinstance(item, dict):
+                competitors.append(Competitor(
+                    name=item.get('name', ''),
+                    strengths=item.get('strengths', []),
+                    weaknesses=item.get('weaknesses', []),
+                    price_range=item.get('price_range')
+                ))
+        anketa.competitors = competitors
+
+        # Market Insights
+        market_insights = []
+        for item in data.get('market_insights', []):
+            if isinstance(item, dict):
+                market_insights.append(MarketInsight(
+                    insight=item.get('insight', ''),
+                    source=item.get('source', 'ai_analysis'),
+                    relevance=item.get('relevance', 'medium')
+                ))
+        anketa.market_insights = market_insights
+
+        # Escalation Rules
+        escalation_rules = []
+        for item in data.get('escalation_rules', []):
+            if isinstance(item, dict):
+                escalation_rules.append(EscalationRule(
+                    trigger=item.get('trigger', ''),
+                    urgency=item.get('urgency', 'medium'),
+                    action=item.get('action', '')
+                ))
+        anketa.escalation_rules = escalation_rules
+
+        # Success KPIs
+        success_kpis = []
+        for item in data.get('success_kpis', []):
+            if isinstance(item, dict):
+                success_kpis.append(KPIMetric(
+                    name=item.get('name', ''),
+                    target=item.get('target', ''),
+                    benchmark=item.get('benchmark'),
+                    measurement=item.get('measurement')
+                ))
+        anketa.success_kpis = success_kpis
+
+        # Launch Checklist
+        launch_checklist = []
+        for item in data.get('launch_checklist', []):
+            if isinstance(item, dict):
+                launch_checklist.append(ChecklistItem(
+                    item=item.get('item', ''),
+                    required=item.get('required', True),
+                    responsible=item.get('responsible', 'client')
+                ))
+        anketa.launch_checklist = launch_checklist
+
+        # AI Recommendations
+        ai_recommendations = []
+        for item in data.get('ai_recommendations', []):
+            if isinstance(item, dict):
+                ai_recommendations.append(AIRecommendation(
+                    recommendation=item.get('recommendation', ''),
+                    impact=item.get('impact', ''),
+                    priority=item.get('priority', 'medium'),
+                    effort=item.get('effort', 'medium')
+                ))
+        anketa.ai_recommendations = ai_recommendations
+
+        # Target Segments
+        target_segments = []
+        for item in data.get('target_segments', []):
+            if isinstance(item, dict):
+                target_segments.append(TargetAudienceSegment(
+                    name=item.get('name', ''),
+                    description=item.get('description', ''),
+                    pain_points=item.get('pain_points', []),
+                    triggers=item.get('triggers', [])
+                ))
+        anketa.target_segments = target_segments
+
+        # Simple dicts
+        anketa.tone_of_voice = data.get('tone_of_voice', {})
+        anketa.error_handling_scripts = data.get('error_handling_scripts', {})
+        anketa.follow_up_sequence = data.get('follow_up_sequence', [])
+        anketa.competitive_advantages = data.get('competitive_advantages', [])
+
+        # Update version
+        anketa.anketa_version = "2.0"
+
+        return anketa
+
+    def _generate_fallback_expert_content(self, anketa: FinalAnketa) -> FinalAnketa:
+        """Generate basic expert content when LLM fails."""
+        logger.info("Generating fallback expert content")
+
+        # Basic FAQ based on agent purpose
+        faq_items = [
+            FAQItem(
+                question="Какие услуги вы предоставляете?",
+                answer=f"Мы предлагаем {', '.join(anketa.services[:3]) if anketa.services else 'широкий спектр услуг'}.",
+                category="general"
+            ),
+            FAQItem(
+                question="Как с вами связаться?",
+                answer="Вы можете позвонить нам или оставить заявку на сайте. Мы свяжемся с вами в ближайшее время.",
+                category="support"
+            ),
+            FAQItem(
+                question="Какова стоимость услуг?",
+                answer="Стоимость зависит от ваших потребностей. Могу рассчитать предварительную стоимость или соединить с менеджером.",
+                category="pricing"
+            ),
+        ]
+        anketa.faq_items = faq_items
+
+        # Basic objection handlers
+        anketa.objection_handlers = [
+            ObjectionHandler(
+                objection="Слишком дорого",
+                response="Понимаю вашу озабоченность. Давайте обсудим, какой вариант будет оптимален для вашего бюджета.",
+                follow_up="Предложить альтернативные варианты"
+            ),
+            ObjectionHandler(
+                objection="Нужно подумать",
+                response="Конечно, это важное решение. Могу отправить вам детальную информацию на email?",
+                follow_up="Запросить email и отправить материалы"
+            ),
+        ]
+
+        # Basic escalation rules
+        anketa.escalation_rules = [
+            EscalationRule(
+                trigger="Клиент просит соединить с руководством",
+                urgency="immediate",
+                action="Перевести на менеджера"
+            ),
+            EscalationRule(
+                trigger="Клиент выражает сильное недовольство",
+                urgency="immediate",
+                action="Извиниться и перевести на специалиста"
+            ),
+        ]
+
+        # Basic KPIs
+        anketa.success_kpis = [
+            KPIMetric(name="Конверсия в целевое действие", target=">15%", measurement="Отношение целевых действий к звонкам"),
+            KPIMetric(name="Удовлетворённость клиентов", target=">4.0/5", measurement="Средняя оценка после разговора"),
+            KPIMetric(name="Среднее время разговора", target="<5 мин", measurement="Время от начала до конца диалога"),
+        ]
+
+        # Basic launch checklist
+        anketa.launch_checklist = [
+            ChecklistItem(item="Утвердить скрипты и сценарии", required=True, responsible="both"),
+            ChecklistItem(item="Настроить интеграции с CRM", required=True, responsible="team"),
+            ChecklistItem(item="Предоставить актуальный прайс", required=True, responsible="client"),
+            ChecklistItem(item="Провести тестовые звонки", required=True, responsible="both"),
+        ]
+
+        # Basic recommendations
+        anketa.ai_recommendations = [
+            AIRecommendation(
+                recommendation="Регулярно обновлять базу знаний агента",
+                impact="Повышение точности ответов на 20-30%",
+                priority="high",
+                effort="low"
+            ),
+            AIRecommendation(
+                recommendation="Настроить автоматическую отправку резюме разговора",
+                impact="Улучшение конверсии и прозрачности",
+                priority="medium",
+                effort="low"
+            ),
+        ]
+
+        # Basic tone of voice
+        anketa.tone_of_voice = {
+            "do": "Быть вежливым, профессиональным, готовым помочь",
+            "dont": "Не давить на клиента, не торопить, не использовать сленг"
+        }
+
+        # Basic error handling
+        anketa.error_handling_scripts = {
+            "not_understood": "Извините, я не совсем понял. Могли бы вы уточнить?",
+            "technical_issue": "Произошла техническая проблема. Сейчас соединю с оператором.",
+            "out_of_scope": "Этот вопрос лучше обсудить с нашим специалистом."
+        }
+
+        anketa.anketa_version = "2.0"
+        return anketa

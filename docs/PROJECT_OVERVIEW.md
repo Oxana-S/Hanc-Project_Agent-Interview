@@ -1,16 +1,22 @@
 # Voice Interviewer Agent - Полное описание проекта
 
+**Версия: 3.0.0**
+**Дата: 2026-02-03**
+
+---
+
 ## Что создано
 
-Система агента-интервьюера для сбора требований к голосовым ассистентам.
+Система AI-консультанта для сбора требований к голосовым агентам.
+Включает два независимых агента для автоматизированного тестирования и ревью документов.
 
 ### Ключевые возможности
 
-- **Maximum Interview Mode** — единый режим с тремя фазами (Discovery → Structured → Synthesis)
-- **Активный анализ** — DeepSeek LLM анализирует каждый ответ
-- **Уточняющие вопросы** — до 3 уточнений при неполных ответах
-- **Два паттерна**: INTERACTION (клиенты) и MANAGEMENT (сотрудники)
-- **Хранение контекста** — Redis (сессии) + PostgreSQL (анкеты)
+- **ConsultantInterviewer** — 4-фазная консультация (Discovery → Analysis → Proposal → Refinement)
+- **FinalAnketa v2.0** — расширенная анкета с 18 секциями и AI-генерируемым контентом
+- **agent_client_simulator** — автоматизированное тестирование через LLM-симуляцию клиента
+- **agent_document_reviewer** — интерактивное ревью документов во внешнем редакторе
+- **Integrated Pipeline** — связка Test → Review для полного цикла тестирования
 - **Rich CLI** — визуализация прогресса в реальном времени
 
 ---
@@ -22,48 +28,81 @@ voice_interviewer/
 │
 ├── src/                              # Исходный код
 │   ├── __init__.py                   # Экспорты пакета
-│   ├── models.py                     # Модели данных (Pydantic)
+│   ├── models.py                     # Базовые модели (InterviewPattern, etc.)
 │   │
-│   ├── interview/                    # Логика интервью
+│   ├── consultant/                   # ConsultantInterviewer (главный модуль)
 │   │   ├── __init__.py
-│   │   ├── maximum.py                # MaximumInterviewer (главный класс)
-│   │   ├── phases.py                 # InterviewPhase, FieldStatus, CollectedInfo
+│   │   ├── interviewer.py            # ConsultantInterviewer (4-фазная консультация)
+│   │   ├── phases.py                 # ConsultantPhase, CollectedData
+│   │   └── prompts.py                # Промпты для LLM
+│   │
+│   ├── anketa/                       # FinalAnketa v2.0
+│   │   ├── __init__.py
+│   │   ├── schema.py                 # FinalAnketa, AgentFunction, Integration
+│   │   ├── extractor.py              # AnketaExtractor (LLM → структура)
+│   │   ├── generator.py              # AnketaGenerator (структура → Markdown/JSON)
+│   │   ├── markdown_parser.py        # AnketaMarkdownParser (Markdown → структура)
+│   │   └── review_service.py         # AnketaReviewService
+│   │
+│   ├── agent_client_simulator/            # Агент автоматизированного тестирования
+│   │   ├── __init__.py
+│   │   ├── client.py                 # SimulatedClient (LLM-симулятор клиента)
+│   │   ├── runner.py                 # ConsultationTester (оркестратор)
+│   │   ├── reporter.py               # TestReporter (отчёты)
+│   │   └── validator.py              # TestValidator (6 проверок)
+│   │
+│   ├── agent_document_reviewer/      # Агент ревью документов
+│   │   ├── __init__.py
+│   │   ├── models.py                 # ReviewConfig, ReviewResult, ReviewStatus
+│   │   ├── reviewer.py               # DocumentReviewer
+│   │   ├── editor.py                 # ExternalEditor
+│   │   ├── parser.py                 # DocumentParser
+│   │   ├── history.py                # VersionHistory
+│   │   └── validators.py             # Валидаторы
+│   │
+│   ├── interview/                    # Устаревший модуль (Maximum режим)
+│   │   ├── maximum.py                # MaximumInterviewer
 │   │   └── questions/                # Вопросы по паттернам
-│   │       ├── __init__.py
-│   │       ├── interaction.py        # 40 вопросов для клиентов
-│   │       └── management.py         # 38 вопросов для сотрудников
 │   │
 │   ├── storage/                      # Хранение данных
-│   │   ├── __init__.py
 │   │   ├── redis.py                  # RedisStorageManager
 │   │   └── postgres.py               # PostgreSQLStorageManager
 │   │
 │   ├── llm/                          # LLM клиенты
-│   │   ├── __init__.py
 │   │   ├── deepseek.py               # DeepSeekClient
-│   │   └── anketa_generator.py       # Генерация полной анкеты
+│   │   └── anketa_generator.py       # LLM генерация анкеты
 │   │
 │   └── cli/                          # CLI интерфейсы
-│       ├── __init__.py
 │       ├── interface.py              # Базовый CLI
 │       └── maximum.py                # CLI для Maximum режима
 │
 ├── scripts/                          # Точки входа
-│   ├── demo.py                       # Главный скрипт запуска
+│   ├── demo.py                       # Запуск ConsultantInterviewer
+│   ├── run_test.py                   # Запуск тестовой симуляции
+│   ├── run_pipeline.py               # Интегрированный pipeline
 │   └── healthcheck.py                # Проверка системы
 │
-├── docs/                             # Документация
-│   ├── QUICKSTART.md
-│   ├── PROJECT_OVERVIEW.md           # Этот файл
-│   ├── START_HERE.md
-│   └── example_anketa.md
+├── tests/                            # Тесты
+│   ├── scenarios/                    # YAML сценарии для симуляции
+│   │   ├── vitalbox.yaml
+│   │   └── _template.yaml
+│   └── ...
 │
-├── config/                           # Конфигурация
+├── docs/                             # Документация
+│   ├── PROJECT_OVERVIEW.md           # Этот файл
+│   ├── AGENT_WORKFLOWS.md            # Схемы агентов и pipeline
+│   ├── QUICKSTART.md
+│   ├── TESTING.md
+│   └── plans/                        # Архитектурные планы
+│
+├── output/                           # Результаты
+│   ├── anketas/                      # Сгенерированные анкеты
+│   ├── tests/                        # Результаты тестов
+│   └── final/                        # Финальные (после ревью)
+│
+├── config/
 │   ├── docker-compose.yml
 │   └── init_db.sql
-│
-├── tests/                            # Тесты (123 теста)
-├── output/                           # Результаты интервью
 │
 ├── .env.example
 ├── requirements.txt
@@ -72,157 +111,171 @@ voice_interviewer/
 
 ---
 
-## Maximum Interview Mode
+## ConsultantInterviewer: 4-фазная консультация
 
-### Три фазы
+### Workflow
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                 MAXIMUM INTERVIEW MODE                   │
-│                                                         │
-│   DISCOVERY ──────► STRUCTURED ──────► SYNTHESIS        │
-│       │                 │                  │            │
-│       ▼                 ▼                  ▼            │
-│   Свободный        Целенаправ-        Генерация        │
-│   диалог           ленный сбор        анкеты           │
-│   о бизнесе        данных             через LLM        │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    CONSULTANT INTERVIEWER                        │
+│                                                                  │
+│   DISCOVERY ──▶ ANALYSIS ──▶ PROPOSAL ──▶ REFINEMENT            │
+│       │            │            │             │                 │
+│       ▼            ▼            ▼             ▼                 │
+│   Свободный    Анализ       Предло-       Уточнение            │
+│   диалог       бизнеса      жение         деталей              │
+│   о бизнесе    и болей      решения       и FAQ                │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### Discovery Phase (Открытие)
+### Фаза 1: Discovery (Открытие)
 
-- Консультативный диалог без жёсткой структуры
-- Клиент рассказывает о бизнесе в свободной форме
-- AI извлекает информацию из контекста
-- Минимум 5, максимум 15 ходов (настраивается)
+- Консультативный диалог о бизнесе
+- LLM извлекает информацию из контекста
+- Определяет pain points и цели клиента
+- 5-15 ходов диалога
 
-### Structured Phase (Структурированный сбор)
+### Фаза 2: Analysis (Анализ)
 
-- Целенаправленные вопросы по недостающим полям
-- Приоритизация: REQUIRED → IMPORTANT → OPTIONAL
-- До 3 уточнений на вопрос
-- Автоматический переход при заполнении 80%+ полей
+- Формирование BusinessAnalysis
+- Выявление болевых точек и возможностей
+- Определение рекомендуемых функций агента
+- Показ результатов клиенту для подтверждения
 
-### Synthesis Phase (Синтез)
+### Фаза 3: Proposal (Предложение)
 
-- Генерация полной анкеты через DeepSeek
-- Заполнение недостающих полей из контекста
-- Экспорт в JSON и Markdown
-- Сохранение в PostgreSQL
+- Формирование ProposedSolution
+- Главная функция + дополнительные
+- Интеграции и архитектура
+- Клиент выбирает или корректирует
+
+### Фаза 4: Refinement (Уточнение)
+
+- Сбор недостающих данных для анкеты
+- Генерация экспертного контента (FAQ, возражения, KPI)
+- Финализация FinalAnketa v2.0
 
 ---
 
-## Паттерны интервью
+## FinalAnketa v2.0: 18 секций
 
-### INTERACTION (Клиенты компании)
+### Структура анкеты
 
-Для агентов, работающих с внешними клиентами.
+| # | Секция | Описание |
+|---|--------|----------|
+| 1 | Информация о компании | company_name, industry, website, services |
+| 2 | Голосовой агент | agent_name, agent_purpose, communication_style |
+| 3 | Основная функция | main_function (AgentFunction) |
+| 4 | Дополнительные функции | additional_functions[] |
+| 5 | Интеграции | integrations[] (Integration) |
+| 6 | Целевая аудитория | target_audience |
+| 7 | Типичные вопросы | typical_questions[] |
+| 8 | FAQ для агента | faq_entries[] (AI-generated) |
+| 9 | Работа с возражениями | objection_handlers[] (AI-generated) |
+| 10 | Примеры диалогов | sample_dialogues[] (AI-generated) |
+| 11 | KPI и метрики | success_kpis[] (AI-generated) |
+| 12 | Ограничения | limitations[] |
+| 13 | Эскалация | escalation_rules |
+| 14 | Часы работы | working_hours |
+| 15 | Языки | languages[] |
+| 16 | Текущие проблемы | current_problems[] |
+| 17 | Ожидания от агента | expectations |
+| 18 | Метаданные | created_at, version, duration |
 
-**Разделы анкеты:**
+### AI-генерируемые секции
 
-1. **Базовая информация** (5 вопросов)
-   - Название компании
-   - Отрасль
-   - Язык агента
-   - Основная задача агента
+Секции 8-11 генерируются LLM на основе контекста:
 
-2. **Клиенты и услуги** (15 вопросов)
-   - Тип бизнеса
-   - Направление звонков
-   - Услуги и продукты
-   - Ценообразование
-   - Типы клиентов
-
-3. **Интеграции** (12 вопросов)
-   - Email, календарь, SMS, WhatsApp
-   - Переадресация звонков
-
-4. **Дополнительно** (8 вопросов)
-   - Примеры диалогов
-   - Ограничения
-
-**Итого: 40 вопросов**
-
-### MANAGEMENT (Сотрудники компании)
-
-Для внутренних агентов.
-
-**Разделы анкеты:**
-
-1. **Базовая информация** (4 вопроса)
-2. **Структура и функции** (14 вопросов)
-3. **Интеграции** (12 вопросов)
-4. **Дополнительно** (8 вопросов)
-
-**Итого: 38 вопросов**
+- **FAQ** — типичные вопросы и ответы
+- **Objection Handlers** — сценарии работы с возражениями
+- **Sample Dialogues** — примеры диалогов агента
+- **KPIs** — метрики успеха с целевыми значениями
 
 ---
 
-## Анализ ответов через DeepSeek
+## Агенты
 
-Каждый ответ анализируется LLM:
+### agent_client_simulator — Автоматизированное тестирование
 
+```
+YAML Scenario → SimulatedClient → ConsultationTester → TestValidator → Report
+```
+
+**Компоненты:**
+- `SimulatedClient` — LLM-симулятор клиента по персоне из YAML
+- `ConsultationTester` — оркестратор тестов, патчит Rich.Prompt
+- `TestValidator` — 6 проверок (completeness, quality, scenario match, phases, loops, metrics)
+- `TestReporter` — Console, JSON, Markdown отчёты
+
+**Запуск:**
+```bash
+python scripts/run_test.py vitalbox
+python scripts/run_test.py --list
+```
+
+### agent_document_reviewer — Ревью документов
+
+```
+Content → DocumentReviewer → External Editor → Validate → Result
+```
+
+**Компоненты:**
+- `DocumentReviewer` — главный класс workflow
+- `ExternalEditor` — интеграция с VS Code/Sublime/nano
+- `DocumentParser` — prepare/extract инструкции
+- `VersionHistory` — история версий
+- `Validators` — валидация анкет
+
+**Использование:**
 ```python
-{
-    "completeness_score": 0.75,        # Полнота (0-1)
-    "needs_clarification": True,       # Нужно уточнение?
-    "extracted_fields": {              # Извлечённые данные
-        "company_name": "TechSolutions",
-        "industry": "IT"
-    },
-    "clarification_questions": [       # Уточняющие вопросы
-        "Какие конкретно услуги вы предлагаете?",
-        "Каков ценовой диапазон?"
-    ]
-}
+from src.agent_document_reviewer import review_anketa
+
+result = review_anketa(markdown_content, strict=True)
+if result.changed:
+    save(result.content)
 ```
-
-### Когда задаются уточнения
-
-1. **Короткий ответ** (< 15 слов для важных вопросов)
-2. **Нет конкретных примеров**
-3. **Противоречия** с предыдущими ответами
-4. **Неясные термины**
-5. **Пропущены обязательные детали**
-
-**Максимум уточнений:** 3 на вопрос
 
 ---
 
-## Хранение данных
+## Интегрированный Pipeline
 
-### Redis (Текущие сессии)
+```bash
+python scripts/run_pipeline.py vitalbox
+```
 
-- **Назначение:** Быстрый доступ к активным интервью
-- **TTL:** 2 часа (настраивается)
-- **Ключ:** `interview:session:{session_id}`
-- **Данные:** Полный контекст интервью
+**Workflow:**
 
-### PostgreSQL (Долгосрочное хранение)
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    INTEGRATED PIPELINE                           │
+│                                                                  │
+│  YAML ──▶ agent_client_simulator ──▶ FinalAnketa ──▶ agent_document_reviewer
+│                                                                  │
+│  Stage 1: Автоматическое тестирование                           │
+│  Stage 2: Ревью в редакторе (опционально)                       │
+│  Output: Проверенная анкета в output/final/                     │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-**Таблица `anketas`:**
-
-- Заполненные анкеты
-- Полные ответы клиентов
-- Метрики качества
-
-**Таблица `interview_sessions`:**
-
-- История всех интервью
-- Статистика и метрики
+**Опции:**
+- `--auto-approve` — без ревью
+- `--skip-review` — пропустить ревью
+- `--output-dir` — директория для результатов
 
 ---
 
 ## Технологии
 
-- **Python 3.9+**
-- **DeepSeek API** — анализ и генерация
-- **Redis** — кэш сессий
-- **PostgreSQL** — долгосрочное хранение
-- **Pydantic** — валидация данных
-- **Rich** — CLI интерфейс
-- **structlog** — логирование
-- **Docker** — контейнеризация
+| Компонент | Технология |
+|-----------|------------|
+| Runtime | Python 3.9+ |
+| LLM | DeepSeek API (deepseek-chat) |
+| Validation | Pydantic v2 |
+| CLI | Rich |
+| Caching | Redis |
+| Storage | PostgreSQL |
+| Logging | structlog |
+| Testing | pytest |
 
 ---
 
@@ -238,42 +291,55 @@ pip install -r requirements.txt
 cp .env.example .env
 # Заполните DEEPSEEK_API_KEY
 
-# 3. Инфраструктура
-docker-compose -f config/docker-compose.yml up -d
+# 3. Запуск консультации
+python scripts/demo.py
 
-# 4. Запуск
-python3 scripts/demo.py
+# 4. Запуск тестирования
+python scripts/run_test.py vitalbox
+
+# 5. Полный pipeline
+python scripts/run_pipeline.py vitalbox
 ```
 
 ---
 
 ## Метрики успеха
 
-1. **Полнота анкеты:** 100% обязательных полей
-2. **Качество ответов:** 80%+ с конкретными примерами
-3. **Глубина уточнений:** 1-2 на важный блок
-4. **Время интервью:** 15-30 минут
+| Метрика | Цель |
+|---------|------|
+| Полнота анкеты | 100% обязательных полей |
+| Качество данных | Нет диалоговых маркеров в значениях |
+| Соответствие сценарию | Company/Industry совпадают |
+| Все фазы | 4/4 (Discovery → Refinement) |
+| Без зацикливания | < 5 повторных сообщений |
+| Время | < 600 сек, < 50 ходов |
 
 ---
 
-## Дальнейшее развитие
+## Roadmap
 
-### Готово
+### Готово (v3.0)
 
-- [x] Maximum Interview Mode (Discovery + Structured + Synthesis)
-- [x] DeepSeek интеграция
-- [x] Rich CLI интерфейс
-- [x] Redis + PostgreSQL хранение
-- [x] 123 юнит-теста
+- [x] ConsultantInterviewer (4-фазная консультация)
+- [x] FinalAnketa v2.0 (18 секций)
+- [x] AI-генерируемый контент (FAQ, возражения, диалоги, KPI)
+- [x] agent_client_simulator (автоматизированное тестирование)
+- [x] agent_document_reviewer (ревью в редакторе)
+- [x] Integrated Pipeline (Test → Review)
 
-### Roadmap
+### Планируется
 
 - [ ] WebSocket API для web интерфейса
 - [ ] Экспорт анкет в PDF/DOCX
 - [ ] Multi-язычная поддержка
 - [ ] Голосовой интерфейс (Azure OpenAI Realtime)
+- [ ] Dashboard для мониторинга тестов
 
 ---
 
-*Версия: 2.0.0*
-*Дата: 2026-02-02*
+## Документация
+
+- [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md) — этот файл
+- [AGENT_WORKFLOWS.md](AGENT_WORKFLOWS.md) — схемы агентов
+- [QUICKSTART.md](QUICKSTART.md) — быстрый старт
+- [TESTING.md](TESTING.md) — руководство по тестированию

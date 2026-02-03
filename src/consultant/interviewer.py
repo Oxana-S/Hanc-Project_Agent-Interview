@@ -2,11 +2,14 @@
 Consultant Interviewer.
 
 Главный класс AI-консультанта с 4 фазами.
+
+v3.1: Added ConsultationConfig for time optimization.
 """
 
 import asyncio
 import json
 import uuid
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -32,6 +35,103 @@ from src.config.locale_loader import t
 console = Console()
 
 
+# ============================================================================
+# CONSULTATION CONFIG
+# ============================================================================
+
+@dataclass
+class ConsultationConfig:
+    """
+    Configuration for consultation speed/depth tradeoff.
+
+    Profiles:
+    - FAST: Quick consultation, minimal turns (~5-10 min)
+    - STANDARD: Balanced approach (~10-15 min)
+    - THOROUGH: Deep consultation, more turns (~15-25 min)
+    """
+
+    # Discovery phase
+    discovery_min_turns: int = 5
+    discovery_max_turns: int = 15
+
+    # Analysis phase
+    analysis_max_turns: int = 5
+
+    # Proposal phase
+    proposal_max_turns: int = 5
+
+    # Refinement phase
+    refinement_max_turns: int = 10
+
+    # Global limits
+    total_max_turns: int = 50
+    timeout_seconds: int = 600
+
+    # LLM settings
+    temperature: float = 0.7
+    max_response_tokens: int = 2048
+
+    # Extraction settings
+    use_smart_extraction: bool = True
+    strict_cleaning: bool = True
+
+    @classmethod
+    def fast(cls) -> "ConsultationConfig":
+        """Fast profile - minimal turns, quick completion."""
+        return cls(
+            discovery_min_turns=3,
+            discovery_max_turns=8,
+            analysis_max_turns=3,
+            proposal_max_turns=3,
+            refinement_max_turns=5,
+            total_max_turns=25,
+            timeout_seconds=300,
+            temperature=0.5,
+            max_response_tokens=1500,
+        )
+
+    @classmethod
+    def standard(cls) -> "ConsultationConfig":
+        """Standard profile - balanced approach."""
+        return cls(
+            discovery_min_turns=5,
+            discovery_max_turns=15,
+            analysis_max_turns=5,
+            proposal_max_turns=5,
+            refinement_max_turns=10,
+            total_max_turns=50,
+            timeout_seconds=600,
+            temperature=0.7,
+            max_response_tokens=2048,
+        )
+
+    @classmethod
+    def thorough(cls) -> "ConsultationConfig":
+        """Thorough profile - deep consultation."""
+        return cls(
+            discovery_min_turns=8,
+            discovery_max_turns=20,
+            analysis_max_turns=8,
+            proposal_max_turns=8,
+            refinement_max_turns=15,
+            total_max_turns=80,
+            timeout_seconds=900,
+            temperature=0.8,
+            max_response_tokens=3000,
+        )
+
+    @classmethod
+    def from_name(cls, name: str) -> "ConsultationConfig":
+        """Get config by profile name."""
+        profiles = {
+            'fast': cls.fast,
+            'standard': cls.standard,
+            'thorough': cls.thorough,
+        }
+        factory = profiles.get(name.lower(), cls.standard)
+        return factory()
+
+
 class ConsultantInterviewer:
     """
     AI-Консультант с 4 фазами.
@@ -49,7 +149,9 @@ class ConsultantInterviewer:
         pattern: InterviewPattern = InterviewPattern.INTERACTION,
         deepseek_client: Optional[DeepSeekClient] = None,
         research_engine: Optional[Any] = None,  # ResearchEngine
-        locale: str = "ru"
+        locale: str = "ru",
+        config: Optional[ConsultationConfig] = None,
+        config_profile: str = "standard"
     ):
         """
         Инициализация консультанта.
@@ -59,16 +161,22 @@ class ConsultantInterviewer:
             deepseek_client: Клиент DeepSeek API
             research_engine: Research Engine (опционально)
             locale: Локаль для UI текстов
+            config: Конфигурация консультации (переопределяет profile)
+            config_profile: Профиль конфигурации ('fast', 'standard', 'thorough')
         """
         self.pattern = pattern
         self.deepseek = deepseek_client or DeepSeekClient()
         self.research_engine = research_engine
         self.locale = locale
 
+        # v3.1: Use ConsultationConfig for all settings
+        self.config = config or ConsultationConfig.from_name(config_profile)
+
         # Состояние
         self.session_id = str(uuid.uuid4())
         self.phase = ConsultantPhase.DISCOVERY
         self.start_time = datetime.now(timezone.utc)
+        self.total_turns = 0
 
         # Собранные данные
         self.collected = CollectedInfo()
@@ -78,9 +186,9 @@ class ConsultantInterviewer:
         self.business_analysis: Optional[BusinessAnalysis] = None
         self.proposed_solution: Optional[ProposedSolution] = None
 
-        # Настройки
-        self.discovery_min_turns = 5
-        self.discovery_max_turns = 15
+        # Настройки (backward compatibility)
+        self.discovery_min_turns = self.config.discovery_min_turns
+        self.discovery_max_turns = self.config.discovery_max_turns
 
     # ===== MAIN RUN =====
 
@@ -576,6 +684,7 @@ class ConsultantInterviewer:
 
         from src.anketa.extractor import AnketaExtractor
         from src.anketa.generator import AnketaGenerator
+        from src.anketa.review_service import AnketaReviewService
 
         # Вычисляем длительность консультации
         duration_seconds = (datetime.now(timezone.utc) - self.start_time).total_seconds()
@@ -589,6 +698,19 @@ class ConsultantInterviewer:
                 proposed_solution=self.proposed_solution,
                 duration_seconds=duration_seconds
             )
+
+            # === REVIEW STEP ===
+            # Даём пользователю возможность проверить и отредактировать анкету
+            review_service = AnketaReviewService()
+            reviewed_anketa = review_service.finalize(anketa)
+
+            if reviewed_anketa is None:
+                # Пользователь отменил — не сохраняем
+                console.print("\n[yellow]Анкета не сохранена[/yellow]")
+                return {"status": "cancelled", "collected": self.collected.to_anketa_dict()}
+
+            anketa = reviewed_anketa
+            # === END REVIEW STEP ===
 
             # Генерируем файлы
             console.print("[dim]Генерирую документы...[/dim]")
