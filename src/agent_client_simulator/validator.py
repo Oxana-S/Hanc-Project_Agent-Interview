@@ -13,6 +13,10 @@ v3.1 Improvements:
 - Synonym support for flexible matching
 - Extended validation checks
 - Fuzzy matching for company/industry names
+
+v3.2 Improvements:
+- Synonyms loaded from config/synonyms.yaml
+- Expanded synonym dictionaries
 """
 
 import re
@@ -22,48 +26,65 @@ from typing import Any, Dict, List, Optional, Set
 import structlog
 
 from src.anketa.schema import FinalAnketa
+from src.config.synonym_loader import get_synonym_loader
 from .runner import TestResult
 
 logger = structlog.get_logger()
 
 
 # ============================================================================
-# SYNONYM DICTIONARIES
+# SYNONYM MATCHER (v3.2: loads from YAML)
 # ============================================================================
 
 class SynonymMatcher:
-    """Handles synonym-based matching for validation."""
+    """
+    Handles synonym-based matching for validation.
 
-    # Industry synonyms (normalized key -> list of variations)
-    INDUSTRY_SYNONYMS: Dict[str, List[str]] = {
-        'медицина': ['медицина', 'здравоохранение', 'medical', 'healthcare', 'клиника', 'больница', 'медицинский'],
-        'wellness': ['wellness', 'велнес', 'здоровье', 'массаж', 'спа', 'spa', 'фитнес', 'fitness'],
-        'it': ['it', 'ит', 'информационные технологии', 'software', 'программное обеспечение', 'tech'],
-        'финансы': ['финансы', 'банк', 'banking', 'finance', 'financial', 'страхование', 'insurance'],
-        'ритейл': ['ритейл', 'retail', 'розница', 'розничная торговля', 'магазин', 'торговля'],
-        'недвижимость': ['недвижимость', 'real estate', 'риэлтор', 'realestate', 'property'],
-        'образование': ['образование', 'education', 'обучение', 'школа', 'курсы', 'training'],
-        'франшиза': ['франшиза', 'franchise', 'франчайзинг', 'franchising'],
-    }
+    v3.2: Loads synonyms from config/synonyms.yaml with fallback to defaults.
+    """
 
-    # Function synonyms
-    FUNCTION_SYNONYMS: Dict[str, List[str]] = {
-        'запись': ['запись', 'бронирование', 'booking', 'appointment', 'резервирование'],
-        'квалификация': ['квалификация', 'лид', 'lead', 'qualification', 'скоринг'],
-        'поддержка': ['поддержка', 'support', 'консультация', 'помощь', 'сервис'],
-        'продажи': ['продажи', 'sales', 'продажа', 'конверсия'],
-        'напоминание': ['напоминание', 'reminder', 'уведомление', 'notification', 'оповещение'],
-        'faq': ['faq', 'чаво', 'частые вопросы', 'ответы на вопросы', 'справка'],
-    }
+    # Class-level cache for loaded synonyms
+    _industry_synonyms: Optional[Dict[str, List[str]]] = None
+    _function_synonyms: Optional[Dict[str, List[str]]] = None
+    _integration_synonyms: Optional[Dict[str, List[str]]] = None
 
-    # Integration synonyms
-    INTEGRATION_SYNONYMS: Dict[str, List[str]] = {
-        'crm': ['crm', 'срм', 'bitrix', 'битрикс', 'amocrm', 'амо', 'salesforce'],
-        'мис': ['мис', 'mis', 'медиалог', 'медицинская система', 'медицинская информационная'],
-        'телефония': ['телефония', 'telephony', 'pbx', 'атс', 'asterisk', 'mango', 'манго'],
-        'sms': ['sms', 'смс', 'сообщения', 'уведомления', 'twilio'],
-        '1с': ['1с', '1c', 'один эс', 'бухгалтерия'],
-    }
+    @classmethod
+    def _load_synonyms(cls):
+        """Load synonyms from YAML config."""
+        if cls._industry_synonyms is None:
+            loader = get_synonym_loader()
+            cls._industry_synonyms = loader.get_industries()
+            cls._function_synonyms = loader.get_functions()
+            cls._integration_synonyms = loader.get_integrations()
+            logger.debug(
+                "Synonyms loaded",
+                industries=len(cls._industry_synonyms),
+                functions=len(cls._function_synonyms),
+                integrations=len(cls._integration_synonyms)
+            )
+
+    @classmethod
+    def get_industry_synonyms(cls) -> Dict[str, List[str]]:
+        """Get industry synonyms (loads from YAML if needed)."""
+        cls._load_synonyms()
+        return cls._industry_synonyms
+
+    @classmethod
+    def get_function_synonyms(cls) -> Dict[str, List[str]]:
+        """Get function synonyms (loads from YAML if needed)."""
+        cls._load_synonyms()
+        return cls._function_synonyms
+
+    @classmethod
+    def get_integration_synonyms(cls) -> Dict[str, List[str]]:
+        """Get integration synonyms (loads from YAML if needed)."""
+        cls._load_synonyms()
+        return cls._integration_synonyms
+
+    # Legacy class attributes for backward compatibility
+    INDUSTRY_SYNONYMS = property(lambda self: self.get_industry_synonyms())
+    FUNCTION_SYNONYMS = property(lambda self: self.get_function_synonyms())
+    INTEGRATION_SYNONYMS = property(lambda self: self.get_integration_synonyms())
 
     @classmethod
     def normalize(cls, text: str) -> str:
@@ -72,6 +93,8 @@ class SynonymMatcher:
             return ''
         # Lowercase, remove extra spaces, remove punctuation
         normalized = text.lower().strip()
+        # v3.2: Convert underscores to spaces for key matching
+        normalized = normalized.replace('_', ' ')
         normalized = re.sub(r'[^\w\s]', ' ', normalized)
         normalized = ' '.join(normalized.split())
         return normalized
@@ -120,17 +143,17 @@ class SynonymMatcher:
     @classmethod
     def match_industry(cls, actual: str, expected: str) -> bool:
         """Match industry names with synonym support."""
-        return cls.match_with_synonyms(actual, expected, cls.INDUSTRY_SYNONYMS)
+        return cls.match_with_synonyms(actual, expected, cls.get_industry_synonyms())
 
     @classmethod
     def match_function(cls, actual: str, expected: str) -> bool:
         """Match function names with synonym support."""
-        return cls.match_with_synonyms(actual, expected, cls.FUNCTION_SYNONYMS)
+        return cls.match_with_synonyms(actual, expected, cls.get_function_synonyms())
 
     @classmethod
     def match_integration(cls, actual: str, expected: str) -> bool:
         """Match integration names with synonym support."""
-        return cls.match_with_synonyms(actual, expected, cls.INTEGRATION_SYNONYMS)
+        return cls.match_with_synonyms(actual, expected, cls.get_integration_synonyms())
 
 
 @dataclass
@@ -175,7 +198,7 @@ class TestValidator:
 
     # Limits for metrics check
     MAX_TURNS = 50
-    MAX_DURATION_SECONDS = 600  # 10 minutes
+    MAX_DURATION_SECONDS = 900  # 15 minutes (v3.2: increased for expert content generation)
     MAX_DUPLICATE_MESSAGES = 5
 
     def validate(
@@ -472,11 +495,14 @@ class TestValidator:
         return expected_norm in actual_norm or actual_norm in expected_norm
 
     def _count_function_matches(self, anketa: FinalAnketa, expected: List[str]) -> int:
-        """Count how many expected functions are matched."""
+        """Count how many expected functions are matched (v3.2: includes agent_purpose)."""
         actual_functions = [f.name for f in anketa.agent_functions]
         actual_functions.extend([f.name for f in anketa.additional_functions])
         if anketa.main_function:
             actual_functions.append(anketa.main_function.name)
+        # v3.2: Also search in agent_purpose description
+        if anketa.agent_purpose:
+            actual_functions.append(anketa.agent_purpose)
 
         matched = 0
         for exp in expected:

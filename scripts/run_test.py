@@ -22,9 +22,9 @@ from dotenv import load_dotenv
 from rich.console import Console
 from rich.panel import Panel
 
-from tests.simulation.client import SimulatedClient
-from tests.simulation.runner import ConsultationTester, run_test_scenario
-from tests.simulation.reporter import TestReporter
+from src.agent_client_simulator.client import SimulatedClient
+from src.agent_client_simulator.runner import ConsultationTester, run_test_scenario
+from src.agent_client_simulator.reporter import TestReporter
 
 load_dotenv()
 console = Console()

@@ -259,6 +259,26 @@ class DialogueCleaner:
             "Transitional phrase",
             "low"
         ),
+        # v3.2: Long conversational responses (shouldn't be in data fields)
+        DialoguePattern(
+            re.compile(r'^(Благодарю|Спасибо|Верно|Именно|Совершенно|Абсолютно)[,!.\s]', re.IGNORECASE),
+            "Conversational response",
+            "medium"
+        ),
+        # v3.2: Phrases indicating full dialogue capture
+        DialoguePattern(
+            re.compile(r'(вы полностью|вы точно|как вы описали|как вы сказали|всё верно)', re.IGNORECASE),
+            "Dialogue confirmation",
+            "high"
+        ),
+    ]
+
+    # v3.2: Patterns that indicate entire value is dialogue (for strict fields)
+    FULL_DIALOGUE_INDICATORS = [
+        re.compile(r'^(Да|Нет|Конечно|Хорошо|Отлично|Понятно|Благодарю|Спасибо|Верно)[,!.\s]', re.IGNORECASE),
+        re.compile(r'(уловили суть|всё верно|именно так|правильно понял|точно подметили)', re.IGNORECASE),
+        re.compile(r'\?$'),  # Ends with question mark
+        re.compile(r'.{200,}'),  # Too long for identifier fields
     ]
 
     # Fields that should never contain dialogue
@@ -336,6 +356,18 @@ class DialogueCleaner:
         # Determine strictness based on field type
         is_strict_field = field_name in self.STRICT_FIELDS
         min_severity = "low" if (self.strict_mode or is_strict_field) else "high"
+
+        # v3.2: For strict fields, check if entire value is dialogue (should be rejected)
+        if is_strict_field:
+            for indicator in self.FULL_DIALOGUE_INDICATORS:
+                if indicator.search(cleaned):
+                    changes.append(f"{field_name}: rejected full dialogue value")
+                    logger.debug(
+                        "Rejected dialogue value for strict field",
+                        field=field_name,
+                        value_preview=cleaned[:50]
+                    )
+                    return "", changes
 
         severity_order = {"high": 0, "medium": 1, "low": 2}
 
