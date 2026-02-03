@@ -571,30 +571,50 @@ class ConsultantInterviewer:
             for i, field in enumerate(fields_to_ask, 1):
                 await self._ask_refinement_question(field, i, len(fields_to_ask))
 
-        # Генерация финальной анкеты
-        console.print("\n[dim]Генерирую финальную анкету...[/dim]")
+        # Генерация финальной анкеты через новый модуль
+        console.print("\n[dim]Извлекаю структурированные данные...[/dim]")
 
-        from src.llm.anketa_generator import export_full_anketa
+        from src.anketa.extractor import AnketaExtractor
+        from src.anketa.generator import AnketaGenerator
 
-        interview_data = self._create_completed_anketa()
+        # Вычисляем длительность консультации
+        duration_seconds = (datetime.now(timezone.utc) - self.start_time).total_seconds()
 
         try:
-            result = await export_full_anketa(interview_data)
-        except Exception as e:
-            console.print(f"[red]Ошибка генерации: {e}[/red]")
-            return {"status": "error", "error": str(e)}
+            # Извлекаем данные через LLM
+            extractor = AnketaExtractor(self.deepseek)
+            anketa = await extractor.extract(
+                dialogue_history=self.dialogue_history,
+                business_analysis=self.business_analysis,
+                proposed_solution=self.proposed_solution,
+                duration_seconds=duration_seconds
+            )
 
-        # Показываем результаты
-        self._show_completion(result)
+            # Генерируем файлы
+            console.print("[dim]Генерирую документы...[/dim]")
+            generator = AnketaGenerator(output_dir="output/anketas")
+            md_path = generator.to_markdown(anketa)
+            json_path = generator.to_json(anketa)
+
+            console.print("\n[green]Анкета сохранена:[/green]")
+            console.print(f"  Markdown: {md_path}")
+            console.print(f"  JSON: {json_path}")
+
+            # Показываем краткую сводку
+            self._show_anketa_summary(anketa)
+
+        except Exception as e:
+            console.print(f"[red]Ошибка генерации анкеты: {e}[/red]")
+            return {"status": "error", "error": str(e)}
 
         self._transition_phase(ConsultantPhase.COMPLETED)
 
         return {
             "status": "completed",
-            "anketa": result.get('anketa'),
+            "anketa": anketa.model_dump(),
             "files": {
-                "json": result.get('json'),
-                "markdown": result.get('markdown')
+                "json": str(json_path),
+                "markdown": str(md_path)
             },
             "stats": self._get_session_stats()
         }
@@ -718,6 +738,31 @@ class ConsultantInterviewer:
         console.print(f"\n[bold]Файлы:[/bold]")
         console.print(f"  JSON: [cyan]{result.get('json', 'N/A')}[/cyan]")
         console.print(f"  Markdown: [cyan]{result.get('markdown', 'N/A')}[/cyan]")
+
+    def _show_anketa_summary(self, anketa):
+        """Показать краткую сводку анкеты."""
+        from src.anketa.schema import FinalAnketa
+
+        console.print("\n" + "=" * 50)
+        console.print("[bold green]КОНСУЛЬТАЦИЯ ЗАВЕРШЕНА![/bold green]")
+        console.print("=" * 50)
+
+        duration = anketa.consultation_duration_seconds
+        console.print(f"\n[bold]Статистика:[/bold]")
+        console.print(f"  Длительность: {duration/60:.1f} мин")
+        console.print(f"  Сообщений: {len(self.dialogue_history)}")
+        console.print(f"  Заполненность: {anketa.completion_rate():.0f}%")
+
+        console.print(f"\n[bold]Компания:[/bold] {anketa.company_name}")
+        console.print(f"[bold]Отрасль:[/bold] {anketa.industry}")
+
+        if anketa.agent_name:
+            console.print(f"[bold]Агент:[/bold] {anketa.agent_name}")
+        if anketa.main_function:
+            console.print(f"[bold]Основная функция:[/bold] {anketa.main_function.name}")
+
+        if anketa.integrations:
+            console.print(f"[bold]Интеграции:[/bold] {', '.join(i.name for i in anketa.integrations)}")
 
     def _get_session_stats(self) -> Dict[str, Any]:
         """Статистика сессии."""

@@ -19,6 +19,9 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from src.models import InterviewPattern
 from src.consultant.interviewer import ConsultantInterviewer
 from src.consultant.phases import ConsultantPhase
+from src.anketa.extractor import AnketaExtractor
+from src.anketa.generator import AnketaGenerator
+from src.anketa.schema import FinalAnketa
 from tests.simulation.client import SimulatedClient
 
 
@@ -36,10 +39,17 @@ class TestResult:
     phases_completed: List[str] = field(default_factory=list)
     current_phase: str = ""
 
-    # Collected data
+    # Collected data (raw from interviewer)
     anketa: Dict[str, Any] = field(default_factory=dict)
     business_analysis: Optional[Dict[str, Any]] = None
     proposed_solution: Optional[Dict[str, Any]] = None
+
+    # Final extracted anketa
+    final_anketa: Optional[Dict[str, Any]] = None
+    anketa_files: Dict[str, str] = field(default_factory=dict)
+
+    # Validation results
+    validation: Optional[Dict[str, Any]] = None
 
     # Dialogue
     dialogue_history: List[Dict[str, str]] = field(default_factory=list)
@@ -57,6 +67,9 @@ class TestResult:
             "phases_completed": self.phases_completed,
             "current_phase": self.current_phase,
             "anketa": self.anketa,
+            "final_anketa": self.final_anketa,
+            "anketa_files": self.anketa_files,
+            "validation": self.validation,
             "business_analysis": self.business_analysis,
             "proposed_solution": self.proposed_solution,
             "turn_count": self.turn_count,
@@ -144,7 +157,71 @@ class ConsultationTester:
 
         duration = (datetime.now() - start_time).total_seconds()
 
-        # Build result
+        # Extract final anketa
+        final_anketa = None
+        anketa_files = {}
+        validation_result = None
+
+        if self.interviewer and status == "completed":
+            try:
+                if self.verbose:
+                    console.print("\n[dim]Извлекаю структурированную анкету...[/dim]")
+
+                # Extract anketa using LLM
+                extractor = AnketaExtractor()
+                final_anketa_obj = await extractor.extract(
+                    dialogue_history=self.interviewer.dialogue_history,
+                    business_analysis=self.interviewer.business_analysis,
+                    proposed_solution=self.interviewer.proposed_solution,
+                    duration_seconds=duration
+                )
+
+                # Generate files
+                generator = AnketaGenerator(output_dir="output/tests")
+                md_path = generator.to_markdown(final_anketa_obj)
+                json_path = generator.to_json(final_anketa_obj)
+
+                final_anketa = final_anketa_obj.model_dump()
+                anketa_files = {
+                    "markdown": str(md_path),
+                    "json": str(json_path)
+                }
+
+                if self.verbose:
+                    console.print(f"[green]Анкета сохранена:[/green] {md_path}")
+
+                # Validate results
+                from tests.simulation.validator import TestValidator
+
+                # Build preliminary test result for validation
+                prelim_result = TestResult(
+                    scenario_name=scenario_name,
+                    status=status,
+                    duration_seconds=duration,
+                    phases_completed=phases_completed,
+                    current_phase=str(self.current_phase.value) if self.current_phase else "",
+                    dialogue_history=self.interviewer.dialogue_history,
+                    turn_count=self.turn_count,
+                    errors=errors,
+                )
+
+                validator = TestValidator()
+                validation = validator.validate(
+                    result=prelim_result,
+                    scenario={"persona": self.client.persona.__dict__},
+                    anketa=final_anketa_obj
+                )
+                validation_result = validation.to_dict()
+
+                if self.verbose:
+                    self._show_validation(validation)
+
+            except Exception as e:
+                errors.append(f"Anketa extraction failed: {e}")
+                if self.verbose:
+                    console.print(f"[red]Ошибка извлечения анкеты: {e}[/red]")
+
+        # Build final result
         test_result = TestResult(
             scenario_name=scenario_name,
             status=status,
@@ -152,6 +229,9 @@ class ConsultationTester:
             phases_completed=phases_completed,
             current_phase=str(self.current_phase.value) if self.current_phase else "",
             anketa=self.interviewer.collected.to_anketa_dict() if self.interviewer else {},
+            final_anketa=final_anketa,
+            anketa_files=anketa_files,
+            validation=validation_result,
             business_analysis=self.interviewer.business_analysis.model_dump() if self.interviewer and self.interviewer.business_analysis else None,
             proposed_solution=self.interviewer.proposed_solution.model_dump() if self.interviewer and self.interviewer.proposed_solution else None,
             dialogue_history=self.interviewer.dialogue_history if self.interviewer else [],
@@ -163,6 +243,21 @@ class ConsultationTester:
             self._show_summary(test_result)
 
         return test_result
+
+    def _show_validation(self, validation):
+        """Show validation results."""
+        status_icon = "[green]✓[/green]" if validation.passed else "[red]✗[/red]"
+        console.print(f"\n{status_icon} Валидация: {validation.score:.0f}%")
+
+        if validation.errors:
+            console.print("[red]Ошибки:[/red]")
+            for err in validation.errors:
+                console.print(f"  - {err}")
+
+        if validation.warnings:
+            console.print("[yellow]Предупреждения:[/yellow]")
+            for warn in validation.warnings:
+                console.print(f"  - {warn}")
 
     def _mock_prompt_ask(self, prompt_text: str, **kwargs) -> str:
         """
