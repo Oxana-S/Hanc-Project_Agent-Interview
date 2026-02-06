@@ -1,53 +1,428 @@
 # Workflow Агентов
 
-Документ описывает архитектуру и workflow двух независимых агентов проекта.
-
----
+Документ описывает workflow всех агентов и режимов системы.
 
 ## Содержание
 
-1. [agent_client_simulator — Агент Тестирования](#1-agent_client_simulator--агент-тестирования)
-2. [agent_document_reviewer — Агент Ревью Документов](#2-agent_document_reviewer--агент-ревью-документов)
-3. [Интегрированный Pipeline: Test → Review](#3-интегрированный-pipeline-test--review)
-4. [Примеры Использования](#4-примеры-использования)
+1. [Голосовой агент — VoiceConsultant](#1-голосовой-агент--voiceconsultant)
+2. [Текстовый CLI — ConsultantInterviewer](#2-текстовый-cli--consultantinterviewer)
+3. [Maximum Interview — MaximumInterviewer](#3-maximum-interview--maximuminterviewer)
+4. [agent_client_simulator — Агент Тестирования](#4-agent_client_simulator--агент-тестирования)
+5. [agent_document_reviewer — Агент Ревью Документов](#5-agent_document_reviewer--агент-ревью-документов)
+6. [Интегрированный Pipeline: Test → Review](#6-интегрированный-pipeline-test--review)
 
 ---
 
-## 1. agent_client_simulator — Агент Тестирования
+## 1. Голосовой агент — VoiceConsultant
 
 ### 1.1 Назначение
 
-Автоматическое тестирование ConsultantInterviewer через симуляцию клиента.
+Голосовая консультация через браузер: клиент говорит, AI-агент отвечает голосом, анкета заполняется в реальном времени на экране.
 
 ### 1.2 Компоненты
 
+```text
+src/voice/
+├── consultant.py           # VoiceConsultationSession, entrypoint, finalize
+└── livekit_client.py       # LiveKitClient (генерация токенов)
+
+src/web/
+└── server.py               # FastAPI (9 эндпоинтов)
+
+public/
+└── index.html              # Фронтенд + LiveKit JS SDK
 ```
+
+### 1.3 Workflow схема
+
+```text
+┌──────────────────────────────────────────────────────────────────────┐
+│                        VOICE CONSULTANT                              │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  КЛИЕНТ (браузер)                    СЕРВЕР + АГЕНТ                 │
+│                                                                      │
+│  1. Открывает /                      FastAPI отдаёт index.html      │
+│                                                                      │
+│  2. Нажимает "Начать"                                               │
+│     │                                                                │
+│     └─► POST /api/session/create                                    │
+│              │                                                       │
+│              ├─► SessionManager.create_session() → SQLite           │
+│              ├─► LiveKitClient.create_token()                       │
+│              └─► LiveKitAPI.create_room(agent_dispatch)             │
+│                       │                                              │
+│                       └─► LiveKit запускает Voice Agent             │
+│                                                                      │
+│  3. WebRTC аудио ◄──────────► LiveKit ◄──────► Azure Realtime      │
+│     Клиент говорит               │              (STT → LLM → TTS)  │
+│     Агент отвечает               │                                  │
+│                                  │                                  │
+│  4. При каждом сообщении:        │                                  │
+│     │                            ▼                                  │
+│     │                   consultation.add_message()                  │
+│     │                   _sync_to_db() → SQLite                     │
+│     │                   Каждые 6 сообщений:                        │
+│     │                     _extract_and_update_anketa()              │
+│     │                       ├─► AnketaExtractor.extract()           │
+│     │                       └─► SessionManager.update_anketa()      │
+│     │                                                                │
+│     └─► GET /api/session/{id}/anketa (polling ~2 сек)              │
+│              └─► Анкета обновляется на экране                       │
+│                                                                      │
+│  5. Фаза проверки анкеты:                                           │
+│     • Агент предлагает голосовую или визуальную проверку            │
+│     • Голосовая: зачитывает разделы один за другим                  │
+│     • Визуальная: клиент редактирует на экране                     │
+│                                                                      │
+│  6. Подтверждение:                                                  │
+│     └─► POST /api/session/{id}/confirm                             │
+│              ├─► status → "confirmed"                               │
+│              └─► NotificationManager (email + webhook)              │
+│                                                                      │
+│  7. Отключение клиента:                                             │
+│     └─► _finalize_and_save()                                       │
+│              ├─► AnketaExtractor.extract() (финальное)              │
+│              ├─► OutputManager.save_anketa()                        │
+│              ├─► OutputManager.save_dialogue()                      │
+│              └─► SessionManager.update_session()                    │
+│                                                                      │
+│  РЕЗУЛЬТАТ: output/{date}/{company}_v{N}/                           │
+│             ├── anketa.md                                            │
+│             ├── anketa.json                                          │
+│             └── dialogue.md                                          │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### 1.4 Инициализация агента (5 шагов)
+
+```text
+entrypoint(ctx: JobContext)
+    │
+    ├─► STEP 1/5: _create_realtime_model()
+    │       Azure OpenAI WSS endpoint, deployment, api_key
+    │       → lk_openai.realtime.RealtimeModel.with_azure()
+    │
+    ├─► STEP 2/5: VoiceAgent(instructions=get_system_prompt())
+    │       Системный промпт с 5 фазами консультации
+    │
+    ├─► STEP 3/5: ctx.connect(auto_subscribe=AUDIO_ONLY)
+    │       Подключение к LiveKit комнате
+    │
+    ├─► STEP 4/5: AgentSession + _register_event_handlers()
+    │       ├─► on("conversation_item_added")
+    │       │       └─► запись диалога, sync DB, periodic extraction
+    │       └─► on("close")
+    │               └─► _finalize_and_save()
+    │
+    └─► STEP 5/5: session.start(agent=agent, room=ctx.room, model=model)
+            Агент готов к разговору
+```
+
+### 1.5 Периодическое извлечение анкеты
+
+Каждые 6 сообщений агент запускает `_extract_and_update_anketa()`:
+
+1. `AnketaExtractor.extract(dialogue_history)` — DeepSeek LLM
+2. `SessionManager.update_anketa(session_id, data, md)` — SQLite
+3. Обновление `company_name`, `contact_name` если найдены
+4. Фронтенд подхватывает изменения через polling
+
+### 1.6 Статусы сессии
+
+```text
+active → paused → active → reviewing → confirmed
+                                     → declined
+```
+
+| Статус | Описание |
+|--------|----------|
+| active | Разговор идёт |
+| paused | Клиент отключился, может вернуться по ссылке |
+| reviewing | Анкета на проверке |
+| confirmed | Анкета подтверждена |
+| declined | Клиент отказался |
+
+### 1.7 Запуск
+
+```bash
+# Процесс 1: Web сервер
+uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+
+# Процесс 2: Голосовой агент
+python scripts/run_voice_agent.py dev
+```
+
+---
+
+## 2. Текстовый CLI — ConsultantInterviewer
+
+### 2.1 Назначение
+
+Консультация через текстовый интерфейс в терминале. Не требует LiveKit и Azure.
+
+### 2.2 Компоненты
+
+```text
+src/consultant/
+├── interviewer.py           # ConsultantInterviewer (основной класс)
+├── phases.py                # ConsultantPhase enum
+└── models.py                # BusinessAnalysis, ProposedSolution
+```
+
+### 2.3 Workflow схема
+
+```text
+┌──────────────────────────────────────────────────────────────────────┐
+│                     CONSULTANT INTERVIEWER                            │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │  ИНИЦИАЛИЗАЦИЯ                                              │    │
+│  │  ├─► Загрузка IndustryKnowledgeManager (8 профилей)        │    │
+│  │  ├─► Загрузка документов из input/ (если есть)             │    │
+│  │  └─► ConsultationConfig (профиль: fast/standard/thorough)  │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│           │                                                          │
+│           ▼                                                          │
+│  ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌──────────┐  │
+│  │ DISCOVERY  │──▶│  ANALYSIS  │──▶│  PROPOSAL  │──▶│REFINEMENT│  │
+│  │            │   │            │   │            │   │          │  │
+│  │ Знакомство │   │ Анализ     │   │ Предложение│   │Финализац.│  │
+│  │ 5-15 ходов │   │ ≤5 ходов   │   │ ≤5 ходов   │   │ ≤10 ходов│  │
+│  └────────────┘   └────────────┘   └────────────┘   └──────────┘  │
+│                                                          │          │
+│  Каждая фаза:                                            ▼          │
+│  • DeepSeek LLM для генерации ответов             ┌───────────┐   │
+│  • Rich CLI для отображения                        │ EXTRACTION│   │
+│  • CollectedInfo для сбора данных                  │           │   │
+│  • IndustryProfile для обогащения контекста        │ Anketa    │   │
+│                                                     │ Extractor │   │
+│                                                     └─────┬─────┘   │
+│                                                           │         │
+│                                                           ▼         │
+│                                                     ┌───────────┐   │
+│                                                     │  OUTPUT   │   │
+│                                                     │  MANAGER  │   │
+│                                                     └───────────┘   │
+│                                                                      │
+│  РЕЗУЛЬТАТ: output/{date}/{company}_v{N}/                           │
+│             ├── anketa.md                                            │
+│             ├── anketa.json                                          │
+│             └── dialogue.md                                          │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### 2.4 Фазы консультации
+
+| Фаза | Цель | Лимит ходов |
+|------|------|-------------|
+| DISCOVERY | Узнать о компании, отрасли, услугах | 5-15 |
+| ANALYSIS | Выявить боли, сформировать BusinessAnalysis | до 5 |
+| PROPOSAL | Предложить ProposedSolution с функциями | до 5 |
+| REFINEMENT | Уточнить детали, извлечь FinalAnketa | до 10 |
+
+### 2.5 ConsultationConfig
+
+Три профиля скорости:
+
+| Параметр | FAST | STANDARD | THOROUGH |
+|----------|------|----------|----------|
+| discovery_min_turns | 3 | 5 | 8 |
+| discovery_max_turns | 8 | 15 | 20 |
+| total_max_turns | 25 | 50 | 80 |
+| temperature | 0.5 | 0.7 | 0.8 |
+
+### 2.6 Обогащение контекста
+
+- **IndustryKnowledgeManager**: определяет отрасль из диалога, подгружает pain_points, recommended_functions, typical_integrations, FAQ
+- **DocumentContext**: если в `input/` есть документы — парсит PDF/DOCX/MD и добавляет в контекст
+- **KBContextBuilder**: формирует дополнение к промпту из базы знаний
+
+### 2.7 Запуск
+
+```bash
+python scripts/consultant_demo.py
+```
+
+---
+
+## 3. Maximum Interview — MaximumInterviewer
+
+### 3.1 Назначение
+
+Альтернативный текстовый режим консультации с 3-фазной структурой интервью. Использует Redis для хранения активных сессий и PostgreSQL для завершённых анкет. Также доступен MOCK-режим без API (для тестирования UI).
+
+### 3.2 Компоненты
+
+```text
+src/interview/
+├── maximum.py              # MaximumInterviewer (744 строки) — основной класс
+├── phases.py               # InterviewPhase enum, CollectedInfo (50+ ANKETA_FIELDS)
+└── questions/
+    ├── interaction.py      # Банк вопросов для клиентов
+    └── management.py       # Банк вопросов для сотрудников
+
+src/llm/
+└── anketa_generator.py     # LLMAnketaGenerator → FullAnketa dataclass
+
+src/cli/
+├── interface.py            # Rich dashboard (визуальный интерфейс)
+└── maximum.py              # CLI-обёртка для Maximum Interview
+
+src/storage/
+├── redis.py                # InterviewContext (активные сессии)
+└── postgres.py             # CompletedAnketa (завершённые анкеты)
+
+scripts/
+└── demo.py                 # Точка входа
+```
+
+### 3.3 Workflow схема
+
+```text
+┌──────────────────────────────────────────────────────────────────────┐
+│                     MAXIMUM INTERVIEWER                               │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │  ИНИЦИАЛИЗАЦИЯ                                              │    │
+│  │  ├─► Загрузка банков вопросов (interaction / management)    │    │
+│  │  ├─► Подключение к Redis + PostgreSQL                      │    │
+│  │  └─► Выбор режима: MAXIMUM или MOCK                        │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│           │                                                          │
+│           ▼                                                          │
+│  ┌────────────────┐   ┌────────────────┐   ┌────────────────────┐  │
+│  │   DISCOVERY    │──▶│   STRUCTURED   │──▶│     SYNTHESIS      │  │
+│  │                │   │                │   │                    │  │
+│  │ Свободный      │   │ Целевой сбор   │   │ LLM-генерация     │  │
+│  │ диалог         │   │ данных         │   │ анкеты            │  │
+│  │ 5-15 ходов     │   │ до 5 ходов     │   │ (автоматически)   │  │
+│  └────────────────┘   └────────────────┘   └────────┬───────────┘  │
+│                                                       │              │
+│  Каждая фаза:                                         ▼              │
+│  • DeepSeek LLM для генерации ответов          ┌───────────────┐   │
+│  • CollectedInfo (50+ ANKETA_FIELDS)            │LLMAnketa      │   │
+│  • Rich CLI dashboard                           │Generator      │   │
+│                                                  │→ FullAnketa   │   │
+│                                                  └───────┬───────┘   │
+│                                                          │           │
+│                                                          ▼           │
+│                                                  ┌───────────────┐   │
+│  Хранение:                                       │   STORAGE     │   │
+│  • Redis — InterviewContext (активные сессии)     │ Redis + PG    │   │
+│  • PostgreSQL — CompletedAnketa (завершённые)    └───────────────┘   │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.4 Фазы интервью
+
+| Фаза | Цель | Лимит ходов |
+|------|------|-------------|
+| DISCOVERY | Свободный диалог, выявление потребностей | 5-15 |
+| STRUCTURED | Целевой сбор недостающих данных по ANKETA_FIELDS | до 5 |
+| SYNTHESIS | Автоматическая генерация FullAnketa через LLM | — |
+
+### 3.5 Режимы запуска
+
+| Режим | Описание |
+|-------|----------|
+| MAXIMUM | Полноценный режим с DeepSeek AI, Redis и PostgreSQL |
+| MOCK | Симуляция без API-вызовов (для тестирования UI) |
+
+### 3.6 Запуск
+
+```bash
+# Запуск инфраструктуры
+docker compose -f config/docker-compose.yml up -d
+
+# Запуск интервью
+python scripts/demo.py
+```
+
+### 3.7 MOCK-режим
+
+MOCK-режим позволяет тестировать UI и логику без реальных API-вызовов к DeepSeek.
+
+#### Когда использовать
+
+- Разработка и отладка UI
+- Тестирование без затрат на API
+- Демонстрация без настройки инфраструктуры
+- CI/CD пайплайны
+
+#### Как работает
+
+```python
+# В MOCK-режиме:
+# - DeepSeek API не вызывается
+# - Ответы генерируются из шаблонов
+# - Redis/PostgreSQL опциональны
+# - Анкета заполняется тестовыми данными
+```
+
+#### Запуск MOCK-режима
+
+```bash
+# Через переменную окружения
+MOCK_MODE=true python scripts/demo.py
+
+# Или через CLI-флаг (если поддерживается)
+python scripts/demo.py --mock
+```
+
+#### Отличия от MAXIMUM режима
+
+| Аспект | MAXIMUM | MOCK |
+|--------|---------|------|
+| DeepSeek API | Реальные вызовы | Шаблонные ответы |
+| Redis | Требуется | Опционально (in-memory fallback) |
+| PostgreSQL | Требуется | Опционально |
+| Стоимость | ~$0.05-0.15 за сессию | Бесплатно |
+| Качество диалога | Естественный | Скриптованный |
+| Скорость | ~2-5 сек/ответ | Мгновенно |
+
+---
+
+## 4. agent_client_simulator — Агент Тестирования
+
+### 4.1 Назначение
+
+Автоматическое тестирование ConsultantInterviewer через LLM-симуляцию клиента.
+
+### 4.2 Компоненты
+
+```text
 src/agent_client_simulator/
-├── __init__.py           # Публичный API модуля
 ├── client.py             # SimulatedClient — LLM-симулятор клиента
 ├── runner.py             # ConsultationTester — оркестратор тестов
 ├── reporter.py           # TestReporter — генерация отчётов
 └── validator.py          # TestValidator — валидация результатов
+
+tests/scenarios/          # 12 YAML-сценариев + шаблон
 ```
 
-### 1.3 Workflow Схема
+### 4.3 Workflow схема
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────────────┐
-│                        AGENT_TEST_CLIENT                              │
+│                        AGENT_CLIENT_SIMULATOR                        │
 ├──────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  ┌─────────────────┐                                                 │
-│  │  YAML Scenario  │  (persona, goals, pain_points, etc.)            │
-│  └────────┬────────┘                                                 │
+│                                                                      │
+│  ┌─────────────────┐                                                │
+│  │  YAML Scenario  │  (persona, goals, pain_points, etc.)           │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │ SimulatedClient │                                                 │
-│  │                 │  • Загружает персону из YAML                   │
-│  │   LLM-клиент    │  • Генерирует ответы через DeepSeek            │
+│  ┌─────────────────┐                                                │
+│  │ SimulatedClient │  • Загружает персону из YAML                   │
+│  │   (LLM-клиент)  │  • Генерирует ответы через DeepSeek            │
 │  │                 │  • Поддерживает историю диалога                 │
-│  └────────┬────────┘                                                 │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
 │  ┌─────────────────────────────────────────────────────────────┐    │
@@ -55,203 +430,164 @@ src/agent_client_simulator/
 │  │                                                              │    │
 │  │  ┌────────────┐   ┌────────────┐   ┌────────────┐          │    │
 │  │  │ DISCOVERY  │──▶│  ANALYSIS  │──▶│  PROPOSAL  │──┐       │    │
-│  │  │   phase    │   │   phase    │   │   phase    │  │       │    │
 │  │  └────────────┘   └────────────┘   └────────────┘  │       │    │
 │  │                                                     │       │    │
 │  │  ┌────────────┐◀──────────────────────────────────┘       │    │
 │  │  │ REFINEMENT │                                            │    │
-│  │  │   phase    │                                            │    │
 │  │  └─────┬──────┘                                            │    │
-│  │        │                                                   │    │
 │  └────────┼───────────────────────────────────────────────────┘    │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │  AnketaExtractor│  LLM извлекает структурированные данные        │
-│  └────────┬────────┘                                                 │
+│  ┌─────────────────┐                                                │
+│  │ AnketaExtractor │  LLM извлекает структурированные данные        │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │  TestValidator  │  6 проверок:                                   │
-│  │                 │  • completeness (обязательные поля)             │
+│  ┌─────────────────┐  6 проверок:                                   │
+│  │  TestValidator  │  • completeness (обязательные поля)             │
 │  │                 │  • data_quality (валидность данных)             │
 │  │                 │  • scenario_match (соответствие сценарию)       │
 │  │                 │  • phases (все фазы пройдены)                   │
 │  │                 │  • no_loops (нет зацикливания)                  │
 │  │                 │  • metrics (лимиты ходов/времени)               │
-│  └────────┬────────┘                                                 │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │  TestReporter   │                                                 │
-│  │                 │  • Console (Rich)                               │
-│  │                 │  • JSON файл                                    │
+│  ┌─────────────────┐  • Console (Rich)                              │
+│  │  TestReporter   │  • JSON файл                                   │
 │  │                 │  • Markdown отчёт                               │
-│  └────────┬────────┘                                                 │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │   TestResult    │  Итоговый объект с:                            │
-│  │                 │  • status, duration, turn_count                 │
-│  │                 │  • anketa, final_anketa                         │
-│  │                 │  • validation, errors                           │
-│  └─────────────────┘                                                 │
-│                                                                       │
+│  ┌─────────────────┐  Итоговый объект:                              │
+│  │   TestResult    │  status, duration, turn_count,                 │
+│  │                 │  anketa, final_anketa, validation, errors       │
+│  └─────────────────┘                                                │
+│                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### 1.4 Запуск
+### 4.4 Доступные сценарии (12)
+
+| Сценарий | Отрасль | Особенности |
+|----------|---------|-------------|
+| auto_service | Автосервис | Базовый B2B |
+| auto_service_skeptic | Автосервис | Скептически настроенный клиент |
+| beauty_salon_glamour | Салон красоты | B2C, wellness |
+| logistics_company | Логистика | Грузоперевозки |
+| medical_center | Медицинский центр | Запись на приём |
+| medical_clinic | Клиника | Здравоохранение |
+| online_school | Онлайн-школа | Образование |
+| real_estate_agency | Недвижимость | Агентство |
+| realestate_domstroy | Недвижимость | Застройщик |
+| restaurant_delivery | Ресторан + доставка | HoReCa |
+| restaurant_italiano | Ресторан | Итальянская кухня |
+| vitalbox | Франшиза wellness | Квалификация партнёров |
+
+### 4.5 Запуск
 
 ```bash
 # CLI через скрипт
-python scripts/run_test.py vitalbox
+python scripts/run_test.py auto_service
 python scripts/run_test.py --list
-python scripts/run_test.py vitalbox --quiet --no-save
+python scripts/run_test.py auto_service --quiet --no-save
+
+# С документами
+python scripts/run_test.py logistics_company --input-dir input/test_logistics/
 
 # Программно
 from src.agent_client_simulator import SimulatedClient, ConsultationTester
 
-client = SimulatedClient.from_yaml("tests/scenarios/vitalbox.yaml")
+client = SimulatedClient.from_yaml("tests/scenarios/auto_service.yaml")
 tester = ConsultationTester(client=client, verbose=True)
-result = await tester.run("vitalbox")
+result = await tester.run("auto_service")
 ```
-
-### 1.5 Output
-
-- `output/tests/<scenario>_<timestamp>.json` — полный результат
-- `output/tests/<scenario>_<timestamp>.md` — Markdown отчёт
-- `output/tests/<scenario>_anketa.md` — сгенерированная анкета
 
 ---
 
-## 2. agent_document_reviewer — Агент Ревью Документов
+## 5. agent_document_reviewer — Агент Ревью Документов
 
-### 2.1 Назначение
+### 5.1 Назначение
 
 Интерактивное редактирование документов во внешнем редакторе с валидацией.
 
-### 2.2 Компоненты
+### 5.2 Компоненты
 
-```
+```text
 src/agent_document_reviewer/
-├── __init__.py           # Публичный API модуля
-├── models.py             # ReviewConfig, ReviewResult, ReviewStatus
 ├── reviewer.py           # DocumentReviewer — главный класс
 ├── editor.py             # ExternalEditor — работа с редактором
 ├── parser.py             # DocumentParser — парсинг и diff
 ├── history.py            # VersionHistory — история версий
 ├── validators.py         # Валидаторы для разных типов документов
-└── docs/                 # Документация модуля
+└── models.py             # ReviewConfig, ReviewResult, ReviewStatus
 ```
 
-### 2.3 Workflow Схема
+### 5.3 Workflow схема
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────────────┐
-│                     AGENT_DOCUMENT_REVIEWER                           │
+│                     AGENT_DOCUMENT_REVIEWER                          │
 ├──────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  ┌─────────────────┐                                                 │
-│  │  Input Content  │  Markdown / текст документа                     │
-│  └────────┬────────┘                                                 │
+│                                                                      │
+│  Input: Markdown / текст документа                                  │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │ DocumentReviewer│                                                 │
-│  │                 │                                                 │
-│  │   ReviewConfig: │                                                 │
-│  │   • instructions│  Инструкции для пользователя                   │
-│  │   • timeout     │  Лимит времени редактирования                  │
-│  │   • validator   │  Функция валидации                              │
-│  │   • readonly    │  Секции, защищённые от изменения               │
-│  └────────┬────────┘                                                 │
+│  ┌─────────────────┐                                                │
+│  │ DocumentReviewer │  ReviewConfig:                                │
+│  │                 │  • instructions — текст для пользователя       │
+│  │                 │  • timeout_minutes — лимит времени             │
+│  │                 │  • validator — функция валидации               │
+│  │                 │  • readonly_sections — защищённые секции       │
+│  └────────┬────────┘                                                │
 │           │                                                          │
 │           ▼                                                          │
 │  ┌─────────────────────────────────────────────────────────────┐    │
-│  │                      REVIEW WORKFLOW                         │    │
-│  │                                                              │    │
-│  │  1. Save Original                                            │    │
-│  │     └─▶ VersionHistory.add_version()                         │    │
-│  │                                                              │    │
-│  │  2. Prepare Document                                         │    │
-│  │     └─▶ DocumentParser.prepare_for_edit()                    │    │
-│  │         (добавляет инструкции в начало)                      │    │
-│  │                                                              │    │
-│  │  3. Create Temp File                                         │    │
-│  │     └─▶ ExternalEditor.create_temp_file()                    │    │
-│  │                                                              │    │
-│  │  4. Open Editor                                              │    │
-│  │     └─▶ ExternalEditor.open_editor()                         │    │
-│  │         ┌────────────────────────────────┐                   │    │
-│  │         │  ВНЕШНИЙ РЕДАКТОР              │                   │    │
-│  │         │  (VS Code / Sublime / nano)    │                   │    │
-│  │         │                                │                   │    │
-│  │         │  Пользователь:                 │                   │    │
-│  │         │  • читает инструкции           │                   │    │
-│  │         │  • редактирует документ        │                   │    │
-│  │         │  • сохраняет и закрывает       │                   │    │
-│  │         └────────────────────────────────┘                   │    │
-│  │                                                              │    │
-│  │  5. Read & Extract                                           │    │
-│  │     └─▶ DocumentParser.extract_after_edit()                  │    │
-│  │         (удаляет инструкции)                                 │    │
-│  │                                                              │    │
-│  │  6. Validate                                                 │    │
-│  │     └─▶ Validator(content)                                   │    │
-│  │         • readonly_preserved?                                │    │
-│  │         • custom validation                                  │    │
-│  │                                                              │    │
-│  │  7. Save to History (if changed)                             │    │
-│  │     └─▶ VersionHistory.add_version()                         │    │
-│  │                                                              │    │
-│  └──────────────────────────────────────────────────────────────┘    │
+│  │  1. VersionHistory.add_version() — сохранить оригинал       │    │
+│  │  2. DocumentParser.prepare_for_edit() — добавить инструкции │    │
+│  │  3. ExternalEditor.create_temp_file()                       │    │
+│  │  4. ExternalEditor.open_editor()                            │    │
+│  │     ┌────────────────────────────────┐                      │    │
+│  │     │  ВНЕШНИЙ РЕДАКТОР              │                      │    │
+│  │     │  (VS Code / Sublime / nano)    │                      │    │
+│  │     │  Пользователь редактирует      │                      │    │
+│  │     └────────────────────────────────┘                      │    │
+│  │  5. DocumentParser.extract_after_edit() — убрать инструкции │    │
+│  │  6. Validator(content) — валидация                          │    │
+│  │  7. VersionHistory.add_version() — сохранить версию         │    │
+│  └─────────────────────────────────────────────────────────────┘    │
 │           │                                                          │
 │           ▼                                                          │
-│  ┌─────────────────┐                                                 │
-│  │  ReviewResult   │                                                 │
-│  │                 │  • status: COMPLETED / CANCELLED / ERROR        │
-│  │                 │  • changed: bool                                │
-│  │                 │  • content: str (edited)                        │
-│  │                 │  • original_content: str                        │
-│  │                 │  • version: int                                 │
-│  │                 │  • errors: List[ValidationError]                │
-│  │                 │  • duration_seconds: float                      │
-│  └─────────────────┘                                                 │
-│                                                                       │
+│  ┌─────────────────┐                                                │
+│  │  ReviewResult   │  status: COMPLETED / CANCELLED / TIMEOUT /     │
+│  │                 │          VALIDATION_FAILED / ERROR              │
+│  │                 │  changed: bool                                  │
+│  │                 │  content: str (edited)                          │
+│  │                 │  errors: List[ValidationError]                  │
+│  └─────────────────┘                                                │
+│                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.4 Статусы ReviewResult
+### 5.4 AnketaReviewService
 
-```
-┌─────────────────┬────────────────────────────────────────────────────┐
-│     Status      │                    Описание                         │
-├─────────────────┼────────────────────────────────────────────────────┤
-│ COMPLETED       │ Редактирование завершено успешно                   │
-│ CANCELLED       │ Пользователь отменил (пустой файл)                 │
-│ TIMEOUT         │ Превышено время редактирования                     │
-│ VALIDATION_FAILED│ Ошибки валидации                                  │
-│ ERROR           │ Системная ошибка                                   │
-└─────────────────┴────────────────────────────────────────────────────┘
-```
+Обёртка над DocumentReviewer для анкет:
 
-### 2.5 Использование
+1. `show_preview()` — CLI-превью анкеты (Rich Panel)
+2. `prompt_action()` — выбор: [O] Открыть / [S] Сохранить / [C] Отмена
+3. Редактирование с retry (до 3 попыток при ошибках валидации)
+4. `show_diff()` — отображение изменений
+5. `AnketaMarkdownParser.parse()` — парсинг MD обратно в FinalAnketa
+
+### 5.5 Использование
 
 ```python
-from src.agent_document_reviewer import (
-    DocumentReviewer,
-    ReviewConfig,
-    review_anketa
-)
+from src.agent_document_reviewer import DocumentReviewer, ReviewConfig
 
-# Простой вариант для анкеты
-result = review_anketa(anketa_markdown, strict=True)
-
-# С кастомной конфигурацией
 config = ReviewConfig(
     instructions="Проверьте данные клиента",
     timeout_minutes=15,
-    validator=my_custom_validator,
+    validator=my_validator,
     readonly_sections=[r'^## Метаданные'],
 )
 
@@ -264,265 +600,99 @@ if result.is_success and result.changed:
 
 ---
 
-## 3. Интегрированный Pipeline: Test → Review
+## 6. Интегрированный Pipeline: Test → Review
 
-### 3.1 Общая Схема
+### 6.1 Общая схема
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    INTEGRATED PIPELINE: TEST → REVIEW                        │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│  ┌─────────────────┐                                                        │
-│  │  YAML Scenario  │                                                        │
-│  │  (vitalbox.yaml)│                                                        │
-│  └────────┬────────┘                                                        │
-│           │                                                                  │
-│           ▼                                                                  │
-│  ╔═══════════════════════════════════════════════════════════════════╗      │
-│  ║              STAGE 1: AGENT_TEST_CLIENT                           ║      │
-│  ║                                                                   ║      │
-│  ║  SimulatedClient ──▶ ConsultationTester ──▶ AnketaExtractor      ║      │
-│  ║                                                                   ║      │
-│  ║  Output:                                                          ║      │
-│  ║  • TestResult (validation, metrics)                               ║      │
-│  ║  • FinalAnketa (v2.0)                                             ║      │
-│  ║  • Markdown файл                                                  ║      │
-│  ╚════════════════════════════════════╤══════════════════════════════╝      │
-│                                       │                                      │
-│                                       ▼                                      │
-│                              ┌─────────────────┐                            │
-│                              │   Decision      │                            │
-│                              │   Gate          │                            │
-│                              │                 │                            │
-│                              │  validation.    │                            │
-│                              │  passed?        │                            │
-│                              └────────┬────────┘                            │
-│                                       │                                      │
-│                    ┌─────────────────┴─────────────────┐                    │
-│                    │ YES                               │ NO                  │
-│                    ▼                                   ▼                     │
-│  ╔═══════════════════════════════════╗    ┌───────────────────┐            │
-│  ║  STAGE 2: AGENT_DOCUMENT_REVIEWER ║    │  Log Errors       │            │
-│  ║                                   ║    │  Generate Report  │            │
-│  ║  AnketaReviewService:             ║    │  Exit             │            │
-│  ║  1. show_preview()                ║    └───────────────────┘            │
-│  ║  2. prompt_action()               ║                                      │
-│  ║  3. Open external editor          ║                                      │
-│  ║  4. Validate with retry           ║                                      │
-│  ║  5. show_diff()                   ║                                      │
-│  ║  6. Parse → FinalAnketa           ║                                      │
-│  ╚════════════════════════════╤══════╝                                      │
-│                               │                                              │
-│                               ▼                                              │
-│                    ┌─────────────────┐                                      │
-│                    │  Final Output   │                                      │
-│                    │                 │                                      │
-│                    │  • Reviewed     │                                      │
-│                    │    FinalAnketa  │                                      │
-│                    │  • JSON export  │                                      │
-│                    │  • MD export    │                                      │
-│                    └─────────────────┘                                      │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
+```text
+┌─────────────────────────────────────────────────────────────────────┐
+│                 PIPELINE: TEST → REVIEW                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ┌─────────────────┐                                                │
+│  │  YAML Scenario  │                                                │
+│  └────────┬────────┘                                                │
+│           │                                                          │
+│           ▼                                                          │
+│  ╔═════════════════════════════════════════════╗                     │
+│  ║  STAGE 1: AGENT_CLIENT_SIMULATOR            ║                     │
+│  ║                                             ║                     │
+│  ║  SimulatedClient → ConsultationTester →     ║                     │
+│  ║  AnketaExtractor → TestValidator            ║                     │
+│  ║                                             ║                     │
+│  ║  Output: TestResult + FinalAnketa           ║                     │
+│  ╚══════════════════════╤══════════════════════╝                     │
+│                          │                                           │
+│                          ▼                                           │
+│                 ┌────────────────┐                                   │
+│                 │ Validation OK? │                                   │
+│                 └───────┬────────┘                                   │
+│                    YES  │   NO → Log errors, exit                    │
+│                         ▼                                            │
+│  ╔═════════════════════════════════════════════╗                     │
+│  ║  STAGE 2: AGENT_DOCUMENT_REVIEWER           ║                     │
+│  ║                                             ║                     │
+│  ║  AnketaReviewService:                       ║                     │
+│  ║  1. show_preview()                          ║                     │
+│  ║  2. prompt_action() → Open editor           ║                     │
+│  ║  3. Validate with retry (до 3 попыток)     ║                     │
+│  ║  4. show_diff()                             ║                     │
+│  ║  5. Parse → FinalAnketa                     ║                     │
+│  ╚══════════════════════╤══════════════════════╝                     │
+│                          │                                           │
+│                          ▼                                           │
+│                 ┌────────────────┐                                   │
+│                 │ Final Output:  │                                   │
+│                 │ anketa.md      │                                   │
+│                 │ anketa.json    │                                   │
+│                 └────────────────┘                                   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.2 Пример Кода Pipeline
-
-```python
-"""
-Интегрированный pipeline: Test → Review
-"""
-import asyncio
-from pathlib import Path
-
-from src.agent_client_simulator import SimulatedClient, ConsultationTester, TestReporter
-from src.agent_document_reviewer import DocumentReviewer, ReviewConfig, ReviewStatus
-from src.anketa.generator import AnketaGenerator
-from src.anketa.review_service import AnketaReviewService
-
-
-async def run_test_and_review_pipeline(
-    scenario_path: str,
-    auto_approve: bool = False
-) -> dict:
-    """
-    Запускает полный pipeline: тестирование → ревью анкеты.
-
-    Args:
-        scenario_path: Путь к YAML сценарию
-        auto_approve: Автоматически принять без ревью
-
-    Returns:
-        dict с результатами обоих этапов
-    """
-    results = {
-        "test": None,
-        "review": None,
-        "final_anketa": None,
-        "status": "pending"
-    }
-
-    # ═══════════════════════════════════════════════════════════
-    # STAGE 1: Автоматическое тестирование
-    # ═══════════════════════════════════════════════════════════
-
-    print("=" * 60)
-    print("STAGE 1: Автоматическое тестирование")
-    print("=" * 60)
-
-    client = SimulatedClient.from_yaml(scenario_path)
-    tester = ConsultationTester(client=client, verbose=True)
-
-    test_result = await tester.run(
-        scenario_name=Path(scenario_path).stem
-    )
-    results["test"] = test_result.to_dict()
-
-    # Проверяем валидацию
-    if test_result.validation and not test_result.validation.get("passed", False):
-        print(f"\n[!] Тест не прошёл валидацию:")
-        for error in test_result.validation.get("errors", []):
-            print(f"    - {error}")
-        results["status"] = "validation_failed"
-        return results
-
-    if test_result.status != "completed":
-        print(f"\n[!] Тест завершился с ошибкой: {test_result.status}")
-        results["status"] = "test_failed"
-        return results
-
-    print("\n[OK] Тестирование успешно завершено")
-
-    # ═══════════════════════════════════════════════════════════
-    # STAGE 2: Ревью анкеты
-    # ═══════════════════════════════════════════════════════════
-
-    if auto_approve:
-        print("\n[AUTO] Автоматическое одобрение без ревью")
-        results["final_anketa"] = test_result.final_anketa
-        results["status"] = "completed"
-        return results
-
-    print("\n" + "=" * 60)
-    print("STAGE 2: Ревью анкеты")
-    print("=" * 60)
-
-    # Загружаем сгенерированную анкету
-    from src.anketa.schema import FinalAnketa
-
-    if not test_result.final_anketa:
-        print("[!] Анкета не была сгенерирована")
-        results["status"] = "no_anketa"
-        return results
-
-    anketa = FinalAnketa(**test_result.final_anketa)
-
-    # Запускаем сервис ревью
-    review_service = AnketaReviewService()
-    reviewed_anketa = review_service.finalize(anketa)
-
-    if reviewed_anketa:
-        results["review"] = {"status": "completed", "changed": True}
-        results["final_anketa"] = reviewed_anketa.model_dump()
-        results["status"] = "completed"
-
-        # Сохраняем финальную версию
-        generator = AnketaGenerator(output_dir="output/final")
-        generator.to_markdown(reviewed_anketa)
-        generator.to_json(reviewed_anketa)
-
-        print("\n[OK] Анкета проверена и сохранена")
-    else:
-        results["review"] = {"status": "cancelled"}
-        results["status"] = "review_cancelled"
-        print("\n[!] Ревью отменено")
-
-    return results
-
-
-# Точка входа
-if __name__ == "__main__":
-    import sys
-
-    scenario = sys.argv[1] if len(sys.argv) > 1 else "tests/scenarios/vitalbox.yaml"
-
-    results = asyncio.run(run_test_and_review_pipeline(scenario))
-
-    print("\n" + "=" * 60)
-    print(f"ИТОГОВЫЙ СТАТУС: {results['status']}")
-    print("=" * 60)
-```
-
-### 3.3 CLI Скрипт для Pipeline
-
-Создайте `scripts/run_pipeline.py`:
+### 6.2 Запуск
 
 ```bash
-# Запуск полного pipeline
-python scripts/run_pipeline.py vitalbox
+# Полный pipeline
+python scripts/run_pipeline.py auto_service
 
 # С автоматическим одобрением (без ревью)
-python scripts/run_pipeline.py vitalbox --auto-approve
+python scripts/run_pipeline.py auto_service --auto-approve
 
-# Только тест без ревью
-python scripts/run_test.py vitalbox
+# Без этапа ревью
+python scripts/run_pipeline.py auto_service --skip-review
+
+# С указанием выходной папки
+python scripts/run_pipeline.py auto_service --output-dir output/final
 ```
 
 ---
 
-## 4. Примеры Использования
-
-### 4.1 Только тестирование
-
-```bash
-python scripts/run_test.py vitalbox
-```
-
-### 4.2 Только ревью существующей анкеты
-
-```python
-from src.agent_document_reviewer import review_anketa
-
-with open("output/anketas/vitalbox.md") as f:
-    content = f.read()
-
-result = review_anketa(content, strict=True)
-
-if result.changed:
-    with open("output/anketas/vitalbox_reviewed.md", "w") as f:
-        f.write(result.content)
-```
-
-### 4.3 Полный pipeline
-
-```python
-results = await run_test_and_review_pipeline(
-    "tests/scenarios/vitalbox.yaml",
-    auto_approve=False
-)
-```
-
----
-
-## Архитектурные Заметки
+## Архитектурные заметки
 
 ### Независимость агентов
 
-Оба агента полностью независимы и могут использоваться отдельно:
+Все агенты полностью независимы и могут использоваться отдельно:
 
+- **VoiceConsultant** — не требует ConsultantInterviewer
+- **ConsultantInterviewer** — не требует LiveKit или Azure
+- **MaximumInterviewer** — не требует LiveKit или Azure; требует Redis + PostgreSQL (или MOCK-режим без них)
 - **agent_client_simulator** — не требует agent_document_reviewer
 - **agent_document_reviewer** — не требует agent_client_simulator
 
 ### Точки интеграции
 
-Pipeline интегрирует их через:
-1. `FinalAnketa` — общая модель данных
-2. `AnketaGenerator` — конвертация в Markdown
-3. `AnketaMarkdownParser` — парсинг обратно в модель
+Агенты интегрируются через общие модели:
+
+1. **FinalAnketa** — единая модель анкеты (18 блоков)
+2. **AnketaGenerator** — конвертация FinalAnketa → Markdown/JSON
+3. **AnketaMarkdownParser** — парсинг Markdown обратно в FinalAnketa
+4. **OutputManager** — единая структура output/
+5. **SessionManager** — общая SQLite БД (для voice + web)
 
 ### Расширяемость
 
 - Новые сценарии: добавьте YAML в `tests/scenarios/`
+- Новые отрасли: добавьте YAML в `config/industries/`
 - Новые валидаторы: расширьте `validators.py`
 - Новые форматы отчётов: расширьте `TestReporter`

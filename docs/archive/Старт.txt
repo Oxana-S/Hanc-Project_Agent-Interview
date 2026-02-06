@@ -1,0 +1,15 @@
+# Терминал 1: убить старый сервер и запустить новый
+./scripts/kill_8000.sh
+./venv/bin/python -m uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+
+# Терминал 2: перезапустить голосового агента
+# (Ctrl+C если работает, затем)
+./venv/bin/python scripts/run_voice_agent.py dev
+
+# Терминал 3: открыть в браузере
+http://localhost:8000/
+
+
+# Терминал 4: запустить в консоли
+./venv/bin/python scripts/run_voice_agent.py dev
+

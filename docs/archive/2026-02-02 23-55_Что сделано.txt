@@ -1,0 +1,46 @@
+Что реализовано
+Структура проекта:
+
+
+src/
+├── consultant/          # AI-консультант с 4 фазами
+│   ├── interviewer.py   # Основной класс (847 строк)
+│   ├── phases.py        # Enum фаз
+│   └── models.py        # BusinessAnalysis, ProposedSolution
+├── research/            # Исследование внешних данных
+│   ├── engine.py        # ResearchEngine (координатор)
+│   ├── web_search.py    # Tavily/Bing веб-поиск
+│   └── website_parser.py # Парсинг сайтов
+├── voice/               # Голосовой интерфейс
+│   ├── livekit_client.py # LiveKit WebRTC
+│   ├── azure_realtime.py # Azure OpenAI STT/TTS
+│   └── handler.py       # Связывает всё вместе
+└── config/              # Конфигурация
+    ├── prompt_loader.py # Загрузка YAML промптов
+    └── locale_loader.py # Локализация UI
+
+prompts/consultant/      # Промпты по фазам
+├── discovery.yaml
+├── analysis.yaml
+├── proposal.yaml
+└── refinement.yaml
+
+locales/                 # Локализация
+├── ru/ui.yaml
+└── en/ui.yaml
+
+public/                  # Web UI
+├── index.html
+├── styles.css
+└── app.js
+4 фазы консультации:
+
+DISCOVERY — свободный диалог о бизнесе клиента
+ANALYSIS — анализ + внешнее исследование + валидация с клиентом
+PROPOSAL — презентация структурированного решения
+REFINEMENT — заполнение оставшихся полей анкеты
+Ключевые принципы:
+
+Вся лексика и промпты вынесены в YAML файлы (не захардкожены)
+Структура анкеты неизменна — данные расширяются через extended_data
+Персонаж: уверенный эксперт-консультант с примерами из опыта

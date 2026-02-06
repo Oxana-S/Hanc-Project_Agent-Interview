@@ -1,218 +1,215 @@
-# Quick Start Guide
+# Быстрый старт
 
-Минимальная инструкция для быстрого запуска Voice Interviewer Agent.
+Пошаговая инструкция для запуска Hanc.AI Voice Consultant.
 
-## За 5 минут
+## Предварительные требования
 
-### 1. Клонирование и установка
+- Python 3.11+
+- API ключ DeepSeek (обязательно для всех режимов)
+- Для голосового режима:
+  - LiveKit Server (cloud или self-hosted)
+  - Azure OpenAI с подключением Realtime API
+- Для E2E тестов:
+  - Node.js 18+
+  - npm/pnpm
+
+## 1. Установка
 
 ```bash
+# Клонирование
 git clone <repo-url>
-cd voice-interviewer-agent
+cd "Project. Agent Interview"
 
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
+# Виртуальное окружение
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+# venv\Scripts\activate   # Windows
+
+# Зависимости
 pip install -r requirements.txt
 ```
 
-### 2. Конфигурация
+## 2. Конфигурация `.env`
 
-```bash
-cp .env.example .env
-```
-
-Отредактируйте `.env` и заполните **МИНИМУМ**:
+Создайте файл `.env` в корне проекта:
 
 ```env
+# === ОБЯЗАТЕЛЬНО для всех режимов ===
 DEEPSEEK_API_KEY=sk-...
 DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
-DEEPSEEK_MODEL=deepseek-chat
+DEEPSEEK_MODEL=deepseek-reasoner
+
+# === ОБЯЗАТЕЛЬНО для голосового режима ===
+LIVEKIT_URL=wss://your-project.livekit.cloud
+LIVEKIT_API_KEY=API...
+LIVEKIT_API_SECRET=...
+
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+AZURE_OPENAI_API_KEY=...
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview
+AZURE_OPENAI_REALTIME_API_VERSION=2024-10-01-preview
+
+# === Опционально: уведомления ===
+# Настраиваются в config/notifications.yaml
 ```
 
-### 3. Запуск инфраструктуры
+## 3. Запуск текстового режима (CLI)
+
+Не требует LiveKit и Azure. Работает через DeepSeek в терминале.
 
 ```bash
-docker-compose -f config/docker-compose.yml up -d
+python scripts/consultant_demo.py
 ```
 
-Проверка:
+Что произойдёт:
+
+1. Откроется Rich CLI с AI-консультантом
+2. 4 фазы: Знакомство → Анализ → Предложение → Финализация
+3. Результаты сохранятся в `output/{дата}/{компания}_v{N}/`
+
+## 4. Запуск Maximum Interview режима
+
+Альтернативный текстовый режим с 3-фазной консультацией. Требует Redis и PostgreSQL.
+
+### Шаг 1: Запуск инфраструктуры
 
 ```bash
-docker-compose -f config/docker-compose.yml ps
-# redis и postgres должны быть "Up"
+docker compose -f config/docker-compose.yml up -d
 ```
 
-### 4. Запуск агента
+### Шаг 2: Запуск
 
 ```bash
-python3 scripts/demo.py
+python scripts/demo.py
 ```
 
-Выберите режим (MAXIMUM или MOCK) и паттерн (INTERACTION или MANAGEMENT).
+Доступны два подрежима:
 
----
+1. **MAXIMUM** — полноценный режим с DeepSeek AI (3 фазы: Discovery → Structured → Synthesis)
+2. **MOCK** — симуляция без API (для тестирования UI)
 
-## Проверка работоспособности
+Данные сохраняются: Redis (активные сессии) + PostgreSQL (завершённые анкеты).
+
+## 5. Запуск голосового режима
+
+### Шаг 1: Запуск web-сервера
 
 ```bash
-# Проверка Redis
-docker-compose -f config/docker-compose.yml exec redis redis-cli ping
-# Ответ: PONG
-
-# Проверка PostgreSQL
-docker-compose -f config/docker-compose.yml exec postgres psql -U interviewer_user -d voice_interviewer -c "SELECT 1"
-# Ответ: 1
-
-# Проверка Python зависимостей
-python3 -c "from src.interview.maximum import MaximumInterviewer; print('OK')"
-# Ответ: OK
+uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 ```
 
----
+### Шаг 2: Запуск голосового агента
 
-## Минимальная конфигурация .env
-
-Для локального тестирования:
-
-```env
-# DeepSeek (обязательно для MAXIMUM режима)
-DEEPSEEK_API_KEY=your_key
-DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
-DEEPSEEK_MODEL=deepseek-chat
-
-# Redis (Docker)
-REDIS_HOST=localhost
-REDIS_PORT=6379
-
-# PostgreSQL (Docker)
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_DB=voice_interviewer
-POSTGRES_USER=interviewer_user
-POSTGRES_PASSWORD=change_me_in_production
-```
-
----
-
-## Первое интервью
-
-После запуска `python3 scripts/demo.py`:
-
-1. **Выбор режима:**
-
-   ```
-   Select mode:
-   [1] MAXIMUM - Full AI interview (DeepSeek)
-   [2] MOCK - Simulated demo
-
-   Enter choice (1 or 2): 1
-   ```
-
-2. **Выбор паттерна:**
-
-   ```
-   Select pattern:
-   [1] INTERACTION - Agent for customers/clients
-   [2] MANAGEMENT - Agent for employees/internal use
-
-   Enter choice (1 or 2): 1
-   ```
-
-3. **Maximum Interview Mode:**
-
-   Три фазы:
-   - **DISCOVERY** — свободный диалог о бизнесе
-   - **STRUCTURED** — сбор недостающих данных
-   - **SYNTHESIS** — генерация полной анкеты
-
-4. **Завершение:**
-
-   ```
-   Interview completed!
-
-   Files saved:
-   - output/anketa_abc123.json
-   - output/anketa_abc123.md
-   ```
-
----
-
-## Просмотр результатов
-
-### CLI
+В отдельном терминале:
 
 ```bash
-# Статистика интервью
-docker-compose -f config/docker-compose.yml exec postgres psql -U interviewer_user -d voice_interviewer -c "SELECT * FROM pattern_statistics;"
-
-# Все завершённые интервью
-docker-compose -f config/docker-compose.yml exec postgres psql -U interviewer_user -d voice_interviewer -c "SELECT * FROM completed_interviews;"
+python scripts/run_voice_agent.py dev
 ```
 
-### Файлы
+### Шаг 3: Открыть браузер
+
+```
+http://localhost:8000
+```
+
+Нажмите "Начать консультацию" — система:
+
+1. Создаст сессию в SQLite
+2. Сгенерирует LiveKit комнату с agent dispatch
+3. Подключит голосового агента
+4. Покажет анкету в реальном времени (polling каждые ~2 сек)
+
+## 6. Запуск тестов
+
+### Юнит-тесты (252 теста)
 
 ```bash
-# JSON и Markdown файлы
-ls -la output/
+pytest
 ```
 
----
-
-## Остановка
+### Симуляция консультации (12 сценариев)
 
 ```bash
-# Остановить инфраструктуру
-docker-compose -f config/docker-compose.yml down
+# Список доступных сценариев
+python scripts/run_test.py --list
 
-# Остановить с удалением данных
-docker-compose -f config/docker-compose.yml down -v
+# Запуск конкретного сценария
+python scripts/run_test.py auto_service
+
+# Тихий режим (без детального вывода)
+python scripts/run_test.py auto_service --quiet
+
+# Без сохранения отчётов
+python scripts/run_test.py auto_service --no-save
 ```
 
----
-
-## Известные проблемы
-
-### Port already in use
+### Pipeline: Тест → Ревью
 
 ```bash
-# Если порт 6379 занят
-docker-compose -f config/docker-compose.yml down
-lsof -ti:6379 | xargs kill -9
+# Полный pipeline
+python scripts/run_pipeline.py auto_service
 
-# Если порт 5432 занят
-docker-compose -f config/docker-compose.yml down
-lsof -ti:5432 | xargs kill -9
+# С автоматическим одобрением
+python scripts/run_pipeline.py auto_service --auto-approve
+
+# Без этапа ревью
+python scripts/run_pipeline.py auto_service --skip-review
 ```
 
-### ModuleNotFoundError
+### E2E тесты голосового агента
 
 ```bash
-source venv/bin/activate
-pip install -r requirements.txt
+# Установка Puppeteer
+npm install puppeteer
+
+# Запуск (требует работающий сервер и агент)
+node tests/e2e_voice_test.js
 ```
 
-### DeepSeek API Error
+## 7. Структура результатов
+
+После любого режима результаты сохраняются в:
+
+```
+output/
+└── 2026-02-05/
+    └── avtoprofi_v1/
+        ├── anketa.md        # Анкета в Markdown
+        ├── anketa.json      # Анкета в JSON
+        └── dialogue.md      # Лог диалога
+```
+
+## 8. Проверка работоспособности
+
+### Логи
+
+После запуска проверьте `logs/`:
 
 ```bash
-# Проверьте ключ
-echo $DEEPSEEK_API_KEY
-
-# Тест API
-python3 -c "
-from src.llm.deepseek import DeepSeekClient
-client = DeepSeekClient()
-print('Connection OK')
-"
+ls -la logs/
+# Должны появиться файлы: server.log, agent.log, livekit.log и др.
 ```
 
----
+### База данных
 
-## Дальше
+```bash
+sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;"
+```
 
-- Полная документация: [README.md](../README.md)
-- Обзор проекта: [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)
-- Пример анкеты: [example_anketa.md](example_anketa.md)
+## Решение проблем
 
----
+| Проблема | Решение |
+|----------|---------|
+| `DEEPSEEK_API_KEY not set` | Проверьте `.env` файл |
+| `Azure OpenAI credentials not configured` | Заполните `AZURE_OPENAI_*` в `.env` |
+| Агент не подключается к комнате | Проверьте `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` |
+| Нет звука в браузере | Разрешите доступ к микрофону, проверьте HTTPS |
+| `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
 
-**Время до первого запуска: ~5 минут**
+## Дальнейшее чтение
+
+- [ARCHITECTURE.md](ARCHITECTURE.md) — архитектура и компоненты
+- [VOICE_AGENT.md](VOICE_AGENT.md) — голосовой агент (LiveKit + Azure)
+- [AGENT_WORKFLOWS.md](AGENT_WORKFLOWS.md) — workflow агентов
+- [TESTING.md](TESTING.md) — подробности о тестировании
+- [LOGGING.md](LOGGING.md) — система логирования
