@@ -20,7 +20,7 @@ from src.anketa.schema import (
     ChecklistItem, AIRecommendation, TargetAudienceSegment
 )
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class AnketaGenerator:
@@ -94,6 +94,22 @@ class AnketaGenerator:
         # Keep only alphanumeric and underscore
         safe = "".join(c for c in safe if c.isalnum() or c == "_")
         return safe[:50] if safe else "unnamed"
+
+    @staticmethod
+    def render_markdown(anketa: FinalAnketa) -> str:
+        """
+        Generate Markdown content from anketa (static version).
+
+        Use this when you don't need to save files, just generate content.
+
+        Args:
+            anketa: Populated FinalAnketa instance
+
+        Returns:
+            Markdown content as string
+        """
+        generator = AnketaGenerator.__new__(AnketaGenerator)
+        return generator._render_markdown(anketa)
 
     def _render_markdown(self, anketa: FinalAnketa) -> str:
         """Render Markdown content from anketa v2.0."""

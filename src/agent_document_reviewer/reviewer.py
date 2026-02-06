@@ -25,7 +25,7 @@ from .parser import DocumentParser
 from .history import VersionHistory, create_history
 from .validators import create_validator, Validator
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class DocumentReviewer:

@@ -16,8 +16,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.models import (
     InterviewContext, InterviewPattern, InterviewStatus,
     QuestionResponse, QuestionStatus, AnswerAnalysis, AnalysisStatus,
-    Clarification, CompletedAnketa, InterviewStatistics
+    Clarification, InterviewStatistics
 )
+from src.anketa.schema import FinalAnketa
 
 
 # ============ SAMPLE DATA FIXTURES ============
@@ -104,22 +105,22 @@ def sample_interview_context():
 
 
 @pytest.fixture
-def sample_completed_anketa():
-    """Create a sample CompletedAnketa."""
-    return CompletedAnketa(
+def sample_final_anketa():
+    """Create a sample FinalAnketa."""
+    return FinalAnketa(
         interview_id="test-interview-123",
-        pattern=InterviewPattern.INTERACTION,
-        interview_duration_seconds=1800.0,
+        pattern="interaction",
+        consultation_duration_seconds=1800.0,
         company_name="TechSolutions Inc.",
         industry="IT / Technology",
-        language="Russian",
+        language="ru",
         agent_purpose="Customer support and appointment booking",
         agent_name="Alex",
-        tone="adaptive",
-        contact_person="John Doe",
+        voice_tone="adaptive",
+        contact_name="John Doe",
         contact_email="john@techsolutions.com",
         contact_phone="+79991234567",
-        company_website="https://techsolutions.com",
+        website="https://techsolutions.com",
         full_responses={"1.1": "TechSolutions Inc."},
         quality_metrics={
             "completeness_score": 0.87,
@@ -127,6 +128,12 @@ def sample_completed_anketa():
             "average_answer_length": 25.4
         }
     )
+
+
+@pytest.fixture
+def sample_completed_anketa(sample_final_anketa):
+    """Backward-compatible alias for sample_final_anketa."""
+    return sample_final_anketa
 
 
 # ============ MOCK REDIS CLIENT ============

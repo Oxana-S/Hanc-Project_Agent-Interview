@@ -1,0 +1,143 @@
+# Scenario: Skeptical Auto Service Owner
+# v2.0 format with behavior configuration
+
+meta:
+  name: "auto_service_skeptic"
+  description: "Скептичный владелец автосервиса с негативным опытом автоматизации"
+  version: "2.0"
+  tags: ["automotive", "skeptic", "b2b", "hard"]
+  difficulty: "hard"
+
+persona:
+  name: "Виктор Семёнов"
+  role: "Владелец"
+  company: "АвтоМастер"
+  industry: "автосервис"
+
+  services:
+    - "Диагностика"
+    - "Ремонт двигателя"
+    - "Кузовной ремонт"
+    - "Шиномонтаж"
+    - "ТО"
+
+  current_situation: |
+    У нас 2 администратора на телефоне, но в сезон не справляются.
+    Пробовали бота в Telegram — клиенты жаловались, что не понимает.
+    Теперь скептически отношусь к автоматизации.
+
+  pain_points:
+    - "Пропущенные звонки в часы пик (до 30%)"
+    - "Негативный опыт с чат-ботом год назад"
+    - "Клиенты хотят говорить с человеком"
+    - "Администраторы путают записи"
+
+  goals:
+    - "Не терять клиентов из-за пропущенных звонков"
+    - "Снизить нагрузку на администраторов"
+    - "Улучшить клиентский сервис"
+
+  constraints:
+    - "Бюджет ограничен"
+    - "Плохой прошлый опыт с ботами"
+    - "Клиенты — консервативная аудитория"
+
+  target_functions:
+    - "Запись на сервис"
+    - "Напоминания о записи"
+    - "Информирование о статусе ремонта"
+
+  integrations:
+    - "1С:Автосервис"
+
+  # v2.0: Behavior configuration
+  behavior:
+    patience: 0.4
+    skepticism: 0.8
+    technical_level: 0.5
+    decisiveness: 0.3
+    price_sensitivity: 0.6
+
+    traits:
+      - "skeptic"
+      - "frustrated"
+      - "busy"
+
+    triggers:
+      - keyword: "бот|автоматизация|робот|ИИ"
+        action: "object"
+        probability: 0.9
+        response_hint: "У нас уже был бот, клиенты ненавидели"
+
+      - keyword: "гарантия|уверены|точно"
+        action: "question"
+        probability: 0.7
+        response_hint: "А если клиент разозлится? Кто отвечает?"
+
+      - keyword: "интеграц|1С|CRM"
+        action: "question"
+        probability: 0.5
+        response_hint: "А как это с нашей 1С связать?"
+
+      - keyword: "цена|стоимость|бюджет|рубл"
+        action: "object"
+        probability: 0.8
+        response_hint: "Сколько это стоит? У нас бюджет ограничен"
+
+    phase_modifiers:
+      discovery:
+        skepticism: 0.9
+        response_length: 0.6
+      analysis:
+        skepticism: 0.7
+        question_prob: 0.5
+      proposal:
+        skepticism: 0.5
+        price_sensitivity: 0.8
+      refinement:
+        decisiveness: 0.5
+        skepticism: 0.3
+
+    randomness: 0.3
+    seed: 42  # For reproducibility
+
+# Objections by topic
+objections:
+  price:
+    - "50 тысяч? За робота? Администратор столько не получает!"
+    - "А если не окупится? Деньги на ветер?"
+    - "Дорого. У конкурентов дешевле предлагали."
+
+  trust:
+    - "Мы уже пробовали бота — провал полный был"
+    - "Клиенты хотят живого человека, не робота"
+    - "Наши клиенты — мужики, они не будут с роботом разговаривать"
+
+  technical:
+    - "А как это с нашей 1С связать? У нас старая версия"
+    - "У нас сложная система записи, робот не справится"
+    - "А если сломается? Кто чинить будет?"
+
+  time:
+    - "Мне некогда этим заниматься"
+    - "Сколько времени займёт внедрение? У нас сезон скоро"
+
+# Expected results for validation
+expected_results:
+  required_fields:
+    - company_name
+    - industry
+    - services
+    - pain_points
+
+  quality_checks:
+    - "Консультант должен адресовать негативный опыт с ботом"
+    - "Консультант должен объяснить отличие голосового агента от чат-бота"
+    - "Консультант должен предложить пилот/тестовый период"
+
+  min_validation_score: 70
+  max_turns: 40
+
+  expected_functions:
+    - "запись"
+    - "напоминание"

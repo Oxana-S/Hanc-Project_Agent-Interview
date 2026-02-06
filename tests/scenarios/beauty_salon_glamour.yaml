@@ -1,0 +1,71 @@
+# Тестовый сценарий: Салон красоты
+# Индустрия: Beauty/Wellness (без профиля в базе знаний)
+
+# Документы клиента
+documents:
+  input_dir: "input/beauty_salon"
+
+persona:
+  name: "Анастасия Волкова"
+  role: "Владелица"
+  company: "Салон красоты Glamour"
+  industry: "Индустрия красоты"
+  company_size: "12 мастеров"
+
+  # Характер
+  personality:
+    communication_style: "дружелюбный"
+    decision_speed: "быстрая"
+    tech_savviness: "средняя"
+
+  # Контекст бизнеса
+  business_context:
+    description: "Премиум салон красоты, работаем 5 лет, 3 филиала в городе"
+    current_situation: "Администраторы перегружены звонками"
+    pain_points:
+      - "Клиенты звонят записаться, а администратор занят"
+      - "Много отмен в последний момент"
+      - "Путаница с расписанием мастеров"
+      - "Клиенты спрашивают о ценах и услугах"
+      - "Напоминания о записи делаем вручную"
+    goals:
+      - "Автоматизировать запись"
+      - "Снизить количество отмен"
+      - "Освободить администратора"
+
+  # Знания для ответов
+  knowledge:
+    services:
+      - "Стрижки и укладки"
+      - "Окрашивание"
+      - "Маникюр и педикюр"
+      - "Косметология"
+      - "Массаж"
+    integrations:
+      - "YClients"
+      - "YCLIENTS"
+      - "1С:Салон красоты"
+    budget: "30-40 тысяч в месяц"
+    timeline: "как можно скорее"
+
+  # Стиль общения
+  response_style:
+    verbosity: "высокая"
+    uses_industry_terms: true
+    asks_questions: true
+
+# Ожидаемые результаты
+expected_results:
+  required_fields:
+    - company_name
+    - industry
+    - agent_purpose
+
+  expected_pain_points:
+    - "запись"
+    - "администратор"
+    - "отмены"
+
+  expected_functions:
+    - "запись на услуги"
+    - "напоминания"

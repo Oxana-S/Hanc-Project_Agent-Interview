@@ -1,0 +1,159 @@
+meta:
+  id: automotive
+  version: '1.0'
+  created_at: '2026-02-04'
+  last_updated: '2026-02-05'
+  tests_run: 2
+  avg_validation_score: 0.792
+aliases:
+- автобизнес
+- автосалон
+- автосервис
+- автомастерская
+- автомобиль
+- дилер
+- сто
+- шиномонтаж
+- техобслуживание
+- то
+- ремонт авто
+- машина
+- авто
+- тюнинг
+- детейлинг
+- гараж
+- мойка
+typical_services:
+- Техническое обслуживание (ТО)
+- Ремонт двигателя
+- Ремонт ходовой части
+- Кузовной ремонт
+- Шиномонтаж
+- Развал-схождение
+- Диагностика
+- Замена масла
+- Продажа автомобилей
+- Trade-in
+pain_points:
+- description: Клиенты звонят узнать статус ремонта
+  severity: high
+  solution_hint: Автоматический статус по номеру заказ-наряда
+- description: Много звонков с вопросами о ценах
+  severity: medium
+  solution_hint: Автоматический расчёт стоимости типовых услуг
+- description: Сложно записаться в удобное время
+  severity: medium
+  solution_hint: Онлайн-запись с выбором времени
+- description: Забывают напомнить о плановом ТО
+  severity: medium
+  solution_hint: Автоматические напоминания по пробегу/дате
+- description: Мастера отвлекаются на звонки
+  severity: high
+  solution_hint: Голосовой агент обрабатывает рутинные вопросы
+recommended_functions:
+- name: статус
+  priority: high
+  reason: 40-50% звонков — статус ремонта
+- name: запись
+  priority: high
+  reason: Запись на ТО, диагностику, шиномонтаж
+- name: faq
+  priority: medium
+  reason: Цены, сроки, запчасти, гарантия
+- name: напоминание
+  priority: medium
+  reason: Напоминание о плановом ТО
+- name: приём заявок
+  priority: medium
+  reason: Приём заявок на эвакуатор, срочный ремонт
+- name: маршрутизация
+  priority: low
+  reason: Сложные вопросы → мастер-консультант
+typical_integrations:
+- name: 1С:Автосервис
+  examples:
+  - 1С:Автосервис
+  - AutoDesk
+  - Альфа-Авто
+  priority: high
+  reason: Заказ-наряды, статусы, запчасти
+- name: CRM
+  examples:
+  - Bitrix24
+  - AmoCRM
+  priority: medium
+  reason: История обслуживания, карточка клиента
+- name: Телефония
+  examples:
+  - Mango Office
+  - Zadarma
+  priority: high
+  reason: Приём входящих звонков
+- name: SMS/Мессенджеры
+  examples:
+  - Telegram
+  - WhatsApp
+  priority: medium
+  reason: Уведомления о готовности
+- name: Календарь
+  examples:
+  - Google Calendar
+  - Специализированные решения
+  priority: medium
+  reason: Расписание подъёмников/постов
+industry_faq:
+- question: Сколько стоит замена масла?
+  answer_template: Стоимость зависит от марки автомобиля и типа масла. В среднем от
+    3000 до 7000 рублей с работой.
+- question: Как узнать статус ремонта?
+  answer_template: Назовите номер заказ-наряда или госномер автомобиля, я проверю
+    статус.
+- question: Сколько времени займёт ТО?
+  answer_template: Плановое ТО занимает от 1 до 3 часов в зависимости от объёма работ.
+- question: Работаете с моей маркой?
+  answer_template: Да, мы обслуживаем все марки автомобилей. С какой маркой вопрос?
+- question: Есть ли запчасти в наличии?
+  answer_template: Могу проверить наличие. Назовите марку, модель и какая деталь нужна.
+- question: Даёте ли гарантию на работы?
+  answer_template: Да, гарантия на работы — 6 месяцев или 10 000 км пробега.
+typical_objections:
+- objection: Дорого
+  response: Понимаю. Могу предложить альтернативные запчасти или соединить с мастером
+    для обсуждения.
+- objection: Долго ждать
+  response: Проверю загрузку. Возможно, есть окно раньше. Когда вам удобно?
+- objection: Почему так дорого?
+  response: В стоимость входят оригинальные запчасти и работа сертифицированных мастеров.
+    Могу детализировать.
+learnings:
+- date: '2026-02-04'
+  insight: 'Ошибка валидации: [scenario_match] Компания не совпадает: ожидали ''АвтоПрофи'';
+    Мало совпадений по интеграциям: 1/4'
+  source: test_auto_service
+- date: '2026-02-04'
+  insight: 'Предупреждение: [no_loops] Обнаружено зацикливание: 0 повторов'
+  source: test_auto_service
+- date: '2026-02-05'
+  insight: 'Предупреждение: [scenario_match] Мало совпадений по интеграциям: 0/4'
+  source: test_auto_service
+- date: '2026-02-05'
+  insight: 'Предупреждение: [metrics] Слишком долго: 975 сек (макс 900)'
+  source: test_auto_service
+success_benchmarks:
+  avg_call_duration_seconds: 200
+  target_automation_rate: 0.55
+  typical_kpis:
+  - Автоматизация 55% запросов статуса
+  - Снижение нагрузки на приёмку на 35%
+  - Конверсия в запись > 20%
+  - Удовлетворённость клиентов > 4.0/5
+industry_specifics:
+  compliance: []
+  tone:
+  - Уверенный, профессиональный
+  - Технически грамотный
+  - Не слишком формальный
+  peak_times:
+  - Понедельник утро
+  - Пятница вечер
+  - Сезон смены шин (апрель, октябрь)

@@ -22,7 +22,7 @@ import structlog
 
 from .models import ReviewConfig, ReviewStatus
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class EditorError(Exception):

@@ -29,7 +29,7 @@ from src.agent_document_reviewer import (
 )
 from src.agent_document_reviewer.parser import DocumentParser
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 console = Console()
 
 

@@ -19,7 +19,7 @@ from rich.prompt import Prompt
 from rich.markdown import Markdown
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from src.models import InterviewPattern, CompletedAnketa
+from src.models import InterviewPattern
 from src.interview.phases import (
     FieldStatus, FieldPriority, CollectedInfo, ANKETA_FIELDS
 )
@@ -31,6 +31,10 @@ from src.consultant.models import (
 from src.llm.deepseek import DeepSeekClient
 from src.config.prompt_loader import get_prompt, render_prompt
 from src.config.locale_loader import t
+
+# v3.2: Knowledge and Documents integration
+from src.knowledge import IndustryKnowledgeManager, IndustryProfile, get_kb_context_builder
+from src.documents import DocumentContext
 
 console = Console()
 
@@ -151,7 +155,11 @@ class ConsultantInterviewer:
         research_engine: Optional[Any] = None,  # ResearchEngine
         locale: str = "ru",
         config: Optional[ConsultationConfig] = None,
-        config_profile: str = "standard"
+        config_profile: str = "standard",
+        # v3.2: Knowledge and Documents
+        knowledge_manager: Optional[IndustryKnowledgeManager] = None,
+        document_context: Optional[DocumentContext] = None,
+        input_dir: Optional[str] = None,
     ):
         """
         Инициализация консультанта.
@@ -163,7 +171,12 @@ class ConsultantInterviewer:
             locale: Локаль для UI текстов
             config: Конфигурация консультации (переопределяет profile)
             config_profile: Профиль конфигурации ('fast', 'standard', 'thorough')
+            knowledge_manager: Менеджер базы знаний по отраслям (v3.2)
+            document_context: Контекст из документов клиента (v3.2)
+            input_dir: Путь к папке с документами клиента (v3.2)
         """
+        from pathlib import Path
+
         self.pattern = pattern
         self.deepseek = deepseek_client or DeepSeekClient()
         self.research_engine = research_engine
@@ -171,6 +184,24 @@ class ConsultantInterviewer:
 
         # v3.1: Use ConsultationConfig for all settings
         self.config = config or ConsultationConfig.from_name(config_profile)
+
+        # v3.2: Knowledge and Documents
+        self.knowledge_manager = knowledge_manager or IndustryKnowledgeManager()
+        self.input_dir = Path(input_dir) if input_dir else Path("input/current")
+        self.document_context = document_context
+        self.industry_profile: Optional[IndustryProfile] = None
+        self._pending_docs = None
+
+        # Загрузка документов если папка существует и контекст не передан
+        if self.document_context is None and self.input_dir.exists():
+            try:
+                from src.documents import DocumentLoader
+                loader = DocumentLoader()
+                docs = loader.load_all(self.input_dir)
+                if docs:
+                    self._pending_docs = docs
+            except ImportError:
+                pass  # Модуль документов не установлен
 
         # Состояние
         self.session_id = str(uuid.uuid4())
@@ -199,6 +230,18 @@ class ConsultantInterviewer:
         Returns:
             Результат: anketa, files, stats
         """
+        # Анализируем документы если есть
+        if self._pending_docs:
+            try:
+                from src.documents import DocumentAnalyzer
+                analyzer = DocumentAnalyzer(self.deepseek)
+                self.document_context = await analyzer.analyze(self._pending_docs)
+                console.print(f"[cyan]Загружено {len(self._pending_docs)} документов[/cyan]")
+                self._pending_docs = None
+            except Exception as e:
+                console.print(f"[yellow]Не удалось проанализировать документы: {e}[/yellow]")
+                self._pending_docs = None
+
         self._show_welcome()
 
         try:
@@ -249,7 +292,7 @@ class ConsultantInterviewer:
         # Начальное сообщение
         initial_message = get_prompt("consultant/discovery", "initial_message")
         self._show_ai_message(initial_message)
-        self.dialogue_history.append({"role": "assistant", "content": initial_message})
+        self.dialogue_history.append({"role": "assistant", "content": initial_message, "phase": self.phase.value})
 
         while self.phase == ConsultantPhase.DISCOVERY:
             turn_count += 1
@@ -264,7 +307,7 @@ class ConsultantInterviewer:
                 continue
 
             # Добавляем в историю
-            self.dialogue_history.append({"role": "user", "content": user_input})
+            self.dialogue_history.append({"role": "user", "content": user_input, "phase": self.phase.value})
 
             # Проверяем упоминание сайта
             website = self._extract_website(user_input)
@@ -281,7 +324,7 @@ class ConsultantInterviewer:
 
             # Показываем ответ
             self._show_ai_message(ai_response)
-            self.dialogue_history.append({"role": "assistant", "content": ai_response})
+            self.dialogue_history.append({"role": "assistant", "content": ai_response, "phase": self.phase.value})
 
             # Проверяем готовность к переходу
             if turn_count >= self.discovery_max_turns:
@@ -301,14 +344,39 @@ class ConsultantInterviewer:
 СОБРАННАЯ ИНФОРМАЦИЯ:
 {json.dumps(self.collected.to_anketa_dict(), ensure_ascii=False, indent=2)}
 """
+        # v3.2: Add KB context if industry profile is loaded
+        kb_context = self._get_kb_context("discovery")
+        if kb_context:
+            context += "\n" + kb_context
+
         full_system = system_prompt + "\n\n" + context
 
         messages = [
             {"role": "system", "content": full_system}
         ] + self.dialogue_history[-10:]
 
-        response = await self.deepseek.chat(messages, temperature=0.7, max_tokens=1024)
+        # Для deepseek-reasoner нужно больше токенов на reasoning + ответ
+        response = await self.deepseek.chat(messages, temperature=0.7, max_tokens=2048)
         return response
+
+    def _get_kb_context(self, phase: str) -> str:
+        """
+        Get KB context for the current phase.
+
+        Args:
+            phase: Consultation phase (discovery, analysis, proposal, refinement)
+
+        Returns:
+            Formatted KB context string or empty string if no profile loaded
+        """
+        if not self.industry_profile:
+            return ""
+
+        try:
+            builder = get_kb_context_builder()
+            return builder.build_context(self.industry_profile, phase)
+        except Exception:
+            return ""
 
     def _ready_for_analysis(self, turn_count: int) -> bool:
         """Проверить готовность к переходу в Analysis."""
@@ -381,6 +449,9 @@ class ConsultantInterviewer:
             for msg in self.dialogue_history
         ])
 
+        # v3.2: Add KB context for analysis
+        kb_context = self._get_kb_context("analysis")
+
         prompt = f"""Проанализируй диалог с клиентом и собранные данные.
 
 ДИАЛОГ:
@@ -390,6 +461,8 @@ class ConsultantInterviewer:
 {json.dumps(collected_data, ensure_ascii=False, indent=2)}
 
 {"ДАННЫЕ ИССЛЕДОВАНИЯ:" + json.dumps(research_data, ensure_ascii=False) if research_data else ""}
+
+{kb_context}
 
 Верни JSON:
 {{
@@ -564,11 +637,14 @@ class ConsultantInterviewer:
         """Создать предложение на основе анализа."""
         analysis_text = self.business_analysis.to_summary_text() if self.business_analysis else ""
 
+        # v3.2: Add KB context for proposal phase
+        kb_context = self._get_kb_context("proposal")
+
         prompt = f"""На основе анализа бизнеса, создай предложение решения.
 
 АНАЛИЗ:
 {analysis_text}
-
+{kb_context}
 Создай JSON:
 {{
     "main_function": {{
@@ -712,15 +788,36 @@ class ConsultantInterviewer:
             anketa = reviewed_anketa
             # === END REVIEW STEP ===
 
-            # Генерируем файлы
+            # Генерируем файлы через OutputManager
             console.print("[dim]Генерирую документы...[/dim]")
-            generator = AnketaGenerator(output_dir="output/anketas")
-            md_path = generator.to_markdown(anketa)
-            json_path = generator.to_json(anketa)
+            from src.output import OutputManager
 
-            console.print("\n[green]Анкета сохранена:[/green]")
-            console.print(f"  Markdown: {md_path}")
-            console.print(f"  JSON: {json_path}")
+            output_manager = OutputManager()
+            company_dir = output_manager.get_company_dir(anketa.company_name, self.start_time)
+
+            # Генерируем контент
+            anketa_md = AnketaGenerator.render_markdown(anketa)
+            anketa_json = anketa.model_dump()
+
+            # Сохраняем анкету
+            anketa_paths = output_manager.save_anketa(company_dir, anketa_md, anketa_json)
+            md_path = anketa_paths["md"]
+            json_path = anketa_paths["json"]
+
+            # Сохраняем диалог
+            dialogue_path = output_manager.save_dialogue(
+                company_dir=company_dir,
+                dialogue_history=self.dialogue_history,
+                company_name=anketa.company_name,
+                client_name=anketa.contact_name or "Клиент",
+                duration_seconds=duration_seconds,
+                start_time=self.start_time
+            )
+
+            console.print("\n[green]Документы сохранены:[/green]")
+            console.print(f"  Папка: {company_dir}")
+            console.print(f"  Анкета: {md_path.name}")
+            console.print(f"  Диалог: {dialogue_path.name}")
 
             # Показываем краткую сводку
             self._show_anketa_summary(anketa)
@@ -736,8 +833,10 @@ class ConsultantInterviewer:
             "anketa": anketa.model_dump(),
             "files": {
                 "json": str(json_path),
-                "markdown": str(md_path)
+                "markdown": str(md_path),
+                "dialogue": str(dialogue_path)
             },
+            "output_dir": str(company_dir),
             "stats": self._get_session_stats()
         }
 
@@ -771,6 +870,13 @@ class ConsultantInterviewer:
             return self.business_analysis.company_name
         if field.field_id == "industry" and self.business_analysis:
             return self.business_analysis.industry
+
+        # v3.2: Suggestions from KB industry profile
+        if self.industry_profile:
+            if field.field_id == "services" and self.industry_profile.typical_services:
+                return ", ".join(self.industry_profile.typical_services[:3])
+            if field.field_id == "integrations" and self.industry_profile.typical_integrations:
+                return ", ".join([i.name for i in self.industry_profile.typical_integrations[:3]])
 
         # Из примеров в поле
         if field.examples:
@@ -817,30 +923,6 @@ class ConsultantInterviewer:
         if integrations:
             self.collected.update_field("integrations", integrations,
                                         source="proposal", confidence=0.8)
-
-    def _create_completed_anketa(self) -> CompletedAnketa:
-        """Создать CompletedAnketa для экспорта."""
-        data = self.collected.to_anketa_dict()
-        duration = (datetime.now(timezone.utc) - self.start_time).total_seconds()
-
-        return CompletedAnketa(
-            anketa_id=str(uuid.uuid4()),
-            interview_id=self.session_id,
-            pattern=self.pattern,
-            created_at=datetime.now(timezone.utc),
-            interview_duration_seconds=duration,
-            company_name=data.get("company_name", "Не указано"),
-            industry=data.get("industry", "Не указано"),
-            language=data.get("language", "Русский"),
-            agent_purpose=data.get("agent_purpose", "Не указано"),
-            agent_name=data.get("agent_name", "Агент"),
-            tone=data.get("tone", "Дружелюбный"),
-            contact_person="",
-            contact_email=data.get("contact_email", ""),
-            contact_phone=data.get("contact_phone", ""),
-            full_responses=data,
-            quality_metrics=self.collected.get_completion_stats()
-        )
 
     def _show_completion(self, result: Dict[str, Any]):
         """Показать результаты."""
@@ -994,9 +1076,10 @@ class ConsultantInterviewer:
 }}"""
 
         try:
+            # Для deepseek-reasoner нужно больше токенов на reasoning + JSON
             response = await self.deepseek.chat([
                 {"role": "user", "content": prompt}
-            ], temperature=0.1, max_tokens=256)
+            ], temperature=0.1, max_tokens=2048)
 
             json_text = response.strip()
             start = json_text.find('{')
@@ -1010,5 +1093,114 @@ class ConsultantInterviewer:
                 if info.get(field_id):
                     self.collected.update_field(field_id, info[field_id],
                                                 source="discovery", confidence=0.7)
+
+                    # v3.2: Auto-detect industry and load profile
+                    if field_id == 'industry' and not self.industry_profile:
+                        self._try_load_industry_profile(info[field_id])
+
         except Exception:
             pass  # Извлечение не критично
+
+    # ===== v3.2: KNOWLEDGE BASE & DOCUMENTS =====
+
+    def _try_load_industry_profile(self, industry_text: str):
+        """Попытаться загрузить профиль отрасли по тексту."""
+        if self.industry_profile:
+            return  # Уже загружен
+
+        industry_id = self.knowledge_manager.detect_industry(industry_text)
+        if industry_id:
+            self.industry_profile = self.knowledge_manager.get_profile(industry_id)
+            if self.industry_profile:
+                console.print(f"[dim]Загружен профиль отрасли: {industry_id}[/dim]")
+
+    def _detect_industry_from_dialogue(self):
+        """Определить отрасль из истории диалога."""
+        if self.industry_profile:
+            return  # Уже определена
+
+        # Собираем текст из диалога
+        dialogue_text = " ".join(
+            msg.get("content", "") for msg in self.dialogue_history
+            if msg.get("role") == "user"
+        )
+
+        if dialogue_text:
+            industry_id = self.knowledge_manager.detect_industry(dialogue_text)
+            if industry_id:
+                self.industry_profile = self.knowledge_manager.get_profile(industry_id)
+                if self.industry_profile:
+                    console.print(f"[dim]Определена отрасль: {industry_id}[/dim]")
+
+    def get_industry_context(self) -> str:
+        """
+        Получить контекст отрасли для обогащения промптов.
+
+        Returns:
+            Форматированная строка с контекстом отрасли
+        """
+        if not self.industry_profile:
+            self._detect_industry_from_dialogue()
+
+        if not self.industry_profile:
+            return ""
+
+        context = self.knowledge_manager.get_context_for_interview(self.industry_profile.id)
+        if not context:
+            return ""
+
+        parts = ["\n### Контекст отрасли:\n"]
+
+        # Типичные боли
+        if context.get("pain_points"):
+            parts.append("**Типичные боли клиентов:**")
+            for p in context["pain_points"][:5]:
+                severity = p.get("severity", "medium")
+                icon = "🔴" if severity == "high" else "🟡"
+                parts.append(f"  {icon} {p['description']}")
+
+        # Рекомендуемые функции
+        if context.get("recommended_functions"):
+            parts.append("\n**Рекомендуемые функции агента:**")
+            for f in context["recommended_functions"][:5]:
+                if f.get("priority") == "high":
+                    parts.append(f"  ⭐ {f['name']} — {f.get('reason', '')}")
+
+        # FAQ
+        if context.get("faq"):
+            parts.append("\n**Типичные вопросы в отрасли:**")
+            for faq in context["faq"][:3]:
+                parts.append(f"  Q: {faq['question']}")
+
+        return "\n".join(parts)
+
+    def get_document_context(self) -> str:
+        """
+        Получить контекст из документов клиента.
+
+        Returns:
+            Форматированная строка с контекстом из документов
+        """
+        if not self.document_context:
+            return ""
+
+        return self.document_context.to_prompt_context()
+
+    def get_enriched_context(self) -> str:
+        """
+        Получить объединённый контекст (отрасль + документы).
+
+        Returns:
+            Полный контекст для обогащения промптов
+        """
+        parts = []
+
+        industry_ctx = self.get_industry_context()
+        if industry_ctx:
+            parts.append(industry_ctx)
+
+        doc_ctx = self.get_document_context()
+        if doc_ctx:
+            parts.append(doc_ctx)
+
+        return "\n\n".join(parts)

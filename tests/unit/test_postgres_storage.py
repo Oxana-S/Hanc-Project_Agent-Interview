@@ -19,8 +19,9 @@ except ImportError:
         pass
 
 from src.models import (
-    InterviewPattern, InterviewStatus, CompletedAnketa, InterviewStatistics
+    InterviewPattern, InterviewStatus, InterviewStatistics
 )
+from src.anketa.schema import FinalAnketa
 
 
 class TestPostgreSQLStorageManagerSaveAnketa:
@@ -63,30 +64,25 @@ class TestPostgreSQLStorageManagerGetAnketa:
         mock_anketa_db = MagicMock()
         mock_anketa_db.anketa_id = "test-anketa-id"
         mock_anketa_db.interview_id = "test-interview-id"
-        mock_anketa_db.pattern = InterviewPattern.INTERACTION
-        mock_anketa_db.created_at = datetime.utcnow()
-        mock_anketa_db.interview_duration_seconds = 1800.0
+        mock_anketa_db.pattern = "interaction"
+        mock_anketa_db.created_at = datetime.now()
         mock_anketa_db.company_name = "Test Co"
         mock_anketa_db.industry = "IT"
-        mock_anketa_db.language = "Russian"
-        mock_anketa_db.agent_purpose = "Testing"
-        mock_anketa_db.agent_name = "TestBot"
-        mock_anketa_db.tone = "formal"
-        mock_anketa_db.contact_person = "John"
-        mock_anketa_db.contact_email = "john@test.com"
-        mock_anketa_db.contact_phone = "+123456"
-        mock_anketa_db.company_website = None
-        mock_anketa_db.services = []
-        mock_anketa_db.client_types = []
-        mock_anketa_db.typical_questions = []
-        mock_anketa_db.working_hours = {}
-        mock_anketa_db.transfer_conditions = []
-        mock_anketa_db.integrations = {}
-        mock_anketa_db.example_dialogues = []
-        mock_anketa_db.restrictions = []
-        mock_anketa_db.compliance_requirements = []
-        mock_anketa_db.full_responses = {}
-        mock_anketa_db.quality_metrics = {}
+        # Новая структура: anketa_json содержит полные данные FinalAnketa
+        mock_anketa_db.anketa_json = {
+            "anketa_id": "test-anketa-id",
+            "interview_id": "test-interview-id",
+            "pattern": "interaction",
+            "company_name": "Test Co",
+            "industry": "IT",
+            "language": "ru",
+            "agent_purpose": "Testing",
+            "agent_name": "TestBot",
+            "voice_tone": "formal",
+            "contact_name": "John",
+            "contact_email": "john@test.com",
+            "contact_phone": "+123456",
+        }
 
         mock_session = mock_postgres_manager._get_session()
         mock_session.query.return_value.filter.return_value.first.return_value = mock_anketa_db
@@ -95,7 +91,7 @@ class TestPostgreSQLStorageManagerGetAnketa:
 
         assert result is not None
         assert result.company_name == "Test Co"
-        assert result.pattern == InterviewPattern.INTERACTION
+        assert result.pattern == "interaction"
 
     @pytest.mark.asyncio
     async def test_get_anketa_not_found(self, mock_postgres_manager):

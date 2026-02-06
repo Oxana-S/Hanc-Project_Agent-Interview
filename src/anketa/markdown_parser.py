@@ -17,7 +17,7 @@ from src.anketa.schema import (
     ChecklistItem, AIRecommendation, TargetAudienceSegment
 )
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class AnketaMarkdownParser:

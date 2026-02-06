@@ -13,8 +13,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 from src.models import (
     InterviewPattern, InterviewStatus, QuestionStatus, AnalysisStatus,
     AnswerAnalysis, Clarification, QuestionResponse, InterviewContext,
-    CompletedAnketa, InterviewStatistics
+    InterviewStatistics
 )
+from src.anketa.schema import FinalAnketa
 
 
 class TestEnums:
@@ -283,81 +284,49 @@ class TestInterviewContext:
         assert "pattern" in json_str
 
 
-class TestCompletedAnketa:
-    """Test CompletedAnketa model."""
+class TestFinalAnketa:
+    """Test FinalAnketa model."""
 
-    def test_anketa_creation(self, sample_completed_anketa):
-        assert sample_completed_anketa.company_name == "TechSolutions Inc."
-        assert sample_completed_anketa.pattern == InterviewPattern.INTERACTION
+    def test_anketa_creation(self, sample_final_anketa):
+        assert sample_final_anketa.company_name == "TechSolutions Inc."
+        assert sample_final_anketa.pattern == "interaction"
 
     def test_anketa_required_fields(self):
-        anketa = CompletedAnketa(
+        anketa = FinalAnketa(
             interview_id="test",
-            pattern=InterviewPattern.INTERACTION,
-            interview_duration_seconds=1000.0,
+            pattern="interaction",
             company_name="Test Co",
-            industry="IT",
-            language="English",
-            agent_purpose="Testing",
-            agent_name="TestBot",
-            tone="formal",
-            contact_person="Test Person",
-            contact_email="test@test.com",
-            contact_phone="+1234567890"
+            industry="IT"
         )
         assert anketa.company_name == "Test Co"
 
-    def test_anketa_default_integrations(self):
-        anketa = CompletedAnketa(
-            interview_id="test",
-            pattern=InterviewPattern.INTERACTION,
-            interview_duration_seconds=1000.0,
+    def test_anketa_default_values(self):
+        anketa = FinalAnketa(
             company_name="Test Co",
-            industry="IT",
-            language="English",
-            agent_purpose="Testing",
-            agent_name="TestBot",
-            tone="formal",
-            contact_person="Test Person",
-            contact_email="test@test.com",
-            contact_phone="+1234567890"
+            industry="IT"
         )
-        assert "email" in anketa.integrations
-        assert anketa.integrations["email"]["enabled"] == False
+        assert anketa.pattern == "interaction"
+        assert anketa.language == "ru"
+        assert anketa.voice_tone == "professional"
+        assert anketa.integrations == []
 
     def test_anketa_uuid_generation(self):
-        a1 = CompletedAnketa(
+        a1 = FinalAnketa(
             interview_id="test1",
-            pattern=InterviewPattern.INTERACTION,
-            interview_duration_seconds=1000.0,
+            pattern="interaction",
             company_name="Test Co",
-            industry="IT",
-            language="English",
-            agent_purpose="Testing",
-            agent_name="TestBot",
-            tone="formal",
-            contact_person="Test",
-            contact_email="test@test.com",
-            contact_phone="+1234567890"
+            industry="IT"
         )
-        a2 = CompletedAnketa(
+        a2 = FinalAnketa(
             interview_id="test2",
-            pattern=InterviewPattern.INTERACTION,
-            interview_duration_seconds=1000.0,
+            pattern="interaction",
             company_name="Test Co",
-            industry="IT",
-            language="English",
-            agent_purpose="Testing",
-            agent_name="TestBot",
-            tone="formal",
-            contact_person="Test",
-            contact_email="test@test.com",
-            contact_phone="+1234567890"
+            industry="IT"
         )
         assert a1.anketa_id != a2.anketa_id
 
-    def test_anketa_json_serialization(self, sample_completed_anketa):
-        json_str = sample_completed_anketa.model_dump_json()
+    def test_anketa_json_serialization(self, sample_final_anketa):
+        json_str = sample_final_anketa.model_dump_json()
         assert isinstance(json_str, str)
         assert "company_name" in json_str
 

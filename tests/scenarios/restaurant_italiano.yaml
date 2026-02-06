@@ -1,0 +1,67 @@
+# Тестовый сценарий: Итальянский ресторан
+# Индустрия: HoReCa (без профиля в базе знаний)
+
+# Документы клиента
+documents:
+  input_dir: "input/restaurant_italiano"
+
+persona:
+  name: "Марко Росси"
+  role: "Управляющий"
+  company: "Ristorante Bella Italia"
+  industry: "Ресторанный бизнес"
+  company_size: "25 сотрудников"
+
+  # Характер
+  personality:
+    communication_style: "эмоциональный"
+    decision_speed: "средняя"
+    tech_savviness: "низкая"
+
+  # Контекст бизнеса
+  business_context:
+    description: "Семейный итальянский ресторан в центре города, работаем 8 лет"
+    current_situation: "Постоянный поток звонков для бронирования столиков"
+    pain_points:
+      - "Хостес не успевает отвечать на звонки в часы пик"
+      - "Много звонков с вопросами о меню и ценах"
+      - "Теряем брони из-за пропущенных звонков"
+      - "Клиенты звонят уточнить время работы"
+    goals:
+      - "Не терять бронирования"
+      - "Освободить хостес для работы с гостями в зале"
+
+  # Знания для ответов
+  knowledge:
+    services:
+      - "Итальянская кухня"
+      - "Бизнес-ланчи"
+      - "Банкеты и корпоративы"
+      - "Доставка"
+    integrations:
+      - "iiko"
+      - "R-Keeper"
+    budget: "до 50 000 руб/мес"
+    timeline: "хотим запустить к летнему сезону"
+
+  # Стиль общения
+  response_style:
+    verbosity: "средняя"
+    uses_industry_terms: true
+    asks_questions: true
+
+# Ожидаемые результаты
+expected_results:
+  required_fields:
+    - company_name
+    - industry
+    - agent_purpose
+
+  expected_pain_points:
+    - "бронирование"
+    - "звонки"
+    - "хостес"
+
+  expected_functions:
+    - "бронирование столиков"
+    - "информация о меню"

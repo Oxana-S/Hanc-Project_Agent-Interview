@@ -1,0 +1,140 @@
+meta:
+  id: logistics
+  version: '1.0'
+  created_at: '2026-02-04'
+  last_updated: '2026-02-06'
+  tests_run: 2
+  avg_validation_score: 0.833
+aliases:
+- логистика
+- доставка
+- грузоперевозки
+- курьерская служба
+- транспортная компания
+- склад
+- экспедиция
+- перевозки
+- груз
+- отправление
+- посылка
+- ттн
+- накладная
+typical_services:
+- Доставка грузов
+- Экспресс-доставка
+- Курьерская доставка
+- Складское хранение
+- Таможенное оформление
+- Отслеживание грузов
+- Сборные грузы
+- Межгород
+- Последняя миля
+pain_points:
+- description: Много звонков с вопросом 'где мой груз?'
+  severity: high
+  solution_hint: Автоматический статус по номеру накладной
+- description: Клиенты не могут дозвониться в пиковые часы
+  severity: high
+  solution_hint: Голосовой агент 24/7 для статусов и FAQ
+- description: Операторы тратят время на рутинные вопросы
+  severity: medium
+  solution_hint: Автоматизация типовых запросов
+- description: Сложно координировать время доставки
+  severity: medium
+  solution_hint: Автоматическое согласование слотов
+- description: Ошибки при приёме заявок по телефону
+  severity: medium
+  solution_hint: Структурированный приём заявок
+recommended_functions:
+- name: статус
+  priority: high
+  reason: 70-80% звонков — запросы статуса доставки
+- name: приём заявок
+  priority: high
+  reason: Автоматизация оформления новых заявок
+- name: маршрутизация
+  priority: medium
+  reason: Перевод сложных вопросов на менеджера
+- name: напоминание
+  priority: medium
+  reason: Уведомления о доставке, подтверждение времени
+- name: faq
+  priority: medium
+  reason: Ответы на типовые вопросы о тарифах, сроках
+- name: перенос
+  priority: low
+  reason: Изменение времени/адреса доставки
+typical_integrations:
+- name: TMS
+  examples:
+  - 1С Логистика
+  - Axelot
+  - SAP TM
+  - Яндекс.Маршрутизация
+  priority: high
+  reason: Получение статусов, отслеживание
+- name: CRM
+  examples:
+  - Bitrix24
+  - AmoCRM
+  - RetailCRM
+  priority: medium
+  reason: История клиента, карточка заказа
+- name: Мессенджеры
+  examples:
+  - Telegram
+  - WhatsApp
+  priority: high
+  reason: Уведомления о статусе доставки
+- name: SMS
+  examples:
+  - SMSC
+  - Devino
+  priority: medium
+  reason: SMS-уведомления о доставке
+- name: Телефония
+  examples:
+  - Mango Office
+  - Zadarma
+  - Sipuni
+  priority: high
+  reason: Обработка входящих звонков
+industry_faq:
+- question: Где мой груз?
+  answer_template: Назовите номер накладной или трек-номер, и я проверю статус доставки.
+- question: Сколько стоит доставка?
+  answer_template: Стоимость зависит от веса, габаритов и маршрута. Могу рассчитать,
+    если скажете параметры.
+- question: Когда приедет курьер?
+  answer_template: Уточните номер заказа, и я скажу ориентировочное время прибытия.
+- question: Можно изменить адрес доставки?
+  answer_template: Да, это возможно до момента выезда курьера. Назовите новый адрес.
+- question: Работаете ли вы в выходные?
+  answer_template: Мы работаем 7 дней в неделю. Доставка в выходные возможна.
+- question: Как оформить возврат?
+  answer_template: Для возврата свяжитесь с отправителем. Мы организуем обратную доставку.
+typical_objections:
+- objection: Долго ждать ответа
+  response: Понимаю вашу озабоченность. Я виртуальный ассистент и отвечаю мгновенно
+    24/7.
+- objection: Хочу говорить с человеком
+  response: Конечно, сейчас соединю с оператором. Ожидание примерно 2 минуты.
+- objection: Статус неточный
+  response: Данные обновляются каждые 15 минут. Могу уточнить у диспетчера и перезвонить.
+learnings:
+- date: '2026-02-05'
+  insight: 'Ошибка валидации: [scenario_match] Компания не совпадает: ожидали ''ГрузовикОнлайн'';
+    Мало совпадений по интеграциям: 1/4'
+  source: test_logistics_company
+- date: '2026-02-06'
+  insight: 'Ошибка валидации: [scenario_match] Компания не совпадает: ожидали ''ГрузовикОнлайн'';
+    Мало совпадений по интеграциям: 1/4'
+  source: test_logistics_company
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Снижение нагрузки на операторов на 40%
+  - Автоматизация 70% статусных запросов
+  - Среднее время ответа < 5 секунд
+  - Удовлетворённость клиентов > 4.0/5

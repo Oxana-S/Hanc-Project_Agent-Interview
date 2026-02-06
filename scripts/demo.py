@@ -15,9 +15,9 @@ from rich.prompt import Prompt
 
 from src.models import (
     InterviewPattern, InterviewContext, InterviewStatus,
-    QuestionResponse, QuestionStatus, AnswerAnalysis, AnalysisStatus,
-    CompletedAnketa
+    QuestionResponse, QuestionStatus, AnswerAnalysis, AnalysisStatus
 )
+from src.anketa.schema import FinalAnketa
 from src.storage.redis import RedisStorageManager
 from src.storage.postgres import PostgreSQLStorageManager
 from src.cli.interface import InterviewCLI, print_welcome_banner
@@ -152,20 +152,20 @@ class MockVoiceInterviewerAgent:
         # Генерируем анкету
         responses = {q.question_id: q.answer for q in self.context.questions if q.answer}
         
-        anketa = CompletedAnketa(
+        anketa = FinalAnketa(
             interview_id=self.context.interview_id,
-            pattern=self.pattern,
-            interview_duration_seconds=self.context.total_duration_seconds,
+            pattern=self.pattern.value,
+            consultation_duration_seconds=self.context.total_duration_seconds,
             company_name=responses.get("1.1", "TechSolutions Inc."),
             industry=responses.get("1.2", "IT / Технологии"),
-            language=responses.get("1.3", "Русский"),
+            language=responses.get("1.3", "ru"),
             agent_purpose=responses.get("1.4", "Поддержка клиентов"),
             agent_name="Алекс",
-            tone="Адаптивный",
-            contact_person="Иван Петров",
+            voice_tone="adaptive",
+            contact_name="Иван Петров",
             contact_email="ivan@techsolutions.com",
             contact_phone="+79991234567",
-            company_website="https://techsolutions.com",
+            website="https://techsolutions.com",
             full_responses=responses,
             quality_metrics={
                 "completeness_score": 0.87,

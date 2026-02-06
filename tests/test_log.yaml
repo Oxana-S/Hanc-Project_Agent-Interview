@@ -1,0 +1,48 @@
+# Лог тестирования индустрий
+# Отслеживает: какие сценарии проверены, когда, с каким результатом
+
+version: "1.0"
+last_updated: "2026-02-04"
+
+# Протестированные сценарии
+tested:
+  logistics_company:
+    industry: "Логистика"
+    company: "ГрузовикОнлайн"
+    tested_at: "2026-02-04 08:09"
+    validation_score: 83
+    status: "completed"
+    adjustments:
+      - "expected_functions: статус, заявк, faq, маршрут"
+      - "expected_integrations: 1с, мессендж, телефония"
+    notes: "DeepSeek возвращал пустой JSON при extraction"
+
+# Сценарии с корректировками (ожидают тестирования)
+adjusted_pending:
+  real_estate_agency:
+    industry: "Недвижимость"
+    adjusted_at: "2026-02-04"
+    changes:
+      - "expected_functions: запис, квалификац, напомина, faq, маршрут"
+      - "expected_integrations: crm, календар, мессендж"
+
+  online_school:
+    industry: "Образование"
+    adjusted_at: "2026-02-04"
+    changes:
+      - "expected_functions: квалификац, faq, напомина, обратн, запис"
+      - "expected_integrations: мессендж, календар"
+
+  restaurant_delivery:
+    industry: "HoReCa"
+    adjusted_at: "2026-02-04"
+    changes:
+      - "expected_functions: заявк, статус, запис, faq, обратн, маршрут"
+      - "expected_integrations: iiko, мессендж, карт"
+
+# Непроверенные сценарии
+untested:
+  - auto_service
+  - medical_center
+  - medical_clinic
+  - vitalbox

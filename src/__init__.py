@@ -15,8 +15,8 @@ from src.models import (
     QuestionStatus,
     AnalysisStatus,
     InterviewContext,
-    CompletedAnketa,
 )
+from src.anketa.schema import FinalAnketa
 from src.interview.maximum import MaximumInterviewer
 from src.interview.phases import (
     InterviewPhase,
@@ -38,7 +38,7 @@ __all__ = [
     "QuestionStatus",
     "AnalysisStatus",
     "InterviewContext",
-    "CompletedAnketa",
+    "FinalAnketa",
     # Interview
     "MaximumInterviewer",
     "InterviewPhase",

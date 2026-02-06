@@ -1,0 +1,149 @@
+# Base synonyms - universal technical terms (language-independent)
+# These terms are the same across all languages
+#
+# v3.3 Multi-language architecture
+# Structure: base.yaml + {lang}.yaml files
+
+meta:
+  version: "3.3"
+  type: "base"
+  description: "Universal technical terms shared across all languages"
+  last_updated: "2026-02-04"
+
+# ============================================================================
+# INTEGRATIONS - Technical platforms (mostly English brand names)
+# ============================================================================
+integrations:
+  # CRM Systems
+  crm:
+    - crm
+    - bitrix
+    - bitrix24
+    - amocrm
+    - amo
+    - salesforce
+    - hubspot
+    - pipedrive
+    - zoho
+    - megaplan
+    - retailcrm
+    - freshsales
+
+  # Medical Information Systems
+  mis:
+    - mis
+    - medods
+    - medesk
+    - infoclinica
+    - medialoq
+
+  # Telephony / PBX
+  telephony:
+    - pbx
+    - asterisk
+    - mango
+    - sipuni
+    - zadarma
+    - voximplant
+    - uiscom
+    - mtt
+    - twilio
+    - vonage
+
+  # Messaging Platforms
+  sms:
+    - sms
+    - twilio
+    - smsc
+    - devino
+    - unisender
+
+  # Messengers
+  messengers:
+    - telegram
+    - tg
+    - whatsapp
+    - wa
+    - viber
+    - jivo
+    - intercom
+    - drift
+
+  # Calendar Systems
+  calendar:
+    - google calendar
+    - outlook
+    - yclients
+    - calendly
+    - acuity
+
+  # ERP / Accounting
+  erp:
+    - erp
+    - sap
+    - oracle
+    - dynamics
+    - netsuite
+
+  # Email
+  email:
+    - email
+    - smtp
+    - mailchimp
+    - sendpulse
+    - mailgun
+    - sendgrid
+
+  # Analytics
+  analytics:
+    - google analytics
+    - ga4
+    - metrika
+    - mixpanel
+    - amplitude
+    - bi
+    - tableau
+    - powerbi
+
+  # Payment Systems
+  payments:
+    - stripe
+    - paypal
+    - tinkoff
+    - sberbank
+    - cloudpayments
+    - yookassa
+
+# ============================================================================
+# CANONICAL KEYS - for cross-language matching
+# Maps canonical English keys to all language variants
+# ============================================================================
+canonical_mapping:
+  # Functions
+  booking: [booking, appointment, scheduling]
+  status: [status, tracking]
+  reminder: [reminder, notification]
+  faq: [faq]
+  support: [support, helpdesk]
+  sales: [sales, upsell]
+  feedback: [feedback, review, nps]
+  intake: [intake, request, order]
+  routing: [routing, transfer, ivr]
+  outbound: [outbound, dialer]
+  reschedule: [reschedule, cancel]
+  home_visit: [home visit, house call]
+  qualification: [qualification, lead scoring]
+
+  # Industries
+  medical: [medical, healthcare]
+  wellness: [wellness, spa, beauty]
+  it: [it, software, tech, saas]
+  finance: [finance, banking, insurance]
+  retail: [retail, ecommerce]
+  realestate: [real estate, property]
+  education: [education, edtech]
+  logistics: [logistics, delivery, shipping]
+  automotive: [automotive, auto, car service]
+  horeca: [horeca, restaurant, hotel]
+  legal: [legal, law]
+  franchise: [franchise]

@@ -18,7 +18,7 @@ import structlog
 
 from .models import DocumentVersion, ReviewConfig
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class VersionHistory:

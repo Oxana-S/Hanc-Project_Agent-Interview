@@ -6,7 +6,8 @@ Contains all data needed to build a voice agent PLUS AI-generated insights.
 """
 
 from datetime import datetime
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
+from uuid import uuid4
 from pydantic import BaseModel, Field
 
 
@@ -134,6 +135,14 @@ class FinalAnketa(BaseModel):
     """
 
     # ============================================================
+    # IDENTITY (for storage and tracking)
+    # ============================================================
+
+    anketa_id: str = Field(default_factory=lambda: str(uuid4()), description="Unique anketa ID")
+    interview_id: str = Field(default="", description="Associated interview session ID")
+    pattern: str = Field(default="interaction", description="Interview pattern: interaction or management")
+
+    # ============================================================
     # BLOCK 1: BASIC INFORMATION (from client)
     # ============================================================
 
@@ -144,6 +153,8 @@ class FinalAnketa(BaseModel):
     website: Optional[str] = Field(default=None, description="Company website URL")
     contact_name: str = Field(default="", description="Name of the contact person")
     contact_role: str = Field(default="", description="Role/position of the contact person")
+    contact_email: str = Field(default="", description="Contact email address")
+    contact_phone: str = Field(default="", description="Contact phone number")
 
     # Business Context
     business_description: str = Field(default="", description="Description of the business")
@@ -151,7 +162,9 @@ class FinalAnketa(BaseModel):
     client_types: List[str] = Field(default_factory=list, description="Types of clients")
     current_problems: List[str] = Field(default_factory=list, description="Current pain points")
     business_goals: List[str] = Field(default_factory=list, description="Goals for automation")
+    business_type: Optional[str] = Field(default=None, description="Type of business (B2B, B2C, etc.)")
     constraints: List[str] = Field(default_factory=list, description="Constraints")
+    compliance_requirements: List[str] = Field(default_factory=list, description="Compliance and regulatory requirements")
 
     # Voice Agent Basic
     agent_name: str = Field(default="", description="Name of the voice agent")
@@ -163,6 +176,8 @@ class FinalAnketa(BaseModel):
     voice_tone: str = Field(default="professional", description="Voice tone")
     language: str = Field(default="ru", description="Language code")
     call_direction: str = Field(default="inbound", description="Call direction: inbound/outbound/both")
+    working_hours: Dict[str, str] = Field(default_factory=dict, description="Working hours schedule")
+    transfer_conditions: List[str] = Field(default_factory=list, description="Conditions for transferring to human")
 
     # Integrations
     integrations: List[Integration] = Field(default_factory=list, description="Required integrations")
@@ -296,6 +311,10 @@ class FinalAnketa(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now, description="Creation timestamp")
     consultation_duration_seconds: float = Field(default=0.0, description="Duration of consultation")
     anketa_version: str = Field(default="2.0", description="Anketa schema version")
+
+    # Storage and tracking
+    full_responses: Dict[str, Any] = Field(default_factory=dict, description="Raw responses from interview")
+    quality_metrics: Dict[str, float] = Field(default_factory=dict, description="Quality metrics for this anketa")
 
     def completion_rate(self) -> float:
         """Calculate the percentage of filled fields."""

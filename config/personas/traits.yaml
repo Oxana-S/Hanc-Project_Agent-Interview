@@ -1,0 +1,269 @@
+# Personality Traits Library
+# Библиотека черт личности для симулированных клиентов
+
+meta:
+  version: "1.0"
+  description: "Personality traits that influence client behavior"
+
+# === COMMUNICATION TRAITS ===
+traits:
+  brief:
+    category: communication
+    name_ru: "Краткий"
+    name_en: "Brief"
+    description_ru: "Отвечает коротко, по делу"
+    response_length: 0.5
+    detail_level: 0.3
+    speech_patterns:
+      - "Да"
+      - "Нет"
+      - "Понял"
+      - "Ок"
+      - "Дальше"
+      - "Ясно"
+
+  verbose:
+    category: communication
+    name_ru: "Многословный"
+    name_en: "Verbose"
+    description_ru: "Любит подробно объяснять"
+    response_length: 1.8
+    detail_level: 1.5
+    speech_patterns:
+      - "Дело в том, что..."
+      - "Если подробнее..."
+      - "Расскажу историю..."
+      - "Вот, например..."
+
+  formal:
+    category: communication
+    name_ru: "Формальный"
+    name_en: "Formal"
+    description_ru: "Официальный стиль общения"
+    formality: 1.5
+    speech_patterns:
+      - "Будьте добры"
+      - "Позвольте уточнить"
+      - "Благодарю"
+      - "Прошу прощения"
+
+  casual:
+    category: communication
+    name_ru: "Неформальный"
+    name_en: "Casual"
+    description_ru: "Разговорный стиль"
+    formality: 0.5
+    speech_patterns:
+      - "Слушай"
+      - "Короче"
+      - "Ну типа"
+      - "Да ладно"
+
+  # === DECISION TRAITS ===
+  decisive:
+    category: decision
+    name_ru: "Решительный"
+    name_en: "Decisive"
+    description_ru: "Быстро принимает решения"
+    hesitation_prob: 0.05
+    speech_patterns:
+      - "Давайте так и сделаем"
+      - "Решено"
+      - "Идёт"
+      - "Договорились"
+
+  indecisive:
+    category: decision
+    name_ru: "Нерешительный"
+    name_en: "Indecisive"
+    description_ru: "Долго думает, уточняет"
+    hesitation_prob: 0.6
+    question_prob: 0.5
+    speech_patterns:
+      - "Не знаю..."
+      - "Надо подумать"
+      - "А если..."
+      - "Не уверен"
+      - "Сложно сказать"
+
+  skeptic:
+    category: decision
+    name_ru: "Скептик"
+    name_en: "Skeptic"
+    description_ru: "Сомневается, требует доказательств"
+    objection_prob: 0.6
+    question_prob: 0.4
+    focuses_on:
+      - "гарантии"
+      - "кейсы"
+      - "отзывы"
+      - "статистика"
+      - "доказательств"
+    speech_patterns:
+      - "А точно?"
+      - "Не верю"
+      - "Докажите"
+      - "Сомневаюсь"
+      - "У вас есть примеры?"
+
+  impulsive:
+    category: decision
+    name_ru: "Импульсивный"
+    name_en: "Impulsive"
+    description_ru: "Быстрые эмоциональные решения"
+    interrupt_prob: 0.3
+    hesitation_prob: 0.02
+    speech_patterns:
+      - "Беру!"
+      - "Отлично, погнали!"
+      - "Да не важно, давайте"
+      - "Сделаем!"
+
+  # === KNOWLEDGE TRAITS ===
+  expert:
+    category: knowledge
+    name_ru: "Эксперт"
+    name_en: "Expert"
+    description_ru: "Разбирается в теме, задаёт технические вопросы"
+    detail_level: 1.3
+    question_prob: 0.5
+    focuses_on:
+      - "API"
+      - "интеграци"
+      - "протокол"
+      - "архитектур"
+      - "latency"
+      - "webhook"
+    speech_patterns:
+      - "А какой протокол?"
+      - "Через API или webhook?"
+      - "Какая архитектура?"
+      - "Latency какой?"
+
+  novice:
+    category: knowledge
+    name_ru: "Новичок"
+    name_en: "Novice"
+    description_ru: "Мало понимает, нужны простые объяснения"
+    question_prob: 0.4
+    avoids_topics:
+      - "API"
+      - "интеграци"
+      - "протокол"
+      - "технич"
+    speech_patterns:
+      - "А что это?"
+      - "Не понял"
+      - "Можно проще?"
+      - "Это как?"
+
+  # === EMOTIONAL TRAITS ===
+  busy:
+    category: emotional
+    name_ru: "Занятой"
+    name_en: "Busy"
+    description_ru: "Торопится, отвлекается"
+    response_length: 0.6
+    interrupt_prob: 0.4
+    speech_patterns:
+      - "Быстрее"
+      - "Некогда"
+      - "Давайте короче"
+      - "Секунду, мне звонят"
+      - "У меня мало времени"
+
+  frustrated:
+    category: emotional
+    name_ru: "Раздражённый"
+    name_en: "Frustrated"
+    description_ru: "Недоволен, был негативный опыт"
+    objection_prob: 0.5
+    formality: 0.7
+    speech_patterns:
+      - "Опять?"
+      - "Надоело"
+      - "У вас как у всех"
+      - "Уже пробовали"
+      - "Не работает это"
+
+  enthusiastic:
+    category: emotional
+    name_ru: "Энтузиаст"
+    name_en: "Enthusiastic"
+    description_ru: "Воодушевлён, позитивен"
+    response_length: 1.3
+    objection_prob: 0.05
+    speech_patterns:
+      - "Классно!"
+      - "Отлично!"
+      - "Супер идея!"
+      - "Мне нравится!"
+      - "Интересно!"
+
+  price_sensitive:
+    category: emotional
+    name_ru: "Чувствителен к цене"
+    name_en: "Price Sensitive"
+    description_ru: "Фокус на стоимости"
+    objection_prob: 0.4
+    focuses_on:
+      - "цена"
+      - "стоимость"
+      - "бюджет"
+      - "скидк"
+      - "ROI"
+      - "окупаем"
+      - "рубл"
+    speech_patterns:
+      - "Сколько?"
+      - "Дорого"
+      - "А дешевле?"
+      - "Какой ROI?"
+      - "Когда окупится?"
+
+# Speech patterns by action type
+action_patterns:
+  object:
+    price:
+      - "Это слишком дорого"
+      - "У конкурентов дешевле"
+      - "Не готов столько платить"
+      - "А можно скидку?"
+    time:
+      - "Это слишком долго"
+      - "Нужно быстрее"
+      - "Не готов столько ждать"
+    guarantee:
+      - "А если не сработает?"
+      - "Какие гарантии?"
+      - "Кто будет отвечать?"
+    technical:
+      - "Это не совместимо с нашей системой"
+      - "У нас другие требования"
+      - "Это не подходит технически"
+    general:
+      - "Не уверен, что это нам подходит"
+      - "Сомневаюсь"
+      - "Нужно подумать"
+
+  question:
+    technical:
+      - "А как это технически работает?"
+      - "Какая архитектура?"
+      - "С чем интегрируется?"
+    clarification:
+      - "Можете объяснить подробнее?"
+      - "Что вы имеете в виду?"
+      - "А как это на практике?"
+
+  hesitate:
+    - "Не знаю..."
+    - "Сложно сказать"
+    - "Надо подумать"
+    - "Может быть..."
+
+  interrupt:
+    - "Секунду"
+    - "Подождите"
+    - "Мне нужно отвлечься"
+    - "Давайте быстрее"

@@ -3,46 +3,18 @@
 -- Создание расширений
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Таблица для хранения завершённых анкет
+-- Таблица для хранения завершённых анкет (FinalAnketa)
+-- Гибридная структура: 6 индексированных колонок + 1 JSONB для полных данных
 CREATE TABLE IF NOT EXISTS anketas (
     anketa_id VARCHAR(255) PRIMARY KEY,
     interview_id VARCHAR(255) UNIQUE NOT NULL,
-    pattern VARCHAR(50) NOT NULL,
-    
-    -- Временные метки
+    pattern VARCHAR(50) NOT NULL,  -- 'interaction' или 'management'
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    interview_duration_seconds FLOAT NOT NULL,
-    
-    -- Базовая информация
     company_name VARCHAR(255) NOT NULL,
     industry VARCHAR(100) NOT NULL,
-    language VARCHAR(100) NOT NULL,
-    agent_purpose TEXT NOT NULL,
-    
-    -- Конфигурация агента
-    agent_name VARCHAR(100) NOT NULL,
-    tone VARCHAR(50) NOT NULL,
-    
-    -- JSON поля для сложных данных
-    services JSONB,
-    client_types JSONB,
-    typical_questions JSONB,
-    working_hours JSONB,
-    transfer_conditions JSONB,
-    integrations JSONB,
-    example_dialogues JSONB,
-    restrictions JSONB,
-    compliance_requirements JSONB,
-    
-    -- Контакты
-    contact_person VARCHAR(255) NOT NULL,
-    contact_email VARCHAR(255) NOT NULL,
-    contact_phone VARCHAR(50) NOT NULL,
-    company_website VARCHAR(500),
-    
-    -- Метаданные
-    full_responses JSONB,
-    quality_metrics JSONB
+
+    -- Полные данные анкеты в JSONB (FinalAnketa.model_dump())
+    anketa_json JSONB NOT NULL
 );
 
 -- Индексы для анкет
@@ -130,7 +102,7 @@ CREATE TRIGGER trigger_update_statistics
 
 -- Вьюха для быстрого доступа к завершённым интервью
 CREATE OR REPLACE VIEW completed_interviews AS
-SELECT 
+SELECT
     s.session_id,
     s.interview_id,
     s.pattern,
@@ -142,7 +114,7 @@ SELECT
     s.completeness_score,
     a.company_name,
     a.industry,
-    a.agent_name
+    a.anketa_json->>'agent_name' as agent_name
 FROM interview_sessions s
 LEFT JOIN anketas a ON s.interview_id = a.interview_id
 WHERE s.status = 'completed';
@@ -150,11 +122,11 @@ WHERE s.status = 'completed';
 
 -- Вьюха для статистики по отраслям
 CREATE OR REPLACE VIEW industry_statistics AS
-SELECT 
+SELECT
     a.industry,
     COUNT(*) as total_anketas,
-    AVG(a.interview_duration_seconds / 60) as avg_duration_minutes,
-    AVG((a.quality_metrics->>'completeness_score')::float) as avg_completeness
+    AVG((a.anketa_json->>'consultation_duration_seconds')::float / 60) as avg_duration_minutes,
+    AVG((a.anketa_json->'quality_metrics'->>'completeness_score')::float) as avg_completeness
 FROM anketas a
 GROUP BY a.industry
 ORDER BY total_anketas DESC;
@@ -173,14 +145,13 @@ GROUP BY pattern;
 
 
 -- Комментарии к таблицам
-COMMENT ON TABLE anketas IS 'Хранит заполненные анкеты для создания голосовых агентов';
+COMMENT ON TABLE anketas IS 'Хранит заполненные анкеты FinalAnketa для создания голосовых агентов';
 COMMENT ON TABLE interview_sessions IS 'История всех интервью, включая незавершённые';
 COMMENT ON TABLE statistics IS 'Ежедневная статистика по интервью';
 
 -- Комментарии к важным колонкам
 COMMENT ON COLUMN anketas.pattern IS 'Паттерн интервью: interaction или management';
-COMMENT ON COLUMN anketas.full_responses IS 'Все ответы клиента в структурированном виде';
-COMMENT ON COLUMN anketas.quality_metrics IS 'Метрики качества: completeness_score, avg_answer_length и т.д.';
+COMMENT ON COLUMN anketas.anketa_json IS 'Полные данные FinalAnketa в формате JSONB';
 
 COMMENT ON COLUMN interview_sessions.session_metadata IS 'Дополнительная информация о сессии: IP, user_agent и т.д.';
 

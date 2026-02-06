@@ -1,6 +1,7 @@
-# Голосовой агент-интервьюер
+# Hanc.AI Voice Consultant
 # Python 3.9-3.13 (рекомендуется 3.11 или 3.12)
 # ВНИМАНИЕ: Python 3.14+ может иметь проблемы совместимости
+# Для Python 3.14 используйте: pip install -r requirements-minimal.txt
 
 # ===== ОСНОВНЫЕ ЗАВИСИМОСТИ =====
 
@@ -13,11 +14,11 @@ requests>=2.31.0
 
 # ===== ХРАНИЛИЩЕ ДАННЫХ =====
 
-# Redis для сессий и контекста
+# Redis для сессий и контекста (Maximum режим)
 redis>=5.0.0
 hiredis>=2.3.0  # Для более быстрой работы Redis
 
-# PostgreSQL для долгосрочного хранения
+# PostgreSQL для долгосрочного хранения (Maximum режим)
 psycopg2-binary>=2.9.9
 sqlalchemy>=2.0.0
 alembic>=1.13.0
@@ -57,47 +58,31 @@ python-dotenv>=1.0.0
 # Retry логика
 tenacity>=8.2.0
 
-# ===== VOICE / LIVEKIT =====
+# ===== VOICE / LIVEKIT (голосовой режим) =====
 
 # LiveKit для WebRTC аудио
 livekit>=0.12.0
 livekit-api>=0.6.0
+livekit-agents>=0.8.0
+livekit-plugins-openai>=0.8.0  # Для Azure OpenAI Realtime
 
 # JWT для создания токенов LiveKit
 PyJWT>=2.8.0
 
-# ===== WEB PARSING =====
+# ===== WEB / DOCUMENT PARSING =====
 
-# Парсинг веб-страниц
+# Парсинг веб-страниц (модуль src/research/)
 beautifulsoup4>=4.12.0
 lxml>=5.1.0
 
-# Azure Cognitive Search для RAG (опционально)
-# Раскомментируйте если нужен RAG:
-# azure-search-documents>=11.4.0
+# PDF парсинг (модуль src/documents/)
+PyMuPDF>=1.23.0
 
-# ===== DEVELOPMENT (опционально для разработки) =====
+# DOCX парсинг
+python-docx>=1.1.0
 
-# Тестирование
-# pytest>=7.4.0
-# pytest-asyncio>=0.23.0
-# pytest-cov>=4.1.0
-
-# Линтинг и форматирование
-# black>=23.12.0
-# ruff>=0.1.0
-# mypy>=1.8.0
-
-# Pre-commit hooks
-# pre-commit>=3.6.0
-
-# ===== ОПЦИОНАЛЬНО (для RAG) =====
-
-# Azure Cognitive Search (опционально)
-azure-search-documents==11.4.0
-
-# Векторные эмбеддинги (опционально)
-sentence-transformers==2.3.1
+# XLSX парсинг
+openpyxl>=3.1.0
 
 # ===== DEVELOPMENT =====
 
@@ -106,10 +91,18 @@ pytest==7.4.4
 pytest-asyncio==0.23.3
 pytest-cov==4.1.0
 
-# Линтинг
+# Линтинг и форматирование
 black==23.12.1
 flake8==7.0.0
 mypy==1.8.0
 
 # Pre-commit hooks
 pre-commit==3.6.0
+
+# ===== ОПЦИОНАЛЬНО (раскомментируйте при необходимости) =====
+
+# RAG: Azure Cognitive Search
+# azure-search-documents>=11.4.0
+
+# RAG: Векторные эмбеддинги (тянет PyTorch — тяжёлая зависимость)
+# sentence-transformers>=2.3.1

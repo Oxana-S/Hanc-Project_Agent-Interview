@@ -9,7 +9,7 @@ from datetime import timedelta
 from src.models import InterviewContext
 import structlog
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("storage")
 
 
 class RedisStorageManager:

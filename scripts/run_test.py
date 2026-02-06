@@ -7,6 +7,7 @@
     python scripts/run_test.py tests/scenarios/x.yaml  # Запустить из файла
     python scripts/run_test.py --list                # Список сценариев
     python scripts/run_test.py vitalbox --quiet      # Без подробного вывода
+    python scripts/run_test.py vitalbox --input-dir input/test_docs  # С документами
 """
 
 import asyncio
@@ -71,7 +72,8 @@ def find_scenario(name: str) -> Path:
 @click.option('--list', '-l', 'list_all', is_flag=True, help='Показать список сценариев')
 @click.option('--quiet', '-q', is_flag=True, help='Минимальный вывод')
 @click.option('--no-save', is_flag=True, help='Не сохранять отчёты в файлы')
-def main(scenario: str, list_all: bool, quiet: bool, no_save: bool):
+@click.option('--input-dir', '-i', help='Путь к папке с документами клиента')
+def main(scenario: str, list_all: bool, quiet: bool, no_save: bool, input_dir: str):
     """
     Запуск тестовой симуляции консультации.
 
@@ -93,10 +95,14 @@ def main(scenario: str, list_all: bool, quiet: bool, no_save: bool):
         console.print("Используйте --list для просмотра доступных сценариев")
         return
 
+    docs_info = ""
+    if input_dir:
+        docs_info = f"\nДокументы: [cyan]{input_dir}[/cyan]"
+
     console.print(Panel(
         f"[bold cyan]ЗАПУСК ТЕСТОВОЙ СИМУЛЯЦИИ[/bold cyan]\n\n"
         f"Сценарий: [green]{scenario_path.stem}[/green]\n"
-        f"Файл: {scenario_path}",
+        f"Файл: {scenario_path}{docs_info}",
         border_style="cyan"
     ))
 
@@ -104,7 +110,8 @@ def main(scenario: str, list_all: bool, quiet: bool, no_save: bool):
     try:
         result = asyncio.run(run_test_scenario(
             str(scenario_path),
-            verbose=not quiet
+            verbose=not quiet,
+            input_dir=input_dir
         ))
 
         # Generate report

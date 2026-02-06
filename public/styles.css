@@ -184,7 +184,29 @@ body {
     cursor: not-allowed;
 }
 
-/* Interview Screen */
+/* Interview Screen - Two Column Layout */
+.interview-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex: 1;
+    min-height: 0;
+}
+
+.interview-left {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.interview-right {
+    flex: 0 0 calc(40% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
 .progress-section {
     margin-bottom: 1rem;
 }
@@ -335,6 +357,171 @@ body {
     opacity: 0.3;
 }
 
+/* Anketa Panel */
+.anketa-panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-radius: 0.5rem;
+    border: 1px solid var(--surface-light);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.anketa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--surface-light);
+    flex-shrink: 0;
+}
+
+.anketa-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.anketa-status-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--surface-light);
+    color: var(--text-muted);
+}
+
+.anketa-status-badge.status-active {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary);
+}
+
+.anketa-status-badge.status-paused {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--proposal);
+}
+
+.anketa-status-badge.status-reviewing {
+    background: rgba(6, 182, 212, 0.2);
+    color: var(--analysis);
+}
+
+.anketa-status-badge.status-confirmed {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--secondary);
+}
+
+.anketa-status-badge.status-declined {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+}
+
+.anketa-form {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.anketa-field {
+    margin-bottom: 0.875rem;
+}
+
+.anketa-field label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.anketa-field .field-hint {
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.anketa-field input,
+.anketa-field textarea {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    background: var(--background);
+    border: 1px solid var(--surface-light);
+    border-radius: 0.375rem;
+    color: var(--text);
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.6s;
+    resize: vertical;
+}
+
+.anketa-field input:focus,
+.anketa-field textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.anketa-field input::placeholder,
+.anketa-field textarea::placeholder {
+    color: var(--surface-light);
+}
+
+.anketa-field input.field-updated,
+.anketa-field textarea.field-updated {
+    background-color: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.anketa-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--surface-light);
+    flex-shrink: 0;
+}
+
+.btn-confirm {
+    background: var(--secondary);
+    color: white;
+    width: 100%;
+}
+
+.btn-confirm:hover {
+    background: #0d9668;
+}
+
+.btn-save-leave {
+    background: var(--surface-light);
+    color: var(--text);
+    width: 100%;
+}
+
+.btn-save-leave:hover {
+    background: #475569;
+}
+
+.btn-copy-link {
+    background: transparent;
+    border: 1px solid var(--surface-light);
+    color: var(--text-muted);
+    width: 100%;
+    font-size: 0.875rem;
+}
+
+.btn-copy-link:hover {
+    background: var(--surface-light);
+    color: var(--text);
+}
+
+.btn-copy-link.copied {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
 /* Results Screen */
 #results-screen {
     justify-content: center;
@@ -395,6 +582,26 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+    .interview-columns {
+        flex-direction: column;
+    }
+
+    .interview-left {
+        flex: 0 0 auto;
+        min-height: 350px;
+    }
+
+    .interview-right {
+        flex: 0 0 auto;
+        max-height: 500px;
+    }
+
+    .anketa-panel {
+        max-height: 500px;
+    }
+}
+
 @media (max-width: 640px) {
     .header, .status-bar, .screen {
         padding: 1rem;
@@ -410,5 +617,13 @@ body {
 
     .message {
         max-width: 95%;
+    }
+
+    .interview-left {
+        min-height: 280px;
+    }
+
+    .anketa-actions {
+        padding: 0.5rem;
     }
 }

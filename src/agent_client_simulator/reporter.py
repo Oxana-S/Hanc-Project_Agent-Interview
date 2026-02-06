@@ -43,6 +43,89 @@ class TestReporter:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
+    def _get_company_name(self, result: TestResult) -> str:
+        """
+        Извлечь название компании из результата для именования файлов.
+
+        Защита от dialogue contamination - если company_name содержит
+        длинный текст (ответ клиента), используем scenario_name.
+        """
+        company = None
+
+        # Приоритет: final_anketa > anketa > scenario_name
+        if result.final_anketa:
+            company = result.final_anketa.get('company_name')
+
+        if not company and result.anketa:
+            company = result.anketa.get('company_name')
+
+        # Защита от dialogue contamination:
+        # Если company_name слишком длинный (>50 символов) или содержит
+        # признаки диалога - это не название компании, а текст ответа
+        if company:
+            company = str(company)
+            dialogue_markers = [
+                'отлично', 'спасибо', 'хорошо', 'план', 'согласен',
+                'понедельник', 'жду', 'рад', 'супер', 'идеально',
+                '\n', '...'
+            ]
+            is_contaminated = (
+                len(company) > 50 or
+                any(marker in company.lower() for marker in dialogue_markers)
+            )
+            if is_contaminated:
+                company = None
+
+        if not company:
+            company = result.scenario_name
+
+        # Нормализация для имени файла
+        company = self._sanitize_filename(str(company))
+        return company
+
+    def _sanitize_filename(self, name: str) -> str:
+        """Очистить строку для использования в имени файла."""
+        import re
+        import unicodedata
+
+        # Нормализуем Unicode
+        name = unicodedata.normalize('NFKD', name)
+
+        # Приводим к нижнему регистру
+        name = name.lower()
+
+        # Заменяем пробелы и специальные символы
+        name = re.sub(r'[^\w\s-]', '', name)
+        name = re.sub(r'[\s_-]+', '_', name)
+
+        # Убираем начальные/конечные подчёркивания
+        name = name.strip('_')
+
+        # Ограничиваем длину (файловые системы обычно ограничивают ~255 символов)
+        return name[:40] if name else "unnamed"
+
+    def _format_dialogue(self, dialogue: List[Dict[str, str]], truncate: bool = True) -> None:
+        """Форматированный вывод диалога в консоль."""
+        console.print("\n" + "=" * 60)
+        console.print("[bold cyan]ДИАЛОГ КОНСУЛЬТАЦИИ[/bold cyan]")
+        console.print("=" * 60)
+
+        for i, msg in enumerate(dialogue, 1):
+            role = msg.get('role', 'unknown')
+            content = msg.get('content', '')
+
+            if role == 'assistant':
+                console.print(f"\n[bold blue]🤖 Консультант (#{i}):[/bold blue]")
+            else:
+                console.print(f"\n[bold green]👤 Клиент (#{i}):[/bold green]")
+
+            if truncate and len(content) > 300:
+                console.print(f"  {content[:300]}...")
+            else:
+                console.print(f"  {content}")
+
+        console.print("\n" + "=" * 60)
+
     def report_to_console(self, result: TestResult):
         """
         Print detailed report to console.
@@ -91,6 +174,10 @@ class TestReporter:
             console.print("\n[bold red]Ошибки:[/bold red]")
             for error in result.errors:
                 console.print(f"  ❌ {error}")
+
+        # Dialogue
+        if result.dialogue_history:
+            self._format_dialogue(result.dialogue_history)
 
     def _print_anketa_summary(self, anketa: Dict[str, Any]):
         """Print anketa fields summary."""
@@ -163,7 +250,8 @@ class TestReporter:
         """
         if not filename:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{result.scenario_name}_{timestamp}.json"
+            company = self._get_company_name(result)
+            filename = f"{company}_{timestamp}.json"
 
         filepath = self.output_dir / filename
 
@@ -192,7 +280,8 @@ class TestReporter:
         """
         if not filename:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{result.scenario_name}_{timestamp}.md"
+            company = self._get_company_name(result)
+            filename = f"{company}_{timestamp}.md"
 
         filepath = self.output_dir / filename
 
@@ -269,6 +358,22 @@ class TestReporter:
             lines.extend(["", "## Ошибки", ""])
             for error in result.errors:
                 lines.append(f"- ❌ {error}")
+
+        # Полный диалог
+        if result.dialogue_history:
+            lines.extend(["", "---", "", "## Полный диалог", ""])
+            for i, msg in enumerate(result.dialogue_history, 1):
+                role = msg.get('role', 'unknown')
+                content = msg.get('content', '')
+
+                if role == 'assistant':
+                    lines.append(f"### 🤖 Консультант (реплика {i})")
+                else:
+                    lines.append(f"### 👤 Клиент (реплика {i})")
+
+                lines.append("")
+                lines.append(content)
+                lines.append("")
 
         return "\n".join(lines)
 

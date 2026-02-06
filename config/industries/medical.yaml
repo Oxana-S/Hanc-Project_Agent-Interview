@@ -1,0 +1,145 @@
+meta:
+  id: medical
+  version: '1.0'
+  created_at: '2026-02-04'
+  last_updated: '2026-02-05'
+  tests_run: 1
+  avg_validation_score: 0.917
+aliases:
+- медицина
+- здравоохранение
+- клиника
+- больница
+- медицинский
+- поликлиника
+- госпиталь
+- медцентр
+- врач
+- пациент
+- приём
+- диагностика
+typical_services:
+- Консультация врача
+- Диагностика
+- Лабораторные анализы
+- УЗИ
+- МРТ/КТ
+- Стоматология
+- Вызов врача на дом
+- Вакцинация
+- Физиотерапия
+pain_points:
+- description: Сложно дозвониться для записи на приём
+  severity: high
+  solution_hint: Голосовой агент для записи 24/7
+- description: Пациенты забывают о записи
+  severity: high
+  solution_hint: Автоматические напоминания за день и за час
+- description: Много звонков с одинаковыми вопросами
+  severity: medium
+  solution_hint: 'FAQ: график работы, подготовка к анализам'
+- description: Операторы не успевают обрабатывать все звонки
+  severity: high
+  solution_hint: Автоматизация типовых операций
+- description: Ошибки при записи (неправильный врач/время)
+  severity: medium
+  solution_hint: Структурированная запись с подтверждением
+recommended_functions:
+- name: запись
+  priority: high
+  reason: 60-70% звонков — запись/перенос приёма
+- name: напоминание
+  priority: high
+  reason: Снижение неявок на 30-40%
+- name: faq
+  priority: high
+  reason: Подготовка к анализам, график, адрес
+- name: перенос
+  priority: medium
+  reason: Изменение/отмена записи
+- name: вызов
+  priority: medium
+  reason: Вызов врача на дом
+- name: маршрутизация
+  priority: medium
+  reason: Экстренные случаи → живой оператор
+typical_integrations:
+- name: МИС
+  examples:
+  - Медиалог
+  - Инфоклиника
+  - Medesk
+  - 1С:Медицина
+  priority: high
+  reason: Расписание врачей, запись, карта пациента
+- name: CRM
+  examples:
+  - Bitrix24
+  - AmoCRM
+  priority: medium
+  reason: История обращений пациента
+- name: Телефония
+  examples:
+  - Mango Office
+  - UIS
+  priority: high
+  reason: Приём входящих звонков
+- name: SMS/Мессенджеры
+  examples:
+  - Telegram
+  - WhatsApp
+  - SMS
+  priority: high
+  reason: Напоминания о приёме
+- name: Календарь
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: medium
+  reason: Синхронизация расписания
+industry_faq:
+- question: Как записаться к врачу?
+  answer_template: Назовите специальность врача и удобную дату, я проверю свободные
+    окна.
+- question: Какие анализы нужно сдать натощак?
+  answer_template: Биохимия крови, глюкоза, липидный профиль — строго натощак. Общий
+    анализ крови — желательно натощак.
+- question: Как подготовиться к УЗИ брюшной полости?
+  answer_template: За 3 дня исключить газообразующие продукты. В день исследования
+    — натощак.
+- question: Работаете ли вы в выходные?
+  answer_template: Да, мы работаем в субботу с 9 до 18, в воскресенье — дежурный врач.
+- question: Можно ли вызвать врача на дом?
+  answer_template: Да, вызов врача на дом возможен. Назовите адрес и симптомы.
+- question: Сколько стоит консультация?
+  answer_template: Стоимость зависит от специалиста. Первичная консультация терапевта
+    — от 2000 рублей.
+typical_objections:
+- objection: Хочу к конкретному врачу
+  response: Конечно, назовите фамилию врача, и я проверю его расписание.
+- objection: Нужно срочно
+  response: Понимаю. Проверю ближайшие свободные окна на сегодня.
+- objection: Дорого
+  response: Могу рассказать об акциях и программах лояльности, или соединить с менеджером.
+learnings:
+- date: '2026-02-05'
+  insight: 'Предупреждение: [scenario_match] Мало совпадений по интеграциям: 0/4'
+  source: test_medical_center
+success_benchmarks:
+  avg_call_duration_seconds: 150
+  target_automation_rate: 0.65
+  typical_kpis:
+  - Снижение неявок на 30%
+  - Автоматизация 65% записей
+  - Доступность 24/7
+  - Удовлетворённость пациентов > 4.2/5
+industry_specifics:
+  compliance:
+  - Соответствие ФЗ-152 (персональные данные)
+  - Не давать медицинских рекомендаций
+  - Экстренные случаи → живой оператор
+  tone:
+  - Спокойный, заботливый
+  - Внимательный к симптомам
+  - Не использовать мединский жаргон
+  peak_times: []

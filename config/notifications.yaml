@@ -1,0 +1,23 @@
+# Notifications configuration
+email:
+  enabled: false
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  use_tls: true
+  username: ""
+  password: ""
+  from_address: "noreply@hanc.ai"
+
+  # Manager notification
+  manager_email: "manager@hanc.ai"
+  manager_subject: "Новая анкета от {company_name}"
+
+  # Client notification (session link)
+  client_subject: "Ваша консультация с Hanc.AI"
+
+webhooks:
+  enabled: false
+  on_confirm: ""  # URL to POST when anketa is confirmed
+  on_complete: ""  # URL to POST when session ends
+  secret: ""  # HMAC secret for webhook signature
+  timeout_seconds: 10

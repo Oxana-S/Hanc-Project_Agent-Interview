@@ -18,7 +18,7 @@ from src.models import InterviewContext, InterviewStatus, QuestionStatus
 # VoiceInterviewerAgent был удалён, теперь используется MaximumInterviewer
 from typing import Any
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("agent")
 console = Console()
 
 

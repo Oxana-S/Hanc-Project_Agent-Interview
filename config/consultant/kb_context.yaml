@@ -1,0 +1,115 @@
+# Knowledge Base Context Templates
+# Шаблоны для добавления KB контекста в промпты консультанта
+
+meta:
+  version: "1.0"
+  description: "Templates for injecting industry knowledge into consultant prompts"
+
+# Секции контекста для каждой фазы
+sections:
+  # Discovery: понимание бизнеса клиента
+  discovery:
+    header: "КОНТЕКСТ ОТРАСЛИ"
+    enabled: true
+    blocks:
+      - key: pain_points
+        label: "Типичные проблемы в отрасли"
+        format: severity_list
+        instruction: "Спроси клиента, актуальны ли эти проблемы для него"
+
+      - key: typical_services
+        label: "Типичные услуги"
+        format: bullet_list
+        instruction: "Уточни, какие из этих услуг предоставляет клиент"
+
+  # Analysis: анализ ситуации клиента
+  analysis:
+    header: "ДАННЫЕ ДЛЯ АНАЛИЗА"
+    enabled: true
+    blocks:
+      - key: pain_points
+        label: "Отраслевые проблемы"
+        format: severity_list
+        instruction: "Сравни с тем, что рассказал клиент"
+
+      - key: typical_integrations
+        label: "Типичные интеграции в отрасли"
+        format: integration_list
+        instruction: "Учти при формировании анализа"
+
+  # Proposal: предложение решения
+  proposal:
+    header: "РЕКОМЕНДАЦИИ ДЛЯ ОТРАСЛИ"
+    enabled: true
+    blocks:
+      - key: recommended_functions
+        label: "Рекомендуемые функции агента"
+        format: priority_list
+        instruction: "Предложи функции по приоритету"
+
+      - key: typical_integrations
+        label: "Рекомендуемые интеграции"
+        format: integration_list
+        instruction: "Предложи релевантные интеграции"
+
+      - key: success_benchmarks
+        label: "Метрики успеха"
+        format: kpi_list
+        instruction: "Используй для обоснования ценности"
+
+  # Refinement: уточнение деталей
+  refinement:
+    header: "СПРАВОЧНАЯ ИНФОРМАЦИЯ"
+    enabled: true
+    blocks:
+      - key: industry_faq
+        label: "Частые вопросы в отрасли"
+        format: qa_list
+        instruction: "Используй для ответов на вопросы клиента"
+
+      - key: typical_objections
+        label: "Типичные возражения"
+        format: objection_list
+        instruction: "Будь готов к этим возражениям"
+
+# Форматы вывода данных
+formats:
+  bullet_list:
+    template: "- {item}"
+    separator: "\n"
+
+  severity_list:
+    template: "- [{severity}] {description}"
+    separator: "\n"
+    severity_labels:
+      high: "!!!"
+      medium: "!!"
+      low: "!"
+
+  priority_list:
+    template: "- [{priority}] {name}: {reason}"
+    separator: "\n"
+    priority_labels:
+      high: "ВАЖНО"
+      medium: "ЖЕЛАТЕЛЬНО"
+      low: "ОПЦИОНАЛЬНО"
+
+  integration_list:
+    template: "- {name} ({examples})"
+    separator: "\n"
+
+  qa_list:
+    template: |
+      В: {question}
+      О: {answer_template}
+    separator: "\n\n"
+
+  objection_list:
+    template: |
+      Возражение: "{objection}"
+      Ответ: {response}
+    separator: "\n\n"
+
+  kpi_list:
+    template: "- {item}"
+    separator: "\n"

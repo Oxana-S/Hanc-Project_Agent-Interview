@@ -29,7 +29,7 @@ from src.anketa.schema import FinalAnketa
 from src.config.synonym_loader import get_synonym_loader
 from .runner import TestResult
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 # ============================================================================

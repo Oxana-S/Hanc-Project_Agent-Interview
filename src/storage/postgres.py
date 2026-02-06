@@ -3,16 +3,17 @@ PostgreSQL Storage Manager для долгосрочного хранения з
 """
 
 from sqlalchemy import create_engine, Column, String, DateTime, JSON, Float, Integer, Text, Enum as SQLEnum, text
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime
 from typing import Optional, List
 import structlog
 
-from src.models import CompletedAnketa, InterviewPattern, InterviewStatistics
+from src.models import InterviewPattern, InterviewStatistics
+from src.anketa.schema import FinalAnketa
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("storage")
 
 Base = declarative_base()
 
@@ -20,47 +21,23 @@ Base = declarative_base()
 # ===== МОДЕЛИ БД =====
 
 class AnketaDB(Base):
-    """Модель анкеты в БД"""
+    """
+    Модель анкеты в БД (гибридный подход).
+
+    6 индексированных колонок для быстрого поиска + 1 JSONB для полных данных.
+    """
     __tablename__ = "anketas"
-    
+
+    # Индексированные поля для поиска
     anketa_id = Column(String, primary_key=True)
     interview_id = Column(String, unique=True, nullable=False, index=True)
-    pattern = Column(SQLEnum(InterviewPattern), nullable=False, index=True)
-    
-    # Временные метки
+    pattern = Column(String, nullable=False, index=True)  # 'interaction' or 'management'
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
-    interview_duration_seconds = Column(Float, nullable=False)
-    
-    # Базовая информация
     company_name = Column(String, nullable=False, index=True)
     industry = Column(String, nullable=False, index=True)
-    language = Column(String, nullable=False)
-    agent_purpose = Column(Text, nullable=False)
-    
-    # Конфигурация агента
-    agent_name = Column(String, nullable=False)
-    tone = Column(String, nullable=False)
-    
-    # JSON поля для сложных данных
-    services = Column(JSON, nullable=True)
-    client_types = Column(JSON, nullable=True)
-    typical_questions = Column(JSON, nullable=True)
-    working_hours = Column(JSON, nullable=True)
-    transfer_conditions = Column(JSON, nullable=True)
-    integrations = Column(JSON, nullable=True)
-    example_dialogues = Column(JSON, nullable=True)
-    restrictions = Column(JSON, nullable=True)
-    compliance_requirements = Column(JSON, nullable=True)
-    
-    # Контакты
-    contact_person = Column(String, nullable=False)
-    contact_email = Column(String, nullable=False)
-    contact_phone = Column(String, nullable=False)
-    company_website = Column(String, nullable=True)
-    
-    # Метаданные
-    full_responses = Column(JSON, nullable=True)
-    quality_metrics = Column(JSON, nullable=True)
+
+    # Полные данные анкеты в JSONB
+    anketa_json = Column(JSON, nullable=False)
 
 
 class InterviewSessionDB(Base):
@@ -111,13 +88,13 @@ class PostgreSQLStorageManager:
         """Получить сессию БД"""
         return self.SessionLocal()
     
-    async def save_anketa(self, anketa: CompletedAnketa) -> bool:
+    async def save_anketa(self, anketa: FinalAnketa) -> bool:
         """
-        Сохранить заполненную анкету в БД
-        
+        Сохранить заполненную анкету в БД.
+
         Args:
-            anketa: Заполненная анкета
-            
+            anketa: Заполненная FinalAnketa
+
         Returns:
             True если успешно сохранено
         """
@@ -128,141 +105,91 @@ class PostgreSQLStorageManager:
                 interview_id=anketa.interview_id,
                 pattern=anketa.pattern,
                 created_at=anketa.created_at,
-                interview_duration_seconds=anketa.interview_duration_seconds,
                 company_name=anketa.company_name,
                 industry=anketa.industry,
-                language=anketa.language,
-                agent_purpose=anketa.agent_purpose,
-                agent_name=anketa.agent_name,
-                tone=anketa.tone,
-                services=anketa.services,
-                client_types=anketa.client_types,
-                typical_questions=anketa.typical_questions,
-                working_hours=anketa.working_hours,
-                transfer_conditions=anketa.transfer_conditions,
-                integrations=anketa.integrations,
-                example_dialogues=anketa.example_dialogues,
-                restrictions=anketa.restrictions,
-                compliance_requirements=anketa.compliance_requirements,
-                contact_person=anketa.contact_person,
-                contact_email=anketa.contact_email,
-                contact_phone=anketa.contact_phone,
-                company_website=anketa.company_website,
-                full_responses=anketa.full_responses,
-                quality_metrics=anketa.quality_metrics
+                anketa_json=anketa.model_dump(mode="json")
             )
-            
+
             session.add(anketa_db)
             session.commit()
-            
-            logger.info("anketa_saved", 
-                       anketa_id=anketa.anketa_id,
-                       company=anketa.company_name,
-                       pattern=anketa.pattern)
-            
+
+            logger.info("anketa_saved",
+                        anketa_id=anketa.anketa_id,
+                        company=anketa.company_name,
+                        pattern=anketa.pattern)
+
             return True
-            
+
         except SQLAlchemyError as e:
             session.rollback()
-            logger.error("anketa_save_failed", 
-                        anketa_id=anketa.anketa_id,
-                        error=str(e))
+            logger.error("anketa_save_failed",
+                         anketa_id=anketa.anketa_id,
+                         error=str(e))
             return False
         finally:
             session.close()
     
-    async def get_anketa(self, anketa_id: str) -> Optional[CompletedAnketa]:
+    async def get_anketa(self, anketa_id: str) -> Optional[FinalAnketa]:
         """
-        Получить анкету по ID
-        
+        Получить анкету по ID.
+
         Args:
             anketa_id: ID анкеты
-            
+
         Returns:
-            Анкета или None
+            FinalAnketa или None
         """
         session = self._get_session()
         try:
             anketa_db = session.query(AnketaDB).filter(
                 AnketaDB.anketa_id == anketa_id
             ).first()
-            
+
             if anketa_db is None:
                 logger.warning("anketa_not_found", anketa_id=anketa_id)
                 return None
-            
-            # Конвертируем в Pydantic модель
-            anketa = CompletedAnketa(
-                anketa_id=anketa_db.anketa_id,
-                interview_id=anketa_db.interview_id,
-                pattern=anketa_db.pattern,
-                created_at=anketa_db.created_at,
-                interview_duration_seconds=anketa_db.interview_duration_seconds,
-                company_name=anketa_db.company_name,
-                industry=anketa_db.industry,
-                language=anketa_db.language,
-                agent_purpose=anketa_db.agent_purpose,
-                agent_name=anketa_db.agent_name,
-                tone=anketa_db.tone,
-                services=anketa_db.services or [],
-                client_types=anketa_db.client_types or [],
-                typical_questions=anketa_db.typical_questions or [],
-                working_hours=anketa_db.working_hours or {},
-                transfer_conditions=anketa_db.transfer_conditions or [],
-                integrations=anketa_db.integrations or {},
-                example_dialogues=anketa_db.example_dialogues or [],
-                restrictions=anketa_db.restrictions or [],
-                compliance_requirements=anketa_db.compliance_requirements or [],
-                contact_person=anketa_db.contact_person,
-                contact_email=anketa_db.contact_email,
-                contact_phone=anketa_db.contact_phone,
-                company_website=anketa_db.company_website,
-                full_responses=anketa_db.full_responses or {},
-                quality_metrics=anketa_db.quality_metrics or {}
-            )
-            
+
+            # Восстанавливаем FinalAnketa из JSONB
+            anketa = FinalAnketa(**anketa_db.anketa_json)
+
             return anketa
-            
+
         except SQLAlchemyError as e:
-            logger.error("get_anketa_failed", 
-                        anketa_id=anketa_id,
-                        error=str(e))
+            logger.error("get_anketa_failed",
+                         anketa_id=anketa_id,
+                         error=str(e))
             return None
         finally:
             session.close()
     
-    async def get_anketas_by_company(self, company_name: str) -> List[CompletedAnketa]:
+    async def get_anketas_by_company(self, company_name: str) -> List[FinalAnketa]:
         """
-        Получить все анкеты компании
-        
+        Получить все анкеты компании.
+
         Args:
             company_name: Название компании
-            
+
         Returns:
-            Список анкет
+            Список FinalAnketa
         """
         session = self._get_session()
         try:
             anketas_db = session.query(AnketaDB).filter(
                 AnketaDB.company_name.ilike(f"%{company_name}%")
             ).all()
-            
-            anketas = []
-            for anketa_db in anketas_db:
-                anketa = await self.get_anketa(anketa_db.anketa_id)
-                if anketa:
-                    anketas.append(anketa)
-            
-            logger.info("anketas_fetched_by_company", 
-                       company=company_name,
-                       count=len(anketas))
-            
-            return anketas
-            
-        except SQLAlchemyError as e:
-            logger.error("get_anketas_by_company_failed", 
+
+            anketas = [FinalAnketa(**a.anketa_json) for a in anketas_db]
+
+            logger.info("anketas_fetched_by_company",
                         company=company_name,
-                        error=str(e))
+                        count=len(anketas))
+
+            return anketas
+
+        except SQLAlchemyError as e:
+            logger.error("get_anketas_by_company_failed",
+                         company=company_name,
+                         error=str(e))
             return []
         finally:
             session.close()
