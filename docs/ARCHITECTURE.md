@@ -420,11 +420,55 @@ YAML-профили отраслей в `config/industries/`:
 | pyyaml | Конфигурация |
 | python-dotenv | Переменные окружения |
 
-## Система промптов
+## Система промптов и конфигурации
 
-Все промпты для LLM хранятся в YAML файлах (`prompts/`) и загружаются через `PromptLoader` (`src/config/prompt_loader.py`).
+Проект разделяет **данные** (`config/`) и **инструкции для LLM** (`prompts/`):
+
+| Папка      | Содержит                            | Пример                                   |
+|------------|-------------------------------------|------------------------------------------|
+| `config/`  | **Данные** — что использовать       | Профили отраслей, словари синонимов      |
+| `prompts/` | **Инструкции** — как общаться с LLM | Системные промпты для фаз консультации   |
+
+### Структура config/
+
+```text
+config/
+├── industries/                  # База знаний по отраслям
+│   ├── _index.yaml              # Индекс: id → file, name, aliases
+│   ├── logistics.yaml           # Профиль: pain_points, functions, integrations
+│   ├── medical.yaml
+│   ├── horeca.yaml
+│   └── ...                      # 8 отраслей
+├── synonyms/                    # Словари нормализации полей анкеты
+│   ├── base.yaml                # Общие синонимы (название → company_name)
+│   ├── ru.yaml                  # Русские варианты
+│   └── en.yaml                  # Английские варианты
+├── personas/                    # Симулятор клиентов (для тестирования)
+│   ├── traits.yaml              # Черты характера (терпеливый, нетерпеливый...)
+│   └── prompts.yaml             # Промпты для генерации поведения
+├── consultant/
+│   └── kb_context.yaml          # Шаблоны форматирования KB → prompt
+└── notifications.yaml           # SMTP настройки, шаблоны email
+```
+
+#### Использование config/
+
+```python
+# Загрузка профиля отрасли
+from src.knowledge.manager import get_knowledge_manager
+manager = get_knowledge_manager()
+profile = manager.get_profile("logistics")
+pain_points = profile.pain_points
+
+# Загрузка синонимов
+from src.config.synonym_loader import get_synonym_loader
+loader = get_synonym_loader()
+canonical = loader.normalize("название компании")  # → "company_name"
+```
 
 ### Структура prompts/
+
+Все промпты для LLM загружаются через `PromptLoader` (`src/config/prompt_loader.py`).
 
 ```text
 prompts/
