@@ -43,6 +43,7 @@ from livekit.plugins import openai as lk_openai
 from src.anketa import AnketaExtractor, AnketaGenerator
 from src.config.prompt_loader import get_prompt
 from src.llm.deepseek import DeepSeekClient
+from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
 from src.output import OutputManager
 from src.session.manager import SessionManager
 
@@ -167,6 +168,39 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
 def get_system_prompt() -> str:
     """Получить системный промпт для голосового агента из YAML."""
     return get_prompt("voice/consultant", "system_prompt")
+
+
+def get_enriched_system_prompt(dialogue_history: List[Dict[str, Any]]) -> str:
+    """
+    Get system prompt with industry context.
+
+    Detects industry from dialogue and enriches prompt with
+    relevant knowledge base information.
+
+    Args:
+        dialogue_history: Current dialogue history
+
+    Returns:
+        Enriched system prompt
+    """
+    base_prompt = get_system_prompt()
+
+    # Need at least 2 messages to detect industry
+    if len(dialogue_history) < 2:
+        return base_prompt
+
+    try:
+        manager = IndustryKnowledgeManager()
+        builder = EnrichedContextBuilder(manager)
+
+        voice_context = builder.build_for_voice(dialogue_history)
+
+        if voice_context:
+            return f"{base_prompt}\n\n### Контекст отрасли:\n{voice_context}"
+    except Exception as e:
+        logger.warning("Failed to get enriched context", error=str(e))
+
+    return base_prompt
 
 
 def get_review_system_prompt(anketa_summary: str) -> str:

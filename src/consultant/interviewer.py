@@ -33,7 +33,7 @@ from src.config.prompt_loader import get_prompt, render_prompt
 from src.config.locale_loader import t
 
 # v3.2: Knowledge and Documents integration
-from src.knowledge import IndustryKnowledgeManager, IndustryProfile, get_kb_context_builder
+from src.knowledge import IndustryKnowledgeManager, IndustryProfile, EnrichedContextBuilder
 from src.documents import DocumentContext
 
 console = Console()
@@ -191,6 +191,7 @@ class ConsultantInterviewer:
         self.document_context = document_context
         self.industry_profile: Optional[IndustryProfile] = None
         self._pending_docs = None
+        self.context_builder: Optional[EnrichedContextBuilder] = None
 
         # Загрузка документов если папка существует и контекст не передан
         if self.document_context is None and self.input_dir.exists():
@@ -361,20 +362,34 @@ class ConsultantInterviewer:
 
     def _get_kb_context(self, phase: str) -> str:
         """
-        Get KB context for the current phase.
+        Get enriched KB context for the current phase.
+
+        Uses EnrichedContextBuilder which combines:
+        - Industry profile knowledge
+        - Document context
+        - Accumulated learnings
 
         Args:
             phase: Consultation phase (discovery, analysis, proposal, refinement)
 
         Returns:
-            Formatted KB context string or empty string if no profile loaded
+            Formatted enriched context string
         """
-        if not self.industry_profile:
-            return ""
-
         try:
-            builder = get_kb_context_builder()
-            return builder.build_context(self.industry_profile, phase)
+            # Lazy initialization of context builder
+            if self.context_builder is None:
+                self.context_builder = EnrichedContextBuilder(
+                    self.knowledge_manager,
+                    self.document_context
+                )
+            elif self.document_context and self.context_builder.doc_context is None:
+                self.context_builder.set_document_context(self.document_context)
+
+            return self.context_builder.build_for_phase(
+                phase,
+                self.dialogue_history,
+                self.industry_profile
+            )
         except Exception:
             return ""
 
@@ -1174,33 +1189,5 @@ class ConsultantInterviewer:
 
         return "\n".join(parts)
 
-    def get_document_context(self) -> str:
-        """
-        Получить контекст из документов клиента.
-
-        Returns:
-            Форматированная строка с контекстом из документов
-        """
-        if not self.document_context:
-            return ""
-
-        return self.document_context.to_prompt_context()
-
-    def get_enriched_context(self) -> str:
-        """
-        Получить объединённый контекст (отрасль + документы).
-
-        Returns:
-            Полный контекст для обогащения промптов
-        """
-        parts = []
-
-        industry_ctx = self.get_industry_context()
-        if industry_ctx:
-            parts.append(industry_ctx)
-
-        doc_ctx = self.get_document_context()
-        if doc_ctx:
-            parts.append(doc_ctx)
-
-        return "\n\n".join(parts)
+    # NOTE: get_document_context() and get_enriched_context() were removed in v3.3
+    # EnrichedContextBuilder now handles unified context building

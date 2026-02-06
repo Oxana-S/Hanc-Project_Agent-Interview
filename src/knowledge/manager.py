@@ -214,6 +214,63 @@ class IndustryKnowledgeManager:
             insight=insight[:50] + "..." if len(insight) > 50 else insight
         )
 
+    def record_success(
+        self,
+        industry_id: str,
+        pattern: str,
+        source: str
+    ):
+        """
+        Record a successful pattern.
+
+        Args:
+            industry_id: Industry ID
+            pattern: What worked well
+            source: Session ID or test name
+        """
+        self.record_learning(
+            industry_id,
+            f"[SUCCESS] {pattern}",
+            source
+        )
+
+        logger.info(
+            "Success recorded",
+            industry_id=industry_id,
+            pattern=pattern[:50] + "..." if len(pattern) > 50 else pattern
+        )
+
+    def get_recent_learnings(
+        self,
+        industry_id: str,
+        limit: int = 10,
+        include_success: bool = True
+    ) -> List[Learning]:
+        """
+        Get recent learnings for industry.
+
+        Args:
+            industry_id: Industry ID
+            limit: Max learnings to return
+            include_success: Include [SUCCESS] tagged learnings
+
+        Returns:
+            List of Learning objects, newest first
+        """
+        profile = self.get_profile(industry_id)
+        if not profile or not profile.learnings:
+            return []
+
+        learnings = list(reversed(profile.learnings))
+
+        if not include_success:
+            learnings = [
+                l for l in learnings
+                if "[SUCCESS]" not in l.insight
+            ]
+
+        return learnings[:limit]
+
     def update_metrics(self, industry_id: str, validation_score: float):
         """
         Обновить метрики после теста.
@@ -246,6 +303,17 @@ class IndustryKnowledgeManager:
             tests_run=new_tests,
             avg_score=new_avg
         )
+
+    def increment_usage(self, industry_id: str):
+        """
+        Increment usage counter for industry.
+
+        Called when industry is detected during a session.
+
+        Args:
+            industry_id: Industry ID
+        """
+        self.loader.increment_usage_stats(industry_id)
 
     def get_all_industries(self) -> List[str]:
         """

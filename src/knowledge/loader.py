@@ -4,6 +4,8 @@ Industry Profile Loader - loads YAML profiles with caching.
 v1.0: Initial implementation
 """
 
+import time
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -48,6 +50,8 @@ class IndustryProfileLoader:
 
         self.config_dir = Path(config_dir)
         self._cache: Dict[str, IndustryProfile] = {}
+        self._cache_time: Dict[str, float] = {}
+        self._cache_ttl: float = 300.0  # 5 minutes
         self._index: Optional[IndustryIndex] = None
 
         logger.debug("IndustryProfileLoader initialized", config_dir=str(self.config_dir))
@@ -106,9 +110,14 @@ class IndustryProfileLoader:
         Returns:
             IndustryProfile или None если не найден
         """
-        # Проверяем кэш
+        # Проверяем кэш с TTL
+        now = time.time()
         if industry_id in self._cache:
-            return self._cache[industry_id]
+            cache_age = now - self._cache_time.get(industry_id, 0)
+            if cache_age < self._cache_ttl:
+                return self._cache[industry_id]
+            else:
+                logger.debug("Cache expired", industry_id=industry_id, age=cache_age)
 
         # Загружаем индекс если нужно
         index = self.load_index()
@@ -132,6 +141,7 @@ class IndustryProfileLoader:
         try:
             profile = self._parse_profile(data)
             self._cache[industry_id] = profile
+            self._cache_time[industry_id] = time.time()
 
             logger.info(
                 "Industry profile loaded",
@@ -224,9 +234,25 @@ class IndustryProfileLoader:
 
     def reload(self):
         """Перезагрузить все данные (очистить кэш)."""
-        self._cache.clear()
-        self._index = None
+        self.invalidate_cache()
         logger.info("Industry cache cleared")
+
+    def invalidate_cache(self, industry_id: Optional[str] = None):
+        """
+        Инвалидировать кэш профиля или всех профилей.
+
+        Args:
+            industry_id: ID отрасли или None для всех
+        """
+        if industry_id is None:
+            self._cache.clear()
+            self._cache_time.clear()
+            self._index = None
+            logger.debug("All industry cache invalidated")
+        elif industry_id in self._cache:
+            del self._cache[industry_id]
+            self._cache_time.pop(industry_id, None)
+            logger.debug("Industry cache invalidated", industry_id=industry_id)
 
     def save_profile(self, profile: IndustryProfile):
         """
@@ -260,5 +286,57 @@ class IndustryProfileLoader:
 
         # Обновляем кэш
         self._cache[profile.id] = profile
+        self._cache_time[profile.id] = time.time()
 
         logger.info("Industry profile saved", industry_id=profile.id)
+
+    def increment_usage_stats(self, industry_id: str):
+        """
+        Update usage stats in _index.yaml.
+
+        Args:
+            industry_id: Industry ID to increment
+        """
+        index_path = self.config_dir / "_index.yaml"
+        data = self._load_yaml(index_path)
+
+        if not data:
+            logger.warning("Cannot update usage stats: index not found")
+            return
+
+        # Ensure usage_stats section exists
+        if "usage_stats" not in data:
+            data["usage_stats"] = {
+                "total_tests": 0,
+                "last_test_date": None,
+                "most_used_industry": None,
+                "industry_usage": {}
+            }
+
+        stats = data["usage_stats"]
+
+        # Ensure industry_usage exists
+        if "industry_usage" not in stats:
+            stats["industry_usage"] = {}
+
+        # Increment counters
+        stats["total_tests"] = stats.get("total_tests", 0) + 1
+        stats["last_test_date"] = datetime.now().strftime("%Y-%m-%d")
+
+        # Increment industry-specific counter
+        industry_usage = stats["industry_usage"]
+        industry_usage[industry_id] = industry_usage.get(industry_id, 0) + 1
+
+        # Update most_used_industry
+        if industry_usage:
+            most_used = max(industry_usage.items(), key=lambda x: x[1])
+            stats["most_used_industry"] = most_used[0]
+
+        # Save
+        self._save_yaml(index_path, data)
+
+        logger.debug(
+            "Usage stats updated",
+            industry_id=industry_id,
+            total_tests=stats["total_tests"]
+        )

@@ -54,6 +54,16 @@ from .context_builder import (
     get_kb_context_builder,
 )
 
+from .validator import (
+    ProfileValidator,
+    ValidationResult,
+)
+
+from .enriched_builder import (
+    EnrichedContextBuilder,
+    get_enriched_context_builder,
+)
+
 
 __all__ = [
     # Models
@@ -83,4 +93,12 @@ __all__ = [
     # Context Builder
     "KBContextBuilder",
     "get_kb_context_builder",
+
+    # Validator
+    "ProfileValidator",
+    "ValidationResult",
+
+    # Enriched Context Builder
+    "EnrichedContextBuilder",
+    "get_enriched_context_builder",
 ]

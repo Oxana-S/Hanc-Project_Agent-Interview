@@ -12,6 +12,7 @@
 | 4. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
 | 5. Подключения | DeepSeek, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
 | 6. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
+| 7. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
 
 ---
 
@@ -526,6 +527,89 @@ asyncio.run(test())
 # 5. LLM-симуляция (один сценарий)
 python scripts/run_test.py auto_service --quiet
 ```
+
+---
+
+## Этап 7: Модуль обогащения контекста
+
+### 7.1 Проверка Knowledge Base
+
+```bash
+# Валидация всех профилей отраслей
+python -c "
+from src.knowledge import IndustryKnowledgeManager
+from src.knowledge.validator import ProfileValidator
+
+manager = IndustryKnowledgeManager()
+validator = ProfileValidator()
+
+for industry_id in manager.get_all_industries():
+    profile = manager.get_profile(industry_id)
+    result = validator.validate(profile)
+    status = '✅' if result.is_valid else '⚠️'
+    print(f'{status} {industry_id}: {result.completeness_score:.0%}')
+    for w in result.warnings[:2]:
+        print(f'   └─ {w}')
+"
+```
+
+### 7.2 Проверка EnrichedContextBuilder
+
+```bash
+# Тест генерации контекста для всех фаз
+python -c "
+from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
+
+manager = IndustryKnowledgeManager()
+builder = EnrichedContextBuilder(manager)
+
+dialogue = [{'role': 'user', 'content': 'Мы автосервис, занимаемся ремонтом машин'}]
+
+for phase in ['discovery', 'analysis', 'proposal', 'refinement']:
+    context = builder.build_for_phase(phase, dialogue)
+    has_learnings = 'НАКОПЛЕННЫЙ ОПЫТ' in context
+    print(f'{phase}: {len(context)} chars, learnings: {has_learnings}')
+"
+```
+
+### 7.3 Проверка Voice интеграции
+
+```bash
+# Проверка что Voice Agent получает отраслевой контекст
+python -c "
+from src.voice.consultant import get_enriched_system_prompt
+
+dialogue = [
+    {'role': 'assistant', 'content': 'Здравствуйте! Расскажите о вашем бизнесе.'},
+    {'role': 'user', 'content': 'У нас клиника, записываем пациентов на приём'}
+]
+
+prompt = get_enriched_system_prompt(dialogue)
+print(f'Prompt length: {len(prompt)} chars')
+has_context = 'Контекст отрасли' in prompt
+print(f'Contains industry context: {has_context}')
+"
+```
+
+### 7.4 Тесты модуля обогащения
+
+```bash
+# Запуск unit-тестов для модуля обогащения
+pytest tests/unit/test_enriched_context.py -v
+
+# С покрытием
+pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term-missing
+```
+
+### 7.5 Сводная таблица
+
+| Проверка | Критерий |
+|----------|----------|
+| Профили валидны | Все профили ≥70% completeness |
+| Контекст генерируется | Все 4 фазы возвращают непустой контекст |
+| Learnings включены | Контекст содержит накопленный опыт |
+| Voice интеграция | Голосовой агент получает отраслевой контекст |
+| Тесты проходят | 25/25 tests passed |
 
 ---
 

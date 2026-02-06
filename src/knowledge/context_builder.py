@@ -11,6 +11,8 @@ from typing import Any, Dict, List, Optional
 
 from .models import IndustryProfile
 
+SUCCESS_TAG = "[SUCCESS]"
+
 
 class KBContextBuilder:
     """
@@ -116,6 +118,8 @@ class KBContextBuilder:
             'industry_faq': profile.industry_faq,
             'typical_objections': profile.typical_objections,
             'success_benchmarks': profile.success_benchmarks,
+            'industry_specifics': profile.industry_specifics,
+            'learnings': profile.learnings,
         }
         return key_mapping.get(key)
 
@@ -142,6 +146,10 @@ class KBContextBuilder:
             return self._format_objection_list(data, format_config)
         elif format_name == 'kpi_list':
             return self._format_kpi_list(data, format_config)
+        elif format_name == 'specifics_list':
+            return self._format_specifics_list(data, format_config)
+        elif format_name == 'learnings_list':
+            return self._format_learnings_list(data, format_config)
 
         # Fallback: simple bullet list
         return self._format_bullet_list(data, format_config)
@@ -238,6 +246,51 @@ class KBContextBuilder:
             items = [f"- {kpi}" for kpi in data.get('typical_kpis', [])]
             return "\n".join(items)
         return ""
+
+    def _format_specifics_list(self, data: Any, config: Dict) -> str:
+        """Format industry specifics (compliance, tone, peak_times)."""
+        if not data:
+            return ""
+
+        parts = []
+
+        # Handle IndustrySpecifics model
+        if hasattr(data, 'compliance') and data.compliance:
+            parts.append(f"Комплаенс: {', '.join(data.compliance)}")
+
+        if hasattr(data, 'tone') and data.tone:
+            parts.append(f"Тон общения: {', '.join(data.tone)}")
+
+        if hasattr(data, 'peak_times') and data.peak_times:
+            parts.append(f"Пиковые часы: {', '.join(data.peak_times)}")
+
+        # Handle dict
+        if isinstance(data, dict):
+            if data.get('compliance'):
+                parts.append(f"Комплаенс: {', '.join(data['compliance'])}")
+            if data.get('tone'):
+                parts.append(f"Тон общения: {', '.join(data['tone'])}")
+            if data.get('peak_times'):
+                parts.append(f"Пиковые часы: {', '.join(data['peak_times'])}")
+
+        return "\n".join(parts)
+
+    def _format_learnings_list(self, data: List, config: Dict) -> str:
+        """Format learnings list."""
+        if not data:
+            return ""
+
+        items = []
+        for item in data[-5:]:  # Last 5 learnings
+            insight = item.insight if hasattr(item, 'insight') else item.get('insight', '')
+            if not insight:
+                continue
+            is_success = SUCCESS_TAG in insight
+            clean_insight = insight.replace(f"{SUCCESS_TAG} ", "")
+            prefix = "+" if is_success else "•"
+            items.append(f"{prefix} {clean_insight}")
+
+        return "\n".join(items)
 
 
 # Singleton accessor
