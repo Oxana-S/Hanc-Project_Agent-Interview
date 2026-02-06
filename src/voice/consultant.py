@@ -39,9 +39,9 @@ from livekit.agents import (
 from livekit.agents.voice import Agent as VoiceAgent, AgentSession
 from livekit.agents.voice.room_io import RoomInputOptions
 from livekit.plugins import openai as lk_openai
-# TurnDetection and InputAudioTranscription removed - using Azure defaults
 
 from src.anketa import AnketaExtractor, AnketaGenerator
+from src.config.prompt_loader import get_prompt
 from src.llm.deepseek import DeepSeekClient
 from src.output import OutputManager
 from src.session.manager import SessionManager
@@ -165,92 +165,14 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
 
 
 def get_system_prompt() -> str:
-    """Получить системный промпт для голосового агента."""
-    base_prompt = """Ты AI-консультант компании Hanc.AI по созданию голосовых агентов.
-
-ТВОЯ ЗАДАЧА:
-Провести консультацию с потенциальным клиентом, понять его бизнес и потребности,
-и собрать информацию для создания голосового агента.
-
-СТИЛЬ ОБЩЕНИЯ:
-- Говори естественно, как живой консультант
-- Будь дружелюбным, но профессиональным
-- Задавай уточняющие вопросы
-- Не перебивай клиента
-- Отвечай кратко, 2-3 предложения максимум
-
-ФАЗЫ КОНСУЛЬТАЦИИ:
-
-1. ЗНАКОМСТВО: Узнай о компании, отрасли, основных услугах.
-   Представься и спроси, чем занимается компания клиента.
-
-2. АНАЛИЗ: Выяви боли и проблемы, которые можно автоматизировать.
-   Спроси о текущих процессах работы с клиентами, какие задачи отнимают больше всего времени,
-   какие проблемы возникают регулярно.
-
-3. ПРЕДЛОЖЕНИЕ: Предложи решение на основе анализа.
-   Объясни, как голосовой агент может помочь с выявленными проблемами.
-   Предложи конкретные функции и интеграции.
-
-4. ПРОВЕРКА АНКЕТЫ: Когда ты собрал достаточно информации (после фазы предложения),
-   переходи к проверке анкеты.
-
-   Скажи клиенту:
-   "Я подготовил анкету по нашему разговору. Вы можете проверить её на экране справа
-   и отредактировать, или я могу зачитать основные пункты голосом. Как вам удобнее?"
-
-   ЕСЛИ КЛИЕНТ ВЫБРАЛ ГОЛОСОВУЮ ПРОВЕРКУ:
-   - Зачитывай каждый раздел анкеты по одному
-   - После каждого раздела делай паузу и спрашивай, всё ли верно или нужно что-то изменить
-   - Разделы для зачитывания:
-     а) Название компании и контактное лицо
-     б) Услуги и сфера деятельности
-     в) Текущие проблемы и боли
-     г) Предлагаемые задачи для голосового агента
-     д) Необходимые интеграции
-   - Если клиент вносит исправление, повтори его слова для подтверждения и запомни изменение
-   - Если клиент сомневается, предложи перечитать раздел ещё раз
-
-   ЕСЛИ КЛИЕНТ ВЫБРАЛ ВИЗУАЛЬНУЮ ПРОВЕРКУ:
-   - Скажи: "Отлично, редактируйте анкету на экране. Когда будете готовы,
-     скажите 'подтверждаю' или нажмите кнопку."
-   - Жди, пока клиент скажет "подтверждаю", "всё верно", "готово" или аналогичную фразу
-   - Не торопи клиента, дай время на редактирование
-
-5. ЗАВЕРШЕНИЕ: Итоговое подтверждение.
-   - Если были внесены изменения, кратко перечисли их
-   - Попроси итоговое подтверждение: "Всё верно? Можем финализировать анкету?"
-   - Поблагодари клиента за консультацию
-   - Скажи, что анкета сохранена и с ним свяжутся для дальнейших шагов
-
-ПРАВИЛА ДЛЯ ФАЗЫ ПРОВЕРКИ:
-- Отвечай кратко, 2-3 предложения максимум
-- Будь терпелив при исправлениях — повторяй то, что сказал клиент
-- Не торопись, давай клиенту время подумать
-- Если клиент кажется неуверенным, предложи перечитать раздел
-
-НАЧНИ с приветствия и вопроса о компании клиента.
-
-ВАЖНО: Говори на русском языке."""
-
-    return base_prompt
+    """Получить системный промпт для голосового агента из YAML."""
+    return get_prompt("voice/consultant", "system_prompt")
 
 
 def get_review_system_prompt(anketa_summary: str) -> str:
-    """Get system prompt for review phase with current anketa data."""
-    return f"""
-ТЕКУЩИЙ РЕЖИМ: ПРОВЕРКА АНКЕТЫ
-
-Данные анкеты для проверки:
-{anketa_summary}
-
-ИНСТРУКЦИИ ДЛЯ ПРОВЕРКИ:
-1. Зачитывай пункты анкеты один за другим
-2. После каждого пункта спрашивай подтверждение
-3. Если клиент вносит исправление — подтверди его
-4. Не торопись, дай клиенту время подумать
-5. После проверки всех пунктов, попроси итоговое подтверждение
-"""
+    """Get system prompt for review phase with current anketa data from YAML."""
+    from src.config.prompt_loader import render_prompt
+    return render_prompt("voice/review", "system_prompt", anketa_summary=anketa_summary)
 
 
 def format_anketa_for_voice(anketa_data: dict) -> str:
@@ -606,7 +528,10 @@ def _create_realtime_model():
     wss_endpoint = azure_endpoint.replace("https://", "wss://")
     azure_log.info("AGENT: WSS endpoint", wss_endpoint=wss_endpoint[:50] + "...")
 
-    # Use simpler configuration - let Azure defaults handle VAD
+    # VAD configuration for better turn detection (v1.4)
+    # - threshold=0.6: Filter out quiet noise (0.5 = default, 0.6 = stricter)
+    # - prefix_padding_ms=300: Buffer before speech start
+    # - silence_duration_ms=1200: Wait 1.2 sec silence before responding
     model = lk_openai.realtime.RealtimeModel.with_azure(
         azure_deployment=azure_deployment,
         azure_endpoint=wss_endpoint,
@@ -614,6 +539,11 @@ def _create_realtime_model():
         api_version=azure_api_version,
         voice="alloy",
         temperature=0.7,
+        turn_detection=lk_openai.realtime.ServerVadOptions(
+            threshold=0.6,
+            prefix_padding_ms=300,
+            silence_duration_ms=1200,
+        ),
     )
 
     azure_log.info(
@@ -732,6 +662,10 @@ async def entrypoint(ctx: JobContext):
             user_input="[Поприветствуй клиента и спроси о его компании]"
         )
         debug_log.info("STEP 5/5: Greeting triggered successfully!")
+
+        # Greeting lock — ignore mic noise during first second (v1.4)
+        await asyncio.sleep(1.0)
+        debug_log.info("STEP 5/5: Greeting lock released")
     except Exception as e:
         debug_log.error(f"STEP 5/5 FAILED: {e}")
         raise

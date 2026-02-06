@@ -1,16 +1,28 @@
 """
 DeepSeek API клиент для анализа и генерации.
+
+Оптимизирован для deepseek-reasoner:
+- Увеличенные лимиты токенов (reasoning требует ~1000-4000 токенов)
+- Увеличенный timeout (reasoning занимает больше времени)
+- Retry логика для rate limits
 """
 
 import os
 import json
+import asyncio
+import logging
 import httpx
 from typing import Optional, Dict, Any, List
 from dotenv import load_dotenv
-import structlog
+
+from src.config.prompt_loader import get_prompt, render_prompt
 
 load_dotenv()
-logger = structlog.get_logger()
+logger = logging.getLogger("deepseek")
+
+# Константы для retry
+MAX_RETRIES = 3
+RETRY_DELAY = 2.0  # секунды
 
 
 class DeepSeekClient:
@@ -33,15 +45,19 @@ class DeepSeekClient:
         self,
         messages: List[Dict[str, str]],
         temperature: float = 0.7,
-        max_tokens: int = 4096
+        max_tokens: int = 8192,  # Увеличено для deepseek-reasoner
+        top_p: Optional[float] = None,  # Nucleus sampling
+        timeout: float = 180.0  # Увеличено для reasoning
     ) -> str:
         """
         Отправить запрос к DeepSeek Chat API.
 
         Args:
             messages: Список сообщений [{role, content}]
-            temperature: Температура генерации
-            max_tokens: Максимум токенов в ответе
+            temperature: Температура генерации (0.0-2.0)
+            max_tokens: Максимум токенов в ответе (для reasoner нужно 2048+)
+            top_p: Nucleus sampling (0.0-1.0), None = не использовать
+            timeout: Таймаут запроса в секундах
 
         Returns:
             Текст ответа
@@ -60,19 +76,72 @@ class DeepSeekClient:
             "max_tokens": max_tokens
         }
 
-        async with httpx.AsyncClient(timeout=60.0) as client:
+        # Добавляем top_p если указан
+        if top_p is not None:
+            payload["top_p"] = top_p
+
+        # Retry логика для rate limits и transient errors
+        last_error = None
+        for attempt in range(MAX_RETRIES):
+            try:
+                return await self._make_request(url, headers, payload, timeout)
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code == 429:  # Rate limit
+                    wait_time = RETRY_DELAY * (2 ** attempt)
+                    logger.warning(
+                        f"Rate limit hit, retrying (attempt {attempt + 1}, wait {wait_time}s)"
+                    )
+                    await asyncio.sleep(wait_time)
+                    last_error = e
+                else:
+                    raise
+            except (httpx.TimeoutException, httpx.ConnectError) as e:
+                wait_time = RETRY_DELAY * (2 ** attempt)
+                logger.warning(
+                    f"Request failed ({e}), retrying (attempt {attempt + 1}, wait {wait_time}s)"
+                )
+                await asyncio.sleep(wait_time)
+                last_error = e
+
+        # Все попытки исчерпаны
+        raise last_error or Exception("All retry attempts failed")
+
+    async def _make_request(
+        self,
+        url: str,
+        headers: Dict[str, str],
+        payload: Dict[str, Any],
+        timeout: float
+    ) -> str:
+        """Выполнить HTTP запрос к API."""
+        async with httpx.AsyncClient(timeout=timeout) as client:
             try:
                 response = await client.post(url, headers=headers, json=payload)
                 response.raise_for_status()
 
                 data = response.json()
-                return data["choices"][0]["message"]["content"]
+
+                # Логируем finish_reason для диагностики
+                choice = data["choices"][0]
+                finish_reason = choice.get("finish_reason", "unknown")
+                content = choice["message"]["content"] or ""
+
+                if not content:
+                    logger.warning(
+                        f"DeepSeek returned empty content (finish_reason={finish_reason}, usage={data.get('usage', {})})"
+                    )
+                elif finish_reason == "length":
+                    logger.warning(
+                        f"DeepSeek response truncated (content_length={len(content)}, usage={data.get('usage', {})})"
+                    )
+
+                return content
 
             except httpx.HTTPStatusError as e:
-                logger.error("DeepSeek API error", status=e.response.status_code, detail=e.response.text)
+                logger.error(f"DeepSeek API error: status={e.response.status_code}, detail={e.response.text}")
                 raise
             except Exception as e:
-                logger.error("DeepSeek request failed", error=str(e))
+                logger.error(f"DeepSeek request failed: {e}")
                 raise
 
     async def analyze_answer(
@@ -113,56 +182,29 @@ class DeepSeekClient:
             for qid, ans in list(previous_answers.items())[-5:]:  # Последние 5
                 context_text += f"- {ans[:100]}...\n" if len(ans) > 100 else f"- {ans}\n"
 
-        system_prompt = """Ты - эксперт по проведению интервью для создания голосовых агентов.
-Твоя задача - анализировать ответы клиента и определять, достаточно ли информации.
+        # Load prompts from YAML
+        system_prompt = get_prompt("llm/analyze_answer", "system_prompt")
 
-КРИТЕРИИ ПОЛНОГО ОТВЕТА:
-1. Конкретика вместо общих фраз
-2. Примеры или числовые данные
-3. Достаточная детализация для создания агента
-4. Отсутствие противоречий с предыдущими ответами
-
-КОГДА НУЖНЫ УТОЧНЕНИЯ:
-- Ответ слишком короткий (< 15 слов для важных вопросов)
-- Только общие формулировки без конкретики
-- Пропущены важные детали (цены, сроки, условия)
-- Неясные термины или жаргон
-- Противоречия с ранее сказанным
-
-Ответ СТРОГО в формате JSON."""
-
-        user_prompt = f"""ВОПРОС: {question}
-
-ОТВЕТ КЛИЕНТА: {answer}
-
-КОНТЕКСТ ВОПРОСА:
-- Секция: {question_context.get('section', 'Общие')}
-- Приоритет: {question_context.get('priority', 'optional')}
-- Примеры хороших ответов: {question_context.get('examples', [])}
-
-{context_text}
-
-Проанализируй ответ и верни JSON:
-{{
-    "is_complete": true/false,
-    "completeness_score": 0.0-1.0,
-    "needs_clarification": true/false,
-    "clarification_questions": ["уточняющий вопрос 1", "вопрос 2"],
-    "extracted_info": {{"ключ": "извлечённое значение"}},
-    "reasoning": "почему нужны/не нужны уточнения"
-}}
-
-ВАЖНО: Если нужны уточнения - сформулируй 1-3 конкретных вопроса, которые помогут получить недостающую информацию. Вопросы должны быть дружелюбными и направляющими."""
+        user_prompt = render_prompt(
+            "llm/analyze_answer", "user_prompt_template",
+            question=question,
+            answer=answer,
+            section=question_context.get('section', 'Общие'),
+            priority=question_context.get('priority', 'optional'),
+            examples=str(question_context.get('examples', [])),
+            context=context_text
+        )
 
         try:
             # Используем chat модель для структурированных ответов
             original_model = self.model
             self.model = "deepseek-chat"
 
+            # Для deepseek-reasoner нужно больше токенов на reasoning + JSON
             response = await self.chat([
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
-            ], temperature=0.2, max_tokens=1024)
+            ], temperature=0.2, max_tokens=2048)
 
             self.model = original_model  # Восстанавливаем
 
@@ -200,7 +242,7 @@ class DeepSeekClient:
             }
 
         except Exception as e:
-            logger.error("Answer analysis failed", error=str(e))
+            logger.error(f"Answer analysis failed: {e}")
             # Fallback - простая эвристика
             word_count = len(answer.split())
             is_short = word_count < 10
@@ -242,105 +284,15 @@ class DeepSeekClient:
             for qid, answer in raw_responses.items()
         ])
 
-        system_prompt = """Ты - эксперт по созданию голосовых агентов.
-Твоя задача - проанализировать ответы клиента из интервью и создать ПОЛНОСТЬЮ заполненную анкету.
+        # Load prompts from YAML
+        system_prompt = get_prompt("llm/complete_anketa", "system_prompt")
 
-ВАЖНО:
-1. Если какое-то поле не было явно указано клиентом, но его можно ЛОГИЧЕСКИ ВЫВЕСТИ из контекста - заполни его.
-2. Если информации недостаточно - сгенерируй разумное значение по умолчанию для данной отрасли.
-3. Все поля должны быть заполнены. Пустых полей быть не должно.
-4. Ответ должен быть в формате JSON."""
-
-        user_prompt = f"""Компания: {company_name}
-Паттерн агента: {pattern}
-
-ОТВЕТЫ КЛИЕНТА ИЗ ИНТЕРВЬЮ:
-{responses_text}
-
-Создай ПОЛНУЮ анкету в следующем JSON формате:
-
-{{
-  "basic_info": {{
-    "company_name": "...",
-    "industry": "...",
-    "specialization": "конкретная специализация в отрасли",
-    "language": "...",
-    "agent_purpose": "подробное описание задач агента"
-  }},
-  "clients_and_services": {{
-    "business_type": "Продажи с длинным/коротким циклом, описание",
-    "call_direction": "Входящие/Исходящие/Оба направления",
-    "services": [
-      {{"name": "...", "duration": "...", "price": "..."}}
-    ],
-    "price_policy": "как агент должен говорить о ценах",
-    "client_types": [
-      {{"type": "B2B/B2C/...", "percentage": "...", "description": "..."}}
-    ],
-    "client_age_group": "возрастная группа если B2C",
-    "client_sources": ["откуда приходят клиенты"],
-    "typical_questions": ["типичные вопросы клиентов"]
-  }},
-  "agent_config": {{
-    "name": "имя агента",
-    "tone": "подробное описание тона общения",
-    "working_hours": {{
-      "weekdays": "...",
-      "saturday": "...",
-      "sunday": "..."
-    }},
-    "transfer_conditions": ["когда переводить на человека"]
-  }},
-  "integrations": {{
-    "email": {{
-      "enabled": true/false,
-      "address": "...",
-      "purposes": ["для чего используется"]
-    }},
-    "calendar": {{
-      "enabled": true/false,
-      "link": "...",
-      "duration": "длительность встречи",
-      "purposes": ["что бронируем"]
-    }},
-    "call_transfer": {{
-      "enabled": true/false,
-      "phone": "...",
-      "backup_phone": "...",
-      "conditions": ["условия переадресации"]
-    }},
-    "sms": {{
-      "enabled": true/false,
-      "sender_id": "...",
-      "purposes": ["для чего"],
-      "reminder_times": "..."
-    }},
-    "whatsapp": {{
-      "enabled": true/false,
-      "number": "...",
-      "purposes": ["для чего"]
-    }}
-  }},
-  "additional_info": {{
-    "example_dialogues": [
-      {{
-        "scenario": "название сценария",
-        "client_says": "что говорит клиент",
-        "agent_should": ["что должен сделать агент"]
-      }}
-    ],
-    "restrictions": ["что агент НЕ должен делать"],
-    "compliance_requirements": ["требования compliance"]
-  }},
-  "contact_info": {{
-    "person": "...",
-    "email": "...",
-    "phone": "...",
-    "website": "..."
-  }}
-}}
-
-ВАЖНО: Заполни ВСЕ поля. Если информация не указана явно - выведи логически или предложи разумное значение."""
+        user_prompt = render_prompt(
+            "llm/complete_anketa", "user_prompt_template",
+            company_name=company_name,
+            pattern=pattern,
+            responses_text=responses_text
+        )
 
         response = await self.chat([
             {"role": "system", "content": system_prompt},
@@ -359,7 +311,7 @@ class DeepSeekClient:
             return json.loads(json_text.strip())
 
         except json.JSONDecodeError as e:
-            logger.error("Failed to parse LLM response as JSON", error=str(e), response=response[:500])
+            logger.error(f"Failed to parse LLM response as JSON: {e}, response={response[:500]}")
             # Возвращаем пустую структуру в случае ошибки
             return {}
 
@@ -384,26 +336,19 @@ class DeepSeekClient:
         """
         services_text = "\n".join([f"- {s}" for s in services])
 
-        prompt = f"""Компания: {company_name}
-Отрасль: {industry}
-Услуги:
-{services_text}
-
-Назначение агента: {agent_purpose}
-
-Сгенерируй 3 примера типичных диалогов с клиентами.
-Формат JSON:
-[
-  {{
-    "scenario": "Название сценария",
-    "client_says": "Что говорит клиент",
-    "agent_should": ["Шаг 1", "Шаг 2", "Шаг 3"]
-  }}
-]"""
+        # Load prompts from YAML
+        system_prompt = get_prompt("llm/generation", "dialogues.system_prompt")
+        user_prompt = render_prompt(
+            "llm/generation", "dialogues.user_prompt_template",
+            company_name=company_name,
+            industry=industry,
+            services_text=services_text,
+            agent_purpose=agent_purpose
+        )
 
         response = await self.chat([
-            {"role": "system", "content": "Ты создаёшь примеры диалогов для голосовых агентов."},
-            {"role": "user", "content": prompt}
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
         ], temperature=0.7)
 
         try:
@@ -432,18 +377,17 @@ class DeepSeekClient:
         Returns:
             Список ограничений (что агент НЕ должен делать)
         """
-        prompt = f"""Отрасль: {industry}
-Назначение агента: {agent_purpose}
-
-Сгенерируй список из 5-7 вещей, которые голосовой агент НЕ должен делать.
-Учти специфику отрасли и типичные риски.
-
-Формат: JSON массив строк.
-["Не делать X", "Не обещать Y", ...]"""
+        # Load prompts from YAML
+        system_prompt = get_prompt("llm/generation", "restrictions.system_prompt")
+        user_prompt = render_prompt(
+            "llm/generation", "restrictions.user_prompt_template",
+            industry=industry,
+            agent_purpose=agent_purpose
+        )
 
         response = await self.chat([
-            {"role": "system", "content": "Ты эксперт по compliance и рискам в автоматизации."},
-            {"role": "user", "content": prompt}
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
         ], temperature=0.5)
 
         try:

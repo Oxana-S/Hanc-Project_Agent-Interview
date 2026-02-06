@@ -28,8 +28,9 @@ from src.anketa.schema import (
 from src.anketa.data_cleaner import (
     JSONRepair, DialogueCleaner, SmartExtractor, AnketaPostProcessor
 )
+from src.config.prompt_loader import get_prompt, render_prompt
 
-logger = structlog.get_logger()
+logger = structlog.get_logger("anketa")
 
 
 class AnketaExtractor:
@@ -70,7 +71,8 @@ class AnketaExtractor:
         dialogue_history: List[Dict[str, str]],
         business_analysis: Optional[Dict[str, Any]] = None,
         proposed_solution: Optional[Dict[str, Any]] = None,
-        duration_seconds: float = 0.0
+        duration_seconds: float = 0.0,
+        document_context: Optional[Any] = None
     ) -> FinalAnketa:
         """
         Extract structured data from all sources into FinalAnketa.
@@ -80,6 +82,7 @@ class AnketaExtractor:
             business_analysis: Business analysis results (dict or model)
             proposed_solution: Proposed solution (dict or model)
             duration_seconds: Duration of consultation
+            document_context: DocumentContext from analyzed client documents (v3.2)
 
         Returns:
             Populated FinalAnketa instance
@@ -93,17 +96,12 @@ class AnketaExtractor:
         prompt = self._build_extraction_prompt(
             dialogue_history,
             business_analysis or {},
-            proposed_solution or {}
+            proposed_solution or {},
+            document_context
         )
 
-        system_prompt = """Ты — эксперт по извлечению структурированных данных из бизнес-консультаций.
-Твоя задача — проанализировать диалог и извлечь ВСЕ упомянутые данные в JSON формат.
-
-ПРАВИЛА:
-1. Извлекай КОНКРЕТНЫЕ значения из диалога, не придумывай
-2. Если информация упомянута несколько раз — бери последнюю версию
-3. Списки заполняй краткими пунктами (не целыми предложениями)
-4. Возвращай ТОЛЬКО валидный JSON без markdown-обёртки и комментариев"""
+        # Load system prompt from YAML
+        system_prompt = get_prompt("anketa/extract", "system_prompt")
 
         try:
             logger.info("Starting anketa extraction v3.1", dialogue_turns=len(dialogue_history))
@@ -114,13 +112,15 @@ class AnketaExtractor:
                 dialogue_extracted = self.smart_extractor.extract_from_dialogue(dialogue_history)
                 logger.debug("Smart extraction completed", fields=list(dialogue_extracted.keys()))
 
+            # Для deepseek-reasoner нужно больше токенов:
+            # ~4000 на reasoning + ~2000 на JSON ответ
             response = await self.llm.chat(
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.1,
-                max_tokens=4096
+                max_tokens=8192
             )
 
             logger.debug("LLM response received", response_length=len(response))
@@ -192,7 +192,8 @@ class AnketaExtractor:
         self,
         dialogue: List[Dict[str, str]],
         analysis: Dict[str, Any],
-        solution: Dict[str, Any]
+        solution: Dict[str, Any],
+        document_context: Optional[Any] = None
     ) -> str:
         """Build the extraction prompt for LLM."""
 
@@ -226,6 +227,23 @@ class AnketaExtractor:
 - Дополнительные функции: {[f.get('name', '') for f in add_funcs]}
 """
 
+        # Format document context (v3.2)
+        document_text = ""
+        if document_context:
+            try:
+                if hasattr(document_context, 'to_prompt_context'):
+                    document_text = f"""
+ДОКУМЕНТЫ КЛИЕНТА:
+{document_context.to_prompt_context()}
+"""
+                elif hasattr(document_context, 'summary') and document_context.summary:
+                    document_text = f"""
+ДОКУМЕНТЫ КЛИЕНТА:
+{document_context.summary}
+"""
+            except Exception:
+                pass  # Ignore document context errors
+
         return f"""Ты — эксперт по извлечению структурированных данных из консультаций.
 
 ЗАДАЧА: Извлеки все данные из диалога консультации в структурированный JSON.
@@ -236,6 +254,8 @@ class AnketaExtractor:
 3. Если данные не упомянуты явно — оставь пустую строку или пустой список
 4. Имена полей должны ТОЧНО соответствовать схеме ниже
 5. Верни ТОЛЬКО валидный JSON без комментариев и пояснений
+6. КРИТИЧНО: company_name — это БРЕНД/НАЗВАНИЕ компании (например: "АльфаСервис", "ГрузовикОнлайн"), а НЕ описание деятельности!
+7. business_description — это ЧЕМ занимается компания (например: "логистика и грузоперевозки"), а НЕ название!
 
 ---
 
@@ -245,19 +265,20 @@ class AnketaExtractor:
 ---
 {analysis_text}
 {solution_text}
+{document_text}
 ---
 
 СХЕМА JSON (заполни все поля):
 
 {{
-  "company_name": "название компании",
+  "company_name": "ТОЧНОЕ название/бренд компании (НЕ описание деятельности!)",
   "industry": "отрасль",
   "specialization": "специализация",
   "website": "URL сайта или null",
   "contact_name": "имя контактного лица",
   "contact_role": "должность",
 
-  "business_description": "краткое описание бизнеса (1-2 предложения)",
+  "business_description": "чем занимается компания (1-2 предложения, НЕ название!)",
   "services": ["услуга 1", "услуга 2"],
   "client_types": ["тип клиентов 1", "тип 2"],
   "current_problems": ["проблема 1", "проблема 2"],
@@ -871,18 +892,8 @@ class AnketaExtractor:
         # Generate all expert blocks in a single LLM call for efficiency
         prompt = self._build_expert_generation_prompt(context)
 
-        system_prompt = """Ты — эксперт-консультант по голосовым агентам.
-
-КРИТИЧЕСКИ ВАЖНО ДЛЯ JSON:
-- НЕ используй комментарии в JSON
-- Все строки в двойных кавычках
-- После последнего элемента массива НЕТ запятой
-- null пишется без кавычек
-- true/false пишутся без кавычек
-- Проверь все запятые перед ] и }
-
-Генерируй контент на русском языке.
-Возвращай ТОЛЬКО валидный JSON без markdown-блоков."""
+        # Load system prompt from YAML
+        system_prompt = get_prompt("anketa/expert", "system_prompt")
 
         try:
             response = await self.llm.chat(
@@ -929,41 +940,17 @@ class AnketaExtractor:
         }
 
     def _build_expert_generation_prompt(self, context: Dict[str, Any]) -> str:
-        """Build comprehensive prompt for expert content generation."""
+        """Build comprehensive prompt for expert content generation from YAML."""
         company = context.get('company_name', 'компания')
         industry = context.get('industry', 'бизнес')
         purpose = context.get('agent_purpose', 'консультирование клиентов')
 
-        return f"""Компания: {company}
-Отрасль: {industry}
-Назначение агента: {purpose}
-
-Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{industry}".
-
-{{"faq_items":[{{"question":"вопрос","answer":"ответ 2-3 предложения","category":"pricing"}}],
-"objection_handlers":[{{"objection":"возражение","response":"ответ","follow_up":"действие"}}],
-"sample_dialogue":[{{"role":"bot","message":"текст","intent":"greeting"}}],
-"financial_metrics":[{{"name":"метрика","value":"значение","source":"ai_benchmark","note":null}}],
-"competitors":[{{"name":"конкурент","strengths":["сила"],"weaknesses":["слабость"],"price_range":null}}],
-"market_insights":[{{"insight":"инсайт","source":"ai_analysis","relevance":"high"}}],
-"escalation_rules":[{{"trigger":"триггер","urgency":"immediate","action":"действие"}}],
-"success_kpis":[{{"name":"KPI","target":"цель","benchmark":null,"measurement":"как измерять"}}],
-"launch_checklist":[{{"item":"пункт","required":true,"responsible":"client"}}],
-"ai_recommendations":[{{"recommendation":"рекомендация","impact":"эффект","priority":"high","effort":"low"}}],
-"target_segments":[{{"name":"сегмент","description":"описание","pain_points":["боль"],"triggers":["триггер"]}}],
-"tone_of_voice":{{"do":"что делать","dont":"чего не делать"}},
-"error_handling_scripts":{{"not_understood":"не понял","technical_issue":"проблема","out_of_scope":"вне компетенции"}},
-"follow_up_sequence":["шаг 1","шаг 2"],
-"competitive_advantages":["преимущество"]}}
-
-ТРЕБОВАНИЯ:
-- faq_items: 6-8 вопросов релевантных для {industry}
-- objection_handlers: 4-5 возражений
-- sample_dialogue: 8-10 реплик (чередуй bot/client)
-- success_kpis: 4-5 KPI
-- ai_recommendations: 4-5 рекомендаций
-
-Верни ТОЛЬКО JSON:"""
+        return render_prompt(
+            "anketa/expert", "user_prompt_template",
+            company_name=company,
+            industry=industry,
+            agent_purpose=purpose
+        )
 
     def _merge_expert_content(self, anketa: FinalAnketa, data: Dict[str, Any]) -> FinalAnketa:
         """Merge AI-generated expert content into anketa."""

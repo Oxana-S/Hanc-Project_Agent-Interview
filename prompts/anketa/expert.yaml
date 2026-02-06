@@ -1,0 +1,52 @@
+# Expert Content Generation Prompt
+# Промпт для генерации экспертного контента анкеты v2.0
+
+meta:
+  version: "1.0"
+  description: "Генерация FAQ, возражений, KPI и рекомендаций"
+
+system_prompt: |
+  Ты — эксперт-консультант по голосовым агентам.
+
+  КРИТИЧЕСКИ ВАЖНО ДЛЯ JSON:
+  - НЕ используй комментарии в JSON
+  - Все строки в двойных кавычках
+  - После последнего элемента массива НЕТ запятой
+  - null пишется без кавычек
+  - true/false пишутся без кавычек
+  - Проверь все запятые перед ] и }
+
+  Генерируй контент на русском языке.
+  Возвращай ТОЛЬКО валидный JSON без markdown-блоков.
+
+user_prompt_template: |
+  Компания: {{company_name}}
+  Отрасль: {{industry}}
+  Назначение агента: {{agent_purpose}}
+
+  Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{{industry}}".
+
+  {"faq_items":[{"question":"вопрос","answer":"ответ 2-3 предложения","category":"pricing"}],
+  "objection_handlers":[{"objection":"возражение","response":"ответ","follow_up":"действие"}],
+  "sample_dialogue":[{"role":"bot","message":"текст","intent":"greeting"}],
+  "financial_metrics":[{"name":"метрика","value":"значение","source":"ai_benchmark","note":null}],
+  "competitors":[{"name":"конкурент","strengths":["сила"],"weaknesses":["слабость"],"price_range":null}],
+  "market_insights":[{"insight":"инсайт","source":"ai_analysis","relevance":"high"}],
+  "escalation_rules":[{"trigger":"триггер","urgency":"immediate","action":"действие"}],
+  "success_kpis":[{"name":"KPI","target":"цель","benchmark":null,"measurement":"как измерять"}],
+  "launch_checklist":[{"item":"пункт","required":true,"responsible":"client"}],
+  "ai_recommendations":[{"recommendation":"рекомендация","impact":"эффект","priority":"high","effort":"low"}],
+  "target_segments":[{"name":"сегмент","description":"описание","pain_points":["боль"],"triggers":["триггер"]}],
+  "tone_of_voice":{"do":"что делать","dont":"чего не делать"},
+  "error_handling_scripts":{"not_understood":"не понял","technical_issue":"проблема","out_of_scope":"вне компетенции"},
+  "follow_up_sequence":["шаг 1","шаг 2"],
+  "competitive_advantages":["преимущество"]}
+
+  ТРЕБОВАНИЯ:
+  - faq_items: 6-8 вопросов релевантных для {{industry}}
+  - objection_handlers: 4-5 возражений
+  - sample_dialogue: 8-10 реплик (чередуй bot/client)
+  - success_kpis: 4-5 KPI
+  - ai_recommendations: 4-5 рекомендаций
+
+  Верни ТОЛЬКО JSON:

@@ -206,8 +206,9 @@ src/
 │   └── models.py                # ReviewConfig, ReviewResult
 │
 ├── config/                      # Загрузка конфигурации
-│   ├── prompt_loader.py         # Загрузка промптов из YAML
-│   └── locale_loader.py         # Локализация
+│   ├── prompt_loader.py         # PromptLoader: YAML промпты с шаблонизацией
+│   ├── synonym_loader.py        # Словари синонимов (config/synonyms/)
+│   └── locale_loader.py         # Локализация (locales/)
 │
 ├── research/                    # Исследование внешних данных
 │   ├── engine.py                # ResearchEngine (веб-поиск + парсинг + RAG)
@@ -392,7 +393,8 @@ YAML-профили отраслей в `config/industries/`:
 | Логи | `logs/*.log` | 10 файлов по направлениям + errors.log | Voice + Server |
 | База знаний | `config/industries/*.yaml` | 8 отраслевых профилей | Все |
 | Сценарии | `tests/scenarios/*.yaml` | 12 тестовых сценариев | Тестирование |
-| Конфигурация | `config/` | промпты, словари, уведомления | Все |
+| Промпты | `prompts/` | YAML промпты для LLM | Все |
+| Конфигурация | `config/` | профили отраслей, словари, уведомления | Все |
 
 ## Внешние зависимости
 
@@ -417,6 +419,54 @@ YAML-профили отраслей в `config/industries/`:
 | rich | CLI интерфейс |
 | pyyaml | Конфигурация |
 | python-dotenv | Переменные окружения |
+
+## Система промптов
+
+Все промпты для LLM хранятся в YAML файлах (`prompts/`) и загружаются через `PromptLoader` (`src/config/prompt_loader.py`).
+
+### Структура prompts/
+
+```text
+prompts/
+├── consultant/                  # Текстовая консультация (4 фазы)
+│   ├── discovery.yaml           # Свободный диалог о бизнесе
+│   ├── analysis.yaml            # Анализ болей
+│   ├── proposal.yaml            # Предложение решения
+│   └── refinement.yaml          # Уточнение деталей
+├── voice/                       # Голосовой агент
+│   ├── consultant.yaml          # Системный промпт + управление диалогом
+│   └── review.yaml              # Фаза ревью анкеты
+├── llm/                         # DeepSeek анализ
+│   ├── analyze_answer.yaml      # Анализ ответа пользователя
+│   ├── complete_anketa.yaml     # Генерация анкеты из ответов
+│   └── generation.yaml          # Генерация диалогов/ограничений
+└── anketa/                      # Генерация анкеты
+    ├── extract.yaml             # Извлечение данных из диалога
+    └── expert.yaml              # Генерация FAQ, KPI, рекомендаций
+```
+
+### Использование PromptLoader
+
+```python
+from src.config.prompt_loader import get_prompt, render_prompt
+
+# Получить промпт
+system_prompt = get_prompt("voice/consultant", "system_prompt")
+
+# Рендеринг с переменными
+user_prompt = render_prompt(
+    "llm/analyze_answer", "user_prompt_template",
+    question="Как называется ваша компания?",
+    answer="Рестоклиника",
+    section="Общие"
+)
+```
+
+### Поддерживаемый синтаксис шаблонов
+
+- `{{variable}}` — простая подстановка
+- `{{#if condition}}...{{/if}}` — условный блок
+- `{{#each items}}...{{/each}}` — цикл
 
 ## Безопасность
 

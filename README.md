@@ -283,11 +283,22 @@ Maximum режим проводит 3-фазную консультацию (DIS
 │   ├── docker-compose.yml           # Redis 7 + PostgreSQL 16 (для Maximum режима)
 │   └── init_db.sql                  # SQL-схема PostgreSQL
 │
-├── prompts/consultant/              # Промпты по фазам
-│   ├── discovery.yaml
-│   ├── analysis.yaml
-│   ├── proposal.yaml
-│   └── refinement.yaml
+├── prompts/                         # YAML промпты для LLM
+│   ├── consultant/                  # Фазы текстовой консультации
+│   │   ├── discovery.yaml           # Свободный диалог о бизнесе
+│   │   ├── analysis.yaml            # Анализ болей
+│   │   ├── proposal.yaml            # Предложение решения
+│   │   └── refinement.yaml          # Уточнение деталей
+│   ├── voice/                       # Голосовой агент
+│   │   ├── consultant.yaml          # Системный промпт + управление диалогом
+│   │   └── review.yaml              # Фаза ревью анкеты
+│   ├── llm/                         # DeepSeek анализ
+│   │   ├── analyze_answer.yaml      # Анализ ответа пользователя
+│   │   ├── complete_anketa.yaml     # Генерация анкеты из ответов
+│   │   └── generation.yaml          # Генерация диалогов/ограничений
+│   └── anketa/                      # Генерация анкеты
+│       ├── extract.yaml             # Извлечение данных из диалога
+│       └── expert.yaml              # Генерация FAQ, KPI, рекомендаций
 │
 ├── tests/                           # Тесты (252 юнит-теста)
 │   ├── unit/                        # Юнит-тесты (9 модулей)

@@ -30,13 +30,17 @@ from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich import box
 
-from src.models import InterviewPattern, CompletedAnketa
+from src.models import InterviewPattern
+from src.anketa.schema import FinalAnketa
 from src.interview.phases import (
     InterviewPhase, FieldStatus, FieldPriority,
     CollectedInfo, PhaseTransition, ANKETA_FIELDS
 )
 from src.llm.deepseek import DeepSeekClient
-from src.llm.anketa_generator import export_full_anketa
+from src.anketa.extractor import AnketaExtractor
+from src.anketa.generator import AnketaGenerator
+from src.output.manager import OutputManager
+from src.config.prompt_loader import get_prompt
 
 load_dotenv()
 console = Console()
@@ -195,32 +199,8 @@ class MaximumInterviewer:
                                f"Завершено {turn_count} ходов диалога")
 
     def _get_discovery_system_prompt(self) -> str:
-        """Системный промпт для фазы Discovery."""
-        return """Ты - опытный бизнес-консультант по созданию голосовых AI-агентов.
-
-ТВОЯ РОЛЬ:
-Вместе с клиентом изучить его бизнес и помочь определить, какой голосовой агент ему нужен.
-
-СТИЛЬ ОБЩЕНИЯ:
-- Дружелюбный и заинтересованный
-- Задаёшь уточняющие вопросы
-- Предлагаешь конкретные идеи и варианты
-- Приводишь примеры из похожих бизнесов
-- Помогаешь клиенту увидеть возможности
-
-СТРУКТУРА ДИАЛОГА:
-1. Узнай о бизнесе (компания, чем занимается, клиенты)
-2. Выясни текущие проблемы (что отнимает время, что хотят автоматизировать)
-3. Предложи 2-3 варианта использования агента
-4. Уточни детали по выбранному направлению
-
-ВАЖНО:
-- Не задавай больше 2 вопросов за раз
-- После ответа клиента - предлагай что-то конкретное
-- Если клиент не знает что ответить - предложи варианты
-- Веди к конкретике, но не дави
-
-Отвечай естественно, как в разговоре. В конце каждого ответа задай 1-2 вопроса или предложи варианты."""
+        """Системный промпт для фазы Discovery из YAML."""
+        return get_prompt("consultant/discovery", "system_prompt")
 
     def _ready_for_structured(self, turn_count: int) -> bool:
         """Проверить готовность к переходу в Structured фазу."""
@@ -328,9 +308,10 @@ class MaximumInterviewer:
 
 Верни только текст вопроса, без пояснений."""
 
+        # Для deepseek-reasoner нужно больше токенов: ~500 на reasoning + ответ
         response = await self.deepseek.chat([
             {"role": "user", "content": prompt}
-        ], temperature=0.5, max_tokens=256)
+        ], temperature=0.5, max_tokens=1024)
 
         return response.strip()
 
@@ -417,26 +398,43 @@ class MaximumInterviewer:
         ) as progress:
             task = progress.add_task("Анализ и генерация...", total=None)
 
-            # Создаём CompletedAnketa из собранных данных
-            interview_data = self._create_completed_anketa()
+            # Создаём базовую FinalAnketa из собранных данных
+            anketa = self._create_final_anketa()
 
-            # Генерируем полную анкету через LLM
+            # Обогащаем через AnketaExtractor (FAQ, KPI, рекомендации и т.д.)
             try:
-                result = await export_full_anketa(interview_data)
+                extractor = AnketaExtractor(self.deepseek)
+                anketa = await extractor._generate_expert_content(anketa)
                 progress.update(task, completed=True)
             except Exception as e:
                 console.print(f"[red]Ошибка генерации: {e}[/red]")
                 return {"status": "error", "error": str(e)}
+
+        # Сохраняем через OutputManager
+        output_manager = OutputManager()
+        company_dir = output_manager.get_company_dir(anketa.company_name)
+
+        generator = AnketaGenerator()
+        md_content = generator._render_markdown(anketa)
+        json_content = anketa.model_dump(mode="json")
+
+        files = output_manager.save_anketa(company_dir, md_content, json_content)
+
+        result = {
+            "anketa": anketa,
+            "json": str(files["json"]),
+            "markdown": str(files["md"])
+        }
 
         # Показываем результаты
         self._show_results(result)
 
         return {
             "status": "completed",
-            "anketa": result.get('anketa'),
+            "anketa": anketa,
             "files": {
-                "json": result.get('json'),
-                "markdown": result.get('markdown')
+                "json": str(files["json"]),
+                "markdown": str(files["md"])
             },
             "stats": self._get_session_stats()
         }
@@ -499,26 +497,31 @@ class MaximumInterviewer:
             except ValueError:
                 pass
 
-    def _create_completed_anketa(self) -> CompletedAnketa:
-        """Создать CompletedAnketa из собранных данных."""
+    def _create_final_anketa(self) -> FinalAnketa:
+        """Создать FinalAnketa из собранных данных."""
         data = self.collected.to_anketa_dict()
         duration = (datetime.now(timezone.utc) - self.start_time).total_seconds()
 
-        return CompletedAnketa(
+        return FinalAnketa(
             anketa_id=str(uuid.uuid4()),
             interview_id=self.session_id,
-            pattern=self.pattern,
+            pattern=self.pattern.value,
             created_at=datetime.now(timezone.utc),
-            interview_duration_seconds=duration,
+            consultation_duration_seconds=duration,
             company_name=data.get("company_name", "Не указано"),
             industry=data.get("industry", "Не указано"),
-            language=data.get("language", "Русский"),
-            agent_purpose=data.get("agent_purpose", "Не указано"),
+            language=data.get("language", "ru"),
+            agent_purpose=data.get("agent_purpose", ""),
             agent_name=data.get("agent_name", "Агент"),
-            tone=data.get("tone", "Дружелюбный"),
-            contact_person="",
+            voice_tone=data.get("tone", "friendly"),
+            contact_name=data.get("contact_name", ""),
             contact_email=data.get("contact_email", ""),
             contact_phone=data.get("contact_phone", ""),
+            business_description=data.get("business_description", ""),
+            services=data.get("services", []),
+            client_types=data.get("client_types", []),
+            current_problems=data.get("current_problems", []),
+            business_goals=data.get("business_goals", []),
             full_responses=data,
             quality_metrics=self.collected.get_completion_stats()
         )
@@ -555,10 +558,10 @@ class MaximumInterviewer:
         anketa = result.get('anketa')
         if anketa:
             console.print(f"\n[bold]🤖 AI сгенерировал:[/bold]")
-            console.print(f"  • Услуг: {len(anketa.services)}")
-            console.print(f"  • Типичных вопросов: {len(anketa.typical_questions)}")
-            console.print(f"  • Примеров диалогов: {len(anketa.example_dialogues)}")
-            console.print(f"  • Ограничений: {len(anketa.restrictions)}")
+            console.print(f"  • FAQ вопросов: {len(anketa.faq_items)}")
+            console.print(f"  • Обработчиков возражений: {len(anketa.objection_handlers)}")
+            console.print(f"  • KPI метрик: {len(anketa.success_kpis)}")
+            console.print(f"  • AI рекомендаций: {len(anketa.ai_recommendations)}")
 
     def _get_session_stats(self) -> Dict[str, Any]:
         """Получить статистику сессии."""
@@ -591,7 +594,8 @@ class MaximumInterviewer:
             {"role": "system", "content": system_prompt + "\n\n" + context}
         ] + self.dialogue_history[-10:]  # Последние 10 сообщений
 
-        response = await self.deepseek.chat(messages, temperature=0.7, max_tokens=1024)
+        # Для deepseek-reasoner нужно больше токенов на reasoning + ответ
+        response = await self.deepseek.chat(messages, temperature=0.7, max_tokens=2048)
 
         # Добавляем ответ в историю
         self.dialogue_history.append({"role": "assistant", "content": response})
@@ -621,9 +625,10 @@ class MaximumInterviewer:
 Возвращай только JSON."""
 
         try:
+            # Для deepseek-reasoner нужно больше токенов на reasoning + JSON
             response = await self.deepseek.chat([
                 {"role": "user", "content": prompt}
-            ], temperature=0.1, max_tokens=512)
+            ], temperature=0.1, max_tokens=2048)
 
             # Парсим JSON
             json_text = response.strip()

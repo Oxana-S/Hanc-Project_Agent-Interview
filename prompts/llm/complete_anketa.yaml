@@ -1,0 +1,108 @@
+# Anketa Completion Prompt
+# Промпт для генерации полной анкеты из ответов интервью
+
+meta:
+  version: "1.0"
+  description: "Анализ ответов и генерация полной анкеты"
+
+system_prompt: |
+  Ты - эксперт по созданию голосовых агентов.
+  Твоя задача - проанализировать ответы клиента из интервью и создать ПОЛНОСТЬЮ заполненную анкету.
+
+  ВАЖНО:
+  1. Если какое-то поле не было явно указано клиентом, но его можно ЛОГИЧЕСКИ ВЫВЕСТИ из контекста - заполни его.
+  2. Если информации недостаточно - сгенерируй разумное значение по умолчанию для данной отрасли.
+  3. Все поля должны быть заполнены. Пустых полей быть не должно.
+  4. Ответ должен быть в формате JSON.
+
+user_prompt_template: |
+  Компания: {{company_name}}
+  Паттерн агента: {{pattern}}
+
+  ОТВЕТЫ КЛИЕНТА ИЗ ИНТЕРВЬЮ:
+  {{responses_text}}
+
+  Создай ПОЛНУЮ анкету в следующем JSON формате:
+
+  {
+    "basic_info": {
+      "company_name": "...",
+      "industry": "...",
+      "specialization": "конкретная специализация в отрасли",
+      "language": "...",
+      "agent_purpose": "подробное описание задач агента"
+    },
+    "clients_and_services": {
+      "business_type": "Продажи с длинным/коротким циклом, описание",
+      "call_direction": "Входящие/Исходящие/Оба направления",
+      "services": [
+        {"name": "...", "duration": "...", "price": "..."}
+      ],
+      "price_policy": "как агент должен говорить о ценах",
+      "client_types": [
+        {"type": "B2B/B2C/...", "percentage": "...", "description": "..."}
+      ],
+      "client_age_group": "возрастная группа если B2C",
+      "client_sources": ["откуда приходят клиенты"],
+      "typical_questions": ["типичные вопросы клиентов"]
+    },
+    "agent_config": {
+      "name": "имя агента",
+      "tone": "подробное описание тона общения",
+      "working_hours": {
+        "weekdays": "...",
+        "saturday": "...",
+        "sunday": "..."
+      },
+      "transfer_conditions": ["когда переводить на человека"]
+    },
+    "integrations": {
+      "email": {
+        "enabled": true/false,
+        "address": "...",
+        "purposes": ["для чего используется"]
+      },
+      "calendar": {
+        "enabled": true/false,
+        "link": "...",
+        "duration": "длительность встречи",
+        "purposes": ["что бронируем"]
+      },
+      "call_transfer": {
+        "enabled": true/false,
+        "phone": "...",
+        "backup_phone": "...",
+        "conditions": ["условия переадресации"]
+      },
+      "sms": {
+        "enabled": true/false,
+        "sender_id": "...",
+        "purposes": ["для чего"],
+        "reminder_times": "..."
+      },
+      "whatsapp": {
+        "enabled": true/false,
+        "number": "...",
+        "purposes": ["для чего"]
+      }
+    },
+    "additional_info": {
+      "example_dialogues": [
+        {
+          "scenario": "название сценария",
+          "client_says": "что говорит клиент",
+          "agent_should": ["что должен сделать агент"]
+        }
+      ],
+      "restrictions": ["что агент НЕ должен делать"],
+      "compliance_requirements": ["требования compliance"]
+    },
+    "contact_info": {
+      "person": "...",
+      "email": "...",
+      "phone": "...",
+      "website": "..."
+    }
+  }
+
+  ВАЖНО: Заполни ВСЕ поля. Если информация не указана явно - выведи логически или предложи разумное значение.
