@@ -5,13 +5,13 @@
 ## Обзор
 
 | Этап | Что проверяем | Инструмент | Критерий прохождения |
-|------|---------------|------------|---------------------|
+|------|---------------|------------|----------------------|
 | 1. Юнит-тесты | Логика модулей | pytest | 100% passed, coverage ≥50% |
 | 2. Интеграция | Связи между модулями | pytest + fixtures | Все интеграционные тесты passed |
-| 3. LLM-симуляция | Полный цикл консультации | run_test.py | validation score ≥0.8 |
+| 3. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
 | 4. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
-| 5. Инфраструктура | Redis, PostgreSQL, LiveKit | health checks | Все сервисы online |
-| 6. Production readiness | .env, логи, мониторинг | manual check | Чек-лист выполнен |
+| 5. Подключения | DeepSeek, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
+| 6. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
 
 ---
 
@@ -214,80 +214,254 @@ node tests/e2e_voice_test.js
 
 ---
 
-## Этап 5: Инфраструктура
+## Этап 5: Проверка подключений к сервисам
 
-### Проверка сервисов
+**ВАЖНО:** Этот этап проверяет **реальные подключения**, а не просто наличие конфигурации.
+
+### Предварительные требования
+
+Перед проверкой Redis и PostgreSQL необходимо запустить сервисы:
 
 ```bash
-# Redis
-redis-cli ping
-# Ожидаемый ответ: PONG
+# 1. Проверить что Docker установлен и запущен
+docker --version
+docker info > /dev/null 2>&1 && echo "Docker: ✅ Running" || echo "Docker: ❌ Not running"
 
-# PostgreSQL
-psql -U postgres -c "SELECT 1"
-# Ожидаемый ответ: 1
+# 2. Запустить Redis и PostgreSQL через Docker Compose
+docker-compose -f config/docker-compose.yml up -d redis postgres
 
-# LiveKit (если локально)
-curl http://localhost:7880/healthcheck
-# Ожидаемый ответ: OK
+# 3. Дождаться готовности (10-15 секунд)
+sleep 10
+
+# 4. Проверить статус контейнеров
+docker-compose -f config/docker-compose.yml ps
 ```
 
-### Docker Compose (опционально)
+**Альтернатива без Docker (локальная установка):**
 
 ```bash
-# Запуск всех сервисов
+# macOS
+brew install redis postgresql
+brew services start redis
+brew services start postgresql
+
+# Ubuntu/Debian
+sudo apt install redis-server postgresql
+sudo systemctl start redis postgresql
+```
+
+### 5.1 DeepSeek API
+
+```bash
+# Проверка подключения к DeepSeek
+python -c "
+import asyncio
+from src.llm.deepseek import DeepSeekClient
+
+async def test():
+    client = DeepSeekClient()
+    try:
+        response = await client.chat([{'role': 'user', 'content': 'ping'}])
+        print(f'✅ DeepSeek API: Connected, response length: {len(response)}')
+    except Exception as e:
+        print(f'❌ DeepSeek API: {e}')
+
+asyncio.run(test())
+"
+```
+
+| Проверка | Критерий |
+|----------|----------|
+| Подключение | Response получен |
+| API Key | Не возвращает 401/403 |
+
+### 5.2 Redis
+
+```bash
+# Проверка подключения к Redis
+python -c "
+import asyncio
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+async def test():
+    redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    print(f'REDIS_URL: {redis_url}')
+    try:
+        import redis.asyncio as redis
+        client = redis.from_url(redis_url)
+        await client.ping()
+        print('✅ Redis: Connected')
+        await client.close()
+    except Exception as e:
+        print(f'❌ Redis: {e}')
+
+asyncio.run(test())
+"
+```
+
+| Проверка | Критерий |
+|----------|----------|
+| Подключение | PING возвращает PONG |
+| Статус | Для dev — опционально, для prod — обязательно |
+
+### 5.3 PostgreSQL
+
+```bash
+# Проверка подключения к PostgreSQL
+python -c "
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+db_url = os.getenv('DATABASE_URL', '')
+print(f'DATABASE_URL: {db_url[:50]}...' if len(db_url) > 50 else f'DATABASE_URL: {db_url or \"Not set\"}')
+
+if not db_url or 'sqlite' in db_url.lower():
+    print('⚠️ PostgreSQL: Not configured (using SQLite fallback)')
+else:
+    try:
+        from sqlalchemy import create_engine, text
+        engine = create_engine(db_url)
+        with engine.connect() as conn:
+            conn.execute(text('SELECT 1'))
+            print('✅ PostgreSQL: Connected')
+    except Exception as e:
+        print(f'❌ PostgreSQL: {e}')
+"
+```
+
+| Проверка | Критерий |
+|----------|----------|
+| Подключение | SELECT 1 выполняется |
+| Таблицы | `psql -f config/init_db.sql` выполнен |
+| Статус | Для dev — SQLite OK, для prod — PostgreSQL обязателен |
+
+### 5.4 LiveKit
+
+```bash
+# Проверка подключения к LiveKit
+python -c "
+import os
+import asyncio
+from dotenv import load_dotenv
+load_dotenv()
+
+async def test():
+    livekit_url = os.getenv('LIVEKIT_URL', '')
+    livekit_key = os.getenv('LIVEKIT_API_KEY', '')
+    livekit_secret = os.getenv('LIVEKIT_API_SECRET', '')
+
+    print(f'LIVEKIT_URL: {livekit_url}')
+    print(f'LIVEKIT_API_KEY: {\"✅ Set\" if livekit_key else \"❌ Missing\"}')
+    print(f'LIVEKIT_API_SECRET: {\"✅ Set\" if livekit_secret else \"❌ Missing\"}')
+
+    if not all([livekit_url, livekit_key, livekit_secret]):
+        print('⚠️ LiveKit: Incomplete configuration')
+        return
+
+    try:
+        from livekit import api
+        lkapi = api.LiveKitAPI(livekit_url, livekit_key, livekit_secret)
+        rooms = await lkapi.room.list_rooms(api.ListRoomsRequest())
+        print(f'✅ LiveKit: Connected, {len(rooms.rooms)} active rooms')
+        await lkapi.aclose()
+    except Exception as e:
+        print(f'❌ LiveKit: {e}')
+
+asyncio.run(test())
+"
+```
+
+| Проверка | Критерий |
+|----------|----------|
+| Подключение | list_rooms выполняется |
+| Credentials | API Key + Secret валидны |
+| Статус | Для голосового режима — обязательно |
+
+### 5.5 Сводная таблица подключений
+
+| Сервис | Текстовый режим | Голосовой режим | High-load prod |
+|--------|-----------------|-----------------|----------------|
+| DeepSeek API | ✅ Обязательно | ✅ Обязательно | ✅ Обязательно |
+| SQLite | ✅ Достаточно | ✅ Достаточно | ❌ Недостаточно |
+| PostgreSQL | ⚠️ Опционально | ⚠️ Опционально | ✅ Обязательно |
+| Redis | ⚠️ Опционально | ⚠️ Опционально | ✅ Обязательно |
+| LiveKit | ❌ Не нужен | ✅ Обязательно | ✅ Обязательно |
+
+### Docker Compose (для локальной инфраструктуры)
+
+```bash
+# Запуск Redis + PostgreSQL
 docker-compose -f config/docker-compose.yml up -d
 
 # Проверка статуса
 docker-compose -f config/docker-compose.yml ps
+
+# Логи
+docker-compose -f config/docker-compose.yml logs -f
 ```
-
-### Health endpoints
-
-| Сервис | Endpoint | Ожидаемый ответ |
-|--------|----------|-----------------|
-| FastAPI | GET /health | `{"status": "ok"}` |
-| Redis | redis-cli ping | PONG |
-| PostgreSQL | SELECT 1 | 1 |
 
 ---
 
 ## Этап 6: Production Readiness
 
-### Чек-лист перед запуском
+### 6.1 Чек-лист конфигурации (.env)
 
-#### Конфигурация (.env)
+| Параметр | Описание | Проверка |
+|----------|----------|----------|
+| DEEPSEEK_API_KEY | API ключ DeepSeek | `python -c "..."` из 5.1 |
+| DEEPSEEK_BASE_URL | Endpoint API | По умолчанию `https://api.deepseek.com` |
+| LIVEKIT_URL | WebSocket URL LiveKit | `python -c "..."` из 5.4 |
+| LIVEKIT_API_KEY | Ключ LiveKit | Проверяется в 5.4 |
+| LIVEKIT_API_SECRET | Секрет LiveKit | Проверяется в 5.4 |
+| DATABASE_URL | PostgreSQL connection string | `python -c "..."` из 5.3 |
+| REDIS_URL | Redis connection string | `python -c "..."` из 5.2 |
 
-- [ ] DEEPSEEK_API_KEY — валидный ключ
-- [ ] DEEPSEEK_BASE_URL — правильный endpoint
-- [ ] LIVEKIT_URL — URL LiveKit сервера
-- [ ] LIVEKIT_API_KEY — ключ LiveKit
-- [ ] LIVEKIT_API_SECRET — секрет LiveKit
-- [ ] AZURE_OPENAI_ENDPOINT — endpoint Azure (для голоса)
-- [ ] AZURE_OPENAI_API_KEY — ключ Azure
-- [ ] DATABASE_URL — PostgreSQL connection string
-- [ ] REDIS_URL — Redis connection string
+### 6.2 Чек-лист файлов и директорий
 
-#### Файлы и директории
+```bash
+# Проверка директорий и прав
+echo "=== Directories ===" && \
+[ -d "output" ] && [ -w "output" ] && echo "output/: ✅" || echo "output/: ❌" && \
+[ -d "logs" ] && [ -w "logs" ] && echo "logs/: ✅" || echo "logs/: ❌" && \
+[ -d "data" ] && [ -w "data" ] && echo "data/: ✅" || echo "data/: ❌"
 
-- [ ] `output/` — создана, права на запись
-- [ ] `logs/` — создана, права на запись
-- [ ] `data/` — создана (для SQLite)
-- [ ] `.env` — существует, не в git
+# Проверка .env безопасности
+echo "=== Security ===" && \
+grep -q "^\.env$" .gitignore && echo ".env in .gitignore: ✅" || echo ".env in .gitignore: ❌" && \
+git ls-files --error-unmatch .env 2>/dev/null && echo ".env tracked: ❌ DANGER!" || echo ".env NOT tracked: ✅"
+```
 
-#### Базы данных
+### 6.3 Чек-лист API endpoints
 
-- [ ] PostgreSQL: таблицы созданы (`psql -f config/init_db.sql`)
-- [ ] Redis: доступен, ping работает
-- [ ] SQLite: `data/sessions.db` создаётся автоматически
+```bash
+# Проверка работы API (требует запущенный сервер)
+python -c "
+import asyncio
+from httpx import ASGITransport, AsyncClient
+from src.web.server import app
 
-#### Логирование
+async def test():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as ac:
+        # Root endpoint
+        resp = await ac.get('/')
+        print(f'GET /: {resp.status_code}')
 
-- [ ] `logs/` содержит файлы после запуска
-- [ ] Ошибки пишутся в `logs/errors.log`
-- [ ] Уровень логов настроен (INFO для prod)
+        # Create session
+        resp = await ac.post('/api/session/create', json={'pattern': 'interaction'})
+        print(f'POST /api/session/create: {resp.status_code}')
 
-### Запуск
+        if resp.status_code == 200:
+            session_id = resp.json().get('session_id', '')[:8]
+            print(f'Session created: {session_id}...')
+
+asyncio.run(test())
+"
+```
+
+### 6.4 Запуск
 
 ```bash
 # Development
@@ -297,24 +471,23 @@ python scripts/run_server.py
 gunicorn src.web.server:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
 ```
 
-### Smoke test после запуска
+### 6.5 Smoke test после запуска
 
 ```bash
-# 1. Health check
-curl http://localhost:8000/health
+# При запущенном сервере (localhost:8000)
 
-# 2. Создание сессии
-curl -X POST http://localhost:8000/api/sessions \
+# 1. Создание сессии
+curl -X POST http://localhost:8000/api/session/create \
   -H "Content-Type: application/json" \
   -d '{"pattern": "interaction"}'
 
-# 3. Открыть UI в браузере
+# 2. Открыть UI в браузере
 open http://localhost:8000/
 ```
 
 ---
 
-## Быстрая проверка (5 минут)
+## Быстрая проверка (10 минут)
 
 Минимальный набор команд для проверки работоспособности:
 
@@ -325,13 +498,33 @@ pytest --tb=short
 # 2. Покрытие (должно быть ≥50%)
 pytest --cov=src --cov-report=term | tail -5
 
-# 3. Сервер запускается
-timeout 10 python scripts/run_server.py &
-sleep 3
-curl -s http://localhost:8000/health | grep ok
+# 3. DeepSeek API (реальное подключение)
+python -c "
+import asyncio
+from src.llm.deepseek import DeepSeekClient
+async def test():
+    c = DeepSeekClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}])
+    print(f'✅ DeepSeek: {len(r)} chars')
+asyncio.run(test())
+"
 
-# 4. LLM работает (нужен API key)
-python -c "from src.llm.deepseek import DeepSeekClient; import asyncio; c = DeepSeekClient(); print(asyncio.run(c.chat([{'role': 'user', 'content': 'ping'}]))[:50])"
+# 4. LiveKit (реальное подключение)
+python -c "
+import asyncio, os
+from dotenv import load_dotenv
+from livekit import api
+load_dotenv()
+async def test():
+    lk = api.LiveKitAPI(os.getenv('LIVEKIT_URL'), os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET'))
+    rooms = await lk.room.list_rooms(api.ListRoomsRequest())
+    print(f'✅ LiveKit: {len(rooms.rooms)} rooms')
+    await lk.aclose()
+asyncio.run(test())
+"
+
+# 5. LLM-симуляция (один сценарий)
+python scripts/run_test.py auto_service --quiet
 ```
 
 ---

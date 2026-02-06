@@ -80,6 +80,27 @@ docker compose -f config/docker-compose.yml down -v
 
 ## Production Checklist
 
+### Проверка подключений перед деплоем
+
+**КРИТИЧЕСКИ ВАЖНО:** Перед развёртыванием в production выполните проверку реальных подключений ко всем сервисам.
+
+```bash
+# Полная проверка всех сервисов (см. docs/TESTING.md → Этап 5)
+# DeepSeek API
+python -c "import asyncio; from src.llm.deepseek import DeepSeekClient; asyncio.run(DeepSeekClient().chat([{'role':'user','content':'ping'}])); print('✅ DeepSeek')"
+
+# Redis (требует запущенный контейнер)
+python -c "import redis; r=redis.from_url('redis://localhost:6379'); r.ping(); print('✅ Redis')"
+
+# PostgreSQL (требует запущенный контейнер)
+python -c "from sqlalchemy import create_engine, text; e=create_engine('postgresql://interviewer_user:change_me_in_production@localhost:5432/voice_interviewer'); e.connect().execute(text('SELECT 1')); print('✅ PostgreSQL')"
+
+# LiveKit
+python -c "import asyncio,os; from dotenv import load_dotenv; from livekit import api; load_dotenv(); lk=api.LiveKitAPI(os.getenv('LIVEKIT_URL'),os.getenv('LIVEKIT_API_KEY'),os.getenv('LIVEKIT_API_SECRET')); asyncio.run(lk.room.list_rooms(api.ListRoomsRequest())); print('✅ LiveKit')"
+```
+
+📖 **Подробные скрипты и troubleshooting:** [TESTING.md#этап-5-проверка-подключений-к-сервисам](TESTING.md#этап-5-проверка-подключений-к-сервисам)
+
 ### Безопасность
 
 - [ ] Изменить пароли в `.env` (POSTGRES_PASSWORD, PGADMIN_PASSWORD)
