@@ -166,7 +166,36 @@ npm install puppeteer
 node tests/e2e_voice_test.js
 ```
 
-## 7. Структура результатов
+## 7. Генерация региональных профилей
+
+Для расширения базы знаний на новые страны используйте LLM-генератор профилей.
+
+### Генерация одного профиля
+
+```bash
+python scripts/generate_profiles.py --region eu --country de --industry automotive
+```
+
+### Batch-генерация для региона
+
+```bash
+# Все отрасли для нескольких стран
+python scripts/generate_profiles.py --batch eu "de,at,ch" "automotive,medical,logistics"
+```
+
+### Wave 1: приоритетные страны
+
+```bash
+# Германия, США, ОАЭ, Бразилия × 8 отраслей
+python scripts/generate_profiles.py --wave1
+
+# Dry-run (без генерации)
+python scripts/generate_profiles.py --wave1 --dry-run
+```
+
+Результаты сохраняются в `config/industries/{region}/{country}/{industry}.yaml`.
+
+## 8. Структура результатов
 
 После любого режима результаты сохраняются в:
 
@@ -179,7 +208,7 @@ output/
         └── dialogue.md      # Лог диалога
 ```
 
-## 8. Проверка работоспособности
+## 9. Проверка работоспособности
 
 ### Логи
 

@@ -1,0 +1,264 @@
+# Country metadata for multi-region Knowledge Base
+# Used for country detection and profile enrichment
+
+countries:
+  # Europe
+  de:
+    name: Germany
+    region: eu
+    language: de
+    languages: [de, en]
+    phone_codes: ["+49"]
+    currency: EUR
+    timezone: "Europe/Berlin"
+    compliance: [GDPR]
+
+  ch:
+    name: Switzerland
+    region: eu
+    language: de
+    languages: [de, fr, it, en]
+    phone_codes: ["+41"]
+    currency: CHF
+    timezone: "Europe/Zurich"
+    compliance: [GDPR, FADP]
+
+  at:
+    name: Austria
+    region: eu
+    language: de
+    languages: [de, en]
+    phone_codes: ["+43"]
+    currency: EUR
+    timezone: "Europe/Vienna"
+    compliance: [GDPR]
+
+  fr:
+    name: France
+    region: eu
+    language: fr
+    languages: [fr, en]
+    phone_codes: ["+33"]
+    currency: EUR
+    timezone: "Europe/Paris"
+    compliance: [GDPR]
+
+  it:
+    name: Italy
+    region: eu
+    language: it
+    languages: [it, en]
+    phone_codes: ["+39"]
+    currency: EUR
+    timezone: "Europe/Rome"
+    compliance: [GDPR]
+
+  es:
+    name: Spain
+    region: eu
+    language: es
+    languages: [es, ca, en]
+    phone_codes: ["+34"]
+    currency: EUR
+    timezone: "Europe/Madrid"
+    compliance: [GDPR]
+
+  pt:
+    name: Portugal
+    region: eu
+    language: pt
+    languages: [pt, en]
+    phone_codes: ["+351"]
+    currency: EUR
+    timezone: "Europe/Lisbon"
+    compliance: [GDPR]
+
+  ro:
+    name: Romania
+    region: eu
+    language: ro
+    languages: [ro, en]
+    phone_codes: ["+40"]
+    currency: RON
+    timezone: "Europe/Bucharest"
+    compliance: [GDPR]
+
+  bg:
+    name: Bulgaria
+    region: eu
+    language: bg
+    languages: [bg, en]
+    phone_codes: ["+359"]
+    currency: BGN
+    timezone: "Europe/Sofia"
+    compliance: [GDPR]
+
+  hu:
+    name: Hungary
+    region: eu
+    language: hu
+    languages: [hu, en]
+    phone_codes: ["+36"]
+    currency: HUF
+    timezone: "Europe/Budapest"
+    compliance: [GDPR]
+
+  gr:
+    name: Greece
+    region: eu
+    language: el
+    languages: [el, en]
+    phone_codes: ["+30"]
+    currency: EUR
+    timezone: "Europe/Athens"
+    compliance: [GDPR]
+
+  # North America
+  us:
+    name: United States
+    region: na
+    language: en
+    languages: [en, es]
+    phone_codes: ["+1"]
+    currency: USD
+    timezone: "America/New_York"
+    compliance: [CCPA, HIPAA]
+
+  ca:
+    name: Canada
+    region: na
+    language: en
+    languages: [en, fr]
+    phone_codes: ["+1"]
+    currency: CAD
+    timezone: "America/Toronto"
+    compliance: [PIPEDA]
+
+  # Latin America
+  br:
+    name: Brazil
+    region: latam
+    language: pt
+    languages: [pt, en]
+    phone_codes: ["+55"]
+    currency: BRL
+    timezone: "America/Sao_Paulo"
+    compliance: [LGPD]
+
+  ar:
+    name: Argentina
+    region: latam
+    language: es
+    languages: [es, en]
+    phone_codes: ["+54"]
+    currency: ARS
+    timezone: "America/Buenos_Aires"
+    compliance: []
+
+  mx:
+    name: Mexico
+    region: latam
+    language: es
+    languages: [es, en]
+    phone_codes: ["+52"]
+    currency: MXN
+    timezone: "America/Mexico_City"
+    compliance: [LFPDPPP]
+
+  # Middle East & North Africa
+  ae:
+    name: United Arab Emirates
+    region: mena
+    language: ar
+    languages: [ar, en]
+    phone_codes: ["+971"]
+    currency: AED
+    timezone: "Asia/Dubai"
+    compliance: [PDPL]
+
+  sa:
+    name: Saudi Arabia
+    region: mena
+    language: ar
+    languages: [ar, en]
+    phone_codes: ["+966"]
+    currency: SAR
+    timezone: "Asia/Riyadh"
+    compliance: [PDPL]
+
+  qa:
+    name: Qatar
+    region: mena
+    language: ar
+    languages: [ar, en]
+    phone_codes: ["+974"]
+    currency: QAR
+    timezone: "Asia/Qatar"
+    compliance: []
+
+  # Southeast Asia
+  cn:
+    name: China
+    region: sea
+    language: zh
+    languages: [zh, en]
+    phone_codes: ["+86"]
+    currency: CNY
+    timezone: "Asia/Shanghai"
+    compliance: [PIPL]
+
+  vn:
+    name: Vietnam
+    region: sea
+    language: vi
+    languages: [vi, en]
+    phone_codes: ["+84"]
+    currency: VND
+    timezone: "Asia/Ho_Chi_Minh"
+    compliance: [PDPD]
+
+  id:
+    name: Indonesia
+    region: sea
+    language: id
+    languages: [id, en]
+    phone_codes: ["+62"]
+    currency: IDR
+    timezone: "Asia/Jakarta"
+    compliance: [PDP]
+
+  # Russia (legacy)
+  ru:
+    name: Russia
+    region: ru
+    language: ru
+    languages: [ru, en]
+    phone_codes: ["+7"]
+    currency: RUB
+    timezone: "Europe/Moscow"
+    compliance: [FZ-152]
+
+# Phone code to country mapping (for detection)
+phone_code_map:
+  "+49": de
+  "+41": ch
+  "+43": at
+  "+33": fr
+  "+39": it
+  "+34": es
+  "+351": pt
+  "+40": ro
+  "+359": bg
+  "+36": hu
+  "+30": gr
+  "+1": us  # Could also be CA, needs additional logic
+  "+55": br
+  "+54": ar
+  "+52": mx
+  "+971": ae
+  "+966": sa
+  "+974": qa
+  "+86": cn
+  "+84": vn
+  "+62": id
+  "+7": ru

@@ -26,6 +26,7 @@ Usage:
 """
 
 from .models import (
+    # Original models
     IndustryProfile,
     IndustryMeta,
     PainPoint,
@@ -38,6 +39,13 @@ from .models import (
     IndustrySpecifics,
     IndustryIndex,
     IndustryIndexEntry,
+    # v2.0 models
+    SalesScript,
+    Competitor,
+    ROIExample,
+    PricingContext,
+    Seasonality,
+    MarketContext,
 )
 
 from .loader import IndustryProfileLoader
@@ -64,9 +72,14 @@ from .enriched_builder import (
     get_enriched_context_builder,
 )
 
+from .country_detector import (
+    CountryDetector,
+    get_country_detector,
+)
+
 
 __all__ = [
-    # Models
+    # Models (original)
     "IndustryProfile",
     "IndustryMeta",
     "PainPoint",
@@ -79,6 +92,13 @@ __all__ = [
     "IndustrySpecifics",
     "IndustryIndex",
     "IndustryIndexEntry",
+    # Models (v2.0)
+    "SalesScript",
+    "Competitor",
+    "ROIExample",
+    "PricingContext",
+    "Seasonality",
+    "MarketContext",
 
     # Loader
     "IndustryProfileLoader",
@@ -101,4 +121,8 @@ __all__ = [
     # Enriched Context Builder
     "EnrichedContextBuilder",
     "get_enriched_context_builder",
+
+    # Country Detector
+    "CountryDetector",
+    "get_country_detector",
 ]

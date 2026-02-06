@@ -1,6 +1,6 @@
 # Архитектура Hanc.AI Voice Consultant
 
-Версия: 3.2 | Обновлено: 2026-02-05
+Версия: 3.3 | Обновлено: 2026-02-07
 
 ## Общая архитектура
 
@@ -175,12 +175,15 @@ src/
 │   ├── deepseek.py              # DeepSeekClient (chat API + retry)
 │   └── anketa_generator.py      # LLMAnketaGenerator (LLM → FullAnketa, 507 строк)
 │
-├── knowledge/                   # База знаний по отраслям
-│   ├── models.py                # IndustryProfile, PainPoint, ...
-│   ├── loader.py                # IndustryProfileLoader (YAML)
+├── knowledge/                   # База знаний по отраслям (v2.0: мультирегиональная)
+│   ├── models.py                # IndustryProfile, PainPoint, SalesScript, Competitor, ...
+│   ├── loader.py                # IndustryProfileLoader (YAML + региональное наследование)
 │   ├── manager.py               # IndustryKnowledgeManager
 │   ├── matcher.py               # IndustryMatcher (определение отрасли)
-│   └── context_builder.py       # KBContextBuilder
+│   ├── context_builder.py       # KBContextBuilder
+│   ├── enriched_builder.py      # EnrichedContextBuilder (v2.0)
+│   ├── country_detector.py      # CountryDetector (телефон + язык → страна)
+│   └── validator.py             # ProfileValidator
 │
 ├── documents/                   # Анализ документов клиента
 │   ├── models.py                # ParsedDocument, DocumentContext
@@ -365,7 +368,7 @@ src/
 | duration_seconds | float | Длительность сессии |
 | output_dir | str | Путь к output/ |
 
-### IndustryProfile (`src/knowledge/models.py`)
+### IndustryProfile v2.0 (`src/knowledge/models.py`)
 
 YAML-профили отраслей в `config/industries/`:
 
@@ -380,7 +383,108 @@ YAML-профили отраслей в `config/industries/`:
 | Недвижимость | real_estate.yaml |
 | Wellness / Красота | wellness.yaml |
 
-Каждый профиль содержит: aliases, typical_services, pain_points, recommended_functions, typical_integrations, industry_faq, learnings, success_benchmarks.
+**v1.0 поля:** aliases, typical_services, pain_points, recommended_functions, typical_integrations, industry_faq, learnings, success_benchmarks.
+
+**v2.0 новые поля:**
+
+| Поле | Описание |
+|------|----------|
+| `sales_scripts` | Скрипты продаж для различных ситуаций |
+| `competitors` | Анализ конкурентов на рынке |
+| `pricing_context` | Ценовой контекст (валюта, ROI примеры) |
+| `market_context` | Рыночный контекст (размер, тренды, сезонность) |
+| `meta.region` | Код региона (eu, na, latam, mena, sea, ru) |
+| `meta.country` | Код страны (de, us, br, etc.) |
+| `meta.currency` | Валюта (EUR, USD, BRL, etc.) |
+| `meta.phone_codes` | Телефонные коды страны |
+
+### Мультирегиональная структура Knowledge Base
+
+```text
+config/industries/
+├── _index.yaml              # Глобальный индекс отраслей
+├── _countries.yaml          # Метаданные 22 стран (язык, валюта, телефон)
+├── _base/                   # Базовые профили (шаблоны для наследования)
+│   ├── automotive.yaml
+│   ├── medical.yaml
+│   └── ...                  # 8 базовых профилей
+│
+├── eu/                      # Европа
+│   ├── de/                  # Германия
+│   │   └── automotive.yaml  # Локализованный профиль
+│   ├── at/                  # Австрия
+│   ├── ch/                  # Швейцария
+│   └── ...                  # 11 стран EU
+│
+├── na/                      # Северная Америка
+│   ├── us/                  # США
+│   └── ca/                  # Канада
+│
+├── latam/                   # Латинская Америка
+│   ├── br/                  # Бразилия
+│   ├── ar/                  # Аргентина
+│   └── mx/                  # Мексика
+│
+├── mena/                    # Ближний Восток
+│   ├── ae/                  # ОАЭ
+│   ├── sa/                  # Саудовская Аравия
+│   └── qa/                  # Катар
+│
+├── sea/                     # Юго-Восточная Азия
+│   ├── cn/                  # Китай
+│   ├── vn/                  # Вьетнам
+│   └── id/                  # Индонезия
+│
+└── ru/                      # Россия (legacy)
+```
+
+**Наследование профилей:**
+
+Региональные профили наследуют от базовых через `_extends`:
+
+```yaml
+# eu/de/automotive.yaml
+_extends: _base/automotive
+
+pain_points:
+  - description: "Kunden rufen wegen Reparaturstatus an"
+    severity: high
+```
+
+**Детекция страны:**
+
+```python
+from src.knowledge import get_country_detector
+
+detector = get_country_detector()
+
+# По телефону
+region, country = detector.detect(phone="+49 151 12345678")
+# → ("eu", "de")
+
+# По языку текста
+region, country = detector.detect(dialogue_text="Wir sind ein Autohaus in München")
+# → ("eu", "de")
+
+# Явный override
+region, country = detector.detect(explicit_country="us")
+# → ("na", "us")
+```
+
+**Загрузка региональных профилей:**
+
+```python
+from src.knowledge.loader import IndustryProfileLoader
+
+loader = IndustryProfileLoader()
+
+# Загрузка регионального профиля (с fallback на базовый)
+profile = loader.load_regional_profile("eu", "de", "automotive")
+
+print(profile.language)  # "de"
+print(profile.currency)  # "EUR"
+print(profile.competitors)  # [ATU, Vertragshändler, ...]
+```
 
 ## Хранилища данных
 
@@ -391,7 +495,7 @@ YAML-профили отраслей в `config/industries/`:
 | PostgreSQL | `localhost:5432` | CompletedAnketa, InterviewSessionDB | Maximum |
 | Output | `output/{date}/{company}_v{N}/` | anketa.md, anketa.json, dialogue.md | Все |
 | Логи | `logs/*.log` | 10 файлов по направлениям + errors.log | Voice + Server |
-| База знаний | `config/industries/*.yaml` | 8 отраслевых профилей | Все |
+| База знаний | `config/industries/` | 8 базовых + региональные профили | Все |
 | Сценарии | `tests/scenarios/*.yaml` | 12 тестовых сценариев | Тестирование |
 | Промпты | `prompts/` | YAML промпты для LLM | Все |
 | Конфигурация | `config/` | профили отраслей, словари, уведомления | Все |
@@ -433,12 +537,15 @@ YAML-профили отраслей в `config/industries/`:
 
 ```text
 config/
-├── industries/                  # База знаний по отраслям
+├── industries/                  # База знаний по отраслям (v2.0: мультирегиональная)
 │   ├── _index.yaml              # Индекс: id → file, name, aliases
-│   ├── logistics.yaml           # Профиль: pain_points, functions, integrations
-│   ├── medical.yaml
-│   ├── horeca.yaml
-│   └── ...                      # 8 отраслей
+│   ├── _countries.yaml          # Метаданные стран (язык, валюта, телефон)
+│   ├── _base/                   # Базовые профили (шаблоны)
+│   │   ├── automotive.yaml
+│   │   └── ...                  # 8 базовых профилей
+│   ├── eu/de/                   # Региональные профили
+│   │   └── automotive.yaml      # Локализованный профиль (наследует от _base/)
+│   └── ...                      # 6 регионов × 22 страны
 ├── synonyms/                    # Словари нормализации полей анкеты
 │   ├── base.yaml                # Общие синонимы (название → company_name)
 │   ├── ru.yaml                  # Русские варианты
