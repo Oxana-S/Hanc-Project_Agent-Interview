@@ -1,8 +1,18 @@
 """
-Voice Handler.
+Voice Handler (DEPRECATED).
 
-Объединяет LiveKit и Azure Realtime для голосового взаимодействия.
+Этот модуль заменён на src/voice/consultant.py (VoiceConsultant),
+который реализует полную интеграцию с LiveKit Agents SDK + Azure OpenAI Realtime.
+
+Модуль оставлен для справки. Не используйте в новом коде.
 """
+
+import warnings
+warnings.warn(
+    "src.voice.handler is deprecated. Use src.voice.consultant instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 import asyncio
 import os
