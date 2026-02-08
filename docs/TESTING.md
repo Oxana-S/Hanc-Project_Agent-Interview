@@ -155,7 +155,7 @@ python scripts/validate_all_profiles.py --region eu
 python scripts/validate_all_profiles.py --errors-only
 ```
 
-**Критерий прохождения:** 920/920 региональных профилей valid, 0 errors.
+**Критерий прохождения:** 928/928 региональных профилей valid, 0 errors.
 
 ### 3.2 Глубокая валидация (L6–L11)
 
@@ -226,7 +226,7 @@ python scripts/generate_profiles.py --list-countries
 
 | Проверка | Критерий |
 |----------|----------|
-| Базовая валидация (L1–L5) | 920/920 valid, 0 errors |
+| Базовая валидация (L1–L5) | 928/928 valid, 0 errors |
 | Глубокая валидация (L6–L11) | 0 errors, 0 warnings |
 | Покрытие стран | 23/23 страны, все 40 отраслей |
 | Enum-значения | Только English: high, medium, low |
@@ -248,8 +248,8 @@ python scripts/generate_profiles.py --list-countries
 |----------|----------|----------|
 | LLM_PROVIDER | Активный LLM провайдер (`azure` / `deepseek`) | По умолчанию `azure` |
 | DEEPSEEK_API_KEY | API ключ DeepSeek | Задан, не пустой (подключение → Этап 5.1) |
-| DEEPSEEK_BASE_URL | Endpoint API | По умолчанию `https://api.deepseek.com` |
-| AZURE_CHAT_OPENAI_KEY | API ключ Azure OpenAI | Задан, не пустой (подключение → Этап 5.5) |
+| DEEPSEEK_API_ENDPOINT | Endpoint API | По умолчанию `https://api.deepseek.com/v1` |
+| AZURE_CHAT_OPENAI_API_KEY | API ключ Azure OpenAI | Задан, не пустой (подключение → Этап 5.5) |
 | AZURE_CHAT_OPENAI_ENDPOINT | Endpoint Azure OpenAI | Формат: `https://<resource>.openai.azure.com/` |
 | AZURE_CHAT_OPENAI_DEPLOYMENT_NAME | Имя deployment модели | Например: `gpt-4.1-mini-dev-gs-swedencentral` |
 | AZURE_CHAT_OPENAI_API_VERSION | Версия API | По умолчанию `2024-12-01-preview` |

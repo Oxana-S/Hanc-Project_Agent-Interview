@@ -173,7 +173,7 @@ src/
 │
 ├── llm/                         # LLM клиенты
 │   ├── deepseek.py              # DeepSeekClient (chat API + retry)
-│   └── anketa_generator.py      # LLMAnketaGenerator (LLM → FullAnketa, 507 строк)
+│   └── anketa_generator.py      # LLMAnketaGenerator (LLM → FinalAnketa, 120 строк)
 │
 ├── knowledge/                   # База знаний по отраслям (v2.0: мультирегиональная)
 │   ├── models.py                # IndustryProfile, PainPoint, SalesScript, Competitor, ...
@@ -238,7 +238,7 @@ src/
 │                                #   QuestionStatus, AnalysisStatus, AnswerAnalysis, Clarification,
 │                                #   QuestionResponse, InterviewContext (сессия для Redis),
 │                                #   CompletedAnketa (анкета для PostgreSQL), InterviewStatistics
-└── logging_config.py            # Централизованное логирование (10 категорий)
+└── logging_config.py            # Централизованное логирование (14 категорий)
 ```
 
 ## Потоки данных
@@ -573,8 +573,8 @@ context = builder.build_for_phase("discovery", dialogue_history)
 | Redis | `localhost:6379` | Активные InterviewContext (TTL 2ч) | Maximum |
 | PostgreSQL | `localhost:5432` | CompletedAnketa, InterviewSessionDB | Maximum |
 | Output | `output/{date}/{company}_v{N}/` | anketa.md, anketa.json, dialogue.md | Все |
-| Логи | `logs/*.log` | 10 файлов по направлениям + errors.log | Voice + Server |
-| База знаний | `config/industries/` | 40 базовых + 920 региональных профилей (968 всего) | Все |
+| Логи | `logs/*.log` | 14 файлов по направлениям | Voice + Server |
+| База знаний | `config/industries/` | 40 базовых + 928 региональных профилей (968 всего) | Все |
 | Сценарии | `tests/scenarios/*.yaml` | 12 тестовых сценариев | Тестирование |
 | Промпты | `prompts/` | YAML промпты для LLM | Все |
 | Конфигурация | `config/` | профили отраслей, словари, уведомления | Все |

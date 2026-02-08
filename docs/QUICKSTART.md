@@ -4,11 +4,14 @@
 
 ## Предварительные требования
 
-- Python 3.11+
-- API ключ DeepSeek (обязательно для всех режимов)
-- Для голосового режима:
+- Python 3.9–3.13 (рекомендуется 3.11 или 3.12; Python 3.14+ может иметь проблемы совместимости)
+- Для текстового Consultant режима:
+  - API ключ DeepSeek
+- Для Maximum режима (дополнительно):
+  - Docker Compose (для Redis + PostgreSQL)
+- Для голосового режима (дополнительно):
   - LiveKit Server (cloud или self-hosted)
-  - Azure OpenAI с подключением Realtime API
+  - Azure OpenAI с подключением Realtime API (gpt-4o-realtime-preview)
 - Для E2E тестов:
   - Node.js 18+
   - npm/pnpm
@@ -31,31 +34,72 @@ pip install -r requirements.txt
 
 ## 2. Конфигурация `.env`
 
-Создайте файл `.env` в корне проекта:
+Скопируйте шаблон и заполните свои ключи:
+
+```bash
+cp .env.example .env
+```
+
+### Минимальная конфигурация (текстовый Consultant)
 
 ```env
-# === ОБЯЗАТЕЛЬНО для всех режимов ===
+# === DeepSeek (ОБЯЗАТЕЛЬНО для Consultant режима) ===
 DEEPSEEK_API_KEY=sk-...
 DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
 DEEPSEEK_MODEL=deepseek-reasoner
+```
 
-# === ОБЯЗАТЕЛЬНО для голосового режима ===
+### LLM провайдер (для генерации профилей и других модулей)
+
+```env
+# === LLM провайдер (используется generate_profiles.py и др.) ===
+LLM_PROVIDER=azure  # "azure" (по умолчанию) или "deepseek"
+
+# === Azure Chat OpenAI (если LLM_PROVIDER=azure) ===
+AZURE_CHAT_OPENAI_API_KEY=...
+AZURE_CHAT_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+AZURE_CHAT_OPENAI_DEPLOYMENT_NAME=gpt-4.1-mini-dev-gs-swedencentral
+AZURE_CHAT_OPENAI_API_VERSION=2024-12-01-preview
+```
+
+### Голосовой режим (дополнительно)
+
+```env
+# === Azure OpenAI Realtime (STT/TTS/LLM для голоса) ===
+AZURE_OPENAI_API_KEY=...
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview-dev-gs-swedencentral
+AZURE_OPENAI_API_VERSION=2024-12-17
+AZURE_OPENAI_REALTIME_API_VERSION=2024-10-01-preview
+
+# === LiveKit ===
 LIVEKIT_URL=wss://your-project.livekit.cloud
 LIVEKIT_API_KEY=API...
 LIVEKIT_API_SECRET=...
-
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
-AZURE_OPENAI_API_KEY=...
-AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview
-AZURE_OPENAI_REALTIME_API_VERSION=2024-10-01-preview
-
-# === Опционально: уведомления ===
-# Настраиваются в config/notifications.yaml
 ```
+
+### Maximum режим (дополнительно)
+
+```env
+# === Redis ===
+REDIS_URL=redis://localhost:6379
+
+# === PostgreSQL ===
+DATABASE_URL=postgresql://interviewer_user:secure_password_123@localhost:5432/voice_interviewer
+```
+
+### Общие настройки (опционально)
+
+```env
+ENVIRONMENT=development  # development | production
+LOG_LEVEL=INFO           # DEBUG | INFO | WARNING | ERROR
+```
+
+> Полный список переменных см. в `.env.example`.
 
 ## 3. Запуск текстового режима (CLI)
 
-Не требует LiveKit и Azure. Работает через DeepSeek в терминале.
+Не требует LiveKit. Работает через DeepSeek API.
 
 ```bash
 python scripts/consultant_demo.py
@@ -64,7 +108,7 @@ python scripts/consultant_demo.py
 Что произойдёт:
 
 1. Откроется Rich CLI с AI-консультантом
-2. 4 фазы: Знакомство → Анализ → Предложение → Финализация
+2. 4 фазы: DISCOVERY → ANALYSIS → PROPOSAL → REFINEMENT
 3. Результаты сохранятся в `output/{дата}/{компания}_v{N}/`
 
 ## 4. Запуск Maximum Interview режима
@@ -95,7 +139,11 @@ python scripts/demo.py
 ### Шаг 1: Запуск web-сервера
 
 ```bash
+# Вариант 1: через uvicorn напрямую
 uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+
+# Вариант 2: через скрипт
+python scripts/run_server.py
 ```
 
 ### Шаг 2: Запуск голосового агента
@@ -103,7 +151,7 @@ uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 В отдельном терминале:
 
 ```bash
-python scripts/run_voice_agent.py dev
+python scripts/run_voice_agent.py
 ```
 
 ### Шаг 3: Открыть браузер
@@ -170,6 +218,9 @@ python scripts/run_pipeline.py auto_service --auto-approve
 
 # Без этапа ревью
 python scripts/run_pipeline.py auto_service --skip-review
+
+# Тихий режим + свой output
+python scripts/run_pipeline.py auto_service --quiet --output-dir output/custom/
 ```
 
 ### E2E тесты голосового агента
@@ -190,6 +241,9 @@ node tests/e2e_voice_test.js
 
 ```bash
 python scripts/generate_profiles.py --region eu --country de --industry automotive
+
+# Явный выбор LLM-провайдера
+python scripts/generate_profiles.py --region eu --country de --industry automotive --provider deepseek
 ```
 
 ### Batch-генерация для региона
@@ -202,7 +256,7 @@ python scripts/generate_profiles.py --batch eu "de,at,ch" "automotive,medical,lo
 ### Wave 1: приоритетные страны
 
 ```bash
-# Германия, США, ОАЭ, Бразилия × 8 отраслей
+# Германия, США, ОАЭ, Бразилия × 40 отраслей
 python scripts/generate_profiles.py --wave1
 
 # Dry-run (без генерации)
@@ -217,8 +271,8 @@ python scripts/generate_profiles.py --wave1 --dry-run
 
 ```
 output/
-└── 2026-02-05/
-    └── avtoprofi_v1/
+└── {дата}/
+    └── {компания}_v{N}/
         ├── anketa.md        # Анкета в Markdown
         ├── anketa.json      # Анкета в JSON
         └── dialogue.md      # Лог диалога
@@ -245,11 +299,13 @@ sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;
 
 | Проблема | Решение |
 |----------|---------|
-| `DEEPSEEK_API_KEY not set` | Проверьте `.env` файл |
-| `Azure OpenAI credentials not configured` | Заполните `AZURE_OPENAI_*` в `.env` |
+| `DEEPSEEK_API_KEY not set` | Проверьте `.env` файл или переключите `LLM_PROVIDER=azure` |
+| `Azure OpenAI credentials not configured` | Заполните `AZURE_CHAT_OPENAI_*` в `.env` |
+| `Azure Realtime credentials not configured` | Заполните `AZURE_OPENAI_*` в `.env` (для голосового режима) |
 | Агент не подключается к комнате | Проверьте `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` |
 | Нет звука в браузере | Разрешите доступ к микрофону, проверьте HTTPS |
 | `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
+| Redis/PostgreSQL connection refused | `docker compose -f config/docker-compose.yml up -d` |
 
 ## Дальнейшее чтение
 
@@ -257,4 +313,7 @@ sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;
 - [VOICE_AGENT.md](VOICE_AGENT.md) — голосовой агент (LiveKit + Azure)
 - [AGENT_WORKFLOWS.md](AGENT_WORKFLOWS.md) — workflow агентов
 - [TESTING.md](TESTING.md) — подробности о тестировании
+- [DEPLOYMENT.md](DEPLOYMENT.md) — деплой и production
 - [LOGGING.md](LOGGING.md) — система логирования
+- [ERROR_HANDLING.md](ERROR_HANDLING.md) — обработка ошибок
+- [PHILOSOPHY.md](PHILOSOPHY.md) — философия проекта

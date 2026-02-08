@@ -27,7 +27,7 @@
 
 FastAPI сервер для:
 - Раздача статики (`public/`)
-- API для создания сессий (`/api/session/new`)
+- API для создания сессий (`/api/session/create`)
 - Генерация LiveKit токенов
 - Управление сессиями
 
@@ -45,7 +45,7 @@ LiveKit Agent, который:
 - Извлекает данные в анкету
 
 ```bash
-python scripts/run_voice_agent.py dev
+python scripts/run_voice_agent.py
 # Регистрируется в LiveKit Cloud
 ```
 
@@ -85,7 +85,7 @@ LIVEKIT_API_SECRET=your-api-secret
 # Azure OpenAI Realtime
 AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 AZURE_OPENAI_API_KEY=your-api-key
-AZURE_OPENAI_DEPLOYMENT=gpt-4o-realtime-preview
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview
 AZURE_OPENAI_API_VERSION=2024-12-17
 ```
 
@@ -111,7 +111,7 @@ AZURE_OPENAI_API_VERSION=2024-12-17
 python scripts/run_server.py
 
 # Терминал 2: Voice agent
-python scripts/run_voice_agent.py dev
+python scripts/run_voice_agent.py
 
 # Открыть http://localhost:8000
 ```
@@ -119,8 +119,8 @@ python scripts/run_voice_agent.py dev
 ### Production
 
 ```bash
-# Voice agent в production режиме
-python scripts/run_voice_agent.py start
+# Voice agent (режим определяется через ENVIRONMENT в .env)
+python scripts/run_voice_agent.py
 ```
 
 ## Ключевые классы
@@ -229,7 +229,7 @@ room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
 ### Агент не подключается
 
 1. Проверьте LIVEKIT_* переменные в `.env`
-2. Запустите `python scripts/run_voice_agent.py dev`
+2. Запустите `python scripts/run_voice_agent.py`
 3. Проверьте логи на ошибки подключения
 
 ### Azure API ошибки

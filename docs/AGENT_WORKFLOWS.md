@@ -288,14 +288,14 @@ python scripts/consultant_demo.py
 
 ```text
 src/interview/
-├── maximum.py              # MaximumInterviewer (744 строки) — основной класс
-├── phases.py               # InterviewPhase enum, CollectedInfo (50+ ANKETA_FIELDS)
+├── maximum.py              # MaximumInterviewer (746 строк) — основной класс
+├── phases.py               # InterviewPhase enum, CollectedInfo (21 ANKETA_FIELDS)
 └── questions/
     ├── interaction.py      # Банк вопросов для клиентов
     └── management.py       # Банк вопросов для сотрудников
 
 src/llm/
-└── anketa_generator.py     # LLMAnketaGenerator → FullAnketa dataclass
+└── anketa_generator.py     # LLMAnketaGenerator → FinalAnketa dataclass
 
 src/cli/
 ├── interface.py            # Rich dashboard (визуальный интерфейс)
@@ -334,9 +334,9 @@ scripts/
 │                                                       │              │
 │  Каждая фаза:                                         ▼              │
 │  • DeepSeek LLM для генерации ответов          ┌───────────────┐   │
-│  • CollectedInfo (50+ ANKETA_FIELDS)            │LLMAnketa      │   │
+│  • CollectedInfo (21 ANKETA_FIELDS)             │LLMAnketa      │   │
 │  • Rich CLI dashboard                           │Generator      │   │
-│                                                  │→ FullAnketa   │   │
+│                                                  │→ FinalAnketa  │   │
 │                                                  └───────┬───────┘   │
 │                                                          │           │
 │                                                          ▼           │
@@ -354,7 +354,7 @@ scripts/
 |------|------|-------------|
 | DISCOVERY | Свободный диалог, выявление потребностей | 5-15 |
 | STRUCTURED | Целевой сбор недостающих данных по ANKETA_FIELDS | до 5 |
-| SYNTHESIS | Автоматическая генерация FullAnketa через LLM | — |
+| SYNTHESIS | Автоматическая генерация FinalAnketa через LLM | — |
 
 ### 3.5 Режимы запуска
 
@@ -720,7 +720,7 @@ python scripts/run_pipeline.py auto_service --output-dir output/final
 
 Агенты интегрируются через общие модели:
 
-1. **FinalAnketa** — единая модель анкеты (18 блоков)
+1. **FinalAnketa** — единая модель анкеты (10 блоков + доп. поля + метаданные)
 2. **AnketaGenerator** — конвертация FinalAnketa → Markdown/JSON
 3. **AnketaMarkdownParser** — парсинг Markdown обратно в FinalAnketa
 4. **OutputManager** — единая структура output/
