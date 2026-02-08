@@ -4,28 +4,36 @@
 
 ## Обзор
 
+Этапы упорядочены по принципу зависимостей: **дешёвые оффлайн-проверки → конфигурация → подключения → функциональные тесты**.
+
 | Этап | Что проверяем | Инструмент | Критерий прохождения |
 |------|---------------|------------|----------------------|
 | 1. Юнит-тесты | Логика модулей | pytest | 100% passed, coverage ≥50% |
 | 2. Интеграция | Связи между модулями | pytest + fixtures | Все интеграционные тесты passed |
-| 3. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
-| 4. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
+| 3. Мульти-региональная KB | 960 YAML-профилей, 23 страны | validate scripts | 0 errors, 0 deep warnings |
+| 4. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
 | 5. Подключения | DeepSeek, Azure OpenAI, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
-| 6. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
-| 7. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
-| 8. Мульти-региональная KB | 960 YAML-профилей, 23 страны | validate scripts | 0 errors, 0 deep warnings |
+| 6. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
+| 7. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
+| 8. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
+
+**Фазы:**
+- **Фаза A (Оффлайн):** Этапы 1–3 — не требуют внешних сервисов
+- **Фаза B (Конфигурация):** Этап 4 — проверка .env и инфраструктуры
+- **Фаза C (Подключения):** Этап 5 — реальные соединения к сервисам
+- **Фаза D (Функциональные):** Этапы 6–8 — требуют живых API
 
 ---
 
 ## Этап 1: Юнит-тесты
 
-### Требования
+### 1.1 Требования
 
 - Python 3.11+ (рекомендуется 3.14)
 - Virtual environment активирован
 - Зависимости установлены: `pip install -r requirements.txt`
 
-### Запуск
+### 1.2 Запуск
 
 ```bash
 # Активация venv
@@ -44,7 +52,7 @@ pytest -v
 pytest tests/unit/test_knowledge.py -v
 ```
 
-### Критерии прохождения
+### 1.3 Критерии прохождения
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
@@ -52,7 +60,7 @@ pytest tests/unit/test_knowledge.py -v
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
-### Покрытие по модулям
+### 1.4 Покрытие по модулям
 
 | Модуль | Coverage | Статус |
 |--------|----------|--------|
@@ -70,7 +78,7 @@ pytest tests/unit/test_knowledge.py -v
 | src/cli/interface.py | 82% | ✅ |
 | src/consultant/interviewer.py | 42% | ⚠️ |
 
-### Структура тестов
+### 1.5 Структура тестов
 
 ```text
 tests/
@@ -95,7 +103,7 @@ tests/
 
 ## Этап 2: Интеграционные тесты
 
-### Проверка связей
+### 2.1 Проверка связей
 
 ```bash
 # Тесты с реальными fixtures
@@ -105,7 +113,7 @@ pytest tests/unit/test_api_server.py -v
 pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 ```
 
-### Критерии
+### 2.2 Критерии
 
 - Все API endpoints возвращают корректные статусы
 - Session flow работает: create → update → complete
@@ -113,117 +121,215 @@ pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 
 ---
 
-## Этап 3: LLM-симуляция
+## Этап 3: Мульти-региональная Knowledge Base (валидация и ремонт)
 
-### Требования
+Проект содержит **960 YAML-профилей** (40 отраслей × 23 страны + 40 базовых), покрывающих 7 регионов: EU, NA, LATAM, MENA, SEA, RU и базовые профили (`_base`).
 
-- **LLM провайдер** (один из):
-  - DeepSeek: `DEEPSEEK_API_KEY` в .env, баланс на аккаунте
-  - Azure OpenAI: `AZURE_CHAT_OPENAI_KEY`, `AZURE_CHAT_OPENAI_ENDPOINT`, `AZURE_CHAT_OPENAI_DEPLOYMENT_NAME` в .env
-- Переменная `LLM_PROVIDER` определяет активного провайдера (`azure` по умолчанию, `deepseek` — альтернативный)
-- Фабрика клиентов: `src/llm/factory.py` → `create_llm_client(provider)`
+> **Почему этот этап идёт третьим:** KB валидация — полностью оффлайн-операция (не требует API-ключей или внешних сервисов). Выявляет проблемы данных до того, как они повлияют на функциональные тесты в этапах 6–8.
 
-### Доступные сценарии
+### 3.1 Базовая валидация (L1–L5)
 
-| Сценарий | Отрасль | Сложность |
-|----------|---------|-----------|
-| auto_service | Автосервис | Базовый |
-| auto_service_skeptic | Автосервис | Скептик |
-| logistics_company | Логистика | Средний |
-| medical_center | Медицина | Средний |
-| restaurant_italiano | HoReCa | Средний |
-| vitalbox | Франшиза | Сложный |
+Скрипт `validate_all_profiles.py` проверяет 5 уровней:
 
-### Запуск
+| Уровень | Что проверяет |
+|---------|---------------|
+| L1 | Структурная целостность — обязательные поля, минимальные количества |
+| L2 | Полнота контента — наличие v2.0 секций (competitors, pricing_context, market_context) |
+| L3 | Корректность метаданных — meta.id, region, country, language, currency |
+| L4 | Качество локализации — язык соответствует стране, локальные конкуренты |
+| L5 | Валидность значений — severity/priority enums (high/medium/low), числовые цены |
 
 ```bash
-# Список сценариев
-python scripts/run_test.py --list
+# Полная базовая валидация (все 960 профилей)
+python scripts/validate_all_profiles.py
 
-# Один сценарий
-python scripts/run_test.py logistics_company
+# С подробным выводом
+python scripts/validate_all_profiles.py --verbose
 
-# Тихий режим
-python scripts/run_test.py logistics_company --quiet
+# По конкретному региону
+python scripts/validate_all_profiles.py --region eu
 
-# Полный pipeline (тест + ревью анкеты)
-python scripts/run_pipeline.py logistics_company
-
-# С документами клиента
-python scripts/run_test.py logistics_company --input-dir input/test_docs/
+# Только ошибки (без предупреждений)
+python scripts/validate_all_profiles.py --errors-only
 ```
 
-### Критерии прохождения
+**Критерий прохождения:** 920/920 региональных профилей valid, 0 errors.
 
-| Проверка | Описание | Критерий |
-|----------|----------|----------|
-| completeness | Обязательные поля заполнены | ≥90% полей |
-| data_quality | Данные валидны (не мусор) | 0 ошибок |
-| scenario_match | Соответствие YAML-сценарию | ≥80% match |
-| phases | Все 4 фазы пройдены | 4/4 |
-| no_loops | Нет зацикливания | <50 turns |
-| validation_score | Общий скор | ≥0.8 |
+### 3.2 Глубокая валидация (L6–L11)
 
-### Результаты
+Скрипт `validate_deep.py` выполняет расширенные проверки:
 
-После успешного теста:
-- `output/tests/{scenario}_{timestamp}.json` — полный отчёт
-- `output/tests/{scenario}_{timestamp}.md` — человекочитаемый отчёт
-- Console: Rich-таблица с результатами
+| Уровень | Что проверяет |
+|---------|---------------|
+| L6 | Качество контента — дубликаты, минимальная длина, обрезанные описания |
+| L7 | Глубина локализации — эвристики языкового соответствия по Unicode-скриптам |
+| L8 | Кросс-профильная консистентность — матрица покрытия, идентичные профили, _extends |
+| L9 | Качество sales scripts — уникальность trigger, effectiveness, длина скриптов |
+| L10 | Когерентность pricing — entry_point в range, payback_months (1–36), ROI-примеры |
+| L11 | Целостность данных — размер файлов, None-значения, YAML re-serializability |
+
+```bash
+# Глубокая валидация
+python scripts/validate_deep.py
+
+# С подробным выводом
+python scripts/validate_deep.py --verbose
+```
+
+**Критерий прохождения:** 0 errors, 0 warnings (info — допустимо).
+
+### 3.3 Инструментарий ремонта профилей
+
+При обнаружении проблем используются специализированные скрипты:
+
+| Скрипт | Назначение | Что исправляет |
+|--------|------------|----------------|
+| `fix_enums.py` | Нормализация enum-значений | hoch→high, mittel→medium, alto→high и т.д. для 11+ языков |
+| `fix_aliases.py` | Генерация aliases | Добавляет блок `aliases` с 3–6 синонимами отрасли |
+| `fix_entry_points.py` | Числовые entry_point | "150 CHF für..."→150, "$65"→65, "Rp 50.000"→50000 |
+| `fix_incomplete_profiles.py` | Дополнение профилей (LLM) | Генерирует отсутствующие секции через Azure OpenAI |
+| `fix_l2_subfields.py` | Дополнение sub-fields (LLM) | Добавляет sales_scripts, competitors, seasonality, roi_examples |
+| `fix_l10_pricing.py` | Исправление pricing | payback=0→1, non-numeric→число, payback>36→пересчёт |
+
+```bash
+# Примеры запуска
+python scripts/fix_enums.py
+python scripts/fix_aliases.py
+python scripts/fix_entry_points.py
+python scripts/fix_l10_pricing.py
+
+# LLM-скрипты (требуют Azure OpenAI API)
+python scripts/fix_incomplete_profiles.py --provider=azure
+python scripts/fix_l2_subfields.py --provider=azure
+```
+
+### 3.4 Генерация профилей
+
+Для создания новых региональных профилей используется `generate_profiles.py`:
+
+```bash
+# Генерация профилей для конкретной страны
+python scripts/generate_profiles.py --country de --provider azure
+
+# Генерация всех профилей для региона
+python scripts/generate_profiles.py --region eu --provider azure
+
+# Список поддерживаемых стран
+python scripts/generate_profiles.py --list-countries
+```
+
+**Поддерживаемые провайдеры:** `azure` (по умолчанию), `deepseek`.
+
+### 3.5 Сводная таблица
+
+| Проверка | Критерий |
+|----------|----------|
+| Базовая валидация (L1–L5) | 920/920 valid, 0 errors |
+| Глубокая валидация (L6–L11) | 0 errors, 0 warnings |
+| Покрытие стран | 23/23 страны, все 40 отраслей |
+| Enum-значения | Только English: high, medium, low |
+| entry_point / budget | Числовые значения, без текста |
+| ROI payback_months | 1–36, числовые |
+| sales_scripts | ≥3 на профиль, trigger уникальны |
+| competitors | ≥2 на профиль, реальные компании |
+| Языковая локализация | Контент на языке страны |
 
 ---
 
-## Этап 4: Голосовой агент (E2E)
+## Этап 4: Production Readiness
 
-### Требования
+> **Почему этот этап перед подключениями:** Проверяем, что конфигурация корректна **до** попыток подключения к сервисам. Если .env не настроен — подключения гарантированно провалятся. Проверки подключений — см. Этап 5.
 
-- LiveKit Server запущен
-- Azure OpenAI Realtime API настроен
-- Node.js + Puppeteer установлены
+### 4.1 Чек-лист конфигурации (.env)
 
-### Подготовка
+| Параметр | Описание | Проверка |
+|----------|----------|----------|
+| LLM_PROVIDER | Активный LLM провайдер (`azure` / `deepseek`) | По умолчанию `azure` |
+| DEEPSEEK_API_KEY | API ключ DeepSeek | Задан, не пустой (подключение → Этап 5.1) |
+| DEEPSEEK_BASE_URL | Endpoint API | По умолчанию `https://api.deepseek.com` |
+| AZURE_CHAT_OPENAI_KEY | API ключ Azure OpenAI | Задан, не пустой (подключение → Этап 5.5) |
+| AZURE_CHAT_OPENAI_ENDPOINT | Endpoint Azure OpenAI | Формат: `https://<resource>.openai.azure.com/` |
+| AZURE_CHAT_OPENAI_DEPLOYMENT_NAME | Имя deployment модели | Например: `gpt-4.1-mini-dev-gs-swedencentral` |
+| AZURE_CHAT_OPENAI_API_VERSION | Версия API | По умолчанию `2024-12-01-preview` |
+| LIVEKIT_URL | WebSocket URL LiveKit | Задан (подключение → Этап 5.4) |
+| LIVEKIT_API_KEY | Ключ LiveKit | Задан (подключение → Этап 5.4) |
+| LIVEKIT_API_SECRET | Секрет LiveKit | Задан (подключение → Этап 5.4) |
+| DATABASE_URL | PostgreSQL connection string | Задан (подключение → Этап 5.3) |
+| REDIS_URL | Redis connection string | Задан (подключение → Этап 5.2) |
+
+### 4.2 Чек-лист файлов и директорий
 
 ```bash
-# Установка Puppeteer
-npm install puppeteer
+# Проверка директорий и прав
+echo "=== Directories ===" && \
+[ -d "output" ] && [ -w "output" ] && echo "output/: ✅" || echo "output/: ❌" && \
+[ -d "logs" ] && [ -w "logs" ] && echo "logs/: ✅" || echo "logs/: ❌" && \
+[ -d "data" ] && [ -w "data" ] && echo "data/: ✅" || echo "data/: ❌"
 
-# Создание тестового аудио (macOS)
-say -v Yuri "Привет, меня зовут Иван" -o test.aiff
-ffmpeg -i test.aiff -ar 48000 -ac 1 tests/fixtures/test_speech_ru.wav -y
+# Проверка .env безопасности
+echo "=== Security ===" && \
+grep -q "^\.env$" .gitignore && echo ".env in .gitignore: ✅" || echo ".env in .gitignore: ❌" && \
+git ls-files --error-unmatch .env 2>/dev/null && echo ".env tracked: ❌ DANGER!" || echo ".env NOT tracked: ✅"
 ```
 
-### Запуск
+### 4.3 Чек-лист API endpoints
 
 ```bash
-# Терминал 1: Сервер
+# Проверка работы API (требует запущенный сервер)
+python -c "
+import asyncio
+from httpx import ASGITransport, AsyncClient
+from src.web.server import app
+
+async def test():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as ac:
+        # Root endpoint
+        resp = await ac.get('/')
+        print(f'GET /: {resp.status_code}')
+
+        # Create session
+        resp = await ac.post('/api/session/create', json={'pattern': 'interaction'})
+        print(f'POST /api/session/create: {resp.status_code}')
+
+        if resp.status_code == 200:
+            session_id = resp.json().get('session_id', '')[:8]
+            print(f'Session created: {session_id}...')
+
+asyncio.run(test())
+"
+```
+
+### 4.4 Запуск
+
+```bash
+# Development
 python scripts/run_server.py
 
-# Терминал 2: Голосовой агент
-python scripts/run_voice_agent.py dev
-
-# Терминал 3: E2E тест
-node tests/e2e_voice_test.js
+# Production (с gunicorn)
+gunicorn src.web.server:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
 ```
 
-### Критерии прохождения
+### 4.5 Smoke test после запуска
 
-| Этап | Проверка |
-|------|----------|
-| Browser launch | Chrome с fake audio запускается |
-| Page load | UI загружается без ошибок |
-| LiveKit connection | Подключение к комнате успешно |
-| Audio published | Микрофон опубликован |
-| Agent greeting | Агент приветствует пользователя |
-| STT transcription | Речь распознаётся |
-| Agent response | Агент отвечает на вопросы |
+```bash
+# При запущенном сервере (localhost:8000)
+
+# 1. Создание сессии
+curl -X POST http://localhost:8000/api/session/create \
+  -H "Content-Type: application/json" \
+  -d '{"pattern": "interaction"}'
+
+# 2. Открыть UI в браузере
+open http://localhost:8000/
+```
 
 ---
 
 ## Этап 5: Проверка подключений к сервисам
 
-**ВАЖНО:** Этот этап проверяет **реальные подключения**, а не просто наличие конфигурации.
+**ВАЖНО:** Этот этап проверяет **реальные подключения**, а не просто наличие конфигурации (конфигурация проверяется в Этапе 4).
 
-### Предварительные требования
+### 5.0 Предварительные требования
 
 Перед проверкой Redis и PostgreSQL необходимо запустить сервисы:
 
@@ -440,7 +546,7 @@ asyncio.run(test())
 | Redis | ⚠️ Опционально | ⚠️ Опционально | ✅ Обязательно |
 | LiveKit | ❌ Не нужен | ✅ Обязательно | ✅ Обязательно |
 
-### Docker Compose (для локальной инфраструктуры)
+### 5.7 Docker Compose (для локальной инфраструктуры)
 
 ```bash
 # Запуск Redis + PostgreSQL
@@ -455,153 +561,11 @@ docker-compose -f config/docker-compose.yml logs -f
 
 ---
 
-## Этап 6: Production Readiness
+## Этап 6: Модуль обогащения контекста
 
-### 6.1 Чек-лист конфигурации (.env)
+> **Требования:** Этапы 3 и 5 пройдены (KB валидна, подключения к LLM работают).
 
-| Параметр | Описание | Проверка |
-|----------|----------|----------|
-| LLM_PROVIDER | Активный LLM провайдер (`azure` / `deepseek`) | По умолчанию `azure` |
-| DEEPSEEK_API_KEY | API ключ DeepSeek | `python -c "..."` из 5.1 |
-| DEEPSEEK_BASE_URL | Endpoint API | По умолчанию `https://api.deepseek.com` |
-| AZURE_CHAT_OPENAI_KEY | API ключ Azure OpenAI | `python -c "..."` из 5.5 |
-| AZURE_CHAT_OPENAI_ENDPOINT | Endpoint Azure OpenAI | Формат: `https://<resource>.openai.azure.com/` |
-| AZURE_CHAT_OPENAI_DEPLOYMENT_NAME | Имя deployment модели | Например: `gpt-4.1-mini-dev-gs-swedencentral` |
-| AZURE_CHAT_OPENAI_API_VERSION | Версия API | По умолчанию `2024-12-01-preview` |
-| LIVEKIT_URL | WebSocket URL LiveKit | `python -c "..."` из 5.4 |
-| LIVEKIT_API_KEY | Ключ LiveKit | Проверяется в 5.4 |
-| LIVEKIT_API_SECRET | Секрет LiveKit | Проверяется в 5.4 |
-| DATABASE_URL | PostgreSQL connection string | `python -c "..."` из 5.3 |
-| REDIS_URL | Redis connection string | `python -c "..."` из 5.2 |
-
-### 6.2 Чек-лист файлов и директорий
-
-```bash
-# Проверка директорий и прав
-echo "=== Directories ===" && \
-[ -d "output" ] && [ -w "output" ] && echo "output/: ✅" || echo "output/: ❌" && \
-[ -d "logs" ] && [ -w "logs" ] && echo "logs/: ✅" || echo "logs/: ❌" && \
-[ -d "data" ] && [ -w "data" ] && echo "data/: ✅" || echo "data/: ❌"
-
-# Проверка .env безопасности
-echo "=== Security ===" && \
-grep -q "^\.env$" .gitignore && echo ".env in .gitignore: ✅" || echo ".env in .gitignore: ❌" && \
-git ls-files --error-unmatch .env 2>/dev/null && echo ".env tracked: ❌ DANGER!" || echo ".env NOT tracked: ✅"
-```
-
-### 6.3 Чек-лист API endpoints
-
-```bash
-# Проверка работы API (требует запущенный сервер)
-python -c "
-import asyncio
-from httpx import ASGITransport, AsyncClient
-from src.web.server import app
-
-async def test():
-    async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as ac:
-        # Root endpoint
-        resp = await ac.get('/')
-        print(f'GET /: {resp.status_code}')
-
-        # Create session
-        resp = await ac.post('/api/session/create', json={'pattern': 'interaction'})
-        print(f'POST /api/session/create: {resp.status_code}')
-
-        if resp.status_code == 200:
-            session_id = resp.json().get('session_id', '')[:8]
-            print(f'Session created: {session_id}...')
-
-asyncio.run(test())
-"
-```
-
-### 6.4 Запуск
-
-```bash
-# Development
-python scripts/run_server.py
-
-# Production (с gunicorn)
-gunicorn src.web.server:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
-```
-
-### 6.5 Smoke test после запуска
-
-```bash
-# При запущенном сервере (localhost:8000)
-
-# 1. Создание сессии
-curl -X POST http://localhost:8000/api/session/create \
-  -H "Content-Type: application/json" \
-  -d '{"pattern": "interaction"}'
-
-# 2. Открыть UI в браузере
-open http://localhost:8000/
-```
-
----
-
-## Быстрая проверка (10 минут)
-
-Минимальный набор команд для проверки работоспособности:
-
-```bash
-# 1. Юнит-тесты (должны пройти все)
-pytest --tb=short
-
-# 2. Покрытие (должно быть ≥50%)
-pytest --cov=src --cov-report=term | tail -5
-
-# 3. DeepSeek API (реальное подключение)
-python -c "
-import asyncio
-from src.llm.deepseek import DeepSeekClient
-async def test():
-    c = DeepSeekClient()
-    r = await c.chat([{'role': 'user', 'content': 'ping'}])
-    print(f'✅ DeepSeek: {len(r)} chars')
-asyncio.run(test())
-"
-
-# 4. LiveKit (реальное подключение)
-python -c "
-import asyncio, os
-from dotenv import load_dotenv
-from livekit import api
-load_dotenv()
-async def test():
-    lk = api.LiveKitAPI(os.getenv('LIVEKIT_URL'), os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET'))
-    rooms = await lk.room.list_rooms(api.ListRoomsRequest())
-    print(f'✅ LiveKit: {len(rooms.rooms)} rooms')
-    await lk.aclose()
-asyncio.run(test())
-"
-
-# 5. Azure OpenAI (реальное подключение)
-python -c "
-import asyncio
-from src.llm.azure_chat import AzureChatClient
-async def test():
-    c = AzureChatClient()
-    r = await c.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
-    print(f'✅ Azure OpenAI: {len(r)} chars')
-asyncio.run(test())
-"
-
-# 6. LLM-симуляция (один сценарий)
-python scripts/run_test.py auto_service --quiet
-
-# 7. Knowledge Base валидация (960 профилей)
-python scripts/validate_all_profiles.py --errors-only
-python scripts/validate_deep.py
-```
-
----
-
-## Этап 7: Модуль обогащения контекста
-
-### 7.1 Проверка Knowledge Base
+### 6.1 Проверка Knowledge Base
 
 ```bash
 # Валидация всех профилей отраслей
@@ -622,7 +586,7 @@ for industry_id in manager.get_all_industries():
 "
 ```
 
-### 7.2 Проверка EnrichedContextBuilder
+### 6.2 Проверка EnrichedContextBuilder
 
 ```bash
 # Тест генерации контекста для всех фаз
@@ -641,7 +605,7 @@ for phase in ['discovery', 'analysis', 'proposal', 'refinement']:
 "
 ```
 
-### 7.3 Проверка Voice интеграции
+### 6.3 Проверка Voice интеграции
 
 ```bash
 # Проверка что Voice Agent получает отраслевой контекст
@@ -660,7 +624,7 @@ print(f'Contains industry context: {has_context}')
 "
 ```
 
-### 7.4 Тесты модуля обогащения
+### 6.4 Тесты модуля обогащения
 
 ```bash
 # Запуск unit-тестов для модуля обогащения
@@ -670,7 +634,7 @@ pytest tests/unit/test_enriched_context.py -v
 pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term-missing
 ```
 
-### 7.5 Сводная таблица
+### 6.5 Сводная таблица
 
 | Проверка | Критерий |
 |----------|----------|
@@ -682,116 +646,170 @@ pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term
 
 ---
 
-## Этап 8: Мульти-региональная Knowledge Base (валидация и ремонт)
+## Этап 7: LLM-симуляция
 
-Проект содержит **960 YAML-профилей** (40 отраслей × 23 страны + 40 базовых), покрывающих 7 регионов: EU, NA, LATAM, MENA, SEA, RU и базовые профили (`_base`).
+> **Требования:** Этап 5 пройден (подключение к LLM API работает).
 
-### 8.1 Базовая валидация (L1–L5)
+### 7.1 Требования
 
-Скрипт `validate_all_profiles.py` проверяет 5 уровней:
+- **LLM провайдер** (один из):
+  - DeepSeek: `DEEPSEEK_API_KEY` в .env, баланс на аккаунте
+  - Azure OpenAI: `AZURE_CHAT_OPENAI_KEY`, `AZURE_CHAT_OPENAI_ENDPOINT`, `AZURE_CHAT_OPENAI_DEPLOYMENT_NAME` в .env
+- Переменная `LLM_PROVIDER` определяет активного провайдера (`azure` по умолчанию, `deepseek` — альтернативный)
+- Фабрика клиентов: `src/llm/factory.py` → `create_llm_client(provider)`
 
-| Уровень | Что проверяет |
-|---------|---------------|
-| L1 | Структурная целостность — обязательные поля, минимальные количества |
-| L2 | Полнота контента — наличие v2.0 секций (competitors, pricing_context, market_context) |
-| L3 | Корректность метаданных — meta.id, region, country, language, currency |
-| L4 | Качество локализации — язык соответствует стране, локальные конкуренты |
-| L5 | Валидность значений — severity/priority enums (high/medium/low), числовые цены |
+### 7.2 Доступные сценарии
+
+| Сценарий | Отрасль | Сложность |
+|----------|---------|-----------|
+| auto_service | Автосервис | Базовый |
+| auto_service_skeptic | Автосервис | Скептик |
+| logistics_company | Логистика | Средний |
+| medical_center | Медицина | Средний |
+| restaurant_italiano | HoReCa | Средний |
+| vitalbox | Франшиза | Сложный |
+
+### 7.3 Запуск
 
 ```bash
-# Полная базовая валидация (все 960 профилей)
-python scripts/validate_all_profiles.py
+# Список сценариев
+python scripts/run_test.py --list
 
-# С подробным выводом
-python scripts/validate_all_profiles.py --verbose
+# Один сценарий
+python scripts/run_test.py logistics_company
 
-# По конкретному региону
-python scripts/validate_all_profiles.py --region eu
+# Тихий режим
+python scripts/run_test.py logistics_company --quiet
 
-# Только ошибки (без предупреждений)
-python scripts/validate_all_profiles.py --errors-only
+# Полный pipeline (тест + ревью анкеты)
+python scripts/run_pipeline.py logistics_company
+
+# С документами клиента
+python scripts/run_test.py logistics_company --input-dir input/test_docs/
 ```
 
-**Критерий прохождения:** 920/920 региональных профилей valid, 0 errors.
+### 7.4 Критерии прохождения
 
-### 8.2 Глубокая валидация (L6–L11)
+| Проверка | Описание | Критерий |
+|----------|----------|----------|
+| completeness | Обязательные поля заполнены | ≥90% полей |
+| data_quality | Данные валидны (не мусор) | 0 ошибок |
+| scenario_match | Соответствие YAML-сценарию | ≥80% match |
+| phases | Все 4 фазы пройдены | 4/4 |
+| no_loops | Нет зацикливания | <50 turns |
+| validation_score | Общий скор | ≥0.8 |
 
-Скрипт `validate_deep.py` выполняет расширенные проверки:
+### 7.5 Результаты
 
-| Уровень | Что проверяет |
-|---------|---------------|
-| L6 | Качество контента — дубликаты, минимальная длина, обрезанные описания |
-| L7 | Глубина локализации — эвристики языкового соответствия по Unicode-скриптам |
-| L8 | Кросс-профильная консистентность — матрица покрытия, идентичные профили, _extends |
-| L9 | Качество sales scripts — уникальность trigger, effectiveness, длина скриптов |
-| L10 | Когерентность pricing — entry_point в range, payback_months (1–36), ROI-примеры |
-| L11 | Целостность данных — размер файлов, None-значения, YAML re-serializability |
+После успешного теста:
+- `output/tests/{scenario}_{timestamp}.json` — полный отчёт
+- `output/tests/{scenario}_{timestamp}.md` — человекочитаемый отчёт
+- Console: Rich-таблица с результатами
+
+---
+
+## Этап 8: Голосовой агент (E2E)
+
+> **Требования:** Этапы 5–7 пройдены (LiveKit подключён, LLM работает, обогащение контекста валидно).
+
+### 8.1 Требования
+
+- LiveKit Server запущен
+- Azure OpenAI Realtime API настроен
+- Node.js + Puppeteer установлены
+
+### 8.2 Подготовка
 
 ```bash
-# Глубокая валидация
+# Установка Puppeteer
+npm install puppeteer
+
+# Создание тестового аудио (macOS)
+say -v Yuri "Привет, меня зовут Иван" -o test.aiff
+ffmpeg -i test.aiff -ar 48000 -ac 1 tests/fixtures/test_speech_ru.wav -y
+```
+
+### 8.3 Запуск
+
+```bash
+# Терминал 1: Сервер
+python scripts/run_server.py
+
+# Терминал 2: Голосовой агент
+python scripts/run_voice_agent.py dev
+
+# Терминал 3: E2E тест
+node tests/e2e_voice_test.js
+```
+
+### 8.4 Критерии прохождения
+
+| Этап | Проверка |
+|------|----------|
+| Browser launch | Chrome с fake audio запускается |
+| Page load | UI загружается без ошибок |
+| LiveKit connection | Подключение к комнате успешно |
+| Audio published | Микрофон опубликован |
+| Agent greeting | Агент приветствует пользователя |
+| STT transcription | Речь распознаётся |
+| Agent response | Агент отвечает на вопросы |
+
+---
+
+## Быстрая проверка (10 минут)
+
+Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
+
+```bash
+# 1. Юнит-тесты (Этап 1 — должны пройти все)
+pytest --tb=short
+
+# 2. Покрытие (Этап 1 — должно быть ≥50%)
+pytest --cov=src --cov-report=term | tail -5
+
+# 3. Knowledge Base валидация (Этап 3 — 960 профилей)
+python scripts/validate_all_profiles.py --errors-only
 python scripts/validate_deep.py
 
-# С подробным выводом
-python scripts/validate_deep.py --verbose
+# 4. DeepSeek API (Этап 5 — реальное подключение)
+python -c "
+import asyncio
+from src.llm.deepseek import DeepSeekClient
+async def test():
+    c = DeepSeekClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}])
+    print(f'✅ DeepSeek: {len(r)} chars')
+asyncio.run(test())
+"
+
+# 5. Azure OpenAI (Этап 5 — реальное подключение)
+python -c "
+import asyncio
+from src.llm.azure_chat import AzureChatClient
+async def test():
+    c = AzureChatClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
+    print(f'✅ Azure OpenAI: {len(r)} chars')
+asyncio.run(test())
+"
+
+# 6. LiveKit (Этап 5 — реальное подключение)
+python -c "
+import asyncio, os
+from dotenv import load_dotenv
+from livekit import api
+load_dotenv()
+async def test():
+    lk = api.LiveKitAPI(os.getenv('LIVEKIT_URL'), os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET'))
+    rooms = await lk.room.list_rooms(api.ListRoomsRequest())
+    print(f'✅ LiveKit: {len(rooms.rooms)} rooms')
+    await lk.aclose()
+asyncio.run(test())
+"
+
+# 7. LLM-симуляция (Этап 7 — один сценарий)
+python scripts/run_test.py auto_service --quiet
 ```
-
-**Критерий прохождения:** 0 errors, 0 warnings (info — допустимо).
-
-### 8.3 Инструментарий ремонта профилей
-
-При обнаружении проблем используются специализированные скрипты:
-
-| Скрипт | Назначение | Что исправляет |
-|--------|------------|----------------|
-| `fix_enums.py` | Нормализация enum-значений | hoch→high, mittel→medium, alto→high и т.д. для 11+ языков |
-| `fix_aliases.py` | Генерация aliases | Добавляет блок `aliases` с 3–6 синонимами отрасли |
-| `fix_entry_points.py` | Числовые entry_point | "150 CHF für..."→150, "$65"→65, "Rp 50.000"→50000 |
-| `fix_incomplete_profiles.py` | Дополнение профилей (LLM) | Генерирует отсутствующие секции через Azure OpenAI |
-| `fix_l2_subfields.py` | Дополнение sub-fields (LLM) | Добавляет sales_scripts, competitors, seasonality, roi_examples |
-| `fix_l10_pricing.py` | Исправление pricing | payback=0→1, non-numeric→число, payback>36→пересчёт |
-
-```bash
-# Примеры запуска
-python scripts/fix_enums.py
-python scripts/fix_aliases.py
-python scripts/fix_entry_points.py
-python scripts/fix_l10_pricing.py
-
-# LLM-скрипты (требуют Azure OpenAI API)
-python scripts/fix_incomplete_profiles.py --provider=azure
-python scripts/fix_l2_subfields.py --provider=azure
-```
-
-### 8.4 Генерация профилей
-
-Для создания новых региональных профилей используется `generate_profiles.py`:
-
-```bash
-# Генерация профилей для конкретной страны
-python scripts/generate_profiles.py --country de --provider azure
-
-# Генерация всех профилей для региона
-python scripts/generate_profiles.py --region eu --provider azure
-
-# Список поддерживаемых стран
-python scripts/generate_profiles.py --list-countries
-```
-
-**Поддерживаемые провайдеры:** `azure` (по умолчанию), `deepseek`.
-
-### 8.5 Сводная таблица
-
-| Проверка | Критерий |
-|----------|----------|
-| Базовая валидация (L1–L5) | 920/920 valid, 0 errors |
-| Глубокая валидация (L6–L11) | 0 errors, 0 warnings |
-| Покрытие стран | 23/23 страны, все 40 отраслей |
-| Enum-значения | Только English: high, medium, low |
-| entry_point / budget | Числовые значения, без текста |
-| ROI payback_months | 1–36, числовые |
-| sales_scripts | ≥3 на профиль, trigger уникальны |
-| competitors | ≥2 на профиль, реальные компании |
-| Языковая локализация | Контент на языке страны |
 
 ---
 
