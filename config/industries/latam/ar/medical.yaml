@@ -1,0 +1,224 @@
+pain_points:
+- description: Es difícil comunicarse por teléfono para reservar una cita
+  severity: high
+  solution_hint: Agente de voz para reservas 24/7
+- description: Los pacientes olvidan sus citas programadas
+  severity: high
+  solution_hint: Recordatorios automáticos por WhatsApp o SMS un día y una hora antes
+- description: Muchas llamadas son para preguntas repetitivas sobre horarios o preparación
+  severity: medium
+  solution_hint: FAQ automatizado sobre horarios, direcciones y preparación para estudios
+- description: Los recepcionistas están saturados, especialmente en horario pico
+  severity: high
+  solution_hint: Automatización de operaciones rutinarias como consultas de saldo
+    y reprogramaciones
+- description: Errores en la reserva por confusión en los nombres de especialistas
+    o horarios
+  severity: medium
+  solution_hint: Sistema de reserva estructurado con confirmación por voz
+- description: Dificultad para gestionar la demanda en épocas de alta circulación
+    de virus
+  severity: high
+  solution_hint: Triaje inicial automatizado para derivar casos urgentes y agilizar
+    la agenda
+typical_services:
+- Consulta médica
+- Diagnóstico por imágenes
+- Análisis de laboratorio
+- Ecografía
+- Resonancia magnética / Tomografía computada
+- Odontología
+- Visita médica a domicilio
+- Vacunación
+- Fisioterapia
+- Chequeo médico anual
+recommended_functions:
+- name: reserva
+  priority: high
+  reason: 60-70% de las llamadas son para reservar o reprogramar citas
+- name: recordatorio
+  priority: high
+  reason: Reduce las inasistencias en un 30-40%, mejorando la utilización de recursos
+- name: faq
+  priority: high
+  reason: Responde automáticamente preguntas frecuentes sobre preparación para estudios,
+    horarios y ubicación
+- name: reprogramación
+  priority: medium
+  reason: Facilita la modificación o cancelación de citas sin necesidad de operador
+- name: visita_domicilio
+  priority: medium
+  reason: Gestiona solicitudes de visitas médicas a domicilio, recopilando síntomas
+    y dirección
+- name: derivación
+  priority: medium
+  reason: Deriva llamadas de emergencia a un operador humano de inmediato
+typical_integrations:
+- name: Sistema de Gestión Médica (SGM)
+  examples:
+  - Gestar
+  - Softmedical
+  - Sistema de Historia Clínica Digital
+  priority: high
+  reason: Sincronización de agendas médicas, historial del paciente y reservas
+- name: CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - CRM locales
+  priority: medium
+  reason: Seguimiento del paciente y recordatorios de seguimiento
+- name: Plataforma de Telefonía
+  examples:
+  - Movistar
+  - Claro
+  - Telefónica
+  priority: high
+  reason: Gestión de llamadas entrantes y integración con la central telefónica
+- name: Mensajería
+  examples:
+  - WhatsApp Business
+  - SMS
+  priority: high
+  reason: Envío de recordatorios de citas y confirmaciones, muy utilizado en Argentina
+- name: Calendario
+  examples:
+  - Google Calendar
+  - Outlook Calendar
+  priority: medium
+  reason: Sincronización de la agenda del personal médico
+industry_faq:
+- question: ¿Cómo reservo una cita con el médico?
+  answer_template: Por favor, indique la especialidad del médico y la fecha preferida.
+    Verificaré los horarios disponibles.
+- question: ¿Qué análisis de laboratorio requieren ayuno?
+  answer_template: La bioquímica sanguínea, glucosa y perfil lipídico requieren ayuno
+    de 8-12 horas. El hemograma completo es preferible en ayunas.
+- question: ¿Cómo debo prepararme para una ecografía abdominal?
+  answer_template: Evite alimentos que produzcan gases 3 días antes. El día del estudio,
+    acuda en ayunas.
+- question: ¿Atienden los fines de semana?
+  answer_template: Sí, atendemos los sábados de 9 a 18 hs. Los domingos hay guardia
+    médica.
+- question: ¿Puedo solicitar una visita médica a domicilio?
+  answer_template: Sí, es posible. Por favor, proporcione la dirección y describa
+    los síntomas para priorizar.
+- question: ¿Cuánto cuesta una consulta médica?
+  answer_template: El costo varía según la especialidad. Una consulta con clínico
+    general tiene un costo desde 5000 ARS.
+sales_scripts:
+- trigger: pregunta_precio
+  situation: Cuando el cliente pregunta por el costo de una consulta o servicio
+  script: El precio depende del especialista y tipo de consulta. Por ejemplo, una
+    consulta inicial con clínico general es desde 5000 ARS. ¿Le gustaría agendar una
+    cita o prefiere que lo conecte con un asesor para más detalles?
+  goal: Agendar una cita o proporcionar información clara de precios para avanzar
+    en el proceso
+- trigger: objecion_horario
+  situation: Cuando el cliente dice que no tiene horarios convenientes
+  script: Entiendo. Contamos con horarios extendidos y atención los sábados. También
+    puedo consultar la disponibilidad de otros profesionales de la misma especialidad.
+    ¿Prefiere algún día en particular?
+  goal: Encontrar una alternativa de horario y retener al paciente
+- trigger: consulta_urgencia
+  situation: Cuando el cliente describe síntomas que podrían ser urgentes
+  script: Por los síntomas que describe, le recomiendo hablar de inmediato con nuestro
+    servicio de guardia. Lo conectaré ahora mismo con un operador.
+  goal: Derivar casos potencialmente graves de forma segura y rápida a atención humana
+- trigger: pregunta_cobertura
+  situation: Cuando el cliente pregunta si trabajamos con su obra social o prepaga
+  script: Trabajamos con una amplia red de coberturas. Para confirmar si su obra social
+    está incluida, necesito algunos datos. ¿Puede proporcionarme el nombre de su prepaga?
+  goal: Recopilar información para verificar cobertura y guiar al paciente
+competitors:
+- name: Hospital Italiano de Buenos Aires
+  positioning: Hospital de alta complejidad con prestigio académico
+  strengths:
+  - Tecnología de punta
+  - Amplia gama de especialidades
+  - Reconocimiento internacional
+  weaknesses:
+  - Listas de espera largas
+  - Costos elevados para pacientes sin cobertura
+  - Saturación en guardias
+  our_differentiation: Agendamiento más ágil y accesible mediante agente de voz 24/7,
+    con foco en experiencia del paciente
+- name: Sanatorio Güemes
+  positioning: Sanatorio privado de referencia en capital federal
+  strengths:
+  - Ubicación céntrica
+  - Instalaciones modernas
+  - Convenios con muchas prepagas
+  weaknesses:
+  - Poca flexibilidad en horarios de atención
+  - Sistema de reservas poco intuitivo
+  our_differentiation: Automatización del 65% de las reservas, reduciendo tiempos
+    de espera y errores
+- name: Clínica Bazterrica
+  positioning: Clínica especializada en diagnósticos y estudios complejos
+  strengths:
+  - Equipamiento de diagnóstico avanzado
+  - Resultados rápidos
+  - Profesionales altamente capacitados
+  weaknesses:
+  - Enfoque limitado a diagnósticos, menos en atención primaria
+  - Precios por encima del mercado
+  our_differentiation: Integración completa con sistemas de gestión para un flujo
+    de paciente más eficiente, desde la reserva hasta el resultado
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de reservas y recordatorios para una clínica mediana
+    monthly_cost: 20000
+    monthly_savings: 50000
+    payback_months: 0.4
+  value_anchors:
+  - Reducción del 30% en inasistencias a consultas
+  - Disponibilidad 24/7 para reservas sin costo de personal adicional
+  - Libera 20 horas semanales de personal administrativo para tareas de mayor valor
+market_context:
+  market_size: Estimado en 50 mil millones ARS anuales solo en sector privado
+  growth_rate: 5% anual, impulsado por mayor demanda de salud privada
+  key_trends:
+  - Digitalización acelerada de historias clínicas
+  - Crecimiento de la telemedicina post-pandemia
+  - Mayor exigencia de los pacientes en experiencia digital
+  - Fusión de clínicas pequeñas en redes más grandes
+  seasonality:
+    high:
+    - Invierno (mayo-agosto, por enfermedades respiratorias)
+    - Época de vacunación antigripal (abril-junio)
+    low:
+    - Verano (diciembre-febrero, por vacaciones y menor circulación viral)
+typical_objections:
+- objection: Prefiero hablar con una persona para reservar
+  response: Entiendo. Nuestro agente de voz está diseñado para agilizar el proceso,
+    pero siempre puede solicitar ser transferido a un operador si lo prefiere.
+- objection: Es muy caro para mi presupuesto
+  response: Comprendo. Ofrecemos planes de pago y promociones en ciertas especialidades.
+    También podemos verificar si su obra social cubre parte del costo.
+- objection: Necesito ver al médico hoy mismo, es urgente
+  response: Para casos urgentes, lo derivaré inmediatamente a nuestra guardia médica.
+    Por favor, describa brevemente los síntomas para priorizar.
+- objection: Ya tengo un médico de confianza en otra institución
+  response: Valoramos su fidelidad. Nuestro servicio complementa con agendamiento
+    rápido, recordatorios y acceso a múltiples especialistas en un solo lugar.
+meta:
+  id: medical
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "medical"
+- "healthcare"
+- "clinic"
+- "hospital"
+- "doctor"
+_extends: _base/medical

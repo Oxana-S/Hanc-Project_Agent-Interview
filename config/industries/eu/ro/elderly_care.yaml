@@ -1,0 +1,201 @@
+pain_points:
+- description: Personal insuficient calificat și lipsă angajați în asistența socială și îngrijirea medicală.
+  severity: high
+  solution_hint: Agentul vocal AI poate prelua programări, notificări și întrebări frecvente, reducând presiunea pe personal.
+- description: Comunicare ineficientă între familii și centru, lipsă actualizări în timp real despre starea seniorului.
+  severity: medium
+  solution_hint: Agentul poate oferi actualizări automate și răspunde la întrebări simple despre rutine și sănătate.
+- description: Eroare umană în administrarea medicamentelor și a programelor de tratament.
+  severity: high
+  solution_hint: Agentul poate gestiona sisteme de notificare și reamintire automată pentru medicamente și consultații.
+- description: Costuri mari cu personalul și formarea, presiune bugetară ridicată.
+  severity: medium
+  solution_hint: Automatizarea sarcinilor administrative și a serviciilor de call center reduce cheltuielile cu personalul.
+- description: Rezistența familiei și a seniorilor împotriva plasării într-un centru de îngrijire.
+  severity: medium
+  solution_hint: Agentul poate prezenta serviciile într-un mod cald și informativ, răspunzând rapid la îndoieli.
+- description: Provocări GDPR și gestionarea datelor sensibile ale pacienților în mod securizat.
+  severity: high
+  solution_hint: Agentul vocal integrat cu sisteme conforme poate asigura procesarea datelor în conformitate cu GDPR.
+typical_services:
+- Îngrijire la domiciliu (asistent medical la domiciliu)
+- Centru de zi pentru adulți în vârstă
+- Cămine pentru bătrâni (rezidențe pentru seniori)
+- Asistență medicală și monitorizare 24/7
+- Servicii de companie și suport psihologic
+- Ajutor pentru activități zilnice (ADL)
+- Transport și însoțire la consultații
+- Gestionare administrare medicamente
+- Terapie ocupațională și recuperare fizică
+- Servicii de masă și nutriție specializată
+recommended_functions:
+- name: Programare și reprogramare consultații/visite
+  priority: high
+  reason: Reduce timpul personalului pentru activități repetitive și evitează conflicte de program.
+- name: Răspuns la întrebări frecvente ale familiilor
+  priority: high
+  reason: Oferă informații instant despre servicii, prețuri și starea seniorilor, crescând încrederea.
+- name: Notificări automate pentru medicamente și activități
+  priority: medium
+  reason: Minimizează riscul de eroare umană și asigură conformitatea cu planurile de îngrijire.
+- name: Triaj inițial al solicitărilor noi
+  priority: medium
+  reason: Colectează date esențiale și direcționează către specialistul potrivit, eficientizând procesul.
+- name: Confirmări și reamintiri pentru vizitele familiei
+  priority: low
+  reason: Îmbunătățește comunicarea și reduce confuzia în centru.
+- name: Recoltare feedback de la clienți/urmărire satisfacție
+  priority: medium
+  reason: Ajută la identificarea rapidă a problemelor și la îmbunătățirea serviciilor.
+typical_integrations:
+- name: Sistem Electronic de Sănătate (EHR)
+  examples:
+  - MedicNet
+  - Siveco eHealth
+  - sisteme interne customizate
+  priority: high
+- name: Platformă de gestionare a centrului (CRM/Scheduling)
+  examples:
+  - Odoo localizat
+  - sisteme specifice farmaciei/asistenței medicale
+  priority: high
+- name: Sistem de facturare și contabilitate
+  examples:
+  - Softronic Gestiune
+  - Saga
+  - SPV ANAF pentru raportare
+  priority: medium
+- name: Sistem de notificări și alertă (SMS/Email)
+  examples:
+  - Twilio (global, folosit local)
+  - servicii locale de SMS gateway
+  priority: medium
+- name: Platforma națională de asistență socială (dacă aplicabil)
+  examples:
+  - Module în sistemul Ministerului Muncii
+  priority: low
+industry_faq:
+- question: Cât costă îngrijirea unui senior la domiciliu?
+  answer_template: Prețurile pentru îngrijire la domiciliu încep de la aproximativ 1500 RON/lună pentru câteva ore pe zi și pot ajunge până la 4000 RON sau mai mult pentru îngrijire 24/7. Vă putem oferi
+    o estimare exactă după o evaluare gratuită.
+- question: Ce servicii sunt incluse în prețul unei rezidențe?
+  answer_template: Prețul lunar pentru o rezidență include de obicei cazare, 3 mese pe zi, îngrijire medicală de bază, activități recreative și asistență pentru activitățile zilnice. Serviciile medicale
+    specializate pot fi tarifate separat.
+- question: Este personalul dumneavoastră calificat și licențiat?
+  answer_template: Da, toți asistenții noștri medicali sunt certificați și autorizați de autoritățile competente din România. Asigurăm formare continuă și respectăm standardele naționale de calitate.
+- question: Cum gestionați urgențele medicale?
+  answer_template: Avem personal medical prezent non-stop și un protocol clar pentru urgențe, care include contactarea imediată a familiei și a serviciilor de ambulanță, dacă este necesar. Toate încăperile
+    sunt echipate cu sisteme de alarmă.
+- question: 'Puteți oferi îngrijire specializată pentru bolile cronice (ex: demență, Alzheimer)?'
+  answer_template: Da, avem secții specializate și personal instruit pentru îngrijirea pacienților cu demență, Alzheimer sau alte afecțiuni cronice. Planul de îngrijire este personalizat.
+- question: Ce se întâmplă dacă starea de sănătate a seniorului se înrăutățește?
+  answer_template: Monitorizăm continuu starea seniorilor. La orice modificare semnificativă, medicul nostru consultant stabilește o strategie nouă și vă ținem la curent imediat. Avem parteneriate cu clinicile
+    locale dacă este nevoie de spitalizare.
+sales_scripts:
+- trigger: price_question
+  situation: Când un potențial client întreabă despre prețuri, în primele minute ale conversației.
+  script: Bună ziua! Înțeleg că doriți să cunoașteți opțiunile financiare. Prețurile pentru îngrijirea vârstnicilor variază în funcție de nevoile specifice, de la îngrijire ușoară la domiciliu până la cazare
+    integrală. Pentru o estimare corectă, pot să vă pun câteva întrebări scurte? Astfel vă putem oferi cel mai potrivit și transparent pachet.
+  goal: Obține date pentru o ofertă personalizată și evită abandonul din cauza unei răspunsuri generice despre preț.
+- trigger: competitor_mention
+  situation: Când clientul menționează un alt centru sau serviciu de concurență.
+  script: Vă mulțumim că ați cercetat piața! Spre deosebire de mulți, noi ne concentrăm pe tehnologie pentru siguranța și comunicarea transparență. Prin agentul nostru vocal, familia primește actualizări
+    regulate, iar seniorul beneficiază de reamintiri automate pentru medicamente. Sunteți interesat să aflați mai multe despre cum acest sistem reduce stresul și crește calitatea vieții?
+  goal: Diferențierea prin tehnologie și prezentarea unui beneficiu tangibil de pace sufletească pentru familie.
+- trigger: objection_trust_technology
+  situation: Când clientul (de obicei vârstnic sau rudă mai în vârstă) exprimă neîncredere în sisteme automate.
+  script: Este perfect înțeles să aveți rezerve. Tehnologia noastră este un instrument care sprijină, nu înlocuiește, omul. Agentul vocal gestionează doar programări și notificări repetitive, astfel încât
+    asistenții noștri să aibă mai mult timp pentru interacțiunea umană și îngrijirea directă. Este ca un asistent virtual care asigură că nimic nu scapă. Doriți un demo scurt pentru a vedea cum funcționează?
+  goal: Transformarea obiecției într-o oportunitate de demonstrație, prezentând AI-ul ca suport, nu înlocuitor.
+- trigger: request_info_package
+  situation: Când clientul cere materiale sau un pachet informațional.
+  script: Cu siguranță! Vă pot trimite imediat pe email sau WhatsApp o broșură detaliată cu serviciile noastre, galerie foto și experiențe ale altor familii. Totodata, pot programa imediat o vizită virtuală
+    sau o tură la centrul nostru, astfel încât să vă faceți o imagine directă. Ce variantă v-ar conveni mai mult?
+  goal: Conversia cererii pasive într-un angajament activ pentru o vizită sau o demonstrație următoare.
+competitors:
+- name: Casa Speranței / Reședințe pentru Seniori
+  positioning: Rețea mare, cu multiple locații, accent pe mediu sigur și comfort.
+  strengths:
+  - Recunoaștere națională a mărcii
+  - Infrastructură modernă
+  - Oferta diversificată
+  weaknesses:
+  - Costuri mai mari
+  - Procese mai birocratice
+  - Comunicare mai rigidă cu familiile
+  our_differentiation: Noi oferim transparență și liniște sufletească prin comunicarea automată și personalizată cu familiile, cu costuri mai optimizate datorită eficienței tehnologice.
+- name: Asociații locale și furnizori mici de îngrijire la domiciliu
+  positioning: Servicii personalizate, prețuri mai accesibile, relații strânse în comunitate.
+  strengths:
+  - Preț competitiv
+  - Atenție personalizată
+  - Flexibilitate locală
+  weaknesses:
+  - Resurse limitate
+  - Lipsa standardizării
+  - Dificultăți în gestionarea cazurilor complexe
+  our_differentiation: Combinăm atenția personalizată cu structura și resursele unui operator profesionist, sprijinite de tehnologie pentru managementul flawless al tuturor detaliilor.
+- name: Spitale private cu secții de cronici / geriatrie
+  positioning: Focus medical puternic, pentru pacienți cu afecțiuni severe.
+  strengths:
+  - Expertiză medicală de top
+  - Echipamente avansate
+  - Capacitate de gestionare a urgențelor
+  weaknesses:
+  - Ambient spitalicesc, neprietenos
+  - Costuri foarte ridicate
+  - Proceduri administrative lungi
+  our_differentiation: Oferim un mediu cald, asemănător unei case, cu suport medical adecvat, axat pe calitatea vieții, nu doar pe tratamentul medical.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 1500
+  - 7000
+  entry_point: 1800
+  roi_examples:
+  - scenario: Reducerea timpului administrativ și a erorilor de programare pentru un centru cu 20 de locuri
+    monthly_cost: 500
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - 'Liniștea sufletească pentru familie: fără apeluri în plus și cu actualizări regulate.'
+  - 'Un asistent medical extra fără cost suplimentar: reamintiri automate pentru medicamente.'
+  - 'Eficiență operațională: reducere cu până la 30% a timpului petrecut cu programări și notificări telefonice.'
+market_context:
+  market_size: 'Estimare 2024: ~2.5 miliarde RON (piața privată și publică)'
+  growth_rate: 6-8% anual
+  key_trends:
+  - Creșterea rapidă a populației vârstnice (peste 65 de ani).
+  - Migrația forței de muncă tânere (care lasă seniorii singuri).
+  - Creșterea cererii pentru servicii de calitate și tehnologizate.
+  - Atragerea fonduror UE pentru modernizarea infrastructurii sociale.
+  - Tendința de îngrijire la domiciliu vs. plasare în centre.
+  seasonality:
+    high:
+    - Noiembrie - Februarie (perioada rece, sărbători)
+    low:
+    - Iunie - August (vacanțe, mulți seniori plecați cu familiile)
+typical_objections:
+- objection: Nu avem încredere în mașinării, vrem doar contact uman pentru bunica noastră.
+  response: Absolut de acord, contactul uman este esențial. Agentul nostru vocal nu înlocuiește pe nimeni. El doar elimină așteptarea la telefon pentru programări și asigură că nu uităm nicio doză de medicament.
+    Personalul rămâne același, devine doar mai disponibil pentru bunica dvs.
+- objection: E prea scump pentru bugetul nostru.
+  response: Înțeleg presiunea bugetară. În multe cazuri, prin evitarea erorilor și a spitalizărilor costisitoare datorate uitării tratamentelor, serviciile noastre tehnologizate economisesc bani pe termen
+    lung. Putem discuta și un plan de plăți flexibil sau un pachet redus pentru început?
+- objection: Ne descurcăm noi în familie, fără ajutor extern.
+  response: Este minunat că sunteți apropiați. Suntem aici ca un sprijin, nu o înlocuire. Multe familii folosesc serviciile noastre de companie sau de asistență medicală câteva ore pe săptămână pentru a-și
+    recâștiga energie și a oferi și mai multă atenție calitativă seniorului. Vă ofer o săptămână de probă fără obligații?
+meta:
+  id: elderly_care
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- elderly care
+- senior care
+- nursing home
+- home care
+_extends: _base/elderly_care

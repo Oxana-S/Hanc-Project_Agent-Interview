@@ -1,0 +1,246 @@
+pain_points:
+- description: Terminüberlastung durch telefonische Terminvereinbarungen, besonders
+    in Stoßzeiten.
+  severity: high
+  solution_hint: AI-Agent übernimmt Terminbuchung, versendet Erinnerungen und ermöglicht
+    Online-Selbstbuchung.
+- description: Hoher Administrationsaufwand für Rezeptwiederholungen und Medikamentenbestellungen.
+  severity: medium
+  solution_hint: Automatisierte Verarbeitung von Wiederholungsrezeptanfragen mit Weiterleitung
+    an das Praxis-Softwaresystem.
+- description: Fehlende Kapazität für Notfall-Anrufe außerhalb der Öffnungszeiten.
+  severity: high
+  solution_hint: 24/7 Notfall-Triage durch AI-Agent, der dringende Fälle identifiziert
+    und an den Bereitschaftsdienst weiterleitet.
+- description: Patienten-Compliance nach Behandlungen (z.B. Medikamentengabe, Nachkontrollen)
+    ist schwer zu überwachen.
+  severity: medium
+  solution_hint: Automatisierte Follow-up-Anrufe oder SMS zur Erinnerung an Medikamentengabe
+    und Nachuntersuchungstermine.
+- description: Unzufriedenheit der Kunden durch lange Wartezeiten am Telefon und verpasste
+    Anrufe.
+  severity: high
+  solution_hint: AI-Agent beantwortet sofort Standardfragen und nimmt Nachrichten
+    entgegen, reduziert Wartezeit auf Null.
+- description: Ineffiziente Erinnerungsprozesse für Impfungen und Vorsorgeuntersuchungen.
+  severity: medium
+  solution_hint: Automatisierte Kampagnen zur Erinnerung an anstehende Impfungen basierend
+    auf Praxis-Softwaredaten.
+- description: Schwierigkeiten bei der Erfassung und Auswertung von Patientenfrieden
+    (z.B. nach Operationen).
+  severity: low
+  solution_hint: Automatisierte Zufriedenheitsumfragen per Anruf oder SMS nach bestimmten
+    Behandlungen.
+typical_services:
+- Allgemeine Untersuchung & Konsultation
+- Impfungen und Entwurmungen
+- Chirurgische Eingriffe (Kastration, Operationen)
+- Zahnbehandlung & -prophylaxe
+- Laboruntersuchungen (Blut, Urin, Kot)
+- Röntgen & Ultraschall
+- Notfall- & Intensivmedizin
+- Physiotherapie & Rehabilitation
+- Ernährungsberatung
+- Mikrochip-Implantation & EU-Heimtierausweis
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Entlastet das Personal erheblich und verbessert die Kundenzufriedenheit
+    durch sofortige Verfügbarkeit.
+- name: Notfall-Triage und Weiterleitung
+  priority: high
+  reason: Bietet rund um die Uhr einen kritischen Service und filtert echte Notfälle
+    effizient.
+- name: Automatisierte Erinnerungen (Impfungen, Nachkontrollen)
+  priority: medium
+  reason: Steigert die Compliance und Praxisbindung, generiert planbare Folgeumsätze.
+- name: Rezeptwiederholungs-Management
+  priority: medium
+  reason: Reduziert den administrativen Aufwand für eine häufige und zeitraubende
+    Tätigkeit.
+- name: Basis-FAQ und Praxisinformationen
+  priority: medium
+  reason: Beantwortet rund um die Uhr Standardfragen zu Öffnungszeiten, Anfahrt und
+    Vorbereitung auf Untersuchungen.
+- name: Zufriedenheitsbefragung
+  priority: low
+  reason: Liefert wertvolles Feedback für die Praxisoptimierung mit minimalem Aufwand.
+typical_integrations:
+- name: Praxisverwaltungssoftware (PVS)
+  examples:
+  - VetMAX
+  - easyVET
+  - AniPlan
+  - VetZ
+  priority: high
+- name: Terminplanungs-Tools
+  examples:
+  - Calendly
+  - Microsoft Bookings
+  - individuelle Praxislösungen
+  priority: high
+- name: SMS/Email-Marketing-Systeme
+  examples:
+  - Newsletter2Go
+  - Mailchimp
+  - Senden.cc
+  priority: medium
+- name: Zahlungsabwicklung
+  examples:
+  - SumUp
+  - PayPal
+  - Bankomat
+  priority: low
+industry_faq:
+- question: Kann der Sprachassistent einen Termin für mein Haustier buchen?
+  answer_template: Ja, absolut. Ich kann Ihnen sofort einen verfügbaren Termin in
+    der Tierarztpraxis vorschlagen und diesen für Sie verbindlich reservieren. Dafür
+    benötige ich nur ein paar Details von Ihnen.
+- question: Mein Tier hat einen Notfall, können Sie helfen?
+  answer_template: Ich leite Sie umgehend an den tierärztlichen Notdienst weiter bzw.
+    nenne Ihnen die Telefonnummer der nächstgelegenen Tierklinik. Bitte beschreiben
+    Sie kurz die dringendsten Symptome.
+- question: Wie bereite ich mein Tier auf eine Operation vor?
+  answer_template: Typischerweise sollte das Tier nüchtern sein, d.h. 12 Stunden vor
+    der OP kein Futter und 6 Stunden vorher kein Wasser mehr. Genauere, praxisindividuelle
+    Anweisungen kann ich Ihnen per Email zusenden oder Sie fragen direkt bei Ihrer
+    Praxis nach.
+- question: Kann ich ein Rezept für die regelmäßige Medikation meines Tieres anfordern?
+  answer_template: Ja, ich kann Ihre Anfrage für ein Wiederholungsrezept aufnehmen
+    und direkt an die Tierarztpraxis zur Prüfung und Freigabe weiterleiten. Bitte
+    haben Sie die Patienten- oder Chipnummer Ihres Tieres bereit.
+- question: Was kostet eine Standard-Impfung für eine Katze?
+  answer_template: Die Kosten können je nach Praxis, Impfstoff und Region variieren.
+    Für eine genaue Kostenvoranschlag verbinde ich Sie gerne mit dem Praxisteam. Als
+    grobe Orientierung liegen die Kosten für eine Grundimmunisierung oft zwischen
+    50 und 80 Euro.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn der Praxisinhaber nach den Kosten fragt.
+  script: Verstehe. Die Investition richtet sich nach dem gewünschten Funktionsumfang.
+    Unser Einstiegspaket, das Terminbuchung und Basis-FAQs automatisiert, beginnt
+    bei 149€ monatlich. Das spart Ihrer Praxis bereits mehrere Stunden Telefondienst
+    pro Woche. Darf ich Ihnen eine detaillierte Kosten-Nutzen-Rechnung für genau Ihre
+    Praxisgröße erstellen?
+  goal: Den Preis mit konkretem Nutzen und Ersparnis rechtfertigen, zum nächsten Schritt
+    (Analyse) einladen.
+- trigger: automation_resistance
+  situation: Wenn Bedenken geäußert werden, der persönliche Kontakt zu Patienten gehe
+    verloren.
+  script: 'Das ist ein wichtiger Punkt. Unser AI-Agent entlastet Ihr Team genau von
+    den repetitiven Aufgaben wie Terminbuchung und Erinnerungen. So gewinnen Ihre
+    Tierärzte und Arzthelferinnen mehr Zeit für das Wesentliche: den persönlichen
+    Kontakt und die Behandlung im Untersuchungsraum. Die KI ist ein Assistent, kein
+    Ersatz.'
+  goal: Bedenken entkräften und den Mehrwert als Unterstützung des Teams darstellen.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen anderen Anbieter (z.B. Callcenter) erwähnt.
+  script: Interessant. Viele klassische Callcenter berechnen pro Anruf oder haben
+    hohe Mindestlaufzeiten. Unsere KI-Lösung bietet Ihnen eine feste, planbare Monatsrate
+    und arbeitet 24/7, auch an Feiertagen. Zudem integriert sie sich direkt in Ihre
+    Praxissoftware, sodass Daten wie Termine sofort übertragen werden – ohne doppelte
+    Eingabe.
+  goal: Unsere Vorzüge der Kostenplanbarkeit, Verfügbarkeit und Integration gegenüber
+    traditionellen Lösungen hervorheben.
+competitors:
+- name: Tierarzt am Ring (Callcenter-Dienstleister)
+  positioning: Traditionelles Callcenter für Tierarztpraxen.
+  strengths:
+  - Persönliche menschliche Ansprechpartner
+  - Etablierter Name in Österreich
+  weaknesses:
+  - Höhere Kosten (Stundenlohn/Anruf)
+  - Begrenzte Öffnungszeiten
+  - Keine Integration in PVS
+  - Längere Reaktionszeiten
+  our_differentiation: 24/7 Verfügbarkeit zu festen Kosten, direkte PVS-Integration
+    für sofortige Terminspeicherung, skalierbar ohne Personalaufbau.
+- name: Online-Terminbuchungstools (z.B. standalone Lösungen)
+  positioning: Reine Online-Buchungsplattformen.
+  strengths:
+  - Niedrige Kosten
+  - Einfache Selbstbuchung für Kunden
+  weaknesses:
+  - Keine telefonische Erreichbarkeit
+  - Keine Notfall-Triage
+  - Keine Interaktion für Rückfragen
+  - Oft isolierte Lösung ohne Integration
+  our_differentiation: 'Omnichannel-Ansatz: Telefonie PLUS Online-Buchung, intelligente
+    Notfallerkennung, vollständige Interaktion für alle Kundenanliegen.'
+- name: Praxisinterne Lösung (eigenes Personal)
+  positioning: Arzthelferinnen managen alle Anrufe.
+  strengths:
+  - Hohe Vertrautheit mit Patienten
+  - Persönliche Beziehung
+  weaknesses:
+  - Hohe Personalkosten
+  - Begrenzte Kapazität (verpasste Anrufe)
+  - Kein Service außerhalb der Öffnungszeiten
+  - Urlaubs-/Krankheitsausfälle
+  our_differentiation: Entlastung des bestehenden Personals von Routineaufgaben, garantiert
+    100%ige Erreichbarkeit auch in Stoßzeiten, kosteneffiziente Skalierung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleine Praxis (1-2 Tierärzte) spart 10 Stunden Telefondienst/Monat.
+    monthly_cost: 149
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Mittlere Praxis reduziert verpasste Anrufe/Notfälle und generiert 5
+      zusätzliche Termine/Monat.
+    monthly_cost: 299
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Kostet weniger als eine halbe Arzthelferinnen-Stunde pro Tag.
+  - Die monatlichen Einsparungen durch effizientere Terminplanung übersteigen die
+    Kosten oft im ersten Monat.
+  - Verhindert Umsatzverluste durch verpasste Notfall-Anrufe außerhalb der Öffnungszeiten.
+market_context:
+  market_size: Über 1.500 Tierarztpraxen in Österreich
+  growth_rate: 3-5% p.a. (getrieben durch steigende Haustierzahlen und Premiumisierung)
+  key_trends:
+  - Digitalisierung der Patientenkontakte (Online-Termine, digitale Rezepte)
+  - Steigende Bedeutung von Convenience und 24/7-Erreichbarkeit für Tierbesitzer
+  - Zunahme von Haustier-Krankenversicherungen
+  - Fokus auf präventive Medizin und regelmäßige Vorsorge
+  seasonality:
+    high:
+    - Frühjahr (Impfsaison nach Winter)
+    - Herbst (Zecken- & Parasitenprophylaxe)
+    low:
+    - Hochsommer (Urlaubszeit)
+    - Zwischen Weihnachten und Neujahr
+typical_objections:
+- objection: Meine älteren Kunden kommen mit so einer Technologie nicht zurecht.
+  response: Unser System funktioniert ganz klassisch per Telefonanruf. Der Kunde wählt
+    Ihre gewohnte Praxisnummer und spricht mit der KI wie mit einer Arzthelferin.
+    Es ist keine App oder neues Gerät nötig. Für tech-affine Kunden bieten wir optional
+    eine Online-Buchung an.
+- objection: Ich habe Datenschutzbedenken (GDPR).
+  response: Das ist verständlich und sehr wichtig. Unser System ist vollständig GDPR-konform
+    entwickelt und hostet alle Daten in EU-Rechenzentren. Die Sprachverarbeitung findet
+    lokalisiert statt. Wir bieten eine entsprechende Datenverarbeitungsvereinbarung
+    (DPA) an.
+- objection: Mein Praxisablauf ist einzigartig, eine Standardlösung passt nicht.
+  response: Genau deshalb ist unser System hoch anpassbar. Wir konfigurieren die Gesprächsabläufe,
+    Öffnungszeiten, Service-Beschreibungen und Fragenkataloge exakt nach Ihren Praxisabläufen.
+    Gemeinsam definieren wir die Regeln für die Terminbuchung und Notfallweiterleitung.
+meta:
+  id: veterinary
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

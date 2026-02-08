@@ -1,0 +1,190 @@
+pain_points:
+- description: A jó jelöltek megtalálása és megtartása nagyon nehéz, mert a munkaerőpiac túlmelegedett.
+  severity: high
+  solution_hint: A hangügynök segíthet a jelöltek előzetes szűrésében és az álláspályázók kezdeti értékelésében, megtakarítva a recruiter időt.
+- description: A rengeteg beérkező önéletrajz kezelése és adminisztrációja időigényes és hibalehetőséget rejt.
+  severity: high
+  solution_hint: A mesterséges intelligencia automatikusan feldolgozhatja az önéletrajzokat, kategorizálhatja és rangsorolhatja a jelölteket.
+- description: A jelöltek sokszor nem jelentenek vissza, vagy nem jelennek meg az interjúkon, ami erőforrást emészt fel.
+  severity: medium
+  solution_hint: A hangügynök automatikus visszahívásokkal, emlékeztetőkkel és SMS-ekkel növelheti az átjárási arányt.
+- description: Az álláshirdetések költségesek, és nem mindig érik el a megfelelő célközönséget.
+  severity: medium
+  solution_hint: A hangügynök megkeresheti a passzív jelölteket, kiterjesztve az elérhető munkaerő-készletet.
+- description: A GDPR betartása összetett, különösen az adattárolás és a jelöltek tájékoztatása terén.
+  severity: high
+  solution_hint: A rendszer naplózható és GDPR-kompatibilis adatkezelést biztosíthat, automatikus beleegyezési nyilatkozatokkal.
+- description: A több nyitott pozíció egyidejű kezelése és követése káoszba sodorhatja a recruitert.
+  severity: medium
+  solution_hint: A hangügynök intelligens pipeline-kezeléssel tájékoztathat az állapotokról és riasztást küldhet kritikus eseményekkor.
+typical_services:
+- Közvetlen toborzás
+- Executive Search
+- Munkaerő-ügynökség
+- Jelölt adatbázis kezelés
+- Interjú koordináció
+- Önéletrajz szűrés
+- Employer branding tanácsadás
+- Jelölt ellenőrzés és referencia felvétel
+- Bértárgyalás támogatás
+- Onboarding segítség
+recommended_functions:
+- name: Jelölt előszűrés és értékelés
+  priority: high
+  reason: Csökkenti a recruiter munkaterhelését, és azonnal értékeli a jelöltek alkalmasságát, rövidítve a kitöltési időt.
+- name: Interjú időpont egyeztetés
+  priority: high
+  reason: Automatizálja az egyeztetés időigényes folyamatát, csökkenti a nem jelentkezéseket, és javítja a jelölt élményt.
+- name: Jelölt visszahívás és elérhetőség ellenőrzés
+  priority: medium
+  reason: Fenntartja a kapcsolatot a passzív jelöltekkel, növelve az adatbázis minőségét.
+- name: Státuszfrissítés és visszajelzés küldése
+  priority: medium
+  reason: Tájékoztatja a jelölteket a folyamat állapotáról, javítva a vállalat megítélését.
+- name: Munkaerő-piac elemzés és jelentés készítés
+  priority: low
+  reason: Piaci adatok gyűjtésével értékes betekintést nyújt a bérsávokba és a készségek elérhetőségébe.
+typical_integrations:
+- name: Applicant Tracking System (ATS)
+  examples:
+  - TalentLyft
+  - Breezy HR
+  - 'local: Profession.hu ATS'
+  priority: high
+- name: HR információs rendszer
+  examples:
+  - SAP SuccessFactors
+  - 'local: iVendo HR'
+  - 'local: Pannonwork'
+  priority: high
+- name: Naptár alkalmazás
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+- name: Kommunikációs platform
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: medium
+- name: Önéletrajz elemző szoftver
+  examples:
+  - CViZ
+  - TalentAdore
+  priority: low
+industry_faq:
+- question: Hogyan segít a hangügynök a GDPR betartásában?
+  answer_template: Rendszerünk az adatvédelmi előírásoknak megfelelően működik. Automatikusan kezeljük a beleegyezéseket, biztosítjuk az adattörlési kérések teljesítését, és minden interakció naplózható.
+    Mindig átadunk egy adatvédelmi tájékoztatót a jelöltnek.
+- question: Mennyi időt takarítunk meg a bevezetéssel?
+  answer_template: Partnereink átlagosan 10-15 órát takarítanak meg havonta egy recruiterenként, mivel a rutinfeladatok 70%-a automatizálható, mint az első körös szűrés és az időpont egyeztetés.
+- question: Kezelni tud különböző nyelveket a rendszer?
+  answer_template: Igen, a hangügynökünk támogatja a magyar mellett az angol, német és más európai nyelveket is, ami ideális a multinacionális vállalatok vagy a külföldi jelöltek toborzásához.
+- question: Integrálható a meglévő ATS vagy HR rendszerünkkel?
+  answer_template: Természetesen. Szabványos API-kon keresztül könnyen csatlakoztatható a legtöbb népszerű rendszerhez, például a Profession.hu ATS-hez vagy a SAP SuccessFactorshoz. Segítünk a beállításban.
+- question: Mi történik, ha egy jelölt emberi kapcsolatot szeretne?
+  answer_template: A rendszer intelligens. Az ügynök felismeri ezt az igényt és azonnal átirányítja a kérdést egy élő recruiterhez, biztosítva a zökkenőmentes átmenetet és a személyes érintkezést.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy leendő ügyfelünk árakat kér.
+  script: Köszönöm a kérdést. A megoldásunk ára a szükséges funkciók és a havi interakciók száma alapján változik. A legtöbb ügynökség számára a havi kiindulási költség 50.000 HUF-tól kezdődik, ami havonta
+    több mint 10 órát takarít meg a recruiterjeinek. Egy rövid, személyre szabott ajánlat érdekel?
+  goal: A költség keret megállapítása és egy következő lépés (ajánlatkérés) felé terelni a beszélgetést.
+- trigger: competitor_mention
+  situation: Amikor az ügyfelünk egy konkrét versenytársunkat említi.
+  script: Értem, hogy nézték [Versenyző neve] megoldását is. Nálunk különösen a magyar munkaerőpiac specifikus kihívásaira fókuszálunk, mint a helyes GDPR betartás és a helyi ATS rendszerek integrációja.
+    Emellett a magyar nyelvű természetes beszédfeldolgozásunk kiemelkedő. Szeretnék bemutatni egy rövid összehasonlítást?
+  goal: Kiemelni a lokalizált előnyeinket és egy konkrét demó felé irányítani.
+- trigger: objection_too_busy
+  situation: Amikor a leendő ügyfelünk azt mondja, nincs ideje új technológiákkal foglalkozni.
+  script: Teljesen megértem, mennyire elfoglaltak. Pontosan ezért készült a mi megoldásunk – hogy időt szabadítson fel Önnek. A beállítás csak néhány órát vesz igénybe, utána pedig a rendszer elkezdi automatizálni
+    az időigényes feladatokat. Gondolja át, mit tudna kezdeni a napi 1-2 extra órával. Megmutathatom egy 5 perces demóban, hogyan működik?
+  goal: A 'nincs idő' ellenvetést 'időmegtakarítási lehetőséggé' fordítani, és egy gyors demóval a bizonyíték felé terelni.
+competitors:
+- name: TextRecruit / SenseHQ
+  positioning: Globális, AI-alapú recruiting chatbot platform.
+  strengths:
+  - Széles körű funkcionalitás
+  - Erős nemzetközi jelenlét
+  - Fejlett AI
+  weaknesses:
+  - Magasabb árkategória
+  - Korlátozott magyar nyelvi támogatás
+  - Kevesebb helyi integrációs tapasztalat
+  our_differentiation: Olcsóbb belépési pont, első osztályú magyar nyelvfeldolgozás, és kifejezetten a magyar GDPR-környezetre és helyi HR rendszerekre szabott.
+- name: TalentLyft
+  positioning: Teljes körű ATS és recruitment marketing platform.
+  strengths:
+  - Minden az egyben megoldás
+  - Felhasználóbarát felület
+  - Erős marketing eszközök
+  weaknesses:
+  - A hangautomation nem elsődleges fókusz
+  - Különálló hangügynök megoldás hiánya
+  our_differentiation: Mi kifejezetten a hangalapú automatizálásra specializálódtunk, amely bármely meglévő ATS-hez integrálható, rugalmasabbá és költséghatékonyabbá téve.
+- name: Profession.hu (karrieroldal + eszközök)
+  positioning: Legnagyobb magyar karrierportál és kapcsolódó toborzási eszközök.
+  strengths:
+  - Óriási elérés a magyar munkaerőpiacon
+  - Ismerős márka
+  - Alapvető ATS funkciók
+  weaknesses:
+  - Korlátozott automatizálási lehetőségek
+  - Nincs AI-alapú hangügynök
+  - Fókusz a hirdetésfeladáson, nem a folyamat automatizálásán
+  our_differentiation: Mi kiegészítjük a Profession.hu-t, automatizálva a belőle érkező jelöltek kezelését, ami sokkal hatékonyabbá teszi a folyamatot, anélkül, hogy lecserélnék.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 30000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Közepes méretű ügynökség, 2 recruiter, havonta ~100 jelölt előszűrése
+    monthly_cost: 80000
+    monthly_savings: 120000
+    payback_months: 2
+  value_anchors:
+  - Havi 50.000 Ft-ból több mint 10 munkaóra megtakarítás.
+  - A jelölt nem jelentkezések csökkentése akár 30%-kal.
+  - A kitöltési idő 20%-os csökkentése automatizált előszűréssel.
+market_context:
+  market_size: ~15-20 milliárd HUF éves forgalom a recruitment szolgáltatások piacán
+  growth_rate: ~5-7% éves növekedés
+  key_trends:
+  - A digitalizáció és automatizálás egyre nagyobb szerepet kap a toborzásban.
+  - Növekvő hiány bizonyos szakmai területeken (pl. IT, mérnökök).
+  - A munkaerő-mobilitás növekedése a régióban.
+  - A távoli munkavégzés (remote work) elterjedése új kihívások elé állítja a recruitereket.
+  seasonality:
+    high:
+    - Január - Március (új év, új tervek)
+    - Szeptember - Október (nyári szünet után)
+    low:
+    - Július - Augusztus (nyári szabadságok)
+    - December (karácsonyi időszak)
+typical_objections:
+- objection: A mi folyamataink túl összetettek egy ilyen automatizáláshoz.
+  response: Pontosan az ilyen összetett folyamatoknál hozza ki leginkább az értékét a rendszerünk. Testreszabható munkafolyamatokkal modellezhetjük a saját egyedi folyamatait. Mutassam meg egy hasonló ügyfelünk
+    példáján?
+- objection: Félünk, hogy a személyes kapcsolat és az emberi érzék elveszik.
+  response: Egyetértek, a személyes kapcsolat alapvető. A mi megoldásunk nem helyettesíti a recruitert, csak kiszervezi az időigényes, ismétlődő feladatokat. Így a recruiternek több ideje marad az értékteremtő,
+    személyes beszélgetésekre, például a végső interjúkra és ajánlattételre.
+- objection: Nincs kapacitásunk egy új rendszer bevezetésére és betanítására.
+  response: Teljes mértékben megértjük. Emiatt is biztosítunk teljes körű bevezetési támogatást és kész, könnyen használható sablonokat. A beállítás általában egy nap alatt elvégezhető, és a felhasználói
+    felületünk nagyon intuitív. Megmutathatom egy gyors bemutatóban?
+meta:
+  id: recruitment
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- recruitment
+- staffing
+- HR
+- headhunting
+- hiring
+_extends: _base/recruitment

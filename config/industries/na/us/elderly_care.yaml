@@ -1,0 +1,277 @@
+pain_points:
+- description: High staff turnover and burnout due to demanding work and emotional
+    strain.
+  severity: high
+  solution_hint: Our AI voice agent can handle routine administrative calls, appointment
+    reminders, and family updates, freeing up staff for direct care.
+- description: Difficulty managing and coordinating care schedules for multiple clients
+    and caregivers.
+  severity: high
+  solution_hint: Automate scheduling confirmations, shift change notifications, and
+    last-minute availability checks via our intelligent voice system.
+- description: Inefficient intake and pre-screening processes for new clients, leading
+    to lost opportunities.
+  severity: medium
+  solution_hint: Use our voice agent to conduct initial eligibility screenings, collect
+    basic information, and schedule in-depth consultations 24/7.
+- description: Frequent check-in calls from concerned family members consume significant
+    staff time.
+  severity: medium
+  solution_hint: Deploy a voice agent to provide automated, HIPAA-compliant status
+    updates to authorized family members, reducing call volume.
+- description: Missed appointments and medication reminders lead to health complications
+    and liability concerns.
+  severity: high
+  solution_hint: Implement proactive, personalized voice reminders for appointments,
+    medication times, and daily check-ins to improve client adherence.
+- description: High volume of after-hours calls for non-emergency questions and administrative
+    tasks.
+  severity: medium
+  solution_hint: Our 24/7 voice agent can answer FAQs, direct calls appropriately,
+    and take messages, ensuring coverage without staffing overhead.
+typical_services:
+- In-Home Personal Care
+- Assisted Living Placement
+- Medication Management
+- Companion Care
+- Respite Care
+- Alzheimer's and Dementia Care
+- Hospice Care Coordination
+- Skilled Nursing at Home
+- Medical Alert Systems
+- Transportation to Appointments
+recommended_functions:
+- name: Intelligent Call Routing & Triage
+  priority: high
+  reason: Ensures urgent calls reach live staff immediately while filtering administrative
+    queries, critical for client safety and compliance.
+- name: Automated Appointment & Medication Reminders
+  priority: high
+  reason: Directly addresses a major pain point of missed care, improving health outcomes
+    and reducing liability.
+- name: 24/7 FAQ & Information Hotline
+  priority: medium
+  reason: Reduces call center burden, provides constant support to families and potential
+    clients, and captures leads outside business hours.
+- name: Family Update & Reporting
+  priority: medium
+  reason: Builds trust with families by providing secure, automated updates, freeing
+    staff from repetitive communication tasks.
+- name: Lead Qualification & Intake Scheduling
+  priority: high
+  reason: Captures potential clients immediately when they call, qualifies them based
+    on services and location, and books consultations efficiently.
+- name: Staff Scheduling & Shift Confirmation
+  priority: low
+  reason: Automates a time-consuming back-office task, reducing no-shows and last-minute
+    scheduling conflicts.
+typical_integrations:
+- name: Electronic Health Record (EHR) Systems
+  examples:
+  - PointClickCare
+  - MatrixCare
+  - ALIS
+  - AOD Software
+  priority: high
+- name: Scheduling & Workforce Management
+  examples:
+  - ShiftKey
+  - OnShift
+  - Smartlinx
+  - Humanity
+  priority: high
+- name: CRM & Lead Management
+  examples:
+  - Salesforce
+  - HubSpot
+  - CareVoyant
+  - Benchmark Senior Living
+  priority: medium
+- name: Medical Alert & Telehealth Platforms
+  examples:
+  - Medical Guardian
+  - LifeFone
+  - Philips Lifeline
+  - ClearCare
+  priority: medium
+- name: Billing & Payroll Software
+  examples:
+  - QuickBooks
+  - ADP
+  - Eldermark
+  - American HealthTech
+  priority: low
+industry_faq:
+- question: What types of care do you provide?
+  answer_template: We specialize in [Service Type, e.g., in-home personal care and
+    companionship] for seniors, helping them live safely and independently. Can you
+    tell me a bit more about the specific needs you're looking to address?
+- question: Are your services covered by Medicare or insurance?
+  answer_template: Coverage varies greatly. Medicare typically covers skilled nursing
+    or therapy under specific conditions, but not long-term custodial care. Many long-term
+    care insurance policies, VA benefits, or Medicaid may help with costs. I can connect
+    you with our benefits specialist for a detailed review of your situation.
+- question: How do you screen and train your caregivers?
+  answer_template: All our caregivers undergo thorough background checks, reference
+    verification, and specialized training in areas like dementia care, first aid,
+    and CPR. We ensure they are not only qualified but also compassionate and reliable.
+- question: What are your hours of operation?
+  answer_template: We provide care services 24/7. Our administrative office is open
+    from 8 AM to 6 PM, Monday through Friday. However, our AI assistant, which you're
+    speaking with now, is available anytime to answer questions, schedule calls, or
+    direct you to emergency support.
+- question: Can we get started right away?
+  answer_template: We typically begin with a free, no-obligation assessment to understand
+    your loved one's needs and create a personalized care plan. I can schedule that
+    for you with one of our care coordinators. How does [Propose a time] sound?
+sales_scripts:
+- trigger: price_question
+  situation: When a caller immediately asks "How much does this cost?"
+  script: That's an important question. The cost really depends on the level and schedule
+    of care needed. For example, a few hours of companion care per week starts at
+    a different point than 24/7 skilled nursing. To give you an accurate estimate,
+    I'd need to understand the specific situation. Could you share what kind of support
+    you're looking for?
+  goal: Deflect a premature price objection and gather qualifying information about
+    needs and budget.
+- trigger: competitor_mention
+  situation: When a caller mentions a specific competitor like "I'm also looking at
+    Home Instead."
+  script: That's a great company to consider. Many families evaluate several options.
+    Where we often stand out is our focus on [Our Differentiation, e.g., seamless
+    technology integration that keeps families constantly updated and reduces administrative
+    stress for our caregivers]. This allows our staff to focus more on quality care.
+    Would you be interested in hearing how that works in practice?
+  goal: Acknowledge the competitor, pivot to a key differentiator without disparaging,
+    and re-engage the caller.
+- trigger: need_urgency_low
+  situation: When a caller says "We're just starting to look" or "It's not urgent."
+  script: I completely understand. It's smart to plan ahead. Many families find that
+    having information early reduces stress later. Can I send you our free guide on
+    'Questions to Ask When Choosing an Elder Care Provider'? I can also schedule a
+    brief, pressure-free chat with a consultant for when you're ready, even if that's
+    a few weeks from now.
+  goal: Nurture the lead, provide value without pressure, and secure a future point
+    of contact.
+- trigger: compliance_question
+  situation: When a caller asks "How do you handle privacy and health information?"
+  script: Excellent question. We take compliance very seriously. Our entire system,
+    including this voice assistant, is built to be fully compliant with HIPAA for
+    health data and CCPA for consumer privacy. All data is encrypted and access is
+    strictly controlled. Your family's information is safe with us.
+  goal: Build immediate trust by demonstrating expertise in critical regulatory requirements.
+competitors:
+- name: Home Instead
+  positioning: Large national franchise network focused on non-medical in-home care.
+  strengths:
+  - National brand recognition
+  - extensive local franchise network
+  - well-established training programs
+  weaknesses:
+  - Service quality can vary by franchise
+  - primarily non-medical focus
+  - higher franchise fees can impact local pricing
+  our_differentiation: We offer a more integrated tech-first approach, using AI to
+    enhance communication and operational efficiency, providing a more consistent
+    and connected experience for families and caregivers.
+- name: BrightStar Care
+  positioning: National franchise offering both medical and non-medical home care
+    and staffing.
+  strengths:
+  - Offers both skilled nursing and personal care
+  - JCAHO accreditation for quality
+  - strong national branding
+  weaknesses:
+  - Can be more expensive due to medical service capability
+  - franchise model inconsistencies
+  our_differentiation: Our proprietary voice-agent platform reduces administrative
+    overhead, allowing us to potentially offer more competitive pricing for personal
+    care while maintaining high-touch communication.
+- name: Local Independent Agencies
+  positioning: Small, owner-operated agencies deeply embedded in their community.
+  strengths:
+  - Deep local knowledge
+  - highly personalized service
+  - often lower overhead costs
+  weaknesses:
+  - Limited scalability
+  - may lack robust technology and compliance infrastructure
+  - vulnerable to owner burnout
+  our_differentiation: We combine the personalized feel of a local agency with the
+    technological sophistication, compliance rigor, and operational support of a larger
+    organization.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 2000
+  - 8000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating intake and family update calls for a mid-sized agency.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 0.25
+  - scenario: Reducing missed appointments and associated rescheduling costs.
+    monthly_cost: 199
+    monthly_savings: 750
+    payback_months: 0.27
+  value_anchors:
+  - The average cost of a single caregiver no-show can exceed $150 in lost revenue
+    and rescheduling effort.
+  - Our system handles the call volume of 2-3 full-time receptionists for a fraction
+    of the cost.
+  - Improving appointment adherence by 15% can directly improve client health outcomes
+    and retention.
+market_context:
+  market_size: Approximately $540 billion
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Aging-in-place preference is driving demand for in-home care over facility-based
+    care.
+  - Technology adoption (telehealth, remote monitoring, AI) is accelerating to address
+    caregiver shortages.
+  - Increased focus on holistic and dementia-specific care models.
+  - Family members are more involved and demand greater transparency and communication.
+  seasonality:
+    high:
+    - Late Fall (pre-holiday planning)
+    - Early Spring (post-holiday reassessment)
+    low:
+    - Summer vacation months
+    - Major holiday weeks
+typical_objections:
+- objection: This sounds too impersonal for caring for my loved one.
+  response: I understand that concern completely. Our goal isn't to replace the human
+    touch but to support it. By handling the routine calls and reminders, our technology
+    actually gives your caregiver more focused, uninterrupted time with your loved
+    one. It enhances personal care, doesn't replace it.
+- objection: We're not very tech-savvy. This seems complicated.
+  response: That's a common thought, but we've designed it specifically for ease of
+    use. There's no app to download. Your family interacts with a simple, natural
+    phone call. We handle all the complexity on our end. We can even do a test call
+    to show you how straightforward it is.
+- objection: We already have a system that works okay. I don't see the need to change.
+  response: If it's working, that's great. Many of our clients came to us thinking
+    the same thing, but found that 'okay' was masking hidden costs in staff time,
+    missed communications, or family stress. Could we explore a single pain point,
+    like after-hours calls or reminder management, to see if there's a small win for
+    you?
+- objection: Your service is an added monthly cost on top of everything else.
+  response: It's an investment that typically pays for itself within the first month
+    by reducing administrative labor, improving client retention, and preventing costly
+    errors like missed appointments. Let me walk you through a quick example based
+    on your current call volume...
+meta:
+  id: elderly_care
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

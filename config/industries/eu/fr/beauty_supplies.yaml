@@ -1,0 +1,224 @@
+pain_points:
+- description: Gestion des stocks inefficace entraînant des ruptures ou des surplus.
+  severity: high
+  solution_hint: L'agent vocal AI peut automatiser les alertes de réapprovisionnement
+    et optimiser les niveaux de stock.
+- description: Concurrence accrue des grandes chaînes et des marketplaces en ligne.
+  severity: high
+  solution_hint: L'agent peut personnaliser les offres et améliorer l'engagement client
+    via des rappels et promotions.
+- description: Fluctuations saisonnières de la demande difficiles à anticiper.
+  severity: medium
+  solution_hint: L'agent analyse les tendances passées pour ajuster les commandes
+    et les promotions.
+- description: Fidélisation de la clientèle limitée due au manque de suivi.
+  severity: medium
+  solution_hint: L'agent gère les programmes de fidélité et envoie des messages personnalisés.
+- description: Problèmes de livraison avec les fournisseurs impactant la satisfaction
+    client.
+  severity: medium
+  solution_hint: L'agent suit les livraisons en temps réel et notifie les clients
+    des retards.
+- description: Conformité au GDPR pour la gestion des données clients.
+  severity: low
+  solution_hint: L'agent sécurise les interactions et garantit le consentement dans
+    les processus.
+- description: Gestion des retours et réclamations consommatrice de temps.
+  severity: low
+  solution_hint: L'agent automate le traitement des retours et guide les clients via
+    des étapes standardisées.
+typical_services:
+- Vente en gros de produits de beauté
+- Distribution de cosmétiques professionnels
+- Vente au détail en magasin spécialisé
+- E-commerce de fournitures de beauté
+- Services de conseil en produits cosmétiques
+- Réapprovisionnement automatique pour professionnels
+- Gestion d'inventaire et logistique
+- Support client et service après-vente
+- Formation sur l'utilisation des produits
+- Livraison express et suivi des commandes
+recommended_functions:
+- name: Prise de commande automatisée
+  priority: high
+  reason: Réduit les erreurs et accélère le processus de vente.
+- name: Support client 24/7 pour les questions produits
+  priority: high
+  reason: Améliore la satisfaction client et réduit la charge du personnel.
+- name: Gestion des alertes de stock bas
+  priority: medium
+  reason: Prévient les ruptures et optimise les achats.
+- name: Collecte de feedback post-achat
+  priority: medium
+  reason: Permet d'ajuster les offres et de renforcer la fidélité.
+- name: Traitement des réclamations via guide interactif
+  priority: low
+  reason: Standardise les procédures et libère du temps pour les cas complexes.
+- name: Rappels de promotions saisonnières
+  priority: low
+  reason: Boost les ventes pendant les périodes clés.
+typical_integrations:
+- name: Systèmes ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Cegid
+  priority: high
+- name: Plateformes e-commerce
+  examples:
+  - Shopify
+  - WooCommerce
+  - PrestaShop
+  priority: high
+- name: Logiciels de gestion de stock
+  examples:
+  - Sage
+  - Odoo
+  - Zoho Inventory
+  priority: medium
+- name: Systèmes de paiement
+  examples:
+  - Stripe
+  - PayPal
+  - Lydia
+  priority: medium
+- name: Outils CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: low
+industry_faq:
+- question: Quels sont vos délais de livraison pour les commandes en gros ?
+  answer_template: Nos délais standards sont de 3 à 5 jours ouvrables, avec des options
+    express disponibles. Pouvez-vous me dire votre code postal pour un estimé précis
+    ?
+- question: Proposez-vous des produits cosmétiques naturels ou bio ?
+  answer_template: Oui, nous avons une gamme dédiée de produits certifiés bio. Je
+    peux vous envoyer notre catalogue par email si vous le souhaitez.
+- question: Comment gérez-vous les retours de produits ?
+  answer_template: Nous acceptons les retours sous 14 jours pour les produits non
+    ouverts. L'agent vocal peut vous guider dans le processus en ligne.
+- question: Avez-vous des programmes de fidélité pour les professionnels ?
+  answer_template: Absolument ! Notre programme offre des remises progressives et
+    des avantages exclusifs. Je peux vous inscrire immédiatement.
+- question: Est-ce que vos prix incluent la TVA ?
+  answer_template: Oui, tous nos prix sont affichés en EUR et incluent la TVA applicable.
+    Des devis détaillés sont disponibles sur demande.
+- question: Pouvez-vous personnaliser les commandes pour des événements spéciaux ?
+  answer_template: Oui, nous offrons des services de personnalisation pour les mariages,
+    salons, etc. Parlons de vos besoins spécifiques.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un client demande des informations sur les tarifs.
+  script: Bonjour ! Nos prix varient selon le volume et la gamme de produits. Pour
+    un devis personnalisé, puis-je connaître votre consommation mensuelle approximative
+    ?
+  goal: Collecter des informations pour offrir un devis ciblé et engager la conversation.
+- trigger: product_info
+  situation: Quand un client cherche des détails sur un produit spécifique.
+  script: Je comprends que vous vous intéressez à nos produits. Pouvez-vous me dire
+    le type de cosmétique ou la marque que vous recherchez ? Je peux vous orienter
+    vers les meilleures options.
+  goal: Identifier les besoins du client et présenter des solutions adaptées.
+- trigger: competitor_mention
+  situation: Si le client compare avec un concurrent.
+  script: Merci de partager cela. Contrairement à certains concurrents, nous offrons
+    un support personnalisé et des livraisons flexibles. Souhaitez-vous un essai gratuit
+    pour constater la différence ?
+  goal: Mettre en valeur nos avantages uniques et convertir l'intérêt en action.
+- trigger: objection_cost
+  situation: Face à une objection sur le coût.
+  script: Je comprends vos préoccupations budgétaires. Avec notre agent AI, vous réduisez
+    les coûts opérationnels jusqu'à 30%. Puis-je vous montrer un calcul de ROI basé
+    sur vos données ?
+  goal: Démontrer la valeur ajoutée et rassurer sur le retour sur investissement.
+competitors:
+- name: Sephora
+  positioning: Leader du marché avec une forte présence en ligne et en magasin.
+  strengths:
+  - Large gamme de produits
+  - Marque reconnue
+  - Expérience client premium
+  weaknesses:
+  - Prix élevés
+  - Support personnalisé limité pour les professionnels
+  our_differentiation: Nous offrons des solutions sur mesure pour les professionnels
+    avec un support AI dédié.
+- name: Marionnaud
+  positioning: Chaîne de parfumeries et cosmétiques axée sur le retail.
+  strengths:
+  - Réseau étendu en France
+  - Promotions fréquentes
+  weaknesses:
+  - Focus sur le consommateur final
+  - Services B2B limités
+  our_differentiation: Spécialisés dans la distribution B2B avec intégration de systèmes
+    automatisés.
+- name: Nocibé
+  positioning: Concurrent direct avec une offre multi-marques.
+  strengths:
+  - Diversité des marques
+  - Programmes de fidélité attractifs
+  weaknesses:
+  - Gestion des stocks parfois inefficace
+  - Peu d'automatisation
+  our_differentiation: Agent vocal AI pour optimiser la gestion et réduire les coûts
+    cachés.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatisation de la prise de commande pour un revendeur moyen
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Réduction de 20% du temps de gestion
+  - Augmentation de 15% des ventes récurrentes
+  - Conformité GDPR intégrée sans frais supplémentaires
+market_context:
+  market_size: Environ 15 milliards EUR
+  growth_rate: 3% par an
+  key_trends:
+  - Demande croissante pour les produits naturels et bio
+  - Développement de l'e-commerce B2B
+  - Personnalisation des offres via technologie AI
+  seasonality:
+    high:
+    - Périodes de fêtes (Noël, Saint-Valentin)
+    - Été (produits solaires)
+    low:
+    - Janvier (post-fêtes)
+    - Août (vacances d'été)
+typical_objections:
+- objection: Votre solution est trop chère pour mon petit commerce.
+  response: 'Je comprends. Notre agent AI est scalable : vous commencez avec un forfait
+    basique et l''ajustez selon votre croissance. Les économies générées couvrent
+    rapidement l''investissement.'
+- objection: Je préfère gérer mes commandes manuellement, c'est plus fiable.
+  response: Avec l'agent AI, vous réduisez les erreurs humaines de 40% et gagnez du
+    temps pour vous concentrer sur la croissance. Puis-je vous montrer une démo ?
+- objection: Mes clients sont habitués à un contact humain, pas à une machine.
+  response: L'agent AI complète le contact humain en gérant les tâches routinières,
+    libérant votre équipe pour des interactions plus qualitatives. Il peut même personnaliser
+    les messages en français.
+- objection: Je crains pour la sécurité de mes données avec une solution automatisée.
+  response: Nous sommes conformes au GDPR et utilisons des protocoles de chiffrement
+    avancés. Vos données restent sécurisées et sous votre contrôle.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

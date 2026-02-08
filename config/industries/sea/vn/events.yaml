@@ -1,0 +1,168 @@
+pain_points:
+- description: Chi phí tổ chức sự kiện cao do lạm phát và giá nguyên vật liệu tăng.
+  severity: high
+  solution_hint: AI voice agent có thể giúp tối ưu hóa ngân sách bằng cách đề xuất nhà cung cấp giá rẻ và tự động hóa các quy trình.
+- description: Khó khăn trong việc phối hợp giữa các nhà cung cấp và đối tác, dẫn đến trễ tiến độ.
+  severity: high
+  solution_hint: AI voice agent có thể quản lý lịch trình và gửi thông báo tự động để cải thiện giao tiếp.
+- description: Thiếu nhân lực có kinh nghiệm trong mùa cao điểm, gây áp lực cho đội ngũ tổ chức.
+  severity: medium
+  solution_hint: AI voice agent có thể hỗ trợ xử lý các cuộc gọi và đặt dịch vụ cơ bản, giảm tải cho nhân viên.
+- description: Rủi ro về tuân thủ PDPD khi xử lý dữ liệu khách hàng và người tham dự.
+  severity: medium
+  solution_hint: AI voice agent có thể được tích hợp các tính năng bảo mật để đảm bảo tuân thủ PDPD tự động.
+- description: Cạnh tranh khốc liệt từ các công ty sự kiện nhỏ, dẫn đến áp lực giảm giá.
+  severity: medium
+  solution_hint: AI voice agent có thể giúp tăng hiệu quả hoạt động, cho phép tập trung vào dịch vụ chất lượng cao.
+- description: Khó khăn trong việc dự báo số lượng người tham dự, ảnh hưởng đến lập kế hoạch hậu cần.
+  severity: low
+  solution_hint: AI voice agent có thể phân tích dữ liệu lịch sử và xu hướng để đưa ra dự báo chính xác hơn.
+typical_services:
+- Tổ chức sự kiện trọn gói
+- Dịch vụ ăn uống và tiệc
+- Thuê địa điểm và trang trí
+- Quản lý khách mời và đăng ký
+- Dịch vụ giải trí và MC
+- Hỗ trợ hậu cần và vận chuyển
+- Tư vấn marketing sự kiện
+- Dịch vụ công nghệ và âm thanh ánh sáng
+- Quay phim và chụp ảnh sự kiện
+- Đào tạo và huấn luyện nhân sự sự kiện
+recommended_functions:
+- name: Đặt lịch tự động
+  priority: high
+  reason: Giúp quản lý lịch trình sự kiện và giảm thiểu lỗi thủ công.
+- name: Trả lời câu hỏi thường gặp
+  priority: high
+  reason: Cung cấp thông tin nhanh chóng cho khách hàng, cải thiện trải nghiệm.
+- name: Xử lý đặt dịch vụ cơ bản
+  priority: medium
+  reason: Tự động hóa các giao dịch đơn giản, tiết kiệm thời gian nhân viên.
+- name: Gửi thông báo và nhắc nhở
+  priority: medium
+  reason: Đảm bảo tất cả các bên được cập nhật về tiến độ sự kiện.
+- name: Phân tích dữ liệu khách hàng
+  priority: low
+  reason: Hỗ trợ ra quyết định dựa trên insights để tối ưu hóa sự kiện.
+typical_integrations:
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  priority: high
+- name: Nền tảng truyền thông xã hội
+  examples:
+  - Zalo
+  - Facebook
+  priority: high
+- name: Hệ thống quản lý quan hệ khách hàng (CRM)
+  examples:
+  - CRMVIET
+  - Salesforce
+  priority: medium
+- name: Công cụ đặt phòng và lịch trình
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+industry_faq:
+- question: Làm thế nào để tiết kiệm chi phí tổ chức sự kiện?
+  answer_template: Chúng tôi cung cấp giải pháp AI tự động hóa giúp tối ưu ngân sách bằng cách so sánh nhà cung cấp và giảm chi phí vận hành.
+- question: AI voice agent có tuân thủ PDPD không?
+  answer_template: Có, hệ thống của chúng tôi được thiết kế để tuân thủ đầy đủ PDPD, với các tính năng bảo mật dữ liệu tự động.
+- question: Thời gian triển khai AI voice agent mất bao lâu?
+  answer_template: Thông thường, chúng tôi có thể triển khai trong vòng 2-4 tuần, tùy thuộc vào quy mô và yêu cầu tích hợp.
+- question: AI có thể thay thế hoàn toàn nhân viên tổ chức sự kiện không?
+  answer_template: Không, AI hỗ trợ và tăng cường hiệu quả công việc, cho phép nhân viên tập trung vào các nhiệm vụ sáng tạo và chiến lược.
+- question: Làm sao để đo lường hiệu quả của AI voice agent?
+  answer_template: Chúng tôi cung cấp báo cáo chi tiết về tiết kiệm thời gian, giảm chi phí và cải thiện tỷ lệ hài lòng của khách hàng.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ.
+  script: Xin chào, chúng tôi cung cấp giải pháp AI với mức giá từ 5.000.000 VND/tháng, giúp tiết kiệm lên đến 30% chi phí vận hành. Bạn có muốn tôi gửi báo giá chi tiết không?
+  goal: Thu hút sự quan tâm bằng cách nêu rõ giá cả và lợi ích tiết kiệm.
+- trigger: compliance_concern
+  situation: Khi khách hàng lo ngại về tuân thủ PDPD.
+  script: Chúng tôi hiểu mối quan tâm của bạn. Giải pháp của chúng tôi được xây dựng để tuân thủ PDPD, với mã hóa dữ liệu và kiểm soát truy cập tự động. Tôi có thể cung cấp tài liệu chứng nhận nếu cần.
+  goal: Xoa dịu lo ngại và xây dựng niềm tin về bảo mật.
+- trigger: efficiency_inquiry
+  situation: Khi khách hàng hỏi về cải thiện hiệu quả hoạt động.
+  script: AI voice agent của chúng tôi có thể tự động hóa các tác vụ lặp đi lặp lại, như đặt lịch và trả lời câu hỏi, giúp giảm 50% thời gian xử lý. Bạn có muốn xem demo không?
+  goal: Chứng minh giá trị thông qua số liệu cụ thể và mời tham gia trải nghiệm.
+competitors:
+- name: Eventcom Vietnam
+  positioning: Công ty sự kiện lớn với dịch vụ trọn gói.
+  strengths:
+  - Mạng lưới nhà cung cấp rộng
+  - kinh nghiệm lâu năm
+  weaknesses:
+  - Chi phí cao
+  - phản hồi chậm từ đội ngũ hỗ trợ
+  our_differentiation: Chúng tôi cung cấp AI tự động hóa để cải thiện tốc độ và giảm chi phí, với tích hợp linh hoạt.
+- name: Saigon Events
+  positioning: Chuyên về sự kiện doanh nghiệp tại TP.HCM.
+  strengths:
+  - Hiểu biết sâu về thị trường địa phương
+  - dịch vụ cá nhân hóa
+  weaknesses:
+  - Hạn chế về công nghệ
+  - khả năng mở rộng thấp
+  our_differentiation: Giải pháp AI của chúng tôi có thể mở rộng toàn quốc, với hỗ trợ 24/7 và báo cáo thời gian thực.
+- name: Asian Events Group
+  positioning: Công ty khu vực với phạm vi hoạt động tại SEA.
+  strengths:
+  - Tài nguyên đa quốc gia
+  - danh mục dịch vụ đa dạng
+  weaknesses:
+  - Chi phí cao do hoạt động xuyên biên giới
+  - ít tập trung vào thị trường Việt Nam
+  our_differentiation: Chúng tôi tập trung vào thị trường Việt Nam với giá cả cạnh tranh và tuân thủ PDPD cụ thể.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 500000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Tự động hóa xử lý cuộc gọi và đặt dịch vụ cho một sự kiện nhỏ.
+    monthly_cost: 10000000
+    monthly_savings: 17500000
+    payback_months: 4
+  value_anchors:
+  - Tiết kiệm lên đến 30% chi phí vận hành với AI tự động hóa.
+  - Triển khai nhanh trong 2 tuần, không cần đầu tư phần cứng.
+market_context:
+  market_size: Khoảng 10.000 tỷ VND/năm
+  growth_rate: 15% YoY
+  key_trends:
+  - Tăng cường sử dụng công nghệ số trong tổ chức sự kiện.
+  - Nhu cầu về sự kiện ảo và kết hợp tăng sau đại dịch.
+  - Chú trọng đến trải nghiệm cá nhân hóa cho người tham dự.
+  seasonality:
+    high:
+    - Tháng 9-12
+    - dịp lễ Tết và cuối năm
+    low:
+    - Tháng 1-3
+    - sau mùa lễ hội
+typical_objections:
+- objection: Tôi không có ngân sách cho công nghệ mới.
+  response: Giải pháp của chúng tôi có mức giá linh hoạt và ROI nhanh, giúp tiết kiệm chi phí dài hạn. Chúng tôi có thể bắt đầu với gói cơ bản từ 5.000.000 VND.
+- objection: Nhân viên của tôi có thể khó thích nghi với AI.
+  response: Chúng tôi cung cấp đào tạo miễn phí và hỗ trợ liên tục để đảm bảo chuyển đổi suôn sẻ. AI được thiết kế để hỗ trợ, không thay thế, nhân viên.
+- objection: Tôi lo ngại về an ninh dữ liệu với PDPD.
+  response: Hệ thống của chúng tôi tuân thủ nghiêm ngặt PDPD, với các biện pháp bảo mật như mã hóa và kiểm toán định kỳ. Tôi có thể chia sẻ chi tiết về chính sách bảo mật.
+meta:
+  id: events
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events

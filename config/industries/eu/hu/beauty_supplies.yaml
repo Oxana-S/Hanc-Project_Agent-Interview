@@ -1,0 +1,238 @@
+pain_points:
+- description: Készletkészletek és raktározás nyomon követése időigényes és gyakran
+    pontatlan papíralapú rendszerrel.
+  severity: high
+  solution_hint: A hangügynök automatizált rendeléskezelést és készletfigyelést kínál,
+    a kérdéseket pedig magyar nyelven kezeli.
+- description: Folyamatos munkaerőhiány a szakértő értékesítői és kozmetikusok terén.
+  severity: high
+  solution_hint: A hangügynök ki tudja szolgálni az alapvető ügyfélkérdéseket, termékajánlásokat
+    ad 0-24, csökkentve a személyzet terhelését.
+- description: Az ügyfelek elégedetlensége hétvégén és este, amikor az üzlet zárva
+    van.
+  severity: medium
+  solution_hint: A 24/7 elérhető hangügynök rendeléseket fogad, termékekről tájékoztat,
+    és időpontot foglal szalonoknak.
+- description: A szállítói árak és promóciók gyakori változása miatt nehéz a nyilvános
+    árképzés naprakészen tartása.
+  severity: medium
+  solution_hint: Az ügynök integrálható a beszállítói rendszerrel, és a naprakész
+    információk alapján közvetíthet pontos árakat.
+- description: Nehéz nyomon követni az egyes termékek jövedelmezőségét és az ügyfélvásárlási
+    szokásokat.
+  severity: medium
+  solution_hint: A híváselemzéssel és rendelési előzményekkel az ügynök segít azonosítani
+    a trendeket és a népszerű termékeket.
+- description: Verseny a nagy láncokkal (pl. Rossmann, dm), amelyek alacsonyabb árakat
+    kínálnak.
+  severity: high
+  solution_hint: A hangügynök személyre szabott tanácsadást és hűségprogram-kezelést
+    kínál, ami értéket ad a vásárlás mellett.
+typical_services:
+- Szállítás kozmetikai szaküzleteknek
+- Szállítás fodrászszalonoknak
+- Szépségápolási termékek kiskereskedelem
+- Hajápolási termékek nagykereskedelme
+- Műkörmös és sminkes felszerelések értékesítése
+- Professionális kozmetikai gépek forgalmazása
+- Szállítás és kiszolgálás szépségszalonoknak
+- Kezelésre szoruló haj és bőr problémákra szakosodott termékválaszték
+- Online webshop üzemeltetés és logisztika
+- Képzés és termékbemutató fodrászoknak és kozmetikusoknak
+recommended_functions:
+- name: Rendelésfelvétel és státusz lekérdezés
+  priority: high
+  reason: Gyakori kérés a professzionális ügyfelektől (szalonok), időmegtakarítást
+    jelent.
+- name: Termékajánló a haj- és bőrtípus alapján
+  priority: high
+  reason: Növeli az eladások átlagértékét és az ügyfél elégedettségét személyre szabott
+    tanáccsal.
+- name: Szállítási idő és ár kalkuláció
+  priority: medium
+  reason: Azonnali válasz a leggyakrabban ismétlődő kérdésekre, csökkenti a telefonos
+    forgalmat.
+- name: Időpontfoglalás kezelése (szalonok részére)
+  priority: medium
+  reason: Könnyíti a B2B ügyfelek munkáját, és integrálható naptárrendszerekkel.
+- name: Promóciók és akciók bejelentése
+  priority: low
+  reason: Növeli a promóciók elérését és a spontán vásárlásokat.
+- name: Visszahívás kérése komplex kérdésekhez
+  priority: low
+  reason: Biztosítja, hogy bonyolult ügyeket emberi munkatárs kezeljen, megtartva
+    a személyes kapcsolatot.
+typical_integrations:
+- name: Pénztárrendszer (POS)
+  examples:
+  - SimplePOS
+  - SuperPOS
+  - KONZÍV
+  priority: high
+- name: Raktárkezelő rendszer (WMS)
+  examples:
+  - SAAS WMS
+  - Infor
+  - helyi fejlesztésű rendszerek
+  priority: high
+- name: Webshop platform
+  examples:
+  - Shoprenter
+  - Shopify
+  - PrestaShop
+  priority: medium
+- name: Szállítmánykövető rendszer
+  examples:
+  - GLS Hungary
+  - FoxPost
+  - DPD
+  priority: medium
+- name: Naptár és időpontfoglaló szoftver
+  examples:
+  - Reservio
+  - Yocale
+  - Foglaljorok.hu
+  priority: low
+industry_faq:
+- question: Mikor érkezik meg a rendelésem?
+  answer_template: A szokásos szállítási idő 2-3 munkanap. Pontos dátumot tudok mondani,
+    ha megadja a rendelési számát.
+- question: Milyen terméket ajánl száraz hajra?
+  answer_template: A száraz hajra hidratáló és tápláló összetevőket tartalmazó samponokat
+    és balzsamokat javasolok. Néhány népszerű termékünk a [Terméknév1] és a [Terméknév2].
+    Segítek konkrét termékeket keresni?
+- question: Van lehetőségem kiszállításra szalonomból?
+  answer_template: Igen, biztosítunk szállítást szalonok részére. A feltételekről
+    és a minimális rendelési értékről egy szakértő kollégám visszahívja Önt.
+- question: Mit tegyek, ha hibás terméket kaptam?
+  answer_template: Elnézést a kellemetlenségért. Kérjük, küldjön fotót a hibás termékről
+    a [email] címre a számlaszámmal együtt. Azonnal intézkedünk a csere ügyében.
+- question: Vannak most aktuális akcióitok?
+  answer_template: Igen, jelenleg futó akcióinkat a [weboldal] címen találja, vagy
+    mondhatok pár példát. Érdeklődik egy adott márka vagy termékkategória iránt?
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy leendő B2B ügyfél (pl. fodrászszalon) árakat kér.
+  script: Köszönöm a érdeklődését! Pontos árajánlatot tudunk adni a kívánt mennyiség
+    és a gyakori rendelések figyelembevételével. Hogy Ön milyen típusú szalont vezet,
+    és mely termékcsaládok érdeklik leginkább?
+  goal: Információt gyűjteni az ügyfél profiljáról, és egy személyre szabott ajánlat
+    felé terelni a beszélgetést.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél megemlíti egy nagy lánc (pl. dm) versenyét.
+  script: Teljesen megértem. A nagy láncoknak más erősségeik vannak. Mi a professzionális
+    szaküzletek és szalonok igényeire specializálódtunk, ami magasabb minőségű tanácsadást,
+    rugalmasabb kiszállítást és hűségprogramot jelent a rendszeres vásárlóinknak.
+    Ön milyen kihívással találkozik jelenlegi beszállítójánál?
+  goal: A versenyelőny kiemelése és az ügyfél rejtett problémáinak feltárása.
+- trigger: objection_too_busy
+  situation: Amikor egy meglévő ügyfél azt mondja, nincs ideje új rendszerekkel foglalkozni.
+  script: Teljesen átérzem, hogy mennyire elfoglalt lehet. Pontosan ezért készült
+    a hangügynökünk – hogy időt takarítson meg Önnek. Például, egyszerű rendeléseket
+    vagy kérdéseket bármikor intézhet, anélkül, hogy megvárná a nyitvatartást vagy
+    a kereskedőt. Kipróbálhatjuk egy egyszerű, 5 perces bemutató keretében?
+  goal: Az érték (időmegtakarítás) hangsúlyozása és egy kis lépéssel (bemutató) történő
+    haladás.
+competitors:
+- name: Rossmann
+  positioning: Országos drogéria lánc, tömegpiac.
+  strengths:
+  - Nagyon alacsony árak
+  - Széles hálózat, könnyű hozzáférés
+  - Sajátmárkás termékek
+  weaknesses:
+  - Korlátozott professzionális választék
+  - Minimális személyre szabott tanácsadás
+  - Nincs B2B fókusz
+  our_differentiation: Szakértői tanácsadás, fodrászoknak/szalonoknak szóló professzionális
+    termékválaszték, egyéni B2B szolgáltatások.
+- name: Douglas
+  positioning: Prémium szépségápolási kiskereskedelem.
+  strengths:
+  - Prémium és niche márkák
+  - Élményközpontú üzletek
+  - Erős online jelenlét
+  weaknesses:
+  - Magasabb árak
+  - Kevésbé erős fodrász/szaküzlet kínálat
+  - Korlátozott szállítási opciók szalonoknak
+  our_differentiation: Kifejezetten a szakmai ügyfelek (szalonok) igényeire szabott
+    árképzés, logisztika és ügyfélkezelés.
+- name: helyi, független nagykereskedők
+  positioning: Kisebb, regionális nagykereskedők.
+  strengths:
+  - Személyes kapcsolat
+  - Gyors, helyi szállítás
+  - Rugalmasság
+  weaknesses:
+  - Korlátozott termékválaszték
+  - Kevesebb digitális szolgáltatás
+  - Instabil árképzés
+  our_differentiation: A helyi szakértői kapcsolat előnyeit kombináljuk egy robusztus,
+    24/7 elérhető digitális ügyfélszolgálattal és nagyobb választékkal.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 20000
+  - 200000
+  entry_point: 45000
+  roi_examples:
+  - scenario: Kis fodrászszalon, ahol a tulajdonos napi 30 percet tölt telefonos rendelések
+      felvételével és kérdésekkel.
+    monthly_cost: 15000
+    monthly_savings: 40000
+    payback_months: 1
+  - scenario: Kozmetikai nagykereskedő, aki esti/hétvégi rendeléseket szeretne fogadni
+      anélkül, hogy további alkalmazottat venne fel.
+    monthly_cost: 25000
+    monthly_savings: 80000
+    payback_months: 1
+  value_anchors:
+  - Napi 2 meg nem válaszolt hívás akár 100.000 Ft elveszett értékesítést jelent havonta.
+  - A professzionális ügyfélszolgálat növeli a visszatérő vásárlók arányát 30%-kal.
+  - A 24/7 rendelési lehetőség akár 15%-kal növelheti az esti és hétvégi bevételt.
+market_context:
+  market_size: ~120 milliárd HUF éves forgalom (professzionális és szaküzleti szegmens)
+  growth_rate: 4-6% évente
+  key_trends:
+  - A természetes és organikus összetevőket tartalmazó termékek egyre népszerűbbek.
+  - Erősödik az online vásárlás a professzionális szegmensben is.
+  - A fodrászok és kozmetikusok egyre nagyobb igénnyel vannak a folyamatos képzésekre
+    és termékismeretre.
+  seasonality:
+    high:
+    - szeptember-október (őszi kollekciók)
+    - április-május (nyári, esküvős szezon előkészület)
+    - karácsony előtt (ünnepi ajándékok)
+    low:
+    - július-augusztus (nyaralási szezon)
+    - január (karácsony utáni csendes időszak)
+typical_objections:
+- objection: Túl drága a szolgáltatás számunkra.
+  response: Értem. A havi [X] Ft inkább egy befektetés, mint egy költség. Például,
+    ha az ügynök napi csak egy plusz rendelést generál, vagy megakadályoz egy hűséges
+    ügyfél elvesztését, már megtérült. Készíthetünk egy személyre szabott megtérülési
+    becslést?
+- objection: A technológia túl bonyolult a csapatom számára.
+  response: A rendszerünk kifejezetten egyszerű használatra készült. A bevezetéskor
+    teljes képzést és támogatást nyújtunk magyar nyelven. A legtöbb ügyfelünk pár
+    nap alatt megszokja. Elkezdhetjük egy ingyenes próbaidőszakkal, hogy maguk is
+    meggyőződjenek?
+- objection: Jól működik a jelenlegi, papíralapú rendszerünk.
+  response: Az remekül hangzik! A kérdés az, hogy mennyi értékes idő megy el a papírmunkára
+    és a kézi bevitelre, ami hibalehetőség. A mi megoldásunk automatizálja ezeket
+    a feladatokat, így Ön és csapata az ügyfelekre és az értékesítésre koncentrálhat.
+    Megmutathatom, hogyan spórolna ez például órákat egy héten?
+meta:
+  id: beauty_supplies
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

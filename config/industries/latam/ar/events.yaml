@@ -1,0 +1,202 @@
+pain_points:
+- description: Gestión desorganizada de proveedores y contratos, con frecuentes cambios de última hora y falta de documentación clara.
+  severity: high
+  solution_hint: Automatizar seguimiento de contratos, enviar recordatorios automáticos a proveedores y centralizar documentos accesibles por voz.
+- description: Dificultad para presupuestar y controlar costos en un contexto inflacionario, con precios que cambian constantemente.
+  severity: high
+  solution_hint: Integrar con cotizadores en línea y alertar sobre desvíos presupuestarios mediante reportes de voz automatizados.
+- description: Alta tasa de inasistencia o confirmaciones tardías por parte de los invitados, afectando logística y catering.
+  severity: medium
+  solution_hint: Implementar recordatorios automáticos vía llamada o WhatsApp para confirmación de asistencia y gestionar lista de espera.
+- description: Saturación de comunicación telefónica en fechas pico, perdiendo oportunidades de venta y atención a clientes existentes.
+  severity: medium
+  solution_hint: Agente de voz para manejar llamadas entrantes, calificar leads, agendar reuniones y responder consultas frecuentes 24/7.
+- description: 'Complejidad en la coordinación logística para eventos en múltiples locaciones (ej: Buenos Aires, Córdoba, Mendoza).'
+  severity: medium
+  solution_hint: Coordinador de voz inteligente para sincronizar equipos locales, verificar checklists y reportar incidencias en tiempo real.
+- description: Falta de personal calificado bilingüe (español-inglés) para atender a clientes y proveedores internacionales.
+  severity: low
+  solution_hint: Agente de voz multilingüe para gestionar reservas, consultas y soporte básico en inglés y portugués.
+typical_services:
+- Coordinación integral de eventos (corporativos, sociales, bodas)
+- Alquiler y gestión de salones (estancias, hoteles, galpones)
+- Catering y servicio de alimentos & bebidas (F&B)
+- Animación, shows y entretenimiento (orquestas, DJs, artistas)
+- Diseño y ambientación (iluminación, mobiliario, floral)
+- Audiovisual y tecnología (pantallas, sonido, streaming)
+- Gestión de invitados (invitaciones digitales, RSVP, acreditaciones)
+- Logística y transporte (traslados, valet parking)
+- Fotografía y video profesional (editorial, reel para redes)
+- Seguridad y protocolo (guardias, gestión de accesos)
+recommended_functions:
+- name: Confirmador automático de invitados
+  priority: high
+  reason: Reduce la incertidumbre logística y optimiza costos de catering, crítica para la rentabilidad.
+- name: Asistente de cotización y presupuesto
+  priority: high
+  reason: Ayuda a gestionar la volatilidad de precios en Argentina y mejora la transparencia con el cliente.
+- name: Agendador inteligente de reuniones con proveedores
+  priority: medium
+  reason: Automatiza una tarea repetitiva que consume mucho tiempo del coordinador.
+- name: Recordatorio de pagos y vencimientos
+  priority: medium
+  reason: Mejora el flujo de caja en un mercado donde los retrasos en pagos son comunes.
+- name: Receptor de pedidos y consultas básicas 24/7
+  priority: medium
+  reason: Captura oportunidades fuera del horario laboral y en fechas festivas.
+- name: Traductor y asistente para clientes extranjeros
+  priority: low
+  reason: Abre puertas al turismo de eventos (MICE) y clientes internacionales.
+typical_integrations:
+- name: Sistemas de gestión de eventos (Event Management)
+  examples:
+  - Sala
+  - Eventbrite
+  - Xing Events
+  priority: high
+- name: Pasarelas de pago y facturación electrónica
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - FacturadorPro
+  priority: high
+- name: Plataformas de comunicación y CRM
+  examples:
+  - WhatsApp Business API
+  - Zoho CRM
+  - Meta Business Suite
+  priority: medium
+- name: Software de diseño y planificación
+  examples:
+  - Social Tables
+  - AllSeated
+  - SketchUp
+  priority: low
+- name: Plataformas de cotización de proveedores
+  examples:
+  - Cotizalo.com
+  - Proveedores.com.ar
+  priority: medium
+industry_faq:
+- question: ¿Qué servicios incluye un paquete integral de coordinación?
+  answer_template: Nuestro paquete integral incluye gestión de proveedores, coordinación el día del evento, manejo de logística y soporte pre y post evento. Podemos personalizarlo según su tipo de evento
+    (corporativo, social, boda). ¿Le gustaría que le detalle las opciones?
+- question: ¿Cómo manejan los cambios de última hora o imprevistos?
+  answer_template: Contamos con protocolos establecidos y un equipo de apoyo. Además, nuestra tecnología de agente de voz nos permite comunicar cambios a todos los involucrados de inmediato y gestionar
+    soluciones alternativas rápidamente.
+- question: ¿Trabajan con proveedores confiables y aseguran la calidad?
+  answer_template: Sí, tenemos una red certificada de proveedores en todo el país. Nuestro sistema realiza seguimiento y calificación post-evento de cada uno, garantizando estándares de calidad. Podemos
+    compartir referencias de eventos similares al suyo.
+- question: ¿Cuál es el plazo mínimo de planificación para un evento de 100 personas?
+  answer_template: Recomendamos al menos 60 a 90 días para una planificación óptima, especialmente para salones en Buenos Aires. Para fechas muy demandadas, con más tiempo. Sin embargo, con nuestra tecnología
+    podemos agilizar procesos y manejar planes express de 30 días.
+- question: ¿Aceptan pagos en cuotas y emiten factura A?
+  answer_template: Sí, trabajamos con varias financieras y aceptamos pagos con tarjeta en cuotas. Emitimos factura electrónica tipo A (responsable inscripto) sin cargo adicional. Nuestro asistente puede
+    enviarle los detalles de pago por WhatsApp.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio o dice 'es muy caro'.
+  script: Entiendo que la inversión es una consideración clave. Nuestro servicio no es solo un costo, es una herramienta para ahorrarle tiempo y evitar costos mayores por imprevistos. Por ejemplo, con nuestro
+    sistema de confirmación automática, clientes han reducido el desperdicio de catering en un 15%, ahorrando hasta $150,000 ARS en un evento de 200 personas. ¿Le gustaría que le muestre una simulación
+    para su caso?
+  goal: Reframe el costo como una inversión con ROI claro, usando ejemplos concretos en pesos.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un organizador de eventos tradicional o una plataforma online.
+  script: Es una buena opción. La diferencia clave con nosotros es la atención proactiva y la prevención de problemas. Mientras otros reaccionan a los inconvenientes, nuestro agente de voz inteligente monitorea
+    todo el proceso y le alerta *antes* de que ocurra un problema, por ejemplo, si un proveedor no envió la confirmación. Esto le da paz mental. ¿Valoraría tener ese nivel de control y tranquilidad?
+  goal: Diferenciar por tecnología proactiva y prevención, no solo por ejecución reactiva.
+- trigger: hesitation_time
+  situation: Cuando el cliente duda por tiempo de planificación o 'lo pienso'.
+  script: Comprendo. La planificación de eventos requiere tiempo, y justamente por eso nuestra tecnología está diseñada para liberárselo a usted. Mientras usted se enfoca en la visión creativa, nosotros
+    automatizamos las confirmaciones, los recordatorios y la logística. Muchos de nuestros clientes comenzaron con un evento piloto pequeño, como un lanzamiento de producto. Podríamos empezar por ahí para
+    que vea el valor. ¿Qué fecha tiene en mente?
+  goal: Reducir la barrera de entrada proponiendo un piloto y enfatizando el ahorro de tiempo.
+competitors:
+- name: Eventtia (Regional)
+  positioning: Plataforma SaaS de gestión de eventos para empresas medianas/grandes.
+  strengths:
+  - Plataforma todo-en-uno
+  - Buena integración con herramientas digitales
+  - Presencia en varios países de Latam.
+  weaknesses:
+  - Menor soporte personalizado local
+  - Menos foco en la operación física del evento
+  - Precios en USD pueden ser volátiles.
+  our_differentiation: 'Ofrecemos un servicio híbrido: tecnología de automatización *más* un equipo local de soporte y coordinación física en Argentina, con precios y soporte en ARS.'
+- name: 'Agencias tradicionales locales (ej: Mucha Fiesta, Julia Pórtela)'
+  positioning: Servicio de coordinación de eventos premium y personalizado.
+  strengths:
+  - Relación personal y de confianza
+  - Experiencia extensa en el mercado local
+  - Atención al detalle y creatividad.
+  weaknesses:
+  - Escalabilidad limitada
+  - Procesos manuales propensos a errores
+  - Mayores costos operativos.
+  our_differentiation: Mantenemos la atención personalizada pero la potenciamos con automatización inteligente que reduce errores, optimiza costos y permite atender más clientes sin perder calidad.
+- name: 'Plataformas de autogestión (ej: Bodas.net, Zankyou)'
+  positioning: Marketplace y listados para que los novios/organizadores contacten proveedores por su cuenta.
+  strengths:
+  - Gran catálogo de proveedores
+  - Precios transparentes
+  - Bajo costo inicial.
+  weaknesses:
+  - El cliente debe coordinar todo por su cuenta
+  - Riesgo de inconsistencia en la calidad
+  - Sin un solo responsable integral.
+  our_differentiation: Nosotros actuamos como su único punto de contacto y responsable. No solo le damos opciones, sino que gestionamos, coordinamos y garantizamos la calidad de todos los proveedores por
+    usted.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 150000
+  roi_examples:
+  - scenario: Evento corporativo para 150 personas con alta tasa de inasistencia no confirmada.
+    monthly_cost: 45000
+    monthly_savings: 120000
+    payback_months: 1
+  value_anchors:
+  - Evite perder hasta un 20% del presupuesto en catering no utilizado.
+  - Recupere 10 horas semanales de su equipo en llamadas de coordinación.
+  - Reduzca los errores de logística en un 90% con checklists automatizados por voz.
+market_context:
+  market_size: Estimado en ARS 120 mil millones (incluye servicios asociados)
+  growth_rate: 15-20% YoY (recuperación post-pandemia y aumento de eventos corporativos)
+  key_trends:
+  - Aumento de eventos híbridos (presencial + virtual) incluso post-pandemia.
+  - Demanda creciente de experiencias personalizadas y 'instagrameables'.
+  - Mayor preocupación por la sustentabilidad (catering cero desperdicio, decoración reutilizable).
+  - Contratación de seguros específicos para eventos por cancelación o imprevistos.
+  seasonality:
+    high:
+    - Septiembre-Diciembre (cierres corporativos, fiestas de fin de año, bodas de primavera-verano)
+    - Marzo-Abril (lanzamientos, eventos de otoño)
+    low:
+    - Enero (vacaciones de verano)
+    - Julio (vacaciones de invierno, salvo eventos en zonas de nieve)
+typical_objections:
+- objection: Prefiero manejar todo yo mismo para tener el control.
+  response: Totalmente comprensible. Nuestro sistema en realidad le da *más* control y visibilidad, porque centraliza toda la información y le envía alertas en tiempo real. Usted toma las decisiones finales,
+    pero sin el estrés de perseguir a 20 proveedores por teléfono. ¿Podría mostrarlo en una demo de 15 minutos?
+- objection: La tecnología puede fallar y dejaría todo desorganizado.
+  response: Trabajamos con respaldos. Tenemos un equipo humano que supervisa el sistema y actúa si hay alguna falla técnica. La tecnología es para evitar los errores humanos del día a día, pero el factor
+    humano de supervisión está siempre presente. Es lo mejor de ambos mundos.
+- objection: Mis clientes (especialmente para bodas) valoran el trato 100% humano y personal.
+  response: ¡Y lo seguirán teniendo! Usted y su equipo son la cara humana. Nuestro agente maneja las tareas repetitivas (recordatorios, confirmaciones, agendado) para que usted pueda dedicar *más* tiempo
+    de calidad a sus clientes, para la creatividad y los detalles que realmente marcan la diferencia.
+meta:
+  id: events
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events

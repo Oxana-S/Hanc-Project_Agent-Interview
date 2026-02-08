@@ -1,0 +1,204 @@
+pain_points:
+- description: Alta concorrenza nel settore fotografico e video, che rende difficile distinguersi.
+  severity: high
+  solution_hint: L'agente vocale AI può aiutare a differenziare l'offerta gestendo le richieste in modo efficiente e personalizzato.
+- description: Stagionalità degli eventi, con picchi in primavera ed estate per matrimoni e cali in autunno e inverno.
+  severity: medium
+  solution_hint: AI può ottimizzare le prenotazioni e lanciare promozioni durante i periodi di bassa stagione.
+- description: Gestione complessa degli appuntamenti e delle prenotazioni, che richiede tempo e organizzazione.
+  severity: high
+  solution_hint: Automatizzare la schedulazione con l'agente vocale per ridurre errori e liberare risorse.
+- description: Costi elevati di marketing e pubblicità per attirare nuovi clienti.
+  severity: medium
+  solution_hint: AI può qualificare lead in modo automatico, riducendo i costi di acquisizione.
+- description: Ritardi nella post-produzione e consegna dei lavori, che insoddisfano i clienti.
+  severity: medium
+  solution_hint: Integrare AI per ottimizzare i flussi di lavoro e migliorare i tempi di consegna.
+- description: Difficoltà nella comunicazione con i clienti, soprattutto per domande frequenti e follow-up.
+  severity: low
+  solution_hint: Fornire risposte immediate e consistenti attraverso l'agente vocale AI.
+typical_services:
+- Fotografia di matrimoni
+- Servizi video per eventi aziendali
+- Ritratti fotografici
+- Fotografia di prodotti
+- Video promozionali
+- Editing fotografico e video
+- Servizi di drone per riprese aeree
+- Fotografia di eventi sociali
+- Corsi di fotografia e video
+- Noleggio attrezzatura fotografica
+recommended_functions:
+- name: Programmazione appuntamenti
+  priority: high
+  reason: Riduce significativamente il tempo dedicato alla gestione delle prenotazioni.
+- name: Qualificazione lead
+  priority: high
+  reason: Migliora il tasso di conversione e ottimizza le risorse di marketing.
+- name: Gestione FAQ automatica
+  priority: medium
+  reason: Libera il personale per attività creative e complesse.
+- name: Promemoria per pagamenti
+  priority: medium
+  reason: Aumenta l'incasso puntuale e riduce le morosità.
+- name: Raccolta feedback post-servizio
+  priority: low
+  reason: Migliora la soddisfazione del cliente e fornisce dati per miglioramenti.
+- name: Segnalazione disponibilità in tempo reale
+  priority: high
+  reason: Ottimizza il calendario e massimizza le prenotazioni.
+typical_integrations:
+- name: Software di editing
+  examples:
+  - Adobe Creative Cloud
+  - DaVinci Resolve
+  priority: high
+- name: Sistema CRM
+  examples:
+  - TeamSystem
+  - Salesforce
+  priority: high
+- name: Piattaforme di prenotazione online
+  examples:
+  - Calendly
+  - Eventbrite Italia
+  priority: medium
+- name: Software contabile
+  examples:
+  - TeamSystem
+  - Fatture in Cloud
+  priority: medium
+- name: Strumenti di social media
+  examples:
+  - Instagram
+  - Facebook
+  priority: low
+- name: Sistemi di archiviazione cloud
+  examples:
+  - Google Drive
+  - Dropbox
+  priority: medium
+industry_faq:
+- question: Quali sono i vostri prezzi per un servizio fotografico di matrimonio?
+  answer_template: I nostri prezzi partono da 300 EUR e variano in base al pacchetto. Possiamo creare un'offerta personalizzata per le tue esigenze.
+- question: Quanto tempo ci vuole per consegnare le foto dopo un evento?
+  answer_template: I tempi di consegna standard sono 4-6 settimane, ma offriamo opzioni accelerate su richiesta.
+- question: Siete disponibili per eventi fuori città o all'estero?
+  answer_template: Sì, serviamo tutta Italia e consideriamo eventi internazionali, con costi di trasferta chiari in anticipo.
+- question: Offrite servizi di video editing inclusi nei pacchetti?
+  answer_template: Sì, l'editing di base è incluso, con opzioni avanzate disponibili a costi aggiuntivi.
+- question: Come gestite la privacy dei dati secondo il GDPR?
+  answer_template: Rispettiamo rigorosamente il GDPR, con politiche di sicurezza, consenso esplicito e protezione dei dati.
+- question: Potete fornire referenze o un portfolio dei vostri
+meta:
+  id: photo_video
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- photo studio
+- video production
+- photography
+- videography
+_extends: _base/photo_video
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui prezzi dei servizi fotografici o video.
+  script: I nostri pacchetti partono da 300 EUR, ma possiamo personalizzare l'offerta in base alle tue esigenze specifiche per garantirti il miglior rapporto qualità-prezzo.
+  goal: Fornire una risposta chiara e incoraggiare la personalizzazione dell'offerta.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente o chiede perché scegliere noi.
+  script: Rispetto ai nostri concorrenti, il nostro agente vocale AI offre un servizio personalizzato 24/7, facilitando la prenotazione e rispondendo a tutte le tue domande in modo rapido ed efficiente.
+  goal: Evidenziare il vantaggio competitivo basato sull'automazione e il servizio clienti.
+  effectiveness: high
+- trigger: booking_request
+  situation: Quando un cliente vuole fissare un appuntamento o una sessione fotografica.
+  script: Posso aiutarti a trovare la data migliore disponibile e prenotare subito il tuo servizio fotografico, così da garantirti la massima comodità e conferma immediata.
+  goal: Accelerare la conversione tramite la prenotazione automatica.
+  effectiveness: high
+- trigger: faq_request
+  situation: Quando il cliente chiede informazioni frequenti sul servizio, come tempi di consegna o area di copertura.
+  script: Le foto vengono consegnate in 4-6 settimane, ma possiamo accelerare i tempi su richiesta. Inoltre, operiamo in tutta Italia e anche all'estero con trasparenza sui costi di trasferta.
+  goal: Fornire informazioni standard senza necessità di intervento umano.
+  effectiveness: medium
+competitors:
+- name: FotoMilano Studio
+  positioning: Leader regionale nel nord Italia per fotografia di matrimoni.
+  strengths:
+  - Ampio portfolio di clienti di alto profilo
+  - Forte presenza online e social media
+  - Offerta di servizi premium personalizzati
+  weaknesses:
+  - Costi elevati rispetto alla media di mercato
+  - Limitata automazione nella gestione clienti
+  our_differentiation: Il nostro agente vocale AI automatizza prenotazioni e FAQ, migliorando efficienza e esperienza cliente a costi contenuti.
+- name: Roma Visual Arts
+  positioning: Agenzia affermata nel centro Italia specializzata in video per eventi aziendali.
+  strengths:
+  - Tecnologie di ripresa avanzate
+  - Team creativo e professionale
+  weaknesses:
+  - Servizio clienti poco reattivo fuori orario
+  - Processi manuali di gestione appuntamenti
+  our_differentiation: Offriamo un assistente vocale AI operativo 24/7 per supportare clienti e gestire prenotazioni senza ritardi.
+- name: Napoli Foto Express
+  positioning: Fornitore locale con prezzi competitivi nel sud Italia.
+  strengths:
+  - Prezzi accessibili e promozioni frequenti
+  - Buona conoscenza del mercato locale
+  weaknesses:
+  - Qualità e innovazione tecnica inferiori
+  - Scarsa capacità di differenziazione
+  our_differentiation: Con l'AI voice agent, aumentiamo la personalizzazione e la qualità del servizio, distinguendoci dalla concorrenza low-cost.
+- name: Venezia Studio Creativo
+  positioning: Studio boutique focalizzato su ritratti artistici e moda.
+  strengths:
+  - Elevato livello artistico e creativo
+  - Clientela di nicchia e fidelizzata
+  weaknesses:
+  - Limitata capacità di gestione volumi elevati
+  - Scarsa digitalizzazione dei processi
+  our_differentiation: L'automazione tramite AI consente di scalare la gestione clienti senza perdere qualità e personalizzazione.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 2500
+  entry_point: 300
+  roi_examples:
+  - scenario: Riduzione del tempo dedicato alla gestione delle prenotazioni tramite agente vocale AI
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  - scenario: Incremento delle conversioni grazie alla qualificazione lead automatizzata
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Automatizzare la prenotazione consente di risparmiare fino al 70% del tempo amministrativo.
+  - Migliorare la conversione lead può aumentare il fatturato mensile di oltre il 30%.
+  - Il supporto clienti 24/7 migliora la soddisfazione e fidelizzazione.
+market_context:
+  market_size: Circa 500 milioni di EUR annui in Italia per fotografia e video professionale
+  growth_rate: 4-6%
+  key_trends:
+  - Crescente richiesta di contenuti video per social media e marketing digitale
+  - Aumento dell'uso di tecnologie AI e automazione nella gestione clienti
+  - Maggiore attenzione alla personalizzazione e customer experience
+  - Espansione dei servizi per eventi aziendali e commerciali
+  seasonality:
+    high:
+    - Aprile
+    - Maggio
+    - Giugno
+    - Settembre
+    - Ottobre
+    low:
+    - Gennaio
+    - Febbraio
+    - Novembre
+    - Dicembre

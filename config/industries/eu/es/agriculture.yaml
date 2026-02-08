@@ -1,0 +1,218 @@
+pain_points:
+- description: Escasez de agua y gestión ineficiente del riego en cultivos.
+  severity: high
+  solution_hint: Agente de voz AI puede programar riego automatizado basado en datos
+    meteorológicos en tiempo real.
+- description: Alta dependencia de mano de obra estacional y dificultad para encontrar
+    trabajadores cualificados.
+  severity: medium
+  solution_hint: Automatizar tareas repetitivas como programación de cosechas o manejo
+    de inventario con asistencia por voz.
+- description: Fluctuaciones en los precios de mercado que afectan la rentabilidad.
+  severity: high
+  solution_hint: Proporcionar alertas de precios y tendencias de mercado a través
+    de notificaciones de voz.
+- description: Control ineficiente de plagas y enfermedades en cultivos.
+  severity: medium
+  solution_hint: Ofrecer asesoramiento personalizado y recordatorios para aplicaciones
+    de tratamientos.
+- description: Cumplimiento de regulaciones ambientales y de seguridad alimentaria.
+  severity: high
+  solution_hint: Asistir en la documentación y recordatorios de inspecciones mediante
+    interacciones de voz.
+- description: Gestión compleja de la cadena de suministro y logística.
+  severity: medium
+  solution_hint: Coordinar entregas y seguimiento de pedidos con integraciones de
+    voz a sistemas ERP.
+typical_services:
+- Asesoramiento técnico agrícola
+- Sistemas de riego automatizado
+- Gestión integrada de cultivos
+- Control de plagas y fertilización
+- Maquinaria agrícola y mantenimiento
+- Servicios de cosecha y postcosecha
+- Comercialización y venta de productos
+- Consultoría en sostenibilidad y regadío
+- Seguros agrícolas y financiación
+- Formación y capacitación para agricultores
+recommended_functions:
+- name: Programación de riego inteligente
+  priority: high
+  reason: Optimiza el uso de agua y reduce costes en regiones con escasez.
+- name: Asistencia para gestión de inventario
+  priority: medium
+  reason: Facilita el control de suministros y reduce pérdidas.
+- name: Recordatorios de tareas y mantenimiento
+  priority: high
+  reason: Mejora la eficiencia operativa y cumple con calendarios agrícolas.
+- name: Procesamiento de pedidos por voz
+  priority: medium
+  reason: Acelera la comunicación con proveedores y clientes.
+- name: Respuestas a preguntas frecuentes sobre normativas
+  priority: low
+  reason: Ayuda a cumplir con regulaciones locales y de la UE.
+- name: Integración con sensores IoT para monitoreo
+  priority: high
+  reason: Proporciona datos en tiempo real para decisiones informadas.
+typical_integrations:
+- name: Sistemas ERP agrícolas
+  examples:
+  - Agrogestión
+  - Nilus
+  - SAP Agri
+  priority: high
+- name: Plataformas de datos meteorológicos
+  examples:
+  - AEMET
+  - Meteoblue
+  - Weather.com
+  priority: high
+- name: Software de gestión de inventario
+  examples:
+  - Zoho Inventory
+  - Odoo Agricultura
+  priority: medium
+- name: Herramientas de comercio electrónico
+  examples:
+  - Mercado Agrario
+  - Tiendanimal
+  priority: low
+- name: Sistemas de seguimiento de maquinaria
+  examples:
+  - John Deere Operations Center
+  - Trimble
+  priority: medium
+industry_faq:
+- question: ¿Cómo puede un agente de voz AI ayudar a reducir los costes de riego?
+  answer_template: Nuestro agente optimiza los horarios de riego basándose en predicciones
+    meteorológicas, ahorrando hasta un 20% en consumo de agua.
+- question: ¿Es compatible con los sistemas agrícolas que ya uso?
+  answer_template: Sí, integramos con ERP comunes como Agrogestión y plataformas meteorológicas
+    para una implementación sin problemas.
+- question: ¿Qué pasa con la protección de datos bajo GDPR?
+  answer_template: Cumplimos plenamente con GDPR, cifrando todas las conversaciones
+    y datos para garantizar la privacidad.
+- question: ¿Cuánto tiempo se tarda en implementar la solución?
+  answer_template: La configuración básica toma de 1 a 2 semanas, con soporte continuo
+    para adaptaciones.
+- question: ¿Puede manejar múltiples idiomas o dialectos regionales?
+  answer_template: Sí, soportamos español y variantes regionales, con actualizaciones
+    para jerga agrícola local.
+- question: ¿Cómo se integra con maquinaria existente?
+  answer_template: Conectamos a través de APIs o sensores IoT para monitorizar y controlar
+    equipos de forma remota.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el coste inicial.
+  script: Hola, entiendo que quiere conocer la inversión. Nuestro paquete básico comienza
+    en 50€ al mes, con ahorros demostrados en agua y mano de obra. ¿Le gustaría una
+    demostración personalizada?
+  goal: Convertir la consulta en una demostración para mostrar el valor.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor local.
+  script: Gracias por la referencia. A diferencia de [competidor], ofrecemos integración
+    en tiempo real con sistemas españoles como AEMET y soporte en español nativo,
+    lo que reduce errores en campo.
+  goal: Destacar diferenciadores clave y construir confianza.
+- trigger: roi_doubt
+  situation: Cuando el cliente expresa escepticismo sobre el retorno de inversión.
+  script: Comprendo su preocupación. Con nuestro agente, clientes similares ahorran
+    una media de 200€ mensuales en riego, recuperando la inversión en 3 meses. ¿Puedo
+    compartir un caso de estudio?
+  goal: Proporcionar pruebas concretas y facilitar el cierre.
+- trigger: compliance_concern
+  situation: Cuando el cliente pregunta sobre cumplimiento normativo.
+  script: Nuestra solución automatiza registros para cumplir con regulaciones de la
+    UE y España, como trazabilidad de productos, asegurando auditorías sin estrés.
+  goal: Aliviar preocupaciones y posicionar como solución integral.
+competitors:
+- name: AgroTech Solutions Iberia
+  positioning: Proveedor líder de software agrícola en España.
+  strengths:
+  - Amplia base de clientes
+  - soporte local robusto
+  weaknesses:
+  - Alto costo
+  - integración limitada con voz
+  our_differentiation: Ofrecemos asistentes de voz AI más asequibles y con mejor adaptación
+    a dialectos regionales.
+- name: SmartFarm España
+  positioning: Especialista en IoT para agricultura de precisión.
+  strengths:
+  - Tecnología avanzada en sensores
+  - buena reputación
+  weaknesses:
+  - Complejidad de uso
+  - dependencia de hardware caro
+  our_differentiation: Enfoque en voz para facilidad de uso y menor inversión inicial
+    en hardware.
+- name: RuralVoice Assist
+  positioning: Startup local enfocada en asistencia por voz para pequeños agricultores.
+  strengths:
+  - Precios competitivos
+  - conocimiento del mercado local
+  weaknesses:
+  - Funcionalidades limitadas
+  - soporte técnico escaso
+  our_differentiation: Soluciones más escalables con integraciones empresariales y
+    cumplimiento GDPR garantizado.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 30
+  - 300
+  entry_point: 50
+  roi_examples:
+  - scenario: Reducción de costes de riego en un viñedo
+    monthly_cost: 70
+    monthly_savings: 150
+    payback_months: 2
+  - scenario: Automatización de gestión de inventario en una granja
+    monthly_cost: 40
+    monthly_savings: 80
+    payback_months: 3
+  value_anchors:
+  - Ahorro promedio del 15% en consumo de agua con riego inteligente.
+  - Reducción de un 30% en tiempo de gestión administrativa.
+  - Cumplimiento automatizado con normativas españolas y de la UE.
+market_context:
+  market_size: 3.5 mil millones EUR anuales en tecnología agrícola
+  growth_rate: 8% YoY
+  key_trends:
+  - Aumento de la agricultura de precisión con drones y sensores.
+  - Mayor demanda de sostenibilidad y eficiencia hídrica.
+  - Digitalización de la cadena de suministro para exportaciones.
+  seasonality:
+    high:
+    - Marzo a Junio
+    - Septiembre a Noviembre
+    low:
+    - Diciembre a Febrero
+    - Julio a Agosto
+typical_objections:
+- objection: Es demasiado caro para mi pequeña explotación.
+  response: Entiendo, por eso ofrecemos planes escalables desde 30€/mes, con ROI rápido
+    en ahorros de recursos. ¿Podemos analizar su caso específico?
+- objection: No confío en la tecnología de voz para tareas críticas.
+  response: Nuestro agente está diseñado para agricultura, con redundancias y soporte
+    humano de respaldo. Le invito a una prueba gratuita.
+- objection: Ya tengo sistemas establecidos y no quiero cambios.
+  response: Nos integramos sin interrumpir sus flujos actuales, mejorando la eficiencia
+    con mínima intervención. ¿Le gustaría ver una demo integrada?
+- objection: ¿Qué pasa si falla durante la cosecha?
+  response: Contamos con soporte 24/7 y backups en la nube para garantizar continuidad,
+    especialmente en períodos clave.
+meta:
+  id: agriculture
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

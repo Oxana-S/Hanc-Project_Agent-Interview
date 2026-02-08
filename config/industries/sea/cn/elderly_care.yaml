@@ -1,0 +1,188 @@
+pain_points:
+- description: 人力成本持续上涨，护工招聘和培训费用高昂。
+  severity: high
+  solution_hint: AI语音助手可自动化预约、提醒和基本咨询，减少人工依赖。
+- description: 护工短缺，尤其在偏远地区，服务质量不稳定。
+  severity: high
+  solution_hint: AI语音助手提供标准化服务流程和远程监控，弥补人力不足。
+- description: 家属沟通频繁且复杂，容易产生误解和投诉。
+  severity: medium
+  solution_hint: AI语音助手可24小时处理咨询，提供实时更新和满意度调查。
+- description: 数据隐私合规要求高，需遵守PIPL，管理成本大。
+  severity: high
+  solution_hint: AI语音助手集成安全加密，自动化合规检查和数据记录。
+- description: 紧急响应速度慢，老年人安全风险高。
+  severity: high
+  solution_hint: AI语音助手配备紧急呼叫功能，快速触发警报和联系救援。
+- description: 服务标准化不足，导致客户体验差异大。
+  severity: medium
+  solution_hint: AI语音助手通过脚本和流程控制，确保服务一致性。
+typical_services:
+- 居家养老
+- 日间照料
+- 长期护理
+- 康复服务
+- 医疗陪护
+- 心理关怀
+- 膳食服务
+- 健康监测
+- 娱乐活动
+- 家政服务
+recommended_functions:
+- name: 预约管理
+  priority: high
+  reason: 自动化安排护工和服务时间，提高效率。
+- name: 客户咨询
+  priority: high
+  reason: 处理家属常见问题，减轻人工负担。
+- name: 紧急呼叫响应
+  priority: high
+  reason: 保障老年人安全，快速应对突发事件。
+- name: 健康提醒
+  priority: medium
+  reason: 定时提醒用药和检查，提升护理质量。
+- name: 满意度调查
+  priority: medium
+  reason: 收集反馈，优化服务并提高客户留存。
+- name: 数据记录与报告
+  priority: low
+  reason: 自动化生成健康报告，便于家属查看和合规。
+typical_integrations:
+- name: 电子健康记录系统
+  examples:
+  - 阿里健康
+  - 平安好医生
+  priority: high
+- name: 支付系统
+  examples:
+  - 微信支付
+  - 支付宝
+  priority: high
+- name: 政府平台
+  examples:
+  - 国家医保平台
+  - 社保系统
+  priority: medium
+- name: 客户关系管理系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: medium
+- name: 智能家居设备
+  examples:
+  - 小米智能家居
+  - 华为HiLink
+  priority: low
+industry_faq:
+- question: 服务费用是多少？
+  answer_template: 我们的服务费用根据套餐定制，起价为每月2000元人民币，涵盖基本咨询和监测。具体价格取决于服务类型和时长，可提供个性化报价。
+- question: 如何保证护工质量？
+  answer_template: 我们通过AI语音助手进行标准化培训和实时监督，结合家属反馈系统，确保护工服务一致可靠。
+- question: 是否提供24小时服务？
+  answer_template: 是的，AI语音助手支持24小时在线咨询和紧急响应，护工服务可根据需求安排全天候支持。
+- question: 数据隐私如何保护？
+  answer_template: 我们严格遵守PIPL法规，使用加密技术保护数据，AI系统仅访问必要信息，并定期进行安全审计。
+- question: 可以定制服务吗？
+  answer_template: 当然可以，我们提供灵活的服务套餐，AI语音助手可基于客户需求调整提醒、监测和沟通频率。
+- question: 如果老年人不会使用技术怎么办？
+  answer_template: AI语音助手设计简单易用，支持语音交互，护工和家属可协助设置，确保老年人轻松接入。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 您好，感谢您的咨询。我们的AI语音助手解决方案起价每月500元人民币，可根据您的具体需求定制，例如增加紧急呼叫或健康监测功能。相比传统人工成本，可节省高达30%的费用，投资回报快。
+  goal: 突出价值，引导定制化报价。
+- trigger: service_inquiry
+  situation: 当客户询问服务细节时
+  script: 我们提供全面的老年人护理服务，如健康监测、紧急响应和家属沟通。AI语音助手可自动化这些流程，提升效率。例如，它能减少护工管理时间，让您更专注于核心护理。
+  goal: 展示功能优势，建立信任。
+- trigger: compliance_concern
+  situation: 当客户担心数据合规时
+  script: 请放心，我们的系统完全符合中国PIPL法规。AI语音助手集成安全协议，确保数据加密和隐私保护，帮助您轻松应对合规要求。
+  goal: 缓解担忧，强调合规性。
+- trigger: competition_compare
+  situation: 当客户比较竞争对手时
+  script: 与其他服务商相比，我们的AI语音助手更智能、成本更低。它提供实时数据分析和个性化服务，而传统方式往往依赖人力，效率低下。
+  goal: 差异化定位，突出性价比。
+competitors:
+- name: 泰康之家
+  positioning: 高端养老社区提供商
+  strengths:
+  - 品牌知名度高
+  - 设施齐全
+  - 医疗资源丰富
+  weaknesses:
+  - 成本高昂
+  - 服务扩展性有限
+  our_differentiation: 我们提供基于AI的灵活解决方案，成本更低，适用于各种规模机构，并注重数据驱动优化。
+- name: 亲和源
+  positioning: 社区养老服务商
+  strengths:
+  - 本地化服务强
+  - 政府合作多
+  weaknesses:
+  - 技术集成不足
+  - 响应速度慢
+  our_differentiation: AI语音助手提升响应速度和标准化，弥补人力短板，增强客户体验。
+- name: 绿城养老服务
+  positioning: 房地产开发关联的养老服务
+  strengths:
+  - 资源整合能力强
+  - 客户基础大
+  weaknesses:
+  - 服务同质化
+  - 创新滞后
+  our_differentiation: 我们专注于智能技术，提供定制化AI工具，帮助机构差异化竞争并提高效率。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 3000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: 小型养老院使用AI语音助手处理咨询和预约
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 1
+  - scenario: 家庭护理服务集成健康监测和紧急响应
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - AI语音助手可减少30%人工成本
+  - 提升客户满意度20%以上
+  - 快速投资回报，通常1-3个月回本
+market_context:
+  market_size: 超过1万亿元人民币
+  growth_rate: 10% 年增长率
+  key_trends:
+  - 智能化养老加速普及
+  - 医养结合模式受政策支持
+  - 社区和居家养老需求增长
+  - 数据驱动护理优化
+  seasonality:
+    high:
+    - 冬季
+    - 节假日期间
+    low:
+    - 夏季
+typical_objections:
+- objection: 太贵了，我们预算有限。
+  response: 理解您的顾虑。我们的AI解决方案长期可大幅节省人力成本，起价仅500元/月，投资回报快。我们可以先从小规模试用开始。
+- objection: 不信任新技术，怕老年人不适应。
+  response: AI语音助手设计简单，支持语音操作，护工可协助使用。我们提供培训和试用期，确保平稳过渡。
+- objection: 担心数据安全，怕违反PIPL。
+  response: 我们严格遵循PIPL，系统加密且定期审计。许多客户已成功使用，数据安全有保障，可提供合规证书参考。
+meta:
+  id: elderly_care
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

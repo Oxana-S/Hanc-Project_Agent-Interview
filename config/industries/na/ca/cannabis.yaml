@@ -1,0 +1,280 @@
+pain_points:
+- description: Complex and evolving compliance with the Cannabis Act and provincial
+    regulations requires constant monitoring and reporting, consuming significant
+    administrative time.
+  severity: high
+  solution_hint: Automate compliance reminders and generate standardized reports for
+    regulatory submissions.
+- description: Managing real-time inventory across multiple sales channels (in-store,
+    online, delivery) while adhering to strict tracking requirements is a major operational
+    challenge.
+  severity: high
+  solution_hint: Provide integrated inventory sync and low-stock alerts to prevent
+    sales of unavailable products and maintain compliance.
+- description: High customer inquiry volume about product details, effects, legality,
+    and store hours overwhelms staff, especially budtenders.
+  severity: medium
+  solution_hint: Handle routine FAQ calls, freeing budtenders for complex consultations
+    and sales.
+- description: Scheduling and verifying age (19+) for deliveries and pickups is a
+    manual, time-consuming process prone to error.
+  severity: medium
+  solution_hint: Automate age verification prompts and integrate with scheduling systems
+    to confirm orders and delivery windows.
+- description: Difficulty in capturing and acting on customer feedback and reviews
+    to improve product selection and service.
+  severity: low
+  solution_hint: Automate post-purchase feedback collection and summarize insights
+    for management.
+- description: Coordinating with licensed producers and distributors for order placement
+    and stock updates involves frequent phone calls and emails.
+  severity: medium
+  solution_hint: Automate initial outreach and order status checks with suppliers,
+    escalating complex issues to a manager.
+- description: Peak hours and promotional periods lead to long phone wait times, causing
+    missed sales opportunities and customer frustration.
+  severity: medium
+  solution_hint: Manage call overflow, provide wait time updates, and capture call-back
+    information to ensure no lead is lost.
+typical_services:
+- Cannabis retail POS and inventory management
+- Cannabis Act and provincial compliance consulting
+- Seed-to-sale tracking system integration
+- E-commerce platform for legal cannabis sales
+- Budtender training and certification support
+- Delivery logistics and age verification solutions
+- Security and surveillance system design for cannabis facilities
+- Marketing and customer loyalty program development
+- Cannabis waste management and destruction services
+- Financial services and payment processing for cannabis businesses
+recommended_functions:
+- name: Compliance Assistant
+  priority: high
+  reason: Canadian cannabis operators face severe penalties for non-compliance; an
+    AI that provides immediate regulatory guidance is critical.
+- name: Inventory & Order Management Liaison
+  priority: high
+  reason: Real-time stock accuracy is legally mandatory and directly impacts sales
+    and customer satisfaction.
+- name: 24/7 Customer FAQ & Scheduling Agent
+  priority: high
+  reason: Handles high volume of basic inquiries, schedules pickups/deliveries, and
+    verifies age, reducing staff burden.
+- name: Supplier Coordination Agent
+  priority: medium
+  reason: Automates routine communication with LPs and distributors, streamlining
+    the supply chain.
+- name: Feedback Collection & Survey Agent
+  priority: low
+  reason: Helps businesses adapt to fast-changing consumer preferences in a competitive
+    retail market.
+- name: Lead Qualification & Call-Back Scheduling
+  priority: medium
+  reason: Captures potential sales during peak times when human staff are occupied
+    with in-store customers.
+typical_integrations:
+- name: Cannabis-Specific POS/Inventory System
+  examples:
+  - Cova
+  - LeafLogix
+  - Greenline
+  - Buddi
+  priority: high
+- name: Seed-to-Sale Tracking Platform
+  examples:
+  - BioTrack
+  - Metrc
+  - Ample Organics
+  priority: high
+- name: E-commerce Platform
+  examples:
+  - Dutchie
+  - Springbig
+  - Weedmaps
+  - Shopify (with compliant plugins)
+  priority: high
+- name: Delivery Management Software
+  examples:
+  - Onfleet
+  - Tookan
+  - Dutchie Deliveries
+  priority: medium
+- name: Accounting & Compliance Software
+  examples:
+  - Xero
+  - QuickBooks
+  - CannaRegs
+  priority: medium
+- name: Security System
+  examples:
+  - Avigilon
+  - Axis Communications
+  priority: medium
+industry_faq:
+- question: What are your store hours and location?
+  answer_template: Our store is located at [Address]. We are open from [Weekday Hours]
+    and [Weekend Hours]. You can also place orders for pickup or delivery on our website.
+- question: Do you offer delivery and how does age verification work?
+  answer_template: Yes, we offer delivery within [Area]. You must be 19+ to receive
+    an order. Our driver will request valid government-issued photo ID upon delivery.
+    Please have it ready.
+- question: How do I know what product is right for me?
+  answer_template: Our trained budtenders are here to help! For personalized advice,
+    we recommend visiting us in-store. You can also browse products by category (like
+    Indica, Sativa, Hybrid) and effect on our website.
+- question: Is it legal to purchase cannabis from your store?
+  answer_template: Yes, absolutely. We are a fully licensed retailer under the Cannabis
+    Act and the regulations of [Province]. All our products are sourced from federally
+    licensed producers.
+- question: What payment methods do you accept?
+  answer_template: We accept debit, cash, and often specific cashless ATMs due to
+    banking restrictions. Please check with our location for the most up-to-date payment
+    options.
+- question: Can I return a cannabis product?
+  answer_template: Due to strict health and safety regulations, we cannot accept returns
+    on any cannabis products once they have left the store. If there is a quality
+    concern, please contact us immediately, and we will address it on a case-by-case
+    basis.
+- question: Do you sell CBD-only products?
+  answer_template: Yes, we carry a selection of CBD-dominant and CBD-only products,
+    such as oils, capsules, and topicals. These are available both in-store and online.
+sales_scripts:
+- trigger: compliance_concern
+  situation: When a prospect expresses worry about the complexity of cannabis regulations.
+  script: I understand. Navigating the Cannabis Act and provincial rules is a full-time
+    job in itself. Our AI agent acts as your first line of defense, automating compliance
+    check-ins and report generation. It integrates directly with your seed-to-sale
+    system like Metrc to flag potential issues before they become problems, giving
+    you peace of mind and saving countless administrative hours.
+  goal: Position the AI as a compliance risk mitigator and time-saver.
+- trigger: inquiry_overflow
+  situation: When a business owner mentions staff being overwhelmed by phone calls,
+    especially about basic questions.
+  script: It's so common for budtenders to get tied up on the phone when they could
+    be driving sales on the floor. Our voice agent can handle 100% of those routine
+    calls about hours, location, basic product legality, and even schedule pickups.
+    This instantly frees your team to provide the expert, in-person service that builds
+    customer loyalty and increases basket size.
+  goal: Frame the solution as a direct revenue protector and staff optimizer.
+- trigger: delivery_logistics
+  situation: When a retailer discusses challenges with managing delivery orders and
+    age verification.
+  script: Managing delivery windows and verifying age 19+ for every order is crucial
+    but manual. Our agent automates the entire confirmation process, sends timely
+    reminders to customers, and prompts drivers to check ID. This reduces failed deliveries,
+    ensures compliance, and improves the customer experience with less work for your
+    team.
+  goal: Highlight automation of a critical, compliance-heavy process to improve efficiency
+    and safety.
+- trigger: cost_question
+  situation: When the prospect asks about pricing.
+  script: Our plans start at around $299 CAD per month, which typically pays for itself
+    by recovering just 10-15 hours of manager or budtender time spent on administrative
+    calls. Compared to the cost of a compliance misstep or a missed sale during a
+    busy period, it's a very manageable investment in smoother operations.
+  goal: Anchor price against high-value outcomes (compliance, sales) and compare to
+    cost of personnel time.
+competitors:
+- name: Dutchie
+  positioning: All-in-one e-commerce and operations platform for cannabis retailers.
+  strengths:
+  - Strong brand recognition
+  - Integrated e-commerce, POS, and delivery
+  - Large network of retailers
+  weaknesses:
+  - Can be costly for smaller shops
+  - Less focus on pure telephony/voice automation
+  - Customer support can be scaled
+  our_differentiation: We specialize in AI-powered voice interaction that integrates
+    *with* platforms like Dutchie, handling the human phone call layer they don't
+    cover, at a more accessible price point.
+- name: Cova
+  positioning: Leading cannabis-specific POS and compliance software.
+  strengths:
+  - Deep compliance features
+  - Robust reporting
+  - Hardware bundles
+  weaknesses:
+  - Primarily a POS, not a call management system
+  - Limited automated customer interaction features
+  our_differentiation: We complement Cova by managing the influx of customer calls
+    and automating external communication, turning their internal data into proactive
+    customer service and staff support.
+- name: Traditional Answering Services
+  positioning: General-purpose call centers that answer business lines.
+  strengths:
+  - Human agents
+  - Flexible for any industry
+  weaknesses:
+  - Agents lack cannabis-specific knowledge
+  - Higher cost per call
+  - No integration with cannabis software systems
+  - Limited scalability
+  our_differentiation: Our AI is trained specifically on cannabis terminology and
+    compliance, integrates with your key systems, provides consistent 24/7 service,
+    and operates at a fraction of the cost of a human team.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 250
+  - 1200
+  entry_point: 299
+  roi_examples:
+  - scenario: Midsize retail store reducing call volume to budtenders
+    monthly_cost: 450
+    monthly_savings: 900
+    payback_months: 1
+  value_anchors:
+  - Costs less than 3 hours of a store manager's time each month.
+  - Prevents one compliance fine and the system pays for itself for years.
+  - Recovers multiple lost sales per month from missed calls during peak.
+market_context:
+  market_size: The legal Canadian cannabis retail market is valued at approximately
+    $5 billion CAD annually.
+  growth_rate: Steady, driven by new store openings, product format innovation (e.g.,
+    beverages, edibles), and continued conversion from the illicit market.
+  key_trends:
+  - Consolidation of smaller retailers by larger chains.
+  - Rapid expansion of cannabis 2.0 products (edibles, beverages, topicals).
+  - Increased focus on customer experience and loyalty to compete with illicit sources.
+  - Strict enforcement of packaging, labeling, and marketing regulations.
+  seasonality:
+    high:
+    - Summer months
+    - 420 (April)
+    - Christmas/New Year period
+    low:
+    - January
+    - Early Spring (post-holiday)
+typical_objections:
+- objection: We're a small shop; we can't afford another monthly tech fee.
+  response: I appreciate that. Think of it as hiring a part-time, expert administrative
+    assistant for less than $10 CAD a day. If it saves your budtender just one hour
+    each day from phone duties, it's already paying for itself and letting them generate
+    more revenue on the sales floor.
+- objection: I don't want a robot talking to my customers; it feels impersonal.
+  response: That's a valid concern. Our agent is designed to handle the repetitive,
+    transactional calls that staff find tedious—hours, directions, order status. This
+    actually allows your *human* team to be *more* personal and invested during the
+    high-value, in-store consultations where relationship-building happens. It enhances
+    the human touch where it matters most.
+- objection: Our current system works fine. We just have our staff answer phones.
+  response: That's great that your team manages it. The question is, what's the opportunity
+    cost? During a rush, every call a budtender answers is a customer in-store not
+    being helped. Our data shows retailers using our agent see an increase in in-store
+    conversion rates because staff are freed from phone distractions. It's about optimizing
+    your existing team's highest-value activities.
+meta:
+  id: cannabis
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

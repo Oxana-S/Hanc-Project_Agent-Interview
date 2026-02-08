@@ -1,0 +1,210 @@
+pain_points:
+- description: Cạnh tranh khốc liệt dẫn đến chiến tranh giá, làm giảm lợi nhuận.
+  severity: high
+  solution_hint: Tư vấn tự động về định giá cạnh tranh và dịch vụ giá trị gia tăng.
+- description: Thiếu hụt lao động có tay nghề cao, ảnh hưởng đến tiến độ và chất lượng
+    công trình.
+  severity: high
+  solution_hint: Hỗ trợ tuyển dụng và quản lý lịch trình lao động qua điện thoại.
+- description: Quản lý dự án không hiệu quả, dẫn đến chậm trễ và vượt ngân sách.
+  severity: medium
+  solution_hint: Cung cấp cập nhật trạng thái dự án và nhắc nhở tự động.
+- description: Tuân thủ quy định pháp lý phức tạp, đặc biệt là PDPD về bảo vệ dữ liệu.
+  severity: medium
+  solution_hint: Tư vấn nhanh về yêu cầu tuân thủ và hướng dẫn thủ tục.
+- description: Gián đoạn chuỗi cung ứng vật liệu xây dựng, gây trì hoãn.
+  severity: medium
+  solution_hint: Theo dõi đơn hàng và thông báo tình trạng giao hàng.
+- description: Quản lý chi phí kém, dẫn đến thất thoát ngân sách.
+  severity: high
+  solution_hint: Hỗ trợ theo dõi chi tiêu và dự báo chi phí qua điện thoại.
+typical_services:
+- Xây dựng nhà ở
+- Xây dựng công nghiệp
+- Thi công nội thất
+- Tư vấn thiết kế kiến trúc
+- Giám sát thi công công trình
+- Bảo trì và sửa chữa công trình
+- Quản lý dự án xây dựng
+- Xây dựng cơ sở hạ tầng
+- Lắp đặt hệ thống điện và nước
+- Hoàn thiện bề mặt và trang trí
+recommended_functions:
+- name: Lên lịch hẹn tư vấn
+  priority: high
+  reason: Tối ưu hóa thời gian và tăng tỷ lệ chuyển đổi khách hàng tiềm năng.
+- name: Trả lời câu hỏi thường gặp
+  priority: medium
+  reason: Giảm tải cho nhân viên và cung cấp thông tin nhanh chóng 24/7.
+- name: Cập nhật trạng thái dự án
+  priority: high
+  reason: Cải thiện giao tiếp với khách hàng và minh bạch tiến độ.
+- name: Thu thập và phân loại khách hàng tiềm năng
+  priority: medium
+  reason: Tự động hóa quy trình bán hàng và tập trung vào khách hàng chất lượng.
+- name: Nhắc nhở thanh toán
+  priority: low
+  reason: Giảm nợ quá hạn và cải thiện dòng tiền.
+- name: Hỗ trợ điều phối công trường
+  priority: medium
+  reason: Tăng hiệu quả vận hành và phản ứng nhanh với sự cố.
+typical_integrations:
+- name: Hệ thống ERP
+  examples:
+  - MISA
+  - FAST
+  - SAP
+  priority: high
+- name: Phần mềm quản lý dự án
+  examples:
+  - Microsoft Project
+  - Trello
+  - Jira
+  priority: high
+- name: Phần mềm kế toán
+  examples:
+  - MISA Accounting
+  - Bravo
+  priority: medium
+- name: Hệ thống CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - CRM địa phương
+  priority: medium
+- name: Công cụ quản lý chuỗi cung ứng
+  examples:
+  - Odoo
+  - các giải pháp đám mây
+  priority: low
+industry_faq:
+- question: Dịch vụ của bạn bao gồm những gì?
+  answer_template: Chúng tôi cung cấp đa dạng dịch vụ từ xây dựng nhà ở, công nghiệp
+    đến tư vấn thiết kế và bảo trì. Vui lòng cho biết nhu cầu cụ thể để tôi hỗ trợ
+    tốt hơn.
+- question: Giá cả dịch vụ như thế nào?
+  answer_template: Giá cả phụ thuộc vào quy mô và loại hình dự án. Chúng tôi có các
+    gói dịch vụ linh hoạt từ 50 triệu VND trở lên. Tôi có thể sắp xếp một cuộc tư
+    vấn miễn phí để báo giá chi tiết.
+- question: Thời gian hoàn thành dự án là bao lâu?
+  answer_template: Thời gian thay đổi tùy theo dự án, thường từ 3 đến 12 tháng. Chúng
+    tôi cam kết tiến độ và cung cấp bản kế hoạch chi tiết sau khi đánh giá.
+- question: Bạn có tuân thủ các quy định pháp lý như PDPD không?
+  answer_template: Có, chúng tôi tuân thủ đầy đủ các quy định pháp lý, bao gồm PDPD,
+    để đảm bảo an toàn và bảo mật thông tin khách hàng.
+- question: Làm thế nào để theo dõi tiến độ công trình?
+  answer_template: Chúng tôi cung cấp cập nhật trạng thái qua điện thoại, email hoặc
+    ứng dụng, giúp bạn theo dõi dễ dàng mọi lúc.
+- question: Bảo hành dịch vụ trong bao lâu?
+  answer_template: Chúng tôi cung cấp bảo hành từ 12 đến 24 tháng tùy dịch vụ, với
+    hỗ trợ bảo trì định kỳ.
+sales_scripts:
+- trigger: service_inquiry
+  situation: Khách hàng hỏi về dịch vụ xây dựng qua điện thoại.
+  script: Xin chào, tôi có thể giúp gì cho bạn về dịch vụ xây dựng? Chúng tôi chuyên
+    về xây dựng nhà ở, công nghiệp và tư vấn thiết kế. Bạn quan tâm đến lĩnh vực nào?
+  goal: Thu thập thông tin nhu cầu và định hướng khách hàng.
+- trigger: price_question
+  situation: Khách hàng yêu cầu báo giá ngay lập tức.
+  script: Cảm ơn bạn đã quan tâm. Giá cả phụ thuộc vào nhiều yếu tố như diện tích
+    và vật liệu. Chúng tôi có gói cơ bản từ 50 triệu VND. Để báo giá chính xác, tôi
+    có thể sắp xếp một cuộc tư vấn miễn phí không?
+  goal: Chuyển cuộc gọi sang tư vấn chuyên sâu và tránh mất khách hàng.
+- trigger: competitor_mention
+  situation: Khách hàng so sánh với đối thủ cạnh tranh.
+  script: Tôi hiểu bạn có nhiều lựa chọn. Chúng tôi khác biệt ở dịch vụ hỗ trợ 24/7
+    qua AI và tuân thủ PDPD chặt chẽ. Bạn có muốn tôi giải thích thêm về lợi ích này
+    không?
+  goal: Nhấn mạnh điểm khác biệt và thuyết phục khách hàng.
+competitors:
+- name: Vinaconex
+  positioning: Tập đoàn xây dựng lớn, đa ngành.
+  strengths:
+  - Quy mô lớn
+  - kinh nghiệm lâu năm
+  - danh tiếng tốt
+  weaknesses:
+  - Chi phí cao
+  - phản ứng chậm với thay đổi
+  our_differentiation: Cung cấp dịch vụ cá nhân hóa với hỗ trợ AI nhanh chóng và giá
+    cả cạnh tranh.
+- name: Hoa Binh Construction
+  positioning: Chuyên về xây dựng dân dụng và công nghiệp.
+  strengths:
+  - Chất lượng cao
+  - đội ngũ kỹ thuật giỏi
+  weaknesses:
+  - Hạn chế dịch vụ sau bán hàng
+  - ít công nghệ
+  our_differentiation: Tích hợp công nghệ AI để quản lý dự án hiệu quả và hỗ trợ khách
+    hàng liên tục.
+- name: Coteccons
+  positioning: Tập trung vào xây dựng cao cấp và bất động sản.
+  strengths:
+  - Thiết kế sáng tạo
+  - vật liệu cao cấp
+  weaknesses:
+  - Giá thành đắt đỏ
+  - thời gian dài
+  our_differentiation: Cân bằng giữa chất lượng và chi phí với giải pháp công nghệ
+    tối ưu.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 50000000
+  - 5000000000
+  entry_point: 50000000
+  roi_examples:
+  - scenario: Tự động hóa quản lý dự án nhỏ
+    monthly_cost: 5000000
+    monthly_savings: 10000000
+    payback_months: 1
+  - scenario: Cải thiện hiệu quả bán hàng qua điện thoại
+    monthly_cost: 3000000
+    monthly_savings: 8000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm đến 20% chi phí quản lý
+  - Tăng năng suất 30% với AI
+  - Đầu tư nhỏ
+  - lợi nhuận lớn
+market_context:
+  market_size: Khoảng 50 tỷ USD năm 2023
+  growth_rate: 6-8% mỗi năm
+  key_trends:
+  - Ứng dụng công nghệ số trong xây dựng
+  - Tăng cường xây dựng xanh và bền vững
+  - Phát triển đô thị hóa nhanh
+  seasonality:
+    high:
+    - Tháng 9 đến tháng 12
+    - mùa khô
+    low:
+    - Tháng 5 đến tháng 8
+    - mùa mưa
+typical_objections:
+- objection: Tôi không tin tưởng vào công nghệ AI cho xây dựng.
+  response: Tôi hiểu mối quan tâm của bạn. AI của chúng tôi được thiết kế để hỗ trợ,
+    không thay thế con người, giúp giảm sai sót và tăng hiệu quả. Bạn có muốn tôi
+    chia sẻ một case study cụ thể không?
+- objection: Dịch vụ của bạn đắt hơn đối thủ.
+  response: Giá của chúng tôi phản ánh chất lượng và dịch vụ hỗ trợ 24/7. Với tiết
+    kiệm từ quản lý hiệu quả, bạn sẽ hoàn vốn nhanh. Tôi có thể tính toán ROI cho
+    bạn ngay bây giờ.
+- objection: Tôi đã có hệ thống quản lý hiện tại.
+  response: Điều đó rất tốt. Giải pháp của chúng tôi có thể tích hợp dễ dàng để bổ
+    sung, như cải thiện giao tiếp khách hàng. Bạn có muốn tôi demo thử không?
+meta:
+  id: construction
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

@@ -1,0 +1,247 @@
+pain_points:
+- description: Declining attendance and member engagement, especially among younger
+    generations.
+  severity: high
+  solution_hint: AI voice agent can send personalized reminders, conduct follow-up
+    calls, and gather feedback to improve engagement.
+- description: Limited staff and volunteer resources leading to burnout and inefficiencies.
+  severity: high
+  solution_hint: Automate routine tasks like scheduling, answering FAQs, and sending
+    updates to free up human resources.
+- description: Inefficient communication with congregation, resulting in missed announcements
+    and low participation.
+  severity: medium
+  solution_hint: Use AI voice agent for automated calls, event reminders, and information
+    dissemination in multiple formats.
+- description: Difficulty in managing donations and tracking finances, with manual
+    processes causing errors.
+  severity: medium
+  solution_hint: Integrate with donation platforms to process payments, send receipts,
+    and provide updates via voice calls.
+- description: Compliance with data privacy laws like CCPA, requiring secure handling
+    of member information.
+  severity: high
+  solution_hint: AI voice agent can ensure data is processed securely, with opt-in
+    features and encrypted communications.
+- description: Event planning and coordination challenges, including low turnout and
+    logistical issues.
+  severity: medium
+  solution_hint: Automate event registrations, send reminders, and handle inquiries
+    to streamline planning.
+- description: Keeping up with digital trends, such as online streaming and mobile
+    engagement, without technical expertise.
+  severity: low
+  solution_hint: Provide easy-to-use voice interfaces for managing digital content
+    and interacting with online audiences.
+typical_services:
+- Worship Services
+- Pastoral Care and Counseling
+- Religious Education and Sunday School
+- Community Outreach and Mission Trips
+- Event Hosting (e.g., weddings, funerals, holiday celebrations)
+- Online Streaming and Digital Sermons
+- Donation and Tithing Management
+- Member Engagement and Communication
+- Volunteer Coordination
+- Facility and Resource Management
+recommended_functions:
+- name: FAQ Answering
+  priority: high
+  reason: Reduces staff workload by handling common inquiries about services, hours,
+    and events.
+- name: Appointment Scheduling
+  priority: high
+  reason: Streamlines pastoral care and counseling sessions, improving accessibility
+    for members.
+- name: Donation Processing and Reminders
+  priority: medium
+  reason: Increases giving efficiency and ensures timely follow-ups, boosting financial
+    stability.
+- name: Event Registration and Reminders
+  priority: medium
+  reason: Enhances event attendance and reduces no-shows through automated communication.
+- name: Member Check-ins and Follow-ups
+  priority: low
+  reason: Improves engagement by regularly connecting with members, especially during
+    low-activity periods.
+- name: Compliance Monitoring for Data Privacy
+  priority: high
+  reason: Ensures adherence to CCPA and other regulations by managing consent and
+    data handling.
+typical_integrations:
+- name: Church Management Software (ChMS)
+  examples:
+  - Planning Center
+  - Breeze
+  - ChurchTrac
+  priority: high
+- name: Donation and Payment Platforms
+  examples:
+  - Tithe.ly
+  - Pushpay
+  - Vanco
+  priority: high
+- name: Calendar and Scheduling Systems
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+- name: Communication and Marketing Tools
+  examples:
+  - Mailchimp
+  - Flocknote
+  - Texting Services
+  priority: medium
+- name: Streaming and Content Management Systems
+  examples:
+  - YouTube Live
+  - Facebook Live
+  - Vimeo
+  priority: low
+industry_faq:
+- question: What are your service times and locations?
+  answer_template: Our main worship services are on Sundays at 9 AM and 11 AM at [Location].
+    We also offer online streaming via our website.
+- question: How can I make a donation or tithe?
+  answer_template: You can donate online through our secure platform, via text, or
+    by calling our automated system. All donations are tax-deductible.
+- question: Do you offer pastoral counseling or support groups?
+  answer_template: Yes, we provide pastoral counseling by appointment. You can schedule
+    a session by calling our voice agent or visiting our website.
+- question: What events are coming up for the community?
+  answer_template: Upcoming events include [Event Name] on [Date]. For details and
+    registration, please check our calendar or ask our voice agent.
+- question: How do I volunteer or get involved?
+  answer_template: We have various volunteer opportunities. You can sign up through
+    our voice agent or contact our volunteer coordinator at [Contact Info].
+- question: Is my personal information kept private?
+  answer_template: Absolutely. We comply with CCPA and other privacy laws. Your data
+    is secure and used only with your consent.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential customer inquires about pricing during a sales call.
+  script: Thank you for asking. Our plans start at $99 per month, which includes basic
+    automation for communications and scheduling. This can save your staff up to 10
+    hours a week, offering a quick return on investment.
+  goal: Provide clear pricing and highlight cost-saving benefits to encourage sign-up.
+- trigger: service_inquiry
+  situation: When a customer asks about specific services the AI voice agent can handle.
+  script: Our AI voice agent can manage tasks like answering FAQs, scheduling appointments,
+    processing donations, and sending event reminders. It integrates seamlessly with
+    your existing systems to enhance efficiency.
+  goal: Demonstrate the versatility and integration capabilities to address customer
+    needs.
+- trigger: compliance_concern
+  situation: When a customer expresses worries about data privacy and regulatory compliance.
+  script: We understand your concern. Our solution is designed to comply with CCPA
+    and other regulations, with features like encrypted communications and consent
+    management to protect member data.
+  goal: Reassure the customer about security and compliance to build trust.
+- trigger: roi_doubt
+  situation: When a customer doubts the return on investment for implementing an AI
+    voice agent.
+  script: Based on similar clients, our AI voice agent typically saves $200 monthly
+    in staff time and increases donation responses by 30%. The payback period is often
+    less than two months.
+  goal: Use data-driven examples to justify the investment and overcome hesitation.
+competitors:
+- name: Manual Administrative Processes
+  positioning: Traditional, non-automated methods used by many religious organizations.
+  strengths:
+  - No software cost
+  - familiar to existing staff
+  - simple to implement
+  weaknesses:
+  - Time-consuming
+  - prone to errors
+  - inefficient for scaling
+  our_differentiation: Our AI voice agent automates tasks, reduces workload, and improves
+    accuracy with 24/7 availability.
+- name: General Church Management Software (e.g., Planning Center)
+  positioning: Comprehensive software solutions for church administration and management.
+  strengths:
+  - Feature-rich
+  - established user base
+  - integrates with various tools
+  weaknesses:
+  - Can be costly
+  - may require training
+  - lacks dedicated AI voice capabilities
+  our_differentiation: We offer specialized AI voice interaction that enhances member
+    engagement without replacing existing systems, acting as a complementary tool.
+- name: Other AI and Automation Providers (e.g., chatbots)
+  positioning: Technology companies offering automation for customer service.
+  strengths:
+  - Advanced technology
+  - scalable
+  - often lower cost
+  weaknesses:
+  - May not understand religious context
+  - limited industry-specific features
+  our_differentiation: Our solution is tailored for the religion industry, with localized
+    terminology, compliance focus, and understanding of unique pain points.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Automating appointment scheduling and member follow-ups
+    monthly_cost: 99
+    monthly_savings: 200
+    payback_months: 1
+  - scenario: Increasing donation processing efficiency
+    monthly_cost: 150
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Save up to 20 hours per week on administrative tasks
+  - Boost member engagement by 25% with personalized communications
+  - Ensure compliance with data privacy laws without extra effort
+market_context:
+  market_size: Approximately $1.2 billion for church technology and services in the
+    U.S.
+  growth_rate: 12% YoY, driven by digital transformation and post-pandemic adaptations.
+  key_trends:
+  - Rise in hybrid and online worship models
+  - Increased demand for data security and privacy
+  - Growth in mobile and contactless giving
+  - Focus on multi-generational engagement strategies
+  seasonality:
+    high:
+    - Christmas season (November-December)
+    - Easter period (March-April)
+    - Back-to-School events (August-September)
+    low:
+    - Summer months (June-August)
+    - Post-holiday periods (January-February)
+typical_objections:
+- objection: We're a small church and can't afford new technology.
+  response: Our entry-level plan at $99 per month is designed for small budgets and
+    can quickly pay for itself by saving staff time. Let's discuss a tailored solution.
+- objection: Our older members aren't tech-savvy and might not use this.
+  response: AI voice agents are accessible via phone calls, which are familiar to
+    all ages. We can set up simple voice commands to ensure everyone can benefit.
+- objection: We're concerned about losing the personal touch with automation.
+  response: Our AI handles routine tasks, freeing up your staff for more meaningful,
+    personal interactions. It enhances, not replaces, human connection.
+- objection: Implementing new systems seems too complicated and time-consuming.
+  response: We offer seamless integration with your current tools and provide full
+    support during setup. Most clients see value within the first month.
+meta:
+  id: religion
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

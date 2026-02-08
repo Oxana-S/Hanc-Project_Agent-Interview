@@ -1,0 +1,215 @@
+pain_points:
+- description: Magas energiaárak miatti ügyfélpanaszok kezelése
+  severity: high
+  solution_hint: AI hangügynök segíthet árak összehasonlításában és alternatív ajánlatok
+    bemutatásában
+- description: Bonyolult számlázási rendszerek hibáinak gyakori előfordulása
+  severity: medium
+  solution_hint: Automatizált számlaellenőrzés és hibajelentés AI segítségével
+- description: Megújuló energiaforrások integrálása a hálózatba
+  severity: high
+  solution_hint: AI-alapú előrejelzés a termelés és fogyasztás optimalizálására
+- description: GDPR megfelelőségi követelmények betartása az ügyféladatok kezelésében
+  severity: high
+  solution_hint: AI hangügynök biztosítja az adatvédelmi szabályok automatikus betartását
+- description: Ügyféltámogatás túlterheltsége csúcsidőszakokban
+  severity: medium
+  solution_hint: 24/7 AI hangügynök válaszol gyakori kérdésekre, csökkentve a várakozási
+    időt
+- description: Hálózati kimaradások gyors bejelentésének hiánya
+  severity: low
+  solution_hint: AI hangügynök automatikusan riaszt és koordinálja a javítási folyamatokat
+typical_services:
+- Energiaszolgáltatás (áram és gáz)
+- Okosmérő rendszerek telepítése
+- Energiatakarékossági tanácsadás
+- Megújuló energiaforrások (nap- és szélerőművek) beüzemelése
+- Energiahálózat karbantartás és felügyelet
+- Számlázási és fizetési megoldások
+- Energiahatékonysági vizsgálatok
+- Ügyfélszolgálat és panaszkezelés
+- Energiapiacelemzés és jelentéskészítés
+- Vészhelyzeti támogatás és riasztás
+recommended_functions:
+- name: Ügyfélszolgálati kérdések kezelése
+  priority: high
+  reason: Csökkenti a várakozási időt és javítja az ügyfélélményt
+- name: Számla- és fizetési információk nyújtása
+  priority: high
+  reason: Gyakori ügyfélkérés, időt takarít meg
+- name: Energiafogyasztási tanácsadás
+  priority: medium
+  reason: Segít ügyfeleknek csökkenteni költségeiket és növelni lojalitást
+- name: Szolgáltatási meghibásodások bejelentése
+  priority: medium
+  reason: Gyors válaszadás javítja a megbízhatóságot
+- name: Új szolgáltatások ajánlása
+  priority: low
+  reason: Növeli az értékesítési lehetőségeket
+- name: GDPR megfelelőségi nyilatkozatok kezelése
+  priority: high
+  reason: Biztosítja a jogi követelmények teljesülését
+typical_integrations:
+- name: ERP rendszerek
+  examples:
+  - SAP
+  - Navision
+  - Bábel
+  priority: high
+- name: Számlázó szoftverek
+  examples:
+  - Szamlazz.hu
+  - Billingo
+  - BillingExpress
+  priority: high
+- name: Ügyfélkapcsolat-kezelő (CRM) rendszerek
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - SuperOffice
+  priority: medium
+- name: Energiamenedzsment szoftverek
+  examples:
+  - EnergyCAP
+  - eSight
+  - GridPoint
+  priority: medium
+- name: Okosmérő adatkezelő platformok
+  examples:
+  - Landis+Gyr
+  - Itron
+  - Honeywell
+  priority: low
+industry_faq:
+- question: Mennyibe kerül az energia átszolgáltatása?
+  answer_template: Az ár függ a fogyasztástól és a szerződés típusától. Kérjük, adja
+    meg részletesebb információkat pontos árajánlatunkhoz.
+- question: Hogyan jelenthetem be a hálózati hibát?
+  answer_template: Az AI hangügynök segítségével azonnal bejelentheti a hibát, és
+    nyomon követheti a javítás állapotát.
+- question: Mikor kapom meg a havi számlámat?
+  answer_template: A számlák általában hónap elején kerülnek kiszállításra. Beállíthat
+    automatikus emlékeztetőket.
+- question: Hogyan csökkenthetem az energiafogyasztásomat?
+  answer_template: Ajánlunk energiatakarékossági tanácsadást és okosmérő rendszereket
+    a fogyasztás optimalizálására.
+- question: Milyen megújuló energia lehetőségek állnak rendelkezésre?
+  answer_template: Kínálunk napelem és szélerőmű beüzemelést, állami támogatásokkal
+    együtt.
+- question: Hogyan védik az adataimat a GDPR szerint?
+  answer_template: AI hangügynökünk automatikusan betartja az adatvédelmi szabályokat,
+    biztonságos adatkezelést garantálva.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor ügyfél árakat kér
+  script: Köszönöm kérdését! Pontos árajánlatunkhoz szükségem van néhány információra,
+    például a havi fogyasztásra. Segíthetek ebben?
+  goal: Információgyűjtés és kapcsolatteremtés pontos ajánlathoz
+- trigger: service_inquiry
+  situation: Amikor ügyfél új szolgáltatásokról érdeklődik
+  script: Örülök, hogy érdekli szolgáltatásaink! Jelenleg kínálunk energiatakarékossági
+    tanácsadást és okosmérő rendszereket. Melyik terület érdekelné leginkább?
+  goal: Érdeklődés felkeltése és értékesítési lehetőség teremtése
+- trigger: complaint_handling
+  situation: Amikor ügyfél panaszkodik
+  script: Sajnálom, hogy problémája van. Segítek a gyors megoldásban. Kérem, írja
+    le röviden a problémát.
+  goal: Ügyfél elégedettségének visszaállítása és megbízhatóság növelése
+- trigger: contract_renewal
+  situation: Amikor ügyfél szerződés-megújításról beszél
+  script: Értesítjük, hogy szerződése lejár. Kínálunk kedvezőbb feltételekkel új ajánlatokat.
+    Szeretne részleteket?
+  goal: Megtartás és upsell lehetőség
+competitors:
+- name: MVM
+  positioning: Állami tulajdonú, piacvezető
+  strengths:
+  - Széles hálózat
+  - Állami támogatás
+  - Megbízhatóság
+  weaknesses:
+  - Lassú innováció
+  - Magas árak
+  - Korlátozott ügyfélszolgálat
+  our_differentiation: Gyorsabb, személyre szabott AI-alapú szolgáltatások alacsonyabb
+    költségekkel
+- name: E.ON
+  positioning: Nemzetközi energiavállalat
+  strengths:
+  - Globális tapasztalat
+  - Fejlett technológia
+  - Diverz szolgáltatások
+  weaknesses:
+  - Magasabb költségek
+  - Kevesebb helyi fókusz
+  - Bonyolult szerződések
+  our_differentiation: Helyi piaci ismeret és rugalmasabb, olcsóbb megoldások
+- name: NKM
+  positioning: Regionális szolgáltató
+  strengths:
+  - Helyi jelenlét
+  - Gyors reagálás
+  - Közösségi kapcsolatok
+  weaknesses:
+  - Korlátozott szolgáltatások
+  - Alacsony technológiai szint
+  - Instabil árazás
+  our_differentiation: AI-alapú innováció és skálázható, hatékony szolgáltatások
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 75000
+  roi_examples:
+  - scenario: Okosmérő rendszer telepítése kisvállalkozásnál
+    monthly_cost: 15000
+    monthly_savings: 20000
+    payback_months: 3
+  - scenario: Energiatakarékossági tanácsadás háztartásnál
+    monthly_cost: 5000
+    monthly_savings: 8000
+    payback_months: 2
+  value_anchors:
+  - Akár 30%-os energiaköltség-csökkentés AI-optimalizálással
+  - 24/7 ügyfélszolgálat nulla várakozással
+  - GDPR megfelelőség garantálva
+market_context:
+  market_size: Becslések szerint 2000 milliárd HUF éves forgalom
+  growth_rate: 3-5% éves növekedés
+  key_trends:
+  - Megújuló energiaforrások növekvő használata
+  - Digitalizáció és okoshálózatok fejlődése
+  - Energiatakarékossági előírások szigorítása
+  seasonality:
+    high:
+    - tél
+    - nyár
+    low:
+    - tavasz
+    - ősz
+typical_objections:
+- objection: Túl drága a szolgáltatásotok
+  response: Hosszú távon jelentős megtakarítást biztosítunk, és kínálunk fizetési
+    részletezési lehetőségeket.
+- objection: Nem bízom az AI technológiában
+  response: AI hangügynökünk emberi felügyelet alatt működik, és biztonságos, GDPR-kompatibilis
+    adatkezelést garantál.
+- objection: Nincs szükségem új szolgáltatásokra
+  response: Ingyenes energiafogyasztási elemzést kínálunk, hogy lássa, hol takaríthat
+    meg.
+meta:
+  id: energy
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

@@ -1,0 +1,231 @@
+pain_points:
+- description: Administrasi manual yang merepotkan untuk pencatatan pasien dan janji
+    temu, sering menyebabkan kesalahan dan waktu terbuang.
+  severity: high
+  solution_hint: AI voice agent dapat mengotomatiskan penjadwalan, pencatatan pasien,
+    dan pengingat janji melalui telepon atau WhatsApp.
+- description: Kesulitan mengingatkan pemilik hewan tentang jadwal vaksinasi atau
+    perawatan rutin, menyebabkan kepatuhan rendah.
+  severity: medium
+  solution_hint: Agen suara AI dapat mengirim pengingat otomatis via panggilan atau
+    pesan suara dalam bahasa lokal.
+- description: Banyak panggilan telepon yang tidak terjawab saat staf sibuk, berpotensi
+    kehilangan pasien atau keadaan darurat tidak tertangani.
+  severity: high
+  solution_hint: AI voice agent dapat menjawab panggilan 24/7, menangani pertanyaan
+    umum, dan mengarahkan ke staf untuk hal mendesak.
+- description: Manajemen inventaris obat dan alat yang tidak efisien, sering kehabisan
+    stok atau kadaluarsa.
+  severity: medium
+  solution_hint: Integrasi AI dengan sistem inventaris untuk memberikan laporan suara
+    atau peringatan stok menipis.
+- description: Pembukuan dan penagihan manual rentan kesalahan, menghambat arus kas.
+  severity: medium
+  solution_hint: AI dapat membantu konfirmasi pembayaran via telepon dan mengintegrasikan
+    dengan software akuntansi lokal.
+- description: Kompetisi semakin ketat dengan klinik hewan baru, perlu cara menarik
+    dan mempertahankan pelanggan.
+  severity: high
+  solution_hint: Agen suara AI dapat melakukan follow-up kepuasan pelanggan dan menawarkan
+    layanan promosi secara personal.
+- description: Kepatuhan terhadap peraturan PDP (Perlindungan Data Pribadi) yang rumit
+    untuk data pasien hewan.
+  severity: low
+  solution_hint: AI dirancang sesuai standar PDP, memastikan data pasien aman dalam
+    komunikasi suara.
+typical_services:
+- Konsultasi kesehatan hewan
+- Vaksinasi
+- Operasi (sterilisasi, bedah umum)
+- Rawat inap
+- Grooming (perawatan bulu dan kuku)
+- Penjualan produk (makanan, obat, aksesori)
+- Pemeriksaan laboratorium
+- Layanan darurat 24 jam
+- Pemotongan kuku dan pembersihan telinga
+- Pemeriksaan kesehatan rutin (check-up)
+recommended_functions:
+- name: Penjadwalan dan Pengingat Janji Otomatis
+  priority: high
+  reason: Mengurangi no-show dan meningkatkan efisiensi administrasi klinik.
+- name: Penanganan Panggilan Masuk 24/7
+  priority: high
+  reason: Menjawab pertanyaan umum dan mengarahkan panggilan darurat, meningkatkan
+    layanan pelanggan.
+- name: Follow-up Pelanggan dan Survei Kepuasan
+  priority: medium
+  reason: Membangun hubungan jangka panjang dan mendapatkan umpan balik untuk perbaikan
+    layanan.
+- name: Pengelolaan Inventaris via Suara
+  priority: low
+  reason: Membantu staf melacak stok obat dan alat dengan perintah suara sederhana.
+- name: Integrasi Pembayaran dan Penagihan
+  priority: medium
+  reason: Mempermudah konfirmasi pembayaran dan mengurangi kesalahan penagihan.
+- name: Analisis Data Pasien Sederhana
+  priority: low
+  reason: Memberikan insight tentang tren penyakit hewan di wilayah tersebut.
+typical_integrations:
+- name: Sistem Manajemen Klinik Hewan Lokal
+  examples:
+  - PetWare
+  - Vetindo
+  - KlinikHeWan
+  priority: high
+- name: Platform Pembayaran Digital
+  examples:
+  - OVO
+  - GoPay
+  - DANA
+  - LinkAja
+  priority: high
+- name: Platform Media Sosial dan Pesan
+  examples:
+  - WhatsApp Business
+  - Instagram
+  - Facebook
+  priority: medium
+- name: Software Akuntansi Indonesia
+  examples:
+  - Jurnal
+  - Accurate Online
+  - Zahir
+  priority: medium
+industry_faq:
+- question: Apakah klinik buka pada akhir pekan atau hari libur?
+  answer_template: Ya, klinik buka setiap hari termasuk akhir pekan dan hari libur.
+    Untuk jam operasional spesifik, silakan hubungi kami atau kunjungi website kami.
+- question: Berapa biaya konsultasi dokter hewan?
+  answer_template: Biaya konsultasi bervariasi tergantung jenis hewan dan kondisi,
+    mulai dari Rp 50.000 hingga Rp 150.000. Untuk informasi tepat, boleh saya jadwalkan
+    konsultasi?
+- question: Apakah tersedia layanan vaksinasi di rumah?
+  answer_template: Ya, kami menyediakan layanan vaksinasi di rumah untuk kenyamanan
+    Anda. Silakan jadwalkan waktu yang sesuai via telepon atau aplikasi.
+- question: Bagaimana cara mendaftar hewan peliharaan untuk perawatan rutin?
+  answer_template: Anda dapat mendaftar melalui panggilan telepon, WhatsApp, atau
+    datang langsung ke klinik. Kami akan bantu buatkan jadwal perawatan.
+- question: Apa yang harus dilakukan jika hewan sakit di malam hari?
+  answer_template: Kami memiliki layanan darurat 24 jam. Segera hubungi nomor darurat
+    kami untuk instruksi lebih lanjut.
+- question: Apakah klinik menjual makanan dan obat hewan?
+  answer_template: Ya, kami menjual berbagai makanan, obat, dan aksesori hewan. Tersedia
+    juga pesan antar untuk area tertentu.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga layanan AI voice agent.
+  script: Halo, terima kasih atas pertanyaannya. Investasi untuk AI voice agent dimulai
+    dari Rp 1.500.000 per bulan, yang dapat menghemat hingga 20 jam waktu admin per
+    minggu. Boleh saya jelaskan lebih detail bagaimana ini bisa mengurangi biaya operasional
+    klinik Bapak/Ibu?
+  goal: Mengubah percakapan harga menjadi diskusi nilai dan ROI.
+- trigger: busy_objection
+  situation: Ketika pemilik klinik mengatakan terlalu sibuk untuk mencoba teknologi
+    baru.
+  script: Saya mengerti kesibukan Bapak/Ibu. Justru AI voice agent ini dirancang untuk
+    menghemat waktu dengan menangani panggilan dan administrasi secara otomatis. Coba
+    2 minggu percobaan gratis, tidak mengganggu operasional sama sekali. Bagaimana?
+  goal: Mengatasi keberatan dengan tawaran percobaan risiko rendah.
+- trigger: competitor_mention
+  situation: Ketika calon klien menyebutkan kompetitor yang sudah menggunakan sistem
+    serupa.
+  script: Bagus bahwa Bapak/Ibu sudah mempertimbangkan solusi ini. Keunggulan kami
+    adalah khusus untuk industri veteriner di Indonesia, dengan dukungan bahasa daerah
+    dan integrasi dengan software lokal seperti PetWare. Selain itu, kami tawarkan
+    pelatihan penuh tanpa biaya tambahan. Tertarik untuk melihat demo?
+  goal: Membedakan produk dari kompetitor dan mendorong demo.
+competitors:
+- name: KlinikHewan.co
+  positioning: Platform manajemen klinik hewan online terkemuka.
+  strengths:
+  - Antarmuka pengguna sederhana
+  - fitur lengkap
+  - dukungan pelanggan 24/7
+  weaknesses:
+  - Harga tinggi
+  - kurang fleksibel untuk klinik kecil
+  - integrasi terbatas
+  our_differentiation: AI voice agent khusus untuk otomatisasi panggilan dan administrasi
+    suara, harga lebih terjangkau, integrasi luas dengan software lokal.
+- name: VetTech Asia
+  positioning: Penyedia solusi teknologi veteriner regional.
+  strengths:
+  - Reputasi kuat di Asia Tenggara
+  - fitur canggih
+  - dukungan multibahasa
+  weaknesses:
+  - Fokus pada klinik besar
+  - implementasi lama
+  - biaya tersembunyi
+  our_differentiation: Fokus lokal Indonesia, implementasi cepat (<1 minggu), tanpa
+    biaya tersembunyi, dukungan bahasa Indonesia dan daerah.
+- name: Solusi manual (staf admin)
+  positioning: Pendekatan tradisional dengan staf manusia.
+  strengths:
+  - Interaksi manusiawi
+  - fleksibel untuk situasi unik
+  weaknesses:
+  - Biaya tinggi
+  - kesalahan manusia
+  - terbatas jam kerja
+  our_differentiation: Otomatisasi 24/7, konsisten, biaya lebih rendah, mengurangi
+    beban kerja staf.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 1000000
+  - 5000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Klinik dengan 200 panggilan/bulan
+    monthly_cost: 2000000
+    monthly_savings: 4000000
+    payback_months: 1
+  value_anchors:
+  - Hemat hingga 20 jam waktu admin per minggu
+  - Tingkatkan kepuasan pelanggan dengan layanan 24/7
+  - Turunkan biaya operasional hingga 30% dalam 6 bulan
+market_context:
+  market_size: Rp 10 triliun (industri veteriner Indonesia)
+  growth_rate: 12% YoY
+  key_trends:
+  - Meningkatnya kepemilikan hewan peliharaan di perkotaan
+  - Permintaan layanan premium seperti grooming dan kesehatan holistik
+  - Digitalisasi klinik hewan pasca pandemi
+  - Kesadaran akan asuransi hewan peliharaan
+  seasonality:
+    high:
+    - Juni-Agustus (libur sekolah)
+    - Desember-Januari (libur akhir tahun)
+    low:
+    - April-Mei (masuk sekolah)
+    - September-Oktober
+typical_objections:
+- objection: Terlalu mahal untuk klinik saya yang kecil.
+  response: Saya mengerti kekhawatiran biaya. Justru klinik kecil paling diuntungkan
+    karena AI bisa menggantikan biaya staf tambahan. Dengan Rp 1.5 juta/bulan, Bapak/Ibu
+    bisa menghemat hingga Rp 4 juta untuk gaji admin. Boleh saya hitungkan ROI khusus
+    untuk klinik Bapak/Ibu?
+- objection: Saya tidak punya waktu untuk setup dan pelatihan.
+  response: Proses setup kami hanya butuh 3 hari dan kami yang akan handle semuanya.
+    Pelatihan gratis via online maksimal 2 jam. Setelah itu, sistem berjalan otomatis.
+    Tidak akan mengganggu operasional sehari-hari.
+- objection: Pelanggan lebih suka bicara langsung dengan manusia.
+  response: Betul, interaksi manusia tetap penting. AI voice agent kami akan menangani
+    tugas rutin seperti penjadwalan dan pengingat, sehingga staf Bapak/Ibu bisa fokus
+    pada konsultasi medis yang lebih bernilai. Pelanggan tetap bisa terhubung dengan
+    manusia saat diperlukan.
+meta:
+  id: veterinary
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

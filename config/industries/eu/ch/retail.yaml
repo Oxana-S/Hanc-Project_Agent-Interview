@@ -1,0 +1,236 @@
+pain_points:
+- description: Schwierigkeit bei der Einhaltung der DSGVO und des Schweizer FADP im
+    Umgang mit Kundendaten.
+  severity: high
+  solution_hint: Automatisierte Datenschutz-Compliance-Checks und Kundeninteraktionsprotokollierung.
+- description: Hohe Personalkosten und Fachkräftemangel im Einzelhandel.
+  severity: high
+  solution_hint: Automatisierung von Routineanfragen und Bestellprozessen durch Voice
+    Agents.
+- description: Komplexe Multichannel-Vertriebskanäle führen zu inkonsistenten Kundenerlebnissen.
+  severity: medium
+  solution_hint: Integration von Sprachassistenten für konsistente Informationen über
+    alle Kanäle.
+- description: Schwieriger Umgang mit saisonalen Nachfrageschwankungen und Lagerbestandsmanagement.
+  severity: medium
+  solution_hint: Echtzeit-Informationen zu Verfügbarkeiten und automatisierte Nachbestellprozesse.
+- description: Schwierige Kommunikation mit mehrsprachiger Kundschaft (Deutsch, Französisch,
+    Italienisch).
+  severity: medium
+  solution_hint: Mehrsprachige Voice Agents für Kundenservice und Produktinformationen.
+- description: Zeitintensive Bearbeitung von Retouren und Reklamationen.
+  severity: medium
+  solution_hint: Automatisierte Erfassung und Vorqualifizierung von Retourenanfragen
+    per Sprache.
+- description: Wettbewerbsdruck durch Online-Handel und Preistransparenz.
+  severity: high
+  solution_hint: Schnelle, personalisierte Beratung und Upselling durch Voice Agents.
+typical_services:
+- Kundenberatung und Produktinformationen
+- Bestellannahme und Auftragsverfolgung
+- Retourenmanagement und Reklamationsbearbeitung
+- Terminvereinbarungen für persönliche Beratung
+- Multichannel-Kundensupport (Telefon, Chat, Sprachassistent)
+- Lagerbestandsabfrage und Verfügbarkeitsinformation
+- Mehrsprachiger Kundenservice (Deutsch, Französisch, Italienisch)
+- Marketing- und Promotion-Informationen
+- Datenschutz- und Compliance-Informationen für Kunden
+- Feedback- und Umfrageerfassung
+recommended_functions:
+- name: Mehrsprachige Kundenansprache
+  priority: high
+  reason: Schweiz ist mehrsprachig, Kunden erwarten Service in ihrer Sprache.
+- name: Automatische Bestellannahme
+  priority: high
+  reason: Entlastet Personal, beschleunigt Kaufprozesse.
+- name: Datenschutz-Compliance-Überwachung
+  priority: high
+  reason: Einhaltung von DSGVO und FADP ist gesetzlich verpflichtend.
+- name: Retourenprozess-Vorqualifizierung
+  priority: medium
+  reason: Reduziert Aufwand bei Rücksendungen und Reklamationen.
+- name: Echtzeit-Lagerabfrage
+  priority: medium
+  reason: Wichtig für korrekte Kundeninformation und Vermeidung von Fehlbeständen.
+- name: Personalisierte Produktberatung
+  priority: medium
+  reason: Steigert Kundenzufriedenheit und Umsätze.
+- name: Multichannel Integration
+  priority: medium
+  reason: Einheitliches Kundenerlebnis über alle Kanäle hinweg.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - Abacus
+  - Sage
+  - SAP
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  - CAS genesisWorld
+  priority: high
+- name: Kassensysteme
+  examples:
+  - LS Retail
+  - Abacus
+  - Vectron
+  priority: medium
+- name: E-Commerce Plattformen
+  examples:
+  - Shopify
+  - Magento
+  - WooCommerce
+  priority: medium
+- name: Datenschutz-Management Tools
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: low
+- name: Kommunikationsplattformen
+  examples:
+  - Twilio
+  - Genesys
+  - Cisco
+  priority: medium
+industry_faq:
+- question: Wie kann ich eine Bestellung aufgeben?
+  answer_template: Sie können Ihre Bestellung telefonisch über unseren Sprachassistenten
+    aufgeben oder online in unserem Shop.
+- question: Welche Zahlungsmöglichkeiten gibt es?
+  answer_template: Wir akzeptieren Bargeld, Kreditkarten, Twint sowie verschiedene
+    Online-Zahlungsmethoden.
+- question: Wie lange dauert die Lieferung?
+  answer_template: Die Lieferzeit beträgt in der Regel 2-4 Werktage, abhängig vom
+    Lagerbestand und Ihrem Standort.
+- question: Kann ich eine Bestellung ändern oder stornieren?
+  answer_template: Änderungen oder Stornierungen sind möglich, sofern die Bestellung
+    noch nicht versandt wurde. Bitte kontaktieren Sie unseren Kundenservice.
+- question: Wie funktioniert die Rückgabe von Produkten?
+  answer_template: Sie können Produkte innerhalb von 14 Tagen zurückgeben. Nutzen
+    Sie dafür unser Retourenportal oder kontaktieren Sie unseren Sprachassistenten.
+- question: Sind meine Daten sicher?
+  answer_template: Ja, wir halten uns strikt an die Datenschutzgesetze DSGVO und FADP
+    zum Schutz Ihrer persönlichen Daten.
+- question: Gibt es Rabatte für Stammkunden?
+  answer_template: Ja, wir bieten spezielle Rabatte und Aktionen für unsere treuen
+    Kunden an. Fragen Sie unseren Sprachassistenten danach.
+sales_scripts:
+- trigger: preisfrage
+  situation: Kunde erkundigt sich nach den Kosten für den Service
+  script: Unsere Preise beginnen bereits bei CHF 500 pro Monat, abhängig von Ihrem
+    individuellen Bedarf. Gerne erstelle ich Ihnen ein unverbindliches Angebot.
+  goal: Preisvorstellungen kommunizieren und Interesse an Angebot wecken
+- trigger: datenschutzbedenken
+  situation: Kunde äußert Bedenken bezüglich Datenschutz
+  script: Datenschutz ist uns sehr wichtig. Unsere Lösungen erfüllen alle Anforderungen
+    der DSGVO und des Schweizer FADP, sodass Ihre Daten sicher sind.
+  goal: Vertrauen schaffen und Compliance hervorheben
+- trigger: konkurrenzvergleich
+  situation: Kunde vergleicht mit Wettbewerbern
+  script: Unsere Voice-Agent-Lösung ist speziell auf den Schweizer Einzelhandel zugeschnitten
+    und unterstützt mehrsprachigen Service sowie lokale Integrationen.
+  goal: Differenzierung vom Wettbewerb
+- trigger: nutzennachfrage
+  situation: Kunde fragt nach konkretem Nutzen
+  script: Mit unserem Voice Agent reduzieren Sie Kosten durch Automatisierung und
+    verbessern gleichzeitig das Kundenerlebnis durch schnellen, personalisierten Service.
+  goal: Vorteile klar kommunizieren und Kaufbereitschaft fördern
+competitors:
+- name: Swiss Voice Solutions AG
+  positioning: Marktführer im Bereich Voice Automation in der Schweiz
+  strengths:
+  - Starke lokale Präsenz
+  - Umfangreiche Integrationen mit Schweizer ERP-Systemen
+  - Mehrsprachiger Support
+  weaknesses:
+  - Höhere Preise
+  - Weniger flexible Anpassungen
+  our_differentiation: Flexiblere und kosteneffizientere Lösungen mit stärkerer Personalisierung
+- name: VoiceCommerce GmbH
+  positioning: Spezialist für Einzelhandel mit Fokus auf E-Commerce
+  strengths:
+  - Tiefe E-Commerce Integration
+  - Gute Benutzeroberfläche
+  weaknesses:
+  - Begrenzte Offline-Funktionalität
+  - Weniger Fokus auf Datenschutz
+  our_differentiation: Bessere Datenschutz-Compliance und Offline-Optionen
+- name: RetailTalk AG
+  positioning: Anbieter von Sprachassistenten für KMU im Handel
+  strengths:
+  - Preislich attraktiv für kleine Unternehmen
+  - Schnelle Implementierung
+  weaknesses:
+  - Eingeschränkte Skalierbarkeit
+  - Weniger Funktionen für komplexe Geschäftsprozesse
+  our_differentiation: Skalierbare Lösungen für wachsende Unternehmen mit umfangreichen
+    Funktionen
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung von Kundenbestellungen in einem mittelgrossen Einzelhandelsgeschäft
+    monthly_cost: 800
+    monthly_savings: 2000
+    payback_months: 1
+  - scenario: Reduktion von Personalaufwand im Kundenservice für eine Filialkette
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 1
+  value_anchors:
+  - Mit unserer Lösung sparen Sie Personalkosten und erhöhen die Kundenzufriedenheit.
+  - Investieren Sie in die Zukunft Ihres Einzelhandels mit moderner Sprachautomation.
+  - Unsere Voice Agents helfen Ihnen, Ihre Compliance-Anforderungen sicher zu erfüllen.
+market_context:
+  market_size: 4500000000
+  growth_rate: 7
+  key_trends:
+  - Digitalisierung im Einzelhandel nimmt stark zu
+  - Multichannel-Vertrieb wird zum Standard
+  - Stärkere Fokussierung auf Datenschutz und Compliance
+  - Nachfrage nach mehrsprachigen Kundenservices wächst
+  - Automatisierung zur Kostensenkung und Effizienzsteigerung
+  seasonality:
+    high:
+    - Weihnachten
+    - Black Friday / Cyber Monday
+    - Frühling für Saisonartikel
+    low:
+    - Sommerferienzeit
+    - Januar nach den Feiertagen
+typical_objections:
+- objection: Das klingt zu teuer für unser Unternehmen.
+  response: Unsere Lösung passt sich Ihrer Unternehmensgrösse an und bietet ein attraktives
+    Preis-Leistungs-Verhältnis mit schnellem ROI.
+- objection: Wir haben Bedenken bezüglich Datenschutz.
+  response: Datenschutz steht bei uns an erster Stelle. Unsere Systeme sind vollständig
+    konform mit DSGVO und FADP.
+- objection: Wir sind zufrieden mit unseren aktuellen Prozessen.
+  response: Mit unserem Voice Agent können Sie Prozesse effizienter gestalten und
+    gleichzeitig die Kundenzufriedenheit erhöhen.
+- objection: Wir haben keine Zeit für eine lange Implementierung.
+  response: Unsere Lösung ist schnell implementierbar und kann stufenweise eingeführt
+    werden, ohne den Betriebsablauf zu stören.
+- objection: Unsere Kunden sprechen verschiedene Sprachen, das ist kompliziert.
+  response: Unsere Voice Agents unterstützen alle Landessprachen der Schweiz und bieten
+    so einen nahtlosen Service für Ihre mehrsprachige Kundschaft.
+meta:
+  id: retail
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- retail
+- shop
+- store
+- e-commerce
+- merchandise
+_extends: _base/retail

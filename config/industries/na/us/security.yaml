@@ -1,0 +1,228 @@
+pain_points:
+- description: High costs associated with compliance audits and maintaining standards
+    like CCPA and HIPAA.
+  severity: high
+  solution_hint: AI voice agent can provide automated compliance checks and reminders,
+    reducing manual effort and costs.
+- description: Difficulty in finding and retaining skilled cybersecurity professionals.
+  severity: high
+  solution_hint: Voice agent can handle routine inquiries and support tasks, freeing
+    up human experts for complex issues.
+- description: Increasing frequency and sophistication of cyber attacks, leading to
+    data breaches.
+  severity: high
+  solution_hint: AI agent can monitor alerts and initiate predefined response protocols,
+    speeding up incident response.
+- description: Managing multiple security tools and systems creates integration challenges
+    and operational inefficiencies.
+  severity: medium
+  solution_hint: Voice agent can integrate with various systems to provide unified
+    status updates and control.
+- description: Customer concerns about data privacy and security affecting trust and
+    sales.
+  severity: medium
+  solution_hint: Agent can reassure customers by providing clear, compliant information
+    and handling privacy queries.
+- description: High false positives in security alerts wasting time and resources.
+  severity: medium
+  solution_hint: AI voice agent can filter and prioritize alerts based on learned
+    patterns, improving accuracy.
+typical_services:
+- Managed Detection and Response (MDR)
+- Vulnerability Assessment and Penetration Testing (VAPT)
+- Security Information and Event Management (SIEM)
+- Endpoint Protection
+- Cloud Security
+- Compliance Consulting (CCPA, HIPAA)
+- Incident Response and Forensics
+- Security Awareness Training
+- Network Security Monitoring
+- Identity and Access Management (IAM)
+recommended_functions:
+- name: Compliance Query Handler
+  priority: high
+  reason: Essential for addressing CCPA and HIPAA compliance questions, which are
+    common in the US market.
+- name: Service Scheduling Assistant
+  priority: high
+  reason: Helps book assessments and consultations, streamlining sales and service
+    delivery.
+- name: Incident Alert Notifier
+  priority: high
+  reason: Critical for real-time security monitoring and rapid response to threats.
+- name: FAQ Responder for Pricing and Services
+  priority: medium
+  reason: Reduces call volume and provides instant information to potential clients.
+- name: Integration Status Checker
+  priority: medium
+  reason: Assists in managing multiple security tools by providing updates on system
+    integrations.
+- name: Competitor Comparison Explainer
+  priority: low
+  reason: Helps in sales by highlighting differentiation against local competitors.
+typical_integrations:
+- name: Security Information and Event Management (SIEM) Systems
+  examples:
+  - Splunk
+  - IBM QRadar
+  - LogRhythm
+  priority: high
+- name: Customer Relationship Management (CRM) Software
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Endpoint Protection Platforms
+  examples:
+  - CrowdStrike
+  - McAfee
+  - Symantec
+  priority: high
+- name: Cloud Security Tools
+  examples:
+  - AWS Security Hub
+  - Azure Security Center
+  priority: medium
+- name: Compliance Management Systems
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+industry_faq:
+- question: How much does cybersecurity service cost in the US?
+  answer_template: Costs vary based on services; entry-level plans start around $500
+    USD per month, with comprehensive solutions ranging from $2,000 to $10,000+ monthly.
+- question: Are your services compliant with CCPA and HIPAA?
+  answer_template: Yes, we ensure all our services meet CCPA and HIPAA requirements,
+    with dedicated compliance consulting available.
+- question: What sets you apart from other security providers?
+  answer_template: We offer integrated AI voice agents for real-time support and automation,
+    reducing costs and improving response times compared to traditional methods.
+- question: How quickly can you respond to a security incident?
+  answer_template: Our AI-enhanced systems enable response within minutes, with 24/7
+    monitoring and automated alert handling.
+- question: Do you provide training for our staff?
+  answer_template: Yes, we include security awareness training as part of our packages
+    to help prevent human error.
+- question: Can you integrate with our existing tools?
+  answer_template: Absolutely, we support integration with common systems like Splunk,
+    Salesforce, and cloud platforms for seamless operations.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential customer asks about pricing.
+  script: Our cybersecurity solutions start at $500 per month, tailored to your needs.
+    Would you like a custom quote based on your specific requirements?
+  goal: Engage the customer and move towards a detailed consultation.
+- trigger: compliance_concern
+  situation: When a customer expresses worry about CCPA or HIPAA compliance.
+  script: We specialize in compliance-focused security, ensuring your data meets all
+    regulations. Let me explain how our services can automate compliance checks and
+    reduce risks.
+  goal: Alleviate concerns and highlight expertise.
+- trigger: competitor_mention
+  situation: When a customer compares us to competitors like CrowdStrike or Palo Alto
+    Networks.
+  script: While they offer strong tools, our AI voice agents add a layer of automation
+    and customer support that saves time and money. We provide more personalized,
+    integrated solutions.
+  goal: Differentiate our offering and emphasize value.
+- trigger: service_inquiry
+  situation: When a customer asks about specific services like MDR or vulnerability
+    testing.
+  script: We offer comprehensive services including Managed Detection and Response
+    and Vulnerability Assessments. Can I schedule a demo to show how they work for
+    your business?
+  goal: Convert interest into a sales opportunity.
+competitors:
+- name: Palo Alto Networks
+  positioning: Leader in network security and firewall solutions.
+  strengths:
+  - Strong brand recognition
+  - extensive product portfolio
+  - global presence
+  weaknesses:
+  - Higher costs
+  - complex implementations
+  - less focus on AI automation
+  our_differentiation: We integrate AI voice agents for better customer interaction
+    and cost efficiency.
+- name: CrowdStrike
+  positioning: Top player in endpoint protection and threat intelligence.
+  strengths:
+  - Cloud-native platform
+  - rapid deployment
+  - effective threat detection
+  weaknesses:
+  - Can be expensive
+  - limited in broader service integration
+  our_differentiation: Our solutions include holistic services with automated support
+    via voice agents.
+- name: IBM Security
+  positioning: Enterprise-focused with wide-ranging security services.
+  strengths:
+  - Trusted brand
+  - comprehensive offerings
+  - strong in compliance
+  weaknesses:
+  - Slower innovation
+  - higher pricing
+  - less agile
+  our_differentiation: We offer more agile, AI-driven approaches with competitive
+    pricing.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating compliance checks reducing manual audit hours.
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 0.5
+  - scenario: Reducing false positives in alerts saving IT staff time.
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 0.5
+  value_anchors:
+  - Save up to 50% on compliance costs with AI automation
+  - Improve incident response time by 80%
+  - Scalable solutions starting at affordable rates
+market_context:
+  market_size: Estimated at $150 billion annually in the US
+  growth_rate: 10% YoY
+  key_trends:
+  - Increased adoption of AI and machine learning in security
+  - Growing focus on cloud security
+  - Rising demand for compliance due to regulations like CCPA
+  seasonality:
+    high:
+    - Q4 due to year-end audits and budget cycles
+    - After major cyber incidents in news
+    low:
+    - Summer months when businesses may slow down
+typical_objections:
+- objection: Your services are too expensive for our small business.
+  response: We offer scalable plans starting at $500 per month, and our AI automation
+    can actually reduce your overall costs by saving on labor and compliance fees.
+- objection: We already have security tools in place; why switch?
+  response: Our AI voice agents integrate seamlessly with your existing systems to
+    enhance efficiency and provide better support, without requiring a full overhaul.
+- objection: I'm concerned about the reliability of AI in security.
+  response: Our AI is designed to augment human experts, not replace them. It handles
+    routine tasks, allowing your team to focus on strategic threats, with proven accuracy
+    and compliance.
+meta:
+  id: security
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

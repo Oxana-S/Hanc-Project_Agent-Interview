@@ -1,0 +1,261 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand für Gemeindemitgliederlisten, Spendenbescheinigungen
+    und Veranstaltungsorganisation bei begrenzten ehrenamtlichen Ressourcen.
+  severity: high
+  solution_hint: Automatisierte Erinnerungen für Spendenbescheinigungen, digitale
+    Anmeldung für Veranstaltungen und Mitgliederverwaltung.
+- description: Nachlassende regelmäßige Teilnahme an Präsenzveranstaltungen, insbesondere
+    bei jüngeren Gemeindemitgliedern.
+  severity: high
+  solution_hint: Automatisierte Einladungen und Erinnerungen per Telefon, Umfragen
+    zur Präferenz von Hybridformaten (online/offline).
+- description: Komplexe Planung und Koordination von ehrenamtlichen Helfern für Gottesdienste,
+    Feste und soziale Dienste.
+  severity: medium
+  solution_hint: Sprachgesteuerte Helferplanung mit automatisierten Erinnerungsanrufen
+    und Schichtverwaltung.
+- description: Schwierigkeiten bei der Erreichung und Integration neuer Gemeindemitglieder,
+    besonders in städtischen Gebieten.
+  severity: medium
+  solution_hint: Willkommensanrufe für neue Interessenten, automatisierte Informationsweitergabe
+    über Gemeindeleben.
+- description: Ineffizientes Spendenmanagement und unregelmäßige Kommunikation mit
+    Spendern.
+  severity: medium
+  solution_hint: Automatisierte Dankes-Anrufe für Spenden, regelmäßige Updates zu
+    Projekten per Sprachmessage.
+- description: Hoher Zeitaufwand für die Beantwortung von Routineanfragen zu Gottesdienstzeiten,
+    Räumlichkeiten oder seelsorgerischen Angeboten.
+  severity: low
+  solution_hint: 24/7 Sprachagent für häufig gestellte Fragen, Weiterleitung dringender
+    seelsorgerischer Anfragen.
+- description: Herausforderungen bei der Einhaltung der DSGVO bei der Kontaktverwaltung
+    und Kommunikation.
+  severity: high
+  solution_hint: DSGVO-konforme Sprachprotokolle, Einholung und Verwaltung von Einwilligungen
+    über gesprochene Interaktion.
+typical_services:
+- Gottesdienstorganisation und -durchführung
+- Seelsorge und Telefonseelsorge
+- Kommunion- und Firmunterricht
+- Gemeindefeste und Veranstaltungen
+- Chor- und Musikgruppenleitung
+- Soziale Dienste (z.B. Pfarrcaritas, Suppenküche)
+- Religionsunterricht an Schulen
+- Trauer- und Trauungsbegleitung
+- Gemeindebrief- und Newsletter-Erstellung
+- Spendenakquise und -verwaltung
+recommended_functions:
+- name: Automatisierte Gemeindekommunikation
+  priority: high
+  reason: Entlastet Haupt- und Ehrenamtliche durch automatisierte Anrufe für Terminerinnerungen,
+    Veranstaltungseinladungen und Gemeindenachrichten.
+- name: Routine-Anfrage-Beantworter
+  priority: high
+  reason: Beantwortet rund um die Uhr häufige Fragen zu Öffnungszeiten, Gottesdienstplänen
+    oder Anmeldeverfahren.
+- name: Spendenmanagement-Assistent
+  priority: medium
+  reason: Ermöglicht Spendenquittungsversand, Dankesanrufe und spendenbezogene Updates,
+    um die Spenderbindung zu stärken.
+- name: Ehrenamtlichen-Koordinator
+  priority: medium
+  reason: Plant Dienste, verschickt Erinnerungen und verwaltet Verfügbarkeiten von
+    Freiwilligen per Sprache.
+- name: Neumitglieder-Onboarding
+  priority: low
+  reason: Führt Willkommensgespräche, informiert über Angebote und vereinbart Kennenlerngespräche
+    mit Geistlichen.
+- name: DSGVO-Einwilligungsmanager
+  priority: high
+  reason: Sichert im Gespräch die erforderlichen Einwilligungen für Kontakte und Kommunikation
+    DSGVO-konform.
+typical_integrations:
+- name: Gemeindeverwaltungssoftware (Pfarrverwaltung)
+  examples:
+  - WinPfarre
+  - PfarreiOnline
+  - Kirchenverwaltung CASA
+  priority: high
+- name: Terminplanungssysteme
+  examples:
+  - Doodle
+  - Calendly
+  - Google Kalender
+  priority: medium
+- name: Newsletter- und E-Mail-Marketing-Tools
+  examples:
+  - Mailchimp
+  - CleverReach
+  - Newsletter2Go
+  priority: medium
+- name: Buchhaltungs- und Spendenverwaltungssoftware
+  examples:
+  - Datev
+  - SAP
+  - hausinterne Lösungen
+  priority: high
+- name: Video-Konferenz-Systeme
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Google Meet
+  priority: low
+industry_faq:
+- question: Zu welchen Zeiten finden die Gottesdienste statt?
+  answer_template: Die aktuellen Gottesdienstzeiten finden Sie auf unserer Website
+    oder im Gemeindebrief. Gerne kann ich Ihnen die Zeiten für den kommenden Sonntag
+    nennen.
+- question: Wie kann ich mein Kind zur Erstkommunion anmelden?
+  answer_template: Die Anmeldung zur Erstkommunion erfolgt über das Pfarrbüro. Ich
+    kann Ihnen die Kontaktdaten und Bürozeiten geben oder eine Rückrufvereinbarung
+    mit der zuständigen Person treffen.
+- question: Bieten Sie auch Trauungen an, wenn nur ein Partner katholisch ist?
+  answer_template: Ja, in vielen Fällen ist eine Trauung möglich. Für eine genaue
+    Klärung Ihrer persönlichen Situation vereinbare ich gerne ein Gespräch mit einem
+    unserer Seelsorger.
+- question: Wie kann ich für ein bestimmtes Projekt der Gemeinde spenden?
+  answer_template: Vielen Dank für Ihre Spendenbereitschaft! Sie können online spenden,
+    eine Überweisung tätigen oder ich verbinde Sie mit dem Spendenverantwortlichen
+    für weitere Informationen.
+- question: Gibt es in der Gemeinde Angebote für Jugendliche?
+  answer_template: Ja, wir haben verschiedene Jugendgruppen und Aktivitäten. Gerne
+    sende ich Ihnen per E-Mail unseren aktuellen Jugendflyer zu oder informiere Sie
+    über das nächste Treffen.
+- question: Wie kann ich mich als ehrenamtlicher Helfer melden?
+  answer_template: Das ist großartig! Wir freuen uns immer über neue Unterstützung.
+    Ich leite Ihre Kontaktdaten an unseren Ehrenamtskoordinator weiter, der sich mit
+    den Möglichkeiten bei Ihnen meldet.
+sales_scripts:
+- trigger: time_saving_inquiry
+  situation: Wenn der Kunde nach Entlastung für das Haupt- oder Ehrenamt fragt.
+  script: Guten Tag. Ich verstehe, dass die Verwaltungs- und Kommunikationsaufgaben
+    viel Zeit beanspruchen. Unser Sprachagent übernimmt automatisiert Anrufe für Terminerinnerungen,
+    Veranstaltungseinladungen und beantwortet rund um die Uhr Standardfragen. So gewinnen
+    Ihre Mitarbeiter und Ehrenamtlichen bis zu 10 Stunden pro Woche für die eigentliche
+    Gemeindearbeit zurück. Darf ich Ihnen ein konkretes Beispiel für Ihre Gemeinde
+    vorrechnen?
+  goal: Den konkreten Zeitgewinn und Nutzen verdeutlichen, zu einer ROI-Betrachtung
+    überleiten.
+- trigger: donation_followup
+  situation: Wenn der Kunde die Spenderbindung verbessern möchte.
+  script: Eine regelmäßige und persönliche Kommunikation ist für Spender sehr wichtig.
+    Unser Agent kann automatisch Dankesanrufe nach Eingang einer Spende tätigen und
+    regelmäßig Updates zu Projekten per Sprachmessage übermitteln – alles DSGVO-konform.
+    Gemeinden berichten von einer spürbar höheren Spenderzufriedenheit und -treue.
+    Interessiert an einer Demo dieser Funktion?
+  goal: Den emotionalen und praktischen Nutzen für das Spendenmanagement aufzeigen
+    und zu einer Demo einladen.
+- trigger: gdpr_compliance
+  situation: Wenn der Kunde Bedenken bezüglich Datenschutz (DSGVO) äußert.
+  script: Die DSGVO-Compliance ist uns extrem wichtig. Unser System wurde speziell
+    für den EU-Markt entwickelt. Jede Interaktion wird protokolliert, Einwilligungen
+    werden sprachbasiert eingeholt und verwaltet. Sie behalten die volle Kontrolle
+    über die Daten. Wir können Ihnen gerne unsere Datenschutzkonzepte im Detail erläutern.
+  goal: Bedenken ausräumen und Vertrauen in die Konformität und Sicherheit der Lösung
+    aufbauen.
+competitors:
+- name: Gemeindeverwaltungslösungen (z.B. Anbieter von WinPfarre)
+  positioning: Etablierte Softwarelösung für die Kernverwaltung von Pfarrgemeinden.
+  strengths:
+  - Tiefe Integration in kirchliche Prozesse
+  - Bekanntheit im deutschsprachigen Raum
+  - Umfassende Verwaltungsfunktionen
+  weaknesses:
+  - Oft keine sprachbasierte Schnittstelle
+  - Wenig Fokus auf Automatisierung der externen Kommunikation
+  - Höhere Komplexität und Lernaufwand
+  our_differentiation: Wir ergänzen Verwaltungssysteme durch einfache, gesprächsbasierte
+    Automatisierung für die direkte Mitgliederkommunikation, ohne die bestehenden
+    Systeme ersetzen zu müssen.
+- name: Allgemeine Telefonanlagen- oder Callcenter-Dienstleister
+  positioning: Bereitstellung von Telefonie-Infrastruktur oder manuellen Callcenter-Diensten.
+  strengths:
+  - Zuverlässige Telefonie
+  - Menschliche Ansprechpartner
+  weaknesses:
+  - Sehr hohe Kosten für 24/7-Betrieb
+  - Keine spezifische Kirchen-Know-how
+  - Geringe Skalierbarkeit und Automatisierung
+  our_differentiation: KI-basierte, kosteneffiziente 24/7-Erreichbarkeit mit spezifischem
+    Wissen über Gemeindeprozesse und hoher Skalierarkeit für Spitzenzeiten.
+- name: Internationale CRM-Anbieter (z.B. Salesforce)
+  positioning: Generische Customer-Relationship-Management-Plattformen.
+  strengths:
+  - Sehr mächtige und flexible Plattform
+  - Breite Integration möglich
+  weaknesses:
+  - Sehr hohe Kosten und Implementierungsaufwand
+  - Keine vorgefertigten Prozesse für Gemeinden
+  - Keine spezialisierte Sprachschnittstelle
+  our_differentiation: Out-of-the-box funktionierende, bezahlbare Sprachlösung, die
+    sofort auf kirchliche Bedürfnisse wie Spenden- oder Ehrenamtlichenmanagement zugeschnitten
+    ist.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1000
+  entry_point: 149
+  roi_examples:
+  - scenario: Automatisierung von Anrufen für Gottesdienst-Erinnerungen und Veranstaltungseinladungen
+      an 500 Gemeindemitglieder.
+    monthly_cost: 199
+    monthly_savings: 40 Stunden Verwaltungsarbeit à 15 EUR (ehrenamtlicher Gegenwert)
+      = 600 EUR
+    payback_months: 0.33
+  value_anchors:
+  - Bereits ab 149 EUR pro Monat 24/7 für Ihre Gemeinde erreichbar.
+  - Der Gegenwert einer geretteten Verwaltungsstunde pro Tag finanziert den Service.
+  - Investition in moderne Kommunikation steigert die Mitgliederbindung.
+market_context:
+  market_size: Über 3.000 katholische und hunderte weitere christliche und religiöse
+    Gemeinden in Österreich.
+  growth_rate: Stagnierend bis leicht rückläufig bei traditionellen Mitgliederzahlen,
+    aber wachsendes Interesse an digitaler und effizienter Gemeindearbeit.
+  key_trends:
+  - Digitalisierung der Gemeindekommunikation (Hybride Gottesdienste, digitale Angebote).
+  - Steigender Verwaltungsaufwand bei stagnierenden oder sinkenden personellen Ressourcen.
+  - Zunehmender Fokus auf Transparenz und regelmäßige Kommunikation mit Spendern.
+  - Suchen nach Wegen, junge Menschen über digitale Kanäle anzusprechen.
+  seasonality:
+    high:
+    - Advent/Weihnachten
+    - Ostern
+    - Pfingsten
+    - Erstkommunion- und Firmungszeit (Frühjahr)
+    low:
+    - Hauptferienzeit (Juli-August)
+    - Januar nach Weihnachten
+typical_objections:
+- objection: Unsere älteren Gemeindemitglieder sind nicht technikaffin und würden
+    so einen Dienst nicht nutzen.
+  response: Das ist ein wichtiger Punkt. Unser Dienst funktioniert über das normale
+    Telefon – genau das Gerät, das diese Zielgruppe am besten kennt. Es ist keine
+    App oder Website nötig. Wir gestalten die Gespräche besonders klar und freundlich.
+- objection: Persönlicher Kontakt ist in der Seelsorge unersetzlich. Wir wollen keine
+    kalte Automatisierung.
+  response: Volle Zustimmung. Unser Agent übernimmt nur repetitive Standardaufgaben
+    wie Termininfos oder Erinnerungen. Dadurch schaffen Sie mehr Freiraum für Ihre
+    Haupt- und Ehrenamtlichen, genau diese wertvollen persönlichen Gespräche und Begegnungen
+    zu führen.
+- objection: Unser Budget ist sehr begrenzt, jedes neue Tool muss lange geprüft werden.
+  response: Wir verstehen die budgetären Herausforderungen. Unser Einstiegspreis ist
+    bewusst niedrig gehalten. Lassen Sie uns eine kostenneutrale Pilotphase vereinbaren?
+    Sie können in einem klar umrissenen Bereich (z.B. Gottesdienst-Erinnerungen) den
+    Nutzen testen, bevor Sie sich langfristig entscheiden.
+meta:
+  id: religion
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

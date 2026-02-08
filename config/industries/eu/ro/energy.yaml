@@ -1,0 +1,183 @@
+pain_points:
+- description: Costurile ridicate ale energiei afectează profitabilitatea afacerilor.
+  severity: high
+  solution_hint: Agentul vocal AI poate analiza consumul și sugerează optimizări pentru reducerea costurilor.
+- description: Schimbările frecvente în reglementările energetice creează incertitudine.
+  severity: medium
+  solution_hint: Agentul poate oferi actualizări automate despre noile reguli și cum să vă conformați.
+- description: Infrastructura îmbătrânită duce la întreruperi frecvente de curent.
+  severity: high
+  solution_hint: Agentul poate programa inspecții și întreținere preventivă pentru a minimiza problemele.
+- description: Rata mare de schimbare a clienților datorită ofertelor competitive.
+  severity: medium
+  solution_hint: Agentul poate gestiona reținerea clienților prin oferte personalizate și servicii prompte.
+- description: Erori în facturare care provoacă nemulțumirea clienților.
+  severity: low
+  solution_hint: Agentul poate verifica automat facturile și rezolva dispute rapid prin chat.
+- description: Integrarea dificilă a surselor regenerabile în rețelele existente.
+  severity: medium
+  solution_hint: Agentul poate coordona instalarea și monitorizarea sistemelor regenerabile.
+typical_services:
+- Consiliere energetică
+- Managementul consumului de energie
+- Audite energetice
+- Instalare panouri solare
+- Contracte de furnizare energie
+- Servicii de facturare și plăți
+- Monitorizare consum în timp real
+- Întreținere echipamente energetice
+- Optimizare eficiență energetică
+- Soluții de stocare energie
+recommended_functions:
+- name: Programare consultanță energetică
+  priority: high
+  reason: Ajută la captarea potențialilor clienți și oferă evaluări rapide.
+- name: Răspuns la întrebări despre facturi
+  priority: high
+  reason: Reduce volumul de apeluri la serviciul clienți și crește satisfacția.
+- name: Notificări pentru consum excesiv
+  priority: medium
+  reason: Permite clienților să economisească energie și să evite costuri neașteptate.
+- name: Asistență tehnică pentru probleme
+  priority: medium
+  reason: Asigură o rezolvare rapidă a întreruperilor și menține încrederea.
+- name: Vânzări de servicii suplimentare
+  priority: low
+  reason: Crește veniturile prin upselling către clienții existenți.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - SAP
+  - Oracle
+  - sisteme locale ca SoftExpert
+  priority: high
+- name: Sisteme de facturare
+  examples:
+  - SmartBill
+  - Fgo
+  - sisteme personalizate
+  priority: high
+- name: Dispozitive IoT pentru monitorizare energie
+  examples:
+  - senzori de la companii locale
+  - echipamente Smart Grid
+  priority: medium
+- name: Platforme de plăți online
+  examples:
+  - PayU
+  - Netopia
+  - Banca Transilvania
+  priority: medium
+- name: Sisteme de gestionare a relațiilor cu clienții (CRM)
+  examples:
+  - HubSpot
+  - Salesforce
+  - soluții locale
+  priority: low
+industry_faq:
+- question: Cum pot reduce facturile de energie?
+  answer_template: Vă putem oferi un audit energetic gratuit pentru a identifica oportunități de economisire, cum ar fi optimizarea consumului sau instalarea de panouri solare.
+- question: Ce servicii oferiți pentru energia regenerabilă?
+  answer_template: Oferim consultanță, instalare și întreținere pentru sisteme solare și eoliene, adaptate la necesitățile dumneavoastră locale.
+- question: Sunt conforme cu GDPR serviciile dumneavoastră?
+  answer_template: Da, toate datele sunt procesate în conformitate cu GDPR și standardele UE pentru a asigura securitatea și confidențialitatea.
+- question: Cât durează instalarea unui sistem solar?
+  answer_template: Durata variază în funcție de complexitate, dar în medie durează 2-4 săptămâni, inclusiv autorizațiile necesare.
+- question: Cum pot monitoriza consumul în timp real?
+  answer_template: Prin intermediul aplicației noastre și a dispozitivelor IoT, puteți vedea consumul pe ore, zile sau luni pentru a lua decizii informate.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre costul serviciilor.
+  script: Bună ziua! Înțeleg că doriți să economisiți pe energie. Costul variază în funcție de nevoile dumneavoastră, dar oferim o evaluare gratuită. Pentru un pachet de bază de management al consumului,
+    începem de la 500 RON/lună. Sunteți interesat să programăm o discuție?
+  goal: Să captăm interesul și să programăm o consultație pentru a personaliza oferta.
+- trigger: service_inquiry
+  situation: Când un client întreabă despre servicii specifice, cum ar fi panouri solare.
+  script: Bună ziua! Mulțumim pentru interes. Oferim soluții complete pentru panouri solare, de la audit la instalare. Cu sistemul nostru, puteți reduce facturile cu până la 30%. Doriți să vă trimitem mai
+    multe detalii sau să stabilim o întâlnire?
+  goal: Să oferim informații clare și să încurajăm un pas următor, cum ar fi o prezentare.
+- trigger: competitor_mention
+  situation: Când clientul menționează un competitor.
+  script: Înțeleg că ați auzit de alți furnizori. Noi ne diferențiem prin servicii personalizate și asistență 24/7 prin agentul nostru vocal AI, care vă ajută să gestionați energia eficient. Sunteți deschis
+    să aflați cum vă putem adapta soluția la nevoile dumneavoastră specifice?
+  goal: Să evidențiem avantajele noastre unice și să menținem conversația.
+competitors:
+- name: Enel Romania
+  positioning: Lider de piață cu prezență internațională.
+  strengths:
+  - Infrastructură extinsă
+  - brand recunoscut
+  - resurse financiare
+  weaknesses:
+  - Prețuri mai mari
+  - servicii clienți lente
+  our_differentiation: Oferim soluții AI personalizate și asistență mai rapidă la costuri competitive.
+- name: Electrica
+  positioning: Furnizor de stat cu piață semnificativă.
+  strengths:
+  - Stabilitate
+  - acoperire națională
+  - prețuri reglementate
+  weaknesses:
+  - Inovare limitată
+  - birocrație
+  our_differentiation: Suntem agili și oferim tehnologie modernă pentru eficiență energetică.
+- name: E.ON Romania
+  positioning: Companie europeană cu focus pe durabilitate.
+  strengths:
+  - Experiență în energie verde
+  - servicii digitale
+  weaknesses:
+  - Costuri de implementare ridicate
+  our_differentiation: Integrăm AI pentru monitorizare în timp real la prețuri accesibile.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Instalare panouri solare pentru o afacere mică
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 24
+  value_anchors:
+  - Reduceți facturile cu până la 30%
+  - ROI în 2 ani cu tehnologie noastră
+  - Asistență non-stop fără costuri suplimentare
+market_context:
+  market_size: 10 miliarde RON anual
+  growth_rate: 5%
+  key_trends:
+  - Creșterea energiei regenerabile
+  - Digitalizarea rețelelor energetice
+  - Cerințe GDPR stricte
+  seasonality:
+    high:
+    - iarnă
+    - vară
+    low:
+    - primăvară
+    - toamnă
+typical_objections:
+- objection: Este prea scump pentru afacerea mea.
+  response: Înțeleg preocuparea. Cu soluția noastră AI, veți economisi pe termen lung prin reducerea consumului. Oferim și planuri de plată flexibile pentru a se potrivi bugetului dumneavoastră.
+- objection: Nu sunt sigur că tehnologia AI este necesară.
+  response: AI ne ajută să automatizăm procese și să oferim insights precise pentru economisire. Mulți clienți noștri au redus costurile cu peste 20% folosind serviciile noastre.
+- objection: Am deja un furnizor și sunt mulțumit.
+  response: Asta este grozav! Dar dacă ați putea economisi și mai mult și avea asistență 24/7, am putea să vă oferim o evaluare gratuită pentru a compara. Sunteți curios să aflați cum?
+meta:
+  id: energy
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- energy
+- solar
+- renewable
+- power
+- utilities
+_extends: _base/energy

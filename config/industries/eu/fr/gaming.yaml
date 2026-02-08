@@ -1,0 +1,275 @@
+pain_points:
+- description: Difficulté à gérer le volume élevé de demandes de support technique
+    et de questions des joueurs, entraînant des temps d'attente longs et une insatisfaction.
+  severity: high
+  solution_hint: L'agent vocal IA peut gérer les demandes courantes 24/7, libérant
+    les équipes humaines pour des problèmes complexes.
+- description: Rétention des joueurs faible en raison d'un engagement limité et d'un
+    manque de communication personnalisée en dehors du jeu.
+  severity: high
+  solution_hint: L'agent peut automatiser les appels ou notifications pour relancer
+    les joueurs inactifs, proposer des offres personnalisées.
+- description: Localisation et adaptation culturelle coûteuses et chronophages pour
+    pénétrer le marché français.
+  severity: medium
+  solution_hint: L'agent vocal natif en français avec compréhension des références
+    culturelles assure un support et un marketing localisés.
+- description: Gestion complexe des communautés sur plusieurs plateformes (forums,
+    réseaux sociaux, Discord).
+  severity: medium
+  solution_hint: L'agent peut surveiller et engager la conversation sur les canaux
+    principaux, signalant les tendances et les crises potentielles.
+- description: Optimisation des micro-transactions et des achats intégrés (IAP) limitée
+    par un support vente réactif plutôt que proactif.
+  severity: medium
+  solution_hint: L'agent peut effectuer des appels proactifs pour présenter des offres
+    spéciales ou des bundles aux joueurs ciblés.
+- description: Conformité au RGPD pour la gestion des données des joueurs et les communications
+    automatisées.
+  severity: high
+  solution_hint: L'agent intègre nativement les processus de consentement et les demandes
+    de droits des personnes (accès, suppression).
+- description: Difficulté à recueillir et analyser les feedbacks qualitatifs des joueurs
+    de manière structurée.
+  severity: low
+  solution_hint: L'agent peut conduire des sondages vocaux automatisés pour recueillir
+    des avis détaillés et mesurer la satisfaction.
+typical_services:
+- Développement de jeux vidéo (mobile, PC, console)
+- Portage et localisation de jeux
+- Services de liveops et de mise à jour continue
+- Marketing d'acquisition et de rétention des joueurs
+- Gestion de communauté et modération
+- Support technique et client pour joueurs
+- Monétisation (IAP, publicités, abonnements)
+- Tests QA et assurance qualité
+- Services de publishing et de distribution
+- Création d'assets et d'animations
+recommended_functions:
+- name: Support joueur multicanaux
+  priority: high
+  reason: Réduit drastiquement les temps d'attente et améliore la satisfaction client,
+    point douloureux majeur.
+- name: Campagnes de relance et d'engagement
+  priority: high
+  reason: Cible directement le problème de rétention en automatisant une communication
+    personnalisée.
+- name: Sondages et collecte de feedback
+  priority: medium
+  reason: Permet de recueillir des insights qualitatifs précieux pour l'amélioration
+    des jeux et services.
+- name: Vente proactive d'offres et de packs
+  priority: medium
+  reason: Augmente le revenu par utilisateur (ARPU) en ciblant les joueurs au bon
+    moment.
+- name: Surveillance et alerte de la communauté
+  priority: medium
+  reason: Aide à gérer la réputation en ligne et à anticiper les crises sur les réseaux
+    sociaux et forums.
+- name: Gestion des consentements RGPD
+  priority: high
+  reason: Fonction critique pour toute entreprise opérant dans l'UE, évitant des amendes
+    importantes.
+typical_integrations:
+- name: Système de support ticketing
+  examples:
+  - Zendesk
+  - Freshdesk
+  - Jira Service Management
+  priority: high
+- name: CRM / Outil de marketing
+  examples:
+  - Salesforce
+  - HubSpot
+  - Braze
+  priority: high
+- name: Outil de gestion de communauté
+  examples:
+  - Discord
+  - Reddit
+  - Forums propriétaires
+  priority: medium
+- name: Plateforme de jeu / Store
+  examples:
+  - Steam
+  - Ubisoft Connect
+  - Epic Games Store
+  - App Store
+  - Google Play
+  priority: high
+- name: Outil d'analyse de données
+  examples:
+  - GameAnalytics
+  - Adjust
+  - Amplitude
+  - Google Analytics 4
+  priority: medium
+industry_faq:
+- question: 'Comment votre agent vocal s''intègre-t-il à notre outil de support existant
+    (ex : Zendesk) ?'
+  answer_template: Notre agent vocal IA s'intègre directement via API à Zendesk et
+    autres systèmes similaires. Il peut créer des tickets, récupérer des informations
+    sur le joueur et mettre à jour le statut, garantissant un flux de travail unifié
+    pour vos équipes.
+- question: Est-ce que la solution est conforme au RGPD pour nos joueurs en France
+    et en UE ?
+  answer_template: Absolument. La conformité RGPD est intégrée par conception. Nous
+    gérons le consentement vocal, l'enregistrement des preuves, et facilitons l'exercice
+    des droits d'accès, de rectification et d'oubli pour vos joueurs.
+- question: Pouvez-vous personnaliser les voix et les scripts pour correspondre à
+    l'univers de notre jeu ?
+  answer_template: Oui, nous proposons une large gamme de voix naturelles en français
+    et pouvons créer des personnages vocaux sur mesure. Les scripts sont entièrement
+    adaptables pour refléter le ton et l'ambiance de votre jeu.
+- question: Quel est le délai de mise en œuvre typique pour une studio de taille moyenne
+    ?
+  answer_template: Pour une configuration standard avec intégrations principales,
+    comptez entre 2 et 4 semaines. Les déploiements plus complexes avec personnalisations
+    poussées peuvent prendre 6 à 8 semaines.
+- question: Comment mesurez-vous le ROI de votre agent vocal sur notre activité gaming
+    ?
+  answer_template: Nous suivons des métriques clés comme la réduction du coût par
+    ticket de support, l'augmentation du taux de rétention des joueurs, l'augmentation
+    du revenu par utilisateur (ARPU) via les ventes proactives, et la satisfaction
+    client (CSAT/NPS).
+sales_scripts:
+- trigger: price_question
+  situation: Le prospect demande des informations sur le prix après une démonstration.
+  script: Je comprends votre besoin de clarté sur l'investissement. Notre tarification
+    est modulaire et s'adapte à la taille de votre communauté et à vos volumes d'appels.
+    L'entrée de gamme pour un studio indépendant démarre autour de 299€/mois, avec
+    des forfaits entreprise à partir de 899€/mois. Le ROI est généralement visible
+    en 3-4 mois grâce aux économies sur le support et l'augmentation des revenus.
+    Puis-je vous envoyer une proposition détaillée adaptée à vos chiffres ?
+  goal: Transformer l'inquiétude sur le prix en une discussion sur la valeur et le
+    ROI, et obtenir un accord pour une proposition.
+- trigger: competitor_mention
+  situation: Le prospect mentionne utiliser ou évaluer une solution concurrente.
+  script: 'C''est intéressant. Beaucoup de nos clients dans le gaming en France venaient
+    de solutions génériques. Notre différenciation clé est notre spécialisation dans
+    le secteur du jeu vidéo : compréhension des métriques de jeu (DAU, ARPU), intégrations
+    natives avec les stores et outils d''analytics de jeu, et une approche conçue
+    pour l''engagement et la rétention des joueurs, pas seulement le support. Souhaitez-vous
+    que je vous détaille comment cela se traduit par des résultats concrets pour un
+    éditeur comme le vôtre ?'
+  goal: Repositionner la conversation sur notre expertise sectorielle et notre valeur
+    ajoutée spécifique au gaming.
+- trigger: demo_request
+  situation: Le prospect est intéressé et demande une démonstration.
+  script: Excellente idée. Pour que la démo soit la plus pertinente possible, pourrions-nous
+    cibler un cas d'usage précis ? Par exemple, la gestion du pic de support après
+    une nouvelle mise à jour, ou une campagne de relance pour les joueurs inactifs
+    depuis 30 jours. Cela vous permettra de voir l'agent en action sur un scénario
+    réel pour vous. Quel jour et créneau vous conviendraient la semaine prochaine
+    ?
+  goal: Qualifier le besoin, personnaliser la démo pour maximiser son impact, et fixer
+    un rendez-vous concret.
+competitors:
+- name: 'Solutions de support client génériques (ex : Zendesk Voice, Talkdesk)'
+  positioning: Fournisseurs généralistes de centre de contact.
+  strengths:
+  - Reconnaissance de marque
+  - Large éventail de fonctionnalités
+  - Écosystème d'intégrations étendu
+  weaknesses:
+  - Manque de spécialisation gaming
+  - Configurations complexes pour des cas d'usage jeu
+  - Peu d'outils natifs pour l'engagement joueur
+  our_differentiation: 'Nous sommes spécialisés gaming : métriques, intégrations et
+    workflows conçus spécifiquement pour les éditeurs et studios de jeux, avec un
+    focus sur la rétention et la monétisation, pas seulement le support.'
+- name: 'Solutions d''automatisation marketing (ex : Braze, Iterable)'
+  positioning: Plateformes d'engagement client multicanaux.
+  strengths:
+  - Puissants moteurs de segmentation
+  - Campagnes cross-canal (email, push, in-app)
+  - Analytics avancés
+  weaknesses:
+  - Capacités vocales limitées ou absentes
+  - Centrées sur le marketing, pas le support
+  - Moins adaptées aux interactions conversationnelles en temps réel
+  our_differentiation: Nous ajoutons la puissance de la voix en temps réel (appels
+    entrants/sortants) à l'engagement, permettant des interactions plus personnelles
+    et directes pour le support proactif, la vente et la collecte de feedback.
+- name: Startups locales d'IA conversationnelle
+  positioning: Fournisseurs français de chatbots et d'assistants vocaux.
+  strengths:
+  - Compréhension fine du français et de la culture locale
+  - Réactivité et service de proximité
+  - Prix parfois compétitifs
+  weaknesses:
+  - Expérience limitée dans le secteur gaming spécifique
+  - Portefeuille de clients principalement B2B généraliste
+  - Évolutivité internationale potentiellement limitée
+  our_differentiation: Combinaison d'une expertise sectorielle gaming internationale
+    et d'une parfaite maîtrise locale (langue, RGPD). Notre plateforme est conçue
+    pour l'échelle des grands studios comme pour l'agilité des indés.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 250
+  - 2500
+  entry_point: 299
+  roi_examples:
+  - scenario: Studio mobile indépendant avec 50k joueurs mensuels actifs (MAU) et
+      pic de support géré manuellement.
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 1.5
+  value_anchors:
+  - Réduisez votre coût par ticket de support de jusqu'à 70%.
+  - Augmentez votre taux de rétention à 30 jours de 5 à 15% avec des campagnes vocales
+    proactives.
+  - Générez jusqu'à 1.50€ de revenus supplémentaires par joueur actif mensuel (ARPU)
+    grâce aux ventes vocales ciblées.
+market_context:
+  market_size: 3.2 milliards d'euros (chiffre d'affaires du marché vidéoludique français
+    en 2023)
+  growth_rate: ~4.5% annuel
+  key_trends:
+  - Fort croissance du jeu mobile et du cloud gaming.
+  - Importance accrue de la rétention des joueurs face à une acquisition coûteuse.
+  - Montée en puissance des jeux 'games-as-a-service' nécessitant un support et un
+    engagement continus.
+  - Sensibilisation et exigences strictes des consommateurs concernant la protection
+    des données (RGPD).
+  seasonality:
+    high:
+    - Novembre-Décembre (période des fêtes, sorties majeures)
+    - Juillet-Août (été, vacances scolaires)
+    low:
+    - Janvier-Février (post-fêtes)
+    - Mai (entre les vacances)
+typical_objections:
+- objection: Nos joueurs préfèrent le chat ou l'email, pas le téléphone.
+  response: 'Vous avez raison, le chat est essentiel. Notre agent vocal complète ces
+    canaux pour les situations où la vitesse et la personnalisation comptent : résolution
+    urgente d''un problème de paiement, relance d''un joueur VIP, ou collecte de feedback
+    détaillé. C''est un canal additionnel à haute valeur, pas un remplacement.'
+- objection: C'est trop automatisé, nous voulons préserver le contact humain avec
+    notre communauté.
+  response: Tout à fait, la relation humaine est cruciale. Notre objectif n'est pas
+    de la remplacer, mais de la libérer. L'agent gère les requêtes répétitives (80%),
+    permettant à vos équipes de se concentrer sur les interactions complexes, créatives
+    et à haute valeur qui renforcent véritablement la communauté et la loyauté.
+- objection: Nous avons déjà une petite équipe, nous n'avons pas le temps de gérer
+    un nouveau logiciel.
+  response: C'est précisément pour les petites équipes que nous sommes conçus. La
+    mise en œuvre est guidée et nous gérons l'infrastructure technique. Une fois lancé,
+    l'agent fonctionne de manière autonome. Vous gagnez du temps immédiatement en
+    réduisant la charge de support manuel, permettant à votre petite équipe de se
+    concentrer sur le développement du jeu.
+meta:
+  id: gaming
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

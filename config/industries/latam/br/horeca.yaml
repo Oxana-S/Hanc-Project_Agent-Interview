@@ -1,0 +1,278 @@
+aliases:
+- horeca
+- restaurante
+- lanchonete
+- bar
+- hotel
+- pousada
+- padaria
+- cafeteria
+- pizzaria
+- delivery
+- buffet
+- comida por quilo
+- food truck
+- evento
+- reserva
+- room service
+competitors:
+- name: iFood
+  positioning: Líder de mercado em entregas e pedidos online
+  strengths:
+  - Base de usuários gigantesca
+  - Infraestrutura de entrega consolidada
+  - Reconhecimento de marca
+  weaknesses:
+  - Comissões altas para os estabelecimentos
+  - Concorrência feroz entre restaurantes na plataforma
+  - Contato direto com o cliente fica com a plataforma
+  our_differentiation: Nosso agente permite um contato direto e personalizado com
+    o cliente, sem intermediários e suas taxas, integrando-se ao seu sistema interno.
+- name: TOTVS
+  positioning: Fornecedor de ERP/software de gestão para grandes redes
+  strengths:
+  - Solução completa de gestão (financeiro, estoque, fiscal)
+  - Atende grandes empresas
+  weaknesses:
+  - Soluções complexas e caras para pequenos negócios
+  - Foco em back-office, menos em atendimento ao cliente
+  our_differentiation: Oferecemos uma solução acessível e focada especificamente em
+    automação de atendimento e vendas, complementando sistemas de gestão.
+- name: Menu
+  positioning: Sistema de PDV e gestão para restaurantes
+  strengths:
+  - Popular entre restaurantes de médio porte
+  - Fácil de usar
+  - Boa integração com dispositivos
+  weaknesses:
+  - Funcionalidades de automação de chamadas e marketing são limitadas
+  - Foco principal é a operação interna
+  our_differentiation: Somos especialistas em automação de voz, resolvendo problemas
+    de comunicação externa (cliente) que um PDV sozinho não resolve.
+industry_faq:
+- question: Vocês têm mesa disponível para hoje à noite?
+  answer_template: Para qual horário? Quantas pessoas? Vou verificar nossa disponibilidade
+    e já confirmo.
+- question: Qual é o cardápio de hoje?/Tem o cardápio no site?
+  answer_template: Temos! Posso enviar nosso cardápio digital pelo WhatsApp ou você
+    pode conferir no nosso site [link do site]. Temos também pratos do dia.
+- question: Vocês trabalham no feriado?/Qual o horário de funcionamento?
+  answer_template: Sim, funcionamos! Nosso horário é de [horário] durante a semana
+    e até [horário] nos fins de semana e feriados.
+- question: Aceitam animais de estimação?
+  answer_template: Aceitamos sim, mas apenas na área externa/varanda. Traga seu pet!
+- question: Fazem entrega? Qual o prazo e valor do delivery?
+  answer_template: Fazemos, sim! O delivery é pela nossa própria equipe ou parceiros.
+    O tempo médio é [tempo] e a taxa a partir de R$ [valor]. A região de entrega é
+    [bairros].
+- question: Dá para fazer uma reserva para um grupo grande ou evento?
+  answer_template: Com certeza! Fazemos reservas para grupos e eventos. Para quantas
+    pessoas e em que data você está pensando? Passo para nosso responsável te retornar
+    com todas as opções.
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: Estimado em R$ 300 bilhões (pré-pandemia), em recuperação.
+  growth_rate: ~8% a.a., impulsionado por delivery e digitalização.
+  key_trends:
+  - Crescimento explosivo do delivery e dark kitchens
+  - Demanda por automação para reduzir custos operacionais
+  - Busca por experiências personalizadas pelo cliente
+  - Fortalecimento de marcas locais e regionais
+  - Preocupação com sustentabilidade e origem dos ingredientes
+  seasonality:
+    high:
+    - Dezembro a Fevereiro (Verão, Férias, Carnaval)
+    - Junho (Festas Juninas)
+    - Meses de férias escolares
+    low:
+    - Março e Abril (pós-Carnaval)
+    - Novembro (pré-fim de ano)
+meta:
+  avg_validation_score: 0.0
+  country: br
+  created_at: '2026-02-04'
+  currency: BRL
+  id: horeca
+  language: pt
+  languages: []
+  last_updated: '2026-02-04'
+  phone_codes:
+  - '+55'
+  region: latam
+  tests_run: 0
+  timezone: America/Sao_Paulo
+  version: '1.0'
+pain_points:
+- description: Pico de ligações para reservas e pedidos em horários de almoço e jantar,
+    sobrecarregando a recepção.
+  severity: high
+  solution_hint: Agente de voz automatizado para atender e gerenciar reservas 24/7,
+    filtrando chamadas.
+- description: Alto índice de "no-show" (cliente não comparece à reserva), causando
+    perda de faturamento.
+  severity: high
+  solution_hint: Sistema automático de confirmação e lembretes por WhatsApp/SMS um
+    dia e uma hora antes.
+- description: Dificuldade em captar dados de clientes (como telefone) para marketing
+    e fidelização.
+  severity: medium
+  solution_hint: Agente pode solicitar e armazenar (compliance LGPD) o contato do
+    cliente durante a interação.
+- description: Perda de pedidos de delivery por linha telefônica ocupada ou falta
+    de pessoal no pico.
+  severity: medium
+  solution_hint: Aceitação automática de pedidos de delivery via telefone, integrado
+    ao sistema do estabelecimento.
+- description: Dificuldade em comunicar promoções, pratos do dia ou eventos para a
+    base de clientes existente.
+  severity: medium
+  solution_hint: Campanhas de voz ou WhatsApp automatizadas para divulgar ofertas
+    a clientes cadastrados.
+- description: Complexidade e custo para atender consultas simples sobre cardápio,
+    horário e preços fora do horário comercial.
+  severity: low
+  solution_hint: FAQ automatizado 24h que responde às perguntas mais comuns, liberando
+    a equipe.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 150
+  - 800
+  entry_point: 199
+  roi_examples:
+  - scenario: Restaurante médio reduzindo no-show e automatizando 50% das reservas.
+    monthly_cost: 250
+    monthly_savings: 1200
+    payback_months: 0.21
+  value_anchors:
+  - Custa menos que um garçom por mês.
+  - Recupere o investimento com a redução de apenas alguns no-shows.
+  - Automatize seu atendimento e venda mesmo quando o estabelecimento está fechado.
+recommended_functions:
+- name: reserva_mesa
+  priority: high
+  reason: Função essencial para restaurantes. O agente pode consultar disponibilidade,
+    registrar dados e enviar confirmação.
+- name: confirmacao_lembrete
+  priority: high
+  reason: Reduz drasticamente as taxas de no-show, um problema crônico no setor.
+- name: pedido_delivery
+  priority: high
+  reason: Captura pedidos automaticamente em qualquer horário, integrando-se a sistemas
+    de delivery.
+- name: FAQ_informativo
+  priority: medium
+  reason: Responde automaticamente a perguntas sobre horário, cardápio, localização,
+    liberando a equipe.
+- name: captura_lead
+  priority: medium
+  reason: Coleta dados de clientes (com consentimento LGPD) para criar uma base para
+    marketing futuro.
+- name: campanhas_saida
+  priority: low
+  reason: Divulga promoções, eventos ou cardápios sazonais para a base de clientes
+    cadastrada.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre o preço do serviço.
+  script: Nosso plano básico começa em R$ 199/mês e é personalizado conforme o tamanho
+    e fluxo do seu estabelecimento. Para um restaurante como o seu, que sofre com
+    ligações perdidas no horário de pico, o retorno é muito rápido. Posso fazer uma
+    simulação gratuita para você?
+  goal: Ancorar o valor como acessível e direcionar para uma demonstração de valor
+    concreto (simulação).
+- trigger: competitor_mention
+  situation: Quando o cliente menciona usar iFood ou outra plataforma.
+  script: O iFood é excelente para alcance, mas com nosso agente, você cria um canal
+    direto com seu cliente, sem pagar comissão por cada pedido. Você fica com o controle
+    do relacionamento e dos dados. Podemos inclusive integrar com o iFood para centralizar
+    tudo.
+  goal: Posicionar a solução como complementar/estratégica, não concorrente, focando
+    no custo-benefício a longo prazo.
+- trigger: objection_busy
+  situation: Quando o cliente diz que não tem tempo para implementar algo novo.
+  script: 'Entendo perfeitamente. A beleza da nossa solução é que a implementação
+    é rápida e nós cuidamos de tudo. Em poucos dias, seu agente já estará atendendo.
+    Você e sua equipe poderão focar no que importa: cuidar do cliente dentro do estabelecimento.'
+  goal: Remover a objeção sobre complexidade, enfatizando simplicidade e suporte.
+- trigger: post_demo
+  situation: Após uma demonstração do agente em funcionamento.
+  script: Viu como é simples para seus clientes? Eles não percebem que é uma máquina.
+    Imagine isso funcionando para você todas as noites de sábado e nos feriados. Vamos
+    começar com um teste piloto de 15 dias, sem compromisso, para você medir a redução
+    no número de ligações perdidas?
+  goal: Fechar para um teste piloto de baixo risco, focando em um benefício mensurável
+    imediato.
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Redução de no-show para menos de 12%
+  - Automatização de 65% das chamadas de reserva e delivery
+  - Tempo médio para realizar uma reserva < 45 segundos
+  - Aumento de 20% na base de contatos para marketing
+typical_integrations:
+- name: Sistema de Gestão/PDV
+  examples:
+  - TOTVS
+  - Menu
+  - Sisliv
+  - ERP específico do estabelecimento
+  priority: high
+  reason: Sincronizar disponibilidade de mesas, preços, cardápios e registrar pedidos/reservas
+    automaticamente.
+- name: Plataformas de Delivery
+  examples:
+  - iFood
+  - Uber Eats
+  - Rappi
+  - Sistema de delivery próprio
+  priority: medium
+  reason: Receber pedidos de múltiplas fontes (incluindo telefone) e centralizar na
+    cozinha.
+- name: Sistemas de Mensageria
+  examples:
+  - WhatsApp Business API
+  - Telegram
+  priority: high
+  reason: Envio automático de confirmações, lembretes, cardápios e promoções, principal
+    canal no Brasil.
+- name: PMS (Property Management System)
+  examples:
+  - HotelWare
+  - Guestware
+  - Systema
+  priority: high
+  reason: Para hotéis e pousadas, integrar reservas de quartos, check-in/out e serviços
+    como room service.
+typical_objections:
+- objection: Meus clientes preferem falar com uma pessoa.
+  response: Com certeza, e para as questões complexas, eles serão transferidos para
+    sua equipe. Nosso agente resolve as perguntas rápidas e repetitivas (como horário,
+    preço, disponibilidade), justamente para que sua equipe tenha mais tempo para
+    um atendimento personalizado dentro do estabelecimento.
+- objection: É muito caro para o meu negócio.
+  response: Começamos em R$ 199/mês. Pense que um único no-show em uma mesa para 4
+    pessoas já cobre esse valor. Nosso foco é gerar economia e novos negócios, não
+    ser mais um custo.
+- objection: Não tenho estrutura técnica para isso.
+  response: Não se preocupe. Nossa implementação é feita 100% pela nossa equipe. Nós
+    nos integramos ao seu sistema atual e você não precisa comprar nenhum hardware
+    novo. Fornecemos todo o suporte.
+- objection: Já tenho um site/instagram que faz isso.
+  response: Perfeito! O agente complementa esses canais. Muitos clientes ainda ligam,
+    especialmente para reservas de última hora ou para tirar dúvidas rápidas. O agente
+    garante que nenhuma dessas oportunidades seja perdida.
+typical_services:
+- Reserva de mesas
+- Pedidos para delivery
+- Pedidos para retirada (takeaway)
+- Reserva de quartos (hotéis/pousadas)
+- Organização de eventos e grupos
+- Buffet por quilo
+- Rodízio
+- Room service
+- Encomendas (bolos, salgados)
+- Catering (serviço de buffet para eventos externos)
+_extends: _base/horeca

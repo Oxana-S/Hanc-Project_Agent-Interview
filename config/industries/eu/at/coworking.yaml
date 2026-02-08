@@ -1,0 +1,245 @@
+pain_points:
+- description: Hohe Betriebskosten für Miete, Energie und Instandhaltung der Räumlichkeiten.
+  severity: high
+  solution_hint: AI Voice Agent kann Kosteneinsparungen durch optimierte Raumauslastung
+    und automatisierte Verwaltung vorschlagen.
+- description: Schwankende Auslastung, besonders an Wochenenden oder in Ferienzeiten.
+  severity: medium
+  solution_hint: AI Voice Agent kann dynamische Preisangebote und Marketingaktionen
+    für Nebenzeiten kommunizieren.
+- description: Komplexe Verwaltung von Mitgliederverträgen, Buchungen und Zahlungen.
+  severity: high
+  solution_hint: AI Voice Agent kann Buchungsanfragen bearbeiten und Zahlungserinnerungen
+    senden, um administrative Last zu reduzieren.
+- description: Hohe Fluktuation der Mitglieder, was zu unsicheren Einnahmen führt.
+  severity: medium
+  solution_hint: AI Voice Agent kann persönliche Follow-ups und Angebote für Verlängerungen
+    automatisieren, um die Bindung zu stärken.
+- description: Schwierigkeiten bei der Einhaltung von GDPR für Mitgliederdaten und
+    Buchungssysteme.
+  severity: high
+  solution_hint: AI Voice Agent kann datenschutzkonforme Prozesse für Anfragen und
+    Einwilligungen unterstützen.
+- description: Wettbewerbsdruck durch etablierte Anbieter und neue Coworking-Spaces
+    in Städten wie Wien und Graz.
+  severity: medium
+  solution_hint: AI Voice Agent kann USP-basierte Verkaufsgespräche führen und lokale
+    Vorteile hervorheben.
+typical_services:
+- Tagesarbeitsplatz
+- Flex Desk (geteilte Arbeitsplätze)
+- Dedizierter Schreibtisch
+- Private Büros
+- Meetingraum Buchung
+- Virtuelles Büro (Business Adresse, Postservice)
+- Event-Space Vermietung
+- Netzwerk-Events und Community-Management
+- IT-Infrastruktur (High-Speed Internet, Drucker)
+- Bewirtungsservice (Kaffee, Snacks)
+recommended_functions:
+- name: Buchungsmanagement
+  priority: high
+  reason: Ermöglicht sofortige Reservierungen von Arbeitsplätzen und Meetingräumen,
+    reduziert manuellen Aufwand.
+- name: Kundenbetreuung und FAQ-Beantwortung
+  priority: high
+  reason: Beantwortet häufige Fragen zu Preisen, Verfügbarkeit und Services, entlastet
+    das Personal.
+- name: Vertragsverwaltung und Zahlungserinnerungen
+  priority: medium
+  reason: Automatisiert Follow-ups für Vertragsverlängerungen und offene Rechnungen,
+    verbessert Cashflow.
+- name: Lead-Generierung und Terminvereinbarung
+  priority: medium
+  reason: Nimmt Anfragen entgegen und baut Termine für Besichtigungen, steigert Konversionsrate.
+- name: Marketingaktionen und Sonderangebote
+  priority: low
+  reason: Kommuniziert zeitlich begrenzte Angebote oder Rabatte, um Auslastung zu
+    erhöhen.
+typical_integrations:
+- name: Coworking-Management-Software
+  examples:
+  - Nexudus
+  - OfficeRnD
+  - Cobot
+  priority: high
+- name: Zahlungssysteme
+  examples:
+  - Stripe
+  - PayPal
+  - Bank Austria Online Banking
+  priority: high
+- name: Kalender- und Buchungssysteme
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - lokal: Bitrix24
+  priority: medium
+- name: Kommunikationstools
+  examples:
+  - Slack
+  - Microsoft Teams
+  - lokal: Threema für Business
+  priority: low
+industry_faq:
+- question: Wie viel kostet ein flexibler Arbeitsplatz pro Monat?
+  answer_template: Unsere Flex Desk Pläne beginnen ab 150 EUR pro Monat, inklusive
+    High-Speed Internet und Gemeinschaftsbereichen. Genaue Preise hängen vom Standort
+    und den gewählten Services ab.
+- question: Bietet Ihr auch Kurzzeitmietoptionen an, z.B. für einen Tag?
+  answer_template: Ja, wir bieten Tagespässe ab 25 EUR an, die Zugang zu allen Gemeinschaftsbereichen
+    und Basisservices beinhalten. Buchen Sie einfach online oder per Telefon.
+- question: Sind Meetingräume auch für Externe buchbar?
+  answer_template: Absolut! Unsere Meetingräume können von Mitgliedern und Nicht-Mitgliedern
+    gebucht werden, mit Preisen ab 50 EUR pro Stunde. Wir bieten auch Pakete für regelmäßige
+    Nutzung an.
+- question: Wie handhabt Ihr die Datenschutz-GDPR für Mitgliederdaten?
+  answer_template: Wir halten uns strikt an die GDPR-Richtlinien. Alle Daten werden
+    verschlüsselt gespeichert, und Mitglieder können ihre Einwilligungen jederzeit
+    über unser System verwalten.
+- question: Gibt es Parkmöglichkeiten in der Nähe?
+  answer_template: Ja, an unseren Standorten bieten wir oft vergünstigte Parkplätze
+    oder sind gut mit öffentlichen Verkehrsmitteln erreichbar. Details finden Sie
+    auf unserer Website.
+- question: Welche Vertragslaufzeiten sind möglich?
+  answer_template: Wir bieten flexible Laufzeiten von monatlich kündbar bis zu Jahresverträgen
+    mit Rabatten. Gerne beraten wir Sie individuell.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Interessent nach Preisen für einen Arbeitsplatz fragt.
+  script: Hallo! Vielen Dank für Ihr Interesse. Unsere Preise beginnen ab 150 EUR
+    monatlich für einen Flex Desk, mit allen Inklusivleistungen wie Internet und Kaffee.
+    Möchten Sie mehr über unsere Standorte oder Sonderangebote erfahren?
+  goal: Preisinformationen geben und Interesse für weitere Details wecken.
+- trigger: availability_inquiry
+  situation: Wenn jemand nach Verfügbarkeit für einen bestimmten Arbeitsplatz oder
+    Raum fragt.
+  script: Gerne prüfe ich die Verfügbarkeit für Sie. Können Sie mir bitte den gewünschten
+    Standort und Zeitraum nennen? Wir haben oft flexible Optionen, um Ihren Bedarf
+    zu erfüllen.
+  goal: Verfügbarkeit klären und Termin für Besichtigung oder Buchung vereinbaren.
+- trigger: competitor_comparison
+  situation: Wenn ein Kunde uns mit anderen Coworking-Anbietern vergleicht.
+  script: Verstanden! Im Vergleich zu anderen bieten wir stärkeren Fokus auf lokale
+    Community-Events, nachhaltige Einrichtungen und flexible Verträge ohne versteckte
+    Kosten. Möchten Sie eine kostenlose Probestunde vereinbaren?
+  goal: USP hervorheben und zur Aktion (Probestunde) führen.
+- trigger: contract_questions
+  situation: Wenn Fragen zu Vertragsbedingungen oder Kündigungsfristen auftauchen.
+  script: Unsere Verträge sind transparent und monatlich kündbar, mit Optionen für
+    längere Bindung und Rabatte. Ich kann Ihnen die Details per E-Mail zusenden oder
+    wir besprechen es in einem persönlichen Gespräch.
+  goal: Vertrauen aufbauen und nächsten Schritt (E-Mail oder Meeting) initiieren.
+competitors:
+- name: WeWork Österreich
+  positioning: Globaler Anbieter mit Premium-Spaces in Großstädten.
+  strengths:
+  - Markenbekanntheit
+  - umfangreiche Infrastruktur
+  - internationale Netzwerke
+  weaknesses:
+  - Höhere Preise
+  - weniger lokale Anpassung
+  - starre Verträge
+  our_differentiation: Wir bieten persönlichere Betreuung, flexible lokale Lösungen
+    und stärkere Community-Integration zu wettbewerbsfähigen Preisen.
+- name: Regus (IWG)
+  positioning: Etablierter Anbieter mit vielen Standorten in Österreich.
+  strengths:
+  - Breites Standortnetz
+  - etablierte Prozesse
+  - Business-Services
+  weaknesses:
+  - Standardisierte Angebote
+  - weniger innovativ
+  - höhere Kosten
+  our_differentiation: Unsere Spaces sind moderner und nachhaltiger gestaltet, mit
+    Fokus auf Agilität und lokalem Unternehmertum.
+- name: Impact Hub Wien
+  positioning: Sozial orientiertes Coworking mit Fokus auf Impact-Unternehmen.
+  strengths:
+  - Starke Community
+  - Netzwerk für soziale Innovation
+  - Events
+  weaknesses:
+  - Begrenzte Standorte
+  - höhere Spezialisierung
+  our_differentiation: Wir kombinieren Community-Features mit breiterem Serviceangebot
+    für verschiedene Branchen zu flexiblen Konditionen.
+- name: Lokale unabhängige Coworking-Spaces
+  positioning: Kleine, lokal verwaltete Spaces in Städten wie Salzburg oder Innsbruck.
+  strengths:
+  - Persönlicher Service
+  - lokale Integration
+  - niedrigere Preise
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - weniger technische Infrastruktur
+  our_differentiation: Wir bieten professionellere Managementtools und skalierbare
+    Lösungen bei ähnlich persönlichem Touch.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 500
+  entry_point: 150
+  roi_examples:
+  - scenario: Ein Freiberufler mietet einen Flex Desk statt eines teuren Einzelbüros.
+    monthly_cost: 200
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Ein kleines Team nutzt einen Meetingraum regelmäßig statt externe Locations.
+    monthly_cost: 100
+    monthly_savings: 150
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 50% im Vergleich zu traditionellen Büromieten.
+  - 'Flexible Verträge: Monatlich kündbar, keine langfristige Bindung.'
+  - 'All-inclusive Preise: Keine versteckten Kosten für Internet oder Service.'
+market_context:
+  market_size: Geschätzt 200 Millionen EUR jährlich in Österreich.
+  growth_rate: 10% YoY
+  key_trends:
+  - Zunehmende Remote-Arbeit und Hybrid-Modelle nach der Pandemie.
+  - Fokus auf Nachhaltigkeit und grüne Coworking-Spaces.
+  - Wachsende Nachfrage in kleineren Städten und Vororten.
+  seasonality:
+    high:
+    - September bis November (Nach Sommerferien)
+    - Januar (Neujahrsaufträge)
+    low:
+    - Juli bis August (Sommerferien)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das ist mir zu teuer für einen geteilten Arbeitsplatz.
+  response: Verstehe Ihre Bedenken. Unsere Preise beinhalten aber viele Vorteile wie
+    Events, Infrastruktur und Netzwerk. Vielleicht starten Sie mit einem Tagespass
+    zum Testen?
+- objection: Ich brauche mehr Privatsphäre als ein Coworking-Space bietet.
+  response: Wir bieten auch private Büros oder dedizierte Schreibtische an, die mehr
+    Ruhe gewährleisten. Gerne zeige ich Ihnen Optionen.
+- objection: Mein Unternehmen hat spezifische Compliance-Anforderungen, z.B. für GDPR.
+  response: Unsere Spaces sind GDPR-konform eingerichtet, mit sicheren Datenprozessen.
+    Wir können individuelle Lösungen besprechen.
+- objection: Ich bin unsicher wegen der langfristigen Vertragsbindung.
+  response: Bei uns sind die Verträge flexibel – monatlich kündbar. So können Sie
+    risikofrei starten und bei Bedarf anpassen.
+meta:
+  id: coworking
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "coworking"
+- "shared office"
+- "flexible workspace"
+_extends: _base/coworking

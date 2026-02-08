@@ -1,0 +1,237 @@
+pain_points:
+- description: Hohe Energiepreise belasten die Wettbewerbsfähigkeit von Unternehmen.
+  severity: high
+  solution_hint: Ein Voice Agent kann automatisiert günstigere Tarife vergleichen
+    und Umstiegsmöglichkeiten kommunizieren.
+- description: Komplexe regulatorische Anforderungen der E-Control und EU-Vorgaben.
+  severity: high
+  solution_hint: Der Agent kann über Änderungen informieren und Compliance-Checklisten
+    abarbeiten.
+- description: Unzufriedenheit von Endkunden durch intransparente Abrechnungen und
+    schlechten Service.
+  severity: medium
+  solution_hint: Der Agent erklärt Rechnungen, nimmt Zählerstände entgegen und bearbeitet
+    Standardanfragen 24/7.
+- description: Ineffizientes Last- und Vertragsmanagement bei schwankendem Verbrauch.
+  severity: medium
+  solution_hint: Automatisierte Verbrauchsanalysen und Vertragsverwaltung durch den
+    Agenten.
+- description: Hoher Aufwand für die Akquise und Bindung von Neukunden.
+  severity: medium
+  solution_hint: Der Agent führt Outbound-Kampagnen, beantwortet Erstfragen und terminiert
+    Beratungstermine.
+- description: Manuelle Prozesse bei Störungsmeldungen und Schadensmanagement.
+  severity: low
+  solution_hint: Der Agent sammelt erste Schadensinformationen und erstellt automatisiert
+    Tickets.
+- description: Schwierigkeiten bei der Kommunikation von Nachhaltigkeitsmaßnahmen
+    (Ökostrom, etc.).
+  severity: low
+  solution_hint: Der Agent informiert Kunden proaktiv über grüne Tarife und Förderungen.
+typical_services:
+- Energieberatung für Privat- und Gewerbekunden
+- Strom- und Gasliefervertragsmanagement
+- Contracting für Wärme- und Kälteversorgung
+- Energieeffizienz-Analyse und -Optimierung
+- Photovoltaik- und Speicherberatung
+- E-Mobility-Lösungen (Ladestationen)
+- Fernauslesung von intelligenten Zählern (Smart Meter)
+- Energieabrechnung und Mahnwesen
+- Störungs- und Schadensmanagement
+- Förderungsberatung (z.B. klimaaktiv)
+recommended_functions:
+- name: Automatisierte Tarifberatung und -wechsel
+  priority: high
+  reason: Direkte Antwort auf das Hauptschmerzpunkt-Thema "Hohe Preise". Generiert
+    sofort messbare Einsparungen.
+- name: 24/7 Kunden-Service-Hotline
+  priority: high
+  reason: Behebt Service-Mängel, entlastet die Mitarbeiter und steigert die Kundenzufriedenheit
+    signifikant.
+- name: Vertragsverwaltung und -erinnerung
+  priority: medium
+  reason: Reduziert Kosten durch automatische Kündigungsfrist- und Verlängerungserinnerungen.
+- name: Erstinformation bei Störungen
+  priority: medium
+  reason: Beschleunigt den Support-Prozess und sammelt strukturierte Daten für die
+    Techniker.
+- name: Outbound-Marketing für Neukundenakquise
+  priority: medium
+  reason: Skaliert die Akquise effizient und generiert qualifizierte Leads.
+- name: Compliance- und Informations-Updates
+  priority: low
+  reason: Positioniert das Unternehmen als verlässlichen und informierten Partner.
+typical_integrations:
+- name: Customer Relationship Management (CRM)
+  examples:
+  - SAP CRM
+  - Microsoft Dynamics 365
+  - HubSpot
+  priority: high
+- name: Abrechnungs- und ERP-Systeme
+  examples:
+  - SAP S/4HANA
+  - DATEV
+  - Lexware
+  priority: high
+- name: Smart-Meter-Gateway-Management
+  examples:
+  - Lokale Systeme der Netzbetreiber
+  - Herstellersoftware
+  priority: medium
+- name: Ticketing- und Servicemanagement
+  examples:
+  - Jira Service Management
+  - OTRS
+  - Freshdesk
+  priority: medium
+- name: Energiedaten-Management-Plattformen (MDM)
+  examples:
+  - Axonero
+  - Discovergy
+  - gridX
+  priority: low
+industry_faq:
+- question: Wie kann ich meine hohen Energiekosten senken?
+  answer_template: Gerne analysieren wir Ihren Verbrauch und vergleichen für Sie den
+    Markt. Unser Voice Agent kann Ihnen sofort initiale Einsparpotenziale nennen und
+    einen Beratungstermin vereinbaren.
+- question: Was passiert bei einer Strompanne? An wen muss ich mich wenden?
+  answer_template: Bei einem Netzausfall wenden Sie sich bitte an Ihren örtlichen
+    Netzbetreiber. Für alle anderen Fragen zu Ihrer Lieferung oder Rechnung stehe
+    ich Ihnen gerne zur Verfügung. Ich kann die Störung auch für Sie dokumentieren.
+- question: Wie wechsle ich zu einem Ökostromtarif?
+  answer_template: Ein Wechsel zu Ökostrom ist oft einfach und schnell möglich. Ich
+    kann Ihnen unsere zertifizierten Grünstromprodukte erklären und den Wechsel für
+    Sie in die Wege leiten.
+- question: Mein Smart Meter wurde gerade installiert. Was ändert sich für mich?
+  answer_template: Der Smart Meter ermöglicht genauere Verbrauchsinformationen und
+    automatische Ablesungen. Ihre Grundgebühr kann sich ändern. Ich erkläre Ihnen
+    gerne die Details Ihrer neuen Abrechnung.
+- question: Gibt es Förderungen für eine neue Heizung oder Photovoltaik?
+  answer_template: Ja, es gibt verschiedene Bundes- und Landesförderungen. Ich kann
+    Sie zu den Voraussetzungen informieren und Ihnen die Kontaktdaten unserer Fördermittelexperten
+    geben.
+- question: Warum ist meine Abschlagszahlung diesmal höher?
+  answer_template: Abschlagszahlungen werden regelmäßig an den prognostizierten Jahresverbrauch
+    angepasst. Ich kann Ihnen Ihre Verbrauchsdaten der letzten Monate nennen und die
+    Berechnung erläutern.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für einen Service oder Tarif.
+  script: Verstehe, dass die Kosten ein wichtiger Faktor sind. Unser Ansatz ist, zunächst
+    Ihr Einsparpotenzial zu analysieren. Unser System kann das in wenigen Minuten
+    tun. Ein typischer Gewerbekunde spart dabei durchschnittlich X€ pro Monat. Darf
+    ich eine kurze Analyse für Sie starten?
+  goal: Vom Preisgespräch zur Wertdiskussion lenken und eine konkrete nächste Aktion
+    vereinbaren.
+- trigger: service_question
+  situation: Kunde erkundigt sich nach spezifischen Serviceleistungen wie 24/7 Support.
+  script: Ja, unser KI-gestützter Voice Agent bietet rund um die Uhr Support für Standardanfragen
+    wie Rechnungserklärungen, Vertragsinfos oder Störungsmeldungen. Das entlastet
+    Sie und Ihre Kunden. Möchten Sie eine Demo unseres Agenten im Testbetrieb erleben?
+  goal: Den Mehrwert des Services demonstrieren und zu einer Produktdemo einladen.
+- trigger: competitor_mention
+  situation: Kunde nennt einen Mitbewerber wie Verbund oder Wien Energie.
+  script: Das sind etablierte Anbieter. Unser Fokus liegt darauf, durch Automatisierung
+    Ihre Servicekosten zu senken und die Kundenbindung zu erhöhen. Während andere
+    nur Energie liefern, liefern wir intelligenten Service. So differenzieren Sie
+    sich im Markt.
+  goal: Unsere einzigartige Wert proposition hervorheben und den Fokus auf Partnerschaft
+    legen.
+competitors:
+- name: Verbund
+  positioning: Größter österreichischer Stromerzeuger, nationaler Marktführer.
+  strengths:
+  - Sehr starke Marke
+  - eigene Erzeugung (Wasserkraft)
+  - finanzielle Stabilität
+  weaknesses:
+  - Weniger agil
+  - Fokus auf Großkunden/Commodity
+  - höhere Preise
+  our_differentiation: Wir automatisieren den Kundenkontakt und bieten maßgeschneiderte
+    Servicelösungen, die Verbund nicht im Portfolio hat.
+- name: Wien Energie
+  positioning: Führender Regionalversorger in Wien mit breitem Portfolio.
+  strengths:
+  - Starker Lokalbezug
+  - breites Produktangebot (Strom
+  - Gas
+  - Wärme)
+  - großer Kundenstamm
+  weaknesses:
+  - Auf Wien konzentriert
+  - kann auf spezifische Gewerbekundenbedürfnisse weniger flexibel reagieren
+  our_differentiation: Unsere KI-Lösung ist anbieterunabhängig und kann jedem Energiehändler
+    helfen, seinen Service auf das Niveau von Wien Energie zu heben oder zu übertreffen.
+- name: Kelag
+  positioning: Wichtiger Regionalversorger in Kärnten und der Steiermark.
+  strengths:
+  - Regionale Verwurzelung
+  - starker Fokus auf erneuerbare Energien
+  weaknesses:
+  - Begrenzte geografische Reichweite
+  - kleiner als nationale Player
+  our_differentiation: Wir bieten skalierbare Technologie, die auch mittelgroßen Versorgern
+    wie der Kelag hilft, mit den Service-Standards der Großen mitzuhalten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 299
+  roi_examples:
+  - scenario: Automatisierung der Kunden-Hotline für einen mittelständischen Energiehändler
+    monthly_cost: 1500
+    monthly_savings: 4000
+    payback_months: 1
+  - scenario: Outbound-Akquise-Kampagne zur Lead-Generierung
+    monthly_cost: 800
+    monthly_savings: 2000
+    payback_months: 2
+  value_anchors:
+  - Reduzieren Sie Ihre Kunden-Service-Kosten um bis zu 40%.
+  - Generieren Sie qualifizierte Leads für unter 10€ pro Stück.
+  - Steigern Sie die Kundenbindung durch 24/7 Erreichbarkeit.
+market_context:
+  market_size: ca. 2-3 Mrd. EUR Service- und Vertriebsmarkt im Energiebereich
+  growth_rate: 3-5% p.a., getrieben durch Digitalisierung und Energiewende
+  key_trends:
+  - Dezentralisierung durch Prosumer (PV-Anlagen)
+  - Zwang zum Smart Meter Rollout bis 2030
+  - Steigende Nachfrage nach Ökostrom und E-Mobility-Lösungen
+  - Verschärfung der Compliance (EU-Green-Deal, nationale Gesetze)
+  seasonality:
+    high:
+    - Oktober - Februar (Heizperiode, Vertragsende)
+    low:
+    - Juli - August (Urlaubszeit)
+typical_objections:
+- objection: Das ist mir zu teuer / Das Budget ist nicht da.
+  response: Ich verstehe die Budgetüberlegungen. Lassen Sie uns konkret den ROI durchrechnen.
+    Wenn die Einsparungen die Kosten in wenigen Monaten decken, handelt es sich um
+    eine Investition, nicht um eine Ausgabe.
+- objection: Unsere Kunden wollen mit einem Menschen sprechen, nicht mit einer Maschine.
+  response: Absolut, für komplexe Anliegen. Unser Agent übernimmt die repetitiven
+    80% der Anfragen, sodass Ihre Mitarbeiter mehr Zeit für die wirklich wichtigen
+    20% haben. Die Kundenzufriedenheit steigt, weil Wartezeiten wegfallen.
+- objection: Die Integration in unsere bestehenden Systeme ist zu aufwändig.
+  response: Unsere Lösung ist modular und über APIs anschlussfähig. Wir haben bereits
+    Integrationen mit gängigen Systemen wie SAP oder DATEV. Unser Technikteam unterstützt
+    Sie beim Onboarding.
+meta:
+  id: energy
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

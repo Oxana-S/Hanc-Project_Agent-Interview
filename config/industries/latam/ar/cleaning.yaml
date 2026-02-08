@@ -1,0 +1,191 @@
+pain_points:
+- description: Dificultad para coordinar horarios con clientes debido a llamadas constantes.
+  severity: medium
+  solution_hint: El agente de voz puede automatizar la programación de citas, reduciendo llamadas manuales.
+- description: Altos costos operativos por ineficiencias en la asignación de personal.
+  severity: high
+  solution_hint: El agente puede optimizar rutas y asignaciones basándose en la ubicación y disponibilidad.
+- description: Pérdida de clientes por falta de recordatorios y seguimiento post-servicio.
+  severity: medium
+  solution_hint: El agente envía recordatorios automáticos y solicita feedback después de cada limpieza.
+- description: Dificultad para manejar consultas fuera del horario laboral, perdiendo oportunidades.
+  severity: low
+  solution_hint: El agente de voz atiende consultas 24/7, capturando leads en cualquier momento.
+- description: Errores en la facturación y pagos, causando retrasos y disputas.
+  severity: high
+  solution_hint: El agente integra sistemas de facturación para generar y enviar facturas automáticamente.
+- description: Competencia intensa con empresas que ofrecen precios bajos pero calidad variable.
+  severity: medium
+  solution_hint: El agente resalta nuestro valor agregado, como servicios personalizados y garantías.
+typical_services:
+- Limpieza residencial regular
+- Limpieza comercial profunda
+- Limpieza post-obra
+- Limpieza de alfombras y tapizados
+- Limpieza de ventanas y cristales
+- Desinfección y sanitización
+- Limpieza ecológica con productos biodegradables
+- Servicio de limpieza para eventos
+- Mantenimiento de oficinas
+- Limpieza de comunidades y edificios
+recommended_functions:
+- name: Programación automática de citas
+  priority: high
+  reason: Reduce la carga administrativa y mejora la eficiencia en la coordinación.
+- name: Recordatorios y confirmaciones de citas
+  priority: medium
+  reason: Disminuye las ausencias de clientes y mejora la satisfacción.
+- name: Captura de leads y calificación inicial
+  priority: high
+  reason: Aumenta la conversión al responder rápidamente a consultas.
+- name: Integración con sistemas de pago
+  priority: medium
+  reason: Facilita la facturación y reduce errores en pagos.
+- name: Procesamiento de quejas y feedback
+  priority: low
+  reason: Mejora la retención de clientes al abordar problemas rápidamente.
+- name: Optimización de rutas de limpieza
+  priority: high
+  reason: Reduce costos de transporte y tiempo de viaje para el personal.
+typical_integrations:
+- name: Sistema de gestión de clientes (CRM)
+  examples:
+  - Zoho CRM
+  - Gestión Limpia AR
+  - Salesforce adaptado local
+  priority: high
+- name: Software de facturación y contabilidad
+  examples:
+  - Tango Software
+  - Sistema Contable AR
+  - Facturador Pro
+  priority: medium
+- name: Aplicaciones de mensajería y comunicación
+  examples:
+  - WhatsApp Business API
+  - Telegram para empresas
+  priority: low
+- name: Plataformas de pagos en línea
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - PayU Latam
+  priority: medium
+- name: Sistemas de geolocalización y mapas
+  examples:
+  - Google Maps API
+  - Mapas personalizados para Argentina
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta un servicio de limpieza residencial?
+  answer_template: Los precios varían según el tamaño de la propiedad y frecuencia, desde ARS 5000 mensuales para servicios básicos.
+- question: ¿Ofrecen servicios de limpieza ecológica?
+  answer_template: Sí, utilizamos productos biodegradables y técnicas sostenibles, con un pequeño recargo por este servicio.
+- question: ¿Cómo manejan la seguridad y confianza del personal?
+  answer_template: Nuestro personal está verificado, capacitado y asegurado, con supervisión regular para garantizar calidad.
+- question: ¿Pueden programar limpiezas en horarios fuera de oficina?
+  answer_template: Sí, ofrecemos flexibilidad en horarios, incluyendo fines de semana y noches, con previa coordinación.
+- question: ¿Qué pasa si no estoy satisfecho con el servicio?
+  answer_template: Ofrecemos una garantía de satisfacción; si hay problemas, reprogramamos la limpieza sin costo adicional.
+- question: ¿Aceptan pagos con tarjeta o transferencias?
+  answer_template: Sí, aceptamos múltiples métodos de pago, incluyendo tarjetas, Mercado Pago y transferencias bancarias.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios iniciales.
+  script: Hola, gracias por su interés. Nuestros servicios empiezan desde ARS 5000 mensuales para limpieza residencial básica. ¿Podría contarme más sobre su propiedad para darle un presupuesto preciso?
+  goal: Obtener información del cliente para personalizar la oferta y programar una cita.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como limpieza post-obra.
+  script: Claro, ofrecemos limpieza post-obra con precios desde ARS 15000 dependiendo del tamaño. Incluye eliminación de residuos y desinfección. ¿Le gustaría agendar una evaluación?
+  goal: Convertir la consulta en una venta cerrando una cita de evaluación.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor con precios bajos.
+  script: Entiendo. Nos diferenciamos por usar productos de calidad y personal capacitado, lo que garantiza resultados duraderos y menos necesidad de repetir limpiezas. ¿Le interesa una demostración sin
+    compromiso?
+  goal: Resaltar nuestro valor agregado y superar objeciones de precio.
+competitors:
+- name: Limpieza Express Argentina
+  positioning: Líder en servicios rápidos y económicos.
+  strengths:
+  - Precios bajos
+  - Amplia cobertura en Buenos Aires
+  - Servicio rápido
+  weaknesses:
+  - Calidad variable
+  - Atención al cliente limitada
+  - Pocas opciones personalizadas
+  our_differentiation: Ofrecemos servicios personalizados con garantía de calidad y atención 24/7.
+- name: CleanPro Latam
+  positioning: Especializado en limpieza comercial y corporativa.
+  strengths:
+  - Enfoque en grandes clientes
+  - Tecnología avanzada
+  - Contratos a largo plazo
+  weaknesses:
+  - Precios altos
+  - Poca flexibilidad para residencial
+  - Lenta respuesta a consultas
+  our_differentiation: Somos más accesibles y flexibles, con soluciones adaptadas a PYMES y hogares.
+- name: EcoLimp AR
+  positioning: Enfoque en limpieza ecológica y sostenible.
+  strengths:
+  - Productos verdes certificados
+  - Buena reputación ambiental
+  - Clientes conscientes
+  weaknesses:
+  - Precios premium
+  - Cobertura limitada fuera de CABA
+  - Menos servicios generales
+  our_differentiation: Balanceamos opciones ecológicas con precios competitivos y servicios integrales.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Una pequeña empresa que contrata limpieza comercial regular.
+    monthly_cost: 20000
+    monthly_savings: 35000
+    payback_months: 4
+  value_anchors:
+  - Ahorre hasta un 20% en costos operativos con nuestra optimización automatizada.
+  - 'Invierta en calidad: menos repeticiones de limpieza significan mayor ahorro a largo plazo.'
+  - Precios transparentes sin cargos ocultos, adaptados al mercado argentino.
+market_context:
+  market_size: El mercado de limpieza en Argentina está valorado en aproximadamente 10 mil millones de ARS anuales.
+  growth_rate: 4% anual
+  key_trends:
+  - Aumento en la demanda de servicios de desinfección post-pandemia.
+  - Crecimiento en limpieza ecológica impulsado por conciencia ambiental.
+  - Adopción de tecnología para gestión eficiente, especialmente en áreas urbanas.
+  seasonality:
+    high:
+    - enero (post-vacaciones)
+    - septiembre (inicio de primavera)
+    low:
+    - julio (invierno, vacaciones escolares)
+    - diciembre (festividades, cierres)
+typical_objections:
+- objection: Es muy caro comparado con otros servicios.
+  response: Nuestros precios reflejan la calidad y garantía que ofrecemos, lo que reduce costos a largo plazo al evitar limpiezas repetidas. ¿Le gustaría ver un desglose de los beneficios?
+- objection: No estoy seguro de necesitar un servicio regular.
+  response: Podemos empezar con un servicio puntual para que evalúe la calidad. Muchos clientes luego optan por planes regulares por conveniencia.
+- objection: He tenido malas experiencias con servicios de limpieza anteriores.
+  response: Entendemos. Contamos con personal verificado y supervisión constante; ofrecemos una garantía de satisfacción para su tranquilidad.
+- objection: Prefiero manejar la limpieza yo mismo para ahorrar.
+  response: Con nuestro servicio, usted ahorra tiempo que puede invertir en su negocio o familia, y los costos a menudo son menores que hacerlo por cuenta propia considerando productos y equipo.
+meta:
+  id: cleaning
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

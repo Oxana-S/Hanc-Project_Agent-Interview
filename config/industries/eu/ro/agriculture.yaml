@@ -1,0 +1,251 @@
+pain_points:
+- description: Accesul limitat la finanțare și subvenții pentru fermele mici și mijlocii
+  severity: high
+  solution_hint: Agentul vocal poate oferi informații actualizate despre programe
+    de finanțare și ghidare pas cu pas în aplicare
+- description: Dificultăți în gestionarea stocurilor de inputuri agricole și monitorizarea
+    culturilor
+  severity: high
+  solution_hint: Automatizarea comenzilor și notificări predictive pentru reaprovizionare
+    prin agentul vocal
+- description: Lipsa de informații în timp real despre condițiile meteo și riscurile
+    asociate culturilor
+  severity: medium
+  solution_hint: Agentul vocal poate furniza alerte meteo personalizate și recomandări
+    adaptive
+- description: Complexitatea respectării reglementărilor GDPR și alte norme europene
+    în gestionarea datelor agricole
+  severity: medium
+  solution_hint: Asistență vocală privind bune practici și conformitate GDPR
+- description: Costuri ridicate cu forța de muncă sezonieră și dificultăți în coordonare
+  severity: high
+  solution_hint: Programarea și comunicarea automată cu angajații prin agent vocal
+- description: Deficiențe în accesul la tehnologii moderne și digitalizare redusă
+  severity: medium
+  solution_hint: Educație și suport vocal pentru utilizarea tehnologiilor agricole
+    digitale
+- description: Fragmentarea pieței și dificultăți în stabilirea prețurilor corecte
+    pentru produsele agricole
+  severity: medium
+  solution_hint: Agent vocal poate oferi rapoarte de piață și recomandări de preț
+    în timp real
+typical_services:
+- Consultanță agricolă și planificare culturală
+- Monitorizarea și gestionarea culturilor
+- Servicii de irigații și fertilizare
+- Comerț și aprovizionare inputuri agricole
+- Servicii de mecanizare agricolă
+- Asistență pentru accesarea fondurilor europene
+- Managementul lanțului de aprovizionare agricolă
+- Analize sol și recomandări specifice
+- Servicii de desfacere și marketing pentru produse agricole
+- Suport pentru respectarea normelor de mediu și GDPR
+recommended_functions:
+- name: Informare și notificări meteo personalizate
+  priority: high
+  reason: Informațiile meteo influențează deciziile zilnice în agricultură
+- name: Programare automată a comenzilor de inputuri
+  priority: high
+  reason: Reduce riscul de lipsă a materialelor esențiale
+- name: Suport vocal pentru conformitate GDPR și reglementări
+  priority: medium
+  reason: Ajută fermele să evite sancțiuni și să respecte legislația
+- name: Gestionare și comunicare cu forța de muncă sezonieră
+  priority: high
+  reason: Eficientizează coordonarea și reduce costurile
+- name: Raportare și analiză a performanțelor culturilor
+  priority: medium
+  reason: Permite luarea deciziilor bazate pe date concrete
+- name: Asistență pentru accesarea fondurilor și subvențiilor
+  priority: medium
+  reason: Facilitează accesul la resurse financiare necesare
+- name: Educație și training pentru tehnologii agricole
+  priority: low
+  reason: Crește adoptarea tehnologiilor moderne
+typical_integrations:
+- name: ERP agricol
+  examples:
+  - AgroERP
+  - FarmSoft Romania
+  priority: high
+- name: Sisteme de monitorizare meteo locale
+  examples:
+  - Meteo Romania
+  - AccuWeather RO
+  priority: high
+- name: Platforme de gestionare a subvențiilor europene
+  examples:
+  - APIADR
+  - AFIR
+  priority: medium
+- name: Sisteme de gestiune a stocurilor
+  examples:
+  - SAGA
+  - SmartStock
+  priority: medium
+- name: CRM pentru agricultură
+  examples:
+  - AgriCRM
+  - AgroContact
+  priority: low
+- name: Sisteme de plata și facturare locale
+  examples:
+  - Facturis
+  - SmartBill
+  priority: medium
+industry_faq:
+- question: Cum pot accesa fonduri europene pentru agricultură?
+  answer_template: Pentru a accesa fonduri europene, trebuie să depuneți o cerere
+    prin platformele AFIR sau APIADR. Vă pot ghida pas cu pas în procesul de aplicare.
+- question: Care sunt cele mai bune perioade pentru semănat în România?
+  answer_template: Perioadele optime variază în funcție de cultură și regiune. Vă
+    pot oferi recomandări specifice bazate pe locația dumneavoastră și tipul culturii.
+- question: Cum respect normele GDPR în gestionarea datelor fermei mele?
+  answer_template: Este important să prelucrați datele personale în conformitate cu
+    legislația, să aveți consimțământul clar și să asigurați securitatea informațiilor.
+    Vă pot oferi un ghid adaptat nevoilor dvs.
+- question: Ce servicii de mecanizare pot externaliza?
+  answer_template: Puteți externaliza lucrări precum aratul, semănatul, fertilizarea
+    și recoltarea. Vă pot ajuta să găsiți furnizori locali de încredere.
+- question: Cum pot monitoriza starea culturilor în timp real?
+  answer_template: Există soluții digitale și senzori care permit monitorizarea culturilor.
+    Vă pot recomanda cele mai bune opțiuni disponibile pe piața românească.
+- question: Ce costuri implică implementarea unui sistem de irigații moderne?
+  answer_template: Costurile variază în funcție de suprafață și tehnologie. Pot să
+    vă ofer estimări orientative și opțiuni de finanțare.
+- question: Cum pot optimiza costurile cu forța de muncă sezonieră?
+  answer_template: Automatizarea programărilor și comunicarea eficientă pot reduce
+    costurile. Vă pot ajuta să implementați astfel de soluții.
+sales_scripts:
+- trigger: price_question
+  situation: Client întreabă despre prețurile serviciilor
+  script: Înțeleg că prețul este un aspect important. Serviciile noastre sunt adaptate
+    nevoilor specifice ale fermei dumneavoastră și oferă un raport calitate-preț foarte
+    bun. Putem discuta un plan personalizat care să se încadreze în bugetul disponibil.
+  goal: Transmiterea valorii și flexibilității prețurilor
+- trigger: compliance_concern
+  situation: Client exprimă îngrijorare privind respectarea GDPR
+  script: Respectarea GDPR este o prioritate pentru noi. Sistemul nostru include funcții
+    specifice care vă ajută să gestionați datele în conformitate cu legislația europeană,
+    reducând riscurile și posibilele sancțiuni.
+  goal: Reducerea temerilor legate de conformitate
+- trigger: tech_adoption_hesitation
+  situation: Client reticent față de tehnologiile digitale
+  script: Înțelegem că adoptarea noilor tehnologii poate părea dificilă, dar oferim
+    suport complet și training prin intermediul agentului vocal, astfel încât tranziția
+    să fie cât mai ușoară și benefică.
+  goal: Creșterea încrederii și reducerea barierelor de adopție
+- trigger: funding_question
+  situation: Client interesat de finanțări și subvenții
+  script: Vă pot oferi informații actualizate despre programele de finanțare disponibile
+    și vă pot ghida pas cu pas în procesul de aplicare pentru a maximiza șansele de
+    succes.
+  goal: Generarea interesului și angajamentului pentru servicii
+- trigger: workforce_management
+  situation: Client are dificultăți în gestionarea muncitorilor sezonieri
+  script: Sistemul nostru vă ajută să programați și să comunicați eficient cu forța
+    de muncă sezonieră, reducând erorile și costurile asociate.
+  goal: Prezentarea beneficiilor concrete și soluționarea problemelor operaționale
+competitors:
+- name: AgroVoice Solutions
+  positioning: Lider local în soluții vocale pentru agricultură
+  strengths:
+  - Tehnologie avansată
+  - integrare ERP
+  - suport local
+  weaknesses:
+  - Prețuri ridicate
+  - flexibilitate limitată
+  our_differentiation: Oferim soluții mai accesibile și personalizate pentru ferme
+    mici și mijlocii
+- name: FarmAssist Romania
+  positioning: Platformă completă de management agricol
+  strengths:
+  - Funcționalități multiple
+  - parteneriate cu instituții
+  weaknesses:
+  - Interfață complexă
+  - suport limitat în limba română
+  our_differentiation: Agent vocal intuitiv, cu suport dedicat în limba română și
+    training personalizat
+- name: SmartAgro Tech
+  positioning: Start-up inovator în digitalizarea agriculturii
+  strengths:
+  - Inovație
+  - soluții IoT integrate
+  weaknesses:
+  - Prezență redusă pe piața locală
+  - experiență limitată
+  our_differentiation: Experiență consolidată și adaptare la specificul pieței românești
+- name: AgroSoft Solutions
+  positioning: Furnizor software ERP pentru agricultură
+  strengths:
+  - Gestionare completă a fermei
+  - raportare detaliată
+  weaknesses:
+  - Fără funcționalități vocale
+  - implementare complexă
+  our_differentiation: Oferim integrare vocală nativă pentru o experiență hands-free
+    și eficientă
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 2000
+  - 15000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automatizarea comenzilor de inputuri și reducerea pierderilor
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 2
+  - scenario: Optimizarea muncii sezoniere prin programare vocală
+    monthly_cost: 700
+    monthly_savings: 2100
+    payback_months: 3
+  value_anchors:
+  - Investiția în soluții digitale reduce pierderile și crește productivitatea fermei.
+  - Automatizarea reduce timpul pierdut și costurile cu forța de muncă.
+  - Respectarea normelor GDPR previne amenzi costisitoare.
+  - Suportul vocal facilitează accesul la tehnologii moderne și crește eficiența operațională.
+market_context:
+  market_size: 6000000000
+  growth_rate: 8
+  key_trends:
+  - Digitalizarea proceselor agricole și adoptarea IoT
+  - Creșterea cererii pentru produse agricole sustenabile
+  - Utilizarea inteligenței artificiale pentru monitorizarea culturilor
+  - Acces sporit la fonduri europene pentru tehnologii agricole
+  seasonality:
+    high:
+    - martie-aprilie (sezon semănat)
+    - septembrie-octombrie (recoltare)
+    low:
+    - decembrie-ianuarie (pauză sezonieră)
+typical_objections:
+- objection: Nu avem buget suficient pentru astfel de tehnologii.
+  response: Înțelegem preocuparea pentru buget. Soluțiile noastre sunt scalabile și
+    putem ajusta serviciile astfel încât să se potrivească nevoilor și bugetului dumneavoastră,
+    cu un ROI rapid.
+- objection: Nu suntem obișnuiți să folosim tehnologie vocală în agricultură.
+  response: Agentul nostru vocal este foarte intuitiv și vă oferim training complet
+    pentru a vă asigura că îl puteți utiliza cu ușurință, chiar și fără experiență
+    anterioară.
+- objection: Suntem îngrijorați de respectarea GDPR.
+  response: Sistemul include funcții specifice pentru conformitatea GDPR și vă oferim
+    suport continuu pentru a vă asigura că datele fermei sunt protejate corespunzător.
+- objection: Preferăm metodele tradiționale de lucru.
+  response: Înțelegem valoarea metodelor tradiționale, însă integrarea tehnologiei
+    vocale poate reduce efortul și crește productivitatea, fără a înlocui complet
+    procesele cunoscute.
+- objection: Implementarea unei soluții noi poate fi complicată.
+  response: Ne ocupăm noi de configurare și oferim suport pas cu pas, astfel încât
+    implementarea să fie simplă și fără întreruperi în activitatea fermei.
+meta:
+  id: agriculture
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+_extends: _base/agriculture

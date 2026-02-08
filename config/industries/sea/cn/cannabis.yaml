@@ -1,0 +1,190 @@
+pain_points:
+- description: 遵守PIPL等法规的复杂性
+  severity: high
+  solution_hint: AI语音代理可以帮助自动化合规检查和数据管理，减少人工错误。
+- description: 获取工业大麻经营许可证的困难
+  severity: high
+  solution_hint: 提供逐步指导，连接相关资源，简化申请流程。
+- description: 高额运营成本来自严格监管和安全措施
+  severity: medium
+  solution_hint: 通过流程优化和自动化，降低人工和合规成本。
+- description: 市场接受度低，公众对大麻有负面认知
+  severity: medium
+  solution_hint: 教育客户，提供准确信息，改善品牌形象。
+- description: 供应链不稳定，原材料获取受限
+  severity: medium
+  solution_hint: 监控供应链动态，提供预警和替代方案。
+- description: 技术研发不足，尤其是在提取和加工领域
+  severity: low
+  solution_hint: 提供技术咨询和行业最佳实践分享。
+- description: 国际法规差异大，影响进出口贸易
+  severity: high
+  solution_hint: 提供多国合规数据库和实时更新，辅助决策。
+typical_services:
+- 工业大麻种植咨询
+- CBD提取技术服务
+- 大麻纤维加工与销售
+- 合规与法律咨询服务
+- 市场调研与趋势分析
+- 产品研发与质量控制
+- 供应链管理与优化
+- 出口贸易法规协助
+- 品牌建设与数字营销
+- 培训与行业教育
+recommended_functions:
+- name: 合规检查与报告
+  priority: high
+  reason: 确保业务符合中国法规如PIPL，避免法律风险。
+- name: 客户咨询应答
+  priority: high
+  reason: 提供准确、及时的行业信息，提升客户信任。
+- name: 预约与任务管理
+  priority: medium
+  reason: 自动化日程安排，提高业务效率。
+- name: 市场动态更新
+  priority: medium
+  reason: 保持对政策变化和市场趋势的实时了解。
+- name: 销售线索跟进
+  priority: high
+  reason: 促进销售转化，增加收入机会。
+- name: 多语言客户支持
+  priority: low
+  reason: 便于与国际客户或合作伙伴沟通。
+- name: 数据分析与洞察生成
+  priority: medium
+  reason: 帮助优化运营和战略决策。
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: high
+- name: 客户关系管理(CRM)
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: high
+- name: 供应链管理软件
+  examples:
+  - 顺丰科技系统
+  - 京东物流平台
+  priority: medium
+- name: 财务与会计软件
+  examples:
+  - 速达
+  - 管家婆
+  priority: medium
+- name: 合规管理平台
+  examples:
+  - 行业自定义系统
+  priority: high
+- name: 农业管理软件
+  examples:
+  - 智慧农业平台
+  priority: low
+industry_faq:
+- question: 在中国种植大麻合法吗？
+  answer_template: 在中国，只有工业大麻（用于纤维、种子等非精神活性用途）的种植在获得相关许可证后是合法的。娱乐用途大麻严格禁止。
+- question: CBD产品在中国可以销售吗？
+  answer_template: CBD产品受到严格监管，只有符合国家标准的非精神活性提取物才允许销售，需取得相应许可并遵守PIPL等法规。
+- question: 如何获取工业大麻经营许可证？
+  answer_template: 需向当地农业部门和公安机关提交申请，包括详细业务计划和合规措施。建议寻求专业法律顾问协助。
+- question: 工业大麻的市场前景如何？
+  answer_template: 随着可持续发展和医疗研究推进，市场在稳步增长，但需密切关注政策调整和消费者教育。
+- question: PIPL如何影响大麻行业的数据处理？
+  answer_template: PIPL要求企业在收集、存储和使用个人信息时严格合规，否则可能面临高额罚款。建议使用加密和审计工具。
+- question: 有哪些成功的本地案例可以参考？
+  answer_template: 一些公司在工业大麻纤维生产和CBD提取方面取得进展，但具体案例因商业机密有限。我们可以提供行业报告。
+- question: 国际交易有哪些注意事项？
+  answer_template: 需遵守中国和目的地国的法规差异，特别是出口管制和进口限制。我们的AI代理可提供实时指导。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问服务价格时
+  script: 您好，我们的服务价格根据项目规模和需求定制。基础咨询费用从5000 CNY起，可节省合规成本高达30%。是否需要详细方案？
+  goal: 引导客户提供更多信息，以便定制报价。
+- trigger: compliance_concern
+  situation: 当客户担心法规合规时
+  script: 我们理解合规是关键。我们的AI语音代理集成最新法规数据库，可自动化检查，帮助您降低PIPL相关风险。例如，每月节省审计时间20小时。
+  goal: 消除顾虑，展示AI代理的合规价值。
+- trigger: service_inquiry
+  situation: 当客户询问具体服务如CBD提取时
+  script: 我们提供全链条服务，从技术咨询到市场推广。CBD提取优化可提高效率25%。您目前有哪个环节需要支持？
+  goal: 了解具体需求，推荐针对性服务。
+- trigger: competitor_mention
+  situation: 当客户提到其他供应商时
+  script: 是的，市场上有类似服务。但我们的优势在于本地化AI支持，更适应中国法规环境，比如集成金蝶ERP简化流程。我们可以演示效果。
+  goal: 突出差异化，促成试用或合作。
+competitors:
+- name: 华麻科技
+  positioning: 专注于工业大麻种植技术提供商
+  strengths:
+  - 本地经验丰富
+  - 与政府关系良好
+  weaknesses:
+  - 技术更新较慢
+  - 服务范围有限
+  our_differentiation: 我们提供AI驱动的智能解决方案，覆盖合规到销售，更高效且成本优化。
+- name: 绿源提取
+  positioning: CBD提取服务专家
+  strengths:
+  - 提取技术先进
+  - 成本控制有效
+  weaknesses:
+  - 合规管理较弱
+  - 市场拓展不足
+  our_differentiation: 集成实时合规监控，降低法律风险，并支持多渠道营销。
+- name: 国际大麻咨询公司
+  positioning: 拥有国际背景的行业咨询公司
+  strengths:
+  - 全球资源网络
+  - 品牌知名度高
+  weaknesses:
+  - 本地化不足
+  - 价格较高
+  our_differentiation: 深度本地化，性价比更优，结合AI提升响应速度。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: 自动化客户咨询和预约管理，减少人工成本
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 3
+  value_anchors:
+  - 月均节省3000元人工成本
+  - 客户响应速度提升80%
+  - 24/7全天候服务覆盖
+meta:
+  id: cannabis
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- cannabis
+- dispensary
+- marijuana
+- CBD
+_extends: _base/cannabis
+market_context:
+  market_size: 约50亿元人民币
+  growth_rate: 8-10%
+  key_trends:
+  - 国家对工业大麻种植的政策逐步放宽，监管框架逐渐完善
+  - CBD及其相关产品的市场需求快速增长，尤其在医药和保健品领域
+  - 科技创新推动大麻纤维和种子加工技术升级，提高附加值
+  - 公众对大麻合法化和规范化认知逐渐提高，市场接受度提升
+  seasonality:
+    high:
+    - 4月
+    - 5月
+    - 9月
+    low:
+    - 1月
+    - 2月
+    - 12月

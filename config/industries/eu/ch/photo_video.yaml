@@ -1,0 +1,199 @@
+pain_points:
+- description: Hoher administrativer Aufwand für Angebotserstellung, Rechnungsstellung und Nachverfolgung von Zahlungen.
+  severity: medium
+  solution_hint: Der AI Voice Agent kann Angebote und Rechnungen automatisch generieren und Zahlungserinnerungen versenden.
+- description: Schwierigkeiten bei der Terminvereinbarung und -bestätigung mit Kunden, was zu Doppelbuchungen oder Auslastungsproblemen führt.
+  severity: high
+  solution_hint: Der AI Voice Agent kann als automatischer Terminmanager fungieren, Kalenderintegration nutzen und Bestätigungen versenden.
+- description: Verpassen von Nachfragen außerhalb der Geschäftszeiten, insbesondere an Wochenenden für Hochzeiten und Events.
+  severity: high
+  solution_hint: Der AI Voice Agent ist 24/7 erreichbar, kann erste Informationen sammeln und dringende Anfragen weiterleiten.
+- description: Hohe Kosten für die Akquise neuer Kunden und starke Abhängigkeit von Online-Bewertungsplattformen.
+  severity: medium
+  solution_hint: Der Agent kann qualifizierte Leads durch gezielte Fragen identifizieren und automatisiert Follow-up-Kampagnen für positive Bewertungen starten.
+- description: Komplexe Einhaltung der Schweizer Datenschutzgesetze (FADP) und der GDPR für Kundenfotos und -videos.
+  severity: high
+  solution_hint: Der Agent kann standardisierte Einwilligungserklärungen verwalten und Kunden über ihre Datenschutzrechte informieren.
+- description: Ineffiziente Verwaltung und Kategorisierung grosser Mengen an Rohmaterial und finalen Dateien.
+  severity: medium
+  solution_hint: Der Agent kann mit Cloud-Speicherdiensten integriert werden, um Dateien basierend auf Metadaten zu organisieren und Verlinkungen zu versenden.
+typical_services:
+- Hochzeitsfotografie & -videografie
+- Event-Dokumentation (Firmenanlässe, Geburtstage)
+- Business-Portraits und Corporate Photography
+- Produktfotografie für E-Commerce
+- Drohnenaufnahmen (Luftbilder & -videos)
+- Postproduktion & Bildbearbeitung (Retusche, Color Grading)
+- Fotobuch-Design und Druck
+- Social Media Content Creation (Fotos & Kurzvideos)
+- 360-Grad-Virtual-Tours für Immobilien
+- Livestreaming-Services für Events
+recommended_functions:
+- name: Terminbuchung & Kalenderverwaltung
+  priority: high
+  reason: Zentral für die Planung von Shootings und Vermeidung von Doppelbuchungen in dieser terminintensiven Branche.
+- name: Angebotserstellung & Rechnungsstellung
+  priority: high
+  reason: Automatisiert zeitaufwändige administrative Prozesse und beschleunigt den Sales-Funnel.
+- name: FAQ-Beantwortung & Preispräsentation
+  priority: medium
+  reason: Beantwortet rund um die Uhr Standardfragen zu Paketen, Preisen und Abläufen, entlastet das Personal.
+- name: Lead-Qualifikation & -Nachverfolgung
+  priority: high
+  reason: Filtert ernsthafte Anfragen heraus und automatisiert Follow-ups, um die Conversion Rate zu erhöhen.
+- name: Dateiübergabe & Link-Management
+  priority: medium
+  reason: Vereinfacht die sichere Übergabe grosser Dateien an Kunden und verwaltet Download-Links.
+- name: Einwilligungsmanagement (FADP/GDPR)
+  priority: high
+  reason: Kritisch für die Compliance in der Schweiz; der Agent kann Einwilligungen dokumentieren und verwalten.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - lexoffice
+  - bexio
+  - Accountable
+  priority: high
+- name: Kalender-/Terminplanung
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - Schweizer Nischenlösungen
+  priority: medium
+- name: Cloud-Speicher & Asset-Management
+  examples:
+  - Swisscom Cloud
+  - WeTransfer
+  - Dropbox
+  - Pixieset
+  priority: medium
+- name: E-Commerce & Portfolio-Websites
+  examples:
+  - WordPress mit Schweizer Hosting
+  - SmugMug
+  - Squarespace
+  priority: low
+industry_faq:
+- question: Wie schnell erhalten wir unsere bearbeiteten Fotos nach dem Shooting?
+  answer_template: Die Standard-Bearbeitungszeit beträgt 10-14 Werktage. Bei Express-Service gegen Aufpreis sind 3-5 Werktage möglich. Genauere Details finden Sie in unserem Servicevertrag.
+- question: Sind die digitalen Dateien inklusive und dürfen wir sie für Social Media nutzen?
+  answer_template: Ja, in unseren Paketen sind die hochauflösenden digitalen Dateien inklusive. Sie erhalten eine Nutzungslizenz für private und kommerzielle Zwecke, einschliesslich Social Media. Details
+    sind im Nutzungsrecht festgehalten.
+- question: Wie handhaben Sie die Datenspeicherung und den Datenschutz (FADP)?
+  answer_template: Wir halten uns streng an das Schweizer Datenschutzgesetz (FADP) und die GDPR. Alle Daten werden verschlüsselt auf Servern in der Schweiz/ EU gespeichert. Vor dem Shooting erhalten Sie
+    eine detaillierte Einwilligungserklärung.
+- question: Was passiert, wenn das Wetter bei unserem Outdoor-Shooting schlecht ist?
+  answer_template: Wir vereinbaren immer einen Ausweichtermin für Outdoor-Shootings. Bei kurzfristig schlechtem Wetter können wir das Shooting kostenlos verschieben oder auf ein alternatives Indoor-Konzept
+    umstellen.
+- question: Bieten Sie auch Drohnenaufnahmen an und benötigen Sie dazu eine Bewilligung?
+  answer_template: Ja, wir bieten professionelle Drohnenaufnahmen an. Unsere Piloten besitzen die notwendigen Schweizer Bewilligungen (z.B. von BAZL) und haftpflichtversichern alle Flüge.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Preisen oder sagt, das sei zu teuer.
+  script: Ich verstehe, dass Investitionen gut überlegt sein wollen. Unsere Pakete beginnen bei 490 CHF für ein Business-Portrait-Shooting. Der Preis reflektiert unsere langjährige Erfahrung, Schweizer
+    Datenschutzcompliance und hochwertige Ausrüstung. Möchten Sie mehr über die konkreten Leistungen in diesem Paket erfahren, um den Wert besser zu sehen?
+  goal: Vom Preis auf den Wert lenken und ein günstigeres Einstiegspaket präsentieren.
+- trigger: service_question
+  situation: Kunde erkundigt sich nach einem spezifischen Service wie Hochzeitsfotografie.
+  script: 'Herzlichen Glückwunsch zur Hochzeit! Wir bieten umfassende Hochzeitspakete, die von der Vorbereitung bis zum Albumdesign alles inkludieren. Um Ihnen das passende Angebot zu machen: Haben Sie
+    schon ein Datum und eine Location? Und was ist Ihnen bei den Bildern am wichtigsten – reportagehafte Momente oder klassische Inszenierungen?'
+  goal: Qualifizieren des Leads und Sammeln von Informationen für ein massgeschneidertes Angebot.
+- trigger: objection_too_busy
+  situation: Kunde sagt, er habe jetzt keine Zeit zum Sprechen.
+  script: Kein Problem, ich verstehe, dass Ihre Zeit kostbar ist. Ich sende Ihnen einfach per E-Mail unsere Portfolio-Links und eine Übersicht unserer Pakete zu. Sie können dann in Ruhe schauen. Darf ich
+    Ihre E-Mail-Adresse notieren? Wir melden uns dann in 2-3 Tagen kurz, ob Sie Fragen haben.
+  goal: Kontaktdaten sichern und die Konversation asynchron fortführen.
+competitors:
+- name: Lokale Einzelunternehmer (Fotografen)
+  positioning: Preisgünstig, persönlich, oft spezialisiert auf eine Nische (z.B. Hochzeiten).
+  strengths:
+  - Persönliche Beziehung
+  - tiefe Ortskenntnis
+  - oft niedrigere Preise
+  weaknesses:
+  - Begrenzte Kapazität
+  - oft schwächere administrative Prozesse
+  - geringere technische Ausstattung
+  our_differentiation: Professionelle Skalierbarkeit durch Automatisierung, 24/7-Erreichbarkeit, robuste Compliance-Prozesse und Lead-Management.
+- name: Regionale Fotostudios mit mehreren Mitarbeitern
+  positioning: Vollumfänglicher Service, Studioinfrastruktur, etablierter Name in der Region.
+  strengths:
+  - Umfassendes Leistungsangebot
+  - professionelles Studio
+  - Team mit verschiedenen Expertisen
+  weaknesses:
+  - Höhere Fixkosten
+  - oft starre Pakete
+  - eingeschränkte Flexibilität bei kurzfristigen Anfragen
+  our_differentiation: Unsere KI-gestützte Agentur bietet die Skalierbarkeit eines Studios mit der persönlichen, effizienten Ansprache eines Einzelunternehmers zu transparenten Preisen.
+- name: Online-Plattformen für Stockfotos & günstige Remote-Dienstleister
+  positioning: Sehr günstig, sofort verfügbar, globaler Pool.
+  strengths:
+  - Extrem niedrige Kosten
+  - sofortige Verfügbarkeit
+  - riesige Auswahl
+  weaknesses:
+  - Keine lokale Präsenz oder Kenntnis
+  - keine Individualität
+  - Qualitätsrisiko
+  - keine Schweizer Datenschutzgarantie
+  our_differentiation: Lokaler Service mit Schweizer Datenschutzstandards, massgeschneiderte Lösungen für den Schweizer Markt und persönliche Begleitung vor Ort.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 490
+  roi_examples:
+  - scenario: Ein Fotograf spart 10 Stunden administrative Arbeit pro Monat durch automatisierte Terminbuchung, Angebotserstellung und Rechnungsstellung.
+    monthly_cost: 99
+    monthly_savings: 750
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden administrative Arbeit monatlich.
+  - Verwandeln Sie 20% mehr Ihrer Anfragen in verbindliche Buchungen.
+  - Vollständige FADP/GDPR-Compliance für Ihren Kundenstamm.
+market_context:
+  market_size: Ca. 300-400 Mio. CHF jährlich in der Schweiz.
+  growth_rate: 3-5%
+  key_trends:
+  - Starke Nachfrage nach hochwertigem Video- und Social-Media-Content für Unternehmen.
+  - Trend zu "Authenticity" und reportagehaften Aufnahmen statt stark inszenierter Bilder.
+  - Erhöhte Nachfrage nach Drohnenaufnahmen und Virtual Reality/360-Grad-Inhalten.
+  seasonality:
+    high:
+    - Mai-Oktober (Hochzeitsaison)
+    - November-Dezember (Firmenevents & Weihnachtsfeiern)
+    low:
+    - Januar
+    - Februar
+typical_objections:
+- objection: Das brauche ich nicht, ich komme alleine gut zurecht.
+  response: Das glaube ich Ihnen gerne! Viele unserer Kunden waren sehr effizient. Unser Service zielt darauf ab, Ihnen noch mehr Zeit für die kreative Arbeit zu geben, die Sie lieben, indem wir die wiederkehrenden
+    Aufgaben übernehmen. Könnten 5-10 gewonnene Stunden pro Woche für Sie wertvoll sein?
+- objection: Ich habe kein Budget für solche Tools.
+  response: Ich verstehe die Budgetüberlegungen. Betrachten Sie es als Investition, die sich schnell amortisiert. Unser Einstiegspaket kostet 99 CHF/Monat und spart durchschnittlich 750 CHF an eingesparter
+    Administrationszeit. Das ist ein Netto-Gewinn von über 650 CHF pro Monat. Darf ich Ihnen eine detaillierte Kalkulation schicken?
+- objection: Ich bin mit meinem derzeitigen Workflow zufrieden.
+  response: Das ist ausgezeichnet! Ein stabiler Workflow ist wertvoll. Wir helfen oft Fotografen, ihren bereits guten Workflow zu optimieren und an Engpässen zu arbeiten – sei es bei der Leadgewinnung oder
+    Dateiverwaltung. Darf ich Ihnen ein paar Fragen zu Ihrem aktuellen Prozess stellen, um zu sehen, ob wir einen Punkt finden, an dem wir Ihnen Zeit sparen können?
+meta:
+  id: photo_video
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- photo studio
+- video production
+- photography
+- videography
+_extends: _base/photo_video

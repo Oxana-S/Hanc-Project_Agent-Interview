@@ -1,0 +1,219 @@
+pain_points:
+- description: Szakértő munkaerő hiánya a gyártásban, különösen a technikai szakemberek
+    terén.
+  severity: high
+  solution_hint: Az AI hangügynök automatizálhatja az alapvető képzéseket és támogatást
+    nyújthat a munkavállalóknak, csökkentve a betanítási terheket.
+- description: Magas energia költségek, ami befolyásolja a termelési költségeket.
+  severity: high
+  solution_hint: Az AI hangügynök monitorozhatja az energia felhasználást és javaslatokat
+    tehet optimalizálásra, csökkentve a költségeket.
+- description: Ellátási lánc bizonytalanságok és késések, különösen import/export
+    függőség miatt.
+  severity: medium
+  solution_hint: Az AI hangügynök nyomon követheti a szállításokat és proaktívan értesíthet
+    a késésekről, javítva a tervezhetőséget.
+- description: Szabályozási megfelelés és GDPR követelmények, ami adminisztratív terhet
+    jelent.
+  severity: medium
+  solution_hint: Az AI hangügynök automatizálhatja a jelentéskészítést és emlékeztethet
+    a jogi határidőkre, csökkentve a kockázatot.
+- description: Verseny a globális piacon, ami nyomást gyakorol az árakra és minőségre.
+  severity: high
+  solution_hint: Az AI hangügynök javíthatja az ügyfélszolgálatot és hatékonyságot,
+    növelve a versenyképességet.
+- description: Gyártási berendezések elavulása és karbantartási problémák.
+  severity: medium
+  solution_hint: Az AI hangügynök ütemezheti a karbantartásokat és értesíthet a hibákról,
+    minimalizálva az állásidőt.
+typical_services:
+- CNC megmunkálás
+- Injekciós formázás
+- Hegesztés és szerelés
+- Felületkezelés (pl. festés, galvanizálás)
+- Minőségellenőrzés és tesztelés
+- Logisztika és raktározás
+- Egyedi alkatrész gyártás
+- Sorozatgyártás
+- Prototípus készítés
+- Karbantartási szolgáltatások
+recommended_functions:
+- name: Rendelés nyomon követése
+  priority: high
+  reason: Az ügyfelek gyakran kérdeznek a szállítási állapotról, ez időt takarít meg
+    és javítja az elégedettséget.
+- name: Készlet kezelés
+  priority: high
+  reason: Segít elkerülni a hiányokat vagy túl sok készletet, optimalizálva a költségeket
+    a gyártásban.
+- name: Ütemezés és karbantartás emlékeztetők
+  priority: medium
+  reason: Csökkenti a berendezés leállását és javítja a termelési hatékonyságot.
+- name: Ügyfélszolgálati támogatás
+  priority: high
+  reason: Gyors válaszokat biztosít gyakori kérdésekre, növelve az ügyfélélményt.
+- name: Szabályozási megfelelés monitorozása
+  priority: medium
+  reason: Segít betartani a GDPR és egyéb helyi előírásokat, minimalizálva a bírságok
+    kockázatát.
+- name: Energia felhasználás jelentése
+  priority: low
+  reason: Segít azonosítani a takarékossági lehetőségeket, csökkentve a működési költségeket.
+typical_integrations:
+- name: ERP rendszerek
+  examples:
+  - SAP
+  - Navision
+  - Bábolna
+  priority: high
+- name: Gyártási végrehajtási rendszerek (MES)
+  examples:
+  - Siemens MES
+  - GE Digital
+  priority: medium
+- name: Készletkezelő szoftverek
+  examples:
+  - Warehouse Expert
+  - LogiNext
+  priority: medium
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  priority: high
+- name: Pénzügyi szoftverek
+  examples:
+  - Kontír
+  - SuperWEB
+  priority: low
+industry_faq:
+- question: Mennyi az átfutási idő egy tipikus rendelésre?
+  answer_template: Az átfutási idő általában 2-4 hét, de függ a rendelés összetettségétől
+    és mennyiségétől. Pontosabb információt tudunk adni a részletek ismeretében.
+- question: Milyen minőségbiztosítási eljárásokat alkalmaztok?
+  answer_template: ISO 9001 minőségirányítási rendszert követünk, és rendszeres teszteléseket
+    végzünk az összes termékünkön a minőség garantálása érdekében.
+- question: Kínáltok egyedi gyártási megoldásokat?
+  answer_template: Igen, szakterületünk az egyedi alkatrészek és prototípusok gyártása,
+    igazodva az ügyfelek specifikációihoz.
+- question: Hogyan kezelitek az adatvédelmet és GDPR követelményeket?
+  answer_template: Szigorú adatvédelmi protokollokat alkalmazunk, és minden rendszerünk
+    GDPR-kompatibilis, biztosítva az ügyfelek adatainak biztonságát.
+- question: Milyen fizetési feltételek érvényesek?
+  answer_template: Általában 30 napos fizetési határidőt alkalmazunk, de rugalmasak
+    vagyunk nagyobb rendelések esetén. Részleteket a szerződés tartalmazza.
+- question: Támogatjátok a szállítást nemzetközileg?
+  answer_template: Igen, biztosítunk logisztikai támogatást az EU-n belül és globálisan
+    is, a helyi szabályozásoknak megfelelően.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy ügyfél árakat kér a gyártási szolgáltatásokról.
+  script: Köszönöm a kérdését! Az áraink a rendelés méretétől, anyagától és összetettségétől
+    függenek. Általában 500 000 HUF-tól kezdődnek a kisebb projektek. Szeretnék egy
+    személyre szabott ajánlatot készíteni Önnek. Megosztaná a projekt részleteit?
+  goal: Információ gyűjtése a pontos árazáshoz és érdeklődés felkeltése.
+- trigger: service_inquiry
+  situation: Amikor egy ügyfél érdeklődik a tipikus gyártási szolgáltatásokról.
+  script: Örülök, hogy felkeresett! Széles körű gyártási szolgáltatásokat kínálunk,
+    például CNC megmunkálást, injekciós formázást és minőségellenőrzést. Melyik terület
+    érdekli leginkább, vagy van egy specifikus igénye?
+  goal: Az ügyfél igényeinek megértése és a megfelelő szolgáltatás ajánlása.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél más gyártókat említ.
+  script: Értem, hogy más lehetőségeket is fontolgat. Mi különböző vagyunk az automatizált
+    AI támogatásunkkal, ami gyorsabb válaszidőt és jobb költséghatékonyságot biztosít.
+    Szeretnék bemutatni, hogyan segíthetünk Önnek a verseny előny elérésében.
+  goal: Kiemelni a különböző értékajánlatot és meggyőzni az ügyfelet.
+competitors:
+- name: Bosch Magyarország
+  positioning: Nagy multinacionális cég, autóipari és ipari megoldásokban erős.
+  strengths:
+  - Globális jelenlét
+  - Magas minőségű termékek
+  - Fejlett R&D
+  weaknesses:
+  - Magasabb árak
+  - Kevesebb rugalmasság kis rendeléseknél
+  our_differentiation: Mi személyre szabottabb és költséghatékonyabb megoldásokat
+    kínálunk, AI-alapú támogatással a gyors ügyintézésért.
+- name: Audi Hungaria
+  positioning: Autógyártó óriás, főleg motor- és komponens gyártásban.
+  strengths:
+  - Nagy volumenű gyártás
+  - Erős márkanév
+  - Helyi gazdasági befolyás
+  weaknesses:
+  - Korlátozott egyedi szolgáltatások
+  - Bürokratikus folyamatok
+  our_differentiation: Kisebb és közepes vállalkozásokra összpontosítunk, gyorsabb
+    és rugalmasabb szolgáltatásokkal.
+- name: Rába
+  positioning: Helyi gyártó, járműalkatrészekben és vasúti berendezésekben.
+  strengths:
+  - Helyi piaci ismeret
+  - Hosszú tapasztalat
+  - Állami támogatások
+  weaknesses:
+  - Technológiai elavulás kockázata
+  - Lassabb innováció
+  our_differentiation: Modern AI technológiákat integrálunk a hatékonyság növelésére
+    és innovatív megoldások kínálására.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: AI hangügynök bevezetése az ügyfélszolgálat automatizálására
+    monthly_cost: 200000
+    monthly_savings: 300000
+    payback_months: 1
+  - scenario: Készletkezelés optimalizálása AI segítségével
+    monthly_cost: 150000
+    monthly_savings: 200000
+    payback_months: 1
+  value_anchors:
+  - Akár 30%-os költségcsökkenés az automatizált folyamatokkal
+  - Gyorsabb ügyintézés, ami növeli az ügyfélélményt
+  - GDPR megfelelés egyszerűsítése AI monitorozással
+market_context:
+  market_size: Körülbelül 5000 milliárd HUF éves forgalom
+  growth_rate: 3-5% éves növekedés
+  key_trends:
+  - Automatizálás és robotika bevezetése a gyártásban
+  - Zöld gyártási gyakorlatokra való átállás
+  - Digitális átalakulás és IIoT (Ipari Internet of Things) alkalmazások
+  seasonality:
+    high:
+    - őszi hónapok (szeptember-november)
+    - tavaszi hónapok (március-május)
+    low:
+    - nyári hónapok (július-augusztus)
+    - téli ünnepi időszak (december)
+typical_objections:
+- objection: Túl drágának tűnik a szolgáltatásotok.
+  response: Értem a aggályát. Az AI megoldásaink hosszú távon jelentős megtakarítást
+    hoznak, például csökkentve a munkaerő költségeket. Mutathatok konkrét ROI számításokat.
+- objection: Nem vagyok biztos benne, hogy az AI megbízható a gyártásban.
+  response: Teljesen megértem. Az AI rendszereink magas pontossággal működnek és folyamatosan
+    teszteljük őket. Sok sikeres bevezetésünk van magyar gyárakban, és megoszthatom
+    referenciáinkat.
+- objection: Már van meglévő rendszerünk, nem akarunk változtatni.
+  response: Az AI megoldásaink könnyen integrálhatók a meglévő rendszerekkel, mint
+    például SAP vagy helyi ERP-k. Segítünk az átállásban anélkül, hogy megzavarnánk
+    a működést.
+meta:
+  id: manufacturing
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

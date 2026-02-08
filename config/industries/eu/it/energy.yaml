@@ -1,0 +1,235 @@
+pain_points:
+- description: Elevati costi energetici e volatilità dei prezzi sul mercato all'ingrosso.
+  severity: high
+  solution_hint: L'agente vocale può fornire analisi in tempo reale dei prezzi e consigli
+    per l'ottimizzazione degli acquisti.
+- description: Complessità nel gestire e rispettare gli obblighi normativi (es. GSE,
+    ARERA, GDPR).
+  severity: high
+  solution_hint: L'agente vocale può tenere traccia delle scadenze, inviare promemoria
+    e guidare l'utente nei processi di compliance.
+- description: Difficoltà nel monitorare i consumi energetici in tempo reale e identificare
+    sprechi.
+  severity: medium
+  solution_hint: L'agente vocale può integrarsi con contatori intelligenti per fornire
+    report vocali e avvisi su picchi di consumo.
+- description: Procedure di switching tra fornitori lunghe e burocratiche.
+  severity: medium
+  solution_hint: L'agente vocale può automatizzare la raccolta dati e l'invio della
+    documentazione necessaria per il cambio fornitore.
+- description: Scarsa trasparenza nelle offerte e nelle fatture dei fornitori di energia.
+  severity: medium
+  solution_hint: L'agente vocale può analizzare le fatture e confrontare automaticamente
+    le condizioni offerte con il mercato.
+- description: Difficoltà nella gestione della produzione e dell'autoconsumo per gli
+    impianti da fonti rinnovabili.
+  severity: medium
+  solution_hint: L'agente vocale può ottimizzare i cicli di produzione e consumo suggerendo
+    interventi per massimizzare l'autoconsumo.
+typical_services:
+- Fornitura di energia elettrica
+- Fornitura di gas naturale
+- Servizi di efficienza energetica (audit, consulenza)
+- Installazione e gestione di impianti fotovoltaici
+- Servizi di gestione e ottimizzazione dei consumi (Energy Management)
+- Servizi di demand response
+- Servizi di ricarica per veicoli elettrici
+- Servizi di efficienza idrica
+- Servizi di trading energetico
+- Sistemisti e servizi di integrazione per reti intelligenti (Smart Grid)
+recommended_functions:
+- name: Analista Consumi in Tempo Reale
+  priority: high
+  reason: Fondamentale per identificare sprechi e ottimizzare i costi in un mercato
+    dai prezzi volatili.
+- name: Assistente per il Cambio Fornitore
+  priority: medium
+  reason: Semplifica una procedura complessa e temuta dagli utenti, aumentando la
+    propensione alla fidelizzazione.
+- name: Promemoria Scadenze Normative
+  priority: high
+  reason: Il settore energetico italiano è soggetto a molte scadenze (GSE, invii dati,
+    ecc.). Evita sanzioni costose.
+- name: Comparatore di Offerte Vocali
+  priority: medium
+  reason: Risponde al bisogno di trasparenza e aiuta l'utente a trovare l'offerta
+    più adatta al suo profilo di consumo.
+- name: Supporto Tecnico per Impianti Rinnovabili
+  priority: low
+  reason: Mercato in crescita, gli utenti hanno bisogno di assistenza specifica su
+    monitoraggio e manutenzione.
+typical_integrations:
+- name: Sistemi di Monitoraggio Energia (SCADA)
+  examples:
+  - Sistema del GSE per fonti rinnovabili
+  - Piattaforme di telelettura nazionale
+  priority: high
+- name: Software di Fatturazione Elettronica
+  examples:
+  - SdI (Sistema di Interscambio)
+  - Software gestionali aziendali come Zucchetti, SAP
+  priority: high
+- name: Piattaforme CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Sistemi proprietari dei grandi fornitori
+  priority: medium
+- name: Sistemi di Building Management (BMS)
+  examples:
+  - Siemens Desigo
+  - Schneider Electric EcoStruxure
+  priority: medium
+- name: App e Portali Clienti
+  examples:
+  - Enel X
+  - ENI Plenitude
+  - A2A Energia
+  priority: low
+industry_faq:
+- question: Come posso ridurre la bolletta dell'energia elettrica?
+  answer_template: Le opzioni principali includono l'ottimizzazione dei consumi attraverso
+    un audit energetico, il passaggio a un'offerta più vantaggiosa o l'installazione
+    di un impianto fotovoltaico per l'autoconsumo. Posso aiutarla a valutare queste
+    opzioni.
+- question: Quali sono i tempi per il cambio del fornitore di energia?
+  answer_template: Il processo di switching, regolato dall'ARERA, si completa generalmente
+    entro 4-6 settimane lavorative dalla richiesta, senza interruzione del servizio.
+    La nostra assistenza può accelerare le fasi burocratiche.
+- question: Cosa sono gli incentivi GSE e come posso accedervi?
+  answer_template: Il GSE (Gestore Servizi Energetici) eroga incentivi per la produzione
+    di energia da fonti rinnovabili. L'accesso avviene tramite presentazione di domanda
+    secondo scadenze precise. Posso supportarla nel monitorare le scadenze e preparare
+    la documentazione.
+- question: Cos'è il Mercato Libero dell'energia?
+  answer_template: È il mercato in cui i fornitori definiscono liberamente prezzi
+    e condizioni delle offerte. Si contrappone al Servizio di Maggior Tutela (ora
+    Tutele), che ha prezzi definiti dall'Autorità. Posso confrontare le offerte disponibili
+    per lei.
+- question: Avete soluzioni per la ricarica di auto elettriche?
+  answer_template: Sì, offriamo servizi di consulenza, installazione e gestione di
+    stazioni di ricarica per veicoli elettrici, sia domestiche che per aziende, integrabili
+    con impianti fotovoltaici per massimizzare il risparmio.
+sales_scripts:
+- trigger: price_question
+  situation: Quando il cliente chiede informazioni sui costi del servizio.
+  script: Capisco la sua attenzione al budget. Le nostre tariffe partono da un canone
+    mensile di [Importo] EUR, ma il costo finale dipende dal suo profilo di consumo.
+    Con un'analisi personalizzata, possiamo individuare un potenziale risparmio che
+    spesso supera il costo del servizio. Le interessa approfondire?
+  goal: Superare l'ostacolo del prezzo spostando l'attenzione sul ritorno sull'investimento
+    e personalizzazione.
+- trigger: competitor_mention
+  situation: Quando il cliente cita un concorrente diretto (es. Enel, Edison).
+  script: Conosco bene i loro servizi. Spesso si concentrano su grandi volumi. Noi
+    ci differenziamo con un'assistenza dedicata e strumenti di automazione che le
+    permettono di controllare davvero i suoi costi, non solo di ricevere una bolletta.
+    Desidera vedere un esempio concreto di come gestiremmo la sua situazione specifica?
+  goal: Distinguersi dai grandi player enfatizzando il servizio personalizzato e il
+    controllo attivo del cliente.
+- trigger: objection_complexity
+  situation: Quando il cliente esprime preoccupazione per la complessità di attivazione
+    o utilizzo.
+  script: La sua preoccupazione è comprensibile. Per questo proponiamo un servizio
+    chiavi in mano. Il nostro agente vocale si occuperà delle procedure più complesse
+    al suo posto, come la raccolta dati per lo switching o il monitoraggio delle scadenze
+    GSE. Lei riceverà solo aggiornamenti vocali semplici e promemoria. Sembra più
+    gestibile così?
+  goal: Trasformare una percezione di complessità in un vantaggio di semplicità e
+    automazione.
+competitors:
+- name: Enel Energia
+  positioning: Leader di mercato, fornitore storico.
+  strengths:
+  - Brand fortissimo e riconosciuto
+  - Estesa rete commerciale e di assistenza
+  - Portafoglio prodotti molto ampio
+  weaknesses:
+  - Processi burocratici e lenti
+  - Offerte spesso meno competitive per le PMI
+  - Servizio clienti standardizzato e poco flessibile
+  our_differentiation: Automazione e assistenza vocale proattiva che sostituisce le
+    lunghe attese al call center, con focus su personalizzazione e risparmio attivo.
+- name: ENI Plenitude
+  positioning: Major player integrato (produzione e vendita), forte sul gas.
+  strengths:
+  - Integrazione verticale (produzione, trading, vendita)
+  - Offerte combinate gas e luce
+  - Investimenti in rinnovabili e mobilità elettrica
+  weaknesses:
+  - Anch'esso legato a strutture grandi e complesse
+  - Meno focalizzato su servizi di consulenza indipendente
+  our_differentiation: 'Indipendenza: offriamo consulenza agnostica sul fornitore
+    e ci integriamo con qualsiasi impianto, ottimizzando i costi a prescindere da
+    chi produce l''energia.'
+- name: Sorgenia
+  positioning: Fornitore 100% green e digitale.
+  strengths:
+  - Posizionamento green chiaro e apprezzato
+  - Piattaforma digitale avanzata
+  - Servizi innovativi (es. comunità energetiche)
+  weaknesses:
+  - Focalizzazione quasi esclusiva sul residenziale e piccole imprese
+  - Potenziale limitato di personalizzazione per industrie energivore
+  our_differentiation: Oltre al green, offriamo automazione vocale tangibile per la
+    gestione quotidiana e la compliance, con un ROI misurabile e immediato anche per
+    le aziende.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 29
+  roi_examples:
+  - scenario: PMI con consumo di 30.000 kWh/anno e attuale costo di 0.18 €/kWh. Implementazione
+      di monitoraggio consumi e ottimizzazione acquisti.
+    monthly_cost: 50
+    monthly_savings: 150
+    payback_months: 4
+  value_anchors:
+  - Riduci la tua bolletta energetica fino al 15% con l'automazione.
+  - 'Evita sanzioni da mancata compliance: un servizio che si ripaga da solo.'
+  - Trasforma la complessità normativa in un vantaggio competitivo.
+market_context:
+  market_size: Circa 60 miliardi di EUR (mercato retail elettrico e gas)
+  growth_rate: 2-4% YoY, trainato da rinnovabili ed efficienza
+  key_trends:
+  - Transizione energetica e crescita esplosiva del fotovoltaico e delle comunità
+    energetiche.
+  - Digitalizzazione e contatori intelligenti di seconda generazione (2G).
+  - Mobilità elettrica e integrazione con la ricarica domestica/aziendale.
+  - Crisi geopolitica e ricerca attiva di indipendenza e risparmio.
+  seasonality:
+    high:
+    - Autunno (preparazione invernale)
+    - Inverno (picco consumi gas/elettricità)
+    low:
+    - Primavera (clima mite, consumi ridotti)
+typical_objections:
+- objection: Siamo già sotto contratto con un fornitore, non vogliamo cambiare ora.
+  response: Capisco. Il nostro servizio non richiede necessariamente il cambio fornitore.
+    Possiamo iniziare ottimizzando i consumi e gestendo la compliance con il fornitore
+    attuale, generando risparmi immediati. Valutiamo insieme?
+- objection: Non abbiamo il personale interno per gestire un nuovo sistema tecnologico.
+  response: Proprio per questo è nato il nostro servizio vocale. Non richiede formazione
+    del personale o nuovi software da imparare. L'agente si integra e fornisce informazioni
+    e avvisi in linguaggio naturale. Possiamo fare una demo di 5 minuti?
+- objection: I risparmi promessi sono sempre teorici e non si concretizzano.
+  response: La sua diffidenza è giustificata. Per questo lavoriamo solo a obiettivi
+    misurabili. Le mostro il caso di un'azienda simile alla sua che ha risparmiato
+    X EUR in Y mesi? Il nostro contratto può includere KPI chiari di risparmio.
+meta:
+  id: energy
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

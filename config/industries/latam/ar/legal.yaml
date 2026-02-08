@@ -1,0 +1,207 @@
+pain_points:
+- description: Los costos operativos son muy elevados debido a la inflación y los
+    altos honorarios de personal administrativo.
+  severity: high
+  solution_hint: Un agente de voz IA puede automatizar tareas repetitivas como programación
+    de citas y recordatorios, reduciendo la necesidad de personal adicional.
+- description: Retrasos frecuentes en trámites judiciales y administrativos por la
+    burocracia local.
+  severity: high
+  solution_hint: El agente puede enviar alertas automáticas sobre plazos y seguir
+    el estado de casos, mejorando la eficiencia.
+- description: Falta de digitalización en la gestión de documentos legales, lo que
+    aumenta el riesgo de errores y pérdidas.
+  severity: medium
+  solution_hint: Integración con sistemas de gestión documental para digitalizar y
+    organizar archivos mediante comandos de voz.
+- description: Dificultad para gestionar consultas iniciales de clientes, saturando
+    la atención telefónica.
+  severity: medium
+  solution_hint: El agente puede manejar consultas básicas, filtrar casos y derivar
+    a abogados solo cuando sea necesario.
+- description: Complejidad en el seguimiento de normativas locales en constante cambio,
+    como leyes laborales o tributarias.
+  severity: high
+  solution_hint: Actualizaciones automáticas vía voz sobre cambios legales y asesoría
+    inicial basada en datos en tiempo real.
+- description: Competencia intensa de grandes bufetes que ofrecen servicios a precios
+    bajos, afectando a firmas más pequeñas.
+  severity: medium
+  solution_hint: El agente permite ofrecer servicios de atención al cliente 24/7 a
+    un costo reducido, diferenciándose en calidad.
+typical_services:
+- Asesoramiento jurídico general
+- Redacción y revisión de contratos
+- Litigios y representación en juicios
+- Derecho laboral y despidos
+- Derecho de familia y sucesiones
+- Derecho tributario y planificación fiscal
+- Propiedad intelectual e industrial
+- Derecho inmobiliario y compraventa
+- Derecho penal y defensa legal
+- Mediación y resolución alternativa de conflictos
+recommended_functions:
+- name: Programación de citas y recordatorios
+  priority: high
+  reason: Reduce la carga administrativa y mejora la puntualidad en un mercado con
+    alta demanda de atención personalizada.
+- name: Respuesta a consultas frecuentes sobre servicios legales
+  priority: high
+  reason: Libera tiempo de abogados para casos complejos y atrae clientes con respuestas
+    inmediatas en español.
+- name: Seguimiento de pagos y recordatorios de facturación
+  priority: medium
+  reason: Ayuda a gestionar el flujo de caja en un entorno económico volátil como
+    Argentina.
+- name: Integración con sistemas de gestión jurídica para acceso a datos
+  priority: high
+  reason: Facilita la actualización de casos y documentos, clave para la eficiencia
+    en bufetes locales.
+- name: Asistencia en la captación de clientes mediante llamadas automatizadas
+  priority: medium
+  reason: Permite expandir la base de clientes en un mercado competitivo sin incrementar
+    costos fijos.
+typical_integrations:
+- name: Sistemas de gestión jurídica
+  examples:
+  - Legaler
+  - JurisCloud
+  - Abogaditos
+  priority: high
+- name: Plataformas de gobierno electrónico
+  examples:
+  - AFIP en línea
+  - Ministerio de Justicia digital
+  priority: medium
+- name: Software de facturación local
+  examples:
+  - Facturador Pro
+  - Sistema Tango
+  priority: medium
+- name: Herramientas de videoconferencia
+  examples:
+  - Zoom
+  - Google Meet
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los costos promedio de sus servicios legales?
+  answer_template: Los costos varían según el servicio, pero ofrecemos asesoría inicial
+    gratuita y planes desde ARS 5000 mensuales para automatización básica.
+- question: ¿Pueden ayudarme con trámites en AFIP?
+  answer_template: Sí, nuestro agente de voz IA puede guiarle en consultas tributarias
+    básicas y derivarle a un especialista para casos complejos.
+- question: ¿Cómo manejan la confidencialidad de los datos legales?
+  answer_template: Utilizamos encriptación y cumplimos con normativas locales para
+    garantizar la seguridad de toda la información.
+- question: ¿Ofrecen servicios para pequeñas empresas?
+  answer_template: Absolutamente, tenemos soluciones escalables desde firmas individuales
+    hasta empresas, con precios adaptados al mercado argentino.
+- question: ¿Qué tan rápido pueden resolver un caso simple?
+  answer_template: Con nuestra automatización, podemos agilizar consultas iniciales
+    en minutos, pero los tiempos legales dependen de la complejidad del caso.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios en una llamada inicial.
+  script: Entiendo su interés en los costos. En Argentina, ofrecemos soluciones desde
+    ARS 5000 al mes que pueden ahorrarle hasta un 30% en gastos administrativos. ¿Le
+    gustaría que le detalle un plan personalizado?
+  goal: Convertir la consulta en una oportunidad de venta destacando el ahorro en
+    ARS.
+- trigger: service_inquiry
+  situation: Cuando un cliente busca un servicio legal específico como redacción de
+    contratos.
+  script: Para la redacción de contratos, nuestro agente IA puede asistirle en borradores
+    iniciales y derivarle a un abogado para revisiones, todo en español y con precios
+    transparentes en ARS.
+  goal: Demostrar valor y facilitar el proceso de contratación.
+- trigger: competition_concern
+  situation: Cuando el cliente menciona a otros proveedores locales.
+  script: A diferencia de competidores que solo ofrecen software, nosotros combinamos
+    IA con soporte humano local, asegurando una atención más personalizada y adaptada
+    a las leyes argentinas.
+  goal: Diferenciar nuestro servicio y ganar confianza.
+competitors:
+- name: Legaler
+  positioning: Plataforma de gestión jurídica líder en Latinoamérica.
+  strengths:
+  - Interfaz fácil de usar
+  - Integraciones amplias
+  weaknesses:
+  - Costos altos en ARS
+  - Soporte limitado en español argentino
+  our_differentiation: Ofrecemos agentes de voz IA nativos en español de Argentina,
+    con precios más accesibles y atención personalizada.
+- name: Bufete Digital
+  positioning: Servicios legales en línea para pequeñas empresas en Argentina.
+  strengths:
+  - Precios competitivos
+  - Enfoque en mercado local
+  weaknesses:
+  - Automatización limitada
+  - Escalabilidad baja
+  our_differentiation: Nuestra solución IA permite escalar sin sacrificar calidad,
+    con funciones de voz que ellos no tienen.
+- name: JurisTech
+  positioning: Startup de legal tech enfocada en automatización para bufetes grandes.
+  strengths:
+  - Tecnología avanzada
+  - Clientes corporativos
+  weaknesses:
+  - No adaptado a firmas pequeñas
+  - Poco enfoque en atención al cliente
+  our_differentiation: Diseñamos para todo tipo de bufetes, con énfasis en la experiencia
+    del cliente mediante voz en español.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de programación de citas para un bufete pequeño
+    monthly_cost: 8000
+    monthly_savings: 12000
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta ARS 15000 mensuales en costos administrativos
+  - Incremente la productividad en un 40% con atención automatizada
+market_context:
+  market_size: Estimado en ARS 50 mil millones anuales para servicios legales en Argentina
+  growth_rate: 5% anual, impulsado por la digitalización
+  key_trends:
+  - Aumento en la adopción de legal tech por firmas locales
+  - Mayor demanda de servicios asequibles para pymes
+  - Regulaciones en evolución que requieren actualización constante
+  seasonality:
+    high:
+    - Marzo (inicio del año fiscal)
+    - Septiembre (cierre de trimestres)
+    low:
+    - Enero (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: No confío en que una máquina maneje asuntos legales delicados.
+  response: Entiendo su preocupación. Nuestro agente IA actúa como asistente, no reemplaza
+    abogados, sino que optimiza tareas para que ellos se enfoquen en lo crítico, con
+    supervisión humana.
+- objection: Los precios en ARS son muy variables debido a la inflación.
+  response: Ofrecemos planes con precios fijos en ARS ajustados periódicamente para
+    mantener el valor, y garantizamos ahorros que compensan la inflación.
+- objection: Ya uso otro software y no quiero cambiar.
+  response: Nuestra solución se integra fácilmente con sistemas existentes como Legaler,
+    añadiendo funciones de voz sin interrumpir su flujo de trabajo.
+meta:
+  id: legal
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

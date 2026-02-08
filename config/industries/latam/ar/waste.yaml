@@ -1,0 +1,207 @@
+pain_points:
+- description: Los costos operativos son altos debido al aumento de los precios del combustible y el mantenimiento de vehículos.
+  severity: high
+  solution_hint: El agente de voz AI puede optimizar rutas de recolección para reducir costos de combustible y tiempo.
+- description: Dificultad en la gestión de clientes y facturación, con retrasos frecuentes en pagos.
+  severity: medium
+  solution_hint: Automatizar recordatorios de pagos, confirmaciones de servicio y seguimiento de clientes.
+- description: Cumplimiento normativo complejo y cambios frecuentes en regulaciones ambientales.
+  severity: high
+  solution_hint: Proporcionar actualizaciones automáticas sobre normativas y asistir en la documentación requerida.
+- description: Ineficiencias en la programación de recolección, leading to sobrecarga o subutilización de recursos.
+  severity: medium
+  solution_hint: Optimizar la programación dinámica basada en demanda y condiciones del tráfico.
+- description: Altos niveles de residuos no separados, dificultando el reciclaje y aumentando costos de disposición.
+  severity: medium
+  solution_hint: Educar a clientes sobre separación de residuos a través de recordatorios automatizados y consultas.
+- description: Competencia intensa con empresas informales que ofrecen precios bajos pero servicios de baja calidad.
+  severity: low
+  solution_hint: Destacar la calidad y confiabilidad del servicio mediante comunicaciones proactivas y testimonios.
+- description: Falta de visibilidad en tiempo real del estado de las operaciones y métricas de desempeño.
+  severity: medium
+  solution_hint: Integrar sistemas de monitoreo para proporcionar informes automatizados y alertas.
+typical_services:
+- Recolección de residuos sólidos urbanos
+- Gestión de residuos industriales
+- Servicios de reciclaje y separación en origen
+- Disposición final en rellenos sanitarios
+- Limpieza de espacios públicos y eventos
+- Consultoría en gestión ambiental
+- Tratamiento de residuos peligrosos
+- Alquiler de contenedores y compactadores
+- Servicios de compostaje
+- Educación ambiental para empresas y comunidades
+recommended_functions:
+- name: Programación de recolección
+  priority: high
+  reason: Esencial para optimizar rutas y reducir costos operativos en un mercado con tráfico denso.
+- name: Gestión de clientes y facturación
+  priority: high
+  reason: Mejora la eficiencia en cobranzas y reduce la morosidad, común en el sector.
+- name: Soporte para cumplimiento normativo
+  priority: medium
+  reason: Ayuda a navegar regulaciones ambientales cambiantes en Argentina.
+- name: Monitoreo de operaciones en tiempo real
+  priority: medium
+  reason: Proporciona visibilidad para tomar decisiones rápidas y mejorar la calidad del servicio.
+- name: Educación y recordatorios para clientes
+  priority: low
+  reason: Fomenta la separación de residuos y reduce contaminación, alineado con tendencias verdes.
+- name: Integración con sistemas de GPS y logística
+  priority: high
+  reason: Clave para optimizar rutas y reducir tiempos de viaje en áreas urbanas.
+typical_integrations:
+- name: Sistemas ERP locales
+  examples:
+  - Tango Gestión
+  - Bejerman
+  - SAP localizado
+  priority: high
+- name: Sistemas de GPS y telemetría
+  examples:
+  - Garmin
+  - Localiza
+  - Sistemas personalizados
+  priority: high
+- name: Plataformas de facturación electrónica
+  examples:
+  - AFIP homologados
+  - FacturadorPro
+  - Nubimetrics
+  priority: medium
+- name: Sistemas de gestión ambiental
+  examples:
+  - SoftAmbiental
+  - EcoGest
+  - Sistemas personalizados
+  priority: medium
+- name: CRM locales
+  examples:
+  - Zoho CRM adaptado
+  - Salesforce con integraciones locales
+  - Vtiger
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo reducir los costos de recolección de residuos?
+  answer_template: Podemos optimizar sus rutas de recolección mediante tecnología AI, lo que puede reducir costos de combustible hasta un 20%. ¿Le interesa una evaluación gratuita?
+- question: ¿Qué debo hacer para cumplir con las normativas ambientales en Argentina?
+  answer_template: Ofrecemos asesoría automatizada sobre regulaciones actuales y ayudamos a gestionar la documentación requerida para evitar multas.
+- question: ¿Cómo mejoro la separación de residuos en mi empresa?
+  answer_template: Implementamos recordatorios y educamos a su personal a través de mensajes automatizados, aumentando las tasas de reciclaje.
+- question: ¿Pueden integrarse con mi sistema de facturación actual?
+  answer_template: Sí, nos integramos con plataformas comunes como FacturadorPro o sistemas personalizados para simplificar la gestión.
+- question: ¿Qué ventajas tienen sobre los servicios informales?
+  answer_template: Ofrecemos servicios confiables, con seguimiento en tiempo real y cumplimiento normativo, asegurando calidad y reduciendo riesgos.
+- question: ¿Cómo manejan la recolección en días festivos o picos de demanda?
+  answer_template: Utilizamos programación dinámica para ajustar rutas según la demanda, garantizando servicio continuo incluso en períodos altos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios o compara con competidores.
+  script: Hola, entiendo que el costo es una preocupación. Nuestros servicios comienzan desde ARS 50,000 mensuales, pero le ofrecemos una evaluación personalizada para optimizar sus gastos actuales. ¿Podemos
+    programar una llamada para analizar sus necesidades específicas?
+  goal: Convertir la consulta en una oportunidad de demostración y destacar el valor frente al precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente busca información sobre servicios de recolección o reciclaje.
+  script: Gracias por contactarnos. Ofrecemos soluciones completas de gestión de residuos, desde recolección hasta reciclaje. ¿Podría contarme más sobre el volumen y tipo de residuos que maneja para recomendar
+    el mejor plan?
+  goal: Recopilar información y personalizar la oferta.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por normativas ambientales.
+  script: Es comprensible, las regulaciones pueden ser complejas. Nuestro sistema incluye actualizaciones automáticas y asesoría para garantizar el cumplimiento, evitando multas. ¿Le gustaría ver cómo funciona
+    en un caso similar?
+  goal: Generar confianza y demostrar expertise en cumplimiento.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor o servicio informal.
+  script: Aprecio su investigación. A diferencia de servicios informales, nosotros garantizamos calidad, seguimiento en tiempo real y soporte normativo. Esto reduce riesgos y mejora la eficiencia a largo
+    plazo. ¿Podemos mostrarle algunos testimonios de clientes satisfechos?
+  goal: Diferenciar el servicio y enfatizar beneficios a largo plazo.
+competitors:
+- name: Cliba
+  positioning: Líder en recolección de residuos en áreas urbanas de Argentina.
+  strengths:
+  - Amplia cobertura geográfica
+  - Infraestructura establecida
+  - Relaciones con municipios
+  weaknesses:
+  - Menor flexibilidad en servicios personalizados
+  - Costos más altos para PYMEs
+  our_differentiation: Ofrecemos soluciones AI más accesibles y adaptables para empresas de todos los tamaños.
+- name: Urbaser
+  positioning: Empresa internacional con presencia en gestión integral de residuos.
+  strengths:
+  - Tecnología avanzada
+  - Experiencia global
+  - Servicios completos
+  weaknesses:
+  - Enfoque menos localizado
+  - Precios premium
+  our_differentiation: Nos especializamos en integraciones locales y soporte en español con precios competitivos.
+- name: Servicios informales locales
+  positioning: Operadores pequeños que ofrecen precios bajos.
+  strengths:
+  - Precios iniciales muy bajos
+  - Flexibilidad en negociaciones
+  weaknesses:
+  - Falta de cumplimiento normativo
+  - Calidad inconsistente
+  - Sin soporte tecnológico
+  our_differentiation: Proporcionamos servicios confiables, con tecnología AI y cumplimiento, mejorando la eficiencia y reduciendo riesgos.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 30000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Reducción de costos de combustible mediante optimización de rutas
+    monthly_cost: 60000
+    monthly_savings: 102000
+    payback_months: 5
+  - scenario: Automatización de facturación y reducción de morosidad
+    monthly_cost: 40000
+    monthly_savings: 68000
+    payback_months: 5
+  value_anchors:
+  - Ahorro promedio del 15-20% en costos operativos con nuestra tecnología AI
+  - Cumplimiento normativo garantizado, evitando multas de hasta ARS 100,000 anuales
+  - Mejora en la satisfacción del cliente con servicios más confiables y eficientes
+market_context:
+  market_size: Estimado en ARS 10 mil millones anuales en Argentina
+  growth_rate: 5-7% anual, impulsado por regulaciones ambientales y conciencia ecológica
+  key_trends:
+  - Aumento en la adopción de tecnologías verdes y reciclaje
+  - Mayor regulación gubernamental para reducir residuos en vertederos
+  - Crecimiento de la economía circular en sectores industriales
+  - Demanda creciente de soluciones digitales para gestión de residuos
+  seasonality:
+    high:
+    - Verano (diciembre a febrero)
+    - Fiestas de fin de año
+    low:
+    - Invierno (junio a agosto)
+    - Períodos de receso empresarial
+typical_objections:
+- objection: Es demasiado caro comparado con servicios informales.
+  response: Entiendo, pero considere que nuestro servicio incluye tecnología AI que reduce costos a largo plazo, cumplimiento normativo para evitar multas, y mayor confiabilidad. ¿Podemos calcular su ahorro
+    potencial?
+- objection: Ya tenemos un sistema funcionando, no necesitamos cambios.
+  response: Valoro su sistema actual. Nuestra solución se integra fácilmente para optimizar lo que ya tiene, mejorando eficiencia sin interrupciones. ¿Le gustaría ver una demostración de cómo funciona?
+- objection: No estamos seguros de los beneficios de la tecnología AI en nuestro sector.
+  response: La AI puede optimizar rutas, reducir costos operativos y mejorar la gestión de clientes. Tenemos casos de éxito en empresas similares en Argentina. ¿Podemos compartir algunos ejemplos?
+- objection: Las regulaciones no son tan estrictas en nuestra área.
+  response: Es cierto, pero las normativas están evolucionando rápidamente. Implementar nuestra solución ahora le prepara para el futuro y puede darle una ventaja competitiva. ¿Hablamos más sobre las tendencias
+    actuales?
+meta:
+  id: waste
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

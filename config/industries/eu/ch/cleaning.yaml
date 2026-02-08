@@ -1,0 +1,187 @@
+pain_points:
+- description: Hohe Personalkosten aufgrund strenger Arbeitsgesetze und hoher Löhne in der Schweiz.
+  severity: high
+  solution_hint: Unser AI-Stimmagent kann effiziente Terminplanung und Ressourcenoptimierung anbieten, um Arbeitsstunden zu reduzieren.
+- description: Schwierigkeiten bei der Rekrutierung zuverlässiger Reinigungskräfte, besonders in städtischen Gebieten.
+  severity: high
+  solution_hint: Der AI-Agent kann automatisierte Bewerbungsprozesse und Schulungsunterstützung bereitstellen.
+- description: Einhaltung strenger Datenschutzvorschriften wie FADP und GDPR, was administrative Belastung erhöht.
+  severity: medium
+  solution_hint: Integrierte Compliance-Checks und Datenschutzrichtlinien-Erinnerungen durch den AI-Agent.
+- description: Saisonale Nachfrageschwankungen, mit Spitzenzeiten im Frühjahr und Tiefs im Winter.
+  severity: medium
+  solution_hint: Dynamische Preisgestaltung und Marketingkampagnen basierend auf Saisonalität, unterstützt vom AI-Agent.
+- description: Hoher Wettbewerbsdruck durch zahlreiche lokale und nationale Reinigungsunternehmen.
+  severity: medium
+  solution_hint: Personalisierte Kundenansprache und Upselling-Möglichkeiten via AI-Stimmagent.
+- description: Kundenanforderungen an umweltfreundliche Reinigungsmittel und nachhaltige Praktiken.
+  severity: low
+  solution_hint: Der AI-Agent kann Informationen zu ökologischen Dienstleistungen bereitstellen und Kundennachfragen steuern.
+typical_services:
+- Büroreinigung
+- Haushaltsreinigung
+- Teppichreinigung
+- Fensterreinigung
+- Industriereinigung
+- Baustellenreinigung
+- Spezialreinigung (z.B. nach Renovierung)
+- Hygienereinigung
+- Grundreinigung
+- Unterhaltsreinigung
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Reduziert Verwaltungsaufwand und verbessert Kundenzufriedenheit durch effiziente Planung.
+- name: Kundenanfragenbehandlung
+  priority: high
+  reason: Ermöglicht schnelle Antworten auf Preisanfragen und Serviceinformationen, steigert Konversionsraten.
+- name: Preiskalkulation in Echtzeit
+  priority: medium
+  reason: Bietet transparente und angepasste Preisangebote basierend auf Dienstleistung und Standort.
+- name: Compliance-Überwachung für FADP/GDPR
+  priority: medium
+  reason: Stellt sicher, dass alle Kundendaten und Prozesse den Schweizer Datenschutzgesetzen entsprechen.
+- name: Mitarbeiterplanungsoptimierung
+  priority: low
+  reason: Hilft bei der Zuordnung von Reinigungskräften zu Aufträgen, um Kosten zu minimieren.
+- name: Feedback-Sammlung und -Analyse
+  priority: low
+  reason: Sammelt Kundenzufriedenheitsdaten zur kontinuierlichen Verbesserung der Dienstleistungen.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - Zoho CRM
+  - Salesforce
+  - lokale Lösungen wie Abacus CRM
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Sage
+  - local banking apps
+  priority: high
+- name: Terminplanungstools
+  examples:
+  - Calendly
+  - Google Calendar
+  - Schweizer Plattformen wie Doodle
+  priority: medium
+- name: Zahlungssysteme
+  examples:
+  - TWINT
+  - PostFinance
+  - Kreditkartenprozessoren
+  priority: medium
+- name: Compliance-Management-Software
+  examples:
+  - lokale Datenschutz-Tools
+  - GDPR-Compliance-Suiten
+  priority: low
+industry_faq:
+- question: Was kostet eine Standard-Büroreinigung in Zürich?
+  answer_template: Die Kosten variieren je nach Größe und Häufigkeit. Ein Einstiegspreis liegt bei etwa 200 CHF pro Monat für wöchentliche Reinigung. Gerne erstellen wir ein individuelles Angebot.
+- question: Bieten Sie umweltfreundliche Reinigungsmittel an?
+  answer_template: Ja, wir verwenden zertifizierte ökologische Reinigungsmittel, um Nachhaltigkeit und Gesundheit zu fördern. Fragen Sie nach unseren "Grünen Reinigungspaketen".
+- question: Wie garantieren Sie die Qualität Ihrer Dienstleistungen?
+  answer_template: Wir führen regelmäßige Qualitätskontrollen durch und sammeln Kundenfeedback. Unsere AI-gestützte Planung sorgt für konstante Leistung.
+- question: Sind Ihre Verträge flexibel oder langfristig?
+  answer_template: Wir bieten beide Optionen an – von monatlichen Verträgen bis zu Jahresabonnements, angepasst an Ihre Bedürfnisse.
+- question: Wie handhaben Sie Datenschutz gemäß FADP?
+  answer_template: Alle Kundendaten werden verschlüsselt und gemäß Schweizer Datenschutzgesetzen verarbeitet. Unser System ist FADP-konform.
+- question: Gibt es saisonale Rabatte oder Sonderangebote?
+  answer_template: Ja, wir haben saisonale Aktionen, z.B. Frühjahrsputz-Rabatte. Unser AI-Agent kann Sie über aktuelle Angebote informieren.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für Reinigungsdienstleistungen fragt.
+  script: Guten Tag! Vielen Dank für Ihr Interesse. Unsere Preise beginnen bei 150 CHF für eine Grundreinigung und passen sich Ihren spezifischen Anforderungen an. Möchten Sie eine kostenlose Beratung,
+    um ein maßgeschneidertes Angebot zu erhalten?
+  goal: Den Kunden zu einer Beratung führen und Wert anstelle von Preis betonen.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach verfügbaren Dienstleistungen sucht.
+  script: Hallo! Wir bieten Büro-, Haushalts- und Spezialreinigungen an, inklusive ökologischer Optionen. Unser AI-gestütztes System optimiert Termine für maximale Effizienz. Welchen Bereich möchten Sie
+    reinigen lassen?
+  goal: Dienstleistungen präsentieren und auf spezifische Bedürfnisse eingehen.
+- trigger: objection_expensive
+  situation: Wenn ein Kunde die Preise als zu hoch empfindet.
+  script: Ich verstehe Ihre Bedenken. Unsere Preise reflektieren hohe Qualität, zuverlässige Mitarbeiter und Compliance-Sicherheit. Durch unsere Effizienz sparen Sie langfristig Zeit und Geld. Möchten Sie
+    ein ROI-Beispiel sehen?
+  goal: Wert und ROI kommunizieren, um Einwände zu überwinden.
+competitors:
+- name: CleanAG
+  positioning: Nationaler Anbieter mit Fokus auf Büroreinigung.
+  strengths:
+  - Breite Abdeckung
+  - etablierter Ruf
+  - standardisierte Prozesse
+  weaknesses:
+  - Höhere Preise
+  - weniger Flexibilität bei individuellen Anfragen
+  our_differentiation: Wir bieten AI-gestützte Personalisierung und kosteneffiziente Lösungen mit besserer Kundenservice-Integration.
+- name: Putzmann
+  positioning: Lokaler Dienstleister mit Schwerpunkt auf Haushaltsreinigung.
+  strengths:
+  - Persönlicher Service
+  - lokale Kenntnisse
+  - wettbewerbsfähige Preise
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - manuelle Prozesse
+  our_differentiation: Unsere Technologie ermöglicht Skalierbarkeit und Effizienz, während wir lokale Expertise beibehalten.
+- name: International Cleaning Group
+  positioning: Globaler Konzern mit Schweizer Niederlassungen.
+  strengths:
+  - Umfangreiche Ressourcen
+  - internationale Standards
+  weaknesses:
+  - Unpersönlicher Service
+  - langsame Anpassung an lokale Märkte
+  our_differentiation: Wir kombinieren globale Effizienz mit lokalisiertem, agilem Service durch AI-Unterstützung.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 150
+  roi_examples:
+  - scenario: Ein kleines Büro mit wöchentlicher Reinigung, das manuell verwaltet wird.
+    monthly_cost: 400 CHF mit unserem Service.
+    monthly_savings: 100 CHF durch reduzierte Verwaltungskosten und optimierte Reinigungszeiten.
+    payback_months: 4
+  value_anchors:
+  - Sparen Sie bis zu 20% Zeit mit unserer AI-gestützten Planung.
+  - Höhere Kundenzufriedenheit durch transparente Preise und Qualitätsgarantie.
+market_context:
+  market_size: Geschätzt auf 2 Milliarden CHF jährlich in der Schweiz.
+  growth_rate: 3% YoY, getrieben durch Urbanisierung und steigende Nachfrage nach professionellen Dienstleistungen.
+  key_trends:
+  - Zunehmende Nachfrage nach ökologischen und nachhaltigen Reinigungslösungen.
+  - Digitalisierung und Adoption von AI für Effizienzsteigerungen.
+  - Wachstum im On-Demand-Reinigungssegment, besonders in Städten.
+  seasonality:
+    high:
+    - Frühling (März-Mai für Frühjahrsputz)
+    - Herbst
+    low:
+    - Winterferien (Dezember-Januar)
+    - Sommerferien (Juli-August)
+typical_objections:
+- objection: Ihr Service ist zu teuer im Vergleich zu lokalen Anbietern.
+  response: Unsere Preise inkludieren höhere Qualität, Datenschutz-Compliance und Effizienzgewinne durch AI. Langfristig sparen Sie Kosten und Zeit.
+- objection: Ich brauche mehr Flexibilität bei Terminen.
+  response: Unser AI-System ermöglicht dynamische Terminplanung und last-minute Änderungen, angepasst an Ihre Verfügbarkeit.
+- objection: Wie kann ich der Qualität vertrauen?
+  response: Wir bieten Qualitätsgarantien, regelmäßige Inspektionen und Kundenbewertungen. Unser AI-Agent sammelt kontinuierlich Feedback für Verbesserungen.
+meta:
+  id: cleaning
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

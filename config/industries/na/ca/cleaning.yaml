@@ -1,0 +1,210 @@
+pain_points:
+- description: Difficulty finding and retaining reliable cleaning staff in a competitive labor market, leading to inconsistent service quality and client dissatisfaction.
+  severity: high
+  solution_hint: AI voice agent can handle initial staff screening calls, schedule interviews, and send automated reminders for shifts, reducing administrative burden.
+- description: High customer acquisition costs and difficulty standing out against large franchise competitors and low-cost independent operators.
+  severity: high
+  solution_hint: AI agent can conduct targeted outbound calls for lead generation, follow up on web inquiries instantly, and book consultations 24/7.
+- description: Inefficient scheduling and route planning for cleaning teams, resulting in wasted travel time, fuel costs, and missed appointments.
+  severity: medium
+  solution_hint: Integrate AI booking system with calendar and mapping software to optimize routes and automatically confirm or reschedule appointments via voice.
+- description: Managing last-minute cancellations and no-shows, which directly impact revenue and crew productivity.
+  severity: medium
+  solution_hint: Implement automated reminder calls and texts, and manage cancellation/rebooking workflows through the AI agent to fill slots quickly.
+- description: Client concerns about security, trust, and compliance with Canadian privacy laws (PIPEDA) when allowing cleaners into their homes or businesses.
+  severity: medium
+  solution_hint: AI agent can clearly explain company's vetting processes, insurance, and PIPEDA-compliant data handling to build trust during initial conversations.
+- description: Cash flow issues due to slow or inconsistent client payments and the administrative overhead of invoicing and follow-up.
+  severity: medium
+  solution_hint: Automate payment reminder calls and facilitate secure payment processing over the phone, integrating with accounting software.
+- description: Seasonal fluctuations in demand, with slower periods in winter and peaks during spring cleaning and pre-holiday seasons.
+  severity: low
+  solution_hint: Use AI agent for proactive outreach during slow seasons with special offers and to manage waitlists during peak demand.
+typical_services:
+- Residential Regular Cleaning
+- Residential Deep Cleaning
+- Move-In / Move-Out Cleaning
+- Post-Construction Cleaning
+- Commercial Office Cleaning
+- Carpet & Upholstery Cleaning
+- Window Cleaning (Interior/Exterior)
+- Eco-Friendly / Green Cleaning
+- Disinfection & Sanitization Services
+- Special Event Clean-Up
+recommended_functions:
+- name: Automated Booking & Scheduling
+  priority: high
+  reason: Critical for capturing leads 24/7, reducing missed calls, and efficiently filling the service calendar without manual back-and-forth.
+- name: Payment Processing & Invoice Management
+  priority: high
+  reason: Speeds up cash flow by allowing clients to pay over the phone and automates follow-ups on overdue invoices, a common pain point.
+- name: Lead Qualification & Follow-up
+  priority: high
+  reason: Filters out non-serious inquiries and instantly engages hot leads, improving conversion rates and sales team efficiency.
+- name: Customer Service & FAQ Handling
+  priority: medium
+  reason: Frees up staff by answering common questions about services, pricing, and policies, improving client experience.
+- name: Appointment Reminders & Confirmations
+  priority: medium
+  reason: Dramatically reduces no-shows and last-minute cancellations, optimizing crew schedules and revenue.
+- name: Post-Service Feedback Collection
+  priority: low
+  reason: Automates the process of gathering reviews and testimonials, which are crucial for reputation in a competitive local market.
+typical_integrations:
+- name: Scheduling & Dispatch Software
+  examples:
+  - Jobber
+  - Housecall Pro
+  - ZenMaid
+  priority: high
+- name: Accounting & Invoicing Software
+  examples:
+  - QuickBooks Online
+  - Xero
+  - FreshBooks
+  priority: high
+- name: CRM Platform
+  examples:
+  - HubSpot
+  - Salesforce
+  - Keap
+  priority: medium
+- name: Payment Gateways
+  examples:
+  - Stripe
+  - Square
+  - PayPal
+  priority: medium
+- name: Communication Platforms
+  examples:
+  - Twilio
+  - OpenPhone
+  priority: low
+industry_faq:
+- question: What is your pricing structure?
+  answer_template: Our pricing is based on the size of your space, the type of cleaning required, and the frequency. We provide free, no-obligation quotes. For a standard 3-bedroom home, regular cleans
+    typically start around $150-$200 CAD. Would you like to schedule a quick assessment?
+- question: Are your cleaners insured and bonded?
+  answer_template: Yes, absolutely. All our cleaners are fully insured, bonded, and background-checked for your peace of mind. We comply with all relevant regulations, including PIPEDA for your privacy
+    and data security.
+- question: Do I need to provide cleaning supplies and equipment?
+  answer_template: We bring all our own professional-grade cleaning supplies and equipment. If you have a preference for specific eco-friendly products, we can accommodate that—just let us know during booking.
+- question: What is your cancellation policy?
+  answer_template: We require a 24-hour notice for cancellations to avoid a fee. This allows us to offer the time slot to another client and fairly schedule our cleaning teams.
+- question: How do I handle access if I won't be home?
+  answer_template: Many of our clients provide a key, use a lockbox, or grant access through a smart lock or garage code. We take security very seriously and have strict protocols for handling client access
+    information.
+- question: Do you offer green cleaning services?
+  answer_template: Yes, we offer eco-friendly cleaning options using products that are effective, safer for families and pets, and better for the environment. There may be a small premium for this service.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about price early in the conversation.
+  script: I understand wanting to know the investment. To give you an accurate quote, I need a few details. Is this for a home or business? Approximately what's the square footage or number of rooms? Giving
+    you a random number wouldn't be fair. Based on typical homes in your area, budgets often range from $150 to $400 CAD per clean. Would a quick 5-minute call with one of our experts to get a firm price
+    work for you?
+  goal: Qualify the lead and book a consultation instead of giving a vague price that could scare them off.
+- trigger: competitor_mention
+  situation: When a prospect mentions they are also considering a large franchise like Molly Maid.
+  script: That's a well-known option. Many clients choose us because we offer more personalized service and direct communication with our local management team, rather than a call center. Our pricing is
+    often more competitive for the same level of service, and we're able to be more flexible with custom cleaning plans. Would you like to hear about a couple of recent clients who switched to us for those
+    reasons?
+  goal: Differentiate on personalization, value, and local ownership without bad-mouthing the competitor.
+- trigger: objection_busy
+  situation: When a prospect says they are too busy to schedule or have a consultation.
+  script: That's exactly why we're here—to save you time. The entire booking process can be done right now in under 5 minutes. I can schedule your first clean for a time that's convenient for you, and our
+    team will handle everything from there. You won't need to be home. What does your calendar look like next Tuesday or Wednesday?
+  goal: Overcome procrastination by emphasizing convenience and taking immediate action to book.
+- trigger: service_doubt
+  situation: When a prospect expresses concern about quality or trust.
+  script: Your concern is completely understandable. We build trust through transparency. All our cleaners are employees, not subcontractors, and they undergo rigorous training. We're fully insured, and
+    every clean is backed by our 100% satisfaction guarantee—if you're not happy, we'll come back and fix it. Can I share a few reviews from your neighborhood?
+  goal: Build trust by addressing security concerns head-on and offering social proof.
+competitors:
+- name: Molly Maid
+  positioning: National residential cleaning franchise.
+  strengths:
+  - Strong brand recognition
+  - standardized processes
+  - national advertising
+  weaknesses:
+  - Can be more expensive
+  - less local flexibility
+  - potential for call center experience
+  our_differentiation: More personalized local service, direct owner/manager communication, and competitive pricing with greater scheduling flexibility.
+- name: JAN-PRO
+  positioning: Large commercial cleaning franchise.
+  strengths:
+  - Extensive commercial experience
+  - strong sales network
+  - brand trust in B2B
+  weaknesses:
+  - Can be rigid with contracts
+  - may use subcontractors
+  - higher cost for small businesses
+  our_differentiation: We offer more agile and responsive service for small to medium-sized businesses, with transparent pricing and dedicated local account management.
+- name: Independent Cleaners (Kijiji/Facebook Marketplace)
+  positioning: Low-cost, individual operators.
+  strengths:
+  - Very low prices
+  - high flexibility for individual clients
+  weaknesses:
+  - Inconsistent quality and reliability
+  - often uninsured
+  - no backup if they cancel
+  our_differentiation: Professional reliability, insured and bonded teams, quality guarantees, and the ability to scale for recurring services without disruption.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 150
+  - 600
+  entry_point: 150
+  roi_examples:
+  - scenario: Small business owner spending 10 hours/week on cleaning tasks.
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Professional cleaning saves the average homeowner 10-15 hours per month.
+  - A clean workspace can increase employee productivity by up to 20%.
+  - Regular professional maintenance extends the life of carpets and surfaces.
+market_context:
+  market_size: Estimated at $5-6 billion CAD annually
+  growth_rate: 3-5% YoY, accelerated post-pandemic
+  key_trends:
+  - Increased demand for disinfection and sanitization services.
+  - Growing preference for eco-friendly and non-toxic cleaning products.
+  - Rise of on-demand and app-based booking platforms.
+  - Labor shortages driving investment in automation and efficiency tools.
+  seasonality:
+    high:
+    - Spring (April-June)
+    - September (back-to-school)
+    - November (pre-holiday)
+    low:
+    - Late December
+    - January
+    - February
+typical_objections:
+- objection: I can clean myself or have an employee do it for free.
+  response: That's true, but have you calculated the cost of your time or your employee's time? If your time is worth $50/hour and cleaning takes 3 hours a week, that's $600/month in lost productivity.
+    Our service costs a fraction of that and guarantees a professional result.
+- objection: I had a bad experience with a cleaner before.
+  response: I'm sorry to hear that. We hear that often, which is why we have such rigorous hiring and training, and our satisfaction guarantee. We're confident we can provide a consistently great experience.
+    Would you be willing to give professional cleaning one more try with our guarantee backing you up?
+- objection: It's not in the budget right now.
+  response: I understand budgeting. Many clients start with a one-time deep clean or a bi-weekly service to make it more manageable. The initial investment often reveals how much time and stress it saves,
+    making it easier to justify ongoing. Could we start with a single service to show you the value?
+meta:
+  id: cleaning
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

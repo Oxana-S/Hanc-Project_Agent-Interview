@@ -1,0 +1,230 @@
+pain_points:
+- description: Munkaerőhiány, különösen szezonális munkások hiánya a betakarítási
+    időszakokban.
+  severity: high
+  solution_hint: AI hangügynök segíthet a munkaerő-ütemezésben, jelentkezők felvételében
+    és kommunikációban.
+- description: Időjárási kockázatok és klímaváltozás hatása a terméshozamra.
+  severity: high
+  solution_hint: AI hangügynök adhat időjárási előrejelzéseket és riasztásokat, valamint
+    tanácsot a kockázatkezeléshez.
+- description: Alacsony árak és piaci volatilitás a mezőgazdasági termékek esetében.
+  severity: medium
+  solution_hint: AI hangügynök nyomon követheti a piaci árakat és ajánlhat optimális
+    eladási időpontokat.
+- description: Magas műtrágya és üzemanyag költségek.
+  severity: medium
+  solution_hint: AI hangügynök segíthet a költségkövetésben és ajánlhat takarékosabb
+    erőforrás-felhasználási módokat.
+- description: Bürokratikus akadályok és uniós szabályozások (pl. GDPR) betartása.
+  severity: medium
+  solution_hint: AI hangügynök automatizálhatja a jelentések készítését és emlékeztethet
+    a szabályozási határidőkre.
+- description: Technológiai infrastruktúra hiánya vagy elavultsága a vidéki területeken.
+  severity: low
+  solution_hint: AI hangügynök egyszerű telefonhívással hozzáférhető, minimális technikai
+    igénnyel.
+typical_services:
+- Növényvédelem és kártevőirányítás
+- Öntözéskezelés és vízgazdálkodás
+- Talajvizsgálat és műtrágyázási tanácsadás
+- Mezőgazdasági gépek és berendezések karbantartása
+- Termésértékesítés és piaci kapcsolatok építése
+- Precíziós mezőgazdasági technológiák bevezetése
+- Pénzügyi és adótanácsadás mezőgazdasági vállalkozásoknak
+- Környezetvédelmi és fenntarthatósági tanácsadás
+- Allattenyésztés és állategészségügyi szolgáltatások
+- Mezőgazdasági biztosítások kezelése
+recommended_functions:
+- name: Ügyfél- és rendeléskezelés
+  priority: high
+  reason: Gyors és hatékony kommunikáció a vevőkkel, rendelések feldolgozása.
+- name: Időjárási riasztások és tanácsadás
+  priority: high
+  reason: Kritikus a termésvédelemhez és a tervezéshez a változó időjárás miatt.
+- name: Költségkövetés és jelentéskészítés
+  priority: medium
+  reason: Segít a pénzügyi áttekintésben és a szabályozási követelmények teljesítésében.
+- name: Piaci árfelmérés és értesítések
+  priority: medium
+  reason: Optimalizálja a termékek értékesítését a piaci ingadozások alapján.
+- name: Munkaerő-ütemezés és kommunikáció
+  priority: low
+  reason: Csökkenti a munkaerőhiányból adódó problémákat szezonális időszakokban.
+- name: Technikai támogatás és hibaelhárítás
+  priority: low
+  reason: Gyors segítségnyújtás mezőgazdasági gépek vagy szoftverek kapcsán.
+typical_integrations:
+- name: Mezőgazdasági ERP rendszerek
+  examples:
+  - AgroSoft Hungary
+  - FarmLogix HU
+  - AgriERP Magyarország
+  priority: high
+- name: Időjárási adatszolgáltatások
+  examples:
+  - OMSZ adatbázis
+  - MetGroup Hungary
+  - AccuWeather HU
+  priority: high
+- name: Pénzügyi és könyvelő szoftverek
+  examples:
+  - Navision Hungary
+  - SZÁMLAZZ.HU
+  - Billingo
+  priority: medium
+- name: Földmérés és térképészeti rendszerek
+  examples:
+  - ArcGIS Hungary
+  - QGIS közösségi verziók
+  priority: low
+- name: Logisztikai és szállítási rendszerek
+  examples:
+  - TransLog HU
+  - Cargomatic Magyarország
+  priority: low
+industry_faq:
+- question: Hogyan segíthet az AI hangügynök a munkaerőhiány enyhítésében?
+  answer_template: Az AI hangügynök automatizálja a kommunikációt, ütemezést és jelentések
+    készítését, csökkentve a manuális munkát és időt.
+- question: Kompatibilis a megoldás a meglévő mezőgazdasági szoftvereimmel?
+  answer_template: Igen, integrálható számos helyi ERP és adatkezelő rendszerrel,
+    mint például AgroSoft vagy FarmLogix.
+- question: Mennyi időt takarít meg a napi műveletekben?
+  answer_template: Átlagosan 10-15 órát havonta, főleg adminisztratív feladatokban,
+    mint ügyfélkommunikáció és jelentéskészítés.
+- question: Hogyan kezeli az adatvédelmet (GDPR) a magyar és uniós szabályok szerint?
+  answer_template: A rendszerünk teljes mértékben GDPR-kompatibilis, adatokat biztonságosan
+    tárolja és kezeli az EU-s előírásoknak megfelelően.
+- question: Milyen költségekkel kell számolnom a bevezetéskor?
+  answer_template: A belépési ár 50 000 HUF-tól indul, a teljes költség a farm méretétől
+    és igényeitől függ, de ROI 3-6 hónapon belül várható.
+- question: Támogatja a szezonális igényeket, mint a betakarítási időszak?
+  answer_template: Igen, az AI hangügynök skálázható, és szezonális csúcsidőszakokban
+    is hatékonyan kezeli a megnövekedett forgalmat.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy gazdálkodó árkérdezést tesz telefonon.
+  script: Köszönöm a kérdést! A megoldásunk ára a farm méretétől és igényeitől függ,
+    de belépési szinten 50 000 HUF havonta, ami átlagosan 20 óra adminisztratív munkát
+    takarít meg. Szeretné részletesebb árajánlatot kérni?
+  goal: Áttekinthető árazás bemutatása és további érdeklődés felkeltése.
+- trigger: service_inquiry
+  situation: Amikor egy ügyfél kér információt a tipikus szolgáltatásokról.
+  script: Természetesen! Szolgáltatásaink között szerepel növényvédelem tanácsadás,
+    időjárási riasztások, költségkövetés és piaci árfelmérés. Mely területek érdeklik
+    leginkább a gazdálkodásában?
+  goal: Szolgáltatások bemutatása és ügyfél igényeinek felmérése.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél említi a versenytársakat, mint AgriTech Magyarország.
+  script: Értem, hogy más lehetőségeket is fontolóra vesz. Mi különbözünk abban, hogy
+    kifejezetten a magyar mezőgazdasági kihívásokra szabjuk az AI megoldásainkat,
+    és gyorsabb ROI-t kínálunk integrált szolgáltatásokkal. Szeretné egy demo-t megtekinteni?
+  goal: Különböztető értékek kiemelése és demó irányítása.
+- trigger: objection_cost
+  situation: Amikor az ügyfél panaszt tesz a költségek miatt.
+  script: Teljesen megértem a költségaggályokat. Azonban számításaink szerint a befektetés
+    3-6 hónap alatt megtérül a megtakarított idő és növelt hatékonyság révén. Például
+    egy közepes farm havonta 100 000 HUF-t takaríthat meg. Szeretné részletesebb számításokat
+    látni?
+  goal: Költségellenérvek kezelése és ROI demonstrálása.
+competitors:
+- name: AgriTech Magyarország
+  positioning: Nagyvállalati mezőgazdasági technológiai szolgáltató
+  strengths:
+  - Széles termékvonal
+  - Erős piaci jelenlét
+  - Fejlett szoftverek
+  weaknesses:
+  - Magas árak
+  - Korlátozott kisvállalati támogatás
+  - Lassú ügyfélszolgálat
+  our_differentiation: Mi alacsonyabb belépési árat kínálunk, gyorsabb ügyfélszolgálattal
+    és helyi magyar nyelvű támogatással.
+- name: FarmHelper Kft.
+  positioning: Közepes farmokra fókuszáló tanácsadó cég
+  strengths:
+  - Helyi szakértelem
+  - Személyre szabott megoldások
+  - Jó ügyfélkapcsolatok
+  weaknesses:
+  - Korlátozott technológiai integráció
+  - Magas manuális munkaintenzitás
+  - Lassú skálázhatóság
+  our_differentiation: Automatizált AI megoldásainkkal gyorsabb és skálázhatóbb szolgáltatást
+    nyújtunk, csökkentve a manuális hibákat.
+- name: AgroDigital EU
+  positioning: Regionális precíziós mezőgazdasági platform
+  strengths:
+  - Fejlett érzékelő technológiák
+  - Uniós támogatások ismerete
+  - Nagy adatbázis
+  weaknesses:
+  - Bonyolult használat
+  - Magas képzettségi igény
+  - Gyenge helyi támogatás Magyarországon
+  our_differentiation: Egyszerűbb, magyar nyelvű felület és helyi támogatás, amely
+    könnyen használható a napi műveletekhez.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Közepes méretű gabonatermesztő farm számára
+    monthly_cost: 100000
+    monthly_savings: 150000
+    payback_months: 2
+  - scenario: Kisállattartó üzem számára
+    monthly_cost: 75000
+    monthly_savings: 90000
+    payback_months: 3
+  value_anchors:
+  - Átlagosan 30%-os időmegtakarítás a napi adminisztratív feladatokban
+  - Gyorsabb döntéshozatal pontosabb adatok alapján
+  - Csökkentett kockázat időjárási és piaci változások miatt
+market_context:
+  market_size: Becslések szerint a magyar mezőgazdasági technológiai piac évente körülbelül
+    20 milliárd HUF
+  growth_rate: Évi 3-5% növekedés a precíziós mezőgazdaság és digitális átállás miatt
+  key_trends:
+  - Növekvő érdeklődés a fenntartható és környezetbarát gazdálkodás iránt
+  - Digitális átállás és AI technológiák bevezetése a hagyományos farmokon
+  - Uniós pályázatok és támogatások hatása a modernizációra
+  - Öregező farmer populáció és fiatalabb generációk technológiai igényei
+  seasonality:
+    high:
+    - tavasz (vetés időszak)
+    - ősz (betakarítás időszak)
+    low:
+    - tél (tevékenység csökkenése)
+typical_objections:
+- objection: Túl drága, nincs rá keret a farmom számára.
+  response: Megértem. Azonban a megoldásunk ROI-ja gyors, és kisebb csomagokkal is
+    indítható, például 50 000 HUF-tól. Szeretné megnézni, hogyan illeszthető a költségvetésébe?
+- objection: Nem vagyok biztos a technológiai ismereteimben az AI használatához.
+  response: Teljesen normális aggódni. A rendszerünk kifejezetten egyszerű használatra
+    készült, magyar nyelvű támogatással, és lépésről lépésre vezetjük Önt. Ingyenes
+    bevezetést is kínálunk.
+- objection: A meglévő rendszereim nem kompatibilisek az Ön megoldásával.
+  response: Ellenőrizhetjük az integrációs lehetőségeket. Számos helyi rendszerrel
+    dolgozunk, mint az AgroSoft, és segítünk a sima átállásban.
+- objection: Inkább bízom a hagyományos módszerekben, mint az új technológiákban.
+  response: Értékelem a hagyományokat. Az AI csak kiegészítés, amely segít hatékonyabban
+    működni, például pontosabb időjárás-előrejelzéssel. Kipróbálhatja egy próbaidőszak
+    alatt kockázat nélkül.
+meta:
+  id: agriculture
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

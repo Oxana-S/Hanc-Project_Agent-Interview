@@ -1,0 +1,226 @@
+pain_points:
+- description: Hoher administrativer Aufwand durch manuelle Datenverarbeitung und
+    Dokumentenerstellung.
+  severity: high
+  solution_hint: Automatisierung von Routinearbeiten wie Datenabgleich und Berichtswesen.
+- description: Strenge Compliance-Vorschriften (FADP, GDPR) führen zu komplexen Reporting-Pflichten.
+  severity: high
+  solution_hint: Automatisierte Compliance-Prüfungen und Alerts für Fristen.
+- description: Hohe Kosten für Kundenbetreuung und Support, insbesondere außerhalb
+    der Geschäftszeiten.
+  severity: medium
+  solution_hint: 24/7 AI Voice Agent für erste Anrufannahme und Basisauskünfte.
+- description: Schwierigkeiten bei der Lead-Generierung und Terminvereinbarung für
+    Beratungsgespräche.
+  severity: medium
+  solution_hint: AI Voice Agent qualifiziert Leads automatisch und vereinbart Termine.
+- description: Ineffiziente interne Kommunikation und Terminkoordination zwischen
+    Filialen.
+  severity: low
+  solution_hint: Voice Agent als interner Assistent für Meetingplanung und Info-Weitergabe.
+- description: Herausforderungen bei der Betreuung einer mehrsprachigen Kundschaft
+    (DE/FR/IT).
+  severity: medium
+  solution_hint: Mehrsprachiger AI Voice Agent für Kundenservice in allen Landessprachen.
+typical_services:
+- Vermögensverwaltung
+- Vorsorgeberatung (Pensionskasse, 3. Säule)
+- Hypothekarberatung
+- Anlageberatung
+- Private Banking
+- Firmenkundenberatung
+- Erfolgsrechnung und Bilanzierung
+- Steuerberatung
+- Versicherungslösungen
+- Nachfolgeplanung
+recommended_functions:
+- name: Compliance-Assistent
+  priority: high
+  reason: Essenziell für Einhaltung von FADP und GDPR in der Schweiz.
+- name: Terminplaner
+  priority: high
+  reason: Steigert Effizienz der Berater durch automatische Terminvereinbarung.
+- name: Lead-Qualifizierung
+  priority: high
+  reason: Generiert wertvolle Kontakte für das Vertriebsteam.
+- name: Mehrsprachiger Kundensupport
+  priority: medium
+  reason: Adressiert die sprachliche Vielfalt der Schweiz.
+- name: Interne Prozessautomatisierung
+  priority: medium
+  reason: Reduziert manuelle Aufgaben im Backoffice.
+- name: 24/7 Erstanrufbeantworter
+  priority: low
+  reason: Bietet grundlegende Erreichbarkeit ausserhalb der Öffnungszeiten.
+typical_integrations:
+- name: Banking Core System
+  examples:
+  - Avaloq
+  - Finnova
+  - Temenos
+  priority: high
+- name: CRM-System
+  examples:
+  - Microsoft Dynamics
+  - Salesforce
+  - b*connect
+  priority: high
+- name: Dokumenten-Management
+  examples:
+  - Abacus
+  - Bexio
+  - Weclapp
+  priority: medium
+- name: Terminplanungstool
+  examples:
+  - Outlook
+  - Google Calendar
+  - Calendly
+  priority: medium
+- name: Compliance-Tool
+  examples:
+  - Acuris
+  - Onfido
+  - local solutions
+  priority: high
+industry_faq:
+- question: Wie gewährleisten Sie die Datensicherheit gemäss FADP?
+  answer_template: Unser System ist vollständig in der Schweiz gehostet und erfüllt
+    alle Anforderungen des FADP und der GDPR. Daten werden Ende-zu-Ende verschlüsselt.
+- question: Kann der Voice Agent auch Französisch und Italienisch?
+  answer_template: Ja, unser Voice Agent beherrscht Deutsch, Französisch und Italienisch
+    und kann nahtlos zwischen den Sprachen wechseln.
+- question: Was kostet die Implementierung einer solchen Lösung?
+  answer_template: Die Kosten richten sich nach Ihrem individuellen Bedarf. Ein typischer
+    Einstieg liegt bei CHF 500-1000 pro Monat. Ich erstelle Ihnen gerne ein persönliches
+    Angebot.
+- question: Wie lange dauert die Einrichtung?
+  answer_template: Die Standard-Einrichtung dauert 2-4 Wochen. Komplexere Integrationen
+    können 6-8 Wochen in Anspruch nehmen.
+- question: Können bestehende Kundenstammdaten integriert werden?
+  answer_template: Ja, wir integrieren uns in Ihr bestehendes CRM-System (z.B. Salesforce
+    oder Dynamics), sodass alle Daten verfügbar sind.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten.
+  script: Die Investition richtet sich nach Ihrem genauen Bedarf. Typischerweise sparen
+    unsere Kunden aus der Finanzbranche durch Automatisierung mehrere tausend CHF
+    pro Monat an Personalkosten ein. Ein Einstieg ist bereits ab CHF 500 monatlich
+    möglich. Darf ich Ihnen eine detaillierte Kosten-Nutzen-Rechnung erstellen?
+  goal: Wert propositionieren und zu einem detaillierten Gespräch überleiten.
+- trigger: compliance_concern
+  situation: Kunde äussert Bedenken bezüglich Compliance.
+  script: Das verstehe ich sehr gut. Compliance ist in der Schweiz zentral. Unser
+    System ist speziell für FADP und GDPR entwickelt und wird regelmässig auditiert.
+    Wir bieten vollständige Transparenz und Protokollierung aller Interaktionen. Möchten
+    Sie mehr über unsere Sicherheitsarchitektur erfahren?
+  goal: Bedenken ausräumen und Expertise demonstrieren.
+- trigger: efficiency_doubt
+  situation: Kunde zweifelt am Effizienzgewinn.
+  script: Ein typischer Effizienzgewinn liegt bei 30-40% weniger manueller Arbeit
+    für Routineanfragen und Terminplanung. Ein Privatbank-Kunde spart beispielsweise
+    CHF 4'500 monatlich durch automatisierten Erste-Level-Support. Kann ich Ihnen
+    eine Fallstudie schicken?
+  goal: Mit konkreten ROI-Beispielen überzeugen.
+competitors:
+- name: Bankenstein AG
+  positioning: Etablierter Anbieter für Banken-Software
+  strengths:
+  - Tiefe Banken-Expertise
+  - Lokale Präsenz
+  - Langjährige Erfahrung
+  weaknesses:
+  - Höhere Kosten
+  - Weniger flexibel
+  - Langsamere Innovation
+  our_differentiation: Agilere, KI-gestützte Lösung mit Fokus auf Voice-Automatisierung
+    und besserer Skalierbarkeit.
+- name: Fintech Solutions Zürich
+  positioning: Junges Fintech-Unternehmen
+  strengths:
+  - Moderne Technologie
+  - Günstige Preise
+  - Benutzerfreundlich
+  weaknesses:
+  - Begrenzte Compliance-Expertise
+  - Wenig Banken-Referenzen
+  - Kleines Team
+  our_differentiation: Ausgereifte Compliance-Lösung speziell für den Schweizer Markt
+    mit umfassender Integrationstiefe.
+- name: International CRM Anbieter
+  positioning: Globale Software-Riesen
+  strengths:
+  - Umfangreiche Features
+  - Globale Skalierung
+  - Starke Marke
+  weaknesses:
+  - Hohe Kosten
+  - Geringe lokale Anpassung
+  - Komplexe Implementierung
+  our_differentiation: Massgeschneiderte, schlanke Lösung für Schweizer Finanzinstitute
+    mit lokalem Support und schnellem ROI.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung des Erstanruf-Managements einer Regionalbank
+    monthly_cost: 1200
+    monthly_savings: 4500
+    payback_months: 3
+  - scenario: Lead-Qualifizierung und Terminvereinbarung für Vermögensberater
+    monthly_cost: 800
+    monthly_savings: 3200
+    payback_months: 2.5
+  value_anchors:
+  - Sparen Sie bis zu 40% Personalkosten im Kundensupport
+  - ROI in unter 3 Monaten garantiert
+  - Vollständig konform mit Schweizer Datenschutzgesetzen
+market_context:
+  market_size: 2.1 Mrd. CHF (Schätzung für Fintech & Banken-Automatisierung)
+  growth_rate: 8.5%
+  key_trends:
+  - Starker Druck zur Digitalisierung im Private Banking
+  - Zunehmende Regulierung (FADP) treibt Compliance-Automatisierung
+  - Wachsende Nachfrage nach hybriden Beratungsmodellen (digital + persönlich)
+  - Konsolidierung im Bankensektor erhöht Effizienzdruck
+  seasonality:
+    high:
+    - Januar (Steuerplanung)
+    - März/April (Jahresabschlüsse)
+    - September (Pensionskassen-Checks)
+    low:
+    - Juli/August (Ferienzeit)
+    - Dezember (Jahresende)
+typical_objections:
+- objection: Unser Team kommt gut ohne Automatisierung zurecht.
+  response: Das glaube ich gerne. Viele unserer Kunden dachten das auch, bis sie gesehen
+    haben, wie viel Zeit für wertschöpfende Beratung gewonnen wird, wenn Routinefragen
+    automatisiert werden.
+- objection: Die Einführung ist zu disruptiv für unsere aktuellen Prozesse.
+  response: Wir integrieren uns schrittweise und stören den laufenden Betrieb nicht.
+    Oft starten wir mit einem Pilotprojekt in einer Abteilung.
+- objection: KI ist unseren Kunden gegenüber zu unpersönlich.
+  response: Unser Voice Agent entlastet Ihre Berater von Routinefragen, sodass diese
+    mehr Zeit für die persönliche, hochwertige Beratung haben. Die KI ist ein Assistent,
+    kein Ersatz.
+- objection: Das Budget ist dieses Jahr bereits gesprochen.
+  response: Verstehe ich. Die Investition amortisiert sich oft innerhalb eines Quartals.
+    Können wir vielleicht ein Gespräch für die Budgetplanung des nächsten Jahres führen?
+meta:
+  id: finance
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

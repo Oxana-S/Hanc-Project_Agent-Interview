@@ -1,0 +1,261 @@
+aliases:
+- automóvel
+- oficina
+- concessionária
+- mecânica
+- reparação automóvel
+- pneus
+- manutenção
+- revisão
+- diagnóstico
+- lavagem
+- tuning
+- detalhamento
+- garagem
+- troca de óleo
+competitors:
+- name: Auto Sueco
+  positioning: Líder nacional em serviços de manutenção e reparação automóvel
+  strengths:
+  - Rede nacional extensa
+  - Certificação oficial de várias marcas
+  - Atendimento rápido e profissional
+  weaknesses:
+  - Preços acima da média do mercado
+  - Agenda muitas vezes lotada
+  our_differentiation: Atendimento personalizado com maior flexibilidade de horários
+    e preços competitivos
+- name: Norauto Portugal
+  positioning: Marca reconhecida em manutenção e acessórios automóvel
+  strengths:
+  - Ampla oferta de acessórios e peças
+  - Serviços integrados de pneus e alinhamento
+  weaknesses:
+  - Menos foco em reparações complexas
+  - Atendimento menos personalizado
+  our_differentiation: Especialização em reparações integradas e suporte digital avançado
+    via AI
+- name: Bosch Car Service Portugal
+  positioning: Rede de oficinas multimarca com tecnologia Bosch
+  strengths:
+  - Equipamentos de diagnóstico avançados
+  - Técnicos certificados Bosch
+  weaknesses:
+  - Custos superiores em algumas localidades
+  - Processo de marcação por vezes burocrático
+  our_differentiation: Simplificação do agendamento com assistente vocal e preços
+    transparentes
+industry_faq:
+- question: Quanto custa a revisão completa do carro?
+  answer_template: O preço depende do modelo do veículo e dos serviços incluídos,
+    mas normalmente varia entre 150 e 400 EUR.
+- question: Como posso saber o estado do meu carro durante a reparação?
+  answer_template: Informe o número da sua ordem de serviço e eu irei fornecer o status
+    atualizado do seu veículo.
+- question: Quanto tempo demora uma troca de óleo?
+  answer_template: A troca de óleo geralmente demora entre 30 minutos a 1 hora, dependendo
+    do tipo de serviço.
+- question: Vocês trabalham com todas as marcas de carros?
+  answer_template: Sim, realizamos manutenção e reparação em todas as marcas. Por
+    favor, informe a marca do seu veículo.
+- question: Têm peças originais disponíveis?
+  answer_template: Sim, temos peças originais e compatíveis. Indique a peça e o modelo
+    para que eu verifique a disponibilidade.
+- question: Existe garantia nos serviços realizados?
+  answer_template: Oferecemos garantia de 12 meses ou 20.000 km nos serviços efetuados.
+- question: Posso agendar uma revisão online?
+  answer_template: Claro! Posso ajudar a marcar uma data e hora conveniente para si
+    através do nosso sistema online.
+pain_points:
+- description: Clientes frequentemente ligam para saber o estado da reparação do veículo.
+  severity: high
+  solution_hint: Fornecer atualizações automáticas de status através do assistente
+    vocal.
+- description: Muitas dúvidas sobre preços e orçamentos antes da marcação.
+  severity: high
+  solution_hint: Oferecer cálculo automático e transparente dos preços das principais
+    intervenções.
+- description: Dificuldade dos clientes em marcar serviços em horários convenientes.
+  severity: medium
+  solution_hint: Implementar sistema de agendamento online com seleção de horários
+    disponíveis.
+- description: Esquecimento dos clientes quanto às revisões periódicas obrigatórias.
+  severity: medium
+  solution_hint: Envio automático de lembretes baseados na quilometragem e datas.
+- description: Técnicos e rececionistas interrompidos constantemente por chamadas
+    de rotina.
+  severity: high
+  solution_hint: Assistente de voz para atender perguntas frequentes e agendar serviços.
+- description: Tempo de espera elevado para serviços de pneus na época de mudança
+    sazonal.
+  severity: medium
+  solution_hint: Gestão inteligente de filas e marcações para períodos de pico.
+- description: Clientes preocupados com a conformidade do tratamento de dados pessoais.
+  severity: low
+  solution_hint: Garantir comunicação clara sobre conformidade com GDPR e segurança
+    dos dados.
+typical_services:
+- Revisão geral (manutenção periódica)
+- Troca de óleo e filtros
+- Reparação do motor
+- Reparação da suspensão e travões
+- Alinhamento e balanceamento de pneus
+- Troca e reparação de pneus
+- Diagnóstico computorizado
+- Reparação de carroçaria e pintura
+- Serviços de lavagem e detalhamento
+- Venda e troca de veículos (trade-in)
+recommended_functions:
+- name: status_reparacao
+  priority: high
+  reason: 40-50% das chamadas são para saber o estado do serviço
+- name: agendamento_online
+  priority: high
+  reason: Facilita o cliente a marcar revisões, troca de pneus ou reparações
+- name: calculo_preco
+  priority: high
+  reason: Reduz dúvidas sobre preços e aumenta a conversão em marcações
+- name: lembrete_revisao
+  priority: medium
+  reason: Ajuda a fidelizar clientes com notificações automáticas
+- name: FAQ_automatizado
+  priority: medium
+  reason: Responde rapidamente a perguntas comuns, liberando equipa
+- name: suporte_emergencia
+  priority: medium
+  reason: Aceita pedidos urgentes como reboque e assistência rápida
+- name: encaminhamento_humano
+  priority: low
+  reason: Para questões complexas ou reclamações que necessitam de intervenção humana
+typical_integrations:
+- name: Software de Gestão Automóvel
+  examples:
+  - Oficina Plus
+  - Oficina365
+  priority: high
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Telefónica / Voz IP
+  examples:
+  - Vodafone Cloud PBX
+  - NOS Voice Solutions
+  priority: high
+- name: Plataformas de Mensagens
+  examples:
+  - WhatsApp Business
+  - Messenger
+  priority: medium
+- name: Sistemas de Agendamento
+  examples:
+  - Calendly
+  - Microsoft Bookings
+  priority: medium
+industry_specifics:
+  compliance:
+  - GDPR: Lei Geral de Proteção de Dados Europeia em vigor
+  peak_times:
+  - Final do mês
+  - Primavera e Outono (troca sazonal de pneus)
+  - Fins de semana antes de feriados
+  tone:
+  - Profissional e confiável
+  - Clareza técnica adaptada ao público
+  - Simpático, mas formal
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 100
+  roi_examples:
+  - scenario: Redução de chamadas para consulta de status de reparação
+    monthly_cost: 150
+    monthly_savings: 400
+    payback_months: 2
+  - scenario: Aumento de agendamentos online com assistente vocal
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Redução significativa do tempo perdido em chamadas repetitivas
+  - Melhoria da satisfação do cliente com respostas imediatas
+  - Agendamento simplificado aumenta receita e otimiza recursos
+market_context:
+  market_size: 1500000000
+  growth_rate: 0.03
+  key_trends:
+  - Crescente digitalização dos serviços automóveis
+  - Maior procura por manutenção preventiva
+  - Aumento de veículos elétricos e híbridos criando novas necessidades
+  - Sensibilidade crescente a preços e transparência
+  seasonality:
+    high:
+    - Abril a Junho (primavera)
+    - Setembro a Novembro (outono)
+    - Final do ano (preparação para inverno)
+    low:
+    - Julho e Agosto (férias de verão)
+    - Janeiro e fevereiro (período mais calmo)
+typical_objections:
+- objection: Está muito caro para o meu orçamento.
+  response: Entendo a sua preocupação. Posso oferecer alternativas com peças compatíveis
+    e um orçamento ajustado.
+- objection: Não quero esperar muito tempo pelo serviço.
+  response: Verifico a disponibilidade e posso sugerir o horário mais rápido para
+    o seu serviço.
+- objection: Prefiro levar o carro a outra oficina.
+  response: Valorizamos a sua escolha e oferecemos garantia e qualidade certificada
+    para sua maior tranquilidade.
+- objection: Tenho dúvidas sobre a originalidade das peças.
+  response: Trabalhamos apenas com peças originais ou homologadas, e posso detalhar
+    a origem de cada uma.
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preços dos serviços
+  script: Compreendo a importância do preço. Posso informar que os nossos valores
+    são competitivos e transparentes, e oferecemos orçamentos personalizados sem compromisso.
+    Deseja que eu calcule o preço para o seu veículo?
+  goal: Fornecer informação clara e incentivar o agendamento
+- trigger: appointment_request
+  situation: Cliente quer marcar uma revisão ou reparação
+  script: Ficarei feliz em ajudar a marcar a sua revisão. Por favor, indique o dia
+    e hora que prefere, e verificarei a disponibilidade imediata.
+  goal: Facilitar o agendamento rápido e sem atritos
+- trigger: status_request
+  situation: Cliente quer saber o estado do serviço
+  script: Para verificar o status do seu veículo, por favor informe o número da ordem
+    de serviço ou matrícula, e eu atualizo a informação imediatamente.
+  goal: Reduzir chamadas ao pessoal e dar resposta rápida
+- trigger: warranty_question
+  situation: Cliente quer saber sobre garantias dos serviços
+  script: Todos os nossos serviços têm garantia de 12 meses ou 20.000 km, garantindo
+    a sua segurança e confiança. Posso ajudar com mais alguma informação?
+  goal: Transmitir confiança e qualidade
+- trigger: emergency_service
+  situation: Cliente necessita de assistência urgente
+  script: Se precisar de assistência urgente, posso encaminhar o seu pedido para o
+    serviço de reboque ou agendar uma intervenção rápida. Deseja que o faça agora?
+  goal: Oferecer suporte imediato e captar oportunidades emergenciais
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automação de 60% das chamadas sobre status e agendamento
+  - Redução de 40% na carga do atendimento presencial
+  - Conversão em agendamento superior a 25%
+  - Satisfação do cliente acima de 4.5 em 5 pontos
+meta:
+  country: pt
+  currency: EUR
+  language: pt
+  region: eu
+  created_at: '2024-06-15'
+  last_updated: '2024-06-15'
+  version: '1.0'
+  id: automotive
+  phone_codes:
+  - '+351'
+_extends: _base/automotive

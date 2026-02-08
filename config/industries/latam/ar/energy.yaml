@@ -1,0 +1,213 @@
+pain_points:
+- description: Altos costos energéticos debido a la inflación y subsidios variables,
+    dificultando la planificación presupuestaria.
+  severity: high
+  solution_hint: Nuestro agente de voz puede automatizar el monitoreo de tarifas y
+    sugerir ajustes en el consumo para optimizar costos.
+- description: Frecuentes cortes de energía y inestabilidad en la red, afectando la
+    continuidad operativa de negocios.
+  severity: high
+  solution_hint: El agente puede notificar en tiempo real sobre interrupciones y coordinar
+    respuestas con proveedores locales.
+- description: Complejidad en la gestión de facturas energéticas, con errores frecuentes
+    y procesos manuales lentos.
+  severity: medium
+  solution_hint: Automatizar la revisión y procesamiento de facturas, integrando con
+    sistemas locales para mayor precisión.
+- description: Dificultades en la eficiencia energética, con falta de datos en tiempo
+    real para tomar decisiones informadas.
+  severity: medium
+  solution_hint: Proporcionar análisis de consumo y recomendaciones personalizadas
+    a través del agente de voz.
+- description: Cambios regulatorios frecuentes en el sector energético argentino,
+    generando incertidumbre y necesidad de actualización constante.
+  severity: high
+  solution_hint: El agente puede mantener actualizada la información normativa y alertar
+    sobre cambios relevantes.
+- description: Retrasos en los pagos a proveedores o clientes, afectando el flujo
+    de caja en un contexto económico volátil.
+  severity: medium
+  solution_hint: Automatizar recordatorios de pago y seguimiento de cuentas por cobrar/pagar.
+typical_services:
+- Consultoría en eficiencia energética
+- Gestión de facturas y tarifas energéticas
+- Instalación de paneles solares y sistemas renovables
+- Auditorías energéticas integrales
+- Mantenimiento de equipos y infraestructura energética
+- Soluciones de almacenamiento energético (baterías)
+- Monitoreo en tiempo real del consumo eléctrico
+- Asesoría en normativas y subsidios locales
+- Contratos de suministro energético optimizados
+- Implementación de sistemas de gestión energética (SGEn)
+recommended_functions:
+- name: Monitoreo de consumo en tiempo real
+  priority: high
+  reason: Permite detectar picos de consumo y optimizar costos en un mercado con tarifas
+    variables.
+- name: Automatización de facturación
+  priority: high
+  reason: Reduce errores y ahorra tiempo en la gestión de facturas energéticas complejas.
+- name: Alertas de cortes de energía
+  priority: high
+  reason: Proporciona notificaciones inmediatas para minimizar interrupciones operativas.
+- name: Asesoramiento en eficiencia energética
+  priority: medium
+  reason: Ayuda a los clientes a implementar mejoras que reduzcan costos a largo plazo.
+- name: Integración con proveedores locales
+  priority: medium
+  reason: Facilita la comunicación y coordinación con empresas como Edesur o Edenor.
+- name: Recordatorios de mantenimiento
+  priority: low
+  reason: Mantiene los equipos en óptimas condiciones para evitar fallos costosos.
+typical_integrations:
+- name: Sistemas de gestión energética
+  examples:
+  - SAP Energy Management
+  - soluciones locales como EnergyTrack AR
+  priority: high
+- name: Plataformas de proveedores energéticos
+  examples:
+  - CAMMESA
+  - Edesur
+  - Edenor
+  - distribuidoras regionales
+  priority: high
+- name: Software de facturación
+  examples:
+  - Tango Gestión
+  - SAP
+  - QuickBooks adaptado localmente
+  priority: medium
+- name: Sistemas de monitoreo IoT
+  examples:
+  - sensores locales de consumo
+  - plataformas de smart metering
+  priority: medium
+- name: CRM locales
+  examples:
+  - Vtiger
+  - sistemas personalizados para el mercado argentino
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo reducir mis costos energéticos en Argentina?
+  answer_template: Nuestro servicio analiza su consumo y sugiere ajustes basados en
+    tarifas locales y subsidios, pudiendo ahorrar hasta un 20% mensual.
+- question: ¿Qué hacer durante un corte de energía frecuente?
+  answer_template: Le ofrecemos alertas automáticas y coordinación con su proveedor
+    para minimizar impactos, además de soluciones de respaldo como generadores.
+- question: ¿Hay subsidios disponibles para eficiencia energética?
+  answer_template: Sí, existen programas gubernamentales. Nuestro agente le ayuda
+    a identificar y aplicar a subsidios relevantes para su negocio.
+- question: ¿Cómo gestiono las facturas energéticas con errores?
+  answer_template: Automatizamos la revisión de facturas, detectando discrepancias
+    y gestionando correcciones con los proveedores.
+- question: ¿Es rentable instalar paneles solares en Argentina?
+  answer_template: Con los incentivos actuales y el alto costo de la energía, la inversión
+    en solar tiene un retorno típico de 3-5 años.
+- question: ¿Qué normativas energéticas debo seguir?
+  answer_template: Mantenemos una base de datos actualizada de normativas locales
+    y le alertamos sobre cambios que afecten su operación.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de nuestros servicios.
+  script: Entiendo su preocupación por los costos. En Argentina, ofrecemos planes
+    desde ARS 50.000 mensuales, con ahorros típicos que cubren la inversión en pocos
+    meses. ¿Le gustaría una simulación personalizada?
+  goal: Convencer al cliente del valor y ROI de nuestros servicios.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta por servicios específicos como monitoreo energético.
+  script: Nuestro servicio de monitoreo en tiempo real le ayuda a controlar el consumo
+    y reducir facturas, algo clave con la volatilidad tarifaria aquí. ¿Podría contarme
+    más sobre su consumo actual?
+  goal: Educar al cliente y capturar necesidades específicas.
+- trigger: objection_trust
+  situation: Cuando el cliente duda de la eficacia de un agente de voz.
+  script: Comprendo su escepticismo. En Argentina, ya hemos ayudado a empresas a ahorrar
+    hasta un 30% en energía con integraciones locales probadas. ¿Le gustaría ver casos
+    de éxito?
+  goal: Construir confianza con ejemplos locales.
+competitors:
+- name: Edesur
+  positioning: Principal distribuidor de energía en Buenos Aires, con amplia base
+    de clientes.
+  strengths:
+  - Infraestructura establecida
+  - acceso a subsidios gubernamentales
+  weaknesses:
+  - Servicio al cliente lento
+  - poca innovación en eficiencia
+  our_differentiation: Ofrecemos soluciones personalizadas y automatizadas que Edesur
+    no provee, con enfoque en ahorro y tecnología.
+- name: Edenor
+  positioning: Otro gran distribuidor en el área metropolitana, enfocado en suministro
+    básico.
+  strengths:
+  - Cobertura extensa
+  - precios regulados
+  weaknesses:
+  - Falta de servicios value-added
+  - baja adaptabilidad
+  our_differentiation: Complementamos con gestión activa de energía y asesoría, no
+    solo suministro.
+- name: Startups locales de energía renovable
+  positioning: Empresas emergentes que ofrecen soluciones solares y de eficiencia.
+  strengths:
+  - Innovación
+  - enfoque en sostenibilidad
+  weaknesses:
+  - Escala limitada
+  - falta de integración con sistemas existentes
+  our_differentiation: Integramos renovables con gestión holística y soporte continuo,
+    no solo instalación.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Pequeña empresa que reduce un 15% su consumo energético
+    monthly_cost: 50000
+    monthly_savings: 75000
+    payback_months: 2
+  value_anchors:
+  - Ahorros garantizados que cubren el costo en menos de 6 meses
+  - Adaptado a la volatilidad tarifaria argentina
+  - Sin costos ocultos, todo incluido en tarifas claras en ARS
+market_context:
+  market_size: Estimado en ARS 10 mil millones anuales para servicios de gestión energética
+  growth_rate: 8% anual, impulsado por la adopción de renovables y eficiencia
+  key_trends:
+  - Aumento en la instalación de energía solar residencial y comercial
+  - Mayor regulación gubernamental para reducir subsidios
+  - Crecimiento de smart grids y tecnologías IoT
+  seasonality:
+    high:
+    - verano (diciembre-febrero) por alto uso de aire acondicionado
+    low:
+    - invierno (junio-agosto) en algunas regiones con menor demanda
+typical_objections:
+- objection: Es muy caro para mi negocio en este momento.
+  response: Entiendo, pero en Argentina, los ahorros energéticos suelen pagar la inversión
+    rápidamente. ¿Podemos analizar sus costos actuales para mostrar el retorno?
+- objection: No confío en la automatización para algo tan crítico como la energía.
+  response: Nuestros agentes están diseñados para el mercado local, con respaldo humano
+    y integraciones probadas. Le ofrecemos una prueba sin riesgo.
+- objection: Ya trabajo con mi proveedor actual y no quiero cambios.
+  response: No reemplazamos a su proveedor, sino que mejoramos la gestión. Colaboramos
+    con empresas como Edesur para optimizar su servicio.
+meta:
+  id: energy
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

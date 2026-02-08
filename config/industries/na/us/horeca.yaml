@@ -1,0 +1,268 @@
+aliases:
+- horeca
+- restaurant
+- cafe
+- hotel
+- bar
+- pub
+- catering
+- food delivery
+- food service
+- diner
+- fast food
+- pizzeria
+- sushi bar
+- table reservation
+- banquet
+competitors:
+- name: OpenTable
+  positioning: Leading online restaurant reservation service.
+  strengths:
+  - Extensive network of restaurants.
+  - User-friendly mobile app.
+  - Integrated rewards program.
+  weaknesses:
+  - High commission fees for restaurants.
+  - Less personalized for local, independent establishments.
+  - Primarily focused on reservations, not calls.
+  our_differentiation: We provide a direct, 24/7 voice channel for reservations and
+    inquiries, reducing third-party fees and building direct customer relationships.
+- name: Grubhub
+  positioning: Major online and mobile food ordering platform.
+  strengths:
+  - Large customer base.
+  - Wide restaurant selection.
+  - Established brand recognition.
+  weaknesses:
+  - High commission and delivery fees.
+  - Customers belong to the platform, not the restaurant.
+  - Poor customer service experiences can reflect on the restaurant.
+  our_differentiation: Our AI agent handles direct phone orders, keeping customers
+    in your ecosystem, reducing commission costs, and allowing for personalized upselling.
+- name: Toast
+  positioning: All-in-one point-of-sale and restaurant management system.
+  strengths:
+  - Comprehensive POS, payroll, and reporting suite.
+  - Popular among small to mid-sized restaurants.
+  - Strong integration ecosystem.
+  weaknesses:
+  - Can be expensive for very small businesses.
+  - Their call management features are often add-ons or less sophisticated.
+  - Primarily a backend system.
+  our_differentiation: We specialize in the front-line customer voice interaction,
+    seamlessly integrating with systems like Toast to automate calls, not just manage
+    them internally.
+- name: Resy
+  positioning: Premium restaurant reservation platform owned by American Express.
+  strengths:
+  - Strong brand association with upscale dining.
+  - High-quality user experience.
+  - Valuable customer data.
+  weaknesses:
+  - Limited to higher-end market segments.
+  - Restaurants have less control over the customer interface.
+  - Competitive booking fees.
+  our_differentiation: Offers an affordable, white-label solution that provides a
+    premium 24/7 reservation experience for businesses of all sizes, keeping the brand
+    front and center.
+industry_faq:
+- answer_template: For what date and time are you looking? How many guests will there
+    be?
+  question: Do you have any tables available?
+- answer_template: Yes, I can text or email you a link to our digital menu. You can
+    also view it on our website.
+  question: What's on your menu?
+- answer_template: Yes, we are open every day. On weekends, we are open until 1 AM.
+  question: Are you open on weekends?
+- answer_template: Yes, we offer a kids' menu and have high chairs available.
+  question: Do you have a kids' menu?
+- answer_template: Absolutely, we host private events for groups from 10 to 100 guests.
+    What date were you considering?
+  question: Can we book a private event?
+- answer_template: Yes, we offer complimentary valet parking. For self-parking, there
+    is a garage one block away.
+  question: Do you have parking?
+- answer_template: We offer a variety of options, including vegetarian, vegan, and
+    gluten-free dishes. Please inform us of any allergies when ordering.
+  question: Do you have dietary options?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 6-8% YoY
+  key_trends:
+  - Rise of ghost kitchens and virtual brands.
+  - Increased demand for contactless ordering and payment.
+  - Focus on sustainable and locally sourced ingredients.
+  - Growth of subscription-based meal kits and delivery.
+  market_size: ~$900 Billion
+  seasonality:
+    high:
+    - December (Holidays)
+    - February (Valentine's Day)
+    - May (Mother's Day, Graduations)
+    low:
+    - January (Post-holiday slowdown)
+    - Late August/September (Back-to-school transition)
+meta:
+  avg_validation_score: 0.0
+  country: us
+  created_at: '2024-05-22'
+  currency: USD
+  id: horeca
+  language: en
+  languages: []
+  last_updated: '2024-05-22'
+  phone_codes:
+  - '+1'
+  region: na
+  tests_run: 0
+  timezone: null
+  version: '1.0'
+pain_points:
+- description: High call volume during peak dinner hours and weekends for reservations
+    and orders.
+  severity: high
+  solution_hint: 24/7 automated table booking and order-taking.
+- description: High no-show rates for reservations (15-25%), leading to lost revenue.
+  severity: high
+  solution_hint: Automated SMS/email confirmations and reminder calls.
+- description: Staff overwhelmed by phone calls, reducing time for in-person customer
+    service.
+  severity: medium
+  solution_hint: AI voice agent handles routine inquiries, freeing up staff.
+- description: Difficulty filling tables during off-peak hours and promoting specials.
+  severity: medium
+  solution_hint: Outbound calls to loyalty members with targeted offers.
+- description: Lost delivery and takeout orders during busy periods when phones are
+    unanswered.
+  severity: medium
+  solution_hint: AI agent seamlessly processes takeout and delivery orders 24/7.
+- description: Managing customer data and preferences manually, missing personalization
+    opportunities.
+  severity: low
+  solution_hint: Agent logs call data and preferences for CRM integration and personalized
+    marketing.
+pricing_context:
+  currency: USD
+  entry_point: 199
+  roi_examples:
+  - monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 0.25
+    scenario: Automating 50% of reservation calls and reducing no-shows by 10% for
+      a mid-sized restaurant.
+  typical_budget_range:
+  - 199
+  - 799
+  value_anchors:
+  - Save 20+ staff hours per week on phone duty.
+  - Reduce no-show rates by up to 50%.
+  - Never miss a reservation or order call again.
+recommended_functions:
+- name: table_reservation
+  priority: high
+  reason: Core function for restaurants; captures bookings directly 24/7.
+- name: order_taking
+  priority: high
+  reason: Critical for takeout, delivery, and room service revenue streams.
+- name: confirmation_reminders
+  priority: high
+  reason: Drastically reduces costly no-shows for tables and events.
+- name: faq_handler
+  priority: medium
+  reason: Instantly answers common questions about hours, menu, parking, saving staff
+    time.
+- name: outbound_marketing
+  priority: low
+  reason: Proactively fills tables during slow periods by calling loyalty members
+    with offers.
+sales_scripts:
+- goal: Overcome initial sticker shock by focusing on immediate ROI.
+  script: I understand. At $299/month, it might seem like an added cost. Let's break
+    it down. If our agent just saves your host 10 hours a week from answering phones,
+    that's $400 in labor savings monthly. Plus, if we reduce your no-shows by just
+    two tables a week, that's another $800 in recovered revenue. You're looking at
+    a $1200 net gain in the first month. Does that make the investment feel more tangible?
+  situation: When the prospect says "It's too expensive."
+  trigger: price_objection
+- goal: Position the agent as a premium, always-available extension of their brand.
+  script: Great question. Unlike a basic answering service, our AI agent is trained
+    on your specific menu, hours, and policies. It doesn't just take a message—it
+    can book a table for Saturday at 8 PM for four, confirm a gluten-free preference,
+    and send a reminder, all without human intervention. It provides a seamless, high-quality
+    experience that reflects well on your establishment, even when you're busy or
+    closed.
+  situation: When asked how this differs from a traditional answering service.
+  trigger: vs_answering_service
+- goal: Secure a trial by addressing data privacy concerns upfront (CCPA).
+  script: We take data privacy very seriously. Our system is designed to be CCPA compliant.
+    Customer data from calls is handled securely, and we can integrate with your existing
+    systems without storing sensitive information long-term. We can start with a limited
+    pilot, just handling after-hours calls, so you can see the value with minimal
+    risk. Would a two-week trial during your slower lunch hours work to start?
+  situation: When the prospect is hesitant about data security or wants to test.
+  trigger: compliance_hesitation
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reduce no-show rate to below 10%
+  - Automate 65% of reservation calls
+  - Average order/call handling time under 60 seconds
+  - Increase repeat customer bookings by 20%
+typical_integrations:
+- examples:
+  - OpenTable
+  - Resy
+  - Yelp Reservations
+  name: Reservation Platform
+  priority: high
+  reason: Sync table availability and push bookings directly to the system.
+- examples:
+  - Toast
+  - Square for Restaurants
+  - Clover
+  name: POS / Restaurant Management System
+  priority: high
+  reason: Send takeout/delivery orders and reservation details directly to the kitchen/floor.
+- examples:
+  - Uber Eats
+  - DoorDash
+  - Grubhub
+  name: Delivery Aggregator
+  priority: medium
+  reason: For restaurants using third-party delivery, agent can direct customers to
+    the app or provide status.
+- examples:
+  - Salesforce
+  - HubSpot
+  - Mailchimp
+  name: CRM / Marketing Platform
+  priority: medium
+  reason: Log customer preferences and contact info for personalized marketing campaigns.
+typical_objections:
+- objection: We don't get enough phone calls to justify it.
+  response: Even a few missed calls a day are lost customers. Our agent also helps
+    convert more of the calls you do get by being available instantly, 24/7, and can
+    up-sell larger tables or event bookings. It's about maximizing every opportunity.
+- objection: My staff enjoys talking to customers on the phone.
+  response: That's wonderful for personal touch. Our agent handles the repetitive,
+    transactional calls—'what are your hours?', 'do you have a table for two at 7?'.
+    This frees your staff to have those more meaningful, in-person interactions that
+    truly build loyalty.
+- objection: What if it messes up an order?
+  response: The agent is trained on your specific menu and protocols. For complex
+    situations, it can seamlessly transfer the call to a live person. It's designed
+    to handle the routine perfectly, so your team only steps in for the exceptions.
+typical_services:
+- Table reservations and waitlist management
+- Takeout and curbside pickup orders
+- Food delivery coordination
+- Private dining and banquet bookings
+- Catering inquiries and orders
+- Hotel room reservations
+- Room service orders
+- Event and party planning
+- Gift card sales and balance checks
+- Customer feedback and review solicitation
+_extends: _base/horeca

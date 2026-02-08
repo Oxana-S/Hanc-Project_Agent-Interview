@@ -1,0 +1,254 @@
+pain_points:
+- description: Forte concurrence entraînant une guerre des prix et une érosion des
+    marges bénéficiaires.
+  severity: high
+  solution_hint: L'agent vocal peut qualifier les leads plus efficacement et présenter
+    des offres sur-mesure pour augmenter la valeur moyenne des contrats.
+- description: Taux d'attrition client élevé (churn) dû à la facilité de changement
+    d'opérateur.
+  severity: high
+  solution_hint: Détection proactive des intentions de résiliation via l'analyse de
+    ton et propositions de rétention personnalisées en temps réel.
+- description: Complexité de la gestion des réclamations et du support client, engorgeant
+    les centres d'appels.
+  severity: medium
+  solution_hint: 'Automatisation du tri des appels (IVR intelligent) et résolution
+    autonome des problèmes courants (ex : réinitialisation de box).'
+- description: Difficulté à monétiser les nouveaux services (5G, fibre, IoT) auprès
+    d'une clientèle résidentielle habituée aux forfaits basiques.
+  severity: medium
+  solution_hint: Scripts de vente adaptatifs pour expliquer la valeur ajoutée et générer
+    des rendez-vous qualifiés pour les conseillers commerciaux.
+- description: Conformité stricte au RGPD (GDPR) et aux réglementations des télécoms
+    françaises (ARCEP), générant des coûts de mise en conformité.
+  severity: high
+  solution_hint: Intégration de contrôles de conformité dans les scripts (consentement
+    enregistré, droit à l'oubli) et traçabilité complète des conversations.
+- description: Saisonnalité marquée des demandes (rentrée scolaire, Noël) causant
+    des pics de charge imprévisibles.
+  severity: low
+  solution_hint: L'agent vocal peut absorber une partie de la charge supplémentaire
+    en gestion de commandes et FAQ, lissant la charge des équipes humaines.
+typical_services:
+- Forfaits mobiles (avec ou sans engagement)
+- Box Internet (ADSL, fibre optique)
+- Téléphonie fixe
+- Télévision par ADSL/fibre (TV d'opérateur)
+- Services de réseau mobile pour entreprises (M2M, IoT)
+- Solutions de connectivité cloud et sécurisée pour professionnels
+- Services de visioconférence et téléphonie unifiée
+- Support technique et dépannage à distance
+- Vente d'équipements (smartphones, modems, décodeurs TV)
+- Options et services à valeur ajoutée (antivirus, cloud stockage)
+recommended_functions:
+- name: Qualification de lead et prise de rendez-vous
+  priority: high
+  reason: Crucial pour convertir les demandes d'information en ventes, en orientant
+    vers le bon conseiller et en évitant les pertes de leads.
+- name: Support client de premier niveau et dépannage
+  priority: high
+  reason: 'Permet de désengorger les centres d''appels en résolvant jusqu''à 80% des
+    problèmes courants (ex : mot de passe oublié, redémarrage de box).'
+- name: Campagnes de rétention proactive
+  priority: medium
+  reason: Analyse les signaux de mécontentement et propose des offres de fidélisation
+    avant que le client ne contacte la concurrence.
+- name: Vente incitative et cross-selling
+  priority: medium
+  reason: 'Augmente la valeur du client en proposant des options pertinentes (ex :
+    passage à la fibre, ajout de ligne mobile) lors d''interactions de service.'
+- name: Recouvrement de factures impayées
+  priority: low
+  reason: Automatise les relances courtoises, réduisant les coûts de recouvrement
+    manuel et améliorant le taux de recouvrement.
+- name: Enquêtes de satisfaction post-intervention
+  priority: low
+  reason: Collecte automatiquement des feedbacks pour mesurer la qualité de service
+    et identifier les points d'amélioration.
+typical_integrations:
+- name: CRM (Customer Relationship Management)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Système de facturation et BSS (Business Support Systems)
+  examples:
+  - Amdocs
+  - Oracle BRM
+  - solutions propriétaires
+  priority: high
+- name: Plateforme de centre de contact (CCaaS)
+  examples:
+  - Five9
+  - Nice inContact
+  - Aircall
+  - solutions locales
+  priority: medium
+- name: Outils de gestion des réseaux et NOC (Network Operations Center)
+  examples:
+  - SolarWinds
+  - LogicMonitor
+  - outils propriétaires
+  priority: medium
+- name: Base de connaissances et FAQ interne
+  examples:
+  - Confluence
+  - SharePoint
+  - Glpi
+  priority: low
+industry_faq:
+- question: Quelle est la couverture réseau de la 4G/5G à mon adresse ?
+  answer_template: Je vérifie immédiatement la couverture pour votre adresse. Pouvez-vous
+    me confirmer votre code postal et le nom de votre commune ? Notre carte est mise
+    à jour régulièrement pour vous garantir une information précise.
+- question: Que faire si ma box internet ne fonctionne plus ?
+  answer_template: Je vous guide pour un dépannage rapide. Commençons par vérifier
+    si les voyants de votre box sont allumés. Pouvez-vous également vérifier que les
+    câbles sont bien branchés ? Si le problème persiste, je peux lancer un test de
+    ligne à distance.
+- question: Quelle est la différence entre votre offre fibre et l'ADSL ?
+  answer_template: La fibre optique offre un débit beaucoup plus stable et élevé,
+    jusqu'à 1 Gbit/s, idéal pour le télétravail, les appels vidéo et le streaming
+    4K. L'ADSL utilise la ligne téléphonique classique et a un débit plus limité.
+    Je vous recommande la fibre si elle est disponible chez vous.
+- question: Puis-je résilier mon contrat sans frais ?
+  answer_template: Les conditions de résiliation dépendent de votre type d'engagement.
+    Si vous êtes en période d'engagement, des frais peuvent s'appliquer. Si vous êtes
+    hors engagement, vous pouvez résilier sans frais avec un préavis d'un mois. Je
+    peux vérifier votre situation spécifique si vous me donnez votre numéro client.
+- question: Proposez-vous des offres groupées (mobile + internet + TV) ?
+  answer_template: Oui, nous proposons des offres pack regroupant internet, mobile
+    et télévision à un tarif avantageux. Cela vous simplifie la vie avec une seule
+    facture et souvent des services complémentaires inclus. Je peux vous présenter
+    les packs adaptés à vos besoins.
+sales_scripts:
+- trigger: price_question
+  situation: Le client demande le prix d'une offre ou la compare à un concurrent.
+  script: 'Je comprends que le prix est un critère important. Notre offre à [PRIX]€/mois
+    inclut [AVANTAGES CLÉS : ex, débit garanti, appels illimités, service client primé].
+    Contrairement à certaines offres bas de gamme, nous ne limitons pas le débit en
+    soirée. Cela vous évitera des ralentissements frustrants lors du streaming en
+    famille. Puis-je vous expliquer comment cette offre correspond exactement à votre
+    usage ?'
+  goal: Déplacer la conversation du prix vers la valeur et l'adéquation aux besoins,
+    en différenciant par la qualité de service.
+- trigger: competitor_mention
+  situation: 'Le client mentionne une offre spécifique d''un concurrent (ex : Orange,
+    SFR, Free).'
+  script: 'C''est une offre intéressante. Chez nous, nous mettons l''accent sur [NOTRE
+    DIFFÉRENCIATEUR : ex, la fiabilité du réseau, la transparence des tarifs, le support
+    réactif]. Par exemple, notre service client est basé en France et joignable en
+    moins de 2 minutes en moyenne. Est-ce que la qualité du service et la réactivité
+    en cas de problème sont importantes pour vous ?'
+  goal: Reconnaître le concurrent, puis recentrer sur nos points forts différenciants
+    et vérifier l'importance de ces critères pour le client.
+- trigger: contract_duration_concern
+  situation: Le client exprime une réticence face à un engagement de 12 ou 24 mois.
+  script: 'Je comprends votre hésitation à vous engager sur la durée. L''engagement
+    nous permet de vous proposer un tarif réduit et souvent l''équipement inclus.
+    Cependant, nous proposons aussi des forfaits sans engagement, légèrement plus
+    chers mais avec une flexibilité totale. Quel est votre besoin prioritaire : avoir
+    le prix le plus bas ou la liberté de changer à tout moment ?'
+  goal: Transformer l'objection en choix clair pour le client, en présentant les deux
+    options et en identifiant sa priorité.
+competitors:
+- name: Orange
+  positioning: Leader historique, positionnement premium sur la fiabilité et le service.
+  strengths:
+  - Réseau étendu et perçu comme le plus fiable
+  - Fort ancrage B2B et B2C
+  - Service client réputé
+  - Marque forte
+  weaknesses:
+  - Tarifs généralement plus élevés
+  - Processus parfois bureaucratiques
+  - Innovation perçue comme plus lente
+  our_differentiation: Nous offrons un rapport qualité-prize plus agressif, des processus
+    numériques simplifiés et une innovation centrée sur l'expérience client.
+- name: Free (Iliad)
+  positioning: Disrupteur agressif, focalisé sur le prix bas et l'innovation.
+  strengths:
+  - Prix très compétitifs
+  - 'Innovation technique (ex : Freebox)'
+  - Simplicité des offres
+  - Cultive une image de challenger
+  weaknesses:
+  - Service client parfois critiqué sur les délais
+  - Couverture réseau perçue comme inégale en zone rurale
+  - Support B2B limité
+  our_differentiation: Nous combinons des prix compétitifs avec un service client
+    réactif et accessible, offrant le meilleur des deux mondes.
+- name: SFR (Altice)
+  positioning: Concurrent mass-market avec un large portefeuille de contenus (sport,
+    TV).
+  strengths:
+  - Offres groupées attractives avec contenus exclusifs (sport)
+  - Réseau fibre en forte croissance
+  - Présence retail étendue
+  weaknesses:
+  - Image de marque affectée par des incidents passés
+  - Facturation parfois complexe
+  - Satisfaction client variable
+  our_differentiation: Nous proposons une facturation transparente et sans surprise,
+    et une relation client plus simple et directe, sans complexité inutile.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 20
+  - 80
+  entry_point: 25
+  roi_examples:
+  - scenario: Automatisation du support technique de premier niveau pour 5000 clients
+    monthly_cost: 1500
+    monthly_savings: 6000
+    payback_months: 3
+  value_anchors:
+  - Réduction de 30% du temps d'attente au support client.
+  - Augmentation de 15% du taux de conversion des leads qualifiés.
+  - Diminution de 25% des coûts de recouvrement des impayés.
+market_context:
+  market_size: Environ 35 milliards d'EUR par an (marché grand public et entreprises)
+  growth_rate: 1-2% (marché mature, croissance tirée par la fibre et la 5G)
+  key_trends:
+  - Migration massive des clients de l'ADSL vers la fibre optique (FTTH).
+  - Développement des usages 5G et des offres entreprises (IoT, edge computing).
+  - Convergence accrue des services (forfaits 5G illimités incluant la box fixe).
+  - Importance croissante de l'expérience client numérique et de l'auto-gestion.
+  seasonality:
+    high:
+    - Septembre (rentrée scolaire)
+    - Novembre-Décembre (période des fêtes, soldes)
+    low:
+    - Juillet-Août (été, vacances scolaires)
+typical_objections:
+- objection: Je suis déjà client de [Concurrent] et je suis plutôt satisfait.
+  response: C'est une bonne nouvelle d'être satisfait. Puis-je vous demander ce qui,
+    selon vous, pourrait encore améliorer votre expérience ? Parfois, une simple comparaison
+    peut révéler des économies ou des services supplémentaires dont vous pourriez
+    bénéficier sans compromettre la qualité.
+- objection: Je ne fais pas confiance aux robots pour gérer mes problèmes.
+  response: Je comprends tout à fait. Notre agent vocal est là pour résoudre les problèmes
+    simples rapidement, 24h/24. Mais il est programmé pour passer immédiatement un
+    conseiller humain dès que la situation devient complexe ou si vous le demandez.
+    L'objectif est de vous faire gagner du temps sur les démarches simples.
+- objection: C'est trop cher par rapport à ce que j'ai actuellement.
+  response: Puis-je comprendre ce que comprend exactement votre offre actuelle au
+    même prix ? Souvent, des différences sur la qualité du débit garanti, les engagements
+    de service ou les options incluses justifient un écart. Vaut-il mieux payer un
+    peu moins cher et risquer des coupures en soirée ?
+meta:
+  id: telecom
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

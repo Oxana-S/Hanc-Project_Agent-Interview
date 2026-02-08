@@ -1,0 +1,297 @@
+aliases:
+- logística
+- entrega
+- transporte de cargas
+- serviço de mensageiro
+- empresa de transporte
+- armazém
+- expedição
+- frete
+- carga
+- remessa
+- encomenda
+- conhecimmento de frete
+- nota fiscal
+competitors:
+- name: Jadlog
+  positioning: Grande player nacional com ampla cobertura
+  strengths:
+  - Rede extensa de filiais
+  - Rastreamento em tempo real
+  - Parcerias com grandes varejistas
+  weaknesses:
+  - Atendimento ao cliente lento em picos
+  - Custos mais elevados para pequenas empresas
+  - Pouca flexibilidade em regras
+  our_differentiation: Agente de voz 24/7 para resolução imediata, integração ágil
+    com sistemas legados e suporte personalizado para PMEs.
+- name: Total Express
+  positioning: Especialista em e-commerce e entregas urgentes
+  strengths:
+  - Foco em última milha
+  - Tecnologia de roteirização
+  - Bom atendimento para embarcadores de e-commerce
+  weaknesses:
+  - Cobertura limitada em cidades do interior
+  - Capacidade limitada para cargas pesadas
+  - Preços variáveis com frequência
+  our_differentiation: Automação de agendamento e confirmação, redução de custos operacionais
+    com IA e suporte omnichannel (voz, WhatsApp, SMS).
+- name: Correios
+  positioning: Empresa pública com capilaridade nacional
+  strengths:
+  - Presença em todos os municípios
+  - Preços acessíveis para encomendas pequenas
+  - Confiança da população
+  weaknesses:
+  - Lentidão em processos
+  - Rastreamento pouco preciso
+  - Atendimento burocrático
+  our_differentiation: Velocidade no atendimento automatizado, transparência total
+    no status e integração com LGPD para segurança de dados.
+- name: Jamef
+  positioning: Transporte rodoviário de cargas com foco em fretes
+  strengths:
+  - Frota própria robusta
+  - Expertise em cargas fracionadas e lotação
+  - Bom custo-benefício para longas distâncias
+  weaknesses:
+  - Tecnologia defasada
+  - Comunicação pouco eficiente com clientes finais
+  - Pouca agilidade na resolução de problemas
+  our_differentiation: Agente de voz integrado ao TMS para informações precisas, notificações
+    proativas e redução de falhas na comunicação.
+industry_faq:
+- answer_template: Informe o número do conhecimento de frete ou código de rastreio
+    que verifico o status para você.
+  question: Onde está minha carga?
+- answer_template: O valor depende do peso, dimensões, origem e destino. Posso simular
+    um orçamento se você passar os dados.
+  question: Quanto custa o frete?
+- answer_template: Preciso do número do pedido para consultar a previsão de entrega
+    no sistema.
+  question: Quando o entregador chega?
+- answer_template: Sim, é possível alterar até o momento da saída para entrega. Por
+    favor, informe o novo endereço.
+  question: Posso alterar o endereço de entrega?
+- answer_template: Trabalhamos de segunda a sábado. Entregas aos domingos e feriados
+    possuem tarifa diferenciada.
+  question: Vocês trabalham nos finais de semana?
+- answer_template: Para devoluções, entre em contato com o remetente. Podemos organizar
+    a coleta e o retorno da mercadoria.
+  question: Como faço para devolver uma mercadoria?
+- answer_template: O prazo varia conforme a distância e modalidade. Para um cálculo
+    preciso, preciso da origem, destino e tipo de carga.
+  question: Qual é o prazo de entrega?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 4.2
+  key_trends:
+  - Crescimento acelerado do e-commerce impulsionando a última milha
+  - Aumento da demanda por rastreamento em tempo real e transparência
+  - Pressão por redução de custos logísticos e otimização de rotas
+  - Fortalecimento da regulamentação LGPD para proteção de dados de clientes
+  market_size: R$ 450 bilhões
+  seasonality:
+    high:
+    - Novembro a Dezembro (Black Friday e Natal)
+    - Maio (Dia das Mães)
+    - Agosto (Dia dos Pais)
+    low:
+    - Fevereiro (Carnaval)
+    - Julho (férias escolares)
+meta:
+  avg_validation_score: 0.0
+  country: br
+  created_at: '2024-05-15'
+  currency: BRL
+  id: logistics
+  language: pt
+  languages:
+  - pt
+  last_updated: '2024-05-15'
+  phone_codes:
+  - '+55'
+  region: latam
+  tests_run: 0
+  timezone: America/Sao_Paulo
+  version: '1.0'
+pain_points:
+- description: Alto volume de ligações perguntando "onde está minha entrega?"
+  severity: high
+  solution_hint: Consulta automática de status por código de rastreio ou número do
+    conhecimento.
+- description: Dificuldade do cliente em falar com atendente nos horários de pico.
+  severity: high
+  solution_hint: Agente de voz 24/7 para consultas de status e perguntas frequentes.
+- description: Operadores gastam muito tempo com questões repetitivas, como prazos
+    e valores.
+  severity: medium
+  solution_hint: Automação de respostas para consultas padrão, liberando operadores
+    para casos complexos.
+- description: Falhas na comunicação para agendar ou remarcar entregas.
+  severity: medium
+  solution_hint: Sistema automatizado de agendamento e confirmação via voz ou SMS.
+- description: Erros no preenchimento de dados durante o recebimento de solicitações
+    por telefone.
+  severity: medium
+  solution_hint: Coleta estruturada de informações do pedido via agente de voz, integrada
+    ao CRM/TMS.
+- description: Dificuldade em gerenciar expectativas sobre prazos de entrega em diferentes
+    regiões.
+  severity: low
+  solution_hint: Agente fornece prazos realistas baseados em CEP de origem/destino
+    e histórico.
+- description: Preocupação com conformidade à LGPD no tratamento de dados de clientes.
+  severity: medium
+  solution_hint: Agente de voz configurado para não armazenar dados sensíveis sem
+    consentimento.
+pricing_context:
+  currency: BRL
+  entry_point: 299
+  roi_examples:
+  - monthly_cost: 1499
+    monthly_savings: 4500
+    payback_months: 3
+    scenario: Automação de 70% das chamadas de status e agendamento para uma transportadora
+      média.
+  - monthly_cost: 799
+    monthly_savings: 2400
+    payback_months: 3
+    scenario: Redução de 2 atendentes em horário comercial para uma empresa de entrega
+      urbana.
+  typical_budget_range:
+  - 300
+  - 3000
+  value_anchors:
+  - Reduza em até 40% o tempo dos operadores com tarefas repetitivas.
+  - Atenda 24/7 sem aumentar sua equipe.
+  - Melhore a satisfação do cliente com respostas instantâneas.
+  - Opere em conformidade com a LGPD.
+recommended_functions:
+- name: consultar_status
+  priority: high
+  reason: 70-80% das ligações são para rastreamento de entregas.
+- name: cotar_frete
+  priority: high
+  reason: Automação de simulação de custos agiliza o processo comercial.
+- name: agendar_entrega
+  priority: high
+  reason: Automatiza a coleta de dados e confirmação de horários, reduzindo falhas.
+- name: rotear_chamado
+  priority: medium
+  reason: Encaminha questões complexas (avarias, extravios) para o setor correto.
+- name: notificar_cliente
+  priority: medium
+  reason: Envia lembretes e confirmações de entrega via integração com SMS/WhatsApp.
+- name: responder_faq
+  priority: medium
+  reason: Responde automaticamente a perguntas sobre prazos, horários, documentação.
+- name: alterar_agendamento
+  priority: low
+  reason: Permite mudanças de data, horário ou endereço antes da saída para entrega.
+sales_scripts:
+- goal: Converter consulta de preço em oportunidade de demonstração.
+  script: 'Olá! Para calcular um frete preciso, preciso de algumas informações: CEP
+    de origem e destino, peso e dimensões aproximadas da carga. Posso ajudá-lo a simular
+    agora mesmo. Se preferir, também posso agendar uma demonstração gratuita do nosso
+    agente de voz, que faz essa cotação automaticamente 24 horas por dia.'
+  situation: Quando o cliente pergunta sobre preços de forma genérica.
+  trigger: price_question
+- goal: Destacar a eficiência 24/7 e reduzir objeções sobre custo.
+  script: Entendo que a agilidade no atendimento é crucial. Nosso agente de voz atende
+    instantaneamente, 24 horas por dia, 7 dias por semana, sem filas. Isso reduz a
+    necessidade de contratar mais pessoal para cobrir turnos e diminui drasticamente
+    as ligações perdidas. Posso mostrar como isso se traduz em economia para o seu
+    negócio?
+  situation: Quando o cliente demonstra preocupação com picos de atendimento ou custos
+    operacionais.
+  trigger: efficiency_concern
+- goal: Enfatizar a conformidade com LGPD como diferencial.
+  script: Além de eficiência, oferecemos total segurança e conformidade com a Lei
+    LGPD. Nosso agente é configurado para proteger os dados dos seus clientes, coletando
+    apenas o necessário e com consentimento. Isso evita multas e constrói confiança.
+    Gostaria de saber mais sobre como protegemos suas informações?
+  situation: Quando se trata de um setor regulado ou o cliente menciona preocupação
+    com dados.
+  trigger: compliance_question
+- goal: Fechar agendamento para uma demonstração prática.
+  script: Perfeito. Para que você veja na prática como o agente lida com situações
+    reais do dia a dia, como rastreamento, agendamento e FAQs, posso agendar uma demonstração
+    rápida e personalizada. Qual o melhor horário para você na próxima semana?
+  situation: Após o cliente demonstrar interesse nas funcionalidades.
+  trigger: demo_interest
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.75
+  typical_kpis:
+  - Redução de 40% na carga de trabalho dos operadores
+  - Automação de 75% das consultas de status
+  - Tempo médio de resposta < 3 segundos
+  - Satisfação do cliente (CSAT) > 4.2/5
+typical_integrations:
+- examples:
+  - TOTVS Logística
+  - SAP TM
+  - Linx
+  - Bling
+  name: TMS/ERP
+  priority: high
+  reason: Fonte principal de dados para status, custos e informações de pedidos.
+- examples:
+  - RD Station CRM
+  - PipeRun
+  - HubSpot
+  name: CRM
+  priority: medium
+  reason: Acesso ao histórico do cliente e gestão de oportunidades de venda.
+- examples:
+  - WhatsApp Business API
+  - Telegram
+  name: Mensageiros
+  priority: high
+  reason: Canal preferencial de notificações e comunicação no Brasil.
+- examples:
+  - Zenvia
+  - TotalVoice
+  name: SMS/Voz
+  priority: medium
+  reason: Envio de alertas de entrega e confirmações via SMS; gestão de chamadas.
+- examples:
+  - Nvoip
+  - Locaweb Telefonia
+  name: Telefonia
+  priority: high
+  reason: Plataforma de recebimento e roteamento de chamadas de voz.
+typical_objections:
+- objection: Prefiro falar com uma pessoa.
+  response: Compreendo perfeitamente. Para questões mais complexas, posso conectar
+    você imediatamente com um de nossos especialistas. Enquanto isso, posso resolver
+    rapidamente consultas de status ou prazos, economizando seu tempo.
+- objection: Esses sistemas são muito caros para minha empresa.
+  response: Nosso modelo é escalável. Começamos com um plano acessível que automatiza
+    justamente as tarefas que mais consomem tempo, como consultas de status. O retorno
+    normalmente cobre o investimento em poucos meses com a economia em mão de obra
+    e ganho de eficiência.
+- objection: Não acredito que um robô vai entender meu problema.
+  response: Fui treinado especificamente para o setor logístico brasileiro e entendo
+    termos como 'conhecimento de frete', 'entrega DAC', 'carga fracionada'. Posso
+    resolver a maioria das situações comuns. Se for algo fora do padrão, um humano
+    entra em ação sem que você precise repetir informações.
+- objection: Já tenho um sistema, não quero mais uma integração complicada.
+  response: A integração é simples e focada. Conectamos principalmente com seu TMS
+    ou ERP para puxar dados de rastreio. Nossa equipe técnica cuida de tudo, garantindo
+    que funcione sem interferir nos seus processos atuais.
+typical_services:
+- Transporte rodoviário de cargas
+- Entrega expressa (mesmo dia/24h)
+- Entrega urbana (última milha)
+- Armazenagem e distribuição
+- Despacho aduaneiro (importação/exportação)
+- Rastreamento e monitoramento de cargas
+- Carga fracionada (LTL) e carga lotação (FTL)
+- Transporte interestadual
+- Logística reversa e gestão de devoluções
+- Serviços de coleta e entrega (pickup and delivery)
+_extends: _base/logistics

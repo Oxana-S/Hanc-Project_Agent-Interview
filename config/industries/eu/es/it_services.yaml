@@ -1,0 +1,228 @@
+pain_points:
+- description: Altos costos de mano de obra especializada en TI, lo que dificulta
+    la contratación y retención de talento.
+  severity: high
+  solution_hint: El agente de voz de IA puede automatizar tareas repetitivas, reduciendo
+    la dependencia de personal costoso.
+- description: Cumplimiento estricto del GDPR y otras regulaciones locales, generando
+    sobrecarga administrativa.
+  severity: high
+  solution_hint: El agente puede proporcionar recordatorios y asistencia en la gestión
+    de compliance, integrando con herramientas de auditoría.
+- description: Competencia intensa en el mercado, con muchas empresas ofreciendo servicios
+    similares a precios bajos.
+  severity: medium
+  solution_hint: El agente puede destacar diferenciadores clave en ventas y marketing,
+    como la personalización y soporte local.
+- description: Dificultad para escalar servicios rápidamente durante picos de demanda,
+    especialmente en proyectos estacionales.
+  severity: medium
+  solution_hint: El agente puede manejar consultas iniciales y programación, liberando
+    recursos para escalar operaciones.
+- description: Problemas de ciberseguridad y protección de datos, con ataques frecuentes
+    que afectan la confianza del cliente.
+  severity: high
+  solution_hint: El agente puede educar a clientes sobre prácticas de seguridad y
+    ofrecer servicios proactivos de monitoreo.
+- description: Falta de integración entre sistemas heredados y nuevas tecnologías,
+    causando ineficiencias operativas.
+  severity: medium
+  solution_hint: El agente puede facilitar la coordinación para migraciones e integraciones,
+    usando scripts automatizados.
+typical_services:
+- Desarrollo de software a medida
+- Soporte técnico y mantenimiento de sistemas
+- Consultoría en transformación digital
+- Servicios de ciberseguridad y protección de datos
+- Migración a la nube (cloud computing)
+- Gestión de infraestructura IT
+- Desarrollo de aplicaciones móviles
+- Integración de sistemas ERP y CRM
+- Servicios de outsourcing IT
+- Formación y capacitación en tecnologías emergentes
+recommended_functions:
+- name: Programación de citas y reuniones
+  priority: high
+  reason: Reducir tiempo de coordinación para consultas iniciales y seguimientos,
+    común en ventas de servicios IT.
+- name: Respuesta a preguntas frecuentes sobre precios y servicios
+  priority: high
+  reason: Abordar rápidamente dudas de clientes, mejorando la experiencia y acelerando
+    el proceso de venta.
+- name: Gestión de leads y calificación inicial
+  priority: medium
+  reason: Automatizar la captura y evaluación de leads, crucial en un mercado competitivo
+    como España.
+- name: Recordatorios de compliance y renovaciones
+  priority: medium
+  reason: Ayudar a empresas a cumplir con GDPR y otras normativas, un punto de dolor
+    clave en la industria.
+- name: Soporte post-venta y resolución de incidencias básicas
+  priority: low
+  reason: Proporcionar asistencia inicial, liberando a técnicos para tareas más complejas
+    y mejorando la satisfacción.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Oracle ERP
+  priority: high
+- name: Plataformas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Herramientas de gestión de proyectos
+  examples:
+  - Jira
+  - Trello
+  - Asana
+  priority: medium
+- name: Soluciones de ciberseguridad
+  examples:
+  - McAfee
+  - Kaspersky
+  - Check Point
+  priority: medium
+industry_faq:
+- question: ¿Cuál es el costo promedio de un servicio de desarrollo de software a
+    medida en España?
+  answer_template: El costo varía según la complejidad, pero típicamente oscila entre
+    5.000€ y 50.000€ para proyectos iniciales. Podemos personalizar una propuesta
+    basada en sus necesidades específicas.
+- question: ¿Cómo garantizan el cumplimiento del GDPR en sus servicios?
+  answer_template: Implementamos medidas técnicas y organizativas, como encriptación
+    y auditorías regulares, y ofrecemos asesoramiento continuo para asegurar el compliance.
+- question: ¿Ofrecen soporte técnico 24/7?
+  answer_template: Sí, proporcionamos soporte técnico continuo con planes escalables,
+    incluyendo opciones 24/7 para garantizar la disponibilidad de sus sistemas.
+- question: ¿Qué ventajas tienen sobre competidores locales como Indra?
+  answer_template: Nos diferenciamos con un enfoque más ágil, precios competitivos,
+    y un soporte personalizado en español, adaptándonos rápidamente a cambios del
+    mercado.
+- question: ¿Pueden integrar sus servicios con nuestros sistemas existentes?
+  answer_template: Sí, tenemos experiencia en integraciones con múltiples plataformas,
+    asegurando compatibilidad y minimizando interrupciones en sus operaciones.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios durante una llamada inicial.
+  script: Hola, entiendo su interés en los costos. En España, los precios de servicios
+    IT dependen de factores como el alcance y la complejidad. Para darle una estimación
+    precisa, ¿podría compartir más detalles sobre su proyecto? Ofrecemos opciones
+    desde 2.000€ para servicios básicos, con un ROI típico de 3-6 meses en ahorros
+    de eficiencia.
+  goal: Calificar al cliente y guiarlo hacia una conversación más detallada, anclando
+    el valor.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor como comparación.
+  script: Es bueno que esté explorando opciones. A diferencia de [competidor], nosotros
+    nos enfocamos en soluciones personalizadas y soporte local en español, con tiempos
+    de respuesta más rápidos y flexibilidad en contratos. ¿Le interesaría ver un caso
+    de éxito similar en su industria?
+  goal: Diferenciar nuestros servicios y redirigir la conversación hacia nuestras
+    fortalezas.
+- trigger: compliance_concern
+  situation: Cuando el cliente expresa preocupación por el cumplimiento del GDPR.
+  script: El GDPR es crucial en España. Nosotros integramos herramientas de compliance
+    en todos nuestros servicios, ofreciendo auditorías regulares y asesoramiento para
+    minimizar riesgos. Esto puede ahorrarle multas y mejorar la confianza de sus clientes.
+    ¿Le gustaría que le detalle nuestras medidas específicas?
+  goal: Aliviar preocupaciones y posicionarnos como expertos en compliance.
+competitors:
+- name: Indra
+  positioning: Líder en consultoría y tecnología a gran escala, con fuerte presencia
+    en el sector público.
+  strengths:
+  - Amplia cartera de servicios
+  - Experiencia en proyectos grandes
+  - Reconocimiento de marca
+  weaknesses:
+  - Menos ágil en innovación
+  - Precios altos
+  - Soporte menos personalizado
+  our_differentiation: Ofrecemos soluciones más ágiles y adaptativas, con precios
+    competitivos y un enfoque centrado en el cliente para PYMEs.
+- name: Everis (parte de NTT Data)
+  positioning: Consultora global con enfoque en transformación digital y outsourcing.
+  strengths:
+  - Recursos globales
+  - Expertise en múltiples industrias
+  - Capacidad de escalar
+  weaknesses:
+  - Procesos burocráticos
+  - Menos atención a clientes locales
+  - Costos elevados
+  our_differentiation: Proporcionamos un servicio más cercano y personalizado en España,
+    con tiempos de implementación más rápidos y tarifas transparentes.
+- name: Sopra Steria
+  positioning: Especialista en consultoría IT y servicios digitales para empresas
+    europeas.
+  strengths:
+  - Fuerte en compliance y regulación
+  - Experiencia en sectores regulados
+  - Estabilidad financiera
+  weaknesses:
+  - Innovación limitada
+  - Enfoque tradicional
+  - Poca flexibilidad en contratos
+  our_differentiation: Enfocamos en innovación y tecnologías emergentes, con modelos
+    de servicio flexibles que se adaptan a necesidades cambiantes.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automatización de procesos con desarrollo de software a medida
+    monthly_cost: 3000
+    monthly_savings: 5000
+    payback_months: 2
+  value_anchors:
+  - Ahorre hasta un 30% en costos operativos con nuestras soluciones eficientes.
+  - ROI típico en 3-6 meses mediante la reducción de tiempos de inactividad y mejora
+    de productividad.
+  - Precios transparentes sin cargos ocultos, adaptados al mercado español.
+market_context:
+  market_size: Aproximadamente 30 mil millones de EUR anuales en España
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Aumento de la demanda de servicios en la nube y ciberseguridad.
+  - Digitalización acelerada de PYMEs tras la pandemia.
+  - Enfoque en sostenibilidad y tecnologías verdes en IT.
+  seasonality:
+    high:
+    - Cuarto trimestre (presupuestos anuales)
+    - Inicio de año (nuevos proyectos)
+    low:
+    - Agosto (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: Es demasiado caro para nuestro presupuesto.
+  response: Entiendo su preocupación. Ofrecemos planes escalables y podemos ajustar
+    el alcance para ajustarnos a su presupuesto. Además, el ROI suele compensar la
+    inversión inicial en pocos meses. ¿Podemos revisar opciones más económicas?
+- objection: Ya trabajamos con otro proveedor de IT.
+  response: Es genial que ya tenga soporte. Nosotros podemos complementar sus servicios
+    actuales o ofrecer una segunda opinión para optimizar costos y eficiencia. ¿Le
+    interesaría una evaluación gratuita?
+- objection: No estamos seguros de necesitar servicios adicionales en este momento.
+  response: Comprendo. Muchos clientes en España empiezan con una consultoría inicial
+    para identificar áreas de mejora sin compromiso. Podemos programar una sesión
+    breve para discutir sus necesidades específicas.
+meta:
+  id: it_services
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

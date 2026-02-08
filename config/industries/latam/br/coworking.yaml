@@ -1,0 +1,222 @@
+pain_points:
+- description: Alta taxa de rotatividade de membros, com assinaturas curtas e incerteza
+    na retenção.
+  severity: high
+  solution_hint: Agente de voz pode automatizar follow-ups personalizados e ofertas
+    de renovação para aumentar a fidelização.
+- description: Dificuldade em gerenciar reservas de salas de reunião e espaços compartilhados,
+    levando a conflitos.
+  severity: medium
+  solution_hint: Integrar com sistema de reservas para fornecer informações em tempo
+    real e processar reservas via voz.
+- description: Custos operacionais elevados com energia, limpeza e manutenção, afetando
+    a rentabilidade.
+  severity: high
+  solution_hint: Otimizar agendamentos para reduzir desperdícios e oferecer dicas
+    de eficiência energética via consultas automatizadas.
+- description: Conformidade com a LGPD para proteção de dados de membros, exigindo
+    processos seguros de coleta e armazenamento.
+  severity: high
+  solution_hint: Automatizar consentimentos e respostas a solicitações de dados, garantindo
+    conformidade em interações por voz.
+- description: Baixa visibilidade em períodos de baixa temporada, com ocupação reduzida.
+  severity: medium
+  solution_hint: Promover ofertas sazonais e pacotes flexíveis através de campanhas
+    automatizadas por voz.
+- description: Dificuldade em atrair empresas locais e freelancers devido à concorrência
+    intensa.
+  severity: medium
+  solution_hint: Personalizar abordagens de vendas com base em perfis de clientes
+    locais, usando dados para segmentação.
+typical_services:
+- Hot desk (escritório flexível)
+- Dedicated desk (escritório fixo)
+- Sala privativa para equipes
+- Sala de reunião por hora
+- Escritório virtual (endereço postal e serviços)
+- Espaço para eventos e workshops
+- Serviços de recepção e secretaria
+- Acesso 24/7 com segurança
+- Internet de alta velocidade e infraestrutura
+- Programas de networking e comunidade
+recommended_functions:
+- name: Agendamento de visitas
+  priority: high
+  reason: Converte leads rapidamente ao permitir agendamentos imediatos via voz, reduzindo
+    perdas.
+- name: Respostas a perguntas frequentes
+  priority: medium
+  reason: Libera a equipe humana para tarefas complexas, fornecendo informações básicas
+    automaticamente.
+- name: Processamento de pagamentos
+  priority: high
+  reason: Facilita assinaturas e renovações, integrando-se a gateways locais como
+    PagSeguro.
+- name: Suporte a conformidade LGPD
+  priority: high
+  reason: Garante que todas as interações coletem e gerenciem dados conforme a lei,
+    evitando multas.
+- name: Monitoramento de ocupação
+  priority: medium
+  reason: Oferece insights em tempo real para otimizar uso de espaços e preços dinâmicos.
+- name: Campanhas de remarketing
+  priority: low
+  reason: Engaja leads frios com ofertas personalizadas, aumentando as taxas de conversão.
+typical_integrations:
+- name: Sistema de gestão de coworking
+  examples:
+  - CoworkingBR
+  - Kekanto
+  - LocalSys
+  priority: high
+- name: Gateway de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: high
+- name: CRM local
+  examples:
+  - Salesforce
+  - RD Station
+  - Pipedrive
+  priority: medium
+- name: Sistema de reservas
+  examples:
+  - Agendor
+  - Setmore
+  - Google Calendar
+  priority: medium
+- name: Ferramentas de compliance LGPD
+  examples:
+  - PrivacyTools
+  - DataGuard BR
+  priority: high
+industry_faq:
+- question: Quais são os planos de preços disponíveis?
+  answer_template: Oferecemos planos flexíveis, desde hot desks a partir de R$ 300/mês
+    até salas privativas sob consulta. Posso ajudá-lo a escolher o melhor com base
+    no seu uso.
+- question: Há acesso 24 horas por dia?
+  answer_template: Sim, muitos de nossos espaços oferecem acesso 24/7 com segurança
+    e controle por biometria para sua conveniência.
+- question: Quais serviços estão incluídos na assinatura?
+  answer_template: Incluímos internet de alta velocidade, café, áreas comuns, e suporte
+    de recepção. Serviços adicionais como salas de reunião podem ser agregados.
+- question: Como funciona a conformidade com a LGPD?
+  answer_template: Seguimos rigorosamente a LGPD, com processos seguros para dados.
+    Podemos fornecer detalhes sobre nosso compliance upon request.
+- question: Há descontos para empresas ou longos prazos?
+  answer_template: Sim, oferecemos descontos para assinaturas anuais e pacotes corporativos.
+    Posso calcular uma proposta personalizada para você.
+- question: Posso agendar uma visita para conhecer o espaço?
+  answer_template: Claro! Posso agendar uma visita em um horário conveniente para
+    você. Basta me informar sua disponibilidade.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um lead pergunta sobre preços por telefone.
+  script: Olá! Entendo sua preocupação com custos. Nossos planos começam em R$ 300/mês
+    para hot desks, com flexibilidade total. Com base no seu perfil, posso sugerir
+    uma opção que maximize seu ROI. Gostaria de discutir seus requisitos específicos?
+  goal: Converter a conversa para uma proposta personalizada, destacando valor em
+    vez de apenas preço.
+- trigger: availability_check
+  situation: Quando um cliente verifica a disponibilidade de espaços.
+  script: Verifiquei nossa disponibilidade! Temos hot desks e salas privativas com
+    opções imediatas. Para garantir seu espaço, posso reservar um tour virtual ou
+    agendar uma visita hoje. O que prefere?
+  goal: Agendar uma visita ou reserva, criando urgência e facilitando o próximo passo.
+- trigger: lgpd_inquiry
+  situation: Quando um cliente expressa preocupação com proteção de dados.
+  script: Excelente pergunta! Cumprimos totalmente a LGPD com criptografia e consentimento
+    claro. Nossa solução automatiza isso, garantindo sua tranquilidade. Posso enviar
+    mais detalhes por e-mail?
+  goal: Construir confiança e endereçar objeções de conformidade para avançar na venda.
+competitors:
+- name: WeWork Brasil
+  positioning: Líder global com presença em grandes cidades como São Paulo e Rio.
+  strengths:
+  - Marca reconhecida
+  - Espaços premium
+  - Rede internacional
+  weaknesses:
+  - Preços altos
+  - Menos flexibilidade para negócios locais
+  our_differentiation: Oferecemos preços mais acessíveis e serviços personalizados
+    para o mercado brasileiro, com foco em LGPD.
+- name: Beeworks
+  positioning: Rede local focada em comunidades e startups.
+  strengths:
+  - Preços competitivos
+  - Forte senso de comunidade
+  - Localização em bairros estratégicos
+  weaknesses:
+  - Limitações em escala
+  - Serviços básicos em alguns locais
+  our_differentiation: Integramos tecnologia de voz para automação avançada, melhorando
+    eficiência e experiência do cliente.
+- name: Kekanto Spaces
+  positioning: Plataforma de coworking com foco em flexibilidade e eventos.
+  strengths:
+  - Agendamento fácil via app
+  - Ofertas sazonais
+  - Parcerias locais
+  weaknesses:
+  - Conformidade LGPD em desenvolvimento
+  - Suporte limitado em horários não comerciais
+  our_differentiation: Solução completa com conformidade LGPD nativa e suporte 24/7
+    via agente de voz.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 2000
+  entry_point: 300
+  roi_examples:
+  - scenario: Freelancer que economiza em deslocamento e infraestrutura
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com espaços compartilhados.
+  - Aumente a produtividade com acesso a recursos premium por menos de R$ 10/dia.
+market_context:
+  market_size: Estimado em R$ 1.5 bilhões em 2023
+  growth_rate: 15% YoY
+  key_trends:
+  - Crescimento do trabalho remoto pós-pandemia
+  - Demanda por flexibilidade e conformidade LGPD
+  - Expansão em cidades secundárias além de São Paulo e Rio
+  seasonality:
+    high:
+    - Janeiro a março (início do ano fiscal)
+    - Agosto a outubro (período de planejamento)
+    low:
+    - Dezembro (férias de fim de ano)
+    - Julho (férias de meio de ano)
+typical_objections:
+- objection: É muito caro para meu orçamento.
+  response: Entendo. Nossos planos são escaláveis; podemos começar com um hot desk
+    e ajustar conforme cresce. Além disso, o ROI em produtividade e networking compensa
+    o investimento.
+- objection: Já tenho um escritório em casa, não preciso.
+  response: Perfeito! Mas espaços de coworking oferecem networking, menos distrações
+    e infraestrutura profissional que podem impulsionar seus negócios. Que tal uma
+    visita experimental?
+- objection: Preocupo-me com a segurança dos meus dados na LGPD.
+  response: Totalmente válido. Implementamos medidas rigorosas de compliance, e nosso
+    agente de voz gerencia consentimentos de forma segura. Posso compartilhar nosso
+    certificado de conformidade.
+meta:
+  id: coworking
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "coworking"
+- "shared office"
+- "flexible workspace"
+_extends: _base/coworking

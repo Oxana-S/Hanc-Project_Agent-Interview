@@ -1,0 +1,256 @@
+aliases:
+- autobusiness
+- autosalon
+- autoservice
+- serviceauto
+- masina
+- dealer
+- serviceauto
+- vulcanizare
+- mentenanta
+- revizietehnica
+- reparatieauto
+- masina
+- auto
+- tuning
+- detailing
+- garaj
+- spalatorieauto
+competitors:
+- name: Auto Total
+  positioning: Rețea națională de service-uri rapide
+  strengths:
+  - Prețuri competitive
+  - Locații multe
+  - Promoții frecvente
+  weaknesses:
+  - Calitate variabilă
+  - Personal suprasolicitat
+  - Așteptare lungă pentru programare
+  our_differentiation: Servicii premium cu garanție extinsă și programare rapidă.
+- name: Porsche Center București
+  positioning: Dealer premium pentru mașini de lux
+  strengths:
+  - Experiență premium
+  - Piese originale
+  - Tehnologie de vârf
+  weaknesses:
+  - Prețuri foarte mari
+  - Acces limitat (doar anumite mărci)
+  - Timpi de așteptare lungi pentru piese
+  our_differentiation: Servicii de calitate superioară pentru toate mărcile la prețuri
+    accesibile.
+- name: Profi Auto Service
+  positioning: Service independent cu accent pe diagnoză
+  strengths:
+  - Prețuri decente
+  - Diagnoză detaliată
+  - Atentie personalizată
+  weaknesses:
+  - Capacitate limitată
+  - Nu are rețea națională
+  - Promovare slabă
+  our_differentiation: Automatizăm procesele pentru a oferi eficiență și atenție clienților
+    lor.
+industry_faq:
+- answer_template: Costul depinde de marcă și tipul de ulei. În medie, de la 150 la
+    400 RON, inclusiv manopera.
+  question: Cât costă schimbul de ulei?
+- answer_template: Dați-mi numărul de comandă sau numărul de înmatriculare, vă pot
+    verifica statusul.
+  question: Cum pot afla statusul reparației?
+- answer_template: O revizie tehncnică planificată durează de la 1 la 3 ore, în funcție
+    de volumul de lucrări.
+  question: Cât durează o revizie tehnică?
+- answer_template: Da, servisăm toate mărcile de mașini. Cu ce marcă aveți nevoie?
+  question: Lucrați și cu marca mea de mașină?
+- answer_template: Pot verifica stocul. Spuneți-mi marca, modelul și ce piesă aveți
+    nevoie.
+  question: Aveți piesa X în stoc?
+- answer_template: Da, oferim garanție 12 luni sau 15.000 km pentru lucrările executate.
+  question: Oferiți garanție pentru lucrări?
+industry_specifics:
+  compliance:
+  - GDPR
+  peak_times:
+  - Luni dimineața
+  - Vineri după-amiaza
+  - Sezonul de schimbat anvelope (aprilie, octombrie)
+  tone:
+  - Încrezător, profesionist
+  - Tehnic competent
+  - Prietenos, nu prea formal
+learnings:
+- date: '2024-05-17'
+  insight: 'Avertisment: [scenario_match] Potrivire redusă cu integrările: 1/4'
+  source: test_service_auto_ro
+- date: '2024-05-17'
+  insight: 'Succes: [call_handling] Agentul a gestionat 85% din întrebările despre
+    prețuri.'
+  source: test_service_auto_ro
+market_context:
+  market_size: Peste 2 miliarde EUR anual
+  growth_rate: 3-5% pe an
+  key_trends:
+  - Creșterea interesului pentru mașini electrice și hibride
+  - Digitalizarea serviciilor auto (programare online, plăți digitale)
+  - Dorința pentru service-uri rapide și transparente
+  seasonality:
+    high:
+    - Primăvară (pregătire pentru vară)
+    - Toamnă (pregătire pentru iarnă)
+    low:
+    - Decembrie (sărbători)
+    - August (concedii)
+meta:
+  avg_validation_score: 0.82
+  country: ro
+  created_at: '2024-05-17'
+  currency: RON
+  id: automotive
+  language: ro
+  languages:
+  - ro
+  last_updated: '2024-05-17'
+  phone_codes:
+  - '+40'
+  region: eu
+  tests_run: 1
+  timezone: Europe/Bucharest
+  version: '1.0'
+pain_points:
+- description: Clienții sună în mod constant pentru a afla statusul reparației
+  severity: high
+  solution_hint: Status automat prin număr de comandă sau număr de înmatriculare
+- description: Multe apeluri cu întrebări despre prețuri pentru servicii comune
+  severity: medium
+  solution_hint: Calcul automat al costului pentru servicii standard
+- description: Dificultăți în programarea la ore convenabile pentru clienți
+  severity: medium
+  solution_hint: Sistem de programare online cu selectarea orei
+- description: Clienții uită de reviziile tehnice planificate
+  severity: medium
+  solution_hint: Reminder-uri automate bazate pe kilometraj sau dată
+- description: Meșterii sunt întrerupți frecvent de apeluri telefonice
+  severity: high
+  solution_hint: Agent vocal care prelucrează întrebări de rutină
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 4
+    scenario: Automatizarea verificării statusului și a programărilor
+  value_anchors:
+  - 'Economisiți timpul meșterilor: până la 10 ore/săptămână'
+  - Creștere a satisfacției clienților cu 30%
+  - 'Programare rapidă: în 2 minute'
+recommended_functions:
+- name: status
+  priority: high
+  reason: 40-50% din apeluri sunt pentru statusul reparației
+- name: programare
+  priority: high
+  reason: Programare pentru revizie, diagnoză, vulcanizare
+- name: faq
+  priority: medium
+  reason: Răspunsuri la întrebări despre prețuri, termene, piese, garanție
+- name: reminder
+  priority: medium
+  reason: Remindere pentru revizii tehnice planificate
+- name: preț
+  priority: medium
+  reason: Estimare rapidă a costului pentru servicii comune
+- name: rutare
+  priority: low
+  reason: Întrebări complexe către meșter-consultant
+sales_scripts:
+- goal: Conversia în programare pentru o revizie
+  script: 'Bună ziua! Vă pot ajuta cu o programare pentru revizia tehnică. Pentru
+    a vă oferi cea mai bună ofertă, am nevoie de câteva detalii: marca și modelul
+    mașinii, kilometrajul actual și ce probleme observați. Pot verifica prima dată
+    disponibilă.'
+  situation: Clientul întreabă despre prețul unei revizii
+  trigger: intrebare_pret_revizie
+- goal: Promovarea pachetelor de servicii sezoniere
+  script: Salut! Acum avem un pachet special pentru schimbul de anvelope de vară/iarnă,
+    care include schimbul, echilibrarea și stocarea anvelopelor. Doriți să vă ofer
+    mai multe detalii și să vă programez?
+  situation: Clientul sună în perioada de schimb sezonier
+  trigger: perioada_schimb_anvelope
+- goal: Creșterea vânzărilor de piese
+  script: Înțeleg că aveți nevoie de o piesă. Putem verifica imediat disponibilitatea
+    și prețul. Dacă o comandați acum, o putem monta la cea mai apropiată programare.
+    Doriți să verific?
+  situation: Clientul întreabă despre disponibilitatea unei piese
+  trigger: intrebare_disponibilitate_piesa
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automatizarea a 60% din cererile de status
+  - Reducerea încărcăturii recepției cu 40%
+  - Rata de conversie în programare > 25%
+  - Satisfacția clienților > 4.2/5
+typical_integrations:
+- examples:
+  - 1C:AutoService
+  - AutoSoft RO
+  - AutoManager
+  name: Software Management Service Auto
+  priority: high
+  reason: Comenzi de lucru, status, gestiune piese
+- examples:
+  - Bitrix24
+  - HubSpot
+  - Sisteme CRM locale
+  name: CRM
+  priority: medium
+  reason: Istoric service, card client
+- examples:
+  - Yay.com
+  - 3CX
+  - Sisteme VoIP locale
+  name: Telefonie
+  priority: high
+  reason: Preluarea apelurilor primite
+- examples:
+  - SMS
+  - WhatsApp
+  - Messenger
+  name: SMS/Mesagerii
+  priority: medium
+  reason: Notificări de gata
+- examples:
+  - Google Calendar
+  - Sisteme de programare specializate
+  name: Calendar
+  priority: medium
+  reason: Programarea utilajelor/standurilor
+typical_objections:
+- objection: E prea scump.
+  response: Vă înțeleg. Pot să vă ofer variante cu piese alternative sau să vă conectez
+    cu un meșter pentru o discuție detaliată.
+- objection: Aștept prea mult pentru o programare.
+  response: Permiteți-mi să verific încărcătura. S-ar putea să găsim un interval mai
+    devreme. Când v-ar fi convenabil?
+- objection: De ce costă atât de mult?
+  response: Prețul include piese de calitate și munca meșterilor certificați. Vă pot
+    oferi o defalcare detaliată a costurilor.
+typical_services:
+- Service auto complet
+- Revizie tehnică (RT)
+- Reparație motor
+- Reparație suspensie
+- Reparație caroserie
+- Vulcanizare
+- Geometrie (reparat direcție)
+- Diagnoză electronică
+- Schimb ulei și filtre
+- Vânzare auto
+- Detailing auto
+_extends: _base/automotive

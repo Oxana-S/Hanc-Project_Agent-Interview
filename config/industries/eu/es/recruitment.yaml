@@ -1,0 +1,247 @@
+pain_points:
+- description: Alto volumen de candidatos sin filtrar que consume tiempo valioso del
+    equipo de reclutamiento.
+  severity: high
+  solution_hint: El agente de voz AI puede pre-seleccionar candidatos mediante preguntas
+    automatizadas, filtrando por habilidades y disponibilidad.
+- description: Dificultad para encontrar candidatos con habilidades técnicas específicas
+    en un mercado laboral competitivo.
+  severity: high
+  solution_hint: El agente puede realizar búsquedas activas y contactar candidatos
+    pasivos, utilizando bases de datos y redes sociales.
+- description: Cumplimiento del RGPD en la gestión de datos de candidatos, con riesgo
+    de sanciones por incumplimiento.
+  severity: high
+  solution_hint: Automatizar la obtención de consentimientos y la gestión de datos
+    personales de forma segura y conforme al RGPD.
+- description: Baja tasa de respuesta en las comunicaciones con candidatos, retrasando
+    los procesos de selección.
+  severity: medium
+  solution_hint: El agente puede realizar seguimientos automáticos y personalizados
+    por voz, aumentando la engagement.
+- description: Costes elevados en publicidad de empleo y plataformas de reclutamiento,
+    con retorno de inversión variable.
+  severity: medium
+  solution_hint: Reducir costes mediante la automatización de tareas repetitivas y
+    optimizar la inversión en campañas.
+- description: Falta de estandarización en los procesos de entrevista, llevando a
+    decisiones inconsistentes.
+  severity: low
+  solution_hint: Implementar entrevistas iniciales estandarizadas con el agente de
+    voz para evaluar criterios clave.
+typical_services:
+- Selección de personal
+- Headhunting
+- Outsourcing de RRHH
+- Gestión de talento
+- Evaluación y assessment de candidatos
+- Consultoría en reclutamiento
+- Employer branding
+- Onboarding de nuevos empleados
+- Formación en procesos de selección
+- Temporales y ETT (Empresa de Trabajo Temporal)
+recommended_functions:
+- name: Screening inicial de candidatos
+  priority: high
+  reason: Reduce el tiempo de revisión de CVs y filtra candidatos no aptos automáticamente.
+- name: Programación de entrevistas
+  priority: high
+  reason: Automatiza la coordinación de agendas entre reclutadores y candidatos, evitando
+    conflictos.
+- name: Recordatorios y seguimientos
+  priority: medium
+  reason: Mejora la tasa de respuesta y mantiene a los candidatos informados durante
+    el proceso.
+- name: Respuesta a preguntas frecuentes
+  priority: medium
+  reason: Libera al equipo humano de tareas repetitivas, permitiendo enfocarse en
+    interacciones complejas.
+- name: Recopilación de feedback post-entrevista
+  priority: low
+  reason: Automatiza la obtención de opiniones para mejorar procesos y experiencia
+    del candidato.
+- name: Búsqueda activa de candidatos
+  priority: high
+  reason: Amplía el pool de talento contactando candidatos pasivos de forma eficiente.
+typical_integrations:
+- name: Sistemas de ATS (Applicant Tracking System)
+  examples:
+  - Talent Clue
+  - BambooHR
+  - Factorial
+  priority: high
+- name: ERP y software de RRHH
+  examples:
+  - SAP
+  - Oracle HCM
+  - Meta4
+  priority: medium
+- name: Plataformas de empleo
+  examples:
+  - Infojobs
+  - LinkedIn
+  - Indeed
+  priority: high
+- name: Herramientas de videoconferencia
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Google Meet
+  priority: medium
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: low
+industry_faq:
+- question: ¿Cómo garantizan el cumplimiento del RGPD en el manejo de datos de candidatos?
+  answer_template: Nuestro agente de voz AI está diseñado para obtener consentimientos
+    explícitos, encriptar datos y seguir protocolos de eliminación según el RGPD,
+    asegurando total conformidad.
+- question: ¿Puede el agente manejar procesos de selección para perfiles técnicos
+    complejos?
+  answer_template: Sí, configuramos el agente con preguntas específicas de habilidades
+    técnicas y criterios definidos por su equipo, permitiendo una evaluación inicial
+    precisa.
+- question: ¿Qué ahorro de tiempo puedo esperar con la automatización?
+  answer_template: Clientes reportan reducciones de hasta un 40% en tiempo dedicado
+    a tareas repetitivas como screening y programación, liberando recursos para estrategias.
+- question: ¿Es fácil integrar el agente con nuestro software actual de RRHH?
+  answer_template: Ofrecemos integraciones flexibles con ATS populares y APIs personalizadas
+    para adaptarse a su infraestructura existente sin interrupciones.
+- question: ¿Cómo personalizan las interacciones del agente para mantener una experiencia
+    humana?
+  answer_template: Utilizamos scripts personalizables y tonos de voz adaptables, basados
+    en su marca y cultura, para garantizar una comunicación natural y efectiva.
+- question: ¿Qué pasa si un candidato tiene preguntas que el agente no puede responder?
+  answer_template: El agente está programado para derivar preguntas complejas a un
+    reclutador humano en tiempo real, asegurando que ningún candidato quede sin atención.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por el costo del servicio.
+  script: Entendemos que la inversión es clave. Nuestros planes parten desde 200€
+    al mes, ajustándose a su volumen de reclutamiento. ¿Le gustaría una demostración
+    personalizada para ver el ROI en tiempo ahorrado?
+  goal: Transmitir flexibilidad en precios y enfocarse en el valor y retorno de inversión.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor local como Infojobs.
+  script: Infojobs es excelente para publicar ofertas, pero nuestro agente de voz
+    AI va más allá automatizando el contacto y screening activo, reduciendo el tiempo
+    de contratación en un 30%. ¿Le interesa ver cómo?
+  goal: Diferenciar ofreciendo automatización integral frente a plataformas tradicionales.
+- trigger: doubt_automation
+  situation: Cuando el cliente expresa escepticismo sobre la efectividad de la automatización
+    en reclutamiento.
+  script: Comprendemos la preocupación. Nuestro agente no reemplaza al reclutador,
+    sino que elimina tareas repetitivas. Por ejemplo, puede manejar el 80% de las
+    preguntas iniciales, permitiendo a su equipo enfocarse en la selección final.
+    ¿Podemos mostrarle un caso de éxito?
+  goal: Aliviar miedos demostrando cómo la AI complementa y potencia el trabajo humano.
+- trigger: compliance_concern
+  situation: Cuando el cliente pregunta sobre el cumplimiento del RGPD.
+  script: La conformidad con el RGPD es prioridad. Nuestro agente gestiona consentimientos
+    automáticamente y todos los datos se procesan en servidores de la UE. ¿Quiere
+    que le detallemos nuestros protocolos de seguridad?
+  goal: Asegurar al cliente sobre el cumplimiento normativo y construir confianza.
+competitors:
+- name: Infojobs
+  positioning: Plataforma líder de empleo en España para publicación de ofertas.
+  strengths:
+  - Amplia base de usuarios
+  - Reconocimiento de marca
+  - Herramientas básicas de gestión
+  weaknesses:
+  - Limitada en automatización avanzada
+  - Enfoque pasivo en búsqueda
+  - Costes por publicación pueden acumularse
+  our_differentiation: Ofrecemos automatización activa de reclutamiento con agente
+    de voz, no solo publicación, reduciendo tiempo y costes operativos.
+- name: Talent Clue
+  positioning: Software de ATS y reclutamiento para empresas medianas y grandes.
+  strengths:
+  - Funciones completas de ATS
+  - Integraciones con RRHH
+  - Soporte local en español
+  weaknesses:
+  - Requiere configuración manual extensa
+  - Menos enfocado en automatización de contacto
+  - Precios elevados para pymes
+  our_differentiation: Complementamos ATS con automatización de voz para tareas de
+    contacto y screening, aumentando eficiencia sin reemplazar sistemas existentes.
+- name: LinkedIn Recruiter
+  positioning: Herramienta global para búsqueda de talento profesional.
+  strengths:
+  - Acceso a red profesional extensa
+  - Funciones de búsqueda avanzada
+  - Integración con perfiles
+  weaknesses:
+  - Coste alto para uso continuado
+  - Curva de aprendizaje
+  - Menos personalizable para mercados locales españoles
+  our_differentiation: Enfocados en el mercado español con agente de voz en español
+    nativo, ofreciendo un enfoque más asequible y adaptado a regulaciones locales
+    como el RGPD.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 2000
+  entry_point: 200
+  roi_examples:
+  - scenario: Agencia de reclutamiento que maneja 50 candidatos mensuales
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 0.5
+  value_anchors:
+  - Reduce el tiempo de screening en un 50% con nuestra automatización.
+  - Ahorra hasta 1000€ mensuales en costes de publicidad y horas de trabajo.
+  - Incrementa la tasa de contratación exitosa con seguimiento automatizado.
+market_context:
+  market_size: Estimado en 1.5 mil millones EUR anuales en servicios de reclutamiento
+    en España.
+  growth_rate: 5% YoY, impulsado por digitalización y demanda de talento tecnológico.
+  key_trends:
+  - Aumento del teletrabajo y reclutamiento remoto.
+  - Enfoque en employer branding para atraer talento joven.
+  - Adopción de AI y automatización en procesos de RRHH.
+  seasonality:
+    high:
+    - Enero-Febrero (tras Navidades)
+    - Septiembre (inicio del año laboral)
+    low:
+    - Agosto (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: Prefiero el contacto humano en el reclutamiento, no confío en máquinas
+    para esto.
+  response: Totalmente de acuerdo, el toque humano es esencial. Nuestro agente de
+    voz actúa como asistente, manejando tareas repetitivas para que su equipo pueda
+    centrarse en las interacciones más valiosas y personales.
+- objection: El costo inicial parece alto para mi presupuesto actual.
+  response: Entendemos. Empezamos con planes escalables desde 200€/mes, y el ROI en
+    tiempo ahorrado suele superar la inversión en el primer mes. ¿Podemos analizar
+    su flujo de trabajo para una propuesta ajustada?
+- objection: Ya tenemos un ATS, no necesitamos más software.
+  response: Perfecto, nuestro agente se integra con su ATS existente para potenciarlo,
+    automatizando el contacto telefónico y screening que su ATS no cubre. Así, maximiza
+    su inversión actual.
+- objection: ¿No es complicado implementar y entrenar al agente?
+  response: Nos encargamos de la configuración inicial y capacitación de su equipo
+    en solo unos días, con soporte continuo. Es un proceso sencillo diseñado para
+    minimizar interrupciones.
+meta:
+  id: recruitment
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

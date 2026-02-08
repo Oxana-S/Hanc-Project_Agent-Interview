@@ -1,0 +1,210 @@
+pain_points:
+- description: Hoher Personalbedarf und häufige Fluktuation im Reinigungspersonal.
+  severity: high
+  solution_hint: Automatisierte Mitarbeiterakquise und Onboarding-Unterstützung durch den Sprachassistenten.
+- description: Komplexe Terminplanung und Koordination zwischen mehreren Kunden.
+  severity: high
+  solution_hint: KI-gesteuerte Terminvereinbarung und automatische Erinnerungen an Kunden.
+- description: Nachfragespitzen zu bestimmten Jahreszeiten (z.B. vor Feiertagen) führen zu Kapazitätsengpässen.
+  severity: medium
+  solution_hint: Vorhersage von Spitzenzeiten und automatisierte Angebotserstellung für Zusatzleistungen.
+- description: Ineffiziente Kommunikation mit Kunden bezüglich Sonderwünsche oder Problemstellen.
+  severity: medium
+  solution_hint: 24/7 Erreichbarkeit für Kundenanfragen und Protokollierung von Anmerkungen im System.
+- description: Manuelle und fehleranfällige Erstellung von Angeboten und Rechnungen.
+  severity: medium
+  solution_hint: Automatisierte Angebotserstellung basierend auf Wohnungsgröße und Leistungsumfang.
+- description: Herausforderungen bei der Einhaltung der strengen österreichischen Hygienevorschriften und Dokumentation.
+  severity: low
+  solution_hint: Sprachgesteuerte Checklisten und Compliance-Protokollierung für Reinigungskräfte.
+- description: Schwierigkeiten bei der Abrechnung von Zusatzleistungen oder spontanen Änderungen.
+  severity: low
+  solution_hint: Sofortige Erfassung von Zusatzaufträgen durch den Sprachagenten und automatische Preisaktualisierung.
+typical_services:
+- Grundreinigung (Wohnung/Haus)
+- Großreinigung (Frühjahrs-/Herbstreinigung)
+- Büroreinigung
+- Fensterreinigung
+- Teppichreinigung
+- Unterhaltsreinigung (wöchentlich/monatlich)
+- Baureinigung
+- Desinfektionsreinigung
+- Öko-Reinigung mit umweltfreundlichen Mitteln
+- Parkett- und Bodenpflege
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Behebt das Hauptproblem der komplexen Planung und reduziert Auslastungsprobleme.
+- name: Angebotserstellung und Preisberechnung
+  priority: high
+  reason: Beschleunigt den Sales-Prozess und minimiert Fehler bei der Kalkulation.
+- name: Zahlungserinnerungen und Rechnungsstellung
+  priority: medium
+  reason: Verbessert den Cashflow durch automatisierte Follow-ups.
+- name: FAQ-Beantwortung (24/7)
+  priority: medium
+  reason: Entlastet die Mitarbeiter von Standardanfragen zu Leistungen, Preisen und Verträgen.
+- name: Kundenfeedback-Erhebung
+  priority: low
+  reason: Ermöglicht kontinuierliche Qualitätsverbesserung und bindet Kunden ein.
+- name: Mitarbeiter-Einsatzplanung
+  priority: high
+  reason: Optimiert Personaleinsatz und reagiert auf kurzfristige Ausfälle.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - SAP Business One
+  - Lexware
+  priority: high
+- name: Terminplanungstools
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - TrekkSoft
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - eigene Lösungen
+  priority: medium
+- name: Zahlungsgateways
+  examples:
+  - Stripe
+  - PayPal
+  - Klarna
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - WhatsApp Business
+  - Microsoft Teams
+  - Slack
+  priority: low
+industry_faq:
+- question: Was kostet eine Grundreinigung für eine 80m² Wohnung?
+  answer_template: Für eine 80m² Wohnung beginnen unsere Preise für eine Grundreinigung bei etwa 120-180 Euro, abhängig vom Zustand und den gewünschten Leistungen. Ich kann Ihnen gerne ein detailliertes,
+    unverbindliches Angebot erstellen.
+- question: Bieten Sie auch regelmäßige Reinigungen mit Vertrag an?
+  answer_template: Ja, wir bieten flexible Verträge für Unterhaltsreinigungen (wöchentlich, 14-tägig, monatlich) an. Diese sind oft kostengünstiger als Einzelreinigungen und garantieren Ihnen einen festen
+    Termin.
+- question: Sind Ihre Reinigungsmittel umweltfreundlich?
+  answer_template: Auf Wunsch verwenden wir ausschließlich zertifizierte, ökologische Reinigungsmittel. Bitte teilen Sie uns dies einfach bei der Buchung mit.
+- question: Was passiert, wenn etwas während der Reinigung beschädigt wird?
+  answer_template: Alle unsere Mitarbeiter sind versichert. Sollte wider Erwarten ein Schaden entstehen, klären wir dies umgehend über unsere Haftpflichtversicherung.
+- question: Können Sie auch kurzfristig am gleichen Tag kommen?
+  answer_template: Wir bemühen uns immer, kurzfristige Anfragen zu bedienen. Die Verfügbarkeit hängt von unserer Auslastung ab. Am schnellsten buchen Sie über unseren Online-Kalender oder per Telefon.
+- question: Arbeiten Sie mit eigenen, angestellten Mitarbeitern?
+  answer_template: Ja, bei uns sind alle Reinigungskräfte fest angestellt, sozialversichert und erhalten regelmäßige Schulungen. Sie erhalten also immer qualifiziertes und zuverlässiges Personal.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach dem Preis für eine bestimmte Leistung oder Größe fragt.
+  script: 'Sehr gerne. Für eine grobe Einschätzung benötige ich nur zwei Informationen: Die ungefähre Quadratmeterzahl der zu reinigenden Fläche und ob es sich um eine Grund- oder Unterhaltsreinigung handelt.
+    Darauf basierend kann ich Ihnen sofort einen Richtpreis nennen und im Anschluss ein detailliertes, unverbindliches Angebot zusenden.'
+  goal: Vom Preisgespräch zu einer konkreten Angebotserstellung führen und Vertrauen durch Transparenz aufbauen.
+- trigger: contract_concern
+  situation: Wenn der Kunde Bedenken bezüglich langer Vertragslaufzeiten äußert.
+  script: Ich verstehe Ihre Bedenken vollkommen. Unsere Verträge sind bewusst flexibel gestaltet. Sie starten mit einer Probezeit von einem Monat und haben danach eine Kündigungsfrist von nur 4 Wochen.
+    So können Sie unsere Qualität erst in Ruhe testen.
+  goal: Einwand entkräften und durch Flexibilität Sicherheit vermitteln.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber nennt oder nach Unterschieden fragt.
+  script: Das ist eine gute Frage. Viele Anbieter arbeiten mit Subunternehmern. Unser großer Vorteil ist, dass wir mit festangestellten, geschulten Teams arbeiten, was für gleichbleibende Qualität und direkte
+    Ansprechpartner sorgt. Zudem digitalisieren wir alle Abläufe, was für Sie weniger Organisationsaufwand bedeutet.
+  goal: Unsere USPs (qualifizierte Angestellte, Digitalisierung) klar kommunizieren und einen Mehrwert gegenüber Mitbewerbern aufzeigen.
+- trigger: service_clarification
+  situation: Wenn der Kunde unsicher ist, welche Leistung er benötigt.
+  script: 'Lassen Sie mich kurz die Unterschiede erklären: Die ''Grundreinigung'' ist eine umfassende Komplettreinigung für einen Neustart. Die ''Unterhaltsreinigung'' hält diesen Zustand regelmäßig. Viele
+    Kunden starten mit einer Grundreinigung und buchen dann eine regelmäßige Unterhaltsreinigung. Ich empfehle Ihnen basierend auf Ihrer Situation gerne das Passende.'
+  goal: Beraten statt verkaufen, Fachkompetenz demonstrieren und die ideale Dienstleistung für den Kunden identifizieren.
+competitors:
+- name: MEG Reinigungsservice
+  positioning: Nationaler Franchise-Anbieter mit vielen Standorten.
+  strengths:
+  - Breite Präsenz in Österreich
+  - Standardisierte Prozesse
+  - Bekannter Markenname
+  weaknesses:
+  - Höhere Preise durch Franchise-Gebühren
+  - Möglicherweise weniger flexible, lokale Entscheidungen
+  our_differentiation: Lokaler, agilerer Service mit direkter Entscheidungsfindung und KI-gestützter, persönlicherer Kundenbetreuung.
+- name: ISS Facility Services
+  positioning: Internationaler Konzern für gewerbliche Reinigung.
+  strengths:
+  - Sehr großes Leistungsportfolio
+  - Stark im gewerblichen/industriellen Bereich
+  - Finanzielle Stabilität
+  weaknesses:
+  - Fokussiert auf Großkunden, Privatkunden möglicherweise weniger priorisiert
+  - Längere Entscheidungswege
+  our_differentiation: Spezialisierung und Fokus auf den österreichischen Privat- und KMU-Markt mit schneller, digitaler Abwicklung und starkem Kundenservice.
+- name: Lokale Einzelunternehmer / Kleinbetriebe
+  positioning: Preisgünstige lokale Anbieter, oft Einzelpersonen.
+  strengths:
+  - Sehr günstige Preise
+  - Persönlicher, direkter Kontakt
+  - Hohe Flexibilität
+  weaknesses:
+  - Keine Absicherung bei Ausfall (Krankheit)
+  - Oft keine professionelle Versicherung oder Schulungen
+  - Begrenzte Kapazität
+  our_differentiation: Professionelle Zuverlässigkeit durch angestellte Teams, vollständige Versicherung, Haftung und skalierbare Kapazitäten dank unserer digitalen Planungsplattform.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 500
+  entry_point: 90
+  roi_examples:
+  - scenario: Unternehmer spart 10 Stunden eigene Arbeitszeit/Monat für Büroreinigung durch Outsourcing.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Privathaushalt ersetzt 4-stündige wöchentliche Reinigung durch externe Kraft.
+    monthly_cost: 240
+    monthly_savings: 320
+    payback_months: 1
+  value_anchors:
+  - Ihre Zeit ist kostbar – gewinnen Sie bis zu einem Tag pro Woche zurück.
+  - Professionelle Ergebnisse mit zertifizierten Mitteln und geschultem Personal.
+  - Volle Flexibilität und Transparenz – kein versteckter Kleingedruckter.
+market_context:
+  market_size: Ca. 1,2 Mrd. EUR Jahresumsatz (Schätzung für gewerbliche und private Reinigungsdienstleistungen in Österreich)
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Stark steigende Nachfrage nach ökologischen Reinigungsdienstleistungen.
+  - Digitalisierung der Buchung, Abrechnung und Kommunikation.
+  - Zunehmender Fachkräftemangel treibt Innovation in Personaleinsatzplanung.
+  - Nachfrage nach Desinfektions- und Hygieneservices bleibt nachhaltig erhöht.
+  seasonality:
+    high:
+    - März-April (Frühjahrsputz)
+    - November-Dezember (vor Weihnachten)
+    - August-September (nach der Urlaubszeit)
+    low:
+    - Juli (Haupturlaubszeit)
+    - Januar (nach den Feiertagen)
+typical_objections:
+- objection: Das ist mir zu teuer, das kann ich auch selbst machen.
+  response: Das verstehe ich. Berücksichtigen Sie dabei aber den Wert Ihrer eigenen Zeit. Wenn Sie die Reinigung an uns abgeben, gewinnen Sie wertvolle Stunden für Familie, Hobbies oder Ihr Business. Zudem
+    erhalten Sie ein professionelleres Ergebnis, das länger anhält.
+- objection: Ich hatte schon schlechte Erfahrungen mit Reinigungsfirmen.
+  response: Das tut mir leid zu hören. Genau deshalb setzen wir auf festangestellte, sorgfältig ausgewählte und geschulte Mitarbeiter, nicht auf Subunternehmer. Zudem haben Sie mit mir als Ihrem digitalen
+    Ansprechpartner jederzeit direkten Kontakt und Einblick in den Status.
+- objection: Ich brauche keine regelmäßige Reinigung, nur ab und zu.
+  response: Das ist absolut in Ordnung. Viele unserer Kunden starten mit einer einmaligen Großreinigung. Der Vorteil bei uns ist, dass Sie danach bei Bedarf jederzeit und ohne Vertragsbindung flexibel weitere
+    Termine buchen können – alles über unsere einfache App oder per Anruf.
+meta:
+  id: cleaning
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

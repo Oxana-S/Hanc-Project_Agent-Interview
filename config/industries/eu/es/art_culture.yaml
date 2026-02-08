@@ -1,0 +1,228 @@
+pain_points:
+- description: Dificultad para gestionar y promocionar eventos culturales de manera
+    eficiente, lo que resulta en baja asistencia y pérdida de ingresos.
+  severity: high
+  solution_hint: Automatizar la gestión de reservas y envío de recordatorios mediante
+    un agente de voz.
+- description: Alta carga administrativa en la gestión de subvenciones públicas y
+    reportes de actividad.
+  severity: high
+  solution_hint: Automatizar la recopilación de datos y generación de informes requeridos
+    para las subvenciones.
+- description: Falta de personal para atender consultas de visitantes en múltiples
+    idiomas, especialmente en temporada alta.
+  severity: medium
+  solution_hint: Implementar un agente de voz multilingüe para atender consultas básicas
+    las 24 horas.
+- description: Dificultades en la fidelización de socios y donantes, con alta tasa
+    de abandono.
+  severity: medium
+  solution_hint: Programar llamadas automáticas de agradecimiento y recordatorios
+    de renovación.
+- description: Complejidad en la gestión de inventario y préstamo de obras para exposiciones
+    temporales.
+  severity: medium
+  solution_hint: Automatizar el seguimiento del estado y ubicación de las obras mediante
+    integraciones.
+- description: Problemas para monetizar contenidos digitales y experiencias online
+    de forma efectiva.
+  severity: low
+  solution_hint: Utilizar el agente para promocionar y vender suscripciones a contenidos
+    exclusivos.
+typical_services:
+- Gestión de exposiciones temporales
+- Organización de talleres y actividades educativas
+- Venta de entradas y abonos
+- Gestión de socios y mecenazgo
+- Alquiler de espacios para eventos
+- Visitas guiadas y audiotours
+- Conservación y restauración de obras
+- Producción de eventos culturales
+- Comercialización de merchandising
+- Asesoramiento en proyectos culturales
+recommended_functions:
+- name: Reserva y venta de entradas
+  priority: high
+  reason: Reducir la carga del personal en taquilla y permitir ventas 24/7.
+- name: Recordatorio de eventos y renovaciones
+  priority: high
+  reason: Mejorar la asistencia a eventos y la retención de socios.
+- name: Atención a consultas frecuentes
+  priority: medium
+  reason: Liberar al personal para tareas más complejas y mejorar la experiencia del
+    visitante.
+- name: Gestión de donaciones y micromecenazgo
+  priority: medium
+  reason: Facilitar y aumentar las contribuciones económicas de los simpatizantes.
+- name: Encuestas de satisfacción post-visita
+  priority: low
+  reason: Recopilar feedback valioso para mejorar servicios de forma automática.
+typical_integrations:
+- name: Sistema de Ticketing
+  examples:
+  - Taquilla Online
+  - Ticketea
+  - Entradas.com
+  priority: high
+- name: CRM cultural
+  examples:
+  - Domus
+  - GestiCultural
+  - OpenXpertya
+  priority: high
+- name: Herramientas de comunicación
+  examples:
+  - Mailchimp
+  - Mailrelay
+  - Telegram
+  priority: medium
+- name: Plataforma de gestión de subvenciones
+  examples:
+  - Sistema RED
+  - Plataforma de la AGE
+  priority: medium
+industry_faq:
+- question: ¿Puede el agente de voz gestionar la venta de entradas para diferentes
+    tipos de eventos?
+  answer_template: Sí, nuestro agente puede integrarse con su sistema de ticketing
+    para vender entradas, aplicar descuentos y gestionar disponibilidad en tiempo
+    real.
+- question: ¿Cómo maneja el agente la privacidad de los datos de nuestros visitantes?
+  answer_template: Cumplimos estrictamente con el RGPD (GDPR). Todos los datos se
+    procesan de forma segura y solo con el consentimiento explícito del usuario.
+- question: ¿Funciona el agente fuera del horario de apertura del museo/galería?
+  answer_template: Absolutamente. Nuestro agente está disponible 24 horas al día,
+    7 días a la semana, para atender consultas y gestionar reservas.
+- question: ¿Puede el sistema atender a turistas internacionales en varios idiomas?
+  answer_template: Sí, configuramos el agente con los idiomas que necesite, como inglés,
+    francés o alemán, para mejorar la experiencia del turista extranjero.
+- question: ¿Es complicado integrarlo con nuestro software de gestión actual?
+  answer_template: Nuestro equipo se encarga de la integración con los sistemas más
+    comunes en el sector cultural español. El proceso es rápido y sin interrupciones.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio del servicio.
+  script: Entiendo su interés en conocer la inversión. Nuestro modelo se adapta al
+    tamaño de su institución. Para una galería mediana, el punto de entrada suele
+    ser desde 150€ al mes, lo que ahorra decenas de horas de trabajo administrativo.
+    ¿Le gustaría que le detalle un ejemplo concreto de retorno de inversión?
+  goal: Evitar dar un precio fijo de entrada, enmarcar el coste como inversión y pivotar
+    hacia el valor y ROI.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor o solución tradicional.
+  script: Esa es una opción conocida. Donde nosotros destacamos es en la especialización
+    para el sector cultural en España. No solo automatizamos llamadas, sino que entendemos
+    los flujos de trabajo específicos, como la gestión de subvenciones o el préstamo
+    de obras, y nos integramos con software local como Domus. ¿Le interesaría ver
+    una demo de estas funciones específicas?
+  goal: Diferenciar el servicio destacando el conocimiento sectorial y las integraciones
+    locales, invitando a una demostración.
+- trigger: objection_complexity
+  situation: Cuando el cliente expresa preocupación por la complejidad de implementación.
+  script: Es una preocupación muy común. Le aseguro que nuestro equipo se encarga
+    de toda la implementación y configuración. Normalmente, en 2-3 semanas está operativo,
+    sin que su personal tenga que dedicar tiempo extra a la formación. Le ofrecemos
+    un período de prueba para que lo compruebe con tranquilidad.
+  goal: Tranquilizar al cliente asumiendo la carga de la implementación y ofrecer
+    una prueba sin riesgo.
+competitors:
+- name: Voicify
+  positioning: Proveedor genérico de agentes de voz para múltiples sectores.
+  strengths:
+  - Marca reconocida a nivel global
+  - Funcionalidades básicas sólidas
+  weaknesses:
+  - Falta de especialización en cultura
+  - Soporte en español no nativo
+  - Integraciones limitadas con software local
+  our_differentiation: Especialización profunda en el flujo de trabajo cultural español,
+    integraciones nativas con CRMs como GestiCultural y soporte en español de la región.
+- name: Asterisk PBX + Desarrollo Personalizado
+  positioning: Solución técnica de código abierto con personalización interna.
+  strengths:
+  - Control total y personalización
+  - Coste inicial bajo en software
+  weaknesses:
+  - Requiere personal técnico especializado en plantilla
+  - Mantenimiento complejo y costoso
+  - Falta de actualizaciones continuas de inteligencia artificial
+  our_differentiation: Ofrecemos una solución llave en mano, sin necesidad de conocimientos
+    técnicos, con actualizaciones automáticas y un coste operativo predecible y escalable.
+- name: Agencias de Marketing Tradicional
+  positioning: Agencias que ofrecen atención telefónica humana subcontratada.
+  strengths:
+  - Toque humano y flexibilidad en conversaciones complejas
+  weaknesses:
+  - Coste muy elevado por hora/llamada
+  - Horarios limitados
+  - Escalabilidad pobre en temporada alta
+  our_differentiation: Coste predecible ilimitado, disponibilidad 24/7 y capacidad
+    para manejar volúmenes masivos de llamadas rutinarias, liberando al personal humano
+    para tareas de mayor valor.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 150
+  roi_examples:
+  - scenario: Galería de arte que automatiza la confirmación de reservas para visitas
+      guiadas y recordatorios de eventos.
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Ahorre más de 20 horas mensuales de trabajo administrativo.
+  - Incremente la asistencia a sus eventos en un 15% con recordatorios automáticos.
+  - Reduzca la tasa de abandono de socios en un 10% con seguimiento proactivo.
+market_context:
+  market_size: Estimado en 300 millones de EUR anuales en servicios de gestión y tecnología
+    para el sector.
+  growth_rate: 8% anual, impulsado por la digitalización post-pandemia y nuevos fondos
+    europeos para cultura.
+  key_trends:
+  - Aumento de la demanda de experiencias culturales híbridas (físico + digital).
+  - Creciente importancia de la accesibilidad y la atención multilingüe para el turismo.
+  - Presión para profesionalizar la gestión y demostrar el impacto social de los proyectos
+    culturales.
+  seasonality:
+    high:
+    - Primavera (marzo-mayo)
+    - Otoño (septiembre-noviembre)
+    - Periodos navideños
+    low:
+    - Enero
+    - Agosto (vacaciones estivales)
+typical_objections:
+- objection: Nuestros visitantes, especialmente los mayores, prefieren el trato humano.
+  response: Totalmente de acuerdo, el factor humano es insustituible. Nuestro agente
+    se encarga de las tareas repetitivas (confirmaciones, horarios, precios), lo que
+    permite que su personal dedique más tiempo a una interacción de calidad con esos
+    visitantes que más lo valoran.
+- objection: Ya tenemos una página web con información, no necesitamos un agente de
+    voz.
+  response: Su web es fundamental. El agente actúa como un complemento que capta a
+    personas que prefieren resolver sus dudas por teléfono de forma inmediata, sin
+    navegar. Además, puede dirigir tráfico cualificado a su web para completar acciones
+    concretas.
+- objection: Es un gasto extra que no teníamos presupuestado este año.
+  response: Lo entiendo. Le propongo verlo no como un gasto, sino como una herramienta
+    para optimizar el presupuesto existente. Al ahorrar horas de trabajo, ese 'gasto'
+    se convierte en una liberación de recursos que puede destinar a otras áreas. Podemos
+    empezar con un piloto de bajo coste en un servicio específico para que vea el
+    retorno.
+meta:
+  id: art_culture
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

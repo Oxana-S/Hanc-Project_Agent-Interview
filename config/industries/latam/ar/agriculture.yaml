@@ -1,0 +1,228 @@
+pain_points:
+- description: Fluctuaciones climáticas impredecibles que afectan los rendimientos
+    de los cultivos.
+  severity: high
+  solution_hint: El agente de voz puede enviar alertas meteorológicas personalizadas
+    y recomendaciones de acción.
+- description: Altos costos de insumos como semillas, fertilizantes y pesticidas.
+  severity: high
+  solution_hint: El agente puede comparar precios de proveedores locales y sugerir
+    alternativas económicas.
+- description: Dificultad en el acceso a créditos y financiamiento para inversiones
+    tecnológicas.
+  severity: medium
+  solution_hint: El agente puede proporcionar información sobre programas de subsidios
+    y asesorar en solicitudes.
+- description: Falta de mano de obra calificada para operar tecnologías agrícolas
+    avanzadas.
+  severity: medium
+  solution_hint: El agente puede ofrecer capacitación en línea y soporte técnico paso
+    a paso.
+- description: Complejidad en la gestión de logística y cadena de suministro para
+    exportaciones.
+  severity: high
+  solution_hint: El agente puede coordinar envíos, seguir pedidos y gestionar documentación
+    aduanera.
+- description: Riesgos de plagas y enfermedades que reducen la calidad de la producción.
+  severity: medium
+  solution_hint: El agente puede monitorear signos tempranos y recomendar tratamientos
+    preventivos.
+typical_services:
+- Asesoramiento técnico agrícola personalizado
+- Monitoreo de cultivos con drones e imágenes satelitales
+- Gestión de riego automatizado y eficiente
+- Análisis de suelo y recomendaciones de fertilización
+- Control integrado de plagas y enfermedades
+- Planificación de siembra y cosecha basada en datos
+- Gestión de maquinaria agrícola y mantenimiento predictivo
+- Trazabilidad de productos desde el campo al mercado
+- Optimización de logística y almacenamiento
+- Capacitación en tecnologías de agricultura de precisión
+recommended_functions:
+- name: Programar recordatorios para tareas agrícolas
+  priority: high
+  reason: Ayuda a mantener cronogramas críticos como siembra, riego y aplicación de
+    insumos.
+- name: Consultar precios de mercado en tiempo real
+  priority: high
+  reason: Permite tomar decisiones de venta basadas en tendencias actuales de commodities
+    como soja y maíz.
+- name: Gestionar pedidos y coordinación con proveedores
+  priority: medium
+  reason: Automatiza procesos administrativos, reduciendo errores y ahorrando tiempo.
+- name: Monitorear condiciones climáticas locales
+  priority: high
+  reason: Proporciona alertas tempranas para proteger cultivos de eventos extremos.
+- name: Generar reportes de rendimiento y costos
+  priority: medium
+  reason: Facilita el análisis financiero y la planificación para futuras temporadas.
+- name: Ofrecer soporte técnico multilingüe
+  priority: low
+  reason: Mejora la accesibilidad para productores en regiones con diversidad lingüística.
+typical_integrations:
+- name: Sistemas de gestión agrícola (SGA)
+  examples:
+  - AgroStar
+  - S4Agro
+  - FarmLogs adaptado para Argentina
+  priority: high
+- name: Plataformas de comercio electrónico agrícola
+  examples:
+  - AgroMercado
+  - CampoClick
+  priority: medium
+- name: Software de trazabilidad y certificación
+  examples:
+  - TraceAgro
+  - CertiCampo
+  priority: medium
+- name: Sistemas de riego inteligente
+  examples:
+  - Netafim local
+  - IrriPro AR
+  priority: high
+- name: Aplicaciones meteorológicas regionales
+  examples:
+  - SMN Argentina
+  - WeatherAgro
+  priority: high
+industry_faq:
+- question: ¿Cómo puede la automatización mejorar la eficiencia en mi campo?
+  answer_template: La automatización optimiza tareas como riego y monitoreo, reduciendo
+    hasta un 30% en costos operativos y aumentando rendimientos.
+- question: ¿Es costoso implementar soluciones de agricultura de precisión?
+  answer_template: Ofrecemos planes escalables desde ARS 30,000, con ROI en pocos
+    meses gracias al ahorro en insumos y mayor productividad.
+- question: ¿Qué pasa si no tengo experiencia con tecnología avanzada?
+  answer_template: Nuestro agente de voz proporciona guías paso a paso y soporte continuo,
+    diseñado para usuarios sin conocimientos técnicos.
+- question: ¿Pueden ayudarme con la exportación de mis productos?
+  answer_template: Sí, integramos gestión de logística y documentación aduanera, simplificando
+    procesos para mercados internacionales.
+- question: ¿Cómo manejan la protección de datos de mi campo?
+  answer_template: Utilizamos encriptación y cumplimos con normativas locales, asegurando
+    la confidencialidad de su información.
+- question: ¿Ofrecen servicios personalizados para diferentes cultivos como soja o
+    trigo?
+  answer_template: Absolutamente, adaptamos recomendaciones basadas en datos específicos
+    de cada cultivo y región de Argentina.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta sobre el costo inicial de los servicios.
+  script: Hola, entiendo tu interés en optimizar tu producción. Nuestro plan de entrada
+    comienza en ARS 30,000 mensuales, incluyendo monitoreo básico y asesoría. ¿Te
+    gustaría que te detalle los beneficios específicos para tu tipo de cultivo?
+  goal: Convertir la consulta en una demostración, destacando el valor y ROI rápido.
+- trigger: service_inquiry
+  situation: Cuando el cliente busca soluciones para problemas específicos como plagas
+    o riego.
+  script: Hola, veo que enfrentas desafíos con [problema mencionado]. Nuestro agente
+    puede ofrecerte soluciones personalizadas, como alertas tempranas y gestión automatizada.
+    ¿Podría contarme más sobre tu situación actual?
+  goal: Identificar necesidades profundas y proponer una solución adaptada.
+- trigger: competitor_mention
+  situation: Cuando el cliente compara con otras empresas del mercado.
+  script: Es bueno que estés evaluando opciones. A diferencia de [competidor], nosotros
+    ofrecemos soporte 24/7 en español y integraciones con sistemas locales como AgroStar,
+    asegurando una implementación sin problemas. ¿Qué es lo más importante para ti
+    en un proveedor?
+  goal: Diferenciar nuestro servicio y enfocarse en los valores clave del cliente.
+- trigger: roi_concern
+  situation: Cuando el cliente duda sobre el retorno de la inversión.
+  script: Comprendo tu preocupación por los costos. Con nuestro servicio, productores
+    similares ahorran hasta ARS 15,000 mensuales en insumos y aumentan rendimientos
+    en un 15%. Te puedo mostrar un caso de ejemplo específico para tu cultivo.
+  goal: Proporcionar pruebas concretas de ROI y generar confianza.
+competitors:
+- name: AgroTech Argentina
+  positioning: Líder en soluciones de monitoreo para grandes productores de soja y
+    maíz.
+  strengths:
+  - Tecnología avanzada de drones
+  - Amplia red en la región pampeana
+  weaknesses:
+  - Precios elevados para pequeños productores
+  - Soporte limitado en zonas remotas
+  our_differentiation: Ofrecemos planes accesibles desde ARS 30,000 y soporte personalizado
+    en todo el país, incluyendo asistencia bilingüe.
+- name: PrecisionAgro Latam
+  positioning: Especialista en integraciones con sistemas de riego inteligente.
+  strengths:
+  - Alianzas con fabricantes de equipos
+  - Enfoque en sostenibilidad hídrica
+  weaknesses:
+  - Cobertura geográfica reducida
+  - Poca flexibilidad en contratos
+  our_differentiation: Proveemos soluciones modulares que se adaptan a cualquier tamaño
+    de campo y integramos múltiples proveedores locales.
+- name: CampoDigital
+  positioning: Plataforma de comercio electrónico y gestión logística para agricultores.
+  strengths:
+  - Facilita ventas directas
+  - Herramientas de mercado integradas
+  weaknesses:
+  - Falta de funciones de monitoreo agronómico
+  - Dependencia de conectividad internet
+  our_differentiation: Combinamos gestión comercial con asesoría agronómica en tiempo
+    real, usando agentes de voz para operar sin conexión constante.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Implementación de monitoreo de cultivos para 100 hectáreas de soja
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  - scenario: Automatización de riego para un campo de trigo
+    monthly_cost: 20000
+    monthly_savings: 25000
+    payback_months: 3
+  value_anchors:
+  - Ahorra hasta un 20% en costos de insumos como fertilizantes
+  - Incrementa rendimientos en un 15% mediante decisiones basadas en datos
+  - Reduce tiempo administrativo en un 30% con automatización
+market_context:
+  market_size: Estimado en 15 mil millones de ARS anuales para agrotech
+  growth_rate: 10% anual
+  key_trends:
+  - Aumento en la adopción de drones y sensores IoT para agricultura de precisión
+  - Creciente demanda de trazabilidad para exportaciones a la UE y Asia
+  - Expansión de financiamiento público-privado para modernización agrícola
+  seasonality:
+    high:
+    - Enero a Marzo
+    - Septiembre a Noviembre
+    low:
+    - Junio a Agosto
+typical_objections:
+- objection: No tengo el presupuesto para tecnología tan avanzada.
+  response: Entiendo, por eso ofrecemos planes escalables desde ARS 30,000. Podemos
+    comenzar con funciones básicas y expandir según tus resultados, asegurando un
+    ROI rápido.
+- objection: Ya uso sistemas tradicionales que funcionan bien.
+  response: Es excelente que tengas procesos establecidos. Nuestra solución se integra
+    con tus sistemas actuales para potenciarlos, agregando automatización y análisis
+    sin interrumpir tu flujo de trabajo.
+- objection: Me preocupa la complejidad de aprender a usar nuevas herramientas.
+  response: Nuestro agente de voz está diseñado para ser intuitivo, con comandos en
+    español y soporte continuo. Además, ofrecemos capacitación gratuita para tu equipo.
+- objection: Los cambios climáticos hacen impredecible cualquier planificación.
+  response: Precisamente por eso, nuestro agente usa datos en tiempo real para adaptar
+    recomendaciones, ayudándote a mitigar riesgos y tomar decisiones proactivas.
+meta:
+  id: agriculture
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

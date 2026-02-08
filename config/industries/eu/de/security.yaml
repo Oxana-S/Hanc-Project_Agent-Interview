@@ -1,0 +1,201 @@
+pain_points:
+- description: Personalmangel und hohe Fluktuation bei Sicherheitsmitarbeitern führen zu kontinuierlichen Rekrutierungsproblemen.
+  severity: high
+  solution_hint: Automatisierte Erstgespräche und Vorauswahl von Bewerbern durchführen, um den Recruiting-Prozess zu beschleunigen.
+- description: Komplexe und zeitaufwändige Dokumentation zur Einhaltung der GDPR-Datenschutzvorschriften.
+  severity: high
+  solution_hint: Sprachgesteuerte Protokollierung von Vorfällen und Datenverarbeitungstätigkeiten für einfachere Compliance-Nachweise.
+- description: Ineffiziente Disposition und Einsatzplanung von Sicherheitspersonal auf mehreren Objekten.
+  severity: medium
+  solution_hint: Anrufe für Schichttausche und kurzfristige Planungsänderungen automatisiert bearbeiten und in Planungssysteme eintragen.
+- description: Schwierigkeiten, Notfall- und Servicerufnummern außerhalb der Geschäftszeiten besetzt zu halten.
+  severity: medium
+  solution_hint: 24/7-Anrufentgegennahme, Priorisierung und Weiterleitung an zuständige Mitarbeiter basierend auf vordefinierten Regeln.
+- description: Kundenanfragen zu Preisen, Leistungspaketen und Vertragsdetails erreichen oft die falsche Abteilung.
+  severity: medium
+  solution_hint: Erste Kundenberatung durchführen, grundlegende Informationen sammeln und qualifizierte Leads an Vertrieb weiterleiten.
+- description: Verpasste Chancen durch veraltete manuelle Prozesse bei der Angebotserstellung für neue Objekte.
+  severity: low
+  solution_hint: Per Spracheingabe strukturierte Daten für eine erste Angebotskalkulation erfassen und an die Angebotssoftware übermitteln.
+typical_services:
+- Objektschutz und Revierdienst
+- Personenschutz
+- Veranstaltungssicherheit und Einlasskontrolle
+- Sicherheitsberatung und Gefahrenanalyse
+- Notfall- und Alarmierungsdienste
+- Zugangskontrollsysteme
+- Videoüberwachung (unter Beachtung der DSGVO)
+- Brandschutz und Evakuierungshelfer
+- Werttransporte und Gelddienstleistungen
+- Sicherheitsüberwachung per Fernzugriff (Remote Services)
+recommended_functions:
+- name: GDPR-Compliance-Assistent
+  priority: high
+  reason: Unverzichtbar für die korrekte Dokumentation von Vorfällen und Datenverarbeitung im streng regulierten deutschen Markt.
+- name: Bewerber-Vorauswahl und Terminvereinbarung
+  priority: high
+  reason: Adressiert direkt den kritischen Personalmangel durch Effizienzsteigerung im Recruiting.
+- name: 24/7 Notfall- und Service-Hotline
+  priority: high
+  reason: Bietet einen klaren Mehrwert für Kunden und entlastet eigenes Personal außerhalb der Kernzeiten.
+- name: Erstberatung und Lead-Qualifizierung
+  priority: medium
+  reason: Fängt Interessenten effektiv ab und sorgt für höherwertige Leads im Vertrieb.
+- name: Dispositionsunterstützung für Schichtplanänderungen
+  priority: medium
+  reason: Optimiert den betriebskritischen Einsatzplan und reduziert Verwaltungsaufwand.
+- name: Angebotsdaten-Vorerfassung
+  priority: low
+  reason: Beschleunigt den Vertriebsprozess für neue Kundenakquise.
+typical_integrations:
+- name: Personaleinsatzplanungssoftware (PES)
+  examples:
+  - TimeTac
+  - ZEP
+  - Projektron BCS
+  priority: high
+- name: Zeiterfassungssysteme
+  examples:
+  - clocko
+  - ATOSS
+  - GDPR-konforme Lösungen
+  priority: high
+- name: Rechnungsstellung und Buchhaltung
+  examples:
+  - DATEV
+  - Lexware
+  - SevDesk
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Microsoft Dynamics 365
+  - eigene Branchenlösungen
+  priority: medium
+- name: Alarmierungs- und Leitstellen-Software
+  examples:
+  - SIVAS
+  - GUARDIAN
+  - herstellerspezifische Lösungen
+  priority: medium
+industry_faq:
+- question: Sind Ihre Dienstleistungen vollständig GDPR-konform?
+  answer_template: Ja, absolut. Alle unsere Prozesse, insbesondere im Bereich Videoüberwachung und Datenverarbeitung, sind streng nach der DSGVO (GDPR) ausgerichtet. Wir dokumentieren dies transparent für
+    unsere Kunden.
+- question: Wie schnell können Sie Personal für ein neues Objekt bereitstellen?
+  answer_template: Unser standardisiertes Onboarding und ein Pool an qualifizierten Mitarbeitern ermöglichen uns in der Regel eine Besetzung innerhalb von [X] Werktagen. Für Notfälle bieten wir Expresslösungen
+    an.
+- question: Was kostet ein Objektschutz pro Stunde?
+  answer_template: Die Stundensätze variieren je nach Qualifikation, Objektrisiko und Einsatzzeiten. Für eine erste Orientierung liegen sie typischerweise zwischen XX und YY Euro pro Stunde. Ich erstelle
+    Ihnen gerne ein individuelles, unverbindliches Angebot.
+- question: Bieten Sie auch digitale Sicherheitslösungen an?
+  answer_template: Ja, wir ergänzen unseren physischen Schutz um digitale Services wie Fernüberwachung, Zugangskontrolle per App und cybersecurity-Beratung für ein ganzheitliches Sicherheitskonzept.
+- question: Wie handhaben Sie Vertretungen bei Krankheit?
+  answer_template: Durch unsere Pool-Lösung und digitale Disposition garantieren wir eine zuverlässige Vertretung. Unser System sucht automatisch nach verfügbaren Kräften und informiert Sie umgehend.
+sales_scripts:
+- trigger: price_question
+  situation: Ein potenzieller Kunde fragt nach den Kosten für Objektschutz.
+  script: 'Die Kosten hängen stark von Ihrem individuellen Bedarf ab: Anzahl der Mitarbeiter, Einsatzzeiten, Gefahrenstufe des Objekts. Um Ihnen eine seriöse Zahl nennen zu können, darf ich kurz etwas zum
+    Objekt erfragen? Ist es ein Einzelhandelsgeschäft, ein Lager oder ein Firmengelände?'
+  goal: Vom Pauschalpreis wegkommen und qualifizierende Informationen sammeln, um ein maßgeschneidertes Angebot vorbereiten zu können.
+- trigger: gdpr_concern
+  situation: Ein Kunde äußert Bedenken bezüglich Datenschutz bei Videoüberwachung.
+  script: 'Das ist ein sehr wichtiger Punkt. Die DSGVO setzt hier klare Grenzen. Wir beraten Sie nicht nur technisch, sondern auch rechtssicher: Welche Bereiche dürfen überwacht werden? Wie lange werden
+    Daten gespeichert? Wir erstellen für Sie das notwendige Verfahrensverzeichnis und sorgen für die korrekte Ausschilderung. So sind Sie auf der sicheren Seite.'
+  goal: Aus einem potenziellen Hindernis (Compliance) einen Mehrwert und Vertrauensbeweis machen.
+- trigger: competitor_mention
+  situation: Der Kunde erwähnt einen Mitbewerber wie Securitas oder die Sicherheits-Union.
+  script: 'Viele gute Anbieter am Markt. Wir setzen unseren Fokus auf [Ihre Stärke, z.B.: maßgeschneiderte Lösungen für mittelständische Unternehmen / extrem schnelle Reaktionszeiten durch lokale Disposition
+    / tiefe Integration digitaler Tools]. Bei uns sind Sie kein Fall von der Stange, sondern bekommen einen persönlichen Ansprechpartner und eine Lösung, die genau zu Ihren Prozessen passt. Darf ich Ihnen
+    ein Beispiel nennen?'
+  goal: Nicht den Konkurrenten schlechtreden, sondern eigene Stärken differenziert und kundennutzenorientiert hervorheben.
+competitors:
+- name: Securitas Deutschland
+  positioning: Globaler Marktführer, Full-Service-Anbieter
+  strengths:
+  - Sehr große Ressourcen und finanzielle Stabilität
+  - Breites Leistungsportfolio
+  - Bekannter Markenname
+  weaknesses:
+  - Teils unflexible, standardisierte Verträge
+  - Längere Entscheidungswege
+  - Höhere Preise für KMUs
+  our_differentiation: Agilere, individuellere Betreuung mit schnelleren Entscheidungen und maßgeschneiderten Lösungen speziell für den deutschen Mittelstand.
+- name: Sicherheits-Union (SU)
+  positioning: Großer deutscher Anbieter mit Fokus auf Objekt- und Personenschutz
+  strengths:
+  - Starke regionale Präsenz in Deutschland
+  - Hohe Bekanntheit
+  - Eigenes Ausbildungszentrum
+  weaknesses:
+  - Weniger stark im Bereich innovativer, digitaler Sicherheitslösungen
+  - Traditionelle Unternehmenskultur
+  our_differentiation: Kombination aus zuverlässigem Personaleinsatz und starkem Fokus auf die Integration moderner, datenschutzkonformer Technologielösungen.
+- name: Kontor 53 / Mittelständische Regionalanbieter
+  positioning: Lokale oder regionale Sicherheitsdienstleister
+  strengths:
+  - Sehr gute Ortskenntnis
+  - Persönlicher, direkter Kundenkontakt
+  - Oft preisaggressiv
+  weaknesses:
+  - Begrenzte Ressourcen für große Projekte
+  - Oft limitiertes Leistungsspektrum
+  - Schwächere IT-Infrastruktur
+  our_differentiation: Wir bieten die persönliche Betreuung eines Regionalanbieters, aber mit der Professionalität, Technologieaffinität und Skalierbarkeit eines überregionalen Players.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1500
+  - 25000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung der Bewerber-Vorauswahl und Terminvereinbarung
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 1
+  - scenario: 24/7-Anrufbeantwortung für Alarmmeldungen und Serviceanfragen
+    monthly_cost: 349
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Reduzieren Sie Ihren administrativen Aufwand um bis zu 15 Stunden pro Woche.
+  - Steigern Sie die Qualität Ihrer Bewerber bei gleichzeitiger Senkung der Recruiting-Kosten.
+  - Erreichen Sie eine 100%ige Erreichbarkeit für Ihre Kunden, ohne Nacht- und Wochenendzuschläge zahlen zu müssen.
+market_context:
+  market_size: Ca. 6,5 Mrd. Euro Jahresumsatz (BDSW-Schätzung)
+  growth_rate: Ca. 3-4% p.a.
+  key_trends:
+  - 'Digitale Transformation: Integration von IoT, KI-gestützter Videoanalyse und mobilen Apps.'
+  - Cybersecurity wird zunehmend Teil des physischen Sicherheitsdienstleister-Portfolios.
+  - Fachkräftemangel bleibt das drängendste Problem der Branche.
+  - Starke Nachfrage nach ganzheitlichen Sicherheitskonzepten ('Security as a Service').
+  seasonality:
+    high:
+    - Q4 (Weihnachtsmärkte, Einzelhandel)
+    - Sommer (Festivals, Open-Air-Veranstaltungen)
+    low:
+    - Spätes Q1 / frühes Q2
+typical_objections:
+- objection: Das ist mir zu teuer.
+  response: Ich verstehe das. Lassen Sie uns gemeinsam betrachten, welche Kosten Sie aktuell für Recruiting, Disposition und Nachtdienste haben. Oft zeigt sich, dass unsere Lösung nicht eine zusätzliche
+    Ausgabe, sondern eine Kostensenkung darstellt. Darf ich Ihnen eine einfache Kosten-Nutzen-Rechnung aufstellen?
+- objection: Wir haben das schon immer so gemacht und es funktioniert.
+  response: Das spricht für Stabilität. Gleichzeitig sehen viele unserer Kunden, dass der Fachkräftemangel und der Dokumentationsaufwand die 'alte Methode' immer teurer und riskanter machen. Eine kleine,
+    gezielte Automatisierung an der richtigen Stelle kann die bewährten Prozesse entlasten, ohne sie umzukrempeln. Probieren wir es doch mit einem unverbindlichen Pilotprojekt in einem Bereich aus?
+- objection: Ich traue einer KI oder Automatisierung bei sensiblen Sicherheitsthemen nicht.
+  response: Volle Transparenz ist hier das A und O. Die KI ersetzt keine Sicherheitsmitarbeiter. Sie unterstützt Ihr Personal bei zeitfressenden Verwaltungsaufgaben wie Terminvereinbarung oder Erstinformation.
+    Die kritischen Entscheidungen trifft weiterhin Ihr erfahrener Mitarbeiter. Wir können jederzeit den Prozess genau erklären und zeigen, wo die menschliche Kontrolle bleibt.
+meta:
+  id: security
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- security
+- guard service
+- surveillance
+- alarm systems
+_extends: _base/security

@@ -1,0 +1,253 @@
+pain_points:
+- description: Hoher Zeitaufwand für repetitive Aufgaben wie Rechnungsbearbeitung,
+    Kundenanfragen und Datenerfassung.
+  severity: high
+  solution_hint: Automatisierung dieser Prozesse durch KI-gestützte Sprachagenten,
+    die 24/7 Anfragen bearbeiten und Daten erfassen können.
+- description: Steigende Anforderungen an Datenschutz (DSGVO) und Compliance, die
+    manuelle Überwachung und Schulungen erfordern.
+  severity: high
+  solution_hint: Integration von Compliance-Checks in automatisierte Workflows und
+    regelmäßige, automatisierte Datenschutz-Audits durch den Sprachagenten.
+- description: Kunden erwarten rund um die Uhr Verfügbarkeit und schnelle Antworten
+    auf Finanzfragen.
+  severity: medium
+  solution_hint: Bereitstellung eines 24/7-Kundenservice für Standardanfragen wie
+    Kontostände, Transaktionshistorie oder Produktinformationen.
+- description: Ineffiziente Lead-Generierung und Kaltakquise, die viel Personal bindet.
+  severity: medium
+  solution_hint: Automatisierte Lead-Qualifikation und Terminvereinbarung durch den
+    Sprachagenten, um Vertriebsmitarbeiter zu entlasten.
+- description: Fragmentierte Softwarelandschaft mit mangelnder Integration zwischen
+    verschiedenen Systemen.
+  severity: medium
+  solution_hint: Sprachagent als zentrale Schnittstelle, die verschiedene Systeme
+    ansteuern und Daten konsolidieren kann.
+- description: Hohe Fehleranfälligkeit bei manueller Dateneingabe in Finanzberichte.
+  severity: medium
+  solution_hint: Automatisierte Datenerfassung und -validierung durch Sprachbefehle,
+    um Fehler zu minimieren.
+typical_services:
+- Finanzberatung
+- Steuerberatung und -erklärung
+- Buchhaltung und Bilanzierung
+- Vermögensverwaltung
+- Kreditvermittlung und -beratung
+- Versicherungsvermittlung
+- Unternehmensfinanzierung
+- Immobilienfinanzierung
+- Anlageberatung
+- Pensionsvorsorgeberatung
+recommended_functions:
+- name: Automatisierter Kundenservice
+  priority: high
+  reason: Entlastet die Mitarbeiter von Standardanfragen und verbessert die Kundenbetreuung
+    außerhalb der Bürozeiten.
+- name: Lead-Qualifikation und Terminvereinbarung
+  priority: high
+  reason: Steigert die Effizienz im Vertrieb und konzentriert die menschlichen Ressourcen
+    auf qualifizierte Leads.
+- name: Compliance- und Datenschutz-Assistent
+  priority: high
+  reason: Hilft, die strengen österreichischen und EU-weiten Vorschriften (DSGVO)
+    einzuhalten und Risiken zu minimieren.
+- name: Automatisierte Datenerfassung und Berichterstattung
+  priority: medium
+  reason: Reduziert manuelle Fehler und spart Zeit bei der Erstellung von Finanzberichten.
+- name: 24/7 Produktinformationsservice
+  priority: medium
+  reason: Bietet potenziellen Kunden jederzeit Zugang zu Informationen über Finanzprodukte
+    und Dienstleistungen.
+- name: Reklamationsmanagement
+  priority: low
+  reason: Kann erste Schritte bei Kundenbeschwerden aufnehmen und priorisieren, bevor
+    ein menschlicher Mitarbeiter einschreitet.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - BMD
+  - DATEV
+  - SAP
+  - Lexware
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Banking-APIs
+  examples:
+  - PSD2-konforme Bank-APIs
+  - FinTS
+  priority: medium
+- name: Terminplanungstools
+  examples:
+  - Microsoft Outlook
+  - Google Calendar
+  - Calendly
+  priority: medium
+- name: Dokumentenmanagementsysteme
+  examples:
+  - Dokumentenablage von DATEV
+  - SharePoint
+  priority: low
+industry_faq:
+- question: Ist der Einsatz eines KI-Sprachagenten mit der DSGVO vereinbar?
+  answer_template: Ja, absolut. Unser System ist speziell für den EU-Markt entwickelt
+    und erfüllt alle Anforderungen der DSGVO. Die Datenverarbeitung erfolgt transparent,
+    und Sie behalten die volle Kontrolle über die Kundendaten.
+- question: Kann der Sprachagent komplexe Finanzfragen beantworten?
+  answer_template: Der Agent ist ideal für standardisierte Anfragen wie Produktinformationen,
+    Kontostände oder Terminvereinbarungen. Bei komplexen, beratungsintensiven Themen
+    leitet er den Kunden direkt an einen qualifizierten menschlichen Berater weiter.
+- question: Wie schnell kann der Sprachagent implementiert werden?
+  answer_template: Die Grundintegration in Ihre bestehenden Systeme dauert in der
+    Regel 2-4 Wochen. Die Einrichtungszeit hängt von der Komplexität Ihrer gewünschten
+    Anwendungsfälle ab.
+- question: Was passiert, wenn der Kunde eine Frage stellt, die der Agent nicht versteht?
+  answer_template: Unser Agent ist darauf trainiert, Unsicherheiten transparent zu
+    kommunizieren. In solchen Fällen bittet er um Präzisierung oder leitet das Gespräch
+    nahtlos an einen menschlichen Kollegen weiter.
+- question: Wie hoch sind die monatlichen Kosten?
+  answer_template: Unsere Preise beginnen bei einem transparenten Paket ab 299€ pro
+    Monat. Die genauen Kosten hängen vom gewählten Funktionsumfang und dem Anrufvolumen
+    ab. Ich kann Ihnen gerne ein individuelles Angebot erstellen.
+- question: Funktioniert der Agent auch mit unserem bestehenden Buchhaltungssystem?
+  answer_template: Sehr wahrscheinlich ja. Wir bieten Standardintegrationen für gängige
+    Systeme wie BMD oder DATEV. Gerne prüfen wir im Vorfeld die Kompatibilität mit
+    Ihrer spezifischen Software.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn der Kunde nach den Kosten fragt.
+  script: Die Investition richtet sich nach Ihrem individuellen Bedarf. Unser Basispaket,
+    das viele repetitive Aufgaben automatisiert, beginnt bei 299€ pro Monat. Damit
+    können Sie durchschnittlich 15-20 Stunden Personalkosten pro Monat einsparen.
+    Darf ich Ihnen die Details zu den Paketen per E-Mail zusenden?
+  goal: Den Preis als Investition in Effizienz darstellen und einen konkreten nächsten
+    Schritt (Angebot versenden) vereinbaren.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber nennt.
+  script: Das ist eine gute Wahl. Unser Fokus liegt speziell auf der Finanzbranche
+    in Österreich. Wir bieten tiefgehende Integrationen in Systeme wie BMD und DATEV
+    und legen besonderen Wert auf DSGVO-konforme, sichere Datenverarbeitung direkt
+    in der EU. Möchten Sie wissen, wie wir bei [Kundenproblem] eine spezifischere
+    Lösung bieten?
+  goal: Die eigene Spezialisierung und lokale Stärken hervorheben und das Gespräch
+    zurück zum Kundenbedarf lenken.
+- trigger: hesitation_feature
+  situation: Wenn der Kunde Bedenken wegen der Funktionsfähigkeit äußert.
+  script: 'Das ist ein verständlicher Punkt. Viele unserer Kunden hatten anfangs ähnliche
+    Bedenken. Lassen Sie mich Ihnen ein konkretes Beispiel zeigen: Wir haben für eine
+    Steuerberatungskanzlei in Wien den Eingang von Belegen per Telefon automatisiert.
+    Der Agent fragt die notwendigen Daten ab und trägt sie direkt in DATEV ein. Möchten
+    Sie eine kurze Demo dieser Funktion sehen?'
+  goal: Bedenken mit einem konkreten, nachvollziehbaren Use-Case und einem Demo-Angebot
+    entkräften.
+- trigger: objection_time
+  situation: Wenn der Kunde behauptet, keine Zeit für die Einrichtung zu haben.
+  script: Genau für Zeitmangel ist unsere Lösung da. Die Einrichtung übernehmen wir
+    größtenteils für Sie. Sie müssen nur für ein kurzes Onboarding (ca. 2 Stunden)
+    Zeit investieren. Danach arbeitet der Agent sofort für Sie und spart Ihnen langfristig
+    viel Zeit. Könnten wir nächste Woche 30 Minuten für ein unverbindliches Onboarding-Gespräch
+    finden?
+  goal: Den minimalen Aufwand betonen und einen konkreten Termin für den nächsten
+    Schritt vereinbaren.
+competitors:
+- name: Uberall
+  positioning: Allgemeiner KI-Anbieter für verschiedene Branchen.
+  strengths:
+  - Breite Funktionspalette
+  - Internationale Präsenz
+  - Großer Marktname
+  weaknesses:
+  - Geringe Branchenspezifität für Finanzen
+  - Wenig Erfahrung mit österreichischen Compliance-Anforderungen
+  - Support oft nicht deutschsprachig
+  our_differentiation: Wir sind auf die österreichische Finanzbranche spezialisiert,
+    bieten Integrationen in lokale Systeme und garantieren deutschsprachigen Support
+    mit DSGVO-Expertise.
+- name: Sytelio
+  positioning: Anbieter für Telefonie- und Callcenter-Automatisierung.
+  strengths:
+  - Starke Telefonie-Infrastruktur
+  - Erfahrung mit großen Callcentern
+  weaknesses:
+  - Begrenzte KI- und Sprachverständnisfähigkeiten
+  - Wenig fokussiert auf Backoffice-Automatisierung im Finanzbereich
+  our_differentiation: Unser Agent versteht komplexe Finanzkontexte, kann Backoffice-Prozesse
+    steuern (z.B. DATEV) und ist kein reiner Callcenter-Ersatz, sondern ein vollwertiger
+    digitaler Assistent.
+- name: in-house Entwicklung
+  positioning: Eigenentwicklung einer Lösung durch die IT-Abteilung.
+  strengths:
+  - Maximale Anpassung an individuelle Prozesse
+  - Volle interne Kontrolle
+  weaknesses:
+  - Sehr hohe initiale Entwicklungs- und laufende Wartungskosten
+  - Lange Time-to-Market
+  - Fachkräftemangel für KI-Entwicklung in Österreich
+  our_differentiation: Wir bieten eine sofort einsatzbereite, kosteneffiziente und
+    ständig aktualisierte Plattform, ohne dass Sie teure KI-Experten einstellen oder
+    komplexe Systeme warten müssen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 299
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: Automatisierung von Standard-Kundenserviceanfragen und Lead-Qualifikation
+      für eine kleine Bankfiliale.
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 80% der Zeit für repetitive Telefonanfragen ein.
+  - Starten Sie ab 299€ im Monat – weniger als die Kosten für eine Teilzeitkraft.
+  - Die durchschnittliche Amortisationszeit unserer Kunden beträgt unter 3 Monaten.
+market_context:
+  market_size: ca. 500 Millionen EUR jährlich für digitale Dienstleistungen und Automatisierung
+    in der Finanzbranche
+  growth_rate: 8-10% YoY
+  key_trends:
+  - Starke Nachfrage nach DSGVO-konformen Cloud-Lösungen
+  - Digitalisierung von Kundenservice-Kanälen (Omni-Channel)
+  - Automatisierung von Compliance- und Reporting-Prozessen
+  - Zunehmende Akzeptanz von KI im Backoffice-Bereich
+  seasonality:
+    high:
+    - Januar (Steuerbeginn)
+    - Q4 (Jahresabschlüsse, Budgetplanung)
+    low:
+    - Juli/August (Haupturlaubszeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Unsere Kunden erwarten ein persönliches Gespräch, keine Maschine.
+  response: Das verstehe ich vollkommen. Unser Agent entlastet Ihre Mitarbeiter genau
+    von den Standardanfragen, die keine persönliche Beratung erfordern. So gewinnen
+    Ihre Berater mehr Zeit für die wirklich wichtigen, komplexen und beratungsintensiven
+    Kundengespräche.
+- objection: Unsere Prozesse sind zu individuell, das kann kein Standardprodukt abbilden.
+  response: Unsere Plattform ist hochgradig anpassbar. Wir arbeiten mit Ihnen zusammen,
+    um spezifische Workflows, Begriffe und Integrationen für Ihr Unternehmen zu konfigurieren.
+    Lassen Sie uns Ihre drei wichtigsten Prozesse besprechen.
+- objection: Wir haben schon zu viele Software-Lösungen, das wird zu komplex.
+  response: Ein gutes Argument. Unser Sprachagent kann als zentrale Schnittstelle
+    fungieren und vereinfacht oft die Bedienung mehrerer Systeme über eine natürliche
+    Sprachschnittstelle. Er reduziert Komplexität, anstatt sie zu erhöhen.
+meta:
+  id: finance
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

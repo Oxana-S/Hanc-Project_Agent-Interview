@@ -1,0 +1,252 @@
+pain_points:
+- description: Terminplanung und Kundenkommunikation sind zeitaufwändig und führen
+    oft zu Doppelbuchungen oder verspäteten Antworten.
+  severity: high
+  solution_hint: Automatisierte Terminbuchung und Erinnerungen per Sprachagent.
+- description: Nachbearbeitung von Fotos und Videos frisst einen großen Teil der Arbeitszeit,
+    die für kreative Arbeit genutzt werden könnte.
+  severity: high
+  solution_hint: Automatisierte Workflow-Steuerung und Dateiverwaltung durch Sprachbefehle.
+- description: Unsicherheit bei der rechtssicheren Abwicklung von Kundenaufträgen,
+    insbesondere bezüglich Datenschutz (DSGVO) und Nutzungsrechten.
+  severity: medium
+  solution_hint: Sprachgesteuerte Assistenten können standardisierte Vertragsinformationen
+    und DSGVO-Hinweise geben.
+- description: Schwierigkeiten bei der Akquise neuer Kunden und der Pflege von Stammkundenbeziehungen.
+  severity: medium
+  solution_hint: Automatisierte Follow-up-Anrufe und Lead-Qualifizierung durch den
+    Sprachagenten.
+- description: Inkonsistente und manuelle Abrechnung sowie Nachverfolgung von Zahlungseingängen.
+  severity: medium
+  solution_hint: Sprachbefehl zur Rechnungserstellung und Statusabfrage von offenen
+    Posten.
+- description: Hohe Auslastung in der Hochsaison führt zu Stress und möglichen Qualitätseinbußen.
+  severity: medium
+  solution_hint: Intelligente Terminverteilung und Priorisierung von Aufgaben durch
+    den Agenten.
+- description: Verwaltung und Archivierung großer Datenmengen (RAW-Dateien, Videos)
+    ist unübersichtlich.
+  severity: low
+  solution_hint: Sprachgesteuerte Suche und Kategorisierung von Mediendateien.
+typical_services:
+- Hochzeitsreportage
+- Porträtfotografie
+- Produktfotografie für E-Commerce
+- Eventfotografie (z.B. Firmenevents, Geburtstage)
+- Videoproduktion für Imagefilme
+- Drohnenaufnahmen (Luftbild/Videografie)
+- Fotobearbeitung und Retusche
+- Videoschnitt und Farbkorrektur
+- Fotoshootings für Bewerbungsunterlagen
+- 360-Grad-Fotografie/Virtual Tours
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Kernproblem der Branche; reduziert Leerlauf und Doppelbuchungen.
+- name: Kunden-FAQ und Erstberatung
+  priority: high
+  reason: Entlastet telefonisch, beantwortet Standardfragen zu Preisen und Services.
+- name: Zahlungserinnerungen und Rechnungsstatus
+  priority: medium
+  reason: Verbessert den Cashflow durch automatische, freundliche Erinnerungen.
+- name: Lead-Qualifizierung und -Eintragung
+  priority: medium
+  reason: Sorgt für strukturierte Weiterverarbeitung von Interessenten.
+- name: Workflow- und Projektstatus-Updates
+  priority: low
+  reason: Gibt Kunden automatisch Bescheid über nächste Schritte (z.B. 'Rohfassung
+    fertig').
+- name: DSGVO-Einwilligungsmanagement
+  priority: medium
+  reason: Wichtiger Compliance-Aspekt; Agent kann Einwilligungen dokumentieren.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - lexoffice
+  - DATEV
+  - SevDesk
+  priority: high
+- name: Terminplanungstools
+  examples:
+  - Calendly
+  - Setmore
+  - Microsoft Bookings
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Pipedrive
+  - Eigenentwicklungen
+  priority: medium
+- name: Cloud-Speicher und Asset-Management
+  examples:
+  - Dropbox Business
+  - Google Drive
+  - Adobe Creative Cloud
+  priority: medium
+- name: Projektmanagement-Tools
+  examples:
+  - Asana
+  - Trello
+  - monday.com
+  priority: low
+industry_faq:
+- question: Wie lange im Voraus sollte ich einen Fotografen für meine Hochzeit buchen?
+  answer_template: Wir empfehlen eine Buchung mindestens 6-12 Monate im Voraus, besonders
+    für Samstage in der Hauptsaison von Mai bis Oktober. Gerne prüfe ich sofort unsere
+    Verfügbarkeit für Sie.
+- question: Was kostet ein professionelles Unternehmensportrait?
+  answer_template: Preise beginnen bei etwa 150€ für ein Einzelportrait im Studio.
+    Pakete mit mehreren Looks oder Outdoor-Shootings liegen typischerweise zwischen
+    250€ und 500€. Ich kann Ihnen detaillierte Pakete zusenden.
+- question: Liefern Sie auch die unretuschierten Rohdateien (RAW) aus?
+  answer_template: In der Regel liefern wir nur die fertig bearbeiteten Dateien aus.
+    Die RAW-Dateien bleiben unser Arbeitsmaterial. Dies ist branchenüblich und in
+    unserem Vertrag geregelt.
+- question: Wie lange dauert die Bearbeitung nach dem Fotoshooting?
+  answer_template: Die Standardbearbeitungszeit beträgt 10-14 Werktage. Bei Expressbearbeitung
+    gegen Aufpreis sind 2-3 Werktage möglich.
+- question: Sind Sie DSGVO-konform?
+  answer_template: Ja, absolut. Wir arbeiten mit datenschutzkonformen Verträgen, speichern
+    Daten nur verschlüsselt und löschen sie nach Ablauf der gesetzlichen Fristen.
+    Gerne sende ich Ihnen unsere Datenschutzerklärung zu.
+- question: Bieten Sie auch Videoproduktion an?
+  answer_template: Ja, wir bieten komplette Videoproduktion von der Konzeption bis
+    zum Schnitt an, z.B. für Imagefilme oder Event-Highlights. Möchten Sie mehr über
+    unsere Videopakete erfahren?
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten für einen Service fragt.
+  script: 'Vielen Dank für Ihre Anfrage. Die Preise richten sich stark nach Umfang
+    und Aufwand. Unser Einstiegspaket für eine 2-stündige Porträtsession inklusive
+    10 bearbeiteter Bilder beginnt bei 299€. Um Ihnen ein präzises Angebot zu machen:
+    Könnten Sie mir bitte kurz das gewünschte Datum und den groben Rahmen des Projekts
+    nennen?'
+  goal: Vom Preis zum konkreten Projektgespräch lenken und Qualifikation des Leads.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber nennt.
+  script: Ich kenne [Name des Mitbewerbers]. Sie machen gute Arbeit. Uns zeichnet
+    besonders aus, dass wir einen vollständig digitalen und transparenten Workflow
+    anbieten, inklusive eines Kundenportals für alle Dateien und einer direkten, persönlichen
+    Betreuung per Telefon und Sprachassistent. Möchten Sie wissen, wie wir Ihnen konkret
+    Zeit und Aufwand ersparen können?
+  goal: Unterschiede hervorheben, ohne den Wettbewerber schlechtzureden, und auf Effizienzvorteile
+    lenken.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde die Preise als zu hoch empfindet.
+  script: Ich verstehe, dass Investitionen gut überlegt sein müssen. Bedenken Sie,
+    dass professionelle Fotos/Videos langfristig Ihre Wiedererkennung steigern und
+    Kunden gewinnen. Unser Service spart Ihnen zudem durch effiziente Abläufe wertvolle
+    Zeit, die Sie in Ihr Kerngeschäft stecken können. Soll ich Ihnen ein kleineres
+    Starter-Paket vorstellen oder eine Ratenzahlung option?
+  goal: Wert und ROI kommunizieren und eine Alternative anbieten, um im Gespräch zu
+    bleiben.
+- trigger: request_callback
+  situation: Wenn der Kunde einen Rückruf zu einer bestimmten Zeit wünscht.
+  script: Sehr gerne. Ich habe mir für Sie einen Termin am [gewünschtes Datum] um
+    [gewünschte Uhrzeit] vorgemerkt. Unser Kollege [Name/Agent] wird Sie dann anrufen.
+    Sie erhalten in Kürze eine Bestätigung per E-Mail. Vielen Dank für Ihr Interesse!
+  goal: Vertrauen durch zuverlässige Terminvereinbarung aufbauen und den nächsten
+    Schritt sicherstellen.
+competitors:
+- name: Calumet (Fachhandel mit Service)
+  positioning: Etablierter Großhandel und Verleih mit angeschlossenen Fotostudios
+    und Dienstleistungen.
+  strengths:
+  - Physische Präsenz
+  - Umfangreiches Equipment-Verleih
+  - Markenbekanntheit
+  weaknesses:
+  - Höhere Preise
+  - Weniger flexible, individuelle Pakete
+  - Begrenzte digitale Services
+  our_differentiation: Wir bieten vollständige Prozessautomatisierung und persönliche,
+    KI-gestützte Betreuung, nicht nur Equipment oder Standard-Shootings.
+- name: Regionaler Einzel-Fotograf (Freelancer)
+  positioning: Einzelunternehmer mit persönlichem Fokus und oft niedrigeren Preisen.
+  strengths:
+  - Sehr persönlicher Service
+  - Lokale Vernetzung
+  - Flexibilität
+  weaknesses:
+  - Begrenzte Kapazität
+  - Oft unregelmäßige Erreichbarkeit
+  - Manuelle Prozesse
+  our_differentiation: Wir kombinieren persönliche Betreuung mit der Skalierbarkeit
+    und Verlässlichkeit eines automatisierten Systems (24/7 Erreichbarkeit, automatisierte
+    Workflows).
+- name: Photo+Video Akademie (Anbieter von Workshops)
+  positioning: Bildungsinstitut, das auch Dienstleistungen anbietet.
+  strengths:
+  - Starker Fokus auf Education
+  - Netzwerk
+  - Kreative Vielfalt
+  weaknesses:
+  - Dienstleistung oft Nebengeschäft
+  - Längere Bearbeitungszeiten möglich
+  our_differentiation: Unser Kerngeschäft ist die effiziente, zuverlässige Dienstleistungserbringung,
+    unterstützt durch moderne Technologie, nicht die Ausbildung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 299
+  roi_examples:
+  - scenario: E-Commerce-Shop benötigt 50 neue Produktfotos pro Monat.
+    monthly_cost: 450
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Selbstständiger Fotograf automatisiert Terminbuchung und Kundenkommunikation.
+    monthly_cost: 79
+    monthly_savings: 240
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 10 Stunden Verwaltungsaufwand pro Monat.
+  - Steigern Sie Ihre Buchungsrate durch 24/7 Erreichbarkeit.
+  - Professioneller Erstkontakt auch außerhalb Ihrer Arbeitszeiten.
+market_context:
+  market_size: Ca. 2,5 Mrd. EUR jährlich (Fotografie- und Videodienstleistungen)
+  growth_rate: ~3-4% p.a.
+  key_trends:
+  - Starke Nachfrage nach Videoinhalten für Social Media (Reels, TikTok).
+  - Zunehmende Bedeutung von 360-Grad-Touren und Virtual Reality.
+  - Nachhaltigkeit wird wichtiger (z.B. digitale Ablieferung, Öko-Strom im Studio).
+  - Steigender Bedarf an automatisierter, skalierbarer Content-Produktion für Unternehmen.
+  seasonality:
+    high:
+    - Mai-Oktober (Hochzeiten, Outdoor-Events)
+    - November-Dezember (Weihnachtsfeiern, Produktlaunches)
+    low:
+    - Januar-Februar
+    - Spätsommerferien (regionabhängig)
+typical_objections:
+- objection: Das brauche ich nicht, ich komme gut alleine zurecht.
+  response: Das glaube ich Ihnen sofort! Viele unserer Kunden waren sehr organisiert.
+    Der Vorteil unseres Systems ist, dass es Ihnen noch mehr Zeit für die kreative
+    Arbeit freispielt und Sie auch in Stoßzeiten oder im Urlaub keine Anfrage verpassen.
+    Könnten 5 gewonnene Stunden im Monat für Sie wertvoll sein?
+- objection: Ich habe Bedenken wegen des Datenschutzes bei einer KI.
+  response: Das ist ein sehr wichtiger Punkt. Unser System ist DSGVO-konform in Deutschland
+    gehostet. Der Sprachagent fungiert als Ihr Assistent und verarbeitet nur Daten,
+    die Sie freigeben. Alle Daten bleiben in Ihrer Verantwortung. Wir können Ihnen
+    gerne die technischen Details und Verträge zur Prüfung zusenden.
+- objection: Die Technik ist mir zu kompliziert.
+  response: Das ist verständlich. Unser System ist aber speziell für einfache Bedienung
+    entwickelt. Sie steuern es hauptsächlich per Sprache – wie mit einem Kollegen
+    am Telefon. Wir bieten eine vollständige Einrichtung und Einweisung an. Darf ich
+    einen kurzen Demo-Anruf simulieren, um Ihnen die Einfachheit zu zeigen?
+meta:
+  id: photo_video
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

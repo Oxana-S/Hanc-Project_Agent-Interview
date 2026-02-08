@@ -1,0 +1,193 @@
+pain_points:
+- description: Quản lý tồn kho phức tạp do hàng hóa đa dạng, hạn sử dụng ngắn, dễ hư hỏng.
+  severity: high
+  solution_hint: Tổng đài AI có thể tự động nhắc nhở đơn hàng, kiểm tra tồn kho theo thời gian thực, và gợi ý đặt hàng dựa trên lịch sử bán.
+- description: Khách hàng thường xuyên gọi điện hỏi giá, tình trạng hàng, chính sách đổi trả làm gián đoạn công việc.
+  severity: medium
+  solution_hint: Tổng đài AI tự động trả lời các câu hỏi cơ bản 24/7, chuyển cuộc gọi phức tạp cho nhân viên, giảm tải cho bộ phận chăm sóc khách hàng.
+- description: Cạnh tranh gay gắt từ các chuỗi lớn (Hasaki, Guardian) và shop online, khó khăn trong việc giữ chân khách hàng thân thiết.
+  severity: high
+  solution_hint: AI có thể thực hiện cuộc gọi chăm sóc, thông báo chương trình khuyến mãi cá nhân hóa và thu thập phản hồi tự động.
+- description: Khó khăn trong việc đào tạo nhân viên bán hàng am hiểu chi tiết về hàng ngàn sản phẩm mỹ phẩm, dưỡng da.
+  severity: medium
+  solution_hint: Tổng đài AI cung cấp thông tin sản phẩm chuẩn xác, hướng dẫn sử dụng, và có thể được cập nhật kiến thức mới dễ dàng.
+- description: Áp lực về giá từ nhà cung cấp và khách hàng, biên lợi nhuận bị thu hẹp.
+  severity: medium
+  solution_hint: AI có thể phân tích đơn hàng và đề xuất các gói sản phẩm, combo có lợi nhuận cao hơn khi khách đặt hàng.
+- description: Quy trình đặt hàng từ đại lý/cửa hàng nhỏ lẻ thủ công, dễ sai sót, mất thời gian xác nhận qua tin nhắn/zalo.
+  severity: medium
+  solution_hint: Tổng đài AI tiếp nhận đơn hàng bằng giọng nói, tự động xác nhận và ghi nhận vào hệ thống, giảm thiểu lỗi.
+typical_services:
+- Phân phối sỉ mỹ phẩm & dụng cụ làm đẹp
+- Bán lẻ tại cửa hàng
+- Tư vấn làm đẹp & chăm sóc da
+- Nhập khẩu mỹ phẩm Hàn Quốc, Nhật Bản, Châu Âu
+- Cung cấp sản phẩm cho spa, thẩm mỹ viện
+- Xây dựng combo sản phẩm theo nhu cầu
+- Dịch vụ giao hàng tận nơi nhanh chóng
+- Chính sách đổi trả & bảo hành sản phẩm
+- Tổ chức training sản phẩm cho đại lý
+- Hỗ trợ thiết kế kệ trưng bày
+recommended_functions:
+- name: Tiếp nhận & xử lý đơn hàng bằng giọng nói
+  priority: high
+  reason: Giải quyết điểm đau chính về đặt hàng thủ công, tăng tốc độ xử lý, giảm sai sót cho đại lý.
+- name: Trả lời tự động các câu hỏi thường gặp (FAQs)
+  priority: high
+  reason: Giảm tải 80% cuộc gọi lặp lại về giá, tồn kho, chính sách, cho phép nhân viên tập trung vào tư vấn bán hàng phức tạp.
+- name: Chăm sóc khách hàng thân thiết & nhắc nhở khuyến mãi
+  priority: medium
+  reason: Cạnh tranh hiệu quả hơn bằng việc tự động hóa marketing, tăng tỷ lệ giữ chân khách hàng.
+- name: Hẹn lịch tư vấn & đặt lịch training sản phẩm
+  priority: medium
+  reason: Hỗ trợ công tác đào tạo đại lý và chăm sóc khách hàng spa một cách chuyên nghiệp, có tổ chức.
+- name: Khảo sát & thu thập phản hồi sau mua
+  priority: low
+  reason: Thu thập dữ liệu khách hàng giá trị để cải thiện dịch vụ và sản phẩm mà không tốn nhiều nhân lực.
+typical_integrations:
+- name: Phần mềm quản lý bán hàng (POS/ERP)
+  examples:
+  - KiotViet
+  - Sapo
+  - Nhanh.vn
+  - Ocha
+  priority: high
+- name: Nền tảng giao hàng & vận chuyển
+  examples:
+  - Giao Hàng Nhanh (GHN)
+  - Giao Hàng Tiết Kiệm (GHTK)
+  - Viettel Post
+  - Ahamove
+  priority: high
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - VNPay
+  - Momo
+  - ZaloPay
+  - Bank Transfer
+  priority: medium
+- name: Nền tảng thương mại điện tử
+  examples:
+  - Shopee
+  - Lazada
+  - Tiki
+  priority: medium
+- name: Công cụ marketing & CRM
+  examples:
+  - Fanpage Facebook
+  - Zalo OA
+  - CRM trong Sapo/KiotViet
+  priority: low
+industry_faq:
+- question: Bên bạn có sản phẩm [tên sản phẩm] không? Còn hàng không?
+  answer_template: Chào anh/chị, hiện tại bên em [còn/có] sản phẩm [tên sản phẩm] ạ. Để em kiểm tra số lượng tồn kho chính xác và báo giá cho anh/chị ngay nhé. Anh/chị cần số lượng bao nhiêu ạ?
+- question: Giá sỉ cho đại lý như thế nào?
+  answer_template: Dạ, giá sỉ của chúng em sẽ phụ thuộc vào mặt hàng và số lượng đặt hàng ạ. Để có báo giá chính xác và ưu đãi nhất, anh/chị vui lòng cho em biết danh sách sản phẩm và số lượng dự kiến nhé.
+    Em sẽ hỗ trợ ngay.
+- question: Chính sách đổi trả hàng hóa ra sao?
+  answer_template: Chúng em có chính sách đổi trả trong vòng 7 ngày đối với sản phẩm lỗi từ nhà sản xuất, nguyên seal, chưa qua sử dụng ạ. Anh/chị vui lòng giữ hóa đơn để được hỗ trợ tốt nhất. Chi tiết
+    cụ thể em sẽ gửi qua tin nhắn cho anh/chị.
+- question: Có hỗ trợ giao hàng không? Phí như thế nào?
+  answer_template: Dạ có ạ. Chúng em hợp tác với các đơn vị vận chuyển như GHN, GHTK. Phí ship sẽ phụ thuộc vào khoảng cách và trọng lượng đơn hàng, thường dao động từ 15,000 - 30,000 VND cho nội thành.
+    Đơn hàng sỉ lớn thường sẽ được hỗ trợ phí giao hàng ạ.
+- question: Có chương trình khuyến mãi tháng này không?
+  answer_template: Dạ có ạ. Hiện chúng em đang có chương trình [giảm giá/ tặng quà/ combo tiết kiệm] cho các sản phẩm [nhóm sản phẩm]. Để em gửi chi tiết chương trình khuyến mãi mới nhất qua tin nhắn/zalo
+    cho anh/chị nhé.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng gọi điện hỏi giá sản phẩm cụ thể.
+  script: Chào anh/chị, cảm ơn anh/chị đã quan tâm đến sản phẩm của chúng em. Để có giá chính xác và ưu đãi nhất, anh/chị cho em biết anh/chị mua với mục đích sử dụng cá nhân hay làm đại lý sỉ ạ? Nếu mua
+    số lượng từ [X] sản phẩm trở lên, em sẽ áp dụng ngay giá sỉ ưu đãi cho anh/chị.
+  goal: Phân loại khách hàng (lẻ/sỉ) và chuyển hướng cuộc gọi đến báo giá phù hợp, đồng thời gợi ý mua số lượng để được giá tốt.
+- trigger: competitor_mention
+  situation: Khách hàng so sánh giá với đối thủ.
+  script: Dạ em hiểu ạ. Bên cạnh giá cả, chúng em tự tin về nguồn gốc hàng hóa chính hãng 100%, được kiểm định rõ ràng và chính sách hỗ trợ đại lý tận tâm như hỗ trợ đổi trả linh hoạt, tư vấn setup cửa
+    hàng. Giá của em có thể cao hơn một chút nhưng đi kèm dịch vụ và sự an tâm cho anh/chị. Anh/chị thử cân nhắc ưu điểm này nhé.
+  goal: Chuyển trọng tâm từ giá cả sang giá trị gia tăng, dịch vụ và sự tin cậy, khẳng định sự khác biệt.
+- trigger: objection_too_expensive
+  situation: Khách hàng than giá cao.
+  script: Dạ em hiểu mối quan tâm của anh/chị ạ. Thực ra, nếu tính trên hiệu quả sử dụng và chất lượng đảm bảo, sản phẩm của chúng em rất tiết kiệm vì tỷ lệ khách hàng quay lại rất cao. Hơn nữa, nếu anh/chị
+    đặt hàng với số lượng lớn hơn hoặc chọn combo sản phẩm, giá thành trên mỗi sản phẩm sẽ giảm đáng kể. Để em gửi cho anh/chị vài lựa chọn combo tiết kiệm nhé?
+  goal: Thừa nhận mối quan tâm, định khung lại giá trị (chất lượng/độ trung thành), và đề xuất giải pháp thay thế (combo, mua sỉ) để giảm rào cản.
+competitors:
+- name: Hasaki
+  positioning: Chuỗi bán lẻ mỹ phẩm chính hãng lớn nhất, đa kênh.
+  strengths:
+  - Thương hiệu mạnh
+  - đa dạng sản phẩm
+  - nhiều chi nhánh
+  - ứng dụng công nghệ
+  weaknesses:
+  - Giá bán lẻ cao
+  - ít linh hoạt cho đại lý sỉ nhỏ
+  - tập trung vào B2C
+  our_differentiation: Tập trung vào dịch vụ B2B (sỉ cho đại lý, spa), giá sỉ cạnh tranh, chính sách hỗ trợ đại lý linh hoạt và cá nhân hóa hơn.
+- name: Guardian
+  positioning: Chuỗi nhà thuốc & chăm sóc sức khỏe/cá nhân đa quốc gia.
+  strengths:
+  - Uy tín
+  - hệ thống rộng khắp
+  - đa dạng ngành hàng
+  weaknesses:
+  - Không chuyên sâu mỹ phẩm cao cấp
+  - ưu tiên sản phẩm phổ thông
+  - ít hỗ trợ đại lý
+  our_differentiation: Chuyên sâu về phân khúc mỹ phẩm làm đẹp (skin care, makeup), có đội ngũ tư vấn kiến thức chuyên môn sâu, tập trung phát triển kênh phân phối sỉ chuyên nghiệp.
+- name: Các shop online trên Shopee/Lazada
+  positioning: Người bán lẻ trực tuyến với giá rất cạnh tranh.
+  strengths:
+  - Giá thấp
+  - tiện lợi
+  - đa dạng người bán
+  weaknesses:
+  - Chất lượng & nguồn gốc không rõ ràng
+  - ít hỗ trợ sau bán
+  - không có tư vấn chuyên nghiệp
+  our_differentiation: Cam kết hàng chính hãng với đầy đủ chứng từ, hỗ trợ tư vấn chuyên sâu trước và sau bán, xây dựng mối quan hệ đối tác lâu dài thay vì chỉ giao dịch một lần.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 2000000
+  - 20000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Cửa hàng nhỏ giảm 10 cuộc gọi hỏi hàng/ngày nhờ AI trả lời tự động, nhân viên tập trung tư vấn bán hàng tăng doanh thu.
+    monthly_cost: 1500000
+    monthly_savings: 4000000
+    payback_months: 1
+  - scenario: Đại lý sỉ sử dụng AI để nhận đơn hàng tự động, giảm 50% lỗi đặt hàng và tiết kiệm 3 giờ công/ngày cho nhân viên.
+    monthly_cost: 2500000
+    monthly_savings: 7500000
+    payback_months: 1
+  value_anchors:
+  - Chỉ từ 50,000 VND/ngày để có trợ lý bán hàng 24/7.
+  - Tiết kiệm ít nhất 15 giờ công nhân viên mỗi tháng cho các công việc lặp đi lặp lại.
+  - Tăng tỷ lệ chốt đơn từ khách gọi điện lên đến 30% với tư vấn chuẩn xác.
+market_context:
+  market_size: Khoảng 2.6 tỷ USD (2023) và tiếp tục tăng trưởng.
+  growth_rate: ~10-12% YoY
+  key_trends:
+  - Xu hướng làm đẹp cá nhân hóa (personalized skincare) và sử dụng thành phần thiên nhiên, "clean beauty".
+  - Mua sắm trực tuyến cho mỹ phẩm tăng mạnh, đặc biệt qua social commerce (Facebook, Tiktok Shop).
+  - Nhu cầu cao đối với mỹ phẩm Hàn Quốc, Nhật Bản và các thương hiệu nội địa chất lượng.
+  - Người tiêu dùng ngày càng quan tâm đến chứng nhận, nguồn gốc xuất xứ
+  seasonality:
+    high:
+    - Tháng 11
+    - Tháng 12
+    low:
+    - Tháng 2
+    - Tháng 7
+meta:
+  id: beauty_supplies
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- beauty supplies
+- cosmetics wholesale
+- salon products
+_extends: _base/beauty_supplies

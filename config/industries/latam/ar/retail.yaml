@@ -1,0 +1,233 @@
+pain_points:
+- description: Alta inflación que dificulta la gestión de precios y la planificación
+    financiera a largo plazo.
+  severity: high
+  solution_hint: El agente de voz con IA puede actualizar precios automáticamente
+    en tiempo real y enviar alertas sobre cambios económicos.
+- description: Dificultades en la cadena de suministro debido a fluctuaciones en la
+    disponibilidad de productos y retrasos en importaciones.
+  severity: high
+  solution_hint: El agente puede monitorear inventarios y coordinar con proveedores
+    mediante llamadas automatizadas para reducir tiempos de espera.
+- description: Competencia intensa de grandes cadenas y comercios electrónicos que
+    presionan los márgenes de ganancia.
+  severity: medium
+  solution_hint: IA puede analizar datos de competencia y sugerir estrategias de precios
+    dinámicos para mantener competitividad.
+- description: Alta rotación de personal en atención al cliente, afectando la consistencia
+    en el servicio.
+  severity: medium
+  solution_hint: Agentes de voz automatizados ofrecen atención 24/7 sin necesidad
+    de capacitación constante, mejorando la experiencia del cliente.
+- description: Complejidad en el cumplimiento de regulaciones fiscales locales y cambios
+    frecuentes en leyes.
+  severity: low
+  solution_hint: IA puede integrarse con sistemas contables para generar reportes
+    automáticos y recordatorios de obligaciones fiscales.
+- description: Baja adopción de tecnología digital en pymes, limitando la eficiencia
+    operativa.
+  severity: medium
+  solution_hint: Soluciones de voz accesibles y fáciles de implementar pueden reducir
+    barreras de entrada a la automatización.
+typical_services:
+- Atención al cliente automatizada por teléfono
+- Gestión de pedidos y reservas
+- Recordatorios de pagos y facturación
+- Soporte post-venta y seguimiento de satisfacción
+- Coordinación logística con proveedores
+- Manejo de quejas y devoluciones
+- Promociones y ventas cruzadas mediante llamadas
+- Monitoreo de inventario y alertas de stock bajo
+- Programación de citas para servicios o reparaciones
+- Encuestas de mercado y recolección de feedback
+recommended_functions:
+- name: Respuesta automática a consultas frecuentes
+  priority: high
+  reason: Reduce carga en personal humano y mejora tiempos de respuesta en horas pico.
+- name: Procesamiento de pedidos por voz
+  priority: high
+  reason: Acelera ventas y reduce errores en transacciones, clave para retail con
+    alta demanda.
+- name: Recordatorios de pagos y promociones
+  priority: medium
+  reason: Aumenta tasas de cobro y fidelización en un mercado con alta competencia.
+- name: Integración con sistemas de inventario
+  priority: high
+  reason: Optimiza gestión de stock en tiempo real, crítico frente a inflación y escasez.
+- name: Análisis de sentimiento en llamadas
+  priority: low
+  reason: Proporciona insights valiosos sobre satisfacción del cliente para ajustar
+    estrategias.
+- name: Programación automática de citas
+  priority: medium
+  reason: Facilita la organización en servicios retail como reparaciones o consultas
+    personalizadas.
+typical_integrations:
+- name: Sistemas de punto de venta (POS)
+  examples:
+  - Leguas
+  - SiVale
+  - Mercado Pago
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - MercadoLibre
+  - Tienda Nube
+  - Linio
+  priority: high
+- name: Software de gestión empresarial
+  examples:
+  - Tango
+  - WinTotal
+  - SAP Business One
+  priority: medium
+- name: Herramientas de logística
+  examples:
+  - Andreani
+  - OCA
+  - Correo Argentino
+  priority: medium
+- name: Sistemas de contabilidad
+  examples:
+  - Contax
+  - BGestión
+  - Xubio
+  priority: low
+industry_faq:
+- question: ¿Cómo puede un agente de voz con IA ayudar a mi negocio minorista en Argentina?
+  answer_template: Nuestro agente automatiza tareas como atención al cliente y gestión
+    de pedidos, reduciendo costos operativos hasta un 30% y mejorando la experiencia
+    en un mercado competitivo.
+- question: ¿Es compatible con los sistemas locales que ya uso?
+  answer_template: Sí, nos integramos con plataformas populares como MercadoLibre
+    y Tango, asegurando una implementación rápida sin interrupciones en su operación.
+- question: ¿Cuál es el costo en pesos argentinos y el retorno de inversión?
+  answer_template: Los planes comienzan desde ARS 50,000 mensuales, con ahorros típicos
+    de ARS 100,000 mensuales en personal, logrando recuperación en menos de 3 meses.
+- question: ¿Funciona durante crisis económicas o alta inflación?
+  answer_template: Absolutamente, la IA ajusta precios y estrategias en tiempo real,
+    ayudando a mantener rentabilidad frente a fluctuaciones del mercado.
+- question: ¿Necesito personal técnico para gestionar el agente?
+  answer_template: No, nuestra solución es fácil de usar y viene con soporte local
+    en español, diseñada para pymes sin experiencia tecnológica.
+- question: ¿Cómo maneja la privacidad de datos de clientes?
+  answer_template: Cumplimos con regulaciones locales y usamos encriptación avanzada,
+    garantizando la seguridad de la información en cada interacción.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo del servicio durante una llamada
+    inicial.
+  script: Hola, entiendo su interés en el precio. Nuestro plan básico comienza en
+    ARS 50,000 mensuales, pero el ahorro promedio es de ARS 100,000 al reducir personal.
+    ¿Le gustaría que le detalle cómo adaptamos esto a su negocio?
+  goal: Convertir la consulta en una demostración enfocada en ROI.
+- trigger: competition_mention
+  situation: Si el cliente menciona a un competidor durante la conversación.
+  script: Es bueno que compare opciones. A diferencia de [competidor], ofrecemos integración
+    directa con sistemas argentinos como MercadoLibre y soporte 24/7 en español, clave
+    para retail local. ¿Ha considerado cómo esto impacta su eficiencia?
+  goal: Destacar diferenciadores locales y generar confianza.
+- trigger: objection_technology
+  situation: Cuando el cliente expresa dudas sobre adoptar tecnología nueva.
+  script: Comprendo su preocupación. Muchos minoristas en Argentina empiezan con funciones
+    simples como atención de llamadas, sin necesidad de cambios grandes. Podemos hacer
+    una prueba gratuita para que vea los beneficios en su operación diaria.
+  goal: Reducir miedo al cambio y promover una prueba piloto.
+- trigger: follow_up
+  situation: Después de una demostración o consulta previa, para cerrar la venta.
+  script: Hola [Nombre], seguimos en contacto sobre cómo nuestro agente puede optimizar
+    su retail. Dado el alto tráfico en temporada alta, implementar ahora le asegura
+    ahorros para fin de año. ¿Podemos agendar la instalación la próxima semana?
+  goal: Cerrar la venta apelando a urgencia estacional.
+competitors:
+- name: Vozy
+  positioning: Proveedor regional de soluciones de voz con IA enfocado en Latinoamérica.
+  strengths:
+  - Amplia experiencia en mercado latino
+  - Integraciones con plataformas globales
+  weaknesses:
+  - Menor enfoque en retail específico de Argentina
+  - Soporte limitado en horarios locales
+  our_differentiation: Ofrecemos soporte personalizado en español argentino y integraciones
+    profundas con sistemas locales como Tango, optimizados para inflación y regulaciones.
+- name: Weni
+  positioning: Plataforma de automatización conversacional con presencia en varios
+    países latinos.
+  strengths:
+  - Solución escalable para grandes empresas
+  - Herramientas de análisis avanzadas
+  weaknesses:
+  - Costo alto para pymes
+  - Complejidad en implementación para negocios pequeños
+  our_differentiation: Planes accesibles desde ARS 50,000 y enfoque en facilidad de
+    uso para minoristas argentinos, con ROI rápido en meses.
+- name: Local call center outsourcing
+  positioning: Servicios tradicionales de call center en Argentina.
+  strengths:
+  - Familiaridad con cultura local
+  - Flexibilidad en servicios personalizados
+  weaknesses:
+  - Altos costos laborales y rotación
+  - Limitada capacidad de escalar automáticamente
+  our_differentiation: Automatización que reduce costos hasta 40% vs. call centers
+    humanos, con consistencia 24/7 y adaptación a tendencias digitales.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Pequeño comercio minorista implementando atención al cliente automatizada.
+    monthly_cost: 50000
+    monthly_savings: 100000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos de personal en hasta 40%
+  - Aumenta ventas con promociones automatizadas
+  - Mejora satisfacción del cliente con respuestas inmediatas
+market_context:
+  market_size: Estimado en ARS 500 mil millones anuales para retail digital y automatización
+    en Argentina.
+  growth_rate: 15% anual impulsado por adopción de e-commerce y necesidad de eficiencia
+    operativa.
+  key_trends:
+  - Crecimiento de compras online post-pandemia
+  - Demanda de soluciones asequibles para pymes
+  - Enfoque en experiencias personalizadas para fidelizar clientes
+  seasonality:
+    high:
+    - Noviembre-Diciembre (temporada navideña)
+    - Julio (vacaciones de invierno y rebajas)
+    low:
+    - Enero (post-navidad)
+    - Marzo (inicio escolar, menor consumo)
+typical_objections:
+- objection: No creo que mi negocio necesite tanta tecnología, funciona bien como
+    está.
+  response: Entiendo, pero en un mercado con alta inflación y competencia, pequeños
+    mejoras en eficiencia pueden marcar la diferencia. Muchos clientes ven ahorros
+    desde el primer mes sin cambiar sus procesos clave.
+- objection: El costo inicial en pesos es muy alto para mi presupuesto.
+  response: Nuestros planes escalables permiten empezar con funciones básicas desde
+    ARS 50,000, y el retorno suele cubrir esto en semanas. ¿Podemos analizar un plan
+    ajustado a su flujo de caja?
+- objection: Prefiero la interacción humana para no perder el contacto con mis clientes.
+  response: Nuestra IA complementa al personal humano, manejando tareas repetitivas
+    para que su equipo se enfoque en relaciones más valiosas. Además, los agentes
+    son personalizables para mantener un tono cálido y local.
+meta:
+  id: retail
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

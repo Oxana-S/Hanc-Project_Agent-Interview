@@ -1,0 +1,260 @@
+pain_points:
+- description: Az események és kiállítások szervezésekor a látogatók tájékoztatása
+    és eligazítása nehézkes, különösen idegen nyelvű vendégek számára.
+  severity: high
+  solution_hint: AI hangalapú ügynök többnyelvű tájékoztatást és útbaigazítást nyújthat,
+    csökkentve a személyzet terhelését.
+- description: A kulturális intézmények gyakran küzdenek jegyeladási és foglalási
+    rendszerek integrációjával, ami ügyfélpanaszokat okoz.
+  severity: high
+  solution_hint: Az AI hangalapú asszisztens automatizálhatja a foglalási folyamatokat,
+    és valós idejű információkat adhat.
+- description: Az ügyfélkapcsolatok személyre szabása és az eseményekhez kapcsolódó
+    információk gyors elérése hiányzik.
+  severity: medium
+  solution_hint: Az AI képes személyre szabott ajánlatokat és információkat szolgáltatni,
+    növelve az ügyfélélményt.
+- description: Gyakori az alkalmazottak túlterheltsége, különösen a jegypénztárakban
+    és az információs pultokon.
+  severity: high
+  solution_hint: A hangalapú asszisztens átvállalhatja az ismétlődő kérdések megválaszolását,
+    tehermentesítve a személyzetet.
+- description: A GDPR-nak való megfelelés adatkezelési szempontból kihívást jelent,
+    különösen ügyféladatok gyűjtésekor és kezelésénél.
+  severity: medium
+  solution_hint: Az AI rendszerek beépített adatvédelmi funkciókkal segíthetik a megfelelést
+    és az átlátható adatkezelést.
+- description: A kulturális események promóciója és elérése nehézkes a digitális csatornák
+    hatékony kihasználása nélkül.
+  severity: medium
+  solution_hint: Az AI hangalapú megoldások integrálhatók marketing kampányokkal,
+    növelve az elérést és az interakciót.
+- description: A látogatói visszajelzések és értékelések gyűjtése és feldolgozása
+    manuálisan időigényes.
+  severity: medium
+  solution_hint: AI hangalapú kérdőívek és visszajelző rendszerek gyorsabb adatgyűjtést
+    és elemzést tesznek lehetővé.
+typical_services:
+- Kiállítások és múzeumi tárlatok szervezése
+- Kulturális rendezvények lebonyolítása
+- Jegyfoglalás és beléptetés kezelése
+- Idegenvezetés és tájékoztatás
+- Digitális művészeti galériák üzemeltetése
+- Művészeti workshopok és oktatás
+- Kulturális marketing és promóció
+- Látogatói visszajelzések gyűjtése és elemzése
+- Művészeti alkotások értékesítése és aukciók
+- Adatkezelési és GDPR megfelelőségi tanácsadás
+recommended_functions:
+- name: Többnyelvű ügyfélszolgálat
+  priority: high
+  reason: A nemzetközi látogatók hatékony kiszolgálása érdekében elengedhetetlen.
+- name: Jegyfoglalás és foglaláskezelés
+  priority: high
+  reason: Automatizálja a jegyvásárlást és csökkenti a hibalehetőségeket.
+- name: Eseményinformációk nyújtása
+  priority: high
+  reason: Gyors és pontos információk az eseményekről javítják a látogatói élményt.
+- name: Visszajelzésgyűjtés
+  priority: medium
+  reason: Segít az intézményeknek az ügyfél-elégedettség növelésében.
+- name: GDPR kompatibilitás támogatása
+  priority: medium
+  reason: Elengedhetetlen az adatvédelmi szabályok betartásához.
+- name: Marketing kampányok integrációja
+  priority: medium
+  reason: Növeli az események ismertségét és látogatottságát.
+- name: Analitikai riportok készítése
+  priority: low
+  reason: Segíti a döntéshozatalt és a szolgáltatások fejlesztését.
+typical_integrations:
+- name: Jegyértékesítő rendszerek
+  examples:
+  - Jegymester
+  - Eventim
+  - Ticket Express
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - Lokális CRM-ek
+  priority: medium
+- name: Marketing automatizációs eszközök
+  examples:
+  - Mailchimp
+  - Sendinblue
+  priority: medium
+- name: GDPR adatvédelmi platformok
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+- name: Weboldal és mobil alkalmazás platformok
+  examples:
+  - WordPress
+  - Drupal
+  - egyedi fejlesztések
+  priority: high
+- name: Látogatói visszajelző rendszerek
+  examples:
+  - Typeform
+  - Google Forms
+  priority: low
+industry_faq:
+- question: Hogyan tudok jegyet foglalni az eseményre?
+  answer_template: Köszönjük érdeklődését! Jegyfoglalását egyszerűen elvégezheti weboldalunkon
+    vagy a jegyértékesítő partnereink oldalán. Ha segítségre van szüksége, kérjük,
+    jelezze, és segítünk!
+- question: Milyen nyelveken érhető el az idegenvezetés?
+  answer_template: Idegenvezetéseink magyar, angol, német és francia nyelven érhetők
+    el. Kérjük, foglaláskor jelezze a kívánt nyelvet!
+- question: Hogyan biztosítják az adatvédelmet a látogatók személyes adataival kapcsolatban?
+  answer_template: Intézményünk teljes mértékben megfelel a GDPR előírásainak, személyes
+    adatait biztonságosan kezeljük, és kizárólag a szolgáltatás nyújtásához használjuk
+    fel.
+- question: Van lehetőség csoportos jegyvásárlásra kedvezménnyel?
+  answer_template: Igen, csoportos jegyvásárlás esetén kedvezményeket kínálunk. Kérjük,
+    vegye fel velünk a kapcsolatot részletekért!
+- question: Milyen típusú művészeti eseményeket szerveznek?
+  answer_template: Széles körű művészeti eseményeket kínálunk, beleértve kiállításokat,
+    koncerteket, színházi előadásokat és művészeti workshopokat.
+- question: Hogyan tudok visszajelzést küldeni az esemény után?
+  answer_template: Visszajelzését weboldalunkon vagy az esemény során kapott digitális
+    felületen keresztül küldheti el, hogy tovább javíthassuk szolgáltatásainkat.
+- question: Milyen fizetési módokat fogadnak el az eseményeken?
+  answer_template: Eseményeinken bankkártyás fizetést, készpénzt és online fizetési
+    megoldásokat is elfogadunk.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél árakra kérdez rá az események vagy szolgáltatások kapcsán
+  script: Köszönöm az érdeklődését! Szolgáltatásaink árai rugalmasak és az esemény
+    jellegétől függően változnak. Szeretnék Önnek egy személyre szabott ajánlatot
+    készíteni, hogy a legjobb ár-érték arányt kapja.
+  goal: Érdeklődés fenntartása és egyedi ajánlat felajánlása
+- trigger: gdpr_concern
+  situation: Amikor az ügyfél adatvédelmi aggályokat fogalmaz meg
+  script: Teljes mértékben megértjük az adatvédelem fontosságát. Rendszereink megfelelnek
+    a GDPR követelményeinek, így személyes adatai biztonságban vannak nálunk.
+  goal: Bizalomépítés és adatvédelmi aggályok eloszlatása
+- trigger: service_benefit
+  situation: Amikor az ügyfél nem biztos abban, milyen előnyökkel jár az AI hangalapú
+    szolgáltatás használata
+  script: Az AI hangalapú asszisztensünk segít gyors és pontos információkat nyújtani,
+    csökkenti a személyzet terhelését, és javítja a látogatói élményt, ami hosszú
+    távon növeli az intézmény hatékonyságát.
+  goal: Az AI szolgáltatás értékének bemutatása
+- trigger: multilingual_support_question
+  situation: Ha az ügyfél a többnyelvű támogatásról érdeklődik
+  script: Szolgáltatásunk több nyelven is képes kommunikálni, így megkönnyítjük a
+    nemzetközi látogatók kiszolgálását és növeljük az elégedettséget.
+  goal: Többnyelvűség előnyeinek hangsúlyozása
+- trigger: demo_request
+  situation: Amikor az ügyfél demo vagy bemutató iránt érdeklődik
+  script: Örömmel mutatjuk be termékünket egy személyes vagy online bemutató keretében,
+    hogy megismerhesse, hogyan segíthetjük intézményét a mindennapi működésben.
+  goal: Bemutató megszervezése és további érdeklődés generálása
+competitors:
+- name: CultureBot Hungary
+  positioning: Innovatív AI alapú kulturális ügyfélszolgálati megoldások
+  strengths:
+  - Több éves tapasztalat kulturális szektorban
+  - Kiváló többnyelvű támogatás
+  - Erős integrációs képességek helyi rendszerekkel
+  weaknesses:
+  - Magasabb árképzés kisebb intézmények számára
+  - Kevés testreszabási lehetőség kisebb ügyfeleknek
+  our_differentiation: Rugalmasabb árképzés és testreszabható funkciók kisebb múzeumok
+    és galériák számára
+- name: Művészeti Asszisztens Kft.
+  positioning: Lokális kulturális intézmények digitális támogatása
+  strengths:
+  - Szoros kapcsolat helyi kulturális szervezetekkel
+  - Gyors ügyfélszolgálat
+  - Egyszerű használat
+  weaknesses:
+  - Korlátozott AI funkcionalitás
+  - Kevés innovatív megoldás
+  our_differentiation: Fejlettebb AI technológia és szélesebb körű automatizálási
+    funkciók
+- name: ArtVoice Solutions
+  positioning: Nemzetközi AI hangalapú ügyfélszolgálati szolgáltató kulturális szektorra
+  strengths:
+  - Széleskörű nemzetközi tapasztalat
+  - Komplett AI megoldások
+  - Magas szintű testreszabhatóság
+  weaknesses:
+  - Magasabb költségek
+  - Kevés helyi piac-specifikus tudás
+  our_differentiation: Kiemelkedő helyi piacismeret és versenyképes árak magyar kulturális
+    intézmények számára
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 200000
+  - 1500000
+  entry_point: 200000
+  roi_examples:
+  - scenario: Jegyfoglalási folyamat automatizálása egy közepes méretű múzeumban
+    monthly_cost: 250000
+    monthly_savings: 400000
+    payback_months: 2
+  - scenario: Többnyelvű ügyfélszolgálat bevezetése kulturális fesztiválon
+    monthly_cost: 400000
+    monthly_savings: 600000
+    payback_months: 3
+  value_anchors:
+  - Az AI megoldásunkkal jelentős költségmegtakarítást érhet el a személyzet terhelésének
+    csökkentésével.
+  - Növeli a látogatói elégedettséget és ezáltal a visszatérő vendégek számát.
+  - Gyorsabb és pontosabb információszolgáltatást biztosít, ami javítja az intézmény
+    hírnevét.
+  - Segít megfelelni a GDPR előírásoknak, elkerülve a bírságokat és jogi kockázatokat.
+market_context:
+  market_size: 1500000000
+  growth_rate: 8
+  key_trends:
+  - Növekvő digitalizáció és automatizáció a kulturális intézményekben
+  - Egyre fontosabbá válik a többnyelvűség a turizmus és kulturális események területén
+  - Fokozott figyelem az adatvédelemre és GDPR megfelelőségre
+  - Növekvő igény az élményalapú és személyre szabott szolgáltatásokra
+  - Fenntarthatóság és környezettudatosság előtérbe kerülése
+  seasonality:
+    high:
+    - tavaszi és nyári fesztiválszezon
+    - karácsonyi időszak
+    - nemzeti ünnepek körüli rendezvények
+    low:
+    - téli hónapok
+    - augusztusi szabadságok időszaka
+typical_objections:
+- objection: Az AI megoldás túl bonyolultnak tűnik a mi intézményünk számára.
+  response: Rendszerünk felhasználóbarát és testreszabható, így könnyen illeszthető
+    akár kisebb intézmények igényeihez is.
+- objection: Nem biztosak vagyunk az adatvédelmi megfelelőségben.
+  response: Megfelelünk a GDPR előírásainak, és segítünk az adatvédelmi folyamatok
+    kialakításában, így biztonságban tudhatja adatait.
+- objection: Nem vagyunk biztosak abban, hogy megéri a befektetés.
+  response: Számos ügyfelünk jelentős költségmegtakarítást és hatékonyságnövekedést
+    ért el az AI megoldásainkkal, így a befektetés gyorsan megtérül.
+- objection: Már van jegyértékesítő rendszerünk, nem szeretnénk bonyolítani a folyamatot.
+  response: Megoldásunk könnyen integrálható a meglévő rendszerekkel, így nem terheli
+    meg a jelenlegi folyamatokat, hanem támogatja azokat.
+- objection: Nincs elég technikai tudásunk az AI használatához.
+  response: Teljes körű támogatást és képzést biztosítunk, hogy csapata magabiztosan
+    használhassa az új technológiát.
+meta:
+  id: art_culture
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

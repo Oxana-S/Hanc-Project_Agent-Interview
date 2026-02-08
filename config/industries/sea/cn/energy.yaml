@@ -1,0 +1,189 @@
+pain_points:
+- description: 能源成本持续上涨，影响企业利润率
+  severity: high
+  solution_hint: AI语音代理可提供实时能源监控和优化建议，帮助降低能耗
+- description: 电网不稳定导致生产中断，增加运营风险
+  severity: high
+  solution_hint: AI语音代理集成智能预测系统，提前预警电网问题
+- description: 合规要求如PIPL增加数据管理复杂性
+  severity: medium
+  solution_hint: AI语音代理自动化数据合规检查，减少人工错误
+- description: 可再生能源集成困难，技术门槛高
+  severity: medium
+  solution_hint: AI语音代理提供定制化咨询和远程支持服务
+- description: 客户服务响应慢，影响满意度
+  severity: low
+  solution_hint: AI语音代理自动化处理常见查询，提升服务效率
+- description: 供应链管理不透明，导致延误
+  severity: medium
+  solution_hint: AI语音代理跟踪供应链状态，提供实时更新
+- description: 能源数据分散，缺乏统一分析
+  severity: medium
+  solution_hint: AI语音代理集成多系统数据，生成综合报告
+typical_services:
+- 能源管理咨询
+- 太阳能安装与维护
+- 智能电网解决方案
+- 节能改造服务
+- 电力交易代理
+- 储能系统集成
+- 工业能耗监控
+- 可再生能源证书管理
+- 碳足迹评估
+- 分布式能源部署
+recommended_functions:
+- name: 24/7客户支持
+  priority: high
+  reason: 能源行业需全天候响应，提升客户信任
+- name: 能源数据监控与报警
+  priority: high
+  reason: 预防生产中断，优化能源使用
+- name: 合规自动化检查
+  priority: medium
+  reason: 应对PIPL等法规，降低法律风险
+- name: 销售线索跟进
+  priority: medium
+  reason: 提高转化率，扩大市场份额
+- name: 多语言支持
+  priority: low
+  reason: 适应中国多民族市场，增强可及性
+- name: 集成报告生成
+  priority: medium
+  reason: 简化决策过程，提升运营效率
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 用友软件
+  - 金蝶软件
+  priority: high
+- name: SCADA系统
+  examples:
+  - 华为能源云
+  - 阿里云工业平台
+  priority: high
+- name: 客户关系管理
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: medium
+- name: 数据分析工具
+  examples:
+  - 百度智能云
+  - 腾讯云大数据
+  priority: medium
+- name: 合规管理软件
+  examples:
+  - 合规宝
+  - 数据安全管理平台
+  priority: low
+industry_faq:
+- question: 你们的服务如何帮助降低能源成本？
+  answer_template: 我们通过AI语音代理实时监控能源使用，提供自动化优化建议，平均可节省15-20%的能源费用。
+- question: 是否符合中国的数据保护法规如PIPL？
+  answer_template: 是的，我们的系统设计遵循PIPL要求，确保数据安全，并提供自动化合规报告。
+- question: 集成现有系统需要多长时间？
+  answer_template: 通常需要2-4周，具体取决于系统复杂度，我们提供快速部署支持。
+- question: 服务定价如何？
+  answer_template: 基于使用量和功能定制，起价5000 CNY/月，可根据需求调整。
+- question: 支持哪些能源类型？
+  answer_template: 支持太阳能、风能、传统电力等多种能源，提供综合解决方案。
+- question: 如何应对电网不稳定？
+  answer_template: 通过智能预测和储能集成，减少中断风险，提升供电可靠性。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 我们的服务起价5000 CNY/月，基于您的能源使用量和需求定制。通过节能，通常3-6个月可回收成本。
+  goal: 解释定价结构，突出ROI优势
+- trigger: compliance_concern
+  situation: 当客户担心合规问题时
+  script: 我们内置PIPL合规模块，自动化数据管理，减少您的法律风险。已有众多能源企业使用。
+  goal: 消除合规疑虑，建立信任
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时
+  script: 相比传统服务，我们的AI语音代理提供更快的响应和个性化支持，帮助您实时优化能源。
+  goal: 强调差异化优势
+- trigger: interest_in_renewables
+  situation: 当客户对可再生能源感兴趣时
+  script: 我们可以协助集成太阳能或风能，并提供政府补贴申请支持，最大化您的收益。
+  goal: 推动可再生能源解决方案销售
+competitors:
+- name: 华为能源
+  positioning: 技术驱动型能源解决方案提供商
+  strengths:
+  - 强大的研发能力
+  - 广泛的合作伙伴网络
+  weaknesses:
+  - 服务定制化不足
+  - 价格较高
+  our_differentiation: 我们专注于AI语音代理，提供更灵活、低成本的自动化服务
+- name: 国家电网
+  positioning: 国有垄断型电力供应商
+  strengths:
+  - 基础设施完善
+  - 政策支持
+  weaknesses:
+  - 创新慢
+  - 客户服务响应迟缓
+  our_differentiation: 我们提供快速部署的智能解决方案，提升客户自主管理能力
+- name: 阿里巴巴云能源
+  positioning: 云平台为基础的能源服务
+  strengths:
+  - 云计算资源丰富
+  - 易于扩展
+  weaknesses:
+  - 行业专精度低
+  - 集成复杂
+  our_differentiation: 我们专为能源行业设计，深度集成本地系统，简化操作
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 中型制造企业节能改造
+    monthly_cost: 10000
+    monthly_savings: 18300
+    payback_months: 3
+  value_anchors:
+  - 平均节能15%以上
+  - 提升运营效率30%
+  - 合规风险降低50%
+market_context:
+  market_size: 约10万亿CNY
+  growth_rate: 8%
+  key_trends:
+  - 可再生能源快速发展
+  - 智能化电网建设加速
+  - 碳中和发展目标推动
+  seasonality:
+    high:
+    - 夏季用电高峰
+    - 冬季供暖季
+    low:
+    - 春季检修期
+    - 节假日期间
+typical_objections:
+- objection: 我们已经有内部团队处理能源管理
+  response: AI语音代理可以补充团队，自动化重复任务，让他们专注于战略决策。
+- objection: 价格太高，预算有限
+  response: 考虑长期ROI，我们的服务通常在几个月内通过节能收回成本。
+- objection: 担心数据安全问题
+  response: 我们严格遵守PIPL，数据加密存储，并提供透明合规报告。
+- objection: 集成过程可能影响现有运营
+  response: 我们提供分阶段部署，最小化干扰，并有专业支持团队。
+meta:
+  id: energy
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- energy
+- solar
+- renewable
+- power
+- utilities
+_extends: _base/energy

@@ -1,0 +1,237 @@
+pain_points:
+- description: Alta carga administrativa e excesso de papelada, consumindo tempo valioso
+    dos advogados.
+  severity: high
+  solution_hint: Automatizar tarefas como agendamento, arquivamento e gestão de documentos
+    com IA para liberar recursos.
+- description: Custos elevados com pessoal para funções repetitivas, como rececionistas
+    e assistentes administrativos.
+  severity: medium
+  solution_hint: Implementar agentes de voz IA para reduzir despesas operacionais
+    e aumentar eficiência.
+- description: Dificuldade em cumprir prazos legais e judiciais devido a gestão manual
+    de calendários.
+  severity: high
+  solution_hint: Usar IA para notificações automáticas de prazos e lembretes, evitando
+    multas e atrasos.
+- description: Comunicação ineficiente com clientes, levando a altos volumes de chamadas
+    e emails não respondidos.
+  severity: medium
+  solution_hint: Agentes de voz IA podem fazer triagem inicial, responder FAQs e agendar
+    consultas, melhorando o atendimento.
+- description: Conformidade com GDPR requer processos complexos e documentação extensa,
+    aumentando riscos.
+  severity: high
+  solution_hint: Automatizar verificações de conformidade e gestão de consentimentos
+    com IA integrada.
+- description: Competição crescente de firmas de advocacia digitais que oferecem serviços
+    mais rápidos e baratos.
+  severity: low
+  solution_hint: Adotar tecnologia de IA para diferenciar-se através de eficiência
+    e atendimento personalizado.
+typical_services:
+- Direito Civil
+- Direito Comercial e Empresarial
+- Direito do Trabalho
+- Direito Fiscal
+- Direito da Propriedade Intelectual
+- Mediação e Arbitragem
+- Consultoria Jurídica
+- Elaboração e Revisão de Contratos
+- Assistência em Processos Judiciais
+- Compliance e Proteção de Dados (GDPR)
+recommended_functions:
+- name: Triagem de Chamadas e Agendamento Automático
+  priority: high
+  reason: Reduz tempo de espera dos clientes e otimiza a agenda dos advogados, comum
+    em escritórios portugueses.
+- name: Respostas a Perguntas Frequentes (FAQs) em Português
+  priority: medium
+  reason: Liberta a equipa de tarefas básicas, permitindo focar em casos complexos,
+    melhorando a experiência do cliente.
+- name: Gestão de Documentos com Reconhecimento de Voz
+  priority: high
+  reason: Facilita a criação e organização de documentos legais, essencial para cumprir
+    prazos e GDPR.
+- name: Notificações de Prazos Legais via Voz
+  priority: high
+  reason: Evita atrasos custosos em processos judiciais, um ponto crítico no sistema
+    legal português.
+- name: Integração com CRM para Seguimento de Clientes
+  priority: medium
+  reason: Mantém histórico de interações, importante para fidelização e gestão de
+    casos em Portugal.
+- name: Automação de Faturação e Pagamentos
+  priority: low
+  reason: Simplifica processos financeiros, reduzindo erros e melhorando fluxo de
+    caixa.
+typical_integrations:
+- name: Sistemas de Gestão de Escritórios de Advocacia
+  examples:
+  - Lexnet
+  - Advocatus
+  - Juris
+  priority: high
+- name: Software de Faturação e Contabilidade
+  examples:
+  - Sage
+  - Primavera
+  - SPC
+  priority: medium
+- name: Plataformas de Comunicação e Videoconferência
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Webex
+  priority: medium
+- name: Ferramentas de Arquivo Digital e Cloud
+  examples:
+  - Dropbox Business
+  - Google Workspace
+  - OneDrive
+  priority: high
+- name: Bases de Dados Jurídicas Portuguesas
+  examples:
+  - Doutrina e Jurisprudência online
+  - Portal da Justiça
+  priority: low
+industry_faq:
+- question: Como é que um agente de voz IA pode ajudar no meu escritório de advocacia
+    em Portugal?
+  answer_template: Pode automatizar tarefas como agendamento, triagem de clientes
+    e gestão de documentos, libertando tempo para focar em trabalho jurídico de valor,
+    tudo em conformidade com o GDPR.
+- question: É seguro em termos de proteção de dados, considerando o GDPR na UE?
+  answer_template: Sim, os nossos sistemas são desenvolvidos com conformidade GDPR
+    integrada, garantindo que todos os dados são processados de forma segura e legal
+    em Portugal.
+- question: Quanto custa implementar esta solução em EUR?
+  answer_template: Oferecemos planos acessíveis a partir de 50 EUR por mês, adaptados
+    ao tamanho do seu escritório, com ROI rápido através de poupanças em custos operacionais.
+- question: Posso integrar com software que já uso, como o Lexnet?
+  answer_template: Absolutamente. Suportamos integrações com sistemas populares em
+    Portugal, como Lexnet e Sage, para uma transição suave.
+- question: O agente entende terminologia jurídica específica em português?
+  answer_template: Sim, é treinado com vocabulário jurídico português e pode ser personalizado
+    para o seu escritório, assegurando precisão nas respostas.
+- question: E se precisar de suporte técnico local?
+  answer_template: Fornecemos suporte em português com equipas dedicadas em Portugal,
+    disponíveis para ajudar em qualquer fase.
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre custos durante uma conversa inicial.
+  script: Entendo a sua preocupação. Oferecemos soluções a partir de 50 EUR por mês,
+    que podem economizar até 40% em tempo administrativo. Posso mostrar-lhe um caso
+    de estudo com ROI em menos de 2 meses?
+  goal: Converter a objecção de preço em valor tangível e agendar uma demonstração.
+- trigger: efficiency_inquiry
+  situation: Cliente menciona ineficiências no atendimento ao cliente.
+  script: Com o nosso agente de voz IA, pode reduzir o tempo de triagem em 50% e melhorar
+    a satisfação dos clientes. Gostaria de ver como funciona com um teste gratuito
+    de 14 dias?
+  goal: Destacar benefícios práticos e incentivar um teste sem compromisso.
+- trigger: integration_concern
+  situation: Cliente expressa receio sobre integrar com sistemas existentes.
+  script: Não se preocupe. Trabalhamos frequentemente com sistemas como Lexnet em
+    Portugal e garantimos uma integração rápida, sem interrupções. Podemos começar
+    com um módulo simples como o agendamento?
+  goal: Aliviar preocupações e propor uma implementação faseada para ganhar confiança.
+competitors:
+- name: Lexnet
+  positioning: Líder em software de gestão para escritórios de advocacia em Portugal.
+  strengths:
+  - Reconhecimento de mercado
+  - Integração profunda com sistemas jurídicos
+  weaknesses:
+  - Custos elevados
+  - Pouca automação baseada em IA
+  our_differentiation: Oferecemos automação de voz mais acessível e flexível, com
+    foco em eficiência operacional e suporte local.
+- name: Advocatus
+  positioning: Solução de gestão de casos popular entre pequenos escritórios.
+  strengths:
+  - Interface intuitiva
+  - Bom suporte ao cliente em português
+  weaknesses:
+  - Funcionalidades limitadas de IA
+  - Escalabilidade reduzida
+  our_differentiation: Agentes de voz IA que complementam a gestão de casos, com preços
+    baseados em uso e atualizações contínuas.
+- name: Juris Tech
+  positioning: Fornecedor de tecnologia jurídica inovadora na Europa.
+  strengths:
+  - Inovação em digitalização
+  - Parcerias internacionais
+  weaknesses:
+  - Foco menos no mercado português
+  - Implementação complexa
+  our_differentiation: Especialização no contexto português, com soluções simples
+    e conformidade GDPR nativa.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 50
+  roi_examples:
+  - scenario: Escritório pequeno com 2 advogados, automatizando agendamentos e respostas
+      a FAQs.
+    monthly_cost: 75
+    monthly_savings: 200
+    payback_months: 1
+  - scenario: Escritório médio com 5 advogados, reduzindo tempo administrativo em
+      15 horas por semana.
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação IA.
+  - Aumente a produtividade, permitindo mais tempo para casos lucrativos.
+  - Conformidade GDPR incluída, sem preocupações adicionais.
+market_context:
+  market_size: Estimado em 150 milhões EUR anuais em serviços jurídicos em Portugal,
+    com crescimento em tecnologia.
+  growth_rate: 4% YoY
+  key_trends:
+  - Digitalização acelerada de processos legais devido à pandemia.
+  - Aumento da procura por serviços de compliance com GDPR.
+  - Crescimento de firmas de advocacia online e modelos híbridos.
+  - Adoção de IA para melhorar eficiência e reduzir custos.
+  seasonality:
+    high:
+    - Setembro a Novembro
+    - Janeiro a Março
+    low:
+    - Julho a Agosto
+    - Dezembro
+typical_objections:
+- objection: Não temos orçamento para investir em tecnologia nova.
+  response: Compreendemos. No entanto, os nossos planos começam em 50 EUR por mês
+    e o ROI é rápido—muitos clientes recuperam o investimento em poucas semanas através
+    de poupanças. Podemos começar com um período de teste?
+- objection: Preferimos o contacto humano direto com os clientes.
+  response: O agente de voz IA não substitui o contacto humano, mas complementa-o,
+    libertando a equipa para interações mais valiosas. Pode melhorar a experiência
+    do cliente com respostas rápidas a consultas básicas.
+- objection: A implementação parece disruptiva para as nossas operações diárias.
+  response: Oferecemos uma implementação faseada e suportada, com formação em português.
+    Muitos escritórios em Portugal adaptam-se em dias, sem interrupções significativas.
+- objection: Já usamos outros softwares e não queremos mais complexidade.
+  response: A nossa solução integra-se facilmente com sistemas existentes, adicionando
+    valor sem substituí-los. Podemos demonstrar como funciona com o seu atual setup
+    em uma sessão personalizada.
+meta:
+  id: legal
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

@@ -1,0 +1,288 @@
+pain_points:
+- description: Alto costo por contratación, especialmente en puestos de nivel medio
+    y alto, que puede llegar a representar hasta el 30% del salario anual del candidato.
+  severity: high
+  solution_hint: Automatizar el filtro inicial de candidatos y programar entrevistas
+    para reducir tiempo de búsqueda y costos asociados a reclutadores externos.
+- description: Proceso de selección lento y manual, con largos tiempos de respuesta
+    que provocan pérdida de candidatos valiosos para competidores.
+  severity: high
+  solution_hint: Implementar un agente de voz que realice screening inicial 24/7,
+    agilizando el primer contacto y clasificación.
+- description: Dificultad para encontrar candidatos con habilidades técnicas específicas
+    en un mercado laboral competitivo, como desarrolladores de software o ingenieros
+    especializados.
+  severity: high
+  solution_hint: Usar un agente de IA para contactar proactivamente a candidatos pasivos
+    en bases de datos y redes sociales, evaluando interés y disponibilidad.
+- description: Cumplimiento normativo complejo (LFPDPPP) en el manejo de datos personales
+    de candidatos, con riesgo de sanciones.
+  severity: medium
+  solution_hint: Automatizar la gestión de consentimientos y el archivo seguro de
+    datos durante el proceso de reclutamiento, asegurando cumplimiento.
+- description: Alta tasa de rotación en puestos operativos, generando necesidad constante
+    de reclutamiento masivo y costoso.
+  severity: medium
+  solution_hint: Automatizar el reclutamiento para volúmenes altos, como en call centers
+    o retail, con preselección por voz eficiente.
+- description: Falta de estandarización en la experiencia del candidato, dañando la
+    imagen de la empresa como empleador.
+  severity: low
+  solution_hint: Proporcionar un punto de contacto unificado y profesional (agente
+    de voz) que guíe a todos los candidatos de manera consistente.
+- description: Dificultad para medir la efectividad de diferentes canales de reclutamiento
+    (portales de empleo, redes sociales, referidos).
+  severity: low
+  solution_hint: Integrar el agente de voz con sistemas de seguimiento (ATS) para
+    atribuir fuentes y analizar el costo por canal.
+typical_services:
+- Reclutamiento y selección de personal
+- Headhunting (caza de talentos)
+- Temporales (outsourcing de nómina)
+- Evaluación psicométrica y de competencias
+- Employer branding (construcción de marca empleadora)
+- Reclutamiento masivo (para retail, call centers)
+- Servicios de payroll (outsourcing de nómina)
+- Consultoría en reclutamiento
+- Capacitación y onboarding
+- Administración de contratos y cumplimiento legal
+recommended_functions:
+- name: Screening inicial automatizado
+  priority: high
+  reason: Reduce drásticamente el tiempo de pre-selección, permite atender altos volúmenes
+    y califica candidatos 24/7 según criterios predefinidos.
+- name: Programación inteligente de entrevistas
+  priority: high
+  reason: Coordina automáticamente horarios entre candidatos y reclutadores, eliminando
+    el tedioso intercambio de correos y llamadas.
+- name: Confirmación y recordatorios de citas
+  priority: medium
+  reason: Disminuye la tasa de no-show en entrevistas, optimizando el tiempo de los
+    reclutadores y mejorando la experiencia del candidato.
+- name: Respuesta a preguntas frecuentes sobre vacantes
+  priority: medium
+  reason: Libera al equipo de RH de consultas repetitivas sobre salarios, horarios,
+    beneficios y requisitos, permitiéndoles enfocarse en tareas de mayor valor.
+- name: Prospección de candidatos pasivos
+  priority: low
+  reason: Contacta de manera automatizada y personalizada a potenciales candidatos
+    en bases de datos para sondear interés en nuevas oportunidades.
+- name: Encuestas de satisfacción post-entrevista
+  priority: low
+  reason: Recopila feedback inmediato para mejorar el proceso y fortalecer la marca
+    empleadora.
+typical_integrations:
+- name: Sistema de Seguimiento de Candidatos (ATS)
+  examples:
+  - BambooHR
+  - OCC Mundial ATS
+  - Talentfy
+  - Zoho Recruit
+  priority: high
+- name: Plataforma de videollamadas
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Google Meet
+  priority: high
+- name: Portal de empleo/bolsa de trabajo
+  examples:
+  - OCCMundial
+  - Computrabajo
+  - Indeed México
+  - LinkedIn Talent Solutions
+  priority: medium
+- name: Sistema de gestión de recursos humanos (HRMS)
+  examples:
+  - SAP SuccessFactors
+  - Oracle HCM Cloud
+  - Worcket
+  priority: medium
+- name: Herramientas de evaluación
+  examples:
+  - Cegid
+  - evaluar.com
+  - Mettl
+  priority: low
+industry_faq:
+- question: ¿Cómo garantizan la confidencialidad de los datos de los candidatos según
+    la LFPDPPP?
+  answer_template: Nuestro sistema está diseñado para el cumplimiento normativo. Los
+    datos se procesan con consentimiento explícito, se encriptan y solo son accesibles
+    para su equipo autorizado. Podemos proporcionar cláusulas de confidencialidad
+    y un aviso de privacidad específico.
+- question: ¿Puede el agente manejar el acento y jerga regional de México?
+  answer_template: Sí, nuestro agente de voz está entrenado con amplios datos del
+    español mexicano, incluyendo modismos regionales y terminología local de reclutamiento,
+    para una comunicación natural y efectiva en todo el país.
+- question: ¿Qué pasa si un candidato tiene una pregunta compleja que el agente no
+    puede responder?
+  answer_template: El agente está programado para identificar consultas fuera de su
+    alcance y transferir la llamada de manera inmediata y fluida a un reclutador humano
+    de su equipo, o tomar los datos para que un especialista se contacte posteriormente.
+- question: ¿Cuánto tiempo se tarda en implementar la solución?
+  answer_template: La implementación básica puede estar operativa en 2 a 4 semanas,
+    dependiendo de las integraciones necesarias. Incluimos la configuración de los
+    flujos de conversación, criterios de screening y capacitación para su equipo.
+- question: ¿Funciona para reclutamiento masivo en turnos nocturnos o fines de semana?
+  answer_template: Absolutamente. Es una de sus mayores ventajas. El agente trabaja
+    24/7, 365 días al año, permitiendo captar candidatos para turnos no convencionales
+    sin necesidad de personal extra.
+- question: ¿Cómo miden el retorno de inversión (ROI)?
+  answer_template: 'Medimos métricas clave como: reducción en el ''tiempo para contratar'',
+    disminución del costo por contratación, aumento en la tasa de confirmación de
+    entrevistas y horas liberadas para su equipo de RH. Proporcionamos reportes mensuales
+    detallados.'
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el prospecto pregunta por el costo del servicio.
+  script: Entiendo que el presupuesto es una consideración clave. Nuestro modelo se
+    basa en el volumen y las funcionalidades. Una implementación básica para automatizar
+    el screening y la programación de entrevistas puede empezar desde unos $15,000
+    MXN mensuales. Esto típicamente se paga solo con la reducción de 1 o 2 contrataciones
+    por agencia externa al mes. ¿Me permite hacerle unas preguntas para entender su
+    volumen y ofrecerle una cotización más precisa?
+  goal: No dar un precio fijo inmediato, sino contextualizar el valor, mencionar un
+    punto de entrada y calificar mejor al prospecto.
+- trigger: objection_technology
+  situation: Cuando el cliente expresa escepticismo sobre el uso de IA o piensa que
+    es muy complejo.
+  script: 'Es una preocupación válida. Le aseguro que la tecnología está diseñada
+    para ser una aliada, no un reemplazo. Nuestro agente maneja las tareas repetitivas
+    y agotadoras, como las primeras llamadas de screening, para que su equipo humano
+    pueda enfocarse en lo que hace mejor: construir relaciones y evaluar el ''fit''
+    cultural en entrevistas profundas. Es tan fácil de usar como configurar un flujo
+    de preguntas. Además, le proporcionamos soporte continuo y reportes claros.'
+  goal: Reducir la ansiedad por la tecnología, enfatizar la colaboración humano-IA
+    y destacar la facilidad de uso con soporte.
+- trigger: competitor_mention
+  situation: Cuando el prospecto menciona a un competidor local o una solución tradicional.
+  script: Sí, conozco [Nombre del competidor/solución]. Ellos tienen una buena presencia.
+    Nuestra diferencia clave está en la especialización para reclutamiento y la potencia
+    de nuestra automatización por voz. Mientras otras soluciones se enfocan en chatbots
+    de texto o son CRMs genéricos, nuestro agente realiza entrevistas de pre-selección
+    reales por teléfono, captando matices que el texto pierde y llegando a candidatos
+    que no están constantemente en línea. Además, nuestras integraciones con ATS locales
+    como OCC o BambooHR son más profundas.
+  goal: Reconocer al competidor, pero destacar nuestra especialización, ventaja tecnológica
+    (voz vs texto) y mejores integraciones locales.
+competitors:
+- name: OCCMundial (Servicios de reclutamiento)
+  positioning: Líder en portales de empleo y servicios de reclutamiento tradicional
+    en México.
+  strengths:
+  - Reconocimiento de marca masivo
+  - Amplia base de datos de candidatos
+  - Oferta integral (portal, ATS, headhunting)
+  weaknesses:
+  - Procesos aún muy manuales en algunos servicios
+  - Costos altos para headhunting
+  - Menos enfoque en automatización end-to-end
+  our_differentiation: Ofrecemos automatización inteligente que reduce su dependencia
+    de servicios manuales costosos, integrando directamente con su flujo de trabajo
+    para mayor control y eficiencia.
+- name: Adecco México
+  positioning: Firma global de staffing y reclutamiento con fuerte presencia en outsourcing
+    y temporales.
+  strengths:
+  - Infraestructura global y local
+  - Amplia experiencia en sectores industriales
+  - Soluciones de nómina y outsourcing
+  weaknesses:
+  - Estructura de costos alta
+  - Puede ser menos ágil para empresas medianas
+  - Enfoque menos tecnológico en procesos propios
+  our_differentiation: Somos una solución tecnológica que empodera a su equipo interno
+    de RH, no una agencia externa. Reduzca costos de contingencia dándole herramientas
+    de automatización a su personal, manteniendo el control sobre el proceso y la
+    marca empleadora.
+- name: Talentfy
+  positioning: Plataforma de reclutamiento tecnológica (ATS) con sede en Latam.
+  strengths:
+  - Solución tecnológica moderna
+  - Diseñada para el mercado latinoamericano
+  - Funciones de colaboración en equipo
+  weaknesses:
+  - Principalmente un ATS (sistema de seguimiento)
+  - La automatización de interacción con candidatos es limitada (chatbot básico)
+  - No especializada en interacción por voz
+  our_differentiation: Nos complementamos perfectamente con un ATS como Talentfy.
+    Mientras ellos organizan la información, nosotros somos el primer punto de contacto
+    activo y automatizado con los candidatos por voz, una capa de interacción que
+    ellos no tienen, captando más y mejor talento.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 15000
+  - 80000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Agencia de reclutamiento mediana que realiza 50 screenings telefónicos
+      manuales por semana.
+    monthly_cost: 25000
+    monthly_savings: 40000
+    payback_months: 1.5
+  - scenario: Empresa manufacturera con alta rotación, necesita reclutamiento masivo
+      para 100 vacantes operativas al mes.
+    monthly_cost: 45000
+    monthly_savings: 120000
+    payback_months: 1
+  value_anchors:
+  - Reduce el 'tiempo para contratar' hasta en un 40%.
+  - Disminuye el costo por contratación al automatizar tareas de reclutadores junior.
+  - Capta candidatos pasivos fuera del horario laboral.
+market_context:
+  market_size: Estimado en más de $25 mil millones de MXN anuales en servicios de
+    reclutamiento y staffing.
+  growth_rate: 8-12% anual, impulsado por la digitalización y la guerra por el talento
+    especializado.
+  key_trends:
+  - Digitalización acelerada de procesos de RH post-pandemia.
+  - Aumento en la demanda de talento en tecnología (TI) y e-commerce.
+  - Mayor énfasis en la experiencia del candidato (Candidate Experience) como diferenciador.
+  - Crecimiento del 'employer branding' para atraer a millennials y Gen Z.
+  - Adopción incipiente de IA y automatización en reclutamiento, especialmente en
+    grandes empresas.
+  seasonality:
+    high:
+    - Enero-Febrero (propósitos de año nuevo)
+    - Junio-Julio (graduados)
+    - Septiembre-Octubre (presupuestos nuevos aprobados)
+    low:
+    - Diciembre (festividades)
+    - Semana Santa
+    - Agosto (periodo vacacional)
+typical_objections:
+- objection: Nuestros procesos son muy particulares y creemos que una máquina no los
+    entendería.
+  response: Totalmente entendible. La clave es que nosotros no le vendemos una caja
+    negra. Trabajamos con ustedes para mapear sus procesos exactos, jerga específica
+    de la industria y criterios de evaluación en los flujos de conversación del agente.
+    Es una personalización profunda, no una solución genérica.
+- objection: Prefiero el toque humano para el primer contacto con un candidato.
+  response: Valoramos esa perspectiva. Sin embargo, considere que muchos candidatos,
+    especialmente los más técnicos o los pasivos, prefieren la eficiencia. Un agente
+    disponible 24/7 les da flexibilidad. Además, el agente libera a su equipo humano
+    de las preguntas repetitivas iniciales, para que puedan dedicar tiempo de calidad
+    a las entrevistas donde el 'toque humano' realmente marca la diferencia.
+- objection: Ya tenemos un ATS/CRM y no queremos otro sistema más.
+  response: Excelente, tener un ATS es el primer paso. Nosotros no lo reemplazamos,
+    lo potenciamos. Nuestra solución se integra directamente con su ATS existente.
+    El agente de voz alimenta automáticamente datos calificados de candidatos, programación
+    de entrevistas y notas, evitando dobles capturas. Es una capa de inteligencia
+    conversacional sobre su sistema actual.
+meta:
+  id: recruitment
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

@@ -1,0 +1,216 @@
+pain_points:
+- description: Alta estacionalidad de la demanda, con picos en eventos como bodas
+    y fiestas de fin de año.
+  severity: high
+  solution_hint: El agente de voz AI puede gestionar reservas y recordatorios automáticamente,
+    optimizando la agenda durante temporadas altas.
+- description: Costos elevados de equipos y mantenimiento, con dificultades para acceder
+    a financiación.
+  severity: high
+  solution_hint: El agente puede ofrecer información sobre opciones de renting o servicios
+    de suscripción para reducir costos iniciales.
+- description: Dificultad para gestionar múltiples consultas de clientes simultáneamente,
+    llevando a pérdida de oportunidades.
+  severity: medium
+  solution_hint: Automatizar respuestas a preguntas frecuentes y programar citas mediante
+    el agente de voz.
+- description: Retrasos en pagos por parte de clientes, afectando el flujo de caja.
+  severity: medium
+  solution_hint: Integrar recordatorios de pago y seguimiento de facturas con el agente
+    para mejorar la cobranza.
+- description: Competencia intensa de freelancers y estudios pequeños, con precios
+    muy variables.
+  severity: high
+  solution_hint: El agente puede destacar servicios personalizados y valor agregado
+    en las conversaciones con clientes.
+- description: Desafíos en la logística para sesiones en exteriores, como permisos
+    o condiciones climáticas.
+  severity: low
+  solution_hint: Proporcionar alertas y consejos automatizados basados en ubicación
+    y clima.
+- description: Poca estandarización en procesos de postproducción, causando ineficiencias.
+  severity: medium
+  solution_hint: Guiar a los clientes a través de flujos de trabajo predefinidos y
+    gestionar entregas con el agente.
+typical_services:
+- Fotografía de eventos (bodas, cumpleaños)
+- Videografía corporativa
+- Sesiones de retrato y estudio
+- Edición y postproducción de video
+- Fotografía de productos para e-commerce
+- Servicios de drone para tomas aéreas
+- Cobertura de eventos sociales
+- Creación de contenido para redes sociales
+- Fotografía de arquitectura y bienes raíces
+- Servicios de livestreaming y transmisión en vivo
+recommended_functions:
+- name: Programación de citas automática
+  priority: high
+  reason: Reduce la carga administrativa y mejora la conversión de consultas en reservas.
+- name: Recordatorios de pago y seguimiento
+  priority: high
+  reason: Ayuda a mantener un flujo de caja saludable al minimizar retrasos.
+- name: Respuestas a preguntas frecuentes 24/7
+  priority: medium
+  reason: Proporciona soporte inmediato a clientes, aumentando la satisfacción.
+- name: Seguimiento de proyectos y entregas
+  priority: medium
+  reason: Mejora la comunicación con clientes y reduce errores en postproducción.
+- name: Generación de leads y calificación
+  priority: high
+  reason: Identifica oportunidades de venta basadas en necesidades específicas del
+    cliente.
+- name: Integración con calendarios y CRM
+  priority: low
+  reason: Sincroniza datos para una gestión más eficiente del negocio.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Vtiger
+  - Zoho CRM
+  priority: high
+- name: Software de edición y gestión de proyectos
+  examples:
+  - Adobe Creative Cloud
+  - DaVinci Resolve
+  priority: medium
+- name: Plataformas de pagos en línea
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  priority: high
+- name: Herramientas de calendario y agenda
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: medium
+- name: Sistemas de reservas y citas
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  priority: low
+industry_faq:
+- question: ¿Cuál es el costo promedio para una sesión de fotografía de bodas?
+  answer_template: El costo varía según los servicios incluidos, pero típicamente
+    parte desde $50,000 ARS para cobertura básica. Podemos personalizar un paquete
+    según sus necesidades.
+- question: ¿Ofrecen servicios de edición de video?
+  answer_template: Sí, proporcionamos edición profesional de video, incluyendo corrección
+    de color y efectos. Los precios se basan en la duración y complejidad del proyecto.
+- question: ¿Cuánto tiempo tarda la entrega de las fotos después del evento?
+  answer_template: Generalmente entregamos las fotos editadas en 2 a 3 semanas, pero
+    podemos ajustar los plazos según urgencias.
+- question: ¿Trabajan con drones para tomas aéreas?
+  answer_template: Sí, contamos con pilotos certificados y equipos de drone para capturas
+    aéreas seguras y de alta calidad.
+- question: ¿Aceptan pagos en cuotas?
+  answer_template: Sí, ofrecemos opciones de pago en cuotas a través de plataformas
+    como Mercado Pago, sujeto a aprobación.
+- question: ¿Qué incluye un paquete básico de videografía corporativa?
+  answer_template: Incluye grabación, edición básica y entrega en formatos digitales.
+    Podemos añadir servicios como animaciones o subtítulos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios de servicios.
+  script: Entiendo que el presupuesto es importante. Ofrecemos opciones desde $30,000
+    ARS para servicios básicos, con paquetes personalizados que maximizan su inversión.
+    ¿Podría contarme más sobre su proyecto para recomendarle lo mejor?
+  goal: Calificar al cliente y guiar la conversación hacia una venta personalizada.
+- trigger: service_inquiry
+  situation: Cuando un cliente consulta sobre servicios específicos como fotografía
+    de eventos.
+  script: Excelente elección. Especializamos en fotografía de eventos con enfoque
+    en momentos espontáneos. Para asegurar calidad, coordinamos todos los detalles
+    desde el inicio. ¿Tiene una fecha en mente para discutir disponibilidad?
+  goal: Convertir la consulta en una cita o reserva.
+- trigger: objection_handling
+  situation: Cuando un cliente expresa preocupación por el costo.
+  script: Comprendo su preocupación. Nuestros servicios están diseñados para ofrecer
+    alto retorno de inversión, como mayor engagement en redes sociales. Podemos empezar
+    con un paquete básico y escalar según resultados. ¿Le interesa explorar opciones?
+  goal: Superar objeciones y mantener el interés del cliente.
+competitors:
+- name: Estudio Fotográfico Buenos Aires
+  positioning: Establecido en el mercado local con enfoque en eventos de lujo.
+  strengths:
+  - Alta calidad de equipo
+  - reputación sólida
+  weaknesses:
+  - Precios elevados
+  - menor flexibilidad en servicios
+  our_differentiation: Ofrecemos precios más accesibles con soporte automatizado que
+    mejora la experiencia del cliente.
+- name: VideoPro Argentina
+  positioning: Especializado en videografía corporativa y publicitaria.
+  strengths:
+  - Tecnología avanzada
+  - portfolio extenso
+  weaknesses:
+  - Tiempos de respuesta lentos
+  - poca personalización
+  our_differentiation: Integramos AI para respuestas rápidas y servicios altamente
+    personalizados.
+- name: Freelancers en plataformas como Workana
+  positioning: Ofrecen servicios a bajo costo en el mercado digital.
+  strengths:
+  - Precios competitivos
+  - flexibilidad
+  weaknesses:
+  - Calidad inconsistente
+  - falta de soporte postventa
+  our_differentiation: Garantizamos calidad profesional con soporte continuo y procesos
+    estandarizados.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 30000
+  - 200000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Automatización de reservas y recordatorios para un fotógrafo de bodas.
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Reduzca el tiempo administrativo en un 30% con nuestra automatización.
+  - Aumente sus reservas en temporada alta con respuestas inmediatas a clientes.
+market_context:
+  market_size: Estimado en $500 millones ARS anuales en Argentina.
+  growth_rate: 10% YoY
+  key_trends:
+  - Aumento de demanda para contenido digital en redes sociales
+  - crecimiento de servicios de drone
+  - preferencia por paquetes personalizados.
+  seasonality:
+    high:
+    - Diciembre a Marzo (bodas
+    - fiestas)
+    - Septiembre a Noviembre (eventos corporativos)
+    low:
+    - Junio a Agosto (invierno
+    - menos eventos al aire libre)
+typical_objections:
+- objection: Es muy caro para mi presupuesto.
+  response: Entiendo. Ofrecemos planes flexibles y podemos ajustar servicios para
+    cumplir con su presupuesto, manteniendo calidad. ¿Le gustaría ver opciones más
+    económicas?
+- objection: Prefiero trabajar con alguien local que conozco.
+  response: Valoramos la confianza local. Nos diferenciamos con tecnología que complementa
+    el servicio personalizado, asegurando eficiencia sin perder el toque humano.
+- objection: No estoy seguro de necesitar todos los servicios.
+  response: Podemos empezar con lo esencial y escalar según sus resultados. Muchos
+    clientes ven mejoras rápidas en engagement, lo que justifica la inversión.
+meta:
+  id: photo_video
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

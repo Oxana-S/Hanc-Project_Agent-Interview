@@ -1,0 +1,269 @@
+pain_points:
+- description: Komplexe und sich ständig ändernde regulatorische Anforderungen, insbesondere
+    mit MiCA und nationalen Gesetzen.
+  severity: high
+  solution_hint: Automatisierte Updates zu regulatorischen Änderungen und Compliance-Checks
+    per Sprachassistent anbieten.
+- description: Hohe Unsicherheit bei Kunden bezüglich Steuererklärung von Kryptogeschäften.
+  severity: high
+  solution_hint: Voice Agent kann grundlegende Steuer-FAQs beantworten und zu zertifizierten
+    Steuerberatern verbinden.
+- description: Mangelndes Vertrauen in Kryptoplattformen aufgrund vergangener Sicherheitsvorfälle.
+  severity: high
+  solution_hint: Assistent kann Sicherheitsprotokolle erklären und Zwei-Faktor-Authentifizierungs-Einrichtungen
+    unterstützen.
+- description: Technische Hürden für weniger versierte Nutzer bei Wallet-Einrichtung
+    und Transaktionen.
+  severity: medium
+  solution_hint: Schritt-für-Schritt-Sprachführung durch Einrichtungsprozesse anbieten.
+- description: 24/7-Kundenservice-Erwartung, der mit menschlichem Personal schwer
+    zu skalieren ist.
+  severity: medium
+  solution_hint: AI Voice Agent bietet rund um die Uhr Support für Standardanfragen
+    zu Kontoständen und Transaktionsstatus.
+- description: Schwierigkeiten bei der Liquiditätsbeschaffung für kleinere Krypto-Assets
+    auf dem deutschen Markt.
+  severity: medium
+  solution_hint: Assistent kann Liquiditätsinformationen aggregieren und verfügbare
+    Handelsplätze auflisten.
+- description: Hoher administrativer Aufwand für KYC- und AML-Verfahren (Know Your
+    Customer, Anti-Money Laundering).
+  severity: low
+  solution_hint: Sprachgesteuerte Dokumenteneinreichung und Statusüberprüfung für
+    KYC-Verfahren automatisieren.
+typical_services:
+- Krypto-Handelsplattform (Exchange)
+- Custody-Lösungen (Verwahrung)
+- Krypto-Steuerberatung und Reporting
+- Wallet-Provisionierung und Verwaltung
+- Blockchain-Entwicklung und Smart Contracts
+- Krypto-Staking und Yield-Farming-Dienste
+- Initial Coin Offering (ICO) / Security Token Offering (STO) Beratung
+- Krypto-Payment-Gateways für Händler
+- Dezentrale Finanz (DeFi) Protokoll-Integration
+- Krypto-Bildung und Webinare
+recommended_functions:
+- name: Compliance-Assistent
+  priority: high
+  reason: Regulatorische Anforderungen sind der größte Schmerzpunkt für deutsche Krypto-Firmen.
+- name: Kundenservice-First-Level-Support
+  priority: high
+  reason: Entlastet das menschliche Team von häufigen Anfragen zu Konten und Transaktionen.
+- name: Steuer-FAQ- und Dokumenten-Sammler
+  priority: high
+  reason: Adressiert eine der häufigsten Kundensorgen im deutschen Steuerumfeld.
+- name: Sicherheits-Einrichtungs-Assistent
+  priority: medium
+  reason: Baut Vertrauen auf, indem es Nutzer durch kritische Sicherheitseinstellungen
+    führt.
+- name: Marktinformations-Sprecher
+  priority: medium
+  reason: Bietet schnellen Zugang zu Preisen und Trends für deutsche Handelszeiten.
+- name: Onboarding-Begleiter
+  priority: low
+  reason: Verbessert die Nutzererfahrung für Neukunden und reduziert Abbruchraten.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexoffice
+  - SevDesk
+  priority: high
+- name: KYC/AML-Dienstleister
+  examples:
+  - IDnow
+  - WebID
+  - Schufa
+  priority: high
+- name: Steuerberechnungs-Tools
+  examples:
+  - Crypto Tax
+  - Blockpit
+  - Coinfinity
+  priority: medium
+- name: Liquiditäts-Provider / Börsen
+  examples:
+  - BSDEX
+  - Bitcoin.de API
+  - Kraken API
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - Mattermost
+  - Rocket.Chat
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: Sind Kryptogeschäfte in Deutschland legal und reguliert?
+  answer_template: Ja, der Handel mit Kryptowährungen ist in Deutschland legal. Kryptoverwahrung
+    unterliegt der Aufsicht der BaFin und erfordert eine Lizenz. Unser Service unterstützt
+    Sie bei der Einhaltung aller regulatorischen Vorgaben, einschließlich der kommenden
+    MiCA-Verordnung der EU.
+- question: Wie versteuere ich meine Kryptogewinne in Deutschland?
+  answer_template: In Deutschland unterliegen private Veräußerungsgewinne aus Kryptowährungen
+    der Einkommensteuer, wenn die Haltefrist unter einem Jahr liegt. Nach einem Jahr
+    sind sie steuerfrei. Wir empfehlen die Zusammenarbeit mit einem steuerlichen Fachberater
+    und können grundlegende Transaktionsberichte für Ihre Steuererklärung bereitstellen.
+- question: Ist mein Geld bei Ihnen sicher und versichert?
+  answer_template: Wir setzen auf mehrstufige Sicherheitssysteme, darunter Cold Storage
+    für den Großteil der Assets. Unser Unternehmen unterliegt der deutschen Regulierung.
+    Konkrete Versicherungsumfänge besprechen wir gerne in einem persönlichen Gespräch,
+    um Ihre individuellen Bedürfnisse abzudecken.
+- question: Welche Gebühren fallen für den Handel an?
+  answer_template: Unsere Gebührenstruktur ist transparent und richtet sich nach Ihrem
+    Handelsvolumen. Für Privatkunden beginnen sie typischerweise bei X% pro Trade.
+    Gerne erstelle ich Ihnen eine personalisierte Übersicht basierend auf Ihrem geplanten
+    Handelsverhalten.
+- question: Kann ich Euro (EUR) auf meinem Konto hinterlegen und abheben?
+  answer_template: Ja, wir unterstützen Ein- und Auszahlungen in Euro via SEPA-Überweisung.
+    Die Abwicklung erfolgt über unsere regulierte deutsche Bankpartnerschaft und dauert
+    in der Regel 1-2 Werktage.
+- question: Bieten Sie Staking-Dienste an und wie sind diese besteuert?
+  answer_template: Ja, wir bieten Staking für ausgewählte Kryptowährungen an. Die
+    Besteuerung von Staking-Ertägen ist komplex und hängt von der konkreten Ausgestaltung
+    ab. Erträge werden in der Regel als sonstige Einkünfte versteuert. Wir arbeiten
+    mit Steuerexperten zusammen, um Ihnen Klarheit zu verschaffen.
+sales_scripts:
+- trigger: compliance_concern
+  situation: Wenn ein potenzieller Kunde (Unternehmen) Bedenken bezüglich deutscher
+    Regulierung äußert.
+  script: Ich verstehe Ihre Bedenken zur Regulierung vollkommen. Die BaFin-Aufsicht
+    ist anspruchsvoll. Unser System ist speziell für den deutschen Markt entwickelt
+    und aktualisiert sich automatisch mit regulatorischen Änderungen, wie der MiCA-Verordnung.
+    Wir bieten Ihnen einen Compliance-Dashboard und Berichte, die speziell für deutsche
+    Behörden aufbereitet sind. So sparen Sie monatlich mehrere Stunden an Rechtsberatung.
+    Darf ich Ihnen ein Beispiel unseres Compliance-Reports zeigen?
+  goal: Sicherheitsbedenken zerstreuen und unseren lokalisierten Compliance-Vorteil
+    als Zeit- und Kosteneinsparung darstellen.
+- trigger: price_question
+  situation: Wenn ein Kunde nach unseren Gebühren fragt.
+  script: Unsere Gebühren sind wettbewerbsfähig und volumenabhängig. Wichtiger als
+    der reine Prozentsatz ist oft die Gesamtrendite. Wir bieten Ihnen unter anderem
+    integrierte Steuerberichts-Funktionen, die Ihnen als deutscher Anleger leicht
+    100-200€ pro Steuererklärung an Beratungskosten sparen können. Zudem sind Ein-
+    und Auszahlungen in Euro über SEPA für Sie gebührenfrei. Auf welches monatliche
+    Handelsvolumen zielen Sie ungefähr ab? Dann kann ich Ihnen ein genaues, personalisiertes
+    Angebot unterbreiten.
+  goal: Preisfrage umlenken auf Gesamtwert und spezifische deutsche Kosteneinsparungen
+    (Steuerberatung, SEPA).
+- trigger: security_doubt
+  situation: Wenn ein Kunde Zweifel an der Sicherheit der Plattform äußert.
+  script: Ihre Sicherheit hat für uns höchste Priorität. Als in Deutschland reguliertes
+    Unternehmen unterliegen wir strengen BaFin-Vorgaben zur Cyber-Sicherheit und Kundengeldverwahrung.
+    Über 95% der Kundeneinlagen lagern in Cold Storages in Deutschland. Unser AI-Assistent
+    kann Sie zudem aktiv an das Einrichten von Zwei-Faktor-Authentifizierung erinnern
+    und Sicherheitswarnungen in Echtzeit per Sprachmitteilung geben. Möchten Sie mehr
+    über unsere konkreten Sicherheitszertifizierungen erfahren?
+  goal: Vertrauen durch deutsche Regulierung und physische Präsenz aufbauen, Sicherheit
+    als aktiven Service darstellen.
+competitors:
+- name: Bison (Börse Stuttgart)
+  positioning: Benutzerfreundliche App für Privatanleger, grosse deutsche Börse im
+    Hintergrund.
+  strengths:
+  - Einfache Bedienung
+  - Starker Markenname in Deutschland
+  - Fiat-Onboarding via SEPA
+  weaknesses:
+  - Begrenzte Auswahl an Kryptowährungen
+  - Höhere Gebühren für Fortgeschrittene
+  - Weniger fortschrittliche Trading-Tools
+  our_differentiation: Wir bieten eine professionellere Plattform mit mehr Assets,
+    fortschrittlichen Tools wie Staking und einer auf deutsche Steuerfragen spezialisierten
+    AI-Unterstützung.
+- name: BSDEX (Börse Stuttgart Digital Exchange)
+  positioning: Regulierte Börse für erfahrenere Händler.
+  strengths:
+  - Vollständig reguliert durch BaFin
+  - Transparentes Orderbuch
+  - Hohe Sicherheitsstandards
+  weaknesses:
+  - Sehr technische Oberfläche für Neulinge
+  - Langsamere Produkteinführungen
+  - Begrenzte Marketingreichweite
+  our_differentiation: Wir kombinieren hohe regulatorische Standards mit einer deutlich
+    benutzerfreundlicheren Oberfläche und einem proaktiven, sprachbasierten Kundenservice.
+- name: Bitcoin.de
+  positioning: Pionier-Marketplace für den Peer-to-Peer-Handel in Deutschland.
+  strengths:
+  - Lange Marktpräsenz
+  - Starke Community
+  - Direkter Handel zwischen Nutzern
+  weaknesses:
+  - Langsamere Abwicklung als Exchange
+  - Preisunterschiede je nach Angebot
+  - Begrenzte Automatisierung
+  our_differentiation: Wir bieten sofortige Liquidität zu Marktpreisen und umfangreiche
+    Automatisierung, sowohl im Handel als auch im administrativen Backoffice (Steuern,
+    Reporting).
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 50000
+  entry_point: 29.9
+  roi_examples:
+  - scenario: Kleines Handelsunternehmen spart manuelle Compliance- und Steuerreporting-Zeit.
+    monthly_cost: 89.9
+    monthly_savings: 320
+    payback_months: 0.3
+  - scenario: Krypto-Startup automatisiert den First-Level-Kundensupport.
+    monthly_cost: 149.9
+    monthly_savings: 1200
+    payback_months: 0.13
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden pro Monat an manueller Steuerdokumentation.
+  - Vermeiden Sie kostspielige Compliance-Verstöße mit automatisierten Updates.
+  - Bieten Sie Ihren Kunden 24/7 Support auf Deutsch, ohne zusätzliches Personal.
+market_context:
+  market_size: Ca. 5-8 Millionen Krypto-Nutzer in Deutschland
+  growth_rate: 15-20% YoY
+  key_trends:
+  - Stärkere Institutionalisierung und Regulierung (MiCA, BaFin)
+  - Wachsender Fokus auf steuerkonforme Lösungen
+  - Integration von DeFi-Diensten unter regulatorischer Beobachtung
+  - Zunehmende Nachfrage nach nachhaltigen (grünen) Krypto-Lösungen
+  seasonality:
+    high:
+    - Q1 (Steuererklärungszeit)
+    - November-Dezember (Jahresend-Investitionen)
+    low:
+    - August (Haupturlaubszeit in Deutschland)
+    - Spätes Dezember (zwischen den Jahren)
+typical_objections:
+- objection: Das ist mir zu teuer. Es gibt günstigere internationale Anbieter.
+  response: 'Das verstehe ich. Internationale Anbieter haben oft niedrigere Basiskosten,
+    aber versteckte Risiken: Komplexe Steuerreporting für Deutschland, eingeschränkter
+    Kundenservice auf Deutsch und mögliche regulatorische Hürden. Unsere Gebühren
+    inkludieren den Peace of Mind, dass alles konform mit deutschen Gesetzen läuft
+    und Sie Zeit bei der Steuer sparen. Das ist langfristig oft günstiger.'
+- objection: Ich vertraue einer neuen Technologie wie einem AI Voice Agent noch nicht
+    vollständig.
+  response: Das ist eine sehr nachvollziehbare Sorge. Unser Voice Agent ist kein Ersatz
+    für kritische Entscheidungen, sondern eine Entlastung. Er beantwortet Standardfragen
+    rund um die Uhr und leitet komplexe Anliegen sofort an einen menschlichen deutschen
+    Spezialisten weiter. So erhalten Ihre Kunden schneller Hilfe und Ihr Team kann
+    sich auf die wertschöpfenden Aufgaben konzentrieren. Wir beginnen gerne mit einem
+    klar definierten, kleinen Einsatzbereich.
+- objection: Unsere Prozesse laufen bereits. Eine Umstellung wäre zu aufwändig.
+  response: Genau dafür ist unsere Lösung gemacht. Die Integration ist modular und
+    beginnt oft mit einem einzigen Modul, wie dem automatischen Steuerreporting. Unser
+    Team unterstützt Sie bei der Migration. Denken Sie an den monatlichen Aufwand
+    für manuelle Reports – diese Zeit sparen Sie ab dem ersten Monat. Gerne analysieren
+    wir kostenlos Ihre aktuellen Prozesse und zeigen Ihnen ein konkretes Einsparpotenzial
+    auf.
+meta:
+  id: crypto
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

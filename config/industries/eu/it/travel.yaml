@@ -1,0 +1,264 @@
+pain_points:
+- description: Elevato volume di chiamate durante l'alta stagione che satura i call
+    center, causando lunghe attese e clienti insoddisfatti.
+  severity: high
+  solution_hint: Agente vocale AI può gestire simultaneamente più chiamate di prenotazione,
+    informazioni e modifiche, riducendo l'attesa.
+- description: Difficoltà nella gestione di clienti internazionali a causa della barriera
+    linguistica, specialmente al telefono.
+  severity: medium
+  solution_hint: Agente multilingue offre supporto in inglese, tedesco, francese e
+    altre lingue senza costi aggiuntivi di personale.
+- description: Perdita di prenotazioni per disservizi notturni e nel weekend quando
+    l'agenzia è chiusa.
+  severity: medium
+  solution_hint: Agente disponibile 24/7 per rispondere a domande, confermare prenotazioni
+    o gestire modifiche urgenti.
+- description: Gestione inefficiente delle recensioni online e del feedback dei clienti,
+    che danneggia la reputazione.
+  severity: medium
+  solution_hint: Agente può automatizzare richieste di feedback post-viaggio e indirizzare
+    reclami al reparto giusto.
+- description: Processi manuali e ripetitivi per confermare dettagli di prenotazione,
+    orari e politiche di cancellazione.
+  severity: low
+  solution_hint: Automazione della lettura di conferme e invio di promemoria via SMS/email,
+    liberando tempo allo staff.
+- description: Elevato tasso di abbandono nel carrello per prenotazioni online non
+    completate a causa di dubbi last-minute.
+  severity: high
+  solution_hint: Agente vocale può contattare proattivamente il cliente per risolvere
+    dubbi e finalizzare la vendita.
+- description: Complessità nella gestione di modifiche e rimborsi, con procedure lente
+    che frustrano il cliente.
+  severity: medium
+  solution_hint: Integrazione con il sistema di prenotazione permette all'agente di
+    verificare disponibilità e politiche in tempo reale.
+typical_services:
+- Prenotazioni di voli nazionali e internazionali
+- Prenotazioni di hotel, B&B e agriturismi
+- Noleggio auto e trasferimenti aeroportuali
+- Pacchetti vacanza all-inclusive (volo+hotel)
+- Tour guidati e esperienze culturali (es. visite ai musei)
+- Assicurazioni di viaggio e assistenza sanitaria
+- Biglietti per eventi e attrazioni turistiche
+- Consulenza per visti e documenti di viaggio
+- Crociere e viaggi in treno (es. Trenitalia, Italo)
+- Vacanze su misura e itinerari personalizzati
+recommended_functions:
+- name: Prenotazione e modifica viaggi
+  priority: high
+  reason: Funzione core del business; automatizza la parte più dispendiosa in termini
+    di tempo.
+- name: Supporto clienti multilingue 24/7
+  priority: high
+  reason: Mercato italiano molto dipendente dal turismo internazionale; migliora l'esperienza
+    cliente.
+- name: Gestione pagamenti e fatturazione
+  priority: medium
+  reason: Riduce errori manuali e accelera il processo di checkout, aumentando le
+    conversioni.
+- name: Invio promemoria e notifiche
+  priority: medium
+  reason: Diminuisce le mancate presentazioni (no-show) e migliora la pianificazione
+    logistica.
+- name: Raccolta feedback e recensioni
+  priority: low
+  reason: Aiuta a monitorare la reputazione online e identificare aree di miglioramento.
+- name: Upselling di servizi aggiuntivi
+  priority: medium
+  reason: Aumenta il valore medio per prenotazione suggerendo assicurazioni, upgrade
+    o tour.
+typical_integrations:
+- name: Sistemi di Prenotazione (GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Software di CRM
+  examples:
+  - Zucchetti HRC
+  - TeamSystem
+  - Salesforce
+  priority: high
+- name: Piattaforme di Pagamento
+  examples:
+  - Nexi
+  - Satispay
+  - Stripe
+  - PayPal
+  priority: medium
+- name: Sistemi di Contabilità
+  examples:
+  - Arancia
+  - Danea
+  - Administra
+  priority: medium
+- name: Strumenti di Comunicazione
+  examples:
+  - Telefono VoIP
+  - WhatsApp Business API
+  - Email
+  priority: low
+industry_faq:
+- question: Quali sono le politiche di cancellazione e rimborso?
+  answer_template: Le politiche variano in base al fornitore. Posso controllare i
+    dettagli della sua prenotazione per darle informazioni precise. In generale, i
+    rimbosi possono richiedere fino a 10 giorni lavorativi.
+- question: Avete offerte last minute per il weekend?
+  answer_template: Sì, controlliamo costantemente le offerte. Mi può dire la destinazione
+    e le date che ha in mente? Posso cercare le migliori proposte per lei.
+- question: Fornite assistenza in caso di emergenza durante il viaggio?
+  answer_template: Assolutamente sì. Forniamo un numero di assistenza 24 ore su 24
+    incluso nella sua assicurazione di viaggio. Posso inviarle tutti i dettagli via
+    email.
+- question: Accettate buoni vacanza o carte regalo?
+  answer_template: Sì, accettiamo diverse forme di pagamento, inclusi alcuni buoni
+    vacanza. Può fornirmi i dettagli del buono così verifico la validità?
+- question: Posso modificare i nomi sui biglietti aerei?
+  answer_template: Le modifiche ai nomi dipendono dalla politica della compagnia aerea.
+    Spesso sono soggette a penali. Posso verificare con il vettore per lei.
+- question: Quali documenti servono per viaggiare all'estero?
+  answer_template: Dipende dalla destinazione. Per i cittadini italiani, di solito
+    è sufficiente la carta d'identità valida per l'espatrio o il passaporto. Per alcuni
+    paesi serve il visto. Le consiglio di verificare sempre sul sito della Farnesina.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede il prezzo di un servizio o confronta le tariffe.
+  script: Grazie per la sua domanda. Oltre al prezzo, possiamo offrirle un servizio
+    di assistenza continua che include supporto 24/7 per modifiche, emergenze e suggerimenti
+    durante il viaggio. Questo valore aggiunto è incluso nella nostra proposta. Le
+    interessa confrontare i pacchetti?
+  goal: Spostare la conversazione dal solo prezzo al valore complessivo e al servizio.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un'offerta di un concorrente.
+  script: Rispettiamo molto [Nome Concorrente]. La nostra differenza principale è
+    l'assistenza personalizzata e diretta, non solo online. Con il nostro agente vocale,
+    ha un contatto immediato per qualsiasi evenienza, come un volo cancellato, anche
+    a mezzanotte. La sicurezza durante il viaggio ha un valore per lei?
+  goal: Evidenziare il nostro vantaggio differenziante sul servizio clienti e la reattività.
+- trigger: objection_complexity
+  situation: Quando il cliente pensa che implementare un nuovo sistema sia troppo
+    complicato.
+  script: Capisco la sua preoccupazione. La nostra soluzione si integra in pochi giorni
+    con i software che usa già, come Amadeus o il suo CRM. Il nostro team la supporta
+    durante tutto il setup. Inoltre, può iniziare con un solo servizio, come le prenotazioni
+    di hotel, per testare l'efficacia. Vuole fissare una demo per vedere quanto è
+    semplice?
+  goal: Ridurre la percezione della complessità e proporre un approccio graduale e
+    supportato.
+- trigger: callback_request
+  situation: Quando il cliente chiede di essere richiamato invece di decidere subito.
+  script: Certo, la richiamo volentieri. Per prepararmi al meglio, mi può indicare
+    quali sono le sue priorità principali? Ad esempio, ridurre i costi operativi,
+    gestire meglio l'alta stagione o migliorare la soddisfazione dei clienti? Così
+    posso personalizzare la mia proposta.
+  goal: Raccogliere informazioni preziose per personalizzare il follow-up e dimostrare
+    attenzione alle sue esigenze.
+competitors:
+- name: Lastminute.com (gruppo Bravofly)
+  positioning: Aggregatore online forte su offerte last minute e pacchetti.
+  strengths:
+  - Brand riconosciuto
+  - Vasta gamma di offerte
+  - App user-friendly
+  weaknesses:
+  - Assistenza telefonica limitata
+  - Commissioni nascoste
+  - Poco personalizzato
+  our_differentiation: Offriamo un servizio di assistenza vocale diretto e proattivo,
+    non solo una piattaforma online, costruendo un rapporto con il cliente.
+- name: Alpitour
+  positioning: Tour operator storico italiano per pacchetti vacanza organizzati.
+  strengths:
+  - Forte presenza fisica con agenzie
+  - Prodotti all-inclusive di qualità
+  - Fiducia del mercato italiano
+  weaknesses:
+  - Processi poco digitalizzati
+  - Lenti nei cambiamenti
+  - Costi operativi alti
+  our_differentiation: Automizziamo i loro processi più lenti (come le conferme) con
+    la nostra AI, riducendo i costi e migliorando la velocità del servizio.
+- name: Volagratis
+  positioning: Metasearch engine per confrontare voli, hotel e auto a noleggio.
+  strengths:
+  - Confronto prezzi in tempo reale
+  - Traffico web elevato
+  - Interfaccia semplice
+  weaknesses:
+  - Nessun supporto post-vendita diretto
+  - Redirezione a terze parti
+  - Nessun controllo sulla qualità finale
+  our_differentiation: Siamo un partner per l'agenzia di viaggi, non un concorrente.
+    Miglioriamo il loro servizio post-vendita, che Volagratis non offre.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Agenzia di viaggi media che automatizza il 40% delle chiamate in entrata
+      per prenotazioni e informazioni.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 0.25
+  value_anchors:
+  - Riduci del 30% i costi del call center in alta stagione.
+  - Converti il 15% in più di richieste online in prenotazioni confermate.
+  - Servizio clienti multilingue incluso, senza assumere nuovo personale.
+market_context:
+  market_size: Circa 25 miliardi di EUR (escluse spese dei turisti in loco)
+  growth_rate: 5% YoY (post-pandemia)
+  key_trends:
+  - Aumento della richiesta di viaggi sostenibili ed ecoturismo.
+  - Crescita delle prenotazioni last-minute attraverso dispositivi mobili.
+  - Domanda per esperienze autentiche e locali (enogastronomia, borghi).
+  - Importanza crescente delle recensioni online e della reputazione digitale.
+  seasonality:
+    high:
+    - Giugno-Agosto
+    - Dicembre-Gennaio (festività)
+    - Settimana Santa
+    low:
+    - Novembre
+    - Gennaio (post-festività)
+    - Febbraio
+typical_objections:
+- objection: I miei clienti preferiscono parlare con una persona vera, non con un
+    robot.
+  response: Condivido l'importanza del contatto umano. Il nostro agente vocale non
+    lo sostituisce, ma gestisce le richieste semplici e ripetitive (orari, conferme).
+    Così il suo staff ha più tempo per le consulenze complesse e personalizzate che
+    fanno la differenza.
+- objection: È troppo costoso per la mia piccola agenzia.
+  response: Partiamo da piani molto accessibili, come 99€ al mese, pensati proprio
+    per le PMI. Consideri che già risparmiando due ore di lavoro a settimana del suo
+    impiegato, il sistema si ripaga. Possiamo iniziare con una prova di 14 giorni
+    senza impegno.
+- objection: Siamo già pieni di lavoro, non abbiamo tempo per implementare nuove tecnologie.
+  response: Proprio perché è un periodo intenso, la nostra soluzione può darle un
+    sollievo immediato. Ci occupiamo noi dell'installazione e della formazione in
+    meno di una settimana. Lei non deve fare quasi nulla, solo iniziare a ricevere
+    meno chiamate ripetitive.
+- objection: I miei clienti sono anziani e non usano queste tecnologie.
+  response: L'agente vocale è perfetto per loro perché funziona tramite una normale
+    telefonata. Non serve un'app o un computer. Possono chiamare come sempre e ricevere
+    informazioni chiare, anche in orari in cui l'agenzia è chiusa. È un servizio in
+    più che apprezzeranno.
+meta:
+  id: travel
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

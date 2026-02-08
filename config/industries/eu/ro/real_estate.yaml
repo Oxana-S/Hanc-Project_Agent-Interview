@@ -1,0 +1,227 @@
+aliases:
+- imobiliare
+- agent imobiliar
+- agenție imobiliară
+- apartament
+- casă
+- vilă
+- închiriere
+- vânzare apartamente
+- ansamblu rezidențial
+- dezvoltator imobiliar
+- credit ipotecar
+- locuință
+- închiriere birouri
+- spațiu comercial
+competitors:
+- name: Imobiliare.ro
+  positioning: Cel mai mare portal imobiliar din România
+  strengths:
+  - Trafic mare de utilizatori
+  - Oferte variate pentru toate segmentele
+  - Interfață prietenoasă și aplicație mobilă
+  weaknesses:
+  - Comisioane ridicate pentru agenții
+  - Competitivitate mare, dificilă diferențierea
+  our_differentiation: Oferim suport AI personalizat și calificare avansată a lead-urilor
+- name: Storia.ro
+  positioning: Platformă populară pentru anunțuri imobiliare
+  strengths:
+  - Integrare cu OLX și publicitate extinsă
+  - Focalizare pe anunțuri verificate
+  weaknesses:
+  - Limitată la segmentul rezidențial, mai puține oferte comerciale
+  - Funcționalități CRM limitate
+  our_differentiation: Automatizări vocale pentru programări și follow-up în timp
+    real
+- name: Blitz Imobiliare
+  positioning: Agenție imobiliară cu prezență națională
+  strengths:
+  - Rețea extinsă de agenți
+  - Experiență în tranzacții complexe
+  weaknesses:
+  - Procese manuale în multe operațiuni
+  - Lipsa unor soluții digitale avansate
+  our_differentiation: Automatizăm calificarea și comunicarea cu clienții non-stop
+industry_faq:
+- question: Ce apartamente sunt disponibile în zonă?
+  answer_template: Vă rog să specificați zona, bugetul și preferințele, iar eu vă
+    pot recomanda opțiuni potrivite.
+- question: Care este comisionul agenției?
+  answer_template: Comisionul standard este X% din valoarea tranzacției și se plătește
+    după semnarea contractului.
+- question: Pot cumpăra prin credit ipotecar?
+  answer_template: Da, colaborăm cu mai multe bănci și vă putem ajuta să găsiți cea
+    mai bună ofertă de credit.
+- question: Cum pot programa o vizionare?
+  answer_template: Pot programa o vizionare pentru dvs. – vă rog să-mi spuneți ziua
+    și intervalul orar preferat.
+- question: Există costuri ascunse?
+  answer_template: Nu, toate costurile sunt clar explicate în contract, fără taxe
+    suplimentare ascunse.
+- question: Cât durează procesul de cumpărare?
+  answer_template: În general, tranzacția durează între 2 și 4 săptămâni, în funcție
+    de documentație și finanțare.
+pain_points:
+- description: Volum mare de apeluri și mesaje, echipa nu face față rapid răspunsurilor
+  severity: high
+  solution_hint: Calificarea automată a clienților prin agent vocal AI pentru prioritizare
+- description: Pierderea clienților potențiali care sună în afara orelor de program
+  severity: high
+  solution_hint: Preluarea automată 24/7 a solicitărilor și programărilor
+- description: Necesitatea multiplelor vizionări și confirmări manuale
+  severity: medium
+  solution_hint: Trimiterea automată a informațiilor și confirmărilor prin agent vocal
+- description: Dificultăți în urmărirea stadiului tranzacțiilor și comunicarea cu
+    clienții
+  severity: medium
+  solution_hint: Notificări automate despre progresul dosarului și programări
+- description: Conversia scăzută a lead-urilor în vizionări efective
+  severity: medium
+  solution_hint: Programe de rechemare rapidă și calificare în timp real
+- description: Lipsa integrării eficiente între CRM și canalele de comunicare
+  severity: medium
+  solution_hint: Integrare cu CRM și sisteme de telefonie pentru centralizare
+- description: Complexitatea legislației GDPR și protecția datelor clienților
+  severity: high
+  solution_hint: Agent vocal cu conformitate GDPR și gestionare automată a consimțăminților
+typical_services:
+- Vânzare apartamente și case
+- Închiriere locuințe rezidențiale
+- Închiriere spații comerciale și birouri
+- Consultanță pentru credite ipotecare
+- Evaluare și expertiză imobiliară
+- Asistență juridică pentru tranzacții
+- Administrare și gestionare proprietăți
+- Marketing și promovare imobile
+- Organizare vizionări și prezentări
+- Negociere și încheiere contracte
+recommended_functions:
+- name: calificare
+  priority: high
+  reason: Colectarea rapidă a criteriilor clientului pentru potrivirea ofertelor
+- name: programare_vizionare
+  priority: high
+  reason: Rezervarea automată a intervalelor pentru vizionări fără intervenție umană
+- name: faq
+  priority: medium
+  reason: Răspuns automat la întrebările frecvente pentru reducerea volumului de apeluri
+- name: notificări
+  priority: medium
+  reason: Informarea clienților despre stadiul tranzacției și remindere vizionări
+- name: preluare_24_7
+  priority: high
+  reason: Captarea lead-urilor și solicitărilor în afara orelor de program
+- name: outbound_calls
+  priority: medium
+  reason: Contactarea proactivă a clienților pentru oferte noi sau follow-up
+typical_integrations:
+- name: CRM
+  examples:
+  - Imobiliare CRM
+  - Bitrix24 România
+  - Imobex
+  priority: high
+- name: Portaluri imobiliare
+  examples:
+  - Imobiliare.ro
+  - Storia.ro
+  - OLX Imobiliare
+  priority: high
+- name: Telefonie/Call Center
+  examples:
+  - Voximplant România
+  - Mango Office
+  - 4PSA VoipNow
+  priority: high
+- name: Mijloace de comunicare
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+- name: Sisteme de plată și facturare
+  examples:
+  - SmartBill
+  - SAGA Software
+  priority: low
+sales_scripts:
+- trigger: price_question
+  situation: Client întreabă despre comision sau costuri
+  script: Bună ziua! Comisionul nostru standard este de X% din prețul final. Dacă
+    doriți, vă pot oferi opțiuni care se încadrează în bugetul dvs. Ce sumă aveți
+    alocată?
+  goal: Clarificarea bugetului și menținerea interesului clientului
+- trigger: hesitant_client
+  situation: Client ezită să programeze o vizionare imediat
+  script: Înțeleg, poate doriți să vă gândiți. Pot să vă rezerv apartamentul până
+    mâine? Sunt cereri mari și nu vrem să pierdeți această oportunitate.
+  goal: Creșterea ratei de conversie în vizionări
+- trigger: self_search
+  situation: Client spune că va căuta singur imobilul
+  script: E grozav să fiți implicat în căutare! Totuși, noi avem acces la oferte exclusive
+    și informații înainte de publicare. Vreți să vă trimit câteva propuneri personalizate?
+  goal: Demonstrăm valoarea serviciului și păstrăm contactul
+- trigger: after_hours_call
+  situation: Client sună în afara orelor de program
+  script: Bună seara! Momentan nu este programul nostru, dar voi prelua solicitarea
+    și vă voi contacta dimineață cu informațiile dorite. Vă rog să-mi spuneți numele
+    și ce vă interesează.
+  goal: Captarea lead-ului chiar în afara orelor normale
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatizare apeluri și programări pentru o agenție medie
+    monthly_cost: 1500
+    monthly_savings: 6000
+    payback_months: 1
+  - scenario: Preluare 24/7 a lead-urilor și calificare pentru agenție mare
+    monthly_cost: 3000
+    monthly_savings: 12000
+    payback_months: 1
+  value_anchors:
+  - Automatizarea reduce timpul pierdut cu apeluri nerelevante
+  - Crește rata de conversie a lead-urilor cu peste 30%
+  - Disponibil 24/7 fără costuri suplimentare de personal
+  - Conformitate GDPR asigurată fără efort suplimentar
+market_context:
+  market_size: 3000000000
+  growth_rate: 5
+  key_trends:
+  - Creșterea interesului pentru locuințe noi în orașele mari
+  - Digitalizarea procesului de vânzare și închiriere
+  - Creșterea cererii pentru spații comerciale post-pandemie
+  - Accent pe transparență și conformitate legală
+  - Utilizarea AI și automatizări pentru eficientizarea vânzărilor
+  seasonality:
+    high:
+    - primăvara
+    - începutul toamnei
+    low:
+    - iarna
+    - perioada sărbătorilor de iarnă
+typical_objections:
+- objection: Voi căuta singur, mulțumesc
+  response: Înțeleg perfect! Totuși, colaborând cu noi aveți acces la oferte exclusive
+    și suport dedicat care vă poate economisi timp și bani.
+- objection: Comisionul este prea mare
+  response: Haideți să discutăm bugetul dvs. și găsim împreună cele mai bune opțiuni
+    care să se potrivească fără costuri ascunse.
+- objection: Nu sunt sigur că acum este momentul potrivit
+  response: Înțeleg, vă pot ține la curent cu ofertele și vă contactez când apar oportunități
+    noi. Doriți să rămânem în legătură?
+- objection: Nu am timp să vizionez acum
+  response: Pot să vă programez vizionări în weekend sau în alte intervale convenabile
+    pentru dvs., astfel încât să nu pierdeți oportunități bune.
+meta:
+  id: real_estate
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+_extends: _base/real_estate

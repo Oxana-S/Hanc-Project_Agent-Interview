@@ -1,0 +1,203 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand für Mandantendaten und Dokumentenmanagement.
+  severity: high
+  solution_hint: Automatisierte Datenverwaltung und Dokumentenerstellung durch KI-Sprachagenten.
+- description: Lange Wartezeiten für Kundenanfragen außerhalb der Bürozeiten.
+  severity: medium
+  solution_hint: 24/7-Kundenbetreuung mit sofortigen Antworten auf häufige Fragen.
+- description: Ineffiziente Terminplanung und Erinnerungen.
+  severity: medium
+  solution_hint: Automatisierte Terminvereinbarungen und Erinnerungen per Sprachagent.
+- description: Hohe Kosten für repetitive Aufgaben wie Erstberatungen.
+  severity: high
+  solution_hint: KI-gesteuerte Erstberatungen zur Entlastung von Anwälten.
+- description: Schwierigkeiten bei der Einhaltung von DSGVO und FADP.
+  severity: high
+  solution_hint: Integrierte Compliance-Checks und Datenschutzfunktionen.
+- description: Begrenzte Reichweite für neue Mandantenakquise.
+  severity: medium
+  solution_hint: Automatisierte Lead-Generierung und Follow-ups.
+typical_services:
+- Vertragsrecht
+- Unternehmensrecht
+- Arbeitsrecht
+- Immobilienrecht
+- Erbrecht
+- Strafrecht
+- Familienrecht
+- Steuerrecht
+- Datenschutzrecht
+- Internationales Recht
+recommended_functions:
+- name: Terminverwaltung
+  priority: high
+  reason: Spart Zeit und reduziert Fehler bei der Planung.
+- name: Dokumentenerstellung
+  priority: high
+  reason: Automatisiert Vorlagen für Verträge und Briefe.
+- name: Kundenanfragen-Beantwortung
+  priority: medium
+  reason: Verbessert die Kundenzufriedenheit durch schnelle Antworten.
+- name: Compliance-Überwachung
+  priority: high
+  reason: Stellt Einhaltung von DSGVO und FADP sicher.
+- name: Lead-Generierung
+  priority: medium
+  reason: Hilft bei der Akquise neuer Mandanten.
+- name: Rechnungserstellung
+  priority: low
+  reason: Vereinfacht administrative Aufgaben.
+typical_integrations:
+- name: Kanzleisoftware
+  examples:
+  - Abacus
+  - Lexware
+  - DATEV
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Kalenderanwendungen
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: high
+- name: Dokumentenmanagement
+  examples:
+  - Dropbox
+  - OneDrive
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - Microsoft Teams
+  - Zoom
+  priority: low
+industry_faq:
+- question: Wie gewährleistet Ihr KI-Sprachagent die Datensicherheit gemäß FADP?
+  answer_template: Unser System ist nach Schweizer Datenschutzstandards zertifiziert
+    und verwendet Ende-zu-Ende-Verschlüsselung.
+- question: Kann der Sprachagent komplexe rechtliche Fragen beantworten?
+  answer_template: Er bietet Erstinformationen und leitet bei Bedarf an einen Anwalt
+    weiter, um Haftungsrisiken zu minimieren.
+- question: Wie integriert sich der Agent in unsere bestehende Software?
+  answer_template: Wir bieten APIs für gängige Kanzleisoftware wie Abacus und DATEV
+    an.
+- question: Was sind die monatlichen Kosten?
+  answer_template: Die Preise beginnen bei 200 CHF pro Monat, abhängig von den Funktionen.
+- question: Benötigen wir Schulungen für das Team?
+  answer_template: Nein, unsere Lösung ist benutzerfreundlich und erfordert minimale
+    Einarbeitung.
+- question: Unterstützt der Agent mehrere Sprachen?
+  answer_template: Ja, er spricht Deutsch, Französisch, Italienisch und Englisch für
+    die Schweizer Märkte.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten fragt.
+  script: Unsere Lösung beginnt bei 200 CHF monatlich und spart Ihnen durch Automatisierung
+    bis zu 20 Stunden Verwaltungszeit pro Monat. Möchten Sie eine Demo vereinbaren?
+  goal: Interesse wecken und einen Termin für eine Demo vereinbaren.
+- trigger: compliance_concern
+  situation: Wenn Bedenken zur DSGVO/FADP-Compliance geäußert werden.
+  script: Wir sind spezialisiert auf Schweizer Datenschutzanforderungen und bieten
+    integrierte Compliance-Checks. Viele Kanzleien nutzen uns bereits sicher.
+  goal: Vertrauen aufbauen und Sicherheitsbedenken ausräumen.
+- trigger: efficiency_inquiry
+  situation: Wenn der Kunde nach Effizienzsteigerung fragt.
+  script: Unser Sprachagent automatisiert repetitive Aufgaben wie Terminplanung und
+    Dokumentenerstellung, sodass Ihre Anwälte sich auf Kernaufgaben konzentrieren
+    können.
+  goal: Den Nutzen für die Produktivität hervorheben.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Konkurrenten erwähnt.
+  script: Im Gegensatz zu anderen bieten wir spezifische Integrationen für Schweizer
+    Kanzleisoftware und mehrsprachige Unterstützung.
+  goal: Unsere Alleinstellungsmerkmale betonen.
+competitors:
+- name: LegalZoom Schweiz
+  positioning: Online-Rechtsdienstleister für KMUs.
+  strengths:
+  - Geringe Kosten
+  - Benutzerfreundlichkeit
+  weaknesses:
+  - Begrenzte persönliche Beratung
+  - Fokus auf Standardfälle
+  our_differentiation: Wir bieten KI-gesteuerte, personalisierte Unterstützung mit
+    lokaler Integration.
+- name: Advokatenportal
+  positioning: Plattform für Anwaltsvermittlung.
+  strengths:
+  - Großes Netzwerk
+  - Transparente Bewertungen
+  weaknesses:
+  - Keine Automatisierung
+  - Hohe Provisionen
+  our_differentiation: Unser Sprachagent automatisiert Prozesse und reduziert manuelle
+    Arbeit.
+- name: SwissLegalTech
+  positioning: Anbieter von Rechtstechnologie-Lösungen.
+  strengths:
+  - Umfassende Softwarepakete
+  - Lokale Präsenz
+  weaknesses:
+  - Höhere Kosten
+  - Komplexe Implementierung
+  our_differentiation: Wir sind kostengünstiger und schneller in der Bereitstellung
+    mit Fokus auf Sprachassistenten.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 200
+  - 1000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatisierung von Erstberatungen und Terminplanung.
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 20 Stunden Verwaltungszeit pro Monat.
+  - Reduzieren Sie Kosten für repetitive Aufgaben um 30%.
+  - Verbessern Sie die Kundenzufriedenheit mit 24/7-Support.
+market_context:
+  market_size: 5 Milliarden CHF jährlich
+  growth_rate: 5% YoY
+  key_trends:
+  - Zunehmende Digitalisierung von Kanzleien.
+  - Steigende Nachfrage nach Datenschutz-Compliance.
+  - Wachsendes Interesse an KI-gestützten Rechtsdienstleistungen.
+  seasonality:
+    high:
+    - Januar
+    - September
+    low:
+    - Juli
+    - Dezember
+typical_objections:
+- objection: Ich vertraue einer KI nicht mit sensiblen Mandantendaten.
+  response: Wir verwenden höchste Sicherheitsstandards und sind FADP-konform. Viele
+    Schweizer Kanzleien nutzen uns bereits.
+- objection: Das ist zu teuer für unsere kleine Kanzlei.
+  response: Unsere Einstiegspreis von 200 CHF zahlt sich oft innerhalb eines Monats
+    durch Zeitersparnis aus.
+- objection: Wir haben bereits etablierte Prozesse.
+  response: Unser Sprachagent integriert sich nahtlos und verbessert bestehende Abläufe,
+    ohne sie zu stören.
+- objection: Die Einführung dauert zu lange.
+  response: Wir bieten schnelle Implementierung in wenigen Tagen mit minimaler Schulung.
+meta:
+  id: legal
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

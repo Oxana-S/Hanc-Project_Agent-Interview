@@ -1,0 +1,246 @@
+aliases:
+- autosalone
+- officina meccanica
+- carrozzeria
+- gommista
+- vendita auto
+- dealer
+- riparazione auto
+- revisione
+- tagliando
+- manutenzione
+- lavaggio auto
+- dettaglio auto
+- tuning
+- diagnosi
+competitors:
+- name: Euromaster
+  positioning: Catena nazionale di centri pneumatici e manutenzione rapida
+  strengths:
+  - Presenza capillare in tutta Italia
+  - Prezzi competitivi per servizi base
+  - Aperti anche la domenica
+  weaknesses:
+  - Servizi limitati, niente riparazioni complesse
+  - Minor personalizzazione del servizio
+  our_differentiation: Officina completa con meccanici specializzati e rapporto diretto
+    con il cliente.
+- name: Norauto
+  positioning: Grande catena di retail e servizi per l'auto
+  strengths:
+  - Ampia gamma di prodotti e accessori
+  - Promozioni frequenti
+  - Servizi di diagnostica computerizzata
+  weaknesses:
+  - Lunghi tempi di attesa in periodi di picco
+  - Turnover del personale
+  our_differentiation: Attenzione personalizzata, competenza specifica su marchi premium
+    e tempi di consegna più certi.
+- name: Bosch Car Service
+  positioning: Rete di officine autorizzate indipendenti
+  strengths:
+  - Marchio forte e affidabile
+  - Formazione tecnica continua
+  - Utilizzo di ricambi di qualità
+  weaknesses:
+  - Costi generalmente più alti
+  - Punti vendita meno numerosi
+  our_differentiation: Offriamo la stessa qualità a prezzi più accessibili e maggiore
+    flessibilità negli orari.
+industry_faq:
+- answer_template: Il costo dipende dalla marca dell'auto e dal tipo di olio. In media
+    va da 50 a 120 euro, lavoro incluso.
+  question: Quanto costa un cambio olio?
+- answer_template: Mi servirebbe il numero dell'ordine di lavoro o la targa. Posso
+    controllare lo stato per lei.
+  question: Come posso sapere lo stato della mia riparazione?
+- answer_template: Il tagliando ordinario richiede da 1 a 3 ore, a seconda degli interventi
+    da effettuare.
+  question: Quanto tempo richiede un tagliando?
+- answer_template: Sì, lavoriamo su tutte le marche di automobili. Mi dice di che
+    marca si tratta?
+  question: Lavorate anche sulla mia marca di auto?
+- answer_template: Posso verificare la disponibilità in magazzino. Mi indica marca,
+    modello e il pezzo di cui ha bisogno?
+  question: Avete un determinato ricambio in magazzino?
+- answer_template: Certamente. Offriamo una garanzia di 12 mesi o 20.000 km sulla
+    manodopera.
+  question: Offrite garanzia sui lavori eseguiti?
+- answer_template: I periodi di alta stagione per il cambio gomme sono aprile e ottobre.
+    Consigliamo sempre di prenotare.
+  question: Quando è il momento migliore per il cambio gomme?
+industry_specifics:
+  compliance:
+  - GDPR
+  peak_times:
+  - Lunedì mattina
+  - Venerdì pomeriggio
+  - Periodi cambio gomme (aprile, ottobre)
+  - Prima delle vacanze estive (giugno/luglio)
+  tone:
+  - Cordiale e professionale
+  - Tecnico ma chiaro
+  - Rassicurante
+learnings: []
+market_context:
+  growth_rate: 1-2% annuo
+  key_trends:
+  - Crescita dell'interesse per auto elettriche e ibride
+  - Aumento della domanda di servizi di dettaglio e protezione della carrozzeria
+  - Maggiore attenzione alla connettività e diagnosi digitale
+  market_size: Mercato da oltre 20 miliardi di euro (manutenzione e riparazione)
+  seasonality:
+    high:
+    - Primavera (cambio gomme, preparazione estiva)
+    - Autunno (cambio gomme, controllo pre-inverno)
+    - Fine mese (prenotazioni per il tagliando)
+    low:
+    - Metà agosto (ferie estive)
+    - Periodo natalizio
+meta:
+  avg_validation_score: 0.0
+  country: it
+  created_at: '2024-11-18'
+  currency: EUR
+  id: automotive
+  language: it
+  languages:
+  - it
+  last_updated: '2024-11-18'
+  phone_codes:
+  - '+39'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Rome
+  version: '1.0'
+pain_points:
+- description: I clienti chiamano continuamente per chiedere lo stato della riparazione
+  severity: high
+  solution_hint: Sistema automatico di aggiornamento stato tramite numero ordine di
+    lavoro
+- description: Molte chiamate per richiedere preventivi e prezzi
+  severity: medium
+  solution_hint: Calcolo automatico del preventivo per servizi standard
+- description: Difficoltà a fissare appuntamenti in orari comodi per il cliente
+  severity: medium
+  solution_hint: Sistema di prenotazione online con calendario in tempo reale
+- description: I clienti dimenticano gli appuntamenti per il tagliando periodico
+  severity: medium
+  solution_hint: Promemoria automatici via SMS/email basati su chilometraggio o data
+- description: I meccanici vengono interrotti da chiamate per domande di routine
+  severity: high
+  solution_hint: Agente vocale che gestisce le richieste più comuni
+- description: Gestione manuale dei ricambi e difficoltà nel comunicare la disponibilità
+  severity: medium
+  solution_hint: Integrazione con il gestionale magazzino per verifiche in tempo reale
+pricing_context:
+  currency: EUR
+  entry_point: 50
+  roi_examples:
+  - monthly_cost: 150
+    monthly_savings: 800
+    payback_months: 1
+    scenario: Automazione del 50% delle chiamate per stato riparazioni e prenotazioni
+  typical_budget_range:
+  - 50
+  - 3000
+  value_anchors:
+  - Riduci il tempo perso al telefono del 40%
+  - Migliora l'esperienza cliente con aggiornamenti automatici
+  - Converti più chiamate in appuntamenti prenotati
+recommended_functions:
+- name: stato_riparazione
+  priority: high
+  reason: Oltre il 40% delle chiamate riguarda lo stato dei lavori
+- name: prenotazione_appuntamento
+  priority: high
+  reason: Favorisce la pianificazione e riduce i tempi di attesa telefonica
+- name: preventivo_veloce
+  priority: medium
+  reason: Risponde velocemente alle domande più comuni sui prezzi
+- name: promemoria_tagliando
+  priority: medium
+  reason: Aumenta la fidelizzazione e gli interventi programmati
+- name: verifica_ricambio
+  priority: medium
+  reason: Fornisce informazioni immediate ai clienti in attesa di riparazioni
+- name: routing_chiamate
+  priority: low
+  reason: Instrada le richieste complesse al consulente o meccanico giusto
+sales_scripts:
+- goal: Convertire la richiesta di informazioni in una prenotazione
+  script: "Perfetto, per darle un'idea più precisa del costo e del tempo necessario,\
+    \ sarebbe utile fissare un appuntamento per una verifica. \nMi conferma la marca\
+    \ e il modello dell'auto? In che periodo le farebbe comodo portarla?"
+  situation: Il cliente chiede un preventivo generico per una riparazione non standard.
+  trigger: price_question_vague
+- goal: Superare l'obiezione sul prezzo evidenziando il valore
+  script: "Capisco. Il nostro prezzo include l'uso di ricambi di qualità, la manodopera\
+    \ di tecnici certificati e una garanzia di 12 mesi. \nPreferisce che le invii\
+    \ un preventivo dettagliato via email per chiarezza, o preferisce parlare con\
+    \ un nostro tecnico per eventuali alternative?"
+  situation: Il cliente solleva un'obiezione sul costo.
+  trigger: price_objection
+- goal: Fissare un appuntamento per un servizio stagionale
+  script: "Ottima scelta, è il periodo giusto. Per assicurarle un orario comodo e\
+    \ evitare code, posso già prenotarla. \nHa preferenze per il giorno della settimana\
+    \ o l'orario? Le invieremo un promemoria prima dell'appuntamento."
+  situation: Il cliente chiede informazioni sul cambio gomme stagionale.
+  trigger: seasonal_service_inquiry
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automazione del 60% delle richieste di stato
+  - Riduzione del 30% del carico sulla reception
+  - Conversione in prenotazione > 25%
+  - Soddisfazione cliente > 4.2/5
+typical_integrations:
+- examples:
+  - Gestionale Auto
+  - Autosoft
+  - Software Dotto
+  name: Gestionale Officina
+  priority: high
+  reason: Gestione ordini di lavoro, stati, magazzino ricambi
+- examples:
+  - Zucchetti CRM
+  - TeamSystem
+  - Salesforce
+  name: CRM
+  priority: medium
+  reason: Storico cliente, promemoria, campagne marketing
+- examples:
+  - VoIPswitch
+  - NethVoice
+  name: Telefonia VoIP
+  priority: high
+  reason: Gestione chiamate in ingresso, IVR, registrazioni
+- examples:
+  - Telegram Business
+  - WhatsApp Business API
+  name: Messaggistica
+  priority: medium
+  reason: Invio promemoria appuntamenti e notifiche di stato
+- examples:
+  - Google Calendar
+  - Microsoft 365
+  name: Calendario
+  priority: medium
+  reason: Sincronizzazione appuntamenti e disponibilità posti lavoro
+typical_objections:
+- objection: Non sono sicuro della qualità del lavoro
+  response: Tutti i nostri meccanici sono formati e usiamo strumenti diagnostici aggiornati.
+    Offriamo anche una garanzia di 12 mesi sulla manodopera.
+typical_services:
+- Manutenzione ordinaria (Tagliando)
+- Riparazione motore
+- Riparazione impianto frenante
+- Riparazione e sostituzione ammortizzatori
+- Riparazione carrozzeria (verniciatura, sostituzione paraurti)
+- Sostituzione e bilanciamento pneumatici
+- Geometria e convergenza (controllo assetto)
+- Diagnosi elettronica
+- Cambio olio e filtri
+- Servizio di climatizzazione (ricarica gas)
+_extends: _base/automotive

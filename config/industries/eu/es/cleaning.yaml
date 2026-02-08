@@ -1,0 +1,243 @@
+pain_points:
+- description: Dificultad para gestionar y coordinar horarios de limpieza con múltiples
+    clientes, lo que genera conflictos y cancelaciones.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar la programación de citas, confirmar
+    disponibilidad en tiempo real y enviar recordatorios.
+- description: Alta rotación de personal, lo que afecta la consistencia del servicio
+    y aumenta los costes de formación.
+  severity: high
+  solution_hint: El agente puede manejar consultas iniciales y filtrar candidatos,
+    liberando tiempo para enfocarse en retención.
+- description: Quejas frecuentes de clientes sobre calidad del servicio, como áreas
+    no limpiadas o productos inadecuados.
+  severity: medium
+  solution_hint: El agente puede recopilar feedback post-servicio mediante encuestas
+    automatizadas y escalar problemas críticos.
+- description: Competencia intensa de proveedores de bajo coste que presionan los
+    precios y reducen márgenes.
+  severity: medium
+  solution_hint: El agente puede destacar servicios premium y personalizados en llamadas
+    de ventas, justificando precios más altos.
+- description: Carga administrativa por cumplimiento de normativas como GDPR y facturación,
+    que consume tiempo y recursos.
+  severity: low
+  solution_hint: El agente puede integrarse con software de contabilidad para automatizar
+    recordatorios de pagos y gestionar consentimientos.
+- description: Dificultad para escalar el negocio debido a la falta de sistemas eficientes
+    para manejar un volumen creciente de clientes.
+  severity: medium
+  solution_hint: El agente puede gestionar múltiples consultas simultáneamente, aumentando
+    la capacidad de atención al cliente sin costes adicionales.
+typical_services:
+- Limpieza de hogares
+- Limpieza de oficinas
+- Limpieza de comunidades de vecinos
+- Limpieza de cristales y ventanas
+- Limpieza profunda o de primavera
+- Limpieza después de obras o reformas
+- Limpieza de alfombras y tapicerías
+- Servicios de planchado y lavandería
+- Limpieza ecológica con productos sostenibles
+- Mantenimiento y limpieza regular
+recommended_functions:
+- name: Programación automática de citas
+  priority: high
+  reason: Reduce los errores humanos y optimiza la agenda, mejorando la satisfacción
+    del cliente.
+- name: Gestión de quejas y feedback
+  priority: medium
+  reason: Permite resolver problemas rápidamente y mejorar la calidad del servicio
+    basándose en datos.
+- name: Procesamiento de pagos y recordatorios
+  priority: high
+  reason: Acelera el flujo de caja y reduce la morosidad mediante automatización.
+- name: Soporte multilingüe para clientes internacionales
+  priority: low
+  reason: Atrae a expatriados y turistas en áreas urbanas, expandiendo la base de
+    clientes.
+- name: Confirmación de servicios y notificaciones
+  priority: medium
+  reason: Aumenta la puntualidad y reduce las no presentaciones, ahorrando costes
+    operativos.
+- name: Generación de informes de rendimiento
+  priority: low
+  reason: Proporciona insights sobre eficiencia del personal y tendencias del mercado.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Odoo
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Contasimple
+  - Sage
+  - A3Software
+  priority: high
+- name: Plataformas de reservas online
+  examples:
+  - Calendly
+  - Reservanto
+  - Google Calendar
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business
+  - Telegram
+  - Slack
+  priority: medium
+- name: Sistemas de gestión de proyectos
+  examples:
+  - Trello
+  - Asana
+  - Monday.com
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta un servicio de limpieza estándar en España?
+  answer_template: Los precios varían según el tamaño y tipo de propiedad, pero un
+    servicio básico para un apartamento de 80m² suele partir de 50-70 EUR. Ofrecemos
+    presupuestos personalizados sin compromiso.
+- question: ¿Ofrecen servicios de limpieza ecológica o con productos no tóxicos?
+  answer_template: Sí, disponemos de opciones ecológicas que utilizan productos certificados
+    y sostenibles, con un pequeño recargo del 10-15% por la calidad premium.
+- question: ¿Cómo se programa una cita y qué flexibilidad hay en los horarios?
+  answer_template: Puede programar una cita llamando a nuestro agente de voz o a través
+    de nuestra web, con horarios disponibles de lunes a sábado, incluyendo tardes
+    y fines de semana bajo demanda.
+- question: ¿Qué incluye un servicio de limpieza profunda?
+  answer_template: Incluye limpieza de todas las superficies, electrodomésticos, ventanas
+    interiores, y áreas de difícil acceso, con una duración típica de 4-6 horas dependiendo
+    del espacio.
+- question: ¿Hay garantía o política de reclamaciones si no estoy satisfecho?
+  answer_template: Ofrecemos una garantía de satisfacción del 100%; si algo no queda
+    limpio, volvemos a limpiar sin coste adicional dentro de las 24 horas.
+- question: ¿Trabajan con seguros de responsabilidad civil para cubrir daños?
+  answer_template: Sí, todos nuestros empleados están asegurados y cumplen con las
+    normativas locales, incluyendo GDPR para protección de datos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios iniciales.
+  script: Hola, entiendo que busca claridad en los costes. Nuestros servicios parten
+    desde 50 EUR para limpiezas básicas, pero el precio exacto depende de sus necesidades.
+    ¿Puedo ayudarle a personalizar un presupuesto basado en el tamaño de su propiedad
+    y frecuencia deseada?
+  goal: Obtener detalles del cliente para ofrecer un presupuesto personalizado y cerrar
+    una consulta.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como limpieza
+    ecológica.
+  script: Gracias por su interés en nuestra limpieza ecológica. Utilizamos productos
+    biodegradables y técnicas sostenibles, ideales para hogares con niños o alergias.
+    ¿Le gustaría programar una demostración o recibir más información sobre los beneficios?
+  goal: Destacar valor añadido y programar una siguiente acción, como una cita o envío
+    de información.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona un competidor de bajo coste.
+  script: Comprendo que hay opciones más económicas, pero nosotros nos enfocamos en
+    calidad consistente y personalización. Con nuestro agente AI, aseguramos puntualidad
+    y seguimiento, lo que reduce riesgos y ahorra tiempo a largo plazo. ¿Puedo mostrarle
+    cómo nuestro servicio premium justifica la inversión?
+  goal: Diferenciar el servicio basado en calidad y eficiencia, no solo precio.
+- trigger: booking_confirmation
+  situation: Después de discutir detalles, para cerrar la venta.
+  script: Perfecto, hemos acordado un servicio de limpieza semanal por 80 EUR al mes.
+    ¿Puedo confirmar la cita para el próximo lunes a las 10 AM y procesar el pago
+    inicial de forma segura mediante nuestro sistema automatizado?
+  goal: Confirmar la venta y establecer el primer pago, minimizando objeciones finales.
+competitors:
+- name: Limpiezas Express
+  positioning: Proveedor nacional de limpieza rápida y económica.
+  strengths:
+  - Amplia cobertura en ciudades grandes
+  - precios bajos
+  - reserva online sencilla
+  weaknesses:
+  - Calidad inconsistente
+  - alto rotación de personal
+  - soporte al cliente limitado
+  our_differentiation: Ofrecemos consistencia mediante AI que gestiona calidad y comunicación
+    personalizada, con integraciones que reducen errores.
+- name: Helpling
+  positioning: Plataforma digital que conecta clientes con limpiadores autónomos.
+  strengths:
+  - Flexibilidad
+  - app fácil de usar
+  - opciones de puntuación y reviews
+  weaknesses:
+  - Dependencia de freelancers
+  - menos control sobre formación
+  - costes variables
+  our_differentiation: Empleamos personal propio con formación garantizada y usamos
+    AI para optimizar agendas, asegurando fiabilidad y cumplimiento normativo.
+- name: TaskRabbit
+  positioning: Mercado global para servicios variados, incluyendo limpieza.
+  strengths:
+  - Variedad de servicios
+  - presencia internacional
+  - sistema de confianza
+  weaknesses:
+  - Enfoque genérico
+  - menos especialización en limpieza
+  - comisiones altas
+  our_differentiation: Nos especializamos solo en limpieza, con soluciones AI diseñadas
+    para esta industria, ofreciendo eficiencia y soporte local en español.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 200
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatización de programación y recordatorios para una empresa de limpieza
+      con 20 clientes.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 10 horas semanales en administración con nuestra AI.
+  - Incremente la satisfacción del cliente en un 30% mediante seguimiento automatizado.
+  - Reduzca las cancelaciones en un 15% con confirmaciones y recordatorios proactivos.
+market_context:
+  market_size: Estimado en 2.5 mil millones EUR anuales en España.
+  growth_rate: 4% anual, impulsado por urbanización y demanda de servicios premium.
+  key_trends:
+  - Aumento de la demanda de limpieza ecológica y sostenible.
+  - Crecimiento del modelo de suscripción para servicios regulares.
+  - Adopción de tecnología como apps y AI para mejorar eficiencia.
+  seasonality:
+    high:
+    - Septiembre
+    - Diciembre
+    - Abril
+    low:
+    - Agosto
+    - Enero
+typical_objections:
+- objection: Es demasiado caro comparado con otros servicios.
+  response: Entiendo su preocupación, pero nuestro precio refleja calidad garantizada
+    y ahorro de tiempo con AI. ¿Podemos analizar cómo reducirá sus costes operativos
+    a largo plazo?
+- objection: Prefiero gestionar las limpiezas yo mismo para tener control.
+  response: Comprendo, pero con nuestro sistema AI, usted mantiene el control mediante
+    informes en tiempo real, mientras delegamos tareas repetitivas. ¿Le gustaría ver
+    una demo de cómo funciona?
+- objection: No confío en la tecnología para algo tan personal como la limpieza.
+  response: Nuestra AI complementa al personal humano, mejorando la comunicación y
+    puntualidad sin reemplazar el toque personal. Tenemos casos de éxito que muestran
+    mayor satisfacción.
+meta:
+  id: cleaning
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

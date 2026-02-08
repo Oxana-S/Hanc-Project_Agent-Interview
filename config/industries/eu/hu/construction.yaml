@@ -1,0 +1,229 @@
+pain_points:
+- description: Munkaerőhiány a szakemberek körében, különösen a tapasztalt munkások
+    hiánya.
+  severity: high
+  solution_hint: Az AI hangügynök segíthet a munkaerő-igények automatizált kezelésében,
+    ütemezésben és a hatékony kommunikációban a csapatokkal.
+- description: Anyagköltségek gyors emelkedése és beszerzési késések.
+  severity: high
+  solution_hint: Az AI hangügynök nyomon követheti az árakat, automatikus rendeléseket
+    kezdeményezhet és riasztásokat küldhet a változásokról.
+- description: Projektek késedelmei és határidők betartásának nehézségei.
+  severity: medium
+  solution_hint: Az AI hangügynök automatizálhatja a státuszfrissítéseket, emlékeztetőket
+    küldhet és segíthet a projektek nyomon követésében.
+- description: Szabályozási és engedélyezési követelmények bonyolultsága, GDPR megfelelőség.
+  severity: medium
+  solution_hint: Az AI hangügynök információkat nyújthat a szabályozásokról, segíthet
+    a dokumentáció kezelésében és GDPR-kompatibilis kommunikációban.
+- description: Ügyfélkommunikáció és elégedettség kezelése, gyakori változások a projektekben.
+  severity: low
+  solution_hint: Az AI hangügynök kezelheti a gyakori ügyfélkérdéseket, frissítéseket
+    közölhet és visszajelzéseket gyűjthet.
+- description: Költségvetés túllépések és pénzügyi tervezés nehézségei.
+  severity: high
+  solution_hint: Az AI hangügynök segíthet a költségkövetésben, riasztásokat küldhet
+    a túllépésekről és támogathat a döntéshozatalban.
+typical_services:
+- lakóépület-építés
+- ipari létesítmények építése
+- kereskedelmi ingatlanok fejlesztése
+- felújítás és renoválás
+- építési projektmenedzsment
+- építőanyag beszerzés és logisztika
+- építési engedélyezés és jogi tanácsadás
+- zöldépítészet és fenntarthatósági megoldások
+- belsőépítészet és kivitelezés
+- karbantartás és javítási szolgáltatások
+recommended_functions:
+- name: ügyfélfogadás és alapvető információszolgáltatás
+  priority: high
+  reason: Csökkenti a kapcsolattartási terheket és gyors válaszokat biztosít az ügyfeleknek.
+- name: projekt státusz frissítések és emlékeztetők
+  priority: high
+  reason: Javítja a kommunikációt és segíti a projektek időben történő befejezését.
+- name: árajánlat készítés és költségbecslés támogatása
+  priority: medium
+  reason: Felgyorsítja az értékesítési folyamatot és pontosabb ajánlatokat tesz lehetővé.
+- name: munkaerő-ütemezés és erőforrás-kezelés
+  priority: high
+  reason: Optimalizálja a munkaerő-használatot és csökkenti a késedelmeket.
+- name: szabályozási információk és GDPR megfelelőség ellenőrzése
+  priority: medium
+  reason: Segíti a jogi követelmények betartását és kockázatcsökkentést eredményez.
+- name: anyagrendelés és készletnyomon követés
+  priority: medium
+  reason: Csökkenti a beszerzési késedelmeket és költségeket.
+typical_integrations:
+- name: ERP rendszerek
+  examples:
+  - SAP
+  - Microsoft Dynamics NAV
+  - Navision
+  priority: high
+- name: projektmenedzsment szoftverek
+  examples:
+  - Asana
+  - Trello
+  - Jira
+  - helyi ConstructionPM
+  priority: high
+- name: számlázó és pénzügyi szoftverek
+  examples:
+  - Billingo
+  - Számoló
+  - QuickBooks
+  priority: medium
+- name: építési specifikus szoftverek
+  examples:
+  - AutoCAD
+  - Revit
+  - helyi ÉpítőKalkulátor
+  priority: medium
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - helyi ÜgyfélKapcsolat
+  priority: low
+industry_faq:
+- question: Mennyi időbe telik egy tipikus lakóépület építése Magyarországon?
+  answer_template: A tipikus lakóépület építése 6-12 hónapot vehet igénybe, függően
+    a mérettől, összetettségtől és engedélyezési folyamattól. Részletes idővonalat
+    készítünk minden projekthez.
+- question: Milyen engedélyek szükségesek az építkezéshez?
+  answer_template: Az engedélyek közé tartozik az építési engedély, helyi önkormányzati
+    engedélyek, és esetenként környezetvédelmi engedélyek. Segítünk a teljes folyamat
+    kezelésében.
+- question: Hogyan kezelik az anyagköltségek ingadozását?
+  answer_template: Rögzített árajánlatokat kínálunk, és anyagköltség-indexálást használunk
+    a váratlan változások kezelésére. Az AI megoldásaink segítenek a költségek előrejelzésében.
+- question: GDPR megfelelőek-e az adatkezelési gyakorlataik?
+  answer_template: Igen, teljes mértékben betartjuk a GDPR szabályozásokat, és az
+    AI rendszerünk biztonságos, titkosított kommunikációt biztosít.
+- question: Milyen garanciát nyújtanak a munkákra?
+  answer_template: Szabványos 5 éves garanciát nyújtunk a szerkezeti munkákra, és
+    2 évet a befejező munkákra. Részletes garancialevél áll rendelkezésre.
+- question: Hogyan kommunikálnak az ügyfelekkel a projektek során?
+  answer_template: Rendszeres státuszfrissítéseket küldünk e-mailben vagy telefonon,
+    és az AI hangügynökünk 24/7 elérhető gyors kérdések megválaszolására.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy potenciális ügyfél árakat kérdez az építési szolgáltatásokról.
+  script: Köszönjük érdeklődését! Árajánlatunk személyre szabott, a projekttől függően.
+    Átlagosan a lakóépületek 20-50 millió HUF között mozognak, de pontos összeget
+    a részletek ismeretében tudunk megadni. Szeretnék egy ingyenes konzultációt időpontot
+    egyeztetni?
+  goal: Elnyerni az ügyfél bizalmát, és egy következő lépésre terelni a beszélgetést.
+- trigger: service_inquiry
+  situation: Amikor egy ügyfél részletesebb információt kér egy specifikus szolgáltatásról.
+  script: Örülök, hogy érdekli szolgáltatásaink! Például a felújítási szolgáltatásaink
+    teljes körűek, tervezéstől a kivitelezésig. Használunk modern technológiákat és
+    fenntartható anyagokat. Melyik területre koncentrálna?
+  goal: Bemutatni a szolgáltatásokat, és az ügyfél igényeit felmérni.
+- trigger: objection_handling
+  situation: Amikor egy ügyfél aggódik a projektek időbeli késedelmei miatt.
+  script: Megértem aggodalmait. Kiemelt prioritásunk a projektek időben történő befejezése.
+    AI rendszerünk folyamatosan monitorozza az előrehaladást és proaktív riasztásokat
+    küld. Korábbi projekteink 95%-a határidőn belül készült el. Szeretné megismerni
+    a referenciaprojektjeinket?
+  goal: Megnyugtatni az ügyfelet, és bizonyítékokkal alátámasztani a megbízhatóságunkat.
+competitors:
+- name: Magyar Építő Zrt.
+  positioning: Nagyvállalat, teljes körű építési szolgáltatások.
+  strengths:
+  - Széles kapcsolati háló
+  - Nagy projektek tapasztalata
+  - Alacsony árak tömeges beszerzéssel
+  weaknesses:
+  - Lassú döntéshozatal
+  - Korlátozott személyre szabás
+  - Gyenge ügyfélkommunikáció
+  our_differentiation: Gyorsabb, technológiavezérelt megközelítés, jobb ügyfélélmény
+    és rugalmasabb árazás AI integrációval.
+- name: Kisvállalkozói Építők Egyesülése
+  positioning: Helyi kisvállalkozások szövetsége, személyes megközelítés.
+  strengths:
+  - Helyi ismeretek
+  - Rugalmasság
+  - Erős közösségi kapcsolatok
+  weaknesses:
+  - Korlátozott erőforrások
+  - Inkonzisztens minőség
+  - Hiányos digitális jelenlét
+  our_differentiation: Skálázható megoldások, előrejelző analitika és automatizált
+    folyamatok, amelyek javítják a hatékonyságot anélkül, hogy elveszítenénk a személyes
+    érintést.
+- name: TechÉpítő Kft.
+  positioning: Technológiaorientált építési cég, innovatív megoldások.
+  strengths:
+  - Modern eszközök
+  - Gyors implementáció
+  - Erős online marketing
+  weaknesses:
+  - Magas árak
+  - Korlátozott szolgáltatási kör
+  - Kevesebb tapasztalat hagyományos projektekben
+  our_differentiation: Költséghatékony AI integrációk, amelyek javítják a meglévő
+    folyamatokat anélkül, hogy teljes rendszercserét igényelnének, és jobb ROI-t kínálnak.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000000
+  - 200000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Kis vállalkozás számára AI-alapú ügyfélkommunikáció automatizálása
+    monthly_cost: 50000
+    monthly_savings: 150000
+    payback_months: 1
+  - scenario: Közepes építési cég számára projektmenedzsment és erőforrás-ütemezés
+      fejlesztése
+    monthly_cost: 200000
+    monthly_savings: 500000
+    payback_months: 3
+  value_anchors:
+  - Az AI megoldásainkkal akár 30%-kal csökkentheti a működési költségeket.
+  - Gyorsabb projektek befejezése és jobb ügyfélelégedettség garantált.
+  - Havi 50.000 HUF-tól elérhető, skálázható csomagok.
+market_context:
+  market_size: Becslések szerint 5000 milliárd HUF éves forgalom.
+  growth_rate: 3-5% éves növekedés a lakásépítési és felújítási piacnak köszönhetően.
+  key_trends:
+  - Növekvő kereslet a fenntartható és energiatakarékos építészet iránt.
+  - Digitális átállás és építési technológiák (BIM) elterjedése.
+  - Munkaerőhiány kompenzálása automatizálással és robotikával.
+  - Az önkormányzati támogatások és EU-s források hatása a piacra.
+  seasonality:
+    high:
+    - tavasz
+    - nyár
+    low:
+    - tél
+typical_objections:
+- objection: Túl drága az AI megoldás a kisvállalkozásom számára.
+  response: Megértem. Azonban a kezdő csomagjaink havi 50.000 HUF-tól érhetők el,
+    és a megtakarítások gyakran több hónapon belül megtérülnek. Ingyenes próbaidőszakot
+    is kínálunk a kipróbáláshoz.
+- objection: Aggódom az adatbiztonság miatt, különösen GDPR szempontból.
+  response: Teljes mértékben megértem. Rendszerünk GDPR-kompatibilis, titkosított
+    adattárolást és feldolgozást használ, és részletes megfelelési dokumentációt biztosítunk.
+    Referenciaügyfeleink is alátámasztják biztonságunkat.
+- objection: Nem hiszem, hogy szükségem van erre, a jelenlegi rendszerem jól működik.
+  response: Az örülök, hogy jól működik! Célunk a további hatékonyság növelése. Ajánlom,
+    hogy tekintse meg esettanulmányainkat, ahol más cégek hogyan javítottak a projektek
+    sebességén és költséghatékonyságán AI segítségével.
+meta:
+  id: construction
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

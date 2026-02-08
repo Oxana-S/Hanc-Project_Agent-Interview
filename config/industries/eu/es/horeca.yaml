@@ -1,0 +1,247 @@
+aliases:
+- horeca
+- restaurante
+- cafetería
+- hotel
+- bar
+- pub
+- catering
+- entrega de comida
+- hostelería
+- comedor
+- comida rápida
+- pizzería
+- sushi
+- reserva de mesa
+- banquete
+competitors:
+- name: El Tenedor
+  positioning: Principal plataforma online de reservas para restaurantes en España
+  strengths:
+  - Amplia base de usuarios
+  - Integración con múltiples restaurantes
+  - Facilidad de uso para clientes
+  weaknesses:
+  - Costes de comisión elevados para restaurantes
+  - Limitada personalización para establecimientos pequeños
+  our_differentiation: Ofrecemos automatización completa de reservas y pedidos con
+    integración directa y soporte personalizado
+- name: Glovo
+  positioning: Líder en entrega rápida de comida a domicilio
+  strengths:
+  - Gran cobertura geográfica
+  - Variedad de restaurantes asociados
+  - Entrega rápida
+  weaknesses:
+  - Altos costes de comisión
+  - Dependencia de repartidores externos
+  our_differentiation: Sistema de gestión de pedidos automatizado que reduce errores
+    y mejora la experiencia del cliente final
+- name: Restalo
+  positioning: Plataforma de reservas enfocada en restaurantes
+  strengths:
+  - Interfaz intuitiva
+  - Buen soporte para restaurantes
+  weaknesses:
+  - Menor cuota de mercado comparado con El Tenedor
+  - Menos integración con sistemas POS
+  our_differentiation: Automatización multicanal con integración directa a sistemas
+    de gestión y atención telefónica automatizada
+pain_points:
+- description: Altos volúmenes de llamadas durante horas punta dificultan la gestión
+    manual de reservas
+  severity: high
+  solution_hint: Automatización de reservas 24/7 para reducir carga en el personal
+- description: Elevado porcentaje de no-shows que afecta la planificación y ingresos
+  severity: high
+  solution_hint: Envío automático de confirmaciones y recordatorios vía llamada o
+    SMS
+- description: Dificultad para gestionar pedidos de comida para llevar y entrega en
+    horas pico
+  severity: high
+  solution_hint: Recepción automática y confirmación de pedidos por voz
+- description: Personal distraído por atender llamadas manualmente en lugar de atender
+    clientes en sala
+  severity: medium
+  solution_hint: Despliegue de agentes de voz para gestión telefónica y pedidos
+- description: Falta de promoción efectiva de ofertas y menús especiales a clientes
+    habituales
+  severity: medium
+  solution_hint: Llamadas salientes automatizadas para informar sobre promociones
+- description: Cumplimiento estricto de la normativa GDPR para tratamiento de datos
+    personales
+  severity: high
+  solution_hint: Sistemas que aseguren consentimiento y gestión segura de datos en
+    interacciones
+- description: Coordinación complicada entre reservas, pedidos y disponibilidad en
+    el punto de venta
+  severity: medium
+  solution_hint: Integración con sistemas de gestión para sincronización en tiempo
+    real
+typical_services:
+- Reserva de mesas
+- Pedido para llevar
+- Entrega a domicilio
+- Organización de banquetes y eventos
+- Catering para empresas y particulares
+- Gestión de habitaciones en hoteles
+- Servicio de habitaciones (room service)
+- Atención telefónica y confirmación de reservas
+- Promociones y marketing directo
+- Gestión de listas de espera
+recommended_functions:
+- name: reserva
+  priority: high
+  reason: Gestión automática de reservas para reducir carga y errores
+- name: recordatorio
+  priority: high
+  reason: Confirmación y reducción de no-shows mediante llamadas o mensajes
+- name: gestión_pedidos
+  priority: high
+  reason: Recepción y confirmación automática de pedidos para llevar y delivery
+- name: faq
+  priority: medium
+  reason: Responder preguntas frecuentes sobre menú, horarios y servicios
+- name: llamadas_salientes
+  priority: medium
+  reason: Promoción de ofertas y fidelización mediante llamadas personalizadas
+- name: gestión_consentimiento
+  priority: high
+  reason: Asegurar cumplimiento de GDPR en la interacción con clientes
+typical_integrations:
+- name: Sistemas de gestión de reservas y TPV
+  examples:
+  - Hosteltáctil
+  - Micros Fidelio
+  - Tiller
+  - Epos Now
+  priority: high
+- name: Plataformas de delivery y pedidos
+  examples:
+  - Glovo
+  - Just Eat España
+  - Deliveroo España
+  priority: medium
+- name: Sistemas PMS para hoteles
+  examples:
+  - Protel
+  - eZee Absolute
+  - Mews
+  priority: medium
+- name: CRM y sistemas de marketing
+  examples:
+  - Mailchimp
+  - Salesforce
+  priority: low
+- name: Mensajería instantánea
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+industry_faq:
+- question: ¿Tienen mesas disponibles para esta noche?
+  answer_template: Para qué hora y cuántas personas sería la reserva, por favor?
+- question: ¿Cuál es el horario de apertura?
+  answer_template: Abrimos de lunes a domingo de 12:00 a 23:00 horas.
+- question: ¿Puedo pedir para llevar o domicilio?
+  answer_template: Sí, puede hacer pedidos para llevar o entrega a domicilio a través
+    de nuestra web o teléfono.
+- question: ¿Ofrecen menús para niños?
+  answer_template: Sí, contamos con menú infantil y tronas disponibles en el local.
+- question: ¿Se puede organizar un banquete o evento privado?
+  answer_template: Claro, organizamos eventos y banquetes. ¿Para cuántas personas
+    y qué fecha?
+- question: ¿Tienen opciones vegetarianas o sin gluten?
+  answer_template: Sí, disponemos de platos vegetarianos y opciones sin gluten en
+    nuestro menú.
+- question: ¿Hay aparcamiento cerca?
+  answer_template: Contamos con aparcamiento gratuito para clientes y hay opciones
+    de parking público cercano.
+sales_scripts:
+- trigger: precio_pregunta
+  situation: Cuando el cliente pregunta por precios o menús económicos
+  script: Nuestros menús de mediodía comienzan desde 12 € e incluyen plato principal,
+    bebida y postre. ¿Le gustaría que le reserve una mesa o le envíe el menú completo?
+  goal: Informar precios competitivos y promover reserva o consulta de menú
+- trigger: no_show_preocupacion
+  situation: Cuando el cliente duda sobre confirmar la reserva
+  script: Para evitar molestias, enviamos recordatorios automáticos el día anterior
+    y el mismo día de la reserva. Así podrá confirmar o modificar fácilmente.
+  goal: Reducir cancelaciones y no-shows
+- trigger: duda_horarios
+  situation: Cliente consulta sobre horarios de apertura o cierre
+  script: Abrimos todos los días de 12:00 a 23:00, y los fines de semana hasta la
+    1:00 am para que disfrute con tranquilidad.
+  goal: Clarificar horarios y fomentar visitas en horarios extendidos
+- trigger: retraso_entrega
+  situation: Cliente se queja de demora en pedidos a domicilio
+  script: En horas punta el tiempo de entrega puede ser de 45-60 minutos. Si lo prefiere,
+    puede optar por recoger su pedido en el local en 20 minutos.
+  goal: Gestionar expectativas y ofrecer alternativas
+- trigger: oferta_promocion
+  situation: Cliente interesado en promociones o descuentos
+  script: Actualmente tenemos un 10% de descuento para clientes habituales y menús
+    especiales entre semana. ¿Quiere que le reserve o le envíe más información?
+  goal: Incentivar la compra y fidelización
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 10
+  - 50
+  entry_point: 12
+  roi_examples:
+  - scenario: Reducción de no-shows y mejor gestión de reservas en restaurante mediano
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Automatización de pedidos para llevar en bar con alta demanda
+    monthly_cost: 100
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Reducimos el tiempo que su personal dedica a gestionar llamadas.
+  - Minimizamos pérdidas por reservas no confirmadas.
+  - Mejoramos la experiencia del cliente con atención 24/7.
+  - Aumentamos la efectividad de promociones y fidelización.
+market_context:
+  market_size: 2500000000
+  growth_rate: 0.04
+  key_trends:
+  - Incremento del pedido online y delivery en hostelería
+  - Mayor uso de tecnología para reservas y atención al cliente
+  - Conciencia creciente sobre cumplimiento de GDPR
+  - Demanda de experiencias personalizadas y sin contacto
+  seasonality:
+    high:
+    - Verano
+    - Navidad y fiestas de fin de año
+    - Semana Santa
+    low:
+    - Enero
+    - Febrero
+    - Meses de baja actividad turística
+typical_objections:
+- objection: No hay mesas disponibles para el horario que quiero
+  response: Puedo ofrecerle un horario cercano, 30 minutos antes o después, o añadirle
+    a la lista de espera para avisarle si se libera una mesa.
+- objection: El tiempo de entrega es muy largo
+  response: Durante las horas punta el tiempo puede ser de 45-60 minutos. Le recomiendo
+    la opción de recogida en local, que estará listo en 20 minutos.
+- objection: Me parece caro
+  response: Ofrecemos menús desde 12 €, además de descuentos para clientes habituales
+    y promociones especiales que pueden ajustarse a su presupuesto.
+- objection: Prefiero hablar con una persona real
+  response: Nuestro agente de voz puede transferirle rápidamente a un operador si
+    lo desea, garantizando atención personalizada cuando la necesite.
+- objection: No quiero compartir mis datos por teléfono
+  response: Cumplimos estrictamente con la normativa GDPR y sólo usamos sus datos
+    para gestionar su reserva o pedido, siempre con su consentimiento.
+meta:
+  id: horeca
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+_extends: _base/horeca

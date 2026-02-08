@@ -1,0 +1,233 @@
+aliases:
+- wellness
+- bien-être
+- massage
+- spa
+- institut de beauté
+- esthétique
+- manucure
+- pédicure
+- coiffure
+- barbier
+- solarium
+- fitness
+- yoga
+- pilates
+- centre de beauté
+competitors:
+- name: Nuxe Spa
+  positioning: Réseau de spas haut de gamme avec produits maison
+  strengths:
+  - Forte notoriété de la marque
+  - Qualité des produits cosmétiques
+  - Environnement luxueux
+  weaknesses:
+  - Prix élevés
+  - Moins personnalisable
+  our_differentiation: Offre plus flexible et personnalisée, avec des forfaits adaptés
+    et des rappels automatisés pour fidéliser.
+- name: Yves Rocher Spa
+  positioning: Spas accessibles axés sur la cosmétique végétale
+  strengths:
+  - Large réseau en France
+  - Prix abordables
+  - Image naturelle
+  weaknesses:
+  - Expérience parfois standardisée
+  - Forte affluence, disponibilité limitée
+  our_differentiation: Système de réservation intelligent qui optimise les créneaux
+    et réduit l'attente, avec des conseils personnalisés.
+- name: petits instituts indépendants
+  positioning: Praticiens indépendants, ambiance intimiste
+  strengths:
+  - Relation client privilégiée
+  - Grande flexibilité
+  - Expertise spécialisée
+  weaknesses:
+  - Visibilité limitée
+  - Gestion administrative manuelle chronophage
+  our_differentiation: Automatisation de la prise de rendez-vous et de la gestion
+    client, permettant aux praticiens de se concentrer sur leur cœur de métier.
+industry_faq:
+- question: Quel est le prix d'un massage ?
+  answer_template: Le prix dépend du type de massage et de sa durée. Un modelage du
+    dos classique commence à partir de 60€. Puis-je vous donner plus de détails ?
+- question: Combien de temps dure une séance ?
+  answer_template: Une séance standard dure généralement 60 minutes. Nous proposons
+    aussi des formats express de 30 minutes.
+- question: Comment prendre rendez-vous ?
+  answer_template: Je peux vous prendre en rendez-vous immédiatement. Quel service
+    vous intéresse et pour quelle date ?
+- question: Puis-je reporter mon rendez-vous ?
+  answer_template: Oui, bien sûr. Indiquez-moi votre nom et le nouveau créneau qui
+    vous convient.
+- question: Y a-t-il des contre-indications ?
+  answer_template: Les contre-indications varient selon la procédure. Il est préférable
+    de consulter votre praticien avant la séance.
+- question: Êtes-vous ouverts le week-end ?
+  answer_template: Oui, nous sommes ouverts le week-end. Je peux vous proposer un
+    créneau samedi ou dimanche.
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: Environ 10 milliards d'euros
+  growth_rate: 4-5% par an
+  key_trends:
+  - Demande croissante pour le bien-être digital et la déconnexion
+  - Popularité des soins naturels et bio
+  - Développement des forfaits d'abonnement mensuel
+  seasonality:
+    high:
+    - Janvier (bons cadeaux, résolutions)
+    - Mai-Juin (pré-été)
+    - Novembre-Décembre (fêtes)
+    low:
+    - Août (vacances d'été)
+    - Février (post-fêtes)
+meta:
+  avg_validation_score: 0.0
+  country: fr
+  created_at: '2023-10-27'
+  currency: EUR
+  id: wellness
+  language: fr
+  languages: []
+  last_updated: '2023-10-27'
+  phone_codes:
+  - '+33'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Paris
+  version: '1.0'
+pain_points:
+- description: Les clients ne parviennent pas à joindre l'établissement pour une réservation
+    aux heures de pointe
+  severity: high
+  solution_hint: Agent vocal pour la prise de rendez-vous 24/7
+- description: Taux élevé d'absences sans prévenir (no-show)
+  severity: high
+  solution_hint: Rappels automatiques la veille et 2 heures avant
+- description: Le personnel d'accueil est surchargé par des questions répétitives
+  severity: medium
+  solution_hint: Réponses automatisées aux questions fréquentes (FAQ)
+- description: Difficulté à promouvoir les offres spéciales et les promotions
+  severity: medium
+  solution_hint: Appels sortants avec des propositions personnalisées
+- description: Les clients prennent rendez-vous et oublient
+  severity: medium
+  solution_hint: Rappels par messagerie et SMS
+- description: Gestion complexe des réglementations GDPR pour la conservation des
+    données clients
+  severity: low
+  solution_hint: Agent vocal avec gestion intégrée des consentements et des durées
+    de rétention
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 200
+  entry_point: 25
+  roi_examples:
+  - scenario: Automatisation de la prise de RDV et des rappels pour un petit institut
+    monthly_cost: 99
+    monthly_savings: 400
+    payback_months: 0.25
+  value_anchors:
+  - Réduction du taux de no-show jusqu'à 70%
+  - Libération de 10h/semaine pour le personnel administratif
+  - Augmentation du taux de conversion des appels de 20%
+recommended_functions:
+- name: prise_de_rendez_vous
+  priority: high
+  reason: Fonction principale - réserver des services avec choix du praticien et du
+    créneau
+- name: rappel_automatique
+  priority: high
+  reason: Réduction des no-show à moins de 5% via des rappels automatiques
+- name: reponses_faq
+  priority: medium
+  reason: Répondre aux questions sur les tarifs, services et préparations
+- name: modification_annulation
+  priority: medium
+  reason: Permettre le report ou l'annulation sans intervention humaine
+- name: promotion_ciblée
+  priority: low
+  reason: Informer sur les offres spéciales et forfaits fidélité
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un client demande le prix d'un service
+  script: Je comprends que le budget est important. Nous avons des forfaits qui peuvent
+    rendre les soins plus accessibles. Par exemple, un forfait de 5 massages offre
+    une réduction de 15%. Cela vous intéresserait-il d'en savoir plus ? Sinon, je
+    peux vous détailler les tarifs à l'unité.
+  goal: Présenter une option à valeur ajoutée (forfait) pour augmenter la valeur moyenne
+    du panier.
+- trigger: hesitation
+  situation: Lorsqu'un client hésite à réserver ('Je vais réfléchir')
+  script: Je comprends tout à fait. Pour vous faciliter la décision, puis-je vous
+    proposer de bloquer un créneau prévisionnel ? Cela ne vous engage pas, mais vous
+    garantit une disponibilité. Je peux aussi vous envoyer par email le détail de
+    nos services.
+  goal: Convertir l'hésitation en une action concrète (créneau bloqué ou capture d'email)
+    pour nourrir le pipeline.
+- trigger: no_weekend_availability
+  situation: Lorsque le client cherche un créneau le week-end mais que c'est complet
+  script: Je vois que nos créneaux du week-end sont très demandés. Je peux vous proposer
+    un rendez-vous en soirée en semaine, ou vous inscrire sur notre liste d'attente
+    pour le samedi ? Nous vous préviendrions immédiatement en cas d'annulation.
+  goal: Éviter la perte du client en proposant des alternatives et en maintenant l'engagement.
+typical_integrations:
+- name: CRM / Logiciel de réservation
+  examples:
+  - Planity
+  - Zenchef Agenda
+  - Treatwell
+  priority: high
+  reason: Accès aux agendas des praticiens et réservation des créneaux
+- name: Messagerie
+  examples:
+  - WhatsApp Business
+  - Facebook Messenger
+  priority: high
+  reason: Envoi de rappels et de confirmations de RDV
+- name: Email Marketing / SMS
+  examples:
+  - SendinBlue
+  - Mailchimp
+  priority: medium
+  reason: Campagnes de promotion et rappels pour les clients sans messagerie privilégiée
+- name: Téléphonie Cloud
+  examples:
+  - Aircall
+  - Ringover
+  priority: medium
+  reason: Gestion des appels entrants et historique des communications
+typical_objections:
+- objection: C'est trop cher
+  response: Nous proposons des forfaits avec des réductions allant jusqu'à 20%. Voulez-vous
+    que je vous les détaille ?
+- objection: Je n'ai pas le temps
+  response: Nous avons des formules express de 30 minutes. Nos horaires d'ouverture
+    sont également étendus jusqu'à 21h en semaine.
+- objection: Je vais y réfléchir
+  response: Bien sûr. Souhaitez-vous que je vous envoie par email nos tarifs et les
+    disponibilités de la semaine prochaine pour faciliter votre décision ?
+typical_services:
+- Modelage (classique, sportif, anti-cellulite)
+- Soin du visage (hydratant, anti-âge, pureté)
+- Manucure & Pédicure
+- Coiffure (coupe, couleur, brushing)
+- Épilation (cire, laser)
+- Soins SPA & Hammam
+- Cryothérapie
+- Cours de fitness (Pilates, Yoga, Stretching)
+- Réflexologie plantaire
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.65
+  typical_kpis:
+  - Réduction des no-show à 5%
+  - 45% des réservations passent par l'agent
+  - Temps moyen de réservation < 2 minutes
+  - Satisfaction client > 4.5/5
+_extends: _base/wellness

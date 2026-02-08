@@ -1,0 +1,258 @@
+pain_points:
+- description: Alta complexidade na conformidade com a LGPD, exigindo recursos significativos
+    para gerenciamento de dados.
+  severity: high
+  solution_hint: Agente de voz AI pode automatizar verificações de consentimento e
+    notificações de privacidade.
+- description: Inadimplência elevada em empréstimos, aumentando riscos financeiros.
+  severity: high
+  solution_hint: AI pode analisar padrões de comportamento para melhorar a avaliação
+    de crédito.
+- description: Custos operacionais altos com atendimento ao cliente manual.
+  severity: medium
+  solution_hint: Automatizar respostas a perguntas frequentes e agendamentos via voz.
+- description: Fraudes em transações digitais, causando perdas financeiras.
+  severity: high
+  solution_hint: Agente de voz pode verificar transações em tempo real e alertar sobre
+    atividades suspeitas.
+- description: Dificuldade em escalar serviços para clientes de baixa renda em áreas
+    remotas.
+  severity: medium
+  solution_hint: Oferecer suporte por voz em múltiplos idiomas e dialetos locais.
+- description: Competição intensa de fintechs, pressionando margens de lucro.
+  severity: medium
+  solution_hint: AI pode personalizar ofertas e melhorar retenção de clientes.
+- description: Processos lentos de aprovação de crédito, levando à perda de clientes.
+  severity: medium
+  solution_hint: Automatizar coleta e análise de dados para decisões mais rápidas.
+typical_services:
+- Empréstimo pessoal
+- Financiamento imobiliário
+- Cartão de crédito
+- Conta corrente digital
+- Investimento em renda fixa
+- Seguro de vida
+- Previdência privada
+- Câmbio de moedas
+- Consultoria financeira
+- Pagamento de contas automático
+recommended_functions:
+- name: Atendimento ao cliente 24/7
+  priority: high
+  reason: Reduz custos e melhora a satisfação do cliente com respostas imediatas.
+- name: Verificação de transações para prevenção de fraudes
+  priority: high
+  reason: Aumenta a segurança e conformidade com regulamentos locais.
+- name: Agendamento de consultas financeiras
+  priority: medium
+  reason: Otimiza o tempo dos consultores e melhora a experiência do cliente.
+- name: Lembretes de pagamento e vencimentos
+  priority: medium
+  reason: Reduz inadimplência e fortalece o relacionamento com o cliente.
+- name: Análise de perfil de investimento
+  priority: low
+  reason: Personaliza ofertas e aumenta vendas cruzadas.
+- name: Suporte a LGPD para consentimento de dados
+  priority: high
+  reason: Garante conformidade legal e evita multas.
+- name: Integração com aplicativos bancários locais
+  priority: medium
+  reason: Facilita o acesso dos clientes a serviços múltiplos.
+typical_integrations:
+- name: Sistema de gestão bancária
+  examples:
+  - Sisbacen
+  - Protheus
+  - Oracle FLEXCUBE
+  priority: high
+- name: Plataforma de pagamentos
+  examples:
+  - Pagar.me
+  - Stone
+  - Cielo
+  priority: high
+- name: ERP corporativo
+  examples:
+  - SAP
+  - Totvs
+  - Microsiga
+  priority: medium
+- name: Sistema de CRM
+  examples:
+  - Salesforce
+  - RD Station
+  - Zendesk
+  priority: medium
+- name: Ferramentas de analytics
+  examples:
+  - Power BI
+  - Google Analytics
+  - Localytics
+  priority: low
+- name: APIs de bancos centrais
+  examples:
+  - API do Banco Central do Brasil
+  priority: high
+industry_faq:
+- question: Como vocês garantem a segurança dos meus dados financeiros?
+  answer_template: Utilizamos criptografia de ponta a ponta e cumprimos rigorosamente
+    a LGPD para proteger suas informações.
+- question: Quais são os custos envolvidos na implementação do agente de voz?
+  answer_template: Os custos variam conforme a escala, mas oferecemos planos acessíveis
+    a partir de R$ 500 mensais, com ROI rápido.
+- question: O agente de voz pode lidar com perguntas complexas sobre investimentos?
+  answer_template: Sim, ele é treinado para fornecer informações básicas e conectar
+    você a um consultor especializado quando necessário.
+- question: É possível integrar com meu sistema bancário atual?
+  answer_template: Sim, integramos com várias plataformas locais como Sisbacen e Pagar.me
+    para uma transição suave.
+- question: Como o agente de voz ajuda na conformidade com a LGPD?
+  answer_template: Ele automatiza o registro de consentimentos e notifica clientes
+    sobre uso de dados, reduzindo riscos legais.
+- question: Vocês oferecem suporte em português com sotaques regionais?
+  answer_template: Sim, nosso agente é adaptado para diferentes sotaques brasileiros,
+    melhorando a comunicação.
+- question: Qual é o tempo de implementação típico?
+  answer_template: A implementação pode levar de 2 a 4 semanas, dependendo da complexidade
+    das integrações.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre custos durante uma demonstração.
+  script: Entendo sua preocupação com custos. Nosso agente de voz começa em R$ 500
+    por mês e pode economizar até R$ 2.000 mensais em atendimento manual. Posso mostrar
+    um cálculo personalizado?
+  goal: Destacar o valor e ROI para justificar o investimento.
+- trigger: security_concern
+  situation: Cliente expressa dúvidas sobre segurança de dados.
+  script: A segurança é nossa prioridade. Cumprimos a LGPD e usamos criptografia avançada.
+    Já ajudamos diversos bancos a reduzir fraudes em 30%. Posso compartilhar casos
+    de sucesso?
+  goal: Construir confiança e aliviar preocupações com exemplos concretos.
+- trigger: competition_mention
+  situation: Cliente compara com concorrentes como Nubank.
+  script: Ótima pergunta. Diferentemente de fintechs focadas em apps, nosso agente
+    de voz oferece atendimento por voz integrado a sistemas legados, ideal para escalabilidade.
+    Quer ver como funciona na prática?
+  goal: Diferenciação baseada em integração e suporte abrangente.
+- trigger: implementation_time
+  situation: Cliente preocupa-se com o tempo para colocar em operação.
+  script: Implementamos em etapas, começando com funções básicas em 2 semanas. Já
+    temos templates para o setor financeiro no Brasil, acelerando o processo. Podemos
+    agendar uma prova de conceito?
+  goal: Reduzir percepção de risco com um plano de implementação rápido.
+- trigger: lgpd_compliance
+  situation: Cliente busca soluções para conformidade com LGPD.
+  script: Nosso agente automatiza consentimentos e relatórios de LGPD, ajudando você
+    a evitar multas de até R$ 50 milhões. Temos casos de redução de 40% no tempo de
+    conformidade. Interessado em detalhes?
+  goal: Vender com base em benefícios regulatórios e economia de custos.
+competitors:
+- name: Nubank
+  positioning: Fintech líder em serviços bancários digitais
+  strengths:
+  - App user-friendly
+  - Baixas taxas
+  - Crescimento rápido
+  weaknesses:
+  - Serviços limitados para empresas
+  - Dependência de terceiros para integrações
+  our_differentiation: Oferecemos atendimento por voz integrado a sistemas legados,
+    ideal para bancos tradicionais escalarem digitalmente.
+- name: Itaú Unibanco
+  positioning: Banco tradicional com ampla rede física
+  strengths:
+  - Presença nacional
+  - Portfólio diversificado
+  - Recursos robustos
+  weaknesses:
+  - Custos operacionais altos
+  - Processos lentos de inovação
+  our_differentiation: Automatizamos processos manuais com AI, reduzindo custos e
+    melhorando a agilidade sem substituir infraestrutura existente.
+- name: Banco Inter
+  positioning: Banco digital focado em contas gratuitas
+  strengths:
+  - Zero taxas para contas básicas
+  - Crescimento em investimentos
+  weaknesses:
+  - Suporte ao cliente menos personalizado
+  - Foco principalmente em varejo
+  our_differentiation: Fornecemos suporte por voz personalizado e integração com CRM,
+    aumentando a retenção de clientes de alto valor.
+- name: Santo Digital
+  positioning: Fintech regional especializada em pagamentos
+  strengths:
+  - Soluções locais para LATAM
+  - Parcerias com comerciantes
+  weaknesses:
+  - Escala limitada globalmente
+  - Pouca diversificação de serviços
+  our_differentiation: Nossa plataforma é adaptável a múltiplos setores financeiros,
+    oferecendo mais versatilidade e suporte a LGPD.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Banco médio reduzindo custos de atendimento ao cliente
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 0.4
+  - scenario: Fintech prevenindo fraudes com verificação por voz
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 0.5
+  value_anchors:
+  - Economize até 60% em custos operacionais com automação por voz.
+  - ROI em menos de 2 meses para conformidade com LGPD.
+  - Preços adaptáveis ao tamanho do seu negócio, a partir de R$ 500/mês.
+market_context:
+  market_size: Estimado em R$ 50 bilhões para soluções de automação financeira no
+    Brasil
+  growth_rate: 15% ao ano, impulsionado pela digitalização e regulamentações como
+    LGPD
+  key_trends:
+  - Aumento da adoção de banking-as-a-service (BaaS) por fintechs.
+  - Crescimento de investimentos em criptomoedas e ativos digitais.
+  - Foco em inclusão financeira para populações não bancarizadas.
+  - Integração de AI para personalização de serviços financeiros.
+  seasonality:
+    high:
+    - Janeiro (retorno de férias)
+    - Dezembro (fim de ano e bonificações)
+    low:
+    - Fevereiro (Carnaval)
+    - Julho (férias de meio de ano)
+typical_objections:
+- objection: Não temos orçamento para isso agora.
+  response: Entendo. Com nosso plano de entrada, você pode começar pequeno e escalar
+    conforme vê resultados. O ROI rápido ajuda a liberar recursos.
+- objection: Prefiro o atendimento humano por ser mais personalizado.
+  response: Nosso agente complementa o atendimento humano, lidando com tarefas repetitivas
+    para que sua equipe foque em casos complexos, melhorando a personalização.
+- objection: Já temos sistemas antigos e a integração parece complicada.
+  response: Temos experiência com integrações em sistemas legados brasileiros, como
+    Totvs e SAP, garantindo uma transição suave sem interromper operações.
+- objection: A LGPD é muito nova e não sei se preciso de automação.
+  response: A automação é crucial para LGPD, reduzindo erros manuais e multas. Já
+    ajudamos clientes a cortarem custos de conformidade em 50%.
+- objection: Os concorrentes oferecem preços mais baixos.
+  response: Nosso diferencial está na integração por voz e suporte a LGPD, que agregam
+    valor a longo prazo. Podemos mostrar casos onde economizamos mais do que o custo.
+meta:
+  id: finance
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

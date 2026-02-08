@@ -1,0 +1,279 @@
+pain_points:
+- description: Gestion fastidieuse des réservations et de la disponibilité des bateaux,
+    entraînant des surréservations ou des pertes de revenus.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la prise de rendez-vous, vérifier
+    la disponibilité en temps réel et envoyer des confirmations.
+- description: Difficulté à joindre les clients pour des rappels d'entretien ou des
+    offres saisonnières, avec un taux de réponse faible.
+  severity: medium
+  solution_hint: L'agent peut passer des appels automatisés de rappel pour l'entretien
+    et promouvoir des offres, avec suivi des intentions.
+- description: Perte de temps sur la gestion des appels entrants pour des demandes
+    de devis simples (location, réparation).
+  severity: medium
+  solution_hint: L'agent peut qualifier les leads, collecter les informations nécessaires
+    et transmettre un devis pré-rempli au commercial.
+- description: Manque de visibilité et de suivi après un devis ou une première prise
+    de contact, nombreux leads non convertis.
+  severity: high
+  solution_hint: L'agent peut effectuer un suivi systématique des leads froids et
+    rediriger les prospects chauds vers un vendeur.
+- description: Défis de conformité avec le RGPD pour la gestion des données clients
+    et le consentement aux appels.
+  severity: medium
+  solution_hint: L'agent peut intégrer des scripts de consentement RGPD et assurer
+    un journal d'appel pour l'audit.
+- description: Saisonnalité marquée conduisant à une surcharge en haute saison et
+    un personnel sous-utilisé en basse saison.
+  severity: medium
+  solution_hint: L'agent peut gérer les pics d'appels en été et mener des campagnes
+    de fidélisation en hiver pour lisser l'activité.
+typical_services:
+- Location de bateaux (à la journée, à la semaine)
+- Vente de bateaux neufs et d'occasion
+- Maintenance et réparation moteur
+- Carénage et antifouling
+- Hivernage et stockage à terre
+- Assistance 24/7 et dépannage
+- Cours de navigation et permis bateau
+- Amarrage et location de pontons
+- Assurance maritime
+- Équipement et accessoires nautiques
+recommended_functions:
+- name: Prise de rendez-vous automatique
+  priority: high
+  reason: Réduit les pertes de réservations et optimise l'emploi du temps des techniciens
+    et des bateaux.
+- name: Qualification et génération de leads
+  priority: high
+  reason: Capture les demandes de devis 24/7 et identifie les prospects sérieux pour
+    l'équipe commerciale.
+- name: Rappels d'entretien automatisés
+  priority: medium
+  reason: Augmente la fidélité et les revenus récurrents des services après-vente.
+- name: Suivi post-devis et relance
+  priority: high
+  reason: Améliore le taux de conversion en maintenant l'engagement avec le prospect.
+- name: Collecte de feedback client
+  priority: low
+  reason: Fournit des insights pour améliorer les services et identifier les problèmes
+    récurrents.
+- name: Gestion des urgences et routage
+  priority: medium
+  reason: Dirige immédiatement les appels de dépannage vers le technicien de garde
+    approprié.
+typical_integrations:
+- name: Logiciel de gestion de marina/chantier naval
+  examples:
+  - Datalastic
+  - Nautique Software
+  - Softship
+  priority: high
+- name: Système de réservation en ligne
+  examples:
+  - FareHarbor
+  - Resalys
+  - Bokun
+  priority: high
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Dolibarr
+  priority: medium
+- name: Logiciel de comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - QuickBooks
+  priority: medium
+- name: Plateforme de communication unifiée
+  examples:
+  - RingCentral
+  - Aircall
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: Proposez-vous des services d'urgence le week-end ?
+  answer_template: Oui, nous offrons un service d'assistance 24h/24 et 7j/7 pour les
+    dépannages urgents. L'agent vocal peut immédiatement contacter notre technicien
+    de garde pour vous.
+- question: Quel est le délai moyen pour un carénage complet ?
+  answer_template: Le délai standard est de 5 à 7 jours ouvrables, selon la taille
+    du bateau et la saison. Nous pouvons programmer votre créneau dès maintenant via
+    l'agent.
+- question: Avez-vous des bateaux disponibles à la location pour cet été ?
+  answer_template: La disponibilité est mise à jour en temps réel. Pouvez-vous me
+    préciser les dates souhaitées et le type de bateau ? Je peux vérifier immédiatement
+    et vous proposer des options.
+- question: Proposez-vous le financement pour l'achat d'un bateau ?
+  answer_template: Oui, nous collaborons avec plusieurs établissements de crédit maritime
+    pour vous proposer des solutions de financement adaptées. Je peux vous mettre
+    en relation avec notre conseiller.
+- question: Comment gérez-vous la conformité RGPD pour mes données ?
+  answer_template: Tous nos systèmes, y compris l'agent vocal, sont conformes au RGPD.
+    Nous collectons et traitons vos données uniquement avec votre consentement explicite,
+    que je peux vous demander maintenant.
+- question: Pouvez-vous stocker mon bateau en hiver ?
+  answer_template: Absolument. Nous proposons des solutions d'hivernage sécurisées
+    à terre, avec différents niveaux de service. Je peux vous détailler les options
+    et les tarifs.
+sales_scripts:
+- trigger: demande_devis_entretien
+  situation: Quand un client appelle pour demander un devis pour un entretien ou une
+    réparation.
+  script: Bonjour, je comprends que vous avez besoin d'un devis pour [type de service].
+    Pour une estimation précise, pourriez-vous me communiquer le modèle du bateau,
+    le type de moteur et la nature précise du problème ou de l'entretien souhaité
+    ? Je note ces informations et fais immédiatement remonter votre demande à notre
+    atelier pour un devis personnalisé sous 24h.
+  goal: Qualifier la demande, collecter les informations techniques essentielles et
+    engager le processus de devis rapidement.
+- trigger: prospect_froid_relance
+  situation: Pour relancer un prospect qui a demandé un devis il y a plus de 15 jours
+    mais n'a pas donné suite.
+  script: Bonjour [Nom du prospect], c'est [Nom de l'entreprise] au sujet du devis
+    pour [service demandé] que nous vous avions adressé le [date]. Souhaitiez-vous
+    des précisions sur ce devis ? Nous avons actuellement une disponibilité pour planifier
+    ce service. Puis-je vous mettre en relation avec notre conseiller pour finaliser
+    cela ?
+  goal: Réengager le prospect, comprendre les freins et tenter de convertir en rendez-vous
+    ou vente.
+- trigger: mise_en_garde_saisonniere
+  situation: En période de pré-saison (printemps) pour inciter à la réservation de
+    services avant la ruée.
+  script: Bonjour, nous entrons dans la période de préparation estivale. Les créneaux
+    pour le carénage et la mise en service des moteurs se remplissent rapidement.
+    Souhaiteriez-vous réserver dès maintenant un créneau pour garantir que votre bateau
+    soit prêt pour la saison ? Je peux vérifier nos dernières disponibilités.
+  goal: Créer un sentiment d'urgence et convertir l'appel en réservation prépayée
+    pour un service saisonnier.
+- trigger: objection_prix_trop_eleve
+  situation: Quand un client exprime que le prix est trop élevé pendant une discussion.
+  script: 'Je comprends votre point de vue sur l''investissement. Avez-vous comparé
+    ce qui était inclus dans notre prestation ? Nous incluons [liste des valeurs ajoutées
+    : garantie, pièces d''origine, diagnostic complet]. De plus, un entretien régulier
+    évite des réparations bien plus coûteuses à long terme. Puis-je vous proposer
+    un plan de financement ou un package d''entretien annuel pour lisser la dépense
+    ?'
+  goal: Recontextualiser la valeur, différencier de la concurrence bas de gamme et
+    proposer une solution pour réduire la barrière financière.
+competitors:
+- name: Bénéteau Services
+  positioning: Réseau national officiel des constructeurs Bénéteau et Jeanneau.
+  strengths:
+  - Réseau d'ateliers agréés très étendu
+  - Accès aux pièces détachées d'origine
+  - Forte notoriété de marque
+  weaknesses:
+  - Tarifs souvent premium
+  - Peu de flexibilité sur les créneaux urgents
+  - Expérience client parfois impersonnelle
+  our_differentiation: Réactivité et assistance 24/7 personnalisée, avec des tarifs
+    plus transparents et une intégration technologique pour un suivi client simplifié.
+- name: Ports de Plaisance Locaux (gérés par les municipalités)
+  positioning: Gestionnaires d'infrastructures portuaires avec services de base.
+  strengths:
+  - Positionnement géographique privilégié
+  - Tarifs parfois subventionnés
+  - Relation de proximité avec les plaisanciers locaux
+  weaknesses:
+  - Offre de services limitée (souvent amarrage et électricité seulement)
+  - Manque d'experts techniques en interne
+  - Processus administratifs lents
+  our_differentiation: Nous offrons une gamme complète de services techniques et commerciaux
+    sous un même toit, avec une digitalisation des démarches qui fait gagner du temps.
+- name: Artisans Marins Indépendants
+  positioning: Petits réparateurs ou carénieurs indépendants.
+  strengths:
+  - Prix très compétitifs
+  - Grande flexibilité et relation directe
+  - Expertise de niche parfois
+  weaknesses:
+  - Capacité limitée, pas de service 24/7
+  - Garanties parfois limitées
+  - Peu ou pas de digitalisation (réservation, paiement)
+  our_differentiation: Nous offrons la réactivité et le savoir-faire d'un artisan,
+    couplés à la structure, la garantie et les outils numériques d'une entreprise
+    établie.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Automatisation de la prise de rendez-vous et des rappels d'entretien
+      pour un chantier naval.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Qualification des leads et relance post-devis pour un loueur de bateaux.
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Ne perdez plus aucune réservation, même à 23h ou le dimanche.
+  - Convertissez 30% de plus de vos devis grâce à un suivi automatisé infaillible.
+  - Libérez 15 heures par semaine à votre équipe administrative pour des tâches à
+    plus forte valeur.
+market_context:
+  market_size: ~3.5 milliards d'euros (industrie nautique française)
+  growth_rate: ~4% annuel
+  key_trends:
+  - Digitalisation croissante de la relation client (réservation en ligne, suivi digital).
+  - Demande forte pour les services d'entretien et de réparation avec la vétusté de
+    la flotte.
+  - Essor de la location peer-to-peer, nécessitant des services techniques de support.
+  - Importance accrue de l'éco-responsabilité (carénage écologique, antifoulings nouvelle
+    génération).
+  seasonality:
+    high:
+    - Avril
+    - Mai
+    - Juin
+    - Juillet
+    - Août
+    - Septembre
+    low:
+    - Novembre
+    - Décembre
+    - Janvier
+    - Février
+typical_objections:
+- objection: Je préfère parler directement à un humain, pas à une machine.
+  response: Je comprends tout à fait. L'agent vocal est là pour vous éviter l'attente
+    et gérer les questions simples 24h/24. Dès qu'une demande est complexe ou si vous
+    le souhaitez, il vous transmet immédiatement à un conseiller. Voulez-vous que
+    je vous transfère maintenant ?
+- objection: C'est trop compliqué à installer et à utiliser pour mon équipe.
+  response: L'intégration est conçue pour être simple, souvent via une interface web
+    existante. Nous nous chargeons de la configuration initiale et de la formation
+    de votre équipe, qui est incluse dans le forfait. Vous n'avez pas besoin de compétences
+    techniques.
+- objection: Je n'ai pas assez de volume d'appels pour justifier cet investissement.
+  response: Même avec un volume modeste, chaque appel manqué est une opportunité perdue.
+    L'agent permet de capturer 100% des demandes, même en votre absence, et de libérer
+    du temps pour vos tâches cœur de métier. L'investissement de départ est faible
+    par rapport aux revenus potentiels générés.
+- objection: Je suis inquiet quant à la conformité RGPD avec un robot téléphonique.
+  response: Notre solution est entièrement conçue et hébergée dans l'UE, en stricte
+    conformité avec le RGPD. L'agent demandera systématiquement le consentement avant
+    toute collecte de données et nous fournissons tous les outils pour votre registre
+    de traitement. Nous pouvons vous fournir une analyse d'impact.
+meta:
+  id: marine
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

@@ -1,0 +1,254 @@
+pain_points:
+- description: High call volume during peak travel seasons overwhelms staff, leading
+    to long wait times and missed bookings.
+  severity: high
+  solution_hint: AI voice agent can handle initial inquiries, booking changes, and
+    FAQ 24/7, routing only complex issues to human agents.
+- description: Managing cancellations and rebookings due to unpredictable Canadian
+    weather and travel advisories is time-consuming.
+  severity: high
+  solution_hint: Automated voice system can process standard policy-based cancellations
+    and initiate rebooking workflows instantly.
+- description: Difficulty in cross-selling travel insurance, activities, and upgrades
+    during the booking conversation.
+  severity: medium
+  solution_hint: Voice agent can be programmed to offer relevant add-ons based on
+    destination and trip type after confirming core booking.
+- description: Clients often request price matching against large online travel agencies
+    (OTAs), requiring manual research and negotiation.
+  severity: medium
+  solution_hint: Agent can instantly access and quote from integrated supplier systems,
+    providing competitive offers in real-time.
+- description: After-hours and weekend inquiries from different time zones go unanswered,
+    potentially losing business to 24/7 competitors.
+  severity: medium
+  solution_hint: Implement a voice agent to provide full service outside business
+    hours, capturing leads and bookings.
+- description: Manual entry of client information from calls into CRM and booking
+    systems leads to errors and duplicated effort.
+  severity: low
+  solution_hint: AI agent can integrate with backend systems to auto-populate client
+    records and booking details from the conversation.
+typical_services:
+- Flight booking (domestic & international)
+- Hotel and resort reservations
+- Car rental services
+- Tour package creation (e.g., Canadian Rockies, East Coast)
+- Cruise bookings (Alaskan, Caribbean)
+- Travel insurance sales
+- Visa application assistance
+- Group travel coordination
+- Last-minute getaway deals
+- Custom itineraries for families or adventure travel
+recommended_functions:
+- name: 24/7 Booking Assistant
+  priority: high
+  reason: Caters to off-hours inquiries and captures bookings from different time
+    zones, directly addressing a key pain point.
+- name: Automated Rebooking & Cancellation Handler
+  priority: high
+  reason: Efficiently manages high-volume, policy-driven changes common due to weather,
+    saving agent time and improving client experience.
+- name: Intelligent Cross-Sell Prompter
+  priority: medium
+  reason: Increases average transaction value by suggesting relevant insurance, upgrades,
+    or activities based on conversation context.
+- name: PIPEDA-Compliant Data Handler
+  priority: high
+  reason: Crucial for Canada; automatically manages consent for data collection and
+    ensures secure handling of personal information during calls.
+- name: Multi-Lingual Support (French/English)
+  priority: medium
+  reason: Important for serving all Canadian markets effectively, especially in Quebec
+    and bilingual regions.
+- name: Seamless CRM Integration
+  priority: medium
+  reason: Eliminates manual data entry, reduces errors, and provides a unified client
+    view for human agents.
+typical_integrations:
+- name: Global Distribution System (GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Property Management System (PMS)
+  examples:
+  - ResBook
+  - Cloudbeds
+  - Oracle Hospitality
+  priority: medium
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: high
+- name: Payment Gateway
+  examples:
+  - Moneris
+  - Stripe
+  - Square
+  priority: medium
+- name: Tour Operator Platforms
+  examples:
+  - TourConnect
+  - Rezdy
+  - Checkfront
+  priority: medium
+industry_faq:
+- question: What is your cancellation policy?
+  answer_template: Our cancellation policy varies by supplier and package. For full
+    details specific to your booking, I can connect you with your itinerary details
+    or transfer you to a live agent who can review the terms with you.
+- question: Do I need a visa for my destination?
+  answer_template: Visa requirements depend on your citizenship and destination. I
+    can provide general information, but for the most accurate and official requirements,
+    I recommend consulting the Government of Canada's travel advisories page or the
+    embassy of your destination country.
+- question: Is travel insurance included?
+  answer_template: Travel insurance is typically an optional add-on for your protection.
+    I can provide details on our recommended plans, which cover medical emergencies,
+    trip cancellation, and baggage loss, among other things. Would you like me to
+    go over the options?
+- question: Can you price match an offer I found online?
+  answer_template: We strive to offer competitive pricing. If you have a verifiable
+    quote for the identical itinerary from another accredited agency, please provide
+    the details, and I will initiate a price match request with our team for your
+    review.
+- question: What happens if my flight is delayed or cancelled?
+  answer_template: In case of airline-initiated schedule changes, we will automatically
+    work to rebook you on the next available option and notify you. For real-time
+    assistance during travel disruptions, our 24/7 support line, which this AI agent
+    is a part of, is available to help.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about the cost of implementing an AI voice
+    agent.
+  script: I understand budget is a key consideration. For a travel agency of your
+    size, implementation typically starts around 250-500 CAD per month. This investment
+    often pays for itself within 3-6 months by capturing after-hours bookings and
+    reducing missed calls. Could I ask about your average call volume to provide a
+    more precise estimate?
+  goal: Qualify the lead by providing a transparent entry point and positioning the
+    solution as having a clear ROI.
+- trigger: competitor_mention
+  situation: When the client mentions they are also looking at a large online travel
+    agency (OTA) or another call center solution.
+  script: That's a fair comparison. While large OTAs offer scale, our AI voice agent
+    is designed specifically to enhance *your* brand's customer service, not replace
+    it. We integrate directly with your existing tools like Amadeus or your CRM, keeping
+    the client relationship and data with you, all while providing 24/7 support like
+    the big players. It's about empowering your agency, not losing your clients to
+    a platform.
+  goal: Differentiate on brand ownership, integration, and personalized service versus
+    impersonal platforms.
+- trigger: objection_automation
+  situation: When the client worries that an AI agent will feel impersonal or damage
+    customer relationships.
+  script: 'That''s a crucial point. Our AI agent is designed to handle routine, repetitive
+    tasks like booking confirmations, policy FAQs, and simple changes. This actually
+    frees up your expert human agents to focus on complex itineraries, high-value
+    sales, and building deeper relationships. Think of it as giving your team a powerful
+    assistant to handle the administrative load, so they can do what they do best:
+    create amazing travel experiences.'
+  goal: Reframe the AI as a tool that augments and empowers human staff, improving
+    service quality.
+competitors:
+- name: Large Online Travel Agencies (e.g., Expedia, Booking.com)
+  positioning: Dominant digital marketplace for self-service travel.
+  strengths:
+  - Massive inventory
+  - Strong brand recognition
+  - Consumer-facing apps
+  weaknesses:
+  - Impersonal service
+  - High commission costs for suppliers
+  - Limited support for complex trips
+  our_differentiation: We empower your branded agency with 24/7 AI support, keeping
+    client relationships and data in-house while matching the availability of OTAs.
+- name: Traditional Call Centers
+  positioning: Outsourced human customer service and sales.
+  strengths:
+  - Human touch
+  - Flexible for complex issues
+  weaknesses:
+  - High and variable cost per call
+  - Limited after-hours coverage
+  - Training and turnover challenges
+  our_differentiation: Our solution provides consistent, always-available service
+    at a predictable cost, handling routine tasks instantly and seamlessly escalating
+    complex issues to your specialized team.
+- name: In-house Customer Service Team
+  positioning: Direct, branded client service.
+  strengths:
+  - Deep product knowledge
+  - Strong client relationships
+  - Brand control
+  weaknesses:
+  - Scalability limitations
+  - High fixed labour costs
+  - After-hours coverage is expensive
+  our_differentiation: We augment your in-house team, extending their capacity to
+    24/7 without the high cost of night shifts, handling overflow and routine calls
+    so they can focus on high-value interactions.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 300
+  - 1500
+  entry_point: 250
+  roi_examples:
+  - scenario: Agency handling 200 routine after-hours calls/month manually or losing
+      them.
+    monthly_cost: 400
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Convert just 5 additional after-hours bookings per month to cover the cost.
+  - Reduce missed calls by 80% during peak season.
+  - Reclaim 15+ hours per week for your top agents to focus on sales.
+market_context:
+  market_size: Approximately 40 billion CAD (pre-pandemic tourism spending)
+  growth_rate: Recovering at 10-15% YoY post-pandemic
+  key_trends:
+  - Strong demand for domestic 'rediscover Canada' travel.
+  - Increased interest in sustainable and adventure travel.
+  - Rising consumer expectation for instant, 24/7 customer service.
+  - Greater need for flexibility and clear cancellation policies.
+  seasonality:
+    high:
+    - June to August (Summer)
+    - December to January (Winter Holidays)
+    low:
+    - January (post-holidays)
+    - November
+typical_objections:
+- objection: Our clients prefer talking to a real person.
+  response: We completely agree on the importance of human connection. Our AI handles
+    the repetitive questions and tasks, which actually ensures your clients get to
+    a 'real person' faster when they need expert, nuanced help. It improves the overall
+    experience.
+- objection: It sounds too complicated to set up with our current systems.
+  response: Integration is a key part of our service. We work with common systems
+    like Amadeus, Sabre, and major CRMs. Our team handles the technical setup, and
+    the AI is designed to be managed by your staff without coding. We focus on making
+    it simple for you.
+- objection: We're a small agency; this seems like it's for bigger companies.
+  response: Actually, small agencies benefit greatly. You get the 24/7 presence and
+    efficiency of a large player without the large overhead. Starting at a lower cost
+    point, it helps you compete more effectively and scale your service as you grow.
+meta:
+  id: travel
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

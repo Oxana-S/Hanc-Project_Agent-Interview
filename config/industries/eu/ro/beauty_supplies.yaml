@@ -1,0 +1,234 @@
+pain_points:
+- description: Gestiunea complexă a stocurilor cu numeroase produse cu termen de valabilitate
+    scurt (cosmetice, tratamente).
+  severity: high
+  solution_hint: Agentul vocal poate automatiza verificarea stocurilor și alerte pentru
+    termenele de expirare.
+- description: Concurența crescută de la retailerii online internaționali (ex. Notino)
+    care oferă prețuri foarte competitive.
+  severity: high
+  solution_hint: Agentul poate evidenția avantaje locale precum livrarea rapidă, suport
+    în limba română și produse adaptate pieței locale.
+- description: Aprovizionarea neregulată de la distribuitori, ducând la rupturi de
+    stoc și clienți nemulțumiți.
+  severity: medium
+  solution_hint: Agentul poate prelua comenzile de reaprovizionare automat și poate
+    informa clienții asupra disponibilității în timp real.
+- description: Clienții cer informații detaliate despre ingrediente, utilizare și
+    compatibilitate a produselor, consumând mult timp al personalului.
+  severity: medium
+  solution_hint: Agentul vocal poate răspunde instant la întrebări frecvente despre
+    produse, eliberând personalul pentru vânzări complexe.
+- description: Presiune ridicată de preț din partea clienților, care compară constant
+    cu ofertele online.
+  severity: medium
+  solution_hint: Agentul poate prezenta automat promoțiile, pachetele și argumentele
+    de valoare (calitate, consultanță).
+- description: Managementul complex al programărilor și comenzilor pentru saloanele
+    de înfrumusețare care sunt clienți majori.
+  severity: low
+  solution_hint: Agentul poate integra calendarul și poate gestiona programările de
+    livrare sau re-comandă pentru clienții business.
+typical_services:
+- Vânzare cu amănuntul de produse cosmetice și de îngrijire
+- Vânzare en-gros pentru saloane și clinici de estetică
+- Consultanță și recomandări de produse personalizate
+- Vânzare de echipamente pentru saloane (uscătoare, scaune)
+- Servicii de livrare rapidă la domiciliu sau salon
+- Gestionarea comenzilor și returnărilor
+- Programare pentru tratamente și servicii (dacă aplicabil)
+- Închiriere de echipamente pentru evenimente (ex. aparate de înfrumusețare)
+- Vânzare de produse profesionale pentru coafură și machiaj
+- Organizare de workshop-uri și demonstrații de produse
+recommended_functions:
+- name: Prelegerea comenzilor și a programărilor
+  priority: high
+  reason: Reduce presiunea pe linia telefonică și automatizează procesul principal
+    de vânzare.
+- name: Răspunsuri la întrebări frecvente despre produse
+  priority: high
+  reason: Clienții au nevoie de informații rapide despre ingrediente, utilizare și
+    disponibilitate.
+- name: Verificare stoc și notificare pentru reaprovizionare
+  priority: medium
+  reason: Ajută la prevenirea rupturilor de stoc, o problemă majoră în industrie.
+- name: Gestionarea obiecțiilor legate de preț
+  priority: medium
+  reason: Concurența online este acerbă, agentul trebuie să prezinte valoarea și promoțiile.
+- name: Confirmare și notificare a livrării
+  priority: low
+  reason: Îmbunătățește experiența clientului și reduce numărul de apeluri de urmărire.
+- name: Colectarea feedback-ului după comandă
+  priority: low
+  reason: Important pentru îmbunătățirea serviciilor și pentru păstrarea clienților.
+typical_integrations:
+- name: Sistem de gestionare a stocurilor (Inventory Management)
+  examples:
+  - 1C
+  - SAP Business One
+  - Softwin
+  priority: high
+- name: Platformă E-commerce
+  examples:
+  - Magento (găzduit local)
+  - Shopify
+  - plataforme personalizate
+  priority: high
+- name: Soft de contabilitate
+  examples:
+  - Saga
+  - Sphera
+  - contabilitate online românească
+  priority: medium
+- name: Sistem de relații cu clienții (CRM)
+  examples:
+  - HubSpot
+  - Bitrix24
+  - platforme locale
+  priority: medium
+- name: Sistem de procesare plăți
+  examples:
+  - Netopia
+  - mobilPay
+  - Romcard
+  priority: high
+industry_faq:
+- question: Aveți produsul X pe stoc?
+  answer_template: Bună ziua! Vă pot verifica disponibilitatea instant pentru produsul
+    [Nume Produs]. Pentru o confirmare exactă și pentru a vă rezerva produsul, aș
+    putea să vă conectez cu un consultant?
+- question: Care este politica de returnare?
+  answer_template: Produsele nefolosite, în ambalajul original, pot fi returnate în
+    termen de 14 zile de la cumpărare, în conformitate cu legislația UE. Produsele
+    de igienă personală desigilate nu se pot returna din motive de sănătate.
+- question: Livrați și în afara orașului?
+  answer_template: Da, livrăm în toată țara. Costul și timpul de livrare depind de
+    localitate. Vă pot oferi o estimare dacă îmi spuneți codul postal.
+- question: Oferiți reducere pentru saloanele de înfrumusețare?
+  answer_template: Absolut! Avem programe en-gros și contracte speciale pentru saloane
+    partener. Pentru detalii și o ofertă personalizată, vă pot transfera către departamentul
+    nostru B2B.
+- question: Produsele voastre sunt testate pe animale?
+  answer_template: Ne străduim să lucrăm cu branduri care nu testează pe animale.
+    Pentru informații specifice unui brand, vă pot consulta baza noastră de date sau
+    vă pot conecta cu un specialist.
+- question: Cum pot plăti comanda?
+  answer_template: Acceptăm plata online cu cardul, ramburs la livrare și, pentru
+    clienții business, și pe bază de factură.
+sales_scripts:
+- trigger: price_question
+  situation: Când clientul întreabă despre preț sau spune că este prea scump.
+  script: 'Înțeleg perfect importanța bugetului. Prețul nostru reflectă și calitatea
+    produselor pe care le aducem pe piața românească, dar și serviciile noastre suplimentare:
+    consultanță gratuită, livrare rapidă în [Oraș] și garantia autenticității. În
+    plus, tocmai acum avem o promoție pentru [Produs Similar/Accesoriu] la cumpărarea
+    acestui produs. Vă interesează să aflați detalii?'
+  goal: Să prezinți valoarea adăugată și să redirecționezi conversația către o ofertă.
+- trigger: product_recommendation
+  situation: Când clientul cere o recomandare pentru un anumit tip de produs (ex.
+    "Ce șampon pentru păr uscat?").
+  script: Pentru păr uscat, avem mai multe opțiuni excelente. Unul dintre cele mai
+    populare este [Nume Produs 1], care conține [ingredient benefic]. Alternativ,
+    [Nume Produs 2] este fantastic pentru că [alt beneficiu]. Ambele sunt disponibile.
+    Aveți vreo alergie sau preferință pentru anumite ingrediente? Aș putea să vă recomand
+    mai precis.
+  goal: Să demonstrezi expertiza și să ghidezi clientul către o decizie de cumpărare.
+- trigger: checkout_abandonment
+  situation: Când clientul pare să hezite la finalizarea comenzii telefonice.
+  script: Pentru a vă facilita procesul, oferim livrare gratuită pentru comenzi peste
+    200 RON. De asemenea, comanda dvs. este preluată imediat și o puteți primi deja
+    mâine. Doriți să finalizăm comanda acum pentru a vă asigura această livrare rapidă?
+  goal: Să elimine ultimele bariere și să închidă vânzarea cu un impuls (livrare gratuită/rapidă).
+competitors:
+- name: Notino
+  positioning: Retailer online internațional dominant, cu gamă foarte largă.
+  strengths:
+  - Gamă imensă de produse
+  - prețuri competitive
+  - brand puternic
+  weaknesses:
+  - Livrare mai lentă uneori
+  - serviciu clienți mai impersonal
+  - uneori probleme cu garantia
+  our_differentiation: Consultanță personală în limba română, livrare rapidă locală,
+    relație directă cu saloanele, accent pe produse profesionale.
+- name: Sephora România
+  positioning: Retailer premium de beauty, atât online cât și în magazine fizice.
+  strengths:
+  - Branduri de lux
+  - experiență în magazin
+  - testere
+  weaknesses:
+  - Prețuri premium
+  - gamă mai mică de produse profesionale pentru saloane
+  our_differentiation: Prețuri mai accesibile pentru produse de calitate profesională,
+    specializare pe aprovizionarea salonelor, servicii B2B dedicate.
+- name: Farmacii (Dr. Max, HelpNet) cu raion de cosmetice
+  positioning: Retaileri de sănătate cu secțiuni de cosmetice.
+  strengths:
+  - Rețea vastă de puncte fizice
+  - încredere a clienților
+  weaknesses:
+  - Gamă limitată
+  - personal cu expertiză mai mică în beauty
+  - focus pe medicamente
+  our_differentiation: Expertiză dedicată 100% produselor de beauty, gamă mult mai
+    largă și specializată, atât pentru retail cât și pentru profesioniști.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatizarea preluării a 20 de comenzi telefonice/zi și a întrebărilor
+      FAQ.
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 0.4
+  value_anchors:
+  - Economisiți peste 25 de ore de lucru al personalului lunar.
+  - Reduceți pierderea din rupturile de stoc cu până la 15%.
+  - Creșteți rata de conversie a apelurilor cu până la 30%.
+market_context:
+  market_size: Circa 500 milioane EUR anual (estimativ retail+profesional)
+  growth_rate: 5-7% pe an
+  key_trends:
+  - Creșterea puternică a cererii pentru produse de îngrijire naturală și eco.
+  - Consolidarea cumpărăturilor online, dar cu dorința pentru consultanță.
+  - Creșterea numărului de saloane mici și antreprenori în beauty, creând cerere B2B.
+  seasonality:
+    high:
+    - Noiembrie-Decembrie (Sărbători)
+    - Februarie-Martie (8 Martie)
+    - Septembrie (revenirea de la vacanță)
+    low:
+    - Ianuarie (după Sărbători)
+    - Iulie-August (sezon de vacanță)
+typical_objections:
+- objection: Este prea scump pentru noi acum.
+  response: Înțeleg. Să începem cu un pachet de bază care automatizează doar preluarea
+    comenzilor, la un cost de intrare de doar 300 RON/lună. Asta vă va elibera timp
+    imediat. Putem extinde ulterior.
+- objection: Nu avem personal tehnic pentru a gestiona un astfel de sistem.
+  response: Sistemul nostru vocal este gata de utilizare, nu necesită cunoștințe tehnice.
+    Echipa noastră face instalarea și instruirea. Sunteți operaționali într-o singură
+    zi.
+- objection: Clienții noștri preferă să vorbească cu o persoană reală.
+  response: Absolut, și asta este valabil. Agentul nostru gestionează sarcinile repetitive
+    (stoc, programări, întrebări simple), astfel încât echipa dvs. să fie disponibilă
+    pentru conversațiile complexe și pentru clienții fideli, unde relația umană contează
+    cu adevărat.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

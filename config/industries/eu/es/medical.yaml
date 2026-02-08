@@ -1,0 +1,235 @@
+aliases:
+- medicina
+- salud
+- clínica
+- hospital
+- médico
+- paciente
+- consulta
+- diagnóstico
+- urgencias
+- análisis
+competitors:
+- name: Telefónica Salud
+  positioning: Proveedor líder de telemedicina y salud digital
+  strengths:
+  - Infraestructura robusta
+  - Amplia cobertura nacional
+  - Integración con operadoras
+  weaknesses:
+  - Precios elevados
+  - Menor personalización
+  our_differentiation: Agente de voz especializado en automatización de citas con
+    soporte 24/7 y precios flexibles
+- name: Sanitas
+  positioning: Aseguradora y red de servicios médicos
+  strengths:
+  - Red extensa de centros
+  - Servicios integrados
+  - Marca reconocida
+  weaknesses:
+  - Enfoque en seguros, no en automatización
+  - Menor innovación tecnológica
+  our_differentiation: Solución dedicada a optimizar la gestión de citas y reducir
+    costos operativos para clínicas independientes
+- name: iSalud
+  positioning: Plataforma de gestión médica y teleconsulta
+  strengths:
+  - Software médico integral
+  - Fácil implementación
+  - Soporte en español
+  weaknesses:
+  - Funcionalidades básicas de voz limitadas
+  - Costos adicionales por integraciones
+  our_differentiation: Agente de voz con IA para manejar llamadas en tiempo real y
+    reducir la carga de trabajo del personal
+industry_faq:
+- answer_template: Por favor, indique la especialidad del médico y una fecha preferida,
+    y comprobaré los huecos disponibles.
+  question: ¿Cómo puedo pedir cita con un médico?
+- answer_template: Los análisis de bioquímica sanguínea, glucosa y perfil lipídico
+    deben hacerse en ayunas. El hemograma es preferible en ayunas.
+  question: ¿Qué análisis requieren ayuno?
+- answer_template: Excluya alimentos flatulentos 3 días antes. En el día de la prueba,
+    acuda en ayunas.
+  question: ¿Cómo prepararse para una ecografía abdominal?
+- answer_template: Sí, trabajamos los sábados de 9 a 18 horas. Los domingos hay médico
+    de guardia.
+  question: ¿Atienden en fin de semana?
+- answer_template: Sí, es posible. Proporcione la dirección y los síntomas para coordinar
+    la visita.
+  question: ¿Puedo llamar a un médico a domicilio?
+- answer_template: El coste varía según el especialista. Una consulta inicial de medicina
+    general puede ser desde 60€.
+  question: ¿Cuánto cuesta una consulta médica?
+industry_specifics:
+  compliance:
+  - Cumplimiento del RGPD (protección de datos)
+  - No dar recomendaciones médicas específicas
+  - Casos de emergencia → derivar a operador humano
+  peak_times:
+  - Lunes por la mañana
+  - Después de festivos
+  tone:
+  - Tranquilo y empático
+  - Atento a los síntomas del paciente
+  - Evitar jerga médica innecesaria
+learnings:
+- date: '2023-10-05'
+  insight: Los pacientes valoran la disponibilidad 24/7 para pedir citas, especialmente
+    fuera de horario laboral.
+  source: prueba_clinica_madrid
+market_context:
+  growth_rate: 4% anual
+  key_trends:
+  - Aumento de la telemedicina
+  - Digitalización de historiales clínicos
+  - Envejecimiento de la población
+  market_size: 12 mil millones EUR
+  seasonality:
+    high:
+    - Otoño
+    - Invierno
+    low:
+    - Verano
+meta:
+  avg_validation_score: 0.9
+  country: es
+  created_at: '2023-10-05'
+  currency: EUR
+  id: medical
+  language: es
+  languages: []
+  last_updated: '2023-10-05'
+  phone_codes:
+  - '+34'
+  region: eu
+  tests_run: 1
+  timezone: Europe/Madrid
+  version: '1.0'
+pain_points:
+- description: Dificultad para contactar por teléfono para pedir o cambiar citas
+  severity: high
+  solution_hint: Agente de voz para gestión de citas disponible 24/7
+- description: Pacientes que olvidan sus citas, aumentando las no presentaciones
+  severity: high
+  solution_hint: Recordatorios automáticos por SMS o WhatsApp un día y una hora antes
+- description: Alta volumen de llamadas con preguntas repetitivas sobre horarios y
+    preparaciones
+  severity: medium
+  solution_hint: FAQ automatizado para consultas comunes
+- description: Sobrecarga del personal administrativo que no puede atender todas las
+    llamadas
+  severity: high
+  solution_hint: Automatización de tareas rutinarias como confirmaciones de citas
+- description: Errores en la programación de citas debido a confusiones en la comunicación
+  severity: medium
+  solution_hint: Sistema estructurado de reserva con confirmación paso a paso
+pricing_context:
+  currency: EUR
+  entry_point: 50
+  roi_examples:
+  - monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 0.33
+    scenario: Automatización de citas para una clínica pequeña, reduciendo no presentaciones
+      y tiempo administrativo
+  typical_budget_range:
+  - 100
+  - 500
+  value_anchors:
+  - Reduce las no presentaciones en un 30%
+  - Disponibilidad 24/7 sin costos adicionales de personal
+  - Mejora la satisfacción del paciente con respuestas rápidas
+recommended_functions:
+- name: cita
+  priority: high
+  reason: Más del 60% de las llamadas son para pedir o modificar citas
+- name: recordatorio
+  priority: high
+  reason: Disminuye las no presentaciones en un 30-40%, optimizando la agenda médica
+- name: faq
+  priority: high
+  reason: Resuelve consultas comunes sobre horarios, preparación de análisis y servicios
+- name: transferencia
+  priority: medium
+  reason: Para derivar casos urgentes o complejos a operadores humanos
+- name: confirmación
+  priority: medium
+  reason: Verifica citas programadas para evitar errores y mejorar la eficiencia
+sales_scripts:
+- goal: Concertar una demostración del agente de voz
+  script: Hola, soy [Nombre] de [Empresa]. Nuestro agente de voz puede automatizar
+    la gestión de citas en su clínica, reduciendo costos y mejorando la experiencia
+    del paciente. ¿Le interesaría una demo gratuita?
+  situation: Llamada inicial a una clínica o centro médico
+  trigger: cold_call
+- goal: Responder a objeciones de precio y destacar el ROI
+  script: Entiendo su preocupación por el coste. Nuestro plan básico de 50€ al mes
+    puede ahorrarle hasta 300€ mensuales en personal y reducir no presentaciones.
+    ¿Podemos analizar su caso específico?
+  situation: Cuando el cliente menciona que el servicio es caro
+  trigger: price_objection
+- goal: Cerrar la venta ofreciendo un periodo de prueba
+  script: Ofrecemos un periodo de prueba de 14 días sin compromiso. Puede ver cómo
+    el agente maneja sus llamadas y optimiza su agenda. ¿Le parece bien empezar la
+    próxima semana?
+  situation: Después de una demostración exitosa
+  trigger: post_demo
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reducción de no presentaciones en un 30%
+  - Automatización del 70% de las citas
+  - Disponibilidad 24/7
+  - Satisfacción del paciente > 4.5/5
+typical_integrations:
+- examples:
+  - Médico Digital
+  - OpenEMR
+  - iSalud
+  name: SIH (Sistema de Información Hospitalaria)
+  priority: high
+  reason: Acceso a horarios de médicos, historiales de pacientes y gestión de citas
+- examples:
+  - Salesforce
+  - HubSpot
+  name: CRM
+  priority: medium
+  reason: Seguimiento de interacciones con pacientes y gestión de relaciones
+- examples:
+  - Movistar
+  - Vodafone
+  name: Telefonía
+  priority: high
+  reason: Para recibir y gestionar llamadas entrantes de manera eficiente
+- examples:
+  - WhatsApp
+  - Telegram
+  - SMS
+  name: Mensajería
+  priority: high
+  reason: Envío automático de recordatorios de citas y confirmaciones
+typical_objections:
+- objection: Prefiero hablar con una persona para pedir cita.
+  response: Entiendo. Nuestro agente puede transferirle a un operador si lo prefiere,
+    pero primero puede agilizar su solicitud indicando la especialidad y fecha.
+- objection: ¿No es muy caro para una clínica pequeña?
+  response: Con nuestro plan escalable, a partir de 50€ al mes, puede ahorrar en costos
+    administrativos y reducir no presentaciones. El ROI es rápido.
+- objection: Ya tenemos un sistema de citas online.
+  response: Nuestro agente de voz complementa su sistema atendiendo llamadas fuera
+    de horario y reduciendo la carga de su personal. ¿Le gustaría integrarlo?
+typical_services:
+- Consulta médica general
+- Diagnóstico por imagen (radiografía, ecografía)
+- Análisis clínicos (sangre, orina)
+- Urgencias médicas
+- Fisioterapia y rehabilitación
+- Odontología
+- Vacunación
+- Llamada a domicilio
+- Chequeos médicos preventivos
+- Especialidades médicas (cardiología, dermatología)
+_extends: _base/medical

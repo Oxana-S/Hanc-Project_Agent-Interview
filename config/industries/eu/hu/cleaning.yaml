@@ -1,0 +1,188 @@
+pain_points:
+- description: Nehéz találni megbízható és hatékony takarítókat, magas a fluktuáció.
+  severity: high
+  solution_hint: Az AI hangügynök automatizálhatja a személyzeti toborzást és kiválasztást, időt takarít meg.
+- description: Az időpontok és ütemezések kézi kezelése hibákhoz és elégedetlenséghez vezet.
+  severity: medium
+  solution_hint: Az AI hangügynök kezelheti az időpontfoglalásokat és ütemezéseket valós idejű frissítésekkel.
+- description: Verseny a legalacsonyabb árakkal, ami csökkenti a nyereségességet.
+  severity: high
+  solution_hint: Az AI hangügynök személyre szabott ajánlatokat készíthet, hangsúlyozva az értéket az ár helyett.
+- description: Nehéz kezelni a reklamációkat és visszajelzéseket hatékonyan.
+  severity: medium
+  solution_hint: Az AI hangügynök automatikusan gyűjtheti és elemezheti a visszajelzéseket, javítva a szolgáltatást.
+- description: GDPR megfelelés bonyolult és időigényes a vásárlói adatok kezelésében.
+  severity: high
+  solution_hint: Az AI hangügynök segíthet automatizálni az adatvédelmi politika betartását és dokumentációt.
+- description: Az értékesítési és marketing kampányok manuális végrehajtása költséges és nem hatékony.
+  severity: medium
+  solution_hint: Az AI hangügynök automatizálhatja a telemarketinget és új vásárlók megszerzését.
+- description: Kihívás a távoli csapatok és munkavállalók hatékony felügyelete.
+  severity: low
+  solution_hint: Az AI hangügynök nyomon követheti a munkavégzést és jelentéseket készíthet valós időben.
+typical_services:
+- Lakástisztítás
+- Irodatakarítás
+- Iparepitmény tisztítása
+- Ablaktisztítás
+- Szőnyegtisztítás
+- Tápcsatorna tisztítás
+- Utánkövető tisztítás
+- Szemétkezelés
+- Kerttisztítás
+- Bútorápolás
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: Csökkenti a hibákat és javítja az ügyfélélményt gyors válaszidővel.
+- name: Vásárlói visszajelzések gyűjtése
+  priority: medium
+  reason: Segít a szolgáltatás minőségének javításában és az elégedettség növelésében.
+- name: Fizetési emlékeztetők
+  priority: medium
+  reason: Javítja a cash flow-t és csökkenti a késedelmes fizetéseket.
+- name: Új szolgáltatások ajánlása
+  priority: low
+  reason: Növeli az értékesítést és ügyfélmegtartást személyre szabott ajánlatokkal.
+- name: Reklamációk kezelése
+  priority: high
+  reason: Gyorsan megoldja az ügyfélelméletet és megőrzi a hűséget.
+- name: Munkaidő nyomon követése
+  priority: low
+  reason: Optimalizálja az erőforrás-használatot és csökkenti a költségeket.
+typical_integrations:
+- name: Számlázó szoftverek
+  examples:
+  - Számlázz.hu
+  - Billingo
+  - Navision
+  priority: high
+- name: Ügyfélkapcsolat-kezelő rendszerek
+  examples:
+  - Prospexx
+  - SAP CRM
+  - Salesforce
+  priority: high
+- name: Időbeosztó rendszerek
+  examples:
+  - Asztalos
+  - TeamUp
+  - Google Calendar
+  priority: medium
+- name: Pénzügyi szoftverek
+  examples:
+  - KESZ
+  - Microsoft Dynamics
+  - Oracle
+  priority: medium
+- name: Kommunikációs eszközök
+  examples:
+  - Slack
+  - Microsoft Teams
+  - Zoom
+  priority: low
+industry_faq:
+- question: Mennyibe kerül a szolgáltatás?
+  answer_template: Az árak a szolgáltatás típusától és gyakoriságától függenek, kezdve 10.000 HUF-tól. Küldjünk egy személyre szabott árajánlatot?
+- question: Milyen gyakran kell takarítani?
+  answer_template: Ajánljuk heti vagy kétheti takarítást a legjobb eredményekért, de testre szabhatjuk az igények szerint.
+- question: Használtok környezetbarát tisztítószereket?
+  answer_template: Igen, környezetbarát termékeket használunk, amelyek biztonságosak és hatékonyak, a fenntarthatóság elősegítése érdekében.
+- question: Biztosítottak-e a takarítók?
+  answer_template: Igen, minden munkavállalónk teljes körű biztosítással rendelkezik, hogy biztosítsuk a felelősséget.
+- question: Mennyi időt vesz igénybe egy takarítás?
+  answer_template: Az időtartam a terület méretétől és állapotától függ, általában 1-4 óra között mozog. Pontos becslést adunk a felmérés után.
+- question: Mi történik, ha nem vagyok elégedett a takarítással?
+  answer_template: Visszatérünk és ingyen javítjuk, hogy biztosítsuk az elégedettséget, mert az ügyfeleink elégedettsége a prioritásunk.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy lehetséges ügyfél árakat kér.
+  script: Köszönöm a kérdést! Az áraink a szolgáltatás típusától függenek, például egy alap lakástisztítás 10.000 HUF-tól kezdődik. Szeretnék egy ingyenes felmérést javasolni pontos árajánlathoz?
+  goal: Elfogadható belépési pontot bemutatni és további információkat gyűjteni.
+- trigger: service_inquiry
+  situation: Amikor egy ügyfél részletes szolgáltatási információkat kér.
+  script: Természetesen! Széles körű szolgáltatásokat kínálunk, mint irodatakarítás, ipari tisztítás, és egyebek. Melyik területre koncentrálunk ma?
+  goal: A szolgáltatások bemutatása és az ügyfél igényeinek megértése.
+- trigger: competitor_comparison
+  situation: Amikor egy ügyfél más vállalkozásokhoz hasonlít minket.
+  script: Értem. Mi különbséget teszünk az AI-alapú hatékonyságunkkal, mint a valós idejű ütemezés és személyre szabott árazás, ami időt és pénzt takarít meg. Szeretné hallani többet a sikeres eseteinkről?
+  goal: Hangsúlyozni az egyedülálló értékajánlatot és a versenyelőnyt.
+competitors:
+- name: CleanVibe Hungary
+  positioning: Közepes árkategóriában működő, környezetbarát tisztítószereket használó vállalat.
+  strengths:
+  - Erős márkajelenlét
+  - Fenntartható gyakorlatok
+  weaknesses:
+  - Korlátozott AI integráció
+  - Magasabb árak
+  our_differentiation: AI-alapú automatizálás, amely csökkenti a költségeket és javítja a hatékonyságot.
+- name: Pro-Clean Services
+  positioning: Alacsony áras, nagy volumenű takarítási szolgáltatások.
+  strengths:
+  - Versenyképes árak
+  - Széles szolgáltatási kínálat
+  weaknesses:
+  - Alacsony személyre szabottság
+  - Gyakori panaszok
+  our_differentiation: Személyre szabott ügyfélszolgálat és AI-vezérelt minőségellenőrzés.
+- name: Magyar Takarító Szolgáltatások
+  positioning: Hagyományos, helyi piacra összpontosító vállalat.
+  strengths:
+  - Helyi ismeret
+  - Megbízható hírnév
+  weaknesses:
+  - Korlátozott technológiai fejlettség
+  - Lassú válaszidő
+  our_differentiation: Modern AI eszközök a gyorsabb és pontosabb szolgáltatáshoz.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 10000
+  roi_examples:
+  - scenario: Irodatakarítás automatizálása AI hangügynökkel
+    monthly_cost: 50000
+    monthly_savings: 95000
+    payback_months: 2.5
+  value_anchors:
+  - AI-alapú hatékonyság növeli a termelékenységet 30%-kal.
+  - Személyre szabott árazás optimalizálja a költségeket.
+  - Automatizált ügyfélszolgálat csökkenti a panaszokat 40%-kal.
+market_context:
+  market_size: Körülbelül 50 milliárd HUF éves forgalom
+  growth_rate: 5% éves növekedés
+  key_trends:
+  - Növekvő kereslet környezetbarát tisztítási megoldások iránt.
+  - Technológiai integráció gyorsulása a hatékonyság érdekében.
+  - Távoli munkavégzés növeli az irodatakarítás iránti igényt.
+  seasonality:
+    high:
+    - Január
+    - Szeptember
+    - December
+    low:
+    - Július
+    - Augusztus
+typical_objections:
+- objection: Túl drága a szolgáltatás.
+  response: Értem. De AI-alapú megoldásainkkal hosszú távon pénzt takaríthat meg a hatékonyság javításával. Szeretné látni egy ROI számítást?
+- objection: Nem bízom az új technológiában.
+  response: Teljesen érthető. Kísérleti időszakot kínálunk, hogy bizonyítsuk az AI előnyeit kockázat nélkül. Vágjunk bele?
+- objection: Már van egy megbízható takarítóink.
+  response: Nagyszerű! Mi kiegészítő szolgáltatásokat kínálunk, mint AI-vezérelt ütemezés, ami tovább javíthatja a hatékonyságot. Beszélhetünk egy próbaidőszakról?
+meta:
+  id: cleaning
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

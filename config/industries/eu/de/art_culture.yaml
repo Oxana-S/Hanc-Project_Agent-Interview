@@ -1,0 +1,196 @@
+pain_points:
+- description: Hoher administrativer Aufwand für Buchhaltung, Förderanträge und Berichtswesen, der wertvolle Zeit für künstlerische Arbeit bindet.
+  severity: high
+  solution_hint: Automatisierte Verwaltung von Finanzen, Fördermittel-Deadlines und Spendenerinnerungen per Sprachbefehl.
+- description: Schwierigkeiten bei der Besuchergewinnung und -bindung, insbesondere in ländlichen Regionen oder für Nischenangebote.
+  severity: high
+  solution_hint: Persönliche Anrufe für Veranstaltungseinladungen, Feedback-Erhebung und Abo-Verlängerungen via Sprachassistent.
+- description: Planungsunsicherheit durch schwankende Besucherzahlen und unvorhersehbare Förderzusagen.
+  severity: medium
+  solution_hint: Automatisierte Umfragen zur Besuchsabsicht und Vorhersage von Auslastung durch analysierte Anrufdaten.
+- description: Mangelnde Sichtbarkeit in lokalen Suchmaschinen und auf Kulturportalen.
+  severity: medium
+  solution_hint: KI-Agent kann Online-Einträge und Veranstaltungskalender verwalten und aktualisieren.
+- description: Hoher Aufwand für die Organisation und Terminvergabe von Führungen, Workshops und Künstlergesprächen.
+  severity: medium
+  solution_hint: 24/7-Terminbuchung und -bestätigung per Telefon ohne manuellen Eingriff.
+- description: Komplexe Abrechnung von Kombi-Tickets, Gruppenrabatten und Mitgliedsbeiträgen.
+  severity: low
+  solution_hint: Sprachgesteuerte Abfrage von Tarifoptionen und automatische Berechnung.
+typical_services:
+- Museumsführungen (privat & öffentlich)
+- Workshops (Museumpädagogik)
+- Vermietung von Veranstaltungsräumen
+- Kuratierung von Ausstellungen
+- Kunstvermittlung und Bildung
+- Restaurierung und Konservierung
+- Herausgabe von Publikationen/Katalogen
+- Organisation von Kulturfestivals
+- Betrieb eines Museumsshops/Cafés
+- Förderung von Nachwuchskünstlern
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Entlastet das Personal von täglichen Telefonaten für Führungen und Workshop-Anmeldungen.
+- name: Ticketverkauf und -auskunft
+  priority: high
+  reason: Ermöglicht 24/7-Verkauf und beantwortet häufige Fragen zu Preisen und Öffnungszeiten.
+- name: Spendenakquise und Mitgliederverwaltung
+  priority: medium
+  reason: Kann bestehende Mitglieder an Beitragsfälligkeit erinnern und neue Interessenten ansprechen.
+- name: Veranstaltungs-Erinnerungsanrufe
+  priority: medium
+  reason: Senkt die Ausfallquote bei gebuchten Veranstaltungen und steigert die Zufriedenheit.
+- name: Feedback- und Evaluierungsanrufe
+  priority: low
+  reason: Sammelt automatisiert Besuchermeinungen für Qualitätsverbesserung und Förderberichte.
+- name: Notfall- und Störungsmeldung
+  priority: low
+  reason: Meldet technische Probleme (z.B. mit Klimaanlage) automatisch an den zuständigen Dienstleister.
+typical_integrations:
+- name: Ticketing- und Kassensysteme
+  examples:
+  - Kasse für Kultur
+  - tix4you
+  - MuseumPlus
+  - RegioTICKET
+  priority: high
+- name: Terminplanungstools
+  examples:
+  - Google Kalender
+  - Microsoft 365
+  - TeamUp
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HIVE
+  - einguterplan
+  - eveeno
+  - Salesforce
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  - SevDesk
+  priority: medium
+- name: E-Mail-Marketing-Tools
+  examples:
+  - Mailchimp
+  - CleverReach
+  - Klick-Tipp
+  priority: low
+industry_faq:
+- question: Zu welchen Zeiten sind Sie geöffnet?
+  answer_template: Unsere aktuellen Öffnungszeiten sind [Zeiten einfügen]. Für Feiertage und Sonderöffnungen empfehlen wir einen Blick auf unsere Website.
+- question: Kann ich ein Ticket telefonisch buchen und wie viel kostet es?
+  answer_template: Ja, Sie können Tickets direkt bei mir buchen. Der Standardeintritt kostet [Preis] EUR. Es gibt Ermäßigungen für [Gruppen, Kinder, etc.]. Möchten Sie eine Buchung vornehmen?
+- question: Bieten Sie Führungen für Schulklassen an?
+  answer_template: Ja, wir haben museumspädagogische Angebote für alle Altersstufen. Ich kann Sie mit unserem Bildungsteam verbinden oder direkt einen Termin vereinbaren.
+- question: Ist der Zugang barrierefrei?
+  answer_template: Unser Haupthaus ist stufenlos zugänglich. Für detaillierte Informationen zu rollstuhlgerechten Wegen oder Angeboten für Sehbehinderte verbinde ich Sie gerne.
+- question: Kann ich meinen Besuch online stornieren oder umbuchen?
+  answer_template: Stornierungen und Umbuchungen sind bis [Zeitraum] vor der Veranstaltung möglich. Ich kann das für Sie erledigen oder Sie leiten Sie zu unserem Online-Portal weiter.
+- question: Wie werde ich Fördermitglied?
+  answer_template: Das freut uns! Als Fördermitglied erhalten Sie [Vorteile]. Ich nehme gerne Ihre Daten auf und unser Team sendet Ihnen die Unterlagen zu.
+sales_scripts:
+- trigger: opening_hours_inquiry
+  situation: Wenn ein Anrufer nach den Öffnungszeiten fragt.
+  script: Vielen Dank für Ihren Anruf. Wir haben [Zeiten]. Darf ich Ihnen auch unser aktuelles Programm empfehlen oder direkt einen Besuchstermin für Sie reservieren? Das spart Ihnen Wartezeit.
+  goal: Vom Informationsanruf zu einer Terminbuchung oder Programmempfehlung überleiten.
+- trigger: price_question
+  situation: Wenn nach Ticketpreisen gefragt wird.
+  script: Der Eintritt kostet [Preis] EUR. Für Gruppen ab 10 Personen oder mit unserer Jahreskarte sparen Sie bis zu 30%. Möchten Sie mehr über unsere Mitgliedschaft erfahren, die unbegrenzten Eintritt
+    beinhaltet?
+  goal: Upselling auf Gruppen- oder Jahreskarten anstreben.
+- trigger: complaint_handling
+  situation: Bei einer Beschwerde über eine ausgefallene Führung.
+  script: Es tut mir leid zu hören, dass Ihre Führung ausgefallen ist. Zur Wiedergutmachung kann ich Ihnen einen Gutschein für eine exklusive Privatführung anbieten. Darf ich Ihre Daten für die Zusendung
+    notieren?
+  goal: Beschwerde in eine Upselling-Chance umwandeln und Kundenbindung stärken.
+competitors:
+- name: Kultur-Kall-Center (Outsourcing-Agenturen)
+  positioning: Generische Callcenter für Kulturinstitutionen.
+  strengths:
+  - Große Personaldecke
+  - Niedrige Stundensätze
+  weaknesses:
+  - Keine Branchenexpertise
+  - Unpersönlicher Service
+  - Starre Skripte
+  our_differentiation: KI-gesteuerte, auf Kultur spezialisierte Agenten, die Kontext verstehen und flexibel auf Besucherfragen eingehen.
+- name: Lokale Ticketing-Portale (z.B. Reservix)
+  positioning: Online-Ticketverkauf mit Basisservice.
+  strengths:
+  - Breite Reichweite
+  - Etablierte Plattform
+  weaknesses:
+  - Kein persönlicher Kontakt
+  - Limitierte Kundenbeziehung
+  - Hohe Provisionen
+  our_differentiation: Direkter, persönlicher Draht zum Besucher vor und nach dem Kauf, Integration in gesamten Besucherservice.
+- name: Große Museen mit eigenem Service-Center
+  positioning: Interne Lösungen großer Institutionen.
+  strengths:
+  - Volle Kontrolle
+  - Tiefe Instituts-Kenntnis
+  weaknesses:
+  - Sehr hohe Fixkosten
+  - Schwierig skalierbar
+  - Personalfluktuation
+  our_differentiation: Professioneller Service zu variablen Kosten, der auch für kleine und mittlere Häuser leistbar ist und 24/7 verfügbar.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 2000
+  entry_point: 99
+  roi_examples:
+  - scenario: Kleines Museum automatisiert Terminbuchung für Führungen und beantwortet 50% der Telefonanfragen automatisch.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Kosteneinsparung von mindestens einer Teilzeitkraft (ca. 1.500 EUR/Monat).
+  - Steigerung der Ticket-Vorverkäufe um durchschnittlich 15% durch 24/7-Verfügbarkeit.
+  - Reduktion von Terminausfällen bei Führungen um 30% durch Erinnerungsanrufe.
+market_context:
+  market_size: Über 6.000 Museen und hunderte Theater/Soziokulturzentren in Deutschland.
+  growth_rate: 2-4% p.a., getrieben durch Digitalisierung und Eventisierung von Kultur.
+  key_trends:
+  - 'Erlebnisorientierung: Besucher erwarten interaktive und persönliche Ansprache.'
+  - 'Nachhaltigkeit: Umweltbewusste Betriebsführung wird zum Wettbewerbsfaktor.'
+  - 'Digitale Transformation: Online-Angebote und hybriden Veranstaltungen ergänzen Präsenz.'
+  - 'Diversität: Programmvielfalt und barrierearme Zugänge gewinnen an Bedeutung.'
+  seasonality:
+    high:
+    - Frühjahr (Mai/Juni)
+    - Herbst (September/Okt)
+    - Adventszeit
+    low:
+    - Januar
+    - Spätsommer (Aug) - Urlaubszeit
+typical_objections:
+- objection: Das ist zu teuer für unser kleines Budget.
+  response: Ich verstehe. Unsere kleinste Paket beginnt bei 99 EUR und ersetzt oft bereits die Kosten für Aushilfskräfte am Telefon. Dürfen wir eine kostenlose 14-Tage-Testphase für Ihr Haus simulieren?
+- objection: Unsere älteren Besucher möchten lieber mit einem Menschen sprechen.
+  response: Absolut. Unser Agent übernimmt nur die standardisierten Anfragen (Zeiten, Preise, Buchungen). Komplexe Anliegen leitet er sofort und nahtlos an Ihre Mitarbeiter weiter. So gewinnen alle Zeit.
+- objection: Wir haben schon ein Online-Buchungssystem.
+  response: Perfekt! Unser Agent integriert sich genau dort und beantwortet zusätzlich alle Fragen, die vor und nach der Online-Buchung auftreten. Er ist die persönliche Stimme zu Ihrem digitalen Tool.
+- objection: Die Datenschutz-Grundverordnung (GDPR) macht uns Sorgen.
+  response: Zu Recht. Unser System ist nach DSGVO entwickelt und hostet alle Daten in deutschen Rechenzentren. Wir stellen gerne unsere Konformitätsdokumente zur Verfügung.
+meta:
+  id: art_culture
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- art
+- culture
+- museum
+- gallery
+- theater
+_extends: _base/art_culture

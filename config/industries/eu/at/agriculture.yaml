@@ -1,0 +1,205 @@
+pain_points:
+- description: Hohe Arbeitskosten und Schwierigkeiten bei der Personalbeschaffung.
+  severity: high
+  solution_hint: AI-Stimmenagenten können Verwaltungsaufgaben automatisieren und Personalkosten reduzieren.
+- description: Komplexe Bürokratie und Einhaltung von Umweltvorschriften.
+  severity: medium
+  solution_hint: Voice Agents unterstützen bei der Dokumentation und Erinnerung an Fristen.
+- description: Unvorhersehbare Wetterbedingungen aufgrund des Klimawandels.
+  severity: high
+  solution_hint: Integration mit Wetterdaten für bessere Planung und Risikomanagement.
+- description: Schwankende Marktpreise für landwirtschaftliche Produkte.
+  severity: medium
+  solution_hint: Bereitstellung von Marktanalysen und Preistrends durch den Voice Agent.
+- description: Mangel an digitalen Fähigkeiten und Technologieakzeptanz.
+  severity: medium
+  solution_hint: Benutzerfreundliche Voice-Schnittstelle zur Vereinfachung der Technologienutzung.
+- description: Nachwuchsmangel und sinkendes Interesse an landwirtschaftlichen Berufen.
+  severity: low
+  solution_hint: Automatisierung von Routinearbeiten, um Arbeitsbelastung zu reduzieren und Attraktivität zu erhöhen.
+typical_services:
+- Bodenanalyse und Düngemittelberatung
+- Tiergesundheitsmanagement
+- Ernteverwaltung und -lagerung
+- Vermarktung und Vertriebsunterstützung
+- Finanzplanung und Subventionsberatung
+- Technische Wartung von Landmaschinen
+- Ökologische Zertifizierungsunterstützung
+- Schulungen für nachhaltige Landwirtschaft
+- Datenmanagement für Präzisionslandwirtschaft
+- Risikomanagement und Versicherungsberatung
+recommended_functions:
+- name: Automatische Terminvereinbarung
+  priority: high
+  reason: Spart Zeit bei der Koordination von Besuchen und Beratungen.
+- name: Dokumentenerfassung und -verwaltung
+  priority: high
+  reason: Hilft bei der Einhaltung von Bürokratie und Vorschriften.
+- name: Wettervorhersage-Integration
+  priority: medium
+  reason: Unterstützt bei der Planung von Feldarbeiten und Risikomanagement.
+- name: Marktpreis-Updates
+  priority: medium
+  reason: Bietet aktuelle Informationen für bessere Verkaufsentscheidungen.
+- name: Bestellungsverwaltung für Betriebsmittel
+  priority: low
+  reason: Automatisiert den Einkauf von Saatgut, Düngemitteln, etc.
+- name: Kundenanfragen-Beantwortung
+  priority: high
+  reason: Verbessert den Kundenservice und reduziert Arbeitslast.
+typical_integrations:
+- name: Landwirtschaftliche Betriebssoftware
+  examples:
+  - AgroSoft
+  - FarmFacts
+  - ÖkoPlan
+  priority: high
+- name: Wetterdienste
+  examples:
+  - ZAMG
+  - MeteoSwiss
+  priority: medium
+- name: Marktplatz-Systeme
+  examples:
+  - AgriMarket
+  - BioBörse
+  priority: medium
+- name: Finanzsoftware
+  examples:
+  - Datev
+  - SAP
+  priority: low
+- name: IoT-Geräte und Sensoren
+  examples:
+  - John Deere Operations Center
+  - Climate FieldView
+  priority: high
+industry_faq:
+- question: Wie kann ein AI-Stimmenagent meinen landwirtschaftlichen Betrieb unterstützen?
+  answer_template: Unser AI-Stimmenagent hilft bei der Automatisierung von Verwaltungsaufgaben, bietet Wetterupdates und unterstützt bei der Dokumentation für Subventionen.
+- question: Ist die Technologie einfach zu bedienen?
+  answer_template: Ja, unsere Voice-Schnittstelle ist benutzerfreundlich und erfordert keine technischen Vorkenntnisse.
+- question: Wie sicher sind meine Daten?
+  answer_template: Wir halten uns strikt an die GDPR-Vorschriften und gewährleisten den Schutz Ihrer Daten.
+- question: Kann der Agent mit meiner bestehenden Software integriert werden?
+  answer_template: Ja, wir bieten Integrationen mit gängigen landwirtschaftlichen Softwaresystemen an.
+- question: Was sind die Kosten?
+  answer_template: Die Kosten beginnen bei einem erschwinglichen Einstiegspreis und richten sich nach dem Umfang der genutzten Funktionen.
+meta:
+  id: agriculture
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- agriculture
+- farming
+- agribusiness
+- farm
+_extends: _base/agriculture
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten für den AI-Stimmenagenten fragt.
+  script: Unsere Lösungen beginnen bereits bei 150 EUR pro Monat und bieten durch Automatisierung erhebliche Einsparungen bei Arbeitskosten. Möchten Sie eine individuelle Kosten-Nutzen-Analyse?
+  goal: Den Kunden für das Preis-Leistungs-Verhältnis sensibilisieren und Interesse für eine Beratung wecken.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen Wettbewerber erwähnt.
+  script: Viele unserer Kunden schätzen besonders unsere benutzerfreundliche Voice-Technologie und die lokale Anpassung an österreichische Vorschriften, die uns von anderen Anbietern abhebt.
+  goal: Vertrauen aufbauen und die Vorteile unserer Lösung gegenüber der Konkurrenz hervorheben.
+  effectiveness: medium
+- trigger: feature_inquiry
+  situation: Wenn ein Kunde nach den Funktionen des AI-Stimmenagenten fragt.
+  script: Unser AI-Stimmenagent unterstützt Sie nicht nur bei der Terminvereinbarung, sondern auch bei der Dokumentation und der Wettervorhersage – alles in einer intuitiven Sprachschnittstelle.
+  goal: Die Mehrwertfunktionen klar kommunizieren und Interesse steigern.
+  effectiveness: high
+- trigger: data_security_concern
+  situation: Wenn ein Kunde Bedenken bezüglich Datenschutz äußert.
+  script: Datenschutz hat für uns oberste Priorität. Unsere Plattform erfüllt alle GDPR-Anforderungen und schützt Ihre Daten mit modernsten Sicherheitsstandards.
+  goal: Vertrauen in die Datensicherheit schaffen und Zweifel ausräumen.
+  effectiveness: high
+- trigger: automation_interest
+  situation: Wenn ein Kunde Interesse an Automatisierung zeigt.
+  script: Mit unserem AI-Stimmenagenten können Sie repetitive Verwaltungsaufgaben automatisieren und so wertvolle Zeit und Kosten sparen. Möchten Sie einen Testlauf starten?
+  goal: Den Kunden zur Nutzung der Automatisierungslösungen motivieren.
+  effectiveness: high
+competitors:
+- name: AgrarVoice GmbH
+  positioning: Spezialist für sprachbasierte Lösungen im österreichischen Agrarsektor.
+  strengths:
+  - Gute Integration in bestehende Landwirtssoftware.
+  - Lokaler Support und Beratung.
+  weaknesses:
+  - Eingeschränkte Funktionsvielfalt.
+  - Weniger Fokus auf Datenschutz.
+  our_differentiation: Unser AI-Stimmenagent bietet umfassendere Automatisierung und höchste GDPR-Konformität.
+- name: FarmTech Austria
+  positioning: Anbieter von digitalen Lösungen für landwirtschaftliche Betriebe mit Fokus auf IoT.
+  strengths:
+  - Starke IoT-Integration.
+  - Innovatives Datenmanagement.
+  weaknesses:
+  - Keine spezialisierte Voice-Technologie.
+  - Komplexe Bedienung für Nicht-Techniker.
+  our_differentiation: Unsere Voice-Agenten sind besonders benutzerfreundlich und erfordern keine technischen Vorkenntnisse.
+- name: AgroSmart Solutions
+  positioning: Mittelständischer Anbieter für digitale Agrarlösungen in Österreich.
+  strengths:
+  - Breites Produktportfolio.
+  - Gute Wetterdatenintegration.
+  weaknesses:
+  - Kein eigener AI-Voice-Agent.
+  - Weniger personalisierte Kundenbetreuung.
+  our_differentiation: Wir bieten eine spezialisierte Voice-Schnittstelle mit persönlichem Support und individueller Anpassung.
+- name: BioVoice AG
+  positioning: Anbieter für nachhaltige und biologische Landwirtschaftslösungen mit Fokus auf Kommunikation.
+  strengths:
+  - Starke Ausrichtung auf Bio-Betriebe.
+  - Fokus auf ökologische Nachhaltigkeit.
+  weaknesses:
+  - Begrenzte technische Innovationen.
+  - Eingeschränkte Marktpräsenz.
+  our_differentiation: Unsere AI-Technologie verbindet Nachhaltigkeit mit modernster Automatisierung und einfacher Handhabung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 600
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatisierung der Terminplanung und Dokumentation für mittelgroßen Betrieb.
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Nutzung der Wettervorhersage-Integration zur Optimierung des Erntezeitpunkts.
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  - scenario: Reduzierung von Personalaufwand durch automatisierte Verwaltungsprozesse.
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 1
+  value_anchors:
+  - Reduzieren Sie Ihre Arbeitskosten durch effiziente Automatisierung.
+  - Erhöhen Sie Ihre Planungssicherheit mit integrierten Wetterdaten.
+  - Einhaltung von Vorschriften war noch nie so einfach dank automatisierter Dokumentation.
+market_context:
+  market_size: Ca. 8 Milliarden EUR Jahresumsatz in der österreichischen Landwirtschaft
+  growth_rate: 3-5%
+  key_trends:
+  - Digitalisierung und Automatisierung landwirtschaftlicher Prozesse
+  - Zunehmender Fokus auf nachhaltige und ökologische Landwirtschaft
+  - Integration von Wetter- und Umweltdaten in Betriebsentscheidungen
+  - Steigende Nachfrage nach benutzerfreundlichen Technologien
+  seasonality:
+    high:
+    - April
+    - Mai
+    - September
+    - Oktober
+    low:
+    - Januar
+    - Februar
+    - Dezember

@@ -1,0 +1,214 @@
+pain_points:
+- description: Falta de financiamento público e privado para projetos culturais
+  severity: high
+  solution_hint: Agente de voz AI pode automatizar campanhas de angariação de fundos
+    e ligações para patrocinadores
+- description: Dificuldade em atrair visitantes fora das épocas turísticas
+  severity: medium
+  solution_hint: Agente de voz AI pode realizar chamadas promocionais personalizadas
+    para residentes locais
+- description: Gestão ineficiente de reservas e bilheteira
+  severity: medium
+  solution_hint: Agente de voz AI pode lidar com reservas e vendas de bilhetes 24/7
+- description: Comunicação inadequada com o público sobre eventos e horários
+  severity: low
+  solution_hint: Agente de voz AI pode fornecer informações atualizadas via chamadas
+    automáticas
+- description: Dependência excessiva de voluntários para atendimento ao cliente
+  severity: medium
+  solution_hint: Agente de voz AI pode substituir funções básicas de atendimento,
+    reduzindo custos
+- description: Desafios na digitalização de acervos e exposições
+  severity: high
+  solution_hint: Agente de voz AI pode integrar-se a sistemas para oferecer visitas
+    virtuais guiadas
+typical_services:
+- Exposições de arte temporárias
+- Visitas guiadas a museus
+- Workshops culturais e artísticos
+- Espetáculos de teatro e dança
+- Concertos de música clássica e tradicional
+- Festivais culturais locais
+- Restauro e conservação de património
+- Venda de bilhetes e merchandising
+- Programas educativos para escolas
+- Aluguer de espaços para eventos
+recommended_functions:
+- name: Reservation Management
+  priority: high
+  reason: Automatiza a venda de bilhetes e reduz erros humanos
+- name: Customer Information Hotline
+  priority: high
+  reason: Fornece suporte 24/7 sobre horários e eventos em português
+- name: Fundraising Campaigns
+  priority: medium
+  reason: Ajuda a angariar fundos através de chamadas diretas a potenciais doadores
+- name: Event Reminders
+  priority: low
+  reason: Aumenta a taxa de comparecimento com lembretes automáticos
+- name: Multilingual Support
+  priority: medium
+  reason: Essencial para turistas em Portugal, melhorando a experiência
+- name: Feedback Collection
+  priority: low
+  reason: Coleta opiniões pós-evento para melhorias contínuas
+typical_integrations:
+- name: CRM System
+  examples:
+  - SAPO CRM
+  - Primavera
+  priority: high
+- name: Ticketing Platform
+  examples:
+  - Ticketline
+  - Blueticket
+  priority: high
+- name: Accounting Software
+  examples:
+  - IRS
+  - Contas Online
+  priority: medium
+- name: Event Management Software
+  examples:
+  - Eventbrite
+  - Local Portuguese solutions
+  priority: medium
+- name: Payment Gateway
+  examples:
+  - MB Way
+  - Multibanco integrations
+  priority: high
+industry_faq:
+- question: Quais são os horários de funcionamento do museu?
+  answer_template: Os nossos horários são [inserir horários]. Para informações atualizadas,
+    pode contactar-nos a qualquer hora via nosso agente de voz.
+- question: Como posso comprar bilhetes online?
+  answer_template: Pode comprar bilhetes através do nosso site ou ligar para o nosso
+    agente de voz que o assistirá no processo.
+- question: Existem descontos para grupos ou estudantes?
+  answer_template: Sim, oferecemos descontos para grupos e estudantes. O agente de
+    voz pode fornecer detalhes e ajudar na reserva.
+- question: O museu tem acessibilidade para pessoas com mobilidade reduzida?
+  answer_template: Sim, todas as nossas instalações são acessíveis. Para planear a
+    sua visita, o agente de voz pode dar mais informações.
+- question: Posso cancelar ou alterar uma reserva?
+  answer_template: As políticas de cancelamento estão disponíveis. Contacte o agente
+    de voz para assistência imediata.
+- question: Como posso patrocinar um evento cultural?
+  answer_template: Agradecemos o seu interesse. O agente de voz pode conectá-lo com
+    a nossa equipa de parcerias para discutir opções.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços dos serviços
+  script: Olá! Oferecemos soluções personalizadas a partir de 50€ por mês. Gostaria
+    de saber como podemos reduzir os seus custos operacionais com automação?
+  goal: Destacar o preço acessível e gerar interesse em agendar uma demonstração
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente
+  script: Entendo que há outras opções. A nossa diferença é a integração total em
+    português e suporte GDPR específico para Portugal. Posso mostrar-lhe um caso de
+    sucesso local?
+  goal: Diferenciar o serviço e redirecionar para os nossos pontos fortes
+- trigger: objection_time
+  situation: Quando o cliente diz que não tem tempo para implementar
+  script: Compreendo a preocupação. A nossa implementação é rápida e sem interrupções,
+    com treino incluído. Em uma semana, estará operacional. Que tal agendarmos uma
+    breve chamada para detalhes?
+  goal: Superar a objeção e avançar para o próximo passo
+- trigger: initial_contact
+  situation: Na primeira interação com um potencial cliente
+  script: Bom dia! Somos especializados em automação para o setor cultural em Portugal.
+    Como está a gerir as reservas e comunicações atualmente? Posso ajudar a otimizar
+    isso.
+  goal: Iniciar a conversa e identificar necessidades
+competitors:
+- name: LocalCall PT
+  positioning: Fornecedor regional de call centers manuais
+  strengths:
+  - Conhecimento local profundo
+  - Preços competitivos
+  weaknesses:
+  - Limitado a horários comerciais
+  - Sem integração AI
+  our_differentiation: Oferecemos automação 24/7 com AI, reduzindo custos em 30%
+- name: ArteTech Solutions
+  positioning: Software de gestão cultural básico
+  strengths:
+  - Foco no setor cultural
+  - Interface amigável
+  weaknesses:
+  - Sem suporte por voz
+  - Poucas integrações
+  our_differentiation: Agente de voz AI que complementa o software, melhorando o atendimento
+    ao cliente
+- name: EuroVoice AI
+  positioning: Plataforma de AI genérica para Europa
+  strengths:
+  - Tecnologia avançada
+  - Escalável
+  weaknesses:
+  - Não localizada para Portugal
+  - Suporte em inglês apenas
+  our_differentiation: Solução totalmente em português, com compliance GDPR adaptado
+    a Portugal
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Museu pequeno que automatiza atendimento telefónico
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Festival cultural que usa AI para vendas de bilhetes
+    monthly_cost: 300
+    monthly_savings: 800
+    payback_months: 2
+  value_anchors:
+  - Reduza custos operacionais em até 40% com automação
+  - Aumente a satisfação do cliente com suporte 24/7 em português
+  - ROI garantido em menos de 3 meses para a maioria dos clientes
+market_context:
+  market_size: Estimado em 500 milhões de EUR anuais
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento da digitalização no setor cultural
+  - Crescente foco em turismo sustentável
+  - Expansão de eventos híbridos (presenciais e online)
+  seasonality:
+    high:
+    - Verão (Junho-Agosto)
+    - Festas Natalícias
+    low:
+    - Inverno (Janeiro-Fevereiro)
+    - Períodos escolares
+typical_objections:
+- objection: É muito caro para o nosso orçamento limitado
+  response: Compreendo. Com o nosso plano de entrada a 50€/mês, o ROI é rápido. Posso
+    mostrar-lhe como outros clientes recuperaram o investimento em semanas.
+- objection: Não confio em tecnologia para atendimento ao cliente
+  response: A nossa AI é treinada especificamente para o setor cultural em Portugal,
+    com suporte humano de backup. Oferecemos uma demonstração gratuita.
+- objection: Já temos processos manuais que funcionam
+  response: Excelente! A automação pode libertar a sua equipa para tarefas mais criativas,
+    aumentando a eficiência. Vamos analisar os seus processos atuais?
+- objection: A implementação parece complicada
+  response: Garantimos uma implementação simples com suporte dedicado. Em média, os
+    clientes estão operacionais em 7 dias.
+meta:
+  id: art_culture
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

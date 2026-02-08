@@ -1,0 +1,175 @@
+pain_points:
+- description: Alta taxa de rotatividade de clientes devido à concorrência acirrada.
+  severity: high
+  solution_hint: O agente de voz AI pode oferecer retenção personalizada e propostas de upgrades proativas.
+- description: Longos tempos de espera no atendimento ao cliente, causando insatisfação.
+  severity: medium
+  solution_hint: Automatizar respostas comuns e redirecionar chamadas complexas para reduzir esperas.
+- description: Complexidade na conformidade com a LGPD para tratamento de dados de clientes.
+  severity: high
+  solution_hint: Implementar scripts automatizados de consentimento e gerenciamento de dados.
+- description: Dificuldade em vender serviços adicionais ou upgrades aos clientes existentes.
+  severity: medium
+  solution_hint: Agentes de voz podem identificar oportunidades de venda cruzada durante interações.
+- description: Infraestrutura de rede instável em algumas regiões, afetando a qualidade do serviço.
+  severity: medium
+  solution_hint: Coletar feedback automatizado para priorizar melhorias e informar clientes proativamente.
+- description: Custos operacionais elevados com call centers tradicionais.
+  severity: high
+  solution_hint: Reduzir custos com automação de atendimento básico e suporte inicial.
+- description: Falta de personalização no atendimento, levando a experiências genéricas.
+  severity: low
+  solution_hint: Usar dados do cliente para personalizar interações e ofertas.
+typical_services:
+- Planos de telefonia móvel
+- Internet banda larga residencial
+- Internet banda larga empresarial
+- TV por assinatura
+- Serviços de VoIP
+- Planos de dados para IoT
+- Soluções de conectividade corporativa
+- Suporte técnico remoto
+- Venda de aparelhos e dispositivos
+- Serviços de cloud e armazenamento
+recommended_functions:
+- name: Atendimento Automatizado ao Cliente
+  priority: high
+  reason: Reduz tempos de espera e custos operacionais, melhorando a eficiência.
+- name: Vendas de Upgrades e Serviços Adicionais
+  priority: high
+  reason: Aumenta a receita média por usuário (ARPU) através de oportunidades identificadas.
+- name: Gestão de Reclamações e Suporte Técnico
+  priority: medium
+  reason: Melhora a satisfação do cliente e retenção resolvendo problemas rapidamente.
+- name: Coleta de Feedback e Pesquisas
+  priority: low
+  reason: Fornece insights valiosos para melhorar serviços e planejamento.
+- name: Agendamento de Visitas Técnicas
+  priority: medium
+  reason: Otimiza a logística de suporte e reduz tempos de resolução.
+- name: Verificação de Conformidade LGPD
+  priority: high
+  reason: Garante conformidade legal, evitando multas e construindo confiança.
+typical_integrations:
+- name: Sistema CRM
+  examples:
+  - Salesforce
+  - RD Station
+  - Pipefy
+  priority: high
+- name: Sistema de Faturamento
+  examples:
+  - Totvs
+  - SAP
+  priority: high
+- name: Plataforma de Atendimento ao Cliente
+  examples:
+  - Zendesk
+  - Freshdesk
+  priority: medium
+- name: Banco de Dados de Clientes
+  examples:
+  - Oracle
+  - Microsoft SQL Server
+  priority: medium
+- name: Sistemas de Rede e Infraestrutura
+  examples:
+  - Cisco
+  - Huawei
+  priority: low
+industry_faq:
+- question: Como posso reduzir minha conta de telefone ou internet?
+  answer_template: Oferecemos planos personalizados que se ajustam ao seu uso. Podemos analisar seu consumo e sugerir a melhor opção para economizar.
+- question: O que fazer se minha internet está lenta ou com instabilidade?
+  answer_template: Primeiro, verifique se há problemas locais. Se persistir, podemos agendar uma visita técnica ou oferecer um upgrade de velocidade para melhorar sua experiência.
+- question: Como atualizo meu plano ou contrato?
+  answer_template: Você pode fazer upgrade diretamente pelo nosso agente de voz ou através do aplicativo. Vamos mostrar as opções disponíveis e benefícios.
+- question: Meus dados pessoais estão seguros com vocês, considerando a LGPD?
+  answer_template: Sim, seguimos rigorosamente a LGPD para proteger suas informações. Temos políticas de privacidade claras e processos seguros.
+- question: Vocês oferecem suporte 24 horas por dia, 7 dias por semana?
+  answer_template: Sim, nosso atendimento automatizado está disponível 24/7, e para casos complexos, temos equipe humana em horários específicos.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços de planos ou serviços.
+  script: Olá! Oferecemos planos a partir de R$ 50 por mês com internet rápida e chamadas ilimitadas. Posso ajudá-lo a encontrar o ideal para suas necessidades?
+  goal: Converter a consulta em uma venda ou agendamento de demonstração.
+- trigger: service_complaint
+  situation: Quando um cliente reclama de um serviço, como lentidão ou falhas.
+  script: Lamento pelo inconveniente. Vamos resolver isso rapidamente. Primeiro, posso verificar seu plano e sugerir uma solução ou upgrade para melhorar sua experiência.
+  goal: Transformar uma reclamação em uma oportunidade de venda ou retenção do cliente.
+- trigger: contract_renewal
+  situation: Quando um cliente está perto do fim do contrato ou considera cancelar.
+  script: Olá! Seu contrato está prestes a vencer. Temos ofertas especiais para renovação, com benefícios adicionais. Posso mostrar as opções?
+  goal: Renovar o contrato, evitar churn e aumentar a lealdade.
+competitors:
+- name: Vivo
+  positioning: Líder de mercado em telecomunicações no Brasil, parte do Grupo Telefónica.
+  strengths:
+  - Cobertura nacional extensa
+  - marca forte
+  - variedade de serviços integrados
+  weaknesses:
+  - Preços mais altos
+  - atendimento ao cliente às vezes lento
+  our_differentiation: Oferecemos atendimento
+- name: Claro
+  positioning: Líder em cobertura nacional com foco em inovação tecnológica
+  strengths:
+  - ampla cobertura em áreas urbanas e rurais
+  - ofertas diversificadas de pacotes de internet e telefonia móvel
+  - forte presença em mídia e marketing
+  weaknesses:
+  - atendimento ao cliente pode ser inconsistente
+  - preços considerados altos por alguns segmentos
+  our_differentiation: Atendimento personalizado e planos flexíveis que se adaptam às necessidades regionais
+meta:
+  id: telecom
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- telecom
+- ISP
+- internet provider
+- mobile operator
+_extends: _base/telecom
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 5000
+  - 20000
+  entry_point: 4500
+  roi_examples:
+  - scenario: Redução de custos com atendimento ao cliente automatizado em uma operadora regional
+    monthly_cost: 6000
+    monthly_savings: 12000
+    payback_months: 3
+  - scenario: Implementação de sistema de vendas de upgrades via agente de voz para aumento de ARPU
+    monthly_cost: 8000
+    monthly_savings: 16000
+    payback_months: 4
+  value_anchors:
+  - Redução significativa do tempo médio de atendimento
+  - Aumento comprovado da receita por usuário
+  - Conformidade garantida com LGPD em processos automatizados
+  - Melhoria na experiência do cliente que reduz churn
+market_context:
+  market_size: R$ 120 bilhões anuais
+  growth_rate: 5-7%
+  key_trends:
+  - Expansão da infraestrutura 5G em grandes centros urbanos
+  - Crescente demanda por serviços de internet banda larga residencial e móvel
+  - Adoção crescente de soluções digitais e atendimento automatizado
+  - Foco em compliance e proteção de dados devido à LGPD
+  - Valorização de experiências personalizadas para fidelização de clientes
+  seasonality:
+    high:
+    - Novembro
+    - Dezembro
+    - Janeiro
+    low:
+    - Fevereiro
+    - Março

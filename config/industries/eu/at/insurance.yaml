@@ -1,0 +1,248 @@
+pain_points:
+- description: Hoher administrativer Aufwand durch manuelle Prozesse bei Antragsbearbeitung
+    und Schadensregulierung.
+  severity: high
+  solution_hint: Automatische Datenerfassung und Vorabprüfung durch KI-gesteuerte
+    Sprachassistenten beschleunigen Prozesse.
+- description: Viele Kundenanfragen außerhalb der Geschäftszeiten führen zu verlorenen
+    Leads und Unzufriedenheit.
+  severity: medium
+  solution_hint: 24/7 erreichbarer Voice Agent kann erste Informationen aufnehmen
+    und Termine vereinbaren.
+- description: Komplexe Versicherungsprodukte werden von Kunden oft nicht verstanden,
+    was zu Fehlberatung führt.
+  severity: high
+  solution_hint: Voice Agent kann in einfacher Sprache Standardfragen zu Deckungsumfang
+    beantworten und zur Fachkraft weiterleiten.
+- description: Hohe Fluktuation bei Callcenter-Mitarbeitern erhöht Schulungskosten
+    und senkt Servicequalität.
+  severity: medium
+  solution_hint: KI-Agent übernimmt repetitive Anfragen und entlastet Mitarbeiter
+    für komplexe Fälle.
+- description: Ineffiziente Leadqualifizierung durch hohen Anteil unpassender Anfragen.
+  severity: medium
+  solution_hint: Voice Agent führt strukturierte Erstgespräche und filtert qualifizierte
+    Leads vor.
+- description: Lange Wartezeiten in der Schadenshotline während Stoßzeiten (z.B. nach
+    Unwettern).
+  severity: low
+  solution_hint: Automatische Schadensmeldung über Voice Agent entlastet Hotlines
+    und sammelt erste Informationen.
+- description: Herausforderungen bei der Einhaltung von DSGVO bei telefonischer Datenverarbeitung.
+  severity: high
+  solution_hint: KI-System mit integriertem Einwilligungsmanagement und Datenschutzprotokollen.
+typical_services:
+- Kfz-Versicherung (Haftpflicht, Teilkasko, Vollkasko)
+- Haushaltsversicherung
+- Rechtsschutzversicherung
+- Unfallversicherung
+- Lebensversicherung
+- Betriebliche Altersvorsorge (bAV)
+- Privathaftpflichtversicherung
+- Berufsunfähigkeitsversicherung
+- Reiseversicherung
+- Cyberversicherung
+recommended_functions:
+- name: Automatisierte Erstanfrage und Terminvereinbarung
+  priority: high
+  reason: Reduziert verlorene Leads außerhalb der Bürozeiten und entlastet die Mitarbeiter.
+- name: Schadensmeldung-Assistent
+  priority: high
+  reason: Beschleunigt die Schadensabwicklung und verbessert die Kundenerfahrung in
+    kritischen Momenten.
+- name: Vertrags- und Leistungsauskunft
+  priority: medium
+  reason: Sofortige Beantwortung häufiger Kundenfragen ohne Wartezeit erhöht Zufriedenheit.
+- name: Leadqualifizierung für Vertrieb
+  priority: high
+  reason: Erhöht die Effizienz des Vertriebsteams durch Vorauswahl interessierter
+    und passender Kunden.
+- name: Rückrufmanagement
+  priority: low
+  reason: Sichert Rückrufe bei Auslastung und organisiert die Warteschlange effizient.
+- name: Kündigungsgespräch-Entgegennahme
+  priority: medium
+  reason: Erkennt Kündigungsgründe und leitet zur Kundenrückgewinnung weiter.
+typical_integrations:
+- name: Versicherungssoftware (Provinzial-/Maklersysteme)
+  examples:
+  - AS400-Systeme
+  - Dokumentenmanagementsysteme (DMS) wie fabasoft
+  - Sonderlösungen großer Versicherer
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - Microsoft Dynamics
+  priority: high
+- name: Telefonie/CTI
+  examples:
+  - Avaya
+  - Cisco
+  - Mitel
+  priority: medium
+- name: Terminplanungstools
+  examples:
+  - Microsoft Bookings
+  - Calendly
+  priority: low
+- name: Schadensregulierungsplattformen
+  examples:
+  - Eigenentwicklungen großer Versicherer
+  priority: medium
+industry_faq:
+- question: Wie kann ich meinen Versicherungsvertrag kündigen?
+  answer_template: Für eine Kündigung benötigen wir eine schriftliche Mitteilung unter
+    Einhaltung der vertraglichen Frist. Gerne leite ich Sie zu einem Mitarbeiter weiter,
+    der Ihnen die Details zu Ihrem Vertrag und den Optionen erklärt.
+- question: Was ist bei einer Schadensmeldung zu beachten?
+  answer_template: Bitte melden Sie den Schaden so schnell wie möglich. Halten Sie
+    relevante Daten wie Vertragsnummer, Schadenszeitpunkt und -ort bereit. Ich kann
+    Sie jetzt durch den ersten Teil der Meldung führen oder einen Rückruf für Sie
+    organisieren.
+- question: Welche Unterlagen brauche ich für einen neuen Vertrag?
+  answer_template: Das hängt von der Versicherungsart ab. Typischerweise werden Personalausweis,
+    bei Kfz der Fahrzeugschein und bei Sachversicherungen relevante Unterlagen benötigt.
+    Ein Berater teilt Ihnen die genaue Liste mit.
+- question: Gibt es eine Widerrufsfrist für meine Versicherung?
+  answer_template: Ja, in der Regel haben Sie nach Vertragsabschluss 14 Tage Widerrufsrecht.
+    Die genauen Bedingungen entnehmen Sie bitte Ihren Vertragsunterlagen.
+- question: Meine Prämie wurde erhöht. Warum?
+  answer_template: Prämienanpassungen können verschiedene Gründe haben, wie etwa geänderte
+    Risikofaktoren oder allgemeine Tarifanpassungen. Ein Kundenberater kann Ihnen
+    die spezifische Begründung für Ihren Fall erläutern.
+- question: Bietet meine Haushaltsversicherung auch Schutz bei Elementarschäden?
+  answer_template: Der Standard-Schutz umfasst oft keine Schäden durch Hochwasser
+    oder Erdbeben. Dies ist meist ein optionaler Zusatzbaustein. Ich kann Ihnen einen
+    Termin mit einem Experten vermitteln, der Ihren Deckungsumfang prüft.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten für eine Versicherung fragt.
+  script: Die Prämie hängt stark von Ihren individuellen Risikofaktoren und dem gewünschten
+    Schutzumfang ab. Um Ihnen ein passendes und faires Angebot zu machen, benötige
+    ich einige kurze Angaben von Ihnen. Darf ich Ihnen dazu drei bis vier Fragen stellen?
+  goal: Vom Preis zum Wertgespräch lenken und Informationen für eine qualifizierte
+    Angebotserstellung sammeln.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber wie die Wiener Städtische nennt.
+  script: Die [genannte Gesellschaft] ist sicher ein renommiertes Unternehmen. Unser
+    Fokus liegt besonders auf [unser Alleinstellungsmerkmal, z.B. transparente digitale
+    Abwicklung oder maßgeschneiderte Beratung]. Möchten Sie wissen, wie sich das in
+    der Praxis für Sie auswirken könnte?
+  goal: Unterscheidung vom Wettbewerb hervorheben und Interesse an einem konkreten
+    Nutzen wecken.
+- trigger: objection_complexity
+  situation: Wenn der Kunde sich wegen der Komplexität des Themas scheut.
+  script: Ich verstehe, dass Versicherungsthemen komplex wirken können. Genau dafür
+    sind wir da. Unser System hilft, die wichtigsten Punkte einfach zu klären, und
+    unser Beraterteam nimmt sich dann für Ihre persönliche Lösung Zeit. Fangen wir
+    einfach an – welche Art von Schutz interessiert Sie grundsätzlich?
+  goal: Hürde abbauen, Vertrauen aufbauen und zum nächsten, einfachen Schritt führen.
+- trigger: callback_request
+  situation: Wenn der Kunde einen Rückruf zu einem späteren Zeitpunkt wünscht.
+  script: 'Sehr gerne vereinbare ich einen Rückruf für Sie. Um unseren Berater optimal
+    vorzubereiten und Ihnen keine Zeit zu stehlen: Können Sie mir kurz sagen, ob es
+    um eine bestimmte Versicherungsart wie Kfz, Haushalt oder Vorsorge geht?'
+  goal: Termin vereinbaren und mit einer minimalen Qualifizierung die Gesprächsgrundlage
+    für den Rückruf verbessern.
+competitors:
+- name: Wiener Städtische Versicherung
+  positioning: Marktführer in Österreich mit breitem Filialnetz und Full-Service-Angebot.
+  strengths:
+  - Starke Markenbekanntheit
+  - Umfassendes Produktportfolio
+  - Dichte Präsenz vor Ort
+  weaknesses:
+  - Höhere Kostenstruktur
+  - Langsamere Digitalisierung
+  - Komplexe Entscheidungswege
+  our_differentiation: Agilere, KI-gestützte Prozesse für schnellere Abwicklung und
+    individuellere digitale Kundenansprache.
+- name: UNIQA Österreich
+  positioning: Großer österreichischer Konzern mit starkem Fokus auf digitale Transformation.
+  strengths:
+  - Investitionen in Digitalisierung
+  - Breite Vertriebskanäle
+  - Stark im Firmenkundengeschäft
+  weaknesses:
+  - Größe kann unpersönlich wirken
+  - Integration verschiedener Systeme
+  our_differentiation: Unsere KI-Lösung ist speziell auf die Automatisierung der Kundenkommunikation
+    zugeschnitten und einfacher zu implementieren.
+- name: Generali Versicherung
+  positioning: Internationaler Konzern mit starkem Fokus auf Vermögensbildung und
+    Vorsorge.
+  strengths:
+  - Internationale Stärke
+  - Kompetenz in Lebens- und Vorsorgeprodukten
+  - Finanzielle Stabilität
+  weaknesses:
+  - Weniger fokussiert auf österreichische Massenmarkt-Sachversicherungen
+  our_differentiation: Wir bieten kosteneffiziente Automatisierungslösungen speziell
+    für den österreichischen Massenmarkt (Kfz, Haushalt).
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung der Erstanfrage für eine mittelgroße Versicherungsagentur
+    monthly_cost: 850
+    monthly_savings: 2200
+    payback_months: 1
+  - scenario: Schadensmeldungs-Assistent für einen regionalen Versicherer
+    monthly_cost: 1200
+    monthly_savings: 3500
+    payback_months: 1
+  value_anchors:
+  - Reduzieren Sie bis zu 70% der Routine-Anrufe in Ihrer Hotline.
+  - Gewinnen Sie 24/7 neue Leads ohne zusätzliches Personal.
+  - Senken Sie die Kosten pro qualifiziertem Lead um bis zu 40%.
+market_context:
+  market_size: Ca. 20 Mrd. EUR Prämienvolumen pro Jahr
+  growth_rate: 2-3% pro Jahr
+  key_trends:
+  - Starker Trend zur Digitalisierung und Self-Service
+  - Wachsende Nachfrage nach Cyber- und Klimarisiko-Versicherungen
+  - Konsolidierung im Maklermarkt
+  - Erhöhter regulatorischer Druck (GDPR, IDD)
+  seasonality:
+    high:
+    - Q4 (Jahresabschlüsse, Vertragsverlängerungen)
+    - Nach Unwettern
+    low:
+    - Haupturlaubszeit (Juli-August)
+typical_objections:
+- objection: Das ist mir zu teuer für eine neue Technologie.
+  response: 'Ich verstehe die Sorge. Betrachten wir es als Investition: Unsere Kunden
+    sparen durch die Automatisierung oft innerhalb des ersten Monats mehr Personalkosten,
+    als die Lösung kostet. Darf ich Ihnen ein konkretes Beispiel aus Ihrer Branche
+    zeigen?'
+- objection: Meine Kunden erwarten ein persönliches Gespräch.
+  response: Absolut, und das bleibt auch so. Unser Voice Agent entlastet Ihre Mitarbeiter
+    von Routinearbeiten, sodass sie mehr Zeit für die wirklich wichtigen, beratungsintensiven
+    Gespräche haben. Er ist die perfekte Vorstufe.
+- objection: Die Einführung und Integration ist zu aufwendig.
+  response: Unser System ist modular und cloud-basiert aufgebaut. Typische Integrationen
+    wie Telefonanlage oder CRM sind vorkonfiguriert. Wir übernehmen den Großteil der
+    Implementierung und schulen Ihr Team.
+- objection: Ich habe Bedenken bezüglich Datenschutz (DSGVO).
+  response: Eine berechtigte Frage. Unsere Lösung wurde speziell für den EU-Raum entwickelt,
+    betreibt Server in der EU und arbeitet mit einem klaren Einwilligungsmanagement.
+    Wir stellen gerne unsere Compliance-Dokumentation zur Verfügung.
+meta:
+  id: insurance
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

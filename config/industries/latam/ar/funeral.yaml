@@ -1,0 +1,204 @@
+pain_points:
+- description: Alto estrés emocional para las familias durante el proceso de planificación.
+  severity: high
+  solution_hint: El agente de voz puede ofrecer respuestas empáticas y guiar paso
+    a paso, reduciendo la carga emocional.
+- description: Trámites administrativos complejos, como la obtención de certificados
+    de defunción y permisos.
+  severity: high
+  solution_hint: Automatizar recordatorios y proporcionar listas de documentos necesarios
+    en español.
+- description: Falta de transparencia en los precios y costos ocultos.
+  severity: medium
+  solution_hint: Ofrecer cotizaciones claras y desglosadas en ARS a través del agente
+    de voz.
+- description: Logística complicada para el traslado de restos, especialmente en zonas
+    rurales.
+  severity: medium
+  solution_hint: Coordinar servicios de transporte y proveer actualizaciones en tiempo
+    real.
+- description: Alta competencia en áreas urbanas, lo que dificulta la diferenciación.
+  severity: medium
+  solution_hint: Resaltar servicios personalizados y atención 24/7 mediante el agente.
+- description: Expectativas culturales diversas que requieren adaptación de servicios.
+  severity: low
+  solution_hint: Educar a los clientes sobre opciones y tradiciones locales a través
+    de respuestas predefinidas.
+typical_services:
+- Servicio de velatorio
+- Traslado de restos
+- Cremación
+- Sepultura
+- Asesoramiento legal y trámites
+- Arreglos florales
+- Ceremonias religiosas personalizadas
+- Atención post-funeraria y apoyo emocional
+- Alquiler de salas para velorios
+- Venta de ataúdes y urnas
+recommended_functions:
+- name: Responder preguntas frecuentes sobre servicios y precios
+  priority: high
+  reason: Reduce la carga del personal y proporciona información inmediata a familias
+    en duelo.
+- name: Programar citas para consultas y servicios
+  priority: high
+  reason: Optimiza la gestión del tiempo y mejora la experiencia del cliente.
+- name: Proporcionar cotizaciones en ARS basadas en servicios seleccionados
+  priority: medium
+  reason: Aumenta la transparencia y ayuda en la toma de decisiones.
+- name: Manejar llamadas de emergencia fuera del horario laboral
+  priority: high
+  reason: Ofrece disponibilidad 24/7, crucial en situaciones urgentes.
+- name: Integrar con sistemas de CRM para seguimiento de clientes
+  priority: medium
+  reason: Mejora la retención y personalización del servicio.
+- name: Enviar recordatorios de pagos y documentación
+  priority: low
+  reason: Reduce la morosidad y errores administrativos.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - sistemas locales como Gestión Funeraria Pro
+  priority: high
+- name: Software contable
+  examples:
+  - Tango
+  - ContaPlus
+  priority: medium
+- name: Plataformas de pagos en línea
+  examples:
+  - MercadoPago
+  - TodoPago
+  priority: high
+- name: Sistemas gubernamentales para registro de defunciones
+  examples:
+  - Sistema de Registro Civil argentino
+  priority: medium
+- name: Gestión de inventario para suministros
+  examples:
+  - Sistemas locales de logística
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los costos aproximados de un servicio funerario en Argentina?
+  answer_template: Los costos varían según los servicios elegidos, pero un paquete
+    básico puede partir desde [inserte rango en ARS]. Ofrecemos cotizaciones personalizadas
+    sin compromiso.
+- question: ¿Qué documentos necesito para organizar un funeral?
+  answer_template: Generalmente se requiere el certificado de defunción, DNI del fallecido
+    y autorizaciones familiares. Le podemos guiar paso a paso.
+- question: ¿Ofrecen servicios de cremación y cuánto tiempo toma?
+  answer_template: Sí, ofrecemos cremación con opciones de urnas. El proceso suele
+    tomar entre 24 y 48 horas, dependiendo de los trámites.
+- question: ¿Pueden ayudar con traslados a otras provincias o países?
+  answer_template: Sí, coordinamos traslados nacionales e internacionales, manejando
+    toda la logística y permisos necesarios.
+- question: ¿Hay opciones de pago a plazos o financiamiento?
+  answer_template: Ofrecemos planes de pago flexibles y podemos integrar con opciones
+    de financiamiento locales para facilitar el proceso.
+- question: ¿Qué incluye un servicio de velatorio estándar?
+  answer_template: Incluye sala de velatorio, ataúd básico, arreglos florales simples
+    y apoyo administrativo. Podemos personalizar según sus necesidades.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios por teléfono.
+  script: Entiendo que desea conocer los costos. Nuestros servicios parten desde [inserte
+    entrada en ARS] y varían según sus necesidades. ¿Le gustaría que le detailé las
+    opciones disponibles?
+  goal: Obtener información del cliente para una cotización personalizada y destacar
+    transparencia.
+- trigger: service_inquiry
+  situation: Cuando un cliente consulta sobre servicios específicos como cremación.
+  script: Gracias por su consulta. Ofrecemos cremación con varias opciones de urnas
+    y ceremonias. ¿Prefiere que le explique los pasos involucrados o necesita coordinar
+    una cita?
+  goal: Educar al cliente y convertir la consulta en una venta.
+- trigger: emergency_call
+  situation: Cuando recibe una llamada fuera de horario para un fallecimiento reciente.
+  script: Lamento su pérdida. Estamos aquí para ayudarle 24/7. ¿Puede proporcionarme
+    algunos detalles para activar nuestro servicio de emergencia de inmediato?
+  goal: Proporcionar tranquilidad y comenzar el proceso de servicio rápidamente.
+competitors:
+- name: Funeraria La Paz
+  positioning: Cadena nacional con amplia cobertura.
+  strengths:
+  - Marca reconocida
+  - múltiples ubicaciones
+  - servicios estándar
+  weaknesses:
+  - Precios altos
+  - atención menos personalizada
+  our_differentiation: Ofrecemos atención más empática y precios transparentes con
+    tecnología de agente de voz.
+- name: Casa de Duelo San Martín
+  positioning: Empresa familiar con enfoque tradicional.
+  strengths:
+  - Experiencia local
+  - trato cercano
+  weaknesses:
+  - Tecnología limitada
+  - horarios restringidos
+  our_differentiation: Disponibilidad 24/7 y automatización que mejora la eficiencia
+    sin perder calidez.
+- name: Servicios Funerarios Integrados
+  positioning: Proveedor de servicios premium en áreas urbanas.
+  strengths:
+  - Servicios de lujo
+  - integración con seguros
+  weaknesses:
+  - Costos elevados
+  - accesibilidad limitada
+  our_differentiation: Soluciones asequibles y personalizadas con soporte multilingüe.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 300000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Automatización de consultas frecuentes
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Transparencia total en precios
+  - Atención inmediata 24/7
+  - Personalización según tradiciones argentinas
+market_context:
+  market_size: Estimado en 500 millones de ARS anuales
+  growth_rate: 3% anual
+  key_trends:
+  - Aumento en la preferencia por cremación
+  - Demanda de servicios digitales
+  - Enfoque en sostenibilidad
+  seasonality:
+    high:
+    - Invierno
+    - debido a problemas de salud
+    low:
+    - Verano
+    - temporada vacacional
+typical_objections:
+- objection: Es muy caro, no puedo pagarlo.
+  response: Entendemos su preocupación. Ofrecemos planes de pago flexibles y podemos
+    ajustar los servicios para ajustarse a su presupuesto en ARS.
+- objection: Prefiero hablar con una persona, no con una máquina.
+  response: Nuestro agente de voz está diseñado para ser empático y puede derivarle
+    a un asesor humano en cualquier momento. Así garantizamos eficiencia y calidez.
+- objection: No confío en los servicios en línea para algo tan importante.
+  response: Comprendo. Combinamos tecnología con atención personalizada, y todos los
+    trámites se verifican con profesionales. Le invitamos a una consulta sin costo.
+meta:
+  id: funeral
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

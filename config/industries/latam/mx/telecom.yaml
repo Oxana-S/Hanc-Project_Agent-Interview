@@ -1,0 +1,199 @@
+pain_points:
+- description: Altos costos de servicios de telecomunicaciones que afectan la rentabilidad
+    de las empresas.
+  severity: high
+  solution_hint: El agente de voz IA puede optimizar planes y recomendar ofertas para
+    reducir gastos.
+- description: Mala calidad del servicio al cliente con tiempos de espera prolongados.
+  severity: high
+  solution_hint: Automatizar la atención inicial para reducir esperas y mejorar la
+    satisfacción del cliente.
+- description: Facturación compleja y errores frecuentes que generan reclamos.
+  severity: medium
+  solution_hint: Implementar un sistema automatizado de consulta y resolución de facturas.
+- description: Baja retención de clientes debido a la competencia agresiva.
+  severity: high
+  solution_hint: Usar el agente para realizar encuestas y ofrecer renovaciones personalizadas.
+- description: Dificultad en la gestión de múltiples proveedores de servicios.
+  severity: medium
+  solution_hint: Centralizar la comunicación con proveedores a través de integraciones
+    automáticas.
+- description: Falta de personal capacitado para manejar consultas técnicas especializadas.
+  severity: low
+  solution_hint: El agente puede proporcionar respuestas técnicas básicas y derivar
+    casos complejos.
+typical_services:
+- Planes de telefonía móvil prepago y pospago
+- Internet de banda ancha residencial y empresarial
+- Televisión por cable y satelital
+- Servicios de voz sobre IP (VoIP)
+- Conectividad para empresas (MPLS, VPN)
+- Soluciones de centros de datos y nube
+- Servicios de valor agregado como roaming internacional
+- Mantenimiento y soporte técnico
+- Venta de equipos como módems y routers
+recommended_functions:
+- name: Atención al cliente automatizada
+  priority: high
+  reason: Reduce costos operativos y mejora la experiencia del cliente al resolver
+    consultas comunes.
+- name: Ventas y upselling de servicios
+  priority: high
+  reason: Aumenta los ingresos mediante la promoción activa de planes y ofertas.
+- name: Gestión de facturación y pagos
+  priority: medium
+  reason: Minimiza errores y mejora la eficiencia en el procesamiento de pagos.
+- name: Soporte técnico básico
+  priority: medium
+  reason: Libera al personal humano para tareas más complejas, reduciendo tiempos
+    de resolución.
+- name: Recordatorios de renovación y retención
+  priority: low
+  reason: Ayuda a mantener la base de clientes mediante comunicaciones proactivas.
+typical_integrations:
+- name: Sistemas de gestión de relaciones con clientes (CRM)
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - sistemas locales como Gestión Total
+  priority: high
+- name: Software de facturación
+  examples:
+  - SAP
+  - Oracle
+  - sistemas mexicanos como Facturama
+  priority: high
+- name: Plataformas de atención al cliente
+  examples:
+  - Zendesk
+  - Freshdesk
+  - soluciones locales como Atención Plus
+  priority: medium
+- name: Herramientas de análisis de datos
+  examples:
+  - Tableau
+  - Power BI
+  - sistemas regionales como Datamx
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta contratar un nuevo servicio de internet?
+  answer_template: El costo varía según la velocidad y el plan. Por ejemplo, planes
+    básicos inician desde $300 MXN mensuales. ¿Le gustaría que le ayude a encontrar
+    una opción adecuada?
+- question: ¿Cómo puedo reportar una falla en mi conexión?
+  answer_template: Puedo ayudarle a reportar la falla. Necesito algunos datos como
+    su número de cuenta. ¿Está disponible para proporcionarlos?
+- question: ¿Qué opciones tengo para reducir mi factura telefónica?
+  answer_template: Tenemos planes optimizados que pueden ahorrarle hasta un 20%. ¿Puedo
+    revisar su uso actual para recomendarle algo?
+- question: ¿Es seguro usar servicios en la nube con su proveedor?
+  answer_template: Sí, cumplimos con la LFPDPPP para proteger sus datos. Ofrecemos
+    opciones de seguridad avanzada. ¿Necesita más detalles?
+- question: ¿Cómo funciona el servicio de roaming internacional?
+  answer_template: El roaming permite usar su teléfono en el extranjero con tarifas
+    especiales. Le recomiendo activar un paquete para ahorrar. ¿Viaja pronto?
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio.
+  script: Entiendo que el costo es importante. Nuestros planes inician desde $500
+    MXN mensuales y ofrecemos un periodo de prueba. ¿Le gustaría conocer las características
+    incluidas?
+  goal: Convertir la consulta en una oportunidad de venta destacando valor.
+- trigger: service_complaint
+  situation: Cuando un cliente reporta un problema con el servicio.
+  script: Lamento escuchar eso. Para resolverlo rápidamente, necesito verificar su
+    información. ¿Puede confirmar su número de cuenta? Luego, le ayudo a escalar el
+    caso.
+  goal: Calmar al cliente y proceder a una solución eficiente.
+- trigger: upsell_opportunity
+  situation: Cuando un cliente tiene un plan básico y podría beneficiarse de más servicios.
+  script: Noto que tiene un plan básico. Con nuestro paquete premium, obtendría mayor
+    velocidad y soporte prioritario por solo $200 MXN adicionales. ¿Le interesa?
+  goal: Aumentar el valor del contrato mediante ventas cruzadas.
+competitors:
+- name: Telcel
+  positioning: Líder del mercado con amplia cobertura nacional.
+  strengths:
+  - Red extensa
+  - marca reconocida
+  - múltiples puntos de venta
+  weaknesses:
+  - Precios altos
+  - servicio al cliente lento
+  our_differentiation: Ofrecemos automatización que reduce costos y mejora la atención,
+    con precios más competitivos.
+- name: Movistar
+  positioning: Competidor fuerte con enfoque en innovación.
+  strengths:
+  - Tecnología avanzada
+  - ofertas promocionales frecuentes
+  weaknesses:
+  - Cobertura limitada en zonas rurales
+  - complejidad en contratos
+  our_differentiation: Nuestras soluciones IA simplifican la gestión y ofrecen transparencia
+    en facturación.
+- name: AT&T México
+  positioning: Proveedor internacional con red en crecimiento.
+  strengths:
+  - Inversión en infraestructura
+  - planes flexibles
+  weaknesses:
+  - Menor penetración en mercado residencial
+  - tiempos de instalación largos
+  our_differentiation: Integramos sistemas locales para una adaptación más rápida
+    y personalizada.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de atención al cliente para una PYME
+    monthly_cost: 3000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos operativos hasta un 30%
+  - Mejora la satisfacción del cliente en un 40%
+  - ROI en menos de 6 meses
+market_context:
+  market_size: 20 mil millones de dólares anuales
+  growth_rate: 5% YoY
+  key_trends:
+  - Expansión de 5G
+  - Aumento en demanda de servicios en la nube
+  - Regulaciones más estrictas como la LFPDPPP
+  seasonality:
+    high:
+    - diciembre
+    - enero por temporada navideña
+    - agosto por regreso a clases
+    low:
+    - abril
+    - mayo por periodo fiscal
+typical_objections:
+- objection: Es muy caro implementar tecnología nueva.
+  response: Entiendo la preocupación, pero nuestra solución tiene un ROI rápido. Por
+    ejemplo, clientes ahorran $5000 MXN mensuales en costos operativos. ¿Podemos analizar
+    su caso?
+- objection: Ya tenemos un sistema funcionando, no necesitamos cambios.
+  response: Claro, pero nuestra integración es sencilla y mejora la eficiencia sin
+    interrumpir operaciones. ¿Le gustaría una demostración?
+- objection: No confío en la automatización para tratar con clientes.
+  response: Nuestro agente IA está diseñado para complementar al equipo humano, manejando
+    tareas repetitivas. Esto libera a su personal para casos más importantes.
+meta:
+  id: telecom
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

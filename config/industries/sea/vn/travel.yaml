@@ -1,0 +1,218 @@
+pain_points:
+- description: Mức độ cạnh tranh cao từ các đại lý du lịch trực tuyến và truyền thống.
+  severity: high
+  solution_hint: Tự động hóa tư vấn và đặt chỗ để giảm chi phí và tăng tốc độ phản
+    hồi.
+- description: Khó khăn trong quản lý đặt phòng, tour, và dịch vụ do hệ thống phân
+    mảnh.
+  severity: high
+  solution_hint: Tích hợp AI để đồng bộ hóa dữ liệu và quản lý tập trung.
+- description: Thiếu nhân lực có kinh nghiệm, đặc biệt trong mùa cao điểm.
+  severity: medium
+  solution_hint: Sử dụng agent giọng nói AI để hỗ trợ khách hàng 24/7, giảm tải cho
+    nhân viên.
+- description: Vấn đề tuân thủ PDPD về bảo vệ dữ liệu cá nhân khách hàng.
+  severity: high
+  solution_hint: AI có thể xử lý dữ liệu an toàn và tự động hóa các quy trình tuân
+    thủ.
+- description: Biến động doanh thu theo mùa, với mùa thấp kéo dài.
+  severity: medium
+  solution_hint: Agent AI có thể chạy chiến dịch tiếp thị tự động để thu hút khách
+    hàng trong mùa thấp.
+- description: Khó khăn trong việc xử lý thanh toán đa kênh và an toàn.
+  severity: medium
+  solution_hint: Tích hợp AI với các cổng thanh toán địa phương để tự động hóa và
+    bảo mật giao dịch.
+- description: Tỷ lệ hủy đặt chỗ cao do thay đổi kế hoạch của khách hàng.
+  severity: low
+  solution_hint: AI có thể gửi nhắc nhở và đề xuất linh hoạt để giảm hủy đặt.
+typical_services:
+- Đặt tour du lịch trong nước
+- Vé máy bay quốc tế và nội địa
+- Đặt phòng khách sạn và resort
+- Dịch vụ visa và thủ tục xuất nhập cảnh
+- Thuê xe và dịch vụ đưa đón
+- Hướng dẫn viên du lịch
+- Bảo hiểm du lịch
+- Combo du lịch trọn gói
+- Dịch vụ ăn uống và giải trí
+- Tour du lịch sinh thái và văn hóa
+recommended_functions:
+- name: Hỗ trợ đặt chỗ tự động
+  priority: high
+  reason: Giảm thời gian chờ đợi và tăng tỷ lệ chuyển đổi cho khách hàng.
+- name: Tư vấn tour và dịch vụ
+  priority: high
+  reason: Cung cấp thông tin nhanh chóng, cá nhân hóa dựa trên nhu cầu khách hàng.
+- name: Xử lý thanh toán và hóa đơn
+  priority: medium
+  reason: Tự động hóa giao dịch, giảm lỗi và tăng độ tin cậy.
+- name: Hỗ trợ khách hàng 24/7
+  priority: high
+  reason: Đáp ứng nhu cầu khách hàng mọi lúc, đặc biệt trong mùa cao điểm.
+- name: Gửi thông báo và nhắc nhở
+  priority: low
+  reason: Cải thiện trải nghiệm khách hàng và giảm tỷ lệ hủy đặt.
+- name: Thu thập và phân tích phản hồi
+  priority: medium
+  reason: Giúp tối ưu hóa dịch vụ và chiến lược kinh doanh.
+typical_integrations:
+- name: Hệ thống quản lý đặt phòng (PMS)
+  examples:
+  - Cloudbeds
+  - Hotelogix
+  - Local PMS tại Việt Nam
+  priority: high
+- name: Phần mềm quản lý tour
+  examples:
+  - TourCMS
+  - Rezdy
+  - Phần mềm địa phương như VNTravel
+  priority: high
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - Momo
+  - ZaloPay
+  - VNPay
+  - OnePay
+  priority: medium
+- name: Hệ thống CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - CRM địa phương
+  priority: medium
+- name: Nền tảng đặt vé máy bay
+  examples:
+  - Amadeus
+  - Sabre
+  - Galileo
+  priority: high
+industry_faq:
+- question: Làm thế nào để đặt tour du lịch với giá tốt nhất?
+  answer_template: Chúng tôi cung cấp so sánh giá tự động và khuyến mãi thông qua
+    AI để đảm bảo bạn nhận được ưu đãi tốt nhất.
+- question: Dịch vụ có hỗ trợ hủy đặt và hoàn tiền không?
+  answer_template: Có, AI của chúng tôi tự động xử lý chính sách hủy và hoàn tiền
+    theo điều khoản, giúp quy trình nhanh chóng.
+- question: Làm sao để biết tour phù hợp với gia đình có trẻ em?
+  answer_template: Agent AI sẽ phân tích nhu cầu và đề xuất các tour gia đình với
+    dịch vụ an toàn và giải trí phù hợp.
+- question: Có thể đặt dịch vụ visa qua điện thoại không?
+  answer_template: Vâng, AI có thể hướng dẫn bạn qua các bước và tự động gửi tài liệu
+    cần thiết.
+- question: Làm thế nào để đảm bảo an toàn thanh toán trực tuyến?
+  answer_template: Chúng tôi tích hợp với các cổng thanh toán bảo mật hàng đầu tại
+    Việt Nam và tuân thủ PDPD.
+- question: Dịch vụ có hỗ trợ tiếng Anh cho khách quốc tế không?
+  answer_template: Có, AI đa ngôn ngữ của chúng tôi có thể hỗ trợ cả tiếng Việt và
+    tiếng Anh.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ.
+  script: Xin chào, cảm ơn bạn đã quan tâm. Chúng tôi cung cấp giải pháp AI với chi
+    phí từ 5 triệu VND/tháng, giúp tiết kiệm đến 30% chi phí vận hành. Bạn có muốn
+    tôi phân tích cụ thể cho doanh nghiệp của bạn không?
+  goal: Thu hút sự quan tâm và trình bày giá trị tiết kiệm.
+- trigger: service_inquiry
+  situation: Khi khách hàng hỏi về các dịch vụ cụ thể.
+  script: Chào bạn, AI của chúng tôi có thể tự động hóa đặt tour, hỗ trợ khách hàng,
+    và xử lý thanh toán. Ví dụ, một đại lý du lịch đã giảm 20% thời gian xử lý đặt
+    chỗ. Bạn có muốn tôi demo không?
+  goal: Giới thiệu tính năng và tạo cơ hội demo.
+- trigger: competitor_mention
+  situation: Khi khách hàng so sánh với đối thủ.
+  script: Tôi hiểu bạn đang xem xét các tùy chọn. Khác với đối thủ, AI của chúng tôi
+    tích hợp sâu với hệ thống địa phương và tuân thủ PDPD, đảm bảo an toàn dữ liệu.
+    Chúng tôi cũng cung cấp hỗ trợ 24/7.
+  goal: Nổi bật sự khác biệt và xây dựng niềm tin.
+- trigger: onboarding_request
+  situation: Khi khách hàng muốn bắt đầu sử dụng dịch vụ.
+  script: Tuyệt vời! Chúng tôi sẽ thiết lập AI trong vòng 48 giờ, với đào tạo miễn
+    phí. Bạn có thể bắt đầu với gói cơ bản 5 triệu VND/tháng và nâng cấp dần. Tôi
+    sẽ gửi hợp đồng ngay.
+  goal: Đóng giao dịch và đảm bảo triển khai nhanh chóng.
+competitors:
+- name: Traveloka
+  positioning: Nền tảng đặt vé và khách sạn trực tuyến lớn tại Đông Nam Á.
+  strengths:
+  - Phạm vi rộng
+  - Giao diện dễ sử dụng
+  - Khuyến mãi thường xuyên
+  weaknesses:
+  - Hỗ trợ khách hàng chậm
+  - Ít tùy chỉnh cho doanh nghiệp địa phương
+  our_differentiation: AI của chúng tôi cung cấp hỗ trợ tự động hóa cao và tích hợp
+    sâu với hệ thống Việt Nam.
+- name: Agoda
+  positioning: Website đặt phòng khách sạn toàn cầu, phổ biến tại Việt Nam.
+  strengths:
+  - Nhiều lựa chọn khách sạn
+  - Giá cạnh tranh
+  - Ứng dụng di động mạnh
+  weaknesses:
+  - Hạn chế trong dịch vụ tour địa phương
+  - Phí ẩn cao
+  our_differentiation: Chúng tôi tập trung vào tự động hóa toàn diện cho đại lý du
+    lịch, bao gồm cả tour và dịch vụ bổ sung.
+- name: Các đại lý du lịch truyền thống tại Việt Nam
+  positioning: Dịch vụ trực tiếp, dựa vào quan hệ cá nhân.
+  strengths:
+  - Dịch vụ cá nhân hóa
+  - Hiểu biết sâu về địa phương
+  weaknesses:
+  - Chi phí cao
+  - Khả năng mở rộng hạn chế
+  - Phụ thuộc vào nhân sự
+  our_differentiation: AI giúp số hóa và tự động hóa, giảm chi phí trong khi vẫn giữ
+    được sự cá nhân hóa.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 5000000
+  - 50000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Đại lý du lịch nhỏ giảm 50% thời gian xử lý đặt chỗ.
+    monthly_cost: 10000000
+    monthly_savings: 15000000
+    payback_months: 1
+  - scenario: Công ty du lịch trung bình tăng doanh thu 20% nhờ hỗ trợ AI 24/7.
+    monthly_cost: 30000000
+    monthly_savings: 50000000
+    payback_months: 2
+  value_anchors:
+  - Tiết kiệm đến 30% chi phí vận hành với AI.
+  - Tăng tỷ lệ chuyển đổi đặt chỗ lên 25%.
+  - Tuân thủ PDPD tự động, tránh phạt pháp lý.
+market_context:
+  market_size: Khoảng 10 tỷ USD năm 2023
+  growth_rate: 15% YoY
+  key_trends:
+  - Du lịch số hóa và đặt chỗ trực tuyến tăng mạnh.
+  - Nhu cầu du lịch nội địa và sinh thái gia tăng.
+  - Ứng dụng AI và tự động hóa trong dịch vụ khách hàng.
+  seasonality:
+    high:
+    - Tháng 1-2 (Tết Nguyên Đán)
+    - Tháng 6-8 (mùa hè)
+    - Tháng 12 (lễ Giáng sinh)
+    low:
+    - Tháng 9-10 (mùa mưa)
+    - Tháng 3-4 (sau Tết)
+typical_objections:
+- objection: Chi phí quá cao so với ngân sách của chúng tôi.
+meta:
+  id: travel
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

@@ -1,0 +1,230 @@
+pain_points:
+- description: Supraîncărcarea administrativă a personalului clinicii veterinare.
+  severity: high
+  solution_hint: Automatizarea programărilor și a remindere-urilor prin agent vocal
+    AI pentru a reduce timpul petrecut la telefon.
+- description: Comunicarea ineficientă cu proprietarii de animale de companie, ducând
+    la întrebări frecvente nerezolvate.
+  severity: medium
+  solution_hint: Răspunsuri automate la întrebări comune și notificări personalizate
+    pentru a îmbunătăți satisfacția clienților.
+- description: Gestionarea manuală a inventarului de medicamente și consumabile, cauzând
+    lipsuri neașteptate.
+  severity: medium
+  solution_hint: Integrare cu sistemele de gestionare a stocurilor pentru alertă automată
+    la niveluri scăzute.
+- description: Programarea neuniformă a pacienților, rezultând în ore de așteptare
+    lungi și rate ridicate de neprezentare.
+  severity: high
+  solution_hint: Optimizarea programărilor și confirmarea automată a citirelor pentru
+    a reduce conflictele și a crește eficiența.
+- description: Dificultăți în gestionarea plăților și facturilor, ducând la întârzieri
+    și erori contabile.
+  severity: medium
+  solution_hint: Integrare cu software-ul de facturare local pentru procesare automată
+    și reducerea erorilor umane.
+- description: Lipsa de personal pentru răspuns la apeluri telefonice în afara orelor
+    de program, afectând accesul la servicii.
+  severity: low
+  solution_hint: Agent vocal AI disponibil 24/7 pentru informații de bază și direcționarea
+    urgentețelor către personal.
+- description: Conformitatea cu GDPR în gestionarea datelor sensibile ale clienților,
+    necesitând proceduri stricte.
+  severity: high
+  solution_hint: Sisteme securizate și automate care respectă GDPR pentru protecția
+    datelor și reducerea riscurilor legale.
+typical_services:
+- Consultație veterinară
+- Vaccinare
+- Chirurgie
+- Analize de laborator
+- Radiografie
+- Ultrasonografie
+- Tratament dental
+- Microcipare
+- Pensiune pentru animale
+- Servicii de grooming
+recommended_functions:
+- name: Programare automată a citirelor
+  priority: high
+  reason: Reduceți timpul administrativ și evitați conflictele de programare, crescând
+    eficiența clinicii.
+- name: Răspunsuri automate la întrebări frecvente
+  priority: medium
+  reason: Eliberează personalul pentru sarcini critice și oferă informații rapide
+    clienților.
+- name: Remindere pentru vaccinări și tratamente
+  priority: high
+  reason: Îmbunătățește conformitatea pacienților și crește veniturile prin servicii
+    regulate.
+- name: Confirmare automată a citirelor
+  priority: medium
+  reason: Reduceți ratele de neprezentare și optimizați utilizarea resurselor clinicii.
+- name: Notificări de urgență și sfaturi de sănătate
+  priority: low
+  reason: Oferă suport non-stop și construiește încredere cu clienții prin îngrijire
+    continuă.
+- name: Integrare cu sistemul de facturare
+  priority: medium
+  reason: Automatizează procesele financiare, reducând erorile și timpul de procesare.
+typical_integrations:
+- name: Sistem de management clinic veterinar
+  examples:
+  - VetSoft
+  - CliniVet
+  - VetManager
+  priority: high
+- name: Software de facturare și contabilitate
+  examples:
+  - SmartBill
+  - Bizon
+  - Ciel
+  priority: high
+- name: Sistem de gestionare a stocurilor
+  examples:
+  - StockMaster
+  - InventarPro
+  - WinMentor
+  priority: medium
+- name: Platformă de rezervări online
+  examples:
+  - BookVet
+  - PetAppoint
+  - SimplyBook
+  priority: medium
+- name: Sistem de notificări SMS/email
+  examples:
+  - Twilio
+  - SendGrid
+  - Mailchimp
+  priority: low
+industry_faq:
+- question: Care sunt orele de program ale clinicii?
+  answer_template: Clinica noastră este deschisă de luni până vineri, de la 9:00 la
+    18:00, și sâmbătă de la 10:00 la 14:00. Pentru urgente, sunați la numărul dedicat.
+- question: Cât costă o consultație veterinară?
+  answer_template: Prețul unei consultații începe de la 100 RON, în funcție de complexitate
+    și serviciile adiționale. Vă recomandăm să programați pentru o evaluare precisă.
+- question: Aveți servicii de urgență disponibile?
+  answer_template: Da, oferim servicii de urgență 24/7. Pentru asistență imediată,
+    contactați-ne telefonic sau prin intermediul agentului nostru vocal.
+- question: Ce vaccinări sunt necesare pentru câini în România?
+  answer_template: Vaccinările esențiale pentru câini includ parvoviroză, cimur, hepatită,
+    și rage. Consultați un veterinar pentru un program personalizat bazat pe vârstă
+    și stil de viață.
+- question: Acceptați asigurări pentru animale de companie?
+  answer_template: Da, colaborăm cu mai multe companii de asigurări locale. Vă rugăm
+    să aduceți documentele de asigurare la consultație pentru procesare.
+- question: Cum pot programa o citire pentru animalul meu?
+  answer_template: Puteți programa online pe site-ul nostru, prin apel telefonic,
+    sau utilizați agentul nostru vocal pentru programare rapidă și automată.
+sales_scripts:
+- trigger: price_question
+  situation: Când clientul întreabă despre costul serviciilor de agent vocal AI.
+  script: Bună ziua! Serviciile noastre încep de la 200 RON pe lună pentru funcții
+    de bază, economisind până la 10 ore lunare de muncă administrativă. Doriți să
+    vă arăt un calcul personalizat al rentabilității?
+  goal: Să demonstrez valoarea investiției și să obțin un angajament pentru o demonstrație.
+- trigger: interest_in_automation
+  situation: Când clientul exprimă interes pentru automatizarea proceselor administrative.
+  script: Excelent! Agentul nostru vocal AI poate automatiza programările, remindere-urile,
+    și răspunsurile, permițându-vă să vă concentrați pe îngrijirea animalelor. Putem
+    programa o demonstrație gratuită săptămâna viitoare?
+  goal: Să închei o vânzare sau să obțin o încercare de probă.
+- trigger: concern_about_gdpr
+  situation: Când clientul este îngrijorat de conformitatea GDPR cu sistemul nostru.
+  script: Înțeleg preocuparea. Soluția noastră este proiectată să respecte GDPR, cu
+    criptare și gestionare securizată a datelor. Furnizăm documentație de conformitate
+    și suport continuu.
+  goal: Să alin îngrijorările legale și să construiesc încredere pentru adoptare.
+competitors:
+- name: VetCall Assistant
+  positioning: Soluție de automatizare telefonică accesibilă pentru clinici mici.
+  strengths:
+  - Preț competitiv
+  - Implementare rapidă
+  weaknesses:
+  - Funcționalități limitate
+  - Suport tehnic redus
+  our_differentiation: Oferim AI mai avansat cu integrare completă și suport 24/7,
+    crescând eficiența pe termen lung.
+- name: PetCare Tech
+  positioning: Platformă de gestionare clinică cuprinzătoare pentru veterinar.
+  strengths:
+  - Multe funcții integrate
+  - Soluție all-in-one
+  weaknesses:
+  - Cost ridicat
+  - Complex de învățat
+  our_differentiation: Sistemul nostru modular este mai accesibil și se focus pe automatizarea
+    vocală pentru a reduce efortul administrativ.
+- name: AutoVet
+  positioning: Agent AI specializat în programări și remindere pentru veterinar.
+  strengths:
+  - Interfață prietenoasă
+  - Specializare pe veterinar
+  weaknesses:
+  - Lipsă de integrare cu alte sisteme
+  - Personalizare limitată
+  our_differentiation: Integram profund cu software-ul existent și oferim personalizare
+    avansată pentru nevoile specifice clinicii.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 150
+  - 500
+  entry_point: 200
+  roi_examples:
+  - scenario: Clinică mică cu 1-2 angajați administrative
+    monthly_cost: 250
+    monthly_savings: 800
+    payback_months: 1
+  - scenario: Clinică medie care automatizează remindere-urile și programările
+    monthly_cost: 350
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Economisiți până la 50% din timpul administrativ
+  - Creșteți rata de programare cu 20% prin remindere automate
+  - Conformitate GDPR garantată cu reducerea riscurilor legale
+market_context:
+  market_size: Piața veterinară din România este estimată la aproximativ 100 milioane
+    EUR anual, cu potențial de creștere.
+  growth_rate: 5% pe an
+  key_trends:
+  - Creșterea numărului de animale de companie în zone urbane
+  - Demandă crescută pentru servicii premium și tehnologice
+  - Adoptarea digitalizării în practica veterinară
+  seasonality:
+    high:
+    - Primăvară (perioada de vaccinări)
+    - Toamnă (pregătire pentru sezonul rece)
+    low:
+    - Iarnă (sărbători și vreme rea)
+    - Vara (perioada de vacanțe)
+typical_objections:
+- objection: Este prea scump pentru bugetul nostru limitat.
+  response: Înțeleg constrângerile bugetare. Cu un preț de intrare de 200 RON, puteți
+    economisi timp valoros care poate fi reinvestit. Ofrim și planuri flexible pentru
+    a se potrivi nevoilor dvs.
+- objection: Nu avem timp sau resurse pentru implementare și instruire.
+  response: Oferim suport complet pentru implementare, inclusiv instruire și integrare,
+    asigurând o tranziție lină fără întreruperi. Procesul este rapid și ghidat.
+- objection: Suntem mulțumiți cu sistemul actual de gestionare.
+  response: Bine că aveți un sistem funcțional! Agentul nostru vocal poate îmbunătăți
+    eficiența existentă prin automatizare suplimentară, eliberând personalul pentru
+    sarcini prioritare. Vă invităm la o demonstrație fără obligații.
+meta:
+  id: veterinary
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

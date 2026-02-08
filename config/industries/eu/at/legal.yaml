@@ -1,0 +1,230 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand durch manuelle Dokumentenbearbeitung und Terminplanung.
+  severity: high
+  solution_hint: Automatisierte Terminvereinbarung und Dokumentenvorlagen können bis
+    zu 15 Stunden pro Woche einsparen.
+- description: Kunden erwarten 24/7-Erreichbarkeit für erste Anfragen und Terminanfragen.
+  severity: medium
+  solution_hint: Ein AI Voice Agent kann rund um die Uhr Erstkontakte verwalten und
+    dringende Anliegen identifizieren.
+- description: Hohe Kosten für Sekretariats- und Assistenzpersonal.
+  severity: high
+  solution_hint: Automatisierung von Standardanfragen reduziert den manuellen Arbeitsaufwand
+    und senkt Personalkosten.
+- description: Komplexe und zeitaufwändige Mandantenakquise in einem wettbewerbsintensiven
+    Markt.
+  severity: high
+  solution_hint: Systematische Leadgenerierung und Qualifizierung durch gezielte Anrufe
+    und Follow-ups.
+- description: Einhaltung strenger DSGVO-Vorschriften bei der Kundenkommunikation
+    und Datenverwaltung.
+  severity: high
+  solution_hint: Integration von datenschutzkonformen Prozessen und Einwilligungsprotokollen
+    in alle Kommunikationsabläufe.
+- description: Ineffiziente Abrechnung und Nachverfolgung von angefallenen Zeiten
+    für Kleinaufträge.
+  severity: medium
+  solution_hint: Automatische Erfassung von Beratungszeiten und Generierung von Kostennotizen.
+typical_services:
+- Vertragsgestaltung und -prüfung
+- Unternehmensrecht (GmbH-Gründung, Gesellschafterverträge)
+- Arbeitsrecht
+- Miet- und Immobilienrecht
+- Familienrecht (Scheidung, Unterhalt)
+- Erbrecht (Testamente, Verlassenschaftsverfahren)
+- Außerstreitverfahren
+- Verkehrsrecht
+- Strafrecht
+- Notariatsakte (in Verbindung mit einem Notar)
+recommended_functions:
+- name: Intelligente Terminbuchung
+  priority: high
+  reason: Reduziert den Abstimmungsaufwand erheblich und verbessert die Auslastung.
+- name: FAQ- und Erstberatungs-Assistent
+  priority: high
+  reason: Entlastet das Personal von Standardfragen und filtert qualifizierte Leads.
+- name: Mandantendaten-Abfrage und -Aktualisierung
+  priority: medium
+  reason: Hält Stammdaten aktuell und spart Zeit für administrative Nachfragen.
+- name: Erinnerungen für Fristen und Termine
+  priority: high
+  reason: Kritisch für die Vermeidung von Verjährungen und Verfahrensfehlern.
+- name: Leadqualifizierung und -einordnung
+  priority: medium
+  reason: Erhöht die Effizienz der Akquise durch Vorab-Filterung.
+- name: Integration mit Rechtsdatenbanken (z.B. RIS)
+  priority: low
+  reason: Bietet schnellen Zugriff auf Gesetzestexte und Entscheidungen, ist aber
+    spezialisiert.
+typical_integrations:
+- name: Rechtssoftware / Anwaltssoftware
+  examples:
+  - RA Micro
+  - Lexware Anwalt
+  - LawyerOne
+  - Lexsoft
+  priority: high
+- name: Terminplanungssysteme
+  examples:
+  - Microsoft Bookings
+  - Calendly
+  - in-house Lösungen
+  priority: high
+- name: Dokumentenmanagementsysteme (DMS)
+  examples:
+  - iLaw
+  - DocuWare
+  - SharePoint
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - OnePageCRM
+  priority: medium
+- name: E-Mail- und Kommunikationssysteme
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  priority: high
+industry_faq:
+- question: Wie schützen Sie die Vertraulichkeit unserer Mandantengespräche?
+  answer_template: Unser System ist DSGVO-konform entwickelt und hostet alle Daten
+    in der EU. Gespräche werden verschlüsselt übertragen und Sie haben volle Kontrolle
+    über die Datenspeicherung.
+- question: Kann der Agent komplexe rechtliche Fragen beantworten?
+  answer_template: Nein, der Agent dient der Erstinformation und Terminvereinbarung.
+    Für komplexe rechtliche Auskünfte verbindet er Sie direkt mit einem Anwalt Ihrer
+    Kanzlei.
+- question: Was kostet die Implementierung einer solchen Lösung?
+  answer_template: Die Kosten richten sich nach dem Umfang. Unser Einstiegspaket beginnt
+    bei ca. 299€ mtl. und beinhaltet die wichtigsten Funktionen für kleine Kanzleien.
+- question: Wie lange dauert die Einrichtung?
+  answer_template: Die Standard-Einrichtung dauert 2-3 Wochen. Wir passen die Dialoge
+    und Integrationen speziell auf Ihre Kanzlei an.
+- question: Funktioniert das auch außerhalb der Bürozeiten?
+  answer_template: Ja, absolut. Der AI Voice Agent ist 24 Stunden am Tag, 7 Tage die
+    Woche für Ihre potentiellen Mandanten erreichbar.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Interessent nach den Kosten fragt.
+  script: Unsere Lösung beginnt bei 299€ pro Monat. Damit automatisieren Sie bereits
+    die wichtigsten Prozesse wie Terminbuchung und Erstkontakt. Bei durchschnittlich
+    5 neuen Mandaten pro Monat hat sich das investierte Geld bereits in wenigen Wochen
+    amortisiert. Darf ich Ihnen eine detaillierte Kosten-Nutzen-Rechnung für Ihre
+    Kanzlei erstellen?
+  goal: Den Preis mit klarem ROI rechtfertigen und zum nächsten Schritt einladen.
+- trigger: objection_security
+  situation: Wenn Bedenken zum Datenschutz geäußert werden.
+  script: Das ist ein sehr wichtiger Punkt. Unsere Lösung ist speziell für den EU-Raum
+    und die strengen DSGVO-Anforderungen konzipiert. Alle Server stehen in Österreich/Deutschland,
+    und wir bieten vollständige Verträge zur Auftragsverarbeitung (AVV) an. Viele
+    österreichische Kanzleien vertrauen bereits auf unsere Technologie.
+  goal: Bedenken ausräumen und mit Referenzen Vertrauen aufbauen.
+- trigger: lead_qualification
+  situation: Beim ersten Kontakt mit einer unbekannten Kanzlei.
+  script: Guten Tag, mein Name ist [Name] von [Firma]. Wir unterstützen österreichische
+    Anwaltskanzleien dabei, durch Automatisierung von Telefonanfragen und Terminplanung
+    bis zu 20 Stunden Verwaltungszeit pro Woche zu sparen. Darf ich fragen, wie viele
+    neue Anrufe von potentiellen Mandanten Sie durchschnittlich pro Woche erhalten?
+  goal: Interesse wecken und eine quantitative Grundlage für das Gespräch ermitteln.
+competitors:
+- name: advocado
+  positioning: Online-Rechtsplattform für Mandantenvermittlung
+  strengths:
+  - Große Reichweite bei Endkunden
+  - Benutzerfreundliche Plattform
+  weaknesses:
+  - Fokussiert auf Vermittlung
+  - weniger auf Kanzleiautomatisierung
+  - Hohe Provisionen
+  our_differentiation: Wir bieten ein White-Label-Automatisierungstool für die Kanzlei
+    selbst, keine reine Vermittlung. Sie behalten die volle Kontrolle und Kundenbeziehung.
+- name: Flightright
+  positioning: Spezialisierter Anbieter für Fluggastrechte
+  strengths:
+  - Starke Marke in einer Nische
+  - Vollautomatisierte Fallbearbeitung
+  weaknesses:
+  - Sehr enges
+  - spezifisches Rechtsgebiet
+  - Keine allgemeine Kanzleilösung
+  our_differentiation: Unsere Lösung ist branchenübergreifend für alle Rechtsgebiete
+    einer allgemeinen Kanzlei einsetzbar und automatisierbar.
+- name: Anwaltssoftware-Hersteller (z.B. RA Micro)
+  positioning: Anbieter von klassischer Rechtssoftware
+  strengths:
+  - Tiefe Integration in Kanzleialltag
+  - Umfassende Funktionalität
+  weaknesses:
+  - Oft fehlende moderne AI/Sprachschnittstellen
+  - Höhere Komplexität und Kosten
+  our_differentiation: Wir ergänzen bestehende Software mit spezialisierter KI-Kommunikation,
+    die einfach zu integrieren ist und den Fokus auf Mandantenkontakt hat.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: Kleine Kanzlei (1-2 Anwälte) automatisiert Terminvereinbarung und FAQs.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Mittelgroße Kanzlei (5-10 Anwälte) mit umfassender Leadqualifizierung
+      und Erinnerungen.
+    monthly_cost: 799
+    monthly_savings: 3500
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie sich eine halbe Sekretariatskraft ein.
+  - Gewinnen Sie 5 neue Mandate pro Monat ohne zusätzlichen Aufwand.
+  - Nie wieder einen Anruf verpassen – auch nicht am Wochenende.
+market_context:
+  market_size: Über 5.000 Anwaltskanzleien in Österreich
+  growth_rate: Stabil, mit zunehmendem Digitalisierungsdruck
+  key_trends:
+  - Zunehmende Digitalisierung der Justiz ('Justice Digital') erfordert digitale Kanzleien.
+  - Steigender Preisdruck durch Online-Rechtsdienstleister.
+  - Hohe Nachfrage nach Effizienzsteigerung in Klein- und Mittelkanzleien.
+  - Wachsende Bedeutung von DSGVO-konformen Kommunikationslösungen.
+  seasonality:
+    high:
+    - Januar (nach Feiertagen)
+    - September (nach Sommerpause)
+    low:
+    - Juli
+    - August (Haupturlaubszeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das funktioniert bei uns nicht, unsere Mandanten wollen immer mit einem
+    Menschen sprechen.
+  response: Das verstehe ich vollkommen. Unser Agent fungiert als intelligenter Empfang,
+    der den Mandanten schnell zum richtigen Ansprechpartner führt. Die persönliche
+    Beratung durch den Anwalt bleibt der Kern – wir optimieren nur den Weg dorthin
+    und entlasten Sie von Routinefragen.
+- objection: Wir haben kein Budget für solche Innovationen.
+  response: Gerade dann ist Automatisierung der Schlüssel. Die Investition amortisiert
+    sich oft innerhalb weniger Wochen durch eingesparte Personalkosten und zusätzliche
+    Mandate. Können wir gemeinsam eine kurze Analyse Ihrer aktuellen Anruf- und Anfragensituation
+    machen?
+- objection: Die Einrichtung und Einarbeitung ist uns zu aufwändig.
+  response: Wir übernehmen den Großteil der Einrichtung. Unsere Dialoge sind vorkonfiguriert
+    für österreichische Kanzleien, und wir schulen Ihr Team in einem kurzen Workshop.
+    Der laufende Aufwand ist minimal.
+meta:
+  id: legal
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

@@ -1,0 +1,285 @@
+aliases:
+- horeca
+- restaurant
+- cafe
+- hotel
+- bar
+- pub
+- catering
+- food delivery
+- dining
+- fast food
+- pizzeria
+- sushi
+- table reservation
+- banquet
+competitors:
+- name: OpenTable
+  positioning: Market leader in online restaurant reservations.
+  strengths:
+  - Extensive restaurant network
+  - Strong brand recognition
+  - Integration with many point-of-sale systems
+  weaknesses:
+  - High commission fees for restaurants
+  - Primarily focuses on reservations, not full customer service
+  - Less personalized for individual venues
+  our_differentiation: We provide a dedicated, brand-specific AI agent that handles
+    reservations, FAQs, and calls without per-booking commissions, offering a complete
+    customer service solution.
+- name: TouchBistro
+  positioning: Comprehensive POS and reservation system for restaurants.
+  strengths:
+  - All-in-one POS, reservations, and management
+  - Strong feature set for front and back of house
+  - Popular among independent restaurants
+  weaknesses:
+  - Can be complex and costly for smaller establishments
+  - Its reservation module is just one part of a larger system
+  our_differentiation: Our solution is a focused, affordable AI voice agent that seamlessly
+    integrates with systems like TouchBistro, enhancing customer interaction without
+    replacing the core POS.
+- name: Resy
+  positioning: Premium reservation platform for high-demand restaurants.
+  strengths:
+  - Curated selection of top-tier restaurants
+  - Strong user experience
+  weaknesses:
+  - Limited to major metropolitan markets
+  - Not designed for high-volume call handling or basic Q&A
+  our_differentiation: We automate the entire phone experience, reducing staff workload
+    on routine calls, which is a pain point even for premium restaurants using Resy.
+- name: SkipTheDishes / DoorDash Drive
+  positioning: Major third-party food delivery and ordering platforms.
+  strengths:
+  - Massive customer reach
+  - Streamlined delivery logistics
+  weaknesses:
+  - High commission fees (20-30%)
+  - Customer data belongs to the platform, not the restaurant
+  - Can erode brand loyalty
+  our_differentiation: Our AI agent can take delivery orders directly via phone, encouraging
+    customers to order from the restaurant's own channels, improving margins and customer
+    relationships.
+industry_faq:
+- answer_template: For which date and time are you looking? How many guests will there
+    be?
+  question: Do you have any tables available?
+- answer_template: Yes, we are open 7 days a week. On weekends we are open until 1
+    AM.
+  question: Are you open on weekends?
+- answer_template: Yes, we offer a kids' menu and high chairs for little ones.
+  question: Do you have a kids' menu?
+- answer_template: Yes, we organize banquets for groups from 10 to 100 people. What
+    date are you planning for?
+  question: Can I book a banquet or private event?
+- answer_template: Yes, we have complimentary parking for 20 vehicles right by the
+    entrance.
+  question: Do you have parking?
+- answer_template: We source many ingredients locally. Our menu notes specific local
+    suppliers. Can I email you our full menu?
+  question: Do you use local ingredients?
+- answer_template: Yes, we offer several vegetarian, vegan, and gluten-free options.
+    I can highlight these for you.
+  question: Do you have dietary-friendly options?
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: Over $100 billion CAD
+  growth_rate: ~4% YoY (post-pandemic recovery)
+  key_trends:
+  - Rapid growth of third-party delivery (Skip, DoorDash, Uber Eats)
+  - Increased demand for online ordering and contactless service
+  - Focus on local sourcing and sustainability
+  - Labor shortages driving automation investment
+  seasonality:
+    high:
+    - Summer patio season
+    - December holiday parties
+    - Valentine's Day
+    - Mother's Day
+    low:
+    - January
+    - Early November
+meta:
+  avg_validation_score: 0.0
+  country: ca
+  created_at: '2026-02-04'
+  currency: CAD
+  id: horeca
+  language: en
+  languages: []
+  last_updated: '2026-02-04'
+  phone_codes:
+  - '+1'
+  region: na
+  tests_run: 0
+  timezone: null
+  version: '1.0'
+pain_points:
+- description: High volume of calls for reservations during peak dinner hours, overwhelming
+    staff.
+  severity: high
+  solution_hint: 24/7 automated table reservation handling.
+- description: No-shows for reservations (up to 20%), leading to lost revenue.
+  severity: high
+  solution_hint: Automated SMS/email confirmation and reminder system.
+- description: Front-of-house staff distracted by constant phone calls instead of
+    serving in-house guests.
+  severity: medium
+  solution_hint: AI agent handles all incoming reservation and FAQ calls.
+- description: Difficulty promoting daily specials, happy hours, and events to past
+    customers.
+  severity: medium
+  solution_hint: Outbound call campaigns to loyal customer lists.
+- description: Missing delivery and takeout orders during rush hours when phones are
+    busy.
+  severity: medium
+  solution_hint: Automated order-taking for delivery and pickup.
+- description: High labor costs and difficulty finding reliable staff for front desk/phone
+    duties.
+  severity: high
+  solution_hint: AI agent provides consistent, low-cost customer service.
+- description: Managing customer data and preferences while complying with PIPEDA
+    privacy laws.
+  severity: medium
+  solution_hint: Secure, PIPEDA-compliant data handling for reservations and preferences.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 150
+  roi_examples:
+  - scenario: Automating 60% of reservation calls for a busy restaurant
+    monthly_cost: 250
+    monthly_savings: 1200
+    payback_months: 0.5
+  value_anchors:
+  - 'Cost of one part-time hostess shift: ~$200/week'
+  - 'Average loss per no-show: $50-$100'
+  - 'Commission saved per direct order vs. third-party app: 20-30%'
+recommended_functions:
+- name: reservation_booking
+  priority: high
+  reason: Core function for table booking with date, time, and party size selection.
+- name: confirmation_reminder
+  priority: high
+  reason: Reduces no-shows through automated confirmations and reminders.
+- name: order_taking
+  priority: high
+  reason: Takes delivery and pickup orders directly, avoiding third-party fees.
+- name: faq_handler
+  priority: medium
+  reason: Answers common questions about hours, menu, parking, dietary options.
+- name: outbound_marketing
+  priority: low
+  reason: Promotes events and specials to opted-in customer lists.
+- name: waitlist_management
+  priority: medium
+  reason: Manages waitlists during busy periods and notifies guests.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about cost early in the conversation.
+  script: Our service starts at $150 CAD per month, which is typically less than the
+    cost of one part-time hostess shift per week. We focus on delivering a clear ROI
+    by reducing no-shows and capturing more direct orders. Can I share a quick example
+    based on your current call volume?
+  goal: Reframe cost as an investment with quick payback, and move to a needs analysis.
+- trigger: competitor_mentioned
+  situation: When the prospect mentions using a platform like OpenTable.
+  script: That's a great platform for online bookings. Our AI agent complements that
+    by handling all the phone calls they don't cover—like confirmations, menu questions,
+    and taking direct delivery orders. This helps you reduce commissions and build
+    a direct relationship with your customers. Would you be interested in seeing how
+    they work together?
+  goal: Position as a complementary tool that enhances their existing stack and improves
+    profitability.
+- trigger: skepticism_automation
+  situation: When the prospect worries automation will feel impersonal.
+  script: I understand that concern. Our AI is trained specifically for hospitality—it's
+    warm, professional, and handles routine tasks so your staff can provide that personal
+    touch to guests in the dining room. It actually enhances the customer experience
+    by reducing hold times. We can customize its tone to match your brand perfectly.
+  goal: Overcome fear of losing personal touch by positioning AI as handling routine
+    work to free up staff.
+- trigger: busy_season
+  situation: When talking to a prospect during their high season (e.g., December,
+    summer).
+  script: This is exactly when an AI agent delivers the most value. It manages the
+    surge in reservation calls and no-shows, ensuring you don't miss a single booking
+    during your busiest and most profitable time of year. We can have it live in a
+    matter of days to help you through this peak.
+  goal: Create urgency by tying the solution directly to their current high-stress,
+    high-revenue period.
+success_benchmarks:
+  avg_call_duration_seconds: 90
+  target_automation_rate: 0.65
+  typical_kpis:
+  - Reduce no-shows to below 10%
+  - Automate 60% of reservation calls
+  - Average reservation time under 1 minute
+  - Increase direct orders (non-third-party) by 15%
+typical_integrations:
+- examples:
+  - OpenTable
+  - TouchBistro Reservations
+  - Resy
+  name: Reservation Management System
+  priority: high
+  reason: Sync table availability, bookings, and guest notes.
+- examples:
+  - SkipTheDishes
+  - DoorDash Drive
+  - Uber Eats
+  - Own website/ordering
+  name: Delivery & Ordering Platform
+  priority: medium
+  reason: Integrate phone orders into delivery workflow or POS.
+- examples:
+  - TouchBistro
+  - Lightspeed Restaurant
+  - Square for Restaurants
+  name: Point of Sale (POS) System
+  priority: high
+  reason: Core integration for menu, pricing, and order sync.
+- examples:
+  - Mailchimp
+  - Klaviyo
+  name: Email Marketing
+  priority: low
+  reason: Add new reservation contacts to marketing lists (with consent).
+- examples:
+  - SMS APIs (Twilio, Telnyx)
+  name: SMS/Text Messaging
+  priority: medium
+  reason: Send reservation confirmations and reminders.
+typical_objections:
+- objection: We don't have enough call volume to justify it.
+  response: Even a few missed calls per day can mean lost revenue. Our system also
+    proactively reduces no-shows and can promote your specials, adding value beyond
+    just answering calls.
+- objection: I'm worried it will sound robotic and hurt our brand.
+  response: We specialize in natural, brand-aligned voices. We can customize the script
+    and tone to be as warm and professional as your best host. It handles the routine
+    questions so your team can focus on genuine hospitality.
+- objection: We already use OpenTable for online bookings.
+  response: Perfect. Our AI agent handles the phone calls that OpenTable doesn't—confirmations,
+    changes, and general inquiries. It integrates with OpenTable to keep everything
+    in sync, giving you a complete solution.
+- objection: It's too expensive for a small business.
+  response: At $150/month, it's often less than 10% of a part-time host's wages. If
+    it saves just 3 no-shows a month or captures 5 direct delivery orders, it's already
+    paid for itself. Let's calculate a quick ROI based on your numbers.
+typical_services:
+- Table reservations and booking
+- Food takeout and pickup orders
+- Food delivery orders
+- Private dining and banquet booking
+- Catering services for events
+- Hotel room reservations
+- In-room dining (Room Service)
+- Event and function planning
+- Daily specials and happy hour promotions
+- Waitlist management
+_extends: _base/horeca

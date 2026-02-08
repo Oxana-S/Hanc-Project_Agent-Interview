@@ -1,0 +1,237 @@
+pain_points:
+- description: Terminmanagement ist zeitaufwändig, No-Shows führen zu Umsatzverlusten.
+  severity: high
+  solution_hint: Automatisierte Terminvereinbarung, Erinnerungen und Wartelistenverwaltung
+    per Sprachagent.
+- description: Hohe Anzahl an Anrufen außerhalb der Öffnungszeiten für Notfälle und
+    allgemeine Fragen.
+  severity: high
+  solution_hint: 24/7-Anrufbeantwortung mit Notfalltriage und Weiterleitung bei kritischen
+    Fällen.
+- description: Administrative Belastung durch Rechnungsstellung, Mahnwesen und Versicherungsabrechnung.
+  severity: medium
+  solution_hint: Automatisierte Zahlungserinnerungen, Terminbestätigungen mit Kostenübersicht
+    und Abrechnungsfragen-Beantwortung.
+- description: Schwierigkeiten bei der Betreuung chronischer Patienten (z.B. Diabetes,
+    Nierenerkrankungen) zwischen den Terminen.
+  severity: medium
+  solution_hint: Automatisierte Erinnerungen für Medikamentengabe, Follow-up-Anrufe
+    und Symptom-Checks per Sprachagent.
+- description: Wettbewerbsdruck durch neue Tierkliniken und Online-Apotheken.
+  severity: medium
+  solution_hint: Verbesserter Kundenservice und Bindung durch persönliche, automatisierte
+    Kommunikation und Recall-Systeme.
+- description: Hohe Kosten für qualifiziertes Personal im Front-Office-Bereich.
+  severity: low
+  solution_hint: Entlastung des Personals durch Automatisierung von Routineanrufen,
+    Freisetzung für komplexe Aufgaben.
+typical_services:
+- Impfungen und Gesundheitsvorsorge
+- Kastrationen und Sterilisationen
+- Zahnbehandlungen und Zahnreinigung
+- Chirurgische Eingriffe
+- Diagnostik (Röntgen, Ultraschall, Labor)
+- Notfallbehandlung
+- Physiotherapie und Rehabilitation
+- Ernährungsberatung
+- Alternative Therapien (Akupunktur, Osteopathie)
+- Reiseberatung und -impfungen
+recommended_functions:
+- name: Automatisierte Terminvereinbarung & -änderung
+  priority: high
+  reason: Reduziert No-Shows, entlastet die Telefonzentrale und optimiert die Auslastung.
+- name: Notfall-Triage und -Weiterleitung
+  priority: high
+  reason: Sichert 24/7-Erreichbarkeit, filtert echte Notfälle und leitet korrekt weiter,
+    entlastet das Personal.
+- name: Recall- und Impferinnerungssystem
+  priority: high
+  reason: Steigert die Compliance bei Vorsorge, verbessert die Tiergesundheit und
+    generiert planbare Umsätze.
+- name: Rechnungs- und Zahlungsinformationen
+  priority: medium
+  reason: Beantwortet häufige Fragen zu Kosten und Zahlungsmodalitäten, reduziert
+    administrative Nachfragen.
+- name: Medikamenten- und Therapieerinnerungen
+  priority: medium
+  reason: Unterstützt die Behandlung chronischer Patienten, verbessert den Behandlungserfolg.
+- name: Kundengewinnung via Lead-Qualifikation
+  priority: low
+  reason: Kann neue Tierbesitzer anrufen, Willkommensgespräche führen und Ersttermine
+    vereinbaren.
+typical_integrations:
+- name: Tierarzt-Praxismanagementsoftware (PMS)
+  examples:
+  - Animana
+  - VetScope
+  - easyVET
+  - ProVet
+  priority: high
+- name: Online-Terminbuchungssysteme
+  examples:
+  - Doctena
+  - Appointello
+  - clinicaroo
+  priority: high
+- name: Schweizer Zahlungssysteme
+  examples:
+  - TWINT
+  - PostFinance
+  - Stripe (CH)
+  - Datatrans
+  priority: medium
+- name: E-Mail-Marketing-Tools
+  examples:
+  - Mailchimp
+  - Newsletter2Go
+  - Klick-Tipp
+  priority: low
+industry_faq:
+- question: Wie viel kostet eine Grunduntersuchung für meine Katze?
+  answer_template: Die Kosten für eine Grunduntersuchung liegen typischerweise zwischen
+    CHF 80 und CHF 120, abhängig vom Aufwand. Der Tierarzt kann nach der Untersuchung
+    einen detaillierten Kostenvoranschlag erstellen.
+- question: Bieten Sie Notfalldienste an? Was soll ich im Notfall tun?
+  answer_template: Ja, wir haben einen Notfalldienst. In einem akuten Notfall rufen
+    Sie bitte sofort unsere Praxis an. Unser Sprachassistent verbindet Sie umgehend
+    mit dem diensthabenden Tierarzt oder gibt Ihnen Anweisungen für die ersten Schritte.
+- question: Kann ich online einen Termin vereinbaren?
+  answer_template: Ja, Sie können Termine über unsere Website buchen. Gerne vereinbare
+    ich für Sie auch direkt telefonisch einen Termin. Wann hätte es Ihnen Zeit?
+- question: Übernehmen die Krankenkassen die Kosten?
+  answer_template: Die Grundversicherung für Menschen übernimmt in der Regel keine
+    Tierarztkosten. Es existieren spezielle Tierkrankenversicherungen. Wir helfen
+    Ihnen gerne bei der Abrechnung mit Ihrer Tierkrankenversicherung.
+- question: Wie oft muss mein Hund geimpft werden?
+  answer_template: Das Impfschema hängt von Alter, Gesundheitszustand und Lebensumständen
+    Ihres Hundes ab. Bei der jährlichen Gesundheitsvorsorge bespricht unser Tierarzt
+    den optimalen Impfplan für Ihr Tier.
+- question: Bieten Sie Hausbesuche an?
+  answer_template: Hausbesuche sind in begrenztem Umfang und nach Vereinbarung möglich.
+    Bitte nennen Sie mir Ihren Wohnort, damit ich die Verfügbarkeit prüfen oder einen
+    Termin in der Praxis vorschlagen kann.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Tierarzt nach den Kosten für einen Sprachagenten fragt.
+  script: Verstehe, dass Kostentransparenität wichtig ist. Unsere Lösung beginnt bei
+    CHF 199 pro Monat und spart Ihnen typischerweise über CHF 1'500 pro Monat an Personalkosten
+    und ausgefallenen Terminen. Darf ich Ihnen eine individuelle ROI-Berechnung für
+    Ihre Praxis erstellen?
+  goal: Vom Preis ablenken, auf Wert und Kosteneinsparung lenken, zu einer detaillierten
+    Analyse überleiten.
+- trigger: interest_automation
+  situation: Wenn Interesse an Automatisierung von Telefonaten geäußert wird.
+  script: Das ist ein häufiges Anliegen. Unser Agent beantwortet bis zu 70% aller
+    Anrufe vollautomatisch, inklusive Terminvereinbarung und Notfalltriage. So gewinnt
+    Ihr Team Zeit für die tierärztliche Kernarbeit. Möchten Sie eine Demo der Anrufbehandlung
+    hören?
+  goal: Quantifizierten Nutzen darstellen, konkretes Angebot (Demo) machen.
+- trigger: competitor_mention
+  situation: Wenn ein lokaler Anbieter oder Callcenter erwähnt wird.
+  script: 'Interessant. Viele unserer Kunden sind von manuellen Callcentern oder einfachen
+    ABs zu uns gewechselt. Der Unterschied ist die intelligente, tierärztespezifische
+    Konversation und die nahtlose Integration in Ihre Praxissoftware. Das spart doppelt
+    Zeit: am Telefon und bei der Dateneingabe.'
+  goal: Differenzierung durch Intelligenz und Integration hervorheben.
+competitors:
+- name: Traditionelle Tierarzt-Telefonzentralen (manuell)
+  positioning: Lokale Callcenter oder Praxishilfen für die Telefonie.
+  strengths:
+  - Persönlicher Kontakt
+  - Bekanntes Modell
+  - Flexibel bei komplexen Anfragen
+  weaknesses:
+  - Hohe Kosten (Lohnkosten CH)
+  - Begrenzte Erreichbarkeit (kein 24/7)
+  - Inkonsistente Qualität
+  - Keine PMS-Integration
+  our_differentiation: Kostenersparnis von >60%, 24/7-Erreichbarkeit, konsistente
+    Qualität, vollständige Integration in PMS, skalierbar.
+- name: einfache automatische Anrufbeantworter (AB)
+  positioning: Standard-AB oder Voicemail-Systeme.
+  strengths:
+  - Geringe Kosten
+  - Einfache Einrichtung
+  weaknesses:
+  - Frustriert Kunden
+  - Keine Interaktion
+  - Verpasste Notfälle & Termine
+  - Keine Intelligenz
+  our_differentiation: Konversationeller AI-Agent, der tatsächlich hilft, Termine
+    vereinbart und Notfälle erkennt – kein passives Aufzeichnen von Nachrichten.
+- name: Internationale SaaS-Anbieter für Terminbuchung
+  positioning: Generische Online-Buchungstools (z.B. Calendly-Adaptionen).
+  strengths:
+  - Einfache Online-Buchung
+  - Oft günstig
+  weaknesses:
+  - Keine telefonische Komponente
+  - Nicht auf tierärztliche Notfälle ausgelegt
+  - Oberflächliche Integration
+  - Sprachbarriere (nicht DE/FR/IT optimiert)
+  our_differentiation: Schweiz-spezifische, mehrsprachige Voice-First-Lösung, die
+    telefonische und digitale Kanäle vereint und für medizinische Kontexte trainiert
+    ist.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 200
+  - 800
+  entry_point: 199
+  roi_examples:
+  - scenario: Kleine Praxis (1-2 Tierärzte), reduziert Front-Office-Zeit um 15h/Woche
+    monthly_cost: 249
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Mittlere Klinik, reduziert No-Shows um 20 Termine/Monat
+    monthly_cost: 449
+    monthly_savings: 2400
+    payback_months: 1
+  value_anchors:
+  - Spart einer Tierarzthelferin bis zu 20 Arbeitsstunden pro Monat.
+  - Reduziert verpasste Termine (No-Shows) um bis zu 30%.
+  - Bietet professionelle 24/7-Erreichbarkeit für Ihre Patientenbesitzer.
+market_context:
+  market_size: Ca. 1'500 Tierarztpraxen und -kliniken in der Schweiz.
+  growth_rate: 2-3% p.a., getrieben durch Humanisierung der Haustiere und steigende
+    Ausgaben für Tiergesundheit.
+  key_trends:
+  - Digitalisierung der Praxisabläufe (PMS, Online-Termine).
+  - Steigende Nachfrage nach Tierkrankenversicherungen.
+  - Zunahme von spezialisierten Behandlungen (Physio, Zahnmedizin).
+  - Größerer Fokus auf präventive Medizin und Ernährungsberatung.
+  seasonality:
+    high:
+    - Frühjahr (Impfungen nach Winter)
+    - Sommer (Reiseberatung, Zecken)
+    - Herbst (jährliche Check-ups)
+    low:
+    - Spätherbst/Winter (außer Notfälle)
+typical_objections:
+- objection: Meine älteren Kunden mögen keine Automaten am Telefon.
+  response: Das verstehe ich. Unser Agent klingt natürlich und empathisch. Viele ältere
+    Kunden schätzen die sofortige, geduldige Antwort – ohne Warteschleife. Wir können
+    das Gespräch auch jederzeit zum Menschen weiterleiten.
+- objection: Das ist mir zu teuer für meine kleine Praxis.
+  response: Gerade für kleine Praxen ist die Effizienz entscheidend. Für unter CHF
+    200/Monat ersetzen Sie effektiv einen Teil einer Halbtagsstelle. Lassen Sie uns
+    konkret durchrechnen, wie viel Zeit Sie aktuell für Telefonate und Administration
+    aufwenden.
+- objection: Ich habe schon ein Online-Buchungssystem, das reicht.
+  response: Das ist gut. Unser Agent ergänzt dies perfekt, denn über 60% der Kontakte
+    kommen telefonisch – besonders bei Notfällen oder komplexen Fragen. Er vereint
+    beide Kanäle und entlastet Sie auch außerhalb der Buchungszeiten.
+meta:
+  id: veterinary
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

@@ -1,0 +1,259 @@
+aliases:
+- logística
+- entrega
+- transportes
+- serviço de estafeta
+- empresa de transportes
+- armazém
+- expedição
+- remessas
+- carga
+- envio
+- encomenda
+- guia de transporte
+- fatura
+competitors:
+- name: CTT
+  positioning: Operador postal nacional dominante
+  strengths:
+  - Rede extensa de pontos de contacto
+  - Forte presença nacional em correio e encomendas
+  - Reconhecimento de marca
+  weaknesses:
+  - Perceção de menor flexibilidade para logística empresarial B2B
+  - Processos por vezes considerados burocráticos
+  our_differentiation: Soluções tecnológicas ágeis e integração direta com sistemas
+    do cliente para logística empresarial
+- name: DHL Portugal
+  positioning: Líder global em logística expresso e internacional
+  strengths:
+  - Rede internacional forte
+  - Serviços premium e rastreamento avançado
+  - Expertise em cadeia de abastecimento
+  weaknesses:
+  - Preços geralmente mais elevados
+  - Foco pode estar em grandes contas
+  our_differentiation: Soluções de automação de atendimento acessíveis para PMEs,
+    com suporte personalizado em português
+- name: SEUR (FedEx)
+  positioning: Principal operador terrestre e expresso em Portugal e Espanha
+  strengths:
+  - Cobertura forte na Península Ibérica
+  - Soluções para e-commerce
+  - Integração com principais marketplaces
+  weaknesses:
+  - Pode haver desafios em picos de sazonalidade
+  our_differentiation: Agente de voz 24/7 em português para reduzir a carga no atendimento
+    ao cliente, especialmente em alturas de pico
+- name: Transportes J. Silva
+  positioning: Grande operador nacional de transporte de mercadorias
+  strengths:
+  - Frota própria extensa
+  - Experiência no mercado nacional
+  - Serviços de grupo completo
+  weaknesses:
+  - Menor foco em tecnologia de atendimento ao cliente
+  our_differentiation: Automação do primeiro contacto e gestão de consultas de estado,
+    libertando operadores para tarefas complexas
+industry_faq:
+- answer_template: Pode fornecer o número da guia de transporte ou de rastreio? Vou
+    verificar o estado da sua entrega.
+  question: Onde está a minha encomenda?
+- answer_template: O preço depende do peso, dimensões e destino. Posso fazer uma simulação
+    se me disser os detalhes.
+  question: Quanto custa o envio?
+- answer_template: Consigo dar-lhe uma estimativa se me indicar o número da encomenda.
+  question: A que horas chega o estafeta?
+- answer_template: Sim, é possível alterar até o estafeta sair para a entrega. Qual
+    é a nova morada?
+  question: Posso alterar a morada de entrega?
+- answer_template: Trabalhamos de segunda a sexta, das 9h às 18h. Entregas ao fim-de-semana
+    têm custo adicional.
+  question: Fazem entregas ao fim-de-semana?
+- answer_template: Para devoluções, contacte primeiro o remetente. Podemos organizar
+    a recolha mediante agendamento.
+  question: Como posso devolver uma encomenda?
+- answer_template: O prazo típico para a Área Metropolitana de Lisboa é de 24h úteis.
+    Para outras zonas, consulte a nossa tabela.
+  question: Qual é o prazo de entrega para Lisboa?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: ~4% YoY
+  key_trends:
+  - Crescimento acelerado do e-commerce exigindo soluções de "última milha"
+  - Maior foco na sustentabilidade e logística verde
+  - Digitalização e procura por visibilidade em tempo real das remessas
+  - Aumento dos custos com combustível e portagens
+  market_size: ~12 mil milhões de EUR
+  seasonality:
+    high:
+    - Novembro a Dezembro (Black Friday, Natal)
+    - Período de saldos (Janeiro, Julho)
+    low:
+    - Agosto (férias)
+    - Fevereiro
+meta:
+  avg_validation_score: 0.0
+  country: pt
+  created_at: '2024-05-20'
+  currency: EUR
+  id: logistics
+  language: pt
+  languages:
+  - pt
+  last_updated: '2024-05-20'
+  phone_codes:
+  - '+351'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Lisbon
+  version: '1.0'
+pain_points:
+- description: Elevado volume de chamadas a perguntar "onde está a minha encomenda?"
+  severity: high
+  solution_hint: Agente de voz para consulta automática de estado pela guia de transporte
+- description: Dificuldade em contactar o apoio ao cliente em horas de pico (manhãs)
+  severity: high
+  solution_hint: Atendimento automático 24/7 que responde a perguntas frequentes e
+    recolhe pedidos
+- description: Operadores gastam demasiado tempo em tarefas repetitivas como confirmações
+    de chegada
+  severity: medium
+  solution_hint: Automação de confirmações de receção e notificações de status
+- description: Atrasos e falhas de comunicação na coordenação de janelas de entrega
+    com clientes
+  severity: medium
+  solution_hint: Sistema de agendamento automático e lembretes por voz/SMS
+- description: Erros na introdução de dados de novas recolhas durante chamadas telefónicas
+  severity: medium
+  solution_hint: Formulário de voz guiado para registo preciso de recolhas
+- description: Custos operacionais elevados com teleatendimento humano para perguntas
+    simples
+  severity: high
+  solution_hint: Redirecionar 80% das chamadas de rotina para o agente de IA
+pricing_context:
+  currency: EUR
+  entry_point: 99
+  roi_examples:
+  - monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1.5
+    scenario: PME com 50 chamadas/dia para status e FAQ, reduzindo necessidade de
+      1 operador
+  typical_budget_range:
+  - 100
+  - 500
+  value_anchors:
+  - Reduza até 40% do volume de chamadas para os seus operadores
+  - Atendimento ao cliente 24/7 sem custos adicionais de pessoal
+  - Melhore a satisfação do cliente com tempos de resposta inferiores a 10 segundos
+recommended_functions:
+- name: verificar_estado
+  priority: high
+  reason: 60-70% das chamadas são consultas sobre o estado das entregas
+- name: agendar_recolha
+  priority: high
+  reason: Automatiza a criação de novas ordens de serviço diretamente pelo telefone
+- name: faq_automatico
+  priority: medium
+  reason: Responde instantaneamente a perguntas sobre prazos, preços e políticas
+- name: reencaminhamento_inteligente
+  priority: medium
+  reason: Encaminha chamadas complexas para o operador correto com contexto prévio
+- name: lembrete_entrega
+  priority: medium
+  reason: Liga automaticamente para confirmar disponibilidade antes da entrega
+- name: alterar_entrega
+  priority: low
+  reason: Permite ao cliente alterar morada ou data através de comandos de voz
+sales_scripts:
+- goal: Converter uma consulta de preço numa oportunidade de demonstração
+  script: 'Cliente: Percebido. Para si, que volume de envios tem por mês? A nossa
+    solução é particularmente eficaz para empresas com mais de 30 chamadas diárias.
+    Posso agendar uma demonstração rápida de 15 minutos para mostrar como reduziria
+    as chamadas repetitivas na sua equipa?'
+  situation: Cliente pergunta sobre preços após ouvir uma explicação breve
+  trigger: price_question
+- goal: Destacar o ROI e aliviar a preocupação com o tempo de espera
+  script: 'Cliente: Entendo perfeitamente. A vantagem do nosso agente é que ele atende
+    imediatamente, 24 horas por dia, precisamente para eliminar essa espera. Muitos
+    clientes recuperam o investimento em poucos meses com a poupança em tempo de operador.
+    Posso partilhar um caso de estudo semelhante ao seu?'
+  situation: Cliente objeta dizendo "Já tenho operadores, não quero que os clientes
+    esperem"
+  trigger: objection_human_wait
+- goal: Agendar uma demonstração específica para o setor
+  script: 'Cliente: Exato! Trabalhamos com várias empresas de logística em Portugal.
+    A nossa solução integra-se com sistemas como o SAP ou CRM para ter acesso a estados
+    de entrega em tempo real. Gostaria de marcar uma breve chamada na próxima semana
+    para focarmos nas suas necessidades específicas?'
+  situation: Cliente mostra interesse e pergunta se já trabalhamos com o seu setor
+  trigger: industry_interest
+success_benchmarks:
+  avg_call_duration_seconds: 165
+  target_automation_rate: 0.75
+  typical_kpis:
+  - Redução de 40% na carga de trabalho dos operadores
+  - Automação de 75% das consultas de estado
+  - Tempo médio de resposta < 10 segundos
+  - Satisfação do cliente (CSAT) > 4.2/5
+typical_integrations:
+- examples:
+  - SAP TM
+  - Oracle TMS
+  - Localgest (solução nacional)
+  name: TMS (Transport Management System)
+  priority: high
+  reason: Integração crítica para obter estados de entrega em tempo real e dados de
+    remessas
+- examples:
+  - Salesforce
+  - HubSpot CRM
+  - Primavera ERP (comum em PT)
+  name: CRM/ERP
+  priority: medium
+  reason: Para aceder ao histórico do cliente e dados de encomendas
+- examples:
+  - Talkdesk
+  - Nectar
+  - VoIPgrid
+  name: Plataforma de Teleatendimento
+  priority: high
+  reason: Para gestão de chamadas, encaminhamento e relatórios
+- examples:
+  - WhatsApp Business API
+  - Telegram Bot
+  name: Mensageria
+  priority: medium
+  reason: Para enviar notificações e permitir interação por chat
+- examples:
+  - CM SMS
+  - D7 SMS
+  name: Gateway SMS
+  priority: medium
+  reason: Para notificações de entrega e lembretes
+typical_objections:
+- objection: Prefiro falar com uma pessoa
+  response: Claro, compreendo. Posso transferi-lo de imediato para um dos nossos colegas.
+    Enquanto isso, posso já ir buscar algumas informações para agilizar o atendimento?
+- objection: Os sistemas automáticos nunca funcionam bem
+  response: Percebo o seu cepticismo. O nosso agente é treinado especificamente para
+    logística e integra-se diretamente com o seu sistema de transportes para dar informações
+    precisas. Posso mostrar-lhe um exemplo rápido?
+- objection: É um custo adicional que não estava previsto
+  response: Na verdade, a solução visa ser um poupança. Ao automatizar chamadas repetitivas,
+    reduz o custo por chamada e liberta a sua equipa para tarefas com mais valor.
+    Consigo apresentar uma estimativa de poupança para o seu caso?
+typical_services:
+- Transporte nacional de mercadorias
+- Entrega urgente e expresso
+- Serviço de estafeta (última milha)
+- Armazenagem e logística
+- Desalfandegamento e serviços aduaneiros
+- Rastreio de remessas em tempo real
+- Carga consolidada (groupage)
+- Transporte interurbano
+- Gestão de frota e otimização de rotas
+- Serviços de valor acrescentado (embalamento, etiquetagem)
+_extends: _base/logistics

@@ -1,0 +1,202 @@
+pain_points:
+- description: Hohe Betriebskosten durch teure Mietpreise und Energiekosten in Schweizer Städten
+  severity: high
+  solution_hint: KI kann Kosteneffizienz durch optimierte Raumnutzung und automatisierte Energiesteuerung aufzeigen.
+- description: Komplexe Verwaltung von flexiblen Mitgliederverträgen und täglichen Buchungsänderungen
+  severity: high
+  solution_hint: Voice Agent kann Vertragsdetails abrufen, Buchungen ändern und administrative Fragen sofort beantworten.
+- description: Schwierigkeiten bei der Einhaltung von Schweizer Datenschutzgesetzen (FADP) und GDPR
+  severity: high
+  solution_hint: KI kann über Compliance-Anforderungen informieren und Datenschutz-FAQs beantworten.
+- description: Geringe Auslastung in Randzeiten und an bestimmten Wochentagen
+  severity: medium
+  solution_hint: Agent kann spezielle Angebote für Randzeiten kommunizieren und Verfügbarkeiten promoten.
+- description: Hoher Wettbewerbsdruck mit vielen Coworking-Anbietern in urbanen Zentren
+  severity: medium
+  solution_hint: Voice Agent kann unsere einzigartigen Vorteile und lokalen Community-Events hervorheben.
+- description: Herausforderungen bei der Integration verschiedener Zahlungssysteme (TWINT, Rechnung, Karte)
+  severity: medium
+  solution_hint: KI kann Zahlungsmodalitäten erklären und bei Zahlungsproblemen unterstützen.
+- description: Bedarf an deutschsprachigem, 24/7-Support für internationale Mitglieder
+  severity: low
+  solution_hint: Voice Agent bietet rund um die Uhr Support in Deutsch und Englisch für einfache Anfragen.
+typical_services:
+- Flexibler Büroplatz (Hot Desk)
+- Dedizierter Schreibtisch (Fixed Desk)
+- Private Büros für Teams
+- Meetingraum-Vermietung (stundenweise)
+- Konferenzraum-Ausstattung & Technik
+- Virtuelles Büro (Schweizer Geschäftsadresse, Post-Scan)
+- Gemeinschaftsbereiche & Lounge
+- Kaffeebar & Getränke inklusive
+- Netzwerk-Events & Community-Management
+- IT-Support & Highspeed-Internet (Glasfaser)
+recommended_functions:
+- name: Anfrage- und Buchungsmanagement
+  priority: high
+  reason: Flexible, sofortige Buchungen sind ein Hauptkaufgrund in der Schweizer Coworking-Branche.
+- name: FAQ zu Verträgen & Preisgestaltung
+  priority: high
+  reason: Transparente Kommunikation von Kosten in CHF ist für Schweizer Kunden entscheidend.
+- name: Tour-Terminvereinbarung
+  priority: high
+  reason: Persönliche Besichtigungen führen in der Schweiz zu hohen Abschlussquoten.
+- name: Mitglieder-Support (Zugang, Technik)
+  priority: medium
+  reason: Schnelle Problembehebung erhöht die Zufriedenheit und verringert den Verwaltungsaufwand.
+- name: Zahlungserinnerungen & Rechnungsauskünfte
+  priority: medium
+  reason: Automatisierte Zahlungsabwicklung verbessert den Cashflow.
+- name: Event- und Workshop-Anmeldung
+  priority: low
+  reason: Fördert Community-Engagement und erhöht den Wert des Mitgliedschaft.
+typical_integrations:
+- name: Buchungs- und Raummanagement-Software
+  examples:
+  - OfficeRnD
+  - Kisi
+  - Essensys
+  priority: high
+- name: Zahlungsabwicklung
+  examples:
+  - Twint
+  - Stripe
+  - Local Swiss Banking APIs
+  priority: high
+- name: Zugangskontrollsystem
+  examples:
+  - Salto
+  - Kisi
+  - Brivo
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - Pipedrive
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Datev
+  - Bexio
+  priority: medium
+industry_faq:
+- question: Was kostet ein flexibler Arbeitsplatz pro Monat?
+  answer_template: Unsere flexiblen Hot-Desk-Mitgliedschaften beginnen bei {{price}} CHF pro Monat. Der Preis variiert je nach Standort und inkludierten Leistungen wie Meetingraum-Guthaben.
+- question: Gibt es Mindestvertragslaufzeiten?
+  answer_template: Nein, wir bieten maximale Flexibilität. Die meisten unserer Mitgliedschaften sind monatlich kündbar, ohne lange Vertragsbindung.
+- question: Ist die Nutzung 24/7 möglich?
+  answer_template: Ja, an den meisten Standorten haben Sie mit Ihrer Mitgliedschaft 24/7 Zugang via unserer Smartphone-App oder Zugangskarte.
+- question: Sind Meetingräume in der Mitgliedschaft inbegriffen?
+  answer_template: Unsere Mitgliedschaften beinhalten ein monatliches Guthaben für Meetingräume. Darüber hinausgehende Nutzung kann zum vergünstigten Mitgliedertarif gebucht werden.
+- question: Wie handhaben Sie Datenschutz (FADP/GDPR)?
+  answer_template: Wir halten uns strikt an Schweizer (FADP) und europäische (GDPR) Datenschutzbestimmungen. Alle Daten werden verschlüsselt und nur für betriebsnotwendige Zwecke verarbeitet.
+- question: Bieten Sie Parkplätze an?
+  answer_template: An vielen Standorten stehen begrenzte Parkplätze zur Verfügung, oft gegen Aufpreis. Wir empfehlen die hervorragende Anbindung an den ÖV. Gerne gebe ich Ihnen Details zu Ihrem gewünschten
+    Standort.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Interessent nach dem Preis für einen bestimmten Service fragt.
+  script: 'Vielen Dank für Ihre Anfrage. Um Ihnen das passende Angebot zu unterbreiten, hilft mir eine kurze Information: Für wie viele Personen und mit welchem Fokus (z.B. konzentriertes Arbeiten, viele
+    Meetings) suchen Sie den Raum? Basierend darauf kann ich Ihnen die genauen Kosten in CHF nennen und gleich einen Termin für eine kostenlose Besichtigung vorschlagen.'
+  goal: Qualifikation des Leads und Terminvereinbarung für eine Besichtigung.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen spezifischen Mitbewerber nennt.
+  script: Das ist eine gute Wahl. Uns unterscheidet vor allem unsere starke lokale Community und die Tatsache, dass unsere Preise in CHF transparent alle Nebenkosten wie Highspeed-Internet, Kaffee und Servicegebühren
+    enthalten. Möchten Sie gerne einen Vergleich unserer inkludierten Leistungen sehen?
+  goal: Herausstellen des einzigartigen Wertversprechens und Weiterführung des Gesprächs.
+- trigger: objection_flexibility
+  situation: Wenn ein Kunde Bedenken wegen langfristiger Bindung äussert.
+  script: Ich verstehe Ihr Bedürfnis nach Flexibilität vollkommen. Genau dafür sind wir da. Unsere Standardmitgliedschaften sind monatlich kündbar. Sie skalieren mit Ihrem Geschäft – wir haben schon viele
+    Start-ups begleitet, die bei uns mit einem Schreibtisch angefangen haben und jetzt ein eigenes Büro bei uns führen.
+  goal: Einwand entkräften und Vertrauen in die Skalierbarkeit aufbauen.
+competitors:
+- name: WeWork Schweiz
+  positioning: Globaler Player, grösste Standorte in Zürich und Genf.
+  strengths:
+  - Markenbekanntheit
+  - Umfangreiches globales Netzwerk
+  - Design-orientierte Räume
+  weaknesses:
+  - Höhere Preise
+  - Weniger lokaler Fokus
+  - Finanzielle Instabilität in der Vergangenheit
+  our_differentiation: Wir bieten tiefere, transparente Preise in CHF, stärkere lokale Community-Events und persönlicheren Service mit Schweizer Management.
+- name: Impact Hub (Zürich, Genf, Lausanne)
+  positioning: Community-getriebene Spaces mit Fokus auf Sozialunternehmen.
+  strengths:
+  - Starke, mission-driven Community
+  - Workshops & Events
+  - Nachhaltiges Image
+  weaknesses:
+  - Begrenzte Verfügbarkeit von privaten Büros
+  - Manchmal weniger professionelle Atmosphäre
+  our_differentiation: Wir bieten eine ausgewogenere Mischung aus professioneller Arbeitsumgebung und Community, mit besserer technischer Infrastruktur und flexibleren Verträgen.
+- name: OfficeLAB (verschiedene Standorte)
+  positioning: Schweizer Anbieter mit Fokus auf mittelgrosse Unternehmen und Teams.
+  strengths:
+  - Lokales Know-how
+  - Viele Standorte in der Deutschschweiz
+  - Gute Team-Büro-Lösungen
+  weaknesses:
+  - Weniger Fokus auf Freelancer/Individuals
+  - Design manchmal eher funktional
+  our_differentiation: Unsere Spaces sind moderner und für hybride Arbeitsmodelle optimiert, mit stärkerem Fokus auf Flexibilität für Einzelpersonen und kleine Teams.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 400
+  - 2500
+  entry_point: 400
+  roi_examples:
+  - scenario: Freelancer ersetzt Café-Arbeit & sporadische Meetingraum-Miete
+    monthly_cost: 550
+    monthly_savings: 1400
+    payback_months: 1
+  - scenario: Kleines Team (4 Personen) ersetzt konventionelles Büro-Leasing
+    monthly_cost: 3200
+    monthly_savings: 6400
+    payback_months: 2
+  value_anchors:
+  - 'Keine versteckten Kosten: Internet, Nebenkosten, Kaffee inklusive.'
+  - Monatlich kündbar – kein langfristiges Risiko.
+  - Kosten pro Mitarbeiter um bis zu 30% geringer als ein traditionelles Büro.
+market_context:
+  market_size: Ca. 300-350 Coworking Spaces in der Schweiz.
+  growth_rate: Ca. 8-10% YoY (bereits konsolidiertes, aber wachsendes Marktsegment).
+  key_trends:
+  - Zunehmende Nachfrage nach 'Hub & Spoke'-Modellen (zentraler Hub mit suburbanen Spots).
+  - Steigender Fokus auf Nachhaltigkeit und Well-being in den Spaces.
+  - Integration von Coworking in Wohn- und Hotelprojekte ('Hybrid Living').
+  - Grössere Unternehmen mieten ganze Etagen als flexible Team-Büros.
+  seasonality:
+    high:
+    - September-November (nach Sommerferien)
+    - Januar (Neujahrsvorsätze, neue Projekte)
+    low:
+    - Juli-August (Hauptferienzeit)
+    - Dezember (zwischen Weihnachten und Neujahr)
+typical_objections:
+- objection: Das ist mir zu teuer. Ich kann auch im Home-Office arbeiten.
+  response: Das verstehe ich. Bedenken Sie jedoch den Wert eines professionellen Umfelds für Netzwerken, konzentriertes Arbeiten und die Trennung von Beruf und Privatleben. Viele unserer Mitglieder berichten
+    von einem Produktivitätsboost, der die Kosten schnell rechtfertigt. Möchten Sie es für einen Tag probieren?
+- objection: Ich brauche nicht jeden Tag einen Büroplatz.
+  response: Perfekt! Genau dafür haben wir unsere flexiblen Teilzeit-Mitgliedschaften. Sie buchen z.B. 5 oder 10 Tage pro Monat und zahlen nur, was Sie nutzen. So haben Sie die Vorteile eines Büros, ohne
+    für ungenutzte Tage zu bezahlen.
+- objection: Ich habe schlechte Erfahrungen mit lauten Coworking-Spaces gemacht.
+  response: Da haben Sie völlig recht, die Atmosphäre ist entscheidend. Unser Konzept basiert auf 'quiet zones' für fokussiertes Arbeiten und separaten, lebendigen Kollaborationsbereichen. Lassen Sie es
+    sich bei einer Besichtigung zeigen – ich bin sicher, Sie werden den Unterschied merken.
+meta:
+  id: coworking
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

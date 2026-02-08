@@ -1,0 +1,292 @@
+aliases:
+- automotive
+- car dealership
+- auto repair
+- body shop
+- auto service
+- mechanic
+- lube center
+- tire shop
+- car wash
+- detailing
+- garage
+- maintenance
+- vehicle
+- car
+- tune-up
+- alignment
+- diagnostics
+- oil change
+- sales
+- trade-in
+competitors:
+- name: Pep Boys
+  positioning: National chain of automotive aftermarket service and retail
+  strengths:
+  - Large national presence
+  - Broad service offerings
+  - Competitive pricing
+  - Extended hours
+  weaknesses:
+  - Inconsistent service quality across locations
+  - Perceived as less specialized than dealerships
+  our_differentiation: Our certified technicians and personalized service ensure consistent,
+    high-quality work with OEM-level expertise.
+- name: Midas
+  positioning: Franchised auto repair chain specializing in brakes and exhaust systems
+  strengths:
+  - Strong brand recognition
+  - Specialized in core services
+  - Nationwide warranty
+  weaknesses:
+  - Limited scope beyond core services
+  - Franchise model can vary
+  our_differentiation: We provide comprehensive automotive care, from basic maintenance
+    to complex repairs, all under one roof.
+- name: Jiffy Lube
+  positioning: Fast, convenient oil change and basic maintenance chain
+  strengths:
+  - Speed and convenience
+  - No appointments needed
+  - National network
+  weaknesses:
+  - Limited to basic services
+  - Upselling pressure
+  our_differentiation: We offer quick services but also have the capability and expertise
+    for major repairs, giving customers a complete solution.
+- name: Local independent garages
+  positioning: Small, locally-owned auto repair shops
+  strengths:
+  - Personalized service
+  - Often lower labor rates
+  - Community trust
+  weaknesses:
+  - Limited scale and resources
+  - May lack advanced diagnostic equipment
+  our_differentiation: We combine the personal touch of a local shop with the advanced
+    technology, training, and parts inventory of a larger facility.
+industry_faq:
+- answer_template: The cost depends on your vehicle's make, model, and the type of
+    oil used. A conventional oil change typically ranges from $35 to $75, while synthetic
+    can be $65 to $125.
+  question: How much is an oil change?
+- answer_template: You can provide your repair order number or license plate, and
+    I can check the current status for you.
+  question: What's the status of my repair?
+- answer_template: Standard scheduled maintenance usually takes between 1 to 3 hours,
+    depending on the service package.
+  question: How long does scheduled maintenance take?
+- answer_template: Yes, we service all makes and models. What is the year, make, and
+    model of your vehicle?
+  question: Do you service my car's brand?
+- answer_template: I can check our inventory. Can you provide the year, make, model,
+    and the specific part name or number?
+  question: Do you have a specific part in stock?
+- answer_template: Yes, we offer a 12-month/12,000-mile warranty on parts and labor
+    for most repairs.
+  question: Do you provide a warranty on your work?
+- answer_template: Our certified technicians are trained on the latest vehicle systems,
+    and we use OEM or OEM-equivalent parts for all repairs.
+  question: Why should I choose you over a dealership?
+industry_specifics:
+  compliance:
+  - CCPA (California Consumer Privacy Act)
+  peak_times:
+  - Monday mornings
+  - Friday afternoons
+  - Seasonal tire change periods (Spring and Fall)
+  tone:
+  - Professional and knowledgeable
+  - Helpful and solution-oriented
+  - Conversational, not overly formal
+learnings: []
+market_context:
+  growth_rate: 3.5%
+  key_trends:
+  - Increased adoption of electric and hybrid vehicles
+  - Growth in demand for advanced driver-assistance system (ADAS) calibration
+  - Rising consumer preference for convenience and digital scheduling
+  market_size: $390 billion (aftermarket service)
+  seasonality:
+    high:
+    - Spring (pre-summer check-ups, tire changes)
+    - Fall (winter preparation, tire changes)
+    low:
+    - Late December holiday period
+    - Mid-summer (vacation season)
+meta:
+  avg_validation_score: 0.0
+  country: us
+  created_at: '2024-12-10'
+  currency: USD
+  id: automotive
+  language: en
+  languages:
+  - en
+  last_updated: '2024-12-10'
+  phone_codes:
+  - '+1'
+  region: na
+  tests_run: 0
+  timezone: America/New_York
+  version: 1.0
+pain_points:
+- description: High volume of calls for simple repair status updates, pulling service
+    advisors away from customers on-site.
+  severity: high
+  solution_hint: AI agent provides instant status checks using repair order number
+    or license plate.
+- description: Frequent calls asking for price quotes on common services, leading
+    to repetitive inquiries.
+  severity: medium
+  solution_hint: AI agent can quote standard service pricing based on vehicle type
+    and service code.
+- description: Difficulty scheduling appointments that align with customer availability
+    and shop capacity.
+  severity: medium
+  solution_hint: AI agent integrates with shop calendar to offer real-time appointment
+    booking.
+- description: Customers forgetting scheduled maintenance intervals, leading to missed
+    service opportunities.
+  severity: medium
+  solution_hint: AI agent can send automated maintenance reminders based on mileage
+    or date.
+- description: After-hours calls for roadside assistance or emergency towing going
+    unanswered.
+  severity: high
+  solution_hint: AI agent can intake emergency service requests 24/7 and dispatch
+    via integrated system.
+- description: Time spent explaining basic shop policies (hours, warranty, payment
+    methods) to new customers.
+  severity: low
+  solution_hint: AI agent handles routine FAQ, freeing staff for complex queries.
+pricing_context:
+  currency: USD
+  entry_point: 35
+  roi_examples:
+  - monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+    scenario: Automating 40% of inbound status calls and 30% of appointment bookings,
+      reducing front-desk labor.
+  typical_budget_range:
+  - 100
+  - 1000
+  value_anchors:
+  - Reduce customer wait times for information by 80%.
+  - Recapture 15+ hours per week of staff time for core service tasks.
+  - Increase appointment booking conversion by capturing calls after business hours.
+recommended_functions:
+- name: status_check
+  priority: high
+  reason: 30-40% of calls are for repair status updates.
+- name: schedule_appointment
+  priority: high
+  reason: Critical for capturing service demand and optimizing shop workflow.
+- name: service_quotes
+  priority: medium
+  reason: Common initial inquiry; quick quotes can secure bookings.
+- name: parts_inventory_check
+  priority: medium
+  reason: Saves time for service advisors and sets accurate customer expectations.
+- name: intake_roadside_assistance
+  priority: medium
+  reason: Provides 24/7 emergency service capture and improves customer safety perception.
+- name: send_maintenance_reminders
+  priority: low
+  reason: Drives repeat business and builds customer loyalty.
+sales_scripts:
+- goal: Convert a pricing inquiry into a scheduled appointment.
+  script: I can help with that. To give you the most accurate quote, I'll need your
+    vehicle's year, make, and model, and the specific service you're interested in.
+    Once I have that, I can provide a price range and check our earliest available
+    booking. Would you like to proceed?
+  situation: When a customer calls asking for the price of a specific service (e.g.,
+    brake pad replacement).
+  trigger: price_question
+- goal: Upsell a customer from a basic service to a more comprehensive package.
+  script: For your [Basic Service], we also offer a [Premium Package] that includes
+    [additional valuable services like tire rotation, fluid top-offs, and a multi-point
+    inspection]. This can save you time and money in the long run by catching small
+    issues early. Would you like me to quote you for the package, or shall I proceed
+    with the basic service?
+  situation: When a customer is booking a standard maintenance service like an oil
+    change.
+  trigger: booking_basic_service
+- goal: Retain a customer comparing prices by emphasizing value.
+  script: I understand you're comparing options. Our pricing reflects the expertise
+    of our ASE-certified technicians, our use of quality parts, and our comprehensive
+    warranty. We're confident in the value we provide. Would it be helpful if I scheduled
+    a quick consultation for you to speak directly with a service advisor about your
+    specific needs?
+  situation: When a customer indicates they are shopping around or mentions a competitor's
+    lower price.
+  trigger: price_comparison
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automate 60% of status and FAQ calls
+  - Reduce front-desk call volume by 40%
+  - Achieve >25% conversion from quote call to booked appointment
+  - Maintain customer satisfaction score above 4.5/5
+typical_integrations:
+- examples:
+  - CDK Drive
+  - Reynolds and Reynolds
+  - DealerSocket
+  name: DMS (Dealer Management System)
+  priority: high
+  reason: Central system for repair orders, customer history, and parts inventory.
+- examples:
+  - TekMetric
+  - Shop-Ware
+  - AutoShop
+  name: Shop Management Software
+  priority: high
+  reason: Core platform for independent shops managing appointments, estimates, and
+    workflows.
+- examples:
+  - Salesforce
+  - HubSpot
+  name: CRM
+  priority: medium
+  reason: Tracks customer interactions, service history, and marketing campaigns.
+- examples:
+  - RingCentral
+  - Nextiva
+  name: Business Phone System
+  priority: high
+  reason: Handles call routing, voicemail, and call analytics.
+- examples:
+  - ScheduleSync
+  - Acuity Scheduling
+  name: Online Scheduling
+  priority: medium
+  reason: Manages real-time appointment calendar and customer self-booking.
+typical_objections:
+- objection: That's more expensive than I expected.
+  response: 'I understand. The quote includes [list key value items: OEM parts, certified
+    labor, warranty]. Would you like me to break down the costs, or would a payment
+    plan help make it more manageable?'
+- objection: I need it done sooner. Your first available is too far out.
+  response: I apologize for the wait. Let me check if we've had any cancellations
+    for an earlier slot, or I can add you to our priority cancellation list. May I
+    confirm your contact details for a callback if something opens up?
+- objection: I'm not sure I need all that service.
+  response: That's a fair point. Our recommendation is based on your vehicle's mileage
+    and manufacturer guidelines to prevent future issues. I can connect you with a
+    technician for a brief explanation, or we can proceed with just the essential
+    service today.
+typical_services:
+- Oil Change & Filter Replacement
+- Brake Service & Repair
+- Tire Rotation, Balancing, and Replacement
+- Engine Diagnostics & Repair
+- Scheduled Maintenance (Multi-Point Inspection)
+- AC System Service & Repair
+- Battery Testing & Replacement
+- Wheel Alignment
+- Transmission Service
+- Exhaust System Repair
+_extends: _base/automotive

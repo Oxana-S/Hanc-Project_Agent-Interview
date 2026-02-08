@@ -1,0 +1,243 @@
+pain_points:
+- description: Dificuldade em gerir agendamentos de clientes de forma eficiente, levando
+    a sobreposições ou tempos de espera longos.
+  severity: high
+  solution_hint: O agente de voz AI pode automatizar agendamentos, confirmar horários
+    e enviar lembretes, reduzindo erros.
+- description: Falta de mão de obra qualificada e certificada, especialmente para
+    reparações técnicas complexas.
+  severity: high
+  solution_hint: O agente pode filtrar chamadas para direcionar para técnicos especializados,
+    melhorando a eficiência.
+- description: Concorrência elevada de serviços informais e não regulamentados, que
+    oferecem preços mais baixos.
+  severity: medium
+  solution_hint: O agente pode destacar a qualidade e garantia dos serviços, diferenciando-se
+    no mercado.
+- description: Custo elevado de peças de reposição e ferramentas, afetando a margem
+    de lucro.
+  severity: medium
+  solution_hint: O agente pode integrar-se com sistemas de inventário para otimizar
+    encomendas e reduzir custos.
+- description: Dificuldades em fidelizar clientes e gerar recomendações, devido à
+    falta de follow-up.
+  severity: low
+  solution_hint: O agente pode automatizar follow-ups pós-serviço e solicitar feedback
+    para melhorar a retenção.
+- description: Gestão ineficiente de inventário, levando a atrasos em reparações por
+    falta de peças.
+  severity: medium
+  solution_hint: O agente pode monitorizar níveis de inventário e alertar para reposições
+    necessárias.
+- description: Dependência de serviços terceirizados para especialidades, aumentando
+    tempos de resposta.
+  severity: low
+  solution_hint: O agente pode coordenar com parceiros externos para agilizar serviços
+    especializados.
+typical_services:
+- Reparação de eletrodomésticos
+- Serviços de canalização (desentupimentos, reparações)
+- Reparação de automóveis
+- Manutenção de sistemas de climatização
+- Reparação de dispositivos eletrónicos (telemóveis, computadores)
+- Serviços de carpintaria e marcenaria
+- Reparação de equipamentos de jardim
+- Serviços de serralharia e metalurgia
+- Reparação de calçado e acessórios
+- Assistência técnica para eletrónica doméstica
+recommended_functions:
+- name: Agendamento automático de serviços
+  priority: high
+  reason: Reduz erros manuais e melhora a eficiência no atendimento ao cliente.
+- name: Resposta a perguntas frequentes
+  priority: high
+  reason: Liberta tempo da equipa para focar em tarefas complexas e aumenta a satisfação
+    do cliente.
+- name: Processamento de pagamentos
+  priority: medium
+  reason: Facilita transações seguras e rápidas, em conformidade com GDPR.
+- name: Notificações de lembretes
+  priority: medium
+  reason: Reduz faltas e melhora a gestão de tempo para os técnicos.
+- name: Análise de feedback de clientes
+  priority: low
+  reason: Ajuda a identificar áreas de melhoria e a personalizar serviços.
+- name: Gestão de inventário integrada
+  priority: high
+  reason: Evita atrasos em reparações ao manter o controle de peças em tempo real.
+- name: Suporte multi-idioma para turistas
+  priority: low
+  reason: Expande o mercado atendendo a clientes internacionais em Portugal.
+typical_integrations:
+- name: Sistemas de gestão de clientes (CRM)
+  examples:
+  - CRM Portugal
+  - Salesforce localizado
+  priority: high
+- name: Software de faturação
+  examples:
+  - Faturação Simples
+  - Sage Portugal
+  priority: high
+- name: Plataformas de agendamento online
+  examples:
+  - Calendly integrado
+  - Agendamentos Online PT
+  priority: medium
+- name: Sistemas de pagamento eletrónico
+  examples:
+  - MB Way
+  - PayPal Portugal
+  priority: medium
+- name: Software de gestão de inventário
+  examples:
+  - Inventário Pro
+  - GestStock PT
+  priority: medium
+- name: Ferramentas de marketing digital
+  examples:
+  - Mailchimp em pt
+  - Google Ads local
+  priority: low
+industry_faq:
+- question: Quais são os vossos horários de funcionamento?
+  answer_template: Funcionamos de segunda a sexta, das 9h às 18h, e aos sábados das
+    9h às 13h. Para urgências, temos serviço 24/7 com custo adicional.
+- question: Como posso agendar uma reparação urgente?
+  answer_template: Pode agendar uma reparação urgente através do nosso agente de voz
+    ou website, e garantimos resposta em menos de 2 horas.
+- question: Quanto tempo demora uma reparação típica?
+  answer_template: O tempo varia consoante o serviço, mas para a maioria das reparações,
+    estimamos entre 1 a 3 dias úteis. Fornecemos atualizações regulares.
+- question: Oferecem garantia nos serviços?
+  answer_template: Sim, todos os nossos serviços incluem uma garantia de 6 meses em
+    mão de obra e peças, conforme a regulamentação portuguesa.
+- question: Aceitam pagamentos por cartão?
+  answer_template: Sim, aceitamos pagamentos por cartão de débito, crédito e métodos
+    eletrónicos como MB Way, em conformidade com as normas de segurança.
+- question: Têm técnicos certificados?
+  answer_template: Sim, a nossa equipa é composta por técnicos certificados e com
+    formação contínua para garantir a melhor qualidade.
+- question: Como é calculado o preço da reparação?
+  answer_template: O preço é calculado com base no custo das peças, mão de obra e
+    complexidade do serviço. Fornecemos orçamentos gratuitos e transparentes.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Compreendemos a importância do orçamento. Oferecemos orçamentos gratuitos
+    e personalizados. Posso recolher alguns detalhes sobre o seu problema para fornecer
+    uma estimativa precisa? Normalmente, os nossos serviços começam em 30 EUR para
+    diagnósticos.
+  goal: Converter a pergunta em um agendamento para diagnóstico ou fornecer um orçamento
+    inicial.
+- trigger: availability_inquiry
+  situation: Quando um cliente pergunta sobre disponibilidade para um serviço urgente.
+  script: Para serviços urgentes, temos disponibilidade em horários flexíveis, incluindo
+    fins de semana. Posso verificar a nossa agenda e agendar para si ainda hoje? Garantimos
+    uma resposta rápida e eficiente.
+  goal: Agendar um serviço urgente e destacar a nossa rapidez.
+- trigger: service_information
+  situation: Quando um cliente pede informações sobre serviços específicos, como reparação
+    de eletrodomésticos.
+  script: Oferecemos reparação especializada para uma variedade de eletrodomésticos,
+    com técnicos certificados e peças originais. Podemos agendar uma visita para diagnóstico
+    sem compromisso. Tem algum aparelho em particular que precise de atenção?
+  goal: Educar o cliente sobre os serviços e incentivá-lo a agendar uma visita.
+- trigger: objection_handling
+  situation: Quando um cliente expressa preocupação com o custo ou qualidade.
+  script: Entendemos a sua preocupação. No entanto, com a nossa garantia de 6 meses
+    e uso de peças de qualidade, garantimos um serviço duradouro que evita custos
+    futuros. Muitos clientes relatam economias a longo plazo. Posso partilhar alguns
+    testemunhos?
+  goal: Superar objeções e construir confiança para fechar a venda.
+competitors:
+- name: Reparações Rápidas Lda
+  positioning: Foco em serviços rápidos e preços baixos no mercado local.
+  strengths:
+  - Preços competitivos
+  - Resposta rápida
+  weaknesses:
+  - Falta de certificações
+  - Serviço pós-venda limitado
+  our_differentiation: Oferecemos garantia extensa, técnicos certificados e integração
+    com AI para melhor eficiência.
+- name: Serviço Técnico Nacional
+  positioning: Rede nacional com múltiplas especialidades e presença online.
+  strengths:
+  - Ampla cobertura geográfica
+  - Variedade de serviços
+  weaknesses:
+  - Tempos de espera longos
+  - Preços menos transparentes
+  our_differentiation: Agendamento automatizado e preços transparentes com atualizações
+    em tempo real via AI.
+- name: Mão Amiga Reparações
+  positioning: Serviços informais e personalizados, frequentemente baseados em recomendações.
+  strengths:
+  - Atendimento personalizado
+  - Custos reduzidos
+  weaknesses:
+  - Falta de regulamentação
+  - Sem garantias formais
+  our_differentiation: Conformidade com GDPR, serviços garantidos e uso de tecnologia
+    para melhor gestão.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 30
+  roi_examples:
+  - scenario: Pequena oficina de reparações que implementa agendamento automático
+    monthly_cost: 100
+    monthly_savings: 200
+    payback_months: 1
+  - scenario: Serviço de canalização que usa AI para reduzir faltas de clientes
+    monthly_cost: 150
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Reduza tempos de espera em 50% com agendamento inteligente.
+  - Aumente a fidelização de clientes com follow-ups automatizados.
+  - Economize em custos operacionais com gestão eficiente de inventário.
+market_context:
+  market_size: Estimado em 400 milhões EUR anuais
+  growth_rate: 2.5% ao ano
+  key_trends:
+  - Crescimento da procura por serviços de reparação sustentável e ecológica.
+  - Aumento da adoção de tecnologias digitais para agendamento e pagamentos.
+  - Expansão de serviços para dispositivos smart e IoT em residências.
+  seasonality:
+    high:
+    - Primavera (manutenção de jardins)
+    - Outono (preparação para inverno, sistemas de aquecimento)
+    low:
+    - Verão (férias, redução de serviços urgentes)
+    - Natal (foco em compras, menos reparações)
+typical_objections:
+- objection: É muito caro comparado com serviços informais.
+  response: Compreendemos, mas a nossa garantia e qualidade superior evitam custos
+    futuros e garantem segurança, em conformidade com as normas portuguesas.
+- objection: Não confio em serviços automatizados, prefiro falar com uma pessoa.
+  response: O nosso agente AI é complementar, permitindo que a nossa equipa se foque
+    em tarefas complexas. Oferecemos sempre a opção de falar com um técnico diretamente.
+- objection: Já tenho um fornecedor de confiança.
+  response: Respeitamos a sua lealdade. No entanto, podemos oferecer serviços adicionais
+    como agendamento flexível e integração com sistemas digitais para maior conveniência.
+- objection: Não preciso de tecnologia, o meu negócio é pequeno.
+  response: Mesmo para negócios pequenos, a AI pode ajudar a reduzir custos operacionais
+    e melhorar a satisfação do cliente, com um retorno rápido do investimento.
+meta:
+  id: repair_services
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

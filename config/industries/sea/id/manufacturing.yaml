@@ -1,0 +1,215 @@
+pain_points:
+- description: Keterlambatan pasokan bahan baku dari pemasok lokal dan internasional.
+  severity: high
+  solution_hint: AI voice agent dapat memantau status pengiriman secara real-time dan mengirim notifikasi otomatis.
+- description: Biaya tenaga kerja yang terus meningkat mempengaruhi profitabilitas.
+  severity: medium
+  solution_hint: AI dapat mengotomatisasi tugas administratif seperti penjadwalan dan pelaporan, mengurangi ketergantungan pada tenaga kerja manual.
+- description: Kepatuhan terhadap regulasi PDP (Perlindungan Data Pribadi) yang kompleks.
+  severity: high
+  solution_hint: AI membantu dalam pelacakan, enkripsi, dan pelaporan data untuk memastikan kepatuhan penuh.
+- description: Efisiensi produksi rendah akibat mesin yang sering rusak atau downtime.
+  severity: medium
+  solution_hint: AI menganalisis data sensor mesin untuk prediksi perawatan dan pengoptimalan jadwal produksi.
+- description: Komunikasi yang tidak efisien dengan pelanggan dan pemasok menyebabkan keterlambatan.
+  severity: low
+  solution_hint: Voice agent mengelola panggilan dan pesan otomatis dalam bahasa Indonesia untuk respons cepat.
+- description: Fluktuasi permintaan pasar yang sulit diprediksi.
+  severity: high
+  solution_hint: AI menganalisis tren pasar dan data historis untuk membantu perencanaan produksi yang adaptif.
+- description: Manajemen inventaris yang tidak akurat menyebabkan kelebihan atau kekurangan stok.
+  severity: medium
+  solution_hint: AI mengintegrasikan data inventaris secara real-time dan memberikan rekomendasi otomatis.
+typical_services:
+- Konsultasi otomatisasi pabrik
+- Pelatihan sistem ERP dan AI untuk karyawan
+- Optimasi rantai pasokan
+- Pemeliharaan prediktif mesin
+- Integrasi sistem IoT industri
+- Analisis data produksi untuk efisiensi
+- Manajemen inventaris otomatis
+- Layanan dukungan pelanggan 24/7 dalam bahasa Indonesia
+- Audit kepatuhan regulasi PDP
+- Solusi keamanan siber untuk data manufaktur
+recommended_functions:
+- name: Penjadwalan Otomatis Produksi
+  priority: high
+  reason: Meningkatkan efisiensi dengan mengatur jadwal mesin dan tenaga kerja secara optimal.
+- name: Respons Pertanyaan Pelanggan dan Pemasok
+  priority: high
+  reason: Mempercepat komunikasi dan meningkatkan kepuasan dengan respon dalam bahasa Indonesia.
+- name: Notifikasi Kepatuhan PDP
+  priority: medium
+  reason: Memastikan bisnis menghindari denda dengan alert otomatis untuk regulasi.
+- name: Analisis Data Real-time dari Mesin
+  priority: high
+  reason: Memberikan wawasan instan untuk pengambilan keputusan produksi.
+- name: Integrasi dengan Software Akuntansi Lokal
+  priority: medium
+  reason: Memudahkan pelaporan keuangan dan pengelolaan biaya.
+- name: Pelaporan Otomatis untuk Manajemen
+  priority: low
+  reason: Menghemat waktu dengan menghasilkan laporan rutin seperti kinerja produksi.
+typical_integrations:
+- name: Sistem ERP
+  examples:
+  - SAP
+  - Oracle
+  - Jurnal
+  priority: high
+- name: Software Akuntansi Indonesia
+  examples:
+  - Accurate
+  - Zahir
+  - MYOB
+  priority: medium
+- name: Sistem Manajemen Gudang (WMS)
+  examples:
+  - Zoho Inventory
+  - WMS lokal
+  priority: medium
+- name: Platform IoT Industri
+  examples:
+  - Siemens MindSphere
+  - platform IoT lokal
+  priority: low
+- name: Aplikasi Komunikasi Bisnis
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: high
+industry_faq:
+- question: Bagaimana AI voice agent dapat mengurangi biaya operasional di manufaktur?
+  answer_template: AI mengotomatisasi tugas rutin seperti pelacakan inventaris dan komunikasi, mengurangi kebutuhan tenaga kerja manual hingga 30%.
+- question: Apakah solusi ini aman untuk data sensitif sesuai PDP Indonesia?
+  answer_template: Ya, kami menggunakan enkripsi data dan kontrol akses ketat yang sesuai dengan regulasi PDP untuk melindungi informasi pribadi.
+- question: Berapa lama waktu yang dibutuhkan untuk implementasi?
+  answer_template: Implementasi dasar biasanya 2-3 minggu, dengan dukungan penyesuaian untuk integrasi sistem yang ada.
+- question: Apakah karyawan perlu keterampilan teknis khusus untuk menggunakan AI?
+  answer_template: Tidak, antarmuka user-friendly dan pelatihan singkat kami memastikan adopsi mudah oleh semua karyawan.
+- question: Dapatkah AI diinteg
+meta:
+  id: manufacturing
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- manufacturing
+- factory
+- production
+- industrial
+_extends: _base/manufacturing
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan tentang harga solusi AI voice agent
+  script: Kami menawarkan paket yang fleksibel sesuai kebutuhan bisnis Anda, mulai dari harga yang sangat kompetitif di pasar Indonesia. Apakah Anda ingin saya jelaskan detail paket yang paling sesuai dengan
+    ukuran dan kebutuhan pabrik Anda?
+  goal: Menjelaskan harga dengan cara yang menarik dan membuka peluang diskusi lebih lanjut
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Saat calon pelanggan menyebutkan solusi dari kompetitor
+  script: Kami memahami pilihan Anda. Namun, solusi AI voice agent kami dirancang khusus untuk pasar Indonesia dengan kepatuhan penuh pada regulasi PDP dan integrasi lokal yang lebih baik, sehingga memberikan
+    nilai tambah yang maksimal.
+  goal: Membedakan produk kami dengan kompetitor dan menekankan keunggulan lokal
+  effectiveness: high
+- trigger: compliance_question
+  situation: Jika pelanggan menanyakan tentang kepatuhan terhadap PDP
+  script: Solusi kami sepenuhnya mematuhi regulasi PDP Indonesia, termasuk enkripsi data dan pelaporan otomatis, sehingga Anda dapat fokus pada produksi tanpa khawatir soal keamanan data.
+  goal: Meyakinkan pelanggan tentang keamanan dan kepatuhan produk
+  effectiveness: high
+- trigger: implementation_timeline
+  situation: Saat pelanggan bertanya mengenai waktu implementasi
+  script: Biasanya implementasi kami memakan waktu 2-3 minggu, dengan dukungan penuh untuk penyesuaian agar sesuai dengan sistem yang sudah ada di pabrik Anda.
+  goal: Memberikan kepastian waktu implementasi yang realistis dan meningkatkan kepercayaan
+  effectiveness: medium
+- trigger: cost_saving_interest
+  situation: Ketika pelanggan tertarik pada penghematan biaya operasional
+  script: Dengan mengotomatisasi tugas rutin menggunakan AI voice agent, pabrik Anda dapat mengurangi biaya tenaga kerja hingga 30% dan mempercepat proses operasional secara signifikan.
+  goal: Memotivasi pelanggan untuk mempertimbangkan solusi berdasarkan penghematan biaya
+  effectiveness: high
+competitors:
+- name: PT Solusi Otomasi Indonesia
+  positioning: Pemain lokal dengan fokus pada otomasi pabrik tradisional
+  strengths:
+  - Jaringan luas di industri manufaktur lokal
+  - Harga kompetitif
+  - Pengalaman integrasi dengan peralatan pabrik klasik
+  weaknesses:
+  - Kurang inovasi dalam AI dan teknologi suara
+  - Kepatuhan data belum optimal untuk PDP
+  our_differentiation: Kami menawarkan teknologi AI voice agent terbaru dengan kepatuhan penuh pada PDP dan dukungan bahasa Indonesia yang lebih natural.
+- name: CV Teknologi Pintar Nusantara
+  positioning: Startup teknologi dengan solusi digital untuk manufaktur kecil dan menengah
+  strengths:
+  - Fleksibel dan mudah digunakan
+  - Fokus pada segmen UKM
+  - Layanan pelanggan responsif
+  weaknesses:
+  - Skalabilitas terbatas untuk perusahaan besar
+  - Integrasi terbatas dengan software ERP besar
+  our_differentiation: Solusi kami dapat skala dari UKM hingga perusahaan besar dengan integrasi ERP kelas dunia dan fitur compliance yang lengkap.
+- name: PT Mitra Digital Cipta
+  positioning: Penyedia solusi IT dan otomasi dengan pengalaman regional Asia Tenggara
+  strengths:
+  - Pengalaman regional luas
+  - Beragam produk IT dan otomasi
+  - Kapabilitas integrasi multi-platform
+  weaknesses:
+  - Kurang fokus pada pasar Indonesia spesifik
+  - Pelayanan purna jual yang lambat
+  our_differentiation: Kami spesialis dalam pasar Indonesia dengan dukungan lokal yang cepat dan kepatuhan penuh pada regulasi PDP.
+- name: CV Solusi AI Mandiri
+  positioning: Penyedia solusi AI dengan fokus pada chatbot dan voice agent untuk industri manufaktur
+  strengths:
+  - Teknologi AI canggih
+  - Penyesuaian sesuai kebutuhan klien
+  - Tim pengembangan lokal
+  weaknesses:
+  - Harga relatif tinggi
+  - Kurangnya integrasi dengan sistem ERP besar
+  our_differentiation: Solusi kami lebih terintegrasi dengan sistem ERP besar dan lebih terjangkau dengan dukungan lokal yang lebih kuat.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000000
+  - 300000000
+  entry_point: 50000000
+  roi_examples:
+  - scenario: Pabrik dengan 100 karyawan menggunakan AI untuk otomasi penjadwalan dan komunikasi
+    monthly_cost: 4000000
+    monthly_savings: 12000000
+    payback_months: 4
+  - scenario: Perusahaan manufaktur menengah mengurangi keterlambatan pasokan dengan notifikasi otomatis
+    monthly_cost: 6000000
+    monthly_savings: 18000000
+    payback_months: 3
+  - scenario: Pabrik besar meningkatkan kepatuhan PDP dan mengurangi risiko denda
+    monthly_cost: 8000000
+    monthly_savings: 25000000
+    payback_months: 3
+  value_anchors:
+  - Penghematan biaya tenaga kerja hingga 30%.
+  - Mengurangi risiko denda kepatuhan PDP yang bisa mencapai ratusan juta rupiah.
+  - Peningkatan efisiensi operasional dan pengurangan downtime mesin.
+  - Dukungan dan integrasi dengan software lokal dan ERP kelas dunia.
+market_context:
+  market_size: Rp 150 triliun per tahun
+  growth_rate: 6-8%
+  key_trends:
+  - Digitalisasi proses manufaktur semakin diadopsi di Indonesia.
+  - Peningkatan regulasi perlindungan data pribadi (PDP) mendorong kebutuhan solusi compliant.
+  - Permintaan untuk otomasi dan efisiensi di sektor manufaktur meningkat pesat.
+  - Integrasi AI dan voice agent menjadi tren utama untuk komunikasi internal dan eksternal.
+  seasonality:
+    high:
+    - Juni
+    - Juli
+    - Agustus
+    - November
+    - Desember
+    low:
+    - Januari
+    - Februari

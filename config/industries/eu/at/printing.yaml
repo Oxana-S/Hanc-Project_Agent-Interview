@@ -1,0 +1,253 @@
+pain_points:
+- description: Hohe Energiekosten durch energieintensive Druckmaschinen belasten die
+    Rentabilität.
+  severity: high
+  solution_hint: AI-Agent kann Angebote für Energieeffizienzberatung oder alternative
+    Druckverfahren vermitteln.
+- description: Fachkräftemangel macht es schwer, qualifiziertes Personal für Druckvorstufe
+    und Maschinenbedienung zu finden.
+  severity: high
+  solution_hint: AI-Agent kann Schulungsangebote oder Zeitarbeitsfirmen empfehlen
+    und erste Screening-Fragen stellen.
+- description: Stark schwankende Auftragslage führt zu Auslastungsproblemen und Planungsunsicherheit.
+  severity: medium
+  solution_hint: AI-Agent kann Kunden für wiederkehrende Druckaufträge gewinnen und
+    Terminkalender intelligent verwalten.
+- description: Komplexe Preisgestaltung für Sonderwünsche wie Sonderfarben oder Veredelungen
+    ist zeitaufwändig.
+  severity: medium
+  solution_hint: AI-Agent kann mit einem Konfigurator schnell Erstangebote erstellen
+    und an die Kalkulation weiterleiten.
+- description: Hoher Verwaltungsaufwand für Angebotserstellung, Rechnungsstellung
+    und Lagerverwaltung.
+  severity: medium
+  solution_hint: AI-Agent kann Bestellungen aufnehmen, Rechnungsdaten abfragen und
+    direkt in Buchhaltungssoftware übertragen.
+- description: Abfallmanagement von Druckplatten und Chemikalien ist kostenintensiv
+    und regulatorisch anspruchsvoll.
+  severity: low
+  solution_hint: AI-Agent kann Informationen zu Entsorgungsdienstleistern geben und
+    an Compliance-Berater vermitteln.
+- description: Druckfehler und Qualitätsprobleme führen zu Nacharbeiten, Materialverschwendung
+    und unzufriedenen Kunden.
+  severity: high
+  solution_hint: AI-Agent kann standardisierte Checklisten für Druckfreigaben abarbeiten
+    und Beschwerdeprotokolle einleiten.
+typical_services:
+- Digitaldruck
+- Offsetdruck
+- Siebdruck
+- Großformatdruck (z.B. Plakate, Banner)
+- Verpackungsdruck
+- Buchdruck und Broschüren
+- Visitenkarten und Geschäftsdrucksachen
+- Veredelung (Prägung, Lackierung, Folienkaschierung)
+- Scan- und Archivdienstleistungen
+- Druckweiterverarbeitung (Schneiden, Falzen, Binden)
+recommended_functions:
+- name: Terminbuchung für Kundenberatung & Abholung
+  priority: high
+  reason: Reduziert Telefonauslastung und ermöglicht 24/7-Buchung, wichtig für zeitkritische
+    Aufträge.
+- name: Schnellkalkulation für Standardaufträge
+  priority: high
+  reason: Beantwortet die häufigste Preis-Frage sofort und generiert qualifizierte
+    Leads.
+- name: Bestellstatus- und Lieferabfrage
+  priority: medium
+  reason: Entlastet die Mitarbeiter von wiederkehrenden Statusanfragen und erhöht
+    die Kundentransparenz.
+- name: Beschwerde- und Reklamationsentgegennahme
+  priority: medium
+  reason: Sammelt strukturiert alle notwendigen Informationen (Auftragsnummer, Problembeschreibung)
+    für schnelle Bearbeitung.
+- name: Erinnerung an wiederkehrende Druckaufträge (z.B. Geschäftsberichte)
+  priority: low
+  reason: Fördert Kundenbindung und steigert den Umsatz mit Bestandskunden durch proaktive
+    Kommunikation.
+- name: FAQ zu Drucktechniken und Materialien
+  priority: low
+  reason: Bildet Kunden vorab und sorgt für besser vorbereitete Beratungsgespräche.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - DATEV
+  - Lexware
+  priority: high
+- name: Druckshop-Software / Web-to-Print
+  examples:
+  - Pageflex
+  - prisma
+  - ePage
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - DATEV
+  - SAP
+  - Banana
+  priority: medium
+- name: Terminplanung & Ressourcenmanagement
+  examples:
+  - Microsoft Bookings
+  - Teamleader
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - kleine lokal angepasste Lösungen
+  priority: low
+industry_faq:
+- question: Wie lange dauert die Produktion meiner Visitenkarten?
+  answer_template: Die Standardproduktion für Visitenkarten beträgt 3-5 Werktage.
+    Expresslieferung am nächsten Werktag ist gegen Aufpreis möglich. Ich hole gerne
+    die genauen Details von Ihnen ab, um ein verbindliches Angebot zu erstellen.
+- question: Bieten Sie auch ökologisch nachhaltige Druckprodukte an?
+  answer_template: Ja, wir arbeiten mit FSC-zertifizierten Papieren, Bio-Farben auf
+    Pflanzenölbasis und können klimaneutrale Druckaufträge anbieten. Gerne berate
+    ich Sie zu den verschiedenen Optionen.
+- question: Können Sie meine alten Druckdaten noch verwenden?
+  answer_template: Das hängt vom Dateiformat und der Qualität ab. Am besten schicken
+    Sie uns die Datei zur Prüfung. Für ein optimales Ergebnis empfehlen wir oft eine
+    neue Druckvorstufe.
+- question: Was kostet ein 100-seitiger Farbkatalog in Auflage 500?
+  answer_template: Der Preis hängt stark von Papier, Format und Veredelung ab. Für
+    eine grobe Orientierung bewegen sich vergleichbare Projekte zwischen 800 und 2500
+    Euro. Ich verbinde Sie gerne mit unserem Verkaufsinnendienst für ein detailliertes
+    Angebot.
+- question: Bieten Sie auch Lagerung und Versand der gedruckten Ware an?
+  answer_template: Ja, wir bieten Komplettlösungen an – vom Druck über die Weiterverarbeitung
+    bis hin zu Lagerung und versichertem Versand durch unsere Logistikpartner.
+sales_scripts:
+- trigger: price_question_general
+  situation: Wenn ein Kunde nach einem pauschalen Preis für eine Druckleistung fragt
+    (z.B. 'Was kostet eine Broschüre?').
+  script: 'Gerne erstelle ich Ihnen ein individuelles Angebot. Der Preis hängt von
+    Auflage, Seitenzahl, Papier und Veredelung ab. Um Ihnen schnell eine realistische
+    Kostenschätzung geben zu können: Könnten Sie mir die ungefähre Auflage und das
+    gewünschte Format nennen?'
+  goal: Vom Pauschalpreis wegkommen und qualifizierende Informationen für ein detailliertes
+    Angebot sammeln.
+- trigger: complaint_about_delay
+  situation: Wenn ein Kunde sich über eine Verspätung seines Druckauftrags beschwert.
+  script: 'Es tut mir leid zu hören, dass Ihr Auftrag Verzögerung hat. Vielen Dank,
+    dass Sie uns informieren. Um die Situation so schnell wie möglich zu klären: Könnten
+    Sie mir bitte Ihre Auftragsnummer nennen? Ich leite das sofort an unseren Kundenservice
+    weiter und sorge dafür, dass sich jemand umgehend bei Ihnen mit einem Update meldet.'
+  goal: De-eskalation, strukturierte Informationssammlung und schnelle Weiterleitung
+    an den richtigen Ansprechpartner, um Vertrauen wiederherzustellen.
+- trigger: request_for_eco_friendly_option
+  situation: Wenn ein Kunde explizit nach nachhaltigen Druckoptionen fragt.
+  script: Das ist eine ausgezeichnete Frage. Wir haben mehrere umweltfreundliche Optionen,
+    wie Recyclingpapiere, Cradle-to-Cradle-zertifizierte Farben oder klimakompensierten
+    Druck. Die beste Wahl hängt von Ihrem Budget und Projekt ab. Darf ich Ihnen unser
+    Infoblatt zu nachhaltigem Druck per E-Mail zuschicken und einen kurzen Beratungstermin
+    vereinbaren?
+  goal: Fachkompetenz demonstrieren, zusätzliches Marketingmaterial liefern und einen
+    konkreten nächsten Schritt (Termin) vereinbaren.
+competitors:
+- name: Gebr. Heinrich Druckerei
+  positioning: Etablierter Familienbetrieb mit Schwerpunkt auf hochwertigem Offsetdruck
+    und Verpackungen.
+  strengths:
+  - Lange Tradition und guter Ruf
+  - Hohe Qualität bei komplexen Druckaufträgen
+  - Starker Fokus auf B2B-Kunden
+  weaknesses:
+  - Höhere Preise
+  - Längere Standardlieferzeiten
+  - Digitale Angebote weniger ausgeprägt
+  our_differentiation: Wir bieten durch Automatisierung und AI-gestützte Prozesse
+    vergleichbare Qualität zu schnelleren Lieferzeiten und transparenten, wettbewerbsfähigen
+    Preisen, besonders im digitalen und hybriden Druck.
+- name: Onlineprinters / Flyeralarm
+  positioning: Große Online-Druckerei mit Fokus auf standardisierte Produkte und Niedrigpreissegment.
+  strengths:
+  - Sehr niedrige Preise für Standardprodukte
+  - Einfache Online-Bestellung
+  - Schnelle Lieferung
+  weaknesses:
+  - Kaum individuelle Beratung
+  - Qualität kann bei Sonderwünschen variieren
+  - Eingeschränkte Veredelungsoptionen
+  our_differentiation: Wir bieten die Vorteile der Online-Bestellung, kombinieren
+    sie aber mit persönlicher, lokaler Beratung aus Österreich und größerer Flexibilität
+    für individuelle Kundenwünsche.
+- name: Kopierzentrum Wien
+  positioning: Lokaler Copyshop mit Fokus auf Digitaldruck, Plot und kleine Auflagen
+    für Privatkunden und KMUs.
+  strengths:
+  - Sehr lokale Präsenz und spontane Abholung
+  - Günstig für Kleinauflagen
+  - Bekannt in der Nachbarschaft
+  weaknesses:
+  - Begrenzte Produktionskapazitäten
+  - Keine großen Offset-Aufträge
+  - Eher einfache Weiterverarbeitung
+  our_differentiation: Wir bedienen die gleiche Kundschaft, können aber durch unsere
+    skalierbare Produktion auch größere Projekte und anspruchsvollere Druckverfahren
+    anbieten, während wir den lokalen Service beibehalten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 49
+  roi_examples:
+  - scenario: Automatisierung der Angebotserstellung und Kundenanfragen für eine mittelständische
+      Druckerei
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden Verwaltungsaufwand pro Monat.
+  - Generieren Sie 20% mehr qualifizierte Leads durch 24/7 Erreichbarkeit.
+  - Reduzieren Sie Fehldrucke und Nacharbeit durch standardisierte Freigabeprozesse.
+market_context:
+  market_size: Ca. 1.2 Mrd. EUR Jahresumsatz (geschätzt für österreichisches Druckgewerbe)
+  growth_rate: Leicht rückläufig (-1% bis 0% p.a.) im traditionellen Segment, Wachstum
+    im Digital- und Verpackungsdruck.
+  key_trends:
+  - Nachfrage nach nachhaltigen und regional produzierten Druckerzeugnissen steigt.
+  - 'Digitalisierung: Integration von Web-to-Print-Lösungen wird Standard.'
+  - 'Konsolidierung: Kleine Betriebe spezialisieren sich oder schließen, größere investieren
+    in Nischen.'
+  seasonality:
+    high:
+    - September-November (Vorweihnachtsgeschäft, Geschäftsberichte)
+    - März-Mai (Frühjahrsmessen, Marketingkampagnen)
+    low:
+    - Juli-August (Haupturlaubszeit)
+    - Dezember (zwischen den Jahren)
+typical_objections:
+- objection: Das ist mir zu teuer / Mein Budget ist begrenzt.
+  response: Das verstehe ich gut. Wo genau sehen Sie den größten Kostendruck? Oft
+    lässt sich durch eine kleine Anpassung beim Papier oder der Veredelung der Preis
+    signifikant senken, ohne dass die Wirkung leidet. Darf ich eine Alternative vorschlagen?
+- objection: Wir haben das schon immer so gemacht und sind zufrieden.
+  response: Das ist ein starkes Argument – bewährte Prozesse sind wertvoll. Viele
+    unserer Kunden dachten ähnlich, bevor sie gesehen haben, wie viel Zeit sie für
+    Kernaufgaben wie Kundenakquise oder Produktion gewinnen, wenn die Administration
+    automatisiert wird. Würde Sie ein kurzes Gespräch mit einem unserer Bestandskunden
+    interessieren?
+- objection: Ich habe keine Zeit, mich mit einer neuen Software oder einem System
+    auseinanderzusetzen.
+  response: Genau dafür ist unsere Lösung da. Der AI-Agent arbeitet mit Ihnen über
+    das vertraute Telefon. Es ist keine neue Software zu installieren oder zu lernen.
+    Er übernimmt die zeitaufwändigen Aufgaben für Sie. Wir übernehmen auch die komplette
+    Einrichtung. Können wir nächste Woche 20 Minuten für eine Demo einplanen?
+meta:
+  id: printing
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

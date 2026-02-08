@@ -1,0 +1,168 @@
+pain_points:
+- description: Alta complexidade na conformidade com a LGPD para dados de clientes e operações marítimas.
+  severity: high
+  solution_hint: O agente de voz AI pode automatizar o gerenciamento de consentimentos e notificações, garantindo conformidade.
+- description: Custos operacionais elevados devido a manutenção não planejada de embarcações.
+  severity: medium
+  solution_hint: Agendamento automático de manutenções preventivas via AI para reduzir paradas e custos.
+- description: Ineficiência logística nos portos brasileiros, causando atrasos na carga e descarga.
+  severity: high
+  solution_hint: Integração com sistemas portuários locais para otimizar agendamentos e monitoramento em tempo real.
+- description: Dependência de condições climáticas que afetam a programação de viagens e operações.
+  severity: medium
+  solution_hint: Alertas automatizados e ajustes de rota baseados em previsões meteorológicas via AI.
+- description: Dificuldade em gerenciar tripulação e treinamentos de forma eficiente.
+  severity: low
+  solution_hint: Automatização de agendamentos de treinamento e comunicação com a equipe através de AI.
+- description: Altos custos com seguros marítimos devido a riscos não monitorados.
+  severity: medium
+  solution_hint: Monitoramento contínuo de dados operacionais para reduzir prêmios de seguro com relatórios automáticos.
+typical_services:
+- Transporte marítimo de cargas
+- Pesca comercial
+- Manutenção de embarcações
+- Serviços portuários
+- Construção naval
+- Seguros marítimos
+- Logística de carga e descarga
+- Consultoria ambiental para operações marítimas
+- Treinamento e certificação de tripulação
+- Aluguel de equipamentos náuticos
+recommended_functions:
+- name: Agendamento automático de manutenção
+  priority: high
+  reason: Reduz custos operacionais e evita paradas não planejadas, críticas para a indústria marinha.
+- name: Monitoramento de conformidade LGPD
+  priority: high
+  reason: Garante que as operações estejam em conformidade com a legislação brasileira, evitando multas.
+- name: Integração com sistemas portuários
+  priority: medium
+  reason: Melhora a eficiência logística ao conectar-se a sistemas locais como Porto sem Papel.
+- name: Atendimento ao cliente 24/7 para emergências
+  priority: medium
+  reason: Fornece suporte contínuo em operações marítimas que funcionam fora do horário comercial.
+- name: Relatórios automáticos de desempenho operacional
+  priority: low
+  reason: Ajuda na tomada de decisões com insights baseados em dados para otimização de custos.
+typical_integrations:
+- name: Sistema de gestão portuária
+  examples:
+  - Porto sem Papel
+  - Sistema Integrado de Portos (SIP)
+  priority: high
+- name: ERP local para gestão empresarial
+  examples:
+  - TOTVS
+  - SAP adaptado para Brasil
+  priority: medium
+- name: Sistemas de rastreamento de carga
+  examples:
+  - Cargox
+  - Log-In Logística
+  priority: medium
+- name: Plataformas de meteorologia
+  examples:
+  - Climatempo
+  - INMET
+  priority: low
+industry_faq:
+- question: Como a AI pode ajudar na redução de custos operacionais na indústria marinha?
+  answer_template: Nossa solução automatiza processos como agendamento de manutenção e monitoramento logístico, economizando até 20% em custos operacionais.
+- question: A solução é compatível com a LGPD?
+  answer_template: Sim, nosso agente de voz AI é projetado para garantir conformidade com a LGPD, gerenciando dados de forma segura e automatizada.
+- question: Quanto tempo leva para implementar a solução?
+  answer_template: A implementação básica leva de 2 a 4 semanas, com integração personalizada conforme suas necessidades operacionais.
+- question: Posso integrar com sistemas portuários brasileiros?
+  answer_template: Sim, integramos com sistemas locais como Porto sem Papel para otimizar suas operações portuárias.
+- question: Como a AI lida com emergências marítimas?
+  answer_template: Nosso agente pode acionar alertas automatizados e coordenar respostas com equipes em tempo real, melhorando a segurança.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços durante a conversa inicial.
+  script: Entendemos sua preocupação com custos. Nossa solução começa a partir de R$ 500/mês e pode gerar economia significativa em operações. Gostaria de agendar uma demonstração para ver o ROI?
+  goal: Converter a preocupação em valor e agendar demonstração para mostrar benefícios tangíveis.
+- trigger: service_inquiry
+  situation: Quando o cliente pergunta sobre serviços específicos para a indústria marinha.
+  script: Oferecemos soluções personalizadas, desde agendamento de manutenção até conformidade LGPD. Com base nas suas necessidades, podemos otimizar até 30% da eficiência operacional. Posso explicar mais?
+  goal: Educar o cliente sobre serviços e direcionar para uma proposta customizada.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente durante a negociação.
+  script: Compreendemos que há outras opções, mas nossa diferenciação está na integração AI com sistemas locais e suporte em português 24/7, garantindo melhor custo-benefício. Podemos comparar?
+  goal: Destacar vantagens competitivas e reforçar valor local.
+competitors:
+- name: Wilson Sons
+  positioning: Líder em serviços portuários e logística no Brasil.
+  strengths:
+  - Infraestrutura extensa
+  - Experiência de mercado de longa data
+  weaknesses:
+  - Custos elevados de serviços
+  - Sistemas legados com pouca inovação AI
+  our_differentiation: Soluções AI mais acessíveis e integradas, com foco em automação e conformidade LGPD.
+- name: Log-In Logística
+  positioning: Especializada em logística de carga marítima e intermodal.
+  strengths:
+  - Rede nacional ampla
+  - Tecnologia de rastreamento
+  weaknesses:
+  - Limitações em automação AI
+  - Suporte não 24/7
+  our_differentiation: Agente de voz AI que oferece atendimento contínuo e integração profunda com operações marítimas.
+- name: Grupo Libra
+  positioning: Atua em terminais portuários e serviços relacionados.
+  strengths:
+  - Presença em múltiplos portos
+  - Capacidade de carga alta
+  weaknesses:
+  - Processos manuais em algumas operações
+  - Conformidade LGPD não otimizada
+  our_differentiation: Automatização completa com AI, reduzindo erros humanos e melhorando a eficiência regulatória.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de custos com manutenção preventiva em uma frota pequena.
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Economize até 30% em custos operacionais com automação AI
+  - Conformidade LGPD garantida sem esforço adicional
+  - Integração local com sistemas portuários brasileiros
+market_context:
+  market_size: Estimado em R$ 80 bilhões anuais
+  growth_rate: 4% ao ano
+  key_trends:
+  - Digitalização acelerada dos portos
+  - Aumento do foco em sustentabilidade e regulamentações ambientais
+  - Crescimento do transporte marítimo de cabotagem
+  seasonality:
+    high:
+    - Verão para turismo náutico e aumento de cargas
+    low:
+    - Inverno em algumas regiões, com redução na pesca
+typical_objections:
+- objection: É muito caro para o tamanho da minha empresa.
+  response: Entendemos, mas nossa solução é escalável e o ROI é rápido, com payback em poucos meses através das economias geradas.
+- objection: Já temos sistemas em lugar, por que mudar?
+  response: Nossa AI integra-se com seus sistemas existentes, melhorando a eficiência sem substituir tudo, e adiciona conformidade LGPD automatizada.
+- objection: Não confio em AI para operações críticas marítimas.
+  response: Nossa solução é projetada com redundâncias e suporte humano, garantindo segurança e confiabilidade em todas as operações.
+meta:
+  id: marine
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- marine
+- yacht club
+- marina
+- boating
+- sailing
+_extends: _base/marine

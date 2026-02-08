@@ -1,0 +1,226 @@
+pain_points:
+- description: Fachkräftemangel führt zu Verzögerungen und erhöhten Personalkosten.
+  severity: high
+  solution_hint: AI-Sprachagent kann Termine verwalten und erste Kundenanfragen automatisieren,
+    um Personal zu entlasten.
+- description: Hohe Materialkosten und volatile Preise erschweren die Budgetplanung.
+  severity: high
+  solution_hint: AI-Sprachagent kann Angebote von Lieferanten abrufen und Preisvergleiche
+    durchführen.
+- description: Komplexe Baugenehmigungen und behördliche Vorschriften verlangsamen
+    Projekte.
+  severity: medium
+  solution_hint: AI-Sprachagent kann Dokumente sammeln und an relevante Stellen weiterleiten,
+    um Prozesse zu beschleunigen.
+- description: Kommunikationsprobleme mit Kunden und Subunternehmern führen zu Missverständnissen.
+  severity: medium
+  solution_hint: AI-Sprachagent kann als zentrale Anlaufstelle für Anfragen dienen
+    und Echtzeit-Updates bereitstellen.
+- description: Ineffiziente Angebotserstellung und Nachverfolgung von Leads kostet
+    Zeit.
+  severity: low
+  solution_hint: AI-Sprachagent kann standardisierte Angebote generieren und Lead-Daten
+    automatisch erfassen.
+- description: Unvorhergesehene Wetterbedingungen und Saisonabhängigkeit beeinträchtigen
+    die Planung.
+  severity: medium
+  solution_hint: AI-Sprachagent kann Wettervorhersagen integrieren und alternative
+    Termine vorschlagen.
+typical_services:
+- Neubau
+- Renovierung
+- Umbau
+- Sanierung
+- Fassadenbau
+- Innenausbau
+- Tiefbau
+- Dachbau
+- Garten- und Landschaftsbau
+- Energieeffizienz-Maßnahmen
+recommended_functions:
+- name: Terminbuchung
+  priority: high
+  reason: Spart Zeit und reduziert Doppelbuchungen, wichtig für effiziente Projektplanung.
+- name: Angebotsanfrage-Bearbeitung
+  priority: high
+  reason: Automatisiert wiederkehrende Anfragen, erhöht die Kundenzufriedenheit.
+- name: FAQ-Beantwortung
+  priority: medium
+  reason: Entlastet Mitarbeiter von Standardfragen zu Baugenehmigungen oder Kosten.
+- name: Lead-Qualifizierung
+  priority: medium
+  reason: Filtert potenzielle Kunden basierend auf Budget und Projektanforderungen.
+- name: Reklamationsmanagement
+  priority: low
+  reason: Kann erste Schritte bei Kundenbeschwerden einleiten, bevor menschliches
+    Eingreifen nötig ist.
+- name: Materialbestellung
+  priority: medium
+  reason: Integriert mit Lieferantensystemen, um Bestellungen zu automatisieren.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - lokale Lösungen wie Bexio
+  priority: high
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Sage
+  - Abacus
+  priority: high
+- name: Bauplanungssoftware
+  examples:
+  - AutoCAD
+  - ArchiCAD
+  - Allplan
+  priority: medium
+- name: Dokumentenmanagementsysteme
+  examples:
+  - DocuWare
+  - SharePoint
+  priority: low
+- name: Finanzsoftware
+  examples:
+  - DATEV
+  - Twinfield
+  priority: medium
+industry_faq:
+- question: Wie lange dauert die Bearbeitung einer Baugenehmigung in der Schweiz?
+  answer_template: Die Dauer variiert je nach Gemeinde und Projekt, typischerweise
+    zwischen 4 und 12 Wochen. Unser AI-Agent kann Ihnen helfen, den Status zu verfolgen.
+- question: Was sind die durchschnittlichen Kosten für einen Neubau in der Schweiz?
+  answer_template: Die Kosten hängen von Größe und Lage ab, liegen aber oft zwischen
+    4000 und 8000 CHF pro Quadratmeter. Gerne erstellen wir ein individuelles Angebot.
+- question: Bieten Sie Garantien für Ihre Bauarbeiten an?
+  answer_template: Ja, wir bieten standardmäßig eine 5-Jahres-Garantie auf alle Arbeiten,
+    konform mit Schweizer Normen.
+- question: Wie handle ich Änderungen am Bauplan während des Projekts?
+  answer_template: Änderungen können über unseren AI-Agent angefordert werden, der
+    sie automatisch an das Projektmanagement weiterleitet.
+- question: Sind Ihre Dienstleistungen GDPR- und FADP-konform?
+  answer_template: Ja, alle unsere Prozesse entsprechen den Schweizer Datenschutzgesetzen
+    (FADP) und GDPR für EU-Bezüge.
+- question: Können Sie bei der Finanzierung oder Subventionen für Energieeffizienz
+    helfen?
+  answer_template: Unser AI-Agent kann Informationen zu lokalen Förderprogrammen bereitstellen
+    und Sie an Finanzierungspartner verweisen.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach Kosten für ein Bauprojekt.
+  script: Guten Tag, vielen Dank für Ihre Anfrage. Die Kosten hängen von Ihren spezifischen
+    Anforderungen ab. Unser AI-Agent kann schnell ein grobes Angebot basierend auf
+    Größe und Art des Projekts erstellen. Möchten Sie das ausprobieren?
+  goal: Kundenengagement erhöhen und Leads qualifizieren.
+- trigger: compliance_concern
+  situation: Kunde äußert Bedenken bezüglich Datenschutz.
+  script: Wir verstehen Ihre Bedenken. Unsere Lösung ist vollständig FADP- und GDPR-konform,
+    mit Datenverschlüsselung und Schweizer Servern. Können wir Ihnen mehr Details
+    dazu senden?
+  goal: Vertrauen aufbauen und Einwände ausräumen.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen Mitbewerber.
+  script: Interessant, dass Sie [Competitor-Name] erwähnen. Unser AI-Agent bietet
+    zusätzliche Automatisierung für Termine und Angebote, was Zeit spart und Fehler
+    reduziert. Möchten Sie einen Vergleich sehen?
+  goal: Differenzierung hervorheben und Wert proposition kommunizieren.
+- trigger: free_trial_request
+  situation: Kunde bittet um eine kostenlose Testphase.
+  script: Gerne bieten wir eine 14-tägige Testphase an, um zu zeigen, wie unser AI-Agent
+    Ihre Prozesse optimiert. Möchten Sie gleich starten?
+  goal: Conversion fördern und Kundenbindung initiieren.
+competitors:
+- name: BauPartner AG
+  positioning: Etablierter Generalunternehmer mit breitem Serviceportfolio.
+  strengths:
+  - Lange Erfahrung
+  - starke lokale Präsenz
+  - umfassende Dienstleistungen
+  weaknesses:
+  - Höhere Preise
+  - langsamere Digitalisierung
+  - weniger Automatisierung
+  our_differentiation: Unser AI-Agent bietet effizientere Kundenkommunikation und
+    Kostenersparnis durch Automatisierung.
+- name: Construmation GmbH
+  positioning: Digitaler Bauplaner mit Fokus auf Softwarelösungen.
+  strengths:
+  - Innovative Technologie
+  - gute Integrationstools
+  - wettbewerbsfähige Preise
+  weaknesses:
+  - Begrenzte persönliche Betreuung
+  - weniger Erfahrung im Feld
+  our_differentiation: Wir kombinieren AI-Automatisierung mit menschlicher Expertise
+    für Rundum-Service.
+- name: SwissConstruct
+  positioning: Nischenanbieter für nachhaltiges Bauen.
+  strengths:
+  - Spezialisierung auf Öko-Bau
+  - starke Marke in der Nachhaltigkeit
+  weaknesses:
+  - Kleineres Serviceangebot
+  - höhere Einstiegskosten
+  our_differentiation: Unser AI-Agent ist skalierbar und passt sich verschiedenen
+    Projektgrößen an, mit Fokus auf Effizienz.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung von Angebotserstellung für ein mittleres Bauunternehmen.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 3
+  - scenario: Reduktion von Kommunikationszeit durch AI-Sprachagent.
+    monthly_cost: 200
+    monthly_savings: 800
+    payback_months: 4
+  value_anchors:
+  - Sparen Sie bis zu 20 Stunden pro Monat an administrativen Aufgaben.
+  - Erhöhen Sie die Kundenzufriedenheit durch schnelle Antwortzeiten.
+  - Konform mit Schweizer Datenschutzgesetzen für sicheres Handling.
+market_context:
+  market_size: Ca. 60 Milliarden CHF jährlich.
+  growth_rate: 2-3% YoY.
+  key_trends:
+  - Zunehmende Digitalisierung und BIM (Building Information Modeling)
+  - Fokus auf nachhaltiges und energieeffizientes Bauen
+  - Steigende Nachfrage nach Renovierung und Sanierung
+  seasonality:
+    high:
+    - Frühling
+    - Sommer
+    low:
+    - Winter
+typical_objections:
+- objection: Das ist zu teuer für unser kleines Unternehmen.
+  response: Unser AI-Agent startet bei 500 CHF monatlich und kann Ihnen schnell ROI
+    durch Zeitersparnis bringen. Möchten Sie eine Kosten-Nutzen-Analyse sehen?
+- objection: Wir haben bereits etablierte Prozesse, brauchen das nicht.
+  response: Verständlich. Viele Kunden nutzen unseren Agent, um repetitive Aufgaben
+    zu automatisieren und sich auf Kernkompetenzen zu konzentrieren. Können wir eine
+    Demo zeigen?
+- objection: Ich bin besorgt über die Datensicherheit mit AI.
+  response: Unsere Lösung ist FADP-konform mit Schweizer Servern. Wir bieten transparente
+    Datenschutzrichtlinien. Darf ich Ihnen Details zusenden?
+- objection: Die Einrichtung scheint zu aufwändig.
+  response: Die Integration ist einfach und unser Support hilft bei der Einrichtung.
+    Oft ist es in wenigen Tagen erledigt. Möchten Sie mehr erfahren?
+meta:
+  id: construction
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

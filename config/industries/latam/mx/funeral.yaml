@@ -1,0 +1,227 @@
+pain_points:
+- description: Alta demanda emocional en las familias durante momentos de duelo, dificultando
+    la comunicación clara.
+  severity: high
+  solution_hint: El agente de voz AI puede manejar consultas iniciales de manera empática,
+    reduciendo el estrés en el personal y las familias.
+- description: Gestión compleja de papeleo legal y administrativo, como actas de defunción
+    y permisos.
+  severity: medium
+  solution_hint: Automatizar recordatorios y guías para trámites a través del agente
+    de voz, agilizando procesos.
+- description: Falta de transparencia en precios, generando desconfianza en los clientes.
+  severity: high
+  solution_hint: Proporcionar información clara y inmediata sobre costos y servicios
+    mediante el agente de voz.
+- description: Coordinación de múltiples servicios (traslado, velatorio, cremación)
+    que requiere mucha logística.
+  severity: medium
+  solution_hint: El agente de voz puede programar y coordinar citas y servicios de
+    forma eficiente.
+- description: Cumplimiento de la LFPDPPP en el manejo de datos personales de clientes,
+    riesgo de sanciones.
+  severity: high
+  solution_hint: Integrar protocolos de privacidad en las comunicaciones del agente
+    de voz para asegurar conformidad.
+- description: Necesidad de disponibilidad 24/7 para atender emergencias, pero con
+    recursos limitados.
+  severity: high
+  solution_hint: Implementar un agente de voz disponible todo el día para responder
+    consultas básicas y derivar casos urgentes.
+typical_services:
+- Servicio de velatorio
+- Traslado de restos
+- Cremación
+- Sepultura
+- Urnas y ataúdes
+- Asesoría legal y administrativa
+- Servicios religiosos
+- Transporte familiar
+- Arreglos florales
+- Memorialización digital
+recommended_functions:
+- name: Toma de llamadas iniciales
+  priority: high
+  reason: Reduce la carga emocional en el personal y ofrece atención inmediata a familias
+    en duelo.
+- name: Programación de citas y servicios
+  priority: medium
+  reason: Optimiza la logística y mejora la eficiencia operativa.
+- name: Información sobre precios y paquetes
+  priority: high
+  reason: Proporciona transparencia y construye confianza desde el primer contacto.
+- name: Recordatorios de pagos y trámites
+  priority: low
+  reason: Mejora el flujo de caja y asegura el cumplimiento de procesos administrativos.
+- name: Soporte post-servicio y seguimiento
+  priority: medium
+  reason: Fideliza a los clientes mediante atención continua y personalizada.
+- name: Cumplimiento de LFPDPPP en comunicaciones
+  priority: high
+  reason: Evita sanciones legales y protege la privacidad de los datos de los clientes.
+typical_integrations:
+- name: Sistemas de gestión funeraria
+  examples:
+  - SoftwareFunerarioMX
+  - GestiónFun
+  - FunerariaPro
+  priority: high
+- name: Plataformas de pago en línea
+  examples:
+  - PayPal México
+  - Mercado Pago
+  - Clip
+  priority: medium
+- name: Sistemas de agenda y calendario
+  examples:
+  - Google Calendar
+  - Outlook
+  - Calendarios locales
+  priority: medium
+- name: Bases de datos CRM
+  examples:
+  - CRM locales
+  - Salesforce adaptado
+  - Zoho CRM
+  priority: high
+- name: Software contable
+  examples:
+  - Contpaq
+  - Aspel COI
+  - Software contable mexicano
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los costos de un funeral básico en México?
+  answer_template: Los costos varían, pero un servicio básico comienza alrededor de
+    10,000 MXN, incluyendo traslado y velatorio simple. Ofrecemos transparencia en
+    todos nuestros paquetes.
+- question: ¿Ofrecen servicios de cremación y cuáles son las opciones?
+  answer_template: Sí, ofrecemos cremación con opciones desde 15,000 MXN, cumpliendo
+    todas las normativas locales y con urnas personalizables.
+- question: ¿Cómo manejan la protección de datos personales según la LFPDPPP?
+  answer_template: Cumplimos estrictamente con la LFPDPPP, asegurando que toda información
+    personal es confidencial, segura y utilizada solo para fines autorizados.
+- question: ¿Pueden ayudar con el papeleo legal como el acta de defunción?
+  answer_template: Sí, proporcionamos asesoría y asistencia para trámites legales,
+    incluyendo el acta de defunción y permisos necesarios, agilizando el proceso.
+- question: ¿Tienen disponibilidad 24/7 para emergencias?
+  answer_template: Nuestro agente de voz AI está disponible las 24 horas del día para
+    atender consultas iniciales y derivar casos urgentes a nuestro equipo humano.
+- question: ¿Aceptan pagos a plazos o con tarjeta de crédito?
+  answer_template: Ofrecemos planes de pago flexibles y aceptamos diversas formas
+    de pago, incluyendo tarjetas de crédito y transferencias, para adaptarnos a sus
+    necesidades.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios durante una consulta inicial.
+  script: Entendemos que es un momento difícil y la transparencia es clave. Nuestros
+    servicios comienzan desde 10,000 MXN, con opciones personalizadas para ajustarse
+    a su presupuesto. ¿Le gustaría que le detalle los servicios incluidos?
+  goal: Convertir la consulta en una cita o venta al proporcionar claridad y confianza.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como cremación
+    o velatorio.
+  script: Gracias por contactarnos. Ofrecemos servicios completos como cremación,
+    velatorio, y asesoría legal. ¿Hay algún servicio en particular que le interese
+    para que podamos personalizar una solución?
+  goal: Identificar necesidades específicas y presentar soluciones adaptadas para
+    cerrar una venta.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por la privacidad de sus datos.
+  script: Nos tomamos muy en serio la protección de datos. Cumplimos con la LFPDPPP
+    y todas nuestras comunicaciones, incluidas las del agente de voz, son seguras
+    y confidenciales. ¿En qué más podemos asistirle para brindarle tranquilidad?
+  goal: Generar confianza y asegurar al cliente sobre la seguridad y conformidad normativa.
+competitors:
+- name: Funerarias García
+  positioning: Cadena nacional con amplia presencia en múltiples ciudades de México.
+  strengths:
+  - Red extensa de sucursales
+  - Servicios completos y variados
+  - Tradición en el mercado
+  weaknesses:
+  - Precios elevados
+  - Atención a veces impersonal
+  - Lenta adopción tecnológica
+  our_differentiation: Ofrecemos atención personalizada con tecnología AI para eficiencia
+    y disponibilidad 24/7, a precios más transparentes.
+- name: Servicios Funerarios Mérida
+  positioning: Empresa familiar con décadas de experiencia en el mercado local.
+  strengths:
+  - Atención cálida y personalizada
+  - Conocimiento profundo de costumbres locales
+  - Confianza en la comunidad
+  weaknesses:
+  - Tecnología limitada
+  - Horarios restringidos
+  - Falta de escalabilidad
+  our_differentiation: Combinamos la calidez humana con procesos automatizados y disponibilidad
+    constante mediante AI, mejorando la experiencia del cliente.
+- name: Cremaciones Modernas
+  positioning: Especializados en servicios de cremación con enfoque en innovación.
+  strengths:
+  - Precios competitivos
+  - Procesos rápidos y eficientes
+  - Enfoque en tendencias modernas
+  weaknesses:
+  - Servicios limitados a cremación
+  - Falta de opciones tradicionales
+  - Cobertura geográfica reducida
+  our_differentiation: Proporcionamos servicios integrales que incluyen tanto opciones
+    tradicionales como modernas, con soporte AI para una gestión holística.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 15000
+  - 50000
+  entry_point: 10000
+  roi_examples:
+  - scenario: Automatización de llamadas iniciales y programación con AI
+    monthly_cost: 5000
+    monthly_savings: 10000
+    payback_months: 1
+  value_anchors:
+  - Reduzca costos operativos hasta en un 30% con AI
+  - Mejore la satisfacción del cliente mediante respuestas rápidas y empáticas
+  - Cumpla con la LFPDPPP sin esfuerzo adicional
+market_context:
+  market_size: Estimado en 10 mil millones MXN anuales
+  growth_rate: 3% YoY
+  key_trends:
+  - Aumento en la preferencia por cremaciones sobre entierros
+  - Digitalización de servicios funerarios y memorialización en línea
+  - Mayor demanda de transparencia y opciones económicas
+  seasonality:
+    high:
+    - Noviembre (Día de Muertos)
+    - Invierno (temporada de enfermedades respiratorias)
+    low:
+    - Verano (meses de calor)
+    - Diciembre (período festivo de Navidad)
+typical_objections:
+- objection: Es muy caro, no puedo pagar esos precios.
+  response: Entendemos su preocupación. Ofrecemos planes de pago flexibles y podemos
+    personalizar un paquete para ajustarse a su presupuesto, manteniendo la calidad
+    y dignidad del servicio.
+- objection: Prefiero hablar con una persona real en lugar de una máquina.
+  response: Respetamos su preferencia. Nuestro agente de voz AI está diseñado para
+    asistirle de manera eficiente, y si lo desea, puede ser derivado inmediatamente
+    a un agente humano. ¿Le gustaría que programemos una llamada personal?
+- objection: No confío en la tecnología para algo tan sensible como un funeral.
+  response: Comprendemos su sentir. Nuestra tecnología complementa el servicio humano,
+    asegurando rapidez y precisión en momentos difíciles, mientras nuestro equipo
+    está disponible para apoyo emocional y personalizado.
+meta:
+  id: funeral
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

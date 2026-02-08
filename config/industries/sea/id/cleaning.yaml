@@ -1,0 +1,219 @@
+pain_points:
+- description: Kesulitan dalam mengelola jadwal pembersihan yang fleksibel untuk memenuhi
+    permintaan pelanggan yang berubah-ubah.
+  severity: high
+  solution_hint: AI voice agent dapat mengotomatisasi penjadwalan, menyesuaikan waktu
+    berdasarkan ketersediaan staf dan preferensi pelanggan.
+- description: Tingkat turnover karyawan yang tinggi menyebabkan gangguan dalam konsistensi
+    layanan.
+  severity: high
+  solution_hint: AI voice agent dapat membantu dalam pelatihan cepat dan pengingat
+    tugas untuk karyawan baru.
+- description: Kompleksitas dalam mematuhi regulasi PDP (Perlindungan Data Pribadi)
+    untuk data pelanggan.
+  severity: medium
+  solution_hint: AI voice agent dapat mengelola data dengan aman, memberikan pengingat
+    kepatuhan, dan menangani persetujuan pelanggan.
+- description: Kesulitan dalam menangani keluhan pelanggan secara real-time, terutama
+    di luar jam kerja.
+  severity: medium
+  solution_hint: AI voice agent dapat merespons keluhan 24/7, mengumpulkan informasi,
+    dan mengarahkan ke tim yang sesuai.
+- description: Biaya operasional yang meningkat karena inefisiensi dalam rute perjalanan
+    dan penggunaan sumber daya.
+  severity: high
+  solution_hint: AI voice agent dapat mengoptimalkan rute pembersihan dan memantau
+    penggunaan persediaan.
+- description: Persaingan ketat dari layanan pembersihan informal yang menawarkan
+    harga lebih rendah.
+  severity: medium
+  solution_hint: AI voice agent dapat menyoroti nilai tambah seperti profesionalisme
+    dan jaminan kualitas dalam penjualan.
+- description: Keterbatasan dalam pemasaran digital untuk menjangkau pelanggan baru
+    di daerah urban.
+  severity: low
+  solution_hint: AI voice agent dapat mengotomatisasi kampanye telemarketing dan follow-up
+    untuk lead generation.
+typical_services:
+- Pembersihan Rumah
+- Pembersihan Kantor
+- Pembersihan Pasca-Konstruksi
+- Jasa Laundry dan Setrika
+- Pembersihan Karpet dan Sofa
+- Pembersihan Jendela
+- Disinfeksi dan Sanitasi
+- Pembersihan Rutin Bulanan
+- Pembersihan Acara Khusus
+- Jasa Kebersihan Industri
+recommended_functions:
+- name: Penjadwalan Otomatis
+  priority: high
+  reason: Mengurangi konflik jadwal dan meningkatkan efisiensi operasional.
+- name: Pengelolaan Pelanggan
+  priority: high
+  reason: Meningkatkan retensi pelanggan dengan layanan yang personal dan responsif.
+- name: Pengingat Pembayaran
+  priority: medium
+  reason: Memastikan arus kas lancar dengan otomatisasi tagihan.
+- name: Analisis Kinerja
+  priority: medium
+  reason: Memberikan wawasan untuk meningkatkan layanan dan mengurangi biaya.
+- name: Dukungan Pelanggan 24/7
+  priority: high
+  reason: Menangani pertanyaan dan keluhan kapan saja, meningkatkan kepuasan.
+- name: Integrasi Pemesanan Online
+  priority: low
+  reason: Mempermudah pelanggan untuk memesan layanan melalui platform digital.
+typical_integrations:
+- name: Sistem CRM Lokal
+  examples:
+  - Majoo
+  - Jurnal
+  priority: high
+- name: Platform Pembayaran Digital
+  examples:
+  - GoPay
+  - OVO
+  - DANA
+  priority: high
+- name: Aplikasi Logistik
+  examples:
+  - Gojek
+  - Grab
+  priority: medium
+- name: Software Akuntansi
+  examples:
+  - Zahir
+  - Accurate
+  priority: medium
+- name: Media Sosial
+  examples:
+  - Instagram
+  - WhatsApp Business
+  priority: low
+industry_faq:
+- question: Berapa biaya jasa pembersihan untuk rumah berukuran 100 meter persegi?
+  answer_template: Biaya mulai dari IDR 300.000 hingga IDR 800.000 tergantung jenis
+    layanan dan frekuensi. Kami menawarkan penawaran khusus untuk paket rutin.
+- question: Apakah layanan Anda termasuk bahan pembersih ramah lingkungan?
+  answer_template: Ya, kami menyediakan opsi pembersihan eco-friendly dengan bahan
+    alami untuk kesehatan dan lingkungan yang lebih baik.
+- question: Bagaimana cara menjadwalkan layanan di luar jam kerja?
+  answer_template: Anda dapat menjadwalkan melalui AI voice agent kami 24/7 atau aplikasi
+    mobile untuk kenyamanan maksimal.
+- question: Apakah ada jaminan kepuasan untuk layanan pembersihan?
+  answer_template: Kami memberikan jaminan 100% kepuasan. Jika tidak puas, kami akan
+    melakukan perbaikan tanpa biaya tambahan.
+- question: Bagaimana sistem pembayaran yang tersedia?
+  answer_template: Kami menerima pembayaran tunai, transfer bank, atau digital payment
+    seperti GoPay dan OVO.
+- question: Apakah layanan Anda mencakup daerah saya di Jakarta?
+  answer_template: Ya, kami melayani berbagai daerah di Jakarta dan sekitarnya. Silakan
+    berikan alamat untuk konfirmasi cakupan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga layanan pembersihan.
+  script: Halo, terima kasih atas pertanyaannya. Biaya layanan kami disesuaikan dengan
+    ukuran area dan jenis pembersihan. Untuk estimasi, kami bisa mulai dari IDR 200.000.
+    Apakah Anda tertarik dengan pembersihan rumah atau kantor?
+  goal: Mengumpulkan informasi lebih lanjut dan mengarahkan ke penawaran yang sesuai.
+- trigger: service_inquiry
+  situation: Ketika pelanggan menanyakan layanan spesifik seperti disinfeksi.
+  script: Kami menyediakan layanan disinfeksi yang menggunakan teknologi UV dan bahan
+    aman. Ini sangat efektif untuk kesehatan, terutama di masa pandemi. Biaya mulai
+    IDR 500.000 per sesi. Apakah Anda ingin menjadwalkan?
+  goal: Menjual layanan bernilai tambah dan menutup penjualan.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan kompetitor dengan harga lebih murah.
+  script: Kami memahami pentingnya anggaran. Namun, layanan kami menawarkan jaminan
+    kualitas, staf terlatih, dan dukungan 24/7 melalui AI agent. Ini menghemat waktu
+    dan mengurangi risiko dalam jangka panjang. Mau coba bandingkan nilai yang didapat?
+  goal: Membedakan dari kompetitor dan menekankan nilai jangka panjang.
+competitors:
+- name: Clean & Green Indonesia
+  positioning: Penyedia layanan pembersihan ramah lingkungan dengan harga premium.
+  strengths:
+  - Fokus eco-friendly
+  - reputasi baik di pasar urban
+  weaknesses:
+  - Jangkauan terbatas
+  - biaya tinggi
+  our_differentiation: Kami menawarkan harga kompetitif dengan teknologi AI untuk
+    efisiensi dan layanan 24/7.
+- name: Rumah Bersih
+  positioning: Layanan pembersihan rumahan dengan harga terjangkau.
+  strengths:
+  - Harga murah
+  - jaringan luas di daerah suburban
+  weaknesses:
+  - Kualitas tidak konsisten
+  - layanan pelanggan terbatas
+  our_differentiation: Kami memberikan jaminan kualitas, pelatihan staf, dan integrasi
+    digital untuk pengalaman yang lebih baik.
+- name: GoClean (bagian dari Gojek)
+  positioning: Platform on-demand untuk layanan pembersihan melalui aplikasi.
+  strengths:
+  - Kemudahan akses
+  - brand recognition kuat
+  weaknesses:
+  - Kurang personalisasi
+  - biaya komisi tinggi
+  our_differentiation: Layanan yang lebih personal dengan AI agent untuk dukungan
+    berkelanjutan dan paket berlangganan yang fleksibel.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 200000
+  - 2000000
+  entry_point: 200000
+  roi_examples:
+  - scenario: Mengotomatisasi penjadwalan dan mengurangi waktu administrasi 10 jam
+      per bulan.
+    monthly_cost: 500000
+    monthly_savings: 1500000
+    payback_months: 1
+  value_anchors:
+  - Hemat hingga 30% waktu dengan otomatisasi
+  - Tingkatkan retensi pelanggan dengan layanan responsif
+  - Kurangi biaya operasional dengan optimasi rute
+market_context:
+  market_size: IDR 10 triliun per tahun
+  growth_rate: 15% YoY
+  key_trends:
+  - Peningkatan permintaan untuk layanan disinfeksi pasca-pandemi
+  - Adopsi teknologi digital untuk pemesanan online
+  - Tren eco-friendly dalam produk pembersihan
+  seasonality:
+    high:
+    - Bulan Ramadan
+    - Akhir tahun (Desember)
+    low:
+    - Bulan puasa (awal Ramadan)
+    - Musim hujan (Januari-Februari)
+typical_objections:
+- objection: Harganya terlalu mahal dibandingkan dengan layanan lain.
+  response: Kami memahami kekhawatiran Anda. Namun, layanan kami termasuk jaminan
+    kualitas, staf profesional, dan dukungan AI 24/7 yang menghemat waktu dan biaya
+    tersembunyi. Mau kami tunjukkan perhitungan ROI-nya?
+- objection: Saya sudah puas dengan layanan pembersihan saat ini.
+  response: Bagus sekali! Kami senang mendengarnya. Tapi, apakah layanan saat ini
+    menawarkan otomatisasi penjadwalan atau dukungan digital? Kami bisa membantu meningkatkan
+    efisiensi lebih lanjut.
+- objection: Tidak yakin dengan keandalan teknologi AI untuk bisnis saya.
+  response: AI agent kami dirancang untuk mendukung, bukan menggantikan, tim Anda.
+    Ini telah terbukti mengurangi beban administrasi hingga 40% pada klien lain. Mau
+    coba demo gratis?
+meta:
+  id: cleaning
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

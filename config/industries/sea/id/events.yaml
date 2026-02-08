@@ -1,0 +1,228 @@
+pain_points:
+- description: Kesulitan dalam mengelola banyak vendor dan pemasok secara manual,
+    sering terjadi miskomunikasi dan keterlambatan.
+  severity: high
+  solution_hint: AI dapat mengotomatiskan koordinasi dengan vendor melalui panggilan
+    dan pesan teks, mengonfirmasi detail, dan memperbarui status secara real-time.
+- description: Perubahan mendadak dalam rencana acara (seperti perubahan jumlah tamu,
+    menu, atau dekorasi) yang sulit dikelola dengan cepat.
+  severity: high
+  solution_hint: Agen suara AI dapat segera menghubungi vendor terkait untuk menegosiasikan
+    perubahan, memastikan semua pihak mendapatkan informasi terbaru.
+- description: Anggaran acara yang terbatas, tetapi tekanan untuk menghasilkan acara
+    yang berkualitas dan mewah.
+  severity: medium
+  solution_hint: AI dapat mencarikan rekomendasi vendor dengan harga kompetitif dan
+    menegosiasikan diskon melalui panggilan otomatis.
+- description: Kesulitan memastikan kepatuhan terhadap peraturan PDP (Perlindungan
+    Data Pribadi) dalam mengelola data tamu dan peserta.
+  severity: medium
+  solution_hint: AI dapat mengelola persetujuan dan preferensi data secara otomatis,
+    serta memberikan pembaruan reguler tentang kepatuhan.
+- description: Koordinasi tim internal dan eksternal yang tidak efisien, menyebabkan
+    tugas terlewat atau tumpang tindih.
+  severity: medium
+  solution_hint: AI dapat menjadi pusat koordinasi, menugaskan tugas, mengirim pengingat,
+    dan melaporkan kemajuan melalui panggilan dan notifikasi.
+- description: Tingkat stres tinggi karena tekanan waktu dan tuntutan klien yang berubah-ubah.
+  severity: low
+  solution_hint: AI dapat menangani panggilan rutin dan pertanyaan klien, memberikan
+    waktu lebih bagi staf untuk fokus pada perencanaan strategis.
+- description: Kesulitan dalam mengukur ROI (Return on Investment) acara dan melacak
+    lead yang dihasilkan.
+  severity: low
+  solution_hint: AI dapat mengumpulkan dan menganalisis data umpan balik pasca-acara
+    melalui survei telepon otomatis, menghasilkan laporan insights.
+typical_services:
+- Acara Pernikahan
+- Konferensi dan Seminar Bisnis
+- Peluncuran Produk
+- Acara Korporat (Company Gathering, Annual Meeting)
+- Bazaar dan Pameran Dagang
+- Acara Musik dan Konser
+- Acara Sosial dan Amal
+- Acara Ulang Tahun dan Perayaan Pribadi
+- MICE (Meeting, Incentive, Convention, Exhibition) Planning
+- Event Brand Activation
+recommended_functions:
+- name: Penjadwalan dan Konfirmasi Vendor Otomatis
+  priority: high
+  reason: Mengurangi miskomunikasi dan menghemat waktu staf dalam koordinasi harian.
+- name: Manajemen Pendaftaran dan Check-in Tamu
+  priority: high
+  reason: Meningkatkan pengalaman tamu dan efisiensi pada hari acara, sekaligus mengelola
+    data sesuai PDP.
+- name: Negosiasi Harga dan Pencarian Vendor
+  priority: medium
+  reason: Membantu mengontrol anggaran dan menemukan pilihan terbaik secara cepat.
+- name: Pengingat dan Notifikasi untuk Peserta
+  priority: medium
+  reason: Memastikan kehadiran dan mengurangi no-show dengan komunikasi proaktif.
+- name: Survei Kepuasan Pasca-Acara Otomatis
+  priority: low
+  reason: Mengumpulkan umpan balik berharga untuk perbaikan dan pembuktian ROI.
+- name: Penerjemahan Instan untuk Acara Internasional
+  priority: low
+  reason: Mendukung klien yang memiliki peserta dari berbagai negara di wilayah SEA.
+typical_integrations:
+- name: Platform Pembayaran Digital
+  examples:
+  - GoPay
+  - OVO
+  - DANA
+  - LinkAja
+  priority: high
+- name: Software Manajemen Event
+  examples:
+  - Eventbrite (adaptasi lokal)
+  - platform custom
+  priority: high
+- name: Sistem CRM (Customer Relationship Management)
+  examples:
+  - Mekari
+  - Salesforce
+  priority: medium
+- name: Aplikasi Pesan dan Komunikasi
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+- name: Software Akuntansi dan Keuangan
+  examples:
+  - Jurnal
+  - Accurate Online
+  priority: low
+industry_faq:
+- question: Apakah layanan Anda sudah mematuhi peraturan PDP Indonesia?
+  answer_template: Ya, sepenuhnya. Sistem kami dirancang untuk mengelola data pribadi
+    dengan standar keamanan tinggi dan persetujuan eksplisit, sesuai dengan Undang-Undang
+    PDP.
+- question: Berapa lama waktu yang dibutuhkan untuk menyiapkan agen suara AI untuk
+    acara kami?
+  answer_template: Untuk setup dasar, kami hanya butuh 3-5 hari kerja. Waktu dapat
+    bervariasi tergantung kompleksitas alur kerja dan integrasi yang dibutuhkan.
+- question: Bisakah AI menangani negosiasi dengan vendor dalam bahasa Indonesia?
+  answer_template: Tentu. Agen kami dilatih untuk berkomunikasi dan menegosiasikan
+    hal-hal rutin seperti konfirmasi ketersediaan, harga, dan jadwal dalam bahasa
+    Indonesia secara profesional.
+- question: Bagaimana cara mengukur keberhasilan penggunaan AI dalam acara kami?
+  answer_template: Kami menyediakan dashboard yang melacak metrik seperti pengurangan
+    waktu koordinasi, penurunan kesalahan komunikasi, peningkatan kepuasan vendor,
+    dan efisiensi biaya.
+- question: Apakah layanan ini cocok untuk acara skala kecil?
+  answer_template: Sangat cocok. Kami memiliki paket fleksibel yang dapat disesuaikan,
+    bahkan untuk acara dengan anggaran terbatas. Automasi membantu acara kecil berjalan
+    lebih lancar tanpa menambah staf.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga di awal percakapan.
+  script: Tentu, pak/bu. Harga kami sangat kompetitif dan disesuaikan dengan skala
+    dan kompleksitas acara Anda. Sebagai gambaran, layanan dasar mulai dari Rp 2.500.000
+    per bulan sudah dapat mengotomatiskan koordinasi vendor dan manajemen tamu. Boleh
+    saya tahu kira-kira jenis acara apa yang sedang Anda rencanakan, agar saya bisa
+    memberikan penawaran yang lebih tepat?
+  goal: Memperoleh informasi tentang kebutuhan spesifik klien dan mengarahkan percakapan
+    ke nilai, bukan hanya harga.
+- trigger: objection_too_busy
+  situation: Ketika calon klien mengatakan terlalu sibuk untuk mendiskusikan lebih
+    lanjut.
+  script: Saya mengerti kesibukan Anda dalam merencanakan acara. Justru karena itulah
+    solusi kami ada. Bagaimana jika saya jadwalkan panggilan singkat 10 menit besok
+    pada jam yang Anda tentukan? Kami akan langsung demo bagaimana AI kami dapat menghemat
+    puluhan jam kerja Anda untuk koordinasi. Waktu Anda sangat berharga, izinkan kami
+    membantu mengelolanya.
+  goal: Mengatasi penolakan dengan menawarkan komitmen waktu minimal dan langsung
+    menunjukkan nilai (penghematan waktu).
+- trigger: interest_in_demo
+  situation: Ketika calon klien tertarik untuk melihat demonstrasi.
+  script: Bagus sekali! Dalam demo 15 menit, saya akan tunjukkan bagaimana agen suara
+    AI kami menangani konfirmasi vendor, mengingatkan peserta, dan mengumpulkan umpan
+    balik — semuanya dalam bahasa Indonesia. Kapan waktu yang nyaman untuk Anda? Kami
+    bisa lakukan via Zoom atau saya kunjungi kantor Anda.
+  goal: Mengatur janji temu demo yang konkret dan menegaskan kemudahan serta lokalisasi
+    solusi.
+competitors:
+- name: EventJakarta
+  positioning: Penyedia layanan event planning konvensional yang sudah mapan.
+  strengths:
+  - Tim manusia yang berpengalaman
+  - jaringan vendor lokal yang luas
+  - reputasi baik untuk acara besar.
+  weaknesses:
+  - Proses manual yang lambat
+  - biaya operasional tinggi
+  - kurang scalable untuk banyak acara sekaligus.
+  our_differentiation: Kami menawarkan efisiensi biaya dan waktu yang jauh lebih besar
+    melalui automasi, dengan kemampuan menangani banyak acara secara bersamaan tanpa
+    penambahan staf signifikan.
+- name: Platform online booking acara (contoh umum)
+  positioning: Marketplace digital untuk booking venue dan vendor secara mandiri.
+  strengths:
+  - Kemudahan akses
+  - pilihan banyak
+  - transparansi harga awal.
+  weaknesses:
+  - Tidak ada koordinasi terpusat
+  - dukungan pasca-booking terbatas
+  - risiko miskomunikasi tinggi.
+  our_differentiation: Kami bukan hanya marketplace, tapi mitra koordinasi aktif.
+    AI kami memastikan semua pihak terhubung dan terinformasi, mengurangi risiko kesalahan.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 5000000
+  - 100000000
+  entry_point: 2500000
+  roi_examples:
+  - scenario: Acara pernikahan dengan 20 vendor yang perlu dikonfirmasi dan dikoordinasi.
+    monthly_cost: 4000000
+    monthly_savings: 12000000
+    payback_months: 0.33
+  value_anchors:
+  - Hemat hingga 30 jam waktu koordinasi staf per acara.
+  - Turunkan kesalahan komunikasi dengan vendor hingga 70%.
+  - Kelola data tamu aman dan sesuai PDP.
+market_context:
+  market_size: Diperkirakan Rp 50 triliun (pra-pandemi), sedang pulih dengan kuat.
+  growth_rate: 15-20% YoY (pascapandemi).
+  key_trends:
+  - Permintaan tinggi untuk acara hybrid (offline dan online).
+  - Kesadaran akan pentingnya kepatuhan data (PDP) meningkat.
+  - Digitalisasi proses event management menjadi kebutuhan, bukan lagi pilihan.
+  seasonality:
+    high:
+    - Juni-Agustus (liburan sekolah
+    - acara perusahaan pertengahan tahun)
+    - November-Desember (akhir tahun
+    - perayaan natal & tahun baru)
+    low:
+    - Januari-Februari (setelah tahun baru)
+    - Bulan Ramadan (untuk beberapa segmen acara)
+typical_objections:
+- objection: Kami sudah terbiasa dengan cara manual dan tim kami sudah handal.
+  response: Itu hebat. Bayangkan jika tim handal Anda dibebaskan dari tugas rutin
+    seperti menelepon vendor untuk konfirmasi. Mereka bisa fokus pada kreativitas
+    dan hubungan klien yang justru lebih meningkatkan kualitas acara.
+- objection: Teknologi AI terdengar rumit dan mahal untuk diimplementasikan.
+  response: Justru sebaliknya. Kami yang menangani semua kompleksitas teknis. Anda
+    hanya perlu berinteraksi dengan agen suara dalam bahasa Indonesia seperti berbicara
+    dengan asisten. Biaya implementasi awal kami sudah termasuk onboarding lengkap.
+- objection: Saya khawatir dengan keamanan data klien dan tamu kami.
+  response: Kekhawatiran yang valid. Keamanan data adalah prioritas utama kami. Sistem
+    kami menggunakan enkripsi dan protokol keamanan tingkat tinggi, serta dirancang
+    khusus untuk mematuhi UU PDP Indonesia. Kami bisa memberikan dokumen kepatuhan
+    detail untuk Anda tinjau.
+meta:
+  id: events
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

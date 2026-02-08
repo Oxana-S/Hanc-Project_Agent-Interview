@@ -1,0 +1,226 @@
+pain_points:
+- description: Alta rotatividade de funcionários, levando a custos recorrentes com
+    treinamento e inconsistência na qualidade do serviço.
+  severity: high
+  solution_hint: Agente de voz pode automatizar treinamento inicial e fornecer suporte
+    contínuo, reduzindo a necessidade de supervisão humana.
+- description: Dificuldade em gerenciar agendamentos e cancelamentos de última hora,
+    causando ociosidade ou sobrecarga de trabalho.
+  severity: high
+  solution_hint: Integrar com sistemas de agendamento para otimizar horários e enviar
+    lembretes automáticos via voz, melhorando a eficiência.
+- description: Custos elevados com produtos de limpeza e equipamentos, afetando a
+    margem de lucro.
+  severity: medium
+  solution_hint: Agente de voz pode monitorar inventário e sugerir compras baseadas
+    em demanda, integrando-se a fornecedores locais.
+- description: Conformidade com a LGPD (Lei Geral de Proteção de Dados) no tratamento
+    de informações de clientes e funcionários.
+  severity: high
+  solution_hint: Automatizar consentimentos e políticas de privacidade via interações
+    de voz, garantindo conformidade sem esforço manual.
+- description: Concorrência intensa com serviços informais, dificultando a diferenciação
+    e a fidelização de clientes.
+  severity: medium
+  solution_hint: Agente de voz pode personalizar atendimento e oferecer promoções
+    baseadas em histórico, aumentando a retenção.
+- description: Dificuldade em expandir para novos bairros ou cidades devido a logística
+    complexa e falta de visibilidade local.
+  severity: low
+  solution_hint: Usar análise de dados via voz para identificar áreas de demanda e
+    otimizar rotas de serviço.
+typical_services:
+- Limpeza residencial
+- Limpeza comercial
+- Limpeza pós-obra
+- Limpeza de tapetes e estofados
+- Limpeza de vidros
+- Limpeza pesada (faxina)
+- Serviços de jardinagem associados
+- Limpeza de piscinas
+- Desinfecção e sanitização
+- Organização residencial
+recommended_functions:
+- name: Agendamento automático de serviços
+  priority: high
+  reason: Reduz perda de tempo com marcações manuais e minimiza erros, aumentando
+    a eficiência operacional.
+- name: Resposta a perguntas frequentes (FAQ) sobre serviços e preços
+  priority: high
+  reason: Libera equipe humana para tarefas complexas e melhora a experiência do cliente
+    com respostas instantâneas.
+- name: Processamento de pagamentos via integração com gateways locais
+  priority: medium
+  reason: Facilita cobranças e reduz inadimplência, adaptando-se aos métodos preferidos
+    no Brasil como Pix.
+- name: Monitoramento de feedback e reclamações
+  priority: medium
+  reason: Permite correções rápidas e melhoria contínua dos serviços, essencial para
+    reputação.
+- name: Gestão de inventário de produtos de limpeza
+  priority: low
+  reason: Otimiza custos e evita faltas, integrando-se a sistemas de fornecedores
+    brasileiros.
+- name: Envio de lembretes e confirmações por voz
+  priority: high
+  reason: Reduz taxas de cancelamento e melhora a pontualidade, comum em mercados
+    urbanos do Brasil.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - Totvs
+  - SAP
+  priority: high
+- name: Aplicativos de agendamento
+  examples:
+  - Agenda Fácil
+  - Youse
+  priority: high
+- name: Gateways de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  priority: medium
+- name: Softwares de gestão de clientes (CRM)
+  examples:
+  - RD Station
+  - PipeRun
+  priority: medium
+- name: Sistemas de contabilidade
+  examples:
+  - ContaAzul
+  - Bling
+  priority: low
+industry_faq:
+- question: Quais são os horários disponíveis para agendamento?
+  answer_template: Oferecemos horários flexíveis, incluindo finais de semana e feriados,
+    com agendamento rápido via nosso sistema automatizado.
+- question: Como é feita a cobrança dos serviços?
+  answer_template: Cobramos por serviço ou pacote mensal, com opções de pagamento
+    via Pix, cartão ou boleto, integrado a gateways seguros.
+- question: Vocês usam produtos de limpeza eco-friendly?
+  answer_template: Sim, priorizamos produtos sustentáveis e podemos personalizar conforme
+    suas preferências, garantindo qualidade e segurança.
+- question: Qual é a política de cancelamento ou remarcação?
+  answer_template: Permitimos cancelamentos até 24 horas antes sem custo, e remarcações
+    fáceis através do nosso agente de voz.
+- question: Como garantem a qualidade do serviço?
+  answer_template: Temos checklists padronizados e feedback em tempo real via nosso
+    sistema, com ajustes rápidos se necessário.
+- question: Vocês atendem em toda a cidade?
+  answer_template: Cobrimos a maioria das áreas urbanas, e nosso agente pode verificar
+    disponibilidade específica para seu bairro.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma ligação inicial.
+  script: Olá! Entendo sua preocupação com custos. Oferecemos planos a partir de R$
+    150 por serviço básico, com descontos para pacotes mensais. Posso ajudar a calcular
+    uma estimativa personalizada baseada nas suas necessidades?
+  goal: Educar sobre opções de preço e gerar interesse em uma proposta personalizada.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como limpeza pós-obra.
+  script: Ótima pergunta! Para limpeza pós-obra, fornecemos uma equipe especializada
+    com equipamentos profissionais, a partir de R$ 300. Garantimos que tudo fique
+    impecável para você se mudar. Posso agendar uma visita para avaliação?
+  goal: Converter a consulta em um agendamento ou venda.
+- trigger: objection_quality
+  situation: Quando um cliente expressa dúvidas sobre a qualidade do serviço.
+  script: Compreendo sua preocupação. Usamos processos padronizados e feedback contínuo
+    via LGPD para assegurar excelência. Oferecemos uma garantia de satisfação ou reajuste
+    sem custo adicional. Que tal experimentar com um serviço inicial com desconto?
+  goal: Superar objeções e fechar uma venda inicial.
+- trigger: follow_up
+  situation: Após uma consulta não concluída, para reengajar o cliente.
+  script: Olá, [Nome]! Vi que você demonstrou interesse em nossos serviços de limpeza.
+    Temos uma promoção especial esta semana para novos clientes. Posso ajudar a agendar
+    algo conveniente para você?
+  goal: Reativar leads e aumentar as taxas de conversão.
+competitors:
+- name: Limppano
+  positioning: Franquia nacional com foco em limpeza residencial e comercial.
+  strengths:
+  - Reconhecimento de marca
+  - Rede ampla de franqueados
+  weaknesses:
+  - Custos elevados para franqueados
+  - Atendimento padronizado, pouco personalizado
+  our_differentiation: Oferecemos automação via voz para atendimento mais ágil e personalizado,
+    com integrações locais que reduzem custos.
+- name: Dona Limpeza
+  positioning: Serviços informais e de baixo custo, comuns em cidades menores.
+  strengths:
+  - Preços competitivos
+  - Flexibilidade local
+  weaknesses:
+  - Qualidade inconsistente
+  - Falta de conformidade com LGPD
+  our_differentiation: Garantimos qualidade padronizada e conformidade legal, com
+    tecnologia que otimiza preços sem comprometer o serviço.
+- name: CleanCloud Brasil
+  positioning: Empresa regional no Sudeste, focada em limpeza comercial de alto padrão.
+  strengths:
+  - Expertise em grandes contratos
+  - Equipamentos avançados
+  weaknesses:
+  - Pouca acessibilidade para pequenos negócios
+  - Processos manuais lentos
+  our_differentiation: Usamos AI para escalar serviços para todos os tamanhos de negócios,
+    com ROI rápido e suporte em português nativo.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automação de agendamento para uma pequena empresa, reduzindo horas administrativas.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Economize até 30% do tempo com agendamentos automatizados.
+  - Conformidade LGPD incluída sem custos extras.
+  - Preços competitivos com descontos para fidelidade.
+market_context:
+  market_size: Estimado em R$ 15 bilhões anuais
+  growth_rate: 7% ao ano
+  key_trends:
+  - Aumento da demanda por serviços de desinfecção pós-pandemia.
+  - Crescimento de serviços eco-friendly e sustentáveis.
+  - Adoção de tecnologia para gestão remota em cidades grandes como São Paulo e Rio.
+  seasonality:
+    high:
+    - Feriados de fim de ano
+    - Período de mudanças (verão)
+    low:
+    - Mesas de inverno em regiões sul
+    - Carnaval (dependendo da região)
+typical_objections:
+- objection: É muito caro comparado a serviços informais.
+  response: Entendo, mas nossa tecnologia garante qualidade consistente e conformidade
+    com LGPD, evitando riscos e economizando tempo a longo prazo. Oferecemos um teste
+    com desconto para você ver a diferença.
+- objection: Não confio em serviços automatizados para algo importante como limpeza.
+  response: Nossa automação complementa a equipe humana, não a substitui. Temos supervisão
+    constante e feedback em tempo real, garantindo que nada passe despercebido.
+- objection: Já tenho um fornecedor estabelecido.
+  response: Que ótimo! Podemos oferecer integração com seus sistemas existentes para
+    melhorar eficiência, sem interromper seu fluxo atual. Vamos agendar uma demonstração?
+- objection: Prefiro lidar com pessoas diretamente, não com máquinas.
+  response: Nosso agente de voz atua como um assistente, liberando nossa equipe para
+    interações mais pessoais quando necessário. Você ainda tem suporte humano sempre
+    que precisar.
+meta:
+  id: cleaning
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

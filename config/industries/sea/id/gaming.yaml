@@ -1,0 +1,193 @@
+pain_points:
+- description: Biaya dukungan pelanggan yang tinggi karena volume panggilan dan pesan yang besar.
+  severity: high
+  solution_hint: AI voice agent dapat menangani pertanyaan umum secara otomatis, mengurangi beban tim dukungan.
+- description: Keterlambatan dalam menanggapi keluhan pelanggan, memengaruhi reputasi merek.
+  severity: medium
+  solution_hint: AI voice agent dapat merespons segera, 24/7, meningkatkan kepuasan pelanggan.
+- description: Kesulitan dalam mematuhi regulasi PDP (Perlindungan Data Pribadi) Indonesia.
+  severity: high
+  solution_hint: AI voice agent dapat dilengkapi dengan fitur keamanan data dan audit trail untuk kepatuhan.
+- description: Biaya pemasaran yang mahal untuk menjangkau audiens game di berbagai platform.
+  severity: medium
+  solution_hint: AI voice agent dapat digunakan untuk kampanye telemarketing yang terpersonalisasi dan efisien.
+- description: Rendahnya retensi pemain karena kurangnya interaksi personal.
+  severity: medium
+  solution_hint: AI voice agent dapat mengirim pesan pengingat atau penawaran khusus berdasarkan perilaku pemain.
+- description: Kompleksitas dalam mengelola komunitas game multibahasa di Indonesia.
+  severity: low
+  solution_hint: AI voice agent dengan kemampuan multibahasa dapat berinteraksi dengan pemain dari berbagai daerah.
+- description: Ketidakefisienan dalam penanganan transaksi pembayaran dan top-up.
+  severity: high
+  solution_hint: AI voice agent dapat terintegrasi dengan gateway pembayaran lokal untuk otomatisasi proses.
+typical_services:
+- Pengembangan game mobile
+- Layanan lokalisasi konten game
+- Manajemen komunitas pemain
+- Dukungan teknis dan customer service
+- Pemasaran dan promosi game
+- Analitik data pemain
+- Integrasi sistem pembayaran
+- Layanan monetisasi dan iklan dalam game
+- Pengelolaan turnamen esports
+- Konsultasi strategi game
+recommended_functions:
+- name: Otomatisasi dukungan pelanggan
+  priority: high
+  reason: Mengurangi biaya operasional dan meningkatkan respons waktu.
+- name: Penjadwalan dan pengingat turnamen
+  priority: medium
+  reason: Meningkatkan partisipasi dan keterlibatan pemain.
+- name: Telemarketing untuk promosi game baru
+  priority: medium
+  reason: Menjangkau audiens potensial dengan cara yang personal.
+- name: Integrasi pembayaran dan top-up
+  priority: high
+  reason: Mempermudah transaksi pemain dan mengurangi kesalahan manual.
+- name: Analisis sentimen pelanggan
+  priority: low
+  reason: Memberikan wawasan untuk perbaikan game dan layanan.
+- name: Notifikasi peristiwa dalam game
+  priority: medium
+  reason: Meningkatkan retensi pemain dengan interaksi yang relevan.
+typical_integrations:
+- name: Sistem pembayaran
+  examples:
+  - GoPay
+  - OVO
+  - DANA
+  - LinkAja
+  priority: high
+- name: Platform game
+  examples:
+  - Steam
+  - Google Play Store
+  - Apple App Store
+  priority: high
+- name: CRM lokal
+  examples:
+  - Jurnal
+  - Mekari
+  - Sleekr
+  priority: medium
+- name: Sistem analitik
+  examples:
+  - Google Analytics
+  - Mixpanel
+  priority: medium
+- name: Alat komunikasi
+  examples:
+  - WhatsApp Business
+  - Telegram API
+  priority: low
+industry_faq:
+- question: Berapa biaya untuk layanan AI voice agent di industri game?
+  answer_template: Biaya dimulai dari IDR 50 juta per bulan, tergantung pada skala dan fitur yang dibutuhkan. Kami menawarkan paket yang dapat disesuaikan dengan kebutuhan bisnis Anda.
+- question: Apakah AI voice agent dapat menangani pertanyaan teknis tentang game?
+  answer_template: Ya, AI kami dapat dilatih dengan basis pengetahuan game Anda untuk menjawab pertanyaan teknis umum, dan mengalihkan ke agen manusia jika diperlukan.
+- question: Bagaimana dengan kepatuhan terhadap regulasi PDP Indonesia?
+  answer_template: Sistem kami dirancang dengan enkripsi data dan kebijakan privasi yang ketat, memastikan kepatuhan penuh terhadap PDP.
+- question: Dapatkah AI voice agent berintegrasi dengan sistem pembayaran lokal?
+  answer_template: Tentu, kami mendukung integrasi dengan berbagai gateway pembayaran populer di Indonesia seperti GoPay dan OVO.
+- question: Berapa lama waktu implementasi untuk layanan ini?
+  answer_template: Implementasi biasanya memakan waktu 2-4 minggu, termasuk pelatihan AI dan integrasi dengan sistem yang ada.
+- question: Apakah ada dukungan dalam bahasa daerah Indonesia?
+  answer_template: Ya, AI kami mendukung multiple bahasa Indonesia, termasuk dialek utama, untuk interaksi yang lebih personal.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga layanan.
+  script: Halo, terima kasih atas pertanyaannya. Biaya layanan AI voice agent kami dimulai dari IDR 50 juta per bulan, yang dapat menghemat hingga 30% biaya dukungan pelanggan Anda. Apakah Anda ingin saya
+    jelaskan lebih detail tentang paket yang tersedia?
+  goal: Mengklarifikasi harga dan menyoroti nilai ROI.
+- trigger: compliance_concern
+  situation: Ketika pelanggan khawatir tentang kepatuhan PDP.
+  script: Saya memahami kekhawatiran Anda. Sistem kami sepenuhnya mematuhi regulasi PDP Indonesia dengan fitur keamanan data terenkripsi. Kami telah membantu banyak perusahaan game di sini tanpa masalah
+    kepatuhan.
+  goal: Menenangkan pelanggan dan membangun kepercayaan.
+- trigger: integration_inquiry
+  situation: Ketika pelanggan bertanya tentang integrasi dengan sistem mereka.
+  script: Kami dapat dengan mudah terintegrasi dengan sistem pembayaran seperti GoPay atau CRM lokal Anda. Prosesnya cepat dan kami menyediakan dukungan teknis penuh selama implementasi.
+  goal: Menunjukkan kemudahan integrasi dan dukungan.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan pesaing.
+  script: Saya familiar dengan layanan mereka. Keunggulan kami adalah personalisasi yang lebih baik untuk pasar Indonesia dan harga yang kompetitif dengan dukungan lokal yang lebih responsif.
+  goal: Membedakan diri dari pesaing dan menekankan keunggulan lokal.
+competitors:
+- name: GameLab Indonesia
+  positioning: Penyedia layanan pengembangan game lokal.
+  strengths:
+  - Pemahaman mendalam tentang pasar Indonesia
+  - jaringan lokal yang kuat
+  weaknesses:
+  - Layanan AI terbatas
+  - biaya tinggi untuk skala besar
+  our_differentiation: Kami menawarkan solusi AI yang lebih terjangkau dan terintegrasi untuk otomatisasi lengkap.
+- name: Sea Group (Garena)
+  positioning: Platform game regional besar.
+  strengths:
+  - Infrastruktur luas
+  - basis pengguna besar
+  weaknesses:
+  - Fokus pada platform sendiri
+  - kurang personalisasi untuk bisnis kecil
+  our_differentiation: Kami menyediakan solusi khusus untuk bisnis game individual dengan dukungan AI yang dapat disesuaikan.
+- name: Local call center agencies
+  positioning: Penyedia layanan dukungan pelanggan tradisional.
+  strengths:
+  - Pengalaman manusia yang personal
+  - biaya awal rendah
+  weaknesses:
+  - Tidak skalabel
+  - biaya operasional tinggi jangka panjang
+  our_differentiation: AI kami mengurangi biaya hingga 50% dengan efisiensi 24/7 dan skalabilitas instan.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000000
+  - 200000000
+  entry_point: 50000000
+  roi_examples:
+  - scenario: Mengurangi beban dukungan pelanggan untuk game dengan 10.000 pengguna aktif.
+    monthly_cost: 75000000
+    monthly_savings: 137500000
+    payback_months: 3
+  value_anchors:
+  - Hemat hingga 30% biaya operasional dukungan pelanggan.
+  - Tingkatkan retensi pemain dengan interaksi otomatis yang personal.
+  - Implementasi cepat dengan ROI dalam 3-6 bulan.
+market_context:
+  market_size: USD 2 miliar pada 2023
+  growth_rate: 15% YoY
+  key_trends:
+  - Pertumbuhan pesat game mobile di Indonesia.
+  - Meningkatnya minat dalam esports dan turnamen.
+  - Adopsi pembayaran digital seperti e-wallet.
+  seasonality:
+    high:
+    - Liburan sekolah
+    - festival seperti Lebaran
+    - akhir pekan
+    low:
+    - Musim ujian
+    - bulan-bulan awal tahun
+typical_objections:
+- objection: AI voice agent terdengar tidak personal bagi pemain kami.
+  response: AI kami dapat dikustomisasi dengan nada dan bahasa yang sesuai dengan komunitas game Anda, bahkan meniru interaksi manusia untuk pengalaman yang lebih engaging.
+- objection: Kami sudah memiliki tim dukungan, jadi tidak perlu AI.
+  response: AI dapat melengkapi tim Anda dengan menangani pertanyaan rutin, memungkinkan tim fokus pada masalah kompleks dan meningkatkan efisiensi keseluruhan.
+- objection: Biaya awal terlalu tinggi untuk startup game.
+  response: Kami menawarkan paket entry-level yang terjangkau, dan dengan penghematan biaya operasional, investasi ini akan terbayar dalam beberapa bulan.
+meta:
+  id: gaming
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- gaming
+- esports
+- game center
+- internet cafe
+_extends: _base/gaming

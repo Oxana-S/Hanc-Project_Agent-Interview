@@ -1,0 +1,251 @@
+pain_points:
+- description: Difficulté à gérer les inscriptions et la participation aux événements
+    religieux en raison de processus manuels et peu centralisés.
+  severity: high
+  solution_hint: Automatisation de la gestion des inscriptions via agent vocal pour
+    simplifier les démarches.
+- description: Communication inefficace avec les membres de la communauté, notamment
+    pour annoncer les horaires des offices et événements.
+  severity: high
+  solution_hint: Utilisation d’un agent vocal pour diffuser des messages personnalisés
+    et rappels automatiques.
+- description: Respect strict des règles de confidentialité et conformité au RGPD
+    pour la gestion des données personnelles des fidèles.
+  severity: high
+  solution_hint: Intégration de protocoles conformes au RGPD dans les interactions
+    vocales.
+- description: Manque de ressources humaines pour répondre aux appels et questions
+    fréquentes concernant les services religieux.
+  severity: medium
+  solution_hint: Agent vocal disponible 24/7 pour répondre aux questions courantes.
+- description: Difficulté à collecter les dons ou contributions financières de manière
+    sécurisée et simple.
+  severity: medium
+  solution_hint: Fonctionnalités d’orientation vocale vers les plateformes de dons
+    sécurisées.
+- description: Coordination complexe entre différents lieux de culte et organisations
+    religieuses locales.
+  severity: medium
+  solution_hint: Centralisation des informations et assistance vocale pour les mises
+    à jour en temps réel.
+- description: Adaptation aux différentes langues et dialectes parlés par les communautés
+    religieuses en France.
+  severity: low
+  solution_hint: Agent vocal multilingue pour améliorer l’accessibilité.
+typical_services:
+- Organisation des offices religieux
+- Gestion des inscriptions aux événements et cérémonies
+- Diffusion d’annonces et d’informations communautaires
+- Collecte et gestion des dons
+- Soutien spirituel et réponses aux questions fréquentes
+- Coordination entre paroisses et lieux de culte
+- Formation et accompagnement des bénévoles
+- Communication interne et externe (bulletins, newsletters)
+- Gestion des archives et documents religieux
+- Services d’accueil et d’orientation des fidèles
+recommended_functions:
+- name: Gestion des inscriptions vocales
+  priority: high
+  reason: Simplifie et automatise les réservations aux événements.
+- name: Diffusion d’annonces personnalisées
+  priority: high
+  reason: Maintient la communauté informée efficacement.
+- name: Réponses aux questions fréquentes (FAQ)
+  priority: high
+  reason: Réduit la charge des équipes en répondant aux demandes courantes.
+- name: Intégration RGPD
+  priority: high
+  reason: Assure la conformité légale dans la gestion des données.
+- name: Orientation vers des plateformes de dons
+  priority: medium
+  reason: Facilite la collecte des contributions financières.
+- name: Multilinguisme vocal
+  priority: medium
+  reason: Améliore l’accessibilité pour toutes les communautés.
+- name: Assistance à la coordination inter-paroisses
+  priority: medium
+  reason: Optimise la communication entre différents lieux de culte.
+typical_integrations:
+- name: CRM communautaire
+  examples:
+  - EgliseCRM
+  - GestEglise
+  priority: high
+- name: Plateformes de dons en ligne
+  examples:
+  - HelloAsso
+  - PayPal France
+  priority: high
+- name: Logiciels de gestion d’événements
+  examples:
+  - Eventbrite
+  - Weezevent
+  priority: medium
+- name: Solutions de messagerie et newsletter
+  examples:
+  - Mailjet
+  - Sendinblue
+  priority: medium
+- name: Systèmes comptables locaux
+  examples:
+  - Sage
+  - Cegid
+  priority: low
+- name: Services de téléphonie IP
+  examples:
+  - OVH Télécom
+  - Orange Business Services
+  priority: medium
+industry_faq:
+- question: Quels sont les horaires des offices religieux ?
+  answer_template: Les horaires des offices sont disponibles sur notre site web et
+    peuvent être communiqués par notre agent vocal à tout moment.
+- question: Comment puis-je m’inscrire à une cérémonie ou un événement ?
+  answer_template: Vous pouvez vous inscrire facilement via notre agent vocal ou en
+    ligne sur notre plateforme dédiée.
+- question: Comment faire un don à la paroisse de manière sécurisée ?
+  answer_template: Nous proposons plusieurs options sécurisées, notamment via notre
+    plateforme HelloAsso, accessible par notre agent vocal.
+- question: Mes données personnelles sont-elles protégées conformément au RGPD ?
+  answer_template: Oui, toutes vos données sont traitées conformément au RGPD, et
+    notre agent vocal respecte les normes strictes de confidentialité.
+- question: Puis-je parler à un membre du clergé pour un soutien spirituel ?
+  answer_template: Vous pouvez demander à être mis en relation avec un membre du clergé
+    via notre agent vocal, disponible 24/7 pour orienter votre demande.
+- question: Y a-t-il des offices en langues étrangères ?
+  answer_template: Certaines paroisses offrent des offices en langues étrangères.
+    Notre agent vocal peut vous informer des horaires et lieux.
+- question: Comment puis-je recevoir les annonces et informations de la paroisse ?
+  answer_template: Vous pouvez vous abonner à notre newsletter ou recevoir des messages
+    personnalisés via notre agent vocal.
+sales_scripts:
+- trigger: demande_prix
+  situation: Lorsqu’un client potentiel demande les tarifs du service vocal
+  script: Bonjour, nos solutions d’agent vocal sont modulables selon vos besoins.
+    Le point d’entrée commence à 500 EUR par mois, avec des options personnalisées.
+    Souhaitez-vous un devis détaillé ?
+  goal: Informer clairement sur la tarification et susciter une demande de devis.
+- trigger: objection_cout
+  situation: Lorsque le client exprime que le coût est trop élevé
+  script: Je comprends votre préoccupation. Notre solution permet de réduire jusqu’à
+    30 % le temps passé à gérer les inscriptions et communications, ce qui permet
+    un retour sur investissement rapide.
+  goal: Valoriser le ROI pour justifier le coût.
+- trigger: question_confidentialite
+  situation: Quand un client s’inquiète de la conformité RGPD
+  script: Nos agents vocaux sont conçus pour être entièrement conformes au RGPD, garantissant
+    la sécurité et la confidentialité des données de vos fidèles.
+  goal: Rassurer sur la conformité légale.
+- trigger: besoin_multilingue
+  situation: Si le client mentionne des besoins multilingues
+  script: Notre agent vocal supporte plusieurs langues, ce qui facilite l’accès à
+    vos services pour toutes les communautés présentes en France.
+  goal: Montrer l’adaptabilité linguistique.
+- trigger: demande_integration
+  situation: Lorsque le client demande les intégrations possibles
+  script: Nous intégrons facilement les principaux CRM et plateformes de dons utilisés
+    en France, assurant une gestion fluide et centralisée.
+  goal: Mettre en avant la compatibilité technique.
+competitors:
+- name: EgliseConnect
+  positioning: Solution leader pour la gestion numérique des paroisses françaises
+  strengths:
+  - Forte intégration CRM
+  - Conformité RGPD complète
+  - Interface intuitive
+  weaknesses:
+  - Coût élevé pour petites paroisses
+  - Moins flexible sur la personnalisation vocale
+  our_differentiation: Offre plus flexible et personnalisable avec un agent vocal
+    multilingue avancé.
+- name: SpiritVoice
+  positioning: Spécialiste des agents vocaux pour services religieux
+  strengths:
+  - Expertise en reconnaissance vocale contextuelle
+  - Support multilingue
+  - Bon service client
+  weaknesses:
+  - Intégrations limitées aux plateformes françaises
+  - Moins d’options pour gestion événementielle
+  our_differentiation: Intégrations étendues avec les principaux outils français et
+    gestion complète des événements.
+- name: ParoisseFacile
+  positioning: Plateforme complète de gestion paroissiale
+  strengths:
+  - Prix attractif
+  - Modules complets de gestion administrative
+  - Communauté active d’utilisateurs
+  weaknesses:
+  - Pas de solution vocale intégrée
+  - Interface utilisateur moins moderne
+  our_differentiation: Intégration d’un agent vocal intelligent pour améliorer l’expérience
+    utilisateur et la disponibilité.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 2000
+  entry_point: 500
+  roi_examples:
+  - scenario: Réduction du temps de gestion des inscriptions pour une paroisse moyenne
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Automatisation des annonces et communications pour une grande communauté
+    monthly_cost: 1200
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Notre solution vous fait gagner du temps et diminue les erreurs humaines.
+  - Conformité garantie au RGPD pour protéger vos fidèles.
+  - Accessibilité améliorée grâce au support multilingue.
+  - Disponibilité 24/7 grâce à l’agent vocal, sans besoin de personnel supplémentaire.
+market_context:
+  market_size: 15000000
+  growth_rate: 3
+  key_trends:
+  - Digitalisation croissante des services religieux
+  - Demande accrue pour la conformité RGPD
+  - Montée en puissance des solutions multilingues
+  - Besoin d’automatisation face à la réduction des bénévoles
+  - Intégration des dons en ligne et paiement mobile
+  seasonality:
+    high:
+    - Noël
+    - Pâques
+    - Fêtes patronales
+    low:
+    - Août
+    - Vacances scolaires d’hiver
+typical_objections:
+- objection: C’est trop cher pour notre petite paroisse.
+  response: Nous proposons des solutions modulaires adaptées à toutes tailles, avec
+    un point d’entrée accessible et un ROI rapide grâce à la simplification des tâches.
+- objection: Je ne suis pas sûr que mes fidèles utilisent un agent vocal.
+  response: De plus en plus de personnes utilisent des assistants vocaux, et notre
+    solution est simple d’accès même pour les moins familiers avec la technologie.
+- objection: Nous devons respecter strictement le RGPD, cela me fait peur.
+  response: Notre solution est conçue dès l’origine pour être 100 % conforme au RGPD,
+    avec une gestion sécurisée des données personnelles.
+- objection: Nous avons déjà un système informatique en place.
+  response: Notre agent vocal s’intègre facilement avec les systèmes existants, vous
+    permettant d’améliorer vos services sans changer tout votre environnement.
+- objection: Je préfère un contact humain plutôt qu’un agent vocal.
+  response: L’agent vocal complète vos équipes en répondant instantanément aux questions
+    simples, vous permettant de vous concentrer sur les interactions qui nécessitent
+    une présence humaine.
+meta:
+  id: religion
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

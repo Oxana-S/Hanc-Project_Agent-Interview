@@ -1,0 +1,216 @@
+aliases:
+- egészségügy
+- orvosi rendelő
+- kórház
+- klinika
+- orvos
+- beteg
+- vizsgálat
+- diagnosztika
+- háziorvos
+- szakrendelés
+- laborvizsgálat
+- rendelés
+competitors:
+- name: Medicover Magyarország
+  positioning: Magas színvonalú magán egészségügyi szolgáltató
+  strengths:
+  - Széleskörű szolgáltatások
+  - Modern technológia
+  - Jó elérhetőség Budapesten és nagyvárosokban
+  weaknesses:
+  - Magasabb árak
+  - Korlátozott vidéki hálózat
+  our_differentiation: Költséghatékonyabb megoldások, 24/7 elérhető automata ügyfélszolgálat
+- name: Duna Medical Center
+  positioning: Magánkórház és rendelőintézet
+  strengths:
+  - Magasan képzett orvosok
+  - Széles diagnosztikai lehetőségek
+  weaknesses:
+  - Magas árak
+  - Kevés automatizált ügyfélkommunikáció
+  our_differentiation: Automatizált időpontfoglalás, gyors válaszok, személyre szabott
+    ügyfélélmény
+- name: Szent Imre Egyetemi Oktatókórház
+  positioning: Állami intézmény, oktatókórház
+  strengths:
+  - Államilag támogatott ellátás
+  - Széles szakmai háttér
+  weaknesses:
+  - Hosszú várólisták
+  - Alacsony digitalizációs szint
+  our_differentiation: Gyorsabb hozzáférés, egyszerűbb időpontfoglalás AI segítségével
+pain_points:
+- description: Nehézségek a telefonos időpontfoglalásban, hosszú várakozási idők a
+    vonalon
+  severity: high
+  solution_hint: 24/7 elérhető AI alapú időpontfoglaló hangalapú asszisztens
+- description: A páciensek gyakran elfelejtik az időpontjukat, ami magas nem megjelenési
+    arányt eredményez
+  severity: high
+  solution_hint: Automatikus SMS és telefonos emlékeztetők küldése
+- description: Gyakori ismétlődő kérdések az előkészületekről és nyitvatartásról túlterhelik
+    az ügyfélszolgálatot
+  severity: medium
+  solution_hint: GYIK funkció beépítése a hangalapú asszisztensbe
+- description: Hibák az időpontfoglalás során (rossz orvos vagy időpont)
+  severity: medium
+  solution_hint: Strukturált adatbevitel és visszaigazolás hangalapon
+- description: Az egészségügyi személyzet túlterhelt, nem tud minden hívást fogadni
+  severity: high
+  solution_hint: Automatizált híváskezelés és szűrés a sürgős esetek élő kezelése
+    érdekében
+- description: GDPR megfelelés és adatvédelem biztosítása az ügyfélkommunikáció során
+  severity: high
+  solution_hint: Beépített adatvédelmi protokollok és tájékoztatás hangalapon
+typical_services:
+- Orvosi konzultáció
+- Diagnosztikai vizsgálatok (pl. ultrahang, CT, MR)
+- Laboratóriumi vérvizsgálatok
+- Fogászati ellátás
+- Háziorvosi ellátás
+- Szakorvosi rendelés
+- Védőoltások
+- Otthoni orvosi kiszállás
+- Fizioterápia és rehabilitáció
+- Egészségügyi szűrőprogramok
+recommended_functions:
+- name: időpontfoglalás
+  priority: high
+  reason: Az időpontfoglalás a hívások 60-70%-át teszi ki, kulcsfontosságú a hatékony
+    ügyfélszolgálathoz
+- name: emlékeztetők
+  priority: high
+  reason: Jelentősen csökkenti a nem megjelenések számát (30-40%-kal)
+- name: gyakori_kérdések
+  priority: high
+  reason: Csökkenti az egyszerű információk miatti hívások számát, javítja az ügyfélélményt
+- name: időpont_módosítás
+  priority: medium
+  reason: Az egyszerű módosítás és lemondás ügyfélbarát és időt takarít meg
+- name: orvos_kiválasztás
+  priority: medium
+  reason: Segít a pácienseknek konkrét orvoshoz jutni, növeli a bizalmat
+- name: sürgős_esetek_irányítása
+  priority: medium
+  reason: Gyorsan továbbítja a sürgős eseteket élő operátorhoz, növeli a betegbiztonságot
+typical_integrations:
+- name: Elektronikus Egészségügyi Rendszer (EESZT)
+  examples:
+  - Elektronikus Egészségügyi Szolgáltatási Tér
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce Magyarország
+  - Dynamics 365
+  priority: medium
+- name: Telefonrendszerek
+  examples:
+  - Invitel
+  - Telekom VoIP
+  priority: high
+- name: SMS és üzenetküldő platformok
+  examples:
+  - Twilio
+  - Nexmo
+  priority: high
+- name: Naptárszinkronizáció
+  examples:
+  - Google Naptár
+  - Outlook Naptár
+  priority: medium
+industry_faq:
+- question: Hogyan tudok időpontot foglalni orvoshoz?
+  answer_template: Kérem mondja meg, melyik szakterület érdekli, és melyik nap lenne
+    Önnek megfelelő, segítek megtalálni a szabad időpontokat.
+- question: Milyen vérvizsgálatokhoz kell éhgyomorral érkezni?
+  answer_template: A biokémiai vérvizsgálatokhoz, például a vércukor vagy lipidprofil
+    méréséhez általában 8-12 órás éhgyomor szükséges.
+- question: Hogyan készüljek fel a hasi ultrahang vizsgálatra?
+  answer_template: Kérem, három nappal a vizsgálat előtt kerülje a puffasztó ételeket,
+    és a vizsgálat napján érkezzen éhgyomorral.
+- question: Van-e lehetőség hétvégi rendelésre?
+  answer_template: Igen, rendelőnk szombaton 9 és 18 óra között nyitva tart, vasárnap
+    pedig ügyeleti ellátást biztosítunk.
+- question: Lehet-e háziorvost hívni otthonra?
+  answer_template: Igen, háziorvosi házhoz hívás is elérhető, kérem adja meg a címet
+    és a panaszokat.
+- question: Mennyibe kerül egy általános orvosi vizsgálat?
+  answer_template: Az árak orvostól és vizsgálattól függnek, egy háziorvosi konzultáció
+    általában 7 000 HUF-tól kezdődik.
+sales_scripts:
+- trigger: ár_kérdés
+  situation: Amikor az ügyfél az árakról érdeklődik
+  script: A konzultációk ára az orvos szakterületétől függően változik, de szívesen
+    tájékoztatom az aktuális akciókról és kedvezményekről. Szeretné, hogy összekapcsoljalak
+    egy kollégával?
+  goal: Információadás és további kapcsolatfelvétel ösztönzése
+- trigger: sürgősség
+  situation: Ha az ügyfél sürgős időpontot szeretne
+  script: Megértem, hogy sürgős. Azonnal megnézem a legkorábbi szabad időpontokat,
+    és segítek a foglalásban.
+  goal: Gyors segítség és bizalomépítés
+- trigger: orvos_kívánság
+  situation: Amikor konkrét orvost szeretne az ügyfél
+  script: Kérem, adja meg az orvos nevét, hogy ellenőrizhessem a foglaltságát és segíthessek
+    az időpontfoglalásban.
+  goal: Pontosabb időpontfoglalás és ügyfél elégedettség növelése
+- trigger: nem_jár_ki
+  situation: Az ügyfél aggódik a foglalás miatt vagy elfelejtette az időpontját
+  script: Nem kell aggódnia, automatikus emlékeztetőket küldünk az időpont előtt,
+    így biztosan nem felejti el a vizsgálatot.
+  goal: Csökkenteni a nem megjelenések számát
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 7000
+  roi_examples:
+  - scenario: Időpontfoglalási hívások automatizálása egy közepes méretű rendelőben
+    monthly_cost: 150000
+    monthly_savings: 450000
+    payback_months: 1
+  - scenario: Nem megjelenések csökkentése automatizált emlékeztetőkkel
+    monthly_cost: 80000
+    monthly_savings: 240000
+    payback_months: 1
+  value_anchors:
+  - Az ügyfélszolgálati terhelés akár 60%-kal csökkenthető
+  - A nem megjelenések aránya 30-40%-kal mérsékelhető
+  - A betegek elégedettsége javul a gyors és pontos ügyintézés által
+market_context:
+  market_size: 1200000000000
+  growth_rate: 4.5
+  key_trends:
+  - Digitalizáció és e-egészségügy térnyerése Magyarországon
+  - Magán egészségügyi szolgáltatások növekvő kereslete
+  - Betegközpontú szolgáltatások és automatizált ügyfélszolgálat fontossága
+  - GDPR és adatvédelmi szabályok szigorú betartása
+  seasonality:
+    high:
+    - január-március (szűrőprogramok)
+    - szeptember-november (őszi megbetegedések)
+    low:
+    - július-augusztus (nyári szabadságok)
+typical_objections:
+- objection: Csak egy konkrét orvoshoz szeretnék időpontot.
+  response: Természetesen, kérem adja meg az orvos nevét, és ellenőrzöm a szabad időpontokat.
+- objection: Ez túl drága.
+  response: Értem, szívesen tájékoztatom a kedvezményekről, illetve személyre szabott
+    csomagokról.
+- objection: Sürgős a vizsgálat, mikor tudok menni?
+  response: Megnézem a legkorábbi szabad időpontokat és segítek azonnal lefoglalni.
+- objection: Nem szeretek telefonálni, van más megoldás?
+  response: Igen, használhatja online időpontfoglaló rendszerünket, vagy kérheti az
+    automata hangalapú asszisztens segítségét.
+meta:
+  id: medical
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+_extends: _base/medical

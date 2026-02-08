@@ -1,0 +1,210 @@
+pain_points:
+- description: Khó khăn trong việc tìm kiếm ứng viên chất lượng cao do thị trường
+    lao động cạnh tranh.
+  severity: high
+  solution_hint: AI có thể tự động sàng lọc hồ sơ và đề xuất ứng viên phù hợp dựa
+    trên yêu cầu công việc.
+- description: Chi phí tuyển dụng cao, bao gồm phí dịch vụ và thời gian nhân sự.
+  severity: high
+  solution_hint: Tự động hóa quy trình để giảm chi phí vận hành và tối ưu ngân sách.
+- description: Tỷ lệ nghỉ việc cao sau thử việc, dẫn đến mất chi phí đào tạo.
+  severity: medium
+  solution_hint: AI phân tích ứng viên để dự đoán khả năng gắn bó lâu dài.
+- description: Quy trình tuyển dụng thủ công gây chậm trễ trong phản hồi ứng viên.
+  severity: medium
+  solution_hint: Voice agent tự động liên lạc và cập nhật tình trạng cho ứng viên.
+- description: Khó đánh giá kỹ năng mềm và văn hóa phù hợp qua hồ sơ giấy tờ.
+  severity: medium
+  solution_hint: AI thực hiện phỏng vấn sơ bộ để đánh giá kỹ năng giao tiếp và thái
+    độ.
+- description: Tuân thủ PDPD trong xử lý dữ liệu ứng viên phức tạp và tốn kém.
+  severity: high
+  solution_hint: Tích hợp tự động để đảm bảo dữ liệu được bảo mật và tuân thủ quy
+    định.
+typical_services:
+- Tuyển dụng nhân sự
+- Tìm kiếm nhân tài
+- Đào tạo và phát triển nhân viên
+- Tư vấn nhân sự
+- Quản lý hồ sơ ứng viên
+- Dịch vụ headhunting
+- Đánh giá năng lực ứng viên
+- Tuyển dụng từ xa
+- Tư vấn lương thưởng
+- Hỗ trợ tuân thủ pháp lý
+recommended_functions:
+- name: Tự động sàng lọc cuộc gọi ứng viên
+  priority: high
+  reason: Giảm tải công việc cho HR và tăng tốc độ xử lý hồ sơ.
+- name: Lên lịch phỏng vấn tự động
+  priority: high
+  reason: Tối ưu hóa thời gian và giảm sai sót trong lịch trình.
+- name: Trả lời FAQ về tuyển dụng
+  priority: medium
+  reason: Cung cấp thông tin nhanh cho ứng viên, cải thiện trải nghiệm.
+- name: Thu thập phản hồi sau phỏng vấn
+  priority: low
+  reason: Phân tích dữ liệu để cải thiện quy trình tuyển dụng.
+- name: Nhắc nhở tuân thủ PDPD
+  priority: high
+  reason: Đảm bảo an toàn dữ liệu và tránh vi phạm pháp luật.
+- name: Báo cáo tự động về hiệu quả tuyển dụng
+  priority: medium
+  reason: Giúp doanh nghiệp theo dõi ROI và điều chỉnh chiến lược.
+typical_integrations:
+- name: Hệ thống quản lý nhân sự (HRM)
+  examples:
+  - BambooHR
+  - FastWork
+  - Base.vn
+  priority: high
+- name: Nền tảng tuyển dụng trực tuyến
+  examples:
+  - VietnamWorks
+  - TopCV
+  - CareerBuilder Vietnam
+  priority: high
+- name: Công cụ giao tiếp
+  examples:
+  - Zalo
+  - Skype
+  - Microsoft Teams
+  priority: medium
+- name: Hệ thống quản lý quan hệ khách hàng (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Công cụ đánh giá ứng viên
+  examples:
+  - TestCenter
+  - HackerRank
+  priority: low
+industry_faq:
+- question: Dịch vụ của bạn có đảm bảo tìm được ứng viên phù hợp không?
+  answer_template: Chúng tôi sử dụng AI để tối ưu hóa quá trình sàng lọc, nhưng không
+    đảm bảo tuyệt đối; chúng tôi cam kết hỗ trợ cho đến khi tìm được ứng viên tốt
+    nhất.
+- question: Chi phí dịch vụ là bao nhiêu?
+  answer_template: Chi phí phụ thuộc vào quy mô và yêu cầu, với gói bắt đầu từ 10
+    triệu VND, tiết kiệm hơn so với phương pháp truyền thống.
+- question: Làm thế nào để tuân thủ PDPD trong tuyển dụng?
+  answer_template: Chúng tôi tích hợp tự động để mã hóa dữ liệu và chỉ lưu trữ thông
+    tin cần thiết, đảm bảo tuân thủ đầy đủ.
+- question: Thời gian tuyển dụng trung bình là bao lâu?
+  answer_template: Với AI, thời gian có thể rút ngắn xuống 30-50%, thường từ 2-4 tuần
+    tùy ngành.
+- question: Bạn có hỗ trợ tuyển dụng từ xa không?
+  answer_template: Có, chúng tôi cung cấp giải pháp toàn diện cho tuyển dụng từ xa,
+    bao gồm phỏng vấn ảo và đánh giá trực tuyến.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ.
+  script: Xin chào, chúng tôi có các gói linh hoạt từ 10 triệu VND, giúp tiết kiệm
+    đến 40% chi phí so với tuyển dụng truyền thống. Bạn có thể chia sẻ ngân sách để
+    tôi tư vấn phù hợp không?
+  goal: Giới thiệu giá cả hợp lý và khuyến khích thảo luận chi tiết.
+- trigger: competitor_mention
+  situation: Khi khách hàng nhắc đến đối thủ cạnh tranh.
+  script: Tôi hiểu rằng có nhiều lựa chọn. Khác biệt của chúng tôi là AI tự động hóa
+    toàn diện, giảm thời gian tuyển dụng và đảm bảo tuân thủ PDPD, với chi phí cạnh
+    tranh.
+  goal: Nhấn mạnh điểm khác biệt và thuyết phục về giá trị gia tăng.
+- trigger: objection_high_cost
+  situation: Khi khách hàng cho rằng chi phí quá cao.
+  script: 'Tôi hiểu mối quan tâm của bạn. Hãy xem xét ROI: với việc tiết kiệm thời
+    gian và giảm tỷ lệ nghỉ việc, bạn có thể hoàn vốn trong vòng 3 tháng. Chúng ta
+    có thể thử gói nhỏ trước không?'
+  goal: Trình bày lợi ích tài chính và đề xuất giải pháp thử nghiệm.
+competitors:
+- name: VietnamWorks
+  positioning: Nền tảng tuyển dụng trực tuyến lớn nhất Việt Nam
+  strengths:
+  - Cơ sở dữ liệu ứng viên rộng
+  - Thương hiệu mạnh
+  - Đa dạng ngành nghề
+  weaknesses:
+  - Chi phí cao cho doanh nghiệp
+  - Dịch vụ tự động hóa hạn chế
+  - Ít hỗ trợ tuân thủ PDPD
+  our_differentiation: Chúng tôi cung cấp giải pháp AI toàn diện với tự động hóa cao,
+    chi phí linh hoạt, và tích hợp tuân thủ PDPD ngay từ đầu.
+- name: TopCV
+  positioning: Cộng đồng tìm việc và tuyển dụng tập trung vào chất lượng hồ sơ
+  strengths:
+  - Ứng viên chất lượng cao
+  - Công cụ tạo CV thông minh
+  - Hỗ trợ cá nhân hóa
+  weaknesses:
+  - Quy mô nhỏ hơn
+  - Tốc độ xử lý chậm
+  - Giới hạn ngành nghề
+  our_differentiation: Chúng tôi tự động hóa toàn bộ quy trình, từ sàng lọc đến phỏng
+    vấn, đảm bảo tốc độ và hiệu quả vượt trội.
+- name: Adecco Vietnam
+  positioning: Công ty tuyển dụng toàn cầu với dịch vụ chuyên nghiệp
+  strengths:
+  - Mạng lưới quốc tế
+  - Dịch vụ cao cấp
+  - Kinh nghiệm lâu năm
+  weaknesses:
+  - Chi phí rất cao
+  - Ít áp dụng công nghệ mới
+  - Không linh hoạt cho doanh nghiệp nhỏ
+  our_differentiation: Chúng tôi kết hợp công nghệ AI với chi phí phải chăng, phù
+    hợp cho doanh nghiệp vừa và nhỏ tại Việt Nam.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 100000000
+  entry_point: 10000000
+  roi_examples:
+  - scenario: Tự động hóa tuyển dụng cho doanh nghiệp vừa với 50 nhân viên
+    monthly_cost: 15000000
+    monthly_savings: 30000000
+    payback_months: 0.5
+  value_anchors:
+  - Tiết kiệm thời gian tuyển dụng lên đến 50% so với phương pháp thủ công
+  - Giảm chi phí tuyển dụng trung bình 30% nhờ tự động hóa
+  - Tăng tỷ lệ giữ chân nhân viên sau thử việc với đánh giá AI chính xác
+market_context:
+  market_size: Khoảng 500 triệu USD năm 2023
+  growth_rate: 20% mỗi năm
+  key_trends:
+  - Ứng dụng AI và big data trong tuyển dụng để nâng cao hiệu quả
+  - Tăng cường tuyển dụng từ xa và linh hoạt sau đại dịch
+  - Chú trọng tuân thủ PDPD và bảo mật dữ liệu ứng viên
+  seasonality:
+    high:
+    - Tháng 1-3 (sau Tết Nguyên Đán)
+    - Tháng 7-9 (mùa tốt nghiệp)
+    low:
+    - Tháng 4-6 (mùa mưa, ít hoạt động)
+    - Tháng 10-12 (cuối năm, ngân sách hạn chế)
+typical_objections:
+- objection: Chúng tôi đã có quy trình tuyển dụng truyền thống và không cần công nghệ
+    mới.
+  response: Tôi hiểu điều đó. Nhưng công nghệ AI có thể bổ sung để tăng tốc độ và
+    độ chính xác, giúp bạn cạnh tranh hơn trong thị trường lao động khó khăn.
+- objection: Chi phí quá cao so với ngân sách hiện tại của chúng tôi.
+  response: 'Chúng tôi có các gói linh hoạt phù hợp với mọi ngân sách. Hãy thử tính
+    ROI: tiết kiệm thời gian và giảm chi phí sai sót sẽ bù đắp nhanh chóng.'
+- objection: Chúng tôi lo ngại về bảo mật dữ liệu ứng viên với AI.
+  response: Chúng tôi tuân thủ nghiêm ngặt PDPD, với mã hóa dữ liệu và chỉ truy cập
+    có kiểm soát. Chúng tôi có thể cung cấp tài liệu đảm bảo an toàn.
+meta:
+  id: recruitment
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

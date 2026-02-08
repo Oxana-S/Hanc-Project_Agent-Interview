@@ -1,0 +1,228 @@
+aliases:
+- bem-estar
+- wellness
+- massagem
+- spa
+- salão de beleza
+- estética
+- manicure
+- pedicure
+- cabeleireiro
+- barbearia
+- bronzeamento
+- fitness
+- ioga
+- pilates
+- clínica de estética
+- terapias naturais
+competitors:
+- name: SPA Brasil
+  positioning: Rede nacional de spas e centros de bem-estar
+  strengths:
+  - Reconhecimento nacional
+  - Variedade de serviços
+  - Localizações em grandes cidades
+  weaknesses:
+  - Atendimento às vezes impessoal
+  - Preços mais elevados
+  our_differentiation: Atendimento personalizado via agente de voz 24/7 para agendamento
+    e suporte
+- name: Beleza Express
+  positioning: Salão de beleza com atendimento rápido e acessível
+  strengths:
+  - Preços competitivos
+  - Agilidade no atendimento
+  weaknesses:
+  - Menor oferta de serviços estéticos
+  - Pouca presença digital
+  our_differentiation: Sistema de agendamento e lembretes automatizados para reduzir
+    no-shows
+- name: Espaço Zen
+  positioning: Centro de terapias integrativas e spa
+  strengths:
+  - Foco em terapias alternativas
+  - Ambiente acolhedor
+  weaknesses:
+  - Capacidade limitada de atendimento
+  - Pouca integração tecnológica
+  our_differentiation: Integração com CRM e canais digitais para maior eficiência
+    operacional
+industry_faq:
+- question: Quanto custa uma sessão de massagem?
+  answer_template: O preço varia conforme o tipo e duração da massagem. Por exemplo,
+    massagem relaxante de 60 minutos custa a partir de R$150. Quer detalhes sobre
+    algum tipo específico?
+- question: Qual a duração média dos tratamentos?
+  answer_template: A maioria dos tratamentos dura entre 45 a 90 minutos, dependendo
+    do serviço escolhido.
+- question: Como faço para agendar um horário?
+  answer_template: Posso ajudar você a agendar agora mesmo. Qual serviço e dia prefere?
+- question: Posso remarcar meu atendimento?
+  answer_template: Sim, você pode remarcar informando seu nome e novo horário desejado.
+- question: Existem contraindicações para os tratamentos?
+  answer_template: Algumas terapias possuem contraindicações específicas. Recomendo
+    consultar o profissional antes do atendimento.
+- question: Vocês atendem aos finais de semana?
+  answer_template: Sim, trabalhamos aos sábados e domingos para sua conveniência.
+- question: Quais formas de pagamento aceitam?
+  answer_template: Aceitamos cartões de crédito, débito, PIX e dinheiro.
+market_context:
+  market_size: 12 bilhões BRL anuais estimados para o setor de bem-estar no Brasil
+  growth_rate: 8% ao ano
+  key_trends:
+  - Crescente interesse por terapias naturais e integrativas
+  - Digitalização de agendamentos e atendimento ao cliente
+  - Valorização da experiência personalizada
+  - Adoção de tecnologias de automação e IA
+  seasonality:
+    high:
+    - Dezembro a fevereiro (verão e férias)
+    - Maio a junho (preparação para inverno)
+    low:
+    - Março e abril
+    - Setembro
+pain_points:
+- description: Clientes têm dificuldade em agendar horários fora do horário comercial
+  severity: high
+  solution_hint: Agendamento via agente de voz disponível 24/7
+- description: Alto índice de faltas sem aviso (no-show)
+  severity: high
+  solution_hint: Envio automático de lembretes por SMS e WhatsApp
+- description: Equipe administrativa sobrecarregada com perguntas repetitivas
+  severity: medium
+  solution_hint: Respostas automáticas para perguntas frequentes via voz
+- description: Dificuldade em comunicar promoções e pacotes personalizados
+  severity: medium
+  solution_hint: Chamadas automáticas para divulgação segmentada
+- description: Clientes esquecem de remarcar ou cancelar horários
+  severity: medium
+  solution_hint: Sistema de confirmação e reagendamento automático
+- description: Compliance com LGPD para proteção de dados pessoais
+  severity: high
+  solution_hint: Agente configurado para coleta e uso de dados conforme LGPD
+typical_services:
+- Massagem relaxante, terapêutica e desportiva
+- Manicure e pedicure
+- Corte, coloração e penteados
+- Procedimentos estéticos faciais e corporais
+- Tratamentos SPA e terapias corporais
+- Depilação e design de sobrancelhas
+- Bronzeamento artificial (solário)
+- Aulas de ioga e pilates
+- Programas de fitness personalizados
+- Terapias naturais e holísticas
+recommended_functions:
+- name: agendamento
+  priority: high
+  reason: Facilita marcação de horários a qualquer hora, reduzindo perda de clientes
+- name: lembrete
+  priority: high
+  reason: Diminui faltas e melhora o comparecimento dos clientes
+- name: faq
+  priority: medium
+  reason: Responde dúvidas comuns, liberando a equipe para tarefas complexas
+- name: remarcacao
+  priority: medium
+  reason: Permite alteração de horários sem intervenção humana, aumentando conveniência
+- name: promocao
+  priority: low
+  reason: Ajuda a divulgar ofertas e fidelizar clientes
+- name: conformidade_lgpd
+  priority: high
+  reason: Garante que o tratamento de dados siga a legislação brasileira
+typical_integrations:
+- name: CRM/Sistema de agendamento
+  examples:
+  - ZenFisio
+  - Nuvemshop Beleza
+  - Vitta Saúde
+  priority: high
+- name: Mensageiros
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: high
+- name: SMS
+  examples:
+  - Zenvia
+  - TWW
+  priority: medium
+- name: Telefonia
+  examples:
+  - Pabx Virtual
+  - Infinity Telecom
+  priority: medium
+- name: Sistemas de pagamento
+  examples:
+  - PagSeguro
+  - Cielo
+  priority: medium
+sales_scripts:
+- trigger: preco_pergunta
+  situation: Cliente pergunta sobre preços de serviços
+  script: Olá! Nossos preços começam a partir de R$150 para massagens básicas. Temos
+    pacotes e planos com descontos especiais. Gostaria que eu detalhasse?
+  goal: Informar preços e incentivar interesse em pacotes
+- trigger: falta_tempo
+  situation: Cliente diz não ter tempo para tratamentos longos
+  script: Entendo! Temos opções expressas de 30 minutos que podem se encaixar na sua
+    rotina. Também atendemos até às 21h. Deseja agendar uma dessas opções?
+  goal: Oferecer alternativas rápidas para fechar agendamento
+- trigger: duvida_remarcacao
+  situation: Cliente quer saber se pode remarcar
+  script: Sim, você pode remarcar facilmente. Posso ajudar a escolher um novo horário
+    agora mesmo para garantir seu atendimento.
+  goal: Facilitar remarcação e fidelizar cliente
+- trigger: resistencia_preco
+  situation: Cliente acha preço alto
+  script: Temos planos mensais com até 20% de desconto, que tornam os tratamentos
+    mais acessíveis. Quer que eu explique como funcionam?
+  goal: Apresentar descontos para contornar objeção
+typical_objections:
+- objection: Muito caro
+  response: Temos pacotes com descontos que podem se encaixar no seu orçamento. Quer
+    que eu explique?
+- objection: Não tenho tempo
+  response: Oferecemos tratamentos rápidos e horários flexíveis, inclusive à noite.
+- objection: Quero pensar melhor
+  response: Posso reservar um horário provisório para que você não perca a vaga.
+- objection: Prefiro falar com uma pessoa
+  response: Nosso agente de voz é rápido e pode transferir para um atendente humano
+    se preferir.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 100
+  - 800
+  entry_point: 150
+  roi_examples:
+  - scenario: Redução de faltas em clínica de estética com lembretes automáticos
+    monthly_cost: 500
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Aumento de agendamentos em spa com atendimento 24/7 via agente de voz
+    monthly_cost: 700
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Redução significativa de no-shows economiza tempo e dinheiro.
+  - Agendamento 24 horas aumenta o faturamento e a satisfação do cliente.
+  - Automação libera a equipe para focar no atendimento presencial.
+  - Cumprimento rigoroso da LGPD protege sua empresa de multas.
+success_benchmarks:
+  avg_call_duration_seconds: 150
+  target_automation_rate: 0.65
+  typical_kpis:
+  - Redução de no-show para abaixo de 5%
+  - 45% dos agendamentos via agente de voz
+  - Tempo médio de agendamento menor que 2 minutos
+  - Índice de satisfação do cliente acima de 4.5 em 5
+meta:
+  id: wellness
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+_extends: _base/wellness

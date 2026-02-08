@@ -1,0 +1,264 @@
+pain_points:
+- description: Atrasos frequentes na cadeia de suprimentos devido a problemas logísticos
+    e burocracia aduaneira.
+  severity: high
+  solution_hint: Agente pode automatizar o acompanhamento de pedidos, fornecer alertas
+    de atraso e agendar reuniões com fornecedores.
+- description: Custos elevados de energia elétrica impactando diretamente a margem
+    de lucro.
+  severity: high
+  solution_hint: Agente pode coletar dados de consumo para análise e agendar consultorias
+    de eficiência energética.
+- description: Dificuldade em encontrar e reter mão de obra qualificada para operar
+    máquinas avançadas.
+  severity: medium
+  solution_hint: Agente pode triar candidatos por telefone, agendar entrevistas e
+    gerenciar lembretes de treinamento.
+- description: Cumprimento complexo das normas regulatórias (NRs) e da LGPD para dados
+    de funcionários e clientes.
+  severity: high
+  solution_hint: Agente pode enviar lembretes automatizados de auditorias e coletar
+    declarações de conformidade via telefone.
+- description: Baixa adoção de tecnologias de Indústria 4.0 por falta de conhecimento
+    ou receio do investimento.
+  severity: medium
+  solution_hint: Agente pode educar leads sobre benefícios de ROI e agendar demonstrações
+    personalizadas.
+- description: Gerenciamento ineficiente de ordens de serviço e manutenção preventiva,
+    causando paradas não planejadas.
+  severity: medium
+  solution_hint: Agente pode criar e atribuir ordens de serviço via voz e notificar
+    técnicos sobre agendamentos.
+- description: Flutuação cambial do dólar afetando o custo de importação de matéria-prima
+    e componentes.
+  severity: high
+  solution_hint: Agente pode fornecer alertas de câmbio e reconfirmar orçamentos com
+    fornecedores internacionais.
+typical_services:
+- Automação Industrial
+- Manutenção Preditiva
+- Gestão da Cadeia de Suprimentos (SCM)
+- Controle de Qualidade (CQ)
+- Gestão de Ativos
+- Planejamento de Recursos Empresariais (ERP) setorial
+- Eficiência Energética
+- Rastreabilidade de Produção
+- Treinamento de Operadores
+- Consultoria em Conformidade (NRs, LGPD)
+recommended_functions:
+- name: Qualificação de Leads para Soluções de Automação
+  priority: high
+  reason: O mercado é receptivo a automação, mas as empresas precisam de educação
+    inicial. A qualificação eficiente direciona esforços de vendas.
+- name: Agendamento de Manutenção Preventiva
+  priority: high
+  reason: Paradas não planejadas têm custo altíssimo. O agente pode reduzir falhas
+    humanas no agendamento e confirmação.
+- name: Suporte ao Cliente Pós-venda e Renovação de Contrato
+  priority: medium
+  reason: A retenção é crítica. Chamadas proativas para verificar satisfação e oferecer
+    suporte aumentam a fidelização.
+- name: Pesquisa de Satisfação com Fornecedores
+  priority: low
+  reason: A cadeia de suprimentos é um ponto crítico. Coletar feedback de forma automatizada
+    ajuda na mitigação de riscos.
+- name: Lembretes de Treinamento e Certificação
+  priority: medium
+  reason: Ajuda a mitigar o problema da mão de obra qualificada, garantindo que os
+    funcionários estejam em dia com os treinamentos obrigatórios.
+- name: Triagem Inicial de Candidatos a Vagas
+  priority: low
+  reason: Automatiza a primeira etapa do recrutamento, filtrando candidatos por disponibilidade
+    e qualificações básicas.
+typical_integrations:
+- name: Sistemas ERP (Nacionais)
+  examples:
+  - TOTVS Protheus
+  - Sankhya
+  - Microsiga
+  priority: high
+- name: Sistemas de Supervisão (SCADA) e MES
+  examples:
+  - Elipse
+  - Ladder
+  - Wonderware
+  priority: high
+- name: Sistemas de Gestão de Manutenção (GMAO)
+  examples:
+  - GMAO Corp
+  - Maximo
+  - HMS
+  priority: medium
+- name: Plataformas de E-commerce B2B
+  examples:
+  - VTEX
+  - Olist
+  - Magento
+  priority: medium
+- name: Ferramentas de Comunicação
+  examples:
+  - WhatsApp Business API
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: Quanto tempo leva para implementar uma solução de automação?
+  answer_template: O tempo varia conforme o escopo. Uma integração básica pode levar
+    de 4 a 8 semanas. Nossos especialistas fazem uma avaliação gratuita para dar um
+    prazo preciso para sua operação.
+- question: A solução é compatível com o sistema TOTVS que já usamos?
+  answer_template: Sim, temos integrações nativas e APIs para os principais ERPs do
+    mercado brasileiro, incluindo o TOTVS. Garantimos a troca segura de dados, sempre
+    em conformidade com a LGPD.
+- question: Qual o retorno sobre o investimento (ROI) esperado?
+  answer_template: Nossos clientes costumam ver ROI em menos de 12 meses, com redução
+    de até 30% em paradas não planejadas e ganhos de eficiência na mão de obra. Podemos
+    simular um cenário para sua fábrica.
+- question: Vocês oferecem suporte técnico local no Brasil?
+  answer_template: Absolutamente. Temos uma equipe de suporte 100% brasileira, disponível
+    em horário comercial, e com engenheiros especializados no setor manufactura.
+- question: Como a solução lida com a LGPD?
+  answer_template: Todas as nossas soluções são desenhadas com privacidade desde a
+    concepção. Os dados de chamadas são anonimizados e processados em servidores com
+    certificação, e fornecemos todos os relatórios necessários para a compliance.
+- question: Funciona em ambientes com ruído alto de fábrica?
+  answer_template: Sim, nossos algoritmos de processamento de voz são treinados para
+    filtrar ruídos industriais comuns, garantindo alta precisão mesmo nesses ambientes.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o lead pergunta sobre o preço logo no início da conversa.
+  script: Entendo sua preocupação com o investimento. O valor depende muito do tamanho
+    da sua operação e dos ganhos de eficiência que você busca. Para dar um orçamento
+    preciso, posso conectar você com um de nossos especialistas para uma rápida avaliação.
+    A consulta é gratuita e sem compromisso. Posso agendar para amanhã?
+  goal: Evitar dar um número genérico, qualificar o lead e marcar uma reunião de descoberta.
+- trigger: objection_technology
+  situation: Quando o lead demonstra ceticismo sobre tecnologia nova ou medo de implantação
+    complexa.
+  script: É uma preocupação muito comum e válida. A beleza da nossa solução é que
+    ela se integra aos sistemas que você já tem, sem necessidade de trocar tudo. Começamos
+    com um projeto-piloto, em uma única linha de produção, para você ver os resultados
+    com baixo risco. Que tal agendarmos uma demonstração ao vivo na sua fábrica ou
+    online?
+  goal: Reduzir a percepção de risco, educar sobre a abordagem gradual e agendar uma
+    demonstração.
+- trigger: competitor_mention
+  situation: Quando o lead menciona um concorrente específico.
+  script: Ótimo, você já está pesquisando o mercado. O que atrai você na solução deles?
+    (ouça). Entendi. A nossa grande diferença é o foco no suporte local e na integração
+    com o ecossistema industrial brasileiro. Enquanto eles podem ter uma solução global,
+    nós temos engenheiros que entendem as NRs, a burocracia e os desafios logísticos
+    daqui. Isso se traduz em menos dor de cabeça na implantação.
+  goal: Descobrir o critério do lead, reconhecer o concorrente e destacar a diferenciação
+    local.
+- trigger: post_demo_follow_up
+  situation: Após uma demonstração, para guiar o lead para o próximo passo.
+  script: 'Olá [Nome], tudo bem? Aqui é o [Nome do Agente] da [Sua Empresa]. Agradeço
+    novamente pelo tempo na demonstração. Com base no que vimos, preparei uma proposta
+    preliminar focada nos pontos que você mencionou: redução de paradas e melhor gestão
+    da manutenção. Posso enviar por e-mail e agendar 15 minutos para revisarmos juntos
+    na próxima terça-feira?'
+  goal: Manter o momentum, mostrar proatividade e agendar uma reunião de proposta.
+competitors:
+- name: Stefanini
+  positioning: Grande consultoria e integradora de TI com forte atuação industrial.
+  strengths:
+  - Portfólio amplo
+  - Presença física consolidada no Brasil
+  - Relacionamento com grandes empresas
+  weaknesses:
+  - Soluções podem ser genéricas
+  - Processos menos ágeis
+  - Foco em projetos grandes
+  our_differentiation: Oferecemos uma solução verticalizada e mais ágil, com preços
+    acessíveis para médias empresas e suporte especializado 24/7.
+- name: Siemens
+  positioning: Gigante global de automação industrial e software.
+  strengths:
+  - Tecnologia de ponta
+  - Reconhecimento global de marca
+  - Portfólio completo de hardware e software
+  weaknesses:
+  - Preços premium
+  - Estrutura menos flexível para customizações locais
+  - Suporte pode ser burocrático
+  our_differentiation: Preços mais competitivos em Reais, integração mais fácil com
+    ERPs brasileiros e suporte técnico direto e ágil, sem passar por várias camadas.
+- name: Altus
+  positioning: Fabricante nacional de automação e controladores.
+  strengths:
+  - Conhecimento profundo do mercado local
+  - Preços competitivos em hardware
+  - Suporte próximo
+  weaknesses:
+  - Foco maior em hardware
+  - Soluções de software menos robustas
+  - Pouca presença em serviços de voz/AI
+  our_differentiation: Somos especialistas em camada de software e inteligência artificial
+    aplicada à comunicação, complementando o ecossistema de hardware existente.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1500
+  - 15000
+  entry_point: 1200
+  roi_examples:
+  - scenario: Pequena fábrica reduzindo 2 paradas não planejadas por mês.
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 4
+  - scenario: Média empresa otimizando agendamento de manutenção e reduzindo horas
+      extras.
+    monthly_cost: 5000
+    monthly_savings: 12000
+    payback_months: 5
+  value_anchors:
+  - Custo menor que uma diária de parada de produção em uma linha.
+  - Investimento recuperado em menos de 6 meses com os ganhos de eficiência.
+  - Previsibilidade de custos em Reais, sem surpresas com câmbio.
+market_context:
+  market_size: Estimado em R$ 8 bilhões para software e serviços de automação industrial.
+  growth_rate: 8-10% ao ano, impulsionado pela Indústria 4.0.
+  key_trends:
+  - Adoção acelerada de IIoT (Internet das Coisas Industrial) para monitoramento remoto.
+  - Foco em eficiência energética devido aos custos elevados.
+  - Necessidade de rastreabilidade total por pressão de grandes varejistas e exportação.
+  - Escassez de mão de obra qualificada acelerando investimentos em automação.
+  seasonality:
+    high:
+    - Fevereiro-Março (retomada pós-férias)
+    - Agosto-Setembro (preparação para fim de ano)
+    low:
+    - Dezembro-Janembro (férias coletivas e encerramento)
+    - Feriados prolongados nacionais
+typical_objections:
+- objection: Não temos verba para isso este ano.
+  response: Entendo perfeitamente o controle orçamentário. Muitos clientes começam
+    com um projeto-piloto de baixo custo, justamente para comprovar o ROI e incluir
+    um valor maior no orçamento do próximo ano. Posso mostrar alguns casos de sucesso?
+- objection: Já temos muitos sistemas, não quero mais uma coisa complicada.
+  response: A integração é a nossa especialidade. Nosso agente atua como uma camada
+    única de comunicação sobre os sistemas que você já tem, sem substituí-los. Na
+    verdade, ele vai simplificar o uso deles para seus operadores.
+- objection: Meus funcionários são mais velhos e não vão se adaptar a uma tecnologia
+    de voz.
+  response: É um ponto importante. A interface por voz é justamente a mais natural
+    e intuitiva, reduzindo a curva de aprendizado. Falamos Português do Brasil com
+    sotaques regionais. O treinamento é rápido e incluído na implantação.
+- objection: Prefiro esperar a tecnologia amadurecer mais.
+  response: Os primeiros a adotarem já estão colhendo os frutos da eficiência e ganhando
+    vantagem competitiva. Enquanto isso, seus custos com ineficiências continuam.
+    Um piloto de baixo risco permite que você teste a maturidade da solução na prática.
+meta:
+  id: manufacturing
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

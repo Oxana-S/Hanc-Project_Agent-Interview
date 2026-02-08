@@ -1,0 +1,286 @@
+pain_points:
+- description: Pression réglementaire croissante avec la transition énergétique et
+    la loi Climat et Résilience
+  severity: high
+  solution_hint: L'agent vocal peut informer les clients sur les obligations, collecter
+    des données pour les déclarations, et automatiser les rappels de conformité.
+- description: Fluctuation importante des prix de l'énergie sur les marchés de gros,
+    compliquant la budgétisation
+  severity: high
+  solution_hint: Fournir des alertes vocales automatisées sur les évolutions de tarifs
+    et proposer des simulations de contrats en temps réel.
+- description: Désengagement des clients, notamment lors du processus de changement
+    de fournisseur (churn)
+  severity: medium
+  solution_hint: Détecter les signaux de départ par analyse de ton et déclencher des
+    campagnes de rétention personnalisées.
+- description: Gestion complexe des pics d'appels après des incidents réseau ou des
+    hausses de tarifs annoncées
+  severity: medium
+  solution_hint: Déployer un agent vocal capable de traiter un volume massif d'appels
+    initiaux, de trier les demandes et de calmer les inquiétudes.
+- description: Difficulté à monétiser les nouveaux services (compteurs Linky, solutions
+    d'autoconsommation)
+  severity: medium
+  solution_hint: Utiliser l'agent pour du cross-selling et up-selling proactif, en
+    expliquant simplement les avantages financiers.
+- description: Forte sensibilité des consommateurs à la communication sur l'origine
+    de l'énergie (nucléaire vs renouvelable)
+  severity: low
+  solution_hint: Intégrer des messages clairs et transparents dans les scripts vocaux
+    pour renforcer la confiance et la marque.
+typical_services:
+- Fourniture d'électricité (verte ou classique)
+- Fourniture de gaz naturel
+- Optimisation des contrats et audits énergétiques
+- Installation et gestion de compteurs communicants (Linky, Gazpar)
+- Solutions d'autoconsommation et panneaux solaires
+- Services de mobilité électrique (bornes de recharge)
+- Efficacité énergétique et rénovation
+- Offres de marché indexées ou à prix fixe
+- Gestion des demandes d'intervention (DIMP)
+- Achat groupé d'énergie pour les professionnels
+recommended_functions:
+- name: Traitement des demandes de mise en service/résiliation
+  priority: high
+  reason: Processus fréquent et critique pour l'acquisition et la rétention.
+- name: Support technique de premier niveau pour incidents
+  priority: high
+  reason: Réduit la pression sur les centres d'appels pendant les crises.
+- name: Relance des impayés et gestion des litiges
+  priority: medium
+  reason: Sujet sensible nécessitant une approche protocolée et calmante.
+- name: Prise de rendez-vous pour interventions techniques
+  priority: medium
+  reason: Long processus de coordination optimisable par l'automatisation.
+- name: Enquêtes de satisfaction post-intervention
+  priority: low
+  reason: Améliore la qualité de service sans effort opérationnel additionnel.
+- name: Vente proactive d'offres de services
+  priority: medium
+  reason: Maximise la valeur client dans un marché très concurrentiel.
+typical_integrations:
+- name: CRM secteur énergie
+  examples:
+  - Salesforce Energy & Utilities Cloud
+  - Sage CRM
+  - Solutions métier spécifiques
+  priority: high
+- name: Système de Gestion Technique Centralisée (GTC)
+  examples:
+  - Enoé (ex-Wattlet)
+  - Delta Dore
+  - plateformes Enedis/GRDF
+  priority: medium
+- name: Logiciel de facturation énergie
+  examples:
+  - Axxiome
+  - Isometrix
+  - SAP for Utilities
+  priority: high
+- name: Plateforme de communication omnicanale
+  examples:
+  - Asterisk
+  - Avaya
+  - Centre de contact local
+  priority: medium
+- name: Outils de télérélevé (Linky/Gazpar)
+  examples:
+  - API Enedis
+  - API GRDF
+  - Systèmes de collecte de données
+  priority: high
+industry_faq:
+- question: Comment puis-je souscrire à une offre d'électricité verte ?
+  answer_template: C'est très simple. Je vérifie d'abord votre éligibilité avec quelques
+    informations, puis je vous présente nos offres vertes, qui garantissent qu'une
+    quantité équivalente à votre consommation est injectée sur le réseau à partir
+    de sources renouvelables. Souhaitez-vous que je commence ?
+- question: Ma facture a considérablement augmenté, pourquoi ?
+  answer_template: 'Je comprends votre préoccupation. Plusieurs facteurs peuvent expliquer
+    cela : une hausse du prix réglementé, un changement de votre consommation, ou
+    des taxes. Si vous le permettez, je peux analyser rapidement votre contrat et
+    votre historique pour vous donner une explication précise.'
+- question: Quels sont les délais pour une mise en service ?
+  answer_template: Pour une mise en service standard, le délai est généralement de
+    5 à 10 jours ouvrés. Si le compteur Linky est déjà installé, cela peut être plus
+    rapide. Un technicien n'est nécessaire que dans certains cas.
+- question: Puis-je résilier mon contrat à tout moment ?
+  answer_template: Oui, la résiliation est gratuite et sans engagement dans la majorité
+    des offres de marché. Un préavis peut s'appliquer. Je peux vous guider dans les
+    démarches ou, pourquoi pas, vous proposer une offre plus adaptée à vos besoins
+    actuels.
+- question: Comment fonctionne le compteur Linky ? Est-il obligatoire ?
+  answer_template: Le compteur Linky mesure votre consommation en temps réel et transmet
+    les données automatiquement, ce qui évite le relevé physique. Son déploiement
+    est obligatoire, mais son acceptation est gratuite et simplifie grandement la
+    gestion de votre contrat.
+- question: Que faire en cas de panne de courant ?
+  answer_template: Tout d'abord, vérifiez si la panne est générale dans votre quartier
+    ou localisée à votre logement. En cas de panne générale, il faut contacter Enedis
+    au 09 72 67 50 XX (numéro gratuit). Je peux aussi vous aider à déclarer l'incident.
+sales_scripts:
+- trigger: price_question
+  situation: Le client demande si nos tarifs sont compétitifs.
+  script: 'Je comprends que le prix est un critère essentiel. Notre force n''est pas
+    seulement sur le prix affiché, mais sur la valeur globale : un service client
+    réactif, des outils pour maîtriser votre consommation et des offres stables pour
+    vous protéger des fluctuations. Puis-je analyser votre dernière facture pour vous
+    montrer une simulation personnalisée et concrète ?'
+  goal: Déplacer la conversation du prix vers la valeur et obtenir des données pour
+    une proposition personnalisée.
+- trigger: objection_contract
+  situation: Le client ne veut pas s'engager par crainte d'être lié.
+  script: Je comprends tout à fait. Sachez que la plupart de nos offres sont sans
+    engagement, avec une possibilité de résiliation à tout moment. L'avantage pour
+    vous est une tarification souvent plus avantageuse que le tarif réglementé. Nous
+    pouvons commencer par une offre sans engagement pour vous laisser le temps d'apprécier
+    notre service.
+  goal: Lever la barrière psychologique de l'engagement et proposer une option sans
+    risque.
+- trigger: interest_green
+  situation: Le client exprime un intérêt pour l'énergie verte.
+  script: C'est un excellent choix. Nos offres vertes sont certifiées par des Garanties
+    d'Origine, ce qui signifie que nous soutenons directement la production d'énergie
+    renouvelable en France. En plus de contribuer à la transition écologique, cela
+    peut améliorer l'image de votre entreprise. Souhaitez-vous que je vous détaille
+    les options et les éventuelles aides financières disponibles ?
+  goal: Transformer l'intérêt écologique en avantage concret et en proposition commerciale.
+- trigger: complaint_handling
+  situation: Le client appelle avec une réclamation (facture erronée, problème technique).
+  script: Je suis désolé d'apprendre que vous rencontrez ce problème. Mon rôle est
+    de vous aider à le résoudre rapidement. Pour cela, je vais d'abord recueillir
+    les informations nécessaires et ouvrir un dossier prioritaire. Je peux aussi vous
+    proposer une estimation du délai de résolution. Pouvez-vous me communiquer votre
+    numéro de client ou votre adresse ?
+  goal: Apaiser le client, démontrer de l'empathie et initier un processus de résolution
+    structuré.
+competitors:
+- name: EDF
+  positioning: Historique, leader du nucléaire, fournisseur de référence
+  strengths:
+  - Notoriété immense
+  - Parc de production intégré
+  - Réseau d'agences physique
+  - Tarif réglementé
+  weaknesses:
+  - Image perçue comme peu innovante
+  - Structure lourde
+  - Offres vertes parfois critiquées
+  our_differentiation: Agilité, service client hyper-personnalisé via l'IA, transparence
+    radicale sur l'origine de l'énergie, parcours client 100% digital fluide.
+- name: Engie
+  positioning: Majeur international, multi-énergies (gaz, électricité, services)
+  strengths:
+  - Portefeuille diversifié
+  - Fort sur les marchés entreprises et collectivités
+  - Expertise en services énergétiques
+  weaknesses:
+  - Complexité de l'offre
+  - Expérience client parfois inégale
+  - Communication perçue comme corporate
+  our_differentiation: Simplicité et clarté des offres, priorité donnée aux particuliers
+    et TPE, technologie de communication vocale plus avancée et naturelle.
+- name: TotalEnergies
+  positioning: Majeur pétrolier en transition, agressif sur le solaire et l'électricité
+  strengths:
+  - Puissance financière
+  - Réseau de stations-service pour la mobilité électrique
+  - Investissements massifs dans les renouvelables
+  weaknesses:
+  - Héritage 'pétrolier'
+  - Intégration récente du secteur électrique
+  - Culture de vente parfois trop aggressive
+  our_differentiation: Indépendance et neutralité, focalisation sur le conseil et
+    l'optimisation plutôt que la vente pure, éthique commerciale transparente.
+- name: Planète Oui / Ilek
+  positioning: Fournisseurs verts 100% renouvelables et locaux
+  strengths:
+  - Crédibilité écologique forte
+  - Communauté engagée
+  - Modèle innovant (direct producteur)
+  weaknesses:
+  - Capacité financière limitée
+  - Service client parfois sous tension
+  - Offres parfois plus chères
+  our_differentiation: Nous combinons le sérieux écologique avec la robustesse opérationnelle
+    d'un grand groupe et la puissance d'un service client automatisé de qualité.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Automatisation du traitement de 30% des appels entrants pour un fournisseur
+      moyen
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 1
+  - scenario: Campagne de rétention vocale réduisant le churn de 2% sur une base de
+      10 000 clients
+    monthly_cost: 800
+    monthly_savings: 12000
+    payback_months: 1
+  value_anchors:
+  - Réduction de 30% du temps de traitement des appels courants
+  - Augmentation de 15% du taux de conversion sur les leads chauds
+  - Détection et traitement des litiges 2x plus rapide
+  - Libération de vos conseillers pour les dossiers à haute valeur ajoutée
+market_context:
+  market_size: Marché détail électricité et gaz ~ 70 milliards EUR/an
+  growth_rate: 2-3% an, tiré par les services et la transition énergétique
+  key_trends:
+  - Démocratisation de l'autoconsommation solaire
+  - Exigence croissante de transparence (origine, prix)
+  - Numérisation forcée avec Linky/Gazpar
+  - Regroupement des achats pour les professionnels
+  - Développement des communautés énergétiques locales
+  seasonality:
+    high:
+    - Janvier (factures de régularisation)
+    - Novembre-Décembre (début chauffage)
+    - Été (déménagements)
+    low:
+    - Avril-Mai
+    - Août (vacances)
+typical_objections:
+- objection: Je suis déjà chez un concurrent et tout va bien.
+  response: C'est une bonne chose d'être satisfait. Souvent, les clients ne changent
+    pas par habitude, alors qu'une simple comparaison pourrait leur faire économiser
+    des centaines d'euros. Accepteriez-vous que je vous envoie une analyse comparative
+    gratuite et sans engagement, basée sur votre profil de consommation ? Vous pourriez
+    avoir une agréable surprise.
+- objection: Je ne fais pas confiance aux robots téléphoniques.
+  response: Je comprends tout à fait votre réticence, beaucoup partagent ce sentiment.
+    Notre agent n'est pas un robot classique. Il est conçu pour comprendre le contexte
+    et passer la main à un humain en cas de besoin complexe. Il permet surtout de
+    ne plus jamais attendre 10 minutes en ligne pour une question simple. Puis-je
+    vous montrer un exemple concret de conversation ?
+- objection: C'est trop cher pour notre petite structure.
+  response: 'L''investissement semble élevé, mais regardons-le comme un remède à des
+    coûts cachés bien plus importants : les pertes de clients mécontents, le temps
+    perdu en gestion administrative, les erreurs de facturation. Notre solution commence
+    à moins de 100€/mois et peut générer des économies bien supérieures dès le premier
+    mois. Calculons cela ensemble ?'
+- objection: Nous avons déjà un standard téléphonique / un CRM.
+  response: Parfait, cela signifie que vous avez une bonne base. Notre force est de
+    se connecter à vos outils existants pour les amplifier, pas de les remplacer.
+    L'agent vocal va fluidifier le flux d'appels entrants vers votre standard et enrichir
+    automatiquement votre CRM avec les données de l'appel. C'est un complément, pas
+    un doublon.
+meta:
+  id: energy
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

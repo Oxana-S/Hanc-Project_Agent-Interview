@@ -1,0 +1,220 @@
+pain_points:
+- description: Disminución en la asistencia a misas y actividades religiosas, afectando
+    la participación comunitaria.
+  severity: high
+  solution_hint: Automatizar recordatorios de eventos y promocionar actividades a
+    través de llamadas personalizadas.
+- description: Gestión manual de donaciones y financiación, lo que conlleva errores
+    y retrasos.
+  severity: high
+  solution_hint: Implementar sistemas de recaudación automatizados con confirmación
+    por voz y seguimiento.
+- description: Falta de personal administrativo en parroquias, sobrecargando a los
+    líderes religiosos.
+  severity: medium
+  solution_hint: Usar agentes de voz para manejar consultas comunes, citas y reservas,
+    liberando tiempo.
+- description: Comunicación ineficaz con la comunidad, especialmente con feligreses
+    mayores o menos tecnológicos.
+  severity: medium
+  solution_hint: Proporcionar atención telefónica automatizada en español, accesible
+    para todos los grupos de edad.
+- description: Dificultad en organizar y coordinar eventos como bodas, bautizos y
+    funerales.
+  severity: low
+  solution_hint: Automatizar la programación y confirmación de eventos mediante interacciones
+    de voz.
+- description: Cumplimiento con GDPR en el manejo de datos personales de feligreses,
+    requiriendo procesos seguros.
+  severity: high
+  solution_hint: Integrar agentes de voz con sistemas GDPR-compliant para gestionar
+    consentimientos y datos de forma segura.
+typical_services:
+- Servicios religiosos (misas, sacramentos)
+- Educación religiosa (catequesis, formación)
+- Asesoramiento espiritual y pastoral
+- Organización de eventos (bodas, bautizos, funerales)
+- Gestión de donaciones y recaudación de fondos
+- Atención al feligrés y consultas
+- Coordinación de voluntariado
+- Promoción de actividades comunitarias
+- Administración parroquial
+- Capellanías y servicios especializados
+recommended_functions:
+- name: Automatización de llamadas de recordatorio
+  priority: high
+  reason: Ayuda a aumentar la asistencia a eventos religiosos mediante recordatorios
+    personalizados.
+- name: Gestión de citas y reservas
+  priority: high
+  reason: Facilita la organización de sacramentos y eventos, reduciendo la carga administrativa.
+- name: Atención al cliente para consultas comunes
+  priority: medium
+  reason: Proporciona respuestas rápidas a preguntas frecuentes, mejorando la satisfacción
+    del feligrés.
+- name: Recaudación de donaciones automatizada
+  priority: high
+  reason: Optimiza la financiación mediante llamadas de seguimiento y opciones de
+    pago por voz.
+- name: Integración con sistemas de gestión parroquial
+  priority: medium
+  reason: Permite sincronización de datos y procesos, mejorando la eficiencia operativa.
+- name: Manejo de objeciones y ventas
+  priority: low
+  reason: Ayuda en la promoción de servicios y captación de nuevos feligreses.
+typical_integrations:
+- name: Sistemas de gestión parroquial
+  examples:
+  - ParroquiApp
+  - Gestión Eclesiástica Pro
+  priority: high
+- name: Plataformas de donaciones en línea
+  examples:
+  - Teaming
+  - Migranodearena
+  priority: medium
+- name: CRM eclesiástico
+  examples:
+  - ChurchDesk
+  - Planbeat
+  priority: medium
+- name: Herramientas de contabilidad
+  examples:
+  - ContaPlus
+  - Sage
+  priority: low
+- name: Sistemas de comunicación
+  examples:
+  - Mailchimp
+  - WhatsApp Business API
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo donar a la parroquia?
+  answer_template: Puede donar a través de nuestra plataforma en línea o llamando
+    a nuestro agente de voz para asistencia paso a paso. Aceptamos varias formas de
+    pago seguras.
+- question: ¿Cuándo es la próxima misa?
+  answer_template: Las misas se realizan regularmente. Para horarios actualizados,
+    consulte nuestro sitio web o permita que nuestro agente de voz le proporcione
+    los detalles según su ubicación.
+- question: ¿Cómo me inscribo para la catequesis?
+  answer_template: Puede inscribirse llamando a nuestro agente de voz, quien le guiará
+    en el proceso y programará una cita con el coordinador.
+- question: ¿Ofrecen asesoramiento espiritual?
+  answer_template: Sí, proporcionamos asesoramiento espiritual. Nuestro agente de
+    voz puede ayudarle a programar una cita con un líder pastoral.
+- question: ¿Qué debo hacer para organizar una boda?
+  answer_template: Para organizar una boda, contacte a nuestro agente de voz para
+    revisar disponibilidad, requisitos y pasos a seguir, incluyendo documentación
+    necesaria.
+- question: ¿Cómo manejan mis datos personales?
+  answer_template: Cumplimos con el GDPR para proteger su privacidad. Solo utilizamos
+    sus datos con su consentimiento y para fines específicos de la parroquia.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de los servicios de automatización.
+  script: Hola, entiendo su interés en el precio. Nuestro agente de voz puede ayudar
+    a su parroquia a partir de 50 EUR al mes, optimizando la gestión y ahorrando tiempo
+    valioso. ¿Le gustaría que le explique los beneficios específicos para su caso?
+  goal: Transmitir valor y ofrecer una solución asequible, enfocándose en el retorno
+    de inversión.
+- trigger: interest_in_services
+  situation: Cuando un cliente muestra interés en mejorar la comunicación con feligreses.
+  script: Excelente, nuestro agente de voz puede automatizar recordatorios, gestionar
+    citas y atender consultas, mejorando la participación comunitaria. ¿Podría contarme
+    más sobre sus necesidades actuales?
+  goal: Identificar necesidades específicas y personalizar la oferta.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a otro proveedor de servicios similares.
+  script: Comprendo. Nuestra solución se diferencia al estar específicamente diseñada
+    para el sector religioso en España, con integración local y soporte en español.
+    Ofrecemos una prueba gratuita para que vea los resultados.
+  goal: Destacar nuestras ventajas competitivas y reducir la incertidumbre.
+competitors:
+- name: ParroquiApp
+  positioning: Proveedor líder de software de gestión parroquial en España.
+  strengths:
+  - Interfaz fácil de usar
+  - Integración con herramientas comunes
+  weaknesses:
+  - Limitada automatización de voz
+  - Soporte limitado en tiempo real
+  our_differentiation: Ofrecemos agentes de voz AI que complementan la gestión con
+    automatización de llamadas y atención personalizada.
+- name: ChurchDesk
+  positioning: Plataforma de gestión eclesiástica con enfoque en digitalización.
+  strengths:
+  - Funciones de comunicación
+  - Soporte multilingüe
+  weaknesses:
+  - Alto costo
+  - Complejidad en la implementación
+  our_differentiation: Proporcionamos soluciones de voz asequibles y fáciles de implementar,
+    específicas para el mercado español.
+- name: Teaming
+  positioning: Plataforma de donaciones en línea popular en España.
+  strengths:
+  - Gran base de usuarios
+  - Herramientas de recaudación efectivas
+  weaknesses:
+  - Falta de integración con sistemas de voz
+  - Enfoque solo en donaciones
+  our_differentiation: Integramos recaudación de fondos con agentes de voz para un
+    enfoque holístico en la gestión parroquial.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Parroquia mediana que automatiza recordatorios de misa y donaciones.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 10 horas semanales en tareas administrativas.
+  - Aumente las donaciones en un 20% con seguimiento automatizado.
+  - Mejore la satisfacción del feligrés con atención 24/7.
+market_context:
+  market_size: Estimado en 500 millones EUR anuales en servicios religiosos y tecnología
+    asociada.
+  growth_rate: 3% YoY, impulsado por la digitalización y necesidades de eficiencia.
+  key_trends:
+  - Aumento en la adopción de tecnología para la gestión parroquial.
+  - Creciente enfoque en la transparencia y cumplimiento GDPR.
+  - Demanda de soluciones accesibles para comunidades envejecidas.
+  seasonality:
+    high:
+    - Navidad
+    - Semana Santa
+    - Verano (bodas y eventos)
+    low:
+    - Enero
+    - Agosto (vacaciones)
+typical_objections:
+- objection: No tenemos presupuesto para tecnología adicional.
+  response: Entiendo. Nuestra solución puede ahorrarle costos a largo plazo al reducir
+    la carga laboral. ¿Le gustaría ver un cálculo personalizado de ROI?
+- objection: Prefiero el contacto humano en lugar de máquinas.
+  response: Completamente de acuerdo. Nuestro agente de voz complementa el contacto
+    humano, liberando tiempo para interacciones más significativas. ¿Podría probarlo
+    en tareas repetitivas?
+- objection: Ya usamos otro sistema y no queremos cambiar.
+  response: Perfecto. Nuestro agente de voz se integra con sistemas existentes para
+    mejorar su funcionalidad, sin necesidad de reemplazarlos. ¿Podemos mostrarle cómo?
+meta:
+  id: religion
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

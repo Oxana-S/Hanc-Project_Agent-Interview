@@ -1,0 +1,191 @@
+pain_points:
+- description: Alta inflación que erosiona el valor de los ahorros en pesos argentinos (ARS), haciendo atractivas las criptomonedas como refugio de valor, pero con volatilidad.
+  severity: high
+  solution_hint: El agente de voz puede proporcionar actualizaciones en tiempo real sobre precios de criptomonedas en ARS y alertas para tomar decisiones informadas rápidamente.
+- description: Falta de educación y comprensión sobre criptomonedas entre el público general, llevando a malas decisiones de inversión.
+  severity: medium
+  solution_hint: El agente puede ofrecer tutoriales básicos y responder preguntas frecuentes en español para educar a los usuarios.
+- description: Dificultades en la conversión entre criptomonedas y pesos argentinos debido a limitaciones en exchanges locales y comisiones altas.
+  severity: high
+  solution_hint: El agente puede guiar a los usuarios sobre los mejores exchanges locales y métodos de pago, como transferencias bancarias o Mercado Pago.
+- description: Preocupaciones sobre seguridad y fraude en plataformas de cripto, especialmente para nuevos inversores.
+  severity: medium
+  solution_hint: El agente puede aconsejar sobre buenas prácticas de seguridad, como el uso de wallets frías y verificación de plataformas reguladas.
+- description: Complejidad en el cumplimiento fiscal y reporte de ganancias de criptomonedas a la AFIP.
+  severity: medium
+  solution_hint: El agente puede recordar fechas clave y proporcionar información básica sobre obligaciones fiscales en Argentina.
+- description: Latencia en transacciones y soporte al cliente en exchanges durante períodos de alta volatilidad del mercado.
+  severity: low
+  solution_hint: El agente puede ofrecer asistencia automatizada 24/7 para consultas comunes y seguimiento de transacciones.
+typical_services:
+- Compra y venta de criptomonedas con ARS
+- Custodia de wallets digitales
+- Asesoramiento en inversiones cripto para principiantes
+- Conversión entre criptomonedas y stablecoins como USDT
+- Educación sobre blockchain y trading básico
+- Soporte para pagos con cripto en comercios locales
+- Gestión de portafolios diversificados
+- Consultoría fiscal para criptoactivos
+- Seguridad y protección contra fraudes
+- Alertas de mercado y noticias en tiempo real
+recommended_functions:
+- name: Consulta de precios de criptomonedas en ARS
+  priority: high
+  reason: Esencial debido a la alta volatilidad y la necesidad de tomar decisiones rápidas en un entorno inflacionario.
+- name: Asistencia para transacciones de compra/venta
+  priority: high
+  reason: Ayuda a usuarios a navegar exchanges locales y reducir errores en un mercado complejo.
+- name: Educación básica sobre cripto en español
+  priority: medium
+  reason: Aborda la falta de conocimiento y construye confianza entre nuevos inversores.
+- name: Alertas de seguridad y fraudes
+  priority: medium
+  reason: Importante para mitigar riesgos en un sector con altos casos de estafas en Argentina.
+- name: Integración con sistemas de pago locales
+  priority: high
+  reason: Facilita la conversión con ARS usando plataformas como Mercado Pago o transferencias bancarias.
+- name: Recordatorios fiscales para AFIP
+  priority: low
+  reason: Ayuda a los usuarios a cumplir con regulaciones locales y evitar multas.
+typical_integrations:
+- name: Sistemas de pago locales
+  examples:
+  - Mercado Pago
+  - Ualá
+  - Modo
+  priority: high
+- name: Exchanges de criptomonedas argentinos
+  examples:
+  - Buenbit
+  - Ripio
+  - SatoshiTango
+  priority: high
+- name: Plataformas bancarias tradicionales
+  examples:
+  - Banco Galicia
+  - Banco Santander Río
+  priority: medium
+- name: Software de contabilidad y fiscal
+  examples:
+  - Sistemas AFIP
+  - gestores contables locales
+  priority: medium
+- name: Aplicaciones de noticias y mercado
+  examples:
+  - CriptoNoticias
+  - Ámbito Financiero
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo comprar Bitcoin en Argentina con pesos?
+  answer_template: Puedes comprar Bitcoin usando exchanges locales como Buenbit o Ripio, que aceptan transferencias bancarias en ARS. Te guío paso a paso.
+- question: ¿Es seguro invertir en criptomonedas en Argentina?
+  answer_template: Como cualquier inversión, tiene riesgos, pero usando plataformas reguladas y educándote, puedes minimizarlos. Te recomiendo empezar con pequeñas cantidades.
+- question: ¿Cómo declaro mis ganancias de cripto a la AFIP?
+  answer_template: Debes reportar ganancias en tu declaración jurada. Consulta con un contador especializado, ya que las reglas pueden cambiar; puedo recordarte fechas clave.
+- question: ¿Qué criptomonedas son más populares en Argentina?
+  answer_template: Bitcoin, Ethereum y stablecoins como USDT son comunes por su estabilidad relativa frente al peso. También hay interés en monedas locales o proyectos latinos.
+- question: ¿Puedo usar cripto para pagar servicios en Argentina?
+  answer_template: Sí, algunos comercios aceptan cripto, pero es limitado. Puedes convertir a ARS en exchanges o usar tarjetas vinculadas a cripto como las de Ripio.
+- question: ¿Cómo protejo mis criptoactivos de hackers?
+  answer_template: Usa wallets frías para almacenamiento a largo plazo, activa autenticación de dos factores y evita compartir claves privadas. Te ayudo a configurar esto.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el precio actual de una criptomoneda en ARS.
+  script: Hola, el precio actual de Bitcoin es [precio] ARS. ¿Te interesaría comprar o necesitas más información para proteger tus ahorros de la inflación?
+  goal: Convertir la consulta en una oportunidad de venta educando sobre beneficios.
+- trigger: security_concern
+  situation: Cuando un cliente expresa miedo a fraudes o pérdidas.
+  script: Entiendo tu preocupación. Nuestro servicio incluye alertas de seguridad y guías paso a paso para operar de forma segura en exchanges locales. ¿Podemos ayudarte a empezar con confianza?
+  goal: Reducir objeciones y destacar valor agregado.
+- trigger: budget_inquiry
+  situation: Cuando un cliente pregunta sobre costos o presupuesto para invertir.
+  script: Puedes empezar con tan solo [entry_point] ARS. Te muestro cómo incluso pequeñas inversiones pueden generar ahorros mensuales frente a la inflación. ¿Quieres ver un ejemplo?
+  goal: Demostrar accesibilidad y ROI potencial.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona un competidor como Buenbit.
+  script: Sí, Buenbit es una buena opción, pero nosotros ofrecemos soporte personalizado 24/7 y educación continua para que tomes mejores decisiones. ¿Te gustaría probar una demo gratis?
+  goal: Diferenciar y captar interés con valor único.
+competitors:
+- name: Buenbit
+  positioning: Exchange local líder con enfoque en facilidad de uso y stablecoins.
+  strengths:
+  - Interfaz amigable
+  - amplia adopción en Argentina
+  - soporte en español
+  weaknesses:
+  - Comisiones altas en algunas transacciones
+  - limitada educación avanzada
+  our_differentiation: Ofrecemos asistencia por voz personalizada y herramientas educativas integrales.
+- name: Ripio
+  positioning: Plataforma integral con wallet y tarjeta de débito cripto.
+  strengths:
+  - Integración con pagos locales
+  - tarjeta vinculada
+  - presencia en latam
+  weaknesses:
+  - Soporte al cliente lento en picos de mercado
+  - complejidad para principiantes
+  our_differentiation: Proporcionamos guía automatizada y alertas proactivas para simplificar la experiencia.
+- name: SatoshiTango
+  positioning: Exchange antiguo con enfoque en trading avanzado.
+  strengths:
+  - Variedad de criptomonedas
+  - herramientas de trading
+  - reputación estable
+  weaknesses:
+  - Menos accesible para nuevos usuarios
+  - alta volatilidad en servicios
+  our_differentiation: Enfocado en educación básica y soporte constante para reducir la curva de aprendizaje.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Inversión mensual en Bitcoin para cubrir inflación
+    monthly_cost: 10000
+    monthly_savings: 16400
+    payback_months: 7
+  value_anchors:
+  - Protege tus ahorros de la inflación argentina con cripto
+  - Empieza con menos de 5000 ARS y aprende sin riesgos
+  - Ahorra tiempo y dinero con soporte automatizado 24/7
+market_context:
+  market_size: Estimado en 1-2 millones de usuarios activos en Argentina
+  growth_rate: 20-30% YoY debido a la crisis económica y adopción digital
+  key_trends:
+  - Aumento del uso de stablecoins como refugio frente al peso
+  - Crecimiento de pagos con cripto en comercios pequeños
+  - Mayor interés regulatorio de la AFIP
+  seasonality:
+    high:
+    - Fin de año
+    - períodos de alta inflación anunciada
+    low:
+    - Verano argentino (diciembre-febrero)
+    - por menor actividad económica
+typical_objections:
+- objection: Es muy riesgoso y no entiendo nada de cripto.
+  response: Por eso ofrecemos educación paso a paso y herramientas seguras. Empezamos con pequeños montos para que aprendas sin miedo.
+- objection: Prefiero mantener mi dinero en dólares o bienes tradicionales.
+  response: Las criptomonedas pueden diversificar tu portafolio y ofrecer potencial de crecimiento. Te muestro cómo otros argentinos lo están haciendo.
+- objection: Las comisiones en exchanges son muy altas.
+  response: Te ayudamos a elegir la mejor opción con comisiones bajas y optimizamos tus transacciones para ahorrar a largo plazo.
+- objection: No tengo tiempo para monitorear el mercado constantemente.
+  response: Nuestro agente de voz hace eso por ti, con alertas automáticas y reportes resumidos, para que inviertas de forma inteligente sin esfuerzo.
+meta:
+  id: crypto
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- crypto
+- cryptocurrency
+- blockchain
+- bitcoin
+- exchange
+_extends: _base/crypto

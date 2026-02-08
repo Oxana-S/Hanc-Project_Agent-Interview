@@ -1,0 +1,212 @@
+pain_points:
+- description: Hohe Kosten für professionelle Foto- und Videoausrüstung sowie Softwarelizenzen.
+  severity: high
+  solution_hint: Der KI-Sprachagent kann bei der Suche nach kostengünstigen Leasingoptionen oder gebrauchter Ausrüstung helfen und Finanzierungsmöglichkeiten aufzeigen.
+- description: Zeitaufwändige Kundenakquise und Verwaltung von Anfragen, Terminen und Rechnungen.
+  severity: high
+  solution_hint: Automatisierte Leadgenerierung, Terminbuchung und Follow-up-Anrufe durch den KI-Sprachagenten entlasten und steigern die Effizienz.
+- description: Schwierigkeiten bei der Terminplanung und -koordination, besonders während der Hochsaison.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann Kalender integrieren, Termine selbstständig vereinbaren und Kunden erinnern, um Doppelbuchungen zu vermeiden.
+- description: Herausforderungen in der Nachbearbeitung und Bildbearbeitung, die viel Zeit in Anspruch nehmen.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann Workflows optimieren, externe Editoren verwalten und Kundenupdates automatisieren, um Bearbeitungszeiten zu verkürzen.
+- description: Einhaltung der GDPR-Richtlinien für die Speicherung und Verarbeitung von Kundendaten.
+  severity: high
+  solution_hint: Der KI-Sprachagent kann datenschutzkonforme Prozesse überwachen, Einwilligungen verwalten und Compliance-Checks durchführen.
+- description: Saisonale Schwankungen in der Auftragslage führen zu unregelmäßigen Einnahmen.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann Marketingkampagnen in ruhigen Zeiten automatisieren und Kunden für Off-Season-Angebote gewinnen.
+- description: Konkurrenzdruck durch günstige Amateure oder große Agenturen, die Preise drücken.
+  severity: low
+  solution_hint: Der KI-Sprachagent hebt USP wie Qualität, persönlichen Service und GDPR-Compliance hervor, um Kunden zu überzeugen.
+typical_services:
+- Hochzeitsfotografie
+- Eventfotografie
+- Portraitfotografie
+- Produktfotografie
+- Videoproduktion für Unternehmen
+- Drohnenaufnahmen
+- Fotobearbeitung und Retusche
+- Fotobücher und Drucke
+- Social Media Content Erstellung
+- Live-Streaming Services
+recommended_functions:
+- name: Terminplanung
+  priority: high
+  reason: Effiziente Verwaltung von Buchungen und Vermeidung von Doppelterminen, besonders in der Hochsaison.
+- name: Kundenanfragenbearbeitung
+  priority: high
+  reason: Schnelle und professionelle Beantwortung von Anfragen, um Leads nicht zu verlieren.
+- name: Preiskalkulation und Angebotserstellung
+  priority: medium
+  reason: Transparente und schnelle Preisangaben erhöhen die Konversionsrate.
+- name: Follow-up-Anrufe
+  priority: medium
+  reason: Automatisierte Nachverfolgung steigert die Kundenbindung und Wiederbuchungsrate.
+- name: Zahlungserinnerungen
+  priority: low
+  reason: Optimiert den Cashflow durch pünktliche Zahlungseingänge.
+- name: Dienstleistungsbewerbung
+  priority: low
+  reason: Aktive Promotion neuer oder saisonaler Angebote generiert zusätzliche Umsätze.
+- name: GDPR-Compliance-Checks
+  priority: high
+  reason: Sicherstellung der Datenschutzvorschriften vermeidet Bußgelder und baut Vertrauen auf.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: high
+- name: Buchungssysteme
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  priority: high
+- name: Bildbearbeitungssoftware
+  examples:
+  - Adobe Creative Cloud
+  - Capture One
+  priority: medium
+- name: Cloud-Speicher
+  examples:
+  - Google Drive
+  - Dropbox
+  priority: medium
+- name: Social-Media-Plattformen
+  examples:
+  - Instagram
+  - Facebook
+  priority: low
+industry_faq:
+- question: Wie lange dauert die Bearbeitung der Fotos nach einem Shooting?
+  answer_template: Die Bearbeitungszeit beträgt in der Regel 2-3 Wochen, abhängig vom Umfang und der Komplexität des Projekts. Bei Expressaufträgen sind kürzere Zeiten möglich.
+- question: Können Sie auch kurzfristige Termine anbieten, zum Beispiel für spontane Events?
+  answer_template: Ja, bei Verfügbarkeit können wir kurzfristige Termine vereinbaren. Bitte kontaktieren Sie uns direkt, um die Optionen zu besprechen.
+- question: Was kostet eine Hochzeitsfotografie in Österreich?
+  answer_template: Die Preise für Hochzeitsfotografie beginnen bei 1500 EUR und variieren je nach Paket, Dauer und zusätzlichen Leistungen wie Alben oder Videodiensten.
+- question: Bieten Sie auch Videodienste an, und sind diese im Paket enthalten?
+  answer_template: Ja, wir bieten umfassende Videoproduktion an. Videodienste können separat gebucht oder in Kombinationspaketen mit Fotografie enthalten sein.
+- question: Wie handle ich mit GDPR und der Speicherung meiner Kundendaten?
+  answer_template: Wir verwenden sichere, GDPR-konforme Systeme für Datenspeicherung und -verarbeitung. Alle Kundendaten werden
+meta:
+  id: photo_video
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- photo studio
+- video production
+- photography
+- videography
+_extends: _base/photo_video
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten für Fotografie- oder Videodienstleistungen fragt.
+  script: Unsere Preise sind transparent und richten sich nach dem Umfang des Projekts. Für Hochzeitsfotografie beginnen die Preise bei 1500 EUR. Gerne erstellen wir Ihnen ein individuelles Angebot, das
+    genau zu Ihren Wünschen passt.
+  goal: Den Kunden über die Preisgestaltung informieren und Interesse an einem individuellen Angebot wecken.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen anderen Anbieter erwähnt und nach Unterschieden fragt.
+  script: Wir bieten nicht nur professionelle Fotografie, sondern integrieren auch moderne KI-gestützte Terminplanung und Kundenkommunikation, um Ihnen den besten Service zu garantieren. So sparen Sie Zeit
+    und erhalten personalisierte Betreuung.
+  goal: Die Vorteile unseres Services gegenüber Wettbewerbern hervorheben.
+  effectiveness: medium
+- trigger: booking_request
+  situation: Wenn ein Kunde einen Termin oder ein Shooting buchen möchte.
+  script: Vielen Dank für Ihr Interesse! Ich helfe Ihnen gern bei der Terminvereinbarung. Bitte nennen Sie mir Ihren Wunschzeitraum, und ich überprüfe sofort die Verfügbarkeit.
+  goal: Den Buchungsprozess schnell und unkompliziert starten.
+  effectiveness: high
+- trigger: service_explanation
+  situation: Wenn ein Kunde mehr über unsere Leistungen erfahren möchte.
+  script: Wir bieten ein umfassendes Portfolio von Hochzeits- bis Eventfotografie, inklusive professioneller Nachbearbeitung und Videodiensten. Unser KI-Sprachagent unterstützt Sie bei der Kommunikation
+    und Terminplanung rund um die Uhr.
+  goal: Kunden umfassend über das Angebot informieren und Vertrauen aufbauen.
+  effectiveness: medium
+competitors:
+- name: FotoKunst Wien
+  positioning: Etablierter Anbieter mit Fokus auf künstlerische Fotografie in Wien.
+  strengths:
+  - Lange Marktpräsenz und Erfahrung
+  - Großes Portfolio an Referenzen
+  - Persönliche Kundenbetreuung
+  weaknesses:
+  - Wenig digitale Automatisierung
+  - Eingeschränkte Terminflexibilität
+  our_differentiation: Unsere KI-gestützte Terminplanung und automatisierte Kundenkommunikation bieten mehr Flexibilität und Effizienz.
+- name: PixelPro Salzburg
+  positioning: Moderner Anbieter mit Schwerpunkt Eventfotografie und schnellem Service.
+  strengths:
+  - Schnelle Bearbeitungszeiten
+  - Moderne Ausrüstung
+  - Gute Online-Präsenz
+  weaknesses:
+  - Begrenzte Angebotspalette
+  - Keine integrierte Kundenverwaltung
+  our_differentiation: Wir bieten neben Fotografie auch integrierte CRM- und Buchungslösungen, die den gesamten Prozess vereinfachen.
+- name: SnapShot Graz
+  positioning: Lokaler Dienstleister mit Fokus auf Portrait- und Familienfotografie.
+  strengths:
+  - Persönlicher Service
+  - Gute Kundenbindung
+  weaknesses:
+  - Keine zusätzlichen Videoangebote
+  - Manuelle Terminverwaltung
+  our_differentiation: Unsere KI-Sprachagenten automatisieren Terminbuchungen und erhöhen die Kundenzufriedenheit durch schnelle Antworten.
+- name: LightFrame Linz
+  positioning: Anbieter mit Schwerpunkt auf Business- und Werbefotografie in Oberösterreich.
+  strengths:
+  - Professionelle Business-Lösungen
+  - Netzwerk zu Werbeagenturen
+  weaknesses:
+  - Höhere Preise
+  - Eingeschränkte Verfügbarkeit in der Hochsaison
+  our_differentiation: Automatisierte Kalenderintegration reduziert Ausfallzeiten und verbessert die Terminverfügbarkeit.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Automatisierte Terminplanung reduziert den Verwaltungsaufwand in einem kleinen Fotostudio.
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: KI-gestützte Kundenanfragenbearbeitung erhöht die Buchungsrate bei einem Eventfotografen.
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 1
+  value_anchors:
+  - Reduzierung von Doppelbuchungen und Fehlterminen durch automatisierte Kalenderintegration.
+  - Schnellere Reaktionszeiten auf Kundenanfragen erhöhen die Abschlussrate.
+  - Einsparungen bei Verwaltungskosten durch den KI-Sprachagenten.
+  - Flexiblere Terminvergabe auch außerhalb der Geschäftszeiten.
+market_context:
+  market_size: Ca. 120 Millionen EUR Jahresumsatz im Fotografie- und Videobereich in Österreich
+  growth_rate: 3-5%
+  key_trends:
+  - Steigende Nachfrage nach hochwertigen Event- und Hochzeitsfotografien
+  - Zunehmende Integration von Videodiensten und Multimediaproduktionen
+  - Wachsender Einsatz von KI und Automatisierung in Kundenkommunikation und Terminmanagement
+  - Vermehrte Nutzung von Social Media und Online-Plattformen zur Vermarktung
+  seasonality:
+    high:
+    - Mai
+    - Juni
+    - September
+    - Oktober
+    low:
+    - Januar
+    - Februar
+    - Dezember

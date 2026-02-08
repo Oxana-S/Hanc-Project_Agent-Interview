@@ -1,0 +1,207 @@
+pain_points:
+- description: Last-Minute-Änderungen und kurzfristige Anfragen von Kunden und Teilnehmern führen zu hohem Kommunikationsaufwand und Stress.
+  severity: high
+  solution_hint: AI Voice Agent kann 24/7 Anfragen entgegennehmen, Terminänderungen bestätigen und standardisierte Informationen sofort ausgeben.
+- description: Hoher administrativer Aufwand für die Buchungsverwaltung, Rechnungserstellung und Nachverfolgung von Zahlungseingängen.
+  severity: high
+  solution_hint: Automatisierung von Buchungsbestätigungen, Rechnungserinnerungen und Zahlungsnachverfolgung durch die Voice Agent-Integration in Buchungssysteme.
+- description: Mangelnde Personalressourcen für die telefonische Kundenbetreuung außerhalb der Bürozeiten, besonders an Wochenenden oder bei Abendveranstaltungen.
+  severity: medium
+  solution_hint: Der Voice Agent übernimmt das Call-Screening, die Terminvereinbarung und beantwortet FAQs rund um die Uhr, ohne zusätzliches Personal.
+- description: Schwierigkeiten bei der Lead-Generierung und Qualifizierung von neuen Anfragen, die per Telefon eingehen.
+  severity: medium
+  solution_hint: Voice Agent kann automatisch Leads erfassen, nach Schlüsselkriterien (Budget, Teilnehmerzahl, Datum) qualifizieren und direkt im CRM speichern.
+- description: Komplexität bei der Koordination mehrerer Dienstleister (Catering, Technik, Location) und der termingerechten Kommunikation.
+  severity: medium
+  solution_hint: Agent kann automatisierte Status-Updates und Erinnerungen an Dienstleister senden und Bestätigungen sammeln.
+- description: Einhaltung der DSGVO bei der Erfassung und Verarbeitung von Teilnehmerdaten aus Telefonanfragen.
+  severity: high
+  solution_hint: Voice Agent kann Einwilligungen protokollieren, Daten nur gemäß vordefinierter Prozesse erfassen und bietet eine lückenlose Dokumentation.
+typical_services:
+- Eventlocations-Vermittlung und -Buchung
+- Catering- und Menüplanung
+- Veranstaltungstechnik (Ton, Licht, Video)
+- Kreative Eventkonzeption und -planung
+- Teilnehmer-Management und Online-Registrierung
+- Moderation und Speaker-Akquise
+- Event-Marketing und Ticketing
+- Decoration und Event-Design
+- Budgetplanung und Finanzcontrolling
+- Nachbereitung und Reporting
+recommended_functions:
+- name: Call-Screening und Terminvereinbarung
+  priority: high
+  reason: Filtert relevante Anfragen, vereinbart direkt Termine mit Planern und reduziert Wartezeiten für Kunden.
+- name: 24/7 FAQ- und Informationshotline
+  priority: high
+  reason: Beantwortet rund um die Uhr standardisierte Fragen zu Location, Anreise, Programm und Stornobedingungen.
+- name: Multilingualer Support (Deutsch, Englisch, ggf. Dialekt)
+  priority: medium
+  reason: Österreich ist ein wichtiger Kongress- und Tourismusstandort mit internationalen Gästen.
+- name: Lead-Qualifizierung und CRM-Integration
+  priority: high
+  reason: Sammelt automatisch Budget, Teilnehmerzahl und gewünschtes Datum und erstellt qualifizierte Leads.
+- name: Buchungsbestätigung und Zahlungserinnerung
+  priority: medium
+  reason: Sendet automatisierte Bestätigungen und Erinnerungen, verbessert den Cashflow.
+- name: Umfrage und Feedback nach dem Event
+  priority: low
+  reason: Automatisiertes Einholen von Teilnehmerfeedback steigert die Servicequalität und liefert Referenzen.
+typical_integrations:
+- name: Buchungs- und Ticketing-Systeme
+  examples:
+  - skidata
+  - Eventbrite
+  - XING Events
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Salesforce
+  - HubSpot
+  - oeffnungszeiten.de
+  priority: high
+- name: Kalender- und Planungstools
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  - Teamweek
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - BMD
+  - SAP
+  priority: medium
+- name: Catering- und Gastronomie-POS
+  examples:
+  - gastrogate
+  - Orderbird
+  - TouchBistro
+  priority: low
+industry_faq:
+- question: Was kostet die Planung einer Veranstaltung bei Ihnen?
+  answer_template: Unsere Preise sind individuell und richten sich nach Umfang, Teilnehmerzahl und gewünschten Leistungen. Für eine erste Kosteneinschätzung benötigen wir Informationen zu Ihrem geplanten
+    Datum, der ungefähren Teilnehmerzahl und Ihrem Budget. Darf ich Ihnen dazu ein paar Fragen stellen?
+- question: Wie kann ein AI Voice Agent meiner Event-Agentur helfen?
+  answer_template: Unser Voice Agent entlastet Ihr Team, indem er rund um die Uhr erste Kundenanfragen beantwortet, Termine vereinbart und Leads qualifiziert. So gewinnen Sie wertvolle Zeit für die kreative
+    Planung und können auch außerhalb der Bürozeiten keine Anfrage mehr verpassen.
+- question: Versteht der Voice Agent auch österreichische Dialekte?
+  answer_template: Ja, unser System ist speziell für den deutschsprachigen Raum trainiert und kann österreichische Dialekte und Umgangssprache zuverlässig verstehen. Für internationale Events bieten wir
+    auch englischsprachigen Support an.
+- question: Ist die Nutzung mit der DSGVO vereinbar?
+  answer_template: Absolut. Unser System ist DSGVO-konform entwickelt. Alle Gespräche werden transparent dokumentiert, Einwilligungen protokolliert und Daten nur gemäß Ihrer Vorgaben verarbeitet und gespeichert.
+- question: Was passiert, wenn der Voice Agent eine komplexe Frage nicht beantworten kann?
+  answer_template: In diesem Fall leitet der Agent das Gespräch nahtlos an einen menschlichen Kollegen in Ihrem Team weiter und übergibt alle bereits gesammelten Informationen, sodass der Kunde sich nicht
+    wiederholen muss.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten für Eventplanungsdienstleistungen fragt.
+  script: Vielen Dank für Ihre Anfrage. Um Ihnen ein passgenaues Angebot erstellen zu können, wäre es hilfreich, mehr über Ihr Vorhaben zu erfahren. Ist es eine Firmenveranstaltung, eine private Feier oder
+    ein Kongress? Wie viele Gäste planen Sie ungefähr und haben Sie schon ein Wunschdatum im Blick?
+  goal: Qualifizierung des Leads und Sammlung grundlegender Informationen für ein maßgeschneidertes Angebot, um vom Preis weg zur Wertschöpfung zu lenken.
+- trigger: objection_automation
+  situation: Wenn der Kunde Bedenken äußert, dass Automatisierung unpersönlich sei.
+  script: Das verstehe ich gut. Persönlicher Kontakt ist in der Eventbranche entscheidend. Unser Voice Agent dient als erste Anlaufstelle, um Routinefragen zu klären und Termine zu vereinbaren. So stellt
+    er sicher, dass Ihr Team entlastet wird und mehr Zeit für die persönliche Beratung und kreative Planung hat, genau dort, wo es wirklich darauf ankommt.
+  goal: Bedenken ausräumen und den Voice Agent als Entlastung und Unterstützung, nicht als Ersatz, für das persönliche Service-Team positionieren.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen spezifischen Wettbewerber wie eine große Online-Plattform nennt.
+  script: Ja, [Wettbewerbsname] ist sicher eine bekannte Option. Unser Fokus liegt auf maßgeschneiderter, persönlicher Betreuung und lokaler Expertise in Österreich. Unser Voice Agent ergänzt diese Stärke,
+    indem er Ihre Erreichbarkeit maximiert und sicherstellt, dass jede Anfrage – auch außerhalb der Geschäftszeiten – professionell bearbeitet wird, während Sie sich auf die individuellen Kundenwünsche
+    konzentrieren können.
+  goal: Differenzierung durch lokale, persönliche Servicequalität und die Kombination aus menschlicher Expertise und intelligenter Automatisierung hervorheben.
+competitors:
+- name: Eventbrite
+  positioning: Internationale Online-Plattform für Ticketing und Event-Entdeckung.
+  strengths:
+  - Große Reichweite
+  - Einfache Selbstbedienung
+  - Breite Funktionalität
+  weaknesses:
+  - Geringe persönliche Betreuung
+  - Standardisierte Lösungen
+  - Begrenzte lokale Expertise in AT
+  our_differentiation: Wir bieten lokale, persönliche Beratung kombiniert mit automatisierter 24/7-Erreichbarkeit, maßgeschneidert für österreichische Kunden und deren spezifische Anforderungen.
+- name: Lokale Eventagenturen (Einzelunternehmer/Kleine Teams)
+  positioning: Persönliche, hochindividuelle Betreuung mit starkem lokalen Netzwerk.
+  strengths:
+  - Sehr persönlicher Service
+  - Tiefe Ortskenntnis
+  - Flexibilität
+  weaknesses:
+  - Begrenzte Kapazitäten
+  - Oft keine 24/7-Erreichbarkeit
+  - Manueller Verwaltungsaufwand
+  our_differentiation: Wir erweitern die Kapazitäten lokaler Agenturen durch KI-gestützte Automatisierung, sodass sie den persönlichen Service beibehalten können, ohne Anfragen zu verpassen und sich im
+    administrativen Overhead zu verlieren.
+- name: XING Events / LinkedIn Events
+  positioning: Business-Networking-Plattformen mit integrierten Event-Tools.
+  strengths:
+  - Integration in Business-Netzwerke
+  - Zielgruppengenau bei B2B
+  - Einfache Einbindung
+  weaknesses:
+  - Funktionalität auf Networking fokussiert
+  - Begrenzte Full-Service-Planung
+  - Kaum telefonischer Support
+  our_differentiation: Wir sind ein Full-Service-Ansatz, der die komplette Event-Organisation – inklusive telefonischer Kundenkommunikation und Lead-Management – unterstützt, nicht nur die Online-Veranstaltungsliste.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleine Eventagentur spart 10 Stunden manuelle Telefonarbeit pro Monat.
+    monthly_cost: 99
+    monthly_savings: 750
+    payback_months: 1
+  - scenario: Mittlerer Veranstalter gewinnt 5 qualifizierte Leads pro Monat durch 24/7-Erreichbarkeit.
+    monthly_cost: 199
+    monthly_savings: 2500
+    payback_months: 1
+  value_anchors:
+  - Verpassen Sie keine Anfrage mehr – auch nicht am Wochenende.
+  - Gewinnen Sie bis zu 80% Ihrer Bürozeit für kreative Planung zurück.
+  - Professioneller Erstkontakt rund um die Uhr zu Fixkosten.
+market_context:
+  market_size: Ca. 2-3 Mrd. EUR jährlich (Schätzung für kommerzielle Eventdienstleistungen in AT)
+  growth_rate: 3-5% p.a. (post-Pandemie Erholung und Nachfrage nach Hybrid-Events)
+  key_trends:
+  - Starke Nachfrage nach nachhaltigen und regionalen Event-Konzepten.
+  - Zunahme von Hybrid-Veranstaltungen (Kombination aus Präsenz und Online).
+  - Hoher Wettbewerb und Preisdruck bei Standard-Events.
+  - Fokus auf personalisierte Erlebnisse und 'Experiences'.
+  seasonality:
+    high:
+    - September-November (Konferenzsaison)
+    - Dezember (Weihnachtsfeiern)
+    - Mai-Juli (Sommerfeste, Hochzeiten)
+    low:
+    - Januar
+    - August (Ferienzeit)
+typical_objections:
+- objection: Das ist mir zu teuer für eine Automatisierung.
+  response: Ich verstehe Ihre Budgetüberlegungen. Betrachten Sie es als Investition in die Skalierbarkeit Ihres Geschäfts. Für weniger als die Kosten einer halben Teilzeitkraft gewinnen Sie 24/7-Erreichbarkeit
+    und automatisierte Lead-Qualifizierung. Können wir gemeinsam durchrechnen, wie viele zusätzliche Anfragen oder eingesparte Stunden Sie benötigen, um sich zu amortisieren?
+- objection: Ich bevorzuge den direkten, menschlichen Kontakt zu meinen Kunden.
+  response: 'Das ist eine absolute Stärke! Genau darum geht es: Unser Voice Agent ist Ihr perfekter Assistent. Er übernimmt die repetitive Vorarbeit – die ersten Fragen, die Terminfindung – und stellt sicher,
+    dass Sie und Ihr Team dann mit allen notwendigen Informationen und für den wirklich wichtigen, kreativen und persönlichen Teil des Gesprächs zur Verfügung stehen. So wird der menschliche Kontakt noch
+    wertvoller.'
+- objection: Die Technik-Einführung ist mir zu aufwändig.
+  response: Der Einrichtungsaufwand ist minimal. Unser Team unterstützt Sie bei der Integration in Ihre bestehenden Systeme (wie Kalender oder CRM) und trainiert den Voice Agent mit Ihren spezifischen FAQs.
+    Innerhalb weniger Tage ist er einsatzbereit. Wir begleiten Sie während der gesamten Einführungsphase.
+meta:
+  id: events
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events

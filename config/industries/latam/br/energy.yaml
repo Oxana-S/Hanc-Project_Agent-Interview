@@ -1,0 +1,268 @@
+pain_points:
+- description: Custos elevados de energia elétrica devido a tarifas e impostos altos.
+  severity: high
+  solution_hint: O agente de voz de IA pode analisar padrões de consumo e sugerir
+    planos tarifários mais econômicos.
+- description: Conformidade regulatória complexa, incluindo a LGPD para proteção de
+    dados.
+  severity: high
+  solution_hint: Automatizar lembretes e verificações de conformidade para evitar
+    multas.
+- description: Roubo de energia (gato) comum em áreas urbanas e rurais.
+  severity: medium
+  solution_hint: Monitorar anomalias no consumo e alertar para possíveis fraudes.
+- description: Manutenção inadequada da infraestrutura elétrica, levando a falhas
+    e interrupções.
+  severity: medium
+  solution_hint: Agendar manutenções preventivas baseadas em dados de uso e condições
+    climáticas.
+- description: Flutuações na demanda de energia, especialmente em períodos de pico.
+  severity: medium
+  solution_hint: Otimizar a distribuição e armazenamento de energia usando previsões
+    em tempo real.
+- description: Integração desafiadora de fontes renováveis, como solar e eólica, na
+    rede.
+  severity: low
+  solution_hint: Facilitar a gestão de sistemas híbridos com análise de dados e automação.
+- description: Atendimento ao cliente insuficiente, com longos tempos de espera para
+    suporte.
+  severity: low
+  solution_hint: Fornecer suporte 24/7 via voz para resolver consultas básicas e escalar
+    problemas.
+typical_services:
+- Consultoria em eficiência energética
+- Instalação de sistemas de energia solar
+- Monitoramento de consumo de energia em tempo real
+- Gestão e otimização de faturas elétricas
+- Auditoria energética para indústrias e residências
+- Soluções de armazenamento de energia com baterias
+- Suporte à conformidade com a LGPD e regulamentos setoriais
+- Otimização de tarifas e contratos de energia
+- Manutenção preventiva e corretiva de infraestrutura
+- Integração de microrredes e energias renováveis
+recommended_functions:
+- name: Suporte ao cliente automatizado
+  priority: high
+  reason: Reduz tempos de espera e resolve problemas comuns rapidamente, melhorando
+    a satisfação.
+- name: Análise de consumo de energia
+  priority: high
+  reason: Ajuda os clientes a identificar desperdícios e economizar na conta de luz.
+- name: Gestão de faturas e pagamentos
+  priority: medium
+  reason: Automatiza lembretes e processamento, evitando atrasos e multas.
+- name: Agendamento de manutenções
+  priority: medium
+  reason: Otimiza a programação com base em dados, aumentando a eficiência operacional.
+- name: Vendas e geração de leads
+  priority: low
+  reason: Identifica oportunidades de upsell para serviços como energia solar.
+- name: Monitoramento de conformidade LGPD
+  priority: high
+  reason: Garante que os dados dos clientes sejam tratados conforme a lei, evitando
+    penalidades.
+- name: Resposta a emergências
+  priority: low
+  reason: Fornece instruções rápidas em caso de falhas ou interrupções de energia.
+typical_integrations:
+- name: Sistemas de medição inteligente
+  examples:
+  - Smart meters da Enel
+  - Sistemas da CPFL
+  priority: high
+- name: ERP para gestão empresarial
+  examples:
+  - SAP
+  - Totvs
+  - Oracle
+  priority: high
+- name: Sistemas SCADA para controle industrial
+  examples:
+  - Siemens SCADA
+  - Rockwell Automation
+  priority: medium
+- name: CRM para atendimento ao cliente
+  examples:
+  - Salesforce
+  - HubSpot
+  - Local sistemas como RD Station
+  priority: medium
+- name: Sistemas de faturamento
+  examples:
+  - Sistemas da ANEEL
+  - Software local como Microsiga
+  priority: low
+- name: Bancos de dados regulatórios
+  examples:
+  - Portais da ANEEL
+  - Sistemas do governo brasileiro
+  priority: low
+industry_faq:
+- question: Quanto posso economizar com energia solar no Brasil?
+  answer_template: Depende do seu consumo, mas em média, residências podem economizar
+    até 90% na conta de luz, com payback em 3-5 anos.
+- question: Como a LGPD afeta o setor de energia?
+  answer_template: A LGPD exige proteção de dados dos clientes, como informações de
+    consumo; nossa solução ajuda a automatizar a conformidade.
+- question: Quais são os incentivos para energias renováveis no Brasil?
+  answer_template: Há incentivos fiscais, linhas de crédito do BNDES e programas estaduais
+    para solar e eólica.
+- question: Como reduzir o custo da energia na minha empresa?
+  answer_template: Com análise de consumo, otimização de tarifas e investimento em
+    eficiência energética, podemos ajudar a cortar custos em até 30%.
+- question: É seguro integrar energia solar à rede elétrica?
+  answer_template: Sim, com sistemas certificados pela ANEEL e monitoramento adequado,
+    é seguro e confiável.
+- question: Quanto tempo leva para instalar um sistema de energia solar?
+  answer_template: Em média, de 2 a 4 semanas, dependendo do tamanho e da complexidade
+    do projeto.
+- question: O que fazer em caso de roubo de energia?
+  answer_template: Denuncie à distribuidora e use nosso monitoramento para detectar
+    anomalias e prevenir fraudes.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre o custo dos serviços.
+  script: Olá! Entendemos que o custo é uma preocupação. Nossas soluções começam em
+    R$ 500 por mês e podem gerar economias de até R$ 1.000 mensais. Posso fazer uma
+    análise personalizada para você?
+  goal: Mostrar o valor e ROI, convertendo a objeção em oportunidade.
+- trigger: interest_in_solar
+  situation: Quando o cliente expressa interesse em energia solar.
+  script: Que ótimo! A energia solar no Brasil tem ótimo retorno. Oferecemos instalação,
+    monitoramento e suporte completo, com conformidade LGPD. Podemos agendar uma avaliação
+    gratuita?
+  goal: Fechar um lead qualificado e agendar uma consulta.
+- trigger: compliance_concern
+  situation: Quando o cliente está preocupado com conformidade regulatória.
+  script: A LGPD é crucial. Nossa IA automatiza a proteção de dados e gera relatórios
+    de conformidade, evitando multas de até R$ 50 milhões. Vamos garantir que você
+    esteja seguro?
+  goal: Aliviar preocupações e destacar nossa expertise em conformidade.
+- trigger: energy_savings
+  situation: Quando o cliente quer reduzir custos de energia.
+  script: Perfeito! Com nossa análise de consumo, identificamos desperdícios e otimizamos
+    tarifas. Já ajudamos empresas a economizar 25% em média. Posso mostrar alguns
+    casos de sucesso?
+  goal: Demonstrar resultados tangíveis e construir confiança.
+- trigger: maintenance_issue
+  situation: Quando o cliente relata problemas de manutenção.
+  script: Entendo a frustração. Nossos agendamentos automáticos de manutenção previnem
+    falhas e reduzem custos. Oferecemos um plano a partir de R$ 300/mês. Quer testar
+    por um mês?
+  goal: Vender um serviço de manutenção proativa.
+competitors:
+- name: Enel Brasil
+  positioning: Grande distribuidora de energia com foco em renováveis.
+  strengths:
+  - Infraestrutura extensa
+  - Presença nacional
+  - Investimento em inovação
+  weaknesses:
+  - Atendimento ao cliente lento
+  - Preços altos
+  - Burocracia
+  our_differentiation: Oferecemos soluções personalizadas com IA, atendimento ágil
+    e preços mais competitivos.
+- name: CPFL Energia
+  positioning: Líder em distribuição e geração no interior de São Paulo.
+  strengths:
+  - Forte base regional
+  - Experiência em renováveis
+  - Programas de eficiência
+  weaknesses:
+  - Limitada inovação digital
+  - Foco em grandes clientes
+  - Integração tecnológica fraca
+  our_differentiation: Integração completa com sistemas locais, automação avançada
+    e suporte especializado para PMEs.
+- name: Solução Solar Local (startup brasileira)
+  positioning: Fornecedor de energia solar para residências e pequenas empresas.
+  strengths:
+  - Preços baixos
+  - Atendimento personalizado
+  - Crescimento rápido
+  weaknesses:
+  - Escala limitada
+  - Falta de suporte pós-venda
+  - Conformidade irregular
+  our_differentiation: Combinamos energia solar com gestão inteligente via IA, garantindo
+    conformidade LGPD e suporte 24/7.
+- name: Acciona (multinacional na América Latina)
+  positioning: Empresa global de infraestrutura e renováveis.
+  strengths:
+  - Expertise internacional
+  - Projetos de grande porte
+  - Tecnologia avançada
+  weaknesses:
+  - Preços premium
+  - Pouca adaptação local
+  - Lenta resposta ao mercado brasileiro
+  our_differentiation: Soluções customizadas para o contexto brasileiro, com preços
+    acessíveis e integração a sistemas locais.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Instalação de energia solar para uma residência média.
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 36
+  - scenario: Sistema de monitoramento de consumo para uma pequena empresa.
+    monthly_cost: 200
+    monthly_savings: 400
+    payback_months: 24
+  value_anchors:
+  - Economize até 90% na sua conta de luz com energia solar.
+  - Evite multas da LGPD com automação de conformidade.
+  - Reduza custos operacionais em 30% com eficiência energética.
+market_context:
+  market_size: Estimado em R$ 200 bilhões anuais no setor de energia no Brasil.
+  growth_rate: 5% ao ano, impulsionado por renováveis.
+  key_trends:
+  - Crescimento acelerado da energia solar e eólica.
+  - Aumento da digitalização e smart grids.
+  - Foco em sustentabilidade e ESG.
+  - Regulamentações mais rigorosas, como a LGPD.
+  seasonality:
+    high:
+    - Verão (dezembro a fevereiro) devido ao aumento do consumo de ar-condicionado.
+    - Períodos de seca que afetam hidrelétricas.
+    low:
+    - Inverno (junho a agosto) em algumas regiões com menor demanda.
+typical_objections:
+- objection: É muito caro investir em soluções de energia.
+  response: Entendo, mas o ROI é rápido. Por exemplo, com energia solar, o payback
+    é em 3-5 anos, e você economiza a longo prazo. Podemos começar com um plano básico
+    de R$ 500/mês.
+- objection: Não confio em tecnologia nova para algo crítico como energia.
+  response: Nossa IA é baseada em sistemas testados e integrados a infraestruturas
+    locais, com conformidade LGPD. Oferecemos suporte contínuo para garantir segurança.
+- objection: Já tenho um fornecedor e não quero mudar.
+  response: Perfeito! Podemos complementar seus serviços atuais com monitoramento
+    e otimização, sem interromper o fornecimento. Vamos aumentar sua eficiência em
+    20%.
+- objection: A LGPD é muito complicada de implementar.
+  response: Simplificamos isso com automação. Nossa solução gerencia a conformidade
+    automaticamente, reduzindo riscos e custos. Já ajudamos várias empresas no Brasil.
+- objection: Não tenho tempo para gerenciar isso agora.
+  response: Exatamente por isso nossa IA faz o trabalho pesado. Automatizamos análise,
+    relatórios e alertas, liberando seu tempo. Podemos começar com uma implementação
+    rápida em 2 semanas.
+meta:
+  id: energy
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

@@ -1,0 +1,211 @@
+pain_points:
+- description: Alta competencia de grandes cadenas veterinarias que ofrecen precios
+    bajos.
+  severity: high
+  solution_hint: El agente de voz puede resaltar servicios personalizados y atención
+    local para diferenciarse.
+- description: Dificultad en la gestión de citas y recordatorios, llevando a no-shows
+    y pérdida de ingresos.
+  severity: medium
+  solution_hint: Automatizar la programación y envío de recordatorios mediante el
+    agente de voz.
+- description: Costos elevados de operación, incluidos suministros y personal calificado.
+  severity: high
+  solution_hint: El agente de voz puede optimizar la administración y reducir costos
+    operativos.
+- description: Cumplimiento complejo con la LFPDPPP para el manejo de datos de clientes
+    y mascotas.
+  severity: high
+  solution_hint: Integrar funcionalidades que aseguren el tratamiento seguro y conforme
+    de la información.
+- description: Baja retención de clientes debido a la falta de seguimiento y comunicación
+    proactiva.
+  severity: medium
+  solution_hint: Usar el agente de voz para enviar recordatorios de vacunas y chequeos
+    regulares.
+- description: Problemas con el inventario y suministros, causando desabastecimiento
+    o exceso de stock.
+  severity: low
+  solution_hint: Conectar el agente de voz con sistemas de inventario para alertas
+    automáticas.
+typical_services:
+- Consultas generales
+- Vacunaciones
+- Cirugías (esterilización, emergencias)
+- Laboratorio clínico (análisis de sangre, orina)
+- Radiografías y ultrasonidos
+- Hospitalización y cuidados intensivos
+- Peluquería y baño
+- Venta de alimentos y medicamentos
+- Planes de salud preventiva
+- Servicios de emergencia 24/7
+recommended_functions:
+- name: Programación automatizada de citas
+  priority: high
+  reason: Reduce la carga administrativa y minimiza los no-shows.
+- name: Recordatorios de vacunas y consultas
+  priority: high
+  reason: Mejora la retención de clientes y el cuidado preventivo.
+- name: Respuestas a preguntas frecuentes (FAQ)
+  priority: medium
+  reason: Libera tiempo del personal para tareas más críticas.
+- name: Procesamiento de pagos y facturación
+  priority: medium
+  reason: Agiliza transacciones y reduce errores manuales.
+- name: Integración con software veterinario local
+  priority: high
+  reason: Permite sincronización de datos y mejora la eficiencia operativa.
+- name: Seguimiento post-consulta
+  priority: low
+  reason: Aumenta la satisfacción del cliente y fidelización.
+typical_integrations:
+- name: Software de gestión veterinaria
+  examples:
+  - VetManager MX
+  - CliniVet
+  - PetSoft México
+  priority: high
+- name: Sistemas de pago electrónico
+  examples:
+  - Mercado Pago
+  - Clip
+  - Stripe México
+  priority: medium
+- name: Plataformas de redes sociales
+  examples:
+  - Facebook
+  - Instagram
+  - WhatsApp Business
+  priority: low
+- name: Software de inventario
+  examples:
+  - InventarioVet
+  - StockMaster MX
+  priority: medium
+industry_faq:
+- question: ¿Cuáles son sus horarios de atención?
+  answer_template: Atendemos de lunes a viernes de 9:00 am a 7:00 pm, y sábados de
+    9:00 am a 2:00 pm. Para emergencias, contamos con servicio 24/7.
+- question: ¿Aceptan mascotas exóticas?
+  answer_template: Sí, contamos con especialistas para mascotas exóticas como reptiles
+    y aves. Recomendamos programar una consulta previa.
+- question: ¿Ofrecen planes de pago o financiamiento?
+  answer_template: Sí, disponemos de planes de pago flexibles y aceptamos diversas
+    formas de pago, incluyendo tarjetas de crédito.
+- question: ¿Cómo manejan la confidencialidad de los datos de mi mascota?
+  answer_template: Cumplimos estrictamente con la LFPDPPP, garantizando que toda la
+    información se maneje de manera segura y confidencial.
+- question: ¿Proporcionan servicios a domicilio?
+  answer_template: Sí, ofrecemos visitas a domicilio para consultas básicas y vacunaciones,
+    sujeto a disponibilidad y zona.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de un servicio específico.
+  script: Entiendo su interés en el precio. Nuestros servicios tienen precios competitivos
+    a partir de 500 MXN, y ofrecemos valor agregado con seguimiento personalizado.
+    ¿Le gustaría agendar una consulta para discutir opciones?
+  goal: Convertir la consulta en una cita y destacar el valor más allá del precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente busca información sobre servicios disponibles.
+  script: Ofrecemos una gama completa de servicios, desde consultas generales hasta
+    cirugías y planes preventivos. ¿Podría contarme más sobre las necesidades de su
+    mascota para recomendarle lo mejor?
+  goal: Identificar necesidades específicas y promover servicios relevantes.
+- trigger: competitor_comparison
+  situation: Cuando un cliente menciona opciones de la competencia.
+  script: Aprecio que esté comparando opciones. Nos diferenciamos por nuestra atención
+    personalizada, cumplimiento con LFPDPPP, y uso de tecnología para un mejor servicio.
+    ¿Le gustaría una demostración de cómo podemos ayudarle?
+  goal: Destacar ventajas competitivas y cerrar la venta.
+competitors:
+- name: Veterinarias Nacionales Chain
+  positioning: Cadena grande con múltiples sucursales en ciudades principales.
+  strengths:
+  - Precios bajos
+  - Amplia cobertura geográfica
+  - Marca reconocida
+  weaknesses:
+  - Atención impersonal
+  - Largos tiempos de espera
+  - Limitada personalización
+  our_differentiation: Ofrecemos atención cercana y personalizada, con integración
+    de tecnología para eficiencia y cumplimiento normativo.
+- name: Clínicas Locales Independientes
+  positioning: Pequeñas clínicas familiares en barrios.
+  strengths:
+  - Atención personalizada
+  - Confianza local
+  - Precios accesibles
+  weaknesses:
+  - Recursos limitados
+  - Falta de digitalización
+  - Horarios restringidos
+  our_differentiation: Combinamos el trato personal con soluciones tecnológicas avanzadas
+    para mejorar la experiencia del cliente.
+- name: PetCare México
+  positioning: Proveedor de servicios premium con enfoque en wellness.
+  strengths:
+  - Servicios de alta gama
+  - Enfoque en prevención
+  - Buena reputación
+  weaknesses:
+  - Precios elevados
+  - Disponibilidad limitada en zonas rurales
+  our_differentiation: Proporcionamos servicios de calidad a precios más accesibles,
+    con herramientas digitales que optimizan costos.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 1000
+  - 20000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatización de recordatorios de citas para reducir no-shows.
+    monthly_cost: 300
+    monthly_savings: 800
+    payback_months: 0.375
+  value_anchors:
+  - Reduce costos operativos en hasta un 20% con automatización.
+  - Mejora la satisfacción del cliente y aumenta las citas recurrentes.
+market_context:
+  market_size: Estimado en 15 mil millones de MXN anuales
+  growth_rate: 10% anual
+  key_trends:
+  - Aumento en la tenencia de mascotas, especialmente perros y gatos.
+  - Creciente demanda de servicios digitales y telemedicina veterinaria.
+  - Mayor conciencia sobre salud preventiva y bienestar animal.
+  seasonality:
+    high:
+    - Vacaciones de verano
+    - Fines de semana largos
+    - Temporada de fiestas
+    low:
+    - Temporada de lluvias (junio-septiembre)
+    - Inicio de año escolar
+typical_objections:
+- objection: Es demasiado caro para mi presupuesto.
+  response: Entiendo su preocupación. Ofrecemos planes de pago flexibles y nuestro
+    servicio incluye valor agregado como seguimiento y tecnología que ahorra costos
+    a largo plazo. ¿Podría considerar una opción básica para empezar?
+- objection: Prefiero la atención tradicional sin tecnología.
+  response: Respetamos su preferencia. Nuestra tecnología está diseñada para complementar
+    la atención humana, no reemplazarla, mejorando la eficiencia y el cuidado de su
+    mascota. ¿Le gustaría ver cómo funciona?
+- objection: Ya tengo un veterinario de confianza.
+  response: Es genial que tenga un veterinario de confianza. Nuestro enfoque es apoyar
+    con herramientas que pueden integrarse para optimizar su experiencia, como recordatorios
+    automáticos. ¿Podría interesarle una prueba sin compromiso?
+meta:
+  id: veterinary
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

@@ -1,0 +1,202 @@
+pain_points:
+- description: La complexité des réglementations françaises et européennes sur le CBD et le cannabis médical entraîne des risques de non-conformité et des blocages logistiques.
+  severity: high
+  solution_hint: L'agent vocal peut fournir des mises à jour réglementaires automatisées et guider les clients dans les démarches de conformité.
+- description: Difficulté à trouver des partenaires de distribution fiables et agréés en France, en particulier pour les produits à base de CBD.
+  severity: high
+  solution_hint: L'agent peut qualifier les leads de distribution et planifier des rendez-vous avec des réseaux vérifiés.
+- description: Gestion fastidieuse des commandes et du service client, avec des questions récurrentes sur la légalité, les effets et la posologie des produits.
+  severity: medium
+  solution_hint: Automatiser les réponses aux FAQ, le suivi de commande et le support de première ligne pour libérer du temps.
+- description: 'Concurrence féroce et marketing restrictif : impossibilité de faire de la publicité classique pour les produits à base de CBD.'
+  severity: high
+  solution_hint: L'agent vocal permet un marketing conversationnel direct et personnalisé, en respectant les règles, pour générer des leads qualifiés.
+- description: Fluctuation des prix des matières premières et problèmes de qualité ou de traçabilité des fleurs de CBD.
+  severity: medium
+  solution_hint: L'agent peut envoyer des alertes de prix et des rapports de qualité automatisés aux acheteurs.
+- description: Manque de formation et d'information des clients finaux sur la différence entre CBD, cannabis thérapeutique et cannabis récréatif.
+  severity: medium
+  solution_hint: L'agent vocal éduque les clients via des scripts informatifs, construisant la confiance et réduisant les appréhensions.
+- description: Gestion des stocks complexe due à la péremption des produits et à la diversité des formats (huiles, fleurs, cosmétiques).
+  severity: low
+  solution_hint: Intégrer l'agent avec le logiciel de gestion de stocks pour des notifications de réassort et des inventaires vocalement commandés.
+typical_services:
+- Vente en gros de fleurs de CBD
+- Vente en gros d'huiles et de e-liquides au CBD
+- Développement de cosmétiques au chanvre (crèmes, baumes)
+- Cultivation et production de chanvre industriel
+- Conseil en conformité légale et réglementaire
+- Création de marque white-label pour CBD
+- Services de labellisation et d'analyse en laboratoire (teneur en CBD/THC)
+- Formation sur les produits CBD pour les revendeurs
+- Logiciel de gestion pour dispensaires et coffee shops
+- Marketing digital spécialisé pour le secteur du bien-être
+recommended_functions:
+- name: Qualification de leads B2B
+  priority: high
+  reason: Essentiel pour identifier les revendeurs et distributeurs sérieux dans un marché encombré et régulé.
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Optimise le temps des commerciaux en planifiant des appels avec des leads pré-qualifiés intéressés par le catalogue.
+- name: Support client 24/7 sur la réglementation
+  priority: high
+  reason: Répond instantanément aux questions cruciales sur la légalité, apaisant les craintes et réduisant l'abandon de panier.
+- name: Envoi de confirmations et suivis de commande
+  priority: medium
+  reason: Améliore l'expérience client et réduit les demandes de statut manuelles pour les e-commerces de CBD.
+- name: Sondages de satisfaction et collecte d'avis
+  priority: medium
+  reason: Aide à recueillir des témoignages précieux pour un secteur où la confiance est primordiale.
+- name: Rappels pour le réassort de stock
+  priority: low
+  reason: Fidélise les clients B2B en les aidant à maintenir leurs rayons approvisionnés.
+typical_integrations:
+- name: Logiciel de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Dolibarr
+  priority: high
+- name: Plateforme e-commerce
+  examples:
+  - Shopify
+  - WooCommerce
+  - PrestaShop
+  priority: high
+- name: Logiciel de gestion de stocks (ERP)
+  examples:
+  - SAP Business One
+  - Odoo
+  - Cegid
+  priority: medium
+- name: Outils de livraison et logistique
+  examples:
+  - Sendcloud
+  - Mondial Relay
+  - Chronopost
+  priority: medium
+- name: Système de comptabilité
+  examples:
+  - QuickBooks
+  - Sage
+  - Ciel Compta
+  priority: low
+industry_faq:
+- question: Est-ce que la vente de CBD est légale en France ?
+  answer_template: Oui, la vente de produits à base de CBD est légale en France à condition qu'ils proviennent de variétés de chanvre autorisées et que leur teneur en THC soit inférieure à 0,3%. Notre équipe
+    reste à votre disposition pour toute question réglementaire spécifique.
+- question: Quelle est la différence entre le CBD et le cannabis thérapeutique ?
+  answer_template: Le CBD (cannabidiol) est un cannabinoïde non-psychotrope vendu en tant que produit de bien-être. Le cannabis thérapeutique, lui, est un médicament sur prescription, contenant souvent
+    du THC, dans le cadre d'un programme expérimental strict en France. Nos produits concernent exclusivement le marché du CBD.
+- question: Proposez-vous des services de livraison dans toute l'Europe ?
+  answer_template: Oui, nous expédions nos produits de CBD dans tous les pays de l'Union Européenne où la législation le permet. Nous vérifions systématiquement la conformité locale avant toute expédition.
+- question: Pouvez-vous fournir des certificats d'analyse pour vos produits ?
+  answer_template: Absolument. Tous nos lots sont analysés par des laboratoires indépendants agréés. Nous pouvons vous fournir un certificat d'analyse (COA) détaillant les teneurs en CBD, CBG et THC, ainsi
+    que les tests de résidus et de métaux lourds.
+- question: Quels sont vos délais de traitement des commandes en gros ?
+  answer_template: Les commandes en gros sont généralement traitées sous 24 à 48 heures ouvrables. Les délais d'expédition varient ensuite en fonction du transporteur choisi et de la destination.
+- question: Proposez-vous des services de marque blanche ?
+  answer_template: Oui, nous proposons un service complet de marque blanche, de la formulation à l'emballage personnalisé, pour vous aider à lancer votre propre ligne de produits au CBD rapidement et en
+    conformité.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un client potentiel (revendeur) demande le prix pour un produit ou un service.
+  script: Bonjour, je comprends votre intérêt pour nos tarifs. Pour vous proposer une offre la plus précise possible, pourriez-vous m'indiquer le volume mensuel approximatif que vous envisagez (par exemple
+    en kilogrammes de fleurs ou en nombre de bouteilles d'huile) ? Cela me permettra de vous transmettre immédiatement nos grilles tarifaires dégressives.
+  goal: Qualifier le lead sur le volume et l'engagement potentiel pour adapter la proposition et engager une conversation commerciale.
+- trigger: competitor_mention
+  situation: Quand le client mentionne un concurrent spécifique du marché français/européen.
+  script: Je connais bien [Nom du concurrent]. Ils ont une bonne présence sur le marché. Là où nous nous différencions vraiment, c'est par [notre traçabilité totale du champ au produit fini / notre service
+    conseil en conformité inclus / notre réactivité logistique sur le territoire français]. Souhaiteriez-vous que je vous envoie par email une comparaison détaillée de nos avantages spécifiques pour votre
+    activité ?
+  goal: Reconnaître le concurrent, ne pas le dénigrer, et mettre en avant notre avantage différenciant concret pour recentrer sur notre valeur ajoutée.
+- trigger: objection_regulation
+  situation: Quand le client exprime des craintes concernant la complexité réglementaire.
+  script: Votre prudence est tout à fait compréhensible, la réglementation évolue rapidement. C'est précisément pour cela que nous avons développé un pack d'accompagnement réglementaire avec tous nos contrats
+    gros. Nous vous fournissons les documents types, les mises à jour légales et un contact dédié pour toute question. Ainsi, vous pouvez vous concentrer sur votre croissance en toute sérénité.
+  goal: Transformer une objection perçue comme un risque en un argument de vente démontrant notre expertise et notre support.
+competitors:
+- name: Ciel Vert
+  positioning: Grossiste et producteur français de CBD, positionné sur la qualité premium.
+  strengths:
+  - Production française
+  - Large gamme de fleurs
+  - Bonne notoriété locale
+  weaknesses:
+  - Prix élevés
+  - Capacité logistique parfois limitée
+  our_differentiation: Nous offrons une meilleure scalabilité logistique à travers l'Europe et des outils digitaux (dont l'agent vocal) pour automatiser la relation client.
+- name: 420 Pharma
+  positioning: Fournisseur européen B2B axé sur le cannabis médical et le CBD pharmaceutique.
+  strengths:
+  - Expertise médicale et scientifique
+  - Produits de très haute pureté
+  - Fortes certifications
+  weaknesses:
+  - Approche moins accessible pour les petits revendeurs
+  - Processus d'achat rigide
+  our_differentiation: Nous combinons une qualité certifiée à une approche commerciale plus agile et digitale, accessible aux revendeurs de toutes tailles.
+- name: Weedo
+  positioning: Marketplace en ligne européenne pour les produits CBD grand public.
+  strengths:
+  - Grand choix de marques
+  - Interface client simple
+  - Livraison rapide
+  weaknesses:
+  - Peu de services B2B
+  - Contrôle qualité variable selon les marques
+  our_differentiation: Nous sommes un partenaire B2B dédié, avec un contrôle qualité strict sur notre propre chaîne d'approvisionnement et un support personnalisé.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 50000
+  entry_point: 299
+  roi_examples:
+  - scenario: Boutique en ligne de CBD automatisant le support client et la qualification de leads
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Réduisez de 70% le temps passé sur les questions récurrentes de vos clients.
+  - Générez jusqu'à 15 leads qualifiés par mois sans effort manuel.
+  - Évitez les erreurs de conformité coûteuses avec des mises à jour automatisées.
+market_context:
+  market_size: ~800 millions EUR (marché du CBD en France, estimation 2023)
+  growth_rate: ~25% YoY
+  key_trends:
+  - Démédicalisation et adoption grand public des produits CBD de bien-être.
+  - Concentration du marché avec l'arrivée de grands groupes.
+  - Diversification forte des formats (comestibles, cosmétiques).
+  - Importance croissante de la traçabilité et du 'made in France'.
+  seasonality:
+    high:
+    - Septembre - Décembre (rentrée, Noël)
+    - Avril - Juin (printemps)
+    low:
+    - Juillet - Août (vacances d'été)
+    - Janvier (post-fêtes)
+typical_objections:
+- objection: C'est trop cher pour mon petit commerce.
+  response: Je comprends. Avez-vous calculé le coût du temps que vous ou votre équipe passez actuellement à répondre au téléphone sur des questions de légalité ou de suivi de commande ? Notre solution permet
+    de réaffecter ce temps à des tâches à plus forte valeur ajoutée, comme le développement commercial. De plus, nous avons des formules modulables qui pourraient correspondre à votre budget.
+- objection: Je préfère gérer la relation client moi-même, c'est plus personnel.
+  response: C'est une excellente approche. Notre agent vocal ne remplace pas la relation personnelle, il la complète. Il s'occupe des tâches répétitives (horaires, statut de livraison, questions réglementaires
+    basiques) 24h/24, ce qui vous libère pour les conversations complexes et la fidélisation où votre touche personnelle fait toute la différence.
+- objection: La technologie, ce n'est pas pour moi, je ne suis pas très digital.
+  response: C'est justement pour cela que notre solution est parfaite. Elle ne nécessite aucune compétence technique de votre part. Nous nous chargeons de tout l'installation et de la formation. Vous interagissez
+    avec elle simplement par téléphone, comme avec un assistant. L'objectif est de simplifier votre quotidien, pas de le compliquer.
+meta:
+  id: cannabis
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- cannabis
+- dispensary
+- marijuana
+- CBD
+_extends: _base/cannabis

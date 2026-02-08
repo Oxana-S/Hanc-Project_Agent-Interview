@@ -1,0 +1,209 @@
+pain_points:
+- description: Coût élevé de la main-d'œuvre pour la surveillance 24/7.
+  severity: high
+  solution_hint: Automatiser les appels de vérification et les alertes avec un agent vocal IA pour réduire les heures de travail.
+- description: Complexité de la conformité RGPD pour la gestion des données de sécurité.
+  severity: high
+  solution_hint: Intégrer des vérifications automatisées de conformité dans les processus d'appel vocaux.
+- description: Temps de réponse lent aux incidents en raison de procédures manuelles.
+  severity: medium
+  solution_hint: Utiliser l'IA pour détecter et notifier automatiquement les incidents via appels vocaux.
+- description: Difficulté à gérer les multiples sites de sécurité.
+  severity: medium
+  solution_hint: Centraliser la communication avec un agent vocal IA pour coordonner les équipes sur différents sites.
+- description: Manque de personnalisation dans les services de sécurité.
+  severity: low
+  solution_hint: Offrir des scripts vocaux personnalisés basés sur les besoins spécifiques des clients.
+- description: Risque élevé de failles de sécurité dues à des erreurs humaines.
+  severity: high
+  solution_hint: Automatiser les routines de sécurité avec des agents vocaux IA pour minimiser les erreurs.
+typical_services:
+- Surveillance vidéo
+- Contrôle d'accès
+- Gardiennage
+- Alarme intrusion
+- Télésurveillance
+- Sécurité informatique
+- Protection incendie
+- Sécurité événementielle
+- Audit de sécurité
+- Formation en sécurité
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Réduit le temps administratif et améliore l'efficacité des visites de sécurité.
+- name: Notification d'incidents
+  priority: high
+  reason: Permet une réponse rapide aux alertes de sécurité.
+- name: Vérification de conformité RGPD
+  priority: high
+  reason: Essentiel pour éviter les amendes et assurer la légalité des opérations.
+- name: Service client 24/7
+  priority: medium
+  reason: Améliore la satisfaction client en offrant un support constant.
+- name: Collecte de feedback
+  priority: low
+  reason: Aide à améliorer les services basés sur les retours clients.
+- name: Gestion des abonnements
+  priority: medium
+  reason: Facilite le renouvellement des contrats et la facturation.
+typical_integrations:
+- name: Système de gestion de la relation client (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: high
+- name: Logiciel de surveillance vidéo
+  examples:
+  - Genetec
+  - Milestone
+  - Axis
+  priority: high
+- name: Système de contrôle d'accès
+  examples:
+  - HID Global
+  - ASSA ABLOY
+  priority: medium
+- name: Plateforme de communication
+  examples:
+  - Twilio
+  - Vonage
+  priority: medium
+- name: Logiciel de conformité
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: high
+industry_faq:
+- question: Comment garantissez-vous la conformité avec le RGPD ?
+  answer_template: Nous intégrons des protocoles de conformité RGPD dans tous nos processus, avec des vérifications automatisées pour protéger les données.
+- question: Quel est le temps de réponse moyen pour un incident ?
+  answer_template: Notre système assure une notification immédiate via agents vocaux IA, avec un temps de réponse moyen de moins de 5 minutes.
+- question: Proposez-vous des services personnalisés ?
+  answer_template: Oui, nous adaptons nos solutions de sécurité et nos scripts vocaux selon vos besoins spécifiques.
+- question: Comment gérez-vous la sécurité sur plusieurs sites ?
+  answer_template: Grâce à notre agent vocal IA centralisé, nous coordonnons la surveillance et la communication sur tous vos sites.
+- question: Quels sont vos tarifs ?
+  answer_template: Nos tarifs varient selon les services. Nous offrons un devis personnalisé basé sur vos besoins.
+- question: Êtes-vous disponible 24h/24 et 7j/7 ?
+  answer_template: Absolument, notre service de télésurveillance et support vocal IA est opérationnel en permanence.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un client potentiel demande des informations sur les tarifs des services de sécurité.
+  script: Je comprends que le prix est un facteur important. Nos solutions de sécurité sont personnalisées selon vos besoins, ce qui garantit un excellent rapport qualité-prix. Pourriez-vous me donner plus
+    de détails sur votre site afin que je puisse vous proposer une offre adaptée ?
+  goal: Obtenir des informations spécifiques pour proposer un devis personnalisé.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Lorsque le client mentionne un concurrent offrant des services similaires.
+  script: C’est intéressant que vous ayez considéré cette option. Notre valeur ajoutée réside dans notre technologie avancée et notre service client local dédié, qui assurent une protection optimale et
+    une réactivité sans faille.
+  goal: Mettre en avant les avantages compétitifs de notre offre.
+  effectiveness: high
+- trigger: security_concerns
+  situation: Si le client exprime des inquiétudes concernant la sécurité actuelle de ses locaux.
+  script: Je comprends vos préoccupations. Nos solutions intègrent des systèmes de surveillance de pointe et une intervention rapide pour assurer la tranquillité d’esprit totale à votre entreprise.
+  goal: Rassurer et inciter à souscrire un service de sécurité.
+  effectiveness: high
+- trigger: service_features_question
+  situation: Quand le client demande des détails sur les caractéristiques spécifiques des services.
+  script: Nos services incluent la vidéosurveillance 24/7, des patrouilles régulières et une intervention immédiate en cas d’alerte, garantissant ainsi une protection complète et efficace.
+  goal: Informer précisément sur les fonctionnalités offertes.
+  effectiveness: medium
+- trigger: budget_constraints
+  situation: Si le client évoque des contraintes budgétaires.
+  script: Nous pouvons adapter nos solutions pour correspondre à votre budget tout en maintenant un haut niveau de sécurité, en priorisant les services essentiels pour votre site.
+  goal: Proposer une solution flexible adaptée au budget.
+  effectiveness: medium
+meta:
+  id: security
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- security
+- guard service
+- surveillance
+- alarm systems
+_extends: _base/security
+competitors:
+- name: Securitas France
+  positioning: Leader du marché de la sécurité privée avec une forte présence nationale
+  strengths:
+  - Large réseau d'agents de sécurité
+  - Solutions intégrées de surveillance et gardiennage
+  - Bonne réputation et expérience sur le marché français
+  weaknesses:
+  - Peu d'innovation dans les solutions numériques
+  - Processus manuels encore prévalents
+  our_differentiation: Automatisation avancée avec agent vocal IA offrant une réponse plus rapide et une réduction des coûts opérationnels
+- name: Groupe Prosegur
+  positioning: Acteur majeur dans la sécurité électronique et gestion des alarmes
+  strengths:
+  - Expertise en technologie de surveillance avancée
+  - Services de sécurité intégrés à forte valeur ajoutée
+  - Présence internationale avec un savoir-faire local
+  weaknesses:
+  - Coût élevé pour les petites et moyennes entreprises
+  - Complexité d'intégration de nouvelles technologies
+  our_differentiation: Solution d’agent vocal IA simple à intégrer, avec une interface utilisateur intuitive et un focus sur la conformité RGPD
+- name: Onet Sécurité
+  positioning: Fournisseur de services de sécurité polyvalents sur le marché français
+  strengths:
+  - Offre complète incluant gardiennage et contrôle d’accès
+  - Réactivité locale et flexibilité des services
+  weaknesses:
+  - Moins d’investissement dans les technologies IA
+  - Dépendance importante à la main-d’œuvre humaine
+  our_differentiation: Réduction significative du besoin en personnel grâce à l'automatisation des appels et notifications avec IA vocale
+- name: Fiducial Sécurité
+  positioning: Spécialiste des solutions de sécurité pour les PME en France
+  strengths:
+  - Approche personnalisée adaptée aux petites structures
+  - Tarification compétitive
+  weaknesses:
+  - Moins de couverture géographique
+  - Capacités technologiques limitées
+  our_differentiation: Solutions évolutives basées sur l'IA, permettant un service hautement automatisé et conforme à la réglementation
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisation de la surveillance 24/7 pour une PME avec réduction des heures supplémentaires
+    monthly_cost: 800
+    monthly_savings: 2000
+    payback_months: 2
+  - scenario: Mise en place de notifications d'incidents automatisées dans une entreprise industrielle
+    monthly_cost: 1200
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Réduction significative des coûts liés à la main-d'œuvre
+  - Amélioration du temps de réponse aux incidents
+  - Conformité garantie avec le RGPD grâce à l'automatisation
+  - Amélioration de la satisfaction client par des services personnalisés
+market_context:
+  market_size: 1,2 milliards EUR en 2023
+  growth_rate: 4-6%
+  key_trends:
+  - Digitalisation croissante des services de sécurité
+  - Adoption accrue des technologies IA et automatisation
+  - Renforcement des réglementations liées à la protection des données
+  - Demande accrue pour des solutions de sécurité à distance
+  seasonality:
+    high:
+    - Mars
+    - Avril
+    - Septembre
+    - Octobre
+    low:
+    - Juillet
+    - Août
+    - Décembre

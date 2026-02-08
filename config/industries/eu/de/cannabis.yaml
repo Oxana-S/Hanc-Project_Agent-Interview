@@ -1,0 +1,218 @@
+pain_points:
+- description: Komplexe rechtliche Vorschriften und sich ständig ändernde Gesetze
+    machen Compliance zur Herausforderung.
+  severity: high
+  solution_hint: KI-Sprachagent kann über aktuelle Vorschriften informieren und Termine
+    für Rechtsberatung vereinbaren.
+- description: Hohe administrative Belastung durch Dokumentation für Anbau, Vertrieb
+    und Qualitätskontrolle.
+  severity: high
+  solution_hint: Automatisierte Datenerfassung und Berichterstellung durch Integration
+    mit Compliance-Software.
+- description: Begrenzte Bankdienstleistungen und Zahlungsabwicklung aufgrund von
+    Stigmatisierung.
+  severity: medium
+  solution_hint: KI-Sprachagent kann alternative Zahlungslösungen vorschlagen und
+    Kunden über sichere Transaktionen aufklären.
+- description: Logistische Herausforderungen im Transport und Lagerung von Cannabisprodukten.
+  severity: medium
+  solution_hint: Optimierung von Lieferketten durch Terminplanung und Verfolgung von
+    Sendungen.
+- description: Wettbewerbsdruck durch neue Marktteilnehmer und internationale Unternehmen.
+  severity: medium
+  solution_hint: KI-Sprachagent kann Marktanalysen bereitstellen und Kundenbindungsstrategien
+    unterstützen.
+- description: Mangel an spezialisierten Arbeitskräften mit Kenntnissen in Cannabisanbau
+    und -verarbeitung.
+  severity: low
+  solution_hint: Automatisierte Schulungsanfragen und Personalvermittlung über Sprachassistenten.
+typical_services:
+- Medizinisches Cannabis-Beratung
+- Cannabisanbau-Lizenzierung
+- Qualitätskontrolllabor-Dienstleistungen
+- Vertrieb und Logistik für Cannabisprodukte
+- Compliance- und Rechtsberatung
+- Marketing und Kundenakquise für Apotheken
+- Cultivation-Technologie-Installation
+- Patientenbetreuung und Support
+- B2B-Großhandel von Cannabisblüten
+- Online-Shop-Integration für legale Produkte
+recommended_functions:
+- name: Terminvereinbarung für Beratung
+  priority: high
+  reason: Häufige Anfragen für rechtliche und medizinische Beratung erfordern effiziente
+    Planung.
+- name: Compliance-Updates und Erinnerungen
+  priority: high
+  reason: Einhaltung deutscher und EU-Vorschriften ist kritisch für den Betrieb.
+- name: Kundensupport und FAQ-Beantwortung
+  priority: medium
+  reason: Reduziert manuellen Aufwand und verbessert Patientenerfahrung.
+- name: Bestellungen und Lieferverfolgung
+  priority: medium
+  reason: Unterstützt Logistik in einem regulierten Markt.
+- name: Marktanalyse- und Trendberichte
+  priority: low
+  reason: Hilft Unternehmen, wettbewerbsfähig zu bleiben.
+- name: Integration mit Buchhaltungssoftware
+  priority: medium
+  reason: Automatisiert Finanzprozesse unter GDPR-Anforderungen.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Datev
+  - Lexware
+  priority: high
+- name: CRM-Software
+  examples:
+  - HubSpot
+  - Pipedrive
+  - Salesforce
+  priority: high
+- name: Compliance- und Tracking-Systeme
+  examples:
+  - Cannavigia
+  - Metrc
+  - Local German solutions
+  priority: high
+- name: E-Commerce-Plattformen
+  examples:
+  - Shopify
+  - Magento
+  - WooCommerce
+  priority: medium
+- name: Buchhaltungstools
+  examples:
+  - Lexware
+  - SevDesk
+  - FastBill
+  priority: medium
+industry_faq:
+- question: Welche Lizenz benötige ich für den Cannabisanbau in Deutschland?
+  answer_template: Für den Anbau von medizinischem Cannabis benötigen Sie eine Genehmigung
+    nach dem Betäubungsmittelgesetz. Wir empfehlen eine individuelle Beratung mit
+    unseren Experten.
+- question: Wie lange dauert die Lieferung von Cannabisprodukten an Apotheken?
+  answer_template: Die Lieferzeiten variieren je nach Region und Produkt, typischerweise
+    zwischen 2-5 Werktagen. Wir bieten Echtzeit-Verfolgung an.
+- question: Sind Ihre Dienstleistungen GDPR-konform?
+  answer_template: Ja, alle unsere Systeme sind vollständig GDPR-konform und sichern
+    Ihre Daten gemäß europäischen Vorschriften.
+- question: Kann ich Cannabis online verkaufen?
+  answer_template: Der Online-Verkauf ist streng reguliert und nur für autorisierte
+    Händler möglich. Wir helfen bei der Compliance-Integration.
+- question: Was kostet die Erstberatung für eine Cannabis-Lizenz?
+  answer_template: Unsere Erstberatung beginnt bei 500 EUR und umfasst eine detaillierte
+    Analyse Ihrer Anforderungen.
+- question: Gibt es Subventionen oder Förderungen für Cannabisunternehmen?
+  answer_template: Ja, einige Bundesländer bieten Förderprogramme an. Wir können Sie
+    über aktuelle Möglichkeiten informieren.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für Compliance-Beratung fragt.
+  script: Guten Tag, unsere Compliance-Beratung beginnt bei 500 EUR pro Monat und
+    kann Ihnen bis zu 20 Stunden administrative Arbeit sparen. Möchten Sie mehr details?
+  goal: Interesse wecken und zu einem Beratungstermin führen.
+- trigger: service_inquiry
+  situation: Wenn ein Apotheke nach Lieferdiensten für Cannabis fragt.
+  script: Hallo, wir bieten zuverlässige Lieferungen mit Tracking ab 200 EUR pro Monat.
+    Unsere durchschnittliche Lieferzeit beträgt 3 Tage. Können wir einen Demo-Termin
+    vereinbaren?
+  goal: Kunden über Servicevorteile informieren und Abschluss vorbereiten.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen Wettbewerber nennt.
+  script: Verstanden. Im Vergleich zu [Competitor] bieten wir GDPR-konforme Integrationen
+    und 24/7-Support auf Deutsch. Möchten Sie eine kostenlose Testversion?
+  goal: Differenzierung hervorheben und Vertrauen aufbauen.
+competitors:
+- name: Cannamedical Pharma
+  positioning: Führender Großhändler für medizinisches Cannabis
+  strengths:
+  - Breites Produktportfolio
+  - Etablierte Lieferketten
+  weaknesses:
+  - Begrenzte Beratungsdienste
+  - Höhere Preise
+  our_differentiation: Wir bieten umfassende Compliance-Lösungen und KI-gestützte
+    Supportdienste zu wettbewerbsfähigen Preisen.
+- name: Demecan
+  positioning: Deutscher Cannabisanbauer mit Fokus auf Forschung
+  strengths:
+  - Hohe Qualitätsstandards
+  - Starke Forschungspartnerschaften
+  weaknesses:
+  - Langsame Skalierung
+  - Weniger B2B-Dienste
+  our_differentiation: Unsere Automatisierungslösungen reduzieren Kosten und verbessern
+    die Effizienz für kleine bis mittlere Unternehmen.
+- name: Aurora Cannabis Europe
+  positioning: Internationaler Player mit Präsenz in Deutschland
+  strengths:
+  - Globale Expertise
+  - Finanzielle Stärke
+  weaknesses:
+  - Lokale Anpassungsschwierigkeiten
+  - Komplexe Vertragsstrukturen
+  our_differentiation: Wir sind lokal verwurzelt, bieten maßgeschneiderte Dienstleistungen
+    auf Deutsch und schnellere Implementierung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung von Compliance-Dokumentation für eine Apotheke
+    monthly_cost: 400
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: KI-gestützter Kundensupport für einen Online-Shop
+    monthly_cost: 600
+    monthly_savings: 1500
+    payback_months: 2
+  value_anchors:
+  - Durchschnittliche Einsparungen von 30% bei administrativen Kosten
+  - Schnellere Lizenzierungsprozesse durch digitale Tools
+  - 24/7-Verfügbarkeit auf Deutsch erhöht Kundenzufriedenheit
+market_context:
+  market_size: Schätzungsweise 1,2 Milliarden EUR im Jahr 2023
+  growth_rate: 25% YoY
+  key_trends:
+  - Zunehmende Legalisierung von medizinischem Cannabis
+  - Wachsende Nachfrage nach CBD-Produkten
+  - Digitalisierung der Lieferketten
+  - Stärkere Regulierung und Standardisierung
+  seasonality:
+    high:
+    - Q4 aufgrund von Jahresendverkäufen
+    - Q1 für Neugeschäft nach Neujahr
+    low:
+    - Sommerferienmonate (Juli-August)
+typical_objections:
+- objection: Das ist zu teuer für unser kleines Unternehmen.
+  response: Wir bieten skalierbare Pakete ab 300 EUR, die sich durch Einsparungen
+    bei manueller Arbeit oft in wenigen Monaten amortisieren. Möchten Sie eine Kosten-Nutzen-Analyse?
+- objection: Wir haben bereits ein System, das funktioniert.
+  response: Verstanden. Unsere KI-Lösungen integrieren sich nahtlos und verbessern
+    die Effizienz um bis zu 40%. Können wir eine Demo zeigen?
+- objection: Die Datensicherheit ist mir wichtig, besonders mit GDPR.
+  response: Alle unsere Dienste sind vollständig GDPR-konform mit deutscher Serverinfrastruktur.
+    Wir bieten Zertifizierungsnachweise an.
+- objection: Der Markt ist zu unsicher für langfristige Investitionen.
+  response: Die Cannabisbranche in Deutschland wächst stabil mit 25% pro Jahr. Unsere
+    flexiblen Verträge minimieren Risiken.
+meta:
+  id: cannabis
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

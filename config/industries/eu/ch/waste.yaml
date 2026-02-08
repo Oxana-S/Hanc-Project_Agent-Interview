@@ -1,0 +1,198 @@
+pain_points:
+- description: Hohe Entsorgungskosten durch strenge ökologische Vorschriften und teure Deponiegebühren.
+  severity: high
+  solution_hint: Unser AI Agent kann kosteneffiziente Entsorgungsrouten und Recyclingoptionen vorschlagen.
+- description: Komplexe und sich häufig ändernde gesetzliche Vorschriften (USG, VVEA, FADP).
+  severity: high
+  solution_hint: Der Voice Agent hält Sie über Compliance-Updates auf dem Laufenden und unterstützt bei der Dokumentation.
+- description: Personalmangel, insbesondere für anspruchsvolle Logistik- und Sortierarbeiten.
+  severity: medium
+  solution_hint: Automatisierte Terminplanung und Kundenkommunikation entlasten Ihr Personal.
+- description: Ineffiziente Routenplanung führt zu hohem Kraftstoffverbrauch und CO2-Emissionen.
+  severity: medium
+  solution_hint: Intelligente Routenoptimierung durch den Agent reduziert Fahrzeit und Kosten.
+- description: Schwierigkeiten bei der korrekten Sortierung und Trennung von Abfällen durch Endkunden.
+  severity: medium
+  solution_hint: Der Agent kann Kunden via Telefon an die richtige Trennung erinnern und informieren.
+- description: Hoher administrativer Aufwand für Abrechnung, Nachverfolgung und Reporting.
+  severity: low
+  solution_hint: Automatisierte Datenerfassung und Berichterstellung sparen Zeit und minimieren Fehler.
+typical_services:
+- Hauskehrichtabholung
+- Separatsammlung (Papier, Karton, Glas, PET)
+- Grünabfallentsorgung
+- Sperrgutabholung
+- Sonderabfallentsorgung (z.B. Elektronik, Chemikalien)
+- Baustellenabfall-Container
+- Recycling-Dienstleistungen
+- Abfallberatung und Audit
+- Dokumentation für Umweltzertifikate (z.B. OK compost)
+- Rücknahmesystem für Verpackungen (z.B. via SENS, INOBAT)
+recommended_functions:
+- name: Automatisierte Terminvereinbarung und -änderung
+  priority: high
+  reason: Reduziert telefonischen Aufwand und verbessert die Auslastung der Fahrzeuge.
+- name: 24/7 Erste-Hilfe bei Störungen oder verpassten Abholungen
+  priority: high
+  reason: Erhöht Kundenzufriedenheit durch sofortige Problembearbeitung.
+- name: Automatisierte Zahlungserinnerungen und Rechnungsauskünfte
+  priority: medium
+  reason: Verbessert den Cashflow und reduziert Mahnaufwand.
+- name: Compliance-Checks und Dokumentations-Assistent
+  priority: high
+  reason: Unerlässlich für die Einhaltung strenger Schweizer Umweltgesetze.
+- name: Kunden-Onboarding und Serviceerklärung
+  priority: medium
+  reason: Stellt korrekte Mülltrennung von Anfang an sicher und reduziert Fehlwürfe.
+- name: Lead-Qualifizierung und Interessentenvorab-Check
+  priority: low
+  reason: Spart Vertriebszeit durch Fokussierung auf potenzielle Kunden.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - Abacus
+  - SAP Business One
+  - Microsoft Dynamics
+  priority: high
+- name: Fuhrparkmanagement-Software
+  examples:
+  - FleetGO
+  - Webfleet
+  priority: medium
+- name: Schweizer Abfallmanagementsoftware
+  examples:
+  - Umbrella
+  - WasteOffice
+  - Envira
+  priority: high
+- name: E-Rechnungssysteme
+  examples:
+  - Swisscom E-Rechnung
+  - PrintX
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - zoho
+  priority: medium
+industry_faq:
+- question: Was kostet die Sperrgutabholung in Zürich?
+  answer_template: Die Kosten hängen von Volumen und Art des Sperrguts ab. Unser Standardpreis beginnt bei 120 CHF pro Abholung für bis zu 3m³. Gerne unterbreite ich Ihnen ein detailliertes, unverbindliches
+    Angebot.
+- question: Wie entsorge ich Elektroschrott korrekt?
+  answer_template: Elektroschrott (SEP) darf nicht in den Hauskehricht. Wir bieten spezielle Abholungen an, oder Sie können ihn kostenlos an einer SENS-Sammelstelle abgeben. Ich kann Ihnen die nächste Stelle
+    nennen.
+- question: Bieten Sie auch Dienstleistungen für kleinere Gewerbebetriebe an?
+  answer_template: Ja, absolut. Wir haben flexible Vertragsmodelle für KMUs, von wöchentlicher Abholung bis zu bedarfsgesteuerten Containerstellungen.
+- question: Wie wird der Abfall nachverfolgt?
+  answer_template: Durch unsere digitale Plattform. Jeder Abfallstrom wird dokumentiert – von der Abholung bis zur Verwertungsanlage. Sie erhalten transparente Berichte für Ihre Nachhaltigkeitsbilanz.
+- question: Was unterscheidet Sie von der kommunalen Entsorgung?
+  answer_template: Wir bieten mehr Flexibilität, individuellere Abholpläne und eine breitere Palette an Sonderdienstleistungen, die auf gewerbliche Bedürfnisse zugeschnitten sind.
+- question: Sind Ihre Preise inklusive aller Gebühren?
+  answer_template: Unser Pauschalpreis umfasst in der Regel Abholung, Transport und die gesetzeskonforme Entsorgung/Verwertung. Eventuelle spezielle Verwertungskosten werden transparent im Voraus kommuniziert.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde erkundigt sich nach den Kosten für einen Dienst.
+  script: 'Vielen Dank für Ihre Anfrage. Um Ihnen ein genaues Angebot zu machen, benötige ich zwei kurze Informationen: Um welche Art von Abfall geht es und welches Volumen fällt etwa pro Monat an? So kann
+    ich Ihnen einen fairen, transparenten Preis nennen.'
+  goal: Lead qualifizieren und Grundlage für ein detailliertes Angebot schaffen.
+- trigger: service_inquiry
+  situation: Kunde fragt nach einer spezifischen Dienstleistung wie Baustellencontainer.
+  script: Sehr gerne. Für Baustellenabfall bieten wir verschiedene Containergrößen an, von 3m³ bis 30m³. Wir koordinieren die Lieferung und Abholung flexibel nach Ihrem Bauzeitplan. Möchten Sie eine kurze
+    Kostenübersicht für Ihre geplante Containergröße?
+  goal: Konkrete Dienstleistung erklären und zum nächsten Schritt (Angebot) führen.
+- trigger: objection_too_expensive
+  situation: Kunde findet das Angebot zu teuer im Vergleich zur Stadtreinigung.
+  script: 'Ich verstehe den Vergleich. Unsere Preise beinhalten oft mehr Service: flexiblere Abholtermine, eine breitere Abfallpalette in einem Container und die vollständige digitale Nachverfolgung mit
+    Zertifikat für Ihre Nachhaltigkeitsberichte. Das spart Ihnen langfristig Verwaltungsaufwand und gibt Ihnen mehr Kontrolle. Darf ich ein konkretes Einsparungspotenzial für Sie durchrechnen?'
+  goal: Wert und ROI kommunizieren, statt nur über Preis zu reden.
+- trigger: request_callback
+  situation: Kunde bittet um einen Rückruf zu einer bestimmten Zeit.
+  script: Selbstverständlich. Ich habe mir notiert, dass Sie um 14:30 Uhr zurückgerufen werden möchten, um über die Entsorgung von Gewerbeabfällen zu sprechen. Unser Kollege wird Sie pünktlich kontaktieren.
+    Haben Sie bis dahin schon spezifische Unterlagen parat, wie z.B. aktuelle Rechnungen eines Anbieters? Das beschleunigt die Analyse.
+  goal: Vertrauen aufbauen und den Rückruf effizient vorbereiten.
+competitors:
+- name: Communale Entsorgungsbetriebe (z.B. ERZ Zürich, SBW Bern)
+  positioning: Öffentlicher Grundversorger, oft günstiger Basis-Service.
+  strengths:
+  - Hohe lokale Präsenz
+  - gesetzliches Monopol für Haushaltskehricht
+  - sehr bekannte Marke
+  weaknesses:
+  - Weniger flexibel für Gewerbe
+  - begrenzte Servicezeiten
+  - oft lange Vorlaufzeiten
+  our_differentiation: Wir bieten maßgeschneiderte, flexible Lösungen für Gewerbe und Industrie mit premium Service und digitaler Transparenz.
+- name: Thommen Group (Läger)
+  positioning: Großer, etablierter privater Anbieter in der Deutschschweiz.
+  strengths:
+  - Breites Leistungsspektrum
+  - große Fahrzeugflotte
+  - stark im Bereich Sonderabfälle
+  weaknesses:
+  - Kann für kleinere KMUs teuer sein
+  - weniger personalisierter Service
+  our_differentiation: Unsere KI-gestützte Plattform bietet effizientere Prozesse und direktere Kundenbetreuung, speziell für den Mittelstand.
+- name: Helvetische Entsorgung
+  positioning: Mittelständischer, schweizweit aktiver Entsorger.
+  strengths:
+  - Nationale Abdeckung
+  - kompetent im Recycling
+  weaknesses:
+  - Komplexere Vertragsstrukturen
+  our_differentiation: Einfacherer, transparenterer Service mit Fokus auf digitale Kundeninteraktion und klaren Flatrate-Modellen.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Ein KMU mit 20 Mitarbeitern automatisiert Terminplanung und reduziert Fehlwürfe.
+    monthly_cost: 300
+    monthly_savings: 450
+    payback_months: 2
+  value_anchors:
+  - Sparen Sie bis zu 30% Verwaltungszeit für Abfallmanagement ein.
+  - Vermeiden Sie kostspielige Bußgelder durch lückenlose Compliance-Dokumentation.
+  - Transparente Preise ohne versteckte Entsorgungsgebühren.
+market_context:
+  market_size: Ca. 2.5 Mrd. CHF jährlich
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Stärkerer Fokus auf Kreislaufwirtschaft und Recyclingquote.
+  - Digitale Transformation für Routenoptimierung und Kundenportale.
+  - Steigende Nachfrage nach nachhaltigkeitszertifizierten Entsorgungswegen.
+  seasonality:
+    high:
+    - Frühling (Frühjahrsputz)
+    - Sommer (Baustellensaison)
+    - Herbst (Gartenabfälle)
+    low:
+    - Dezember (Feiertage)
+    - Januar
+typical_objections:
+- objection: Wir sind mit unserem aktuellen Anbieter zufrieden.
+  response: Das freut mich zu hören. Darf ich fragen, ob es einen spezifischen Service oder eine Reporting-Funktion gibt, die Sie sich zusätzlich wünschen würden? Oft können wir mit unserer digitalen Lösung
+    hier eine Effizienzsteigerung bieten.
+- objection: Das ist für unser Budget zu teuer.
+  response: Ich verstehe. Können wir gemeinsam prüfen, wo genau Ihre aktuellen Kosten liegen? Oft verstecken sich Kosten in ineffizienten Abholintervallen oder unnötigen Sonderabholungen. Eine Analyse zeigt
+    meist Einsparpotenzial.
+- objection: Wir haben zu wenig Abfall für einen regelmäßigen Vertrag.
+  response: Kein Problem. Wir bieten auch sehr flexible, bedarfsgesteuerte Lösungen ohne Mindestlaufzeit an. Sie buchen nur, wenn Sie etwas zu entsorgen haben – per App oder Anruf. So zahlen Sie nur für
+    das, was Sie brauchen.
+meta:
+  id: waste
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

@@ -20,7 +20,7 @@ import yaml
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 from src.knowledge.loader import IndustryProfileLoader
 from src.knowledge.validator import ProfileValidator
 from src.knowledge.country_detector import CountryDetector
@@ -33,16 +33,22 @@ logger = structlog.get_logger("profile_generator")
 class ProfileGenerator:
     """Generates localized industry profiles using LLM."""
 
-    # Default industries to generate (based on available base profiles)
+    # Default industries to generate (40 industries total)
     DEFAULT_INDUSTRIES = [
-        "automotive",
-        "medical",
-        "logistics",
-        "horeca",       # hospitality/restaurants/cafes
-        "education",
-        "franchise",
-        "real_estate",
-        "wellness",
+        # === Текущие (8) ===
+        "automotive", "medical", "logistics", "horeca",
+        "education", "franchise", "real_estate", "wellness",
+        # === Высокий приоритет (8) ===
+        "legal", "finance", "insurance", "retail",
+        "construction", "it_services", "recruitment", "travel",
+        # === Средний приоритет (12) ===
+        "manufacturing", "agriculture", "veterinary", "cleaning",
+        "security", "telecom", "events", "funeral",
+        "photo_video", "printing", "repair_services", "beauty_supplies",
+        # === Нишевые (12) ===
+        "gaming", "art_culture", "religion", "marine",
+        "aviation", "energy", "waste", "childcare",
+        "elderly_care", "coworking", "crypto", "cannabis",
     ]
 
     # Wave 1 priority countries
@@ -53,8 +59,8 @@ class ProfileGenerator:
         ("latam", "br"), # Brazil - main LATAM market
     ]
 
-    def __init__(self):
-        self.llm = DeepSeekClient()
+    def __init__(self, provider: Optional[str] = None):
+        self.llm = create_llm_client(provider)
         self.loader = IndustryProfileLoader()
         self.validator = ProfileValidator()
         self.country_detector = CountryDetector()
@@ -120,7 +126,7 @@ class ProfileGenerator:
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=4096
+            max_tokens=8192
         )
 
         # Parse YAML response
@@ -384,10 +390,12 @@ async def main():
                         help="Batch mode: region 'de,at,ch' 'automotive,medical'")
     parser.add_argument("--wave1", action="store_true", help="Generate Wave 1 priority profiles")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be generated")
+    parser.add_argument("--provider", type=str, default=None,
+                        help="LLM provider (azure, deepseek). Default: env LLM_PROVIDER or azure")
 
     args = parser.parse_args()
 
-    generator = ProfileGenerator()
+    generator = ProfileGenerator(provider=args.provider)
 
     if args.wave1:
         if args.dry_run:

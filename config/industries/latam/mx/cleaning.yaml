@@ -1,0 +1,188 @@
+pain_points:
+- description: Alta rotación de personal de limpieza, lo que afecta la consistencia del servicio.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la contratación y capacitación inicial, reduciendo el tiempo de incorporación.
+- description: Dificultad para gestionar horarios y citas con clientes, leading to sobrecarga administrativa.
+  severity: medium
+  solution_hint: Integrar con calendarios digitales para programación automática y recordatorios.
+- description: Quejas de clientes sobre calidad del servicio debido a falta de supervisión.
+  severity: high
+  solution_hint: Implementar encuestas de satisfacción automatizadas post-servicio para feedback inmediato.
+- description: Costos elevados de suministros y equipo de limpieza, afectando márgenes de ganancia.
+  severity: medium
+  solution_hint: Usar el agente para optimizar inventarios y negociar con proveedores basado en datos de uso.
+- description: Cumplimiento con LFPDPPP para manejo de datos de clientes, risk de multas.
+  severity: high
+  solution_hint: Automatizar consentimientos y gestionar datos de forma segura con recordatorios de cumplimiento.
+- description: Competencia de servicios informales de limpieza que ofrecen precios bajos.
+  severity: medium
+  solution_hint: Destacar valor agregado como garantías y profesionalismo en llamadas automatizadas.
+- description: Fluctuaciones estacionales en la demanda, dificultando la planificación de recursos.
+  severity: low
+  solution_hint: Analizar datos históricos para predecir picos y valle, ajustando estrategias de marketing.
+typical_services:
+- Limpieza residencial
+- Limpieza comercial
+- Limpieza de oficinas
+- Limpieza profunda
+- Limpieza post-construcción
+- Limpieza de alfombras
+- Lavado de ventanas
+- Desinfección y sanitización
+- Limpieza industrial
+- Mantenimiento regular
+recommended_functions:
+- name: Programación automática de citas
+  priority: high
+  reason: Reduce la carga administrativa y mejora la eficiencia en la gestión de clientes.
+- name: Recolección de feedback post-servicio
+  priority: high
+  reason: Mejora la calidad del servicio mediante insights inmediatos de clientes.
+- name: Recordatorios de pago
+  priority: medium
+  reason: Acelera el flujo de caja y reduce la morosidad.
+- name: Respuesta a preguntas frecuentes
+  priority: medium
+  reason: Libera tiempo del personal para tareas más críticas.
+- name: Sugerencias de upsell basadas en historial
+  priority: low
+  reason: Aumenta el valor promedio por cliente mediante personalización.
+- name: Gestión de cumplimiento LFPDPPP
+  priority: high
+  reason: Evita sanciones legales y construye confianza con clientes.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Contpaq CRM
+  priority: high
+- name: Software contable
+  examples:
+  - Contpaq
+  - Aspel COI
+  priority: medium
+- name: Pasarelas de pago
+  examples:
+  - Mercado Pago
+  - PayPal México
+  - Openpay
+  priority: medium
+- name: Herramientas de calendario
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: high
+- name: Gestión de inventario
+  examples:
+  - SAP
+  - Sistemas locales como Almacen
+  priority: low
+industry_faq:
+- question: ¿Cuáles son sus precios para limpieza residencial?
+  answer_template: Nuestros precios varían según el tamaño de la propiedad y frecuencia. Ofrecemos cotizaciones personalizadas a partir de 500 MXN por sesión.
+- question: ¿Ofrecen servicios de desinfección?
+  answer_template: Sí, proporcionamos servicios de desinfección y sanitización con productos certificados para garantizar la seguridad.
+- question: ¿Cómo garantizan la calidad del servicio?
+  answer_template: Contamos con personal capacitado, supervisión regular y políticas de satisfacción garantizada con re-servicio si es necesario.
+- question: ¿Están asegurados y cumplen con regulaciones?
+  answer_template: Sí, tenemos seguros de responsabilidad civil y cumplimos con LFPDPPP para protección de datos.
+- question: ¿Pueden programar servicios recurrentes?
+  answer_template: Absolutamente, ofrecemos planes de mantenimiento semanal, quincenal o mensual con descuentos.
+- question: ¿Qué métodos de pago aceptan?
+  answer_template: Aceptamos tarjetas de crédito/débito, transferencias bancarias y pagos en línea a través de plataformas seguras.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios inicialmente.
+  script: Hola, gracias por tu interés. Nuestros precios se adaptan a tus necesidades específicas. Por ejemplo, para una limpieza básica residencial, comenzamos desde 500 MXN. ¿Podrías contarme más sobre
+    el espacio que necesitas limpiar para darte una cotización exacta?
+  goal: Obtener detalles del cliente para personalizar la oferta y destacar valor sobre precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como desinfección.
+  script: Entiendo que buscas desinfección. Ofrecemos servicios especializados con productos de grado profesional que eliminan hasta el 99.9% de gérmenes. ¿Te gustaría agendar una evaluación sin costo para
+    recomendar el mejor plan?
+  goal: Educar al cliente sobre beneficios y convertir la consulta en una cita.
+- trigger: objection_cost
+  situation: Cuando un cliente menciona que el precio es alto.
+  script: Comprendo tu preocupación por el costo. Comparado con servicios informales, nosotros ofrecemos garantías, personal entrenado y cumplimiento legal, lo que ahorra dinero a largo plazo al evitar
+    problemas. ¿Puedo mostrarte cómo nuestro servicio puede reducir tus gastos en mantenimiento?
+  goal: Reforzar el valor y presentar el ROI para justificar la inversión.
+competitors:
+- name: Servicios de Limpieza ABC
+  positioning: Cadena local con presencia en varias ciudades.
+  strengths:
+  - Precios competitivos
+  - Amplia cobertura geográfica
+  weaknesses:
+  - Calidad inconsistente
+  - Atención al cliente lenta
+  our_differentiation: Usamos tecnología AI para supervisión en tiempo real y personalización, asegurando calidad constante.
+- name: Limpieza Total México
+  positioning: Empresa enfocada en servicios comerciales.
+  strengths:
+  - Equipo especializado
+  - Contratos a largo plazo
+  weaknesses:
+  - Pocos servicios residenciales
+  - Precios elevados
+  our_differentiation: Ofrecemos soluciones flexibles para ambos mercados con integración tecnológica que reduce costos.
+- name: CleanMasters Latam
+  positioning: Franquicia regional con enfoque en sostenibilidad.
+  strengths:
+  - Productos ecológicos
+  - Marca reconocida
+  weaknesses:
+  - Limitada en áreas rurales
+  - Alta rotación de staff
+  our_differentiation: Combinamos prácticas sostenibles con automatización avanzada para eficiencia y retención de personal.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Pequeña oficina que contrata limpieza semanal
+    monthly_cost: 2000
+    monthly_savings: 4000
+    payback_months: 2
+  value_anchors:
+  - Reducción del 30% en tiempo de gestión administrativa con automatización.
+  - Aumento del 20% en satisfacción del cliente mediante feedback inmediato.
+  - Cumplimiento legal asegurado, evitando multas de hasta 50,000 MXN.
+market_context:
+  market_size: Estimado en 10 mil millones MXN anuales
+  growth_rate: 5% YoY
+  key_trends:
+  - Mayor demanda por servicios de desinfección post-pandemia.
+  - Creciente adopción de tecnología para eficiencia operativa.
+  - Enfoque en sostenibilidad y productos ecológicos.
+  seasonality:
+    high:
+    - Enero (post-fiestas)
+    - Abril-Mayo (primavera)
+    - Septiembre (inicio escolar)
+    low:
+    - Diciembre (vacaciones)
+    - Julio (verano)
+typical_objections:
+- objection: Es muy caro, puedo conseguir servicios más baratos informales.
+  response: Entiendo, pero con nosotros obtienes garantías, personal capacitado y protección legal. A largo plazo, esto evita costos por daños o insatisfacción, ahorrándote dinero.
+- objection: No confío en dejar entrar extraños a mi hogar u oficina.
+  response: Comprendo tu preocupación. Nuestro personal pasa por verificaciones de antecedentes y usamos sistemas de seguimiento en tiempo real para tu tranquilidad. Además, estamos asegurados.
+- objection: Ya tengo un servicio de limpieza, no necesito cambiar.
+  response: Excelente, eso muestra que valoras la limpieza. ¿Te gustaría una evaluación comparativa sin costo para ver si podemos ofrecerte mejor calidad o ahorros con nuestra tecnología integrada?
+meta:
+  id: cleaning
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

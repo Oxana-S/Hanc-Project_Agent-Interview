@@ -1,0 +1,204 @@
+pain_points:
+- description: Terminverwaltung ist zeitaufwändig und führt zu Leerlauf oder Überbuchung.
+  severity: high
+  solution_hint: Automatisierte Terminbuchung und Erinnerungsanrufe durch KI-Stimmenagent.
+- description: Patienten-Nachbefragungen (Follow-ups) nach Operationen oder Behandlungen werden oft vergessen.
+  severity: medium
+  solution_hint: KI-Agent führt automatische Follow-up-Anrufe durch, um den Heilungsverlauf zu erfragen.
+- description: Hohe Auslastung am Telefon während der Stoßzeiten, wichtige Anrufe gehen verloren.
+  severity: high
+  solution_hint: KI-Agent beantwortet Standardanfragen und leitet dringende Fälle weiter.
+- description: Manuelle Erinnerungen für Impfungen und Routineuntersuchungen sind ineffizient.
+  severity: medium
+  solution_hint: Automatisierte Erinnerungsanrufe und SMS für anstehende Impfungen.
+- description: Rechnungsstellung und Zahlungserinnerungen binden administrative Ressourcen.
+  severity: medium
+  solution_hint: KI-Agent sendet Zahlungserinnerungen und beantwortet einfache Fragen zur Rechnung.
+- description: Schwierigkeit, freie Terminkapazitäten kurzfristig zu füllen (z.B. bei Absagen).
+  severity: low
+  solution_hint: Agent kann Wartelisten verwalten und bei Absagen automatisch nachfolgende Patienten benachrichtigen.
+typical_services:
+- Impfdienst und Gesundheitsvorsorge
+- Chirurgische Eingriffe
+- Zahnbehandlungen
+- Notfallversorgung
+- Laboruntersuchungen (Blut, Urin)
+- Röntgen und Ultraschall
+- Ernährungsberatung
+- Physiotherapie und Rehabilitation
+- Tierkrematoriums- und Bestattungsdienst
+- Reisepass- und Chip-Implantat-Service
+recommended_functions:
+- name: Terminbuchung und -änderung
+  priority: high
+  reason: Entlastet das Personal am Telefon und reduziert Wartezeiten für Kunden.
+- name: Automatische Erinnerungsanrufe (Impfungen, Untersuchungen)
+  priority: high
+  reason: Erhöht die Compliance der Tierbesitzer und verbessert den Patientenfluss.
+- name: Beantwortung von Standard-FAQs (Öffnungszeiten, Notdienst, Basispreise)
+  priority: high
+  reason: Entlastet die Rezeption und bietet 24/7-Service.
+- name: Nachbefragung (Follow-up) nach Operationen
+  priority: medium
+  reason: Zeigt Fürsorge, sammelt wertvolles Feedback und identifiziert Komplikationen frühzeitig.
+- name: Verwaltung von Wartelisten bei Absagen
+  priority: medium
+  reason: Optimiert die Auslastung der Praxis und verringert Leerlauf.
+- name: Einfache Zahlungserinnerungen
+  priority: low
+  reason: Verbessert den Cashflow mit minimalem Aufwand.
+typical_integrations:
+- name: Praxisverwaltungssoftware (PVS)
+  examples:
+  - Tiersoft
+  - easyVET
+  - VetZ
+  - AniPlan
+  priority: high
+- name: Terminplanungstools
+  examples:
+  - DocCircles
+  - appointmed
+  - einfachTermine
+  priority: high
+- name: Labor-Schnittstellen
+  examples:
+  - IDEXX
+  - Laboklin
+  - Synlab
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  - SevDesk
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: low
+industry_faq:
+- question: Haben Sie heute noch einen Notfalltermin frei?
+  answer_template: Unser Notdienst ist für lebensbedrohliche Notfälle immer verfügbar. Bitte kommen Sie sofort vorbei oder rufen Sie unter [NOTRUFNUMMER] an. Für weniger dringende Fälle kann ich Ihnen einen
+    regulären Termin anbieten.
+- question: Was kostet eine Standard-Impfung für meinen Hund?
+  answer_template: Die Kosten für eine Impfung hängen von der Art des Impfstoffs und der Größe Ihres Tieres ab. Der ungefähre Preisrahmen liegt zwischen 50 und 90 EUR. Für ein genaues Angebot vereinbare
+    ich gerne einen Beratungstermin für Sie.
+- question: Kann ich meine Rechnung in Raten zahlen?
+  answer_template: Unser Standardverfahren sieht eine Zahlung bei Leistungserbringung vor. In besonderen Härtefällen können wir individuelle Lösungen besprechen. Bitte wenden Sie sich dazu an unsere Praxisleitung.
+- question: Wie lange dauert das Ergebnis der Blutuntersuchung?
+  answer_template: Die meisten Laborergebnisse liegen innerhalb von 24-48 Stunden vor. Bei speziellen Tests kann es bis zu einer Woche dauern. Wir melden uns bei Ihnen, sobald die Ergebnisse vorliegen.
+- question: Bieten Sie auch Hausbesuche an?
+  answer_template: Ja, wir bieten in einem begrenzten Umkreis Hausbesuche an. Diese sind terminabhängig verfügbar und mit einem Aufschlag verbunden. Gerne prüfe ich die Verfügbarkeit für Sie.
+- question: Ist Ihre Praxis auf mein Tier (z.B. Vogel, Reptil) spezialisiert?
+  answer_template: Wir sind eine allgemeine Kleintierpraxis. Für sehr exotische Tiere empfehle ich Ihnen eine auf Reptilien oder Vögel spezialisierte Praxis. Ich kann Ihnen auf Wunsch Kontakte nennen.
+sales_scripts:
+- trigger: initial_contact
+  situation: Erster Kontakt mit einer Praxis, die über hohen Telefondruck klagt.
+  script: Guten Tag, mein Name ist [Name] von [Firmenname]. Ich rufe an, weil wir Tierarztpraxen dabei helfen, ihren Telefondruck zu reduzieren und mehr Termine zu vereinbaren. Unser KI-gesteuerter Anrufbeantworter
+    übernimmt Standardanfragen, Impferinnerungen und entlastet so Ihr Team. Darf ich Ihnen in 2 Minuten unser Konzept vorstellen?
+  goal: Interesse wecken und einen Folgetermin für eine Demo vereinbaren.
+- trigger: price_question
+  situation: Praxis fragt nach den Kosten der Lösung.
+  script: Sehr gerne. Unser Service startet ab 149 EUR pro Monat für eine Basis-Konfiguration. Der genaue Preis hängt vom Umfang der gewünschten Funktionen ab, wie z.B. der Anzahl der monatlichen Anrufe
+    oder der Integration in Ihre Praxissoftware. Typischerweise amortisieren sich die Kosten innerhalb weniger Monate durch eingesparte Personalkosten und mehr gebuchte Termine. Soll ich Ihnen ein maßgeschneidertes
+    Angebot erstellen?
+  goal: Preis transparent machen und auf Wert (ROI) lenken, Angebotsprozess starten.
+- trigger: gdpr_concern
+  situation: Praxis äußert Bedenken bezüglich Datenschutz (DSGVO).
+  script: Das ist ein sehr wichtiger Punkt. Unser System ist vollständig DSGVO-konform entwickelt. Alle Daten werden in Rechenzentren in der EU verarbeitet. Wir bieten eine vertragliche Vereinbarung zur
+    Auftragsverarbeitung (AVV) an und unsere KI wird so trainiert, dass sie keine sensiblen medizinischen Details speichert oder weitergibt, sondern nur zur Terminvereinbarung dient. Wir legen großen Wert
+    auf Datensicherheit.
+  goal: Bedenken ausräumen und Vertrauen in die Compliance schaffen.
+- trigger: objection_too_automated
+  situation: Praxis befürchtet, der Service sei zu unpersönlich für Tierbesitzer.
+  script: Ich verstehe Ihre Sorge vollkommen. Unser Ziel ist nicht, den persönlichen Kontakt zu ersetzen, sondern ihn zu entlasten. Der KI-Agent klingt sehr natürlich und übernimmt nur repetitive Aufgaben
+    wie Erinnerungen oder die Beantwortung von Standardfragen. Bei komplexen oder emotionalen Anliegen wird sofort und persönlich zu Ihnen in die Praxis durchgestellt. So gewinnen Sie mehr Zeit für die
+    wirklich wichtigen Gespräche.
+  goal: Den Mehrwert der Entlastung betonen und zeigen, dass Menschlichkeit nicht verloren geht.
+competitors:
+- name: CallOne (Tierarzt-Hotline)
+  positioning: Traditioneller Telefonservice mit menschlichen Agenten.
+  strengths:
+  - Sehr persönlicher Service
+  - flexible Gesprächsführung
+  weaknesses:
+  - Teurer
+  - begrenzte Erreichbarkeit (nicht 24/7)
+  - höhere Reaktionszeiten
+  our_differentiation: Wir sind kostengünstiger, 24/7 verfügbar, automatisieren repetitive Aufgaben vollständig und entlasten so nachhaltig.
+- name: easyVET mit Telefonmodul
+  positioning: Telefonmodul innerhalb einer etablierten Praxissoftware.
+  strengths:
+  - Nahtlose Integration in PVS
+  - bekannter Anbieter
+  weaknesses:
+  - Oft nur einfache Ansagefunktion
+  - wenig KI-gestützte Interaktion
+  - unflexibel
+  our_differentiation: Unser System ist KI-gesteuert, führt echte Zwei-Wege-Gespräche und kann mit verschiedenen PVS-Systemen integriert werden (multiplattform).
+- name: Deutsches Start-up "Petmeds Connect" (fiktives Beispiel)
+  positioning: Spezialisierter digitaler Service für Tierarztpraxen.
+  strengths:
+  - Modernes Interface
+  - Fokus auf Tiergesundheit
+  weaknesses:
+  - Noch kleiner Marktanteil
+  - begrenzte Funktionen außerhalb der Medikamentenerinnerung
+  our_differentiation: Wir bieten ein umfassenderes Kommunikationspaket (Termine, FAQs, Zahlungen) und haben mehr Erfahrung mit Sprach-KI.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleine Praxis mit 2 Telefonaten pro Stunde für Terminvereinbarung entlastet.
+    monthly_cost: 199
+    monthly_savings: 480
+    payback_months: 1
+  value_anchors:
+  - Kostet weniger als eine halte Kraft pro Monat.
+  - Amortisiert sich oft durch 5-10 zusätzliche gebuchte Termine.
+  - 24/7-Erreichbarkeit ohne Nacht- oder Wochenendzuschläge.
+market_context:
+  market_size: Über 10.000 Tierarztpraxen in Deutschland
+  growth_rate: 3-5% p.a. (getrieben durch Humanisierung der Haustiere)
+  key_trends:
+  - Digitalisierung der Praxisabläufe (eTermine, digitale Patientenakten).
+  - Steigende Nachfrage nach präventiver Medizin und Wellness-Angeboten.
+  - Wachsende Bedeutung von Haustierversicherungen.
+  - Fachkräftemangel im veterinärmedizinischen Bereich.
+  seasonality:
+    high:
+    - Frühjahr (Impfsaison nach Winter)
+    - Vor den Sommerferien (Reiseimpfungen)
+    - Oktober/November (Jahresendimpfungen)
+    low:
+    - Hochsommer (Urlaubszeit)
+    - Zwischen Weihnachten und Neujahr
+typical_objections:
+- objection: Das ist mir zu teuer für unser Budget.
+  response: Ich verstehe. Betrachten wir es als Investition. Viele Praxen sparen sich die Kosten bereits durch weniger Überstunden an der Rezeption oder durch zusätzliche Termineinnahmen innerhalb weniger
+    Monate wieder ein. Könnten wir mit einer kleinen, günstigeren Starter-Konfiguration beginnen?
+- objection: Unsere älteren Kunden kommen mit so einer Technik nicht zurecht.
+  response: Das ist ein berechtigter Einwand. Die Interaktion ist aber bewusst einfach gehalten wie ein normales Telefongespräch. Der Agent spricht klar und verständlich. Bei Schwierigkeiten oder speziellen
+    Wünschen wird der Anrufer immer sofort zu Ihrem lebenden Personal durchgestellt. So werden alle Kundengruppen bedient.
+- objection: Wir haben schon eine Anlage und sind zufrieden.
+  response: Das freut mich zu hören. Darf ich fragen, ob Ihre aktuelle Lösung auch automatisch Termine vereinbaren, individuelle Erinnerungsanrufe tätigen oder Nachbefragungen durchführen kann? Oft ist
+    es genau diese Automatisierung, die nochmals enorm entlastet. Ein kurzer Vergleich könnte sich lohnen.
+meta:
+  id: veterinary
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- veterinary
+- vet clinic
+- animal hospital
+- pet care
+_extends: _base/veterinary

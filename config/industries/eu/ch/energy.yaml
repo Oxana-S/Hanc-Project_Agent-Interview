@@ -1,0 +1,238 @@
+pain_points:
+- description: Hohe Volatilität der Energiepreise an den Märkten führt zu unkalkulierbaren
+    Kosten für Verbraucher und Unternehmen.
+  severity: high
+  solution_hint: AI Voice Agent kann Kunden automatisiert über günstige Tarifwechsel
+    informieren und Preisalarme auslösen.
+- description: Komplexe und sich häufig ändernde regulatorische Vorgaben (Energiegesetz,
+    FADP, EU-Strommarktabkommen).
+  severity: high
+  solution_hint: Voice Agent kann über Compliance-Updates informieren und Dokumentationsprozesse
+    per Sprache steuern.
+- description: Zunehmender Druck zur Dekarbonisierung und Erreichung der Klimaziele
+    der Schweizer Energiestrategie 2050.
+  severity: high
+  solution_hint: Agent kann Beratungsgespräche zur Energieeffizienz und erneuerbaren
+    Lösungen führen und Termine vereinbaren.
+- description: Veraltete Netzinfrastruktur und hoher Investitionsbedarf für Smart
+    Grids und digitale Zähler (Smart Meter).
+  severity: medium
+  solution_hint: Automatisierte Kundenkommunikation für Umstellungsprojekte und Störungsmeldungen
+    entlastet Support-Teams.
+- description: Geringe Kundenbindung und hohe Wechselbereitschaft aufgrund von Preisvergleichsportalen.
+  severity: medium
+  solution_hint: Proaktive Kundenbetreuung via Voice Agent zur Angebotsverlängerung
+    und Wertsteigerung der Dienstleistung.
+- description: Fachkräftemangel, insbesondere für die Wartung dezentraler Anlagen
+    (PV, Wärmepumpen).
+  severity: medium
+  solution_hint: Voice Agent kann First-Level-Support für Installation und Fehlerbehebung
+    bieten und Technikertermine optimieren.
+typical_services:
+- Stromtarifvergleich und -wechsel
+- Energieeffizienzberatung für Unternehmen
+- Planung und Installation von Photovoltaikanlagen
+- Wärmepumpen-Installation und -Service
+- Elektromobilitäts-Lösungen (Wallbox-Installation)
+- Contracting von Energielösungen
+- Smart-Home-Integration und Steuerung
+- Energie-Monitoring und -Reporting
+- Backup-Stromversorgung mit Batteriespeichern
+- Förderberatung für kantonale und nationale Programme
+recommended_functions:
+- name: 24/7 Kundenhotline für Störungsmeldungen
+  priority: high
+  reason: Schnelle Reaktion auf Netzausfälle erhöht Kundenzufriedenheit und entlastet
+    den Notdienst.
+- name: Automatisierte Terminbuchung für Energieberatung
+  priority: high
+  reason: Führt Interessenten effizient zu einem Verkaufsgespräch und reduziert Wartezeiten.
+- name: Intelligente Lead-Qualifizierung
+  priority: high
+  reason: Filtert anhand von Verbrauchsdaten und Interessen qualifizierte Leads für
+    Solar- oder Effizienzprojekte.
+- name: Proaktive Vertragsverlängerungs-Erinnerung
+  priority: medium
+  reason: Reduziert Kundenabwanderung durch rechtzeitige, personalisierte Kommunikation.
+- name: Multilingualer Support (DE/FR/IT)
+  priority: medium
+  reason: Wichtiger Service für die mehrsprachige Schweiz, besonders in Grenzregionen.
+- name: Voice-Payment für Rechnungen
+  priority: low
+  reason: Bietet zusätzlichen Komfort und kann Zahlungsmoral verbessern.
+typical_integrations:
+- name: CRM-System
+  examples:
+  - Axon Ivy
+  - Salesforce
+  - bCreative
+  priority: high
+- name: Abrechnungssoftware
+  examples:
+  - MCS
+  - SAP IS-U
+  - Geneva
+  priority: high
+- name: Smart-Meter-Gateway-Management
+  examples:
+  - Gridbizz
+  - EMH
+  priority: medium
+- name: Terminplanungstool
+  examples:
+  - Outlook
+  - Google Calendar
+  - Zoom
+  priority: medium
+- name: PV-Planungssoftware
+  examples:
+  - PV*SOL
+  - Sunny Design
+  priority: low
+industry_faq:
+- question: Welche Fördergelder gibt es für eine Solaranlage in meinem Kanton?
+  answer_template: Die Förderung variiert je nach Kanton und Gemeinde. Unser Voice
+    Agent kann Ihre Postleitzahl erfragen und Sie basierend darauf mit den aktuellen
+    Förderprogrammen von Pronovo oder Ihrem Kanton verbinden. Möchten Sie das jetzt
+    prüfen?
+- question: Warum ist mein Strompreis dieses Jahr so stark gestiegen?
+  answer_template: Die Strompreise setzen sich aus Netzgebühren, Energiebeschaffung
+    und staatlichen Abgaben zusammen. Der aktuelle Anstieg liegt vor allem an den
+    höheren Beschaffungskosten am europäischen Markt. Ich kann Ihnen eine detaillierte
+    Kostenaufschlüsselung per E-Mail senden oder unseren günstigeren Neukundentarif
+    vorstellen.
+- question: Wie funktioniert der Wechsel zu einem Ökostrom-Tarif?
+  answer_template: Der Wechsel ist einfach und gesetzlich geregelt. Sie kündigen nichts
+    selbst. Geben Sie mir einfach Ihre Zählpunktnummer, ich prüfe die Verfügbarkeit
+    und leite den Wechsel für Sie in die Wege. Die Versorgungssicherheit bleibt jederzeit
+    gewährleistet.
+- question: Ich habe eine Störung. Wann kommt der Techniker?
+  answer_template: Bitte nennen Sie mir Ihre Adresse und die Art der Störung. Ich
+    prüfe sofort den Störungsstatus in unserem System und kann Ihnen eine voraussichtliche
+    Ankunftszeit des Technikers nennen oder den Auftrag direkt erfassen.
+- question: Lohnt sich eine Wärmepumpe in einem Altbau?
+  answer_template: Das hängt stark von der Gebäudeisolierung ab. Als erster Schritt
+    empfehlen wir immer eine unverbindliche Energieberatung. Ich kann Ihnen jetzt
+    einen Termin mit unserem Fachberater in Ihrer Region vermitteln, der eine individuelle
+    Analyse vornimmt.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für eine Photovoltaikanlage.
+  script: 'Die Investition für eine typische PV-Anlage für ein Einfamilienhaus liegt
+    zwischen 20''000 und 35''000 CHF. Die genauen Kosten hängen von der Grösse und
+    Komplexität ab. Wichtiger ist die Rendite: Mit der aktuellen Eigenverbrauchsquote
+    und Einspeisevergütung amortisiert sich die Anlage oft in 10-12 Jahren. Darf ich
+    eine grobe Schätzung für Ihr Hausdach anhand eines Satellitenbildes erstellen?'
+  goal: Vom Preis zum Wert (Amortisation) lenken und zu einer konkreten Bedarfsanalyse
+    überleiten.
+- trigger: contract_ending
+  situation: Voice Agent erkennt, dass der Stromvertrag des Kunden in 3 Monaten ausläuft.
+  script: Ich sehe, Ihr aktueller Vertrag läuft am [Datum] aus. Gerne stelle ich Ihnen
+    jetzt unser Treueangebot für die Vertragsverlängerung vor. Es enthält eine Preisgarantie
+    für 24 Monate und 100% Schweizer Wasserkraft. Zudem schenken wir Ihnen einen 150
+    CHF Bonus für Ihre nächste Stromrechnung. Möchten Sie die Details hören?
+  goal: Kundenbindung durch ein attraktives, proaktives Verlängerungsangebot.
+- trigger: efficiency_interest
+  situation: Kunde erkundigt sich nach Energieeffizienz-Massnahmen für sein KMU.
+  script: Das ist ein kluger Schritt. Viele KMU sparen durch ein systematisches Energiemonitoring
+    10-15% ihrer Kosten ein. Unsere Lösung beginnt mit einer Analyse Ihrer letzten
+    Verbrauchsdaten. Auf dieser Basis zeigen wir konkrete Sparpotenziale auf, von
+    LED-Beleuchtung bis zu optimierter Lüftung. Können wir nächste Woche einen kurzen
+    Vor-Ort-Termin für eine erste Bestandsaufnahme vereinbaren?
+  goal: Vom Interesse zur konkreten Analyse mit klarem ROI-Versprechen führen und
+    Termin vereinbaren.
+competitors:
+- name: Axpo
+  positioning: Grösster Schweizer Energieproduzent und -händler, etablierter Grossanbieter.
+  strengths:
+  - Breite Erzeugungsportfolio
+  - finanzielle Stabilität
+  - starke Marke
+  weaknesses:
+  - Weniger agil
+  - höhere Preise
+  - standardisierte Lösungen
+  our_differentiation: Wir bieten hyperlokale, persönliche Beratung und maßgeschneiderte
+    Lösungen für Haushalte und KMU mit modernster KI-gestützter Kundenbetreuung.
+- name: Alpiq
+  positioning: Internationaler Energieversorger mit Fokus auf B2B und Grossindustrie.
+  strengths:
+  - Industrie-Expertise
+  - internationale Präsenz
+  - komplexe Projekte
+  weaknesses:
+  - Für Privatkunden und kleine KMU weniger attraktiv
+  - unflexibel
+  our_differentiation: Unser Fokus liegt auf der dezentralen Energiewende (PV, Speicher)
+    für den "Kleinen" und bieten durchgängig digitalen, einfachen Service.
+- name: Lokale Stadtwerke (z.B. EWZ, IWB)
+  positioning: Regionale Grundversorger mit hohem Vertrauen und Netzbetrieb.
+  strengths:
+  - Hohe lokale Präsenz und Kundenbindung
+  - verlässliche Grundversorgung
+  weaknesses:
+  - Innovationsgeschwindigkeit oft langsamer
+  - eingeschränkte Produktpalette
+  our_differentiation: Wir sind agiler und bieten eine schweizweite, digitale Plattform
+    mit innovativen Produkten und Services, die über reine Grundversorgung hinausgehen.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 5000
+  - 150000
+  entry_point: 49
+  roi_examples:
+  - scenario: AI Voice Agent zur Automatisierung der Kundenhotline eines regionalen
+      Energieversorgers
+    monthly_cost: 1200
+    monthly_savings: 3500
+    payback_months: 3
+  value_anchors:
+  - Sparen Sie bis zu 30% Personalkosten in Ihrer Kundenhotline.
+  - Steigern Sie die Lead-Konversion für Solaranlagen um 20% durch sofortige Terminvereinbarung.
+  - Reduzieren Sie Kündigungen durch proaktive Vertragsverlängerungs-Gespräche.
+market_context:
+  market_size: Ca. 35 Mrd. CHF Jahresumsatz (Strom- und Gasmarkt)
+  growth_rate: 2-4% p.a., getrieben durch Dekarbonisierung und Elektrifizierung
+  key_trends:
+  - 'Energiewende 2050: Ausbau erneuerbarer Energien (v.a. Solar) und Abschaltung
+    der Atomkraft'
+  - 'Dezentralisierung: Jeder wird zum ''Prosumer'' mit eigener PV-Anlage und Batterie'
+  - 'Digitalisierung: Smart Meter Rollout schafft Datenbasis für neue Dienstleistungen'
+  - 'Sektorkopplung: Integration von Wärme, Strom und Mobilität'
+  seasonality:
+    high:
+    - Herbst (Vorbereitung Heizperiode, Vertragswechsel)
+    - Frühjahr (Planung PV-Projekte)
+    low:
+    - Hochsommer (Ferienzeit)
+    - Weihnachtszeit
+typical_objections:
+- objection: Das ist mir zu teuer.
+  response: Ich verstehe. Betrachten wir es als Investition. Die monatlichen Einsparungen
+    durch effizientere Prozesse oder geringere Energiebezugskosten übersteigen oft
+    die Kosten deutlich. Darf ich Ihnen eine konkrete ROI-Berechnung für Ihr Unternehmen
+    zeigen?
+- objection: Unsere Kunden wollen mit einem Menschen sprechen.
+  response: Absolut. Unser Voice Agent entlastet Ihre Mitarbeiter von Routinefragen
+    wie Kontostand oder Störungsmeldung. So haben sie mehr Zeit für komplexe, wertschöpfende
+    Beratungsgespräche – genau dort, wo der Mensch unersetzlich ist.
+- objection: Die Datensicherheit bereitet mir Sorgen.
+  response: Ein verständliches Bedenken. Unsere Lösung ist vollständig in der Schweiz
+    gehosted und erfüllt strengste Schweizer (FADP) und europäische (GDPR) Datenschutzstandards.
+    Wir unterzeichnen eine vertragliche Vereinbarung zur Datenhoheit.
+meta:
+  id: energy
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

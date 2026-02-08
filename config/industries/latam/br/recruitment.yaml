@@ -1,0 +1,253 @@
+pain_points:
+- description: Alta rotatividade de candidatos durante o processo seletivo, resultando
+    em tempo e recursos desperdiçados.
+  severity: high
+  solution_hint: O agente de voz pode realizar triagem inicial automática, confirmar
+    interesse e disponibilidade, reduzindo o número de desistências.
+- description: Dificuldade em alcançar um número suficiente de candidatos qualificados
+    para vagas técnicas ou especializadas.
+  severity: high
+  solution_hint: O agente pode realizar prospecção ativa por telefone, qualificando
+    leads de candidatos em bases de dados e redes sociais.
+- description: Processo manual de agendamento de entrevistas, causando conflitos de
+    agenda e atrasos.
+  severity: medium
+  solution_hint: Automação do agendamento via agente de voz, integrado ao calendário
+    do recrutador e do candidato.
+- description: Custo elevado com anúncios em plataformas de vagas (como Catho, InfoJobs)
+    para pequenas e médias empresas.
+  severity: medium
+  solution_hint: O agente pode qualificar candidatos de fontes gratuitas (como LinkedIn)
+    para reduzir dependência de plataformas pagas.
+- description: Dificuldade em fornecer feedback personalizado para todos os candidatos,
+    impactando a experiência do candidato.
+  severity: low
+  solution_hint: O agente pode automatizar o envio de feedbacks padronizados ou agendar
+    breves ligações de feedback.
+- description: Complexidade na conformidade com a LGPD (Lei Geral de Proteção de Dados)
+    no armazenamento e contato com candidatos.
+  severity: high
+  solution_hint: O agente pode gerenciar consentimentos e registrar interações, gerando
+    um log para auditoria de conformidade.
+typical_services:
+- Recrutamento e Seleção (R&S)
+- Headhunting (Caça-talentos)
+- Recrutamento em Massa
+- Assessment (Avaliação Psicológica/Comportamental)
+- Employer Branding (Marca Empregadora)
+- Outplacement (Recolocação Profissional)
+- Temporários (Trabalho Temporário)
+- Terceirização de Mão de Obra
+- Consultoria em Remuneração e Benefícios
+- Programa de Estágio e Jovem Aprendiz
+recommended_functions:
+- name: Triagem e Qualificação Inicial de Candidatos
+  priority: high
+  reason: Reduz drasticamente o tempo dos recrutadores em chamadas de triagem, focando
+    apenas nos candidatos pré-qualificados.
+- name: Agendamento Automático de Entrevistas
+  priority: high
+  reason: Elimina o vai e vem de emails e ligações para marcar entrevistas, otimizando
+    a agenda de todos.
+- name: Prospecção Ativa de Candidatos (Sourcing)
+  priority: medium
+  reason: Aumenta o pool de talentos ativamente, contatando potenciais candidatos
+    passivos.
+- name: Envio de Comunicados e Feedbacks
+  priority: medium
+  reason: Mantém o candidato engajado e informado, melhorando a experiência e a imagem
+    da empresa.
+- name: Verificação de Referências
+  priority: low
+  reason: Automatiza uma tarefa demorada, coletando informações básicas de referências
+    anteriores.
+- name: Pesquisa de Satisfação Pós-Contratação
+  priority: low
+  reason: Ajuda a mensurar a qualidade da contratação e a satisfação do novo colaborador.
+typical_integrations:
+- name: Sistema de ATS (Applicant Tracking System)
+  examples:
+  - Gupy
+  - Revelo
+  - Kenoby
+  priority: high
+- name: ERP/RH
+  examples:
+  - TOTVS
+  - SAP
+  priority: medium
+- name: Plataforma de Videoconferência
+  examples:
+  - Google Meet
+  - Zoom
+  priority: medium
+- name: Ferramentas de Produtividade
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: high
+- name: Plataformas de Vagas
+  examples:
+  - Catho
+  - InfoJobs
+  - LinkedIn
+  priority: medium
+industry_faq:
+- question: Como o agente de voz pode ajudar a reduzir o tempo de contratação (time-to-hire)?
+  answer_template: Nosso agente de voz automatiza a triagem inicial e o agendamento,
+    qualificando até [X] candidatos por dia. Isso pode reduzir o tempo de contratação
+    em até 40%, permitindo que seus recrutadores foquem apenas nas entrevistas mais
+    relevantes.
+- question: A solução é compatível com a LGPD?
+  answer_template: Sim, totalmente. Todas as interações são registradas e o agente
+    gerencia os consentimentos necessários. Fornecemos relatórios para auditoria,
+    garantindo a conformidade do seu processo seletivo com a legislação brasileira.
+- question: Vocês integram com o ATS que minha empresa já usa?
+  answer_template: Integramos com os principais ATS do mercado brasileiro, como Gupy
+    e Kenoby. Podemos avaliar a integração com seu sistema específico para garantir
+    um fluxo de dados contínuo e sem retrabalho.
+- question: E se o candidato não quiser falar com um robô?
+  answer_template: O agente se identifica claramente como assistente virtual. Oferecemos
+    a opção imediata de transferência para um humano. Na prática, a maioria dos candidatos
+    aprecia a agilidade, especialmente para tarefas simples como confirmação de dados
+    e agendamento.
+- question: Qual o retorno sobre o investimento (ROI) esperado?
+  answer_template: Clientes relatam economia de até 30 horas/mês por recrutador em
+    tarefas repetitivas. Com um custo mensal de [VALOR], o payback normalmente ocorre
+    em menos de 3 meses, graças ao aumento de produtividade e redução de custos com
+    divulgacao.
+sales_scripts:
+- trigger: initial_contact
+  situation: Primeiro contato com um escritório de recrutamento ou empresa com RH
+    interno.
+  script: 'Olá, falo da [Sua Empresa]. Entendemos que no recrutamento, tempo é talento.
+    Oferecemos um assistente por voz que automatiza a triagem, o agendamento e o contato
+    com candidatos, liberando sua equipe para o que realmente importa: encontrar o
+    fit perfeito. Posso explicar como isso funciona em 2 minutos?'
+  goal: Gerar interesse e agendar uma demonstração.
+- trigger: price_question
+  situation: Cliente pergunta sobre o preço logo no início da conversa.
+  script: Entendo a preocupação com o investimento. Nossos planos partem de R$ [ENTRY_POINT]/mês,
+    mas o valor exato depende do volume de vagas e candidatos que você processa. O
+    mais importante é que o ROI é rápido, com economias mensais em horas de recrutadores
+    que frequentemente superam o custo. Posso fazer uma simulação rápida com base
+    na sua realidade?
+  goal: Adiar a discussão detalhada de preço e focar no valor e no ROI personalizado.
+- trigger: objection_lgpd
+  situation: Cliente demonstra preocupação com a conformidade à LGPD.
+  script: Excelente ponto, a LGPD é crucial. Nosso sistema foi construído para o mercado
+    brasileiro. Todas as ligações geram logs, armazenamos apenas dados com consentimento
+    e fornecemos um painel completo para gestão desses consentimentos. Muitos de nossos
+    clientes nos usam justamente para tornar seus processos mais auditáveis e seguros.
+  goal: Transformar uma objeção em um diferencial de venda.
+- trigger: competitor_mention
+  situation: Cliente menciona um concorrente direto.
+  script: 'Otimo que voce esta pesquisando o mercado. Diferentemente de solucoes apenas
+    de chatbot, nosso agente de voz lida com a etapa mais demorada: o telefone. Conseguimos
+    uma taxa de conclusao de triagem muito maior. Alem disso, nossa integracao nativa
+    com ATS como Gupy e Kenoby e um diferencial importante para o dia a dia do recrutador
+    brasileiro.'
+  goal: Destacar diferenciais funcionais e de contexto local.
+competitors:
+- name: Gupy
+  positioning: Plataforma completa de ATS e recrutamento com forte presenca no mercado
+    corporativo brasileiro.
+  strengths:
+  - Branding forte e reconhecida
+  - Suite completa de ferramentas (ATS, testes, video)
+  - Grande base de clientes corporativos
+  weaknesses:
+  - Foco em autosservico, com menos suporte personalizado
+  - Custo elevado para PMEs
+  - Automacao limitada a interacoes via texto/plataforma
+  our_differentiation: Oferecemos automacao por voz, que engaja candidatos menos digitais
+    e automatiza tarefas telefonicas que a Gupy nao cobre, com um modelo mais consultivo
+    e acessivel para PMEs.
+- name: Revelo
+  positioning: Plataforma de recrutamento com foco em tecnologia e inteligencia artificial
+    para matching de candidatos.
+  strengths:
+  - Algoritmos de matching potentes
+  - Foco em vagas de tecnologia
+  - Interface moderna
+  weaknesses:
+  - Cobertura limitada a funcoes de TI em algumas regioes
+  - Menos foco em automacao do processo operacional (triagem, agendamento)
+  our_differentiation: Somos complementares. Enquanto a Revelo ajuda a encontrar candidatos,
+    nosso agente automatiza o contato, a triagem e o agendamento com esses candidatos,
+    fechando o ciclo operacional de forma eficiente.
+- name: Groupe.io (antiga Twygo)
+  positioning: Solucoes de comunicacao e engajamento para RH, incluindo chatbots.
+  strengths:
+  - Foco em comunicacao e jornada do colaborador/candidato
+  - Plataforma de conversacao omnichannel
+  weaknesses:
+  - Menor foco especifico no fluxo de recrutamento
+  - Chatbot baseado principalmente em texto
+  our_differentiation: Especializacao em recrutamento com automacao por voz, que tem
+    maior taxa de adesao para tarefas rapidas como confirmacoes e agendamentos, comparado
+    a interacoes por texto.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 297
+  roi_examples:
+  - scenario: Escritorio de recrutamento de medio porte com 2 recrutadores.
+    monthly_cost: 797
+    monthly_savings: 2400
+    payback_months: 1
+  value_anchors:
+  - Economize mais de 15 horas/semana por recrutador em tarefas telefonicas repetitivas.
+  - Reduza em ate 30% o custo por contratação (CPH) com uma triagem mais eficiente.
+  - Pague menos de R$ 5 por candidato totalmente triado e agendado.
+market_context:
+  market_size: Estimado em R$ 12 bilhoes (incluindo recrutamento temporario e terceirizado).
+  growth_rate: 5-7% ao ano (pre-pandemia), com aceleracao digital pos-pandemia.
+  key_trends:
+  - Aumento da adocao de ferramentas de IA e automacao no RH pos-pandemia.
+  - Crescimento do recrutamento remoto e interesse por ferramentas que otimizam processos
+    digitais.
+  - Escassez de talentos qualificados em setores especificos (TI, Engenharia), aumentando
+    a guerra por talentos.
+  - Maior atencao a conformidade com a LGPD em todos os processos de dados de candidatos.
+  seasonality:
+    high:
+    - Janeiro a Marco (pos-ferias, orcamentos aprovados).
+    - Agosto a Outubro (segunda metade do ano, reposicoes).
+    low:
+    - Dezembro (ferias e fechamento do ano).
+    - Periodo de eleicoes (incerteza economica).
+typical_objections:
+- objection: Meus candidatos mais senior nao vao querer falar com uma maquina.
+  response: Compreendo. Para cargos senior, o agente atua como um assistente de primeira
+    linha, realizando apenas a confirmacao basica de interesse e disponibilidade,
+    e agenda a entrevista diretamente com o recrutador. Isso inclusive demonstra organizacao
+    e valoriza o tempo do candidato senior. Podemos configurar fluxos especificos
+    para esses cargos.
+- objection: Ja tenho um ATS, isso nao seria redundante?
+  response: 'Pelo contrario, e complementar. Seu ATS gerencia os dados e o fluxo.
+    Nosso agente executa uma tarefa especifica que o ATS nao faz: o contato telefonico
+    automatico e inteligente. Integramos com seu ATS para puxar os candidatos e devolver
+    o status da triagem, tornando todo o processo mais rapido e seu ATS mais eficaz.'
+- objection: Meu processo e muito personalizado, nao da para automatizar.
+  response: A automacao e customizavel. Voce define os criterios de triagem, as perguntas
+    e o tom da conversa. O agente lida com a parte repetitiva (contatar, confirmar,
+    agendar), e seu time mantem todo o contato personalizado e humano nas etapas decisivas,
+    como as entrevistas. E sobre aumentar a escala sem perder a qualidade.
+meta:
+  id: recruitment
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

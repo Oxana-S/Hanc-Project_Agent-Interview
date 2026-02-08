@@ -1,0 +1,233 @@
+pain_points:
+- description: Difficoltà nel trovare candidati qualificati a causa della scarsità
+    di talenti in settori specifici.
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare la ricerca attiva su piattaforme
+    online e database per identificare rapidamente candidati idonei.
+- description: Alto costo e tempo dedicato al screening iniziale dei curriculum.
+  severity: high
+  solution_hint: Implementare un agente vocale AI per condurre interviste telefoniche
+    preliminari, filtrare i candidati in base a criteri predefiniti.
+- description: Gestione complessa della conformità GDPR nella raccolta e conservazione
+    dei dati dei candidati.
+  severity: medium
+  solution_hint: L'AI può automatizzare i processi di consenso e cancellazione dati,
+    garantendo il rispetto delle norme con promemoria e registrazioni.
+- description: Basso tasso di risposta dalle campagne di reclutamento via telefono
+    o email.
+  severity: medium
+  solution_hint: Utilizzare agenti vocali AI per effettuare chiamate personalizzate
+    e follow-up, aumentando l'engagement dei candidati.
+- description: Difficoltà nella programmazione e coordinamento dei colloqui tra recruiter
+    e candidati.
+  severity: low
+  solution_hint: Integrare un agente AI con calendari per automatizzare la schedulazione,
+    riducendo i conflitti e i tempi morti.
+- description: Competizione elevata con altre agenzie di reclutamento per acquisire
+    clienti.
+  severity: high
+  solution_hint: L'AI può supportare lead generation attraverso chiamate outbound
+    per presentare servizi in modo efficiente e personalizzato.
+typical_services:
+- Ricerca e selezione del personale
+- Headhunting per posizioni executive
+- Staffing temporaneo e interinale
+- Valutazione e assessment dei candidati
+- Consulenza per employer branding
+- Outplacement e supporto alla transizione professionale
+- Servizi di payroll e amministrazione del personale
+- Recruitment process outsourcing (RPO)
+- Formazione e sviluppo del personale
+- Reclutamento su social media e piattaforme digitali
+recommended_functions:
+- name: Screening vocale iniziale dei candidati
+  priority: high
+  reason: Riduce significativamente il tempo dedicato alla valutazione manuale, permettendo
+    ai recruiter di concentrarsi sui profili più promettenti.
+- name: Gestione degli appuntamenti per i colloqui
+  priority: high
+  reason: Automatizza la schedulazione, minimizzando errori e ottimizzando l'agenda
+    di recruiter e candidati.
+- name: Follow-up automatico con i candidati
+  priority: medium
+  reason: Migliora l'esperienza del candidato e aumenta i tassi di risposta attraverso
+    comunicazioni tempestive.
+- name: Raccolta e verifica dei dati per conformità GDPR
+  priority: medium
+  reason: Assicura che tutti i processi siano in linea con le normative europee, riducendo
+    rischi legali.
+- name: Lead generation tramite chiamate outbound
+  priority: low
+  reason: Supporta l'acquisizione di nuovi clienti automatizzando le prime fasi di
+    contatto e qualificazione.
+- name: Risposte a FAQ per candidati e clienti
+  priority: low
+  reason: Fornisce informazioni immediate, riducendo il carico sul personale e migliorando
+    il servizio.
+typical_integrations:
+- name: Sistema di tracciamento candidati (ATS)
+  examples:
+  - Teamtailor
+  - JobRapido
+  - SmartRecruiters
+  priority: high
+- name: Piattaforme di job posting
+  examples:
+  - InfoJobs
+  - LinkedIn
+  - Monster Italia
+  priority: high
+- name: Software per la gestione delle risorse umane (HRMS)
+  examples:
+  - Zucchetti HR
+  - Oracle HCM Cloud
+  - SAP SuccessFactors
+  priority: medium
+- name: Strumenti di calendar scheduling
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+- name: Sistemi CRM per lead management
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: low
+industry_faq:
+- question: Quanto costa il vostro servizio di reclutamento?
+  answer_template: I nostri prezzi variano in base alle esigenze, partendo da [inserire
+    entry_point] EUR per servizi base. Offriamo soluzioni personalizzate con un chiaro
+    ROI, ad esempio riducendo i tempi di assunzione.
+- question: Come gestite la conformità con il GDPR?
+  answer_template: Utilizziamo tecnologie AI che automatizzano il consenso e la cancellazione
+    dei dati, garantendo piena conformità con le normative europee in ogni fase del
+    processo.
+- question: Quanto tempo richiede per trovare un candidato idoneo?
+  answer_template: Con l'automazione AI, possiamo ridurre i tempi medi del 30-50%,
+    a seconda della complessità della posizione e del mercato.
+- question: Supportate il reclutamento per settori specifici come l'IT?
+  answer_template: Sì, ci specializziamo in vari settori includendo IT, grazie a database
+    aggiornati e algoritmi di matching avanzati per competenze tecniche.
+- question: Posso integrare il vostro sistema con il nostro software esistente?
+  answer_template: Assolutamente, offriamo integrazioni con ATS popolari come Teamtailor
+    e piattaforme HR, per un'implementazione senza interruzioni.
+- question: Come funziona il processo di screening con AI?
+  answer_template: L'AI conduce interviste vocali preliminari basate su criteri predefiniti,
+    fornendo report dettagliati per una valutazione efficiente.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi durante una chiamata
+    iniziale.
+  script: Grazie per la domanda. Offriamo soluzioni flessibili partendo da [inserire
+    entry_point] EUR, progettate per ridurre i costi di assunzione fino al 40%. Posso
+    personalizzare una proposta in base alle vostre esigenze specifiche?
+  goal: Ottenere un appuntamento per una consulenza dettagliata e dimostrare il valore
+    del ROI.
+- trigger: service_inquiry
+  situation: Quando un cliente è interessato ai servizi ma vuole saperne di più sul
+    funzionamento.
+  script: Certamente. Il nostro agente vocale AI automatizza lo screening e la schedulazione,
+    liberando il vostro team per attività strategiche. Ad esempio, per una posizione
+    media, possiamo ridurre il tempo di ricerca da settimane a giorni. Desidera una
+    demo?
+  goal: Spingere per una dimostrazione pratica per mostrare l'efficienza.
+- trigger: competitor_mention
+  situation: Quando un cliente confronta con altri servizi di reclutamento tradizionali.
+  script: Rispetto alle agenzie tradizionali, la nostra soluzione AI è più veloce
+    e scalabile, con costi prevedibili e integrazioni seamless. Inoltre, offriamo
+    report in tempo reale per un maggiore controllo.
+  goal: Evidenziare i vantaggi unici dell'AI per superare la concorrenza.
+competitors:
+- name: Adecco Italia
+  positioning: Leader globale nel reclutamento con ampia presenza in Italia.
+  strengths:
+  - Rete estesa di filiali
+  - brand riconosciuto
+  - servizi completi
+  weaknesses:
+  - Costi elevati
+  - processi a volte lenti
+  - minore automazione
+  our_differentiation: Offriamo automazione AI a costi inferiori, con tempi di risposta
+    più rapidi e integrazioni digitali avanzate.
+- name: Randstad Italia
+  positioning: Fornitore di soluzioni HR integrate con focus su innovazione.
+  strengths:
+  - Tecnologia HR avanzata
+  - servizi personalizzati
+  - forte presenza digitale
+  weaknesses:
+  - Prezzi premium
+  - complessità di implementazione
+  our_differentiation: La nostra soluzione è più agile e facile da implementare, con
+    supporto dedicato per l'automazione vocale.
+- name: ManpowerGroup Italia
+  positioning: Specializzato in staffing temporaneo e servizi di reclutamento.
+  strengths:
+  - Esperienza nel temporaneo
+  - network internazionale
+  - formazione
+  weaknesses:
+  - Limitata automazione nei processi
+  - dipendenza da personale umano
+  our_differentiation: Automatizziamo i processi ripetitivi come lo screening, riducendo
+    i costi operativi e migliorando l'efficienza.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automazione dello screening per una piccola azienda con 10 assunzioni
+      mensili.
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Riduci i costi di reclutamento fino al 50% con l'automazione AI.
+  - Tempi di assunzione dimezzati rispetto ai metodi tradizionali.
+  - Conformità GDPR garantita senza sforzo aggiuntivo.
+market_context:
+  market_size: Circa 5 miliardi di EUR annuali
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Digitalizzazione crescente dei processi HR
+  - Aumento della domanda per talenti digitali e tecnici
+  - Focus su employer branding e esperienza del candidato
+  seasonality:
+    high:
+    - Gennaio-Marzo
+    - Settembre-Ottobre
+    low:
+    - Luglio-Agosto
+    - Dicembre
+typical_objections:
+- objection: L'AI non può sostituire il tocco umano nel reclutamento.
+  response: Concordiamo che l'elemento umano è cruciale. Il nostro AI supporta i recruiter
+    automatizzando compiti ripetitivi, permettendovi di concentrarvi sulla relazione
+    e decisioni strategiche.
+- objection: I costi iniziali sono troppo alti per la nostra azienda.
+  response: Con un entry point di 300 EUR, offriamo un ROI rapido, come mostrato nei
+    nostri esempi. Inoltre, i risparmi a lungo termine superano di gran lunga l'investimento
+    iniziale.
+- objection: Siamo preoccupati per la privacy dei dati con l'AI.
+  response: Utilizziamo tecnologie conformi al GDPR, con cifratura e processi di consenso
+    automatizzati, garantendo la massima sicurezza dei dati dei candidati.
+meta:
+  id: recruitment
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

@@ -1,0 +1,211 @@
+pain_points:
+- description: Alta ocupación que limita la disponibilidad de espacios flexibles.
+  severity: high
+  solution_hint: El agente de voz puede automatizar reservas y sugerir horarios alternativos.
+- description: Gestión compleja de pagos y facturación en múltiples monedas.
+  severity: medium
+  solution_hint: El agente puede integrarse con sistemas de pago locales para procesar
+    transacciones en MXN.
+- description: Costos elevados de servicios como electricidad y mantenimiento.
+  severity: high
+  solution_hint: El agente puede optimizar el uso de recursos mediante programación
+    inteligente.
+- description: Cumplimiento de la LFPDPPP para protección de datos de miembros.
+  severity: high
+  solution_hint: El agente puede manejar consentimientos y recordatorios de privacidad
+    automáticamente.
+- description: Competencia intensa con nuevas espacios de coworking en ciudades principales.
+  severity: medium
+  solution_hint: El agente puede destacar servicios personalizados y ventajas únicas
+    durante las ventas.
+- description: Fluctuaciones estacionales en la demanda, especialmente en periodos
+    vacacionales.
+  severity: low
+  solution_hint: El agente puede ofrecer promociones adaptadas para temporadas bajas.
+typical_services:
+- Espacio de trabajo compartido (hot desk)
+- Oficina privada
+- Sala de juntas y conferencias
+- Acceso 24/7 con control de acceso
+- Recepción y servicio de paquetería
+- Café y áreas comunes (kitchenette)
+- Eventos de networking y capacitación
+- Servicios de impresión y digitalización
+- Wi-Fi de alta velocidad y soporte técnico
+- Asesoría legal y contable para emprendedores
+recommended_functions:
+- name: Reserva y gestión de espacios
+  priority: high
+  reason: Esencial para maximizar la ocupación y reducir conflictos.
+- name: Procesamiento de pagos y facturación
+  priority: high
+  reason: Simplifica la administración financiera en MXN y mejora el flujo de caja.
+- name: Atención al cliente multilingüe
+  priority: medium
+  reason: Atiende a clientes internacionales y locales en es y otros idiomas.
+- name: Recordatorios de cumplimiento LFPDPPP
+  priority: high
+  reason: Garantiza que el espacio cumpla con las leyes de protección de datos mexicanas.
+- name: Generación de leads y seguimiento
+  priority: medium
+  reason: Ayuda a captar nuevos miembros en un mercado competitivo.
+- name: Monitoreo de uso de servicios
+  priority: low
+  reason: Optimiza costos operativos al analizar patrones de consumo.
+typical_integrations:
+- name: Sistema de reservas
+  examples:
+  - CoworkingMX
+  - ReservaFacil
+  - SpaceBooking
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Contpaq
+  - Aspel
+  - Facturama
+  priority: high
+- name: Plataforma de pagos
+  examples:
+  - Mercado Pago
+  - Clip
+  - Conekta
+  priority: high
+- name: CRM para gestión de miembros
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Sistema de control de acceso
+  examples:
+  - Kisi
+  - Salto
+  - Assa Abloy
+  priority: medium
+industry_faq:
+- question: ¿Cuáles son los horarios de acceso al espacio?
+  answer_template: Nuestro espacio ofrece acceso 24/7 para miembros, con seguridad
+    y soporte disponibles en horarios extendidos.
+- question: ¿Incluyen servicios de internet y utilities en el precio?
+  answer_template: Sí, todos nuestros planes incluyen Wi-Fi de alta velocidad, electricidad,
+    y áreas comunes sin costo adicional.
+- question: ¿Cómo manejan la protección de datos según la LFPDPPP?
+  answer_template: Cumplimos con la LFPDPPP mediante políticas de privacidad claras
+    y sistemas seguros para gestionar información de miembros.
+- question: ¿Ofrecen descuentos para membresías a largo plazo?
+  answer_template: Sí, ofrecemos descuentos progresivos para contratos de 6 meses
+    o más, con precios competitivos en MXN.
+- question: ¿Puedo organizar eventos en el espacio?
+  answer_template: Absolutamente, contamos con salas de juntas y espacios para eventos,
+    disponibles para reserva con tarifas especiales.
+- question: ¿Qué medidas de seguridad tienen?
+  answer_template: Implementamos control de acceso con credenciales, videovigilancia,
+    y protocolos de emergencia para garantizar la seguridad.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por los precios de membresía.
+  script: ¡Hola! Nuestros precios en MXN comienzan desde 1500 al mes para escritorio
+    flexible, con opciones personalizadas. ¿Te gustaría agendar una visita para ver
+    el espacio y discutir tus necesidades específicas?
+  goal: Convertir la consulta en una visita presencial o virtual.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios adicionales.
+  script: Además del espacio de trabajo, ofrecemos salas de juntas, eventos de networking,
+    y soporte administrativo. ¿Hay algún servicio en particular que te interese para
+    tu negocio?
+  goal: Identificar necesidades y upsell servicios.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por la LFPDPPP.
+  script: Entendemos tu preocupación. Nuestro espacio cumple estrictamente con la
+    LFPDPPP, con procesos automatizados para manejar datos de manera segura. ¿Te gustaría
+    que te explique más sobre nuestras políticas?
+  goal: Reassure al cliente y construir confianza.
+competitors:
+- name: WeWork Mexico
+  positioning: Líder global con múltiples ubicaciones en ciudades grandes.
+  strengths:
+  - Marca reconocida
+  - infraestructura premium
+  - comunidad internacional
+  weaknesses:
+  - Precios elevados
+  - menos enfoque en personalización local
+  our_differentiation: Ofrecemos precios más accesibles en MXN y un enfoque comunitario
+    adaptado a emprendedores mexicanos.
+- name: Impact Hub México
+  positioning: Enfoque en innovación social y emprendimiento.
+  strengths:
+  - Comunidad activa
+  - eventos especializados
+  - impacto social
+  weaknesses:
+  - Espacios limitados
+  - menos flexibilidad en horarios
+  our_differentiation: Proporcionamos mayor flexibilidad con acceso 24/7 y servicios
+    integrales para negocios diversos.
+- name: Regus Mexico
+  positioning: Proveedor establecido de espacios de oficina.
+  strengths:
+  - Amplia red global
+  - servicios corporativos
+  weaknesses:
+  - Menos innovación
+  - precios rígidos
+  our_differentiation: Innovamos con tecnología de agente de voz para mejor experiencia
+    del cliente y gestión eficiente.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 2000
+  - 8000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Un freelancer que ahorra en renta de oficina tradicional.
+    monthly_cost: 2500
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Ahorra hasta un 50% comparado con una oficina privada en la misma zona.
+  - Incluye todos los servicios básicos sin costos ocultos.
+  - Flexibilidad para escalar o reducir según necesidades empresariales.
+market_context:
+  market_size: El mercado de coworking en México está valorado en aproximadamente
+    500 millones MXN anuales.
+  growth_rate: 12% anual
+  key_trends:
+  - Aumento de freelancers y startups debido a la economía digital.
+  - Empresas adoptando modelos híbridos de trabajo remoto.
+  - Demanda creciente en ciudades secundarias como Guadalajara y Monterrey.
+  seasonality:
+    high:
+    - enero
+    - septiembre
+    low:
+    - diciembre
+typical_objections:
+- objection: Es demasiado caro para mi presupuesto.
+  response: Entiendo. Nuestros planes están diseñados para ofrecer valor a largo plazo,
+    con ahorros en costos fijos y servicios incluidos. ¿Podemos explorar una opción
+    más básica o un periodo de prueba?
+- objection: Prefiero trabajar desde casa para ahorrar.
+  response: Trabajar desde casa tiene ventajas, pero nuestro espacio ofrece networking,
+    productividad mejorada, y profesionalismo. ¿Has considerado los beneficios de
+    una comunidad activa?
+- objection: Ya uso otro espacio de coworking y estoy satisfecho.
+  response: ¡Excelente! Nos enfocamos en servicios adicionales como tecnología de
+    agente de voz para mayor comodidad. ¿Te interesaría una visita para comparar y
+    ver nuestras ventajas únicas?
+meta:
+  id: coworking
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "coworking"
+- "shared office"
+- "flexible workspace"
+_extends: _base/coworking

@@ -1,0 +1,291 @@
+pain_points:
+- description: Dificultad para encontrar y retener personal cualificado debido a la
+    alta rotación y las duras condiciones laborales.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la pre-selección de candidatos,
+    gestionar citas para entrevistas y responder consultas iniciales de candidatos,
+    liberando tiempo al personal de RRHH.
+- description: Altos niveles de burocracia y requisitos de documentación para cumplir
+    con la normativa sanitaria y de protección de datos (LOPDGDD/GDPR).
+  severity: high
+  solution_hint: El agente puede recordar a los cuidadores las tareas administrativas
+    pendientes, enviar alertas sobre renovaciones de certificados y guiar en la cumplimentación
+    de formularios básicos vía telefónica.
+- description: Presión constante de las familias que demandan una comunicación más
+    fluida y actualizaciones inmediatas sobre el estado de sus seres queridos.
+  severity: medium
+  solution_hint: El agente puede proporcionar actualizaciones automáticas programadas
+    (ej. "todo va bien hoy"), recibir y clasificar consultas de familiares, y redirigir
+    asuntos urgentes al personal adecuado.
+- description: Gestión ineficiente de las citas y visitas (médicos, terapias, familiares)
+    que genera conflictos de horarios y sobrecarga al personal.
+  severity: medium
+  solution_hint: Automatizar la gestión de citas, confirmarlas y recordarlas a todas
+    las partes mediante llamadas de voz, optimizando la agenda del centro.
+- description: Dificultad para escalar servicios de acompañamiento telefónico y teleasistencia
+    básica sin incrementar costes operativos.
+  severity: medium
+  solution_hint: Implementar un agente de voz que realice llamadas de compañía regulares,
+    verifique el bienestar y active protocolos de emergencia si no hay respuesta,
+    ampliando la cobertura sin nuevos contratos.
+- description: Pérdida de potenciales residentes o clientes de ayuda a domicilio por
+    no atender llamadas fuera del horario comercial.
+  severity: low
+  solution_hint: Un agente de voz disponible 24/7 puede captar datos de contacto,
+    responder preguntas frecuentes y agendar citas para visitas al centro, convirtiendo
+    llamadas perdidas en leads calificados.
+typical_services:
+- Residencia para mayores
+- Centro de día
+- Ayuda a domicilio
+- Cuidados paliativos
+- Estimulación cognitiva
+- Fisioterapia geriátrica
+- Teleasistencia
+- Servicio de comedor a domicilio
+- Transporte adaptado
+- Asesoramiento y gestión de dependencia (Ley de Dependencia)
+recommended_functions:
+- name: Recepción y derivación de llamadas
+  priority: high
+  reason: Es crucial para gestionar el alto volumen de consultas de familias, proveedores
+    y potenciales clientes, dirigiendo cada llamada al departamento correcto sin esperas.
+- name: Confirmación y recordatorio de citas
+  priority: high
+  reason: Reduce las ausencias en citas médicas y de terapias, optimizando el tiempo
+    de los profesionales y mejorando la adherencia a los tratamientos.
+- name: Llamadas de bienestar y compañía
+  priority: medium
+  reason: Permite ofrecer un valor añadido a familias y usuarios de teleasistencia,
+    mostrando preocupación proactiva y generando tranquilidad.
+- name: Captación de leads y agendado de visitas
+  priority: medium
+  reason: Convierte consultas iniciales en oportunidades concretas para el equipo
+    comercial, especialmente fuera del horario laboral.
+- name: Encuestas de satisfacción automatizadas
+  priority: low
+  reason: Facilita la recogida continua de feedback de familiares con alta tasa de
+    respuesta, clave para la mejora de la calidad.
+- name: Recordatorios de tareas administrativas
+  priority: low
+  reason: Ayuda al personal a cumplir con los plazos burocráticos, reduciendo el estrés
+    y el riesgo de sanciones.
+typical_integrations:
+- name: Software de gestión de residencias (ERP sanitario)
+  examples:
+  - Sigesa
+  - Gerokon
+  - Gescom
+  priority: high
+- name: Sistemas de teleasistencia
+  examples:
+  - Tunstall
+  - Telbios
+  - Telefónica Soluciones
+  priority: medium
+- name: Calendarios y agendas digitales
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  priority: medium
+- name: Plataformas de videollamadas
+  examples:
+  - Zoom
+  - Google Meet
+  priority: low
+- name: Herramientas de CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - software personalizado
+  priority: low
+industry_faq:
+- question: ¿Cumplen con la Ley de Protección de Datos (LOPDGDD/GDPR)?
+  answer_template: Absolutamente. Nuestra solución está diseñada desde su origen para
+    ser compliant con el RGPD y la LOPDGDD. Los datos se procesan de forma segura,
+    los usuarios dan su consentimiento explícito en la primera interacción y usted
+    mantiene siempre el control y la propiedad de la información.
+- question: ¿El agente de voz puede entender a personas mayores con dificultades en
+    el habla?
+  answer_template: Nuestra tecnología incorpora modelos de lenguaje entrenados específicamente
+    para adaptarse a voces ancianas y patrones de habla comunes. Además, está configurado
+    para ser paciente, repetir la pregunta si es necesario y, en caso de no entender,
+    derivar la llamada inmediatamente a un operador humano.
+- question: ¿Puede integrarse con nuestro software de gestión actual?
+  answer_template: Sí, en la mayoría de los casos. Trabajamos con APIs estándar y
+    nos adaptamos a integraciones personalizadas. Durante la fase de implementación,
+    analizaremos su sistema (como Sigesa o Gerokon) para garantizar una conexión fluida
+    y segura.
+- question: ¿Qué pasa si surge una emergencia durante una llamada automatizada?
+  answer_template: El sistema está programado para detectar palabras clave de alerta
+    o angustia en la voz. Ante una posible emergencia, interrumpe automáticamente
+    el flujo automatizado, conecta en vivo con un cuidador o contacta con los números
+    de emergencia preconfigurados según el protocolo de su centro.
+- question: ¿No resulta demasiado frío o impersonal para el sector sociosanitario?
+  answer_template: 'Todo lo contrario. Lo configuramos con un tono cálido, empático
+    y calmado, usando el nombre del residente. Su principal valor es liberar tiempo
+    al personal humano para que puedan dedicarse a lo que realmente importa: el contacto
+    personal y el cuidado emocional, sin las interrupciones constantes de tareas administrativas.'
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un director de residencia o responsable de servicios a domicilio
+    pregunta por el precio nada más iniciar la conversación.
+  script: Le entiendo perfectamente, la gestión del presupuesto es fundamental. En
+    lugar de darle una cifra genérica, ¿me permite hacerle una pregunta? ¿Cuántas
+    horas semanales dedica actualmente su personal administrativo o de recepción a
+    tareas como confirmar citas, responder a las mismas preguntas de familias o gestionar
+    llamadas perdidas? Nuestra solución suele tener un ROI muy claro al liberar ese
+    tiempo para el cuidado directo. ¿Le parece si analizamos su caso concreto?
+  goal: Evitar hablar de coste aislado, redirigir la conversación hacia el valor y
+    el retorno de la inversión (ROI), y cualificar la necesidad.
+- trigger: gdpr_concern
+  situation: Cuando el interlocutor expresa preocupación explícita por la protección
+    de datos.
+  script: Es una preocupación totalmente legítima y la compartimos. La privacidad
+    es la base de nuestra solución. Trabajamos con hosting en la UE, cifrado de datos
+    y acuerdos de tratamiento conforme al RGPD. Además, el agente solo accede a la
+    información estrictamente necesaria que usted defina (como nombres y teléfonos
+    para recordatorios). Le puedo enviar nuestro análisis de impacto y las cláusulas
+    contractuales estándar. ¿La seguridad de los datos sería su única barrera para
+    avanzar?
+  goal: Tranquilizar con hechos concretos, demostrar expertise legal y avanzar hacia
+    el cierre aislando la objeción.
+- trigger: not_tech_savvy
+  situation: Cuando el cliente potencial (ej. dueño de residencia familiar) dice que
+    "no son muy de tecnología".
+  script: 'Eso es lo mejor de nuestra solución: no necesita que usted sea experto.
+    Nosotros nos encargamos de toda la instalación, configuración y entrenamiento
+    del agente con su terminología. Usted y su equipo solo notarán que las llamadas
+    se gestionan mejor y tienen menos papeleo. Es tan sencillo como usar un teléfono.
+    ¿Podemos programar una demostración breve para que lo vea en acción sin compromiso?'
+  goal: Desdramatizar la complejidad técnica, enfatizar el servicio llave en mano
+    y proponer una demostración práctica.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona que está evaluando otra solución o un call
+    center tradicional.
+  script: Me alegra que esté explorando opciones para mejorar. La gran diferencia
+    con un call center tradicional o soluciones genéricas es que nuestro agente está
+    especializado en el lenguaje y los flujos de trabajo del cuidado de mayores. No
+    solo traslada llamadas, resuelve consultas, agenda y da tranquilidad proactiva,
+    trabajando 24/7 por una fracción del coste. ¿Le interesaría comparar una proyección
+    de costes y ahorros específica para su centro?
+  goal: Diferenciar por especialización, valor y coste-eficiencia, y mantener el engagement
+    con una oferta concreta.
+competitors:
+- name: Call centers subcontratados tradicionales
+  positioning: Proveedor externo de servicio de atención telefónica básica.
+  strengths:
+  - Presencia humana inmediata
+  - no requieren inversión inicial en tecnología
+  weaknesses:
+  - Coste por hora/hora muy elevado a largo plazo
+  - conocimiento limitado del sector
+  - horarios restringidos
+  - alta rotación de operadores
+  our_differentiation: Coste predecible mucho menor, disponible 24/7, conocimiento
+    específico del sector, integrable con sus sistemas, escalable al instante.
+- name: Plataformas de teleasistencia con servicio de llamadas
+  examples:
+  - Tunstall
+  - Telbios
+  positioning: Proveedores de hardware y software de teleasistencia con servicios
+    de centro de alarmas.
+  strengths:
+  - Especialización en teleasistencia
+  - infraestructura robusta
+  - reconocimiento de marca
+  weaknesses:
+  - Suelen ser soluciones cerradas y caras
+  - poco flexibles para tareas de gestión diaria del centro (citas
+  - recepción)
+  our_differentiation: Somos una capa de inteligencia conversacional flexible que
+    se integra con su sistema actual, enfocada en automatizar la operativa diaria,
+    no solo las emergencias.
+- name: Soluciones de CRM genéricas con automatización
+  examples:
+  - Salesforce
+  - Zoho
+  positioning: Plataformas de negocio generalistas con módulos de automatización.
+  strengths:
+  - Potentes para gestión de clientes (leads)
+  - personalizables
+  - amplio ecosistema
+  weaknesses:
+  - No están diseñadas para los flujos conversacionales del cuidado de mayores
+  - requieren una configuración y mantenimiento técnico complejo y costoso
+  our_differentiation: Solución "plug & play" específica para el sector, con flujos
+    preconfigurados, tono de voz adecuado y sin necesidad de un administrador técnico
+    dedicado.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 149
+  roi_examples:
+  - scenario: Para una residencia con 50 plazas que dedica 20h/semana de personal
+      administrativo a gestionar llamadas y citas.
+    monthly_cost: 299
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Menos del coste de un cuidador a media jornada.
+  - Evita perder hasta el 30% de las llamadas de posibles nuevos residentes.
+  - Invierte en tranquilidad para las familias, no solo en software.
+market_context:
+  market_size: Se estima un mercado de servicios de cuidado a mayores en España de
+    más de 17.000 millones de EUR anuales.
+  growth_rate: 3-5% anual, impulsado por el envejecimiento poblacional (más de 20%
+    de la población mayor de 65 años).
+  key_trends:
+  - Fuerte demanda de envejecimiento en el hogar ('aging in place'), incrementando
+    los servicios de ayuda a domicilio.
+  - Digitalización acelerada del sector tras la pandemia, con mayor apertura a soluciones
+    tecnológicas.
+  - Creciente presión sobre la financiación pública (Ley de Dependencia), obligando
+    a las empresas a ser más eficientes.
+  - Fusión y adquisiciones para crear grupos más grandes con capacidad de invertir
+    en tecnología.
+  seasonality:
+    high:
+    - Septiembre-Noviembre (pre-inscripciones para el invierno)
+    - Enero (propósitos de año nuevo de las familias)
+    low:
+    - Agosto (periodo vacacional)
+    - Diciembre (fiestas navideñas)
+typical_objections:
+- objection: Nuestros residentes o sus familias prefieren siempre hablar con una persona,
+    no con una máquina.
+  response: Es comprensible. Por eso nuestro agente no reemplaza el contacto humano,
+    lo optimiza. Se encarga de las consultas repetitivas y logísticas (horarios, trámites),
+    permitiendo que su personal dedique más tiempo y atención de calidad a las conversaciones
+    importantes y personales cuando sean necesarias. En realidad, mejora la percepción
+    del servicio humano.
+- objection: Ahora no es el momento, estamos demasiado ocupados con el día a día para
+    implementar algo nuevo.
+  response: Precisamente porque están tan ocupados es el momento ideal. La implementación
+    es rápida y nosotros la gestionamos. Imagine liberar varias horas a la semana
+    de ese 'día a día' agotador de su equipo. Esta herramienta está diseñada para
+    reducir esa carga operativa que les impide crecer o mejorar. ¿Podemos probarlo
+    en un solo servicio (como la gestión de citas médicas) para que vean los beneficios
+    sin riesgo?
+- objection: El presupuesto para tecnología este año ya está cerrado.
+  response: Le entiendo. Muchos de nuestros clientes empezaron pensando lo mismo.
+    Lo que suelen descubrir es que esto no es un gasto en tecnología, es una inversión
+    en ahorro de costes operativos que suele pagarse por sí sola en pocas semanas.
+    ¿Le parecería útil si le preparo una propuesta para el próximo ejercicio fiscal,
+    con una prueba piloto simbólica en el trimestre actual para tener datos reales?
+meta:
+  id: elderly_care
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

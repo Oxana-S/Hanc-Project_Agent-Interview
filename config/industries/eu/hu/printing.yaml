@@ -1,0 +1,249 @@
+pain_points:
+- description: A megrendelések pontos kezelése és nyomon követése nehézkes, ami gyakran
+    hibákhoz vezet.
+  severity: high
+  solution_hint: AI hangalapú asszisztens segíthet a rendelésfelvételben és státusz
+    lekérdezésében valós időben.
+- description: A nyomtatási folyamatok optimalizálása hiányzik, ami magas hulladékot
+    és költségeket eredményez.
+  severity: medium
+  solution_hint: Automatizált időpontfoglalás és folyamatkövetés csökkentheti a veszteségeket.
+- description: Ügyfélszolgálati válaszidők hosszúak és nem mindig pontosak.
+  severity: high
+  solution_hint: AI ügynök gyors és pontos válaszokat adhat gyakori kérdésekre.
+- description: GDPR miatti adatkezelési megfelelés bonyolult és időigényes.
+  severity: medium
+  solution_hint: Hangalapú ügyfélazonosítás és adatkezelés segíthet szabályozott módon.
+- description: Nyomtatási anyagok sokfélesége és egyedi igények kezelése nehézkes.
+  severity: medium
+  solution_hint: Hangalapú termékajánlás és megrendelés testreszabás segíthet.
+- description: A versenytársak árai nyomás alatt tartják az árakat.
+  severity: high
+  solution_hint: AI segíthet versenyképes ajánlatok kialakításában és gyors árajánlat-készítésben.
+- description: A technológiai újítások követése és bevezetése költséges.
+  severity: low
+  solution_hint: AI támogatás segíthet a digitális folyamatok bevezetésében és oktatásban.
+typical_services:
+- digitális nyomtatás
+- ofszet nyomtatás
+- nagyformátumú nyomtatás
+- szitanyomás
+- doboz- és csomagolásgyártás
+- grafikai tervezés
+- kötészet és utómunka
+- személyre szabott nyomtatás (pl. promóciós termékek)
+- színes és fekete-fehér nyomtatás
+- nyomtatott marketing anyagok készítése
+recommended_functions:
+- name: Rendelésfelvétel hangalapon
+  priority: high
+  reason: A gyors és pontos rendelésfelvétel csökkenti a hibákat és növeli az ügyfél
+    elégedettséget.
+- name: Árajánlat készítés
+  priority: high
+  reason: Gyors árajánlat segíti az értékesítést és a versenyképességet.
+- name: Megrendelés státusz lekérdezés
+  priority: high
+  reason: Az ügyfelek folyamatos tájékoztatása javítja a bizalmat.
+- name: Gyakran ismételt kérdések kezelése
+  priority: medium
+  reason: Csökkenti az ügyfélszolgálati terhelést.
+- name: GDPR megfelelőségi tájékoztatás
+  priority: medium
+  reason: Fontos az adatvédelem szabályainak betartása és ügyfélbizalom erősítése.
+- name: Időpontfoglalás nyomtatási szolgáltatásokra
+  priority: medium
+  reason: Segíti a hatékony ügyfélkezelést és erőforrás-gazdálkodást.
+- name: Termékajánló és testreszabási tanácsadás
+  priority: low
+  reason: Növeli az értékesítési lehetőségeket.
+typical_integrations:
+- name: ERP rendszerek
+  examples:
+  - SAP
+  - Microsoft Dynamics NAV
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Nyomtatásvezérlő szoftverek
+  examples:
+  - EFI Fiery
+  - HP SmartStream
+  priority: high
+- name: Ügyfélszolgálati rendszerek
+  examples:
+  - Zendesk
+  - Freshdesk
+  priority: medium
+- name: GDPR megfelelőségi eszközök
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+- name: Elektronikus számlázási rendszerek
+  examples:
+  - Számlázz.hu
+  - Billingo
+  priority: high
+industry_faq:
+- question: Milyen nyomtatási technológiákat kínálnak?
+  answer_template: Cégünk digitális, ofszet és nagyformátumú nyomtatást is vállal,
+    továbbá speciális szitanyomást és személyre szabott megoldásokat kínálunk.
+- question: Mennyi idő alatt készül el egy megrendelés?
+  answer_template: A megrendelés típusa és mennyisége alapján a gyártási idő általában
+    2-7 munkanap, de sürgős esetben gyorsított szolgáltatást is biztosítunk.
+- question: Hogyan biztosítják a nyomtatott anyagok minőségét?
+  answer_template: Több lépcsős minőségellenőrzési folyamatunk van, és csak kiváló
+    minőségű alapanyagokat használunk.
+- question: Milyen adatvédelmi szabályokat követnek?
+  answer_template: Teljes mértékben megfelelünk a GDPR előírásainak, és ügyfeleink
+    adatait biztonságosan kezeljük.
+- question: Tudnak-e segíteni a grafikai tervezésben?
+  answer_template: Igen, tapasztalt grafikusaink állnak rendelkezésére a tervezéstől
+    a végleges nyomtatásig.
+- question: Van lehetőség minta nyomtatásra?
+  answer_template: Természetesen, kérésre minta nyomatot is biztosítunk, hogy elégedett
+    legyen a végeredménnyel.
+- question: Milyen fizetési módokat fogadnak el?
+  answer_template: Elfogadunk banki átutalást, készpénzt és online fizetést is a számlán
+    feltüntetett módokon.
+sales_scripts:
+- trigger: arajanlat_kerdes
+  situation: Ha az ügyfél árajánlatot kér a nyomtatási szolgáltatásra
+  script: Természetesen, szívesen készítünk Önnek személyre szabott árajánlatot. Kérem,
+    mondja el a kívánt mennyiséget és a nyomtatási paramétereket, hogy pontosan tudjunk
+    kalkulálni.
+  goal: Az igények pontos feltérképezése és az ajánlat elkészítése
+- trigger: minoseg_kerdes
+  situation: Ha az ügyfél a nyomtatás minőségéről érdeklődik
+  script: Cégünk a legmagasabb minőségi standardokat követi, és több lépcsős ellenőrzést
+    alkalmazunk. Biztos lehet benne, hogy végeredményünk megfelel az elvárásainak.
+  goal: Bizalomépítés és minőségkommunikáció
+- trigger: hatarido_kerdes
+  situation: Ha az ügyfél a szállítási határidőről kérdez
+  script: Az átlagos gyártási idő 2-7 munkanap, de sürgős esetben gyorsított megoldásokat
+    is tudunk ajánlani. Melyik határidő lenne Önnek ideális?
+  goal: Határidő egyeztetés és rugalmasság bemutatása
+- trigger: adatvedelem_felvetes
+  situation: Ha az ügyfél adatvédelmi kérdéseket tesz fel
+  script: Teljes körűen megfelelünk a GDPR előírásainak, és ügyfeleink adatainak biztonságos
+    kezelésére kiemelt figyelmet fordítunk.
+  goal: Bizalom növelése adatvédelmi megfelelőséggel
+- trigger: ajanlat_kovetes
+  situation: Ha az ügyfél követi az ajánlat állapotát
+  script: Az Ön ajánlatát jelenleg feldolgozzuk, és hamarosan visszajelzünk a részletekkel.
+    Kérem, jelezze, ha közben további kérdése lenne.
+  goal: Kommunikáció fenntartása és ügyfél elégedettség
+competitors:
+- name: Print Group Hungary Kft.
+  positioning: Középvállalati szegmens vezetője digitális nyomtatásban
+  strengths:
+  - Gyors szállítás
+  - Széles szolgáltatási portfólió
+  - Korszerű géppark
+  weaknesses:
+  - Magasabb árak
+  - Kevésbé személyre szabott szolgáltatások
+  our_differentiation: Rugalmasabb egyedi megoldások és versenyképes árak
+- name: NyomdaExpressz Zrt.
+  positioning: Országos lefedettség, nagy volumenű ofszet nyomtatás
+  strengths:
+  - Nagy kapacitás
+  - Kedvező árak nagy megrendelésekre
+  - Erős logisztikai hálózat
+  weaknesses:
+  - Lassabb ügyfélszolgálat
+  - Kevés digitális szolgáltatás
+  our_differentiation: Gyorsabb kommunikáció és digitális szolgáltatások integrálása
+- name: GrafikaPlus Kft.
+  positioning: Kreatív grafikai tervezés és kis példányszámú nyomtatás
+  strengths:
+  - Magas design színvonal
+  - Személyes ügyfélkezelés
+  - Rugalmas szolgáltatások
+  weaknesses:
+  - Magas árak
+  - Kis gyártási kapacitás
+  our_differentiation: Versenyképes árú, nagyobb volumenű szolgáltatások és automatizált
+    rendeléskezelés
+- name: RapidPrint Kft.
+  positioning: Gyors kiszállításra specializálódott
+  strengths:
+  - Expressz szolgáltatások
+  - Jó ügyfélszolgálat
+  - Kedvező árak
+  weaknesses:
+  - Korlátozott szolgáltatási kör
+  - Kevés innováció
+  our_differentiation: Szélesebb szolgáltatások és innovatív digitális megoldások
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 2000000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Kisvállalati digitális nyomtatási megrendelés automatizált rendeléskezeléssel
+    monthly_cost: 150000
+    monthly_savings: 450000
+    payback_months: 3
+  - scenario: Közepes volumenű nyomtatás optimalizált folyamatokkal és gyors ügyfélszolgálattal
+    monthly_cost: 500000
+    monthly_savings: 1200000
+    payback_months: 4
+  value_anchors:
+  - Az automatizált rendeléskezelés jelentős időmegtakarítást eredményez.
+  - Gyors válaszidők növelik az ügyfél elégedettséget és csökkentik a visszamondásokat.
+  - A GDPR-kompatibilis adatkezelés csökkenti a jogi kockázatokat.
+  - Hatékony folyamatokkal csökken a nyomtatási hulladék és a költség.
+  - Versenyképes áraink mellett magas minőséget biztosítunk.
+market_context:
+  market_size: 45 000 000 000
+  growth_rate: 3.5
+  key_trends:
+  - Digitalizáció és automatizálás növekedése
+  - Fenntartható és környezetbarát nyomtatási megoldások iránti kereslet
+  - Személyre szabott és kis példányszámú nyomtatás térnyerése
+  - Online rendelési platformok térhódítása
+  - GDPR és adatvédelmi szabályozások szigorodása
+  seasonality:
+    high:
+    - Őszi szezon - október-november
+    - Tavaszi kampányidőszak - március-április
+    low:
+    - Nyári hónapok - június-augusztus
+    - Karácsonyi időszak előtti január
+typical_objections:
+- objection: Az árak túl magasak a versenytársakhoz képest.
+  response: Értjük az árérzékenységet, azonban szolgáltatásaink magas minőséget, rugalmasságot
+    és gyors ügyfélkezelést biztosítanak, amelyek hosszú távon megtérülnek.
+- objection: Nem vagyok biztos benne, hogy az automatizált hangalapú rendelés megfelelő
+    lesz számunkra.
+  response: Az AI hangalapú asszisztensünk testreszabható és folyamatos támogatást
+    nyújt, így jelentősen egyszerűsíti a rendelési folyamatokat és csökkenti a hibákat.
+- objection: Aggódom az adatvédelmi megfelelőség miatt.
+  response: Teljes körű GDPR-megfelelőséget garantálunk, és minden adatkezelési folyamatunk
+    biztonságos, átlátható.
+- objection: Túl bonyolultnak tűnik a rendszer bevezetése.
+  response: Segítünk a rendszer gyors és zökkenőmentes bevezetésében, valamint oktatást
+    és támogatást biztosítunk az átálláshoz.
+- objection: Nincs elég időnk a változtatásokra a jelenlegi szezonban.
+  response: Rugalmas bevezetési lehetőségeket kínálunk, így akár szezonon kívül is
+    elkezdheti az átállást, hogy a következő kampányra már teljesen működjön a rendszer.
+meta:
+  id: printing
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

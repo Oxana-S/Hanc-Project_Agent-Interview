@@ -1,0 +1,273 @@
+aliases:
+- horeca
+- gastronomie
+- restaurant
+- café
+- hotel
+- bar
+- pub
+- catering
+- lieferdienst
+- gemeinschaftsverpflegung
+- kantine
+- fastfood
+- pizzeria
+- sushi
+- tischreservierung
+- bankett
+competitors:
+- name: Orderbird
+  positioning: Marktführer für Kassensysteme in der Gastronomie in Österreich
+  strengths:
+  - Intuitive Bedienung
+  - Mobile Kassensysteme
+  - Gute Integration mit anderen Systemen
+  weaknesses:
+  - Preislich im oberen Segment
+  - Fokus weniger auf Automatisierung von Telefonprozessen
+  our_differentiation: Spezialisierung auf sprachbasierte Automatisierung von Reservierungen
+    und Bestellannahme
+- name: Gastrofix
+  positioning: Bekanntes POS-System mit starkem österreichischem Marktanteil
+  strengths:
+  - Stabilität und Funktionsumfang
+  - Umfassende Schnittstellen
+  weaknesses:
+  - Komplexere Bedienung
+  - Weniger Fokus auf KI-basierte Sprachdienste
+  our_differentiation: Automatisierte Kundenkommunikation rund um die Uhr, Reduktion
+    von No-Shows
+- name: Resmio
+  positioning: Online-Reservierungssystem mit Fokus auf kleine bis mittlere Gastronomiebetriebe
+  strengths:
+  - Einfaches Reservierungsmanagement
+  - Web- und App-Lösung
+  weaknesses:
+  - Wenig Telefonintegration
+  - Keine KI-gestützte Sprachannahme
+  our_differentiation: Sprachagent als ergänzende Lösung zur Telefonannahme und Kundenbindung
+industry_faq:
+- question: Haben Sie an Wochenenden geöffnet?
+  answer_template: Ja, wir haben an Wochenenden von {{öffnungszeiten_start}} bis {{öffnungszeiten_ende}}
+    geöffnet.
+- question: Gibt es Parkmöglichkeiten in der Nähe?
+  answer_template: Ja, kostenlose Parkplätze sind {{Parkplatzbeschreibung}}, verfügbar.
+- question: Bieten Sie ein spezielles Kindermenü an?
+  answer_template: Ja, wir bieten ein Kindermenü sowie Hochstühle für Kinder an.
+- question: Wie kann ich einen Tisch reservieren?
+  answer_template: Sie können telefonisch, online oder über unseren Sprachassistenten
+    jederzeit einen Tisch reservieren.
+- question: Welche Zahlungsmöglichkeiten akzeptieren Sie?
+  answer_template: Wir akzeptieren Barzahlung, EC-Karten und gängige Kreditkarten.
+- question: Kann ich bei Ihnen private Feiern oder Bankette veranstalten?
+  answer_template: Ja, wir organisieren Veranstaltungen und Bankette für Gruppen ab
+    10 Personen. Für weitere Informationen fragen Sie bitte nach.
+- question: Wie lange dauert die Lieferung meiner Bestellung?
+  answer_template: Die Lieferzeit beträgt in der Regel {{Lieferzeit}} Minuten, kann
+    aber zu Stoßzeiten variieren.
+pain_points:
+- description: Hohe Anzahl an Anrufen während Stoßzeiten führt zu Überlastung des
+    Personals.
+  severity: high
+  solution_hint: Automatisierte Telefonannahme und Reservierung rund um die Uhr.
+- description: Häufige No-Shows bei Reservierungen verursachen Umsatzeinbußen.
+  severity: high
+  solution_hint: Automatische Bestätigungen und Erinnerungen per Telefon oder SMS.
+- description: Personal wird durch Telefonate abgelenkt und kann Gäste schlechter
+    bedienen.
+  severity: medium
+  solution_hint: Sprachagent übernimmt Reservierungen und einfache Anfragen.
+- description: Schwierigkeit, Sonderangebote und Aktionen effektiv zu kommunizieren.
+  severity: medium
+  solution_hint: Proaktive Kundenansprache durch automatisierte Outbound-Calls.
+- description: Komplexität der Einhaltung der DSGVO bei Kundenkommunikation.
+  severity: medium
+  solution_hint: Integrierte DSGVO-konforme Abläufe zur Datenverarbeitung.
+- description: Verzögerungen bei der Bestellannahme während hoher Auslastung.
+  severity: high
+  solution_hint: Automatische Annahme und Weiterleitung von Liefer- und Abholbestellungen.
+- description: Schwankende Kundennachfrage saisonal und wochentags belastet die Planung.
+  severity: medium
+  solution_hint: Analyse von Anrufdaten zur besseren Personaleinsatzplanung.
+typical_services:
+- Tischreservierung
+- Essensbestellung zum Mitnehmen
+- Essenslieferung
+- Catering für Veranstaltungen
+- Bankett- und Eventplanung
+- Hotelzimmerreservierung
+- Roomservice
+- Kundenkommunikation und FAQ-Beantwortung
+- Werbung und Promotion von Angeboten
+- Kundenbindungsmaßnahmen
+recommended_functions:
+- name: tischreservierung
+  priority: high
+  reason: Ermöglicht schnelle und einfache Reservierungen rund um die Uhr
+- name: bestellannahme
+  priority: high
+  reason: Automatisiert die Annahme von Liefer- und Abholbestellungen, reduziert Wartezeiten
+- name: erinnerungen
+  priority: high
+  reason: Verringert No-Shows durch automatische Bestätigungen und Erinnerungen
+- name: faq-beantwortung
+  priority: medium
+  reason: Entlastet das Personal durch automatische Beantwortung häufig gestellter
+    Fragen
+- name: outbound-telefonie
+  priority: medium
+  reason: Effektive Kommunikation von Sonderangeboten und Aktionen an Stammkunden
+- name: datenschutz-konformität
+  priority: medium
+  reason: Sicherstellung der Einhaltung von DSGVO bei Kundenkontakten
+- name: analyse-und-berichtswesen
+  priority: low
+  reason: Unterstützung bei der Optimierung von Personalplanung und Marketing
+typical_integrations:
+- name: Kassensysteme
+  examples:
+  - Orderbird
+  - Gastrofix
+  - Lightspeed
+  priority: high
+- name: Reservierungssysteme
+  examples:
+  - Resmio
+  - OpenTable
+  - Guestline
+  priority: high
+- name: Lieferplattformen
+  examples:
+  - Mjam
+  - Lieferando.at
+  - Wolt
+  priority: medium
+- name: Hotel-Management-Systeme (PMS)
+  examples:
+  - Protel
+  - Clock PMS
+  - HotelNetSolutions
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  priority: low
+sales_scripts:
+- trigger: preisfrage
+  situation: Kunde fragt nach Preisen für Reservierungs- oder Bestellservice
+  script: 'Vielen Dank für Ihr Interesse. Unser Service startet bereits ab 99 EUR
+    pro Monat und hilft Ihnen,
+
+    Zeit zu sparen und No-Shows zu reduzieren. Möchten Sie mehr über die genauen Funktionen
+    erfahren?
+
+    '
+  goal: Interesse wecken und Beratungsgespräch initiieren
+- trigger: keine_stellplaetze
+  situation: Kunde fragt nach Verfügbarkeit, aber kein Platz verfügbar
+  script: 'Leider sind für den gewünschten Zeitraum aktuell alle Tische besetzt. Ich
+    kann Ihnen jedoch
+
+    einen alternativen Termin 30 Minuten früher oder später anbieten oder Sie auf
+    die Warteliste setzen.
+
+    '
+  goal: Alternative Lösungen anbieten und Kundenbindung erhalten
+- trigger: lieferzeit_zu_lang
+  situation: Kunde beschwert sich über lange Lieferzeiten bei Bestellungen
+  script: 'Wir entschuldigen uns für die Wartezeit. In Stoßzeiten kann die Lieferung
+    bis zu 60 Minuten dauern.
+
+    Alternativ können Sie gerne Selbstabholung wählen - Ihre Bestellung ist dann in
+    ca. 20 Minuten fertig.
+
+    '
+  goal: Kunden informieren und alternative Optionen aufzeigen
+- trigger: datenschutz_bedenken
+  situation: Kunde äußert Bedenken bezüglich Datenschutz
+  script: 'Ihre Daten werden selbstverständlich gemäß der DSGVO behandelt. Alle Prozesse
+    sind sicher und
+
+    transparent gestaltet, um Ihre Privatsphäre zu schützen.
+
+    '
+  goal: Vertrauen schaffen und Bedenken ausräumen
+- trigger: promotions_kommunikation
+  situation: Kunde fragt nach aktuellen Aktionen
+  script: 'Aktuell bieten wir spezielle Mittagsmenüs ab 9,90 EUR und Rabattaktionen
+    für Stammkunden an.
+
+    Ich kann Sie gerne regelmäßig über unsere Angebote informieren.
+
+    '
+  goal: Kundenbindung durch Promotionen stärken
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 300
+  entry_point: 99
+  roi_examples:
+  - scenario: Reduzierung von No-Shows um 50% bei einem mittelgroßen Restaurant
+    monthly_cost: 120
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Automatisierte Bestellannahme entlastet Personal und erhöht Bestellvolumen
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  - scenario: Proaktive Kundenkommunikation steigert Wiederbesuche um 15%
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Unser Sprachassistent arbeitet rund um die Uhr und entlastet Ihr Team signifikant.
+  - Mit automatischen Erinnerungen reduzieren Sie No-Shows und steigern Ihren Umsatz.
+  - Die Investition amortisiert sich bereits im ersten Monat durch Zeitersparnis und
+    Mehrumsatz.
+market_context:
+  market_size: 3000000000
+  growth_rate: 3.5
+  key_trends:
+  - Digitalisierung und Automatisierung in der Gastronomie
+  - Steigende Bedeutung von Online-Reservierungen und Lieferdiensten
+  - Zunahme von kontaktlosen und KI-gestützten Services
+  - Fokus auf Nachhaltigkeit und regionale Produkte
+  seasonality:
+    high:
+    - Sommermonate (Juni bis August)
+    - Weihnachtszeit und Feiertage
+    low:
+    - Januar und Februar
+    - Nach den Ferienzeiten
+typical_objections:
+- objection: Ich habe Angst, dass der Sprachassistent meine Kunden nicht gut versteht.
+  response: Unsere KI-Sprachagenten sind speziell für den österreichischen Dialekt
+    optimiert und können flexibel auf verschiedene Anfragen reagieren.
+- objection: Das System ist zu teuer für meinen kleinen Betrieb.
+  response: Unsere Lösungen sind modular und skalierbar, sodass Sie nur für die Funktionen
+    zahlen, die Sie wirklich benötigen.
+- objection: Wir wollen lieber persönlichen Kontakt mit unseren Gästen.
+  response: Der Sprachassistent unterstützt Ihr Team und übernimmt Routineanfragen,
+    so bleibt mehr Zeit für persönlichen Service.
+- objection: Datenschutz ist mir sehr wichtig.
+  response: Unser System erfüllt alle Anforderungen der DSGVO und garantiert sicheren
+    Umgang mit Kundendaten.
+- objection: Wir haben schon ein Reservierungssystem.
+  response: Unser Sprachagent ergänzt Ihre bestehenden Systeme und automatisiert die
+    Telefonkommunikation nahtlos.
+meta:
+  id: horeca
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+_extends: _base/horeca

@@ -1,0 +1,235 @@
+pain_points:
+- description: Gestão ineficiente de reservas com múltiplos canais (telefone, email,
+    website, aplicações) que requer coordenação manual
+  severity: high
+  solution_hint: Agente de voz pode centralizar reservas via telefone com integração
+    automática ao sistema de gestão
+- description: Elevado volume de chamadas para verificação de horários de voos e status,
+    sobrecarregando a equipa de atendimento
+  severity: high
+  solution_hint: IA pode responder automaticamente a consultas de status de voos,
+    liberando agentes humanos
+- description: Processamento manual de alterações e cancelamentos de reservas, gerando
+    erros e insatisfação dos clientes
+  severity: medium
+  solution_hint: Automatizar procedimentos de alteração/cancelamento com confirmação
+    por voz
+- description: Dificuldade em lidar com picos de chamadas durante atrasos ou cancelamentos
+    de voos
+  severity: high
+  solution_hint: Agente de voz escalável pode gerar múltiplas chamadas simultâneas
+    com informações atualizadas
+- description: Cumprimento manual do GDPR para processamento de dados de passageiros
+    em comunicações telefónicas
+  severity: medium
+  solution_hint: Sistema automatizado com consentimento gravado e processamento seguro
+    de dados
+- description: Falta de atendimento 24/7 para clientes com voos em diferentes fusos
+    horários
+  severity: medium
+  solution_hint: Agente de voz disponível 24 horas para informações básicas e emergências
+typical_services:
+- Reservas de voos nacionais e internacionais
+- Gestão de alterações de reserva
+- Processamento de cancelamentos e reembolsos
+- Verificação de horários de voos
+- Informações sobre bagagem e políticas
+- Assistência a passageiros com necessidades especiais
+- Programas de fidelização (como TAP Miles&Go)
+- Check-in automático por telefone
+- Suporte para atrasos e cancelamentos
+- Venda de serviços adicionais (lugares extras, upgrades)
+recommended_functions:
+- name: Reserva automática de voos
+  priority: high
+  reason: Processo mais frequente que pode ser completamente automatizado
+- name: Consulta de status de voo
+  priority: high
+  reason: Reduz significativamente o volume de chamadas para agentes humanos
+- name: Processamento de alterações
+  priority: medium
+  reason: Agiliza operações que consomem muito tempo manual
+- name: Check-in vocal
+  priority: medium
+  reason: Oferece conveniência adicional aos clientes
+- name: Notificação proativa de atrasos
+  priority: high
+  reason: Melhora a experiência do cliente durante situações críticas
+- name: Venda cruzada de serviços
+  priority: low
+  reason: Aumenta receita sem intervenção humana
+typical_integrations:
+- name: Sistemas de GDS (Global Distribution System)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - SAP CRM
+  priority: high
+- name: Sistemas de gestão de frota
+  examples:
+  - FLYdocs
+  - AMOS
+  - Trax
+  priority: medium
+- name: Sistemas de faturação
+  examples:
+  - SAP FI
+  - Oracle Financials
+  - sistemas locais portugueses
+  priority: medium
+- name: Plataformas de pagamento
+  examples:
+  - SIBS
+  - Multibanco
+  - Stripe
+  - PayPal
+  priority: high
+industry_faq:
+- question: Qual é o prazo para fazer o check-in antes do voo?
+  answer_template: O check-in geralmente abre 24 horas antes da partida e fecha 60
+    minutos para voos nacionais, 90 minutos para internacionais. Recomendamos que
+    faça o check-in online ou através do nosso serviço de voz para evitar filas.
+- question: Posso alterar a minha reserva após a compra?
+  answer_template: Sim, pode alterar a sua reserva sujeito à tarifa adquirida e disponibilidade.
+    Para tarifas flexíveis, as alterações são gratuitas. Para outras tarifas, podem
+    aplicar-se taxas. Posso ajudá-lo com essa alteração agora.
+- question: Qual é a política de bagagem da companhia aérea?
+  answer_template: A política varia conforme o tipo de bilhete e destino. Geralmente,
+    incluímos uma mala de cabine e uma mala de porão para voos internacionais. Posso
+    verificar os detalhes específicos para o seu voo.
+- question: O que acontece se o meu voo for cancelado?
+  answer_template: Em caso de cancelamento, reacomodamos os passageiros no próximo
+    voo disponível ou oferecemos reembolso completo. Também fornecemos assistência
+    conforme regulamentos da UE, incluindo refeições e alojamento se necessário.
+- question: Como funciona o programa de milhas?
+  answer_template: O programa permite acumular milhas em cada voo que pode trocar
+    por bilhetes, upgrades ou serviços. As milhas geralmente expiram após 3 anos de
+    inatividade. Posso verificar o seu saldo atual.
+sales_scripts:
+- trigger: service_inquiry
+  situation: Quando cliente pergunta sobre serviços disponíveis
+  script: Oferecemos um serviço de atendimento por voz inteligente que pode lidar
+    com reservas, alterações, check-in e informações de voo 24 horas por dia. Reduz
+    o tempo de espera dos seus clientes em 70% e libera a sua equipa para tarefas
+    mais complexas. Posso agendar uma demonstração?
+  goal: Agendar demonstração do produto
+- trigger: price_question
+  situation: Quando cliente pergunta sobre preços
+  script: Os nossos preços começam em 299€ por mês para uma solução básica, mas personalizamos
+    conforme o volume de chamadas e funcionalidades. Em média, as empresas de aviação
+    recuperam o investimento em 4 meses através da redução de custos operacionais.
+    Posso preparar uma proposta personalizada?
+  goal: Obter informações para proposta personalizada
+- trigger: implementation_time
+  situation: Quando cliente pergunta sobre tempo de implementação
+  script: A implementação leva entre 2 a 4 semanas, dependendo das integrações necessárias.
+    Trabalhamos com os seus sistemas atuais como Amadeus ou Sabre sem interromper
+    operações. Já implementámos em várias companhias aéreas portuguesas com transição
+    suave.
+  goal: Acalmar preocupações sobre complexidade
+competitors:
+- name: Talkdesk
+  positioning: Plataforma global de contact center na cloud
+  strengths:
+  - Presença internacional
+  - Interface intuitiva
+  - Integrações pré-construídas
+  weaknesses:
+  - Preço elevado para mercado português
+  - Menos focado em aviação específica
+  - Suporte local limitado
+  our_differentiation: Especialização em aviação com conhecimento local, preços adaptados
+    ao mercado português e suporte em português 24/7
+- name: Sinch
+  positioning: Soluções de comunicação para empresas
+  strengths:
+  - Tecnologia robusta
+  - Capacidades omnichannel
+  - Escalabilidade
+  weaknesses:
+  - Poucas integrações específicas para aviação
+  - Modelo de preço complexo
+  - Foco em SMS mais que voz
+  our_differentiation: Fluxos de trabalho específicos para processos de aviação e
+    integração nativa com sistemas GDS
+- name: Local portuguese providers
+  positioning: Fornecedores locais de telefonia empresarial
+  strengths:
+  - Conhecimento do mercado local
+  - Preços competitivos
+  - Relações pessoais
+  weaknesses:
+  - Tecnologia menos avançada
+  - Sem especialização em aviação
+  - Limitações de escalabilidade
+  our_differentiation: Combinação de tecnologia de ponta com conhecimento local e
+    especialização setorial
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 250
+  - 2000
+  entry_point: 299
+  roi_examples:
+  - scenario: Companhia aérea regional com 500 chamadas/dia
+    monthly_cost: 650
+    monthly_savings: 3200
+    payback_months: 2
+  - scenario: Operador de handling em aeroporto
+    monthly_cost: 350
+    monthly_savings: 1800
+    payback_months: 2
+  value_anchors:
+  - Redução de 70% no tempo de espera dos clientes
+  - Economia média de 12.000€/ano em custos operacionais
+  - Atendimento 24/7 sem custos adicionais de pessoal
+market_context:
+  market_size: €15-20 milhões em soluções de atendimento para aviação
+  growth_rate: 8-10% ao ano
+  key_trends:
+  - Digitalização acelerada pós-pandemia
+  - Aumento da procura por automação devido à escassez de mão-de-obra
+  - Crescimento do turismo em Portugal aumentando pressão sobre operadores
+  - Exigência crescente por atendimento multicanal
+  seasonality:
+    high:
+    - Junho a Setembro
+    - Dezembro
+    - Fevereiro (Carnaval)
+    low:
+    - Novembro
+    - Janeiro (pós-Ano Novo)
+typical_objections:
+- objection: Os nossos clientes preferem falar com pessoas reais
+  response: Compreendemos. A nossa solução não substitui completamente o atendimento
+    humano, mas filtra chamadas rotineiras. Estatísticas mostram que 65% das consultas
+    são informações básicas que a IA pode resolver, libertando a sua equipa para casos
+    complexos onde o toque humano é essencial.
+- objection: A implementação vai interromper as nossas operações
+  response: Implementamos por fases, começando com funcionalidades não críticas. Trabalhamos
+    fora do horário comercial e garantimos backup dos sistemas existentes. Em média,
+    as nossas implementações na aviação têm zero tempo de inatividade não planeado.
+- objection: É muito caro para o nosso orçamento
+  response: O retorno normalmente compensa em 3-4 meses. Podemos começar com um pacote
+    básico e expandir conforme vê resultados. Também oferecemos modelos de pagamento
+    baseados no uso para maior flexibilidade.
+meta:
+  id: aviation
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

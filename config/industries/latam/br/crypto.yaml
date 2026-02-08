@@ -1,0 +1,220 @@
+pain_points:
+- description: Complexidade na conformidade com a LGPD para dados de transações em
+    criptomoedas.
+  severity: high
+  solution_hint: Automatizar a verificação e documentação de conformidade via agentes
+    de voz.
+- description: Alta volatilidade dos preços das criptomoedas, causando incerteza nos
+    investimentos.
+  severity: medium
+  solution_hint: Fornecer atualizações em tempo real e alertas personalizados via
+    voz.
+- description: Falta de educação financeira sobre criptomoedas entre os usuários brasileiros.
+  severity: high
+  solution_hint: Oferecer tutoriais interativos e respostas a perguntas frequentes
+    em português.
+- description: Riscos de fraudes e ataques de segurança em plataformas de criptomoedas.
+  severity: high
+  solution_hint: Implementar verificações de autenticação e monitoramento proativo
+    por voz.
+- description: Dificuldades no reporte fiscal para transações de criptomoedas, devido
+    a regulamentações complexas.
+  severity: high
+  solution_hint: Integrar com ferramentas de contabilidade para geração automática
+    de relatórios fiscais.
+- description: Acesso limitado a serviços bancários para empresas de criptomoedas,
+    afetando liquidez.
+  severity: medium
+  solution_hint: Facilitar conexões com instituições financeiras locais via agentes
+    de voz.
+typical_services:
+- Consultoria em criptomoedas
+- Gestão de carteiras digitais
+- Exchange local de criptomoedas
+- Mineração de criptomoedas
+- Educação em blockchain e finanças descentralizadas
+- Desenvolvimento de smart contracts
+- Auditoria de segurança para projetos crypto
+- Custódia de ativos digitais
+- Integração de pagamentos com criptomoedas
+- Análise de mercado e serviços de trading
+recommended_functions:
+- name: Atendimento ao cliente 24/7 em português
+  priority: high
+  reason: O mercado crypto opera globalmente, exigindo suporte constante para usuários
+    brasileiros.
+- name: Respostas automáticas sobre regulamentação LGPD
+  priority: high
+  reason: Conformidade legal é crítica para evitar multas e construir confiança.
+- name: Agendamento de consultas e suporte técnico
+  priority: medium
+  reason: Para converter leads e fornecer assistência personalizada.
+- name: Processamento de reclamações e resolução de disputas
+  priority: medium
+  reason: Manter a satisfação do cliente em casos de fraudes ou problemas.
+- name: Educação do cliente via conteúdos interativos
+  priority: high
+  reason: Combater a falta de conhecimento e aumentar a adoção de criptomoedas.
+- name: Integração com APIs de bancos locais
+  priority: low
+  reason: Para facilitar transações e melhorar a experiência do usuário.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - TOTVS
+  - SAP
+  priority: high
+- name: APIs bancárias
+  examples:
+  - Banco do Brasil
+  - Itaú
+  - Bradesco
+  priority: high
+- name: Ferramentas de CRM
+  examples:
+  - RD Station
+  - Salesforce
+  priority: medium
+- name: Sistemas de compliance para LGPD
+  examples:
+  - LGPD Solutions
+  - Data Privacy Manager
+  priority: high
+- name: Plataformas de trading
+  examples:
+  - MetaTrader
+  - TradingView
+  priority: medium
+industry_faq:
+- question: Como posso garantir a segurança dos meus investimentos em criptomoedas
+    no Brasil?
+  answer_template: Recomendamos o uso de carteiras hardware, ativação de autenticação
+    de dois fatores, e escolha de exchanges regulamentadas localmente.
+- question: Quais são as obrigações fiscais para transações de criptomoedas no Brasil?
+  answer_template: No Brasil, as transações de criptomoedas são tributáveis; é essencial
+    reportar ao Receita Federal e buscar orientação de um contador especializado.
+- question: Como a LGPD afeta o uso de criptomoedas?
+  answer_template: A LGPD exige que empresas protejam dados pessoais; em crypto, isso
+    inclui dados de KYC/AML, então é crucial implementar políticas de privacidade
+    robustas.
+- question: Quais são as melhores práticas para educar-se sobre criptomoedas?
+  answer_template: Participe de webinars em português, use recursos educacionais de
+    exchanges locais, e consulte especialistas certificados.
+- question: Posso usar criptomoedas para pagamentos no dia a dia no Brasil?
+  answer_template: Sim, algumas empresas aceitam criptomoedas, mas a adoção ainda
+    é limitada; considere usar stablecoins para maior estabilidade.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre os preços dos nossos serviços.
+  script: Olá! Nossos serviços começam a partir de R$ 500 por mês, com planos escaláveis
+    que se adaptam ao seu negócio. Podemos agendar uma demonstração para mostrar o
+    valor?
+  goal: Converter o lead em uma oportunidade de venda, destacando acessibilidade e
+    personalização.
+- trigger: security_concern
+  situation: Quando um cliente expressa preocupação com segurança em criptomoedas.
+  script: Entendemos sua preocupação. Nossos agentes de voz oferecem monitoramento
+    proativo e conformidade com LGPD, reduzindo riscos. Quer saber mais sobre nossos
+    recursos de segurança?
+  goal: Aliviar objeções e construir confiança, enfatizando conformidade e proteção.
+- trigger: regulation_question
+  situation: Quando um cliente tem dúvidas sobre regulamentações locais.
+  script: No Brasil, a LGPD e regulamentações da CVM são chave. Nossos serviços incluem
+    suporte automatizado para compliance, ajudando você a navegar essas regras. Posso
+    explicar como?
+  goal: Demonstrar expertise local e oferecer soluções práticas para conformidade.
+competitors:
+- name: Mercado Bitcoin
+  positioning: Maior exchange de criptomoedas do Brasil, focada no mercado local.
+  strengths:
+  - Presença estabelecida
+  - Interface amigável
+  - Suporte em português
+  weaknesses:
+  - Taxas mais altas
+  - Limitações em moedas internacionais
+  our_differentiation: Oferecemos suporte via voz 24/7, integração mais profunda com
+    LGPD, e preços mais competitivos.
+- name: Foxbit
+  positioning: Exchange brasileira com foco em segurança e educação.
+  strengths:
+  - Forte em segurança
+  - Recursos educacionais
+  - Atendimento local
+  weaknesses:
+  - Escala menor
+  - Menos pares de trading
+  our_differentiation: Agentes de voz automatizados para atendimento rápido e personalizado,
+    melhorando eficiência.
+- name: Binance
+  positioning: Exchange global popular no Brasil, oferecendo ampla gama de criptomoedas.
+  strengths:
+  - Variedade de moedas
+  - Taxas baixas
+  - Plataforma avançada
+  weaknesses:
+  - Suporte menos localizado
+  - Complexidade para iniciantes
+  our_differentiation: Foco específico no mercado brasileiro com conformidade LGPD
+    e suporte em português via voz.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de tempo em atendimento ao cliente para uma exchange
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 0.5
+  - scenario: Automatização de conformidade LGPD para uma startup crypto
+    monthly_cost: 800
+    monthly_savings: 1500
+    payback_months: 0.53
+  value_anchors:
+  - Economize até 50% em custos operacionais com automação por voz.
+  - Conformidade LGPD garantida, evitando multas de até R$ 50 milhões.
+  - Aumente a satisfação do cliente com suporte 24/7 em português.
+market_context:
+  market_size: Estimado em R$ 15 bilhões em 2023
+  growth_rate: 25% ao ano
+  key_trends:
+  - Crescimento na adoção de stablecoins como alternativa ao real.
+  - Aumento da regulamentação governamental sobre criptomoedas.
+  - Expansão de programas de educação financeira em blockchain.
+  seasonality:
+    high:
+    - Fim do ano
+    - Períodos de lançamento de novos projetos crypto
+    low:
+    - Férias de julho
+    - Meses de baixa volatilidade no mercado
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Nosso serviço paga-se rapidamente com a economia em mão de obra e multas;
+    oferecemos um plano de entrada acessível para testar.
+- objection: Não confio na segurança de agentes de voz com meus dados crypto.
+  response: Entendemos. Nossos agentes são desenvolvidos com criptografia de ponta
+    e total conformidade LGPD, garantindo proteção máxima.
+- objection: Já uso outras soluções, não vejo necessidade de mudar.
+  response: Nossa diferenciação está no suporte via voz em português e integração
+    específica para o mercado brasileiro, o que pode melhorar sua eficiência.
+- objection: O mercado crypto é muito volátil, não quero investir agora.
+  response: Nossos serviços ajudam a mitigar riscos com educação e alertas em tempo
+    real, tornando o investimento mais seguro e informado.
+meta:
+  id: crypto
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

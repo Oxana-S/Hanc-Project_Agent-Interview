@@ -1,0 +1,215 @@
+pain_points:
+- description: High operational costs due to maintenance, fuel, and insurance in a
+    regulated environment.
+  severity: high
+  solution_hint: AI voice agent can automate cost tracking and provide compliance
+    alerts to reduce penalties.
+- description: Seasonal demand fluctuations causing revenue instability, especially
+    in northern regions.
+  severity: medium
+  solution_hint: AI voice agent can manage off-season booking promotions and customer
+    retention calls.
+- description: Complex regulatory compliance with EPA, Coast Guard, and state laws
+    leading to administrative burdens.
+  severity: high
+  solution_hint: AI voice agent can schedule compliance checks and send automated
+    reminders for certifications.
+- description: Customer service gaps during peak seasons, leading to missed calls
+    and dissatisfaction.
+  severity: medium
+  solution_hint: AI voice agent can handle 24/7 inquiries, booking, and emergency
+    coordination.
+- description: Inventory management challenges for marine parts, causing delays in
+    repairs.
+  severity: low
+  solution_hint: AI voice agent can integrate with inventory systems to provide real-time
+    stock updates and order alerts.
+- description: High insurance claim processing times and disputes affecting cash flow.
+  severity: medium
+  solution_hint: AI voice agent can automate claim documentation and follow-up with
+    insurers.
+typical_services:
+- Boat repair and maintenance
+- Marina slip rentals
+- Charter and rental services
+- Yacht brokerage
+- Marine electronics installation
+- Docking and fueling services
+- Safety inspections and certifications
+- Waste management and pump-out services
+- Navigation chart updates
+- Crew hiring and management
+recommended_functions:
+- name: Appointment scheduling for services and inspections
+  priority: high
+  reason: Reduces manual booking errors and improves customer convenience during busy
+    seasons.
+- name: Emergency response coordination for distress calls
+  priority: high
+  reason: Enhances safety and compliance with Coast Guard regulations.
+- name: Customer inquiry handling for pricing and availability
+  priority: medium
+  reason: Frees up staff to focus on complex tasks and improves response times.
+- name: Regulatory compliance reminders for EPA and HIPAA-related data handling
+  priority: high
+  reason: Helps avoid fines and ensures data privacy in customer interactions.
+- name: Inventory status checks and reorder alerts
+  priority: low
+  reason: Prevents stockouts and delays in repair services.
+- name: Billing and payment processing for services
+  priority: medium
+  reason: Streamlines cash flow and reduces administrative overhead.
+typical_integrations:
+- name: CRM systems
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Booking and marina management software
+  examples:
+  - Dockwa
+  - MarinaOffice
+  priority: high
+- name: Inventory management systems
+  examples:
+  - Fishbowl
+  - QuickBooks Commerce
+  priority: medium
+- name: Accounting software
+  examples:
+  - QuickBooks
+  - Xero
+  priority: medium
+- name: Navigation and weather apps
+  examples:
+  - Garmin
+  - Navionics
+  priority: low
+industry_faq:
+- question: What are your rates for boat repair services?
+  answer_template: Our repair services start at $200 for basic maintenance, with custom
+    quotes based on the issue. Would you like to schedule an inspection?
+- question: Do you offer seasonal discounts on slip rentals?
+  answer_template: Yes, we provide off-season discounts from November to March. Current
+    rates are available on our website or I can connect you to our team.
+- question: How do you handle emergency situations?
+  answer_template: We have a 24/7 AI-assisted emergency line that coordinates with
+    local authorities and our on-call staff for immediate response.
+- question: Are your services compliant with EPA and Coast Guard regulations?
+  answer_template: Absolutely, all our services adhere to federal and state regulations,
+    and we use automated systems to ensure ongoing compliance.
+- question: Can I book a charter online?
+  answer_template: Yes, you can book through our website or by speaking with our AI
+    voice agent for real-time availability and pricing.
+- question: What insurance do you accept for claims?
+  answer_template: We work with major insurers like Progressive and Geico, and our
+    AI system helps streamline claim submissions.
+sales_scripts:
+- trigger: price_question
+  situation: When a customer asks about service costs over the phone.
+  script: I understand you're looking for pricing. Our basic services start at $150,
+    with discounts for bulk or seasonal bookings. Can I help you with a specific service
+    to provide a more accurate quote?
+  goal: To qualify the lead and move towards a detailed consultation.
+- trigger: service_inquiry
+  situation: When a customer inquires about boat repair or maintenance.
+  script: Thanks for reaching out! We offer comprehensive repair services with certified
+    technicians. To best assist you, could you describe the issue or schedule a diagnostic
+    appointment?
+  goal: To gather information and book an appointment.
+- trigger: compliance_concern
+  situation: When a business owner expresses worry about regulatory requirements.
+  script: Compliance is crucial in the marine industry. Our AI voice agent helps automate
+    compliance tracking for EPA and HIPAA, reducing your risk. Would you like a demo
+    of how it works?
+  goal: To demonstrate value and address pain points.
+competitors:
+- name: MarineMax
+  positioning: National retailer and service provider with a wide network.
+  strengths:
+  - Brand recognition
+  - extensive inventory
+  - multiple locations
+  weaknesses:
+  - Higher prices
+  - less personalized service
+  our_differentiation: We offer AI-driven personalized service and cost-effective
+    automation for local businesses.
+- name: West Marine
+  positioning: Retail chain focusing on marine supplies and parts.
+  strengths:
+  - Product variety
+  - online presence
+  - loyalty programs
+  weaknesses:
+  - Limited service offerings
+  - slower response times
+  our_differentiation: Our integrated voice agent provides end-to-service management
+    beyond retail.
+- name: Local marina operators
+  positioning: Small, family-owned businesses with regional focus.
+  strengths:
+  - Local knowledge
+  - personalized relationships
+  weaknesses:
+  - Limited scalability
+  - manual processes
+  our_differentiation: We enhance local operations with scalable AI tools without
+    losing the personal touch.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automating customer service for a mid-sized marina
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 2
+  - scenario: Reducing compliance fines through automated reminders
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Save up to 30% on operational costs with AI automation
+  - Increase customer satisfaction by 40% with 24/7 service
+  - Reduce compliance risks and avoid average fines of $1,000 per incident
+market_context:
+  market_size: $50 billion annually
+  growth_rate: 3% YoY
+  key_trends:
+  - Increased demand for eco-friendly boating
+  - rise in remote work leading to more leisure boating
+  - adoption of digital tools for marina management
+  seasonality:
+    high:
+    - May to September
+    low:
+    - December to February
+typical_objections:
+- objection: Your AI system sounds too expensive for our small business.
+  response: Our entry-level plans start at $150 per month and can save you more in
+    reduced labor and compliance costs. Would you like to see a cost-benefit analysis?
+- objection: We prefer handling customer calls manually for a personal touch.
+  response: Our AI voice agent augments your team by handling routine queries, freeing
+    them for more complex, personalized interactions. It enhances, not replaces, human
+    service.
+- objection: I'm concerned about data security with HIPAA and CCPA.
+  response: We design our systems with compliance in mind, using encryption and access
+    controls to protect customer data, ensuring full adherence to regulations.
+meta:
+  id: marine
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

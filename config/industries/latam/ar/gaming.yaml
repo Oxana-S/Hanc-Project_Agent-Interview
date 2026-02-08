@@ -1,0 +1,233 @@
+pain_points:
+- description: Alta competencia en el mercado local, con dificultades para destacar
+    nuevos juegos y estudios emergentes.
+  severity: high
+  solution_hint: El agente de voz puede realizar encuestas automatizadas para entender
+    preferencias de jugadores y ajustar estrategias de marketing.
+- description: Dificultades en la gestión de comunidades en redes sociales y soporte
+    al cliente, especialmente en horarios extendidos.
+  severity: high
+  solution_hint: Implementar un agente de voz para manejar consultas frecuentes, moderar
+    chats y redirigir problemas complejos.
+- description: Costos elevados de desarrollo y localización, agravados por la volatilidad
+    del tipo de cambio y la inflación.
+  severity: high
+  solution_hint: Automatizar tareas repetitivas como QA básico o traducción de textos
+    simples para reducir horas de trabajo.
+- description: Falta de personal calificado en áreas específicas como motores gráficos
+    o monetización en mercados latinoamericanos.
+  severity: medium
+  solution_hint: El agente puede asistir en la capacitación interna o guiar a nuevos
+    empleados a través de procesos establecidos.
+- description: Problemas con el cobro y la facturación internacional debido a regulaciones
+    cambiarias y bancarias argentinas.
+  severity: medium
+  solution_hint: Configurar recordatorios automatizados de pagos y proporcionar información
+    clara sobre métodos de pago locales aceptados.
+- description: Baja retención de jugadores en juegos free-to-play por la saturación
+    de ofertas.
+  severity: medium
+  solution_hint: Usar el agente para enviar notificaciones personalizadas de eventos,
+    recompensas y actualizaciones basadas en el comportamiento del jugador.
+typical_services:
+- Desarrollo de videojuegos móviles y PC
+- Porte y localización para el mercado latino
+- Monetización con modelos free-to-play (F2P)
+- Servicios de community management y soporte al jugador
+- Pruebas de control de calidad (QA) y balancing
+- Marketing digital y gestión de redes sociales para gaming
+- Desarrollo de motores gráficos y herramientas personalizadas
+- Consultoría en diseño de juegos y narrativa
+- Servicios de hosting y mantenimiento de servidores para juegos online
+- Producción de assets gráficos y sonido
+recommended_functions:
+- name: Soporte al cliente automatizado
+  priority: high
+  reason: La industria tiene alta demanda de soporte 24/7 para problemas técnicos
+    y consultas de jugadores.
+- name: Gestión de comunidades y moderación
+  priority: high
+  reason: Las comunidades de jugadores en redes sociales y foros son cruciales para
+    el éxito de un juego.
+- name: Recordatorios de eventos y lanzamientos
+  priority: medium
+  reason: Ayuda a aumentar la participación y retención de jugadores mediante comunicaciones
+    oportunas.
+- name: Encuestas y recolección de feedback
+  priority: medium
+  reason: Esencial para adaptar los juegos a las preferencias del mercado argentino
+    y latinoamericano.
+- name: Asistente de ventas para microtransacciones
+  priority: low
+  reason: Puede guiar a jugadores en la compra de items dentro del juego, mejorando
+    la conversión.
+- name: Notificaciones de mantenimiento y actualizaciones
+  priority: medium
+  reason: Mantiene informada a la comunidad sobre el estado del servicio, reduciendo
+    llamadas de soporte.
+typical_integrations:
+- name: Sistemas de soporte al cliente (Helpdesk)
+  examples: Zendesk, Freshdesk
+  priority: high
+- name: Plataformas de redes sociales
+  examples: Facebook, Twitter, Discord, Twitch
+  priority: high
+- name: Herramientas de análisis de jugadores (Analytics)
+  examples: Google Analytics for Games, Unity Analytics, GameAnalytics
+  priority: medium
+- name: Plataformas de distribución de juegos
+  examples: Steam, Epic Games Store, Google Play Store, App Store
+  priority: medium
+- name: Sistemas de pago y facturación
+  examples: MercadoPago, Ualá, PayPal
+  priority: high
+- name: Motores de juego
+  examples: Unity, Unreal Engine
+  priority: low
+industry_faq:
+- question: ¿Cómo puede un agente de voz ayudar a mi estudio de videojuegos?
+  answer_template: Nuestro agente de voz automatiza tareas como soporte al cliente,
+    moderación de comunidades y envío de notificaciones, permitiéndote enfocarte en
+    el desarrollo del juego y reducir costos operativos.
+- question: ¿Es compatible con las plataformas de distribución como Steam o Google
+    Play?
+  answer_template: Sí, nuestro agente se integra con las principales plataformas y
+    puede manejar consultas relacionadas con lanzamientos, actualizaciones y problemas
+    de compra.
+- question: ¿Puede manejar soporte en español para jugadores de toda Latinoamérica?
+  answer_template: Absolutamente. El agente está entrenado en español latinoamericano
+    y puede adaptarse a modismos regionales, ofreciendo soporte personalizado.
+- question: ¿Qué tipo de consultas de jugadores puede resolver automáticamente?
+  answer_template: Resuelve problemas comunes como recuperación de cuentas, guías
+    de gameplay, información de eventos, y redirige casos complejos a tu equipo humano.
+- question: ¿Cómo manejan la seguridad y privacidad de los datos de los jugadores?
+  answer_template: Cumplimos con regulaciones de protección de datos y ciframos toda
+    la información. El agente solo accede a datos necesarios para cada tarea.
+- question: ¿Puede integrarse con nuestras herramientas internas de desarrollo?
+  answer_template: Sí, ofrecemos APIs flexibles para conectar con motores de juego,
+    sistemas de QA y herramientas de gestión de proyectos como Jira o Trello.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo del servicio.
+  script: Entendemos que el presupuesto es clave. Nuestros planes comienzan desde
+    $AR 15000 mensuales, ajustándose al tamaño de tu comunidad y volumen de consultas.
+    ¿Podrías compartir cuántos jugadores activos tiene tu juego para darte una cotización
+    más precisa?
+  goal: Obtener información para personalizar la propuesta y mostrar flexibilidad
+    en precios.
+- trigger: feature_request
+  situation: Cuando un cliente quiere saber sobre funciones específicas para su juego.
+  script: Nuestro agente es altamente personalizable. Por ejemplo, podemos configurarlo
+    para moderar tu servidor de Discord, enviar anuncios de parches o asistir en la
+    venta de items. ¿Hay alguna función en particular que te interese priorizar?
+  goal: Identificar necesidades específicas y demostrar capacidades de personalización.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un servicio similar de la competencia.
+  script: Valoramos que compares opciones. A diferencia de soluciones genéricas, nuestro
+    agente está especializado en la industria gaming de Argentina, con integraciones
+    locales como MercadoPago y soporte en español latino. Además, ofrecemos un período
+    de prueba para que veas los resultados.
+  goal: Diferenciar el servicio por especialización local y ofrecer prueba sin riesgo.
+- trigger: onboarding_question
+  situation: Cuando un cliente pregunta sobre el proceso de implementación.
+  script: La implementación es rápida. Normalmente, en 2 a 4 semanas configuramos
+    las integraciones y entrenamos al agente con la información de tu juego. Te asignamos
+    un especialista para guiarte en cada paso. ¿Te gustaría agendar una demo para
+    ver cómo funcionaría en tu caso?
+  goal: Reducir la percepción de complejidad y programar un siguiente paso concreto.
+competitors:
+- name: Kustomer
+  positioning: Plataforma de servicio al cliente genérica con sede en EE.UU.
+  strengths:
+  - Amplia gama de integraciones
+  - Reconocimiento global
+  - Funciones avanzadas de automatización
+  weaknesses:
+  - Alto costo para estudios pequeños
+  - Soporte limitado en español argentino
+  - No especializado en gaming
+  our_differentiation: Ofrecemos precios accesibles en ARS, especialización en gaming
+    latino y soporte localizado con conocimiento del mercado argentino.
+- name: Helpshift
+  positioning: Plataforma de soporte para juegos móviles.
+  strengths:
+  - Enfocada en juegos móviles
+  - Buenas herramientas de análisis
+  - Soporte multilingüe
+  weaknesses:
+  - Menor enfoque en comunidades (ej. Discord)
+  - Precios en dólares, afectados por el tipo de cambio
+  - Menor presencia en Argentina
+  our_differentiation: Nos centramos en comunidades y soporte integral (redes sociales,
+    foros, in-game), con precios en ARS y asesoría en tendencias locales.
+- name: Local agencies (ej. estudios de community management freelance)
+  positioning: Servicios manuales de community management y soporte en Argentina.
+  strengths:
+  - Conocimiento profundo del mercado local
+  - Flexibilidad en servicios personalizados
+  - Precios negociables
+  weaknesses:
+  - Escalabilidad limitada
+  - Dependencia de individuos (riesgo de rotación)
+  - Pocas automatizaciones
+  our_differentiation: Ofrecemos escalabilidad 24/7 con automatización, manteniendo
+    el toque local y reduciendo la dependencia de personal específico.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 20000
+  - 100000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Estudio pequeño con 5000 jugadores activos que automatiza soporte básico
+      y moderación.
+    monthly_cost: 20000
+    monthly_savings: 40000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos de soporte hasta un 40% en los primeros 3 meses.
+  - Incrementa la retención de jugadores con notificaciones personalizadas.
+  - Escala tu comunidad sin contratar personal adicional.
+market_context:
+  market_size: Aproximadamente 500 millones de ARS anuales en desarrollo y servicios
+    relacionados.
+  growth_rate: 15% anual
+  key_trends:
+  - Aumento en el desarrollo de juegos móviles free-to-play.
+  - Creciente interés en juegos con temática local y en español.
+  - Expansión de torneos y eSports a nivel regional.
+  seasonality:
+    high:
+    - Vacaciones de verano (diciembre-enero)
+    - Fines de semana largos
+    - Lanzamientos de consolas o eventos como la Game Jam Argentina
+    low:
+    - Meses de marzo y julio (inicio de ciclos escolares)
+    - Días hábiles sin feriados
+typical_objections:
+- objection: No creo que un agente automatizado entienda la cultura gamer argentina.
+  response: Entendemos la preocupación. Por eso entrenamos a nuestro agente con datos
+    locales y permitimos personalizar respuestas con jerga y referencias culturales
+    específicas. Además, siempre supervisa un humano para ajustes.
+- objection: Es demasiado caro para nuestro estudio independiente.
+  response: Nuestros planes escalan según tus necesidades. Partiendo de $AR 15000,
+    el ahorro en horas de soporte y community management suele cubrir la inversión
+    rápidamente. Podemos empezar con funciones básicas y crecer juntos.
+- objection: Ya tenemos a alguien manejando la comunidad, no necesitamos automatización.
+  response: Perfecto. Nuestro agente puede asistir a esa persona, manejando tareas
+    repetitivas como responder preguntas frecuentes o moderar por la noche, liberando
+    tiempo para estrategias más creativas y engagement profundo.
+meta:
+  id: gaming
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

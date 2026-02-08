@@ -1,0 +1,240 @@
+pain_points:
+- description: Alta rotatividade de cuidadores, aumentando custos de treinamento e
+    afetando a qualidade do cuidado.
+  severity: high
+  solution_hint: Agente de voz AI pode automatizar treinamento inicial e fornecer
+    suporte contínuo, reduzindo a carga de trabalho.
+- description: Dificuldade em agendar visitas e monitorar pacientes de forma eficiente,
+    levando a atrasos e insatisfação.
+  severity: medium
+  solution_hint: Agente de voz AI pode gerenciar agendamentos automaticamente e enviar
+    lembretes, melhorando a pontualidade.
+- description: Custos operacionais elevados com pessoal, logística e conformidade
+    regulatória.
+  severity: high
+  solution_hint: Agente de voz AI pode otimizar processos, reduzindo horas de trabalho
+    manual e custos com erros.
+- description: Conformidade com a LGPD (Lei Geral de Proteção de Dados), exigindo
+    gestão cuidadosa de dados sensíveis dos idosos.
+  severity: medium
+  solution_hint: Agente de voz AI pode automatizar registros com criptografia e garantir
+    acesso controlado, facilitando a conformidade.
+- description: Comunicação ineficiente com familiares, causando ansiedade e falta
+    de transparência.
+  severity: medium
+  solution_hint: Agente de voz AI pode enviar atualizações automáticas e permitir
+    interações via voz, melhorando a comunicação.
+- description: Falta de pessoal qualificado, especialmente em regiões remotas, limitando
+    a expansão dos serviços.
+  severity: high
+  solution_hint: Agente de voz AI pode oferecer suporte remoto e triagem, complementando
+    a equipe existente.
+typical_services:
+- Cuidados domiciliares
+- Acompanhamento médico
+- Atividades de recreação
+- Auxílio na higiene pessoal
+- Preparação de refeições
+- Transporte para consultas
+- Fisioterapia
+- Suporte psicológico
+- Serviços de enfermagem
+- Monitoramento remoto
+recommended_functions:
+- name: Agendamento automático de visitas
+  priority: high
+  reason: Melhora a eficiência operacional e reduz conflitos de horários.
+- name: Triagem de emergências via voz
+  priority: high
+  reason: Permite resposta rápida a situações críticas, aumentando a segurança.
+- name: Lembretes de medicamentos e consultas
+  priority: medium
+  reason: Ajuda na adesão ao tratamento e reduz esquecimentos.
+- name: Comunicação com familiares através de atualizações automáticas
+  priority: medium
+  reason: Fortalece a confiança e reduz chamadas desnecessárias.
+- name: Coleta de feedback pós-serviço
+  priority: low
+  reason: Fornece insights para melhorias contínuas na qualidade do cuidado.
+- name: Integração com prontuários eletrônicos
+  priority: high
+  reason: Facilita o acesso a informações de saúde e melhora a coordenação do cuidado.
+typical_integrations:
+- name: Sistemas de prontuário eletrônico
+  examples:
+  - Tasy
+  - MV
+  priority: high
+- name: Sistemas de agendamento
+  examples:
+  - Agenda Fácil
+  - Clínica
+  priority: high
+- name: Sistemas financeiros
+  examples:
+  - ContaAzul
+  - Omie
+  priority: medium
+- name: Sistemas de comunicação
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+- name: Sensores de monitoramento de saúde
+  examples:
+  - Dispositivos locais de telemedicina
+  priority: low
+industry_faq:
+- question: Quais são os custos envolvidos nos serviços de cuidado para idosos?
+  answer_template: Os custos variam conforme os serviços, mas nossa solução com AI
+    pode reduzir despesas operacionais em até 30%, com planos a partir de R$ 800 mensais.
+- question: Como é feita a seleção e treinamento dos cuidadores?
+  answer_template: Trabalhamos com profissionais certificados e usamos AI para complementar
+    o treinamento, garantindo padrões elevados de qualidade e segurança.
+- question: Vocês oferecem serviços emergenciais 24 horas?
+  answer_template: Sim, nosso agente de voz AI pode triar emergências e acionar suporte
+    imediato, integrado a sistemas locais de saúde.
+- question: Como garantem a privacidade dos dados dos idosos conforme a LGPD?
+  answer_template: Implementamos criptografia e controles de acesso rigorosos em nossa
+    AI, assegurando total conformidade com a LGPD.
+- question: Quais são os horários de atendimento disponíveis?
+  answer_template: Oferecemos suporte contínuo via AI, com agendamento flexível para
+    visitas, disponível 24/7 para emergências.
+- question: Posso personalizar os serviços conforme as necessidades específicas do
+    idoso?
+  answer_template: Absolutamente, nossa AI adapta-se a perfis individuais, permitindo
+    planos de cuidado personalizados e ajustes em tempo real.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma consulta inicial.
+  script: Entendemos que custos são uma preocupação. Nossa solução com AI começa em
+    R$ 800 mensais e pode reduzir seus custos operacionais em até 30% através da automação.
+    Gostaria de ver um exemplo de ROI personalizado?
+  goal: Converter a preocupação com custo em uma demonstração de valor e agendar uma
+    reunião detalhada.
+- trigger: service_inquiry
+  situation: Quando um cliente demonstra interesse em serviços específicos, como monitoramento
+    remoto.
+  script: Excelente pergunta! Nosso agente de voz AI oferece monitoramento remoto
+    integrado a sensores, enviando alertas em tempo real e reduzindo a necessidade
+    de visitas frequentes. Isso aumenta a segurança e corta custos. Posso explicar
+    como funciona na prática?
+  goal: Destacar a eficiência e os benefícios da AI para engajar o cliente em uma
+    proposta.
+- trigger: objection_handling
+  situation: Quando um cliente objeta sobre confiança na tecnologia para cuidados.
+  script: Compreendemos sua preocupação. Nossa AI não substitui o cuidado humano,
+    mas o complementa, fornecendo suporte contínuo e reduzindo erros. Já ajudamos
+    várias empresas no Brasil a melhorar a satisfação dos clientes. Posso compartilhar
+    alguns casos de sucesso?
+  goal: Reassurar o cliente sobre a confiabilidade da AI e construir credibilidade.
+- trigger: follow_up
+  situation: Após uma demonstração, para incentivar a decisão de compra.
+  script: Lembra daquela discussão sobre agendamento automático? Com nossa AI, você
+    pode eliminar conflitos de horários e liberar tempo para cuidados mais estratégicos.
+    Vamos começar com um plano piloto de 30 dias para você ver os resultados?
+  goal: Fechar a venda com uma oferta de baixo risco e alto valor.
+competitors:
+- name: Cuidar+
+  positioning: Premium em cuidados domiciliares com rede nacional.
+  strengths:
+  - Ampla rede de cuidadores
+  - Certificações de qualidade
+  - Parcerias com hospitais
+  weaknesses:
+  - Custos elevados
+  - Tempo de resposta lento para suporte
+  - Falta de inovação tecnológica
+  our_differentiation: Oferecemos automação com AI que reduz custos e melhora a eficiência,
+    com integração em tempo real.
+- name: Viva Bem Idoso
+  positioning: Cuidados acessíveis com foco em famílias de baixa renda.
+  strengths:
+  - Preços competitivos
+  - Presença em múltiplas cidades
+  - Serviços básicos bem estabelecidos
+  weaknesses:
+  - Qualidade inconsistente
+  - Pouca personalização
+  - Infraestrutura tecnológica limitada
+  our_differentiation: Fornecemos soluções personalizadas via AI que aumentam a qualidade
+    sem aumentar custos, com suporte 24/7.
+- name: SeniorCare Brasil
+  positioning: Serviços integrados de saúde para idosos, incluindo clínicas próprias.
+  strengths:
+  - Serviços completos de saúde
+  - Equipes multidisciplinares
+  - Forte marca no mercado
+  weaknesses:
+  - Complexidade operacional
+  - Altos custos de manutenção
+  - Lentidão na adoção de novas tecnologias
+  our_differentiation: Nossa AI simplifica processos e oferece agilidade, com ROI
+    rápido e fácil integração aos sistemas existentes.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 5000
+  entry_point: 800
+  roi_examples:
+  - scenario: Automação de agendamento e lembretes para reduzir horas de trabalho
+      manual.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Triagem de emergências para diminuir visitas desnecessárias e custos
+      com transporte.
+    monthly_cost: 300
+    monthly_savings: 700
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação AI
+  - Aumente a satisfação dos clientes com comunicação proativa
+  - Garanta conformidade LGPD sem esforço adicional
+market_context:
+  market_size: Estimado em R$ 15 bilhões anuais
+  growth_rate: 10% ao ano
+  key_trends:
+  - Crescimento acelerado da população idosa no Brasil
+  - Aumento da demanda por cuidados domiciliares devido à pandemia
+  - Adoção de tecnologias digitais para telemedicina e monitoramento
+  - Foco maior na qualidade de vida e bem-estar dos idosos
+  seasonality:
+    high:
+    - Inverno (junho a agosto) devido a doenças respiratórias
+    - Festas de fim de ano (dezembro) com aumento de visitas familiares
+    low:
+    - Verão (dezembro a fevereiro) quando famílias viajam
+    - Carnaval com redução de atividades
+typical_objections:
+- objection: É muito caro para o nosso orçamento atual.
+  response: Entendemos, mas nossa AI oferece ROI rápido—em média, os clientes recuperam
+    o investimento em 1-2 meses com a economia em custos operacionais. Podemos começar
+    com um plano básico adaptado.
+- objection: Não confio em tecnologia para cuidar de idosos, prefiro o toque humano.
+  response: Concordamos que o cuidado humano é essencial. Nossa AI é uma ferramenta
+    de apoio que melhora a eficiência e segurança, liberando os cuidadores para tarefas
+    mais críticas. Vamos mostrar como funciona em um caso real?
+- objection: Já temos sistemas em uso e não queremos mais complicações.
+  response: Nossa solução é projetada para integração fácil com sistemas como Tasy
+    ou Agenda Fácil, sem interromper seu fluxo atual. Ajudamos a simplificar, não
+    complicar.
+- objection: A LGPD é uma preocupação, e não queremos riscos com dados sensíveis.
+  response: Priorizamos a segurança—nossa AI é construída com conformidade LGPD desde
+    o início, usando criptografia e controles rigorosos. Temos certificações e podemos
+    fornecer documentação detalhada.
+meta:
+  id: elderly_care
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

@@ -1,0 +1,267 @@
+pain_points:
+- description: Managing emotionally distressed callers while handling administrative
+    inquiries efficiently.
+  severity: high
+  solution_hint: AI agent can provide compassionate, scripted initial responses to
+    common questions, triage calls, and schedule callbacks for human staff.
+- description: After-hours call handling leading to missed inquiries and potential
+    client loss to competitors.
+  severity: high
+  solution_hint: 24/7 AI voice agent can answer basic questions, collect detailed
+    information, and schedule appointments for the next business day.
+- description: High volume of repetitive questions about services, pricing, and immediate
+    next steps, occupying staff time.
+  severity: medium
+  solution_hint: Automated FAQ handling and information provision frees staff for
+    complex, sensitive client consultations.
+- description: Coordinating with multiple third parties (florists, clergy, cemeteries)
+    is time-consuming and prone to communication errors.
+  severity: medium
+  solution_hint: AI agent can collect all necessary details for coordination in a
+    structured format and trigger notifications or task creation in management software.
+- description: Clients often unprepared with necessary information (deceased details,
+    next of kin) leading to extended call times.
+  severity: medium
+  solution_hint: Agent can guide callers through a structured information-gathering
+    script before connecting to a human, ensuring staff have complete details.
+- description: Sensitive to negative reviews due to perceived coldness or inefficiency
+    during initial contact.
+  severity: medium
+  solution_hint: Consistently compassionate, patient, and efficient AI interactions
+    ensure a professional first impression and capture all client needs.
+typical_services:
+- Traditional Funeral Service with Visitation
+- Memorial Service
+- Direct Burial
+- Direct Cremation
+- Cremation with Memorial Service
+- Graveside Service
+- Embalming and Preparation
+- Casket and Urn Selection
+- Floral Arrangements and Coordination
+- Obituary Writing and Placement
+- Pre-Planning and Pre-Funding
+recommended_functions:
+- name: 24/7 Intake and Triage
+  priority: high
+  reason: Captures all after-hours leads, collects vital information, and schedules
+    appointments, preventing loss to competitors.
+- name: Comprehensive FAQ Answering
+  priority: high
+  reason: Instantly addresses 80% of common questions about pricing, process, and
+    services, reducing staff burden.
+- name: Pre-Need Inquiry Handling
+  priority: medium
+  reason: Engages potential pre-planning clients, explains the process, and books
+    consultations for sales staff.
+- name: Third-Party Coordination Initiation
+  priority: medium
+  reason: Starts the process of coordinating with cemeteries, clergy, or florists
+    by collecting specific requirements.
+- name: Appointment Scheduling and Reminders
+  priority: high
+  reason: Seamlessly books consultations and sends reminders, reducing no-shows and
+    optimizing director schedules.
+- name: Grief Resources and Direction
+  priority: low
+  reason: Provides compassionate, pre-approved information on local support groups
+    and grief counseling resources.
+typical_integrations:
+- name: Funeral Home Management Software
+  examples:
+  - FrontRunner Professional
+  - Sympathy Solutions
+  - CFS Eclipse
+  priority: high
+- name: Scheduling/Calendar System
+  examples:
+  - Microsoft Outlook
+  - Google Calendar
+  priority: high
+- name: CRM Platform
+  examples:
+  - Salesforce
+  - Keap
+  priority: medium
+- name: Payment Processing
+  examples:
+  - Moneris
+  - Square
+  - Chase Paymentech
+  priority: medium
+- name: Website/Live Chat
+  examples:
+  - WordPress
+  - Wix
+  - LiveChat
+  priority: medium
+industry_faq:
+- question: What do I do when someone passes away?
+  answer_template: First, please accept our sincere condolences. If the passing occurs
+    at home, you should contact the deceased's family doctor or 911. If it occurs
+    in a hospital or care facility, the staff will guide you. Once a medical certificate
+    has been issued, you can call us anytime at [Your Number]. We will guide you through
+    the next steps with care and compassion.
+- question: What is the cost of a basic funeral?
+  answer_template: Costs can vary based on the services selected. A direct cremation,
+    which includes basic services, transportation, and the cremation itself, typically
+    starts around $1,500 to $3,000 CAD. A traditional funeral service with burial
+    often starts between $5,000 and $8,000 CAD. We offer a detailed price list and
+    transparent consultations to help you plan within your means.
+- question: Do you handle pre-arranged funerals?
+  answer_template: Yes, we absolutely do. Pre-arranging allows you to make your wishes
+    known and can relieve emotional and financial burden from your family. We can
+    discuss options for pre-planning (detailing your wishes) and pre-funding (setting
+    aside funds in a trust) at your convenience.
+- question: What is the difference between a funeral and a memorial service?
+  answer_template: A funeral service typically involves the presence of the deceased's
+    body, often after embalming and viewing. A memorial service is held without the
+    body present, sometimes after cremation. Both are meaningful ways to honour a
+    life, and we can help you plan either.
+- question: How long after death is the funeral held?
+  answer_template: This can vary. Typically, with embalming and preparation, services
+    are held within 3 to 7 days. For direct cremation or burial, it may be sooner.
+    The timeline is flexible to accommodate family travel and other arrangements,
+    and we will work with your needs.
+- question: Can we personalize the service?
+  answer_template: Certainly. Personalization is a beautiful way to honour a unique
+    life. This can include music, themes, displays of personal items, unique venue
+    requests, or special rituals. Our directors are experienced in creating meaningful,
+    personalized tributes.
+sales_scripts:
+- trigger: price_question
+  situation: When a caller asks about the cost of a basic service.
+  script: I understand you're looking for guidance on costs, and I'm here to help.
+    To provide the most accurate information, may I ask if you are considering a service
+    with burial or cremation? Our direct cremation services provide a simple, dignified
+    option starting around $1,800 CAD, while a traditional funeral service with burial
+    typically begins around $6,000 CAD. The best way to get a clear picture is through
+    a no-obligation consultation where we can discuss all options. May I schedule
+    a time for one of our caring directors to call you?
+  goal: Qualify the lead (burial vs. cremation), provide a value anchor, and book
+    a consultation.
+- trigger: after_hours_inquiry
+  situation: When a call is received outside of standard business hours.
+  script: Thank you for calling [Funeral Home Name]. Our office is currently closed,
+    but I am here to assist you 24/7. Please know you have our deepest sympathy. To
+    help our staff prepare to support you best, could you please share your name and
+    a callback number? I can also schedule a specific time for a director to call
+    you first thing in the morning. Is the individual currently at a private residence,
+    a hospital, or a care facility?
+  goal: Express compassion, capture critical lead information (contact details, location
+    of deceased), and schedule a callback to secure the client.
+- trigger: pre_need_interest
+  situation: When a caller inquires about planning ahead for themselves or a family
+    member.
+  script: That is a very thoughtful and responsible step to take. Pre-planning ensures
+    your wishes are honoured and provides great peace of mind for your family. Our
+    pre-arrangement consultations are completely free and without obligation. We'll
+    discuss everything from service preferences to documentation and funding options.
+    The process is straightforward and handled with sensitivity. Would Tuesday or
+    Thursday this week work better for a brief phone consultation?
+  goal: Validate their decision, explain the no-pressure process, and book a pre-need
+    sales consultation.
+competitors:
+- name: Dignity Memorial (SCI Canada)
+  positioning: Large national network with many locations.
+  strengths:
+  - Brand recognition
+  - Extensive network for transfers
+  - Standardized packages
+  weaknesses:
+  - Can be perceived as corporate/impersonal
+  - Less flexibility for personalization
+  - Potential for higher overhead costs
+  our_differentiation: We are a locally owned and operated family business, offering
+    deeply personalized care, flexible arrangements, and a direct relationship with
+    the owners who are involved in every service.
+- name: Arbor Memorial
+  positioning: Major integrated provider with cemeteries, crematoria, and funeral
+    homes.
+  strengths:
+  - Vertical integration (owns cemeteries/crematoria)
+  - One-stop-shop convenience
+  - Strong presence in certain regions
+  weaknesses:
+  - May limit client choice to their own facilities
+  - Can be less flexible on pricing
+  - Similar corporate perception
+  our_differentiation: We provide unbiased guidance and can coordinate with any cemetery
+    or crematorium, ensuring you get the best value and location for your family,
+    not just our corporate partners.
+- name: Independent Family-Owned Funeral Homes
+  positioning: Local, community-focused providers.
+  strengths:
+  - Personalized service
+  - Deep community ties
+  - Perceived as more caring
+  weaknesses:
+  - May have limited resources/technology
+  - Potential inconsistency in after-hours service
+  - Less marketing reach
+  our_differentiation: We combine the compassion and personal touch of a family business
+    with advanced technology, like our 24/7 AI assistant, to ensure we never miss
+    a call and provide seamless, modern service alongside our traditional care.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 1500
+  - 15000
+  entry_point: 1800
+  roi_examples:
+  - scenario: Capturing 2 additional after-hours clients per month who would have
+      called a competitor.
+    monthly_cost: 250
+    monthly_savings: 12000
+    payback_months: 0.5
+  value_anchors:
+  - Never miss a client's first, most difficult call.
+  - Free your staff from routine questions to focus on compassionate care.
+  - Turn after-hours calls into booked consultations, not voicemails.
+market_context:
+  market_size: Approximately $1.6 billion CAD annually
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Increasing preference for cremation (now over 70% nationally).
+  - Growing demand for personalized, non-traditional 'celebrations of life'.
+  - Rise in pre-planning, especially among baby boomers.
+  - Heightened price sensitivity and demand for transparency.
+  - Integration of technology for virtual attendance and online memorials.
+  seasonality:
+    high:
+    - Winter months (January-March)
+    - Late Autumn (November)
+    low:
+    - Summer months (July-August)
+typical_objections:
+- objection: This feels too impersonal for such a sensitive time.
+  response: I completely understand that concern. Please know our AI assistant is
+    designed to handle initial logistics with compassion, so our licensed funeral
+    directors are fully prepared and available to give your family their complete,
+    undivided attention and personalized care when you meet. It ensures you get more
+    quality time with a human expert, not less.
+- objection: We're just gathering information right now, not ready to commit.
+  response: That's perfectly fine. Our service is here to provide information and
+    support without any pressure. Whether you choose us or another provider, having
+    clear information helps. May I simply schedule a brief information session for
+    you? There is no obligation, and it will give you a basis for comparison.
+- objection: We have a very small budget.
+  response: We serve families with all budget considerations with dignity and respect.
+    We offer simple, affordable options like direct cremation. The most important
+    thing is honouring your loved one in a meaningful way. A consultation will help
+    us outline all possibilities that fit your needs, and we are always transparent
+    about costs upfront.
+meta:
+  id: funeral
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

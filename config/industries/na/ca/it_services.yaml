@@ -1,0 +1,196 @@
+pain_points:
+- description: High demand for skilled IT professionals leads to talent shortages, especially in cybersecurity, cloud architecture, and data analytics.
+  severity: high
+  solution_hint: AI agent can qualify leads for managed services, offloading initial client screening and freeing internal staff for complex technical work.
+- description: Managing cybersecurity threats and ensuring compliance with Canadian regulations like PIPEDA.
+  severity: high
+  solution_hint: Voice agent can schedule security assessment consultations and provide basic information on compliance frameworks.
+- description: Rapidly evolving technology landscape makes it difficult for SMBs to choose the right solutions and manage legacy system upgrades.
+  severity: medium
+  solution_hint: Agent can explain service offerings like cloud migration in simple terms and book discovery calls with a solutions architect.
+- description: Unpredictable IT costs and budget overruns, particularly with ad-hoc break/fix support models.
+  severity: medium
+  solution_hint: Agent can articulate the cost predictability of managed IT service plans and schedule pricing overviews.
+- description: Inefficient helpdesk and support ticket management leading to prolonged downtime and user frustration.
+  severity: medium
+  solution_hint: Agent can triage incoming support calls, gather initial information, and create or check ticket status, directing urgent issues appropriately.
+- description: Challenges in supporting a hybrid or fully remote workforce securely and effectively.
+  severity: medium
+  solution_hint: Agent can explain remote workforce support packages and schedule demos of relevant tools like secure remote access solutions.
+typical_services:
+- Managed IT Services & Helpdesk Support
+- Cybersecurity Solutions & PIPEDA Compliance Consulting
+- Cloud Migration & Management (Microsoft Azure, AWS)
+- Network Infrastructure Design & Support
+- Data Backup & Disaster Recovery Planning
+- Software Implementation & Integration
+- IT Strategy & Consulting
+- Proactive Monitoring & Maintenance
+- Hardware Procurement & Lifecycle Management
+- VOIP & Unified Communications Setup
+recommended_functions:
+- name: lead_qualification
+  priority: high
+  reason: Efficiently filters inbound inquiries to identify businesses ready for managed services, focusing sales efforts on high-potential leads.
+- name: appointment_scheduling
+  priority: high
+  reason: Crucial for booking discovery calls, consultations, and demos with prospects who have complex, considered purchases.
+- name: faq_handler
+  priority: high
+  reason: Instantly provides answers on services, response times, security, and compliance, building trust and reducing call volume to human staff.
+- name: pricing_package_explainer
+  priority: medium
+  reason: Clearly outlines tiered service plans and value, addressing a primary concern for cost-conscious Canadian SMBs.
+- name: competitive_differentiation
+  priority: medium
+  reason: Scripted responses can highlight local support, transparent pricing, and personalized service against larger national competitors.
+- name: automated_follow_up
+  priority: low
+  reason: Nurtures leads who aren't ready to buy immediately, keeping the service top-of-mind for future budget cycles.
+typical_integrations:
+- name: Professional Services Automation (PSA)
+  examples:
+  - ConnectWise
+  - Autotask
+  priority: high
+- name: Remote Monitoring & Management (RMM)
+  examples:
+  - NinjaRMM
+  - Datto RMM
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Help Desk & Ticketing
+  examples:
+  - Freshdesk
+  - Zendesk
+  - ServiceNow
+  priority: medium
+- name: Accounting Software
+  examples:
+  - QuickBooks Online
+  - Xero
+  priority: low
+industry_faq:
+- question: How quickly do you respond to support tickets?
+  answer_template: Our service level agreements guarantee an initial response within 1 hour for critical issues during business hours. For our premium plans, we offer 24/7 monitoring and support.
+- question: Is our data stored within Canada to comply with PIPEDA?
+  answer_template: Yes, we prioritize Canadian data sovereignty. We can outline which of our cloud and backup solutions utilize Canadian data centers to ensure compliance with PIPEDA and other provincial
+    regulations.
+- question: Do you offer fixed-fee or per-user pricing?
+  answer_template: We primarily offer predictable, per-user monthly pricing for our managed services, which includes proactive support, monitoring, and most remote fixes. This helps you budget effectively
+    and avoid surprise bills.
+- question: What happens if our server goes down after hours?
+  answer_template: Our proactive monitoring will alert us immediately. Depending on your service plan, our team will begin remediation efforts, often before your staff is even aware, and we have defined
+    escalation paths for after-hours critical incidents.
+- question: Can you help us move from an old server to the cloud?
+  answer_template: Absolutely. Cloud migration is a core service. We start with a full assessment of your current environment and provide a phased migration plan to minimize disruption, whether you're moving
+    to Microsoft 365, Azure, or another platform.
+sales_scripts:
+- trigger: price_question
+  situation: Prospect asks "How much does this cost?" early in the conversation.
+  script: I understand budget is a key consideration. Our pricing is designed to be predictable and scales with the number of users and the level of support you need. For example, many small businesses
+    start with our core managed service plan around $150 per user/month. To provide the most accurate quote, could you tell me approximately how many employees you have and if you have any immediate concerns,
+    like cybersecurity or a major upcoming project?
+  goal: Qualify the lead further and schedule a detailed consultation instead of giving a vague price.
+- trigger: competitor_mention
+  situation: Prospect mentions they are also talking to a large national provider or a very low-cost local shop.
+  script: That's great you're exploring options. Many of our clients came to us from similar situations. What we often hear is that the large firms can be less responsive, while the lowest-cost option might
+    not provide the proactive care needed. Our focus is being your local partner—you'll have a dedicated account manager and a team that knows your business. We pride ourselves on transparency; no hidden
+    fees and clear SLAs. Would a 15-minute chat with one of our principals to discuss the differences be helpful?
+  goal: Differentiate on personalized service and value, not just price, and secure a meeting.
+- trigger: busy_decision_maker
+  situation: The contact person is too busy to talk or insists on email only.
+  script: I completely understand how busy things get. My role is to save you time. I can send a brief email with an overview of how we help businesses like yours reduce IT headaches and some case studies.
+    I can also schedule a very short, no-obligation call for a time that works for you—even just 20 minutes next week. Would Tuesday morning or Wednesday afternoon work better for a quick intro?
+  goal: Respect their time, provide value via email, but persistently and politely secure a short meeting.
+competitors:
+- name: CGI
+  positioning: Large multinational systems integrator and IT consulting firm.
+  strengths:
+  - Extensive global resources
+  - deep enterprise experience
+  - wide service portfolio
+  weaknesses:
+  - Can be impersonal for SMBs
+  - potentially higher cost
+  - slower response for smaller accounts
+  our_differentiation: We provide dedicated, local account management and faster, more personalized support tailored to mid-market and SMB needs at a more predictable cost.
+- name: Long View Systems
+  positioning: Canadian-based IT solutions provider focusing on cloud and managed services.
+  strengths:
+  - Strong Canadian presence
+  - expertise in hybrid cloud
+  - Microsoft partnerships
+  weaknesses:
+  - May focus on larger commercial clients
+  - pricing may be less accessible for very small businesses
+  our_differentiation: We offer more flexible, scalable entry-point packages for growing businesses and emphasize a hands-on, partner-like relationship with direct access to technical leads.
+- name: Local/Regional Managed Service Providers (MSPs)
+  positioning: Small, owner-operated IT support companies.
+  strengths:
+  - Highly personal service
+  - deep local knowledge
+  - potentially lower cost
+  weaknesses:
+  - Limited scalability
+  - may lack advanced security or cloud expertise
+  - business continuity risk
+  our_differentiation: We combine the personal touch and local focus with the robust processes, security expertise, and 24/7 coverage of a larger firm, providing a more reliable and scalable partnership.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Replacing unpredictable break/fix costs with a managed plan for a 25-user company.
+    monthly_cost: 3750
+    monthly_savings: 7100
+    payback_months: 2.5
+  value_anchors:
+  - Predictable IT spending replaces surprise $5,000 emergency repair bills.
+  - Proactive monitoring can prevent a $50,000 ransomware attack.
+  - Increased employee productivity by reducing downtime.
+market_context:
+  market_size: Over $50 billion CAD annually
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Accelerated adoption of cloud and hybrid work models.
+  - Increased investment in cybersecurity and data privacy compliance.
+  - Growth of managed services as businesses seek operational certainty.
+  seasonality:
+    high:
+    - Q4 (budget planning for new year)
+    - Q1 (new budget execution)
+    low:
+    - July
+    - August (summer vacation periods)
+    - late December
+typical_objections:
+- objection: We already have an internal IT person.
+  response: That's great. Many of our clients have a dedicated IT person. We act as their force multiplier—handling routine monitoring, after-hours calls, and bringing specialized expertise in security
+    or cloud projects. This lets your valuable internal resource focus on strategic business initiatives rather than daily firefighting.
+- objection: We can't afford a monthly contract right now.
+  response: I understand budget constraints. Consider that unplanned IT failures often cost far more than a predictable monthly plan. We could start with a focused project, like a security assessment or
+    cloud migration, to demonstrate value. Alternatively, our basic monitoring package starts at a lower point to build the relationship.
+- objection: Switching providers seems like a lot of work and risk.
+  response: That's a very valid concern. We have a proven, structured onboarding process designed to minimize disruption. We take full responsibility for learning your environment and ensuring a smooth
+    transition. We can share case studies of successful migrations and even offer a pilot period for certain services.
+meta:
+  id: it_services
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- IT services
+- tech support
+- managed services
+- IT consulting
+_extends: _base/it_services

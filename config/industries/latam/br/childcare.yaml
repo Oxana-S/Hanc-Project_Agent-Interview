@@ -1,0 +1,231 @@
+pain_points:
+- description: Dificuldade na gestão de matrículas e rematrículas de forma eficiente,
+    com alto volume de ligações e papelada.
+  severity: high
+  solution_hint: Automação do processo de inscrição e renovação via agente de voz,
+    coletando dados e enviando lembretes.
+- description: Alta rotatividade de funcionários e dificuldade em cobrir escalas de
+    forma ágil, causando sobrecarga administrativa.
+  severity: high
+  solution_hint: Agente de voz pode gerenciar solicitações de folga e encontrar substitutos
+    via integração com sistema de escala.
+- description: Comunicação ineficiente com os pais sobre eventos, pagamentos e ocorrências
+    diárias das crianças.
+  severity: medium
+  solution_hint: Notificações automatizadas por voz e SMS para informar os pais, reduzindo
+    ligações manuais.
+- description: Complexidade na conformidade com a LGPD (Lei Geral de Proteção de Dados)
+    no manuseio de dados sensíveis das crianças.
+  severity: high
+  solution_hint: Agente de voz com scripts aprovados para coleta segura de dados e
+    registro de consentimento.
+- description: Atrasos frequentes nos pagamentos das mensalidades, impactando o fluxo
+    de caixa.
+  severity: medium
+  solution_hint: Lembretes automáticos de vencimento e opções de pagamento via agente
+    de voz, integrado a gateway local.
+- description: Dificuldade em captar novas matrículas fora do período de volta às
+    aulas.
+  severity: medium
+  solution_hint: Agente de voz realiza prospecção ativa, qualifica leads e agenda
+    visitas para períodos de baixa demanda.
+typical_services:
+- Berçário (0 a 2 anos)
+- Educação Infantil (2 a 5 anos)
+- Período Integral
+- Período Parcial (Meio Período)
+- Recreação Infantil
+- Aulas Extracurriculares (inglês, música, ballet)
+- Transporte Escolar (porteiro)
+- Alimentação (lanche e almoço)
+- Reforço Escolar
+- Colônia de Férias
+recommended_functions:
+- name: Agendamento de Visitas
+  priority: high
+  reason: Converte leads interessados em visitas agendadas, primeira etapa crucial
+    no funil de vendas.
+- name: Lembretes de Pagamento
+  priority: high
+  reason: Reduz inadimplência e melhora o fluxo de caixa com comunicação automática
+    e profissional.
+- name: Suporte a Pais 24/7
+  priority: medium
+  reason: Oferece suporte básico fora do horário comercial, melhorando a experiência
+    do cliente.
+- name: Controle de Presença e Saída
+  priority: medium
+  reason: Automatiza a confirmação de entrada e saída da criança, notificando os pais
+    e aumentando a segurança.
+- name: Captação de Leads (Outbound)
+  priority: low
+  reason: Ajuda a preencher vagas ociosas através de campanhas de telemarketing automatizadas.
+- name: Gestão de Ocorrências
+  priority: medium
+  reason: Registra e comunica incidentes leves (como febre) aos pais de forma rápida
+    e padronizada.
+typical_integrations:
+- name: Sistema de Gestão Escolar
+  examples:
+  - Sophia
+  - iEduca
+  - WPensar
+  priority: high
+- name: Gateway de Pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: high
+- name: Plataforma de Comunicação
+  examples:
+  - ClassApp
+  - ClipEscola
+  priority: medium
+- name: ERP Financeiro
+  examples:
+  - ContaAzul
+  - Bling
+  priority: medium
+- name: Sistema de Câmeras
+  examples:
+  - Intelbras
+  - Hikvision
+  priority: low
+industry_faq:
+- question: A partir de que idade vocês aceitam crianças?
+  answer_template: Aceitamos crianças a partir dos 4 meses no berçário, sempre seguindo
+    as normas de segurança e com equipe especializada.
+- question: Qual é o valor da mensalidade e o que está incluído?
+  answer_template: Nossos valores variam conforme a faixa etária e o período (integral
+    ou parcial). Inclui alimentação balanceada, material pedagógico e atividades extracurriculares
+    básicas. Posso verificar a opção ideal para você?
+- question: Como é feita a comunicação com os pais durante o dia?
+  answer_template: Utilizamos um aplicativo próprio onde enviamos fotos, relatórios
+    de alimentação e sono, além de comunicados urgentes por telefone.
+- question: Vocês seguem a LGPD?
+  answer_template: Sim, seguimos rigorosamente a LGPD. Todos os dados das crianças
+    e responsáveis são tratados com confidencialidade e segurança, com consentimento
+    formal.
+- question: O que fazer se meu filho ficar doente na escola?
+  answer_template: Nossa equipe é treinada para primeiros socorros. Imediatamente
+    entramos em contato com os responsáveis e, se necessário, acionamos o serviço
+    médico de urgência.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um potencial cliente pergunta sobre preços no primeiro contato.
+  script: Entendo que o investimento é uma consideração importante. Nossos planos
+    começam em R$ [ENTRY_POINT] e variam conforme a idade da criança e o período escolhido.
+    O valor inclui [LISTAR BENEFÍCIOS]. Para uma cotação precisa, posso ajudar a agendar
+    uma visita para conhecer nossa estrutura e proposta pedagógica?
+  goal: Converter a pergunta de preço em uma oportunidade de agendamento de visita,
+    focando no valor.
+- trigger: lgpd_concern
+  situation: Quando o cliente expressa preocupação com a privacidade e segurança dos
+    dados.
+  script: Sua preocupação é totalmente válida. Cumprimos integralmente a LGPD. Nosso
+    sistema e agente de voz são configurados para coletar apenas dados necessários,
+    com seu consentimento explícito. Todas as informações são criptografadas. A segurança
+    do seu filho começa com a proteção dos dados dele.
+  goal: Tranquilizar o cliente sobre conformidade e construir confiança.
+- trigger: vacancy_check
+  situation: Quando um cliente pergunta sobre vagas disponíveis.
+  script: Excelente pergunta! Para verificar a disponibilidade exata para a faixa
+    etária do seu filho, preciso de algumas informações rápidas. Posso consultar nosso
+    sistema em tempo real e já informar sobre o processo de matrícula. Você prefere
+    o período integral ou parcial?
+  goal: Coletar informações para qualificar o lead e verificar viabilidade, mantendo
+    o engajamento.
+competitors:
+- name: Escola Internacional Maple Bear
+  positioning: Premium, com metodologia canadense bilíngue.
+  strengths:
+  - Marca forte
+  - metodologia reconhecida
+  - infraestrutura excelente
+  weaknesses:
+  - Preços muito elevados
+  - localizações restritas a grandes centros
+  our_differentiation: Oferecemos qualidade educacional com um custo mais acessível
+    e comunicação mais próxima e automatizada com os pais.
+- name: Centro Educacional Lego
+  positioning: Rede média, foco em inovação e tecnologia.
+  strengths:
+  - Uso de tecnologia em sala
+  - franquias em expansão
+  weaknesses:
+  - Processos administrativos ainda manuais
+  - atendimento ao cliente pouco ágil
+  our_differentiation: Nossa automação com IA agiliza toda a parte administrativa
+    e de comunicação, liberando a equipe para o cuidado pedagógico.
+- name: Berçário e Creche Maria Clara (Local)
+  positioning: Pequena empresa local, familiar.
+  strengths:
+  - Atendimento pessoal e familiar
+  - preços competitivos
+  weaknesses:
+  - Processos totalmente manuais
+  - sem escala
+  - sem conformidade clara com LGPD
+  our_differentiation: Oferecemos o calor humano com a eficiência e segurança da tecnologia,
+    garantindo conformidade e crescimento sustentável.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 600
+  - 2500
+  entry_point: 750
+  roi_examples:
+  - scenario: Redução de 30% do tempo da secretária com agendamentos e cobranças.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Reduza a inadimplência em até 40% com lembretes automáticos.
+  - Ganhe 10 horas semanais na administração com processos automatizados.
+  - Converta 20% mais visitas em matrículas com follow-up inteligente.
+market_context:
+  market_size: Estimado em R$ 60 bilhões
+  growth_rate: 3.5% ao ano
+  key_trends:
+  - Aumento da demanda por escolas com protocolos de saúde rígidos pós-pandemia.
+  - Crescimento da oferta de ensino bilíngue na educação infantil.
+  - Pais buscando maior transparência e comunicação em tempo real com a escola.
+  - Preocupação crescente com a LGPD e segurança de dados das crianças.
+  seasonality:
+    high:
+    - Janeiro (pré-matrícula)
+    - Julho (colônia de férias)
+    - Novembro (rematrícula)
+    low:
+    - Abril
+    - Maio
+    - Setembro
+typical_objections:
+- objection: É muito caro para o que oferece.
+  response: Entendo. Nosso investimento reflete a qualidade da nossa equipe, a segurança
+    da nossa estrutura e a tecnologia que usamos para manter você sempre informado.
+    Que tal uma visita para sentir na prática o diferencial?
+- objection: Prefiro falar diretamente com uma pessoa, não com uma máquina.
+  response: Compreendo perfeitamente. Nosso agente de voz lida com tarefas rotineiras
+    para que nossa equipe pedagógica e administrativa tenha *mais* tempo para um atendimento
+    humano e dedicado quando você precisar. É um complemento, não um substituto.
+- objection: Já temos um sistema, não precisamos de outro.
+  response: Que ótimo! Nosso agente de voz não substitui seu sistema principal, mas
+    se *integra* a ele. Ele automatiza justamente as tarefas que consomem tempo fora
+    do sistema, como ligações para cobrança e agendamento, potencializando o que você
+    já usa.
+meta:
+  id: childcare
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

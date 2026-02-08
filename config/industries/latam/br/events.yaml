@@ -1,0 +1,248 @@
+pain_points:
+- description: Flutuação orçamentária imprevisível devido a mudanças de última hora
+    e solicitações extras dos clientes.
+  severity: high
+  solution_hint: Agente de voz pode automatizar follow-ups e confirmações de orçamento,
+    garantindo aprovações rápidas e evitando mal-entendidos.
+- description: Dificuldade em coordenar múltiplos fornecedores (buffet, som, iluminação,
+    decoração) com comunicação descentralizada.
+  severity: high
+  solution_hint: Integrar sistema central de agendamento com notificações automáticas
+    por voz para todos os fornecedores.
+- description: Alto índice de desistência de clientes após orçamento inicial, por
+    falta de acompanhamento contínuo.
+  severity: medium
+  solution_hint: Agendamento automático de ligações de nurturing pós-orçamento para
+    converter leads em vendas.
+- description: Gerenciamento manual e demorado de lista de convidados, confirmações
+    e check-in no evento.
+  severity: medium
+  solution_hint: Sistema de RSVP automatizado por voz, com confirmação, lembretes
+    e atualização automática da planilha.
+- description: Dificuldade em atender ligações simultâneas durante picos de demanda
+    (época de formaturas e festas juninas).
+  severity: medium
+  solution_hint: Agente de voz capaz de lidar com múltiplas chamadas, qualificar leads
+    e agendar reuniões sem perder oportunidades.
+- description: Falta de padronização no processo de vendas, levando a informações
+    inconsistentes repassadas aos clientes.
+  severity: low
+  solution_hint: Scripts de vendas padronizados no agente de voz, garantindo que todas
+    as informações-chave sejam transmitidas.
+typical_services:
+- Casamento
+- Formatura
+- Evento Corporativo (congresso, workshop, lançamento)
+- Festa de 15 anos
+- Evento Social (aniversário, chá de bebê)
+- Buffet Completo
+- Locação de Equipamentos (som, iluminação, telão)
+- Decoração Temática
+- Organização e Coordenação Geral
+- Lista de Convidados e RSVP Digital
+recommended_functions:
+- name: Qualificação de Lead
+  priority: high
+  reason: Crucial para segmentar clientes por tipo de evento e orçamento, otimizando
+    o tempo da equipe comercial.
+- name: Agendamento de Reuniões
+  priority: high
+  reason: Automatiza a marcação de reuniões de vendas diretamente no Google Agenda
+    ou Calendly do vendedor, eliminando idas e vindas por mensagem.
+- name: Respostas a Perguntas Frequentes (Preços, Disponibilidade)
+  priority: high
+  reason: Libera a equipe para tarefas complexas, respondendo instantaneamente às
+    dúvidas mais comuns em português.
+- name: Confirmação e Lembrete de Evento
+  priority: medium
+  reason: Reduz o 'no-show' de convidados e confirma a presença com os fornecedores,
+    aumentando a eficiência operacional.
+- name: Pesquisa de Satisfação Pós-Evento
+  priority: medium
+  reason: Coleta feedback automaticamente por voz, gerando insights valiosos para
+    melhorias e depoimentos.
+- name: Triagem e Encaminhamento de Chamadas
+  priority: low
+  reason: Direciona a ligação para o departamento correto (vendas, operações, financeiro)
+    baseado na necessidade do cliente.
+typical_integrations:
+- name: Sistema de CRM
+  examples:
+  - RD Station CRM
+  - Pipedrive
+  - HubSpot
+  priority: high
+- name: Agenda Online
+  examples:
+  - Google Agenda
+  - Calendly
+  priority: high
+- name: Ferramenta de Automação de Marketing
+  examples:
+  - RD Station Marketing
+  - E-goi
+  priority: medium
+- name: Planilhas Online
+  examples:
+  - Google Sheets
+  priority: medium
+- name: Plataforma de Pagamentos
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  priority: low
+- name: Software de Gestão de Eventos
+  examples:
+  - Sympla
+  - Eventbrite
+  priority: low
+industry_faq:
+- question: Quais são os pacotes de eventos que vocês oferecem e os preços?
+  answer_template: Oferecemos pacotes personalizados para cada tipo de evento. Para
+    passar um orçamento preciso, preciso entender melhor sua necessidade. Posso conectar
+    você com um dos nossos especialistas para uma consulta gratuita?
+- question: Como funciona o processo de pagamento? Aceitam parcelamento?
+  answer_template: Trabalhamos com entrada para reserva da data e o saldo dividido
+    conforme acordado no contrato. Aceitamos parcelamento no cartão e transferência
+    bancária. Nosso sistema é totalmente seguro e em conformidade com a LGPD.
+- question: Vocês cuidam de toda a contratação de fornecedores (buffet, som, decoração)?
+  answer_template: Sim, temos pacotes completos onde gerenciamos toda a contratação
+    e coordenação dos fornecedores, ou podemos trabalhar apenas na coordenação se
+    você já tiver alguns escolhidos. Tudo para reduzir seu estresse.
+- question: Qual o prazo mínimo necessário para organizar um evento?
+  answer_template: Recomendamos pelo menos 60 dias para eventos maiores. Para eventos
+    menores, podemos trabalhar com prazos mais curtos. A disponibilidade da data é
+    o primeiro passo. Posso verificar nossa agenda para você?
+- question: Os dados dos meus convidados ficam protegidos?
+  answer_template: Completamente. Seguimos rigorosamente a Lei LGPD. Os dados da lista
+    de convidados são usados apenas para o evento e não são compartilhados com terceiros
+    sem autorização.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços logo no início da conversa.
+  script: 'Entendo que o orçamento é uma parte importante da decisão. Nossos pacotes
+    são personalizados para caber no seu planejamento. Para dar um valor preciso,
+    me conta um pouco: qual o tipo de evento e a data aproximada que você tem em mente?'
+  goal: Qualificar o lead e coletar informações antes de falar de preço, direcionando
+    para uma consulta com especialista.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona que está cotando com outra empresa.
+  script: Ótimo, é sempre bom comparar opções. Uma grande diferença nossa é o atendimento
+    personalizado e a coordenação completa, que tira todo o estresse da sua mão. Também
+    temos integração com os melhores fornecedores da região. Que tal agendar uma reunião
+    rápida para eu mostrar na prática como podemos fazer seu evento único?
+  goal: Diferenciação pelo serviço completo e experiência sem estresse, buscando converter
+    a comparação em uma demonstração.
+- trigger: objection_budget
+  situation: Quando o cliente diz que o orçamento está acima do esperado.
+  script: Compreendo perfeitamente. Vamos explorar juntos alternativas para ajustar
+    o pacote ao seu investimento. Podemos priorizar os itens mais importantes para
+    você. Muitas vezes, com pequenos ajustes, encontramos uma solução perfeita. Posso
+    transferir você para minha colega que é expert em otimização de custos?
+  goal: Não perder a venda por preço, mostrando flexibilidade e oferecendo ajuda especializada
+    para encontrar uma solução viável.
+competitors:
+- name: Sympla
+  positioning: Plataforma digital líder para venda de ingressos e gestão de eventos.
+  strengths:
+  - Reconhecimento de marca
+  - Fácil uso para eventos menores
+  - Grande base de usuários
+  weaknesses:
+  - Foco em ticketing, não em organização completa
+  - Atendimento pessoal limitado
+  - Menos personalização para eventos complexos
+  our_differentiation: Oferecemos coordenação e gestão completa do evento, com atendimento
+    humano e personalizado, cuidando de todos os detalhes burocráticos e logísticos
+    para o cliente.
+- name: Eventbrite
+  positioning: Plataforma internacional de gestão e divulgação de eventos.
+  strengths:
+  - Interface profissional
+  - Ferramentas de marketing
+  - Presença global
+  weaknesses:
+  - Taxas sobre ingressos
+  - Suporte local em português menos ágil
+  - 'Menos adaptada a nuances do mercado brasileiro (ex: formas de pagamento)'
+  our_differentiation: Solução local com suporte em português 24/7, integração com
+    fornecedores brasileiros e preços fixos sem taxas surpresa sobre os ingressos
+    dos convidados.
+- name: Convenções Coletivas (Buffets/Espaços)
+  positioning: Empresas tradicionais que oferecem espaço + serviço de buffet.
+  strengths:
+  - Tudo em um só lugar
+  - Experiência consolidada
+  - Pacotes fechados
+  weaknesses:
+  - Pouca flexibilidade para trazer fornecedores externos
+  - Pouca inovação em tecnologia
+  - Processos manuais para RSVP e comunicação
+  our_differentiation: Somos uma camada de inteligência e automação sobre qualquer
+    fornecedor. Oferecemos tecnologia para gestão do evento, comunicação automatizada
+    e coordenação de múltiplos fornecedores, dando mais controle e transparência ao
+    cliente.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 300
+  roi_examples:
+  - scenario: Agente de voz automatizando qualificação de leads e agendamento para
+      uma empresa de eventos média.
+    monthly_cost: 450
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - Reduza em até 70% o tempo perdido com ligações não qualificadas.
+  - Aumente a conversão de leads em vendas com follow-up automático.
+  - Garanta que nenhum cliente potencial caia no esquecimento.
+market_context:
+  market_size: Estimado em R$ 50 bilhões (pré-pandemia), em recuperação.
+  growth_rate: 15% YoY (crescimento pós-pandemia).
+  key_trends:
+  - Eventos híbridos (presencial + online) se tornaram padrão.
+  - Maior demanda por experiências personalizadas e únicas.
+  - Tecnologia para gestão de convidados e check-in sem contato.
+  seasonality:
+    high:
+    - Setembro-Dezembro (formaturas, festas de fim de ano)
+    - Junho (festas juninas)
+    - Maio (dia das mães, casamentos)
+    low:
+    - Fevereiro (pós-carnaval)
+    - Julho (férias escolares)
+    - Janeiro (férias coletivas)
+typical_objections:
+- objection: Não preciso disso, já tenho uma secretária que cuida das ligações.
+  response: Perfeito! Nossa solução não substitui sua secretária, mas potencializa
+    ela. Enquanto o agente de voz cuida das ligações iniciais, qualifica leads e agenda
+    reuniões, sua secretária pode focar em tarefas mais estratégicas e no atendimento
+    personalizado aos clientes já fechados. É um upgrade na produtividade da sua equipe.
+- objection: Meus clientes preferem o contato humano, não robô.
+  response: Concordo plenamente que o contato humano é essencial. Nosso agente de
+    voz tem justamente o objetivo de garantir que o contato humano aconteça no momento
+    certo. Ele filtra as ligações, resolve perguntas simples 24h e agenda a conversa
+    com um humano especialista para os assuntos complexos. Assim, seus clientes sempre
+    falam com a pessoa certa, sem esperar ou cair na caixa postal.
+- objection: É muito caro para o meu negócio no momento.
+  response: Entendo. Pense nisso como um investimento para economizar tempo e vender
+    mais. Por menos de R$ 20 por dia, você pode estar qualificando leads mesmo fora
+    do horário comercial e não perdendo nenhuma oportunidade. Muitos clientes recuperam
+    esse investimento em menos de um mês com uma única venda que teriam perdido sem
+    o follow-up. Que tal testar por um mês e ver os resultados?
+meta:
+  id: events
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

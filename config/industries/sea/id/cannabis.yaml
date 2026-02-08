@@ -1,0 +1,242 @@
+pain_points:
+- description: Operasi bisnis sangat rentan terhadap penyadapan dan pengawasan dari
+    pihak berwenang, memerlukan sistem komunikasi yang sangat aman.
+  severity: high
+  solution_hint: Agen suara AI dapat menggunakan enkripsi end-to-end dan tidak menyimpan
+    log percakapan untuk memastikan kerahasiaan.
+- description: Kesulitan dalam mengelola rantai pasok dan distribusi secara diam-diam,
+    sering terjadi kehilangan atau salah pengiriman barang.
+  severity: high
+  solution_hint: Menggunakan sistem booking kode khusus melalui agen suara dengan
+    verifikasi suara untuk otentikasi anggota tepercaya.
+- description: Tingginya risiko penipuan dalam transaksi, baik dari pembeli maupun
+    penjual palsu, yang sulit diverifikasi.
+  severity: high
+  solution_hint: Agen suara dapat mengintegrasikan sistem verifikasi identitas melalui
+    kode unik atau pertanyaan keamanan pribadi.
+- description: Koordinasi dengan kurir atau runner yang sering berubah nomor kontak
+    dan lokasi untuk menghindari deteksi.
+  severity: medium
+  solution_hint: Agen suara dapat menjadi titik kontak tetap yang meneruskan instruksi
+    terenkripsi ke kurir tanpa menyimpan detail kontak.
+- description: Kesulitan dalam menegosiasikan harga dan syarat pengiriman dengan cepat
+    sambil menjaga keamanan percakapan.
+  severity: medium
+  solution_hint: Script otomatis untuk negosiasi harga dasar dan konfirmasi lokasi
+    melalui agen suara tanpa banyak tanya-jawab terbuka.
+- description: Pelanggan baru sering ragu dan takut untuk bertransaksi karena tidak
+    ada sistem kepercayaan yang formal.
+  severity: low
+  solution_hint: Agen suara dapat memberikan prosedur keamanan standar dan testimoni
+    tersandi untuk membangun kepercayaan awal.
+typical_services:
+- Penyediaan produk herbal khusus (istilah lokal untuk cannabis)
+- Pengaturan pengiriman diskrit ke lokasi aman
+- Sistem pemesanan dengan kode dan konfirmasi suara
+- Konsultasi keamanan dan protokol komunikasi
+- Pengelolaan jaringan kontak terenkripsi
+- Verifikasi keanggotaan dan rekomendasi anggota baru
+- Sistem alert untuk kondisi keamanan wilayah
+- Mediasi transaksi dan penyelesaian sengketa terbatas
+- Penyediaan alat ukur dan kemasan khusus
+- Edukasi pengurangan risiko konsumsi (dalam konteks hipotetis)
+recommended_functions:
+- name: Verifikasi Identitas Suara
+  priority: high
+  reason: Penting untuk memastikan hanya anggota terpercaya yang dapat mengakses layanan
+    dan informasi.
+- name: Penerusan Pesan Terenkripsi
+  priority: high
+  reason: Mengamankan komunikasi antara pembeli, penjual, dan kurir tanpa jejak digital
+    langsung.
+- name: Sistem Booking Otomatis
+  priority: high
+  reason: Mengatur pertemuan atau pengiriman dengan kode unik, mengurangi komunikasi
+    terbuka.
+- name: Alert Keamanan Wilayah
+  priority: medium
+  reason: Memberikan peringatan dini tentang kondisi daerah tertentu yang dianggap
+    'panas'.
+- name: Negosiasi Harga Standar
+  priority: medium
+  reason: Memproses tawar-menawar dasar dengan script tetap untuk efisiensi dan keamanan.
+- name: Pendaftaran Anggota Baru
+  priority: low
+  reason: Merekrut anggota baru melalui proses verifikasi berlapis yang dikendalikan
+    suara.
+typical_integrations:
+- name: Aplikasi Pesan Aman
+  examples:
+  - Telegram (dengan mode rahasia)
+  - Signal
+  - Aplikasi pesan kustom
+  priority: high
+- name: Dompet Digital P2P
+  examples:
+  - Dompet digital non-KYC
+  - Transfer antar bank tanpa nama jelas
+  priority: high
+- name: Peta Digital Offline
+  examples:
+  - Aplikasi peta dengan penanda kustom
+  - GPS tanpa riwayat
+  priority: medium
+- name: Penyimpanan Cloud Terenkripsi
+  examples:
+  - Layanan cloud dengan enkripsi end-to-end
+  priority: medium
+- name: Scanner atau Detektor Sinyal
+  examples:
+  - Perangkat lunak deteksi penyadapan sederhana
+  priority: low
+industry_faq:
+- question: Apakah layanan ini aman dari penyadapan?
+  answer_template: Kami menggunakan sistem enkripsi suara tingkat tinggi dan tidak
+    menyimpan rekaman. Semua komunikasi dirancang untuk keamanan maksimal.
+- question: Bagaimana cara memesan pertama kali?
+  answer_template: Anda akan melalui proses verifikasi suara terlebih dahulu. Setelah
+    disetujui, sistem akan memberikan instruksi pemesanan dengan kode unik.
+- question: Apa yang terjadi jika barang tidak sampai?
+  answer_template: Kami memiliki protokol konfirmasi bertahap. Jika tidak ada konfirmasi
+    di titik akhir, sistem mediasi akan diaktifkan dengan syarat dan ketentuan yang
+    telah disepakati.
+- question: Bagaimana sistem pembayarannya?
+  answer_template: Pembayaran menggunakan metode transfer diskrit yang diinstruksikan
+    oleh sistem suara setelah verifikasi. Tidak ada pembayaran di muka tanpa konfirmasi.
+- question: Apakah ada jaminan keamanan untuk saya?
+  answer_template: Keamanan Anda adalah prioritas. Sistem kami dirancang untuk meminimalkan
+    jejak digital dan menggunakan protokol komunikasi aman. Namun, selalu ada risiko
+    inherent dalam aktivitas ini.
+- question: Bagaimana jika saya ingin keluar dari jaringan?
+  answer_template: Data suara dan kontak Anda akan dihapus dari sistem sesuai permintaan,
+    sesuai dengan prinsip kerahasiaan kami.
+sales_scripts:
+- trigger: security_concern
+  situation: Ketika calon anggota menyatakan kekhawatiran tentang keamanan.
+  script: Memahami kekhawatiran Anda. Sistem kami dirancang khusus untuk lingkungan
+    berisiko tinggi. Menggunakan enkripsi suara, tanpa penyimpanan data, dan protokol
+    verifikasi berlapis. Bukan hanya alat, tapi sistem keamanan komunikasi yang melindungi
+    setiap interaksi.
+  goal: Meredam kekhawatiran keamanan dan menawarkan nilai sebagai sistem proteksi.
+- trigger: reliability_question
+  situation: Ketika calon anggota menanyakan keandalan layanan.
+  script: Keandalan dibangun dari sistem terdesentralisasi. Kami tidak bergantung
+    pada satu titik saja. Setiap transaksi menggunakan kode unik, konfirmasi multi-tahap,
+    dan jaringan kurir independen. Masalah di satu titik tidak mengganggu sistem keseluruhan.
+  goal: Menunjukkan struktur yang tangguh dan mengurangi ketergantungan pada individu.
+- trigger: price_question
+  situation: Ketika calon anggota menanyakan biaya layanan.
+  script: Biaya layanan disesuaikan dengan tingkat keamanan dan kompleksitas yang
+    Anda butuhkan. Mulai dari Rp 500.000 untuk sistem dasar, hingga Rp 5.000.000 untuk
+    paket dengan fitur keamanan maksimal. Ini investasi untuk mengurangi risiko yang
+    nilainya jauh lebih besar.
+  goal: Memframing biaya sebagai investasi keamanan dan menawarkan tier yang berbeda.
+- trigger: how_to_start
+  situation: Ketika calon anggota tertarik dan bertanya cara mulai.
+  script: Pertama, Anda akan melalui verifikasi suara singkat. Kemudian, sistem akan
+    menuntun Anda menyetujui protokol keamanan. Setelah itu, Anda mendapatkan akses
+    ke panduan pemesanan dan jaringan. Proses awal memakan waktu kurang dari 30 menit
+    dengan pengawasan sistem sepenuhnya.
+  goal: Menyederhanakan proses onboarding yang terdengar kompleks dan menekankan kecepatan.
+competitors:
+- name: Jaringan Tradisional Tatap Muka
+  positioning: Sistem lama berdasarkan kepercayaan personal dan hubungan langsung.
+  strengths:
+  - Tidak bergantung teknologi
+  - Hubungan kepercayaan kuat
+  - Fleksibel dalam negosiasi
+  weaknesses:
+  - Rentan terhadap infiltrasi
+  - Skala terbatas
+  - Bergantung pada keberadaan fisik
+  our_differentiation: Kami menawarkan keamanan melalui teknologi tanpa mengganti
+    kepercayaan, justru memperkuatnya dengan sistem verifikasi obyektif dan jangkauan
+    lebih luas tanpa meningkatkan risiko fisik.
+- name: Platform Pesan Semi-Aman
+  positioning: Menggunakan aplikasi pesan umum dengan kode-kode sederhana.
+  strengths:
+  - Mudah diakses
+  - Familiar bagi pengguna
+  - Biaya rendah
+  weaknesses:
+  - Rentan penyadapan
+  - Log data tersimpan di server
+  - Verifikasi lemah
+  our_differentiation: Sistem kami berbasis suara dengan enkripsi khusus, tidak menyimpan
+    log, dan memiliki protokol keamanan aktif bukan hanya perlindungan pasif seperti
+    aplikasi pesan biasa.
+- name: Sistem Kurir Independen
+  positioning: Kurir individual yang mengelola klien sendiri.
+  strengths:
+  - Sangat diskrit
+  - Respon cepat
+  - Biaya negotiable
+  weaknesses:
+  - Tidak konsisten
+  - Rentan penipuan
+  - Tidak ada sistem backup
+  our_differentiation: Kami memberikan sistem terstruktur dengan kurir independen,
+    menggabungkan fleksibilitas jaringan individu dengan keandalan sistem terorganisir
+    dan mekanisme penyelesaian masalah.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 750000
+  roi_examples:
+  - scenario: Pengguna dengan 10 transaksi/bulan sebelumnya menggunakan metode tidak
+      aman
+    monthly_cost: 1500000
+    monthly_savings: 4500000
+    payback_months: 1
+  value_anchors:
+  - Biaya satu kali penangkapan bisa mencapai ratusan juta hingga milyaran Rupiah
+  - Kehilangan satu shipment besar rata-rata bernilai Rp 15.000.000
+  - Sistem mengurangi kebutuhan meeting fisik berisiko yang memakan biaya transportasi
+    dan waktu
+market_context:
+  market_size: Tidak dapat diukur secara resmi, diperkirakan jaringan bawah tanah
+    signifikan mengingat tingkat permintaan
+  growth_rate: Tidak tersedia data pertumbuhan, namun permintaan konsisten
+  key_trends:
+  - Pergeseran dari transaksi fisik ke sistem hybrid digital-fisik untuk mengurangi
+    risiko
+  - Meningkatnya permintaan untuk metode verifikasi tanpa pertemuan langsung
+  - Tekanan penegakan hukum mendorong inovasi dalam keamanan komunikasi
+  seasonality:
+    high:
+    - Mendekati hari raya besar
+    - Akhir bulan saat kebutuhan finansial meningkat
+    low:
+    - Masa penegakan hukum intensif
+    - Bulan pertama tahun
+typical_objections:
+- objection: Saya tidak nyaman menggunakan teknologi, lebih percaya sistem tatap muka
+    seperti biasa.
+  response: Memahami kenyamanan dengan sistem lama. Sistem kami justru melindungi
+    pertemuan tatap muka yang masih diperlukan dengan mengamankan komunikasi sebelum
+    dan sesudahnya. Bukan mengganti, tapi melengkapi dengan lapisan keamanan ekstra.
+- objection: Biayanya terlalu tinggi untuk layanan yang tidak bisa saya lihat fisiknya.
+  response: Seperti asuransi, Anda membayar untuk perlindungan sebelum sesuatu terjadi.
+    Biaya ini kecil dibandingkan kerugian finansial dan hukum jika sistem lama Anda
+    terbongkar. Kami memberikan laporan risiko yang diminimalkan sebagai bukti nilai.
+- objection: Bagaimana jika sistem Anda sendiri diretas atau disusupi?
+  response: Arsitektur kami terdesentralisasi dan berbasis suara tanpa penyimpanan
+    data terpusat. Tidak seperti server yang bisa diretas, sistem kami beroperasi
+    seperti jaringan seluler independen. Bahkan jika satu titik kompromi, jaringan
+    lainnya tetap aman.
+meta:
+  id: cannabis
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

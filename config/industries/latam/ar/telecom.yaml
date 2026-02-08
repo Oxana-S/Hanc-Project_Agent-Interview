@@ -1,0 +1,209 @@
+pain_points:
+- description: Altos costos operativos debido a la inflación y a los impuestos específicos
+    del sector.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la gestión de facturas y ofrecer
+    planes optimizados para reducir gastos.
+- description: Alta rotación de clientes por la competencia agresiva y ofertas promocionales
+    frecuentes.
+  severity: high
+  solution_hint: El agente puede realizar llamadas de retención con ofertas personalizadas
+    y seguimiento proactivo.
+- description: Reclamos frecuentes por cortes de servicio o mala calidad de la conexión,
+    especialmente en zonas periféricas.
+  severity: medium
+  solution_hint: Automatizar la atención de reclamos con respuestas inmediatas y programación
+    de técnicos.
+- description: Complejidad en la gestión de múltiples servicios como telefonía, internet
+    y TV por suscripción.
+  severity: medium
+  solution_hint: Integrar sistemas para ofrecer asistencia unificada y cross-selling
+    mediante el agente de voz.
+- description: Dificultad para escalar la atención al cliente en horarios pico, generando
+    largas esperas.
+  severity: low
+  solution_hint: Implementar el agente para manejar consultas comunes 24/7, liberando
+    agentes humanos.
+- description: Falta de personalización en las interacciones con clientes, afectando
+    la experiencia del usuario.
+  severity: medium
+  solution_hint: Usar IA para analizar datos del cliente y ofrecer recomendaciones
+    adaptadas durante las llamadas.
+typical_services:
+- Planes de telefonía móvil prepago y pospago
+- Internet de banda ancha residencial y empresarial
+- Televisión por suscripción (cable o satelital)
+- Servicios de VoIP para empresas
+- Soluciones de conectividad 4G/5G
+- Paquetes combinados (triple play)
+- Roaming internacional
+- Servicios de valor agregado como streaming o seguridad digital
+- Instalación y mantenimiento de redes
+- Venta de equipos como módems o smartphones
+recommended_functions:
+- name: Ventas y upselling de servicios
+  priority: high
+  reason: Crítico para aumentar ingresos en un mercado competitivo con alta rotación.
+- name: Atención de reclamos y soporte técnico
+  priority: high
+  reason: Reduce costos operativos y mejora la satisfacción del cliente ante problemas
+    comunes.
+- name: Recordatorios de pago y gestión de facturas
+  priority: medium
+  reason: Ayuda a minimizar la morosidad en un contexto económico inflacionario.
+- name: Programación de instalaciones y visitas técnicas
+  priority: medium
+  reason: Optimiza la logística y reduce tiempos de espera para los clientes.
+- name: Encuestas de satisfacción post-venta
+  priority: low
+  reason: Proporciona datos valiosos para mejorar servicios y retener clientes.
+- name: Asistencia en la migración de planes o servicios
+  priority: medium
+  reason: Facilita transiciones sin errores, evitando pérdidas de clientes.
+typical_integrations:
+- name: Sistemas de CRM
+  examples: Salesforce, Voxel, sistemas locales adaptados
+  priority: high
+- name: Plataformas de facturación
+  examples: SAP, sistemas personalizados para ARS
+  priority: high
+- name: Herramientas de soporte técnico
+  examples: Zendesk, Jira, soluciones locales
+  priority: medium
+- name: Bases de datos de clientes
+  examples: Oracle, MySQL, con adaptaciones regionales
+  priority: medium
+- name: Sistemas de venta online
+  examples: MercadoLibre integraciones, plataformas propias
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los planes de internet más económicos disponibles?
+  answer_template: Ofrecemos planes desde [precio] ARS mensuales con velocidad básica,
+    ideal para uso personal. ¿Le gustaría que le detalle las opciones?
+- question: ¿Cómo puedo reportar un corte de servicio?
+  answer_template: Puedo ayudarle a reportar el corte inmediatamente. Por favor, proporcione
+    su número de cliente y ubicación para agilizar el proceso.
+- question: ¿Hay promociones para clientes existentes?
+  answer_template: Sí, tenemos ofertas exclusivas para fidelizar clientes. Revise
+    su perfil o permítame consultar las promociones activas para usted.
+- question: ¿Qué cobertura tiene la red 4G en mi zona?
+  answer_template: Puedo verificar la cobertura en su área. Necesito su código postal
+    para brindarle información precisa.
+- question: ¿Cómo migro a un plan con más datos sin costo adicional?
+  answer_template: Le ayudo a evaluar planes disponibles. Muchas migraciones son gratuitas
+    si cumple ciertos criterios. ¿Puedo revisar su contrato actual?
+- question: ¿Aceptan pagos con tarjetas de crédito en cuotas?
+  answer_template: Sí, aceptamos pagos en cuotas sin interés con tarjetas asociadas.
+    Puedo guiarle en el proceso de pago.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios de planes básicos.
+  script: 'Hola, entiendo que busca opciones económicas. Tenemos planes desde [precio]
+    ARS con buena cobertura. ¿Para qué uso principal necesita el servicio: trabajo,
+    estudio o entretenimiento?'
+  goal: Captar interés y cualificar al cliente para ofrecer un plan adecuado.
+- trigger: service_complaint
+  situation: Cuando un cliente reporta un problema técnico.
+  script: Lamento escuchar sobre el inconveniente. Para resolverlo rápidamente, voy
+    a registrar su reclamo y programar un técnico si es necesario. ¿Puede confirmar
+    su dirección y horario disponible?
+  goal: Resolver el problema eficientemente y retener al cliente con buen servicio.
+- trigger: upgrade_inquiry
+  situation: Cuando un cliente pregunta por mejoras en su plan actual.
+  script: Excelente que esté considerando una mejora. Basado en su uso, recomiendo
+    [plan] que incluye [beneficios] por solo [precio adicional] ARS. ¿Le gustaría
+    activarlo ahora?
+  goal: Cerrar una venta de upselling y aumentar el valor del cliente.
+- trigger: competitor_mention
+  situation: Cuando un cliente compara con otras compañías.
+  script: Comprendo que hay opciones. Nos diferenciamos con [beneficio único, como
+    cobertura nacional o soporte 24/7]. ¿Le interesa una prueba gratuita para experimentar
+    la diferencia?
+  goal: Destacar ventajas competitivas y convertir la objeción en una oportunidad.
+competitors:
+- name: Claro
+  positioning: Líder en cobertura nacional y servicios móviles.
+  strengths:
+  - Amplia red
+  - marca reconocida
+  - ofertas agresivas
+  weaknesses:
+  - Atención al cliente lenta
+  - precios altos en algunos planes
+  our_differentiation: Ofrecemos soporte personalizado con IA y precios más transparentes.
+- name: Movistar
+  positioning: Fuerte en innovación y servicios empresariales.
+  strengths:
+  - Tecnología avanzada
+  - paquetes integrados
+  weaknesses:
+  - Cobertura desigual en zonas rurales
+  - complejidad en contratos
+  our_differentiation: Simplificamos la experiencia del cliente con procesos automatizados
+    y claros.
+- name: Personal
+  positioning: Enfoque en clientes jóvenes y digitales.
+  strengths:
+  - Promociones frecuentes
+  - app móvil eficiente
+  weaknesses:
+  - Servicio post-venta limitado
+  - alta rotación
+  our_differentiation: Proporcionamos retención proactiva mediante agentes de voz
+    y seguimiento continuo.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Automatización de atención al cliente para una PYME
+    monthly_cost: 5000
+    monthly_savings: 8000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos operativos hasta un 30%
+  - Aumenta las ventas con llamadas personalizadas
+  - Mejora la satisfacción del cliente en un 40%
+market_context:
+  market_size: Aproximadamente 10 mil millones de ARS anuales
+  growth_rate: 5% YoY
+  key_trends:
+  - Crecimiento de la demanda por internet de alta velocidad
+  - Adopción de soluciones 5G en áreas urbanas
+  - Aumento de la competencia por servicios OTT
+  seasonality:
+    high:
+    - Enero (vacaciones)
+    - Julio (promociones de invierno)
+    low:
+    - Febrero (post-vacaciones)
+    - Noviembre (pre-navidad)
+typical_objections:
+- objection: Es muy caro para mi presupuesto.
+  response: Entiendo su preocupación. Podemos empezar con un plan básico y escalar
+    luego. ¿Le interesa una opción desde [precio] ARS?
+- objection: Ya tengo un proveedor y no quiero cambiar.
+  response: Comprendo la lealtad. ¿Podría contarme qué le gusta de su proveedor actual?
+    Quizás podamos ofrecerle algo adicional sin costo.
+- objection: No confío en la tecnología de voz automatizada.
+  response: Nuestro agente está diseñado para ser humano y eficiente. Puedo conectarle
+    con un agente humano en cualquier momento si lo prefiere.
+- objection: Los contratos son muy largos y complicados.
+  response: Ofrecemos contratos flexibles y simplificados. Le explico los términos
+    clave en minutos para su tranquilidad.
+meta:
+  id: telecom
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

@@ -1,0 +1,203 @@
+pain_points:
+- description: Gestión ineficiente de citas y reservas, lo que provoca pérdida de
+    tiempo y clientes.
+  severity: high
+  solution_hint: Automatizar la programación de citas y recordatorios mediante el
+    agente de voz.
+- description: Dificultad para gestionar múltiples canales de comunicación (teléfono,
+    email, redes sociales).
+  severity: medium
+  solution_hint: Centralizar las comunicaciones y responder automáticamente a consultas
+    comunes.
+- description: Alta competencia y presión en precios, especialmente en bodas y eventos
+    estacionales.
+  severity: high
+  solution_hint: Ofrecer seguimiento personalizado y propuestas de valor para destacar
+    en el mercado.
+- description: Retrasos en la entrega de fotos y videos debido a procesos de edición
+    manuales.
+  severity: medium
+  solution_hint: Integrar notificaciones automáticas sobre el estado de los proyectos.
+- description: Falta de estrategias de marketing efectivas para atraer clientes locales.
+  severity: low
+  solution_hint: Utilizar el agente de voz para promociones y captación de leads a
+    través de llamadas.
+- description: Complejidad en la gestión de pagos y facturación, cumpliendo con normativas
+    locales.
+  severity: medium
+  solution_hint: Automatizar recordatorios de pagos y generación de facturas según
+    GDPR y normativas españolas.
+typical_services:
+- Fotografía de bodas y eventos
+- Videos corporativos y promocionales
+- Sesiones de retrato y familia
+- Fotografía de producto para e-commerce
+- Cobertura de eventos sociales
+- Edición y postproducción de fotos y videos
+- Servicios de drone para tomas aéreas
+- Alquiler de equipo fotográfico
+- Cursos y talleres de fotografía
+- Fotografía para redes sociales y marketing
+recommended_functions:
+- name: Programador de citas inteligente
+  priority: high
+  reason: Reduce no-shows y optimiza la agenda en una industria con alta demanda estacional.
+- name: Respondedor automático a consultas frecuentes
+  priority: high
+  reason: Libera tiempo al personal para tareas creativas, mejorando la eficiencia.
+- name: Recordatorio de pagos y facturación
+  priority: medium
+  reason: Asegura el flujo de caja y cumple con regulaciones fiscales españolas.
+- name: Seguimiento post-venta y feedback
+  priority: medium
+  reason: Aumenta la satisfacción del cliente y genera referencias en un mercado competitivo.
+- name: Generador de leads desde llamadas
+  priority: low
+  reason: Ayuda a captar nuevos clientes en un sector con alta dependencia de recomendaciones.
+typical_integrations:
+- name: Software de gestión de clientes (CRM)
+  examples:
+  - Factusol
+  - Zoho CRM
+  - Salesforce
+  priority: high
+- name: Herramientas de edición y creatividad
+  examples:
+  - Adobe Creative Cloud
+  - Final Cut Pro
+  priority: high
+- name: Plataformas de reservas y calendarios
+  examples:
+  - Google Calendar
+  - Calendly
+  priority: medium
+- name: Sistemas de pago online
+  examples:
+  - Stripe
+  - PayPal
+  - Bizum
+  priority: medium
+- name: Redes sociales y marketing digital
+  examples:
+  - Instagram
+  - Facebook Business Suite
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una sesión de fotos de boda en España?
+  answer_template: Los precios varían según el paquete, pero típicamente oscilan entre
+    1000€ y 5000€. Podemos personalizar una propuesta según sus necesidades específicas.
+- question: ¿Qué incluye vuestro servicio de video corporativo?
+  answer_template: Incluye planificación, grabación, edición y entrega en formatos
+    optimizados para web y redes sociales. Ofrecemos opciones desde 500€.
+- question: ¿Cómo gestionáis la privacidad de las imágenes según el GDPR?
+  answer_template: Cumplimos estrictamente con el GDPR, utilizando contratos claros
+    y sistemas seguros para almacenar y procesar las imágenes.
+- question: ¿Disponéis de equipo de drone para tomas aéreas?
+  answer_template: Sí, ofrecemos servicios con drone certificados, ideales para eventos
+    y proyectos promocionales. Consúltenos para más detalles.
+- question: ¿Cuál es el tiempo de entrega típico para la edición de fotos?
+  answer_template: Depende del proyecto, pero generalmente entregamos en 2-4 semanas.
+    Podemos acelerar el proceso con tarifas express.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios en una llamada inicial.
+  script: Hola, entiendo que quiere conocer nuestros precios. Ofrecemos soluciones
+    personalizadas desde 300€ para sesiones básicas. ¿Podría contarme más sobre su
+    proyecto para ajustar mejor la propuesta?
+  goal: Captar información del cliente y guiar hacia una consulta más detallada.
+- trigger: service_inquiry
+  situation: Cuando un cliente muestra interés en un servicio específico como fotografía
+    de boda.
+  script: Me alegra su interés en nuestra fotografía de bodas. Somos expertos en capturar
+    momentos únicos con un enfoque local. ¿Tiene alguna fecha en mente o preferencias
+    de estilo?
+  goal: Profundizar en las necesidades y fidelizar al cliente.
+- trigger: objection_budget
+  situation: Cuando el cliente objeta que el precio es demasiado alto.
+  script: Comprendo su preocupación por el presupuesto. Nuestros servicios incluyen
+    valor añadido como edición profesional y derechos de uso. ¿Le interesaría ver
+    opciones más económicas o pagos fraccionados?
+  goal: Mantener el interés y ofrecer flexibilidad para cerrar la venta.
+competitors:
+- name: Fotógrafos Madrid
+  positioning: Marca reconocida en la región de Madrid con enfoque en bodas.
+  strengths:
+  - Amplia cartera de clientes
+  - Calidad consistente
+  weaknesses:
+  - Precios elevados
+  - Limitada disponibilidad en temporada alta
+  our_differentiation: Ofrecemos automatización para una experiencia más eficiente
+    y precios competitivos con seguimiento personalizado.
+- name: VideoPro España
+  positioning: Especialista en videos corporativos a nivel nacional.
+  strengths:
+  - Tecnología avanzada
+  - Equipo experimentado
+  weaknesses:
+  - Poca flexibilidad en horarios
+  - Comunicación lenta
+  our_differentiation: Integramos agentes de voz para respuestas rápidas y gestión
+    ágil de proyectos.
+- name: Estudio Creativo Barcelona
+  positioning: Enfoque artístico y moderno para fotografía comercial.
+  strengths:
+  - Diseño innovador
+  - Presencia en redes sociales
+  weaknesses:
+  - Alto costo de edición
+  - Plazos largos de entrega
+  our_differentiation: Automatizamos procesos para reducir tiempos y costos, manteniendo
+    alta calidad.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatización de programación de citas para un fotógrafo de bodas.
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 10 horas al mes en gestión administrativa.
+  - Aumente las reservas en un 20% con recordatorios automáticos.
+  - Cumpla con GDPR sin esfuerzo adicional.
+market_context:
+  market_size: Estimado en 500 millones EUR anuales en España.
+  growth_rate: 5% YoY, impulsado por la demanda digital y eventos post-pandemia.
+  key_trends:
+  - Aumento de la demanda para contenido en redes sociales.
+  - Crecimiento de servicios con drone y realidad virtual.
+  - Mayor enfoque en sostenibilidad y prácticas eco-friendly.
+  seasonality:
+    high:
+    - Primavera
+    - Verano (temporada de bodas)
+    low:
+    - Invierno (excepto Navidad)
+typical_objections:
+- objection: Ya tengo un fotógrafo de confianza.
+  response: Entiendo, pero nuestro agente de voz puede complementar su trabajo mejorando
+    la gestión de clientes y ahorrando tiempo. ¿Le gustaría probar una demo?
+- objection: Es demasiado caro para mi negocio pequeño.
+  response: Ofrecemos planes escalables desde 50€ al mes, diseñados para negocios
+    como el suyo. El ROI suele ser rápido con el ahorro en tiempo.
+- objection: No necesito automatización, prefiero el contacto personal.
+  response: Nuestra solución mantiene el contacto personal mientras automatiza tareas
+    repetitivas, permitiéndole enfocarse en la creatividad.
+meta:
+  id: photo_video
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

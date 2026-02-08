@@ -1,0 +1,235 @@
+pain_points:
+- description: Ciberataques frecuentes que comprometen la seguridad de los datos empresariales.
+  severity: high
+  solution_hint: Nuestro agente de voz IA puede monitorear alertas de seguridad y notificar incidentes en tiempo real, reduciendo el tiempo de respuesta.
+- description: Cumplimiento normativo complejo, especialmente con la LFPDPPP, que requiere gestión constante.
+  severity: high
+  solution_hint: El agente automatiza recordatorios de auditorías y asiste en la documentación para garantizar el cumplimiento.
+- description: Escasez de talento especializado en TI, lo que retrasa proyectos y aumenta costos.
+  severity: medium
+  solution_hint: Puede gestionar la programación de entrevistas y filtrar candidatos basándose en criterios predefinidos.
+- description: Altos costos de infraestructura y mantenimiento de sistemas heredados.
+  severity: medium
+  solution_hint: El agente optimiza la gestión de recursos y sugiere migraciones a la nube para reducir gastos.
+- description: Gestión ineficiente de tickets de soporte, causando retrasos en la resolución de problemas.
+  severity: medium
+  solution_hint: Automatiza la creación y seguimiento de tickets, priorizando casos urgentes.
+- description: Falta de una estrategia clara de transformación digital, llevando a inversiones ineficientes.
+  severity: low
+  solution_hint: Proporciona información basada en datos y agenda consultas para definir una hoja de ruta.
+- description: Integración deficiente entre sistemas nuevos y existentes, afectando la productividad.
+  severity: medium
+  solution_hint: Coordina las comunicaciones entre equipos y gestiona pruebas de integración automatizadas.
+typical_services:
+- Consultoría en transformación digital
+- Desarrollo de software a medida
+- Soporte técnico y mantenimiento de sistemas
+- Ciberseguridad y protección de datos
+- Migración a la nube
+- Administración de redes y servidores
+- Implementación de ERP y CRM
+- Outsourcing de TI
+- Análisis de datos e inteligencia empresarial
+- Capacitación y entrenamiento en tecnologías de la información
+recommended_functions:
+- name: Reservación automatizada de citas para consultoría
+  priority: high
+  reason: Mejora la eficiencia en la captación de clientes y reduce tiempos de espera.
+- name: Respuestas a preguntas frecuentes sobre servicios y precios
+  priority: high
+  reason: Libera al personal humano para tareas más complejas y proporciona respuestas instantáneas.
+- name: Monitoreo y notificación de incidentes de seguridad
+  priority: high
+  reason: Critico para prevenir brechas de datos y cumplir con regulaciones locales como LFPDPPP.
+- name: Gestión de tickets de soporte técnico
+  priority: medium
+  reason: Optimiza la resolución de problemas y mejora la satisfacción del cliente.
+- name: Recordatorios de mantenimiento preventivo
+  priority: medium
+  reason: Ayuda a evitar fallos en sistemas y reduce costos de reparación.
+- name: Asistencia en cumplimiento normativo
+  priority: high
+  reason: Esencial en el mercado mexicano para evitar multas y proteger la reputación.
+- name: Encuestas de satisfacción post-servicio
+  priority: low
+  reason: Recopila feedback valioso para mejorar la calidad del servicio.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Oracle
+  - Microsoft Dynamics
+  - TOTVS
+  priority: high
+- name: Plataformas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Herramientas de soporte y help desk
+  examples:
+  - Zendesk
+  - Freshdesk
+  - ServiceNow
+  priority: medium
+- name: Plataformas en la nube
+  examples:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud Platform
+  priority: high
+- name: Software de seguridad
+  examples:
+  - Firewalls locales
+  - antivirus como Kaspersky
+  - herramientas de monitorización
+  priority: medium
+- name: Sistemas de gestión de proyectos
+  examples:
+  - Jira
+  - Asana
+  - Trello
+  priority: low
+industry_faq:
+- question: ¿Cómo pueden ayudarme a cumplir con la LFPDPPP en mis sistemas de TI?
+  answer_template: Ofrecemos asesoría especializada y herramientas de automatización para gestionar datos personales, asegurando el cumplimiento y reduciendo riesgos legales.
+- question: ¿Cuál es el costo típico de un proyecto de desarrollo de software en México?
+  answer_template: Los costos varían según la complejidad, pero proyectos básicos pueden iniciar desde 50,000 MXN, con ROI en pocos meses mediante eficiencias operativas.
+- question: ¿Ofrecen soporte técnico 24/7 para empresas en México?
+  answer_template: Sí, proporcionamos soporte continuo con agentes IA que manejan consultas iniciales y escalan casos críticos a nuestro equipo humano.
+- question: ¿Pueden integrar sus soluciones con nuestros sistemas heredados?
+  answer_template: Absolutamente, especializamos en migraciones e integraciones suaves, minimizando interrupciones y maximizando la productividad.
+- question: ¿Qué ventajas tienen sobre la competencia local en servicios de TI?
+  answer_template: Combinamos expertise global con conocimiento local, ofreciendo precios competitivos y soluciones personalizadas con tecnología de vanguardia.
+- question: ¿Cómo manejan la seguridad de datos en la nube para clientes mexicanos?
+  answer_template: Implementamos protocolos de seguridad avanzados y cumplimos con estándares internacionales y locales, garantizando la protección de su información.
+- question: ¿Pueden ayudar a reducir los costos operativos de TI?
+  answer_template: Sí, a través de la automatización y optimización de recursos, podemos demostrar ahorros significativos, típicamente de 20-30% en gastos mensuales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios de servicios de TI.
+  script: Entiendo su interés en los costos. En México, nuestros servicios parten desde 30,000 MXN mensuales para soporte básico, con opciones escalables. ¿Podría compartir más sobre sus necesidades específicas
+    para ofrecerle una cotización precisa?
+  goal: Obtener detalles del cliente para personalizar la oferta y justificar el valor.
+- trigger: service_inquiry
+  situation: Cuando un cliente solicita información sobre un servicio específico, como ciberseguridad.
+  script: Gracias por su consulta. En el mercado mexicano, la ciberseguridad es crucial debido al aumento de ciberataques. Ofrecemos soluciones integrales que incluyen monitoreo y cumplimiento con LFPDPPP.
+    ¿Le gustaría agendar una consulta gratuita para evaluar su situación?
+  goal: Convertir la consulta en una cita de ventas y destacar nuestro expertise local.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona a un competidor como Softtek.
+  script: Softtek es un jugador respetado, pero nos diferenciamos con un enfoque más personalizado y el uso de IA para mayor eficiencia. Por ejemplo, nuestros agentes de voz reducen tiempos de respuesta
+    en un 40%. ¿Le interesa ver una demostración?
+  goal: Diferenciar nuestro valor y cerrar una venta demostrando ventajas tangibles.
+- trigger: objection_budget
+  situation: Cuando un cliente objeta que el presupuesto es limitado.
+  script: Comprendo las restricciones de presupuesto. Ofrecemos planes flexibles con un punto de entrada bajo, y podemos mostrar un ROI rápido, como ahorros de 15,000 MXN mensuales en soporte. ¿Podemos
+    analizar sus costos actuales?
+  goal: Superar la objeción con datos concretos y ofrecer una solución asequible.
+- trigger: follow_up
+  situation: Para seguimiento después de una consulta inicial.
+  script: Hola, soy [Nombre del Agente] de [Empresa]. Le contactamos respecto a su interés en servicios de TI. ¿Ha tenido oportunidad de revisar nuestra propuesta? Estamos aquí para resolver cualquier duda
+    y ayudarle a optimizar sus operaciones.
+  goal: Mantener el engagement y avanzar en el proceso de venta.
+competitors:
+- name: Softtek
+  positioning: Líder local en outsourcing de TI con presencia global.
+  strengths:
+  - Amplia experiencia en el mercado mexicano
+  - Portafolio diversificado de servicios
+  - Red de clientes establecida
+  weaknesses:
+  - Puede ser menos ágil en innovación
+  - Costos relativamente altos
+  our_differentiation: Ofrecemos soluciones más personalizadas con integración de IA, precios competitivos y enfoque en ROI rápido.
+- name: Neoris
+  positioning: Consultora global con fuerte presencia en Latinoamérica, enfocada en transformación digital.
+  strengths:
+  - Expertise en proyectos grandes
+  - Alianzas estratégicas con proveedores tecnológicos
+  weaknesses:
+  - Enfoque menos en PYMEs
+  - Procesos pueden ser burocráticos
+  our_differentiation: Nos especializamos en servicios ágiles para empresas de todos los tamaños, con soporte localizado y atención al cliente 24/7.
+- name: Tata Consultancy Services (TCS)
+  positioning: Gigante global de TI con operaciones en México.
+  strengths:
+  - Recursos extensos y escala global
+  - Tecnología de punta
+  weaknesses:
+  - Puede carecer de sensibilidad al mercado local
+  - Tiempos de respuesta más largos
+  our_differentiation: Combinamos la calidad global con un entendimiento profundo del contexto mexicano, ofreciendo respuestas más rápidas y adaptadas.
+- name: Axity
+  positioning: Consultora de TI enfocada en soluciones digitales para el mercado latinoamericano.
+  strengths:
+  - Fuerte en integración de SAP y cloud
+  - Enfoque en industrias específicas
+  weaknesses:
+  - Cobertura limitada en regiones remotas
+  - Precios pueden ser elevados
+  our_differentiation: Proporcionamos opciones más accesibles y utilizamos agentes IA para mejorar la eficiencia operativa, reduciendo costos.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 30000
+  - 500000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Automatización de soporte técnico para una PYME
+    monthly_cost: 40000
+    monthly_savings: 80000
+    payback_months: 2
+  - scenario: Implementación de ciberseguridad básica para cumplir con LFPDPPP
+    monthly_cost: 60000
+    monthly_savings: 120000
+    payback_months: 2
+  value_anchors:
+  - Nuestros servicios pueden reducir sus costos operativos de TI hasta en un 30%.
+  - Inversiones en TI con nosotros suelen tener un ROI en menos de 6 meses.
+  - Garantizamos cumplimiento normativo para evitar multas de hasta 500,000 MXN.
+market_context:
+  market_size: Aproximadamente 20 mil millones de USD anuales en México
+  growth_rate: 8-10% anual
+  key_trends:
+  - Aumento en la adopción de cloud computing y ciberseguridad
+  - Creciente demanda de soluciones de IA y automatización
+  - Fortalecimiento de regulaciones de protección de datos como LFPDPPP
+  - Expansión de servicios de TI para PYMEs
+  seasonality:
+    high:
+    - Fin de año fiscal (diciembre)
+    - Inicios de trimestre para presupuestos
+    low:
+    - Vacaciones de verano (julio-agosto)
+    - Días festivos largos
+typical_objections:
+- objection: Ya tenemos un proveedor de TI y no queremos cambiar.
+  response: Entendemos la lealtad. Sin embargo, podemos ofrecer una evaluación gratuita para comparar costos y eficiencias. Muchos clientes encuentran ahorros significativos sin comprometer la calidad.
+- objection: Los precios son demasiado altos para nuestro presupuesto.
+  response: Nuestros planes son escalables y podemos empezar con un servicio básico desde 30,000 MXN. Además, el ROI suele ser rápido, como ahorros de 15,000 MXN mensuales en soporte. ¿Podemos analizar
+    sus necesidades específicas?
+- objection: No estamos seguros de que la IA funcione bien en nuestro contexto mexicano.
+  response: Nuestros agentes de voz IA están entrenados con datos locales y cumplen con regulaciones mexicanas. Hemos implementado con éxito en empresas similares, mejorando la productividad en un 25%.
+    ¿Le gustaría una demostración?
+- objection: El proceso de migración a la nube parece muy disruptivo.
+  response: Planificamos migraciones por fases para minimizar interrupciones. Usamos herramientas que aseguran una transición suave y ofrecemos soporte continuo. Hemos ayudado a empresas como la suya con
+    éxito.
+- objection: Ya tenemos personal interno de TI, ¿por qué necesitamos sus servicios?
+  response: Complementamos su equipo interno con expertise especializado y automatización, liberándolos para tareas estratégicas. Esto aumenta la eficiencia y reduce la carga de trabajo, como vemos en ahorros
+    de tiempo del 30%.
+meta:
+  id: it_services
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- IT services
+- tech support
+- managed services
+- IT consulting
+_extends: _base/it_services

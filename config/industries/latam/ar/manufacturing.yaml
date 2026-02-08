@@ -1,0 +1,226 @@
+pain_points:
+- description: Inestabilidad en la cadena de suministro debido a restricciones de
+    importación y volatilidad cambiaria.
+  severity: high
+  solution_hint: Agente puede monitorear proveedores locales y alertar sobre demoras,
+    gestionando re-abastecimiento automático.
+- description: Alta presión de costos por inflación y aumentos tarifarios en servicios
+    públicos (luz, gas).
+  severity: high
+  solution_hint: Agente puede optimizar agendas de producción para horarios de tarifa
+    baja y sugerir proveedores energéticos alternativos.
+- description: Dificultad para cumplir con regulaciones cambiarias y administrativas
+    (AFIP, controles de precios).
+  severity: high
+  solution_hint: Agente puede recordar vencimientos fiscales, generar reportes automatizados
+    y guiar en trámites digitales.
+- description: Escasez de mano de obra calificada en operaciones técnicas y mantenimiento.
+  severity: medium
+  solution_hint: Agente puede capacitar operarios mediante tutoriales de voz y gestionar
+    turnos de capacitación.
+- description: Falta de visibilidad en tiempo real del estado de máquinas y líneas
+    de producción.
+  severity: medium
+  solution_hint: Agente puede integrarse con sensores IoT para reportar fallas y sugerir
+    mantenimiento preventivo.
+- description: Complejidad en la gestión de inventarios de materias primas con alta
+    rotación.
+  severity: medium
+  solution_hint: Agente puede realizar conteos por voz, predecir demandas y generar
+    órdenes de compra automáticas.
+- description: Dificultad para acceder a financiamiento en pesos a tasas razonables
+    para modernización.
+  severity: low
+  solution_hint: Agente puede buscar líneas de crédito oficiales (BICE, Banco Nación)
+    y preparar documentación requerida.
+typical_services:
+- Control de calidad y certificación ISO
+- Mantenimiento predictivo de maquinaria
+- Automatización de líneas de producción
+- Gestión de inventarios y logística
+- Consultoría en eficiencia energética
+- Desarrollo de proveedores locales
+- Capacitación de operarios
+- Integración de sistemas ERP industriales
+- Monitoreo de cumplimiento normativo AFIP
+- Optimización de procesos productivos
+recommended_functions:
+- name: Recordatorio de vencimientos fiscales y cambiarios
+  priority: high
+  reason: Regulaciones argentinas son complejas y multas son costosas.
+- name: Coordinación de mantenimiento por voz
+  priority: high
+  reason: Reduce tiempos de parada en producción, crítico para rentabilidad.
+- name: Monitoreo de precios de insumos en tiempo real
+  priority: high
+  reason: Inflación alta requiere ajustes rápidos en costos.
+- name: Traductor técnico inglés-español para manuales
+  priority: medium
+  reason: Mucha maquinaria importada con documentación en inglés.
+- name: Gestión de turnos y ausentismo
+  priority: medium
+  reason: Problemas frecuentes de puntualidad afectan producción.
+- name: Asistente para trámites en organismos (AFIP, municipios)
+  priority: low
+  reason: Reduce tiempo administrativo de gerentes.
+typical_integrations:
+- name: Sistemas ERP locales
+  examples:
+  - Tango
+  - SAP Business One
+  - Wise
+  priority: high
+- name: Sistemas de control industrial (SCADA)
+  examples:
+  - Siemens
+  - Rockwell
+  - Schneider Electric
+  priority: high
+- name: Plataformas de comercio exterior
+  examples:
+  - SIMI
+  - VUCE
+  - Marangatú
+  priority: medium
+- name: Sistemas de gestión energética
+  examples:
+  - ENARGAS
+  - EDENOR
+  - EDESUR
+  priority: medium
+- name: Software de nómina argentino
+  examples:
+  - Bureau
+  - Gestionando
+  - Huenei
+  priority: low
+industry_faq:
+- question: ¿Cómo manejan la integración con sistemas ERP locales como Tango?
+  answer_template: Nuestro agente se integra mediante APIs seguras, sincronizando
+    datos de producción, inventario y facturación automáticamente.
+- question: ¿Funciona con los cortes de luz frecuentes en polígonos industriales?
+  answer_template: Opera en la nube con respaldo local, recuperando datos post-corte,
+    y puede gestionar grupos electrógenos automáticamente.
+- question: ¿Soporta regulaciones de AFIP sobre facturación electrónica?
+  answer_template: Sí, genera comprobantes en formato AFIP y envía automáticamente
+    al sistema, recordando vencimientos de presentación.
+- question: ¿Puede ayudar a reducir costos de fletes internos?
+  answer_template: Optimiza rutas de distribución considerando restricciones de circulación
+    y sugiere consolidación de cargas.
+- question: ¿Cómo maneja la terminología técnica específica de mi sector?
+  answer_template: Entrenamos el agente con glosarios de su industria (plásticos,
+    metalmecánica, etc.) para comprender órdenes técnicas.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el costo inicial.
+  script: 'Entiendo su preocupación por la inversión. Nuestro punto de entrada es
+    de ARS 150.000 mensuales, pero le muestro el retorno: en fábricas como la suya,
+    reducimos un 30% las paradas por mantenimiento, ahorrando hasta ARS 300.000 mensuales.
+    ¿Puedo enviarle un caso específico de su industria?'
+  goal: Anclar en ahorro, no en costo, y pedir contacto para caso concreto.
+- trigger: competitor_mention
+  situation: Cuando mencionan a un competidor local.
+  script: Valoro que conozca a [competidor]. Nos diferenciamos en comprensión de trámites
+    AFIP y cadenas de suministro argentinas. Mientras ellos se enfocan en software,
+    nosotros automatizamos procesos completos, incluyendo gestión con proveedores
+    locales. ¿Le interesa una demostración con datos reales de fábricas en Pilar o
+    Rosario?
+  goal: Diferenciación local y apelar a ejemplos regionales.
+- trigger: implementation_time
+  situation: Cuando preguntan por tiempo de implementación.
+  script: En 2 semanas tiene funciones básicas operando. Comenzamos con monitoreo
+    de máquinas críticas y recordatorios fiscales, sin detener su producción. La configuración
+    completa tarda 6 semanas, pero el ROI comienza desde el primer mes.
+  goal: Reducir percepción de riesgo y mostrar avance rápido.
+competitors:
+- name: Neoris
+  positioning: Consultora multinacional con fuerte presencia en grandes manufactureras.
+  strengths:
+  - Presencia global
+  - Soluciones personalizadas
+  - Recursos técnicos
+  weaknesses:
+  - Costos altos en ARS
+  - Poca flexibilidad para PyMEs
+  - Respuestas lentas
+  our_differentiation: Agentes de voz especializados en normativa argentina, precios
+    en pesos fijos, implementación rápida.
+- name: Hexacta
+  positioning: Desarrollo de software a medida para industria local.
+  strengths:
+  - Conocimiento del mercado argentino
+  - Desarrollo ágil
+  - Soporte en español
+  weaknesses:
+  - Foco en software, no procesos
+  - Poca experiencia en automatización por voz
+  - Limitada integración IoT
+  our_differentiation: Automatización integral por voz, incluyendo gestión humana
+    y de máquinas, con ROI medible en 90 días.
+- name: Practia
+  positioning: Implementadora de SAP para sector industrial.
+  strengths:
+  - Certificación SAP
+  - Experiencia en grandes proyectos
+  - Soporte 24/7
+  weaknesses:
+  - Enfoque en sistemas, no en productividad
+  - Costos ocultos por licencias
+  - Implementaciones largas (>6 meses)
+  our_differentiation: Complementamos SAP con automatización por voz para operarios
+    y gerentes, sin reemplazar su inversión actual.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 150000
+  - 800000
+  entry_point: 150000
+  roi_examples:
+  - scenario: Fábrica de autopartes con 50 empleados
+    monthly_cost: 250000
+    monthly_savings: 400000
+    payback_months: 2
+  value_anchors:
+  - Reduce paradas de producción en 30%
+  - Recupera 10 horas semanales de gerentes en trámites
+  - Disminuye errores de inventario en 25%
+market_context:
+  market_size: USD 500 millones anuales en servicios de automatización
+  growth_rate: 8% anual impulsado por sustitución de importaciones
+  key_trends:
+  - 'Nearshoring: empresas relocalizan producción desde Asia'
+  - Digitalización forzada por controles de precios y stock
+  - Foco en eficiencia energética por tarifas altas
+  seasonality:
+    high:
+    - Enero-Febrero (reabastecimiento post-vacaciones)
+    - Septiembre-Octubre (cierre fiscal)
+    low:
+    - Julio (vacaciones de invierno)
+    - Diciembre (cierre anual)
+typical_objections:
+- objection: No podemos invertir en tecnología con la situación económica actual.
+  response: Justamente en contextos inflacionarios, la automatización protege sus
+    márgenes. Nuestros clientes recuperan la inversión en 3 meses, reduciendo costos
+    variables que más suben.
+- objection: Mi personal no está preparado para usar tecnología de voz.
+  response: Diseñamos comandos en lunfardo técnico argentino. Sus operarios aprenden
+    en 2 días, como usar un celular. Le damos capacitación in situ en su fábrica.
+- objection: Ya tenemos un sistema ERP, no necesitamos más.
+  response: 'Nuestro agente no reemplaza su ERP, lo potencia. Mientras su ERP guarda
+    datos, el agente actúa: ordena compras ante faltantes, programa mantenimiento
+    y alerta sobre regulaciones. ¿Puedo mostrarle cómo funciona con [su sistema]?'
+meta:
+  id: manufacturing
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

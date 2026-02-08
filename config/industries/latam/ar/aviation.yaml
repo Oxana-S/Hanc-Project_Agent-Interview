@@ -1,0 +1,284 @@
+pain_points:
+- description: Alta volatilidad en los costos de combustible y mantenimiento debido
+    a la inflación y restricciones de importación.
+  severity: high
+  solution_hint: El agente de voz puede monitorear cotizaciones en tiempo real y alertar
+    sobre oportunidades de compra, además de gestionar órdenes de compra automáticas
+    con proveedores autorizados.
+- description: Ineficiencias en la gestión de tripulaciones y asignación de turnos,
+    generando sobrecostos por horas extras y fatiga operacional.
+  severity: high
+  solution_hint: Automatizar la asignación de tripulaciones cumpliendo con las regulaciones
+    de ANAC, enviar recordatorios de descansos y gestionar cambios de último minuto.
+- description: Baja tasa de reconfirmación para vuelos charter y turísticos, especialmente
+    en temporada baja, resultando en asientos vacíos.
+  severity: medium
+  solution_hint: Implementar campañas automatizadas de reconfirmación y upsell vía
+    llamadas y mensajes de voz, ofreciendo servicios adicionales.
+- description: Dificultad en la gestión centralizada de quejas y reclamos de pasajeros
+    a través de múltiples canales (teléfono, redes sociales, email).
+  severity: medium
+  solution_hint: Unificar la atención al cliente con un agente de voz que clasifique,
+    derive y dé seguimiento inicial a reclamos, liberando a agentes humanos para casos
+    complejos.
+- description: Procesos manuales y lentos para la venta de pasajes complementarios
+    (ancillaries) como equipaje extra o asientos preferenciales.
+  severity: medium
+  solution_hint: Integrar el agente de voz con el sistema de reservas para ofrecer
+    y vender servicios complementarios durante la llamada de confirmación.
+- description: Complejidad en el cumplimiento de normativas cambiarias y tributarias
+    locales para transacciones internacionales.
+  severity: high
+  solution_hint: El agente puede proporcionar información actualizada sobre regulaciones
+    y guiar al cliente en los pasos requeridos, integrado con sistemas contables.
+- description: Falta de información operativa en tiempo real para pasajeros durante
+    irregularidades (cancelaciones, demoras).
+  severity: medium
+  solution_hint: Notificar proactivamente a los pasajeros afectados vía llamada automática
+    con opciones de rebooking o reembolso, reduciendo la saturación en mostradores.
+typical_services:
+- Venta y emisión de pasajes aéreos (domésticos e internacionales)
+- Operación de vuelos charter ejecutivos y turísticos
+- Gestión y venta de servicios complementarios (ancillaries)
+- Mantenimiento de aeronaves (MRO)
+- Gestión de tripulaciones (crew management)
+- Handling en tierra (rampa, pasajeros, carga)
+- Alquiler de aeronaves (wet lease / dry lease)
+- Venta de paquetes turísticos (fly & drive, fly & hotel)
+- Transporte de carga aérea
+- Capacitación para pilotos y tripulantes de cabina
+recommended_functions:
+- name: Confirmación y recordatorio de vuelos
+  priority: high
+  reason: Reduce el no-show y permite la venta de servicios complementarios en un
+    momento de alta atención del cliente.
+- name: Recepción y clasificación de reclamos
+  priority: high
+  reason: Descongestiona los canales de atención humanas, especialmente crítico durante
+    irregularidades operativas.
+- name: Soporte para reservas y cambios
+  priority: medium
+  reason: Permite a las aerolíneas de bajo costo y regionales ofrecer atención 24/7
+    sin aumentar costos fijos.
+- name: Recordatorios de pagos y vencimientos
+  priority: medium
+  reason: Mejora el cash flow en un contexto de alta inflación, crucial para operadores
+    locales.
+- name: Encuestas de satisfacción post-vuelo
+  priority: low
+  reason: Automatiza la recolección de datos valiosos para mejorar el servicio, con
+    mayor tasa de respuesta que el email.
+- name: Asistencia para procedimientos de check-in
+  priority: medium
+  reason: Reduce las filas en aeropuertos y guía a pasajeros menos familiarizados
+    con la tecnología.
+typical_integrations:
+- name: Sistema de Reservas (PSS/CRS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Navitaire
+  - Radixx
+  - Kiu
+  priority: high
+- name: Sistema de Operaciones de Vuelo (FOS)
+  examples:
+  - AIMS
+  - FlyPal
+  - Jeppesen
+  - Lufthansa Systems
+  priority: high
+- name: Software de Gestión de Mantenimiento (MRO)
+  examples:
+  - AMOS
+  - TRAX
+  - RUSADA
+  - RAMCO
+  priority: medium
+- name: Plataforma de Atención al Cliente / CRM
+  examples:
+  - Zendesk
+  - Salesforce Service Cloud
+  - Freshdesk
+  - 'local: Gestikar'
+  priority: medium
+- name: Sistema de Gestión Financiera y Contable
+  examples:
+  - SAP
+  - Tango
+  - 'local: Bejerman'
+  - 'local: SQL'
+  priority: medium
+industry_faq:
+- question: ¿Puedo cambiar o cancelar mi vuelo a través del agente de voz?
+  answer_template: ¡Por supuesto! Nuestro agente de voz puede ayudarle con cambios,
+    cancelaciones y gestionar las políticas de tarifa aplicables. Para proceder, necesitaré
+    su código de reserva o número de documento.
+- question: ¿Está actualizado el agente con los requisitos de documentación para volar
+    a [destino]?
+  answer_template: Sí, nuestro sistema se actualiza regularmente con los requisitos
+    de la ANAC, Migraciones y los países de destino. Sin embargo, para información
+    oficial y definitiva, siempre le recomendamos consultar también la página web
+    de la aerolínea.
+- question: ¿Qué hago si mi equipaje no llegó con el vuelo?
+  answer_template: Lamento escuchar eso. Nuestro agente puede iniciar el reporte oficial
+    de equipaje extraviado (PIR) y darle un número de seguimiento. También puede conectarlo
+    inmediatamente con un agente especializado en handling de su aeropuerto de llegada.
+- question: ¿Ofrecen asistencia para personas con movilidad reducida?
+  answer_template: Absolutamente. Podemos coordinar el servicio de silla de ruedas
+    y asistencia especial desde el momento del check-in hasta el embarque. ¿Desea
+    que agregue este servicio gratuito a su reserva ahora?
+- question: ¿Cómo manejan los retrasos y cancelaciones por mal tiempo?
+  answer_template: 'En caso de irregularidades operativas, nuestro agente lo notificará
+    proactivamente y le presentará las opciones disponibles: rebooking en el próximo
+    vuelo, reembolso o un voucher, de acuerdo a la normativa.'
+sales_scripts:
+- trigger: initial_contact
+  situation: Primer contacto con un director de operaciones o gerente comercial de
+    una aerolínea regional o empresa de servicios de aviación.
+  script: Hola [Nombre], soy [Nombre del Agente] de [Su Empresa]. Llamamos porque
+    sabemos que gestionar la eficiencia operativa y la satisfacción del cliente en
+    la aviación argentina es un desafío constante, especialmente con la volatilidad
+    de costos. Nuestra solución de agente de voz IA está ayudando a compañías aéreas
+    a reducir hasta un 30% las llamadas no resueltas en atención al cliente y optimizar
+    la gestión de tripulaciones. ¿Le interesaría una breve demostración de cómo podría
+    ahorrar costos operativos?
+  goal: Generar interés y agendar una demostración, posicionando la solución como
+    un aliado para la eficiencia y el ahorro.
+- trigger: price_question
+  situation: El cliente pregunta por el precio tras una demostración o descripción
+    inicial.
+  script: Entiendo que la inversión es una consideración clave. Nuestro modelo se
+    basa en el volumen de interacciones, partiendo desde un punto de entrada accesible
+    de [Monto en ARS] mensuales, que típicamente se autofinancia con los ahorros en
+    personal para tareas repetitivas como confirmaciones y reclamos básicos. El ROI
+    suele verse en menos de 4 meses. ¿Prefiere que le detalle una proyección basada
+    en el número promedio de pasajeros que maneja su empresa?
+  goal: Suavizar la objeción del precio, enfocándose en el ROI rápido y ofrecer una
+    propuesta personalizada.
+- trigger: objection_technology
+  situation: El cliente expresa escepticismo sobre la adopción de IA o la capacidad
+    de integración con sus sistemas legacy.
+  script: Es una preocupación muy válida, especialmente en un sector con sistemas
+    críticos. Le comento que nos especializamos en integraciones seguras con los PSS
+    y sistemas de operación más comunes en el mercado latinoamericano, como Amadeus,
+    Sabre o AIMS. Trabajamos en fases, empezando por un módulo no-crítico como las
+    confirmaciones, para que su equipo gane confianza. Además, ofrecemos soporte técnico
+    local. ¿Con qué sistemas trabaja actualmente?
+  goal: Ganar confianza demostrando expertise técnico y un enfoque gradual, desplazando
+    la conversación hacia los detalles de integración.
+competitors:
+- name: Aerolíneas Argentinas (Servicio de Atención)
+  positioning: Aerolínea de bandera con centro de contacto interno grande pero tradicional.
+  strengths:
+  - Gran escala y conocimiento profundo del mercado doméstico
+  - Marca reconocida y confianza del pasajero
+  weaknesses:
+  - Altos costos operativos
+  - Sistemas legacy que dificultan la innovación rápida
+  - Tiempos de espera largos en atención telefónica
+  our_differentiation: Ofrecemos una solución modernizadora que puede integrarse a
+    su infraestructura existente para descongestionar su centro de contacto y reducir
+    costos, sin reemplazarlo.
+- name: LATAM Airlines Group
+  positioning: Grupo aeronáutico regional con inversión en tecnología a nivel corporativo.
+  strengths:
+  - Presencia regional fuerte
+  - Mayor inversión en digitalización
+  - Procesos más estandarizados
+  weaknesses:
+  - Las soluciones corporativas pueden ser rígidas y menos adaptadas a necesidades
+    específicas del mercado argentino
+  - Menor enfoque en PYMEs de aviación
+  our_differentiation: Somos más ágiles y ofrecemos soluciones personalizables y escalables
+    específicamente para el ecosistema argentino, desde grandes aerolíneas hasta operadores
+    de charter.
+- name: Proveedores locales de call centers
+  positioning: Empresas de outsourcing de atención telefónica tradicional.
+  strengths:
+  - Conocimiento local del idioma y costumbres
+  - Mano de obra inicialmente más barata
+  weaknesses:
+  - Altísima rotación de personal
+  - Calidad de servicio inconsistente
+  - Escalabilidad limitada en picos de demanda
+  - No ofrecen automatización inteligente con IA
+  our_differentiation: Nuestra solución reduce la dependencia de la rotación del personal,
+    ofrece consistencia 24/7, escala instantáneamente y aprende de cada interacción,
+    convirtiendo el centro de costo en un centro de inteligencia.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 150000
+  - 800000
+  entry_point: 95000
+  roi_examples:
+  - scenario: Operador de charter con 500 pasajeros/mes que automatiza confirmaciones
+      y venta de ancillaries.
+    monthly_cost: 120000
+    monthly_savings: 180000
+    payback_months: 2.5
+  - scenario: Aerolínea regional que deriva el 40% de sus reclamos iniciales al agente
+      de voz.
+    monthly_cost: 350000
+    monthly_savings: 420000
+    payback_months: 3
+  value_anchors:
+  - Reduce hasta un 50% el tiempo de tus agentes en tareas repetitivas.
+  - Mejora la satisfacción del cliente con respuestas inmediatas 24/7.
+  - Convierte cada llamada en una oportunidad de venta adicional.
+  - Protege tu operación de la inflación salarial y la rotación de personal.
+market_context:
+  market_size: Mercado de servicios de tecnología para aviación en Argentina estimado
+    en ~USD 80 millones anuales.
+  growth_rate: 4-7% anual, impulsado por la recuperación del turismo y la necesidad
+    de eficiencia operativa.
+  key_trends:
+  - Recuperación del turismo internacional post-pandemia, especialmente en destinos
+    como Bariloche, Iguazú y Mendoza.
+  - Crecimiento del segmento de aviación ejecutiva y charter para negocios.
+  - Presión regulatoria (ANAC) para mejorar los estándares de atención al pasajero
+    y transparencia en información.
+  - Mayor foco en la digitalización de procesos para competir con actores regionales.
+  seasonality:
+    high:
+    - Enero (verano)
+    - Julio (invierno/receso escolar)
+    - Semana Santa
+    low:
+    - Marzo, Abril
+    - Mayo, Junio
+    - Noviembre (previo a temporada alta)
+typical_objections:
+- objection: Nuestros pasajeros, especialmente los menos jóvenes, prefieren siempre
+    hablar con una persona.
+  response: 'Totalmente de acuerdo, la atención humana es irremplazable para casos
+    complejos. Nuestra solución actúa como primer filtro: resuelve consultas simples
+    rápidamente y deriva de manera inteligente al agente humano solo cuando es necesario,
+    lo que reduce las esperas y mejora la experiencia para todos.'
+- objection: Implementar nueva tecnología ahora es riesgoso, con la situación económica
+    inestable.
+  response: Es justamente en tiempos de incertidumbre cuando la eficiencia operativa
+    y el control de costos son más críticos. Nuestro modelo tiene un costo inicial
+    bajo y un ROI rápido, actuando como un amortiguador ante la inflación de costos
+    laborales. Podemos empezar con un piloto de bajo riesgo en un solo proceso.
+- objection: Ya tenemos un software de gestión (PSS/FOS) que costó mucho implementar.
+    No queremos más complicaciones.
+  response: Nos especializamos en complementar, no en reemplazar. Nuestro valor está
+    en integrarnos de forma segura con su software central (como su PSS) para extraer
+    más valor de él, automatizando las interacciones con el cliente que hoy se hacen
+    de forma manual fuera del sistema, unificando la información.
+meta:
+  id: aviation
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

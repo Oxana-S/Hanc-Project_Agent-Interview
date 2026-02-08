@@ -1,0 +1,211 @@
+pain_points:
+- description: Ügyfélkommunikáció és időpontkezelés nehézségei, amelyek időt vesznek
+    el az állatorvosoktól.
+  severity: high
+  solution_hint: AI hangügynök automatizálhatja az időpontfoglalásokat és ügyfélinformációk
+    kezelését.
+- description: Páciensadatok és orvosi nyilvántartások manuális kezelése, ami hibákhoz
+    vezethet.
+  severity: medium
+  solution_hint: AI hangügynök integrálható EHR rendszerekkel, hogy pontos adatkezelést
+    biztosítson.
+- description: Ügyfélpanaszok és kérdések folyamatos kezelése munkaidőn kívül, ami
+    kihívásokkal jár.
+  severity: high
+  solution_hint: AI hangügynök 24/7 ügyfélszolgálatot nyújthat, gyakori kérdésekre
+    válaszolva.
+- description: Védőoltások és rutinvizsgálatok emlékeztetésének hiánya, ami alacsony
+    betartási arányhoz vezet.
+  severity: medium
+  solution_hint: AI hangügynök automatizált emlékeztetőket küldhet SMS-en vagy e-mailen
+    keresztül.
+- description: Hirdetési költségek magasak, és nehéz új ügyfeleket szerezni a helyi
+    piacon.
+  severity: medium
+  solution_hint: AI hangügynök segíthet célzott marketingkampányokban és ügyfélmegtartásban.
+- description: GDPR megfelelés fenntartása az ügyféladatok kezelése során.
+  severity: high
+  solution_hint: AI hangügynök biztonságos adatfeldolgozást kínál, GDPR-kompatibilis
+    beállításokkal.
+typical_services:
+- Állatorvosi alapvizsgálat
+- Védőoltások
+- Fogászati ellátás
+- Sebészeti beavatkozások
+- Laboratóriumi vizsgálatok
+- Kutya és macska tartás tanácsadás
+- Chip beültetés
+- Utazási egészségügyi dokumentumok
+- Állatbiztosítási tanácsadás
+- Sürgősségi ellátás
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: Csökkenti az adminisztratív terhelést és javítja az ügyfélélményt.
+- name: Ügyféladatbázis kezelése
+  priority: high
+  reason: Segít GDPR megfelelésben és pontos nyilvántartásban.
+- name: Automatizált emlékeztetők küldése
+  priority: medium
+  reason: Növeli a védőoltások és vizsgálatok betartási arányát.
+- name: Gyakori kérdések kezelése
+  priority: medium
+  reason: Csökkenti a személyzet terhelését és gyors válaszokat biztosít.
+- name: Hirdetési kampányok támogatása
+  priority: low
+  reason: Segít új ügyfelek szerzésében a helyi piacon.
+- name: Páciens visszajelzések gyűjtése
+  priority: medium
+  reason: Javítja a szolgáltatás minőségét és ügyfélhűséget.
+typical_integrations:
+- name: Páciens nyilvántartó rendszer (EHR)
+  examples:
+  - VetWare
+  - ClinicSoft
+  priority: high
+- name: Pénzügyi és számlázó szoftver
+  examples:
+  - Navision
+  - SuperFact
+  priority: high
+- name: Telefonközponti rendszer
+  examples:
+  - Avaya
+  - Cisco
+  priority: medium
+- name: E-mail marketing platform
+  examples:
+  - Mailchimp
+  - Sendinblue
+  priority: low
+- name: Könyvelő szoftver
+  examples:
+  - Számvitel Plus
+  - Economy
+  priority: medium
+industry_faq:
+- question: Mennyibe kerül egy állatorvosi alapvizsgálat?
+  answer_template: Az alapvizsgálat ára általában 5000-15000 HUF között mozog, a klinikától
+    függően. Pontos árakat ajánlunk egy személyes konzultáción.
+- question: Milyen védőoltások szükségesek a kutyámnak?
+  answer_template: A kötelező védőoltások közé tartozik a veszettség elleni oltás.
+    Egyedi oltási tervet ajánlunk, amely az állat életkorától és életmódjától függ.
+- question: Hogyan kell időpontot foglalni sürgősségi esetben?
+  answer_template: Sürgősségi esetekben azonnal hívja a klinikánkat, vagy használja
+    online időpontfoglaló rendszerünket gyors válaszért.
+- question: Mit tegyek, ha az állatom éjszaka rosszul van?
+  answer_template: Ajánljuk, hogy keresse fel a legközelebbi sürgősségi állatorvosi
+    szolgáltatást. AI hangügynökünk segíthet információkkal 24/7.
+- question: Elfogadják az állatbiztosítást?
+  answer_template: Igen, együttműködünk több állatbiztosítótársasággal. Kérjük, hozza
+    el a biztosítási dokumentumokat a vizsgálatra.
+- question: Hogyan készüljek fel az állatorvosi látogatásra?
+  answer_template: Hozza el az állat egészségügyi nyilvántartását és korábbi kezeléseit.
+    Az állatot éhgyomorra ajánljuk vizsgálat előtt.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy potenciális ügyfél árakat kér az AI hangügynök szolgáltatásáról.
+  script: Köszönjük érdeklődését! AI hangügynök szolgáltatásunk havi 15000 HUF-tól
+    kezdődik, testre szabható csomagokkal. Ez napi kevesebb, mint 500 HUF-ba kerül,
+    és segít időt takarítani meg adminisztratív feladatokkal. Szeretne egy ingyenes
+    bemutatót?
+  goal: Az ár bemutatása és egy ingyenes bemutató ajánlása a további érdeklődés felkeltésére.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél említi a versenytársakat.
+  script: Értjük, hogy más opciók is vannak a piacon. Mi azonban kiemelten GDPR-kompatibilis
+    megoldásokat kínálunk, és testreszabható integrációkkal a magyar piacra. Több
+    helyi állatorvosi klinika is már használja szolgáltatásainkat a hatékonyság növelésére.
+  goal: A különbségek hangsúlyozása és a helyi tapasztalat bemutatása.
+- trigger: objection_too_expensive
+  situation: Amikor az ügyfél túl drágának találja a szolgáltatást.
+  script: Megértjük a költség aggályait. Gondolja át, hogy havonta mennyi időt takarít
+    meg az adminisztrációval? AI hangügynökünk segíthet akár 10 óra munkaidőt megtakarítani
+    havonta, ami több mint 50000 HUF értékű. Ez gyorsan megtérül.
+  goal: Az ROI bemutatása és a költségek ésszerűsítése.
+competitors:
+- name: VetCall Hungary
+  positioning: Telefonos ügyfélszolgálati szolgáltatások állatorvosi klinikáknak.
+  strengths:
+  - Helyi piaci jelenlét
+  - Alacsonyabb kezdő árak
+  weaknesses:
+  - Korlátozott AI képességek
+  - Kevesebb integrációs lehetőség
+  our_differentiation: Mi fejlettebb AI-t kínálunk GDPR-kompatibilis adatkezeléssel
+    és szélesebb integrációkkal.
+- name: PetCare Solutions
+  positioning: Átfogó állategészségügyi szoftverek és szolgáltatások.
+  strengths:
+  - Teljes körű szoftvercsomagok
+  - Erős piaci hírnév
+  weaknesses:
+  - Magas költségek
+  - Bonyolult implementáció
+  our_differentiation: Könnyen implementálható, költséghatékony AI hangügynök, amely
+    kiegészíti meglévő rendszereket.
+- name: AnimalTech EU
+  positioning: Európai szintű digitális megoldások az állatorvoslásban.
+  strengths:
+  - Nemzetközi tapasztalat
+  - Innovatív technológiák
+  weaknesses:
+  - Kevesebb helyi támogatás
+  - Magasabb árak
+  our_differentiation: Helyileg alkalmazkodó, magyar nyelven elérhető megoldások,
+    amelyek jobban illeszkednek a helyi igényekhez.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Kis állatorvosi klinika időpontkezelés automatizálása
+    monthly_cost: 20000
+    monthly_savings: 40000
+    payback_months: 1
+  value_anchors:
+  - Napi kevesebb, mint 500 HUF a hatékonyság növeléséért.
+  - GDPR megfelelés biztosítása minden interakcióban.
+  - 24/7 ügyfélszolgálat anélkül, hogy további személyzetet kellene felvenni.
+market_context:
+  market_size: Becslések szerint az állatorvosi szolgáltatások piaca Magyarországon
+    évi 50-100 milliárd HUF.
+  growth_rate: Évi 5-10% növekedés a háziállatok népszerűségének növekedése miatt.
+  key_trends:
+  - Növekvő kereslet a digitális megoldásokra az állatorvoslásban.
+  - A háziállatok humanizálása és prémium szolgáltatások iránti igény.
+  - GDPR megfelelés fontosságának növekedése.
+  seasonality:
+    high:
+    - tavasz
+    - ősz
+    low:
+    - nyár
+    - tél
+typical_objections:
+- objection: Túl drága a szolgáltatás.
+  response: Megértjük. De gondolja át, hogy mennyi időt takarít meg az adminisztrációval?
+    Havonta akár 10 órát is megtakaríthat, ami több mint 50000 HUF értékű. Ez gyors
+    megtérülést jelent.
+- objection: Nem bízom az AI technológiában.
+  response: Teljesen érthető. AI hangügynökünk emberi felügyelet mellett működik,
+    és GDPR-kompatibilis. Ingyenes bemutatót kínálunk, hogy megbizonyosodjon a hatékonyságáról.
+- objection: Már van ügyfélszolgálati rendszerünk.
+  response: Kiváló! AI hangügynökünk könnyen integrálható meglévő rendszerekkel, hogy
+    tovább javítsa a hatékonyságot és ügyfélélményt, anélkül, hogy lecserélné a jelenlegi
+    megoldásokat.
+meta:
+  id: veterinary
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

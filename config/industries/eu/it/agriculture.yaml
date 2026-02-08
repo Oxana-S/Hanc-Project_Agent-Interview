@@ -1,0 +1,203 @@
+pain_points:
+- description: Variazioni climatiche imprevedibili che danneggiano i raccolti.
+  severity: high
+  solution_hint: L'agente vocale AI può fornire previsioni meteo accurate e consigli per mitigare i rischi.
+- description: Aumento dei costi di produzione, come fertilizzanti e energia.
+  severity: high
+  solution_hint: AI può aiutare a ottimizzare l'uso delle risorse e suggerire alternative più economiche.
+- description: Mancanza di manodopera qualificata e stagionale.
+  severity: medium
+  solution_hint: Automatizzare compiti ripetitivi con AI per ridurre la dipendenza dalla manodopera.
+- description: Burocrazia complessa per sussidi e normative UE.
+  severity: medium
+  solution_hint: AI può guidare attraverso le procedure burocratiche e inviare promemoria per scadenze.
+- description: Concorrenza da prodotti stranieri a basso costo.
+  severity: high
+  solution_hint: AI può aiutare a differenziare i prodotti con tracciabilità e qualità certificata.
+- description: Gestione inefficiente delle risorse idriche.
+  severity: medium
+  solution_hint: Monitoraggio smart dell'irrigazione con AI per risparmiare acqua.
+- description: Difficoltà nell'accesso al credito per investimenti.
+  severity: low
+  solution_hint: AI può preparare documenti finanziari e connettere con istituzioni creditizie.
+typical_services:
+- Consulenza agronomica
+- Vendita di sementi e fertilizzanti
+- Meccanizzazione agricola e noleggio attrezzature
+- Servizi di irrigazione e gestione idrica
+- Applicazione di fitosanitari e trattamenti
+- Logistica, stoccaggio e distribuzione
+- Assistenza tecnica in campo e formazione
+- Servizi finanziari, assicurazioni e sussidi
+- Digitalizzazione, software gestionale e IoT
+- Certificazioni di qualità e tracciabilità
+recommended_functions:
+- name: Prenotazione appuntamenti
+  priority: high
+  reason: Per ottimizzare il tempo degli agricoltori e garantire consulenze tempestive.
+- name: Risposte a FAQ normative
+  priority: high
+  reason: Ridurre l'incertezza sulle compliance e evitare sanzioni.
+- name: Monitoraggio meteo e allarmi
+  priority: high
+  reason: Prevenire danni ai raccolti con avvisi precoci.
+- name: Gestione ordini e inventario
+  priority: medium
+  reason: Automatizzare le ordinazioni per risparmiare tempo.
+- name: Supporto tecnico remoto
+  priority: medium
+  reason: Risolvere problemi con attrezzature senza bisogno di intervento fisico.
+- name: Invio promemoria per trattamenti
+  priority: low
+  reason: Assicurare che le pratiche agricole siano eseguite al momento giusto.
+- name: Analisi dati di produzione
+  priority: medium
+  reason: Fornire insights per migliorare la resa e la qualità.
+typical_integrations:
+- name: Sistemi ERP agricoli
+  examples:
+  - AgriERP
+  - FarmLogs Italia
+  priority: high
+- name: Software meteorologico
+  examples:
+  - MeteoAM
+  - IlMeteo
+  priority: high
+- name: Sistemi di tracciabilità
+  examples:
+  - Sistema Nazionale Tracciabilità
+  - Qualivita
+  priority: medium
+- name: App di gestione aziendale
+  examples:
+  - Agricolus
+  - FieldView
+  priority: medium
+- name: Piattaforme di e-commerce
+  examples:
+  - Terra è Vita
+  - Agrivend
+  priority: low
+industry_faq:
+- question: Come posso accedere ai sussidi per l'agricoltura biologica in Italia?
+  answer_template: Per accedere ai sussidi, è necessario registrarsi al sistema informativo agricolo nazionale e presentare la domanda attraverso il portale AGEA. Consigliamo di consultare un esperto per
+    assicurare la corretta compilazione.
+- question: Quali sono le normative per l'uso di pesticidi secondo le direttive UE?
+  answer_template: Le normative sono regolate dal PAN (Piano d'Azione Nazionale) e richiedono formazione specifica. L'agente AI può fornire dettagli sulle sostanze consentite e sui limiti.
+- question: Come posso migliorare l'efficienza idrica nella mia azienda?
+  answer_template: Implementare sistemi di irrigazione a goccia e utilizzare sensori per monitorare l'umidità del suolo. L'AI può aiutare a ottimizzare i programmi di irrigazione.
+- question: Quali tecnologie sono disponibili per la tracciabilità dei prodotti?
+  answer_template: Esistono sistemi basati su blockchain e QR code che consentono la tracciabilità completa. L'AI può integrare questi sistemi per automatizzare la registrazione.
+- question: Come posso ridurre i costi energetici in agricoltura?
+  answer_template: Adottare fonti rinnovabili come pannelli solari e ottimizzare l'uso di macchinari. L'AI può analizzare i consumi e suggerire interventi.
+- question: Quali sono le tendenze del mercato per i prodotti agricoli italiani?
+  answer_template: Cresce la domanda per prodotti biologici, DOP e IGP. L'AI può fornire analisi di mercato per orientare la produzione.
+- question: Come gestire la manodopera stagionale in modo efficiente?
+  answer_template: Utilizzare piattaforme digitali per il reclutamento e la gestione dei turni. L'AI può automatizzare la schedulazione e la comunicazione.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui costi dei servizi di automazione.
+  script: Ciao, comprendiamo che il budget è una preoccupazione. I nostri servizi partono da 1000€ e possono farti risparmiare fino al 30% sui costi operativi. Ad esempio, con il monitoraggio AI, riduci
+    gli sprechi e aumenti la resa. Vorresti vedere una simulazione personalizzata?
+  goal: Dimostrare il valore e il ritorno sull'investimento per superare l'ostacolo del prezzo.
+- trigger: service_details
+  situation: Quando un cliente chiede dettagli su un servizio specifico, come la consulenza agronomica.
+  script: Certamente! La nostra consulenza agronomica include analisi del suolo, piani di coltivazione e supporto continuo. Utilizziamo AI per personalizzare le raccomandazioni in base alle tue esigenze.
+    Posso programmare una chiamata con un nostro esperto?
+  goal: Educare il cliente sui benefici e spingerlo verso un appuntamento.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente.
+  script: Apprezziamo che tu stia valutando diverse opzioni. A differenza di [nome concorrente], offriamo integrazioni complete con software locali e supporto in italiano 24/7. Inoltre, i nostri ROI sono
+    dimostrabili con casi studio italiani.
+  goal: Differenziare il nostro servizio e evidenziare i vantaggi locali.
+- trigger: urgency_question
+  situation: Quando il cliente chiede quanto tempo ci vuole per implementare la soluzione.
+  script: L'implementazione base richiede solo 2 settimane, e puoi iniziare a vedere risultati in un mese. Offriamo un periodo di prova per garantire che soddisfi le tue aspettative. Possiamo iniziare la
+    settimana prossima?
+  goal: Rassicurare sul tempo e incoraggiare l'azione immediata.
+competitors:
+- name: AgriTech Italia
+  positioning: Fornitore leader di tecnologia agricola in Italia
+  strengths:
+  - Ampia rete di distribuzione
+  - Supporto locale esteso
+  weaknesses:
+  - Prezzi elevati
+  - Limitata personalizzazione
+  our_differentiation: Offriamo soluzioni AI più accessibili e personalizzate con integrazioni flessibili.
+- name: Consorzio Agrario del Nord
+  positioning: Consorzio tradizionale con servizi completi
+  strengths:
+  - Storia consolidata
+  - Servizi finanziari integrati
+  weaknesses:
+  - Lenta innovazione digitale
+  - Burocrazia interna
+  our_differentiation: Digitalizzazione avanzata e automazione che riducono i tempi e i costi.
+- name: FarmSmart EU
+  positioning: Startup tecnologica europea
+  strengths:
+  - Tecnologia all'avanguardia
+  - Scalabilità
+  weaknesses:
+  - Supporto limitato in italiano
+  - Poco focalizzato sul mercato italiano
+  our_differentiation: Soluzioni localizzate per le specifiche normative e pratiche agricole italiane.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 2000
+  - 30000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Implementazione di monitoraggio AI per irrigazione
+    monthly_cost: 200
+    monthly_savings: 450
+    payback_months: 1.33
+  - scenario: Automazione della gestione inventario
+    monthly_cost: 300
+    monthly_savings: 400
+    payback_months: 0.75
+  value_anchors:
+  - Riduzione del 20% dei costi operativi
+  - Aumento del 15% della resa dei raccolti
+  - Supporto 24/7 in italiano
+market_context:
+  market_size: 30 miliardi di EUR
+  growth_rate: 3% annuo
+  key_trends:
+  - Agricoltura di precisione
+  - Sostenibilità e biologico
+  - Digitalizzazione e IoT
+  - Tracciabilità e trasparenza
+  seasonality:
+    high:
+    - Primavera (marzo-giugno)
+    - Autunno (settembre-novembre)
+    low:
+    - Inverno (dicembre-febbraio)
+    - Estate (luglio-agosto per alcune colture)
+typical_objections:
+- objection: Non ho tempo per implementare nuove tecnologie.
+  response: Capiamo che il tempo è prezioso. La nostra soluzione è progettata per essere semplice e veloce da configurare, e l'AI riduce il carico di lavoro quotidiano, liberando tempo per altre attività.
+- objection: È troppo costoso per la mia piccola azienda.
+  response: Offriamo pacchetti scalabili che partono da soli 1000€, con un ROI rapido. Molti piccoli agricoltori hanno già visto risparmi significativi nei primi mesi.
+- objection: Preferisco metodi tradizionali, sono provati.
+  response: Rispettiamo le tradizioni, ma la tecnologia AI può integrare e migliorare i metodi esistenti, aumentando l'efficienza senza cambiare radicalmente le pratiche.
+- objection: Ho già un sistema in uso, non voglio cambiare.
+  response: La nostra soluzione è modulare e si integra con i sistemi esistenti, come ERP e software meteorologici italiani, senza bisogno di sostituirli.
+meta:
+  id: agriculture
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- agriculture
+- farming
+- agribusiness
+- farm
+_extends: _base/agriculture

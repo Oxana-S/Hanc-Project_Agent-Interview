@@ -1,0 +1,262 @@
+pain_points:
+- name: Flugplanoptimierung
+  description: Ineffiziente Flugplanerstellung führt zu Leerlaufzeiten und erhöhten
+    Betriebskosten.
+  severity: high
+  solution_hint: KI-gestützte Voice Agents können Echtzeit-Daten zu Wetter, Verkehr
+    und Crew-Verfügbarkeit abfragen und Optimierungsvorschläge kommunizieren.
+- name: Personalengpässe am Boden
+  description: Schwierigkeiten bei der Besetzung von Positionen wie Check-in, Gepäckabfertigung
+    und Sicherheitspersonal, besonders bei Spitzenzeiten.
+  severity: high
+  solution_hint: Voice Agent kann automatisierte Schichtplanung unterstützen, Abwesenheiten
+    melden und Ersatzkräfte anfragen.
+- name: Passagierkommunikation bei Verspätungen
+  description: Manuelle und unkoordinierte Information von Passagieren bei Verspätungen
+    oder Gate-Änderungen verursacht Unzufriedenheit.
+  severity: medium
+  solution_hint: Automatisierte, mehrsprachige Voice-Benachrichtigungen an betroffene
+    Passagiere via Telefon oder Flughafenlautsprecher.
+- name: Dokumenten-Compliance (EU-Verordnungen)
+  description: Hoher Aufwand für die Einhaltung und Aktualisierung von EU-Flugbesatzungs-
+    und Wartungsdokumentation.
+  severity: high
+  solution_hint: Voice Agent kann an Dokumentenmanagementsysteme angebunden werden,
+    Fälligkeiten ansagen und Bestätigungen entgegennehmen.
+- name: Ineffiziente Frachtabwicklung
+  description: Manuelle Koordination zwischen Frachtagenten, Bodenpersonal und Lagerverwaltung
+    führt zu Verzögerungen.
+  severity: medium
+  solution_hint: Sprachgesteuerte Abfrage und Aktualisierung von Frachtstatus, Lagerplatz
+    und Abholterminen.
+- name: Hohe Telefonauslastung in der Buchungs-Hotline
+  description: Kunden warten lange in der Warteschleife für einfache Anfragen wie
+    Buchungsänderungen oder Gepäckregeln.
+  severity: medium
+  solution_hint: Voice Agent übernimmt Standardanfragen, entlastet Mitarbeiter und
+    leitet nur komplexe Fälle weiter.
+typical_services:
+- Flugzeugwartung, Reparatur und Überholung (MRO)
+- Bodenabfertigungsdienste (Gepäck, Tanken, Catering)
+- Flugplanung und -überwachung (Dispatch)
+- Crew-Management und -Einsatzplanung
+- Passagier- und Gepäckabfertigung
+- Fracht- und Logistikdienstleistungen (Luftfracht)
+- Flughafenmanagement und -sicherheit
+- Vertrieb und Ticketing (B2B & B2C)
+- Kundenservice und Beschwerdemanagement
+- Compliance-Management und Audit-Vorbereitung
+recommended_functions:
+- name: Automatisierte Störungsmeldung und Eskalation
+  priority: high
+  reason: Schnelle Reaktion auf technische Probleme oder Personalausfälle ist kritisch
+    für die Pünktlichkeit (Pünktlichkeit ist ein Key-Performance-Indikator).
+- name: 24/7 Passagier-Informationsdienst
+  priority: high
+  reason: Erhöht die Kundenzufriedenheit durch sofortige, genaue Informationen bei
+    Verspätungen und reduziert den Druck auf das Personal vor Ort.
+- name: GDPR-konforme Datenerfassung und Einwilligungsmanagement
+  priority: high
+  reason: Unverzichtbar für die rechtskonforme Verarbeitung von Passagier- und Mitarbeiterdaten
+    in Deutschland/EU.
+- name: Integration in Dispositionssysteme
+  priority: high
+  reason: Ermöglicht sprachgesteuerte Abfrage und Aktualisierung von Ressourcen wie
+    Gepäckfahrzeugen oder Reinigungsteams in Echtzeit.
+- name: Multilingualer Support (Deutsch, Englisch, Türkisch)
+  priority: medium
+  reason: Wichtiger Service für internationale Passagiere und Crews an deutschen Drehkreuzen.
+- name: Automatisierte Inventur- und Bestellanfrage
+  priority: low
+  reason: Optimiert die Lagerhaltung für Ersatzteile und Bordverpflegung durch sprachgesteuerte
+    Prüfung des Bestands.
+typical_integrations:
+- name: Flugplanungs- und Betriebssysteme (OPS)
+  examples:
+  - Lufthansa Systems NetLine/Ops
+  - Sabre
+  - Amadeus Altéa Ops
+  priority: high
+- name: Enterprise Resource Planning (ERP)
+  examples:
+  - SAP S/4HANA
+  - Oracle ERP Cloud
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  priority: medium
+- name: Dokumentenmanagementsysteme (DMS)
+  examples:
+  - M-Files
+  - d.velop
+  priority: medium
+- name: Flughafen-Kooperationssysteme
+  examples:
+  - AODB (Airport Operational Database)
+  - verschiedene lokale Lösungen
+  priority: medium
+industry_faq:
+- question: Ist die Sprach- KI mit der strengen deutschen und EU-Datenschutzgrundverordnung
+    (GDPR/DSGVO) kompatibel?
+  answer_template: Ja, absolut. Unsere Lösung wurde von Grund auf für GDPR-Compliance
+    entwickelt. Alle Sprachdaten werden standardmäßig anonymisiert oder pseudonymisiert
+    verarbeitet, und wir bieten vollständige Transparenz sowie Werkzeuge zur Verwaltung
+    von Nutzereinwilligungen.
+- question: Kann das System bei technischen Störungen am Flugzeug selbst helfen?
+  answer_template: Direkte Fehlerbehebung kann es nicht ersetzen. Es kann jedoch Wartungstechniker
+    sofort alarmieren, die relevanten Fehlercodes und Wartungshistorie per Sprachbefehl
+    abrufen und den Ersatzteilbedarf automatisch an die Logistik melden – das beschleunigt
+    die Lösung erheblich.
+- question: Wie genau ist die Sprach- KI bei lauten Umgebungen wie auf dem Vorfeld?
+  answer_template: Unsere Agenten nutzen Rauschunterdrückungs- und Beamforming-Technologien,
+    die speziell für Industrieumgebungen trainiert wurden. Wir bieten auch körpergetragene
+    Geräte mit Nahfeld-Mikrofonen an, die für den Einsatz auf dem Vorfeld optimiert
+    sind.
+- question: Spricht das System auch Fachbegriffe aus der Luftfahrt (ATC-Jargon, technische
+    Begriffe)?
+  answer_template: Ja, unser Sprachmodell ist umfangreich auf den deutschen Luftfahrt-Wortschatz,
+    einschließlich standardisierter ICAO-Phraseologie und technischer MRO-Begriffe,
+    trainiert und wird kontinuierlich erweitert.
+- question: Wie schnell lässt sich eine solche Lösung bei uns implementieren?
+  answer_template: Für Standardfunktionen wie Passagierinformation oder Störungsmeldung
+    planen wir mit 4-8 Wochen. Die Dauer hängt maßgeblich von der Integration in Ihre
+    bestehenden Systeme (z.B. SAP, OPS) ab. Wir bieten eine detaillierte Machbarkeitsanalyse
+    an.
+- question: Was kostet es, wenn wir das System auf mehrere Abteilungen und Standorte
+    ausweiten?
+  answer_template: Unser Preismodell ist skalierbar. Nach einer erfolgreichen Pilotphase
+    bieten wir Standort- und Nutzerlizenzen an, die mit wachsender Nutzung günstiger
+    werden. Wir erstellen Ihnen gerne eine transparente Kostenprojektion.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten, bevor der konkrete Nutzen besprochen wurde.
+  script: Die Investition richtet sich stark danach, welche Prozesse Sie automatisieren
+    möchten und wie viele Anrufe oder Interaktionen täglich anfallen. Typischerweise
+    beginnen wir mit einem Pilotprojekt in einer Abteilung, z.B. der Betriebszentrale,
+    für etwa 500-2000 € monatlich. So können Sie den ROI konkret messen, bevor Sie
+    skalieren. Darf ich Ihnen ein Beispiel aus der Wartungsdisposition vorrechnen?
+  goal: Von einem pauschalen Preis wegkommen und auf eine wertorientierte, modulare
+    Einführung lenken.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen Mitbewerber wie einen traditionellen Telefonanbieter
+    oder eine andere KI-Firma.
+  script: Viele Anbieter bieten generische Callcenter-Lösungen. Unsere Stärke ist
+    die tiefe Integration in die Luftfahrt-IT wie NetLine/Ops oder SAP. Unser System
+    versteht nicht nur Sprache, sondern auch Ihren operativen Kontext – das spart
+    wertvolle Sekunden bei jeder Störungsmeldung. Können wir Ihnen eine Demo mit Ihren
+    eigenen Daten oder Prozessbeispielen zeigen?
+  goal: Differenzierung durch Branchenspezialisierung und technische Tiefe hervorheben.
+- trigger: objection_complexity
+  situation: Kunde bezweifelt, dass seine Prozesse zu komplex für Automatisierung
+    sind.
+  script: Das ist ein verständlicher Einwand. Gerade bei komplexen Prozessen hilft
+    Automatisierung, die einfachen, repetitiven Aufgaben herauszufiltern. Unser Agent
+    kann zum Beispiel den ersten Kontakt bei einer Verspätung herstellen, alle Standardinformationen
+    geben und nur den wirklich speziellen Fall – etwa eine komplexe Umbuchung mit
+    mehreren Anschlussflügen – sofort und mit allen bereits gesammelten Daten an einen
+    menschlichen Kollegen weiterreichen. So gewinnen alle Beteiligten Zeit.
+  goal: Die Lösung als Entlastung und nicht als Ersatz darstellen und den hybriden
+    Ansatz (Mensch + KI) betonen.
+competitors:
+- name: Traditionelle Telekom-Anbieter (z.B. Deutsche Telekom)
+  positioning: Breit aufgestellter Infrastruktur- und TK-Anbieter.
+  strengths:
+  - Bekannte Marke
+  - flächendeckender Support
+  - physische Infrastruktur
+  weaknesses:
+  - Langsame Innovation
+  - generische Lösungen ohne Luftfahrt-Know-how
+  - hohe Kosten für Individualisierung
+  our_differentiation: Wir sind reine Software/SaaS-Lösung mit spezialisierter Luftfahrt-KI,
+    schnellerer Implementierung und agilerer Entwicklung.
+- name: Internationale Cloud-KI-Anbieter (z.B. Google Dialogflow, Amazon Lex)
+  positioning: Allgemeine KI-Plattformen für Entwickler.
+  strengths:
+  - Leistungsstarke Basistechnologie
+  - globale Skalierung
+  - breites Ökosystem
+  weaknesses:
+  - Keine vorgefertigten Branchenlösungen
+  - hoher Implementierungsaufwand für Fachwissen
+  - Compliance-Fragen müssen selbst gelöst werden
+  our_differentiation: Out-of-the-box Lösung für die Luftfahrt mit deutscher GDPR-Compliance,
+    vorkonfigurierten Prozessen und lokalem Support.
+- name: Spezialisierte Luftfahrt-Softwarehäuser
+  positioning: Anbieter von Nischensoftware für MRO oder Flugplanung.
+  strengths:
+  - Tiefes Fachwissen in ihrem spezifischen Bereich
+  - bestehende Kundenbeziehungen
+  weaknesses:
+  - Begrenztes Angebot
+  - oft fehlende Expertise in moderner Sprach-KI und Conversational AI
+  our_differentiation: Wir bringen das tiefe Luftfahrtwissen mit modernster Sprach-KI
+    zusammen und bieten eine übergreifende Automatisierungsplattform für verschiedene
+    Abteilungen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 15000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung der ersten Passagierinformation bei Verspätungen für
+      eine mittelgroße Airline.
+    monthly_cost: 1200
+    monthly_savings: 4000
+    payback_months: 3.6
+  - scenario: Sprachgesteuerte Disposition von Bodenpersonal an einem Regionalflughafen.
+    monthly_cost: 2500
+    monthly_savings: 8000
+    payback_months: 3.1
+  value_anchors:
+  - Reduzieren Sie die Wartezeiten in Ihrer Hotline um bis zu 40%.
+  - Erhalten Sie kritische Störungsmeldungen 5 Minuten schneller.
+  - Automatisieren Sie 70% der standardisierten Passagierkommunikation.
+market_context:
+  market_size: Ca. 500-700 potenzielle Unternehmenskunden (Airlines, Flughäfen, MROs,
+    Dienstleister) in DACH.
+  growth_rate: 8-12% p.a. für digitale Automatisierungslösungen in der Luftfahrt.
+  key_trends:
+  - Digitaler Zwilling für Flugzeugwartung und Flughafenbetrieb.
+  - Stärkere Fokussierung auf Passagiererlebnis und proaktive Kommunikation.
+  - Automatisierung zur Kompensation des Fachkräftemangels.
+  - Nachhaltigkeitsdruck führt zu Investitionen in effizientere Prozesse (z.B. optimierte
+    Taxi-Routen).
+  seasonality:
+    high:
+    - Mai-Oktober (Hauptreisezeit)
+    - Dezember (Weihnachtsgeschäft)
+    low:
+    - Januar-Februar
+    - November
+typical_objections:
+- objection: Unsere Prozesse sind zu individuell und können nicht automatisiert werden.
+  response: Genau für individuelle Prozesse sind wir die richtigen Partner. Wir passen
+    uns Ihren Abläufen an, nicht umgekehrt. Lassen Sie uns einen Ihrer 'kompliziertesten'
+    Standardprozesse analysieren – ich bin sicher, wir finden mindestens 30% Automatisierungspotenzial.
+- objection: Die Einführung wäre zu disruptiv für unseren laufenden Betrieb.
+  response: Wir starten immer mit einem begrenzten Pilotprojekt in einer nicht-kritischen
+    Abteilung oder für einen einzelnen Prozessschritt. So entsteht keine Betriebsunterbrechung,
+    und Ihre Mitarbeiter gewöhnen sich Schritt für Schritt an den neuen Workflow.
+- objection: Unsere Mitarbeiter haben Angst, durch Technologie ersetzt zu werden.
+  response: Es geht nicht um Ersetzung, sondern um Entlastung. Die KI übernimmt repetitive
+    Aufgaben wie Statusabfragen oder Standardinformationen. Das gibt Ihren wertvollen
+    Mitarbeitern mehr Zeit für komplexe Problemlösungen und den persönlichen Kundenservice,
+    was die Jobzufriedenheit oft erhöht.
+meta:
+  id: aviation
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

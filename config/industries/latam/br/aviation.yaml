@@ -1,0 +1,194 @@
+pain_points:
+- description: Altos custos operacionais, incluindo combustível e manutenção.
+  severity: high
+  solution_hint: Nosso agente de voz pode otimizar rotas e agendar manutenção preventiva
+    para reduzir custos.
+- description: Conformidade regulatória complexa com ANAC e LGPD.
+  severity: high
+  solution_hint: Automatiza registros e alertas para garantir conformidade com regulamentações
+    locais.
+- description: Atrasos frequentes na manutenção de aeronaves, afetando a pontualidade.
+  severity: medium
+  solution_hint: Monitora prazos de manutenção e agenda automaticamente serviços para
+    evitar atrasos.
+- description: Gestão ineficiente de tripulação, levando a sobrecarga e custos extras.
+  severity: medium
+  solution_hint: Otimiza escalas de tripulação com IA para melhorar eficiência e reduzir
+    horas extras.
+- description: Flutuações no preço do combustível impactando a lucratividade.
+  severity: medium
+  solution_hint: Analisa tendências de preços e sugere estratégias de compra para
+    minimizar custos.
+- description: Competição intensa no mercado doméstico, pressionando margens.
+  severity: high
+  solution_hint: Ajuda na personalização de serviços e fidelização de clientes através
+    de atendimento automatizado.
+typical_services:
+- Voos comerciais regulares
+- Voos charter
+- Manutenção de aeronaves
+- Treinamento de pilotos e tripulação
+- Gestão de frota
+- Serviços de handling aeroportuário
+- Venda de passagens aéreas
+- Seguros aeronáuticos
+- Consultoria em aviação
+- Aluguel de aeronaves
+recommended_functions:
+- name: Agendamento automático de voos
+  priority: high
+  reason: Reduz erros manuais e melhora a eficiência operacional.
+- name: Suporte ao cliente 24/7
+  priority: high
+  reason: Atende passageiros em qualquer horário, melhorando a satisfação.
+- name: Monitoramento de manutenção
+  priority: medium
+  reason: Previene falhas e garante conformidade com padrões de segurança.
+- name: Gestão de reservas
+  priority: high
+  reason: Otimiza ocupação e aumenta receita com vendas automatizadas.
+- name: Atualizações de voo em tempo real
+  priority: medium
+  reason: Fornece informações precisas aos clientes, reduzindo reclamações.
+- name: Integração com sistemas de pagamento
+  priority: low
+  reason: Facilita transações seguras e rápidas para passageiros.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - TOTVS
+  priority: high
+- name: Software de gestão de frota
+  examples:
+  - AMOS
+  - Traxxall
+  priority: high
+- name: Sistemas de reserva
+  examples:
+  - Sabre
+  - Amadeus
+  priority: high
+- name: Plataformas de conformidade
+  examples:
+  - Soluções LGPD
+  - Sistemas ANAC
+  priority: medium
+industry_faq:
+- question: Como posso reduzir os custos operacionais na aviação?
+  answer_template: Nossa solução de IA otimiza rotas, reduz consumo de combustível
+    e automatiza processos, cortando custos em até 20%.
+- question: Quais são as exigências da LGPD para empresas de aviação?
+  answer_template: A LGPD requer proteção de dados de passageiros; nosso agente ajuda
+    a gerenciar consentimentos e registros de forma segura.
+- question: Como melhorar a pontualidade dos voos?
+  answer_template: Com monitoramento proativo e agendamento inteligente, reduzimos
+    atrasos em manutenção e operações.
+- question: É difícil integrar com sistemas existentes?
+  answer_template: Nossos agentes são compatíveis com sistemas comuns no Brasil, como
+    TOTVS e Sabre, com configuração fácil.
+- question: Quanto tempo leva para ver resultados?
+  answer_template: Em média, clientes observam retorno sobre investimento em 3-6 meses
+    com economias mensais.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços ou acha caro.
+  script: Olá, entendemos sua preocupação com custos. Nosso agente de voz pode reduzir
+    despesas operacionais em até 30%, pagando-se rapidamente. Gostaria de ver um exemplo
+    personalizado?
+  goal: Demonstrar valor e justificar o investimento com ROI claro.
+- trigger: compliance_concern
+  situation: Quando o cliente menciona desafios com LGPD ou regulamentações.
+  script: Com a LGPD, a conformidade é crucial. Nossa IA automatiza a gestão de dados,
+    evitando multas e protegendo sua reputação. Podemos ajudar?
+  goal: Aliviar preocupações regulatórias e destacar nossa expertise local.
+- trigger: efficiency_inquiry
+  situation: Quando o cliente busca melhorar eficiência operacional.
+  script: Para otimizar operações, nosso agente agenda voos, gerencia tripulação e
+    monitora manutenção, tudo em tempo real. Isso aumenta sua produtividade.
+  goal: Mostrar como a solução resolve problemas específicos de eficiência.
+competitors:
+- name: LATAM Airlines
+  positioning: Maior companhia aérea da América Latina, com forte presença no Brasil.
+  strengths:
+  - Rede extensa de rotas
+  - Reconhecimento de marca
+  - Frota diversificada
+  weaknesses:
+  - Altos custos operacionais
+  - Dependência de economia volátil
+  our_differentiation: Foco em automação com IA para reduzir custos e melhorar eficiência,
+    enquanto eles dependem de modelos tradicionais.
+- name: Gol Linhas Aéreas
+  positioning: Companhia aérea low-cost dominante no mercado doméstico brasileiro.
+  strengths:
+  - Preços competitivos
+  - Foco em eficiência
+  weaknesses:
+  - Serviço limitado em rotas internacionais
+  - Impacto por flutuações econômicas
+  our_differentiation: Oferecemos soluções de IA que complementam operações low-cost,
+    aumentando margens sem sacrificar qualidade.
+- name: Azul Linhas Aéreas
+  positioning: Companhia aérea em crescimento, com foco em conectividade regional.
+  strengths:
+  - Expansão agressiva
+  - Boa reputação em serviço
+  weaknesses:
+  - Infraestrutura limitada em alguns aeroportos
+  - Custos de expansão altos
+  our_differentiation: Nossa IA ajuda a escalar operações de forma sustentável, otimizando
+    recursos e reduzindo riscos.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Redução de custos operacionais em uma pequena frota.
+    monthly_cost: 3000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Reduza custos em 30% com automação inteligente.
+  - ROI rápido, com payback em menos de 6 meses.
+  - Solução localizada, compatível com LGPD e normas ANAC.
+market_context:
+  market_size: Estimado em 50 bilhões BRL anuais
+  growth_rate: 4% YoY
+  key_trends:
+  - Digitalização de operações e atendimento ao cliente.
+  - Crescimento de voos regionais e low-cost.
+  - Foco em sustentabilidade e redução de emissões.
+  seasonality:
+    high:
+    - Dezembro a Fevereiro (férias de verão)
+    - Julho (férias de inverno)
+    low:
+    - Março a Junho
+    - Agosto a Novembro
+typical_objections:
+- objection: É muito caro para nossa empresa no momento.
+  response: Entendemos, mas o investimento se paga rapidamente com as economias. Podemos
+    começar com um plano básico a partir de 2000 BRL.
+- objection: Já temos sistemas, não precisamos de mais tecnologia.
+  response: Nossa IA integra-se aos seus sistemas existentes, como TOTVS ou Sabre,
+    para potencializar resultados sem substituí-los.
+- objection: A conformidade com LGPD é complicada demais para automatizar.
+  response: Especializamo-nos em soluções LGPD; nossa IA gerencia dados de forma segura
+    e automática, simplificando a conformidade.
+meta:
+  id: aviation
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

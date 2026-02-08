@@ -1,0 +1,203 @@
+pain_points:
+- description: 市场竞争激烈，价格战导致利润下降。
+  severity: high
+  solution_hint: AI语音代理可自动筛选高价值客户，优化营销策略。
+- description: 客户获取成本高，难以保持长期合作关系。
+  severity: high
+  solution_hint: AI语音代理可进行客户回访和满意度调查，提高客户粘性。
+- description: 设备购置和维护成本高，技术更新快。
+  severity: medium
+  solution_hint: AI语音代理可推荐租赁服务或融资方案，降低初期投入。
+- description: 预约和日程管理混乱，容易错过商机。
+  severity: medium
+  solution_hint: AI语音代理可自动处理预约请求，同步日历，减少人工错误。
+- description: 客户数据管理需符合PIPL法规，合规风险大。
+  severity: high
+  solution_hint: AI语音代理可集成安全系统，确保数据加密和合规处理。
+- description: 业务季节性波动大，旺季人手不足，淡季闲置。
+  severity: medium
+  solution_hint: AI语音代理可动态调整营销活动，平衡淡旺季需求。
+- description: 新技术如VR视频或4K拍摄技能短缺。
+  severity: low
+  solution_hint: AI语音代理可提供培训资源推荐，连接专业人才。
+typical_services:
+- 婚礼摄影
+- 商业广告拍摄
+- 产品摄影
+- 视频制作
+- 无人机航拍
+- 照片修图
+- 视频剪辑
+- 活动跟拍
+- 人像写真
+- 微电影制作
+recommended_functions:
+- name: 自动预约安排
+  priority: high
+  reason: 提高效率，减少人工错误，优化客户体验。
+- name: 客户咨询应答
+  priority: high
+  reason: 快速响应潜在客户，提高转化率。
+- name: 支付提醒与处理
+  priority: medium
+  reason: 自动化收款流程，改善现金流。
+- name: 服务套餐介绍
+  priority: medium
+  reason: 标准化销售话术，提升销售一致性。
+- name: 市场推广活动管理
+  priority: low
+  reason: 扩大品牌曝光，吸引更多客户。
+- name: 客户反馈收集
+  priority: medium
+  reason: 获取实时反馈，优化服务质量。
+- name: 紧急情况处理
+  priority: low
+  reason: 应对突发需求，提升客户信任。
+typical_integrations:
+- name: 社交媒体平台
+  examples:
+  - 微信
+  - 微博
+  - 抖音
+  priority: high
+- name: 支付系统
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: high
+- name: 预约和预订软件
+  examples:
+  - 美团
+  - 大众点评
+  - 有赞
+  priority: medium
+- name: 客户关系管理软件
+  examples:
+  - 飞书
+  - 钉钉
+  priority: medium
+- name: 云存储和编辑工具
+  examples:
+  - 阿里云
+  - 腾讯云
+  - 剪映
+  priority: low
+industry_faq:
+- question: 你们的摄影服务价格是多少？
+  answer_template: 我们的价格根据服务类型和时长定制，入门套餐从XXXX元起，可提供详细报价。
+- question: 可以预约周末拍摄吗？
+  answer_template: 是的，我们支持周末预约，但建议提前预订以确保档期，AI代理可实时查询可用时间。
+- question: 如何处理客户隐私和数据安全？
+  answer_template: 我们严格遵守PIPL法规，所有客户数据加密存储，AI系统确保合规处理。
+- question: 视频制作需要多长时间？
+  answer_template: 制作时间取决于项目复杂度，通常为1-4周，AI代理可提供进度更新。
+- question: 提供哪些后期修图服务？
+  answer_template: 我们提供基础修图、高级调色和特效处理，具体选项可在咨询中定制。
+- question: 是否有无人机航拍许可？
+  answer_template: 是的，我们持有合法无人机操作许可，确保拍摄安全合规。
+- question: 如何支付费用？
+  answer_template: 支持支付宝、微信支付等多种方式，AI代理可发送支付链接。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 您好！感谢您的咨询。我们的摄影视频服务价格灵活，根据您的需求定制。例如，基础婚礼摄影套餐起价5000元，包含8小时拍摄和精修照片。AI语音代理可立即为您生成详细报价，方便吗？
+  goal: 引导客户提供需求信息，促成进一步沟通。
+- trigger: service_inquiry
+  situation: 当客户询问具体服务时
+  script: 您好！我们提供婚礼摄影、商业拍摄等多项服务。AI语音代理可以详细介绍每个服务的特点和案例，帮助您选择最适合的方案。请问您关注哪类拍摄？
+  goal: 了解客户需求，推荐个性化服务。
+- trigger: availability_check
+  situation: 当客户检查档期时
+  script: 您好！要查询可用档期，AI语音代理可实时访问我们的日历系统。请提供您的预计拍摄日期，我将快速为您确认。
+  goal: 快速响应，提高预约效率。
+- trigger: objection_handling
+  situation: 当客户对价格有异议时
+  script: 我理解价格是重要考虑因素。我们的服务注重质量和技术，AI代理可以展示客户案例和ROI计算，证明长期价值。例如，一次商业拍摄可能带来月均10000元的业务增长。
+  goal: 克服价格异议，强调价值。
+competitors:
+- name: 美团摄影
+  positioning: 大型平台整合服务，价格透明
+  strengths:
+  - 广泛客户基础
+  - 便捷的在线预订
+  - 多样化选择
+  weaknesses:
+  - 服务质量参差不齐
+  - 个性化不足
+  - 售后支持有限
+  our_differentiation: 我们提供AI驱动的个性化服务，注重质量和客户关系，优于平台标准化方案。
+- name: 本地独立工作室
+  positioning: 小众高端，定制化强
+  strengths:
+  - 灵活定制
+  - 创意突出
+  - 本地化服务
+  weaknesses:
+  - 营销能力弱
+  - 技术更新慢
+  - 规模有限
+  our_differentiation: 我们结合AI技术提升效率，保持创意同时规模化运营，降低成本。
+- name: 抖音视频制作商
+  positioning: 专注于短视频和社交媒体内容
+  strengths:
+  - 趋势敏感
+  - 快速产出
+  - 年轻受众
+  weaknesses:
+  - 深度内容不足
+  - 合规风险
+  - 价格竞争激烈
+  our_differentiation: 我们提供全方位视频解决方案，从策划到后期，确保专业质量和合规性。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 3000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: 小型企业使用AI语音代理处理预约和咨询，减少人工成本
+    monthly_cost: 500
+    monthly_savings: 2000
+    payback_months: 1
+  value_anchors:
+  - AI代理可节省30%运营时间
+  - 提升客户满意度20%
+  - 合规处理降低法律风险
+market_context:
+  market_size: 约1000亿元人民币
+  growth_rate: 10%
+  key_trends:
+  - 移动摄影普及
+  - 短视频平台驱动需求
+  - 个性化定制服务增长
+  - 绿色和可持续拍摄兴起
+  seasonality:
+    high:
+    - 5月-10月婚礼季
+    - 春节前后商业活动
+    low:
+    - 1月-2月冬季淡季
+    - 7月-8月暑期调整期
+typical_objections:
+- objection: 价格太贵，我可以在其他平台找到更便宜的。
+  response: 我们理解预算考虑，但我们的服务包括AI优化和质量保证，长期来看性价比更高。AI代理可以展示客户成功案例和ROI分析。
+- objection: 不需要AI，我们有人工处理。
+  response: AI语音代理可以补充人工，24/7响应客户，减少错误，让您的团队专注于创意工作。试用期可体验效率提升。
+- objection: 担心数据安全和PIPL合规。
+  response: 我们优先数据安全，AI系统集成加密和合规协议，定期审计，确保完全符合PIPL要求。可提供合规证书。
+- objection: 技术更新太快，怕跟不上。
+  response: 我们的AI代理持续学习市场趋势，自动推荐新技术和培训资源，帮助您保持竞争力。
+meta:
+  id: photo_video
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

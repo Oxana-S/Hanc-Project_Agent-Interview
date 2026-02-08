@@ -1,0 +1,189 @@
+pain_points:
+- description: Dificultad en la gestión y seguimiento de donaciones de los feligreses, llevando a ingresos inconsistentes.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar el procesamiento de donaciones, enviar recordatorios y agradecimientos personalizados.
+- description: Administración manual de registros de sacramentos como bautizos y matrimonios, causando errores y retrasos.
+  severity: high
+  solution_hint: Automatizar la entrada de datos y generación de certificados digitales para mayor precisión y eficiencia.
+- description: Baja asistencia a eventos religiosos debido a comunicación ineficiente con la comunidad.
+  severity: medium
+  solution_hint: El agente puede enviar invitaciones y confirmaciones automáticas, mejorando la participación.
+- description: Coordinación compleja de voluntarios para actividades comunitarias y eventos.
+  severity: medium
+  solution_hint: Gestionar horarios y asignaciones de voluntarios mediante recordatorios de voz y mensajes.
+- description: Falta de presencia en redes sociales para atraer nuevos miembros, especialmente jóvenes.
+  severity: low
+  solution_hint: Programar publicaciones y responder consultas en plataformas sociales para aumentar la visibilidad.
+- description: Altos costos operativos en la organización de peregrinaciones y eventos masivos.
+  severity: medium
+  solution_hint: Optimizar logística y reservas con AI para reducir gastos y mejorar la planificación.
+typical_services:
+- Misas y servicios religiosos regulares
+- Administración de sacramentos (bautizos, comuniones, confirmaciones)
+- Celebración de matrimonios y uniones
+- Catequesis y formación religiosa
+- Asistencia social y programas de caridad
+- Organización de retiros espirituales
+- Coordinación de peregrinaciones
+- Consultoría pastoral y consejería
+- Gestión de funerales y servicios conmemorativos
+- Eventos comunitarios y festividades
+recommended_functions:
+- name: Gestión automatizada de donaciones
+  priority: high
+  reason: Esencial para asegurar flujos de ingresos estables y reducir la carga administrativa.
+- name: Programación y recordatorio de eventos
+  priority: high
+  reason: Mejora la asistencia y coordinación de misas y actividades clave.
+- name: Registro digital de sacramentos
+  priority: high
+  reason: Minimiza errores y agiliza la emisión de certificados, cumpliendo con normativas.
+- name: Comunicación personalizada con feligreses
+  priority: medium
+  reason: Aumenta el engagement y la retención de miembros mediante interacciones relevantes.
+- name: Gestión de voluntarios
+  priority: medium
+  reason: Optimiza el uso de recursos humanos para actividades comunitarias y eventos.
+- name: Soporte en redes sociales
+  priority: low
+  reason: Amplía el alcance y atrae a nuevas generaciones a la comunidad religiosa.
+typical_integrations:
+- name: Software de gestión de iglesias
+  examples:
+  - ChurchDesk
+  - Breeze Church Management
+  priority: high
+- name: Plataformas de donaciones en línea
+  examples:
+  - Donorbox
+  - GiveLively
+  priority: high
+- name: Herramientas de comunicación masiva
+  examples:
+  - WhatsApp Business
+  - Mailchimp
+  priority: medium
+- name: Sistemas de contabilidad local
+  examples:
+  - Contpaq
+  - Aspel
+  priority: medium
+- name: Software de reservas para eventos
+  examples:
+  - Eventbrite
+  - Boletia
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo hacer una donación a la iglesia?
+  answer_template: Puede donar mediante transferencia bancaria, nuestra plataforma en línea, o en efectivo en la oficina. Agradecemos su generosidad.
+- question: ¿Cuáles son los horarios de misa para esta semana?
+  answer_template: Las misas se ofrecen los domingos a las 8:00 AM, 10:00 AM y 12:00 PM. Para horarios especiales, consulte nuestro calendario en línea.
+- question: ¿Qué documentos necesito para registrar un bautizo?
+  answer_template: Necesita acta de nacimiento, identificación de los padres y comprobante de domicilio. Puede iniciar el proceso en nuestro sitio web.
+- question: ¿La iglesia ofrece apoyo a familias necesitadas?
+  answer_template: Sí, contamos con programas de despensas, asesoría y asistencia social. Contacte a nuestro equipo de caridad para más información.
+- question: ¿Cómo puedo ser voluntario en las actividades de la iglesia?
+  answer_template: ¡Le damos la bienvenida! Inscríbase en nuestra lista de voluntarios en línea o asista a una reunión informativa los primeros sábados del mes.
+- question: ¿Puedo acceder a certificados de sacramentos anteriores?
+  answer_template: Sí, puede solicitarlos en la oficina parroquial o mediante nuestro sistema en línea. Hay un costo administrativo de 50 MXN.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de implementar agentes de voz AI.
+  script: Entiendo su interés en los precios. Nuestros planes comienzan desde 3000 MXN al mes, adaptados a iglesias de todos los tamaños. ¿Le gustaría conocer más sobre los ahorros potenciales?
+  goal: Presentar opciones asequibles y destacar el valor de la inversión.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre la automatización de donaciones.
+  script: Gracias por consultar. Nuestro agente de voz AI gestiona donaciones de forma segura, con recordatorios automáticos y reportes. ¿Quiere que le explique cómo puede aumentar sus ingresos?
+  goal: Convertir la consulta
+- trigger: testimonial
+  situation: Cuando el cliente muestra interés pero necesita confianza adicional.
+  script: 'Cliente: Estoy interesado, pero quisiera saber si realmente ayudan a las personas.
+
+    Vendedor: Claro, muchos de nuestros miembros han encontrado paz y guía espiritual con nosotros. Por ejemplo, María, una de nuestras seguidoras, nos compartió que gracias a nuestras actividades y apoyo,
+    ha encontrado un propósito renovado en su vida. ¿Le gustaría que le enviara algunos testimonios para que conozca más historias como la de ella?
+
+    Cliente: Sí, me gustaría.
+
+    Vendedor: Perfecto, le enviaré esa información y quedo atento para cualquier duda que tenga.'
+  goal: Generar confianza y aumentar el interés del cliente mediante testimonios positivos.
+meta:
+  id: religion
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- religion
+- church
+- temple
+- parish
+- ministry
+_extends: _base/religion
+competitors:
+- name: Iglesia Digital MX
+  positioning: Líder en soluciones tecnológicas para iglesias medianas en México
+  strengths:
+  - Plataforma amigable y fácil de usar
+  - Buen soporte técnico local
+  - Integración con redes sociales populares en México
+  weaknesses:
+  - Limitada automatización de procesos internos
+  - Poco enfoque en inteligencia artificial para atención personalizada
+  our_differentiation: Nuestro agente de voz AI ofrece interacción natural y automatización integral que mejora la gestión y experiencia del feligrés.
+- name: Red Católica Tech
+  positioning: Proveedor especializado en software para grandes iglesias católicas mexicanas
+  strengths:
+  - Amplia base de clientes reconocidos
+  - Funcionalidades robustas para gestión administrativa
+  - Cumplimiento estricto de normativas mexicanas
+  weaknesses:
+  - Costos elevados para iglesias pequeñas
+  - Interfaz poco intuitiva para usuarios no técnicos
+  our_differentiation: Nuestra solución es escalable y accesible, con un agente AI que facilita la comunicación sin necesidad de experiencia técnica.
+- name: FeConectada
+  positioning: Plataforma emergente enfocada en comunidades religiosas pequeñas y medianas
+  strengths:
+  - Precios competitivos
+  - Facilidad de integración con sistemas existentes
+  - Atención personalizada al cliente
+  weaknesses:
+  - Limitadas funcionalidades avanzadas
+  - Menor presencia en grandes ciudades
+  our_differentiation: El agente de voz AI automatiza procesos complejos y mejora la retención de feligreses con comunicación proactiva y personalizada.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 3000
+  - 15000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Reducción de horas hombre en administración de donaciones y seguimiento
+    monthly_cost: 5000
+    monthly_savings: 12000
+    payback_months: 1
+  - scenario: Aumento en la asistencia a eventos gracias a recordatorios automáticos
+    monthly_cost: 4000
+    monthly_savings: 10000
+    payback_months: 1
+  value_anchors:
+  - Ahorro significativo en costos administrativos
+  - Mejora en la participación y satisfacción de la comunidad religiosa
+  - Cumplimiento normativo garantizado con automatización digital
+market_context:
+  market_size: MXN 3,500 millones anuales en servicios religiosos y tecnología asociada
+  growth_rate: 4-6%
+  key_trends:
+  - Digitalización creciente de servicios religiosos y administración eclesiástica
+  - Mayor uso de tecnologías móviles para comunicación con feligreses
+  - Integración de soluciones AI para personalizar la experiencia religiosa
+  - Enfoque en transparencia y eficiencia en manejo de donaciones
+  seasonality:
+    high:
+    - Diciembre
+    - Abril
+    - Mayo
+    low:
+    - Julio
+    - Agosto

@@ -1,0 +1,205 @@
+pain_points:
+- description: Gestione inefficiente delle prenotazioni e delle richieste di informazioni, con perdita di potenziali clienti fuori orario d'ufficio.
+  severity: high
+  solution_hint: L'agente vocale può rispondere 24/7, raccogliere dati di contatto e fissare appuntamenti automaticamente.
+- description: Alti costi e difficoltà nella coordinazione di fornitori multipli (catering, location, fotografi).
+  severity: high
+  solution_hint: Automatizzare la raccolta di preventivi e la gestione della comunicazione con i fornitori tramite integrazioni.
+- description: Fluttuazioni stagionali della domanda che rendono difficile pianificare il personale e le risorse.
+  severity: medium
+  solution_hint: Utilizzare l'IA per analizzare i dati storici e prevedere la domanda, ottimizzando gli acquisti e le assunzioni.
+- description: Complessità nella gestione degli inviti e delle RSVP, specialmente per eventi di grandi dimensioni.
+  severity: medium
+  solution_hint: Automatizzare l'invio di inviti digitali, i promemoria e l'aggiornamento delle liste partecipanti in tempo reale.
+- description: Difficoltà nel garantire la conformità al GDPR per la gestione dei dati personali dei partecipanti.
+  severity: high
+  solution_hint: Integrare procedure automatizzate per il consenso, l'archiviazione sicura e la cancellazione dei dati secondo normativa.
+- description: Gestione manuale e soggetta a errori dei pagamenti dei clienti e dei depositi.
+  severity: medium
+  solution_hint: Offrire opzioni di pagamento automatizzate e integrare il sistema con software di contabilità locali.
+typical_services:
+- Organizzazione matrimoni
+- Eventi aziendali e conferenze
+- Fiere ed esposizioni
+- Eventi di lancio prodotto
+- Cene di gala e cerimonie
+- Team building aziendale
+- Organizzazione feste private (compleanni, anniversari)
+- Gestione logistica e noleggio attrezzature
+- Servizi di catering e banqueting
+- Allestimento e decorazione
+recommended_functions:
+- name: Prenotazione Appuntamenti
+  priority: high
+  reason: Fissa appuntamenti di vendita o consulenza senza intervento umano, catturando lead 24/7.
+- name: Qualificazione Lead
+  priority: high
+  reason: Chiede domande chiave (tipo evento, budget, data) per classificare i lead e indirizzarli al commerciale giusto.
+- name: Raccolta Preventivi Fornitori
+  priority: medium
+  reason: Automatizza la richiesta di prezzi a fornitori pre-approvati, risparmiando tempo agli organizzatori.
+- name: Gestione RSVP
+  priority: medium
+  reason: Risponde agli inviti, aggiorna la lista partecipanti e invia promemoria, riducendo il carico amministrativo.
+- name: Supporto Post-Vendita
+  priority: low
+  reason: Risponde a domande frequenti su logistica o pagamenti dopo la conclusione della vendita, migliorando la soddisfazione.
+- name: Promemoria Pagamenti
+  priority: medium
+  reason: Invia automaticamente richiami per saldi e depositi in scadenza, migliorando il cash flow.
+typical_integrations:
+- name: Software di Prenotazione/Eventi
+  examples:
+  - Eventbrite
+  - TheFork
+  - Bizzabo
+  priority: high
+- name: CRM
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - Salesforce
+  priority: high
+- name: Software Contabile
+  examples:
+  - Banco
+  - SAP
+  - Oracle NetSuite
+  priority: medium
+- name: Piattaforme di Pagamento
+  examples:
+  - Satispay
+  - Nexi
+  - PayPal
+  priority: medium
+- name: Software di Comunicazione
+  examples:
+  - Mailchimp
+  - WhatsApp Business API
+  priority: low
+industry_faq:
+- question: Quali sono i vostri costi per organizzare un evento?
+  answer_template: I nostri costi variano in base al tipo, dimensione e complessità dell'evento. Partiamo da un servizio base di consulenza e pianificazione a partire da [INSERTARE PREZZO]. Possiamo programmare
+    una chiamata per discutere il suo budget e le sue esigenze specifiche?
+- question: Potete occuparvi di tutta l'organizzazione del mio matrimonio?
+  answer_template: Assolutamente sì. Offriamo un servizio 'chiavi in mano' che include la ricerca della location, la selezione dei fornitori, la gestione degli inviti e la coordinazione del giorno dell'evento.
+    La prima consulenza è gratuita.
+- question: Come gestite la privacy dei dati dei partecipanti (GDPR)?
+  answer_template: La conformità al GDPR è nostra priorità. Utilizziamo sistemi sicuri per raccogliere il consenso, crittografare i dati e garantire che vengano conservati solo per il tempo necessario.
+    Siamo a disposizione per fornire tutti i dettagli sulle nostre procedure.
+- question: Quanto tempo in anticipo devo prenotare?
+  answer_template: 'Consigliamo di iniziare a pianificare con almeno 6-12 mesi di anticipo per eventi complessi come matrimoni, e 3-6 mesi per eventi aziendali. Per richieste last-minute, contattateci comunque:
+    potremmo avere disponibilità.'
+- question: Lavorate con fornitori locali?
+  answer_template: Sì, abbiamo una rete consolidata di fornitori fidati in tutta Italia (catering, fioristi, musicisti). Questo ci permette di negoziare condizioni migliori e garantire qualità e affidabilità
+    per il suo evento.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui prezzi all'inizio della conversazione.
+  script: Certo, comprendo. Per darle una stima precisa, mi servono alcune informazioni. Che tipo di evento sta organizzando? Quanti invitati prevede e qual è la data indicativa? In base a questo, potrò
+    illustrarle le nostre opzioni e i relativi costi, partendo da un pacchetto base molto competitivo.
+  goal: Qualificare il lead e spostare la conversazione dalle cifre al valore, fissando un appuntamento per una consulenza dettagliata.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un altro organizzatore di eventi.
+  script: Rispettiamo molto i nostri colleghi. Il nostro differenziale principale è l'uso dell'intelligenza artificiale per automatizzare le parti noiose, come le prenotazioni e la coordinazione con i fornitori.
+    Questo ci permette di offrire un servizio più reattivo e spesso a un costo più efficiente, dedicando più tempo alla creatività e ai dettagli che rendono unico il suo evento.
+  goal: Differenziare il nostro servizio basato su tecnologia e efficienza, senza denigrare direttamente il competitor.
+- trigger: objection_too_busy
+  situation: Quando il cliente dice di essere troppo occupato per parlare o pianificare.
+  script: Lo capisco perfettamente, l'organizzazione di un evento richiede tempo. Proprio per questo il nostro sistema è pensato per semplificarle la vita. Con una breve chiamata di 15 minuti, possiamo
+    capire le sue esigenze e darle un piano chiaro. Lei si libererebbe di gran parte dello stress organizzativo. Vale la pena investire un quarto d'ora ora per risparmiare decine di ore in seguito?
+  goal: Sottolineare il risparmio di tempo come valore principale e fissare un appuntamento breve e a basso impegno.
+competitors:
+- name: Weddingwire Italia / Matrimonio.com
+  positioning: Marketplace e directory online per servizi matrimoniali.
+  strengths:
+  - Ampia visibilità
+  - vasta rete di fornitori
+  - recensioni degli utenti
+  weaknesses:
+  - Servizio non personalizzato
+  - l'organizzatore deve fare tutto
+  - commissioni sulle prenotazioni
+  our_differentiation: Offriamo un servizio di organizzazione attivo e gestionale, supportato da IA, non solo un listing passivo.
+- name: Agenzie di Eventi Tradizionali indipendenti
+  positioning: Servizio di consulenza e organizzazione personalizzata, spesso di nicchia o di lusso.
+  strengths:
+  - Alto tocco personale
+  - esperienza consolidata
+  - portfolio di eventi di qualità
+  weaknesses:
+  - Costi elevati
+  - processi manuali lenti
+  - disponibilità limitata fuori orario
+  our_differentiation: Combiniamo il tocco personale con l'efficienza tecnologica, offrendo reattività 24/7 e processi ottimizzati a costi più contenuti.
+- name: Pianeta Eventi / Eventi Speciali S.r.l.
+  positioning: Grandi agenzie con portfolio nazionale per eventi aziendali e istituzionali.
+  strengths:
+  - Grandi risorse
+  - capacità di gestire eventi complessi
+  - brand affermato
+  weaknesses:
+  - Burocrazia interna
+  - costi molto alti
+  - poca flessibilità per clienti piccoli/medi
+  our_differentiation: Siamo più agili, accessibili per PMI e privati, e utilizziamo l'automazione per offrire un servizio veloce senza sacrificare la qualità.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 50000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automazione della gestione delle richieste e prenotazioni per una piccola agenzia di eventi.
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Automazione della raccolta RSVP e invio promemoria per un organizzatore di conferenze.
+    monthly_cost: 200
+    monthly_savings: 450
+    payback_months: 1
+  value_anchors:
+  - Recupera fino al 20% dei lead persi fuori orario d'ufficio.
+  - Riduci del 30% il tempo speso in attività amministrative ripetitive.
+  - Servizio clienti sempre attivo, senza costi aggiuntivi per il personale.
+market_context:
+  market_size: 2.5 miliardi di EUR (stima per il mercato dell'organizzazione eventi professionale)
+  growth_rate: 8% YoY (recupero post-pandemia e crescita degli eventi ibridi)
+  key_trends:
+  - Crescente domanda di eventi ibridi (fisici + digitali).
+  - Attenzione alla sostenibilità e agli eventi 'green'.
+  - Personalizzazione estrema ed esperienze immersive.
+  - Utilizzo di dati e analytics per misurare il ROI degli eventi.
+  seasonality:
+    high:
+    - Primavera (maggio-giugno)
+    - Autunno (settembre-ottobre)
+    - Periodo pre-natalizio
+    low:
+    - Agosto
+    - Gennaio
+    - prima metà di luglio
+typical_objections:
+- objection: Il vostro servizio è troppo costoso per il mio budget.
+  response: Capisco la preoccupazione. Consideri però che la nostra automazione le fa risparmiare decine di ore di lavoro amministrativo, che può dedicare ad acquisire nuovi clienti o a migliorare l'evento
+    stesso. Inoltre, partiamo da un pacchetto base molto accessibile. Qual è il budget che si era prefissato?
+- objection: Preferisco parlare con una persona, non con un robot.
+  response: Assolutamente, e alla fine parlerà con un nostro esperto! L'agente vocale è solo il primo contatto, per raccogliere le informazioni base e assicurarle una risposta immediata a qualsiasi ora.
+    Questo permette al nostro team umano di arrivare alla chiamata con lei già preparato, offrendole un servizio molto più efficiente e personalizzato.
+- objection: Abbiamo già procedure consolidate, non vogliamo cambiare.
+  response: Apprezziamo le procedure consolidate. Il nostro sistema non le sostituisce, le potenzia. Si integra con i software che già usa, automatizzando le parti più noiose e ripetitive. Possiamo iniziare
+    con un modulo semplice, come la gestione delle prime richieste di contatto, per farle vedere i benefici senza sconvolgere il suo workflow.
+meta:
+  id: events
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events

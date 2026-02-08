@@ -1,0 +1,200 @@
+pain_points:
+- description: Aumento dei costi energetici che riducono i margini di profitto.
+  severity: high
+  solution_hint: L'agente vocale AI può ottimizzare i consumi energetici con monitoraggio automatizzato e segnalazioni in tempo reale.
+- description: Interruzioni nella catena di approvvigionamento che causano ritardi nella produzione.
+  severity: high
+  solution_hint: L'agente può gestire comunicazioni con fornitori e fornire aggiornamenti sulle spedizioni per ridurre i tempi di attesa.
+- description: Mancanza di manodopera qualificata per operare macchinari avanzati.
+  severity: medium
+  solution_hint: L'agente offre formazione virtuale e supporto tecnico per migliorare le competenze del personale.
+- description: Complessità nella conformità al GDPR per la gestione dei dati dei clienti.
+  severity: medium
+  solution_hint: L'agente automatizza le procedure di consenso e garantisce la protezione dei dati secondo le normative UE.
+- description: Competizione con produttori a basso costo da paesi extra-UE.
+  severity: high
+  solution_hint: L'agente migliora l'efficienza operativa riducendo i costi e aumentando la velocità di risposta al mercato.
+- description: Gestione inefficace della manutenzione preventiva che porta a tempi di fermo macchina.
+  severity: medium
+  solution_hint: L'agente programma e monitora la manutenzione, inviando alert automatizzati per prevenire guasti.
+- description: Difficoltà nel gestire ordini personalizzati e variazioni di produzione.
+  severity: low
+  solution_hint: L'agente coordina le richieste dei clienti e adatta dinamicamente i piani di produzione.
+typical_services:
+- Pianificazione della produzione
+- Controllo qualità
+- Manutenzione industriale
+- Gestione della logistica
+- Automazione dei processi
+- Consulenza per l'Industria 4.0
+- Formazione del personale
+- Monitoraggio energetico
+- Gestione degli ordini
+- Supporto tecnico 24/7
+recommended_functions:
+- name: Programmazione appuntamenti
+  priority: high
+  reason: Essenziale per gestire efficientemente visite tecniche e riunioni con clienti e fornitori.
+- name: Assistenza clienti multilingue
+  priority: medium
+  reason: L'Italia ha un mercato esportatore, quindi il supporto in lingue come inglese e tedesco è cruciale.
+- name: Tracciamento ordini
+  priority: high
+  reason: I clienti richiedono aggiornamenti costanti sullo stato dei loro ordini per pianificare le attività.
+- name: Gestione reclami
+  priority: medium
+  reason: Per risolvere rapidamente problemi e mantenere alti livelli di soddisfazione del cliente.
+- name: Invio di alert di manutenzione
+  priority: high
+  reason: Previene guasti costosi e riduce i tempi di fermo, migliorando l'affidabilità della produzione.
+- name: Raccolta feedback
+  priority: low
+  reason: Permette di migliorare continuamente i servizi basandosi sulle opinioni dei clienti.
+typical_integrations:
+- name: Sistemi ERP
+  examples:
+  - SAP
+  - Oracle
+  - Zucchetti
+  priority: high
+- name: Sistemi di gestione della produzione (MES)
+  examples:
+  - Siemens
+  - Rockwell Automation
+  - Datalogic
+  priority: high
+- name: Software per la logistica
+  examples:
+  - JDA
+  - Manhattan Associates
+  - Italtel
+  priority: medium
+- name: Piattaforme CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - TeamSystem
+  priority: medium
+- name: Sistemi di monitoraggio IoT
+  examples:
+  - PTC ThingWorx
+  - soluzioni basate su Arduino
+  priority: low
+industry_faq:
+- question: Quanto costa implementare un agente vocale AI nella mia azienda manifatturiera?
+  answer_template: Il costo dipende dalle funzionalità scelte. Offriamo pacchetti a partire da 500 EUR al mese, con un ROI tipico entro 6 mesi.
+- question: Quanto tempo richiede l'installazione e l'integrazione?
+  answer_template: L'implementazione di base richiede 2-4 settimane, ottimizzando l'integrazione con i vostri sistemi esistenti.
+- question: L'ag
+meta:
+  id: manufacturing
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- manufacturing
+- factory
+- production
+- industrial
+_extends: _base/manufacturing
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui costi dell'agente vocale AI.
+  script: Capisco l'importanza del budget. I nostri pacchetti partono da 500 EUR al mese e offriamo soluzioni scalabili per adattarci alle esigenze specifiche della vostra azienda.
+  goal: Comunicare trasparenza sui costi e mostrare flessibilità.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Quando un prospect menziona un concorrente durante la conversazione.
+  script: È interessante che menzioni quel fornitore. Il nostro agente vocale AI si distingue per l'integrazione profonda con i sistemi ERP italiani e un supporto locale dedicato.
+  goal: Differenziare il prodotto rispetto alla concorrenza.
+  effectiveness: medium
+- trigger: roi_question
+  situation: Quando un potenziale cliente chiede quanto tempo ci vuole per vedere un ritorno sull'investimento.
+  script: Tipicamente, i nostri clienti vedono un ROI entro 6 mesi grazie all'ottimizzazione dei processi e al miglioramento dell'efficienza energetica.
+  goal: Dimostrare il valore economico dell'investimento.
+  effectiveness: high
+- trigger: integration_concern
+  situation: Quando il cliente mostra preoccupazione per l'integrazione con sistemi esistenti.
+  script: Il nostro agente vocale si integra senza problemi con piattaforme come SAP e Zucchetti, riducendo i tempi di implementazione e minimizzando l'impatto sulle operazioni.
+  goal: Ridurre le resistenze sull'integrazione tecnica.
+  effectiveness: high
+competitors:
+- name: VoiceTech Italia
+  positioning: Leader regionale nel voice automation per il manifatturiero medio-piccolo.
+  strengths:
+  - Forte presenza locale
+  - Soluzioni personalizzate per PMI
+  - Servizio clienti dedicato in italiano
+  weaknesses:
+  - Limitata integrazione con sistemi ERP avanzati
+  - Capacità AI meno evolute
+  our_differentiation: Offriamo integrazioni avanzate con i principali ERP e un'intelligenza artificiale più sofisticata per ottimizzare processi complessi.
+- name: Automazione Vocale Srl
+  positioning: Fornitore emergente con focus su automazione semplice.
+  strengths:
+  - Prezzi competitivi
+  - Facilità di installazione
+  weaknesses:
+  - Supporto tecnico limitato
+  - Scarsa personalizzazione
+  our_differentiation: La nostra soluzione è altamente personalizzabile e supportata da un team tecnico esperto per una migliore assistenza post-vendita.
+- name: AI Solutions Group
+  positioning: Azienda internazionale con presenza in Italia.
+  strengths:
+  - Tecnologia all'avanguardia
+  - Ampia gamma di funzionalità AI
+  weaknesses:
+  - Costi elevati
+  - Supporto non sempre in italiano
+  our_differentiation: Offriamo un equilibrio ottimale tra tecnologia avanzata e supporto locale in italiano, con tariffe più competitive.
+- name: Vox Manufacturing
+  positioning: Specialista in soluzioni vocali per la logistica e produzione.
+  strengths:
+  - Soluzioni specifiche per logistica
+  - Buona esperienza di settore
+  weaknesses:
+  - Limitata copertura multilingue
+  - Poca attenzione al risparmio energetico
+  our_differentiation: Il nostro agente vocale copre più funzioni, inclusi risparmi energetici e supporto multilingue, fondamentali per il mercato italiano.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 3000
+  entry_point: 500
+  roi_examples:
+  - scenario: Riduzione dei consumi energetici in uno stabilimento medio
+    monthly_cost: 800
+    monthly_savings: 1500
+    payback_months: 3
+  - scenario: Ottimizzazione della catena di approvvigionamento per una fabbrica grande
+    monthly_cost: 2000
+    monthly_savings: 4000
+    payback_months: 4
+  - scenario: Formazione virtuale e supporto tecnico per PMI
+    monthly_cost: 600
+    monthly_savings: 1200
+    payback_months: 5
+  value_anchors:
+  - Il nostro agente vocale riduce i costi operativi fino al 30%.
+  - L'integrazione con i sistemi esistenti è rapida e senza interruzioni.
+  - Offriamo supporto locale dedicato in italiano per garantire un'adozione efficace.
+market_context:
+  market_size: Circa 120 miliardi di EUR nel settore manifatturiero italiano
+  growth_rate: 3-5%
+  key_trends:
+  - Digitalizzazione crescente e Industria 4.0
+  - Aumento dell'automazione e uso di AI per ottimizzazione
+  - Sostenibilità e riduzione dei consumi energetici
+  - Espansione delle esportazioni e necessità di supporto multilingue
+  seasonality:
+    high:
+    - Settembre
+    - Ottobre
+    - Novembre
+    low:
+    - Luglio
+    - Agosto

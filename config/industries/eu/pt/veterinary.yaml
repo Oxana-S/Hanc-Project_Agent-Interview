@@ -1,0 +1,266 @@
+pain_points:
+- description: Gestão ineficiente de marcações, com muitos telefonemas não atendidos
+    e sobreposição de horários, levando a perda de clientes.
+  severity: high
+  solution_hint: Agente de voz pode automatizar marcações, confirmar e reagendar consultas
+    24/7, libertando a equipa para tarefas clínicas.
+- description: Falta de lembretes automatizados para consultas e vacinas, resultando
+    em faltas (no-shows) e receita perdida.
+  severity: medium
+  solution_hint: Agente pode enviar lembretes por chamada ou SMS, reduzindo as faltas
+    e aumentando a adesão aos planos de vacinação.
+- description: Sobrecarga da receção com perguntas frequentes (horários, preços, sintomas
+    de emergência), criando filas e stress.
+  severity: medium
+  solution_hint: IA pode responder a FAQs, filtrar chamadas e priorizar emergências,
+    melhorando o atendimento ao cliente.
+- description: Dificuldade em fidelizar clientes e promover serviços adicionais como
+    check-ups ou planos de saúde animal.
+  severity: medium
+  solution_hint: Agente pode realizar follow-ups pós-consulta, fazer campanhas de
+    marketing personalizadas e promover serviços.
+- description: Gestão manual de inventário de medicamentos e produtos, levando a ruturas
+    de stock ou excesso de inventário.
+  severity: low
+  solution_hint: Integração com software de gestão para monitorizar stock e o agente
+    pode alertar para reposições necessárias.
+- description: Dificuldade em captar novos clientes de forma eficiente, dependendo
+    muito do boca-a-boca ou anúncios caros.
+  severity: high
+  solution_hint: Agente pode realizar campanhas de telemarketing direcionadas para
+    novas áreas, apresentando ofertas de primeira consulta.
+typical_services:
+- Consulta geral
+- Vacinação anual
+- Cirurgia (esterilização/castração)
+- Desparasitação interna e externa
+- Exames de diagnóstico (análises clínicas, radiografias)
+- Hospitalização
+- Serviços de emaciação
+- Microchipagem
+- Banho e tosquia
+- Venda de alimentos e produtos veterinários
+recommended_functions:
+- name: Agendamento Inteligente de Consultas
+  priority: high
+  reason: Reduz falhas humanas na marcação, otimiza o calendário e permite agendamento
+    24 horas por dia.
+- name: Lembretes Automatizados
+  priority: high
+  reason: Diminui drasticamente as faltas, aumentando a taxa de ocupação e a receita.
+- name: Triagem de Sintomas Básicos
+  priority: medium
+  reason: Ajuda a identificar emergências, priorizando chamadas e orientando donos
+    antes da chegada à clínica.
+- name: Follow-up Pós-Consulta
+  priority: medium
+  reason: Melhora a fidelização do cliente e permite monitorizar a recuperação do
+    animal, aumentando a satisfação.
+- name: Captação de Novos Clientes
+  priority: high
+  reason: Automatiza campanhas de prospeção em novas zonas residenciais, crucial para
+    o crescimento.
+- name: Resposta a FAQs 24/7
+  priority: low
+  reason: Liberta a receção de trabalho repetitivo, permitindo foco em tarefas mais
+    complexas e atendimento presencial.
+typical_integrations:
+- name: Software de Gestão Veterinária
+  examples:
+  - VetMAX
+  - AniPlan
+  - Easyvet
+  priority: high
+- name: Sistema de Agenda Eletrónica
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  priority: high
+- name: Plataforma de SMS/Email
+  examples:
+  - Mailchimp
+  - Twilio
+  priority: medium
+- name: Software de Faturação
+  examples:
+  - Primavera
+  - Sage
+  priority: medium
+- name: Sistema de Gestão de Inventário
+  examples:
+  - Gestão interna
+  - Software específico para farmácia
+  priority: low
+industry_faq:
+- question: Quais são os vossos horários de funcionamento?
+  answer_template: A nossa clínica está aberta de segunda a sexta das [HORA_INÍCIO]
+    às [HORA_FIM] e ao sábado das [HORA_SÁBADO]. Para emergências fora de horário,
+    contacte o [NÚMERO_EMERGÊNCIA].
+- question: Quanto custa uma consulta geral?
+  answer_template: O preço de uma consulta geral começa nos [PREÇO]€. O valor exato
+    pode variar consoante a complexidade. Podemos agendar uma consulta para uma avaliação
+    precisa.
+- question: O meu animal precisa de vacinas anuais?
+  answer_template: Sim, a vacinação anual é crucial para proteger o seu animal de
+    doenças graves como a raiva ou a esgana. Recomendamos um plano de vacinação personalizado.
+- question: Têm serviço de urgência 24 horas?
+  answer_template: Oferecemos serviço de urgência durante o nosso horário alargado.
+    Para emergências fora dele, encaminhamos para uma clínica de urgência parceira.
+    Posso fornecer os contactos.
+- question: Fazem pagamentos em prestações?
+  answer_template: Sim, oferecemos a possibilidade de pagamento faseado através de
+    protocolos com [ENTIDADE_FINANCEIRA]. Pode discutir as opções na receção durante
+    a sua visita.
+- question: Preciso de marcação para banho e tosquia?
+  answer_template: Sim, é necessário marcar com antecedência para os serviços de banho
+    e tosquia. Posso verificar a disponibilidade e agendar para si agora.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente potencial pergunta pelo preço de uma consulta ou serviço.
+  script: Olá! Obrigado pelo seu contacto. O preço de uma consulta geral começa nos
+    [PREÇO_BASE]€, mas varia consoante as necessidades específicas do seu animal.
+    Para lhe dar um orçamento exato, posso agendar uma primeira consulta de avaliação.
+    Esta consulta permite-nos conhecer o seu companheiro e recomendar o plano de cuidados
+    mais adequado. Tem disponibilidade para [PROPOR 2 HORÁRIOS]?
+  goal: Converter a pergunta de preço numa marcação de consulta, destacando o valor
+    da avaliação personalizada.
+- trigger: callback_request
+  situation: Quando um cliente pede para ser contactado mais tarde ou deixou um número
+    para retorno.
+  script: Olá, falo da Clínica [NOME]. Estou a contactar na sequência do seu pedido
+    de informação. Como posso ajudá-lo hoje? Estamos aqui para esclarecer todas as
+    suas dúvidas sobre os cuidados do seu animal. Gostaria de marcar uma consulta
+    ou saber mais sobre os nossos serviços, como os planos de saúde preventiva?
+  goal: Re-engajar o lead de forma proativa e direcionar a conversa para uma ação
+    concreta (marcação ou venda de plano).
+- trigger: post_consult_followup
+  situation: Para follow-up automático após uma consulta ou procedimento.
+  script: Olá [NOME_CLIENTE], é da Clínica [NOME]. Estamos a ligar para saber como
+    está o [NOME_ANIMAL] após a consulta de [DATA]. Tem alguma questão ou preocupação?
+    Lembramos que o acompanhamento é importante. Gostaríamos também de sugerir a marcação
+    da próxima vacina ou desparasitação para manter a proteção em dia. Posso agendar
+    já?
+  goal: Aumentar a satisfação e fidelização do cliente, e gerar nova venda (vacina/desparasitação)
+    através de cuidado proativo.
+- trigger: new_area_prospection
+  situation: Campanha para captar novos clientes numa área residencial específica.
+  script: Bom dia, falo da Clínica Veterinária [NOME], sua nova clínica na zona de
+    [BAIRRO]. Estamos a contactar para apresentar os nossos serviços e oferecer um
+    desconto de [DESCONTO]% na primeira consulta para novos clientes. Cuidamos do
+    seu animal com toda a dedicação. Posso agendar a sua primeira visita?
+  goal: Agendar consultas de novos clientes através de uma oferta de entrada atrativa,
+    estabelecendo presença local.
+competitors:
+- name: Hospital Veterinário do Atlântico
+  positioning: Grande hospital de referência com múltiplas especialidades e equipamento
+    avançado.
+  strengths:
+  - Equipamento de diagnóstico de ponta
+  - Equipa de especialistas
+  - Serviço 24h
+  weaknesses:
+  - Preços mais elevados
+  - Pode parecer impessoal
+  - Localização menos convencional
+  our_differentiation: Oferecemos um atendimento mais pessoal, próximo e familiar,
+    com preços mais acessíveis e a conveniência de uma clínica de bairro, complementada
+    pela nossa automação inteligente que garante eficiência sem perder o toque humano.
+- name: MyVet (rede de clínicas)
+  positioning: Rede nacional de clínicas com presença em centros comerciais, foco
+    em conveniência.
+  strengths:
+  - Múltiplas localizações
+  - Horários alargados
+  - Marca reconhecida
+  weaknesses:
+  - Rotatividade de staff
+  - Serviços mais básicos
+  - Menos foco em follow-up personalizado
+  our_differentiation: Diferenciaimo-nos com um relacionamento mais próximo e contínuo
+    com o cliente e o seu animal, usando IA não para substituir, mas para potenciar
+    este contacto, com lembretes e cuidados proativos personalizados que uma rede
+    grande não consegue fornecer.
+- name: Clínica Veterinária Independente local
+  positioning: Clínica tradicional de proprietário único, baseada em relações de longa
+    data.
+  strengths:
+  - Confiança e relação pessoal
+  - Conhecimento profundo dos pacientes
+  - Preços competitivos
+  weaknesses:
+  - Tecnologia limitada
+  - Horários menos flexíveis
+  - Dificuldade em escalar o atendimento
+  our_differentiation: 'Combinamos o toque pessoal e a confiança de uma clínica independente
+    com a eficiência e a disponibilidade 24/7 de uma solução tecnológica moderna.
+    O nosso agente de voz trata das tarefas administrativas, permitindo ao veterinário
+    focar-se no que realmente importa: os animais.'
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 200
+  entry_point: 29
+  roi_examples:
+  - scenario: Clínica média reduz faltas (no-shows) em 30% e liberta 10h/semana da
+      receção para tarecias clínicas.
+    monthly_cost: 99
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Menos de 1€ por dia para um assistente virtual que nunca falha uma chamada.
+  - Recupere o custo do sistema numa única semana ao evitar faltas em consultas.
+  - Investimento inferior ao salário mensal de um rececionista a tempo parcial.
+market_context:
+  market_size: ~600 milhões EUR anuais (estimativa do setor veterinário português)
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Aumento da humanização dos animais de estimação, levando a maior procura por cuidados
+    de saúde premium.
+  - Crescimento dos seguros de saúde animal.
+  - Expansão das clínicas para serviços de estética e bem-estar (hotel, spa).
+  - Adoção lenta, mas crescente, de software de gestão e telemedicina veterinária.
+  seasonality:
+    high:
+    - Primavera (época de reprodução e parasitas)
+    - Verão (antes das férias, cuidados para pensionatos)
+    - Outono (reforço de vacinas)
+    low:
+    - Dezembro (festas, menor procura por rotinas)
+    - Agosto (férias gerais)
+typical_objections:
+- objection: É muito caro para a minha clínica pequena.
+  response: Compreendemos. No entanto, o nosso sistema é dimensionado para clínicas
+    de todos os tamanhos. Pense no custo como menos de uma consulta por mês. E, com
+    a redução de faltas e a nova captação de clientes, o retorno é rápido. Podemos
+    começar com um plano básico muito acessível.
+- objection: Os meus clientes idosos não vão gostar de falar com uma máquina.
+  response: É uma preocupação válida. O nosso agente foi desenhado para ser natural
+    e amigável, e apenas trata de tarefas simples como marcações e lembretes. Para
+    questões complexas ou se o cliente preferir, a chamada é sempre transferida imediatamente
+    para uma pessoa. Melhora o serviço para todos, reduzindo o tempo de espera.
+- objection: Já temos uma rececionista, não precisamos.
+  response: Perfeito! A nossa solução não visa substituir a sua excelente rececionista,
+    mas sim libertá-la das tarefas repetitivas e monótonas. Ela pode focar-se no atendimento
+    personalizado no balcão, nas vendas de produtos e no apoio aos veterinários, enquanto
+    a IA trata das chamadas em horas de pico e fora de horário. Aumenta a produtividade
+    de toda a equipa.
+- objection: A implementação parece complicada e demorada.
+  response: A configuração é rápida e nós tratamos de tudo. Normalmente está operacional
+    em poucos dias, sem perturbar o seu trabalho. Fornecemos formação à sua equipa
+    e suporte contínuo. Pense nisto como um parceiro que trabalha 24 horas por dia
+    sem férias, para simplificar a sua operação desde o primeiro dia.
+meta:
+  id: veterinary
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

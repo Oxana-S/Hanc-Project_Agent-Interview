@@ -1,0 +1,191 @@
+pain_points:
+- description: 游戏玩家投诉处理效率低，人工客服响应慢导致用户流失
+  severity: high
+  solution_hint: AI语音坐席7x24小时即时响应，自动分类并处理常见问题，降低等待时间
+- description: 新游戏推广成本高昂，传统营销方式转化率低
+  severity: high
+  solution_hint: AI外呼系统自动触达潜在玩家，进行个性化游戏推荐和激活引导
+- description: 玩家数据分散在不同平台，难以形成统一用户画像
+  severity: medium
+  solution_hint: AI系统整合多平台数据，通过通话交互补充用户标签，构建完整画像
+- description: 付费玩家维护困难，续费提醒和专属服务人力成本高
+  severity: medium
+  solution_hint: AI语音自动进行VIP玩家关怀、续费提醒和专属活动通知
+- description: 游戏版本更新和活动通知触达率低，邮件和推送容易被忽略
+  severity: medium
+  solution_hint: AI语音通话确保重要通知直接触达玩家，提高活动参与率
+- description: 多语言客服需求难以满足，特别是小语种玩家服务缺失
+  severity: low
+  solution_hint: 支持多语言AI语音坐席，低成本覆盖英语、日语、韩语等玩家群体
+typical_services:
+- 玩家客服热线自动化
+- 游戏推广外呼营销
+- VIP玩家专属服务
+- 游戏活动语音通知
+- 付费转化提醒
+- 用户满意度回访
+- 防沉迷系统验证
+- 游戏问题排查指导
+- 社区运营语音互动
+- 多语言玩家支持
+recommended_functions:
+- name: 智能玩家分流转接
+  priority: high
+  reason: 中国游戏玩家咨询量大，需快速区分问题类型并转接专业人工坐席
+- name: 自动充值引导
+  priority: high
+  reason: 付费转化直接影响营收，需在通话中精准识别充值意向并引导完成
+- name: 情感分析与安抚
+  priority: medium
+  reason: 玩家投诉时情绪激动，AI需识别情绪并采取安抚话术，避免负面扩散
+- name: 方言识别与回应
+  priority: medium
+  reason: 中国方言众多，需支持主要方言以提升地方玩家体验
+- name: 合规性检查与提醒
+  priority: high
+  reason: 需严格遵守PIPL和防沉迷规定，在交互中自动进行年龄验证和隐私提醒
+- name: 游戏数据实时查询
+  priority: medium
+  reason: 玩家常查询账号状态、虚拟物品信息，需对接游戏数据库提供实时信息
+typical_integrations:
+- name: 客户关系管理系统
+  examples:
+  - 用友CRM
+  - 金蝶CRM
+  - 销售易
+  priority: high
+- name: 游戏运营平台
+  examples:
+  - 腾讯云游戏
+  - 网易游戏中心
+  - 完美世界运营系统
+  priority: high
+- name: 支付系统
+  examples:
+  - 支付宝
+  - 微信支付
+  - 银联支付
+  priority: medium
+- name: 客服工单系统
+  examples:
+  - 智齿客服
+  - 网易七鱼
+  - 容联七陌
+  priority: medium
+- name: 数据分析和BI工具
+  examples:
+  - 腾讯云大数据
+  - 阿里云DataV
+  - 神策数据
+  priority: low
+industry_faq:
+- question: 你们的AI语音系统能处理复杂的游戏技术问题吗？
+  answer_template: 我们的AI系统可以解决80%常见问题，如登录异常、充值不到账、基础玩法指导等。遇到复杂技术问题会自动转接人工专家团队，并附带前期沟通记录，确保无缝衔接。
+- question: 如何保证符合中国的数据安全法规（PIPL）？
+  answer_template: 系统设计完全符合PIPL要求，所有语音数据在传输和存储时加密，并提供通话录音管理、用户同意获取机制。我们还可以协助您配置年龄验证流程，满足防沉迷规定。
+- question: AI语音听起来会像机器人吗？影响玩家体验怎么办？
+  answer_template: 我们采用行业领先的语音合成技术，音色自然且支持情绪变化。同时系统会根据游戏风格定制对话风格，比如二次元游戏会用更活泼的语气，确保体验沉浸感。
+- question: 系统如何应对高峰期的并发咨询？
+  answer_template: 基于云原生架构，可自动弹性扩展，轻松应对游戏新版本上线或活动期间的话务高峰。我们支持每分钟数千路并发，且成本远低于临时扩充人工团队。
+- question: 能和我们现有的游戏运营平台对接吗？
+  answer_template: 支持通过API与主流游戏运营平台快速对接，包括用户数据同步、虚拟物品查询、订单状态更新等。通常可在2-4周内完成定制化集成。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 我们根据坐席数量和功能模块灵活定价。对于中小型游戏公司，月费通常从**CNY 5,000**起，包含基础客服和营销功能。相比您目前的人工客服成本，一般能节省**30-50%**。我们可以根据您的玩家日活和咨询量，提供更精确的报价方案。
+  goal: 提供价格范围并强调成本节省，引导进一步沟通需求
+- trigger: competitor_mention
+  situation: 当客户提到其他AI语音服务商时
+  script: 我们专注于游戏行业垂直解决方案，而不只是通用语音技术。比如我们的系统预置了游戏行业话术库、防沉迷验证流程，并且支持与主流游戏支付和运营平台深度对接。这些行业特定优化能更快为您带来效果。
+  goal: 强调行业专业化优势，突出与通用解决方案的差异
+- trigger: compliance_concern
+  situation: 当客户担心合规风险时
+  script: 我们非常重视合规性，系统已内置PIPL合规检查点，比如自动获取用户同意、敏感信息过滤。我们还可以为您生成合规报告，帮助您应对监管审查。已服务多家中国游戏厂商，包括[可提及知名客户类型]，在这方面有成熟经验。
+  goal: 消除合规顾虑，提供社会证明
+competitors:
+- name: 科大讯飞
+  positioning: 通用语音技术提供商
+  strengths:
+  - 语音识别技术领先
+  - 品牌知名度高
+  - 政府资源丰富
+  weaknesses:
+  - 行业垂直解决方案少
+  - 游戏行业理解较浅
+  - 定制化成本高
+  our_differentiation: 我们提供开箱即用的游戏行业解决方案，包括预集成、行业话术和模板，部署更快且更贴合游戏业务场景
+- name: 百度智能云
+  positioning: 综合AI云服务商
+  strengths:
+  - AI技术全面
+  - 云计算基础设施强
+  - 生态整合能力
+  weaknesses:
+  - 聚焦头部客户
+  - 中小客户支持不足
+  - 产品标准化程度高
+  our_differentiation: 我们更专注于服务中小到中型游戏公司，提供更具性价比和高定制化的服务，客户成功团队更贴近游戏业务
+- name: 硅基智能
+  positioning: 对话式AI服务商
+  strengths:
+  - 外呼场景经验丰富
+  - 产品成熟度高
+  - 销售能力强
+  weaknesses:
+  - 游戏行业案例较少
+  - 客服场景优化不足
+  - 主要关注电销
+  our_differentiation: 我们在游戏客服和玩家运营场景有更深积累，提供从客服到营销、VIP管理的全生命周期玩家互动方案
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 中型游戏公司，日活50万，使用AI语音处理60%的客服咨询
+    monthly_cost: 15000
+    monthly_savings: 35000
+    payback_months: 1.5
+  value_anchors:
+  - 单次玩家服务成本降低70%
+  - 付费转化率提升15-25%
+  - VIP玩家流失率降低30%
+market_context:
+  market_size: 约3000亿人民币
+  growth_rate: 8-12% YoY
+  key_trends:
+  - 出海加速带动多语言需求
+  - 云游戏带来新交互场景
+  - 监管趋严推动合规技术投入
+  - 玩家对个性化服务期待提高
+  seasonality:
+    high:
+    - 寒暑假
+    - 春节
+    - 国庆黄金周
+    - 大型游戏版本更新期间
+    low:
+    - 学期中
+    - 传统工作日
+typical_objections:
+- objection: 我们的人工客服团队已经很成熟了，暂时不需要AI替代
+  response: AI不是要完全替代人工，而是帮助您的团队处理重复性问题，让人工客服能专注于复杂和高价值问题。这实际是提升团队整体效率和服务质量。
+- objection: 玩家可能不接受和AI对话，更喜欢人工服务
+  response: 我们的数据显示，对于充值指导、密码重置等标准流程，玩家对AI的接受度高达85%，因为AI响应更快且24小时可用。我们可以先从小部分场景试点，让数据说话。
+- objection: 系统实施和培训会不会很耗时，影响我们正常运营？
+  response: 我们提供标准化游戏行业模板，通常2-4周即可上线。实施期间有专属客户成功经理全程支持，确保平稳过渡，不影响您的游戏正常运营。
+meta:
+  id: gaming
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

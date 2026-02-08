@@ -1,0 +1,213 @@
+pain_points:
+- description: Costuri operaționale ridicate din cauza prețurilor combustibilului
+    și a taxelor aeriene.
+  severity: high
+  solution_hint: Agentul vocal AI poate optimiza rutinele de zbor și gestiona rezervările
+    pentru a reduce consumul și costurile.
+- description: Conformitatea cu reglementările GDPR și UE pentru protecția datelor
+    clienților.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza procesele de consimțământ și gestionarea
+    datelor în conformitate cu GDPR.
+- description: Competiție intensă din partea companiilor low-cost și a operatorilor
+    internaționali.
+  severity: medium
+  solution_hint: Agentul vocal AI poate oferi suport personalizat și promovii pentru
+    a îmbunătăți loialitatea clienților.
+- description: Probleme în gestionarea rezervărilor și a programărilor, ducând la
+    suprapopulare sau subutilizare.
+  severity: medium
+  solution_hint: Agentul vocal AI poate automatiza și sincroniza sistemele de rezervare
+    pentru eficiență maximă.
+- description: Dificultăți în asistența clienților, cum ar fi răspunsuri lente la
+    întrebări sau reclamații.
+  severity: medium
+  solution_hint: Agentul vocal AI poate răspunde instant la întrebări frecvente și
+    direcționa reclamațiile către echipa corespunzătoare.
+- description: Sezonalitate pronunțată, cu vârfuri în perioadele de vacanță și scăderi
+    în sezonul scăzut.
+  severity: low
+  solution_hint: Agentul vocal AI poate gestiona dinamic oferte și campanii de marketing
+    pentru a echilibra cererea.
+typical_services:
+- Rezervare zboruri interne și internaționale
+- Servicii de marfă și logistică aeriană
+- Asigurare de călătorie și asistență medicală
+- Închiriere de avioane private și charter
+- Servicii de catering și ospitalitate la bord
+- Gestionarea bagajelor și servicii de check-in
+- Training și instruire pentru personalul aerian
+- Mentenanță și reparații aeronave
+- Consultanță în securitate și conformitate aeriană
+- Vânzare de pachete turistice și excursii
+recommended_functions:
+- name: Rezervare automată și modificare zboruri
+  priority: high
+  reason: Reduce timpul de procesare și îmbunătățește experiența clienților.
+- name: Asistență clienți 24/7 pentru întrebări frecvente
+  priority: high
+  reason: Oferă suport imediat și reduce presiunea pe echipele umane.
+- name: Confirmare și remindere pentru zboruri
+  priority: medium
+  reason: Minimizează no-show-urile și crește satisfacția clienților.
+- name: Gestionare reclamații și feedback
+  priority: medium
+  reason: Îmbunătățește relațiile cu clienții și identifică probleme rapide.
+- name: Rapoarte automate privind ocuparea și veniturile
+  priority: low
+  reason: Ajută în luarea deciziilor bazate pe date pentru optimizare.
+- name: Integrare cu sisteme de plată online
+  priority: high
+  reason: Facilită plățile sigure și conforme cu GDPR.
+typical_integrations:
+- name: Sisteme de rezervare și distribuție (GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Sisteme ERP pentru gestionarea operațiunilor
+  examples:
+  - SAP
+  - Oracle
+  - sistem local RomSoft
+  priority: high
+- name: Sisteme de gestionare a relațiilor cu clienții (CRM)
+  examples:
+  - Salesforce
+  - sistem local eMagic
+  priority: medium
+- name: Platforme de plată online
+  examples:
+  - Netopia
+  - mobilPay
+  - PayPal
+  priority: high
+- name: Sisteme de securitate și conformitate
+  examples:
+  - sisteme locale conforme cu ANSP
+  priority: medium
+industry_faq:
+- question: Cum pot modifica sau anula o rezervare?
+  answer_template: Puteți modifica sau anula rezervarea prin intermediul agentului
+    nostru vocal sau pe site-ul nostru. Taxele pot varia în funcție de politica companiei.
+- question: Ce documente sunt necesare pentru zborurile internaționale?
+  answer_template: Pentru zborurile internaționale, aveți nevoie de pașaport valabil
+    și, în funcție de destinație, vize. Verificați întotdeauna cerințele actuale.
+- question: Există opțiuni pentru bagaje suplimentare?
+  answer_template: Da, puteți adăuga bagaje suplimentare la rezervare sau prin agentul
+    vocal. Prețurile sunt afișate în RON.
+- question: Cum funcționează asigurarea de călătorie inclusă?
+  answer_template: Asigurarea de călătorie acoperă anumite riscuri, cum ar fi anulări
+    sau urgențe medicale. Detaliile sunt în condițiile contractuale.
+- question: Puteți oferi servicii pentru persoane cu dizabilități?
+  answer_template: Da, oferim asistență specială pentru persoane cu dizabilități.
+    Notificați-ne la rezervare pentru a vă organiza serviciile.
+- question: Care sunt opțiunile de plată acceptate?
+  answer_template: Acceptăm carduri de credit/debit, transferuri bancare și plăți
+    online prin sisteme sigure conforme cu GDPR.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru servicii.
+  script: Bună ziua! Prețurile noastre pentru rezervări încep de la 300 RON și pot
+    fi personalizate în funcție de nevoile dvs. Doriți să vă ofer mai multe detalii?
+  goal: Captarea interesului și furnizarea unui punct de plecare clar pentru discuții.
+- trigger: service_inquiry
+  situation: Când un client solicită informații despre servicii specifice.
+  script: Înțeleg că doriți informații despre serviciile noastre de marfă. Oferim
+    soluții logistice complete cu tracking în timp real. Cum vă pot ajuta astăzi?
+  goal: Educarea clientului și identificarea nevoilor specifice.
+- trigger: competitor_comparison
+  situation: Când un client compară cu alți furnizori.
+  script: Față de competitori, oferim integrare AI pentru eficiență maximă și suport
+    24/7 în română. Sunteți interesat de o demonstrație?
+  goal: Evidențierea diferențiatorilor și încurajarea unei încercări.
+- trigger: compliance_concern
+  situation: Când un client este îngrijorat de conformitatea GDPR.
+  script: Suntem complet conformi cu GDPR, iar agentul nostru vocal gestionează datele
+    în siguranță. Vă putem arăta procedurile noastre.
+  goal: Construirea încrederii și asigurarea conformității.
+competitors:
+- name: TAROM
+  positioning: Companie de stat cu zboruri interne și internaționale.
+  strengths:
+  - Rețea extinsă în România
+  - sprijin guvernamental
+  weaknesses:
+  - Inflexibilitate operațională
+  - costuri ridicate
+  our_differentiation: Oferim automatizare AI pentru eficiență și prețuri competitive.
+- name: Ryanair
+  positioning: Operator low-cost cu prezență puternică în Europa.
+  strengths:
+  - Prețuri scăzute
+  - frecvență ridicată a zborurilor
+  weaknesses:
+  - Servicii limitate
+  - costuri ascunse
+  our_differentiation: Servicii personalizate și suport local în română cu integrare
+    avansată.
+- name: Blue Air (dacă este relevant)
+  positioning: Companie privată cu focus pe zboruri low-cost.
+  strengths:
+  - Prețuri accesibile
+  - destinații populare
+  weaknesses:
+  - Instabilitate financiară
+  - limitări operaționale
+  our_differentiation: Soluții automate stabile și conformitate GDPR robustă.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatizarea rezervărilor pentru o agenție de voiaj.
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 1
+  value_anchors:
+  - Reduceți timpul de procesare cu 50% prin automatizare.
+  - Îmbunătățiți satisfacția clienților cu suport non-stop.
+  - Conformitate GDPR garantată fără costuri suplimentare.
+market_context:
+  market_size: 'Estimare: 2 miliarde RON anual'
+  growth_rate: 5% YoY
+  key_trends:
+  - Creșterea cererii pentru zboruri low-cost și charter.
+  - Digitalizarea rapidă a serviciilor aeriene.
+  - Focus sporit pe sustenabilitate și eficiență energetică.
+  seasonality:
+    high:
+    - iulie
+    - august
+    - decembrie
+    low:
+    - ianuarie
+    - februarie
+    - noiembrie
+typical_objections:
+- objection: Prețul este prea ridicat pentru bugetul nostru.
+  response: Înțeleg preocuparea. Să vă arăt cum automatizarea poate reduce costurile
+    operaționale și oferă ROI rapid.
+- objection: Suntem mulțumiți cu actualul furnizor.
+  response: Apreciez loialitatea. Pot să vă arăt cum soluțiile noastre AI pot îmbunătăți
+    eficiența în comparație cu alternativele.
+- objection: Nu suntem siguri de securitatea datelor cu AI.
+  response: Agentul nostru vocal este conform GDPR și folosește criptare avansată.
+    Vă pot oferi detalii despre măsurile de securitate.
+meta:
+  id: aviation
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

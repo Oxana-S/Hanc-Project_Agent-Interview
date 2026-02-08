@@ -1,0 +1,241 @@
+pain_points:
+- description: La complexité des réglementations françaises et européennes sur les
+    cryptomonnaies entraîne des risques de non-conformité et des amendes.
+  severity: high
+  solution_hint: L'agent vocal IA peut automatiser les rapports de conformité et alerter
+    sur les changements réglementaires en temps réel.
+- description: Les clients sont souvent mal informés sur la sécurité des portefeuilles
+    numériques, ce qui augmente les risques de piratage.
+  severity: high
+  solution_hint: L'agent peut éduquer les clients sur les meilleures pratiques de
+    sécurité et répondre aux questions courantes.
+- description: La volatilité du marché des cryptomonnaies rend difficile la gestion
+    des investissements et la prévision des rendements.
+  severity: medium
+  solution_hint: L'agent peut fournir des analyses de marché automatisées et des alertes
+    pour aider à la prise de décision.
+- description: Les rapports fiscaux pour les gains en cryptomonnaies sont complexes
+    et sujets à des erreurs en France.
+  severity: medium
+  solution_hint: L'agent peut intégrer des outils de suivi fiscal et générer des rapports
+    pré-remplis pour les déclarations.
+- description: La fraude et les escroqueries sont fréquentes dans l'industrie, érodant
+    la confiance des clients.
+  severity: high
+  solution_hint: L'agent peut vérifier les transactions suspectes et offrir des conseils
+    de prévention de la fraude.
+- description: Le manque de support client rapide et multilingue affecte l'expérience
+    utilisateur, surtout pour les nouveaux investisseurs.
+  severity: medium
+  solution_hint: L'agent vocal peut fournir un support 24/7 en français, réduisant
+    les temps d'attente.
+typical_services:
+- Trading de cryptomonnaies
+- Portefeuilles numériques sécurisés
+- Services de conseil en investissement crypto
+- Plateformes d'échange P2P
+- Solutions de minage éco-responsables
+- Services de gestion de patrimoine crypto
+- Formation et éducation sur les blockchain
+- Audits de sécurité pour smart contracts
+- Integration de paiements crypto pour entreprises
+- Services de conformité réglementaire (AML/KYC)
+recommended_functions:
+- name: Assistant de conformité GDPR et réglementations françaises
+  priority: high
+  reason: Essentiel pour éviter les sanctions et maintenir la confiance dans le marché
+    français.
+- name: Répondeur aux questions sur la sécurité des portefeuilles
+  priority: high
+  reason: Les clients français sont très soucieux de la protection des données et
+    des actifs.
+- name: Guide d'investissement et analyse de marché
+  priority: medium
+  reason: Aide les investisseurs à naviguer dans la volatilité et à prendre des décisions
+    éclairées.
+- name: Support client multilingue automatisé
+  priority: medium
+  reason: Améliore l'expérience utilisateur et réduit les coûts opérationnels.
+- name: Générateur de rapports fiscaux
+  priority: low
+  reason: Simplifie les obligations fiscales complexes pour les résidents français.
+- name: Détecteur de fraudes et alertes
+  priority: high
+  reason: Critique pour prévenir les pertes et renforcer la sécurité.
+typical_integrations:
+- name: Plateformes de trading
+  examples:
+  - Binance France
+  - Coinhouse
+  - Paymium
+  priority: high
+- name: Systèmes de paiement
+  examples:
+  - Lydia
+  - PayPal FR
+  - Stripe
+  priority: medium
+- name: Outils de conformité
+  examples:
+  - Chainalysis
+  - ComplyAdvantage
+  priority: high
+- name: CRM locaux
+  examples:
+  - Salesforce
+  - HubSpot adaptés au marché français
+  priority: medium
+- name: Solutions de sécurité
+  examples:
+  - Ledger
+  - Trezor
+  priority: high
+industry_faq:
+- question: Comment puis-je sécuriser mes cryptomonnaies en France ?
+  answer_template: Utilisez un portefeuille matériel comme Ledger, stocké hors ligne,
+    et activez l'authentification à deux facteurs. Respectez les bonnes pratiques
+    de sécurité recommandées par l'AMF.
+- question: Quelles sont les réglementations fiscales pour les cryptomonnaies en France
+    ?
+  answer_template: Les gains sont soumis à l'impôt sur le revenu ou à la flat tax,
+    selon le type d'activité. Consultez un expert-comptable ou utilisez des outils
+    de suivi fiscal pour des déclarations précises.
+- question: Est-ce que les cryptomonnaies sont légales en France ?
+  answer_template: Oui, mais elles sont régulées par l'AMF et doivent respecter les
+    lois anti-blanchiment. Les plateformes doivent être enregistrées auprès des autorités.
+- question: Comment puis-je acheter des cryptomonnaies en toute sécurité ?
+  answer_template: Utilisez des plateformes agréées en France comme Coinhouse, vérifiez
+    les avis clients, et commencez par de petits investissements pour vous familiariser.
+- question: Quels sont les risques associés aux investissements en cryptomonnaies
+    ?
+  answer_template: Les risques incluent la volatilité, la fraude, et les changements
+    réglementaires. Diversifiez votre portefeuille et restez informé via des sources
+    fiables.
+- question: Comment fonctionne la conformité GDPR avec les cryptomonnaies ?
+  answer_template: Les données personnelles doivent être protégées selon le GDPR.
+    Assurez-vous que les plateformes utilisent le chiffrement et ont des politiques
+    de confidentialité claires.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un client demande des informations sur les coûts de nos services.
+  script: Bonjour, nos solutions commencent à partir de 50 EUR par mois pour les services
+    de base, avec des options personnalisées selon vos besoins. Voulez-vous que je
+    vous explique les détails ?
+  goal: Établir la transparence tarifaire et encourager une discussion plus approfondie.
+- trigger: compliance_concern
+  situation: Quand un client exprime des inquiétudes sur la conformité réglementaire.
+  script: Je comprends vos préoccupations. Notre agent vocal est conçu pour vous aider
+    à respecter le GDPR et les lois françaises, avec des mises à jour automatiques.
+    Puis-je vous montrer comment cela fonctionne ?
+  goal: Rassurer le client et présenter notre valeur ajoutée en matière de conformité.
+- trigger: security_question
+  situation: Si un client s'interroge sur la sécurité des transactions.
+  script: La sécurité est notre priorité. Notre agent utilise des protocoles de chiffrement
+    avancés et intègre des outils comme Ledger pour une protection maximale. Souhaitez-vous
+    une démonstration ?
+  goal: Démontrer notre engagement envers la sécurité et générer de la confiance.
+- trigger: competitor_mention
+  situation: Lorsqu'un client compare nos services à ceux d'un concurrent.
+  script: Comparé à [nom du concurrent], nous offrons un support vocal en français
+    24/7 et une intégration facile avec les systèmes locaux. Cela peut réduire vos
+    coûts opérationnels de jusqu'à 30%. Intéressé à en savoir plus ?
+  goal: Mettre en avant nos différenciateurs clés et inciter à l'action.
+competitors:
+- name: Binance France
+  positioning: Leader du marché avec une large gamme de services.
+  strengths:
+  - Grande liquidité
+  - nombreuses paires de trading
+  - plateforme internationale
+  weaknesses:
+  - Problèmes réglementaires passés
+  - support client parfois lent
+  our_differentiation: Notre agent vocal offre un support personnalisé en français
+    et une focalisation sur la conformité locale.
+- name: Coinhouse
+  positioning: Plateforme française axée sur la sécurité et la simplicité.
+  strengths:
+  - Conformité française
+  - interface conviviale
+  - bonne réputation
+  weaknesses:
+  - Frais plus élevés
+  - options limitées pour les traders avancés
+  our_differentiation: Nous automatisons les tâches comme la conformité et le support,
+    réduisant les coûts et améliorant l'efficacité.
+- name: Paymium
+  positioning: Premier exchange bitcoin en France, focus sur les particuliers.
+  strengths:
+  - Historique long en France
+  - simplicité d'utilisation
+  weaknesses:
+  - Offre de cryptomonnaies limitée
+  - innovation lente
+  our_differentiation: Notre solution inclut des fonctionnalités avancées comme l'analyse
+    de marché et la détection de fraude via IA.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatisation des rapports de conformité pour une PME
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Réduction du temps de support client de 50%
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Réduisez les risques de non-conformité de 80%
+  - Gagnez 10 heures par mois sur les tâches administratives
+  - Améliorez la satisfaction client avec un support instantané
+market_context:
+  market_size: Environ 5 milliards EUR en 2023
+  growth_rate: 15% par an
+  key_trends:
+  - Adoption croissante par les institutions financières
+  - Renforcement des régulations par l'AMF
+  - Développement des solutions eco-friendly pour le minage
+  - Intégration des paiements crypto dans le commerce en ligne
+  seasonality:
+    high:
+    - Janvier (résolutions du Nouvel An)
+    - Octobre (période des salons financiers)
+    low:
+    - Août (vacances d'été)
+    - Décembre (fêtes de fin d'année)
+typical_objections:
+- objection: Les cryptomonnaies sont trop risquées pour mon entreprise.
+  response: Je comprends. Notre agent vocal aide à mitiger les risques grâce à des
+    alertes de conformité et des analyses de sécurité. Nous pouvons commencer par
+    un essai gratuit pour vous démontrer les bénéfices.
+- objection: Je préfère gérer cela moi-même, sans automatisation.
+  response: C'est tout à fait valable. Cependant, l'automatisation peut vous faire
+    gagner du temps sur les tâches répétitives comme les rapports, vous permettant
+    de vous concentrer sur la stratégie. Puis-je vous montrer un exemple ?
+- objection: Vos services sont trop chers pour mon budget.
+  response: Nos prix sont compétitifs et conçus pour offrir un ROI rapide. Par exemple,
+    avec 50 EUR par mois, vous pouvez automatiser la conformité et économiser jusqu'à
+    300 EUR. Souhaitez-vous explorer des options adaptées à votre budget ?
+- objection: Je ne fais pas confiance aux agents IA pour des données sensibles.
+  response: La sécurité est prioritaire. Nous utilisons le chiffrement de bout en
+    bout et sommes conformes au GDPR. De plus, vous gardez le contrôle total sur vos
+    données. Voulez-vous en savoir plus sur nos mesures de sécurité ?
+meta:
+  id: crypto
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

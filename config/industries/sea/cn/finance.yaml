@@ -1,0 +1,186 @@
+pain_points:
+- description: 传统客服系统效率低下，导致客户等待时间长，满意度下降
+  severity: high
+  solution_hint: 部署AI语音客服，实现7x24小时即时响应，自动处理常见咨询
+- description: 手动处理大量金融交易咨询和账户查询，耗费大量人力，错误率高
+  severity: high
+  solution_hint: AI语音代理自动处理交易查询、账户余额和交易历史查询，减少人工干预
+- description: 理财产品销售过程中，难以精准触达潜在客户并完成初步筛选
+  severity: medium
+  solution_hint: 利用AI语音进行外呼营销，根据客户画像进行个性化产品推荐和意向筛选
+- description: 合规监管严格（如PIPL），人工服务难以确保每通对话均符合规定
+  severity: high
+  solution_hint: AI语音系统预设合规话术，自动记录通话内容，确保服务过程可追溯、符合监管要求
+- description: 客户数据分散在不同系统中，服务时无法快速获取完整客户视图
+  severity: medium
+  solution_hint: AI语音代理集成CRM、核心系统，通话时实时调取客户信息，提供连贯服务
+- description: 市场波动时，咨询量激增，现有客服团队无法应对突发高峰
+  severity: medium
+  solution_hint: AI语音客服弹性扩容，瞬间应对海量并发咨询，保障服务不中断
+typical_services:
+- 信用卡申请与激活
+- 个人贷款咨询与办理
+- 理财产品销售与咨询
+- 账户管理与交易查询
+- 保险产品推介
+- 投资顾问服务预约
+- 跨境汇款咨询
+- 风险评估与合规审核
+- 客户投诉处理
+- 账单分期与还款提醒
+recommended_functions:
+- name: 智能外呼营销
+  priority: high
+  reason: 中国金融市场竞争激烈，主动精准营销是获取新客户的关键手段
+- name: 7x24小时智能客服
+  priority: high
+  reason: 满足客户随时随地的金融服务需求，提升客户体验和品牌形象
+- name: 多轮对话与意图识别
+  priority: high
+  reason: 金融咨询复杂，需准确理解客户意图以提供个性化解决方案
+- name: 合规话术监控与提醒
+  priority: high
+  reason: 严格遵守中国金融监管规定和PIPL要求，规避法律风险
+- name: 客户身份语音验证
+  priority: medium
+  reason: 增强交易安全性，符合金融行业高安全标准
+- name: 实时数据查询与展示
+  priority: medium
+  reason: 客服需即时获取账户、产品信息，提供准确高效的咨询服务
+typical_integrations:
+- name: 客户关系管理（CRM）系统
+  examples:
+  - 销售易
+  - 纷享销客
+  - 金蝶云星空
+  priority: high
+- name: 核心银行系统
+  examples:
+  - 长亮科技核心系统
+  - 神州信息核心系统
+  priority: high
+- name: 信贷管理系统
+  examples:
+  - 同盾科技
+  - 百融云创
+  priority: medium
+- name: 支付网关
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: medium
+- name: 合规与审计系统
+  examples:
+  - 恒生电子
+  priority: high
+industry_faq:
+- question: 你们的AI语音系统如何保障客户数据安全，符合PIPL要求？
+  answer_template: 我们的系统设计严格遵循《个人信息保护法》（PIPL）。所有通话数据在传输和存储时均进行加密，并在中国境内服务器处理。我们提供完整的操作审计日志，并支持您设置数据保留和删除策略，确保合规。
+- question: AI语音客服能处理复杂的理财产品咨询吗？
+  answer_template: 可以。我们的系统经过大量金融语料训练，能准确理解股票、基金、保险等专业术语。对于标准化产品咨询，可独立解答；对于复杂个性化问题，会清晰记录客户需求并转接给资深理财顾问跟进。
+- question: 实施周期需要多久？会影响我们现有业务吗？
+  answer_template: 标准部署周期为4-6周。我们采用渐进式部署策略，初期可选择部分业务线（如信用卡客服）试点，运行稳定后再逐步扩展，确保对您现有业务无冲击。
+- question: 系统能识别各地方言吗？
+  answer_template: 我们的语音模型支持普通话及多种主流方言（如粤语、上海话、四川话）的识别，能有效覆盖更广泛的客户群体，提升服务体验。
+- question: 如何评估AI语音客服的投资回报率（ROI）？
+  answer_template: ROI主要来自人力成本节约、营销转化率提升和服务效率提高。我们为您提供详细的数据看板，可清晰查看接通率、问题解决率、客户满意度及营销成功率的提升情况。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问产品价格或成本时
+  script: 感谢您的询问。我们的定价基于您所需的坐席数量、功能模块和通话量。在金融行业，我们的典型客户通过节省人力成本和提升营销转化，通常在6-9个月内实现投资回报。为了给您提供更精准的报价，可以了解一下您目前的月度客服通话量大概是多少呢？
+  goal: 将对话从价格转向价值，并收集信息以便提供定制化方案
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手（如科大讯飞、阿里云）时
+  script: 您提到的这几家都是优秀的公司。我们的核心优势在于对金融行业业务流程和合规要求的深度理解。我们的解决方案预先集成了国内主流的金融核心系统和CRM，并内置了符合PIPL等法规的合规话术库，确保您能快速、安全地上线，专注业务增长而非技术调试。
+  goal: 强调我们在垂直行业的专业性和开箱即用的合规优势
+- trigger: compliance_concern
+  situation: 当客户对数据安全和监管合规表示担忧时
+  script: 完全理解您的顾虑，金融行业的合规是生命线。我们的系统架构默认满足等保三级要求，所有数据存储在中国境内。更重要的是，我们提供合规话术模板和实时监控告警，确保每一通AI外呼或客服对话都符合金融营销和PIPL规范，这能极大减轻您法务和合规团队的压力。
+  goal: 建立信任，将合规挑战转化为我们的核心价值主张
+competitors:
+- name: 科大讯飞
+  positioning: 通用语音技术领导者，提供底层AI能力
+  strengths:
+  - 中文语音识别技术领先
+  - 品牌知名度高
+  - 政府及大客户资源丰富
+  weaknesses:
+  - 金融行业定制化解决方案深度不足
+  - 对业务流程和合规的理解不如垂直厂商
+  our_differentiation: 我们提供专为金融场景设计的端到端解决方案，深度集成业务系统，并内置金融合规库，更贴近业务需求
+- name: 阿里云
+  positioning: 综合云服务商，提供AI语音作为其云产品的一部分
+  strengths:
+  - 强大的云计算基础设施
+  - 丰富的生态和集成能力
+  - 价格竞争力强
+  weaknesses:
+  - 非核心业务，行业定制化服务响应慢
+  - 金融行业特定功能和合规支持需额外开发
+  our_differentiation: 我们专注于金融行业，提供更深度的业务流程自动化、合规保障和专属客户成功服务
+- name: 百应科技
+  positioning: 聚焦智能客服与营销的AI公司
+  strengths:
+  - 在电销和客服场景经验丰富
+  - 产品化程度高，部署快
+  weaknesses:
+  - 在高度监管的金融核心业务（如信贷、理财）方面经验相对有限
+  - 对金融系统集成能力一般
+  our_differentiation: 我们拥有更深的金融行业知识图谱和系统集成经验，能处理更复杂的金融交易和合规咨询场景
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 100000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: 中型城商行用于信用卡还款提醒和分期营销
+    monthly_cost: 30000
+    monthly_savings: 45000
+    payback_months: 8
+  - scenario: 保险公司用于新单回访和续保提醒
+    monthly_cost: 20000
+    monthly_savings: 35000
+    payback_months: 7
+  value_anchors:
+  - 一个AI坐席的成本仅为人工坐席的1/3
+  - 营销外呼转化率可提升20%以上
+  - 客户等待时间降低80%，满意度显著提升
+market_context:
+  market_size: 约150亿人民币（金融行业智能客服与营销市场）
+  growth_rate: 25%
+  key_trends:
+  - 数字化转型加速，金融机构加大AI投入
+  - 远程银行和非接触式金融服务成为常态
+  - 监管科技（RegTech）与AI结合，智能合规成为刚需
+  - 从单一客服场景向营销、风控、运营全链路渗透
+  seasonality:
+    high:
+    - 季度末和年度末（业绩冲刺）
+    - 春节前后（资金需求旺盛）
+    - ‘双十一’等大型购物节后（消费分期需求）
+    low:
+    - 农历正月（春节假期，业务活动减少）
+    - 国庆长假期间
+typical_objections:
+- objection: 我们客户更习惯与真人沟通，对AI接受度可能不高。
+  response: 理解您的担心。我们的策略不是完全替代人工，而是让AI处理标准化、高频的查询（如余额查询、还款、产品信息），让您的精英员工专注于高价值的复杂服务和销售。同时，我们的AI声音自然，且能无缝转接人工，客户体验是连贯的。我们可以先从一个低风险场景开始试点，用数据证明效果。
+- objection: 我们内部IT系统复杂，集成起来会不会很麻烦？
+  response: 这正是我们的优势所在。我们已预置了与国内多家主流金融核心系统、CRM的对接模块，积累了丰富的金融集成经验。我们的实施团队会负责主要集成工作，并提供清晰的接口文档，最大限度地减少贵方IT团队的负担。
+- objection: 现在经济环境不确定，我们需要控制预算，这类投资可能要先放缓。
+  response: 恰恰是在经济不确定时期，提升运营效率和降低单位服务成本更为关键。我们的AI解决方案能直接减少您对一线人力的依赖，将固定成本转化为可变成本，并提升营销投入产出比。我们可以设计一个从小规模试点开始的方案，用最低的初始投入快速验证ROI。
+meta:
+  id: finance
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

@@ -1,0 +1,272 @@
+pain_points:
+- description: Concurrence féroce des plateformes en ligne (Booking, Expedia) qui
+    captent la clientèle directe.
+  severity: high
+  solution_hint: L'agent vocal peut qualifier les appels entrants et convertir les
+    demandes générales en réservations, en proposant des offres personnalisées.
+- description: Gestion manuelle et chronophage des réservations, modifications et
+    annulations, source d'erreurs.
+  severity: high
+  solution_hint: Automatiser les tâches répétitives de gestion et de mise à jour des
+    dossiers via intégration API avec le système de réservation.
+- description: Difficulté à assurer un service client 24h/24, surtout pour les urgences
+    voyages (vols annulés, problèmes sur place).
+  severity: medium
+  solution_hint: Déployer un agent vocal en soutien pour traiter les demandes urgentes
+    courantes, transférer les cas complexes et rassurer le client.
+- description: Saisonnalité marquée avec pics d'appels imprévisibles (vacances scolaires)
+    qui submergent le standard téléphonique.
+  severity: medium
+  solution_hint: L'agent vocal gère le premier niveau d'appels, filtre et priorise,
+    lissant la charge pour les conseillers humains.
+- description: Respect strict du RGPD pour la gestion des données clients (coordonnées,
+    historiques de voyage, préférences).
+  severity: high
+  solution_hint: Configurer l'agent pour ne stocker que les données strictement nécessaires,
+    avec consentement explicite et procédures de suppression.
+- description: Perte de revenus sur les services annexes (assurances, excursions,
+    sièges premium) par manque de proposition systématique.
+  severity: low
+  solution_hint: L'agent peut effectuer des 'upsells' pertinents et contextualisés
+    lors de la confirmation d'une réservation ou d'un suivi.
+- description: 'Défis de gestion du ''last-minute'' : remplir les offres et écouler
+    les stocks à prix réduit.'
+  severity: medium
+  solution_hint: L'agent peut automatiquement contacter une liste de clients ciblés
+    (selon leurs préférences) pour proposer ces offres promotionnelles.
+typical_services:
+- Forfaits tout compris (vol + hôtel + transfert)
+- Séjours à la carte (hébergement uniquement)
+- Circuits organisés et accompagnés
+- Location de voitures et campings-cars
+- Réservation de billets de train (SNCF, TGV)
+- Organisation de voyages d'affaires et séminaires
+- Croisières (Méditerranée, Caraïbes, fleuves)
+- Assurances voyages (annulation, rapatriement)
+- Activités et excursions sur place
+- Conseil en visa et formalités administratives
+recommended_functions:
+- name: Prise de rendez-vous pour conseil personnalisé
+  priority: high
+  reason: Convertit les appels généraux en prospects qualifiés pour les conseillers,
+    optimisant leur temps.
+- name: Réponse aux FAQs (horaires, bagages, annulations)
+  priority: high
+  reason: Désengorge le standard téléphonique et fournit une information immédiate
+    et fiable 24/7.
+- name: Suivi post-réservation et relance avant départ
+  priority: medium
+  reason: Améliore l'expérience client, réduit les no-shows et permet des ventes additionnelles.
+- name: Gestion des modifications simples (dates, noms)
+  priority: medium
+  reason: Automatise une tâche récurrente et libère les conseillers pour des demandes
+    plus complexes.
+- name: Collecte de feedback et évaluations post-séjour
+  priority: low
+  reason: Génère des avis précieux pour l'agence et identifie les problèmes à résoudre.
+- name: Proposition ciblée d'offres promotionnelles
+  priority: medium
+  reason: Maximise le taux d'occupation et les revenus en ciblant des clients susceptibles
+    d'être intéressés.
+typical_integrations:
+- name: Système de Gestion de Réservation (PMS)
+  examples:
+  - Amadeus
+  - TravelJoy
+  - Sirvoy
+  - Logiciel propriétaire
+  priority: high
+- name: CRM (Gestion de la Relation Client)
+  examples:
+  - HubSpot
+  - Salesforce
+  - Zoho CRM
+  - Dolibarr
+  priority: high
+- name: Gestionnaire de paie et comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - Quadratus
+  - CIEL
+  priority: medium
+- name: Plateforme de communication unifiée
+  examples:
+  - Aircall
+  - RingCentral
+  - Avaya
+  priority: medium
+- name: Outils de marketing digital
+  examples:
+  - Mailchimp
+  - Sendinblue
+  - Meta Business Suite
+  priority: low
+industry_faq:
+- question: Quelle est votre politique d'annulation et de remboursement ?
+  answer_template: Bonjour, notre politique d'annulation dépend du prestataire (compagnie
+    aérienne, hôtel...). Je peux vous donner les détails spécifiques à votre réservation.
+    De manière générale, nous vous recommandons fortement de souscrire une assurance
+    annulation.
+- question: Puis-je modifier les dates de mon voyage ?
+  answer_template: Absolument. Les modifications sont possibles sous réserve de disponibilité
+    et des conditions tarifaires appliquées par nos partenaires. Je vais vérifier
+    les options pour vous et vous indiquer les éventuels frais.
+- question: Quelles sont les formalités nécessaires pour mon pays de destination (passeport,
+    visa, santé) ?
+  answer_template: Les formalités évoluent fréquemment. Pour une information fiable
+    et officielle, je vous invite à consulter le site 'Conseils aux voyageurs' du
+    Ministère de l'Europe et des Affaires étrangères. Je peux également vous mettre
+    en relation avec un conseiller pour un accompagnement spécifique.
+- question: Proposez-vous une assistance 24h/24 en cas de problème pendant mon voyage
+    ?
+  answer_template: Oui, nous mettons à votre disposition un numéro d'urgence dédié,
+    actif 24h/24 et 7j/7, pour toute situation critique sur place (problème médical,
+    perte de documents, vol annulé). Ce numéro vous sera communiqué dans vos documents
+    de voyage.
+- question: Acceptez-vous le paiement en plusieurs fois ?
+  answer_template: Oui, nous proposons des facilités de paiement sans frais selon
+    le montant et le délai avant le départ. Un de nos conseillers pourra vous présenter
+    les différents échéanciers possibles.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un client demande le prix d'un service ou compare avec des plateformes
+    en ligne.
+  script: Je comprends votre souci de trouver le meilleur rapport qualité-prix. Notre
+    valeur ajoutée ne se résume pas au tarif affiché. Nous vous offrons un conseil
+    personnalisé, une assurance que tout est bien coordonné, et un point de contact
+    humain en cas de pépin. Souvent, nos offres négociées incluent des avantages (chambre
+    améliorée, transfert gratuit) que vous ne trouverez pas seul en ligne. Puis-je
+    vous proposer un rendez-vous téléphonique rapide avec un expert pour étudier votre
+    projet sans engagement ?
+  goal: Transformer une objection prix en démonstration de valeur et générer un lead
+    qualifié.
+- trigger: competitor_mention
+  situation: 'Quand le client cite un concurrent direct (ex : agence de voyage en
+    ligne).'
+  script: C'est un choix intéressant. Chez [Nom Agence], nous misons sur le relationnel
+    de proximité et la curation. Nous sélectionnons nous-mêmes nos partenaires hôteliers
+    et terrestres pour leur qualité de service, ce qui limite les mauvaises surprises.
+    De plus, nous vous accompagnons de A à Z, avant, pendant et après le voyage. Avec
+    nous, vous n'êtes pas juste un numéro de réservation. Puis-je vous montrer quelques
+    témoignages de clients satisfaits de cette approche ?
+  goal: Différencier par l'expertise, la qualité et le service personnalisé, plutôt
+    que par le prix seul.
+- trigger: hesitation
+  situation: Quand le client semble intéressé mais reporte sa décision ('Je dois réfléchir',
+    'Je reviens vers vous').
+  script: 'Bien sûr, c''est un investissement important. Pour vous aider dans votre
+    réflexion, puis-je vous envoyer par email une fiche récapitulative de notre proposition
+    avec les avantages clés ? Je peux également vous indiquer que cette offre est
+    soumise à disponibilité, particulièrement pour les dates de vacances scolaires.
+    Un petit rappel amical : réserver tôt vous garantit souvent les meilleurs tarifs
+    et le plus grand choix. Souhaitez-vous que je vous recontacte dans quelques jours
+    ?'
+  goal: Maintenir l'engagement, fournir une aide à la décision et poser les bases
+    d'un suivi.
+competitors:
+- name: Voyage Privé
+  positioning: Membre-only / ventes flash de voyages de luxe à prix négociés.
+  strengths:
+  - Prix très compétitifs sur le haut de gamme
+  - Sentiment d'exclusivité
+  - Interface utilisateur efficace
+  weaknesses:
+  - Flexibilité limitée (dates fixes)
+  - Service client réactif mais standardisé
+  - Peu de personnalisation
+  our_differentiation: Nous offrons une réelle personnalisation du voyage, un conseil
+    sur mesure et un service humain dédié tout au long du parcours, bien au-delà d'une
+    simple transaction.
+- name: Booking.com / Expedia
+  positioning: Plateformes mondiales d'agrégation et de réservation en ligne.
+  strengths:
+  - Choix immense
+  - Comparaison de prix facile
+  - Autonomie totale pour l'utilisateur
+  weaknesses:
+  - Service client fragmenté (chaque prestataire est différent)
+  - Pas de conseil humain
+  - Complexité en cas de problème multi-prestataires
+  our_differentiation: Nous sommes votre unique interlocuteur responsable. Nous gérons
+    la coordination et les problèmes à votre place, vous faisant gagner un temps précieux
+    et évitant le stress.
+- name: 'Agences de voyage physiques traditionnelles (ex : FRAM, Club Med)'
+  positioning: Réseaux nationaux avec forte notoriété et produits packagés.
+  strengths:
+  - Notoriété historique
+  - Réseau d'agences physiques
+  - Produits 'clé en main' fiables
+  weaknesses:
+  - Parfois perçues comme peu innovantes
+  - Processus parfois rigides
+  - Coûts opérationnels élevés répercutés
+  our_differentiation: Nous combinons la fiabilité et l'expertise d'une agence sérieuse
+    avec l'agilité et les outils numériques modernes (comme notre agent vocal), pour
+    un service plus réactif et accessible.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 3000
+  - 15000
+  entry_point: 500
+  roi_examples:
+  - scenario: Agence moyenne réduisant de 30% le temps de traitement des appels récurrents
+      et convertissant 15% de leads supplémentaires.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - 'Libérez vos conseillers pour faire ce qu''ils font de mieux : conseiller et vendre.'
+  - Un service client 24/7 pour le prix d'un stagiaire à mi-temps.
+  - Ne perdez plus jamais une demande de devis ou une opportunité de vente, même en
+    heure de pointe.
+market_context:
+  market_size: ~30-35 milliards EUR (hors transport aérien long-courrier pur)
+  growth_rate: 4-6% YoY (post-pandémie), mais variable selon les segments.
+  key_trends:
+  - Demande forte pour le voyage durable et éco-responsable.
+  - Ré-émergence des demandes de conseil expert face à la complexité des formalités
+    post-Covid et géopolitique.
+  - Essor du 'travel blending' (mélange voyage pro/perso) et des séjours longs.
+  - Importance croissante des avis clients et de la réputation en ligne.
+  seasonality:
+    high:
+    - Juillet-Août (vacances d'été)
+    - Décembre-Janvier (fêtes de fin d'année)
+    - Vacances scolaires zone C
+    low:
+    - Janvier (hors début du mois)
+    - Novembre
+    - Mi-septembre à mi-octobre
+typical_objections:
+- objection: Je préfère parler à un vrai conseiller, pas à une machine.
+  response: Je comprends tout à fait. Notre agent vocal est là pour filtrer les questions
+    simples et vous orienter plus rapidement vers le bon conseiller humain, qui sera
+    ainsi plus disponible et mieux informé pour vous aider sur les aspects complexes
+    de votre voyage.
+- objection: C'est trop cher pour mon petit volume d'appels.
+  response: Notre solution est justement scalable. Vous commencez avec un forfait
+    de base adapté à votre volume. L'objectif est qu'en vous libérant du temps sur
+    la gestion, vous puissiez générer plus d'appels et de réservations, faisant ainsi
+    croître votre chiffre d'affaires. Le coût devient alors marginal par rapport aux
+    gains.
+- objection: La mise en place semble compliquée et va perturber mon activité.
+  response: Nous nous chargeons de l'intégration technique avec vos outils existants.
+    Le déploiement se fait par étape, souvent d'abord sur la gestion des FAQs, sans
+    perturber vos flux habituels. Nous vous accompagnons pas à pas, et vos conseillers
+    sont formés pour interagir avec le système.
+meta:
+  id: travel
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

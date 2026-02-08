@@ -1,0 +1,252 @@
+aliases:
+- bienestar
+- spa
+- masaje
+- estética
+- belleza
+- manicura
+- pedicura
+- peluquería
+- barbería
+- depilación
+- fitness
+- yoga
+- pilates
+- centro de bienestar
+- terapias alternativas
+competitors:
+- name: The Beauty Lounge México
+  positioning: Spa urbano de lujo en CDMX
+  strengths:
+  - Ubicación premium
+  - Variedad de tratamientos exclusivos
+  - Atención personalizada
+  weaknesses:
+  - Precios elevados
+  - Menor presencia en redes sociales
+  our_differentiation: Ofrecemos servicios accesibles con atención rápida y sistema
+    de reservas automatizado 24/7
+- name: Masajes Relax MX
+  positioning: Cadena de masajes accesibles en varias ciudades
+  strengths:
+  - Precios competitivos
+  - Amplia cobertura regional
+  - Promociones frecuentes
+  weaknesses:
+  - Calidad variable entre sucursales
+  - Procesos de reserva manuales
+  our_differentiation: Garantizamos calidad uniforme y tecnología para evitar no-shows
+    mediante recordatorios automáticos
+- name: Estética Viva
+  positioning: Centro integral de estética y belleza
+  strengths:
+  - Servicios variados
+  - Profesionales certificados
+  - Planes de fidelidad
+  weaknesses:
+  - Horarios limitados
+  - Atención telefónica saturada
+  our_differentiation: Servicio 24/7 de atención y recordatorios para mejorar experiencia
+    y reducir carga administrativa
+industry_faq:
+- question: ¿Cuánto cuesta un masaje relajante?
+  answer_template: El precio varía según la duración y tipo de masaje. Un masaje relajante
+    de 60 minutos suele costar entre 500 y 900 MXN. ¿Quieres que te ayude a agendar
+    una cita?
+- question: ¿Cuánto dura una sesión de spa?
+  answer_template: Por lo general, las sesiones duran entre 60 y 90 minutos, pero
+    ofrecemos opciones exprés desde 30 minutos.
+- question: ¿Cómo puedo reservar una cita?
+  answer_template: Puedes reservar llamando, por WhatsApp o a través de nuestra página
+    web. También puedo ayudarte a reservar ahora mismo.
+- question: ¿Puedo cambiar la fecha de mi cita?
+  answer_template: Sí, claro. Solo dime tu nombre y la nueva fecha que prefieres,
+    y haré el cambio para ti.
+- question: ¿Qué precauciones debo tener antes de un tratamiento?
+  answer_template: Depende del tratamiento. Por ejemplo, algunos masajes no se recomiendan
+    en caso de lesiones recientes. Te sugiero consultar con nuestro especialista antes
+    de la sesión.
+- question: ¿Trabajan los fines de semana?
+  answer_template: Sí, ofrecemos atención de lunes a domingo para tu comodidad. ¿Quieres
+    reservar para este fin de semana?
+- question: ¿Aceptan tarjetas de crédito?
+  answer_template: Sí, aceptamos tarjetas de crédito y débito, además de pagos en
+    efectivo y transferencia bancaria.
+pain_points:
+- description: Los clientes tienen dificultad para reservar vía telefónica en horas
+    pico y terminan desistiendo.
+  severity: high
+  solution_hint: Implementar un agente de voz que permita reservas 24/7 sin esperas.
+- description: Alta tasa de no-shows que afecta ingresos y planificación.
+  severity: high
+  solution_hint: Enviar recordatorios automáticos por SMS y WhatsApp para confirmar
+    asistencia.
+- description: El personal administrativo recibe muchas preguntas repetitivas que
+    consumen tiempo.
+  severity: medium
+  solution_hint: Automatizar respuestas a preguntas frecuentes con el agente de voz.
+- description: Difícil promoción de ofertas especiales y paquetes de servicios.
+  severity: medium
+  solution_hint: Realizar llamadas salientes automatizadas con promociones personalizadas.
+- description: Falta de integración entre sistemas de agenda y comunicación con clientes.
+  severity: medium
+  solution_hint: Integrar CRM y sistemas de mensajería para actualización en tiempo
+    real.
+- description: La cancelación o cambio de citas requiere intervención manual, generando
+    retrasos.
+  severity: medium
+  solution_hint: Permitir al cliente modificar citas directamente mediante el agente
+    de voz.
+- description: Dificultad en retener clientes por falta de seguimiento post-servicio.
+  severity: low
+  solution_hint: Utilizar llamadas o mensajes automáticos para encuestas de satisfacción
+    y ofertas.
+typical_services:
+- Masaje relajante y terapéutico
+- Mani y pedicura
+- Corte y peinado
+- Tratamientos faciales y corporales
+- Spa y hidroterapia
+- Depilación con cera y láser
+- Sesiones de yoga y pilates
+- Programas de fitness personalizados
+- Aromaterapia y reflexología
+- Tratamientos anti-estrés y meditación guiada
+recommended_functions:
+- name: reserva
+  priority: high
+  reason: Facilita la programación de citas optimizando la experiencia del cliente
+    y reduce carga del personal
+- name: recordatorio
+  priority: high
+  reason: Disminuye no-shows mediante avisos automáticos vía SMS y mensajería instantánea
+- name: faq
+  priority: medium
+  reason: Responde dudas frecuentes agilizando atención y mejorando satisfacción
+- name: reprogramación
+  priority: medium
+  reason: Permite modificar o cancelar citas sin intervención humana, aumentando flexibilidad
+- name: promociones
+  priority: medium
+  reason: Comunica ofertas y paquetes para incrementar ventas y fidelización
+- name: encuesta_satisfaccion
+  priority: low
+  reason: Recoge feedback para mejorar servicios y detectar oportunidades
+- name: integración_crm
+  priority: high
+  reason: Sincroniza datos en tiempo real para mejor gestión y seguimiento
+typical_integrations:
+- name: Sistema de gestión de citas (CRM)
+  examples:
+  - Kiwilimón Spa
+  - Reservio
+  - Clinicas360
+  priority: high
+- name: Plataformas de mensajería
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: high
+- name: Proveedores de SMS
+  examples:
+  - Telnore
+  - SMS Masivos
+  priority: medium
+- name: Telefonía VoIP
+  examples:
+  - Zoi Meet
+  - Telmex IP
+  priority: medium
+- name: Software de facturación y contabilidad
+  examples:
+  - CONTPAQi
+  - Aspel NOI
+  priority: medium
+sales_scripts:
+- trigger: precio_consulta
+  situation: Cuando el cliente pregunta por costos de servicios
+  script: Nuestros precios varían según el servicio y duración, por ejemplo, un masaje
+    relajante de 60 minutos cuesta desde 600 MXN. ¿Quieres que te reserve una cita
+    para que lo pruebes?
+  goal: Informar precios claros y motivar a reservar
+- trigger: horario_consulta
+  situation: Cliente pregunta horarios de atención
+  script: Estamos abiertos de lunes a domingo, de 9:00 a 21:00 horas para ofrecerte
+    flexibilidad. ¿Quieres agendar tu visita?
+  goal: Resaltar disponibilidad amplia y facilitar la reserva
+- trigger: objecion_costo
+  situation: Cliente indica que el precio es alto
+  script: Entiendo, tenemos paquetes y membresías con descuentos de hasta el 20% que
+    se adaptan a tu presupuesto. ¿Quieres que te explique las opciones?
+  goal: Reducir objeción de precio y promover venta de paquetes
+- trigger: objecion_tiempo
+  situation: Cliente dice no tener tiempo
+  script: Contamos con opciones exprés a partir de 30 minutos para que puedas relajarte
+    sin afectar tu agenda. ¿Quieres conocer horarios disponibles?
+  goal: Adaptar oferta para clientes con poco tiempo y cerrar cita
+- trigger: seguimiento_postventa
+  situation: Después de un servicio, para fidelizar
+  script: ¿Cómo te sentiste con tu tratamiento? Queremos asegurarnos que hayas tenido
+    una excelente experiencia y ofrecerte promociones especiales.
+  goal: Mejorar satisfacción y fomentar nuevas visitas
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 400
+  - 1500
+  entry_point: 400
+  roi_examples:
+  - scenario: Reducción de no-shows en 50%
+    monthly_cost: 1200
+    monthly_savings: 8000
+    payback_months: 1
+  - scenario: Incremento de reservas online en 30%
+    monthly_cost: 1200
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Automatización que reduce la carga administrativa y mejora la experiencia del
+    cliente.
+  - Disminución significativa en cancelaciones y no-shows.
+  - Incremento de ingresos por mejor gestión de citas y promoción de servicios.
+market_context:
+  market_size: 2500000000
+  growth_rate: 8
+  key_trends:
+  - Crecimiento del interés en bienestar integral y terapias naturales
+  - Aumento de reservas online y uso de apps móviles
+  - Demanda creciente de servicios exprés y personalizados
+  - Mayor regulación en protección de datos personales (LFPDPPP)
+  seasonality:
+    high:
+    - Diciembre (época navideña)
+    - Marzo-abril (vacaciones de primavera)
+    - Julio-agosto (vacaciones de verano)
+    low:
+    - Enero
+    - Septiembre
+typical_objections:
+- objection: Es muy caro para mí
+  response: Ofrecemos planes y promociones que se ajustan a diferentes presupuestos.
+    ¿Quieres que te explique las opciones disponibles?
+- objection: No tengo tiempo para ir
+  response: Tenemos tratamientos exprés desde 30 minutos y horarios hasta las 9 pm
+    para adaptarnos a tu agenda.
+- objection: Prefiero pensarlo
+  response: Claro, puedo reservar una cita provisional para que tengas tu lugar asegurado.
+    ¿Te gustaría?
+- objection: No me gusta agendar por teléfono
+  response: También puedes reservar fácilmente por WhatsApp o nuestra página web.
+    ¿Quieres que te envíe el enlace?
+- objection: No estoy seguro de los beneficios
+  response: Puedo explicarte los beneficios específicos de cada servicio y ayudarte
+    a elegir el que mejor se adapte a tus necesidades. ¿Quieres que te cuente más?
+meta:
+  id: wellness
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+_extends: _base/wellness

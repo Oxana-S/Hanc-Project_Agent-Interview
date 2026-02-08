@@ -1,0 +1,259 @@
+pain_points:
+- description: Variabilidad climática impredecible que afecta los ciclos de cultivo
+  severity: high
+  solution_hint: El agente de voz IA puede proporcionar alertas climáticas en tiempo
+    real y recomendaciones de ajuste
+- description: Escasez y gestión ineficiente del agua para riego
+  severity: high
+  solution_hint: El agente puede automatizar la programación de riego basado en datos
+    de humedad y clima
+- description: Altos costos de insumos agrícolas como fertilizantes y pesticidas
+  severity: medium
+  solution_hint: IA puede optimizar compras y sugerir alternativas costo-efectivas
+    mediante análisis de mercado
+- description: Dificultades en la comercialización y acceso a mercados justos
+  severity: medium
+  solution_hint: Agente conecta con plataformas de venta y proporciona información
+    de precios en tiempo real
+- description: Falta de tecnología para monitoreo de cultivos y suelo
+  severity: medium
+  solution_hint: IA integra sensores y drones para ofrecer reportes automáticos y
+    recomendaciones
+- description: Cumplimiento complejo con regulaciones como la LFPDPPP en manejo de
+    datos
+  severity: low
+  solution_hint: El agente automatiza recordatorios y documentación para cumplimiento
+    normativo
+- description: Baja eficiencia en la gestión logística y cadena de suministro
+  severity: medium
+  solution_hint: IA coordina transporte y almacenamiento con alertas proactivas
+typical_services:
+- Asesoría técnica agrícola personalizada
+- Instalación y mantenimiento de sistemas de riego por goteo
+- Control integrado de plagas y enfermedades
+- Fertilización y análisis de suelo
+- Venta y distribución de semillas mejoradas
+- Maquinaria agrícola y equipos de precisión
+- Certificaciones orgánicas y de buenas prácticas
+- Capacitación en tecnologías agrícolas sostenibles
+- Comercialización y exportación de productos agrícolas
+- Seguros agrícolas y gestión de riesgos
+recommended_functions:
+- name: Programación automática de riego
+  priority: high
+  reason: Crítico para optimizar el uso de agua y mejorar rendimientos en regiones
+    secas
+- name: Alertas climáticas y de plagas
+  priority: high
+  reason: Reduce pérdidas por eventos imprevistos y permite acciones preventivas
+- name: Soporte al cliente 24/7 para consultas técnicas
+  priority: medium
+  reason: Los agricultores necesitan asistencia inmediata durante ciclos de cultivo
+- name: Gestión de inventario y pedidos
+  priority: medium
+  reason: Automatiza procesos operativos y reduce errores en la cadena de suministro
+- name: Recordatorios de cumplimiento normativo
+  priority: low
+  reason: Ayuda a evitar multas relacionadas con LFPDPPP y otras regulaciones
+- name: Análisis de datos de rendimiento
+  priority: high
+  reason: Proporciona insights para tomar decisiones basadas en datos y mejorar ROI
+- name: Coordinación logística
+  priority: medium
+  reason: Optimiza transporte y reduce costos en la distribución de productos
+typical_integrations:
+- name: Sistemas ERP agrícolas
+  examples:
+  - AgroSoft MX
+  - FarmLogix LATAM
+  - SAP Agri
+  priority: high
+- name: Plataformas de comercio electrónico
+  examples:
+  - Mercado Libre
+  - Amazon México
+  - Kichink
+  priority: medium
+- name: Sistemas de monitoreo climático
+  examples:
+  - CONAGUA APIs
+  - WeatherMX
+  - ClimaAgro
+  priority: high
+- name: Software de gestión de inventario
+  examples:
+  - Zoho Inventory
+  - Odoo Agrícola
+  - Local ERPs
+  priority: medium
+- name: Herramientas de cumplimiento normativo
+  examples:
+  - NormaMex LFPDPPP
+  - RegulAgro
+  priority: low
+industry_faq:
+- question: ¿Cómo pueden ayudar a reducir mis costos de producción?
+  answer_template: Nuestros servicios automatizan procesos clave como riego y control
+    de plagas, lo que puede reducir costos hasta en un 20% mediante eficiencias.
+- question: ¿Es compatible con mis sistemas actuales de gestión agrícola?
+  answer_template: Sí, nos integramos con sistemas populares como AgroSoft MX y CONAGUA
+    para una transición sin problemas.
+- question: ¿Cómo manejan el cumplimiento de la LFPDPPP?
+  answer_template: Nuestro agente IA automatiza la protección de datos y genera reportes
+    de cumplimiento, asegurando que su operación esté en regla.
+- question: ¿Qué tan rápido puedo ver resultados en mi rendimiento agrícola?
+  answer_template: Muchos clientes observan mejoras en eficiencia dentro de los primeros
+    3 meses, con ROI tangible en 6-12 meses.
+- question: ¿Ofrecen soporte en español y para regiones específicas de México?
+  answer_template: Absolutamente, nuestro agente está localizado para México con conocimiento
+    de términos agrícolas regionales y soporte en español 24/7.
+- question: ¿Cuál es el costo inicial para implementar estas soluciones?
+  answer_template: Los planes comienzan desde 5,000 MXN mensuales, escalables según
+    el tamaño de su operación.
+- question: ¿Pueden ayudar con la exportación de productos agrícolas?
+  answer_template: Sí, integramos con plataformas de comercio internacional y proporcionamos
+    asesoría en logística y certificaciones.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por precios durante una llamada inicial
+  script: Hola, entiendo su interés en los costos. Nuestros planes comienzan desde
+    5,000 MXN al mes, personalizados para su tamaño de finca. Por ejemplo, para una
+    operación mediana, podemos ahorrarle hasta 10,000 MXN mensuales en agua y fertilizantes.
+    ¿Le gustaría que le detalle un plan basado en sus cultivos actuales?
+  goal: Convertir la conversación hacia el ROI y personalización, no solo el precio
+- trigger: service_inquiry
+  situation: Cuando el cliente pregunta sobre servicios específicos como riego o control
+    de plagas
+  script: Gracias por su consulta. Ofrecemos servicios integrales como sistemas de
+    riego eficiente y monitoreo de plagas con IA. Por ejemplo, en Jalisco, ayudamos
+    a clientes a aumentar rendimientos en un 15% usando alertas proactivas. ¿En qué
+    cultivos está interesado?
+  goal: Destacar beneficios locales y casos de éxito para generar confianza
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor como AgroTech México
+  script: Sí, conocemos a AgroTech México. Nuestra diferenciación clave es la integración
+    profunda con regulaciones mexicanas como LFPDPPP y soporte en español más adaptado
+    a pequeñas y medianas empresas. Además, ofrecemos ROI más rápido con precios desde
+    5,000 MXN. ¿Le gustaría comparar características específicas?
+  goal: Enfatizar ventajas competitivas y valor local
+- trigger: objection_cost
+  situation: Cuando el cliente dice que es demasiado caro
+  script: Comprendo su preocupación por el costo. Sin embargo, con ahorros típicos
+    de 8,000-12,000 MXN mensuales en insumos, la inversión se recupera en menos de
+    6 meses. Podemos empezar con un piloto de bajo riesgo. ¿Qué le parece?
+  goal: Reforzar el ROI y ofrecer una opción de entrada baja
+- trigger: compliance_concern
+  situation: Cuando el cliente expresa preocupación por cumplimiento normativo
+  script: La LFPDPPP puede ser compleja, pero nuestro agente IA automatiza todo el
+    proceso, desde consentimientos hasta reportes, sin costo adicional. Esto evita
+    multas de hasta 50,000 MXN. ¿Le interesa ver cómo funciona en una demo?
+  goal: Posicionar la solución como preventiva y de ahorro
+competitors:
+- name: AgroTech México
+  positioning: Líder en soluciones tecnológicas para grandes agroempresas
+  strengths:
+  - Amplia red de distribución
+  - Productos de alta gama
+  weaknesses:
+  - Precios elevados
+  - Soporte limitado para PYMEs
+  our_differentiation: Enfoque en PYMEs con precios accesibles y soporte localizado
+    en español
+- name: FarmLogix LATAM
+  positioning: Plataforma de gestión agrícola basada en la nube
+  strengths:
+  - Interfaz fácil de usar
+  - Integraciones con mercados globales
+  weaknesses:
+  - Cobertura limitada en zonas rurales de México
+  - Cumplimiento normativo básico
+  our_differentiation: Integración profunda con regulaciones mexicanas y soporte para
+    regiones remotas
+- name: SAP Agri
+  positioning: Solución empresarial para agroindustria a gran escala
+  strengths:
+  - Funcionalidades completas
+  - Reconocimiento global
+  weaknesses:
+  - Complejidad de implementación
+  - Costos muy altos
+  our_differentiation: Simplicidad y asequibilidad para operaciones medianas, con
+    enfoque en ROI rápido
+- name: Local consultores agrícolas
+  positioning: Servicios tradicionales de asesoría en persona
+  strengths:
+  - Conocimiento local profundo
+  - Relaciones personales
+  weaknesses:
+  - Escalabilidad limitada
+  - Altos costos de mano de obra
+  our_differentiation: Combina conocimiento local con automatización IA para mayor
+    eficiencia y cobertura 24/7
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Finca mediana en Sinaloa optimizando riego y fertilización
+    monthly_cost: 8000
+    monthly_savings: 12000
+    payback_months: 4
+  - scenario: Pequeño productor en Jalisco reduciendo pérdidas por plagas
+    monthly_cost: 5000
+    monthly_savings: 7000
+    payback_months: 3
+  value_anchors:
+  - Ahorro promedio de 30% en costos de agua con riego automatizado
+  - Reducción de hasta 20% en pérdidas de cultivo con alertas tempranas
+  - Cumplimiento normativo sin multas gracias a automatización LFPDPPP
+market_context:
+  market_size: Estimado en 50 mil millones MXN anuales para tecnología agrícola en
+    México
+  growth_rate: 8% anual impulsado por adopción de precisión y sostenibilidad
+  key_trends:
+  - Aumento de agricultura de precisión con drones y sensores
+  - Crecimiento de demanda de productos orgánicos y certificados
+  - Mayor enfoque en gestión sostenible del agua
+  - Digitalización de cadenas de suministro para exportación
+  seasonality:
+    high:
+    - Enero a Abril (temporada de siembra)
+    - Septiembre a Noviembre (cosechas)
+    low:
+    - Mayo a Agosto (época de lluvias intensas)
+    - Diciembre (festividades)
+typical_objections:
+- objection: No confío en la tecnología para manejar mis cultivos
+  response: Entiendo su cautela. Empezamos con pilotos de bajo riesgo donde usted
+    controla las decisiones, y el IA solo sugiere optimizaciones basadas en datos
+    locales. Muchos clientes en Guanajuato ya lo usan con éxito.
+- objection: Es demasiado complicado de implementar
+  response: Nuestra solución está diseñada para ser simple, con integraciones plug-and-play
+    y soporte técnico dedicado. La implementación típica toma menos de 2 semanas.
+- objection: Prefiero seguir con métodos tradicionales
+  response: Los métodos tradicionales son valiosos, pero combinarlos con IA puede
+    mejorar eficiencias sin perder ese conocimiento. Por ejemplo, podemos automatizar
+    tareas repetitivas para que usted se enfoque en la estrategia.
+- objection: Los costos a largo plazo son inciertos
+  response: Ofrecemos planes flexibles con ROI garantizado en los primeros 6 meses.
+    Además, proporcionamos reportes mensuales de ahorros para transparencia total.
+- objection: Ya tengo un sistema básico, ¿por qué cambiar?
+  response: Nuestra ventaja es la integración con regulaciones mexicanas y alertas
+    proactivas que su sistema actual podría no tener. Podemos hacer una evaluación
+    gratuita para mostrarle las brechas.
+meta:
+  id: agriculture
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

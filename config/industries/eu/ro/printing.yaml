@@ -1,0 +1,208 @@
+pain_points:
+- description: Concurență ridicată care prescinde prețurile, afectând profitabilitatea.
+  severity: high
+  solution_hint: Agentul vocal AI poate oferi analize de piață și recomandări pentru
+    servicii premium care diferentiază.
+- description: Probleme în lanțul de aprovizionare pentru materiale de imprimare,
+    ducând la întârzieri.
+  severity: medium
+  solution_hint: Agentul poate monitoriza stocurile și automatiza comenzile pentru
+    a minimiza întârzierile.
+- description: Lipsa forței de muncă calificate pentru operațiuni complexe de imprimare.
+  severity: high
+  solution_hint: AI poate asista cu instruire virtuală și gestionarea sarcinilor repetitive.
+- description: Presiunea pentru transformare digitală și adoptarea tehnologiilor verzi.
+  severity: medium
+  solution_hint: Agentul poate informa clienții despre opțiuni ecologice și digitalizarea
+    proceselor.
+- description: Cerințe clienților pentru timpi de livrare rapizi și personalizare
+    extinsă.
+  severity: high
+  solution_hint: AI poate optimiza programarea și oferi consultanță pentru personalizare
+    eficientă.
+- description: Gestionarea fluxului de numerar și facturarea întârziată de la clienți.
+  severity: medium
+  solution_hint: Agentul poate automatiza reminder-uri pentru plăți și generarea facturilor.
+- description: Conformitatea cu regulamentele GDPR pentru datele clienților în procesele
+    de imprimare.
+  severity: low
+  solution_hint: AI poate oferi verificări automate și asistență pentru documentația
+    GDPR.
+typical_services:
+- Imprimare offset
+- Imprimare digitală
+- Tipărire pe materiale textile
+- Servicii de pre-press
+- Finisare și legătorie (de ex., laminare, copertare)
+- Creare și imprimare de materiale promoționale
+- Imprimare 3D pentru prototipare
+- Servicii de personalizare și branding
+- Imprimare ecologică cu cerneala pe bază de plante
+- Consultanță în design grafic și tipărire
+recommended_functions:
+- name: Programare automată a întâlnirilor pentru consultanță
+  priority: high
+  reason: Reduce timpul de așteptare și crește eficiența în interacțiunile cu clienții.
+- name: Răspunsuri automate la întrebări despre prețuri și disponibilitate
+  priority: high
+  reason: Clienții cer frecvent informații rapide pentru decizii de achiziție.
+- name: Urmărire și notificări pentru starea comenzilor
+  priority: medium
+  reason: Îmbunătățește experiența clientului prin transparență în livrare.
+- name: Recomandări personalizate de servicii bazate pe nevoile clientului
+  priority: medium
+  reason: Ajută la creșterea vânzărilor încrucișate și satisfacția clienților.
+- name: Asistență pentru configurarea comenzilor complexe
+  priority: low
+  reason: Reduce erorile umane în procesele de pre-press și producție.
+- name: Integrare cu sisteme de facturare pentru plăți online
+  priority: high
+  reason: Accelerează procesul de plată și reduce întârzierile încasărilor.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics 365
+  priority: high
+- name: Sisteme CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Software de design grafic
+  examples:
+  - Adobe Creative Cloud
+  - CorelDRAW
+  priority: high
+- name: Platforme de e-commerce
+  examples:
+  - Magento
+  - Shopify
+  priority: medium
+- name: Sisteme de gestionare a producției
+  examples:
+  - EFI
+  - Esko
+  priority: low
+industry_faq:
+- question: Care sunt prețurile pentru imprimarea de broșuri?
+  answer_template: Prețurile variază în funcție de cantitate, calitatea hârtiei și
+    finisare. Vă putem oferi un deviz personalizat după ce discutăm detaliile.
+- question: Cât durează livrarea unui lot de cărți de vizită?
+  answer_template: Livrarea standard este de 3-5 zile lucrătoare, dar oferim și opțiuni
+    expediate la cerere.
+- question: Oferiți servicii de imprimare ecologică?
+  answer_template: Da, utilizăm materiale reciclabile și cernele pe bază de plante
+    pentru a reduce impactul ambiental.
+- question: Cum pot urmări comanda mea?
+  answer_template: Puteți verifica starea comenzii prin platforma noastră online sau
+    primi notificări prin SMS/email.
+- question: Acceptați comenzi de volum mic?
+  answer_template: Da, suntem flexibili și acceptăm comenzi de la unități individuale
+    până la volume mari.
+- question: Ce se întâmplă dacă există o eroare în designul trimis?
+  answer_template: Verificăm toate fișierele în pre-press și vă notificăm pentru corecții
+    înainte de imprimare.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru un serviciu specific.
+  script: 'Bună ziua! Pentru a vă oferi un preț exact, aș avea nevoie de câteva detalii:
+    ce tip de produs doriți, cantitatea și specificațiile de finisare. Pot să vă ajut
+    cu asta?'
+  goal: Colectarea informațiilor necesare pentru a oferi un deviz precis și a iniția
+    o discuție.
+- trigger: service_inquiry
+  situation: Când un client este interesat de servicii noi, cum ar fi imprimarea ecologică.
+  script: Mulțumesc pentru interes! Serviciile noastre ecologice includ opțiuni cu
+    hârtie reciclată și cernele sustenabile, care pot reduce amprenta de carbon. Doriți
+    să aflați mai multe despre beneficiile pentru afacerea dumneavoastră?
+  goal: Educarea clientului și promovarea serviciilor premium pentru a crește valoarea.
+- trigger: urgency_need
+  situation: Când un client are nevoie de livrare rapidă.
+  script: Înțeleg necesitatea de rapiditate. Oferim servicii expediate cu livrare
+    în 24-48 de ore pentru anumite produse. Pot să vă ajut să configurați o comandă
+    astfel încât să vă încadrați în termen?
+  goal: Asigurarea clientului și închiderea unei vânzări prin soluții rapide.
+competitors:
+- name: PrintHouse Romania
+  positioning: Furnizor major cu servicii complete pentru imprimare.
+  strengths:
+  - Rețea largă de distribuție
+  - varietate mare de servicii
+  weaknesses:
+  - Prețuri ridicate
+  - timpi de răspuns lent
+  our_differentiation: Oferim prețuri competitive și asistență personalizată rapidă
+    prin AI.
+- name: Tipografia Modernă
+  positioning: Specializat în imprimare digitală și personalizare.
+  strengths:
+  - Tehnologie avansată
+  - focus pe inovație
+  weaknesses:
+  - Limitări în volume mari
+  - costuri de setare
+  our_differentiation: Avem capacitate pentru volume mari și integrări automate care
+    reduc costurile.
+- name: EcoPrint RO
+  positioning: Lider în imprimare ecologică și sustenabilă.
+  strengths:
+  - Brand puternic în sustenabilitate
+  - materiale premium
+  weaknesses:
+  - Prețuri premium
+  - disponibilitate limitată
+  our_differentiation: Combinăm opțiuni ecologice cu prețuri accesibile și servicii
+    eficiente.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatizarea comenzilor pentru o tipografie mică
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reducere de 20% la costurile cu forța de muncă prin automatizare
+  - Creștere a satisfacției clienților cu 30% prin răspunsuri rapide
+market_context:
+  market_size: 1.5 miliarde RON estimat
+  growth_rate: 3% anual
+  key_trends:
+  - Creșterea cererii pentru imprimare digitală și personalizare
+  - Tendința spre sustenabilitate și materiale ecologice
+  - Adoptarea tehnologiilor AI pentru optimizarea proceselor
+  seasonality:
+    high:
+    - Septembrie - Noiembrie
+    - Martie - Mai
+    low:
+    - Decembrie - Februarie
+    - Iulie - August
+typical_objections:
+- objection: Prețul este prea mare pentru bugetul nostru.
+  response: Înțeleg preocuparea. Să discutăm despre cum serviciile noastre pot reduce
+    costurile pe termen lung prin eficiență și calitate superioară.
+- objection: Nu avem nevoie de servicii suplimentare; folosim deja un furnizor.
+  response: Vă felicit pentru parteneriatul actual. Pot să vă arăt cum soluțiile noastre
+    pot completa sau îmbunătăți serviciile existente, de exemplu prin integrări automate?
+- objection: Suntem îngrijorați de securitatea datelor cu GDPR.
+  response: Asigurați-vă că respectăm strict GDPR cu procese securizate și documentație
+    completă. Putem oferi verificări și asistență dedicată.
+meta:
+  id: printing
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

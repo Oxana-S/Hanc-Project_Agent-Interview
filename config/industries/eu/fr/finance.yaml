@@ -1,0 +1,253 @@
+pain_points:
+- description: Conformité réglementaire complexe avec des lois comme le RGPD et les
+    directives financières européennes en constante évolution.
+  severity: high
+  solution_hint: L'agent vocal peut diffuser des mises à jour de conformité et automatiser
+    les questionnaires de vérification pour les clients.
+- description: Forte pression sur les marges en raison de la concurrence des néobanques
+    et des services financiers en ligne.
+  severity: high
+  solution_hint: Automatiser les services clients et les ventes croisées pour réduire
+    les coûts opérationnels.
+- description: Mauvaise expérience client due à des temps d'attente téléphonique longs
+    et à un service non personnalisé.
+  severity: medium
+  solution_hint: Fournir un support vocal 24/7 pour répondre aux questions courantes
+    et orienter les appels complexes.
+- description: Difficulté à acquérir et fidéliser une clientèle jeune, habituée aux
+    interfaces digitales.
+  severity: medium
+  solution_hint: Créer des parcours d'onboarding et d'éducation financière interactifs
+    via un agent conversationnel.
+- description: Processus de souscription et de vérification d'identité (KYC) lents
+    et manuels.
+  severity: medium
+  solution_hint: Guider les clients vocalement à travers les étapes du KYC et intégrer
+    les vérifications biométriques.
+- description: Gestion inefficace des leads et opportunités de vente manquées par
+    les équipes commerciales surchargées.
+  severity: low
+  solution_hint: Qualifier et prioriser les leads entrants automatiquement avant transfert
+    aux conseillers.
+typical_services:
+- Conseil en gestion de patrimoine
+- Assurance-vie et produits d'épargne
+- Crédits immobiliers et crédits à la consommation
+- Bancassurance
+- Courtage en ligne
+- Analyse de crédit et scoring
+- Planification financière et retraite
+- Comptabilité et audit pour professionnels
+- Financement d'entreprise et capital-investissement
+- Solutions de paiement digitales
+recommended_functions:
+- name: Agent de support client 24/7
+  priority: high
+  reason: Réduit considérablement les coûts de centre d'appels tout en améliorant
+    la satisfaction client.
+- name: Qualificateur et preneur de rendez-vous intelligent
+  priority: high
+  reason: Augmente le taux de conversion des leads en optimisant le temps des conseillers
+    financiers.
+- name: Assistant à la conformité RGPD et AML/KYC
+  priority: high
+  reason: Aide à automatiser des processus réglementaires critiques et à éviter les
+    amendes.
+- name: Coach vocal d'éducation financière
+  priority: medium
+  reason: Engage la clientèle jeune et améliore la fidélisation à travers un service
+    à valeur ajoutée.
+- name: Sondeur de satisfaction client (NPS)
+  priority: medium
+  reason: Permet de mesurer en temps réel la satisfaction et d'identifier les points
+    de friction.
+- name: Relanceur automatique de paiements
+  priority: low
+  reason: Améliore le recouvrement des créances avec une approche moins intrusive
+    qu'un agent humain.
+typical_integrations:
+- name: CRM Bancaire/Financier
+  examples:
+  - SAGE CRM
+  - Salesforce Financial Services Cloud
+  - Dynamics 365
+  priority: high
+- name: Logiciel de Gestion de Patrimoine
+  examples:
+  - TGO
+  - Avaloq
+  - Oddo BHF
+  priority: high
+- name: Plateforme de Téléphonie Cloud
+  examples:
+  - Aircall
+  - RingCentral
+  - Mikiane
+  priority: medium
+- name: Outils de Conformité
+  examples:
+  - OneTrust
+  - Veriphy (KYC)
+  - local régulateur (ACPR) portals
+  priority: medium
+- name: Système de Gestion de Relations Clients (Banque)
+  examples:
+  - CEGID
+  - ISO 20022 systems
+  priority: low
+industry_faq:
+- question: Êtes-vous conforme au RGPD ?
+  answer_template: Absolument. Notre solution est conçue avec la confidentialité des
+    données dès la conception. Toutes les conversations sont chiffrées et nous ne
+    conservons les données que selon vos paramètres et les exigences légales.
+- question: Pouvez-vous vous intégrer à notre logiciel de gestion de patrimoine existant
+    ?
+  answer_template: Oui, notre agent vocal est conçu pour des intégrations API sécurisées.
+    Nous avons déjà des connecteurs pour des systèmes comme [Nom du système client]
+    et pouvons développer des intégrations sur mesure si nécessaire.
+- question: Comment gérez-vous la complexité des produits financiers dans les conversations
+    automatisées ?
+  answer_template: Notre agent est formé pour reconnaître les questions complexes
+    sur des produits réglementés. Il fournit des informations générales et transmet
+    immédiatement l'appel à un conseiller qualifié lorsque nécessaire, en respectant
+    les règles de conseil.
+- question: Quel est le retour sur investissement typique ?
+  answer_template: Nos clients du secteur financier constatent généralement une réduction
+    de 30 à 50% du volume d'appels traités par des agents humains pour des questions
+    simples, libérant du temps pour des tâches à haute valeur ajoutée. Le ROI est
+    souvent atteint en moins de 6 mois.
+- question: L'agent sonne-t-il naturel pour nos clients français ?
+  answer_template: Oui, nous utilisons des voix AI de dernière génération avec des
+    accents et expressions naturelles françaises. Vous pouvez également personnaliser
+    le ton (professionnel, rassurant) pour qu'il corresponde à votre marque.
+sales_scripts:
+- trigger: price_question
+  situation: Le client demande le coût après une démonstration.
+  script: Je comprends que l'investissement est une considération importante. Notre
+    tarification commence à partir de 299€ par mois pour une configuration de base,
+    avec un ROI généralement constaté en moins de 6 mois grâce à la réduction des
+    coûts opérationnels. Puis-je vous envoyer une simulation personnalisée basée sur
+    votre volume d'appels ?
+  goal: Dédramatiser le prix en le reliant au ROI et proposer une prochaine étape
+    concrète.
+- trigger: security_concern
+  situation: Le client exprime des inquiétudes concernant la sécurité des données
+    financières.
+  script: Votre préoccupation est tout à fait légitime. Notre solution est hébergée
+    en France sur des serveurs certifiés SecNumCloud par l'ANSSI. Nous n'avons jamais
+    accès aux données sensibles de vos clients, comme les numéros de compte. Puis-je
+    vous partager notre documentation de sécurité détaillée ?
+  goal: Rassurer avec des certifications locales concrètes et offrir une preuve supplémentaire.
+- trigger: objection_automation
+  situation: Le client craint que l'automatisation déshumanise le service.
+  script: Je partage votre vision. Notre objectif n'est pas de remplacer le conseiller
+    humain, mais de le soulager des tâches répétitives. L'agent gère les questions
+    simples (solde, horaires) et les rendez-vous, permettant à vos équipes de se concentrer
+    sur le conseil complexe et la relation client, ce qui améliore paradoxalement
+    l'aspect humain.
+  goal: Recadrer l'automatisation comme un outil d'augmentation et non de remplacement.
+competitors:
+- name: Aircall
+  positioning: Leader de la téléphonie cloud pour les équipes commerciales.
+  strengths:
+  - Interface utilisateur intuitive
+  - Intégrations larges avec des outils CRM
+  - Forte notoriété sur le marché français
+  weaknesses:
+  - Fonctionnalités d'IA vocale basiques
+  - Pas spécialisé dans les flux financiers réglementés
+  - Coût élevé pour des fonctionnalités avancées
+  our_differentiation: Nous proposons une IA conversationnelle spécialisée dans la
+    finance, avec une compréhension native du jargon réglementaire et des intégrations
+    prêtes à l'emploi pour les logiciels financiers français.
+- name: Crisp
+  positioning: Plateforme omnicanale de support client (chat, email).
+  strengths:
+  - Approche tout-en-un abordable
+  - Bonne ergonomie
+  - Ciblage des startups et PME
+  weaknesses:
+  - Offre vocale limitée et non prioritaire
+  - Manque de profondeur dans la conformité secteur
+  - Support principalement en ligne
+  our_differentiation: Nous nous concentrons exclusivement sur la voix et l'automatisation
+    des canaux téléphoniques critiques pour la finance, avec un support expert dédié
+    au secteur.
+- name: Solutions internes sur mesure
+  positioning: Développement propriétaire par les DSI des grandes banques.
+  strengths:
+  - Contrôle total et intégration profonde
+  - Parfaitement adapté aux processus métier existants
+  weaknesses:
+  - Coûts de développement et de maintenance exorbitants
+  - Délais de mise en œuvre très longs
+  - Difficulté à maintenir l'IA à jour
+  our_differentiation: Nous offrons une solution spécialisée et évolutive à une fraction
+    du coût et du temps, avec des mises à jour continues de l'IA et de la conformité.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 250
+  - 2500
+  entry_point: 299
+  roi_examples:
+  - scenario: Caisse régionale avec un centre d'appels de 10 agents
+    monthly_cost: 750
+    monthly_savings: 3000
+    payback_months: 3
+  - scenario: Courtier en ligne avec qualification de leads
+    monthly_cost: 450
+    monthly_savings: 1800
+    payback_months: 4
+  value_anchors:
+  - Réduisez vos coûts de centre d'appels jusqu'à 40%.
+  - Convertissez 30% de leads en plus sans embaucher.
+  - Évitez les amendes de conformité avec un assistant RGPD intégré.
+market_context:
+  market_size: ~2,5 milliards d'euros pour les solutions de digitalisation bancaire
+    en France.
+  growth_rate: 8-10% par an, tiré par l'open banking et les attentes digitales.
+  key_trends:
+  - Open Banking (DSP2) poussant à l'innovation des services.
+  - Demande croissante d'expériences client personnalisées et proactives.
+  - L'essor des néobanques (Boursorama, Fortuneo) force la modernisation des acteurs
+    traditionnels.
+  - Focus sur la finance durable et les investissements ESG.
+  seasonality:
+    high:
+    - Janvier (bons vœux, projets)
+    - Septembre (rentrée, financement)
+    low:
+    - Août (vacances d'été)
+    - Décembre (période de fêtes)
+typical_objections:
+- objection: Nos clients âgés ne voudront pas parler à une machine.
+  response: C'est une excellente remarque. Notre agent est calibré pour être extrêmement
+    clair et patient. Il peut d'abord servir à filtrer et à aiguiller les appels plus
+    rapidement, réduisant ainsi l'attente pour tous les clients, quel que soit leur
+    âge. De plus, il libère vos conseillers pour qu'ils passent plus de temps avec
+    les clients qui ont besoin d'une assistance humaine approfondie.
+- objection: C'est trop risqué pour un secteur aussi réglementé.
+  response: Au contraire, notre solution réduit le risque humain. Chaque appel est
+    tracé et peut être révisé pour la conformité. L'agent suit scrupuleusement les
+    scripts approuvés, ce qui minimise les erreurs de communication sur les informations
+    réglementées, contrairement à un agent humain qui peut varier.
+- objection: Nous avons déjà investi dans un chatbot sur notre site web.
+  response: C'est un bon début. Notre agent vocal complète parfaitement cette offre
+    en capturant la clientèle qui préfère encore largement le téléphone, surtout pour
+    les questions sensibles ou complexes. Il crée une expérience omnicanale cohérente.
+meta:
+  id: finance
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

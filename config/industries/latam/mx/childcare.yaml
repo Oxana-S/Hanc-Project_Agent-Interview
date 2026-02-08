@@ -1,0 +1,252 @@
+pain_points:
+- description: Alta rotación de personal en guarderías, lo que afecta la consistencia
+    y calidad del cuidado infantil.
+  severity: high
+  solution_hint: El agente de voz puede automatizar tareas administrativas como programación,
+    reduciendo la carga laboral y mejorando la retención.
+- description: Cumplimiento complejo con la LFPDPPP para proteger datos personales
+    de niños y padres, con riesgo de multas.
+  severity: high
+  solution_hint: El agente puede gestionar consentimientos y notificaciones automáticas,
+    asegurando el cumplimiento normativo.
+- description: Comunicación ineficiente con los padres, llevando a malentendidos sobre
+    horarios, pagos o actividades.
+  severity: medium
+  solution_hint: Proporcionar actualizaciones en tiempo real y respuestas inmediatas
+    a consultas comunes mediante el agente de voz.
+- description: Gestión manual de horarios y asistencia, causando errores y sobrecarga
+    administrativa.
+  severity: medium
+  solution_hint: Automatizar la programación y registro de asistencia con integraciones
+    a sistemas locales.
+- description: Dificultades en la cobranza de pagos mensuales, afectando el flujo
+    de caja.
+  severity: high
+  solution_hint: Enviar recordatorios automáticos de pago y facilitar transacciones
+    a través del agente.
+- description: Altos costos operativos por ineficiencias en la administración y recursos
+    limitados.
+  severity: medium
+  solution_hint: Reducir costos con automatización de tareas repetitivas como reservas
+    y facturación.
+- description: Falta de estandarización en procesos de emergencia, poniendo en riesgo
+    la seguridad de los niños.
+  severity: high
+  solution_hint: Implementar notificaciones automáticas de emergencia y protocolos
+    accesibles vía voz.
+typical_services:
+- Guardería de tiempo completo
+- Cuidado después de escuela
+- Educación preescolar
+- Actividades extracurriculares (música, deportes)
+- Alimentación balanceada y menús
+- Transporte escolar seguro
+- Talleres para padres sobre crianza
+- Cuidado de emergencia o por horas
+- Programas de verano y vacaciones
+- Monitoreo por cámaras y reportes diarios
+recommended_functions:
+- name: Programación de visitas y reuniones
+  priority: high
+  reason: Facilita la gestión de citas con padres, aumentando las conversiones y reduciendo
+    conflictos de horario.
+- name: Recordatorios automáticos de pago
+  priority: high
+  reason: Mejora la tasa de cobranza y estabiliza el flujo de caja en un mercado con
+    morosidad común.
+- name: Respuestas a preguntas frecuentes (FAQ)
+  priority: medium
+  reason: Libera al personal para enfocarse en cuidado directo, mejorando la eficiencia
+    operativa.
+- name: Notificaciones de emergencia y seguridad
+  priority: high
+  reason: Garantiza comunicación rápida en crisis, cumpliendo con expectativas locales
+    de seguridad infantil.
+- name: Actualizaciones diarias para padres
+  priority: medium
+  reason: Aumenta la satisfacción y confianza de los padres con información proactiva
+    sobre sus hijos.
+- name: Gestión de inscripciones y listas de espera
+  priority: low
+  reason: Optimiza la administración de demanda fluctuante, especialmente en periodos
+    de alta temporada.
+typical_integrations:
+- name: Sistemas de gestión escolar
+  examples:
+  - Sistema Escolar MX
+  - Plataforma Educativa LATAM
+  priority: high
+- name: Plataformas de pago en línea
+  examples:
+  - Mercado Pago
+  - Openpay
+  - Clip
+  priority: high
+- name: Software de contabilidad local
+  examples:
+  - Contpaq
+  - Aspel COI
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business API
+  - Remind
+  - ClassDojo adaptado
+  priority: high
+- name: Sistemas de vigilancia y acceso
+  examples:
+  - Vigilancia MX
+  - Control de Acceso Smart
+  priority: medium
+industry_faq:
+- question: ¿Cuáles son los horarios de operación de la guardería?
+  answer_template: Nuestro horario es de lunes a viernes de 7:00 am a 7:00 pm, con
+    opciones flexibles para adaptarnos a sus necesidades laborales.
+- question: ¿Qué medidas de seguridad implementan para los niños?
+  answer_template: Contamos con protocolos estrictos, incluyendo cámaras de vigilancia
+    24/7, personal capacitado en primeros auxilios y controles de acceso seguros.
+- question: ¿Incluyen servicios de alimentación en el costo?
+  answer_template: Sí, ofrecemos menús balanceados supervisados por nutricionistas,
+    con opciones para dietas especiales, incluido en planes seleccionados.
+- question: ¿Cómo manejan el cumplimiento de la LFPDPPP con datos personales?
+  answer_template: Utilizamos sistemas seguros para proteger la información, con consentimientos
+    digitales y políticas claras accesibles para los padres.
+- question: ¿Cuál es el proceso de inscripción y qué documentos se requieren?
+  answer_template: 'El proceso es sencillo: agenda una visita, completa formularios
+    en línea y proporciona documentos como acta de nacimiento y cartilla de vacunación.'
+- question: ¿Ofrecen descuentos o planes para familias múltiples?
+  answer_template: Sí, tenemos descuentos por hermanos y planes personalizados. Podemos
+    discutir opciones durante una consulta personalizada.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un potencial cliente pregunta sobre el costo de los servicios.
+  script: ¡Hola! Entendemos que el presupuesto es clave. Nuestros servicios comienzan
+    desde 2500 MXN mensuales, con planes flexibles que incluyen alimentación y actividades.
+    ¿Le gustaría agendar una visita para ver cómo podemos ajustarnos a sus necesidades?
+  goal: Convertir la consulta de precio en una cita demostrativa para destacar el
+    valor agregado.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como cuidado después
+    de escuela.
+  script: Ofrecemos cuidado después de escuela con apoyo en tareas y actividades recreativas.
+    ¿Cuál es la edad de su hijo? Podemos personalizar un plan para asegurar su desarrollo
+    y su seguridad.
+  goal: Identificar necesidades específicas y presentar soluciones personalizadas.
+- trigger: objection_safety
+  situation: Cuando un cliente expresa preocupación por la seguridad o supervisión.
+  script: La seguridad es nuestra prioridad. Contamos con certificaciones, monitoreo
+    constante y protocolos de emergencia. ¿Le gustaría que le enviemos testimonios
+    de otros padres o programemos un recorrido virtual?
+  goal: Disipar dudas de seguridad y construir confianza para avanzar en la venta.
+- trigger: availability_check
+  situation: Cuando un cliente pregunta por disponibilidad en horarios pico.
+  script: Tenemos listas de espera gestionadas eficientemente. Podemos agregarle y
+    notificarle sobre aperturas, o sugerir opciones en horarios alternativos. ¿Prefiere
+    que le reserve un lugar?
+  goal: Manejar la demanda y mantener el interés del cliente incluso con limitaciones
+    de capacidad.
+competitors:
+- name: Guarderías Kinder
+  positioning: Cadena nacional con presencia en múltiples ciudades, enfocada en cuidado
+    estándar.
+  strengths:
+  - Marca reconocida
+  - Infraestructura consistente
+  - Precios moderados
+  weaknesses:
+  - Poca personalización
+  - Servicio al cliente lento
+  - Tecnología obsoleta
+  our_differentiation: Ofrecemos atención más personalizada con tecnología de voz
+    para comunicación rápida y eficiente.
+- name: Colegio Humboldt
+  positioning: Institución educativa premium que incluye guardería, dirigida a familias
+    de alto ingreso.
+  strengths:
+  - Alta calidad educativa
+  - Instalaciones de lujo
+  - Prestigio
+  weaknesses:
+  - Costos muy elevados
+  - Acceso limitado geográficamente
+  - Poca flexibilidad
+  our_differentiation: Proporcionamos cuidado de calidad a precios más accesibles,
+    con enfoque en eficiencia operativa.
+- name: Guarderías locales independientes
+  positioning: Pequeñas empresas familiares con enfoque comunitario.
+  strengths:
+  - Trato cercano y personalizado
+  - Flexibilidad en horarios
+  - Conocimiento local
+  weaknesses:
+  - Recursos tecnológicos limitados
+  - Falta de escalabilidad
+  - Riesgo en cumplimiento normativo
+  our_differentiation: Combinamos el calor humano con automatización avanzada para
+    mejorar la experiencia y reducir costos.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 2000
+  - 8000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Automatización de recordatorios de pago y facturación
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Reducción de tiempo administrativo en programación y comunicación
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta un 40% en tiempo administrativo con nuestra solución
+  - Mejore la satisfacción de los padres con comunicación proactiva y reducción de
+    errores
+market_context:
+  market_size: Estimado en over 50,000 guarderías en México, con un valor de mercado
+    de aproximadamente 20 mil millones MXN anuales
+  growth_rate: 6% anual, impulsado por aumento de madres trabajadoras y urbanización
+  key_trends:
+  - Creciente demanda de tecnología para mejorar seguridad y eficiencia
+  - Enfoque en educación temprana y desarrollo infantil
+  - Mayor regulación y compliance con leyes como LFPDPPP
+  seasonality:
+    high:
+    - Enero (inicio del ciclo escolar)
+    - Agosto (regreso a clases después de vacaciones)
+    low:
+    - Julio (vacaciones de verano)
+    - Diciembre (festividades de fin de año)
+typical_objections:
+- objection: Es demasiado caro para mi presupuesto familiar.
+  response: Comprendemos su preocupación. Ofrecemos planes escalables y descuentos
+    por pagos anticipados o múltiples hijos. Además, considere el ahorro en tiempo
+    y estrés con nuestra comunicación automatizada.
+- objection: Prefiero confiar en un familiar para el cuidado, es más seguro.
+  response: Entendemos la confianza en familiares. Nuestro servicio proporciona estructura
+    educativa, socialización con otros niños y supervisión profesional, lo que complementa
+    el cuidado familiar. ¿Le gustaría conocer nuestros protocolos de seguridad?
+- objection: Ya uso otra guardería y no quiero cambiar por comodidad.
+  response: Valoramos la lealtad. Nuestra solución puede integrarse para mejorar la
+    experiencia actual, ofreciendo herramientas como actualizaciones en tiempo real
+    y gestión simplificada. ¿Podemos mostrarle cómo puede optimizar su proceso actual?
+- objection: No estoy seguro de que la tecnología de voz sea confiable para algo tan
+    importante.
+  response: Nuestra tecnología está diseñada para ser segura y complementar el cuidado
+    humano, no reemplazarlo. Contamos con respaldo humano y pruebas rigurosas. ¿Le
+    gustaría una demostración o referencias de otros clientes?
+meta:
+  id: childcare
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

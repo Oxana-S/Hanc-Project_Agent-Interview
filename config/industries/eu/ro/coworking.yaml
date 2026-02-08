@@ -1,0 +1,196 @@
+pain_points:
+- description: Costuri operaționale ridicate pentru întreținerea și utilitățile spațiilor.
+  severity: high
+  solution_hint: Agentul vocal poate optimiza rezervările și reduce risipa de resurse prin gestionarea automată.
+- description: Rata de ocupare fluctuantă, cu perioade de goluri în afara sezonului.
+  severity: medium
+  solution_hint: Agentul vocal poate promova oferte speciale și recupera clienți inactivi.
+- description: Competiție intensă din partea altor spații de coworking și birouri tradiționale.
+  severity: high
+  solution_hint: Agentul vocal poate evidenția avantaje unice și gestiona obiecțiile în timp real.
+- description: Dificultăți în gestionarea rezervărilor și a cererilor clienților în timp util.
+  severity: high
+  solution_hint: Agentul vocal poate automatiza rezervările și oferi suport non-stop.
+- description: Nevoia de conformitate cu GDPR pentru protecția datelor clienților.
+  severity: medium
+  solution_hint: Agentul vocal poate informa clienții despre măsurile de securitate și procesează datele în mod securizat.
+- description: Atragerea și menținerea clienților pe termen lung într-o piață dinamică.
+  severity: high
+  solution_hint: Agentul vocal poate personaliza comunicarea și oferi recomandări bazate pe preferințe.
+- description: Gestionarea eficientă a evenimentelor și activităților de networking.
+  severity: low
+  solution_hint: Agentul vocal poate coordona înscrierile și trimite remindere automate.
+typical_services:
+- Acces zilnic (daily pass)
+- Birou privat
+- Spațiu de coworking flexibil (hot desk)
+- Sala de ședințe
+- Servicii de recepție virtuală
+- Acces la internet de mare viteză
+- Zone de relaxare și kitchenette
+- Evenimente de networking și workshop-uri
+- Servicii de printare și scanare
+- Asistență tehnică și IT
+recommended_functions:
+- name: Gestionarea rezervărilor în timp real
+  priority: high
+  reason: Reduce erorile și crește satisfacția clienților prin procese automate.
+- name: Răspuns la întrebări frecvente (FAQ)
+  priority: high
+  reason: Eliberează timpul personalului și oferă informații instant.
+- name: Recuperarea clienților și marketingul de relansare
+  priority: medium
+  reason: Crește rata de retenție și atrage clienți înapoi.
+- name: Procesarea plăților și facturilor
+  priority: high
+  reason: Simplifică tranzacțiile și asigură fluxul de venituri.
+- name: Rapoarte de ocupare și analize
+  priority: low
+  reason: Ajută la luarea deciziilor bazate pe date pentru optimizarea spațiului.
+- name: Integrarea cu calendarele clienților
+  priority: medium
+  reason: Îmbunătățește experiența utilizatorilor prin sincronizare ușoară.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  - eMAG CRM
+  priority: high
+- name: Platforme de plăți online
+  examples:
+  - Netopia
+  - MobilPay
+  - PayPal
+  priority: high
+- name: Software de gestionare a spațiilor de coworking
+  examples:
+  - OfficeRnD
+  - Nexudus
+  priority: high
+- name: Instrumente de marketing digital
+  examples:
+  - Facebook Ads
+  - Google Ads
+  priority: medium
+- name: Sisteme de securitate și control acces
+  examples:
+  - sisteme locale integrate
+  priority: low
+industry_faq:
+- question: Care sunt prețurile pentru un birou privat în București?
+  answer_template: Prețurile pentru un birou privat încep de la 500 RON/lună, în funcție de locație și dotări. Vă pot oferi detalii personalizate.
+- question: Aveți acces non-stop la spații?
+  answer_template: Da, majoritatea spațiilor noastre oferă acces non-stop 24/7 pentru membrii cu abonament, cu securitate asigurată.
+- question: Cum vă asigurați conformitatea cu GDPR?
+  answer_template: Respectăm strict reglementările GDPR, cu politici de confidențialitate și procesare securizată a datelor. Detalii sunt disponibile pe site.
+- question: Organizați evenimente pentru comunitate?
+  answer_template: Da, organizăm evenimente regulate de networking și workshop-uri pentru a sprijini creșterea afacerilor membre.
+- question: Ce servicii sunt incluse în abonamentul de bază?
+  answer_template: Abonamentul de bază include acces la spațiul comun, internet de mare viteză, și utilizarea zonelor comune. Opțiuni suplimentare sunt disponibile.
+- question: Pot anula rezervarea fără penalități?
+  answer_template: Politica noastră permite anulări fără penalități cu o notificare prealabilă de 24 de ore. Verificați termenii specifici.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru servicii.
+  script: Bună! Mulțumim pentru interes. Prețurile noastre pornesc de la 150 EUR pe lună pentru un birou flexibil, iar pentru un birou dedicat prețurile variază în funcție de mărime și locație. Toate pachetele includ internet de mare viteză, acces la sălile de ședințe și cafea nelimitată. Pot să vă trimit o ofertă personalizată?
+  goal: Prezentarea transparentă a prețurilor și încurajarea clientului să solicite o ofertă personalizată.
+- trigger: follow_up
+  situation: După o primă discuție cu un potențial client care a arătat interes, dar nu a luat încă o decizie.
+  script: Bună ziua! Voiam să revin cu o scurtă întrebare, dacă ați avut timp să vă gândiți la opțiunile noastre de spații de coworking. Avem pachete flexibile și facilități care pot susține creșterea afacerii
+    dumneavoastră. Dacă aveți întrebări sau doriți să programați o vizită, sunt aici să vă ajut.
+  goal: Menținerea interesului clientului și încurajarea unei decizii rapide.
+- trigger: objection_handling
+  situation: Când un potențial client exprimă îngrijorări legate de costuri sau valoarea serviciului.
+  script: Înțeleg perfect preocuparea legată de costuri. Totuși, spațiile noastre de coworking includ acces la internet de mare viteză, săli de întâlniri echipate și un mediu profesional care stimulează
+    productivitatea. Pe termen lung, aceste beneficii pot reduce cheltuielile legate de birouri tradiționale și pot crește eficiența. V-aș putea arăta câteva opțiuni care să se potrivească bugetului dumneavoastră.
+  goal: Reducerea ezitărilor legate de preț și evidențierea avantajelor cost-eficiență.
+meta:
+  id: coworking
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking
+competitors:
+- name: Impact Hub București
+  positioning: Lider pe piața de coworking pentru startup-uri și freelanceri
+  strengths:
+  - Comunitate puternică și networking activ
+  - Locații centrale bine poziționate
+  - Evenimente și workshop-uri frecvente
+  weaknesses:
+  - Prețuri mai mari comparativ cu alte spații
+  - Capacitate limitată în perioadele de vârf
+  our_differentiation: Agentul vocal AI oferă suport instant pentru rezervări și informații, reducând timpul de așteptare și îmbunătățind experiența clientului.
+- name: Mindspace București
+  positioning: Spațiu premium de coworking pentru companii medii și mari
+  strengths:
+  - Design modern și facilități premium
+  - Suport administrativ extins
+  - Locații în zone de business importante
+  weaknesses:
+  - Costuri ridicate pentru startup-uri mici
+  - Flexibilitate limitată în planurile tarifare
+  our_differentiation: Automatizarea prin agentul vocal AI optimizează gestionarea rezervărilor și comunicarea, reducând nevoia de personal dedicat și costurile operaționale.
+- name: Pura Vida Hub
+  positioning: Spațiu flexibil și accesibil pentru freelanceri și antreprenori mici
+  strengths:
+  - Prețuri competitive
+  - Atmosferă relaxată și prietenoasă
+  - Localizare convenabilă
+  weaknesses:
+  - Mai puține facilități tehnice avansate
+  - Capacitate redusă pentru evenimente mari
+  our_differentiation: Agentul vocal AI personalizează experiența utilizatorilor și oferă suport 24/7 pentru întrebări și rezervări, sporind fidelizarea clienților.
+- name: The Office Cluj
+  positioning: Spațiu de coworking regional cu focus pe comunitatea locală
+  strengths:
+  - Adaptabil la nevoile pieței locale
+  - Relații bune cu startup-urile regionale
+  - Costuri rezonabile
+  weaknesses:
+  - Vizibilitate redusă la nivel național
+  - Facilități mai limitate comparativ cu București
+  our_differentiation: Agentul vocal AI integrează sisteme locale și oferă suport rapid, eficient și multilingv pentru clienții regionali, îmbunătățind competitivitatea.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 400
+  - 1500
+  entry_point: 400
+  roi_examples:
+  - scenario: Optimizarea rezervărilor și reducerea timpului de administrare prin automatizare
+    monthly_cost: 800
+    monthly_savings: 1600
+    payback_months: 1
+  - scenario: Creșterea ratei de ocupare prin campanii automate de marketing vocal
+    monthly_cost: 600
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Automatizarea reduce costurile de personal și erorile umane.
+  - Creșterea satisfacției clienților prin răspunsuri rapide și precise.
+  - Optimizarea utilizării spațiului prin gestionarea inteligentă a rezervărilor.
+market_context:
+  market_size: aproximativ 50 milioane RON anual
+  growth_rate: 8-10%
+  key_trends:
+  - Creșterea cererii pentru spații flexibile și soluții hibride de lucru
+  - Integrarea tehnologiei digitale și a automatizărilor în gestionarea spațiilor
+  - Accent sporit pe sustenabilitate și facilități eco-friendly
+  - Popularizarea abonamentelor flexibile și opțiunilor pe termen scurt
+  seasonality:
+    high:
+    - septembrie
+    - octombrie
+    - noiembrie
+    low:
+    - iulie
+    - august

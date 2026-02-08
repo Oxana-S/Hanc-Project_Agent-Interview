@@ -1,0 +1,212 @@
+pain_points:
+- description: Az ügyfelek nem tudnak bejutni a csúcsidőben
+  severity: high
+  solution_hint: 24/7 működő hangos ügynök a foglaláshoz
+- description: Sok kihagyott látogatás (no-show)
+  severity: high
+  solution_hint: Automatikus emlékeztetők egy nappal és 2 órával előtte
+- description: A recepciósokat túlterhelik az azonos kérdések
+  severity: medium
+  solution_hint: Automatikus válaszok a GYIK-re
+- description: Nehéz akciókat és speciális ajánlatokat promóciózni
+  severity: medium
+  solution_hint: Kimenő hívások személyre szabott ajánlatokkal
+- description: Az ügyfelek lefoglalnak időpontot, majd elfelejtik
+  severity: medium
+  solution_hint: Emlékeztetők messengeren és SMS-ben
+- description: Hosszú telefonos várakozási idő, ami elriasztja az ügyfeleket
+  severity: medium
+  solution_hint: Azonnali hangügynök válasz a hívásokra
+- description: Kézi adminisztráció miatti hibák a foglalásban
+  severity: low
+  solution_hint: Automatikus szinkronizálás a CRM és a naptár között
+typical_services:
+- Masszázs (klasszikus, sport, anticellulit)
+- Manikűr és pedikűr
+- Fodrászati szolgáltatások (vágás, festés, hajformázás)
+- Kozmetikai kezelések
+- SPA-kezelések
+- Szőrtelenítés / Lézeres epiláció
+- Napozóágy (szolárium)
+- Fitnesz edzésprogramok
+- Jóga és nyújtó tornák
+- Természetgyógyászati kezelések
+recommended_functions:
+- name: időpontfoglalás
+  priority: high
+  reason: Alapvető funkció - kezelésfoglalás kezelő kiválasztásával és időponttal
+- name: emlékeztető
+  priority: high
+  reason: A no-show arány csökkentése 5%-ra automatikus emlékeztetőkkel
+- name: gyik
+  priority: medium
+  reason: Válaszok az árakkal, szolgáltatásokkal, előkészületekkel kapcsolatos kérdésekre
+- name: időpont_módosítás
+  priority: medium
+  reason: Foglalás módosítása vagy lemondása recepciós bevonása nélkül
+- name: értékesítés
+  priority: low
+  reason: Akciók és bérletek ismertetése
+- name: visszajelzés_gyűjtés
+  priority: low
+  reason: Ügyfélélmény visszajelzésének automatikus begyűjtése hívás után
+typical_integrations:
+- name: CRM/Foglalási rendszer
+  examples:
+  - Trezi
+  - Waiter
+  - Szalon Manager
+  - Colibri
+  priority: high
+  reason: Munkatársak beosztása, időpontok foglalása
+- name: Üzenetküldő alkalmazások
+  examples:
+  - WhatsApp
+  - Viber
+  - Messenger
+  priority: high
+  reason: Foglalás megerősítése és emlékeztetés
+- name: SMS
+  examples:
+  - Magyar Telekom SMS
+  - Yettel SMS
+  priority: medium
+  reason: SMS emlékeztetők az üzenetküldőt nem használó ügyfeleknek
+- name: Telefónia
+  examples:
+  - 3CX
+  - Avaya
+  priority: medium
+  reason: Bejövő hívások kezelése
+industry_faq:
+- question: Mennyibe kerül egy masszázs?
+  answer_template: Az ár a masszázs típusától és időtartamától függ. Egy klasszikus
+    hátmasszázs 15 000 Ft-tól kezdődik. Részleteket szeretne?
+- question: Mennyi ideig tart egy kezelés?
+  answer_template: A szabványos kezelés 60 percig tart. Vannak expressz változatok
+    is 30 percre.
+- question: Hogyan tudok időpontot foglalni?
+  answer_template: Azonnal lefoglalhatom Önnek. Melyik szolgáltatás érdekli és melyik
+    nap lenne jó?
+- question: Át tudom rakni a foglalást?
+  answer_template: Természetesen. Mondja meg a nevét és az új, Önnek megfelelő időpontot.
+- question: Vannak ellenjavallatok?
+  answer_template: Az ellenjavallatok a kezeléstől függenek. Ellenőrizze a szakemberrel
+    a kezelés előtt.
+- question: Dolgoztok hétvégén?
+  answer_template: Igen, hétvégén is nyitva vagyunk. Lefoglalhatom szombatra vagy
+    vasárnapra.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél árakat kérdez
+  script: A masszázsunk 15 000 Ft-tól kezdődik, de ha most foglal, ajánlok egy 10%-os
+    első látogatási kedvezményt. Szeretné lefoglalni?
+  goal: Vásárlás ösztönzése azonnali kedvezménnyel
+- trigger: new_customer
+  situation: Amikor az ügyfél első alkalommal hív
+  script: Üdvözöljük! Különleges üdvözlő ajánlatunk van az új vendégeknek. Például
+    a testápoló kezelés + masszázs csomag most csak 25 000 Ft. Érdekli?
+  goal: Első vásárlás megkötése csomagajánlattal
+- trigger: service_completion
+  situation: Amikor az ügyfél egy kezelés után hív vissza
+  script: Örülök, hogy tetszett a kezelés! Javaslok egy bérletet, amivel a következő
+    5 látogatásra 20%-ot spórolhat. Szeretné megrendelni?
+  goal: Hűség növelése bérlet értékesítésével
+- trigger: no_show_followup
+  situation: Amikor az ügyfél nem jelent meg időpontjára
+  script: Látom, hogy nem tudott eljönni. Új időpontot javaslok kedvezményes áron,
+    hogy biztosan találkozhassunk. Ma este 18:00-ra szabad vagyok.
+  goal: Elmaradt bevétel visszanyerése és új foglalás
+competitors:
+- name: Beauty & Go
+  positioning: Országos lánc, gyors és megfizethető kezelések
+  strengths:
+  - Sok helyszín
+  - Alacsony árak
+  - Online foglalás
+  weaknesses:
+  - Korlátozott személyre szabás
+  - Várakozási idő
+  our_differentiation: Személyre szabottabb ellátás, minőségi termékek, hosszabb kezelési
+    idő
+- name: Omorovicza Spa
+  positioning: Prémium wellness élmény Budapesten
+  strengths:
+  - Luxus márka
+  - Egyedi termékek
+  - Kiváló helyszín
+  weaknesses:
+  - Nagyon magas árak
+  - Korlátozott időpontok
+  our_differentiation: Megfizethetőbb prémium szint, barátságosabb légkör, szélesebb
+    szolgáltatási kínálat
+- name: Fit Gym & Spa
+  positioning: Fitnesz és wellness kombinált szolgáltatások
+  strengths:
+  - Egy helyen minden
+  - Bérleti rendszer
+  - Modern felszerelés
+  weaknesses:
+  - Tömegesség
+  - Kevesebb személyes figyelem
+  our_differentiation: Kizárólag wellness fókuszált, intimabb környezet, szakképzett
+    személyzet
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Foglalási rendszer automatizálása
+    monthly_cost: 50000
+    monthly_savings: 120000
+    payback_months: 0.5
+  - scenario: No-show csökkentés 20%-ról 5%-ra
+    monthly_cost: 30000
+    monthly_savings: 150000
+    payback_months: 0.25
+  value_anchors:
+  - Egy óra pihenés kevesebb, mint egy mozijegy
+  - A bérleti kedvezményekkel akár 20%-ot is spórolhat
+  - A minőségi wellness befektetés az egészségbe
+market_context:
+  market_size: Kb. 120 milliárd HUF évente
+  growth_rate: 8% évente
+  key_trends:
+  - Növekvő igény a mentális egészségre fókuszáló szolgáltatásokra
+  - 'Digitalizáció: online foglalás és fizetés'
+  - 'Szélesedő ajánlat: otthoni wellness eszközök és online tréningek'
+  - 'Fenntarthatóság: természetes és helyi termékek iránti igény'
+  seasonality:
+    high:
+    - Január (újév után)
+    - Tavasz (nyár előtti formálódás)
+    - November (ünnepi időszak előtti kikapcsolódás)
+    low:
+    - Augusztus (nyaralási időszak)
+    - December (ünnepi foglaltság)
+typical_objections:
+- objection: Túl drága
+  response: Kínálunk bérleteket, amikkel akár 20%-ot is spórolhat. Szeretnék részleteket
+    mondani?
+- objection: Nincs időm
+  response: Vannak expressz kezeléseink 30 percre. Emellett 21:00-ig is nyitva vagyunk.
+- objection: Gondolkozom rajta
+  response: Természetesen! Lefoglalok egy előzetes időpontot, hogy biztosan legyen
+    hely?
+meta:
+  id: wellness
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "wellness"
+- "spa"
+- "massage"
+- "fitness"
+- "health club"
+_extends: _base/wellness

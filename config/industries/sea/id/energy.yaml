@@ -1,0 +1,247 @@
+pain_points:
+- description: Fluktuasi harga bahan bakar fosil yang tidak stabil, menyebabkan ketidakpastian
+    dalam perencanaan biaya operasional.
+  severity: high
+  solution_hint: AI voice agent dapat memberikan update harga real-time dan analisis
+    tren untuk membantu perencanaan anggaran.
+- description: Kepatuhan terhadap regulasi pemerintah dan Undang-Undang Perlindungan
+    Data Pribadi (PDP) yang kompleks dan sering berubah.
+  severity: high
+  solution_hint: Agent dapat mengingatkan deadline kepatuhan, menyediakan checklist,
+    dan menjawab pertanyaan regulasi secara otomatis.
+- description: Pemantauan aset dan infrastruktur yang tersebar di lokasi terpencil,
+    seringkali kurang efisien dan mahal.
+  severity: high
+  solution_hint: Voice agent dapat mengintegrasikan data IoT dari lapangan, memberikan
+    laporan status, dan membuat tiket perawatan otomatis.
+- description: Pelaporan operasi dan kinerja ke Kementerian ESDM yang manual dan memakan
+    waktu.
+  severity: medium
+  solution_hint: Agent dapat membantu mengumpulkan data, mengisi formulir digital,
+    dan mengirimkan laporan sesuai jadwal yang ditentukan.
+- description: Tingginya permintaan layanan pelanggan untuk masalah tagihan dan gangguan
+    pasokan listrik.
+  severity: medium
+  solution_hint: Voice agent dapat menangani pertanyaan umum, memverifikasi tagihan,
+    dan melaporkan gangguan 24/7, mengurangi beban call center.
+- description: Kesulitan dalam mengelola energi terbarukan yang terintegrasi dengan
+    jaringan listrik yang ada.
+  severity: medium
+  solution_hint: Agent dapat menganalisis data produksi energi terbarukan dan memberikan
+    rekomendasi untuk optimasi integrasi grid.
+- description: Pelatihan dan prosedur keselamatan (K3) untuk tenaga kerja lapangan
+    yang kurang konsisten.
+  severity: low
+  solution_hint: Voice agent dapat memberikan pengingat prosedur K3, kuis singkat,
+    dan akses cepat ke panduan darurat via panggilan suara.
+typical_services:
+- Konsultasi Efisiensi Energi
+- Audit Energi (Industri & Komersial)
+- Pemasangan Panel Surya Atap (PLTS Atap)
+- Manajemen dan Pemantauan Beban Listrik
+- Layanan Pemeliharaan Infrastruktur Listrik
+- Penyediaan Sistem Penerangan LED
+- Pengisian Daya Kendaraan Listrik (SPKLU)
+- Solusi Penerangan Jalan Umum Tenaga Surya (PJUTS)
+- Integrasi Sistem Energi Terbarukan
+- Laporan Kepatuhan ESDM & Lingkungan
+recommended_functions:
+- name: Penjadwalan dan Pengingat Otomatis
+  priority: high
+  reason: Untuk mengingatkan jadwal perawatan aset, pengiriman laporan regulator,
+    dan pelatihan K3, yang sangat kritis di industri ini.
+- name: Pemantauan Status Aset via Suara
+  priority: high
+  reason: Memungkinkan tim lapangan atau operator untuk mendapatkan update kondisi
+    aset kritis (seperti gardu, turbin) hanya dengan panggilan suara, sangat berguna
+    di area terpencil.
+- name: Verifikasi Tagihan dan Keluhan Pelanggan
+  priority: high
+  reason: Mengurangi volume panggilan ke call center manusia untuk masalah tagihan
+    dan gangguan, meningkatkan kepuasan pelanggan.
+- name: Kuesioner dan Pengumpulan Data Lapangan
+  priority: medium
+  reason: Memudahkan pengumpulan data inspeksi atau survei dari lapangan langsung
+    melalui interaksi suara, mengurangi kesalahan input manual.
+- name: Asisten Penjualan Layanan
+  priority: medium
+  reason: Menjawab pertanyaan prospek tentang layanan PLTS, efisiensi energi, dan
+    memberikan perkiraan biaya awal.
+- name: Penerjemah Istilah Teknis
+  priority: low
+  reason: Membantu menjelaskan istilah teknis seperti "smart grid" atau "rasio BPP"
+    kepada pelanggan non-teknis dalam bahasa yang sederhana.
+typical_integrations:
+- name: Sistem SCADA/EMS
+  examples: Siemens Spectrum Power, Schneider Electric EcoStruxure, Hexagon S.p.A.
+  priority: high
+- name: Sistem ERP Perusahaan
+  examples: SAP, Oracle, lokal seperti Zahir
+  priority: high
+- name: Sistem Manajemen Aset
+  examples: IBM Maximo, Infor EAM, sistem custom lokal
+  priority: medium
+- name: Aplikasi Pelaporan Pemerintah
+  examples: Sistem Online Layanan ESDM (Sole), Sistem Informasi Geografis Migas
+  priority: medium
+- name: Platform IoT dan Sensor
+  examples: Platform IoT Telkom (LoRa), sensor lokal untuk panel surya dan gardu
+  priority: medium
+industry_faq:
+- question: Berapa lama waktu pengembalian investasi (ROI) untuk pemasangan panel
+    surya atap?
+  answer_template: Waktu pengembalian investasi biasanya antara 4-7 tahun, tergantung
+    pada konsumsi listrik, insentif pemerintah, dan lokasi pemasangan. Kami dapat
+    menganalisis profil beban Anda untuk memberikan estimasi yang lebih akurat.
+- question: Apakah solusi Anda sudah memenuhi regulasi PDP Indonesia?
+  answer_template: Ya, seluruh sistem kami dirancang dengan prinsip privacy by design
+    dan mematuhi Undang-Undang PDP. Data pelanggan dienkripsi dan diproses sesuai
+    dengan persetujuan yang diberikan.
+- question: Bagaimana cara melaporkan gangguan listrik atau kerusakan melalui voice
+    agent?
+  answer_template: Anda cukup memberi tahu agent tentang lokasi dan jenis gangguan.
+    Agent akan segera membuat tiket gangguan dan mengirimkannya ke tim teknis kami,
+    sambil memberikan nomor tiket dan perkiraan waktu penanganan.
+- question: Dapatkah voice agent membantu menghitung penghematan biaya listrik?
+  answer_template: Tentu. Dengan menganalisis data historis konsumsi Anda, agent dapat
+    memberikan proyeksi penghematan dari layanan efisiensi energi atau pemasangan
+    PLTS yang kami tawarkan.
+- question: Apakah sistem ini bisa diintegrasikan dengan SCADA yang sudah ada?
+  answer_template: Ya, voice agent kami dapat diintegrasikan melalui API dengan berbagai
+    sistem SCADA populer untuk membaca data status dan membuat perintah suara sederhana.
+- question: Bagaimana dengan dukungan untuk daerah dengan sinyal internet yang terbatas?
+  answer_template: Agent kami dapat beroperasi dengan teknologi panggilan suara tradisional
+    (PSTN) sebagai fallback, memastikan akses layanan di daerah terpencil.
+sales_scripts:
+- trigger: price_question
+  situation: Saat prospek menanyakan harga layanan konsultasi efisiensi energi.
+  script: Harga konsultasi awal kami dimulai dari Rp 15 juta, tergantung kompleksitas
+    lokasi dan skala audit. Investasi ini biasanya terbayar dalam 6-12 bulan dari
+    penghematan biaya listrik yang dihasilkan. Apakah Bapak/Ibu memiliki data tagihan
+    listrik 3 bulan terakhir untuk kami analisis estimasi penghematannya?
+  goal: Mengalihkan percakapan dari harga ke nilai ROI dan mengumpulkan data untuk
+    proposal.
+- trigger: competitor_mention
+  situation: Saat prospek menyebutkan nama pesaing seperti Schneider atau SUN Energy.
+  script: Itu adalah perusahaan yang baik. Yang membedakan kami adalah fokus pada
+    otomatisasi layanan pelanggan dan operasional melalui agen suara AI. Jadi, selain
+    solusi hardware/software, tim Anda mendapatkan 'asisten digital' 24 jam untuk
+    pemantauan, pelaporan, dan dukungan, yang meningkatkan efisiensi internal secara
+    signifikan.
+  goal: Membedakan dari pesaing dengan menekankan nilai tambah otomatisasi dan dukungan
+    berkelanjutan.
+- trigger: objection_complexity
+  situation: Saat prospek mengkhawatirkan kerumitan implementasi.
+  script: Kami paham kekhawatiran tersebut. Implementasi kami berbasis modul dan bertahap.
+    Kita bisa mulai dari fungsi sederhana seperti penerimaan laporan gangguan via
+    telepon. Agent kami yang akan beradaptasi dengan sistem dan tim Anda, sehingga
+    proses transisinya sangat lancar.
+  goal: Mengurangi rasa takut akan kompleksitas dengan menawarkan pendekatan bertahap
+    dan mudah.
+competitors:
+- name: Schneider Electric Indonesia
+  positioning: Pemain global dengan solusi end-to-end untuk manajemen energi dan otomasi.
+  strengths:
+  - Portofolio produk dan software yang sangat luas.
+  - Merek yang kuat dan diakui secara global.
+  - Tim engineering dan dukungan yang besar.
+  weaknesses:
+  - Solusi bisa terasa terlalu kompleks dan mahal untuk UKM.
+  - Layanan purna jual dan responsif terkadang lambat.
+  our_differentiation: Kami menawarkan solusi yang lebih mudah diadopsi dengan antarmuka
+    voice agent sebagai layer utama, fokus pada kemudahan penggunaan dan otomatisasi
+    layanan pelanggan/operasional sehari-hari.
+- name: SUN Energy
+  positioning: Spesialis Pembangkit Listrik Tenaga Surya (PLTS) dengan model bisnis
+    ESG.
+  strengths:
+  - Fokus kuat pada PLTS dan energi terbarukan.
+  - Model pembiayaan menarik (seperti zero investment upfront).
+  - Proyek-proyek skala besar yang telah terbukti.
+  weaknesses:
+  - Portofolio terbatas pada solusi surya.
+  - Kurang fokus pada solusi otomatisasi digital dan efisiensi operasional lainnya.
+  our_differentiation: Kami memberikan solusi yang lebih holistik, tidak hanya PLTS
+    tetapi juga otomatisasi untuk pemantauan, pemeliharaan, dan layanan pelanggan
+    seluruh infrastruktur energi.
+- name: PT Telekomunikasi Indonesia (Telkom) - IoT Division
+  positioning: Penyedia infrastruktur dan platform IoT nasional.
+  strengths:
+  - Jaringan dan infrastruktur telekomunikasi yang sangat kuat.
+  - Platform IoT yang sudah terintegrasi dengan jaringan.
+  - Kepercayaan sebagai BUMN.
+  weaknesses:
+  - Bukan spesialis inti di bidang solusi energi.
+  - Fokus utama pada konektivitas, aplikasi spesifik energi mungkin kurang mendalam.
+  our_differentiation: Kami adalah spesialis aplikasi AI dan otomatisasi untuk *industri
+    energi*, dengan pemahaman mendalam tentang proses bisnis, regulasi, dan integrasi
+    sistem (SCADA, ERP) khusus sektor ini.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000000
+  - 5000000000
+  entry_point: 15000000
+  roi_examples:
+  - scenario: Implementasi voice agent untuk penanganan 30% keluhan pelanggan & gangguan
+      listrik di perusahaan distribusi.
+    monthly_cost: 25000000
+    monthly_savings: 40000000
+    payback_months: 8
+  - scenario: Paket audit energi + sistem pemantauan beban dengan asisten voice untuk
+      pabrik menengah.
+    monthly_cost: 12000000
+    monthly_savings: 20000000
+    payback_months: 7
+  value_anchors:
+  - Hemat hingga 30% biaya operasional call center dengan agent yang tersedia 24/7.
+  - Hindari denda regulator dengan pengingat otomatis untuk tenggat waktu pelaporan.
+  - Tingkatkan uptime aset kritis hingga 15% dengan pemantauan dan perawatan prediktif
+    via suara.
+market_context:
+  market_size: Diperkirakan mencapai Rp 350 triliun untuk solusi digital dan efisiensi
+    energi.
+  growth_rate: 12-15% YoY, didorong oleh transisi energi dan program pemerintah.
+  key_trends:
+  - Transisi ke Energi Terbarukan (EBT) dan Net Zero Emission.
+  - Digitalisasi dan adopsi IoT untuk grid yang lebih cerdas (smart grid).
+  - Peningkatan regulasi untuk efisiensi energi dan keberlanjutan.
+  - Pertumbuhan pesat kendaraan listrik (EV) membutuhkan infrastruktur pengisian.
+  seasonality:
+    high:
+    - Akhir tahun (Oktober-Desember) - pengajuan anggaran tahun berikutnya.
+    - Musim kemarau - permintaan tinggi untuk solusi pendinginan dan pemantauan beban
+      puncak.
+    low:
+    - Awal tahun (Januari-Februari) - periode penyesuaian anggaran.
+    - Libur panjang nasional - aktivitas proyek melambat.
+typical_objections:
+- objection: Budget kami ketat tahun ini, mungkin tahun depan saja.
+  response: Memahami prioritas anggaran. Bisakah kita mulai dengan pilot project skala
+    kecil di satu departemen atau untuk satu fungsi (misalnya pelaporan gangguan)?
+    Biayanya bisa masuk dalam anggaran operasional dan kami tunjukkan ROI-nya dalam
+    beberapa bulan.
+- objection: Tim kami sudah terbiasa dengan cara manual, sulit untuk berubah.
+  response: Perubahan memang butuh adaptasi. Agent kami justru didesain untuk memudahkan,
+    bukan mempersulit. Dia bekerja seperti asisten yang mendengarkan perintah suara
+    dalam bahasa Indonesia. Kami akan dampingi pelatihannya hingga tim merasa nyaman.
+- objection: Kami khawatir dengan keamanan data, apalagi dengan UU PDP.
+  response: Kekhawatiran yang sangat valid. Keamanan data adalah prioritas utama kami.
+    Sistem kami menggunakan enkripsi end-to-end, server di dalam negeri, dan kami
+    siap membantu penyusunan dokumen impact assessment untuk kepatuhan PDP perusahaan
+    Anda.
+meta:
+  id: energy
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

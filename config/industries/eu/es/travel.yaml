@@ -1,0 +1,257 @@
+pain_points:
+- description: Alta estacionalidad que genera picos de demanda imposibles de manejar
+    con el personal disponible, especialmente en verano y Semana Santa.
+  severity: high
+  solution_hint: El agente de voz puede gestionar consultas y reservas básicas 24/7,
+    descongestionando las líneas telefónicas en horas punta.
+- description: Competencia feroz de grandes plataformas online (OTA) que reducen los
+    márgenes de beneficio.
+  severity: high
+  solution_hint: Automatizar tareas repetitivas para reducir costes operativos y poder
+    ofrecer precios más competitivos o mejorar el servicio personalizado.
+- description: Procesos manuales para la gestión de cambios, cancelaciones y reclamaciones,
+    que consumen mucho tiempo y generan errores.
+  severity: medium
+  solution_hint: El agente puede automatizar políticas de cambios, procesar cancelaciones
+    e iniciar reclamaciones siguiendo reglas predefinidas.
+- description: Dificultad para fidelizar clientes y gestionar programas de fidelización
+    de manera efectiva y personalizada.
+  severity: medium
+  solution_hint: El agente puede identificar clientes recurrentes, ofrecer upgrades
+    o descuentos personalizados y recordarles ofertas especiales.
+- description: Sobrecarga de información y fragmentación en múltiples canales (teléfono,
+    email, WhatsApp, redes sociales).
+  severity: medium
+  solution_hint: Unificar la atención inicial a través del agente de voz, que puede
+    clasificar y derivar consultas complejas al canal adecuado.
+- description: Necesidad de confirmar disponibilidad y precios en tiempo real con
+    múltiples proveedores (hoteles, aerolíneas, excursiones).
+  severity: high
+  solution_hint: El agente, integrado con sistemas de gestión (PMS, GDS), puede proporcionar
+    información en tiempo real sin intervención humana.
+typical_services:
+- Venta de billetes de avión y tren
+- Reserva de alojamiento (hoteles, apartamentos, villas)
+- Paquetes turísticos todo incluido
+- Organización de viajes de incentivo y eventos (MICE)
+- Excursiones y actividades locales
+- Traslados aeropuerto y alquiler de coches
+- Seguros de viaje y asistencia en carretera
+- Gestión de reservas de vuelos y alojamiento
+- Asesoramiento sobre destinos y requisitos de entrada (visados, COVID-19)
+- Programas de fidelización para clientes recurrentes
+recommended_functions:
+- name: Gestor de reservas y disponibilidad
+  priority: high
+  reason: Resuelve la consulta más común de forma instantánea, liberando a los agentes
+    humanos para ventas complejas.
+- name: Procesador de cambios y cancelaciones
+  priority: high
+  reason: Automatiza un proceso tedioso y propenso a errores, mejorando la eficiencia
+    y la experiencia del cliente.
+- name: Recordatorio de pago y check-in
+  priority: medium
+  reason: Reduce las cancelaciones por falta de pago y guía al cliente en los pasos
+    previos al viaje, mejorando la tasa de éxito.
+- name: Asistente de reclamaciones
+  priority: medium
+  reason: Recoge y estructura la información inicial de una incidencia, acelerando
+    su resolución por el departamento correspondiente.
+- name: Recomendador de destinos y ofertas
+  priority: low
+  reason: Aumenta el valor de la interacción realizando venta cruzada basada en el
+    perfil y historial del cliente.
+- name: Confirmador de horarios y detalles del viaje
+  priority: medium
+  reason: Proporciona autonomía al cliente y reduce las llamadas de última hora por
+    dudas básicas.
+typical_integrations:
+- name: Sistema de Distribución Global (GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Sistema de Gestión de Propiedades (PMS)
+  examples:
+  - Mews
+  - Oracle Hospitality
+  - Hotelerum
+  priority: high
+- name: Software de gestión de viajes (TMS)
+  examples:
+  - TravelLine
+  - Dolphin Dynamics
+  - TravelCarma
+  priority: medium
+- name: Plataforma de pagos online
+  examples:
+  - Redsys
+  - Sermepa
+  - Stripe
+  priority: high
+- name: Herramienta de gestión de relaciones con clientes (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - software personalizado
+  priority: medium
+industry_faq:
+- question: ¿Puedo cambiar o cancelar mi reserva?
+  answer_template: Por supuesto. Para gestionar cambios o cancelaciones, necesito
+    localizar su reserva. Puede facilitarme su número de reserva o su DNI/NIF. Le
+    informaré de las políticas y posibles cargos aplicables según su tarifa.
+- question: ¿Qué documentación necesito para viajar a [Destino]?
+  answer_template: Los requisitos dependen del destino y su nacionalidad. Para información
+    oficial y actualizada sobre visados, pasaportes y requisitos sanitarios (como
+    vacunas), le recomiendo consultar la página web del Ministerio de Asuntos Exteriores.
+    ¿Desea que le ayude a encontrar el enlace específico?
+- question: ¿Está incluido el traslado desde el aeropuerto en mi paquete?
+  answer_template: Permítame consultar los detalles de su reserva. En general, los
+    traslados se detallan en el itinerario confirmado. Si no lo están, podemos cotizar
+    y añadir este servicio por usted.
+- question: ¿Ofrecen algún seguro de viaje que cubra cancelación?
+  answer_template: Sí, ofrecemos varias opciones de seguros de viaje con coberturas
+    de cancelación, médico y equipaje. Puedo explicarle las diferencias y el coste
+    para añadirlo a su reserva.
+- question: Mi vuelo ha sufrido un retraso importante, ¿qué debo hacer?
+  answer_template: En primer lugar, le recomiendo contactar directamente con la aerolínea
+    en el aeropuerto para su reubicación. Guarde todos los justificantes (tarjetas
+    de embarque, nuevos billetes). Posteriormente, podemos ayudarle a gestionar la
+    reclamación de compensación según el Reglamento EU 261/2004, si aplica.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio de un servicio o compara con
+    la competencia.
+  script: 'Entiendo que el precio es un factor clave. Nuestro servicio incluye [mencionar
+    valor añadido: atención 24/7 en español, gestión de incidencias, asesoramiento
+    personalizado], lo que significa tranquilidad y soporte durante todo su viaje.
+    ¿Prefiere un precio competitivo o la seguridad de que le resolveremos cualquier
+    imprevisto, incluso a las 3 de la madrugada?'
+  goal: Transmitir valor más allá del precio y diferenciarnos de las OTAs impersonales.
+- trigger: objection_automation
+  situation: Cuando el cliente muestra escepticismo sobre ser atendido por un sistema
+    automatizado.
+  script: Le entiendo perfectamente. Nuestro agente de voz está diseñado para liberar
+    a nuestros expertos humanos de las tareas repetitivas, para que ellos puedan dedicar
+    más tiempo a resolver situaciones complejas y personalizadas para usted. Es como
+    tener un asistente rápido para consultas simples, y un experto disponible para
+    lo que realmente importa.
+  goal: Reforzar la confianza explicando que la automatización mejora, no reemplaza,
+    el servicio humano.
+- trigger: callback_request
+  situation: Cuando el cliente pide que le llamen más tarde o en otro momento.
+  script: 'Por supuesto, puedo programar una llamada para usted. Para ofrecerle la
+    mejor atención, ¿podría indicarme si su consulta es sobre [Opción A: un destino
+    concreto, Opción B: fechas específicas, Opción C: un tipo de viaje (playa, cultural)]?
+    Así podremos conectarle con el especialista adecuado y tener la información preparada.'
+  goal: Calificar la llamada futura y establecer expectativas de un servicio especializado.
+competitors:
+- name: eDreams ODIGEO
+  positioning: OTA líder en el mercado español y europeo.
+  strengths:
+  - Amplísima oferta
+  - brand recognition muy alta
+  - precios agresivos
+  - app móvil muy utilizada.
+  weaknesses:
+  - Servicio al cliente impersonal y con malas reviews
+  - cargos ocultos frecuentes
+  - dificultad para resolver incidencias.
+  our_differentiation: Ofrecemos servicio de proximidad, atención personalizada y
+    un contacto humano real para emergencias, no solo un call center externo.
+- name: Booking.com
+  positioning: Gigante global en reserva de alojamiento.
+  strengths:
+  - Inventario masivo de propiedades
+  - sistema de reviews integrado
+  - proceso de reserva muy sencillo.
+  weaknesses:
+  - Enfoque casi exclusivo en alojamiento
+  - menos ventaja en paquetes complejos
+  - comisiones altas para proveedores.
+  our_differentiation: Creamos viajes completos (vuelo+hotel+coche+experiencias) con
+    un único interlocutor responsable, no solo una habitación.
+- name: Agencias de viajes tradicionales (Ej. Halcón Viajes, Logitravel)
+  positioning: Marcas reconocidas con red de tiendas físicas.
+  strengths:
+  - Confianza de la marca
+  - presencia física
+  - experiencia en paquetes.
+  weaknesses:
+  - Costes operativos altos que se trasladan al precio
+  - horarios limitados
+  - procesos a veces lentos y manuales.
+  our_differentiation: Combinamos la confianza y expertise del asesor humano con la
+    eficiencia 24/7 y reducción de costes de la automatización, ofreciendo un mejor
+    precio y más disponibilidad.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 49
+  roi_examples:
+  - scenario: Agencia pequeña que automatiza la gestión de consultas de disponibilidad
+      y cambios.
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Touroperador mediano que implementa recordatorios automáticos de pago
+      para reducir cancelaciones.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - El coste de una llamada perdida por saturación es mayor que el coste mensual de
+    nuestro agente.
+  - Automatice las 5 preguntas más frecuentes y libere el 40% del tiempo de su personal.
+  - Convierte consultas fuera de horario en oportunidades de venta, no en clientes
+    perdidos.
+market_context:
+  market_size: Aprox. 60.000 millones EUR (pre-pandemia, en recuperación)
+  growth_rate: 8-12% YoY (recuperación y crecimiento post-COVID)
+  key_trends:
+  - Aumento fuerte de la demanda de viajes sostenibles y ecoturismo.
+  - Recuperación del turismo de negocios y eventos (MICE).
+  - Los viajeros buscan más flexibilidad y seguros de cancelación.
+  - Creciente importancia de las experiencias locales frente al turismo masivo.
+  seasonality:
+    high:
+    - Julio
+    - Agosto
+    - Semana Santa
+    - Puentes de Mayo y Diciembre
+    low:
+    - Enero
+    - Febrero
+    - Noviembre (excepto puente)
+typical_objections:
+- objection: Ya tengo una web y un correo electrónico, no necesito un teléfono automático.
+  response: Totalmente, su web es fundamental. Nuestro agente actúa cuando el cliente
+    prefiere hablar, tiene una duda urgente o su web no puede resolverlo. Es la capa
+    que convierte una frustración en una venta o en un cliente satisfecho.
+- objection: Mis clientes son mayores y prefieren hablar con una persona.
+  response: Es un punto muy válido. Nuestro sistema es complementario. Puede configurarse
+    para que, detectando ciertas palabras o el tono de voz, derive inmediatamente
+    a un agente humano. Así, atiende a los que prefieren rapidez y protege el tiempo
+    de sus agentes para dedicarlo a esos clientes que valoran más la conversación.
+- objection: Es una inversión que no puedo asumir ahora mismo.
+  response: Lo comprendo. Por eso nuestro modelo parte de un coste mensual bajo y
+    escalable. Empezamos cubriendo solo las consultas más repetitivas. El ahorro en
+    tiempo suele cubrir la inversión desde el primer mes. ¿Podríamos hacer una estimación
+    concreta del tiempo que ahorraría su equipo?
+meta:
+  id: travel
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

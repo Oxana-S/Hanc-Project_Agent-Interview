@@ -1,0 +1,277 @@
+aliases:
+- industria automotriz
+- concesionario
+- taller mecánico
+- taller de chapa y pintura
+- auto
+- auto service
+- vehiculo
+- mantenimiento
+- VTV
+- cambio de cubiertas
+- lubricentro
+- venta de autos
+- reparación
+- diagnostico
+- detailing
+- lavadero
+competitors:
+- name: Toyota Argentina
+  positioning: Fabricante y red oficial de concesionarios
+  strengths:
+  - Red nacional de servicio oficial
+  - Amplia disponibilidad de repuestos originales
+  - Imagen de marca sólida
+  weaknesses:
+  - Precios más altos que talleres independientes
+  - Tiempos de espera largos para turnos
+  - Menos flexibilidad en horarios
+  our_differentiation: Atención más personalizada, precios competitivos y mayor flexibilidad
+    horaria sin comprometer la calidad.
+- name: Frenos SA
+  positioning: Cadena de talleres especializada en frenos y suspensión
+  strengths:
+  - Especialización reconocida
+  - Múltiples sucursales en CABA y GBA
+  - Precios publicados y promociones
+  weaknesses:
+  - Servicio limitado a su especialidad
+  - Pueden derivar otros problemas
+  - Atención menos personalizada por ser cadena
+  our_differentiation: Somos un taller integral que resuelve todos los problemas del
+    vehículo en un solo lugar, con seguimiento directo del cliente.
+- name: Talleres "Rápido y Bueno" independientes
+  positioning: Talleres de barrio o pequeños emprendimientos
+  strengths:
+  - Precios bajos
+  - Atención cercana y flexible
+  - Ubicación conveniente
+  weaknesses:
+  - Calidad variable
+  - Garantías limitadas o inexistentes
+  - Pocas herramientas de diagnóstico avanzado
+  our_differentiation: Ofrecemos la confianza y calidad de un taller profesional con
+    herramientas modernas y garantía escrita, a un precio justo.
+industry_faq:
+- answer_template: El costo depende de la marca del auto y el tipo de aceite. En promedio,
+    de $15.000 a $35.000 ARS con mano de obra incluida.
+  question: ¿Cuánto cuesta un cambio de aceite?
+- answer_template: Necesito el número de orden de trabajo o la patente del vehículo
+    para consultar el estado en nuestro sistema.
+  question: ¿En qué estado está mi auto?
+- answer_template: Un servicio de mantenimiento básico toma entre 2 y 4 horas, dependiendo
+    de los ítems a revisar.
+  question: ¿Cuánto tarda un service?
+- answer_template: Sí, trabajamos con todas las marcas de vehículos. ¿De qué marca
+    es su auto?
+  question: ¿Atienden mi marca de auto?
+- answer_template: Puedo consultar stock. Por favor, indíqueme marca, modelo y qué
+    repuesto necesita.
+  question: ¿Tienen tal repuesto en stock?
+- answer_template: Sí, ofrecemos garantía de 6 meses o 10.000 km en mano de obra.
+  question: ¿Dan garantía por el trabajo?
+- answer_template: Recomendamos la Verificación Técnica Vehicular (VTV) anualmente.
+    Su vencimiento depende de la terminación de la patente.
+  question: ¿Cada cuánto debo hacer la VTV?
+industry_specifics:
+  compliance:
+  - Verificación Técnica Vehicular (VTV)
+  - Facturación electrónica AFIP
+  peak_times:
+  - Lunes por la mañana
+  - Viernes por la tarde
+  - Temporada de cambio de cubiertas (abril-mayo, octubre-noviembre)
+  - Previo a vacaciones de verano (diciembre)
+  tone:
+  - Cordial y respetuoso
+  - Técnico pero claro
+  - Empático con la urgencia del cliente
+learnings: []
+market_context:
+  growth_rate: 3-5% anual (estimado)
+  key_trends:
+  - Aumento de la edad promedio del parque automotor
+  - Mayor demanda de servicios de mantenimiento y reparación vs. compra de 0km
+  - Crecimiento del interés en vehículos usados certificados
+  - Lentos avances en movilidad eléctrica
+  market_size: ~12 millones de vehículos en circulación
+  seasonality:
+    high:
+    - Diciembre/Enero (previo a vacaciones)
+    - Abril/Mayo (cambio a cubiertas de invierno)
+    - Octubre/Noviembre (cambio a cubiertas de verano)
+    low:
+    - Febrero (vacaciones de verano)
+    - Julio (receso invernal en algunas zonas)
+meta:
+  avg_validation_score: 0.0
+  country: ar
+  created_at: '2024-05-19'
+  currency: ARS
+  id: automotive
+  language: es
+  languages:
+  - es
+  last_updated: '2024-05-19'
+  phone_codes:
+  - '+54'
+  region: latam
+  tests_run: 0
+  timezone: America/Argentina/Buenos_Aires
+  version: '1.0'
+pain_points:
+- description: Los clientes llaman constantemente para consultar el estado de su reparación,
+    interrumpiendo el trabajo de los mecánicos.
+  severity: high
+  solution_hint: Agente de voz que provea el estado automáticamente con número de
+    orden o patente.
+- description: Gran volumen de llamadas solicitando precios de servicios básicos (cambio
+    de aceite, service).
+  severity: medium
+  solution_hint: Respuesta automatizada con rangos de precios de servicios comunes
+    en ARS.
+- description: Dificultad para coordinar turnos que sean convenientes para el cliente
+    y eficientes para el taller.
+  severity: medium
+  solution_hint: Sistema de agenda integrado que muestre disponibilidad en tiempo
+    real.
+- description: Clientes olvidan los service programados o la fecha de VTV, lo que
+    deriva en multas o fallas.
+  severity: medium
+  solution_hint: Recordatorios automatizados por SMS o WhatsApp basados en kilometraje
+    o fecha.
+- description: La recepcionista se satura con llamadas, generando esperas y mala experiencia.
+  severity: high
+  solution_hint: Desvío de consultas frecuentes a un agente de voz para liberar a
+    la recepción.
+- description: Pérdida de venta de servicios adicionales durante la visita para un
+    trabajo específico.
+  severity: low
+  solution_hint: Sugerencias automatizadas de servicios complementarios basadas en
+    el historial del vehículo.
+pricing_context:
+  currency: ARS
+  entry_point: 15000
+  roi_examples:
+  - monthly_cost: 50000
+    monthly_savings: 120000
+    payback_months: 1
+    scenario: Automatización del 50% de las consultas de estado y precios, liberando
+      20 horas mensuales de personal.
+  typical_budget_range:
+  - 15000
+  - 200000
+  value_anchors:
+  - Evite multas por VTV vencida con nuestro recordatorio automático.
+  - Un service a tiempo previene reparaciones costosas a futuro.
+  - Nuestra garantía de 6 meses/10.000 km le da tranquilidad.
+recommended_functions:
+- name: consultar estado de reparación
+  priority: high
+  reason: Más del 40% de las llamadas son para este fin. Libera tiempo crítico de
+    la recepción.
+- name: agendar cita
+  priority: high
+  reason: Fundamental para organizar el flujo de trabajo del taller y mejorar la experiencia
+    del cliente.
+- name: responder preguntas frecuentes (precios, plazos, garantía)
+  priority: medium
+  reason: Reduce llamadas repetitivas y permite dar información inmediata en ARS.
+- name: enviar recordatorios
+  priority: medium
+  reason: Aumenta la retención de clientes para service programado y VTV, generando
+    ingresos recurrentes.
+- name: derivar a especialista
+  priority: low
+  reason: Para consultas técnicas complejas que requieren intervención de un mecánico.
+- name: ofrecer servicios complementarios
+  priority: low
+  reason: Incrementa el ticket promedio mediante venta cruzada inteligente.
+sales_scripts:
+- goal: Convertir una consulta de precio en un turno agendado.
+  script: Entiendo que quiere conocer el precio para [servicio]. Para darle un presupuesto
+    preciso, necesito saber marca, modelo y año de su vehículo. Mientras lo consulta,
+    ¿le interesa agendar un turno tentativo? Tenemos disponibilidad para [día/periodo
+    sugerido].
+  situation: Cuando un cliente pregunta por el precio de un servicio específico.
+  trigger: price_question
+- goal: Fidelizar al cliente para el próximo service.
+  script: Veo en el sistema que su [marca/modelo] está próximo a los [XX,XXX] km para
+    el próximo service. Podemos programarlo ahora para asegurarle un turno conveniente.
+    ¿Le gustaría agendarlo?
+  situation: Al finalizar una consulta sobre el estado de una reparación actual.
+  trigger: post_status_check
+- goal: Promover un servicio de temporada (ej. cambio de cubiertas).
+  script: Estamos en temporada de cambio de cubiertas. Ofrecemos un check-up gratuito
+    del estado de sus neumáticos y alineación. ¿Le interesa reservar un turno para
+    la verificación?
+  situation: Durante los meses pico de cambio de cubiertas (abril-mayo, oct-nov).
+  trigger: seasonal_peak
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automatización del 60% de las consultas iniciales
+  - Reducción del 40% en la carga de la recepción
+  - Tasa de conversión a turno > 25%
+  - Satisfacción del cliente > 4.2/5
+typical_integrations:
+- examples:
+  - Tango Gestión
+  - Autoadmin
+  - WinSoftware para Talleres
+  name: Sistema de Gestión para Talleres
+  priority: high
+  reason: Consulta de órdenes de trabajo, stock de repuestos, historial del vehículo.
+- examples:
+  - Zoho CRM
+  - Salesforce
+  - Vortals
+  name: CRM
+  priority: medium
+  reason: Seguimiento de clientes, recordatorios de service, campañas de fidelización.
+- examples:
+  - Xiu8
+  - Avaya IP Office
+  name: Central Telefónica
+  priority: high
+  reason: Recepción y enrutamiento de llamadas, identificación del cliente.
+- examples:
+  - WhatsApp Business API
+  - SMS local
+  name: Mensajería
+  priority: medium
+  reason: Envío de recordatorios de turnos, notificaciones de que el auto está listo.
+- examples:
+  - Google Calendar
+  - Calendario integrado en el sistema de gestión
+  name: Calendario/Agenda
+  priority: medium
+  reason: Gestión de la disponibilidad de los boxes y mecánicos.
+typical_objections:
+- objection: Es muy caro.
+  response: Entiendo su preocupación. Nuestro precio incluye repuestos de calidad
+    y mano de obra certificada con garantía. Podemos analizar alternativas que se
+    ajusten a su presupuesto. ¿Le interesa que lo asesore un mecánico?
+- objection: Tardan mucho en atender.
+  response: Lamentamos la demora. La alta demanda a veces nos complica. Para mejorar
+    su experiencia, puedo agendarle un turno con anticipación en un horario específico.
+    ¿Cuándo le vendría bien?
+- objection: ¿Por qué debería ir con ustedes y no con un taller de barrio más barato?
+  response: La diferencia está en la garantía por escrito, el diagnóstico con equipos
+    modernos y el historial digital de su auto. Invertir en un servicio profesional
+    hoy puede evitar costos mayores mañana.
+typical_services:
+- Service periódico (cambio de aceite y filtros)
+- Diagnóstico computarizado
+- Reparación de motor
+- Reparación de frenos y suspensión
+- Reparación de tren delantero (alineación y balanceo)
+- Reparación de sistema eléctrico y de climatización
+- Cambio y reparación de cubiertas
+- Verificación Técnica Vehicular (VTV)
+- Chapa y pintura
+- Detailing y limpieza integral
+- Venta de autos usados
+- Gestión de patentamiento y transferencias
+_extends: _base/automotive

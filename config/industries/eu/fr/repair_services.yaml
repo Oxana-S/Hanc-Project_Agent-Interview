@@ -1,0 +1,216 @@
+pain_points:
+- description: Les rendez-vous manqués ou les clients qui ne se présentent pas, causant des pertes de temps et de revenus.
+  severity: high
+  solution_hint: L'agent vocal peut envoyer des rappels automatiques par SMS et appels, et gérer les confirmations de rendez-vous.
+- description: Difficulté à gérer les appels entrants pendant les heures de pointe, ce qui entraîne des clients insatisfaits et des ventes perdues.
+  severity: high
+  solution_hint: L'agent peut répondre 24/7, qualifier les leads, et planifier des rendez-vous directement dans l'agenda.
+- description: Suivi manuel et chronophage des pièces détachées et du stock, conduisant à des erreurs et des retards.
+  severity: medium
+  solution_hint: L'agent peut s'intégrer au logiciel de gestion pour fournir des mises à jour de stock et alerter sur les ruptures.
+- description: Manque de transparence pour le client sur l'état d'avancement de la réparation, générant des appels répétitifs.
+  severity: medium
+  solution_hint: L'agent peut fournir des mises à jour automatisées par canal préféré du client (SMS, appel, email).
+- description: Complexité administrative liée au respect du RGPD pour la gestion des données clients (coordonnées, historiques de réparation).
+  severity: medium
+  solution_hint: L'agent est conçu pour être conforme RGPD par défaut, avec gestion sécurisée des données et droits d'oubli automatisés.
+- description: Difficulté à fidéliser la clientèle et à générer des rendez-vous de suivi ou d'entretien préventif.
+  severity: low
+  solution_hint: L'agent peut planifier des rappels automatiques pour l'entretien et proposer des offres personnalisées basées sur l'historique.
+typical_services:
+- Dépannage et réparation d'électroménager
+- Réparation de smartphone et tablette
+- Réparation informatique (PC, ordinateur portable)
+- Réparation de petit outillage électroportatif
+- Réparation de vélo (mécanique et électrique)
+- Réparation automobile basique (dépannage, remplacement de pièces simples)
+- Dépannage urgent à domicile
+- Diagnostic et devis gratuit
+- Maintenance préventive et entretien
+- Vente et pose de pièces détachées
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Résout directement le point de douleur majeur des rendez-vous manqués et optimise l'emploi du temps des techniciens.
+- name: Rappels et confirmations de RDV
+  priority: high
+  reason: Réduit significativement les taux de 'no-show' et améliore l'expérience client.
+- name: Qualification des leads et collecte d'informations
+  priority: medium
+  reason: Permet de prioriser les urgences, de préparer le technicien et d'améliorer le taux de conversion des appels.
+- name: Mises à jour de statut automatisées
+  priority: medium
+  reason: Réduit la charge d'appels de suivi du standard et renforce la transparence pour le client.
+- name: Gestion des paiements et relances
+  priority: low
+  reason: Peut automatiser les rappels pour les règlements en attente, améliorant ainsi la trésorerie.
+- name: Enquête de satisfaction post-réparation
+  priority: low
+  reason: Permet de recueillir des avis et d'identifier les problèmes récurrents sans effort manuel.
+typical_integrations:
+- name: Logiciel de gestion d'atelier/SAV
+  examples:
+  - Cegid
+  - CDG Services
+  - Gestmax
+  - logiciels métiers spécifiques
+  priority: high
+- name: Système de point de vente (caisse)
+  examples:
+  - SumUp
+  - Lightspeed
+  - solutions locales de banque
+  priority: medium
+- name: Agenda en ligne (Calendrier)
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: high
+- name: Logiciel de comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - Quadratus
+  - QuickBooks
+  priority: low
+- name: Plateforme de livraison de pièces
+  examples:
+  - Mister Auto
+  - Auto-Doc
+  - plateformes B2B spécialisées
+  priority: low
+industry_faq:
+- question: Quels sont vos horaires d'ouverture et proposez-vous le dépannage urgent ?
+  answer_template: Notre standard téléphonique est joignable 24h/24 et 7j/7 pour planifier une intervention. Pour les urgences, nous pouvons souvent organiser un dépannage le jour même ou le lendemain selon
+    la disponibilité de nos techniciens.
+- question: Proposez-vous une garantie sur vos réparations ?
+  answer_template: Oui, toutes nos réparations sont garanties [X] mois sur la main d'œuvre et les pièces neuves que nous posons. Le détail vous sera fourni sur le devis et la facture.
+- question: Comment est établi le prix d'une réparation ?
+  answer_template: Le prix comprend le coût des pièces détachées, la main d'œuvre au forfait ou à l'heure, et les éventuels frais de déplacement. Un devis détaillé et gratuit vous est toujours soumis avant
+    toute intervention.
+- question: Combien de temps prend généralement une réparation ?
+  answer_template: Cela dépend fortement de la panne et de la disponibilité des pièces. Un diagnostic initial est souvent rapide. Pour les réparations courantes, comptez généralement entre 1 heure et une
+    journée. Nous vous tiendrons informé de l'avancement.
+- question: Acceptez-vous les cartes bleues et autres moyens de paiement ?
+  answer_template: Oui, nous acceptons les paiements par carte bancaire, espèces, et parfois chèque. Les virements sont possibles pour les professionnels. Le paiement est dû à la fin de l'intervention.
+- question: Êtes-vous conforme au RGPD pour la gestion de mes données ?
+  answer_template: Absolument. Nous traitons vos données (coordonnées, historique) uniquement pour la gestion de votre dossier de réparation et en stricte conformité avec le Règlement Général sur la Protection
+    des Données (RGPD). Vous pouvez exercer vos droits à tout moment.
+sales_scripts:
+- trigger: service_inquiry
+  situation: Un client appelle pour se renseigner sur un service de réparation spécifique.
+  script: Bonjour et merci d'avoir contacté [Nom de l'entreprise]. Je suis [Nom de l'agent], votre assistant vocal. Pour vous orienter vers le bon expert, pouvez-vous me décrire brièvement l'appareil en
+    panne et le problème rencontré ?
+  goal: Qualifier la demande et collecter les informations de base pour un routage efficace ou une programmation de rendez-vous.
+- trigger: price_question
+  situation: Le client demande un prix estimatif au téléphone.
+  script: Je comprends votre besoin de transparence sur les tarifs. Pour une estimation précise, nos techniciens ont besoin d'un diagnostic. Ce dernier est gratuit et sans engagement. Puis-je vous proposer
+    un créneau pour que l'un de nos experts examine votre appareil et vous établisse un devis clair ?
+  goal: Convertir une question sur le prix en une opportunité de diagnostic/rendez-vous gratuit.
+- trigger: availability_request
+  situation: Le client demande la première disponibilité pour une réparation.
+  script: Parfait, je peux consulter les agendas de nos techniciens en temps réel. Pour trouver le créneau idéal, quelle est votre disponibilité cette semaine ? Préférez-vous le matin ou l'après-midi ?
+  goal: Programmer un rendez-vous de manière efficace et conviviale, en réduisant les allers-retours.
+- trigger: objection_competitor
+  situation: Le client mentionne qu'il a déjà un réparateur ou compare avec un concurrent.
+  script: C'est tout à fait normal de comparer. Ce qui nous distingue chez [Nom de l'entreprise], c'est notre assistant disponible 24/7 pour vos urgences, nos mises à jour transparentes sur l'état de votre
+    réparation, et notre garantie satisfait ou remboursé sur la main d'œuvre. Souhaitez-vous tester notre service avec un diagnostic gratuit et sans engagement ?
+  goal: Mettre en avant nos différenciateurs clés (service client, garantie, transparence) et inciter à un premier contact à faible risque.
+competitors:
+- name: Réparateurs indépendants / Artisans locaux
+  positioning: Service personnalisé de proximité, prix souvent compétitifs.
+  strengths:
+  - Relation de confiance directe
+  - Flexibilité
+  - Prix parfois bas
+  - Expertise très locale
+  weaknesses:
+  - Disponibilité limitée (pas de standard 24/7)
+  - Processus manuel (RDV, suivi)
+  - Garanties parfois limitées
+  - Peu de transparence sur l'avancement
+  our_differentiation: 'Nous combinons le relationnel humain avec l''efficacité technologique : standard 24/7, suivi automatisé transparent, et garanties solides, tout en restant un partenaire de proximité.'
+- name: 'Enseignes nationales (ex : Electro Dépôt, But, réseaux spécialisés)'
+  positioning: Service après-vente intégré aux grandes surfaces, visibilité nationale.
+  strengths:
+  - Notoriété
+  - Infrastructure
+  - Parfois atelier sur place
+  - Gammes de services larges
+  weaknesses:
+  - Files d'attente longues au téléphone
+  - Service parfois impersonnel
+  - Délais souvent plus longs
+  - Manque de flexibilité
+  our_differentiation: Nous offrons un service réactif et personnalisé avec des temps d'attente au téléphone nuls, une communication proactive et des créneaux de dépannage plus rapides.
+- name: 'Plateformes de mise en relation (ex : AlloVoisins, Sherpa)'
+  positioning: Marketplace connectant clients et réparateurs freelances.
+  strengths:
+  - Choix et comparaison
+  - Facilité de prise de contact initiale
+  - Avis clients
+  weaknesses:
+  - Qualité et fiabilité variables
+  - Absence de suivi de dossier unifié
+  - Relation client indirecte
+  - Support après-réparation limité
+  our_differentiation: Nous sommes une entreprise identifiée, responsable de tout le processus de A à Z, avec un interlocuteur unique (notre agent et nos techniciens) et une garantie directe sur l'ensemble
+    du service.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 49
+  - 500
+  entry_point: '79'
+  roi_examples:
+  - scenario: Atelier avec 2 techniciens, perdant 5h/semaine en gestion d'appels et rendez-vous manqués.
+    monthly_cost: '99'
+    monthly_savings: '600'
+    payback_months: 1
+  value_anchors:
+  - Récupérez 10h de temps administratif par mois pour vous concentrer sur votre cœur de métier.
+  - Réduisez les rendez-vous manqués de 70% avec des rappels automatisés.
+  - Augmentez votre taux de conversion d'appels en leads qualifiés de 40%.
+market_context:
+  market_size: Plusieurs milliards d'euros (marché fragmenté incluant électroménager, électronique, automobile légère, etc.)
+  growth_rate: Stable à légèrement croissant, tiré par l'obsolescence programmée et la demande de réparation durable.
+  key_trends:
+  - Demande croissante pour la réparation durable (anti-gaspi) et l'économie circulaire.
+  - Attente forte de digitalisation et de transparence sur le suivi des réparations.
+  - Pénurie de main d'œuvre qualifiée, nécessitant une optimisation des processus existants.
+  - Développement des services d'abonnement pour l'entretien préventif.
+  seasonality:
+    high:
+    - Septembre (rentrée)
+    - Période pré-fêtes (Nov-Dec)
+    - Printemps (bricolage)
+    low:
+    - Août (vacances d'été)
+    - Début janvier
+typical_objections:
+- objection: C'est trop cher pour mon petit atelier.
+  response: Je comprends. Notre solution est justement conçue pour les TPE comme la vôtre. Pour moins de 3€ par jour, elle peut vous faire gagner plusieurs heures de gestion et réduire les rendez-vous manqués.
+    Pouvons-nous calculer ensemble ce que vous coûtent actuellement les appels manqués et les créneaux vides ?
+- objection: Je préfère gérer mes clients moi-même, le contact humain est important.
+  response: Tout à fait, le relationnel est crucial. Notre agent ne le remplace pas, il le renforce. Il gère les tâches répétitives (prise de RDV, rappels) pour vous libérer du temps. Ainsi, vous pouvez
+    vous concentrer sur le contact de qualité lors du diagnostic et de la réparation elle-même. C'est un assistant, pas un remplacement.
+- objection: Je ne suis pas très à l'aise avec la technologie.
+  response: C'est une inquiétude fréquente et normale. La beauté de notre solution est qu'elle ne nécessite aucune compétence technique de votre part. Vous parlez à l'agent comme à un standardiste. L'installation
+    et la configuration sont entièrement prises en charge par nos soins. Nous vous formons en 30 minutes.
+- objection: J'ai déjà un système, même s'il n'est pas parfait.
+  response: C'est un bon point de départ. L'avantage de notre agent est qu'il peut très probablement s'intégrer à votre outil actuel (agenda, logiciel de gestion) pour l'améliorer, sans tout chambouler.
+    Pouvons-nous examiner vos processus pour voir où il pourrait apporter un gain immédiat avec un minimum de changement ?
+meta:
+  id: repair_services
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- repair services
+- service center
+- phone repair
+- tech repair
+_extends: _base/repair_services

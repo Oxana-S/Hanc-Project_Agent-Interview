@@ -1,0 +1,229 @@
+pain_points:
+- description: Alto estrés emocional para las familias durante el proceso de planificación,
+    lo que dificulta la toma de decisiones.
+  severity: high
+  solution_hint: El agente de voz IA puede ofrecer respuestas compasivas y guiar a
+    las familias paso a paso, reduciendo la carga emocional.
+- description: Carga administrativa pesada con trámites burocráticos y documentación
+    requerida por autoridades locales y sanitarias.
+  severity: high
+  solution_hint: Automatizar la recopilación de datos y recordatorios para documentos,
+    integrando con sistemas gubernamentales.
+- description: Presión de costos creciente debido a la competencia y expectativas
+    de precios bajos por parte de los clientes.
+  severity: medium
+  solution_hint: El agente puede proporcionar opciones de servicios claras y transparentes,
+    ayudando a educar sobre el valor.
+- description: Dificultad para gestionar citas y coordinación con proveedores externos
+    como floristerías o cementerios.
+  severity: medium
+  solution_hint: Programar citas automáticamente y sincronizar con calendarios, mejorando
+    la eficiencia operativa.
+- description: Cambios en las preferencias de los consumidores hacia opciones más
+    personalizadas y servicios digitales.
+  severity: medium
+  solution_hint: Ofrecer asesoramiento personalizado a través del agente y facilitar
+    opciones en línea como memoriales virtuales.
+- description: Cumplimiento normativo complejo, incluyendo GDPR para el manejo de
+    datos personales de clientes.
+  severity: high
+  solution_hint: Asegurar que el agente siga protocolos de privacidad, con consentimiento
+    explícito y eliminación segura de datos.
+- description: Baja adopción de tecnología en algunas empresas familiares, lo que
+    limita la eficiencia y alcance.
+  severity: low
+  solution_hint: Demostrar casos de éxito y ROI con soluciones fáciles de usar, incentivando
+    la modernización.
+typical_services:
+- Organización de funerales completos
+- Servicios de cremación
+- Servicios de inhumación
+- Transporte funerario
+- Gestión de documentación y permisos
+- Servicios de capilla ardiente
+- Asesoramiento en duelo
+- Servicios florales
+- Catering para velatorios
+- Memoriales virtuales y en línea
+recommended_functions:
+- name: Programación de citas
+  priority: high
+  reason: Reduce la carga administrativa y mejora la experiencia del cliente al agilizar
+    la planificación.
+- name: Respuesta a preguntas frecuentes
+  priority: high
+  reason: Proporciona información inmediata y compasiva, liberando tiempo del personal
+    para tareas críticas.
+- name: Calificación de leads
+  priority: medium
+  reason: Identifica clientes potenciales y prioriza seguimientos, optimizando esfuerzos
+    de ventas.
+- name: Procesamiento de pagos
+  priority: medium
+  reason: Facilita transacciones seguras y rápidas, mejorando la satisfacción del
+    cliente.
+- name: Llamadas de seguimiento
+  priority: low
+  reason: Mantiene la conexión con las familias después del servicio, ofreciendo apoyo
+    continuo.
+- name: Recopilación de datos con consentimiento
+  priority: high
+  reason: Asegura el cumplimiento del GDPR y mejora la personalización de servicios.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - soluciones locales como Axxon
+  priority: high
+- name: Software contable
+  examples:
+  - Sage
+  - Contaplus
+  - A3Software
+  priority: medium
+- name: Bases de datos gubernamentales
+  examples:
+  - Registro Civil digital
+  - sistemas sanitarios autonómicos
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - Redsys
+  - PayPal
+  - Stripe
+  priority: medium
+- name: Plataformas de sitios web
+  examples:
+  - WordPress
+  - Joomla
+  - soluciones locales como Dinahosting
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los costos típicos de un funeral en España?
+  answer_template: Los costos varían según los servicios elegidos, desde alrededor
+    de 1.500 EUR para opciones básicas hasta más de 5.000 EUR para paquetes completos.
+    Podemos proporcionar un presupuesto personalizado sin compromiso.
+- question: ¿Qué documentación necesito para organizar un funeral?
+  answer_template: Generalmente se requiere el certificado de defunción, DNI del fallecido,
+    y permisos del cementerio o crematorio. Le ayudaremos a gestionar todo paso a
+    paso.
+- question: ¿Ofrecen servicios de cremación y cuánto tiempo tarda?
+  answer_template: Sí, ofrecemos servicios de cremación. El proceso suele tardar de
+    24 a 48 horas después de obtener los permisos necesarios, dependiendo de la ubicación.
+- question: ¿Pueden ayudar con memoriales en línea?
+  answer_template: Absolutamente. Proporcionamos memoriales virtuales para compartir
+    recuerdos y condolencias, integrados con nuestras plataformas digitales.
+- question: ¿Cómo manejan la privacidad de los datos personales?
+  answer_template: Cumplimos estrictamente con el GDPR, obteniendo consentimiento
+    explícito y protegiendo toda la información con medidas de seguridad avanzadas.
+- question: ¿Hay opciones de pago a plazos disponibles?
+  answer_template: Sí, ofrecemos planes de pago flexibles para adaptarnos a sus necesidades
+    financieras, con opciones desde pagos únicos hasta cuotas mensuales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios durante una llamada inicial.
+  script: Entendemos que los costos son una preocupación importante. Nuestros servicios
+    parten desde 1.500 EUR, con opciones personalizadas para ajustarse a su presupuesto.
+    ¿Puedo guiarle a través de nuestras opciones para encontrar la mejor solución?
+  goal: Convertir la consulta en una conversación sobre valor y personalización, no
+    solo precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente solicita información sobre servicios específicos como
+    cremación.
+  script: Gracias por su interés. Ofrecemos servicios de cremación completos, incluyendo
+    transporte y documentación, con precios desde 2.000 EUR. ¿Le gustaría que le explique
+    el proceso paso a paso?
+  goal: Educar al cliente sobre los servicios y destacar nuestra experiencia.
+- trigger: follow_up
+  situation: Después de un contacto inicial para reenganchar a un cliente indeciso.
+  script: Hola, le llamo de [Nombre Empresa] para ver si tiene alguna duda sobre nuestros
+    servicios. Queremos asegurarnos de que tenga toda la información necesaria en
+    este momento difícil.
+  goal: Mantener el contacto y ofrecer apoyo adicional para cerrar la venta.
+competitors:
+- name: Funespaña
+  positioning: Cadena nacional con amplia cobertura y servicios estandarizados.
+  strengths:
+  - Gran presencia geográfica
+  - Precios competitivos
+  - Servicios integrales
+  weaknesses:
+  - Menos personalización
+  - Procesos burocráticos lentos
+  our_differentiation: Ofrecemos un enfoque más personalizado y compasivo, con tecnología
+    para agilizar trámites.
+- name: Grupo Mémora
+  positioning: Empresa líder en servicios funerarios con enfoque en innovación.
+  strengths:
+  - Tecnología avanzada
+  - Servicios premium
+  - Buena reputación
+  weaknesses:
+  - Precios más altos
+  - Menos accesible para presupuestos bajos
+  our_differentiation: Combinamos calidad con precios más accesibles y soporte humano
+    mejorado por IA.
+- name: Funerarias locales independientes
+  positioning: Empresas familiares con fuerte arraigo comunitario.
+  strengths:
+  - Atención personalizada
+  - Confianza local
+  - Flexibilidad
+  weaknesses:
+  - Recursos limitados
+  - Tecnología obsoleta
+  our_differentiation: Aportamos la calidez del trato local con la eficiencia de herramientas
+    digitales modernas.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1500
+  - 8000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Automatización de programación de citas para una funeraria mediana
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Reduzca el tiempo administrativo en un 30% con nuestra solución de IA.
+  - Mejore la satisfacción del cliente con respuestas inmediatas las 24/7.
+  - Cumpla con el GDPR sin esfuerzo adicional en el manejo de datos.
+market_context:
+  market_size: Estimado en 1.500 millones EUR anuales en España
+  growth_rate: 2-3% anual, impulsado por el envejecimiento de la población
+  key_trends:
+  - Aumento en la preferencia por la cremación sobre el entierro tradicional
+  - Digitalización de servicios, como memoriales en línea y planificación previa
+  - Mayor demanda de personalización y ceremonias no religiosas
+  seasonality:
+    high:
+    - Invierno (debido a factores de salud)
+    - Periodos festivos como Navidad
+    low:
+    - Verano (vacaciones, menor actividad)
+typical_objections:
+- objection: Es demasiado caro para nuestro presupuesto.
+  response: Entendemos su preocupación. Ofrecemos opciones escalables y planes de
+    pago flexibles. ¿Podemos explorar un paquete básico que se ajuste a sus necesidades?
+- objection: Prefiero el trato humano directo, no una máquina.
+  response: Nuestro agente de voz IA complementa al equipo humano, liberándolos para
+    un trato más personal en momentos clave. Es una herramienta de apoyo, no un reemplazo.
+- objection: Ya tenemos procesos establecidos y no necesitamos cambios.
+  response: La tecnología puede optimizar esos procesos, ahorrando tiempo y reduciendo
+    errores. Podemos empezar con una prueba sin riesgo para demostrar el valor.
+meta:
+  id: funeral
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

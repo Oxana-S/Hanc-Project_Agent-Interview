@@ -1,0 +1,172 @@
+pain_points:
+- description: Alta dependencia en combustibles fósiles, aumentando costos y emisiones.
+  severity: high
+  solution_hint: El agente de voz puede educar sobre alternativas renovables y calcular ahorros.
+- description: Infraestructura eléctrica obsoleta, causando interrupciones frecuentes.
+  severity: high
+  solution_hint: El agente puede programar mantenimientos preventivos y notificar cortes.
+- description: Regulación compleja bajo la LFPDPPP y normas de la CRE, dificultando el cumplimiento.
+  severity: medium
+  solution_hint: El agente puede ofrecer recordatorios y guías sobre requisitos legales.
+- description: Fluctuaciones en precios de la energía, afectando la predictibilidad de costos.
+  severity: medium
+  solution_hint: El agente puede monitorear tarifas y sugerir planes de contratación optimizados.
+- description: Baja eficiencia energética en instalaciones, llevando a desperdicios.
+  severity: medium
+  solution_hint: El agente puede recomendar auditorías y tecnologías de ahorro.
+- description: Desconfianza en nuevas tecnologías como energías renovables, por falta de información.
+  severity: low
+  solution_hint: El agente puede proporcionar casos de éxito locales y demostraciones virtuales.
+typical_services:
+- Generación de energía eléctrica
+- Distribución y transmisión de energía
+- Comercialización de energía al mayoreo
+- Instalación de paneles solares
+- Servicios de eficiencia energética
+- Mantenimiento de subestaciones y redes
+- Consultoría en regulación energética
+- Sistemas de almacenamiento de energía
+- Monitoreo y gestión de consumo
+- Soluciones de cogeneración
+recommended_functions:
+- name: Asistente de servicio al cliente para facturación y cortes
+  priority: high
+  reason: Maneja consultas frecuentes sobre pagos y fallas, mejorando la satisfacción.
+- name: Educador en energías renovables y ahorro
+  priority: high
+  reason: Informa a clientes sobre opciones sostenibles, impulsando adopción.
+- name: Programador de mantenimientos preventivos
+  priority: medium
+  reason: Reduce fallas en infraestructura mediante recordatorios automatizados.
+- name: Monitor de precios y tarifas energéticas
+  priority: medium
+  reason: Ayuda a empresas a optimizar contratos y predecir costos.
+- name: Asistente para cumplimiento regulatorio LFPDPPP
+  priority: low
+  reason: Facilita el seguimiento de leyes locales, evitando multas.
+typical_integrations:
+- name: Sistemas de gestión energética (EMS)
+  examples:
+  - Sistemas de CFE
+  - plataformas como EnergyCAP adaptadas para México
+  priority: high
+- name: Software de facturación y CRM
+  examples:
+  - SAP para energía
+  - sistemas locales como Contpaq i
+  priority: high
+- name: Plataformas de monitoreo de redes eléctricas
+  examples:
+  - SCADA
+  - sistemas de Schneider Electric en México
+  priority: medium
+- name: Herramientas de análisis de datos
+  examples:
+  - Tableau con datos de la CRE
+  - Power BI con fuentes locales
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo reducir mi factura de luz en México?
+  answer_template: Te recomendamos auditar tu consumo, instalar paneles solares o negociar tarifas con comercializadores. Podemos ayudarte con un plan personalizado.
+- question: ¿Qué requisitos legales debo cumplir bajo la LFPDPPP para mi negocio energético?
+  answer_template: Debes proteger datos de clientes, notificar breaches, y obtener consentimientos. Nuestro agente puede guiarte paso a paso.
+- question: ¿Es confiable la energía solar en mi región de México?
+  answer_template: Sí, especialmente en zonas soleadas como el norte. Podemos evaluar tu ubicación y ofrecer garantías de rendimiento.
+- question: ¿Cómo manejo interrupciones eléctricas frecuentes?
+  answer_template: Considera sistemas de respaldo como generadores o baterías. Podemos programar mantenimientos y alertarte de cortes.
+- question: ¿Qué ventajas tienen los contratos de energía al mayoreo?
+  answer_template: Ofrecen precios estables y flexibilidad. Te ayudamos a comparar ofertas de comercializadores autorizados.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta sobre el costo de nuestros servicios.
+  script: Nuestros servicios comienzan desde 5000 MXN mensuales, con ahorros potenciales de hasta un 30% en tu factura. ¿Te gustaría una cotización detallada?
+  goal: Convertir la consulta en una cita de ventas.
+- trigger: efficiency_concern
+  situation: Cuando el cliente menciona altos costos de energía.
+  script: Entiendo que la eficiencia es clave. Ofrecemos auditorías gratuitas que identifican puntos de ahorro, como iluminación LED o optimización de equipos.
+  goal: Demostrar valor y programar una auditoría.
+- trigger: renewable_interest
+  situation: Cuando el cliente expresa interés en energías renovables.
+  script: Excelente decisión. En México, la energía solar tiene incentivos fiscales. Podemos diseñar un sistema que reduzca tu dependencia de la CFE.
+  goal: Cerrar una venta de instalación renovable.
+competitors:
+- name: CFE (Comisión Federal de Electricidad)
+  positioning: Monopolio estatal en distribución y generación tradicional.
+  strengths:
+  - Infraestructura amplia
+  - precios regulados
+  - reconocimiento de marca
+  weaknesses:
+  - Ineficiencias operativas
+  - servicio al cliente lento
+  - poca innovación
+  our_differentiation: Ofrecemos soluciones personalizadas, rápido servicio, y enfoque en eficiencia y renovables.
+- name: Iberdrola México
+  positioning: Multinacional líder en energías renovables y generación privada.
+  strengths:
+  - Tecnología avanzada
+  - experiencia global
+  - portafolio diverso
+  weaknesses:
+  - Precios más altos
+  - menos adaptación local
+  our_differentiation: Precios más competitivos, atención localizada, y integración con normativas mexicanas.
+- name: Enel Green Power México
+  positioning: Especialista en proyectos eólicos y solares a gran escala.
+  strengths:
+  - Enfoque en sostenibilidad
+  - capacidad de inversión fuerte
+  weaknesses:
+  - Menos opciones para PYMEs
+  - procesos burocráticos
+  our_differentiation: Enfoque en PYMEs y soluciones escalables, con soporte en español y moneda MXN.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 10000
+  - 200000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Instalación de paneles solares para una pequeña empresa.
+    monthly_cost: 15000
+    monthly_savings: 23300
+    payback_months: 18
+  value_anchors:
+  - Reduce tu consumo energético en un 20% con nuestras soluciones.
+  - Ahorra hasta 50000 MXN anuales en multas por incumplimiento regulatorio.
+market_context:
+  market_size: Estimado en 500 mil millones MXN anuales
+  growth_rate: 8% anual
+  key_trends:
+  - Aumento en la adopción de energías renovables por incentivos gubernamentales.
+  - Digitalización de redes eléctricas para mejorar eficiencia.
+  - Mayor participación privada en generación tras reformas energéticas.
+  seasonality:
+    high:
+    - verano
+    - por alta demanda de aire acondicionado
+    low:
+    - invierno en algunas regiones
+    - por menor actividad industrial
+typical_objections:
+- objection: Es muy caro para mi negocio.
+  response: Los ahorros a largo plazo suelen superar la inversión inicial. Podemos empezar con un plan escalable desde 5000 MXN.
+- objection: Ya trabajo con CFE y no quiero cambios.
+  response: Entendemos. Podemos complementar sus servicios con eficiencias que reduzcan costos sin cambiar proveedor.
+- objection: No confío en tecnologías nuevas.
+  response: Te mostramos casos de éxito en México y ofrecemos garantías. La transición es gradual y segura.
+meta:
+  id: energy
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- energy
+- solar
+- renewable
+- power
+- utilities
+_extends: _base/energy

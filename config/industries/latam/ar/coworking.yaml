@@ -1,0 +1,173 @@
+pain_points:
+- description: Alto costo de alquiler en zonas céntricas de Buenos Aires y otras ciudades grandes.
+  severity: high
+  solution_hint: Nuestro agente de voz IA puede ayudar a optimizar la ocupación del espacio y sugerir planes flexibles para reducir costos fijos.
+- description: Baja ocupación en horas no pico, especialmente en fines de semana.
+  severity: medium
+  solution_hint: El agente puede promover ofertas especiales para horarios flexibles y gestionar reservas en tiempo real.
+- description: Dificultad en la gestión administrativa, como facturación y seguimiento de pagos en pesos argentinos.
+  severity: high
+  solution_hint: Automatizar procesos con IA para emitir facturas, recordatorios de pago y reportes en ARS.
+- description: Competencia creciente de espacios de coworking locales e internacionales.
+  severity: medium
+  solution_hint: Usar IA para analizar tendencias del mercado y personalizar ofertas competitivas.
+- description: Inestabilidad económica que afecta los presupuestos de freelancers y startups.
+  severity: high
+  solution_hint: Ofrecer planes escalables y asesoramiento financiero a través del agente para adaptarse a fluctuaciones.
+- description: Falta de servicios personalizados para necesidades específicas, como eventos o networking.
+  severity: low
+  solution_hint: El agente puede recomendar servicios adicionales y conectar miembros basado en sus perfiles.
+typical_services:
+- Escritorio compartido
+- Oficina privada
+- Sala de reuniones por hora
+- Espacio para eventos
+- Acceso 24/7
+- Servicios de recepción virtual
+- Conexión a internet de alta velocidad
+- Cafetería y áreas comunes
+- Servicios de impresión y copiado
+- Programas de networking y comunidad
+recommended_functions:
+- name: Reserva de espacios
+  priority: high
+  reason: Esencial para gestionar la ocupación y maximizar el uso del espacio en tiempo real.
+- name: Gestión de pagos y facturación
+  priority: high
+  reason: Facilita transacciones en ARS y reduce la carga administrativa.
+- name: Atención al cliente 24/7
+  priority: medium
+  reason: Mejora la experiencia del usuario al responder consultas fuera de horario laboral.
+- name: Recomendación de servicios
+  priority: medium
+  reason: Aumenta las ventas cruzadas al sugerir servicios basados en el perfil del cliente.
+- name: Seguimiento de leads y ventas
+  priority: low
+  reason: Ayuda a convertir prospectos en miembros mediante recordatorios personalizados.
+typical_integrations:
+- name: Sistema de gestión de espacios
+  examples:
+  - Coworking Manager
+  - OfficeRnD
+  priority: high
+- name: Plataforma de pagos locales
+  examples:
+  - MercadoPago
+  - TodoPago
+  priority: high
+- name: CRM
+  examples:
+  - Zoho CRM
+  - Salesforce
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business
+  - Slack
+  priority: medium
+industry_faq:
+- question: ¿Cuánto cuesta un escritorio compartido en ARS?
+  answer_template: Nuestros planes comienzan desde [insertar precio] ARS por mes, con opciones flexibles según la ubicación y servicios incluidos.
+- question: ¿Ofrecen descuentos para startups o freelancers?
+  answer_template: Sí, tenemos programas especiales con descuentos y planes escalables. Puedo ayudarte a encontrar la mejor opción según tu presupuesto.
+- question: ¿Puedo acceder al espacio las 24 horas?
+  answer_template: Depende del plan seleccionado. Algunos incluyen acceso 24/7, mientras que otros tienen horarios limitados. Te explico las opciones disponibles.
+- question: ¿Cómo manejan los pagos en un contexto inflacionario?
+  answer_template: Ofrecemos precios en ARS con ajustes predefinidos y planes a corto plazo para mayor flexibilidad. También aceptamos pagos en cuotas.
+- question: ¿Organizan eventos de networking?
+  answer_template: Sí, regularmente organizamos eventos para la comunidad. Puedo informarte sobre los próximos y cómo inscribirte.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta sobre precios por teléfono.
+  script: ¡Hola! Entiendo que buscas información sobre precios. Nuestros planes están diseñados para adaptarse a tu presupuesto en ARS. Por ejemplo, un escritorio compartido parte desde [insertar precio]
+    al mes. ¿Te gustaría que te explique las opciones disponibles según tus necesidades?
+  goal: Convertir la consulta en una conversación sobre valor y necesidades específicas.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor como WeWork.
+  script: Gracias por la pregunta. Si bien [competidor] es una opción, nosotros nos enfocamos en ofrecer un ambiente más personalizado y servicios locales en ARS, con mayor flexibilidad en contratos. ¿Qué
+    es lo más importante para ti en un espacio de coworking?
+  goal: Diferenciar nuestra oferta y redirigir la conversación a beneficios únicos.
+- trigger: free_trial_request
+  situation: Cuando un cliente solicita una prueba gratuita.
+  script: Claro, ofrecemos una prueba de [número] días para que experimentes nuestro espacio. ¿Podría ayudarte a agendar una visita o preferirías que te envíe más información por correo?
+  goal: Capturar datos del lead y fomentar una visita o compromiso.
+competitors:
+- name: WeWork Argentina
+  positioning: Líder global con presencia en zonas premium.
+  strengths:
+  - Marca reconocida
+  - Espacios diseñados
+  - Red internacional
+  weaknesses:
+  - Precios altos en ARS
+  - Menor flexibilidad local
+  our_differentiation: Ofrecemos precios más competitivos en ARS, contratos más flexibles y un enfoque comunitario local.
+- name: La Maquinita
+  positioning: Cadena local enfocada en emprendedores.
+  strengths:
+  - Precios accesibles
+  - Comunidad activa
+  - Varias ubicaciones
+  weaknesses:
+  - Servicios limitados
+  - Menor tecnología integrada
+  our_differentiation: Contamos con tecnología IA para mejorar la experiencia y servicios personalizados avanzados.
+- name: Urban Station
+  positioning: Espacios de coworking en ubicaciones estratégicas.
+  strengths:
+  - Buena ubicación
+  - Diseño moderno
+  weaknesses:
+  - Ocupación variable
+  - Menor atención al cliente
+  our_differentiation: Proporcionamos atención 24/7 con agente de voz IA y gestión optimizada del espacio.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 15000
+  - 80000
+  entry_point: 20000
+  roi_examples:
+  - scenario: Un freelancer que reduce costos de oficina propia.
+    monthly_cost: 25000
+    monthly_savings: 45800
+    payback_months: 3
+  value_anchors:
+  - Ahorra hasta un 30% en costos operativos comparado con una oficina tradicional.
+  - Flexibilidad total con contratos mensuales en ARS, ideal para la economía local.
+market_context:
+  market_size: Estimado en 50 millones de USD anuales en Argentina
+  growth_rate: 10% YoY
+  key_trends:
+  - Aumento del trabajo remoto post-pandemia.
+  - Crecimiento de emprendimientos y startups locales.
+  - Demanda de espacios flexibles y asequibles en ARS.
+  seasonality:
+    high:
+    - Marzo a Junio
+    - Septiembre a Noviembre
+    low:
+    - Enero
+    - Julio
+typical_objections:
+- objection: Es muy caro para mi presupuesto en ARS.
+  response: Entiendo tu preocupación. Ofrecemos planes escalables y descuentos por compromisos a largo plazo. ¿Podría ayudarte a encontrar una opción que se ajuste mejor?
+- objection: Prefiero trabajar desde casa para ahorrar.
+  response: Trabajar desde casa tiene ventajas, pero en nuestro espacio disfrutas de mejor conectividad, networking y sin distracciones. Además, nuestros precios en ARS son competitivos considerando los
+    beneficios.
+- objection: Ya uso otro coworking y estoy satisfecho.
+  response: Me alegra que tengas una buena experiencia. Nosotros nos diferenciamos con tecnología IA para una gestión más eficiente y servicios personalizados. ¿Te interesaría conocer cómo podemos agregar
+    valor?
+meta:
+  id: coworking
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

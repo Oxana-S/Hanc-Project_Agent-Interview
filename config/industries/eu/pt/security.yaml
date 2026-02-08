@@ -1,0 +1,215 @@
+pain_points:
+- description: Custos elevados com pessoal de segurança, especialmente em horários
+    noturnos e fins de semana.
+  severity: high
+  solution_hint: O agente de voz AI pode automatizar agendamentos e reduzir custos
+    operacionais através de gestão eficiente.
+- description: Dificuldade em cumprir as regulamentações GDPR para proteção de dados
+    em sistemas de vigilância.
+  severity: high
+  solution_hint: O agente pode fornecer lembretes e orientações sobre conformidade
+    em tempo real.
+- description: Falta de mão-de-obra qualificada em cibersegurança no mercado português.
+  severity: medium
+  solution_hint: Oferecer suporte inicial via voz AI para questões básicas, liberando
+    especialistas para tarefas complexas.
+- description: Tempo de resposta lento em emergências devido a processos manuais de
+    notificação.
+  severity: medium
+  solution_hint: Automatizar alertas e comunicações para acelerar a resposta a incidentes.
+- description: Dificuldade em integrar sistemas de segurança física e digital de diferentes
+    fornecedores.
+  severity: medium
+  solution_hint: O agente pode facilitar a integração através de APIs e suporte técnico
+    vocal.
+- description: Alta rotatividade de clientes devido à falta de personalização nos
+    serviços.
+  severity: low
+  solution_hint: Usar AI para analisar preferências dos clientes e oferecer soluções
+    adaptadas.
+typical_services:
+- Vigilância eletrónica com câmaras CCTV
+- Segurança física com guardas particulares
+- Consultoria em cibersegurança
+- Instalação de sistemas de alarme
+- Monitorização remota 24/7
+- Proteção de dados e conformidade GDPR
+- Controlo de acessos e biometria
+- Formação em segurança para colaboradores
+- Auditorias de segurança
+- Resposta a incidentes e recuperação
+recommended_functions:
+- name: Agendamento de visitas técnicas
+  priority: high
+  reason: Reduz tempos de espera e melhora a eficiência operacional.
+- name: Suporte ao cliente para questões básicas
+  priority: high
+  reason: Libera a equipa humana para tarefas mais complexas e urgentes.
+- name: Vendas e captação de leads
+  priority: medium
+  reason: Aumenta a conversão através de interações personalizadas em tempo real.
+- name: Monitorização de alertas de segurança
+  priority: high
+  reason: Garante respostas rápidas a incidentes, melhorando a segurança.
+- name: Gestão de reclamações
+  priority: medium
+  reason: Melhora a satisfação do cliente com resoluções ágeis.
+- name: Lembretes de manutenção preventiva
+  priority: low
+  reason: Evita falhas nos sistemas e prolonga a vida útil dos equipamentos.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Primavera CRM
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Software de gestão de segurança
+  examples:
+  - Genetec
+  - Milestone
+  - LocalSafe PT
+  priority: high
+- name: Plataformas de comunicação
+  examples:
+  - Microsoft Teams
+  - Slack
+  - Zoom
+  priority: medium
+- name: Sistemas ERP
+  examples:
+  - Primavera
+  - SAP
+  - Microsoft Dynamics
+  priority: medium
+- name: Ferramentas de conformidade GDPR
+  examples:
+  - OneTrust
+  - TrustArc
+  - LocalGDPR Tool
+  priority: high
+industry_faq:
+- question: Quanto custa um sistema de segurança básico para uma pequena empresa?
+  answer_template: Os preços começam em torno de 500 EUR para instalação inicial,
+    com pacotes mensais a partir de 50 EUR para monitorização.
+- question: Como garantem a conformidade com o GDPR nos vossos serviços?
+  answer_template: Implementamos medidas como encriptação de dados e controlo de acessos,
+    com relatórios regulares de conformidade.
+- question: Oferecem suporte 24 horas por dia?
+  answer_template: Sim, temos monitorização e suporte contínuos, com resposta em menos
+    de 5 minutos para emergências.
+- question: Podem integrar os vossos sistemas com o nosso software existente?
+  answer_template: Sim, trabalhamos com APIs abertas e podemos personalizar integrações
+    com sistemas como CRM ou ERP.
+- question: Quais são os prazos típicos para instalação?
+  answer_template: A instalação padrão demora 2-3 dias úteis, dependendo da complexidade
+    do projeto.
+- question: Há descontos para contratos de longo prazo?
+  answer_template: Sim, oferecemos descontos progressivos para contratos anuais ou
+    plurianuais.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Os nossos preços são personalizados com base nas suas necessidades.
+    Para um pacote básico, pode esperar custos a partir de 50 EUR por mês com monitorização
+    incluída. Posso ajudá-lo a configurar uma solução adequada?
+  goal: Engajar o cliente com uma oferta clara e convidar a uma conversa mais detalhada.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como cibersegurança.
+  script: Oferecemos consultoria em cibersegurança que inclui avaliações de risco
+    e proteção de dados em conformidade com o GDPR. Podemos agendar uma análise gratuita
+    para discutir as suas necessidades?
+  goal: Educar o cliente sobre os serviços e gerar um lead qualificado.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente durante a conversa.
+  script: Entendo que há outras opções no mercado. Diferimo-nos pela integração AI
+    que reduz custos operacionais em até 30% e oferece suporte personalizado. Gostaria
+    de ver uma demonstração?
+  goal: Diferenciação clara e incentivo a uma ação próxima.
+competitors:
+- name: Securitas Portugal
+  positioning: Líder de mercado em segurança física e vigilância.
+  strengths:
+  - Presença nacional extensa
+  - Marca reconhecida
+  - Portfólio abrangente
+  weaknesses:
+  - Preços elevados
+  - Menos foco em inovação digital
+  our_differentiation: Oferecemos soluções AI-driven com custos mais baixos e integração
+    fácil.
+- name: Prosegur
+  positioning: Concorrente global com forte presença em serviços de alarme.
+  strengths:
+  - Tecnologia avançada
+  - Serviços internacionais
+  - Suporte 24/7
+  weaknesses:
+  - Complexidade na personalização
+  - Tempos de resposta lentos em áreas rurais
+  our_differentiation: Foco em personalização local e automação via voz AI para melhor
+    experiência do cliente.
+- name: LocalSafe PT
+  positioning: Empresa portuguesa especializada em cibersegurança para PMEs.
+  strengths:
+  - Conhecimento do mercado local
+  - Preços competitivos
+  - Conformidade GDPR
+  weaknesses:
+  - Escalabilidade limitada
+  - Menos recursos para segurança física
+  our_differentiation: Combinamos segurança física e digital com AI, oferecendo uma
+    solução completa e acessível.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de custos com pessoal de segurança através de automação AI
+    monthly_cost: 200
+    monthly_savings: 300
+    payback_months: 7
+  value_anchors:
+  - Economize até 30% em custos operacionais com a nossa AI
+  - Conformidade GDPR garantida sem custos adicionais
+  - Resposta a incidentes em menos de 5 minutos
+market_context:
+  market_size: Estimado em 500 milhões EUR anuais
+  growth_rate: 5% YoY
+  key_trends:
+  - Crescente demanda por cibersegurança devido a ameaças digitais
+  - Adoção de tecnologias IoT em segurança física
+  - Foco na conformidade GDPR pós-regulamentação
+  seasonality:
+    high:
+    - Verão (período de férias)
+    - Fim de ano (aumento de furtos)
+    low:
+    - Inverno (menor atividade comercial)
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Entendo a preocupação. Com a nossa solução AI, o retorno do investimento
+    é rápido através de poupanças em pessoal e maior eficiência. Podemos começar com
+    um plano básico acessível.
+- objection: Já tenho um sistema em funcionamento.
+  response: Excelente! Podemos integrar a nossa AI para melhorar a eficiência sem
+    substituir o seu sistema atual, oferecendo um upgrade sem interrupções.
+- objection: Não confio em tecnologia AI para segurança.
+  response: A nossa AI é complementar, não substituta. Aumenta a capacidade humana
+    com automação, mantendo supervisão especializada para garantir a máxima segurança.
+meta:
+  id: security
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

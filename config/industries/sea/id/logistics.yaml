@@ -1,0 +1,248 @@
+aliases:
+- logistik
+- pengiriman
+- angkutan barang
+- layanan kurir
+- perusahaan transportasi
+- gudang
+- ekspedisi
+- pengangkutan
+- kargo
+- kiriman
+- paket
+- surat jalan
+- invoice
+competitors:
+- name: JNE
+  positioning: Pasar massal, jaringan luas
+  strengths:
+  - Jaringan cabang dan agen sangat luas
+  - Brand recognition tinggi
+  - Harga kompetitif untuk pengiriman reguler
+  weaknesses:
+  - Layanan pelanggan sering overload
+  - Waktu tunggu telepon lama
+  our_differentiation: Layanan pelanggan 24/7 dengan agen suara AI, respon instan
+    untuk pelacakan dan pertanyaan
+- name: TIKI
+  positioning: Pengiriman kargo dan barang besar
+  strengths:
+  - Spesialisasi kargo dan logistik berat
+  - Armada darat yang kuat
+  - Reputasi untuk kehandalan
+  weaknesses:
+  - Kurang fokus pada e-commerce dan last-mile
+  - Teknologi pelacakan kurang real-time
+  our_differentiation: Otomatisasi penuh untuk pengiriman B2B dan B2C, integrasi real-time
+    dengan TMS
+- name: SiCepat
+  positioning: Ekspres dan e-commerce
+  strengths:
+  - Pengiriman cepat untuk e-commerce
+  - Teknologi aplikasi mobile yang baik
+  - Agresif dalam ekspansi
+  weaknesses:
+  - Cakupan area terbatas di luar Jawa
+  - Fluktuasi kualitas layanan
+  our_differentiation: Konsistensi layanan melalui automasi, mengurangi kesalahan
+    manusia
+- name: J&T Express
+  positioning: Harga rendah, volume tinggi
+  strengths:
+  - Harga sangat kompetitif
+  - Fokus pada volume pengiriman paket
+  - Proses bongkar muat cepat
+  weaknesses:
+  - Layanan pelanggan minimal
+  - Kurang personalisasi untuk klien korporat
+  our_differentiation: AI voice agent menyediakan dukungan personal tanpa biaya tambahan,
+    meningkatkan pengalaman klien
+industry_faq:
+- answer_template: Sebutkan nomor resi atau tracking number, saya akan cek status
+    pengirimannya.
+  question: Dimana paket saya?
+- answer_template: Biaya tergantung berat, dimensi, dan tujuan. Saya bisa hitung jika
+    Anda berikan detailnya.
+  question: Berapa biaya pengiriman?
+- answer_template: Konfirmasi nomor pesanan, saya akan berikan perkiraan waktu kedatangan
+    kurir.
+  question: Kapan kurir akan datang?
+- answer_template: Ya, bisa diubah sebelum kurir berangkat. Tolong sebutkan alamat
+    baru.
+  question: Bisa ubah alamat pengiriman?
+- answer_template: Kami operasional 7 hari seminggu. Pengiriman di akhir pekan tersedia.
+  question: Apakah buka di akhir pekan?
+- answer_template: Untuk retur, silakan hubungi pengirim. Kami akan atur pengambilan
+    kembali.
+  question: Bagaimana cara retur barang?
+- answer_template: Estimasi tergantung layanan dan tujuan. Pengiriman reguler 2-5
+    hari, ekspres 1-2 hari.
+  question: Berapa lama sampai?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 12
+  key_trends:
+  - Pertumbuhan e-commerce mendorong permintaan logistik last-mile
+  - Meningkatnya adopsi teknologi TMS dan pelacakan real-time
+  - Regulasi PDP (Perlindungan Data Pribadi) mempengaruhi penanganan data pelanggan
+  market_size: 150T IDR
+  seasonality:
+    high:
+    - Ramadan dan Idul Fitri
+    - Harbolnas (12.12)
+    - Bulan November-Desember (natal & tahun baru)
+    low:
+    - Bulan April-Mei (setelah lebaran)
+    - Awal tahun (Januari)
+meta:
+  avg_validation_score: 0.0
+  country: id
+  created_at: '2024-06-15'
+  currency: IDR
+  id: logistics
+  language: id
+  last_updated: '2024-06-15'
+  region: sea
+  tests_run: 0
+  version: '1.0'
+  phone_codes:
+  - '+62'
+pain_points:
+- description: Banyak telepon menanyakan 'dimana paket saya?'
+  severity: high
+  solution_hint: Status otomatis berdasarkan nomor resi
+- description: Pelanggan tidak bisa telepon di jam sibuk
+  severity: high
+  solution_hint: Agen suara 24/7 untuk status dan FAQ
+- description: Operator menghabiskan waktu untuk pertanyaan rutin
+  severity: medium
+  solution_hint: Automatisasi pertanyaan standar
+- description: Sulit koordinasi waktu pengiriman di kota besar karena macet
+  severity: high
+  solution_hint: Notifikasi real-time dan konfirmasi slot via AI
+- description: Kesalahan input data saat penerimaan order via telepon
+  severity: medium
+  solution_hint: Form input terstruktur oleh agen suara
+- description: Klien korporat butuh laporan dan update berkala
+  severity: medium
+  solution_hint: Agen suara dapat generate laporan status via panggilan
+pricing_context:
+  currency: IDR
+  entry_point: 2500000
+  roi_examples:
+  - monthly_cost: 5000000
+    monthly_savings: 15000000
+    payback_months: 1
+    scenario: Mengganti 3 operator dengan agen suara AI untuk handle 1000 panggilan/hari
+  typical_budget_range:
+  - 2000000
+  - 10000000
+  value_anchors:
+  - Hemat hingga 60% biaya operasional call center
+  - Tingkatkan kepuasan pelanggan dengan respon <5 detik
+  - Kurangi kesalahan data order hingga 80%
+recommended_functions:
+- name: cek_status
+  priority: high
+  reason: 70-80% panggilan adalah pertanyaan status pengiriman
+- name: terima_order
+  priority: high
+  reason: Automatisasi penerimaan order baru via telepon
+- name: routing_panggilan
+  priority: medium
+  reason: Alihkan pertanyaan kompleks ke manajer
+- name: pengingat
+  priority: medium
+  reason: Notifikasi pengiriman, konfirmasi waktu
+- name: faq
+  priority: medium
+  reason: Jawab pertanyaan umum tentang tarif, syarat, ketentuan
+- name: ubah_jadwal
+  priority: low
+  reason: Perubahan waktu/alamat pengiriman
+sales_scripts:
+- goal: Konversi pertanyaan harga menjadi demo
+  script: Halo, saya [Nama Agen]. Untuk perhitungan biaya yang akurat, sistem AI kami
+    bisa langsung kalkulasi berdasarkan detail pengiriman Anda. Boleh saya bantu input
+    datanya sekarang? Jika cocok, kami bisa jadwalkan demo gratis sistem otomasi telepon
+    untuk perusahaan Anda.
+  situation: Saat calon klien menanyakan harga layanan automasi
+  trigger: price_question
+- goal: Atasi kekhawatiran tentang teknologi baru
+  script: Memahami kekhawatiran Bapak/Ibu. Banyak perusahaan logistik di Indonesia
+    sudah gunakan AI voice agent untuk handle panggilan rutin. Sistem kami dirancang
+    khusus untuk logistik, paham istilah seperti resi, POD, last-mile. Kami bisa mulai
+    dengan modul pelacakan dulu, biar team Bapak/Ibu terbiasa.
+  situation: Saat calon klien ragu tentang adopsi AI
+  trigger: technology_doubt
+- goal: Tawarkan solusi untuk masalah spesifik
+  script: Dari penjelasan Bapak/Ibu, masalah utama adalah pelanggan tidak bisa telepon
+    di jam sibuk. Agent suara kami bisa handle ribuan panggilan simultan, 24/7. Kami
+    bisa setup khusus untuk layanan cek status dan terima order, sehingga operator
+    Bapak/Ibu fokus ke klien korporat. Mau saya tunjukkan simulasi dalam 5 menit?
+  situation: Saat calon klien mengeluh tentang call center overload
+  trigger: overload_complaint
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.75
+  typical_kpis:
+  - Turunkan beban operator 50%
+  - Automatisasi 80% permintaan status
+  - Waktu respon rata-rata < 3 detik
+  - Skor kepuasan pelanggan (CSAT) > 4.2/5
+typical_integrations:
+- examples:
+  - Lion Parcel
+  - J&T System
+  - Deliveree
+  name: TMS
+  priority: high
+  reason: Ambil data status, pelacakan real-time
+- examples:
+  - Salesindo
+  - Mekari Jurnal
+  - Majoo
+  name: CRM
+  priority: medium
+  reason: Riwayat pelanggan, data order
+- examples:
+  - WhatsApp Business
+  - Telegram Bot
+  name: Messaging
+  priority: high
+  reason: Kirim notifikasi status ke pelanggan
+- examples:
+  - Monta
+  - Doku
+  name: Payment Gateway
+  priority: medium
+  reason: Konfirmasi pembayaran via telepon
+- examples:
+  - Jatis Mobile
+  - Digicode
+  name: Telephony
+  priority: high
+  reason: Kelola panggilan masuk, IVR
+typical_objections:
+- objection: Lama nunggu jawabannya
+  response: Saya pahami. Saya asisten virtual yang bisa jawab langsung 24/7, tidak
+    perlu antri.
+- objection: Saya mau bicara sama orang, bukan robot
+  response: Tentu, saya akan sambungkan ke operator kami. Perkiraan tunggu sekitar
+    1-2 menit.
+- objection: Statusnya tidak akurat
+  response: Data kami update setiap 10 menit. Jika masih meragukan, saya bisa konfirmasi
+    ke depot dan hubungi Anda kembali.
+typical_services:
+- Pengiriman barang
+- Layanan ekspres (same day/next day)
+- Layanan kurir
+- Penyimpanan gudang
+- Penanganan kargo
+- Pelacakan barang online
+- Layanan konsolidasi (cargo kolektif)
+- Pengiriman antar kota
+- Layanan last-mile
+- Pengurusan dokumen
+_extends: _base/logistics

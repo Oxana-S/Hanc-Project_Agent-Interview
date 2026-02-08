@@ -1,0 +1,264 @@
+pain_points:
+- description: Les processus d'assurance sont complexes et nécessitent une documentation
+    importante, entraînant des retards dans le traitement des dossiers.
+  severity: high
+  solution_hint: Un agent vocal IA peut automatiser la collecte et le prétraitement
+    des informations nécessaires, accélérant le flux de travail.
+- description: Les coûts administratifs liés à la gestion des polices et des réclamations
+    sont élevés et affectent la rentabilité.
+  severity: high
+  solution_hint: L'automatisation des tâches répétitives comme les mises à jour de
+    polices ou le suivi des réclamations réduit les coûts opérationnels.
+- description: Mauvaise expérience client due à des temps d'attente téléphonique longs
+    et à une disponibilité limitée en dehors des heures de bureau.
+  severity: medium
+  solution_hint: Un agent vocal IA disponible 24h/24 et 7j/7 peut répondre aux questions
+    courantes et rediriger les appels complexes, améliorant la satisfaction client.
+- description: Difficulté à générer et qualifier des leads de qualité en raison d'une
+    concurrence intense sur le marché français.
+  severity: medium
+  solution_hint: L'agent peut mener des campagnes de prospection ciblées, poser des
+    questions de qualification et planifier des rendez-vous pour les conseillers.
+- description: Risque élevé d'erreurs humaines dans la saisie des données des clients
+    ou le calcul des primes.
+  severity: medium
+  solution_hint: L'intégration avec les systèmes existants permet une saisie de données
+    précise et une vérification automatique, minimisant les erreurs.
+- description: Conformité stricte avec le RGPD et d'autres réglementations françaises,
+    nécessitant une gestion rigoureuse des données clients.
+  severity: high
+  solution_hint: L'agent IA peut être configuré pour suivre des scripts approuvés,
+    enregistrer les consentements et garantir un traitement des données conforme.
+typical_services:
+- Assurance Habitation (Multirisques Habitation)
+- Assurance Auto / Tous Risques Auto
+- Assurance Santé Complémentaire (Mutuelle)
+- Assurance Vie
+- Assurance Emprunteur (Assurance Crédit)
+- Assurance Professionnelle (RC Pro, Multirisques Professionnelle)
+- Assurance Responsabilité Civile
+- Assurance Voyage
+- Assurance Animaux de Compagnie
+- Assurance Cyber / Protection des Données
+recommended_functions:
+- name: Qualification des Leads et Prise de Rendez-vous
+  priority: high
+  reason: Essentiel pour capter des clients potentiels dans un marché concurrentiel
+    et optimiser le temps des conseillers.
+- name: Assistance aux Réclamations (First Notice of Loss)
+  priority: high
+  reason: Permet de collecter les premières informations cruciales 24/7, accélérant
+    le démarrage du processus d'indemnisation.
+- name: Réponses aux FAQs et Service Client de Base
+  priority: medium
+  reason: Réduit la charge sur les centres d'appels pour des questions récurrentes
+    (état d'une réclamation, détails de la couverture).
+- name: Rappels pour le Renouvellement de Police
+  priority: medium
+  reason: Améliore la rétention des clients en automatisant les rappels avant l'échéance,
+    un moment clé pour la concurrence.
+- name: Sondages de Satisfaction Post-Réclamation
+  priority: low
+  reason: Permet de recueillir des feedbacks précieux pour améliorer le service sans
+    effort humain supplémentaire.
+- name: Vérification et Mise à Jour des Informations Clients
+  priority: medium
+  reason: Garantit l'exactitude des données pour la tarification et la conformité
+    RGPD.
+typical_integrations:
+- name: Système de Gestion de la Relation Client (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  - HubSpot
+  - Dolibarr
+  priority: high
+- name: Système de Gestion des Polices (Policy Administration System)
+  examples:
+  - Targus
+  - Sapiens
+  - Guidewire
+  - solutions propriétaires
+  priority: high
+- name: Portail Client / Espace Personnel en Ligne
+  examples:
+  - Solutions sur mesure
+  - plateformes low-code comme OutSystems
+  priority: medium
+- name: Logiciel de Téléphonie / Centre de Contact
+  examples:
+  - Aircall
+  - Genesys
+  - Avaya
+  - solutions intégrées aux opérateurs français
+  priority: medium
+- name: Outils de Conformité et de Gestion des Documents
+  examples:
+  - DocuSign
+  - solutions de coffre-fort numérique réglementé
+  priority: low
+industry_faq:
+- question: Quelle est la différence entre une assurance 'Tous Risques' et une assurance
+    'au Tier' ?
+  answer_template: L'assurance 'au Tier' (ou responsabilité civile) couvre uniquement
+    les dommages que vous causez à autrui. La formule 'Tous Risques' couvre également
+    les dommages subis par votre propre véhicule, quelles que soient les circonstances,
+    offrant une protection bien plus complète.
+- question: Ma mutuelle santé rembourse-t-elle les soins dentaires ?
+  answer_template: Cela dépend du niveau de garantie de votre contrat. Je peux vérifier
+    les détails de votre police. Généralement, les soins dentaires comme les couronnes
+    ou les orthodonties sont partiellement remboursés, avec souvent un délai de carence.
+- question: Comment déclarer un sinistre ?
+  answer_template: Vous pouvez déclarer un sinistre via votre espace client en ligne,
+    par téléphone, ou en utilisant notre application mobile. Ayez à portée de main
+    votre numéro de police, les détails de l'incident, et si possible des photos ou
+    un constat amiable.
+- question: Mon assurance habitation couvre-t-elle les dégâts des eaux causés par
+    un voisin ?
+  answer_template: Oui, l'assurance habitation multirisques couvre généralement les
+    dégâts subis dans votre logement. Votre assureur se retournera ensuite contre
+    l'assureur du voisin responsable (c'est le principe de la 'subrogation'). Il est
+    crucial de faire un constat.
+- question: Puis-je résilier mon assurance auto à tout moment ?
+  answer_template: Vous pouvez résilier à la date d'échéance annuelle en respectant
+    un préavis (souvent 2 mois). Une résiliation en cours d'année n'est possible que
+    dans des cas spécifiques (vente du véhicule, déménagement, etc.), conformément
+    au Code des assurances.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un prospect demande le prix d'une assurance sans avoir fourni
+    d'informations de qualification.
+  script: Je comprends que le prix est un critère important. Pour vous proposer une
+    estimation juste et personnalisée, j'ai besoin de quelques informations clés.
+    Pouvez-vous me dire de quel type d'assurance vous avez besoin (auto, habitation...)
+    et, par exemple pour l'auto, la marque, le modèle et l'âge du conducteur principal
+    ?
+  goal: Qualifier le lead et collecter des données essentielles avant de parler prix,
+    pour éviter une comparaison avec des offres non adaptées.
+- trigger: objection_budget
+  situation: Le prospect indique que notre solution d'automatisation est trop chère.
+  script: Je comprends parfaitement cette préoccupation. Avez-vous évalué le coût
+    du temps que vos conseillers passent actuellement sur des tâches administratives
+    répétitives, comme la prise de première déclaration de sinistre ou les rappels
+    de renouvellement ? Notre solution vise justement à libérer ce temps précieux
+    pour qu'ils se concentrent sur la vente et le conseil de valeur, ce qui génère
+    généralement un retour sur investissement en quelques mois.
+  goal: Repositionner la conversation sur le retour sur investissement et la productivité,
+    plutôt que sur le coût initial.
+- trigger: call_back_request
+  situation: Un prospect demande à être rappelé par un conseiller humain.
+  script: 'Absolument, je peux organiser cela pour vous. Pour que notre conseiller
+    soit parfaitement préparé et vous fasse gagner du temps, pourriez-vous me confirmer
+    l''objet principal de cet appel (ex: devis pour une assurance habitation, question
+    sur une réclamation en cours) et votre créneau horaire préféré ?'
+  goal: Planifier un rendez-vous qualifié pour le conseiller, en augmentant les chances
+    de conversion et l'efficacité de l'appel.
+competitors:
+- name: AXA
+  positioning: Leader historique sur le marché français, positionné sur la confiance
+    et la gamme complète.
+  strengths:
+  - Réseau d'agences physique étendu
+  - notoriété forte
+  - offre complète tous secteurs.
+  weaknesses:
+  - Coûts structurels élevés
+  - processus parfois bureaucratiques
+  - adaptation lente aux outils digitaux pure player.
+  our_differentiation: Nous offrons une solution agile d'automatisation qui réduit
+    leurs coûts opérationnels et améliore l'expérience client digital, un point faible
+    pour un grand groupe comme AXA.
+- name: MAIF / MACIF
+  positioning: Sociétés d'assurance mutuelle, positionnées sur l'éthique, la solidarité
+    et les valeurs.
+  strengths:
+  - Fidélité très forte des membres
+  - image de confiance et non-lucrative
+  - engagement sociétal.
+  weaknesses:
+  - Modèle parfois moins agile commercialement
+  - outils internes pouvant être vieillissants.
+  our_differentiation: Notre technologie moderne les aide à préserver leurs valeurs
+    humaines tout en digitalisant efficacement le service client, répondant aux attentes
+    croissantes de leurs sociétaires.
+- name: Léa (Leocare)
+  positioning: Néo-assureur 100% digital, positionné sur la simplicité et les prix
+    bas.
+  strengths:
+  - Expérience utilisateur digitale excellente
+  - processus simplifiés
+  - prix compétitifs.
+  weaknesses:
+  - Manque de contact humain pour les dossiers complexes
+  - gamme de produits parfois limitée.
+  our_differentiation: Nous fournissons une interface vocale IA naturelle qui peut
+    compléter leur modèle digital pur en ajoutant un canal d'assistance accessible
+    et efficace, sans reconstruire un centre d'appels traditionnel.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 750
+  roi_examples:
+  - scenario: Automatisation du traitement initial des déclarations de sinistres pour
+      une petite mutuelle.
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Réduisez vos coûts de gestion de sinistres jusqu'à 30%.
+  - Libérez jusqu'à 15 heures par semaine de temps conseiller pour des tâches à plus
+    forte valeur ajoutée.
+  - Améliorez la satisfaction client avec une disponibilité 24/7.
+market_context:
+  market_size: Environ 220 milliards d'euros de primes annuelles
+  growth_rate: 1 à 2% par an (hors effets de l'inflation)
+  key_trends:
+  - Digitalisation accélérée des parcours clients (souscription en ligne, espace client).
+  - Attentes croissantes en matière de personnalisation et d'expérience omnicanale
+    fluide.
+  - Montée en puissance des régulateurs (ACPR) sur la protection du consommateur et
+    la transparence tarifaire.
+  - Développement des offres d'assurance 'à la carte' ou par usage (pay-as-you-drive).
+  seasonality:
+    high:
+    - Septembre (rentrée, assurances scolaires)
+    - Décembre-Janvier (renouvellements annuels, soldes d'hiver pour l'auto)
+    low:
+    - Août (tradition des vacances d'été)
+    - Mai (ponts du mois de mai)
+typical_objections:
+- objection: Nos clients préfèrent parler à un humain, surtout pour des sujets importants
+    comme l'assurance.
+  response: Tout à fait, et c'est précisément l'objectif. Notre agent vocal IA gère
+    les interactions simples et répétitives (FAQ, prise de RDV, première collecte
+    d'infos sinistre). Cela permet à vos conseillers humains de se concentrer sur
+    les dossiers complexes et les moments où la relation et l'expertise sont cruciales,
+    améliorant ainsi la qualité de leurs interactions.
+- objection: L'intégration avec nos systèmes existants semble trop complexe et disruptive.
+  response: Nous comprenons cette inquiétude. Notre plateforme est conçue pour des
+    intégrations modulaires et progressives via des APIs standards. Nous pouvons commencer
+    par un pilote sur un processus isolé (comme les rappels de renouvellement) pour
+    démontrer la valeur avec un minimum de perturbation avant de généraliser.
+- objection: Nous sommes déjà en conformité RGPD, une IA risque de compliquer la gestion
+    des données personnelles.
+  response: Au contraire, un agent vocal IA bien configuré renforce la conformité.
+    Il suit des scripts approuvés, enregistre systématiquement les consentements,
+    et limite l'accès aux données uniquement aux informations nécessaires pour la
+    tâche. Il offre une traçabilité complète des interactions, ce qui est un atout
+    pour un audit.
+meta:
+  id: insurance
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

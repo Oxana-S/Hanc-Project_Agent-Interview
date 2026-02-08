@@ -1,0 +1,247 @@
+pain_points:
+- description: Khó khăn trong việc quản lý lịch hẹn và sắp xếp kỹ thuật viên do phụ
+    thuộc vào ghi chú thủ công và điện thoại, dẫn đến bỏ lỡ cuộc gọi và lịch trùng.
+  severity: high
+  solution_hint: AI voice agent có thể tự động đặt lịch hẹn, xác nhận thông tin và
+    đồng bộ vào lịch kỹ thuật viên.
+- description: Tỷ lệ khách hàng không đến nhận máy đúng hẹn cao, gây tồn đọng hàng
+    sửa chữa và ảnh hưởng dòng tiền.
+  severity: medium
+  solution_hint: Tự động gọi/nhắn tin nhắc lịch trước 1-2 ngày để giảm thiểu tình
+    trạng khách quên.
+- description: Khó khăn trong việc giải thích chi phí sửa chữa phức tạp (linh kiện,
+    công) cho khách hàng, dễ gây hiểu lầm và phàn nàn.
+  severity: high
+  solution_hint: Agent cung cấp báo giá rõ ràng qua tin nhắn/email, phân tích từng
+    hạng mục chi phí bằng giọng nói dễ hiểu.
+- description: Không có hệ thống theo dõi phản hồi và đánh giá từ khách hàng sau khi
+    hoàn thành dịch vụ.
+  severity: low
+  solution_hint: Tự động khảo sát mức độ hài lòng qua cuộc gọi/ tin nhắn sau dịch
+    vụ và tổng hợp báo cáo.
+- description: Mất nhiều thời gian tư vấn cơ bản và trả lời câu hỏi lặp đi lặp lại
+    (giá cả, thời gian sửa) trong giờ cao điểm.
+  severity: medium
+  solution_hint: Agent xử lý các câu hỏi FAQ tự động, giải phóng nhân viên cho các
+    công việc chuyên môn.
+- description: Khó dự báo được nhu cầu linh kiện thay thế, dẫn đến tình trạng thiếu
+    hàng hoặc ứ đọng vốn tồn kho.
+  severity: medium
+  solution_hint: Phân tích lịch sử sửa chữa và cuộc gọi đặt lịch để đưa ra dự báo
+    nhu cầu linh kiện cơ bản.
+typical_services:
+- Sửa chữa điện thoại di động (màn hình, pin, cổng sạc)
+- Sửa chữa máy tính xách tay (thay bàn phím, vệ sinh, nâng cấp RAM/SSD)
+- Sửa chữa máy tính bàn (thay nguồn, mainboard, card màn hình)
+- Sửa chữa đồ gia dụng (máy giặt, tủ lạnh, điều hòa)
+- Sửa chữa TV, màn hình
+- Cứu dữ liệu điện thoại/máy tính
+- Thay thế linh kiện chính hãng/linh kiện tương thích
+- Vệ sinh và bảo dưỡng định kỳ
+- Sửa chữa bo mạch điện tử (board level repair)
+- Tư vấn và hỗ trợ kỹ thuật từ xa
+recommended_functions:
+- name: Đặt lịch hẹn thông minh
+  priority: high
+  reason: Giải quyết điểm đau chính về quản lý lịch trình, tối ưu hóa công suất kỹ
+    thuật viên.
+- name: Gọi nhắc lịch tự động
+  priority: high
+  reason: Giảm tỷ lệ khách không đến nhận, cải thiện dòng tiền và sự hài lòng.
+- name: Cung cấp báo giá và tư vấn cơ bản
+  priority: high
+  reason: Giải phóng nhân viên, cung cấp thông tin minh bạch ngay lập tức, giảm hiểu
+    lầm.
+- name: Thu thập và phân tích phản hồi
+  priority: medium
+  reason: Giúp chủ cửa hàng hiểu chất lượng dịch vụ và điểm cần cải thiện.
+- name: Tích hợp quản lý kho linh kiện cơ bản
+  priority: medium
+  reason: Cảnh báo thiếu hàng cho các linh kiện thông dụng dựa trên lịch sử sửa chữa.
+- name: Chuyển máy đến kỹ thuật viên chuyên sâu
+  priority: low
+  reason: Xử lý các câu hỏi phức tạp mà agent không thể trả lời, đảm bảo trải nghiệm
+    khách hàng.
+typical_integrations:
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast
+  - KiotViet
+  priority: high
+- name: Nền tảng mạng xã hội / Zalo OA
+  examples:
+  - Facebook
+  - Zalo Official Account
+  priority: high
+- name: Công cụ nhắn tin SMS/OTT
+  examples:
+  - Vietguys
+  - Lacakii
+  - Zalo API
+  priority: medium
+- name: Google Calendar / Lịch văn phòng
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+- name: Hệ thống quản lý tồn kho đơn giản
+  examples:
+  - KiotViet (module tồn kho)
+  - Quản lý kho tự phát triển
+  priority: low
+industry_faq:
+- question: Bên bạn sửa chữa những loại thiết bị nào?
+  answer_template: Chúng tôi chuyên sửa chữa điện thoại, máy tính xách tay, máy tính
+    bàn, đồ gia dụng và TV. Anh/chị có thể cho tôi biết thiết bị cụ thể gặp sự cố
+    gì ạ?
+- question: Giá sửa chữa có bao gồm linh kiện và công chưa? Có bảo hành không?
+  answer_template: Báo giá cuối cùng sẽ bao gồm đầy đủ chi phí linh kiện và công thợ.
+    Tất cả dịch vụ sửa chữa đều được bảo hành từ 3-6 tháng tùy hạng mục. Tôi có thể
+    gửi chi tiết chính sách bảo hành qua tin nhắn cho anh/chị.
+- question: Thời gian sửa chữa mất bao lâu?
+  answer_template: Thời gian sửa chữa phụ thuộc vào tình trạng thiết bị và linh kiện
+    có sẵn. Thông thường từ 1-3 giờ cho sự cố đơn giản và 1-3 ngày cho sự cố phức
+    tạp. Chúng tôi sẽ thông báo ước tính cụ thể sau khi kiểm tra.
+- question: Tôi có cần mang thiết bị đến tận nơi không?
+  answer_template: Anh/chị có thể mang trực tiếp đến cửa hàng hoặc đăng ký dịch vụ
+    hỗ trợ lấy/trả tận nơi trong nội thành (có thể phí). Tôi sẽ hỗ trợ anh/chị đặt
+    lịch hẹn phù hợp.
+- question: Làm sao tôi biết linh kiện thay thế là chính hãng?
+  answer_template: Chúng tôi cam kết sử dụng linh kiện chính hãng hoặc linh kiện chất
+    lượng cao có nguồn gốc rõ ràng. Hóa đơn sẽ ghi rõ thông tin linh kiện và anh/chị
+    có thể kiểm tra trực tiếp.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về giá dịch vụ một cách chung chung.
+  script: Chào anh/chị! Cảm ơn anh/chị đã quan tâm. Để có báo giá chính xác nhất,
+    chúng tôi cần kiểm tra tình trạng thiết bị cụ thể. Tuy nhiên, chi phí sửa chữa
+    thường dao động từ 200,000 VND cho các lỗi nhỏ đến vài triệu cho thay thế linh
+    kiện quan trọng. Tôi có thể hỗ trợ anh/chị đặt lịch kiểm tra miễn phí ngay bây
+    giờ không ạ?
+  goal: Chuyển từ hỏi giá chung chung sang đặt lịch hẹn kiểm tra cụ thể, thể hiện
+    sự minh bạch và chuyên nghiệp.
+- trigger: competitor_mention
+  situation: Khách hàng so sánh giá với một đối thủ khác.
+  script: Tôi hiểu quan điểm của anh/chị. Bên cạnh mức giá cạnh tranh, chúng tôi tập
+    trung vào chất lượng linh kiện thay thế có nguồn gốc và dịch vụ bảo hành dài hạn
+    lên đến 6 tháng. Hơn nữa, với hệ thống đặt lịch thông minh và hỗ trợ 24/7 của
+    chúng tôi, anh/chị sẽ tiết kiệm rất nhiều thời gian chờ đợi và lo lắng. Anh/chị
+    có muốn trải nghiệm dịch vụ tư vấn ban đầu của chúng tôi không?
+  goal: Chuyển hướng cuộc trò chuyện từ giá cả sang giá trị gia tăng (chất lượng,
+    bảo hành, dịch vụ) và tạo cơ hội trải nghiệm.
+- trigger: appointment_request
+  situation: Khách hàng đồng ý đặt lịch hẹn.
+  script: Rất cảm ơn anh/chị. Tôi sẽ xác nhận lịch hẹn kiểm tra thiết bị của anh/chị
+    vào [thời gian] ngày [ngày]. Xin vui lòng cho tôi biết tên và số điện thoại để
+    chúng tôi gửi tin nhắn xác nhận và địa chỉ cửa hàng ạ. Chúng tôi cũng sẽ gọi điện
+    nhắc lịch trước 1 ngày để đảm bảo tiện lợi cho anh/chị.
+  goal: Hoàn tất việc đặt lịch, thu thập thông tin liên hệ và quảng bá dịch vụ nhắc
+    lịch tự động - một điểm khác biệt của chúng tôi.
+- trigger: post_service_followup
+  situation: Cuộc gọi tự động sau khi dịch vụ hoàn thành 2-3 ngày.
+  script: Chào anh/chị [tên khách hàng]! Tôi là trợ lý ảo từ [tên cửa hàng]. Chúng
+    tôi gọi để kiểm tra xem thiết bị sau khi sửa có hoạt động ổn định không ạ? Mọi
+    thứ vẫn tốt chứ? Nếu có bất kỳ vấn đề gì, anh/chị đừng ngần ngại báo lại ngay
+    để chúng tôi hỗ trợ. Cảm ơn anh/chị đã tin tưởng!
+  goal: Thể hiện sự quan tâm, tăng độ tin cậy, phát hiện sớm vấn đề và củng cố mối
+    quan hệ khách hàng.
+competitors:
+- name: Điện Máy Xanh / Thế Giới Di Động (dịch vụ sửa chữa)
+  positioning: Kênh bán lẻ lớn, cung cấp dịch vụ sửa chữa cho sản phẩm đã bán.
+  strengths:
+  - Mạng lưới rộng khắp
+  - Uy tín thương hiệu lớn
+  - Nguồn linh kiện dồi dào
+  weaknesses:
+  - Thời gian chờ đợi lâu
+  - Giá dịch vụ cao
+  - Ít linh hoạt trong xử lý sự cố phức tạp
+  our_differentiation: Thời gian sửa chữa nhanh chóng hơn, giá cả linh hoạt và cạnh
+    tranh, dịch vụ chăm sóc khách hàng cá nhân hóa hơn.
+- name: Các cửa hàng sửa chữa địa phương nhỏ lẻ
+  positioning: Cửa hàng tự doanh, phục vụ khu vực lân cận.
+  strengths:
+  - Giá rẻ
+  - Linh hoạt, dễ thương lượng
+  - Quen thuộc với khách hàng địa phương
+  weaknesses:
+  - Thiếu tính chuyên nghiệp hệ thống
+  - Không có công nghệ hỗ trợ (đặt lịch, nhắc hẹn)
+  - Chất lượng linh kiện không ổn định
+  our_differentiation: Quy trình chuyên nghiệp, minh bạch với báo giá rõ ràng, hỗ
+    trợ công nghệ (AI agent) 24/7 và chế độ bảo hành bài bản.
+- name: Dịch vụ sửa chữa trên các ứng dụng đặt dịch vụ (App Rửa Xe, bTaskee mở rộng)
+  positioning: Nền tảng kết nối kỹ thuật viên tự do với khách hàng.
+  strengths:
+  - Tiện lợi, đặt dịch vụ tại nhà
+  - Nhiều lựa chọn về người sửa
+  weaknesses:
+  - Chất lượng kỹ thuật viên không đồng đều
+  - Khó kiểm soát an toàn thông tin thiết bị
+  - Hạn chế với sửa chữa phức tạp cần máy móc
+  our_differentiation: Đội ngũ kỹ thuật viên được đào tạo và quản lý trực tiếp, có
+    cửa hàng vật lý đáng tin cậy, chuyên sâu vào sửa chữa phức tạp và cứu dữ liệu.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 200000
+  - 5000000
+  entry_point: 300000
+  roi_examples:
+  - scenario: Cửa hàng nhỏ bỏ lỡ 5 cuộc gọi đặt lịch/ngày và 20% khách không đến nhận
+      máy.
+    monthly_cost: 1500000
+    monthly_savings: 8000000
+    payback_months: 1
+  value_anchors:
+  - Tối ưu hóa 30% thời gian của nhân viên tiếp tân.
+  - Giảm 50% tỷ lệ khách hàng không đến nhận máy đúng hẹn.
+  - Tăng 20% lượt đặt lịch nhờ dịch vụ hỗ trợ 24/7.
+market_context:
+  market_size: Hơn 10,000 tỷ VND/năm (ước tính)
+  growth_rate: 8-12% YoY
+  key_trends:
+  - Nhu cầu sửa chữa điện thoại thông minh và laptop tiếp tục tăng cao do thị trường
+    bão hòa.
+  - Khách hàng ngày càng quan tâm đến dịch vụ lấy/trả tận nơi và hỗ trợ trực tuyến.
+  - Xu hướng 'right to repair' và sử dụng linh kiện tương thích chất lượng để tiết
+    kiệm chi phí.
+  seasonality:
+    high:
+    - Tháng 9 - Tháng 12 (trước và sau Tết Nguyên Đán)
+    - Mùa hè (tháng 6-8)
+    low:
+    - Tháng 1-2 (sau Tết, nhiều người mua mới)
+    - Đầu tháng 5
+typical_objections:
+- objection: Tôi thấy giá của các chỗ khác rẻ hơn.
+  response: Tôi hoàn toàn hiểu. Điều quan trọng là so sánh chất lượng linh kiện và
+    chế độ bảo hành đi kèm. Chúng tôi sử dụng linh kiện có nguồn gốc và bảo hành lên
+    đến 6 tháng, giúp anh/chị yên tâm lâu dài và tránh phát sinh chi phí sau này.
+    Tiết kiệm thời gian và sự an tâm cũng là một giá trị, thưa anh/chị.
+- objection: Tôi không tin tưởng vào máy móc/ AI trả lời điện thoại.
+  response: Tôi đánh giá cao sự thẳng thắn của anh/chị. Tôi (agent) ở đây để hỗ trợ
+    những câu hỏi cơ bản và đặt lịch hẹn chính xác, giúp anh/chị không phải chờ máy.
+    Khi cần tư vấn chuyên sâu, tôi sẽ kết nối anh/chị ngay với kỹ thuật viên có chuyên
+    môn. Đây là cách để tiết kiệm thời gian cho cả hai bên ạ.
+- objection: Cửa hàng tôi nhỏ, không cần công nghệ phức tạp.
+  response: Thực ra, công nghệ này được thiết kế cho các cửa hàng vừa và nhỏ như mình.
+    Nó giúp tự động hóa những việc tốn thời gian như đặt lịch, nhắc hẹn, trả lời FAQs,
+    để anh/chị tập trung vào việc sửa chữa chuyên môn - việc tạo ra doanh thu chính.
+    Chỉ với vài khách hàng hài lòng hơn mỗi tháng là đã có thể chi trả cho dịch vụ
+    này rồi.
+meta:
+  id: repair_services
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

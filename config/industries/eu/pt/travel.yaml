@@ -1,0 +1,231 @@
+pain_points:
+- description: Alta carga de trabalho durante a alta temporada, levando a atrasos
+    no atendimento ao cliente.
+  severity: high
+  solution_hint: Um agente de voz AI pode automatizar reservas e responder a consultas
+    básicas 24/7, reduzindo a pressão sobre a equipe.
+- description: Dificuldade em gerir múltiplos canais de reserva (telefone, email,
+    website) de forma eficiente.
+  severity: medium
+  solution_hint: Integrar um agente de voz AI para consolidar consultas e processar
+    reservas automaticamente.
+- description: Barreiras linguísticas com turistas internacionais, afetando a experiência
+    do cliente.
+  severity: medium
+  solution_hint: Agentes de voz AI com suporte multilingue podem fornecer assistência
+    em várias línguas, melhorando o serviço.
+- description: Processos manuais para confirmações e cancelamentos, causando erros
+    e insatisfação.
+  severity: high
+  solution_hint: Automatizar confirmações e gestão de cancelamentos via AI, garantindo
+    precisão e rapidez.
+- description: Dificuldade em personalizar ofertas e recomendações para clientes com
+    base nas suas preferências.
+  severity: low
+  solution_hint: Usar AI para analisar dados do cliente e sugerir pacotes personalizados,
+    aumentando as vendas.
+- description: Cumprimento do GDPR no tratamento de dados dos clientes, exigindo procedimentos
+    rigorosos.
+  severity: high
+  solution_hint: Implementar agentes de voz AI com conformidade GDPR integrada, assegurando
+    a proteção de dados.
+- description: Flutuações sazonais na demanda, dificultando a previsão de recursos
+    e custos.
+  severity: medium
+  solution_hint: Agentes de voz AI podem escalar automaticamente com a demanda, otimizando
+    recursos durante picos e vales.
+typical_services:
+- Reservas de hotéis e alojamentos
+- Pacotes turísticos personalizados
+- Bilhetes de avião e transporte
+- Aluguer de carros
+- Seguros de viagem
+- Excursões e atividades locais
+- Assistência em viagem 24/7
+- Gestão de grupos e eventos
+- Consultoria de destinos
+- Serviços de transfer aeroportuário
+recommended_functions:
+- name: Agendamento automático de reservas
+  priority: high
+  reason: Reduz o tempo de processamento e erros manuais, aumentando a eficiência
+    operacional.
+- name: Atendimento ao cliente multilingue
+  priority: medium
+  reason: Melhora a experiência de turistas internacionais, comuns em Portugal.
+- name: Processamento de pagamentos seguros
+  priority: high
+  reason: Garante transações rápidas e conformes com regulamentos locais, como GDPR.
+- name: Gestão de cancelamentos e alterações
+  priority: medium
+  reason: Automatiza processos complexos, reduzindo conflitos e melhorando a satisfação.
+- name: Recomendações personalizadas com base em histórico
+  priority: low
+  reason: Aumenta as vendas cruzadas ao sugerir serviços adicionais relevantes.
+- name: Integração com sistemas de CRM
+  priority: high
+  reason: Permite uma visão consolidada do cliente, melhorando o marketing e serviço.
+typical_integrations:
+- name: Sistemas de gestão de reservas
+  examples:
+  - HotelNet
+  - TourCMS
+  - ResKey
+  priority: high
+- name: Plataformas de pagamento
+  examples:
+  - MB Way
+  - SIBS
+  - Stripe
+  priority: high
+- name: Software de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: medium
+- name: Ferramentas de marketing digital
+  examples:
+  - Google Ads
+  - Facebook Business Suite
+  priority: low
+- name: Sistemas de gestão de frota
+  examples:
+  - Fleetio
+  - Chevin
+  priority: low
+industry_faq:
+- question: Quais são os vossos preços para pacotes de viagem?
+  answer_template: Os nossos preços variam consoante o destino e serviços incluídos.
+    Podemos personalizar uma oferta para si. Por exemplo, pacotes para o Algarve começam
+    em 500 EUR por pessoa.
+- question: Como posso cancelar ou alterar uma reserva?
+  answer_template: Pode cancelar ou alterar a sua reserva através do nosso agente
+    de voz AI ou website, com políticas claras de reembolso. Contacte-nos para assistência
+    imediata.
+- question: Oferecem suporte em línguas estrangeiras?
+  answer_template: Sim, o nosso agente de voz AI suporta múltiplas línguas, incluindo
+    inglês, espanhol e francês, para melhor atender turistas internacionais.
+- question: Os meus dados estão seguros e em conformidade com o GDPR?
+  answer_template: Absolutamente. Implementamos medidas rigorosas de segurança e conformidade
+    GDPR para proteger todas as informações dos clientes.
+- question: Quais são os destinos mais populares em Portugal?
+  answer_template: Destinos como Lisboa, Porto, Algarve e Madeira são muito procurados.
+    Recomendamos pacotes personalizados com base nas suas preferências.
+- question: Como lidam com emergências durante a viagem?
+  answer_template: Oferecemos assistência 24/7 via agente de voz AI, com ligação direta
+    a serviços de emergência e suporte local.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma consulta inicial.
+  script: Olá! Os nossos preços são competitivos e adaptáveis às suas necessidades.
+    Para pacotes básicos, começamos em 300 EUR. Posso ajudá-lo a criar um orçamento
+    personalizado?
+  goal: Engajar o cliente e conduzi-lo a uma proposta personalizada.
+- trigger: booking_inquiry
+  situation: Quando um cliente expressa interesse em fazer uma reserva.
+  script: Perfeito! Para processar a sua reserva, precisamos de alguns detalhes. O
+    nosso agente AI pode guiá-lo passo a passo. Deseja prosseguir agora?
+  goal: Facilitar a reserva e demonstrar a conveniência do serviço.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente como Abreu ou Booking.com.
+  script: Entendo que há várias opções. Diferentemente, oferecemos atendimento personalizado
+    24/7 com AI, garantindo suporte rápido e eficiente. Gostaria de experimentar uma
+    demonstração?
+  goal: Diferenciação através do valor agregado e tecnologia.
+- trigger: objection_cost
+  situation: Quando um cliente objeta com base no custo.
+  script: Compreendo a preocupação. O nosso serviço pode reduzir custos operacionais
+    em até 30%, oferecendo um retorno rápido do investimento. Posso partilhar um exemplo
+    de ROI?
+  goal: Superar a objeção destacando economia e valor.
+competitors:
+- name: Abreu
+  positioning: Agência de viagens tradicional com forte presença nacional.
+  strengths:
+  - Marca reconhecida
+  - rede física extensa
+  - experiência de longa data
+  weaknesses:
+  - Processos manuais lentos
+  - custos operacionais altos
+  - limitada inovação digital
+  our_differentiation: Oferecemos automação com AI para eficiência superior e atendimento
+    24/7.
+- name: Booking.com
+  positioning: Plataforma global de reservas online.
+  strengths:
+  - Ampla seleção
+  - interface fácil
+  - presença internacional
+  weaknesses:
+  - Atendimento ao cliente impessoal
+  - taxas ocultas
+  - falta de personalização local
+  our_differentiation: Foco em serviço personalizado e suporte local em português,
+    com integração AI.
+- name: Viagens Costa Verde
+  positioning: Agência regional com ênfase em destinos portugueses.
+  strengths:
+  - Conhecimento local profundo
+  - pacotes especializados
+  - confiança regional
+  weaknesses:
+  - Escalabilidade limitada
+  - tecnologia desatualizada
+  - dependência de temporada
+  our_differentiation: Combina conhecimento local com automação AI para escalar e
+    melhorar a experiência.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Agência de viagens média que implementa AI para atendimento ao cliente.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em 30% com automação AI.
+  - Aumente as reservas em 20% com atendimento personalizado 24/7.
+  - Conformidade GDPR integrada, sem custos adicionais.
+market_context:
+  market_size: 10 mil milhões EUR anual
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento do turismo sustentável e experiências locais.
+  - Digitalização acelerada pós-pandemia.
+  - Crescimento de viagens de última hora e flexíveis.
+  seasonality:
+    high:
+    - Junho a Setembro
+    - Dezembro
+    low:
+    - Janeiro a Março
+typical_objections:
+- objection: É muito caro implementar tecnologia AI.
+  response: Compreendo, mas o investimento retorna rapidamente através de poupanças
+    operacionais. Por exemplo, pode economizar 1500 EUR por mês com um custo de 500
+    EUR.
+- objection: Não confio em sistemas automatizados para atendimento ao cliente.
+  response: O nosso AI é projetado para complementar a equipe humana, oferecendo suporte
+    básico e escalável, mantendo o toque pessoal quando necessário.
+- objection: Já tenho sistemas em funcionamento, não preciso de mais.
+  response: A integração com os seus sistemas existentes é simples e pode melhorar
+    a eficiência sem interrupções. Podemos demonstrar em uma prova de conceito.
+meta:
+  id: travel
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

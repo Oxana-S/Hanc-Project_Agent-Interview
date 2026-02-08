@@ -1,0 +1,216 @@
+pain_points:
+- description: Dificuldade em gerenciar doações e contribuições de forma eficiente,
+    com registros manuais propensos a erros.
+  severity: high
+  solution_hint: Agente de voz pode automatizar lembretes de doação via chamadas,
+    integrando-se a sistemas de pagamento.
+- description: Baixa participação em eventos e atividades da comunidade devido a comunicação
+    ineficiente.
+  severity: medium
+  solution_hint: Agente pode fazer chamadas automáticas para confirmar presença e
+    enviar lembretes personalizados.
+- description: Gestão complexa de agendamentos para missas, cultos e aconselhamentos,
+    causando sobrecarga administrativa.
+  severity: high
+  solution_hint: Agente pode agendar compromissos via voz, sincronizando com calendários
+    digitais.
+- description: Dificuldade em atender a um grande número de fiéis com perguntas frequentes
+    sobre horários e serviços.
+  severity: medium
+  solution_hint: Agente pode responder perguntas comuns 24/7, liberando tempo para
+    tarefas pastorais.
+- description: Falta de personalização na comunicação com membros, levando a engajamento
+    reduzido.
+  severity: low
+  solution_hint: Agente pode usar dados (com LGPD) para personalizar mensagens e chamadas
+    baseadas em preferências.
+- description: Desafios em cumprir a LGPD na coleta e uso de dados dos fiéis, arriscando
+    multas.
+  severity: high
+  solution_hint: Agente pode ser configurado para operar em conformidade com LGPD,
+    com consentimento explícito em interações.
+typical_services:
+- Missas e cultos regulares
+- Eventos sociais e comunitários
+- Aconselhamento pastoral
+- Cerimônias de batismo, casamento e funeral
+- Grupos de estudo bíblico
+- Campanhas de doação e arrecadação
+- Visitas a doentes e idosos
+- Atividades para jovens e crianças
+- Transmissões ao vivo de serviços
+- Cursos de formação religiosa
+recommended_functions:
+- name: Agendamento automático de compromissos
+  priority: high
+  reason: Reduz a carga administrativa e melhora a eficiência no atendimento a fiéis.
+- name: Lembretes de doação via voz
+  priority: medium
+  reason: Aumenta as contribuições com chamadas personalizadas e oportunas.
+- name: Resposta a perguntas frequentes
+  priority: high
+  reason: Fornece informações instantâneas, melhorando a experiência do fiel.
+- name: Confirmação de presença em eventos
+  priority: medium
+  reason: Otimiza a logística de eventos e aumenta o engajamento.
+- name: Coleta de feedback pós-evento
+  priority: low
+  reason: Ajuda a melhorar serviços com base em opiniões dos membros.
+- name: Integração com sistemas de CRM eclesiástico
+  priority: high
+  reason: Facilita a gestão de dados dos fiéis em conformidade com LGPD.
+typical_integrations:
+- name: Sistema de gestão paroquial
+  examples:
+  - Sistema Paroquial
+  - ChurchSuite
+  - Gestão Eclesiástica
+  priority: high
+- name: Plataformas de doação online
+  examples:
+  - PagSeguro
+  - PicPay
+  - Sistema de doações da igreja
+  priority: medium
+- name: Calendários digitais
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: high
+- name: Sistemas de transmissão ao vivo
+  examples:
+  - YouTube
+  - Facebook Live
+  - plataformas locais
+  priority: low
+- name: CRM para igrejas
+  examples:
+  - Salesforce para organizações sem fins lucrativos
+  - sistemas personalizados
+  priority: medium
+industry_faq:
+- question: Como o agente de voz pode ajudar nossa igreja a aumentar as doações?
+  answer_template: Nosso agente automatiza lembretes de doação por chamada, integrando-se
+    a sistemas de pagamento seguro, o que pode aumentar as contribuições em até 20%
+    com base em casos anteriores.
+- question: O agente é compatível com a LGPD?
+  answer_template: Sim, configuramos o agente para operar em total conformidade com
+    a LGPD, com consentimento explícito em todas as interações e proteção de dados.
+- question: Quanto tempo leva para implementar o agente?
+  answer_template: A implementação básica leva de 1 a 2 semanas, dependendo das integrações
+    necessárias, com suporte contínuo.
+- question: O agente pode lidar com diferentes dialetos ou sotaques no Brasil?
+  answer_template: Sim, treinamos o agente para compreender variações regionais de
+    português, garantindo comunicação eficaz em todo o país.
+- question: Como o agente melhora o engajamento da comunidade?
+  answer_template: Com chamadas personalizadas para eventos e lembretes, aumentamos
+    a participação em até 30%, conforme feedback de clientes.
+- question: O agente substitui funcionários humanos?
+  answer_template: Não, ele complementa a equipe, automatizando tarefas repetitivas
+    para que a equipe foque em atividades pastorais e relacionamentos.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre o custo do agente.
+  script: Entendo sua preocupação com o orçamento. Nosso plano inicial começa em R$
+    200/mês, com ROI típico de 3 meses através de aumento em doações e eficiência.
+    Posso detalhar mais?
+  goal: Educar sobre o valor e justificar o custo com exemplos de retorno.
+- trigger: interest_expression
+  situation: Após o cliente expressar interesse em automação.
+  script: Excelente! Nosso agente pode começar com agendamentos automáticos, integrando-se
+    ao seu sistema atual. Vamos agendar uma demonstração personalizada?
+  goal: Converter interesse em ação, agendando uma demonstração.
+- trigger: compliance_concern
+  situation: Quando o cliente menciona preocupações com LGPD.
+  script: Compreendo. Nossos agentes são projetados para LGPD, com relatórios de conformidade.
+    Já ajudamos várias igrejas a evitar multas. Posso enviar mais informações?
+  goal: Aliviar preocupações e destacar nossa expertise em conformidade.
+competitors:
+- name: Sistema Paroquial
+  positioning: Software de gestão completo para igrejas.
+  strengths:
+  - Solução abrangente
+  - ampla base de usuários no Brasil
+  - suporte local
+  weaknesses:
+  - Foco limitado em automação por voz
+  - custo alto para pequenas igrejas
+  our_differentiation: Oferecemos automação de voz acessível e especializada, com
+    integrações fáceis e foco em engajamento.
+- name: ChurchSuite
+  positioning: Plataforma de gestão eclesiástica internacional.
+  strengths:
+  - Interface moderna
+  - funcionalidades robustas
+  - multi-idioma
+  weaknesses:
+  - Menos adaptado ao mercado brasileiro
+  - preço em moeda estrangeira
+  our_differentiation: Solução localizada em pt-BR, com preços em BRL e suporte dedicado
+    para o contexto latino-americano.
+- name: Gestão Eclesiástica
+  positioning: Software local para administração de igrejas.
+  strengths:
+  - Custo-benefício
+  - simples de usar
+  - foco em pequenas comunidades
+  weaknesses:
+  - Recursos limitados de automação
+  - integrações básicas
+  our_differentiation: Agentes de voz AI que adicionam camada de automação inteligente,
+    melhorando eficiência sem substituir sistemas existentes.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 200
+  roi_examples:
+  - scenario: Igreja média com aumento de 15% em doações via lembretes automáticos.
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 2
+  value_anchors:
+  - Aumente o engajamento da comunidade com custo acessível.
+  - Conformidade LGPD garantida, evitando multas de até R$ 50 milhões.
+  - ROI rápido em 3 meses com automação de tarefas administrativas.
+market_context:
+  market_size: Estimado em 50.000 igrejas e organizações religiosas no Brasil.
+  growth_rate: 10% ao ano em adoção de tecnologia digital.
+  key_trends:
+  - Crescente digitalização de serviços religiosos pós-pandemia.
+  - Maior foco em conformidade com LGPD para proteção de dados.
+  - Aumento na demanda por soluções de automação para reduzir custos operacionais.
+  seasonality:
+    high:
+    - Dezembro (Natal)
+    - Páscoa
+    - festas juninas
+    low:
+    - Janeiro (férias)
+    - meses de baixa atividade religiosa
+typical_objections:
+- objection: É muito caro para nossa igreja pequena.
+  response: Entendemos. Oferecemos planos escaláveis a partir de R$ 200/mês, com ROI
+    comprovado. Podemos começar com funções básicas e expandir conforme cresce.
+- objection: Não temos tempo para implementar nova tecnologia.
+  response: Facilitamos a implementação com suporte dedicado e integração rápida.
+    Em poucas semanas, você verá ganhos de eficiência.
+- objection: Prefiro o contato humano com nossos fiéis.
+  response: Concordo que o contato humano é vital. Nosso agente complementa, lidando
+    com tarefas repetitivas para que sua equipe foque em relacionamentos profundos.
+meta:
+  id: religion
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

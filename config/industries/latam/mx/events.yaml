@@ -1,0 +1,200 @@
+pain_points:
+- description: Alta dependencia de proveedores externos que genera sobrecostos y retrasos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la búsqueda y negociación con proveedores, comparando precios en tiempo real.
+- description: Cambios de último minuto por parte de los clientes que desorganizan la logística.
+  severity: high
+  solution_hint: El agente puede gestionar comunicaciones rápidas y ajustar agendas automáticamente para minimizar impactos.
+- description: Dificultad para coordinar múltiples servicios como catering, audiovisual y transporte simultáneamente.
+  severity: medium
+  solution_hint: Integración con sistemas de gestión para sincronizar tareas y enviar recordatorios automatizados.
+- description: Altos costos de logística y transporte en áreas urbanas congestionadas.
+  severity: high
+  solution_hint: El agente puede optimizar rutas y coordinar con proveedores locales para reducir gastos.
+- description: Falta de tecnología integrada que lleva a errores en reservas y facturación.
+  severity: medium
+  solution_hint: Implementar un agente de voz para centralizar reservas y procesar pagos, mejorando la precisión.
+- description: Competencia intensa con precios bajos que presiona los márgenes de ganancia.
+  severity: high
+  solution_hint: Automatizar tareas repetitivas para reducir costos operativos y ofrecer precios más competitivos.
+- description: Cumplimiento con la LFPDPPP en el manejo de datos personales de clientes.
+  severity: medium
+  solution_hint: El agente puede gestionar consentimientos y asegurar el almacenamiento seguro de datos, cumpliendo normativas.
+typical_services:
+- Organización de bodas y eventos sociales
+- Conferencias y convenciones corporativas
+- Ferias y exposiciones comerciales
+- Eventos de lanzamiento de productos
+- Catering y servicios de banquetes
+- Alquiler de equipo audiovisual
+- Diseño y decoración de espacios
+- Coordinación de transporte y alojamiento
+- Gestión de invitaciones y RSVP
+- Producción de eventos virtuales
+recommended_functions:
+- name: Programación de citas y reservas
+  priority: high
+  reason: Automatiza la agenda, reduce errores humanos y mejora la eficiencia en la gestión de eventos.
+- name: Respuesta a consultas frecuentes
+  priority: high
+  reason: Proporciona respuestas instantáneas en español, mejorando la experiencia del cliente y liberando tiempo del personal.
+- name: Recordatorios automáticos
+  priority: medium
+  reason: Disminuye las ausencias y mejora la asistencia mediante notificaciones personalizadas.
+- name: Procesamiento de pagos
+  priority: high
+  reason: Facilita transacciones seguras en MXN, integrando con plataformas locales como Clip para un mejor flujo de caja.
+- name: Seguimiento post-evento
+  priority: low
+  reason: Recopila feedback automáticamente para fomentar la fidelización y mejorar servicios futuros.
+- name: Integración con CRM
+  priority: medium
+  reason: Centraliza la información del cliente, permitiendo un servicio más personalizado y eficiente.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  priority: high
+- name: Plataformas de pago
+  examples:
+  - Clip
+  - Mercado Pago
+  priority: high
+- name: Software de gestión de eventos
+  examples:
+  - Eventbrite
+  - Ticketmaster México
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business API
+  - Correo electrónico
+  priority: medium
+- name: Sistemas de contabilidad
+  examples:
+  - Contpaq
+  - SAP
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta organizar un evento en México?
+  answer_template: El costo varía según el tipo y tamaño del evento. Para eventos pequeños, puede empezar desde 20,000 MXN, mientras que eventos corporativos grandes pueden superar 500,000 MXN. Ofrecemos
+    cotizaciones personalizadas.
+- question: ¿Qué servicios incluye la organización de eventos?
+  answer_template: Ofrecemos servicios completos que incluyen planificación, coordinación de proveedores, logística, diseño, y gestión tecnológica. Podemos adaptarnos a sus necesidades específicas.
+- question: ¿Cómo manejan los cambios de último minuto?
+  answer_template: Contamos con protocolos flexibles y un agente de voz AI que ajusta automáticamente agendas y comunica cambios a proveedores, minimizando impactos.
+- question: ¿Cumplen con la LFPDPPP?
+  answer_template: Sí, seguimos estrictamente la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, garantizando la seguridad y confidencialidad de los datos.
+- question: ¿Pueden manejar eventos virtuales?
+  answer_template: Absolutamente, ofrecemos producción y gestión de eventos virtuales con tecnología de última generación, incluyendo soporte en tiempo real.
+- question: ¿Qué ventajas tiene usar un agente de voz AI?
+  answer_template: Reduce costos operativos, mejora la eficiencia con respuestas instantáneas, y permite una gestión más precisa y personalizada de sus eventos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de nuestros servicios.
+  script: Hola, entiendo que el presupuesto es clave. Nuestros servicios comienzan desde 20,000 MXN, adaptándonos a su rango. ¿Podría compartir detalles de su evento para una cotización exacta?
+  goal: Obtener información detallada y guiar hacia una consulta personalizada.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos.
+  script: Gracias por su interés. Ofrecemos desde organización básica hasta producción completa, con tecnología AI que optimiza procesos. ¿En qué área necesita más apoyo?
+  goal: Identificar las necesidades específicas del cliente y ofrecer soluciones personalizadas.
+- trigger: upsell
+  situation: Cuando el cliente está interesado en un paquete básico y se puede ofrecer un servicio adicional para mejorar su evento.
+  script: 'Cliente: Estoy interesado en el paquete básico para mi evento.
+
+    Vendedor: ¡Excelente elección! Para que su evento sea aún más especial, le recomiendo considerar nuestro servicio de decoración temática. Podemos personalizar cada detalle para que su celebración sea
+    única. ¿Le gustaría que le explique las opciones disponibles y los costos adicionales? Esto puede transformar su evento en una experiencia inolvidable para usted y sus invitados.'
+  goal: Incrementar el valor de la venta ofreciendo servicios adicionales que mejoren la experiencia del cliente.
+meta:
+  id: events
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events
+competitors:
+- name: Grupo CIE
+  positioning: Líder en organización de eventos masivos y espectáculos en México
+  strengths:
+  - Amplia experiencia en eventos a gran escala
+  - Red consolidada de proveedores y patrocinadores
+  - Fuertes alianzas con recintos y marcas reconocidas
+  weaknesses:
+  - Menor flexibilidad para eventos pequeños o personalizados
+  - Procesos menos automatizados, con alta dependencia humana
+  our_differentiation: Nuestro agente de voz AI permite una gestión automatizada y personalizada que reduce tiempos y errores, mejorando la experiencia del cliente en eventos de cualquier tamaño.
+- name: OCESA
+  positioning: Empresa destacada en producción y promoción de eventos culturales y deportivos
+  strengths:
+  - Gran capacidad logística y operativa
+  - Amplia cartera de artistas y eventos reconocidos
+  - Reconocimiento de marca en todo México
+  weaknesses:
+  - Altos costos operativos que pueden repercutir en el cliente final
+  - Menor enfoque en tecnología de automatización avanzada
+  our_differentiation: Incorporamos agentes de voz AI que optimizan la comunicación y coordinación en tiempo real, reduciendo costos y mejorando la eficiencia operativa.
+- name: Eventtia México
+  positioning: Plataforma tecnológica para gestión integral de eventos
+  strengths:
+  - Plataforma digital con funcionalidades para eventos híbridos y virtuales
+  - Facilidad para integración con otros sistemas
+  - Enfoque en innovación tecnológica
+  weaknesses:
+  - Menor presencia en eventos presenciales grandes
+  - Limitada personalización mediante agentes de voz AI
+  our_differentiation: Nuestro agente de voz AI complementa la tecnología digital ofreciendo interacción natural y gestión automatizada de cambios y consultas durante el evento.
+- name: Grupo AVE
+  positioning: Especialistas en eventos corporativos y de negocios en México
+  strengths:
+  - Experiencia en eventos corporativos y de alto nivel
+  - Servicios integrales y personalizados
+  - Buena red de proveedores corporativos
+  weaknesses:
+  - Procesos manuales que pueden causar demoras
+  - Escasa automatización en la gestión de imprevistos
+  our_differentiation: La integración de agentes de voz AI permite una respuesta rápida y automática a cambios imprevistos, mejorando la coordinación y satisfacción del cliente.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 15000
+  - 600000
+  entry_point: 20000
+  roi_examples:
+  - scenario: Ahorro en coordinación y gestión de proveedores para eventos corporativos medianos
+    monthly_cost: 12000
+    monthly_savings: 25000
+    payback_months: 1
+  - scenario: Reducción de tiempos y errores en la comunicación durante eventos sociales grandes
+    monthly_cost: 8000
+    monthly_savings: 18000
+    payback_months: 1
+  value_anchors:
+  - Automatización que reduce errores y retrabajos en la organización
+  - Mejora en la comunicación con proveedores y clientes en tiempo real
+  - Incremento en la satisfacción del cliente y asistentes al evento
+market_context:
+  market_size: 8,500 millones de MXN anuales
+  growth_rate: 6-8%
+  key_trends:
+  - Incremento en eventos híbridos y virtuales post-pandemia
+  - Mayor demanda de experiencias personalizadas y tecnológicas
+  - Uso creciente de IA y automatización en la gestión de eventos
+  - Enfoque creciente en sostenibilidad y eventos ecoamigables
+  seasonality:
+    high:
+    - noviembre
+    - diciembre
+    - marzo
+    - abril
+    low:
+    - julio
+    - agosto
+    - enero

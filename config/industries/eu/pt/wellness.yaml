@@ -1,0 +1,231 @@
+aliases:
+- bem-estar
+- spa
+- massagem
+- estética
+- manicure
+- pedicure
+- cabeleireiro
+- barbearia
+- depilação
+- fitness
+- ioga
+- pilates
+- estúdio de beleza
+- tratamentos corporais
+competitors:
+- name: Wellness Portugal
+  positioning: Líder nacional em serviços de spa e bem-estar
+  strengths:
+  - Rede ampla de centros em várias cidades
+  - Equipa experiente de terapeutas e especialistas
+  - Programas integrados de saúde e beleza
+  weaknesses:
+  - Preços acima da média do mercado
+  - Atendimento por vezes burocrático
+  our_differentiation: Atendimento personalizado via agente de voz 24/7 para agendamento
+    e suporte rápido
+- name: Spa Lusitano
+  positioning: Spa boutique focado em terapias naturais e orgânicas
+  strengths:
+  - Produtos naturais certificados
+  - Ambiente exclusivo e relaxante
+  weaknesses:
+  - Poucas unidades físicas
+  - Menor flexibilidade de horários
+  our_differentiation: Facilidade de agendamento e lembretes automáticos para reduzir
+    faltas
+- name: Estética Lisboa
+  positioning: Rede de clínicas de estética com ampla gama de tratamentos
+  strengths:
+  - Variedade de serviços estéticos modernos
+  - Promoções frequentes
+  weaknesses:
+  - Atendimento telefónico limitado fora do horário comercial
+  - Alto índice de no-show
+  our_differentiation: Sistema automático para reagendamento e confirmação via SMS
+    e WhatsApp
+industry_faq:
+- question: Quanto custa uma massagem relaxante?
+  answer_template: O preço varia conforme o tipo e duração da massagem. Massagem relaxante
+    padrão começa em 40 EUR. Posso detalhar outras opções?
+- question: Quanto tempo dura uma sessão típica?
+  answer_template: As sessões geralmente duram entre 50 a 60 minutos, com opções expressas
+    de 30 minutos disponíveis.
+- question: Como faço para marcar uma consulta?
+  answer_template: Posso agendar sua consulta agora mesmo. Qual serviço deseja e para
+    qual data?
+- question: Posso alterar o horário da minha marcação?
+  answer_template: Claro, informe seu nome e o novo horário desejado para fazer a
+    alteração.
+- question: Existem contraindicações para tratamentos estéticos?
+  answer_template: Sim, algumas contraindicações variam conforme o tratamento. Recomendo
+    consultar o especialista antes da sessão.
+- question: Vocês atendem nos fins de semana?
+  answer_template: Sim, estamos abertos aos sábados e domingos. Posso ajudar a agendar
+    para algum desses dias?
+pain_points:
+- description: Clientes têm dificuldade em contactar para agendar durante horários
+    de pico
+  severity: high
+  solution_hint: Agente de voz disponível 24/7 para agendamento automático
+- description: Alto índice de faltas sem aviso (no-show)
+  severity: high
+  solution_hint: Envio automático de lembretes por SMS e mensagens instantâneas
+- description: Equipa administrativa sobrecarregada com perguntas repetitivas
+  severity: medium
+  solution_hint: Respostas automáticas para FAQ via agente de voz
+- description: Dificuldade em comunicar promoções e descontos de forma personalizada
+  severity: medium
+  solution_hint: Chamadas proativas com ofertas direcionadas
+- description: Clientes esquecem seus horários agendados
+  severity: medium
+  solution_hint: Lembretes em múltiplos canais e possibilidade de reagendamento fácil
+- description: Complexidade no cumprimento das normas GDPR no tratamento de dados
+    de clientes
+  severity: medium
+  solution_hint: Agente de voz com integração para consentimento e registro de dados
+    conforme GDPR
+- description: Gestão manual e ineficiente dos horários dos profissionais
+  severity: medium
+  solution_hint: Integração com sistemas CRM para atualização automática de agendas
+typical_services:
+- Massagem relaxante
+- Manicure e pedicure
+- Corte e penteado
+- Tratamentos faciais e corporais
+- Depilação a cera e laser
+- Sessões de ioga e pilates
+- Tratamentos de SPA (hidroterapia, aromaterapia)
+- Maquilhagem profissional
+- Bronzeamento artificial
+- Consultoria de nutrição e fitness
+recommended_functions:
+- name: agendamento
+  priority: high
+  reason: Função principal para marcar sessões e escolher profissionais e horários
+- name: lembretes
+  priority: high
+  reason: Reduzir faltas através de notificações automáticas por SMS e WhatsApp
+- name: faq
+  priority: medium
+  reason: Responder dúvidas comuns sobre serviços, preços e preparos
+- name: reagendamento
+  priority: medium
+  reason: Permitir alteração ou cancelamento de marcações sem intervenção humana
+- name: chamadas_promocionais
+  priority: low
+  reason: Divulgar ofertas e pacotes especiais para clientes cadastrados
+- name: consentimento_gdpr
+  priority: medium
+  reason: Garantir conformidade legal na gestão de dados pessoais via agente
+typical_integrations:
+- name: CRM/Sistema de agendamento
+  examples:
+  - ZenFisio
+  - Treatwell Portugal
+  - Schedy
+  priority: high
+- name: Plataformas de mensagens
+  examples:
+  - WhatsApp Business
+  - Messenger
+  priority: high
+- name: SMS
+  examples:
+  - Twilio
+  - Nexmo
+  priority: medium
+- name: Telefonia VoIP
+  examples:
+  - Placetel
+  - Ringover
+  priority: medium
+- name: Sistemas ERP locais
+  examples:
+  - Primavera BSS
+  - PHC Software
+  priority: low
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preços de massagem ou outros serviços
+  script: Os preços variam segundo o tipo de serviço e duração. Por exemplo, uma massagem
+    relaxante começa em 40 euros. Gostaria que eu detalhasse outras opções ou pacotes?
+  goal: Informar preços e incentivar agendamento
+- trigger: no_time_objection
+  situation: Cliente diz não ter tempo para procedimentos longos
+  script: Temos opções expressas de 30 minutos e horários até às 21h para facilitar
+    sua agenda. Posso agendar uma dessas opções para você?
+  goal: Superar objeção e marcar serviço
+- trigger: think_about_it
+  situation: Cliente fica indeciso sobre agendar
+  script: Entendo, posso reservar um horário provisório para que tenha tempo para
+    pensar, garantindo a disponibilidade. Quer que faça isso?
+  goal: Garantir um compromisso inicial para possível conversão
+- trigger: expensive_objection
+  situation: Cliente acha os preços altos
+  script: Oferecemos planos mensais e pacotes com descontos até 20%. Quer que eu envie
+    as opções para si?
+  goal: Mostrar opções de valor e manter interesse
+- trigger: weekend_availability
+  situation: Cliente quer atendimento no fim de semana
+  script: Sim, atendemos ao sábado e domingo. Posso agendar para o dia que preferir?
+  goal: Facilitar o agendamento e reforçar disponibilidade
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 30
+  - 120
+  entry_point: 30
+  roi_examples:
+  - scenario: Redução de faltas com lembretes automáticos
+    monthly_cost: 100
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Otimização do agendamento 24/7 via assistente de voz
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Automatize suas marcações e reduza faltas em até 90%.
+  - Aumente a satisfação do cliente com atendimento rápido e disponível a qualquer
+    hora.
+  - Garanta conformidade com GDPR no tratamento de dados pessoais.
+market_context:
+  market_size: 250000000
+  growth_rate: 0.07
+  key_trends:
+  - Crescente procura por serviços de bem-estar e saúde mental
+  - Digitalização dos processos de agendamento e atendimento
+  - Valorização de produtos e serviços naturais e sustentáveis
+  - Aumento do interesse em terapias alternativas e personalizadas
+  seasonality:
+    high:
+    - Primavera
+    - Verão
+    - Períodos pré-festivos (Natal, Ano Novo)
+    low:
+    - Inverno
+    - Férias escolares (julho e agosto, dependendo da região)
+typical_objections:
+- objection: Muito caro
+  response: Temos pacotes com descontos até 20% e opções expressas que cabem no seu
+    orçamento. Quer que eu envie detalhes?
+- objection: Não tenho tempo
+  response: Oferecemos sessões rápidas de 30 minutos e horários prolongados até às
+    21h para se adaptar à sua agenda.
+- objection: Quero pensar melhor
+  response: Sem problema! Posso reservar um horário provisório para si e assim garantir
+    a disponibilidade.
+- objection: Prefiro falar com alguém pessoalmente
+  response: O nosso agente de voz pode ajudar com agendamento rápido e tirar dúvidas
+    básicas. Se preferir, também podemos agendar uma chamada com um atendente.
+meta:
+  id: wellness
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+_extends: _base/wellness

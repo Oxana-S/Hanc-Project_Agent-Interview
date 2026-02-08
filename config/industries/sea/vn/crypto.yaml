@@ -1,0 +1,194 @@
+pain_points:
+- description: Thiếu sự rõ ràng về quy định pháp lý, nhiều doanh nghiệp không chắc chắn về tuân thủ.
+  severity: high
+  solution_hint: AI voice agent có thể cung cấp cập nhật về quy định và mẹo tuân thủ.
+- description: Rủi ro cao từ lừa đảo và gian lận, khách hàng lo ngại về bảo mật.
+  severity: high
+  solution_hint: AI agent có thể giáo dục về thực hành bảo mật tốt nhất và xác minh giao dịch.
+- description: Hạn chế tiếp cận dịch vụ ngân hàng, doanh nghiệp crypto gặp khó khăn với ngân hàng truyền thống.
+  severity: medium
+  solution_hint: AI có thể đề xuất phương thức thanh toán thay thế và tích hợp với giải pháp fintech.
+- description: Nhận thức và giáo dục công chúng thấp, nhiều người không hiểu kiến thức cơ bản về crypto.
+  severity: medium
+  solution_hint: AI agent có thể cung cấp hướng dẫn và trả lời câu hỏi thông thường bằng tiếng Việt đơn giản.
+- description: Rào cản kỹ thuật, việc thiết lập và quản lý hệ thống crypto phức tạp.
+  severity: medium
+  solution_hint: AI có thể hướng dẫn qua quy trình thiết lập và cung cấp hỗ trợ kỹ thuật.
+- description: Biến động và rủi ro thị trường, giá cả dao động nhanh gây bất ổn.
+  severity: high
+  solution_hint: AI có thể cung cấp insights thị trường và lời khuyên quản lý rủi ro.
+typical_services:
+- Giao dịch tiền điện tử
+- Ví tiền điện tử
+- Dịch vụ chuyển đổi tiền tệ
+- Tư vấn đầu tư crypto
+- Bảo mật và an ninh mạng
+- Phát triển blockchain
+- Dịch vụ token hóa
+- Đào tạo và giáo dục về crypto
+- Hỗ trợ tuân thủ pháp lý
+- Phân tích thị trường
+recommended_functions:
+- name: Cập nhật thông tin pháp lý
+  priority: high
+  reason: Giúp doanh nghiệp tuân thủ các quy định mới nhất.
+- name: Hỗ trợ bảo mật giao dịch
+  priority: high
+  reason: Giảm thiểu rủi ro lừa đảo và tăng cường an toàn.
+- name: Tư vấn đầu tư cơ bản
+  priority: medium
+  reason: Cung cấp thông tin giáo dục cho người mới bắt đầu.
+- name: Hướng dẫn kỹ thuật
+  priority: medium
+  reason: Hỗ trợ thiết lập và quản lý hệ thống crypto.
+- name: Phân tích thị trường tự động
+  priority: low
+  reason: Cung cấp insights thị trường để ra quyết định.
+- name: Quản lý rủi ro
+  priority: high
+  reason: Giúp đối phó với biến động giá và rủi ro.
+typical_integrations:
+- name: Hệ thống ngân hàng
+  examples:
+  - Vietcombank
+  - Techcombank
+  - VPBank
+  priority: high
+- name: Nền tảng giao dịch crypto
+  examples:
+  - Binance
+  - Remitano
+  - Vicuta
+  priority: high
+- name: Công cụ quản lý rủi ro
+  examples:
+  - Phần mềm đánh giá rủi ro địa phương
+  - giải pháp tùy chỉnh
+  priority: medium
+- name: Hệ thống CRM
+  examples:
+  - Salesforce
+  - Base.vn
+  priority: medium
+- name: Công cụ phân tích thị trường
+  examples:
+  - TradingView
+  - nhà cung cấp dữ liệu địa phương
+  priority: low
+industry_faq:
+- question: Crypto có hợp pháp ở Việt Nam không?
+  answer_template: Hiện tại, crypto chưa được công nhận là tiền tệ hợp pháp, nhưng giao dịch và đầu tư vẫn diễn ra. Cần tuân thủ các quy định về chống rửa tiền và bảo vệ dữ liệu.
+- question: Làm thế nào để bảo mật ví crypto của tôi?
+  answer_template: Sử dụng ví lạnh cho số tiền lớn, bật xác thực hai yếu tố, và không chia sẻ khóa riêng tư.
+- question: Tôi có thể mua crypto bằng VND không?
+  answer_template: Có, thông qua các sàn giao dịch địa phương như Remitano hoặc Vicuta hỗ trợ VND.
+- question: Rủi ro khi đầu tư crypto là gì?
+  answer_template: Rủi ro bao gồm biến động giá cao, lừa đảo, và thay đổi pháp lý. Nên đầu tư chỉ với số tiền có thể mất.
+- question: Làm thế nào để tuân thủ PDPD khi xử lý dữ liệu khách hàng?
+  answer_template: Cần có sự đồng ý rõ ràng, mã hóa dữ liệu, và chỉ thu thập thông tin cần thiết.
+- question: Crypto có bị đánh thuế không?
+  answer_template: Hiện chưa có quy định rõ ràng về thuế crypto, nhưng có thể áp dụng thuế thu nhập cá nhân trên lợi nhuận.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về chi phí dịch vụ.
+  script: Chào anh/chị, dịch vụ của chúng tôi có mức giá linh hoạt từ 5 triệu VND/tháng, tùy thuộc vào quy mô và nhu cầu. Chúng tôi có thể tiết kiệm cho anh/chị tới 30% chi phí vận hành.
+  goal: Giới thiệu giá cả và lợi ích tiết kiệm.
+- trigger: security_concern
+  situation: Khách hàng lo ngại về bảo mật.
+  script: Chúng tôi hiểu rằng bảo mật là ưu tiên hàng đầu. AI của chúng tôi được tích hợp các công nghệ bảo mật tiên tiến và tuân thủ PDPD, đảm bảo an toàn cho dữ liệu của anh/chị.
+  goal: Xoa dịu lo ngại và xây dựng niềm tin.
+- trigger: compliance_question
+  situation: Khách hàng hỏi về tuân thủ pháp lý.
+  script: Với sự thay đổi liên tục của quy định, chúng tôi cung cấp cập nhật tự động và hỗ trợ tuân thủ để anh/chị luôn an tâm kinh doanh.
+  goal: Giải quyết vấn đề pháp lý và thuyết phục khách hàng.
+- trigger: competitor_mention
+  situation: Khách hàng so sánh với đối thủ.
+  script: Khác với các đối thủ, chúng tôi tập trung vào tích hợp địa phương và hỗ trợ tiếng Việt 24/7, giúp anh/chị tối ưu hóa hoạt động tại Việt Nam.
+  goal: Phân biệt sản phẩm và nhấn mạnh lợi thế địa phương.
+competitors:
+- name: Binance
+  positioning: Sàn giao dịch crypto toàn cầu.
+  strengths:
+  - Phạm vi toàn cầu
+  - nhiều loại tiền điện tử
+  - thanh khoản cao
+  weaknesses:
+  - Hỗ trợ địa phương hạn chế
+  - rủi ro pháp lý ở Việt Nam
+  our_differentiation: Tập trung vào thị trường Việt Nam với hỗ trợ tiếng Việt và tuân thủ PDPD.
+- name: Remitano
+  positioning: Sàn giao dịch P2P tại Việt Nam.
+  strengths:
+  - Hỗ trợ VND
+  - giao diện đơn giản
+  - phổ biến địa phương
+  weaknesses:
+  - Tính năng hạn chế
+  - bảo mật có thể cải thiện
+  our_differentiation: Cung cấp dịch vụ AI tự động hóa và tích hợp sâu với hệ thống ngân hàng địa phương.
+- name: Vicuta
+  positioning: Sàn giao dịch crypto địa phương.
+  strengths:
+  - Tuân thủ quy định Việt Nam
+  - hỗ trợ khách hàng tốt
+  weaknesses:
+  - Quy mô nhỏ
+  - thanh khoản thấp
+  our_differentiation: AI voice agent giúp tự động hóa vận hành và cung cấp phân tích thị trường nâng cao.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 500000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Tự động hóa hỗ trợ khách hàng cho sàn giao dịch nhỏ
+    monthly_cost: 10000000
+    monthly_savings: 18333300
+    payback_months: 3
+  - scenario: Quản lý rủi ro và tuân thủ cho doanh nghiệp vừa
+    monthly_cost: 50000000
+    monthly_savings: 95000000
+    payback_months: 2.5
+  value_anchors:
+  - Giảm 50% thời gian xử lý giao dịch
+  - Tăng cường bảo mật đạt chuẩn quốc tế
+  - Hỗ trợ tuân thủ PDPD tự động
+market_context:
+  market_size: Khoảng 1 tỷ USD
+  growth_rate: 25%
+  key_trends:
+  - Tăng cường sử dụng crypto trong thanh toán
+  - Chính phủ đang xem xét quy định rõ ràng hơn
+  - Sự phát triển của DeFi và NFT tại Việt Nam
+  seasonality:
+    high:
+    - Cuối năm (tháng 10-12) do nhu cầu đầu tư tăng
+    - Sau các sự kiện crypto lớn
+    low:
+    - Đầu năm (tháng 1-2) do Tết Nguyên Đán
+    - Mùa hè (tháng 6-8) có thể chậm lại
+typical_objections:
+- objection: Tôi không tin tưởng vào công nghệ AI cho crypto.
+  response: Chúng tôi sử dụng AI để hỗ trợ, không thay thế con người. AI giúp giảm sai sót và tăng hiệu quả, với giám sát từ chuyên gia.
+- objection: Chi phí quá cao so với lợi ích.
+  response: Hãy xem xét ROI nhanh chóng. Ví dụ, khách hàng của chúng tôi tiết kiệm được 3 triệu VND/tháng chỉ sau 3 tháng sử dụng.
+- objection: Tôi lo ngại về tuân thủ pháp lý với PDPD.
+  response: AI của chúng tôi được thiết kế đặc biệt để tuân thủ PDPD, với các tính năng mã hóa và xử lý dữ liệu an toàn, đảm bảo bạn không vi phạm quy định.
+- objection: Thị trường crypto quá biến động, không ổn định để đầu tư vào AI.
+  response: Chính vì biến động, AI có thể giúp quản lý rủi ro và tối ưu hóa giao dịch, mang lại lợi thế cạnh tranh.
+meta:
+  id: crypto
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- crypto
+- cryptocurrency
+- blockchain
+- bitcoin
+- exchange
+_extends: _base/crypto

@@ -1,0 +1,196 @@
+pain_points:
+- description: Biaya sewa ruang dan operasional yang terus meningkat di kota-kota besar seperti Jakarta dan Surabaya, membuat margin keuntungan menipis.
+  severity: high
+  solution_hint: AI voice agent dapat membantu mengoptimalkan pemanfaatan ruang dan menawarkan paket layanan tambahan untuk meningkatkan pendapatan per anggota.
+- description: Kesulitan dalam mengelola pemesanan ruang meeting dan fasilitas secara manual, sering menyebabkan double booking atau konflik jadwal.
+  severity: medium
+  solution_hint: Mengintegrasikan AI voice agent dengan sistem pemesanan online untuk penjadwalan otomatis dan pengingat real-time.
+- description: Tingkat perputaran anggota (churn rate) yang tinggi karena persaingan ketat dan kurangnya keterlibatan personal dengan anggota.
+  severity: high
+  solution_hint: AI voice agent dapat melakukan follow-up otomatis, menawarkan promo khusus, dan mengumpulkan feedback untuk meningkatkan retensi.
+- description: Kepatuhan terhadap regulasi Perlindungan Data Pribadi (PDP) yang kompleks dalam menangani data anggota dan transaksi.
+  severity: medium
+  solution_hint: Voice agent dapat memberikan informasi standar tentang kebijakan privasi dan mengarahkan pertanyaan kompleks ke tim legal.
+- description: Operasional 24/7 untuk mendukung anggota yang bekerja di luar jam normal, membutuhkan staf tambahan.
+  severity: low
+  solution_hint: AI voice agent dapat menangani pertanyaan dasar, akses, dan bantuan teknis secara otomatis 24 jam.
+- description: Promosi yang kurang efektif dalam menarik startup lokal dan freelancer karena terbatasnya anggaran marketing.
+  severity: medium
+  solution_hint: Voice agent dapat melakukan cold calling atau outreach otomatis dengan penawaran paket trial yang menarik.
+typical_services:
+- Ruang Kerja Bersama (Hot Desk)
+- Meja Dedikasi (Dedicated Desk)
+- Kantor Pribadi (Private Office)
+- Ruang Meeting / Konferensi
+- Virtual Office
+- Layanan Resepsionis
+- Fasilitas Co-working (High-Speed Internet, Percetakan, dll)
+- Acara Networking & Workshop
+- Paket Keanggotaan Bulanan/Tahunan
+- Layanan Administrasi Perusahaan
+recommended_functions:
+- name: Pemesanan Ruang Otomatis
+  priority: high
+  reason: Mengurangi konflik jadwal dan meningkatkan kepuasan anggota dengan proses booking yang cepat.
+- name: Penagihan dan Pembayaran
+  priority: high
+  reason: Memudahkan pembayaran berulang, mengingatkan jatuh tempo, dan mengurangi tunggakan dalam IDR.
+- name: Dukungan Pelanggan 24/7
+  priority: medium
+  reason: Menjawab pertanyaan umum, masalah akses, atau teknis kapan saja tanpa staf manusia.
+- name: Pendaftaran dan Onboarding Anggota Baru
+  priority: high
+  reason: Mengotomatiskan proses registrasi, tur virtual, dan pengenalan fasilitas.
+- name: Pengumpulan Feedback
+  priority: low
+  reason: Survei otomatis untuk mengukur kepuasan dan mendapatkan masukan perbaikan.
+- name: Promosi dan Upselling
+  priority: medium
+  reason: Menawarkan paket upgrade atau promo khusus berdasarkan penggunaan anggota.
+typical_integrations:
+- name: Sistem Pemesanan Online
+  examples:
+  - JadwalKita
+  - Flex
+  - OfficeRnD
+  priority: high
+- name: Software Akuntansi
+  examples:
+  - Jurnal
+  - Accurate Online
+  - Zahir
+  priority: high
+- name: CRM
+  examples:
+  - Salesmate
+  - HubSpot
+  - Layanan CRM Lokal
+  priority: medium
+- name: Sistem Akses dan Keamanan
+  examples:
+  - Koneksi ke pintu otomatis
+  - sistem kartu anggota
+  priority: medium
+- name: Platform Pembayaran Digital
+  examples:
+  - Midtrans
+  - Doku
+  - Xendit
+  priority: high
+industry_faq:
+- question: Berapa harga sewa ruang kerja bersama per bulan?
+  answer_template: Harga mulai dari Rp 800.000 per bulan untuk hot desk, tergantung lokasi dan fasilitas. Bisa saya rekomendasikan paket yang sesuai kebutuhan Anda?
+- question: Apakah tersedia ruang meeting untuk acara mendadak?
+  answer_template: Ya, kami punya ruang meeting yang bisa dipesan harian atau per jam. Untuk akses mendadak, silakan cek ketersediaan via aplikasi atau saya bantu cek sekarang.
+- question: Bagaimana dengan keamanan data pribadi saya?
+  answer_template: Kami mengikuti regulasi PDP Indonesia. Data Anda dilindungi dan hanya digunakan untuk keperluan layanan. Kebijakan privasi lengkap bisa diakses di website kami.
+- question: Apakah ada paket trial untuk mencoba fasilitas?
+  answer_template: Tersedia paket trial 1 hari atau 1 minggu dengan harga khusus. Ini cocok untuk Anda yang ingin merasakan atmosfer kerja di sini dulu.
+- question: Bisakah virtual office digunakan untuk izin usaha?
+  answer_template: Ya, paket virtual office kami menyediakan alamat resmi dan layanan surat-menyurat yang bisa digunakan untuk keperluan perizinan.
+- question: Apakah ada dukungan untuk startup dalam hal jaringan?
+  answer_template: Tentu, kami sering mengadakan acara networking dan workshop, serta dapat menghubungkan Anda dengan investor atau mentor di komunitas kami.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon anggota menanyakan harga di awal percakapan.
+  script: 'Harga kami sangat kompetitif, mulai dari Rp 800.000 per bulan. Namun, yang lebih penting adalah nilai yang Anda dapatkan: jaringan profesional, lokasi strategis, dan fasilitas lengkap. Boleh
+    saya tahu jenis pekerjaan Anda agar bisa rekomendasikan paket terbaik?'
+  goal: Mengalihkan dari harga murni ke nilai tambah dan memahami kebutuhan calon anggota.
+- trigger: hesitation
+  situation: Calon anggota ragu-ragu karena sudah ada banyak pilihan coworking.
+  script: Memang banyak pilihan, tapi di sini kami fokus pada komunitas yang supportive dan fleksibilitas kontrak. Banyak startup di sini tumbuh karena kolaborasi. Mau coba trial dulu untuk merasakan perbedaannya?
+  goal: Mengatasi keraguan dengan menonjolkan diferensiasi dan menawarkan trial.
+- trigger: competitor_mention
+  situation: Calon anggota menyebut pesaing dengan harga lebih murah.
+  script: Saya paham ada opsi lain dengan harga berbeda. Tapi, di kami Anda bayar untuk koneksi bisnis yang berkualitas, lokasi premium, dan dukungan operasional penuh. ROI-nya bisa lebih tinggi. Ingin
+    saya tunjukkan studi kasus anggota kami?
+  goal: Menekankan nilai jangka panjang dan ROI, bukan hanya harga.
+- trigger: need_urgency
+  situation: Calon anggota butuh ruang segera untuk proyek mendadak.
+  script: Kami bisa atur untuk Anda mulai besok. Proses pendaftaran cepat, dan Anda langsung dapat akses 24/7. Saya bantu proses sekarang juga, ya?
+  goal: Menutup penjualan dengan cepat dengan menawarkan kemudahan dan kecepatan.
+competitors:
+- name: CoHive
+  positioning: Coworking space jaringan luas dengan fokus pada komunitas startup.
+  strengths:
+  - Lokasi banyak di kota besar
+  - komunitas aktif
+  - fasilitas lengkap
+  weaknesses:
+  - Harga relatif tinggi
+  - terkadang terlalu ramai
+  our_differentiation: Kami menawarkan lebih banyak privasi dan layanan personal dengan harga yang lebih transparan.
+- name: WeWork Indonesia
+  positioning: Brand internasional dengan desain premium dan jaringan global.
+  strengths:
+  - Brand kuat
+  - desain mewah
+  - jaringan internasional
+  weaknesses:
+  - Harga sangat tinggi
+  - kurang adaptif dengan kebutuhan lokal
+  our_differentiation: Kami lebih memahami kebutuhan bisnis lokal dan menawarkan fleksibilitas kontrak yang lebih baik.
+- name: GoWork
+  positioning: Coworking dengan teknologi tinggi dan konsep modern.
+  strengths:
+  - Teknologi canggih
+  - konsep modern
+  - lokasi strategis
+  weaknesses:
+  - Fokus berlebihan pada teknologi sehingga kurang interaksi manusia
+  our_differentiation: Kami seimbangkan teknologi dengan interaksi komunitas nyata untuk kolaborasi yang lebih efektif.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 800000
+  - 15000000
+  entry_point: 800000
+  roi_examples:
+  - scenario: Freelancer yang biasanya bekerja di café beralih ke coworking.
+    monthly_cost: 1500000
+    monthly_savings: 2750000
+    payback_months: 3
+  - scenario: Startup kecil menghemat biaya sewa kantor tradisional.
+    monthly_cost: 5000000
+    monthly_savings: 10000000
+    payback_months: 6
+  value_anchors:
+  - Hanya Rp 25.000 per hari untuk ruang kerja profesional.
+  - Lebih murah daripada sewa kantor konvensional di Jakarta.
+  - Investasi untuk jaringan bisnis yang bernilai jutaan rupiah.
+market_context:
+  market_size: Diperkirakan Rp 5 triliun pada 2023.
+  growth_rate: 15% YoY
+  key_trends:
+  - Peningkatan permintaan dari startup dan freelancer pasca pandemi.
+  - Tren hybrid working mendorong kebutuhan ruang fleksibel.
+  - Ekspansi coworking ke kota tier-2 seperti Bandung dan Medan.
+  - Integrasi lebih banyak teknologi untuk pengalaman anggota tanpa sentuh.
+  seasonality:
+    high:
+    - Januari
+    - Agustus
+    - September
+    low:
+    - Desember
+    - Juni
+typical_objections:
+- objection: Saya bisa kerja dari rumah saja, lebih hemat.
+  response: Betul, tapi di coworking Anda dapat fokus lebih baik, jaringan profesional, dan pemisahan yang sehat antara kerja dan kehidupan pribadi. Plus, biayanya mungkin lebih kecil dari yang Anda kira.
+- objection: Kontraknya terlalu panjang, saya butuh fleksibilitas.
+  response: Kami punya opsi bulanan tanpa ikatan kontrak panjang. Bahkan ada paket harian untuk yang sangat fleksibel. Cocok untuk proyek jangka pendek.
+- objection: Fasilitasnya sama saja dengan coworking lain.
+  response: Mungkin terlihat sama, tapi komunitas dan dukungan di sini yang berbeda. Di sini Anda bisa bertemu dengan potensi klien atau mitra yang tepat. Mau saya perkenalkan dengan beberapa anggota kami?
+meta:
+  id: coworking
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

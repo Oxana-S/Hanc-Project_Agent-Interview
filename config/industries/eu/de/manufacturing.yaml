@@ -1,0 +1,235 @@
+pain_points:
+- description: Hohe Energiekosten belasten die Produktionskosten und senken die Wettbewerbsfähigkeit.
+  severity: high
+  solution_hint: Unser KI-Sprachagent kann durch automatisierte Anrufe bei Energieversorgern
+    die besten Tarife verhandeln und Echtzeit-Energieverbrauchsanalysen liefern.
+- description: Personalmangel, besonders bei qualifizierten Fachkräften wie Mechatronikern
+    und Industriemechanikern.
+  severity: high
+  solution_hint: Der Agent übernimmt die Erstansprache von Bewerbern, führt Terminvereinbarungen
+    für Vorstellungsgespräche durch und beantwortet Standardfragen rund um die Uhr.
+- description: Komplexe Lieferketten und Materialengpässe führen zu Produktionsverzögerungen.
+  severity: high
+  solution_hint: Der Agent automatisiert die Kommunikation mit Lieferanten, fragt
+    Lagerstände und Liefertermine ab und warnt proaktiv bei Verzögerungen.
+- description: Strenge und sich ständig ändernde regulatorische Vorgaben (z.B. CE-Kennzeichnung,
+    Umweltauflagen).
+  severity: medium
+  solution_hint: Der Agent kann Teams an wichtige Fristen erinnern und standardisierte
+    Compliance-Checklisten per Telefon abarbeiten.
+- description: Ineffiziente interne Kommunikation und hoher Verwaltungsaufwand für
+    Bestellungen und Rechnungsklährung.
+  severity: medium
+  solution_hint: Der Agent bearbeitet eingehende Anrufe, leitet Anfragen an die richtige
+    Abteilung weiter und automatisiert die Statusabfrage von Bestellungen.
+- description: Hoher Druck zur Digitalisierung und Implementierung von Industrie 4.0-Lösungen
+    bei begrenztem Know-how.
+  severity: medium
+  solution_hint: Der Agent dient als erster Ansprechpartner für Mitarbeiterfragen
+    zu neuen digitalen Tools und vereinbart Schulungstermine.
+typical_services:
+- CNC-Fertigung und -Bearbeitung
+- Spritzguss für Kunststoffteile
+- Blechbearbeitung und Stanzteilefertigung
+- Montage und Konfektionierung
+- Oberflächenbehandlung (z.B. Pulverbeschichtung, Galvanisierung)
+- Sonderanfertigungen und Prototypenbau
+- Qualitätssicherung und Prüfdienstleistungen
+- Logistik und Verpackung
+- Instandhaltung und Wartung von Produktionsanlagen
+- Beratung zu Lean Production und Prozessoptimierung
+recommended_functions:
+- name: 24/7 Kundenanfragen-Management
+  priority: high
+  reason: Ermöglicht es, Angebotsanfragen auch außerhalb der Bürozeiten entgegenzunehmen
+    und so keine Leads zu verlieren.
+- name: Lieferantenkommunikation automatisieren
+  priority: high
+  reason: Reduziert manuellen Aufwand für Bestellungen und Lieferabfragen und stabilisiert
+    die Lieferkette.
+- name: Terminvereinbarung für Wartung und Service
+  priority: medium
+  reason: Optimiert die Auslastung des Servicepersonals und verkürzt Stillstandszeiten
+    der Maschinen.
+- name: Erstkontakt und Qualifikation von Bewerbern
+  priority: medium
+  reason: Entlastet die Personalabteilung von Routineanrufen und filtert passende
+    Kandidaten vor.
+- name: Rechnungs- und Zahlungserinnerungen
+  priority: low
+  reason: Verbessert den Cashflow durch regelmäßige, höfliche Mahnungen ohne manuellen
+    Aufwand.
+- name: Umfragen zur Kundenzufriedenheit durchführen
+  priority: low
+  reason: Generiert wertvolles Feedback für die Verbesserung von Produkten und Services
+    automatisiert.
+typical_integrations:
+- name: Enterprise Resource Planning (ERP)
+  examples:
+  - SAP
+  - Sage
+  - DATEV
+  - proALPHA
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - HubSpot
+  - Salesforce
+  - Microsoft Dynamics 365
+  priority: high
+- name: Produktionsplanungs- und Steuerungssystem (PPS/MES)
+  examples:
+  - FORCAM
+  - PSIpenta
+  - MPDV
+  priority: medium
+- name: Zeiterfassungssystem
+  examples:
+  - Clockify
+  - ATOSS
+  - TimeTac
+  priority: medium
+- name: Dokumentenmanagementsystem (DMS)
+  examples:
+  - Doxis4
+  - DocuWare
+  - AlFresco
+  priority: low
+industry_faq:
+- question: Wie gewährleisten Sie die Datensicherheit gemäß GDPR?
+  answer_template: Unser System ist vollständig GDPR-konform entwickelt und in der
+    EU gehostet. Alle Sprachdaten werden verschlüsselt verarbeitet und nach Abschluss
+    des Gesprächs gemäß unserer Löschrichtlinien gelöscht, sofern keine explizite
+    Speicherung vereinbart wurde.
+- question: Können Sie sich in unser bestehendes ERP-System integrieren?
+  answer_template: Ja, unser KI-Agent bietet standardisierte Schnittstellen (APIs)
+    für gängige ERP-Systeme wie SAP oder proALPHA. Gerne analysieren wir im Vorfeld
+    Ihre spezifische Systemlandschaft.
+- question: Wie lange dauert die Einrichtung?
+  answer_template: Die Standard-Einrichtung für grundlegende Funktionen wie Kundenanfragen
+    dauert etwa 2-3 Werktage. Komplexere Integrationen können 1-2 Wochen in Anspruch
+    nehmen. Wir bieten einen schlanken Onboarding-Prozess.
+- question: Funktioniert das System auch mit starkem Hintergrundlärm in der Produktion?
+  answer_template: Unsere Sprach-KI ist speziell für raue Umgebungen trainiert und
+    nutzt Rauschunterdrückung. Für extreme Fälle empfehlen wir ein einfaches Headset,
+    was aber in den meisten Büro- und Hallenumgebungen nicht nötig ist.
+- question: Was passiert, wenn der Agent eine Frage nicht beantworten kann?
+  answer_template: Der Agent erkennt seine Grenzen und leitet das Gespräch nahtlos
+    an einen menschlichen Kollegen in Ihrer Firma weiter, inklusive aller bisher gesammelten
+    Informationen. So geht kein Kontext verloren.
+sales_scripts:
+- trigger: initial_contact
+  situation: Erstanruf bei einem produzierenden Unternehmen, Ziel ist ein Demotermin.
+  script: Guten Tag, mein Name ist [Name] von [Firma]. Wir unterstützen produzierende
+    Unternehmen wie Ihres dabei, Personalkosten zu senken und Lieferantenkommunikation
+    zu automatisieren. Darf ich Ihnen in einem kurzen 15-minütigen Gespräch zeigen,
+    wie unser KI-Sprachagent Ihnen dabei helfen kann, täglich bis zu 3 Stunden Verwaltungsaufwand
+    zu sparen?
+  goal: Interesse wecken und Termin für eine Demo vereinbaren.
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten, noch bevor die genauen Anforderungen besprochen
+    wurden.
+  script: Das ist eine gute Frage. Unser Pricing basiert auf dem genauen Umfang der
+    automatisierten Anrufe und Integrationen. Um Ihnen ein passendes Angebot zu machen,
+    wäre es hilfreich zu wissen, ob Sie den Agent primär für Kundenanfragen, Lieferantenkommunikation
+    oder beide Bereiche einsetzen möchten. Können wir dazu kurz sprechen?
+  goal: Vom Preis weg hin zu einem Wertgespräch über konkrete Anwendungsfälle lenken.
+- trigger: objection_too_modern
+  situation: Kunde gibt zu bedenken, dass seine Belegschaft mit neuer Technik überfordert
+    sein könnte.
+  script: Das verstehe ich gut. Der große Vorteil unseres Sprachagents ist, dass er
+    sich an bestehende Gewohnheiten anpasst. Ihre Mitarbeiter und Kunden kommunizieren
+    einfach wie gewohnt per Telefon. Die komplexe Technik läuft im Hintergrund. Wir
+    begleiten die Einführung mit umfassender Einweisung.
+  goal: Die Bedenken entkräften und die einfache Bedienbarkeit hervorheben.
+competitors:
+- name: Deutsche Telekom / T-Systems
+  positioning: Großanbieter mit umfassenden IT- und TK-Lösungen.
+  strengths:
+  - Breites Portfolio
+  - etablierter Name
+  - eigene Infrastruktur
+  weaknesses:
+  - Höhere Kosten
+  - weniger agil
+  - Standardlösungen
+  our_differentiation: Wir bieten eine schlanke, spezialisierte und schnell implementierbare
+    Lösung für die reine Sprachautomation zu einem transparenten Preis.
+- name: Syskraft
+  positioning: Deutscher Anbieter für processuelle Telefonie in KMU.
+  strengths:
+  - Lokaler Support
+  - Fokus auf mittelständische Unternehmen
+  weaknesses:
+  - Hauptsächlich IVR-Systeme
+  - weniger KI-gesteuert
+  our_differentiation: Unser Agent ist eine echte KI, die natürliche Gespräche führt
+    und lernt, keine starre Menüsteuerung.
+- name: Aircall
+  positioning: Internationaler Cloud-Telefonie-Anbieter.
+  strengths:
+  - Benutzerfreundliche Oberfläche
+  - gute Integrationen
+  weaknesses:
+  - Weniger Fokus auf produzierende Industrie
+  - generischer Ansatz
+  our_differentiation: Unsere Lösung ist branchenspezifisch für die Herausforderungen
+    der Fertigung (z.B. Lieferanten, Maschinenwartung) vorkonfiguriert.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: Automatisierung der Lieferantenabfrage für Materialverfügbarkeit.
+    monthly_cost: 350
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie sich 20 Stunden manuelle Telefonate pro Monat.
+  - Reduzieren Sie Lieferverzögerungen durch proaktive Kommunikation.
+  - Besetzen Sie Ihre Telefonzentrale 24/7 ohne zusätzliches Personal.
+market_context:
+  market_size: Ca. 2,1 Millionen Unternehmen im verarbeitenden Gewerbe (KMU bis Konzerne)
+  growth_rate: 3-5% p.a. für digitale Automationslösungen
+  key_trends:
+  - De-risking der Lieferkette durch Diversifizierung und lokale Produktion (Reshoring).
+  - Starker Fokus auf Energieeffizienz und Nachhaltigkeit in der Produktion.
+  - Integration von KI und IoT zur vorausschauenden Wartung (Predictive Maintenance).
+  seasonality:
+    high:
+    - September-November (Vorweihnachtsproduktion)
+    - März-Mai (Nach Jahresabschluss)
+    low:
+    - Juli-August (Ferienzeit)
+    - Dezember (Weihnachtspause)
+typical_objections:
+- objection: Das haben wir schon immer so per E-Mail und Telefon gemacht, das reicht.
+  response: Das ist verständlich. Viele unserer Kunden dachten zunächst auch so. Doch
+    gerade die manuelle Abfrage per E-Mail kostet wertvolle Zeit. Unser Agent erledigt
+    diese Routineanrufe parallel zur laufenden Arbeit und meldet sich nur bei Abweichungen.
+    So können sich Ihre Mitarbeiter auf Kernaufgaben konzentrieren.
+- objection: Wir haben zu wenig Anrufvolumen, um das zu rechtfertigen.
+  response: Selbst bei geringem Volumen fallen administrative Aufgaben an. Unser Einstiegspaket
+    ist bereits für wenige Anrufe pro Tag wirtschaftlich. Zudem können Sie den Agent
+    auch für interne Prozesse wie die Terminvereinbarung für Maschinenwartung nutzen,
+    was sein Aufgabenspektrum erweitert.
+- objection: Die Einführung und Schulung würde zu viel Zeit kosten.
+  response: Unser System ist darauf ausgelegt, mit minimalem Aufwand zu starten. Wir
+    übernehmen die komplette Einrichtung und schulen Ihre Mitarbeiter in einem kurzen,
+    praxisnahen Webinar. Die meisten Kunden sind nach einer Woche im produktiven Einsatz.
+meta:
+  id: manufacturing
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

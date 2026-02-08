@@ -1,0 +1,279 @@
+pain_points:
+- description: Dificultad para cumplir con la normativa europea y el RGPD en el manejo
+    de datos personales de clientes.
+  severity: high
+  solution_hint: Un agente de voz puede guiar a los usuarios para asegurar que los
+    procesos cumplan con la normativa y ayudar a documentar el consentimiento.
+- description: Complejidad en la gestión de operaciones y transacciones rápidas en
+    criptomonedas.
+  severity: high
+  solution_hint: Automatización de consultas y confirmaciones en tiempo real para
+    agilizar procesos.
+- description: Falta de confianza y desconfianza del público general hacia las plataformas
+    de criptomonedas.
+  severity: high
+  solution_hint: Un agente de voz puede ofrecer información transparente y responder
+    dudas frecuentes para mejorar la confianza.
+- description: Problemas con la atención al cliente debido a la alta demanda y consultas
+    técnicas complejas.
+  severity: medium
+  solution_hint: Soporte 24/7 mediante agente de voz para resolver consultas básicas
+    y escalar casos complejos.
+- description: Necesidad de educación continua sobre inversiones, riesgos y nuevas
+    regulaciones.
+  severity: medium
+  solution_hint: Implementar educación interactiva y actualizaciones vía voz para
+    mantener informados a los usuarios.
+- description: Fraudes y estafas comunes que afectan la reputación de la industria.
+  severity: high
+  solution_hint: Detección temprana mediante preguntas guiadas por voz y alertas sobre
+    conductas sospechosas.
+- description: Costes elevados de operación y mantenimiento de plataformas de trading
+    y wallets.
+  severity: medium
+  solution_hint: Optimización de procesos repetitivos con agentes de voz para reducir
+    costes operativos.
+typical_services:
+- Compra y venta de criptomonedas
+- Gestión de wallets digitales
+- Trading y operaciones en exchanges
+- Custodia y seguridad de activos digitales
+- Asesoramiento en inversiones criptográficas
+- Servicios de auditoría blockchain
+- Educación y formación en criptomonedas
+- Cumplimiento regulatorio y KYC/AML
+- Monitorización de mercado y análisis de tendencias
+- Soporte técnico y atención al cliente
+recommended_functions:
+- name: Respuestas automáticas a preguntas frecuentes
+  priority: high
+  reason: Reduce la carga del equipo de soporte y mejora la experiencia del usuario.
+- name: Verificación de identidad y cumplimiento KYC
+  priority: high
+  reason: Es fundamental para cumplir normativas y prevenir fraudes.
+- name: Notificaciones en tiempo real sobre operaciones y movimientos
+  priority: high
+  reason: Mantiene informados a los usuarios y reduce incertidumbre.
+- name: Educación interactiva sobre criptomonedas y riesgos
+  priority: medium
+  reason: Ayuda a clientes a tomar decisiones informadas.
+- name: Detección de fraudes mediante patrones de conversación
+  priority: medium
+  reason: Aumenta la seguridad y protege la reputación.
+- name: Integración con sistemas de trading para órdenes por voz
+  priority: medium
+  reason: Facilita operaciones rápidas y manos libres.
+- name: Escalado automático a agentes humanos cuando es necesario
+  priority: high
+  reason: Mejora la satisfacción al manejar casos complejos.
+typical_integrations:
+- name: Plataformas de trading
+  examples:
+  - Bit2Me
+  - Coinmotion
+  - Bitstamp
+  priority: high
+- name: Sistemas de gestión KYC/AML
+  examples:
+  - Veriff
+  - Onfido
+  - Trulioo
+  priority: high
+- name: Wallets digitales
+  examples:
+  - Ledger Live
+  - Trust Wallet
+  - MetaMask
+  priority: medium
+- name: Plataformas CRM locales
+  examples:
+  - SumaCRM
+  - Holded
+  priority: medium
+- name: Sistemas de monitorización de mercado
+  examples:
+  - CoinMarketCap
+  - CryptoCompare
+  priority: low
+- name: Herramientas de cumplimiento RGPD
+  examples:
+  - OneTrust
+  - DataGuard
+  priority: medium
+industry_faq:
+- question: ¿Cómo puedo comprar criptomonedas de forma segura?
+  answer_template: Para comprar criptomonedas de forma segura, le recomendamos usar
+    plataformas reguladas y verificar siempre la identidad del vendedor. ¿Desea que
+    le ayude a encontrar opciones confiables?
+- question: ¿Cuáles son los riesgos de invertir en criptomonedas?
+  answer_template: Las criptomonedas son volátiles y pueden fluctuar rápidamente.
+    Es importante invertir solo lo que esté dispuesto a perder y diversificar su cartera.
+    ¿Quiere información sobre gestión de riesgos?
+- question: ¿Cómo cumplo con la normativa RGPD al operar con criptomonedas?
+  answer_template: Debe garantizar el consentimiento informado para el tratamiento
+    de datos y almacenar la información de forma segura. Puedo guiarle en los pasos
+    necesarios para asegurar el cumplimiento.
+- question: ¿Qué comisiones se aplican en las transacciones?
+  answer_template: Las comisiones varían según la plataforma y el tipo de operación.
+    ¿Desea que le proporcione detalles específicos sobre las tarifas actuales?
+- question: ¿Cómo puedo recuperar mi wallet si pierdo acceso?
+  answer_template: La recuperación depende del tipo de wallet y las claves de seguridad
+    guardadas. Le aconsejo mantener respaldos seguros y puedo indicarle los pasos
+    según su caso.
+- question: ¿Qué hago si sospecho de una estafa?
+  answer_template: Debe dejar de operar con la entidad sospechosa y reportar el caso
+    a las autoridades competentes. Puedo facilitarle información de contacto para
+    denuncias.
+- question: ¿Puedo operar con criptomonedas desde España legalmente?
+  answer_template: Sí, siempre que cumpla con la normativa local y europea, incluyendo
+    la declaración de impuestos. ¿Quiere que le ayude con información legal actualizada?
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios o tarifas de servicios.
+  script: Entiendo que el precio es un factor clave. Nuestros planes comienzan desde
+    50 EUR al mes, adaptándose a las necesidades específicas de cada cliente. ¿Le
+    gustaría que le prepare una propuesta personalizada?
+  goal: Informar y motivar al cliente a avanzar con una propuesta.
+- trigger: compliance_concern
+  situation: Cuando el cliente expresa dudas sobre cumplimiento normativo.
+  script: Nuestro servicio está diseñado para cumplir estrictamente con el RGPD y
+    las normativas europeas, asegurando que su negocio opere sin riesgos legales.
+    ¿Desea que le muestre cómo podemos ayudarle en este aspecto?
+  goal: Generar confianza en el cumplimiento normativo.
+- trigger: trust_issue
+  situation: Cliente preocupado por la seguridad y confianza en el sector.
+  script: Sabemos que la confianza es fundamental en criptomonedas. Nuestro agente
+    de voz ofrece transparencia y soporte continuo para que usted se sienta seguro
+    en cada operación. ¿Quiere que le haga una demostración?
+  goal: Mejorar la percepción y confianza del cliente.
+- trigger: product_features
+  situation: Cliente interesado en funcionalidades del servicio.
+  script: Nuestro agente de voz puede automatizar consultas frecuentes, verificar
+    identidades y notificar operaciones en tiempo real, optimizando sus procesos.
+    ¿Le gustaría conocer cómo se adaptan estas funciones a su negocio?
+  goal: Destacar beneficios clave y captar interés.
+- trigger: budget_concern
+  situation: Cliente preocupado por el coste.
+  script: Entendemos la importancia de la inversión. Nuestros clientes suelen recuperar
+    la inversión en pocos meses gracias a la reducción de costes operativos y mejoras
+    en eficiencia. ¿Le interesa que le comparta ejemplos concretos?
+  goal: Justificar el coste mostrando retorno de inversión.
+competitors:
+- name: Bit2Me
+  positioning: Líder nacional en compra y venta de criptomonedas.
+  strengths:
+  - Plataforma fácil de usar
+  - Amplia base de usuarios en España
+  - Servicios completos de trading y wallet
+  weaknesses:
+  - Atención al cliente limitada en horarios
+  - Integraciones limitadas con sistemas externos
+  our_differentiation: Ofrecemos soporte por voz 24/7 y funciones avanzadas de cumplimiento
+    normativo.
+- name: 2gether
+  positioning: Plataforma fintech con enfoque en integración bancaria y cripto.
+  strengths:
+  - Integración con cuentas bancarias españolas
+  - App móvil intuitiva
+  - Programas de cashback en criptomonedas
+  weaknesses:
+  - Menor variedad de criptomonedas disponibles
+  - Relativamente nuevo en el mercado
+  our_differentiation: Nuestro agente de voz facilita operaciones rápidas y automatizadas,
+    con enfoque en seguridad y educación.
+- name: Coinbase (regional)
+  positioning: Exchange global con fuerte presencia en España.
+  strengths:
+  - Alta reputación internacional
+  - Amplias funcionalidades y liquidez
+  - Soporte multilingüe
+  weaknesses:
+  - Comisiones elevadas
+  - Interfaz compleja para usuarios novatos
+  our_differentiation: Simplificamos la experiencia mediante voz y ofrecemos mejor
+    atención local personalizada.
+- name: Bitstamp (regional)
+  positioning: Exchange europeo consolidado.
+  strengths:
+  - Cumplimiento estricto regulatorio
+  - Alta seguridad
+  - Amplio soporte para traders profesionales
+  weaknesses:
+  - Menos enfoque en usuarios particulares
+  - Atención al cliente no siempre rápida
+  our_differentiation: Proveemos soluciones accesibles para todo tipo de usuarios
+    y soporte inmediato vía voz.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Reducción de costes en atención al cliente para un exchange mediano
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Automatización de procesos KYC en plataforma emergente
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  - scenario: Mejora en retención y confianza de clientes para wallet digital
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 1
+  value_anchors:
+  - Nuestros clientes logran un ahorro significativo en costes operativos desde el
+    primer mes.
+  - El cumplimiento normativo automatizado reduce riesgos legales y sanciones.
+  - La atención 24/7 mejora la satisfacción y retención de usuarios.
+  - La educación continua a través de voz aumenta la confianza del inversor y su fidelidad.
+  - La integración con sistemas locales facilita la adopción y reduce tiempos de implementación.
+market_context:
+  market_size: 250000000
+  growth_rate: 20
+  key_trends:
+  - Incremento en la adopción de criptomonedas por particulares y empresas.
+  - Mayor regulación y supervisión por parte de autoridades españolas y europeas.
+  - Crecimiento de servicios fintech integrados con cripto.
+  - Demanda creciente de soluciones seguras y compliance automatizado.
+  - Interés elevado en educación financiera y riesgos asociados.
+  seasonality:
+    high:
+    - 'Q1 (enero-marzo): aumento de operaciones tras cierre fiscal.'
+    - 'Q4 (octubre-diciembre): incremento por mayor actividad financiera.'
+    low:
+    - 'Agosto: menor actividad por vacaciones.'
+    - 'Julio: reducción temporal en volumen de operaciones.'
+typical_objections:
+- objection: No estoy seguro de que un agente de voz pueda entender mis necesidades
+    específicas.
+  response: Nuestro agente de voz está diseñado para adaptarse a cada negocio y aprender
+    de sus interacciones, garantizando respuestas personalizadas y eficientes.
+- objection: Tengo dudas sobre la seguridad y privacidad al usar tecnología de voz.
+  response: Cumplimos estrictamente con el RGPD y empleamos cifrado avanzado para
+    proteger toda la información gestionada por el agente de voz.
+- objection: El coste inicial parece elevado para una empresa pequeña.
+  response: Entendemos su preocupación; sin embargo, la automatización reduce costes
+    recurrentes y mejora la eficiencia, generando retorno de inversión rápido.
+- objection: Prefiero atención humana para temas complejos.
+  response: Nuestro sistema ofrece escalado inmediato a agentes humanos para consultas
+    que requieren mayor profundidad o personalización.
+- objection: La integración con mis sistemas actuales parece complicada.
+  response: Contamos con experiencia en integración con plataformas españolas y europeas,
+    facilitando una transición fluida y soporte continuo.
+meta:
+  id: crypto
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

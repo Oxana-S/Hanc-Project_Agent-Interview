@@ -1,0 +1,271 @@
+pain_points:
+- description: High and unpredictable user acquisition costs on platforms like Google
+    and Facebook Ads, making profitable scaling difficult.
+  severity: high
+  solution_hint: An AI agent can automate and optimize ad campaign bidding and targeting
+    in real-time to lower CPA.
+- description: Managing player data and transactions in compliance with Canadian PIPEDA
+    privacy laws, requiring strict data governance.
+  severity: high
+  solution_hint: Voice agents can be configured to handle support inquiries without
+    storing sensitive data, ensuring PIPEDA-compliant interactions.
+- description: Difficulty attracting and retaining specialized tech talent (e.g.,
+    Unity/Unreal developers) in competitive hubs like Vancouver, Toronto, and Montreal.
+  severity: high
+  solution_hint: Automate initial candidate screening and interview scheduling via
+    AI voice agent to streamline recruitment.
+- description: Inefficient payment processing and reconciliation for in-game purchases
+    across multiple platforms, leading to revenue leakage and reporting delays.
+  severity: medium
+  solution_hint: Integrate an AI agent with payment gateways to provide instant transaction
+    status updates and handle common refund queries.
+- description: Maintaining 24/7 player support for global audiences across time zones
+    is costly and strains resources for indie and mid-sized studios.
+  severity: medium
+  solution_hint: Deploy an AI voice agent for first-tier support, handling common
+    issues like login problems or purchase verification around the clock.
+- description: Managing and responding to community sentiment across forums, Discord,
+    and social media to prevent PR crises.
+  severity: medium
+  solution_hint: Use an AI agent to monitor sentiment keywords and escalate critical
+    issues to human teams, or provide automated, templated responses for common feedback.
+typical_services:
+- Game Development (Full-Cycle)
+- Live Operations (Live Ops) Support & Management
+- Quality Assurance (QA) & Localization Testing
+- Player Community Management & Moderation
+- Monetization Strategy & In-Game Economy Design
+- User Acquisition (UA) Campaign Management
+- Game Porting & Cross-Platform Development
+- Esports Tournament Organization & Management
+- Post-Launch Support & Content Updates
+- Game Analytics & Performance Dashboarding
+recommended_functions:
+- name: PIPEDA-Compliant Support Assistant
+  priority: high
+  reason: Critical for legal operation in Canada. Automates handling of data access/deletion
+    requests and privacy inquiries securely.
+- name: Payment & Subscription Query Handler
+  priority: high
+  reason: High volume of player inquiries about CAD transactions, failed purchases,
+    and refunds. Direct integration reduces support ticket load.
+- name: Talent Screening & Interview Scheduler
+  priority: medium
+  reason: Addresses the acute talent shortage by automating the initial recruitment
+    funnel for technical and creative roles.
+- name: Community Sentiment Analysis & Alert System
+  priority: medium
+  reason: Proactively manages brand reputation by monitoring Canadian and global player
+    forums for emerging issues.
+- name: Player Retention & Win-Back Campaign Caller
+  priority: low
+  reason: Automates outreach to lapsed players with personalized offers or update
+    announcements to improve LTV.
+- name: Ad Campaign Performance Briefing
+  priority: medium
+  reason: Provides automated, daily voice briefings on key UA metrics (CPI, ROAS)
+    in CAD, freeing up marketing managers.
+typical_integrations:
+- name: Game Engines & Development Platforms
+  examples:
+  - Unity
+  - Unreal Engine
+  - Proprietary Engines
+  priority: high
+- name: Analytics & Attribution Platforms
+  examples:
+  - GameAnalytics
+  - DeltaDNA
+  - Google Analytics for Firebase
+  - AppsFlyer
+  priority: high
+- name: CRM & Community Platforms
+  examples:
+  - Discord
+  - Salesforce
+  - Zendesk
+  priority: medium
+- name: Payment Gateways & App Stores
+  examples:
+  - Stripe
+  - PayPal
+  - Apple App Store
+  - Google Play Store
+  priority: high
+- name: Ad Networks & DSPs
+  examples:
+  - Google Ads
+  - Facebook Ads Manager
+  - Unity Ads
+  - AppLovin
+  priority: medium
+- name: Compliance & Data Management
+  examples:
+  - OneTrust
+  - TrustArc
+  - Custom PIPEDA Compliance Dashboards
+  priority: high
+industry_faq:
+- question: How do you ensure player data handling is compliant with Canadian PIPEDA
+    regulations?
+  answer_template: Our AI agents are architected with privacy-by-design. They process
+    inquiries without permanently storing personal data and can be integrated with
+    your compliance stack to handle data access requests, ensuring full PIPEDA adherence.
+- question: What's the average cost per install (CPI) for mobile games in Canada right
+    now?
+  answer_template: CPIs in Canada are typically higher than global averages, often
+    ranging from $2.50 to $4.50 CAD for mid-core games, depending on genre and platform.
+    Our tools can help optimize your campaigns to lower these costs.
+- question: Do you support localization for both English and French Canada?
+  answer_template: Absolutely. Our voice agents can be configured for bilingual support
+    (en/fr), which is crucial for reaching players in Quebec and other French-speaking
+    communities, reflecting Canada's official bilingualism.
+- question: Can you help manage player support during a major game launch or update?
+  answer_template: Yes, we specialize in scaling support elastically. Our AI agents
+    can handle the surge of common questions about downloads, patches, and server
+    status, triaging only complex issues to your human team.
+- question: How do you handle in-app purchase (IAP) issues and refund requests?
+  answer_template: Our agent integrates with your payment gateway and app store consoles.
+    It can verify transactions, explain purchase status, and guide users through the
+    official refund process for their platform (Apple/Google), reducing chargeback
+    risks.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect (e.g., a studio head or ops manager) asks about pricing
+    early in the conversation.
+  script: I understand you need clarity on investment. Our solutions typically start
+    at a manageable $500 CAD per month for core automation, scaling based on call
+    volume and integrations. Many studios see a return by reducing their cost per
+    support ticket by 60% or more. Would it be helpful to calculate a potential ROI
+    based on your current monthly support ticket volume?
+  goal: Frame price around value and ROI, not just cost, and pivot to a discovery
+    question.
+- trigger: pipeda_concern
+  situation: When a prospect expresses concern about data privacy and compliance.
+  script: That's a critical consideration. PIPEDA compliance is non-negotiable. Our
+    system is designed specifically for this. The AI agent acts as a secure interface—it
+    doesn't store personal data. All sensitive data processing is routed through your
+    own compliant systems. We can also generate audit trails for all interactions.
+    Would you like a brief overview of our security architecture?
+  goal: Alleviate compliance fears by demonstrating built-in privacy safeguards and
+    offer deeper technical reassurance.
+- trigger: competitor_mention
+  situation: When a prospect mentions a competitor like a large BPO or generic call
+    center solution.
+  script: That's a fair comparison. Many of those solutions aren't built for the unique
+    flows of gaming—like handling IAP issues or guild management queries. We specialize
+    in gaming. Our agents speak your players' language, integrate directly with your
+    game backend, and understand metrics like DAU and ARPPU. This focus means faster
+    setup and better resolution rates specifically for your players.
+  goal: Differentiate by emphasizing deep industry specialization over generic customer
+    service.
+competitors:
+- name: Unity (Unity Gaming Services)
+  positioning: Dominant engine provider offering an extensive suite of integrated
+    services (analytics, ads, voice).
+  strengths:
+  - Deep integration with Unity engine
+  - Massive existing developer base
+  - Comprehensive one-stop-shop
+  weaknesses:
+  - Can be complex and costly for non-Unity projects
+  - Less tailored for bespoke live ops
+  - Support can be impersonal for smaller studios
+  our_differentiation: We are platform-agnostic and offer personalized, white-glove
+    service focused on automation and direct player interaction, not just backend
+    tools.
+- name: Playtika (or similar large F2P publishers)
+  positioning: Large, vertically-integrated publishers with internal massive-scale
+    operations.
+  strengths:
+  - Unmatched data and resources for hyper-casual/mid-core
+  - Proven monetization expertise
+  - Huge marketing budgets
+  weaknesses:
+  - Not a service provider for external studios
+  - Acquisition-focused, often not building for the Canadian indie/mid-core scene
+  our_differentiation: We are an enabler for independent Canadian studios, providing
+    enterprise-grade automation tools without requiring you to sell your company.
+- name: Keywords Studios
+  positioning: Global video game services conglomerate offering QA, localization,
+    and player support.
+  strengths:
+  - Extensive global footprint
+  - Broad service catalogue
+  - Established reputation
+  weaknesses:
+  - Often relies on traditional human-heavy support models
+  - Can be slower to adopt cutting-edge AI
+  - Potentially higher cost structure
+  our_differentiation: We focus on AI-first automation to dramatically reduce ongoing
+    operational costs and provide instant, scalable player interaction, complementing
+    rather than replacing human effort.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Mid-sized studio automating first-tier player support (password resets,
+      purchase verification).
+    monthly_cost: 1200
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Indie developer using AI for initial candidate screening and interview
+      scheduling.
+    monthly_cost: 500
+    monthly_savings: 1600
+    payback_months: 1
+  value_anchors:
+  - Reduce your cost per player support ticket from an average of $15 CAD to under
+    $6 CAD.
+  - Reclaim 20+ hours per week for your community managers by automating routine queries.
+  - Ensure 24/7 support coverage without the cost of overnight staff.
+market_context:
+  market_size: $5.5 Billion CAD (annual video game market value)
+  growth_rate: ~5% YoY
+  key_trends:
+  - Strong growth in mobile gaming and esports viewership.
+  - Increasing government tax credits and incentives (e.g., in BC, Ontario, Quebec)
+    for game development.
+  - Rising demand for 'games as a service' models requiring sophisticated live ops.
+  - Heightened focus on data privacy and ethical monetization following PIPEDA updates.
+  seasonality:
+    high:
+    - Q4 (Holiday season releases and sales)
+    - Summer (major esports events, player free time)
+    low:
+    - Late Q1 (post-holiday slump)
+    - Early September (back-to-school)
+typical_objections:
+- objection: Our players prefer talking to a real human. An AI will feel impersonal.
+  response: I completely understand that concern. Our approach is to use the AI to
+    handle the repetitive, transactional questions (like 'is the server down?' or
+    'how do I link my account?'). This actually frees up your human staff to have
+    more meaningful, complex, and positive interactions with players who truly need
+    that personal touch. It enhances the human experience, rather than replacing it.
+- objection: We're a small studio; this seems like a cost for bigger companies.
+  response: Actually, small studios often benefit the most. You likely wear many hats.
+    Automating tasks like scheduling interviews or filtering basic support lets your
+    small team focus on core development and creative work. Our entry point is designed
+    to be accessible, and the ROI can be very swift by saving you valuable time.
+- objection: Integrating a new system sounds technically complex and disruptive.
+  response: We prioritize simple, API-driven integrations with the tools you already
+    use, like Discord, Zendesk, or your game backend. Our team handles the heavy lifting
+    during setup. The goal is to reduce disruption, not cause it. Can I share a simple
+    flowchart of a typical 2-week integration process?
+meta:
+  id: gaming
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

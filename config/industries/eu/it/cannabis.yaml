@@ -1,0 +1,220 @@
+pain_points:
+- description: Complessità normativa e requisiti di conformità per la vendita di cannabis
+    in Italia.
+  severity: high
+  solution_hint: L'agente vocale AI può fornire informazioni aggiornate sulla normativa
+    e aiutare nella gestione delle pratiche burocratiche.
+- description: Difficoltà nell'ottenere servizi bancari e di pagamento a causa delle
+    restrizioni sul settore.
+  severity: high
+  solution_hint: L'agente può indirizzare i clienti verso soluzioni di pagamento alternative
+    e gestire transazioni in modo sicuro.
+- description: Concorrenza dal mercato illegale che offre prezzi più bassi.
+  severity: medium
+  solution_hint: L'agente può evidenziare i vantaggi della legalità e della qualità
+    dei prodotti legali durante le interazioni con i clienti.
+- description: Limitazioni nel marketing e nella pubblicità dei prodotti a base di
+    cannabis.
+  severity: medium
+  solution_hint: L'agente vocale può condurre campagne di educazione e informazione
+    senza violare le regole pubblicitarie.
+- description: Gestione inefficiente dell'inventario e della supply chain.
+  severity: medium
+  solution_hint: L'agente può integrare sistemi di tracciabilità e ottimizzare gli
+    ordini attraverso automazione.
+- description: Mancanza di consapevolezza dei clienti sulle differenze tra cannabis
+    medica e light (CBD).
+  severity: low
+  solution_hint: L'agente può rispondere a domande frequenti e fornire materiale educativo
+    personalizzato.
+typical_services:
+- Vendita di cannabis light (CBD)
+- Distribuzione di prodotti a base di cannabis per uso medico
+- Consulenza legale sulla normativa italiana ed europea
+- Coltivazione e produzione di cannabis autorizzata
+- E-commerce di prodotti correlati (come accessori)
+- Analisi di laboratorio per il controllo qualità e la certificazione
+- Formazione e corsi sul consumo responsabile e le applicazioni terapeutiche
+- Servizi di logistica e spedizione per farmacie e rivenditori
+- Sviluppo di brand e packaging compliant
+- Supporto per l'ottenimento di licenze e autorizzazioni
+recommended_functions:
+- name: Gestione delle prenotazioni e ordini
+  priority: high
+  reason: Riduce il carico di lavoro manuale e migliora l'efficienza nelle vendite.
+- name: Risposta automatica a domande sulla normativa
+  priority: high
+  reason: Fornisce informazioni precise e aggiornate, evitando errori costosi.
+- name: Supporto clienti 24/7 per assistenza post-vendita
+  priority: medium
+  reason: Migliora la soddisfazione del cliente e riduce i reclami.
+- name: Integrazione con sistemi di pagamento sicuri
+  priority: high
+  reason: Facilita le transazioni nonostante le restrizioni bancarie.
+- name: Monitoraggio dell'inventario in tempo reale
+  priority: medium
+  reason: Previene esaurimenti di scorte e ottimizza la supply chain.
+- name: Campagne di educazione via telefono per nuovi clienti
+  priority: low
+  reason: Aumenta la consapevolezza del mercato e fidelizza i clienti.
+typical_integrations:
+- name: Sistemi ERP
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - SAP Italia
+  priority: high
+- name: Piattaforme e-commerce
+  examples:
+  - Shopify Italia
+  - WooCommerce
+  - Magento
+  priority: high
+- name: Software CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Agile CRM
+  priority: medium
+- name: Sistemi di pagamento
+  examples:
+  - Nexi
+  - Satispay
+  - PayPal Italia
+  priority: high
+- name: Sistemi di tracciabilità e compliance
+  examples:
+  - Track & Trace
+  - Sistema Farmaci AIFA
+  priority: medium
+industry_faq:
+- question: La cannabis light (CBD) è legale in Italia?
+  answer_template: Sì, la cannabis light con THC inferiore allo 0,5% è legale per
+    uso tecnico e benessere, ma è regolamentata da leggi specifiche. Consigliamo di
+    verificare sempre le normative aggiornate.
+- question: Quali sono i requisiti per aprire un negozio di cannabis in Italia?
+  answer_template: Serve un'autorizzazione ministeriale, rispetto delle norme locali
+    e una licenza commerciale. Offriamo consulenza per guidarvi attraverso il processo.
+- question: Posso acquistare cannabis medica senza prescrizione?
+  answer_template: No, la cannabis medica richiede una prescrizione medica e può essere
+    ottenuta solo in farmacia autorizzata.
+- question: Come posso garantire la qualità dei miei prodotti?
+  answer_template: Consigliamo analisi di laboratorio certificate e sistemi di tracciabilità
+    per assicurare conformità e sicurezza.
+- question: Quali sono i vantaggi dell'uso di CBD?
+  answer_template: Il CBD è utilizzato per il benessere, come rilassamento e supporto
+    al sonno, ma non ha effetti psicotropi. Raccomandiamo di consultare un medico
+    per uso terapeutico.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi dei servizi.
+  script: Ciao, grazie per il tuo interesse! I nostri servizi partono da un entry
+    point di 500 EUR al mese, con pacchetti personalizzati in base alle tue esigenze.
+    Possiamo organizzare una chiamata per discutere un preventivo dettagliato?
+  goal: Ottenere un appuntamento per una consulenza più approfondita e qualificare
+    il lead.
+- trigger: product_inquiry
+  situation: Quando un cliente chiede dettagli sui prodotti a base di cannabis.
+  script: Buongiorno, offriamo una gamma di prodotti cannabis light e supporto per
+    cannabis medica. Posso aiutarti a capire le opzioni disponibili e le normative
+    coinvolte? Qual è il tuo obiettivo principale?
+  goal: Educare il cliente e indirizzarlo verso il servizio appropriato.
+- trigger: compliance_concern
+  situation: Quando un cliente esprime preoccupazioni sulla conformità normativa.
+  script: Capisco le tue preoccupazioni. Lavoriamo con esperti legali e forniamo aggiornamenti
+    costanti sulle leggi italiane. Possiamo offrirti un servizio di monitoraggio della
+    compliance per garantire la tua sicurezza.
+  goal: Rassicurare il cliente e promuovere servizi di consulenza.
+competitors:
+- name: Easyjoint
+  positioning: Rivenditore online di cannabis light e accessori.
+  strengths:
+  - Brand riconosciuto
+  - Ampia gamma di prodotti
+  - Presenza su e-commerce
+  weaknesses:
+  - Limitato supporto personalizzato
+  - Prezzi elevati
+  our_differentiation: Offriamo consulenza integrata e servizi B2B su misura, non
+    solo vendita al dettaglio.
+- name: Canapicola
+  positioning: Produttore e distributore di cannabis light in Italia.
+  strengths:
+  - Controllo della filiera
+  - Qualità certificata
+  - Rete di distribuzione
+  weaknesses:
+  - Servizio clienti lento
+  - Poca flessibilità nei pacchetti
+  our_differentiation: Forniamo automazione tramite AI per migliorare l'efficienza
+    operativa e il supporto clienti.
+- name: Cannabiscienza
+  positioning: Fornitore di formazione e consulenza nel settore cannabis.
+  strengths:
+  - Esperti nel settore
+  - Contenuti educativi
+  - Network professionale
+  weaknesses:
+  - Prezzi alti per i corsi
+  - Limitata automazione
+  our_differentiation: Integriamo soluzioni tecnologiche avanzate per ridurre costi
+    e scalare i servizi.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automazione delle chiamate clienti per un negozio di cannabis light
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Gestione integrata dell'inventario per un produttore
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Riduci i costi operativi fino al 30% con l'automazione AI.
+  - Migliora la soddisfazione dei clienti con supporto 24/7.
+  - Conformità normativa garantita tramite aggiornamenti automatici.
+market_context:
+  market_size: Circa 150 milioni di EUR annui, in crescita
+  growth_rate: 15% YoY
+  key_trends:
+  - Aumento della domanda di cannabis light per benessere.
+  - Espansione della cannabis medica con prescrizioni in crescita.
+  - Digitalizzazione del settore con più piattaforme online.
+  - Maggiore attenzione alla sostenibilità e tracciabilità.
+  seasonality:
+    high:
+    - Primavera
+    - Autunno
+    low:
+    - Estate
+    - Periodi festivi come Natale
+typical_objections:
+- objection: È troppo costoso per la mia piccola attività.
+  response: Capisco, ma i nostri servizi partono da soli 500 EUR al mese e possono
+    farti risparmiare tempo e denaro a lungo termine. Possiamo iniziare con un pacchetto
+    base e scalare in seguito.
+- objection: Non sono sicuro della legalità nel mio comune.
+  response: Offriamo una consulenza iniziale gratuita per valutare la conformità locale
+    e aiutarti a navigare le normative senza rischi.
+- objection: Preferisco gestire tutto manualmente, senza tecnologia.
+  response: Con l'aumento della concorrenza, l'automazione ti permette di focalizzarti
+    sulla crescita. Possiamo mostrarti casi di successo di aziende simili.
+meta:
+  id: cannabis
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

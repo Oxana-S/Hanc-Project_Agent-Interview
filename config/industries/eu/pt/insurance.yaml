@@ -1,0 +1,260 @@
+pain_points:
+- description: Elevada taxa de abandono de clientes devido a processos de renovação
+    manuais e falta de contactos proactivos.
+  severity: high
+  solution_hint: O agente de voz AI pode automatizar contactos de pré-renovação, verificar
+    satisfação e reter clientes.
+- description: Sobrecarga de chamadas para esclarecer coberturas básicas e processos
+    de sinistro, sobrecarregando os colaboradores.
+  severity: high
+  solution_hint: O agente pode responder 24/7 a perguntas frequentes sobre coberturas
+    e guiar nos primeiros passos de um sinistro.
+- description: Dificuldade em qualificar leads de forma eficiente, perdendo tempo
+    com contactos não interessados.
+  severity: medium
+  solution_hint: O agente pode fazer triagem inicial, qualificar necessidades e agendar
+    reuniões apenas para leads quentes.
+- description: Processos administrativos lentos para atualização de dados de clientes
+    e emissão de documentos simples.
+  severity: medium
+  solution_hint: O agente pode integrar-se ao CRM para atualizar dados via voz e solicitar
+    a emissão automática de documentos.
+- description: Dificuldade em comunicar promoções ou novos produtos de forma segmentada
+    a toda a base de clientes.
+  severity: medium
+  solution_hint: O agente pode realizar campanhas de outbound personalizadas com base
+    no perfil do cliente.
+- description: Cumprimento do GDPR em gravações e processamento de dados sensíveis
+    de clientes.
+  severity: high
+  solution_hint: Agente configurado para anonimização, obtenção de consentimento explícito
+    e registo seguro de interações.
+- description: Dependência de horários de escritório para atendimento, perdendo contactos
+    fora desse período.
+  severity: low
+  solution_hint: O agente de voz fornece atendimento automatizado e qualificação de
+    contactos 24 horas por dia, 7 dias por semana.
+typical_services:
+- Seguro Automóvel (Contra Todos os Riscos e Responsabilidade Civil Obrigatória)
+- Seguro de Saúde (privado)
+- Seguro Multirriscos Habitação
+- Seguro de Vida (Capital Diferenciado ou Risco)
+- Seguro de Acidentes Pessoais
+- Seguro de Responsabilidade Civil Profissional
+- Seguro de Viagem
+- Seguro para Animais de Estimação
+- Seguros para Empresas (Patrimonial, Acidentes de Trabalho)
+- Planos de Poupança-Reforma (PPR)
+recommended_functions:
+- name: Qualificação de Leads e Agendamento
+  priority: high
+  reason: O mercado é competitivo; eficiência na conversão de contactos em reuniões
+    é crucial.
+- name: Suporte ao Cliente 24/7 para FAQs e Status de Sinistro
+  priority: high
+  reason: Melhora drasticamente a experiência do cliente e liberta os colaboradores
+    para tarefas complexas.
+- name: Campanhas de Retenção e Pré-Renovação
+  priority: high
+  reason: Reduz a taxa de abandono, que é um problema caro no setor.
+- name: Atualização de Dados no CRM via Voz
+  priority: medium
+  reason: Agiliza processos administrativos e mantém a base de dados atualizada em
+    conformidade com o GDPR.
+- name: Triagem e Encaminhamento de Sinistros
+  priority: medium
+  reason: Organiza o fluxo de trabalho e assegura que os casos urgentes recebem atenção
+    prioritária.
+- name: Venda Cruzada (Cross-selling) Assistida
+  priority: low
+  reason: Aumenta o valor por cliente identificando necessidades adicionais durante
+    interações de rotina.
+typical_integrations:
+- name: Software de CRM
+  examples:
+  - Primavera CRM
+  - Salesforce
+  - Microsoft Dynamics 365
+  - HubSpot
+  priority: high
+- name: Software de Gestão de Apólices/Seguros
+  examples:
+  - SAP para Seguros
+  - solução proprietária
+  - Oracle Insurance
+  priority: high
+- name: Plataforma de Contact Center
+  examples:
+  - Cisco Webex Contact Center
+  - Avaya
+  - Genesys
+  priority: medium
+- name: Ferramentas de Compliance e GDPR
+  examples:
+  - OneTrust
+  - soluções locais de proteção de dados
+  priority: medium
+- name: Sistemas de Pagamento e Faturação
+  examples:
+  - MBNet (para pagamentos)
+  - SafeCharge
+  - software de faturação local
+  priority: low
+industry_faq:
+- question: O meu seguro cobre este tipo de dano/acidente?
+  answer_template: Para uma resposta precisa, preciso de verificar os termos específicos
+    da sua apólice. Posso conectá-lo(a) de imediato com um especialista que acederá
+    aos seus dados e lhe dará uma resposta clara.
+- question: 'Como posso fazer uma alteração à minha apólice (ex: mudar a morada)?'
+  answer_template: Posso ajudá-lo(a) com isso. Para proceder à alteração em conformidade
+    com o GDPR, preciso que confirme alguns dados de identificação. Em seguida, o
+    pedido será registado e processado.
+- question: Quanto tempo demora a receber a indemnização de um sinistro?
+  answer_template: O prazo depende da complexidade do sinistro e da completude da
+    documentação. Para sinistros simples, o objetivo é resolver em X dias úteis. Posso
+    verificar o estado do seu processo específico se me fornecer uma referência.
+- question: Qual a diferença entre o seguro contra todos os riscos e a responsabilidade
+    civil obrigatória?
+  answer_template: A Responsabilidade Civil Obrigatória cobre danos que cause a terceiros.
+    O Contra Todos os Riscos cobre também danos no seu próprio veículo, roubo, vandalismo,
+    entre outros. Recomendo uma análise personalizada para a sua situação.
+- question: Os preços aumentam sempre na renovação?
+  answer_template: O prémio de renovação é reavaliado com base em vários fatores,
+    como a sua história de sinistros. Podemos analisar a sua proposta de renovação
+    e explorar opções para garantir que tem a melhor relação qualidade-preço.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um lead ou cliente pergunta sobre o preço de um seguro.
+  script: Compreendo que o preço é um fator importante. Para lhe dar uma cotação precisa
+    e competitiva, preciso de saber alguns detalhes, como o tipo de cobertura que
+    procura e alguns dados básicos. Posso fazer-lhe algumas perguntas rápidas para
+    lhe apresentar as melhores opções no mercado?
+  goal: Qualificar a necessidade e recolher dados para uma cotação personalizada,
+    evitando dar um valor genérico.
+- trigger: objection_too_expensive
+  situation: Cliente diz que a proposta é demasiado cara.
+  script: Percebo perfeitamente a sua preocupação. Em vez de focarmos apenas no preço,
+    podemos rever as coberturas incluídas? Por vezes, ajustando ligeiramente os limites
+    ou franquias, encontramos um equilíbrio que protege o essencial com um custo mais
+    ajustado. Posso ajudá-lo(a) nessa análise?
+  goal: Mudar a conversa de preço para valor, explorando a personalização da apólice.
+- trigger: competitor_mention
+  situation: Cliente menciona uma oferta mais barata de um concorrente.
+  script: É uma excelente prática comparar ofertas. Para além do preço, é crucial
+    comparar as coberturas, os serviços de assistência, os prazos de indemnização
+    e a reputação da seguradora. Posso destacar as vantagens específicas da nossa
+    proposta nesta comparação?
+  goal: Reforçar o valor diferencial e a qualidade do serviço, não apenas o preço.
+- trigger: renewal_reminder
+  situation: Contacto proativo antes da data de renovação de uma apólice.
+  script: Bom dia, [Nome]. Estou a contactá-lo(a) a propósito da renovação do seu
+    seguro [Tipo de Seguro], que vence em [Data]. Gostaria de confirmar se está tudo
+    em ordem com os seus dados atuais e, sem compromisso, apresentar-lhe a proposta
+    de renovação e eventuais opções mais vantajosas. Tem 2 minutos?
+  goal: Iniciar o processo de retenção, confirmar dados e prevenir o abandono.
+competitors:
+- name: Fidelidade (Grupo Fosun)
+  positioning: Maior seguradora portuguesa, com forte presença nacional em múltiplos
+    ramos.
+  strengths:
+  - Rede extensa de balcões
+  - Reconhecimento de marca
+  - Ampla gama de produtos
+  weaknesses:
+  - Estrutura pesada que pode levar a processos mais lentos
+  - Possível menor agilidade tecnológica
+  our_differentiation: Oferecemos uma integração tecnológica profunda que agiliza
+    todos os processos, desde a cotação ao sinistro, com atendimento personalizado
+    24/7 via IA.
+- name: Allianz Portugal
+  positioning: Seguradora global com forte posição no mercado empresarial e automóvel.
+  strengths:
+  - Solidez financeira internacional
+  - Expertise em seguros complexos para empresas
+  weaknesses:
+  - Foco menos intensivo no segmento individual/mass market em Portugal
+  - Processos podem ser menos adaptados ao mercado local
+  our_differentiation: Solução focada na automatização e eficiência para o mercado
+    português, com scripts e integrações desenhadas para as necessidades locais e
+    um acompanhamento mais próximo do cliente final.
+- name: Tranquilidade (Generali Group)
+  positioning: Seguradora histórica com forte foco em seguros pessoais, como automóvel
+    e saúde.
+  strengths:
+  - Marca muito reconhecida em seguros pessoais
+  - Forte presença digital
+  weaknesses:
+  - Concorrência feroz no segmento automóvel
+  - Desafios na inovação de produtos
+  our_differentiation: Complementamos a sua oferta digital com um assistente de voz
+    inteligente que humaniza o contacto digital, aumenta a retenção e capta leads
+    de forma mais eficiente.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 150
+  roi_examples:
+  - scenario: Automação da qualificação de leads e agendamento para uma corretora
+      média.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1.5
+  - scenario: Agente de retenção automática para campanhas de pré-renovação, reduzindo
+      a taxa de abandono em 5%.
+    monthly_cost: 450
+    monthly_savings: 2250
+    payback_months: 2
+  value_anchors:
+  - Reduza o abandono de clientes em até 15% com contactos automáticos de renovação.
+  - Liberte 20 horas/semana da sua equipa comercial para focarem em vendas complexas.
+  - Atenda 100% das chamadas após o horário comercial sem custos adicionais de pessoal.
+market_context:
+  market_size: ~12 mil milhões de euros em prémios anuais
+  growth_rate: 1-3% ao ano
+  key_trends:
+  - Digitalização acelerada dos processos e da venda (insurance tech).
+  - Crescente procura por seguros de saúde e produtos de poupança-reforma.
+  - Aumento da sensibilidade ao preço, especialmente nos seguros automóvel.
+  - Maior exigência na transparência e simplicidade dos contratos.
+  - 'Expansão de seguros para nichos (ex: animais de estimação, dispositivos eletrónicos).'
+  seasonality:
+    high:
+    - Janeiro (pós-festas, novas resoluções)
+    - Setembro (regresso às aulas/trabalho)
+    - Período de renovação de seguros automóvel (normalmente aniversário da carta)
+    low:
+    - Agosto (época de férias principais)
+    - Feriados prolongados de Dezembro
+typical_objections:
+- objection: Não confio num robô para tratar dos meus seguros.
+  response: Percebo a sua preocupação. O nosso agente é uma ferramenta para lidar
+    com tarefas repetitivas e informação rápida, mas sempre com a possibilidade de
+    transferência imediata para um humano. O objetivo é libertar os nossos especialistas
+    para lhe darem um aconselhamento mais personalizado quando realmente precisa.
+- objection: Já tenho processos estabelecidos que funcionam.
+  response: Isso é excelente. A nossa solução não substitui os seus processos, mas
+    otimiza-os. Imagine conseguir que a sua equipa gastasse menos tempo com tarefas
+    administrativas e mais tempo a fechar negócios ou a fidelizar clientes. Podemos
+    começar com um módulo específico, como a qualificação de leads, sem perturbar
+    o seu fluxo atual.
+- objection: O custo inicial não se justifica para o meu volume de negócio.
+  response: O investimento é escalável. Temos pacotes que começam num ponto de entrada
+    acessível, precisamente para negócios como o seu. Além disso, o retorno é rápido
+    através da poupança de tempo e do aumento da conversão. Podemos fazer uma simulação
+    concreta baseada nos seus números atuais?
+meta:
+  id: insurance
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

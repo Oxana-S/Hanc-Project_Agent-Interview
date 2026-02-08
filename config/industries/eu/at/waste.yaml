@@ -1,0 +1,233 @@
+pain_points:
+- description: Komplexe und sich ständig ändernde Abfalltrennungsvorschriften führen
+    zu Verwirrung und kostspieligen Fehlern.
+  severity: high
+  solution_hint: KI-Agent kann über aktuelle Richtlinien informieren und bei der korrekten
+    Kategorisierung beraten.
+- description: Hohe und unvorhersehbare Entsorgungskosten, besonders für Sonderabfälle.
+  severity: high
+  solution_hint: Agent kann Kostentransparenz schaffen und günstigere Abholzeitpunkte
+    oder alternative Entsorger vorschlagen.
+- description: Inkompatible Software zwischen Logistik, Entsorgern und Rechnungsstellung
+    erschwert die Prozessoptimierung.
+  severity: medium
+  solution_hint: Agent kann als Vermittler zwischen Systemen agieren und Daten manuell
+    übertragen, bis Integration erfolgt.
+- description: Personalintensive Planung von Abholrouten und Terminvereinbarungen
+    per Telefon.
+  severity: medium
+  solution_hint: Agent kann Abholungen automatisch buchen, Routen optimieren und Termine
+    selbstständig koordinieren.
+- description: Dokumentationspflichten gemäß Abfallwirtschaftsgesetz (AWG) sind aufwändig
+    und fehleranfällig.
+  severity: high
+  solution_hint: Agent kann Entsorgungsnachweise automatisch erfassen, speichern und
+    für Kontrollen bereithalten.
+- description: Mangelnde Kapazitäten bei Entsorgungsunternehmen führen zu langen Wartezeiten
+    für Abholungen.
+  severity: medium
+  solution_hint: Agent kann frühzeitig Kapazitäten abfragen und alternative Termine
+    vorschlagen, um Betriebsunterbrechungen zu vermeiden.
+typical_services:
+- Restmüllentsorgung
+- Altpapier- und Kartonabholung
+- Bioabfallentsorgung
+- Gelber Sack / Leichtverpackungen
+- Bauschutt- und Baumischabfallabfuhr
+- Entsorgungslogistik und Tourenplanung
+- Elektroaltgeräte-Recycling (EAG)
+- Sonderabfallentsorgung (gefährliche Abfälle)
+- Abfallberatung und Audit
+- Behältermanagement (Mietung, Reparatur)
+recommended_functions:
+- name: Automatische Abholterminbuchung
+  priority: high
+  reason: Reduziert manuellen Aufwand erheblich und optimiert die Logistikplanung.
+- name: Echtzeit-Kostenabfrage und -übersicht
+  priority: high
+  reason: Schafft Transparenz und hilft bei der Budgetkontrolle in einem kostenintensiven
+    Bereich.
+- name: Compliance-Check und Dokumentationsassistent
+  priority: high
+  reason: Unverzichtbar zur Einhaltung des strengen österreichischen Abfallrechts
+    (AWG).
+- name: Störungsmeldung und Serviceanfrage
+  priority: medium
+  reason: Schnelle Problembehebung verhindert Betriebsausfälle.
+- name: Rechnungsklärung und Zahlungserinnerung
+  priority: medium
+  reason: Verbessert Cashflow und reduziert administrativen Aufwand für die Buchhaltung.
+- name: Abfalltrennungs-Berater
+  priority: low
+  reason: Unterstützt Kunden bei korrekter Mülltrennung und vermeidet Zusatzkosten.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Datev
+  priority: high
+- name: Abfallwirtschaftssoftware
+  examples:
+  - ares
+  - Umweltsoftware von G.I.T.
+  priority: medium
+- name: Fuhrparkmanagement-Systeme
+  examples:
+  - Chepos
+  - FMS Standard
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - BMD
+  - Sage
+  priority: high
+- name: Kommunale Portale
+  examples:
+  - e-Government-Portale der Bundesländer
+  priority: low
+industry_faq:
+- question: Wie oft wird der Gelbe Sack abgeholt?
+  answer_template: Die Abholintervalle für den Gelben Sack werden von Ihrer Gemeinde
+    oder dem Entsorger festgelegt. Typisch sind 14-tägige oder monatliche Abholungen.
+    Ich kann Ihren aktuellen Abholplan für Sie abrufen oder einen neuen Termin vereinbaren.
+- question: Was kostet die Entsorgung von Bauschutt?
+  answer_template: Die Kosten für Bauschuttentsorgung hängen von Menge, Art und Ihrem
+    Standort ab. Für eine genaue Kostenvoranschlag benötige ich Informationen zum
+    Volumen (in m³ oder Tonnen) und der genauen Abfallart (z.B. sauberer Bauschutt,
+    Baumischabfall).
+- question: Benötige ich ein behördliches Formular für Sonderabfall?
+  answer_template: Ja, für viele gefährliche Abfälle ist ein Begleitschein (Entsorgungsnachweis)
+    gesetzlich vorgeschrieben. Ich kann Ihnen bei der Erstellung der notwendigen Dokumentation
+    helfen und den Prozess mit dem Entsorger koordinieren.
+- question: Kann ich einen zusätzlichen Abholtermin für Papier bestellen?
+  answer_template: Ja, in der Regel sind Sonderabholungen gegen Aufpreis möglich.
+    Ich prüfe sofort die Verfügbarkeit unseres Fuhrparks für Ihren Wunschtermin und
+    teile Ihnen die Kosten mit.
+- question: Was passiert, wenn meine Tonne nicht geleert wurde?
+  answer_template: Bitte entschuldigen Sie dieses Missgeschick. Melden Sie mir bitte
+    Ihre Adresse und die Behälternummer. Ich leite umgehend eine Störungsmeldung an
+    die Logistik weiter und organisiere eine Nachleistung.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn der Kunde nach den Kosten für einen bestimmten Service fragt.
+  script: Vielen Dank für Ihre Anfrage. Um Ihnen ein präzises und faires Angebot unterbreiten
+    zu können, benötige ich einige Details. Könnten Sie mir verraten, um welche Abfallart
+    es geht, welche Mengen regelmäßig anfallen und in welcher Postleitzahl Ihr Betrieb
+    sitzt? So kann ich standortgenaue Konditionen berechnen.
+  goal: Qualifizierung des Leads und Erhebung notwendiger Daten für ein maßgeschneidertes
+    Angebot.
+- trigger: complaint_about_current_provider
+  situation: Kunde äußert Unzufriedenheit mit seinem aktuellen Entsorger.
+  script: Das tut mir leid zu hören. Unzuverlässigkeit bei Abholterminen ist tatsächlich
+    ein häufiges Problem, das Betriebskosten in die Höhe treibt. Unser System mit
+    KI-gestützter Terminoptimierung und Echtzeit-Kommunikation garantiert hohe Planungssicherheit.
+    Darf ich Ihnen anhand Ihrer aktuellen Rechnung aufzeigen, wo Sie möglicherweise
+    sogar Geld sparen könnten?
+  goal: Empathie zeigen, unseren USPs präsentieren und zu einer konkreten Analyse
+    überleiten.
+- trigger: objection_complexity
+  situation: Kunde befürchtet, ein Wechsel oder die neue Technologie sei zu kompliziert.
+  script: Ich verstehe Ihre Bedenken vollkommen. Unser Service ist speziell darauf
+    ausgelegt, Komplexität für Sie zu reduzieren. Die Einrichtung übernehmen wir vollständig
+    für Sie, und unsere Sprachsteuerung funktioniert so einfach wie ein Telefonat.
+    Wir begleiten Sie während der gesamten Umstellung. Könnten wir einen kurzen Termin
+    für eine unverbindliche Demo vereinbaren?
+  goal: Hürde abbauen, Service versprechen und zu nächstem Schritt (Demo) führen.
+competitors:
+- name: Saubermacher
+  positioning: Großer, etablierter Full-Service-Anbieter in ganz Österreich.
+  strengths:
+  - Umfangreiches Leistungsportfolio
+  - Eigene Verwertungsanlagen
+  - Starke Markenpräsenz
+  weaknesses:
+  - Höhere Preise
+  - Weniger flexible Verträge für KMUs
+  - Langsame interne Prozesse
+  our_differentiation: Agile, KI-gestützte Prozesse bieten mehr Flexibilität, Transparenz
+    und persönlichen Service speziell für den Mittelstand.
+- name: ARA (Altstoff Recycling Austria AG)
+  positioning: Mono-Material-Spezialist (v.a. Verpackungen) mit gesetzlichem Auftrag.
+  strengths:
+  - Hohe Recyclingquoten
+  - Flächendeckendes Sammelsystem
+  - Gesetzlich abgesichert
+  weaknesses:
+  - Fokussiert auf Verpackungen
+  - Begrenztes Serviceangebot für andere Abfälle
+  - Bürokratisch
+  our_differentiation: Wir sind ein unabhängiger, ganzheitlicher Dienstleister für
+    alle Abfallarten und bieten maßgeschneiderte Gesamtlösungen mit moderner Technologie.
+- name: Lokale kommunale Betriebe & private Kleinentsorger
+  positioning: Regionale Anbieter mit starkem Lokalbezug.
+  strengths:
+  - Lokale Präsenz und kurze Wege
+  - Oft günstige Grundpreise
+  - Persönlicher Kontakt
+  weaknesses:
+  - Begrenztes Leistungsspektrum
+  - Häufig veraltete IT/Logistik
+  - Keine bundesweite Abdeckung
+  our_differentiation: Wir kombinieren den persönlichen Service mit der Effizienz
+    und Skalierbarkeit einer digitalen Plattform und sind österreichweit verfügbar.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: KMU mit 20 Mitarbeitern automatisiert Abholbuchungen und Rechnungsprüfung.
+    monthly_cost: 149
+    monthly_savings: 310
+    payback_months: 1
+  value_anchors:
+  - Durchschnittlich 15% Kosteneinsparung durch optimierte Logistik und bessere Verhandlungsbasis.
+  - Reduktion des Administrationsaufwands um bis zu 80%.
+  - Vermeidung von teuren Fehlwürfen und Bußgeldern durch Compliance-Sicherheit.
+market_context:
+  market_size: Ca. 3,5 Mrd. EUR Jahresumsatz (Abfallwirtschaftssektor)
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Kreislaufwirtschaft wird gesetzlich forciert (EU-Kreislaufwirtschaftspaket).
+  - Digitalisierung der Logistik (IoT in Mülltonnen, digitale Begleitscheine).
+  - Steigende Nachfrage nach transparenten und nachhaltigen Entsorgungslösungen.
+  - Zunehmende Regulierung und höhere Recyclingziele.
+  seasonality:
+    high:
+    - Frühjahr (Frühjahrsputz, Gartenabfälle)
+    - Herbst (Laub, Gartenabfälle)
+    - Nach Feiertagen (Verpackungsabfall)
+    low:
+    - Dezember/Januar (Urlaubszeit)
+typical_objections:
+- objection: Wir sind mit unserem aktuellen Anbieter zufrieden.
+  response: 'Das ist eine gute Ausgangslage. Erlauben Sie mir eine Frage: Wissen Sie
+    genau, ob Sie mit Ihrem aktuellen Vertrag die bestmöglichen Konditionen für jede
+    einzelne Abfallart erhalten? Eine unverbindliche Analyse Ihrer aktuellen Kosten
+    zeigt Ihnen, ob es Optimierungspotenzial gibt – ganz ohne Verpflichtung.'
+- objection: Das ist uns zu teuer / nicht im Budget.
+  response: 'Ich verstehe das Budget-Thema. Betrachten Sie es als Investition: Unsere
+    Kunden sparen durchschnittlich 15% ihrer Entsorgungskosten ein und gewinnen wertvolle
+    Arbeitszeit zurück. Der ROI liegt oft schon im ersten Monat. Könnten wir eine
+    konkrete Einsparprognose für Ihr Unternehmen erstellen?'
+- objection: Wir haben keine Zeit für eine Umstellung.
+  response: Genau dafür sind wir da. Wir übernehmen den gesamten Umstellungsprozess
+    für Sie – von der Vertragsanalyse über die Kündigung beim alten Anbieter bis zur
+    Einführung unserer Lösung. Für Sie entsteht kein zusätzlicher Aufwand, nur Entlastung.
+meta:
+  id: waste
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

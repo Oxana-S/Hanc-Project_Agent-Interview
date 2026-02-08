@@ -1,0 +1,204 @@
+pain_points:
+- description: Dificuldade em cumprir regulamentações complexas e em constante mudança
+    sobre cannabis medicinal.
+  severity: high
+  solution_hint: Agente de voz pode fornecer informações atualizadas sobre conformidade
+    e alertar sobre mudanças legais.
+- description: Restrições na publicidade e marketing de produtos de cannabis, limitando
+    o alcance a novos clientes.
+  severity: medium
+  solution_hint: Agente de voz pode realizar chamadas educativas e agendamentos sem
+    violar regras de publicidade.
+- description: Processamento de pagamentos complicado devido a restrições bancárias
+    para negócios de cannabis.
+  severity: high
+  solution_hint: Agente de voz pode orientar clientes sobre métodos de pagamento aceitos
+    e integrar-se a sistemas seguros.
+- description: Gestão ineficiente de consultas e agendamentos de pacientes, causando
+    longos tempos de espera.
+  severity: medium
+  solution_hint: Agente de voz pode automatizar agendamentos, reduzindo a carga administrativa.
+- description: Falta de educação do público sobre os benefícios e legalidade do cannabis
+    medicinal, levando a desconfiança.
+  severity: medium
+  solution_hint: Agente de voz pode responder a perguntas frequentes e fornecer informações
+    claras para educar clientes.
+- description: Desafios na cadeia de suprimentos, como atrasos na entrega de produtos
+    e controle de estoque.
+  severity: low
+  solution_hint: Agente de voz pode integrar-se a sistemas de logística para atualizar
+    clientes sobre status de pedidos.
+typical_services:
+- Prescrição de cannabis medicinal
+- Distribuição de produtos de cannabis
+- Consultoria médica para uso terapêutico
+- Educação e treinamento para pacientes
+- Gestão de clínicas especializadas
+- Cultivo controlado para fins medicinais
+- Análise laboratorial de produtos
+- Suporte pós-venda e acompanhamento
+- Marketing digital regulamentado
+- Integração de sistemas de saúde
+recommended_functions:
+- name: Agendamento de consultas automático
+  priority: high
+  reason: Reduz tempos de espera e melhora a eficiência operacional das clínicas.
+- name: Resposta a perguntas frequentes sobre regulamentação
+  priority: high
+  reason: Ajuda a educar clientes e garantir conformidade com leis locais.
+- name: Processamento de pedidos e rastreamento
+  priority: medium
+  reason: Melhora a experiência do cliente e otimiza a logística.
+- name: Lembretes de consultas e medicação
+  priority: medium
+  reason: Aumenta a adesão ao tratamento e satisfação do paciente.
+- name: Integração com sistemas de saúde eletrônicos
+  priority: low
+  reason: Facilita a partilha segura de informações médicas, em conformidade com GDPR.
+- name: Análise de feedback do cliente
+  priority: low
+  reason: Permite ajustes nos serviços com base em dados coletados.
+typical_integrations:
+- name: Sistemas de gestão de farmácias
+  examples:
+  - Farmácia Software
+  - SAP para saúde
+  priority: high
+- name: Plataformas de agendamento online
+  examples:
+  - Doctoralia
+  - LocalClinic
+  priority: high
+- name: Sistemas de pagamento eletrônico
+  examples:
+  - MB Way
+  - SIBS
+  priority: medium
+- name: CRM local
+  examples:
+  - Odoo
+  - Microsoft Dynamics 365
+  priority: medium
+- name: Sistemas de logística
+  examples:
+  - CTT Expresso
+  - DHL Portugal
+  priority: low
+industry_faq:
+- question: A cannabis é legal em Portugal para uso medicinal?
+  answer_template: Sim, o uso medicinal de cannabis é legal em Portugal sob prescrição
+    médica e regulamentação específica.
+- question: Como posso obter uma receita para cannabis medicinal?
+  answer_template: É necessário consultar um médico especialista que pode prescrever
+    cannabis após avaliação do seu caso.
+- question: Quais são os custos associados ao tratamento com cannabis medicinal?
+  answer_template: Os custos variam conforme a prescrição e produto, mas podem ser
+    parcialmente cobertos por seguros de saúde.
+- question: Existem efeitos secundários do uso de cannabis medicinal?
+  answer_template: Como qualquer medicamento, pode haver efeitos secundários, mas
+    são geralmente leves e discutidos com o médico.
+- question: Onde posso comprar produtos de cannabis medicinal em Portugal?
+  answer_template: Produtos estão disponíveis em farmácias autorizadas e através de
+    distribuidores licenciados.
+- question: A cannabis recreativa é permitida em Portugal?
+  answer_template: O uso recreativo não é legal, mas o consumo pessoal foi descriminalizado,
+    com foco em abordagens de saúde.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços dos serviços
+  script: Olá, os nossos serviços começam em 300 EUR e podem ser personalizados conforme
+    as suas necessidades. Posso explicar os detalhes?
+  goal: Fornecer informações claras sobre preços e incentivar uma conversa sobre personalização.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre como marcar uma consulta
+  script: Olá, podemos ajudá-lo a agendar uma consulta médica para avaliação. Tem
+    disponibilidade esta semana?
+  goal: Agendar uma consulta e iniciar o processo de atendimento.
+- trigger: compliance_concern
+  situation: Quando um cliente expressa preocupação com a legalidade
+  script: Entendo a sua preocupação. Trabalhamos em total conformidade com as leis
+    portuguesas e podemos fornecer documentação. Gostaria de saber mais?
+  goal: Tranquilizar o cliente e construir confiança na legalidade dos serviços.
+competitors:
+- name: Cannabis Portugal SA
+  positioning: Líder no mercado de distribuição de cannabis medicinal
+  strengths:
+  - Rede ampla de farmácias
+  - Experiência de longa data
+  weaknesses:
+  - Preços elevados
+  - Atendimento ao cliente lento
+  our_differentiation: Oferecemos suporte 24/7 com agentes de voz IA para respostas
+    rápidas e personalizadas.
+- name: MedCannabis
+  positioning: Especialista em consultoria médica para cannabis
+  strengths:
+  - Equipa médica qualificada
+  - Foco em educação do paciente
+  weaknesses:
+  - Limitada integração tecnológica
+  - Cobertura geográfica restrita
+  our_differentiation: Integramos IA para automatizar processos e expandir o alcance
+    com eficiência.
+- name: GreenLeaf Clinics
+  positioning: Clínicas especializadas em tratamentos com cannabis
+  strengths:
+  - Instalações modernas
+  - Abordagem holística
+  weaknesses:
+  - Custos operacionais altos
+  - Falta de suporte remoto
+  our_differentiation: Fornecemos soluções digitais acessíveis que reduzem custos
+    e melhoram a acessibilidade.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatização do atendimento ao cliente com agente de voz
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 2
+  value_anchors:
+  - Reduz custos operacionais em até 30% com automação
+  - Aumenta a satisfação do cliente com respostas instantâneas
+  - Melhora a conformidade regulatória através de atualizações automáticas
+market_context:
+  market_size: Estimado em 50 milhões EUR
+  growth_rate: 15% ao ano
+  key_trends:
+  - Crescimento acelerado do uso medicinal de cannabis
+  - Expansão de clínicas especializadas e farmácias autorizadas
+  - Aumento da aceitação social e investimento em pesquisa
+  seasonality:
+    high:
+    - Primavera
+    - Verão
+    low:
+    - Inverno
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Entendemos, mas a nossa solução pode economizar tempo e dinheiro a longo
+    prazo. Vamos analisar o seu caso específico?
+- objection: Não confio em tecnologia para assuntos de saúde.
+  response: Respeitamos a sua preocupação. Nossos agentes são projetados para segurança
+    e conformidade, seguindo o GDPR.
+- objection: Já tenho sistemas em funcionamento, não preciso de mais.
+  response: Ótimo! Podemos integrar-nos aos seus sistemas existentes para melhorar
+    a eficiência sem interromper as operações.
+meta:
+  id: cannabis
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

@@ -1,0 +1,235 @@
+pain_points:
+- description: Hohe Kundenabwanderung durch aggressive Wettbewerbspreise und unzufriedene
+    Kunden
+  severity: high
+  solution_hint: KI-Stimmenagent kann Kundenbindungsprogramme automatisieren, personalisierte
+    Angebote basierend auf Nutzungsdaten erstellen und proaktiv Rückgewinnungsgespräche
+    führen
+- description: Komplexe Rechnungsstellung und häufige Abrechnungsfehler, die zu Kundenbeschwerden
+    führen
+  severity: medium
+  solution_hint: KI-Stimmenagent kann Rechnungsabfragen automatisieren, Fehler erkennen
+    und Klärungsprozesse einleiten, um die Genauigkeit zu verbessern
+- description: Lange Wartezeiten in der Kundenhotline, besonders bei Störungen oder
+    Vertragsänderungen
+  severity: high
+  solution_hint: KI-Stimmenagent kann 24/7 Erst-Level-Support bieten, häufige Anfragen
+    beantworten und Tickets an menschliche Agenten weiterleiten, um Wartezeiten zu
+    reduzieren
+- description: Schwierigkeiten bei der Einhaltung von GDPR-Datenschutzanforderungen
+    in Kundendatenprozessen
+  severity: medium
+  solution_hint: KI-Stimmenagent kann datenschutzkonforme Gespräche führen, Einwilligungen
+    verwalten und automatische Löschungen nach Ablauffristen durchführen
+- description: Ineffiziente Vertragsverwaltung und manuelle Prozesse für Serviceaktivierungen
+    oder -kündigungen
+  severity: medium
+  solution_hint: KI-Stimmenagent kann Vertragsänderungen automatisieren, Self-Service-Optionen
+    anbieten und Prozesszeiten verkürzen
+- description: Geringe Upselling-Erfolge aufgrund ungenutzter Kundendaten für gezielte
+    Marketingaktionen
+  severity: low
+  solution_hint: KI-Stimmenagent kann Kundenprofile analysieren, maßgeschneiderte
+    Upgrade-Angebote während Gesprächen vorschlagen und Konversionsraten erhöhen
+typical_services:
+- Breitband-Internetanschlüsse (DSL, Kabel, Glasfaser)
+- Mobilfunkverträge (Prepaid und Postpaid)
+- Festnetztelefonie
+- IPTV und Streaming-Dienste
+- Business-Lösungen (SD-WAN, Cloud-Telefonie)
+- Roaming-Services
+- Netzwerk-Sicherheitsdienste
+- Smart Home Integration
+- 5G-Netzabdeckung und -Geräte
+- Kundensupport und Störungsbehebung
+recommended_functions:
+- name: Automatisierte Kundenbetreuung und FAQ-Beantwortung
+  priority: high
+  reason: Reduziert Wartezeiten, entlastet menschliche Agenten und verbessert die
+    Kundenzufriedenheit durch sofortige Hilfe
+- name: Vertragsverwaltung und -änderungen
+  priority: high
+  reason: Ermöglicht Self-Service, minimiert Fehler und beschleunigt Prozesse wie
+    Kündigungen oder Upgrades
+- name: Proaktive Störungsmeldungen und Updates
+  priority: medium
+  reason: Informiert Kunden frühzeitig über Netzwerkprobleme, reduziert Anrufvolumen
+    und erhöht Transparenz
+- name: Personalisiertes Upselling und Cross-Selling
+  priority: medium
+  reason: Nutzt Kundendaten, um relevante Angebote zu machen und den durchschnittlichen
+    Umsatz pro Kunde zu steigern
+- name: GDPR-konforme Datenschutzverwaltung
+  priority: high
+  reason: Stellt Compliance sicher, vermeidet Bußgelder und baut Vertrauen durch transparente
+    Datenhandhabung auf
+- name: Rechnungsabfrage und Zahlungserinnerungen
+  priority: low
+  reason: Automatisiert Routineaufgaben, verbessert Cashflow und reduziert manuelle
+    Nachverfolgung
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - SAP CRM
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Abrechnungssysteme
+  examples:
+  - SAP FI
+  - DATEV
+  - Oracle Billing
+  priority: high
+- name: Netzwerkmanagement-Tools
+  examples:
+  - Nagios
+  - PRTG
+  - SolarWinds
+  priority: medium
+- name: Kundensupport-Software
+  examples:
+  - Zendesk
+  - Freshdesk
+  - Jira Service Desk
+  priority: medium
+- name: Marketing-Automatisierungsplattformen
+  examples:
+  - Marketo
+  - Pardot
+  - Mailchimp
+  priority: low
+industry_faq:
+- question: Wie kann ich meine Rechnung überprüfen oder einen Fehler melden?
+  answer_template: Gerne helfe ich Ihnen dabei. Bitte nennen Sie Ihre Kundennummer
+    oder Telefonnummer, um auf Ihre Rechnung zuzugreifen. Falls ein Fehler vorliegt,
+    leite ich dies sofort an unser Abrechnungsteam weiter.
+- question: Was sind die aktuellen Tarife für Breitband-Internet?
+  answer_template: Unsere Breitband-Tarife beginnen bei 29,99 € monatlich für 50 Mbit/s
+    und gehen bis zu 79,99 € für 1 Gbit/s Glasfaser. Ich kann Ihnen basierend auf
+    Ihrer Nutzung einen passenden Tarif empfehlen.
+- question: Wie lange dauert die Aktivierung eines neuen Anschlusses?
+  answer_template: Die Standardaktivierung dauert 5-10 Werktage, abhängig von Ihrer
+    Adresse und Netzverfügbarkeit. Bei Express-Service kann es schneller gehen – möchten
+    Sie mehr erfahren?
+- question: Bieten Sie 5G-Abdeckung in meiner Region an?
+  answer_template: Um dies zu überprüfen, benötige ich Ihre Postleitzahl. Unser 5G-Netz
+    wird kontinuierlich ausgebaut, und ich kann Ihnen die genaue Verfügbarkeit mitteilen.
+- question: Kann ich meinen Vertrag vorzeitig kündigen oder ändern?
+  answer_template: Ja, Vertragsänderungen sind möglich. Bitte beachten Sie, dass bei
+    vorzeitiger Kündigung Gebühren anfallen können. Ich helfe Ihnen, die Optionen
+    zu prüfen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für einen neuen Internetanschluss fragt
+  script: Hallo, vielen Dank für Ihr Interesse! Unsere Breitband-Tarife starten bei
+    29,99 € im Monat und bieten je nach Geschwindigkeit und Vertragslaufzeit flexible
+    Optionen. Darf ich wissen, für welchen Zweck Sie Internet nutzen, um Ihnen ein
+    maßgeschneidertes Angebot zu machen?
+  goal: Den Kunden engagieren, Bedürfnisse verstehen und zu einem personalisierten
+    Angebot überleiten
+- trigger: service_outage
+  situation: Wenn ein Kunde eine Störung meldet oder über schlechte Verbindung klagt
+  script: Es tut mir leid zu hören, dass Sie Probleme haben. Ich kann sofort eine
+    Störungsmeldung für Sie erfassen und den Status überprüfen. In der Zwischenzeit,
+    möchten Sie Tipps zur Fehlerbehebung erhalten oder soll ich Sie zurückrufen, sobald
+    das Problem behoben ist?
+  goal: Kunden beruhigen, schnelle Hilfe bieten und Vertrauen durch proaktive Kommunikation
+    aufbauen
+- trigger: contract_renewal
+  situation: Wenn ein Kunde über Vertragsverlängerung oder Wechselmöglichkeiten informiert
+    wird
+  script: Ihr Vertrag läuft bald aus – perfekter Zeitpunkt für ein Update! Basierend
+    auf Ihrer Nutzung empfehle ich unseren neuen 5G-Tarif, der 20% mehr Datenvolumen
+    bei gleichem Preis bietet. Möchten Sie mehr Details oder direkt buchen?
+  goal: Upselling durch relevante Angebote fördern und Kundenbindung stärken
+competitors:
+- name: Deutsche Telekom
+  positioning: Marktführer mit umfassendem Festnetz- und Mobilfunknetz
+  strengths:
+  - Breite Abdeckung
+  - starke Markenpräsenz
+  - Enterprise-Lösungen
+  weaknesses:
+  - Höhere Preise
+  - langsame Innovationszyklen
+  - bürokratische Prozesse
+  our_differentiation: Wir bieten agilere, KI-gestützte Kundenservice und personalisierte
+    Preismodelle mit schnellerer Implementierung
+- name: Vodafone Deutschland
+  positioning: Zweitgrößter Anbieter mit Fokus auf Kabelnetz und Mobilfunk
+  strengths:
+  - Hohe Geschwindigkeiten im Kabelnetz
+  - aggressives Marketing
+  - internationale Präsenz
+  weaknesses:
+  - Variable Servicequalität
+  - häufige Netzstörungen in einigen Regionen
+  our_differentiation: Unsere KI-Stimmenagenten sorgen für konsistenten 24/7-Support
+    und proaktive Störungsbehebung, was die Zuverlässigkeit erhöht
+- name: Telefónica Germany (O2)
+  positioning: Preisaggressiver Anbieter mit Schwerpunkt auf Mobilfunk
+  strengths:
+  - Günstige Tarife
+  - flexible Verträge
+  - starke Jugendmarke
+  weaknesses:
+  - Begrenzte Festnetzabdeckung
+  - niedrigere Netzqualität in ländlichen Gebieten
+  our_differentiation: Wir kombinieren wettbewerbsfähige Preise mit hochwertigem,
+    automatisiertem Service und datengetriebenen Upselling für besseren ROI
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung des Kundensupports für ein mittelständisches Telecom-Unternehmen
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 4
+  value_anchors:
+  - Reduzieren Sie Ihre Kundenabwanderung um bis zu 15% mit personalisierten KI-Gesprächen
+  - Sparen Sie 40% der Support-Kosten durch 24/7-Automatisierung
+  - Steigern Sie Upselling-Umsätze um 20% mit datengesteuerten Angeboten
+market_context:
+  market_size: Ca. 80 Mrd. EUR jährlich
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Rasche Einführung von 5G-Netzen und IoT-Anwendungen
+  - Zunehmende Nachfrage nach Glasfaserausbau in ländlichen Gebieten
+  - Wachsendes Bewusstsein für Datenschutz und GDPR-Compliance
+  seasonality:
+    high:
+    - Q4 (Weihnachtsgeschäft)
+    - Q1 (Neujahrsangebote)
+    low:
+    - Q3 (Urlaubszeit)
+    - Sommerferien
+typical_objections:
+- objection: Das ist zu teuer für unser Budget.
+  response: Ich verstehe Ihre Bedenken. Unsere KI-Lösung startet bei 300 € und kann
+    innerhalb weniger Monate durch Kosteneinsparungen amortisiert werden. Möchten
+    Sie eine detaillierte ROI-Berechnung sehen?
+- objection: Wir haben bereits ein Support-Team, warum brauchen wir KI?
+  response: KI-Stimmenagenten ergänzen Ihr Team, indem sie Routineanfragen bearbeiten,
+    sodass Ihre Mitarbeiter sich auf komplexe Fälle konzentrieren können. Das steigert
+    die Effizienz und Zufriedenheit.
+- objection: Datenschutz ist uns sehr wichtig – ist Ihre KI GDPR-konform?
+  response: Absolut! Unsere Lösung ist speziell für den EU-Markt entwickelt, erfüllt
+    alle GDPR-Anforderungen und bietet transparente Datenverarbeitung. Wir können
+    Compliance-Zertifikate vorlegen.
+meta:
+  id: telecom
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

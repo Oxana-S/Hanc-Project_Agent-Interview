@@ -1,0 +1,258 @@
+pain_points:
+- description: 24/7 Erreichbarkeit für Trauerfamilien ist personalintensiv und teuer.
+  severity: high
+  solution_hint: KI-Sprachagent kann erste Anrufe entgegennehmen, Basisinformationen
+    sammeln und Notfallkontakte weiterleiten.
+- description: Hoher administrativer Aufwand durch Dokumentation für Behörden, Versicherungen
+    und Kirchen.
+  severity: medium
+  solution_hint: Agent kann standardisierte Formulare vorausfüllen und Termine für
+    Behördengänge koordinieren.
+- description: Emotionale Belastung der Mitarbeiter bei der ersten Kontaktaufnahme
+    mit Hinterbliebenen.
+  severity: medium
+  solution_hint: Agent übernimmt den sachlichen, ersten Informationsaustausch und
+    entlastet das Personal.
+- description: Verpasste Anrufe außerhalb der Bürozeiten führen zu Kundenverlust an
+    die Konkurrenz.
+  severity: high
+  solution_hint: 24/7 Rufannahme durch KI-Agent sichert jeden Erstkontakt und sammelt
+    Kontaktdaten.
+- description: Wiederholende Beantwortung von Standardfragen (Kosten, Abläufe, Optionen)
+    bindet Ressourcen.
+  severity: medium
+  solution_hint: Agent beantwortet automatisiert FAQ und leitet nur spezifische Anfragen
+    an Fachpersonal weiter.
+- description: Koordination zwischen Bestattungsinstitut, Friedhof, Blumenladen, Geistlichen
+    und Trauergästen ist komplex.
+  severity: medium
+  solution_hint: Agent kann als zentrale Anlaufstelle für Terminkoordination und Statusupdates
+    dienen.
+- description: Einhaltung von DSGVO (GDPR) und FADP bei der Verarbeitung sensibler
+    Personendaten.
+  severity: high
+  solution_hint: KI-Lösung mit datenschutzkonformer, verschlüsselter Datenverarbeitung
+    und Protokollierung.
+typical_services:
+- Trauerfall-Beratung und Organisation
+- Erdbestattung (Beerdigung)
+- Feuerbestattung (Kremation)
+- Überführung (national & international)
+- Trauerfeier & Abdankungsfeier
+- Sarg- & Urnenauswahl
+- Todesfall-Vorsorge (Vorsorgevertrag)
+- Nachlass-Service
+- Dokumenten-Beschaffung (Sterbeurkunde etc.)
+- Ökologische Bestattung (Friedwald, Naturbestattung)
+recommended_functions:
+- name: 24/7 Notfall-Erstkontakt
+  priority: high
+  reason: Sichert jeden Anruf, entlastet Personal außerhalb der Geschäftszeiten und
+    sammelt essentielle Daten.
+- name: Terminvereinbarung für Beratungsgespräche
+  priority: high
+  reason: Automatisiertes Buchen von Terminen in Kalendersystemen reduziert Wartezeiten
+    für Kunden und erhöht Conversion.
+- name: Beantwortung von Standard-FAQs (Kosten, Ablauf)
+  priority: high
+  reason: Befreit Mitarbeiter von repetitiven Fragen, ermöglicht fokussierte Beratung
+    und liefert sofortige Kundeninformation.
+- name: Erinnerungen für Behördentermine & Zahlungen
+  priority: medium
+  reason: Verbessert Kundenerfahrung und Prozesssicherheit durch proaktive, automatisierte
+    Benachrichtigungen.
+- name: Erfassung von Kundenwünschen für individuelle Planung
+  priority: medium
+  reason: Strukturiertes Sammeln von Vorinformationen für die persönliche Beratung
+    macht diese effizienter.
+- name: Erinnerung an gesetzliche Meldefristen (FADP)
+  priority: low
+  reason: Unterstützt Compliance und vermeidet rechtliche Probleme durch automatische
+    Erinnerungen an wichtige Fristen.
+typical_integrations:
+- name: Branchen-CRM / Bestattungssoftware
+  examples:
+  - CASoft
+  - Logora
+  - Bestattungsplaner
+  priority: high
+- name: ERP / Buchhaltungssystem
+  examples:
+  - Abacus
+  - Bexio
+  - Datev
+  priority: high
+- name: Kalendersystem
+  examples:
+  - Google Calendar
+  - Outlook
+  - Apple Calendar
+  priority: medium
+- name: Telefonanlage (VoIP)
+  examples:
+  - Swisscom
+  - Swissphone
+  - Zultys
+  priority: medium
+- name: Website / Kontaktformular
+  examples:
+  - WordPress
+  - Joomla
+  - Shopify
+  priority: low
+industry_faq:
+- question: Was kostet eine Bestattung in der Schweiz?
+  answer_template: Die Kosten für eine Bestattung sind sehr individuell. Ein einfaches
+    Paket beginnt bei etwa 2'500 CHF. Für eine traditionelle Beerdigung mit Trauerfeier
+    müssen Sie mit 5'000 bis 15'000 CHF rechnen. In einem persönlichen Gespräch erstellen
+    wir gerne eine detaillierte, unverbindliche Offerte für Sie.
+- question: Welche Unterlagen werden benötigt?
+  answer_template: In der Regel benötigen wir die Sterbeurkunde, die Personalien des
+    Verstorbenen sowie Ihren Personalausweis. Wir unterstützen Sie auch bei der Beschaffung
+    weiterer Dokumente und kümmern uns um die Meldung bei den zuständigen Behörden.
+- question: Gibt es ökologische Bestattungsmöglichkeiten?
+  answer_template: Ja, absolut. Wir bieten umweltfreundliche Alternativen wie Naturbestattungen
+    in speziell ausgewiesenen Wäldern (Friedwald), Seebestattungen oder die Verwendung
+    von biologisch abbaubaren Särgen an. Gerne informieren wir Sie detailliert.
+- question: Können Sie auch internationale Überführungen organisieren?
+  answer_template: Ja, wir übernehmen die komplette Organisation von Überführungen
+    ins Ausland oder in die Schweiz. Dies umfasst Behördengänge, Transportlogistik
+    und die Einhaltung der jeweiligen Landesvorschriften.
+- question: Was ist ein Vorsorgevertrag und wozu dient er?
+  answer_template: Mit einem Vorsorgevertrag legen Sie Ihre Wünsche für die Bestattung
+    schon zu Lebzeiten fest und entlasten so Ihre Angehörigen in einer emotional schwierigen
+    Zeit. Zudem können Sie die Kosten festlegen und finanziell vorsorgen.
+- question: Wie schnell muss nach einem Todesfall gehandelt werden?
+  answer_template: Aus hygienischen und rechtlichen Gründen sollte innerhalb von 2-3
+    Tagen gehandelt werden. Wir sind 24 Stunden am Tag erreichbar, um Sie sofort zu
+    unterstützen und den weiteren Ablauf mit Ihnen zu planen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Anrufer nach generellen Kosten fragt, ohne konkrete Details
+    zu nennen.
+  script: Ich verstehe, dass die Kosten ein wichtiger Faktor sind. Um Ihnen eine seriöse
+    Auskunft geben zu können, sind die Kosten sehr von Ihren individuellen Wünschen
+    abhängig – etwa der Art der Bestattung, der Trauerfeier und weiteren Services.
+    Unser einfühlsames Beratungsteam erstellt gerne eine transparente, unverbindliche
+    Offerte für Sie. Kann ich einen Termin für ein persönliches oder telefonisches
+    Beratungsgespräch für Sie vereinbaren?
+  goal: Vom Preisgespräch weg und hin zur Terminvereinbarung für eine individuelle
+    Beratung lenken.
+- trigger: callback_request
+  situation: Wenn ein Anrufer möchte, dass jemand zurückruft, z.B. außerhalb der Geschäftszeiten.
+  script: 'Selbstverständlich kann sich jemand aus unserem Beratungsteam bei Ihnen
+    melden. Damit wir Sie optimal vorbereiten können, dürfte ich vorab ein paar kurze
+    Informationen erfassen? Zunächst: Handelt es sich um einen akuten Trauerfall oder
+    um eine Vorsorge-Anfrage?'
+  goal: Essentielle Informationen (Akutfall/Vorsorge, Kontaktdaten) sammeln, um den
+    Rückruf effizient zu gestalten und den Lead zu qualifizieren.
+- trigger: service_question
+  situation: Wenn ein Anrufer nach einem spezifischen Service wie 'Feuerbestattung'
+    oder 'Überführung' fragt.
+  script: Ja, wir bieten diesen Service an. Damit ich Ihnen die passenden Informationen
+    zukommen lassen kann, ist es hilfreich zu wissen, ob es sich um eine aktuelle
+    Planung oder eine Vorsorge handelt. Darf ich Ihnen zunächst unsere Broschüre digital
+    zusenden und parallel einen Beratungstermin vorschlagen?
+  goal: Interesse bestätigen, zusätzlichen Mehrwert (Broschüre) anbieten und direkt
+    zur Terminvereinbarung überleiten.
+competitors:
+- name: Imbach Bestattungen
+  positioning: Landesweit tätiger Marktführer mit vielen Filialen.
+  strengths:
+  - Breites Netzwerk
+  - Hohe Bekanntheit
+  - Umfassendes Serviceangebot
+  weaknesses:
+  - Möglicherweise weniger persönlich
+  - Höhere Kosten durch Overhead
+  - Langsamere Digitalisierung
+  our_differentiation: Persönlichere Betreuung kombiniert mit modernster digitaler
+    Erreichbarkeit (24/7 KI-Agent) und transparenten, effizienten Prozessen.
+- name: Linde Bestattungen
+  positioning: Regionale Anbieter mit starkem Fokus auf persönlichen Service.
+  strengths:
+  - Sehr persönliche, lokale Betreuung
+  - Tiefe Ortskenntnis
+  - Hohes Vertrauen in der Gemeinde
+  weaknesses:
+  - Begrenzte Erreichbarkeit außerhalb der Öffnungszeiten
+  - Manuelle Prozesse können zu Wartezeiten führen
+  - Oft kein digitales Angebot
+  our_differentiation: Wir bieten die lokale, persönliche Note, ergänzt durch professionelle
+    24/7-Erreichbarkeit und effiziente digitale Prozesse, die Wartezeiten eliminieren.
+- name: Vorsorgeportal.ch (Online-Anbieter)
+  positioning: Digitaler Direktanbieter für Bestattungsvorsorge.
+  strengths:
+  - Niedrige Preise
+  - Einfache Online-Abschlüsse
+  - Transparente Pakete
+  weaknesses:
+  - Keine persönliche Betreuung im Akutfall
+  - Begrenzte Service-Tiefe
+  - Unpersönliche Abwicklung
+  our_differentiation: Wir kombinieren die Klarheit und Effizienz digitaler Tools
+    mit der unersetzlichen, einfühlsamen persönlichen Betreuung vor Ort, insbesondere
+    im Akutfall.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 5000
+  - 15000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Kleines Bestattungsinstitut spart 20 Stunden/Monat an Administrations-
+      und Telefonzeit
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 0.25
+  value_anchors:
+  - Kein verpasster Anruf mehr bedeutet mehr abgeschlossene Verträge.
+  - Entlastete Mitarbeiter können sich auf die wertvolle persönliche Beratung konzentrieren.
+  - Automatisierte Prozesse senken Fehlerquoten und erhöhen die Kundenzufriedenheit.
+market_context:
+  market_size: Ca. 1.5 Mrd. CHF jährlich
+  growth_rate: 1-2% p.a.
+  key_trends:
+  - Zunehmende Nachfrage nach ökologischen Bestattungsformen (Friedwald, Seebestattung).
+  - Digitalisierung der Kundenkommunikation und Vorab-Planung (Vorsorgeportale).
+  - Wunsch nach individuellen, personalisierten Trauerfeiern.
+  - Konsolidierung im Markt durch Übernahmen großer Player.
+  seasonality:
+    high:
+    - Wintermonate (Dezember - Februar)
+    low:
+    - Sommerferien (Juli - August)
+typical_objections:
+- objection: Das ist uns zu teuer / Wir haben kein Budget für so etwas.
+  response: Ich verstehe die Budgetüberlegungen. Betrachten Sie es als Investition
+    in Ihre Effizienz und Kundengewinnung. Ein verpasster Notruf kann einen Auftrag
+    im Wert von mehreren tausend Franken kosten. Unsere Lösung hilft, solche Verluste
+    zu verhindern und spart gleichzeitig wertvolle Arbeitszeit. Könnten wir eine kurze
+    Kosten-Nutzen-Analyse für Ihr spezifisches Institut durchführen?
+- objection: Unsere Kunden erwarten persönlichen Kontakt, keine Maschine.
+  response: Das ist absolut richtig, und der persönliche Kontakt bleibt das Herzstück
+    Ihrer Arbeit. Unser KI-Agent ist keine Maschine, die Beratungen ersetzt, sondern
+    ein Werkzeug, das das Vorfeld organisiert. Er filtert Standardanfragen heraus
+    und stellt sicher, dass Ihr Fachpersonal mehr Zeit für die wirklich wichtigen,
+    einfühlsamen Gespräche hat. Er ist die erste, entlastende Kontaktstelle, nicht
+    die letzte.
+- objection: Die Implementierung ist zu aufwändig, wir haben keine Zeit.
+  response: Die Einrichtung ist designed, um minimal invasiv zu sein. Wir integrieren
+    uns nahtlos in Ihre bestehende Telefonanlage und Software. Unser Team übernimmt
+    den Grossteil der Arbeit, und Sie können innerhalb weniger Tage starten. Der zeitliche
+    Aufwand für Sie ist vergleichbar mit der Schulung eines neuen Mitarbeiters – mit
+    dem Unterschied, dass unsere Lösung sofort und rund um die Uhr verfügbar ist.
+meta:
+  id: funeral
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

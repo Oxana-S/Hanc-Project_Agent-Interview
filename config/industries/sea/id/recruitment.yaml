@@ -1,0 +1,286 @@
+pain_points:
+- description: Biaya rekrutmen yang tinggi karena komisi agency dan biaya iklan lowongan
+    di berbagai platform
+  severity: high
+  solution_hint: AI voice agent dapat menyaring kandidat awal secara otomatis, mengurangi
+    ketergantungan pada agency dan iklan berbayar
+- description: Waktu proses rekrutmen yang lama dari posting lowongan hingga penawaran
+    kerja
+  severity: high
+  solution_hint: Automasi screening awal dan penjadwalan wawancara mempercepat proses
+    hingga 70%
+- description: Kesulitan menemukan kandidat berkualitas dengan skill spesifik untuk
+    posisi teknis
+  severity: medium
+  solution_hint: AI dapat melakukan pre-screening berdasarkan kriteria teknis dan
+    pengalaman spesifik
+- description: Tingkat no-show kandidat untuk wawancara yang mencapai 30-40%
+  severity: medium
+  solution_hint: Sistem reminder otomatis dan konfirmasi via voice agent mengurangi
+    no-show hingga 80%
+- description: Kepatuhan terhadap regulasi PDP (Personal Data Protection) yang kompleks
+  severity: high
+  solution_hint: Sistem terintegrasi dengan compliance checklist otomatis untuk pengelolaan
+    data kandidat
+- description: Biaya retensi dan training karyawan baru yang tinggi karena miss-match
+    kualifikasi
+  severity: medium
+  solution_hint: AI melakukan matching lebih akurat antara kandidat dan kebutuhan
+    perusahaan
+- description: Keterbatasan akses ke kandidat pasif yang tidak aktif mencari kerja
+  severity: low
+  solution_hint: Voice agent dapat melakukan outreach otomatis ke database kandidat
+    pasif
+typical_services:
+- Rekrutmen Karyawan Tetap
+- Rekrutmen Karyawan Kontrak
+- Executive Search
+- Headhunting
+- Psikotes dan Assesmen
+- Outplacement Services
+- Employer Branding
+- Recruitment Process Outsourcing
+- Mass Recruitment
+- Talent Pool Management
+recommended_functions:
+- name: Screening Kandidat Otomatis
+  priority: high
+  reason: Mengurangi beban kerja HRD hingga 60% untuk screening awal
+- name: Penjadwalan Wawancara Cerdas
+  priority: high
+  reason: Mengoptimalkan waktu interviewer dan mengurangi konflik jadwal
+- name: Follow-up Kandidat
+  priority: medium
+  reason: Meningkatkan candidate experience dan mengurangi dropout rate
+- name: Verifikasi Referensi
+  priority: medium
+  reason: Mengotomatisasi proses verifikasi yang biasanya memakan waktu
+- name: Reminder Wawancara
+  priority: high
+  reason: Menurunkan tingkat no-show secara signifikan
+- name: Data Collection Kandidat
+  priority: low
+  reason: Mengumpulkan informasi awal secara terstruktur
+- name: Feedback Collection
+  priority: medium
+  reason: Mengumpulkan masukan dari kandidat untuk perbaikan proses
+typical_integrations:
+- name: Applicant Tracking System
+  examples:
+  - Talenta
+  - Mekari
+  - GajiGesa
+  - SAP SuccessFactors
+  priority: high
+- name: Job Portal Lokal
+  examples:
+  - JobStreet
+  - Kalibrr
+  - Glints
+  - Karir.com
+  priority: high
+- name: HRIS System
+  examples:
+  - HashMicro
+  - LinovHR
+  - Bizzy HR
+  priority: medium
+- name: Assessment Tools
+  examples:
+  - TestGorilla
+  - CII
+  - Psikometrika
+  priority: medium
+- name: Communication Platform
+  examples:
+  - WhatsApp Business
+  - Telegram
+  - Google Meet
+  priority: high
+- name: Background Check Services
+  examples:
+  - TrustID
+  - Prasetia
+  - Verity
+  priority: low
+industry_faq:
+- question: Berapa biaya untuk implementasi sistem otomasi rekrutmen?
+  answer_template: Investasi mulai dari Rp 5 juta per bulan dengan ROI 3-4 bulan melalui
+    pengurangan biaya rekrutmen dan peningkatan efisiensi
+- question: Apakah sistem ini sesuai untuk perusahaan kecil?
+  answer_template: Sangat cocok, kami memiliki paket khusus UKM mulai dari Rp 2,5
+    juta per bulan dengan fitur esensial untuk rekrutmen
+- question: Bagaimana dengan keamanan data kandidat?
+  answer_template: Sistem kami sudah compliant dengan regulasi PDP Indonesia dan menggunakan
+    enkripsi end-to-end
+- question: Berapa lama implementasi sistem?
+  answer_template: Implementasi dasar hanya membutuhkan 1-2 minggu, termasuk training
+    tim Anda
+- question: Apakah bisa integrasi dengan sistem HR yang sudah ada?
+  answer_template: Ya, kami mendukung integrasi dengan 50+ sistem HR lokal dan internasional
+    melalui API
+- question: Bagaimana cara mengukur keberhasilan sistem ini?
+  answer_template: Kami menyediakan dashboard real-time untuk metric seperti time-to-hire,
+    cost-per-hire, dan quality-of-hire
+- question: Apakah ada dukungan dalam bahasa Indonesia?
+  answer_template: Tentu, sistem kami 100% mendukung bahasa Indonesia dengan aksen
+    lokal untuk komunikasi yang natural
+sales_scripts:
+- trigger: price_question
+  situation: Ketika prospek menanyakan tentang harga
+  script: Halo, terima kasih atas pertanyaannya. Kami menawarkan solusi mulai dari
+    Rp 5 juta per bulan, yang biasanya menghasilkan penghematan Rp 15-20 juta per
+    bulan dari biaya rekrutmen tradisional. Boleh saya tahu berapa banyak posisi yang
+    biasanya Anda rekrut dalam sebulan?
+  goal: Mengarahkan percakapan ke value proposition dan kebutuhan spesifik
+- trigger: competitor_mention
+  situation: Ketika prospek menyebut kompetitor
+  script: Memang beberapa layanan serupa ada di pasar, namun solusi kami unik karena
+    fokus pada otomasi komunikasi dua arah dengan kandidat. Sistem kami dapat mengurangi
+    waktu proses rekrutmen hingga 40% dan meningkatkan candidate experience. Boleh
+    saya sharing case study dari client kami di industri serupa?
+  goal: Menonjolkan diferensiasi dan membangun credibility
+- trigger: objection_budget
+  situation: Ketika prospek mengatakan tidak ada anggaran
+  script: Saya mengerti. Banyak client kami awalnya berpikir sama, tapi setelah menghitung
+    ROI, mereka menemukan bahwa sistem kami justru menghemat anggaran rekrutmen. Rata-rata
+    client menghemat Rp 18 juta per bulan. Maukah saya membantu Anda menghitung potensi
+    penghematan untuk perusahaan Anda?
+  goal: Mengatasi objection dengan data ROI konkret
+- trigger: needs_assessment
+  situation: Untuk memahami kebutuhan prospek
+  script: 'Untuk memberikan solusi terbaik, boleh saya tahu beberapa hal: berapa banyak
+    posisi yang biasanya Anda rekrut per bulan? Berapa lama rata-rata proses dari
+    posting lowongan hingga hiring? Dan tantangan terbesar apa yang Anda hadapi dalam
+    rekrutmen saat ini?'
+  goal: Mengumpulkan informasi untuk solusi yang disesuaikan
+- trigger: closing
+  situation: Setelah demonstrasi atau penjelasan
+  script: Berdasarkan kebutuhan yang Anda sampaikan, saya merekomendasikan paket Business
+    dengan investasi Rp 7,5 juta per bulan. Paket ini mencakup semua fitur yang kita
+    diskusikan dan support penuh. Untuk mulai menghemat waktu dan biaya rekrutmen,
+    kita bisa mulai implementasi minggu depan. Bagaimana menurut Anda?
+  goal: Menutup penjualan dengan call to action yang jelas
+competitors:
+- name: JobStreet
+  positioning: Market leader job portal dengan database kandidat besar
+  strengths:
+  - Brand recognition kuat
+  - Database kandidat besar
+  - Fitur pencarian advanced
+  weaknesses:
+  - Biaya tinggi
+  - Fokus pada job posting bukan proses rekrutmen
+  - Limited automation
+  our_differentiation: Kami fokus pada otomasi proses rekrutmen end-to-end dengan
+    AI voice agent yang mengurangi ketergantungan pada job portal
+- name: Glints
+  positioning: Platform talent acquisition untuk tech talent
+  strengths:
+  - Spesialis tech talent
+  - Employer branding services
+  - Community engagement
+  weaknesses:
+  - Terbatas pada industri tertentu
+  - Proses manual masih dominan
+  - Harga premium
+  our_differentiation: Solusi kami terjangkau untuk semua ukuran perusahaan dan mengotomatisasi
+    80% proses rekrutmen
+- name: Kalibrr
+  positioning: Platform rekrutmen dengan assessment terintegrasi
+  strengths:
+  - Assessment tools built-in
+  - User friendly interface
+  - Mobile first approach
+  weaknesses:
+  - Limited voice/communication features
+  - Minimal automation
+  - Scalability issues
+  our_differentiation: AI voice agent kami menangani komunikasi manusiawi dengan kandidat
+    dalam skala besar
+- name: Rekrut.com
+  positioning: Agency rekrutmen tradisional dengan layanan lengkap
+  strengths:
+  - Layanan end-to-end
+  - Team dedicated
+  - Industry expertise
+  weaknesses:
+  - Sangat mahal
+  - Proses lambat
+  - Limited technology adoption
+  our_differentiation: Kami menggabungkan efisiensi teknologi dengan layanan personal
+    dengan biaya 60% lebih rendah
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 5000000
+  - 25000000
+  entry_point: 2500000
+  roi_examples:
+  - scenario: Perusahaan dengan 10 hiring per bulan
+    monthly_cost: 7500000
+    monthly_savings: 18000000
+    payback_months: 3
+  - scenario: Startup dengan 5 hiring per bulan
+    monthly_cost: 5000000
+    monthly_savings: 12000000
+    payback_months: 4
+  value_anchors:
+  - Hanya Rp 83.000 per hari untuk sistem rekrutmen otomatis
+  - Penghematan biaya rekrutmen hingga Rp 200 juta per tahun
+  - Waktu proses rekrutmen lebih cepat 40%
+  - Reduksi no-show wawancara hingga 80%
+market_context:
+  market_size: Rp 15 triliun (2024)
+  growth_rate: 12% YoY
+  key_trends:
+  - Digital transformation di sektor HR
+  - Meningkatnya permintaan untuk otomasi proses
+  - Pentingnya candidate experience
+  - Kepatuhan regulasi data privacy (PDP)
+  - Skill shortage di sektor teknis
+  seasonality:
+    high:
+    - Januari-Maret
+    - Juli-Agustus
+    low:
+    - April-Mei
+    - November-Desember
+typical_objections:
+- objection: Kami sudah puas dengan proses manual yang ada
+  response: Itu bagus bahwa proses Anda berjalan baik. Namun, dengan volume hiring
+    yang meningkat, sistem otomasi dapat membantu tim Anda fokus pada tugas bernilai
+    tinggi sementara AI menangani tugas rutin. Boleh saya tunjukkan bagaimana client
+    lain meningkatkan produktivitas HRD mereka?
+- objection: Terlalu mahal untuk anggaran kami saat ini
+  response: 'Saya mengerti concern anggaran. Mari kita hitung bersama: saat ini berapa
+    biaya yang Anda keluarkan per hiring? Dengan sistem kami, Anda bisa menghemat
+    30-50% dari biaya tersebut. Investasi Rp 5 juta bisa menghemat Rp 15-20 juta per
+    bulan'
+- objection: Kami khawatir dengan keamanan data
+  response: Keamanan data adalah prioritas kami. Sistem kami sudah compliant dengan
+    regulasi PDP Indonesia, menggunakan enkripsi tingkat enterprise, dan kami akan
+    membantu tim Anda dalam implementasi best practices data protection
+- objection: Tim kami belum siap dengan teknologi baru
+  response: Itu wajar. Kami menyediakan training komprehensif dan support berkelanjutan.
+    Rata-rata tim client kami bisa menguasai sistem dalam 3-5 hari. Dan AI voice agent
+    kami dirancang untuk user-friendly
+- objection: Kami ingin coba dulu dengan skala kecil
+  response: Tentu, kami menawarkan pilot project 1 bulan dengan 3-5 posisi. Ini memungkinkan
+    Anda melihat hasil nyata sebelum commit jangka panjang. Plus, kami memberikan
+    discount khusus untuk pilot project
+meta:
+  id: recruitment
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

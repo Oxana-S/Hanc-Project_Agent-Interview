@@ -1,0 +1,259 @@
+pain_points:
+- description: Fachkräftemangel für Sicherheitspersonal, insbesondere für qualifizierte
+    Objektschutz- und Veranstaltungsdienste.
+  severity: high
+  solution_hint: Entlastung des Personals durch Automatisierung von Anrufannahme,
+    Terminvereinbarung und einfachen Kundenanfragen.
+- description: Hoher Verwaltungsaufwand für Dokumentation und Nachweise gemäß GDPR/DSGVO.
+  severity: high
+  solution_hint: Automatisierte Protokollierung von Anrufen und Vorfällen zur einfacheren
+    Nachvollziehbarkeit und Compliance.
+- description: Ineffiziente Kommunikation zwischen Einsatzleitung, mobilem Personal
+    und Kunden.
+  severity: medium
+  solution_hint: Zentrale Telefonanbindung mit automatischer Weiterleitung und Statusupdates.
+- description: Hohe Kosten für den 24/7-Betrieb einer Besetzung der Telefonzentrale.
+  severity: high
+  solution_hint: AI Voice Agent als erste Anlaufstelle außerhalb der Kernarbeitszeiten,
+    filtert dringende Anfragen heraus.
+- description: Wachsender Bedarf an Cybersecurity-Beratung, aber fehlende interne
+    Kapazitäten für Erstgespräche.
+  severity: medium
+  solution_hint: Agent kann Basisinformationen zu Cybersecurity-Dienstleistungen sammeln
+    und qualifizierte Leads generieren.
+- description: Schwierigkeiten bei der Akquise neuer Kunden im regional begrenzten
+    österreichischen Markt.
+  severity: medium
+  solution_hint: Automatisierte Outbound-Kampagnen zur Neukundengewinnung mit Terminvereinbarung
+    für Beratungsgespräche.
+- description: Komplexität bei der Angebotserstellung für individuell zusammengestellte
+    Sicherheitspakete.
+  severity: low
+  solution_hint: Agent sammelt erste Projektanforderungen, um dem Vertrieb vorzuarbeiten
+    und die Angebotsphase zu beschleunigen.
+typical_services:
+- Objektschutz & Werkschutz
+- Personenschutz
+- Veranstaltungssicherheit & Ordnerdienste
+- Gefahrenpräventionsberatung
+- Notruf- & Servicecenter (MMA)
+- Mobile Streifendienste
+- Zutrittskontrolle & Reception
+- Cybersecurity-Basisberatung
+- Alarmanlagen-Überwachung
+- Sicherheitschecks & Risikoanalysen
+recommended_functions:
+- name: 24/7 Erstanrufannahme & Weiterleitung
+  priority: high
+  reason: Sicherheitsbranche ist rund um die Uhr aktiv. Dringende Anrufe (z.B. Alarmanlage)
+    müssen sofort erkannt und zum richtigen Mitarbeiter durchgestellt werden.
+- name: Terminvereinbarung für Beratungsgespräche
+  priority: high
+  reason: Effiziente Leadqualifizierung und direkte Buchung von Kapazitäten im Kalender
+    des Vertriebs oder Außendienstes.
+- name: FAQ zu Dienstleistungen & Preisen beantworten
+  priority: medium
+  reason: Entlastet die Telefonzentrale von Standardanfragen und liefert konsistente
+    Informationen an potenzielle Kunden.
+- name: Statusabfrage für laufende Dienstleistungen
+  priority: medium
+  reason: Bestehende Kunden können einfach den Status ihres Auftrags oder Einsatzes
+    abfragen, ohne Personal zu binden.
+- name: Outbound-Kampagnen für Neukundengewinnung
+  priority: medium
+  reason: Proaktive Akquise in einem wettbewerbsintensiven Markt mit direkter Terminvereinbarung.
+- name: Incident-Meldung protokollieren
+  priority: low
+  reason: Automatische Erfassung von Vorfallsmeldungen mit strukturierten Daten für
+    die spätere Bearbeitung.
+typical_integrations:
+- name: Einsatzplanungs-/Zeiterfassungssoftware
+  examples:
+  - ZEP
+  - Academa
+  - localyte
+  - Projektron BCS
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - Österreichische Branchenlösungen
+  priority: high
+- name: Kalendersystem
+  examples:
+  - Microsoft 365/Outlook
+  - Google Calendar
+  priority: medium
+- name: Alarmmanagement-Systeme
+  examples:
+  - G4S Care
+  - Sicherheitsbranchen-spezifische Lösungen
+  priority: medium
+- name: Telefonanlage/ VoIP
+  examples:
+  - Avaya
+  - 3CX
+  - Austrian
+  priority: high
+industry_faq:
+- question: Wie viel kostet ein Objektschutz für mein Gewerbegebäude?
+  answer_template: Die Kosten richten sich stark nach Größe, Lage und individuellem
+    Risikoprofil. Für eine erste, unverbindliche Einschätzung benötigen wir einige
+    Basisinformationen. Ich kann Ihnen gerne einen Termin mit einem unserer Berater
+    vereinbaren.
+- question: Sind Ihre Dienstleistungen GDPR-/DSGVO-konform?
+  answer_template: Ja, Compliance, insbesondere die Einhaltung der DSGVO, ist für
+    uns von zentraler Bedeutung. Unsere Prozesse und Verträge sind entsprechend ausgelegt.
+    Gerne sende ich Ihnen auf Wunsch unsere Datenschutzinformationen zu.
+- question: Wie schnell können Sie bei einem Alarm reagieren?
+  answer_template: Unsere Reaktionszeiten hängen vom Standort und dem vereinbarten
+    Servicelevel ab. Im urbanen Raum sind oft Interventionen innerhalb weniger Minuten
+    möglich. Die genauen Zeiten besprechen wir individuell in der Planung.
+- question: Bieten Sie auch Cybersecurity-Dienstleistungen an?
+  answer_template: Ja, wir bieten grundlegende Beratung zu physischer und digitaler
+    Sicherheit an und arbeiten mit spezialisierten Partnern für tiefergehende IT-Sicherheitslösungen
+    zusammen. Ich leite Sie gerne weiter.
+- question: Kann ich Dienstleistungen kurzfristig buchen, z.B. für eine Veranstaltung?
+  answer_template: Kurzfristige Buchungen sind abhängig von unserer Kapazitätsplanung
+    möglich. Bitte nennen Sie mir den gewünschten Zeitraum und den Umfang, dann prüfe
+    ich die Verfügbarkeit oder vermerke eine Anfrage.
+- question: Was unterscheidet Sie von der Konkurrenz?
+  answer_template: Wir legen großen Wert auf moderne Technologie, transparente Kommunikation
+    und maßgeschneiderte Lösungen statt Standardpakete. Unser AI-gestützter Service
+    stellt sicher, dass Sie auch außerhalb der Bürozeiten immer einen Ansprechpartner
+    erreichen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Anrufer nach pauschalen Preisen fragt, ohne Details zu nennen.
+  script: Ich verstehe Ihr Interesse an einer Kosteneinschätzung. In der Sicherheitsbranche
+    gibt es leider keine Pauschalpreise, da jede Lösung individuell geplant wird.
+    Entscheidend sind Faktoren wie Objektgröße, Risikolage und gewünschter Serviceumfang.
+    Um Ihnen ein seriöses Angebot unterbreiten zu können, wäre ein kurzes, unverbindliches
+    Beratungsgespräch ideal. Hätten Sie nächste Woche Zeit für einen 15-minütigen
+    Termin?
+  goal: Vom vagen Preisgespräch zu einem qualifizierenden Beratungstermin überleiten.
+- trigger: objection_too_expensive
+  situation: Kunde äußert, dass unser Angebot im Vergleich zu teuer sei.
+  script: Das kann ich nachvollziehen. Investitionen in Sicherheit sollten immer im
+    Verhältnis zum potenziellen Schaden stehen. Unsere Lösungen sind vielleicht nicht
+    die günstigsten am Markt, weil wir Wert auf qualifiziertes Personal, moderne Technologie
+    und zuverlässigen Service legen – was langfristig oft kosteneffizienter ist. Darf
+    ich fragen, mit welchem Angebot Sie uns vergleichen? Vielleicht können wir gemeinsam
+    schauen, wo wir Anpassungen vornehmen können, ohne die Sicherheit zu gefährden.
+  goal: Das Gespräch auf Wert und Qualität lenken und Hintergründe des Vergleichs
+    herausfinden.
+- trigger: request_info_packet
+  situation: Kunde möchte erst nur Informationsmaterial zugesendet bekommen.
+  script: 'Selbstverständlich sende ich Ihnen gerne unsere Unterlagen digital zu.
+    Damit diese für Sie wirklich relevant sind: Darf ich kurz nachfragen, welcher
+    Bereich Sie primär interessiert – Objektschutz, Personenschutz oder vielleicht
+    Cybersecurity? So kann ich gezielt die passenden Informationen zusammenstellen.
+    Und hätten Sie grundsätzlich Interesse an einem kurzen Folgetelefonat in ein,
+    zwei Wochen, um offene Fragen zu klären?'
+  goal: Den Lead qualifizieren und eine Brücke für den nächsten Kontakt bauen.
+- trigger: service_inquiry_general
+  situation: Anrufer fragt allgemein nach unseren Dienstleistungen.
+  script: 'Sehr gerne. Wir bieten ein umfassendes Portfolio von Objektschutz über
+    Veranstaltungssicherheit bis hin zu Präventionsberatung. Um Ihnen Zeit zu sparen:
+    Können Sie mir verraten, in welchem Kontext Sie Sicherheitsdienstleistungen benötigen?
+    Etwa für ein Geschäftslokal, eine Veranstaltung oder für den privaten Bereich?
+    Dann kann ich Sie gezielt informieren.'
+  goal: Das Gespräch fokussieren und den Bedarf des Anrufers konkretisieren.
+competitors:
+- name: Securitas Austria
+  positioning: Globaler Marktführer, großer Full-Service-Anbieter.
+  strengths:
+  - Breites Netzwerk
+  - Markenbekanntheit
+  - Umfangreiche Ressourcen
+  weaknesses:
+  - Teilweise starre Prozesse
+  - Höhere Preise
+  - Weniger individuelle Betreuung für KMUs
+  our_differentiation: Agilere, technologiegetriebene Lösungen mit persönlicherer
+    Betreuung und transparenten, maßgeschneiderten Paketen speziell für den österreichischen
+    Mittelstand.
+- name: S+B Sicherheitsdienst GmbH & Co KG
+  positioning: Etablierter österreichischer Anbieter mit regionaler Präsenz.
+  strengths:
+  - Lokales Know-how
+  - Gute Vernetzung
+  - Persönlicher Service
+  weaknesses:
+  - Begrenzte digitale Angebote
+  - Evtl. langsamere Innovation
+  our_differentiation: Kombination aus lokaler Expertise mit modernster AI-gestützter
+    Kundenkommunikation und Prozessautomatisierung für mehr Effizienz.
+- name: G4S (Teil von Allied Universal)
+  positioning: Internationaler Gigant mit großer Präsenz.
+  strengths:
+  - Sehr große Kapazitäten
+  - Internationale Standards
+  - Komplettlösungen
+  weaknesses:
+  - Sehr bürokratisch
+  - Wenige flexible Kleinaufträge
+  - Unpersönlich
+  our_differentiation: Schnellere, flexiblere Abwicklung, Fokus auf exzellenten österreichischen
+    Kundenservice und nutzerfreundliche Technologie.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Einsparung von 20 Stunden manueller Telefonannahme pro Monat durch AI
+      Voice Agent
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Nie mehr einen wichtigen Anruf verpassen – auch nachts und am Wochenende.
+  - Bis zu 30% Kosteneinsparung in der Telefonie-Administration.
+  - Schnellere Lead-Generierung und höhere Conversion-Rate durch sofortige Terminvereinbarung.
+market_context:
+  market_size: Ca. 1,2 Mrd. EUR Jahresumsatz (geschätzt für Österreich)
+  growth_rate: 2-4% p.a.
+  key_trends:
+  - Verschmelzung von physischer und IT-Sicherheit (Converged Security)
+  - Erhöhte Nachfrage nach Cybersecurity-Basisberatung für KMUs
+  - Wachsender Fokus auf Prävention statt rein reaktiven Dienstes
+  - Fachkräftemangel treibt Automatisierung und Technologieeinsatz voran
+  seasonality:
+    high:
+    - November, Dezember (Weihnachtsmärkte, Einbruchszeit)
+    - Juni-August (Festivals, Tourismus)
+    low:
+    - Januar
+    - Teile des Spätherbsts
+typical_objections:
+- objection: Ich brauche persönlichen Kontakt, keine Maschine.
+  response: Das verstehe ich gut. Unser AI Agent ist jedoch nur die erste Anlaufstelle,
+    um Sie schnell und effizient zum richtigen menschlichen Experten zu führen. Er
+    filtert vor und sammelt Informationen, sodass Ihr Gespräch mit unserem Mitarbeiter
+    von Anfang an produktiver ist. Die persönliche Betreuung bleibt zentral.
+- objection: Das ist zu kompliziert, bei uns einzurichten.
+  response: Die Integration ist überraschend einfach. In den meisten Fällen reicht
+    die Anbindung an Ihre Telefonanlage. Wir übernehmen die Einrichtung und Schulung.
+    Sie müssen keine IT-Experten einstellen. Gerne erkläre ich den Prozess im Detail.
+- objection: Meine Daten sind zu sensibel für so eine Lösung.
+  response: Datensicherheit hat für uns höchste Priorität. Unsere Lösung ist DSGVO-konform,
+    hosted in der EU, und alle Anrufdaten werden verschlüsselt. Wir arbeiten bereits
+    mit zahlreichen sicherheitskritischen Unternehmen zusammen. Auf Wunsch stellen
+    wir Ihnen gerne unsere Zertifizierungen und Konzepte zur Verfügung.
+meta:
+  id: security
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

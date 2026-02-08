@@ -1,0 +1,193 @@
+pain_points:
+- description: Hohe Betriebskosten durch teure Infrastruktur und strengste Sicherheitsauflagen.
+  severity: high
+  solution_hint: Automatisierte Bearbeitung von Routineanfragen zu Betriebszeiten, Wartungsplänen und Compliance-Checks entlastet Personal.
+- description: Akuter Fachkräftemangel, besonders bei Flugsicherungspersonal und qualifizierten Technikern.
+  severity: high
+  solution_hint: Sprachagent übernimmt Erstkontakt und Screening von Bewerbern, plant Interviewtermine und beantwortet FAQs zu Stellenangeboten.
+- description: Komplexe Koordination zwischen Flughäfen, Airlines, Bodenabfertigung und Behörden.
+  severity: medium
+  solution_hint: Agent dient als zentrale Anlaufstelle für Statusabfragen (Flug, Fracht, Gate) und leitet Anfragen an richtige Stelle weiter.
+- description: Strikte Einhaltung von Schweizer (FADP) und europäischen (GDPR, EASA) Datenschutz- und Sicherheitsvorschriften.
+  severity: high
+  solution_hint: Voice Agent kann datenschutzkonform vorabgeprüfte Informationen bereitstellen und sensible Anfragen identifizieren und weiterleiten.
+- description: Grosse Volatilität bei Passagierzahlen und Frachtaufkommen, schwer planbar.
+  severity: medium
+  solution_hint: Automatisierte Umfragen und Rückmeldungen von Kunden sammeln, um Nachfrageschwankungen besser vorherzusehen.
+- description: Erwartung von 24/7-Verfügbarkeit und mehrsprachigem Support (DE, FR, IT, EN) durch Kunden und Partner.
+  severity: medium
+  solution_hint: KI-gestützter mehrsprachiger Voice Agent bietet rund um die Uhr Basis-Support und Eskalationsmanagement.
+typical_services:
+- Flugbetrieb und -disposition
+- Flugzeugwartung und -instandhaltung (MRO)
+- Bodenabfertigungsdienste (Handling)
+- Flugsicherung und Flugverkehrsmanagement
+- Fracht- und Logistikabwicklung
+- Passagier-Services und VIP-Betreuung
+- Flughafeninfrastruktur-Management
+- Flugschulung und Simulatortraining
+- Aviation Consulting und Compliance-Beratung
+- Verkauf und Charter von Business- und Privatjets
+recommended_functions:
+- name: Notfall- und Störungsmeldung
+  priority: high
+  reason: Ermöglicht sofortige Meldung von technischen Problemen oder Betriebsstörungen mit automatischer Priorisierung und Weiterleitung.
+- name: Buchungs- und Reservierungsverwaltung
+  priority: high
+  reason: Entlastet Call-Center bei Standardbuchungen, Änderungen und Stornierungen für Mitarbeiterflüge oder Charter.
+- name: Compliance-Dokumenten-Check
+  priority: high
+  reason: Prüft automatisiert, ob für Flüge oder Personal alle erforderlichen Schweizer und EASA-Dokumente vorliegen.
+- name: Lieferanten- und Dienstleister-Koordination
+  priority: medium
+  reason: Koordiniert Termine für Treibstofflieferung, Catering, Reinigung und technischen Service per Spracheingabe.
+- name: Interne Wissensdatenbank-Abfrage
+  priority: medium
+  reason: Gibt Mitarbeitern schnellen Zugriff auf SOPs, Handbücher und Compliance-Updates via Voice.
+- name: Mitarbeiter-Schichtplan-Abfrage
+  priority: low
+  reason: Ermöglicht Piloten, Crew und Bodenpersonal die Abfrage und Bestätigung von Dienstplänen.
+typical_integrations:
+- name: Flugplan- und Betriebssystem (AOC)
+  examples:
+  - Lufthansa Systems Lido
+  - Sabre
+  - Swiss-AS AMOS
+  priority: high
+- name: Buchungs- und Reservierungssystem (CRS/GDS)
+  examples:
+  - Amadeus
+  - Travelport
+  - SITA
+  priority: high
+- name: Wartungsmanagementsystem (MRO Software)
+  examples:
+  - Swiss-AS AMOS
+  - SAP PM
+  - Rusada Envision
+  priority: high
+- name: Personal- und Crew-Management-System
+  examples:
+  - Jeppesen Crew Management
+  - AIMS
+  priority: medium
+- name: Flughafen-Management-System
+  examples:
+  - SITA Airport Management
+  - local Swiss solutions
+  priority: medium
+industry_faq:
+- question: Wie hoch sind die durchschnittlichen Kosten für einen Stunde Flugbetrieb eines Business-Jets in der Schweiz?
+  answer_template: Die Betriebskosten variieren stark nach Flugzeugtyp. Für eine grobe Orientierung liegen sie oft zwischen 1'500 und 4'000 CHF pro Flugstunde, exklusive Landegebühren und Handling. Gerne
+    erstellen wir eine individuelle Kalkulation für Sie.
+- question: Welche Schweizer Vorschriften (FADP) gelten für die Speicherung von Fluggastdaten?
+  answer_template: Das FADP verlangt eine rechtmässige Grundlage und Transparenz. Fluggastdaten dürfen nur für den vereinbarten Zweck (z.B. Buchung) gespeichert werden. Unsere Lösungen sind so konzipiert,
+    dass sie diese Prinzipien einhalten und Datenschutz by Design umsetzen.
+- question: Können Sie mit unserem bestehenden Wartungssystem (z.B. AMOS) integrieren?
+  answer_template: Ja, Integrationen mit gängigen Systemen wie Swiss-AS AMOS sind ein Kernbestandteil unseres Angebots. Wir prüfen gerne die spezifische API-Schnittstelle Ihres Systems.
+- question: Bieten Sie auch Support in Französisch und Italienisch an?
+  answer_template: Absolut. Unser KI Voice Agent ist standardmässig mehrsprachig (DE, FR, IT, EN) trainierbar und kann so auf die spezifischen Anforderungen der Schweizer Märkte zugeschnitten werden.
+- question: Wie schnell amortisiert sich eine solche Automatisierungslösung?
+  answer_template: Typische Amortisationszeiten liegen bei 6-18 Monaten, primär durch Einsparungen bei Personalkosten für Routineanfragen und reduzierte Fehlerquote. Wir zeigen Ihnen gerne eine detaillierte
+    ROI-Projektion.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für eine Automatisierungslösung.
+  script: Vielen Dank für Ihre Frage. Die Investition richtet sich nach Umfang und Integrationstiefe. Ein typischer Einstieg für die Automatisierung Ihres Kundensupports beginnt bei etwa 5'000 CHF monatlich
+    und führt oft zu Einsparungen von 30-50% der entsprechenden Personalkosten. Darf ich Ihnen eine grobe Schätzung basierend auf Ihrem Anfragevolumen erstellen?
+  goal: Preis transparent machen und Wert (ROI) betonen, um zu einer detaillierteren Analyse überzuleiten.
+- trigger: compliance_concern
+  situation: Kunde äussert Bedenken bezüglich Datenschutz (FADP/GDPR).
+  script: Das ist ein sehr wichtiger Punkt. Unsere Lösung wurde speziell für hochregulierte Branchen entwickelt. Alle Sprachdaten werden standardmässig in der EU/CH verarbeitet, und die Logik des Agents
+    kann so konfiguriert werden, dass sie keine sensitiven Daten abfragt oder speichert, ohne die rechtliche Grundlage zu prüfen. Wir arbeiten nach dem Prinzip Privacy by Design.
+  goal: Sicherheit vermitteln und technische/vertragliche Compliance-Massnahmen erläutern.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen spezifischen Wettbewerber.
+  script: Ich kenne deren Angebot. Unser Fokus liegt speziell auf der tiefen Integration in die komplexen Prozesse der Luftfahrt in der Schweiz. Während andere generische Lösungen anbieten, verstehen wir
+    die spezifischen Abläufe bei MRO, Handling und Flugsicherung und bieten daher eine deutlich höhere sofortige Nutzbarkeit und Akzeptanz bei Ihren Teams.
+  goal: Differenzierung durch Branchenspezifik und lokales Know-how hervorheben.
+competitors:
+- name: Swisscom (AI & IoT Lösungen)
+  positioning: Grosser nationaler Telco-Anbieter mit breitem IT-Portfolio.
+  strengths:
+  - Starke Marke in der CH
+  - breite Infrastruktur
+  - grosses Kundennetzwerk
+  weaknesses:
+  - Weniger spezifische Branchenexpertise Aviation
+  - oft schwerfällige Prozesse
+  our_differentiation: Tiefe, vorkonfigurierte Aviation-Spezialisierung und agile Implementierung.
+- name: Lufthansa Systems
+  positioning: Globaler IT-Anbieter mit Fokus auf Aviation, Tochter der Lufthansa Group.
+  strengths:
+  - Tiefes Branchen-Know-how
+  - globale Präsenz
+  - umfassende Produktpalette
+  weaknesses:
+  - Oft fokussiert auf grosse Airlines
+  - weniger auf KMU und Schweizer Spezifika
+  our_differentiation: Fokus auf den schweizerischen Markt mit seinen KMU und strikten lokalen Compliance-Anforderungen (FADP).
+- name: Lokale IT-Beratungen
+  positioning: Kleine, regionale Anbieter von Standardsoftware.
+  strengths:
+  - Lokale Nähe
+  - persönlicher Service
+  - tiefe Ortskenntnis
+  weaknesses:
+  - Fehlende Spezialisierung auf Voice-AI
+  - begrenzte Ressourcen für Integrationen
+  our_differentiation: Kombination aus lokaler Marktkenntnis mit spezialisierter, skalierbarer AI-Voice-Technologie für Aviation.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatisierung des First-Level-Supports für Crew-Einsatzplan-Abfragen
+    monthly_cost: 7000
+    monthly_savings: 10900
+    payback_months: 16
+  value_anchors:
+  - Reduzieren Sie Ihre Kosten für Routine-Anrufe um bis zu 60%.
+  - Einsparung von mehreren tausend CHF monatlich durch vermiedene Fehler in der Terminkoordination.
+  - 24/7-Verfügbarkeit zu Fixkosten, ohne Nachtschicht-Zulagen.
+market_context:
+  market_size: Ca. 2-3 Mrd. CHF für Aviation-spezifische IT & Services in der Schweiz.
+  growth_rate: 3-5% p.a.
+  key_trends:
+  - Starker Fokus auf Nachhaltigkeit und Reduktion des CO2-Fussabdrucks.
+  - Digitalisierung von Check-in, Boarding und Frachtverfolgung.
+  - Zunehmende Konsolidierung bei regionalen Flughäfen und Dienstleistern.
+  - Wachsende Nachfrage nach Business Aviation und VIP-Handling.
+  seasonality:
+    high:
+    - Juni - September (Tourismus)
+    - Dezember (Geschäftsreisen & Weihnachten)
+    low:
+    - Januar - Februar
+    - November
+typical_objections:
+- objection: Das ist zu teuer für unser Budget.
+  response: 'Ich verstehe die Budgetüberlegungen. Betrachten wir es als Investition: Bei den genannten Einsparungen von oft über 4''000 CHF monatlich, amortisiert sich die Lösung meist in unter 2 Jahren.
+    Können wir gemeinsam eine detaillierte Kosten-Nutzen-Analyse für Ihre spezifischen Prozesse durchführen?'
+- objection: Unsere Prozesse sind zu einzigartig für eine Standardlösung.
+  response: Genau deshalb setzen wir auf hohe Anpassbarkeit. Unser Agent lernt Ihre spezifischen Abläufe, Begriffe und Systeme kennen. Die Basis bildet Aviation-Know-how, das dann auf Ihren individuellen
+    Fall zugeschnitten wird – keine reine Standardsoftware.
+- objection: Wir haben Bedenken bezüglich der Sicherheit unserer Flug- und Kundendaten.
+  response: Völlig zu Recht. Sicherheit hat für uns oberste Priorität. Wir bieten Hosting in der Schweiz an, Ende-zu-Ende-Verschlüsselung und garantieren vertraglich, dass Ihre Daten nie für andere Zwecke
+    genutzt werden. Gerne stellen wir den Kontakt zu unseren Sicherheitsexperten her.
+meta:
+  id: aviation
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- aviation
+- private jet
+- charter flight
+- business aviation
+_extends: _base/aviation

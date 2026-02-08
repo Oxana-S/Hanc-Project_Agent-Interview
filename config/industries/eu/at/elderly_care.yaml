@@ -1,0 +1,228 @@
+pain_points:
+- description: Chronischer Fachkräftemangel, der die Betreuungsqualität gefährdet
+  severity: high
+  solution_hint: Sprachassistent kann administrative Aufgaben automatisieren, um Mitarbeiter
+    zu entlasten
+- description: Hohe administrative Belastung durch Dokumentationspflichten und Bürokratie
+  severity: high
+  solution_hint: Automatisierte Dokumentationshilfen und Erinnerungen für Pflegeprotokolle
+- description: 24-Stunden-Erreichbarkeit erfordert teure Rufbereitschaften
+  severity: medium
+  solution_hint: Intelligente Anrufweiterleitung und Erstkontakt-Automatisierung
+- description: Familienangehörige sind häufig unzureichend informiert über den Pflegezustand
+  severity: medium
+  solution_hint: Automatisierte Status-Updates und Besuchstermin-Koordination
+- description: Medikamentenmanagement ist fehleranfällig und zeitintensiv
+  severity: high
+  solution_hint: Sprachgesteuerte Erinnerungen und Verabreichungsprotokolle
+- description: Hohe Fluktuation bei Betreuungspersonal führt zu Wissensverlust
+  severity: medium
+  solution_hint: Digitalisierte Prozesse und KI-gestützte Einarbeitungshilfen
+typical_services:
+- 24-Stunden-Betreuung
+- Mobiler Pflegedienst
+- Tagespflege
+- Kurzzeitpflege
+- Hauskrankenpflege
+- Demenzbetreuung
+- Hauswirtschaftliche Hilfe
+- Essenszustellung (Mahlzeitendienst)
+- Notrufsysteme
+- Pflegeberatung
+recommended_functions:
+- name: Terminmanagement und Erinnerungen
+  priority: high
+  reason: Reduziert Versäumnisse bei Medikamenten und Pflegemaßnahmen
+- name: Notfallerkennung und Alarmierung
+  priority: high
+  reason: Erhöht Sicherheit für Pflegebedürftige bei geringeren Personalkosten
+- name: Familienkommunikation
+  priority: medium
+  reason: Entlastet Pflegepersonal von wiederholten Statusanfragen
+- name: Dokumentationsassistenz
+  priority: high
+  reason: Automatisiert zeitaufwändige Pflegedokumentation
+- name: Mehrsprachige Unterstützung
+  priority: medium
+  reason: Wichtig für Pflegekräfte aus Osteuropa und internationale Klienten
+- name: Leistungsabrechnung
+  priority: medium
+  reason: Vereinfacht komplexe Abrechnung mit Sozialversicherungsträgern
+typical_integrations:
+- name: Pflegedokumentationssystem
+  examples:
+  - Curaviva
+  - CarePlanner
+  - PflegeDokuPro
+  priority: high
+- name: Terminplanungssystem
+  examples:
+  - PlanCare
+  - PflegeTermin
+  - TimeTrackPflege
+  priority: high
+- name: Abrechnungssystem
+  examples:
+  - SAP für Pflege
+  - Datev Pflege
+  - PflegeAbrechnung AT
+  priority: medium
+- name: Notrufsysteme
+  examples:
+  - Mobilnot
+  - Hausnotruf Austria
+  - Seniorennotruf
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - PflegeApp
+  - CareConnect AT
+  - Familienportal Pflege
+  priority: low
+industry_faq:
+- question: Ist die Nutzung mit der DSGVO in Österreich vereinbar?
+  answer_template: Unser System wurde speziell für den österreichischen Markt entwickelt
+    und ist vollständig DSGVO-konform. Alle Daten werden in EU-Rechenzentren verarbeitet.
+- question: Kann das System österreichische Dialekte verstehen?
+  answer_template: Ja, unsere KI wurde mit österreichischen Sprachmustern trainiert
+    und versteht regionale Dialekte sowie Fachbegriffe der Pflegebranche.
+- question: Wie wird die Datensicherheit gewährleistet?
+  answer_template: Wir verwenden Ende-zu-Ende-Verschlüsselung und österreichische
+    Serverstandorte. Regelmäßige Sicherheitsaudits garantieren höchste Standards.
+- question: Ist eine Integration in bestehende Pflegesoftware möglich?
+  answer_template: Ja, wir bieten Schnittstellen zu allen gängigen österreichischen
+    Pflegesystemen. Gerne prüfen wir Ihre spezifische Softwareumgebung.
+- question: Welche Schulung ist für mein Personal notwendig?
+  answer_template: Das System ist intuitiv bedienbar. Wir bieten kostenlose Einführungswebinare
+    und deutschsprachige Support-Materialien.
+- question: Funktioniert das System auch bei Demenzerkrankungen?
+  answer_template: Ja, wir haben spezielle Sprachmodelle für die Kommunikation mit
+    demenzerkrankten Personen entwickelt, die einfache, klare Interaktionen ermöglichen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn Kunden nach den Kosten fragen
+  script: Unser System startet bereits ab 299€ monatlich. Bei einer durchschnittlichen
+    Zeitersparnis von 15 Stunden administrativer Arbeit pro Woche amortisiert sich
+    die Investition meist innerhalb von 3 Monaten. Möchten Sie eine detaillierte ROI-Berechnung
+    für Ihre Einrichtung sehen?
+  goal: Wert statt Preis kommunizieren und ROI demonstrieren
+- trigger: implementation_concerns
+  situation: Bei Bedenken zur Implementierung
+  script: Wir übernehmen die gesamte Einrichtung inklusive Datenmigration und Mitarbeiterschulung.
+    Der typische Go-Live Prozess dauert nur 2-3 Wochen. Über 90% unserer Kunden sind
+    nach einem Monat vollständig produktiv.
+  goal: Implementierungsbedenken abbauen und Erfolgsquote betonen
+- trigger: competition_mention
+  situation: Wenn Kunden Wettbewerber erwähnen
+  script: Andere Anbieter haben oft generische Lösungen. Unser System ist speziell
+    für österreichische Pflegeeinrichtungen entwickelt, mit lokaler Sprachunterstützung
+    und DSGVO-konformer Datenverarbeitung in Wien.
+  goal: Lokale Expertise und Compliance-Vorteile hervorheben
+- trigger: small_business
+  situation: Bei kleinen Pflegediensten mit Budgetbedenken
+  script: Für kleinere Einrichtungen bieten wir spezielle Pakete ab 149€ monatlich.
+    Viele Kollegen finanzieren das System über den Digitalisierungsbonus des AMS oder
+    Pflegeförderungen der Länder.
+  goal: Erschwingliche Einstiegspunkte und Förderungen aufzeigen
+competitors:
+- name: CareCom Austria
+  positioning: Marktführer bei Pflegekommunikation
+  strengths:
+  - Breite Funktionen
+  - Etablierter Name
+  - Große Kundenbasis
+  weaknesses:
+  - Hohe Kosten
+  - Komplexe Bedienung
+  - Weniger österreichspezifisch
+  our_differentiation: Günstigere, einfachere Lösung mit Fokus auf österreichische
+    Anforderungen
+- name: PflegeDigital GmbH
+  positioning: Spezialist für Pflegedokumentation
+  strengths:
+  - Starke Dokumentationsfeatures
+  - Gute Integrationen
+  - Österreichisches Unternehmen
+  weaknesses:
+  - Schwache Sprachfunktionen
+  - Langsame Innovation
+  - Teure Wartung
+  our_differentiation: Moderne KI-Sprachtechnologie mit besseren Automatisierungsfunktionen
+- name: SeniorTech AT
+  positioning: Anbieter für Notrufsysteme
+  strengths:
+  - Robuste Hardware
+  - 24/7 Service
+  - Hohe Verlässlichkeit
+  weaknesses:
+  - Begrenzte Softwarefunktionen
+  - Keine Verwaltungstools
+  - Hohe laufende Kosten
+  our_differentiation: Umfassende Softwarelösung die Notruf mit täglicher Pflegeverwaltung
+    kombiniert
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleiner mobiler Pflegedienst mit 5 Mitarbeitern
+    monthly_cost: 299
+    monthly_savings: 650
+    payback_months: 1
+  - scenario: Mittleres Pflegeheim mit 30 Betten
+    monthly_cost: 899
+    monthly_savings: 2200
+    payback_months: 1
+  value_anchors:
+  - Kostet weniger als eine zusätzliche Teilzeitkraft
+  - Amortisiert sich durch Zeitersparnis in 2-4 Monaten
+  - Reduziert Dokumentationszeit um bis zu 60%
+market_context:
+  market_size: 2,1 Mrd. EUR jährlich
+  growth_rate: 4,2% YoY
+  key_trends:
+  - Zunehmende Digitalisierung durch Pflegegeld-Novelle 2023
+  - Steigender Bedarf an mobilen Pflegelösungen
+  - Wachsende Nachfrage nach Demenzbetreuung
+  - Förderungen für technische Assistenzsysteme
+  seasonality:
+    high:
+    - November-Februar (Winter)
+    - September (nach Urlaubszeit)
+    low:
+    - Juli-August (Haupturlaubszeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Unser älteres Personal kommt mit neuer Technologie nicht zurecht
+  response: Unser System ist sprachbasiert und erfordert keine Tastatureingaben. Die
+    meisten Nutzer sind nach kurzer Einweisung komfortabel damit. Wir bieten umfangreiche
+    Schulungen an.
+- objection: Wir haben bereits ein Pflegedokumentationssystem
+  response: Unser System ergänzt Ihre bestehende Software durch Sprachfunktionen.
+    Die Integration ist meist problemlos möglich und verbessert die Nutzererfahrung
+    erheblich.
+- objection: Das Budget ist dieses Jahr bereits ausgeschöpft
+  response: Viele österreichische Pflegeeinrichtungen nutzen Förderungen vom Land
+    oder AMS-Digitalisierungsbonus. Wir helfen gerne bei der Antragstellung.
+- objection: Bei sensiblen Pflegedaten bevorzugen wir Papier
+  response: Digitale Systeme sind heute sicherer als Papierakten. Unsere DSGVO-konforme
+    Lösung mit österreichischen Servern bietet höchsten Datenschutz.
+- objection: Wir haben zu wenig Anrufvolumen für Automatisierung
+  response: Unser System entlastet auch bei geringem Anrufaufkommen durch automatische
+    Dokumentation, Terminerinnerungen und Familienkommunikation.
+meta:
+  id: elderly_care
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

@@ -1,0 +1,256 @@
+pain_points:
+- description: Difficulté à trouver et retenir du personnel qualifié (aides-soignants,
+    infirmiers) en raison de pénuries chroniques et d'un turnover élevé.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la prise de rendez-vous, le suivi
+    des résidents et les rappels, réduisant la charge administrative et permettant
+    au personnel de se concentrer sur les soins.
+- description: Gestion administrative lourde et complexe (dossiers patients, facturation,
+    conformité) qui consomme un temps précieux.
+  severity: high
+  solution_hint: L'agent peut collecter et organiser des informations, générer des
+    rappels pour les tâches administratives et intégrer les données dans les logiciels
+    de gestion.
+- description: Anxiété des familles concernant le bien-être de leurs proches, avec
+    un besoin de communication régulière et rassurante.
+  severity: medium
+  solution_hint: L'agent peut fournir des mises à jour automatisées aux familles,
+    programmer des appels de confort et répondre aux questions fréquentes 24h/24.
+- description: Risque d'isolement social des résidents, notamment dans les structures
+    de petit taille ou en maintien à domicile.
+  severity: medium
+  solution_hint: L'agent peut initier des appels conversationnels réguliers, proposer
+    des activités et connecter les résidents à leurs proches via des appels programmés.
+- description: Conformité stricte au RGPD pour la protection des données de santé
+    des résidents, nécessitant des processus sécurisés.
+  severity: high
+  solution_hint: L'agent conçu avec la confidentialité par défaut, ne stockant pas
+    de données sensibles et obtenant des consentements clairs lors des interactions.
+- description: Coordination inefficace entre les différents intervenants (médecins
+    traitants, kinésithérapeutes, services à domicile).
+  severity: medium
+  solution_hint: L'agent peut servir de point de contact centralisé pour prendre des
+    messages, confirmer des visites et synchroniser les plannings des intervenants.
+typical_services:
+- Maintien à domicile (aide ménagère, soins infirmiers)
+- Résidence Services Senior (RSS)
+- EHPAD (Établissement d'Hébergement pour Personnes Âgées Dépendantes)
+- Accueil de jour
+- Accueil temporaire (répit familial)
+- SSIAD (Services de Soins Infirmiers à Domicile)
+- Téléassistance
+- Portage de repas
+- Animation et activités socio-culturelles
+- Coordination gérontologique
+recommended_functions:
+- name: Prise de rendez-vous et rappels automatisés
+  priority: high
+  reason: Réduit considérablement la charge administrative liée à la planification
+    des visites des soignants, des médecins et des familles.
+- name: Répondeur intelligent et aiguillage des appels
+  priority: high
+  reason: Gère les appels entrants 24/7, répond aux questions courantes et oriente
+    les urgences vers le personnel approprié, même en dehors des heures de bureau.
+- name: Suivi du bien-être et appels de confort
+  priority: medium
+  reason: Permet des check-ins réguliers et automatisés avec les résidents, détectant
+    d'éventuels problèmes et réduisant le sentiment d'isolement.
+- name: Communication avec les familles
+  priority: high
+  reason: Envoie des mises à jour automatisées, confirme les visites et répond aux
+    interrogations des proches, améliorant la transparence et la confiance.
+- name: Gestion des demandes et des alertes
+  priority: medium
+  reason: 'Capture et priorise les demandes des résidents (ex: réparation, repas)
+    et peut déclencher des alertes en cas de mot-clé détecté (ex: ''je tombe'').'
+- name: Collecte de consentements RGPD
+  priority: high
+  reason: Facilite la conformité en enregistrant de manière sécurisée les consentements
+    vocaux pour le traitement des données.
+typical_integrations:
+- name: Logiciel de gestion d'EHPAD/RSS
+  examples:
+  - Axigate
+  - Cegedim SRH
+  - Alf
+  - Nexialys
+  priority: high
+- name: Logiciel de téléassistance
+  examples:
+  - Assystel
+  - Téléassistance 65
+  - Filien ADMR
+  priority: medium
+- name: Agenda partagé / Planning
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  - Planner
+  priority: high
+- name: Système de ticketing / CRM
+  examples:
+  - Zendesk
+  - HubSpot
+  - Doliprane (CRM santé)
+  priority: medium
+industry_faq:
+- question: Comment votre solution respecte-t-elle le RGPD, surtout avec des données
+    de santé ?
+  answer_template: Notre solution est conçue avec la confidentialité dès la conception.
+    L'agent vocal ne stocke pas d'enregistrements audio complets ni de données de
+    santé sensibles. Nous utilisons un traitement en temps réel et obtenons un consentement
+    vocal clair pour chaque utilisation des données, conformément au RGPD.
+- question: Les personnes âgées vont-elles vraiment utiliser un agent vocal ?
+  answer_template: 'Absolument. L''interface est simple et naturelle : il suffit de
+    parler. Nous personnalisons l''agent avec une voix calmante et un langage clair.
+    Il est particulièrement efficace pour ceux qui ont des difficultés avec les écrans
+    ou les claviers. Nous proposons toujours une formation et un support d''adoption.'
+- question: Quel est le coût et quel est le retour sur investissement ?
+  answer_template: Notre tarification commence à partir de [ENTRY_POINT] par mois.
+    Le ROI est rapide grâce à la réduction du temps administratif (jusqu'à 10h/semaine),
+    à la diminution des erreurs de planning et à l'amélioration de la satisfaction
+    des familles, ce qui peut réduire le turnover.
+- question: Pouvez-vous vous intégrer à notre logiciel de gestion actuel ?
+  answer_template: Oui, notre solution est conçue pour l'intégration. Nous nous connectons
+    couramment aux principaux logiciels de gestion d'EHPAD comme Axigate ou Cegedim.
+    Notre équipe technique travaille avec vous pour une intégration fluide sans perturber
+    vos opérations.
+- question: Que se passe-t-il en cas d'urgence médicale ?
+  answer_template: Notre agent est configuré pour détecter des mots-clés d'urgence.
+    Il peut immédiatement transférer l'appel vers une ligne dédiée de votre personnel,
+    un service de téléassistance ou, selon votre protocole, composer le 15 (SAMU).
+    Il ne remplace pas la téléassistance dédiée mais la complète.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un prospect demande le prix dès le premier contact.
+  script: Je comprends que le budget est une préoccupation majeure. Notre tarification
+    est adaptative, basée sur le nombre de lits ou de bénéficiaires. Pour une structure
+    comme la vôtre, cela commence généralement autour de [ENTRY_POINT] €/mois. Plutôt
+    que de parler uniquement de coût, puis-je vous montrer comment cela se traduit
+    par des économies concrètes, par exemple en temps administratif récupéré pour
+    vos soignants ?
+  goal: Déplacer la conversation du prix vers la valeur et le ROI, et obtenir un rendez-vous
+    pour une démonstration.
+- trigger: objection_technology
+  situation: Quand le prospect doute de l'adoption par les résidents ou le personnel
+    âgé.
+  script: C'est une excellente question, et c'est pourquoi nous mettons l'accent sur
+    la simplicité. Vos résidents n'ont pas à apprendre une nouvelle technologie –
+    ils parlent simplement. Pour le personnel, nous réduisons leurs tâches répétitives
+    comme les appels de rappel. Nous vous accompagnons avec une formation sur mesure
+    et un support dédié pour garantir une adoption en douceur.
+  goal: Rassurer sur la facilité d'utilisation et l'accompagnement, transformer un
+    doute en opportunité de démonstration.
+- trigger: competitor_mention
+  situation: 'Quand le prospect mentionne un concurrent traditionnel (ex: un système
+    de téléassistance classique).'
+  script: 'Les systèmes de téléassistance classiques sont excellents pour les alertes
+    d''urgence. Notre solution va plus loin : elle est proactive. Au lieu d''attendre
+    un bouton d''alerte, notre agent engage quotidiennement le résident, réduit son
+    isoleur et automatise la communication avec les familles. C''est un complément
+    intelligent qui améliore le bien-être global tout en allégeant votre équipe.'
+  goal: Positionner notre solution comme complémentaire et supérieure en valeur ajoutée,
+    pas simplement comme un remplacement.
+competitors:
+- name: DomusVi
+  positioning: Leader national des résidences services et EHPAD.
+  strengths:
+  - Réseau étendu et reconnu
+  - Offre complète (EHPAD, RSS, domicile)
+  - Fortes capacités d'investissement
+  weaknesses:
+  - Solutions technologiques parfois rigides et coûteuses
+  - Focus sur les grandes structures
+  - Peu personnalisable
+  our_differentiation: Nous offrons une solution agile, abordable et facile à déployer,
+    même pour les petites structures ou les services à domicile indépendants, avec
+    une personnalisation approfondie et une intégration fluide.
+- name: Korian
+  positioning: Autre géant du secteur, fort en soins spécialisés (Alzheimer, dépendance
+    lourde).
+  strengths:
+  - Expertise médicale poussée
+  - Présence européenne
+  - Marque forte
+  weaknesses:
+  - Priorité aux soins cliniques sur l'expérience digitale
+  - Systèmes internes complexes
+  - Lenteur d'innovation
+  our_differentiation: Nous nous concentrons sur l'expérience quotidienne et l'efficacité
+    opérationnelle avec une technologie légère et intuitive qui améliore directement
+    la vie des résidents et le travail des équipes, sans la lourdeur des grands groupes.
+- name: Petits prestataires de téléassistance locaux
+  positioning: 'Acteurs régionaux ou associatifs (ex: ADMR, associations locales).'
+  strengths:
+  - Connaissance fine du territoire
+  - Relation de proximité et confiance
+  - Prix parfois compétitifs
+  weaknesses:
+  - Solutions technologiques basiques (boîtier bouton)
+  - Pas d'automatisation intelligente
+  - Capacités limitées en R&D
+  our_differentiation: Nous apportons l'intelligence artificielle et l'automatisation
+    proactives là où ils n'offrent qu'une réaction à l'urgence, modernisant leur offre
+    sans remplacer leur lien humain local.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 250
+  roi_examples:
+  - scenario: Pour un petit service de maintien à domicile (10 bénéficiaires) - Automatisation
+      des rappels de rendez-vous et de la communication avec les familles.
+    monthly_cost: 300
+    monthly_savings: 450
+    payback_months: 2
+  value_anchors:
+  - Libérez jusqu'à 15 heures de temps administratif par semaine pour vos soignants.
+  - Réduisez de 30% les appels répétitifs aux standardistes.
+  - Augmentez la satisfaction des familles avec des mises à jour automatiques.
+market_context:
+  market_size: Environ 30 milliards d'euros (marché de la dépendance)
+  growth_rate: ~4% par an (vieillissement de la population)
+  key_trends:
+  - Fort développement du 'maintien à domicile' vs. l'entrée en EHPAD.
+  - Numérisation accélérée des structures (dossier patient informatisé, objets connectés).
+  - Pénurie criante de personnel soignant qualifié.
+  - Montée en puissance de la 'Silver Economie' et des attentes des baby-boomers.
+  seasonality:
+    high:
+    - Septembre-Octobre (rentrée, organisation avant l'hiver)
+    - Décembre (période festive, isolement accru)
+    low:
+    - Juillet-Août (départs en vacances du personnel, fermetures partielles)
+typical_objections:
+- objection: Nos résidents sont trop âgés ou pas à l'aise avec la technologie.
+  response: C'est justement pour eux que c'est le plus simple. Pas d'écran, pas de
+    bouton à chercher. Ils parlent, comme au téléphone. Nous adaptons le débit et
+    le vocabulaire. Souvent, ils l'adoptent plus vite que prévu car c'est une voix
+    rassurante et une compagnie.
+- objection: Nous avons déjà une standardiste, nous n'avons pas besoin de ça.
+  response: Votre standardiste est précieuse. Notre agent ne la remplace pas, il la
+    renforce. Il gère les appels répétitifs (horaires, menus) et les appels en dehors
+    des heures, lui permettant de se concentrer sur les interactions complexes et
+    humaines qui comptent vraiment. C'est un outil pour augmenter son efficacité.
+- objection: C'est un investissement supplémentaire dans un contexte budgétaire très
+    contraint.
+  response: Je comprends parfaitement. Considérez-le non comme une dépense, mais comme
+    un outil d'économies. En réduisant le temps perdu en administration et en évitant
+    les erreurs de planning coûteuses, l'agent se paie souvent lui-même en quelques
+    mois. Pouvons-nous analyser ensemble où vous perdez le plus de temps actuellement
+    ?
+meta:
+  id: elderly_care
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

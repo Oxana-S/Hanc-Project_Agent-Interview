@@ -1,0 +1,278 @@
+pain_points:
+- description: Complex and rapidly changing state-by-state compliance regulations
+    require constant monitoring and adaptation, leading to operational risks.
+  severity: high
+  solution_hint: Provide automated compliance checklist reminders and documentation
+    updates for state-specific requirements via voice.
+- description: High staff turnover and difficulty in finding trained personnel for
+    retail, cultivation, and processing roles.
+  severity: high
+  solution_hint: Automate routine customer inquiries, appointment scheduling, and
+    onboarding questions to reduce training burden on new staff.
+- description: Managing inventory across multiple locations while adhering to strict
+    seed-to-sale tracking mandates is time-consuming and error-prone.
+  severity: high
+  solution_hint: Integrate with METRC or other track-and-trace systems to provide
+    real-time inventory status updates and low-stock alerts via voice queries.
+- description: Customer education demands are high, requiring staff to repeatedly
+    explain product effects, dosing, and consumption methods, slowing down service.
+  severity: medium
+  solution_hint: Deploy an AI agent to handle frequently asked product questions,
+    ensuring consistent and accurate information 24/7.
+- description: Payment processing challenges due to federal banking restrictions,
+    leading to reliance on cash or specialized fintech with higher fees.
+  severity: medium
+  solution_hint: Facilitate secure payment reminders and cashless pre-payment options
+    via phone to reduce in-store cash handling and streamline transactions.
+- description: Difficulty in scaling customer service during peak hours (evenings,
+    weekends) without significant labor cost increases.
+  severity: medium
+  solution_hint: Use AI voice agents to handle overflow calls, confirm orders, and
+    provide store hours/location info, maintaining service quality during surges.
+- description: Protecting sensitive customer data (purchase history, medical info)
+    to meet CCPA and HIPAA guidelines while maintaining marketing capabilities.
+  severity: high
+  solution_hint: Automate secure, consent-based opt-in/out processes for marketing
+    and ensure all voice interactions are compliant by design.
+typical_services:
+- Cultivation Consulting & Facility Design
+- Retail POS & Inventory Management Systems
+- Compliance & Regulatory Consulting
+- Branding & Marketing for Cannabis Brands
+- Extraction & Processing Equipment Sales
+- Wholesale Distribution Platform Services
+- Delivery Logistics & Routing Software
+- Medical Patient Verification Services
+- Cannabis Business Licensing Support
+- Security & Surveillance System Integration
+recommended_functions:
+- name: Compliance Assistant
+  priority: high
+  reason: The regulatory landscape is the primary operational risk; agents must provide
+    accurate, up-to-date rule summaries and checklist support.
+- name: Product Education & FAQ Agent
+  priority: high
+  reason: Reduces burden on budtenders, ensures consistent messaging, and serves customers
+    outside business hours.
+- name: Appointment Scheduler & Verification
+  priority: medium
+  reason: Medical dispensaries and consultations require bookings; automation improves
+    access and reduces no-shows.
+- name: Order Status & Delivery Tracker
+  priority: medium
+  reason: High volume of delivery inquiries; providing real-time updates reduces call
+    center load and improves customer experience.
+- name: Payment Reminder & Processing Assistant
+  priority: medium
+  reason: Helps manage accounts receivable for B2B clients and facilitates smoother
+    cashless transactions for consumers.
+- name: After-Hours & Overflow Call Handler
+  priority: low
+  reason: Captures leads and provides basic info when live staff is unavailable, preventing
+    missed opportunities.
+typical_integrations:
+- name: Track-and-Trace Compliance Software
+  examples:
+  - METRC
+  - Leaf Data Systems
+  - BioTrack
+  priority: high
+- name: Cannabis-Specific POS/Inventory Systems
+  examples:
+  - Green Bits
+  - Flowhub
+  - Cova
+  priority: high
+- name: E-commerce & Delivery Platforms
+  examples:
+  - Dutchie
+  - IheartJane
+  - Onfleet
+  priority: medium
+- name: Payment Processing & FinTech
+  examples:
+  - CanPay
+  - Aeropay
+  - Hypur
+  priority: medium
+- name: CRM & Marketing Automation
+  examples:
+  - Springbig
+  - Adistry
+  - Blaze
+  priority: medium
+industry_faq:
+- question: How do you ensure your system stays compliant with our state's cannabis
+    laws?
+  answer_template: Our platform is built with compliance as a core feature. We provide
+    regular automated updates aligned with state regulatory bulletins and integrate
+    directly with official track-and-trace systems like METRC to ensure all data handling
+    meets current requirements.
+- question: Can your AI agent handle sensitive medical patient information?
+  answer_template: Absolutely. Our system is designed with HIPAA and CCPA compliance
+    in mind. All voice interactions are encrypted, and we do not store protected health
+    information without explicit consent and proper safeguards, which we can configure
+    to your specific protocols.
+- question: What's the typical cost for implementing an AI voice agent in our dispensary?
+  answer_template: Implementation starts at a predictable monthly subscription, often
+    less than the cost of one part-time employee. The exact investment depends on
+    the call volume and features needed, but we focus on delivering a clear ROI through
+    labor savings and increased sales conversion.
+- question: How does this work with our existing POS and inventory software?
+  answer_template: Our agents integrate with leading cannabis platforms like Flowhub,
+    Green Bits, and Cova. We can pull product availability, update order statuses,
+    and even help customers find specific items, creating a seamless experience between
+    the phone and your in-store systems.
+- question: We're a cultivation facility, not a store. How can this help us?
+  answer_template: For cultivators, our agents can automate B2B order inquiries, schedule
+    wholesale pickups, provide harvest batch updates to distributors, and manage compliance
+    documentation requests, freeing your team to focus on production.
+- question: What if a customer asks a question the AI can't answer?
+  answer_template: Our system is designed to gracefully escalate complex or sensitive
+    issues to a live human agent at your business, ensuring the customer always gets
+    the help they need while the AI handles the routine majority of calls.
+sales_scripts:
+- trigger: compliance_concern
+  situation: When a prospect expresses anxiety about changing regulations or past
+    compliance fines.
+  script: I understand completely. Regulatory whiplash is one of the biggest hidden
+    costs in this industry. Our AI agent acts as your first line of defense, providing
+    your team with voice-activated compliance checklists and the latest rule changes
+    for your state. It helps prevent costly mistakes before they happen. Can I show
+    you how it works for a specific regulation you're dealing with?
+  goal: Reframe the AI from a cost to a risk-mitigation and insurance tool, and schedule
+    a demo.
+- trigger: staffing_pain
+  situation: When the prospect mentions high turnover, training costs, or being short-staffed.
+  script: It sounds like your team is stretched thin, especially with the constant
+    training needed. Our solution directly addresses that by handling the repetitive
+    questions about store hours, location, basic product info, and appointment booking
+    24/7. This lets your skilled budtenders focus on high-value consultations and
+    sales. Think of it as giving every employee a knowledgeable assistant that never
+    calls in sick.
+  goal: Position the AI as a workforce multiplier that improves job satisfaction and
+    sales, leading to a discussion about call volume.
+- trigger: price_question
+  situation: When the prospect immediately asks about cost.
+  script: That's a great question. We price based on the call volume and features
+    you need, typically starting at [entry_point] per month. To put that in perspective,
+    most of our clients see a full return on investment in under 6 months by reducing
+    missed calls, increasing after-hours order conversions, and saving on labor for
+    routine tasks. Would it be helpful to calculate a specific ROI based on your current
+    call metrics?
+  goal: Move past sticker shock by focusing on value and ROI, and transition to a
+    discovery conversation.
+- trigger: competitor_mention
+  situation: When the prospect names another CRM or generic call center service.
+  script: Many of those are great tools, but they aren't built for the unique challenges
+    of cannabis—like compliance-integrated conversations or understanding terms like
+    'indica vs. sativa' or 'live resin.' We specialize solely in this vertical. Our
+    AI is trained on cannabis-specific FAQs, integrates with your METRC and POS systems,
+    and is designed to be compliant from the ground up. It's not a generic tool you
+    have to adapt; it's a specialist for your industry.
+  goal: Differentiate on vertical specialization and native compliance, not just features.
+competitors:
+- name: Weedmaps (for retail services & marketing)
+  positioning: Dominant consumer-facing marketplace and directory.
+  strengths:
+  - Massive consumer audience
+  - brand recognition
+  - integrated ordering
+  weaknesses:
+  - High cost for businesses
+  - can divert brand loyalty to platform
+  - less focus on operational automation
+  our_differentiation: We focus on operational efficiency and direct customer relationship
+    automation for the business itself, not just listing it on a third-party platform.
+- name: Dutchie (for e-commerce & POS)
+  positioning: Leading integrated e-commerce and POS platform for dispensaries.
+  strengths:
+  - Strong POS integration
+  - seamless online ordering
+  - growing market share
+  weaknesses:
+  - Primarily a transaction platform
+  - less focus on pre-purchase telephony and customer service automation
+  our_differentiation: We specialize in the voice channel that captures customers
+    before they even visit the website, and we complement POS systems by handling
+    inquiries that don't require a full transaction interface.
+- name: Springbig (for CRM & marketing)
+  positioning: Leading cannabis-specific CRM and loyalty marketing platform.
+  strengths:
+  - Deep SMS/email marketing tools
+  - loyalty program management
+  - good industry data
+  weaknesses:
+  - Limited voice channel capabilities
+  - focused on post-visit engagement
+  our_differentiation: We own the initial voice contact and qualification, feeding
+    high-intent leads into your CRM. We handle the conversation they have *before*
+    they opt into your marketing list.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: A dispensary reducing 20 hours/week of staff time on phone queries and
+      increasing after-hours order capture.
+    monthly_cost: 450
+    monthly_savings: 800
+    payback_months: 2
+  value_anchors:
+  - Costs less than one part-time minimum wage employee.
+  - Prevents one compliance fine and the system pays for itself.
+  - Converts just 2 extra after-hours calls per day into sales.
+market_context:
+  market_size: Estimated at over $30 billion in legal sales annually
+  growth_rate: Approximately 10-15% YoY, though varying by state maturity
+  key_trends:
+  - Continued state-level legalization driving new market entry
+  - Price compression in mature markets increasing focus on operational efficiency
+  - Rise of cannabis hospitality and consumption lounges
+  - Increasing demand for consistent, branded product experiences
+  seasonality:
+    high:
+    - April (4/20)
+    - Late November - December (Holiday sales)
+    - Summer months
+    low:
+    - January (post-holiday)
+    - Early Fall (September)
+typical_objections:
+- objection: Our customers prefer to talk to a real person.
+  response: We absolutely agree that the human connection is vital, especially for
+    complex consultations. Our AI handles the repetitive, time-consuming questions—like
+    'are you open?' or 'do you have this edibles brand?'—so your *real people* have
+    more time for the meaningful, high-value conversations that truly build relationships
+    and sales.
+- objection: We're too small / our call volume isn't high enough.
+  response: Even a handful of missed calls a day represents lost revenue. Our entry-level
+    plans are designed for smaller operations. Furthermore, the AI ensures every caller
+    gets an immediate, professional response, which builds trust from the first contact,
+    setting you apart from competitors that send calls to voicemail.
+- objection: We tried an automated phone system before and it frustrated our customers.
+  response: Traditional IVR systems with confusing menus are indeed frustrating. Our
+    AI uses natural conversation—customers just ask their question in their own words.
+    It's a dramatically better experience that actually resolves their issue faster
+    in most cases, as they don't have to wait on hold.
+- objection: Implementation sounds complicated and we're too busy.
+  response: That's a valid concern. Our implementation is turnkey. We handle the setup,
+    integration with your key systems, and training. The goal is to make you *less*
+    busy by taking a predictable, tedious task off your plate. We can have a basic
+    version live for you in a matter of days.
+meta:
+  id: cannabis
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

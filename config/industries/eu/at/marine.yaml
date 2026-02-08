@@ -1,0 +1,244 @@
+pain_points:
+- description: Hohe Wartungs- und Instandhaltungskosten für Boote und Yachten, besonders
+    nach der Wintersaison.
+  severity: high
+  solution_hint: Automatisierte Erinnerungen für Wartungstermine und Vernetzung mit
+    Werkstätten via Sprachagent.
+- description: Saisonale Auftragsspitzen im Sommer führen zu überlasteten Mitarbeitern
+    und verpassten Anrufen.
+  severity: high
+  solution_hint: AI Voice Agent kann 24/7 Anrufe entgegennehmen, Termine buchen und
+    Basisauskünfte geben.
+- description: Komplexe Logistik und Buchhaltung durch unterschiedliche Standorte
+    (Marinas, Verleihstationen).
+  severity: medium
+  solution_hint: Integration des Voice Agents in Buchhaltungssoftware für automatisierte
+    Rechnungsstellung und Lagerabfragen.
+- description: Mangel an verfügbarem Fachpersonal für Reparatur und Kundenservice.
+  severity: medium
+  solution_hint: Voice Agent entlastet Personal von Routineanfragen, sodass sich Fachkräfte
+    auf komplexe Aufgaben konzentrieren können.
+- description: Ineffiziente Buchungs- und Reservierungssysteme führen zu doppelten
+    Buchungen und unzufriedenen Kunden.
+  severity: high
+  solution_hint: Echtzeit-Synchronisation von Verfügbarkeiten und direkte Buchung
+    über den Sprachassistenten.
+- description: Schwierigkeiten bei der Erreichung neuer Kunden außerhalb der lokalen
+    Region.
+  severity: low
+  solution_hint: Voice Agent kann gezielt Rückrufaktionen für Interessenten durchführen
+    und Reichweite erweitern.
+- description: Hoher administrativer Aufwand für Versicherungs- und Genehmigungsdokumente.
+  severity: medium
+  solution_hint: Automatisierte Erinnerungen und Checklisten für fällige Dokumente
+    via Sprachbenachrichtigung.
+typical_services:
+- Bootsverleih und Charter
+- Yachtmanagement und -betreuung
+- Marina-Betrieb und Liegeplatzvermietung
+- Bootswerft und Reparaturdienstleistungen
+- Bootsführerschein-Ausbildung und Sicherheitstrainings
+- Winterlagerung und -einarbeitung
+- Bootstransport und Logistik
+- Verkauf von Booten und Zubehör
+- Touristische Schifffahrt und Ausflugsfahrten
+- Versicherungs- und Finanzierungsberatung
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Entlastet Personal in der Hauptsaison und vermeidet Doppelbuchungen.
+- name: 24/7 Kundenhotline für Basisauskünfte
+  priority: high
+  reason: Fängt Anrufe außerhalb der Geschäftszeiten ab und steigert Kundenzufriedenheit.
+- name: Zahlungserinnerungen und Rechnungsstellung
+  priority: medium
+  reason: Verbessert den Cashflow durch automatisierte Zahlungsaufforderungen.
+- name: Verfügbarkeitsabfrage und Reservierung
+  priority: high
+  reason: Ermöglicht sofortige Buchungsbestätigungen und reduziert manuellen Aufwand.
+- name: Wartungserinnerungen
+  priority: medium
+  reason: Erhöht die Sicherheit und Langlebigkeit der Boote durch regelmäßige Wartung.
+- name: Lead-Qualifizierung und -Weiterleitung
+  priority: low
+  reason: Filtert ernsthafte Interessenten und leitet sie an den Vertrieb weiter.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - BitBulls
+  - Sage
+  priority: high
+- name: Buchungs- und Reservierungssysteme
+  examples:
+  - Campaya
+  - Regiondo
+  - boot24
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - xentral
+  - eigenes System
+  priority: medium
+- name: Bestands- und Lagermanagementsysteme
+  examples:
+  - JTL-Wawi
+  - Lexware
+  priority: medium
+- name: Kommunikationstools
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: low
+industry_faq:
+- question: Was kostet eine Saison-Liegeplatzmiete am Wolfgangsee?
+  answer_template: Die Preise für einen Saison-Liegeplatz variieren je nach Bootsgröße
+    und Lage. Typischerweise beginnen sie bei etwa 800 € pro Saison. Ich kann Sie
+    gerne mit unserer Marina-Leitung für ein detailliertes Angebot verbinden.
+- question: Bieten Sie auch Winterlagerung an?
+  answer_template: Ja, wir bieten gesicherte Winterlagerung in unserer Halle an. Der
+    Service umfasst Einlagerung, Kontrolle und Frühjahrseinarbeitung. Möchten Sie
+    mehr Details oder einen Kostenvoranschlag?
+- question: Kann ich spontan ein Boot für das Wochenende mieten?
+  answer_template: Die Verfügbarkeit für Wochenendmieten ist besonders in der Hochsaison
+    begrenzt. Ich prüfe gerne sofort für Sie unsere aktuelle Belegung und unterbreite
+    Ihnen Optionen.
+- question: Welche Unterlagen benötige ich für einen Bootsführerschein-Kurs?
+  answer_template: Sie benötigen einen gültigen Personalausweis, ein Passfoto und
+    ein ärztliches Attest. Der genaue Ablauf und die nächsten Kurs-Termine kann ich
+    Ihnen gerne per E-Mail zusenden.
+- question: Wie läuft eine Bootsreparatur bei Ihnen ab?
+  answer_template: Nach einer ersten telefonischen Schadensschilderung vereinbaren
+    wir einen Termin für eine Begutachtung in unserer Werft. Anschließend erhalten
+    Sie ein detailliertes Angebot.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten für einen Bootsverleih oder Marina-Dienst
+    fragt.
+  script: Vielen Dank für Ihre Anfrage. Die Kosten richten sich nach Bootstyp, Dauer
+    und Saison. Unser Einstiegspreis für eine Tagesmiete eines kleinen Motorbootes
+    beginnt bei 120 €. Um Ihnen das perfekte Angebot zu machen, darf ich fragen, für
+    welchen Zeitraum und für wie viele Personen Sie suchen?
+  goal: Lead qualifizieren und zum nächsten Schritt (detailliertes Angebot) führen.
+- trigger: availability_check
+  situation: Wenn ein Kunde die Verfügbarkeit für einen bestimmten Zeitraum abfragt.
+  script: Ich prüfe das sofort für Sie in unserem System. Für welche Art von Boot
+    oder Dienstleistung interessieren Sie sich genau? Und für welches Datum? Sobald
+    ich die Verfügbarkeit habe, kann ich Ihnen umgehend eine verbindliche Reservierungsoption
+    anbieten.
+  goal: Konkrete Buchung initiieren oder Reservierung vornehmen.
+- trigger: service_overview
+  situation: Wenn ein neuer Kontakt einen allgemeinen Überblick über unsere Dienstleistungen
+    wünscht.
+  script: 'Sehr gerne. Wir bieten umfassende Dienstleistungen rund ums Boot: Von der
+    Liegeplatzmiete und Winterlagerung über Bootsverleih und Charter bis hin zu Werftdienstleistungen
+    und Führerscheinkursen. Auf welchem Gebiet kann ich Sie zunächst unterstützen?'
+  goal: Gespräch auf spezifische Kundenbedürfnisse lenken und Interesse wecken.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde Bedenken wegen der Kosten äußert.
+  script: Ich verstehe, dass der Preis ein wichtiger Faktor ist. Bedenken Sie bitte,
+    dass in unseren Tarifen oft Wartung, Versicherung und Service enthalten sind,
+    was Ihnen zusätzliche Kosten und Aufwand erspart. Soll ich Ihnen die inkludierten
+    Leistungen im Detail für das gewünschte Paket aufschlüsseln?
+  goal: Wert kommunizieren und Einwand entkräften.
+competitors:
+- name: Boote Yachting Austria GmbH
+  positioning: Großer Anbieter für Yachtcharter und -management auf mehreren österreichischen
+    Seen.
+  strengths:
+  - Breite Flotte
+  - Mehrere Standorte
+  - Langjährige Erfahrung
+  weaknesses:
+  - Höhere Preise
+  - Teils unflexible Buchungssysteme
+  our_differentiation: Unser AI Voice Agent bietet persönlicheren, 24/7 erreichbaren
+    Service und nahtlose Buchungsintegration.
+- name: Marina Wolfgangsee
+  positioning: Führende Marina am Wolfgangsee mit umfassendem Service.
+  strengths:
+  - Top-Lage
+  - Umfassende Infrastruktur
+  - Guter Ruf
+  weaknesses:
+  - Begrenzte Kapazitäten
+  - Lange Wartelisten
+  our_differentiation: Wir automatisieren Verwaltungsprozesse, was schnelleren Service
+    und bessere Verfügbarkeitskommunikation ermöglicht.
+- name: Bootsverleih Attersee (lokaler Familienbetrieb)
+  positioning: Kleinere, traditionelle Verleihstation mit Fokus auf persönlichen Service.
+  strengths:
+  - Sehr persönlicher Service
+  - Lokale Kenntnis
+  - Flexibilität
+  weaknesses:
+  - Begrenzte digitale Präsenz
+  - Manuelle Prozesse
+  our_differentiation: Wir kombinieren den Charme des persönlichen Services mit der
+    Effizienz einer 24/7 digitalen Anlaufstelle.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 5000
+  entry_point: 120
+  roi_examples:
+  - scenario: 'Bootsverleih: Automatisierung von 20 Buchungsanfragen und 10 Zahlungserinnerungen
+      pro Tag.'
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 0.25
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden Verwaltungsaufwand pro Woche ein.
+  - Steigern Sie Ihre Buchungsrate durch 24/7 Erreichbarkeit.
+  - Vermeiden Sie teure Fehlbuchungen und Leerstände.
+market_context:
+  market_size: Ca. 250 Mio. EUR jährlich (Bootstourismus, Dienstleistungen, Handel)
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Zunehmende Nachfrage nach nachhaltigen und elektrischen Booten.
+  - Digitalisierung von Buchungs- und Verwaltungsprozessen.
+  - Steigendes Interesse an Bootsführerscheinen und Sicherheitstrainings.
+  seasonality:
+    high:
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    low:
+    - November
+    - Dezember
+    - Januar
+    - Februar
+typical_objections:
+- objection: Das ist mir zu teuer / Das Budget ist nicht vorgesehen.
+  response: Ich verstehe die Budgetüberlegungen. Viele unserer Kunden stellen fest,
+    dass die Einsparungen an Personalkosten und die zusätzlichen Buchungen die Investition
+    innerhalb weniger Monate amortisieren. Darf ich Ihnen eine kurze Kosten-Nutzen-Rechnung
+    für Ihr Geschäft skizzieren?
+- objection: Unsere Prozesse laufen gut genug, wir brauchen keine Automatisierung.
+  response: Das freut mich zu hören! Oft geht es bei der Automatisierung weniger um
+    die Behebung von Problemen, sondern um die Skalierbarkeit und Vorbereitung auf
+    Wachstum. Unser Service kann Ihnen helfen, in der Hochsaison mehr Kunden zu bedienen,
+    ohne zusätzliches Personal einstellen zu müssen.
+- objection: Die Technik ist uns zu kompliziert / Wir haben keine IT-Ressourcen.
+  response: Genau dafür sind wir da. Die Einrichtung und Wartung übernehmen wir komplett.
+    Sie müssen sich um nichts kümmern. Unser Sprachagent ist einfach per Telefon nutzbar
+    – ohne zusätzliche Software auf Ihren Geräten.
+meta:
+  id: marine
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

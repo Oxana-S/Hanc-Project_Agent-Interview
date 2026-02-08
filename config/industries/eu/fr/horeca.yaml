@@ -1,0 +1,253 @@
+aliases:
+- horeca
+- restauration
+- café
+- hôtel
+- bar
+- brasserie
+- traiteur
+- livraison de nourriture
+- fast-food
+- pizzeria
+- sushi
+- réservation de table
+- banquet
+competitors:
+- name: TheFork
+  positioning: Leader des réservations en ligne
+  strengths:
+  - Large base d'utilisateurs
+  - Intégration simple
+  - Campagnes marketing
+  weaknesses:
+  - Commissions élevées
+  - Peu de personnalisation
+  - Support limité
+  our_differentiation: Automatisation 24/7 sans commission par réservation, intégration
+    directe à votre logiciel
+- name: Deliveroo/Uber Eats
+  positioning: Plateformes majeures de livraison
+  strengths:
+  - Grande visibilité
+  - Service de livraison délégué
+  - Application utilisateur populaire
+  weaknesses:
+  - Commissions très élevées (30%+)
+  - Pas de relation directe avec le client
+  - Concurrence agressive sur la plateforme
+  our_differentiation: Agent vocal pour prendre vos commandes en direct, réduisant
+    la dépendance aux plateformes et leurs coûts
+- name: SIRH (Solutions de paie/planning)
+  positioning: Logiciels de gestion RH et de plannings
+  strengths:
+  - Conformité légale française
+  - Gestion des congés et absences
+  weaknesses:
+  - Coût important
+  - Complexité de mise en œuvre
+  - Pas d'automatisation de l'accueil téléphonique
+  our_differentiation: Complément intelligent qui libère le personnel des appels répétitifs,
+    optimisant l'emploi du temps géré par le SIRH
+industry_faq:
+- answer_template: Pour quelle date et à quelle heure ? Combien serez-vous de personnes
+    ?
+  question: Avez-vous une table de libre ?
+- answer_template: Je peux vous l'envoyer par WhatsApp ou par email. Il est également
+    disponible sur notre site web.
+  question: Quelle est votre carte ?
+- answer_template: Oui, nous sommes ouverts 7j/7. Le week-end jusqu'à 2h du matin.
+  question: Êtes-vous ouvert le week-end ?
+- answer_template: Oui, nous proposons un menu enfant et des chaises hautes.
+  question: Avez-vous un menu pour enfants ?
+- answer_template: Oui, nous organisons des banquets de 10 à 150 personnes. Pour quelle
+    date le souhaitez-vous ?
+  question: Pouvons-nous organiser un banquet ?
+- answer_template: Oui, nous avons un parking gratuit d'une vingtaine de places juste
+    à l'entrée.
+  question: Avez-vous un parking ?
+- answer_template: Oui, nous acceptons les cartes bancaires, les tickets-restaurant
+    et les espèces.
+  question: Quels modes de paiement acceptez-vous ?
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: ~90 milliards EUR
+  growth_rate: 3-5%
+  key_trends:
+  - Digitalisation des réservations et commandes
+  - Demande croissante de livraison et click & collect
+  - Importance des avis en ligne (TripAdvisor, Google)
+  - Attente de paiement sans contact
+  - Valorisation des produits locaux et durables
+  seasonality:
+    high:
+    - Été (tourisme)
+    - Fêtes de fin d'année
+    - Ponts de mai
+    low:
+    - Janvier
+    - Novembre (hors vacances)
+meta:
+  avg_validation_score: 0.0
+  country: fr
+  created_at: '2026-02-04'
+  currency: EUR
+  id: horeca
+  language: fr
+  languages: []
+  last_updated: '2026-02-04'
+  phone_codes:
+  - '+33'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Paris
+  version: '1.0'
+pain_points:
+- description: Afflux d'appels pour les réservations aux heures de pointe (12h-14h,
+    19h-21h)
+  severity: high
+  solution_hint: Réservation automatisée des tables 24h/24 et 7j/7
+- description: Taux de no-show (clients qui ne viennent pas) pouvant atteindre 15-20%
+  severity: high
+  solution_hint: Confirmations et rappels automatiques par SMS/email
+- description: Le personnel en salle est constamment dérangé par le téléphone au lieu
+    de servir les clients
+  severity: medium
+  solution_hint: Agent vocal qui gère les appels entrants pour les réservations et
+    questions
+- description: Difficulté à fidéliser la clientèle et à promouvoir les offres spéciales
+    (menu du jour, soirées à thème)
+  severity: medium
+  solution_hint: Appels sortants automatisés pour informer les clients fidèles des
+    nouveautés
+- description: Perte de commandes de livraison lorsque le téléphone est saturé
+  severity: medium
+  solution_hint: Prise de commande vocale automatisée, intégrée au système de livraison
+- description: Gestion complexe des demandes en plusieurs langues (anglais, espagnol)
+    dans les zones touristiques
+  severity: low
+  solution_hint: Agent multilingue pour répondre aux touristes
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 79
+  roi_examples:
+  - monthly_cost: 99
+    monthly_savings: 600
+    payback_months: 0.2
+    scenario: Petit café évitant l'embauche d'un employé à mi-temps pour le téléphone
+  - monthly_cost: 199
+    monthly_savings: 1500
+    payback_months: 0.1
+    scenario: Restaurant réduisant le no-show de 20% à 8% et captant plus de commandes
+  value_anchors:
+  - Équivalent à moins d’un SMIC horaire par mois
+  - Remboursé en quelques jours par les réservations sauvegardées
+  - Réduction des coûts de plateformes tierces (TheFork, Deliveroo)
+recommended_functions:
+- name: réservation
+  priority: high
+  reason: Réservation de table avec choix de l'horaire et de la zone (terrasse, salle)
+- name: rappel
+  priority: high
+  reason: Confirmation de réservation et envoi de rappel pour réduire le no-show
+- name: prise_de_commande
+  priority: high
+  reason: Prise de commande pour livraison ou à emporter
+- name: faq
+  priority: medium
+  reason: Informations sur la carte, les horaires, le parking, les modes de paiement
+- name: appel_sortant
+  priority: low
+  reason: Relance des clients fidèles pour les promotions et événements
+- name: multilingue
+  priority: low
+  reason: Réponse aux touristes en anglais/espagnol dans les zones concernées
+sales_scripts:
+- goal: Convertir une demande d'information en démonstration
+  script: Je comprends parfaitement. Beaucoup de nos clients dans l’horeca étaient
+    sceptiques au début. L’avantage, c’est que vous pouvez commencer sans engagement
+    avec un essai de 14 jours. Cela vous permet de voir directement comment l’agent
+    gère les appels à votre place, même aux heures de pointe. Puis-je vous envoyer
+    un lien pour planifier une courte démo personnalisée ?
+  situation: Lorsqu'un prospect exprime un intérêt mais une hésitation sur le coût
+    ou l'efficacité.
+  trigger: interest_but_hesitant
+- goal: Mettre en avant le ROI immédiat
+  script: Avec un forfait à 99€ par mois, notre solution coûte moins cher qu’une heure
+    de SMIC par jour. En réduisant le no-show ne serait-ce que de 5%, vous sauvez
+    déjà plusieurs couverts par semaine. De plus, vous récupérez votre personnel pour
+    le service en salle. Puis-je vous montrer un calcul basé sur votre volume de réservations
+    actuel ?
+  situation: En réponse à une objection sur le prix.
+  trigger: price_objection
+- goal: Proposer une intégration progressive
+  script: Nous recommandons souvent de commencer par automatiser uniquement les réservations,
+    qui représentent la majorité des appels. Une fois que vous et vos clients êtes
+    à l’aise, nous activons la prise de commande ou les rappels. Votre système actuel
+    de caisse (comme Lime, SumUp ou autre) peut très probablement être connecté.
+  situation: Lorsque le prospect semble submergé par la technologie ou craint un changement
+    trop brusque.
+  trigger: tech_overwhelm
+typical_integrations:
+- examples:
+  - TheFork Manager
+  - Lime
+  - SumUp
+  - Skeep
+  name: Système de réservation / Caisse
+  priority: high
+  reason: Synchronisation des tables, gestion des commandes et du menu
+- examples:
+  - Deliveroo
+  - Uber Eats
+  - Just Eat
+  name: Plateforme de livraison
+  priority: medium
+  reason: Import des commandes de livraison passées via l'agent
+- examples:
+  - Mews
+  - Oracle Opera
+  name: PMS (pour hôtels)
+  priority: high
+  reason: Réservation de chambres, statut des arrivées
+- examples:
+  - Pennylane
+  - SIRH divers
+  name: Logiciel de gestion / Paie
+  priority: low
+  reason: Données pour le suivi d'activité et optimisation des plannings
+- examples:
+  - WhatsApp Business
+  name: Messagerie
+  priority: medium
+  reason: Envoi de confirmations, de menus ou de promotions
+typical_objections:
+- objection: Je préfère que ce soit un humain qui réponde, c'est plus chaleureux.
+  response: Je comprends. Notre agent gère les questions simples et les réservations
+    pour libérer votre équipe. Ainsi, elle peut consacrer plus de temps et de chaleur
+    humaine aux clients présents sur place. De plus, l'agent peut transférer immédiatement
+    vers un humain si nécessaire.
+- objection: C'est trop cher pour mon petit établissement.
+  response: Notre forfait de base est à 79€. Pour un café ou un petit restaurant,
+    cela représente souvent le coût de quelques couverts perdus par mois à cause du
+    no-show. Nous avons un calcul simple à vous proposer.
+- objection: Les clients vont être frustrés de parler à une machine.
+  response: L'agent est conçu pour être naturel et efficace. Il répond instantanément,
+    même quand le téléphone sonne sans arrêt. La plupart des appels pour une réservation
+    sont très factuels. Nous constatons une satisfaction client élevée car ils obtiennent
+    une réponse immédiate.
+typical_services:
+- Réservation de tables
+- Commande à emporter (click & collect)
+- Livraison à domicile
+- Organisation de banquets et séminaires
+- Service de traiteur
+- Réservation de chambres (hôtels)
+- Service en chambre (Room service)
+- Organisation d'événements privés
+- Vente de cartes cadeaux
+- Consultation de la carte et des vins
+_extends: _base/horeca

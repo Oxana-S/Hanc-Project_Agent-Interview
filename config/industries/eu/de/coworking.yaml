@@ -1,0 +1,208 @@
+pain_points:
+- description: Hohe Fixkosten für Miete, Nebenkosten und Infrastruktur bei schwankender Auslastung.
+  severity: high
+  solution_hint: KI-Stimmenagent kann Auslastung optimieren, indem er kurzfristige Buchungen und Upselling für Zusatzleistungen fördert.
+- description: Administrativer Aufwand für Mitgliederverwaltung, Verträge und Zahlungseinzug.
+  severity: medium
+  solution_hint: Automatisierte Verwaltung und Erinnerungen via KI-Agent entlastet das Personal.
+- description: Schwierigkeiten, flexibel skalierbare Angebote für Freiberufler und kleine Teams zu kommunizieren.
+  severity: medium
+  solution_hint: KI-Agent kann sofort maßgeschneiderte Pakete erklären und Verfügbarkeiten in Echtzeit prüfen.
+- description: Geringe Sichtbarkeit gegenüber lokalen Mitbewerbern und Online-Portalen.
+  severity: high
+  solution_hint: KI-Agent kann als 24/7-Kontaktpunkt fungieren und Leads qualifizieren, um Konversionen zu steigern.
+- description: Herausforderung, eine lebendige Community aufzubauen und Events zu organisieren.
+  severity: low
+  solution_hint: Agent kann über Events informieren, Anmeldungen sammeln und Community-Fragen beantworten.
+- description: Komplexe Handhabung von Meeting-Raumbuchungen durch externe Gäste.
+  severity: medium
+  solution_hint: Vollautomatisierte Buchung und Zugangsverwaltung per Sprach- oder Chatinterface.
+- description: Einhaltung der DSGVO bei der Erfassung und Speicherung von Mitgliederdaten.
+  severity: high
+  solution_hint: KI-Agent kann datenschutzkonform agieren, Einwilligungen dokumentieren und nur notwendige Daten abfragen.
+typical_services:
+- Hot-Desk-Plätze (Flex Desk)
+- Dedizierte Schreibtische (Fixed Desk)
+- Private Büros (Team Offices)
+- Meeting-Raummiete (stunden- oder tageweise)
+- Virtuelle Büroadresse mit Postservice
+- Event-Space-Vermietung
+- 24/7-Zugang mit Keycard oder App
+- All-Inklusive-Pakete (Inkl. Strom, Internet, Kaffee)
+- Community-Management und Networking-Events
+- IT-Support und High-Speed-Internet
+recommended_functions:
+- name: Buchungsassistent für Arbeitsplätze und Meetingräume
+  priority: high
+  reason: Entlastet das Personal und ermöglicht 24/7-Buchungen, was die Auslastung erhöht.
+- name: Lead-Qualifizierung und Terminvereinbarung für Besichtigungen
+  priority: high
+  reason: Filtert ernsthafte Interessenten heraus und steigert die Effizienz des Vertriebs.
+- name: FAQ-Beantwortung zu Preisen, Vertragslaufzeiten und Leistungen
+  priority: medium
+  reason: Sofortige Kundenbetreuung reduziert Abwanderung und entlastet Support.
+- name: Community-Updates und Event-Ankündigungen
+  priority: low
+  reason: Fördert Engagement und bindet Mitglieder durch regelmäßige Information.
+- name: Rechnungs- und Zahlungserinnerungen
+  priority: medium
+  reason: Verbessert Cashflow und reduziert manuelle Nachverfolgung.
+- name: Feedback-Sammlung und Umfragen
+  priority: low
+  reason: Liefert wertvolle Insights zur Verbesserung des Angebots.
+typical_integrations:
+- name: Buchungs- und Raummanagementsystem
+  examples:
+  - Nexudus
+  - OfficeR&D
+  - Kisi
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Pipedrive
+  - Lexware
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexoffice
+  - SevDesk
+  priority: medium
+- name: Zahlungsgateway
+  examples:
+  - Stripe
+  - PayPal
+  - SEPA-Lastschrift
+  priority: medium
+- name: Zugangskontrollsystem
+  examples:
+  - Salto KS
+  - Kisi
+  - Brivo
+  priority: medium
+industry_faq:
+- question: Was kostet ein flexibler Arbeitsplatz pro Monat?
+  answer_template: Unsere Hot-Desk-Plätze beginnen bei [Betrag]€ pro Monat. Der Preis hängt von der gewählten Laufzeit und den inkludierten Leistungen ab. Ich kann Ihnen gerne ein passendes Angebot erstellen.
+- question: Gibt es Mindestvertragslaufzeiten?
+  answer_template: Wir bieten maximale Flexibilität. Hot-Desks können oft monatlich gekündigt werden, für Büros gelangen längere Laufzeiten. Gerne bespreche ich Ihre Bedürfnisse.
+- question: Sind Meetingräume auch für Externe buchbar?
+  answer_template: Ja, absolut. Externe können Meetingräume stunden- oder tagesweise buchen. Ich prüfe sofort die Verfügbarkeit für Ihr Wunschdatum.
+- question: Ist High-Speed-Internet inklusive?
+  answer_template: Ja, alle unsere Tarife beinhalten professionelles, hochgeschwindigkeits Internet. Für spezielle Anforderungen beraten wir Sie gerne.
+- question: Welche Gemeinschaftsbereiche und Extras bietet ihr an?
+  answer_template: Wir haben Küchen, Lounges, Eventflächen und oft gratis Kaffee. Regelmäßige Networking-Events sind inklusive. Möchten Sie mehr Details?
+- question: Wie handhabt ihr die DSGVO-Konformität?
+  answer_template: Datenschutz hat bei uns höchste Priorität. Alle Verträge und Datenverarbeitungen sind DSGVO-konform. Wir informieren Sie gerne detailliert.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Interessent nach dem Preis für einen Arbeitsplatz fragt.
+  script: 'Sehr gerne. Um Ihnen das beste Angebot zu machen: Benötigen Sie einen flexiblen Hot-Desk, einen festen Schreibtisch oder sogar ein privates Büro? Für wie viele Personen und mit welcher voraussichtlichen
+    Laufzeit?'
+  goal: Den Bedarf qualifizieren und vom pauschalen Preis zu einem maßgeschneiderten Angebot lenken.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen spezifischen Mitbewerber wie WeWork oder Mindspace nennt.
+  script: Verstanden. Im Vergleich zu großen Ketten bieten wir oft persönlichere Betreuung, eine stärkere lokale Community und transparente, all-inclusive Preise ohne versteckte Kosten. Möchten Sie wissen,
+    wie sich das in Ihrem konkreten Fall auswirkt?
+  goal: Unsere lokalen Stärken und den Community-Aspekt betonen, um sich abzuheben.
+- trigger: objection_flexibility
+  situation: Wenn der Kunde Bedenken wegen zu langer Vertragsbindung äußert.
+  script: Flexibilität ist uns wichtig. Für den Einstieg empfehle ich unseren monatlich kündbaren Hot-Desk-Tarif. So testen Sie uns risikofrei. Später können Sie bei Gefallen immer noch auf ein Büro mit
+    längerer Laufzeit umsteigen, was kostengünstiger ist. Passt das für Ihren Start?
+  goal: Die Bedenken auflösen und einen risikofreien Einstieg anbieten, um den Kunden zu gewinnen.
+- trigger: lead_qualification
+  situation: Bei einem ersten Kontakt, um herauszufinden, ob es sich um einen ernsthaften Lead handelt.
+  script: 'Vielen Dank für Ihr Interesse! Um Ihre Zeit und unsere zu schonen: Suchen Sie kurzfristig einen Platz oder planen Sie für die kommenden Monate? Wären Sie offen für eine kurze Besichtigung nächste
+    Woche, um die Atmosphäre live zu erleben?'
+  goal: Zeitrahmen klären und konkret zu einem Besichtigungstermin führen.
+competitors:
+- name: WeWork
+  positioning: Globaler Gigant mit zahlreichen Standorten in deutschen Großstädten.
+  strengths:
+  - Markenbekanntheit
+  - Großes Netzwerk
+  - Hochwertige Ausstattung
+  weaknesses:
+  - Höhere Preise
+  - Weniger lokale Verwurzelung
+  - Standardisierte Verträge
+  our_differentiation: Persönlichere Betreuung, stärkere Fokussierung auf lokale Communities und transparente, oft günstigere All-Inklusive-Preise.
+- name: Mindspace
+  positioning: Premium-Anbieter mit designorientierten Spaces in Top-Lagen.
+  strengths:
+  - Exzellentes Design
+  - Starke Community-Events
+  - Unternehmenskunden-Fokus
+  weaknesses:
+  - Sehr premium-preisig
+  - Begrenzte Standorte
+  - Weniger Flexibilität für Einzelpersonen
+  our_differentiation: Breitere Preisrange für verschiedene Budgets, flexiblere Vertragsmodelle für Freiberufler und kleine Teams, authentischerer lokaler Charakter.
+- name: Regionaler/unabhängiger Betreiber
+  positioning: Lokaler Anbieter mit ein oder wenigen Standorten in einer Stadt.
+  strengths:
+  - Sehr persönlich
+  - Tiefe lokale Vernetzung
+  - Individuelle Lösungen
+  weaknesses:
+  - Begrenzte Ressourcen
+  - Oft weniger professionelle Prozesse
+  - Eingeschränkte Skalierbarkeit
+  our_differentiation: Wir kombinieren lokalen Charme und Betreuung mit professionellen, skalierbaren Systemen (Buchung, Support) und einem potenziell größeren Mitgliedernetzwerk.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 600
+  entry_point: '89'
+  roi_examples:
+  - scenario: Freiberufler wechselt von Cafe/Home-Office zu einem Hot-Desk mit professionellem Umfeld.
+    monthly_cost: 120
+    monthly_savings: 220
+    payback_months: 1
+  - scenario: Startup (4 Personen) mietet privates Büro statt teurer Gewerbefläche.
+    monthly_cost: 1600
+    monthly_savings: 2800
+    payback_months: 4
+  value_anchors:
+  - Keine Kaution oder Investition in Möbel & Infrastruktur.
+  - 'All-Inklusive: Keine versteckten Kosten für Strom, Internet oder Reinigung.'
+  - Networking & Synergien in der Community haben keinen Preis.
+market_context:
+  market_size: Über 1 Mrd. EUR Jahresumsatz (DE, pre-COVID Niveau)
+  growth_rate: Stabil, angetrieben durch Remote/Hybrid Work (~5-10% YoG)
+  key_trends:
+  - Stärkerer Fokus auf Vorort-Spaces außerhalb teurer Innenstädte (Suburbia & zweite Städte).
+  - Nachfrage nach flexiblen Hybrid-Modellen (Büro + Remote Tage).
+  - Wachsende Bedeutung von Community und Wellness-Angeboten.
+  - Nachhaltigkeit und 'Green Coworking' werden zum Entscheidungskriterium.
+  seasonality:
+    high:
+    - Januar (Neujahrsvorsätze)
+    - September (nach Sommerpause)
+    low:
+    - Dezember (Feiertage)
+    - Juli-August (Haupturlaubszeit)
+typical_objections:
+- objection: Das ist mir zu teuer. Ich kann auch zu Hause oder im Café arbeiten.
+  response: Das verstehe ich. Bedenken Sie aber die versteckten Kosten wie Café-Rechnungen, Ablenkungen und fehlende Trennung von Arbeit und Privatleben. Unsere Umgebung steigert nachweislich die Produktivität.
+    Zudem sind Netzwerkkontakte hier unbezahlbar. Möchten Sie einen Tag zum Testen vereinbaren?
+- objection: Ich brauche keine 40 Stunden pro Woche einen festen Platz.
+  response: Perfekt! Genau dafür haben wir flexible Hot-Desk- oder Teilzeit-Tarife. Sie zahlen nur für die Nutzung, die Sie brauchen, und haben trotzdem alle Vorteile eines professionellen Büros. Welches
+    Pensum stellen Sie sich vor?
+- objection: Ich habe schon bei [Mitbewerber] angefragt und warte auf ein Angebot.
+  response: Exzellent, dass Sie Ihre Optionen prüfen. Während Sie warten, lade ich Sie herzlich zu einer unverbindlichen Besichtigung ein. So können Sie unsere einzigartige Atmosphäre und Community selbst
+    erleben. Das hilft Ihnen bei der Entscheidung. Passt morgen Nachmittag?
+meta:
+  id: coworking
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

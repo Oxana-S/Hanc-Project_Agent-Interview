@@ -1,0 +1,193 @@
+pain_points:
+- description: 候选人筛选成本高，HR需花费大量时间筛选海量简历，效率低下
+  severity: high
+  solution_hint: AI语音助理可进行初轮电话筛选，自动询问预设问题并评估候选人基本匹配度
+- description: 招聘流程长，从发布职位到入职环节多，沟通不及时导致候选人流失
+  severity: high
+  solution_hint: 自动化跟进候选人，及时推送流程状态，安排面试，保持候选人热度
+- description: 核心岗位（如技术、高管）人才难寻，传统渠道效果有限
+  severity: high
+  solution_hint: 通过智能外呼进行人才挖猎，主动触达潜在候选人，建立初步联系
+- description: 候选人体验不佳，沟通不顺畅或反馈不及时影响企业雇主品牌
+  severity: medium
+  solution_hint: 提供7x24小时智能问答与沟通，确保及时响应，提升候选人体验
+- description: 招聘数据分散，不同平台数据未整合，分析困难
+  severity: medium
+  solution_hint: 集成主流招聘平台，自动同步数据，并生成可视化分析报告
+- description: 背景调查流程繁琐，耗时耗力且信息核实难度大
+  severity: medium
+  solution_hint: 自动化执行部分背景调查流程，如与前雇主进行标准信息核实通话
+- description: 面试安排协调复杂，HR需反复与面试官、候选人沟通时间
+  severity: low
+  solution_hint: 智能协调多方日历，自动推荐并确认面试时间，发送提醒
+typical_services:
+- 猎头服务（中高端人才寻访）
+- RPO（招聘流程外包）
+- 校园招聘
+- 灵活用工/派遣
+- 招聘流程咨询与优化
+- 雇主品牌建设
+- 人才测评与评估
+- 背景调查
+- 招聘系统（ATS）实施
+- 海外人才引进
+recommended_functions:
+- name: 智能简历筛选与初面
+  priority: high
+  reason: 直接解决海量简历筛选的效率痛点，是HR最耗时的环节之一
+- name: 候选人关系维护与跟进
+  priority: high
+  reason: 提升候选人转化率，降低因沟通不及时导致的流失，改善体验
+- name: 面试安排与协调
+  priority: medium
+  reason: 解放HR在行政协调上的时间，让HR更专注于核心评估工作
+- name: 人才库激活与挖猎
+  priority: high
+  reason: 帮助企业低成本触达被动候选人，解决核心人才难寻的问题
+- name: 招聘数据播报与分析
+  priority: medium
+  reason: 满足管理层对招聘效率、渠道效果和成本的数据洞察需求
+- name: 入职前准备与沟通
+  priority: low
+  reason: 确保候选人顺利入职，提升入职体验，降低爽约率
+typical_integrations:
+- name: 招聘平台
+  examples:
+  - Boss直聘
+  - 猎聘
+  - 智联招聘
+  - 前程无忧
+  priority: high
+- name: HR系统/ATS
+  examples:
+  - 北森
+  - 大易
+  - Moka
+  - SAP SuccessFactors
+  priority: high
+- name: 办公协同平台
+  examples:
+  - 钉钉
+  - 企业微信
+  - 飞书
+  priority: medium
+- name: 背调服务商
+  examples:
+  - 知了背调
+  - 全景求是
+  priority: medium
+- name: 薪酬福利系统
+  examples:
+  - 薪人薪事
+  - 易路
+  priority: low
+industry_faq:
+- question: 你们的AI语音招聘助理真的能听懂候选人的回答并做出判断吗？
+  answer_template: 是的，我们的系统基于先进的NLP和ASR技术，专为招聘场景优化。它能理解中文对话的上下文，根据预设的岗位要求（如工作经验、技能、薪资期望、离职原因）进行多维度评估，并标记重点信息或存疑点供HR复核，准确率可达XX%以上。
+- question: 使用AI语音助理进行招聘，如何确保符合中国的《个人信息保护法》（PIPL）？
+  answer_template: 我们高度重视合规性。所有通话会明确告知候选人正在使用AI并进行录音，获得其明确同意。数据存储和处理均在中国境内，并采取加密和访问控制措施。我们提供数据管理工具，支持候选人行使查询、更正、删除其个人信息的权利。
+- question: 这个系统能替代我们的招聘专员或猎头吗？
+  answer_template: 并非替代，而是赋能。AI助理处理重复性、标准化的初筛、预约、跟进工作，将招聘专家从繁琐事务中解放出来，让他们能更专注于高价值的核心环节，如深度面试、薪酬谈判和关系维护，从而提升整体团队效率和人才招聘质量。
+- question: 实施和部署需要多久？我们的HR团队需要专门培训吗？
+  answer_template: 标准SaaS版本可在一周内完成部署和基础配置。我们提供简洁易懂的操作后台和详尽的配置指南。通常，HR团队经过1-2小时的线上培训即可上手。我们也有专属客户成功团队提供持续支持。
+- question: 服务如何收费？是按照通话时长、成功入职人数还是其他方式？
+  answer_template: 我们提供灵活的定价模式。常见的有按坐席/账号数订阅的年费，也支持按通话时长或有效沟通候选人数量计费。我们可以根据贵公司的招聘体量和需求，推荐最具成本效益的方案。
+sales_scripts:
+- trigger: service_inquiry
+  situation: 当潜在客户询问AI语音招聘助理具体能做什么时
+  script: 您好！我们的AI招聘助理主要帮您解决三大难题：一是7x24小时自动完成简历初筛和电话初面，把HR从海量重复工作中解放出来；二是主动外呼激活您的人才库或进行人才挖猎，拓展高端人才渠道；三是自动化安排面试、发送提醒和跟进候选人状态，极大提升流程效率和候选人体验。您目前招聘中最大的时间消耗或瓶颈是在哪个环节呢？
+  goal: 了解客户具体痛点，并将功能与痛点关联，引导对话深入
+- trigger: price_question
+  situation: 当客户初步了解服务后询问价格
+  script: 我们的费用根据您需要的并发坐席数量、功能模块和预计使用量而定。针对中小型企业，我们有入门套餐，每月仅需数千元人民币起，远低于一名初级招聘专员的月成本。相比传统猎头单岗位动辄数万的服务费，我们的解决方案能帮您规模化、低成本地完成基础招聘工作。您方便透露一下公司大概的月度或年度招聘需求吗？我可以为您做一个更精准的估算。
+  goal: 提供价格区间，将其与传统成本对比以凸显价值，并尝试获取需求信息以提供具体报价
+- trigger: competitor_mention
+  situation: 当客户提到其他招聘工具或AI解决方案时
+  script: 您提到的[竞争对手名称]确实在某些方面有特色。我们的核心差异在于深度聚焦于招聘场景的语音交互，而不是通用的聊天机器人。我们的对话逻辑、问题库和评估模型专门为招聘打磨，与国内主流招聘平台和ATS系统的集成也更深入。此外，我们在PIPL合规性方面有完善的流程设计。您主要关注的是效果、集成还是成本方面的比较呢？
+  goal: 有礼貌地承认竞争对手，清晰阐述自身差异化优势，并将话题引导至客户的核心关注点
+competitors:
+- name: Boss直聘
+  positioning: 综合性直聊招聘平台
+  strengths:
+  - 庞大的活跃求职者基数
+  - 直聊模式交互直接
+  - 在互联网和年轻求职者中影响力大
+  weaknesses:
+  - 高端人才覆盖相对较弱
+  - 平台功能更侧重于信息对接而非流程管理
+  - AI功能主要限于文本聊天机器人
+  our_differentiation: 我们提供深度语音交互和流程自动化，专注于提升从筛选到入职的闭环效率，并能与Boss直聘等平台数据打通，进行智能外呼和跟进，补充其功能短板。
+- name: 猎聘
+  positioning: 中高端人才招聘平台
+  strengths:
+  - 中高端人才简历库质量较高
+  - 猎头生态丰富
+  - 品牌在中高端市场认可度高
+  weaknesses:
+  - 企业端使用成本较高
+  - 流程自动化工具并非核心
+  - 对中低端批量招聘支持有限
+  our_differentiation: 我们为企业提供高性价比的自动化招聘能力，既能辅助内部HR提升效率，也能作为工具赋能平台上的猎头，专注于可规模化的初步触达和筛选任务。
+- name: Moka
+  positioning: 智能化招聘管理系统（ATS）
+  strengths:
+  - 招聘流程管理功能全面
+  - 用户体验设计优秀
+  - 数据分析能力较强
+  weaknesses:
+  - AI功能主要集中在简历解析和文本沟通
+  - 主动外呼和语音交互能力有限
+  - 价格相对较高
+  our_differentiation: 我们是强大的语音交互能力补充，与Moka等ATS可无缝集成，将自动化从‘流程线上化’推进到‘沟通智能化’，填补其在主动触达和语音筛选环节的空白。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: 一家每月需筛选200份简历、安排30场初面的科技公司
+    monthly_cost: 4500
+    monthly_savings: 12000
+    payback_months: 8
+  value_anchors:
+  - 成本仅相当于初级招聘专员月薪的20%-30%
+  - 单个有效初面通话成本可比人工降低70%以上
+  - 将招聘周期平均缩短15%-30%
+market_context:
+  market_size: 超千亿元人民币
+  growth_rate: 约8%-12%
+  key_trends:
+  - 数字化转型加速，AI在招聘中的应用从概念走向落地
+  - 灵活用工和远程办公趋势催生新的招聘与管理需求
+  - 候选人体验成为雇主品牌竞争的核心要素
+  - 数据驱动决策在招聘中日益重要
+  seasonality:
+    high:
+    - 春节后（金三银四）
+    - 九月（秋季校招）
+    low:
+    - 春节前
+    - 七月八月（暑期）
+typical_objections:
+- objection: 我们担心AI沟通太机械，会影响公司形象，让候选人觉得不受尊重。
+  response: 您的担心非常理解。我们的AI声音经过专业设计，自然流畅。更重要的是，对话逻辑高度拟人化，并能根据候选人回答灵活调整。我们通常会明确告知对方是AI，这反而能体现公司勇于采用新技术的形象。初期您可以设定只用于初级岗位筛选，待体验后再扩大范围。
+- objection: 我们的招聘流程很复杂，涉及多轮面试和不同部门，AI恐怕处理不了。
+  response: 复杂的流程正是AI助理发挥价值的地方。它可以作为‘中央调度器’，根据预设规则协调不同面试官的时间，自动安排多轮面试顺序，并实时同步进度给所有相关方。它擅长处理这种多节点、多角色的规则性协调工作，减少人为沟通误差和延迟。
+- objection: 我们公司招聘量不大，可能用不上这么自动化的工具。
+  response: 对于招聘量不大的公司，AI助理的价值在于让HR或业务负责人从偶尔但繁琐的招聘事务中彻底解放。您无需专门学习招聘平台操作或反复筛选简历，一个指令就能启动人才寻访和筛选流程。它按需使用，相当于一个‘零固定成本’的虚拟招聘助手，性价比很高。
+meta:
+  id: recruitment
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- recruitment
+- staffing
+- HR
+- headhunting
+- hiring
+_extends: _base/recruitment

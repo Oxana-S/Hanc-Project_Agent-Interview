@@ -1,0 +1,244 @@
+aliases:
+- franquicia
+- franquiciador
+- franquiciado
+- canon de entrada
+- royalties
+- negocio llave en mano
+- licencia
+- asociación
+- distribución
+- red comercial
+competitors:
+- name: Grupo Zena
+  positioning: Líder en franquicias de restauración en España
+  strengths:
+  - Amplia red de franquiciados
+  - Reconocida marca
+  - Soporte integral
+  weaknesses:
+  - Altos costes de entrada
+  - Menor flexibilidad contractual
+  our_differentiation: Ofrecemos modelos de franquicia más accesibles y soporte personalizado
+- name: Restalia
+  positioning: Cadena de franquicias de restauración con presencia internacional
+  strengths:
+  - Modelos de negocio probados
+  - Marketing consolidado
+  weaknesses:
+  - Competencia fuerte en el sector
+  - Requisitos exigentes para franquiciados
+  our_differentiation: Adaptamos franquicias a emprendedores con menos experiencia
+    y menor inversión inicial
+- name: Grupo Vips
+  positioning: Franquicias de restauración y retail con fuerte presencia en España
+  strengths:
+  - Marca consolidada
+  - Amplia variedad de formatos
+  weaknesses:
+  - Procesos burocráticos complejos
+  - Menor innovación tecnológica
+  our_differentiation: Simplificamos procesos y utilizamos tecnología para mejorar
+    la gestión
+industry_faq:
+- question: ¿Cuánto cuesta la franquicia?
+  answer_template: El canon de entrada suele estar entre X y Y EUR, además se aplican
+    royalties del Z% sobre ventas. ¿Quiere que le explique las condiciones detalladamente?
+- question: ¿Cuál es el plazo habitual para recuperar la inversión?
+  answer_template: La media suele estar entre 12 y 24 meses, dependiendo de la ubicación
+    y gestión del negocio.
+- question: ¿Es necesario tener experiencia previa para ser franquiciado?
+  answer_template: No es imprescindible, ya que ofrecemos formación completa y apoyo
+    continuo.
+- question: ¿Qué incluye el canon de entrada?
+  answer_template: Incluye formación inicial, manuales operativos, uso de marca y
+    soporte en la apertura.
+- question: ¿Dónde puedo abrir una franquicia?
+  answer_template: Depende del sector, pero normalmente buscamos zonas con alta afluencia
+    y buena visibilidad. ¿En qué ciudad está interesado?
+- question: ¿Qué requisitos hay para el local?
+  answer_template: Se requiere una superficie mínima de X m², ubicación en zona comercial
+    o de paso y adecuación al modelo de negocio.
+pain_points:
+- description: Dificultad para filtrar y cualificar leads interesados en la franquicia
+  severity: high
+  solution_hint: Uso de preguntas automatizadas para identificar presupuesto, experiencia
+    y ubicación
+- description: Ciclos de venta largos que provocan pérdida de interés en potenciales
+    franquiciados
+  severity: high
+  solution_hint: Seguimientos automáticos y recordatorios para mantener el contacto
+    frecuente
+- description: Muchas consultas repetitivas sobre condiciones y costes que saturan
+    al equipo de ventas
+  severity: medium
+  solution_hint: Implementación de un bot FAQ multicanal que responda dudas frecuentes
+- description: Necesidad de soporte constante a franquiciados actuales para resolver
+    dudas operativas
+  severity: medium
+  solution_hint: Base de conocimiento accesible vía voz y chat automatizados
+- description: Falta de visibilidad en la gestión y seguimiento del pipeline de franquicias
+  severity: medium
+  solution_hint: Integración con CRM para actualizar estados automáticamente
+- description: Complejidad para coordinar envíos de materiales y documentación a interesados
+  severity: low
+  solution_hint: Automatización de envíos de presentaciones y contratos
+- description: Retos en la activación y reactivación de leads antiguos o inactivos
+  severity: medium
+  solution_hint: Campañas automáticas con llamadas y mensajes para reenganchar
+typical_services:
+- Venta de franquicias
+- Asesoramiento para apertura de franquicias
+- Formación inicial y continua para franquiciados
+- Soporte operativo y técnico permanente
+- Marketing y publicidad para la red de franquicias
+- Suministro y logística de productos o equipos
+- Control y auditoría de calidad en puntos franquiciados
+- Desarrollo y adaptación de manuales operativos
+- Gestión de licencias y permisos
+- Consultoría legal y normativa para franquicias
+recommended_functions:
+- name: cualificación
+  priority: high
+  reason: Identificar rápidamente si el lead cumple con criterios básicos para avanzar
+- name: faq
+  priority: high
+  reason: Responder dudas frecuentes de forma inmediata para acelerar el interés
+- name: envío_materiales
+  priority: medium
+  reason: Automatizar la distribución de documentos y presentaciones comerciales
+- name: recordatorios
+  priority: medium
+  reason: Mantener el contacto con potenciales franquiciados y evitar pérdida de interés
+- name: llamadas_salientes
+  priority: medium
+  reason: Reactivar leads antiguos o poco activos para aumentar conversiones
+- name: integración_crm
+  priority: high
+  reason: Asegurar control y seguimiento del proceso comercial
+- name: soporte_franquiciado
+  priority: medium
+  reason: Proveer asistencia rápida y resolver dudas operativas
+typical_integrations:
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Email marketing
+  examples:
+  - Mailrelay
+  - Acumbamail
+  - Mailchimp
+  priority: medium
+- name: Telefonía
+  examples:
+  - 3CX
+  - Asterisk
+  - Ringover
+  priority: high
+- name: Mensajería instantánea
+  examples:
+  - WhatsApp Business API
+  - Telegram
+  priority: medium
+- name: Gestión documental
+  examples:
+  - Google Drive
+  - Dropbox
+  priority: low
+- name: ERP
+  examples:
+  - SAP Business One
+  - Odoo
+  priority: medium
+sales_scripts:
+- trigger: precio_pregunta
+  situation: Cuando el cliente pregunta sobre costes o inversión inicial
+  script: El canon de entrada suele oscilar entre X y Y euros, con un royalty mensual
+    del Z%. ¿Le gustaría que le envíe un desglose detallado para que pueda evaluar
+    mejor la inversión?
+  goal: Informar y generar interés para seguimiento personalizado
+- trigger: dudas_experiencia
+  situation: Cuando el cliente duda por falta de experiencia previa
+  script: Entendemos su preocupación. Nuestro programa incluye formación completa
+    y acompañamiento continuo para que pueda gestionar su franquicia con éxito, incluso
+    sin experiencia previa.
+  goal: Tranquilizar y mantener al cliente interesado
+- trigger: objecion_tiempo
+  situation: Cuando el cliente dice que no tiene tiempo para gestionar el negocio
+  script: Muchas franquicias cuentan con gerentes o responsables que gestionan el
+    día a día. Nosotros también le ayudamos a formar y supervisar a su equipo para
+    que usted pueda delegar.
+  goal: Superar objeción y seguir con el proceso
+- trigger: objecion_precio
+  situation: Cuando el cliente considera que la inversión es alta
+  script: Ofrecemos facilidades de pago y planes de financiación para ajustarnos a
+    diferentes presupuestos. Además, le puedo mostrar casos de franquiciados que recuperaron
+    su inversión en menos de 18 meses.
+  goal: Ofrecer alternativas y generar confianza
+- trigger: solicitud_presentacion
+  situation: Cuando el cliente quiere recibir más información por escrito
+  script: Claro, le enviaré la presentación y un resumen con la información financiera.
+    ¿Podría indicarme su correo electrónico para enviárselo?
+  goal: Captar datos de contacto y continuar comunicación
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 15000
+  - 80000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Franquicia de restauración en ciudad pequeña
+    monthly_cost: 1200
+    monthly_savings: 1800
+    payback_months: 14
+  - scenario: Franquicia de comercio minorista en zona urbana
+    monthly_cost: 900
+    monthly_savings: 1500
+    payback_months: 12
+  value_anchors:
+  - El canon incluye formación, soporte continuo y uso de marca reconocida.
+  - La inversión inicial es menor que la de montar un negocio independiente.
+  - Franquiciar reduce riesgos gracias a un modelo probado y asesoría constante.
+market_context:
+  market_size: 350000000
+  growth_rate: 8.5
+  key_trends:
+  - Crecimiento de franquicias en sectores de food service y retail especializado
+  - Mayor demanda de modelos llave en mano para emprendedores jóvenes
+  - Digitalización de procesos y marketing para captar franquiciados
+  - Mayor regulación y cumplimiento estricto del RGPD y leyes de consumo
+  seasonality:
+    high:
+    - primavera
+    - otoño
+    low:
+    - verano
+    - invierno navideño
+typical_objections:
+- objection: Es demasiado caro
+  response: Ofrecemos planes de pago flexibles y una inversión inicial competitiva
+    frente al mercado. Además, la rentabilidad suele alcanzarse en menos de 2 años.
+- objection: No tengo experiencia en negocios
+  response: No se preocupe, proporcionamos formación completa y acompañamiento continuo
+    para que pueda gestionar su franquicia con éxito.
+- objection: No tengo tiempo para gestionar el negocio
+  response: Puede delegar la gestión diaria en un gerente, y nosotros le ayudamos
+    a formar y supervisar su equipo.
+- objection: Quiero pensarlo antes de decidir
+  response: Por supuesto, le enviaré toda la información detallada para que pueda
+    revisarla con calma. ¿A qué correo puedo enviársela?
+- objection: No sé si la zona es adecuada
+  response: Podemos analizar juntos la ubicación y verificar la viabilidad según nuestro
+    estudio de mercado y experiencia previa.
+meta:
+  id: franchise
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+_extends: _base/franchise

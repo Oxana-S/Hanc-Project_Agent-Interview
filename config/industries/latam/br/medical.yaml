@@ -1,0 +1,254 @@
+aliases:
+- medicina
+- saúde
+- clínica
+- hospital
+- médico
+- paciente
+- consulta
+- diagnóstico
+competitors:
+- name: Dr. Consulta
+  positioning: Rede de clínicas populares de baixo custo
+  strengths:
+  - Preços acessíveis
+  - Multiplas unidades nas grandes cidades
+  - Agendamento online simples
+  weaknesses:
+  - Longos tempos de espera
+  - Rotatividade de médicos
+  - Atendimento impessoal
+  our_differentiation: Atendimento humanizado 24/7 com automação inteligente que reduz
+    esperas e personaliza o contato
+- name: Rede D'Or São Luiz
+  positioning: Maior rede de hospitais privados do Brasil
+  strengths:
+  - Amplo portfólio de serviços e especialidades
+  - Tecnologia médica de ponta
+  - Reconhecimento de marca
+  weaknesses:
+  - Custos elevados
+  - Central de atendimento sobrecarregada
+  - Burocracia para agendamentos
+  our_differentiation: Agilidade no primeiro contato e triagem automatizada, direcionando
+    o paciente corretamente e reduzindo frustração
+- name: Hospital Israelita Albert Einstein
+  positioning: Hospital de excelência e referência em saúde premium
+  strengths:
+  - Qualidade e prestígio internacional
+  - Corpo clínico renomado
+  - Infraestrutura de última geração
+  weaknesses:
+  - Preços muito altos
+  - Acesso restrito a planos de saúde top
+  - Processos internos complexos
+  our_differentiation: Democratizamos a eficiência operacional, oferecendo tecnologia
+    similar para melhorar a experiência do paciente em instituições de diversos portes
+industry_faq:
+- answer_template: Informe a especialidade e uma data preferencial. Vou consultar
+    a agenda e oferecer os horários disponíveis.
+  question: Como faço para marcar uma consulta?
+- answer_template: Exames como glicemia, colesterol e triglicerídeos exigem jejum
+    de 8 a 12 horas. O hemograma comum pode ser feito sem jejum, mas é recomendado.
+  question: Quais exames precisam de jejum?
+- answer_template: Para um melhor resultado, evite alimentos que causam gases (feijão,
+    refrigerante) por 48h. No dia, esteja em jejum de 6 a 8 horas.
+  question: Como me preparar para um ultrassom do abdômen?
+- answer_template: Sim, atendemos aos sábados das 8h às 14h. Aos domingos e feriados,
+    temos plantão para emergências.
+  question: Vocês atendem no fim de semana?
+- answer_template: Aceitamos os principais convênios. Por favor, informe qual é o
+    seu plano de saúde para confirmar a cobertura.
+  question: Vocês aceitam meu plano de saúde?
+- answer_template: A consulta com clínico geral parte de R$ 150. O valor varia conforme
+    a especialidade do médico.
+  question: Qual o valor de uma consulta?
+- answer_template: Sim, realizamos visitas domiciliares para pacientes com mobilidade
+    reduzida. Informe o endereço e os sintomas para verificarmos a disponibilidade.
+  question: É possível chamar um médico em casa?
+industry_specifics:
+  compliance:
+  - Conformidade total com a LGPD (Lei Geral de Proteção de Dados)
+  - Não fornecer diagnósticos ou orientações médicas
+  - Casos de emergência devem ser imediatamente transferidos para um operador humano
+  peak_times: []
+  tone:
+  - Calmo e empático
+  - Atento aos detalhes dos sintomas descritos
+  - Evitar jargões médicos complexos
+learnings: []
+market_context:
+  growth_rate: 4.2%
+  key_trends:
+  - Crescimento acelerado da telemedicina
+  - Envelhecimento da população e aumento da demanda por cuidados crônicos
+  - Digitalização de prontuários (PEP) e integração de sistemas
+  market_size: R$ 800 bilhões
+  seasonality:
+    high:
+    - Inverno (maio-agosto, aumento de doenças respiratórias)
+    - Período pós-festas (janeiro, check-ups)
+    low:
+    - Dezembro (férias)
+    - Carnaval
+meta:
+  avg_validation_score: 0.0
+  country: br
+  created_at: '2024-06-15'
+  currency: BRL
+  id: medical
+  language: pt
+  languages: []
+  last_updated: '2024-06-15'
+  phone_codes:
+  - '+55'
+  region: latam
+  tests_run: 0
+  timezone: America/Sao_Paulo
+  version: '1.0'
+pain_points:
+- description: Alta taxa de abandono de chamada devido a longos tempos de espera na
+    central
+  severity: high
+  solution_hint: Agente de voz para triagem e agendamento imediato 24/7
+- description: Pacientes faltam às consultas agendadas (no-show), causando perda de
+    receita
+  severity: high
+  solution_hint: Lembretes automáticos por WhatsApp e ligação um dia e uma hora antes
+- description: Volume intenso de ligações para perguntas operacionais (horário, endereço,
+    documentos)
+  severity: medium
+  solution_hint: FAQ automático para liberar a equipe para tarefas complexas
+- description: Erros no agendamento (especialidade errada, falta de informação do
+    plano)
+  severity: medium
+  solution_hint: Fluxo de agendamento guiado que confirma todos os dados necessários
+- description: Dificuldade em escalar o atendimento em períodos de alta demanda (surto
+    de gripe)
+  severity: high
+  solution_hint: Agente capaz de lidar com picos de chamadas simultâneas sem perder
+    qualidade
+- description: Desafio em garantir a conformidade com a LGPD em todos os contatos
+  severity: medium
+  solution_hint: Scripts e confirmações de consentimento integrados no fluxo do agente
+pricing_context:
+  currency: BRL
+  entry_point: 300
+  roi_examples:
+  - monthly_cost: 1200
+    monthly_savings: 3600
+    payback_months: 1
+    scenario: Clínica média reduz 30% de não comparecimentos e libera 1 funcionário
+      da recepção
+  typical_budget_range:
+  - 300
+  - 2500
+  value_anchors:
+  - Reduza as faltas em até 40% com lembretes automáticos
+  - Atenda 100% das chamadas, mesmo fora do horário comercial
+  - Diminua custos operacionais redirecionando ligações rotineiras
+recommended_functions:
+- name: agendamento
+  priority: high
+  reason: Principal motivo de contato, responsável por 50-60% das ligações
+- name: lembretes
+  priority: high
+  reason: Impacto direto na receita ao reduzir as faltas (no-show)
+- name: faq
+  priority: high
+  reason: Responde rapidamente a dúvidas sobre horários, documentos e preparo para
+    exames
+- name: confirmação_dados
+  priority: medium
+  reason: Garante a conformidade com a LGPD e a precisão das informações do paciente
+- name: transferência_emergencia
+  priority: medium
+  reason: Encaminha casos urgentes imediatamente para um atendente humano
+- name: consulta_convênio
+  priority: medium
+  reason: Verifica a cobertura do plano de saúde, evitando frustrações no balcão
+sales_scripts:
+- goal: Converter interesse em demonstração agendada
+  script: Olá, entendo que otimizar o atendimento é crucial. Nosso agente atua como
+    uma recepcionista 24 horas, agendando consultas, enviando lembretes e filtrando
+    chamadas. Isso reduz faltas e custos. Posso agendar uma breve demonstração online
+    para amanhã?
+  situation: Cliente demonstra interesse após ouvir sobre redução de faltas
+  trigger: interest_demo
+- goal: Justificar o investimento com ROI claro
+  script: Perfeito que mencionou o custo. Para uma clínica do seu porte, o investimento
+    mensal se paga em menos de 30 dias. Isso acontece ao reduzir as 15-20 faltas mensais
+    típicas e liberar sua recepcionista para tarefas que geram mais valor. Posso fazer
+    uma simulação com seus números?
+  situation: Cliente levanta objeção sobre o preço do serviço
+  trigger: price_objection
+- goal: Destacar a diferenciação tecnológica e de serviço
+  script: Diferente de um sistema de call center comum, nosso agente é especializado
+    em saúde. Ele entende termos como 'jejum para exames' e 'autorização de convênio',
+    e se integra diretamente ao seu software médico (Tasy, MV), garantindo que a agenda
+    esteja sempre atualizada.
+  situation: Cliente compara com soluções genéricas de call center
+  trigger: comparison_generic
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Redução de 30-40% nas faltas (no-show)
+  - Automação de 70% das solicitações de agendamento
+  - Disponibilidade 24/7 para agendamento
+  - Satisfação do paciente (NPS) > 60
+typical_integrations:
+- examples:
+  - Tasy
+  - MV
+  - Clínica+
+  - PEB Med
+  name: Sistema de Gestão Hospitalar/Clínica (SGH/MIS)
+  priority: high
+  reason: Sincronização em tempo real de agendas, prontuários e dados de pacientes
+- examples:
+  - RD Station CRM
+  - Pipedrive
+  - Nectar CRM
+  name: CRM
+  priority: medium
+  reason: Registrar histórico de interações e nutrir o relacionamento com o paciente
+- examples:
+  - Vivo Empresas
+  - Oi
+  - Algar
+  name: Operadora de Telefonia
+  priority: high
+  reason: Receber e gerenciar as chamadas de voz
+- examples:
+  - WhatsApp Business API
+  - SMS
+  name: Mensageria
+  priority: high
+  reason: Envio de lembretes de consulta e resultados de exames
+typical_objections:
+- objection: Prefiro falar diretamente com uma recepcionista.
+  response: Entendo perfeitamente. Nosso agente atua como um apoio, filtrando as ligações
+    mais simples para que sua recepcionista tenha mais tempo para dedicar aos casos
+    que realmente precisam de atenção humana pessoal.
+- objection: Meus pacientes são idosos e não se adaptam a máquinas.
+  response: Nosso agente é projetado para ser extremamente claro e paciente, repetindo
+    informações se necessário. Além disso, a qualquer momento, o paciente pode pedir
+    para falar com um atendente. Ajudamos justamente a evitar que idosos fiquem esperando
+    na linha.
+- objection: É muito caro para o meu consultório pequeno.
+  response: Começamos com planos acessíveis para pequenos negócios. Pense no custo
+    de uma consulta perdida. Evitando apenas 2 ou 3 faltas por mês, o serviço já se
+    paga. Posso mostrar um cálculo simples?
+typical_services:
+- Consulta médica (presencial e telemedicina)
+- Exames laboratoriais
+- Exames de imagem (Ultrassom, Raio-X, Tomografia, Ressonância)
+- Pronto-atendimento
+- Check-up anual
+- Procedimentos e pequenas cirurgias ambulatoriais
+- Fisioterapia e reabilitação
+- Serviços de vacinação
+- Acompanhamento de doenças crônicas
+- Administração de plano de saúde
+_extends: _base/medical

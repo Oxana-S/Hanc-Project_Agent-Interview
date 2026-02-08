@@ -1,0 +1,239 @@
+pain_points:
+- description: Manuelle Buchungssysteme für Ticketverkäufe und Veranstaltungsreservierungen
+    führen zu Fehlern und doppelter Buchungen, besonders bei Spitzenzeiten.
+  severity: high
+  solution_hint: KI-Stimmagent kann Echtzeit-Verfügbarkeitsabfragen und Reservierungen
+    24/7 verarbeiten, ohne Warteschlangen.
+- description: Hoher administrativer Aufwand für die Mitgliederverwaltung, Spendenakquise
+    und das Versenden von Newslettern.
+  severity: medium
+  solution_hint: Agent automatisiert Mitglieder-Updates, spendenerinnerungen und personalisierte
+    Kommunikation basierend auf Interessen.
+- description: Mangelnde Ressourcen für mehrsprachigen Besucherservice (Deutsch, Französisch,
+    Italienisch, Englisch).
+  severity: medium
+  solution_hint: Mehrsprachiger KI-Agent beantwortet FAQ zu Öffnungszeiten, Ausstellungen
+    und Anfahrt in Echtzeit.
+- description: Schwierigkeiten bei der Erfassung und Auswertung von Besucherfeedback
+    für zukünftige Programmentwicklungen.
+  severity: low
+  solution_hint: Agent führt strukturierte Feedback-Gespräche nach Besuchen und aggregiert
+    Daten automatisch für Berichte.
+- description: Ineffiziente Terminkoordination für Führungen, Workshops und Künstlergespräche
+    per E-Mail und Telefon.
+  severity: medium
+  solution_hint: Agent koordiniert Termine selbstständig mit internen und externen
+    Teilnehmern und sendet Erinnerungen.
+- description: Verpasste Einnahmequellen durch nicht optimierte Merchandising- und
+    Shop-Anfragen außerhalb der Öffnungszeiten.
+  severity: low
+  solution_hint: Agent kann Produktanfragen entgegennehmen, Verfügbarkeit prüfen und
+    Bestellungen an das System weiterleiten.
+typical_services:
+- Museumsführungen (privat & gruppe)
+- Kunstvermittlung & Workshop-Organisation
+- Eventmanagement (Vernissagen, Lesungen)
+- Ticketing & Mitgliederverwaltung
+- Fundraising & Spendenakquise
+- Ausstellungsplanung & -logistik
+- Künstlerbetreuung & Vertragsmanagement
+- Museumsshop & Merchandising-Verkauf
+- Kulturtourismus-Pakete
+- Digitale Archivierung & Sammlungsdatenbanken
+recommended_functions:
+- name: 24/7 Ticket- & Buchungsassistent
+  priority: high
+  reason: Reduziert Personalaufwand bei Spitzenlast und generiert außerhalb der Öffnungszeiten
+    Einnahmen.
+- name: Multilingualer Informationsdienst
+  priority: high
+  reason: Entspricht der mehrsprachigen Schweizer Realität und verbessert den Besucherservice
+    erheblich.
+- name: Automatisierte Mitglieder- & Spenderkommunikation
+  priority: medium
+  reason: Stärkt die Bindung an die Institution und erhöht die Effizienz im Fundraising.
+- name: Feedback- & Umfrage-Assistent
+  priority: medium
+  reason: Liefert wertvolle Daten für die Programmentwicklung ohne manuelle Auswertung.
+- name: Termin- & Ressourcenplaner für Führungen
+  priority: low
+  reason: Entlastet das Kurator:innen- und Vermittlungsteam von administrativer Koordinationsarbeit.
+typical_integrations:
+- name: Ticketing- & CRM-System
+  examples:
+  - Ticketsolve
+  - MuseumPlus
+  - Raiser's Edge
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Datev
+  priority: medium
+- name: E-Mail-Marketing-Tool
+  examples:
+  - Newsletter2Go
+  - Mailchimp
+  - CleverReach
+  priority: medium
+- name: Kalender- & Planungssystem
+  examples:
+  - Google Workspace
+  - Microsoft 365
+  - TeamUp
+  priority: low
+- name: Shop- & E-Commerce-Plattform
+  examples:
+  - Shopify
+  - JTL-Wawi
+  - oxid eShop
+  priority: low
+industry_faq:
+- question: Sind Ihre Dienste DSGVO- und FADP-konform?
+  answer_template: Ja, absolut. Unsere Lösung ist speziell für den Schweizer und europäischen
+    Markt entwickelt und erfüllt alle Anforderungen der DSGVO und des neuen Schweizer
+    Datenschutzgesetzes (FADP). Alle Daten werden in der Schweiz oder der EU verarbeitet.
+- question: Kann der Agent mehrere Sprachen?
+  answer_template: Ja, unser Agent beherrscht Schweizerdeutsch, Hochdeutsch, Französisch,
+    Italienisch und Englisch fliessend und kann somit den Grossteil Ihrer Besucher:innen
+    bedienen.
+- question: Wie wird der Agent auf unsere spezifischen Ausstellungen und Events trainiert?
+  answer_template: Wir arbeiten mit Ihnen zusammen, um einen Wissenspool mit Ihren
+    aktuellen Programmen, FAQs und Besonderheiten zu erstellen. Der Agent lernt kontinuierlich
+    dazu.
+- question: Was passiert bei komplexen Anfragen, die der Agent nicht beantworten kann?
+  answer_template: Der Agent erkennt seine Grenzen und leitet das Gespräch nahtlos
+    an einen menschlichen Kollegen weiter, inklusive aller bereits gesammelten Informationen.
+- question: Können wir den Agenten für Spendenaufrufe nutzen?
+  answer_template: Ja, der Agent kann bestehende Mitglieder und Besucher:innen über
+    passende Spendenmöglichkeiten informieren und Interessenten qualifizieren, bevor
+    sie an Ihr Fundraising-Team übergeben werden.
+sales_scripts:
+- trigger: time_saving_question
+  situation: Wenn der Kunde über Personalmangel und hohen administrativen Aufwand
+    klagt.
+  script: Ich verstehe, dass Ihre Teams oft mit Routineanfragen überlastet sind. Unser
+    Agent übernimmt genau diese Aufgaben – von der Ticketbuchung bis zur Terminvereinbarung
+    – 24 Stunden am Tag. So gewinnen Ihre Mitarbeitenden bis zu 15 Stunden pro Woche
+    für die eigentliche Kulturvermittlung zurück. Möchten Sie hören, wie wir das für
+    die [Kunsthalle Basel] umgesetzt haben?
+  goal: Den konkreten Zeitgewinn und die Entlastung des Personals als primären Nutzen
+    etablieren.
+- trigger: multilingual_request
+  situation: Wenn der Kunde den Wunsch nach besserem Service für internationale Gäste
+    äussert.
+  script: Ein mehrsprachiger Service ist in der Schweiz entscheidend. Unser Agent
+    spricht die vier Landessprachen plus Englisch und kann so 95% Ihrer Besucher:innen
+    sofort und korrekt bedienen. Das verbessert das Besuchererlebnis massiv und entlastet
+    Ihr Personal von Übersetzungsaufgaben. Sollen wir eine kurze Demo in Französisch
+    und Italienisch durchspielen?
+  goal: Die Lösung als Schlüssel für exzellenten, inklusiven Besucherservice positionieren.
+- trigger: roi_doubt
+  situation: Wenn der Kunde die Kosten hinterfragt und einen klaren ROI sehen möchte.
+  script: 'Die Investition amortisiert sich oft in unter 6 Monaten. Stellen Sie sich
+    vor: Der Agent verkauft Tickets und Merchandising auch nachts und an Feiertagen,
+    verwaltet Mitgliederbeiträge automatisch und reduziert Fehlbuchungen. Für ein
+    Museum mit 50''000 Besuchern bedeutet das schnell monatliche Mehreinnahmen und
+    Einsparungen im vierstelligen CHF-Bereich. Ich kann Ihnen gerne eine detaillierte
+    Berechnung für Ihre Institution erstellen.'
+  goal: Konkrete, quantifizierbare finanzielle Vorteile in CHF kommunizieren und Vertrauen
+    in die Amortisation aufbauen.
+competitors:
+- name: Raiser's Edge / Blackbaud
+  positioning: Globaler Anbieter für Non-Profit-CRM, in der Schweiz vertreten.
+  strengths:
+  - Umfangreiche Fundraising-Tools
+  - Breite internationale Erfahrung
+  weaknesses:
+  - Sehr komplex und teuer
+  - Weniger auf kulturelle Besucherservices fokussiert
+  - Kein integrierter KI-Sprachagent
+  our_differentiation: Wir bieten eine schlüsselfertige, auf den Kulturbereich spezialisierte
+    Sprachlösung zu einem Bruchteil der Kosten, die sofort Besucher direkt anspricht.
+- name: MuseumPlus
+  positioning: Spezialisiertes Schweizer System für Sammlungs- und Museumsmanagement.
+  strengths:
+  - Tiefe Branchenkenntnis
+  - Starke Funktionen für Sammlungsdatenbank
+  weaknesses:
+  - Begrenzte CRM- und Ticketing-Funktionen
+  - Kein omnikanaler Besucher-KI-Service
+  our_differentiation: Wir ergänzen Systeme wie MuseumPlus perfekt, indem wir die
+    frontale Besucherkommunikation über alle Kanäle automatisieren, während MuseumPlus
+    das Backend verwaltet.
+- name: Lokale Callcenter & Telefondienste
+  positioning: Manuelle Telefonauskunft oder Auslagerung an lokale Dienstleister.
+  strengths:
+  - Persönlicher Kontakt
+  - Vertraut mit lokalen Gegebenheiten
+  weaknesses:
+  - Sehr hohe Kosten pro Anruf
+  - Begrenzte Öffnungszeiten
+  - Keine Skalierbarkeit
+  our_differentiation: Wir bieten 24/7-Verfügbarkeit zu fixen Kosten, Mehrsprachigkeit
+    und die Fähigkeit, gleichzeitig hunderte von Anrufen zu bearbeiten – unerreichbar
+    für manuelle Dienste.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 3000
+  entry_point: 790
+  roi_examples:
+  - scenario: Kleines Museum (<100'000 Besucher/Jahr) automatisiert Ticket-Hotline
+      und Mitgliederfragen.
+    monthly_cost: 990
+    monthly_savings: 1500
+    payback_months: 2
+  value_anchors:
+  - Kostet weniger als eine Teilzeitkraft.
+  - Generiert Einnahmen auch wenn Ihr Haus geschlossen ist.
+  - Ein Investition in die Zukunftsfähigkeit Ihrer Kulturinstitution.
+market_context:
+  market_size: Ca. 1'200 Museen & bedeutende Kulturinstitutionen in der Schweiz.
+  growth_rate: 3-5% p.a., getrieben durch Digitalisierung und Besuchererlebnis.
+  key_trends:
+  - Nachhaltigkeit & ökologischer Fussabdruck von Events
+  - Zunehmende Hybridformate (physisch & digital)
+  - Steigende Nachfrage nach personalisierten Erlebnissen
+  - Stärkere Fokussierung auf Datengetriebene Programmentwicklung
+  seasonality:
+    high:
+    - Frühling (Mai-Juni)
+    - Herbst (September-Oktober)
+    - Adventszeit
+    low:
+    - Januar
+    - August (Ferienzeit)
+typical_objections:
+- objection: Unsere Besucher schätzen den persönlichen Kontakt. Eine Maschine könnte
+    das zerstören.
+  response: Das verstehen wir vollkommen. Unser Agent entlastet Ihr Personal genau
+    von den repetitiven Standardanfragen, damit mehr Zeit für echte, wertvolle persönliche
+    Gespräche bei Führungen oder besonderen Anliegen bleibt. Er ist eine Ergänzung,
+    kein Ersatz.
+- objection: Die einmalige Einrichtung und Schulung scheint zu aufwändig.
+  response: Wir übernehmen den Grossteil der Einrichtung. Sie stellen uns nur die
+    Informationen (FAQ, Programme) zur Verfügung. Innerhalb von 2-3 Wochen ist der
+    Agent einsatzbereit, und wir schulen Ihr Team im Umgang mit dem System.
+- objection: Unser Budget ist dieses Jahr bereits festgelegt und ausgeschöpft.
+  response: Das ist nachvollziehbar. Viele unserer Kunden starten mit einem kleinen,
+    klar umrissenen Pilotprojekt – zum Beispiel nur für die Buchung von Gruppenführungen
+    – das aus dem laufenden Betriebsbudget finanzierbar ist. Sobald der ROI sichtbar
+    ist, wird die Lösung oft ausgeweitet.
+meta:
+  id: art_culture
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

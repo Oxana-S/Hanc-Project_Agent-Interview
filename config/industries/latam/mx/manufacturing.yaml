@@ -1,0 +1,195 @@
+pain_points:
+- description: Altos costos de energía eléctrica que afectan la rentabilidad de las operaciones.
+  severity: high
+  solution_hint: El agente de voz IA puede optimizar horarios de producción y monitorear consumo para reducir gastos en horas pico.
+- description: Interrupciones en la cadena de suministro que causan retrasos en la producción.
+  severity: high
+  solution_hint: Automatizar seguimiento de envíos y alertas proactivas para gestionar inventarios y prevenir paradas.
+- description: Escasez de mano de obra calificada en áreas técnicas.
+  severity: medium
+  solution_hint: Asistencia virtual para capacitación en tiempo real y soporte a empleados nuevos mediante IA.
+- description: Cumplimiento con regulaciones locales como la LFPDPPP, que requiere gestión de datos personales.
+  severity: high
+  solution_hint: Automatizar recordatorios y procesos de consentimiento para asegurar cumplimiento normativo.
+- description: Ineficiencias en el mantenimiento de maquinaria que llevan a tiempos de inactividad no planificados.
+  severity: medium
+  solution_hint: Monitoreo predictivo mediante sensores y alertas de voz para programar mantenimiento preventivo.
+- description: Dificultades en la comunicación con proveedores y clientes en múltiples zonas horarias.
+  severity: low
+  solution_hint: Agente de voz IA disponible 24/7 para manejar consultas y coordinación en español e inglés.
+typical_services:
+- Maquila y ensamblaje
+- Fabricación bajo pedido (custom manufacturing)
+- Control de calidad y certificaciones ISO
+- Automatización de líneas de producción
+- Mantenimiento industrial predictivo
+- Logística y gestión de cadena de suministro
+- Consultoría en eficiencia energética
+- Capacitación técnica para operarios
+- Gestión de inventarios y almacenes
+- Desarrollo de prototipos y diseño
+recommended_functions:
+- name: Programación automática de citas con clientes y proveedores
+  priority: high
+  reason: Reduce tiempos de coordinación y mejora la eficiencia operativa en un mercado dinámico.
+- name: Soporte técnico remoto para solución de problemas en maquinaria
+  priority: high
+  reason: Minimiza tiempos de inactividad y costos de mantenimiento en plantas manufactureras.
+- name: Monitoreo de producción y generación de reportes en tiempo real
+  priority: medium
+  reason: Permite toma de decisiones ágil basada en datos para optimizar procesos.
+- name: Gestión de recordatorios para cumplimiento normativo (LFPDPPP)
+  priority: high
+  reason: Evita multas y asegura adhesión a leyes locales de protección de datos.
+- name: Asistencia multilingüe para atención a clientes internacionales
+  priority: low
+  reason: Facilita expansión en mercados latinoamericanos y globales desde México.
+- name: Automatización de pedidos y seguimiento de envíos
+  priority: medium
+  reason: Mejora la satisfacción del cliente y reduce errores manuales.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Oracle
+  - Microsoft Dynamics
+  priority: high
+- name: Software de gestión de producción
+  examples:
+  - MES (Manufacturing Execution System)
+  - Proficy de GE
+  priority: high
+- name: Plataformas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Sistemas de inventario y logística
+  examples:
+  - Warehouse Management Systems (WMS)
+  - Logística local como Estafeta
+  priority: medium
+- name: Herramientas de cumplimiento normativo
+  examples:
+  - Software para LFPDPPP
+  - Soluciones locales de consultoría
+  priority: low
+industry_faq:
+- question: ¿Cómo puede un agente de voz IA ayudarme a reducir costos en mi fábrica?
+  answer_template: Nuestro agente automatiza tareas repetitivas como programación y monitoreo, ahorrando hasta un 20% en gastos operativos mensuales.
+- question: ¿Es seguro para manejar datos sensibles bajo la LFPDPPP?
+  answer_template: Sí, implementamos encriptación y protocolos de seguridad que cumplen con la LFPDPPP, protegiendo su información en todo momento.
+- question: ¿Qué tan rápido puedo ver un retorno de inversión (ROI)?
+  answer_template: Clientes típicos recuperan la inversión en 3-6 meses mediante ahorros en energía y reducción de tiempos de inactividad.
+- question: ¿Funciona con mis sistemas actuales como SAP o ERP locales?
+  answer_template: Sí, ofrecemos integraciones plug-and-play con sistemas comunes en México, asegurando compatibilidad sin interrupciones.
+- question: ¿Puede manejar consultas en inglés para clientes internacionales?
+  answer_template: Absolutamente, nuestro agente es multilingüe y puede gestionar comunicación en español e inglés las 24 horas.
+- question: ¿Cómo se adapta a las fluctuaciones estacionales de la manufactura?
+  answer_template: Escalamos automáticamente para manejar picos de demanda, como en temporadas altas de exportación, sin costos adicionales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo del servicio.
+  script: Entiendo su preocupación por el presupuesto. Nuestro servicio parte desde 5,000 MXN mensuales, y le ayudamos a ahorrar en costos operativos. ¿Podría compartir más sobre su producción actual para
+    personalizar una solución?
+  goal: Convertir la conversación hacia el ROI y personalización, no solo el precio.
+- trigger: interest_in_automation
+  situation: Cuando un cliente expresa interés en automatizar procesos.
+  script: Excelente, la automatización es clave para la competitividad en México. Nuestro agente puede integrarse con sus sistemas para optimizar producción. ¿En qué áreas ve más ineficiencias, como mantenimiento
+    o logística?
+  goal: Identificar puntos de dolor específicos y ofrecer una demo adaptada.
+- trigger: compliance_concern
+  situation: Cuando un cliente menciona preocupaciones sobre normativas como LFPDPPP.
+  script: Es crucial cumplir con la LFPDPPP para evitar sanciones. Nuestro agente automatiza el manejo de consentimientos y datos, asegurando conformidad. ¿Le gustaría ver cómo funciona en un caso similar?
+  goal: Construir confianza destacando nuestra experiencia en compliance local.
+- trigger: competitor_mention
+  situation: Cuando un cliente compara con otros proveedores.
+  script: 'Aprecio que explore opciones. A diferencia de competidores, ofrecemos soporte 24/7 en español y integraciones más rápidas con sistemas mexicanos. ¿Qué es lo más importante para usted: costo,
+    soporte o personalización?'
+  goal: Diferenciar nuestro valor y redirigir a sus necesidades clave.
+competitors:
+- name: Automation Solutions México
+  positioning: Proveedor local de automatización industrial con enfoque en grandes empresas.
+  strengths:
+  - Red sólida de soporte en territorio
+  - Experiencia en normativas mexicanas
+  weaknesses:
+  - Alto costo de implementación
+  - Limitada integración con sistemas cloud
+  our_differentiation: Ofrecemos precios más accesibles con ROI rápido y soporte multilingüe incluido.
+- name: TechManufactura LATAM
+  positioning: Consultora regional especializada en manufactura para PyMEs.
+  strengths:
+  - Soluciones personalizadas para pequeños negocios
+  - Conocimiento del mercado latino
+  weaknesses:
+  - Escalabilidad limitada
+  - Poca automatización en servicio al cliente
+  our_differentiation: Agente de voz IA escalable que crece con su negocio y reduce necesidad de personal adicional.
+- name: Global Factory Systems
+  positioning: Multinacional con presencia en México ofreciendo software ERP.
+  strengths:
+  - Marca reconocida internacionalmente
+  - Funcionalidades avanzadas
+  weaknesses:
+  - Soporte lento y en inglés predominante
+  - Complejidad en implementación
+  our_differentiation: Enfoque local con soporte en español rápido y simplificación de procesos para ahorrar tiempo.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Reducción de costos de energía en una fábrica mediana
+    monthly_cost: 8000
+    monthly_savings: 14700
+    payback_months: 3
+  - scenario: Automatización de soporte técnico para reducir tiempos de inactividad
+    monthly_cost: 12000
+    monthly_savings: 24000
+    payback_months: 2
+  value_anchors:
+  - Ahorre hasta un 30% en gastos operativos con automatización inteligente.
+  - Cumplimiento garantizado con LFPDPPP sin esfuerzo adicional.
+  - Soporte 24/7 en español para maximizar su producción.
+market_context:
+  market_size: Estimado en 500 mil millones MXN anuales para manufactura en México
+  growth_rate: 5% anual, impulsado por nearshoring y automatización
+  key_trends:
+  - Aumento de inversión en automatización para competir globalmente
+  - Crecimiento del nearshoring desde EE.UU. hacia México
+  - Enfoque en sostenibilidad y eficiencia energética
+  - Adopción de tecnologías digitales para cadenas de suministro resilientes
+  seasonality:
+    high:
+    - Octubre-Diciembre por demanda exportadora
+    - Marzo-Abril por inicio de proyectos
+    low:
+    - Enero por cierres contables
+    - Julio-Agosto por vacaciones
+typical_objections:
+- objection: Es muy caro para mi negocio pequeño.
+  response: Entiendo, pero nuestro plan de entrada desde 5,000 MXN está diseñado para PyMEs, y el ROI rápido justifica la inversión. ¿Podemos analizar sus gastos actuales?
+- objection: Ya tengo sistemas, no necesito más tecnología.
+  response: Perfecto, nuestro agente se integra con lo que ya tiene para optimizarlo, sin reemplazarlo. ¿Le gustaría ver una demo de cómo mejora sus procesos existentes?
+- objection: Prefiero el contacto humano para servicio al cliente.
+  response: Nuestro agente complementa al equipo humano, manejando tareas repetitivas para que su personal se enfoque en decisiones estratégicas. Así mejora la eficiencia sin perder el toque personal.
+- objection: No confío en la seguridad de los datos con IA.
+  response: Nos especializamos en cumplir con LFPDPPP, usando encriptación de grado empresarial. Podemos proporcionar certificaciones y casos de éxito de clientes en México.
+meta:
+  id: manufacturing
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- manufacturing
+- factory
+- production
+- industrial
+_extends: _base/manufacturing

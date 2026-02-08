@@ -1,0 +1,250 @@
+pain_points:
+- name: Strenge gesetzliche Auflagen
+  description: Die österreichischen Cannabis-Gesetze sind komplex und ändern sich
+    häufig, was die Einhaltung für Unternehmen schwierig macht.
+  severity: high
+  solution_hint: Ein Voice Agent kann über Aktualisierungen der Rechtslage informieren
+    und standardisierte Compliance-Checklisten durchgehen.
+- name: Komplizierte Logistik und Lieferketten
+  description: Der Transport von Cannabis-Produkten unterliegt strengen Sicherheits-
+    und Dokumentationspflichten, was die Logistik verteuert und verlangsamt.
+  severity: high
+  solution_hint: Der Agent kann Sendungen verfolgen, Liefertermine bestätigen und
+    automatisch Transportdokumente generieren.
+- name: Hohe Betriebskosten und Steuerlast
+  description: Die Kosten für sichere Anbau- und Lagerungseinrichtungen sowie spezielle
+    Steuern belasten die Rentabilität.
+  severity: high
+  solution_hint: Der Agent kann Termine für Steuerberater buchen und Erinnerungen
+    für Steuervorauszahlungen senden.
+- name: Limitierte Marketing-Möglichkeiten
+  description: Werbung für Cannabisprodukte ist stark eingeschränkt, was die Kundenakquise
+    und Markenbildung erschwert.
+  severity: medium
+  solution_hint: Der Agent kann direkte, konforme Kundenkommunikation via Telefon
+    führen und Interessenten qualifizieren.
+- name: Bankgeschäfte und Zahlungsabwicklung
+  description: Viele Banken sind zögerlich, Konten für Cannabis-Unternehmen zu führen,
+    und Zahlungsdienstleister sind oft nicht verfügbar.
+  severity: medium
+  solution_hint: Der Agent kann Rechnungsstellung und Zahlungserinnerungen automatisieren
+    und alternative Zahlungswege erklären.
+- name: Fachkräftemangel
+  description: Es gibt wenige erfahrene Mitarbeiter mit spezifischem Wissen in Cannabis-Anbau,
+    -Verarbeitung und -Recht.
+  severity: medium
+  solution_hint: Der Agent kann Erstgespräche mit Bewerbern führen und häufig gestellte
+    Fragen zu Stellenausschreibungen beantworten.
+- name: Langes Genehmigungsverfahren
+  description: Die Beantragung von Lizenzen für Anbau oder Vertrieb kann Monate dauern
+    und ist bürokratisch aufwändig.
+  severity: low
+  solution_hint: Der Agent kann den Status von Anträgen erfragen und Fristenüberwachung
+    für einzureichende Dokumente bieten.
+typical_services:
+- Medizinisches Cannabis-Beratung und Verschreibung
+- Anbau und Kultivierung von Cannabis unter kontrollierten Bedingungen
+- Verarbeitung und Extraktion von Cannabis-Wirkstoffen
+- Großhandel und Logistik für Cannabis-Produkte
+- Apotheken-Auslieferung und -Betreuung
+- Qualitätskontrolle und Laboranalysen (z.B. Cannabinoid-Gehalte, Schadstoffe)
+- Softwarelösungen für Seed-to-Sale-Tracking
+- Rechtliche Beratung und Compliance-Management
+- Schulungen für medizinisches Personal und Apotheker
+- Entwicklung und Vertrieb von CBD-Produkten
+recommended_functions:
+- name: Terminvereinbarung für Arztkonsultationen
+  priority: high
+  reason: Viele Patienten benötigen einen Termin für eine Erstkonsultation zur Verschreibung.
+    Automatisierung entlastet die Praxis.
+- name: Bestellannahme und Lagerabfrage für Apotheken
+  priority: high
+  reason: Apotheken bestellen regelmäßig nach. Der Agent kann Verfügbarkeit prüfen
+    und Bestellungen aufnehmen.
+- name: FAQ zu Produkten, Dosierung und Rechtslage
+  priority: high
+  reason: Reduziert den Aufwand für das Support-Team durch Beantwortung häufiger Patient:innen-
+    und Händlerfragen.
+- name: Rechnungsstellung und Zahlungserinnerungen
+  priority: medium
+  reason: Verbessert den Cashflow durch automatische, DSGVO-konforme Zahlungsaufforderungen.
+- name: Lieferstatus- und Sendungsverfolgung
+  priority: medium
+  reason: Bietet Kunden Transparenz über ihre Bestellungen und entlastet den Logistik-Support.
+- name: Qualifikation von B2B-Interessenten (z.B. Apotheken, Ärzte)
+  priority: low
+  reason: Unterstützt den Vertrieb bei der Vorauswahl potenzieller Geschäftspartner.
+typical_integrations:
+- name: Seed-to-Sale-Tracking-Software
+  examples:
+  - MJ Platform
+  - BioTrack
+  - growy
+  priority: high
+- name: Apotheken-Management-Systeme
+  examples:
+  - AVS
+  - WinApothek
+  - compuap
+  priority: high
+- name: Terminplanungs-Software für Praxen
+  examples:
+  - Doctolib
+  - medatixx
+  - TeleClinic
+  priority: medium
+- name: ERP- und Buchhaltungssysteme
+  examples:
+  - SAP
+  - DATEV
+  - Lexware
+  priority: medium
+- name: E-Commerce-Plattformen für CBD
+  examples:
+  - Shopware
+  - Shopify
+  - WooCommerce
+  priority: low
+industry_faq:
+- question: Ist Cannabis in Österreich legal?
+  answer_template: Für den medizinischen Gebrauch ja, mit einer ärztlichen Verschreibung.
+    CBD-Produkte mit einem THC-Gehalt unter 0,3% sind frei verkäuflich. Der private
+    Besitz kleiner Mengen zum Eigenkonsum ist entkriminalisiert, aber nicht legal.
+- question: Wie erhalte ich eine Verschreibung für medizinisches Cannabis?
+  answer_template: Sie benötigen eine Verordnung von einem Arzt. Viele spezialisierte
+    Ärzte bieten Konsultationen an. Wir können Ihnen bei der Terminvereinbarung helfen.
+- question: Was kostet medizinisches Cannabis und übernimmt die Krankenkasse die Kosten?
+  answer_template: Die Kosten variieren je nach Produkt und Apotheke. Die Krankenkasse
+    übernimmt die Kosten nur in speziellen, begründeten Fällen nach Antrag. Eine Kostenübernahme
+    ist nicht garantiert.
+- question: Wo kann ich medizinisches Cannabis einlösen?
+  answer_template: Jede österreichische Apotheke kann die Verordnung einlösen, sofern
+    sie das gewünschte Produkt vorrätig hat oder bestellen kann.
+- question: Was ist der Unterschied zwischen THC und CBD?
+  answer_template: THC (Tetrahydrocannabinol) ist der psychoaktiv wirksame Bestandteil.
+    CBD (Cannabidiol) ist nicht psychoaktiv und wird oft für entspannende und entzündungshemmende
+    Effekte geschätzt.
+- question: Benötige ich eine spezielle Lizenz, um CBD-Produkte zu verkaufen?
+  answer_template: Für den Verkauf von CBD als Nahrungsergänzungsmittel oder Kosmetikprodukt
+    benötigen Sie keine Cannabis-spezifische Lizenz, müssen aber die allgemeinen lebensmittel-
+    bzw. kosmetikrechtlichen Vorschriften einhalten.
+sales_scripts:
+- trigger: price_question
+  situation: Ein Apotheken-Inhaber fragt nach den Großhandelspreisen für bestimmte
+    Cannabis-Blüten.
+  script: Guten Tag, vielen Dank für Ihr Interesse. Unsere Großhandelspreise variieren
+    je nach Sorte, Menge und Cannabinoid-Gehalt. Um Ihnen ein maßgeschneidertes Angebot
+    unterbreiten zu können, darf ich fragen, welche Sorten Sie interessieren und welche
+    monatliche Abnahmemenge Sie planen? So kann ich Ihnen die besten Konditionen nennen.
+  goal: Den Kunden qualifizieren und zu konkreteren Angaben bewegen, um ein individuelles
+    Angebot erstellen zu können.
+- trigger: compliance_concern
+  situation: Ein potenzieller Anbauer ist besorgt über die komplexe Rechtslage.
+  script: Ihre Sorge ist verständlich, die Rechtslage ist anspruchsvoll. Wir unterstützen
+    Sie mit automatisierten Checklisten und Erinnerungen für behördliche Meldungen.
+    Unser System kann Sie über Gesetzesänderungen informieren. Darf ich Ihnen ein
+    Beispiel unserer Compliance-Unterstützung per E-Mail senden?
+  goal: Das Vertrauen gewinnen, indem die Lösung für das spezifische Problem angeboten
+    und der nächste Schritt (Zusendung von Informationen) vereinbart wird.
+- trigger: competitor_mention
+  situation: Ein Kunde erwähnt, dass er bereits mit einem anderen Anbieter spricht.
+  script: Das ist interessant. Viele unserer Kunden schätzen besonders unsere nahtlose
+    Integration in gängige Apotheken-Systeme wie AVS und unsere österreichische Rechtsberatung.
+    Was ist Ihnen bei einem Lieferanten am wichtigsten? Vielleicht kann ich Ihnen
+    anhand dessen einen direkten Vergleich anbieten.
+  goal: Herausfinden, was dem Kunden wichtig ist, und dann unseren spezifischen Mehrwert
+    in diesem Bereich betonen.
+competitors:
+- name: Aurora Europe (Tochter von Aurora Cannabis)
+  positioning: Internationaler Großproduzent mit Fokus auf den europäischen Medizinmarkt.
+  strengths:
+  - Große Produktionskapazität
+  - breites Sortenportfolio
+  - starke Markenbekanntheit
+  weaknesses:
+  - Weniger lokalisiert auf Österreich
+  - möglicherweise höhere Preise
+  our_differentiation: Wir bieten intensivere, deutschsprachige Vor-Ort-Betreuung
+    und Integration in lokale Apothekensoftware.
+- name: Sanity Group
+  positioning: Deutscher Cannabis-Player mit Expansion nach Österreich.
+  strengths:
+  - Umfassendes Produktportfolio von Blüten bis Extrakte
+  - starke Finanzierung
+  weaknesses:
+  - Österreich ist Nebenmarkt
+  - Support möglicherweise nicht immer vor Ort
+  our_differentiation: Unser Service und Support ist speziell auf die österreichische
+    Gesetzgebung und Geschäftspraxis zugeschnitten.
+- name: CBD-Öl Hersteller aus der EU
+  positioning: Zahlreiche kleine und mittlere Hersteller von CBD-Produkten.
+  strengths:
+  - Niedrige Preise
+  - einfacher Zugang über Online-Shops
+  weaknesses:
+  - Oft unklare Qualitätskontrolle
+  - keine medizinische Zulassung
+  our_differentiation: Wir bieten pharmazeutisch geprüfte Qualität, vollständige Transparenz
+    der Inhaltsstoffe und medizinische Fachberatung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 199
+  roi_examples:
+  - scenario: Automatisierung der telefonischen Bestellannahme für eine Apothekenkette
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 20 Stunden Verwaltungsaufwand pro Monat ein.
+  - Steigern Sie die Konvertierung bei Neukundenanfragen um durchschnittlich 30%.
+  - Vermeiden Sie kostspielige Compliance-Fehler mit automatisierten Erinnerungen.
+market_context:
+  market_size: 60 Mio. EUR (geschätzt für medizinisches Cannabis und CBD 2023)
+  growth_rate: 25%
+  key_trends:
+  - Zunehmende Akzeptanz von medizinischem Cannabis in der Ärzteschaft.
+  - Expansion des CBD-Marktes in Drogerien und Supermärkten.
+  - Strengere Qualitätskontrollen und Standardisierungen werden erwartet.
+  seasonality:
+    high:
+    - Januar
+    - Februar
+    - September
+    - Oktober
+    low:
+    - Juli
+    - August
+    - Dezember
+typical_objections:
+- objection: Das ist uns zu teuer. Wir machen das bisher manuell.
+  response: Ich verstehe. Bei manueller Abwicklung summieren sich jedoch versteckte
+    Kosten durch Fehler, verzögerte Bestellungen und Personalkapazität. Unser System
+    amortisiert sich oft schon im ersten Monat. Darf ich Ihnen eine konkrete Kalkulation
+    für Ihr Geschäft erstellen?
+- objection: Wir sind mit unserem aktuellen Lieferanten zufrieden.
+  response: Das ist erfreulich zu hören. Vielleicht kann ich Ihnen trotzdem einen
+    Vergleichswert bieten. Neben dem Produkt selbst bieten wir eine automatisierte
+    Bestell- und Nachbestellabwicklung an. Würde Sie ein kurzer Einblick in diese
+    Zeitersparnis interessieren?
+- objection: Die Technik ist uns zu kompliziert.
+  response: Unser System ist besonders benutzerfreundlich eingerichtet und wird von
+    uns komplett eingerichtet. Sie müssen sich um nichts kümmern. Zudem bieten wir
+    eine deutschsprachige Einführung und Support. Könnten wir einen kurzen Test für
+    Sie einrichten?
+meta:
+  id: cannabis
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

@@ -1,0 +1,181 @@
+pain_points:
+- description: Clienții nu pot să sune pentru o programare în orele de vârf.
+  severity: high
+  solution_hint: Agent vocal pentru programări 24/7
+- description: Multe vizite ratate (no-show) din cauza uitării.
+  severity: high
+  solution_hint: Mementouri automate cu o zi și două ore înainte
+- description: Administrații sunt suprasolicitați cu întrebări repetitive.
+  severity: medium
+  solution_hint: Răspunsuri automate la întrebări frecvente
+- description: Promovarea promoțiilor și ofertelor speciale este dificilă.
+  severity: medium
+  solution_hint: Apeluri de ieșire cu oferte personalizate
+- description: Clienții fac programări și uită să confirme.
+  severity: medium
+  solution_hint: Confirmări automate prin mesaje și SMS
+typical_services:
+- Masaj (clasic, sportiv, anticelulitic)
+- Manichiură și pedichiură
+- Tuns și coafură
+- Proceduri cosmetologice
+- Proceduri SPA
+- Depilare/epilare
+- Solariu
+- Programe de fitness
+- Yoga și stretching
+- Tratamente faciale
+recommended_functions:
+- name: programare
+  priority: high
+  reason: Funcția principală - programarea pe proceduri cu alegerea masterului și
+    orei
+- name: memento
+  priority: high
+  reason: Reducerea no-show la sub 5% prin mementouri automate
+- name: întrebări_frecvente
+  priority: medium
+  reason: Răspunsuri la întrebări despre prețuri, servicii, pregătire
+- name: reprogramare
+  priority: medium
+  reason: Schimbarea sau anularea programărilor fără implicarea administrației
+- name: vânzări
+  priority: low
+  reason: Informarea despre promoții și abonamente
+typical_integrations:
+- name: CRM/Sistem de programare
+  examples:
+  - Salonkee
+  - Bookeo
+  - 1C:Salon de frumusețe
+  priority: high
+  reason: Programarea masterilor, rezervarea sloturilor
+- name: Mesagerii
+  examples:
+  - WhatsApp
+  - Telegram
+  priority: high
+  reason: Mementouri și confirmări de programare
+- name: SMS
+  examples:
+  - SMS.ro
+  - Clickatell
+  priority: medium
+  reason: Mementouri SMS pentru clienții fără mesagerii
+- name: Telefonie
+  examples:
+  - Avaya
+  - Cisco
+  priority: medium
+  reason: Prelucrarea apelurilor primite
+industry_faq:
+- answer_template: Prețul depinde de tipul de masaj și durată. Masajul clasic al spatelui
+    începe de la 100 RON. Pot să vă spun mai multe?
+  question: Cât costă un masaj?
+- answer_template: O sesiune standard durează 60 de minute. Există și variante expres
+    de 30 de minute.
+  question: Cât durează o procedură?
+- answer_template: Vă pot programa chiar acum. Ce serviciu vă interesează și pentru
+    ce zi?
+  question: Cum mă pot programa?
+- answer_template: Da, sigur. Spuneți-mi numele și noul orar convenabil.
+  question: Pot să schimb programarea?
+- answer_template: Contraindicările depind de procedură. Verificați cu masterul înaintea
+    sesiunii.
+  question: Există contraindicatii?
+- answer_template: Da, lucrăm și în weekend. Vă pot programa pentru sâmbătă sau duminică.
+  question: Lucrați în weekend?
+sales_scripts:
+- trigger: intrebare_pret
+  situation: Când un client întreabă despre prețuri
+  script: Salut! Mulțumim pentru interes. Prețurile noastre încep de la 100 RON pentru
+    masajul clasic. Avem și abonamente cu reduceri de până la 20%. Doriți să vă programez
+    pentru o consultație?
+  goal: Convertirea întrebării în programare sau ofertă personalizată
+- trigger: verificare_disponibilitate
+  situation: Când un client verifică disponibilitatea pentru o anumită oră
+  script: Salut! Pot verifica disponibilitatea pentru ora dorită. Pentru ce procedură
+    și în ce zi? Vă pot sugera și alte sloturi libere.
+  goal: Asigurarea programării rapide și confirmarea disponibilității
+- trigger: oferta_promoțională
+  situation: Când un client este interesat de promoții
+  script: 'Salut! Avem o ofertă specială această săptămână: 10% reducere la prima
+    procedură. Doriți să profitați și să vă programez?'
+  goal: Creșterea ratei de conversie prin promovarea ofertelor
+competitors:
+- name: Spa Relax
+  positioning: Centru wellness de mid-range cu focus pe relaxare
+  strengths:
+  - Amplasare centrală
+  - Recenzii bune online
+  weaknesses:
+  - Preturi mai mari
+  - Programări limitate
+  our_differentiation: Preturi competitive și programări flexibile 24/7
+- name: Fitness City
+  positioning: Lanț de fitness cu servicii wellness adiționale
+  strengths:
+  - Brand recunoscut
+  - Varietate de servicii
+  weaknesses:
+  - Atenție personalizată redusă
+  - Așteptări lungi
+  our_differentiation: Atenție personalizată și timp de așteptare minim
+- name: Beauty Studio Elite
+  positioning: Salon de frumusețe premium
+  strengths:
+  - Calitate înaltă a serviciilor
+  - Masteri experți
+  weaknesses:
+  - Accesibilitate limitată
+  - Costuri ridicate
+  our_differentiation: Accesibilitate îmbunătățită și oferte pentru bugete medii
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Implementarea agentului vocal pentru programări și mementouri
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Prețuri competitive pentru servicii de calitate
+  - Reduceri pentru abonamente lunare
+  - Oferte speciale pentru clienții fideli
+market_context:
+  market_size: Piața wellness în România este estimată la 500 milioane RON anual
+  growth_rate: 10%
+  key_trends:
+  - Creșterea interesului pentru sănătate mentală și wellness holistic
+  - Tendința spre servicii personalizate și digitale
+  seasonality:
+    high:
+    - Iarnă pentru proceduri SPA și masaje
+    - Primăvară pentru tratamente cosmetologice
+    low:
+    - Vara pentru unele servicii din cauza vacanțelor
+typical_objections:
+- objection: Este prea scump.
+  response: Avem abonamente cu reduceri de până la 20%. Pot să vă spun mai multe?
+- objection: Nu am timp.
+  response: Ofere proceduri expres de 30 de minute și programări până la 21:00.
+- objection: O să mă gândesc.
+  response: Sigur! Pot să vă programez preliminar pentru a vă rezerva locul?
+meta:
+  id: wellness
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "wellness"
+- "spa"
+- "massage"
+- "fitness"
+- "health club"
+_extends: _base/wellness

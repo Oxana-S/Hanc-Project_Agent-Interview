@@ -1,0 +1,222 @@
+pain_points:
+- description: Gestione inefficiente dell'inventario con sovrascorte o sotto-scorte
+    frequenti
+  severity: high
+  solution_hint: L'agente vocale può automatizzare gli ordini di riapprovvigionamento
+    in base alle vendite in tempo reale
+- description: Elevato tasso di abbandono del carrello negli acquisti online
+  severity: high
+  solution_hint: L'agente può contattare i clienti per recuperare vendite perse con
+    offerte personalizzate
+- description: Lunghe attese al servizio clienti durante i picchi stagionali
+  severity: medium
+  solution_hint: L'agente vocale può gestire chiamate simultanee rispondendo alle
+    domande frequenti
+- description: Difficoltà nella gestione delle promozioni su multipli canali
+  severity: medium
+  solution_hint: Automatizzare l'applicazione delle promozioni attraverso integrazioni
+    con POS e e-commerce
+- description: Bassa fidelizzazione dei clienti con scarsa personalizzazione
+  severity: medium
+  solution_hint: L'agente può inviare promemoria personalizzati per compleanni e anniversari
+    di acquisto
+- description: Complessità nella gestione dei resi e reclami
+  severity: medium
+  solution_hint: Automatizzare il processo di reso con istruzioni vocali e tracciamento
+    automatizzato
+typical_services:
+- Gestione inventario multicanale
+- Servizio clienti 24/7
+- Recupero carrelli abbandonati
+- Gestione promozioni e sconti
+- Prenotazione appuntamenti in negozio
+- Gestione reclami e resi
+- Upselling e cross-selling
+- Aggiornamenti sullo stato degli ordini
+- Prenotazione prodotti non disponibili
+- Programmi fedeltà personalizzati
+recommended_functions:
+- name: Gestione inventario intelligente
+  priority: high
+  reason: L'ottimizzazione dello stock è cruciale per ridurre costi e aumentare le
+    vendite
+- name: Recupero carrelli abbandonati
+  priority: high
+  reason: Il tasso di abbandono in Italia è superiore alla media europea
+- name: Assistenza multilingue
+  priority: medium
+  reason: Importante per zone turistiche e clienti internazionali
+- name: Gestione appuntamenti in negozio
+  priority: medium
+  reason: Sempre più clienti preferiscono prenotare per evitare code
+- name: Programmazione promozioni
+  priority: low
+  reason: Aiuta a sincronizzare offerte tra canali fisici e digitali
+typical_integrations:
+- name: Sistema POS
+  examples:
+  - Nexi
+  - SumUp
+  - Tinaba
+  priority: high
+- name: Piattaforma e-commerce
+  examples:
+  - Shopify
+  - WooCommerce
+  - PrestaShop
+  priority: high
+- name: ERP retail
+  examples:
+  - SAP Retail
+  - Oracle Retail
+  - Zucchetti Retail
+  priority: medium
+- name: Sistema di gestione magazzino
+  examples:
+  - EasyWMS
+  - Magazzino Facile
+  priority: medium
+- name: CRM
+  examples:
+  - TeamSystem
+  - Salesforce
+  - Zoho
+  priority: medium
+industry_faq:
+- question: Come gestite la privacy dei dati dei clienti?
+  answer_template: Tutti i dati sono gestiti in conformità al GDPR europeo e conservati
+    su server in UE con cifratura end-to-end
+- question: L'agente vocale capisce i dialetti regionali?
+  answer_template: Il nostro sistema è addestrato su accenti italiani regionali e
+    dialetti comuni con una precisione del 95%
+- question: Quanto tempo serve per l'implementazione?
+  answer_template: L'attivazione base richiede 2-3 giorni lavorativi, con integrazioni
+    complesse fino a 2 settimane
+- question: Funziona durante i festivi e la notte?
+  answer_template: Sì, il servizio è operativo 24/7, 365 giorni all'anno, senza costi
+    aggiuntivi
+- question: Potete integrare il sistema con il nostro software di gestione?
+  answer_template: Offriamo API standard e integrazioni preconfigurate con i principali
+    software retail italiani
+- question: Cosa succede se l'agente non capisce una domanda?
+  answer_template: Il sistema trasferisce automaticamente al servizio umano e impara
+    dalla nuova interazione
+sales_scripts:
+- trigger: price_question
+  situation: Quando il cliente chiede informazioni sui prezzi
+  script: Il nostro servizio parte da 199€ al mese per la soluzione base, che include
+    fino a 1000 chiamate. Possiamo personalizzare in base al tuo volume di clienti.
+    Vorresti calcolare insieme un preventivo specifico per la tua attività?
+  goal: Ottenere informazioni sul volume di clienti per personalizzare l'offerta
+- trigger: competition_mention
+  situation: Quando il cliente menziona un concorrente
+  script: Rispetto ad altre soluzioni, offriamo integrazioni specifiche con software
+    italiani come Zucchetti e TeamSystem, oltre al supporto in italiano nativo. Possiamo
+    fare una prova gratuita per 14 giorni senza impegno?
+  goal: Differenziarci e proporre una prova gratuita
+- trigger: objection_too_expensive
+  situation: Quando il cliente trova il prezzo troppo alto
+  script: Consideri che automatizzando solo il 30% delle chiamate al servizio clienti,
+    molti retailer recuperano l'investimento in 3 mesi. Posso mostrarle un caso studio
+    di un negozio simile al suo?
+  goal: Dimostrare il ROI concreto
+- trigger: request_demo
+  situation: Quando il cliente chiede una dimostrazione
+  script: Certamente! Possiamo configurare una demo personalizzata sul suo settore
+    specifico in 48 ore. Le interessa focalizzarci su gestione inventario, servizio
+    clienti o entrambi?
+  goal: Qualificare l'interesse e fissare demo mirata
+competitors:
+- name: U-Hopper
+  positioning: Soluzioni AI per retail con focus su grandi catene
+  strengths:
+  - Tecnologia avanzata
+  - Presenza internazionale
+  - Grandi case history
+  weaknesses:
+  - Prezzi elevati
+  - Supporto locale limitato
+  - Poche integrazioni italiane
+  our_differentiation: Prezzi accessibili per PMI e integrazioni con software italiani
+- name: VoiceThread
+  positioning: Agenti vocali generici per multiple industrie
+  strengths:
+  - Facilità d'uso
+  - Prezzi competitivi
+  - Implementazione rapida
+  weaknesses:
+  - Mancanza di specializzazione retail
+  - Supporto limitato in italiano
+  - Funzionalità base
+  our_differentiation: Specializzazione specifica per retail italiano con terminologia
+    di settore
+- name: ItalCall
+  positioning: Servizi vocali tradizionali per piccoli negozi
+  strengths:
+  - Prezzi molto bassi
+  - Completamente in italiano
+  - Semplice
+  weaknesses:
+  - Tecnologia obsoleta
+  - Nessuna integrazione AI
+  - Scalabilità limitata
+  our_differentiation: Tecnologia AI moderna a prezzi comparabili
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 1500
+  entry_point: 199
+  roi_examples:
+  - scenario: Negozi di abbigliamento con 2 punti vendita
+    monthly_cost: 349
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Riduzione del 40% delle chiamate perse
+  - Aumento del 15% nelle vendite da recupero carrelli
+  - Risparmio di 20 ore mensili in gestione inventario
+market_context:
+  market_size: 3.2 miliardi di EUR
+  growth_rate: 12% YoY
+  key_trends:
+  - Crescente domanda di personalizzazione multicanale
+  - Transizione verso retail ibrido fisico-digitale
+  - Importanza della sostenibilità nelle scelte d'acquisto
+  - Aumento delle vendite tramite social commerce
+  seasonality:
+    high:
+    - Novembre-Dicembre
+    - Maggio-Giugno
+    - Settembre
+    low:
+    - Gennaio
+    - Agosto
+typical_objections:
+- objection: I miei clienti preferiscono parlare con persone reali
+  response: Il nostro agente gestisce le richieste routine liberando il suo staff
+    per interazioni più complesse e di valore, migliorando l'esperienza complessiva
+- objection: La mia attività è troppo piccola per questa tecnologia
+  response: Partiamo proprio da piccoli retailer con piani scalabili. Molti nostri
+    clienti hanno iniziato con un solo negozio e sono cresciuti con noi
+- objection: Ho già un sistema, non voglio complicazioni
+  response: Le nostre integrazioni sono progettate per lavorare con i sistemi esistenti
+    senza interruzioni. Possiamo iniziare con una fase di test senza impatti operativi
+- objection: Durante i saldi ho picchi imprevedibili
+  response: 'Proprio per questo l''agente vocale è ideale: scala automaticamente durante
+    i picchi senza costi aggiuntivi, gestendo fino a 100 chiamate simultanee'
+meta:
+  id: retail
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

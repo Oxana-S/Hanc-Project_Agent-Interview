@@ -1,0 +1,217 @@
+pain_points:
+- description: Hohe Compliance-Anforderungen bezüglich Datenschutz (GDPR, FADP) und
+    Cannabis-Regulierungen.
+  severity: high
+  solution_hint: AI-Sprachagent kann automatisch Compliance-Checks durchführen und
+    Schulungen anbieten.
+- description: Komplexe Lieferketten und Lagerverwaltung für Cannabis-Produkte.
+  severity: high
+  solution_hint: AI-Sprachagent kann Bestellungen verfolgen und Lagerbestände überwachen.
+- description: Starke Wettbewerbsintensität und Preisdruck im Schweizer Markt.
+  severity: medium
+  solution_hint: AI-Sprachagent kann Marktanalysen bereitstellen und personalisierte
+    Angebote machen.
+- description: Kundenanfragen zu Legalität und Qualität von Cannabis-Produkten sind
+    zeitaufwendig.
+  severity: medium
+  solution_hint: AI-Sprachagent kann FAQ automatisch beantworten und Produktinformationen
+    liefern.
+- description: Begrenzte Marketingmöglichkeiten aufgrund regulatorischer Einschränkungen.
+  severity: high
+  solution_hint: AI-Sprachagent kann gezielte, Compliance-konforme Kampagnen verwalten.
+- description: Schwierigkeiten bei der Rechnungsstellung und Zahlungsabwicklung in
+    CHF.
+  severity: low
+  solution_hint: AI-Sprachagent kann Rechnungen generieren und Zahlungserinnerungen
+    senden.
+typical_services:
+- Medizinisches Cannabis-Verschreibung und -Vertrieb
+- CBD-Produkte Verkauf (Öle, Kosmetika, Lebensmittel)
+- Cannabis-Beratung und Aufklärung für Patienten
+- Lizenzierung und Compliance-Beratung für Unternehmen
+- Online-Shop für Cannabis-Produkte
+- Laboranalyse und Qualitätssicherung von Cannabis
+- Cannabis-Anbauberatung für legale Produzenten
+- Event-Management für Cannabis-bezogene Veranstaltungen
+- Schulungen zum verantwortungsvollen Umgang mit Cannabis
+- Logistik und Transport von Cannabis-Produkten
+recommended_functions:
+- name: Compliance-Überwachung
+  priority: high
+  reason: Um Datenschutz- und Cannabis-Gesetze in der Schweiz automatisch einzuhalten.
+- name: Kundenanfrage-Management
+  priority: high
+  reason: Um häufige Fragen zu Legalität und Produkten schnell zu beantworten.
+- name: Bestell- und Lagerverwaltung
+  priority: medium
+  reason: Zur Optimierung der Lieferkette und Reduzierung von Fehlern.
+- name: Personalisierte Marketing-Kampagnen
+  priority: medium
+  reason: Für gezielte Werbung innerhalb regulatorischer Grenzen.
+- name: Rechnungsgenerierung in CHF
+  priority: low
+  reason: Zur Vereinfachung der Finanzprozesse für Schweizer Kunden.
+- name: Terminvereinbarung für Beratungen
+  priority: medium
+  reason: Um Effizienz in Kundeninteraktionen zu steigern.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Lexware
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - lokal angepasste Lösungen
+  priority: high
+- name: E-Commerce-Plattformen
+  examples:
+  - Shopify
+  - WooCommerce mit Schweizer Plugins
+  priority: medium
+- name: Lagerverwaltungssysteme
+  examples:
+  - SAP
+  - Odoo
+  - spezifische Cannabis-Software
+  priority: medium
+- name: Zahlungsgateways
+  examples:
+  - Twint
+  - PostFinance
+  - Stripe
+  priority: high
+industry_faq:
+- question: Ist Cannabis in der Schweiz legal?
+  answer_template: Ja, medizinisches Cannabis ist unter bestimmten Bedingungen legal,
+    und CBD-Produkte mit niedrigem THC-Gehalt sind frei verkäuflich. Bitte konsultieren
+    Sie einen Arzt für medizinische Verwendung.
+- question: Was sind die Kosten für medizinisches Cannabis in CHF?
+  answer_template: Die Kosten variieren je nach Produkt und Versicherung. Typischerweise
+    liegen sie zwischen 10 und 50 CHF pro Gramm. Wir helfen bei der Abklärung mit
+    Ihrer Krankenkasse.
+- question: Benötige ich eine Lizenz, um Cannabis zu verkaufen?
+  answer_template: Ja, für den Vertrieb von medizinischem Cannabis sind Lizenzen erforderlich.
+    Wir bieten Compliance-Beratung, um den Prozess zu vereinfachen.
+- question: Wie kann ich die Qualität von Cannabis-Produkten überprüfen?
+  answer_template: Wir arbeiten mit zertifizierten Laboren zusammen und stellen Analysezertifikate
+    bereit. Unser AI-Agent kann diese Informationen direkt liefern.
+- question: Gibt es saisonale Schwankungen im Cannabis-Markt?
+  answer_template: Ja, der Verkauf kann in Ferienzeiten wie Sommer und Winter ansteigen.
+    Wir passen unsere Lagerbestände entsprechend an.
+- question: Unterstützen Sie internationale Lieferungen?
+  answer_template: Nein, aufgrund regulatorischer Beschränkungen liefern wir nur innerhalb
+    der Schweiz. Unser Fokus liegt auf lokaler Compliance.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten für Cannabis-Dienstleistungen fragt.
+  script: Guten Tag! Die Preise für unsere Dienstleistungen beginnen bei 200 CHF pro
+    Monat, abhängig von Ihren Bedürfnissen. Möchten Sie eine personalisierte Offerte?
+  goal: Kundeninteresse wecken und zu einem Beratungsgespräch führen.
+- trigger: compliance_concern
+  situation: Wenn ein Kunde Bedenken bezüglich Datenschutz oder Cannabis-Gesetze äußert.
+  script: Verständlich! Unser AI-Sprachagent ist auf Schweizer Compliance (GDPR, FADP)
+    spezialisiert und kann Ihnen helfen, Risiken zu minimieren. Möchten Sie mehr erfahren?
+  goal: Vertrauen aufbauen und die Lösung präsentieren.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde andere Anbieter wie 'Canopy Growth' oder lokale Shops
+    erwähnt.
+  script: Interessant! Während andere möglicherweise größere Marken sind, bieten wir
+    maßgeschneiderte, lokale Unterstützung mit Fokus auf Schweizer Recht. Probieren
+    Sie unseren kostenlosen Demo-Call aus.
+  goal: Differenzierung hervorheben und zum Testen einladen.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach spezifischen Dienstleistungen wie Online-Shop oder
+    Beratung fragt.
+  script: Ja, wir bieten das an! Unser AI-Agent kann Ihren Online-Shop verwalten,
+    Kundenanfragen bearbeiten und Compliance überwachen. Starten wir mit einer Bedarfsanalyse?
+  goal: Dienstleistungen detailliert vorstellen und zum Handeln bewegen.
+competitors:
+- name: Canopy Growth Schweiz
+  positioning: Internationaler Marktführer mit Fokus auf medizinisches Cannabis.
+  strengths:
+  - Große Markenbekanntheit
+  - Umfangreiche Forschungsressourcen
+  weaknesses:
+  - Höhere Preise
+  - Weniger lokal angepasste Dienstleistungen
+  our_differentiation: Wir bieten kostengünstigere, auf Schweizer Compliance zugeschnittene
+    AI-Lösungen.
+- name: Local CBD Shops (z.B. 'CBD Store Zurich')
+  positioning: Lokale Einzelhändler mit Fokus auf CBD-Produkte.
+  strengths:
+  - Persönlicher Kundenservice
+  - Sofortige Verfügbarkeit
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - Weniger technologische Integration
+  our_differentiation: Unser AI-Agent automatisiert Prozesse für Effizienz und Wachstum.
+- name: Schweizer Apotheken mit Cannabis-Lizenz
+  positioning: Traditionelle Anbieter von medizinischem Cannabis.
+  strengths:
+  - Hohe Vertrauenswürdigkeit
+  - Etablierte Kundenbeziehungen
+  weaknesses:
+  - Langsame Digitalisierung
+  - Höhere Betriebskosten
+  our_differentiation: Wir digitalisieren und optimieren ihre Abläufe mit AI-Technologie.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatisierung von Kundenanfragen für einen CBD-Online-Shop.
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Compliance-Überwachung für eine Cannabis-Beratungsfirma.
+    monthly_cost: 400
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Reduzieren Sie manuelle Arbeit um 50% mit unserem AI-Agent.
+  - Sparen Sie bis zu 1000 CHF monatlich durch effiziente Prozesse.
+  - Schweizer Compliance garantiert – kein Risiko von Bußgeldern.
+market_context:
+  market_size: Geschätzt 100 Millionen CHF jährlich im Schweizer Cannabis-Markt.
+  growth_rate: 15% YoY, angetrieben durch medizinische und CBD-Produkte.
+  key_trends:
+  - Zunehmende Legalisierung von medizinischem Cannabis
+  - Wachsende Nachfrage nach CBD in Kosmetik und Wellness
+  - Digitalisierung der Cannabis-Branche in der Schweiz
+  seasonality:
+    high:
+    - Sommerferien
+    - Winterferien
+    low:
+    - Frühling
+    - Herbst
+typical_objections:
+- objection: Ich habe bereits manuelle Prozesse, warum sollte ich auf AI umsteigen?
+  response: AI spart Zeit und reduziert Fehler, besonders bei Compliance. Probieren
+    Sie es kostenlos aus und sehen Sie den Unterschied.
+- objection: Die Kosten sind zu hoch für mein kleines Unternehmen.
+  response: Unser Einstiegspreis bei 200 CHF ist wettbewerbsfähig. Die ROI zeigt Einsparungen
+    innerhalb eines Monats. Lassen Sie uns eine maßgeschneiderte Lösung besprechen.
+- objection: Ich vertraue nicht auf Technologie für sensible Cannabis-Daten.
+  response: Verständlich! Unser AI-Agent ist auf Schweizer Datenschutz (FADP) spezialisiert
+    und bietet höchste Sicherheit. Wir stellen Compliance-Zertifikate bereit.
+meta:
+  id: cannabis
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

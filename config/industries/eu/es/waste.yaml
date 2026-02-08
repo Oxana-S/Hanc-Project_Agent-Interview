@@ -1,0 +1,215 @@
+pain_points:
+- description: Alto costo de la gestión de residuos debido a las tarifas de vertedero y transporte.
+  severity: high
+  solution_hint: El agente de voz AI puede optimizar rutas de recogida para reducir kilómetros y costos.
+- description: Cumplimiento normativo complejo con leyes ambientales españolas y regulaciones de la UE como el GDPR.
+  severity: high
+  solution_hint: Automatizar recordatorios y generar informes para asegurar el cumplimiento sin errores.
+- description: Ineficiencias en la programación de recogidas, leading to retrasos y clientes insatisfechos.
+  severity: medium
+  solution_hint: Sistema de reserva por voz para programar recogidas en tiempo real, mejorando la puntualidad.
+- description: Comunicación pobre con clientes sobre cambios en horarios o servicios, causando confusiones.
+  severity: medium
+  solution_hint: Notificaciones proactivas por voz para informar automáticamente sobre actualizaciones.
+- description: Alta rotación de personal en centros de llamadas, aumentando costos de formación.
+  severity: low
+  solution_hint: Reducir la carga con AI para manejar llamadas rutinarias, liberando personal para tareas complejas.
+- description: Dificultad en la gestión de quejas y reclamaciones, leading to respuestas lentas.
+  severity: medium
+  solution_hint: Agente de voz AI para manejar quejas iniciales y escalar a humanos solo cuando sea necesario.
+- description: Falta de visibilidad en tiempo real sobre el estado de las recogidas y niveles de residuos.
+  severity: high
+  solution_hint: Integrar AI con sensores y GPS para proporcionar actualizaciones automáticas a clientes.
+typical_services:
+- Recogida de residuos urbanos
+- Gestión de residuos industriales
+- Reciclaje de materiales (papel, plástico, vidrio)
+- Tratamiento de residuos peligrosos
+- Limpieza y mantenimiento de contenedores
+- Servicios de desguace y chatarra
+- Consultoría ambiental y auditorías
+- Recogida de residuos orgánicos para compostaje
+- Gestión de residuos de construcción y demolición
+- Servicios de limpieza viaria y espacios públicos
+recommended_functions:
+- name: Programación automatizada de recogidas
+  priority: high
+  reason: Fundamental para la eficiencia operativa y la satisfacción del cliente en un sector basado en horarios.
+- name: Soporte al cliente para consultas frecuentes
+  priority: high
+  reason: Reduce la carga del personal humano y mejora los tiempos de respuesta a preguntas comunes.
+- name: Ventas y captación de nuevos clientes
+  priority: medium
+  reason: Ayuda a expandir la base de clientes de manera escalable, especialmente para PYMEs.
+- name: Recordatorios de pagos y facturación
+  priority: low
+  reason: Mejora el flujo de caja con recordatorios automatizados, reduciendo morosidad.
+- name: Gestión de quejas y reclamaciones
+  priority: medium
+  reason: Proporciona una primera línea de soporte eficiente, mejorando la resolución de problemas.
+- name: Actualizaciones de estado en tiempo real
+  priority: high
+  reason: Mantiene a los clientes informados, aumentando la transparencia y confianza en el servicio.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Sage
+  priority: high
+- name: Software de logística y rutas
+  examples:
+  - Route4Me
+  - Geslog
+  - OptimoRoute
+  priority: high
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - HubSpot
+  priority: medium
+- name: Plataformas de facturación españolas
+  examples:
+  - ContaPlus
+  - Facturae
+  - A3Software
+  priority: medium
+- name: Sistemas de telemetría y GPS
+  examples:
+  - TomTom
+  - Garmin
+  - soluciones locales como Movildata
+  priority: low
+industry_faq:
+- question: ¿Cuáles son vuestros horarios de recogida y cómo puedo programar una?
+  answer_template: Nuestros horarios son flexibles y adaptables. Puede programar una recogida ahora mismo a través de nuestro agente de voz. ¿Le gustaría hacerlo?
+- question: ¿Cómo manejan los residuos peligrosos y cuáles son las certificaciones?
+  answer_template: Cumplimos con todas las normativas ambientales, incluyendo certificaciones para residuos peligrosos. Podemos proporcionar documentación detallada.
+- question: ¿Qué ocurre si se retrasa o cancela una recogida programada?
+  answer_template: Disculpe las molestias. Nuestro sistema le notificará automáticamente y reprogramaremos la recogida sin coste adicional. ¿Necesita ayuda con eso?
+- question: ¿Ofrecen servicios de reciclaje y cómo se separan los materiales?
+  answer_template: Sí, ofrecemos servicios de reciclaje con separación en origen. Podemos asesorarle sobre las mejores prácticas para su negocio.
+- question: ¿Cuál es el costo aproximado de vuestros servicios para una pequeña empresa?
+  answer_template: El costo depende del volumen y tipo de residuos. Para una estimación personalizada, ¿podría compartir algunos detalles sobre sus necesidades?
+- question: ¿Cómo puedo reportar un problema o realizar una reclamación?
+  answer_template: Puede reportar cualquier problema a través de nuestro agente de voz, que lo derivará al equipo adecuado para una rápida solución.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta sobre precios al inicio de la conversación.
+  script: Hola, gracias por su interés. El precio de nuestros servicios de gestión de residuos varía según el volumen y frecuencia. Para darle un presupuesto exacto, ¿podría contarme más sobre los tipos
+    y cantidades de residuos que genera?
+  goal: Obtener información específica para personalizar la oferta y demostrar valor.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como reciclaje o residuos peligrosos.
+  script: Me alegra que pregunte. Ofrecemos una gama completa, desde recogida básica hasta gestión especializada. ¿Hay algún residuo en particular, como electrónicos o químicos, que le preocupe?
+  goal: Identificar necesidades clave y recomendar soluciones adaptadas.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona que está considerando a un competidor.
+  script: Es bueno comparar opciones. A diferencia de otros, nosotros integramos AI para automatizar comunicaciones y reducir costos operativos hasta en un 25%. ¿Le gustaría ver cómo podemos optimizar su
+    gestión de residuos?
+  goal: Diferenciar nuestro servicio basado en tecnología y eficiencia.
+- trigger: objection_cost
+  situation: Cuando el cliente objeta que el servicio es demasiado caro.
+  script: Entiendo su preocupación por el costo. Nuestro servicio es una inversión que ahorra dinero a largo plazo, por ejemplo, reduciendo multas por incumplimiento. ¿Podemos analizar su situación actual
+    para mostrarle el potencial ahorro?
+  goal: Reframear el costo como ROI y avanzar hacia una demostración de valor.
+competitors:
+- name: FCC Medio Ambiente
+  positioning: Líder del mercado en España con amplia experiencia y cobertura nacional.
+  strengths:
+  - Infraestructura extensa
+  - Capacidad para grandes proyectos
+  - Clientes institucionales
+  weaknesses:
+  - Precios menos competitivos para PYMEs
+  - Menos flexibilidad en servicios personalizados
+  our_differentiation: Ofrecemos soluciones tecnológicas con AI más accesibles y escalables para negocios de todos los tamaños.
+- name: Urbaser
+  positioning: Especialista en servicios urbanos y gestión integral de residuos, con enfoque en sostenibilidad.
+  strengths:
+  - Tecnología propia innovadora
+  - Presencia internacional
+  - Compromiso ambiental
+  weaknesses:
+  - Enfoque más en grandes ciudades
+  - Contratos a largo plazo que pueden ser rígidos
+  our_differentiation: Enfoque ágil y personalizado con AI, ideal para empresas que buscan eficiencia rápida y adaptabilidad.
+- name: Sacyr Medio Ambiente
+  positioning: Diversificado en servicios ambientales y construcción, con proyectos a gran escala.
+  strengths:
+  - Recursos financieros sólidos
+  - Experiencia en proyectos complejos
+  - Sinergias con otros sectores
+  weaknesses:
+  - Menos innovación en digitalización
+  - Servicio al cliente menos ágil
+  our_differentiation: Centrado en la automatización y comunicación proactiva con AI, mejorando la experiencia del cliente.
+- name: Empresas locales de limpieza
+  positioning: Pequeñas empresas locales que ofrecen servicios básicos a precios bajos.
+  strengths:
+  - Conocimiento del terreno
+  - Precios competitivos
+  - Atención personalizada
+  weaknesses:
+  - Falta de tecnología avanzada
+  - Escalabilidad limitada
+  - Cumplimiento normativo variable
+  our_differentiation: Combinamos el trato cercano con la potencia de AI, ofreciendo eficiencia y confiabilidad a un costo razonable.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 10000
+  entry_point: 150
+  roi_examples:
+  - scenario: Pequeña empresa con recogida semanal de residuos generales
+    monthly_cost: 200
+    monthly_savings: 350
+    payback_months: 4
+  - scenario: Empresa mediana con gestión de residuos industriales y reciclaje
+    monthly_cost: 1000
+    monthly_savings: 1800
+    payback_months: 3.5
+  value_anchors:
+  - Reduzca sus costos de gestión de residuos hasta un 30% con nuestra automatización inteligente.
+  - Mejore la satisfacción del cliente con comunicaciones proactivas y reducción de errores.
+  - Cumpla fácilmente con las regulaciones ambientales, evitando multas costosas.
+market_context:
+  market_size: Estimado en 12 mil millones de EUR anuales en el sector de residuos en España
+  growth_rate: 2.5% anual
+  key_trends:
+  - Aumento de la regulación europea hacia la economía circular.
+  - Digitalización y uso de IoT para monitorizar residuos en tiempo real.
+  - Crecimiento del reciclaje y valorización de residuos.
+  - Enfoque en reducción de emisiones de carbono en la gestión de residuos.
+  seasonality:
+    high:
+    - Verano (turismo)
+    - Navidad y períodos festivos
+    low:
+    - Enero y febrero (post-festividades)
+typical_objections:
+- objection: Ya tengo un proveedor y no quiero cambiar, es demasiado complicado.
+  response: Entiendo que el cambio pueda parecer difícil. Nosotros nos encargamos de toda la transición de manera seamless, y muchos clientes ven beneficios desde el primer mes. ¿Podríamos hacer una prueba
+    sin compromiso?
+- objection: No creo que la automatización funcione bien en algo tan crítico como la gestión de residuos.
+  response: Es comprensible. Nuestro sistema está diseñado con supervisión humana y hemos tenido éxito en múltiples casos. Podemos mostrarle testimonios y empezar con un piloto de bajo riesgo. ¿Qué le parece?
+- objection: El costo inicial es alto para mi presupuesto actual.
+  response: Ofrecemos planes flexibles y opciones de pago escalonado. Además, el ahorro a largo plazo justifica la inversión. ¿Podemos analizar sus números para encontrar una solución adaptada?
+- objection: Prefiero el contacto humano directo en lugar de máquinas.
+  response: Nuestro agente de voz AI complementa al equipo humano, liberándolo para interacciones más valiosas. Siempre hay opción de hablar con una persona si es necesario. ¿Le gustaría probar cómo funciona?
+meta:
+  id: waste
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

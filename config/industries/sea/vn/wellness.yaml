@@ -1,0 +1,220 @@
+aliases:
+- wellness
+- chăm sóc sức khỏe
+- massage
+- spa
+- thẩm mỹ
+- làm đẹp
+- nail
+- tóc
+- fitness
+- yoga
+pain_points:
+- description: Khách hàng không thể gọi điện để đặt lịch vào giờ cao điểm
+  severity: high
+  solution_hint: AI voice agent đặt lịch 24/7
+- description: Nhiều lịch hẹn bị bỏ lỡ (no-show)
+  severity: high
+  solution_hint: Tự động nhắc nhở trước 1 ngày và 2 giờ
+- description: Nhân viên lễ tân quá tải với các câu hỏi lặp lại
+  severity: medium
+  solution_hint: Tự động trả lời câu hỏi thường gặp (FAQ)
+- description: Khó khăn trong việc quảng bá khuyến mãi và ưu đãi đặc biệt
+  severity: medium
+  solution_hint: Cuộc gọi ra với đề xuất cá nhân hóa
+- description: Khách hàng đặt lịch và quên
+  severity: medium
+  solution_hint: Nhắc nhở qua tin nhắn và SMS
+- description: Chi phí vận hành cao do phụ thuộc vào nhân sự
+  severity: low
+  solution_hint: Tự động hóa quy trình đặt lịch và quản lý
+- description: Thiếu thông tin về nhu cầu khách hàng để cải thiện dịch vụ
+  severity: low
+  solution_hint: AI phân tích dữ liệu cuộc gọi để hiểu xu hướng
+typical_services:
+- Massage (cổ điển, thể thao, giảm mỡ)
+- Chăm sóc móng (manicure và pedicure)
+- Cắt tóc và tạo kiểu
+- Dịch vụ thẩm mỹ (chăm sóc da, facial)
+- Trị liệu SPA
+- Triệt lông / Waxing
+- Tắm nắng (solar)
+- Chương trình tập luyện (fitness)
+- Yoga và pilates
+- Liệu pháp hương thơm (aromatherapy)
+recommended_functions:
+- name: đặt lịch
+  priority: high
+  reason: Chức năng chính - đặt lịch dịch vụ với lựa chọn thợ và thời gian
+- name: nhắc nhở
+  priority: high
+  reason: Giảm no-show xuống 5% thông qua nhắc nhở tự động
+- name: faq
+  priority: medium
+  reason: Trả lời câu hỏi về giá cả, dịch vụ, và chuẩn bị
+- name: chuyển đổi lịch hẹn
+  priority: medium
+  reason: Chuyển hoặc hủy lịch hẹn mà không cần nhân viên
+- name: bán hàng
+  priority: low
+  reason: Thông báo về khuyến mãi và gói dịch vụ
+- name: thu thập phản hồi
+  priority: low
+  reason: Cải thiện dịch vụ dựa trên ý kiến khách hàng
+typical_integrations:
+- name: Hệ thống CRM/Đặt lịch
+  examples:
+  - Salonware
+  - BookingLive
+  - hệ thống đặt lịch nội bộ
+  priority: high
+  reason: Lịch trình của thợ, đặt chỗ slot
+- name: Tin nhắn
+  examples:
+  - Zalo
+  - Facebook Messenger
+  priority: high
+  reason: Nhắc nhở và xác nhận đặt lịch
+- name: SMS
+  examples:
+  - Dịch vụ SMS Viettel
+  - Vinaphone
+  priority: medium
+  reason: SMS nhắc nhở cho khách không dùng tin nhắn
+- name: Hệ thống điện thoại
+  examples:
+  - FPT Telecom
+  - VNPT
+  priority: medium
+  reason: Xử lý cuộc gọi đến
+- name: Hệ thống thanh toán
+  examples:
+  - Momo
+  - VNPay
+  priority: low
+  reason: Tích hợp thanh toán trực tuyến
+industry_faq:
+- question: Giá dịch vụ massage là bao nhiêu?
+  answer_template: Giá phụ thuộc vào loại massage và thời lượng. Massage lưng cổ điển
+    từ 200,000 VND. Tôi có thể kể chi tiết hơn?
+- question: Một buổi trị liệu kéo dài bao lâu?
+  answer_template: Buổi tiêu chuẩn kéo dài 60 phút. Cũng có các lựa chọn nhanh 30
+    phút.
+- question: Làm thế nào để đặt lịch?
+  answer_template: Tôi có thể đặt lịch cho bạn ngay bây giờ. Dịch vụ nào bạn quan
+    tâm và vào ngày nào?
+- question: Có thể thay đổi lịch hẹn không?
+  answer_template: Có, chắc chắn. Vui lòng cho biết tên của bạn và thời gian mới thuận
+    tiện.
+- question: Có chống chỉ định nào không?
+  answer_template: Chống chỉ định phụ thuộc vào dịch vụ. Vui lòng hỏi thợ trước buổi
+    trị liệu.
+- question: Có làm việc vào cuối tuần không?
+  answer_template: Có, chúng tôi làm việc cả tuần. Tôi có thể đặt lịch vào thứ bảy
+    hoặc chủ nhật.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hỏi về giá
+  script: Xin chào, tôi có thể giúp gì cho bạn? Chúng tôi có nhiều gói dịch vụ với
+    giá cả phải chăng. Ví dụ, massage cơ bản chỉ từ 200,000 VND. Bạn quan tâm đến
+    dịch vụ nào?
+  goal: Chuyển đổi câu hỏi giá thành đặt lịch hoặc cung cấp thông tin chi tiết
+- trigger: no_time
+  situation: Khi khách nói không có thời gian
+  script: Tôi hiểu bạn bận rộn. Chúng tôi có các dịch vụ nhanh trong 30 phút và làm
+    việc đến 21:00 hàng ngày. Bạn có muốn thử không?
+  goal: Thuyết phục khách đặt lịch ngắn hoặc vào giờ linh hoạt
+- trigger: thinking
+  situation: Khi khách nói "Tôi sẽ suy nghĩ"
+  script: Chắc chắn rồi! Tôi có thể đặt trước một ngày để giữ chỗ cho bạn. Điều này
+    sẽ đảm bảo bạn có thời gian thuận tiện.
+  goal: Giữ chân khách hàng và tăng tỷ lệ đặt lịch
+- trigger: promotion_interest
+  situation: Khi khách hỏi về khuyến mãi
+  script: Hiện tại chúng tôi có ưu đãi đặc biệt cho gói massage 5 buổi với giá chỉ
+    1,000,000 VND. Bạn có muốn biết thêm chi tiết không?
+  goal: Bán gói dịch vụ hoặc tăng giá trị đơn hàng
+competitors:
+- name: Cali Spa
+  positioning: Chuỗi spa cao cấp
+  strengths:
+  - Thương hiệu mạnh
+  - dịch vụ đa dạng
+  - nhiều chi nhánh
+  weaknesses:
+  - Giá cao
+  - đông khách vào giờ cao điểm
+  our_differentiation: Giá cả cạnh tranh hơn và dịch vụ đặt lịch tự động 24/7
+- name: L'angfarm
+  positioning: Trung tâm chăm sóc sức khỏe và làm đẹp
+  strengths:
+  - Sản phẩm tự nhiên
+  - uy tín
+  weaknesses:
+  - Ít dịch vụ
+  - hạn chế về địa điểm
+  our_differentiation: Dịch vụ toàn diện hơn và công nghệ hiện đại
+- name: Fitness First Vietnam
+  positioning: Phòng tập gym và wellness
+  strengths:
+  - Cơ sở vật chất hiện đại
+  - đào tạo chuyên nghiệp
+  weaknesses:
+  - Tập trung vào fitness
+  - ít dịch vụ spa
+  our_differentiation: Kết hợp spa và fitness với giá linh hoạt
+- name: Salon địa phương độc lập
+  positioning: Cá nhân hóa, giá rẻ
+  strengths:
+  - Giá thấp
+  - gần gũi
+  weaknesses:
+  - Thiếu chuyên nghiệp
+  - không ổn định
+  our_differentiation: Chuyên nghiệp hơn với hệ thống quản lý hiệu quả
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 100000
+  - 2000000
+  entry_point: 200000
+  roi_examples:
+  - scenario: Tự động hóa đặt lịch và nhắc nhở
+    monthly_cost: 5000000
+    monthly_savings: 10000000
+    payback_months: 0.5
+  value_anchors:
+  - Giảm 20% no-show với nhắc nhở tự động
+  - Tăng doanh thu 15% từ đặt lịch 24/7
+  - Tiết kiệm chi phí nhân sự 30%
+market_context:
+  market_size: Khoảng 1 tỷ USD năm 2023
+  growth_rate: 10%
+  key_trends:
+  - Tăng cường sử dụng công nghệ trong chăm sóc sức khỏe
+  - Nhu cầu cho dịch vụ tại nhà tăng
+  - Chú trọng đến wellness sau đại dịch
+  seasonality:
+    high:
+    - Tết Nguyên Đán
+    - Mùa hè
+    low:
+    - Tháng 9
+    - Mùa mưa
+typical_objections:
+- objection: Đắt quá
+  response: Chúng tôi có các gói abonement giảm giá đến 20%. Bạn có muốn nghe thêm
+    không?
+- objection: Tôi không có thời gian
+  response: Chúng tôi có dịch vụ nhanh 30 phút và làm việc đến 21:00 hàng ngày.
+- objection: Tôi sẽ suy nghĩ
+  response: Chắc chắn! Tôi có thể đặt trước một ngày để giữ chỗ cho bạn?
+meta:
+  id: wellness
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+_extends: _base/wellness

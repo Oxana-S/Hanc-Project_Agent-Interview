@@ -1,0 +1,279 @@
+pain_points:
+- description: Elevati costi di gestione del call center con lunghi tempi di attesa
+    per i clienti.
+  severity: high
+  solution_hint: Automatizzare le risposte alle domande frequenti e la gestione delle
+    richieste di base, liberando gli operatori umani per casi complessi.
+- description: Difficoltà nel gestire picchi stagionali di chiamate senza aumentare
+    i costi del personale.
+  severity: medium
+  solution_hint: Implementare un agente vocale AI che scalabilmente gestisca il volume
+    di chiamate in eccesso.
+- description: Perdita di opportunità di vendita incrociata durante le interazioni
+    di supporto.
+  severity: high
+  solution_hint: L'agente AI può analizzare il profilo del cliente in tempo reale
+    e suggerire offerte pertinenti.
+- description: Bassa soddisfazione del cliente dovuta a lunghe attese e risposte incoerenti.
+  severity: high
+  solution_hint: Fornire risposte immediate e coerenti 24/7 su qualsiasi canale, migliorando
+    l'esperienza utente.
+- description: Complessità nella gestione delle richieste tecniche di base (es. ripristino
+    linea, problemi modem).
+  severity: medium
+  solution_hint: Guidare il cliente attraverso procedure di troubleshooting passo-passo
+    con l'agente vocale.
+- description: Difficoltà nel reclutamento e formazione del personale per il supporto
+    clienti.
+  severity: medium
+  solution_hint: Ridurre la dipendenza da nuovo personale utilizzando un agente AI
+    pre-addestrato sul settore.
+- description: Errori frequenti nella raccolta dati e nell'inserimento negli sistemi
+    CRM.
+  severity: low
+  solution_hint: Integrare l'agente AI con il CRM per un inserimento automatico e
+    accurato dei dati del cliente.
+typical_services:
+- Linea fissa e banda ultra larga (FTTC/FTTH)
+- Mobile (piani voce, dati, SIM)
+- Telefonia aziendale (centralini VOIP, numeri verdi)
+- Servizi di connettività dedicata per aziende
+- Servizi di Cloud e hosting
+- Servizi TV e intrattenimento (IPTV, streaming)
+- Servizi di sicurezza (antivirus, VPN)
+- Assistenza tecnica remota e on-site
+- Servizi di fatturazione e gestione contratti
+- Soluzioni IoT e M2M
+recommended_functions:
+- name: Gestione Reclami e Richieste di Supporto
+  priority: high
+  reason: Risolve i problemi più comuni dei clienti immediatamente, riducendo il carico
+    sul call center.
+- name: Upselling e Cross-selling Intelligente
+  priority: high
+  reason: Aumenta il valore per cliente (ARPU) sfruttando ogni interazione per suggerire
+    offerte pertinenti.
+- name: Prenotazione Appuntamenti per Interventi Tecnici
+  priority: medium
+  reason: Automatizza un processo ad alta domanda, ottimizzando l'agenda dei tecnici
+    e migliorando l'esperienza cliente.
+- name: Verifica Copertura e Disponibilità Servizi
+  priority: medium
+  reason: Fornisce informazioni cruciali in autonomia, accelerando il processo di
+    vendita per nuovi clienti.
+- name: Invio Automatico di Promemoria per Pagamenti e Scadenze
+  priority: low
+  reason: Migliora il tasso di incasso e riduce le sospensioni di servizio per mancato
+    pagamento.
+- name: Rilevamento Intent e Routing Intelligente
+  priority: high
+  reason: Indirizza la chiamata all'agente umano giusto in base alla complessità,
+    migliorando efficienza e soddisfazione.
+typical_integrations:
+- name: CRM
+  examples:
+  - Zucchetti CRM
+  - Microsoft Dynamics 365
+  - Salesforce
+  - SugarCRM
+  priority: high
+- name: Sistema di Ticketing/Help Desk
+  examples:
+  - Zendesk
+  - Freshdesk
+  - OTRS
+  - Jira Service Management
+  priority: high
+- name: Piattaforma di Fatturazione
+  examples:
+  - SAP
+  - TeamSystem
+  - Aruba Fatturazione
+  - Oracle NetSuite
+  priority: medium
+- name: Portale per Clienti (Customer Self-Service)
+  examples:
+  - Portali personalizzati
+  - WordPress con plugin
+  - Drupal
+  priority: medium
+- name: Database della Rete (OSS/BSS)
+  examples:
+  - Sistemi proprietari
+  - Amdocs
+  - Ericsson
+  - Huawei
+  priority: high
+industry_faq:
+- question: La vostra assistenza tecnica è disponibile 24 ore su 24?
+  answer_template: Sì, la nostra assistenza tecnica è disponibile 24/7. Per problemi
+    urgenti può chiamare in qualsiasi momento e sarà assistito dal nostro servizio
+    automatizzato o, se necessario, da un operatore. Per problemi non urgenti, può
+    anche utilizzare l'apposita area nel nostro portale clienti.
+- question: Cosa succede se la mia linea internet non funziona?
+  answer_template: Mi dispiace per l'inconveniente. Posso aiutarla a fare un primo
+    controllo. Prima di tutto, provi a riavviare il modem. Se il problema persiste,
+    posso verificare lo stato della rete nella sua zona e, se necessario, programmare
+    un intervento tecnico. Mi fornisce il suo codice cliente?
+- question: Posso modificare il mio piano tariffario senza costi aggiuntivi?
+  answer_template: In genere, è possibile modificare il piano verso un'offerta di
+    valore superiore senza costi aggiuntivi. Per le modifiche verso piani di valore
+    inferiore o per le disdette, potrebbero applicarsi penali come indicato nel suo
+    contratto. Posso verificare le opzioni disponibili per lei in base al suo profilo.
+- question: La fibra ottica è disponibile nel mio indirizzo?
+  answer_template: Per verificare la copertura e le offerte disponibili per il suo
+    indirizzo, mi servirebbe l'indirizzo completo (via e numero civico) e il codice
+    postale (CAP). Posso fare una ricerca in tempo reale nel nostro sistema.
+- question: Come posso vedere la mia fattura o il mio consumo dati?
+  answer_template: Può accedere alla sua fattura e ai dettagli del consumo direttamente
+    dall'area personale del nostro sito web o dall'app mobile. Se non ha le credenziali,
+    posso aiutarla a recuperarle. Desidera che le invii il link per l'accesso via
+    SMS?
+sales_scripts:
+- trigger: price_question
+  situation: Quando il cliente chiede informazioni sui prezzi di un servizio specifico.
+  script: Certamente. Le nostre tariffe partono da [inserire prezzo entry_point] al
+    mese per la connessione base, ma il costo finale dipende dalle esigenze specifiche
+    della sua azienda (numero di linee, velocità, servizi aggiuntivi). Per fornirle
+    un'offerta precisa e personalizzata, posso farle alcune veloci domande? In questo
+    modo possiamo individuare la soluzione più efficiente e conveniente per lei.
+  goal: Raccogliere informazioni per personalizzare l'offerta e spostare la conversazione
+    dal prezzo al valore.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente o un'offerta della concorrenza.
+  script: 'Capisco. Rispetto a [Nome Concorrente], la nostra forza è [inserire nostra_differentiation,
+    es: un''assistenza tecnica più reattiva o una rete più stabile]. Offriamo anche
+    [menzionare un valore_anchors, es: una garanzia di ripristino del servizio in
+    24 ore]. Sarebbe interessato a una prova comparativa della qualità del servizio
+    nella sua zona?'
+  goal: Differenziarsi dalla concorrenza enfatizzando i punti di forza unici e proponendo
+    un confronto concreto.
+- trigger: objection_complexity
+  situation: Quando il cliente esprime preoccupazione sulla complessità di attivazione
+    o migrazione.
+  script: La capisco perfettamente, cambiare fornitore può sembrare complesso. Noi
+    ci occupiamo di tutta la procedura di migrazione per lei, compresa la gestione
+    della disdetta con il vecchio operatore. Il nostro team la seguirà passo passo
+    e garantirà una transizione senza interruzioni del servizio. Lei dovrà solo fornire
+    alcune informazioni di base.
+  goal: Rassicurare il cliente rimuovendo la percezione di ostacolo e semplificando
+    il processo di acquisto.
+competitors:
+- name: TIM (Telecom Italia)
+  positioning: Operatore storico dominante nel mercato fisso e mobile.
+  strengths:
+  - Rete infrastrutturale più estesa
+  - Fortissima riconoscibilità del brand
+  - Ampia gamma di servizi per privati e aziende
+  weaknesses:
+  - Percezione di customer service lento e burocratico
+  - Struttura costi elevata
+  - Legacy systems obsoleti
+  our_differentiation: Agilità, customer service proattivo e personalizzato tramite
+    AI, e soluzioni flessibili su misura per le PMI.
+- name: Vodafone Italia
+  positioning: Forte concorrente nel mobile, in crescita nel fisso.
+  strengths:
+  - Brand internazionale forte
+  - Offerte bundle aggressive
+  - Buona copertura mobile 4G/5G
+  weaknesses:
+  - Rete fissa in parte in affidamento su TIM
+  - Customer service a volte discontinuo
+  our_differentiation: Focus su integrazione e automazione dei servizi per aziende,
+    con assistenza tecnica più integrata e reattiva.
+- name: WindTre
+  positioning: Operatore nato dalla fusione, competitivo su prezzo.
+  strengths:
+  - Offerte competitive sul prezzo
+  - Buona copertura di rete (ereditata da Wind e 3 Italia)
+  - Flessibilità contrattuale
+  weaknesses:
+  - Processi di integrazione post-fusione ancora in corso
+  - Percezione di minore stabilità della rete
+  our_differentiation: Tecnologia più moderna e nativa cloud, automazione end-to-end
+    dei processi cliente, e maggiore trasparenza nella fatturazione.
+- name: Iliad Italia
+  positioning: Operatore low-cost che ha rivoluzionato il mercato mobile.
+  strengths:
+  - Prezzi estremamente competitivi e semplici
+  - Processi digitali e senza contratti a lunga scadenza
+  - Growth molto rapida
+  weaknesses:
+  - Offerta focalizzata quasi solo sul mobile
+  - Supporto clienti principalmente digitale/online
+  - Rete fissa in sviluppo
+  our_differentiation: Offriamo un servizio completo fisso+mobile con supporto ibrido
+    (AI + umano) di alta qualità, pensato per le esigenze delle aziende.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 29.9
+  roi_examples:
+  - scenario: Automazione del primo livello di supporto per una PMI con 100 clienti
+      al giorno
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Gestione automatizzata di appuntamenti e promemoria per un team di 10
+      tecnici
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 2
+  value_anchors:
+  - Riduci i tempi di attesa dei clienti del 70%
+  - Libera il 30% del tempo degli operatori per attività a valore aggiunto
+  - Aumenta la soddisfazione del cliente (NPS) di 15 punti
+market_context:
+  market_size: Circa 30 miliardi di Euro (mercato TLC totale IT)
+  growth_rate: 2-3% YoY (trainato da fibra e 5G)
+  key_trends:
+  - Transizione accelerata verso la fibra ottica FTTH
+  - Convergenza fisso-mobile e servizi cloud
+  - Aumento della domanda di connettività per lo smart working
+  - Focus crescente sulla cybersecurity
+  - Sviluppo di soluzioni IoT per le città e le imprese intelligenti
+  seasonality:
+    high:
+    - Settembre-Ottobre (rientro vacanze, inizi scuole)
+    - Gennaio (promozioni post-natalizie)
+    low:
+    - Agosto (chiusura estiva generale)
+    - Dicembre (festività)
+typical_objections:
+- objection: Siamo già coperti da un contratto con un altro operatore.
+  response: 'Capisco. Molti nostri clienti erano nella sua stessa situazione. Spesso
+    i contratti hanno scadenze o clausole di recesso meno onerose di quanto si pensi.
+    Mi permetta di farle una domanda: è soddisfatto del livello di servizio e supporto
+    che riceve attualmente? Potremmo valutare insieme un confronto, anche in vista
+    della scadenza del suo attuale contratto.'
+- objection: Non vogliamo automazione, i nostri clienti preferiscono parlare con una
+    persona.
+  response: Condividiamo l'importanza del contatto umano. La nostra soluzione non
+    lo sostituisce, ma lo potenzia. L'agente AI gestisce le richieste ripetitive (orari,
+    fatture, problemi base), così i suoi operatori hanno più tempo da dedicare alle
+    richiste complesse e alla vera relazione con il cliente. In questo modo, migliora
+    l'esperienza per entrambi.
+- objection: Implementare una nuova tecnologia sembra complicato e dispendioso in
+    termini di tempo.
+  response: La nostra soluzione è progettata per l'integrazione rapida. Ci occupiamo
+    noi della configurazione e del training iniziale dell'agente sui suoi processi.
+    In genere, si parte con un progetto pilota in poche settimane, con un impatto
+    minimo sulle sue operazioni quotidiane. Possiamo partire con un modulo specifico,
+    ad esempio la gestione degli appuntamenti tecnici.
+meta:
+  id: telecom
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

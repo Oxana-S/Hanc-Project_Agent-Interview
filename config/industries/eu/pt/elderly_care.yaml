@@ -1,0 +1,222 @@
+pain_points:
+- description: Dificuldade na gestão de escalas e turnos dos cuidadores, levando a sobrecarga e erros.
+  severity: high
+  solution_hint: O agente de voz pode automatizar e organizar as escalas, enviando lembretes e atualizações em tempo real.
+- description: Comunicação ineficiente entre familiares, cuidadores e instituições.
+  severity: high
+  solution_hint: O agente pode facilitar a comunicação direta, agendar chamadas e enviar notificações personalizadas.
+- description: Conformidade rigorosa com GDPR e proteção de dados sensíveis dos idosos.
+  severity: high
+  solution_hint: O agente pode garantir processos de consentimento e registro de interações para conformidade.
+- description: Dificuldade em monitorar a saúde e bem-estar dos idosos remotamente.
+  severity: medium
+  solution_hint: O agente pode coletar dados via voz e integrar alertas para cuidados preventivos.
+- description: Baixa adoção de tecnologia digital por parte dos idosos e cuidadores menos familiarizados.
+  severity: medium
+  solution_hint: O agente de voz simplifica a interação, usando linguagem natural e comandos simples.
+- description: Processos administrativos manuais demorados, como agendamento e faturação.
+  severity: medium
+  solution_hint: Automação de agendamentos, confirmações e consultas de faturação via voz.
+- description: Gestão complexa de medicamentos e horários de administração.
+  severity: high
+  solution_hint: O agente pode enviar lembretes e confirmar a administração através de interações por voz.
+typical_services:
+- Cuidados domiciliários personalizados
+- Acompanhamento e monitorização de saúde
+- Apoio na administração de medicamentos
+- Serviços de fisioterapia ao domicílio
+- Apoio psicológico e social
+- Gestão e organização de atividades diárias
+- Transporte assistido para consultas médicas
+- Serviços de teleassistência
+- Consultoria e suporte legal para idosos
+- Formação e apoio a cuidadores familiares
+recommended_functions:
+- name: Agendamento e lembretes de consultas
+  priority: high
+  reason: Facilita a organização diária do idoso e cuidador, reduzindo faltas.
+- name: Gestão de medicação por voz
+  priority: high
+  reason: Ajuda a garantir a correta administração dos medicamentos nos horários certos.
+- name: Comunicação com familiares e cuidadores
+  priority: high
+  reason: Melhora a coordenação e tranquiliza os familiares.
+- name: Confirmação de presença e status do cuidador
+  priority: medium
+  reason: Aumenta a transparência e confiança no serviço prestado.
+- name: Alertas de emergência e chamadas automáticas
+  priority: high
+  reason: Segurança reforçada para situações críticas.
+- name: Registro automático de interações para compliance GDPR
+  priority: medium
+  reason: Assegura conformidade legal e proteção de dados.
+- name: Suporte em linguagem natural para dúvidas frequentes
+  priority: medium
+  reason: Facilita o acesso rápido a informações importantes.
+typical_integrations:
+- name: Sistemas de gestão de cuidados de saúde
+  examples:
+  - SClínico
+  - Infomed
+  priority: high
+- name: Plataformas de teleassistência
+  examples:
+  - Tunstall
+  - Gocare
+  priority: medium
+- name: Sistemas de faturação e contabilidade
+  examples:
+  - Primavera
+  - Sage
+  priority: medium
+- name: Aplicações móveis para cuidadores
+  examples:
+  - Cuidador.pt
+  - Carelink
+  priority: medium
+- name: Sistemas de gestão de escalas
+  examples:
+  - Jornada
+  - TimeSheet
+  priority: medium
+industry_faq:
+- question: Quais serviços de cuidados domiciliários estão disponíveis?
+  answer_template: Oferecemos cuidados personalizados que incluem acompanhamento de saúde, administração de medicamentos e apoio nas atividades diárias.
+- question: Como garantem a privacidade dos dados pessoais?
+  answer_template: Cumprimos rigorosamente o regulamento GDPR, assegurando que todos os dados são armazenados e utilizados com consentimento e segurança.
+- question: É possível agendar serviços através do agente de voz?
+  answer_template: Sim, pode agendar e receber lembretes dos seus serviços diretamente através do nosso assistente de voz.
+- question: Qual é o custo médio dos serviços de cuidados?
+  answer_template: Os preços variam conforme o serviço, mas geralmente começam a partir de 500 EUR por mês para cuidados básicos domiciliários.
+- question: O agente de voz pode ajudar em casos de emergência?
+  answer_template: Sim, o agente está configurado para detectar comandos de emergência e contactar familiares ou serviços de urgência imediatamente.
+- question: Como posso acompanhar o estado do meu familiar?
+  answer_template: Através do agente de voz, pode receber atualizações regulares e comunicar diretamente com os cuidadores responsáveis.
+- question: Que tipos de profissionais fazem parte da equipa de cuidados?
+  answer_template: Contamos com auxiliares de saúde, enfermeiros, fisioterapeutas e assistentes sociais especializados em cuidados geriátricos.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços dos serviços.
+  script: Os nossos serviços são adaptados às necessidades específicas de cada idoso, com preços que começam em 500 EUR mensais. Posso ajudar a identificar o pacote ideal para si?
+  goal: Apresentar preço base e encaminhar para personalização.
+- trigger: service_benefits
+  situation: Quando o cliente demonstra interesse nos benefícios do serviço.
+  script: Com o nosso agente de voz, facilitamos a gestão diária dos cuidados, garantindo segurança e comunicação constante com a família. Gostaria de uma demonstração?
+  goal: Destacar valor e incentivar demonstração.
+- trigger: gdpr_concerns
+  situation: Quando o cliente expressa dúvidas sobre privacidade.
+  script: Garantimos total conformidade com o GDPR, protegendo todos os dados pessoais e assegurando que só são usados com o seu consentimento.
+  goal: Tranquilizar o cliente quanto à privacidade.
+- trigger: emergency_support
+  situation: Quando o cliente pergunta sobre situações de emergência.
+  script: Nosso agente de voz está preparado para reconhecer comandos de emergência e alertar imediatamente familiares e serviços especializados.
+  goal: Reforçar segurança oferecida.
+- trigger: tech_familiarity
+  situation: Quando o cliente está preocupado com a usabilidade da tecnologia.
+  script: O agente de voz foi desenhado para ser simples e intuitivo, permitindo que todos, mesmo sem experiência tecnológica, usufruam do serviço facilmente.
+  goal: Reduzir barreiras tecnológicas.
+competitors:
+- name: Cuidados Mais
+  positioning: Líder nacional em cuidados domiciliários com presença consolidada.
+  strengths:
+  - Ampla rede de cuidadores
+  - reputação forte
+  - tecnologia integrada
+  weaknesses:
+  - Preços elevados
+  - pouca flexibilidade em pacotes
+  our_differentiation: Oferecemos soluções personalizadas com assistente de voz para maior autonomia e comunicação.
+- name: Lar Seguro
+  positioning: Forte em serviços de teleassistência e monitorização.
+  strengths:
+  - Tecnologia de ponta
+  - resposta rápida em emergências
+  weaknesses:
+  - Foco limitado em cuidados presenciais
+  - atendimento menos personalizado
+  our_differentiation: Combinamos cuidados presenciais com tecnologia de voz para atendimento completo.
+- name: Vida Ativa
+  positioning: Empresa regional com foco em fisioterapia e reabilitação.
+  strengths:
+  - Especialização em reabilitação
+  - profissionais qualificados
+  weaknesses:
+  - Cobertura geográfica limitada
+  - serviços menos diversificados
+  our_differentiation: Oferecemos abrangência nacional e integração de serviços multidisciplinares via voz.
+- name: Cuidador.pt
+  positioning: Plataforma digital para ligação entre cuidadores e famílias.
+  strengths:
+  - Facilidade de contratação
+  - preços competitivos
+  weaknesses:
+  - Menos controle sobre qualidade
+  - ausência de suporte tecnológico avançado
+  our_differentiation: Fornecemos suporte contínuo com assistente de voz e garantia de qualidade.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 400
+  - 1500
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de faltas e atrasos dos cuidadores
+    monthly_cost: 600
+    monthly_savings: 1100
+    payback_months: 3
+  - scenario: Diminuição de chamadas de emergência desnecessárias
+    monthly_cost: 700
+    monthly_savings: 1300
+    payback_months: 2.8
+  - scenario: Otimização da comunicação entre familiares e cuidadores
+    monthly_cost: 550
+    monthly_savings: 970
+    payback_months: 3.7
+  value_anchors:
+  - Melhoria na qualidade dos cuidados prestados.
+  - Redução de erros na administração de medicamentos.
+  - Aumento da segurança e tranquilidade para famílias.
+  - Automatização que reduz custos operacionais.
+  - Conformidade total com a legislação europeia de proteção de dados.
+market_context:
+  market_size: 450000000
+  growth_rate: 6.5
+  key_trends:
+  - Crescente envelhecimento da população portuguesa.
+  - Adoção gradual de tecnologias digitais em cuidados.
+  - Maior exigência por serviços personalizados e de qualidade.
+  - Integração de teleassistência e monitorização remota.
+  - Reforço da legislação sobre privacidade e qualidade de serviços.
+  seasonality:
+    high:
+    - Outubro
+    - Novembro
+    - Dezembro
+    low:
+    - Julho
+    - Agosto
+typical_objections:
+- objection: Os custos mensais parecem elevados para o meu orçamento.
+  response: Entendo a preocupação, mas o investimento traz redução de erros, faltas e emergências, resultando em poupanças significativas a médio prazo.
+- objection: Não estou familiarizado com tecnologia, será difícil usar?
+  response: O nosso agente de voz foi desenvolvido para ser intuitivo e fácil de usar, mesmo para quem tem pouca experiência tecnológica.
+- objection: Tenho dúvidas sobre a segurança dos meus dados pessoais.
+  response: Garantimos total cumprimento do GDPR, com processos rigorosos para proteção e confidencialidade da sua informação.
+- objection: Já tenho um cuidador de confiança, por que deveria mudar?
+  response: Nosso serviço complementa o trabalho do cuidador, melhorando a comunicação e organização, o que pode facilitar ainda mais o cuidado diário.
+- objection: Não tenho certeza se o agente de voz funcionará bem com idosos.
+  response: O agente é projetado para reconhecer diferentes vozes e adaptar-se ao ritmo e necessidades de cada utilizador, tornando-o acessível e eficiente.
+meta:
+  id: elderly_care
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- elderly care
+- senior care
+- nursing home
+- home care
+_extends: _base/elderly_care

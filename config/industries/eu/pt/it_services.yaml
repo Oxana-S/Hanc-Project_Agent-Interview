@@ -1,0 +1,247 @@
+pain_points:
+- description: Falta de mão de obra qualificada em TI, dificultando a contratação
+    e retenção de talentos.
+  severity: high
+  solution_hint: O agente de voz de IA pode automatizar tarefas rotineiras, reduzindo
+    a dependência de pessoal especializado e permitindo que a equipa se concentre
+    em atividades de maior valor.
+- description: Custos elevados com infraestrutura de TI e manutenção, afetando a rentabilidade
+    das empresas.
+  severity: high
+  solution_hint: O agente pode otimizar processos e recomendar soluções de cloud mais
+    eficientes, ajudando a reduzir custos operacionais.
+- description: Dificuldade em cumprir com as regulamentações de proteção de dados,
+    como o GDPR, devido à complexidade legal.
+  severity: medium
+  solution_hint: O agente pode fornecer lembretes automáticos e orientações sobre
+    conformidade, simplificando a gestão de requisitos regulatórios.
+- description: Alta rotatividade de clientes devido a falhas no suporte técnico e
+    comunicação ineficiente.
+  severity: medium
+  solution_hint: O agente oferece suporte 24/7 com respostas rápidas, melhorando a
+    experiência do cliente e aumentando a fidelização.
+- description: Desafios na integração de sistemas legados com novas tecnologias, causando
+    ineficiências operacionais.
+  severity: medium
+  solution_hint: O agente pode facilitar a integração através de APIs e automação,
+    acelerando a modernização dos sistemas.
+- description: Ameaças crescentes de cibersegurança, com ataques frequentes que comprometem
+    a segurança dos dados.
+  severity: high
+  solution_hint: O agente pode monitorizar atividades suspeitas e alertar proativamente,
+    reforçando as medidas de segurança.
+typical_services:
+- Desenvolvimento de software personalizado
+- Suporte técnico e helpdesk
+- Consultoria em transformação digital
+- Gestão e manutenção de redes
+- Serviços de cloud computing
+- Soluções de cibersegurança
+- Implementação de sistemas ERP e CRM
+- Outsourcing de TI
+- Desenvolvimento de aplicações móveis
+- Análise e business intelligence
+recommended_functions:
+- name: Agendamento de reuniões e gestão de calendários
+  priority: high
+  reason: Melhora a eficiência operacional ao automatizar tarefas administrativas,
+    comum em empresas de serviços de TI com equipas distribuídas.
+- name: Resolução de problemas técnicos via voz
+  priority: high
+  reason: Oferece suporte imediato a clientes, reduzindo o tempo de inatividade e
+    aumentando a satisfação, crucial para o setor de TI.
+- name: Vendas e qualificação de leads
+  priority: medium
+  reason: Ajuda a identificar oportunidades de negócio e a educar clientes sobre serviços,
+    acelerando o ciclo de vendas em um mercado competitivo.
+- name: Monitorização de sistemas e alertas
+  priority: high
+  reason: Permite a deteção proativa de falhas ou ameaças, essencial para manter a
+    segurança e confiabilidade dos serviços de TI.
+- name: Integração com ferramentas de gestão de projetos
+  priority: medium
+  reason: Facilita a coordenação de equipas e projetos, melhorando a produtividade
+    em ambientes de desenvolvimento ágil.
+- name: Atendimento ao cliente multilingue
+  priority: low
+  reason: Expande o alcance do mercado, atendendo clientes internacionais em Portugal,
+    onde há demanda por serviços em várias línguas.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - Primavera
+  - SAP
+  - Microsoft Dynamics
+  priority: high
+- name: Plataformas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Ferramentas de colaboração
+  examples:
+  - Microsoft Teams
+  - Slack
+  - Trello
+  priority: medium
+- name: Sistemas de monitorização de redes
+  examples:
+  - Nagios
+  - Zabbix
+  priority: medium
+- name: Soluções de cloud
+  examples:
+  - AWS
+  - Google Cloud
+  - Microsoft Azure
+  priority: high
+industry_faq:
+- question: Quanto custam os vossos serviços de TI?
+  answer_template: Os nossos preços variam consoante as necessidades específicas,
+    com pontos de entrada a partir de 500 EUR por mês para soluções básicas. Podemos
+    agendar uma consulta para avaliar o seu caso e fornecer um orçamento personalizado.
+- question: Como garantem a segurança dos dados em conformidade com o GDPR?
+  answer_template: Implementamos medidas rigorosas de cibersegurança e processos auditados
+    para cumprir com o GDPR, incluindo encriptação de dados e controlos de acesso.
+    O nosso agente de voz de IA pode ajudar na monitorização contínua.
+- question: Oferecem suporte técnico 24/7?
+  answer_template: Sim, através do nosso agente de voz de IA, proporcionamos suporte
+    contínuo para resolver problemas rapidamente, melhorando a disponibilidade dos
+    seus sistemas.
+- question: Podem integrar-se com os nossos sistemas legados?
+  answer_template: Absolutamente. Especializamo-nos em integrações com sistemas legados
+    usando APIs e automação, garantindo uma transição suave sem interrupções.
+- question: Qual é o tempo médio de implementação de um projeto de TI?
+  answer_template: Depende da complexidade, mas para projetos padrão, estimamos entre
+    2 a 6 semanas. O agente de voz de IA acelera o processo com automação de tarefas
+    iniciais.
+- question: Trabalham com empresas de todos os tamanhos?
+  answer_template: Sim, adaptamos os nossos serviços desde startups a grandes empresas,
+    com soluções escaláveis que crescem com o seu negócio.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Entendo a sua preocupação com custos. Os nossos serviços começam em
+    500 EUR por mês para soluções básicas, mas o valor final depende das suas necessidades
+    específicas. Posso ajudá-lo a avaliar como podemos reduzir os seus custos operacionais
+    com automação. Gostaria de agendar uma demonstração gratuita?
+  goal: Qualificar o lead e agendar uma reunião para discutir detalhes, destacando
+    o valor e personalização.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre um serviço específico, como suporte
+    técnico.
+  script: Obrigado pelo interesse! Oferecemos suporte técnico 24/7 através do nosso
+    agente de voz de IA, que resolve problemas comuns em minutos, reduzindo o tempo
+    de inatividade. Já tem algum desafio específico em que possamos ajudar?
+  goal: Educar o cliente sobre os benefícios e engajá-lo numa conversa sobre necessidades
+    concretas.
+- trigger: compliance_concern
+  situation: Quando um cliente expressa preocupação com conformidade GDPR.
+  script: Compreendo a importância do GDPR. O nosso agente de voz de IA inclui funcionalidades
+    de monitorização e alerta para ajudar a manter a conformidade, além de integrações
+    com sistemas seguros. Podemos partilhar casos de sucesso de clientes em Portugal.
+    Interessa-lhe saber mais?
+  goal: Construir confiança e demonstrar expertise local em conformidade.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente.
+  script: É bom saber que está a explorar opções. Diferimo-nos ao focar na automação
+    via IA para reduzir custos e melhorar a eficiência, enquanto muitos concorrentes
+    dependem mais de mão de obra humana. Oferecemos um período de teste para que possa
+    comparar. Gostaria de experimentar?
+  goal: Diferenciação e incentivo à experimentação do serviço.
+competitors:
+- name: Altice Labs
+  positioning: Líder em telecomunicações e serviços de TI em Portugal, com forte presença
+    no mercado.
+  strengths:
+  - Infraestrutura robusta e rede extensa
+  - Reconhecimento de marca local
+  - Portfólio diversificado de serviços
+  weaknesses:
+  - Custos elevados para PMEs
+  - Menos foco em inovação baseada em IA
+  our_differentiation: Oferecemos soluções mais acessíveis e centradas em automação
+    de IA, com suporte personalizado e rápido retorno sobre investimento.
+- name: Novabase
+  positioning: Empresa de consultoria e serviços de TI com forte atuação em transformação
+    digital.
+  strengths:
+  - Experiência em projetos complexos
+  - Parcerias com grandes fornecedores tecnológicos
+  - Presença internacional
+  weaknesses:
+  - Processos lentos de implementação
+  - Preços premium que não são acessíveis a todas as empresas
+  our_differentiation: Focamos em implementações rápidas e custo-eficientes com agentes
+    de voz de IA, ideal para PMEs que precisam de agilidade.
+- name: Glintt
+  positioning: Especializada em saúde e serviços de TI, com forte nicho no setor público
+    e privado.
+  strengths:
+  - Expertise em setores regulamentados
+  - Soluções verticalizadas
+  - Conformidade com regulamentos locais
+  weaknesses:
+  - Limitada inovação em automação
+  - Menos flexibilidade para indústrias gerais
+  our_differentiation: Fornecemos soluções genéricas de IA que são facilmente adaptáveis
+    a vários setores, com foco em reduzir custos operacionais de forma ampla.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatização de suporte técnico para uma PME com 50 funcionários.
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação de IA.
+  - Suporte 24/7 sem custos adicionais de pessoal.
+  - Conformidade GDPR integrada, evitando multas caras.
+market_context:
+  market_size: Estimado em 2 mil milhões de EUR anuais para serviços de TI em Portugal.
+  growth_rate: 5% ao ano, impulsionado pela digitalização pós-pandemia.
+  key_trends:
+  - Aumento da adoção de cloud computing entre PMEs.
+  - Crescente foco em cibersegurança devido a ameaças digitais.
+  - Demanda por soluções de IA e automação para melhorar a eficiência.
+  seasonality:
+    high:
+    - Fim do ano fiscal (setembro a dezembro)
+    - Início de projetos após férias de verão
+    low:
+    - Período de férias de verão (julho e agosto)
+    - Feriados de fim de ano
+typical_objections:
+- objection: É muito caro para a minha empresa.
+  response: Compreendo. No entanto, o nosso agente de voz de IA pode reduzir custos
+    a longo prazo, por exemplo, economizando em salários de suporte. Podemos começar
+    com um plano básico de 500 EUR por mês e escalar conforme necessário. Gostaria
+    de ver uma simulação de ROI?
+- objection: Não confio em IA para serviços críticos de TI.
+  response: É uma preocupação válida. O nosso agente é projetado para complementar
+    equipas humanas, não substituí-las, com supervisão e controlos rigorosos. Temos
+    casos de sucesso em Portugal que podemos partilhar para aumentar a sua confiança.
+- objection: Já tenho um fornecedor de TI estabelecido.
+  response: Excelente! O nosso foco é em otimizar o que já tem, através de automação
+    que pode integrar-se com os seus sistemas existentes, melhorando a eficiência
+    sem interromper operações. Podemos fazer uma avaliação gratuita para mostrar o
+    valor acrescentado.
+meta:
+  id: it_services
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

@@ -1,0 +1,196 @@
+pain_points:
+- description: Alta taxa de rotatividade de clientes devido à concorrência agressiva.
+  severity: high
+  solution_hint: Agente de voz AI pode oferecer suporte proativo e personalizado para reter clientes, identificando necessidades e oferecendo upgrades.
+- description: Problemas complexos de faturação que causam insatisfação do cliente.
+  severity: high
+  solution_hint: Agente de voz AI pode automatizar consultas de faturação, explicar cobranças e resolver disputas rapidamente.
+- description: Interrupções de rede frequentes que afetam a satisfação do cliente.
+  severity: medium
+  solution_hint: Agente de voz AI pode notificar clientes sobre manutenção, fornecer atualizações em tempo real e redirecionar para suporte técnico.
+- description: Conformidade regulatória rigorosa, como GDPR, exigindo gestão de dados sensível.
+  severity: high
+  solution_hint: Agente de voz AI pode verificar consentimentos, processar pedidos de dados e garantir conformidade automática nas interações.
+- description: Sobrecarga no atendimento ao cliente com chamadas repetitivas.
+  severity: medium
+  solution_hint: Agente de voz AI pode lidar com consultas comuns, liberando agentes humanos para casos complexos.
+- description: Integração deficiente com sistemas legados que dificulta a eficiência operacional.
+  severity: low
+  solution_hint: Agente de voz AI pode atuar como interface, conectando-se a APIs para sincronizar dados entre sistemas.
+- description: Dificuldade em escalar serviços durante picos de demanda sazonal.
+  severity: medium
+  solution_hint: Agente de voz AI pode gerenciar aumentos de volume de chamadas sem custos adicionais significativos.
+typical_services:
+- Internet de banda larga
+- Serviços de telemóvel
+- Televisão por subscrição
+- Voz fixa
+- Serviços de dados empresariais
+- Serviços em nuvem
+- Soluções de IoT
+- Serviços de cibersegurança
+- Roaming internacional
+- Assistência técnica 24/7
+recommended_functions:
+- name: Suporte ao cliente automatizado
+  priority: high
+  reason: Reduz custos operacionais e melhora a satisfação do cliente ao responder rapidamente a consultas comuns.
+- name: Processamento de faturas
+  priority: high
+  reason: Automatiza explicações de cobranças e resolve disputas, reduzindo reclamações e aumentando a confiança.
+- name: Qualificação de leads de vendas
+  priority: medium
+  reason: Aumenta a eficiência das vendas ao identificar clientes potenciais com base em necessidades específicas.
+- name: Ativação e upgrade de serviços
+  priority: medium
+  reason: Facilita a venda cruzada e a retenção ao oferecer upgrades de forma proativa durante interações.
+- name: Monitoramento de status da rede
+  priority: low
+  reason: Fornece atualizações em tempo real sobre interrupções, melhorando a transparência e reduzindo chamadas de suporte.
+- name: Verificação de conformidade GDPR
+  priority: high
+  reason: Garante que todas as interações com clientes cumpram regulamentos locais, evitando multas.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - SAP CRM
+  priority: high
+- name: Sistemas de faturação
+  examples:
+  - SAP
+  - Oracle Billing
+  - Local billing software
+  priority: high
+- name: Sistemas de gestão de rede
+  examples:
+  - Cisco
+  - Huawei NMS
+  - Local network tools
+  priority: medium
+- name: Portais de autoatendimento do cliente
+  examples:
+  - MyMEO
+  - Vodafone App
+  - NOS website
+  priority: medium
+- name: Ferramentas de conformidade GDPR
+  examples:
+  - OneTrust
+  - Local compliance software
+  priority: high
+industry_faq:
+- question: Qual é o preço do vosso pacote de internet mais básico?
+  answer_template: O nosso pacote de internet básico começa em 20 EUR por mês, com velocidades até 100 Mbps. Posso ajudá-lo a escolher o plano ideal para as suas necessidades.
+- question: Como posso resolver um problema de conexão à internet?
+  answer_template: Primeiro, tente reiniciar o router. Se o problema persistir, posso agendar uma assistência técnica ou verificar o status da rede na sua área.
+- question: O vosso serviço inclui suporte técnico 24 horas?
+  answer_template: Sim, oferecemos suporte técnico 24/7 através do nosso agente de voz AI e equipas humanas para casos mais complexos.
+- question: Como é garantida a conformidade com o GDPR?
+  answer_template: Todos os nossos sistemas são projetados para cumprir o GDPR, com processamento seguro de dados e opções de consentimento claras.
+- question: Posso mudar de plano a meio do contrato?
+  answer_template: Sim, permitimos upgrades de plano a qualquer momento. Para downgrades, pode haver taxas associadas; posso verificar os detalhes do seu contrato.
+- question: Quais são as opções de pagamento disponíveis?
+  answer_template: Aceitamos pagamentos por débito direto, cartão de crédito e transferência bancária. Oferecemos lembretes automáticos para evitar atrasos.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços de serviços.
+  script: Olá! Oferecemos pacotes personalizados a partir de 20 EUR por mês. Com o nosso agente AI, pode reduzir custos de suporte em até 30%. Gostaria de saber mais sobre como podemos economizar para o
+    seu negócio?
+  goal: Converter a conversa para destacar a economia de custos com AI.
+- trigger: service_inquiry
+  situation: Quando um cliente expressa interesse em um serviço específico, como internet.
+  script: Entendo que precisa de internet fiável. Além da conexão, nosso agente AI pode gerenciar suporte e faturação, poupando tempo. Posso mostrar um exemplo de ROI?
+  goal: Vender o valor agregado dos serviços com automação AI.
+- trigger: complaint_handling
+  situation: Após resolver uma reclamação, para venda cruzada.
+  script: Agradeço pela sua paciência. Para evitar futuros problemas, sugerimos integrar nosso agente AI para monitoramento proativo. Isso pode reduzir interrupções em 25%.
+  goal: Transformar uma experiência negativa em oportunidade de venda.
+- trigger: contract_renewal
+  situation: Quando um cliente está perto do fim do contrato.
+  script: Notei que o seu contrato está prestes a expirar. Oferecemos renovação com desconto e inclusão de suporte AI para melhorar a eficiência. Interessado?
+  goal: Reter o cliente e promover serviços de automação.
+competitors:
+- name: MEO
+  positioning: Líder de mercado com ampla cobertura de fibra.
+  strengths:
+  - Infraestrutura extensa
+  - Pacotes bundling
+  - Presença nacional forte
+  weaknesses:
+  - Preços elevados
+  - Suporte ao cliente lento
+  our_differentiation: Oferecemos automação AI que reduz custos operacionais e melhora o suporte, superando a lentidão dos concorrentes.
+- name: Vodafone
+  positioning: Foco em inovação e serviços móveis.
+  strengths:
+  - Tecnologia avançada
+  - Serviços internacionais
+  - Aplicativos digitais
+  weaknesses:
+  - Cobertura rural limitada
+  - Complexidade de contratos
+  our_differentiation: Nossa solução AI simplifica contratos e fornece suporte uniforme, mesmo em áreas com menor cobertura.
+- name: NOS
+  positioning: Concorrente agressivo com preços competitivos.
+  strengths:
+  - Preços baixos
+  - Ofertas promocionais frequentes
+  - Conteúdo de TV exclusivo
+  weaknesses:
+  - Qualidade de serviço inconsistente
+  - Integração de sistemas deficiente
+  our_differentiation: Integramos AI para garantir qualidade consistente e eficiência operacional, algo que os concorrentes não oferecem.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 10000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automação de suporte ao cliente para uma pequena operadora
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 4
+  value_anchors:
+  - Reduza custos de suporte em 30% com AI
+  - Aumente a satisfação do cliente em 40% com respostas rápidas
+  - Pagueback em menos de 6 meses para a maioria dos clientes
+market_context:
+  market_size: Estimado em 5 mil milhões EUR anuais
+  growth_rate: 3% YoY
+  key_trends:
+  - Expansão rápida de fibra ótica
+  - Adoção de 5G em áreas urbanas
+  - Aumento da demanda por serviços cloud e IoT
+  - Foco em sustentabilidade e eficiência energética
+  seasonality:
+    high:
+    - Setembro a Novembro
+    - Janeiro
+    low:
+    - Julho a Agosto
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Compreendo a preocupação. No entanto, nossa solução AI pode economizar até 1500 EUR por mês em custos operacionais, pagando-se rapidamente.
+- objection: Já tenho sistemas suficientes; não preciso de mais tecnologia.
+  response: Nosso agente AI integra-se perfeitamente aos seus sistemas existentes, melhorando a eficiência sem substituí-los. Posso demonstrar com um caso de uso específico.
+- objection: Não confio em automação para lidar com clientes.
+  response: Nosso agente é treinado para lidar com 80% das consultas comuns, com escalonamento humano quando necessário, garantindo confiabilidade e satisfação.
+- objection: A implementação parece complexa e demorada.
+  response: Oferecemos implementação rápida em poucas semanas, com suporte dedicado. Muitos clientes veem resultados em menos de um mês.
+meta:
+  id: telecom
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- telecom
+- ISP
+- internet provider
+- mobile operator
+_extends: _base/telecom

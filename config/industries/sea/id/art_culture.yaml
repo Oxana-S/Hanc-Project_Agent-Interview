@@ -1,0 +1,257 @@
+pain_points:
+- description: Manajemen penjualan tiket manual yang rentan error dan sulit dilacak,
+    terutama untuk event besar.
+  severity: high
+  solution_hint: Agent suara AI dapat mengotomatiskan pemesanan dan konfirmasi tiket
+    via telepon, mengurangi beban admin.
+- description: Kesulitan promosi event seni ke target audience yang tepat karena anggaran
+    terbatas.
+  severity: high
+  solution_hint: Agent dapat melakukan cold calling atau reminder otomatis kepada
+    database pengunjung sebelumnya untuk meningkatkan partisipasi.
+- description: Koordinasi jadwal yang rumit antara seniman, kurator, dan venue untuk
+    pameran atau pertunjukan.
+  severity: medium
+  solution_hint: Agent dapat bertindak sebagai virtual assistant untuk menjadwalkan
+    meeting dan mengirimkan reminder via panggilan.
+- description: Pengumpulan data dan feedback dari pengunjung pameran/seni yang tidak
+    terstruktur.
+  severity: medium
+  solution_hint: Agent dapat melakukan survei kepuasan pelanggan otomatis via telepon
+    setelah event berlangsung.
+- description: Tingkat no-show yang tinggi untuk workshop atau kelas seni berbayar.
+  severity: medium
+  solution_hint: Agent dapat melakukan konfirmasi kehadiran dan pengingat (reminder)
+    via telepon 1-2 hari sebelum acara.
+- description: Kesulitan mengelola pendaftaran dan pembayaran untuk program membership
+    atau komunitas seni.
+  severity: low
+  solution_hint: Agent dapat menangani proses pendaftaran awal dan menjawab pertanyaan
+    umum via telepon 24/7.
+typical_services:
+- Manajemen Event Seni & Budaya
+- Penyelenggaraan Pameran Seni (Lukisan, Fotografi, Patung)
+- Pertunjukan Seni (Teater, Tari, Musik Tradisional)
+- Workshop & Kelas Seni (Melukis, Membatik, Kerajinan)
+- Penjualan & Manajemen Tiket
+- Kurasi & Konsultasi Koleksi Seni
+- Pengelolaan Galeri Seni
+- Produksi Konten Budaya (Dokumenter, Podcast)
+- Tour Wisata Budaya & Heritage
+- Layanan Sewa Venue untuk Acara Budaya
+recommended_functions:
+- name: Sistem Pemesanan & Konfirmasi Tiket Otomatis
+  priority: high
+  reason: Mengatasi masalah utama penjualan manual dan no-show, meningkatkan efisiensi
+    pendapatan.
+- name: Reminder & Konfirmasi Kehadiran Acara
+  priority: high
+  reason: Sangat penting di industri event-driven untuk memastikan partisipasi dan
+    kepuasan.
+- name: Respon Pertanyaan Umum 24/7 (Jadwal, Harga, Lokasi)
+  priority: high
+  reason: Meningkatkan aksesibilitas informasi bagi calon pengunjung di luar jam operasional.
+- name: Survei Kepuasan Pelanggan Pasca-Event
+  priority: medium
+  reason: Membantu galeri atau penyelenggara mengumpulkan data berharga untuk perbaikan
+    layanan.
+- name: Penjadwalan Otomatis untuk Meeting & Konsultasi
+  priority: medium
+  reason: Mempermudah koordinasi antara banyak pemangku kepentingan (seniman, kurator,
+    sponsor).
+- name: Proses Pendaftaran Awal Program/Membership
+  priority: low
+  reason: Mengkonversi leads menjadi pendaftar dengan lebih cepat dan mengurangi beban
+    admin.
+typical_integrations:
+- name: Sistem Akuntansi & Keuangan
+  examples:
+  - Jurnal
+  - Zahir
+  - Accurate Online
+  priority: high
+- name: Platform Penjualan Tiket Online
+  examples:
+  - Loket
+  - Tiket.com
+  - GoTix
+  priority: high
+- name: CRM (Customer Relationship Management)
+  examples:
+  - Qontak
+  - Salesbook
+  - Zoho CRM
+  priority: medium
+- name: Sistem Manajemen Event
+  examples:
+  - Eventbrite
+  - Cvent
+  - Solusi custom lokal
+  priority: medium
+- name: Platform Media Sosial & Marketing
+  examples:
+  - Social Media APIs (Instagram, Facebook)
+  - Email Marketing Tools
+  priority: low
+industry_faq:
+- question: Berapa harga tiket untuk pameran ini?
+  answer_template: Harga tiket untuk pameran ini mulai dari Rp{price_range}. Untuk
+    informasi dan pemesanan yang lebih detail, saya bisa hubungkan Anda dengan staf
+    kami atau kunjungi website kami di {website_url}.
+- question: Apakah ada diskon untuk grup atau pelajar?
+  answer_template: Ya, kami biasanya menawarkan diskon khusus untuk grup minimal {min_group}
+    orang dan pelajar dengan menunjukkan kartu pelajar. Silakan berikan detail kebutuhan
+    Anda untuk saya proses lebih lanjut.
+- question: Jam berapa galeri buka?
+  answer_template: Galeri kami buka dari hari {days_open}, pukul {opening_hours}.
+    Hari {closed_days} kami tutup. Apakah ada hari tertentu yang Anda rencanakan untuk
+    berkunjung?
+- question: Bagaimana cara mendaftar workshop melukis?
+  answer_template: Pendaftaran workshop bisa dilakukan via telepon dengan saya atau
+    online di {registration_link}. Saya bisa bantu catat data Anda dan informasikan
+    jadwal serta persyaratannya.
+- question: Apakah bisa menyewa venue untuk pameran privat?
+  answer_template: Tentu bisa. Kami menyediakan paket sewa venue lengkap dengan fasilitas
+    {facilities}. Untuk detail harga dan ketersediaan tanggal, boleh saya tanyakan
+    kebutuhan spesifik dan kontak yang bisa dihubungi?
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga layanan manajemen event atau tiket.
+  script: Harga kami disesuaikan dengan skala dan kebutuhan spesifik event Bapak/Ibu.
+    Sebagai gambaran, paket dasar untuk manajemen pameran lokal mulai dari Rp{entry_price}.
+    Boleh saya tahu kira-kira event seperti apa yang sedang direncanakan dan berapa
+    perkiraan jumlah pengunjungnya? Ini akan membantu saya memberikan penawaran yang
+    paling tepat.
+  goal: Mengqualify lead dan mengumpulkan informasi untuk memberikan penawaran yang
+    relevan, bukan sekadar memberi angka.
+- trigger: competitor_mention
+  situation: Ketika klien menyebutkan menggunakan layanan manual atau kompetitor lain.
+  script: Memang banyak yang masih mengelola ticketing atau reminder secara manual.
+    Yang membedakan layanan kami adalah agent AI kami bisa menangani ratusan panggilan
+    konfirmasi dan reminder secara otomatis, 24 jam, sehingga tim Bapak/Ibu bisa fokus
+    ke hal-hal kreatif. Hasilnya, tingkat kehadiran bisa meningkat dan operasional
+    jadi lebih efisien. Mau saya jelaskan studi kasus serupa di galeri X?
+  goal: Membedakan solusi berbasis otomasi dari metode manual, fokus pada efisiensi
+    dan peningkatan hasil.
+- trigger: lead_generation
+  situation: Panggilan outbound ke galeri seni atau penyelenggara event budaya potensial.
+  script: Selamat pagi, dengan Bapak/Ibu {prospect_name}? Saya {agent_name} dari {company_name}.
+    Kami biasa membantu galeri seni seperti milik Bapak/Ibu untuk mengotomatiskan
+    konfirmasi kehadiran pengunjung dan pengingat workshop via telepon, sehingga mengurangi
+    no-show hingga {percentage}%. Apakah boleh saya kirimkan informasi singkat via
+    WhatsApp tentang cara kerjanya?
+  goal: Membuka percakapan, menyampaikan value proposition yang jelas, dan mendapatkan
+    izin untuk follow-up.
+competitors:
+- name: Loket.com
+  positioning: Platform ticketing online terkemuka untuk berbagai event termasuk seni
+    & budaya.
+  strengths:
+  - Brand recognition kuat
+  - Infrastruktur pembayaran yang mapan
+  - Jaringan pengguna luas
+  weaknesses:
+  - Fokus pada ticketing, bukan otomasi komunikasi telepon
+  - Biaya komisi per tiket
+  - Layanan kurang personal untuk klien seni
+  our_differentiation: Kami fokus pada otomasi komunikasi via suara/telepon (konfirmasi,
+    reminder, survei) yang terintegrasi, bukan hanya platform jual tiket. Solusi kami
+    melengkapi sistem mereka dengan meningkatkan engagement langsung dengan audiens.
+- name: Agen Event Organizer Lokal
+  positioning: Penyedia jasa manajemen event seni secara tradisional.
+  strengths:
+  - Pengalaman lokal yang mendalam
+  - Hubungan personal dengan seniman dan komunitas
+  - Fleksibel dalam penanganan custom request
+  weaknesses:
+  - Bergantung pada tenaga manual, scalable sulit
+  - Biaya operasional tinggi untuk event rutin
+  - Teknologi terbatas
+  our_differentiation: Kami menawarkan otomasi untuk tugas-tugas repetitif (seperti
+    telepon) dengan biaya yang lebih terjangkau dan konsisten, membebaskan EO untuk
+    fokus pada kreativitas dan strategi.
+- name: Software CRM Umum (e.g., Zoho, Qontak)
+  positioning: Solusi CRM serba bisa untuk berbagai industri.
+  strengths:
+  - Fitur lengkap
+  - Dapat dikustomisasi
+  - Integrasi dengan berbagai tool
+  weaknesses:
+  - Tidak spesifik untuk alur kerja event seni/budaya
+  - Kurva belajar yang mungkin curam
+  - Membutuhkan setup dan konfigurasi yang signifikan
+  our_differentiation: Solusi kami siap pakai (plug-and-play) khusus untuk kebutuhan
+    komunikasi telepon otomatis di industri seni. Tidak perlu setup rumit, langsung
+    bisa digunakan untuk konfirmasi tiket, reminder workshop, dan survei.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 500000
+  - 10000000
+  entry_point: 750000
+  roi_examples:
+  - scenario: Galeri Seni Kecil - Mengotomasi reminder telepon untuk 2 workshop/bulan
+      (100 peserta/workshop)
+    monthly_cost: 1000000
+    monthly_savings: 3000000
+    payback_months: 1
+  - scenario: Penyelenggara Event Budaya - Mengurangi no-show untuk event bulanan
+      (500 tiket) dan melakukan survei pasca-event.
+    monthly_cost: 3500000
+    monthly_savings: 15000000
+    payback_months: 1
+  value_anchors:
+  - Hanya Rp{per_call_cost} per panggilan otomatis yang sukses.
+  - Tingkat kehadiran (attendance rate) meningkat hingga {attendance_increase}% dengan
+    reminder otomatis.
+  - Menghemat hingga {hours_saved} jam kerja admin per event untuk tugas telepon berulang.
+market_context:
+  market_size: Diperkirakan Rp 20-30 Triliun (termasuk tiket, workshop, penjualan
+    karya).
+  growth_rate: 8-12% YoY (didorong oleh meningkatnya apresiasi kelas menengah dan
+    dukungan pemerintah).
+  key_trends:
+  - 'Digitalisasi: Peningkatan penjualan tiket online dan virtual tours.'
+  - 'Pengalaman (Experience): Event seni yang immersive dan interaktif semakin diminati.'
+  - 'Kemandirian Finansial: Komunitas dan galeri mencari model bisnis yang lebih sustainable
+    di luar sponsor.'
+  - 'Pelestarian & Inovasi: Kolaborasi seni tradisional dengan teknologi digital.'
+  seasonality:
+    high:
+    - Juni-Agustus (libur sekolah)
+    - Desember-Januari (libur akhir tahun & Natal)
+    - Bulan Ramadan & Idul Fitri (festival budaya)
+    - Oktober (bulan seni Jakarta dll.)
+    low:
+    - Februari-Maret (setelah tahun baru)
+    - September (antara puncak musim)
+typical_objections:
+- objection: Anggaran kami terbatas, mungkin belum perlu otomasi seperti ini.
+  response: Saya paham. Justru karena anggaran terbatas, efisiensi operasional jadi
+    kunci. Dengan biaya mulai Rp{entry_point}/bulan, agent kami bisa menggantikan
+    puluhan jam kerja admin untuk telepon. Bisa kita mulai dengan modul reminder workshop
+    dulu untuk lihat dampaknya?
+- objection: Kami sudah terbiasa dengan cara manual, dan lebih personal.
+  response: Betul, sentuhan personal itu penting. Agent kami justru membebaskan tim
+    Anda dari tugas rutin seperti konfirmasi jadwal atau reminder, sehingga mereka
+    punya lebih banyak waktu untuk interaksi personal yang benar-benar bernilai dengan
+    seniman atau koleganya.
+- objection: Teknologi ini terdengar rumit, tim kami tidak ahli IT.
+  response: Sistem kami dirancang sangat mudah. Tidak perlu instalasi software atau
+    coding. Cukup siapkan daftar kontak dan script percakapan, agent kami yang akan
+    menjalankan. Kami juga akan dampingi sampai lancar.
+meta:
+  id: art_culture
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

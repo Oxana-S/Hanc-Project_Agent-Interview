@@ -1,0 +1,234 @@
+aliases:
+- logistica
+- spedizione
+- trasporto merci
+- corriere
+- azienda di trasporti
+- magazzino
+- spedizioniere
+- trasporti
+- merce
+- spedizione
+- pacco
+- CMR
+- bolla di consegna
+competitors:
+- name: Bartolini
+  positioning: Leader nazionale nella piccola e media distribuzione
+  strengths:
+  - Rete capillare
+  - Brand riconosciuto
+  - Tariffe competitive per piccoli volumi
+  weaknesses:
+  - Servizio clienti lento
+  - Poco flessibile per grandi aziende
+  our_differentiation: Automazione 24/7 e integrazione diretta con i sistemi aziendali
+- name: DHL Italia
+  positioning: Specialista in trasporti internazionali ed espressi
+  strengths:
+  - Forte presenza internazionale
+  - Servizi premium
+  - Tracciamento avanzato
+  weaknesses:
+  - Costi elevati
+  - Meno focalizzata sul mercato nazionale italiano
+  our_differentiation: Soluzioni personalizzate e costi ottimizzati per il mercato domestico
+- name: BRT Corriere Espresso
+  positioning: Player storico con forte presenza in B2B e B2C
+  strengths:
+  - Affidabilità
+  - Lunga esperienza
+  - Ampia flotta
+  weaknesses:
+  - Tecnologie obsolete
+  - Processi manuali
+  our_differentiation: Agente vocale AI che modernizza l'interazione cliente senza sostituire l'infrastruttura esistente
+industry_faq:
+- answer_template: Fornisca il numero di tracciamento o il numero della bolla di consegna, e controllerò lo stato della spedizione.
+  question: Dov'è la mia spedizione?
+- answer_template: Il costo dipende da peso, dimensioni e percorso. Posso calcolarlo se mi fornisce i dettagli.
+  question: Quanto costa la spedizione?
+- answer_template: Mi indichi il numero dell'ordine e le darò un orario stimato di arrivo.
+  question: A che ora arriva il corriere?
+- answer_template: Sì, è possibile farlo prima che il corriere partisca. Mi indichi il nuovo indirizzo.
+  question: Posso cambiare l'indirizzo di consegna?
+- answer_template: Lavoriamo 7 giorni su 7. La consegna nei weekend è possibile con supplemento.
+  question: Lavorate nei weekend?
+- answer_template: Per il reso, si metta in contatto con il mittente. Organizzeremo il ritiro.
+  question: Come posso fare un reso?
+- answer_template: I tempi standard sono 24-48 ore per la città, 2-4 giorni per le altre regioni.
+  question: Quali sono i tempi di consegna medi?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: '3.2'
+  key_trends:
+  - Maggiore domanda di tracciabilità in tempo reale
+  - Logistica ecologica ed elettrica per le consegne urbane
+  - Integrazione dell'e-commerce con la logistica dell'ultimo miglio
+  market_size: 120 miliardi di EUR
+  seasonality:
+    high:
+    - Novembre-Dicembre (Black Friday e Natale)
+    - Settembre (rientro scolastico/lavorativo)
+    low:
+    - Agosto (ferie estive)
+    - Prima metà di Gennaio
+meta:
+  avg_validation_score: 0.0
+  country: it
+  created_at: '2024-05-22'
+  currency: EUR
+  id: logistics
+  language: it
+  languages: []
+  last_updated: '2024-05-22'
+  phone_codes:
+  - '+39'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Rome
+  version: '1.0'
+pain_points:
+- description: Troppe chiamate per chiedere "dov'è la mia spedizione?"
+  severity: high
+  solution_hint: Stato automatico fornito dal numero di tracciamento
+- description: Difficoltà a coordinare le consegne nel traffico urbano e a trovare parcheggio
+  severity: high
+  solution_hint: Conferma automatica degli slot di consegna e notifiche in tempo reale
+- description: Clienti impossibilitati a parlare con un operatore nelle ore di punta
+  severity: high
+  solution_hint: Assistente vocale AI disponibile 24/7 per informazioni e stato
+- description: Gestione manuale e lenta delle prenotazioni e delle modifiche agli ordini
+  severity: medium
+  solution_hint: Automazione della presa in carico degli ordini e delle modifiche
+- description: Errori nella trascrizione di indirizzi e dati durante le chiamate
+  severity: medium
+  solution_hint: Inserimento strutturato dei dati con conferma vocale
+- description: Difficoltà nella gestione dei resi e delle spedizioni inverse
+  severity: medium
+  solution_hint: Flusso automatizzato per l'avvio e la gestione dei resi
+- description: Alta pressione e costi durante i periodi di picco stagionale
+  severity: medium
+  solution_hint: Scalabilità dell'assistente AI per gestire il volume di chiamate
+pricing_context:
+  currency: EUR
+  entry_point: 199
+  roi_examples:
+  - monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+    scenario: Sostituzione parziale di 1 operatore per domande di routine
+  - monthly_cost: 499
+    monthly_savings: 3000
+    payback_months: 1
+    scenario: Automazione completa del servizio clienti per una piccola azienda di trasporti
+  typical_budget_range:
+  - 199
+  - 999
+  value_anchors:
+  - Riduce i costi operativi del 40%
+  - Risponde alle chiamate in meno di 5 secondi
+  - Disponibile 24/7 anche nei weekend
+recommended_functions:
+- name: stato_spedizione
+  priority: high
+  reason: Oltre il 70% delle chiamate riguarda la richiesta di stato
+- name: accettazione_ordine
+  priority: high
+  reason: Automatizza la creazione di nuove spedizioni via telefono
+- name: gestione_faq
+  priority: medium
+  reason: Risponde automaticamente a domande su costi, orari e politiche
+- name: conferma_consegna
+  priority: medium
+  reason: Coordina e conferma gli slot di consegna con il cliente
+- name: gestione_resi
+  priority: medium
+  reason: Avvia e organizza il processo di ritorno merci
+- name: instradamento_chiamata
+  priority: low
+  reason: Trasferisce le chiamate complesse all'operatore umano corretto
+sales_scripts:
+- goal: Superare l'obiezione sul costo mostrando il ROI immediato
+  script: 'Ciao, sono [Nome Assistente]. Capisco che l''investimento sia una considerazione importante. Molti nostri clienti nel settore logistico risparmiano fino a 1200 euro al mese automatizzando le
+    richieste di stato. In pratica, l''agente si ripaga in poche settimane. Possiamo partire con un piano base da 199 euro al mese per automatizzare proprio le richieste "dov''è la mia spedizione?". Le
+    interessa una prova? '
+  situation: Quando il cliente chiede informazioni sui prezzi o sembra preoccupato per il costo
+  trigger: price_question
+- goal: Posizionarsi come modernizzatore contro competitor tradizionali
+  script: 'Buongiorno, sono [Nome Assistente] di [Nome Azienda]. Noto che utilizza [Nome Competitore, es. BRT]. La forza di [Competitore] è l''affidabilità, ma molti clienti lamentano attese al telefono.
+    Noi integriamo un assistente vocale AI che risponde immediatamente 24/7, riducendo l''attesa e migliorando la soddisfazione del suo cliente finale, senza dover cambiare corriere. Vuole vedere come funziona
+    con un suo numero di tracciamento di prova? '
+  situation: Quando si identifica che il prospect è cliente di un competitor tradizionale
+  trigger: competitor_mentioned
+- goal: Guidare verso una dimostrazione o una prova
+  script: 'Perfetto. L''agente può integrarsi con il suo software di gestione trasporti (TMS) o funzionare in autonomia. Per mostrarle le sue capacità reali, possiamo configurare una demo in cui simula
+    una chiamata di un suo cliente. Può fornirmi un numero di tracciamento fittizio e un indirizzo tipico? In 5 minuti vedrà come gestisce lo stato, un cambio d''indirizzo e una domanda sulle tariffe. '
+  situation: Dopo aver presentato i vantaggi e il cliente mostra interesse
+  trigger: interest_shown
+success_benchmarks:
+  avg_call_duration_seconds: 150
+  target_automation_rate: 0.75
+  typical_kpis:
+  - Riduzione del carico operatori del 45%
+  - Automazione del 75% delle richieste di stato
+  - Tempo medio di risposta < 3 secondi
+  - Customer Satisfaction > 4.2/5
+typical_integrations:
+- examples:
+  - F1 Logistics
+  - Zucchetti TMS
+  - SAP TM
+  - Oracle Transportation Management
+  name: TMS (Transport Management System)
+  priority: high
+  reason: Accesso in tempo reale allo stato delle spedizioni e dati degli ordini
+- examples:
+  - Salesforce
+  - Zoho CRM
+  - TeamSystem
+  name: CRM
+  priority: medium
+  reason: Registrazione delle interazioni e storico cliente
+- examples:
+  - TelePass
+  - Viasat
+  - Octo Telematics
+  name: Telematica Veicoli
+  priority: medium
+  reason: Stime di arrivo più precise basate sulla posizione GPS
+- examples:
+  - WhatsApp Business
+  - Telegram Bot
+  name: Messaggistica
+  priority: high
+  reason: Invio automatico di notifiche di stato e aggiornamenti
+- examples:
+  - MioDottore (per conferme)
+  - Google Calendar
+  name: Calendari/Appuntamenti
+  priority: low
+  reason: Coordinamento degli slot di consegna con i clienti
+typical_objections:
+- objection: Non mi fido di un robot per gestire i miei clienti.
+  response: Capisco perfettamente. L'agente non sostituisce il suo staff, ma gestisce\ \ le richieste ripetitive (come \"dov'è il pacco?\"). Per questioni complesse,\ \ trasferisce immediatamente a un operatore.
+    In questo modo, il suo team si concentra\ \ sul valore aggiunto.
+- objection: I miei clienti vogliono parlare sempre con una persona.
+  response: È un feedback comune. L'esperienza mostra che i clienti apprezzano la\ \ risposta immediata 24/7 per informazioni semplici. Possiamo iniziare gestendo\ \ solo le richieste di stato, lasciando
+    tutte le altre chiamate al suo personale.\ \ In questo modo si abituano gradualmente.
+- objection: I dati di tracciamento non sono sempre aggiornati in tempo reale.
+  response: Ha ragione, a volte ci sono ritardi. L'agente è configurato per dichiarare\ \ l'ultimo stato disponibile e, se l'informazione è vecchia, può offrire di richiamare\ \ il cliente appena il sistema
+    si aggiorna o trasferire a un operatore per una\ \ verifica manuale.
+typical_services:
+- Trasporto e spedizione nazionale
+- Consegna espresso e in 24 ore
+- Servizio corriere per l'ultimo miglio
+- Magazzinaggio e logistica contrattuale
+- Spedizioni internazionali e doganali
+- Tracciamento merci in tempo reale
+- Trasporto groupage (merci a carico parziale)
+- Trasporto merci pericolose (ADR)
+- Logistica per e-commerce
+- Servizi di ritiro e reso
+_extends: _base/logistics

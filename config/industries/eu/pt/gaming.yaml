@@ -1,0 +1,247 @@
+pain_points:
+- description: Dificuldade em garantir conformidade rigorosa com o GDPR em todas as
+    interações dos jogadores.
+  severity: high
+  solution_hint: Agentes de voz podem automatizar o consentimento e fornecer informações
+    claras sobre privacidade.
+- description: Suporte ao cliente limitado fora do horário comercial, levando a insatisfação
+    dos utilizadores.
+  severity: high
+  solution_hint: Agentes de voz 24/7 para resolver dúvidas comuns e reportar problemas.
+- description: Complexidade na gestão de múltiplos canais de comunicação (telefone,
+    chat, email).
+  severity: medium
+  solution_hint: Centralização do atendimento via agente de voz integrado a vários
+    canais.
+- description: Alto volume de consultas repetitivas sobre funcionalidades do jogo
+    e problemas técnicos.
+  severity: medium
+  solution_hint: Respostas automatizadas para FAQs e resolução rápida de problemas
+    comuns.
+- description: Dificuldade em captar feedback dos jogadores de forma eficiente e estruturada.
+  severity: medium
+  solution_hint: Pesquisa automatizada por voz para recolha de opiniões e sugestões.
+- description: Necessidade de personalização da experiência do jogador em português
+    europeu.
+  severity: high
+  solution_hint: Agentes de voz com compreensão local e adaptação do discurso.
+- description: Custos elevados com suporte humano para gestão de picos de acesso.
+  severity: high
+  solution_hint: Escalonamento automático via agente de voz para reduzir custos.
+typical_services:
+- Suporte ao cliente via agente de voz
+- Gestão de consentimentos conforme GDPR
+- Atendimento 24/7 em português europeu
+- Resolução automatizada de dúvidas técnicas
+- Recolha de feedback e avaliação da experiência
+- Integração multicanal (telefone, app, website)
+- Personalização da interação por perfil do jogador
+- Escalonamento para atendimento humano quando necessário
+- Monitorização de métricas de satisfação do cliente
+- Assistência em processos de pagamento e faturação
+recommended_functions:
+- name: Reconhecimento e processamento de linguagem natural (PLN) em português europeu
+  priority: high
+  reason: Fundamental para compreensão precisa das solicitações dos jogadores.
+- name: Gestão automática de consentimentos GDPR
+  priority: high
+  reason: Crucial para conformidade legal e proteção de dados.
+- name: Atendimento 24/7 com respostas automatizadas às FAQs
+  priority: high
+  reason: Para suporte contínuo e redução da carga do suporte humano.
+- name: Coleta e análise de feedback por voz
+  priority: medium
+  reason: Melhora contínua da experiência do utilizador baseada em dados.
+- name: Integração com CRM e plataformas de suporte
+  priority: high
+  reason: Para garantir histórico e continuidade no atendimento.
+- name: Escalonamento inteligente para agentes humanos
+  priority: medium
+  reason: Para resolver situações complexas que o agente não consegue tratar.
+- name: Personalização da interação baseada em perfil do jogador
+  priority: medium
+  reason: Aumenta o engajamento e satisfação do utilizador.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - SAP C/4HANA
+  - Microsoft Dynamics 365
+  priority: high
+- name: Plataformas de suporte ao cliente
+  examples:
+  - Zendesk
+  - Freshdesk
+  priority: high
+- name: Sistemas de faturação e pagamento
+  examples:
+  - Primavera
+  - PHC
+  priority: medium
+- name: Ferramentas de análise de dados e feedback
+  examples:
+  - Google Analytics
+  - Hotjar
+  priority: medium
+- name: Plataformas de comunicação multicanal
+  examples:
+  - Twilio
+  - Vonage
+  priority: high
+- name: Sistemas internos de gestão de jogos
+  examples:
+  - Unity Analytics
+  - PlayFab
+  priority: medium
+industry_faq:
+- question: Como posso recuperar a minha conta de jogo?
+  answer_template: Para recuperar a sua conta, por favor forneça o seu email registado
+    e siga as instruções que enviaremos para o seu email.
+- question: Quais são as formas de pagamento aceites?
+  answer_template: Aceitamos pagamentos por cartão de crédito, PayPal e MB Way para
+    sua comodidade.
+- question: Como posso garantir a minha privacidade e proteção de dados?
+  answer_template: Respeitamos o GDPR e garantimos que os seus dados são tratados
+    com confidencialidade e segurança.
+- question: O suporte está disponível fora do horário comercial?
+  answer_template: Sim, o nosso agente de voz está disponível 24/7 para responder
+    às suas questões mais comuns.
+- question: Como reporto um problema técnico no jogo?
+  answer_template: Pode reportar problemas técnicos diretamente através do nosso agente
+    de voz ou enviar um email para suporte@empresa.pt.
+- question: Posso jogar em diferentes dispositivos com a mesma conta?
+  answer_template: Sim, a sua conta pode ser usada em vários dispositivos após o login.
+- question: Como funciona o sistema de recompensas dentro do jogo?
+  answer_template: O sistema de recompensas é baseado em conquistas e progressão,
+    detalhado no menu de ajuda do jogo.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços dos serviços de agente de voz
+  script: Os nossos serviços começam a partir de 500 EUR mensais, com possibilidade
+    de personalização conforme as necessidades específicas do seu estúdio. Gostaria
+    de agendar uma demonstração para mostrar como podemos otimizar o seu suporte?
+  goal: Apresentar o preço inicial e incentivar demonstração.
+- trigger: gdpr_concern
+  situation: Quando o cliente expressa preocupação sobre conformidade GDPR
+  script: Garantimos total conformidade com o GDPR através da gestão automática de
+    consentimentos e proteção dos dados dos seus utilizadores, minimizando riscos
+    legais para o seu negócio.
+  goal: Tranquilizar sobre compliance e valor agregado.
+- trigger: support_availability
+  situation: Quando o cliente fala sobre necessidade de suporte 24/7
+  script: O nosso agente de voz opera 24 horas por dia, 7 dias por semana, garantindo
+    que os seus jogadores recebam suporte imediato, mesmo fora do horário comercial,
+    melhorando a satisfação e retenção.
+  goal: Destacar disponibilidade e benefícios.
+- trigger: technical_integration
+  situation: Quando o cliente questiona sobre integração com sistemas existentes
+  script: Temos experiência em integrar o agente de voz com os principais sistemas
+    CRM e plataformas de suporte usados em Portugal, facilitando a implementação e
+    continuidade do seu negócio.
+  goal: Demonstrar facilidade de integração.
+- trigger: feedback_collection
+  situation: Quando o cliente quer melhorar a recolha de feedback dos jogadores
+  script: Podemos automatizar a recolha de feedback por voz, permitindo obter dados
+    valiosos para melhorar a experiência dos seus utilizadores de forma contínua e
+    eficiente.
+  goal: Mostrar valor da funcionalidade de feedback.
+competitors:
+- name: TalkAI Portugal
+  positioning: Líder local em soluções de agentes de voz para gaming e entretenimento
+  strengths:
+  - Forte presença no mercado português
+  - Tecnologia robusta de reconhecimento de voz
+  - Suporte em português europeu
+  weaknesses:
+  - Preço elevado para pequenas empresas
+  - Menor flexibilidade em personalização
+  our_differentiation: Oferecemos soluções mais acessíveis e altamente personalizáveis
+    com foco em integração local.
+- name: VoiceGamer Solutions
+  positioning: Competidor regional focado em jogos mobile
+  strengths:
+  - Especialização em jogos mobile
+  - Integração com plataformas móveis populares
+  weaknesses:
+  - Cobertura limitada para jogos PC/console
+  - Suporte 24/7 limitado
+  our_differentiation: Atendemos múltiplas plataformas com suporte contínuo e funcionalidades
+    ampliadas.
+- name: Lusophone AI Assistants
+  positioning: Fornecedor de agentes de voz para várias indústrias lusófonas, incluindo
+    gaming
+  strengths:
+  - Experiência em múltiplos mercados lusófonos
+  - Suporte multilíngue
+  weaknesses:
+  - Menos foco específico no mercado português
+  - Integração limitada com sistemas locais
+  our_differentiation: Foco exclusivo no mercado português com integrações profundas
+    e linguagem local natural.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de custos com suporte humano em estúdio médio
+    monthly_cost: 800
+    monthly_savings: 2000
+    payback_months: 1
+  - scenario: Melhoria da satisfação do jogador e aumento da retenção
+    monthly_cost: 1200
+    monthly_savings: 3500
+    payback_months: 1
+  value_anchors:
+  - Investir num agente de voz reduz custos operacionais e aumenta a satisfação dos
+    jogadores.
+  - Conformidade garantida com o GDPR evita multas e protege a reputação.
+  - Suporte 24/7 melhora significativamente a experiência do utilizador e fidelização.
+  - Automatização permite focar recursos humanos em tarefas estratégicas.
+market_context:
+  market_size: 120 milhões EUR
+  growth_rate: 12
+  key_trends:
+  - Crescente adoção de jogos mobile e cloud gaming em Portugal
+  - Valorização da experiência do utilizador com suporte automatizado
+  - Reforço das regulamentações de proteção de dados na UE
+  - Aumento do investimento em IA e automação no setor gaming
+  seasonality:
+    high:
+    - Natal
+    - Verão
+    - Lançamentos de jogos populares
+    low:
+    - Início do ano
+    - período pós-férias
+typical_objections:
+- objection: Não temos orçamento suficiente para implementar um agente de voz.
+  response: Compreendo, mas podemos começar com uma solução escalável e ajustada ao
+    seu orçamento, garantindo retorno rápido ao reduzir custos operacionais.
+- objection: Tenho dúvidas quanto à precisão do reconhecimento de voz em português
+    europeu.
+  response: Nosso agente foi treinado especificamente para português europeu, garantindo
+    alta precisão e naturalidade na compreensão.
+- objection: Já temos uma equipa de suporte eficiente, não precisamos de automação.
+  response: O agente de voz complementa a sua equipa, assumindo tarefas repetitivas
+    e liberando os seus colaboradores para casos mais complexos.
+- objection: Temos receio quanto à conformidade com o GDPR.
+  response: A nossa solução inclui gestão automática de consentimentos e armazenamento
+    seguro, alinhada com todas as exigências do GDPR.
+- objection: A integração com nossos sistemas internos parece complexa.
+  response: Temos vasta experiência em integrações locais e garantimos um processo
+    simples e transparente, minimizando impactos no seu negócio.
+meta:
+  id: gaming
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

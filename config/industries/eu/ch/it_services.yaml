@@ -1,0 +1,222 @@
+pain_points:
+- description: Hohe IT-Fachkräftemangel in der Schweiz führt zu erhöhten Personalkosten
+    und langen Rekrutierungszeiten.
+  severity: high
+  solution_hint: Der KI-Sprachagent kann erste Supportanfragen bearbeiten und so IT-Mitarbeiter
+    entlasten.
+- description: Strenge Datenschutzanforderungen gemäss GDPR und FADP erfordern aufwändige
+    Compliance-Maßnahmen.
+  severity: high
+  solution_hint: Der KI-Sprachagent kann Compliance-Fragen automatisiert beantworten
+    und Schulungsinhalte bereitstellen.
+- description: Zunehmende Cyberangriffe auf Schweizer Unternehmen führen zu Sicherheitsrisiken
+    und potenziellen finanziellen Verlusten.
+  severity: high
+  solution_hint: Der KI-Sprachagent kann als erster Ansprechpartner für Sicherheitsalarme
+    dienen und Notfallprotokolle initiieren.
+- description: Komplexität der Cloud-Migration verursacht hohe Implementierungskosten
+    und Betriebsunterbrechungen.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann Kunden durch den Migrationsprozess führen
+    und FAQs zu Cloud-Diensten beantworten.
+- description: Fragmentierte IT-Infrastruktur in kleinen und mittleren Unternehmen
+    erschwert das Management und die Skalierung.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann IT-Inventur unterstützen und Wartungsanfragen
+    koordinieren.
+- description: Hohe Erwartungen an Service-Level-Agreements (SLAs) im Schweizer Markt
+    führen zu Druck auf IT-Dienstleister.
+  severity: medium
+  solution_hint: Der KI-Sprachagent kann SLA-Verfolgung automatisieren und proaktive
+    Statusupdates liefern.
+typical_services:
+- Cloud-Migration und -Management
+- IT-Sicherheit und Cybersecurity
+- Netzwerkmanagement und -überwachung
+- Softwareentwicklung und -wartung
+- IT-Beratung und Strategieplanung
+- Datenbankmanagement und -optimierung
+- Helpdesk und IT-Support
+- Infrastruktur-Outsourcing
+- Compliance-Beratung (GDPR/FADP)
+- Disaster Recovery und Business Continuity
+recommended_functions:
+- name: Terminplanung für IT-Beratungen
+  priority: high
+  reason: Spart Zeit für IT-Teams und verbessert die Kundenbindung durch effiziente
+    Abläufe.
+- name: Lead-Qualifikation für IT-Dienstleistungen
+  priority: high
+  reason: Filtert potenzielle Kunden basierend auf Budget und Anforderungen, um Verkaufschancen
+    zu erhöhen.
+- name: Automatisierte Antworten auf IT-Supportanfragen
+  priority: medium
+  reason: Reduziert die Arbeitslast der Support-Mitarbeiter und bietet schnelle Lösungen
+    für häufige Probleme.
+- name: Compliance-Check und Datenschutzberatung
+  priority: medium
+  reason: Hilft Kunden, GDPR- und FADP-Anforderungen zu erfüllen, und minimiert rechtliche
+    Risiken.
+- name: Proaktive Wartungserinnerungen
+  priority: low
+  reason: Verhindert IT-Ausfälle durch regelmäßige Überwachung und verbessert die
+    Systemzuverlässigkeit.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - Microsoft Dynamics
+  priority: high
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - Abas
+  priority: high
+- name: IT-Service-Management-Tools
+  examples:
+  - ServiceNow
+  - Jira Service Desk
+  - OTRS
+  priority: medium
+- name: Cloud-Plattformen
+  examples:
+  - AWS
+  - Microsoft Azure
+  - Swisscom Cloud
+  priority: medium
+- name: Sicherheitssoftware
+  examples:
+  - Sophos
+  - Kaspersky
+  - Palo Alto Networks
+  priority: medium
+industry_faq:
+- question: Wie hoch sind die Kosten für IT-Dienstleistungen in der Schweiz?
+  answer_template: Die Kosten variieren je nach Umfang, typischerweise zwischen 5.000
+    und 50.000 CHF pro Monat für umfassende Services. Wir bieten individuelle Angebote
+    basierend auf Ihren Anforderungen.
+- question: Sind Ihre Services GDPR- und FADP-konform?
+  answer_template: Ja, alle unsere Services sind vollständig an GDPR und FADP angepasst,
+    um die strengen Schweizer Datenschutzgesetze zu erfüllen.
+- question: Wie schnell können Sie auf IT-Probleme reagieren?
+  answer_template: Wir garantieren eine Reaktionszeit von unter 15 Minuten für kritische
+    Incidents, wie in unseren SLAs festgelegt.
+- question: Bieten Sie 24/7-Support an?
+  answer_template: Ja, wir bieten rund um die Uhr Support über unseren KI-Sprachagenten
+    und menschliche Experten für komplexe Fälle.
+- question: Können Sie bei der Cloud-Migration helfen?
+  answer_template: Absolut, wir begleiten Sie durch die gesamte Cloud-Migration, von
+    der Planung bis zur Implementierung, mit minimalen Unterbrechungen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für IT-Dienstleistungen fragt.
+  script: Vielen Dank für Ihr Interesse! Unsere Preise beginnen bei 2.000 CHF pro
+    Monat für Basis-IT-Support und können bis zu 100.000 CHF für umfassende Lösungen
+    reichen. Möchten Sie eine kostenlose Beratung, um ein maßgeschneidertes Angebot
+    zu erhalten?
+  goal: Den Kunden zu einer Beratung führen und ein individuelles Angebot erstellen.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach spezifischen IT-Dienstleistungen wie Cybersecurity
+    fragt.
+  script: Wir bieten umfassende Cybersecurity-Lösungen, die auf Schweizer Anforderungen
+    zugeschnitten sind, inklusive Penetrationstests und Compliance-Checks. Können
+    wir einen Termin vereinbaren, um Ihre Bedürfnisse zu besprechen?
+  goal: Das Gespräch vertiefen und einen Verkaufstermin vereinbaren.
+- trigger: compliance_concern
+  situation: Wenn ein Kunde Bedenken bezüglich Datenschutz und Compliance äußert.
+  script: Verständlich! Mit unseren Services stellen wir sicher, dass Sie GDPR und
+    FADP einhalten, durch automatisiertes Monitoring und Schulungen. Möchten Sie mehr
+    über unsere Compliance-Pakete erfahren?
+  goal: Vertrauen aufbauen und auf spezifische Compliance-Lösungen hinweisen.
+competitors:
+- name: Swisscom
+  positioning: Führender Telekommunikations- und IT-Dienstleister in der Schweiz.
+  strengths:
+  - Breite Infrastruktur
+  - starke Markenpräsenz
+  - lokale Expertise
+  weaknesses:
+  - Höhere Preise
+  - langsame Anpassung an neue Technologien
+  our_differentiation: Wir bieten flexiblere, kosteneffizientere Lösungen mit KI-Integration
+    für bessere Automatisierung.
+- name: ELCA
+  positioning: IT-Beratungs- und Softwareentwicklungsfirma mit Fokus auf die Schweiz.
+  strengths:
+  - Tiefe technische Expertise
+  - langjährige Erfahrung
+  - kundenspezifische Lösungen
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - hohe Projektkosten
+  our_differentiation: Unsere KI-gesteuerten Services ermöglichen skalierbare Supportlösungen
+    zu wettbewerbsfähigen Preisen.
+- name: Accenture Schweiz
+  positioning: Globaler IT-Dienstleister mit starker Präsenz in der Schweiz.
+  strengths:
+  - Internationale Ressourcen
+  - umfangreiches Portfolio
+  - etablierte Kundenbasis
+  weaknesses:
+  - Bürokratische Prozesse
+  - höhere Gebühren
+  our_differentiation: Wir konzentrieren uns auf agile, lokalisierte Services mit
+    schnellerer Implementierung und persönlicher Betreuung.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automatisierung des IT-Helpdesks mit KI-Sprachagent.
+    monthly_cost: 3000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Senken Sie Ihre IT-Kosten um bis zu 30% mit unseren KI-optimierten Lösungen.
+  - Garantierte Compliance mit Schweizer Datenschutzgesetzen für risikofreie Betriebe.
+market_context:
+  market_size: Ca. 10 Mrd. CHF pro Jahr
+  growth_rate: 5% YoY
+  key_trends:
+  - Zunehmende Adoption von KI und Automatisierung in IT-Diensten.
+  - Wachsende Nachfrage nach Cloud- und Hybrid-Infrastrukturen.
+  - Stärkerer Fokus auf Cybersecurity aufgrund regulatorischer Anforderungen.
+  seasonality:
+    high:
+    - Q1
+    - Q4
+    low:
+    - Q2
+    - Q3
+typical_objections:
+- objection: Ihre Preise sind zu hoch im Vergleich zu anderen Anbietern.
+  response: Unsere Preise spiegeln die hochwertige, lokalisierte Servicequalität und
+    KI-Integration wider, die langfristig Kosten spart. Können wir eine Kosten-Nutzen-Analyse
+    für Ihr Unternehmen durchführen?
+- objection: Wir haben bereits interne IT-Ressourcen und brauchen keinen externen
+    Dienstleister.
+  response: Unsere Lösungen ergänzen Ihre internen Teams, indem sie repetitive Aufgaben
+    automatisieren und so Kapazitäten für strategische Projekte freisetzen. Möchten
+    Sie eine Demo sehen, wie das funktioniert?
+- objection: Wir sind besorgt über die Sicherheit unserer Daten mit einem KI-System.
+  response: Unsere KI-Systeme sind vollständig verschlüsselt und GDPR/FADP-konform,
+    mit strengen Zugriffskontrollen. Wir können Ihnen Referenzen von bestehenden Kunden
+    in der Schweiz zeigen.
+meta:
+  id: it_services
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

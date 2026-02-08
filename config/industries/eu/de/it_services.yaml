@@ -1,0 +1,266 @@
+pain_points:
+- name: Fachkräftemangel
+  description: Es ist schwierig, qualifizierte IT-Experten zu finden und langfristig
+    zu binden.
+  severity: high
+  solution_hint: AI Voice Agent kann Erstkontakte zu Kandidaten herstellen, Termine
+    für Vorstellungsgespräche vereinbaren und Standardfragen beantworten, um die Personalabteilung
+    zu entlasten.
+- name: Hohe Compliance-Anforderungen (GDPR/DSGVO)
+  description: Die Einhaltung der komplexen deutschen und europäischen Datenschutzvorschriften
+    ist aufwändig und fehleranfällig.
+  severity: high
+  solution_hint: Der Voice Agent kann standardisierte Compliance-Fragen beantworten
+    und Kunden zu dokumentierten Prozessen weiterleiten, um das Risiko von Fehlern
+    zu minimieren.
+- name: Hoher Wettbewerbsdruck
+  description: Der Markt ist gesättigt mit vielen Anbietern, was zu Preiskämpfen und
+    geringeren Margen führt.
+  severity: medium
+  solution_hint: Durch automatisiertes Lead-Qualifying und 24/7 Erreichbarkeit können
+    neue Leads schneller und effizienter bearbeitet werden, um Wettbewerbsvorteile
+    zu sichern.
+- name: Ineffiziente Kundenkommunikation
+  description: Viele Support-Anfragen und Routineanrufe binden wertvolle Ressourcen
+    der IT-Experten.
+  severity: medium
+  solution_hint: Ein Voice Agent kann Standard-Supportanfragen (Passwort-Reset, Statusabfragen)
+    automatisiert bearbeiten und Experten nur bei komplexen Problemen einschalten.
+- name: Schwierige Projektabrechnung
+  description: Die Erfassung von Arbeitszeiten und die transparente Abrechnung von
+    IT-Projekten gegenüber Kunden ist oft unübersichtlich.
+  severity: medium
+  solution_hint: Der Agent kann Kunden über verbrauchte Stunden informieren, Rechnungsdetails
+    erklären und Zahlungserinnerungen automatisiert versenden.
+- name: Schnelle technologische Entwicklung
+  description: Die hohe Innovationsgeschwindigkeit macht es schwer, das Dienstleistungsportfolio
+    aktuell zu halten und Mitarbeiter fortzubilden.
+  severity: medium
+  solution_hint: Der Agent kann als erster Anlaufpunkt für Kundenanfragen zu neuen
+    Technologien dienen und basierend auf Keywords passende Angebote oder Whitepapers
+    bereitstellen.
+typical_services:
+- Cloud-Migration und -Beratung
+- IT-Sicherheitsaudits und Pentesting
+- Managed-Services und IT-Outsourcing
+- Softwareentwicklung und Individualprogrammierung
+- IT-Support (Helpdesk, First-Level-Support)
+- Netzwerkplanung und -implementierung
+- Datenschutzberatung (DSGVO/GDPR)
+- Business Intelligence und Datenanalyse
+- Wartung und Administration von Servern
+- Consulting für digitale Transformation
+recommended_functions:
+- name: Terminvereinbarung für Beratungsgespräche
+  priority: high
+  reason: Ermöglicht sofortige Lead-Konvertierung, während das Interesse des Kunden
+    hoch ist, und entlastet die Vertriebsmitarbeiter.
+- name: Beantwortung von FAQ zu Dienstleistungen und Preisen
+  priority: high
+  reason: Reduziert die Anzahl eingehender E-Mails und Anrufe für Basisinformationen
+    und schafft Transparenz für potenzielle Kunden.
+- name: First-Level-Support-Triage
+  priority: medium
+  reason: Filtert einfache von komplexen Problemen, leitet Tickets korrekt weiter
+    und verkürzt die Lösungswartezeit für Kunden.
+- name: Lead-Qualifizierung
+  priority: high
+  reason: Sammelt automatisiert wichtige Informationen wie Budget, Zeitrahmen und
+    Projektgröße, um die Vertriebseffizienz zu steigern.
+- name: Rechnungs- und Zahlungserinnerungen
+  priority: medium
+  reason: Verbessert den Cashflow durch automatische, höfliche Erinnerungen und beantwortet
+    standardisierte Fragen zu Rechnungen.
+- name: Statusupdates für laufende Projekte
+  priority: low
+  reason: Erhöht die Kundenzufriedenheit durch sofortige, selbständige Auskunft über
+    den Fortschritt ohne menschlichen Intervention.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - SAP CRM
+  - HubSpot
+  - Microsoft Dynamics 365
+  priority: high
+- name: Helpdesk- & Ticketing-Systeme
+  examples:
+  - OTRS
+  - Jira Service Management
+  - Zammad
+  priority: high
+- name: Projektmanagement-Tools
+  examples:
+  - OpenProject
+  - Jira
+  - Asana
+  priority: medium
+- name: Telefonie/UC-Systeme
+  examples:
+  - Swyx
+  - Microsoft Teams
+  - 3CX
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  - Sage
+  priority: low
+industry_faq:
+- question: Bieten Sie Notfall-Support außerhalb der Geschäftszeiten an?
+  answer_template: Ja, wir bieten optional erweiterte Support-Pakete mit 24/7-Erreichbarkeit
+    für kritische Systeme an. Gerne erstelle ich Ihnen ein individuelles Angebot.
+- question: Wie garantieren Sie die Einhaltung der DSGVO bei Ihren Dienstleistungen?
+  answer_template: Datenschutz ist für uns Kernkompetenz. Alle unsere Prozesse sind
+    DSGVO-konform, und wir bieten spezielle Audits und Schulungen an. Wir arbeiten
+    ausschließlich mit zertifizierten Rechenzentren in der EU.
+- question: Was kostet ein typisches IT-Support-Paket für ein Kleinunternehmen mit
+    20 Mitarbeitern?
+  answer_template: Die Kosten richten sich nach Umfang und Service-Level. Ein Basispaket
+    für proaktive Überwachung und First-Level-Support beginnt bei etwa 500 € monatlich.
+    Für eine genaue Offerte benötigen wir einige Details zu Ihrer Infrastruktur.
+- question: Wie lange dauert eine Migration in die Cloud?
+  answer_template: Die Dauer hängt von der Komplexität Ihrer aktuellen Infrastruktur
+    und der Ziel-Cloud ab. Ein typisches Projekt für ein mittelständisches Unternehmen
+    umfasst Planung, Migration und Tests und dauert 3-6 Monate.
+- question: Können Sie auch bestehende, alte Systeme (Legacy-Systeme) warten?
+  answer_template: Ja, wir haben Erfahrung mit der Wartung und Modernisierung von
+    Legacy-Systemen. Oft empfehlen wir eine schrittweise Migration in moderne Architekturen,
+    um Risiken zu minimieren.
+- question: Bieten Sie Festpreise oder Stundensätze an?
+  answer_template: Beides ist möglich. Für klar definierte Projekte bieten wir Festpreise
+    an. Für Beratung und flexible Unterstützung arbeiten wir mit transparenten Stundensätzen,
+    die wir Ihnen vorab mitteilen.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für IT-Support.
+  script: 'Vielen Dank für Ihre Frage. Um Ihnen ein passgenaues und faires Angebot
+    zu machen, ist es hilfreich zu wissen: Wie viele Mitarbeiter und Standorte haben
+    Sie ungefähr? Und welche kritischen Anwendungen (z.B. E-Mail, CRM, Buchhaltung)
+    müssen unbedingt laufen?'
+  goal: Lead qualifizieren und Basis für ein maßgeschneidertes Angebot sammeln.
+- trigger: competitor_mentioned
+  situation: Kunde erwähnt einen spezifischen Wettbewerber (z.B. "Wir sprechen auch
+    mit Bechtle").
+  script: Das ist eine gute Entscheidung, mehrere Angebote einzuholen. Ein Unterschied
+    bei uns ist der starke Fokus auf individuelle Betreuung durch einen festen Ansprechpartner
+    und unsere Spezialisierung auf mittelständische Unternehmen in Ihrer Branche.
+    Was ist Ihnen bei einem IT-Partner am wichtigsten?
+  goal: Unterschiede herausstellen und auf die Kernbedürfnisse des Kunden lenken.
+- trigger: objection_too_expensive
+  situation: Kunde findet das Angebot zu teuer.
+  script: Ich verstehe, dass die Investition wichtig ist. Darf ich fragen, mit welchem
+    Budget Sie kalkuliert haben? Oft lassen sich durch eine Priorisierung der wichtigsten
+    Maßnahmen zunächst kostengünstigere Einstiegspakete realisieren, die schon erhebliche
+    Entlastung bringen.
+  goal: Gespräch am Leben erhalten und nach flexiblen Lösungen oder Budget suchen.
+- trigger: request_demo
+  situation: Kunde möchte eine Demo oder ein unverbindliches Gespräch.
+  script: Sehr gerne. Ich kann Ihnen unseren technischen Leiter oder einen Berater
+    für Ihre Branche direkt mit Ihnen verbinden. Wann hätte es in den nächsten Tagen
+    Zeit? Der Termin dauert etwa 30 Minuten und dient dazu, Ihre konkreten Herausforderungen
+    zu verstehen.
+  goal: Hochwertigen Termin mit einem menschlichen Experten vereinbaren.
+competitors:
+- name: Bechtle
+  positioning: Großserienanbieter mit breitem Portfolio und vielen Standorten.
+  strengths:
+  - Sehr große Ressourcen
+  - breites Produktportfolio
+  - starke Marke
+  weaknesses:
+  - Weniger individuell
+  - lange Entscheidungswege
+  - oft teurer
+  our_differentiation: Wir bieten persönlichere Betreuung durch feste Ansprechpartner,
+    schnelle Entscheidungswege und sind spezialisierter auf den Mittelstand.
+- name: Cancom
+  positioning: Großer IT-Dienstleister mit Fokus auf Cloud und Consulting.
+  strengths:
+  - Starke Cloud-Expertise
+  - eigene Rechenzentren
+  - Börsennotiert
+  weaknesses:
+  - Kann für sehr kleine Kunden unattraktiv sein
+  - komplexe Strukturen
+  our_differentiation: Unsere Lösungen sind agiler und maßgeschneiderter. Wir setzen
+    auf langfristige Partnerschaft statt auf reine Projektabwicklung.
+- name: Lokale Systemhäuser
+  positioning: Viele kleinere, regionale Anbieter mit gutem lokalen Netzwerk.
+  strengths:
+  - Sehr nah am Kunden
+  - hohe Flexibilität
+  - persönliche Beziehungen
+  weaknesses:
+  - Oft begrenzte Ressourcen für große Projekte
+  - geringere Spezialisierung
+  our_differentiation: Wir kombinieren regionale Nähe mit der Expertise und den Ressourcen
+    eines überregionalen Anbieters, insbesondere für komplexe Themen wie Sicherheit
+    und Compliance.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung von First-Level-Support-Anrufen für ein Unternehmen
+      mit 100 Mitarbeitern.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 0.25
+  - scenario: Automatisierte Lead-Qualifizierung und Terminvereinbarung für den Vertrieb.
+    monthly_cost: 450
+    monthly_savings: 1800
+    payback_months: 0.25
+  value_anchors:
+  - Sparen Sie bis zu 80% der Zeit für die Bearbeitung von Standardanfragen.
+  - Gewinnen Sie qualifizierte Leads 24/7, auch nach Feierabend.
+  - Reduzieren Sie das Risiko von Compliance-Verstößen durch standardisierte Prozesse.
+market_context:
+  market_size: ca. 40 Mrd. EUR Jahresumsatz für IT-Dienstleistungen
+  growth_rate: 4-6% p.a.
+  key_trends:
+  - Starke Nachfrage nach Cloud-Migration und Hybrid-Cloud-Lösungen
+  - IT-Sicherheit und Datenschutz (DSGVO) als Haupttreiber für Investitionen
+  - Zunehmende Automatisierung und Einsatz von KI auch im IT-Service selbst
+  - Wachsendes Angebot von 'as-a-Service'-Modellen
+  seasonality:
+    high:
+    - Januar (Neubudgetierung)
+    - September/Oktober (Vorjahresende)
+    low:
+    - Juli/August (Urlaubszeit)
+    - Dezember (Jahresabschluss)
+typical_objections:
+- objection: Das brauchen wir nicht, unser aktueller IT-Partner macht das schon.
+  response: Das ist verständlich. Vielleicht können wir als zweites Standbein oder
+    für spezielle Projekte dienen, bei denen Ihr aktueller Partner nicht spezialisiert
+    ist, wie z.B. DSGVO-Compliance. Darf ich Ihnen dazu eine Fallstudie schicken?
+- objection: Ich habe keine Zeit, mich mit einem neuen Anbieter zu beschäftigen.
+  response: Genau dafür bin ich da. Ich nehme Ihnen den initialen Aufwand ab. Unser
+    erstes Gespräch dauert nur 20 Minuten und zeigt Ihnen, ob es Potenzial für Entlastung
+    gibt. Wann hätten Sie kurz Zeit?
+- objection: KI und Automatisierung – das ist mir zu unpersönlich.
+  response: Die Automatisierung übernimmt nur die Routine, damit unsere menschlichen
+    Experten mehr Zeit für die komplexen und persönlichen Anliegen Ihrer Mitarbeiter
+    haben. So wird der Service persönlicher, nicht unpersönlicher.
+- objection: Unsere Daten sind zu sensibel, um sie mit einer externen KI zu verarbeiten.
+  response: Ein berechtigtes Anliegen. Unsere Lösung kann in Ihrer eigenen Infrastruktur
+    betrieben werden, und die Sprachverarbeitung findet in deutschen Rechenzentren
+    statt. Die KI handelt nur nach festgelegten Regeln und hat keinen Zugriff auf
+    sensible Kernsysteme.
+meta:
+  id: it_services
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

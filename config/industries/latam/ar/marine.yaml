@@ -1,0 +1,227 @@
+pain_points:
+- description: Altos costos de mantenimiento y reparación de embarcaciones debido
+    a la inflación y escasez de repuestos.
+  severity: high
+  solution_hint: El agente de voz puede ofrecer comparativas de precios y recordatorios
+    para mantenimiento preventivo, reduciendo costos imprevistos.
+- description: Dificultad para encontrar mano de obra calificada en zonas costeras
+    alejadas de las grandes ciudades.
+  severity: high
+  solution_hint: Conectar a los clientes con técnicos certificados a través de una
+    base de datos integrada y gestionar citas automáticamente.
+- description: Fluctuaciones estacionales que afectan los ingresos, especialmente
+    en turismo náutico y pesca.
+  severity: medium
+  solution_hint: Automatizar la gestión de reservas y promociones para maximizar la
+    ocupación en temporada baja.
+- description: Complejidad en el cumplimiento de regulaciones locales para seguridad
+    marítima y ambientales.
+  severity: medium
+  solution_hint: Proveer actualizaciones y asesoría sobre normativas mediante respuestas
+    de voz automatizadas.
+- description: Logística ineficiente en la cadena de suministro para repuestos y equipos,
+    con demoras en entregas.
+  severity: high
+  solution_hint: Integrar con sistemas de inventario para optimizar pedidos y ofrecer
+    seguimiento en tiempo real.
+- description: Baja adopción de tecnología digital en pequeñas empresas del sector,
+    limitando la eficiencia operativa.
+  severity: medium
+  solution_hint: Ofrecer soluciones accesibles de automatización que no requieran
+    grandes inversiones iniciales.
+typical_services:
+- Mantenimiento de embarcaciones
+- Reparaciones náuticas
+- Alquiler de barcos
+- Pesca comercial
+- Transporte marítimo de carga
+- Turismo náutico y excursiones
+- Instalación de equipos electrónicos y de navegación
+- Seguros marítimos
+- Capacitación y cursos para licencias náuticas
+- Venta y distribución de repuestos y accesorios
+recommended_functions:
+- name: Agendamiento automático de citas para mantenimiento
+  priority: high
+  reason: Reduce tiempos de espera y mejora la planificación en un sector con alta
+    demanda estacional.
+- name: Respuesta a consultas técnicas sobre reparaciones
+  priority: medium
+  reason: Proporciona soporte inmediato a clientes en ubicaciones remotas, aumentando
+    la satisfacción.
+- name: Procesamiento de pedidos y seguimiento de inventario
+  priority: high
+  reason: Optimiza la cadena de suministro, crítico dada la inflación y escasez en
+    Argentina.
+- name: Recordatorios automatizados para pagos y renovaciones de seguros
+  priority: medium
+  reason: Ayuda a evitar multas y interrupciones en operaciones debido a olvidos administrativos.
+- name: Asistencia en emergencias con conexión a servicios locales
+  priority: low
+  reason: Mejora la seguridad marítima al proporcionar acceso rápido a ayuda en casos
+    de incidentes.
+- name: Traducción y explicación de términos náuticos en español regional
+  priority: low
+  reason: Facilita la comunicación con clientes menos familiarizados con jerga técnica.
+typical_integrations:
+- name: Sistemas de gestión de flotas
+  examples:
+  - FleetMind
+  - Navixy
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Tango Gestión
+  - SAP localizado
+  priority: medium
+- name: Plataformas de reservas en línea
+  examples:
+  - Bookeo
+  - Reservar.com.ar
+  priority: high
+- name: Sistemas de mantenimiento predictivo
+  examples:
+  - Fiix
+  - MaintMaster
+  priority: medium
+- name: Software de seguimiento de inventario
+  examples:
+  - Zoho Inventory
+  - Khipu
+  priority: high
+industry_faq:
+- question: ¿Cuál es el costo promedio del mantenimiento anual de una embarcación
+    en Argentina?
+  answer_template: El costo varía según el tamaño y tipo de embarcación, pero típicamente
+    oscila entre 50.000 y 200.000 ARS anuales. Podemos ofrecerte un plan personalizado
+    para optimizar gastos.
+- question: ¿Ofrecen servicios de emergencia las 24 horas?
+  answer_template: Sí, contamos con asistencia remota mediante agente de voz para
+    conectar con técnicos locales en caso de emergencias, disponible todo el día.
+- question: ¿Cómo manejan los repuestos en un contexto de escasez e inflación?
+  answer_template: Integramos con proveedores locales para garantizar disponibilidad
+    y precios competitivos, además de ofrecer alternativas y recordatorios de pedido.
+- question: ¿Es compatible su sistema con el software que ya uso?
+  answer_template: Nuestro agente de voz se integra con sistemas populares en Argentina
+    como Tango o FleetMind. Podemos evaluar tu caso específico para una adaptación
+    sin problemas.
+- question: ¿Qué ventajas tiene automatizar las reservas para turismo náutico?
+  answer_template: Aumenta la ocupación y reduce errores humanos, especialmente en
+    temporada alta. Ofrecemos soluciones desde 10.000 ARS mensuales con ROI en pocos
+    meses.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de nuestros servicios de automatización.
+  script: Hola, entiendo que quieres optimizar costos. Nuestros planes comienzan desde
+    5.000 ARS mensuales, y te ayudamos a ahorrar hasta un 20% en gastos operativos
+    mediante recordatorios y gestión eficiente. ¿Te interesa una demostración personalizada?
+  goal: Convertir la consulta en una demostración para mostrar el valor y ROI.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como mantenimiento
+    o reservas.
+  script: 'Gracias por contactarnos. Ofrecemos soluciones integrales para el sector
+    náutico, desde agendamiento automático hasta integración con tus sistemas actuales.
+    ¿En qué área necesitas más ayuda: logística, atención al cliente o cumplimiento
+    normativo?'
+  goal: Identificar necesidades específicas y presentar soluciones adaptadas.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona a un competidor local.
+  script: Comprendo que hay otras opciones, pero nos diferenciamos por nuestra adaptación
+    al mercado argentino, con soporte en español y precios en ARS sin cargos ocultos.
+    Además, ofrecemos integración con software local que otros no tienen. ¿Podemos
+    mostrarte cómo esto beneficia tu operación?
+  goal: Destacar nuestras ventajas competitivas y cerrar una reunión de seguimiento.
+competitors:
+- name: Náutica Argentina S.A.
+  positioning: Líder en venta y mantenimiento de embarcaciones en Buenos Aires.
+  strengths:
+  - Amplia red de talleres
+  - Marca reconocida localmente
+  weaknesses:
+  - Poca innovación tecnológica
+  - Precios altos debido a estructura fija
+  our_differentiation: Ofrecemos soluciones de automatización accesibles que reducen
+    costos operativos y mejoran la eficiencia, con soporte digital integrado.
+- name: Mar del Plata Servicios Náuticos
+  positioning: Especializado en turismo náutico y alquiler en la costa atlántica.
+  strengths:
+  - Enfoque en experiencia del cliente
+  - Ubicación estratégica
+  weaknesses:
+  - Dependencia estacional
+  - Limitada digitalización
+  our_differentiation: Proveemos herramientas para gestionar reservas y promociones
+    todo el año, aumentando ingresos en temporada baja mediante automatización.
+- name: Pesquera del Sur
+  positioning: Principal en pesca comercial con flota propia en Patagonia.
+  strengths:
+  - Recursos propios
+  - Cumplimiento normativo sólido
+  weaknesses:
+  - Logística ineficiente
+  - Alto costo de mano de obra
+  our_differentiation: Automatizamos la gestión de flotas y mantenimiento, reduciendo
+    tiempos de inactividad y optimizando la cadena de suministro con integraciones
+    locales.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de reservas para una empresa de turismo náutico
+    monthly_cost: 15000
+    monthly_savings: 30000
+    payback_months: 1
+  - scenario: Gestión de mantenimiento predictivo para una flota pesquera
+    monthly_cost: 25000
+    monthly_savings: 50000
+    payback_months: 2
+  value_anchors:
+  - Reduce costos operativos hasta un 30% con soluciones adaptadas al mercado argentino.
+  - Aumenta la eficiencia en un sector con alta estacionalidad y desafíos logísticos.
+market_context:
+  market_size: El mercado náutico en Argentina está valorado en aproximadamente 500
+    millones de ARS anuales, incluyendo pesca, turismo y servicios.
+  growth_rate: Crecimiento anual del 4%, impulsado por el turismo y la modernización
+    de infraestructura portuaria.
+  key_trends:
+  - Aumento de la demanda de turismo náutico sostenible.
+  - Adopción gradual de tecnologías digitales para optimizar operaciones.
+  - Presión regulatoria hacia prácticas ambientales más estrictas.
+  seasonality:
+    high:
+    - Diciembre a Febrero
+    - Julio (vacaciones de invierno)
+    low:
+    - Marzo a Mayo
+    - Septiembre a Noviembre
+typical_objections:
+- objection: Es muy caro para mi pequeña empresa.
+  response: Entiendo tu preocupación. Nuestros planes escalables comienzan desde 5.000
+    ARS y están diseñados para generar ahorros que compensan la inversión rápidamente.
+    ¿Podemos analizar tu caso específico?
+- objection: No confío en que la tecnología funcione en zonas con mala conectividad.
+  response: Nuestro agente de voz opera con funcionalidades offline y se adapta a
+    la infraestructura local, asegurando soporte incluso en áreas remotas de la costa
+    argentina.
+- objection: Ya tengo procesos establecidos y no quiero cambios.
+  response: La automatización se integra sin interrumpir tus operaciones actuales,
+    mejorando gradualmente la eficiencia. Ofrecemos una fase de prueba sin compromiso
+    para que lo experimentes.
+meta:
+  id: marine
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

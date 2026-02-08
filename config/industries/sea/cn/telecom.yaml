@@ -1,0 +1,215 @@
+pain_points:
+- description: 客户流失率高，难以维持长期订阅
+  severity: high
+  solution_hint: AI语音代理可以通过个性化回访和优惠推送，提高客户粘性
+- description: 网络拥堵问题频发，导致客户投诉增多
+  severity: high
+  solution_hint: AI语音代理可以自动处理投诉，提供实时状态更新，减轻客服压力
+- description: 个人信息保护法（PIPL）合规要求严格，处理客户数据风险高
+  severity: high
+  solution_hint: AI语音代理可以集成合规检查，确保对话和数据处理符合PIPL规定
+- description: 客服中心人力成本高，且培训周期长
+  severity: medium
+  solution_hint: AI语音代理可24/7处理常见查询，降低人力成本，快速部署
+- description: 套餐和服务复杂，客户难以理解，导致销售转化率低
+  severity: medium
+  solution_hint: AI语音代理可以用简单语言解释套餐，引导客户选择合适服务
+- description: 市场竞争激烈，价格战导致利润下降
+  severity: medium
+  solution_hint: AI语音代理可以聚焦增值服务销售，提升平均客单价
+- description: 农村和偏远地区网络覆盖不足，客户满意度低
+  severity: low
+  solution_hint: AI语音代理可以收集反馈，自动生成报告，帮助优化网络规划
+typical_services:
+- 移动通信套餐（如5G套餐）
+- 宽带互联网服务
+- 物联网（IoT）解决方案
+- 云服务和数据中心
+- 国际漫游服务
+- 企业专线服务
+- 增值服务（如视频流媒体捆绑）
+- 客户服务中心外包
+- 设备销售（如路由器、手机）
+- 网络安全服务
+recommended_functions:
+- name: 自动客户支持
+  priority: high
+  reason: 处理高频率查询，如账单问题和套餐变更，减少等待时间
+- name: 销售和升级推广
+  priority: high
+  reason: 通过外呼推销新套餐或增值服务，提高收入
+- name: 合规性监控
+  priority: high
+  reason: 确保所有客户互动符合PIPL，避免法律风险
+- name: 多语言支持
+  priority: medium
+  reason: 中国多民族地区需求，如提供普通话、粤语等选项
+- name: 情绪分析
+  priority: medium
+  reason: 检测客户不满，及时转接人工或提供补偿，提升满意度
+- name: 预约安排
+  priority: low
+  reason: 自动安排技术人员上门安装或维修，优化资源分配
+- name: 数据收集和报告
+  priority: low
+  reason: 收集客户反馈，生成洞察报告，支持业务决策
+typical_integrations:
+- name: 客户关系管理（CRM）系统
+  examples:
+  - 用友
+  - 金蝶
+  - Salesforce本地版
+  priority: high
+- name: 计费和支付系统
+  examples:
+  - 支付宝集成
+  - 微信支付集成
+  - 本地银行系统
+  priority: high
+- name: 网络管理系统
+  examples:
+  - 华为网络管理
+  - 中兴网管系统
+  priority: medium
+- name: 合规和审计软件
+  examples:
+  - PIPL合规工具
+  - 本地数据安全平台
+  priority: medium
+- name: 人力资源系统
+  examples:
+  - 钉钉
+  - 企业微信
+  priority: low
+- name: 市场营销自动化平台
+  examples:
+  - 百度营销
+  - 腾讯广告集成
+  priority: low
+industry_faq:
+- question: 你们的5G套餐有什么优势？
+  answer_template: 我们的5G套餐提供高速网络、低延迟，并包含免费视频流媒体服务，性价比高。
+- question: 如何更改我的套餐？
+  answer_template: 您可以通过我们的APP或联系AI语音代理直接更改，过程简单快捷。
+- question: 我的个人信息安全吗？
+  answer_template: 是的，我们严格遵守PIPL，所有数据都加密处理，确保您的隐私安全。
+- question: 网络出现问题时怎么办？
+  answer_template: 请描述问题，AI语音代理会为您诊断或安排技术人员跟进，通常24小时内解决。
+- question: 有没有适合企业的解决方案？
+  answer_template: 我们有定制化企业专线和云服务，可提升办公效率，欢迎咨询详情。
+- question: 国际漫游费用如何？
+  answer_template: 我们提供优惠的国际漫游套餐，按天计费，具体资费可在官网查询。
+- question: 如何取消服务？
+  answer_template: 请联系客服或通过AI语音代理办理，我们会处理剩余费用并协助您完成流程。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问套餐价格时
+  script: 您好，我们提供多种5G套餐，起价每月88元，包含高速流量和通话。根据您的使用习惯，我可以推荐最划算的选项。
+  goal: 引导客户选择合适套餐，促成销售
+- trigger: complaint_handling
+  situation: 当客户投诉网络问题时
+  script: 很抱歉给您带来不便。请告诉我具体情况，我会立即记录并安排优先处理，同时提供临时解决方案。
+  goal: 安抚客户，快速解决问题，防止流失
+- trigger: upgrade_offer
+  situation: 当检测到客户使用量高时
+  script: 注意到您最近数据使用较多，我们有一个升级套餐，提供更多流量和优惠，每月仅需128元，感兴趣吗？
+  goal: 推广增值服务，增加收入
+- trigger: new_customer_welcome
+  situation: 新客户注册后
+  script: 欢迎加入我们！我是AI助手，可以帮您设置服务、解答疑问。有任何问题，随时联系我。
+  goal: 增强客户体验，促进长期关系
+competitors:
+- name: 中国移动
+  positioning: 市场领导者，网络覆盖广
+  strengths:
+  - 庞大的用户基础
+  - 强大的基础设施
+  - 品牌知名度高
+  weaknesses:
+  - 服务响应慢
+  - 套餐灵活性较低
+  our_differentiation: 我们提供更个性化的AI驱动服务，响应更快，套餐更灵活
+- name: 中国电信
+  positioning: 固网宽带优势明显
+  strengths:
+  - 宽带质量好
+  - 企业客户服务强
+  weaknesses:
+  - 移动业务相对弱
+  - 创新速度较慢
+  our_differentiation: 我们整合移动和宽带服务，通过AI优化用户体验，创新更快
+- name: 中国联通
+  positioning: 价格竞争激烈，聚焦城市市场
+  strengths:
+  - 价格优惠
+  - 数据业务强
+  weaknesses:
+  - 农村覆盖不足
+  - 客户服务参差不齐
+  our_differentiation: 我们通过AI降低成本，提供一致的高质量服务，性价比更高
+- name: 华为云通信
+  positioning: 技术提供商，切入企业市场
+  strengths:
+  - 技术先进
+  - 全球化支持
+  weaknesses:
+  - 消费者业务弱
+  - 本地化服务不足
+  our_differentiation: 我们专注本地市场，AI语音代理更懂中国消费者需求，集成更便捷
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 30000
+  roi_examples:
+  - scenario: 部署AI语音代理处理30%客服查询
+    monthly_cost: 10000
+    monthly_savings: 30000
+    payback_months: 4
+  - scenario: 使用AI进行销售外呼，提升转化率10%
+    monthly_cost: 15000
+    monthly_savings: 45000
+    payback_months: 3
+  value_anchors:
+  - AI代理可减少50%客服成本
+  - 提升客户满意度20%
+  - 加速销售周期30%
+market_context:
+  market_size: 约1.5万亿元人民币
+  growth_rate: 5% 年增长率
+  key_trends:
+  - 5G普及加速
+  - 物联网应用增长
+  - 云计算需求上升
+  - PIPL推动数据安全投资
+  seasonality:
+    high:
+    - 春节前后
+    - 双十一购物节
+    low:
+    - 夏季旅游季
+    - 年末财务结算期
+typical_objections:
+- objection: AI语音代理会不会取代人工客服，导致服务不人性化？
+  response: AI代理处理常规任务，释放人工客服处理复杂问题，实际提升服务质量和效率。
+- objection: 部署成本太高，我们小公司负担不起。
+  response: 我们提供模块化解决方案，起价仅30000元，且ROI快，几个月内即可回本。
+- objection: 担心数据安全和PIPL合规问题。
+  response: 我们的系统内置PIPL合规检查，数据本地存储加密，确保安全合法。
+- objection: 现有系统集成复杂，怕影响业务。
+  response: 我们支持与主流本地系统无缝集成，提供全程技术支持，最小化中断。
+meta:
+  id: telecom
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

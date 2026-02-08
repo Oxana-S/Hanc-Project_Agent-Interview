@@ -1,0 +1,231 @@
+pain_points:
+- description: Alta taxa de cancelamentos e mudanças de última hora, especialmente
+    durante períodos de alta demanda.
+  severity: high
+  solution_hint: Agente de voz pode automatizar o gerenciamento de reembolsos e reagendamentos,
+    reduzindo a carga manual.
+- description: Dificuldade em lidar com picos de atendimento ao cliente durante feriados
+    e temporadas turísticas.
+  severity: high
+  solution_hint: Agente de voz pode lidar com consultas básicas 24/7, liberando equipe
+    para casos complexos.
+- description: Conformidade com a LGPD para proteção de dados de clientes em reservas
+    e pagamentos.
+  severity: high
+  solution_hint: Agente de voz pode ser configurado para seguir protocolos de privacidade,
+    minimizando riscos.
+- description: Complexidade na integração de múltiplos provedores (hotéis, companhias
+    aéreas) com sistemas locais.
+  severity: medium
+  solution_hint: Agente de voz pode sincronizar dados em tempo real através de APIs,
+    melhorando a eficiência.
+- description: Altos custos operacionais com equipe de suporte em horários estendidos.
+  severity: medium
+  solution_hint: Agente de voz reduz a necessidade de contratação adicional, cortando
+    custos.
+- description: Dependência de processos manuais para confirmações e lembretes, levando
+    a erros humanos.
+  severity: low
+  solution_hint: Agente de voz automatiza comunicações, aumentando a precisão e a
+    satisfação do cliente.
+typical_services:
+- Reservas de hotéis
+- Passagens aéreas nacionais e internacionais
+- Pacotes de viagem personalizados
+- Aluguel de carros
+- Seguro viagem
+- Vistos e documentação
+- Passeios e excursões locais
+- Cruzeiros
+- Transferências aeroportuárias
+- Consultoria para viagens corporativas
+recommended_functions:
+- name: Confirmação de reservas automática
+  priority: high
+  reason: Reduz atrasos e aumenta a confiança do cliente, essencial para a indústria
+    de viagens.
+- name: Suporte ao cliente para dúvidas frequentes
+  priority: high
+  reason: Alivia a carga da equipe durante picos de demanda, melhorando a experiência.
+- name: Lembretes de pagamento e check-in
+  priority: medium
+  reason: Aumenta as taxas de conclusão de reservas e reduz no-shows.
+- name: Processamento de cancelamentos e reembolsos
+  priority: medium
+  reason: Agiliza transações sensíveis, mantendo a conformidade com políticas.
+- name: Coleta de feedback pós-viagem
+  priority: low
+  reason: Fornece insights valiosos para melhorar serviços sem custo adicional.
+- name: Integração com sistemas de pagamento locais
+  priority: high
+  reason: Facilita transações em BRL e adapta-se às preferências regionais.
+typical_integrations:
+- name: Sistemas de Pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: high
+- name: Sistemas de Gerenciamento de Relacionamento com o Cliente (CRM)
+  examples:
+  - Salesforce
+  - RD Station
+  - PipeRun
+  priority: high
+- name: Sistemas de Gestão Empresarial (ERP)
+  examples:
+  - TOTVS
+  - SAP
+  - Bling
+  priority: medium
+- name: Plataformas de Reservas
+  examples:
+  - Amadeus
+  - Sabre
+  - systems locais como da CVC
+  priority: high
+- name: Ferramentas de Comunicação
+  examples:
+  - WhatsApp Business API
+  - Zoom
+  - Microsoft Teams
+  priority: medium
+industry_faq:
+- question: Quais são as melhores épocas para viajar no Brasil?
+  answer_template: Depende do destino! Recomendamos o verão (dezembro a março) para
+    praias, e o inverno (junho a agosto) para regiões como o Pantanal. Podemos personalizar
+    sugestões com base em seus interesses.
+- question: Vocês oferecem opções de pagamento parcelado?
+  answer_template: Sim, integramos com gateways locais que permitem parcelamento em
+    até 12x sem juros, conforme disponibilidade. Podemos ajudá-lo a escolher a melhor
+    opção.
+- question: Como lidam com cancelamentos devido a emergências?
+  answer_template: Seguimos políticas flexíveis e a LGPD para processar reembolsos.
+    Nosso agente de voz pode guiá-lo rapidamente pelo processo, minimizando estresse.
+- question: Vocês fornecem suporte durante a viagem?
+  answer_template: Sim, oferecemos suporte 24/7 via agente de voz para emergências,
+    como reagendamentos ou assistência local, garantindo tranquilidade.
+- question: Quais documentos são necessários para viagens internacionais?
+  answer_template: Normalmente, passaporte válido e vistos conforme o destino. Nosso
+    agente pode verificar requisitos específicos e ajudar com a documentação.
+- question: Como garantem a segurança dos meus dados pessoais?
+  answer_template: Cumprimos rigorosamente a LGPD, com criptografia e processos seguros
+    em todas as interações, protegendo sua privacidade.
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preços de pacotes de viagem.
+  script: Olá! Entendo que o orçamento é importante. Oferecemos soluções personalizadas
+    a partir de R$ 500 por reserva básica, com economias de até 30% em atendimento
+    automatizado. Posso mostrar um exemplo de como reduzir custos operacionais?
+  goal: Educar sobre o valor e apresentar o ponto de entrada acessível.
+- trigger: compliance_concern
+  situation: Cliente expressa preocupação com a LGPD e segurança de dados.
+  script: Excelente pergunta! Nossos agentes de voz são projetados para cumprir a
+    LGPD, com automação que minimiza erros humanos e protege dados. Isso pode reduzir
+    riscos de multas em até 40%. Gostaria de saber mais?
+  goal: Aliviar preocupações e destacar conformidade como vantagem.
+- trigger: competition_mention
+  situation: Cliente menciona concorrentes como Decolar.
+  script: Sim, conhecemos a Decolar. Diferentemente deles, focamos em automação inteligente
+    que reduz custos operacionais em 50% e melhora a experiência 24/7. Por exemplo,
+    um cliente similar economizou R$ 2000 mensais. Posso detalhar?
+  goal: Diferenciar pela eficiência e ROI tangível.
+- trigger: objection_high_cost
+  situation: Cliente diz que o serviço parece caro.
+  script: Compreendo. Investir em automação pode parecer um custo inicial, mas com
+    economias médias de R$ 1500 por mês em suporte manual, o retorno ocorre em 3 meses.
+    Vamos analisar seu caso específico?
+  goal: Reenquadrar o custo como investimento com rápido retorno.
+competitors:
+- name: Decolar
+  positioning: Líder em viagens online no Brasil, focado em reservas diretas.
+  strengths:
+  - Marca reconhecida
+  - ampla oferta de pacotes
+  - presença digital forte
+  weaknesses:
+  - Atendimento ao cliente lento em picos
+  - custos operacionais altos
+  our_differentiation: Oferecemos automação que reduz custos em 50% e suporte 24/7
+    mais eficiente, com integração local superior.
+- name: CVC
+  positioning: Rede tradicional de agências físicas e online.
+  strengths:
+  - Presença física extensa
+  - confiança do cliente
+  - pacotes completos
+  weaknesses:
+  - Processos manuais lentos
+  - baixa escalabilidade em demandas sazonais
+  our_differentiation: Automação via voz que agiliza reservas e reduz erros, complementando
+    ou substituindo processos manuais.
+- name: Submarino Viagens
+  positioning: Plataforma online com foco em descontos e variedade.
+  strengths:
+  - Preços competitivos
+  - integração com e-commerce
+  - base de usuários grande
+  weaknesses:
+  - Suporte pós-venda limitado
+  - experiência impersonalizada
+  our_differentiation: Agentes de voz fornecem atendimento personalizado e proativo,
+    aumentando a fidelização.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Agência de viagens média reduzindo atendimento manual.
+    monthly_cost: 1000
+    monthly_savings: 1500
+    payback_months: 2
+  value_anchors:
+  - Reduza custos operacionais em até 50% com automação inteligente.
+  - Retorno do investimento em menos de 3 meses para a maioria dos negócios.
+  - Escalável para picos sazonais sem custos adicionais de equipe.
+market_context:
+  market_size: Estimado em R$ 80 bilhões anuais
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento da demanda por viagens sustentáveis e ecoturismo.
+  - Crescimento de viagens corporativas pós-pandemia.
+  - Digitalização acelerada de reservas e pagamentos.
+  seasonality:
+    high:
+    - Dezembro a Fevereiro
+    - Junho a Julho
+    low:
+    - Março a Maio
+    - Agosto a Novembro
+typical_objections:
+- objection: Não confio em automação para algo importante como viagens.
+  response: Entendo sua preocupação. Nossos agentes são supervisionados por humanos
+    e projetados para lidar com emergências, garantindo segurança e eficiência. Podemos
+    começar com uma funcionalidade simples, como confirmações.
+- objection: Já temos sistemas, por que mudar?
+  response: Excelente! Nossa solução integra-se a sistemas existentes como TOTVS ou
+    PagSeguro, melhorando a eficiência sem substituir tudo. Por exemplo, pode reduzir
+    tempo de reserva em 30%. Gostaria de ver uma demonstração?
+- objection: O custo inicial é muito alto para meu negócio.
+  response: Oferecemos planos flexíveis a partir de R$ 500, com ROI rápido. Um cliente
+    similar economizou R$ 2000 no primeiro mês. Podemos ajustar conforme seu orçamento.
+- objection: A LGPD torna a automação complexa.
+  response: Pelo contrário! Nossos agentes são configurados para cumprir a LGPD desde
+    o início, simplificando a conformidade e reduzindo riscos. Isso pode até economizar
+    multas em longo prazo.
+meta:
+  id: travel
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

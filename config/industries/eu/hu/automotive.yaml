@@ -1,0 +1,252 @@
+aliases:
+- autóipar
+- autószerviz
+- autókereskedés
+- autóműhely
+- autó
+- kereskedő
+- szerviz
+- gumicserélő
+- műszaki szerviz
+- javítás
+- autójavítás
+- gépjármű
+- tuning
+- detailing
+- garázs
+- autómosó
+competitors:
+- name: Audi Hungaria
+  positioning: Prémium márkakereskedés és szerviz
+  strengths:
+  - Erős márkanév
+  - Széles szervizhálózat
+  - Magas színvonalú szolgáltatások
+  weaknesses:
+  - Magas árak
+  - Hosszú várakozási idők
+  - Korlátozott olcsóbb alternatívák
+  our_differentiation: Gyorsabb szervizidők és versenyképes árak minden márkára
+- name: Opel Hungary
+  positioning: Tömegpiaci autókereskedés és szerviz
+  strengths:
+  - Megfizethető árak
+  - Országos lefedettség
+  - Ismert márka
+  weaknesses:
+  - Átlagos minőségű szerviz
+  - Kevesebb prémium szolgáltatás
+  - Lassabb ügyintézés
+  our_differentiation: Személyre szabott ügyfélkezelés és fejlett diagnosztika
+- name: MOL Autószerviz
+  positioning: Üzemanyagtöltőállomásokon alapuló szervizhálózat
+  strengths:
+  - Kényelmes helyszínek
+  - Gyors alapvető szolgáltatások
+  - Állandó ügyfélkör
+  weaknesses:
+  - Korlátozott speciális szolgáltatások
+  - Változó minőség
+  - Főleg alapjavítások
+  our_differentiation: Széleskörű szakszolgáltatások és garanciális munkák
+- name: Bosch Car Service
+  positioning: Független szervizhálózat minőségi alkatrészekkel
+  strengths:
+  - Megbízható márka
+  - Minőségi alkatrészek
+  - Képzett szakemberek
+  weaknesses:
+  - Magasabb költségek
+  - Kevesebb helyszín
+  - Hosszabb időpontfoglalás
+  our_differentiation: Rugalmas árazás és gyors online időpontfoglalás
+industry_faq:
+- answer_template: Az ár a gépjármű márkájától és az olaj típusától függ. Átlagosan 8000-től 20000 Ft-ig terjedhet a munkával együtt.
+  question: Mennyibe kerül az olajcsere?
+- answer_template: Adja meg a munkalapszámot vagy a rendszámot, és ellenőrzöm a státuszt.
+  question: Hogyan tudom meg a javítás státuszát?
+- answer_template: A tervezett műszaki szerviz 1-3 óra között tart, a munka mennyiségétől függően.
+  question: Mennyi ideig tart a műszaki szerviz?
+- answer_template: Igen, minden márkát kiszolgálunk. Milyen márkáról van szó?
+  question: Dolgoztok az én autómárkámmal?
+- answer_template: Ellenőrizhetem a készletet. Adja meg a márkát, modellt és a szükséges alkatrészt.
+  question: Rendelkezésre állnak az alkatrészek?
+- answer_template: Igen, a munkákra 6 hónap vagy 10000 km futásteljesítmény garanciát adunk.
+  question: Adtok garanciát a munkákra?
+industry_specifics:
+  compliance:
+  - GDPR
+  peak_times:
+  - Hétfő reggel
+  - Péntek este
+  - Guminősítési szezon (április, október)
+  tone:
+  - Magabiztos, szakmai
+  - Műszakilag hozzáértő
+  - Nem túl formális
+learnings:
+- date: '2026-02-04'
+  insight: 'Érvényesítési hiba: [scenario_match] A cég nem egyezik: várt ''AutóProfi''; Kevés integrációs egyezés: 1/4'
+  source: test_auto_service
+- date: '2026-02-04'
+  insight: 'Figyelmeztetés: [no_loops] Ciklus észlelve: 0 ismétlés'
+  source: test_auto_service
+- date: '2026-02-05'
+  insight: 'Figyelmeztetés: [scenario_match] Kevés integrációs egyezés: 0/4'
+  source: test_auto_service
+- date: '2026-02-05'
+  insight: 'Figyelmeztetés: [metrics] Túl hosszú: 975 mp (max 900)'
+  source: test_auto_service
+market_context:
+  market_size: Körülbelül 500 milliárd HUF éves forgalom
+  growth_rate: 3-5% évente
+  key_trends:
+  - Elektromos autók térnyerése
+  - Digitális szervizfelületek növekedése
+  - Egyéni ügyfélélmény hangsúlyozása
+  seasonality:
+    high:
+    - Tavasz (műszaki szervizek)
+    - Ősz (gumicserék)
+    low:
+    - Nyár (nyaralási időszak)
+    - Tél (ünnepi időszak)
+meta:
+  avg_validation_score: 0.792
+  country: hu
+  created_at: '2026-02-04'
+  currency: HUF
+  id: automotive
+  language: hu
+  languages: []
+  last_updated: '2026-02-05'
+  phone_codes:
+  - '+36'
+  region: eu
+  tests_run: 2
+  timezone: Europe/Budapest
+  version: '1.0'
+pain_points:
+- description: Az ügyfelek gyakran hívják a javítás státuszának megállapítására
+  severity: high
+  solution_hint: Automatikus státuszellenőrzés munkalapszám alapján
+- description: Sok hívás érkezik árakkal kapcsolatos kérdésekkel
+  severity: medium
+  solution_hint: Automatikus költségbecslés tipikus szolgáltatásokra
+- description: Nehéz időpontot foglalni kényelmes időben
+  severity: medium
+  solution_hint: Online időpontfoglalás időválasztással
+- description: Elfelejtik emlékeztetni a tervezett műszaki szervizre
+  severity: medium
+  solution_hint: Automatikus emlékeztetők futásteljesítmény/dátum alapján
+- description: A szerelőket zavarják a hívások
+  severity: high
+  solution_hint: Hangügynök kezeli a rutinkérdéseket
+- description: Ügyfelek panaszokat tesznek a várakozási időkre
+  severity: medium
+  solution_hint: Valós idejű állapotfrissítések és átirányítás
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 8000
+  roi_examples:
+  - monthly_cost: 50000 Ft
+    monthly_savings: 20000 Ft
+    payback_months: 3
+    scenario: Automatizált státuszellenőrzéssel csökkentett adminisztratív terhelés
+  value_anchors:
+  - 30%-kal gyorsabb ügyfélkiszolgálás
+  - 25%-os költségcsökkenés műszaki szervizeken
+  - Garantált minőség és gyors reagálás
+recommended_functions:
+- name: státusz
+  priority: high
+  reason: 40-50% a hívások a javítás státuszáról szólnak
+- name: időpontfoglalás
+  priority: high
+  reason: Időpontfoglalás műszaki szervizre, diagnosztikára, gumicserére
+- name: gyakori_kérdések
+  priority: medium
+  reason: Árak, határidők, alkatrészek, garancia
+- name: emlékeztető
+  priority: medium
+  reason: Emlékeztetés tervezett műszaki szervizre
+- name: megrendelés_felvétele
+  priority: medium
+  reason: Megrendelés felvétele vontatásra, sürgős javításra
+- name: irányítás
+  priority: low
+  reason: Bonyolult kérdések átirányítása mester-szaktanácsadóhoz
+sales_scripts:
+- goal: Időpont foglalásának elősegítése
+  script: Üdvözöljük! Kérem, adja meg a gépjármű márkáját és modelljét, valamint a kívánt szolgáltatást. Azonnal ellenőrizem a legközelebbi szabad időpontokat.
+  situation: Amikor ügyfél szolgáltatást kér vagy árat kérdez
+  trigger: szolgáltatás_kérés
+- goal: Árérzékeny ügyfelek megtartása
+  script: Köszönöm a kérdést! Az árak a minőség és a gyorsaság mellett versenyképesek. Például egy alapszerviz 15000 Ft-tól kezdődik. Szeretné részletes árajánlatot?
+  situation: Amikor ügyfél panaszt tesz az árak miatt
+  trigger: ár_panasz
+- goal: Új szolgáltatások bemutatása
+  script: Figyelmeztetünk, hogy elektromos autók szervizelésére is specializálódtunk. Kínálunk ingyenes diagnosztikát első ügyfeleinknek. Érdekelné?
+  situation: Amikor ügyfél kérdez új trendekről
+  trigger: trend_kérdés
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - 60%-os automatizálás státuszlekérdezésekben
+  - 40%-os terheléscsökkenés a fogadásban
+  - 25%-nál nagyobb konverzió időpontfoglalásra
+  - 4.2/5-nél nagyobb ügyfélértékelés
+typical_integrations:
+- examples:
+  - Navision
+  - SAP Auto
+  name: ERP rendszerek
+  priority: high
+  reason: Munkalapok, státuszok, alkatrészkészlet
+- examples:
+  - Bitrix24
+  - Salesforce
+  name: CRM
+  priority: medium
+  reason: Szerviztörténet, ügyfélkártya
+- examples:
+  - Mango Office
+  - Magyar Telekom
+  name: Telefónia
+  priority: high
+  reason: Bejövő hívások fogadása
+- examples:
+  - Telegram
+  - Viber
+  name: SMS/Messengerek
+  priority: medium
+  reason: Értesítések készültségről
+- examples:
+  - Google Naptár
+  - Microsoft Outlook
+  name: Naptár
+  priority: medium
+  reason: Emelők/állások ütemezése
+typical_objections:
+- objection: Túl drága
+  response: Megértem. Tudok alternatív alkatrészeket ajánlani, vagy összekötni egy szerelővel a megbeszéléshez.
+- objection: Túl sokáig kell várni
+  response: Ellenőrzöm a terhelést. Lehet, hogy korábbi időpont is van. Mikor lenne Önnek jó?
+- objection: Miért ilyen magas az ár?
+  response: Az árba eredeti alkatrészek és tanúsított szerelők munkája is beleszámít. Részletezhetem, ha szeretné.
+typical_services:
+- Műszaki szerviz
+- Motorjavítás
+- Futómű javítás
+- Karosszéria javítás
+- Gumicserélés
+- Kormányállás beállítás
+- Diagnosztika
+- Olajcsere
+- Autóeladás
+- Trade-in
+_extends: _base/automotive

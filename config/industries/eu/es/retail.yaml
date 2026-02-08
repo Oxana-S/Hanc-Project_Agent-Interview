@@ -1,0 +1,206 @@
+pain_points:
+- description: Costes elevados de alquiler en zonas comerciales estratégicas, especialmente en ciudades grandes como Madrid y Barcelona.
+  severity: high
+  solution_hint: Automatizar tareas para optimizar el uso del espacio y reducir personal en tienda, permitiendo considerar ubicaciones más asequibles.
+- description: Competencia feroz de grandes cadenas y marketplaces online como Amazon, que presionan los precios y reducen márgenes.
+  severity: high
+  solution_hint: Agente de voz puede gestionar consultas de clientes 24/7, ofreciendo servicio personalizado que diferencie del competidor impersonal.
+- description: Gestión ineficiente del inventario, leading to 'rotura de stock' o exceso de mercancía obsoleta.
+  severity: medium
+  solution_hint: Integrar con sistemas de inventario para proporcionar actualizaciones en tiempo real y automatizar pedidos de reposición.
+- description: Dificultad para retener clientes y fidelizarlos en un mercado con alta sensibilidad al precio.
+  severity: medium
+  solution_hint: Programar recordatorios de fidelización, gestionar programas de puntos y ofrecer promociones personalizadas automáticamente.
+- description: Saturación de tareas administrativas como gestión de citas, reservas y devoluciones, que restan tiempo a la venta.
+  severity: medium
+  solution_hint: Automatizar completamente la agenda, reservas y el proceso inicial de devoluciones mediante conversaciones de voz.
+- description: Adaptación lenta a la transformación digital, especialmente entre minoristas tradicionales con recursos limitados.
+  severity: medium
+  solution_hint: Ofrecer una solución de agente de voz fácil de implementar y sin necesidad de grandes conocimientos técnicos.
+- description: Cumplimiento del RGPD (GDPR) en el manejo de datos de clientes para campañas de marketing.
+  severity: low
+  solution_hint: Configurar el agente para gestionar consentimientos de forma clara y registrar automáticamente las preferencias de los clientes.
+typical_services:
+- Venta al por menor (retail) en tienda física
+- Comercio electrónico (e-commerce) y tienda online
+- Gestión de inventario y stock
+- Atención al cliente y postventa
+- Programas de fidelización de clientes
+- Marketing digital y gestión de redes sociales
+- Logística y gestión de envíos
+- Gestión de compras y proveedores
+- Organización de eventos y promociones en tienda
+- Análisis de ventas y reporting
+recommended_functions:
+- name: Reserva de citas y gestion de agendas
+  priority: high
+  reason: Libera al personal de tareas repetitivas de coordinación, común en retail de servicios o productos de alta gama.
+- name: Soporte de atención al cliente básico 24/7
+  priority: high
+  reason: Responde preguntas frecuentes sobre horarios, ubicación, disponibilidad, reduciendo carga del personal en tienda.
+- name: Gestor de recordatorios para clientes (fidelización)
+  priority: medium
+  reason: Crucial para mantener engagement en un mercado competitivo, recordando citas de servicio o ofertas personalizadas.
+- name: Procesador inicial de devoluciones y reclamaciones
+  priority: medium
+  reason: Organiza y tria las solicitudes, preparando la documentación necesaria y agilizando un proceso administrativo pesado.
+- name: Confirmador automático de pedidos y reservas
+  priority: medium
+  reason: Mejora la experiencia del cliente y reduce errores en la gestión de pedidos online o por teléfono.
+- name: Asistente para venta cruzada y ascendente
+  priority: low
+  reason: Puede sugerir productos complementarios durante una conversación, aumentando el valor medio del carrito.
+typical_integrations:
+- name: Sistema de gestión de relaciones con clientes (CRM)
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - especificos locales como Dédalo ERP
+  priority: high
+- name: Software de comercio electrónico (e-commerce)
+  examples:
+  - PrestaShop
+  - WooCommerce
+  - Magento
+  priority: high
+- name: Sistema de gestión de inventario (ERP)
+  examples:
+  - SAP Business One
+  - Oracle NetSuite
+  - Solmicro (español)
+  priority: medium
+- name: Plataforma de reservas y citas
+  examples:
+  - Calendly
+  - Google Calendar
+  - integraciones personalizadas
+  priority: medium
+- name: Herramientas de marketing por email/SMS
+  examples:
+  - Mailchimp
+  - Sendinblue
+  - ActiveCampaign
+  priority: low
+industry_faq:
+- question: ¿Puede el agente de voz entender el acento y las expresiones locales de España?
+  answer_template: Absolutamente. Nuestro agente está entrenado específicamente con variedades del español, incluyendo modismos locales, para garantizar una comunicación natural y efectiva con sus clientes.
+- question: ¿Cómo maneja el agente las devoluciones o reclamaciones complejas?
+  answer_template: 'El agente gestiona el proceso inicial: recoge la información, verifica la política y programa una cita o escalado a un humano. Nunca deja al cliente sin respuesta.'
+- question: ¿Es compatible con nuestro sistema de gestión de tienda actual?
+  answer_template: Sí, nos integramos con los principales sistemas ERP y CRM del mercado. Analizamos su configuración específica para garantizar una conexión fluida.
+- question: ¿Qué pasa si el cliente prefiere hablar con una persona?
+  answer_template: El agente detecta la solicitud y deriva la llamada inmediatamente a su equipo, sin que el cliente tenga que repetir información.
+- question: ¿Cumple con el RGPD (GDPR) de la UE?
+  answer_template: Sí, cumplimos estrictamente con el RGPD. Todas las conversaciones y datos se gestionan con consentimiento explícito y medidas de seguridad certificadas.
+- question: ¿Funciona también para nuestra tienda online?
+  answer_template: Por supuesto. Puede gestionar consultas de la web, confirmar pedidos por teléfono y unificar la experiencia entre su canal físico y digital.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio inicial o dice 'es muy caro'.
+  script: Entiendo que la inversión es una consideración importante. Nuestro punto de entrada está en torno a [ENTRY_POINT] €/mes. Para un comercio como el suyo, esto suele traducirse en un ahorro de al
+    menos [X] horas de trabajo administrativo mensual, que puede redirigir a ventas. ¿Le gustaría ver un cálculo específico para su caso?
+  goal: Reforzar el valor y el ROI, no solo el coste, y proponer una demostración con datos concretos.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor o una solución más barata.
+  script: Es una buena opción. Nuestra diferencia clave es la especialización en el retail español y la comprensión del contexto local, desde horarios hasta gestiones con proveedores. No solo automatizamos,
+    sino que mejoramos la experiencia del cliente español. ¿Qué aspecto de su operación actual le causa más dolores de cabeza?
+  goal: Diferenciar basándose en conocimiento local y redirigir la conversación a los problemas específicos del cliente.
+- trigger: objection_tech
+  situation: Cuando el cliente duda por la complejidad técnica o el tiempo de implementación.
+  script: La implementación es sorprendentemente sencilla. No requiere conocimientos técnicos por su parte. Nosotros nos encargamos de la configuración y la integración con sus sistemas en cuestión de días,
+    no semanas. Le proporcionamos un entrenamiento claro a su equipo. ¿Cuándo sería un buen momento para una demo de 15 minutos sin compromiso?
+  goal: Disipar el miedo a lo técnico y proponer un siguiente paso concreto y de bajo esfuerzo.
+- trigger: initial_contact
+  situation: Primer contacto o respuesta a una solicitud de información.
+  script: Hola [NOMBRE_CLIENTE], soy [NOMBRE_AGENTE] de [SU_EMPRESA]. Veo que se dedica al retail. Muchos de nuestros clientes, como pequeñas y medianas tiendas en España, nos comentan problemas con la
+    gestión de consultas de clientes y la administración de reservas. ¿Le suenan estos desafíos? ¿Podría contarme un poco sobre su operación diaria?
+  goal: Establecer rapport, demostrar conocimiento del sector y descubrir puntos de dolor específicos.
+competitors:
+- name: Telefónica (Soluciones de Call Center)
+  positioning: Gran proveedor de telecomunicaciones con servicios de call center básicos.
+  strengths:
+  - Marca muy reconocida en España
+  - Infraestructura robusta
+  - Oferta de paquetes
+  weaknesses:
+  - Soluciones genéricas, no específicas para retail
+  - Menos ágiles y personalizables
+  - Costes elevados para PYMES
+  our_differentiation: Ofrecemos una solución especializada en retail, con automatización por IA más inteligente y un enfoque en integración y conocimiento local a un coste más asequible para la PYME.
+- name: CRM locales (ej., Dédalo ERP)
+  positioning: Desarrolladores de software de gestión empresarial español.
+  strengths:
+  - Conocimiento profundo de normativas españolas
+  - Soporte en idioma local
+  - Funcionalidades contables y fiscales específicas
+  weaknesses:
+  - Sus módulos de atención telefónica suelen ser básicos (IVR tradicional)
+  - Poca innovación en IA conversacional
+  - Implementaciones largas
+  our_differentiation: Somos el complemento de IA conversacional moderno para su ERP. No reemplazamos su sistema, lo potenciamos con un agente de voz inteligente que ellos no ofrecen.
+- name: Plataformas de chatbots genéricas (ej., ManyChat, Dialogflow)
+  positioning: Plataformas de automatización de mensajería y chatbots online.
+  strengths:
+  - Fáciles de empezar para canales de texto
+  - Precios bajos iniciales
+  - Grandes comunidades
+  weaknesses:
+  - Enfocadas en texto/web, no en voz
+  - Poco conocimiento del proceso de venta minorista física
+  - Soporte no especializado en retail español
+  our_differentiation: Especialistas en voz para el comercio físico y telefónico, con scripts y flujos pre-diseñados para el retail español y soporte especializado.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 79
+  roi_examples:
+  - scenario: Tienda de moda que recibe 20 llamadas diarias para consultas de horario, tallas y reservas.
+    monthly_cost: 99
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Por menos del coste de una jornada laboral mensual, cubre su teléfono 24/7.
+  - Automatiza tareas que consumen 10-15 horas semanales de su personal.
+  - Reduce las 'pérdidas de ventas' por llamadas no respondidas fuera de horario.
+market_context:
+  market_size: Miles de PYMES minoristas en España, con un sector en transformación digital.
+  growth_rate: Moderado-alto, impulsado por la adopción digital post-pandemia y la necesidad de eficiencia.
+  key_trends:
+  - 'Omnicanalidad: integración fluida entre tienda física y online.'
+  - Experiencia del cliente personalizada como factor clave de diferenciación.
+  - Aumento de la competencia online y demanda de eficiencia operativa.
+  seasonality:
+    high:
+    - Noviembre-Diciembre (Navidad)
+    - Enero (rebajas)
+    - Julio-Agosto (turismo en zonas costeras)
+    low:
+    - Febrero
+    - Septiembre
+typical_objections:
+- objection: Mis clientes, especialmente los mayores, prefieren hablar siempre con una persona.
+  response: 'Totalmente de acuerdo, la relación personal es clave en el retail. Nuestro agente actúa como primer filtro, resolviendo consultas rápidas y derivando al humano cuando se necesita ese toque
+    personal o en casos complejos. Así su equipo se centra en lo que realmente importa: la venta y la relación de calidad.'
+- objection: No tengo tiempo para configurar y aprender una nueva tecnología.
+  response: Le entiendo perfectamente. Por eso nuestro servicio es 'llave en mano'. Nosotros nos encargamos de la configuración, el entrenamiento del agente con sus scripts y la integración. Usted solo
+    tiene que aprobar los flujos de conversación, que le presentamos claramente. En una semana podría estar operativo.
+- objection: Estamos bien como estamos, con una persona que atiende el teléfono.
+  response: Es genial que tenga ese recurso. Nuestra propuesta no es reemplazar, sino potenciar. Imagine que esa persona, liberada de preguntas repetitivas, pueda dedicar más tiempo a asesorar a clientes
+    en tienda o gestionar pedidos importantes. Se trata de escalar su eficiencia sin aumentar la plantilla.
+meta:
+  id: retail
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- retail
+- shop
+- store
+- e-commerce
+- merchandise
+_extends: _base/retail

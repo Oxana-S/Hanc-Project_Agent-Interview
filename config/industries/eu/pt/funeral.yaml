@@ -1,0 +1,248 @@
+pain_points:
+- description: Dificuldade em gerir múltiplos pedidos simultaneamente durante picos
+    de demanda, levando a atrasos no atendimento.
+  severity: high
+  solution_hint: Agente de voz pode agendar consultas automaticamente e fornecer informações
+    básicas, redistribuindo a carga de trabalho.
+- description: Processos administrativos complexos e demorados, como obtenção de licenças
+    e documentação necessária para funerais.
+  severity: medium
+  solution_hint: Automatizar lembretes e guiar clientes através de etapas administrativas
+    via interações de voz.
+- description: Alto custo operacional com pessoal para atendimento 24/7, especialmente
+    em horários noturnos e fins de semana.
+  severity: high
+  solution_hint: Reduzir chamadas manuais com respostas automáticas a perguntas frequentes,
+    diminuindo a necessidade de equipe extra.
+- description: Dificuldade em comunicar opções de serviços e preços de forma clara
+    e rápida aos clientes enlutados.
+  severity: medium
+  solution_hint: Fornecer informações detalhadas sobre serviços e orçamentos via voz,
+    personalizando conforme as necessidades do cliente.
+- description: Gestão emocionalmente desafiadora ao lidar com famílias enlutadas,
+    exigindo sensibilidade e paciência.
+  severity: low
+  solution_hint: Oferecer suporte empático através de scripts preparados e direcionar
+    para assistência humana quando necessário.
+- description: Concorrência acirrada com empresas que oferecem preços mais baixos,
+    mas com serviços limitados.
+  severity: medium
+  solution_hint: Destacar diferenciais como personalização e tecnologia avançada nas
+    interações de voz para atrair clientes.
+typical_services:
+- Organização completa de funerais
+- Serviço de cremação
+- Translado de restos mortais
+- Assistência em cerimónias religiosas
+- Venda de urnas e caixões
+- Serviços de luto e apoio psicológico
+- Emissão de certidões de óbito e documentação
+- Gestão de jazigos e cemitérios
+- Floricultura e decoração funerária
+- Planos de pré-pagamento funerário
+recommended_functions:
+- name: Agendamento de Consultas
+  priority: high
+  reason: Permite agilizar o primeiro contato com clientes, reduzindo tempo de espera
+    e melhorando a experiência.
+- name: Fornecimento de Informações sobre Serviços e Preços
+  priority: high
+  reason: Clients frequentemente perguntam sobre opções disponíveis; respostas rápidas
+    aumentam a confiança.
+- name: Suporte a Perguntas Frequentes (FAQ) Automatizado
+  priority: medium
+  reason: Reduz chamadas repetitivas, liberando a equipe para tarefas mais complexas
+    e emocionalmente sensíveis.
+- name: Integração com Sistemas de Gestão Funerária
+  priority: high
+  reason: Sincroniza dados automaticamente, evitando erros manuais e garantindo conformidade
+    com regulamentos.
+- name: Lembretes Automáticos para Prazos Administrativos
+  priority: medium
+  reason: Ajuda clientes a cumprir prazos importantes, como entregas de documentação,
+    melhorando a eficiência.
+- name: Tradução para Idiomas Estrangeiros
+  priority: low
+  reason: Útil para atender famílias internacionais em Portugal, expandindo o alcance
+    do mercado.
+typical_integrations:
+- name: Sistemas de Gestão Funerária
+  examples:
+  - Funerária Digital
+  - Gestão Funeral PT
+  priority: high
+- name: Software de Agendamento
+  examples:
+  - Calendly adaptado
+  - AgendaPT
+  priority: medium
+- name: Plataformas de Pagamento
+  examples:
+  - MB Way
+  - Multibanco
+  - PayPal
+  priority: high
+- name: Sistemas de CRM
+  examples:
+  - Salesforce localizado
+  - HubSpot
+  priority: medium
+- name: Bases de Dados Governamentais
+  examples:
+  - Sistema de Registo Civil
+  - Portal das Finanças
+  priority: high
+industry_faq:
+- question: Quais são os serviços incluídos num funeral básico?
+  answer_template: Um funeral básico geralmente inclui translado, caixão simples,
+    cerimónia básica e assistência administrativa. Podemos personalizar conforme suas
+    necessidades específicas.
+- question: Quanto custa um serviço de cremação em Portugal?
+  answer_template: O custo da cremação varia, mas normalmente entre 500€ a 1500€,
+    dependendo de opções como urna e cerimónia adicional.
+- question: É possível pré-pagar um funeral para planeamento antecipado?
+  answer_template: Sim, oferecemos planos de pré-pagamento que permitem garantir os
+    serviços desejados a preços fixos, evitando custos inesperados no futuro.
+- question: Quais documentos são necessários para organizar um funeral?
+  answer_template: Geralmente precisa da certidão de óbito, documento de identificação
+    do falecido e autorizações familiares. Podemos ajudá-lo com toda a papelada necessária.
+- question: Oferecem apoio psicológico às famílias durante o luto?
+  answer_template: Sim, temos parcerias com psicólogos especializados para fornecer
+    suporte emocional, integrado aos nossos serviços funerários.
+- question: Como funcionam os serviços de translado de restos mortais para o estrangeiro?
+  answer_template: Gerimos todo o processo, incluindo documentação e logística, para
+    translados internacionais, com conformidade legal garantida.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços no primeiro contato, mostrando
+    preocupação com custos.
+  script: Olá, entendemos que o custo é uma consideração importante. Oferecemos orçamentos
+    personalizados para se adequar ao seu orçamento, com transparência total. Posso
+    ajudá-lo a explorar as opções disponíveis?
+  goal: Encaminhar para uma consulta detalhada sem focar apenas no preço, destacando
+    valor e personalização.
+- trigger: service_inquiry
+  situation: Cliente pede informações sobre serviços específicos, como cremação ou
+    organização completa.
+  script: Com certeza. Temos uma gama de serviços, desde funerais tradicionais até
+    cremação e apoio administrativo. Qual aspecto gostaria de saber mais para melhor
+    atendê-lo?
+  goal: Identificar necessidades específicas do cliente e promover serviços adicionais
+    de forma natural.
+- trigger: urgency_handling
+  situation: Cliente precisa de serviços imediatos devido a um falecimento recente,
+    demonstrando stress e urgência.
+  script: Lamento pela sua perda. Estamos aqui para ajudar 24/7 com compaixão e eficiência.
+    Posso agendar uma consulta urgente para organizar tudo rapidamente e aliviar sua
+    carga?
+  goal: Proporcionar conforto e ação rápida, construindo confiança desde o primeiro
+    contato.
+- trigger: competitor_mention
+  situation: Cliente menciona concorrentes com preços mais baixos, questionando nosso
+    valor.
+  script: Agradeço a comparação. Diferentemente de alguns concorrentes, focamos em
+    personalização e suporte abrangente, usando tecnologia para garantir eficiência
+    sem comprometer a qualidade. Posso mostrar como isso beneficia você?
+  goal: Diferenciação positiva, destacando nossos pontos fortes e valor agregado.
+competitors:
+- name: Funerária Nacional
+  positioning: Líder de mercado com ampla rede nacional e marca estabelecida.
+  strengths:
+  - Grande cobertura geográfica
+  - Reconhecimento de marca
+  - Serviços variados
+  weaknesses:
+  - Preços elevados
+  - Atendimento por vezes impessoal
+  - Processos lentos
+  our_differentiation: Oferecemos atendimento personalizado com tecnologia avançada
+    para maior eficiência e preços competitivos.
+- name: Paz Eterna
+  positioning: Foco em serviços funerários premium e luxuosos.
+  strengths:
+  - Alta qualidade e detalhe
+  - Experiências personalizadas de luxo
+  - Clientele de alto padrão
+  weaknesses:
+  - Acessibilidade limitada devido a custos altos
+  - Pouca flexibilidade em opções básicas
+  our_differentiation: Combinação de qualidade a preços acessíveis, com automação
+    que mantém o toque humano.
+- name: Simplicidade Funerária
+  positioning: Opções econômicas e diretas para funerais simples.
+  strengths:
+  - Preços baixos e transparentes
+  - Processos simplificados e rápidos
+  - Acessível para orçamentos limitados
+  weaknesses:
+  - Serviços limitados e pouca personalização
+  - Suporte pós-venda reduzido
+  our_differentiation: Maior personalização e suporte abrangente, mesmo em planos
+    básicos, graças à nossa tecnologia integrada.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 5000
+  entry_point: 800
+  roi_examples:
+  - scenario: Redução de chamadas manuais para perguntas frequentes, liberando equipe
+      para tarefas críticas.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Automatização de agendamentos e lembretes, diminuindo erros e melhorando
+      a satisfação do cliente.
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  value_anchors:
+  - Economize até 20% no tempo de atendimento com respostas automáticas
+  - Aumente a retenção de clientes através de suporte 24/7 eficiente
+  - Reduza custos operacionais com integrações inteligentes
+market_context:
+  market_size: Estimado em aproximadamente 200 milhões de EUR anuais no setor funerário
+    português.
+  growth_rate: Cerca de 2% ao ano, impulsionado por envelhecimento populacional e
+    mudanças nas preferências.
+  key_trends:
+  - Aumento da preferência por cremação em vez de enterro tradicional
+  - Demanda crescente por serviços personalizados e ecológicos
+  - Adoção de tecnologia digital para gestão e atendimento
+  - Maior atenção à privacidade de dados com conformidade GDPR
+  seasonality:
+    high:
+    - Inverno, devido a maiores taxas de mortalidade por condições de saúde sazonais
+    low:
+    - Verão, com menor incidência de doenças respiratórias e viagens familiares
+typical_objections:
+- objection: É muito caro para o nosso negócio de pequena escala.
+  response: Entendemos. Nosso sistema pode reduzir custos operacionais em até 30%
+    através da automação, pagando-se rapidamente com as economias em mão de obra.
+- objection: Prefiro falar com uma pessoa real, especialmente em momentos sensíveis
+    como funerais.
+  response: Concordamos que o toque humano é crucial. Nosso agente de voz lida com
+    tarefas rotineiras, libertando nossa equipe para oferecer atendimento mais pessoal
+    e empático quando necessário.
+- objection: Não confio em tecnologia para este tipo de serviço, que envolve dados
+    sensíveis.
+  response: Nossa tecnologia é projetada com segurança e empatia, cumprindo rigorosamente
+    com o GDPR para proteger a privacidade dos dados dos clientes. Podemos fornecer
+    garantias e demonstrações.
+- objection: Já temos processos estabelecidos e não vemos necessidade de mudar.
+  response: A mudança pode ser gradual. Começamos com funções simples, como agendamento,
+    para mostrar ganhos de eficiência sem interromper suas operações atuais.
+meta:
+  id: funeral
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

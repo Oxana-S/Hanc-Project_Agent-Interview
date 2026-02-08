@@ -1,0 +1,224 @@
+pain_points:
+- description: A kliensek rendszeresen lemondják vagy áthelyezik az időpontokat rövid
+    határidővel, ami tervezési problémákat okoz.
+  severity: medium
+  solution_hint: Automatizált időpont-kezelés és emlékeztetők küldése.
+- description: A számlázási folyamat manuális, időigényes, és gyakran előfordulnak
+    hibák.
+  severity: medium
+  solution_hint: Számlázási rendszerrel való integráció és automatikus számlakészítés.
+- description: Nehéz egyensúlyt találni az ár és a minőség között a versenyképesség
+    fenntartása érdekében.
+  severity: high
+  solution_hint: Ügyfélközpontú árazási csomagok és ROI-számítások bemutatása.
+- description: Az új ügyfelek megszerzése költséges és bizonytalan, a marketing hatékonysága
+    alacsony.
+  severity: high
+  solution_hint: Leadgenerálás és bejövő hívások kezelése az AI segítségével.
+- description: A GDPR megfelelés és az ügyféladatok kezelése adminisztratív terhet
+    jelent.
+  severity: medium
+  solution_hint: Automatikus GDPR-hozzájárulás-kezelés és adatvédelmi nyilatkozatok.
+- description: A nyersanyagok (pl. memóriakártyák, berendezések) árának ingadozása
+    nehezen kalkulálható költségeket okoz.
+  severity: low
+  solution_hint: Költségkövetési eszközök és riasztások integrálása.
+typical_services:
+- Esküvői fotózás és videózás
+- Portréfotózás
+- Termékfotózás
+- Reklámfilm készítés
+- Eseményfotózás (konferencia, születésnap)
+- Drónfelvételek
+- Utánmunka és színezés
+- Fotókönyv készítés
+- Stúdióbérlés
+- Oktatás és workshopok
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: Csökkenti az adminisztratív terhet és az időpont lemondásokat.
+- name: Alapvető gyakori kérdések (FAQ) kezelése
+  priority: high
+  reason: Azonnali válaszok az ár, szolgáltatások és folyamatok kérdéseire.
+- name: Lead minősítés és ütemezés
+  priority: medium
+  reason: Kiszűri a komoly érdeklődőket és időpontot egyeztet velük.
+- name: Számla státusz lekérdezés
+  priority: medium
+  reason: Csökkenti a pénzügyi adminisztrációval kapcsolatos hívások számát.
+- name: Projekt állapotfrissítés
+  priority: low
+  reason: Tájékoztatja az ügyfeleket az utánmunka folyamatáról.
+- name: Visszahívás kérések gyűjtése
+  priority: low
+  reason: Nem szakítja meg a munkafolyamatot, de minden leadet rögzít.
+typical_integrations:
+- name: Számlázó szoftver
+  examples:
+  - Billingo
+  - Szamlazz.hu
+  priority: high
+- name: Naptár alkalmazás
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: high
+- name: CRM rendszer
+  examples:
+  - Trengo
+  - Flowlu
+  priority: medium
+- name: Projektmenedzsment eszköz
+  examples:
+  - Trello
+  - Asana
+  priority: low
+- name: Céginformációs adatbázis
+  examples:
+  - Opten
+  - Céginfó
+  priority: low
+industry_faq:
+- question: Mennyi idő alatt kapom meg a kész fotókat/videót?
+  answer_template: A kézhezvételi idő a projekt típusától függ. Általában az eseményfotózás
+    után 2-3 hét, a videóanyagoknál pedig 4-6 hét. Pontos időt a megrendeléskor egyeztetünk.
+- question: Milyen eszközökkel dolgoztok?
+  answer_template: Professionális Canon, Sony és Nikon felszereléseket használunk,
+    beleértve teljes vágó- és utómunka szoftvereket is, hogy a legjobb minőséget nyújthassuk.
+- question: Mi történik, ha esik az eső az esküvőnapon?
+  answer_template: Rugalmasak vagyunk! Tartalék beltéri helyszíneket javasolunk, és
+    kreatív megoldásokkal készülünk a változó időjárásra is. Minden részletről előre
+    egyeztetünk.
+- question: Rendelkeztek biztosítással?
+  answer_template: Igen, minden külső felvételhez kötelező felelősségbiztosítással
+    rendelkezünk. A biztosítási dokumentumokat szívesen megmutatjuk.
+- question: Dolgoztok már együtt híres márkákkal/cégekkel?
+  answer_template: Igen, referencia listánkban szerepelnek ismert hazai márkák és
+    vállalkozások. Konkrét referenciákat szívesen megosztunk személyes egyeztetés
+    során.
+- question: Mi az árrészetek a további képekért/vágásokért?
+  answer_template: Az alapcsomagokban meghatározott számú képet/vágást tartalmazunk.
+    További képek esetén egyértelmű, előre kommunikált árlistát alkalmazunk.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor a potenciális ügyfél árat kér.
+  script: Köszönöm a kérdését! Az árak a projekt összetettségétől függenek. Egy alap
+    portréfotózás 50.000 HUF-tól kezdődik, egy teljes napos esküvői csomag pedig 400.000
+    HUF-tól. Hogy pontos ajánlatot tudjak készíteni, meséljen kérnek egy kicsit a
+    tervezett projektjéről. Milyen eseményről van szó, és mikor lenne?
+  goal: Minősíteni az ügyfelet és részleteket gyűjteni egy személyre szabott ajánlathoz.
+- trigger: service_detail
+  situation: Amikor az ügyfél egy konkrét szolgáltatás részleteire kíváncsi.
+  script: 'Nagyon szívesen! A(z) [szolgáltatás neve] esetében a folyamat a következő:
+    először egyeztetünk az elképzelésekről, majd a felvétel napján professzionális
+    felszereléssel dolgozunk. Ezután válogatunk, utómunka után pedig digitális formában
+    átadjuk a anyagot. Átlagosan [X] heten belül. Szeretne konkrét időpontot egyeztetni
+    egy személyes vagy online konzultációra?'
+  goal: A szolgáltatás értékének bemutatása és egy konkrét következő lépés (konzultáció)
+    megteremtése.
+- trigger: objection_too_expensive
+  situation: Amikor az ügyfél panaszt tesz az árral kapcsolatban.
+  script: Teljesen megértem, hogy fontos a költségvetés. A mi szolgáltatásunk nem
+    csak a felvételről szól, hanem a professzionális utómunkáról, a megbízhatóságról
+    és a magas minőségű végeredményről is, ami hosszú távon megéri. Készíthetek egy,
+    az Ön igényeihez jobban illeszkedő, testreszabott ajánlatot? Vagy esetleg részletfizetési
+    lehetőség is érdekelheti?
+  goal: Az ár értékre történő áthangsúlyozása és alternatívák felkínálása.
+competitors:
+- name: Manna Stúdió
+  positioning: Prémium esküvői és portéfotózás
+  strengths:
+  - Erős márkanév
+  - Kiváló minőség
+  - Széles referencialista
+  weaknesses:
+  - Magas árak
+  - Korlátozott rugalmasság
+  - Hosszú várakozási idők
+  our_differentiation: Gyorsabb, rugalmasabb ügyfélszolgálat AI segítségével és átláthatóbb,
+    modularis árazás.
+- name: Lens Culture Hungary
+  positioning: Kreatív reklám- és termékfotózás
+  strengths:
+  - Erős kreatív csapat
+  - Kiemelkedő művészi minőség
+  - Nagyvállalati ügyfelek
+  weaknesses:
+  - Kis kapacitás
+  - Nagyon specializált
+  - Kevesebb kisebb ügyfél
+  our_differentiation: Skálázható ügyfélkezelés és hatékony adminisztráció, ami kisebb
+    vállalkozásoknak is elérhetővé teszi a professzionális szolgáltatást.
+- name: Freelancer fotósok (Facebook csoportok, Főni)
+  positioning: Alacsony költségvetésű piacszegmens
+  strengths:
+  - Nagyon alacsony árak
+  - Helyi ismeretség
+  - Rugalmasság
+  weaknesses:
+  - Változó minőség
+  - Megbízhatósági kockázat
+  - Korlátozott szolgáltatások
+  our_differentiation: Professzionális, megbízható és GDPR-kompatibilis szolgáltatás
+    standardizált minőséggel és támogatással.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 2000000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Fotós havonta 10 órát tölt adminisztrációval (időpont egyeztetés, számlázás).
+      Az AI ügynök ezt 80%-kal csökkenti.
+    monthly_cost: 20000
+    monthly_savings: 80000
+    payback_months: 0.25
+  value_anchors:
+  - Napi 2 órával több a kreatív munkára, kevesebb adminisztrációval.
+  - Az elveszett ügyfelek száma 30%-kal csökken a gyorsabb válaszidő miatt.
+  - GDPR megfelelés automatizálása, nincs bírságkockázat.
+market_context:
+  market_size: ~25-30 milliárd HUF évente
+  growth_rate: 5-7% évente
+  key_trends:
+  - A rövid, platformra optimalizált videók (pl. TikTok, Instagram Reels) iránti kereslet
+    növekszik.
+  - A drónfelvételek egyre népszerűbbek ingatlanos és esemény fotózásban.
+  - A kisebb, személyre szabott esküvők és események trendje növeli a rugalmas szolgáltatók
+    iránti keresletet.
+  seasonality:
+    high:
+    - május - szeptember (esküvők, nyári események)
+    - november - december (karácsonyi kampányok)
+    low:
+    - január - február
+    - július - augusztus (nyaralási időszak, kivéve esküvő)
+typical_objections:
+- objection: Nincs időm ilyen új technológiákkal foglalkozni.
+  response: Teljesen megértem. Pontosan ezért terveztük úgy, hogy minimális beállítás
+    után magától működik. Egy rövid bemutató során mindent elmagyarázok, és utána
+    már Önnek sem kell foglalkoznia vele.
+- objection: Túl drága a havi díj.
+  response: Ha megnézzük, hogy mennyi időt takarít meg Önnek a napi adminisztrációban,
+    és hogy hány plusz megbízást tud elnyerni a gyorsabb reagálás miatt, a havi díj
+    többszörösen visszajön. Készítek egy személyes megtérülési számítást?
+- objection: A hangügynök nem lesz elég személyes az én ügyfeleimnek.
+  response: 'A hangügynök csak az alapvető, ismétlődő feladatokat veszi át, mint az
+    időpont egyeztetés vagy a gyakori kérdések. A kreatív megbeszélések, a fotózás
+    és a személyes kapcsolattartás továbbra is Önre marad. Így Önnek több ideje marad
+    a legfontosabbra: a kreativitásra és az ügyfelekre.'
+meta:
+  id: photo_video
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

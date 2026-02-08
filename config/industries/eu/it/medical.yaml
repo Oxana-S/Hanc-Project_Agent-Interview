@@ -1,0 +1,275 @@
+aliases:
+- medicina
+- sanità
+- clinica
+- ospedale
+- medico
+- ambulatorio
+- paziente
+- visita
+- diagnosi
+competitors:
+- name: Gruppo San Donato
+  positioning: Grande rete ospedaliera privata
+  strengths:
+  - Ampiezza della rete
+  - Specializzazione in molte aree
+  - Reputazione consolidata
+  weaknesses:
+  - Burocrazia interna
+  - Tempi di attesa lunghi per le prenotazioni telefoniche
+  our_differentiation: Automazione delle prenotazioni 24/7 con integrazione diretta
+    negli slot
+- name: Humanitas
+  positioning: Eccellenza nella ricerca e cura privata
+  strengths:
+  - Tecnologie all'avanguardia
+  - Medici di alto profilo
+  - Forte branding
+  weaknesses:
+  - Prezzi premium
+  - Centro di chiamata spesso sovraccarico
+  our_differentiation: Agente vocale che riduce i costi operativi, permettendo prezzi
+    più competitivi
+- name: Policlinico Gemelli (pubblico/privato)
+  positioning: Policlinico universitario di riferimento
+  strengths:
+  - Prestigio accademico
+  - Costi contenuti nel pubblico
+  - Vasta offerta
+  weaknesses:
+  - Liste d'attesa lunghissime
+  - Servizio al paziente impersonale
+  our_differentiation: Esperienza paziente personalizzata e tempi di risposta immediati
+    per il privato
+industry_faq:
+- answer_template: Mi dica la specialità del medico e una data preferita, verificherò
+    la disponibilità.
+  question: Come posso prenotare una visita?
+- answer_template: Esami del sangue come glicemia, profilo lipidico e colesterolo
+    richiedono il digiuno. L'emocromo è preferibile a digiuno.
+  question: Quali esami del sangue richiedono il digiuno?
+- answer_template: Evitare cibi che producono gas per 2-3 giorni. Il giorno dell'esame,
+    presentarsi a digiuno.
+  question: Come ci si prepara per un'ecografia addominale?
+- answer_template: Sì, siamo aperti il sabato dalle 9:00 alle 13:00. La domenica è
+    attivo solo il servizio di guardia medica.
+  question: Siete aperti nel weekend?
+- answer_template: Sì, offriamo visite domiciliari. Mi dica l'indirizzo e i sintomi
+    per valutare l'urgenza.
+  question: È possibile una visita a domicilio?
+- answer_template: Il costo dipende dallo specialista. Una visita cardiologica di
+    base parte da 120€.
+  question: Quanto costa una visita specialistica?
+- answer_template: Sì, accettiamo il pagamento con carte di credito, bancomat e contanti.
+  question: Accettate pagamenti con carta?
+industry_specifics:
+  compliance:
+  - Rispetto del GDPR (protezione dati personali)
+  - Non fornire consigli medici diagnostici
+  - Casi d'emergenza → trasferire a operatore umano
+  peak_times: []
+  tone:
+  - Calmo e rassicurante
+  - Empatico verso i sintomi
+  - Linguaggio chiaro, evitando tecnicismi inutili
+learnings: []
+market_context:
+  growth_rate: 2-3% annuo
+  key_trends:
+  - Crescita della telemedicina
+  - Invecchiamento della popolazione
+  - Maggiore attenzione alla prevenzione
+  market_size: ~150 miliardi di EUR
+  seasonality:
+    high:
+    - Autunno/Inverno (sindromi influenzali)
+    - Post-vacanze estive (controlli)
+    low:
+    - Agosto (ferie estive)
+    - Festività natalizie
+meta:
+  avg_validation_score: 0.0
+  country: it
+  created_at: '2024-06-15'
+  currency: EUR
+  id: medical
+  language: it
+  languages: []
+  last_updated: '2024-06-15'
+  phone_codes:
+  - '+39'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Rome
+  version: '1.0'
+pain_points:
+- description: Difficoltà a raggiungere l'operatore per prenotare, linee telefoniche
+    sempre occupate
+  severity: high
+  solution_hint: Agente vocale per prenotazioni automatiche 24/7
+- description: Pazienti che dimenticano gli appuntamenti, aumentando le assenze (mancate
+    visite)
+  severity: high
+  solution_hint: Promemoria automatici via SMS/WhatsApp il giorno prima e un'ora prima
+- description: Molte chiamate ripetitive per informazioni base (orari, preparazione
+    esami, indirizzo)
+  severity: medium
+  solution_hint: Gestione automatica delle FAQ comuni
+- description: Operatori sovraccarichi, soprattutto al mattino, con conseguente stress
+    ed errori
+  severity: high
+  solution_hint: Smistamento automatico delle chiamate e gestione delle richieste
+    standard
+- description: Errori nella prenotazione (specialista sbagliato, orario non confermato)
+  severity: medium
+  solution_hint: Procedura guidata di prenotazione con conferma verbale e invio dettagli
+- description: Gestione complessa delle richieste di ricette e referti via telefono
+  severity: medium
+  solution_hint: Agente vocale che raccoglie i dati e le inoltra al sistema gestionale
+- description: Difficoltà nell'organizzare visite domiciliari in modo efficiente
+  severity: low
+  solution_hint: Agente vocale che raccoglie sintomi e indirizzo, ottimizzando il
+    routing del medico
+pricing_context:
+  currency: EUR
+  entry_point: 80
+  roi_examples:
+  - monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+    scenario: Riduzione del 50% del carico telefonico per prenotazioni in una clinica
+      media
+  typical_budget_range:
+  - 200
+  - 1000
+  value_anchors:
+  - Riduci le mancate visite del 30% con promemoria automatici
+  - Libera 20 ore a settimana del personale da compiti ripetitivi
+  - Servizio paziente attivo 24 ore su 24, 7 giorni su 7
+recommended_functions:
+- name: prenotazione
+  priority: high
+  reason: Oltre il 60% delle chiamate è per prenotare o modificare appuntamenti
+- name: promemoria
+  priority: high
+  reason: Riduzione significativa delle mancate visite (no-show)
+- name: faq_informative
+  priority: high
+  reason: Risposte immediate su orari, preparazione esami, costi
+- name: modifica_appuntamento
+  priority: medium
+  reason: Gestione efficiente di cambiamenti e cancellazioni
+- name: visita_domiciliare
+  priority: medium
+  reason: Raccolta dati iniziali per ottimizzare il servizio
+- name: invio_ricette_ricevute
+  priority: low
+  reason: Comodità per pazienti cronici, riducendo chiamate amministrative
+sales_scripts:
+- goal: Superare l'obiezione sul costo dimostrando il ROI immediato
+  script: 'Capisco l''attenzione al budget. Con il nostro agente, cliniche come la
+
+    sua risparmiano in media 1200€ al mese sul costo del personale di
+
+    segreteria, ripagando l''investimento in un mese. Posso mostrarle una
+
+    simulazione basata sul suo volume di chiamate?'
+  situation: Quando il prospect solleva dubbi sul prezzo durante la demo
+  trigger: price_objection
+- goal: Contrastare la percezione che la tecnologia sia fredda e impersonale
+  script: 'Molti pensano che un agente vocale sia impersonale. In realtà, il nostro
+
+    sistema è progettato per essere empatico e accurato, lasciando al suo
+
+    staff più tempo per le interazioni complesse e personali. Migliora
+
+    l''esperienza del paziente, non la sostituisce.'
+  situation: Quando il cliente teme di perdere il contatto umano con i pazienti
+  trigger: impersonal_fear
+- goal: Posizionare la soluzione come moderna e necessaria per rimanere competitivi
+  script: 'Oggi i pazienti si aspettano servizi rapidi e digitali. Cliniche come
+
+    Humanitas stanno già investendo in automazione. Il nostro agente la aiuta
+
+    a competere offrendo prenotazioni 24/7, riducendo al contempo i costi. È un upgrade
+    necessario.'
+  situation: Durante la presentazione iniziale per cliniche private di medie dimensioni
+  trigger: initial_pitch
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Riduzione del 30% delle mancate visite
+  - Automazione del 70% delle prenotazioni telefoniche
+  - Disponibilità 24/7
+  - Soddisfazione pazienti > 4.5/5
+typical_integrations:
+- examples:
+  - Dedalus
+  - CSC
+  - Mille3
+  name: Sistema Informativo Sanitario (SIS)
+  priority: high
+  reason: Accesso in tempo reale a calendari medici, anagrafica pazienti e prenotazioni
+- examples:
+  - Zucchetti
+  - TeamSystem
+  - Argo
+  name: Software Amministrativo/Gestionale
+  priority: medium
+  reason: Integrazione per fatturazione e gestione finanziaria
+- examples:
+  - NFON
+  - Vodafone One Net
+  - TIM
+  name: Centralino VoIP/Telefonia
+  priority: high
+  reason: Ricezione e gestione delle chiamate in entrata
+- examples:
+  - WhatsApp Business
+  - SMS
+  - Email
+  name: Notifiche/Messaggistica
+  priority: high
+  reason: Invio automatico di promemoria e conferme appuntamenti
+- examples:
+  - Google Calendar
+  - Outlook 365
+  name: Calendario
+  priority: medium
+  reason: Sincronizzazione appuntamenti per il personale
+typical_objections:
+- objection: Preferisco parlare con una persona
+  response: 'Certamente, posso trasferirla subito con un operatore. Tuttavia, per
+
+    prenotazioni rapide o informazioni, posso aiutarla immediatamente senza
+
+    attesa.'
+- objection: Ho bisogno di un appuntamento urgente per oggi
+  response: Capisco l'urgenza. Controllo immediatamente se ci sono slot liberi per
+    oggi tra i nostri medici disponibili.
+- objection: Il vostro servizio è troppo costoso
+  response: 'Consideri che il servizio riduce i costi operativi fissi. Posso
+
+    collegarla con un consulente per analizzare un preventivo personalizzato
+
+    basato sul suo risparmio stimato.'
+- objection: Non sono bravo con la tecnologia
+  response: 'Non si preoccupi, il sistema è progettato per essere semplice. Funziona
+
+    come una normale chiamata telefonica. La guiderò passo passo, o possiamo
+
+    organizzare una formazione per il suo staff.'
+typical_services:
+- Visita specialistica ambulatoriale
+- Esami di laboratorio (analisi del sangue, urine)
+- Ecografia
+- Risonanza Magnetica (RM) / Tomografia Computerizzata (TC)
+- Visita odontoiatrica
+- Visita a domicilio
+- Vaccinazioni
+- Fisioterapia e riabilitazione
+- Check-up preventivo
+- Servizio di guardia medica
+_extends: _base/medical

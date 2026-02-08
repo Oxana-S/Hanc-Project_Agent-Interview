@@ -1,0 +1,241 @@
+pain_points:
+- description: Alto custo operacional com salários e insumos veterinários.
+  severity: high
+  solution_hint: Um agente de voz AI pode automatizar tarefas administrativas, reduzindo
+    a necessidade de pessoal e cortando custos.
+- description: Dificuldade em gerenciar agendamentos e evitar no-shows.
+  severity: medium
+  solution_hint: Agente de voz AI pode agendar consultas, enviar lembretes automáticos
+    e reconfirmar compromissos, melhorando a taxa de comparecimento.
+- description: Baixa retenção de clientes devido à falta de follow-up e comunicação.
+  severity: medium
+  solution_hint: Agente de voz AI pode fazer chamadas pós-consulta, coletar feedback
+    e enviar promoções personalizadas, aumentando a fidelidade.
+- description: Desafios na conformidade com a LGPD para proteção de dados dos clientes.
+  severity: high
+  solution_hint: Agente de voz AI pode ser configurado para seguir protocolos de privacidade,
+    garantindo o manuseio seguro de dados e a conformidade.
+- description: Competição intensa de clínicas de baixo custo e pet shops.
+  severity: medium
+  solution_hint: Agente de voz AI pode oferecer atendimento 24/7 e diferenciação no
+    serviço, ajudando a atrair e reter clientes.
+- description: Dificuldade em gerenciar finanças e fluxo de caixa.
+  severity: low
+  solution_hint: Agente de voz AI pode integrar-se a sistemas de pagamento, facilitando
+    cobranças e melhorando a gestão financeira.
+typical_services:
+- Consulta de rotina
+- Vacinação
+- Cirurgia veterinária
+- Exames laboratoriais
+- Atendimento de emergência
+- Banho e tosa
+- Odontologia veterinária
+- Nutrição e dietas especiais
+- Fisioterapia animal
+- Hospedagem e cuidados diários
+recommended_functions:
+- name: Agendamento inteligente de consultas
+  priority: high
+  reason: Reduz no-shows e otimiza a agenda dos veterinários, aumentando a eficiência.
+- name: Lembretes automáticos por voz
+  priority: high
+  reason: Melhora a taxa de comparecimento e a comunicação com os clientes.
+- name: Atendimento ao cliente 24/7
+  priority: medium
+  reason: Oferece suporte contínuo, diferenciando a clínica e aumentando a satisfação.
+- name: Integração com sistemas de pagamento
+  priority: medium
+  reason: Facilita transações e melhora o fluxo de caixa, reduzindo atrasos.
+- name: Coleta de feedback pós-consulta
+  priority: low
+  reason: Ajuda a melhorar serviços e identificar áreas de oportunidade.
+- name: Marketing automatizado por voz
+  priority: low
+  reason: Promove serviços e campanhas, aumentando a visibilidade e conversões.
+typical_integrations:
+- name: Sistemas de gestão veterinária
+  examples:
+  - SoftVet
+  - VetSys
+  - Clínica Fácil
+  priority: high
+- name: Plataformas de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: medium
+- name: Sistemas de agenda
+  examples:
+  - Google Agenda
+  - Agenda.vet
+  - Calendly
+  priority: medium
+- name: CRMs
+  examples:
+  - RD Station
+  - Salesforce
+  - HubSpot
+  priority: low
+- name: Sistemas de telemedicina
+  examples:
+  - TeleVet
+  - VetNow
+  priority: low
+industry_faq:
+- question: Quanto custa uma consulta veterinária na sua clínica?
+  answer_template: Os preços variam conforme o serviço. Para uma consulta de rotina,
+    o custo médio é de R$ 100 a R$ 200. Posso ajudá-lo a agendar uma avaliação personalizada.
+- question: Vocês aceitam planos de saúde animal?
+  answer_template: Sim, trabalhamos com diversos planos de saúde animal. Posso verificar
+    a cobertura do seu plano e agendar uma consulta conforme necessário.
+- question: Como posso agendar uma consulta de emergência?
+  answer_template: Para emergências, estamos disponíveis 24/7. Posso conectar você
+    diretamente com nosso veterinário de plantão ou agendar uma visita imediata.
+- question: Quais métodos de pagamento são aceitos?
+  answer_template: Aceitamos cartões de crédito, débito, PIX e transferências bancárias.
+    Também oferecemos opções de parcelamento.
+- question: Vocês fazem atendimento domiciliar?
+  answer_template: Sim, oferecemos serviços de atendimento domiciliar para casos específicos.
+    Posso agendar uma visita conforme a disponibilidade.
+- question: Como funciona o processo de vacinação?
+  answer_template: A vacinação é agendada conforme o calendário do animal. Posso ajudá-lo
+    a marcar uma consulta e enviar lembretes para as doses necessárias.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços de serviços veterinários.
+  script: Olá! Os preços variam conforme o serviço, mas para consultas de rotina,
+    partimos de R$ 150. Oferecemos um agente de voz AI que pode reduzir custos operacionais
+    em até 20%. Gostaria de agendar uma demonstração gratuita?
+  goal: Converter a pergunta em um agendamento para demonstração do agente AI.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como emergências.
+  script: Olá! Oferecemos atendimento de emergência 24/7 com suporte do nosso agente
+    de voz AI para agendamentos rápidos. Posso conectá-lo agora ou agendar uma consulta?
+  goal: Facilitar o agendamento imediato ou gerar um lead.
+- trigger: availability_check
+  situation: Quando um cliente quer verificar horários disponíveis.
+  script: Olá! Verifiquei nossa agenda e temos horários esta semana. Nosso agente
+    de voz AI pode agendar automaticamente para você. Posso prosseguir com o agendamento?
+  goal: Concluir o agendamento e promover a automação.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona outras clínicas ou serviços.
+  script: Entendo que há opções no mercado. Diferentemente de outras clínicas, nosso
+    agente de voz AI oferece atendimento personalizado 24/7 e integração completa,
+    melhorando a experiência do cliente. Gostaria de saber mais?
+  goal: Diferenciação e conversão em venda.
+competitors:
+- name: Petz
+  positioning: Rede grande de pet shops com serviços veterinários acessíveis.
+  strengths:
+  - Ampla rede física
+  - preços competitivos
+  - variedade de produtos
+  weaknesses:
+  - Atendimento impessoal
+  - filas longas
+  - foco em vendas
+  our_differentiation: Oferecemos um agente de voz AI para atendimento personalizado
+    e eficiente, reduzindo esperas e melhorando o cuidado.
+- name: Cobasi
+  positioning: Similar ao Petz, com foco em produtos e serviços veterinários.
+  strengths:
+  - Presença online forte
+  - programas de fidelidade
+  - serviços integrados
+  weaknesses:
+  - Limitado em atendimento especializado
+  - dependência de tecnologia básica
+  our_differentiation: Nosso agente AI fornece suporte avançado 24/7, integração profunda
+    com sistemas locais e foco na experiência do cliente.
+- name: Clínicas veterinárias independentes
+  positioning: Pequenas clínicas locais com atendimento personalizado.
+  strengths:
+  - Relação próxima com clientes
+  - flexibilidade
+  - conhecimento local
+  weaknesses:
+  - Recursos limitados
+  - falta de escala
+  - dificuldades tecnológicas
+  our_differentiation: Automatizamos tarefas administrativas com AI, permitindo que
+    clínicas independentes compitam em eficiência sem perder o toque pessoal.
+- name: Hospital Veterinário da USP
+  positioning: Instituição acadêmica de alto padrão com serviços especializados.
+  strengths:
+  - Expertise técnica
+  - equipamentos avançados
+  - reputação
+  weaknesses:
+  - Preços elevados
+  - acesso limitado
+  - burocracia
+  our_differentiation: Oferecemos soluções AI acessíveis que melhoram a eficiência
+    operacional, ideal para clínicas que buscam escalabilidade sem altos custos.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 3000
+  entry_point: 200
+  roi_examples:
+  - scenario: Redução de no-shows através de lembretes automáticos.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Automatização de agendamentos para liberar tempo da equipe.
+    monthly_cost: 300
+    monthly_savings: 800
+    payback_months: 2
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação AI.
+  - Aumente a taxa de comparecimento em 25% com lembretes inteligentes.
+  - Ofereça atendimento 24/7 sem custos adicionais de pessoal.
+market_context:
+  market_size: Estimado em R$ 10 bilhões anuais no setor veterinário brasileiro.
+  growth_rate: 8% ao ano, impulsionado pelo aumento da posse de pets.
+  key_trends:
+  - Digitalização de serviços veterinários com telemedicina.
+  - Crescimento do humanização de pets e gastos premium.
+  - Adoção de tecnologias AI para eficiência operacional.
+  - Conformidade com LGPD se tornando crítica.
+  seasonality:
+    high:
+    - Férias escolares
+    - feriados prolongados
+    - inverno
+    low:
+    - Carnaval
+    - início do ano letivo
+typical_objections:
+- objection: É muito caro para minha clínica pequena.
+  response: Entendo o custo, mas nosso agente AI pode pagar-se em poucos meses com
+    a economia em pessoal e aumento de agendamentos. Oferecemos um plano inicial acessível
+    de R$ 200/mês.
+- objection: Não confio em tecnologia para atendimento ao cliente.
+  response: Nossa solução é projetada para complementar, não substituir, o atendimento
+    humano. Ela lida com tarefas repetitivas, liberando sua equipe para focar no cuidado
+    animal, e inclui suporte técnico local.
+- objection: Já tenho um sistema de gestão que funciona.
+  response: Que ótimo! Nosso agente AI pode integrar-se ao seu sistema existente,
+    como SoftVet ou VetSys, para adicionar funcionalidades de voz e automação, melhorando
+    ainda mais a eficiência.
+- objection: Meus clientes preferem falar com pessoas.
+  response: Muitos clientes valorizam a conveniência 24/7. Nosso agente AI oferece
+    um atendimento natural e pode transferir para um humano quando necessário, mantendo
+    a qualidade do serviço.
+meta:
+  id: veterinary
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

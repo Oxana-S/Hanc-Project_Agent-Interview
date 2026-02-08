@@ -1,0 +1,215 @@
+pain_points:
+- description: Magas ügyfélszolgálati költségek a játékiparban.
+  severity: high
+  solution_hint: AI hangügynök automatizálhatja a gyakori kérdéseket, csökkentve a
+    személyzet igényét.
+- description: Nehézségek a játékkiadások során fellépő csúcsterhelések kezelésében.
+  severity: high
+  solution_hint: Skálázható AI rendszer kezeli a megnövekedett forgalmat anélkül,
+    hogy további erőforrásokat igényelne.
+- description: Nyelvi akadályok a nemzetközi játékosokkal való kommunikációban.
+  severity: medium
+  solution_hint: Többnyelvű AI hangügynök biztosítja a zökkenőmentes kommunikációt
+    különböző nyelveken.
+- description: GDPR megfelelőség biztosítása a játékos adatok kezelésében.
+  severity: high
+  solution_hint: AI ügynök integrált GDPR ellenőrzéseket végez, automatikusan kezelve
+    az adatvédelmi kérelmeket.
+- description: Helyi fizetési rendszerekkel való integráció kihívásai.
+  severity: medium
+  solution_hint: AI rendszer könnyen integrálható helyi fizetési átjárókkal, mint
+    az OTP Simple vagy Barion.
+- description: Verseny a globális játékcégekkel.
+  severity: high
+  solution_hint: Költséghatékony AI megoldásokkal javítható a versenyképesség.
+- description: Közösségkezelés és játékos visszajelzések hatékony kezelése.
+  severity: medium
+  solution_hint: AI elemzi a visszajelzéseket és automatikusan válaszol, növelve a
+    játékos elégedettséget.
+typical_services:
+- Játékfejlesztés
+- Felhasználói támogatás
+- Közösségkezelés
+- Pénzügyi tranzakciók kezelése
+- Játékmarketing
+- Játéküzemeltetés
+- Adatelemzés
+- Hibakeresés és javítás
+- Többnyelvű lokalizáció
+- E-sport események szervezése
+recommended_functions:
+- name: Automatikus ügyfélszolgálat
+  priority: high
+  reason: Csökkenti az ügyfélszolgálati költségeket és javítja a válaszidőt.
+- name: Játékbeli segítség
+  priority: high
+  reason: Növeli a játékos élményt és csökkenti a támogatási igényeket.
+- name: Rendelésfeldolgozás
+  priority: medium
+  reason: Automatizálja a vásárlási folyamatokat, csökkentve a hibák számát.
+- name: GDPR megfelelőség ellenőrzése
+  priority: high
+  reason: Biztosítja a jogszabályi követelmények teljesítését.
+- name: Többnyelvű támogatás
+  priority: medium
+  reason: Kiterjeszti a piaci elérést különböző régiókba.
+- name: Közösség monitorozás
+  priority: low
+  reason: Segít a játékos visszajelzések gyűjtésében és elemzésében.
+typical_integrations:
+- name: Fizetési rendszerek
+  examples:
+  - OTP Simple
+  - Barion
+  - PayPal
+  priority: high
+- name: Ügyfélszolgálati szoftver
+  examples:
+  - Zendesk
+  - Freshdesk
+  - LocalSupport HU
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - Magyar CRM
+  priority: medium
+- name: Játékmotorok
+  examples:
+  - Unity
+  - Unreal Engine
+  priority: high
+- name: Analitikai eszközök
+  examples:
+  - Google Analytics
+  - Mixpanel
+  - Helyi analitika
+  priority: medium
+industry_faq:
+- question: Mennyibe kerül egy játékfejlesztési projekt?
+  answer_template: A költség a játék összetettségétől függ, általában 5-50 millió
+    HUF között mozog. Kérjük, vegye fel velünk a kapcsolatot egy személyre szabott
+    árajánlatért.
+- question: Hogyan kezelitek a GDPR követelményeket?
+  answer_template: AI hangügynökünk automatikusan kezeli az adatvédelmi kérelmeket
+    és biztosítja a megfelelőséget az európai szabályozásoknak.
+- question: Támogattok mobil játékfejlesztést?
+  answer_template: Igen, szolgáltatásaink közé tartozik a mobil játékfejlesztés iOS
+    és Android platformokra.
+- question: Mennyi időt vesz igénybe egy játék fejlesztése?
+  answer_template: A fejlesztési idő a projekt hatókörétől függ, általában 6-18 hónap.
+    Részletes idővonalat készítünk minden projekthez.
+- question: Milyen fizetési módokat fogadtok el?
+  answer_template: Támogatjuk a helyi fizetési módokat, mint az OTP Simple és Barion,
+    valamint nemzetközi opciókat, mint a PayPal.
+- question: Hogyan javítjátok a játékos elégedettséget?
+  answer_template: AI hangügynökünk gyors és pontos válaszokat nyújt, növelve a játékos
+    elégedettséget és csökkentve a vásárlói elfordulást.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy leendő ügyfél árakat kér a szolgáltatásokról.
+  script: Köszönöm a kérdését! A játékfejlesztési és ügyfélszolgálati automatizálási
+    szolgáltatásaink árai a projekt méretétől és igényeitől függenek. Általában 500
+    ezer HUF-tól kezdődnek, és a befektetés gyorsan megtérül a megnövelt hatékonyság
+    révén. Szeretne egy személyre szabott árajánlatot kérni?
+  goal: Árazás átadása és további érdeklődés felkeltése.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél más cégeket említ.
+  script: Értem, hogy más opciókat is fontolgat. Mi különbözünk azáltal, hogy modern
+    AI-alapú megoldásokat kínálunk, amelyek skálázhatók és költséghatékonyak. Emellett
+    helyi piaci ismereteink és GDPR megfelelőségünk előnyt jelent. Szeretne többet
+    megtudni a konkrét előnyeinkről?
+  goal: Kiemelni a versenyelőnyöket és az értékátadást.
+- trigger: roi_doubt
+  situation: Amikor az ügyfél kételkedik a megtérülésben.
+  script: 'Teljesen megértem a aggodalmat. Mutatok egy példát: egy ügyfelünk bevezetett
+    egy AI hangügynököt, ami havonta 200 ezer HUF-ba került, de 500 ezer HUF megtakarítást
+    hozott az ügyfélszolgálati költségekben, így a megtérülés kevesebb mint egy hónap
+    volt. Szeretnék részletesebb számításokat mutatni?'
+  goal: Bizonyítani a ROI-t és bizalmat építeni.
+competitors:
+- name: GameDev Hungary
+  positioning: Helyi játékfejlesztő és üzemeltető cég.
+  strengths:
+  - Erős helyi jelenlét
+  - Alacsonyabb árak
+  - Ismerik a magyar piacot
+  weaknesses:
+  - Korlátozott nemzetközi tapasztalat
+  - Kevesebb AI integráció
+  our_differentiation: Fejlett AI hangügynökök és skálázható felhőalapú megoldások.
+- name: Budapest Gaming Studio
+  positioning: Specializált mobil játékfejlesztő.
+  strengths:
+  - Mobil játékok szakértelme
+  - Kreatív tervezés
+  weaknesses:
+  - Szűk szolgáltatási portfólió
+  - Gyenge ügyfélszolgálat automatizálás
+  our_differentiation: Átfogó automatizálási szolgáltatások és többplatformos támogatás.
+- name: Central European Games
+  positioning: Regionális játékkiadó.
+  strengths:
+  - Széles elosztási hálózat
+  - Nagyobb források
+  weaknesses:
+  - Lassú döntéshozatal
+  - Magas költségek
+  our_differentiation: Gyors és költséghatékony AI megoldások, testreszabható szolgáltatások.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 1000000
+  - 100000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Automatikus ügyfélszolgálat bevezetése egy játékcég számára
+    monthly_cost: 200000
+    monthly_savings: 500000
+    payback_months: 0.4
+  value_anchors:
+  - Csökkentse az ügyfélszolgálati költségeket akár 60%-kal
+  - Növelje a játékos elégedettséget 40%-kal
+  - Gyorsabb válaszidő 24/7
+market_context:
+  market_size: 70 milliárd HUF
+  growth_rate: 12% évente
+  key_trends:
+  - Mobil játékok gyors növekedése
+  - Cloud gaming terjedése Magyarországon
+  - E-sport versenyek népszerűsége
+  - AI integráció a játékfejlesztésben
+  seasonality:
+    high:
+    - Karácsonyi időszak
+    - Nyári szünet
+    low:
+    - Január
+    - Szeptember iskolakezdéskor
+typical_objections:
+- objection: Túl drága a szolgáltatás.
+  response: Megértem, de fontos mérlegelni a hosszú távú megtérülést. AI megoldásainkkal
+    jelentős költségmegtakarítás érhető el, és a befektetés gyakran egy év alatt megtérül.
+- objection: Nem bízom az AI technológiában.
+  response: Teljesen érthető. AI hangügynökeink emberi felügyelet alatt működnek,
+    és folyamatosan fejlesztjük őket a pontosság és megbízhatóság érdekében. Mutathatok
+    referenciákat elégedett ügyfelektől.
+- objection: Már van ügyfélszolgálati csapatunk.
+  response: Kiváló! AI ügynökünk kiegészítheti a csapatot, kezelve a rutin feladatokat,
+    így a csapat a komplexebb kérdésekre koncentrálhat. Ez növeli a teljesítményt
+    és csökkenti a terhelést.
+meta:
+  id: gaming
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

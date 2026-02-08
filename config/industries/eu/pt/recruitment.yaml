@@ -1,0 +1,234 @@
+pain_points:
+- description: Alto custo do recrutamento tradicional, especialmente para posições
+    especializadas.
+  severity: high
+  solution_hint: O agente de voz pode automatizar o pré-seleção, reduzindo o tempo
+    e custo por candidato.
+- description: Dificuldade em encontrar candidatos com competências técnicas específicas
+    no mercado português.
+  severity: high
+  solution_hint: O agente pode realizar triagem inicial baseada em keywords, identificando
+    perfis rapidamente.
+- description: Tempo excessivo gasto em entrevistas telefónicas e agendamento de reuniões.
+  severity: medium
+  solution_hint: Automatizar chamadas de agendamento e triagem com IA, liberando recursos
+    humanos.
+- description: Conformidade com o GDPR e leis laborais portuguesas no tratamento de
+    dados de candidatos.
+  severity: high
+  solution_hint: O agente pode ser configurado para seguir protocolos de privacidade,
+    garantindo conformidade automática.
+- description: Competição intensa com grandes agências de recrutamento que dominam
+    o mercado.
+  severity: medium
+  solution_hint: Oferecer soluções de baixo custo e alta eficiência para PMEs, diferenciando-se
+    pela automação.
+- description: Gestão ineficiente de bases de dados de candidatos, levando a perdas
+    de talento.
+  severity: low
+  solution_hint: Integrar com sistemas de ATS para atualização automática e follow-up
+    inteligente.
+typical_services:
+- Recrutamento e seleção
+- Headhunting para posições executivas
+- Outplacement e transição de carreira
+- Consultoria em recursos humanos
+- Gestão de talentos e retenção
+- Avaliação de competências e assessment
+- Employer branding e atração de talento
+- Serviços de trabalho temporário
+- Formação e desenvolvimento profissional
+- Apoio à integração e onboarding
+recommended_functions:
+- name: Triagem inicial de candidatos
+  priority: high
+  reason: Reduz significativamente o tempo de recrutamento, focando apenas nos candidatos
+    mais relevantes.
+- name: Agendamento automático de entrevistas
+  priority: high
+  reason: Otimiza a logística de recrutamento, eliminando conflitos de horários e
+    follow-ups manuais.
+- name: Resposta a FAQs de candidatos
+  priority: medium
+  reason: Melhora a experiência do candidato e libera a equipa para tarefas de maior
+    valor.
+- name: Qualificação de leads para serviços de RH
+  priority: medium
+  reason: Aumenta a eficácia das vendas, identificando necessidades específicas das
+    empresas.
+- name: Lembretes automáticos para entrevistas
+  priority: low
+  reason: Reduz o número de faltas e atrasos, melhorando a eficiência operacional.
+- name: Atualização de bases de dados de candidatos
+  priority: low
+  reason: Mantém a informação atualizada, facilitando recrutamentos futuros.
+typical_integrations:
+- name: Sistemas de ATS (Applicant Tracking Systems)
+  examples:
+  - Taleo
+  - Workday
+  - SAP SuccessFactors
+  priority: high
+- name: CRM (Customer Relationship Management)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Microsoft Dynamics
+  priority: medium
+- name: ERP (Enterprise Resource Planning)
+  examples:
+  - Primavera
+  - SAP
+  - Oracle
+  priority: medium
+- name: Ferramentas de comunicação
+  examples:
+  - Microsoft Teams
+  - Zoom
+  - Skype
+  priority: low
+- name: Plataformas de job boards locais
+  examples:
+  - Net-Empregos
+  - Indeed Portugal
+  - Sapo Emprego
+  priority: low
+industry_faq:
+- question: Como é que o vosso agente de voz pode ajudar no recrutamento?
+  answer_template: O nosso agente de voz automatiza a triagem inicial de candidatos,
+    agendamento de entrevistas e resposta a perguntas frequentes, reduzindo custos
+    e tempo em até 30%.
+- question: É compatível com os nossos sistemas de RH existentes?
+  answer_template: Sim, integra-se com sistemas de ATS, CRM e ERP comuns em Portugal,
+    como Primavera ou SAP, sem interrupção dos processos atuais.
+- question: Como garantem a conformidade com o GDPR?
+  answer_template: Configuramos o agente para processar dados apenas com consentimento
+    explícito, seguindo todas as normas de proteção de dados da UE e Portugal.
+- question: Qual é o custo inicial para implementação?
+  answer_template: Oferecemos planos flexíveis a partir de 50 EUR por mês, adaptados
+    ao tamanho da sua empresa, com ROI rápido através de poupanças em tempo.
+- question: Conseguem lidar com recrutamento para nichos específicos?
+  answer_template: Sim, personalizamos o agente para usar terminologia técnica e triar
+    candidatos com competências especializadas, como IT ou engenharia.
+- question: Quanto tempo demora a configurar o serviço?
+  answer_template: A implementação básica leva 1-2 semanas, incluindo treino do agente
+    para o vosso contexto e integrações necessárias.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Compreendemos a preocupação com custos. Oferecemos soluções a partir de
+    50 EUR por mês, que podem reduzir os vossos gastos com recrutamento em até 20%
+    através da automação. Posso detalhar um plano personalizado?
+  goal: Converter a objeção de preço em uma oportunidade para demonstrar valor e ROI.
+- trigger: service_inquiry
+  situation: Quando um cliente expressa interesse nos serviços após uma apresentação.
+  script: Excelente! Para começar, podemos configurar um teste gratuito de 14 dias
+    para a triagem de candidatos. Isso vai mostrar como poupamos tempo na vossa equipa.
+    Que tal agendarmos uma demonstração?
+  goal: Fechar uma próxima ação, como uma demonstração ou teste, para avançar no processo
+    de venda.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente, como a Randstad.
+  script: Entendo que a Randstad é uma opção. No entanto, a nossa solução de IA foca
+    em automação de baixo custo para PMEs, oferecendo mais flexibilidade e integração
+    rápida. Gostaria de comparar os benefícios específicos?
+  goal: Diferencia o nosso produto, destacando vantagens únicas para o cliente.
+- trigger: urgency_signal
+  situation: Quando o cliente indica pressa, como 'precisamos contratar rapidamente'.
+  script: Perfeito! O nosso agente pode acelerar o processo, realizando triagem 24/7
+    e agendando entrevistas em horas. Em poucos dias, terá candidatos qualificados.
+    Vamos começar?
+  goal: Capitalizar a urgência para fechar a venda rapidamente.
+competitors:
+- name: Randstad Portugal
+  positioning: Líder no mercado de recrutamento temporário e permanente.
+  strengths:
+  - Amplia rede de candidatos e clientes
+  - Branding forte e reconhecido
+  - Serviços completos de RH
+  weaknesses:
+  - Custos elevados para PMEs
+  - Processos menos ágeis e personalizados
+  our_differentiation: Oferecemos automação com IA a preços acessíveis, focada em
+    eficiência e integração rápida para PMEs.
+- name: Michael Page Portugal
+  positioning: Especializado em recrutamento para posições médias e executivas.
+  strengths:
+  - Foco em nichos de alta especialização
+  - Consultoria personalizada
+  - Presença global
+  weaknesses:
+  - Preços premium, menos acessíveis
+  - Lentidão em processos automatizados
+  our_differentiation: Automatizamos tarefas repetitivas com IA, reduzindo tempo e
+    custo, enquanto mantemos qualidade na triagem.
+- name: Hays Portugal
+  positioning: Agência de recrutamento com forte presença em setores como IT e construção.
+  strengths:
+  - Expertise em setores específicos
+  - Base de dados extensa de candidatos
+  - Serviços de assessment
+  weaknesses:
+  - Dependência de métodos tradicionais
+  - Integração tecnológica limitada
+  our_differentiation: Integração com sistemas locais e automação de voz para processos
+    mais ágeis e modernos.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Uma PME que gasta 100 horas por mês em triagem manual.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Reduza o tempo de recrutamento em 30% com automação de IA.
+  - Poupe até 500 EUR por mês em custos operacionais.
+  - ROI garantido em menos de 3 meses para a maioria dos clientes.
+market_context:
+  market_size: 200 milhões EUR por ano
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento da digitalização e uso de IA no recrutamento.
+  - Crescimento do teletrabalho, expandindo o pool de candidatos.
+  - Ênfase na conformidade com GDPR e sustentabilidade em RH.
+  seasonality:
+    high:
+    - Setembro a Novembro (pós-férias, contratações para ano novo)
+    - Janeiro a Março (planeamento anual, novos orçamentos)
+    low:
+    - Julho e Agosto (período de férias, redução de atividade)
+    - Dezembro (fim de ano, encerramentos)
+typical_objections:
+- objection: Já temos processos estabelecidos e não precisamos de automação.
+  response: Entendo. No entanto, a automação pode complementar os vossos processos,
+    libertando a equipa para tarefas estratégicas e reduzindo erros. Podemos fazer
+    um teste sem compromisso?
+- objection: Os custos são muito altos para o nosso orçamento.
+  response: Com planos a partir de 50 EUR por mês, o ROI é rápido através de poupanças
+    em tempo. Posso mostrar um cálculo personalizado para o vosso caso?
+- objection: Não confiamos em IA para lidar com candidatos.
+  response: O nosso agente é configurado com supervisão humana e segue protocolos
+    éticos. Já ajudou várias empresas em Portugal sem problemas. Temos referências
+    disponíveis.
+- objection: A implementação parece complicada e demorada.
+  response: A configuração é simples e levamos apenas 1-2 semanas, com suporte total.
+    Garantimos uma transição suave sem interrupções.
+meta:
+  id: recruitment
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

@@ -1,0 +1,245 @@
+pain_points:
+- description: Scarsità di personale qualificato nel settore dell'assistenza agli
+    anziani, che porta a difficoltà nel coprire i turni e mantenere la qualità del
+    servizio.
+  severity: high
+  solution_hint: L'agente vocale AI può gestire la programmazione automatica dei turni,
+    riducendo la dipendenza dal personale amministrativo.
+- description: Elevati costi operativi per la gestione delle strutture e dei servizi
+    a domicilio, inclusi costi per energia e forniture.
+  severity: high
+  solution_hint: Automatizzazione delle chiamate di routine e dei promemoria per ridurre
+    il tempo del personale e ottimizzare le risorse.
+- description: Complessità nella conformità al GDPR per la gestione dei dati sanitari
+    sensibili degli anziani.
+  severity: medium
+  solution_hint: L'agente vocale AI può integrare sistemi sicuri per la raccolta e
+    archiviazione dei dati, assicurando il rispetto del GDPR.
+- description: Difficoltà nel monitoraggio continuo delle condizioni di salute degli
+    anziani, specialmente in caso di emergenze notturne.
+  severity: high
+  solution_hint: Implementazione di funzioni vocali per chiamate di emergenza e monitoraggio
+    remoto tramite sensori vocali.
+- description: Basso tasso di adozione tecnologica da parte del personale anziano
+    o meno esperto, che rallenta l'efficienza.
+  severity: medium
+  solution_hint: Interfaccia vocale intuitiva che richiede una formazione minima,
+    facilitando l'uso da parte di tutto il personale.
+- description: Gestione inefficiente delle prenotazioni e delle richieste dei familiari,
+    con tempi di risposta lunghi.
+  severity: medium
+  solution_hint: Automatizzazione delle risposte alle FAQ e gestione delle prenotazioni
+    attraverso l'agente vocale.
+typical_services:
+- Assistenza domiciliare per anziani
+- Badante a tempo pieno o part-time
+- Servizi infermieristici a domicilio
+- Centri diurni per anziani
+- Residenze assistite (RSA)
+- Teleassistenza 24/7
+- Trasporto medico per anziani
+- Supporto psicologico e sociale
+- Servizi di fisioterapia a domicilio
+- Gestione della terapia farmacologica
+recommended_functions:
+- name: Prenotazione appuntamenti automatica
+  priority: high
+  reason: Riduce il carico di lavoro amministrativo e migliora l'efficienza nella
+    gestione delle visite.
+- name: Chiamate di emergenza vocali
+  priority: high
+  reason: Garantisce una risposta immediata in caso di crisi, aumentando la sicurezza
+    degli anziani.
+- name: Promemoria per farmaci e terapie
+  priority: medium
+  reason: Aiuta a prevenire errori nell'assunzione di medicinali, migliorando la salute
+    degli assistiti.
+- name: Raccolta feedback da familiari
+  priority: low
+  reason: Migliora la soddisfazione del cliente e fornisce dati per ottimizzare i
+    servizi.
+- name: Integrazione con sistemi sanitari locali
+  priority: high
+  reason: Facilita lo scambio di informazioni mediche, assicurando cure coordinate.
+- name: Gestione fatturazione e pagamenti
+  priority: medium
+  reason: Semplifica i processi finanziari, riducendo errori e ritardi.
+typical_integrations:
+- name: Sistemi di gestione sanitaria
+  examples:
+  - Millewin
+  - Dedalus
+  - SELMA
+  priority: high
+- name: Software CRM per assistenza clienti
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - Aruba
+  priority: medium
+- name: Piattaforme di telemedicina
+  examples:
+  - Doctor@Home
+  - Teledoc
+  - Medici Online
+  priority: high
+- name: Sistemi di fatturazione elettronica
+  examples:
+  - Fatture in Cloud
+  - Aruba Fatturazione
+  - SDI
+  priority: medium
+- name: App per monitoraggio remoto
+  examples:
+  - Senior App
+  - MyCare
+  - Vital Signs Monitor
+  priority: low
+industry_faq:
+- question: Come garantite la privacy dei dati degli anziani secondo il GDPR?
+  answer_template: Utilizziamo sistemi crittografati e protocolli sicuri per gestire
+    i dati, assicurando la piena conformità al GDPR in ogni fase.
+- question: Quali servizi sono inclusi nell'assistenza domiciliare?
+  answer_template: Offriamo servizi personalizzati come badante, infermieristica,
+    pulizie e compagnia, adattati alle esigenze specifiche di ogni anziano.
+- question: Quanto costa un servizio di teleassistenza?
+  answer_template: I costi partono da 50€ al mese per servizi base, con pacchetti
+    personalizzabili fino a 200€ al mese per funzionalità avanzate.
+- question: Come funziona in caso di emergenza notturna?
+  answer_template: Il nostro agente vocale può attivare chiamate automatiche ai soccorsi
+    o ai familiari, garantendo una risposta immediata 24/7.
+- question: Potete integrare il sistema con il nostro software esistente?
+  answer_template: Sì, integriamo facilmente con sistemi come Millewin o Zucchetti,
+    per un flusso di lavoro ottimizzato senza interruzioni.
+- question: È necessaria una formazione specifica per il personale?
+  answer_template: No, l'interfaccia vocale è intuitiva e forniamo supporto iniziale
+    per garantire un uso semplice e immediato.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui prezzi durante una
+    chiamata iniziale.
+  script: Grazie per la domanda. I nostri servizi partono da un entry point di 100€
+    al mese per funzionalità base, con pacchetti personalizzabili che possono far
+    risparmiare fino al 30% sui costi operativi. Possiamo discutere un preventivo
+    su misura per le vostre esigenze?
+  goal: Ottenere un appuntamento per una dimostrazione o una proposta dettagliata.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente come esempio o confronto.
+  script: Capisco che stiate valutando diverse opzioni. A differenza di [nome concorrente],
+    offriamo integrazioni AI vocali che riducono il carico di lavoro del 40% e migliorano
+    la sicurezza. Posso mostrarvi come funziona con una demo gratuita?
+  goal: Evidenziare i nostri punti di forza e spingere per una prova.
+- trigger: gdpr_concern
+  situation: Quando il cliente esprime preoccupazioni sulla conformità al GDPR.
+  script: La sicurezza dei dati è una nostra priorità. Utilizziamo tecnologie all'avanguardia
+    per garantire la piena conformità al GDPR, con audit regolari. Posso inviarvi
+    la nostra documentazione di conformità per rassicurarvi?
+  goal: Rassicurare il cliente e costruire fiducia per procedere con la vendita.
+- trigger: efficiency_doubt
+  situation: Quando il cliente dubita che l'AI possa migliorare l'efficienza operativa.
+  script: Con l'AI vocale, le strutture come la vostra hanno ridotto i tempi di risposta
+    del 50% e aumentato la soddisfazione dei familiari. Posso condividere casi di
+    studio italiani che dimostrano questi risultati?
+  goal: Fornire prove concrete per superare le obiezioni e convincere dell'ROI.
+competitors:
+- name: Gruppo Korian Italia
+  positioning: Leader nel mercato delle residenze assistite (RSA) con ampia presenza
+    nazionale.
+  strengths:
+  - Strutture fisiche ben attrezzate
+  - brand riconosciuto
+  - servizi completi
+  weaknesses:
+  - Alti costi
+  - limitata automazione
+  - tempi di implementazione lunghi
+  our_differentiation: Offriamo soluzioni AI vocali scalabili che riducono i costi
+    e migliorano l'efficienza senza necessità di infrastrutture pesanti.
+- name: Senior Assistenza
+  positioning: Fornitore di servizi di assistenza domiciliare e badanti in tutta Italia.
+  strengths:
+  - Prezzi competitivi
+  - flessibilità nei servizi
+  - rete di badanti qualificate
+  weaknesses:
+  - Scarsa integrazione tecnologica
+  - dipendenza dal personale umano
+  - limitato monitoraggio
+  our_differentiation: Integriamo AI per automatizzare la gestione, offrendo teleassistenza
+    avanzata e riducendo la dipendenza dal personale.
+- name: Teleassistenza Italia
+  positioning: Specialista in servizi di teleassistenza e monitoraggio remoto per
+    anziani.
+  strengths:
+  - Focus sulla tecnologia
+  - risposta rapida alle emergenze
+  - copertura nazionale
+  weaknesses:
+  - Servizi limitati all'ambito digitale
+  - scarsa personalizzazione
+  - costi elevati per funzionalità extra
+  our_differentiation: Forniamo un ecosistema completo che combina AI vocale con servizi
+    umani, per una soluzione più personalizzata ed economica.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 100
+  roi_examples:
+  - scenario: Automatizzazione della gestione delle prenotazioni e delle chiamate
+      di routine per una RSA media.
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 4
+  - scenario: Implementazione di teleassistenza AI per 50 anziani in assistenza domiciliare.
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 3
+  value_anchors:
+  - Riduzione del 40% dei costi operativi con l'AI
+  - Miglioramento del 50% nei tempi di risposta alle emergenze
+  - Conformità GDPR garantita senza costi aggiuntivi
+market_context:
+  market_size: Circa 15 miliardi di EUR all'anno, in crescita per l'invecchiamento
+    della popolazione.
+  growth_rate: 4% YoY
+  key_trends:
+  - Aumento della domanda per servizi a domicilio
+  - Digitalizzazione dei sistemi sanitari
+  - Focus sulla telemedicina e monitoraggio remoto
+  - Integrazione di AI per l'efficienza operativa
+  seasonality:
+    high:
+    - Inverno (aumento delle necessità di assistenza per malattie)
+    - Periodi festivi (richieste di supporto familiare)
+    low:
+    - Estate (alcuni anziani in vacanza con familiari)
+    - Primavera (minore incidenza di emergenze)
+typical_objections:
+- objection: L'AI è troppo complessa da implementare per il nostro personale non tecnico.
+  response: La nostra interfaccia vocale è progettata per essere intuitiva; forniamo
+    formazione gratuita e supporto continuo per garantire una transizione semplice.
+- objection: I costi iniziali sono troppo alti per la nostra piccola struttura.
+  response: Offriamo piani flessibili con entry point bassi e un ROI dimostrato in
+    pochi mesi; possiamo iniziare con un pilota a costo ridotto.
+- objection: Preferiamo il contatto umano diretto per gli anziani, non la tecnologia.
+  response: L'AI vocale integra e supporta il personale umano, non lo sostituisce,
+    migliorando l'efficienza e permettendo più tempo per le cure personalizzate.
+- objection: Abbiamo già un sistema software; non vogliamo cambiare.
+  response: Integriamo facilmente con i vostri sistemi esistenti, come Millewin o
+    Zucchetti, per migliorarli senza interruzioni operative.
+meta:
+  id: elderly_care
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

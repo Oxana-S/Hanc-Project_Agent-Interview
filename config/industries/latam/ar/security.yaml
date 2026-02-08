@@ -1,0 +1,229 @@
+pain_points:
+- description: Altos índices de delincuencia en zonas urbanas que aumentan la demanda
+    de seguridad, pero los presupuestos son limitados debido a la inestabilidad económica.
+  severity: high
+  solution_hint: El agente de voz IA puede ofrecer soluciones escalables y asequibles,
+    automatizando la generación de cotizaciones personalizadas para ajustarse a diferentes
+    presupuestos.
+- description: Falta de personal calificado para la instalación y mantenimiento de
+    sistemas de seguridad, lo que retrasa los servicios.
+  severity: medium
+  solution_hint: El agente puede programar y coordinar citas de instalación o mantenimiento,
+    reduciendo tiempos de espera y mejorando la eficiencia operativa.
+- description: Dificultades en la integración de nuevos sistemas con infraestructuras
+    existentes, como CCTV o alarmas heredadas.
+  severity: medium
+  solution_hint: Proporcionar asesoramiento inicial sobre compatibilidad y recomendar
+    integraciones sencillas a través del agente de voz, basado en análisis de sistemas
+    comunes.
+- description: Costos crecientes de equipos debido a restricciones de importación
+    e inflación, afectando la rentabilidad.
+  severity: high
+  solution_hint: El agente puede destacar opciones de financiamiento o soluciones
+    basadas en software con menor costo inicial, enfatizando el ROI a largo plazo.
+- description: Monitoreo ineficiente que genera falsas alarmas, consumiendo recursos
+    y reduciendo la confianza del cliente.
+  severity: low
+  solution_hint: Automatizar la verificación de alarmas y enviar alertas inteligentes
+    a través del agente, minimizando intervenciones innecesarias.
+- description: Falta de claridad en los requisitos regulatorios locales, aunque no
+    especificados, genera incertidumbre en la implementación.
+  severity: low
+  solution_hint: El agente puede ofrecer información básica sobre estándares de seguridad
+    comunes en Argentina y derivar a expertos para consultas específicas.
+typical_services:
+- Instalación de sistemas de alarma
+- Monitoreo 24/7
+- CCTV y videovigilancia
+- Control de acceso
+- Seguridad perimetral
+- Respuesta a emergencias
+- Consultoría en seguridad
+- Mantenimiento de equipos
+- Venta de equipos de seguridad
+- Auditorías de seguridad
+recommended_functions:
+- name: Automatización de cotizaciones
+  priority: high
+  reason: Permite responder rápidamente a consultas de precios, adaptándose a la volatilidad
+    económica y aumentando las conversiones.
+- name: Programación de citas
+  priority: high
+  reason: Mejora la eficiencia en la coordinación de instalaciones y mantenimiento,
+    reduciendo tiempos muertos.
+- name: Respuesta a preguntas frecuentes
+  priority: medium
+  reason: Libera tiempo del personal humano al manejar consultas básicas sobre servicios
+    y costos en español.
+- name: Recordatorios de mantenimiento
+  priority: medium
+  reason: Aumenta la retención de clientes al garantizar que los sistemas funcionen
+    correctamente y se renueven contratos.
+- name: Seguimiento de leads
+  priority: low
+  reason: Automatiza el seguimiento post-consulta para nutrir prospectos y cerrar
+    más ventas.
+- name: Generación de reportes
+  priority: low
+  reason: Proporciona insights sobre tendencias de seguridad para clientes, agregando
+    valor a los servicios.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Visma
+  - Sirena
+  priority: high
+- name: Software de facturación
+  examples:
+  - AFIP
+  - Tango Gestión
+  priority: high
+- name: Plataformas de monitoreo
+  examples:
+  - Genetec
+  - Milestone
+  priority: medium
+- name: Sistemas de control de acceso
+  examples:
+  - HID Global
+  - Suprema
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: low
+industry_faq:
+- question: ¿Cuál es el costo promedio de un sistema de seguridad básico en Argentina?
+  answer_template: El costo varía según las necesidades, pero un sistema básico con
+    alarma y CCTV puede partir desde ARS 50,000. Podemos personalizar una cotización
+    para usted.
+- question: ¿Cuánto tiempo toma la instalación?
+  answer_template: La instalación típica toma de 1 a 3 días, dependiendo de la complejidad.
+    Coordinamos fechas flexibles para minimizar molestias.
+- question: ¿Ofrecen monitoreo 24/7 y cómo funciona?
+  answer_template: Sí, nuestro monitoreo 24/7 incluye alertas en tiempo real y respuesta
+    rápida a emergencias, con centros locales en Argentina.
+- question: ¿Qué pasa si hay un corte de energía o internet?
+  answer_template: Nuestros sistemas incluyen respaldo de batería y opciones de conexión
+    celular para garantizar continuidad en caso de fallos.
+- question: ¿Hay opciones de financiamiento disponibles?
+  answer_template: Sí, ofrecemos planes de pago flexibles y colaboramos con entidades
+    financieras locales para adaptarnos a su presupuesto.
+- question: ¿Cómo se integra con otros sistemas que ya tengo?
+  answer_template: Evaluamos su infraestructura existente y recomendamos integraciones
+    compatibles, usando estándares comunes en el mercado argentino.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios iniciales.
+  script: Hola, entiendo que busca información sobre costos. Nuestros sistemas parten
+    desde ARS 50,000, pero podemos ajustarnos a su presupuesto. ¿Le gustaría que le
+    envíe una cotización personalizada basada en sus necesidades específicas?
+  goal: Obtener detalles del cliente para generar una cotización y avanzar en la venta.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios de monitoreo.
+  script: Gracias por su interés. Ofrecemos monitoreo 24/7 con respuesta en menos
+    de 5 minutos, ideal para la seguridad de su hogar o negocio. ¿Podría contarme
+    más sobre el lugar que desea proteger?
+  goal: Identificar el tipo de propiedad y necesidades para recomendar el servicio
+    adecuado.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor como Prosegur.
+  script: Prosegur es una opción conocida, pero nosotros nos diferenciamos con precios
+    más competitivos y atención personalizada mediante tecnología IA. ¿Le interesa
+    comparar propuestas?
+  goal: Resaltar nuestras ventajas y mover al cliente hacia una decisión.
+- trigger: objection_cost
+  situation: Cuando el cliente objeta que el costo es muy alto.
+  script: Comprendo su preocupación. La seguridad es una inversión, no un gasto. Nuestros
+    sistemas pueden ahorrarle hasta un 20% en pérdidas por robos. ¿Podemos analizar
+    un plan de pagos que se ajuste a su situación?
+  goal: Reforzar el valor y ofrecer soluciones financieras para superar la objeción.
+competitors:
+- name: Prosegur
+  positioning: Líder global con fuerte presencia en Argentina.
+  strengths:
+  - Marca reconocida
+  - Amplia red de monitoreo
+  - Variedad de servicios
+  weaknesses:
+  - Precios elevados
+  - Menor flexibilidad en contratos
+  our_differentiation: Ofrecemos precios más bajos y personalización mediante IA para
+    una atención más ágil.
+- name: Securitas
+  positioning: Competidor internacional con enfoque en seguridad integral.
+  strengths:
+  - Soluciones completas
+  - Experiencia global
+  weaknesses:
+  - Menor adaptación local
+  - Procesos lentos
+  our_differentiation: Nos especializamos en integración tecnológica y respuesta rápida
+    con agentes de voz automatizados.
+- name: Grupo Cynthus
+  positioning: Empresa local argentina con enfoque en seguridad electrónica.
+  strengths:
+  - Conocimiento del mercado local
+  - Precios competitivos
+  weaknesses:
+  - Limitada escalabilidad
+  - Tecnología menos avanzada
+  our_differentiation: Combinamos expertise local con innovación en IA para mayor
+    eficiencia y soporte 24/7.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Pequeño negocio que reduce robos en un 30%
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  value_anchors:
+  - Inversión en seguridad que se paga sola en meses.
+  - Costos adaptados a la realidad económica argentina.
+  - Ahorros significativos en pérdidas y seguros.
+market_context:
+  market_size: Estimado en ARS 10 mil millones anuales
+  growth_rate: 8% YoY
+  key_trends:
+  - Aumento en la adopción de seguridad basada en nube.
+  - Creciente demanda en barrios residenciales y PYMEs.
+  - Integración de IA para análisis de video predictivo.
+  seasonality:
+    high:
+    - Verano (diciembre a febrero)
+    - Fines de año por incremento de delitos
+    low:
+    - Invierno (junio a agosto)
+typical_objections:
+- objection: Es muy caro para mi presupuesto actual.
+  response: Entiendo, pero considere que un incidente de seguridad puede costarle
+    mucho más. Podemos ofrecerle un plan de pagos escalonado o empezar con un paquete
+    básico.
+- objection: No confío en que un sistema automatizado funcione bien.
+  response: Nuestros sistemas combinan tecnología avanzada con soporte humano local.
+    Además, ofrecemos garantía y mantenimiento incluido para su tranquilidad.
+- objection: Ya tengo un proveedor y no quiero cambiar.
+  response: Comprendo la lealtad. ¿Podríamos hacer una comparación gratuita para mostrarle
+    cómo podemos mejorar su seguridad con menores costos o mejor servicio?
+- objection: La instalación es muy invasiva para mi negocio.
+  response: Trabajamos de forma rápida y discreta, minimizando interrupciones. Coordinamos
+    horarios flexibles y garantizamos limpieza post-instalación.
+meta:
+  id: security
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

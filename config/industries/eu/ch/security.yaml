@@ -1,0 +1,246 @@
+pain_points:
+- description: Fachkräftemangel führt zu hohen Personalkosten und Schwierigkeiten
+    bei der Rekrutierung von qualifiziertem Sicherheitspersonal.
+  severity: high
+  solution_hint: Automatisierung von administrativen Aufgaben und Erstkontakten zur
+    Entlastung der Mitarbeiter.
+- description: Komplexe Einhaltung von Schweizer Datenschutzgesetzen (DSG/FADP) und
+    EU-DSGVO bei Überwachungssystemen.
+  severity: high
+  solution_hint: Systematische Erstinformation und Dokumentation von Compliance-Anfragen
+    durch den Voice Agent.
+- description: Inkonsistente Dienstplanung und hoher administrativer Aufwand für Einsatzplanung
+    und Zeiterfassung.
+  severity: medium
+  solution_hint: Integration des Voice Agents in Planungstools zur automatisierten
+    Terminvereinbarung und Erinnerung.
+- description: Hohe Erwartungen an Servicequalität und schnelle Reaktionszeiten von
+    Kunden, insbesondere im Objektschutz.
+  severity: medium
+  solution_hint: 24/7 Erreichbarkeit für Standardanfragen und Störungsmeldungen über
+    den Voice Agent.
+- description: Preisdruck durch internationale Anbieter und Margenverfall bei standardisierten
+    Dienstleistungen.
+  severity: medium
+  solution_hint: Hervorhebung des lokalen Schweizer Service und individueller Beratung
+    im Verkaufsgespräch.
+- description: Veraltete Technologieinfrastruktur bei kleineren Sicherheitsfirmen
+    hemmt Effizienz.
+  severity: low
+  solution_hint: Der Voice Agent kann als kostengünstiger erster Digitalisierungsschritt
+    positioniert werden.
+typical_services:
+- Objektschutz (Bewachung)
+- Personenschutz
+- Alarmanlagen-Überwachung (Gefahrenmeldezentrale)
+- Zutrittskontrollsysteme
+- Videoüberwachung (CCTV)
+- Event- und Messesicherheit
+- Werttransporte
+- Risikoanalysen und Sicherheitsberatung
+- Notfall- und Alarmmanagement
+- Schlüsselnotdienst
+recommended_functions:
+- name: Terminvereinbarung für Sicherheitsaudits
+  priority: high
+  reason: Reduziert den administrativen Aufwand für Verkauf und Beratung erheblich.
+- name: 24/7 Störungsmeldung und Erstsupport
+  priority: high
+  reason: Entlastet die Leitstelle bei Standardanfragen und verbessert die Servicewahrnehmung.
+- name: FAQ zu Datenschutz (DSG/FADP) und Dienstleistungen
+  priority: high
+  reason: Klärt häufige Compliance-Fragen sofort und entlastet Fachpersonal.
+- name: Lead-Qualifizierung und -Eintragung im CRM
+  priority: medium
+  reason: Sorgt für konsistente Erfassung von Interessenten und steigert Verkaufseffizienz.
+- name: Abwesenheitsnotiz und Weiterleitung bei komplexen Anliegen
+  priority: medium
+  reason: Stellt professionellen Service auch ausserhalb der Bürozeiten sicher.
+- name: Rückrufvereinbarung für Angebotsanfragen
+  priority: low
+  reason: Fängt alle Kundenkontakte ab und verhindert den Verlust von Leads.
+typical_integrations:
+- name: Zeiterfassungs- und Dienstplanungssysteme
+  examples:
+  - ZEP
+  - ATOSS
+  - localer Lösungen
+  priority: high
+- name: Gefahrenmeldezentralen-Software (GMZ)
+  examples:
+  - Securitas Direct
+  - Protectas Alarmsysteme
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Abacus
+  - Microsoft Dynamics
+  - Salesforce
+  priority: medium
+- name: Rechnungslegungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Datev
+  priority: medium
+- name: Zutrittskontrollsysteme
+  examples:
+  - Kaba
+  - Bosch Security
+  - ASSA ABLOY
+  priority: low
+industry_faq:
+- question: Sind Ihre Dienstleistungen mit dem Schweizer Datenschutzgesetz (DSG) konform?
+  answer_template: Ja, absolut. Unsere Lösungen und Prozesse sind speziell auf die
+    Anforderungen des Schweizer DSG (FADP) und der EU-DSGVO ausgelegt. Wir beraten
+    Sie gerne individuell zu Ihrem Einsatzszenario.
+- question: Wie schnell kann bei einem Alarm ein Sicherheitsmitarbeiter vor Ort sein?
+  answer_template: Unsere Interventionzeiten variieren je nach Standort und Vertrag.
+    In städtischen Gebieten garantieren wir oft Interventionen innerhalb von 15-30
+    Minuten. Genaue Zeiten besprechen wir in der individuellen Risikoanalyse.
+- question: Was kostet eine Grundabsicherung für mein Kleinunternehmen?
+  answer_template: Die Kosten hängen von der Grösse, Lage und den spezifischen Risiken
+    ab. Ein einfacher Objektschutz mit Alarmierung beginnt typischerweise bei ca.
+    200-400 CHF pro Monat. Ich kann Ihnen einen unverbindlichen Termin für eine kostenlose
+    Erstberatung vereinbaren.
+- question: Bieten Sie auch kurzfristige Sicherheit für Events an?
+  answer_template: Ja, Event- und Messesicherheit ist ein Kernbereich von uns. Bitte
+    nennen Sie mir den Zeitraum und den Ort, dann kümmere ich mich um eine schnelle
+    Angebotserstellung.
+- question: Kann ich meine bestehende Alarmanlage in Ihr System integrieren?
+  answer_template: In den meisten Fällen ja. Wir prüfen die Kompatibilität Ihres bestehenden
+    Systems. Oft ist eine Integration möglich, manchmal empfehlen wir eine wirtschaftlichere
+    Neuinstallation.
+- question: Gibt es versteckte Kosten oder Mindestvertragslaufzeiten?
+  answer_template: Transparenz ist uns wichtig. Alle Kosten werden im Vertrag klar
+    aufgeführt. Die Vertragslaufzeiten sind flexibel, standardmässig bieten wir 12
+    oder 24 Monate mit transparenten Kündigungsfristen an.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten für eine Standarddienstleistung wie Objektschutz
+    fragt.
+  script: 'Die Kosten sind immer massgeschneidert. Für eine erste Orientierung: Ein
+    Basispaket mit regelmässigen Kontrollgängen beginnt bei etwa 2500 CHF pro Monat.
+    Der genaue Preis hängt stark von der Objektgrösse, Lage und den spezifischen Risiken
+    ab. Wann hätten Sie Zeit für eine kostenlose, unverbindliche Vor-Ort-Beratung?
+    So können wir ein präzises Angebot erstellen.'
+  goal: Vom Pauschalpreis wegkommen und einen Beratungstermin vereinbaren.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber wie Securitas oder Protectas erwähnt.
+  script: Verständlich, das sind grosse Namen. Unser Unterschied ist der persönliche,
+    schweizerische Service. Bei uns sprechen Sie mit den Entscheidungsträgern, nicht
+    mit einem Callcenter im Ausland. Wir sind agiler und bieten massgeschneiderte
+    Lösungen statt Standardpakete. Darf ich Ihnen ein konkretes Beispiel aus Ihrer
+    Branche nennen?
+  goal: Unterscheidung durch lokalen, persönlichen Service und Flexibilität betonen.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde ein vorläufiges Angebot als zu teuer empfindet.
+  script: Ich verstehe Ihre Budgetüberlegungen. Betrachten wir es als Investition
+    in die Sicherheit Ihres Betriebs. Ein Sicherheitsvorfall kann schnell ein Vielfaches
+    kosten. Können wir gemeinsam die kritischsten Punkte identifizieren, um eine Lösung
+    mit optimiertem Kosten-Nutzen-Verhältnis zu finden? Oft gibt es sinnvolle Stufen.
+  goal: Den Fokus von Kosten auf Wert und ROI lenken und eine reduzierte Lösung anbieten.
+- trigger: request_info_material
+  situation: Wenn der Kunde zunächst Broschüren oder allgemeine Unterlagen möchte.
+  script: 'Sehr gerne sende ich Ihnen unsere Unterlagen digital zu. Noch effizienter
+    ist oft ein 15-minütiges Telefongespräch nächste Woche, um direkt auf Ihre Situation
+    einzugehen. Was passt besser für Sie: die digitalen Infos oder ein kurzer Call?'
+  goal: Den passiven Kontakt in ein aktives Gespräch überführen.
+competitors:
+- name: Securitas (Schweiz) AG
+  positioning: Globaler Marktführer, breites Standardportfolio.
+  strengths:
+  - Markenbekanntheit
+  - Nationale Abdeckung
+  - Finanzielle Stärke
+  weaknesses:
+  - Weniger flexibel
+  - Höhere Preise
+  - Standardisierte Lösungen
+  our_differentiation: Persönliche Betreuung durch lokale Entscheider, agile und massgeschneiderte
+    Lösungen, besserer Preis-Leistungs-Faktor.
+- name: Protectas AG
+  positioning: Führender Schweizer Anbieter mit Fokus auf Technologie.
+  strengths:
+  - Starke GMZ
+  - Eigene Technikentwicklung
+  - Guter Ruf in der CH
+  weaknesses:
+  - Kann für KMU überdimensioniert wirken
+  - Komplexe Vertragsstrukturen
+  our_differentiation: Einfachere, transparente Verträge und direktere Kommunikation,
+    ideal für KMU und spezifische Anforderungen.
+- name: Die regionalen, lokalen Sicherheitsfirmen
+  positioning: Sehr lokal, oft mit persönlichen Beziehungen.
+  strengths:
+  - Lokale Verankerung
+  - Persönlicher Kontakt
+  - Oft günstiger
+  weaknesses:
+  - Begrenzte Ressourcen & Technologie
+  - Keine nationale Abdeckung
+  our_differentiation: Wir kombinieren Schweizer Service und Agilität mit der professionellen
+    Struktur und Technologie eines grösseren Anbieters.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 2000
+  - 15000
+  entry_point: 250
+  roi_examples:
+  - scenario: Automatisierung von telefonischen Störungsmeldungen und Terminanfragen
+      für eine Sicherheitsfirma mit 20 Mitarbeitern.
+    monthly_cost: 150
+    monthly_savings: 1200
+    payback_months: 0.5
+  value_anchors:
+  - Ein professioneller Sicherheitsdienst verhindert durch Präsenz und schnelle Intervention
+    mittlere bis grosse finanzielle Schäden.
+  - Die Kosten für eine Vollzeit-Sicherheitskraft liegen bei etwa 8000-12000 CHF pro
+    Monat. Technologie ergänzt sinnvoll.
+  - Ein Einbruch verursacht durchschnittlich einen Sachschaden von über 15000 CHF,
+    plus Betriebsunterbrechung.
+market_context:
+  market_size: Ca. 2.5 Mrd. CHF Jahresumsatz
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Starke Nachfrage nach integrierten Lösungen (physisch + digital).
+  - Wachsende Bedeutung von Cybersicherheit als Ergänzung zum physischen Schutz.
+  - Personalmangel treibt Automatisierung und Technologieeinsatz voran.
+  - Erhöhte Sensibilität für Datenschutz bei Videoüberwachung.
+  seasonality:
+    high:
+    - November - Januar (Einbruchssaison, Weihnachtsmärkte)
+    - Juni - August (Festivals, Open-Airs)
+    low:
+    - Februar
+    - Oktober
+typical_objections:
+- objection: Das können wir mit unserer Hauswartung auch selbst erledigen.
+  response: Das ist nachvollziehbar. Ein professioneller Sicherheitsdienst bietet
+    jedoch geschulte Beobachtung, Haftung, Notfallintervention und eine dokumentierte
+    Alarmkette. Das senkt Ihr Risiko und Haftungsrisiko erheblich. Können wir darüber
+    sprechen?
+- objection: Wir haben noch nie ein Sicherheitsproblem gehabt.
+  response: Das ist erfreulich und spricht für Ihren Standort. Prävention wirkt genau
+    dann, wenn noch nichts passiert ist. Eine Risikoanalyse zeigt oft unerkannte Schwachstellen
+    auf. Sie ist in der Regel kostenlos – ein Blick schadet nie, oder?
+- objection: Die Investition ist im Moment nicht im Budget.
+  response: Verstehe ich. Sicherheit ist eine präventive Investition. Vielleicht können
+    wir mit einer kleinen, skalierbaren Massnahme starten, z.B. einer Beratung mit
+    konkreten Empfehlungen für einfache, sofort umsetzbare Massnahmen. So gehen Sie
+    keinen grossen finanziellen Commitment ein.
+meta:
+  id: security
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

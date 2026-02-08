@@ -1,0 +1,231 @@
+pain_points:
+- description: High operational costs due to labor-intensive processes and regulatory
+    compliance.
+  severity: high
+  solution_hint: AI voice agent can automate scheduling and administrative tasks,
+    reducing labor costs.
+- description: Managing 24/7 inquiries and after-hours calls without overburdening
+    staff.
+  severity: medium
+  solution_hint: AI voice agent can handle calls round-the-clock, providing immediate
+    support and capturing leads.
+- description: Ensuring compliance with HIPAA for deceased records and CCPA for consumer
+    data privacy.
+  severity: high
+  solution_hint: AI voice agent can integrate compliance checks into interactions
+    and data handling processes.
+- description: Staff burnout from emotional toll of dealing with grieving families
+    and repetitive tasks.
+  severity: medium
+  solution_hint: AI voice agent can handle routine inquiries, freeing staff for more
+    personalized, empathetic engagements.
+- description: Difficulty in marketing and lead generation in a sensitive industry.
+  severity: medium
+  solution_hint: AI voice agent can qualify leads through gentle questioning and schedule
+    consultations efficiently.
+- description: Keeping up with digital trends and customer expectations for online
+    services.
+  severity: low
+  solution_hint: AI voice agent can offer digital touchpoints like virtual consultations
+    and online planning tools.
+typical_services:
+- Traditional funeral service
+- Cremation services
+- Memorial services
+- Graveside services
+- Pre-planning consultations
+- Grief counseling referrals
+- Obituary writing and publication
+- Transportation services
+- Casket and urn sales
+- Floral arrangements coordination
+recommended_functions:
+- name: Appointment scheduling
+  priority: high
+  reason: Reduces manual workload and ensures efficient booking for consultations
+    and services.
+- name: Lead qualification
+  priority: high
+  reason: Captures potential clients during emotional moments and directs them to
+    appropriate services.
+- name: Compliance monitoring
+  priority: high
+  reason: Ensures all interactions adhere to HIPAA and CCPA, minimizing legal risks.
+- name: After-hours support
+  priority: medium
+  reason: Provides 24/7 availability without additional staff, improving customer
+    satisfaction.
+- name: FAQ handling
+  priority: medium
+  reason: Quickly answers common questions about services, pricing, and processes.
+- name: Follow-up automation
+  priority: low
+  reason: Maintains customer relationships through automated check-ins after services.
+typical_integrations:
+- name: Funeral management software
+  examples:
+  - FrontRunner
+  - Wilbert
+  priority: high
+- name: CRM systems
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Payment processors
+  examples:
+  - Square
+  - PayPal
+  priority: high
+- name: Obituary platforms
+  examples:
+  - Legacy.com
+  priority: medium
+- name: Accounting software
+  examples:
+  - QuickBooks
+  priority: medium
+industry_faq:
+- question: What are your hours of operation?
+  answer_template: We are available 24/7. Our AI assistant can help schedule appointments
+    or answer questions anytime.
+- question: How much does a basic funeral cost?
+  answer_template: Costs vary, but our entry-level services start at $2500. We offer
+    transparent pricing and can discuss options tailored to your needs.
+- question: Do you offer cremation services?
+  answer_template: Yes, we provide both traditional burial and cremation services
+    with various customizable packages.
+- question: Can I pre-plan a funeral?
+  answer_template: Absolutely, pre-planning helps ease the burden on loved ones. We
+    offer consultations to discuss your wishes and lock in prices.
+- question: What compliance measures do you have for data privacy?
+  answer_template: We strictly adhere to HIPAA and CCPA regulations to protect your
+    privacy and handle all data securely.
+- question: How do I schedule a consultation?
+  answer_template: You can schedule a consultation through our AI assistant, which
+    will find a convenient time for you and provide follow-up details.
+sales_scripts:
+- trigger: price_question
+  situation: When a caller inquires about pricing for funeral services.
+  script: Thank you for your inquiry. Our services start at $2500, and we offer customizable
+    packages to fit your budget and preferences. Would you like to schedule a consultation
+    to discuss your specific needs in detail?
+  goal: Schedule a consultation to move the conversation forward and provide personalized
+    pricing.
+- trigger: service_inquiry
+  situation: When a caller asks about the types of services offered.
+  script: We provide a range of services including traditional funerals, cremation,
+    memorial services, and pre-planning. How can I assist you today? I can help you
+    explore options or schedule a consultation.
+  goal: Qualify the lead and guide them towards a specific service or appointment.
+- trigger: after_hours_call
+  situation: When a call is received outside of standard business hours.
+  script: Hello, this is the AI assistant for our funeral home. I can help you with
+    immediate needs, answer questions, or schedule a callback for a consultation.
+    What do you need assistance with?
+  goal: Provide support and capture information to ensure no lead is missed, even
+    after hours.
+- trigger: competitor_mention
+  situation: When a caller mentions another funeral home or service provider.
+  script: We understand you're exploring options. Our differentiation includes personalized
+    care combined with AI efficiency, such as 24/7 support and strict compliance with
+    regulations. Would you like to learn more about how we can serve you better?
+  goal: Highlight advantages and persuade the caller to consider our services.
+competitors:
+- name: Service Corporation International (SCI)
+  positioning: Largest funeral service provider in the U.S. with a national network.
+  strengths:
+  - Extensive resources
+  - brand recognition
+  - wide service range
+  weaknesses:
+  - Can be impersonal
+  - higher costs
+  - less local focus
+  our_differentiation: We offer a blend of personal, community-focused service with
+    modern AI tools for efficiency and 24/7 support.
+- name: Local family-owned funeral homes
+  positioning: Community-centric, emphasizing personal relationships and tradition.
+  strengths:
+  - Personal touch
+  - strong local reputation
+  - flexibility
+  weaknesses:
+  - Limited technological adoption
+  - manual processes
+  - smaller scale
+  our_differentiation: We enhance personal service with AI automation, reducing costs
+    and improving accessibility without losing empathy.
+- name: Cremation societies
+  positioning: Focused on low-cost, straightforward cremation services.
+  strengths:
+  - Affordability
+  - simplicity
+  - quick service
+  weaknesses:
+  - Limited service options
+  - less personalized
+  - minimal follow-up
+  our_differentiation: We provide comprehensive services including cremation, with
+    added value through pre-planning, grief support, and AI-driven convenience.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Reducing staff hours spent on call handling and scheduling by automating
+      with AI.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 3
+  value_anchors:
+  - AI automation saves up to 20 hours per week on administrative tasks.
+  - Compliance with HIPAA and CCPA reduces risk of fines and builds trust.
+  - 24/7 availability increases customer satisfaction and lead conversion rates.
+market_context:
+  market_size: $20 billion annually in the U.S.
+  growth_rate: 2% YoY
+  key_trends:
+  - Increasing preference for cremation over traditional burial.
+  - Rise in pre-planning services as baby boomers age.
+  - Digital transformation, including online obituaries and virtual memorials.
+  seasonality:
+    high:
+    - Winter months
+    - due to higher mortality rates and holidays
+    low:
+    - Summer months
+    - typically with lower demand
+typical_objections:
+- objection: We prefer to handle things in person and don't need technology.
+  response: We understand the importance of personal touch. Our AI assists with logistics
+    and routine tasks, freeing up our staff to provide more meaningful, face-to-face
+    support during difficult times.
+- objection: Your services seem too expensive for our budget.
+  response: Our AI solutions actually help reduce operational costs, allowing us to
+    offer competitive pricing. We can discuss flexible packages starting at $2500
+    to meet your needs.
+- objection: We're concerned about data privacy with an AI system.
+  response: We are fully compliant with HIPAA and CCPA, ensuring all data is handled
+    securely and ethically. Our AI is designed to protect privacy while enhancing
+    service.
+- objection: We already have a reliable process and don't see the need for change.
+  response: Technology can complement your existing process by improving efficiency
+    and customer experience, such as handling after-hours calls or automating follow-ups,
+    without disrupting your workflow.
+meta:
+  id: funeral
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

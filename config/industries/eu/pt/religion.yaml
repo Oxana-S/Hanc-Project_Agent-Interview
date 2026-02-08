@@ -1,0 +1,225 @@
+pain_points:
+- description: Dificuldade em gerir o agendamento de eventos religiosos como missas,
+    batizados e casamentos.
+  severity: high
+  solution_hint: O agente de voz AI pode automatizar o agendamento, reduzindo erros
+    e poupando tempo administrativo.
+- description: Declínio na participação dos fiéis, especialmente entre os jovens.
+  severity: high
+  solution_hint: O agente pode melhorar a comunicação e engajamento através de lembretes
+    personalizados e transmissões online.
+- description: Desafios na angariação de fundos e doações regulares.
+  severity: medium
+  solution_hint: O agente pode gerir doações online, enviar lembretes e fornecer relatórios
+    para aumentar a captação.
+- description: Comunicação ineficiente com a comunidade paroquial.
+  severity: medium
+  solution_hint: O agente pode centralizar a comunicação via voz, respondendo a perguntas
+    e divulgando eventos automaticamente.
+- description: Gestão manual de voluntários e recursos.
+  severity: low
+  solution_hint: O agente pode auxiliar na coordenação de voluntários através de agendamentos
+    e notificações automáticas.
+- description: Cumprimento de regulamentos como o GDPR para proteção de dados.
+  severity: high
+  solution_hint: O agente pode ser configurado para garantir a conformidade com o
+    GDPR no tratamento de dados dos fiéis.
+- description: Falta de visibilidade online e presença digital.
+  severity: medium
+  solution_hint: O agente pode integrar-se com plataformas digitais para melhorar
+    a presença online e atrair novos fiéis.
+typical_services:
+- Celebração de missas
+- Administração de sacramentos (batismo, eucaristia, confirmação, matrimónio)
+- Aconselhamento pastoral
+- Organização de eventos comunitários
+- Educação religiosa (catequese)
+- Serviços funerários
+- Apoio social e caritativo
+- Gestão de espaços religiosos
+- Transmissão online de serviços
+- Venda de artigos religiosos
+recommended_functions:
+- name: Agendamento Automático
+  priority: high
+  reason: Facilita o agendamento de eventos e reduz a carga administrativa para a
+    equipe.
+- name: Resposta a Perguntas Frequentes
+  priority: medium
+  reason: Melhora o atendimento ao público e liberta tempo para tarefas pastorais
+    mais importantes.
+- name: Gestão de Doações
+  priority: high
+  reason: Aumenta a eficiência na angariação de fundos e assegura conformidade com
+    regulamentos.
+- name: Notificações e Lembretes
+  priority: medium
+  reason: Mantém a comunidade informada sobre eventos e atividades, aumentando a participação.
+- name: Integração com Sistemas Existentes
+  priority: high
+  reason: Garante compatibilidade com software de gestão já utilizado, facilitando
+    a adoção.
+- name: Análise de Dados
+  priority: low
+  reason: Fornece insights sobre participação e doações para melhor decisão.
+typical_integrations:
+- name: Sistemas de CRM Religioso
+  examples:
+  - Paróquia Digital
+  - Sistema de Gestão Eclesiástica
+  priority: high
+- name: Plataformas de Doação Online
+  examples:
+  - PayPal
+  - MB Way
+  - Plataformas específicas para igrejas
+  priority: medium
+- name: Software de Gestão de Eventos
+  examples:
+  - Eventbrite
+  - soluções locais
+  priority: medium
+- name: Sistemas de Transmissão em Streaming
+  examples:
+  - YouTube
+  - Facebook Live
+  priority: low
+- name: Bases de Dados Locais
+  examples:
+  - Sistemas de arquivo paroquial
+  priority: high
+industry_faq:
+- question: A que horas são as missas aos domingos?
+  answer_template: As missas aos domingos são geralmente às 9h, 11h e 19h. Consulte
+    o nosso calendário online para horários atualizados.
+- question: Como posso fazer uma doação?
+  answer_template: Pode fazer uma doação através do nosso site, por transferência
+    bancária ou durante as missas. Agradecemos o seu apoio.
+- question: Preciso de marcar um batizado com antecedência?
+  answer_template: Sim, recomendamos marcar o batizado com pelo menos um mês de antecedência.
+    Contacte-nos para mais informações.
+- question: A igreja oferece aconselhamento pastoral?
+  answer_template: Sim, oferecemos aconselhamento pastoral. Pode agendar uma consulta
+    através do nosso site ou por telefone.
+- question: Como posso voluntariar-me?
+  answer_template: Estamos sempre a precisar de voluntários. Pode inscrever-se online
+    ou falar com o responsável após a missa.
+- question: Há transmissões online das missas?
+  answer_template: Sim, transmitimos as missas online através do nosso site e redes
+    sociais. Consulte os horários para detalhes.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre o preço dos nossos serviços.
+  script: Olá, o nosso agente de voz AI pode ajudar a otimizar as suas operações a
+    partir de 50€ por mês. Gostaria de saber mais sobre como pode poupar tempo e recursos?
+  goal: Mostrar o valor e o retorno do investimento de forma acessível.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre os serviços oferecidos.
+  script: Oferecemos um agente de voz AI personalizado para gerir agendamentos, doações
+    e comunicação. Pode experimentar gratuitamente durante 14 dias.
+  goal: Destacar os benefícios e incentivar um teste gratuito.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente.
+  script: Entendemos que há outras opções, mas o nosso agente é especificamente adaptado
+    para instituições religiosas em Portugal, com suporte local e integrações relevantes.
+  goal: Diferenciar o nosso produto e reforçar a vantagem local.
+- trigger: efficiency_concern
+  situation: Quando um cliente expressa preocupação com a eficiência das operações.
+  script: Com o nosso agente, pode automatizar tarefas repetitivas, libertando a sua
+    equipe para focar no ministério. Vamos mostrar como funciona.
+  goal: Convencer sobre os ganhos de eficiência e foco pastoral.
+competitors:
+- name: Sistema de Gestão Eclesiástica Tradicional
+  positioning: Soluções manuais ou software básico não especializado.
+  strengths:
+  - Baixo custo inicial
+  - familiaridade com métodos tradicionais
+  weaknesses:
+  - Ineficiente
+  - não escalável
+  - falta de automação
+  our_differentiation: Automação inteligente com AI, focado em poupar tempo e aumentar
+    engajamento.
+- name: Plataformas Genéricas de CRM
+  positioning: CRM gerais como Salesforce adaptados para igrejas.
+  strengths:
+  - Funcionalidades robustas
+  - ampla adoção no mercado
+  weaknesses:
+  - Complexos
+  - caros
+  - não otimizados para necessidades religiosas específicas
+  our_differentiation: Solução específica para o setor religioso, com preços acessíveis
+    e suporte em português.
+- name: Serviços de Atendimento Telefónico Terceirizados
+  positioning: Centrais de atendimento para lidar com chamadas.
+  strengths:
+  - Disponibilidade 24/7
+  - mão-de-obra humana para interações complexas
+  weaknesses:
+  - Custo elevado a longo prazo
+  - possível falta de conhecimento específico do contexto religioso
+  our_differentiation: Agente AI que aprende com o tempo, disponível a qualquer hora,
+    com custo fixo baixo e personalização.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Redução de tempo administrativo em 20 horas por mês
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 0.25
+  - scenario: Aumento de doações em 30% através de lembretes automáticos
+    monthly_cost: 50
+    monthly_savings: 150
+    payback_months: 0.33
+  value_anchors:
+  - Poupe até 80% do tempo em tarefas administrativas
+  - Aumente as doações em 30% com lembretes automáticos
+  - Melhore o engajamento da comunidade com comunicação personalizada
+market_context:
+  market_size: Estimativa de 5000 instituições religiosas ativas em Portugal
+  growth_rate: Estável com tendência de 5% ao ano para digitalização
+  key_trends:
+  - Aumento da digitalização dos serviços religiosos
+  - Maior foco em engajamento comunitário online
+  - Adoção de tecnologias para gestão eficiente e conformidade com GDPR
+  seasonality:
+    high:
+    - Natal
+    - Páscoa
+    - Festas religiosas locais
+    low:
+    - Verão
+    - devido a férias e redução de atividades
+typical_objections:
+- objection: É muito caro para a nossa paróquia.
+  response: Compreendemos. No entanto, o nosso agente pode poupar-lhe tempo e dinheiro
+    a longo prazo. Vamos mostrar-lhe um cálculo de ROI personalizado.
+- objection: A nossa comunidade é tradicional e prefere contacto humano.
+  response: O agente AI complementa o contacto humano, libertando tempo para interações
+    mais significativas. Pode começar com funcionalidades básicas.
+- objection: Já temos um sistema que funciona.
+  response: Ótimo! O nosso agente pode integrar-se com o seu sistema existente para
+    melhorar a eficiência sem interromper o fluxo de trabalho.
+- objection: Temos receio de problemas com a privacidade de dados.
+  response: Garantimos conformidade total com o GDPR, e o nosso agente é configurado
+    para proteger os dados dos fiéis com as melhores práticas.
+meta:
+  id: religion
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

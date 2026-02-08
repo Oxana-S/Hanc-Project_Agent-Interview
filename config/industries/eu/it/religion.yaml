@@ -1,0 +1,234 @@
+pain_points:
+- description: Gestione inefficiente delle donazioni e offerte, con perdita di tracciabilità
+    e ritardi nei pagamenti.
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare le chiamate per ricordare le
+    donazioni, gestire prenotazioni e integrare sistemi di pagamento online.
+- description: Bassa partecipazione a eventi religiosi e difficoltà nella comunicazione
+    con i fedeli.
+  severity: medium
+  solution_hint: L'agente può inviare promemoria vocali per eventi, rispondere a domande
+    sugli orari e raccogliere feedback per migliorare l'engagement.
+- description: Alti costi operativi per la manutenzione di chiese e strutture, con
+    budget limitati.
+  severity: high
+  solution_hint: Automatizzando servizi come prenotazioni e supporto amministrativo,
+    si riducono i costi del personale e si ottimizzano le risorse.
+- description: Scarsa presenza digitale e difficoltà nel raggiungere giovani e nuovi
+    fedeli attraverso canali online.
+  severity: medium
+  solution_hint: L'agente può gestire interazioni sui social media, fornire informazioni
+    via voce e aumentare la visibilità online.
+- description: Sfide nel coordinare volontari e gestire orari complessi per attività
+    come catechismo o eventi.
+  severity: low
+  solution_hint: L'agente vocale può programmare chiamate per coordinare i volontari,
+    inviare aggiornamenti e gestire calendari.
+- description: Compliance con il GDPR per la protezione dei dati dei membri, con rischi
+    di sanzioni.
+  severity: high
+  solution_hint: L'agente AI può essere configurato per gestire dati in modo sicuro,
+    con risposte vocali che rispettano la privacy e integrazioni conformi.
+typical_services:
+- Gestione delle offerte e donazioni online
+- Organizzazione di eventi religiosi (es. pellegrinaggi, feste patronali)
+- Vendita di articoli religiosi (es. candele, rosari)
+- Consulenza spirituale e supporto pastorale
+- Amministrazione parrocchiale e contabilità
+- Formazione per catechisti e volontari
+- Servizi di streaming per messe e cerimonie
+- Manutenzione e restauro di chiese
+- Raccolta fondi per progetti caritatevoli
+- Gestione di cimiteri e servizi funebri
+recommended_functions:
+- name: Prenotazione automatica di appuntamenti
+  priority: high
+  reason: Per gestire efficientemente richieste per battesimi, matrimoni e altri sacramenti,
+    riducendo il carico amministrativo.
+- name: Risposte a domande frequenti su orari e servizi
+  priority: high
+  reason: Per fornire informazioni immediate ai fedeli, migliorando l'accessibilità
+    e riducendo le chiamate al personale.
+- name: Invio di promemoria vocali per eventi e donazioni
+  priority: medium
+  reason: Per aumentare la partecipazione e la puntualità nei pagamenti, sfruttando
+    la comunicazione personalizzata.
+- name: Raccolta feedback e sondaggi via voce
+  priority: low
+  reason: Per comprendere le esigenze della comunità e adattare i servizi, favorendo
+    l'engagement.
+- name: Integrazione con sistemi di pagamento per donazioni
+  priority: high
+  reason: Per semplificare le transazioni e aumentare le entrate, con tracciabilità
+    in tempo reale.
+- name: Supporto multilingue per turisti e immigrati
+  priority: medium
+  reason: Per servire comunità diverse in Italia, specialmente in aree turistiche
+    o metropolitane.
+typical_integrations:
+- name: Sistemi gestionali parrocchiali
+  examples:
+  - ParrocchiaWeb
+  - ChiesaDigitale
+  - Pastorale
+  priority: high
+- name: Piattaforme di pagamento online
+  examples:
+  - Satispay
+  - Nexi
+  - PayPal
+  priority: high
+- name: CRM per organizzazioni non profit
+  examples:
+  - Salesforce Nonprofit Cloud
+  - Zoho CRM
+  priority: medium
+- name: Sistemi di streaming video
+  examples:
+  - YouTube
+  - Facebook Live
+  - Vimeo
+  priority: low
+- name: Software di contabilità locale
+  examples:
+  - Banco
+  - TeamSystem
+  priority: medium
+industry_faq:
+- question: Come posso donare online alla mia parrocchia?
+  answer_template: Puoi donare tramite il nostro sito web integrato con sistemi sicuri
+    come Satispay, o chiamare il nostro agente vocale per assistenza passo-passo.
+- question: Quali sono gli orari delle messe questa domenica?
+  answer_template: Gli orari delle messe sono disponibili sul nostro calendario online.
+    Puoi anche chiedere al nostro agente vocale per orari aggiornati e prenotazioni.
+- question: Come prenoto un appuntamento per un battesimo o matrimonio?
+  answer_template: Puoi prenotare direttamente tramite il nostro agente vocale, che
+    ti guiderà nella selezione di date e documenti necessari.
+- question: Offrite servizi di streaming per le messe?
+  answer_template: Sì, trasmettiamo le messe in diretta su piattaforme come YouTube.
+    L'agente vocale può fornirti i link e assistenza tecnica.
+- question: Come posso diventare volontario nella parrocchia?
+  answer_template: Contatta il nostro agente vocale per informazioni sulle opportunità
+    di volontariato e per registrarti agli eventi di formazione.
+- question: La mia donazione è deducibile dalle tasse?
+  answer_template: Sì, le donazioni a organizzazioni religiose riconosciute in Italia
+    sono deducibili. L'agente vocale può aiutarti con i dettagli e la documentazione.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui costi dei servizi di automazione.
+  script: Grazie per il tuo interesse. I nostri agenti vocali AI partono da 50€ al
+    mese per funzioni base come prenotazioni e FAQ, con pacchetti personalizzati che
+    possono farti risparmiare fino al 30% sui costi operativi. Possiamo discutere
+    un piano su misura per le tue esigenze.
+  goal: Chiudere una demo o una proposta di prezzo, evidenziando il valore e il ROI.
+- trigger: service_inquiry
+  situation: Quando un cliente è curioso su come l'AI può aiutare nella gestione parrocchiale.
+  script: Ciao, sono qui per aiutarti a semplificare la gestione della tua comunità.
+    Ad esempio, posso automatizzare le chiamate per donazioni, gestire prenotazioni
+    di eventi e rispondere alle domande dei fedeli 24/7. Vuoi provare una demo gratuita?
+  goal: Generare interesse e fissare un appuntamento per una dimostrazione.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente come ParrocchiaWeb.
+  script: Rispetto a soluzioni tradizionali come ParrocchiaWeb, il nostro agente vocale
+    offre interazione in tempo reale via voce, riducendo il carico di lavoro e aumentando
+    l'engagement. Inoltre, integriamo facilmente con i tuoi sistemi esistenti a un
+    costo inferiore.
+  goal: Differenziare il prodotto e sottolineare i vantaggi unici.
+competitors:
+- name: ParrocchiaWeb
+  positioning: Fornitore leader di software gestionale per parrocchie in Italia.
+  strengths:
+  - Solida base di clienti
+  - funzionalità amministrative complete
+  - supporto locale
+  weaknesses:
+  - Interfaccia meno intuitiva
+  - limitata automazione vocale
+  - costi elevati per personalizzazioni
+  our_differentiation: Offriamo agenti vocali AI che automatizzano le interazioni
+    in tempo reale, con integrazioni flessibili e pricing più accessibile.
+- name: ChiesaDigitale
+  positioning: Piattaforma online per servizi religiosi e e-commerce.
+  strengths:
+  - Vendita di articoli religiosi
+  - presenza digitale forte
+  - facilità d'uso
+  weaknesses:
+  - Mancanza di automazione vocale
+  - supporto limitato per gestioni complesse
+  - dipendenza da internet
+  our_differentiation: Il nostro agente vocale fornisce supporto umano simulato via
+    telefono, ideale per comunità con fedeli meno digitalizzati, aumentando l'accessibilità.
+- name: Salesforce Nonprofit Cloud
+  positioning: CRM globale adattato per organizzazioni non profit, incluse quelle
+    religiose.
+  strengths:
+  - Potenti funzionalità di CRM
+  - scalabilità
+  - integrazioni estese
+  weaknesses:
+  - Costi molto alti
+  - complessità di implementazione
+  - non specifico per il mercato italiano
+  our_differentiation: Soluzioni localizzate per l'Italia con focus su automazione
+    vocale in italiano, supporto GDPR nativo e pricing trasparente in EUR.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automazione delle chiamate per donazioni e prenotazioni in una parrocchia
+      media.
+    monthly_cost: 100
+    monthly_savings: 150
+    payback_months: 2
+  value_anchors:
+  - Riduci i costi operativi fino al 30% con l'automazione vocale.
+  - Aumenta le donazioni del 20% grazie a promemoria personalizzati.
+  - Servi i fedeli 24/7 senza costi aggiuntivi per il personale.
+market_context:
+  market_size: Stimato in 500 milioni di EUR annuali per servizi tecnologici nel settore
+    religioso in Italia.
+  growth_rate: 5% YoY, guidato dalla digitalizzazione e dalle esigenze di efficienza.
+  key_trends:
+  - Crescita della domanda per servizi online e streaming di eventi religiosi.
+  - Aumento dell'attenzione alla compliance GDPR per la gestione dei dati dei fedeli.
+  - Espansione del mercato per articoli religiosi e-commerce.
+  seasonality:
+    high:
+    - Dicembre per Natale
+    - Aprile per Pasqua
+    - estate per pellegrinaggi
+    low:
+    - Gennaio
+    - Agosto per vacanze estive
+typical_objections:
+- objection: Non abbiamo budget per nuove tecnologie.
+  response: Capisco. Con il nostro agente vocale, partendo da 50€ al mese, puoi risparmiare
+    sui costi correnti come personale per chiamate. Ti mostro un calcolo del ROI basato
+    sui tuoi dati?
+- objection: I nostri fedeli preferiscono il contatto umano diretto.
+  response: L'agente vocale AI non sostituisce il contatto umano, ma lo supporta liberando
+    tempo per attività più importanti. Inoltre, offre accessibilità 24/7, specialmente
+    per giovani o persone occupate.
+- objection: Siamo preoccupati per la sicurezza dei dati con l'AI.
+  response: Rispettiamo rigorosamente il GDPR con encryption e controlli di accesso.
+    I dati vengono gestiti in server EU e possiamo personalizzare le impostazioni
+    di privacy per la tua comunità.
+meta:
+  id: religion
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

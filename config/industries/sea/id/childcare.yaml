@@ -1,0 +1,244 @@
+pain_points:
+- description: Kesulitan merekrut dan mempertahankan pengasuh berkualitas karena persaingan
+    tinggi dan turnover yang cepat.
+  severity: high
+  solution_hint: AI voice agent dapat membantu menyaring kandidat awal dengan pertanyaan
+    standar, menjadwalkan wawancara, dan mengirim pengingat.
+- description: Manajemen kehadiran dan pembayaran orang tua secara manual rentan terhadap
+    kesalahan dan keterlambatan.
+  severity: high
+  solution_hint: Otomatisasi konfirmasi kehadiran anak, pengingat pembayaran, dan
+    pelacakan tunggakan melalui panggilan atau WhatsApp.
+- description: Komunikasi harian dengan banyak orang tua memakan waktu staf, seperti
+    laporan aktivitas, makan, atau kesehatan anak.
+  severity: medium
+  solution_hint: AI voice agent dapat mengirim laporan otomatis harian via pesan suara
+    atau teks berdasarkan input pengasuh.
+- description: Memastikan kepatuhan terhadap peraturan PDP (Perlindungan Data Pribadi)
+    dalam penyimpanan data anak dan orang tua.
+  severity: medium
+  solution_hint: Agen dapat memberikan pengingat dan checklist kepatuhan digital,
+    serta mengelola persetujuan data secara otomatis.
+- description: Tingkat keterisian (occupancy rate) yang tidak stabil, sulit memprediksi
+    jumlah anak dari hari ke hari.
+  severity: medium
+  solution_hint: Analisis data historis dan panggilan otomatis untuk konfirmasi kehadiran
+    mingguan, membantu perencanaan staf dan logistik.
+- description: Administrasi pendaftaran dan dokumentasi yang berulang dan memakan
+    waktu.
+  severity: low
+  solution_hint: Formulir pendaftaran digital via chat/voice, dengan data langsung
+    masuk ke sistem.
+typical_services:
+- Daycare (Penitipan Anak Harian)
+- Preschool (Kelompok Bermain / Pra-TK)
+- After School Care (Penitipan Anak Setelah Sekolah)
+- Baby Daycare (Penitipan Bayi)
+- Program Liburan Sekolah
+- Kelas Tambahan (Misal: Musik, Bahasa, Renang)
+- Catering & Makanan Sehat Anak
+- Antar Jemput Anak (Service Pick-up & Drop-off)
+- Konsultasi Parenting
+- Layanan Perawatan Anak Darurat (Emergency Care)
+recommended_functions:
+- name: Pendaftaran dan Penerimaan Calon Klien
+  priority: high
+  reason: Mengurangi beban administrasi awal dan menangkap lead dengan cepat 24/7.
+- name: Penanganan Pertanyaan Umum (FAQ) dan Jadwal
+  priority: high
+  reason: Membebaskan staf dari menjawab pertanyaan berulang tentang biaya, jam operasi,
+    program.
+- name: Pengingat dan Konfirmasi Pembayaran
+  priority: high
+  reason: Meningkatkan cash flow dengan mengurangi keterlambatan pembayaran secara
+    otomatis.
+- name: Pengingat dan Konfirmasi Kehadiran Harian/Mingguan
+  priority: medium
+  reason: Membantu perencanaan kapasitas dan keamanan dengan memastikan orang tua
+    mengonfirmasi.
+- name: Pengumpulan Umpan Balik dan Review Otomatis
+  priority: medium
+  reason: Memantau kepuasan orang tua secara proaktif dan memperbaiki layanan.
+- name: Penjadwalan Trial Visit / Tour
+  priority: low
+  reason: Mengotomatiskan langkah penting dalam funnel penjualan.
+typical_integrations:
+- name: Sistem Pembayaran Digital
+  examples:
+  - DANA
+  - OVO
+  - GoPay
+  - LinkAja
+  - Midtrans
+  priority: high
+- name: Software Manajemen Daycare/Preschool
+  examples:
+  - Kidsoft
+  - Kinderlime
+  - Brightwheel (adaptasi lokal)
+  - sistem custom
+  priority: high
+- name: Platform Komunikasi
+  examples:
+  - WhatsApp Business API
+  - Telegram
+  priority: high
+- name: Sistem Akuntansi
+  examples:
+  - Jurnal
+  - Accurate Online
+  - Zahir
+  priority: medium
+- name: Tools Kalender & Jadwal
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  priority: medium
+industry_faq:
+- question: Berapa biaya penitipan anak per bulan?
+  answer_template: Harga kami bervariasi tergantung program dan usia anak, mulai dari
+    Rp 1.500.000 hingga Rp 5.000.000 per bulan. Untuk informasi detail dan paket terbaik
+    untuk kebutuhan Anda, boleh saya jadwalkan konsultasi singkat?
+- question: Apa saja syarat pendaftarannya?
+  answer_template: Syarat utama adalah fotocopy akta kelahiran anak, KTP orang tua,
+    dan mengisi formulir pendaftaran. Kami juga biasanya memerlukan riwayat kesehatan
+    dasar. Prosesnya dapat dilakukan secara online.
+- question: Apakah menyediakan makanan dan bagaimana kebersihannya?
+  answer_template: Ya, kami menyediakan catering makanan sehat dan snack dengan menu
+    yang disusun ahli gizi. Proses kebersihan dan keamanan pangan diawasi ketat, sertifikasi
+    dapur kami tersedia untuk dilihat.
+- question: Berapa rasio pengasuh dengan anak?
+  answer_template: Untuk bayi (di bawah 2 tahun), rasio 1:3. Untuk anak toddler (2-4
+    tahun), rasio 1:5. Untuk prasekolah, rasio 1:8. Ini untuk memastikan perhatian
+    maksimal.
+- question: Bagaimana prosedur jika anak sakit saat di daycare?
+  answer_template: Kami memiliki protokol jelas. Pengasuh akan segera mengisolasi
+    anak, menghubungi orang tua, dan memberikan pertolongan pertama dasar. Kami juga
+    bekerja sama dengan klinik terdekat untuk keadaan darurat.
+sales_scripts:
+- trigger: price_question
+  situation: Saat calon klien menanyakan harga di awal percakapan.
+  script: Tentu, Ibu/Bapak. Biaya investasi untuk masa depan anak tentu penting. Sebelumnya,
+    boleh saya tahu usia anak dan kebutuhan penitipan utamanya (full day, setelah
+    sekolah, atau program khusus)? Harga kami kompetitif dan disesuaikan dengan value
+    yang didapat, seperti pengasuh bersertifikat, program pembelajaran terstruktur,
+    dan laporan harian digital. Kisarannya Rp 1.5 juta hingga Rp 5 juta per bulan.
+  goal: Mengalihkan dari harga ke value, mengumpulkan informasi, dan membuka percakapan
+    lebih lanjut.
+- trigger: competitor_mention
+  situation: Saat calon klien menyebut nama daycare lain.
+  script: 'Itu pilihan yang bagus. Yang membedakan kami adalah sistem komunikasi dan
+    pelaporan real-time kepada orang tua via aplikasi, serta fokus pada perkembangan
+    sosial-emosional anak melalui kurikulum khusus. Selain itu, layanan antar-jemput
+    kami mencakup area yang lebih luas. Apa Ibu/Bapak paling prioritaskan untuk anak:
+    kenyamanan, perkembangan akademik, atau fleksibilitas jam?'
+  goal: Menonjolkan diferensiasi unik dan mengidentifikasi kebutuhan utama calon klien.
+- trigger: hesitation_busy
+  situation: Saat calon klien mengatakan terlalu sibuk untuk survey atau meeting.
+  script: Saya mengerti kesibukan Ibu/Bapak. Itulah mengapa kami menyediakan virtual
+    tour via WhatsApp dan proses pendaftaran sepenuhnya online. Hanya butuh 15 menit
+    untuk melihat fasilitas dan penjelasan program dari kami. Kapan waktu yang paling
+    nyaman untuk kami kirimkan link virtual tour-nya? Besok pagi atau sore?
+  goal: Mengatasi halangan waktu dengan menawarkan solusi rendah komitmen (virtual
+    tour) dan mengarahkan pada komitmen waktu konkret.
+competitors:
+- name: KiddieCare Indonesia
+  positioning: Premium international preschool & daycare.
+  strengths:
+  - Fasilitas lengkap dan modern
+  - kurikulum internasional
+  - brand terkenal.
+  weaknesses:
+  - Biaya sangat tinggi
+  - kurang fleksibel untuk jam di luar standar
+  - lokasi terbatas di area premium.
+  our_differentiation: Kami menawarkan kualitas pengasuhan yang sama baiknya dengan
+    harga lebih terjangkau dan program yang lebih fleksibel sesuai kebutuhan keluarga
+    Indonesia, dengan komunikasi yang lebih personal.
+- name: Daycare Group (DG)
+  positioning: Daycare jaringan dengan banyak cabang.
+  strengths:
+  - Banyak pilihan lokasi
+  - harga standar
+  - brand dikenal.
+  weaknesses:
+  - Kualitas tidak konsisten antar cabang
+  - rasio pengasuh-anak tinggi
+  - sistem komunikasi manual.
+  our_differentiation: Konsistensi kualitas dan perhatian personal di satu lokasi
+    kami, didukung teknologi untuk transparansi ke orang tua, serta rasio pengasuh-anak
+    yang lebih baik.
+- name: Rumah Main Anak (RMA)
+  positioning: Daycare & playground komunitas lokal.
+  strengths:
+  - Suasananya ramah dan seperti rumah
+  - harga ekonomis
+  - dekat dengan perumahan.
+  weaknesses:
+  - Program pembelajaran kurang terstruktur
+  - fasilitas terbatas
+  - administrasi manual.
+  our_differentiation: Kami menggabungkan suasana hangat dengan program perkembangan
+    anak terstruktur dan manajemen profesional, memberikan nilai lebih dari sekadar
+    penitipan.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 1500000
+  - 7000000
+  entry_point: 1800000
+  roi_examples:
+  - scenario: Mengurangi 10 jam kerja admin/staf per minggu untuk telepon, konfirmasi,
+      dan pengingat manual.
+    monthly_cost: 500000
+    monthly_savings: 2000000
+    payback_months: 0.25
+  value_anchors:
+  - Investasi untuk ketenangan pikiran dan produktivitas Anda.
+  - Biaya kurang dari Rp 100.000 per hari untuk pengasuhan anak profesional.
+  - Hemat hingga 20 jam waktu administrasi staf Anda setiap bulannya.
+market_context:
+  market_size: Diperkirakan mencapai Rp 50 triliun di perkotaan Indonesia.
+  growth_rate: 8-12% YoY, didorong urbanisasi dan meningkatnya partisipasi perempuan
+    di dunia kerja.
+  key_trends:
+  - Permintaan tinggi untuk daycare dengan kurikulum pendidikan dini (early education).
+  - Meningkatnya kesadaran akan keamanan, kebersihan, dan nutrisi anak.
+  - Orang tua menginginkan transparansi dan komunikasi real-time melalui teknologi.
+  seasonality:
+    high:
+    - Januari (awal tahun ajaran baru)
+    - Juni-Juli (masuk liburan sekolah)
+    low:
+    - April (mendekati libur lebaran)
+    - Desember (akhir tahun)
+typical_objections:
+- objection: Mahal sekali, tidak sesuai budget kami.
+  response: Saya paham pertimbangan budget. Boleh saya tawarkan paket paruh waktu
+    atau 3 hari seminggu yang lebih hemat? Atau, jika dibandingkan dengan biaya babysitter
+    pribadi plus biaya aktivitas terpisah, layanan kami yang komprehensif justru bisa
+    lebih efisien.
+- objection: Anak saya mungkin tidak nyaman ditinggal di tempat baru.
+  response: Itu wajar sekali. Kami punya program trial/percobaan 2 hari dengan harga
+    khusus agar anak bisa beradaptasi. Pengasuh kami terlatih menangani anak yang
+    baru pertama kali di daycare. Banyak orang tua melaporkan anak justru senang karena
+    banyak teman dan aktivitas.
+- objection: Kami sudah terbiasa dengan pengasuh di rumah (ART).
+  response: Itu bagus untuk kenyamanan. Yang kami tawarkan adalah lingkungan sosial
+    untuk perkembangan anak, interaksi dengan teman sebaya, dan stimulasi belajar
+    terstruktur yang mungkin kurang didapat di rumah. Bisa juga menjadi solusi cadangan
+    ketika ART berhalangan.
+meta:
+  id: childcare
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

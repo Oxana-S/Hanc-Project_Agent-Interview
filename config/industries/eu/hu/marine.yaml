@@ -1,0 +1,233 @@
+pain_points:
+- description: A hajók és hajók alkatrészeinek rendszeres karbantartása és javítása
+    időigényes, és gyakran kiszámíthatatlan költségekkel jár.
+  severity: high
+  solution_hint: Automatizált karbantartási emlékeztetők beállítása és időpontfoglalások
+    kezelése AI segítségével.
+- description: Az ügyfelek számára nehéz lehet a megfelelő hajó- és felszerelés-biztosítás
+    megtalálása kedvező áron.
+  severity: medium
+  solution_hint: AI által támogatott biztosítási ajánlatok összehasonlítása és ajánlása
+    az ügyfél igényei alapján.
+- description: A kikötői és dokkolási időpontok kezelése nehézkes, gyakran telefonos
+    egyeztetések és papíralapú rendszer jellemzi.
+  severity: high
+  solution_hint: Online időpontfoglaló rendszer integrálása és automatizált SMS/telefonos
+    emlékeztetők küldése.
+- description: Az alkatrész- és készletnyilvántartás kézi vezetése hibalehetőséget
+    hordoz, ami késedelmet és extra költségeket okoz.
+  severity: medium
+  solution_hint: Hangalapú készletkezelés és automatikus rendelési javaslatok készítése.
+- description: Az évszakos munka miatt a nyári csúcsidőben túlterheltek a dolgozók,
+    télen pedig alulterheltek, ami nehéz erőforrás-tervezést eredményez.
+  severity: high
+  solution_hint: Dinamikus munkabeosztás és ügyfélkommunikáció tervezése szezonális
+    igények alapján.
+- description: Az ügyfelek gyakran hiányos vagy nehezen érthető információkat kapnak
+    a szükséges engedélyekről és előírásokról.
+  severity: low
+  solution_hint: Automatizált, személyre szabott tájékoztatás adása a helyi és EU-s
+    előírásokról.
+typical_services:
+- Hajókarbantartás és javítás
+- Motor- és hajtóműszerviz
+- Kikötői és dokkolási szolgáltatások
+- Hajóbiztosítás közvetítés
+- Alkatrész-ellátás és kereskedés
+- Hajóvizsgálat és tanúsítás
+- Téli tárolás és átfésülés
+- Hajókölcsönzés és charter
+- Navigációs felszerelés beszerelése
+- Vészhelyzeti mentési szolgáltatások
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: A kikötői és szerviz időpontok hatékony kezelése kritikus a forgalom csökkentéséhez.
+- name: Szerviz emlékeztetők
+  priority: high
+  reason: A rendszeres karbantartás növeli a hajók élettartamát és megbízhatóságát.
+- name: Alkatrész rendelés
+  priority: medium
+  reason: A készletek automatizált kezelése csökkenti a leállási időt és a költségeket.
+- name: Biztosítási ajánlatok összehasonlítása
+  priority: medium
+  reason: Az ügyfelek jelentős összegeket takaríthatnak meg a megfelelő biztosítási
+    csomaggal.
+- name: Vészhelyzeti kapcsolatfelvétel
+  priority: low
+  reason: Gyors segítségnyújtás biztosítása baleset vagy meghibásodás esetén.
+- name: GDPR megfelelőség ellenőrzése
+  priority: medium
+  reason: Az adatkezelési előírások betartása elkerülheti a jelentős bírságokat.
+typical_integrations:
+- name: Számlázó szoftver
+  examples:
+  - Billingo
+  - Szamlazz.hu
+  - eSzamla
+  priority: high
+- name: Készletkezelő rendszer
+  examples:
+  - InventPro
+  - StockLine
+  priority: medium
+- name: Ügyfélkapcsolat-kezelő (CRM)
+  examples:
+  - Trengo
+  - Eggy CRM
+  priority: high
+- name: Időpontfoglaló rendszer
+  examples:
+  - SuperSaaS
+  - YouCanBook.me
+  priority: high
+- name: Navigációs és időjárás API-k
+  examples:
+  - met.hu API
+  - Navionics API
+  priority: low
+industry_faq:
+- question: Milyen gyakran kell szervizeltetni a hajóm motorját?
+  answer_template: Ajánlott évente legalább egyszer teljes körű motorvizsgálatot végeztetni,
+    de a gyakoriság függ az éves használati óráktól és a gyártói javaslattól. Kérjük,
+    adja meg a hajó típusát, hogy pontosabb ajánlást tudjunk adni.
+- question: Mennyi idő előre kell időpontot foglalni a téli tároláshoz?
+  answer_template: Szeptember végétől kezdődően erősen ajánljuk az időpont foglalását,
+    mivel a helyek gyorsan elfogynak. Jelenlegi kapacitásunkat telefonon is meg tudjuk
+    osztani.
+- question: Milyen dokumentumok szükségesek a hajó biztosításához?
+  answer_template: Általában szükséges a hajó tulajdonosi lapja, műszaki dokumentációja
+    és személyi igazolvány. A pontos listát a kiválasztott biztosítótól kapja meg,
+    mi segítünk az összegyűjtésében.
+- question: Mit kell tenni, ha a vízen történik meghibásodás?
+  answer_template: Elsőként biztosítsa a személyi biztonságot, majd azonnal hívja
+    a vészhelyzeti számunkat. GPS koordinátákat küldjön, ha lehetséges. A rendszerünk
+    azonnal riasztja a legközelebbi mentőcsapatot.
+- question: Elérhetőek-e nyitvatartási időn kívüli szolgáltatások?
+  answer_template: Igen, bizonyos vészhelyzeti szolgáltatásaink 0-24 elérhetőek. A
+    normál szerviz időpontjait munkanapokon 8:00-16:00 között tudjuk biztosítani.
+sales_scripts:
+- trigger: price_question
+  situation: Ha egy ügyfél a szerviz költségeire kérdez rá.
+  script: Köszönöm a kérdését. A pontos költség a hajó típusától és a szükséges munkáktól
+    függ. Átlagosan egy alap szerviz 50.000 HUF-tól kezdődik. Gyorsan átnézhetjük
+    egyeztetés alapján a pontos igényeit, hogy személyre szabott ajánlatot készíthessünk.
+    Mikor lenne alkalmas egy rövid egyeztetésre?
+  goal: Megszakítási pont elérése és személyes egyeztetés időpontjának megbeszélése.
+- trigger: competitor_mention
+  situation: Ha az ügyfél említi a versenytársainkat.
+  script: Értem, hogy más lehetőségeket is fontolóra vesz. Mi a helyi piac legnagyobb
+    szereplői közé tartozunk 15 éves tapasztalattal, és kiemelt figyelmet fordítunk
+    az egyéni ügyfélgyámolásra és a digitális időpontkezelésre. Ezáltal átlagosan
+    2 napot spórolunk meg ügyfeleinknek a szerviz várakozási idejében. Szeretne többet
+    megtudni a gyorsabb folyamatainkról?
+  goal: A versenyelőny kiemelése és a további előnyök bemutatására való felkérés.
+- trigger: objection_busy
+  situation: Ha az ügyfél azt mondja, nincs ideje beszélni.
+  script: 'Teljesen megértem, hogy elfoglalt. Egyetlen kérdésem lenne: küldhetek egy
+    rövid, személyre szabott információcsomagot e-mailben a hajókarbantartás idő-
+    és költségmegtakarítási lehetőségeiről? Csak 2 percet vesz igénybe elolvasni,
+    és lehet, hogy évente akár 100.000 HUF-ot is megtakaríthat vele.'
+  goal: A kommunikáció fenntartása és egy értékes anyag küldésével történő újrapozicionálás.
+competitors:
+- name: Balatoni Hajószerviz Kft.
+  positioning: A Balaton régió meghatározó, teljeskörű szolgáltatója.
+  strengths:
+  - Széles szervizhálózat
+  - Erős helyi megítélés
+  - Saját alkatrészgyártás
+  weaknesses:
+  - Magasabb árak
+  - Elavultabb adminisztrációs rendszer
+  - Korlátozott online jelenlét
+  our_differentiation: Modern, AI-alapú ügyfélkommunikáció és időpontkezelés, átlagosan
+    20%-al alacsonyabb árak hasonló szolgáltatásokra.
+- name: Duna Hajózási Szolgáltató
+  positioning: Folyami hajókra specializálódott közepes vállalkozás.
+  strengths:
+  - Folyami hajók specialistája
+  - Jó kapcsolatok a hajózási hatóságokkal
+  - Versenyképes árak
+  weaknesses:
+  - Csak folyami szolgáltatás
+  - Korlátozott kapacitás
+  - Minőség-íngadozások
+  our_differentiation: Szárazföldi és tavi szolgáltatások teljes skálája, valamint
+    átfogó digitális nyomonkövetés a javítási folyamatban.
+- name: MarineTech Hungária
+  positioning: Technológiaorientált újonc a piacon.
+  strengths:
+  - Modern felszerelés
+  - Innovatív online portál
+  - Aggresszív marketing
+  weaknesses:
+  - Korlátozott tapasztalat
+  - Magas alkalmazotti fluktuáció
+  - Instabil minőség
+  our_differentiation: Bevált, megbízható szakértői hátteret kombinálunk a legújabb
+    technológiákkal, biztosítva a hosszú távú megbízhatóságot.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 25000
+  roi_examples:
+  - scenario: Kis hajó éves alap szervize és időpontkezelés automatizálása
+    monthly_cost: 15000
+    monthly_savings: 20000
+    payback_months: 9
+  value_anchors:
+  - Átlagosan 30% időmegtakarítás a szerviz folyamatban
+  - GDPR megfelelőség garantálva, elkerülve a milliós bírságokat
+  - Vészhelyzeti reakció 30 percen belül a Balaton egész területén
+market_context:
+  market_size: 10-15 milliárd HUF éves forgalom
+  growth_rate: 3-5% éves növekedés
+  key_trends:
+  - A digitális időpontfoglalás és kommunikáció egyre nagyobb szerepet kap.
+  - A fenntartható és környezetbarát hajózási megoldások iránti kereslet növekszik.
+  - Az önkiszolgáló, app-alapú szolgáltatások elterjedése.
+  seasonality:
+    high:
+    - április
+    - május
+    - június
+    - július
+    - augusztus
+    low:
+    - november
+    - december
+    - január
+    - február
+typical_objections:
+- objection: Túl drágának tűnik a szolgáltatásotok.
+  response: Teljesen megértem. Ha megnézzük, hogy időmegtakarítással, pontosabb költségtervezéssel
+    és vészhelyzeti támogatással mennyit spórolhat hosszú távon, a havi költség gyakran
+    kevesebb, mint egy tankolás. Szeretnék egy konkrét megtakarítási becslést mutatni
+    az Ön hajójára?
+- objection: Jelenleg nincs szükségem új szolgáltatásra, a régi rendszer is működik.
+  response: 'Az a nagyon jó, ha jelenlegi rendszere kielégíti az igényeit. A mi ajánlatunk
+    inkább a jövőre fókuszál: hogyan spórolhat időt és pénzt a modern automatizálással.
+    Egy próbaidőszakot ajánlok, ahol kockázatmentesen tesztelheti, mennyivel zökkenőmentesebb
+    lehet a folyamat.'
+- objection: Nem szeretném az adataimat digitális rendszerben kezelni.
+  response: Teljesen valid aggodalom. Mi szigorúan betartjuk a GDPR előírásait, és
+    minden adatot titkosított rendszerben kezelünk, amelyet külső audit is ellenőriz.
+    A papír alapú rendszerek is hordoznak kockázatot, például elveszhetnek. Mi a legmagasabb
+    szintű biztonságot garantáljuk.
+meta:
+  id: marine
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

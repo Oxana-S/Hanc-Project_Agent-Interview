@@ -1,0 +1,184 @@
+pain_points:
+- description: Chi phí vận hành cao do phải thuê nhiều nhân viên hỗ trợ khách hàng.
+  severity: high
+  solution_hint: AI voice agent có thể tự động hóa các cuộc gọi và hỗ trợ cơ bản, giảm chi phí nhân sự.
+- description: Khó khăn trong việc tuân thủ quy định bảo vệ dữ liệu cá nhân (PDPD) khi xử lý thông tin khách hàng.
+  severity: high
+  solution_hint: AI voice agent có thể được tích hợp các tính năng bảo mật và tuân thủ tự động, đảm bảo an toàn dữ liệu.
+- description: Tỷ lệ khách hàng không hài lòng do thời gian chờ đợi lâu khi liên hệ hỗ trợ.
+  severity: medium
+  solution_hint: AI voice agent cung cấp hỗ trợ 24/7, giảm thời gian chờ và cải thiện trải nghiệm khách hàng.
+- description: Rủi ro gian lận trong các giao dịch tài chính qua điện thoại hoặc trực tuyến.
+  severity: high
+  solution_hint: AI voice agent có thể tích hợp xác thực giọng nói và phát hiện bất thường để ngăn chặn gian lận.
+- description: Thiếu hệ thống tự động cho các tác vụ lặp đi lặp lại như nhắc lịch thanh toán hoặc cập nhật thông tin.
+  severity: medium
+  solution_hint: AI voice agent tự động hóa các tác vụ hành chính, tăng hiệu quả hoạt động.
+- description: Cạnh tranh gay gắt từ các công ty fintech mới với dịch vụ số hóa nhanh chóng.
+  severity: medium
+  solution_hint: AI voice agent giúp cải thiện dịch vụ khách hàng và đổi mới, tăng khả năng cạnh tranh.
+typical_services:
+- Dịch vụ ngân hàng trực tuyến
+- Bảo hiểm nhân thọ và sức khỏe
+- Đầu tư chứng khoán và quỹ
+- Vay vốn doanh nghiệp và cá nhân
+- Tư vấn tài chính cá nhân
+- Thanh toán điện tử và ví di động
+- Quản lý tài sản và kế hoạch hưu trí
+- Dịch vụ thẻ tín dụng và ghi nợ
+- Bảo hiểm tài sản và xe cộ
+- Fintech solutions như cho vay ngang hàng
+recommended_functions:
+- name: Tư vấn sản phẩm tài chính tự động
+  priority: high
+  reason: Giúp khách hàng hiểu rõ các lựa chọn và tăng tỷ lệ chuyển đổi.
+- name: Hỗ trợ khách hàng 24/7 qua điện thoại
+  priority: high
+  reason: Giảm tải cho nhân viên và cải thiện sự hài lòng khách hàng.
+- name: Tự động hóa cuộc gọi tiếp thị và nhắc nhở
+  priority: medium
+  reason: Tăng hiệu quả bán hàng và giữ chân khách hàng.
+- name: Xử lý khiếu nại và phản hồi nhanh chóng
+  priority: medium
+  reason: Giảm thiểu rủi ro và xây dựng lòng tin.
+- name: Thu thập và phân tích phản hồi khách hàng
+  priority: low
+  reason: Cung cấp insights để cải thiện dịch vụ.
+- name: Đặt lịch hẹn với chuyên gia tư vấn
+  priority: medium
+  reason: Tối ưu hóa quy trình và tiết kiệm thời gian.
+typical_integrations:
+- name: Hệ thống ngân hàng lõi
+  examples:
+  - MBS
+  - T24
+  priority: high
+- name: Hệ thống CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  priority: high
+- name: Cổng thanh toán điện tử
+  examples:
+  - VNPay
+  - MoMo
+  priority: medium
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  priority: medium
+- name: Hệ thống báo cáo tuân thủ
+  examples:
+  - Local regulatory APIs
+  priority: high
+industry_faq:
+- question: Lãi suất cho vay hiện tại là bao nhiêu?
+  answer_template: Lãi suất cho vay phụ thuộc vào loại sản phẩm và hồ sơ khách hàng. Chúng tôi có thể cung cấp thông tin chi tiết sau khi kiểm tra nhu cầu của bạn.
+- question: Có phí dịch vụ nào khi sử dụng sản phẩm không?
+  answer_template: Phí dịch vụ được niêm yết rõ ràng trong hợp đồng. Chúng tôi cam kết minh bạch và sẽ thông báo đầy đủ trước khi bạn quyết định.
+- question: Làm thế nào để đảm bảo thông tin cá nhân của tôi an toàn?
+  answer_template: Chúng tôi tuân thủ nghiêm ngặt quy định PDPD và sử dụng công nghệ bảo mật tiên tiến để bảo vệ dữ liệu của bạn.
+- question: Thời gian xử lý hồ sơ vay vốn mất bao lâu?
+  answer_template: Thời gian xử lý thường từ 3-5 ngày làm việc, tùy thuộc vào độ phức tạp của hồ sơ.
+- question: Tôi có thể hủy dịch vụ bảo hiểm bất cứ lúc nào không?
+  answer_template: Có, nhưng có thể áp dụng phí hủy sớm. Vui lòng tham khảo điều khoản hợp đồng để biết chi tiết.
+- question: Dịch vụ hỗ trợ khách hàng có sẵn 24/7 không?
+  answer_template: Vâng, chúng tôi cung cấp hỗ trợ 24/7 qua AI voice agent và đội ngũ nhân viên để đảm bảo bạn luôn được giúp đỡ.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ AI voice agent.
+  script: Chào bạn, chúng tôi cung cấp giải pháp AI voice agent với mức giá linh hoạt từ 10.000.000 VND/tháng, tùy theo quy mô và nhu cầu của doanh nghiệp. Giải pháp này giúp tiết kiệm tới 30% chi phí vận
+    hành. Bạn có muốn tôi gửi báo giá chi tiết không?
+  goal: Thu hút sự quan tâm và cung cấp thông tin giá cả minh bạch.
+- trigger: service_inquiry
+  situation: Khi khách hàng hỏi về các tính năng của AI voice agent trong ngành tài chính.
+  script: Chào bạn, AI voice agent của chúng tôi có thể tự động hóa hỗ trợ khách hàng, tư vấn sản phẩm, và tuân thủ PDPD. Điều này giúp giảm thời gian chờ đợi và tăng độ chính xác. Bạn có quan tâm đến tính
+    năng cụ thể nào không?
+  goal: Giới thiệu tính năng và thu thập nhu cầu khách hàng.
+- trigger: competition_concern
+  situation: Khi khách hàng so sánh với đối thủ cạnh tranh.
+  script: Chào bạn, khác với các giải pháp truyền thống, AI voice agent của chúng tôi tích hợp sâu với hệ thống tài chính tại Việt Nam và tập trung vào tuân thủ PDPD. Chúng tôi đã giúp nhiều khách hàng
+    tiết kiệm chi phí đáng kể. Bạn có muốn nghe case study cụ thể không?
+  goal: Nổi bật sự khác biệt và xây dựng lòng tin.
+competitors:
+- name: Vietcombank
+  positioning: Ngân hàng lớn với mạng lưới rộng khắp.
+  strengths:
+  - Uy tín lâu năm
+  - Dịch vụ đa dạng
+  - Chi nhánh nhiều
+  weaknesses:
+  - Chi phí vận hành cao
+  - Dịch vụ số hóa chậm
+  our_differentiation: AI voice agent giúp tự động hóa và cải thiện dịch vụ số với chi phí thấp hơn.
+- name: MoMo
+  positioning: Công ty fintech hàng đầu về thanh toán di động.
+  strengths:
+  - Ứng dụng di động phổ biến
+  - Thanh toán nhanh chóng
+  - Đổi mới công nghệ
+  weaknesses:
+  - Hạn chế trong dịch vụ tư vấn tài chính
+  - Phụ thuộc vào internet
+  our_differentiation: Chúng tôi tập trung vào hỗ trợ khách hàng toàn diện qua điện thoại, kể cả khi không có internet.
+- name: Techcombank
+  positioning: Ngân hàng hiện đại với trọng tâm công nghệ.
+  strengths:
+  - Dịch vụ số tiên tiến
+  - Khách hàng doanh nghiệp mạnh
+  - Chiến lược đổi mới
+  weaknesses:
+  - Giá cả cao hơn
+  - Phức tạp trong tích hợp
+  our_differentiation: Giải pháp AI voice agent dễ tích hợp và có giá cả cạnh tranh, phù hợp cho doanh nghiệp vừa và nhỏ.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 100000000
+  entry_point: 10000000
+  roi_examples:
+  - scenario: Tự động hóa hỗ trợ khách hàng cho một ngân hàng nhỏ
+    monthly_cost: 15000000
+    monthly_savings: 27500000
+    payback_months: 3
+  value_anchors:
+  - Tiết kiệm tới 30% chi phí vận hành hàng tháng
+  - Tăng tỷ lệ hài lòng khách hàng lên 20%
+  - Tuân thủ PDPD tự động, giảm rủi ro pháp lý
+market_context:
+  market_size: Khoảng 50 tỷ USD năm 2023
+  growth_rate: 8% mỗi năm
+  key_trends:
+  - Số hóa nhanh chóng các dịch vụ tài chính
+  - Tăng cường bảo mật và tuân thủ quy định
+  - Phát triển fintech và hợp tác ngân hàng-công nghệ
+  seasonality:
+    high:
+    - Tháng 1-2 (dịp Tết Nguyên Đán)
+    - Cuối năm (mùa mua sắm và đầu tư)
+    low:
+    - Tháng 6-7 (mùa hè, ít hoạt động tài chính)
+typical_objections:
+- objection: Giá cả quá cao so với ngân sách của chúng tôi.
+  response: Chúng tôi có các gói linh hoạt phù hợp với ngân sách. Hãy xem xét ROI – giải pháp có thể tiết kiệm chi phí lâu dài.
+- objection: Tôi không tin tưởng vào AI cho các giao dịch tài chính quan trọng.
+  response: AI voice agent của chúng tôi được thiết kế với các lớp bảo mật và giám sát con người, đảm bảo an toàn và độ chính xác.
+- objection: Hệ thống hiện tại của chúng tôi khó tích hợp với công nghệ mới.
+  response: Chúng tôi cung cấp dịch vụ tích hợp tùy chỉnh và hỗ trợ kỹ thuật để đảm bảo quá trình chuyển đổi suôn sẻ.
+meta:
+  id: finance
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- finance
+- banking
+- loans
+- credit
+- financial services
+_extends: _base/finance

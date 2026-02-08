@@ -1,0 +1,248 @@
+pain_points:
+- description: Dificuldade em gerir múltiplos pedidos de orçamento simultaneamente,
+    levando a respostas tardias e perda de clientes potenciais.
+  severity: high
+  solution_hint: Agente de voz AI pode triar e qualificar leads inicialmente, agendar
+    reuniões e responder a perguntas básicas 24/7, permitindo que a equipa se foque
+    em clientes quentes.
+- description: Alto volume de comunicações repetitivas (e-mails, chamadas) para confirmação
+    de detalhes, logística e alterações de última hora.
+  severity: high
+  solution_hint: Automatizar confirmações, lembretes e updates de status via chamadas
+    de voz, reduzindo a carga administrativa.
+- description: Flutuação sazonal acentuada, com picos de trabalho que sobrecarregam
+    a equipa e vales com pouca atividade.
+  severity: medium
+  solution_hint: Agente pode lidar com o volume de consultas durante os picos e prospeção
+    ativa durante os períodos mais calmos.
+- description: Dificuldade em acompanhar todos os pagamentos de fornecedores e clientes,
+    levando a atrasos e problemas de fluxo de caixa.
+  severity: medium
+  solution_hint: Integrar com software de faturação para fazer lembretes de pagamento
+    automáticos por voz e confirmar receções.
+- description: Concorrência feroz, especialmente de pequenas empresas e freelancers,
+    tornando difícil destacar-se apenas pelo preço.
+  severity: high
+  solution_hint: Agente oferece um serviço ao cliente de elite e imediato, criando
+    uma vantagem competitiva baseada na experiência e eficiência.
+- description: Coordenação complexa com múltiplos fornecedores locais (catering, som,
+    floristas) que muitas vezes não usam os mesmos sistemas de comunicação.
+  severity: medium
+  solution_hint: Agente pode centralizar comunicações, fazendo e recebendo chamadas
+    para confirmar disponibilidades e prazos com todos os intervenientes.
+typical_services:
+- Planeamento e Gestão de Eventos Corporativos
+- Organização de Casamentos
+- Coordenação de Conferências e Congressos
+- Logística de Eventos de Team Building
+- Gestão de Fornecedores (catering, audiovisuais, decoração)
+- Ativação de Marca e Eventos de Lançamento
+- Aluguer e Montagem de Espaços
+- Serviços de Receção e Acreditação
+- Planeamento de Eventos Híbridos (presencial + online)
+- Pós-Evento (follow-up, relatórios, análise de satisfação)
+recommended_functions:
+- name: Agendamento Inteligente de Reuniões
+  priority: high
+  reason: Fundamental para capturar leads rapidamente num mercado competitivo, permitindo
+    que planeadores fechem negócios mais depressa.
+- name: Qualificação Inicial de Leads
+  priority: high
+  reason: Filtra perguntas genéricas sobre preços e identifica clientes sérios com
+    budget e datas definidas, otimizando o tempo da equipa de vendas.
+- name: Lembretes Automatizados de Pagamento e Confirmações
+  priority: medium
+  reason: Melhora significativamente o fluxo de caixa e reduz falhas de comunicação
+    com clientes e fornecedores.
+- name: Atualização Automática de CRM
+  priority: high
+  reason: Mantém todos os dados do cliente e histórico de interações sincronizados,
+    crucial para um serviço personalizado.
+- name: Prospeção e Recondução de Clientes
+  priority: medium
+  reason: Ajuda a preencher o calendário durante épocas baixas, contactando antigos
+    clientes ou leads frios com ofertas personalizadas.
+- name: FAQ Automatizado 24/7
+  priority: low
+  reason: Oferece suporte básico fora de horas, melhorando a perceção de disponibilidade
+    e serviço.
+typical_integrations:
+- name: Software de CRM
+  examples:
+  - Clio
+  - PipeDrive
+  - Salesforce
+  priority: high
+- name: Plataforma de Agendamento
+  examples:
+  - Calendly
+  - YouCanBook.me
+  priority: medium
+- name: Software de Faturação
+  examples:
+  - Facturama
+  - Primavera
+  - Sage
+  priority: medium
+- name: Plataforma de Gestão de Eventos
+  examples:
+  - Sympla
+  - Eventbrite
+  - Bolt
+  priority: high
+- name: Ferramentas de Comunicação
+  examples:
+  - WhatsApp Business API
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: Com que antecedência devo contactar-vos para planear o meu evento?
+  answer_template: Recomendamos um contacto com pelo menos 3 a 6 meses de antecedência
+    para eventos de média dimensão. Para eventos mais complexos ou em épocas altas
+    (primavera/verão), sugerimos 9 a 12 meses. Podemos, no entanto, analisar projetos
+    de última hora - posso transferi-lo para um dos nossos planeadores?
+- question: O vosso serviço inclui a gestão de todos os fornecedores?
+  answer_template: Sim, a nossa oferta completa inclui a seleção, negociação e coordenação
+    de todos os fornecedores necessários, desde catering e som até alojamento e transporte.
+    Trabalhamos com uma rede fiável de parceiros em todo o país.
+- question: Trabalham com eventos híbridos (presencial e online)?
+  answer_template: Absolutamente. Oferecemos soluções completas para eventos híbridos,
+    incluindo plataforma streaming, moderação de chat online, interação entre audiências
+    e análise de engagement.
+- question: Como é calculado o vosso orçamento? Há custos ocultos?
+  answer_template: Apresentamos um orçamento detalhado e transparente, dividido por
+    categorias (conceito, espaço, catering, logística, etc.). Todos os custos são
+    acordados previamente. O nosso princípio é zero surpresas no final.
+- question: Conseguem organizar um evento fora de Lisboa ou Porto?
+  answer_template: Sim, organizamos eventos em todo o território nacional, incluindo
+    Açores e Madeira. Temos experiência e parceiros locais em várias regiões.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um lead pergunta "Quanto custa organizar um evento?" de forma
+    genérica.
+  script: Olá! Obrigado pelo seu contacto. O valor para organizar um evento depende
+    de vários fatores como o tipo de evento, número de convidados, localização e serviços
+    necessários. Para lhe dar uma estimativa precisa, posso fazer algumas perguntas
+    rápidas? Por exemplo, que tipo de evento está a planear e qual a data aproximada?
+  goal: Qualificar o lead e recolher informações básicas para passar a um consultor,
+    evitando dar um preço vago que pode afastar o cliente.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona estar a avaliar outras empresas do setor.
+  script: Entendo que está a analisar várias opções, é uma decisão importante. A nossa
+    diferença está na combinação de criatividade com uma operação extremamente eficiente.
+    Utilizamos tecnologia de ponta, como assistentes de IA, para garantir que nenhum
+    detalhe escapa e que a sua experiência como cliente é sem fricções, desde o primeiro
+    contacto até ao pós-evento. Posso agendar uma breve demonstração?
+  goal: Diferenciação pela tecnologia e experiência do cliente, convertendo a conversa
+    para uma demonstração de valor.
+- trigger: objection_budget
+  situation: Quando o cliente diz "É mais caro do que esperava".
+  script: Compreendo perfeitamente a sua preocupação com o orçamento. Importa referir
+    que o nosso preço reflete uma gestão de projeto completa e sem preocupações para
+    si. Muitos clientes descobrem que, ao evitar erros, negociações fracas com fornecedores
+    e stress de última hora, acabam por poupar não só dinheiro mas também um tempo
+    valioso. Posso detalhar os itens onde a nossa gestão profissional gera mais retorno?
+  goal: Reenquadrar o preço como um investimento que poupa custos e problemas ocultos,
+    educando o cliente sobre o valor total.
+competitors:
+- name: Wonderland Portugal
+  positioning: Empresa premium focada em casamentos e eventos de luxo.
+  strengths:
+  - Portfólio impressionante
+  - Excelente rede de fornecedores premium
+  - Forte presença nas redes sociais
+  weaknesses:
+  - Preços muito elevados
+  - Foco limitado a nicho de luxo
+  - Pouca flexibilidade em orçamentos médios
+  our_differentiation: Oferecemos tecnologia que traz eficiência de operações de luxo
+    a um espectro mais alargado de clientes, com um serviço mais acessível e escalável.
+- name: Global Partners Events
+  positioning: Grande agência com foco em eventos corporativos internacionais.
+  strengths:
+  - Presença global
+  - Capacidade para eventos muito grandes
+  - Experiência em multinacionais
+  weaknesses:
+  - Processos lentos e burocráticos
+  - Menor atenção ao cliente local PME
+  - Estrutura de custos elevada
+  our_differentiation: Somos mais ágeis, pessoais e tecnologicamente avançados, oferecendo
+    um atendimento dedicado e rápido ideal para empresas nacionais e regionais.
+- name: Freelancers / Pequenas Equipas Locais
+  positioning: Planeadores individuais ou micro-empresas com preços baixos.
+  strengths:
+  - Preço muito competitivo
+  - Relação pessoal próxima
+  - Grande flexibilidade
+  weaknesses:
+  - Capacidade limitada para vários eventos
+  - Falta de processos robustos
+  - Risco de falha por sobrecarga ou doença
+  our_differentiation: Oferecemos a proximidade de uma pequena equipa com a robustez,
+    a tecnologia e a capacidade de escalar de uma empresa estruturada, garantindo
+    fiabilidade.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Empresa que organiza 2 eventos por mês e gasta 10h/semana em tarefas
+      administrativas de coordenação.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Reduza em 70% o tempo gasto em comunicações repetitivas.
+  - Nunca perca um lead qualificado por falta de resposta.
+  - Tenha um assistente virtual dedicado ao seu evento por menos de 10€/dia.
+market_context:
+  market_size: Estimado em 800M - 1B EUR anuais (pré-pandemia). Em recuperação.
+  growth_rate: 15-20% YoY (recuperação pós-Covid e crescimento de eventos híbridos).
+  key_trends:
+  - Forte crescimento de eventos híbridos e virtuais.
+  - Maior foco em experiências sustentáveis e eventos 'verdes'.
+  - Demanda por eventos mais pequenos, mas mais frequentes e de maior qualidade.
+  - Aumento da procura por tecnologia que personalize a experiência do participante.
+  seasonality:
+    high:
+    - Março-Junho
+    - Setembro-Novembro
+    low:
+    - Dezembro-Fevereiro
+    - Agosto
+typical_objections:
+- objection: Acho que consigo fazer isto sozinho ou com a minha equipa interna.
+  response: É admirável! Muitos começam assim. A questão é o custo de oportunidade.
+    O tempo que a sua equipa dedica a gerir fornecedores, logística e detalhes é tempo
+    que não dedica ao seu core business. Nós libertamos esse tempo e trazemos expertise
+    para evitar erros dispendiosos. Podemos começar por assumir apenas uma parte do
+    processo, como a gestão de fornecedores?
+- objection: Não estou confortável em confiar detalhes importantes a uma máquina/IA.
+  response: É uma preocupação válida. A nossa IA não age sozinha. Ela é uma ferramenta
+    poderosa que a nossa equipa humana supervisiona. Ela trata das tarefas repetitivas
+    e de triagem, mas todas as decisões estratégicas e criativas, e o contacto em
+    momentos-chave, ficam com os nossos especialistas. Assim, garantimos a eficiência
+    da tecnologia com o toque humano indispensável.
+- objection: Já temos processos estabelecidos, não queremos mudar agora.
+  response: Percebo que mudar processos dá trabalho. A nossa solução é desenhada para
+    se integrar nos seus fluxos atuais, não para os revolucionar de um dia para o
+    outro. Podemos começar com uma função simples, como o agendamento automático de
+    reuniões para novos leads, para sentirem o benefício com risco mínimo. Vamos tentar
+    um piloto de 30 dias?
+meta:
+  id: events
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

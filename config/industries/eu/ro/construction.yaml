@@ -1,0 +1,215 @@
+pain_points:
+- description: Scumpirea materialelor de construcții, care afectează bugetele proiectelor.
+  severity: high
+  solution_hint: Agentul vocal AI poate monitoriza prețurile și sugera furnizori alternativi
+    pentru economisire.
+- description: Dificultăți în găsirea de muncitori calificați, ducând la întârzieri.
+  severity: high
+  solution_hint: Agentul poate automatiza procesul de recrutare și screening pentru
+    angajați.
+- description: Întârzieri în acordarea autorizațiilor de la autorități locale.
+  severity: medium
+  solution_hint: Agentul poate urmări stadiul cererilor și trimite notificări automate.
+- description: Probleme cu gestionarea proiectelor, inclusiv coordonarea echipei și
+    resurselor.
+  severity: medium
+  solution_hint: Agentul poate integra sistemele de gestionare a proiectelor pentru
+    actualizări în timp real.
+- description: Costuri neprevăzute din cauza modificărilor neașteptate în proiecte.
+  severity: medium
+  solution_hint: Agentul poate analiza datele istorice pentru a anticipa și reduce
+    riscurile.
+- description: Concurența crescută, dificultând obținerea de contracte.
+  severity: low
+  solution_hint: Agentul poate automatiza campaniile de marketing și urmărirea lead-urilor.
+typical_services:
+- Construcții civile
+- Renovări și modernizări
+- Instalații electrice și sanitare
+- Proiectare arhitecturală
+- Izolație termică și acustică
+- Finisaje interioare și exterioare
+- Demolări și dezafectări
+- Gestionarea șantierelor
+- Consultanță în construcții
+- Supraveghere și coordonare proiecte
+recommended_functions:
+- name: Programare consultanță
+  priority: high
+  reason: Permite clienților să programeze rapid întâlniri, reducând timpul de așteptare.
+- name: Răspuns la întrebări frecvente despre servicii
+  priority: high
+  reason: Oferă informații instant despre prețuri, durate și procese, îmbunătățind
+    experiența clientului.
+- name: Gestionare reclamații și suport
+  priority: medium
+  reason: Automatizează procesul de rezolvare a problemelor, crescând satisfacția
+    clienților.
+- name: Monitorizare stadiu proiecte
+  priority: medium
+  reason: Permite clienților să verifice progresul în timp real, reducând anxietatea.
+- name: Reminder-uri pentru plăți și termene
+  priority: low
+  reason: Ajută la gestionarea fluxului de numerar și evitarea penalităților.
+- name: Generare oferte personalizate
+  priority: high
+  reason: Crează rapid propuneri de preț bazate pe nevoile clientului, crescând rata
+    de conversie.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - Saga
+  - WinMentor
+  - SoftExpert
+  priority: high
+- name: Soft de contabilitate
+  examples:
+  - Contabilitate.ro
+  - Gestiune.ro
+  priority: medium
+- name: Sisteme de gestionare a proiectelor
+  examples:
+  - Asana
+  - Trello
+  - Monday.com
+  priority: high
+- name: Aplicații de comunicare
+  examples:
+  - WhatsApp
+  - Telegram
+  priority: low
+- name: Platforme de recrutare
+  examples:
+  - eJobs
+  - BestJobs
+  priority: medium
+industry_faq:
+- question: Cât durează în medie un proiect de construcție?
+  answer_template: Durata depinde de complexitatea proiectului, dar în general, proiectele
+    mici durează 3-6 luni, iar cele mari 1-2 ani. Vă putem oferi o estimare precisă
+    după o consultanță.
+- question: Ce documente sunt necesare pentru a obține autorizații?
+  answer_template: Pentru autorizații, aveți nevoie de proiect tehnic, avize de la
+    autorități și documente de proprietate. Vă putem ajuta cu întregul proces pentru
+    a evita întârzierile.
+- question: Cum se calculează costurile unui proiect?
+  answer_template: Costurile includ materiale, forță de muncă, taxe și impreviste.
+    Folosim softuri specializate pentru estimări precise și vă oferim o ofertă detaliată.
+- question: Sunteți conforme cu GDPR în gestionarea datelor?
+  answer_template: Da, respectăm regulamentul GDPR pentru protecția datelor cu caracter
+    personal și implementăm măsuri de securitate adecvate.
+- question: Oferiți garanție pentru lucrările efectuate?
+  answer_template: Da, oferim garanție pentru lucrările noastre, de obicei 2-5 ani
+    în funcție de serviciu, conform legislației românești.
+- question: Cum gestionați modificările neașteptate în proiect?
+  answer_template: Avem proceduri flexibile și echipă dedicată pentru a gestiona modificările
+    rapid, cu minimă perturbare a bugetului și calendarului.
+sales_scripts:
+- trigger: price_question
+  situation: Când clientul întreabă despre prețuri.
+  script: Bună ziua! Prețurile noastre încep de la 5000 RON pentru servicii de bază,
+    dar variază în funcție de proiect. Pentru o ofertă personalizată, puteți programa
+    o consultanță gratuită. Ce dimensiune are proiectul dvs.?
+  goal: Captarea interesului și generarea unui lead pentru consultanță.
+- trigger: service_inquiry
+  situation: Când clientul cere informații despre servicii specifice.
+  script: Bun venit! Oferim o gamă largă de servicii, de la renovări la construcții
+    noi. Care este nevoia dvs. principală? De exemplu, pentru izolație termică, avem
+    pachete de la 3000 RON.
+  goal: Educarea clientului și direcționarea către serviciile relevante.
+- trigger: objection_handling
+  situation: Când clientul spune că este prea scump.
+  script: Înțeleg preocuparea. Costurile noastre reflectă calitatea materialelor și
+    experiența echipei. Oferim ROI rapid prin economii pe termen lung, cum ar fi reducerea
+    facturilor la energie. Doriți un exemplu concret?
+  goal: Depășirea obiecției și evidențierea valorii.
+- trigger: follow_up
+  situation: După o consultanță pentru a relua contactul.
+  script: Salut! Vă reamintesc de oferta noastră pentru proiectul dvs. Suntem disponibili
+    pentru întrebări sau pentru a ajusta propunerea. Cum vă simțiți în legătură cu
+    detaliile discutate?
+  goal: Menținerea angajamentului și închiderea vânzării.
+competitors:
+- name: Bog'Art
+  positioning: Leader de piață în construcții civile din România.
+  strengths:
+  - Experiență vastă
+  - portofoliu mare
+  - rețea extinsă
+  weaknesses:
+  - Costuri ridicate
+  - timpi de răspuns lenti
+  our_differentiation: Folosim tehnologie AI pentru eficiență superioară și prețuri
+    competitive.
+- name: Confort
+  positioning: Specializat în renovări și finisaje.
+  strengths:
+  - Calitate ridicată
+  - atenție la detalii
+  weaknesses:
+  - Limitări în proiecte mari
+  - disponibilitate redusă
+  our_differentiation: Oferim soluții complete și automate pentru gestionarea proiectelor
+    de orice dimensiune.
+- name: Construct Plus
+  positioning: Firmă regională cu accent pe durabilitate.
+  strengths:
+  - Materiale eco
+  - prețuri accesibile
+  weaknesses:
+  - Resurse limitate
+  - slabă prezență online
+  our_differentiation: Integrăm sisteme AI pentru monitorizare în timp real și comunicare
+    îmbunătățită.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatizarea gestionării proiectelor pentru o firmă mică.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Reducerea costurilor cu 20% prin optimizare
+  - Creșterea productivității echipei cu 30%
+  - Eliminarea întârzierilor cu notificări automate
+market_context:
+  market_size: 15 miliarde RON estimat în 2023
+  growth_rate: 5% YoY
+  key_trends:
+  - Creșterea construcțiilor verzi
+  - Digitalizarea proceselor
+  - Cerințe crescute pentru eficiență energetică
+  seasonality:
+    high:
+    - primăvară
+    - vară
+    low:
+    - iarnă
+typical_objections:
+- objection: Nu avem buget pentru tehnologie acum.
+  response: Înțeleg, dar investiția în AI poate reduce costurile pe termen lung. Putem
+    începe cu un pachet de bază la 200 RON/lună pentru economii rapide.
+- objection: Suntem mulțumiți cu procesele actuale.
+  response: Respect decizia. Cu toate acestea, tehnologia noastră poate optimiza fluxurile
+    existente fără perturbări. Vă oferim o demonstrație gratuită pentru a vedea beneficiile.
+- objection: Este prea complicat să implementăm.
+  response: Ne asumăm întregul proces de implementare și oferim suport continuu. Experiența
+    noastră cu firme similare din România a arătat integrarea rapidă și fără stres.
+meta:
+  id: construction
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

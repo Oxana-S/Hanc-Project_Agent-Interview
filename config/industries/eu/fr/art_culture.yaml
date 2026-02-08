@@ -1,0 +1,274 @@
+pain_points:
+- description: Gestion administrative chronophage (subventions, billetterie, comptabilité)
+    qui réduit le temps dédié à la création et à la médiation.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la prise de rendez-vous, la pré-sélection
+    des demandes et les rappels de démarches administratives.
+- description: Difficulté à fidéliser et à élargir son public, notamment auprès des
+    jeunes générations et en dehors des métropoles.
+  severity: high
+  solution_hint: Agent de prospection et de rappel pour les abonnements, les ateliers,
+    ou pour communiquer sur de nouveaux contenus.
+- description: Manque de visibilité et de ressources pour une communication efficace
+    et multi-canale (site web, réseaux sociaux, emailing).
+  severity: medium
+  solution_hint: L'agent peut gérer les appels entrants pour les infos pratiques,
+    libérant du temps pour une stratégie de contenu.
+- description: Gestion complexe des plannings des intervenants, des artistes et des
+    salles, avec de nombreuses modifications de dernière minute.
+  severity: medium
+  solution_hint: Agent vocal pour mettre à jour les disponibilités, confirmer les
+    présences et notifier automatiquement les changements.
+- description: Recherche de financements et de mécénat compétitive et complexe, nécessitant
+    un suivi rigoureux des appels à projets.
+  severity: high
+  solution_hint: Assistant pour le suivi des délais, la pré-qualification des partenaires
+    potentiels et la préparation des dossiers.
+- description: Perte de réservations potentielles en dehors des heures d'ouverture
+    de la billetterie ou de la standard téléphonique.
+  severity: medium
+  solution_hint: Agent vocal 24/7 pour répondre aux questions sur les tarifs, la programmation
+    et pour initier une réservation.
+typical_services:
+- Visites guidées et commentées
+- Ateliers de pratique artistique (scolaires, adultes, familles)
+- Location d'espaces (salles d'exposition, auditoriums)
+- Organisation d'événements privés (vernissages, réceptions)
+- Édition et vente de catalogues, livres d'art, produits dérivés
+- Médiation culturelle et actions de sensibilisation
+- Gestion de la billetterie et des abonnements
+- Conseil en montage de projets culturels et recherche de subventions
+- Restauration d'œuvres et conservation préventive
+- Production et diffusion de spectacles vivants
+recommended_functions:
+- name: Prise de rendez-vous et réservation
+  priority: high
+  reason: Réduit considérablement la charge administrative et capture des réservations
+    24h/24.
+- name: Répondeur intelligent et qualification des leads
+  priority: high
+  reason: Gère les appels entrants, répond aux questions fréquentes et oriente les
+    prospects vers le bon interlocuteur.
+- name: Rappels automatiques (visites, ateliers, échéances de dossiers)
+  priority: medium
+  reason: Améliore le taux de présence et aide au respect des deadlines critiques
+    pour les subventions.
+- name: Sondage et collecte de feedback post-visite
+  priority: medium
+  reason: Permet de recueillir des avis précieux pour améliorer l'offre sans effort
+    manuel supplémentaire.
+- name: Mise à jour des informations pratiques (horaires, tarifs, programmation)
+  priority: low
+  reason: Assure une communication fiable et à jour sur les canaux téléphoniques,
+    réduisant les conflits d'information.
+- name: Pré-qualification pour le mécénat et les partenariats
+  priority: medium
+  reason: Identifie et classe les appels entrants de partenaires potentiels pour un
+    suivi ciblé par l'équipe.
+typical_integrations:
+- name: Logiciel de billetterie
+  examples:
+  - Yurplan
+  - Digitick
+  - Wezee
+  priority: high
+- name: CRM / Logiciel de gestion des adhérents et donateurs
+  examples:
+  - HelloAsso
+  - Apidae
+  - solution interne
+  priority: high
+- name: Suite bureautique et calendrier
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  priority: medium
+- name: Outil de planification des ressources (salles, équipes)
+  examples:
+  - Planzone
+  - Teamweek
+  - Excel partagé
+  priority: medium
+- name: Plateforme de communication (emailing, SMS)
+  examples:
+  - Mailchimp
+  - Sendinblue
+  priority: low
+industry_faq:
+- question: Quelles sont vos horaires d'ouverture et les tarifs ?
+  answer_template: Nos horaires et tarifs sont disponibles sur notre site web [lien].
+    Je peux vous les communiquer maintenant ou vous envoyer un récapitulatif par email/SMS.
+- question: Proposez-vous des visites guidées pour les groupes scolaires ?
+  answer_template: Absolument. Nous proposons différentes formules adaptées aux scolaires.
+    Pour organiser une visite, je peux vous mettre en contact avec notre service de
+    médiation ou prendre un rendez-vous de préparation.
+- question: Comment puis-je réserver des places pour l'exposition en cours ?
+  answer_template: Vous pouvez réserver directement via notre billetterie en ligne
+    [lien]. Je peux également prendre votre réservation par téléphone et vous envoyer
+    vos e-billets.
+- question: Acceptez-vous les Chèques-Vacances ?
+  answer_template: Oui, nous acceptons les Chèques-Vacances ainsi que la plupart des
+    cartes bancaires. Le paiement s'effectue sur place ou en ligne selon le mode de
+    réservation.
+- question: Comment devenir mécène ou partenaire de votre institution ?
+  answer_template: Nous serions ravis d'échanger sur nos opportunités de mécénat.
+    Je vais noter vos coordonnées et notre chargé de développement vous rappellera
+    sous 48h pour un premier entretien.
+- question: Mon association peut-elle louer un de vos espaces ?
+  answer_template: Oui, nous louons nos espaces pour des événements. Pour connaître
+    les disponibilités et les tarifs, je vous transfère immédiatement vers notre gestionnaire
+    des locations.
+sales_scripts:
+- trigger: price_question
+  situation: Le prospect demande le prix de la solution.
+  script: Notre solution démarre à partir de 99€ par mois pour automatiser votre standard
+    téléphonique et la prise de rendez-vous. Le prix final dépend du nombre d'appels
+    et des fonctionnalités spécifiques à votre musée/théâtre. Cela représente souvent
+    l'équivalent du salaire d'un mi-temps, pour une disponibilité 24h/24. Puis-je
+    vous proposer une démonstration personnalisée gratuite ?
+  goal: Dédramatiser le prix, le relier à un coût existant (un salaire) et orienter
+    vers une démo.
+- trigger: competitor_mention
+  situation: 'Le prospect mentionne un concurrent (ex: un centre d''appels traditionnel).'
+  script: Je comprends. La différence majeure avec un centre d'appels classique est
+    que notre agent vocal apprend et s'améliore constamment. Il ne prend pas de pauses,
+    ne fait pas d'erreurs de reporting et est parfaitement intégré à vos outils comme
+    Yurplan ou HelloAsso. Il complète votre équipe, il ne la remplace pas. Vous préférez
+    une solution statique ou une solution qui évolue avec vos besoins ?
+  goal: Mettre en avant l'IA comme un avantage évolutif et l'intégration, pas comme
+    un simple standard automatique.
+- trigger: objection_time
+  situation: Le prospect dit 'On n'a pas le temps de mettre en place ça'.
+  script: C'est justement pour vous faire gagner du temps que nous avons conçu cette
+    solution. L'installation se fait en 48h, sans intervention technique de votre
+    part. Notre équipe s'occupe de tout, de la configuration à la formation de votre
+    équipe. Et très vite, vous gagnerez plusieurs heures par semaine sur la gestion
+    des appels et des réservations. On peut caler un premier court appel de 20 minutes
+    pour voir comment l'intégrer sans perturber vos activités ?
+  goal: Transformer l'objection en argument, rassurer sur la simplicité, et proposer
+    un engagement minimal (appel de 20 min).
+- trigger: general_interest
+  situation: Le prospect demande des informations générales sur ce qu'on fait.
+  script: 'Nous aidons les acteurs culturels comme le vôtre à reprendre le contrôle
+    sur leur relation avec le public. Concrètement, notre agent vocal intelligent
+    répond à 80% des questions récurrentes (horaires, tarifs, réservations), prend
+    des rendez-vous, et qualifie les appels pour des demandes complexes comme le mécénat.
+    Cela permet à votre équipe de se concentrer sur le cœur de votre métier : la création
+    et la médiation. Quel est le plus gros point de friction dans votre gestion des
+    relations avec votre public actuellement ?'
+  goal: Expliquer simplement la valeur, utiliser un chiffre fort (80%) et poser une
+    question ouverte pour identifier la douleur.
+competitors:
+- name: Centres d'appels externes traditionnels
+  positioning: Prestataire de service externalisé bas coût.
+  strengths:
+  - Interface humaine
+  - Pas d'investissement technologique initial
+  weaknesses:
+  - Coûts récurrents élevés sur la durée
+  - Difficile à scaler
+  - Qualité variable
+  - Pas d'intégration poussée
+  our_differentiation: Solution technologique avec coût fixe prévisible, intégration
+    native à vos outils, disponibilité 24/7, et données analysables pour améliorer
+    votre service.
+- name: Solutions de standard automatique basiques
+  positioning: Systèmes téléphoniques automatisés très simples.
+  strengths:
+  - Peu coûteux à l'achat
+  - Fonctionnalités de base (renvoi, message)
+  weaknesses:
+  - Expérience utilisateur médiocre (menus interminables)
+  - Pas d'intelligence, rigide
+  - Ne résout pas de problème métier
+  our_differentiation: Agent conversationnel en langage naturel qui comprend, apprend
+    et résout les problèmes, pas un simple arbre de menus.
+- name: Autres startups d'IA conversationnelle (généralistes)
+  positioning: Fournisseurs d'agents vocaux pour tous secteurs.
+  strengths:
+  - Technologie d'IA avancée
+  - Capacités de personnalisation
+  weaknesses:
+  - Manque d'expertise sectorielle spécifique au culturel
+  - Modèles linguistiques non entraînés sur le jargon métier français
+  our_differentiation: Solution spécialisée art & culture, avec un vocabulaire et
+    des scénarios pré-entraînés (subventions, réservations de groupes, mécénat) et
+    une connaissance des logiciels du secteur.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 99
+  roi_examples:
+  - scenario: Petit musée municipal réduisant de 10h/semaine le temps de gestion téléphonique.
+    monthly_cost: 149
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Théâtre augmentant son taux de conversion des appels en réservations
+      de 20% à 35%.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Pour moins que le SMIC horaire, votre institution est joignable et vend 24h/24.
+  - Récupérez l'équivalent d'un mi-temps pour le réinvestir dans vos missions culturelles.
+  - Une augmentation de 1% du taux de remplissage de vos ateliers couvre le coût mensuel.
+market_context:
+  market_size: Plus de 10 000 institutions culturelles (musées, théâtres, centres
+    d'art, salles de spectacle) en France.
+  growth_rate: Stable, avec une digitalisation accélérée post-crise sanitaire.
+  key_trends:
+  - Développement fort de la médiation numérique et des expériences hybrides (présentiel/distanciel).
+  - Recherche d'efficacité opérationnelle pour compenser la pression sur les financements
+    publics.
+  - Attente croissante d'une disponibilité et d'une personnalisation du service en
+    dehors des heures classiques.
+  - Importance de la donnée pour comprendre et fidéliser les publics.
+  seasonality:
+    high:
+    - Saison scolaire (septembre-juin)
+    - Périodes de vacances scolaires
+    - Été (festivals, tourisme)
+    low:
+    - Novembre (hors vacances)
+    - Janvier-Février (post-fêtes)
+typical_objections:
+- objection: Notre public est majoritairement âgé et n'est pas à l'aise avec les robots
+    téléphoniques.
+  response: Je comprends tout à fait. Notre agent est justement conçu pour être extrêmement
+    naturel et simple. Il parle clairement, répète les informations, et transfère
+    immédiatement vers un humain si besoin. C'est souvent plus facile pour une personne
+    malentendante ou pressée qu'un standard occupé. On peut configurer un transfert
+    direct sur l'option 'parler à un conseiller' dès le début du message.
+- objection: On a une petite équipe, on gère très bien les appels manuellement pour
+    le moment.
+  response: C'est une excellente nouvelle que votre équipe soit si réactive. Notre
+    solution n'est pas là pour la remplacer, mais pour la soulager des tâches répétitives
+    et pour capter les opportunités en dehors de vos horaires. Imaginez ne plus avoir
+    à rappeler les gens pour confirmer une réservation de groupe, ou ne plus rater
+    un appel pour une location d'espace un dimanche. Cela permet à votre équipe de
+    consacrer cette énergie à des relations plus qualitatives.
+- objection: On est une association, notre budget est très serré et dépend des subventions.
+  response: C'est une réalité que nous connaissons bien dans le secteur culturel.
+    C'est précisément pour optimiser chaque euro que notre solution existe. Le gain
+    de temps permet à vos salariés ou bénévoles de se concentrer sur des activités
+    à plus forte valeur, comme la recherche de financements ou l'animation. De plus,
+    l'augmentation du taux de conversion des appels en ventes (billets, adhésions)
+    génère directement des ressources propres. Nous proposons aussi des formules modulables
+    pour démarrer petit et évoluer avec vous.
+meta:
+  id: art_culture
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

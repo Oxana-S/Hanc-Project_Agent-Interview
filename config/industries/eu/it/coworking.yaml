@@ -1,0 +1,221 @@
+pain_points:
+- description: Alto costo di gestione di un ufficio tradizionale, inclusi affitti,
+    utenze e manutenzione.
+  severity: high
+  solution_hint: L'agente vocale AI può presentare soluzioni di coworking come alternativa
+    a basso costo, calcolando risparmi in tempo reale.
+- description: Difficoltà nella gestione delle prenotazioni di sale riunioni e postazioni,
+    con sovrapposizioni e inefficienze.
+  severity: medium
+  solution_hint: L'agente può automatizzare le prenotazioni, integrandosi con sistemi
+    esistenti per ridurre errori.
+- description: Scarsa flessibilità nei contratti di locazione, che non si adattano
+    alle esigenze mutevoli delle startup e freelance.
+  severity: high
+  solution_hint: L'agente può offrire opzioni di membership flessibili e personalizzate,
+    spiegando i vantaggi in modo chiaro.
+- description: Isolamento dei lavoratori autonomi, che porta a una mancanza di networking
+    e collaborazione.
+  severity: medium
+  solution_hint: L'agente può promuovere eventi e comunità all'interno dello spazio
+    di coworking per favorire connessioni.
+- description: Complessità nella conformità GDPR per la gestione dei dati dei clienti
+    negli spazi condivisi.
+  severity: high
+  solution_hint: L'agente può fornire informazioni su come il nostro servizio garantisce
+    la conformità GDPR, rassicurando i clienti.
+- description: Bassa visibilità e marketing inefficace per attrarre nuovi membri in
+    un mercato competitivo.
+  severity: medium
+  solution_hint: L'agente può gestire campagne di lead generation e rispondere a domande
+    comuni per aumentare le conversioni.
+- description: Gestione inefficiente delle risorse come stampanti, caffè e servizi
+    igienici, che causa disagi.
+  severity: low
+  solution_hint: L'agente può monitorare e segnalare problemi in tempo reale, migliorando
+    l'esperienza utente.
+typical_services:
+- Postazioni di lavoro flessibili (hot desk)
+- Uffici privati su misura
+- Noleggio sale riunioni
+- Accesso 24/7 agli spazi
+- Servizi di reception virtuale
+- Eventi di networking e workshop
+- Servizi di stampa e scannerizzazione
+- Caffetteria e area relax
+- Supporto amministrativo e legale
+- Connessione internet ad alta velocità
+recommended_functions:
+- name: Prenotazione automatica di sale
+  priority: high
+  reason: Riduce il carico di lavoro del personale e minimizza gli errori nelle prenotazioni.
+- name: Gestione delle richieste di informazioni
+  priority: high
+  reason: Risponde immediatamente alle domande dei potenziali clienti, aumentando
+    le conversioni.
+- name: Aggiornamento su eventi e promozioni
+  priority: medium
+  reason: Mantiene i membri coinvolti e informati sulle attività dello spazio.
+- name: Supporto per la conformità GDPR
+  priority: high
+  reason: Affronta una preoccupazione comune in Italia, costruendo fiducia.
+- name: Calcolo personalizzato dei costi e ROI
+  priority: medium
+  reason: Aiuta i clienti a vedere il valore del servizio rispetto alle alternative.
+- name: Integrazione con sistemi di pagamento locali
+  priority: low
+  reason: Facilita le transazioni in modo sicuro e conforme alle normative italiane.
+typical_integrations:
+- name: Sistemi di prenotazione
+  examples:
+  - Meetio
+  - Robin
+  - OfficeRnD
+  priority: high
+- name: Software CRM
+  examples:
+  - Zoho CRM
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Piattaforme di pagamento
+  examples:
+  - Satispay
+  - Nexi
+  - PayPal
+  priority: high
+- name: Strumenti di comunicazione
+  examples:
+  - Slack
+  - Microsoft Teams
+  - Zoom
+  priority: medium
+- name: Sistemi di gestione edifici
+  examples:
+  - BuildingOS
+  - Siemens Desigo CC
+  priority: low
+industry_faq:
+- question: Quali sono i costi per un membership di coworking?
+  answer_template: I costi variano in base al tipo di membership, a partire da [inserire
+    prezzo] EUR al mese per postazioni flessibili. Possiamo personalizzare un piano
+    per le tue esigenze.
+- question: Offrite servizi per aziende o solo per freelance?
+  answer_template: Offriamo soluzioni sia per freelance che per aziende, inclusi uffici
+    privati e team dedicati. Possiamo adattarci a diverse dimensioni aziendali.
+- question: Come gestite la sicurezza e la privacy nei spazi condivisi?
+  answer_template: Garantiamo la massima sicurezza con accesso controllato e rispettiamo
+    il GDPR per la protezione dei dati. I nostri spazi sono monitorati 24/7.
+- question: Posso prenotare una sala riunioni in modo flessibile?
+  answer_template: Sì, puoi prenotare sale riunioni tramite la nostra app o agente
+    vocale, con opzioni orarie o giornaliere a partire da [inserire prezzo] EUR.
+- question: Quali servizi inclusi sono nel prezzo?
+  answer_template: Il prezzo include connessione internet, caffè, servizi di base
+    e accesso agli eventi. Servizi aggiuntivi come stampanti hanno costi extra.
+- question: C'è un periodo minimo di contratto?
+  answer_template: Offriamo contratti flessibili, mensili o annuali, senza penali
+    per cambiamenti. Possiamo discutere opzioni su misura.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui prezzi.
+  script: Ciao! Grazie per il tuo interesse. I nostri membership partono da [inserire
+    prezzo] EUR al mese per postazioni flessibili, con opzioni personalizzabili. Vuoi
+    che ti mostri un calcolo basato sulle tue esigenze specifiche?
+  goal: Coinvolgere il cliente e guidarlo verso una soluzione su misura.
+- trigger: competitor_comparison
+  situation: Quando il cliente menziona un concorrente.
+  script: Capisco che stai valutando diverse opzioni. Rispetto ad altri, offriamo
+    maggiore flessibilità nei contratti, eventi di networking esclusivi e supporto
+    GDPR integrato. Posso approfondire come possiamo adattarci meglio alla tua attività?
+  goal: Evidenziare i nostri punti di forza e differenziazione.
+- trigger: objection_flexibility
+  situation: Quando il cliente esprime preoccupazioni sulla flessibilità.
+  script: Mi rendo conto che la flessibilità è importante. Con noi, puoi cambiare
+    piano mensilmente senza costi aggiuntivi, e abbiamo spazi adatti a diverse esigenze.
+    Vuoi provare una visita guidata per vedere di persona?
+  goal: Rassicurare il cliente e spingerlo verso un'azione.
+competitors:
+- name: Copernico
+  positioning: Forte presenza in grandi città come Milano e Roma, con spazi premium.
+  strengths:
+  - Ampia rete di location
+  - Servizi aggiuntivi come palestra
+  weaknesses:
+  - Prezzi elevati
+  - Contratti rigidi
+  our_differentiation: Offriamo maggiore flessibilità a costi più accessibili, con
+    focus su comunità e eventi locali.
+- name: Regus
+  positioning: Operatore globale con spazi professionali per aziende.
+  strengths:
+  - Brand riconosciuto
+  - Servizi standardizzati
+  weaknesses:
+  - Poca personalizzazione
+  - Costi nascosti
+  our_differentiation: Siamo più orientati alle startup e freelance, con contratti
+    trasparenti e supporto personalizzato.
+- name: WeWork Italia
+  positioning: Innovativo e design-oriented, attrattivo per giovani professionisti.
+  strengths:
+  - Design moderno
+  - Eventi di tendenza
+  weaknesses:
+  - Instabilità finanziaria
+  - Limitata presenza in Italia
+  our_differentiation: Focalizzati su stabilità e comunità locale, con integrazione
+    di tecnologia AI per migliorare l'esperienza.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Freelance che passa da un ufficio tradizionale a coworking
+    monthly_cost: 100
+    monthly_savings: 200
+    payback_months: 1
+  value_anchors:
+  - Risparmia fino al 50% rispetto a un ufficio tradizionale
+  - Accesso a servizi premium inclusi nel prezzo
+  - Flessibilità che si adatta alla tua crescita
+market_context:
+  market_size: Circa 300 milioni di EUR nel 2023
+  growth_rate: 10% YoY
+  key_trends:
+  - Aumento del lavoro ibrido
+  - Domanda per spazi flessibili in città minori
+  - Focus su sostenibilità e benessere
+  seasonality:
+    high:
+    - Settembre-Novembre
+    - Gennaio-Marcio
+    low:
+    - Dicembre
+    - Agosto
+typical_objections:
+- objection: È troppo costoso per le mie esigenze.
+  response: Capisco. Possiamo esplorare opzioni più economiche, come membership part-time,
+    e mostrarti come i servizi inclusi possono ridurre altri costi aziendali.
+- objection: Preferisco lavorare da casa per comodità.
+  response: Rispettiamo la tua scelta. Tuttavia, il coworking offre networking, strutture
+    professionali e separazione casa-lavoro che possono aumentare la produttività.
+    Vuoi provare una giornata di prova gratuita?
+- objection: Non sono sicuro di aver bisogno di uno spazio fisico.
+  response: Iniziamo con un piano flessibile. Molti clienti iniziano con poche ore
+    a settimana e scalano in base alle necessità. Posso aiutarti a valutare i benefici
+    per la tua attività.
+meta:
+  id: coworking
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "coworking"
+- "shared office"
+- "flexible workspace"
+_extends: _base/coworking

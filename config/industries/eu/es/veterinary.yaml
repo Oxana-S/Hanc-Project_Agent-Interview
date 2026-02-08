@@ -1,0 +1,206 @@
+pain_points:
+- description: Gestión manual de citas que consume tiempo y provoca errores.
+  severity: high
+  solution_hint: El agente de voz IA puede automatizar la programación de citas, reduciendo
+    errores y liberando tiempo del personal.
+- description: Comunicación ineficiente con los dueños de mascotas, especialmente
+    para recordatorios de vacunas o citas.
+  severity: medium
+  solution_hint: El agente puede enviar recordatorios automáticos por voz, mejorando
+    el cumplimiento y la satisfacción del cliente.
+- description: Dificultad para manejar llamadas fuera del horario laboral, perdiendo
+    oportunidades de emergencia.
+  severity: medium
+  solution_hint: El agente puede atender llamadas 24/7, derivando emergencias al veterinario
+    de guardia.
+- description: Gestión de inventario de medicamentos y suministros que a menudo lleva
+    a desabastecimiento.
+  severity: medium
+  solution_hint: Integrando con sistemas de inventario, el agente puede alertar sobre
+    niveles bajos y hacer pedidos automáticos.
+- description: Alta carga administrativa para facturación y seguimiento de pagos.
+  severity: high
+  solution_hint: El agente puede procesar pagos y enviar facturas electrónicas, simplificando
+    la administración.
+- description: Competencia creciente de clínicas low-cost que presionan los precios.
+  severity: medium
+  solution_hint: El agente puede ayudar a destacar servicios personalizados y mejorar
+    la fidelización de clientes.
+typical_services:
+- Consulta general
+- Vacunación
+- Cirugía (esterilización, castración)
+- Odontología veterinaria
+- Diagnóstico por imagen (radiografía, ecografía)
+- Hospitalización
+- Peluquería y estética canina
+- Servicios de urgencia 24 horas
+- Nutrición y dietas especiales
+- Microchipado y pasaporte para mascotas
+recommended_functions:
+- name: Programación de citas automáticas
+  priority: high
+  reason: Reducir la carga de trabajo del personal y minimizar errores en la agenda.
+- name: Recordatorios de vacunas y citas por voz
+  priority: high
+  reason: Mejorar la adherencia a los tratamientos y fidelizar clientes.
+- name: Respuesta a preguntas frecuentes
+  priority: medium
+  reason: Liberar tiempo del veterinario para casos más complejos.
+- name: Procesamiento de pagos y facturación
+  priority: medium
+  reason: Agilizar la gestión financiera y reducir retrasos.
+- name: Derivación de emergencias
+  priority: low
+  reason: Asegurar que las urgencias sean manejadas adecuadamente fuera de horario.
+- name: Seguimiento post-operatorio
+  priority: medium
+  reason: Mejorar la atención al cliente y prevenir complicaciones.
+typical_integrations:
+- name: Sistema de gestión de clínica veterinaria
+  examples:
+  - VetWin
+  - Easyvet
+  - Nexusvet
+  priority: high
+- name: Software de facturación
+  examples:
+  - Factusol
+  - Contasimple
+  priority: medium
+- name: Plataforma de recordatorios SMS/email
+  examples:
+  - Twilio
+  - Mailchimp
+  priority: medium
+- name: Sistema de inventario
+  examples:
+  - Zoho Inventory
+  - Gestión de stock local
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una consulta veterinaria?
+  answer_template: Los precios varían según el servicio, pero una consulta general
+    suele costar entre 30 y 50 EUR. Podemos proporcionar un presupuesto detallado
+    según las necesidades de su mascota.
+- question: ¿Ofrecen servicios de urgencia las 24 horas?
+  answer_template: Sí, contamos con servicio de urgencias 24/7. Para emergencias,
+    puede llamar directamente y nuestro agente le derivará al veterinario de guardia.
+- question: ¿Cómo puedo programar una cita para mi mascota?
+  answer_template: Puede programar una cita llamando a nuestro número o usando nuestro
+    agente de voz IA, que le guiará paso a paso para seleccionar fecha y hora.
+- question: ¿Aceptan seguros para mascotas?
+  answer_template: Sí, trabajamos con varias aseguradoras. Proporcione los detalles
+    de su póliza y nuestro agente le ayudará a gestionar la cobertura.
+- question: ¿Qué vacunas son obligatorias en España?
+  answer_template: En España, la vacuna antirrábica es obligatoria para perros. Recomendamos
+    un calendario completo de vacunación adaptado a su mascota.
+- question: ¿Puedo cancelar o reprogramar una cita sin costo?
+  answer_template: Sí, permite cancelaciones o cambios hasta 24 horas antes sin cargo.
+    Nuestro agente de voz puede ayudarle a gestionarlo fácilmente.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de los servicios.
+  script: Hola, entiendo que desea conocer nuestros precios. Ofrecemos servicios desde
+    30 EUR por consulta, con opciones personalizadas. ¿Le gustaría que le detalle
+    los costes según las necesidades específicas de su mascota?
+  goal: Convertir la consulta de precio en una oportunidad para personalizar la oferta
+    y destacar valor.
+- trigger: service_inquiry
+  situation: Cuando un cliente muestra interés en un servicio específico, como vacunación.
+  script: Gracias por su interés en nuestros servicios de vacunación. Contamos con
+    paquetes completos que incluyen recordatorios automáticos. ¿Le gustaría programar
+    una cita o recibir más información?
+  goal: Fomentar la acción inmediata, como programar una cita o solicitar detalles.
+- trigger: objection_to_automation
+  situation: Cuando el cliente expresa preocupación por el uso de IA en la atención.
+  script: Comprendo su preocupación. Nuestro agente de voz IA está diseñado para complementar,
+    no reemplazar, la atención humana. Mejora la eficiencia para que nuestro personal
+    pueda dedicar más tiempo a su mascota.
+  goal: Disipar dudas y resaltar los beneficios de la automatización sin perder el
+    toque personal.
+competitors:
+- name: VetWin
+  positioning: Líder en software de gestión para clínicas veterinarias en España.
+  strengths:
+  - Integración completa
+  - Soporte local
+  - Funciones avanzadas
+  weaknesses:
+  - Costo elevado
+  - Curva de aprendizaje alta
+  our_differentiation: Ofrecemos una solución más asequible con agente de voz IA integrado
+    para mejorar la comunicación con clientes.
+- name: Easyvet
+  positioning: Solución low-cost para pequeñas clínicas.
+  strengths:
+  - Precio competitivo
+  - Fácil de usar
+  weaknesses:
+  - Funcionalidades limitadas
+  - Soporte escaso
+  our_differentiation: Proporcionamos un valor añadido con automatización de voz que
+    reduce costos operativos y mejora el servicio.
+- name: Clínicas Low-Cost locales
+  positioning: Cadenas de clínicas con precios reducidos.
+  strengths:
+  - Precios bajos
+  - Ubicaciones múltiples
+  weaknesses:
+  - Atención impersonal
+  - Calidad variable
+  our_differentiation: Enfocamos en atención personalizada y tecnología para fidelizar
+    clientes, no solo en precio.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 100
+  roi_examples:
+  - scenario: Automatización de recordatorios de citas para una clínica mediana.
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 1
+  value_anchors:
+  - Reduce el tiempo de gestión administrativa en un 30%.
+  - Aumenta la fidelización de clientes mediante comunicación proactiva.
+  - Minimiza pérdidas por citas no atendidas.
+market_context:
+  market_size: Estimado en 2 mil millones EUR anuales en España.
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento de la humanización de las mascotas, impulsando servicios premium.
+  - Adopción de tecnología para mejorar la eficiencia operativa.
+  - Crecimiento de seguros para mascotas.
+  seasonality:
+    high:
+    - Primavera (temporada de cría)
+    - Verano (viajes y cuidados)
+    low:
+    - Invierno (menor actividad al aire libre)
+typical_objections:
+- objection: Es demasiado caro para mi clínica pequeña.
+  response: Entiendo su preocupación. Nuestra solución está escalable, con un punto
+    de entrada bajo, y el ROI se obtiene rápidamente al reducir costos operativos.
+- objection: Prefiero la atención humana directa.
+  response: Totalmente de acuerdo. Nuestro agente complementa la atención humana,
+    liberando tiempo para que su equipo se enfoque en casos importantes, mejorando
+    la experiencia general.
+- objection: Ya tengo un sistema de gestión, no necesito más.
+  response: Nuestro agente se integra con sistemas existentes para añadir capacidades
+    de voz, mejorando la comunicación sin reemplazar lo que ya funciona.
+meta:
+  id: veterinary
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

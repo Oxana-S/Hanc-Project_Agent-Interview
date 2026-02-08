@@ -1,0 +1,246 @@
+pain_points:
+- description: Hohe Arbeitskosten und Fachkräftemangel erschweren die Besetzung von
+    Schichten und die Aufrechterhaltung der Produktivität.
+  severity: high
+  solution_hint: Automatisierung von Terminvereinbarungen für Bewerbergespräche und
+    Verwaltung von Schichtanfragen per Sprachbefehl.
+- description: Komplexe und sich ändernde Compliance-Anforderungen (GDPR, FADP, Maschinenrichtlinien)
+    führen zu administrativem Aufwand.
+  severity: high
+  solution_hint: Sprachgesteuerte Abfrage von Compliance-Checklisten und automatische
+    Erinnerungen für Prüftermine.
+- description: Ineffiziente interne Kommunikation zwischen Produktion, Lager und Verwaltung
+    verzögert Prozesse.
+  severity: medium
+  solution_hint: Sprachagent kann als intelligenter Vermittler fungieren, um Statusabfragen
+    und Nachrichten zwischen Abteilungen weiterzuleiten.
+- description: Hohe Energiekosten und Druck zur Nachhaltigkeit fordern ein präzises
+    Monitoring und Reporting.
+  severity: medium
+  solution_hint: Sprachgestützte Abfrage von Echtzeit-Energieverbrauchsdaten und automatische
+    Generierung von Report-Vorlagen.
+- description: Unterbrechungen in der Lieferkette führen zu Produktionsverzögerungen
+    und erhöhten Lagerkosten.
+  severity: high
+  solution_hint: Proaktive Sprachbenachrichtigungen über Lieferstatus und automatische
+    Eskalation bei Verzögerungen an den Einkauf.
+- description: Wartungsarbeiten werden oft reaktiv statt präventiv durchgeführt, was
+    zu ungeplanten Stillständen führt.
+  severity: medium
+  solution_hint: Sprachgesteuerte Planung von Wartungsterminen und Abfrage von Wartungshistorien
+    für einzelne Maschinen.
+typical_services:
+- CAD/CAM Konstruktion und Fertigungsplanung
+- CNC-Bearbeitung und Drehteile
+- Spritzguss und Formenbau
+- Oberflächenbehandlung und Galvanik
+- Montage und Endfertigung
+- Qualitätssicherung und Prüfdienstleistungen
+- Wartungsdienstleistungen und Instandhaltung
+- Logistik und Lagerverwaltung
+- Prozessoptimierung und Lean Manufacturing Beratung
+- Reparatur- und Ersatzteilservice
+recommended_functions:
+- name: Terminvereinbarung und Kalenderverwaltung
+  priority: high
+  reason: Entlastet die Personalabteilung bei der Koordination von Bewerbungsgesprächen
+    und Wartungsterminen.
+- name: Interne Statusabfragen (Produktion, Lager)
+  priority: high
+  reason: Ermöglicht schnelle, handsfreie Abfragen für Führungskräfte in der Produktionshalle.
+- name: Basis-Customer-Service für Lieferanten & Kunden
+  priority: medium
+  reason: Entlastet die Verwaltung von standardisierten Anfragen zu Bestellstatus
+    und Lieferzeiten.
+- name: Compliance- und Dokumentenabfrage
+  priority: high
+  reason: Schneller Zugriff auf wichtige Richtlinien und Protokolle mittels Sprachbefehl,
+    fördert Compliance.
+- name: Eskalationsmanagement
+  priority: medium
+  reason: Leitet kritische Meldungen (z.B. Maschinenausfall) automatisch an die richtige
+    Person weiter.
+- name: Sprachgesteuerte Dateneingabe
+  priority: low
+  reason: Ermöglicht die Erfassung von Meldungen (z.B. Stückzahlen, Qualitätsmängel)
+    während der Arbeit.
+typical_integrations:
+- name: ERP-System
+  examples:
+  - Abas ERP
+  - ProAlpha
+  - SAP Business One
+  priority: high
+- name: MES (Manufacturing Execution System)
+  examples:
+  - Forcam FORCE
+  - MPDV MES
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Microsoft Dynamics 365
+  priority: medium
+- name: Kommunikationsplattform
+  examples:
+  - Microsoft Teams
+  - Swico
+  priority: medium
+- name: CAQ-System (Qualitätsmanagement)
+  examples:
+  - QSYS
+  - iQMS
+  priority: medium
+industry_faq:
+- question: Wie gewährleisten Sie die Datensicherheit und Einhaltung von FADP/GDPR?
+  answer_template: Unsere Lösung hosten wir in hochsicheren, ISO-zertifizierten Rechenzentren
+    in der Schweiz/EU. Die Sprachverarbeitung kann on-premise oder in einer abgeschotteten
+    Cloud erfolgen. Alle Datenflüsse sind DSGVO/FADP-konform vertraglich geregelt.
+- question: Funktioniert das System in einer lauten Produktionsumgebung?
+  answer_template: Ja, unsere Agenten nutzen fortschrittliche Rauschunterdrückung
+    und sind für Industriegeräusche trainiert. Optional können drahtlose Industriekopfhörer
+    mit Noise-Cancelling verwendet werden.
+- question: Können wir den Sprachagenten mit unserem bestehenden ERP (z.B. Abas) verbinden?
+  answer_template: Absolut. Unser System bietet standardisierte Schnittstellen (APIs)
+    für gängige ERP- und MES-Systeme. Wir arbeiten mit Ihrem IT-Partner zusammen,
+    um eine nahtlose Integration zu gewährleisten.
+- question: Wie lange dauert die Implementierung?
+  answer_template: Für eine Standard-Einführung mit Kernfunktionen wie Terminverwaltung
+    und Statusabfrage planen wir 4-6 Wochen. Komplexere Integrationen benötigen entsprechend
+    mehr Zeit, die wir im Voraus detailliert planen.
+- question: Was passiert, wenn das Internet ausfällt?
+  answer_template: Kernfunktionen wie vorprogrammierte Statusabfragen und lokale Sprachbefehle
+    können über eine lokale Notfalllösung weiterlaufen. Die vollständige Funktionalität
+    ist nach Wiederherstellung der Verbindung sofort verfügbar.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten, sobald das Grundkonzept vorgestellt wurde.
+  script: 'Die Investition richtet sich nach dem gewünschten Funktionsumfang und der
+    Anzahl der Nutzer. Ein typischer Einstieg für ein KMU mit Basisautomatisierung
+    von Terminen und Abfragen beginnt bei etwa 300-500 CHF pro Monat. Entscheidend
+    ist der ROI: Viele Kunden sparen sich durch reduzierte Unterbrechungen und weniger
+    Administrationsaufwand bereits im ersten Jahr die Kosten ein. Darf ich Ihnen eine
+    grobe Schätzung basierend auf Ihren spezifischen Prozessen erstellen?'
+  goal: Preis nicht als Barriere darstellen, sondern auf Wert und ROI lenken und zu
+    einer detaillierteren Analyse einladen.
+- trigger: objection_change
+  situation: Kunde zögert wegen des Aufwands für Implementierung und Einführung.
+  script: Das verstehe ich sehr gut. Veränderung erfordert immer Einsatz. Unsere Philosophie
+    ist 'Start small, scale fast'. Wir beginnen mit einer Pilotphase in einem klar
+    abgegrenzten Bereich, z.B. der Wartungsplanung. So sehen Sie schnell einen Nutzen,
+    und Ihre Mitarbeiter gewöhnen sich schrittweise an die neue Technologie. Wir begleiten
+    Sie intensiv in der Einführungsphase mit Schulungen und Support.
+  goal: Die Wahrnehmung des Risikos minimieren, einen einfachen Einstieg aufzeigen
+    und Unterstützung zusichern.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen anderen Anbieter für Automatisierung oder Kommunikation.
+  script: Interessant. Viele Lösungen fokussieren sich auf reine Chatbots oder reine
+    Prozessautomatisierung. Unsere Stärke ist die spezifische Kombination aus sprachbasierter
+    Interaktion und tiefem Verständnis für Fertigungsprozesse in der Schweiz. Wir
+    sprechen Ihre Fachsprache und integrieren sich direkt in Ihre Produktionssysteme
+    (MES/ERP), anstatt nur daneben zu stehen. Können wir uns darauf konzentrieren,
+    welche Ihrer spezifischen Schmerzpunkte wir am effektivsten lösen können?
+  goal: Differenzierung durch Fachkenntnis und Integration betonen, Gespräch zurück
+    zu den Kundenbedürfnissen lenken.
+competitors:
+- name: Swisscom (Enterprise Communication Solutions)
+  positioning: Grosser etablierter Telekom-Anbieter mit breitem Portfolio.
+  strengths:
+  - Starke lokale Präsenz und Markenbekanntheit
+  - Umfassende Infrastruktur
+  - Breite Kommunikationslösungen
+  weaknesses:
+  - Weniger spezialisiert auf Fertigungsprozesse
+  - Lösungen oft generisch und weniger anpassbar
+  - Langsamere Entscheidungswege bei Nischenanpassungen
+  our_differentiation: Wir bieten branchenspezifische, agile Sprachlösungen, die direkt
+    in Produktionsdaten eingreifen, nicht nur Kommunikation verwalten.
+- name: Salesforce (Service Cloud, Einstein Voice)
+  positioning: Weltweiter CRM-Marktführer mit KI-Funktionen.
+  strengths:
+  - Sehr mächtige CRM- und Service-Plattform
+  - Starke KI- und Analytics-Funktionen
+  - Grosse Entwickler-Community
+  weaknesses:
+  - Sehr komplex und kostenintensiv für rein interne Fertigungsprozesse
+  - Weniger Fokus auf Integration mit MES/CAQ-Systemen
+  - Überdimensioniert für viele Schweizer KMU
+  our_differentiation: Wir sind kosteneffizient, schlank und auf die spezifischen
+    Abläufe der Schweizer Fertigung zugeschnitten, mit direkter Anbindung an lokale
+    ERP-Systeme.
+- name: Lokale IT-Dienstleister (z.B. Abas-Partner)
+  positioning: Bieten individuelle Softwareanpassungen und Support für ERP-Systeme.
+  strengths:
+  - Tiefe Kenntnis des Kunden-ERP
+  - Vertrauensverhältnis durch langjährige Zusammenarbeit
+  - Sehr individuelle Anpassungen möglich
+  weaknesses:
+  - Fehlende Spezialisierung auf Sprach-KI und Conversational AI
+  - Oft kein standardisiertes Produkt, sondern Projektgeschäft
+  - Begrenzte Ressourcen für innovative Nischenlösungen
+  our_differentiation: Wir sind das spezialisierte Sprach-KI-Modul, das problemlos
+    mit den Lösungen Ihres IT-Dienstleisters zusammenarbeitet und ihn mit modernster
+    Technologie ergänzt.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 4000
+  - 25000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung von Wartungsanfragen und Schichtkoordination für einen
+      mittelgrossen Betrieb.
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Reduzieren Sie ungeplante Produktionsstillstände durch proaktive Sprach-Wartung.
+  - Sparen Sie wertvolle Stunden in der Verwaltung durch automatisierte Termin- und
+    Nachrichtenkoordination.
+  - Stärken Sie Ihre Compliance mit sprachgestützten Checklisten und Protokollen.
+market_context:
+  market_size: Ca. 8-10 Mrd. CHF jährlicher Umsatz im Bereich industrielle Automatisierung
+    & Software in der Schweiz.
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Dezentralisierung und Flexibilisierung der Produktion (Smart Factory)
+  - Starker Fokus auf Ressourceneffizienz und Kreislaufwirtschaft
+  - Zunehmende Vernetzung von Maschinen (IIoT) und Nachfrage nach Echtzeit-Daten
+  - Hoher Druck zur Digitalisierung bei gleichzeitigem Fachkräftemangel
+  seasonality:
+    high:
+    - Letztes Quartal (Budgetausgaben)
+    - Nach den Sommerferien (Projektstart)
+    low:
+    - Juli/August (Ferienzeit)
+    - Dezember (Jahresabschluss)
+typical_objections:
+- objection: Das ist zu neu und unerprobt für unsere traditionsreiche Firma.
+  response: Die Technologie ist ausgereift, der Anwendungsfall ist neu. Wir starten
+    mit einem klar begrenzten Pilotprojekt mit messbaren Zielen. So sammeln Sie Erfahrungen
+    ohne grosses Risiko. Viele traditionsreiche Schweizer Hersteller sind hier bereits
+    Vorreiter.
+- objection: Meine Mitarbeiter werden keine Maschine ansprechen wollen.
+  response: Das ist ein wichtiger Punkt. Es geht nicht darum, eine 'Maschine' anzusprechen,
+    sondern ein Werkzeug zu nutzen – wie ein Walkie-Talkie in intelligenter. Die Akzeptanz
+    steigt rapide, sobald der praktische Nutzen, z.B. handsfreie Statusabfrage in
+    der Halle, erlebt wird. Wir binden Ihre Mitarbeiter aktiv in die Gestaltung der
+    Sprachbefehle ein.
+- objection: Wir haben schon zu viele unzusammenhängende Softwarelösungen.
+  response: Genau deshalb setzen wir auf Integration statt auf eine weitere Insellösung.
+    Unser Sprachagent wird zum einheitlichen Zugangspunkt zu Ihren bestehenden Systemen
+    wie ERP und MES. Er vereinfacht die Bedienung, statt eine weitere Oberfläche hinzuzufügen.
+meta:
+  id: manufacturing
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

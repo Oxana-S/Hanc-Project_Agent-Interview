@@ -1,0 +1,278 @@
+pain_points:
+- description: Manajemen proyek yang tidak efisien, sering terjadi keterlambatan akibat
+    koordinasi yang buruk antara kontraktor, pemasok, dan tenaga kerja.
+  severity: high
+  solution_hint: Agen suara AI dapat mengotomatiskan pengingat jadwal, update progres,
+    dan koordinasi meeting melalui panggilan otomatis dan notifikasi.
+- description: Biaya material konstruksi yang fluktuatif dan sulit diprediksi, mengakibatkan
+    pembengkakan anggaran proyek.
+  severity: high
+  solution_hint: Agen dapat memberikan alert harga material terbaru dari pemasok terdaftar
+    dan membantu negosiasi via telepon.
+- description: Kesulitan dalam merekrut dan mengelola tenaga kerja yang terampil,
+    serta tingginya tingkat absensi.
+  severity: medium
+  solution_hint: Agen dapat menangani presensi harian via panggilan verifikasi, menjadwalkan
+    shift, dan mengirimkan pengumuman kepada kru.
+- description: Komunikasi yang lambat dengan klien untuk laporan kemajuan, perubahan
+    permintaan, atau penagihan, sering mengandalkan WhatsApp yang tidak terstruktur.
+  severity: medium
+  solution_hint: Agen dapat melakukan panggilan otomatis untuk laporan mingguan ke
+    klien dan mengonfirmasi penerimaan dokumen penagihan.
+- description: Tingginya risiko kecelakaan kerja dan kurangnya pelatihan keselamatan
+    yang konsisten untuk pekerja lapangan.
+  severity: high
+  solution_hint: Agen dapat mengirimkan pengingat audio harian tentang protokol keselamatan
+    dan melakukan survei cepat via telepon untuk memastikan pemahaman.
+- description: Proses pengurusan izin konstruksi (IMB) yang berbelit-belit dan memakan
+    waktu lama dari pemerintah daerah.
+  severity: medium
+  solution_hint: Agen dapat mengingatkan tenggat waktu dokumen dan melakukan panggilan
+    tindak lanjut otomatis ke pihak berwenang.
+- description: Kesulitan dalam menagih pembayaran dari klien tepat waktu, mengakibatkan
+    arus kas tersendat.
+  severity: high
+  solution_hint: Agen dapat melakukan panggilan penagihan yang sopan dan terjadwal,
+    serta mengirimkan reminder pembayaran via pesan suara.
+typical_services:
+- Pembangunan rumah tinggal (rumah tapak)
+- Konstruksi gedung bertingkat (rusunawa, apartemen, perkantoran)
+- Renovasi dan remodeling bangunan
+- Konstruksi infrastruktur jalan dan jembatan
+- Pembangunan fasilitas industri (pabrik, gudang)
+- Jasa konstruksi interior dan finishing
+- Pembangunan properti komersial (mall, ruko)
+- Pengecoran beton dan struktur baja
+- Pembangunan infrastruktur perumahan (drainase, jalan lingkungan)
+- Penyewaan alat berat dan tenaga kerja (borongan)
+recommended_functions:
+- name: Penjadwalan dan Pengingat Otomatis untuk Proyek
+  priority: high
+  reason: Mengatasi keterlambatan proyek dengan koordinasi yang lebih ketat dan mengurangi
+    beban administratif.
+- name: Penagihan dan Pengingat Pembayaran via Panggilan
+  priority: high
+  reason: Meningkatkan arus kas dengan menagih klien secara proaktif dan sistematis.
+- name: Laporan Kemajuan Proyek Otomatis ke Klien
+  priority: medium
+  reason: Meningkatkan kepuasan klien dengan komunikasi yang transparan dan teratur
+    tanpa effort manual.
+- name: Manajemen Tenaga Kerja (Presensi, Pengumuman)
+  priority: medium
+  reason: Mengurangi absensi dan meningkatkan disiplin dengan verifikasi langsung
+    via suara.
+- name: Pengingat Keselamatan dan Kesehatan Kerja (K3)
+  priority: high
+  reason: Mengurangi risiko kecelakaan kerja dengan edukasi berulang yang mudah diakses
+    oleh pekerja lapangan.
+- name: Penerimaan dan Penjadwalan Pertanyaan Lead Baru
+  priority: low
+  reason: Tidak kehilangan peluang proyek baru dengan menanggapi pertanyaan calon
+    klien 24/7.
+typical_integrations:
+- name: Software Manajemen Proyek Konstruksi
+  examples:
+  - BuildTrack
+  - SAP S/4HANA
+  - Odoo Construction
+  priority: high
+- name: Software Akuntansi dan Keuangan
+  examples:
+  - Jurnal
+  - Accurate Online
+  - Zahir
+  priority: high
+- name: Platform Komunikasi Bisnis
+  examples:
+  - WhatsApp Business API
+  - Telegram
+  priority: medium
+- name: Sistem HR dan Penggajian
+  examples:
+  - Gadjian
+  - Talenta
+  - Bridgetree HR
+  priority: medium
+- name: Aplikasi Pemesanan Material
+  examples:
+  - Ralali
+  - Sribu
+  - e-katalog pemda
+  priority: low
+industry_faq:
+- question: Berapa biaya rata-rata pembangunan rumah type 36 di area Jakarta?
+  answer_template: Biaya sangat bervariasi tergantung spesifikasi dan lokasi, namun
+    kisaran saat ini sekitar Rp 500 juta hingga Rp 800 juta. Kami dapat menjadwalkan
+    konsultasi gratis untuk memberikan penawaran yang lebih akurat sesuai kebutuhan
+    Bapak/Ibu.
+- question: Berapa lama waktu yang dibutuhkan untuk menyelesaikan pembangunan ruko
+    2 lantai?
+  answer_template: Dengan perencanaan yang baik, biasanya membutuhkan waktu 4 hingga
+    6 bulan. Waktu dapat dipengaruhi oleh ketersediaan material dan cuaca. Sistem
+    kami dapat membantu memantau progres dan mengantisipasi keterlambatan.
+- question: Apakah perusahaan menyediakan jasa pembuatan IMB?
+  answer_template: Ya, kami menawarkan jasa pengurusan IMB lengkap. Agen kami dapat
+    membantu mengoordinasikan proses dan memberikan update via telepon mengenai perkembangan
+    pengurusannya.
+- question: Bagaimana dengan garansi untuk pekerjaan konstruksi?
+  answer_template: Kami memberikan garansi untuk struktur utama selama 10 tahun dan
+    finishing selama 1-2 tahun, tergantung paket. Detail lengkap akan tercantum dalam
+    kontrak kerja.
+- question: Bagaimana cara melaporkan masalah atau komplain selama proyek berjalan?
+  answer_template: Anda dapat menghubungi langsung manajer proyek atau menggunakan
+    layanan agen suara kami 24/7 untuk melaporkan masalah. Laporan akan segera kami
+    tindak lanjuti dalam 2x24 jam.
+- question: Apakah menerima pembayaran secara cicilan?
+  answer_template: Ya, kami memiliki skema pembayaran bertahap yang disesuaikan dengan
+    progres pekerjaan. Agen kami dapat menjelaskan rincian termin pembayaran dan mengirimkan
+    reminder via panggilan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan perkiraan harga di awal percakapan.
+  script: Halo, terima kasih atas ketertarikannya. Harga proyek konstruksi sangat
+    bergantung pada luas bangunan, material, dan lokasi. Daripada saya sebut angka
+    kasar, lebih baik kami jadwalkan konsultasi gratis untuk survey lokasi dan memahami
+    kebutuhan detail Anda. Dengan begitu, penawaran yang kami berikan bisa akurat
+    dan sesuai budget. Apakah besok pagi atau sore yang lebih nyaman untuk Bapak/Ibu?
+  goal: Mengalihkan percakapan dari harga ke penjadwalan konsultasi/kunjungan untuk
+    kualifikasi lead yang lebih baik.
+- trigger: service_inquiry
+  situation: Ketika calon klien bertanya tentang jasa renovasi atau pembangunan baru.
+  script: Selamat siang. Kami menyediakan jasa konstruksi lengkap mulai dari renovasi,
+    pembangunan rumah, hingga gedung komersial. Untuk memberikan rekomendasi terbaik,
+    boleh saya tahu jenis properti dan luas area yang akan dikerjakan? Juga, apakah
+    sudah memiliki gambar desain atau perlu bantuan dari tim kami?
+  goal: Mengumpulkan informasi dasar proyek dan membangun kebutuhan untuk kemudian
+    menjadwalkan pertemuan lanjutan.
+- trigger: competitor_mention
+  situation: Ketika calon klien menyebutkan pesaing atau membandingkan harga.
+  script: Saya paham Bapak/Ibu sedang membandingkan beberapa penawaran. Yang membedakan
+    kami adalah sistem manajemen proyek berbasis teknologi, termasuk agen suara yang
+    memastikan komunikasi dan progres proyek berjalan transparan dan tepat waktu.
+    Hal ini mengurangi risiko keterlambatan dan pembengkakan biaya. Boleh saya tahu
+    aspek apa yang paling penting bagi Bapak/Ibu dalam memilih kontraktor? Kualitas,
+    kecepatan, atau kontrol anggaran?
+  goal: Membedakan layanan berdasarkan nilai teknologi dan kontrol proyek, lalu mengarahkan
+    ke nilai yang diinginkan klien.
+- trigger: objection_too_busy
+  situation: Ketika calon klien mengatakan tidak ada waktu untuk konsultasi atau rapat.
+  script: Saya mengerti kesibukan Bapak/Ibu. Untuk menghemat waktu, kami bisa mengatur
+    konsultasi singkat via telepon dalam 15 menit saja. Atau, jika lebih nyaman, agen
+    kami bisa mengirimkan form digital untuk mengumpulkan data proyek awal. Setelah
+    itu, kami bisa kirimkan proposal awal untuk Anda review di waktu senggang. Mana
+    yang lebih mudah?
+  goal: Mengatasi keberatan dengan menawarkan opsi konsultasi rendah-komitmen untuk
+    tetap memajukan proses penjualan.
+competitors:
+- name: Wijaya Karya (WIKA)
+  positioning: Kontraktor BUMN besar untuk proyek infrastruktur dan gedung berskala
+    nasional.
+  strengths:
+  - Skala keuangan besar
+  - Pengalaman panjang
+  - Portfolio proyek pemerintah dan swasta besar
+  weaknesses:
+  - Biaya overhead tinggi
+  - Kurang lincah untuk proyek kecil-menengah
+  - Respons lambat untuk klien retail
+  our_differentiation: Kami fokus pada proyek komersial dan perumahan skala kecil-menengah
+    dengan layanan lebih personal, teknologi otomasi untuk efisiensi, dan komunikasi
+    real-time via agen suara.
+- name: Ciputra Group
+  positioning: Pengembang properti terintegrasi dari perencanaan hingga konstruksi.
+  strengths:
+  - Brand kuat
+  - Pengembangan kawasan terpadu
+  - Kontrol kualitas dari hulu ke hilir
+  weaknesses:
+  - Harga premium
+  - Minim fokus pada konstruksi pihak ketiga (hanya untuk internal group)
+  our_differentiation: Kami adalah kontraktor khusus jasa konstruksi untuk berbagai
+    klien, bukan hanya internal group, dengan teknologi yang membuat proses lebih
+    transparan dan hemat biaya.
+- name: ProAria (Startup Proptech)
+  positioning: Platform digital yang menghubungkan klien dengan kontraktor dan material.
+  strengths:
+  - Teknologi platform modern
+  - Kemudahan akses via aplikasi
+  - Pilihan kontraktor yang banyak
+  weaknesses:
+  - Kontrol kualitas konstruksi yang terbatas
+  - Tidak mengelola proyek secara langsung
+  - Dukungan pasca-jual terbatas
+  our_differentiation: Kami adalah kontraktor langsung dengan tim sendiri dan dilengkapi
+    teknologi manajemen internal (termasuk agen suara) untuk memastikan kualitas dan
+    ketepatan waktu, bukan sekadar platform perantara.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 100000000
+  - 50000000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Menggunakan agen suara untuk penagihan otomatis dan manajemen tenaga
+      kerja pada proyek renovasi senilai Rp 500 juta.
+    monthly_cost: 750000
+    monthly_savings: 3500000
+    payback_months: 2
+  value_anchors:
+  - Teknologi kami dapat mengurangi keterlambatan proyek hingga 20%, menghemat jutaan
+    rupiah dari penalti atau biaya tambahan.
+  - Otomasi penagihan meningkatkan arus kas dengan mempercepat penerimaan pembayaran
+    rata-rata 15 hari lebih cepat.
+  - Pengingat K3 via suara dapat menekan risiko kecelakaan yang berpotensi menimbulkan
+    biaya kerugian ratusan juta.
+market_context:
+  market_size: Rp 1.500 triliun+ (berdasarkan nilai investasi konstruksi nasional)
+  growth_rate: 4-6% YoY
+  key_trends:
+  - Meningkatnya permintaan untuk perumahan sederhana dan menengah (rusunawa, rumah
+    tapak subsidi).
+  - Adopsi teknologi konstruksi (Construction Tech) seperti BIM dan software manajemen
+    proyek.
+  - Tumbuhnya kesadaran akan konstruksi hijau dan material ramah lingkungan.
+  - Pemerintah mendorong pembangunan infrastruktur di luar Jawa (Ibu Kota Nusantara).
+  seasonality:
+    high:
+    - Januari-Juni (sebelum musim hujan penuh, tahun fiskal baru)
+    - September-Desember (menjelang akhir tahun, penggunaan anggaran)
+    low:
+    - Juli-Agustus (puncak musim hujan, sering mengganggu pekerjaan lapangan)
+typical_objections:
+- objection: Harganya terlalu mahal dibandingkan kontraktor lain.
+  response: Saya mengerti pertimbangan anggaran. Harga kami mencakup sistem manajemen
+    proyek berbasis teknologi yang mengurangi risiko keterlambatan dan pembengkakan
+    biaya tak terduga. Bisa dibilang, Anda membayar untuk kepastian dan kontrol yang
+    lebih baik. Mari kita bahas mana bagian anggaran yang bisa dioptimalkan tanpa
+    mengorbankan kualitas dan timeline.
+- objection: Kami tidak terbiasa dengan teknologi baru, khawatir rumit.
+  response: Sangat wajar. Keunggulan agen suara kami justru membuat teknologi menjadi
+    sederhana. Anda tidak perlu install aplikasi atau belajar software baru. Komunikasi
+    tetap via telepon seperti biasa, hanya lebih teratur dan otomatis. Tim kami akan
+    memandu hingga nyaman. Bisa kita coba dengan proyek percobaan skala kecil dulu?
+- objection: Proyek kami masih rencana, hubungi lagi nanti saja.
+  response: Tentu, tidak masalah. Boleh saya catat kontak Bapak/Ibu dan kami kirimkan
+    informasi berkala tentang tips perencanaan konstruksi dan perkembangan harga material?
+    Jadi ketika waktunya tepat, Anda sudah memiliki data awal. Sekalian, kira-kira
+    timeline proyek yang diharapkan mulai kapan?
+- objection: Kami sudah punya kontraktor langganan yang terpercaya.
+  response: Itu bagus sekali, artinya Bapak/Ibu paham pentingnya hubungan baik dengan
+    kontraktor. Kami tidak bermaksud menggantikan, tetapi bisa menjadi mitra tambahan
+    khusus untuk menangani aspek komunikasi, penagihan, atau pengawasan jarak jauh
+    dengan teknologi kami. Atau, untuk proyek-proyek khusus yang membutuhkan pendekatan
+    berbeda. Apakah ada tantangan spesifik yang masih dihadapi dengan kontraktor saat
+    ini?
+meta:
+  id: construction
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

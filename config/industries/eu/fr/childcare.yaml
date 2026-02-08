@@ -1,0 +1,225 @@
+pain_points:
+- description: Gestion administrative complexe et chronophage pour les déclarations
+    et conformités.
+  severity: high
+  solution_hint: Automatiser les rappels et la saisie des données pour réduire la
+    charge administrative.
+- description: Difficultés de recrutement et de rétention du personnel qualifié dû
+    à la pénurie de main-d'œuvre.
+  severity: high
+  solution_hint: Faciliter la gestion des candidatures et des plannings via des outils
+    automatisés.
+- description: Fluctuations importantes de la demande selon les saisons et les vacances
+    scolaires.
+  severity: medium
+  solution_hint: Optimiser la réservation en temps réel pour ajuster les capacités.
+- description: Communication inefficace avec les parents concernant les horaires,
+    les activités et les incidents.
+  severity: medium
+  solution_hint: Envoyer des notifications automatisées et centraliser les échanges.
+- description: Contrôles stricts de la PMI (Protection Maternelle et Infantile) nécessitant
+    une documentation précise.
+  severity: high
+  solution_hint: Assurer le suivi numérique des conformités et générer des rapports
+    automatiques.
+- description: Coûts élevés de gestion des inscriptions et des paiements, avec des
+    retards fréquents.
+  severity: medium
+  solution_hint: Automatiser les processus de facturation et de rappel de paiement.
+typical_services:
+- Crèche collective
+- Micro-crèche
+- Garde d'enfants à domicile
+- Assistante maternelle
+- Halte-garderie
+- Centre de loisirs sans hébergement
+- Garde partagée
+- Soutien scolaire périscolaire
+- Ateliers éducatifs et artistiques
+- Accueil d'urgence
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Réduit le temps perdu en gestion manuelle et améliore l'expérience client.
+- name: Réponse aux questions fréquentes sur les tarifs et services
+  priority: high
+  reason: Libère le personnel pour des tâches plus critiques et fournit des réponses
+    instantanées.
+- name: Gestion des inscriptions et des listes d'attente
+  priority: medium
+  reason: Optimise l'occupation et minimise les erreurs humaines.
+- name: Envoi de rappels pour les paiements et les rendez-vous
+  priority: medium
+  reason: Améliore le flux de trésorerie et la ponctualité.
+- name: Support après-vente pour les retours des parents
+  priority: low
+  reason: Renforce la satisfaction client et identifie les points d'amélioration.
+- name: Intégration avec les logiciels de gestion locaux
+  priority: high
+  reason: Facilite l'adoption et réduit les doubles saisies.
+typical_integrations:
+- name: Logiciels de gestion de crèche
+  examples:
+  - Pro-Petits
+  - Kidizz
+  - E-crèche
+  priority: high
+- name: Systèmes de réservation en ligne
+  examples:
+  - Resalib
+  - Planity
+  priority: medium
+- name: Plateformes de paiement
+  examples:
+  - Stripe
+  - Lydia
+  - PayPal
+  priority: medium
+- name: Outils de communication
+  examples:
+  - Klassroom
+  - Educartable
+  priority: low
+- name: Systèmes de gestion des ressources humaines
+  examples:
+  - Silae
+  - Cegid
+  priority: low
+industry_faq:
+- question: Quels sont vos tarifs pour la garde d'enfants ?
+  answer_template: Nos tarifs varient selon le type de service et l'âge de l'enfant,
+    à partir de [montant] EUR par mois. Puis-je vous envoyer une brochure détaillée
+    ?
+- question: Êtes-vous conforme aux normes de la PMI ?
+  answer_template: Oui, nous respectons strictement toutes les réglementations PMI
+    et GDPR, avec des rapports automatisés pour garantir la conformité.
+- question: Proposez-vous des horaires flexibles ?
+  answer_template: Absolument, nous offrons des plages horaires adaptées, y compris
+    en garde d'urgence. Voulez-vous planifier une visite ?
+- question: Quelles activités éducatives proposez-vous ?
+  answer_template: Nous organisons des ateliers ludiques et pédagogiques, alignés
+    sur le programme scolaire français. Je peux vous partager notre calendrier.
+- question: Comment gérez-vous la sécurité des enfants ?
+  answer_template: La sécurité est prioritaire, avec du personnel formé et des protocoles
+    stricts. Nos systèmes automatisés assurent un suivi en temps réel.
+- question: Acceptez-vous les aides financières comme la CAF ?
+  answer_template: Oui, nous facilitons les démarches pour les aides CAF et autres
+    subventions, avec un support automatisé pour les documents.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un parent demande des informations sur les tarifs.
+  script: Bonjour, je comprends que le budget est important. Nos services commencent
+    à partir de 500 EUR par mois, avec des options flexibles. Voulez-vous que je vous
+    explique les aides disponibles comme la CAF pour réduire les coûts ?
+  goal: Convertir la demande en prise de rendez-vous en soulignant la valeur et les
+    aides.
+- trigger: service_inquiry
+  situation: Quand un client s'interroge sur les types de garde proposés.
+  script: Nous offrons plusieurs solutions, des crèches aux assistantes maternelles,
+    adaptées à vos besoins. Puis-je vous guider vers le service qui correspond le
+    mieux à votre emploi du temps ?
+  goal: Identifier le besoin spécifique et proposer une solution personnalisée.
+- trigger: compliance_concern
+  situation: En cas de questions sur la conformité réglementaire.
+  script: Rassurez-vous, nous sommes entièrement conformes à la PMI et au GDPR, avec
+    des outils automatisés pour garantir la transparence. Voulez-vous voir nos certifications
+    ?
+  goal: Établir la confiance en démontrant la fiabilité et la sécurité.
+- trigger: objection_time
+  situation: Si le client hésite en raison du temps de mise en place.
+  script: Notre système s'intègre rapidement à vos processus existants, souvent en
+    moins d'une semaine, sans perturber vos opérations. Je peux vous montrer un exemple
+    de déploiement réussi.
+  goal: Surmonter l'objection en mettant en avant la facilité d'utilisation et le
+    ROI rapide.
+competitors:
+- name: People & Baby
+  positioning: Réseau national de crèches privées.
+  strengths:
+  - Présence étendue en France
+  - Services premium
+  - Partenaire d'entreprises
+  weaknesses:
+  - Tarifs élevés
+  - Rigidité dans les horaires
+  our_differentiation: Nous offrons plus de flexibilité et des outils automatisés
+    à des prix plus accessibles.
+- name: Babilou
+  positioning: Groupe leader dans la petite enfance.
+  strengths:
+  - Grande expérience
+  - Diversité de services
+  - Innovation pédagogique
+  weaknesses:
+  - Processus administratifs lents
+  - Support client limité
+  our_differentiation: Notre automatisation réduit les délais et améliore le support
+    en temps réel.
+- name: Les Petits Chaperons Rouges
+  positioning: Crèches associatives et engagées.
+  strengths:
+  - Approche éducative reconnue
+  - Tarifs sociaux
+  - Communauté solide
+  weaknesses:
+  - Capacités limitées
+  - Peu de digitalisation
+  our_differentiation: Nous combinons qualité éducative avec des solutions technologiques
+    efficaces pour une gestion optimisée.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 1500
+  entry_point: 500
+  roi_examples:
+  - scenario: Réduction de 10 heures par semaine en gestion administrative pour une
+      micro-crèche.
+    monthly_cost: 100
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Automatisez jusqu'à 30% de vos tâches administratives.
+  - Réduisez les retards de paiement de 50% avec des rappels automatisés.
+  - Améliorez la satisfaction parentale grâce à une communication instantanée.
+market_context:
+  market_size: Environ 15 milliards EUR annuels
+  growth_rate: 3% par an
+  key_trends:
+  - Digitalisation croissante des processus de garde.
+  - Demande accrue pour des horaires flexibles et la garde d'urgence.
+  - Importance grandissante de la conformité GDPR et PMI.
+  seasonality:
+    high:
+    - Septembre (rentrée scolaire)
+    - Janvier (inscriptions)
+    low:
+    - Août (vacances d'été)
+    - Décembre (fêtes de fin d'année)
+typical_objections:
+- objection: C'est trop cher pour notre petite structure.
+  response: Je comprends, mais nos solutions peuvent réduire vos coûts opérationnels
+    jusqu'à 20%. Puis-je vous montrer un calcul personnalisé ?
+- objection: Nous avons déjà un système en place, le changement serait difficile.
+  response: Notre agent vocal s'intègre facilement à vos outils existants, avec un
+    accompagnement pour une transition en douceur.
+- objection: Les parents préfèrent le contact humain.
+  response: Absolument, notre agent complète le personnel en gérant les tâches répétitives,
+    pour que vous puissiez vous concentrer sur l'humain.
+- objection: Nous n'avons pas le temps de former notre équipe.
+  response: La formation est minimale et incluse, avec un support continu. En une
+    semaine, votre équipe sera opérationnelle.
+meta:
+  id: childcare
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

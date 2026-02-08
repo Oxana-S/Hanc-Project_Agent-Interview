@@ -1,0 +1,275 @@
+aliases:
+- automoción
+- taller mecánico
+- concesionario
+- mantenimiento de coches
+- reparación de vehículos
+- lavado de coches
+- neumáticos
+- ITV
+- venta de coches
+- recambios
+competitors:
+- name: Norauto
+  positioning: Cadena de talleres y venta de recambios de gran superficie
+  strengths:
+  - Amplia red de establecimientos
+  - Precios competitivos en recambios
+  - Servicios rápidos (cambio de aceite, neumáticos)
+  weaknesses:
+  - Atención menos personalizada
+  - Puede haber listas de espera largas
+  - Limitado en reparaciones complejas
+  our_differentiation: Atención personalizada y seguimiento cercano del historial
+    de tu vehículo.
+- name: Feu Vert
+  positioning: Red de talleres especializada en mantenimiento y reparación
+  strengths:
+  - Especialización en múltiples marcas
+  - Promociones y financiación frecuentes
+  - Diagnóstico informatizado
+  weaknesses:
+  - Rotación de personal puede afectar la continuidad
+  - Precios variables entre centros
+  our_differentiation: Garantía extendida en trabajos y comunicación proactiva sobre
+    el estado de la reparación.
+- name: Concesionarios oficiales (Ej. Grupo VW, Stellantis, etc.)
+  positioning: Red de talleres oficiales de marca
+  strengths:
+  - Uso de recambios originales (OEM)
+  - Formación específica de marca
+  - Equipos de diagnóstico avanzados
+  weaknesses:
+  - Precios generalmente más elevados
+  - Tiempos de espera para citas pueden ser largos
+  our_differentiation: Combinamos la calidad técnica con precios más ajustados y mayor
+    flexibilidad horaria.
+- name: Talleres independientes locales
+  positioning: Pequeños talleres de barrio o familiares
+  strengths:
+  - Trato muy cercano y de confianza
+  - Precios ajustados
+  - Flexibilidad y agilidad
+  weaknesses:
+  - Pueden carecer de equipamiento de última tecnología
+  - Capacidad limitada para reparaciones muy especializadas
+  our_differentiation: Contamos con la tecnología de un gran taller pero manteniendo
+    la calidez y atención directa de un taller local.
+industry_faq:
+- answer_template: El precio depende de la marca, modelo y tipo de aceite. Generalmente,
+    entre 50€ y 120€ con mano de obra incluida.
+  question: ¿Cuánto cuesta un cambio de aceite?
+- answer_template: Por favor, facilite el número de orden de trabajo o la matrícula
+    del vehículo para consultar su estado.
+  question: ¿En qué estado está mi reparación?
+- answer_template: Un mantenimiento programado suele llevar entre 1 y 3 horas, según
+    los puntos a revisar.
+  question: ¿Cuánto tarda una revisión o mantenimiento?
+- answer_template: Sí, trabajamos con la mayoría de marcas. ¿De qué marca es su vehículo?
+  question: ¿Trabajáis con mi marca de coche?
+- answer_template: Puedo consultar nuestro stock. Indíqueme la marca, modelo y la
+    pieza que necesita.
+  question: ¿Tenéis una pieza concreta en stock?
+- answer_template: Sí, ofrecemos garantía de 12 meses o 15.000 km en nuestras reparaciones.
+  question: ¿Ofrecéis garantía en las reparaciones?
+- answer_template: Sí, realizamos la pre-ITV para detectar posibles fallos antes de
+    la inspección oficial.
+  question: ¿Hacéis revisiones pre-ITV?
+industry_specifics:
+  compliance:
+  - GDPR (Protección de datos)
+  - Ley General de Consumidores y Usuarios
+  - Normativa de talleres de la comunidad autónoma
+  peak_times:
+  - Lunes por la mañana
+  - Viernes por la tarde
+  - Temporada de cambio de neumáticos (primavera y otoño)
+  - Antes de periodos vacacionales (verano, Semana Santa)
+  tone:
+  - Profesional y cercano
+  - Claro en explicaciones técnicas
+  - Resolutivo y de confianza
+learnings: []
+market_context:
+  growth_rate: '3.5'
+  key_trends:
+  - Aumento de la demanda de vehículos eléctricos e híbridos
+  - Mayor conciencia sobre el mantenimiento preventivo
+  - Digitalización de la relación con el cliente (citas online, seguimiento)
+  - Escasez de algunos recambios por tensiones en la cadena de suministro
+  market_size: 30 mil millones EUR (aproximadamente)
+  seasonality:
+    high:
+    - Primavera (cambio a neumáticos de verano)
+    - Otoño (cambio a neumáticos de invierno, pre-ITV)
+    - Antes de verano (preparación para viajes largos)
+    low:
+    - Agosto (periodo vacacional)
+    - Diciembre (puentes y festivos)
+meta:
+  avg_validation_score: 0.0
+  country: es
+  created_at: '2024-12-15'
+  currency: EUR
+  id: automotive
+  language: es
+  languages: []
+  last_updated: '2024-12-15'
+  phone_codes:
+  - '+34'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Madrid
+  version: '1.0'
+pain_points:
+- description: Los clientes llaman repetidamente para preguntar por el estado de su
+    reparación, saturando la línea.
+  severity: high
+  solution_hint: Agente de voz que proporcione el estado automáticamente con el número
+    de orden o matrícula.
+- description: Gran volumen de llamadas solicitando presupuestos para servicios comunes.
+  severity: medium
+  solution_hint: Respuesta automatizada con precios estimados para servicios estándar
+    (cambio de aceite, ITV, etc.)
+- description: Dificultad para gestionar citas de forma eficiente, solapándose horarios.
+  severity: medium
+  solution_hint: Sistema de reserva integrado en el agente de voz que consulte la
+    disponibilidad en tiempo real.
+- description: Los clientes olvidan las fechas de sus próximas revisiones programadas.
+  severity: medium
+  solution_hint: Recordatorios automatizados por voz, SMS o email basados en kilometraje
+    o fecha.
+- description: Los mecánicos interrumpen su trabajo para atender llamadas de consulta
+    básica.
+  severity: high
+  solution_hint: Derivar consultas rutinarias (precios, disponibilidad de piezas,
+    horarios) al agente de voz IA.
+- description: Pérdida de clientes por no poder atender llamadas fuera del horario
+    laboral.
+  severity: medium
+  solution_hint: Agente de voz disponible 24/7 para toma de citas, consultas de estado
+    y FAQs.
+pricing_context:
+  currency: EUR
+  entry_point: 50
+  roi_examples:
+  - monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+    scenario: Automatización del 60% de las consultas de estado y citas, liberando
+      tiempo del personal de recepción.
+  typical_budget_range:
+  - 1000
+  - 10000
+  value_anchors:
+  - Reduzca las llamadas no atendidas y mejore la experiencia del cliente.
+  - Automatice tareas repetitivas para que su equipo se centre en reparaciones complejas.
+  - Obtenga un retorno de la inversión en menos de 3 meses.
+recommended_functions:
+- name: estado_reparacion
+  priority: high
+  reason: Más del 40% de las llamadas son para consultar el progreso de una reparación.
+- name: gestion_citas
+  priority: high
+  reason: Esencial para organizar el flujo de trabajo del taller y reducir tiempos
+    muertos.
+- name: preguntas_frecuentes
+  priority: medium
+  reason: Resuelve dudas rápidas sobre precios, garantías, horarios y servicios.
+- name: recordatorios_mantenimiento
+  priority: medium
+  reason: Fideliza al cliente y asegura un flujo de trabajo constante con mantenimientos
+    preventivos.
+- name: solicitud_presupuesto
+  priority: medium
+  reason: Captura leads y da una primera orientación al cliente sobre costes.
+- name: derivacion_especialista
+  priority: low
+  reason: Para consultas técnicas complejas que requieran la intervención de un mecánico.
+sales_scripts:
+- goal: Convertir una consulta de precio en una cita confirmada.
+  script: Entiendo que quiere saber el precio. Para darle un presupuesto más ajustado,
+    necesito saber marca, modelo y qué servicio necesita. ¿Le parece si le reservo
+    una cita para una revisión diagnóstica sin compromiso? Nuestros mecánicos le asesorarán
+    mejor.
+  situation: Cuando un cliente pregunta por el precio de un servicio no estándar o
+    una reparación compleja.
+  trigger: price_question_complex
+- goal: Fidelizar al cliente ofreciendo un servicio programado.
+  script: Perfecto, su cambio de aceite está listo. Para ayudarle a mantener su coche
+    en perfecto estado, le recomiendo nuestro plan de mantenimiento programado. Le
+    avisamos automáticamente para la próxima revisión según los intervalos del fabricante.
+    ¿Le interesaría?
+  situation: Después de confirmar la finalización de un servicio básico como cambio
+    de aceite o neumáticos.
+  trigger: post_service_upsell
+- goal: Recuperar a un cliente inactivo.
+  script: Hola [Nombre], le llamamos de [Nombre del Taller]. Vemos que hace tiempo
+    que no revisamos su [Modelo del Coche]. Para su seguridad y para evitar reparaciones
+    más costosas, le ofrecemos una revisión de puntos clave con un 20% de descuento.
+    ¿Le vendría bien esta semana?
+  situation: Llamada outbound a clientes cuyo último servicio fue hace más de 18 meses.
+  trigger: reactivation_campaign
+typical_integrations:
+- examples:
+  - WinTaller
+  - Autofácil
+  - TallerOn
+  name: Software de Gestión de Taller
+  priority: high
+  reason: Conexión directa con órdenes de trabajo, stock de recambios y estado de
+    reparaciones.
+- examples:
+  - Ekon
+  - Clickdelivery
+  - Microsoft Dynamics 365
+  name: CRM
+  priority: medium
+  reason: Acceso al historial del cliente, vehículo y preferencias para un servicio
+    personalizado.
+- examples:
+  - Vodafone One
+  - MásMóvil
+  - Integración API propia
+  name: Centralita Telefónica
+  priority: high
+  reason: Gestionar las llamadas entrantes, identificar números y registrar llamadas.
+- examples:
+  - WhatsApp Business API
+  - SMS API
+  name: Mensajería
+  priority: medium
+  reason: Envío automatizado de recordatorios de citas, notificaciones de estado y
+    facturas.
+- examples:
+  - Google Calendar
+  - Microsoft Outlook
+  name: Calendario
+  priority: medium
+  reason: Sincronización de la disponibilidad de los puestos de trabajo y mecánicos.
+typical_objections:
+- objection: Es muy caro.
+  response: Entiendo su preocupación. Nuestro precio incluye piezas de calidad y la
+    mano de obra de profesionales certificados. Podemos valorar alternativas en algunos
+    componentes sin comprometer la seguridad. ¿Le interesa que le detalle el presupuesto?
+- objection: No tengo tiempo para dejar el coche.
+  response: Le ofrecemos un servicio de recogida y entrega a domicilio o en su trabajo,
+    o un vehículo de sustitución para que no pierda movilidad. ¿Le facilitaría esto
+    la gestión?
+- objection: En el concesionario oficial me dan más garantía.
+  response: Nuestros técnicos están igualmente capacitados y usamos recambios de primera
+    calidad, a menudo los mismos que el oficial pero a un precio más competitivo.
+    Además, nuestra garantía es de 12 meses. La diferencia la notará en el trato directo
+    y en el precio final.
+typical_services:
+- Mantenimiento programado (Revisión)
+- Reparación de motor y mecánica general
+- Reparación de suspensión y dirección
+- Reparación de frenos
+- Reparación de sistema eléctrico y electrónico
+- Inspección Técnica de Vehículos (ITV) y pre-ITV
+- Cambio de neumáticos y alineación
+- Cambio de aceite y filtros
+- Diagnóstico electrónico
+- Lavado y detailing
+_extends: _base/automotive

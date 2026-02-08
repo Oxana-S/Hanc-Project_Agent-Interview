@@ -1,0 +1,220 @@
+pain_points:
+- description: Costuri ridicate și dificultăți în gestionarea bugetului pentru evenimente.
+  severity: high
+  solution_hint: Automatizarea monitorizării bugetului și oferirea de recomandări
+    pentru optimizare.
+- description: Coordonarea complexă a furnizorilor și logisticii în timp real.
+  severity: high
+  solution_hint: Integrarea cu sistemele furnizorilor pentru actualizări automate
+    și alerte.
+- description: Comunicarea ineficientă cu clienții și participanții.
+  severity: medium
+  solution_hint: Utilizarea unui agent vocal pentru răspunsuri rapide și personalizate
+    la întrebări.
+- description: Creșterea concurenței și dificultatea în atragerea de clienți noi.
+  severity: medium
+  solution_hint: Automatizarea campaniilor de marketing și urmărirea lead-urilor.
+- description: Respectarea regulilor GDPR pentru gestionarea datelor clienților.
+  severity: high
+  solution_hint: Implementarea de instrumente automate pentru conformitate GDPR și
+    securitate a datelor.
+- description: Planificarea sezonieră și fluctuațiile cererii.
+  severity: medium
+  solution_hint: Analiza datelor pentru prognozarea cererii și optimizarea resurselor.
+typical_services:
+- Planificare și organizare evenimente
+- Închiriere sală și spații
+- Catering și servicii de alimentație
+- Managementul invitațiilor și biletelor
+- Decorațiuni și design eveniment
+- Servicii audiovizuale și tehnice
+- Transport și logistică pentru participanți
+- Marketing și promovare eveniment
+- Gestionarea parteneriatelor și sponsorizărilor
+- Evaluare și raportare post-eveniment
+recommended_functions:
+- name: Programare întâlniri și confirmări
+  priority: high
+  reason: Reducerea timpului petrecut pe coordonare și creșterea eficienței.
+- name: Răspuns la întrebări frecvente despre evenimente
+  priority: high
+  reason: Îmbunătățirea experienței clienților și reducerea volumului de apeluri.
+- name: Urmărirea lead-urilor și calificarea acestora
+  priority: medium
+  reason: Creșterea ratelor de conversie și optimizarea eforturilor de vânzări.
+- name: Notificări automate pentru termene limită și actualizări
+  priority: medium
+  reason: Asigurarea respectării programului și evitarea erorilor umane.
+- name: Integrare cu sisteme de plată pentru procesare rapidă
+  priority: low
+  reason: Facilitarea tranzacțiilor și îmbunătățirea fluxului de numerar.
+- name: Generare rapoarte personalizate pentru clienți
+  priority: low
+  reason: Demonstrarea valorii serviciilor și creșterea transparenței.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Microsoft Dynamics
+  priority: high
+- name: Platforme de ticketing și rezervări
+  examples:
+  - Bilete.ro
+  - Eventim
+  - Ticketmaster
+  priority: high
+- name: Sisteme de plată online
+  examples:
+  - MobilPay
+  - Netopia
+  - PayU
+  priority: medium
+- name: Aplicații de calendar și programare
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+- name: Sisteme de management proiect
+  examples:
+  - Trello
+  - Asana
+  - Monday.com
+  priority: low
+industry_faq:
+- question: Care sunt costurile medii pentru organizarea unui eveniment în România?
+  answer_template: Costurile variază în funcție de tipul și dimensiunea evenimentului,
+    dar pentru un eveniment mediu, bugetul tipic începe de la 5000 RON și poate ajunge
+    până la 50000 RON. Vă putem oferi o estimare personalizată.
+- question: Cum gestionați conformitatea GDPR pentru datele participanților?
+  answer_template: Implementăm măsuri stricte de securitate a datelor și asigurăm
+    că toate procesele respectă reglementările GDPR, inclusiv consimțământul explicit
+    și dreptul la ștergere.
+- question: Ce servicii incluse oferiți pentru planificarea evenimentelor?
+  answer_template: Serviciile noastre includ planificarea detaliată, coordonarea furnizorilor,
+    managementul logisticii, și suport post-eveniment pentru evaluare.
+- question: Puteți organiza evenimente în afara Bucureștiului?
+  answer_template: Da, avem parteneri și experiență în organizarea evenimentelor în
+    toată țara, inclusiv în orașe majore precum Cluj-Napoca, Timișoara, și Iași.
+- question: Care este termenul minim pentru planificarea unui eveniment?
+  answer_template: Recomandăm o perioadă de planificare de cel puțin 4-6 săptămâni
+    pentru evenimente standard, dar putem gestiona și proiecte urgente cu o suprataxă.
+- question: Oferiți servicii de marketing pentru promovarea evenimentului?
+  answer_template: Da, includem servicii de marketing digital, precum campanii pe
+    rețelele sociale și email marketing, pentru a atrage participanți.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru organizarea unui eveniment.
+  script: Bună ziua! Înțeleg că doriți să organizați un eveniment și sunteți interesat
+    de costuri. Pentru a vă oferi o estimare precisă, aș dori să vă întreb câteva
+    detalii, cum ar fi tipul evenimentului, numărul de participanți, și locația. De
+    obicei, bugetele încep de la 1000 RON pentru servicii de bază. Sunteți dispus
+    să discutați mai multe?
+  goal: Calificarea lead-ului și colectarea informațiilor pentru o ofertă personalizată.
+- trigger: competitor_mention
+  situation: Când clientul menționează un competitor și vrea să compare serviciile.
+  script: Vă mulțumim pentru întrebare! În timp ce alții se pot concentra doar pe
+    anumite aspecte, noi oferim o soluție completă cu integrare AI pentru automatizare
+    și eficiență sporită. De exemplu, agentul nostru vocal poate reduce timpul de
+    răspuns la clienți cu 50%. Ați dori să vă arăt cum funcționează?
+  goal: Evidențierea diferențierii și demonstrarea valorii unice.
+- trigger: objection_too_expensive
+  situation: Când clientul spune că serviciile sunt prea scumpe.
+  script: Înțeleg preocuparea. Investiția noastră poate părea mare inițial, dar cu
+    automatizarea AI, economisiți timp și resurse pe termen lung. De exemplu, clienții
+    noștri raportează economii lunare de până la 2000 RON prin reducerea costurilor
+    administrative. Putem discuta un plan personalizat care se încadrează în bugetul
+    dvs.?
+  goal: Depășirea obiecției și prezentarea ROI-ului.
+competitors:
+- name: Eventim România
+  positioning: Lider pe piața ticketing-ului și organizării de evenimente mari.
+  strengths:
+  - Rețea largă de parteneri
+  - Platformă online robustă
+  - Experiență în evenimente de masă
+  weaknesses:
+  - Servicii personalizate limitate
+  - Costuri ridicate pentru evenimente mici
+  - Lipsa integrării AI
+  our_differentiation: Oferim soluții personalizate cu integrare AI pentru automatizare
+    completă și eficiență îmbunătățită.
+- name: Bilete.ro
+  positioning: Platformă populară pentru vânzarea de bilete și evenimente mici.
+  strengths:
+  - Interfață ușor de utilizat
+  - Accesibil pentru evenimente mici
+  - Prețuri competitive
+  weaknesses:
+  - Servicii limitate de planificare
+  - Suport clienți redus
+  - Focalizare îngustă pe ticketing
+  our_differentiation: Avem servicii complete de planificare și suport AI pentru gestionarea
+    întregului proces de eveniment.
+- name: Orange Events
+  positioning: Firmă locală specializată în evenimente corporative și private.
+  strengths:
+  - Experiență locală profundă
+  - Relații puternice cu furnizorii
+  - Servicii personalizate
+  weaknesses:
+  - Tehnologie învechită
+  - Procese manuale care cresc costurile
+  - Scalabilitate limitată
+  our_differentiation: Integrăm tehnologie AI modernă pentru a reduce costurile și
+    a crește scalabilitatea, păstrând personalizarea.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatizarea proceselor administrative pentru un eveniment lunar.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Reduceți timpul de coordonare cu 30% folosind AI-ul nostru.
+  - Economisiți până la 2000 RON lunar pe costuri administrative.
+  - Îmbunătățiți satisfacția clienților cu răspunsuri instant.
+market_context:
+  market_size: Estimare de 1 miliard RON anual
+  growth_rate: 6% pe an
+  key_trends:
+  - Creșterea evenimentelor virtuale și hibride.
+  - Demanda crescândă pentru evenimente sustenabile.
+  - Adoptarea tehnologiei pentru experiențe personalizate.
+  seasonality:
+    high:
+    - Primăvară (martie-mai)
+    - Toamnă (septembrie-noiembrie)
+    low:
+    - Iarnă (decembrie-februarie)
+    - Vara (iunie-august) în unele regiuni
+typical_objections:
+- objection: Nu avem buget pentru tehnologie AI.
+  response: Înțeleg, dar investiția în AI poate reduce costurile pe termen lung. Putem
+    începe cu un plan de bază la 1000 RON și demonstra economiile în primele luni.
+- objection: Prefer să lucrez cu oameni, nu cu mașini.
+  response: AI-ul nostru este conceput să sprijine echipele umane, nu să le înlocuiască.
+    Vă ajută să automatizați sarcini repetitive, astfel încât să vă puteți concentra
+    pe relațiile cu clienții.
+- objection: Suntem deja mulțumiți cu furnizorul actual.
+  response: Asta e minunat! Dar cu AI-ul nostru, puteți optimiza și mai mult procesele.
+    Putem oferi o demonstrație gratuită pentru a vă arată cum putem îmbunătăți eficiența.
+meta:
+  id: events
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

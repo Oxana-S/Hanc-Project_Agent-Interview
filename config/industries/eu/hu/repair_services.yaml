@@ -1,0 +1,248 @@
+pain_points:
+- description: Az ügyfélszolgálati idő korlátozottsága miatt nem tudják gyorsan fogadni
+    a javítási igényeket.
+  severity: high
+  solution_hint: AI hangalapú ügynök 0-24-ben fogadhatja és kategorizálhatja a bejelentéseket.
+- description: A manuális időpont-egyeztetés bonyolult és sok időt vesz igénybe.
+  severity: high
+  solution_hint: Hangalapú asszisztens automatizálhatja az időpontfoglalást és emlékeztetőket
+    küldhet.
+- description: A GDPR megfelelés folyamatos kihívást jelent az ügyféladatok kezelése
+    során.
+  severity: medium
+  solution_hint: AI hangalapú rendszerek beépített adatvédelmi protokollokat alkalmazhatnak.
+- description: A gyors reagálás hiánya miatt a versenytársak elhappolják az ügyfeleket.
+  severity: high
+  solution_hint: Azonnali válaszokat adó AI javítja az ügyfélélményt és megtartást.
+- description: A technikai szakzsargon és szolgáltatások eltérő megértése megnehezíti
+    a kommunikációt.
+  severity: medium
+  solution_hint: AI képes adaptálni a kommunikációt a vevő nyelvezetéhez.
+- description: A munkafolyamatok manuális adminisztrációja lassú és hibalehetőségeket
+    rejt.
+  severity: medium
+  solution_hint: AI hangalapú ügynök integrálható CRM rendszerekkel az automatizálás
+    érdekében.
+- description: Az ügyfelek gyakran nem kapnak azonnali visszajelzést a javítás állapotáról.
+  severity: medium
+  solution_hint: AI rendszer automatikusan tájékoztatja az ügyfelet a javítás aktuális
+    állapotáról.
+typical_services:
+- Házhoz menő elektronikai készülék javítás
+- Vízvezeték-szerelés és csőtörés javítás
+- Fűtésrendszer karbantartás és javítás
+- Autószerviz és műszaki javítás
+- Klíma beszerelés és javítás
+- Számítógép és laptop szervizelés
+- Bútorjavítás és asztalos szolgáltatások
+- Kertészeti gépek javítása és karbantartás
+- Lakásfelújítási kisebb javítások
+- Elektromos hálózat hibakeresés és javítás
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: Gyors és egyszerű időpontfoglalás növeli az ügyfél elégedettséget.
+- name: Ügyféladatok biztonságos kezelése GDPR kompatibilitással
+  priority: high
+  reason: Jogszabályi megfelelés elengedhetetlen a bizalomhoz.
+- name: Javítási állapot automatikus tájékoztatása
+  priority: medium
+  reason: Csökkenti az ügyfél érdeklődési időt és növeli az átláthatóságot.
+- name: Gyakori kérdések megválaszolása
+  priority: medium
+  reason: Csökkenti az élő munkaerő terheltségét.
+- name: Többnyelvű kommunikáció (magyar és angol)
+  priority: low
+  reason: Turisták és külföldi ügyfelek kiszolgálása.
+- name: Hibabejelentés és panaszkezelés
+  priority: high
+  reason: Gyors reagálás a problémákra javítja a hírnevet.
+- name: Fizetési és árajánlat kérés kezelése
+  priority: medium
+  reason: Egyszerűbbé teszi a szolgáltatás igénybe vételét.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - Bitrix24
+  priority: high
+- name: Naptár és időpontkezelő szoftverek
+  examples:
+  - Google Naptár
+  - Microsoft Outlook
+  - Calendly
+  priority: high
+- name: ERP rendszerek
+  examples:
+  - SAP Business One
+  - Navision
+  priority: medium
+- name: Számlázó programok
+  examples:
+  - Billingo
+  - Számlázz.hu
+  priority: medium
+- name: Ügyfélkapcsolati platformok
+  examples:
+  - Zendesk
+  - Freshdesk
+  priority: low
+- name: GDPR megfelelőségi eszközök
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+industry_faq:
+- question: Milyen gyorsan tudnak kiszállni a javításhoz?
+  answer_template: Általában a javítási igény bejelentésétől számított 24-48 órán
+    belül tudunk időpontot biztosítani. Sürgős esetben kérjük jelezze!
+- question: Milyen garanciát vállalnak a munkájukra?
+  answer_template: Minden javításra legalább 6 hónap garanciát adunk, amely részleteit
+    a szerződés tartalmazza.
+- question: Hogyan történik az árajánlat készítése?
+  answer_template: Az árajánlatot a helyszíni felmérés után, vagy az Ön által megadott
+    információk alapján elektronikus úton küldjük el.
+- question: Elfogadnak bankkártyát vagy készpénzt?
+  answer_template: Fizethet készpénzzel, bankkártyával, vagy átutalással is a javítás
+    befejezésekor.
+- question: Hogyan biztosítják az ügyféladatok védelmét?
+  answer_template: Ügyfeleink adatait a GDPR előírásainak megfelelően kezeljük, és
+    csak a szolgáltatás teljesítéséhez használjuk fel.
+- question: Tudnak adni tanácsot a megelőző karbantartáshoz?
+  answer_template: Természetesen, kollégáink szívesen adnak tanácsot a készülékek
+    és rendszerek karbantartására vonatkozóan.
+- question: Mi a teendő, ha nem vagyok elégedett a javítással?
+  answer_template: Kérjük, minél hamarabb jelezze panaszát, és mi igyekszünk gyorsan
+    orvosolni a problémát.
+sales_scripts:
+- trigger: árkérés
+  situation: Amikor az ügyfél árakat kér telefonon vagy online
+  script: Köszönöm az érdeklődést! Az árak szolgáltatástól függően változnak, de szívesen
+    adok pontos árajánlatot a helyszíni felmérés után. Mikor lenne Önnek alkalmas
+    időpont?
+  goal: Időpontfoglalás és érdeklődés fenntartása
+- trigger: bizonytalanság_garancia
+  situation: Amikor az ügyfél bizonytalan a szolgáltatás minőségét illetően
+  script: Minden munkánkra legalább 6 hónap garanciát vállalunk, így biztos lehet
+    benne, hogy megbízható szolgáltatást kap.
+  goal: Bizalomépítés
+- trigger: adatvédelem_kérdés
+  situation: Amikor az ügyfél aggódik az adatainak védelme miatt
+  script: Adatkezelésünk teljes mértékben megfelel a GDPR előírásainak, így adatai
+    biztonságban vannak nálunk.
+  goal: Adatvédelem miatti aggályok eloszlatása
+- trigger: időpont_találás
+  situation: Amikor az ügyfél nehezen talál megfelelő időpontot
+  script: Segítek gyorsan találni Önnek megfelelő időpontot – mikor lenne a legalkalmasabb?
+  goal: Időpontfoglalás elősegítése
+- trigger: panaszkezelés
+  situation: Amikor az ügyfél panaszt tesz
+  script: Sajnáljuk, hogy nem volt elégedett. Kérem, mondja el részletesen a problémát,
+    hogy mielőbb megoldást találhassunk.
+  goal: Panasz kezelése és ügyfél megtartása
+competitors:
+- name: Fix24
+  positioning: Országos gyorsszerviz szolgáltató
+  strengths:
+  - Gyors kiszállás
+  - Széles szolgáltatási paletta
+  - Jó online jelenlét
+  weaknesses:
+  - Magasabb árak
+  - Kevés személyre szabott szolgáltatás
+  our_differentiation: Rugalmasabb időpontfoglalás és személyre szabott ügyfélkommunikáció
+    AI támogatással
+- name: SzervizMester
+  positioning: Helyi, megbízható családi vállalkozás
+  strengths:
+  - Személyes kapcsolat az ügyfelekkel
+  - Versenyképes árak
+  weaknesses:
+  - Korlátozott online ügyféltámogatás
+  - Lassabb reakcióidő
+  our_differentiation: 24 órás AI-alapú ügyfélszolgálat és automatizált időpontkezelés
+- name: ProJavítás
+  positioning: Szakmai specialista elektronikai javításban
+  strengths:
+  - Magas szakértelem
+  - Modern műszaki felszereltség
+  weaknesses:
+  - Magasabb árkategória
+  - Kevésbé rugalmas időpontok
+  our_differentiation: Kedvezőbb árak és egyszerűbb ügyintézés AI hangalapú segédlettel
+- name: RapidJavítás
+  positioning: Expressz javítási szolgáltatások
+  strengths:
+  - Villámgyors kiszállás
+  - Hatékony panaszkezelés
+  weaknesses:
+  - Korlátozott szolgáltatáskör
+  - Kevés automatizált ügyfélkommunikáció
+  our_differentiation: Teljes körű szolgáltatások és automatizált állapotkövetés AI-val
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 12000
+  roi_examples:
+  - scenario: Időpontfoglalás automatizálása csökkenti az adminisztrációs költségeket
+    monthly_cost: 25000
+    monthly_savings: 60000
+    payback_months: 1
+  - scenario: Gyorsabb ügyfélkommunikáció növeli az ügyféltartást és bevételt
+    monthly_cost: 30000
+    monthly_savings: 90000
+    payback_months: 1
+  value_anchors:
+  - Az automatizált időpontfoglalás évente több tízezer forint megtakarítást eredményez.
+  - Az AI hangalapú ügyfélszolgálat csökkenti az élő munkaerő terhelését és gyorsabb
+    válaszokat biztosít.
+  - A GDPR-kompatibilis adatkezelés elkerüli a bírságokat és növeli az ügyfelek bizalmát.
+market_context:
+  market_size: 25 milliárd HUF
+  growth_rate: 5
+  key_trends:
+  - Növekvő kereslet a gyors és megbízható javítási szolgáltatások iránt
+  - Digitalizáció és automatizálás térnyerése
+  - Fokozott figyelem az adatvédelemre és GDPR megfelelésre
+  - Online ügyfélkommunikáció és időpontfoglalás növekvő szerepe
+  seasonality:
+    high:
+    - Ősz
+    - Tél
+    - Fűtési szezon
+    low:
+    - Nyár
+    - Tavasz
+typical_objections:
+- objection: Túl drágának találom a szolgáltatást.
+  response: Megértjük, hogy fontos az ár. Az automatizált rendszerünk azonban segít
+    időt és pénzt megtakarítani hosszú távon, és garanciát is vállalunk a munkára.
+- objection: Nem vagyok biztos benne, hogy az AI megérti a problémámat.
+  response: Az AI hangalapú ügynökünk képes alkalmazkodni a beszédstílusához, és ha
+    szükséges, élő szakemberhez irányítjuk.
+- objection: Aggódom az adataim biztonsága miatt.
+  response: Adatkezelésünk teljes mértékben megfelel a GDPR előírásainak, és csak
+    a szolgáltatás teljesítéséhez használjuk fel az információkat.
+- objection: Nem szeretek online vagy telefonon időpontot foglalni.
+  response: Az AI segít egyszerűen és gyorsan időpontot foglalni, de természetesen
+    személyes ügyintézésre is van lehetőség.
+- objection: Nem tudom, mennyi ideig tart a javítás.
+  response: A javítási idő a probléma jellegétől függ, de az AI hangalapú asszisztensünk
+    folyamatosan tájékoztatja Önt a javítás állapotáról.
+meta:
+  id: repair_services
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

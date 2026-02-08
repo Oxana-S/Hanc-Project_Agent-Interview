@@ -1,0 +1,234 @@
+pain_points:
+- description: Fachkräftemangel im IT-Bereich, insbesondere bei Cloud- und Sicherheitsexperten.
+  severity: high
+  solution_hint: KI-Sprachagent kann Erstgespräche führen und Leads qualifizieren,
+    um Zeit des Vertriebs zu sparen.
+- description: Hohe Komplexität und Kosten bei der Einhaltung von DSGVO und anderen
+    Compliance-Vorgaben.
+  severity: high
+  solution_hint: Agent kann standardisierte Compliance-Fragen beantworten und Bedarfsanalysen
+    durchführen.
+- description: Schnelle technologische Veränderungen führen zu veralteter IT-Infrastruktur
+    bei KMUs.
+  severity: medium
+  solution_hint: Agent kann Aufklärungsgespräche über Modernisierungsmöglichkeiten
+    führen.
+- description: Ineffiziente interne Prozesse und mangelnde Automatisierung führen
+    zu Produktivitätsverlusten.
+  severity: medium
+  solution_hint: Agent kann Prozessanalysen anbieten und auf Automatisierungslösungen
+    hinweisen.
+- description: Cybersicherheits-Bedrohungen nehmen zu, aber viele Unternehmen sind
+    unzureichend geschützt.
+  severity: high
+  solution_hint: Agent kann über grundlegende Sicherheitspakete informieren und Termine
+    für Audits vereinbaren.
+- description: Unklare ROI-Berechnung bei IT-Investitionen erschwert Budgetfreigaben.
+  severity: medium
+  solution_hint: Agent kann vereinfachte ROI-Szenarien vorstellen und Kalkulationsvorlagen
+    anbieten.
+typical_services:
+- IT-Support und Helpdesk (1st/2nd Level)
+- Cloud-Migration und -Management (AWS, Azure, Google Cloud)
+- Cybersicherheit und Datenschutzberatung (DSGVO)
+- Netzwerk-Infrastruktur und -Sicherheit
+- Software-Entwicklung und Individualprogrammierung
+- IT-Strategie und Digitalisierungsberatung
+- Managed IT Services (Outsourcing)
+- Datenbank-Management und Business Intelligence
+- Notfallwiederherstellung (Disaster Recovery)
+- Unterstützung bei SaaS-Einführungen
+recommended_functions:
+- name: Lead-Qualifizierung und Terminvereinbarung
+  priority: high
+  reason: Spart Vertriebszeit und filtert ungeeignete Anfragen frühzeitig heraus.
+- name: 24/7-Basis-Support und FAQ-Beantwortung
+  priority: medium
+  reason: Entlastet das Helpdesk bei einfachen Anfragen und erhöht Kundenzufriedenheit.
+- name: Bedarfsanalyse und Service-Empfehlung
+  priority: high
+  reason: Hilft KMUs, den passenden IT-Service zu identifizieren und strukturiert
+    Anfragen.
+- name: Projektstatus-Updates und Follow-up
+  priority: medium
+  reason: Verbessert Kommunikation und Transparenz für laufende Kunden.
+- name: Compliance-Vorab-Check (DSGVO)
+  priority: high
+  reason: Wichtiges Thema in Österreich; Agent kann Grundfragen klären und Bewusstsein
+    schärfen.
+- name: Kundenzufriedenheitsumfrage
+  priority: low
+  reason: Ermöglicht kontinuierliches Feedback ohne manuellen Aufwand.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - DATEV
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - Microsoft 365
+  priority: high
+- name: Helpdesk-/Ticketing-Systeme
+  examples:
+  - Jira Service Management
+  - Zendesk
+  - OTRS
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - DATEV
+  - SAP
+  - lexoffice
+  priority: medium
+- name: Projektmanagement-Tools
+  examples:
+  - Jira
+  - Asana
+  - Microsoft Project
+  priority: low
+industry_faq:
+- question: Wie schnell kann ein Notfall-IT-Support in Österreich bereitgestellt werden?
+  answer_template: Unser Standard-SLA sieht eine Reaktionszeit von unter 2 Stunden
+    für kritische Vorfälle vor. Die genaue Zeit hängt von Ihrem Service-Level ab,
+    das wir gerne mit Ihnen abstimmen.
+- question: Sind Ihre Services DSGVO-konform?
+  answer_template: Ja, absoluter Fokus auf DSGVO-Compliance ist Standard für alle
+    unsere Dienstleistungen in Österreich. Wir arbeiten ausschließlich mit zertifizierten
+    Partnern und Rechenzentren in der EU.
+- question: Welche IT-Dienste sind für ein kleines Unternehmen (KMU) in Österreich
+    sinnvoll?
+  answer_template: Für KMUs empfehlen wir oft einen Managed-Service-Ansatz, der IT-Support,
+    Sicherheitsüberwachung und Cloud-Backup kombiniert. So erhalten Sie professionelle
+    IT ohne eigene Abteilung.
+- question: Können Sie auch unsere bestehende, veraltete IT-Infrastruktur modernisieren?
+  answer_template: Ja, Modernisierung veralteter Systeme ist eine unserer Kernkompetenzen.
+    Wir analysieren Ihre aktuelle Lage und erstellen einen schrittweisen Migrationsplan,
+    um Betriebsunterbrechungen zu minimieren.
+- question: Wie transparent sind Ihre Kosten? Gibt es versteckte Gebühren?
+  answer_template: Wir legen großen Wert auf transparente, monatliche Fixkosten. Alle
+    Leistungen sind in Ihrem individuellen Servicevertrag klar definiert. Zusätzliche
+    Kosten entstehen nur bei explizit vereinbarten Änderungen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten für IT-Services fragt.
+  script: Verständliche Frage. Unsere Preise beginnen bei einem transparenten Monatspaket
+    ab 299€ für KMU-Basis-IT. Der genaue Preis hängt stark von Ihren spezifischen
+    Anforderungen ab. Um Ihnen ein maßgeschneidertes Angebot zu erstellen, kann ich
+    gerne einige kurze Fragen zu Ihrer aktuellen IT-Situation stellen. Passt das?
+  goal: Das Gespräch von einem Preis- zu einem Bedarfsgespräch lenken und Qualifikationsfragen
+    stellen.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber wie Accenture oder einen lokalen Anbieter
+    nennt.
+  script: Vielen Dank für die Information. Viele unserer Kunden vergleichen verschiedene
+    Anbieter. Unser Fokus in Österreich liegt auf einer persönlichen Betreuung und
+    maßgeschneiderten Lösungen für KMUs und den Mittelstand, oft mit schnelleren Entscheidungswegen
+    und fester Ansprechpartner:in. Was ist Ihnen bei einem IT-Partner besonders wichtig?
+  goal: Unsere Differenzierung betonen und die Kernwerte des Kunden erfragen.
+- trigger: objection_complexity
+  situation: Wenn der Kunde Bedenken wegen der Komplexität oder Störung des Betriebs
+    äußert.
+  script: Das ist ein sehr berechtigtes Anliegen. Wir setzen auf einen klar strukturierten,
+    etappenweisen Prozess mit intensiver Kommunikation. So behalten Sie stets die
+    Kontrolle, und wir minimieren Unterbrechungen. Darf ich Ihnen kurz unser bewährtes
+    Vorgehensmodell für reibungslose IT-Projekte erklären?
+  goal: Vertrauen aufbauen und den strukturierten Prozess als Lösung für das Komplexitätsproblem
+    präsentieren.
+competitors:
+- name: Accenture Österreich
+  positioning: Globaler IT-Beratungsriese für Großunternehmen.
+  strengths:
+  - Tiefe Expertise in komplexen Großprojekten
+  - Globales Netzwerk
+  - Breites Service-Portfolio
+  weaknesses:
+  - Höhere Kosten
+  - Weniger persönliche Betreuung für KMUs
+  - Längere Entscheidungswege
+  our_differentiation: Persönliche, agile Betreuung mit festen Ansprechpartnern speziell
+    für österreichische KMUs und Mittelstand, schneller und kosteneffizienter.
+- name: Catalysts
+  positioning: Etablierter österreichischer Software-Entwickler und IT-Dienstleister.
+  strengths:
+  - Starker lokaler Markenname
+  - Fokus auf Software-Entwicklung
+  - Gute Referenzen in Österreich
+  weaknesses:
+  - Schwerpunkt auf Entwicklung, weniger auf volles Managed Service
+  - Eventuell weniger breites Infrastruktur-Know-how
+  our_differentiation: Wir bieten ein umfassenderes Full-Service-Paket von Infrastruktur
+    über Sicherheit bis Support, nicht nur reine Software-Entwicklung.
+- name: Local IT Systemhäuser (z.B. in Bundesländern)
+  positioning: Kleine, regionale Anbieter mit starkem lokalen Fokus.
+  strengths:
+  - Sehr kurze Wege und persönlicher Kontakt
+  - Tiefe Ortskenntnis
+  - Flexibilität
+  weaknesses:
+  - Begrenzte Ressourcen für große Projekte
+  - Möglicherweise eingeschränktes Spezialwissen (z.B. Cloud, Security)
+  our_differentiation: Kombination aus persönlicher Betreuung *und* der Skalierbarkeit,
+    dem Spezialwissen und den Sicherheitsstandards eines größeren Anbieters.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 299
+  roi_examples:
+  - scenario: Automatisierung von Helpdesk-Anfragen und Terminvereinbarung für ein
+      KMU mit 50 Mitarbeitern
+    monthly_cost: 150
+    monthly_savings: 1200
+    payback_months: 0.5
+  value_anchors:
+  - Durchschnittlich 40% Zeitersparnis im Vertrieb durch automatisierte Lead-Qualifizierung.
+  - Reduzierung von Downtime-Kosten durch proaktive IT-Überwachung um bis zu 70%.
+  - DSGVO-Compliance als Standard inklusive – vermeiden Sie hohe Strafzahlungen.
+market_context:
+  market_size: Ca. 8-10 Mrd. EUR jährlich (IT-Dienstleistungen in Österreich)
+  growth_rate: 4-6% YoY
+  key_trends:
+  - Starke Nachfrage nach Cloud-Migration und Hybrid-Cloud-Lösungen
+  - Cybersicherheit ist Top-Priorität für Unternehmen jeder Größe
+  - KI und Automatisierung gewinnen auch im IT-Service-Management an Bedeutung
+  - Nachhaltigkeit und 'Green IT' werden immer wichtiger
+  seasonality:
+    high:
+    - September-November (Budgetplanung neues Jahr)
+    - Januar-März (Umsetzung neuer Budgets)
+    low:
+    - Juli-August (Sommerferien)
+    - Dezember (Weihnachtsferien)
+typical_objections:
+- objection: Das ist zu teuer für unser Unternehmen.
+  response: Das verstehe ich. Lassen Sie uns gemeinsam schauen, wo wir starten können.
+    Oft reicht ein kleiner, aber wirkungsvoller Einstieg – wie die Absicherung Ihrer
+    wichtigsten Daten. So sehen Sie schnell den Wert, bevor Sie weiter investieren.
+- objection: Wir haben bereits einen IT-Mitarbeiter, der das macht.
+  response: Das ist sehr gut! Unsere Services sind dann oft eine ideale Ergänzung,
+    um Ihr internes Team zu entlasten, bei Fachthemen wie Sicherheit zu unterstützen
+    oder 24/7-Überwachung zu bieten. So kann sich Ihr Mitarbeiter auf strategischere
+    Aufgaben konzentrieren.
+- objection: Wir hatten schon schlechte Erfahrungen mit IT-Dienstleistern.
+  response: Das tut mir leid zu hören. Transparenz und klare Kommunikation sind uns
+    deshalb extrem wichtig. Wir legen großen Wert auf feste Ansprechpartner und detaillierte
+    Service-Level-Agreements, damit Erwartungen von Anfang an klar sind.
+meta:
+  id: it_services
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

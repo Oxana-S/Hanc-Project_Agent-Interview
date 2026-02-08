@@ -1,0 +1,254 @@
+pain_points:
+- description: High customer churn rates due to inconsistent service quality and support
+    wait times.
+  severity: high
+  solution_hint: AI voice agents can provide 24/7 instant support, reducing wait times
+    and improving customer satisfaction.
+- description: Escalating operational costs for customer support staff, especially
+    in urban centers with high wages.
+  severity: high
+  solution_hint: Automate routine inquiries with AI voice agents to lower labor costs
+    and free up human agents for complex issues.
+- description: Frequent network outages and service disruptions, leading to customer
+    complaints and loss of trust.
+  severity: medium
+  solution_hint: Use AI voice agents for proactive outage notifications and automated
+    troubleshooting guidance to minimize downtime impact.
+- description: Compliance with PIPEDA regulations increasing administrative burden
+    and risk of data breaches.
+  severity: medium
+  solution_hint: Implement AI voice agents with built-in compliance checks to ensure
+    secure handling of customer data and reduce manual oversight.
+- description: Challenges in providing reliable connectivity in rural and remote areas
+    of Canada.
+  severity: medium
+  solution_hint: AI voice agents can handle service inquiries and scheduling for rural
+    expansions, improving customer communication without on-site staff.
+- description: Billing errors and disputes causing customer frustration and increased
+    support calls.
+  severity: low
+  solution_hint: Deploy AI voice agents to automate billing inquiries and resolution
+    processes, reducing errors and call volumes.
+typical_services:
+- Mobile phone plans
+- High-speed internet services
+- Home phone services
+- Cable TV and streaming bundles
+- Business internet solutions
+- VoIP services for enterprises
+- Cloud and data storage services
+- IoT connectivity solutions
+- International roaming packages
+- Network security services
+recommended_functions:
+- name: Automated call handling
+  priority: high
+  reason: Reduces wait times and handles high call volumes during peak periods, common
+    in Canadian telecom.
+- name: Billing and payment support
+  priority: high
+  reason: Addresses frequent billing inquiries and helps resolve disputes quickly,
+    improving customer retention.
+- name: Technical troubleshooting assistant
+  priority: medium
+  reason: Provides instant guidance for common network issues, reducing the need for
+    on-site visits in remote areas.
+- name: Sales and upgrade promotions
+  priority: medium
+  reason: Captures upsell opportunities during customer interactions, boosting revenue
+    in a competitive market.
+- name: Appointment scheduling for installations
+  priority: low
+  reason: Streamlines service setup processes, especially useful for rural expansions
+    with limited staff.
+- name: Compliance monitoring for PIPEDA
+  priority: high
+  reason: Ensures data privacy adherence in all customer interactions, mitigating
+    legal risks in Canada.
+typical_integrations:
+- name: CRM systems
+  examples:
+  - Salesforce
+  - HubSpot
+  - Microsoft Dynamics
+  priority: high
+- name: Billing and accounting software
+  examples:
+  - QuickBooks
+  - SAP
+  - Oracle Netsuite
+  priority: high
+- name: Network management tools
+  examples:
+  - SolarWinds
+  - Cisco Prime
+  - proprietary systems
+  priority: medium
+- name: Customer support platforms
+  examples:
+  - Zendesk
+  - Freshdesk
+  - ServiceNow
+  priority: medium
+- name: Data analytics platforms
+  examples:
+  - Tableau
+  - Google Analytics
+  - IBM Cognos
+  priority: low
+industry_faq:
+- question: What is the coverage area for your mobile services in rural Canada?
+  answer_template: Our services cover [specific regions], and we're expanding to more
+    rural areas. For detailed coverage maps, I can connect you with our support team
+    or visit our website.
+- question: How do you ensure my data is protected under PIPEDA?
+  answer_template: We comply with PIPEDA by using encrypted systems and secure AI
+    agents that handle data responsibly. All interactions are logged and monitored
+    for privacy.
+- question: What are the contract terms for your business internet plans?
+  answer_template: Business plans typically have 1-3 year contracts with flexible
+    options. I can provide details based on your needs or schedule a consultation.
+- question: Can I bundle mobile, internet, and TV services for a discount?
+  answer_template: Yes, we offer bundled packages that can save you up to 20%. Let
+    me check current promotions and tailor a plan for you.
+- question: How do you handle service outages in remote areas?
+  answer_template: We have proactive monitoring and AI agents that notify customers
+    of outages and estimated repair times, with support available 24/7.
+- question: What is the process for upgrading my data plan?
+  answer_template: Upgrades can be done instantly through our AI system or app. I
+    can assist you with selecting a new plan and confirming the changes.
+sales_scripts:
+- trigger: cost_savings_inquiry
+  situation: When a prospect asks about reducing operational expenses.
+  script: Many Canadian telecoms save up to 30% on support costs by using our AI voice
+    agents to handle routine calls. Would you like to see a customized ROI estimate
+    for your business?
+  goal: Demonstrate cost savings and secure a follow-up meeting.
+- trigger: compliance_concern
+  situation: When a prospect expresses worry about PIPEDA compliance.
+  script: Our AI agents are designed with built-in PIPEDA compliance features, ensuring
+    secure data handling. We've helped companies like yours avoid fines and build
+    trust. Can I share a case study?
+  goal: Address compliance fears and highlight our differentiation.
+- trigger: service_quality_issue
+  situation: When a prospect mentions high customer churn or poor service.
+  script: By automating support with our AI, you can reduce wait times by 50% and
+    improve customer satisfaction scores. Let's discuss how to implement this in your
+    call center.
+  goal: Offer a solution to improve service quality and reduce churn.
+- trigger: rural_expansion_challenge
+  situation: When a prospect is struggling with serving remote areas.
+  script: Our AI voice agents can manage customer inquiries in rural regions without
+    on-site staff, cutting costs and improving response times. Interested in a pilot
+    program?
+  goal: Show how we can help expand services efficiently.
+competitors:
+- name: Bell Canada
+  positioning: Market leader with extensive national coverage.
+  strengths:
+  - Strong brand recognition
+  - Comprehensive service portfolio
+  - Advanced network infrastructure
+  weaknesses:
+  - Higher pricing
+  - Customer service complaints
+  - Slow innovation in rural areas
+  our_differentiation: Our AI solutions offer more flexible and cost-effective customer
+    support, with better integration for small to medium businesses.
+- name: Rogers Communications
+  positioning: Major player focusing on urban and wireless services.
+  strengths:
+  - Robust wireless network
+  - Aggressive marketing
+  - Bundled offerings
+  weaknesses:
+  - Limited rural presence
+  - Inconsistent billing systems
+  - High customer turnover
+  our_differentiation: We provide scalable AI agents that enhance billing accuracy
+    and support, reducing operational gaps.
+- name: Telus
+  positioning: Known for customer service and technology adoption.
+  strengths:
+  - High customer satisfaction
+  - IoT and digital health initiatives
+  - Strong corporate ethics
+  weaknesses:
+  - Premium pricing
+  - Slower rollout in some regions
+  - Complex service tiers
+  our_differentiation: Our AI voice agents are more affordable and easier to deploy,
+    with a focus on automating routine tasks to boost efficiency.
+- name: Local AI service providers
+  positioning: Niche players offering customized automation solutions.
+  strengths:
+  - Tailored approaches
+  - Local market knowledge
+  - Lower entry costs
+  weaknesses:
+  - Limited scalability
+  - Less experience with telecom compliance
+  - Fewer integrations
+  our_differentiation: We specialize in telecom with pre-built PIPEDA compliance and
+    proven integrations, ensuring reliability and faster implementation.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating customer support for a medium-sized telecom
+    monthly_cost: 2000
+    monthly_savings: 3000
+    payback_months: 3
+  - scenario: Reducing billing error calls for a small business
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Save up to 40% on support labor costs in high-wage Canadian markets.
+  - Achieve PIPEDA compliance without additional staff training.
+  - Improve customer retention by 15% through faster response times.
+market_context:
+  market_size: Approximately 50 billion CAD annually
+  growth_rate: 3-4% YoY
+  key_trends:
+  - Rapid adoption of 5G technology across urban centers
+  - Increasing demand for fiber-optic internet in suburban areas
+  - Growth in IoT and smart home services
+  - Shift towards digital and self-service platforms
+  seasonality:
+    high:
+    - Q3 for back-to-school promotions
+    - Q4 for holiday bundles
+    low:
+    - Q1 post-holiday slowdown
+    - Summer months for some rural services
+typical_objections:
+- objection: We already have a customer service team in place.
+  response: Our AI agents complement your team by handling routine calls, freeing
+    them for complex issues and reducing burnout. It's about enhancing, not replacing.
+- objection: The initial cost is too high for our budget.
+  response: With entry points from 500 CAD and ROI in as little as 2 months, the investment
+    pays for itself quickly. Let me show you a tailored cost-benefit analysis.
+- objection: We're concerned about data privacy with AI handling calls.
+  response: Our systems are PIPEDA-compliant and use end-to-end encryption. We can
+    provide audit trails and compliance reports to ensure peace of mind.
+- objection: Implementation might disrupt our current operations.
+  response: We offer phased rollouts with minimal disruption, and our support team
+    ensures a smooth transition. Many clients see improvements within weeks.
+meta:
+  id: telecom
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

@@ -1,0 +1,233 @@
+pain_points:
+- description: Altos costos de adquisición de jugadores debido a la competencia feroz
+    en el mercado español.
+  severity: high
+  solution_hint: El agente de voz IA puede automatizar campañas de marketing personalizadas
+    para segmentar audiencias de manera eficiente y reducir costos.
+- description: Dificultades en la retención de jugadores, con altas tasas de abandono
+    después de la descarga inicial.
+  severity: high
+  solution_hint: Implementar recordatorios y ofertas personalizadas mediante llamadas
+    automáticas para aumentar la engagement.
+- description: Cumplimiento normativo complejo, incluyendo GDPR y regulaciones específicas
+    de juegos de azar en España.
+  severity: high
+  solution_hint: El agente puede proporcionar asistencia automatizada para verificar
+    la edad y gestionar consentimientos de manera compliant.
+- description: Problemas con procesamiento de pagos locales, como rechazos de tarjetas
+    o falta de integración con métodos españoles.
+  severity: medium
+  solution_hint: Integrar con pasarelas de pago locales y usar el agente para resolver
+    disputas de pagos en tiempo real.
+- description: Localización insuficiente de contenidos, lo que afecta la experiencia
+    del jugador en español.
+  severity: medium
+  solution_hint: Ofrecer soporte en español nativo a través del agente de voz para
+    mejorar la satisfacción del cliente.
+- description: Soporte técnico limitado fuera del horario laboral, causando frustración
+    en jugadores.
+  severity: low
+  solution_hint: Proporcionar asistencia 24/7 con el agente de voz para resolver problemas
+    comunes rápidamente.
+typical_services:
+- Desarrollo de videojuegos para móviles y consolas
+- Marketing digital y publicidad en redes sociales
+- Gestión de comunidades y soporte al jugador
+- Monetización a través de microtransacciones y suscripciones
+- Localización y traducción de juegos al español
+- Análisis de datos y business intelligence para jugadores
+- Servicios de streaming y organización de eventos esports
+- Optimización de tiendas de aplicaciones (ASO)
+- Consultoría en compliance y regulaciones
+- Soporte técnico y mantenimiento de servidores
+recommended_functions:
+- name: Soporte al cliente automatizado
+  priority: high
+  reason: Reduce la carga de trabajo del equipo humano y mejora la satisfacción con
+    respuestas rápidas en español.
+- name: Ventas y upselling de contenidos
+  priority: high
+  reason: Aumenta los ingresos mediante recomendaciones personalizadas basadas en
+    el comportamiento del jugador.
+- name: Recordatorios de eventos y promociones
+  priority: medium
+  reason: Mejora la retención al mantener a los jugadores informados y engaged.
+- name: Gestión de quejas y reembolsos
+  priority: medium
+  reason: Acelera la resolución de problemas y reduce el riesgo de pérdida de clientes.
+- name: Recopilación de feedback post-juego
+  priority: low
+  reason: Proporciona insights valiosos para mejorar los juegos y servicios.
+- name: Programación de citas para soporte técnico avanzado
+  priority: low
+  reason: Optimiza el tiempo del equipo especializado y mejora la experiencia del
+    usuario.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Holded
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - Redsys
+  - PayPal
+  - Stripe
+  priority: high
+- name: Herramientas de analítica
+  examples:
+  - Google Analytics
+  - Mixpanel
+  - Tableau
+  priority: medium
+- name: Plataformas de redes sociales
+  examples:
+  - Facebook
+  - Instagram
+  - Twitter
+  priority: medium
+- name: Motores de juego
+  examples:
+  - Unity
+  - Unreal Engine
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta desarrollar un videojuego en España?
+  answer_template: El costo varía según la complejidad, pero para un juego móvil básico,
+    puede partir de 10.000 EUR, mientras que proyectos AAA pueden superar los 100.000
+    EUR. Podemos ayudarte a optimizar tu presupuesto.
+- question: ¿Cómo puedo mejorar la retención de jugadores?
+  answer_template: Implementando estrategias de engagement personalizadas, como notificaciones
+    push y eventos especiales, que nuestro agente de voz puede gestionar automáticamente.
+- question: ¿Es necesario cumplir con el GDPR para juegos en España?
+  answer_template: Sí, el GDPR es obligatorio en la UE. Nuestros servicios incluyen
+    asistencia para garantizar el cumplimiento, especialmente en el manejo de datos
+    de jugadores.
+- question: ¿Qué métodos de pago son más populares en España?
+  answer_template: Tarjetas de crédito/débito, PayPal y transferencias bancarias son
+    comunes. Integramos con pasarelas locales para maximizar las conversiones.
+- question: ¿Ofrecen soporte en español las 24 horas?
+  answer_template: Sí, nuestro agente de voz IA proporciona soporte en español nativo
+    24/7 para resolver consultas rápidamente.
+- question: ¿Cómo se miden los resultados de las campañas de marketing?
+  answer_template: Usamos herramientas de analítica avanzada para trackear KPIs como
+    CTR, CAC y LTV, y ajustamos estrategias en tiempo real.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de nuestros servicios de desarrollo
+    o marketing.
+  script: Hola, entiendo que quieres conocer los costos. Nuestros precios parten desde
+    5.000 EUR para servicios básicos, pero podemos personalizar una solución según
+    tus necesidades específicas. ¿Te gustaría que te explique más detalles?
+  goal: Educar al cliente sobre la flexibilidad de precios y generar interés en una
+    consulta personalizada.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre soporte técnico o gestión de comunidades.
+  script: Gracias por tu interés. Ofrecemos soporte técnico 24/7 y gestión de comunidades
+    en español, lo que puede reducir tus costos operativos hasta un 30%. ¿Quieres
+    que te cuente cómo funciona?
+  goal: Destacar los beneficios de costo-eficiencia y preparar para una demostración.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por regulaciones como el GDPR.
+  script: Comprendo tu preocupación. Nos especializamos en compliance para el sector
+    gaming en España, asegurando que todos los procesos cumplan con el GDPR. Podemos
+    integrar esto en tu proyecto sin problemas. ¿Te interesa saber más?
+  goal: Tranquilizar al cliente y posicionarnos como expertos en compliance.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona a un competidor.
+  script: Sí, conozco a ese competidor. A diferencia de ellos, ofrecemos soluciones
+    más personalizadas con soporte en español nativo y integraciones locales, lo que
+    mejora la experiencia del jugador. ¿Te gustaría comparar opciones?
+  goal: Diferenciar nuestros servicios y mantener la conversación enfocada en valor.
+competitors:
+- name: Gameleon
+  positioning: Desarrollador local de juegos casuales para móviles.
+  strengths:
+  - Buena reputación en el mercado español
+  - precios competitivos
+  weaknesses:
+  - Soporte limitado en horarios
+  - falta de integraciones avanzadas
+  our_differentiation: Ofrecemos soporte 24/7 con IA y integraciones completas para
+    escalabilidad.
+- name: Social Point
+  positioning: Estudio internacional con fuerte presencia en España, enfocado en juegos
+    sociales.
+  strengths:
+  - Grandes recursos
+  - marca reconocida
+  weaknesses:
+  - Menos personalización para clientes pequeños
+  - alto costo
+  our_differentiation: Proporcionamos soluciones a medida y accesibles para empresas
+    de todos los tamaños.
+- name: King
+  positioning: Gigante global con operaciones en España, conocido por juegos como
+    Candy Crush.
+  strengths:
+  - Alcance masivo
+  - tecnología avanzada
+  weaknesses:
+  - Poca atención al mercado local
+  - servicios genéricos
+  our_differentiation: Enfocamos en la localización y soporte en español para conectar
+    mejor con los jugadores españoles.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de soporte al cliente para un juego con 10,000 jugadores
+      activos.
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Reducción de costos operativos hasta un 40% con soporte automatizado.
+  - Aumento de ingresos en un 20% mediante upselling personalizado.
+  - Cumplimiento garantizado con GDPR sin costos adicionales.
+market_context:
+  market_size: 2.5 mil millones EUR anuales
+  growth_rate: 8% YoY
+  key_trends:
+  - Crecimiento de los juegos móviles y esports.
+  - Mayor enfoque en la localización y contenido en español.
+  - Aumento de regulaciones sobre protección de datos y juegos de azar.
+  seasonality:
+    high:
+    - Navidad
+    - verano
+    low:
+    - Enero
+    - después de temporadas festivas
+typical_objections:
+- objection: Es muy caro para mi presupuesto.
+  response: Entiendo, pero nuestros servicios están diseñados para ser escalables.
+    Podemos empezar con un plan básico y ajustarlo según tus resultados, asegurando
+    un ROI positivo.
+- objection: Ya tengo un equipo interno que maneja esto.
+  response: Genial, nuestro agente de voz puede complementar a tu equipo, liberándolos
+    de tareas repetitivas para que se enfoquen en estrategias más importantes.
+- objection: No estoy seguro de que funcione en el mercado español.
+  response: Nos especializamos en España, con integraciones locales y soporte en español.
+    Tenemos casos de éxito con estudios nacionales que podemos compartir.
+- objection: Me preocupa la seguridad de los datos con IA.
+  response: Cumplimos estrictamente con el GDPR y utilizamos encriptación de última
+    generación. La seguridad de los datos de tus jugadores es nuestra prioridad.
+meta:
+  id: gaming
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

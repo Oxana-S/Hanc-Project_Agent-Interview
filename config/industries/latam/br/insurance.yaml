@@ -1,0 +1,251 @@
+pain_points:
+- description: Altos custos operacionais com atendimento manual e processamento de
+    sinistros.
+  severity: high
+  solution_hint: Automatizar atendimento e processamento com IA para reduzir tempo
+    e custos.
+- description: Dificuldade em cumprir a LGPD (Lei Geral de Proteção de Dados) no tratamento
+    de dados dos clientes.
+  severity: high
+  solution_hint: Integrar agentes de voz com sistemas seguros que garantam conformidade
+    automática.
+- description: Alta taxa de abandono de chamadas devido a longos tempos de espera.
+  severity: medium
+  solution_hint: Implementar atendimento 24/7 com respostas instantâneas via IA.
+- description: Fraudes em sinistros, aumentando prejuízos.
+  severity: medium
+  solution_hint: Usar IA para análise preditiva e detecção de padrões suspeitos em
+    sinistros.
+- description: Baixa retenção de clientes por falta de personalização no serviço.
+  severity: medium
+  solution_hint: Personalizar interações com dados históricos do cliente via IA.
+- description: Complexidade na explicação de termos e coberturas aos clientes.
+  severity: low
+  solution_hint: Agentes de voz podem explicar de forma clara e simplificada em português.
+- description: Ineficiência na captação de leads e vendas por canais tradicionais.
+  severity: medium
+  solution_hint: Automatizar prospecção e qualificação de leads com chamadas inteligentes.
+typical_services:
+- Seguro Automóvel
+- Seguro Residencial
+- Seguro de Vida
+- Seguro Saúde
+- Seguro Empresarial
+- Seguro de Responsabilidade Civil
+- Seguro de Viagem
+- Seguro para Condomínios
+- Seguro para Pequenas Empresas
+- Seguro para Agricultura
+recommended_functions:
+- name: Atendimento Automático 24/7
+  priority: high
+  reason: Reduz filas de espera e melhora a experiência do cliente.
+- name: Agendamento de Consultas e Sinistros
+  priority: high
+  reason: Otimiza processos internos e aumenta eficiência.
+- name: Explicação de Coberturas e Termos
+  priority: medium
+  reason: Ajuda clientes a entenderem melhor os produtos, reduzindo dúvidas.
+- name: Processamento Inicial de Sinistros
+  priority: high
+  reason: Acelera o tempo de resposta e reduz custos operacionais.
+- name: Prospecção e Qualificação de Leads
+  priority: medium
+  reason: Aumenta a base de clientes com menor esforço manual.
+- name: Lembretes de Pagamento e Renovação
+  priority: low
+  reason: Melhora a retenção e reduz inadimplência.
+- name: Integração com Sistemas de CRM
+  priority: high
+  reason: Garante dados atualizados e personalização nas interações.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - TOTVS RM
+  - SAP CRM
+  - Salesforce
+  priority: high
+- name: Sistemas de Gestão de Sinistros
+  examples:
+  - SISCOAF
+  - sistemas proprietários
+  priority: high
+- name: Plataformas de Pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - Cielo
+  priority: medium
+- name: Software de Contabilidade
+  examples:
+  - TOTVS Protheus
+  - Contmatic
+  priority: low
+- name: Sistemas de Call Center
+  examples:
+  - Asterisk
+  - Avaya
+  - soluções locais
+  priority: medium
+- name: Ferramentas de Análise de Dados
+  examples:
+  - Power BI
+  - Tableau
+  - soluções personalizadas
+  priority: medium
+industry_faq:
+- question: Como posso reduzir o custo do meu seguro?
+  answer_template: Oferecemos planos personalizados e descontos por bom histórico.
+    Podemos analisar seu perfil para encontrar a melhor opção.
+- question: Quais documentos são necessários para abrir um sinistro?
+  answer_template: Geralmente, são necessários documentos de identificação, comprovante
+    do ocorrido e fotos. Nosso agente pode guiar você passo a passo.
+- question: Meu seguro cobre danos por enchentes?
+  answer_template: Depende da cobertura contratada. Vamos verificar sua apólice e
+    explicar os detalhes em português claro.
+- question: Como funciona a renovação automática?
+  answer_template: A renovação é feita automaticamente, mas enviaremos lembretes antes.
+    Você pode ajustar a qualquer momento.
+- question: Posso cancelar meu seguro a qualquer momento?
+  answer_template: Sim, mas pode haver taxas dependendo do contrato. Recomendamos
+    conversar com nosso agente para entender as condições.
+- question: O que é a LGPD e como afeta meus dados?
+  answer_template: A LGPD protege seus dados pessoais. Nossos sistemas são seguros
+    e cumprem todas as regulamentações para sua privacidade.
+- question: Como faço para adicionar um novo veículo ao meu seguro?
+  answer_template: Basta nos informar os dados do veículo. Podemos atualizar sua apólice
+    rapidamente via telefone ou online.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços no início da conversa.
+  script: Olá! Entendo que o preço é importante. Oferecemos soluções personalizadas
+    a partir de R$ 50 por mês. Posso ajudar a calcular um plano ideal para você?
+  goal: Engajar o cliente e apresentar um ponto de entrada acessível.
+- trigger: compliance_concern
+  situation: Quando o cliente expressa preocupação com a LGPD ou segurança de dados.
+  script: Sua preocupação é válida. Nossos agentes de voz são integrados a sistemas
+    seguros que cumprem a LGPD, garantindo total proteção dos seus dados.
+  goal: Tranquilizar o cliente e destacar conformidade regulatória.
+- trigger: service_inquiry
+  situation: Quando o cliente pergunta sobre serviços específicos, como seguro residencial.
+  script: Oferecemos seguros residenciais com coberturas completas, desde incêndio
+    até roubo. Podemos personalizar conforme suas necessidades. Gostaria de saber
+    mais?
+  goal: Educar o cliente sobre opções e gerar interesse.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente, como Porto Seguro.
+  script: Entendo que há boas opções no mercado. Nos diferenciamos com atendimento
+    24/7 via IA, preços competitivos e foco em personalização. Vamos comparar?
+  goal: Diferenciação positiva e persuasão para considerar nossa oferta.
+- trigger: urgency_need
+  situation: Quando o cliente precisa de um seguro rapidamente, como para um novo
+    carro.
+  script: Podemos emitir sua apólice em minutos através do nosso sistema automatizado.
+    Basta fornecer alguns dados, e já estará protegido.
+  goal: Fechar venda rápida demonstrando eficiência.
+competitors:
+- name: Porto Seguro
+  positioning: Líder no segmento de seguros automotivos e com forte presença nacional.
+  strengths:
+  - Marca reconhecida
+  - rede ampla de atendimento
+  - variedade de produtos
+  weaknesses:
+  - Custos operacionais altos
+  - tempos de espera em atendimento
+  our_differentiation: Atendimento mais rápido e personalizado com IA, reduzindo custos
+    e melhorando experiência.
+- name: Bradesco Seguros
+  positioning: Grande player com integração bancária e foco em seguros de vida e saúde.
+  strengths:
+  - Rede de clientes do banco
+  - produtos bundle
+  - solidez financeira
+  weaknesses:
+  - Processos burocráticos
+  - falta de inovação tecnológica
+  our_differentiation: Soluções ágeis e automatizadas, com foco em eficiência e conformidade
+    LGPD.
+- name: Itaú Seguros
+  positioning: Concorrente forte em seguros empresariais e digitais.
+  strengths:
+  - Plataformas digitais avançadas
+  - atendimento online
+  weaknesses:
+  - Limitações em atendimento humano
+  - alto preço para PMEs
+  our_differentiation: Agentes de voz acessíveis 24/7, com preços competitivos para
+    pequenas empresas.
+- name: SulAmérica
+  positioning: Especializada em seguros saúde e com forte atuação regional.
+  strengths:
+  - Expertise em saúde
+  - rede de hospitais
+  weaknesses:
+  - Foco restrito a certos segmentos
+  - lentidão em sinistros
+  our_differentiation: Automatização completa do ciclo de sinistros, acelerando processos
+    e reduzindo custos.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Redução de custos operacionais em atendimento ao cliente.
+    monthly_cost: 500
+    monthly_savings: 2000
+    payback_months: 3
+  - scenario: Aumento na conversão de vendas via prospecção automatizada.
+    monthly_cost: 300
+    monthly_savings: 1500
+    payback_months: 2
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação.
+  - Aumente a satisfação do cliente com atendimento instantâneo 24/7.
+  - Cumpra a LGPD sem esforço adicional com sistemas integrados.
+market_context:
+  market_size: Estimado em R$ 200 bilhões anuais
+  growth_rate: 5% ao ano
+  key_trends:
+  - Crescente digitalização e adoção de insurtechs.
+  - Maior foco em conformidade com LGPD.
+  - Demanda por seguros personalizados e acessíveis.
+  seasonality:
+    high:
+    - janeiro (renovações de veículos)
+    - dezembro (férias e viagens)
+    low:
+    - julho (período de férias escolares)
+    - março (pós-carnaval)
+typical_objections:
+- objection: É muito caro para minha empresa pequena.
+  response: Entendo. Oferecemos planos escaláveis a partir de R$ 50 por mês, com ROI
+    rápido na redução de custos operacionais.
+- objection: Não confio em atendimento por voz automatizada.
+  response: Nossos agentes são treinados para fornecer respostas precisas e humanizadas,
+    com suporte humano sempre que necessário.
+- objection: Já tenho um seguro com um concorrente estabelecido.
+  response: Que bom! Podemos oferecer uma comparação gratuita para mostrar como nossa
+    solução pode ser mais eficiente e econômica.
+- objection: Preciso de algo rápido, mas tenho medo de burocracia.
+  response: Nosso processo é totalmente automatizado, sem burocracia. Podemos emitir
+    sua apólice em minutos, com conformidade LGPD garantida.
+- objection: A IA vai substituir funcionários e causar desemprego.
+  response: A IA complementa o trabalho humano, liberando equipes para tarefas mais
+    estratégicas e melhorando o serviço ao cliente.
+meta:
+  id: insurance
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

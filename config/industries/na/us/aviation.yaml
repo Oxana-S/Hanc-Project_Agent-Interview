@@ -1,0 +1,228 @@
+pain_points:
+- description: High operational costs from fuel, maintenance, and labor, straining
+    profitability.
+  severity: high
+  solution_hint: AI voice agents can automate routine inquiries and scheduling, reducing
+    labor costs and optimizing resource allocation.
+- description: Complex regulatory compliance with FAA, CCPA, and HIPAA for passenger
+    data, leading to administrative burdens.
+  severity: high
+  solution_hint: Voice agents can handle compliance-related queries and document retrieval,
+    ensuring consistent adherence to regulations.
+- description: Frequent flight delays and cancellations causing passenger dissatisfaction
+    and increased customer service load.
+  severity: medium
+  solution_hint: AI voice agents provide real-time updates and rebooking assistance,
+    improving passenger experience and reducing call center volume.
+- description: Inefficient crew scheduling and communication, resulting in overtime
+    costs and operational disruptions.
+  severity: medium
+  solution_hint: Voice-based scheduling assistants can streamline crew coordination
+    and notify changes instantly.
+- description: Cybersecurity threats targeting flight systems and passenger data,
+    requiring robust protection measures.
+  severity: high
+  solution_hint: AI agents can monitor for anomalies and provide secure voice-based
+    authentication for system access.
+- description: Inventory management challenges for aircraft parts, leading to maintenance
+    delays and increased downtime.
+  severity: medium
+  solution_hint: Voice agents can track inventory levels and automate reordering processes,
+    ensuring parts availability.
+typical_services:
+- Flight booking and reservation management
+- Passenger check-in and boarding assistance
+- Baggage handling and tracking services
+- Aircraft maintenance and repair coordination
+- Crew scheduling and training programs
+- In-flight catering and amenity services
+- Cargo and freight logistics
+- Charter flight operations
+- Aviation insurance and risk management
+- Air traffic control support services
+recommended_functions:
+- name: Voice-based booking and customer service bot
+  priority: high
+  reason: Reduces call center costs and improves passenger satisfaction by handling
+    common inquiries 24/7.
+- name: Flight status and delay notification system
+  priority: high
+  reason: Critical for managing passenger communications during disruptions, enhancing
+    operational transparency.
+- name: Maintenance schedule and inventory voice assistant
+  priority: medium
+  reason: Optimizes maintenance workflows and minimizes aircraft downtime through
+    automated reminders and tracking.
+- name: Crew communication and scheduling coordinator
+  priority: medium
+  reason: Streamlines crew management, reduces errors, and ensures compliance with
+    labor regulations.
+- name: Compliance and safety documentation voice helper
+  priority: high
+  reason: Assists with CCPA and HIPAA compliance by securely managing passenger data
+    and providing audit trails.
+- name: Emergency response and coordination voice agent
+  priority: low
+  reason: Enhances safety protocols by enabling quick voice commands for crisis management.
+typical_integrations:
+- name: Reservation and distribution systems
+  examples:
+  - Sabre
+  - Amadeus
+  - Travelport
+  priority: high
+- name: Flight operations and maintenance software
+  examples:
+  - Jeppesen
+  - FlightDocs
+  - Maintenix
+  priority: high
+- name: Customer relationship management (CRM) systems
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - HubSpot
+  priority: medium
+- name: Enterprise resource planning (ERP) systems
+  examples:
+  - SAP
+  - Oracle
+  - Infor
+  priority: medium
+- name: Communication and collaboration tools
+  examples:
+  - Slack
+  - Microsoft Teams
+  - Zoom
+  priority: low
+industry_faq:
+- question: How can AI voice agents help reduce operational costs in aviation?
+  answer_template: Our AI voice agents automate routine tasks like booking changes
+    and status updates, cutting labor costs by up to 30% and improving efficiency.
+- question: Are your solutions compliant with FAA and data privacy laws like CCPA
+    and HIPAA?
+  answer_template: Yes, our voice agents are designed with built-in compliance features,
+    ensuring secure handling of passenger data and adherence to all relevant regulations.
+- question: What is the typical implementation time for your voice agent system?
+  answer_template: Implementation typically takes 4-6 weeks, with minimal disruption,
+    and includes integration with your existing systems like Sabre or Salesforce.
+- question: How do you handle flight delays and cancellations with voice agents?
+  answer_template: Our agents provide real-time notifications and automated rebooking
+    options, reducing passenger frustration and freeing up staff for complex issues.
+- question: Can the voice agent integrate with our current maintenance software?
+  answer_template: Absolutely, we support integrations with common systems like Jeppesen
+    and FlightDocs for seamless maintenance coordination.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about pricing during a demo or call.
+  script: Our pricing starts at $5,000 per month, tailored to your airline's size
+    and needs. For a mid-sized carrier, this typically saves over $15,000 monthly
+    in customer service costs, with ROI in under 3 months. Would you like a customized
+    quote?
+  goal: Address cost concerns and highlight ROI to move towards a proposal.
+- trigger: service_inquiry
+  situation: When a prospect inquires about specific services like passenger management.
+  script: We specialize in voice-based solutions for passenger check-in, baggage tracking,
+    and delay notifications. For example, Delta has reduced call volume by 25% using
+    our system. How are you currently handling these tasks?
+  goal: Showcase relevant use cases and engage the prospect to identify pain points.
+- trigger: competitor_mention
+  situation: When a prospect compares us to competitors like IBM or Google.
+  script: While others offer generic AI, we focus solely on aviation with deep industry
+    integrations. Our voice agents are pre-trained on FAA terms and compliance, ensuring
+    faster deployment and better accuracy. Can I show you a demo?
+  goal: Differentiate our specialization and prompt a demonstration.
+competitors:
+- name: IBM Watson Assistant for Aviation
+  positioning: Enterprise AI platform with broad industry applications.
+  strengths:
+  - Strong brand recognition
+  - Scalable cloud infrastructure
+  - Advanced NLP capabilities
+  weaknesses:
+  - Higher cost
+  - Less aviation-specific customization
+  - Longer implementation times
+  our_differentiation: We offer aviation-tailored voice agents with faster deployment,
+    lower cost, and dedicated compliance features for US regulations.
+- name: Google Cloud Contact Center AI
+  positioning: Cloud-based customer service solution for various industries.
+  strengths:
+  - Powerful AI and machine learning
+  - Integration with Google Workspace
+  - Global reach
+  weaknesses:
+  - Limited aviation domain knowledge
+  - Complex pricing models
+  - Less focus on operational use cases
+  our_differentiation: Our solution is built specifically for aviation pain points
+    like crew scheduling and maintenance, with local support and easier integration.
+- name: Salesforce Einstein Voice
+  positioning: CRM-integrated voice AI for customer engagement.
+  strengths:
+  - Seamless CRM integration
+  - Good for sales and service
+  - User-friendly interface
+  weaknesses:
+  - Not optimized for aviation operations
+  - Higher dependency on Salesforce ecosystem
+  - Limited compliance features
+  our_differentiation: We provide end-to-end aviation voice solutions beyond CRM,
+    including operations and compliance, with flexible integrations.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Mid-sized airline automating customer service for flight status inquiries
+    monthly_cost: 8000
+    monthly_savings: 20000
+    payback_months: 1
+  value_anchors:
+  - Reduce customer service costs by up to 40% with AI voice agents.
+  - Achieve ROI in under 3 months through operational efficiencies.
+  - Scalable pricing starting at $5,000/month for small operators.
+market_context:
+  market_size: $1.5 trillion annually
+  growth_rate: 5% YoY
+  key_trends:
+  - Increasing adoption of digital and AI technologies for passenger experience.
+  - Focus on sustainability and fuel efficiency driving automation.
+  - Rising cybersecurity concerns in aviation systems.
+  seasonality:
+    high:
+    - Summer months
+    - Holiday seasons (Thanksgiving, Christmas)
+    low:
+    - Winter months (excluding holidays)
+    - Early spring
+typical_objections:
+- objection: Your solution is too expensive for our budget.
+  response: Consider the ROI—our clients typically save more than they spend within
+    months. We offer flexible plans starting at $5,000, and can tailor a package to
+    fit your needs.
+- objection: We're concerned about data security with voice agents, especially with
+    CCPA and HIPAA.
+  response: We prioritize security with encryption and compliance built-in. Our agents
+    are designed to handle sensitive data securely, and we provide audit trails to
+    meet regulatory requirements.
+- objection: Integrating with our legacy systems seems complex.
+  response: We have experience with common aviation systems like Sabre and Jeppesen.
+    Our team ensures smooth integration with minimal downtime, and we offer ongoing
+    support.
+meta:
+  id: aviation
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

@@ -1,0 +1,266 @@
+pain_points:
+- description: La alta competencia en el mercado de telecomunicaciones provoca presión
+    en precios y márgenes.
+  severity: high
+  solution_hint: El agente de voz puede automatizar consultas frecuentes para reducir
+    costos operativos.
+- description: La complejidad en la gestión de múltiples servicios y paquetes personalizados
+    confunde a los clientes.
+  severity: high
+  solution_hint: El agente puede guiar a los clientes de forma personalizada según
+    su perfil y necesidades.
+- description: La necesidad de cumplir estrictamente con la normativa GDPR y protección
+    de datos.
+  severity: high
+  solution_hint: El agente puede garantizar la gestión segura de datos y obtener consentimientos
+    automáticos.
+- description: El elevado volumen de consultas y reclamaciones genera tiempos de espera
+    largos en atención al cliente.
+  severity: high
+  solution_hint: El agente puede atender consultas básicas 24/7 para reducir la carga
+    en agentes humanos.
+- description: La dificultad para informar a clientes sobre nuevas ofertas y promociones
+    en tiempo real.
+  severity: medium
+  solution_hint: El agente puede enviar notificaciones proactivas personalizadas.
+- description: Problemas técnicos recurrentes que requieren soporte rápido y efectivo.
+  severity: medium
+  solution_hint: El agente puede diagnosticar fallos comunes y escalar solo casos
+    complejos.
+- description: Baja fidelización debido a experiencias de atención al cliente poco
+    satisfactorias.
+  severity: medium
+  solution_hint: El agente puede ofrecer atención inmediata y seguimiento proactivo.
+typical_services:
+- Telefonía fija y móvil
+- Conexión a internet de banda ancha (fibra óptica, ADSL)
+- Servicios de televisión por cable y satélite
+- Paquetes de servicios convergentes (telefonía + internet + TV)
+- Servicios de roaming y llamadas internacionales
+- Soluciones de IoT para hogares y empresas
+- Servicios de atención al cliente multicanal
+- Venta y alquiler de dispositivos móviles y routers
+- Servicios de mantenimiento y reparación técnica
+- Gestión de facturación y pagos
+recommended_functions:
+- name: Atención automática de consultas frecuentes
+  priority: high
+  reason: Reduce carga en agentes humanos y mejora tiempos de respuesta.
+- name: Personalización de ofertas y recomendaciones
+  priority: high
+  reason: Mejora la experiencia y aumenta ventas cruzadas.
+- name: Gestión de consentimientos GDPR
+  priority: high
+  reason: Cumplimiento legal imprescindible para evitar sanciones.
+- name: Diagnóstico y soporte técnico básico
+  priority: medium
+  reason: Resuelve problemas simples sin intervención humana.
+- name: Notificaciones proactivas de promociones y alertas
+  priority: medium
+  reason: Incrementa engagement y fidelización.
+- name: Escalado automático a agentes humanos
+  priority: high
+  reason: Garantiza atención en casos complejos.
+- name: Multicanalidad (teléfono, WhatsApp, web)
+  priority: medium
+  reason: Facilita acceso desde diversos canales preferidos por clientes.
+typical_integrations:
+- name: CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Microsoft Dynamics
+  priority: high
+- name: Sistemas de facturación
+  examples:
+  - SAP
+  - A3 Software
+  - Sage
+  priority: high
+- name: Plataformas de gestión de incidencias y soporte
+  examples:
+  - Zendesk
+  - Freshdesk
+  - Jira Service Desk
+  priority: medium
+- name: Herramientas de marketing automation
+  examples:
+  - HubSpot
+  - Mailchimp
+  - RD Station
+  priority: medium
+- name: Bases de datos de clientes / ERP
+  examples:
+  - Oracle ERP
+  - SAP ERP
+  - Odoo
+  priority: high
+- name: Plataformas de comunicación multicanal
+  examples:
+  - Twilio
+  - Genesys
+  - Avaya
+  priority: medium
+industry_faq:
+- question: ¿Cómo puedo consultar mi saldo o consumo actual?
+  answer_template: Puede consultar su saldo y consumo actual a través de nuestra aplicación
+    móvil o solicitándolo a este asistente de voz.
+- question: ¿Cómo puedo cambiar mi tarifa o plan de datos?
+  answer_template: Le puedo ayudar a revisar y cambiar su tarifa. ¿Desea que le muestre
+    las opciones disponibles?
+- question: ¿Qué hago si tengo problemas con mi conexión a internet?
+  answer_template: Primero, intentemos reiniciar su router. Si el problema persiste,
+    puedo abrir una incidencia para que un técnico le contacte.
+- question: ¿Cómo puedo activar o desactivar el roaming?
+  answer_template: Puedo gestionar la activación o desactivación del roaming en su
+    línea. ¿Quiere que proceda ahora?
+- question: ¿Cuándo recibiré mi factura y cómo puedo pagarla?
+  answer_template: Su factura se emite el día 5 de cada mes y puede pagarla mediante
+    domiciliación bancaria, tarjeta o en nuestra web.
+- question: ¿Cómo puedo darme de baja o cancelar un servicio?
+  answer_template: Le puedo guiar en el proceso de baja o transferirle a un asesor
+    para gestionar su solicitud.
+- question: ¿Qué promociones o descuentos están disponibles actualmente?
+  answer_template: Actualmente tenemos varias promociones. ¿Quiere que le explique
+    las ofertas vigentes para su perfil?
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios o tarifas
+  script: Entiendo que el precio es importante para usted. Nuestras tarifas son competitivas
+    y adaptadas a sus necesidades. ¿Le gustaría que le ayude a encontrar la mejor
+    opción para su consumo?
+  goal: Guiar al cliente hacia una tarifa adecuada y cerrar venta.
+- trigger: complaint_about_wait_time
+  situation: Cuando el cliente se queja del tiempo de espera en atención
+  script: Lamentamos la espera. Para agilizar su consulta, puedo ayudarle directamente
+    con la información que necesita o transferirle a un agente especializado si lo
+    prefiere.
+  goal: Mejorar satisfacción y reducir frustración.
+- trigger: ask_about_new_offers
+  situation: Cuando el cliente muestra interés en promociones actuales
+  script: Actualmente tenemos ofertas exclusivas para clientes como usted. ¿Quiere
+    que le detalle las promociones y cómo puede beneficiarse?
+  goal: Incentivar ventas cruzadas y upgrades.
+- trigger: technical_issue_report
+  situation: Cuando el cliente reporta un problema técnico
+  script: Vamos a intentar resolver este problema juntos. Por favor, siga mis instrucciones
+    para realizar una revisión rápida y, si es necesario, contactaré con soporte técnico.
+  goal: Resolver incidencias rápido y mejorar experiencia.
+- trigger: cancellation_intent
+  situation: Cuando el cliente expresa intención de cancelar servicio
+  script: Lamento que quiera cancelar. ¿Puedo saber el motivo para ver si podemos
+    ofrecerle una solución o una oferta especial que se adapte mejor a sus necesidades?
+  goal: Retener clientes y ofrecer alternativas.
+competitors:
+- name: Movistar
+  positioning: Líder del mercado con amplia cobertura y servicios integrales
+  strengths:
+  - Gran infraestructura de red
+  - Amplia cartera de clientes
+  - Ofertas convergentes competitivas
+  weaknesses:
+  - Precios elevados comparados con competidores
+  - Atención al cliente percibida como lenta
+  our_differentiation: Servicio más personalizado con atención rápida mediante agentes
+    de voz AI.
+- name: Vodafone España
+  positioning: Segundo operador con fuerte presencia en móvil y fibra
+  strengths:
+  - Innovación en servicios móviles
+  - Buenas promociones para clientes jóvenes
+  - Plataforma digital avanzada
+  weaknesses:
+  - Cobertura en zonas rurales limitada
+  - Complejidad en contratos y condiciones
+  our_differentiation: Simplificación del proceso de contratación y soporte inmediato
+    vía voz.
+- name: Orange España
+  positioning: Competidor fuerte con enfoque en paquetes convergentes
+  strengths:
+  - Precios competitivos
+  - Campañas promocionales agresivas
+  - Buena atención al cliente online
+  weaknesses:
+  - Problemas ocasionales en mantenimiento técnico
+  - Menor presencia en algunas regiones
+  our_differentiation: Mejor gestión proactiva de incidencias y soporte 24/7 con AI.
+- name: MásMóvil
+  positioning: Operador emergente con enfoque en precios bajos
+  strengths:
+  - Tarifas muy competitivas
+  - Flexibilidad en contratos
+  - Crecimiento rápido en cuota de mercado
+  weaknesses:
+  - Menor cobertura y calidad de red
+  - Atención al cliente limitada
+  our_differentiation: Servicio de atención al cliente superior con tecnología avanzada.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 30000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Reducción del tiempo de atención al cliente mediante agente de voz AI
+    monthly_cost: 1200
+    monthly_savings: 4000
+    payback_months: 3
+  - scenario: Incremento de ventas cruzadas gracias a personalización de ofertas
+    monthly_cost: 1500
+    monthly_savings: 6000
+    payback_months: 2.5
+  - scenario: Disminución de incidencias técnicas gracias a soporte automatizado
+    monthly_cost: 1000
+    monthly_savings: 3500
+    payback_months: 3
+  value_anchors:
+  - Nuestra solución ayuda a cumplir con GDPR garantizando la privacidad de sus clientes.
+  - Automatice la atención y reduzca costos operativos desde el primer mes.
+  - Mejore la satisfacción y fidelización aumentando el valor del cliente.
+  - La inversión se amortiza rápidamente gracias a la reducción de tiempos y errores.
+market_context:
+  market_size: 35000000000
+  growth_rate: 3.2
+  key_trends:
+  - Crecimiento de servicios convergentes y paquetes integrados.
+  - Demanda creciente de fibra óptica y 5G.
+  - Mayor importancia de la atención digital y automatizada.
+  - Cumplimiento riguroso de GDPR y regulaciones europeas.
+  - Incremento en soluciones IoT para hogares y empresas.
+  seasonality:
+    high:
+    - Septiembre a Noviembre (lanzamiento de nuevas ofertas y campañas)
+    - Enero (promociones de inicio de año)
+    low:
+    - Julio y Agosto (periodo vacacional con menor actividad comercial)
+typical_objections:
+- objection: No creo que un agente de voz pueda entender mis necesidades específicas.
+  response: Nuestro agente utiliza inteligencia artificial avanzada que aprende y
+    se adapta a cada cliente, garantizando respuestas personalizadas y precisas.
+- objection: Me preocupa la privacidad y el cumplimiento del GDPR.
+  response: La solución está diseñada para cumplir estrictamente con la normativa
+    GDPR, asegurando la protección y confidencialidad de los datos de sus clientes.
+- objection: El costo inicial es demasiado alto para nuestro presupuesto.
+  response: La inversión se recupera rápidamente gracias a la reducción de costos
+    operativos y el aumento de ventas, como muestran nuestros casos de éxito.
+- objection: Prefiero que mis clientes hablen con personas reales.
+  response: El agente de voz se encarga de las consultas básicas y repetitivas, liberando
+    a sus agentes humanos para casos complejos y atención de mayor calidad.
+- objection: No estamos listos para integrar nuevas tecnologías en nuestros sistemas
+    actuales.
+  response: Nuestra solución es compatible con los principales sistemas y se integra
+    sin interrupciones, facilitando una transición suave y sin riesgos.
+meta:
+  id: telecom
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

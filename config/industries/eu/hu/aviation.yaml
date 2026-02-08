@@ -1,0 +1,244 @@
+pain_points:
+- description: Az utasok és ügyfelek gyors és pontos tájékoztatásának hiánya a járatváltozásokról
+    és késésekről.
+  severity: high
+  solution_hint: Valós idejű, automatikus értesítések és ügyfélszolgálati támogatás
+    AI alapú hangasszisztenssel.
+- description: Többnyelvű kommunikációs nehézségek a nemzetközi utasok kiszolgálásában.
+  severity: high
+  solution_hint: Többnyelvű hangfelismerés és válaszadás beépítése az AI hangagentbe.
+- description: Az ügyfélszolgálati kapacitás korlátozottsága csúcsidőszakokban.
+  severity: high
+  solution_hint: Automatikus hangalapú ügyfélszolgálati rendszerek alkalmazása a terhelés
+    csökkentésére.
+- description: A GDPR-nak való megfelelés és adatvédelem komplexitása.
+  severity: medium
+  solution_hint: Adatvédelmi szabályozásoknak megfelelő hangagent fejlesztése, adatbiztonsági
+    funkciókkal.
+- description: Karbantartási és logisztikai információk átláthatatlansága.
+  severity: medium
+  solution_hint: Hangalapú információszolgáltatás a műszaki státuszokról és karbantartási
+    ütemezésekről.
+- description: Bonyolult jegyfoglalási és módosítási folyamatok az ügyfelek számára.
+  severity: medium
+  solution_hint: Hangalapú foglalási rendszerek integrálása az egyszerűbb ügyfélélményért.
+- description: Magas működési költségek a manuális ügyfélszolgálat miatt.
+  severity: medium
+  solution_hint: Automatizált hangalapú ügyfélszolgálat a költségek csökkentésére.
+typical_services:
+- Repülőjegy foglalás és módosítás
+- Valós idejű járatinformációk szolgáltatása
+- Ügyfélszolgálati hívások kezelése
+- Poggyász nyomon követés
+- Karbantartási értesítések
+- Biztonsági előírások tájékoztatása
+- Késések és járattörlések kommunikációja
+- Többnyelvű ügyfélkommunikáció
+- GDPR kompatibilis adatkezelés
+- Különleges utasigények kezelése (pl. mozgáskorlátozottak)
+recommended_functions:
+- name: Többnyelvű hangfelismerés
+  priority: high
+  reason: Nemzetközi utasok hatékony kiszolgálása érdekében elengedhetetlen.
+- name: Valós idejű járatinformáció szolgáltatás
+  priority: high
+  reason: Az utasok pontos tájékoztatása növeli az elégedettséget.
+- name: Automatikus foglaláskezelés
+  priority: high
+  reason: Csökkenti az ügyfélszolgálati terhelést és gyorsítja a folyamatokat.
+- name: GDPR-kompatibilis adatkezelés
+  priority: high
+  reason: Jogszabályi megfelelés és adatbiztonság biztosítása.
+- name: Hangalapú panaszkezelés
+  priority: medium
+  reason: Gyors és személyre szabott ügyfélkezelés.
+- name: Ügyfélazonosítás és hitelesítés
+  priority: medium
+  reason: Biztonságos hozzáférés az ügyféladatokhoz.
+- name: Integráció karbantartási rendszerekkel
+  priority: medium
+  reason: Műszaki információk hatékony kommunikálása.
+typical_integrations:
+- name: Foglalási rendszerek
+  examples:
+  - Amadeus
+  - Sabre
+  - Galileo
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Járatinformációs platformok
+  examples:
+  - FlightAware
+  - local légiközlekedési adatbázisok
+  priority: high
+- name: GDPR adatkezelő rendszerek
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+- name: Karbantartási és logisztikai szoftverek
+  examples:
+  - Aviation InterTec
+  - AMOS
+  priority: medium
+- name: Call center szoftverek
+  examples:
+  - Genesys
+  - Avaya
+  priority: medium
+industry_faq:
+- question: Hogyan módosíthatom a repülőjegyemet?
+  answer_template: Kérem, adja meg a foglalási számát, és segítek a jegy módosításában.
+- question: Milyen dokumentumokra van szükség a beszálláshoz?
+  answer_template: Kérem, tájékoztatom, hogy az érvényes személyi igazolvány vagy
+    útlevél, valamint a vízum (ha szükséges) szükséges.
+- question: Hogyan kaphatok értesítést a járatok késéséről?
+  answer_template: Regisztrálhat értesítéseinkre, így SMS-ben vagy e-mailben azonnal
+    tájékoztatjuk.
+- question: Milyen extra szolgáltatásokat kínálnak a légitársaságok?
+  answer_template: Elérhető poggyászfeladás, ülőhelyválasztás, étkezés és különleges
+    utasigények kiszolgálása.
+- question: Hogyan biztosítják az adatvédelmet a szolgáltatások során?
+  answer_template: Az adatkezelés megfelel a GDPR előírásainak, és minden adat titkosítva
+    van.
+- question: Mi a teendő, ha elveszett a poggyászom?
+  answer_template: Kérem, jelezze az ügyfélszolgálatunknak, segítünk a nyomkövetésben
+    és problémamegoldásban.
+- question: Hogyan tudok speciális segítséget kérni a repülőtéri szolgáltatások során?
+  answer_template: Kérem, jelezze igényét előre, hogy megfelelő támogatást biztosítsunk.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél az árakról érdeklődik
+  script: Köszönöm az érdeklődést! Az áraink a szolgáltatások típusától és az igényelt
+    funkcióktól függően változnak. Szívesen készítek személyre szabott ajánlatot,
+    amely figyelembe veszi cége igényeit és költségvetését.
+  goal: Érdeklődés fenntartása és személyes ajánlat készítése
+- trigger: compliance_concern
+  situation: Amikor az ügyfél adatvédelmi megfelelőségi kérdéseket vet fel
+  script: Fontos számunkra, hogy a szolgáltatásaink teljes mértékben megfeleljenek
+    a GDPR előírásainak. Minden adatkezelési folyamatunk átlátható és biztonságos,
+    így Ön nyugodt lehet az adatvédelem terén.
+  goal: Bizalomépítés és megfelelőség hangsúlyozása
+- trigger: multi_language_support
+  situation: Amikor a többnyelvűség fontosságát hangsúlyozzák
+  script: AI hangagentünk több nyelven is képes kommunikálni, így könnyen kiszolgálhatók
+    a nemzetközi utasok is, csökkentve az ügyfélszolgálati terhelést és növelve az
+    elégedettséget.
+  goal: Többnyelvűség előnyeinek bemutatása
+- trigger: cost_saving
+  situation: Amikor az ügyfél a költségcsökkentés lehetőségeit keresi
+  script: Automatizált hangalapú megoldásainkkal jelentős költségmegtakarítást érhet
+    el az ügyfélszolgálat terén, miközben javítja az ügyfélélményt és gyorsabbá teszi
+    a folyamatokat.
+  goal: Költséghatékonyság hangsúlyozása
+- trigger: capacity_issues
+  situation: Csúcsidőszakokban a kapacitásproblémákról szóló beszélgetések során
+  script: AI alapú hangagentünk képes kezelni a megnövekedett hívásforgalmat a csúcsidőszakokban,
+    így nem vesznek el ügyfelek, és nem romlik a szolgáltatás minősége.
+  goal: Kapacitásnövelés előnyeinek bemutatása
+competitors:
+- name: Budapest Airport Zrt.
+  positioning: Magyarország legnagyobb légikikötő üzemeltetője, regionális piacvezető
+  strengths:
+  - Kiterjedt infrastruktúra
+  - Erős helyi jelenlét
+  - Széleskörű szolgáltatások
+  weaknesses:
+  - Magas működési költségek
+  - Kevésbé rugalmas technológiai megoldások
+  our_differentiation: Innovatív AI hangalapú automatizálás, amely csökkenti a költségeket
+    és javítja az ügyfélélményt
+- name: Wizz Air Hungary Ltd.
+  positioning: Jelentős fapados légitársaság, erős nemzetközi hálózat
+  strengths:
+  - Versenyképes árak
+  - Hatékony online szolgáltatások
+  - Gyors jegyfoglalási rendszer
+  weaknesses:
+  - Korlátozott ügyfélszolgálati kapacitás csúcsidőben
+  - Kevesebb személyre szabott ügyfélkezelés
+  our_differentiation: Többcsatornás, személyre szabott AI hangügynök, amely javítja
+    az ügyfélszolgálati élményt
+- name: HungaroControl Zrt.
+  positioning: Magyarországi légiforgalmi irányító szolgáltató
+  strengths:
+  - Magas szintű szakmai tapasztalat
+  - Biztonságközpontú szolgáltatások
+  weaknesses:
+  - Kevésbé fejlett ügyfélkommunikáció
+  - Korlátozott digitális automatizáció
+  our_differentiation: Modern AI megoldások az ügyféltámogatásban, melyek segítik
+    az információ áramlását és az utazók tájékoztatását
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Ügyfélszolgálati hívások automatizálása közepes méretű légitársaságnál
+    monthly_cost: 400000
+    monthly_savings: 1200000
+    payback_months: 3
+  - scenario: Többnyelvű járatinformációs szolgáltatás implementálása reptéren
+    monthly_cost: 700000
+    monthly_savings: 2100000
+    payback_months: 4
+  value_anchors:
+  - A befektetés már néhány hónap alatt megtérül a működési költségek csökkentésével.
+  - Növeli az ügyfél-elégedettséget, ami hosszú távú bevételnövekedést eredményez.
+  - Automatizálás révén csökkenti a humán erőforrás igényt és a hibák számát.
+market_context:
+  market_size: 15000000000
+  growth_rate: 5.5
+  key_trends:
+  - Digitális automatizáció és AI megoldások terjedése a légiközlekedésben.
+  - Növekvő utasforgalom a budapesti repülőtéren.
+  - GDPR és adatvédelmi szabályozások szigorodása.
+  - Fókusz a fenntarthatóságra és környezetbarát megoldásokra.
+  - Többnyelvű és személyre szabott ügyfélszolgálati megoldások iránti igény.
+  seasonality:
+    high:
+    - Június
+    - Július
+    - Augusztus
+    - December (karácsonyi időszak)
+    low:
+    - Január
+    - Február
+    - November
+typical_objections:
+- objection: Az AI hangasszisztens bevezetése túl drága számunkra.
+  response: Értem az aggodalmát, azonban a megoldásunk költségei gyors megtérülést
+    biztosítanak a működési költségek jelentős csökkentése révén.
+- objection: Nem vagyunk biztosak az adatvédelem megfelelőségében.
+  response: Teljes mértékben megfelelünk a GDPR előírásainak, és az adatokat maximális
+    biztonsággal kezeljük.
+- objection: Az ügyfeleink inkább személyes kapcsolatot szeretnének.
+  response: Az AI hangasszisztens kiegészíti a személyes ügyfélszolgálatot, így a
+    komplex kérések továbbra is emberi támogatást kapnak, miközben a rutinfeladatokat
+    gyorsan kezeljük.
+- objection: Nem vagyunk biztosak, hogy a technológia illeszkedik a meglévő rendszereinkhez.
+  response: Rendszerünk rugalmasan integrálható a legnépszerűbb helyi és nemzetközi
+    rendszerekkel, így zökkenőmentesen illeszkedik az Önök infrastruktúrájába.
+- objection: Az alkalmazottaink félnek az automatizálástól és az állásuk elvesztésétől.
+  response: A megoldásunk nem az emberek helyettesítésére szolgál, hanem a munkájuk
+    támogatására és hatékonyságuk növelésére.
+meta:
+  id: aviation
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

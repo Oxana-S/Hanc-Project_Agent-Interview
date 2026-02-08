@@ -1,0 +1,228 @@
+pain_points:
+- description: High operational costs due to fluctuating fuel prices and maintenance
+    expenses.
+  severity: high
+  solution_hint: AI voice agents can automate routine inquiries and bookings, reducing
+    manual labor costs and optimizing scheduling.
+- description: Labor shortages in pilots and aviation technicians affecting service
+    continuity.
+  severity: high
+  solution_hint: Deploy AI voice agents for 24/7 customer support and internal communications,
+    alleviating staffing pressures.
+- description: Complex regulatory compliance with Transport Canada and PIPEDA for
+    data privacy.
+  severity: high
+  solution_hint: Integrate AI voice agents with compliance systems to ensure secure
+    handling of personal information and automated reporting.
+- description: Frequent weather-related disruptions leading to flight delays and customer
+    dissatisfaction.
+  severity: medium
+  solution_hint: Use AI voice agents to provide real-time updates and rebooking assistance,
+    improving customer experience.
+- description: Intense competition from low-cost carriers putting pressure on pricing
+    and margins.
+  severity: medium
+  solution_hint: Leverage AI voice agents for personalized upselling and efficient
+    service delivery to enhance value proposition.
+- description: Inefficient legacy systems causing delays in booking and baggage handling.
+  severity: medium
+  solution_hint: AI voice agents can integrate with modern APIs to streamline processes
+    and reduce system bottlenecks.
+- description: Seasonal demand spikes during holidays overwhelming customer service
+    teams.
+  severity: low
+  solution_hint: Scale AI voice agents during peak periods to handle increased call
+    volumes without additional hires.
+typical_services:
+- Flight booking and reservation management
+- Baggage handling and tracking services
+- Maintenance, repair, and overhaul (MRO)
+- Flight training and certification
+- Cargo and freight services
+- Airport operations and ground handling
+- In-flight catering and amenities
+- Aviation insurance and risk management
+- Aircraft leasing and charter services
+- Regulatory compliance consulting
+recommended_functions:
+- name: Automated flight booking and confirmation
+  priority: high
+  reason: Reduces manual workload and speeds up customer transactions, crucial for
+    competitive pricing.
+- name: Real-time flight status updates
+  priority: high
+  reason: Addresses common customer inquiries, improving satisfaction during disruptions.
+- name: PIPEDA-compliant data handling
+  priority: high
+  reason: Ensures legal compliance and builds trust in handling sensitive personal
+    information.
+- name: Multi-language support for diverse Canadian regions
+  priority: medium
+  reason: Caters to Canada's bilingual and multicultural population, enhancing accessibility.
+- name: Integration with MRO scheduling
+  priority: medium
+  reason: Optimizes maintenance workflows, reducing downtime and operational costs.
+- name: Upselling for ancillary services
+  priority: low
+  reason: Increases revenue by promoting add-ons like baggage insurance or premium
+    seating.
+typical_integrations:
+- name: Reservation systems
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Maintenance management software
+  examples:
+  - AMOS
+  - TRAX
+  - Ramco Aviation
+  priority: high
+- name: Customer relationship management (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - Zoho
+  priority: medium
+- name: Airport operational databases
+  examples:
+  - AODB systems used in major Canadian airports
+  priority: medium
+- name: Weather and flight tracking services
+  examples:
+  - The Weather Network
+  - FlightAware
+  - Nav Canada systems
+  priority: low
+industry_faq:
+- question: How do you handle flight delays due to Canadian weather?
+  answer_template: Our AI voice agent provides real-time updates and can assist with
+    rebooking or compensation options, ensuring minimal inconvenience.
+- question: What are your baggage policies and fees?
+  answer_template: We offer transparent pricing for baggage, with details available
+    via our voice agent. Additional services like tracking are included for peace
+    of mind.
+- question: How is my personal data protected under PIPEDA?
+  answer_template: We adhere strictly to PIPEDA guidelines, using secure encryption
+    and access controls in all AI interactions to safeguard your information.
+- question: Can I change or cancel my booking easily?
+  answer_template: Yes, our voice agent can guide you through changes or cancellations,
+    with flexible options based on your fare type and timing.
+- question: What maintenance standards do you follow for aircraft safety?
+  answer_template: We comply with Transport Canada regulations, and our AI systems
+    help monitor and schedule maintenance to ensure top safety standards.
+- question: Are there discounts for frequent flyers or group bookings?
+  answer_template: Yes, we offer loyalty programs and group rates. Our voice agent
+    can provide personalized offers and assist with bookings.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about the cost of implementing AI voice agents.
+  script: Our solutions start at 5000 CAD per month, tailored to your scale. For a
+    typical mid-sized airline, this can save up to 20,000 CAD monthly in labor costs.
+    Would you like a customized ROI analysis?
+  goal: Demonstrate value and justify pricing with tangible savings.
+- trigger: service_inquiry
+  situation: When a customer wants to know how the voice agent handles specific aviation
+    services.
+  script: Our AI agent integrates with your existing systems like Amadeus for bookings
+    and provides 24/7 support for flight status, baggage queries, and more. Let me
+    show you a demo of how it works in real-time.
+  goal: Showcase functionality and integration capabilities to build confidence.
+- trigger: compliance_concern
+  situation: When a prospect raises issues about data privacy under PIPEDA.
+  script: We design all our voice agents with PIPEDA compliance built-in, featuring
+    secure data handling and audit trails. Many Canadian aviation clients trust us
+    for this. Can I share some case studies?
+  goal: Address security concerns and establish credibility through examples.
+competitors:
+- name: AviationTech Solutions Inc.
+  positioning: Established provider of automation software for Canadian airlines.
+  strengths:
+  - Strong local presence
+  - Deep industry experience
+  - Customizable solutions
+  weaknesses:
+  - Higher upfront costs
+  - Slower implementation times
+  - Limited AI capabilities
+  our_differentiation: We offer faster deployment with advanced AI, better ROI, and
+    seamless PIPEDA compliance.
+- name: SkyVoice AI
+  positioning: Startup focusing on voice-enabled customer service for aviation.
+  strengths:
+  - Innovative technology
+  - Competitive pricing
+  - User-friendly interfaces
+  weaknesses:
+  - Limited integration options
+  - Small client base
+  - Less regulatory expertise
+  our_differentiation: Our robust integrations with legacy systems and proven compliance
+    track record set us apart.
+- name: Global Connect Systems
+  positioning: International player offering broad aviation IT solutions.
+  strengths:
+  - Global scale
+  - Comprehensive suite
+  - Strong support network
+  weaknesses:
+  - Less localized for Canada
+  - Higher ongoing fees
+  - Complex customization
+  our_differentiation: We provide tailored solutions for the Canadian market with
+    better local support and cost-effectiveness.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Mid-sized airline reducing customer service calls by 30%
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  value_anchors:
+  - Save up to 40% on operational costs with automation
+  - Improve customer satisfaction scores by 25%
+  - Ensure PIPEDA compliance with built-in features
+market_context:
+  market_size: Estimated at 2 billion CAD annually for aviation technology in Canada
+  growth_rate: 5% YoY, driven by digital transformation and increased air travel
+  key_trends:
+  - Adoption of AI for personalized travel experiences
+  - Focus on sustainability and fuel efficiency
+  - Growth in regional and cargo aviation
+  seasonality:
+    high:
+    - Summer months (June-August)
+    - Holiday seasons (December)
+    low:
+    - Winter months (January-February)
+    - Early spring (March)
+typical_objections:
+- objection: We're concerned about the security of AI handling customer data under
+    PIPEDA.
+  response: We prioritize security with end-to-end encryption and regular audits,
+    ensuring full PIPEDA compliance. Our systems are trusted by major Canadian airlines.
+- objection: Our legacy systems are too outdated to integrate with new AI.
+  response: Our agents use flexible APIs designed to work with legacy systems, and
+    we offer phased implementation to minimize disruption.
+- objection: The cost seems high compared to our current manual processes.
+  response: Consider the long-term savings from reduced labor and improved efficiency.
+    Let's calculate a specific ROI based on your operations.
+meta:
+  id: aviation
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

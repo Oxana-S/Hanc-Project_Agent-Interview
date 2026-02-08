@@ -1,0 +1,228 @@
+pain_points:
+- description: Labor shortages and high turnover rates make it difficult to staff
+    projects consistently.
+  severity: high
+  solution_hint: AI voice agent can automate recruitment calls and schedule interviews,
+    reducing time-to-hire.
+- description: Project delays due to supply chain disruptions and weather conditions
+    impact timelines and budgets.
+  severity: high
+  solution_hint: Voice agent can send automated updates to clients and manage rescheduling,
+    improving communication.
+- description: Inaccurate cost estimations lead to budget overruns and reduced profitability.
+  severity: medium
+  solution_hint: AI can assist in data collection for estimates by handling initial
+    client inquiries and documenting requirements.
+- description: Complex regulatory compliance and permit processing slow down project
+    starts.
+  severity: medium
+  solution_hint: Voice agent can provide reminders for compliance deadlines and guide
+    clients through permit application steps.
+- description: Communication gaps between contractors, suppliers, and clients cause
+    misunderstandings and errors.
+  severity: high
+  solution_hint: Automated call routing and messaging ensure timely information flow
+    and reduce miscommunication.
+- description: Safety management and incident reporting are time-consuming and prone
+    to human error.
+  severity: medium
+  solution_hint: AI voice agent can log safety incidents via voice commands and generate
+    reports automatically.
+- description: Cash flow issues from delayed payments and inefficient invoicing processes.
+  severity: medium
+  solution_hint: Voice agent can follow up on unpaid invoices and schedule payment
+    reminders, improving collections.
+typical_services:
+- Residential construction
+- Commercial building
+- Industrial facilities construction
+- Civil engineering (roads, bridges)
+- Remodeling and renovation
+- Green building and sustainable construction
+- Project management services
+- Design-build contracting
+- Specialty trades (electrical, plumbing)
+- Land development and site work
+recommended_functions:
+- name: Lead qualification and intake
+  priority: high
+  reason: Automates initial contact to filter high-potential clients, saving sales
+    team time.
+- name: Appointment scheduling for site visits
+  priority: high
+  reason: Ensures efficient booking and reduces no-shows by confirming details via
+    voice.
+- name: FAQ answering on services and pricing
+  priority: medium
+  reason: Provides instant responses to common queries, improving customer experience.
+- name: Follow-up calls for project updates
+  priority: medium
+  reason: Maintains client engagement and gathers feedback without manual effort.
+- name: Compliance documentation reminders
+  priority: low
+  reason: Helps businesses stay compliant with regulations like CCPA by prompting
+    necessary actions.
+- name: Integration with project management tools
+  priority: high
+  reason: Seamlessly updates project data from calls, enhancing operational efficiency.
+typical_integrations:
+- name: Project management software
+  examples:
+  - Procore
+  - BuilderTREND
+  - CoConstruct
+  priority: high
+- name: Accounting software
+  examples:
+  - QuickBooks
+  - Sage
+  - Xero
+  priority: high
+- name: CRM systems
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Building Information Modeling (BIM) tools
+  examples:
+  - Autodesk Revit
+  - Navisworks
+  priority: medium
+- name: Scheduling software
+  examples:
+  - Microsoft Project
+  - Smartsheet
+  priority: low
+industry_faq:
+- question: What types of construction projects do you specialize in?
+  answer_template: We handle a wide range of projects including residential, commercial,
+    and industrial construction, with expertise in remodeling and sustainable building
+    practices.
+- question: How do you ensure projects stay on budget and timeline?
+  answer_template: We use advanced project management tools and regular communication,
+    supported by AI systems to track progress and address issues promptly.
+- question: What is your pricing structure for construction services?
+  answer_template: Pricing is typically based on project scope, materials, and labor,
+    with detailed quotes provided after an initial consultation. We offer competitive
+    rates in USD.
+- question: Do you provide warranties or guarantees on your work?
+  answer_template: Yes, we offer warranties on materials and workmanship, with terms
+    detailed in our contracts to ensure client satisfaction.
+- question: How do you handle change orders during a project?
+  answer_template: Change orders are managed through a formal process, with clear
+    communication on cost and timeline adjustments, often facilitated by our AI systems
+    for efficiency.
+- question: Are you licensed and insured for construction work in the United States?
+  answer_template: Absolutely, we are fully licensed and insured, complying with all
+    local, state, and federal regulations, including relevant privacy laws.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about pricing during an initial call.
+  script: Thank you for your interest! Our pricing depends on the project specifics,
+    but we start with a free consultation to provide a tailored quote. For example,
+    basic automation services begin at $199 per month and can save you up to 20 hours
+    monthly on administrative tasks. Would you like to schedule a consultation?
+  goal: Convert the inquiry into a scheduled meeting to discuss details.
+- trigger: service_inquiry
+  situation: When a caller asks about the types of services offered.
+  script: We specialize in AI voice agents for the construction industry, handling
+    tasks like lead intake, appointment scheduling, and compliance reminders. Our
+    solutions integrate with tools like Procore and QuickBooks. Can I tell you more
+    about how this can streamline your operations?
+  goal: Educate the client and identify specific needs for customization.
+- trigger: objection_handling
+  situation: When a client expresses concern about cost or necessity.
+  script: I understand budget is important. Our AI voice agents typically pay for
+    themselves within 3-6 months by reducing labor costs and improving efficiency.
+    For instance, one client saved $5,000 monthly on admin expenses. Would you like
+    to see a customized ROI estimate?
+  goal: Overcome objections by highlighting value and offering proof.
+competitors:
+- name: ConstructAI Solutions
+  positioning: Mid-market AI provider focused on construction automation.
+  strengths:
+  - Strong integration with Procore
+  - user-friendly interface
+  weaknesses:
+  - Higher pricing
+  - limited customization
+  our_differentiation: We offer more affordable entry points and personalized support
+    with better ROI tracking.
+- name: BuildBot Assist
+  positioning: Budget-friendly voice agent for small contractors.
+  strengths:
+  - Low cost
+  - easy setup
+  weaknesses:
+  - Basic features
+  - poor integration options
+  our_differentiation: Our solution includes advanced features like compliance reminders
+    and seamless CRM integration at competitive prices.
+- name: Procore Voice Assist
+  positioning: Integrated assistant within the Procore ecosystem.
+  strengths:
+  - Deep Procore integration
+  - trusted brand
+  weaknesses:
+  - Only for Procore users
+  - limited standalone functionality
+  our_differentiation: We provide standalone AI voice agents that work with multiple
+    software systems, offering greater flexibility.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 199
+  roi_examples:
+  - scenario: Automating lead intake and follow-up calls for a mid-sized construction
+      firm.
+    monthly_cost: 499
+    monthly_savings: 2000
+    payback_months: 3
+  value_anchors:
+  - Save up to 30% on administrative costs
+  - Increase lead conversion by 15%
+  - Reduce project delays with better communication
+market_context:
+  market_size: Approximately $1.3 trillion annually
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Adoption of modular construction
+  - Increased focus on sustainable building
+  - Technology integration for efficiency
+  - Labor market challenges driving automation
+  seasonality:
+    high:
+    - Spring
+    - Summer
+    low:
+    - Winter
+typical_objections:
+- objection: Your service is too expensive for our small business.
+  response: We offer scalable plans starting at $199 per month, designed to fit small
+    budgets while delivering significant time savings. Let's calculate your potential
+    ROI.
+- objection: We already use manual processes and don't need AI.
+  response: AI can enhance your existing processes by reducing errors and freeing
+    up your team for higher-value tasks. Many businesses see improved productivity
+    within weeks.
+- objection: We're concerned about data privacy with voice recordings.
+  response: We comply with CCPA and other regulations, ensuring data is secure and
+    used only for intended purposes. All recordings are encrypted and can be deleted
+    upon request.
+meta:
+  id: construction
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

@@ -1,0 +1,242 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand für Mitgliederregistrierung und Spendenverwaltung
+    bei gleichzeitiger Einhaltung von Datenschutzgesetzen (FADP/GDPR).
+  severity: high
+  solution_hint: Automatisierte, DSGVO-konforme Anrufbeantwortung und Terminvereinbarung
+    zur Entlastung der Verwaltung.
+- description: Schwierigkeiten bei der Erreichung und Bindung junger Gemeindemitglieder
+    und der Organisation jugendgerechter Veranstaltungen.
+  severity: medium
+  solution_hint: Persönlicher, automatisierter Rückrufservice für Jugendgruppen und
+    Event-Erinnerungen per Sprachassistent.
+- description: Unzuverlässige und teure Besetzung der Telefonzentrale, besonders an
+    Wochenenden und Feiertagen.
+  severity: high
+  solution_hint: 24/7 AI-Telefonagent, der grundlegende Anfragen beantwortet und dringende
+    Anliegen an zuständige Personen weiterleitet.
+- description: Ineffiziente Koordination von ehrenamtlichen Helfern für Veranstaltungen,
+    Seelsorge und Gemeindeaktivitäten.
+  severity: medium
+  solution_hint: Voice Agent zur automatisierten Helfer-Einsatzplanung, Erinnerungsanrufen
+    und Status-Updates.
+- description: Komplexe Verwaltung von Raumbelegungen für verschiedene Gemeindegruppen,
+    Kurse und externe Veranstalter.
+  severity: medium
+  solution_hint: Sprachgesteuerte Abfrage und Buchung von Gemeinderäumen über den
+    Telefonagenten.
+- description: Herausforderungen bei der transparenten Kommunikation von Spendenprojekten
+    und der Dankesbekundung an Spender.
+  severity: low
+  solution_hint: Automatisierte Dankes-Anrufe und Spendenprojekt-Updates per Sprachmitteilung
+    an registrierte Spender.
+typical_services:
+- Gottesdienst- und Gebetszeiten-Organisation
+- Seelsorge und Telefonseelsorge
+- Sakramenten-Vorbereitung (Taufe, Kommunion, Konfirmation/Firmung)
+- Gemeindekatechismus und Religionsunterricht
+- Veranstaltungsmanagement (Jugendtreffs, Seniorennachmittage, Gemeindefeste)
+- Verwaltung von Kirchensteuern und Spenden (Kollekten)
+- Ökumenische und interreligiöse Dialogarbeit
+- Betreibung von kirchlichen Kindergärten oder Tagungsstätten
+- Trauer- und Trauerfallbegleitung
+- Verwaltung des Friedhofs und Grabstellen
+recommended_functions:
+- name: 24/7 Gemeindetelefonzentrale
+  priority: high
+  reason: Bietet ständige Erreichbarkeit für Notfälle und allgemeine Anfragen, entlastet
+    Hauptamtliche.
+- name: Automatisierte Terminvereinbarung für Seelsorgegespräche
+  priority: high
+  reason: Optimiert wertvolle Zeit der Seelsorger und bietet Gemeindemitgliedern niederschwellige
+    Kontaktmöglichkeit.
+- name: Event-Registrierung und Erinnerungsanrufe
+  priority: medium
+  reason: Steigert die Teilnehmerzahl bei Gemeindeveranstaltungen durch bequeme Anmeldung
+    und persönliche Erinnerung.
+- name: Spendenannahme und -information
+  priority: medium
+  reason: Ermöglicht sichere Spendenversprechen per Telefon und informiert über laufende
+    Projekte.
+- name: Multilingualer Support
+  priority: high
+  reason: Wichtig für die Integration verschiedener Sprachgemeinschaften in der Schweiz
+    (z.B. Portugiesisch, Albanisch).
+- name: DSGVO/FADP-konforme Datenerfassung
+  priority: high
+  reason: Unverzichtbar für die rechtskonforme Verarbeitung von Mitglieder- und Spendendaten
+    in der Schweiz.
+typical_integrations:
+- name: Kirchenverwaltungssoftware (KVS)
+  examples:
+  - Cargospirit
+  - Winspiration
+  - EKM-Software
+  priority: high
+- name: Kalender- und Raumbuchungssystem
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  - churchtools
+  priority: medium
+- name: E-Banking-/Zahlungsdienstleister
+  examples:
+  - TWINT
+  - PostFinance
+  - ZKB/YUH
+  priority: medium
+- name: E-Mail-Marketing-Plattform
+  examples:
+  - CleverReach
+  - Klick-Tipp
+  - Mailchimp
+  priority: low
+industry_faq:
+- question: Wie gewährleisten Sie den Datenschutz (FADP) bei Telefonaten?
+  answer_template: Unser System ist nach Schweizer und EU-Datenschutzrichtlinien (FADP/GDPR)
+    zertifiziert. Alle Daten werden verschlüsselt und nur mit Ihrer expliziten Einwilligung
+    für vereinbarte Zwecke genutzt. Wir bieten transparente Datenverarbeitungsvereinbarungen.
+- question: Kann der Sprachassistant auch in verschiedenen Schweizer Dialekten oder
+    Sprachen antworten?
+  answer_template: Ja, unser System kann für Hochdeutsch, Schweizerdeutsch, Französisch,
+    Italienisch und weitere Sprachen trainiert werden, um Ihrer Gemeinschaft gerecht
+    zu werden.
+- question: Was passiert bei komplexen oder seelsorgerlichen Anfragen, die der Bot
+    nicht beantworten kann?
+  answer_template: Der Assistent erkennt die emotionale oder komplexe Natur des Anliegens
+    und leitet sofort und diskret an einen menschlichen Ansprechpartner (Seelsorger,
+    Verwaltung) weiter. Er dient als intelligenter Filter.
+- question: Ist die Technik für ältere Gemeindemitglieder einfach zu bedienen?
+  answer_template: Absolut. Die Interaktion erfolgt ganz natürlich per Sprache. Es
+    sind keine Apps oder technischen Kenntnisse nötig. Ein einfacher Anruf genügt.
+- question: Wie hoch sind die Einrichtungskosten und die laufenden Gebühren?
+  answer_template: Die Einrichtung ist oft einmalig oder im monatlichen Paket enthalten.
+    Laufende Kosten beginnen bei ca. 150 CHF/Monat und richten sich nach Umfang. Wir
+    zeigen Ihnen gerne eine klare ROI-Rechnung.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten am Telefon oder per E-Mail.
+  script: Vielen Dank für Ihre Nachfrage. Die Investition richtet sich nach den spezifischen
+    Bedürfnissen Ihrer Gemeinde. Ein Basis-Paket zur Entlastung Ihrer Telefonzentrale
+    beginnt bei etwa 150 CHF pro Monat. Darin ist oft die Einrichtung und 24/7-Erreichbarkeit
+    enthalten. Können wir kurz Ihre drei größten Herausforderungen im Telefonverkehr
+    besprechen? Dann kann ich Ihnen eine genauere, maßgeschneiderte Schätzung geben.
+  goal: Vom Preis ablenken, auf Wert und individuelle Lösung fokussieren, qualifizieren.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen anderen Anbieter oder eine manuelle Lösung.
+  script: Das ist interessant. Viele Gemeinden beginnen mit manuellen Lösungen oder
+    einfachen Voicemails. Unser Unterschied liegt in der intelligenten Weiterleitung,
+    der mehrsprachigen DSGVO-Konformität und der direkten Integration in Ihre bestehende
+    Kirchensoftware. So sparen Sie nicht nur Zeit, sondern bieten auch einen echten
+    Mehrwert für Ihre Mitglieder. Darf ich Ihnen ein konkretes Beispiel zeigen, wie
+    wir der Kirchgemeinde XY geholfen haben?
+  goal: Differenzierung durch Integration, Compliance und Mehrwert aufzeigen, Social
+    Proof liefern.
+- trigger: objection_technology
+  situation: Kunde äußert Bedenken, dass die Technik zu unpersönlich oder komplex
+    sei.
+  script: Ich verstehe Ihre Sorge vollkommen. Unser Ziel ist es nicht, menschliche
+    Kontakte zu ersetzen, sondern sie zu entlasten und zu ergänzen. Der Assistent
+    übernimmt repetitive Aufgaben wie Terminabsprachen oder Gebetszeiten-Auskunft.
+    Bei persönlichen Anliegen wie Seelsorge leitet er sofort und einfühlsam weiter.
+    Die Bedienung ist so einfach wie ein Telefonat – für jede Altersgruppe. Möchten
+    Sie eine kurze Demo erleben, um den natürlichen Gesprächsfluss zu hören?
+  goal: Bedenken entkräften, den Assistenten als Helfer für mehr Menschlichkeit darstellen,
+    zur Demo einladen.
+competitors:
+- name: Lokale Telefoniedienstleister (z.B. Swisscom, Sunrise)
+  positioning: Generalistische Telefonielösungen für Unternehmen.
+  strengths:
+  - Bekannte Marke
+  - Breite Infrastruktur
+  weaknesses:
+  - Keine Branchenspezifik für Kirchen
+  - Oft teure, menschliche Besetzung für 24/7
+  - Fehlende Integration in Kirchensoftware
+  our_differentiation: KI-gestützte, kosteneffiziente und auf Gemeindebedürfnisse
+    (Mehrsprachigkeit, Seelsorge-Weiterleitung) spezialisierte Lösung.
+- name: Ehrenamtliche Telefondienste
+  positioning: Kostenlose, aber unzuverlässige manuelle Lösung.
+  strengths:
+  - Persönlicher Kontakt
+  - Keine direkten Kosten
+  weaknesses:
+  - Begrenzte Erreichbarkeit (keine 24/7)
+  - Hoher Organisationsaufwand
+  - Inkonsistente Qualität
+  our_differentiation: Professionelle, ständige und konsistente Erreichbarkeit, die
+    Ehrenamtliche für wertvollere persönliche Aufgaben freispielt.
+- name: Internationale AI-Chatbot-Anbieter (für Web)
+  positioning: Textbasierte Chatbots für Webseiten.
+  strengths:
+  - Günstige Web-Lösung
+  - Einfache Einrichtung
+  weaknesses:
+  - Oft nur textbasiert, schließt nicht-digitale Mitglieder aus
+  - Wenig auf mündliche, seelsorgerliche Kommunikation ausgelegt
+  - Datenschutz oft nicht spezifisch für CH/EU
+  our_differentiation: Sprachzentrierter Ansatz für alle Altersgruppen, Fokus auf
+    Telefonie mit DSGVO/FADP-Konformität und Notfall-Weiterleitung.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 150
+  - 600
+  entry_point: 149
+  roi_examples:
+  - scenario: Ersatz einer 10-Stunden/Woche Teilzeitkraft für Telefondienst.
+    monthly_cost: 250
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Für weniger als die Kosten einer Stunde professioneller Seelsorge erhalten Sie
+    einen Monat lang 24/7 Erreichbarkeit.
+  - Investieren Sie den Wert von zwei Gemeindemitgliedsbeiträgen, um Hunderte von
+    Mitgliedern besser zu betreuen.
+market_context:
+  market_size: Ca. 3000-4000 religiöse Gemeinden und Organisationen in der Schweiz.
+  growth_rate: Stabil, mit Wachstum im Bereich Digitalisierung und Effizienzsteigerung.
+  key_trends:
+  - Digitalisierung der Gemeindearbeit und Verwaltung
+  - Größere Nachfrage nach mehrsprachigen Angeboten durch Migration
+  - Steigender Druck zur Kostentransparenz und Effizienz
+  - Versuch, jüngere Generationen durch digitale Kanäle anzusprechen
+  seasonality:
+    high:
+    - Weihnachtszeit (Advent, Weihnachten)
+    - Ostern
+    - Erntedank
+    - Konfirmations-/Firmungszeit
+    low:
+    - Sommerferien (Juli-August)
+    - Skiferien (Februar)
+typical_objections:
+- objection: Unsere älteren Mitglieder kommen mit so einer Technik nicht zurecht.
+  response: Gerade für ältere Mitglieder ist es ideal. Sie müssen nur ihr Telefon
+    wie gewohnt benutzen. Keine Tasteneingabe, keine Apps – einfach anrufen und sprechen.
+    So erreichen Sie sie sogar besser als über E-Mail oder Website.
+- objection: Die persönliche Note geht verloren. Seelsorge kann keine Maschine machen.
+  response: Da stimmen wir vollkommen zu. Unser Assistent macht keine Seelsorge. Er
+    filtert Anfragen und stellt sicher, dass die wertvolle Zeit unserer Seelsorger
+    für die wirklich persönlichen und komplexen Gespräche frei wird. Er ist das Sprungbrett
+    zum menschlichen Kontakt, kein Ersatz.
+- objection: Unser Budget ist sehr begrenzt. Das ist ein Luxus, den wir uns nicht
+    leisten können.
+  response: Ich verstehe die budgetären Grenzen. Oft ist es aber ein Luxus, auf diese
+    Effizienz zu verzichten. Wenn wir durch Automatisierung nur 5 Stunden Verwaltungsarbeit
+    pro Monat einsparen, hat sich der Dienst bereits amortisiert. Lassen Sie uns eine
+    konkrete Einsparanalyse für Ihre Gemeinde durchgehen.
+meta:
+  id: religion
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

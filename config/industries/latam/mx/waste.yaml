@@ -1,0 +1,192 @@
+pain_points:
+- description: Gestión ineficiente de rutas de recolección, llevando a altos costos de combustible y tiempo.
+  severity: high
+  solution_hint: El agente de voz puede optimizar rutas en tiempo real y programar recolecciones automáticamente.
+- description: Cumplimiento complejo con la LFPDPPP en el manejo de datos de clientes y residuos.
+  severity: high
+  solution_hint: Proporcionar recordatorios automatizados y asesoría en cumplimiento normativo.
+- description: Falta de segregación de residuos, resultando en multas y pérdida de materiales reciclables.
+  severity: medium
+  solution_hint: Educar a los clientes vía llamadas automatizadas sobre prácticas de segregación.
+- description: Quejas frecuentes por servicio irregular o retrasos en la recolección.
+  severity: medium
+  solution_hint: Automatizar la atención al cliente para resolver incidencias rápidamente.
+- description: Dificultades en facturación y cobranza, con altas tasas de morosidad.
+  severity: high
+  solution_hint: Enviar recordatorios de pago y ofrecer opciones de pago en línea.
+- description: Altos costos de disposición final en rellenos sanitarios.
+  severity: medium
+  solution_hint: Recomendar alternativas de reciclaje y reducción de residuos para ahorrar costos.
+- description: Limitada capacidad de respuesta a emergencias o cambios de última hora.
+  severity: low
+  solution_hint: Coordinar servicios de urgencia mediante alertas automatizadas.
+typical_services:
+- Recolección de residuos sólidos urbanos
+- Manejo de residuos peligrosos
+- Servicios de reciclaje y recuperación de materiales
+- Transporte especializado de residuos
+- Tratamiento de residuos orgánicos
+- Limpieza de áreas públicas y eventos
+- Consultoría en gestión integral de residuos
+- Servicios de compactación y almacenamiento
+- Disposición final en rellenos sanitarios autorizados
+- Programas de educación ambiental
+recommended_functions:
+- name: Programación automática de recolección
+  priority: high
+  reason: Optimiza rutas para reducir costos operativos y mejorar la puntualidad.
+- name: Recordatorios de segregación de residuos
+  priority: medium
+  reason: Ayuda a cumplir normativas y aumenta los ingresos por reciclaje.
+- name: Gestión de quejas y soporte al cliente
+  priority: high
+  reason: Mejora la satisfacción del cliente y reduce el tiempo de respuesta.
+- name: Recordatorios de pago y facturación
+  priority: high
+  reason: Disminuye la morosidad y automatiza procesos administrativos.
+- name: Monitoreo de cumplimiento normativo
+  priority: medium
+  reason: Asegura el apego a leyes como la LFPDPPP y evita multas.
+- name: Coordinación de servicios de emergencia
+  priority: low
+  reason: Permite una respuesta rápida a incidentes inesperados.
+typical_integrations:
+- name: Sistemas de gestión de flotas
+  examples:
+  - Trakhees
+  - Geotab
+  - Fleetio adaptado
+  priority: high
+- name: Software de facturación local
+  examples:
+  - Contpaq
+  - Aspel
+  - Facturama
+  priority: high
+- name: Plataformas de CRM
+  examples:
+  - Zoho CRM
+  - Salesforce con localización
+  priority: medium
+- name: Sistemas de monitoreo ambiental
+  examples:
+  - Sistema Nacional de Información Ambiental
+  - sensores locales
+  priority: low
+- name: Herramientas de comunicación empresarial
+  examples:
+  - WhatsApp Business API
+  - Microsoft Teams
+  priority: medium
+industry_faq:
+- question: ¿Cuánto cuesta el servicio de recolección de residuos?
+  answer_template: El costo varía según el volumen, tipo de residuos y frecuencia. Podemos ofrecerle un presupuesto personalizado en MXN.
+- question: ¿Cumplen con la normativa LFPDPPP para el manejo de datos?
+  answer_template: Sí, implementamos protocolos para proteger los datos personales según la LFPDPPP en todos nuestros procesos.
+- question: ¿Ofrecen servicios de reciclaje en mi área?
+  answer_template: Contamos con cobertura en múltiples regiones. Verificaremos la disponibilidad en su ubicación y le proporcionaremos opciones.
+- question: ¿Qué hago si se retrasa la recolección?
+  answer_template: Puede reportarlo a través de nuestro agente de voz para una resolución rápida y reprogramación.
+- question: ¿Cómo puedo reducir mis costos de gestión de residuos?
+  answer_template: Recomendamos programas de segregación y reciclaje, que pueden generar ahorros significativos.
+- question: ¿Aceptan pagos en línea?
+  answer_template: Sí, ofrecemos múltiples métodos de pago en línea para su conveniencia.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por los precios iniciales.
+  script: Hola, nuestros servicios comienzan desde 3000 MXN mensuales, dependiendo de sus necesidades. ¿Podría compartir detalles sobre el volumen y tipo de residuos que maneja para darle una cotización
+    exacta?
+  goal: Obtener información para una cotización personalizada y programar una demostración.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como reciclaje.
+  script: Ofrecemos servicios completos de reciclaje que pueden ayudarle a cumplir normativas y reducir costos. ¿Le interesaría conocer cómo implementarlo en su operación?
+  goal: Educar al cliente sobre beneficios y generar interés en servicios adicionales.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por el cumplimiento normativo.
+  script: Entendemos su preocupación. Nuestro sistema incluye monitoreo automatizado para asegurar el cumplimiento con leyes como la LFPDPPP, evitando multas. ¿Le gustaría una revisión gratuita de su situación
+    actual?
+  goal: Construir confianza y ofrecer una evaluación inicial.
+- trigger: objection_cost
+  situation: Cuando un cliente dice que el servicio es muy caro.
+  script: Comprendo. Sin embargo, con nuestra optimización de rutas y programas de reciclaje, muchos clientes ahorran hasta un 20% en costos operativos. ¿Podría compartir su presupuesto actual para mostrarle
+    el retorno de inversión?
+  goal: Refutar la objeción con datos de ahorro y avanzar en la venta.
+competitors:
+- name: Veolia México
+  positioning: Líder internacional en gestión de residuos
+  strengths:
+  - Tecnología avanzada
+  - Amplia cobertura nacional
+  - Experiencia global
+  weaknesses:
+  - Precios elevados
+  - Servicio menos personalizado
+  our_differentiation: Ofrecemos soluciones más accesibles y adaptadas a pymes, con soporte local rápido.
+- name: Residuos Sólidos Urbanos S.A.
+  positioning: Empresa local establecida en el mercado mexicano
+  strengths:
+  - Conocimiento del mercado local
+  - Precios competitivos
+  weaknesses:
+  - Tecnología limitada
+  - Poca innovación en servicios
+  our_differentiation: Integramos IA y automatización para mejorar eficiencia y reducir costos a largo plazo.
+- name: Cleanway México
+  positioning: Especialista en residuos peligrosos y reciclaje
+  strengths:
+  - Enfoque en nichos específicos
+  - Cumplimiento normativo robusto
+  weaknesses:
+  - Cobertura geográfica limitada
+  - Servicios básicos costosos
+  our_differentiation: Proporcionamos una solución integral con mayor flexibilidad y escalabilidad.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Implementación de optimización de rutas para una pequeña empresa
+    monthly_cost: 5000
+    monthly_savings: 8800
+    payback_months: 4
+  value_anchors:
+  - Reducción de costos operativos hasta en un 30%
+  - Cumplimiento normativo garantizado
+  - Atención al cliente 24/7 automatizada
+market_context:
+  market_size: Estimado en 50 mil millones MXN anuales
+  growth_rate: 5% anual
+  key_trends:
+  - Aumento en regulaciones ambientales
+  - Crecimiento de la economía circular
+  - Adopción de tecnología en logística de residuos
+  seasonality:
+    high:
+    - Temporada de lluvias
+    - Festividades de fin de año
+    low:
+    - Verano
+    - Periodos de sequía
+typical_objections:
+- objection: Ya tengo un proveedor y no quiero cambiar.
+  response: Entiendo. ¿Le interesaría una comparativa gratuita para ver cómo podemos mejorar su eficiencia y ahorrar costos?
+- objection: No confío en la automatización para algo tan críico.
+  response: Nuestro sistema está diseñado con respaldo humano y ha demostrado reducir errores en un 40%. Podemos empezar con una prueba piloto.
+- objection: Es muy caro para mi presupuesto.
+  response: Ofrecemos planes escalables. ¿Podríamos analizar sus necesidades actuales para ajustar una solución que se ajuste a su presupuesto?
+meta:
+  id: waste
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

@@ -1,0 +1,249 @@
+pain_points:
+- description: Alta rotación de personal de vigilancia, lo que genera costos recurrentes
+    de capacitación y riesgos operativos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar el pre-screening de candidatos
+    y programar entrevistas para agilizar la contratación.
+- description: Ineficiencias en la administración manual de reportes de guardias y
+    novedades, generando retrasos y errores.
+  severity: medium
+  solution_hint: El agente puede recolectar reportes vía llamada o mensaje y alimentar
+    un sistema central automáticamente.
+- description: Dificultad para dar seguimiento efectivo a leads y clientes potenciales
+    de manera oportuna.
+  severity: medium
+  solution_hint: El agente puede realizar llamadas de prospección, calificar leads
+    y agendar citas para el equipo de ventas.
+- description: Costos elevados en la central de monitoreo por la necesidad de operadores
+    24/7 para atención básica.
+  severity: high
+  solution_hint: Un agente de voz puede manejar consultas frecuentes y filtrar incidentes,
+    derivando solo emergencias reales a un operador humano.
+- description: Clientes que no renuevan contratos por falta de contacto proactivo
+    y percepción de servicio impersonal.
+  severity: medium
+  solution_hint: El agente puede ejecutar campañas de retención con llamadas automatizadas
+    para recordatorios de renovación y encuestas de satisfacción.
+- description: Demora en la respuesta a solicitudes de servicio o soporte técnico
+    fuera del horario comercial.
+  severity: medium
+  solution_hint: El agente puede atender estas solicitudes 24/7, crear tickets y asignarlos
+    según la urgencia.
+typical_services:
+- Vigilancia fija (guardias de seguridad)
+- Monitoreo de alarmas y CCTV
+- Custodia de valores
+- Escolta vehicular
+- Rondines de vigilancia móvil
+- Sistemas de control de acceso
+- Análisis de riesgos y consultoría
+- Respuesta a alarmas
+- Servicios de ciberseguridad básica
+- Protección para eventos especiales
+recommended_functions:
+- name: Agendamiento de citas para ventas y servicio
+  priority: high
+  reason: Reduce la pérdida de leads calientes y mejora la experiencia del cliente
+    al ofrecer disponibilidad inmediata.
+- name: Calificación inicial de leads
+  priority: high
+  reason: Filtra prospectos no viables, permitiendo que el equipo comercial se enfoque
+    en oportunidades con mayor potencial.
+- name: Recordatorios automatizados de pago y renovación
+  priority: medium
+  reason: Mejora el flujo de caja y reduce la pérdida de clientes por olvido en la
+    renovación del contrato.
+- name: Recepción y triaje de reportes de incidentes
+  priority: high
+  reason: Garantiza que las emergencias sean atendidas rápidamente por personal humano,
+    mientras gestiona reportes rutinarios automáticamente.
+- name: Encuestas de satisfacción post-servicio
+  priority: low
+  reason: Proporciona datos valiosos para mejorar el servicio y detectar problemas
+    de manera proactiva.
+- name: Asistencia para reclutamiento inicial
+  priority: medium
+  reason: Agiliza el proceso de contratación en una industria con alta rotación.
+typical_integrations:
+- name: Software de monitoreo de alarmas
+  examples:
+  - SIAP
+  - DMP
+  - Balam
+  priority: high
+- name: Plataforma de CRM
+  examples:
+  - Ventox
+  - Salesforce
+  - Zoho
+  priority: high
+- name: Sistemas de nómina y RH
+  examples:
+  - Aspel
+  - SAP
+  - sistemas locales
+  priority: medium
+- name: Software de gestión de guardias y rondines
+  examples:
+  - TrackGuard
+  - GuardSys
+  - desarrollos a medida
+  priority: medium
+- name: Herramientas de comunicación unificada
+  examples:
+  - WhatsApp Business API
+  - Teams
+  priority: low
+industry_faq:
+- question: ¿Cumplen con la Ley Federal de Protección de Datos Personales en Posesión
+    de los Particulares (LFPDPPP)?
+  answer_template: Absolutamente. Nuestros sistemas y procesos están diseñados para
+    garantizar el cumplimiento total de la LFPDPPP. La privacidad y seguridad de los
+    datos de su empresa y personal son una prioridad para nosotros.
+- question: ¿Ofrecen servicios en toda la República Mexicana?
+  answer_template: Sí, contamos con cobertura nacional. Tenemos oficinas y personal
+    en las principales ciudades y alianzas estratégicas para brindar soporte en otros
+    estados.
+- question: ¿Cuál es su tiempo de respuesta promedio ante una alarma?
+  answer_template: Nuestro tiempo de respuesta promedio es de [X] minutos en zonas
+    urbanas, dependiendo del servicio contratado y la ubicación específica. Contamos
+    con protocolos optimizados para una reacción rápida.
+- question: ¿Pueden integrarse con nuestros sistemas de cámaras existentes?
+  answer_template: En la mayoría de los casos, sí. Realizamos una evaluación técnica
+    previa para verificar la compatibilidad con sus sistemas de CCTV y alarmas actuales.
+- question: ¿Qué incluye su servicio de monitoreo 24/7?
+  answer_template: Incluye la supervisión constante de sus alarmas por operadores
+    certificados, verificación por video (si aplica), notificación inmediata a usted
+    y a las autoridades correspondientes, y un reporte detallado del incidente.
+- question: ¿Cómo manejan la capacitación de su personal de vigilancia?
+  answer_template: Todo nuestro personal recibe capacitación inicial y continua, que
+    incluye aspectos legales, técnicas de disuasión, primeros auxilios y el uso de
+    tecnología, cumpliendo con los estándares de la industria.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un prospecto pregunta por el precio al inicio de la conversación.
+  script: Entiendo que el presupuesto es una consideración clave. Para ofrecerle una
+    cotización precisa, necesito conocer un poco más sobre sus necesidades. ¿Podría
+    decirme qué tipo de propiedad necesita proteger (oficina, bodega, residencial)
+    y el tamaño aproximado? Así le presento la opción más eficiente en costo.
+  goal: Calificar al lead y evitar dar un precio genérico que pueda ser malinterpretado.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor directo.
+  script: Es una buena opción en el mercado. Donde nosotros destacamos es en nuestra
+    tecnología de automatización y comunicación proactiva. Mientras muchos dependen
+    100% de operadores humanos para llamadas rutinarias, nosotros usamos agentes de
+    voz inteligentes para agilizar procesos como reportes y soporte, lo que nos permite
+    ofrecer un servicio más rápido y reducir costos operativos, beneficio que trasladamos
+    a nuestros clientes.
+  goal: Diferenciar el valor basado en innovación y eficiencia, no solo en el precio.
+- trigger: objection_budget
+  situation: Cuando el cliente dice que no tiene presupuesto o que es muy caro.
+  script: Le entiendo completamente. Por eso nos enfocamos en la eficiencia. Nuestras
+    soluciones, incluyendo la automatización inteligente, están diseñadas para reducir
+    sus costos operativos a largo plazo. Por ejemplo, podemos optimizar los rondines
+    de sus guardias o manejar consultas frecuentes automáticamente, liberando a su
+    personal para tareas más críticas. ¿Podría compartirme cuál es el desafío de seguridad
+    más costoso que enfrenta actualmente?
+  goal: Redirigir la conversación hacia el ROI y los ahorros potenciales, y profundizar
+    en el pain point específico.
+competitors:
+- name: Seguritech
+  positioning: Líder del mercado con amplia presencia nacional.
+  strengths:
+  - Gran infraestructura física
+  - marca reconocida
+  - portafolio amplio de servicios
+  weaknesses:
+  - Estructura de costos alta
+  - puede ser menos ágil en servicio al cliente
+  our_differentiation: Enfoque en tecnología ágil y automatización inteligente que
+    reduce costos operativos y permite un servicio más personalizado y reactivo.
+- name: Prosegur
+  positioning: Competidor global con fuerte presencia en custodia de valores.
+  strengths:
+  - Solidez financiera
+  - experiencia internacional
+  - especialización en logística de valores
+  weaknesses:
+  - Puede ser percibido como impersonal
+  - precios premium
+  our_differentiation: Soluciones más adaptables y comunicación más cercana gracias
+    a herramientas de automatización que permiten a nuestros ejecutivos enfocarse
+    en la relación con el cliente.
+- name: Grupo Multisistemas de Seguridad Industrial (GMSI)
+  positioning: Competidor regional fuerte con enfoque en servicios industriales.
+  strengths:
+  - Especialización en el sector industrial
+  - conocimiento local profundo
+  weaknesses:
+  - Cobertura geográfica limitada
+  - menos enfoque en tecnología digital
+  our_differentiation: Combinamos el conocimiento local con plataformas de IA conversacional
+    para una gestión más eficiente y data-driven de la seguridad, incluso para clientes
+    industriales.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 10000
+  - 150000
+  entry_point: 10000
+  roi_examples:
+  - scenario: Automatización de recepción de reportes y llamadas de servicio para
+      una empresa con 10 guardias.
+    monthly_cost: 2500
+    monthly_savings: 8000
+    payback_months: 1
+  value_anchors:
+  - Reduzca la rotación de su personal con un proceso de reclutamiento más ágil.
+  - 'Transforme su central de monitoreo: agentes de IA manejan lo rutinario, sus operadores
+    enfocan las emergencias reales.'
+  - Mantenga a sus clientes satisfechos con contacto proactivo y automático, sin costo
+    adicional de personal.
+market_context:
+  market_size: Estimado en más de 50 mil millones de MXN anuales.
+  growth_rate: 4-6% anual
+  key_trends:
+  - Aumento de la demanda de soluciones híbridas (físicas + tecnológicas).
+  - Creciente conciencia y requerimientos de ciberseguridad incluso para PYMEs.
+  - Adopción lenta pero en aumento de analítica de video e IA para prevención.
+  - Mayor escrutinio en el cumplimiento de normativas como la LFPDPPP.
+  seasonality:
+    high:
+    - Final de año (octubre-diciembre) por temporada comercial
+    - periodo electoral
+    low:
+    - Enero (post-gastos de fin de año)
+    - verano (julio) en algunos sectores
+typical_objections:
+- objection: Ya tenemos un proveedor y estamos satisfechos.
+  response: Eso es excelente. Muchos de nuestros clientes llegaron a nosotros en esa
+    misma situación, buscando no reemplazar, sino complementar y hacer más eficiente
+    su seguridad actual, especialmente en áreas como la comunicación con guardias
+    o la atención al cliente. ¿Podría contarme cómo manejan actualmente los reportes
+    diarios o las solicitudes de servicio?
+- objection: No confío en que una máquina o un agente de voz pueda manejar temas de
+    seguridad serios.
+  response: Entiendo su precaución. Nuestro agente de voz no reemplaza la toma de
+    decisiones humanas en emergencias. Su rol es manejar las tareas repetitivas y
+    de filtro, como recibir un reporte de 'luz fundida' o agendar una visita de mantenimiento.
+    Así, su personal humano en la central de monitoreo se libera para concentrarse
+    al 100% en las alertas críticas, mejorando la respuesta real ante una emergencia.
+- objection: Es muy complicado integrar un nuevo sistema con lo que ya tenemos.
+  response: Nuestra prioridad es una integración sencilla. Trabajamos con las APIs
+    de los sistemas más comunes en el mercado mexicano. Iniciamos siempre con una
+    evaluación técnica sin costo para asegurar la compatibilidad y plantear una implementación
+    por fases que no interrumpa sus operaciones.
+meta:
+  id: security
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

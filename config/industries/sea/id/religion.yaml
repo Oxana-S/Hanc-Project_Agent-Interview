@@ -1,0 +1,242 @@
+pain_points:
+- description: Kesulitan dalam mengelola jadwal ibadah, pengajian, dan acara keagamaan
+    yang padat dan sering berubah
+  severity: high
+  solution_hint: AI voice agent dapat mengotomatiskan penjadwalan dan mengirimkan
+    pengingat otomatis kepada jemaah melalui panggilan telepon
+- description: Tantangan dalam mengumpulkan dan mencatat sumbangan, zakat, infaq,
+    dan sedekah secara manual yang rentan kesalahan
+  severity: high
+  solution_hint: AI voice agent dapat mencatat donasi melalui panggilan telepon dan
+    terintegrasi dengan sistem pembayaran digital
+- description: Komunikasi yang tidak efektif dengan jemaah mengenai informasi penting
+    seperti perubahan jadwal atau pengumuman darurat
+  severity: medium
+  solution_hint: AI voice agent dapat melakukan broadcast panggilan otomatis ke seluruh
+    jemaah dalam waktu singkat
+- description: Kesulitan merekrut relawan untuk kegiatan keagamaan dan mengelola partisipasi
+    mereka
+  severity: medium
+  solution_hint: AI voice agent dapat melakukan survei dan pendaftaran relawan melalui
+    percakapan telepon otomatis
+- description: Administrasi yang rumit untuk pengurusan pernikahan, khitanan, dan
+    acara keagamaan lainnya
+  severity: medium
+  solution_hint: AI voice agent dapat menangani pendaftaran dan memberikan informasi
+    prosedur secara otomatis
+- description: Keterbatasan dalam memberikan bimbingan rohani dasar dan menjawab pertanyaan
+    keagamaan di luar jam layanan
+  severity: low
+  solution_hint: AI voice agent dapat memberikan informasi dasar dan mengarahkan ke
+    sumber yang tepat
+typical_services:
+- Manajemen Zakat, Infaq, dan Sedekah
+- Pengelolaan Wakaf dan Donasi
+- Administrasi Nikah dan Khitan
+- Koordinasi Kegiatan Ramadhan dan Idul Fitri
+- Manajemen Pengajian Rutin
+- Layanan Bimbingan Haji dan Umrah
+- Pengelolaan Madrasah dan TPQ
+- Koordinasi Acara Keagamaan Besar
+- Layanan Konsultasi Syariah Dasar
+- Manajemen Relawan Keagamaan
+recommended_functions:
+- name: Pengingat Ibadah dan Pengajian
+  priority: high
+  reason: Meningkatkan partisipasi jemaah dalam kegiatan keagamaan
+- name: Penerimaan Donasi via Telepon
+  priority: high
+  reason: Mempermudah proses sumbangan dan meningkatkan transparansi
+- name: Registrasi Acara Keagamaan
+  priority: high
+  reason: Mengotomatiskan pendaftaran untuk kegiatan seperti nikah, khitan, atau haji
+- name: Broadcast Pengumuman Mendesak
+  priority: medium
+  reason: Menyampaikan informasi penting secara cepat ke seluruh jemaah
+- name: Survei Kebutuhan Jemaah
+  priority: medium
+  reason: Memahami kebutuhan komunitas untuk perencanaan program
+- name: Jawaban FAQ Keagamaan Dasar
+  priority: low
+  reason: Memberikan informasi awal sebelum konsultasi langsung
+typical_integrations:
+- name: Sistem Donasi Online
+  examples:
+  - Kitabisa
+  - Dompet Dhuafa
+  - Lazismu
+  priority: high
+- name: Aplikasi Pengelolaan Masjid
+  examples:
+  - Masjid Kita
+  - iMosque
+  - Mosque Manager
+  priority: medium
+- name: Platform Media Sosial
+  examples:
+  - WhatsApp Business
+  - Facebook
+  - Instagram
+  priority: medium
+- name: Sistem Administrasi Pemerintah
+  examples:
+  - Sistem KUA
+  - Aplikasi Disdukcapil
+  priority: low
+- name: Sistem Pembayaran Digital
+  examples:
+  - Dana
+  - OVO
+  - Gopay
+  - LinkAja
+  priority: high
+industry_faq:
+- question: Bagaimana AI voice agent membantu meningkatkan donasi di organisasi kami?
+  answer_template: Dengan AI voice agent, kami dapat mengingatkan donatur secara personal,
+    menerima donasi via telepon, dan memberikan laporan otomatis. Sistem kami juga
+    terintegrasi dengan platform donasi populer seperti Kitabisa.
+- question: Apakah sistem ini sesuai dengan aturan PDP Indonesia?
+  answer_template: Ya, sistem kami sepenuhnya mematuhi regulasi PDP Indonesia. Data
+    jemaah dan transaksi dienkripsi dan hanya digunakan untuk keperluan organisasi
+    keagamaan.
+- question: Bisakah AI voice agent menangani pertanyaan kompleks tentang fiqih atau
+    tafsir?
+  answer_template: Untuk pertanyaan kompleks, AI voice agent akan mengarahkan ke ustadz/ustadzah
+    yang berkompeten. Sistem kami dirancang untuk pertanyaan dasar dan administrasi.
+- question: Berapa lama waktu yang dibutuhkan untuk mengimplementasikan sistem ini?
+  answer_template: Implementasi dasar dapat selesai dalam 2-3 minggu, termasuk pelatihan
+    staf. Kami menyesuaikan dengan kebutuhan spesifik organisasi Anda.
+- question: Bagaimana dengan biaya pemeliharaan bulanan?
+  answer_template: Biaya pemeliharaan sudah termasuk dalam paket bulanan, mencakup
+    update sistem, dukungan teknis, dan peningkatan fitur.
+- question: Bisakah sistem ini digunakan untuk koordinasi kegiatan Ramadhan?
+  answer_template: Sangat bisa. Sistem kami memiliki fitur khusus untuk mengelola
+    jadwal tarawih, tadarus, buka bersama, dan pengumpulan zakat fitrah.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga layanan
+  script: Untuk organisasi sebesar Anda, investasi mulai dari Rp 1,5 juta per bulan
+    sudah mencakup semua fitur dasar. Dengan investasi ini, Anda bisa menghemat hingga
+    20 jam kerja administrasi per minggu. Mau saya jelaskan detail manfaatnya?
+  goal: Memberikan harga transparan dan menunjukkan nilai ROI
+- trigger: feature_request
+  situation: Ketika klien meminta fitur khusus
+  script: Fitur itu tersedia dalam paket premium. Yang menarik, fitur tersebut sudah
+    membantu masjid A meningkatkan donasi bulanan sebesar 35%. Apakah peningkatan
+    donasi menjadi prioritas Bapak/Ibu?
+  goal: Upsell ke paket premium dengan menunjukkan manfaat nyata
+- trigger: competitor_mention
+  situation: Ketika klien menyebutkan pesaing
+  script: Memang ada beberapa penyedia lain. Yang membedakan kami adalah spesialisasi
+    di sektor keagamaan dan integrasi dengan platform donasi lokal. Sistem kami juga
+    sudah digunakan oleh 50+ organisasi keagamaan di Indonesia.
+  goal: Menonjolkan diferensiasi dan pengalaman industri
+- trigger: objection_complexity
+  situation: Ketika klien khawatir tentang kompleksitas sistem
+  script: Staf Anda tidak perlu keahlian teknis khusus. Sistem kami dirancang intuitif
+    dan kami akan memberikan pelatihan lengkap. Biasanya dalam 3 hari staf sudah bisa
+    mengoperasikan dengan lancar.
+  goal: Mengatasi kekhawatiran tentang kesulitan penggunaan
+competitors:
+- name: Bisa.ai
+  positioning: Penyedia AI umum untuk berbagai industri
+  strengths:
+  - Modal besar
+  - Tim R&D kuat
+  - Portofolio klien luas
+  weaknesses:
+  - Tidak spesifik agama
+  - Kurang paham kebutuhan lokal
+  - Dukungan terbatas
+  our_differentiation: Kami spesialis sektor keagamaan dengan pemahaman mendalam tentang
+    budaya dan kebutuhan organisasi Islam di Indonesia
+- name: MosqueTech
+  positioning: Sistem manajemen masjid berbasis web
+  strengths:
+  - Fitur lengkap
+  - Harga kompetitif
+  - Fokus masjid
+  weaknesses:
+  - Tidak ada voice agent
+  - Integrasi terbatas
+  - Update jarang
+  our_differentiation: Kami menawarkan solusi omnichannel dengan voice agent sebagai
+    inti, memberikan pengalaman yang lebih personal untuk jemaah
+- name: DigitalAmal
+  positioning: Platform donasi keagamaan
+  strengths:
+  - Jaringan donatur luas
+  - Brand kuat
+  - Fitur donasi lengkap
+  weaknesses:
+  - Hanya fokus donasi
+  - Tidak ada otomasi administrasi
+  - Biaya komisi tinggi
+  our_differentiation: Solusi holistik yang menggabungkan donasi dengan manajemen
+    organisasi lengkap dalam satu platform
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 1500000
+  - 10000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Masjid menengah dengan 500 jemaah aktif
+    monthly_cost: 2500000
+    monthly_savings: 8000000
+    payback_months: 1
+  - scenario: Yayasan keagamaan dengan program rutin
+    monthly_cost: 4500000
+    monthly_savings: 15000000
+    payback_months: 1
+  value_anchors:
+  - Hemat 20 jam kerja administrasi per minggu
+  - Tingkatkan donasi hingga 35% dengan pengingat personal
+  - 90% jemaah lebih puas dengan komunikasi yang responsif
+market_context:
+  market_size: Rp 2,3 triliun per tahun
+  growth_rate: 15% YoY
+  key_trends:
+  - Digitalisasi pengelolaan organisasi keagamaan
+  - Meningkatnya transparansi dalam pengelolaan donasi
+  - Permintaan layanan keagamaan berbasis teknologi
+  - Integrasi sistem keagamaan dengan platform pemerintah
+  seasonality:
+    high:
+    - Ramadhan
+    - Bulan Haji
+    - Awal Tahun Hijriyah
+    low:
+    - Pertengahan tahun biasa
+    - Musim pancaroba
+typical_objections:
+- objection: Staf kami sudah tua dan tidak terbiasa dengan teknologi canggih
+  response: Justru AI voice agent kami sangat mudah digunakan. Cukup dengan telepon
+    biasa, tidak perlu aplikasi rumit. Kami juga memberikan pelatihan khusus untuk
+    staf senior.
+- objection: Kami khawatir dengan keamanan data jemaah
+  response: Sistem kami menggunakan enkripsi tingkat tinggi dan mematuhi UU PDP. Data
+    disimpan di server lokal Indonesia dan hanya diakses oleh pihak yang berwenang.
+- objection: Anggaran kami terbatas, mungkin tahun depan saja
+  response: Dengan menghemat 20 jam kerja per minggu, sebenarnya Bapak/Ibu sudah bisa
+    balik modal di bulan pertama. Mari kita hitung potensi penghematannya untuk organisasi
+    Anda.
+- objection: Kami sudah punya sistem manual yang berjalan cukup baik
+  response: Sistem manual memang bisa berjalan, tapi dengan teknologi ini, Bapak/Ibu
+    bisa melayani 3x lebih banyak jemaah dengan staf yang sama. Ini tentang efektivitas,
+    bukan sekadar penggantian.
+meta:
+  id: religion
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

@@ -1,0 +1,189 @@
+pain_points:
+- description: Magas verseny a piacon, ami csökkenti a profitmarginokat.
+  severity: high
+  solution_hint: Az AI hangügynök automatizált ügyfélszolgálattal csökkenti a működési költségeket.
+- description: Szezonális kereslet-ingadozások, ami nehéz tervezést eredményez.
+  severity: medium
+  solution_hint: AI-alapú előrejelzés és dinamikus árazás segíthet a kereslet kezelésében.
+- description: Nyelvi akadályok külföldi ügyfelek kiszolgálásában.
+  severity: medium
+  solution_hint: Többnyelvű AI hangügynök automatikus fordítással javítja a kommunikációt.
+- description: Hosszú várási idők ügyfélszolgálati hívások során.
+  severity: high
+  solution_hint: 24/7 elérhető AI hangügynök azonnal válaszol, csökkentve a várakozást.
+- description: Manuális foglalási hibák és adatbeviteli problémák.
+  severity: low
+  solution_hint: Automatizált foglalási rendszerek AI integrációval minimalizálják a hibákat.
+- description: GDPR megfelelőség kihívásai az ügyféladatok kezelésében.
+  severity: medium
+  solution_hint: AI hangügynök biztonságos adatfeldolgozással segít a GDPR betartásában.
+typical_services:
+- Repülőjegy-foglalás
+- Szálloda-foglalás
+- Autóbérlés
+- Utazási biztosítás
+- Csomagutak szervezése
+- Vízumtanácsadás
+- Utazási ügynökség szolgáltatások
+- Kulturális túrák szervezése
+- Utazási applikációk fejlesztése
+- Ügyfélszolgálat utazással kapcsolatos kérdésekhez
+recommended_functions:
+- name: Automatizált ügyfélszolgálat
+  priority: high
+  reason: Csökkenti a várakozási időket és növeli az ügyfélértékeléseket.
+- name: Foglalások kezelése és megerősítése
+  priority: high
+  reason: Minimalizálja a hibákat és javítja a hatékonyságot.
+- name: Többnyelvű támogatás
+  priority: medium
+  reason: Segít külföldi ügyfelek kiszolgálásában és bővíti a piacot.
+- name: GDPR megfelelőség monitorozása
+  priority: medium
+  reason: Biztosítja az adatvédelmi szabályok betartását.
+- name: Szezonális kereslet előrejelzése
+  priority: low
+  reason: Segít optimalizálni az erőforrásokat és árazást.
+- name: Vészhelyzeti támogatás utazás közben
+  priority: medium
+  reason: Növeli az ügyfélbizalmat és lojalitást.
+typical_integrations:
+- name: Foglalási rendszerek
+  examples:
+  - Booking.com API
+  - Amadeus
+  - Sabre
+  priority: high
+- name: Fizetési kapuk
+  examples:
+  - OTP Simple
+  - Barion
+  - PayU
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  - Helyi CRM megoldások
+  priority: medium
+- name: Számlázási szoftverek
+  examples:
+  - e-Számla
+  - Billingo
+  - Számoló
+  priority: medium
+- name: Kommunikációs eszközök
+  examples:
+  - Skype
+  - Zoom
+  - Helyi telefonrendszerek
+  priority: low
+industry_faq:
+- question: Mennyi időbe telik egy foglalás megerősítése?
+  answer_template: A foglalás megerősítése általában azonnal történik AI hangügynökünkkel, de néhány percet is igénybe vehet manuális ellenőrzés esetén.
+- question: Támogatják a külföldi fizetési módokat?
+  answer_template: Igen, integráltunk több nemzetközi fizetési kaput, például PayPal-t és helyi opciókat, mint az OTP Simple.
+- question: Hogyan kezelik az adatvédelmet GDPR szerint?
+  answer_template: AI hangügynökünk biztonságos adatfeldolgozást alkalmaz, és betartja az EU GDPR szabályait az ügyféladatok védelme érdekében.
+- question: Elérhetőek-e csomagkedvezmények csoportos utazásokra?
+  answer_template: Igen, kínálunk egyedi csomagokat és kedvezményeket csoportos foglalásokra, amiket AI segítségével személyre szabhatunk.
+- question: Mi történik, ha lemondok egy utat?
+  answer_template: A lemondási feltételek függnek a szolgáltatótól, de AI hangügynökünk segít gyorsan kezelni a lemondásokat és visszatérítéseket.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy ügyfél árakat kérdez az AI hangügynök szolgáltatásokról.
+  script: Köszönöm a kérdését! AI hangügynök szolgáltatásaink árai a testreszabástól függenek, de kezdődnek havi 50.000 HUF-tól. Ez segít csökkenteni az ügyfélszolgálati költségeket akár 30%-kal. Szeretne
+    részletesebb információt?
+  goal: Ár információ közlése és értékmutató bemutatása további beszélgetés elősegítésére.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél más szolgáltatókat említ.
+  script: Értem, hogy más opciókat is fontolgat. Mi különböző vagyunk, mert AI hangügynökünk 24/7 elérhető, támogatja a GDPR-t, és integrálható helyi rendszerekkel, mint az e-Számla. Ez növeli a hatékonyságot.
+    Szeretne egy demót?
+  goal: Különböző tényezők kiemelése és bemutató kérés.
+- trigger: efficiency_concern
+  situation: Amikor az ügyfél a hatékonysággal kapcsolatos aggályokat fejez ki.
+  script: Az AI hangügynök automatizálja a rutin feladatokat, például foglalásokat és válaszokat, így csökkentve a hibákat és növelve a sebességet. Ügyfeleink átlagosan 20%-kal növelték a hatékonyságot.
+    Segíthetek beállítani egy próbaidőszakot?
+  goal: Hatékonysági előnyök bemutatása és akció ösztönzése.
+competitors:
+- name: Wizz Air
+  positioning: Alacsony költségű légitársaság Közép- és Kelet-Európában.
+  strengths:
+  - Alacsony árak
+  - Széles úthálózat
+  - Erős márkaismeret
+  weaknesses:
+  - Korlátozott ügyfélszolgálat
+  - Kevesebb személyre szabás
+  our_differentiation: AI-alapú személyre szabott ügyfélszolgálat és teljes körű utazási megoldások, nem csak repülőjegyek.
+- name: Booking.com
+  positioning: Globális online foglalási platform szállásokra.
+  strengths:
+  - Nagy választék
+  - Felhasználóbarát felület
+  - Nemzetközi jelenlét
+  weaknesses:
+  - Magas jutalékok
+  - Korlátozott helyi támogatás
+  our_differentiation: Helyi piacra fókuszáló, magyar nyelvű AI hangügynök integrációval helyi fizetési és számlázási rendszerekhez.
+- name: Utazási ügynökségek (pl. lokal agents)
+  positioning: Helyi utazási tanácsadás és szervezés.
+  strengths:
+  - Személyes kapcsolat
+  - Helyi ismeretek
+  - Rugalmas szolgáltatások
+  weaknesses:
+  - Magas költségek
+  - Korlátozott működési idő
+  - Manuális folyamatok
+  our_differentiation: Automatizált, költséghatékony megoldások AI segítségével, amelyek kiegészítik a személyes szolgáltatásokat.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Kis utazási ügynökség, ahol AI hangügynök csökkenti az ügyfélszolgálati költségeket.
+    monthly_cost: 100000
+    monthly_savings: 175000
+    payback_months: 4
+  value_anchors:
+  - Akár 40%-os költségcsökkentés ügyfélszolgálati műveletekben.
+  - 24/7 ügyféltámogatás növeli az elégedettséget.
+  - GDPR megfelelőség biztosítása automatizált adatkezeléssel.
+market_context:
+  market_size: Becslések szerint a magyar utazási ipar éves forgalma több száz milliárd HUF.
+  growth_rate: Évi 5-10% növekedés, különösen az online foglalások terén.
+  key_trends:
+  - Növekvő kereslet a helyi és kulturális utazások iránt.
+  - Digitális átállás és mobilalkalmazások használatának növekedése.
+  - Fenntartható utazási preferenciák erősödése.
+  seasonality:
+    high:
+    - Június - Augusztus
+    - December
+    low:
+    - Január - Február
+    - Október
+typical_objections:
+- objection: Túl drágának tűnik a technológia.
+  response: Értem a aggodalmat, de AI hangügynökünk hosszú távon megtérül, mert csökkenti a munkaerőköltséget és növeli a hatékonyságot. Kínálunk havi előfizetéseket, kezdve 50.000 HUF-tól.
+- objection: Félek, hogy elveszítem a személyes kapcsolatot az ügyfelekkel.
+  response: AI hangügynökünk kiegészíti, nem helyettesíti a személyes szolgáltatást. Automatizálja a rutin feladatokat, így Ön inkább értékesebb interakciókra fókuszálhat.
+- objection: Nehéz integrálni a meglévő rendszereinkbe.
+  response: Kínálunk rugalmas integrációs opciókat helyi rendszerekhez, mint az e-Számla vagy OTP Simple, és támogatunk a bevezetés során.
+meta:
+  id: travel
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- travel
+- tourism
+- travel agency
+- tour operator
+_extends: _base/travel

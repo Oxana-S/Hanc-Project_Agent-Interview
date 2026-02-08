@@ -1,0 +1,215 @@
+pain_points:
+- description: Alto costo de la mano de obra para atención al cliente telefónica
+  severity: high
+  solution_hint: Agente de voz AI puede manejar consultas básicas y redirigir llamadas,
+    reduciendo costos operativos
+- description: Cumplimiento complejo con LFPDPPP en el manejo de datos personales
+  severity: high
+  solution_hint: Agente de voz AI puede integrar protocolos de seguridad y consentimiento
+    automatizados para asegurar cumplimiento
+- description: Fraude y riesgos de ciberseguridad en transacciones bancarias en línea
+  severity: high
+  solution_hint: Agente de voz AI puede verificar identidad mediante biometría de
+    voz y alertar sobre actividades sospechosas
+- description: Ineficiencias en procesos de cobranza y seguimiento de pagos
+  severity: medium
+  solution_hint: Agente de voz AI puede automatizar recordatorios de pago y gestionar
+    acuerdos de pago
+- description: Falta de personalización en servicios financieros para clientes minoristas
+  severity: medium
+  solution_hint: Agente de voz AI puede ofrecer recomendaciones personalizadas basadas
+    en historial y preferencias del cliente
+- description: Dificultades en integración de sistemas legacy con plataformas digitales
+  severity: medium
+  solution_hint: Agente de voz AI puede actuar como interfaz unificada, conectándose
+    a múltiples sistemas mediante APIs
+- description: Altas tasas de abandono de llamadas debido a largos tiempos de espera
+  severity: low
+  solution_hint: Agente de voz AI puede gestionar colas de llamadas y proporcionar
+    respuestas inmediatas a consultas frecuentes
+typical_services:
+- Banca personal
+- Seguros de vida y daños
+- Inversiones y gestión de patrimonios
+- Créditos hipotecarios y personales
+- Tarjetas de crédito y débito
+- Fintech y pagos digitales
+- Asesoría financiera y fiscal
+- Fondos de inversión
+- Leasing y factoring
+- Servicios de nómina y contabilidad
+recommended_functions:
+- name: Atención al cliente automatizada
+  priority: high
+  reason: Reduce costos y mejora la disponibilidad 24/7 para consultas comunes
+- name: Verificación de identidad por voz
+  priority: high
+  reason: Crucial para cumplir con LFPDPPP y prevenir fraudes en transacciones
+- name: Procesamiento de pagos y cobranzas
+  priority: medium
+  reason: Automatiza tareas repetitivas y reduce errores en gestiones financieras
+- name: Asesoramiento básico de productos
+  priority: medium
+  reason: Personaliza la experiencia del cliente y aumenta ventas cruzadas
+- name: Integración con sistemas CRM y bancarios
+  priority: high
+  reason: Facilita el acceso a datos del cliente y mejora la eficiencia operativa
+- name: Alertas y notificaciones proactivas
+  priority: low
+  reason: Mejora la retención de clientes mediante comunicación oportuna
+typical_integrations:
+- name: Sistemas bancarios core
+  examples:
+  - Banorte
+  - BBVA México
+  - Santander México
+  priority: high
+- name: Plataformas CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - sistemas locales como Nubital
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Contpaq
+  - SAP Business One
+  - QuickBooks México
+  priority: medium
+- name: Herramientas de ciberseguridad
+  examples:
+  - Kaspersky
+  - Trend Micro
+  - soluciones locales como Seguritech
+  priority: high
+- name: Sistemas de pagos digitales
+  examples:
+  - Mercado Pago
+  - Clip
+  - OXXO Pay
+  priority: medium
+industry_faq:
+- question: ¿Cómo garantizan la seguridad de mis datos personales?
+  answer_template: Nuestro agente de voz AI cumple con LFPDPPP, utilizando encriptación
+    y protocolos de consentimiento para proteger su información
+- question: ¿Puede el agente manejar transacciones bancarias complejas?
+  answer_template: Sí, el agente puede asistir con consultas y procesar transacciones
+    básicas, con redirección a agentes humanos para casos complejos
+- question: ¿Qué costo tiene implementar esta solución?
+  answer_template: Los precios parten desde 5,000 MXN mensuales, con ahorros significativos
+    en costos operativos a largo plazo
+- question: ¿Funciona con mis sistemas actuales?
+  answer_template: Sí, ofrecemos integraciones flexibles con sistemas populares en
+    México, como Banorte o Contpaq
+- question: ¿Cómo mejora la experiencia del cliente?
+  answer_template: Proporciona respuestas rápidas y personalizadas, reduciendo tiempos
+    de espera y aumentando la satisfacción
+- question: ¿Es compatible con dispositivos móviles?
+  answer_template: Absolutamente, el agente de voz AI funciona en smartphones y otros
+    dispositivos para accesibilidad total
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de la solución
+  script: Entendemos que el presupuesto es clave. Nuestra solución parte desde 5,000
+    MXN al mes, y típicamente ahorra hasta un 30% en costos de atención al cliente.
+    ¿Le gustaría ver un cálculo personalizado?
+  goal: Convertir la consulta de precio en una demostración de valor y ahorro
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos, como cobranzas
+  script: Nuestro agente de voz AI puede automatizar cobranzas, reduciendo el tiempo
+    de gestión en un 50%. ¿Tiene problemas actuales con pagos atrasados?
+  goal: Identificar pain points específicos y ofrecer soluciones tangibles
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por cumplimiento normativo
+  script: Nos especializamos en cumplir con LFPDPPP en México. Nuestro agente incluye
+    características de seguridad integradas. ¿Le gustaría una revisión de cumplimiento?
+  goal: Aliviar preocupaciones y posicionar la solución como segura y confiable
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona un competidor
+  script: Valoramos a [competidor], pero nuestra solución ofrece integraciones más
+    locales en México y soporte en español nativo. ¿Podemos mostrarle cómo nos diferenciamos?
+  goal: Destacar ventajas competitivas y personalización local
+competitors:
+- name: Salesforce Einstein Voice
+  positioning: Solución global de IA para CRM
+  strengths:
+  - Integración con Salesforce
+  - capacidades avanzadas de análisis
+  weaknesses:
+  - Alto costo
+  - menos adaptado a regulaciones mexicanas
+  our_differentiation: Precios más accesibles en MXN y cumplimiento específico para
+    LFPDPPP
+- name: Nuance Communications
+  positioning: Proveedor líder en soluciones de voz para banca
+  strengths:
+  - Experiencia en el sector
+  - tecnología probada
+  weaknesses:
+  - Implementación compleja
+  - soporte limitado en español latino
+  our_differentiation: Implementación rápida y soporte local en México con conocimiento
+    del mercado
+- name: Fintech locales como Kubo.financiero
+  positioning: Plataformas digitales para servicios financieros
+  strengths:
+  - Enfoque en innovación
+  - conocimiento del mercado mexicano
+  weaknesses:
+  - Alcance limitado a ciertos servicios
+  - menos experiencia en voz AI
+  our_differentiation: Solución integral de voz AI que complementa servicios existentes
+    con automatización escalable
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de atención al cliente para una pequeña institución financiera
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  value_anchors:
+  - Ahorre hasta un 40% en costos operativos con automatización
+  - Implementación en semanas, no meses, con retorno de inversión rápido
+  - Cumplimiento garantizado con LFPDPPP sin costos adicionales
+market_context:
+  market_size: Estimado en 500 millones de USD anuales para IA en finanzas en México
+  growth_rate: 15% YoY
+  key_trends:
+  - Aumento de adopción de fintech y digitalización bancaria
+  - Mayor enfoque en ciberseguridad y protección de datos
+  - Crecimiento de servicios financieros inclusivos para poblaciones no bancarizadas
+  seasonality:
+    high:
+    - Enero (cierres fiscales)
+    - Diciembre (compras navideñas)
+    low:
+    - Agosto (vacaciones de verano)
+typical_objections:
+- objection: Es muy costoso para nuestro presupuesto
+  response: Entiendo, pero considere el ahorro a largo plazo. Con ahorros de hasta
+    30,000 MXN mensuales en mano de obra, la inversión se recupera en pocos meses
+- objection: Nos preocupa la pérdida del toque humano
+  response: Nuestro agente complementa, no reemplaza, al equipo humano. Libera a su
+    personal para tareas más estratégicas mientras maneja consultas rutinarias
+- objection: Ya tenemos sistemas establecidos y no queremos cambios
+  response: Nuestra solución se integra sin problemas con sus sistemas actuales. Podemos
+    empezar con un piloto de bajo riesgo para demostrar el valor
+meta:
+  id: finance
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

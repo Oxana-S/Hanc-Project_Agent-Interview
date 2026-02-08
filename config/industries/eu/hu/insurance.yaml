@@ -1,0 +1,204 @@
+pain_points:
+- description: Az ügyfelek gyakran panaszolják a lassú kárelbírálási folyamatokat, ami elégedetlenséghez vezet.
+  severity: high
+  solution_hint: AI hangügynök automatizálhatja az elsődleges kárellenőrzést, gyorsítva a folyamatot.
+- description: A személyre szabott szolgáltatások hiánya miatt magas az ügyfélkiesés.
+  severity: medium
+  solution_hint: AI hangügynök felhasználási adatok alapján személyre szabott ajánlatokat készíthet.
+- description: GDPR és helyi szabályozások betartása bonyolult és időigényes.
+  severity: high
+  solution_hint: AI hangügynök integrálható compliance eszközökkel, automatizálva az adatvédelem ellenőrzését.
+- description: Magas operációs költségek a manuális adminisztráció miatt.
+  severity: medium
+  solution_hint: AI hangügynök automatizálhatja a rutin feladatokat, mint az adatbevitel, költségeket csökkentve.
+- description: Nehezen elérhetőek az új ügyfelek, különösen a fiatalabb korosztályban.
+  severity: medium
+  solution_hint: AI hangügynök digitális csatornákon keresztül proaktív marketinget végezhet, elérést bővítve.
+- description: Az ügyfélszolgálati csatornák túlterheltek, hosszú várakozási időkkel.
+  severity: low
+  solution_hint: AI hangügynök kezelheti a gyakori kérdéseket, terhet levéve az emberi ügynökökről.
+typical_services:
+- Életbiztosítás
+- Autóbiztosítás
+- Lakásbiztosítás
+- Egészségbiztosítás
+- Utasbiztosítás
+- Vállalati biztosítás
+- Felelősségbiztosítás
+- Vagyonbiztosítás
+- Balesetbiztosítás
+- Nyugdíjbiztosítás
+recommended_functions:
+- name: Automated Quote Generation
+  priority: high
+  reason: Gyors és pontos árajánlatok készítése növeli az ügyfélszerzést.
+- name: Claim Processing Assistance
+  priority: high
+  reason: Gyorsabb kárelbírálás javítja az ügyfélélményt és csökkenti a költségeket.
+- name: Customer Onboarding
+  priority: medium
+  reason: Zökkenőmentes új ügyfélregisztráció és adatgyűjtés.
+- name: Compliance Monitoring
+  priority: high
+  reason: Automatizált GDPR és egyéb szabályozási követelmények betartása.
+- name: Marketing Campaign Management
+  priority: medium
+  reason: Célozott marketingkampányok végrehajtása új ügyfelek vonzására.
+- name: Data Analysis and Reporting
+  priority: low
+  reason: Elemzések biztosítása a döntéshozatal támogatására.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - SAP CRM
+  - Oracle CX
+  - helyi Gecad megoldások
+  priority: high
+- name: Pénzügyi szoftverek
+  examples:
+  - SAP Financials
+  - helyi banki integrációk
+  priority: high
+- name: Adatbázisok
+  examples:
+  - MySQL
+  - PostgreSQL
+  - felhő alapú megoldások
+  priority: medium
+- name: Kommunikációs platformok
+  examples:
+  - Microsoft Teams
+  - helyi telekom rendszerek
+  priority: medium
+- name: Compliance eszközök
+  examples:
+  - OneTrust
+  - helyi adatvédelmi szoftverek
+  priority: high
+industry_faq:
+- question: Mennyi időt vesz igénybe egy kártalanítási eljárás?
+  answer_template: A kártalanítási folyamat általában 5-10 munkanap, de AI segítségével ez lerövidíthető 2-3 munkanapra.
+- question: Milyen biztosítási csomagokat ajánlotok kisvállalkozásoknak?
+  answer_template: Kisvállalkozásoknak ajánljuk a vállalati felelősségbiztosítást és vagyonbiztosítást, személyre szabott árakkal.
+- question: Hogyan védik az adataimat a GDPR szabályok szerint?
+  answer_template: AI rendszerünk automatikusan betartja a GDPR előírásokat, titkosított adattárolással és hozzáférés-ellenőrzéssel.
+- question: Lehetőség van-e online szerződéskötésre?
+  answer_template: Igen, AI hangügynökünk segítségével teljes online szerződéskötési folyamatot kínálunk.
+- question: Mi a teendő, ha elvesztettem a biztosítási szerződésemet?
+  answer_template: AI ügynökünk segíthet digitális másolat kiadásában vagy új szerződés létrehozásában azonosítás után.
+- question: Hogyan frissíthetem biztosítási adataimat?
+  answer_template: AI hangügynökön keresztül bármikor frissítheti adatait, gyors és biztonságos módon.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor ügyfél árakat kér biztosítási szolgáltatásokra.
+  script: Köszönjük érdeklődését! AI megoldásunkkal személyre szabott árajánlatot készítünk, kezdve 50.000 HUF/hótól. Szeretne részleteket hallani?
+  goal: Ártranszparencia biztosítása és érdeklődés felkeltése.
+- trigger: service_inquiry
+  situation: Amikor ügyfél információt kér specifikus biztosítási típusokról.
+  script: Természetesen! Kínálunk élet-, autó-, lakásbiztosítást és többet. AI segítségével ajánljuk a legjobb opciót igényei alapján. Melyik terület érdekli?
+  goal: Szolgáltatások bemutatása és igények felmérése.
+- trigger: competitor_comparison
+  situation: Amikor ügyfél más biztosítókhoz hasonlít minket.
+  script: Értjük! AI technológiánk miatt gyorsabb kárelbírálást és alacsonyabb költségeket kínálunk. Például, havonta 20.000 HUF megtakarítást eredményezhet. Szeretné látni a számokat?
+  goal: Különbségek kiemelése és érték bemutatása.
+- trigger: compliance_concern
+  situation: Amikor ügyfél aggódik adatvédelmi szabályok miatt.
+  script: Biztonságban van! AI rendszerünk teljes GDPR megfelelőséget biztosít, automatizált ellenőrzésekkel. Megmutathatom, hogyan védjük adatait.
+  goal: Bizalom építése compliance garanciákkal.
+competitors:
+- name: Allianz Hungária
+  positioning: Nagy múltú, széleskörű szolgáltatásokat kínáló biztosító.
+  strengths:
+  - Erős márkanév
+  - Széles termékválaszték
+  - Jól kialakított hálózat
+  weaknesses:
+  - Magasabb költségek
+  - Lassabb digitalizáció
+  our_differentiation: AI-alapú, gyorsabb és költséghatékonyabb megoldások.
+- name: Generali Biztosító
+  positioning: Megbízható, hagyományos biztosító személyre szabott szolgáltatásokkal.
+  strengths:
+  - Jó ügyfélszolgálat
+  - Stabil pénzügyi háttér
+  weaknesses:
+  - Korlátozott online lehetőségek
+  - Kevesebb innováció
+  our_differentiation: Teljesen automatizált, digitális elsődleges folyamatok.
+- name: Aegon Magyarország
+  positioning: Életbiztosításra fókuszáló, nemzetközi háttérrel rendelkező cég.
+  strengths:
+  - Erősség az életbiztosításban
+  - Nemzetközi tapasztalat
+  weaknesses:
+  - Kevésbé diverzifikált
+  - Lassú adaptáció új technológiákhoz
+  our_differentiation: Többféle biztosítási típus AI optimalizálással.
+- name: Groupama Biztosító
+  positioning: Francia eredetű, mezőgazdasági és vállalati biztosításokra specializálódott.
+  strengths:
+  - Specializált termékek
+  - Erős helyi jelenlét
+  weaknesses:
+  - Szűkebb piaci részesedés
+  - Kevesebb digitális fejlesztés
+  our_differentiation: Átfogó AI integráció minden biztosítási típushoz.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Kisvállalkozás számára automatikus kárelbírálás bevezetése
+    monthly_cost: 50000
+    monthly_savings: 91700
+    payback_months: 3
+  - scenario: Ügyfélszolgálati teher csökkentése AI hangügynökkel
+    monthly_cost: 40000
+    monthly_savings: 80000
+    payback_months: 2
+  value_anchors:
+  - AI segítségével 30%-kal gyorsabb kárelbírálás.
+  - Automatizált adminisztrációval 25% költségcsökkentés.
+  - GDPR megfelelőség garantálva, bírságok elkerülésével.
+market_context:
+  market_size: Körülbelül 500 milliárd HUF éves bevétel
+  growth_rate: 3-5% éves növekedés
+  key_trends:
+  - Növekvő digitalizáció és online szerződéskötés.
+  - Nagyobb hangsúly az adatvédelem és GDPR betartásán.
+  - Növekvő kereslet személyre szabott biztosítási termékekre.
+  - AI és automatizáció bevezetése a hatékonyság növelésére.
+  seasonality:
+    high:
+    - tavasz
+    - ősz
+    - mivel ekkor gyakoriak a biztosítási felülvizsgálatok és új szerződések.
+    low:
+    - nyár
+    - tél
+    - csökken ügyféltájékoztatási aktivitás ünnepek miatt.
+typical_objections:
+- objection: Túl drága az AI megoldás a cégem számára.
+  response: AI rendszerünk hosszú távon megtérül, például havonta 20.000 HUF megtakarítással. Kínálunk rugalmas fizetési lehetőségeket is.
+- objection: Nem bízom az automatizált rendszerekben, főleg bizalmas adatokkal.
+  response: Teljesen megértjük. AI rendszerünk titkosított és GDPR megfelelő, és emberi felügyelettel kiegészítve működik a biztonság érdekében.
+- objection: A jelenlegi biztosítóm megfelel, nincs szükségem változtatásra.
+  response: Kíváncsi lennék, hogy AI segítségével lehet-e javítani a szolgáltatásokat, például gyorsabb kárelbírálással. Egy ingyenes elemzést ajánlok.
+- objection: Nincs időm új technológiákat bevezetni.
+  response: AI megoldásunk könnyen integrálható, és minimalizálja a zavarást. Segítünk a bevezetésben, gyors ROI-val.
+meta:
+  id: insurance
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- insurance
+- coverage
+- policy
+- underwriting
+_extends: _base/insurance

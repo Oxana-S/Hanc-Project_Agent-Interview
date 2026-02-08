@@ -1,0 +1,215 @@
+pain_points:
+- description: Alti costi operativi legati a manutenzione e carburante.
+  severity: high
+  solution_hint: L'agente vocale AI può ottimizzare le prenotazioni e ridurre gli
+    sprechi.
+- description: Complessità nel rispetto del GDPR per la gestione dei dati dei passeggeri.
+  severity: high
+  solution_hint: Automazione della conformità con risposte vocali sicure e registrazioni
+    controllate.
+- description: Flessioni stagionali nella domanda, specialmente in estate e inverno.
+  severity: medium
+  solution_hint: Gestione dinamica delle prenotazioni e offerte promozionali tramite
+    AI.
+- description: Ritardi nella manutenzione degli aeromobili che causano cancellazioni.
+  severity: medium
+  solution_hint: Monitoraggio vocale degli stati di manutenzione e alert automatici.
+- description: Sovraccarico del servizio clienti per richieste di modifica o rimborso.
+  severity: medium
+  solution_hint: Risposte automatizzate a domande frequenti e gestione ticket.
+- description: Volatilità dei prezzi del carburante che impatta i margini.
+  severity: high
+  solution_hint: Analisi vocale dei trend di mercato per decisioni di acquisto ottimizzate.
+- description: Carenza di personale qualificato per operazioni a terra.
+  severity: low
+  solution_hint: Assistenza vocale per formazione e supporto ai dipendenti esistenti.
+typical_services:
+- Prenotazione voli
+- Gestione bagagli
+- Manutenzione aeromobili
+- Assistenza a terra
+- Servizi di catering a bordo
+- Vendita di biglietti e pacchetti viaggio
+- Gestione loyalty program
+- Supporto clienti 24/7
+- Controllo del traffico aereo
+- Noleggio aeromobili privati
+recommended_functions:
+- name: Prenotazione automatica voli
+  priority: high
+  reason: Riduce i tempi di attesa e aumenta le conversioni.
+- name: Supporto clienti multilingue
+  priority: high
+  reason: Migliora l'esperienza per turisti internazionali in Italia.
+- name: Gestione richieste di rimborso
+  priority: medium
+  reason: Automatizza processi complessi e riduce errori.
+- name: Monitoraggio manutenzione aeromobili
+  priority: medium
+  reason: Previene ritardi e garantisce sicurezza.
+- name: Vendita di servizi aggiuntivi
+  priority: low
+  reason: Aumenta le entrate con upselling mirato.
+- name: Aggiornamenti in tempo reale su voli
+  priority: high
+  reason: Fornisce informazioni cruciali ai passeggeri.
+typical_integrations:
+- name: Sistema di prenotazione (PSS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Sistema di gestione manutenzione (MRO)
+  examples:
+  - IBM Maximo
+  - SAP
+  - Oracle
+  priority: high
+- name: Piattaforma CRM
+  examples:
+  - Salesforce
+  - Zoho
+  - HubSpot
+  priority: medium
+- name: Sistema di gestione bagagli
+  examples:
+  - SITA
+  - BagsID
+  - AirportLabs
+  priority: medium
+- name: Software di contabilità
+  examples:
+  - TeamSystem
+  - Sage
+  - Oracle NetSuite
+  priority: low
+industry_faq:
+- question: Quali sono i vostri orari di assistenza clienti?
+  answer_template: Offriamo supporto 24 ore su 24, 7 giorni su 7 tramite il nostro
+    agente vocale AI per qualsiasi necessità.
+- question: Come posso modificare la mia prenotazione?
+  answer_template: Puoi modificare la prenotazione verbalmente tramite il nostro sistema
+    AI; ti guideremo passo passo.
+- question: Quali sono le politiche di rimborso?
+  answer_template: Le politiche di rimborso variano in base alla tariffa; l'agente
+    AI può fornirti dettagli specifici in base al tuo biglietto.
+- question: Offrite servizi per disabili?
+  answer_template: Sì, abbiamo servizi dedicati; l'agente AI può prenotare assistenza
+    speciale per te.
+- question: Come gestite la sicurezza dei miei dati?
+  answer_template: Rispettiamo il GDPR; tutti i dati sono crittografati e gestiti
+    in conformità con le norme UE.
+- question: Posso prenotare voli per gruppi?
+  answer_template: Certamente, l'agente AI può gestire prenotazioni di gruppo e offrire
+    sconti personalizzati.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi dei servizi.
+  script: Ciao, i nostri servizi iniziano da un punto di ingresso accessibile. Posso
+    personalizzare una soluzione basata sulle tue esigenze specifiche per massimizzare
+    il ROI. Vuoi che ti spieghi i dettagli?
+  goal: Qualificare il lead e programmare una dimostrazione.
+- trigger: service_inquiry
+  situation: Quando un cliente è interessato a un servizio specifico come la manutenzione.
+  script: Grazie per l'interesse! Offriamo manutenzione aeromobili con monitoraggio
+    AI per ridurre i tempi di fermo. Possiamo iniziare con una valutazione gratuita.
+    Ti va bene?
+  goal: Convertire l'interesse in un appuntamento di vendita.
+- trigger: competitor_mention
+  situation: Quando un cliente menziona un concorrente.
+  script: Capisco. Rispetto ad altri, noi offriamo integrazioni AI vocali che automatizzano
+    i processi chiave, riducendo i costi del 20%. Posso mostrarti come?
+  goal: Evidenziare il nostro vantaggio competitivo e chiudere la vendita.
+competitors:
+- name: Alitalia
+  positioning: Compagnia di bandiera italiana con forte presenza domestica.
+  strengths:
+  - Brand riconosciuto
+  - Rete estesa
+  - Esperienza decennale
+  weaknesses:
+  - Alti costi operativi
+  - Burocrazia interna
+  - Servizio clienti lento
+  our_differentiation: Automazione AI che riduce i costi e migliora l'efficienza operativa.
+- name: Ryanair
+  positioning: Low-cost leader in Europa con base in Italia.
+  strengths:
+  - Prezzi bassi
+  - Frequenza voli
+  - Modello efficiente
+  weaknesses:
+  - Servizi limitati
+  - Esperienza cliente basilare
+  - Dipendenza da stagionalità
+  our_differentiation: Servizi vocali personalizzati che migliorano l'esperienza senza
+    aumentare i costi.
+- name: ITA Airways
+  positioning: Nuova compagnia statale italiana in crescita.
+  strengths:
+  - Supporto governativo
+  - Flessibilità strategica
+  - Focus su innovazione
+  weaknesses:
+  - Instabilità iniziale
+  - Rete limitata
+  - Integrazioni tecnologiche in fase di sviluppo
+  our_differentiation: Soluzioni AI pronte all'uso che accelerano la digitalizzazione.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automazione del servizio clienti per una piccola compagnia aerea
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 4
+  - scenario: Monitoraggio manutenzione AI per flotta media
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 3
+  value_anchors:
+  - Riduzione del 30% dei costi operativi con automazione vocale.
+  - Aumento del 25% della soddisfazione clienti tramite supporto AI 24/7.
+  - Conformità GDPR garantita senza sforzi aggiuntivi.
+market_context:
+  market_size: Circa 10 miliardi di EUR annui
+  growth_rate: 3% YoY
+  key_trends:
+  - Digitalizzazione accelerata post-pandemia
+  - Crescente domanda per voli sostenibili
+  - Espansione del turismo in regioni meno servite
+  seasonality:
+    high:
+    - Luglio-Agosto
+    - Dicembre-Gennaio
+    low:
+    - Novembre
+    - Febbraio
+typical_objections:
+- objection: Il costo iniziale è troppo alto.
+  response: Il ROI si ripaga in pochi mesi con risparmi operativi significativi. Possiamo
+    iniziare con un piano scalabile.
+- objection: Non siamo pronti per l'AI.
+  response: Iniziamo con piccoli moduli, come il servizio clienti, per dimostrare
+    il valore senza rischi.
+- objection: Abbiamo già sistemi in posto.
+  response: Le nostre soluzioni si integrano facilmente con software esistenti, migliorando
+    l'efficienza senza sostituzioni costose.
+meta:
+  id: aviation
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

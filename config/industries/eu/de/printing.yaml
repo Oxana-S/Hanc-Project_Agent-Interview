@@ -1,0 +1,216 @@
+pain_points:
+- description: Lange Lieferzeiten für Papier und Druckmaterialien führen zu Produktionsverzögerungen.
+  severity: high
+  solution_hint: Unser KI-Agent kann Lieferanten automatisiert kontaktieren und Verfügbarkeiten
+    prüfen, um Alternativen vorzuschlagen.
+- description: Hohe Energiekosten belasten die Rentabilität, insbesondere bei 24/7-Betrieb.
+  severity: high
+  solution_hint: Der Agent analysiert Maschinenlaufzeiten und schlägt optimierte Betriebszeiten
+    vor, um Energie zu sparen.
+- description: Komplexe Angebotserstellung für individualisierte Druckaufträge ist
+    zeitaufwändig.
+  severity: medium
+  solution_hint: Der Agent sammelt Kundenanforderungen per Telefon und erstellt automatisch
+    ein erstes Angebot.
+- description: Terminvereinbarungen mit Kunden führen zu vielen Telefonaten und E-Mail-Wechsel.
+  severity: low
+  solution_hint: Der KI-Agent vereinbart eigenständig Abhol- und Liefertermine im
+    Kalender des Kunden.
+- description: Fehler in Kundendaten führen zu falschen Personalisierungen und Retouren.
+  severity: medium
+  solution_hint: Der Agent bestätigt und validiert Kundendaten während des Gesprächs
+    gemäß DSGVO.
+- description: Druckmaschinen benötigen regelmäßige Wartung, Ausfallzeiten sind teuer.
+  severity: medium
+  solution_hint: Der Agent plant proaktiv Wartungstermine und informiert den Technikerdienst.
+typical_services:
+- Digitaldruck
+- Offsetdruck
+- Großformatdruck
+- Verpackungsdruck
+- Bücherdruck
+- Visitenkarten und Geschäftsausstattung
+- Werbemittel und Textildruck
+- Schilder und Folienbeschriftung
+- Briefkuvertierung und Versanddienstleistungen
+- Datenbankgestützter Personalisierter Druck
+recommended_functions:
+- name: Terminvereinbarung
+  priority: high
+  reason: Reduziert den administrativen Aufwand für Abholung, Lieferung und Besichtigungstermine
+    erheblich.
+- name: Angebotserstellung
+  priority: high
+  reason: Beschleunigt den Sales-Prozess für standardisierte und komplexe Anfragen.
+- name: Bestandsabfrage
+  priority: medium
+  reason: Gibt Kunden sofort Auskunft über Verfügbarkeit von Standardprodukten.
+- name: Störungsmeldung
+  priority: medium
+  reason: Ermöglicht Kunden, Druckprobleme sofort zu melden, und leitet Tickets weiter.
+- name: Zahlungserinnerung
+  priority: low
+  reason: Automatisiert freundliche Erinnerungen für offene Rechnungen und verbessert
+    Cashflow.
+typical_integrations:
+- name: ERP-System
+  examples:
+  - SAP
+  - Lexware
+  - Datev
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - SevDesk
+  priority: high
+- name: Online-Druckportale
+  examples:
+  - Onlineprinters
+  - Flyeralarm
+  priority: medium
+- name: Versanddienstleister-Schnittstelle
+  examples:
+  - DHL Geschäftskundenportal
+  - Hermes
+  priority: medium
+industry_faq:
+- question: Wie schnell kann ich meine Visitenkarten erhalten?
+  answer_template: Bei Standard-Digitaldruck liefern wir in der Regel innerhalb von
+    2-3 Werktagen. Expresslieferung am nächsten Werktag ist gegen Aufpreis möglich.
+- question: Können Sie auch kleine Auflagen drucken?
+  answer_template: Ja, absolut. Durch unseren Digitaldruck sind auch Auflagen ab 1
+    Stück wirtschaftlich realisierbar, ideal für Tests oder personalisierte Kampagnen.
+- question: Welche Daten benötigen Sie für den Druck?
+  answer_template: Wir benötigen druckfähige Daten im PDF/X-Format mit Beschnittzugabe.
+    Gerne prüfen wir Ihre Dateien auch vorab kostenlos.
+- question: Bieten Sie auch umweltfreundliche Druckoptionen an?
+  answer_template: Ja, wir verwenden zertifizierte Recyclingpapiere, Bio-Farben auf
+    Pflanzenölbasis und sind FSC-zertifiziert.
+- question: Wie handle ich mit Datenschutz (DSGVO) bei personalisierten Mailings?
+  answer_template: Wir verarbeiten Daten streng nach DSGVO als Auftragsverarbeiter.
+    Wir bieten Löschkonzepte und verschlüsselte Datenübertragung an.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach dem Preis für einen Standarddienst wie Visitenkarten
+    fragt.
+  script: Sehr gerne. Für 500 Visitenkarten auf Premium-Papier mit beidseitigem Farbdruck
+    berechnen wir derzeit €XX,XX inkl. MwSt. Der Preis beinhaltet bereits die Standardlieferung.
+    Darf ich Ihnen ein unverbindliches, detailliertes Angebot per E-Mail zusenden?
+  goal: Ein klares Preisangebot machen und zum nächsten Schritt (Angebotserstellung)
+    überleiten.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach einem speziellen Service wie Verpackungsdruck fragt.
+  script: 'Verpackungsdruck ist eine unserer Spezialitäten. Wir beraten Sie gerne
+    zu Materialien, Lackierungen und Stanzformen. Um Ihnen ein passgenaues Angebot
+    zu erstellen: Welche Auflage planen Sie ungefähr und für welchen Produkttyp soll
+    die Verpackung sein?'
+  goal: Qualifizieren der Anfrage und Sammeln von Informationen für ein maßgeschneidertes
+    Angebot.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen großen Online-Drucker wie Flyeralarm erwähnt.
+  script: Verständlich, diese Anbieter sind gut für Standardprodukte. Unser Fokus
+    liegt auf individueller Beratung, Qualitätskontrolle vor Ort und der Flexibilität
+    für Sonderwünsche. Bei uns sprechen Sie direkt mit einem Ansprechpartner, der
+    Ihr Projekt begleitet.
+  goal: Differenzierung durch persönlichen Service und Flexibilität hervorheben.
+competitors:
+- name: Onlineprinters
+  positioning: Großer Online-Discount-Drucker mit großer Produktpalette.
+  strengths:
+  - Niedrige Preise für Standardprodukte
+  - Benutzerfreundliche Online-Tools
+  - Sehr schnelle Lieferung
+  weaknesses:
+  - Begrenzte individuelle Beratung
+  - Wenig Flexibilität bei Sonderwünschen
+  - Standardisierte Prozesse
+  our_differentiation: Persönliche Betreuung durch einen festen Ansprechpartner, hohe
+    Flexibilität für individuelle Kundenwünsche und lokale Produktion mit Qualitätskontrolle.
+- name: Flyeralarm
+  positioning: Etablierter Online-Druckdienstleister mit Fokus auf Werbemittel.
+  strengths:
+  - Starke Markenbekanntheit
+  - Umfangreiches Werbemittel-Sortiment
+  - Gute Druckqualität
+  weaknesses:
+  - Höhere Preise als reine Discount-Anbieter
+  - Komplexere Website
+  - Wenig persönlicher Kontakt
+  our_differentiation: Wir bieten eine echte partnerschaftliche Beratung, helfen bei
+    der Datenaufbereitung und sind spezialisiert auf anspruchsvolle Geschäftskunden
+    mit komplexen Projekten.
+- name: Lokale Copy-Shops
+  positioning: Kleine, lokale Anbieter für Sofortdienstleistungen.
+  strengths:
+  - Sehr kurze Wege und persönlicher Kontakt
+  - Sofortige Verfügbarkeit für Kleinauflagen
+  - Einfache Probleme schnell lösbar
+  weaknesses:
+  - Begrenzte Produktionskapazitäten
+  - Oft höhere Stückpreise
+  - Wenig Expertise für große oder spezielle Projekte
+  our_differentiation: Wir kombinieren den lokalen Service mit industrieller Produktionskapazität
+    und Professionalität für sowohl kleine als auch große Aufträge.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 250
+  roi_examples:
+  - scenario: Automatisierung der Angebotserstellung und Terminvereinbarung für eine
+      mittelständische Druckerei.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 20 Stunden Administrationszeit pro Monat.
+  - Reduzieren Sie Terminabsprachen per E-Mail um 80%.
+  - Erhalten Sie 24/7 Erreichbarkeit für Ihre Kunden ohne Personalkosten.
+market_context:
+  market_size: Ca. 18 Mrd. EUR Jahresumsatz
+  growth_rate: Leicht rückläufig (-1-2% p.a.), aber Segmente wie Verpackungs- und
+    Digitaldruck wachsen.
+  key_trends:
+  - Nachhaltigkeit und ökologische Druckverfahren gewinnen an Bedeutung.
+  - Zunehmende Nachfrage nach personalisiertem und datengetriebenem Druck.
+  - Konsolidierung im Markt durch Übernahmen größerer Konzerne.
+  - Digitalisierung der Workflows von der Bestellung bis zur Rechnung.
+  seasonality:
+    high:
+    - September-November (Vorweihnachtsgeschäft, Geschäftsausstattung)
+    - Januar-März (Neugründungen, neue Kataloge)
+    low:
+    - Juli-August (Haupturlaubszeit)
+    - Dezember (zwischen den Jahren)
+typical_objections:
+- objection: Das ist mir zu teuer. Ich drucke doch nur ab und zu etwas.
+  response: Ich verstehe. Vielleicht lohnt sich ein Blick auf unseren Starter-Tarif,
+    der genau für gelegentliche Aufträge konzipiert ist. Zusätzlich sparen Sie durch
+    die Automatisierung Zeit, die Sie für Ihr Kerngeschäft nutzen können. Darf ich
+    Ihnen die Details kurz erklären?
+- objection: Ich komme mit meinem aktuellen Anbieter gut zurecht.
+  response: Das ist schön zu hören. Vielleicht können wir Ihnen trotzdem als Backup
+    oder für spezielle Projekte dienen, bei denen Sie mehr Beratung oder Flexibilität
+    benötigen? Ein Vergleichsangebot schadet sicher nicht.
+- objection: Die Technik ist mir zu kompliziert. Ich möchte einfach nur anrufen und
+    bestellen.
+  response: Genau dafür ist unser KI-Agent da! Sie rufen an, geben Ihre Wünsche durch,
+    und der Agent kümmert sich um alles Weitere – keine Online-Formulare, kein Herumklicken.
+    Probieren Sie es einfach mal aus.
+meta:
+  id: printing
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

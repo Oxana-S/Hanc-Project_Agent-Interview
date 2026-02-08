@@ -1,0 +1,218 @@
+pain_points:
+- description: L'elevato carico amministrativo legato alla gestione delle polizze
+    e dei reclami
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare l'elaborazione dei documenti
+    e ridurre il tempo manuale.
+- description: Inefficienze nel servizio clienti, con lunghe attese e risposte non
+    personalizzate
+  severity: high
+  solution_hint: L'agente vocale AI può gestire chiamate 24/7, fornendo risposte immediate
+    e personalizzate.
+- description: Difficoltà nel rilevare frodi assicurative in modo tempestivo
+  severity: medium
+  solution_hint: L'agente vocale AI può analizzare i dati in tempo reale per identificare
+    pattern sospetti.
+- description: Compliance normativa complessa, specialmente con il GDPR e le regole
+    locali
+  severity: high
+  solution_hint: L'agente vocale AI può assistere nella documentazione e nel monitoraggio
+    della conformità.
+- description: Ritardi nella gestione dei sinistri, causando insoddisfazione dei clienti
+  severity: medium
+  solution_hint: L'agente vocale AI può accelerare il processo di reclamo con automazione
+    e aggiornamenti in tempo reale.
+- description: Sfide nella trasformazione digitale per competere con gli insurtech
+  severity: medium
+  solution_hint: L'agente vocale AI può integrare soluzioni digitali per migliorare
+    l'esperienza del cliente.
+typical_services:
+- Assicurazione auto
+- Assicurazione casa
+- Assicurazione vita
+- Assicurazione sanitaria
+- Assicurazione viaggio
+- Assicurazione responsabilità civile
+- Assicurazione infortuni
+- Assicurazione aziendale
+- Assicurazione per animali domestici
+- Assicurazione cyber risk
+recommended_functions:
+- name: Gestione chiamate in entrata
+  priority: high
+  reason: Riduce i tempi di attesa e migliora la soddisfazione del cliente.
+- name: Supporto alla vendita di polizze
+  priority: high
+  reason: Aumenta le conversioni attraverso interazioni personalizzate.
+- name: Assistenza post-vendita e gestione reclami
+  priority: medium
+  reason: Accelera la risoluzione dei problemi e riduce il carico sul personale.
+- name: Aggiornamento dati clienti e polizze
+  priority: low
+  reason: Mantiene i database accurati e aggiornati automaticamente.
+- name: Programmazione di appuntamenti per consulenze
+  priority: medium
+  reason: Ottimizza la pianificazione e aumenta le opportunità di vendita.
+- name: Fornitura di informazioni su coperture e prezzi
+  priority: high
+  reason: Fornisce risposte immediate alle domande frequenti dei clienti.
+typical_integrations:
+- name: Sistemi CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Oracle NetSuite
+  priority: high
+- name: Sistemi di gestione polizze
+  examples:
+  - Genertel
+  - SAP Insurance
+  - Guidewire
+  priority: high
+- name: Gateway di pagamento
+  examples:
+  - Nexi
+  - PayPal
+  - Stripe
+  priority: medium
+- name: Strumenti di compliance GDPR
+  examples:
+  - OneTrust
+  - TrustArc
+  - locali come Privacy360
+  priority: high
+- name: Sistemi di gestione reclami
+  examples:
+  - Sapiens
+  - Duck Creek
+  - soluzioni personalizzate
+  priority: medium
+industry_faq:
+- question: Quali sono le coperture incluse nella mia polizza auto?
+  answer_template: La sua polizza auto include tipicamente responsabilità civile,
+    furto e incendio. Per dettagli specifici, posso verificare nel suo contratto.
+- question: Come posso presentare un reclamo?
+  answer_template: Può presentare un reclamo chiamando il nostro servizio clienti
+    o online. Posso aiutarla a iniziare il processo ora.
+- question: Quanto costa un'assicurazione casa?
+  answer_template: Il costo dipende da fattori come ubicazione e valore della casa.
+    Posso fornire un preventivo personalizzato.
+- question: Cosa copre l'assicurazione sanitaria?
+  answer_template: Copre visite mediche, ricoveri e farmaci. Le consiglio di controllare
+    le esclusioni nel suo piano.
+- question: Posso modificare la mia polizza vita?
+  answer_template: Sì, può modificare la polizza contattando il suo agente. Posso
+    assistarla nella programmazione di un appuntamento.
+- question: Come funziona il rinnovo automatico?
+  answer_template: Il rinnovo è automatico alla scadenza, con notifica preventiva.
+    Può disattivarlo se lo desidera.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi di un'assicurazione
+  script: Grazie per il suo interesse! I prezzi variano in base alle sue esigenze.
+    Per esempio, per un'assicurazione auto, possiamo offrire tariffe competitive a
+    partire da 300 EUR all'anno. Posso aiutarla a calcolare un preventivo preciso?
+  goal: Ottenere i dettagli del cliente per un preventivo personalizzato e avviare
+    la vendita.
+- trigger: coverage_inquiry
+  situation: Quando un cliente vuole sapere cosa copre una polizza specifica
+  script: Certamente! Le nostre polizze sono progettate per coprire i rischi più comuni.
+    Ad esempio, per l'assicurazione casa, includiamo danni da eventi naturali e furto.
+    Posso descriverle tutte le opzioni disponibili?
+  goal: Educare il cliente sulle coperture e guidarlo verso una scelta informata.
+- trigger: complaint_handling
+  situation: Quando un cliente esprime insoddisfazione per un reclamo pendente
+  script: Mi dispiace per l'inconveniente. Posso verificare lo stato del suo reclamo
+    immediatamente e fornirle un aggiornamento. In media, acceleriamo i processi del
+    30% con la nostra automazione.
+  goal: Risolvere il problema rapidamente e ripristinare la fiducia del cliente.
+competitors:
+- name: Generali
+  positioning: Leader di mercato con ampia rete di agenti
+  strengths:
+  - Forte presenza storica
+  - gamma completa di prodotti
+  - fiducia del brand
+  weaknesses:
+  - Processi lenti
+  - alti costi operativi
+  - minore innovazione digitale
+  our_differentiation: Offriamo automazione AI per ridurre i costi e migliorare il
+    servizio clienti.
+- name: Allianz
+  positioning: Globale con focus su soluzioni digitali
+  strengths:
+  - Tecnologia avanzata
+  - forte reputazione internazionale
+  - prodotti specializzati
+  weaknesses:
+  - Prezzi elevati
+  - complessità nei processi
+  - integrazione locale limitata
+  our_differentiation: Forniamo integrazioni seamless con software locali e prezzi
+    più accessibili.
+- name: UnipolSai
+  positioning: Locale con radici italiane e copertura nazionale
+  strengths:
+  - Conoscenza del mercato locale
+  - rete distributiva estesa
+  - prodotti su misura
+  weaknesses:
+  - Bassa digitalizzazione
+  - tempi di risposta lunghi
+  - poca automazione
+  our_differentiation: Implementiamo agenti vocali AI per servizi 24/7 e efficienza
+    operativa.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automazione del servizio clienti per una piccola assicurazione
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 4
+  value_anchors:
+  - Riduzione dei costi operativi fino al 40%
+  - Aumento della soddisfazione clienti del 25%
+  - Risparmio medio di 2000 EUR all'anno su processi manuali
+market_context:
+  market_size: 120 miliardi EUR
+  growth_rate: 3% YoY
+  key_trends:
+  - Digitalizzazione e crescita degli insurtech
+  - Aumento della domanda per assicurazioni cyber
+  - Focus sulla personalizzazione delle polizze
+  seasonality:
+    high:
+    - Gennaio
+    - Settembre
+    low:
+    - Agosto
+    - Dicembre
+typical_objections:
+- objection: È troppo costoso implementare un agente vocale AI.
+  response: In realtà, l'investimento si ripaga in pochi mesi con i risparmi sui costi
+    operativi. Ad esempio, può ridurre le spese per il personale del 30%.
+- objection: I nostri clienti preferiscono il contatto umano.
+  response: L'agente vocale AI integra, non sostituisce, il servizio umano. Migliora
+    l'efficienza, permettendo al personale di concentrarsi su compiti complessi.
+- objection: Non siamo pronti per la trasformazione digitale.
+  response: Iniziamo con piccoli passi, come l'automazione delle chiamate in entrata.
+    Questo facilita la transizione senza interruzioni.
+meta:
+  id: insurance
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

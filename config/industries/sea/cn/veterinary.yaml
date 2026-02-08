@@ -1,0 +1,184 @@
+pain_points:
+- description: 员工短缺导致工作压力大，难以应对高峰期客户咨询。
+  severity: high
+  solution_hint: AI语音代理可以自动处理常见咨询，减轻员工负担。
+- description: 预约管理混乱，常出现重复或遗漏预约。
+  severity: medium
+  solution_hint: AI语音代理集成预约系统，自动化预约提醒和确认。
+- description: 客户数据管理复杂，需遵守PIPL合规要求。
+  severity: high
+  solution_hint: AI语音代理可确保数据安全处理，自动化合规检查。
+- description: 运营成本高，尤其在药品库存和耗材管理上。
+  severity: medium
+  solution_hint: AI语音代理帮助优化库存管理，减少浪费。
+- description: 市场竞争激烈，来自连锁宠物医院和在线平台的挑战。
+  severity: medium
+  solution_hint: AI语音代理提升客户服务质量，增强品牌差异化。
+- description: 客户教育不足，宠物主人对健康知识了解有限。
+  severity: low
+  solution_hint: AI语音代理提供自动化的健康教育和常见问题解答。
+typical_services:
+- 疫苗接种
+- 体检服务
+- 外科手术
+- 牙科护理
+- 寄生虫防治
+- 营养咨询
+- 急诊处理
+- 绝育手术
+- 美容服务
+- 远程问诊
+recommended_functions:
+- name: 预约管理
+  priority: high
+  reason: 简化预约流程，减少人工错误，提升客户满意度。
+- name: 客户服务热线
+  priority: high
+  reason: 24/7自动应答常见问题，缓解员工压力。
+- name: 健康提醒服务
+  priority: medium
+  reason: 自动化发送疫苗接种和复查提醒，提高复诊率。
+- name: 数据采集与分析
+  priority: medium
+  reason: 收集客户反馈，优化服务，并确保PIPL合规。
+- name: 销售辅助
+  priority: low
+  reason: 推广附加服务，如营养品或美容套餐。
+- name: 紧急响应
+  priority: high
+  reason: 快速处理急诊咨询，引导客户到合适渠道。
+typical_integrations:
+- name: 支付系统
+  examples:
+  - 微信支付
+  - 支付宝
+  priority: high
+- name: CRM软件
+  examples:
+  - 金蝶
+  - 用友
+  priority: medium
+- name: 电子健康记录系统
+  examples:
+  - 宠物医疗云平台
+  - 本地医院管理系统
+  priority: high
+- name: 社交媒体
+  examples:
+  - 微信
+  - 微博
+  priority: medium
+- name: 库存管理系统
+  examples:
+  - WMS系统
+  - 定制化软件
+  priority: low
+industry_faq:
+- question: 你们的营业时间是什么？
+  answer_template: 我们营业时间为每天上午9点至晚上8点，紧急情况可拨打24小时热线。
+- question: 疫苗接种需要预约吗？
+  answer_template: 是的，建议提前预约以确保及时服务，您可以通过电话或在线平台预约。
+- question: 价格如何？是否有优惠？
+  answer_template: 价格根据服务类型而定，我们提供套餐优惠和新客户折扣，具体请咨询工作人员。
+- question: 如何处理宠物急诊？
+  answer_template: 如有急诊，请立即联系我们，我们有24小时值班兽医提供协助。
+- question: 数据安全如何保障？是否符合PIPL？
+  answer_template: 我们严格遵循PIPL要求，所有客户数据加密存储，仅用于服务改进。
+- question: 可以提供远程咨询吗？
+  answer_template: 是的，我们提供远程问诊服务，方便您在家获取专业建议。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时使用。
+  script: 您好，我们的服务价格根据宠物类型和需求定制，起价为500元。我们可以为您提供个性化方案，帮助节省长期成本。
+  goal: 引导客户了解价值，而非仅关注价格。
+- trigger: service_inquiry
+  situation: 当客户咨询具体服务时使用。
+  script: 感谢您的咨询。我们提供疫苗接种、体检等全面服务，并利用AI技术优化预约，确保高效体验。需要我详细介绍吗？
+  goal: 突出服务优势，促进预约。
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时使用。
+  script: 我们理解市场有多个选择。我们的不同在于集成AI语音代理，提供24/7自动服务，提升响应速度和客户满意度。
+  goal: 差异化我们的解决方案。
+- trigger: objection_handling
+  situation: 当客户有顾虑时使用，如担心技术复杂性。
+  script: 请放心，我们的AI系统易于使用，无需额外培训，并可无缝集成现有流程，快速见效。
+  goal: 消除顾虑，建立信任。
+competitors:
+- name: PetSafe连锁医院
+  positioning: 全国连锁，高端宠物医疗服务。
+  strengths:
+  - 品牌知名度高
+  - 设施先进
+  - 专业团队
+  weaknesses:
+  - 价格较高
+  - 预约等待时间长
+  our_differentiation: 我们提供成本效益高的AI解决方案，提升效率，减少等待时间。
+- name: 本地独立诊所
+  positioning: 社区基础，个性化服务。
+  strengths:
+  - 客户关系紧密
+  - 灵活服务
+  weaknesses:
+  - 技术落后
+  - 资源有限
+  our_differentiation: 我们通过AI赋能小诊所，自动化任务，让他们更专注于医疗。
+- name: 在线宠物平台
+  positioning: 数字化服务，便捷咨询。
+  strengths:
+  - 用户基数大
+  - 操作简便
+  weaknesses:
+  - 缺乏实体支持
+  - 服务质量参差不齐
+  our_differentiation: 我们结合线上线下，提供AI语音代理增强实体服务体验。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: 小型诊所使用AI语音代理处理预约和咨询。
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - 节省30%人工成本
+  - 提升客户满意度20%
+  - 减少预约错误率50%
+market_context:
+  market_size: 约200亿元人民币
+  growth_rate: 年增长率15%
+  key_trends:
+  - 宠物人性化趋势增强
+  - 数字化服务需求上升
+  - 合规要求趋严
+  seasonality:
+    high:
+    - 春季疫苗接种季
+    - 节假日前后
+    low:
+    - 夏季高温期
+    - 冬季淡季
+typical_objections:
+- objection: 我们规模小，用不上AI技术。
+  response: AI语音代理可从小规模开始，根据需求扩展，帮助小诊所提升竞争力。
+- objection: 担心数据安全问题。
+  response: 我们严格遵循PIPL，数据加密处理，确保安全合规。
+- objection: 成本太高，投资回报不明显。
+  response: 我们的解决方案可快速回收成本，通过节省人工和增加收入实现高ROI。
+meta:
+  id: veterinary
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

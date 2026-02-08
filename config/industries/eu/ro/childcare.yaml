@@ -1,0 +1,208 @@
+pain_points:
+- description: Fluctuarea mare a personalului, ceea ce duce la instabilitate în servicii.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza recrutarea și gestionarea programărilor
+    pentru a reduce povara.
+- description: Dificultatea în găsirea educatorilor calificați și certificați.
+  severity: high
+  solution_hint: Integrarea cu platforme de recrutare pentru a facilita angajarea.
+- description: Povara administrativă datorită cerințelor GDPR și a documentației.
+  severity: medium
+  solution_hint: Automatizarea proceselor de conformitate și gestionarea datelor.
+- description: Costuri operaționale ridicate, inclusiv salarii și utilități.
+  severity: high
+  solution_hint: Optimizarea resurselor prin planificare automată și reducerea timpului
+    administrativ.
+- description: Comunicarea ineficientă cu părinții, ducând la nemulțumiri.
+  severity: medium
+  solution_hint: Agentul vocal poate gestiona notificări, confirmări și răspunsuri
+    la întrebări.
+- description: Competiția din partea îngrijirii informale (bunici, vecini).
+  severity: low
+  solution_hint: Promovarea serviciilor profesionale prin marketing automatizat.
+typical_services:
+- Îngrijire de zi pentru copii
+- Grădiniță
+- Activitate extrașcolară
+- Tabere de vară
+- Cluburi de copii
+- Îngrijire de noapte
+- Servicii de transport
+- Mese și alimentație
+- Activitate educațională personalizată
+- Îngrijire pentru copii cu nevoi speciale
+recommended_functions:
+- name: Rezervări și programări automate
+  priority: high
+  reason: Reduce timpul petrecut pe administrare și îmbunătățește experiența părinților.
+- name: Răspunsuri la întrebări frecvente
+  priority: high
+  reason: Eliberează personalul pentru sarcini mai critice.
+- name: Confirmări și reamintiri automate
+  priority: medium
+  reason: Reduce ratările și îmbunătățește comunicarea.
+- name: Colectare de feedback
+  priority: medium
+  reason: Ajută la îmbunătățirea serviciilor și la satisfacția clienților.
+- name: Gestionarea plăților
+  priority: high
+  reason: Asigură fluxul constant de venituri și reduce erorile.
+- name: Alertă pentru situații de emergență
+  priority: low
+  reason: Îmbunătățește siguranța și răspunsul la incidente.
+typical_integrations:
+- name: Software de gestiune a grădinițelor
+  examples:
+  - SmartKids RO
+  - KinderGarten Pro
+  - EdManage
+  priority: high
+- name: Sisteme de plăți online
+  examples:
+  - PayU
+  - Netopia
+  - MobilPay
+  priority: high
+- name: Platforme de comunicare
+  examples:
+  - WhatsApp Business
+  - Facebook Messenger
+  - Telegram
+  priority: medium
+- name: Sisteme de securitate
+  examples:
+  - Securitas
+  - Guardian RO
+  priority: low
+- name: Aplicații pentru părinți
+  examples:
+  - ParentApp RO
+  - KidsTrack
+  priority: medium
+industry_faq:
+- question: Care sunt orele de funcționare?
+  answer_template: Grădinița noastră funcționează de la 7:00 la 19:00, de luni până
+    vineri, cu programe flexibile.
+- question: Cât costă serviciile?
+  answer_template: Prețurile încep de la 500 RON/lună, în funcție de program și vârstă.
+    Vă pot oferi mai multe detalii.
+- question: Ce activități oferiți?
+  answer_template: Oferim activități educaționale, sportive, creative și excursii,
+    adaptate vârstei copiilor.
+- question: Cum asigurați siguranța copiilor?
+  answer_template: Avem personal certificat, sisteme de supraveghere și protocoluri
+    de emergență stricte.
+- question: Acceptați copii cu nevoi speciale?
+  answer_template: Da, avem programe personalizate și colaborăm cu specialiști pentru
+    îngrijire inclusivă.
+- question: Ce mâncare serviți?
+  answer_template: Meniurile sunt echilibrate și preparate conform standardelor nutriționale,
+    cu opțiuni pentru alerții.
+sales_scripts:
+- trigger: price_question
+  situation: Când un potențial client întreabă despre prețuri.
+  script: Bună ziua! Mulțumim pentru interes. Prețurile noastre încep de la 500 RON/lună
+    pentru programul de bază. Pentru o ofertă personalizată, puteți completa un formular
+    sau discuta cu un consultant.
+  goal: Captarea informațiilor de contact și începerea conversației.
+- trigger: booking_inquiry
+  situation: Când un client vrea să facă o rezervare.
+  script: Perfect! Pentru a vă rezerva un loc, am nevoie de câteva detalii. Vă pot
+    ajuta să completați formularul online sau să programați o vizită.
+  goal: Finalizarea rezervării sau programarea unei vizite.
+- trigger: service_details
+  situation: Când un client solicită mai multe informații despre servicii.
+  script: Cu plăcere! Oferim îngrijire de zi, activități extrașcolare, tabere și multe
+    altele. Care sunt nevoile specifice ale copilului dumneavoastră?
+  goal: Identificarea nevoilor și promovarea serviciilor relevante.
+competitors:
+- name: Grădinița Happy Kids
+  positioning: Centru de îngrijire premium pentru copii mici.
+  strengths:
+  - Facilități moderne
+  - Personal bine pregătit
+  weaknesses:
+  - Prețuri ridicate
+  - Program limitat
+  our_differentiation: Oferim prețuri competitive și programe flexibile cu tehnologie
+    avansată.
+- name: Kids Club Romania
+  positioning: Lanț de cluburi pentru activități extrașcolare.
+  strengths:
+  - Rețea largă
+  - Varietate de activități
+  weaknesses:
+  - Calitate neuniformă
+  - Comunicare slabă
+  our_differentiation: Focus pe calitate consistentă și comunicare eficientă prin
+    AI.
+- name: Îngrijirea de Acasă SRL
+  positioning: Servicii de îngrijire la domiciliu.
+  strengths:
+  - Confortul casei
+  - Atenție personalizată
+  weaknesses:
+  - Lipsa socializării
+  - Costuri variabile
+  our_differentiation: Combinăm beneficiile sociale cu tehnologia pentru eficiență.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 300
+  - 1500
+  entry_point: 500
+  roi_examples:
+  - scenario: Reducerea timpului administrativ cu 10 ore/săptămână
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 0.4
+  value_anchors:
+  - Economisiți timp și bani cu automatizarea
+  - Îmbunătățiți satisfacția părinților cu comunicarea instant
+market_context:
+  market_size: Aproximativ 1 miliard RON anual
+  growth_rate: 5% pe an
+  key_trends:
+  - Creșterea cererii pentru servicii educaționale
+  - Digitalizarea proceselor
+  - Focus pe siguranță și conformitate
+  seasonality:
+    high:
+    - Septembrie
+    - Octombrie
+    - Martie
+    - Aprilie
+    low:
+    - Decembrie
+    - Ianuarie
+    - Iulie
+    - August
+typical_objections:
+- objection: Prețul este prea mare.
+  response: Înțeleg preocuparea. Serviciile noastre includ tehnologie avansată care
+    reduce costurile pe termen lung și îmbunătățește calitatea. Putem discuta opțiuni
+    flexibile.
+- objection: Nu sunt sigur dacă AI-ul este potrivit pentru îngrijirea copiilor.
+  response: Agentul nostru vocal este proiectat pentru a sprijini personalul, nu a-l
+    înlocui. El gestionează sarcini administrative, permițând educatorilor să se concentreze
+    pe copii.
+- objection: Avem deja un sistem în loc.
+  response: Excelent! Agentul nostru se poate integra cu sistemele existente pentru
+    a le îmbunătăți. Oferim o perioadă de probă pentru a vedea beneficiile.
+- objection: Nu avem timp pentru implementare.
+  response: Procesul de implementare este rapid și fără probleme. Echipa noastră vă
+    ghidează pas cu pas, iar agentul începe să funcționeze în câteva zile.
+meta:
+  id: childcare
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

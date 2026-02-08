@@ -1,0 +1,237 @@
+pain_points:
+- description: Altos costos operativos por ineficiencias en gestión de combustible
+    y mantenimiento reactivo.
+  severity: high
+  solution_hint: Agente puede optimizar programación y monitoreo predictivo, reduciendo
+    costos de operación.
+- description: Cumplimiento complejo con regulaciones locales (DGAC) y protección
+    de datos (LFPDPPP).
+  severity: high
+  solution_hint: Agente automatiza recordatorios de cumplimiento y gestiona consentimientos
+    de pasajeros.
+- description: Baja satisfacción del cliente por largos tiempos de espera en servicio
+    al cliente telefónico.
+  severity: medium
+  solution_hint: Agente maneja consultas frecuentes 24/7, reduciendo tiempos de espera
+    y liberando personal.
+- description: Gestión ineficiente de tripulaciones y programación de vuelos, causando
+    sobrecostos y fatiga.
+  severity: medium
+  solution_hint: Agente integra sistemas para optimizar asignaciones y notificar cambios
+    en tiempo real.
+- description: Pérdida de ingresos por no venta cruzada de servicios adicionales (upgrades,
+    equipaje, seguros).
+  severity: low
+  solution_hint: Agente identifica oportunidades de venta durante interacciones y
+    ofrece servicios personalizados.
+- description: Dificultad para gestionar reclamaciones de equipaje y reembolsos de
+    manera ágil.
+  severity: medium
+  solution_hint: Agente inicia y da seguimiento a procesos de reclamación, mejorando
+    la experiencia del pasajero.
+typical_services:
+- Gestión y optimización de rutas de vuelo
+- Programación y seguimiento de tripulaciones (crew scheduling)
+- Mantenimiento predictivo y gestión de talleres (MRO)
+- Servicio al cliente y centro de contacto aeronáutico
+- Ventas de boletos y gestión de reservaciones
+- Control de operaciones en tierra (handling)
+- Capacitación y simuladores para pilotos y técnicos
+- Consultoría en cumplimiento normativo DGAC y LFPDPPP
+- Gestión de ingresos y pricing dinámico
+- Soluciones de conectividad y entretenimiento a bordo
+recommended_functions:
+- name: Atención al cliente y soporte 24/7
+  priority: high
+  reason: Reducir costos de call center y mejorar satisfacción del pasajero con respuestas
+    inmediatas.
+- name: Gestión de reservaciones y cambios
+  priority: high
+  reason: Automatizar procesos complejos de modificación y emisión de boletos, reduciendo
+    errores.
+- name: Recordatorios de mantenimiento y cumplimiento
+  priority: medium
+  reason: Evitar multas y retrasos por incumplimiento de regulaciones DGAC.
+- name: Asistente de ventas para servicios adicionales
+  priority: medium
+  reason: Incrementar ingresos auxiliares mediante recomendaciones personalizadas
+    durante la interacción.
+- name: Notificaciones proactivas de vuelo
+  priority: low
+  reason: Mejorar experiencia del pasajero con alertas automáticas de retrasos, puertas
+    y recogida de equipaje.
+typical_integrations:
+- name: Sistemas de Reservación (PSS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Navitaire
+  priority: high
+- name: Sistemas de Operaciones de Vuelo (FOS)
+  examples:
+  - Lufthansa Systems NetLine
+  - Jeppesen
+  priority: high
+- name: Software de Mantenimiento (MRO)
+  examples:
+  - AMOS
+  - TRAX
+  - Rusada
+  priority: medium
+- name: Plataformas de CRM
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  priority: medium
+- name: Sistemas de Gestión de Tripulaciones (CMS)
+  examples:
+  - CAE Crew Management
+  - AIMS
+  priority: low
+industry_faq:
+- question: ¿Cómo maneja la protección de datos personales de los pasajeros (LFPDPPP)?
+  answer_template: Nuestro agente está diseñado para cumplir con la LFPDPPP. Todo
+    procesamiento de datos incluye consentimiento explícito, cifrado y protocolos
+    de retención definidos. Podemos proporcionar cláusulas específicas para su operación.
+- question: ¿Puede integrarse con nuestro sistema actual de reservas?
+  answer_template: Sí, nos integramos con los principales sistemas PSS como Amadeus
+    y Sabre mediante APIs seguras. Realizamos una evaluación técnica sin costo para
+    confirmar compatibilidad.
+- question: ¿Qué pasa durante una interrupción de internet o falla del sistema?
+  answer_template: El agente incluye modos de contingencia con respuestas predefinidas
+    y desvío a un operador humano. Garantizamos un uptime del 99.5% con redundancia
+    en servidores locales.
+- question: ¿Cómo se personaliza para nuestra marca y tono de voz?
+  answer_template: Configuramos el personaje del agente, saludos y respuestas según
+    su manual de marca. Incluimos capacitación con terminología específica de su aerolínea.
+- question: ¿Qué idiomas soporta para el mercado mexicano e internacional?
+  answer_template: Soporta español mexicano e inglés como estándar. Podemos agregar
+    más idiomas (portugués, francés) según las rutas que operen.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el costo inicial.
+  script: 'Entiendo que el presupuesto es clave. Nuestra solución comienza desde $15,000
+    MXN mensuales, escalando según volumen de llamadas. Lo importante es el retorno:
+    nuestros clientes en aviación ahorran hasta un 30% en costos de call center en
+    los primeros 6 meses. ¿Le gustaría que le detailara un caso de éxito con una aerolínea
+    regional similar?'
+  goal: Transmitir valor y ROI antes del precio, invitando a una conversación más
+    profunda.
+- trigger: compliance_concern
+  situation: Cuando el cliente expresa preocupación por regulaciones DGAC o LFPDPPP.
+  script: Es una preocupación válida. Nuestro agente incluye módulos específicos para
+    cumplimiento normativo. Por ejemplo, gestiona el consentimiento para datos personales
+    según LFPDPPP y genera reportes automáticos para auditorías de la DGAC. ¿Le interesaría
+    revisar nuestra documentación de cumplimiento?
+  goal: Posicionar la solución como un aliado en cumplimiento, reduciendo riesgo.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor local.
+  script: Aprecio que conozca otras opciones. Nuestra diferenciación clave es la especialización
+    en aviación y la capacidad de integración nativa con sistemas como Amadeus o SABRE,
+    algo que soluciones genéricas no ofrecen. Además, nuestro soporte es desde México,
+    con entendimiento del mercado latinoamericano. ¿Qué es lo que más valora de la
+    solución que está evaluando?
+  goal: Diferenciar por especialización y soporte local, descubrir prioridades del
+    cliente.
+competitors:
+- name: Telvista
+  positioning: Proveedor grande de BPO y call center en México.
+  strengths:
+  - Infraestructura extensa
+  - experiencia en servicio al cliente
+  - presencia nacional
+  weaknesses:
+  - Soluciones menos especializadas en aviación
+  - menor enfoque en automatización con IA
+  - costos altos por agente humano
+  our_differentiation: Ofrecemos una solución de IA especializada en aviación que
+    reduce drásticamente la dependencia de agentes humanos, con integraciones profundas
+    en sistemas aeronáuticos.
+- name: Drishti
+  positioning: Consultora de software y automatización para industria.
+  strengths:
+  - Conocimiento del mercado mexicano
+  - desarrollo personalizado
+  weaknesses:
+  - Menor escalabilidad
+  - enfoque más en proyectos que en producto
+  - tiempos de implementación largos
+  our_differentiation: Producto escalable listo para usar, con implementación rápida
+    (<4 semanas) y modelo de suscripción predecible, no por proyecto.
+- name: Zendesk
+  positioning: Plataforma global de servicio al cliente.
+  strengths:
+  - Marca reconocida
+  - fácil de usar
+  - ecosistema de apps
+  weaknesses:
+  - No especializado en aviación
+  - requiere configuraciones complejas para casos de uso específicos
+  - soporte menos localizado
+  our_differentiation: Agente de voz listo para aviación con flujos preconfigurados
+    (reprogramaciones, información de vuelos), soporte en español mexicano y conocimiento
+    nativo de regulaciones locales.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 20000
+  - 150000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Aerolínea regional con 5000 llamadas mensuales de servicio al cliente.
+    monthly_cost: 45000
+    monthly_savings: 60000
+    payback_months: 3
+  value_anchors:
+  - Reduzca sus costos de call center hasta en un 40% con automatización inteligente.
+  - Incremente sus ventas de servicios adicionales en un 15% con recomendaciones proactivas.
+  - Cumpla con la LFPDPPP y DGAC sin incrementar su personal administrativo.
+market_context:
+  market_size: Estimado en $450 millones de dólares anuales en servicios de TI y operaciones
+    para aviación en México.
+  growth_rate: 8-10% anual, impulsado por la recuperación post-pandemia y expansión
+    de aerolíneas de bajo costo.
+  key_trends:
+  - Digitalización acelerada de servicios al pasajero y operaciones.
+  - Enfoque en sostenibilidad y optimización de combustible.
+  - Mayor exigencia en protección de datos personales (LFPDPPP).
+  - Crecimiento de aerolíneas regionales y conectividad a ciudades secundarias.
+  seasonality:
+    high:
+    - Diciembre-Enero (vacaciones)
+    - Semana Santa
+    - Julio-Agosto (verano)
+    low:
+    - Febrero
+    - Septiembre
+    - Noviembre (excepto fin de semana largo)
+typical_objections:
+- objection: Ya tenemos personal para atender llamadas, la automatización no es necesaria.
+  response: Entiendo. Nuestro agente no reemplaza, sino que potencia a su equipo.
+    Libera a sus agentes humanos de tareas repetitivas (como consultar horarios) para
+    que se enfoquen en situaciones complejas que requieren empatía, mejorando así
+    la productividad y la satisfacción laboral.
+- objection: La implementación suena disruptiva para nuestras operaciones diarias.
+  response: Nuestra implementación es por fases y se ejecuta en paralelo a sus operaciones.
+    Comenzamos con un piloto de bajo riesgo, como manejo de consultas de estatus de
+    vuelo, para demostrar valor sin interrumpir. Proveemos soporte completo durante
+    la transición.
+- objection: Estamos en contrato con otro proveedor de call center.
+  response: Perfecto. Nuestra solución puede complementar ese servicio, manejando
+    el primer nivel de atención y reduciendo el volumen que llega a su proveedor actual,
+    lo cual puede traducirse en ahorros en su contrato o mejor servicio en picos de
+    demanda. ¿Podríamos explorar una integración?
+meta:
+  id: aviation
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

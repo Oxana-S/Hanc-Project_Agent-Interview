@@ -1,0 +1,195 @@
+pain_points:
+- description: Kesulitan dalam merekrut dan mempertahankan perawat serta caregiver yang berkualitas dan berkomitmen.
+  severity: high
+  solution_hint: AI voice agent dapat membantu melakukan screening awal kandidat, menjadwalkan wawancara, dan memberikan informasi standar kepada pelamar.
+- description: Biaya operasional yang tinggi, termasuk gaji staf, peralatan medis, dan biaya fasilitas.
+  severity: high
+  solution_hint: Voice agent dapat mengotomasi tugas administratif seperti penjadwalan dan reminder, mengurangi beban kerja staf dan potensi kesalahan.
+- description: Keluarga klien seringkali khawatir dan membutuhkan update berkala tentang kondisi lansia, yang memberatkan staf.
+  severity: medium
+  solution_hint: Agent dapat memberikan update otomatis via panggilan atau pesan suara tentang jadwal makan, minum obat, atau aktivitas rutin.
+- description: Manajemen penjadwalan yang rumit untuk kunjungan perawat, terapis, dan aktivitas bagi lansia.
+  severity: medium
+  solution_hint: Sistem AI dapat mengelola penjadwalan secara otomatis, mengirimkan konfirmasi, dan mengingatkan staf serta keluarga.
+- description: Kepatuhan terhadap regulasi Perlindungan Data Pribadi (PDP) dalam menyimpan dan mengelola data kesehatan lansia.
+  severity: high
+  solution_hint: Voice agent yang terintegrasi dengan sistem aman dapat memastikan proses pengumpulan dan penyampaian informasi tetap mematuhi PDP.
+- description: Kesulitan dalam pemasaran dan menjangkau anak-anak yang tinggal di luar kota untuk menawarkan layanan.
+  severity: medium
+  solution_hint: Agent dapat melakukan kampanye telemarketing otomatis, menjawab pertanyaan dasar 24/7, dan mengumpulkan lead berkualitas.
+typical_services:
+- Perawatan Lansia di Rumah (Home Care)
+- Penitipan Lansia Harian (Day Care)
+- Perawat Home Visit / Jaga
+- Terapi Fisik dan Okupasi
+- Pendampingan dan Companionship
+- Bantuan Aktivitas Sehari-hari (ADL)
+- Konsultasi Gizi dan Kesehatan
+- Layanan Transportasi dan Antar Jemput
+- Pemeriksaan Kesehatan Berkala
+- Emergency Response System
+recommended_functions:
+- name: Pendaftaran dan Screening Awal Klien
+  priority: high
+  reason: Mengumpulkan informasi dasar kebutuhan lansia secara efisien dan menjadwalkan konsultasi lanjutan dengan staf.
+- name: Appointment Reminder dan Konfirmasi
+  priority: high
+  reason: Mengurangi no-show untuk kunjungan perawat atau terapis, mengoptimalkan waktu staf.
+- name: Pemberian Update Rutin ke Keluarga
+  priority: medium
+  reason: Meningkatkan kepercayaan keluarga dengan komunikasi proaktif, mengurangi panggilan manual staf.
+- name: Penerimaan Pesanan Layanan Darurat
+  priority: high
+  reason: Memastikan panggilan darurat ditangani segera dan diteruskan ke staf yang tepat, 24 jam.
+- name: Telemarketing dan Lead Generation
+  priority: medium
+  reason: Menjangkau calon klien (anak-anak dari lansia) secara lebih luas dan terjangkau.
+- name: Pengingat Minum Obat
+  priority: medium
+  reason: Membantu lansia atau caregiver di rumah untuk disiplin dalam pengobatan.
+typical_integrations:
+- name: Sistem Manajemen Home Care / Rumah Sakit
+  examples:
+  - Qlapa Home Care
+  - SIMRS
+  - Software Rumah Sakit Lokal
+  priority: high
+- name: Aplikasi Pesan dan Telekonferensi
+  examples:
+  - WhatsApp Business
+  - Zoom
+  priority: high
+- name: Sistem Pembayaran Digital
+  examples:
+  - OVO
+  - GoPay
+  - DANA
+  - LinkAja
+  - Virtual Account Bank
+  priority: medium
+- name: Platform Pemeriksaan Kesehatan
+  examples:
+  - Halodoc
+  - Alodokter
+  priority: low
+- name: Sistem Kalender dan Jadwal
+  examples:
+  - Google Calendar
+  priority: medium
+industry_faq:
+- question: Berapa biaya layanan perawatan lansia di rumah?
+  answer_template: Biaya sangat bervariasi tergantung tingkat perawatan, durasi, dan kebutuhan khusus seperti fisioterapi. Untuk perkiraan yang tepat, boleh saya jadwalkan konsultasi gratis dengan care
+    coordinator kami? Biasanya mulai dari IDR 200.000 per visit.
+- question: Apakah perawat atau caregiver yang disediakan sudah tersertifikasi?
+  answer_template: Ya, kami bekerja sama dengan perawat dan caregiver yang memiliki sertifikasi kompetensi serta pengalaman. Kami juga melakukan pengecekan latar belakang dan pelatihan berkala.
+- question: Bagaimana jika orang tua saya membutuhkan perawatan darurat di malam hari?
+  answer_template: Kami menyediakan layanan darurat 24/7. Anda dapat menghubungi nomor khusus, dan tim kami akan merespons dengan cepat. AI agent ini juga dapat langsung mencatat dan meneruskan laporan
+    darurat.
+- question: Bagaimana cara menjaga privasi data kesehatan orang tua saya?
+  answer_template: Kami sangat serius menerapkan UU PDP. Data disimpan dalam sistem terenkripsi dan hanya dapat diakses oleh tenaga medis yang berkepentingan langsung. Proses kami dirancang untuk compliance.
+- question: Bisakah saya mendapatkan laporan berkala tentang kondisi orang tua saya?
+  answer_template: Tentu. Selain laporan berkala dari perawat, Anda dapat menyetujui untuk mendapatkan update otomatis melalui panggilan atau pesan suara dari sistem kami tentang aktivitas harian.
+- question: Apakah ada paket untuk perawatan jangka panjang?
+  answer_template: Ya, kami menawarkan berbagai paket bulanan atau tahunan dengan harga yang lebih ekonomis dan manfaat tambahan. Mari diskusikan kebutuhan spesifik Anda.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan biaya di awal percakapan.
+  script: Memang biaya adalah pertimbangan penting. Sebelum saya memberikan rentang harga, boleh saya tahu sedikit tentang kondisi dan kebutuhan mendesak orang tua/Ibu/Bapak? Misalnya, apakah membutuhkan
+    bantuan aktivitas sehari-hari, perawatan medis, atau terutama pendampingan? Ini akan membantu saya memberikan estimasi yang paling relevan.
+  goal: Mengalihkan percakapan dari harga ke kebutuhan, untuk menunjukkan nilai dan personalisasi layanan.
+- trigger: competitor_mention
+  situation: Calon klien menyebut nama penyedia layanan lain.
+  script: Itu pilihan yang bagus. Yang membedakan kami adalah sistem dukungan teknologi seperti voice agent ini yang memastikan komunikasi dengan keluarga lebih transparan dan responsif, serta fokus pada
+    kepatuhan penuh terhadap regulasi PDP. Apakah ada aspek khusus dari layanan mereka yang paling Anda pertimbangkan?
+  goal: Membedakan diri dengan teknologi dan compliance, sekaligus menggali nilai yang diinginkan calon klien.
+- trigger: urgent_need
+  situation: Calon klien menyatakan butuh bantuan secepatnya, misalnya karena baru pulang dari rumah sakit.
+  script: Saya mengerti situasi yang mendesak ini. Kami dapat memproses pendaftaran dengan cepat. Untuk memulai, AI agent dapat membantu mengumpulkan data dasar dan menjadwalkan assessment oleh perawat
+    kami dalam waktu 24 jam. Yang paling penting saat ini, apakah ada kondisi medis khusus yang memerlukan monitoring ketat?
+  goal: Menunjukkan responsivitas dan proses yang efisien, sekaligus mengidentifikasi risiko untuk prioritisasi.
+competitors:
+- name: Caregiver Indonesia / MyNurz
+  positioning: Platform online untuk merekrut caregiver langsung.
+  strengths:
+  - Fleksibilitas pilihan caregiver
+  - model platform
+  - visibilitas online
+  weaknesses:
+  - Kontrol kualitas yang bervariasi
+  - dukungan terbatas setelah penempatan
+  - kurangnya integrasi layanan medis
+  our_differentiation: Kami menyediakan tim terkelola dengan supervisi medis, dukungan teknologi 24/7, dan paket layanan komprehensif termasuk koordinasi dengan tenaga kesehatan.
+- name: Panti Jompo (institutional homes) tertentu
+  positioning: Penyedia perawatan residensial.
+  strengths:
+  - Fasilitas lengkap di satu tempat
+  - staf tersedia 24 jam
+  weaknesses:
+  - Biaya sangat tinggi
+  - stigma sosial
+  - lansia harus meninggalkan rumah
+  our_differentiation: Kami memungkinkan lansia tinggal di rumah yang nyaman dengan dukungan profesional, yang seringkali lebih disukai secara emosional dan lebih terjangkau.
+- name: Penyedia Home Care Lokal Kecil
+  positioning: Layanan perawat atau caregiver perorangan atau UKM.
+  strengths:
+  - Hubungan personal
+  - harga mungkin lebih rendah
+  weaknesses:
+  - Skalabilitas terbatas
+  - risiko jika caregiver sakit
+  - kurang sistem dan teknologi
+  our_differentiation: Keandalan sistem dengan cadangan staf, teknologi untuk pemantauan dan komunikasi, serta standardisasi prosedur perawatan.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 2000000
+  - 15000000
+  entry_point: 2000000
+  roi_examples:
+  - scenario: Mengurangi beban administrasi staf untuk penjadwalan dan komunikasi rutin dengan 50 keluarga.
+    monthly_cost: 1500000
+    monthly_savings: 4500000
+    payback_months: 1
+  value_anchors:
+  - Biaya satu kali perawatan darurat di IGD bisa setara dengan paket perawatan preventif 3 bulan.
+  - Ketenangan pikiran karena mengetahui orang tua terpantau tidak ternilai harganya.
+  - Efisiensi dari teknologi dapat dialihkan untuk meningkatkan kualitas interaksi langsung antara caregiver dan lansia.
+market_context:
+  market_size: Diperkirakan mencapai puluhan triliun IDR, didorong populasi lansia yang meningkat pesat.
+  growth_rate: 10-15% YoY
+  key_trends:
+  - Meningkatnya kesadaran akan layanan home care vs panti jompo.
+  - Anak-anak generasi milennial yang sibuk mencari solusi terpercaya untuk orang tua.
+  - Integrasi teknologi kesehatan (health-tech) dalam perawatan lansia.
+  - Permintaan akan layanan yang compliant dengan UU PDP.
+  seasonality:
+    high:
+    - Juni-Juli (libur sekolah keluarga berkunjung)
+    - Desember-Januari (libur akhir tahun)
+    low:
+    - Bulan-bulan pertama setelah Lebaran (biasanya keluarga sudah berkumpul)
+    - April-Mei (masa pajak)
+typical_objections:
+- objection: Kami masih bisa rawat sendiri dengan bantuan ART.
+  response: Itu sangat baik. Fokus kami adalah melengkapi perawatan Anda, terutama untuk aspek medis, terapi, atau memberikan Anda waktu istirahat agar kualitas waktu bersama orang tua tetap hangat, bukan
+    hanya sekadar merawat.
+- objection: Terlalu mahal untuk budget kami.
+  response: Saya paham. Mari kita lihat paket yang paling esensial dulu. Seringkali, pencegahan masalah kesehatan dengan monitoring rutin justru menghemat biaya jauh lebih besar di kemudian hari. Boleh
+    saya tahu budget ideal per bulan yang Anda pertimbangkan?
+- objection: Orang tua saya tidak nyaman dengan orang asing/teknologi.
+  response: Wajar sekali. Proses kami dimulai dengan perkenalan bertahap dan pendampingan penuh. Teknologi seperti voice agent justru berjalan di belakang layar untuk mendukung caregiver, tanpa perlu mengganggu
+    kenyamanan orang tua. Bisa kita coba dengan masa trial terlebih dahulu?
+meta:
+  id: elderly_care
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- elderly care
+- senior care
+- nursing home
+- home care
+_extends: _base/elderly_care

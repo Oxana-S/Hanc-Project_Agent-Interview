@@ -1,0 +1,228 @@
+pain_points:
+- description: Hohe Arbeitskosten und Fachkräftemangel erschweren die Personalplanung.
+  severity: high
+  solution_hint: AI-Stimmenagent kann Routineanfragen automatisch bearbeiten, um Mitarbeiter
+    zu entlasten und Effizienz zu steigern.
+- description: Ineffiziente Terminverwaltung führt zu langen Wartezeiten und unzufriedenen
+    Kunden.
+  severity: high
+  solution_hint: Automatisierte Terminbuchung und Erinnerungen per Sprachassistent
+    optimieren den Arbeitsfluss.
+- description: Schwierigkeiten bei der Ersatzteilbeschaffung verursagen Verzögerungen
+    bei Reparaturen.
+  severity: medium
+  solution_hint: AI-Agent kann Lagerbestände überwachen und Bestellungen auslösen,
+    um Lieferzeiten zu reduzieren.
+- description: Komplexe Kundenkommunikation über verschiedene Kanäle (Telefon, E-Mail,
+    Chat) ist zeitaufwendig.
+  severity: medium
+  solution_hint: Zentralisierte Sprachassistenten beantworten häufig gestellte Fragen
+    und leiten Anfragen weiter.
+- description: Fehlende Transparenz bei Reparaturkosten führt zu Misstrauen und Beschwerden.
+  severity: low
+  solution_hint: AI-Stimmenagent bietet sofortige Kostenvoranschläge basierend auf
+    standardisierten Preismodellen.
+- description: Geringe Online-Präsenz erschwert die Neukundengewinnung im digitalen
+    Zeitalter.
+  severity: medium
+  solution_hint: Sprachassistenten können über Website-Integrationen Leads generieren
+    und Termine vereinbaren.
+typical_services:
+- Reparatur von Haushaltsgeräten
+- Autoreparatur und -wartung
+- Smartphone- und Tablet-Reparatur
+- Reparatur von Elektronikgeräten wie Laptops und Fernsehern
+- Installation und Wartung von Heizungs- und Sanitäranlagen
+- Reparatur von Möbeln und Holzgegenständen
+- Fahrradreparatur und -service
+- Reparatur von Schuhen und Lederwaren
+- Glas- und Fensterreparatur
+- Reparatur von Gartenwerkzeugen und -geräten
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Reduziert manuellen Aufwand und verbessert die Kundenzufriedenheit durch
+    schnelle Verfügbarkeit.
+- name: Kostenvoranschlag-Generierung
+  priority: high
+  reason: Schafft Vertrauen durch transparente Preise und beschleunigt den Verkaufsprozess.
+- name: FAQ-Antworten zu Reparaturdienstleistungen
+  priority: medium
+  reason: Entlastet Mitarbeiter von Routineanfragen und bietet 24/7-Kundensupport.
+- name: Ersatzteilbestellung und Lagerverwaltung
+  priority: medium
+  reason: Optimiert die Lieferkette und minimiert Reparaturverzögerungen.
+- name: Kundenfeedback-Sammlung
+  priority: low
+  reason: Hilft bei der Serviceverbesserung und stärkt Kundenbindung durch persönliche
+    Ansprache.
+- name: Lead-Generierung über Telefonmarketing
+  priority: medium
+  reason: Erweitert die Reichweite und steigert die Neukundengewinnung kosteneffizient.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  - SevDesk
+  priority: high
+- name: Terminplanungssysteme
+  examples:
+  - Calendly
+  - TeamViewer
+  - Doodle
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - Zoho
+  priority: medium
+- name: Lagerverwaltungssoftware
+  examples:
+  - JTL-Wawi
+  - plentymarkets
+  - Sage
+  priority: medium
+- name: Website- und E-Commerce-Plattformen
+  examples:
+  - Shopify
+  - WooCommerce
+  - Magento
+  priority: low
+industry_faq:
+- question: Wie schnell können Sie meine Reparatur durchführen?
+  answer_template: In der Regel innerhalb von 1-3 Werktagen, abhängig von der Verfügbarkeit
+    der Ersatzteile und der Art des Schadens.
+- question: Bieten Sie eine Garantie auf Ihre Reparaturen an?
+  answer_template: Ja, wir gewähren eine 12-monatige Garantie auf alle durchgeführten
+    Reparaturen und verwendeten Teile.
+- question: Können Sie Kostenvoranschläge vor der Reparatur geben?
+  answer_template: Selbstverständlich. Wir erstellen einen detaillierten Kostenvoranschlag
+    nach der Inspektion, der transparent alle Kosten auflistet.
+- question: Arbeiten Sie mit Versicherungen zusammen?
+  answer_template: Ja, wir kooperieren mit vielen Versicherungen und unterstützen
+    bei der Schadensabwicklung.
+- question: Welche Zahlungsmethoden akzeptieren Sie?
+  answer_template: Wir akzeptieren Barzahlung, EC-Karte, Kreditkarte und Überweisung.
+- question: Können Sie Notfallreparaturen anbieten?
+  answer_template: Ja, wir bieten einen 24/7-Notdienst für dringende Reparaturen mit
+    Aufpreis an.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für Reparaturdienstleistungen fragt.
+  script: Guten Tag! Vielen Dank für Ihr Interesse. Wir bieten maßgeschneiderte Kostenvoranschläge
+    basierend auf Ihrem spezifischen Problem. Können Sie mir bitte kurz den Schaden
+    beschreiben, damit ich Ihnen eine genaue Einschätzung geben kann?
+  goal: Kundenengagement fördern und detaillierte Informationen für ein Angebot sammeln.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach verfügbaren Reparaturdienstleistungen sucht.
+  script: 'Hallo! Wir sind spezialisiert auf Reparaturen für Haushaltsgeräte, Elektronik
+    und mehr. Um Ihnen optimal zu helfen, verrate ich Ihnen: Welches Gerät benötigt
+    Reparatur und was ist das genaue Problem?'
+  goal: Dienstleistungen präsentieren und Kundenbedürfnisse identifizieren.
+- trigger: appointment_request
+  situation: Wenn ein Kunde einen Termin für eine Reparatur vereinbaren möchte.
+  script: Sehr gerne vereinbare ich einen Termin für Sie. Wir haben flexible Zeiten
+    von Montag bis Freitag, 8-18 Uhr. Welcher Tag und welche Uhrzeit passen Ihnen
+    am besten?
+  goal: Termin effizient buchen und Kundenzufriedenheit sicherstellen.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde Preise oder Dienstleistungen von Mitbewerbern erwähnt.
+  script: Ich verstehe, dass Sie Vergleiche ziehen. Unsere Stärke liegt in der persönlichen
+    Betreuung, schnellen Reparaturzeiten und transparenten Preisen ohne versteckte
+    Kosten. Möchten Sie mehr über unsere Vorteile erfahren?
+  goal: Differenzierung hervorheben und Vertrauen aufbauen.
+competitors:
+- name: ATU (Auto-Teile-Unger)
+  positioning: Große Kette für Autoreparaturen und -teile.
+  strengths:
+  - Viele Standorte in Deutschland
+  - umfassende Dienstleistungspalette
+  - Markenbekanntheit
+  weaknesses:
+  - Lange Wartezeiten
+  - unpersönlicher Service
+  - hohe Preise für Zusatzleistungen
+  our_differentiation: Wir bieten schnelle, persönliche Reparaturen mit festen Preisen
+    und individueller Kundenbetreuung.
+- name: Mister Minit
+  positioning: Fachgeschäft für Schlüssel- und Schuhreparaturen.
+  strengths:
+  - Spezialisierung auf Nischendienstleistungen
+  - schnelle Servicezeiten
+  - bundesweite Präsenz
+  weaknesses:
+  - Begrenztes Serviceangebot
+  - höhere Kosten für Komplexreparaturen
+  our_differentiation: Wir decken ein breiteres Reparatur-Spektrum ab und bieten kompetitive
+    Preise mit Garantie.
+- name: lokale Handwerksbetriebe
+  positioning: Kleine, unabhängige Reparaturdienstleister in der Region.
+  strengths:
+  - Persönlicher Kontakt
+  - lokale Verankerung
+  - flexible Arbeitszeiten
+  weaknesses:
+  - Begrenzte Ressourcen
+  - unzureichende Digitalisierung
+  - variable Qualität
+  our_differentiation: Wir kombinieren persönlichen Service mit moderner Technologie
+    wie AI-Stimmenagenten für effiziente Abläufe und bessere Erreichbarkeit.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 29
+  roi_examples:
+  - scenario: Automatisierung der Terminbuchung für einen Reparaturbetrieb mit 10
+      Mitarbeitern.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 20% Arbeitszeit durch automatisierte Kundenkommunikation.
+  - Transparente Preise ohne versteckte Gebühren für mehr Kundenzufriedenheit.
+  - Kosteneffiziente Neukundengewinnung durch digitale Lead-Generierung.
+market_context:
+  market_size: Schätzungsweise 15 Milliarden EUR jährlich in Deutschland.
+  growth_rate: 3% YoY, getrieben durch Nachhaltigkeitstrends und Digitalisierung.
+  key_trends:
+  - Zunehmende Nachfrage nach Reparaturen statt Neukauf aufgrund ökologischer Bewusstsein.
+  - Digitalisierung der Handwerksbranche durch Online-Buchungssysteme und KI-Tools.
+  - Steigende Bedeutung von Garantie- und Servicepaketen für Kundenbindung.
+  seasonality:
+    high:
+    - Winter für Heizungsreparaturen
+    - Herbst für Autoreparaturen vor dem Winter
+    low:
+    - Sommer für einige Haushaltsgerätereparaturen
+    - Urlaubszeiten
+typical_objections:
+- objection: Ihre Preise sind zu hoch im Vergleich zu Mitbewerbern.
+  response: Unsere Preise spiegeln die hohe Qualität, Garantie und persönliche Betreuung
+    wider. Oft sparen Sie langfristig durch langlebigere Reparaturen.
+- objection: Ich brauche sofortige Hilfe, aber Sie haben keine Termine frei.
+  response: Wir bieten Notdienst-Termine für dringende Fälle an. Lassen Sie mich prüfen,
+    ob wir eine Sonderlösung für Sie finden können.
+- objection: Ich vertraue nicht auf Reparaturen durch unbekannte Dienstleister.
+  response: Verständlich. Wir haben zahlreiche positive Kundenbewertungen und bieten
+    eine Geld-zurück-Garantie bei Unzufriedenheit. Darf ich Ihnen Referenzen nennen?
+- objection: Ich bevorzuge persönlichen Kontakt, nicht digitale Tools.
+  response: Unsere AI-Stimmenagenten unterstützen nur die Verwaltung, die Reparatur
+    selbst erfolgt durch erfahrene Handwerker mit persönlichem Service.
+meta:
+  id: repair_services
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

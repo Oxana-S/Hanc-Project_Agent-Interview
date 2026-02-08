@@ -1,0 +1,250 @@
+pain_points:
+- description: High client acquisition costs due to competitive advertising on platforms
+    like Google and social media.
+  severity: high
+  solution_hint: AI voice agent can automate lead qualification and follow-up calls
+    to reduce marketing spend.
+- description: Seasonal fluctuations with high demand in summer for weddings and events,
+    leading to income instability.
+  severity: medium
+  solution_hint: Use AI to schedule off-season promotions and manage peak booking
+    periods efficiently.
+- description: Rapid equipment obsolescence requiring frequent upgrades, straining
+    budgets for cameras, lenses, and drones.
+  severity: medium
+  solution_hint: AI can track equipment usage and suggest optimal upgrade times based
+    on ROI.
+- description: Client expectations for quick turnarounds and multiple revisions, consuming
+    significant editing time.
+  severity: high
+  solution_hint: Automate client communication for project timelines and revision
+    limits using AI.
+- description: Compliance with PIPEDA for storing and sharing client photos and videos,
+    adding administrative burden.
+  severity: high
+  solution_hint: AI voice agent can provide compliance reminders and secure data handling
+    prompts.
+- description: Managing social media presence to showcase work and attract clients
+    is time-intensive.
+  severity: medium
+  solution_hint: AI can schedule posts and handle initial engagement inquiries on
+    platforms like Instagram.
+- description: Competition from budget-friendly services and DIY solutions reducing
+    profit margins.
+  severity: medium
+  solution_hint: Highlight professional quality and personalized service through AI-driven
+    sales scripts.
+typical_services:
+- Portrait photography sessions
+- Wedding photography and videography packages
+- Event coverage for corporate and social gatherings
+- Commercial and product photography
+- Real estate photography with virtual tours
+- Drone aerial photography and videography
+- Photo editing and retouching services
+- Video editing and post-production
+- Photography workshops and training
+- Stock photography licensing
+recommended_functions:
+- name: Appointment scheduling and booking management
+  priority: high
+  reason: Critical for handling peak season demands and reducing no-shows in the Canadian
+    market.
+- name: Lead qualification and follow-up calls
+  priority: high
+  reason: Helps filter serious clients from inquiries, saving time in a competitive
+    industry.
+- name: Payment reminder and processing automation
+  priority: medium
+  reason: Ensures timely payments and reduces administrative overhead for small businesses.
+- name: Client feedback and review collection
+  priority: medium
+  reason: Builds reputation and trust, essential for word-of-mouth referrals in local
+    communities.
+- name: Marketing automation for seasonal promotions
+  priority: high
+  reason: Addresses seasonal demand fluctuations by targeting off-peak periods effectively.
+- name: Compliance alerts for PIPEDA data handling
+  priority: high
+  reason: Mitigates legal risks and builds client confidence in data privacy.
+- name: Equipment maintenance scheduling
+  priority: low
+  reason: Prevents downtime during busy seasons by proactive management.
+typical_integrations:
+- name: Booking and scheduling software
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  - Square Appointments
+  priority: high
+- name: Customer relationship management (CRM) systems
+  examples:
+  - HubSpot
+  - Salesforce
+  - Zoho CRM
+  priority: high
+- name: Payment processing platforms
+  examples:
+  - Square
+  - Stripe
+  - PayPal
+  priority: medium
+- name: Photo and video editing software
+  examples:
+  - Adobe Creative Cloud
+  - Final Cut Pro
+  - DaVinci Resolve
+  priority: medium
+- name: Cloud storage and file sharing services
+  examples:
+  - Google Drive
+  - Dropbox
+  - OneDrive
+  priority: low
+- name: Social media management tools
+  examples:
+  - Hootsuite
+  - Buffer
+  - Later
+  priority: medium
+industry_faq:
+- question: What are your pricing packages for wedding photography?
+  answer_template: Our wedding packages start at 2000 CAD and include coverage, editing,
+    and digital delivery, with options to customize based on your needs.
+- question: How long does it take to receive edited photos after a session?
+  answer_template: Typically, edited photos are delivered within 2-3 weeks, but rush
+    options are available for an additional fee.
+- question: Do you offer drone photography for real estate listings?
+  answer_template: Yes, we provide drone aerial photography and videography services,
+    compliant with Canadian regulations, starting at 500 CAD per session.
+- question: Are your services PIPEDA compliant for data privacy?
+  answer_template: Absolutely, we follow PIPEDA guidelines to securely handle and
+    store all client data and media files.
+- question: Can you accommodate last-minute bookings for events?
+  answer_template: We strive to accommodate based on availability, especially during
+    peak seasons; booking in advance is recommended to secure your date.
+- question: What equipment do you use for professional shoots?
+  answer_template: We use high-end cameras, lenses, and lighting equipment from brands
+    like Canon and Sony to ensure top-quality results.
+- question: Do you provide printed photo albums or only digital files?
+  answer_template: We offer both digital files and printed albums; our packages can
+    be tailored to include physical products at an additional cost.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about pricing over the phone.
+  script: Thank you for your interest! Our services are customized, but entry-level
+    sessions start at 300 CAD. Could you share more about your project so I can provide
+    a tailored quote?
+  goal: Qualify the lead and gather details for a personalized proposal.
+- trigger: service_inquiry
+  situation: When a caller inquires about specific services like wedding photography.
+  script: I'd be happy to help with wedding photography. We offer packages from 2000
+    CAD that include full-day coverage and editing. What date are you planning for?
+  goal: Convert the inquiry into a booking by highlighting value and securing event
+    details.
+- trigger: objection_too_expensive
+  situation: When a client expresses concerns about cost.
+  script: I understand budget is important. Our services focus on professional quality
+    and time savings, like automated follow-ups that free up 10 hours a month. Would
+    you like to hear about our payment plans?
+  goal: Overcome price objections by emphasizing ROI and flexibility.
+- trigger: follow_up_after_consultation
+  situation: After an initial consultation to encourage a decision.
+  script: Following up on our chat, I wanted to see if you have any more questions
+    about our packages. Booking early ensures we secure your preferred date, especially
+    with summer demand.
+  goal: Close the sale by creating urgency and addressing final concerns.
+competitors:
+- name: Local independent studios
+  positioning: Niche, personalized service in specific cities like Toronto or Vancouver.
+  strengths:
+  - Strong local reputation
+  - Flexible customization
+  - Personal client relationships
+  weaknesses:
+  - Limited scalability
+  - Higher prices due to overhead
+  - Inconsistent marketing
+  our_differentiation: We offer AI-driven efficiency for lower costs and consistent
+    customer service.
+- name: National chains like Blacks Photography
+  positioning: Mass-market, budget-friendly options across Canada.
+  strengths:
+  - Brand recognition
+  - Wide service range
+  - Competitive pricing
+  weaknesses:
+  - Less personalized
+  - Longer turnaround times
+  - Generic packages
+  our_differentiation: Our AI integration allows for personalized experiences at competitive
+    prices with faster responses.
+- name: Online platforms like ShootProof or SmugMug
+  positioning: DIY and self-service tools for photographers.
+  strengths:
+  - Low cost
+  - Easy to use
+  - Digital focus
+  weaknesses:
+  - Lack of human support
+  - Limited to basic features
+  - No local expertise
+  our_differentiation: We combine technology with local market knowledge and hands-on
+    support for better results.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automating appointment scheduling and client follow-ups
+    monthly_cost: 100
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Using AI for lead qualification to reduce marketing spend
+    monthly_cost: 150
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Save up to 15 hours per month on administrative tasks
+  - Increase client bookings by 20% through automated follow-ups
+  - Reduce no-show rates by 30% with reminder calls
+market_context:
+  market_size: Estimated at 2.5 billion CAD annually
+  growth_rate: 4% YoY driven by demand for digital content
+  key_trends:
+  - Rising popularity of video content for social media marketing
+  - Increased use of drones for aerial photography in real estate
+  - Growing emphasis on data privacy and PIPEDA compliance
+  seasonality:
+    high:
+    - Summer months for weddings and outdoor events
+    - Holiday season for family portraits
+    low:
+    - Winter months in colder regions
+    - Early spring for slower demand
+typical_objections:
+- objection: Your services are too expensive compared to DIY options.
+  response: While DIY can be cheaper, our professional expertise ensures higher quality
+    and saves you time, with AI tools that streamline the process for better value.
+- objection: I'm not sure if I need a professional; my phone takes good photos.
+  response: Professional equipment and editing bring out the best in your moments,
+    and our AI-assisted services make it affordable and efficient for lasting memories.
+- objection: I'm concerned about data privacy with my photos.
+  response: We strictly adhere to PIPEDA regulations, and our AI systems include secure
+    data handling to protect your privacy at every step.
+meta:
+  id: photo_video
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

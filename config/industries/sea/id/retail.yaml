@@ -1,0 +1,242 @@
+pain_points:
+- description: Keterbatasan staf untuk menangani panggilan pelanggan, terutama pada
+    jam sibuk, menyebabkan pelanggan menunggu lama.
+  severity: high
+  solution_hint: AI voice agent dapat menangani panggilan masuk secara simultan, menjawab
+    pertanyaan umum, dan mengalihkan ke staf hanya untuk kasus kompleks.
+- description: Biaya operasional untuk staf customer service yang tinggi, termasuk
+    gaji, pelatihan, dan shift malam/akhir pekan.
+  severity: medium
+  solution_hint: Mengotomatisasi 70-80% percakapan rutin dengan AI voice agent dapat
+    mengurangi ketergantungan pada staf manusia dan menekan biaya.
+- description: Kehilangan penjualan karena toko tutup, pelanggan tidak dapat menanyakan
+    stok atau memesan di luar jam operasional.
+  severity: medium
+  solution_hint: Agen suara AI yang beroperasi 24/7 dapat menjawab pertanyaan dan
+    bahkan mencatat pesanan kapan saja, meningkatkan konversi.
+- description: Kesalahan informasi stok karena sistem tidak terintegrasi langsung
+    dengan customer service, menyebabkan janji yang tidak terpenuhi.
+  severity: high
+  solution_hint: AI voice agent yang terintegrasi dengan sistem Inventori (ERP) dapat
+    memberikan informasi stok real-time yang akurat.
+- description: Kesulitan mengelola penawaran promo dan perubahan harga secara real-time
+    di semua channel komunikasi.
+  severity: medium
+  solution_hint: AI voice agent dapat di-update secara terpusat dengan informasi promo
+    terbaru, memastikan konsistensi informasi.
+- description: Minimnya data analisis dari interaksi telepon untuk memahami kebutuhan
+    dan keluhan pelanggan.
+  severity: low
+  solution_hint: Setiap percakapan dengan AI voice agent menghasilkan data terstruktur
+    yang dapat dianalisis untuk pengambilan keputusan bisnis.
+typical_services:
+- Konsultasi dan Pemasangan AI Customer Service
+- Layanan Virtual Asisten untuk Konfirmasi Pesanan
+- Sistem Telepon Otomatis untuk Informasi Stok & Harga
+- Layanan Call Center 24 Jam Berbasis AI
+- Integrasi AI Voice Agent dengan Tokopedia/Shopee/ERP
+- Analisis Transkrip Percakapan Pelanggan
+- Pengaturan Promo & Diskon melalui Sistem Suara
+- Pelatihan dan Customisasi Skrip AI untuk Brand Suara
+- Layanan Pengingat Pembayaran & Pengiriman via Telepon
+recommended_functions:
+- name: Pengecekan Status Pesanan
+  priority: high
+  reason: Fungsi paling sering ditanyakan pelanggan. Mengurangi beban call center
+    hingga 30%.
+- name: Konfirmasi Ketersediaan Stok
+  priority: high
+  reason: Menjawab langsung pertanyaan kritis yang mempengaruhi keputusan beli.
+- name: Penjadwalan atau Perubahan Jadwal Pengiriman
+  priority: medium
+  reason: Mengurangi konflik dan meningkatkan kepuasan pelanggan tanpa intervensi
+    manusia.
+- name: Pemrosesan Pesanan Sederhana (Pre-order/Produk umum)
+  priority: medium
+  reason: Menangkap penjualan di luar jam kerja dan mengotomatiskan transaksi rutin.
+- name: Penyampaian Promo & Kode Voucher
+  priority: low
+  reason: Mendorong penjualan tambahan dan meningkatkan engagement.
+- name: Pengumpulan Umpan Balik Pasca-Pembelian
+  priority: low
+  reason: Mendapatkan data NPS dan testimoni secara otomatis.
+typical_integrations:
+- name: Sistem ERP/Inventori
+  examples:
+  - Majoo
+  - Odoo
+  - Jurnal
+  - Moka POS
+  priority: high
+- name: Platform E-commerce
+  examples:
+  - Tokopedia
+  - Shopee
+  - Blibli
+  - Bukalapak
+  priority: high
+- name: Sistem CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - CRM Lokal
+  priority: medium
+- name: WhatsApp Business API
+  examples:
+  - Platform Resmi WhatsApp
+  priority: medium
+- name: Software Akuntansi
+  examples:
+  - Accurate
+  - Zahir
+  priority: low
+industry_faq:
+- question: Apakah suara robot AI-nya terdengar natural seperti manusia?
+  answer_template: Ya, teknologi terbaru kami menggunakan suara neural yang sangat
+    natural dan memahami logat Bahasa Indonesia. Banyak pelanggan tidak menyadari
+    mereka berbicara dengan AI.
+- question: Bagaimana jika pelanggan marah atau membutuhkan bantuan khusus di luar
+    skrip?
+  answer_template: Sistem kami dirancang cerdas untuk mendeteksi emosi dan situasi
+    kompleks. Percakapan akan langsung dialihkan dengan mulus ke agen manusia kami
+    yang siap membantu.
+- question: Berapa lama waktu yang dibutuhkan untuk implementasi?
+  answer_template: Implementasi standar memakan waktu 2-4 minggu, tergantung kompleksitas
+    integrasi. Kami memiliki tim yang akan mendampingi hingga sistem berjalan lancar.
+- question: Apakah sistem ini mematuhi regulasi perlindungan data (PDP)?
+  answer_template: Sangat aman. Sistem kami dirancang dengan prinsip privasi-by-design,
+    data disimpan di server lokal, dan kami memastikan kepatuhan penuh terhadap Undang-Undang
+    PDP Indonesia.
+- question: Bisakah sistem ini menangani panggilan dalam jumlah besar saat promo besar-besaran?
+  answer_template: Tentu. Kekuatan utama AI voice agent adalah kemampuan menangani
+    ribuan panggilan secara bersamaan tanpa antrian, sehingga sangat ideal untuk periode
+    puncak seperti Harbolnas atau Ramadan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika prospek menanyakan harga di awal percakapan.
+  script: Tentu, Pak/Bu. Investasinya sangat terjangkau, mulai dari Rp 1,5 juta per
+    bulan. Yang menarik, biaya ini seringkali lebih hemat dibandingkan merekrut satu
+    staf CS baru. Boleh saya jelaskan bagaimana kami menghitung ROI-nya yang biasanya
+    kurang dari 6 bulan?
+  goal: Mengalihkan percakapan dari harga ke nilai dan pengembalian investasi (ROI).
+- trigger: competitor_mention
+  situation: Saat prospek menyebutkan layanan pesaing.
+  script: Itu pilihan yang bagus. Yang membedakan kami adalah fokus khusus pada industri
+    retail di Indonesia dan integrasi native dengan platform seperti Tokopedia & Moka
+    POS. Selain itu, suara AI kami dikustomisasi dengan logat Indonesia yang lebih
+    natural. Apakah integrasi dengan sistem yang ada menjadi pertimbangan penting
+    Bapak/Ibu?
+  goal: Menonjolkan diferensiasi lokal dan keahlian industri, lalu mengarahkan ke
+    kebutuhan spesifik mereka.
+- trigger: hesitation_need
+  situation: Saat prospek ragu-ragu dan berkata "kami perlu pertimbangkan dulu".
+  script: Sangat dimengerti, Pak/Bu. Sebelum memutuskan, mungkin kita bisa identifikasi
+    satu masalah spesifik yang paling menyita waktu staf Bapak/Ibu saat ini? Misalnya,
+    apakah konfirmasi stok via telepon atau melayani pertanyaan di luar jam kerja?
+    Saya bisa tunjukkan demo singkat solusinya dalam 5 menit.
+  goal: Mengidentifikasi pain point spesifik dan menawarkan value lewat demo targeted.
+- trigger: object_automation
+  situation: Saat prospek khawatir otomatisasi mengurangi sentuhan manusia.
+  script: Kami sepakat sentuhan manusia itu penting. AI voice agent kami justru membebaskan
+    staf manusia dari tugas rutin seperti cek stok dan status order. Dengan begitu,
+    tim Bapak/Ibu bisa fokus pada pelayanan yang lebih bernuansa, seperti menangani
+    komplain kompleks atau building customer loyalty. Jadi, sentuhan manusianya justru
+    menjadi lebih bermakna.
+  goal: Mereframing AI sebagai alat untuk memberdayakan, bukan menggantikan, staf
+    manusia.
+competitors:
+- name: Kata.ai
+  positioning: Penyedia chatbot dan AI conversation terkemuka di Indonesia.
+  strengths:
+  - Brand awareness kuat
+  - Portofolio klien besar
+  - Fokus pada teks (chatbot)
+  weaknesses:
+  - Kurang fokus pada solusi voice telepon
+  - Harga mungkin lebih tinggi untuk skala kecil
+  our_differentiation: Kami spesialis di voice agent untuk telepon dengan integrasi
+    lebih dalam ke sistem operasional retail (POS, Inventory).
+- name: Qiscus
+  positioning: Platform omnichannel customer engagement.
+  strengths:
+  - Solusi omnichannel (chat
+  - email
+  - social)
+  - Infrastruktur yang andal
+  weaknesses:
+  - Voice agent bukan core product
+  - Mungkin kurang custom untuk workflow retail spesifik
+  our_differentiation: Solusi kami 100% dikhususkan untuk otomatisasi panggilan suara
+    dengan pemahaman konteks retail Indonesia yang lebih baik dan harga lebih kompetitif.
+- name: VLA
+  positioning: Virtual Line Assistant untuk call center.
+  strengths:
+  - Fitur IVR (Interactive Voice Response) yang matang
+  - Pengalaman di sektor telekomunikasi
+  weaknesses:
+  - Teknologi voice AI mungkin kurang canggih/natural
+  - Kurang agile untuk usaha retail menengah
+  our_differentiation: Voice AI kami lebih natural dan kontekstual, serta dirancang
+    untuk kemudahan setup dan penggunaan oleh bisnis retail tanpa tim IT yang besar.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 1500000
+  - 10000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Toko retail dengan 100 panggilan masuk/hari tentang status order & stok.
+    monthly_cost: 2500000
+    monthly_savings: 7500000
+    payback_months: 2
+  value_anchors:
+  - Lebih murah dari gaji satu staf customer service.
+  - ROI tercapai dalam 3-6 bulan dari penghematan biaya operasional.
+  - Tidak ada biaya setup untuk paket dasar.
+market_context:
+  market_size: Diperkirakan >Rp 500 Miliar untuk solusi otomatisasi customer engagement
+  growth_rate: 15-20% YoY
+  key_trends:
+  - Meningkatnya adopsi omnichannel retail (online-offline).
+  - Kekurangan tenaga kerja terampil di sektor customer service.
+  - Kesadaran akan pentingnya data dari interaksi pelanggan.
+  - Tuntutan layanan 24/7 dari konsumen urban.
+  seasonality:
+    high:
+    - Bulan Ramadan & Idul Fitri
+    - Harbolnas (12.12)
+    - Akhir Tahun (November-Desember)
+    low:
+    - Bulan Januari
+    - Pertengahan Tahun (Juni-Juli)
+typical_objections:
+- objection: Kami khawatir pelanggan kami, terutama yang lebih tua, tidak nyaman dengan
+    mesin.
+  response: Pengalaman kami menunjukkan sebaliknya. Dengan suara yang natural dan
+    skrip yang ramah, justru banyak pelanggan yang apreasiasi karena tidak perlu menunggu.
+    Kami juga selalu menyediakan opsi 'tekan 0 untuk hubungi agen' kapan saja.
+- objection: Sistem IT kami sudah kompleks, kami tidak ingin tambahan integrasi yang
+    rumit.
+  response: Kami paham kekhawatiran itu. Tim teknis kami yang akan menangani integrasi
+    dengan sistem existing Anda. Mayoritas integrasi dengan platform seperti Moka
+    POS atau Tokopedia dapat diselesaikan dalam hitungan hari dengan API yang aman.
+- objection: Biayanya masih terlihat besar untuk ukuran usaha kami.
+  response: Mari kita hitung bersama. Berapa rata-rata panggangan masuk yang harus
+    dijawab staf Anda per hari? Dan berapa biaya yang bisa dihemat jika 70% dari panggilan
+    itu ditangani otomatis? Seringkali, penghematan gaji dan peningkatan penjualan
+    dari layanan 24/7 jauh melampaui biaya berlangganan.
+meta:
+  id: retail
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

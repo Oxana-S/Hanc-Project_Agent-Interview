@@ -1,0 +1,186 @@
+pain_points:
+- description: A hívők számának csökkenése és az aktív közösségi részvétel hiánya.
+  severity: high
+  solution_hint: Az AI hangügynök lehetőséget kínál a rendszeres tájékoztatásra és személyre szabott visszahívásokra a közösség erősítése érdekében.
+- description: Adminisztratív terhek, mint az események szervezése és a tagadatok nyilvántartása.
+  severity: medium
+  solution_hint: Automatizált időpontfoglalás és adatkezelés a GDPR megfelelőség mellett.
+- description: Adománygyűjtés kihívásai és a pénzügyi átláthatóság hiánya.
+  severity: high
+  solution_hint: Automatizált adománykezelés és visszajelzés a donoroknak.
+- description: Tájékoztatási problémák a szertartások időpontjairól és eseményekről.
+  severity: low
+  solution_hint: 24/7 információszolgáltatás és értesítések küldése.
+- description: Önkéntesek hiánya és a koordinációs nehézségek.
+  severity: medium
+  solution_hint: Önkéntesek felkérésének és menedzselésének automatizálása.
+- description: Pásztori gondozás korlátozott kapacitása a nagy közösségekben.
+  severity: high
+  solution_hint: Alapvető lelki támogatás és irányítás az AI hangügynök által, összeköttetésben a pásztorokkal.
+typical_services:
+- Szentmise és istentisztelet időbeosztás
+- Vallási oktatás és katekizmus
+- Közösségi események szervezése
+- Pásztori tanácsadás és lelki gondozás
+- Adománygyűjtés és pénzügyi támogatás
+- Temetési és esküvői szertartások
+- Ifjúsági programok és klubok
+- Önkéntesi koordináció
+- Vallási kiadványok és hírlevelek terjesztése
+- Online imacsoportok és streaming szolgáltatások
+recommended_functions:
+- name: Időpontfoglalás automatikus kezelése
+  priority: high
+  reason: Leegyszerűsíti a szertartások és események szervezését, csökkenti az adminisztratív terhelést.
+- name: Adományok fogadása és visszaigazolás
+  priority: high
+  reason: Növeli az adományozói elégedettséget és a pénzügyi átláthatóságot.
+- name: Gyakori kérdések automatizált válaszolása
+  priority: medium
+  reason: Csökkenti a személyzet terhelését és 24/7 információhozzáférést biztosít.
+- name: Közösségi értesítések küldése
+  priority: medium
+  reason: Javítja a kommunikációt és növeli a részvételt eseményeken.
+- name: Önkéntesek felkérés és menedzselés
+  priority: low
+  reason: Segít a közösségi tevékenységek hatékonyabb szervezésében.
+- name: Alapvető lelki támogatás és irányítás
+  priority: medium
+  reason: Kiegészíti a pásztori munkát, különösen sürgős helyzetekben.
+typical_integrations:
+- name: Egyházkezelő szoftver
+  examples:
+  - ChurchSuite
+  - Breeze
+  - Plänér
+  priority: high
+- name: Pénzügyi és könyvelési rendszerek
+  examples:
+  - SZÁMLA soft
+  - Billingo
+  - Bármilyen helyi GDPR-kompatibilis megoldás
+  priority: high
+- name: Kommunikációs eszközök
+  examples:
+  - Facebook
+  - WhatsApp
+  - helyi hírlevél platformok
+  priority: medium
+- name: Adatbázis-kezelő rendszerek
+  examples:
+  - Microsoft Access
+  - Excel, felhőalapú megoldások
+  priority: medium
+- name: Online fizetési rendszerek
+  examples:
+  - SimplePay
+  - Barion
+  - OTP Simple
+  priority: low
+industry_faq:
+- question: Mikor vannak a szentmisék ezen a héten?
+  answer_template: 'A szentmisék időbeosztása a következő: [időpontok]. További részletekért kérjük, látogasson el weboldalunkra vagy foglaljon időpontot.'
+- question: Hogyan tudok adományt küldeni?
+  answer_template: Adományt küldhet banki átutalással vagy online fizetéssel a [link] címen. Köszönjük a támogatását!
+- question: Van-e ifjúsági program a gyülekezetben?
+  answer_template: 'Igen, ifjúsági programjaink információit itt találja: [esemény részletek]. Kérjük, iratkozzon fel hírlevelünkre.'
+- question: Hogyan lehet önkéntesként jelentkezni?
+  answer_template: Önkéntesnek jelentkezhet az [önkéntes regisztrációs link] címen, vagy hívjon minket a további információkért.
+- question: Biztonságosak-e az online adományok?
+  answer_template: Igen, online fizetési rendszereink GDPR-kompatibilisek és biztonságosak. Adatai védettek.
+- question: Hol találom a lelki gondozási időpontokat?
+  answer_template: 'Lelki gondozási időpontokat itt foglalhat: [időpontfoglaló link] vagy hívjon minket személyes egyeztetésre.'
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy lelkipásztor vagy gyülekezeti képvisető árakat kér.
+  script: Köszönjük érdeklődését! Alapszolgáltatásunk havi 25.000 HUF-tól kezdődik, testreszabott csomagokkal. Hogyan segíthetünk specifikus igényeiben?
+  goal: Az ár bemutatása és további igények felderítése.
+- trigger: efficiency_concern
+  situation: Amikor a klient adminisztratív terhelést említ.
+  script: Értjük a kihívást. AI hangügynökünk akár 30%-kal csökkentheti az adminisztratív munkát automatizált időpontfoglalással és adatkezeléssel. Szeretne egy bemutatót?
+  goal: A hatékonysági előnyök bemutatása és demó kérése.
+- trigger: gdpr_worry
+  situation: Amikor a klient aggódik az adatvédelem miatt.
+  script: Teljes mértékben GDPR-kompatibilis megoldást kínálunk, EU-szabványoknak megfelelően. Adatai biztonságban vannak nálunk.
+  goal: A bizalom építése a megfelelőségi garanciákkal.
+- trigger: competitor_mention
+  situation: Amikor a klient más szolgáltatókat említ.
+  script: Más szolgáltatókhoz képest személyre szabottabb megoldást kínálunk, kifejezetten magyar egyházak igényeire szabva. Például, támogatjuk a helyi nyelvet és valutát.
+  goal: A differenciálás és helyi előnyök hangsúlyozása.
+competitors:
+- name: ChurchTech Hungary
+  positioning: Általános egyháztechnológiai szolgáltató
+  strengths:
+  - Széles termékvonal
+  - Helyi piaci jelenlét
+  weaknesses:
+  - Magas árak
+  - Korlátozott testreszabás
+  our_differentiation: Olcsóbb, AI-alapú megoldások és jobb helyi támogatás.
+- name: FaithSoft EU
+  positioning: Nemzetközi szoftverek európai piacra
+  strengths:
+  - Nemzetközi tapasztalat
+  - Fejlett funkciók
+  weaknesses:
+  - Kevesebb helyi fókusz
+  - Bonyolult implementáció
+  our_differentiation: Egyszerűbb, magyar nyelvű megoldás gyors bevezetéssel.
+- name: Local IT Consultants
+  positioning: Helyi IT tanácsadók egyéni megoldásokkal
+  strengths:
+  - Személyes kapcsolat
+  - Rugalmasság
+  weaknesses:
+  - Magas költségek
+  - Korlátozott skálázhatóság
+  our_differentiation: Költséghatékony, skálázható AI platform standard áron.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 20000
+  - 100000
+  entry_point: 25000
+  roi_examples:
+  - scenario: Kis gyülekezet adminisztratív terhelés csökkentése
+    monthly_cost: 30000
+    monthly_savings: 60000
+    payback_months: 2
+  value_anchors:
+  - Akár 50% időmegtakarítás adminisztratív feladatokban
+  - Növelt adománybevételek automatizált kampányokkal
+  - Jobb közösségi részvétel és elégedettség
+market_context:
+  market_size: Becslések szerint kb. 500-1000 magyarországi vallási intézmény aktív technológiai igénnyel.
+  growth_rate: Évi 5-10%-os növekedés a digitalizáció miatt.
+  key_trends:
+  - Növekvő online jelenlét és streaming szolgáltatások
+  - Fokozott adatvédelmi követelmények GDPR miatt
+  - Ifjúsági közösségek digitalizálása
+  seasonality:
+    high:
+    - Nagyböjt, Karácsony, Húsvét
+    low:
+    - Nyári vakáció időszak
+typical_objections:
+- objection: Túl drága számunkra, korlátozott költségvetéssel.
+  response: Értjük. Kínálunk skálázható csomagokat, és a ROI gyorsan megtérül a megtakarított időn és növelt adományokon keresztül.
+- objection: Félek, hogy elveszítjük a személyes kapcsolatot a hívőkkel.
+  response: AI hangügynökünk kiegészíti, nem helyettesíti a személyes kapcsolatot. Segít alapvető kérdések kezelésében, hogy Önök a lényegre fókuszálhassanak.
+- objection: Nem vagyok biztos a technológiai képességeinkben.
+  response: Teljes támogatást nyújtunk bevezetéskor és felhasználói képzést is. A rendszer felhasználóbarát és intuitív.
+meta:
+  id: religion
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- religion
+- church
+- temple
+- parish
+- ministry
+_extends: _base/religion

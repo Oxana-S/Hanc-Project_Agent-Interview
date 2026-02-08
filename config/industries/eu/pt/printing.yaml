@@ -1,0 +1,227 @@
+pain_points:
+- description: Custos operacionais elevados devido aos preços de energia e materiais.
+  severity: high
+  solution_hint: O agente de voz pode otimizar processos para reduzir desperdícios
+    e sugerir alternativas económicas.
+- description: Dificuldade em gerir pequenos pedidos de forma eficiente.
+  severity: medium
+  solution_hint: Automatizar o agendamento e cotação para pedidos pequenos, aumentando
+    a produtividade.
+- description: Concorrência de serviços de impressão online, que oferecem preços baixos.
+  severity: high
+  solution_hint: Destacar a qualidade local e o serviço personalizado através de chamadas
+    proativas.
+- description: Cumprimento de regulamentações ambientais, como a GDPR e normas de
+    sustentabilidade.
+  severity: medium
+  solution_hint: Fornecer lembretes e orientações sobre compliance via chamadas automáticas.
+- description: Flutuações sazonais da procura, com picos em períodos festivos.
+  severity: low
+  solution_hint: Ajudar na previsão de demanda e promoções sazonais através de análises
+    de dados.
+- description: Falta de digitalização nos processos, levando a erros manuais.
+  severity: medium
+  solution_hint: Integrar com sistemas digitais para automatizar tarefas repetitivas.
+- description: Desafios na aquisição e retenção de clientes, especialmente para pequenas
+    empresas.
+  severity: high
+  solution_hint: Usar chamadas personalizadas para follow-up e ofertas especiais.
+typical_services:
+- Impressão offset
+- Impressão digital
+- Cartões de visita
+- Flyers e panfletos
+- Brochuras e catálogos
+- Livros e revistas
+- Etiquetas e adesivos
+- Embalagens personalizadas
+- Sinalização e outdoor
+- Impressão 3D
+recommended_functions:
+- name: Agendamento de encomendas
+  priority: high
+  reason: Automatiza a reserva de pedidos, reduzindo tempos de espera e erros.
+- name: Atendimento ao cliente 24/7
+  priority: high
+  reason: Melhora a satisfação do cliente ao fornecer suporte contínuo.
+- name: Cotação automática
+  priority: medium
+  reason: Fornece preços rápidos e personalizados, aumentando as conversões.
+- name: Gestão de inventário
+  priority: medium
+  reason: Controla stocks em tempo real, evitando rupturas e excessos.
+- name: Integração com ERP
+  priority: high
+  reason: Sincroniza dados financeiros e operacionais para melhor eficiência.
+- name: Marketing personalizado
+  priority: low
+  reason: Promove serviços específicos com base no histórico do cliente.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - Primavera
+  - SAP
+  - Microsoft Dynamics
+  priority: high
+- name: Software de contabilidade
+  examples:
+  - Contasimple
+  - Primavera Contabilidade
+  - Sage
+  priority: medium
+- name: Plataformas de e-commerce
+  examples:
+  - WooCommerce
+  - Shopify
+  - OLX Portugal
+  priority: medium
+- name: Software de design
+  examples:
+  - Adobe Creative Cloud
+  - CorelDRAW
+  - Canva
+  priority: low
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+industry_faq:
+- question: Quanto tempo demora a impressão de um lote de flyers?
+  answer_template: Depende da quantidade e do tipo de impressão, mas geralmente entre
+    2 a 5 dias úteis para pedidos padrão.
+- question: Quais são as opções de pagamento aceites?
+  answer_template: Aceitamos transferência bancária, cartão de crédito, e MB Way,
+    com termos personalizados para empresas.
+- question: Oferecem serviços de design gráfico?
+  answer_template: Sim, temos parcerias com designers locais ou podemos integrar com
+    o seu software de design preferido.
+- question: Como garantem a qualidade das cores na impressão?
+  answer_template: Usamos calibração digital e provas de cor para assegurar fidelidade,
+    com opções de revisão antes da produção.
+- question: Há custos adicionais para entrega urgente?
+  answer_template: Sim, para entregas em menos de 24 horas, aplicamos uma taxa adicional,
+    que varia consoante a localização.
+- question: Cumprem com as regulamentações ambientais em Portugal?
+  answer_template: Absolutamente, seguimos as normas GDPR e usamos materiais sustentáveis
+    sempre que possível.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá, podemos fornecer uma cotação personalizada com base nas suas necessidades.
+    Pode partilhar detalhes como quantidade, tipo de papel e prazo de entrega?
+  goal: Obter informações para fornecer uma cotação precisa e iniciar o processo de
+    venda.
+- trigger: service_inquiry
+  situation: Quando um cliente mostra interesse em um serviço específico, como impressão
+    digital.
+  script: Excelente! A impressão digital é ideal para pedidos pequenos e personalizados.
+    Oferecemos opções rápidas e de alta qualidade. Gostaria de agendar uma demonstração?
+  goal: Converter o interesse em uma venda ou agendamento.
+- trigger: objection_cost
+  situation: Quando um cliente menciona que o preço é muito alto.
+  script: Compreendemos a sua preocupação. No entanto, a nossa qualidade superior
+    e prazos curtos podem aumentar a satisfação dos seus clientes. Podemos discutir
+    opções de pagamento flexíveis ou pacotes económicos.
+  goal: Superar a objeção e destacar o valor agregado.
+- trigger: follow_up
+  situation: Após um primeiro contacto, para manter o envolvimento.
+  script: Olá, gostaríamos de saber se tem alguma dúvida sobre a nossa proposta. Estamos
+    aqui para ajudar a otimizar os seus projetos de impressão.
+  goal: Reter o cliente e promover fidelização.
+competitors:
+- name: VistaPrint Portugal
+  positioning: Serviços de impressão online para pequenas empresas e particulares.
+  strengths:
+  - Preços baixos
+  - Conveniência online
+  - Gama ampla de produtos
+  weaknesses:
+  - Serviço menos personalizado
+  - Prazos de entrega mais longos
+  - Qualidade variável
+  our_differentiation: Oferecemos suporte localizado, qualidade consistente e integração
+    com processos empresariais.
+- name: Impressão Local
+  positioning: Impressão tradicional com foco em clientes regionais em Portugal.
+  strengths:
+  - Relações pessoais com clientes
+  - Conhecimento do mercado local
+  - Flexibilidade em pedidos
+  weaknesses:
+  - Processos manuais
+  - Limitações tecnológicas
+  - Escalabilidade reduzida
+  our_differentiation: Combinamos a expertise local com automação digital para maior
+    eficiência e inovação.
+- name: Copimax
+  positioning: Fornecedor de equipamentos e serviços de impressão para empresas.
+  strengths:
+  - Equipamentos de alta gama
+  - Suporte técnico especializado
+  - Soluções empresariais
+  weaknesses:
+  - Preços elevados
+  - Foco em grandes clientes
+  - Pouca flexibilidade para pequenos pedidos
+  our_differentiation: Fornecemos soluções acessíveis e escaláveis, com foco em PMEs
+    e integração fácil.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatização do atendimento ao cliente para uma gráfica média.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação.
+  - Aumente as vendas com atendimento personalizado 24/7.
+  - Melhore a eficiência com integrações digitais sem custos ocultos.
+market_context:
+  market_size: Estimado em 500 milhões de EUR anuais em Portugal.
+  growth_rate: Estável com leve declínio devido à digitalização, mas crescimento em
+    nichos como impressão sustentável.
+  key_trends:
+  - Tendência para impressão sustentável e materiais ecológicos.
+  - Aumento da personalização e impressão sob demanda.
+  - Integração de tecnologias digitais como IA e IoT.
+  seasonality:
+    high:
+    - Dezembro (Natal)
+    - Junho (festas de verão)
+    - Setembro (volta às aulas)
+    low:
+    - Julho e Agosto (férias de verão)
+    - Janeiro (pós-Natal)
+typical_objections:
+- objection: É muito caro para o meu orçamento.
+  response: Oferecemos planos flexíveis e podemos ajustar os serviços às suas necessidades,
+    garantindo um bom retorno sobre o investimento.
+- objection: Prefiro lidar com fornecedores locais pessoalmente.
+  response: Entendemos, e o nosso agente de voz complementa o serviço local com conveniência
+    digital, mantendo o contacto humano quando necessário.
+- objection: Já tenho um sistema em funcionamento e não quero mudar.
+  response: A nossa solução integra-se facilmente com os seus sistemas existentes,
+    sem interrupções, para melhorar a eficiência.
+- objection: Não acredito que a automação funcione para a minha empresa.
+  response: Temos casos de sucesso com empresas semelhantes em Portugal que reduziram
+    erros e aumentaram a produtividade. Podemos partilhar exemplos.
+meta:
+  id: printing
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

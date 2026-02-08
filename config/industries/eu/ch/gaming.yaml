@@ -1,0 +1,228 @@
+pain_points:
+- description: Hohe Betriebskosten durch teure Büromieten und Löhne in der Schweiz
+  severity: high
+  solution_hint: KI-Agent kann Routineaufgaben wie Kunden-Support automatisieren,
+    um Personalkosten zu senken.
+- description: Strenge regulatorische Anforderungen (FADP, Glücksspielgesetz) und
+    Compliance-Dokumentation
+  severity: high
+  solution_hint: Automatisierte Compliance-Checks und Datenverarbeitungsprotokolle
+    führen.
+- description: Mangel an spezialisierten Entwicklern (z.B. für Engine-Programmierung)
+    auf dem lokalen Arbeitsmarkt
+  severity: high
+  solution_hint: KI-Agent als erster Support-Level entlastet vorhandenes Team für
+    Kernaufgaben.
+- description: Herausforderungen bei der Verwaltung von Spielerdaten gemäss DSGVO/FADP
+  severity: high
+  solution_hint: KI-gesteuerte, datenschutzkonforme Anfragenbearbeitung und Einwilligungsmanagement.
+- description: Notwendigkeit der mehrsprachigen Unterstützung (DE, FR, IT) für Spieler-Support
+  severity: medium
+  solution_hint: KI-Agent mit multilingualen Fähigkeiten bietet sofortige Grundunterstützung
+    in allen Landessprachen.
+- description: Intensiver Wettbewerb mit internationalen Studios um die Aufmerksamkeit
+    der Spieler
+  severity: medium
+  solution_hint: Durch 24/7-Support Player-Bindung erhöhen und Community-Management
+    skalieren.
+- description: Schwierigkeiten bei der Player-Retention und der Bekämpfung von Churn
+  severity: medium
+  solution_hint: Proaktive KI-Anrufe zur Umfrage, Feedback-Einholung und Personalisierung
+    von Angeboten.
+typical_services:
+- Spielentwicklung (AAA, Indie, Mobile)
+- Portierung (Cross-Platform)
+- Game-Design und Konzeption
+- Qualitätssicherung und Testing
+- Live-Ops und Community-Management
+- Lokalisierung (DE/FR/IT für CH-Markt)
+- Technische Dokumentation
+- Marketing und User Acquisition
+- E-Sports-Turnier-Organisation
+- Beratung zu Glücksspiel-Compliance
+recommended_functions:
+- name: Mehrsprachiger First-Level-Spielersupport
+  priority: high
+  reason: Deckt Grundbedürfnisse der multilingualen Schweizer Spielerbasis rund um
+    die Uhr ab.
+- name: Automatisierte Compliance- und Datenschutzaufklärung
+  priority: high
+  reason: Kritisch für Einhaltung von FADP und Glücksspielvorschriften in der Schweiz.
+- name: Zahlungsabwicklung und Abonnementverwaltung (CHF)
+  priority: high
+  reason: Vereinfacht Transaktionen in lokaler Währung und reduziert Support-Anfragen.
+- name: Proaktive Churn-Prävention und Feedback-Einholung
+  priority: medium
+  reason: Direkter, persönlicher Kontakt hilft, wertvolle Spieler zu halten.
+- name: Terminvereinbarung für Sales und Vertrieb
+  priority: medium
+  reason: Beschleunigt den Vertriebsprozess mit potenziellen Publishern oder Partnern.
+- name: Bug-Report-Erfassung und -Triaging
+  priority: low
+  reason: Entlastet das QA-Team durch strukturierte Vorabbearbeitung von Meldungen.
+typical_integrations:
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Zendesk
+  - Freshdesk
+  - lokal angepasste Lösungen
+  priority: high
+- name: Zahlungsdienstleister
+  examples:
+  - Twint
+  - PostFinance
+  - Six Payment Services
+  - Stripe
+  priority: high
+- name: Ticketing- und Bug-Tracking-Systeme
+  examples:
+  - Jira
+  - Trello
+  - Bugzilla
+  priority: medium
+- name: Community- und Social-Media-Tools
+  examples:
+  - Discord
+  - Steam Community
+  - Reddit-Integration
+  priority: medium
+- name: Compliance- und Datenschutz-Tools
+  examples:
+  - OneTrust
+  - localisierte DSGVO/FADP-Lösungen
+  priority: high
+industry_faq:
+- question: Unterstützt der KI-Agent Schweizerdeutsch oder andere Landessprachen?
+  answer_template: Ja, unser System ist für Hochdeutsch, Französisch und Italienisch
+    trainiert und kann grundlegende Anfragen in diesen Sprachen bearbeiten. Für komplexe
+    Dialekt-Fragen leiten wir an menschliche Agenten weiter.
+- question: Wie behandelt ihr Daten gemäss Schweizer DSG (FADP)?
+  answer_template: Alle Verarbeitungen erfolgen streng nach FADP und DSGVO. Daten
+    werden standardmäßig in der EU/CH-Region gehostet, und wir bieten vollständige
+    Transparenz- und Löschfunktionen.
+- question: Kann der Agent auch bei technischen Spielproblemen helfen?
+  answer_template: Ja, für bekannte Probleme bieten wir geführte Troubleshooting-Schritte
+    an. Neue oder komplexe Bugs erfasst der Agent strukturiert und priorisiert sie
+    für Ihr Entwicklungsteam.
+- question: Ist das System mit unserer Game Engine (z.B. Unity, Unreal) kompatibel?
+  answer_template: Der Agent arbeitet engine-unabhängig über APIs. Wir bieten Standard-Integrationen
+    für gängige Backend- und Community-Tools, die Sie in Ihrem Projekt nutzen.
+- question: Wie geht ihr mit saisonalen Lastspitzen (z.B. nach Game-Launch) um?
+  answer_template: Unser KI-System skaliert automatisch, um tausende gleichzeitige
+    Anrufe zu bewältigen – perfekt für Launch-Tage oder Sales-Events ohne zusätzliche
+    Kosten.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für den KI-Support-Service.
+  script: Unsere Lösungen beginnen bei einem monatlichen Basisbetrag von 500 CHF.
+    Der genaue Preis hängt vom Support-Volumen und den gewünschten Sprachen ab. Können
+    Sie mir eine grobe Einschätzung Ihrer täglichen Spieler-Anfragen geben? So kann
+    ich ein massgeschneidertes Angebot erstellen.
+  goal: Qualifikation des Leads und Erhebung von Volumendaten für ein präzises Angebot.
+- trigger: compliance_concern
+  situation: Kunde äussert Bedenken bezüglich Datenschutz (FADP).
+  script: Das ist ein sehr wichtiger Punkt. Unser System ist von Grund auf für FADP/DSGVO
+    entwickelt. Wir bieten vollautomatisierte Protokollierung aller Datenzugriffe,
+    Einwilligungsmanagement und können alle Anfragen auf Deutsch dokumentieren. Möchten
+    Sie mehr zu unseren Sicherheitszertifizierungen erfahren?
+  goal: Vertrauen aufbauen und den Compliance-Vorteil als USP herausstellen.
+- trigger: competition_mention
+  situation: Kunde erwähnt einen Konkurrenten oder eine alternative Lösung.
+  script: Interessant. Unser Fokus liegt auf der Schweizer Gaming-Branche mit direkter
+    CHF-Abrechnung, multilingualer KI und speziellem Know-how in Glücksspiel-Compliance.
+    Viele internationale Anbieter haben diese lokalen Besonderheiten nicht im Blick.
+    Was ist Ihnen bei einer Lösung am wichtigsten?
+  goal: Unsere lokale Differenzierung betonen und auf die spezifischen Kundenbedürfnisse
+    lenken.
+competitors:
+- name: Inventx / local.ch IT-Dienstleister
+  positioning: Lokale Generalisten für IT-Outsourcing.
+  strengths:
+  - Physische Präsenz in der Schweiz
+  - Vertrautheit mit lokalen Geschäftspraktiken
+  weaknesses:
+  - Oft kein Gaming-spezifisches Know-how
+  - höhere Kosten für 24/7-Support
+  our_differentiation: KI-first-Ansatz speziell für Gaming, deutlich niedrigere Betriebskosten
+    bei gleicher Sprachabdeckung.
+- name: Keywords Studios (international)
+  positioning: Globaler Player für Gaming-Services.
+  strengths:
+  - Umfassendes Service-Portfolio
+  - globale Skalierung
+  weaknesses:
+  - Weniger fokussiert auf kleine/mittlere CH-Studios
+  - Preise oft nicht in CHF
+  our_differentiation: Agile, kosteneffiziente KI-Lösung für den CH-Markt mit Fokus
+    auf Automatisierung und lokale Compliance.
+- name: In-house Support-Team
+  positioning: Eigenes Team des Studios.
+  strengths:
+  - Tiefes Produktwissen
+  - direkte Kontrolle
+  weaknesses:
+  - Sehr hohe Personalkosten in CH
+  - schwierig bei mehrsprachigem 24/7-Betrieb
+  our_differentiation: Skalierbare, kostengünstige Ergänzung, die das Team von Routineanfragen
+    entlastet und Spitzen abdeckt.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung von 50% der First-Level-Support-Anfragen für ein Mid-Size
+      Studio.
+    monthly_cost: 2500
+    monthly_savings: 8000
+    payback_months: 1
+  value_anchors:
+  - Senken Sie Ihre Support-Kosten um bis zu 60% im Vergleich zu einem vollständigen
+    Inhouse-Team.
+  - 24/7-Support in DE, FR, IT für einen Festpreis in CHF.
+  - Vermeiden Sie teure Compliance-Verstösse mit automatisierten Protokollen.
+market_context:
+  market_size: Ca. 350 Mio. CHF (Game-Entwicklung und verwandte Services)
+  growth_rate: ~7% YoY
+  key_trends:
+  - Wachsender E-Sports-Sektor mit lokalem Engagement
+  - Stärkere Regulierung im Bereich Lootboxen und Glücksspiel-Elemente
+  - Steigende Nachfrage nach 'Swiss Made' oder lokalisierten Inhalten
+  - Zunahme von Cloud-Gaming-Diensten
+  seasonality:
+    high:
+    - Q4 (Weihnachtsgeschäft)
+    - Q3 (Ferienzeit, Gamescom)
+    low:
+    - Spätes Q1
+    - August (Hauptferienzeit)
+typical_objections:
+- objection: Das ist zu teuer für unser kleines Studio.
+  response: Ich verstehe das. Gerade für kleinere Studios ist unsere KI-Lösung oft
+    günstiger als die erste Vollzeit-Supportkraft. Können wir eine kurze Analyse Ihres
+    aktuellen Anfrage-Aufkommens machen, um die potenzielle Einsparung konkret zu
+    zeigen?
+- objection: Wir haben Bedenken, die persönliche Note im Spieler-Support zu verlieren.
+  response: Ein vollständiger Verlust ist nicht das Ziel. Der Agent übernimmt repetitive
+    Aufgaben (Passwort-Reset, Standard-FAQs). Komplexe oder emotionale Anliegen leitet
+    er sofort an Ihr menschliches Team weiter – das wird dadurch entlastet und kann
+    sich auf diese wertvollen Kontakte konzentrieren.
+- objection: Unsere internen Prozesse sind zu speziell für eine Standard-KI.
+  response: Unser System ist hochgradig anpassbar. Wir trainieren den Agenten mit
+    Ihren FAQs, Spiel-Spezifika und Eskalationspfaden. Lassen Sie uns über Ihre drei
+    kritischsten Prozesse sprechen, die automatisiert werden sollen.
+meta:
+  id: gaming
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

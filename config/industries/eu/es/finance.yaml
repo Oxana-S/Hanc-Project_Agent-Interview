@@ -1,0 +1,284 @@
+pain_points:
+- description: Altos costos de cumplimiento normativo debido al GDPR y regulaciones
+    locales como la LOPD.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar la verificación de documentos
+    y notificar sobre cambios regulatorios.
+- description: Ineficiencias en el servicio al cliente, con largos tiempos de espera
+    y falta de personalización.
+  severity: high
+  solution_hint: Implementar respuestas automatizadas y personalizadas para consultas
+    comunes, reduciendo la carga del personal.
+- description: Dificultades en la detección de fraudes y ciberseguridad, especialmente
+    en transacciones en línea.
+  severity: high
+  solution_hint: Usar AI para analizar patrones de transacción en tiempo real y alertar
+    sobre actividades sospechosas.
+- description: Integración compleja con sistemas heredados que son comunes en la banca
+    española.
+  severity: medium
+  solution_hint: El agente puede actuar como interfaz para sistemas legacy, facilitando
+    la migración y actualización.
+- description: Barreras lingüísticas en regiones multilingües como Cataluña o el País
+    Vasco.
+  severity: medium
+  solution_hint: Ofrecer soporte multilingüe (español, catalán, euskera) para mejorar
+    la accesibilidad.
+- description: Lenta adopción de tecnologías digitales por parte de clientes mayores.
+  severity: low
+  solution_hint: Proporcionar asistencia paso a paso y educativa a través del agente
+    de voz para fomentar la digitalización.
+- description: Alta competencia de bancos tradicionales y fintechs, lo que reduce
+    márgenes de beneficio.
+  severity: medium
+  solution_hint: Automatizar procesos para reducir costos operativos y ofrecer servicios
+    más competitivos.
+typical_services:
+- Asesoramiento financiero personalizado
+- Gestión de inversiones y carteras
+- Préstamos personales y hipotecarios
+- Seguros de vida y patrimoniales
+- Banca online y móvil
+- Tarjetas de crédito y débito
+- Planificación de jubilación y pensiones
+- Servicios de pago y transferencias
+- Financiación empresarial y pymes
+- Análisis de riesgos crediticios
+recommended_functions:
+- name: Atención al cliente 24/7
+  priority: high
+  reason: Reduce costos y mejora la satisfacción del cliente al estar disponible en
+    todo momento.
+- name: Verificación de identidad mediante voz
+  priority: high
+  reason: Aumenta la seguridad y cumple con regulaciones como el GDPR y LOPD.
+- name: Asistencia en transacciones bancarias
+  priority: high
+  reason: Facilita operaciones comunes como transferencias o pagos, reduciendo errores
+    humanos.
+- name: Recordatorios automáticos de pagos y vencimientos
+  priority: medium
+  reason: Ayuda a los clientes a evitar multas y mejora la gestión financiera personal.
+- name: Análisis de datos para recomendaciones financieras
+  priority: medium
+  reason: Personaliza servicios basados en el comportamiento del cliente, aumentando
+    la lealtad.
+- name: Soporte multilingüe para regiones autonómicas
+  priority: low
+  reason: Mejora la inclusión y adaptación al mercado local español.
+- name: Gestión de reclamaciones y quejas
+  priority: medium
+  reason: Automatiza el proceso de resolución, mejorando la eficiencia y la experiencia
+    del cliente.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  priority: high
+- name: Software bancario
+  examples:
+  - SAP
+  - Oracle Financials
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - Redsys
+  - PayPal
+  - Bizum
+  priority: medium
+- name: Herramientas de cumplimiento
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: high
+- name: Sistemas legacy de banca
+  examples:
+  - Sistemas propios de bancos españoles
+  priority: medium
+- name: Plataformas de análisis de datos
+  examples:
+  - Tableau
+  - Power BI
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo abrir una cuenta bancaria en España?
+  answer_template: Para abrir una cuenta, necesitará su DNI o NIE, prueba de domicilio
+    y, en algunos casos, un comprobante de ingresos. Le recomendamos visitar una sucursal
+    o usar nuestra banca online para iniciar el proceso.
+- question: ¿Qué documentos necesito para solicitar un préstamo hipotecario?
+  answer_template: Generalmente, necesitará su identificación, últimas nóminas, declaración
+    de la renta y información sobre la propiedad. Nuestro agente puede ayudarle a
+    recopilar y verificar estos documentos.
+- question: ¿Es seguro realizar transacciones bancarias por teléfono?
+  answer_template: Sí, utilizamos tecnologías de encriptación y verificación de voz
+    para garantizar la seguridad. Además, cumplimos con el GDPR para proteger sus
+    datos.
+- question: ¿Cómo puedo reportar un fraude en mi cuenta?
+  answer_template: Contacte inmediatamente a nuestro servicio de atención al cliente
+    a través del agente de voz, que le guiará para bloquear transacciones y presentar
+    una reclamación.
+- question: ¿Ofrecen servicios en catalán o euskera?
+  answer_template: Sí, nuestro agente de voz puede proporcionar asistencia en múltiples
+    idiomas, incluyendo español, catalán y euskera, para adaptarnos a las necesidades
+    locales.
+- question: ¿Cuáles son los costos asociados a una cuenta bancaria?
+  answer_template: Los costos varían según el tipo de cuenta y servicios. Le recomendamos
+    consultar nuestras tarifas en línea o hablar con nuestro agente para una cotización
+    personalizada.
+- question: ¿Cómo puedo planificar mi jubilación con ustedes?
+  answer_template: Ofrecemos asesoramiento personalizado para planificación de jubilación,
+    incluyendo opciones de pensiones y inversiones. Nuestro agente puede programar
+    una cita con un experto.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de nuestros servicios de automatización.
+  script: Hola, entiendo su interés en los costos. Nuestros agentes de voz AI comienzan
+    desde 500 EUR al mes, con ahorros típicos de hasta un 30% en gastos operativos.
+    ¿Le gustaría que le explique cómo podemos personalizar una solución para su negocio?
+  goal: Educar al cliente sobre el precio y destacar el retorno de inversión.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre los servicios específicos que ofrecemos
+    para el sector financiero.
+  script: Ofrecemos automatización para atención al cliente, verificación de identidad,
+    gestión de transacciones y más. Por ejemplo, podemos reducir los tiempos de espera
+    en un 50%. ¿Hay algún área en particular donde necesite ayuda?
+  goal: Presentar los servicios y identificar necesidades específicas del cliente.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por el cumplimiento normativo
+    como el GDPR.
+  script: Nuestros agentes están diseñados para cumplir con el GDPR y regulaciones
+    españolas. Automatizamos la gestión de consentimientos y protegen los datos, reduciendo
+    riesgos legales. ¿Le interesa saber más sobre nuestras características de seguridad?
+  goal: Aliviar preocupaciones sobre cumplimiento y destacar la seguridad.
+- trigger: competitor_comparison
+  situation: Cuando un cliente menciona a un competidor como Santander o BBVA.
+  script: Entiendo que hay opciones en el mercado. A diferencia de los bancos tradicionales,
+    nuestra solución es más flexible, con integración rápida y soporte multilingüe.
+    Ofrecemos una prueba gratuita para que vea la diferencia. ¿Le gustaría programarla?
+  goal: Diferenciar nuestro producto y fomentar una prueba.
+- trigger: roi_doubt
+  situation: Cuando un cliente duda del retorno de inversión en automatización.
+  script: Según casos de éxito en España, nuestros clientes ahorran en promedio 1000
+    EUR mensuales en costos de personal, con un período de recuperación de 3-6 meses.
+    ¿Puedo compartir un ejemplo específico relevante para su empresa?
+  goal: Proporcionar datos concretos sobre ROI para persuadir.
+competitors:
+- name: Santander
+  positioning: Banco tradicional líder en España con amplia red de sucursales.
+  strengths:
+  - Marca reconocida
+  - amplia gama de productos
+  - presencia física
+  weaknesses:
+  - Lenta innovación digital
+  - altos costos operativos
+  - servicio al cliente impersonal
+  our_differentiation: Ofrecemos automatización ágil y personalizada, con menores
+    costos y mejor experiencia digital.
+- name: BBVA
+  positioning: Banco innovador con fuerte enfoque en tecnología y banca digital.
+  strengths:
+  - Plataformas digitales avanzadas
+  - inversión en fintech
+  - servicio online eficiente
+  weaknesses:
+  - Integración compleja con sistemas legacy
+  - precios altos para pymes
+  our_differentiation: Nuestros agentes de voz son más accesibles y se integran fácilmente
+    con sistemas existentes, ideal para pymes.
+- name: CaixaBank
+  positioning: Banco con fuerte presencia en Cataluña y servicios regionales.
+  strengths:
+  - Enfoque en mercados locales
+  - soporte multilingüe
+  - red extensa en Cataluña
+  weaknesses:
+  - Limitada innovación en AI
+  - dependencia de modelos tradicionales
+  our_differentiation: Proporcionamos soporte multilingüe avanzado con AI, superando
+    las limitaciones de servicios estándar.
+- name: Revolut
+  positioning: Fintech internacional que compite en servicios digitales y tarifas
+    bajas.
+  strengths:
+  - Tarifas competitivas
+  - aplicaciones móviles intuitivas
+  - servicios internacionales
+  weaknesses:
+  - Soporte al cliente limitado en español
+  - menor enfoque en regulaciones locales
+  our_differentiation: Nos especializamos en el mercado español, con cumplimiento
+    local y soporte en idiomas regionales.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatización del servicio al cliente para una pequeña entidad financiera.
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 4
+  - scenario: Implementación de verificación de identidad para reducir fraudes en
+      transacciones.
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 3
+  value_anchors:
+  - Reduce los costos operativos hasta un 40% con automatización inteligente.
+  - Mejora la satisfacción del cliente con respuestas instantáneas 24/7.
+  - Cumple con el GDPR y regulaciones españolas sin esfuerzo adicional.
+market_context:
+  market_size: Estimado en 10 mil millones EUR anuales para servicios de automatización
+    en finanzas en España.
+  growth_rate: 8% anual, impulsado por la digitalización y demandas de eficiencia.
+  key_trends:
+  - Aumento de la adopción de banca online y móvil.
+  - Creciente interés en soluciones de AI para cumplimiento normativo.
+  - Expansión de fintechs que desafían a los bancos tradicionales.
+  - Enfoque en sostenibilidad y finanzas verdes.
+  seasonality:
+    high:
+    - Enero (declaraciones de impuestos)
+    - Septiembre (vuelta al cole y préstamos)
+    low:
+    - Agosto (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: Es demasiado caro para mi pequeña empresa.
+  response: Entiendo su preocupación. Nuestro plan de entrada es asequible y el ROI
+    se alcanza rápidamente, a menudo en menos de 6 meses. ¿Podemos analizar sus costos
+    actuales para personalizar una solución?
+- objection: No confío en la seguridad de un agente de voz AI.
+  response: Nuestros agentes utilizan encriptación de última generación y cumplen
+    con el GDPR. Además, ofrecemos pruebas de seguridad y casos de éxito de clientes
+    en España. ¿Le gustaría ver algunos ejemplos?
+- objection: Prefiero el contacto humano en servicios financieros.
+  response: Comprendo la importancia del contacto humano. Nuestro agente complementa
+    al personal, liberándolo para tareas más complejas y mejorando la eficiencia.
+    Podemos integrarlo gradualmente para que se sienta cómodo.
+- objection: Ya tengo sistemas en marcha y la integración sería complicada.
+  response: Nos especializamos en integraciones con sistemas comunes en España, como
+    SAP o Redsys. Ofrecemos soporte técnico dedicado para una transición sin problemas.
+    ¿Puedo saber qué sistemas utiliza actualmente?
+- objection: Los competidores ofrecen servicios similares a menor precio.
+  response: Nuestra ventaja es la personalización y el enfoque en el mercado español,
+    con soporte multilingüe y cumplimiento local. A menudo, nuestros clientes ahorran
+    más a largo plazo debido a la eficiencia. ¿Le interesa una comparativa detallada?
+meta:
+  id: finance
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

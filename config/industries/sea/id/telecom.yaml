@@ -1,0 +1,236 @@
+pain_points:
+- description: Tingkat churn pelanggan yang tinggi karena persaingan harga ketat dan
+    penawaran promosi dari kompetitor.
+  severity: high
+  solution_hint: Agent suara AI dapat melakukan survei kepuasan proaktif, mendeteksi
+    niat churn, dan menawarkan retensi personalized secara otomatis.
+- description: Beban kerja customer service yang padat untuk menangani keluhan teknis
+    dan pertanyaan billing yang berulang.
+  severity: high
+  solution_hint: Agent AI dapat menangani 80% pertanyaan umum (FAQ) dan trouble ticket
+    sederhana 24/7, mengurangi antrian call center.
+- description: Proses penjualan dan onboarding pelanggan baru yang lambat dan manual.
+  severity: medium
+  solution_hint: Agent AI dapat melakukan kualifikasi lead, penjadwalan appointment
+    dengan sales, dan pengumpulan dokumen pra-aktivasi.
+- description: Kesulitan dalam upselling dan cross-selling paket layanan kepada pelanggan
+    existing.
+  severity: medium
+  solution_hint: Agent AI dapat menganalisis pola penggunaan pelanggan dan melakukan
+    penawaran paket upgrade yang relevan via outbound call atau chat.
+- description: Kepatuhan terhadap regulasi PDP (Perlindungan Data Pribadi) yang rumit
+    dalam penanganan data pelanggan.
+  severity: high
+  solution_hint: Agent AI dapat dikonfigurasi dengan script persetujuan (consent)
+    yang sesuai PDP dan log semua interaksi untuk audit trail.
+- description: Monitoring dan follow-up keluhan jaringan atau gangguan layanan yang
+    tidak real-time.
+  severity: medium
+  solution_hint: Agent AI dapat mengirim notifikasi gangguan massal, memberikan estimasi
+    perbaikan, dan mengumpulkan laporan dari pelanggan yang terdampak.
+typical_services:
+- Paket Data Prabayar & Pascabayar
+- Layanan Telepon & SMS Bundling
+- Layanan Internet Kabel (Fiber Optic) untuk Rumah & Bisnis
+- Layanan Voice over IP (VoIP) untuk Bisnis
+- Layanan Managed Network & Keamanan
+- Layanan IoT (Internet of Things) dan M2M
+- Layanan Cloud dan Colocation
+- Layanan Value-Added (VAS) seperti Ring Back Tone
+- Penjualan dan Isi Ulang Pulsa/Voucher Digital
+- Layanan Roaming Internasional
+recommended_functions:
+- name: Kualifikasi Lead & Penjadwalan Sales
+  priority: high
+  reason: Mempercepat pipeline penjualan dan memastikan sales hanya menghubungi lead
+    yang berkualitas.
+- name: Resolusi Keluhan Level 1 & Ticketing
+  priority: high
+  reason: Mengurangi beban call center untuk masalah umum seperti informasi billing,
+    gangguan sinyal, atau paket.
+- name: Kampanye Retensi & Winback Pelanggan
+  priority: high
+  reason: Langsung menangani churn dengan penawaran khusus berdasarkan riwayat penggunaan
+    pelanggan.
+- name: Notifikasi Gangguan & Pemulihan Layanan
+  priority: medium
+  reason: Meningkatkan komunikasi proaktif selama downtime, membangun kepercayaan
+    pelanggan.
+- name: Upsell/Cross-sell Paket Otomatis
+  priority: medium
+  reason: Meningkatkan ARPU (Average Revenue Per User) dengan rekomendasi yang dipersonalisasi.
+- name: Survei Kepuasan Pelanggan (NPS/CSAT) Otomatis
+  priority: low
+  reason: Mengumpulkan feedback berkelanjutan dengan biaya rendah untuk perbaikan
+    layanan.
+typical_integrations:
+- name: CRM
+  examples:
+  - Mekari Qontak
+  - Salesforce
+  - Voxy
+  priority: high
+- name: Sistem Billing & Charging
+  examples:
+  - Billing system custom
+  - Amdocs
+  - Netcracker
+  priority: high
+- name: Helpdesk & Ticketing
+  examples:
+  - Zendesk
+  - Freshdesk
+  - BukuWarung Service
+  priority: medium
+- name: Platform Data Analytics
+  examples:
+  - Google BigQuery
+  - Amazon Redshift
+  - Local data warehouse
+  priority: medium
+- name: Sistem Operasi Jaringan (OSS)
+  examples:
+  - Custom NOC systems
+  - IBM Netcool
+  - SolarWinds
+  priority: low
+industry_faq:
+- question: Bagaimana cara membandingkan paket data yang paling sesuai dengan kebutuhan
+    saya?
+  answer_template: Saya dapat membantu rekomendasi paket. Bisakah Anda ceritakan rata-rata
+    penggunaan data bulanan dan apakah untuk smartphone atau modem rumah?
+- question: Sinyal di area saya sering lemah, apa yang bisa dilakukan?
+  answer_template: Kami catat keluhannya. Untuk gangguan teknis, izinkan saya buatkan
+    tiket gangguan. Boleh saya dapatkan lokasi dan nomor pelanggan Anda?
+- question: Bagaimana prosedur perpindahan operator (MNP) atau upgrade paket?
+  answer_template: Untuk MNP atau upgrade, kita perlu verifikasi data. Nanti saya
+    jadwalkan agent kami untuk pandu prosesnya. Anda ada waktu kapan?
+- question: Apakah data pelanggan saya aman dengan sistem otomatis ini?
+  answer_template: Sangat aman. Sistem kami sudah sesuai regulasi PDP Indonesia. Data
+    hanya digunakan untuk layanan Anda dan ada log audit lengkap.
+- question: Bagaimana cara mengajukan komplain untuk billing yang tidak sesuai?
+  answer_template: Saya bantu buatkan tiket komplain billing. Untuk verifikasi, boleh
+    saya minta nomor invoice dan detail yang dirasa tidak sesuai?
+- question: Apakah ada biaya tersembunyi dalam paket ini?
+  answer_template: Tidak ada biaya tersembunyi. Semua biaya dan pajak (jika ada) sudah
+    tercantum di deskripsi paket. Saya bisa jelaskan rinciannya.
+sales_scripts:
+- trigger: price_question
+  situation: Pelanggan menanyakan harga paket tertentu.
+  script: Harga paket tersebut mulai dari Rp XXX ribu per bulan. Namun, harga terbaik
+    sangat tergantung pada kebutuhan spesifik Anda. Apakah Anda menggunakan lebih
+    untuk streaming, video call, atau browsing biasa? Saya bisa rekomendasikan paket
+    dengan nilai optimal.
+  goal: Mengarahkan percakapan dari harga ke nilai (value), dan mengumpulkan informasi
+    kebutuhan untuk rekomendasi yang lebih personal.
+- trigger: competitor_mention
+  situation: 'Pelanggan menyebut penawaran dari kompetitor (misal: Telkomsel/Indosat).'
+  script: 'Saya paham ada banyak pilihan. Keunggulan kami adalah di [sebutkan diferensiasi,
+    contoh: coverage 4G/5G yang lebih luas di daerah Anda, atau fleksibilitas paket
+    tanpa kontrak]. Daripada bandingkan harga, mungkin kita bisa fokus pada konektivitas
+    yang stabil untuk aktivitas [sebutkan aktivitas pelanggan] Anda?'
+  goal: Mengalihkan fokus dari harga ke kekuatan unik (unique selling proposition/USP)
+    kami yang relevan dengan pelanggan.
+- trigger: need_consultation
+  situation: Pelanggan tertarik tetapi membutuhkan penjelasan lebih detail.
+  script: Tentu. Untuk analisis yang lebih akurat, saya akan jadwalkan konsultasi
+    gratis dengan specialist kami. Mereka bisa cek coverage spesifik di alamat Anda
+    dan buatkan proposal yang disesuaikan. Apakah besok pagi atau siang lebih nyaman?
+  goal: Mengkonversi minat menjadi janji temu (appointment) yang terkualifikasi untuk
+    tim sales.
+competitors:
+- name: Telkomsel
+  positioning: Market leader dengan coverage terluas.
+  strengths:
+  - Infrastruktur jaringan terkuat
+  - Brand equity tinggi
+  - Portfolio pelanggan enterprise besar
+  weaknesses:
+  - Persepsi harga lebih mahal
+  - Proses birokrasi terkadang lambat
+  our_differentiation: Kami menawarkan proses digital yang lebih cepat, fleksibel,
+    dan harga yang lebih kompetitif untuk segmen menengah-bawah serta UKM.
+- name: Indosat Ooredoo Hutchison
+  positioning: Strong challenger dengan fokus pada data dan digital experience.
+  strengths:
+  - Paket data agresif
+  - Brand image youthful & digital
+  - Investasi kuat di 5G
+  weaknesses:
+  - Coverage di pedesaan masih berkembang
+  - Integrasi pasca merger masih berjalan
+  our_differentiation: Layanan pelanggan yang lebih personal dan responsif via AI,
+    serta fokus pada solusi lengkap untuk bisnis kecil (SME bundle).
+- name: XL Axiata
+  positioning: Pemain kuat dengan fokus value-for-money.
+  strengths:
+  - Harga kompetitif
+  - Jaringan data yang solid
+  - Base pelanggan muda yang besar
+  weaknesses:
+  - Layanan enterprise kurang dominan
+  - Inovasi VAS relatif lambat
+  our_differentiation: Teknologi AI kami memungkinkan retensi dan upsell yang lebih
+    cerdas, mengurangi churn dan meningkatkan loyalitas.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000
+  - 5000000
+  entry_point: 200000
+  roi_examples:
+  - scenario: Mengurangi beban call center untuk FAQ & trouble ticket sederhana
+    monthly_cost: 15000000
+    monthly_savings: 45000000
+    payback_months: 4
+  - scenario: Kampanye retensi otomatis untuk mengurangi churn pelanggan pascabayar
+    monthly_cost: 10000000
+    monthly_savings: 25000000
+    payback_months: 5
+  value_anchors:
+  - Hemat hingga 60% biaya operasional call center.
+  - Tingkatkan konversi penjualan hingga 30% dengan lead yang lebih terkualifikasi.
+  - Turunkan angka churn pelanggan dengan intervensi proaktif yang personal.
+market_context:
+  market_size: Sekitar Rp 250 Triliun
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Migrasi massal dari suara ke data dan layanan digital.
+  - Ekspansi agresif jaringan 5G di kota besar.
+  - Permintaan tinggi untuk paket bundling internet rumah & mobile.
+  - Adopsi pembayaran digital (e-wallet) untuk top-up dan pembayaran tagihan.
+  - Regulasi PDP mendorong investasi dalam keamanan data pelanggan.
+  seasonality:
+    high:
+    - Akhir tahun (Oktober-Desember - hari raya & bonus)
+    - Awal tahun ajaran baru (Juni-Juli)
+    low:
+    - Pertengahan tahun (April-Mei)
+    - Bulan Ramadan (jika jatuh di periode low)
+typical_objections:
+- objection: Kami sudah puas dengan sistem yang ada, tidak butuh AI.
+  response: Memahami. Sistem yang baik adalah dasar. AI bukan untuk mengganti, tapi
+    memperkuat. Bayangkan jika agent Anda bebas fokus pada masalah kompleks sementara
+    AI handle repetitif work 24/7. Bisa kita coba pilot project di satu bagian dulu?
+- objection: AI suara terdengar tidak personal dan kaku untuk pelanggan Indonesia.
+  response: Teknologi kami sudah di-training dengan aksen dan percakapan alami bahasa
+    Indonesia. Banyak pelanggan justru senang karena respons instan, tanpa emosi,
+    dan konsisten. Kami bisa tunjukkan demo dengan dialek lokal.
+- objection: Implementasinya rumit dan mengganggu sistem IT kami yang sudah berjalan.
+  response: Tenang. Integrasi kami berbasis API yang modular. Bisa mulai dari fungsi
+    sederhana seperti FAQ bot via WhatsApp, tanpa sentuh core system. Tim teknis kami
+    akan handle semuanya dengan managed service.
+meta:
+  id: telecom
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

@@ -1,0 +1,208 @@
+pain_points:
+- description: High volume of after-hours emergency calls leading to staff burnout and missed opportunities for urgent care revenue.
+  severity: high
+  solution_hint: AI voice agent can triage after-hours calls, schedule emergency appointments at partner clinics, and provide basic advice, reducing staff stress and capturing revenue.
+- description: No-shows and last-minute cancellations for appointments, resulting in lost revenue and inefficient scheduling.
+  severity: medium
+  solution_hint: AI agent can send automated SMS/voice reminders, confirm appointments, and manage waitlists to fill canceled slots instantly.
+- description: Time-consuming manual tasks like appointment scheduling, prescription refill requests, and answering routine pet care questions.
+  severity: medium
+  solution_hint: AI agent can automate appointment booking, handle refill authorization requests with the vet, and answer FAQs 24/7, freeing up staff for clinical work.
+- description: Difficulty collecting payments and outstanding balances from clients, impacting cash flow.
+  severity: medium
+  solution_hint: AI agent can securely process payments over the phone for estimates or outstanding bills and send automated payment reminders via preferred channels.
+- description: High client acquisition costs and struggle to stand out in a competitive local market with many independent clinics and corporate chains.
+  severity: high
+  solution_hint: AI agent can conduct targeted outreach for reactivating lapsed clients, follow up on new pet registrations from local shelters, and gather reviews to improve online visibility.
+- description: Managing complex client communication for chronic conditions, requiring frequent check-ins and medication updates.
+  severity: low
+  solution_hint: AI agent can be programmed for condition-specific follow-up calls, delivering personalized care instructions and prompting clients for symptom updates to relay to the vet.
+typical_services:
+- Wellness Exams and Vaccinations
+- Spay and Neuter Surgery
+- Dental Cleaning and Surgery
+- Diagnostic Services (X-rays, Bloodwork, Ultrasound)
+- Emergency and Critical Care
+- Surgical Procedures (soft tissue and orthopedic)
+- Pharmacy and Prescription Diet Sales
+- Parasite Prevention and Control
+- Behavioral Counseling
+- Pet Boarding and Grooming (often offered)
+recommended_functions:
+- name: Automated Appointment Scheduling and Management
+  priority: high
+  reason: Directly addresses no-shows and frees significant administrative time, leading to immediate ROI through better utilization of vet time.
+- name: 24/7 Call Answering and Triage
+  priority: high
+  reason: Captures after-hours emergencies, provides basic advice, and ensures no call is missed, improving client satisfaction and capturing urgent care revenue.
+- name: Payment Processing and Billing Reminders
+  priority: medium
+  reason: Improves cash flow by making it easy for clients to pay and reducing accounts receivable through consistent, polite follow-up.
+- name: Client Reactivation and Follow-up Campaigns
+  priority: medium
+  reason: Targets high-value past clients for routine care, directly increasing revenue at a lower cost than acquiring new clients.
+- name: Prescription Refill Management
+  priority: low
+  reason: Streamlines a common, repetitive request, improving client convenience and ensuring timely refills, which supports pharmacy revenue.
+- name: Post-Procedure Check-in Calls
+  priority: low
+  reason: Enhances client care and satisfaction through personalized follow-up, demonstrating value and potentially identifying complications early.
+typical_integrations:
+- name: Practice Information Management System (PIMS)
+  examples:
+  - Covetrus Pulse
+  - IDEXX Neo
+  - AVImark
+  - Cornerstone
+  priority: high
+- name: Online Booking Platform
+  examples:
+  - Vetstoria
+  - PetDesk
+  - Pawprint
+  priority: high
+- name: Payment Processor
+  examples:
+  - Square
+  - Stripe
+  - Elavon
+  priority: medium
+- name: Client Communication Platform
+  examples:
+  - Weave
+  - Solutionreach
+  - Buzzreach
+  priority: medium
+- name: Pharmacy Management
+  examples:
+  - VetFirst
+  - VIPPS-compliant online pharmacies
+  priority: low
+industry_faq:
+- question: What are your hours, and do you handle emergencies?
+  answer_template: Our regular clinic hours are [CLINIC_HOURS]. For after-hours emergencies, our AI assistant can immediately connect you with our on-call vet or help schedule you at our partner emergency
+    clinic to ensure your pet gets timely care.
+- question: How much is a routine check-up or vaccination?
+  answer_template: The cost for a wellness exam typically starts at $[EXAM_PRICE], and vaccines vary based on your pet's needs. Our AI assistant can provide a more detailed estimate based on your pet's
+    age and vaccine history, and even schedule an appointment for you.
+- question: My pet needs a prescription refill. How do I get that?
+  answer_template: We can help with that! Our AI assistant can submit a refill request to our veterinarians for approval. Please have your pet's name and the medication details ready. You can also request
+    delivery or pick-up through our online pharmacy.
+- question: Do you offer payment plans or accept pet insurance?
+  answer_template: We accept all major pet insurance plans and can provide the necessary documentation for your claim. We also offer third-party financing options like CareCredit. Our AI assistant can explain
+    these options in detail and even help you start an application.
+- question: How do I get my pet's records transferred to you?
+  answer_template: Welcome! We'll need your previous vet's contact information. Our AI assistant can help you authorize the record transfer digitally, saving you a phone call. We'll reach out to them directly
+    to get your pet's full history.
+sales_scripts:
+- trigger: price_question
+  situation: When a clinic owner or manager asks about the cost of the AI voice agent service.
+  script: I understand budget is key. Our system is designed to pay for itself by filling canceled appointments and capturing after-hours calls that often become billable visits. Entry-level plans start
+    at around $[ENTRY_PRICE]/month, but we tailor pricing based on your call volume. Would you be open to a quick analysis of your missed call and no-show data to see what your potential savings could be?
+  goal: Move the conversation from price to value and ROI, and schedule a deeper discovery call.
+- trigger: busy_season
+  situation: When speaking to a clinic ahead of a known busy period (e.g., spring, before holidays).
+  script: With [UPCOMING_SEASON] around the corner, I know your team gets overwhelmed with booking requests and reminders. Our AI agent can handle that surge, ensuring no new client call is missed and every
+    scheduled appointment is confirmed. We can have it live before the rush starts, acting as a scalable front desk assistant to keep revenue high and team stress low. Can we plan a setup timeline?
+  goal: Create urgency tied to a seasonal pain point and secure a commitment to implement.
+- trigger: competitor_mention
+  situation: When the prospect mentions a competing service (e.g., another answering service or software).
+  script: That's a good option for basic answering. Where we differ is proactive revenue generation. We don't just take messages; we schedule appointments directly into your PIMS, process payments, and
+    run reactivation campaigns to bring back lapsed clients. Think of us as an AI-powered business development manager, not just a switchboard. Would you be interested in a side-by-side comparison of features?
+  goal: Differentiate on advanced functionality and business impact, not just cost.
+- trigger: compliance_concern
+  situation: When the prospect raises concerns about HIPAA or data security.
+  script: That's our top priority. Our system is fully HIPAA-compliant and CCPA-ready. We use enterprise-grade encryption, never store sensitive payment data, and all call logs are secured. We can sign
+    a Business Associate Agreement (BAA) and provide a full security audit report. Your clients' data is as safe with us as it is in your own practice management system.
+  goal: Alleviate security concerns with specific compliance measures and build trust.
+competitors:
+- name: Weave
+  positioning: All-in-one communication platform for calls, texts, and payments.
+  strengths:
+  - Strong integration with major PIMS
+  - popular for its combined inbox
+  - good payment tools
+  weaknesses:
+  - Primarily a tool for staff
+  - not a 24/7 AI agent
+  - limited proactive client outreach automation
+  our_differentiation: We provide a fully autonomous AI agent that works 24/7 to answer, schedule, and sell, acting as a true virtual team member, not just a staff tool.
+- name: Vetstoria
+  positioning: Online booking and appointment reminder specialist.
+  strengths:
+  - Excellent online booking widget
+  - robust reminder system
+  - good market penetration
+  weaknesses:
+  - Focused on digital channels
+  - lacks intelligent voice interaction
+  - does not handle inbound calls
+  our_differentiation: We capture the high-intent voice channel (phone calls) that online booking misses and convert those calls directly into revenue, complementing their digital focus.
+- name: traditional answering services (e.g., Answering Service Care, 1-800 We Answer)
+  positioning: Live human operators for after-hours and overflow calls.
+  strengths:
+  - Human touch
+  - can handle very complex situations
+  weaknesses:
+  - High cost per call
+  - limited ability to schedule or access practice software
+  - prone to errors in message-taking
+  our_differentiation: We offer consistent, accurate, and brand-aligned communication 24/7 at a fraction of the cost, with direct software integration that human operators can't match.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 299
+  - 999
+  entry_point: 299
+  roi_examples:
+  - scenario: Clinic reduces no-shows by 30% and captures 5 additional after-hours emergency appointments per month.
+    monthly_cost: 499
+    monthly_savings: 1750
+    payback_months: 1
+  value_anchors:
+  - The cost of one missed appointment can cover a week of our service.
+  - Our system pays for itself by filling just 2-3 previously canceled appointments each month.
+  - Compared to a part-time receptionist, our AI agent works 168 hours a week for less than 20% of the cost.
+market_context:
+  market_size: 38.5 billion
+  growth_rate: 7.5%
+  key_trends:
+  - Humanization of pets driving increased spending on premium and specialty care.
+  - Consolidation by large corporate groups (Mars Petcare, NVA, JAB) creating demand for efficiency tools.
+  - Rise of telehealth and demand for convenient, on-demand client communication.
+  - Severe veterinary staff shortages increasing the need for automation.
+  seasonality:
+    high:
+    - Spring (heartworm/flea/tick season)
+    - Summer (travel-related boarding/vaccines)
+    - Holiday seasons (boarding, gifts)
+    low:
+    - Late Fall
+    - Early Winter
+typical_objections:
+- objection: Our clients prefer talking to a real person.
+  response: They do, and they still will for complex medical discussions. Our AI handles the repetitive tasks (scheduling, reminders, refills) so your real people have more quality time for those valuable
+    conversations. It also ensures a real person never misses a call because they're busy with another client.
+- objection: We're a small practice; this seems like overkill.
+  response: Small practices benefit the most. You have fewer staff to cover calls, and every missed appointment hits your bottom line harder. Our AI acts as your always-available front desk, helping you
+    compete with larger clinics on service while keeping your costs lean and personal touch intact.
+- objection: I'm worried about the setup and training being complicated.
+  response: We handle the entire setup, including integration with your existing software. There's no training for your staff—the AI works out of the box. We provide a dedicated onboarding specialist, and
+    you'll typically see value within the first two weeks.
+- objection: We already use [Online Booking Software]. Why do we need this?
+  response: That's great for clients who go online. Our AI captures the 70%+ of clients who still pick up the phone first. It converts those immediate, high-intent calls into booked appointments directly
+    in your system, working alongside your online tool to capture 100% of appointment requests.
+meta:
+  id: veterinary
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- veterinary
+- vet clinic
+- animal hospital
+- pet care
+_extends: _base/veterinary

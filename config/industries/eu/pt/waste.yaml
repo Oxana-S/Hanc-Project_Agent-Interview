@@ -1,0 +1,213 @@
+pain_points:
+- description: Custos elevados de combustível e manutenção dos veículos de coleta.
+  severity: high
+  solution_hint: O agente de voz pode otimizar rotas em tempo real para reduzir quilometragem
+    e custos.
+- description: Dificuldade em cumprir as regulamentações ambientais da UE e nacionais,
+    como a GDPR para dados de clientes.
+  severity: high
+  solution_hint: O agente pode fornecer lembretes automatizados e verificar conformidade
+    em interações.
+- description: Baixa taxa de separação de resíduos pelos clientes, afetando a eficiência
+    da reciclagem.
+  severity: medium
+  solution_hint: O agente pode educar clientes sobre práticas corretas via chamadas
+    personalizadas.
+- description: Logística complexa para coleta em zonas urbanas congestionadas, como
+    Lisboa e Porto.
+  severity: medium
+  solution_hint: O agente pode agendar pick-ups flexíveis e ajustar horários com base
+    no tráfego.
+- description: Concorrência agressiva de grandes empresas, pressionando preços e margens.
+  severity: medium
+  solution_hint: O agente pode destacar diferenciais de serviço e oferecer pacotes
+    personalizados.
+- description: Falta de integração entre sistemas de gestão de resíduos e software
+    contábil local.
+  severity: low
+  solution_hint: O agente pode facilitar integrações com sistemas ERP portugueses.
+typical_services:
+- Coleta de resíduos urbanos
+- Reciclagem de papel, plástico e vidro
+- Gestão de resíduos industriais
+- Tratamento de resíduos perigosos
+- Limpeza de contentores e ecopontos
+- Consultoria em sustentabilidade ambiental
+- Serviços de compactação de resíduos
+- Aluguer de equipamentos para resíduos
+- Coleta seletiva porta-a-porta
+- Processamento de resíduos orgânicos
+recommended_functions:
+- name: Agendamento automático de coletas
+  priority: high
+  reason: Reduz custos operacionais e melhora a satisfação do cliente com horários
+    convenientes.
+- name: Resposta a perguntas sobre preços e serviços
+  priority: high
+  reason: Aumenta as conversões de vendas ao fornecer informações rápidas e precisas.
+- name: Gestão de reclamações e suporte ao cliente
+  priority: medium
+  reason: Melhora a retenção de clientes ao resolver problemas eficientemente.
+- name: Verificação de conformidade regulatória
+  priority: high
+  reason: Ajuda a evitar multas por não cumprir normas como a GDPR.
+- name: Integração com sistemas de faturação
+  priority: medium
+  reason: Simplifica processos administrativos e reduz erros manuais.
+- name: Campanhas de educação ambiental
+  priority: low
+  reason: Promove práticas sustentáveis e fortalece a imagem da marca.
+typical_integrations:
+- name: Sistema ERP
+  examples:
+  - Primavera
+  - SAP
+  priority: high
+- name: Software de gestão de frota
+  examples:
+  - Fleetio
+  - local: Gestão de Frotas PT
+  priority: medium
+- name: Plataforma de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Aplicações de roteamento
+  examples:
+  - Google Maps API
+  - local: ViaVerde
+  priority: high
+- name: Sistemas de faturação
+  examples:
+  - Factusol
+  - local: InvoiceXpress
+  priority: medium
+industry_faq:
+- question: Quais são os vossos preços para coleta de resíduos?
+  answer_template: Os nossos preços variam consoante a frequência e volume. Posso
+    ajudar a criar um orçamento personalizado para a sua empresa.
+- question: Como garantem a conformidade com as regulamentações de resíduos em Portugal?
+  answer_template: Seguimos rigorosamente as diretivas da UE e leis nacionais, com
+    relatórios automáticos e auditorias regulares para sua tranquilidade.
+- question: Oferecem serviços de reciclagem para pequenas empresas?
+  answer_template: Sim, temos pacotes flexíveis para PMEs, incluindo coleta seletiva
+    e consultoria para maximizar a reciclagem.
+- question: Qual é o tempo de resposta para emergências, como contentores transbordando?
+  answer_template: Garantimos uma resposta em 24 horas, com agendamento prioritário
+    via nosso agente de voz.
+- question: Podem integrar-se com o nosso software de gestão atual?
+  answer_template: Sim, integramos com vários sistemas locais como Primavera e Factusol.
+    Vamos analisar a sua configuração.
+- question: Há descontos para contratos de longo prazo?
+  answer_template: Sim, oferecemos descontos progressivos para compromissos anuais,
+    com economias até 20%.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada.
+  script: Olá! Compreendo a sua preocupação com custos. Os nossos preços partem de
+    50 EUR/mês para serviços básicos, mas dependem do volume e frequência. Posso ajudar
+    a analisar as suas necessidades para um orçamento ajustado. Isso lhe interessa?
+  goal: Converter a pergunta em uma oportunidade de orçamento personalizado.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como reciclagem.
+  script: Obrigado pelo interesse! Oferecemos coleta seletiva, tratamento de resíduos
+    perigosos e mais. Para a reciclagem, ajudamos a reduzir custos com taxas de aterro.
+    Posso detalhar como funciona?
+  goal: Educar o cliente sobre os benefícios e agendar uma demonstração.
+- trigger: compliance_concern
+  situation: Quando um cliente expressa preocupação com regulamentações.
+  script: É crucial cumprir as normas, como a GDPR. O nosso sistema automatiza relatórios
+    e alertas, garantindo conformidade sem esforço extra. Quer saber mais?
+  goal: Aliviar preocupações e destacar a nossa expertise em conformidade.
+competitors:
+- name: EGF (Empresa Geral do Fomento)
+  positioning: Líder no mercado português de gestão de resíduos.
+  strengths:
+  - Ampla cobertura nacional
+  - forte presença pública
+  - recursos financeiros robustos
+  weaknesses:
+  - Serviço menos personalizado
+  - processos burocráticos
+  our_differentiation: Oferecemos soluções mais ágeis e integração com IA para eficiência
+    superior.
+- name: Valorsul
+  positioning: Especializada na região de Lisboa e Vale do Tejo.
+  strengths:
+  - Foco regional
+  - expertise em tratamento de resíduos urbanos
+  weaknesses:
+  - Limitada a uma área geográfica
+  - preços menos competitivos
+  our_differentiation: Temos flexibilidade nacional e preços adaptáveis para PMEs.
+- name: Ambigroup
+  positioning: Concorrente em serviços industriais e perigosos.
+  strengths:
+  - Tecnologia avançada para resíduos complexos
+  - parcerias internacionais
+  weaknesses:
+  - Custos elevados
+  - atendimento ao cliente lento
+  our_differentiation: Combinamos tecnologia acessível com suporte proativo via agente
+    de voz.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 2000
+  entry_point: 50
+  roi_examples:
+  - scenario: Pequena empresa que otimiza rotas de coleta
+    monthly_cost: 100
+    monthly_savings: 150
+    payback_months: 2
+  - scenario: Empresa média que reduz multas por não conformidade
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com otimização de rotas
+  - Garanta conformidade total com a GDPR sem custos extras
+  - Aumente a satisfação do cliente com agendamentos flexíveis
+market_context:
+  market_size: Estimado em 1.5 mil milhões EUR anuais
+  growth_rate: 3-5% ao ano, impulsionado por sustentabilidade
+  key_trends:
+  - Aumento da digitalização na gestão de resíduos
+  - Foco na economia circular e reciclagem
+  - Regulamentações mais rigorosas da UE
+  seasonality:
+    high:
+    - Verão
+    - devido ao turismo e aumento de resíduos
+    low:
+    - Inverno
+    - exceto em áreas urbanas com eventos
+typical_objections:
+- objection: É muito caro para a minha pequena empresa.
+  response: Compreendo. Oferecemos planos escaláveis a partir de 50 EUR/mês, e a otimização
+    pode gerar economias que cobrem o custo. Posso mostrar um exemplo?
+- objection: Já temos um fornecedor de resíduos estabelecido.
+  response: Ótimo que tem um parceiro! Mas podemos oferecer integração com IA para
+    melhor eficiência ou preços mais competitivos. Vale a pena comparar?
+- objection: Não acredito que a tecnologia melhore o nosso serviço.
+  response: Muitos clientes pensavam o mesmo, mas relataram reduções de custos e maior
+    conformidade. Posso partilhar casos de sucesso?
+- objection: Preocupo-me com a segurança dos dados com a GDPR.
+  response: Garantimos conformidade total com a GDPR, com criptografia e processos
+    auditados. A segurança é nossa prioridade.
+meta:
+  id: waste
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

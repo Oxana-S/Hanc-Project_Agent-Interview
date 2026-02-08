@@ -1,0 +1,201 @@
+pain_points:
+- description: 劳动力短缺，尤其是在农忙季节，难以找到足够的人工进行耕作和收获。
+  severity: high
+  solution_hint: AI语音助手可以自动安排工作流程，协调人力资源，并通过语音提醒减少人工依赖。
+- description: 气候变化导致的不稳定天气影响作物生长，增加生产风险。
+  severity: high
+  solution_hint: 提供实时天气预警和适应性建议，帮助农民调整种植计划。
+- description: 农产品价格波动大，市场信息不对称，农民难以把握最佳销售时机。
+  severity: medium
+  solution_hint: 集成市场数据分析，通过语音推送价格趋势和销售建议。
+- description: 供应链效率低，从生产到销售的物流和信息流不畅通。
+  severity: medium
+  solution_hint: 自动化订单处理和物流跟踪，优化供应链管理。
+- description: 病虫害防治困难，传统方法效果有限且成本高。
+  severity: medium
+  solution_hint: 利用AI分析监测数据，提供精准的病虫害预警和防治方案。
+- description: 技术应用成本高，小型农场难以承担智能农业设备费用。
+  severity: low
+  solution_hint: 提供低成本语音解决方案，通过云服务降低初始投资。
+- description: 合规要求如PIPL增加数据管理复杂性，农民缺乏相关知识。
+  severity: low
+  solution_hint: 内置合规检查功能，自动处理数据隐私问题，确保符合法规。
+typical_services:
+- 精准农业咨询
+- 作物监测服务
+- 智能灌溉系统
+- 农产品溯源
+- 农业数据分析
+- 农场管理软件
+- 农业保险服务
+- 市场预测分析
+- 农业机器人服务
+- 供应链优化
+recommended_functions:
+- name: 自动预约管理
+  priority: high
+  reason: 帮助农民高效安排农事活动，减少人工调度时间。
+- name: 客户咨询应答
+  priority: high
+  reason: 提供24/7的语音支持，解答农业技术问题，提升客户满意度。
+- name: 订单处理
+  priority: medium
+  reason: 自动化处理农产品销售订单，加快交易流程。
+- name: 数据收集与分析
+  priority: high
+  reason: 实时收集农场数据，提供智能决策支持，提高产量。
+- name: 市场信息推送
+  priority: medium
+  reason: 定期推送价格和需求信息，帮助农民把握市场机会。
+- name: 紧急警报通知
+  priority: low
+  reason: 在天气灾害或病虫害爆发时，及时通知农民采取应对措施。
+- name: 合规检查
+  priority: low
+  reason: 确保数据处理符合PIPL等法规，减少法律风险。
+typical_integrations:
+- name: 农业管理软件
+  examples:
+  - 阿里巴巴农业平台
+  - 京东农场
+  - 金蝶农业云
+  priority: high
+- name: 电商平台
+  examples:
+  - 淘宝农业频道
+  - 拼多多农产品
+  - 美团优选
+  priority: medium
+- name: 政府监管系统
+  examples:
+  - 农业农村部信息系统
+  - 地方农业局平台
+  priority: medium
+- name: 物流跟踪系统
+  examples:
+  - 顺丰农业物流
+  - 中通农产品配送
+  priority: low
+- name: 气象数据服务
+  examples:
+  - 中国气象局API
+  - 私人气象公司数据
+  priority: high
+industry_faq:
+- question: 你们的AI语音助手如何帮助提高农业产量？
+  answer_template: 通过实时监测作物生长数据和分析环境因素，我们的语音助手可以提供精准的灌溉、施肥和病虫害防治建议，从而优化生产流程，提高产量。
+- question: 服务是否适合小型农场使用？
+  answer_template: 是的，我们提供灵活的定价方案和低成本入门套餐，专门为小型农场设计，通过语音界面简化操作，降低技术门槛。
+- question: 如何处理数据隐私问题，符合PIPL要求？
+  answer_template: 我们的系统内置数据加密和匿名化处理，严格遵守PIPL法规，所有数据存储和处理都在中国境内服务器进行，确保合规安全。
+- question: 集成现有系统复杂吗？
+  answer_template: 不复杂，我们支持与主流农业软件和平台的无缝集成，通过API连接，设置简单，快速上线。
+- question: 在农忙季节，语音助手能否应对高并发咨询？
+  answer_template: 当然可以，我们的语音助手基于云架构，可弹性扩展，确保在高峰期也能稳定运行，提供及时响应。
+- question: 是否有本地化支持，比如方言识别？
+  answer_template: 是的，我们支持多种中国方言的语音识别，并根据不同地区的农业习惯进行定制，确保本地适用性。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问服务价格时
+  script: 您好，我们的服务起价为每月5000元人民币，根据农场规模和需求定制。我们可以先评估您的具体情况，提供个性化报价，确保性价比最高。
+  goal: 引导客户进行需求评估，避免直接拒绝高价。
+- trigger: service_inquiry
+  situation: 当客户询问具体服务内容时
+  script: 我们提供从作物监测到市场分析的全套语音解决方案。例如，通过智能灌溉建议，可以节省20%的水资源。请问您目前最大的挑战是什么？
+  goal: 突出核心价值，引导客户分享痛点。
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时
+  script: 是的，市场上还有其他选择，但我们的优势在于深度本地化和AI语音交互，更贴合中国农业场景。例如，我们集成了政府数据，提供更准确的政策建议。
+  goal: 差异化定位，强调本地优势。
+- trigger: roi_doubt
+  situation: 当客户怀疑投资回报时
+  script: 以一个小型农场为例，月成本5000元，通过优化灌溉和减少损失，月节省可达8000元，投资回报期约3个月。我们可以为您详细计算。
+  goal: 用具体数据说服客户，展示快速回报。
+competitors:
+- name: 阿里云农业
+  positioning: 科技巨头提供的全方位农业云服务
+  strengths:
+  - 强大的云计算资源
+  - 广泛的生态系统整合
+  - 品牌知名度高
+  weaknesses:
+  - 价格较高
+  - 定制化程度有限
+  - 语音交互功能较弱
+  our_differentiation: 我们专注于AI语音助手，提供更直观、低成本的交互方式，更适合中小型农场。
+- name: 腾讯智慧农业
+  positioning: 基于社交和数据的智慧农业平台
+  strengths:
+  - 丰富的用户数据
+  - 社交网络整合
+  - 创新技术应用
+  weaknesses:
+  - 农业专业知识不足
+  - 实施复杂度高
+  - 区域覆盖不均衡
+  our_differentiation: 我们深耕农业行业经验，提供更专业的语音解决方案，确保实际效果。
+- name: 百度AI农业
+  positioning: 利用AI技术驱动的农业智能化服务
+  strengths:
+  - 领先的AI算法
+  - 强大的研发能力
+  - 政府合作项目多
+  weaknesses:
+  - 市场推广较弱
+  - 服务响应慢
+  - 缺乏本地化支持
+  our_differentiation: 我们强调本地化和实时语音支持，提供更快捷、贴心的服务体验。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 小型蔬菜农场使用智能灌溉和监测服务
+    monthly_cost: 5000
+    monthly_savings: 8000
+    payback_months: 3
+  value_anchors:
+  - 通过AI语音助手，平均提高产量15%
+  - 减少人工成本20%
+  - 优化资源使用，降低运营费用
+market_context:
+  market_size: 超过10万亿元人民币
+  growth_rate: 8%
+  key_trends:
+  - 智能化农业加速普及
+  - 政策支持绿色农业发展
+  - 消费者对有机和溯源食品需求增长
+  - 数字技术整合提升效率
+  seasonality:
+    high:
+    - 春季播种期
+    - 秋季收获期
+    low:
+    - 冬季休耕期
+typical_objections:
+- objection: 成本太高，我们农场规模小，负担不起。
+  response: 我们理解您的顾虑。我们提供分层定价，入门套餐仅5000元/月，且通过提高效率，很快就能收回成本。可以先试用一个月看看效果。
+- objection: 技术太复杂，我们农民不会用。
+  response: 不用担心，我们的语音助手设计简单，只需说话就能操作。我们还提供培训和支持，确保您轻松上手。
+- objection: 现有系统已经够用，不需要更换。
+  response: 是的，但我们的AI语音助手可以无缝集成现有系统，补充不足，比如通过语音快速获取数据分析，让您的工作更高效。
+- objection: 数据安全有风险，怕泄露。
+  response: 我们严格遵守PIPL，数据加密存储在中国服务器，并有定期安全审计，确保您的信息绝对安全。
+- objection: 效果不确定，怕投资打水漂。
+  response: 我们提供试用期和效果保证，基于大量案例，平均投资回报期在6个月内。可以先小范围测试，验证后再决定。
+meta:
+  id: agriculture
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

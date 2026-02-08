@@ -1,0 +1,200 @@
+pain_points:
+- description: Hohe regulatorische Unsicherheit und komplexe Compliance-Anforderungen für Kryptodienstleister in Österreich und der EU.
+  severity: high
+  solution_hint: KI-Sprachagent kann über aktuelle FMA-Richtlinien und GDPR-konforme Prozesse informieren und bei der Erstellung von Compliance-Checklisten helfen.
+- description: Schwierigkeiten bei der korrekten steuerlichen Behandlung von Kryptotransaktionen (Einkommenssteuer, KESt) für Privatpersonen und Unternehmen.
+  severity: high
+  solution_hint: Agent kann Basis-Steuerinformationen bereitstellen und qualifizierte Leads an spezialisierte Steuerberater vermitteln.
+- description: Mangelndes Vertrauen und hohe Skepsis bei potenziellen Neukunden aufgrund von Betrugsfällen und Volatilität.
+  severity: medium
+  solution_hint: Agent kann Sicherheitsprotokolle erklären, Vertrauenssignale (wie FMA-Lizenzierung) kommunizieren und edukative Inhalte liefern.
+- description: Technische Hürden und komplexe Benutzeroberflächen schrecken weniger technikaffine Nutzer ab.
+  severity: medium
+  solution_hint: Agent kann in einfachem Deutsch den Onboarding-Prozess schrittweise erklären und bei der Fehlerbehebung unterstützen.
+- description: Hoher administrativer Aufwand für das Portfolio-Management und die Nachverfolgung von Transaktionen über verschiedene Börsen und Wallets.
+  severity: medium
+  solution_hint: Agent kann bei der Integration von Portfolio-Tracking-Tools helfen und regelmäßige Zusammenfassungen anbieten.
+- description: Lange Bearbeitungszeiten und eingeschränkte Erreichbarkeit des Kundensupports, besonders außerhalb der Bürozeiten.
+  severity: low
+  solution_hint: KI-Agent bietet 24/7-Support in Deutsch, beantwortet sofortige Fragen und leitet komplexe Fälle weiter.
+typical_services:
+- Kryptowährungs-Handel (Kauf/Verkauf)
+- Crypto-Steuerberatung und Report-Generierung
+- Verwahrung (Custody) und Wallet-Management
+- Staking und Yield-Farming-Dienstleistungen
+- Einrichtung von Crypto-Zahlungsgateways für Unternehmen
+- Initial Coin Offering (ICO) / Security Token Offering (STO) Beratung
+- Portfolio-Management und Anlagestrategie
+- Blockchain-Entwicklung und Smart Contract Audit
+- Sicherheitsschulungen und Wallet-Sicherheitschecks
+- Automatisierte Steuermeldung für das Finanzamt
+recommended_functions:
+- name: Compliance- und Regulatorik-FAQ
+  priority: high
+  reason: Klarheit über österreichische und EU-Regeln (GDPR, FMA) ist entscheidend für Kundenvertrauen und rechtssicheres Handeln.
+- name: Lead-Qualifikation für Steuerberatung
+  priority: high
+  reason: Steuerfragen sind der größte Schmerzpunkt; direkte Vermittlung an Experten schafft sofortigen Mehrwert.
+- name: 24/7-Kundensupport und technische Erstanlaufstelle
+  priority: high
+  reason: Behebt ein klassisches Problem der Branche (lange Wartezeiten) und erhöht die Kundenzufriedenheit signifikant.
+- name: Terminvereinbarung für Onboarding-Beratung
+  priority: medium
+  reason: Reduziert die Abbruchrate bei technisch komplexen Erstschritten durch persönliche Begleitung.
+- name: Markt- und Portfolio-Update-Anrufe
+  priority: medium
+  reason: Hält Kunden engagiert, bietet proaktiven Service und kann Upsell-Möglichkeiten identifizieren.
+- name: Sicherheits- und Phishing-Warnungen
+  priority: low
+  reason: Stärkt das Vertrauen und positioniert den Dienstleister als sicheren und fürsorglichen Partner.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - DATEV
+  - SAP
+  - Lexoffice
+  priority: high
+- name: Portfolio-Tracking-Tools
+  examples:
+  - Blockpit
+  - CoinTracking
+  - Accointing
+  priority: high
+- name: Steuererklärungssoftware
+  examples:
+  - BMD
+  - Datev Lohn+Gehalt
+  priority: medium
+- name: Krypto-Börsen & On-Ramps
+  examples:
+  - Bitpanda
+  - Bitfinex
+  - Kraken
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - Österreichische Banken-CRMs
+  priority: low
+industry_faq:
+- question: Ist der Handel mit Kryptowährungen in Österreich legal und reguliert?
+  answer_template: Ja, der Handel ist legal. Dienstleister unterliegen der Aufsicht der Finanzmarktaufsicht (FMA) und müssen sich an AML- sowie GDPR-Vorschriften halten. Wir arbeiten vollkommen konform
+    mit allen österreichischen Regulierungen.
+- question: Wie versteuere ich Gewinne aus Kryptowährungen in Österreich?
+  answer_template: Privatpersonen versteuern Spekulationsgewinne nach einer einjährigen Haltefrist nicht mehr. Bei kürzerer Haltedauer oder gewerblichem Handel fallen Einkommenssteuer oder Körperschaftssteuer
+    an. Für eine genaue Einschätzung empfehlen wir die Konsultation eines Steuerberaters – wir können Ihnen gerne einen Kontakt vermitteln.
+- question: Wie sicher ist die Aufbewahrung meiner Kryptowerte?
+  answer_template: Wir setzen auf mehrstufige Sicherheitssysteme, darunter Cold Storage für den Großteil der Assets, Zwei-Faktor-Authentifizierung und regelmäßige Sicherheitsaudits. Ihre Daten sind gemäß
+    GDPR geschützt.
+- question: Kann ich mit Euro bei Ihnen ein- und auszahlen?
+  answer_template: Ja, über SEPA-Überweisungen sind Euro-Einzahlungen und Auszahlungen problemlos möglich. Die Abwicklung erfolgt über unsere lizenzierten Partnerbanken in der EU.
+- question: Was kostet es, bei Ihnen zu handeln?
+  answer_template: Unsere Gebühren sind transparent und wettbewerbsfähig. Sie setzen sich aus einer Handelsgebühr und ggf. Netzwerkgebühren zusammen. Gerne erstelle ich Ihnen eine persönliche Kostenübersicht
+    basierend auf Ihrem Handelsvolumen.
+- question: Ich bin neu im Krypto-Bereich. Wo fange ich an?
+  answer_template: Ein guter Startpunkt ist ein unverbindliches Onboarding-Gespräch. Wir erklären Ihnen die Grundlagen, helfen bei der Kontoeröffnung und starten mit einem überschaubaren Betrag. Bildung
+    und Sicherheit stehen bei uns an erster Stelle.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten fragt.
+  script: 'Unsere Gebühren richten sich nach Ihrem Handelsvolumen und den genutzten Dienstleistungen, sind aber stets transparent. Um Ihnen ein genaues Angebot zu machen: Schätzen Sie, wie oft und in welchem
+    Volumen Sie monatlich handeln würden? Der große Vorteil für Sie ist, dass Sie durch unsere Integration mit Tools wie Blockpit viel Zeit und Geld bei der Steuererklärung sparen – das gleicht die Kosten
+    oft mehr als aus.'
+  goal: Kostenfrage aufgreifen, auf individuelle Angebote lenken und Wert durch Zeiteinsparung bei Steuern kommunizieren.
+- trigger: onboarding_request
+  situation: Wenn ein Neukunde Interesse an der Kontoeröffnung signalisiert.
+  script: Perfekt, dann starten wir mit einem sicheren und einfachen Prozess. Zuerst benötigen wir zur Verifikation (gemäß FMA-Vorgaben) eine Kopie Ihres Reisepasses oder Personalausweises und einen aktuellen
+    Meldenachweis. Dies kann bequem per Video-Ident oder Upload geschehen. Sobald das erledigt ist, können Sie sofort Euro einzahlen und mit dem Handel beginnen. Möchten Sie, dass ich Ihnen den ersten Schritt
+    – die Dokumentenerfassung – jetzt per E-Mail zusende?
+  goal: Onboarding-Prozess klar erklären, Compliance betonen und zum nächsten konkreten Schritt (Dokumentenversand) führen.
+- trigger: hesitation_regulation
+  situation: Wenn ein Kunde aufgrund regulatorischer Bedenken zögert.
+  script: Das ist eine sehr berechtigte Frage. Viele unseriöse Anbieter haben in der Vergangenheit für Verunsicherung gesorgt. Wir sind ein in Österreich ansässiges Unternehmen, unterliegen der Aufsicht
+    der FMA und halten alle GDPR-Bestimmungen strikt ein. Unsere Compliance-Prozesse sind zertifiziert. Diese Regulierung ist Ihr Schutz als Kunde. Darf ich Ihnen unser Sicherheits- und Compliance-Whitepaper
+    per E-Mail senden?
+  goal: Bedenken anerkennen, Vertrauen durch lokale Regulierung und Transparenz aufbauen und weiterführende Informationen anbieten.
+competitors:
+- name: Bitpanda
+  positioning: Führende, in Wien ansässige Retail-Kryptobörse für Einsteiger und Fortgeschrittene.
+  strengths:
+  - Starke Markenbekanntheit in Österreich/DACH
+  - breites Angebot an Assets (Aktien
+  - Edelmetalle
+  - Krypto)
+  - benutzerfreundliche App
+  - FMA-lizenziert
+  weaknesses:
+  - Höhere Gebühren für Einsteiger
+  - begrenzte Beratungsleistungen
+  - Standard-Support
+  our_differentiation: Wir bieten persönlichere Betreuung, tiefgehende Steuerberatungsvermittlung und maßgeschneiderte Lösungen für aktive Trader und gewerbliche Nutzer.
+- name: CoinLoan
+  positioning: Internationaler Anbieter mit Fokus auf Krypto-Krediten und Verzinsung.
+  strengths:
+  - Attraktive Zinsen auf Krypto-Einlagen
+  - Kreditvergabe gegen Crypto-Collateral
+  weaknesses:
+  - Geringe Präsenz in Österreich
+  - limitierter deutscher Support
+  - keine spezifische Österreich-Steuerhilfe
+  our_differentiation: Unser Fokus liegt auf dem österreichischen Markt mit full-service Ansatz (Handel, Steuer, Beratung) und direkter Anbindung an lokale Steuerexperten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 50000
+  entry_point: 50
+  roi_examples:
+  - scenario: Aktiver Trader spart 10 Stunden monatlich für Steuerdokumentation durch automatisierte Reporting-Integration.
+    monthly_cost: 99
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Unternehmen vermeidet eine Compliance-Strafe durch proaktive Monitoring-Anrufe des AI-Agents.
+    monthly_cost: 199
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie sich Stunden bei der Steuererklärung – ab 99€/Monat.
+  - 'Vermeiden Sie teure Compliance-Fehler: Unser Monitoring kostet weniger als ein Beraterstunde.'
+  - Starten Sie sicher für 0€ Einlage – zahlen Sie nur, wenn Sie handeln.
+market_context:
+  market_size: Ca. 500.000-800.000 Kryptonutzer in Österreich (Schätzung 2023).
+  growth_rate: 15-20% YoY
+  key_trends:
+  - 'Stärkere Institutionalisierung: Pensionskassen und Family Offices steigen ein.'
+  - Fokus auf Regulierung (MiCA) und steuerliche Klarheit.
+  - Wachsendes Interesse an Stablecoins und Tokenisierung realer Assets.
+  - Dezentralisierte Finanzierung (DeFi) gewinnt bei technisch versierten Anlegern an Bedeutung.
+  seasonality:
+    high:
+    - Januar (Steuervorbereitung)
+    - Q4 (Jahresendplanung)
+    low:
+    - August (Urlaubszeit)
+typical_objections:
+- objection: Das ist mir zu teuer. Bei anderen Börsen zahle ich niedrigere Gebühren.
+  response: 'Das kann sein. Betrachten Sie aber bitte das Gesamtpaket: Unsere Gebühren inkludieren oft den Zugang zu premium Steuerreporting-Tools und persönlichem Support. Eine günstige Gebühr hilft nicht,
+    wenn Sie Stunden mit der Steuererklärung verlieren oder bei einem Problem niemanden erreichen. Können wir einmal durchrechnen, ob die Gesamtkosten für Sie wirklich höher liegen?'
+- objection: Kryptowährungen sind zu riskant und volatil.
+  response: Volatilität ist ein Merkmal des Marktes, das Risiko kann aber gemanagt werden. Wir legen großen Wert auf Bildung und empfehlen nie, mehr zu investieren als man verlieren kann. Durch Diversifikation,
+    langfristige Strategien (Staking) und Sicherheitsmaßnahmen kann das Risiko kontrolliert werden. Möchten Sie mehr über risikoarme Einstiegsmöglichkeiten wie Stablecoins oder gesicherte Staking-Produkte
+    erfahren?
+- objection: Ich traue der Technologie nicht und habe Angst vor Hacks.
+  response: 'Dieses Misstrauen ist verständlich. Unser Sicherheitskonzept setzt genau hier an: Der Großteil der Kundengelder lagert in offline Cold Wallets, die nicht gehackt werden können. Wir sind FMA-reguliert,
+    was strenge Sicherheitsaudits bedeutet. Zudem versichern wir einen Teil der Assets. Würde es Ihnen helfen, wenn ich Ihnen unser detailliertes Sicherheitsdokument zusende?'
+meta:
+  id: crypto
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- crypto
+- cryptocurrency
+- blockchain
+- bitcoin
+- exchange
+_extends: _base/crypto

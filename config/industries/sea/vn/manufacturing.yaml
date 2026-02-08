@@ -1,0 +1,245 @@
+pain_points:
+- description: Chi phí nhân công ngày càng tăng và tình trạng thiếu hụt lao động có
+    tay nghề
+  severity: high
+  solution_hint: Agent giọng nói AI có thể tự động hóa các tác vụ chăm sóc khách hàng
+    và hỗ trợ nội bộ cơ bản, giảm áp lực lên nhân sự.
+- description: Quản lý chuỗi cung ứng phức tạp, dễ bị gián đoạn, gây chậm trễ sản
+    xuất
+  severity: high
+  solution_hint: Agent có thể cung cấp thông tin cập nhật về trạng thái đơn hàng và
+    kho hàng tự động, giảm số lượng cuộc gọi tra cứu thủ công.
+- description: Khó khăn trong việc tuân thủ các quy định PDPD về quản lý dữ liệu khách
+    hàng và nhân viên
+  severity: medium
+  solution_hint: Agent được thiết lập sẵn các kịch bản tuân thủ, đảm bảo mọi thông
+    tin trao đổi và lưu trữ đều an toàn và minh bạch.
+- description: Áp lực cạnh tranh về giá và yêu cầu giao hàng nhanh từ đối tác, khách
+    hàng
+  severity: high
+  solution_hint: Agent xử lý đơn hàng và yêu cầu báo giá nhanh chóng 24/7, cải thiện
+    trải nghiệm khách hàng và tăng tốc độ phản hồi.
+- description: Khó khăn trong việc mở rộng quy mô hoạt động chăm sóc khách hàng khi
+    có thêm đơn hàng hoặc sản phẩm mới
+  severity: medium
+  solution_hint: Agent có thể mở rộng quy mô dễ dàng, xử lý hàng trăm cuộc gọi cùng
+    lúc mà không cần thuê thêm nhân sự.
+- description: Tỷ lệ đơn hàng bị hủy hoặc thay đổi cao do thông tin không rõ ràng
+    hoặc liên lạc chậm trễ
+  severity: medium
+  solution_hint: Agent xác nhận đơn hàng, thông báo tình trạng sản xuất và giao hàng
+    tự động, giảm thiểu hiểu lầm.
+typical_services:
+- Gia công cơ khí CNC
+- Đúc khuôn ép nhựa
+- Lắp ráp linh kiện điện tử
+- Sản xuất bao bì
+- Gia công tấm kim loại
+- Xử lý bề mặt (sơn, mạ)
+- Sản xuất theo đơn đặt hàng (OEM)
+- Kiểm tra chất lượng (QC)
+- Dịch vụ kho bãi và logistics
+- Tư vấn tối ưu hóa quy trình sản xuất
+recommended_functions:
+- name: Tiếp nhận & xác nhận đơn hàng tự động
+  priority: high
+  reason: Giảm tải cho bộ phận bán hàng, xử lý đơn hàng nhanh chóng 24/7, tránh sai
+    sót do ghi chép thủ công.
+- name: Hỗ trợ tra cứu tình trạng sản xuất & giao hàng
+  priority: high
+  reason: Khách hàng và đối tác có thể tra cứu mọi lúc, giảm hơn 50% cuộc gọi đến
+    bộ phận CSKH.
+- name: Thu thập phản hồi & đánh giá sau bán hàng
+  priority: medium
+  reason: Tự động hóa việc thu thập dữ liệu khách hàng, giúp cải thiện chất lượng
+    dịch vụ và sản phẩm.
+- name: Hỗ trợ đặt lịch hẹn tư vấn với kỹ thuật viên
+  priority: medium
+  reason: Tối ưu hóa lịch làm việc của đội ngũ kỹ thuật, nâng cao hiệu quả làm việc.
+- name: Thông báo khẩn cấp về sự cố dây chuyền sản xuất (qua tích hợp)
+  priority: low
+  reason: Cảnh báo kịp thời cho quản lý qua cuộc gọi tự động khi hệ thống giám sát
+    phát hiện sự cố.
+typical_integrations:
+- name: Hệ thống ERP quản lý doanh nghiệp
+  examples:
+  - MISA
+  - SAP
+  - FAST
+  priority: high
+- name: Phần mềm CRM
+  examples:
+  - CRMVIET
+  - Salesforce
+  priority: high
+- name: Hệ thống quản lý kho (WMS)
+  examples:
+  - KiotViet
+  - Sapo
+  priority: medium
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - BRAVO
+  priority: medium
+industry_faq:
+- question: Dịch vụ của quý công ty có hỗ trợ sản xuất thử nghiệm (sample) không?
+  answer_template: Vâng, chúng tôi có hỗ trợ sản xuất mẫu thử. Thời gian và chi phí
+    sẽ phụ thuộc vào độ phức tạp của sản phẩm. Tôi sẽ kết nối quý khách với bộ phận
+    kỹ thuật để được tư vấn chi tiết.
+- question: Thời gian sản xuất tiêu chuẩn cho một đơn hàng là bao lâu?
+  answer_template: Thời gian sản xuất phụ thuộc vào số lượng và độ phức tạp của sản
+    phẩm. Thông thường dao động từ 2 đến 8 tuần. Để có thời gian chính xác nhất, chúng
+    tôi cần thông tin cụ thể về yêu cầu của quý khách.
+- question: Quý công ty có chứng chỉ chất lượng nào (như ISO) không?
+  answer_template: Chúng tôi tự hào đã đạt được chứng chỉ ISO 9001:2015 cho hệ thống
+    quản lý chất lượng. Ngoài ra, tùy ngành hàng cụ thể, chúng tôi có thể đáp ứng
+    các tiêu chuẩn khác. Tôi có thể gửi thông tin chi tiết qua email cho quý khách.
+- question: Tôi có thể theo dõi tiến độ đơn hàng của mình như thế nào?
+  answer_template: Quý khách có thể dễ dàng tra cứu tiến độ đơn hàng 24/7 qua tổng
+    đài tự động của chúng tôi bằng mã đơn hàng, hoặc nhận thông báo tự động qua SMS/Zalo
+    khi đơn hàng có cập nhật mới.
+- question: Chính sách thanh toán của quý công ty như thế nào?
+  answer_template: Chúng tôi áp dụng các hình thức thanh toán linh hoạt. Thông thường,
+    với đơn hàng mới, chúng tôi đề xuất thanh toán 30-50% khi đặt hàng và phần còn
+    lại trước khi giao hàng. Chi tiết sẽ được thỏa thuận trong hợp đồng.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về giá dịch vụ ngay từ đầu cuộc gọi
+  script: Chào anh/chị, cảm ơn đã quan tâm. Để có báo giá chính xác nhất, giá thành
+    sẽ phụ thuộc vào nhiều yếu tố như chất liệu, số lượng và độ phức tạp của chi tiết
+    gia công. Thay vì một con số chung chung, tôi có thể kết nối anh/chị với chuyên
+    viên tư vấn của chúng tôi. Họ sẽ phân tích bản vẽ/yêu cầu cụ thể và đưa ra mức
+    giá cạnh tranh nhất, đồng thời tư vấn cách tối ưu chi phí cho anh/chị. Anh/chị
+    có sẵn thông tin cơ bản về sản phẩm không ạ?
+  goal: Chuyển hướng từ nói về giá sang nói về giá trị và nhu cầu cụ thể, thu thập
+    thông tin để chuyển lead chất lượng.
+- trigger: competitor_mention
+  situation: Khách hàng so sánh chúng tôi với đối thủ cạnh tranh về giá
+  script: Tôi hiểu việc so sánh giá là điều cần thiết. Bên cạnh mức giá, điều tạo
+    nên sự khác biệt của chúng tôi là hệ thống hỗ trợ khách hàng tự động 24/7. Anh/chị
+    có thể tra cứu đơn hàng, đặt hàng hoặc nhận thông báo mọi lúc, điều này giúp tiết
+    kiệm thời gian và tránh sai sót so với việc chỉ liên lạc giờ hành chính. Hơn nữa,
+    chúng tôi cam kết minh bạch mọi thông tin và tuân thủ PDPD. Đầu tư vào hệ thống
+    này cũng là cách chúng tôi tối ưu chi phí vận hành để mang lại giá tốt hơn cho
+    khách hàng. Anh/chị có quan tâm đến việc trải nghiệm thử tính năng tra cứu đơn
+    hàng tự động không ạ?
+  goal: Làm nổi bật điểm khác biệt về công nghệ và dịch vụ, biến cuộc nói chuyện thành
+    demo giá trị.
+- trigger: service_inquiry
+  situation: Khách hành tiềm năng gọi đến hỏi về dịch vụ gia công cơ khí
+  script: 'Chào anh/chị, rất vui được hỗ trợ. Chúng tôi chuyên gia công cơ khí CNC
+    chính xác cho nhiều ngành hàng. Để tư vấn chính xác nhất, anh/chị có thể cho tôi
+    biết quý công ty đang có nhu cầu về sản phẩm như thế nào ạ? Ví dụ: vật liệu (sắt,
+    nhôm, nhựa...), số lượng dự kiến, và có bản vẽ kỹ thuật hay mẫu vật có sẵn không?
+    Từ đó, tôi sẽ kết nối anh/chị với chuyên viên kỹ thuật phù hợp nhất, người có
+    thể hỗ trợ tận tình từ khâu tư vấn thiết kế đến báo giá.'
+  goal: Thu thập thông tin cơ bản về nhu cầu để phân loại và chuyển lead hiệu quả,
+    thể hiện sự chuyên nghiệp.
+competitors:
+- name: Các xưởng gia công gia đình/quy mô nhỏ
+  positioning: Giá rẻ, linh hoạt với đơn hàng nhỏ lẻ.
+  strengths:
+  - Giá thành rất cạnh tranh
+  - Linh hoạt, ít quy trình rườm rà
+  - Giao tiếp trực tiếp, thân thiện
+  weaknesses:
+  - Công nghệ lạc hậu
+  - Chất lượng không ổn định
+  - Không có hỗ trợ khách hàng chuyên nghiệp
+  - Khó đáp ứng đơn hàng lớn
+  our_differentiation: Cung cấp chất lượng ổn định hàng loạt với hệ thống quản lý
+    và hỗ trợ khách hàng tự động chuyên nghiệp, phù hợp cho doanh nghiệp muốn mở rộng
+    và hợp tác lâu dài.
+- name: Các công ty sản xuất nước ngoài có nhà máy tại Việt Nam
+  positioning: Chất lượng cao, công nghệ tiên tiến, phục vụ thị trường xuất khẩu.
+  strengths:
+  - Công nghệ và thiết bị hiện đại
+  - Tiêu chuẩn chất lượng quốc tế
+  - Năng lực sản xuất quy mô lớn
+  weaknesses:
+  - Chi phí cao
+  - Quy trình cứng nhắc, ít linh hoạt
+  - Thời gian phản hồi chậm do cấp bậc nhiều
+  - Ít tập trung vào thị trường nội địa nhỏ lẻ
+  our_differentiation: Mang lại chất lượng gần tương đương với mức giá hợp lý hơn,
+    cùng dịch vụ hỗ trợ nhanh chóng, linh hoạt và được cá nhân hóa cho khách hàng
+    trong nước và khu vực SEA.
+- name: Các công ty công nghệ cung cấp phần mềm ERP/CRM đơn thuần
+  positioning: Giải pháp số hóa quy trình quản lý.
+  strengths:
+  - Phần mềm mạnh cho quản lý nội bộ
+  - Thương hiệu đã có chỗ đứng trên thị trường
+  weaknesses:
+  - Không giải quyết được điểm chạm trực tiếp với khách hàng (điện thoại)
+  - Yêu cầu nhân sự vận hành và nhập liệu thủ công
+  - Không phải giải pháp 'all-in-one' cho dịch vụ khách hàng
+  our_differentiation: Chúng tôi cung cấp giải pháp AI Voice Agent tích hợp sẵn, tập
+    trung vào tự động hóa và cải thiện trải nghiệm khách hàng bên ngoài ngay lập tức,
+    bổ sung hoàn hảo cho hệ thống ERP/CRM hiện có.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 5000000
+  - 50000000
+  entry_point: 7500000
+  roi_examples:
+  - scenario: Xưởng sản xuất nhỏ, giảm 2 nhân viên trực điện thoại part-time
+    monthly_cost: 10000000
+    monthly_savings: 16000000
+    payback_months: 1
+  value_anchors:
+  - Chỉ từ 250k/ngày để có trợ lý ảo xử lý hàng trăm cuộc gọi
+  - Tiết kiệm chi phí nhân sự tương đương 1-2 nhân viên trực điện thoại
+  - Tăng tỷ lệ chốt đơn ngay trong cuộc gọi đầu tiên
+market_context:
+  market_size: Hàng trăm nghìn doanh nghiệp sản xuất, chế biến từ quy mô vừa và nhỏ
+    đến lớn
+  growth_rate: 8-12% hàng năm
+  key_trends:
+  - Chuyển dịch sản xuất từ Trung Quốc sang Việt Nam (China+1)
+  - Tự động hóa và áp dụng công nghệ 4.0 để nâng cao năng suất
+  - Tập trung vào sản xuất xanh và bền vững
+  - Nhu cầu về quản lý chuỗi cung ứng minh bạch và linh hoạt
+  seasonality:
+    high:
+    - Quý 4 (chuẩn bị cho Tết Nguyên Đán)
+    - Tháng 9-10 (cao điểm đơn hàng xuất khẩu cuối năm)
+    low:
+    - Tháng 1-2 (nghỉ Tết Nguyên Đán)
+    - Tháng 6-7 (mùa mưa, một số ngành chậm lại)
+typical_objections:
+- objection: Công ty tôi quy mô còn nhỏ, chưa cần đến công nghệ AI phức tạp như vậy.
+  response: Tôi hoàn toàn hiểu. Thực tế, chính các doanh nghiệp nhỏ mới cần tối ưu
+    hóa từng đồng chi phí và tạo ấn tượng chuyên nghiệp ngay từ đầu. Giải pháp của
+    chúng tôi có gói nhập môn với chi phí thấp, giúp anh/chị tự động hóa các công
+    việc lặp đi lặp lại như xác nhận đơn hàng, để nhân sự hiện có tập trung vào việc
+    phát triển kinh doanh. Nó như một nhân viên không bao giờ nghỉ phép với chi phí
+    cố định rõ ràng.
+- objection: Nhân viên của tôi quen làm việc thủ công, sợ khó tiếp cận công nghệ mới.
+  response: Đây là mối quan tâm chính đáng. Ưu điểm của Agent giọng nói AI là giao
+    tiếp hoàn toàn tự nhiên bằng tiếng Việt, không cần đào tạo phức tạp cho nhân viên
+    sử dụng. Hơn nữa, chúng tôi sẽ hỗ trợ setup và hướng dẫn vận hành chi tiết. Agent
+    sẽ đảm nhận các cuộc gọi đơn giản, lặp đi lặp lại, giúp nhân viên của anh/chị
+    rảnh tay để xử lý các vấn đề phức tạp và giá trị cao hơn, từ đó công việc của
+    họ cũng hiệu quả và ý nghĩa hơn.
+- objection: Tôi lo ngại về bảo mật thông tin khách hàng khi dùng hệ thống tự động.
+  response: Chúng tôi đặt vấn đề bảo mật lên hàng đầu. Hệ thống của chúng tôi được
+    thiết kế tuân thủ nghiêm ngặt Luật PDPD của Việt Nam. Dữ liệu cuộc gọi được mã
+    hóa và lưu trữ an toàn. Anh/chị có toàn quyền kiểm soát dữ liệu của mình. Chúng
+    tôi sẵn sàng cung cấp tài liệu cam kết bảo mật và có thể thiết lập hệ thống theo
+    các yêu cầu riêng về bảo mật của quý công ty.
+meta:
+  id: manufacturing
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

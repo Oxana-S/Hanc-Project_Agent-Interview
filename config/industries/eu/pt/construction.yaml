@@ -1,0 +1,258 @@
+pain_points:
+- description: Atrasos frequentes na entrega de materiais de construção devido a problemas
+    na cadeia de abastecimento.
+  severity: high
+  solution_hint: Agente de voz AI pode monitorizar stocks e fornecer alertas proativos
+    para reabastecimento.
+- description: Falta de mão de obra qualificada, especialmente em áreas técnicas como
+    eletricidade e canalização.
+  severity: high
+  solution_hint: Agente pode agendar formações e gerir candidaturas através de atendimento
+    automatizado.
+- description: Burocracia complexa e lentidão nos processos de licenciamento municipal.
+  severity: medium
+  solution_hint: Agente pode orientar clientes sobre documentação necessária e prazos
+    via respostas automáticas.
+- description: Gestão ineficiente de projetos, levando a custos extras e atrasos.
+  severity: medium
+  solution_hint: Integração com software de gestão para atualizações em tempo real
+    via voz.
+- description: Variações imprevisíveis nos preços dos materiais, afetando orçamentos.
+  severity: high
+  solution_hint: Agente pode fornecer atualizações de preços do mercado e sugerir
+    alternativas.
+- description: Dificuldades na comunicação com clientes e fornecedores fora do horário
+    comercial.
+  severity: low
+  solution_hint: Atendimento 24/7 para resolver dúvidas e agendar reuniões.
+- description: Cumprimento de normas de segurança e regulamentações GDPR para dados
+    de clientes.
+  severity: medium
+  solution_hint: Agente pode educar equipas sobre compliance e gerir consentimentos
+    de forma segura.
+typical_services:
+- Construção residencial
+- Reabilitação urbana
+- Engenharia civil
+- Gestão de projetos
+- Obras públicas
+- Renovação e remodelação
+- Instalações elétricas e de canalização
+- Isolamento térmico e acústico
+- Pavimentação e infraestruturas
+- Consultoria em licenciamentos
+recommended_functions:
+- name: Atendimento ao cliente 24/7
+  priority: high
+  reason: Melhora a satisfação do cliente e capta leads fora do horário normal.
+- name: Agendamento automático de reuniões
+  priority: high
+  reason: Otimiza a gestão de tempo para equipas no canteiro de obras.
+- name: Resposta a perguntas frequentes sobre orçamentos
+  priority: medium
+  reason: Reduz a carga de trabalho da equipa comercial com informações rápidas.
+- name: Integração com ERP para atualizações de stock
+  priority: high
+  reason: Previne atrasos ao monitorizar materiais em tempo real.
+- name: Alertas proativos para prazos de licenciamento
+  priority: medium
+  reason: Ajuda a cumprir regulamentos e evitar multas.
+- name: Formação interativa para novos colaboradores
+  priority: low
+  reason: Facilita a integração e reduz erros em tarefas complexas.
+- name: Gestão de reclamações via voz
+  priority: medium
+  reason: Melhora a resolução de problemas e retenção de clientes.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - Primavera
+  - SAP
+  - Microsoft Dynamics
+  priority: high
+- name: Software de gestão de projetos
+  examples:
+  - Microsoft Project
+  - Asana
+  - Trello
+  priority: high
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Pipedrive
+  priority: medium
+- name: Ferramentas de faturação
+  examples:
+  - Facturalia
+  - Primavera Invoice
+  priority: medium
+- name: Sistemas de monitorização de stocks
+  examples:
+  - Zoho Inventory
+  - Primavera Stocks
+  priority: low
+- name: Plataformas de comunicação
+  examples:
+  - Slack
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: Como posso agilizar o processo de licenciamento para uma obra?
+  answer_template: Recomendamos preparar toda a documentação com antecedência e usar
+    serviços de consultoria. Nosso agente AI pode ajudar a orientar sobre os passos
+    necessários.
+- question: Quais são os custos médios de construção por metro quadrado em Portugal?
+  answer_template: Os custos variam entre 800 a 1500 EUR por m², dependendo da localização
+    e especificações. Podemos fornecer um orçamento personalizado.
+- question: Como garantir a qualidade dos materiais num projeto?
+  answer_template: Sugerimos trabalhar com fornecedores certificados e usar sistemas
+    de monitorização. Nosso agente pode integrar-se a bases de dados de fornecedores.
+- question: É possível reduzir atrasos na entrega de projetos?
+  answer_template: Sim, com uma gestão proativa e ferramentas de planeamento. Oferecemos
+    soluções AI para otimizar cronogramas.
+- question: Como lidar com a falta de mão de obra qualificada?
+  answer_template: Investir em formação e parcerias com escolas técnicas. Nosso agente
+    pode ajudar no recrutamento e agendamento de formações.
+- question: Quais as tendências atuais na construção sustentável em Portugal?
+  answer_template: Tendências incluem materiais ecológicos e eficiência energética.
+    Podemos aconselhar sobre opções disponíveis no mercado.
+- question: Como cumprir com o GDPR em projetos de construção?
+  answer_template: Implementar políticas claras de proteção de dados. Nosso agente
+    AI pode gerir consentimentos e alertas de compliance.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre os custos dos nossos serviços de automação.
+  script: Olá! Os nossos serviços começam em 500 EUR por mês, com ROI rápido através
+    da redução de atrasos e custos. Posso explicar como calculamos a poupança para
+    o seu projeto específico?
+  goal: Educar sobre o valor e justificar o investimento com exemplos concretos.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente local.
+  script: Compreendemos que há outras opções. A nossa diferença está na integração
+    AI personalizada para a construção portuguesa, focada em resolver problemas como
+    burocracia e gestão de stocks. Gostaria de ver um caso de sucesso?
+  goal: Destacar a nossa adaptação local e vantagens únicas.
+- trigger: objection_complexity
+  situation: Quando o cliente acha a tecnologia muito complexa.
+  script: A nossa solução é desenhada para ser intuitiva, com suporte em português
+    24/7. Oferecemos uma demonstração gratuita para mostrar como simplifica o seu
+    dia a dia.
+  goal: Reduzir a perceção de complexidade e aumentar a confiança.
+- trigger: lead_capture
+  situation: Durante uma chamada inicial para captar um novo lead.
+  script: Olá! Notamos que a gestão de projetos na construção pode ser desafiadora.
+    Oferecemos uma consulta gratuita para analisar como a nossa automação AI pode
+    poupar tempo e dinheiro. Posso agendar?
+  goal: Gerar interesse e agendar uma reunião de vendas.
+- trigger: follow_up
+  situation: Após um primeiro contacto para reforçar o valor.
+  script: Lembra-se da nossa conversa sobre otimização de licenciamentos? Com a nossa
+    solução, clientes relatam uma redução de 30% no tempo de processamento. Gostaria
+    de discutir mais detalhes?
+  goal: Manter o envolvimento e fechar a venda.
+competitors:
+- name: Mota-Engil
+  positioning: Líder no mercado de construção civil em Portugal, com projetos internacionais.
+  strengths:
+  - Grande escala
+  - Experiência em obras públicas
+  - Recursos financeiros robustos
+  weaknesses:
+  - Lentidão em decisões
+  - Foco menos em inovação digital
+  our_differentiation: Oferecemos soluções AI ágeis e personalizadas para PMEs, com
+    foco em automação e suporte local.
+- name: Teixeira Duarte
+  positioning: Empresa familiar com forte presença em engenharia e construção.
+  strengths:
+  - Qualidade reconhecida
+  - Relações duradouras com clientes
+  weaknesses:
+  - Adaptação lenta a novas tecnologias
+  - Custos elevados
+  our_differentiation: Soluções acessíveis e escaláveis, com integração rápida em
+    software comum no mercado português.
+- name: Soares da Costa
+  positioning: Concorrente tradicional com foco em projetos residenciais e comerciais.
+  strengths:
+  - Portfólio diversificado
+  - Presença nacional
+  weaknesses:
+  - Problemas recentes de gestão
+  - Falta de inovação
+  our_differentiation: Enfoque em eficiência operacional através de AI, com relatórios
+    em tempo real e suporte proativo.
+- name: Mconstroi
+  positioning: Startup local oferecendo software de gestão para construção.
+  strengths:
+  - Preços competitivos
+  - Interface amigável
+  weaknesses:
+  - Funcionalidades limitadas
+  - Suporte menos abrangente
+  our_differentiation: Agente de voz AI complementar que automatiza atendimento e
+    integra-se a múltiplos sistemas, não apenas software.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de atrasos na entrega de materiais para um projeto médio.
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 4
+  - scenario: Automação de atendimento ao cliente para uma empresa com 10 colaboradores.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 3
+  value_anchors:
+  - Poupe até 40% em custos operacionais com automação AI.
+  - ROI garantido em menos de 6 meses para a maioria dos projetos.
+  - Soluções adaptadas ao mercado português, com suporte em português.
+market_context:
+  market_size: Estimado em 25 mil milhões EUR anuais
+  growth_rate: 2.5% YoY
+  key_trends:
+  - Aumento da digitalização e uso de BIM (Building Information Modeling)
+  - Foco crescente em construção sustentável e eficiência energética
+  - Expansão do turismo a impulsionar reabilitação urbana
+  - Regulamentações mais rigorosas para segurança e compliance
+  seasonality:
+    high:
+    - Primavera
+    - Verão
+    low:
+    - Inverno
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Compreendemos. No entanto, com a poupança em atrasos e gestão, o investimento
+    paga-se rapidamente. Podemos começar com um plano básico a 500 EUR/mês.
+- objection: Não confio em tecnologia AI para setores tradicionais.
+  response: A nossa solução é especificamente desenhada para a construção em Portugal,
+    com casos de sucesso locais. Oferecemos uma demonstração sem compromisso.
+- objection: Já tenho sistemas em lugar, não preciso de mais.
+  response: A nossa AI integra-se aos seus sistemas existentes para melhorar eficiência,
+    sem substituí-los. Vamos mostrar como complementa o seu fluxo de trabalho.
+- objection: O setor é muito imprevisível para automação.
+  response: Exatamente por isso, a AI ajuda a antecipar problemas, como variações
+    de preços ou atrasos, fornecendo alertas proativos.
+- objection: Não tenho tempo para implementar novas ferramentas.
+  response: A implementação é rápida e com suporte dedicado. Em média, os clientes
+    estão operacionais em duas semanas, com retorno imediato.
+meta:
+  id: construction
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

@@ -1,0 +1,240 @@
+pain_points:
+- description: A hulladékgyűjtés és elszállítás nem mindig időben történik, ami szennyeződéshez
+    és panaszokhoz vezet.
+  severity: high
+  solution_hint: Automatikus értesítések és időpont egyeztetések AI hangügynök segítségével.
+- description: Az adminisztráció és számlázás bonyolult, sok az ismétlődő feladat.
+  severity: medium
+  solution_hint: Hangalapú adatbevitellel és ügyfélkezeléssel csökkenthető az adminisztratív
+    terhelés.
+- description: Ügyfelek gyakran érdeklődnek a hulladék szállítási státuszáról, ami
+    sok időt vesz igénybe.
+  severity: high
+  solution_hint: AI hangügynök valós idejű státuszfrissítést adhat, csökkentve a hívásokat.
+- description: Az új jogszabályoknak való megfelelés (pl. GDPR) folyamatos kihívás.
+  severity: medium
+  solution_hint: Hangfelvételek és adatkezelés GDPR-kompatibilis módon történő automatizálása.
+- description: A szelektív hulladékgyűjtés népszerűsítése és megfelelő kezelése nem
+    mindig hatékony.
+  severity: medium
+  solution_hint: AI hangügynök edukációs és tájékoztató funkciókkal segíthet.
+- description: A kisebb településeken a hulladékszállítási szolgáltatások elérhetősége
+    korlátozott.
+  severity: medium
+  solution_hint: Többnyelvű és helyspecifikus ügyfélszolgálat biztosítása AI segítségével.
+- description: Az ügyfélszolgálati hívások magas száma és hosszú várakozási idők.
+  severity: high
+  solution_hint: Automatikus híváskezelés és ügyfélazonosítás csökkentheti a terhelést.
+typical_services:
+- Hulladékgyűjtés
+- Szelektív hulladékgyűjtés
+- Települési hulladékszállítás
+- Ipari hulladékkezelés
+- Kommunális hulladékfeldolgozás
+- Veszélyes hulladék elszállítás
+- Újrahasznosítási szolgáltatások
+- Konténeres hulladékszállítás
+- Hulladékudvarok üzemeltetése
+- Hulladékszállítási számlázás és adminisztráció
+recommended_functions:
+- name: Időpontfoglalás kezelése
+  priority: high
+  reason: Csökkenti az ügyfélszolgálati terhelést és javítja a szolgáltatás minőségét.
+- name: Valós idejű szállítási státusz tájékoztatás
+  priority: high
+  reason: Ügyfél elégedettség növelése és hívásszám csökkentése.
+- name: Ügyfélazonosítás hangalapon
+  priority: medium
+  reason: Gyorsabb ügyintézés és biztonságos adatkezelés.
+- name: Jogszabályi tájékoztatás és emlékeztetők
+  priority: medium
+  reason: Segíti a megfelelést és csökkenti a hibákat.
+- name: Panaszkezelés automatizálása
+  priority: medium
+  reason: Gyorsabb reakció és jobb ügyfélkapcsolat.
+- name: Szelektív hulladék edukációs modul
+  priority: low
+  reason: Támogatja a környezettudatos viselkedést.
+- name: Számlázási információk kezelése
+  priority: medium
+  reason: Csökkenti az adminisztrációs hibákat és ügyfélszolgálati terhelést.
+typical_integrations:
+- name: Hulladékgazdálkodási szoftverek
+  examples:
+  - Wincor
+  - ZöldPont
+  priority: high
+- name: Számlázó rendszerek
+  examples:
+  - Számlázz.hu
+  - Billingo
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Telefóniai ügyfélszolgálati rendszerek
+  examples:
+  - Mitel
+  - Avaya
+  priority: high
+- name: GDPR megfelelőségi szoftverek
+  examples:
+  - DataGuard
+  - OneTrust
+  priority: medium
+- name: Logisztikai nyomonkövető rendszerek
+  examples:
+  - Fleet Complete
+  - Navixy
+  priority: medium
+industry_faq:
+- question: Hogyan tudom lemondani vagy módosítani a hulladékszállítás időpontját?
+  answer_template: Kérem, mondja el a rendelési számát vagy ügyfélazonosítóját, és
+    segítek a módosításban.
+- question: Milyen típusú hulladékot gyűjtenek szelektíven?
+  answer_template: A szelektív hulladékgyűjtés során papírt, műanyagot, fémet és üveget
+    veszünk át. Többet szeretne tudni?
+- question: Mikor érkezik a hulladékszállító a településemre?
+  answer_template: Kérem, adja meg a címét vagy irányítószámát, hogy megmondhassam
+    a legközelebbi szállítási időpontot.
+- question: Hogyan kapom meg a számlát a hulladékszállításért?
+  answer_template: A számlát elektronikus úton küldjük, vagy kérheti postai úton is.
+    Melyiket választja?
+- question: Mit tehetek veszélyes hulladék esetén?
+  answer_template: Kérem, tájékozódjon a veszélyes hulladékok gyűjtési helyeiről és
+    időpontjairól, vagy segítek eligazodni.
+- question: Milyen adatokat kezelnek az ügyfélszolgálaton?
+  answer_template: Az Ön adatait a GDPR előírásainak megfelelően kezeljük, biztonságban
+    tartjuk azokat.
+- question: Hogyan tudok panaszt tenni a szolgáltatással kapcsolatban?
+  answer_template: Panaszát telefonon vagy e-mailben is jelezheti, azonnal továbbítom
+    az illetékes kollégáknak.
+sales_scripts:
+- trigger: arkerdes
+  situation: Amikor az ügyfél árajánlatot szeretne kapni.
+  script: Köszönöm az érdeklődését! Szívesen tájékoztatom a hulladékszállítás költségeiről,
+    kérném, hogy adja meg a szolgáltatás pontos helyszínét és igényelt szolgáltatás
+    típusát.
+  goal: Az igények pontos felmérése és személyre szabott árajánlat készítése.
+- trigger: panasz
+  situation: Ha az ügyfél panaszt tesz a szolgáltatás késése vagy minősége miatt.
+  script: Megértem az aggályait, és sajnálom a kellemetlenséget. Azonnal továbbítom
+    a problémát a megfelelő csapatnak, és biztosítom, hogy mielőbb megoldást találjunk.
+  goal: Ügyfél bizalmának visszanyerése és gyors probléma megoldás.
+- trigger: szolgaltatas_tajekoztato
+  situation: Amikor az ügyfél tájékozódni szeretne a szolgáltatásokról.
+  script: Szívesen elmondom, milyen hulladékgyűjtési és kezelési szolgáltatásokat
+    kínálunk, valamint melyek az Ön számára legmegfelelőbb opciók.
+  goal: Szolgáltatások bemutatása és az ügyfél érdeklődésének fenntartása.
+- trigger: adatkezeles
+  situation: Ha az ügyfél adatvédelmi kérdéseket tesz fel.
+  script: Fontos számunkra az Ön adatainak védelme. Tájékoztatom, hogy minden adatkezelésünk
+    megfelel a GDPR előírásainak.
+  goal: Bizalom erősítése adatvédelmi megfeleléssel.
+competitors:
+- name: FKF Zrt.
+  positioning: Magyarország egyik legnagyobb kommunális hulladékgazdálkodója Budapesten
+  strengths:
+  - Nagy lefedettség és ismertség
+  - Állami támogatás
+  - Kiterjedt logisztikai hálózat
+  weaknesses:
+  - Lassabb innovációs képesség
+  - Ügyfélszolgálati kapacitás korlátozott
+  our_differentiation: Gyorsabb, AI-alapú ügyfélszolgálat és rugalmasabb szolgáltatási
+    megoldások.
+- name: Zöld Híd B.I.G.G. Kft.
+  positioning: Regionális hulladékkezelő cég, elsősorban Pest megye területén
+  strengths:
+  - Jó helyismeret
+  - Környezetvédelmi fókusz
+  - Versenyképes árak
+  weaknesses:
+  - Korlátozott ügyfélszolgálati digitalizáció
+  - Kevésbé fejlett IT rendszerek
+  our_differentiation: Modern AI hangügynök integráció és ügyfélorientált szolgáltatások.
+- name: RS Hungary Kft.
+  positioning: Ipari hulladékkezelésben erős szereplő
+  strengths:
+  - Széles ipari kapcsolatok
+  - Speciális veszélyes hulladék kezelési kompetenciák
+  weaknesses:
+  - Magasabb árak
+  - Kevésbé transzparens ügyfélkommunikáció
+  our_differentiation: Átlátható kommunikáció és automatizált ügyfélkapcsolati megoldások.
+- name: Saubermacher - hulladékgazdálkodási szolgáltató
+  positioning: Nemzetközi hátterű magyarországi szereplő
+  strengths:
+  - Korszerű technológia bevezetése
+  - Környezetbarát megoldások
+  weaknesses:
+  - Kisebb helyi jelenlét
+  - Magasabb árképzés
+  our_differentiation: Helyi ügyfélszolgálati támogatás AI-alapú hangügynökkel.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 300000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Havonta 1000 ügyfélhívás automatizálása hangügynökkel
+    monthly_cost: 75000
+    monthly_savings: 150000
+    payback_months: 1
+  - scenario: Ügyfélszolgálati idő csökkentése 30%-kal egy közepes méretű hulladékgazdálkodó
+      cégnél
+    monthly_cost: 100000
+    monthly_savings: 250000
+    payback_months: 1
+  value_anchors:
+  - Az AI hangügynök jelentős mértékben csökkenti az ügyfélszolgálati költségeket.
+  - Automatikus időpontfoglalással és státuszfrissítéssel nő az ügyfél elégedettség.
+  - A GDPR-kompatibilis adatkezelés biztonságot nyújt Önnek és ügyfeleinek.
+  - Gyors megtérülést garantálunk a működési hatékonyság növelésével.
+market_context:
+  market_size: 45000000000
+  growth_rate: 4.5
+  key_trends:
+  - Digitalizáció és automatizálás terjedése a hulladékgazdálkodásban
+  - Környezettudatosság és szelektív hulladékgyűjtés erősödése
+  - Szabályozási környezet szigorodása, GDPR és környezetvédelmi előírások
+  - Növekvő kereslet az ipari és veszélyes hulladék kezelésére
+  seasonality:
+    high:
+    - Tavasz és nyár, amikor nő a hulladék mennyisége
+    - Év végi zárások és nagytakarítások időszaka
+    low:
+    - Téli hónapok, amikor alacsonyabb a hulladéktermelés
+typical_objections:
+- objection: Túl drágának találom a szolgáltatást.
+  response: Értem az aggályát, ugyanakkor az automatizált ügyfélszolgálatunk jelentős
+    költségcsökkenést és gyorsabb kiszolgálást tesz lehetővé hosszú távon.
+- objection: Nem hiszem, hogy egy AI hangügynök megérti majd az ügyfeleimet.
+  response: Az AI hangügynökünk folyamatosan tanul és a magyar nyelv sajátosságaira
+    van optimalizálva, így hatékonyan tudja kezelni a leggyakoribb kérdéseket és kéréseket.
+- objection: Aggódom az adatvédelem miatt.
+  response: Minden adatkezelésünk megfelel a GDPR szabályozásnak, és kiemelten kezeljük
+    ügyfeleink adatainak biztonságát.
+- objection: Nem szeretnék túl nagy változásokat a jelenlegi folyamatokban.
+  response: A megoldásunk rugalmasan illeszthető a meglévő rendszerekhez, fokozatos
+    bevezetést tesz lehetővé anélkül, hogy megzavarná a munkafolyamatokat.
+- objection: Nem vagyok biztos benne, hogy a technológia megbízható.
+  response: Számos referencia és sikeres bevezetés bizonyítja a rendszerünk stabilitását
+    és megbízhatóságát, továbbá folyamatos támogatást nyújtunk.
+meta:
+  id: waste
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

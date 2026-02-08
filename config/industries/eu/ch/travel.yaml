@@ -1,0 +1,235 @@
+pain_points:
+- description: Hoher Wettbewerbsdruck durch Online-Reiseportale und Direktbuchungen
+  severity: high
+  solution_hint: KI-Sprachagent kann personalisierte Angebote erstellen und 24/7 Kundenbetreuung
+    bieten, um Wettbewerbsvorteile zu schaffen
+- description: Saisonale Nachfrageschwankungen, insbesondere in Ski- und Sommersaison
+  severity: high
+  solution_hint: Automatisierte Nachfrageprognosen und dynamische Preisgestaltung
+    durch KI-Sprachagent zur Umsatzoptimierung
+- description: Komplexe Einhaltung von Datenschutzvorschriften (DSGVO, DSG)
+  severity: high
+  solution_hint: KI-Sprachagent mit integrierter Datenschutz-Compliance für sichere
+    Kundeninteraktionen und Datenverarbeitung
+- description: Hohe Kosten für Kundenservice und Buchungsbearbeitung
+  severity: medium
+  solution_hint: Automatisierung von Routineanfragen und Buchungen durch KI-Sprachagent,
+    um Personalkosten zu senken
+- description: Schwierigkeiten bei der Personalisierung von Reiseangeboten für verschiedene
+    Kundensegmente
+  severity: medium
+  solution_hint: KI-Sprachagent nutzt Kundendaten für maßgeschneiderte Empfehlungen
+    und verbessert die Kundenzufriedenheit
+- description: Verzögerungen bei Stornierungen und Rückerstattungen aufgrund manueller
+    Prozesse
+  severity: low
+  solution_hint: Schnelle Automatisierung von Stornierungsanfragen durch KI-Sprachagent,
+    um Kundenerwartungen zu erfüllen
+typical_services:
+- Hotelbuchungen und Unterkünfte
+- Flugreservierungen und Flugtickets
+- Mietwagen- und Transportdienstleistungen
+- Reiseversicherungen (z.B. Annullierungskostenversicherung)
+- Pauschalreisen und All-inclusive-Angebote
+- Skireisen und Winterurlaubspakete
+- Städtereisen und Kulturführungen
+- Nachhaltige und ökologische Reiseoptionen
+- Gruppenreisen und Firmenevents
+- Last-Minute-Angebote und Sonderaktionen
+recommended_functions:
+- name: Automatisierte Buchungsassistenz
+  priority: high
+  reason: Ermöglicht 24/7 Buchungen ohne menschliches Eingreifen, steigert Umsatz
+    und Kundenzufriedenheit
+- name: Kundensupport und FAQ-Beantwortung
+  priority: high
+  reason: Reduziert Wartezeiten und entlastet Personal durch Beantwortung häufiger
+    Fragen in Echtzeit
+- name: Personalisiertes Upselling und Cross-Selling
+  priority: medium
+  reason: Nutzt Kundendaten, um zusätzliche Dienstleistungen wie Versicherungen oder
+    Upgrades anzubieten
+- name: Zahlungsabwicklung und Rechnungsstellung
+  priority: medium
+  reason: Sichert reibungslose Transaktionen in CHF und gewährleistet Compliance mit
+    lokalen Vorschriften
+- name: Nachfrageanalyse und Preisoptimierung
+  priority: low
+  reason: Hilft bei dynamischer Preisgestaltung basierend auf Saisonalität und Markttrends
+- name: Mehrsprachige Unterstützung (Deutsch, Französisch, Italienisch)
+  priority: high
+  reason: Wesentlich für den Schweizer Markt mit mehrsprachiger Bevölkerung
+typical_integrations:
+- name: Buchungssysteme (PMS/CRS)
+  examples:
+  - Amadeus
+  - Travelport
+  - Sabre
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Zahlungsgateways
+  examples:
+  - Twint
+  - PostFinance
+  - Stripe
+  priority: medium
+- name: Datenanalyse- und BI-Tools
+  examples:
+  - Tableau
+  - Power BI
+  - Google Analytics
+  priority: low
+- name: Kommunikationsplattformen
+  examples:
+  - Microsoft Teams
+  - Slack
+  - WhatsApp Business
+  priority: medium
+industry_faq:
+- question: Wie kann ich meine Reise stornieren oder ändern?
+  answer_template: Sie können Stornierungen oder Änderungen über unseren KI-Sprachagenten
+    vornehmen. Bitte haben Sie Ihre Buchungsnummer bereit. Gemäß unseren AGB können
+    Gebühren anfallen.
+- question: Bieten Sie Reiseversicherungen an?
+  answer_template: Ja, wir bieten umfassende Reiseversicherungen an, einschließlich
+    Annullierungskosten- und Krankenversicherung. Unser KI-Agent kann Ihnen passende
+    Optionen basierend auf Ihrem Reiseziel vorschlagen.
+- question: Sind Ihre Preise in CHF inklusive aller Gebühren?
+  answer_template: Ja, alle angezeigten Preise sind in Schweizer Franken (CHF) und
+    enthalten in der Regel Steuern und Gebühren. Details werden vor der Buchung transparent
+    angezeigt.
+- question: Wie handle ich mit Datenschutz bei Online-Buchungen?
+  answer_template: Wir halten uns strikt an DSGVO und DSG. Ihre Daten werden verschlüsselt
+    und nur für Buchungszwecke verwendet. Unser KI-Agent informiert Sie über unsere
+    Datenschutzrichtlinien.
+- question: Kann ich Last-Minute-Angebote für Skireisen buchen?
+  answer_template: Ja, unser KI-Sprachagent überwacht regelmäßig Last-Minute-Angebote
+    für Skireisen in der Schweiz und kann Ihnen personalisierte Vorschläge machen.
+- question: Unterstützen Sie nachhaltige Reiseoptionen?
+  answer_template: Absolut! Wir bieten umweltfreundliche Unterkünfte, CO2-kompensierte
+    Flüge und lokale Tourismusinitiativen. Fragen Sie unseren KI-Agent nach nachhaltigen
+    Paketen.
+sales_scripts:
+- trigger: preis_anfrage
+  situation: Kunde fragt nach Preisen für eine Pauschalreise
+  script: Guten Tag! Vielen Dank für Ihr Interesse. Unser KI-Sprachagent kann Ihnen
+    sofort personalisierte Angebote in CHF basierend auf Ihren Präferenzen erstellen.
+    Möchten Sie ein Ziel oder Datum vorgeben?
+  goal: Kundenengagement und Generierung eines maßgeschneiderten Angebots
+- trigger: service_frage
+  situation: Kunde erkundigt sich nach zusätzlichen Dienstleistungen wie Versicherungen
+  script: Hallo! Wir bieten umfassende Reiseversicherungen an, die wir gerne über
+    unseren KI-Agenten erklären. Möchten Sie Details zu den Deckungen oder eine kostenlose
+    Beratung?
+  goal: Upselling von Zusatzleistungen und Erhöhung des Buchungswerts
+- trigger: support_bedarf
+  situation: Kunde benötigt Hilfe bei einer laufenden Buchung
+  script: Guten Tag! Unser KI-Sprachagent kann Ihnen sofort mit Stornierungen, Änderungen
+    oder Fragen helfen. Bitte nennen Sie Ihre Buchungsnummer für eine schnelle Lösung.
+  goal: Problemlösung und Aufrechterhaltung der Kundenzufriedenheit
+- trigger: wettbewerbs_vergleich
+  situation: Kunde vergleicht unser Angebot mit Wettbewerbern
+  script: Vielen Dank für den Vergleich! Unser KI-Sprachagent bietet 24/7 Support,
+    personalisierte Angebote und DSGVO/DSG-konforme Sicherheit. Möchten Sie ein unverbindliches
+    Demo-Gespräch?
+  goal: Hervorhebung von Alleinstellungsmerkmalen und Abschlussförderung
+competitors:
+- name: Kuoni
+  positioning: Premium-Reiseveranstalter mit Fokus auf Luxus- und Individualreisen
+  strengths:
+  - Starke Markenbekanntheit
+  - Hohe Servicequalität
+  - Umfangreiche Destinationen
+  weaknesses:
+  - Höhere Preise
+  - Begrenzte Digitalisierung
+  - Längere Bearbeitungszeiten
+  our_differentiation: KI-gestützte, schnelle und kosteneffiziente Lösungen mit 24/7
+    Verfügbarkeit
+- name: Hotelplan
+  positioning: Mittelklasse-Reiseveranstalter für Familien- und Pauschalreisen
+  strengths:
+  - Breites Angebot an Pauschalreisen
+  - Erschwingliche Preise
+  - Gute Kundenbewertungen
+  weaknesses:
+  - Standardisierte Angebote
+  - Geringe Personalisierung
+  - Mittelmäßiger Online-Support
+  our_differentiation: Hohe Personalisierung durch KI und dynamische Preisgestaltung
+    für bessere Kundenerfahrung
+- name: Booking.com (Schweizer Markt)
+  positioning: Online-Reiseportal für Hotel- und Flugbuchungen
+  strengths:
+  - Große Auswahl
+  - Benutzerfreundliche Plattform
+  - Aggressive Marketingstrategien
+  weaknesses:
+  - Begrenzte lokale Unterstützung
+  - Datenschutzbedenken
+  - Unpersönlicher Service
+  our_differentiation: Lokalisierter, datenschutzkonformer Service mit menschlichem
+    Touch durch KI-Integration
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung von 50% der Kundenanfragen für eine kleine Reiseagentur
+    monthly_cost: 500
+    monthly_savings: 2000
+    payback_months: 3
+  value_anchors:
+  - KI-Sprachagent reduziert Personalkosten um bis zu 30%
+  - 24/7 Betrieb steigert Buchungen außerhalb der Geschäftszeiten um 20%
+  - Datenschutzkonforme Lösungen vermeiden Bußgelder und stärken Kundenvertrauen
+market_context:
+  market_size: Ca. 20 Mrd. CHF jährlich
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Zunehmende Nachfrage nach nachhaltigem und ökologischem Tourismus
+  - Wachsendes Interesse an lokalen und regionalen Reisezielen in der Schweiz
+  - Digitalisierung und KI-Integration zur Verbesserung der Kundenerfahrung
+  seasonality:
+    high:
+    - Dezember-Februar (Skisaison)
+    - Juli-August (Sommerferien)
+    low:
+    - April-Mai
+    - Oktober-November
+typical_objections:
+- objection: Ich habe Bedenken bezüglich Datensicherheit mit einem KI-System
+  response: Wir verstehen Ihre Bedenken. Unser KI-Sprachagent ist DSGVO- und DSG-konform,
+    mit Verschlüsselung und regelmäßigen Audits. Ihre Daten sind sicher.
+- objection: Der Preis ist zu hoch für mein kleines Reisebüro
+  response: 'Unser Einstiegspreis ab 300 CHF/Monat ist skalierbar. Betrachten Sie
+    die ROI-Beispiele: Sie sparen oft mehr durch Automatisierung, als es kostet.'
+- objection: Ich fürchte, der KI-Agent wird unpersönlich wirken
+  response: Unser KI-Agent ist darauf trainiert, natürliche Gespräche zu führen und
+    personalisierte Empfehlungen zu geben, basierend auf Kundendaten. Es ergänzt den
+    menschlichen Service.
+- objection: Die Integration in bestehende Systeme klingt kompliziert
+  response: Wir bieten einfache Integrationen mit gängigen Systemen wie Amadeus oder
+    Salesforce. Unser Support-Team hilft bei der Einrichtung für einen reibungslosen
+    Übergang.
+meta:
+  id: travel
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

@@ -1,0 +1,214 @@
+pain_points:
+- description: Alto volumen de llamadas al servicio al cliente para consultas repetitivas,
+    como renovaciones o cambios de cobertura.
+  severity: high
+  solution_hint: Automatizar respuestas a preguntas frecuentes con un agente de voz
+    IA para liberar recursos humanos.
+- description: Dificultad en la gestión de reclamaciones, con tiempos de procesamiento
+    largos y alta carga administrativa.
+  severity: high
+  solution_hint: Implementar un agente de voz IA para recopilar información inicial
+    de reclamaciones y agilizar el proceso.
+- description: Baja retención de clientes debido a experiencias de servicio poco personalizadas
+    y lentas.
+  severity: medium
+  solution_hint: Usar IA para ofrecer recomendaciones personalizadas y seguimiento
+    proactivo, mejorando la fidelización.
+- description: Cumplimiento complejo con normativas como el GDPR, requiriendo manejo
+    cuidadoso de datos personales.
+  severity: high
+  solution_hint: Integrar agentes de voz IA con sistemas seguros que garanticen el
+    cumplimiento automático en interacciones.
+- description: Costos elevados en ventas por dependencia de agentes humanos para captación
+    y asesoramiento.
+  severity: medium
+  solution_hint: Desplegar agentes de voz IA para realizar prospecciones iniciales
+    y cualificar leads de manera eficiente.
+- description: Falta de disponibilidad 24/7 para consultas urgentes, especialmente
+    en horas no laborables.
+  severity: medium
+  solution_hint: Ofrecer soporte continuo con agentes de voz IA que manejen consultas
+    básicas en cualquier momento.
+typical_services:
+- Seguro de automóvil
+- Seguro de hogar
+- Seguro de vida
+- Seguro de salud
+- Seguro de viaje
+- Seguro de responsabilidad civil
+- Seguro de negocio o empresarial
+- Seguro de decesos
+- Seguro de automóvil a terceros
+- Seguro multirriesgo del hogar
+recommended_functions:
+- name: Asistente de ventas para seguros
+  priority: high
+  reason: Para captar nuevos clientes mediante llamadas automatizadas y ofrecer cotizaciones
+    iniciales rápidamente.
+- name: Soporte al cliente para consultas frecuentes
+  priority: high
+  reason: Reducir tiempos de espera y mejorar la satisfacción al manejar preguntas
+    comunes como renovaciones o coberturas.
+- name: Gestor de reclamaciones iniciales
+  priority: medium
+  reason: Agilizar el proceso de reclamaciones recogiendo datos esenciales y dirigiendo
+    casos complejos a agentes humanos.
+- name: Recordatorio de pagos y renovaciones
+  priority: medium
+  reason: Aumentar la retención de clientes con recordatorios automatizados y opciones
+    de pago fáciles.
+- name: Asesor de seguros personalizado
+  priority: low
+  reason: Proporcionar recomendaciones basadas en datos del cliente para mejorar la
+    venta cruzada y upselling.
+typical_integrations:
+- name: Sistema de gestión de pólizas
+  examples:
+  - SAP Insurance
+  - Guidewire
+  - Sergest
+  priority: high
+- name: Plataforma CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  priority: high
+- name: Sistema de facturación y pagos
+  examples:
+  - Sitra
+  - Icon
+  priority: medium
+- name: Herramientas de análisis de datos
+  examples:
+  - Tableau
+  - Power BI
+  priority: medium
+industry_faq:
+- question: ¿Cómo puedo renovar mi póliza de seguro?
+  answer_template: Puede renovar su póliza fácilmente a través de nuestro portal en
+    línea o contactando a nuestro agente de voz IA para asistencia inmediata.
+- question: ¿Qué cobertura incluye mi seguro de hogar?
+  answer_template: Su seguro de hogar típicamente cubre daños por incendio, robos
+    y responsabilidad civil. Para detalles específicos, consulte su póliza o hable
+    con nuestro agente.
+- question: ¿Cómo presentar una reclamación?
+  answer_template: Puede presentar una reclamación llamando a nuestro servicio o usando
+    nuestro agente de voz IA para guiarle en el proceso paso a paso.
+- question: ¿Ofrecen descuentos por contratar múltiples seguros?
+  answer_template: Sí, ofrecemos descuentos por paquetes de seguros. Nuestro agente
+    puede ayudarle a personalizar un plan que se ajuste a sus necesidades.
+- question: ¿Es obligatorio el seguro de automóvil en España?
+  answer_template: Sí, el seguro de responsabilidad civil es obligatorio para todos
+    los vehículos en España. Podemos ayudarle a encontrar la opción más adecuada.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por el coste de un seguro durante
+    una llamada.
+  script: Hola, gracias por su interés. El precio varía según sus necesidades específicas,
+    como tipo de cobertura y perfil de riesgo. ¿Podría contarme más sobre lo que busca
+    para ofrecerle una cotización precisa?
+  goal: Obtener información del cliente para personalizar la oferta y destacar valor
+    sobre precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente consulta sobre los servicios disponibles o cómo funciona
+    nuestro seguro.
+  script: Buenos días, ofrecemos una gama completa de seguros, desde automóvil hasta
+    salud, con soporte 24/7. ¿En qué área necesita asistencia hoy?
+  goal: Educar al cliente sobre nuestras opciones y guiarle hacia una venta.
+- trigger: complaint_handling
+  situation: Cuando un cliente expresa insatisfacción con el servicio actual.
+  script: Lamentamos escuchar eso. Nuestro agente de voz IA está aquí para resolver
+    su problema rápidamente. ¿Puede describir la situación para que podamos ayudarle?
+  goal: Calmar al cliente y demostrar eficiencia en la resolución de problemas.
+competitors:
+- name: Mapfre
+  positioning: Líder tradicional en el mercado español con amplia red física.
+  strengths:
+  - Marca muy reconocida
+  - Extensa red de agentes locales
+  - Oferta diversificada
+  weaknesses:
+  - Procesos digitales lentos
+  - Costos operativos altos
+  our_differentiation: Ofrecemos soluciones impulsadas por IA para un servicio más
+    rápido y personalizado, reduciendo costos.
+- name: Allianz
+  positioning: Compañía global con fuerte presencia en seguros de alto valor.
+  strengths:
+  - Solidez financiera
+  - Enfoque en seguros empresariales
+  - Tecnología avanzada
+  weaknesses:
+  - Precios más altos
+  - Menor enfoque en el mercado masivo
+  our_differentiation: Proporcionamos asequibilidad y accesibilidad con agentes de
+    voz IA disponibles 24/7 para todos los clientes.
+- name: Santalucía
+  positioning: Cooperativa de seguros con enfoque en comunidad y servicio personal.
+  strengths:
+  - Enfoque en el cliente
+  - Modelo cooperativo atractivo
+  - Servicio cercano
+  weaknesses:
+  - Limitada digitalización
+  - Cobertura geográfica restringida
+  our_differentiation: Combinamos el toque personal con eficiencia digital, usando
+    IA para mejorar la experiencia sin perder calidez.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 20
+  roi_examples:
+  - scenario: Reducción de costos en servicio al cliente mediante automatización de
+      consultas
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 3
+  value_anchors:
+  - Ahorre hasta un 30% en gastos operativos con nuestra IA
+  - Mejore la satisfacción del cliente con respuestas instantáneas
+  - Incremente las ventas con prospección automatizada
+market_context:
+  market_size: Aproximadamente 40 mil millones de EUR anuales
+  growth_rate: 2.5% anual
+  key_trends:
+  - Digitalización acelerada de servicios
+  - Aumento de la demanda de seguros personalizados
+  - Enfoque en sostenibilidad y seguros verdes
+  seasonality:
+    high:
+    - Enero
+    - Septiembre
+    - Octubre
+    low:
+    - Agosto
+    - Diciembre
+typical_objections:
+- objection: No confío en la tecnología para manejar mis seguros.
+  response: Entendemos su preocupación. Nuestro agente de voz IA está diseñado para
+    ser seguro y eficiente, con supervisión humana cuando sea necesario, garantizando
+    un servicio confiable.
+- objection: Es demasiado caro para mi negocio.
+  response: Nuestra solución reduce costos a largo plazo mejorando la eficiencia.
+    Podemos mostrarle un análisis de retorno de inversión basado en sus necesidades
+    específicas.
+- objection: Prefiero hablar con una persona directamente.
+  response: Ofrecemos la opción de transferir a un agente humano en cualquier momento.
+    La IA acelera procesos simples, permitiendo que nuestro equipo se enfoque en casos
+    complejos para usted.
+meta:
+  id: insurance
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

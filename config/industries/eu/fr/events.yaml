@@ -1,0 +1,238 @@
+pain_points:
+- description: Difficulté à gérer les annulations de dernière minute et les changements
+    de participants, entraînant des pertes financières et une logistique complexe.
+  severity: high
+  solution_hint: L'agent vocal IA peut automatiser les confirmations, les rappels
+    et gérer les modifications en temps réel, réduisant les erreurs manuelles.
+- description: Coordination inefficace entre les prestataires (traiteurs, décorateurs,
+    techniciens) causant des retards et des surcoûts.
+  severity: high
+  solution_hint: L'agent peut centraliser la communication et les plannings, envoyant
+    des notifications automatiques à tous les intervenants.
+- description: Surcharge administrative pour la gestion des réservations, facturations
+    et conformité RGPD pour les données des participants.
+  severity: medium
+  solution_hint: Automatisation des processus administratifs et génération de documents
+    conformes, avec gestion sécurisée des données clients.
+- description: Difficulté à estimer avec précision les budgets et à contrôler les
+    dépassements, particulièrement pour les événements corporatifs.
+  severity: medium
+  solution_hint: Suivi automatique des dépenses en temps réel et alertes lorsque le
+    budget approche des limites définies.
+- description: Recrutement et gestion du personnel temporaire (hôtes, serveurs) complexe
+    et coûteuse, surtout en période de haute saison.
+  severity: medium
+  solution_hint: L'agent peut gérer les plannings, les contrats et la communication
+    avec le personnel intérimaire, optimisant les coûts.
+- description: Manque de visibilité en temps réel sur la satisfaction des participants
+    pendant l'événement.
+  severity: low
+  solution_hint: Mise en place de sondages vocaux automatiques et analyse instantanée
+    des retours pour ajuster l'événement si nécessaire.
+typical_services:
+- Organisation de mariages et événements familiaux
+- Coordination d'événements d'entreprise (séminaires, lancements produits)
+- Gestion de conférences et salons professionnels
+- Organisation d'événements culturels et festifs
+- Location et gestion de salles et espaces événementiels
+- Coordination de prestataires (traiteur, décoration, audiovisuel)
+- Gestion complète de l'accueil et de l'hôtellerie pour événements
+- Conseil en stratégie événementielle et planification
+- Animation et modération d'événements
+- Communication événementielle et gestion des invitations
+recommended_functions:
+- name: Gestionnaire de réservations et RSVP
+  priority: high
+  reason: Réduit considérablement la charge administrative et les erreurs de comptage,
+    crucial pour la planification logistique.
+- name: Coordinateur de prestataires
+  priority: high
+  reason: Centralise la communication entre les différents intervenants, évitant les
+    retards et malentendus coûteux.
+- name: Assistant de conformité RGPD
+  priority: medium
+  reason: Garantit le respect strict de la réglementation européenne sur les données,
+    essentiel pour éviter les amendes.
+- name: Gestionnaire de budgets et facturation
+  priority: medium
+  reason: Permet un contrôle précis des finances et une transparence totale avec les
+    clients.
+- name: Sondage et feedback vocal
+  priority: low
+  reason: Offre des insights immédiats sur la satisfaction des participants, permettant
+    des ajustements en direct.
+typical_integrations:
+- name: CRM événementiel
+  examples:
+  - Eventbrite
+  - Billetweb
+  - Weemss
+  priority: high
+- name: Logiciel de comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - Quadratus
+  priority: medium
+- name: Outils de communication
+  examples:
+  - Brevo (ex-Sendinblue)
+  - Mailjet
+  - Sendinblue
+  priority: medium
+- name: Plateformes de réservation de salles
+  examples:
+  - Selina
+  - Spacebase
+  - Tagvenue
+  priority: low
+industry_faq:
+- question: Comment gérez-vous la protection des données personnelles (RGPD) pour
+    les listes d'invités ?
+  answer_template: Nous utilisons des systèmes entièrement conformes RGPD qui cryptent
+    les données, limitent leur conservation au strict nécessaire, et permettent aux
+    participants de modifier ou supprimer leurs informations à tout moment.
+- question: Proposez-vous des solutions pour les petits événements avec un budget
+    limité ?
+  answer_template: Oui, nous avons des forêts modulaires qui s'adaptent à la taille
+    de votre événement. Notre solution d'entrée de gamme automatise les tâches essentielles
+    sans engagement à long terme.
+- question: Pouvez-vous vous intégrer à notre logiciel de comptabilité actuel ?
+  answer_template: Absolument. Notre solution se connecte aux principaux logiciels
+    de comptabilité français via des API sécurisées, permettant une synchronisation
+    automatique des factures et dépenses.
+- question: Comment garantissez-vous la fiabilité technique le jour de l'événement
+    ?
+  answer_template: Notre système fonctionne sur infrastructure cloud redondante avec
+    support technique 24/7. Nous conseillons toujours un plan de secours et testons
+    l'intégration avant chaque événement important.
+- question: Proposez-vous des services en anglais pour les événements internationaux
+    ?
+  answer_template: Oui, nos agents vocaux sont multilingues et peuvent gérer les communications
+    en anglais, allemand, espagnol et autres langues selon vos besoins.
+sales_scripts:
+- trigger: budget_concern
+  situation: Quand le client exprime des inquiétudes sur le coût ou demande une réduction.
+  script: Je comprends parfaitement que la maîtrise du budget soit primordiale. Notre
+    solution vous fait économiser en moyenne 15 heures de travail administratif par
+    événement, ce qui représente environ 750€ d'économies sur les coûts salariaux.
+    Pouvons-nous examiner ensemble où vous perdez le plus de temps actuellement ?
+  goal: Transformer l'objection coût en démonstration de ROI et engager une analyse
+    personnalisée.
+- trigger: competitor_mention
+  situation: Quand le client mentionne utiliser une solution concurrente.
+  script: C'est intéressant. Contrairement à [nom du concurrent] qui se concentre
+    surtout sur la billetterie, notre solution couvre l'intégralité de la gestion
+    événementielle avec un assistant vocal qui réduit votre charge de travail de 40%.
+    Souhaitez-vous voir une démonstration spécifique de la coordination des prestataires,
+    là où nous excellons ?
+  goal: Différencier notre offre complète et proposer une démonstration ciblée.
+- trigger: implementation_time
+  situation: Quand le client s'inquiète du temps nécessaire pour mettre en place la
+    solution.
+  script: La mise en place standard prend 48 heures. Nous fournissons un accompagnement
+    personnalisé et la plupart de nos clients voient des bénéfices dès la première
+    semaine. Pour accélérer le processus, nous pouvons commencer par automatiser juste
+    la gestion des RSVP, ce qui se configure en quelques heures.
+  goal: Rassurer sur la simplicité et la rapidité de déploiement, en proposant une
+    première étape facile.
+competitors:
+- name: AKA
+  positioning: Leader historique sur le marché des événements d'entreprise
+  strengths:
+  - Notoriété établie
+  - Réseau étendu de prestataires
+  - Solutions haut de gamme
+  weaknesses:
+  - Coûts élevés
+  - Peu flexible pour les petits événements
+  - Processus lourds
+  our_differentiation: Automatisation complète à un prix accessible, avec une personnalisation
+    facile même pour les petits budgets.
+- name: Eventime
+  positioning: Spécialiste des outils de billetterie et inscriptions
+  strengths:
+  - Interface utilisateur simple
+  - Bon rapport qualité-prix pour la billetterie
+  - Large base d'utilisateurs
+  weaknesses:
+  - Fonctionnalités limitées hors billetterie
+  - Intégrations restreintes
+  - Support en français limité
+  our_differentiation: Solution tout-en-un avec assistant vocal en français natif,
+    couvrant toute la chaîne événementielle, pas seulement les inscriptions.
+- name: Weemss
+  positioning: Plateforme de gestion événementielle pour TPE/PME
+  strengths:
+  - Prix compétitifs
+  - Conçu pour le marché français
+  - Interface intuitive
+  weaknesses:
+  - Fonctions basiques
+  - Peu d'automatisation avancée
+  - Support vocal inexistant
+  our_differentiation: Intelligence artificielle conversationnelle qui comprend le
+    contexte et s'adapte aux spécificités des événements français.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 2000
+  - 15000
+  entry_point: 89
+  roi_examples:
+  - scenario: Agence organisant 4 événements par mois de 100 participants chacun
+    monthly_cost: 249
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Économisez l'équivalent d'un temps plein administratif pour moins de 250€/mois
+  - Réduction de 30% des erreurs de logistique grâce à l'automatisation
+  - Conformité RGPD incluse sans coût supplémentaire
+market_context:
+  market_size: 3,2 milliards d'euros
+  growth_rate: 8% annuel
+  key_trends:
+  - Demande croissante pour les événements hybrides (présentiel + digital)
+  - Importance accrue de l'écologie et des événements durables
+  - Personnalisation extrême des expériences participants
+  - Automatisation pour compenser la pénurie de main-d'œuvre qualifiée
+  seasonality:
+    high:
+    - Septembre-Novembre (rentrée)
+    - Mai-Juin (salons et mariages)
+    - Décembre (événements d'entreprise)
+    low:
+    - Juillet-Août (vacances d'été)
+    - Janvier (post-fêtes)
+typical_objections:
+- objection: Nous avons déjà une équipe qui gère cela manuellement, nous n'avons pas
+    besoin d'automatisation.
+  response: C'est justement l'occasion de libérer votre équipe des tâches répétitives
+    pour qu'elle se concentre sur la création d'expériences mémorables. Puis-je vous
+    montrer comment nos clients réallouent en moyenne 15 heures par semaine vers des
+    activités à plus forte valeur ajoutée ?
+- objection: Je préfère le contact humain pour mes événements, une solution automatisée
+    semble impersonnelle.
+  response: Notre solution amplifie le contact humain, ne le remplace pas. Elle gère
+    les tâches administratives pour que votre équipe ait plus de temps pour des interactions
+    qualité avec les participants. L'assistant vocal propose d'ailleurs une expérience
+    conversationnelle naturelle.
+- objection: Les solutions technologiques sont trop complexes à mettre à jour et à
+    maintenir.
+  response: Notre plateforme est entièrement gérée dans le cloud avec mises à jour
+    automatiques. Nous fournissons un support technique dédié en français et une formation
+    complète incluse. La complexité est de notre côté, la simplicité de la vôtre.
+meta:
+  id: events
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

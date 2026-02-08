@@ -1,0 +1,238 @@
+aliases:
+- médecine
+- santé
+- clinique
+- hôpital
+- médical
+- cabinet
+- centre médical
+- médecin
+- patient
+- rendez-vous
+- diagnostic
+competitors:
+- name: Doctolib
+  positioning: Plateforme de prise de rendez-vous en ligne dominante
+  strengths:
+  - Interface utilisateur simple
+  - Large réseau de professionnels de santé
+  - Intégrations avec de nombreux logiciels
+  weaknesses:
+  - Frais pour les professionnels
+  - Support limité pour les urgences
+  - Peu de personnalisation
+  our_differentiation: Agent vocal 24/7 avec personnalisation et gestion des urgences
+- name: MédecinDirect
+  positioning: Service de téléconsultation
+  strengths:
+  - Consultations à distance rapides
+  - Remboursement partiel par la Sécurité Sociale
+  - Application mobile intuitive
+  weaknesses:
+  - Pas de suivi en présentiel
+  - Limité aux consultations non urgentes
+  - Dépendance à la connexion internet
+  our_differentiation: Combinaison de prise de rendez-vous physique et suivi vocal
+- name: Elsan
+  positioning: Groupe privé de cliniques et hôpitaux
+  strengths:
+  - Infrastructure moderne
+  - Multi-spécialités
+  - Réputation établie
+  weaknesses:
+  - Coûts élevés
+  - Temps d'attente parfois longs
+  - Moins accessible en zones rurales
+  our_differentiation: Automatisation pour réduire les temps d'attente et coûts opérationnels
+industry_faq:
+- answer_template: Nommez la spécialité du médecin et une date préférée, je vérifierai
+    les créneaux disponibles.
+  question: Comment prendre rendez-vous avec un médecin ?
+- answer_template: La glycémie, le profil lipidique et la biochimie sanguine doivent
+    être faits à jeun. La numération sanguine est recommandée à jeun.
+  question: Quelles analyses nécessitent d'être à jeun ?
+- answer_template: Évitez les aliments gazeux 3 jours avant. Le jour de l'examen,
+    venez à jeun.
+  question: Comment se préparer pour une échographie abdominale ?
+- answer_template: Oui, nous sommes ouverts le samedi de 9h à 18h, et un médecin de
+    garde est disponible le dimanche.
+  question: Êtes-vous ouvert le week-end ?
+- answer_template: Oui, la visite à domicile est possible. Indiquez l'adresse et les
+    symptômes.
+  question: Peut-on appeler un médecin à domicile ?
+- answer_template: Le coût dépend du spécialiste. Une consultation initiale avec un
+    généraliste commence à 50€.
+  question: Quel est le tarif d'une consultation ?
+industry_specifics:
+  compliance:
+  - Conformité au RGPD (données personnelles)
+  - Ne pas donner de conseils médicaux
+  - Cas d'urgence → transférer à un opérateur humain
+  peak_times:
+  - Lundi matin
+  - Après les week-ends
+  - Périodes grippales (hiver)
+  tone:
+  - Calme et empathique
+  - Attentif aux symptômes
+  - Éviter le jargon médical technique
+learnings: []
+market_context:
+  growth_rate: 3% par an
+  key_trends:
+  - Développement de la télémédecine
+  - Numérisation des dossiers patients
+  - Demande croissante pour la médecine préventive
+  market_size: Environ 200 milliards d'euros
+  seasonality:
+    high:
+    - Octobre à mars (saison des virus)
+    - Après les fêtes
+    low:
+    - Juillet et août (vacances d'été)
+meta:
+  avg_validation_score: 0.0
+  country: fr
+  created_at: '2024-07-21'
+  currency: EUR
+  id: medical
+  language: fr
+  languages: []
+  last_updated: '2024-07-21'
+  phone_codes:
+  - '+33'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Paris
+  version: '1.0'
+pain_points:
+- description: Difficulté à joindre le standard pour prendre rendez-vous
+  severity: high
+  solution_hint: Agent vocal pour la prise de rendez-vous 24/7
+- description: Les patients oublient leurs rendez-vous
+  severity: high
+  solution_hint: Rappels automatiques un jour et une heure avant
+- description: Nombreux appels avec des questions répétitives
+  severity: medium
+  solution_hint: FAQ pour les horaires, préparation aux analyses
+- description: Les opérateurs sont débordés par les appels
+  severity: high
+  solution_hint: Automatisation des opérations courantes
+- description: Erreurs dans les rendez-vous (médecin ou horaire incorrect)
+  severity: medium
+  solution_hint: Prise de rendez-vous structurée avec confirmation
+pricing_context:
+  currency: EUR
+  entry_point: 50
+  roi_examples:
+  - monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+    scenario: Automatisation de la prise de rendez-vous pour un cabinet avec 500 appels/mois
+  typical_budget_range:
+  - 50
+  - 500
+  value_anchors:
+  - Réduction des rendez-vous manqués de 30%
+  - Automatisation de 70% des appels entrants
+  - Amélioration de la satisfaction patient
+recommended_functions:
+- name: prise de rendez-vous
+  priority: high
+  reason: 60-70% des appels concernent la prise ou modification de rendez-vous
+- name: rappel
+  priority: high
+  reason: Réduit les absences de 30-40%
+- name: faq
+  priority: high
+  reason: Répond aux questions sur les horaires, préparation, etc.
+- name: modification de rendez-vous
+  priority: medium
+  reason: Gère les changements ou annulations de rendez-vous
+- name: appel à domicile
+  priority: medium
+  reason: Organise les visites à domicile
+- name: routage
+  priority: medium
+  reason: Transfère les cas urgents vers un opérateur humain
+sales_scripts:
+- goal: Convaincre de la réduction des coûts opérationnels
+  script: Bonjour, je comprends que gérer les appels peut être coûteux. Notre agent
+    vocal peut automatiser 70% des prises de rendez-vous, réduisant vos frais de personnel
+    de 300€ par mois. Êtes-vous intéressé par une démonstration ?
+  situation: Lorsqu'un prospect mentionne des coûts élevés de gestion téléphonique
+  trigger: cost_concern
+- goal: Mettre en avant la disponibilité 24/7
+  script: Avec notre solution, vos patients peuvent prendre rendez-vous à tout moment,
+    même en dehors des heures d'ouverture. Cela améliore l'accessibilité et réduit
+    la frustration. Voulez-vous en savoir plus sur les fonctionnalités ?
+  situation: En réponse à une demande sur l'amélioration du service client
+  trigger: service_improvement
+- goal: Souligner la conformité RGPD
+  script: Notre agent vocal est entièrement conforme au RGPD, garantissant la sécurité
+    des données de vos patients. C'est un avantage clé pour éviter les amendes. Souhaitez-vous
+    discuter des détails techniques ?
+  situation: Lorsque le prospect exprime des préoccupations sur la protection des
+    données
+  trigger: compliance_question
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Réduction des absences de 30%
+  - Automatisation de 70% des prises de rendez-vous
+  - Disponibilité 24/7
+  - Satisfaction patient > 4.5/5
+typical_integrations:
+- examples:
+  - DMP (Dossier Médical Partagé)
+  - CEGEDIM
+  - MediSoft
+  name: Logiciel de gestion médicale
+  priority: high
+  reason: Accès aux agendas des médecins, dossiers patients
+- examples:
+  - Salesforce
+  - HubSpot
+  name: CRM
+  priority: medium
+  reason: Historique des interactions patients
+- examples:
+  - Aircall
+  - RingCentral
+  name: Téléphonie
+  priority: high
+  reason: Gestion des appels entrants
+- examples:
+  - WhatsApp Business
+  - SMS
+  - Email
+  name: Messagerie
+  priority: high
+  reason: Envoi de rappels de rendez-vous
+- examples:
+  - Google Agenda
+  - Outlook Calendar
+  name: Calendrier
+  priority: medium
+  reason: Synchronisation des agendas
+typical_objections:
+- objection: Je veux voir un médecin spécifique
+  response: Bien sûr, donnez-moi le nom du médecin, et je vérifierai son agenda.
+- objection: C'est urgent
+  response: Je comprends. Je vais vérifier les créneaux disponibles les plus proches.
+- objection: C'est trop cher
+  response: Je peux vous expliquer comment notre solution réduit les coûts opérationnels,
+    ou vous mettre en contact avec un commercial pour discuter des options.
+typical_services:
+- Consultation médicale
+- Diagnostic
+- Analyses de laboratoire
+- Échographie
+- IRM/Scanner
+- Dentisterie
+- Visite à domicile
+- Vaccination
+- Physiothérapie
+- Suivi de maladies chroniques
+_extends: _base/medical

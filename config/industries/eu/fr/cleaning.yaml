@@ -1,0 +1,250 @@
+pain_points:
+- description: Difficulté à gérer les emplois du temps des employés et à répondre
+    aux demandes de dernière minute des clients
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la planification, envoyer des rappels
+    et gérer les modifications de rendez-vous en temps réel
+- description: Coûts élevés de la main-d'œuvre et difficulté à recruter du personnel
+    qualifié
+  severity: high
+  solution_hint: L'agent vocal peut réduire les coûts administratifs en traitant les
+    appels et les réservations, permettant de réaffecter les ressources
+- description: Perte de clients due à un manque de suivi et de communication personnalisée
+  severity: medium
+  solution_hint: L'agent vocal peut envoyer des rappels de service, collecter des
+    retours et proposer des offres personnalisées pour fidéliser la clientèle
+- description: Gestion inefficace des réclamations et des urgences, entraînant une
+    insatisfaction client
+  severity: medium
+  solution_hint: L'agent vocal peut prioriser et rediriger les appels urgents, fournir
+    des solutions immédiates et documenter les incidents
+- description: Difficulté à concurrencer les grandes entreprises de nettoyage sur
+    les prix et la visibilité
+  severity: medium
+  solution_hint: L'agent vocal peut automatiser les devis et les ventes, réduisant
+    les coûts opérationnels et améliorant le taux de conversion
+- description: Conformité au RGPD pour la gestion des données clients, nécessitant
+    une sécurisation accrue
+  severity: high
+  solution_hint: L'agent vocal peut être configuré pour respecter le RGPD en sécurisant
+    les appels et en gérant les consentements de manière automatisée
+typical_services:
+- Nettoyage résidentiel régulier
+- Nettoyage commercial et de bureaux
+- Nettoyage de vitres et façades
+- Nettoyage après construction ou rénovation
+- Nettoyage de tapis et moquettes
+- Désinfection et nettoyage approfondi
+- Nettoyage saisonnier (printemps, hiver)
+- Gestion des déchets et recyclage
+- Nettoyage d'espaces partagés (copropriétés)
+- Services de conciergerie et ménage
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Essentiel pour réduire les appels manqués et optimiser l'emploi du temps
+    des équipes de nettoyage
+- name: Gestion des réclamations et urgences
+  priority: high
+  reason: Améliore la satisfaction client en traitant rapidement les problèmes et
+    en minimisant les perturbations
+- name: Envoi de rappels et confirmations
+  priority: medium
+  reason: Réduit les annulations et les retards en maintenant une communication proactive
+    avec les clients
+- name: Génération de devis et facturation
+  priority: medium
+  reason: Accélère le processus de vente et réduit les erreurs manuelles dans la tarification
+- name: Collecte de retours clients
+  priority: low
+  reason: Permet d'améliorer les services basés sur les commentaires et d'identifier
+    les tendances
+- name: Intégration avec les logiciels de gestion
+  priority: high
+  reason: Facilite la synchronisation des données pour une gestion plus efficace des
+    opérations
+typical_integrations:
+- name: Logiciel de gestion de planning
+  examples:
+  - Maitre d'œuvre
+  - Planity
+  - Reservio
+  priority: high
+- name: Système de gestion de la relation client (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Logiciel de facturation et comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - QuickBooks
+  priority: medium
+- name: Plateformes de réservation en ligne
+  examples:
+  - Doctolib pour services
+  - Google Reservations
+  priority: low
+- name: Outils de communication
+  examples:
+  - Slack
+  - Microsoft Teams
+  - WhatsApp Business
+  priority: low
+industry_faq:
+- question: Combien coûte un service de nettoyage standard ?
+  answer_template: Le coût dépend de la superficie et du type de nettoyage. Pour une
+    estimation précise, je peux vous préparer un devis personnalisé basé sur vos besoins.
+- question: Êtes-vous assurés et conformes au RGPD ?
+  answer_template: Oui, nous sommes entièrement assurés et nos processus respectent
+    strictement le RGPD pour protéger vos données.
+- question: Proposez-vous des services d'urgence ?
+  answer_template: Absolument, nous offrons des services d'urgence avec des délais
+    de réponse rapides. Je peux vous aider à planifier une intervention immédiate.
+- question: Comment gérez-vous les réclamations ou les problèmes ?
+  answer_template: Nous avons un processus dédié pour traiter les réclamations. L'agent
+    vocal peut vous rediriger vers notre équipe support ou enregistrer votre problème
+    pour un suivi rapide.
+- question: Pouvez-vous personnaliser les services selon mes horaires ?
+  answer_template: Oui, nous adaptons nos plannings à vos disponibilités. L'agent
+    vocal peut gérer les rendez-vous flexibles pour convenir à votre emploi du temps.
+- question: Quelles méthodes de paiement acceptez-vous ?
+  answer_template: Nous acceptons les cartes bancaires, virements et paiements en
+    ligne. Les détails sont disponibles sur votre devis.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un client demande le prix d'un service
+  script: Bonjour, je comprends que le prix est important. Nos tarifs sont compétitifs
+    et adaptés à vos besoins. Puis-je vous poser quelques questions pour vous offrir
+    un devis précis et personnalisé ?
+  goal: Engager le client dans une conversation pour comprendre ses besoins et fournir
+    une estimation ciblée
+- trigger: service_inquiry
+  situation: Lorsqu'un client s'enquiert de services spécifiques
+  script: Merci de votre intérêt ! Nous proposons une gamme complète de services de
+    nettoyage. Pour vous orienter au mieux, quel type d'espace souhaitez-vous nettoyer
+    et à quelle fréquence ?
+  goal: Identifier les besoins du client et présenter les services appropriés pour
+    générer un lead qualifié
+- trigger: objection_budget
+  situation: Lorsqu'un client exprime des préoccupations budgétaires
+  script: Je comprends vos contraintes budgétaires. Nos solutions automatisées peuvent
+    réduire vos coûts opérationnels. Voulez-vous que je vous explique comment notre
+    service peut vous faire économiser à long terme ?
+  goal: Souligner la valeur et le retour sur investissement pour surmonter l'objection
+    de prix
+- trigger: competitor_mention
+  situation: Lorsqu'un client mentionne un concurrent
+  script: C'est une bonne référence. Notre différenciation réside dans notre service
+    personnalisé et notre technologie qui optimise la gestion. Souhaitez-vous comparer
+    nos offres pour voir comment nous pouvons mieux répondre à vos attentes ?
+  goal: Mettre en avant nos avantages uniques et recentrer la conversation sur nos
+    forces
+competitors:
+- name: Service-Personnel
+  positioning: Grande entreprise nationale avec une large couverture
+  strengths:
+  - Réseau étendu
+  - Services diversifiés
+  - Reconnaissance de marque
+  weaknesses:
+  - Coûts élevés
+  - Manque de personnalisation
+  - Temps de réponse lent
+  our_differentiation: Nous offrons des solutions automatisées et personnalisées avec
+    des prix plus compétitifs et un service client réactif
+- name: Butagaz Services
+  positioning: Fournisseur de services ménagers avec présence régionale
+  strengths:
+  - Packages tout-en-un
+  - Support local
+  - Fiabilité
+  weaknesses:
+  - Flexibilité limitée
+  - Technologie obsolète
+  - Tarifs fixes
+  our_differentiation: Notre agent vocal permet une gestion flexible et efficiente,
+    avec des options sur mesure et une intégration technologique moderne
+- name: O2 Care Services
+  positioning: Spécialiste du nettoyage résidentiel et commercial
+  strengths:
+  - Expertise sectorielle
+  - Qualité certifiée
+  - Équipes formées
+  weaknesses:
+  - Prix premium
+  - Disponibilité réduite en périodes de pointe
+  - Processus manuels
+  our_differentiation: Nous combinons expertise et automatisation pour offrir des
+    services de haute qualité à des prix accessibles, avec une disponibilité améliorée
+    via l'agent vocal
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 80
+  roi_examples:
+  - scenario: Petite entreprise réduisant les coûts administratifs de gestion des
+      rendez-vous
+    monthly_cost: 100
+    monthly_savings: 150
+    payback_months: 1
+  - scenario: Société de nettoyage améliorant la fidélisation client grâce à un suivi
+      automatisé
+    monthly_cost: 200
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Réduction de jusqu'à 30% des coûts opérationnels avec l'automatisation
+  - Augmentation de 20% du taux de conversion des devis en contrats
+  - Amélioration de la satisfaction client grâce à un service réactif 24/7
+market_context:
+  market_size: Estimé à 5 milliards d'euros annuels
+  growth_rate: 3% par an
+  key_trends:
+  - Demande croissante pour les services de désinfection post-pandémie
+  - Adoption de technologies vertes et de produits écologiques
+  - Développement des services de nettoyage à la demande via applications mobiles
+  - Focus sur la conformité RGPD et la sécurité des données
+  seasonality:
+    high:
+    - Printemps
+    - Rentrée scolaire
+    - Périodes de fêtes
+    low:
+    - Été (vacances)
+    - Début d'année
+typical_objections:
+- objection: C'est trop cher pour mon budget
+  response: Je comprends. Avez-vous considéré les économies à long terme ? Notre service
+    peut réduire vos coûts administratifs et améliorer l'efficacité, offrant un retour
+    sur investissement rapide.
+- objection: Je préfère gérer cela manuellement
+  response: C'est une approche courante. Cependant, l'automatisation peut libérer
+    du temps pour vous concentrer sur la croissance de votre entreprise. Puis-je vous
+    montrer un exemple concret des gains de temps ?
+- objection: Je ne fais pas confiance aux systèmes automatisés
+  response: Votre préoccupation est légitime. Notre agent vocal est conçu pour être
+    fiable et sécurisé, avec un support humain en backup. Nous pouvons commencer par
+    un essai limité pour vous rassurer.
+- objection: Mes clients préfèrent le contact humain
+  response: Tout à fait, le contact humain est important. Notre agent vocal complète
+    le service en gérant les tâches routinières, permettant à votre équipe de se concentrer
+    sur les interactions de valeur.
+meta:
+  id: cleaning
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

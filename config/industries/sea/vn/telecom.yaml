@@ -1,0 +1,261 @@
+pain_points:
+- description: Xử lý khiếu nại khách hàng thủ công, mất nhiều thời gian và dễ xảy
+    ra sai sót.
+  severity: high
+  solution_hint: AI voice agent tự động tiếp nhận, phân loại và xử lý khiếu nại 24/7,
+    giảm tải cho tổng đài viên.
+- description: Tỷ lệ khách hàng rời bỏ dịch vụ (churn rate) cao do thiếu tương tác
+    cá nhân hóa và chăm sóc chủ động.
+  severity: high
+  solution_hint: Agent AI gọi điện chăm sóc, khảo sát mức độ hài lòng và đề xuất gói
+    cước phù hợp tự động.
+- description: Đội ngũ bán hàng và tư vấn qua điện thoại không theo kịp nhu cầu trong
+    giờ cao điểm, bỏ lỡ cơ hội.
+  severity: medium
+  solution_hint: Triển khai tổng đài ảo với AI để xử lý cuộc gọi đồng loạt, tư vấn
+    sản phẩm và chuyển lead cho nhân viên.
+- description: Khó khăn trong việc thu thập và phân tích phản hồi khách hàng để cải
+    thiện dịch vụ.
+  severity: medium
+  solution_hint: Agent AI thực hiện khảo sát tự động sau mỗi lần tương tác, tổng hợp
+    insight vào hệ thống CRM.
+- description: Chi phí đào tạo và vận hành tổng đài viên truyền thống rất lớn.
+  severity: high
+  solution_hint: Sử dụng AI voice agent có khả năng học và xử lý đa tác vụ, giảm đáng
+    kể chi phí nhân sự vận hành.
+- description: Khó triển khai các chiến dịch marketing qua điện thoại (telemarketing)
+    hiệu quả với tỷ lệ chuyển đổi thấp.
+  severity: medium
+  solution_hint: AI voice agent thực hiện cuộc gọi tự động, phân tích phản ứng và
+    chỉ chuyển cuộc gọi chất lượng cho sales.
+typical_services:
+- Dịch vụ di động trả trước/trả sau
+- Dịch vụ internet cáp quang FTTH
+- Gói cước data 4G/5G
+- Dịch vụ truyền hình MyTV/IPTV
+- Giải pháp viễn thông cho doanh nghiệp
+- Dịch vụ chăm sóc khách hàng tổng đài 1800
+- Đăng ký/Thay đổi gói cước
+- Thanh toán hóa đơn viễn thông
+- Báo cáo sử dụng dịch vụ
+- Khắc phục sự cố mạng/đường truyền
+recommended_functions:
+- name: Tiếp nhận & xử lý khiếu nại tự động
+  priority: high
+  reason: Giảm áp lực cho tổng đài, xử lý nhanh các vấn đề cơ bản, nâng cao trải nghiệm
+    khách hàng.
+- name: Tư vấn & bán gói cước tự động
+  priority: high
+  reason: Tăng doanh thu, nắm bắt cơ hội bán hàng 24/7, cá nhân hóa đề xuất dựa trên
+    lịch sử sử dụng.
+- name: Gọi điện chăm sóc khách hàng thường xuyên
+  priority: medium
+  reason: Giảm tỷ lệ khách hàng rời bỏ (churn), thu thập phản hồi, xây dựng lòng trung
+    thành.
+- name: Thu thập & tổng hợp phản hồi sau dịch vụ
+  priority: medium
+  reason: Cung cấp dữ liệu để cải thiện chất lượng dịch vụ và sản phẩm.
+- name: Hỗ trợ khắc phục sự cố cơ bản
+  priority: medium
+  reason: Giải quyết nhanh các vấn đề kỹ thuật đơn giản, giảm số lượng cuộc gọi chuyển
+    đến kỹ thuật viên.
+- name: Thực hiện khảo sát thị trường & telemarketing
+  priority: low
+  reason: Thu thập insight thị trường và tạo lead tiềm năng với chi phí thấp.
+typical_integrations:
+- name: Hệ thống CRM
+  examples:
+  - CRM-ONE
+  - LumiCRM
+  - Salesforce
+  priority: high
+- name: Hệ thống Billing & OCS
+  examples:
+  - Ericsson BSCS
+  - Huawei CBS
+  - Nokia Charging
+  priority: high
+- name: Hệ thống quản lý mạng (NMS/OSS)
+  examples:
+  - Zabbix
+  - SolarWinds
+  - Cacti
+  priority: medium
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - VNPAY
+  - Momo
+  - ZaloPay
+  priority: medium
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast
+  - BRAVO
+  priority: low
+industry_faq:
+- question: Làm thế nào để đăng ký gói cước internet mới?
+  answer_template: 'Chào anh/chị, để đăng ký gói cước internet mới, hệ thống của chúng
+    tôi cần một số thông tin cơ bản. Tôi có thể hỗ trợ anh/chị ngay bây giờ. Anh/chị
+    vui lòng cho biết địa chỉ lắp đặt và nhu cầu sử dụng (ví dụ: xem phim, chơi game,
+    làm việc) để tôi đề xuất gói cước phù hợp nhất ạ.'
+- question: Hóa đơn tháng này của tôi cao bất thường, tôi có thể kiểm tra chi tiết
+    được không?
+  answer_template: Tôi rất tiếc vì sự bất tiện này. Tôi có thể hỗ trợ anh/chị kiểm
+    tra chi tiết hóa đơn ngay. Vui lòng cung cấp số thuê bao hoặc số chứng minh nhân
+    dân để tôi tra cứu. Tôi sẽ thông báo các dịch vụ phát sinh và hướng dẫn cách khiếu
+    nại nếu có sai sót.
+- question: Mạng internet nhà tôi bị chậm, ai có thể đến sửa?
+  answer_template: Chào anh/chị, tôi xin lỗi vì sự cố này. Để hỗ trợ nhanh nhất, tôi
+    sẽ kiểm tra tình trạng mạng từ xa và hướng dẫn anh/chị một số bước khắc phục cơ
+    bản. Nếu vấn đề vẫn tiếp diễn, tôi sẽ tiếp nhận yêu cầu và sắp xếp kỹ thuật viên
+    đến kiểm tra trong khung giờ anh/chị chọn.
+- question: Tôi muốn hủy dịch vụ thì thủ tục thế nào?
+  answer_template: Tôi hiểu yêu cầu của anh/chị. Để hủy dịch vụ, anh/chị cần thanh
+    toán đầy đủ các hóa đơn tồn. Tôi có thể hỗ trợ kiểm tra số dư nợ và hướng dẫn
+    anh/chị ra cửa hàng gần nhất hoặc gửi yêu cầu qua email. Tôi cũng có thể tư vấn
+    các gói cước khác phù hợp hơn nếu anh/chị quan tâm.
+- question: Có chương trình khuyến mãi nào cho thuê bao trả sau không?
+  answer_template: Hiện chúng tôi đang có một số chương trình ưu đãi về data, gọi
+    thoại và các gói combo. Để nhận đề xuất chính xác và tốt nhất, tôi cần kiểm tra
+    gói cước hiện tại của anh/chị. Anh/chị có thể cho phép tôi truy cập thông tin
+    thuê bao không ạ?
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về giá gói cước hoặc so sánh giá.
+  script: Chào anh/chị, cảm ơn câu hỏi của anh/chị. Thay vì chỉ so sánh giá, chúng
+    tôi tập trung vào giá trị mang lại. Ví dụ, gói [Tên gói] của chúng tôi có tốc
+    độ ổn định, hỗ trợ kỹ thuật 24/7 và tặng kèm [Lợi ích]. Chỉ với [X] VND mỗi tháng,
+    anh/chị sẽ tiết kiệm được [Y] phút chờ đợi hỗ trợ và [Z] GB data so với gói cũ.
+    Tôi có thể phân tích kỹ hơn nếu anh/chị chia sẻ nhu cầu sử dụng thực tế ạ.
+  goal: Chuyển hướng từ giá cả sang giá trị, cá nhân hóa đề xuất.
+- trigger: competitor_mention
+  situation: Khách hàng nhắc đến dịch vụ của đối thủ cạnh tranh.
+  script: 'Tôi hiểu anh/chị cũng đang tìm hiểu [Tên đối thủ]. Chúng tôi tôn trọng
+    lựa chọn của anh/chị. Điểm khác biệt lớn nhất của chúng tôi là [Điểm khác biệt
+    1, ví dụ: hệ thống hỗ trợ khách hàng tự động 24/7] và [Điểm khác biệt 2, ví dụ:
+    cam kết tốc độ đường truyền]. Điều này giúp khách hàng như anh/chị [Lợi ích cụ
+    thể]. Tôi có thể gửi anh/chị bảng so sánh chi tiết và một trải nghiệm dùng thử
+    được không ạ?'
+  goal: Nhấn mạnh điểm khác biệt giá trị, không chê bai đối thủ, đề nghị hành động
+    cụ thể.
+- trigger: need_consultation
+  situation: Khách hàng cần tư vấn gói cước/dịch vụ phù hợp.
+  script: 'Rất vui được hỗ trợ anh/chị chọn gói cước phù hợp. Để đề xuất chính xác,
+    anh/chị vui lòng cho tôi biết: 1) Mục đích sử dụng chính (làm việc, giải trí,
+    kinh doanh)? 2) Số lượng thiết bị kết nối? 3) Ngân sách dự kiến hàng tháng? Dựa
+    trên thông tin đó, tôi sẽ phân tích và giới thiệu 1-2 gói tối ưu nhất về chi phí
+    và trải nghiệm cho anh/chị.'
+  goal: Thu thập thông tin cần thiết, thể hiện sự chuyên nghiệp và tư vấn có căn cứ.
+competitors:
+- name: Viettel
+  positioning: Nhà mạng quân đội, dẫn đầu thị phần với mạng lưới phủ sóng rộng.
+  strengths:
+  - Mạng lưới hạ tầng rộng khắp, đặc biệt vùng sâu vùng xa
+  - Nhiều gói dịch vụ đa dạng
+  - Thương hiệu mạnh và uy tín
+  - Có lợi thế về an ninh mạng
+  weaknesses:
+  - Quy trình đôi khi cứng nhắc
+  - Trải nghiệm khách hàng cá nhân hóa chưa cao
+  - Hệ thống hỗ trợ tự động có thể cải thiện
+  our_differentiation: Tập trung vào trải nghiệm khách hàng cá nhân hóa thông qua
+    AI, hỗ trợ tự động linh hoạt và nhanh chóng 24/7, với chi phí vận hành tối ưu
+    hơn.
+- name: Vinaphone (VNPT)
+  positioning: Nhà mạng thuộc tập đoàn Bưu chính Viễn thông, mạnh về dịch vụ cố định
+    và doanh nghiệp.
+  strengths:
+  - Thế mạnh về hạ tầng cáp quang và dịch vụ doanh nghiệp
+  - Điểm phục vụ rộng khắp qua bưu điện
+  - Nhiều gói combo internet + truyền hình
+  weaknesses:
+  - Đổi mới công nghệ đôi khi chậm hơn
+  - Nhận diện thương hiệu cho dịch vụ di động có thể chưa bằng Viettel
+  - Hệ thống chăm sóc khách hàng đôi khi quá tải
+  our_differentiation: Cung cấp giải pháp AI giúp tự động hóa và tối ưu hóa hoạt động
+    chăm sóc khách hàng & bán hàng của Vinaphone, giảm tải tổng đài và tăng độ chính
+    xác.
+- name: Mobifone
+  positioning: Nhà mạng với lịch sử lâu đời, tập trung vào phân khúc khách hàng cá
+    nhân và giới trẻ.
+  strengths:
+  - Định vị thương hiệu trẻ trung, năng động
+  - Nhiều chương trình khuyến mãi hấp dẫn
+  - Chất lượng dịch vụ ổn định ở đô thị
+  weaknesses:
+  - Hạ tầng ở một số vùng chưa mạnh
+  - Áp lực cạnh tranh giá cao
+  - Dịch vụ hỗ trợ sau bán hàng có thể cải thiện
+  our_differentiation: Giúp Mobifone cá nhân hóa cao độ các chiến dịch marketing và
+    chăm sóc khách hàng qua AI, biến dữ liệu thành hành động bán hàng hiệu quả, tăng
+    tỷ lệ giữ chân khách hàng.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 20000000
+  roi_examples:
+  - scenario: Tự động hóa tổng đài chăm sóc khách hàng cơ bản cho 1 chi nhánh
+    monthly_cost: 30000000
+    monthly_savings: 45000000
+    payback_months: 2
+  - scenario: Triển khai hệ thống AI telemarketing & tư vấn gói cước tự động
+    monthly_cost: 50000000
+    monthly_savings: 80000000
+    payback_months: 3
+  value_anchors:
+  - Giảm tới 40% chi phí vận hành tổng đài viên.
+  - Tăng tỷ lệ giữ chân khách hàng (retention rate) lên 15%.
+  - Xử lý 100% cuộc gọi ngoài giờ hành chính mà không tốn nhân sự.
+  - Tăng tỷ lệ chuyển đổi từ telemarketing lên 20%.
+market_context:
+  market_size: Khoảng 150.000 tỷ VND/năm (cho dịch vụ viễn thông)
+  growth_rate: 5-7% mỗi năm
+  key_trends:
+  - Chuyển dịch mạnh sang 4G/5G và data.
+  - Cạnh tranh khốc liệt dựa trên giá trị dịch vụ và trải nghiệm khách hàng.
+  - Nhu cầu về giải pháp viễn thông số (Digital Telco) và tự động hóa.
+  - Ngày càng chú trọng Luật bảo vệ dữ liệu cá nhân (PDPD).
+  seasonality:
+    high:
+    - Dịp Tết Nguyên Đán
+    - Đầu năm học mới (tháng 9)
+    - Mùa World Cup/Euro
+    low:
+    - Tháng 2-3 (sau Tết)
+    - Giữa năm (tháng 6-7)
+typical_objections:
+- objection: Giá của các bạn cao quá, tôi thấy có giải pháp rẻ hơn.
+  response: Tôi hoàn toàn hiểu mối quan tâm về ngân sách. Thực tế, giải pháp của chúng
+    tôi tập trung vào tiết kiệm chi phí dài hạn. Ví dụ, với việc giảm 40% chi phí
+    vận hành tổng đài, khoản đầu tư ban đầu sẽ hoàn vốn chỉ sau [X] tháng. Chúng ta
+    có thể cùng phân tích báo cáo ROI cụ thể cho trường hợp của công ty anh/chị được
+    không ạ?
+- objection: Chúng tôi đã có tổng đài viên, không cần AI.
+  response: Đội ngũ tổng đài viên của anh/chị rất quan trọng. Giải pháp của chúng
+    tôi không thay thế họ, mà là trợ lý đắc lực. AI sẽ xử lý các cuộc gọi đơn giản,
+    lặp đi lặp lại, giúp nhân viên của anh/chị tập trung vào những khách hàng phức
+    tạp và tạo ra giá trị cao hơn. Điều này còn giúp giảm áp lực và turnover cho nhân
+    viên.
+- objection: Triển khai AI phức tạp, sợ gián đoạn dịch vụ hiện tại.
+  response: 'Đây là lo ngại rất chính đáng. Chúng tôi có lộ trình triển khai từng
+    bước, bắt đầu với một module nhỏ (ví dụ: xử lý khiếu nại thường gặp) và tích hợp
+    song song với hệ thống cũ. Nhóm kỹ thuật của chúng tôi sẽ hỗ trợ 24/7 trong giai
+    đoạn chuyển giao để đảm bảo không gián đoạn. Chúng tôi có thể cung cấp case study
+    từ một khách hàng cùng ngành đã triển khai thành công.'
+meta:
+  id: telecom
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

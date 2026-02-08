@@ -1,0 +1,189 @@
+pain_points:
+- description: 运营成本高，燃料和人工费用持续上涨
+  severity: high
+  solution_hint: AI语音代理可以优化路线规划，减少燃油消耗和人力成本
+- description: 垃圾分类法规复杂，合规压力大
+  severity: high
+  solution_hint: AI语音代理提供实时合规提醒和培训支持
+- description: 客户服务响应慢，投诉处理效率低
+  severity: medium
+  solution_hint: AI语音代理自动处理常见查询，提高客户满意度
+- description: 废物收集调度不优化，导致资源浪费
+  severity: medium
+  solution_hint: AI语音代理集成智能调度系统，提升效率
+- description: 数据管理混乱，缺乏实时监控
+  severity: medium
+  solution_hint: AI语音代理提供数据分析和报告功能
+- description: 回收率低，废物处理能力不足
+  severity: low
+  solution_hint: AI语音代理帮助推广回收项目和教育客户
+typical_services:
+- 生活垃圾收集
+- 工业废物处理
+- 危险废物处置
+- 回收服务
+- 废物转化能源
+- 环境咨询
+- 设备租赁
+- 垃圾分类培训
+- 废物审计
+- 环保法规合规服务
+recommended_functions:
+- name: 自动客户服务
+  priority: high
+  reason: 处理大量日常查询，减轻人工负担
+- name: 智能调度优化
+  priority: high
+  reason: 减少运营成本，提高收集效率
+- name: 合规提醒系统
+  priority: high
+  reason: 确保遵守中国环保法规和PIPL要求
+- name: 实时状态更新
+  priority: medium
+  reason: 提供透明服务，增强客户信任
+- name: 账单和支付处理
+  priority: medium
+  reason: 简化财务流程，减少错误
+- name: 客户反馈收集
+  priority: low
+  reason: 改进服务质量，提升满意度
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: high
+- name: 车队管理系统
+  examples:
+  - 百度地图API
+  - 高德导航
+  priority: high
+- name: 政府合规平台
+  examples:
+  - 环保局数据接口
+  - 垃圾分类平台
+  priority: medium
+- name: 支付网关
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: medium
+- name: CRM系统
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: low
+industry_faq:
+- question: 你们如何处理垃圾分类？
+  answer_template: 我们提供专业的垃圾分类培训和智能收集系统，确保符合当地法规。
+- question: 废物收集费用是多少？
+  answer_template: 费用根据废物类型、数量和频率定制，通常起价每月500元人民币。
+- question: 如何报告废物收集问题？
+  answer_template: 您可以通过我们的AI语音代理实时报告问题，我们将快速响应。
+- question: 你们支持回收哪些材料？
+  answer_template: 我们回收纸张、塑料、金属和玻璃等多种材料，具体清单请咨询。
+- question: 合规方面有哪些要求？
+  answer_template: 我们确保所有操作遵守中国环保法规和PIPL数据保护要求。
+- question: 如何优化废物管理成本？
+  answer_template: 建议使用我们的智能调度和数据分析服务来减少浪费。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 我们的服务起价每月500元人民币，根据您的具体需求定制，能帮助您节省高达30%的运营成本。需要我为您详细分析吗？
+  goal: 引导客户了解价值，促成进一步讨论
+- trigger: service_inquiry
+  situation: 当客户询问服务细节时
+  script: 我们提供全面的废物管理解决方案，包括收集、回收和合规支持。AI语音代理可以24/7处理您的查询，提高效率。您最关心哪个方面？
+  goal: 展示服务优势，识别客户需求
+- trigger: compliance_concern
+  situation: 当客户担心合规问题时
+  script: 我们的系统集成政府合规平台，自动提醒法规变化，确保您始终符合要求，避免罚款。
+  goal: 解决顾虑，建立信任
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时
+  script: 相比传统服务商，我们的AI驱动方案提供更高效率和成本节约，例如通过智能调度减少燃油使用。
+  goal: 突出差异化优势
+competitors:
+- name: 北京环境卫生工程集团
+  positioning: 大型国有企业，覆盖广泛
+  strengths:
+  - 政府支持
+  - 资源丰富
+  - 品牌知名度高
+  weaknesses:
+  - 创新慢
+  - 客户服务响应迟缓
+  our_differentiation: 我们提供AI驱动的灵活解决方案，注重效率和客户体验
+- name: 上海老港废物管理
+  positioning: 区域领先，专注于城市废物
+  strengths:
+  - 技术先进
+  - 处理能力强
+  weaknesses:
+  - 价格较高
+  - 服务范围有限
+  our_differentiation: 我们的定价更透明，且通过AI优化降低成本
+- name: 绿色动力环保
+  positioning: 私营企业，注重回收和能源转化
+  strengths:
+  - 创新技术
+  - 环保理念强
+  weaknesses:
+  - 市场渗透率低
+  - 规模较小
+  our_differentiation: 我们整合智能语音代理，提升客户互动和运营自动化
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: 小型企业使用基本废物收集服务
+    monthly_cost: 1000
+    monthly_savings: 1800
+    payback_months: 4
+  - scenario: 中型企业集成智能调度和合规服务
+    monthly_cost: 5000
+    monthly_savings: 9200
+    payback_months: 3
+  value_anchors:
+  - 通过AI优化，平均降低20%运营成本
+  - 合规风险减少50%，避免潜在罚款
+  - 客户满意度提升30%，减少投诉
+market_context:
+  market_size: 约1.5万亿元人民币
+  growth_rate: 8% YoY
+  key_trends:
+  - 政府推动垃圾分类和循环经济
+  - 数字化和AI技术在废物管理中的应用增加
+  - 环保法规趋严，合规需求上升
+  seasonality:
+    high:
+    - 春节前后
+    - 夏季
+    low:
+    - 冬季
+typical_objections:
+- objection: 我们已经有现有的废物管理合同，不需要更换
+  response: 我们的AI方案可以无缝集成到现有系统，帮助您优化成本和提高效率，无需立即更换合同。
+- objection: AI技术太复杂，我们员工可能不会用
+  response: 我们的语音代理设计简单易用，支持自然语言交互，并提供培训支持，确保快速上手。
+- objection: 价格太高，预算有限
+  response: 考虑到长期的成本节约和合规优势，我们的服务提供高投资回报率。我们可以从基础套餐开始，逐步扩展。
+- objection: 数据安全有风险，担心PIPL合规
+  response: 我们严格遵守PIPL要求，数据加密存储，并只用于必要服务，确保您的信息安全。
+meta:
+  id: waste
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

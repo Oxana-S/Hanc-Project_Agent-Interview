@@ -1,0 +1,260 @@
+pain_points:
+- description: Gestione inefficiente della prenotazione e dell'assegnazione degli
+    ormeggi, con molta comunicazione manuale via telefono ed email.
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare le prenotazioni, verificare
+    la disponibilità in tempo reale e inviare conferme, riducendo errori e carico
+    di lavoro.
+- description: Difficoltà nella gestione della manutenzione programmata e delle riparazioni
+    urgenti per una flotta di imbarcazioni.
+  severity: high
+  solution_hint: L'agente può programmare promemoria vocali per la manutenzione, coordinare
+    gli appuntamenti con i cantieri e gestire le richieste di intervento d'emergenza.
+- description: Perdita di potenziali clienti a causa di risposte lente alle richieste
+    di informazioni su noleggi e corsi nautici.
+  severity: medium
+  solution_hint: Un agente vocale può rispondere immediatamente 24/7 a domande frequenti,
+    fornire disponibilità e prezzi, e prenotare appuntamenti per visite in marina.
+- description: Complessità nella gestione amministrativa e fatturazione per servizi
+    multipli (ormeggio, manutenzione, noleggio).
+  severity: medium
+  solution_hint: L'integrazione con software di gestione marina permette all'agente
+    di aggiornare i conti clienti e generare fatture tramite comandi vocali.
+- description: Scarsa ottimizzazione dell'utilizzo degli spazi e delle attrezzature
+    della marina durante la bassa stagione.
+  severity: medium
+  solution_hint: L'agente può effettuare campagne di upselling e marketing vocale
+    per promuovere offerte stagionali e servizi aggiuntivi.
+- description: Difficoltà nel fornire assistenza clienti multilingue per turisti internazionali.
+  severity: low
+  solution_hint: L'agente vocale multilingue può assistere clienti in inglese, tedesco,
+    francese, migliorando l'esperienza del turista nautico.
+typical_services:
+- Ormeggio e posti barca
+- Manutenzione e riparazione motori e scafi
+- Noleggio imbarcazioni (bareboat e con skipper)
+- Brokeraggio nautico (vendita e acquisto)
+- Scuola nautica e corsi di patente
+- Rifornimento carburante e GPL
+- Travel lift e varo/alaggio
+- Servizi di guardiania e sicurezza
+- Noleggio attrezzature nautiche (es. ecoscandagli)
+- Organizzazione eventi e charter di lusso
+recommended_functions:
+- name: Prenotazione Ormeggi
+  priority: high
+  reason: Automatizza il processo più frequente e critico, riducendo il lavoro d'ufficio
+    e gli errori.
+- name: Gestione Richieste Manutenzione
+  priority: high
+  reason: Coordina le richieste urgenti, migliorando i tempi di risposta e la soddisfazione
+    del diportista.
+- name: Risposte FAQ 24/7
+  priority: medium
+  reason: Fidelizza i clienti fornendo informazioni immediate su servizi, prezzi e
+    regolamenti della marina.
+- name: Upselling Servizi Aggiuntivi
+  priority: medium
+  reason: Aumenta le entrate proponendo automaticamente servizi complementari durante
+    una chiamata.
+- name: Integrazione Gestionali Marina
+  priority: high
+  reason: Sincronizza i dati vocali con i software di back-office, eliminando la duplicazione
+    degli inserimenti.
+- name: Promemoria Pagamenti e Scadenze
+  priority: low
+  reason: Migliora il cash flow ricordando ai clienti le scadenze per gli abbonamenti
+    ormeggio e la manutenzione.
+typical_integrations:
+- name: Software di Gestione Marina (MARINA)
+  examples:
+  - Nautic-On
+  - DockMaster
+  - SAMS
+  priority: high
+- name: Sistema di Prenotazione Online
+  examples:
+  - Scriba
+  - Resguard
+  - Booking.com per Nautica
+  priority: medium
+- name: Software di Contabilità
+  examples:
+  - Sage
+  - Zucchetti
+  - Argo
+  priority: medium
+- name: CRM per Nautica
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce con settore nautico
+  priority: medium
+- name: Sistemi di Monitoraggio Sicurezza
+  examples:
+  - Videocamere IP locali
+  - sistemi di allarme per barche
+  priority: low
+industry_faq:
+- question: Quali sono i vostri tariffe per l'ormeggio annuale?
+  answer_template: Le tariffe per l'ormeggio annuale variano in base alla lunghezza
+    dell'imbarcazione e ai servizi inclusi. Posso fornirle una quotazione personalizzata.
+    Per una barca di [lunghezza] metri, il range tipico è tra [X] e [Y] euro all'anno.
+    Desidera che controlli la disponibilità per una data specifica?
+- question: Offrite servizi di manutenzione invernale?
+  answer_template: Sì, organizziamo servizi di manutenzione invernale completi, inclusi
+    alaggio, lavaggio, controllo dell'opera viva e dell'impianto elettrico. Possiamo
+    coordinare un preventivo con il nostro cantiere. Le interessa programmare un appuntamento
+    per un sopralluogo?
+- question: È possibile noleggiare una barca senza patente?
+  answer_template: Per noleggiare un'imbarcazione a motore di potenza superiore a
+    40 CV o una barca a vela di lunghezza superiore ai 24 metri, è necessaria la patente
+    nautica. Offriamo comunque noleggio con skipper incluso. Posso illustrarle le
+    opzioni disponibili e i costi.
+- question: Quali metodi di pagamento accettate?
+  answer_template: Accettiamo pagamenti tramite bonifico bancario, carta di credito
+    (Visa/Mastercard), e in alcuni casi contanti presso la nostra sede. Per i servizi
+    ricorrenti come l'ormeggio, offriamo anche pagamenti rateali. Posso inviarle i
+    dettagli per il pagamento via email o SMS.
+- question: La marina è attrezzata per barche a chiglia lunga?
+  answer_template: Sì, i nostri bacini hanno profondità adeguate per barche a chiglia
+    lunga. Tuttavia, la disponibilità dipende dalle dimensioni specifiche. Per una
+    consulenza precisa, posso trasferirla con un nostro tecnico oppure verificare
+    immediatamente nel sistema gli ormeggi disponibili per il suo pescaggio.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiama per chiedere il prezzo di un ormeggio o di un
+    servizio di manutenzione.
+  script: 'Grazie per la sua chiamata. Per fornirle un prezzo preciso, ho bisogno
+    di qualche dettaglio in più sulla sua imbarcazione: lunghezza, larghezza e tipo
+    (motore o vela). In base a questo, posso verificare la disponibilità e inviarle
+    una quotazione dettagliata via email in pochi minuti. Le fa comodo procedere ora?'
+  goal: Raccogliere informazioni per una quotazione precisa e impegnare il cliente
+    in un processo di vendita strutturato.
+- trigger: service_inquiry
+  situation: Quando un cliente chiede informazioni su un servizio specifico, come
+    un corso di patente o il noleggio.
+  script: Certamente, siamo specializzati in quel servizio. Per esempio, per il corso
+    patente nautica, offriamo lezioni teoriche in aula e pratiche in mare con istruttori
+    certificati. Le posso inviare il programma completo e le prossime date disponibili.
+    Ha già una preferenza per le date o preferisce una consulenza personalizzata?
+  goal: Qualificare la richiesta e spingere verso la prenotazione o la richiesta di
+    documentazione.
+- trigger: complaint_handling
+  situation: Quando un cliente chiama per un reclamo (es. problema con una fattura
+    o un servizio di manutenzione).
+  script: Mi dispiace molto per l'inconveniente. La ringrazio per avercelo segnalato.
+    Per risolvere il problema nel modo più rapido, mi collego con il sistema per verificare
+    la sua pratica. Nel frattempo, può confermarmi il suo numero di cliente o il numero
+    di fattura? Mi impegno a trovare una soluzione immediata.
+  goal: De-escalare la situazione, raccogliere dati per risolvere il problema e dimostrare
+    efficienza.
+competitors:
+- name: Marina di Stresa
+  positioning: Marina di lusso sul Lago Maggiore, orientata al turismo internazionale
+    e agli eventi.
+  strengths:
+  - Posizione panoramica
+  - servizi di alto livello
+  - ristorante esclusivo
+  - forte presenza su guide internazionali
+  weaknesses:
+  - Prezzi molto elevati
+  - capacità limitata
+  - stagionalità marcata
+  our_differentiation: Offriamo un rapporto qualità-prezzo più accessibile, servizi
+    di manutenzione integrati e automazione che riduce i costi operativi.
+- name: Portosole Sanremo
+  positioning: Grande marina sulla Riviera Ligure, riferimento per diportisti e regate.
+  strengths:
+  - Oltre 600 posti barca
+  - servizi tecnici completi
+  - vicinanza al centro città
+  - organizzazione eventi nautici
+  weaknesses:
+  - Burocrazia complessa per le pratiche
+  - tempi di attesa lunghi per le riparazioni
+  - meno personalizzazione
+  our_differentiation: La nostra agente vocale AI snellisce la burocrazia, offre assistenza
+    immediata 24/7 e gestione più fluida delle prenotazioni e della manutenzione.
+- name: Cantieri Navali di La Spezia
+  positioning: Cantiere navale specializzato in riparazioni grandi e refitting, con
+    clientela professionale.
+  strengths:
+  - Capacità tecniche per lavori complessi
+  - autorizzazioni per scafi in acciaio e alluminio
+  - dry dock di grandi dimensioni
+  weaknesses:
+  - Poca flessibilità per piccole riparazioni
+  - comunicazione lenta
+  - poca attenzione al diportista occasionale
+  our_differentiation: Ci focalizziamo sull'efficienza operativa e sul servizio al
+    cliente diportista, con tempi di risposta rapidi grazie all'automazione vocale.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automazione delle prenotazioni ormeggi e risposte FAQ per una piccola
+      marina.
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Gestione integrata delle richieste di manutenzione e promemoria pagamenti
+      per un cantiere medio.
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Riduci il tempo di gestione delle prenotazioni del 70%.
+  - Aumenta la soddisfazione del cliente con risposte immediate 24/7.
+  - Migliora il cash flow con promemoria automatici per i pagamenti.
+market_context:
+  market_size: Circa 2 miliardi di euro all'anno (diportismo e servizi correlati)
+  growth_rate: 3-4% annuo, trainato dal turismo nautico e dalla nautica da diporto
+  key_trends:
+  - Crescita del charter di lusso e delle esperienze nautiche su misura.
+  - Aumento della domanda di servizi di manutenzione 'green' e sostenibili.
+  - Digitalizzazione delle marine per competere a livello internazionale.
+  - Maggiore attenzione alla sicurezza e al monitoraggio via IoT delle imbarcazioni.
+  seasonality:
+    high:
+    - Giugno
+    - Luglio
+    - Agosto
+    - Settembre
+    low:
+    - Novembre
+    - Dicembre
+    - Gennaio
+    - Febbraio
+typical_objections:
+- objection: È troppo costoso per la nostra piccola attività.
+  response: Capisco. Consideri però che il costo è una frazione di uno stipendio a
+    tempo pieno. Inoltre, l'agente paga da solo in pochi mesi risparmiando su errori
+    di prenotazione e personale per le chiamate. Possiamo iniziare con un piano base
+    e scalare in seguito.
+- objection: Preferiamo il contatto umano con i nostri clienti.
+  response: Concordiamo sul valore del contatto umano. L'agente vocale non lo sostituisce,
+    ma gestisce le richieste ripetitive (prenotazioni, FAQ) liberando il suo staff
+    per le relazioni più importanti e la vendita. È un supporto, non una sostituzione.
+- objection: Siamo già organizzati con un software gestionale.
+  response: Perfetto! La nostra soluzione si integra proprio con i gestionali più
+    comuni nel settore nautico. L'agente vocale diventa l'interfaccia naturale per
+    inserire e recuperare dati dal suo sistema esistente, rendendolo ancora più efficiente.
+meta:
+  id: marine
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

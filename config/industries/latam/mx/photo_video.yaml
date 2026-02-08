@@ -1,0 +1,251 @@
+pain_points:
+- description: Alta competencia que lleva a guerras de precios, reduciendo márgenes
+    de beneficio.
+  severity: high
+  solution_hint: El agente de voz IA puede ayudar a diferenciar servicios mediante
+    la automatización de consultas personalizadas y la gestión de leads calificados.
+- description: Dificultad para gestionar reservas y calendarios, causando conflictos
+    y pérdida de clientes.
+  severity: high
+  solution_hint: Implementar un sistema de programación automatizado que sincronice
+    con calendarios y envíe recordatorios.
+- description: Comunicación inconsistente con clientes, llevando a malentendidos y
+    revisiones negativas.
+  severity: medium
+  solution_hint: Usar el agente de voz para enviar actualizaciones automáticas y confirmaciones
+    en tiempo real.
+- description: Manejo ineficiente de pagos y facturación, con retrasos y errores en
+    transacciones.
+  severity: medium
+  solution_hint: Integrar con sistemas de pago locales para automatizar facturas y
+    recordatorios de pago.
+- description: Gestión de redes sociales y marketing consume mucho tiempo, afectando
+    la productividad.
+  severity: medium
+  solution_hint: Automatizar publicaciones y respuestas a consultas en plataformas
+    como Facebook e Instagram.
+- description: Problemas técnicos con equipo fotográfico y de video, causando interrupciones
+    en servicios.
+  severity: low
+  solution_hint: El agente puede programar mantenimientos preventivos y alertar sobre
+    posibles fallas.
+- description: Cumplimiento con la LFPDPPP en el manejo de datos personales de clientes,
+    riesgo de sanciones.
+  severity: high
+  solution_hint: Automatizar consentimientos y gestionar datos de forma segura mediante
+    integraciones compatibles.
+typical_services:
+- Fotografía de bodas
+- Videografía para eventos
+- Sesiones de retrato individual y familiar
+- Fotografía corporativa y de productos
+- Cobertura de quinceañeras
+- Edición y postproducción de video
+- Fotografía de paisajes y turismo
+- Servicios de drone para video aéreo
+- Fotografía para redes sociales
+- Alquiler de equipo fotográfico
+recommended_functions:
+- name: Programación de citas
+  priority: high
+  reason: Esencial para manejar reservas en un mercado con alta demanda estacional,
+    reduciendo errores y mejorando la experiencia del cliente.
+- name: Calificación de leads
+  priority: high
+  reason: Ayuda a identificar clientes potenciales valiosos en un entorno competitivo,
+    optimizando esfuerzos de ventas.
+- name: Soporte al cliente 24/7
+  priority: medium
+  reason: Mejora la satisfacción al responder consultas rápidamente, especialmente
+    para eventos urgentes.
+- name: Recordatorios de pago
+  priority: medium
+  reason: Acelera el flujo de caja al automatizar seguimientos, crucial para negocios
+    pequeños.
+- name: Gestión de redes sociales
+  priority: low
+  reason: Libera tiempo para enfocarse en la producción, manteniendo presencia en
+    línea de manera eficiente.
+- name: Integración con CRM
+  priority: high
+  reason: Centraliza datos de clientes para mejor personalización y cumplimiento con
+    LFPDPPP.
+typical_integrations:
+- name: Sistemas de calendario
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: high
+- name: Plataformas de pago
+  examples:
+  - Mercado Pago
+  - Stripe México
+  - PayPal México
+  priority: high
+- name: Software de edición
+  examples:
+  - Adobe Creative Cloud
+  - DaVinci Resolve
+  priority: medium
+- name: Herramientas de CRM
+  examples:
+  - vTiger
+  - Zoho CRM
+  - sistemas locales personalizados
+  priority: medium
+- name: Redes sociales
+  examples:
+  - Facebook
+  - Instagram
+  - WhatsApp Business
+  priority: high
+industry_faq:
+- question: ¿Cuánto cuesta un paquete básico de fotografía para bodas?
+  answer_template: Los paquetes básicos comienzan desde 15000 MXN e incluyen cobertura
+    de ceremonia y álbum digital. Podemos personalizar según sus necesidades.
+- question: ¿Ofrecen servicios de drone para video aéreo?
+  answer_template: Sí, ofrecemos servicios de drone con permisos locales, desde 5000
+    MXN adicionales por sesión, ideal para eventos y paisajes.
+- question: ¿Cómo manejan la protección de datos personales según LFPDPPP?
+  answer_template: Cumplimos con LFPDPPP mediante consentimientos digitales y almacenamiento
+    seguro, automatizado para su tranquilidad.
+- question: ¿Pueden editar videos en formatos para redes sociales?
+  answer_template: Sí, proporcionamos edición optimizada para plataformas como Instagram
+    y TikTok, con entregas rápidas.
+- question: ¿Qué incluye una sesión de retrato familiar?
+  answer_template: Incluye 2 horas de sesión, 20 fotos editadas y derechos digitales,
+    desde 3000 MXN, adaptable a ubicaciones.
+- question: ¿Tienen disponibilidad para eventos de último momento?
+  answer_template: Dependemos de la agenda, pero con nuestro sistema automatizado,
+    podemos verificar y confirmar en minutos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios por teléfono o chat.
+  script: ¡Hola! Entiendo que busca información sobre precios. Nuestros servicios
+    se personalizan según sus necesidades, con paquetes desde 5000 MXN. ¿Podría contarme
+    más sobre su evento para ofrecerle la mejor opción?
+  goal: Calificar al lead y guiar hacia una consulta detallada sin enfocarse solo
+    en el precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como fotografía
+    de bodas.
+  script: Gracias por su interés. Especializamos en fotografía de bodas con cobertura
+    completa, desde 15000 MXN. ¿Le gustaría agendar una consulta gratuita para discutir
+    detalles y ver ejemplos de nuestro trabajo?
+  goal: Convertir la consulta en una cita y destacar la calidad del servicio.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor.
+  script: Valoramos su investigación. A diferencia de otros, ofrecemos integración
+    automatizada para gestión de reservas y cumplimiento LFPDPPP, asegurando una experiencia
+    sin problemas. ¿Le interesa una demostración?
+  goal: Diferenciar nuestro servicio y cerrar la venta enfatizando beneficios únicos.
+- trigger: objection_budget
+  situation: Cuando el cliente dice que el presupuesto es limitado.
+  script: Comprendo. Ofrecemos opciones flexibles, como pagos a plazos o paquetes
+    básicos desde 3000 MXN. Además, nuestra automatización reduce costos operativos,
+    lo que nos permite mantener precios competitivos. ¿Podemos explorar una solución
+    que se ajuste a su presupuesto?
+  goal: Mantener el interés y ofrecer alternativas asequibles.
+competitors:
+- name: FotoEstudio MX
+  positioning: Estudio local establecido con presencia en varias ciudades.
+  strengths:
+  - Amplia experiencia
+  - equipo físico visible
+  - buena reputación en bodas.
+  weaknesses:
+  - Precios altos
+  - procesos manuales lentos
+  - poca innovación tecnológica.
+  our_differentiation: Ofrecemos automatización con IA para eficiencia y precios más
+    bajos, con cumplimiento LFPDPPP integrado.
+- name: VideoPro Latam
+  positioning: Cadena regional enfocada en videografía para eventos corporativos.
+  strengths:
+  - Recursos extensos
+  - cobertura nacional
+  - servicios de alta gama.
+  weaknesses:
+  - Falta de personalización
+  - tiempos de entrega largos
+  - integración limitada con clientes.
+  our_differentiation: Enfoque personalizado con agentes de voz para comunicación
+    rápida y edición ágil.
+- name: SnapMéxico
+  positioning: Plataforma en línea para fotógrafos independientes.
+  strengths:
+  - Precios bajos
+  - amplia red de freelancers
+  - fácil acceso digital.
+  weaknesses:
+  - Calidad inconsistente
+  - soporte al cliente deficiente
+  - riesgos de cumplimiento LFPDPPP.
+  our_differentiation: Garantía de calidad con procesos estandarizados y automatización
+    que asegura consistencia y seguridad de datos.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 3000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de programación y recordatorios para un estudio pequeño.
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Integración con CRM y pagos para mejorar la conversión de leads.
+    monthly_cost: 1500
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - Reduzca tiempo de gestión en un 50% con nuestra IA.
+  - Aumente reservas con recordatorios automatizados.
+  - Cumpla con LFPDPPP sin esfuerzo adicional.
+market_context:
+  market_size: Estimado en 500 millones MXN anuales en México.
+  growth_rate: 8% YoY
+  key_trends:
+  - Aumento de bodas y quinceañeras post-pandemia.
+  - Demanda creciente de video para redes sociales.
+  - Adopción de drones para cobertura aérea.
+  - Enfoque en sostenibilidad y fotografía eco-amigable.
+  seasonality:
+    high:
+    - Marzo a Julio
+    - Noviembre a Diciembre
+    low:
+    - Enero
+    - Agosto
+typical_objections:
+- objection: Es muy caro, puedo encontrar opciones más baratas.
+  response: Entiendo su preocupación. Nuestro precio refleja calidad y automatización
+    que ahorra tiempo y errores. ¿Le gustaría ver un caso de éxito donde clientes
+    ahorraron más del 20% en costos operativos?
+- objection: No confío en sistemas automatizados para algo tan importante como mi
+    evento.
+  response: Comprendo. Nuestra IA está diseñada para complementar el servicio humano,
+    con soporte 24/7 y respaldo de expertos. Podemos programar una demostración sin
+    compromiso.
+- objection: Ya tengo un fotógrafo de confianza.
+  response: ¡Excelente! Nuestro agente puede integrarse con su equipo actual para
+    optimizar tareas como reservas y pagos, liberándolos para enfocarse en la creatividad.
+    ¿Le interesa saber más?
+- objection: Me preocupa la protección de mis datos con la LFPDPPP.
+  response: Es crucial. Nuestro sistema automatiza consentimientos y cifrado, cumpliendo
+    con LFPDPPP para garantizar la seguridad de sus datos. Tenemos certificaciones
+    que podemos compartir.
+meta:
+  id: photo_video
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

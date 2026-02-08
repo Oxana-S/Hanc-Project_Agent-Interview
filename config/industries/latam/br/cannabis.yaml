@@ -1,0 +1,228 @@
+pain_points:
+- description: Complexidade na conformidade com regulamentações da ANVISA e LGPD,
+    exigindo documentação extensa.
+  severity: high
+  solution_hint: Agente de voz pode automatizar lembretes de prazos e coletar dados
+    de conformidade de forma segura.
+- description: Alta carga tributária e custos operacionais, afetando a rentabilidade
+    do negócio.
+  severity: high
+  solution_hint: Agente pode otimizar agendamentos e reduzir custos com atendimento
+    humano, além de integrar sistemas fiscais.
+- description: Dificuldade no acesso a serviços bancários e financeiros devido ao
+    estigma da indústria.
+  severity: medium
+  solution_hint: Agente pode facilitar pagamentos digitais e fornecer informações
+    sobre opções financeiras locais.
+- description: Falta de padronização na qualidade dos produtos, levando a inconsistências
+    para pacientes.
+  severity: medium
+  solution_hint: Agente pode coletar feedback dos pacientes e integrar com sistemas
+    de controle de qualidade.
+- description: Logística complicada para distribuição, com restrições regionais e
+    burocracia.
+  severity: high
+  solution_hint: Agente pode gerenciar rastreamento de entregas e automatizar comunicação
+    com fornecedores.
+- description: Estigma social e desinformação, dificultando o marketing e a educação
+    do público.
+  severity: medium
+  solution_hint: Agente pode responder perguntas frequentes e educar clientes de forma
+    personalizada e discreta.
+- description: Escassez de profissionais qualificados e treinamento específico para
+    o setor.
+  severity: low
+  solution_hint: Agente pode fornecer treinamento básico via áudio e conectar com
+    especialistas locais.
+typical_services:
+- Consultoria regulatória para ANVISA e LGPD
+- Venda de produtos medicinais de cannabis
+- Cultivo e produção controlada
+- Distribuição e logística especializada
+- Educação e treinamento para pacientes e profissionais
+- Marketing digital adaptado ao mercado brasileiro
+- Suporte ao paciente e monitoramento de tratamentos
+- Análise laboratorial e controle de qualidade
+- Desenvolvimento de produtos personalizados
+- Serviços de advocacia e compliance contínuo
+recommended_functions:
+- name: Agendamento de consultas médicas
+  priority: high
+  reason: Essencial para pacientes acessarem prescrições e acompanhamento, automatizando
+    processos demorados.
+- name: Resposta a perguntas sobre legalidade e efeitos
+  priority: high
+  reason: Reduz estigma e aumenta confiança, fornecendo informações precisas em português.
+- name: Integração com sistemas de pagamento local
+  priority: high
+  reason: Facilita transações em BRL e adapta-se a gateways brasileiros como PagSeguro.
+- name: Coleta de dados de pacientes com conformidade LGPD
+  priority: medium
+  reason: Garante segurança e privacidade, crítico para a indústria regulada.
+- name: Vendas e upsell de produtos relacionados
+  priority: medium
+  reason: Aumenta receita ao sugerir acessórios ou serviços complementares baseados
+    em necessidades.
+- name: Monitoramento de inventário e supply chain
+  priority: low
+  reason: Ajuda a otimizar estoques e reduzir perdas, integrando-se a ERPs locais.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - TOTVS
+  - SAP
+  priority: high
+- name: Ferramentas de CRM
+  examples:
+  - RD Station
+  - Salesforce
+  priority: high
+- name: Sistemas de compliance LGPD
+  examples:
+  - DataGuard
+  - LGPD Tools
+  priority: medium
+- name: Gateways de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  priority: high
+- name: Sistemas de gestão de inventário
+  examples:
+  - Bluesoft
+  - Linx
+  priority: medium
+industry_faq:
+- question: A cannabis medicinal é legal no Brasil?
+  answer_template: Sim, a cannabis medicinal é regulada pela ANVISA para condições
+    específicas, com prescrição médica. Recomendamos consultar um profissional de
+    saúde para detalhes.
+- question: Quais são os efeitos colaterais comuns?
+  answer_template: Os efeitos variam, mas podem incluir sonolência ou boca seca. É
+    importante seguir a dosagem prescrita e relatar quaisquer preocupações ao seu
+    médico.
+- question: Como posso obter uma prescrição?
+  answer_template: Você precisa agendar uma consulta com um médico autorizado. Nosso
+    agente pode ajudar no agendamento e fornecer informações sobre documentação necessária.
+- question: Os produtos são cobertos por planos de saúde?
+  answer_template: Atualmente, a cobertura é limitada e varia por plano. Sugerimos
+    verificar diretamente com sua operadora de saúde para opções disponíveis.
+- question: Qual é o prazo de entrega dos produtos?
+  answer_template: O prazo depende da região e da logística. Integramos com sistemas
+    de rastreamento para fornecer atualizações em tempo real via nosso agente.
+- question: Como garantir a qualidade dos produtos?
+  answer_template: Trabalhamos com fornecedores certificados e realizamos análises
+    regulares. Oferecemos detalhes de controle de qualidade através do nosso suporte.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre custos de serviços ou produtos.
+  script: Olá! Entendemos que o investimento é uma preocupação. Oferecemos soluções
+    a partir de R$ 500 mensais, com ROI médio de 3 meses através de automação que
+    reduz custos operacionais. Posso elaborar um plano personalizado para sua necessidade?
+  goal: Converter a preocupação com preço em uma discussão sobre valor e retorno.
+- trigger: product_info
+  situation: Quando um cliente busca informações sobre tipos de produtos ou serviços.
+  script: Olá! Oferecemos uma gama de serviços, desde consultoria regulatória até
+    distribuição, todos adaptados ao mercado brasileiro. Com integração LGPD, garantimos
+    segurança. Gostaria de focar em alguma área específica?
+  goal: Educar o cliente e identificar necessidades específicas para upsell.
+- trigger: compliance_concern
+  situation: Quando um cliente expressa medo sobre conformidade legal.
+  script: Compreendemos a complexidade regulatória. Nosso agente automatiza a coleta
+    e armazenamento de dados em conformidade com LGPD, reduzindo riscos. Já ajudamos
+    várias empresas no Brasil a navegar isso. Posso mostrar exemplos?
+  goal: Construir confiança e demonstrar expertise local.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente.
+  script: Respeitamos nossos concorrentes, mas nos diferenciamos com integração completa
+    em português e suporte 24/7 via agente de voz, adaptado às leis brasileiras. Oferecemos
+    uma prova gratuita para você experimentar. Que tal agendar uma demonstração?
+  goal: Destacar vantagens únicas e incentivar um teste.
+competitors:
+- name: Cannect Brasil
+  positioning: Fornecedor líder de consultoria e produtos medicinais.
+  strengths:
+  - Rede ampla de médicos
+  - Produtos diversificados
+  weaknesses:
+  - Preços elevados
+  - Suporte limitado em horários comerciais
+  our_differentiation: Oferecemos automação via agente de voz 24/7 com integração
+    LGPD, reduzindo custos e melhorando a experiência do paciente.
+- name: GreenHub Latam
+  positioning: Foco em cultivo e distribuição regional.
+  strengths:
+  - Logística eficiente
+  - Presença em múltiplos países latino-americanos
+  weaknesses:
+  - Falta de personalização local para Brasil
+  - Conformidade LGPD básica
+  our_differentiation: Soluções totalmente localizadas em português, com ênfase na
+    conformidade brasileira e atendimento personalizado via AI.
+- name: MedCann Advisory
+  positioning: Consultoria especializada em regulamentação.
+  strengths:
+  - Expertise profunda em ANVISA
+  - Clientes de grande porte
+  weaknesses:
+  - Serviços caros e sem automação
+  - Pouca integração tecnológica
+  our_differentiation: Combinamos consultoria com automação via agente, oferecendo
+    preços acessíveis e escalabilidade para PMEs.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automação de atendimento ao paciente para uma clínica média
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  value_anchors:
+  - Reduza custos operacionais em até 30% com nosso agente de voz.
+  - ROI garantido em menos de 3 meses para serviços básicos.
+  - Preços adaptados ao mercado brasileiro, com suporte local em pt.
+market_context:
+  market_size: Estimado em R$ 2 bilhões anuais, com crescimento rápido.
+  growth_rate: 25% YoY
+  key_trends:
+  - Aumento da aceitação social e médica da cannabis medicinal.
+  - Expansão de regulamentações da ANVISA para mais condições.
+  - Crescimento de startups tecnológicas focadas no setor.
+  - Maior demanda por produtos personalizados e rastreáveis.
+  seasonality:
+    high:
+    - Janeiro a março
+    - período pós-festas com aumento de consultas
+    low:
+    - Julho
+    - feriados de inverno e férias escolares
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Entendemos. Nosso agente reduz custos a longo prazo com automação. Oferecemos
+    um plano escalável a partir de R$ 500, com ROI rápido. Podemos começar com um
+    teste gratuito?
+- objection: Não confio na tecnologia com dados sensíveis.
+  response: Priorizamos a segurança. Nosso agente é projetado para conformidade LGPD,
+    com criptografia e auditorias regulares. Compartilhamos certificações para sua
+    tranquilidade.
+- objection: Prefiro o atendimento humano tradicional.
+  response: Nosso agente complementa o atendimento humano, liberando sua equipe para
+    tarefas complexas. Muitos clientes relatam melhor eficiência. Que tal uma demonstração
+    para ver como funciona?
+meta:
+  id: cannabis
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

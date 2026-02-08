@@ -1,0 +1,191 @@
+pain_points:
+- description: Costuri ridicate pentru colectarea și depozitarea deșeurilor.
+  severity: high
+  solution_hint: Agentul vocal AI poate optimiza rutele de colectare pentru a reduce costurile cu combustibil și personal.
+- description: Gestionarea complexă a conformității cu regulile GDPR și normele UE privind deșeurile.
+  severity: high
+  solution_hint: AI-ul poate automatiza raportarea și monitorizarea conformității, asigurând respectarea reglementărilor.
+- description: Frecvente reclamații de la clienți privind programările ratate sau serviciile de calitate scăzută.
+  severity: medium
+  solution_hint: Agentul vocal poate gestiona reclamațiile în timp real și programa recolțări rapid, îmbunătățind satisfacția clienților.
+- description: Ineficiențe în logistica și planificarea colectării deșeurilor.
+  severity: medium
+  solution_hint: AI-ul poate analiza datele de trafic și cererea pentru a optimiza rutele și frecvența colectării.
+- description: Dificultăți în facturare și încasări din cauza sistemelor manuale.
+  severity: low
+  solution_hint: Integrarea cu sistemele de facturare locală pentru automatizarea proceselor financiare.
+- description: Concurență crescută din partea firmelor mici care oferă prețuri reduse.
+  severity: medium
+  solution_hint: Agentul vocal poate oferi oferte personalizate și promovări pentru a atrage și păstra clienții.
+typical_services:
+- Colectare deșeuri menajere
+- Colectare deșeuri industriale
+- Servicii de reciclare
+- Tratare deșeuri periculoase
+- Management deșeuri construcții
+- Curățenie publică și spații verzi
+- Consultanță mediu și conformitate
+- Închiriere containere deșeuri
+- Transport deșeuri
+- Depozitare și eliminare deșeuri
+recommended_functions:
+- name: Programare colectare
+  priority: high
+  reason: Permite clienților să programeze rapid recolțări, reducând timpul de așteptare și îmbunătățind experiența.
+- name: Gestionare reclamații
+  priority: high
+  reason: Răspunde automat la reclamații, oferind soluții rapide și menținând relații bune cu clienții.
+- name: Oferte și facturare
+  priority: medium
+  reason: Generează oferte personalizate și gestionează facturile în RON, simplificând procesele comerciale.
+- name: Monitorizare conformitate GDPR
+  priority: high
+  reason: Asigură respectarea regulilor de protecție a datelor, esențial pentru operațiunile din UE.
+- name: Optimizare rute
+  priority: medium
+  reason: Analizează datele pentru a reduce costurile logistice și a crește eficiența colectării.
+- name: Suport tehnic și FAQ
+  priority: low
+  reason: Oferă informații rapide despre servicii și prețuri, reducând volumul de apeluri către asistența umană.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - SoftExpert
+  priority: high
+- name: Sisteme de gestionare flote
+  examples:
+  - Fleetio
+  - Local tracking apps
+  - Telematic systems
+  priority: medium
+- name: Software de facturare
+  examples:
+  - SmartBill
+  - Facturare.ro
+  - Local accounting software
+  priority: high
+- name: Platforme CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  - Local CRM solutions
+  priority: medium
+- name: Sisteme de raportare mediu
+  examples:
+  - EU compliance tools
+  - Local environmental databases
+  priority: low
+industry_faq:
+- question: Care sunt prețurile pentru serviciile de colectare a deșeurilor?
+  answer_template: Prețurile încep de la 100 RON/lună și variază în funcție de volum și frecvența colectării. Vă pot oferi o ofertă personalizată.
+- question: Cum pot programa o colectare urgentă?
+  answer_template: Puteți programa o colectare urgentă prin apelul nostru vocal sau online, cu un cost suplimentar de 50 RON.
+- question: Sunteți conformi cu regulile GDPR și UE privind deșeurile?
+  answer_template: Da, respectăm toate reglementările GDPR și UE, oferind rapoarte și documentație necesară.
+- question: Ce tipuri de deșeuri gestionați?
+  answer_template: Gestionăm deșeuri menajere, industriale, periculoase și de construcții, cu opțiuni de reciclare.
+- question: Cum funcționează facturarea în RON?
+  answer_template: Facturile sunt emise în RON, cu opțiuni de plată online sau prin transfer bancar, și includ toate taxele.
+- question: Aveți servicii pentru firme mici?
+  answer_template: Da, oferim pachete flexibile pentru firme mici, cu prețuri competitive și contracte pe termen scurt.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri.
+  script: Bună ziua! Prețurile noastre încep de la 100 RON/lună pentru servicii de bază. Pentru o ofertă exactă, am nevoie de câteva detalii despre volumul dvs. de deșeuri. Vă pot ajuta?
+  goal: Să obțin informații pentru o ofertă personalizată și să inițiez un proces de vânzare.
+- trigger: compliance_concern
+  situation: Când un client exprimă îngrijorări legate de conformitate.
+  script: Înțeleg preocuparea. Suntem specializați în conformitatea GDPR și UE, oferind rapoarte automate și suport. Asta vă poate reduce riscurile și costurile cu amenzi. Doriți să vă arăt cum funcționează?
+  goal: Să conving clientul că soluția noastră abordează problemele de conformitate.
+- trigger: service_inquiry
+  situation: Când un client întreabă despre servicii specifice.
+  script: Vă oferim o gamă largă de servicii, de la colectare deșeuri menajere la reciclare. Ce tip de deșeuri gestionați în prezent? Pot recomanda cel mai bun pachet pentru nevoile dvs.
+  goal: Să identific nevoile clientului și să propun servicii relevante.
+- trigger: competitor_mention
+  situation: Când clientul menționează un competitor.
+  script: Apreciez că vă uitați la opțiuni. Spre deosebire de alții, oferim integrarea AI pentru optimizare și conformitate GDPR automată, ceea ce vă poate economisi timp și bani. Doriți să comparăm?
+  goal: Să evidențiez diferențierea noastră și să închid vânzarea.
+competitors:
+- name: Eco-Rom
+  positioning: Firmă locală mare cu acoperire națională.
+  strengths:
+  - Prețuri competitive
+  - Rețea extinsă
+  - Experiență locală
+  weaknesses:
+  - Tehnologie învechită
+  - Serviciu clienți slab
+  - Limitări în conformitate
+  our_differentiation: Oferim soluții AI automate pentru eficiență și conformitate GDPR superioară.
+- name: Salubris
+  positioning: Specialist în deșeuri industriale și periculoase.
+  strengths:
+  - Expertiză în deșeuri periculoase
+  - Parteneriate cu firme mari
+  - Infrastructură modernă
+  weaknesses:
+  - Prețuri ridicate
+  - Flexibilitate redusă pentru firme mici
+  - Integrări limitate
+  our_differentiation: Sistemul nostru vocal este accesibil și scalabil pentru firme de toate dimensiunile.
+- name: GreenWaste International
+  positioning: Companie internațională cu prezență în România.
+  strengths:
+  - Tehnologie avansată
+  - Standarde înalte
+  - Resurse globale
+  weaknesses:
+  - Costuri mari
+  - Lipsă de personalizare locală
+  - Răspuns lent la nevoile specifice
+  our_differentiation: Combina tehnologia AI cu cunoștințe locale și prețuri adaptate pieței românești.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 100
+  roi_examples:
+  - scenario: Firmă mică care automatizează programările și reduce costurile logistice.
+    monthly_cost: 200
+    monthly_savings: 400
+    payback_months: 2
+  value_anchors:
+  - Reducere cu 20% a costurilor de colectare prin optimizarea rutelor.
+  - Eliminarea amenilor GDPR cu monitorizare automată.
+  - Creșterea satisfacției clienților cu servicii rapide.
+market_context:
+  market_size: Estimare de 500 milioane RON anual în industria deșeurilor din România.
+  growth_rate: 5% pe an, datorită reglementărilor UE și creșterii conștientizării ecologice.
+  key_trends:
+  - Tendința spre reciclare și economie circulară.
+  - Adoptarea tehnologiei pentru gestionarea deșeurilor.
+  - Creșterea cererii pentru servicii de conformitate GDPR.
+  seasonality:
+    high:
+    - Primăvară și toamnă, din cauza curățeniei și proiectelor de construcții.
+    low:
+    - Iarna, când activitățile scad și colectarea este mai dificilă.
+typical_objections:
+- objection: Prețul este prea mare pentru firma mea mică.
+  response: Înțeleg. Oferim pachete flexibile care pot începe de la 100 RON/lună și vă pot economisi bani prin eficiență. Să calculăm potențialul dvs. de economisire?
+- objection: Suntem mulțumiți cu furnizorul actual.
+  response: Apreciez loialitatea. Cu tehnologia noastră AI, vă putem oferi servicii mai rapide și conformitate GDPR fără efort suplimentar. Doriți o demonstrație gratuită pentru a vedea diferența?
+- objection: Nu avem nevoie de automatizare; funcționează bine manual.
+  response: Da, dar automatizarea poate reduce erorile și costurile pe termen lung. De exemplu, optimizarea rutelor vă poate economisi până la 20% lunar. Vreți să vă arăt cum?
+meta:
+  id: waste
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

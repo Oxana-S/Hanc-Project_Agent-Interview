@@ -1,0 +1,248 @@
+aliases:
+- logistics
+- shipping
+- freight
+- courier
+- transport
+- warehouse
+- expedition
+- delivery
+- cargo
+- shipment
+- parcel
+- bill of lading
+- waybill
+competitors:
+- name: Purolator
+  positioning: Leading integrated freight, package, and logistics provider
+  strengths:
+  - Extensive network across Canada
+  - Strong brand recognition
+  - Advanced tracking technology
+  weaknesses:
+  - Higher prices for small businesses
+  - Less flexible for custom solutions
+  our_differentiation: More personalized service and competitive pricing for SMEs
+- name: Canada Post
+  positioning: National postal service with extensive reach
+  strengths:
+  - Ubiquitous presence in rural and urban areas
+  - Affordable for small parcels
+  - Trusted government entity
+  weaknesses:
+  - Slower delivery times for standard services
+  - Limited freight options
+  our_differentiation: Faster and more reliable for time-sensitive freight
+- name: FedEx Canada
+  positioning: Global courier with strong domestic services
+  strengths:
+  - International network
+  - Premium express services
+  - Reliable tracking
+  weaknesses:
+  - Expensive for domestic shipments
+  - Complex pricing structure
+  our_differentiation: Simplified pricing and better domestic rates
+- name: UPS Canada
+  positioning: Global logistics and package delivery
+  strengths:
+  - Worldwide coverage
+  - Diverse service portfolio
+  - Strong e-commerce integration
+  weaknesses:
+  - Customer service can be slow
+  - Additional fees for residential delivery
+  our_differentiation: More transparent pricing and dedicated local support
+industry_faq:
+- question: Where is my shipment?
+  answer_template: Please provide your tracking number or bill of lading number and
+    I will check the delivery status.
+- question: How much does shipping cost?
+  answer_template: The cost depends on weight, dimensions, and route. I can calculate
+    it if you provide the parameters.
+- question: When will the courier arrive?
+  answer_template: Please provide your order number and I will give you the estimated
+    arrival time.
+- question: Can I change the delivery address?
+  answer_template: Yes, it is possible until the courier departs. Please provide the
+    new address.
+- question: Do you work on weekends?
+  answer_template: We operate 7 days a week. Weekend delivery is available.
+- question: How do I arrange a return?
+  answer_template: For returns, please contact the sender. We can organize the return
+    shipment.
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: 80 billion CAD
+  growth_rate: 5% YoY
+  key_trends:
+  - Increased e-commerce driving demand for last-mile delivery
+  - Adoption of green logistics and electric vehicles
+  - Integration of AI for route optimization and predictive analytics
+  seasonality:
+    high:
+    - November to December
+    - Black Friday and Cyber Monday
+    low:
+    - January
+    - July
+meta:
+  avg_validation_score: 0.0
+  country: ca
+  created_at: '2024-05-20'
+  currency: CAD
+  id: logistics
+  language: en
+  languages: []
+  last_updated: '2024-05-20'
+  phone_codes:
+  - '+1'
+  region: na
+  tests_run: 0
+  timezone: America/Toronto
+  version: '1.0'
+pain_points:
+- description: High volume of calls asking "where is my shipment?"
+  severity: high
+  solution_hint: Automatic status by tracking number
+- description: Customers cannot get through during peak hours
+  severity: high
+  solution_hint: 24/7 voice agent for status and FAQ
+- description: Operators spend too much time on routine inquiries
+  severity: medium
+  solution_hint: Automation of common requests
+- description: Difficulty coordinating delivery times
+  severity: medium
+  solution_hint: Automatic scheduling of time slots
+- description: Errors when taking orders over the phone
+  severity: medium
+  solution_hint: Structured order intake process
+- description: Managing customer expectations during weather delays
+  severity: medium
+  solution_hint: Proactive notifications about delays and alternative options
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automating 70% of status inquiry calls
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Reducing missed calls and capturing more orders
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 1
+  value_anchors:
+  - Reduce operational costs by 30% with AI automation
+  - Improve customer satisfaction with instant 24/7 support
+  - Scale your business without increasing staff
+recommended_functions:
+- name: status check
+  priority: high
+  reason: 70-80% of calls are delivery status inquiries
+- name: order intake
+  priority: high
+  reason: Automate new order booking
+- name: routing
+  priority: medium
+  reason: Transfer complex questions to a manager
+- name: reminders
+  priority: medium
+  reason: Notifications about delivery, time confirmation
+- name: faq
+  priority: medium
+  reason: Answers to common questions about rates, timelines
+- name: rescheduling
+  priority: low
+  reason: Change delivery time or address
+sales_scripts:
+- trigger: price_question
+  situation: When a customer asks about shipping rates
+  script: Thank you for your interest. Our rates are competitive and depend on the
+    size, weight, and destination. I can help you get an instant quote. May I have
+    the pickup and delivery postal codes and the package dimensions?
+  goal: Collect information for a quote and move the customer towards booking.
+- trigger: status_inquiry
+  situation: When a customer asks for a shipment status
+  script: I can help you track your shipment right away. Please provide your tracking
+    number. Alternatively, I can look it up with your phone number or order number.
+  goal: Resolve the status inquiry quickly and offer additional help.
+- trigger: complaint
+  situation: When a customer reports a problem
+  script: I'm sorry to hear that. Let me check the details and see how we can resolve
+    this. Can you please provide your tracking number and describe the issue?
+  goal: De-escalate, gather information, and route to the appropriate team.
+- trigger: new_customer
+  situation: When a potential new customer calls for the first time
+  script: Welcome to our logistics service! We offer reliable shipping solutions across
+    Canada. How can I assist you today? Are you looking to ship a package, or do you
+    need regular freight services?
+  goal: Identify the customer's needs and introduce our services.
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reduce operator workload by 40%
+  - Automate 70% of status inquiries
+  - Average response time < 5 seconds
+  - Customer satisfaction > 4.0/5
+typical_integrations:
+- name: TMS
+  examples:
+  - Descartes
+  - MercuryGate
+  - Tailwind
+  priority: high
+  reason: For real-time tracking and status updates
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: medium
+  reason: Customer history and order management
+- name: Messaging
+  examples:
+  - Facebook Messenger
+  - WhatsApp
+  priority: high
+  reason: Notifications and customer communication
+- name: SMS
+  examples:
+  - Twilio
+  - ClickSend
+  priority: medium
+  reason: SMS notifications for delivery updates
+- name: Telephony
+  examples:
+  - RingCentral
+  - Nextiva
+  - Dialpad
+  priority: high
+  reason: Handling incoming calls and routing
+typical_objections:
+- objection: I don't want to talk to a machine.
+  response: I understand. I'm here to help you quickly. If you prefer, I can connect
+    you with a human agent right away.
+- objection: The status information is not accurate.
+  response: Our tracking is updated every 15 minutes. I can also connect you with
+    a dispatcher for the latest update.
+- objection: Your prices are too high.
+  response: We offer competitive rates and can tailor a solution to fit your budget.
+    Let me check if there are any current promotions or discounts for your route.
+typical_services:
+- Freight shipping
+- Express delivery
+- Courier services
+- Warehousing and storage
+- Customs brokerage
+- Shipment tracking
+- LTL shipping
+- Cross-border shipping
+- Last-mile delivery
+- Supply chain management
+_extends: _base/logistics

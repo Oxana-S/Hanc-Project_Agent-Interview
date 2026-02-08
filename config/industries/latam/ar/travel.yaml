@@ -1,0 +1,223 @@
+pain_points:
+- description: La alta inflación en Argentina afecta la estabilidad de precios de
+    los paquetes turísticos, generando incertidumbre en los clientes.
+  severity: high
+  solution_hint: El agente de voz IA puede actualizar precios en tiempo real y ofrecer
+    opciones flexibles con precios dinámicos.
+- description: Estacionalidad marcada con picos en verano y vacaciones de invierno,
+    causando sobrecarga en la atención al cliente.
+  severity: medium
+  solution_hint: Automatizar reservas y consultas frecuentes para manejar alta demanda
+    sin aumentar personal.
+- description: Falta de personal capacitado para atender consultas multilingües, especialmente
+    en zonas turísticas como Patagonia o Iguazú.
+  severity: medium
+  solution_hint: Agente de voz IA con soporte multilingüe para atender turistas extranjeros.
+- description: Dificultades en la integración de sistemas de pago locales como MercadoPago
+    o transferencias bancarias argentinas.
+  severity: high
+  solution_hint: Integrar el agente de voz con plataformas de pago locales para procesar
+    transacciones sin problemas.
+- description: Competencia agresiva de plataformas online como Despegar, que ofrecen
+    descuentos y promociones constantes.
+  severity: medium
+  solution_hint: Usar el agente para ofrecer personalización y seguimiento proactivo,
+    diferenciándose con servicio al cliente superior.
+- description: Problemas de cancelaciones y reembolsos debido a regulaciones cambiantes
+    o eventos imprevistos.
+  severity: low
+  solution_hint: Automatizar políticas de cancelación y notificaciones para mejorar
+    la transparencia y reducir conflictos.
+typical_services:
+- Paquetes turísticos a Bariloche y la Patagonia
+- Reservas de hoteles en Buenos Aires y Córdoba
+- Excursiones a las Cataratas del Iguazú
+- Alquiler de autos para rutas como la Ruta 40
+- Vuelos domésticos a destinos como Mendoza o Salta
+- Circuitos de enoturismo en viñedos de Mendoza
+- Paquetes de esquí en centros invernales como Las Leñas
+- Tours culturales en Buenos Aires con tango y gastronomía
+- Seguros de viaje con cobertura local
+- Asesoramiento para visas y requisitos de entrada a países vecinos
+recommended_functions:
+- name: Reserva automatizada de vuelos y hoteles
+  priority: high
+  reason: Reduce tiempo de espera y errores humanos en reservas, clave para la alta
+    demanda estacional.
+- name: Soporte al cliente 24/7 en español e inglés
+  priority: high
+  reason: Atiende consultas fuera de horario y mejora la experiencia de turistas internacionales.
+- name: Actualización de precios en tiempo real
+  priority: high
+  reason: Maneja la volatilidad de precios debido a la inflación en Argentina.
+- name: Integración con sistemas de pago locales
+  priority: medium
+  reason: Facilita transacciones con métodos preferidos por clientes argentinos como
+    MercadoPago.
+- name: Recordatorios de pagos y promociones personalizadas
+  priority: low
+  reason: Aumenta la retención de clientes y maximiza ventas con ofertas adaptadas.
+- name: Gestión de cancelaciones y reembolsos
+  priority: medium
+  reason: Automatiza procesos complicados y reduce cargas administrativas.
+typical_integrations:
+- name: Sistemas de gestión de reservas (PMS)
+  examples:
+  - Sistema Hotelería Argentino
+  - ReservasWeb
+  priority: high
+- name: Plataformas de pago locales
+  examples:
+  - MercadoPago
+  - Todo Pago
+  - Transferencias bancarias ARS
+  priority: high
+- name: Sistemas de aerolíneas y transporte
+  examples:
+  - Aerolíneas Argentinas API
+  - Ómnibus nacionales integrados
+  priority: medium
+- name: Herramientas de CRM locales
+  examples:
+  - VentasARG
+  - ClienteFeliz Latam
+  priority: low
+- name: Plataformas de redes sociales
+  examples:
+  - Facebook e Instagram con enfoque en mercado argentino
+  priority: medium
+industry_faq:
+- question: ¿Cuál es el mejor momento para viajar a Argentina?
+  answer_template: 'Depende del destino: para la Patagonia, recomendamos verano (diciembre
+    a marzo); para esquí, invierno (junio a agosto). Siempre hay opciones todo el
+    año.'
+- question: ¿Aceptan pagos en efectivo o con tarjetas internacionales?
+  answer_template: 'Sí, aceptamos múltiples métodos: efectivo en pesos argentinos,
+    tarjetas de crédito, y plataformas como MercadoPago para mayor conveniencia.'
+- question: ¿Ofrecen seguros de viaje que cubran imprevistos en Argentina?
+  answer_template: Sí, ofrecemos seguros con cobertura local para cancelaciones, salud,
+    y eventos inesperados, adaptados a regulaciones argentinas.
+- question: ¿Cómo manejan las cancelaciones debido a la inflación o cambios económicos?
+  answer_template: Tenemos políticas flexibles con opciones de reprogramación o reembolsos
+    parciales, actualizadas según la situación económica actual.
+- question: ¿Pueden ayudar con visas para viajar a países limítrofes como Chile o
+    Brasil?
+  answer_template: Sí, asesoramos sobre requisitos y trámites, aunque recomendamos
+    verificar con embajadas debido a regulaciones cambiantes.
+- question: ¿Hay descuentos para residentes argentinos o grupos familiares?
+  answer_template: Sí, ofrecemos promociones especiales para residentes y paquetes
+    familiares, con precios en ARS y facilidades de pago.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un paquete turístico.
+  script: Hola, entiendo que quieres conocer el precio. Te ofrezco opciones personalizadas
+    en ARS con precios actualizados hoy. ¿Prefieres un paquete todo incluido o algo
+    más flexible?
+  goal: Convertir la consulta en una venta ofreciendo transparencia y personalización.
+- trigger: availability_check
+  situation: Cuando un cliente verifica disponibilidad para fechas específicas, como
+    vacaciones de verano.
+  script: Gracias por tu interés. Reviso la disponibilidad para tus fechas. ¿Te gustaría
+    que reserve ahora con opción de cancelación flexible, dado lo concurrido de la
+    temporada?
+  goal: Asegurar la reserva rápidamente y reducir la pérdida por alta demanda.
+- trigger: competitor_comparison
+  situation: Cuando el cliente menciona precios de competidores como Despegar.
+  script: Comprendo que comparas precios. Nos diferenciamos con servicio al cliente
+    personalizado y soporte 24/7. ¿Valoras una experiencia sin problemas o solo el
+    precio más bajo?
+  goal: Destacar el valor agregado y justificar el precio.
+- trigger: payment_concern
+  situation: Cuando el cliente expresa preocupación por métodos de pago o seguridad.
+  script: Tu seguridad es prioridad. Usamos plataformas seguras como MercadoPago y
+    ofrecemos garantías. ¿Prefieres pagar en cuotas o de una vez?
+  goal: Generar confianza y facilitar la transacción.
+competitors:
+- name: Despegar.com
+  positioning: Plataforma online líder en Latinoamérica con amplia oferta.
+  strengths:
+  - Precios competitivos
+  - Amplia red de proveedores
+  - Presencia regional fuerte
+  weaknesses:
+  - Servicio al cliente impersonal
+  - Problemas en integraciones locales
+  our_differentiation: Ofrecemos servicio personalizado con agente de voz IA y soporte
+    local adaptado a Argentina.
+- name: Almundo
+  positioning: Agencia de viajes con enfoque en experiencias personalizadas.
+  strengths:
+  - Atención al cliente dedicada
+  - Paquetes exclusivos
+  weaknesses:
+  - Precios más altos
+  - Limitada automatización
+  our_differentiation: Combinamos personalización con automatización eficiente para
+    mejores precios y servicio.
+- name: Aerolíneas Argentinas
+  positioning: Aerolínea estatal con fuerte presencia en vuelos domésticos.
+  strengths:
+  - Red extensa en Argentina
+  - Promociones para residentes
+  weaknesses:
+  - Ineficiencias operativas
+  - Poca flexibilidad en cambios
+  our_differentiation: Integramos múltiples aerolíneas y ofrecemos más opciones con
+    nuestro agente de voz.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 100000
+  roi_examples:
+  - scenario: Agencia de viajes pequeña que automatiza reservas y atención al cliente.
+    monthly_cost: 50000
+    monthly_savings: 80000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos operativos hasta un 30% con automatización.
+  - Incrementa ventas con precios dinámicos en ARS.
+  - Mejora la satisfacción del cliente con soporte 24/7.
+market_context:
+  market_size: Estimado en 10 mil millones de ARS anuales
+  growth_rate: 5% YoY, impulsado por turismo interno y regional
+  key_trends:
+  - Aumento del turismo sostenible y eco-friendly en destinos como Patagonia.
+  - Creciente demanda de viajes de lujo y enoturismo en Mendoza.
+  - Digitalización acelerada post-pandemia con adopción de plataformas online.
+  seasonality:
+    high:
+    - Enero (verano)
+    - Julio (vacaciones de invierno)
+    - Diciembre (fiestas)
+    low:
+    - Marzo a mayo
+    - Septiembre a noviembre
+typical_objections:
+- objection: Es muy caro comparado con otras opciones online.
+  response: Entiendo, pero nuestro servicio incluye soporte personalizado y flexibilidad
+    que otros no ofrecen. ¿Te gustaría ver un desglose de valor?
+- objection: No confío en pagar con sistemas automatizados.
+  response: Comprendo tu preocupación. Usamos métodos seguros y podemos empezar con
+    una reserva pequeña para que pruebes el servicio.
+- objection: Prefiero hablar con una persona directamente.
+  response: Nuestro agente de voz IA está diseñado para simular una conversación natural
+    y puede derivarte a un agente humano si es necesario. ¿Probamos una consulta rápida?
+- objection: La inflación hace que los precios cambien demasiado.
+  response: Exactamente, por eso nuestro sistema actualiza precios en tiempo real
+    para garantizar transparencia. Te notificamos cualquier cambio.
+meta:
+  id: travel
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

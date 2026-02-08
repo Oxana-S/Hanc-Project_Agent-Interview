@@ -1,0 +1,261 @@
+aliases:
+- horeca
+- restorán
+- cafetería
+- hotel
+- bar
+- cervecería
+- catering
+- delivery de comida
+- comida rápida
+- rotisería
+- pizzeria
+- reserva de mesa
+- banquete
+- parrilla
+competitors:
+- name: PedidosYa
+  positioning: Plataforma líder de delivery y reservas.
+  strengths:
+  - Gran base de usuarios.
+  - Amplia cobertura geográfica.
+  - App consolidada.
+  weaknesses:
+  - Comisiones altas para los locales.
+  - Atención al cliente impersonal.
+  our_differentiation: Ofrecemos una relación directa y personalizada con el cliente,
+    sin comisiones por reserva y con la posibilidad de fidelizarlos mediante recordatorios
+    y ofertas.
+- name: Glovo
+  positioning: Plataforma de delivery multiproducto.
+  strengths:
+  - Entrega rápida.
+  - Variedad de categorías.
+  weaknesses:
+  - Enfoque menos especializado en Horeca.
+  - Menor penetración en ciudades más pequeñas.
+  our_differentiation: Nos especializamos exclusivamente en la automatización de la
+    comunicación para restaurantes y hoteles, integrando todas las funciones (reservas,
+    pedidos, FAQ) en un solo agente.
+- name: Restorando (por El Tenador)
+  positioning: Plataforma especializada en reservas de restaurantes.
+  strengths:
+  - Enfoque en restaurantes de gama media-alta.
+  - Sistema de reseñas integrado.
+  weaknesses:
+  - Cobertura limitada fuera de grandes ciudades.
+  - Menos conocido para delivery o servicios de hotel.
+  our_differentiation: Solución omnicanal que maneja no solo reservas, sino también
+    pedidos, consultas frecuentes y ventas salientes, todo automatizado y en el idioma
+    local.
+industry_faq:
+- question: ¿Tienen mesa disponible para esta noche?
+  answer_template: Para qué fecha y horario le interesa? Para cuántas personas sería?
+- question: ¿Hacen envíos a domicilio?
+  answer_template: Sí, realizamos delivery dentro de la zona. También puede retirar
+    por el local. ¿Le envío el menú por WhatsApp?
+- question: ¿Aceptan Mercado Pago?
+  answer_template: Sí, aceptamos Mercado Pago, tarjetas de crédito/débito y efectivo.
+- question: ¿Tienen menú ejecutivo o promociones para el almuerzo?
+  answer_template: Sí, ofrecemos menú del día de lunes a viernes. Se lo puedo detallar.
+- question: ¿Puedo reservar un salón para un evento?
+  answer_template: Por supuesto, organizamos eventos desde 15 personas. ¿Para qué
+    fecha y cantidad aproximada de invitados lo está planeando?
+- question: ¿Tienen estacionamiento?
+  answer_template: Contamos con estacionamiento gratuito para clientes (sujeto a disponibilidad).
+    También hay playa de estacionamiento paga a una cuadra.
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: Mercado de USD ~15.000 millones, con miles de establecimientos.
+  growth_rate: Crecimiento moderado (~3-5% anual), impulsado por delivery y turismo.
+  key_trends:
+  - Auge del delivery y las dark kitchens.
+  - Mayor demanda de opciones de pago digital (Mercado Pago).
+  - Búsqueda de eficiencia operativa debido a la inflación.
+  - Turismo internacional como motor clave para restaurantes y hoteles.
+  seasonality:
+    high:
+    - Diciembre a Marzo (temporada alta de verano y turismo).
+    - Fines de semana largos (feriados).
+    - Mes de Julio (vacaciones de invierno).
+    low:
+    - Abril, Mayo, Septiembre, Octubre (temporada media/baja).
+    - Primera quincena de Enero (luego de fiestas).
+meta:
+  avg_validation_score: 0.0
+  country: ar
+  created_at: '2024-02-04'
+  currency: ARS
+  id: horeca
+  language: es
+  languages: []
+  last_updated: '2024-02-04'
+  phone_codes:
+  - '+54'
+  region: latam
+  tests_run: 0
+  timezone: America/Argentina/Buenos_Aires
+  version: '1.0'
+pain_points:
+- description: Alta cantidad de llamadas para consultas de menú, precios y reservas,
+    saturando la línea.
+  severity: high
+  solution_hint: Agente automatizado que responde consultas frecuentes y toma reservas
+    24/7.
+- description: No-show (incomparecencia) en reservas, especialmente los fines de semana,
+    con pérdidas de hasta un 25%.
+  severity: high
+  solution_hint: Confirmaciones y recordatorios automáticos de reservas vía WhatsApp
+    o SMS.
+- description: Dificultad para gestionar pedidos de delivery en horas pico, perdiendo
+    ventas.
+  severity: medium
+  solution_hint: Agente que tome pedidos de forma automatizada e integre con plataformas
+    de delivery.
+- description: Costos crecientes de personal para atención telefónica, agravados por
+    la inflación.
+  severity: medium
+  solution_hint: Automatización de tareas repetitivas, liberando al personal para
+    el servicio en sala.
+- description: Complejidad para promocionar menús ejecutivos, happy hours y eventos
+    a la clientela habitual.
+  severity: medium
+  solution_hint: Campañas salientes automatizadas para informar a la base de clientes
+    sobre ofertas.
+- description: Fluctuaciones bruscas de demanda por temporada turística, complicando
+    la planificación.
+  severity: medium
+  solution_hint: Agente que gestione el aumento de consultas en temporada alta sin
+    costos adicionales fijos.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 15000
+  roi_examples:
+  - scenario: Automatización de reservas y reducción de no-show para un restaurante
+      mediano.
+    monthly_cost: 20000
+    monthly_savings: 45000
+    payback_months: 1
+  value_anchors:
+  - El costo de un mes del servicio equivale a evitar 4-5 no-shows en mesas para 4
+    personas.
+  - Ahorra el salario de medio empleado dedicado solo al teléfono.
+  - Incrementa las ventas por delivery al no perder llamadas en horas pico.
+recommended_functions:
+- name: toma_de_reservas
+  priority: high
+  reason: Función crítica para restaurantes y hoteles; reduce la saturación telefónica.
+- name: confirmacion_y_recordatorio
+  priority: high
+  reason: Reduce drásticamente la tasa de no-show, especialmente los fines de semana.
+- name: recepcion_de_pedidos
+  priority: high
+  reason: Captura ventas de delivery y take-away que se pierden por líneas ocupadas.
+- name: responder_faq
+  priority: medium
+  reason: Libera al personal de repetir información sobre horarios, precios, menú
+    y métodos de pago.
+- name: campanas_salientes
+  priority: low
+  reason: Permite fidelizar clientes informando sobre promociones y eventos especiales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio del servicio.
+  script: Entiendo que la eficiencia en costos es clave, especialmente en el contexto
+    actual. Nuestro servicio parte desde los $15.000 ARS mensuales. Por ejemplo, para
+    un restaurante, si evitamos solo 5 no-shows de mesas para 4 personas en un mes,
+    ya está cubierta la inversión. ¿Le gustaría que le detalle un caso similar al
+    de su establecimiento?
+  goal: Enmarcar el precio en términos de ROI concreto y rápido, vinculado a un problema
+    local (no-show).
+- trigger: hesitation_automation
+  situation: Cuando el cliente duda sobre la pérdida del trato personalizado.
+  script: Comprendo su preocupación. Nuestro agente actúa como su primer recepcionista,
+    filtrando consultas operativas. Esto permite que su personal se enfoque en el
+    trato cara a cara con el cliente que ya está en el local, mejorando su experiencia.
+    Además, las confirmaciones automatizadas son personalizadas con el nombre del
+    cliente y el del establecimiento.
+  goal: Tranquilizar al cliente y reposicionar la automatización como un apoyo para
+    mejorar el servicio personal, no reemplazarlo.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona usar PedidosYa o Glovo para reservas.
+  script: Excelentes plataformas para descubrimiento. Nuestra solución es complementaria.
+    Nosotros le ayudamos a fidelizar a ese cliente que ya los conoce, gestionando
+    la comunicación directa, recordándoles sus reservas y ofreciéndoles sus promociones,
+    sin pagar comisiones por cada contacto. ¿Le interesa reducir la dependencia de
+    las comisiones de terceros?
+  goal: Posicionar el servicio como una herramienta de fidelización y control de la
+    relación con el cliente, no como un competidor directo de las apps de delivery.
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reducción de no-show a menos del 12%.
+  - Automatización del 70% de las consultas telefónicas entrantes.
+  - Tiempo promedio para realizar una reserva < 45 segundos.
+  - Aumento del 10% en pedidos de delivery capturados por teléfono.
+typical_integrations:
+- name: Sistema de gestión (POS/Gestión)
+  examples:
+  - Loycard
+  - RDS
+  - GestionSimple
+  priority: high
+  reason: Sincronización de disponibilidad de mesas, estado de pedidos y actualización
+    de menús.
+- name: Plataformas de Delivery
+  examples:
+  - PedidosYa
+  - Rappi
+  - DiDi Food
+  priority: medium
+  reason: Crear y seguir pedidos de delivery de manera centralizada.
+- name: Pasarela de Pagos
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  priority: medium
+  reason: Confirmar métodos de pago disponibles e incluso tomar pagos por teléfono
+    (para reservas con seña).
+- name: Sistema de Mensajería
+  examples:
+  - WhatsApp Business API
+  priority: high
+  reason: Canal principal para confirmaciones, recordatorios y envío de menús en Argentina.
+- name: Sistema de Reservas (para Hoteles)
+  examples:
+  - Cloudbeds
+  - SiteMinder
+  priority: high
+  reason: Consultar disponibilidad y gestionar reservas de habitaciones.
+typical_objections:
+- objection: Mi clientela es mayor y no usa tanto el teléfono para estas cosas.
+  response: Entiendo. Por eso nuestro agente funciona exactamente como su línea telefónica
+    tradicional. Atiende las llamadas que ya recibe, sin que sus clientes necesiten
+    aprender a usar una app nueva. Es una transición invisible para ellos.
+- objection: Con la inflación, priorizo gastos en insumos, no en tecnología.
+  response: Precisamente por la inflación, la eficiencia es clave. Nuestro servicio
+    es un gasto fijo y predecible en pesos que le ahorra pérdidas variables (como
+    las mesas vacías por no-show) y le permite hacer más con el personal que ya tiene.
+    Es una herramienta de ahorro y productividad.
+- objection: Ya tengo a mi dueño/recepcionista que maneja el teléfono.
+  response: Excelente. Nuestro agente puede actuar como su primer filtro, atendiendo
+    fuera del horario o durante las horas pico cuando esa persona está sobrecargada.
+    Así, su recurso humano puede dedicarse a tareas de mayor valor, como la atención
+    en sala o la gestión del local.
+typical_services:
+- Reserva de mesas.
+- Pedidos para delivery.
+- Pedidos para retiro en el local (take away).
+- Organización de banquetes y eventos privados.
+- Servicio de catering para empresas.
+- Reserva de habitaciones (hoteles).
+- Servicio a la habitación (room service).
+- Venta de mercadería (ej. vinos, salsas).
+- Organización de degustaciones y eventos especiales (como asados los domingos).
+- Suscripciones o cajas mensuales (ej. pizza o empanadas).
+_extends: _base/horeca

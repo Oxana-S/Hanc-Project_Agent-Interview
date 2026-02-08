@@ -1,0 +1,253 @@
+pain_points:
+- description: High employee turnover rates make consistent staffing and quality control
+    challenging.
+  severity: high
+  solution_hint: Automate routine phone tasks like scheduling, reminders, and follow-ups
+    to reduce administrative burden.
+- description: Inconsistent lead quality and unreliable inbound phone calls waste
+    significant time.
+  severity: medium
+  solution_hint: Use AI voice agent to pre-qualify leads, gather service details,
+    and schedule appointments only for qualified prospects.
+- description: Missed calls from new and existing clients directly result in lost
+    revenue and damage reputation.
+  severity: high
+  solution_hint: Implement 24/7 AI agent to answer every call, capture information,
+    and route urgent requests immediately.
+- description: Manual appointment scheduling and reminder calls consume administrative
+    hours.
+  severity: medium
+  solution_hint: Delegate scheduling, confirmations, and rescheduling to an AI agent
+    integrated with a digital calendar.
+- description: Difficulty upselling additional services (e.g., deep clean, window
+    washing) during customer interactions.
+  severity: low
+  solution_hint: Train voice agent to recognize opportunities and suggest relevant
+    add-on services during booking calls.
+- description: Managing client expectations for service windows and last-minute cancellations
+    is stressful.
+  severity: medium
+  solution_hint: Automate communication of service windows, send arrival notifications,
+    and handle cancellation/rescheduling policies.
+typical_services:
+- Residential Cleaning
+- Commercial/Office Cleaning
+- Deep Cleaning
+- Move-In/Move-Out Cleaning
+- Post-Construction Cleanup
+- Carpet Cleaning
+- Window Washing
+- Disinfection/Sanitization Services
+- Recurring Maintenance Cleaning
+- One-Time Clean
+recommended_functions:
+- name: Lead Qualification & Appointment Booking
+  priority: high
+  reason: Directly captures revenue by converting inbound calls into booked jobs without
+    human intervention.
+- name: 24/7 Call Answering & Information Capture
+  priority: high
+  reason: Prevents missed business opportunities from calls outside office hours.
+- name: Customer Reminders & Confirmation Calls
+  priority: medium
+  reason: Reduces no-shows and last-minute cancellations, optimizing crew schedules.
+- name: Payment Reminder & Collection Calls
+  priority: medium
+  reason: Improves cash flow by automating follow-up on unpaid invoices.
+- name: Service Feedback & Review Solicitation
+  priority: low
+  reason: Automates reputation building by collecting feedback and prompting online
+    reviews.
+- name: Upsell/Add-on Service Suggestions
+  priority: low
+  reason: Increases average job value by identifying client needs during the booking
+    conversation.
+typical_integrations:
+- name: Scheduling & Dispatch Software
+  examples:
+  - Jobber
+  - Housecall Pro
+  - ServiceTitan
+  priority: high
+- name: CRM Software
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Payment Processors
+  examples:
+  - Stripe
+  - Square
+  - QuickBooks Payments
+  priority: high
+- name: Business Communication Platforms
+  examples:
+  - Google Workspace
+  - Microsoft 365
+  priority: medium
+- name: Marketing Automation Tools
+  examples:
+  - Mailchimp
+  - Constant Contact
+  priority: low
+industry_faq:
+- question: How much do you charge for a standard house cleaning?
+  answer_template: Our pricing is customized based on your home's size, condition,
+    and the specific services requested. For a quick quote, I can ask you a few questions
+    about square footage, number of bedrooms/bathrooms, and desired frequency. Most
+    customers in your area invest between $X and $Y for a standard cleaning.
+- question: Are your cleaners bonded and insured?
+  answer_template: Yes, absolutely. All of our cleaning professionals are fully insured
+    and bonded for your peace of mind. We also conduct background checks. Would you
+    like me to email you a copy of our certificate of insurance?
+- question: What is your cancellation policy?
+  answer_template: We request at least 24 hours notice for cancellations to allow
+    us to adjust our team's schedule. For recurring services, we offer a convenient
+    online portal to manage or reschedule your appointments.
+- question: Do I need to be home during the cleaning?
+  answer_template: That's entirely up to your preference. Many of our clients provide
+    us with access via a lockbox, garage code, or smart lock. We have secure key management
+    protocols in place.
+- question: What cleaning products do you use?
+  answer_template: We use professional-grade, effective cleaning solutions. We can
+    also use your preferred products if you have specific requests. For clients with
+    sensitivities, we offer eco-friendly/green cleaning options.
+- question: How do I pay for the service?
+  answer_template: We accept all major credit cards and ACH bank transfers. For recurring
+    services, we offer convenient auto-pay. A secure payment link is emailed or texted
+    to you after each service.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks for pricing upfront without providing details.
+  script: I understand wanting to know the investment. To give you an accurate quote,
+    I need to ask a couple quick questions so we don't waste your time with a number
+    that doesn't fit your home. Is your property a house, condo, or apartment? And
+    roughly how many bedrooms and bathrooms?
+  goal: Engage the prospect in a conversation to qualify them and gather essential
+    information for an accurate quote.
+- trigger: service_details
+  situation: When a prospect is asking about what's included in a specific service.
+  script: Great question. Our standard cleaning focuses on high-traffic areas and
+    includes vacuuming, mopping, dusting, kitchen and bathroom sanitization, and making
+    surfaces shine. For a deep clean, we tackle areas often missed, like inside appliances,
+    baseboards, and light fixtures. Based on your needs, which service sounds like
+    a better fit to start?
+  goal: Educate the prospect on service tiers and guide them towards making a choice.
+- trigger: competitor_mention
+  situation: When a prospect mentions they are considering or currently use another
+    cleaning service.
+  script: That's helpful context. Many of our clients switched to us for our reliable
+    scheduling, our thorough background-checked teams, and our consistent quality.
+    What's the most important factor for you in a cleaning service - is it reliability,
+    thoroughness, or perhaps flexible scheduling?
+  goal: Differentiate our service and uncover the prospect's primary pain point or
+    need.
+- trigger: booking_hesitation
+  situation: When a prospect is interested but hesitant to book the first appointment.
+  script: It makes sense to want to ensure it's the right fit. We offer a 100% satisfaction
+    guarantee on your first clean. If you're not happy with any area, we'll come back
+    and reclean it at no charge. Would you like to secure a date for your first clean
+    under that guarantee?
+  goal: Overcome hesitation by reducing perceived risk and prompting a commitment.
+competitors:
+- name: Merry Maids
+  positioning: National franchise with strong brand recognition for residential cleaning.
+  strengths:
+  - National advertising
+  - standardized processes
+  - established brand trust
+  weaknesses:
+  - Can be more expensive
+  - potentially less personal/local feel
+  - franchise quality variance
+  our_differentiation: We offer more personalized service, direct owner/manager communication,
+    and flexible technology like AI booking and reminders.
+- name: Molly Maid
+  positioning: Another major residential cleaning franchise operating in many markets.
+  strengths:
+  - Franchise model
+  - recognizable name
+  - insured cleaners
+  weaknesses:
+  - Similar pricing to Merry Maids
+  - may use subcontractors in some areas
+  our_differentiation: We employ our own W-2 staff for better quality control and
+    use integrated AI to provide superior customer communication and scheduling reliability.
+- name: Local Independent Cleaners
+  positioning: Individual cleaners or small teams operating via word-of-mouth.
+  strengths:
+  - Often lower cost
+  - highly personal relationship
+  weaknesses:
+  - Lack of scalability
+  - no backup if cleaner is sick
+  - inconsistent business practices
+  - may not be insured
+  our_differentiation: We provide the reliability and professionalism of a company
+    (insurance, backups, guarantees) with the efficiency and modern convenience of
+    AI-powered booking and support.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 150
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Automating call answering and scheduling for a small cleaning company
+      missing 15 calls per month.
+    monthly_cost: 299
+    monthly_savings: 2250
+    payback_months: 1
+  - scenario: Reducing administrative time spent on reminders and follow-ups by 20
+      hours per week.
+    monthly_cost: 499
+    monthly_savings: 1600
+    payback_months: 1
+  value_anchors:
+  - Never miss a cleaning job lead again.
+  - Turn phone calls into booked appointments 24/7.
+  - Recover 15+ hours per week of owner/manager time.
+market_context:
+  market_size: 98 billion USD
+  growth_rate: 6.2%
+  key_trends:
+  - Increased demand for disinfection and sanitization services post-pandemic.
+  - Growth in subscription-based recurring cleaning models.
+  - Rising consumer preference for eco-friendly/green cleaning products.
+  - Adoption of technology for booking, payments, and communication.
+  seasonality:
+    high:
+    - Spring (March-May)
+    - Late Summer (August-September) for move-in/move-out
+    low:
+    - Winter Holiday Season (Late November-December)
+typical_objections:
+- objection: I already have a cleaner I'm happy with.
+  response: That's great to hear! Many of our clients were in the same position but
+    valued having a reliable company as a backup for when their regular cleaner is
+    unavailable or if they need an extra deep clean. We also offer a satisfaction
+    guarantee. Would it be worth having us as a backup option?
+- objection: It's too expensive.
+  response: I understand considering the investment. Our pricing reflects our fully
+    insured staff, quality-controlled work, and the convenience of reliable scheduling
+    we provide. Think of it as buying back your free time and peace of mind. Could
+    we start with a one-time deep clean so you can experience the value firsthand?
+- objection: I'm worried about letting strangers into my home.
+  response: Your concern is completely valid. We mitigate that risk by conducting
+    thorough background checks on all team members, they always work in uniformed
+    pairs, and we are fully bonded and insured. We also offer lockbox or smart lock
+    options if you prefer not to be home.
+meta:
+  id: cleaning
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

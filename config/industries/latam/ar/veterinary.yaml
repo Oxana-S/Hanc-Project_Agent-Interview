@@ -1,0 +1,203 @@
+pain_points:
+- description: Alta carga administrativa que consume tiempo del personal veterinario.
+  severity: high
+  solution_hint: Automatizar tareas como programación de citas y recordatorios para
+    liberar tiempo.
+- description: Dificultades en la gestión de inventario de medicamentos y suministros.
+  severity: medium
+  solution_hint: Integrar con sistemas de inventario para alertas automáticas de stock
+    bajo.
+- description: Pérdida de clientes por falta de seguimiento post-consulta.
+  severity: medium
+  solution_hint: Enviar recordatorios automáticos para controles y vacunas.
+- description: Saturación de llamadas telefónicas durante horas pico.
+  severity: high
+  solution_hint: Usar agente de voz para manejar consultas frecuentes y derivar urgentes.
+- description: Errores en la facturación y cobranza debido a procesos manuales.
+  severity: medium
+  solution_hint: Automatizar la emisión de facturas y recordatorios de pago.
+- description: Dificultad para captar nuevos clientes en un mercado competitivo.
+  severity: low
+  solution_hint: Implementar campañas de marketing automatizadas por voz.
+typical_services:
+- Consulta veterinaria general
+- Vacunación anual
+- Desparasitación interna y externa
+- Cirugía de esterilización
+- Radiología y ecografía
+- Hospitalización y cuidados intensivos
+- Peluquería y baño para mascotas
+- Venta de alimentos y accesorios
+- Microchipado de identificación
+- Servicios de emergencia 24/7
+recommended_functions:
+- name: Programación automática de citas
+  priority: high
+  reason: Reduce la carga de trabajo administrativo y mejora la experiencia del cliente.
+- name: Recordatorios de vacunas y controles
+  priority: high
+  reason: Aumenta la fidelización de clientes y los ingresos recurrentes.
+- name: Respuesta a preguntas frecuentes
+  priority: medium
+  reason: Libera al personal para tareas más críticas y mejora el servicio.
+- name: Toma de pedidos para productos
+  priority: low
+  reason: Facilita las ventas adicionales y la conveniencia.
+- name: Derivación de emergencias
+  priority: medium
+  reason: Garantiza que los casos urgentes sean atendidos rápidamente.
+- name: Encuestas de satisfacción post-consulta
+  priority: low
+  reason: Recopila feedback para mejorar servicios.
+typical_integrations:
+- name: Sistema de gestión veterinaria
+  examples:
+  - VetPlus
+  - CliniVet
+  - SoftVet
+  priority: high
+- name: Software de facturación
+  examples:
+  - AFIP compatible
+  - FacturadorPro
+  priority: high
+- name: Plataforma de pagos en línea
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  priority: medium
+- name: Sistema de inventario
+  examples:
+  - InventarioVet
+  - StockMaster
+  priority: medium
+- name: Redes sociales y marketing
+  examples:
+  - Facebook
+  - Instagram para veterinarias
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una consulta veterinaria?
+  answer_template: El costo varía según la clínica y el tipo de consulta, pero normalmente
+    ronda entre 2000 y 5000 ARS. Le recomiendo programar una cita para obtener un
+    presupuesto exacto.
+- question: ¿Qué vacunas necesita mi mascota?
+  answer_template: Las vacunas esenciales incluyen antirrábica y múltiple, pero depende
+    de la especie y edad. Sugiero agendar una consulta para un plan personalizado.
+- question: ¿Atienden emergencias las 24 horas?
+  answer_template: Algunas clínicas ofrecen servicio de emergencia, pero le recomiendo
+    llamar con anticipación para confirmar disponibilidad y derivaciones.
+- question: ¿Aceptan pagos con tarjeta de crédito?
+  answer_template: Sí, la mayoría de las clínicas aceptan tarjetas y otros métodos
+    como Mercado Pago. Consulte con su clínica preferida.
+- question: ¿Cómo puedo programar una cita?
+  answer_template: Puede programar una cita llamando directamente o usando nuestro
+    sistema automatizado para mayor conveniencia.
+- question: ¿Ofrecen descuentos para múltiples mascotas?
+  answer_template: Algunas clínicas tienen promociones para familias con varias mascotas.
+    Pregunte al momento de la reserva.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de nuestros servicios de automatización.
+  script: Hola, entiendo que quiere conocer el costo. Nuestro servicio de agente de
+    voz AI comienza desde 5000 ARS mensuales y puede ahorrarle hasta 20 horas de trabajo
+    administrativo al mes. ¿Le gustaría una demostración gratuita?
+  goal: Convertir la consulta en una demostración para mostrar el valor.
+- trigger: busy_schedule
+  situation: Cuando un veterinario menciona que está demasiado ocupado para implementar
+    cambios.
+  script: Comprendo que su tiempo es valioso. Nuestra solución se integra fácilmente
+    en 24 horas y maneja tareas repetitivas, permitiéndole enfocarse en la atención
+    médica. ¿Podemos agendar una llamada breve para explicar cómo funciona?
+  goal: Superar la objeción de tiempo y programar una siguiente acción.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor.
+  script: Es bueno que esté explorando opciones. A diferencia de otros, nuestro agente
+    de voz está especializado para veterinarias en Argentina, con soporte local y
+    integraciones personalizadas. ¿Qué le parece si comparamos los beneficios específicos?
+  goal: Diferenciar nuestro servicio y mantener el interés.
+competitors:
+- name: VetCall Argentina
+  positioning: Proveedor de soluciones de comunicación para veterinarias.
+  strengths:
+  - Amplia red de clientes
+  - soporte técnico local
+  weaknesses:
+  - Funciones limitadas de AI
+  - precios altos
+  our_differentiation: Ofrecemos AI avanzada con integraciones completas a menor costo.
+- name: CliniTech Latam
+  positioning: Empresa de software de gestión para clínicas veterinarias.
+  strengths:
+  - Sistema integral
+  - buena reputación
+  weaknesses:
+  - Falta de automatización por voz
+  - implementación lenta
+  our_differentiation: Enfoque en automatización por voz que complementa sus sistemas
+    existentes.
+- name: MascotaConnect
+  positioning: Plataforma de citas en línea para mascotas.
+  strengths:
+  - Interfaz fácil de usar
+  - marketing agresivo
+  weaknesses:
+  - Solo citas
+  - sin soporte de voz AI
+  our_differentiation: Agente de voz multifuncional que maneja citas, recordatorios
+    y más.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 3000
+  - 15000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de programación de citas para una clínica mediana.
+    monthly_cost: 5000
+    monthly_savings: 10000
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 20 horas mensuales en tareas administrativas.
+  - Incremente la fidelización de clientes en un 30% con recordatorios automáticos.
+  - Reduzca errores de facturación con integraciones inteligentes.
+market_context:
+  market_size: Estimado en 500 millones de ARS anuales para servicios veterinarios
+    en Argentina.
+  growth_rate: 8% anual
+  key_trends:
+  - Aumento de la tenencia de mascotas en hogares urbanos.
+  - Mayor demanda de servicios premium como salud preventiva.
+  - Adopción de tecnología para mejorar la eficiencia operativa.
+  seasonality:
+    high:
+    - Verano
+    - Fiestas de fin de año
+    low:
+    - Invierno
+typical_objections:
+- objection: Es muy caro para mi clínica pequeña.
+  response: Entiendo su preocupación. Nuestro plan de entrada está diseñado para clínicas
+    pequeñas y el ROI se logra en el primer mes con los ahorros en tiempo. ¿Podemos
+    analizar sus costos actuales?
+- objection: No tengo tiempo para implementar nuevas tecnologías.
+  response: Nuestra implementación es rápida y sin interrupciones, con soporte dedicado.
+    Le ayudamos en cada paso para que pueda empezar a ahorrar tiempo inmediatamente.
+- objection: Prefiero manejar todo personalmente.
+  response: 'Valoro su dedicación. Sin embargo, automatizar tareas repetitivas le
+    permite enfocarse en lo que más importa: la salud de las mascotas. ¿Le interesaría
+    una prueba gratuita?'
+meta:
+  id: veterinary
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

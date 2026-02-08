@@ -1,0 +1,195 @@
+pain_points:
+- description: Hohe bürokratische Belastung durch strenge gesetzliche Vorschriften
+    und Dokumentationspflichten.
+  severity: high
+  solution_hint: Automatisierung von Verwaltungsaufgaben und Erinnerungen an Fristen.
+- description: Fachkräftemangel, der zu Personalengpässen und erhöhtem Arbeitsaufwand
+    führt.
+  severity: high
+  solution_hint: Unterstützung bei der Personalplanung und Automatisierung von Routineanfragen.
+- description: Ineffiziente Verwaltung von Elterngesprächen, Terminen und Wartelisten.
+  severity: medium
+  solution_hint: Automatische Terminvereinbarung und Verwaltung von Kommunikationskanälen.
+- description: Herausforderungen bei der Einhaltung der DSGVO bei der Verarbeitung
+    sensibler Kinderdaten.
+  severity: high
+  solution_hint: DSGVO-konforme Datenerfassung und -speicherung durch sichere Systeme.
+- description: Komplexe Finanzverwaltung, einschließlich Abrechnung von Elternbeiträgen
+    und Subventionsanträgen.
+  severity: medium
+  solution_hint: Integration mit Buchhaltungssoftware und Automatisierung von Abrechnungsprozessen.
+- description: Saisonale Schwankungen in der Auslastung, insbesondere während Schulferien.
+  severity: low
+  solution_hint: Dynamische Anpassung von Betreuungszeiten und Ressourcenplanung.
+typical_services:
+- Kinderbetreuung
+- Tagespflege
+- Krippenplätze
+- Kindergartenplätze
+- Hortbetreuung
+- Ganztagsbetreuung
+- Flexible Betreuungszeiten
+- Inklusive Betreuung
+- Sprachförderung
+- Musik- und Bewegungserziehung
+recommended_functions:
+- name: Automatische Terminvereinbarung
+  priority: high
+  reason: Reduziert den Administrationsaufwand für Elterngespräche und Anmeldungen.
+- name: FAQ-Beantwortung für Eltern
+  priority: medium
+  reason: Entlastet das Personal von häufigen Anfragen zu Öffnungszeiten und Gebühren.
+- name: Verwaltung von Wartelisten
+  priority: medium
+  reason: Optimiert die Platzvergabe und verbessert die Transparenz für Eltern.
+- name: DSGVO-konforme Datenerfassung
+  priority: high
+  reason: Stellt die Compliance mit deutschen Datenschutzgesetzen sicher.
+- name: Integration mit Kita-Management-Software
+  priority: high
+  reason: Vereinfacht die täglichen Betriebsabläufe und Daten synchronisation.
+- name: Personalplanung Unterstützung
+  priority: low
+  reason: Hilft bei der Schichtplanung und Urlaubsverwaltung.
+typical_integrations:
+- name: Kita-Management-Software
+  examples:
+  - Kitalino
+  - Kita-Planer
+  - KitaSoft
+  priority: high
+- name: Buchhaltungssysteme
+  examples:
+  - Datev
+  - Lexware
+  - SevDesk
+  priority: medium
+- name: Kalendersysteme
+  examples:
+  - Google Kalender
+  - Microsoft Outlook
+  priority: medium
+- name: Kommunikationstools
+  examples:
+  - WhatsApp Business
+  - E-Mail-Client
+  priority: low
+industry_faq:
+- question: Wie hoch sind die monatlichen Gebühren für einen Kindergartenplatz?
+  answer_template: Die Gebühren variieren je nach Region und Betreuungsmodell. Typischerweise
+    liegen sie zwischen 100 und 500 EUR pro Monat, abhängig von Zuschüssen und Öffnungszeiten.
+- question: Gibt es flexible Betreuungszeiten, auch außerhalb der Standardzeiten?
+  answer_template: Ja, viele Einrichtungen bieten flexible Optionen wie Früh- oder
+    Spätbetreuung an. Bitte erfragen Sie die genauen Zeiten bei Ihrer Wunscheinrichtung.
+- question: Wie lange ist die Wartezeit für einen Platz?
+  answer_template: Die Wartezeit kann mehrere Monate betragen, insbesondere in städtischen
+    Gebieten. Wir empfehlen eine frühzeitige Anmeldung.
+- question: Werden auch Kinder mit besonderen Bedürfnissen betreut?
+  answer_template: Ja, inklusive Betreuung ist weit verbreitet. Bitte besprechen Sie
+    individuelle Anforderungen direkt mit der Einrichtung.
+- question: Wie wird die Einhaltung der DSGVO bei Kinderdaten gewährleistet?
+  answer_template: Alle Daten werden verschlüsselt und gemäß DSGVO-Richtlinien verarbeitet.
+    Wir verwenden sichere Systeme für die Datenspeicherung.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Elternteil nach den Kosten für Betreuungsdienste fragt.
+  script: Hallo! Die Gebühren hängen von der Art der Betreuung ab. Unser Basispaket
+    beginnt bei 150 EUR pro Monat und beinhaltet standardmäßige Öffnungszeiten. Möchten
+    Sie mehr über individuelle Optionen erfahren?
+  goal: Interesse wecken und zu einem detaillierten Gespräch überpassen.
+- trigger: availability_inquiry
+  situation: Bei Anfragen zur Verfügbarkeit von Plätzen.
+  script: Guten Tag! Aktuell haben wir begrenzte Verfügbarkeit, aber wir können Sie
+    auf unsere Warteliste setzen. Unser System benachrichtigt Sie automatisch, sobald
+    ein Platz frei wird. Möchten Sie sich vormerken lassen?
+  goal: Kundenbindung durch effiziente Wartelistenverwaltung.
+- trigger: compliance_concern
+  situation: Wenn Bedenken bezüglich Datenschutz aufkommen.
+  script: Verständlich, Datenschutz ist wichtig. Unsere Lösungen sind DSGVO-konform
+    und minimieren das Risiko durch automatisierte, sichere Prozesse. Können wir Ihnen
+    mehr dazu erklären?
+  goal: Vertrauen aufbauen und Compliance-Vorteile hervorheben.
+competitors:
+- name: Kitalino
+  positioning: Führende Kita-Management-Software in Deutschland.
+  strengths:
+  - Benutzerfreundliche Oberfläche
+  - Umfassende Funktionen
+  weaknesses:
+  - Höhere Kosten
+  - Begrenzte Integrationen
+  our_differentiation: Wir bieten kostengünstigere Optionen mit besserer AI-Integration
+    für Automatisierung.
+- name: FRÖBEL
+  positioning: Große Trägerorganisation mit zahlreichen Einrichtungen.
+  strengths:
+  - Starke Markenpräsenz
+  - Hohe Qualitätsstandards
+  weaknesses:
+  - Starre Strukturen
+  - Längere Entscheidungsprozesse
+  our_differentiation: Wir ermöglichen kleinen Einrichtungen ähnliche Effizienz durch
+    skalierbare AI-Lösungen.
+- name: Kita-Planer
+  positioning: Beliebte Software für Verwaltung und Planung.
+  strengths:
+  - Gute Kundensupport
+  - Regelmäßige Updates
+  weaknesses:
+  - Komplexe Einrichtung
+  - Mangelnde Mobilität
+  our_differentiation: Unsere Cloud-basierten Systeme sind flexibler und einfach von
+    überall zu bedienen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatisierung von Elterngesprächen und Terminverwaltung
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 10 Stunden Verwaltungszeit pro Woche.
+  - Reduzieren Sie Fehler bei der Abrechnung um 30%.
+  - Verbessern Sie die Zufriedenheit der Eltern durch schnellere Antwortzeiten.
+market_context:
+  market_size: Über 10 Milliarden EUR jährlich
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Zunehmende Nachfrage nach flexibler Betreuung
+  - Digitalisierung von Verwaltungsprozessen
+  - Fokus auf inklusive und frühkindliche Bildung
+  seasonality:
+    high:
+    - September (Schulanfang)
+    - Januar (Neuanmeldungen)
+    low:
+    - Juli-August (Sommerferien)
+    - Dezember (Weihnachtsferien)
+typical_objections:
+- objection: Die Kosten sind zu hoch für unsere kleine Einrichtung.
+  response: Unsere Lösungen sind skalierbar und beginnen bei niedrigen Einstiegspreisen.
+    Die Einsparungen durch Automatisierung gleichen die Kosten schnell aus.
+- objection: Wir haben bereits etablierte Prozesse, warum sollten wir ändern?
+  response: AI-Unterstützung kann Ihre bestehenden Prozesse effizienter machen, ohne
+    sie komplett zu ersetzen. Probieren Sie es mit einer Testphase.
+- objection: Datenschutzbedenken bei der Nutzung von Cloud-Systemen.
+  response: Wir arbeiten mit DSGVO-konformen Anbietern in der EU und bieten lokale
+    Speicheroptionen für maximale Sicherheit.
+meta:
+  id: childcare
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

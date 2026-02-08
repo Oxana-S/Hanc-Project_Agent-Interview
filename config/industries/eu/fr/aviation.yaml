@@ -1,0 +1,282 @@
+pain_points:
+- description: Les délais administratifs pour les autorisations de vol et les certifications
+    sont longs et complexes, ralentissant les opérations.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser les rappels pour les échéances, centraliser
+    les demandes et fournir des mises à jour en temps réel sur l'état des dossiers.
+- description: La gestion des réservations et du service clientèle est chronophage,
+    surtout lors des pics saisonniers.
+  severity: high
+  solution_hint: Automatiser la prise de rendez-vous, la confirmation des vols, et
+    le traitement des demandes simples pour libérer le personnel.
+- description: Les coûts de maintenance imprévus et la planification des visites techniques
+    perturbent la flotte et la rentabilité.
+  severity: high
+  solution_hint: Programmer des rappels intelligents pour la maintenance préventive
+    et coordonner automatiquement avec les ateliers agréés.
+- description: La fluctuation des prix du carburant impacte fortement la marge opérationnelle.
+  severity: medium
+  solution_hint: Fournir des alertes vocales sur les variations des prix et des analyses
+    pour optimiser les achats.
+- description: Difficulté à recruter et former du personnel qualifié (pilotes, techniciens).
+  severity: medium
+  solution_hint: Pré-qualifier les candidats par des questionnaires vocaux automatisés
+    et gérer la planification des entretiens.
+- description: Respect strict des réglementations européennes (EASA) et du RGPD pour
+    la gestion des données clients.
+  severity: high
+  solution_hint: Intégrer des vérifications de conformité dans les processus et sécuriser
+    les interactions vocales selon le RGPD.
+- description: Optimisation insuffisante du remplissage des avions (taux de charge)
+    et de la logistique au sol.
+  severity: medium
+  solution_hint: Analyser les données historiques et suggérer des ajustements de planning
+    via des rappels automatisés.
+typical_services:
+- Transport aérien de passagers (lignes régulières et charters)
+- Transport aérien de fret
+- Maintenance, Réparation et Révision (MRO)
+- Gestion et location d'aéronefs (ACM)
+- Assistance en escale (handling)
+- Formation de pilotes et de personnel navigant
+- Achat d'avions neufs/d'occasion
+- Conseil en conformité réglementaire EASA
+- Services de catering aérien
+- Aménagement et personnalisation de cabines
+recommended_functions:
+- name: Gestionnaire de Réservations et Service Client
+  priority: high
+  reason: Réduit la charge des centres d'appel, disponible 24/7 pour les confirmations,
+    modifications et FAQ.
+- name: Coordinateur de Maintenance Intelligente
+  priority: high
+  reason: Minimise les immobilisations au sol en planifiant proactivement les visites
+    techniques.
+- name: Assistant aux Opérations au Sol
+  priority: medium
+  reason: Coordonne le handling, le ravitaillement et l'équipage, réduisant les retards.
+- name: Sondeur de Satisfaction Client
+  priority: medium
+  reason: Collecte automatiquement des retours post-vol pour améliorer la qualité
+    de service.
+- name: Alerteur Tarifaire et Logistique
+  priority: low
+  reason: Informe les équipes des fluctuations des coûts (carburant, fret) pour une
+    meilleure réactivité.
+- name: Recruteur Vocal Pré-Qualificatif
+  priority: low
+  reason: Filtre les candidats pour les postes critiques, accélérant le processus
+    de recrutement.
+typical_integrations:
+- name: Système de Réservation (CRS/GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Système de Gestion de Maintenance (MRO)
+  examples:
+  - AMOS
+  - SAP Aviation
+  - Trax
+  priority: high
+- name: Système de Gestion de la Relation Client (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  priority: medium
+- name: Logiciel de Planification des Équipages et des Vols
+  examples:
+  - Jeppesen
+  - AIMS
+  priority: medium
+- name: Plateforme de Gestion des Données Aéronautiques
+  examples:
+  - Eurocontrol
+  - DGAC interfaces
+  priority: high
+- name: Outil de Communication Unifiée
+  examples:
+  - Microsoft Teams
+  - Cisco Jabber
+  priority: low
+industry_faq:
+- question: Comment gérez-vous la conformité RGPD dans vos appels automatisés ?
+  answer_template: Toutes nos interactions sont conçues dans le respect du RGPD. Les
+    données sont chiffrées, les enregistrements sont optionnels et purgés selon la
+    durée légale, et nous ne collectons que le strict nécessaire. Vous conservez un
+    contrôle total.
+- question: Votre système peut-il s'intégrer à notre logiciel de gestion de maintenance
+    AMOS ?
+  answer_template: Absolument. Notre agent vocal peut s'interfacer avec AMOS via des
+    API sécurisées pour déclencher des ordres de travail, rappeler les échéances et
+    mettre à jour les statuts sans effort manuel.
+- question: Est-ce adapté pour gérer les pics d'appels pendant les vacances scolaires
+    ?
+  answer_template: Oui, c'est l'un de ses principaux atouts. Il peut absorber un volume
+    illimité d'appels simultanés pour des demandes courantes (bagages, horaires),
+    garantissant un service fluide même en période de pointe.
+- question: Proposez-vous une solution pour les aéroports régionaux plus petits ?
+  answer_template: Tout à fait. Notre solution est modulaire et scalable. Nous pouvons
+    commencer par automatiser l'assistance téléphonique et la gestion des créneaux
+    d'atterrissage, avec un investissement initial adapté.
+- question: Quel est le délai de déploiement typique ?
+  answer_template: Pour une première intégration de base (comme la gestion des réservations),
+    comptez 4 à 6 semaines. Les déploiements plus complexes (maintenance, opérations)
+    peuvent prendre 8 à 12 semaines.
+- question: Comment mesurez-vous le retour sur investissement ?
+  answer_template: Nous mesurons la réduction du temps de traitement des appels, la
+    baisse des retards opérationnels, l'optimisation des taux d'occupation et la satisfaction
+    client. Un rapport mensuel détaillé vous est fourni.
+sales_scripts:
+- trigger: price_question
+  situation: Quand le prospect demande le coût dès le premier contact.
+  script: 'Je comprends votre souci de maîtriser les coûts. Notre tarification dépend
+    des modules choisis (ex: service client, maintenance). L''entrée de gamme pour
+    automatiser votre standard et les FAQ commence à 300 €/mois. Pour une estimation
+    précise, puis-je vous poser deux questions sur votre volume d''appels mensuel
+    et vos principaux processus à soulager ?'
+  goal: Éviter un refus sur le prix, recentrer sur la valeur et qualifier le prospect.
+- trigger: competitor_mention
+  situation: 'Quand le prospect cite un concurrent (ex: un call center traditionnel).'
+  script: Les centres d'appels externes sont une solution, mais souvent rigides et
+    coûteux à l'heure. Notre agent vocal travaille pour vous 24h/24, sans frais horaires
+    supplémentaires. Il s'intègre directement à vos systèmes pour une information
+    en temps réel, ce qu'un call center externe ne fait pas. Cela réduit les erreurs
+    et améliore l'expérience de vos passagers.
+  goal: Contrer en soulignant les avantages d'une automation intégrée et rentable.
+- trigger: objection_complexity
+  situation: Quand le prospect pense que son processus est trop complexe pour être
+    automatisé.
+  script: C'est une préoccupation courante. Justement, notre force est de gérer la
+    complexité. Nous commençons par cartographier votre processus spécifique - par
+    exemple, la gestion d'un retard dû à une maintenance. L'agent peut alors alerter
+    automatiquement les passateurs, réorganiser les créneaux au sol et prévenir l'équipage.
+    Pouvons-nous planifier un atelier de 30 minutes pour étudier un de vos processus
+    clés ?
+  goal: Transformer l'objection en démonstration de valeur et obtenir un engagement
+    pour un atelier.
+- trigger: post_demo_follow_up
+  situation: Suite à une démonstration, pour relancer et conclure.
+  script: Suite à notre démo, j'espère que vous avez vu comment l'agent pourrait gérer
+    vos réservations et rappels de maintenance. Le prochain pas est un pilote limité,
+    par exemple sur la gestion des retards pour un seul aéroport. Cela vous permet
+    de voir les gains concrets sans engagement à grande échelle. Cela vous intéresse-t-il
+    pour le mois prochain ?
+  goal: Proposer une étape concrète et à faible risque (pilote) pour faire avancer
+    la vente.
+competitors:
+- name: 'Solutions de call center externalisés traditionnels (ex: Teleperformance,
+    Webhelp)'
+  positioning: Prestataire de services externalisés de gestion de la relation client.
+  strengths:
+  - Fortes capacités humaines pour les cas complexes
+  - Présence établie en France
+  - Infrastructure téléphonique robuste
+  weaknesses:
+  - Coûts variables élevés (à l'heure/à l'appel)
+  - Difficulté d'intégration profonde avec les logiciels métier
+  - Rigidité et temps de montée en charge
+  our_differentiation: Coût fixe prévisible, intégration native aux systèmes aviation
+    (Amadeus, AMOS), disponible 24/7 sans surcoût, et amélioration continue par l'IA.
+- name: 'Éditeurs de logiciels d''automatisation génériques (ex: UIPath pour RPA)'
+  positioning: Plateformes d'automatisation robotique des processus pour tous secteurs.
+  strengths:
+  - Grande flexibilité pour des processus sur mesure
+  - Portefeuille clients large
+  weaknesses:
+  - Nécessitent des compétences techniques internes pour développement/maintenance
+  - Pas de connaissances métier aviation intégrées
+  - Pas optimisés pour l'interface vocale naturelle
+  our_differentiation: Solution clé en main spécifique à l'aviation avec terminologie
+    et processus pré-configurés, interface vocale intuitive, et support spécialisé
+    dans le secteur.
+- name: Air France Industries (pour les services MRO et logistiques)
+  positioning: Acteur historique intégré offrant des services techniques et opérationnels.
+  strengths:
+  - Expertise technique inégalée
+  - Réseau mondial
+  - Connaissance approfondie des réglementations
+  weaknesses:
+  - Principalement orienté vers les services physiques, pas le digital
+  - Solutions d'automatisation logicielle moins développées
+  - Coûts potentiellement plus élevés pour les petites compagnies
+  our_differentiation: Nous nous concentrons sur l'automatisation digitale et la productivité
+    des processus administratifs et de communication, en complément de leurs services
+    techniques, avec un modèle plus agile et accessible.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisation du service client pour une compagnie régionale (gestion
+      des retards, bagages, horaires).
+    monthly_cost: 800
+    monthly_savings: 2400
+    payback_months: 1
+  - scenario: Coordination de la maintenance pour une flotte de 5 avions d'affaires.
+    monthly_cost: 1200
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Réduisez jusqu'à 70% du temps passé au téléphone sur les demandes récurrentes.
+  - Évitez les retards coûteux grâce à des alertes de maintenance proactive.
+  - Améliorez la satisfaction client avec un service disponible 24h/24 en français.
+market_context:
+  market_size: Estimé à plusieurs centaines de millions d'euros pour les services
+    digitaux et d'automatisation dans l'aviation en France.
+  growth_rate: ~8-12% par an, poussé par la reprise du trafic aérien et la digitalisation
+    accélérée.
+  key_trends:
+  - Pression forte sur la réduction des coûts opérationnels et l'empreinte carbone.
+  - Digitalisation accrue des processus passagers et opérationnels post-COVID.
+  - Pénurie de main-d'œuvre qualifiée accélérant l'adoption de l'automatisation.
+  - Importance croissante de la data et de l'IA pour optimiser les routes et la maintenance.
+  seasonality:
+    high:
+    - Juillet-Août (vacances d'été)
+    - Décembre (fêtes de fin d'année)
+    - Vacances scolaires (zones A, B, C)
+    low:
+    - Janvier (post-fêtes)
+    - Novembre
+    - Fin octobre (hors vacances)
+typical_objections:
+- objection: Nos processus sont trop spécifiques et ne peuvent pas être standardisés.
+  response: C'est justement ce que nous faisons le mieux. Nous ne vendons pas une
+    solution standard. Nous configurons l'agent selon vos processus métier exacts,
+    votre jargon et vos systèmes. Pouvons-nous examiner un processus spécifique pour
+    vous le démontrer ?
+- objection: Nos clients préfèrent parler à un humain, surtout pour des problèmes
+    complexes.
+  response: Nous sommes entièrement d'accord. Notre agent ne remplace pas le contact
+    humain pour les situations critiques. Il filtre et traite les appels simples (70%
+    du volume), libérant vos équipes pour se concentrer sur les cas complexes où leur
+    expertise fait toute la différence. C'est un gain de qualité de service.
+- objection: Nous avons déjà investi dans un CRM, cela devrait suffire.
+  response: 'Un CRM est excellent pour enregistrer les données, mais pas pour interagir
+    en temps réel. Notre agent vocal agit comme un prolongement actif de votre CRM
+    : il rentre et récupère les informations par la voix, automatise les actions.
+    C''est la pièce manquante pour rendre votre CRM pleinement opérationnel sur le
+    front client et opérationnel.'
+- objection: La mise en œuvre va perturber nos opérations en cours.
+  response: Nous procédons par étapes et en parallèle de vos systèmes existants. Nous
+    pouvons commencer par un pilote sur un processus non-critique. Notre équipe assure
+    le déploiement et la formation. L'objectif est de réduire les perturbations, pas
+    d'en créer.
+meta:
+  id: aviation
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

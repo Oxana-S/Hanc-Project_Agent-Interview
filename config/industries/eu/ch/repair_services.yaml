@@ -1,0 +1,244 @@
+pain_points:
+- description: Schwierigkeiten bei der Terminvereinbarung und Kundenkommunikation,
+    insbesondere außerhalb der Geschäftszeiten.
+  severity: high
+  solution_hint: AI-Sprachagent kann 24/7 Termine entgegennehmen und Kundenfragen
+    beantworten.
+- description: Hoher Zeitaufwand für die telefonische Erstellung von Kostenvoranschlägen
+    und die Erklärung von Reparaturdetails.
+  severity: medium
+  solution_hint: Automatisierte Kostenvoranschlag-Generierung und standardisierte
+    Erklärungen per Sprachnachricht.
+- description: Verpasste Anrufe und verlorene Aufträge durch überlastete Telefonleitungen
+    während Stoßzeiten.
+  severity: high
+  solution_hint: AI-Sprachagent als zusätzliche, nie besetzte Leitung zur Annahme
+    aller Anrufe und Lead-Erfassung.
+- description: Unklare Kommunikation von Lieferzeiten für Ersatzteile bei speziellen
+    Markengeräten.
+  severity: medium
+  solution_hint: Agent kann Lagerstatus abfragen und automatisiert Updates zur Teileverfügbarkeit
+    geben.
+- description: Herausforderung bei der Gewinnung neuer Kunden in lokalen Märkten neben
+    großen Ketten.
+  severity: high
+  solution_hint: Agent kann gezielt Prospektierungsanrufe tätigen und lokale Promotionen
+    kommunizieren.
+- description: Bürokratischer Aufwand für die Verwaltung von Kunden- und Reparaturdaten
+    gemäß FADP.
+  severity: low
+  solution_hint: Automatisierte, datenschutzkonforme Dokumentation von Kundeninteraktionen.
+- description: Unvorhergesehene Auslastungsschwankungen, schwer planbare Personaleinsätze.
+  severity: medium
+  solution_hint: Analyse von Anruf- und Termindaten zur besseren Kapazitätsplanung.
+typical_services:
+- Smartphone- und Tablet-Reparatur
+- Laptop- und Computerreparatur
+- Fernseher- und Bildschirmreparatur
+- Haushaltsgeräte-Reparatur (Waschmaschine, Kühlschrank)
+- Reparatur von Unterhaltungselektronik (Spielkonsolen, Lautsprecher)
+- Gewerbliche Gerätereparatur (Kassensysteme, Drucker)
+- Notdienst für dringende Reparaturen
+- Vor-Ort-Service
+- Wartungsverträge für Unternehmen
+- Datenrettung und -sicherung
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Reduziert Wartezeiten für Kunden und entlastet Mitarbeiter von Planungsaufgaben.
+- name: 24/7 Kunden-First-Level-Support
+  priority: high
+  reason: Fängt Basis-Anfragen jederzeit ab und schafft Kapazität für komplexe Fälle.
+- name: Lead-Qualifizierung und -Erfassung
+  priority: high
+  reason: Identifiziert und dokumentiert neue Auftragschancen aus eingehenden Anrufen.
+- name: Automatisierte Auftragsstatus-Benachrichtigung
+  priority: medium
+  reason: Erhöht Kundenzufriedenheit durch transparente Kommunikation ohne manuellen
+    Aufwand.
+- name: Zahlungserinnerungen und Rechnungsinformationen
+  priority: low
+  reason: Verbessert Cashflow durch automatisierte Follow-ups zu ausstehenden Zahlungen.
+- name: Proaktive Wartungserinnerungen
+  priority: medium
+  reason: Generiert wiederkehrende Umsätze durch Kundenbindung bei Serviceverträgen.
+typical_integrations:
+- name: Terminplanungssoftware
+  examples:
+  - Calendly
+  - Google Calendar
+  - Dienstleister-eigene Lösung
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - SwissCRM
+  - HubSpot
+  - Salesforce
+  priority: high
+- name: Lagerverwaltungssystem
+  examples:
+  - Zoho Inventory
+  - Procarat
+  - erp4repair
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Pleo
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - WhatsApp Business API
+  - Threema Work
+  priority: low
+industry_faq:
+- question: Wie schnell können Sie mein Gerät reparieren?
+  answer_template: Bei Standardreparaturen mit verfügbaren Ersatzteilen planen wir
+    mit 1-2 Werktagen. Für eine genaue Einschätzung erstellen wir gerne einen unverbindlichen
+    Kostenvoranschlag.
+- question: Geben Sie eine Garantie auf die Reparatur?
+  answer_template: Ja, wir gewähren auf unsere Arbeiten und verbauten Ersatzteile
+    eine Garantie von 6 Monaten. Die genauen Bedingungen teilen wir Ihnen im Reparaturauftrag
+    mit.
+- question: Kommen Sie auch für Reparaturen zu mir nach Hause?
+  answer_template: Für bestimmte Geräte wie Waschmaschinen oder Fernseher bieten wir
+    einen Vor-Ort-Service an. Die Verfügbarkeit hängt von Ihrer Region ab. Gerne prüfen
+    wir das für Sie.
+- question: Sind Ihre Preise inklusive Mehrwertsteuer?
+  answer_template: Ja, alle genannten Preise verstehen sich inklusive der gesetzlichen
+    Mehrwertsteuer von 7.7%. Im Kostenvoranschlag wird alles transparent aufgeschlüsselt.
+- question: Was passiert, wenn ein Ersatzteil nicht verfügbar ist?
+  answer_template: Wir unterrichten Sie umgehend und besprechen Alternativen, wie
+    z.B. die Beschaffung über spezielle Lieferanten oder generalüberholte Teile. Die
+    Lieferzeit kann sich in solchen Fällen verlängern.
+- question: Wie schützen Sie meine persönlichen Daten auf dem Gerät?
+  answer_template: Wir behandeln alle Kundendaten streng vertraulich und gemäß den
+    Schweizer Datenschutzgesetzen (FADP). Vor der Reparatur bieten wir auf Wunsch
+    eine Datensicherung an.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach dem Preis für eine Standardreparatur
+    (z.B. iPhone Display) fragt.
+  script: Für den Austausch des Displays an einem iPhone [Modell] berechnen wir pauschal
+    CHF [Preis], inklusive Teil, Arbeit und Garantie. Möchten Sie einen genauen Kostenvoranschlag
+    oder direkt einen Termin vereinbaren?
+  goal: Transparente Preisnennung und Weiterleitung zur Terminvereinbarung oder Detailklärung.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen großen Elektronikhändler oder eine Online-Reparaturplattform
+    als Alternative nennt.
+  script: Das ist eine gute Option. Wir sind Ihr lokaler Spezialist mit persönlicher
+    Beratung. Bei uns sprechen Sie direkt mit dem Techniker, haben kurze Wege und
+    oft schnellere Abwicklung. Zudem geben wir eine 6-monatige Garantie. Darf ich
+    Ihnen einen Termin für eine unverbindliche Diagnose vorschlagen?
+  goal: Lokale, persönliche und schnelle Service-Vorteile hervorheben und zum nächsten
+    Schritt lenken.
+- trigger: availability_check
+  situation: Wenn der Kunde wissen möchte, wie schnell ein Termin frei ist.
+  script: Aktuell können wir Ihnen einen Termin bereits [Zeitangabe, z.B. morgen Vormittag
+    oder innerhalb dieser Woche] anbieten. Soll ich Ihnen den nächsten freien Slot
+    reservieren? Dann können wir Ihr Gerät schnellstmöglich prüfen.
+  goal: Schnelle Handlungsfähigkeit demonstrieren und Terminbuchung abschliessen.
+- trigger: business_customer_inquiry
+  situation: Wenn ein Geschäftskunde nach Service-Lösungen für mehrere Geräte fragt.
+  script: Für Unternehmen bieten wir maßgeschneiderte Wartungsverträge an. Das beinhaltet
+    priorisierte Reparaturen, regelmässige Checks und feste Monatspreis. So minimieren
+    Sie Ausfallzeiten. Können wir nächste Woche einen kurzen Beratungstermin vereinbaren?
+  goal: Aufwertung zum Vertragsgeschäft und Vereinbarung eines Folgetermins.
+competitors:
+- name: Digitec/Galaxus Reparaturservice
+  positioning: Großer Online-Händler mit angeschlossenem Reparaturservice für Elektronik.
+  strengths:
+  - Bekannte Marke
+  - Breites Gerätespektrum
+  - Online-Bestellintegration
+  weaknesses:
+  - Unpersönlicher Service
+  - Längere Transportwege
+  - Oft standardisierte Prozesse ohne Extraservice
+  our_differentiation: Persönliche, lokale Betreuung, direkter Kontakt zum Techniker
+    und oft schnellere Abwicklung ohne Versand.
+- name: iSmash / iFIXIT
+  positioning: Spezialisierte Reparaturketten für Smartphones und Laptops.
+  strengths:
+  - Spezialisiert auf Apple/Geräte
+  - Etablierte Prozesse
+  - Mehrere Standorte
+  weaknesses:
+  - Höhere Preise
+  - Begrenzt auf bestimmte Marken
+  - Massenabfertigung
+  our_differentiation: Breiteres Servicesspektrum (auch Haushaltsgeräte), flexiblere
+    individuelle Lösungen und lokalere Verwurzelung.
+- name: Lokale Einzelbetriebe ('Das Elektro-Geschäft um die Ecke')
+  positioning: Traditionelle, inhabergeführte Reparaturwerkstätten.
+  strengths:
+  - Sehr persönlich
+  - Hohes Vertrauen im Quartier
+  - Langjährige Erfahrung
+  weaknesses:
+  - Oft veraltete Buchungsprozesse
+  - Eingeschränkte Ersatzteillogistik
+  - Kaum digitale Präsenz
+  our_differentiation: Kombination aus persönlichem Service mit moderner, effizienter
+    Kundenkommunikation und Terminverwaltung via AI-Agent.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 50
+  - 800
+  entry_point: 120
+  roi_examples:
+  - scenario: Ein mittelständischer Reparaturbetrieb reduziert den manuellen Aufwand
+      für Terminvereinbarungen und FAQ-Beantwortung um 15 Stunden pro Woche.
+    monthly_cost: 300
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 15 Verwaltungsstunden pro Monat für Ihre Mitarbeiter.
+  - Verwandeln Sie 100% Ihrer Anrufe in erfasste Leads, keine verpassten Chancen mehr.
+  - Bieten Sie Ihren Kunden 24/7 Service-Erreichbarkeit zu den Kosten einer Teilzeitkraft.
+market_context:
+  market_size: Ca. 1.2 Mrd. CHF jährlich für Konsumentenelektronik- und Haushaltsgerätereparaturen.
+  growth_rate: 3-5% p.a., getrieben durch Nachhaltigkeitsbewusstsein und 'Right to
+    Repair'.
+  key_trends:
+  - Wachsende Nachfrage nach Reparatur statt Neukauf aus Nachhaltigkeitsgründen.
+  - Zunehmende Komplexität der Geräte erfordert spezialisiertere Techniker.
+  - Kunden erwarten zunehmend digitale Buchungs- und Kommunikationskanäle.
+  seasonality:
+    high:
+    - Januar (nach Weihnachten)
+    - September (nach Schulbeginn)
+    low:
+    - Hauptferienzeit (Juli-August)
+    - Dezember (vor Weihnachten)
+typical_objections:
+- objection: Das können meine aktuellen Mitarbeiter auch erledigen, das brauche ich
+    nicht.
+  response: Verstehe ich. Der Vorteil ist, dass Ihre qualifizierten Mitarbeiter dann
+    mehr Zeit für die wertschöpfenden Reparaturen haben, während der Agent die Routine-Anfragen
+    übernimmt. So steigern Sie den Umsatz pro Mitarbeiter.
+- objection: Ich habe keine Lust auf eine komplizierte Technik-Einführung.
+  response: Die Einrichtung ist sehr unkompliziert. Wir kümmern uns um alles, und
+    der Agent funktioniert sofort über Ihre bestehende Telefonnummer. Sie müssen keine
+    neue Hardware installieren.
+- objection: Meine Kunden, besonders die älteren, möchten mit einem Menschen sprechen.
+  response: Das ist ein wichtiger Punkt. Der Agent übernimmt nur die Standardanfragen
+    wie Terminbuchung oder Statusabfrage. Sobald es komplex wird oder der Kunde es
+    wünscht, wird er sofort zu Ihrem Mitarbeiter durchgestellt. So haben alle das
+    beste Erlebnis.
+meta:
+  id: repair_services
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

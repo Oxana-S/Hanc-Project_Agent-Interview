@@ -1,0 +1,225 @@
+pain_points:
+- description: Concurență intensă pe piața turistică, cu multe agenții oferind servicii
+    similare.
+  severity: high
+  solution_hint: Agentul vocal AI poate personaliza ofertele și reduce timpul de răspuns,
+    ajutând la diferențiere.
+- description: Fluctuații sezoniere ale cererii, cu perioade de vârf și de scădere
+    semnificative.
+  severity: high
+  solution_hint: Agentul poate gestiona rezervări și promovări automate în timp real,
+    optimizând ocuparea.
+- description: Bariere lingvistice cu clienții internaționali, afectând serviciul
+    clienți.
+  severity: medium
+  solution_hint: Agentul AI poate oferi asistență multilingvă, îmbunătățind comunicarea.
+- description: Gestionarea complexă a rezervărilor și anulărilor, ducând la erori
+    și costuri suplimentare.
+  severity: high
+  solution_hint: Automatizarea proceselor prin agentul vocal reduce erorile și timpul
+    de procesare.
+- description: Așteptări ridicate ale clienților pentru servicii personalizate și
+    rapide.
+  severity: medium
+  solution_hint: Agentul poate oferi recomandări personalizate bazate pe preferințe,
+    sporind satisfacția.
+- description: Dificultăți în respectarea GDPR pentru gestionarea datelor clienților.
+  severity: medium
+  solution_hint: Agentul AI poate fi configurat pentru a respecta automat GDPR în
+    interacțiuni.
+typical_services:
+- Rezervări hoteluri
+- Bilete de avion
+- Închirieri mașini
+- Tururi ghidate
+- Asigurări de călătorie
+- Vize și documentație
+- Pachete vacanță all-inclusive
+- Excursii de o zi
+- Transport aeroport
+- Consiliere personalizată pentru destinații
+recommended_functions:
+- name: Rezervare automată
+  priority: high
+  reason: Reduce timpul și erorile în procesarea comenzilor, esențial pentru eficiență.
+- name: Asistență clienți 24/7
+  priority: high
+  reason: Îmbunătățește experiența clienților și reduce sarcina personalului.
+- name: Gestionare reclamații
+  priority: medium
+  reason: Ajută la rezolvarea rapidă a problemelor, menținând fidelitatea clienților.
+- name: Recomandări personalizate
+  priority: medium
+  reason: Sporește vânzările prin oferte adaptate preferințelor clienților.
+- name: Confirmare și remindere automate
+  priority: low
+  reason: Reduce ratările și îmbunătățește comunicarea cu clienții.
+- name: Rapoarte și analize
+  priority: low
+  reason: Furnizează insights pentru optimizarea operațiunilor.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - Siveco
+  - Softwin
+  - Salesforce adaptat pentru RO
+  priority: high
+- name: Platforme de rezervare
+  examples:
+  - Amadeus
+  - Sabre
+  - Sisteme locale personalizate
+  priority: high
+- name: Sisteme de plată
+  examples:
+  - Netopia
+  - Euplatesc
+  - Stripe adaptat pentru RO
+  priority: medium
+- name: Sisteme de gestionare hoteluri
+  examples:
+  - Oracle Hospitality
+  - Sisteme locale ca Hotel-Net
+  priority: medium
+- name: Platforme de marketing
+  examples:
+  - Google Ads
+  - Facebook Business adaptat pentru RO
+  priority: low
+industry_faq:
+- question: Care sunt prețurile pentru pachetele de vacanță?
+  answer_template: Prețurile variază în funcție de destinație, sezon și servicii incluse.
+    Vă putem oferi o ofertă personalizată după ce discutăm preferințele dumneavoastră.
+- question: Cum pot anula o rezervare?
+  answer_template: Anulările sunt gestionate în funcție de politica fiecărui furnizor.
+    Vă asistăm imediat pentru a verifica condițiile și a procesa anularea.
+- question: Oferiți asigurări de călătorie?
+  answer_template: Da, colaborăm cu companii de asigurări pentru a oferi opțiuni adaptate
+    nevoilor dumneavoastră, inclusiv acoperire medicală și anulare.
+- question: Care sunt destinațiile populare în România?
+  answer_template: Destinații populare includ stațiuni la Marea Neagră, turism montan
+    în Carpați, și orașe istorice precum Brașov și Sibiu. Vă recomandăm în funcție
+    de interese.
+- question: Este sigur să călătoriți în anumite regiuni?
+  answer_template: Monitorizăm continuu sfaturile de securitate și vă oferim informații
+    actualizate pentru a vă asigura călătorii sigure.
+- question: Cum funcționează plata în rate?
+  answer_template: Oferim opțiuni de plată flexibile, inclusiv rate, prin parteneriate
+    cu bănci locale. Detalii specifice vor fi furnizate la rezervare.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru servicii de călătorie.
+  script: 'Bună ziua! Pentru a vă oferi cele mai bune prețuri, aș dori să vă întreb
+    câteva detalii: când și unde doriți să călătoriți, și câți oaspeți? Apoi, vă pot
+    prezenta opțiuni personalizate în RON.'
+  goal: Colectarea informațiilor pentru a oferi o cotare precisă și a crește șansele
+    de vânzare.
+- trigger: service_inquiry
+  situation: Când un client solicită informații despre servicii specifice, cum ar
+    fi tururi ghidate.
+  script: Vă mulțumim pentru interes! Oferim tururi ghidate în mai multe limbi, adaptate
+    preferințelor dumneavoastră. Puteți spune mai multe despre ce activități vă interesează?
+  goal: Înțelegerea nevoilor clientului pentru a recomanda servicii relevante și a
+    închide vânzarea.
+- trigger: complaint_handling
+  situation: Când un client exprimă nemulțumire privind o rezervare sau serviciu.
+  script: Îmi pare rău pentru inconveniență. Pentru a vă ajuta rapid, aș dori să confirm
+    detaliile rezervării și să investighez problema. Vă promit o rezolvare în cel
+    mai scurt timp.
+  goal: Calmarea clientului și rezolvarea eficientă a problemei pentru a menține relația.
+- trigger: follow_up
+  situation: După o interacțiune inițială, pentru a urmări interesul clientului.
+  script: Bună ziua! Am discutat recent despre opțiunile de călătorie. Aveți întrebări
+    suplimentare sau doriți să procedăm cu rezervarea? Sunt aici pentru asistență.
+  goal: Reamintirea clientului și încurajarea acțiunii pentru a finaliza vânzarea.
+competitors:
+- name: Travelminit
+  positioning: Platformă online pentru rezervări de călătorii în România.
+  strengths:
+  - Interfață ușor de utilizat
+  - Oferte competitive pentru destinații locale
+  weaknesses:
+  - Serviciu clienți limitat
+  - Integrări slabe cu sistemele locale
+  our_differentiation: Oferim asistență vocală AI 24/7 și integrare profundă cu software-ul
+    local, sporind eficiența.
+- name: Vola
+  positioning: Agenție de turism cu prezență fizică și online.
+  strengths:
+  - Prezență puternică în orașe mari
+  - Experiență personalizată prin agenți umani
+  weaknesses:
+  - Costuri operaționale ridicate
+  - Timpi de răspuns mai lungi
+  our_differentiation: Automatizăm procesele cu AI, reducând costurile și oferind
+    răspunsuri instant, cu menținerea personalizării.
+- name: Booking.com adaptat pentru RO
+  positioning: Platformă globală cu oferte pentru România.
+  strengths:
+  - Varietate mare de opțiuni
+  - Recenzii și rating-uri extinse
+  weaknesses:
+  - Lipsa asistenței în limba română uneori
+  - Focus limitat pe servicii locale personalizate
+  our_differentiation: Concentrăm pe piața locală cu servicii vocal AI în română și
+    recomandări adaptate culturii românești.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatizarea rezervărilor pentru o agenție mică
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 1
+  - scenario: Îmbunătățirea serviciului clienți cu AI vocal
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Reduceți timpul de procesare a rezervărilor cu 50%.
+  - Îmbunătățiți satisfacția clienților prin răspunsuri instant.
+  - Conformitate GDPR automată, fără efort suplimentar.
+market_context:
+  market_size: Circa 10 miliarde RON anual
+  growth_rate: 5-7% pe an
+  key_trends:
+  - Creșterea turismului durabil și ecologic
+  - Digitalizarea rapidă a serviciilor de călătorie
+  - Creșterea cererii pentru experiențe personalizate
+  seasonality:
+    high:
+    - Iunie-August (sezon estival)
+    - Decembrie (sărbători de iarnă)
+    low:
+    - Septembrie-Noiembrie
+    - Ianuarie-Martie (după sărbători)
+typical_objections:
+- objection: Agentul vocal AI este prea complicat pentru a fi implementat.
+  response: Sistemul nostru este proiectat pentru a fi ușor de integrat cu software-ul
+    existent și oferim suport complet pentru configurare.
+- objection: Nu avem buget pentru astfel de tehnologii.
+  response: Soluția noastră are un punct de intrare accesibil de la 300 RON și ROI
+    rapid, economisind costuri operaționale pe termen lung.
+- objection: Clienții noștri preferă interacțiunea umană.
+  response: Agentul AI completează serviciul uman, gestionând sarcini repetitive pentru
+    a elibera personalul pentru interacțiuni mai valoroase.
+- objection: Suntem deja mulțumiți de procesele actuale.
+  response: Cu concurența crescândă, automatizarea vă poate oferi un avantaj competitiv
+    prin eficiență și servicii îmbunătățite.
+meta:
+  id: travel
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

@@ -1,0 +1,188 @@
+pain_points:
+- description: Fluktuasi harga komoditas pertanian yang tidak dapat diprediksi, menyebabkan ketidakstabilan pendapatan petani.
+  severity: high
+  solution_hint: Agen suara AI dapat memberikan notifikasi real-time tentang tren harga pasar dan rekomendasi waktu penjualan terbaik.
+- description: Keterbatasan akses ke informasi cuaca dan iklim yang akurat untuk perencanaan tanam dan panen.
+  severity: high
+  solution_hint: Memberikan update cuaca hyperlocal dan peringatan dini melalui panggilan otomatis.
+- description: Biaya input pertanian (pupuk, pestisida, benih) yang terus meningkat dan sulit diprediksi.
+  severity: high
+  solution_hint: Agen dapat membandingkan harga dari berbagai pemasok dan mengirimkan alert harga terbaik.
+- description: Rantai pasok yang panjang dan tidak efisien, menyebabkan hasil panen sering membusuk sebelum sampai ke konsumen.
+  severity: medium
+  solution_hint: Menghubungkan petani langsung dengan pembeli atau pasar digital melalui sistem penjadwalan dan konfirmasi otomatis.
+- description: Kurangnya tenaga kerja terampil di desa untuk operasi pertanian sehari-hari.
+  severity: medium
+  solution_hint: Menggunakan reminder suara otomatis untuk jadwal penyiraman, pemupukan, dan panen.
+- description: Kesulitan dalam pencatatan keuangan dan analisis profitabilitas usaha tani.
+  severity: low
+  solution_hint: Agen dapat mengumpulkan data transaksi sederhana melalui panggilan dan menghasilkan laporan keuangan dasar.
+typical_services:
+- Konsultasi pertanian presisi
+- Sistem irigasi otomatis
+- Pengendalian hama terpadu (PHT)
+- Pemantauan kesehatan tanaman via sensor
+- Platform pemasaran hasil panen digital
+- Layanan kredit/pembiayaan pertanian
+- Pelatihan petani berbasis teknologi
+- Manajemen rantai pasok dingin (cold chain)
+- Asuransi pertanian berbasis data
+- Penyewaan alat mesin pertanian (alsintan)
+recommended_functions:
+- name: Penjadwalan Otomatis dan Pengingat
+  priority: high
+  reason: Petani sering lupa jadwal penting karena aktivitas padat di lapangan. Pengingat suara sangat efektif.
+- name: Pengumpulan Data via Panggilan Suara
+  priority: high
+  reason: Banyak petani tidak terbiasa dengan aplikasi mobile. Input data via percakapan suara lebih natural.
+- name: Notifikasi Harga Pasar
+  priority: high
+  reason: Informasi harga yang cepat dan akurat langsung berdampak pada keputusan jual dan keuntungan.
+- name: Layanan Pelanggan 24/7 untuk Pembeli
+  priority: medium
+  reason: Meningkatkan kepercayaan pembeli dengan menjawab pertanyaan tentang ketersediaan dan kualitas produk kapan saja.
+- name: Survei Kebutuhan dan Kepuasan Petani
+  priority: medium
+  reason: Memahami kebutuhan riil petani untuk pengembangan layanan yang lebih tepat sasaran.
+- name: Konfirmasi Pemesanan dan Pengiriman
+  priority: low
+  reason: Mengotomatiskan proses administrasi yang repetitif dalam transaksi jual-beli hasil panen.
+typical_integrations:
+- name: Sistem ERP Agribisnis
+  examples:
+  - JALA
+  - iGrow
+  - Agriaku
+  priority: high
+- name: Platform Pasar Pertanian Digital
+  examples:
+  - TaniHub
+  - Limakilo
+  - Sayurbox
+  priority: high
+- name: Sistem Informasi Cuaca & Iklim
+  examples:
+  - BMKG API
+  - AccuWeather
+  priority: medium
+- name: Sistem Pembayaran Digital
+  examples:
+  - DOKU
+  - Xendit
+  - LinkAja
+  priority: medium
+- name: Sistem Manajemen Logistik
+  examples:
+  - Waresix
+  - Kargo Technologies
+  priority: low
+industry_faq:
+- question: Apakah layanan ini cocok untuk petani skala kecil?
+  answer_template: Tentu. Layanan kami dirancang modular, bisa dimulai dari fitur dasar seperti pengingat jadwal dan info harga yang cocok untuk semua skala usaha, termasuk petani kecil.
+- question: Bagaimana cara kerjanya jika saya tidak punya smartphone canggih?
+  answer_template: Cukup menggunakan ponsel biasa. Kami akan menghubungi Bapak/Ibu via telepon untuk memberikan informasi, pengingat, atau mencatat data. Tidak perlu aplikasi.
+- question: Berapa biaya implementasi sistem otomatisasi ini?
+  answer_template: Biaya sangat variatif, mulai dari Rp 50.000 per bulan untuk layanan dasar. Kami akan rekomendasikan paket sesuai kebutuhan dan luas lahan usaha tani Anda.
+- question: Apakah data saya aman dan sesuai regulasi PDP?
+  answer_template: Sangat aman. Kami beroperasi sesuai Undang-Undang PDP Indonesia. Data Anda hanya digunakan untuk mengoptimalkan layanan kepada Anda.
+- question: Bagaimana jika terjadi masalah teknis di lapangan?
+  answer_template: Tim dukungan teknis kami siap membantu via telepon. Untuk masalah hardware sensor, kami memiliki jaringan mitra teknisi di berbagai daerah.
+sales_scripts:
+- trigger: price_question
+  situation: Saat calon pelanggan menanyakan harga di awal percakapan.
+  script: Harga layanan kami disesuaikan dengan kebutuhan spesifik Bapak/Ibu. Sebagai gambaran, banyak petani seperti Bapak/Ibu mulai dari paket dasar Rp 50.000 per bulan untuk notifikasi harga dan pengingat
+    jadwal. Boleh saya tanya dulu, saat ini kendala terbesar dalam usaha tani Bapak/Ibu apa?
+  goal: Menghindari diskusi harga prematur dan beralih ke identifikasi kebutuhan (needs discovery).
+- trigger: competitor_mention
+  situation: Saat calon pelanggan menyebutkan layanan serupa dari pesaing.
+  script: Itu bagus Bapak/Ibu sudah mengetahui opsi lain. Yang membedakan kami adalah fokus pada kemudahan akses via suara tanpa aplikasi rumit, khusus untuk petani Indonesia. Selain itu, integrasi kami
+    dengan pasar digital seperti TaniHub lebih lancar. Apakah Bapak/Ibu pernah mengalami kesulitan dengan aplikasi berbasis smartphone?
+  goal: Membedakan diri dengan menyoroti keunggulan lokal dan kesederhanaan, lalu mengarah ke pain point spesifik.
+- trigger: hesitation_technology
+  situation: Saat calon pelanggan ragu karena kurang melek teknologi.
+  script: Bapak/Ibu tidak perlu khawatir. Teknologi kami justru dibuat agar Bapak/Ibu TIDAK perlu menguasai teknologi. Cukup jawab telepon dan dengar informasi. Mirip seperti dapat telepon dari asisten
+    yang mengingatkan jadwal dan memberi tahu harga terbaru. Mau coba dulu layanan percobaan gratis selama 1 minggu?
+  goal: Menenangkan keraguan dengan analogi familiar dan menawarkan trial risiko rendah.
+competitors:
+- name: eFishery
+  positioning: Pemimpin pasar dalam pakan ikan otomatis dan IoT akuakultur.
+  strengths:
+  - Produk hardware sensor yang kuat
+  - fokus pada akuakultur
+  - pendanaan venture capital besar
+  weaknesses:
+  - Lebih terbatas pada sektor perikanan
+  - investasi awal hardware relatif tinggi
+  our_differentiation: Kami lebih luas mencakup berbagai komoditas (hortikultura, perkebunan) dan solusi utama kami adalah asisten suara yang lebih terjangkau & mudah diadopsi.
+- name: TaniHub Group
+  positioning: Platform end-to-end dari hulu (pembiayaan) ke hilir (pemasaran).
+  strengths:
+  - Rantai pasok lengkap
+  - jaringan petani besar
+  - aplikasi mobile yang mapan
+  weaknesses:
+  - Fokus pada petani mitra yang sudah terhubung ke platform mereka
+  - kompleks untuk petani kecil independen
+  our_differentiation: Kami menjangkau petani kecil di daerah yang mungkin belum terjangkau platform besar, dengan on-ramp teknologi (suara) yang sangat rendah.
+- name: JALA (untuk udang)
+  positioning: Specialist IoT dan data analytics untuk budidaya udang.
+  strengths:
+  - Spesialisasi mendalam di udang
+  - analisis data kualitas air yang canggih
+  weaknesses:
+  - Hanya untuk komoditas udang
+  - target pasar terbatas
+  our_differentiation: Portofolio layanan kami lebih umum, dapat diterapkan ke banyak jenis usaha tani, dengan harga titik masuk yang lebih fleksibel.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Petani cabai skala 1 hektar menggunakan layanan notifikasi harga & pengingat panen.
+    monthly_cost: 75000
+    monthly_savings: 300000
+    payback_months: 1
+  value_anchors:
+  - Harga kurang dari 2 kg beras premium per bulan.
+  - Menghemat hingga 3 jam waktu per minggu dalam mencari informasi.
+  - Potensi meningkatkan keuntungan jual dengan timing harga yang tepat.
+market_context:
+  market_size: Lebih dari 40 juta pekerja di sektor pertanian Indonesia
+  growth_rate: 3-5% YoY, didorong adopsi teknologi (agritech)
+  key_trends:
+  - Meningkatnya adopsi smartphone di daerah pedesaan.
+  - Regulasi pemerintah mendukung modernisasi pertanian (food estate).
+  - Permintaan konsumen akan traceability (jejak produk) meningkat.
+  seasonality:
+    high:
+    - Oktober - Desember (musim tanam/pra-panen banyak komoditas)
+    - Menjelang hari raya besar
+    low:
+    - Januari - Februari (musim penghujan puncak
+    - beberapa daerah banjir)
+    - Juli - Agustus (musim kemarau untuk beberapa daerah)
+typical_objections:
+- objection: Saya sudah terbiasa dengan cara lama, tidak perlu teknologi yang rumit.
+  response: Justru teknologi kami menghormati cara lama Bapak/Ibu. Kami hanya jadi asisten yang menyampaikan informasi penting via telepon, agar Bapak/Ibu bisa fokus ke kerja di kebun. Boleh kami coba buktikan
+    dalam 7 hari?
+- objection: Saya khawatir dengan biaya tambahan ini, margin pertanian sudah tipis.
+  response: Kami paham sekali. Itu sebabnya paket awal kami hanya Rp 50.000. Bayangkan jika dengan informasi harga yang tepat, Bapak/Ibu bisa jual dengan harga Rp 500/kg lebih tinggi. Dalam 100kg saja sudah
+    balik modal. Kami bantu untuk efisiensi dan naikkan pendapatan.
+- objection: Sinyal di daerah saya kurang bagus untuk teknologi.
+  response: Kami mengandalkan jaringan telepon suara biasa yang sudah pasti menjangkau daerah Bapak/Ibu. Tidak perlu sinyal data yang kuat. Teknologi utama ada di sistem kami, Bapak/Ibu cukup terima telepon.
+meta:
+  id: agriculture
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- agriculture
+- farming
+- agribusiness
+- farm
+_extends: _base/agriculture

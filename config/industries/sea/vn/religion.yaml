@@ -1,0 +1,263 @@
+pain_points:
+- description: Thiếu nhân lực để trả lời các cuộc gọi và tin nhắn, đặc biệt là vào
+    các dịp lễ lớn, dẫn đến trải nghiệm kém cho tín đồ.
+  severity: high
+  solution_hint: Tổng đài AI tự động có thể tiếp nhận mọi cuộc gọi, trả lời câu hỏi
+    thường gặp 24/7 và chuyển tiếp cuộc gọi quan trọng.
+- description: Quản lý thông tin tín đồ, lịch sử đóng góp và tham gia sự kiện thủ
+    công, dễ xảy ra sai sót và khó tra cứu.
+  severity: high
+  solution_hint: Tích hợp hệ thống AI với phần mềm CRM để tự động ghi chép, phân loại
+    và cập nhật hồ sơ tín đồ từ cuộc gọi.
+- description: Khó khăn trong việc thông báo lịch lễ, sự kiện, hoạt động thiện nguyện
+    đến đông đảo tín đồ một cách kịp thời và chính xác.
+  severity: medium
+  solution_hint: AI voice agent có thể tự động gọi điện hoặc nhắn tin hàng loạt để
+    thông báo theo danh sách tín đồ được phân nhóm.
+- description: Gặp khó khăn trong việc tiếp nhận và xác nhận đóng góp, cúng dường
+    qua điện thoại, cần nhiều thời gian và dễ nhầm lẫn.
+  severity: high
+  solution_hint: Tích hợp AI với cổng thanh toán, cho phép tín đồ đóng góp trực tiếp
+    qua cuộc gọi bằng cách hướng dẫn các bước an toàn.
+- description: Không có hệ thống để ghi nhận và trả lời các thắc mắc về giáo lý, nghi
+    thức một cách nhanh chóng và thống nhất.
+  severity: medium
+  solution_hint: Xây dựng kho kiến thức (FAQ) về giáo lý để AI voice agent có thể
+    cung cấp thông tin chuẩn xác ngay lập tức.
+- description: Khó đo lường mức độ hài lòng và nhu cầu thực tế của tín đồ sau các
+    buổi lễ hay hoạt động.
+  severity: low
+  solution_hint: AI có thể thực hiện khảo sát tự động qua điện thoại sau sự kiện để
+    thu thập phản hồi và phân tích tâm tư.
+typical_services:
+- Tiếp nhận và xác nhận cúng dường qua điện thoại
+- Thông báo lịch lễ, sinh hoạt định kỳ
+- Đăng ký tham gia khóa tu, sự kiện từ thiện
+- Hỗ trợ đặt mua vật phẩm tâm linh (kinh sách, đồ thờ cúng)
+- Trả lời tự động các câu hỏi thường gặp về nghi thức, giờ giấc
+- Hẹn lịch làm lễ riêng (cầu an, cầu siêu)
+- Hướng dẫn đăng ký tình nguyện viên
+- Hỗ trợ tư vấn tâm lý/đạo lý cơ bản
+- Gọi nhắc nhở đóng góp định kỳ
+- Tiếp nhận yêu cầu xe đưa đón (nếu có) cho cụ già, người khuyết tật
+recommended_functions:
+- name: Tổng đài tự động thông minh 24/7
+  priority: high
+  reason: Giải quyết ngay lập tức lượng cuộc gọi lớn vào cuối tuần và ngày lễ, không
+    để tín đồ chờ đợi.
+- name: Xác thực và hướng dẫn thanh toán an toàn
+  priority: high
+  reason: Tăng độ tin cậy và thuận tiện cho việc đóng góp, tuân thủ PDPD về bảo mật
+    thông tin tài chính.
+- name: Nhắn tin/Tổng đài thông báo sự kiện hàng loạt
+  priority: high
+  reason: Tối ưu hóa công sức thông báo, đảm bảo thông tin đến được mọi tín đồ, kể
+    cả người lớn tuổi.
+- name: Tích hợp và đồng bộ dữ liệu với CRM/Phần mềm quản lý
+  priority: medium
+  reason: Tạo cơ sở dữ liệu tín đồ tập trung, hỗ trợ công tác quản lý và chăm sóc
+    lâu dài.
+- name: Trả lời FAQ tự động bằng giọng nói tự nhiên
+  priority: medium
+  reason: Giảm tải cho nhân sự, cung cấp thông tin nhanh, chuẩn xác về giờ giấc, địa
+    điểm, nghi lễ.
+- name: Khảo sát và thu thập phản hồi tự động
+  priority: low
+  reason: Giúp ban quản lý nắm bắt nhu cầu, điều chỉnh hoạt động để phục vụ tín đồ
+    tốt hơn.
+typical_integrations:
+- name: Phần mềm Quản lý Tín đồ & Tài chính (CRM)
+  examples:
+  - Phần mềm quản lý nhà chùa
+  - Church Management Software
+  - Các giải pháp CRM phổ thông
+  priority: high
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - Momo
+  - ZaloPay
+  - VNPAY
+  - Banking APIs
+  priority: high
+- name: Công cụ nhắn tin/OA
+  examples:
+  - Zalo OA
+  - Facebook Messenger
+  priority: medium
+- name: Hệ thống đặt lịch (Booking)
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  - Các ứng dụng đặt lịch nội bộ
+  priority: medium
+- name: Công cụ khảo sát trực tuyến
+  examples:
+  - Google Forms
+  - Microsoft Forms
+  priority: low
+industry_faq:
+- question: Tôi muốn đóng góp cho nhà chùa thì làm thế nào?
+  answer_template: Kính chào quý đạo hữu. Quý vị có thể đóng góp trực tiếp tại chùa,
+    hoặc chuyển khoản qua số tài khoản [Số TK]. Ngoài ra, để được hướng dẫn thanh
+    toán nhanh qua ví điện tử ngay trên cuộc gọi, vui lòng bấm phím 1.
+- question: Lịch lễ Chủ nhật tuần này có thay đổi gì không?
+  answer_template: Kính chào. Lịch lễ Chủ nhật tuần này vẫn diễn ra như bình thường,
+    bắt đầu từ [Giờ]. Mọi thông tin cập nhật về lịch sinh hoạt sẽ được thông báo qua
+    tin nhắn tự động. Để nghe lại toàn bộ lịch tháng, vui lòng bấm phím 2.
+- question: Tôi muốn đăng ký đi làm từ thiện cùng chùa thì đăng ký ở đâu?
+  answer_template: A Di Đà Phật/ Kính chào. Rất hoan hỷ với tấm lòng của quý vị. Để
+    đăng ký tham gia các hoạt động từ thiện, quý vị vui lòng để lại họ tên và số điện
+    thoại. Chúng tôi sẽ liên hệ lại để hướng dẫn chi tiết. Hoặc quý vị có thể nhắn
+    tin đăng ký qua Zalo OA của chùa.
+- question: Nhà chùa có nhận đặt mua kinh sách không?
+  answer_template: Thưa quý vị, hiện chùa có cung cấp một số kinh sách, vật phẩm phật
+    giáo. Để biết thông tin chi tiết về danh mục và giá cả, vui lòng truy cập website
+    [Website] hoặc đến trực tiếp văn phòng chùa. Tôi có thể kết nối quý vị với ban
+    kinh sách, vui lòng giữ máy.
+- question: Tôi muốn xin làm lễ cầu an cho gia đình thì thủ tục thế nào?
+  answer_template: 'Kính chào. Để đăng ký làm lễ cầu an, quý vị vui lòng cung cấp
+    thông tin: họ tên người làm lễ, nguyện vọng và thời gian dự kiến. Tôi sẽ chuyển
+    thông tin cho ban nghi lễ. Họ sẽ gọi điện lại để xác nhận và hướng dẫn quý vị
+    chi tiết về lễ vật và thời gian chính thức.'
+sales_scripts:
+- trigger: initial_contact
+  situation: Khi tiếp cận lần đầu với người đại diện ban quản lý chùa/giáo xứ.
+  script: Kính chào Sư Thầy/Ban Quản Trị. Tôi là [Tên] từ [Tên công ty]. Chúng tôi
+    hiểu rằng việc quản lý liên lạc và chăm sóc cho đông đảo phật tử/tín hữu vào các
+    dịp lễ là một thách thức. Giải pháp tổng đài AI của chúng tôi có thể tự động trả
+    lời điện thoại 24/7, giúp quý chùa không bỏ lỡ bất kỳ cuộc gọi nào của tín đồ,
+    đồng thời hỗ trợ đăng ký sự kiện và tiếp nhận đóng góp một cách an toàn, minh
+    bạch. Tôi có thể dành 5 phút để chia sẻ rõ hơn về cách giải pháp này đang giúp
+    nhiều cơ sở tôn giáo khác hoạt động trơn tru hơn không ạ?
+  goal: Giới thiệu giá trị cốt lõi, tạo sự đồng cảm và hẹn lịch trình bày chi tiết.
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá trong hoặc sau buổi giới thiệu.
+  script: Cảm ơn câu hỏi của quý chùa. Chi phí triển khai phụ thuộc vào quy mô và
+    các tính năng cụ thể, thường bắt đầu từ khoảng 3-5 triệu VND/tháng cho một cơ
+    sở vừa và nhỏ. Quan trọng hơn, giải pháp giúp tiết kiệm đáng kể thời gian cho
+    quý thầy/quý ban quản trị, giảm thiểu sai sót trong quản lý thông tin và đặc biệt
+    tăng tỷ lệ đóng góp thuận tiện từ tín đồ. Chúng tôi có một bảng tính toán ROI
+    cụ thể, ví dụ như tiết kiệm được [X] giờ công/tháng và tăng [Y]% đóng góp qua
+    kênh điện thoại. Tôi có thể gửi bảng tính chi tiết này cho quý vị được không?
+  goal: Định khung giá, chuyển hướng sang giá trị và lợi ích cụ thể, đề xuất cung
+    cấp bằng chứng ROI.
+- trigger: objection_tradition
+  situation: Khi khách hành e ngại về việc áp dụng công nghệ vào môi trường truyền
+    thống.
+  script: Chúng tôi hoàn toàn thấu hiểu mối quan tâm này. Mục tiêu của chúng tôi không
+    phải là thay thế sự tiếp xúc trực tiếp ấm áp, mà là hỗ trợ để quý thầy và ban
+    quản trị có nhiều thời gian và tâm sức hơn cho những việc đó. Giải pháp này sẽ
+    đảm nhận những công việc lặp đi lặp lại như trả lời giờ giấc, hướng dẫn ban đầu,
+    ghi nhận thông tin. Như vậy, khi tín đồ cần được giải đáp sâu về giáo lý hay an
+    ủi tâm linh, họ sẽ được kết nối trực tiếp với quý thầy mà không phải chờ đợi vì
+    đường dây bận. Nó giống như có một thư ký trực điện thoại 24/7 vậy ạ.
+  goal: Xoa dịu lo ngại, nhấn mạnh vai trò hỗ trợ và nâng cao chất lượng tương tác
+    con người.
+competitors:
+- name: Các công ty viễn thông cung cấp tổng đài truyền thống (VNPT, Viettel)
+  positioning: Nhà cung cấp hạ tầng viễn thông với dịch vụ tổng đài cơ bản.
+  strengths:
+  - Uy tín thương hiệu lớn
+  - Hạ tầng mạng ổn định
+  - Đội ngũ kỹ thuật đông đảo
+  weaknesses:
+  - Giải pháp chung chung, không chuyên sâu cho ngành tôn giáo
+  - Ít tính năng AI và tự động hóa
+  - Quy trình triển khai có thể cứng nhắc
+  our_differentiation: Giải pháp AI chuyên biệt, hiểu nghiệp vụ và ngôn ngữ trong
+    ngành tôn giáo, tích hợp sẵn các tính năng như hướng dẫn đóng góp, quản lý sự
+    kiện, dễ dàng tùy chỉnh và mở rộng.
+- name: Các công ty phần mềm CRM đa ngành
+  positioning: Nhà cung cấp phần mềm quản lý khách hàng tổng quát.
+  strengths:
+  - Hệ thống CRM mạnh mẽ
+  - Có thể tùy chỉnh module
+  weaknesses:
+  - Thiếu tính năng giao tiếp bằng giọng nói AI chuyên biệt
+  - Không có giải pháp tổng đài tích hợp sẵn
+  - Người dùng trong ngành tôn giáo có thể thấy phức tạp
+  our_differentiation: 'Cung cấp giải pháp all-in-one: Tổng đài AI thông minh + CRM
+    chuyên biệt. Giao diện và quy trình làm việc được thiết kế riêng cho hoạt động
+    của chùa/giáo xứ, dễ sử dụng ngay cả với người không rành công nghệ.'
+- name: Các nhà phát triển phần mềm nội bộ hoặc freelancer
+  positioning: Giải pháp tự phát triển hoặc thuê ngoài riêng lẻ.
+  strengths:
+  - Có thể tùy chỉnh rất sâu theo yêu cầu riêng biệt
+  - Chi phí ban đầu có thể thấp
+  weaknesses:
+  - Thiếu tính chuyên nghiệp và bảo mật
+  - Khó bảo trì, nâng cấp về lâu dài
+  - Không có hỗ trợ 24/7
+  - Khó đảm bảo tuân thủ PDPD
+  our_differentiation: Sản phẩm chuyên nghiệp, được bảo trì và cập nhật liên tục,
+    cam kết bảo mật theo PDPD, hỗ trợ kỹ thuật 24/7 và có đầy đủ tài liệu hướng dẫn
+    sử dụng.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 2000000
+  - 15000000
+  entry_point: 3000000
+  roi_examples:
+  - scenario: Chùa trung bình, tiết kiệm 20 giờ công nhân sự/tháng cho việc trực điện
+      thoại và ghi chép thủ công, đồng thời tăng 15% đóng góp qua kênh điện thoại
+      được hướng dẫn.
+    monthly_cost: 4000000
+    monthly_savings: 7000000
+    payback_months: 1
+  value_anchors:
+  - Chỉ từ 100k VND/ngày để có 'thư ký ảo' trực 24/7
+  - Tiết kiệm ít nhất 50% thời gian quản lý liên lạc và đăng ký
+  - Tăng tỷ lệ đóng góp từ tín đồ nhờ kênh liên lạc thuận tiện và đáng tin cậy
+market_context:
+  market_size: Khoảng 8,000 - 10,000 cơ sở tôn giáo (chùa, nhà thờ, đình, miếu...)
+    có quy mô đáng kể tại Việt Nam
+  growth_rate: Ổn định, ~3-5% hàng năm theo xu hướng số hóa hoạt động quản lý
+  key_trends:
+  - Xu hướng số hóa quản lý và minh bạch tài chính trong các cơ sở tôn giáo
+  - Nhu cầu kết nối và chăm sóc tín đồ, đặc biệt là giới trẻ, qua kênh số
+  - Áp lực tuân thủ quy định về bảo mật thông tin cá nhân (PDPD) ngày càng cao
+  seasonality:
+    high:
+    - Tháng Giêng Âm Lịch
+    - Mùa Vu Lan
+    - Lễ Phật Đản
+    - Giáng Sinh
+    - Cuối tuần
+    low:
+    - Các ngày trong tuần (trừ buổi tối)
+    - Sau các dịp lễ lớn
+typical_objections:
+- objection: Chùa chúng tôi nhỏ, không có nhiều cuộc gọi, chưa cần thiết.
+  response: Thưa quý chùa, ngay cả với quy mô nhỏ, một hệ thống chuyên nghiệp sẽ giúp
+    gây ấn tượng tốt và tạo sự tin tưởng ngay từ lần đầu tín đồ liên lạc. Hơn nữa,
+    giải pháp của chúng tôi có gói dịch vụ linh hoạt, phù hợp với ngân sách và nhu
+    cầu của từng cơ sở. Nó như một sự đầu tư ban đầu để chuẩn bị cho sự phát triển
+    trong tương lai.
+- objection: Người lớn tuổi không quen dùng công nghệ, chỉ thích gặp trực tiếp.
+  response: Đúng vậy, và giải pháp của chúng tôi được thiết kế để phục vụ chính đối
+    tượng đó. Họ chỉ cần gọi điện thoại như bình thường. AI sẽ trả lời bằng giọng
+    nói tự nhiên, dễ nghe, và có thể hướng dẫn họ từng bước một cách kiên nhẫn. Nếu
+    vấn đề phức tạp, cuộc gọi sẽ được chuyển ngay cho người thật. Như vậy, người lớn
+    tuổi vẫn được phục vụ chu đáo mà không bị bỏ lỡ.
+- objection: Chúng tôi lo ngại về bảo mật thông tin tín đồ và lịch sử đóng góp.
+  response: Đây là mối quan tâm rất chính đáng. Chúng tôi tuân thủ nghiêm ngặt Luật
+    PDPD của Việt Nam. Dữ liệu được mã hóa và lưu trữ trên hệ thống đám mây bảo mật
+    cao tại Việt Nam. Quý chùa có toàn quyền kiểm soát dữ liệu của mình. Chúng tôi
+    sẵn sàng cung cấp các cam kết bảo mật bằng văn bản và hỗ trợ quý chùa trong việc
+    thông báo cho tín đồ về chính sách này.
+meta:
+  id: religion
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

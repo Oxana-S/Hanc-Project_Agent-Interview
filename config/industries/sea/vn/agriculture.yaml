@@ -1,0 +1,177 @@
+pain_points:
+- description: Biến đổi khí hậu gây ra thời tiết bất thường, ảnh hưởng đến năng suất cây trồng và vật nuôi.
+  severity: high
+  solution_hint: AI voice agent có thể cung cấp cảnh báo thời tiết kịp thời và đề xuất biện pháp phòng ngừa.
+- description: Chi phí đầu vào như phân bón, thuốc bảo vệ thực vật tăng cao, làm giảm lợi nhuận.
+  severity: high
+  solution_hint: AI voice agent có thể tư vấn về cách sử dụng nguyên liệu hiệu quả và tìm nguồn cung ứng giá rẻ.
+- description: Thiếu thông tin thị trường về giá cả nông sản, dẫn đến bán hàng không đúng thời điểm.
+  severity: medium
+  solution_hint: AI voice agent có thể cập nhật giá thị trường và đề xuất thời điểm bán hàng tối ưu.
+- description: Dịch bệnh và sâu bệnh phát sinh thường xuyên, gây thiệt hại lớn nếu không phát hiện sớm.
+  severity: high
+  solution_hint: AI voice agent có thể hướng dẫn nhận biết dấu hiệu bệnh và kết nối với chuyên gia tư vấn.
+- description: Khó khăn trong quản lý chuỗi cung ứng và logistics, dẫn đến tổn thất sau thu hoạch.
+  severity: medium
+  solution_hint: AI voice agent có thể hỗ trợ lên kế hoạch vận chuyển và theo dõi đơn hàng.
+- description: Thiếu nhân lực có kỹ năng trong sản xuất nông nghiệp hiện đại.
+  severity: low
+  solution_hint: AI voice agent có thể cung cấp đào tạo trực tuyến và hướng dẫn kỹ thuật cơ bản.
+typical_services:
+- Tư vấn canh tác và chăn nuôi
+- Hệ thống tưới tiêu tự động
+- Dịch vụ kiểm soát dịch hại
+- Cung cấp giống cây trồng và vật nuôi
+- Phân tích đất và nước
+- Bảo hiểm nông nghiệp
+- Dịch vụ thu hoạch và sau thu hoạch
+- Tư vấn xuất khẩu nông sản
+- Lắp đặt thiết bị nông nghiệp thông minh
+- Đào tạo nông dân về kỹ thuật mới
+recommended_functions:
+- name: Đặt lịch hẹn tư vấn
+  priority: high
+  reason: Giúp nông dân dễ dàng kết nối với chuyên gia mà không cần đến trực tiếp.
+- name: Cập nhật thông tin thị trường
+  priority: high
+  reason: Cung cấp giá cả và nhu cầu thị trường để ra quyết định bán hàng hiệu quả.
+- name: Hỗ trợ kỹ thuật qua điện thoại
+  priority: medium
+  reason: Giải đáp nhanh các vấn đề về bệnh cây, kỹ thuật chăm sóc.
+- name: Nhắc nhở công việc hàng ngày
+  priority: low
+  reason: Giúp nông dân quản lý lịch trình chăm sóc cây trồng và vật nuôi.
+- name: Xử lý đơn đặt hàng
+  priority: medium
+  reason: Tự động hóa việc đặt mua vật tư hoặc bán sản phẩm, tiết kiệm thời gian.
+typical_integrations:
+- name: Hệ thống quản lý nông trại
+  examples:
+  - FarmERP
+  - AgriSoft
+  priority: high
+- name: Ứng dụng thời tiết
+  examples:
+  - Weather Vietnam
+  - AccuWeather
+  priority: high
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  priority: medium
+- name: Nền tảng thương mại điện tử
+  examples:
+  - Sendo
+  - Tiki
+  priority: medium
+- name: Hệ thống cảm biến IoT
+  examples:
+  - SmartFarm sensors
+  - local IoT solutions
+  priority: low
+industry_faq:
+- question: Làm thế nào để tăng năng suất cây trồng của tôi?
+  answer_template: Chúng tôi có thể tư vấn về kỹ thuật canh tác tiên tiến, sử dụng phân bón hợp lý và hệ thống tưới tự động để cải thiện năng suất.
+- question: Chi phí lắp đặt hệ thống tưới tự động là bao nhiêu?
+  answer_template: Chi phí dao động từ 10 đến 50 triệu VND tùy quy mô, nhưng giúp tiết kiệm nước và tăng hiệu quả lên đến 30%.
+- question: Tôi có thể xuất khẩu nông sản sang thị trường nào?
+  answer_template: Chúng tôi hỗ trợ thông tin về thị trường xuất khẩu như EU, Mỹ, Nhật Bản và các quy định cần thiết.
+- question: Làm sao để phòng ngừa dịch bệnh trên cây trồng?
+  answer_template: Sử dụng cảnh báo sớm từ AI và áp dụng biện pháp phòng trừ tổng hợp IPM để giảm rủi ro.
+- question: Dịch vụ của bạn có tuân thủ PDPD không?
+  answer_template: Có, chúng tôi tuân thủ đầy đủ Luật Bảo vệ dữ liệu cá nhân PDPD của Việt Nam.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ.
+  script: Xin chào, dịch vụ của chúng tôi có mức giá bắt đầu từ 5 triệu VND, tùy theo nhu cầu cụ thể. Chúng tôi có thể tiết kiệm cho bạn đến 20% chi phí vận hành. Bạn quan tâm đến dịch vụ nào ạ?
+  goal: Cung cấp thông tin giá cả và nêu bật lợi ích để thu hút khách hàng.
+- trigger: service_inquiry
+  situation: Khi khách hàng hỏi về các dịch vụ cụ thể.
+  script: Chúng tôi cung cấp đa dạng dịch vụ như tư vấn canh tác, hệ thống tưới tự động, và hỗ trợ xuất khẩu. Dựa trên tình hình của bạn, tôi có thể đề xuất dịch vụ phù hợp. Bạn đang gặp vấn đề gì ạ?
+  goal: Hiểu nhu cầu khách hàng và giới thiệu dịch vụ phù hợp.
+- trigger: competitor_mention
+  situation: Khi khách hàng so sánh với đối thủ.
+  script: So với các đối thủ, chúng tôi tập trung vào giải pháp AI tích hợp, giúp tự động hóa và cải thiện hiệu quả lâu dài. Chúng tôi cũng có hỗ trợ 24/7 qua điện thoại. Bạn muốn tìm hiểu thêm không?
+  goal: Nhấn mạnh điểm khác biệt và thuyết phục khách hàng.
+competitors:
+- name: VinEco
+  positioning: Công ty nông nghiệp công nghệ cao thuộc tập đoàn Vingroup.
+  strengths:
+  - Quy mô lớn và đầu tư mạnh
+  - Chuỗi cung ứng tích hợp
+  - Thương hiệu uy tín
+  weaknesses:
+  - Giá thành cao
+  - Chủ yếu tập trung vào sản xuất lớn
+  our_differentiation: Chúng tôi cung cấp giải pháp linh hoạt cho hộ nông dân nhỏ với chi phí thấp và AI hỗ trợ cá nhân hóa.
+- name: TH True Milk
+  positioning: Tập đoàn chăn nuôi bò sữa và nông nghiệp sạch.
+  strengths:
+  - Chuyên môn về chăn nuôi
+  - Tiêu chuẩn chất lượng cao
+  - Mạng lưới phân phối rộng
+  weaknesses:
+  - Ít dịch vụ đa dạng cho cây trồng
+  - Hạn chế trong công nghệ số
+  our_differentiation: Chúng tôi đa dạng hóa dịch vụ cho cả cây trồng và vật nuôi, với trọng tâm vào công nghệ AI và tích hợp phần mềm.
+- name: Các công ty địa phương nhỏ
+  positioning: Nhà cung cấp dịch vụ truyền thống tại địa phương.
+  strengths:
+  - Hiểu biết sâu về thị trường địa phương
+  - Chi phí thấp
+  - Mối quan hệ thân thiết
+  weaknesses:
+  - Thiếu công nghệ hiện đại
+  - Dịch vụ hạn chế
+  our_differentiation: Chúng tôi kết hợp hiểu biết địa phương với công nghệ AI tiên tiến, cung cấp dịch vụ toàn diện và hiệu quả hơn.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 100000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Lắp đặt hệ thống tưới tự động cho 1 hecta
+    monthly_cost: 1000000
+    monthly_savings: 1750000
+    payback_months: 4
+  value_anchors:
+  - Tiết kiệm đến 30% chi phí nước và phân bón
+  - Tăng năng suất lên 20% với công nghệ AI
+  - Hỗ trợ 24/7 giảm thiểu rủi ro dịch bệnh
+market_context:
+  market_size: Khoảng 50 triệu hecta đất nông nghiệp, giá trị thị trường ước tính 100 nghìn tỷ VND
+  growth_rate: 5% mỗi năm
+  key_trends:
+  - Phát triển nông nghiệp thông minh và ứng dụng IoT
+  - Tăng cường xuất khẩu nông sản sang thị trường quốc tế
+  - Chính phủ hỗ trợ chuyển đổi số trong nông nghiệp
+  seasonality:
+    high:
+    - Mùa trồng trọt (tháng 5-10)
+    - Mùa thu hoạch (tháng 11-1)
+    low:
+    - Mùa mưa bão (tháng 7-9, có thể gây gián đoạn)
+    - Thời gian nghỉ giữa vụ
+typical_objections:
+- objection: Tôi không có ngân sách cho công nghệ cao.
+  response: Chúng tôi có giải pháp linh hoạt với mức giá bắt đầu thấp, và ROI nhanh giúp bạn tiết kiệm chi phí lâu dài. Có thể bắt đầu với dịch vụ cơ bản.
+- objection: Tôi không tin vào hiệu quả của AI trong nông nghiệp.
+  response: AI đã được chứng minh giúp tối ưu hóa sản xuất và giảm rủi ro. Chúng tôi có case study từ các nông dân thành công, tôi có thể chia sẻ thêm.
+- objection: Dịch vụ của bạn quá phức tạp cho tôi.
+  response: Chúng tôi thiết kế dịch vụ đơn giản, dễ sử dụng, với hỗ trợ bằng tiếng Việt và hướng dẫn từng bước. Bạn không cần kiến thức kỹ thuật cao.
+meta:
+  id: agriculture
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- agriculture
+- farming
+- agribusiness
+- farm
+_extends: _base/agriculture

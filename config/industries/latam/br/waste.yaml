@@ -1,0 +1,219 @@
+pain_points:
+- description: Dificuldade em otimizar rotas de coleta, resultando em alto consumo de combustível e tempo ocioso.
+  severity: high
+  solution_hint: Agente pode analisar rotas e sugerir otimizações em tempo real.
+- description: Baixa adesão à coleta seletiva por parte da população, contaminando resíduos recicláveis.
+  severity: medium
+  solution_hint: Agente pode fazer campanhas de educação ambiental via telefone para clientes.
+- description: Controle manual de pesagem e destinação final, sujeito a erros e falta de rastreabilidade.
+  severity: high
+  solution_hint: Agente pode integrar-se a balanças e emitir relatórios automáticos para conformidade.
+- description: Dificuldade em atender à LGPD no manuseio de dados de clientes e contratos.
+  severity: high
+  solution_hint: Agente pode gerenciar consentimentos e automatizar respostas a solicitações de titulares.
+- description: Cobrança de serviços com alta taxa de inadimplência e processos manuais.
+  severity: medium
+  solution_hint: Agente pode realizar lembretes de pagamento e negociar parcelamentos automaticamente.
+- description: Logística reversa complexa, com múltiplos canais e obrigações legais difusas.
+  severity: medium
+  solution_hint: Agente pode centralizar agendamentos de retirada e instruir clientes sobre procedimentos.
+- description: Descarte irregular em terrenos baldios, gerando multas e danos à imagem.
+  severity: high
+  solution_hint: Agente pode receber denúncias via voz e disparar ordens de serviço para fiscalização.
+typical_services:
+- Coleta de resíduos domiciliares
+- Coleta seletiva (recicláveis)
+- Coleta de resíduos industriais
+- Coleta de resíduos da construção civil (entulho)
+- Limpeza urbana e varrição
+- Transporte e destinação final para aterros
+- Logística reversa de eletrônicos e embalagens
+- Manutenção e locação de contêineres e caçambas
+- Consultoria e auditoria ambiental
+- Serviço emergencial de remoção de resíduos
+recommended_functions:
+- name: Agendamento Inteligente de Coleta
+  priority: high
+  reason: Otimiza rotas e reduz custos operacionais, demanda frequente dos clientes.
+- name: Atendimento a Solicitações LGPD
+  priority: high
+  reason: Conformidade legal obrigatória, evita multas pesadas.
+- name: Lembrete e Negociação de Pagamentos
+  priority: medium
+  reason: Melhora fluxo de caixa ao reduzir inadimplência.
+- name: Triagem de Chamadas para Suporte Técnico
+  priority: medium
+  reason: Reduz tempo de espera para problemas urgentes como coleta perdida.
+- name: Educação do Cliente sobre Separação de Lixo
+  priority: low
+  reason: Aumenta eficiência da coleta seletiva e qualidade do material reciclável.
+- name: Geração Automática de Relatórios de Destinação
+  priority: high
+  reason: Necessário para licenças ambientais e auditorias.
+typical_integrations:
+- name: Sistema ERP (Gestão Empresarial)
+  examples:
+  - TOTVS
+  - SAP
+  - Senior
+  priority: high
+- name: Software de Roteirização
+  examples:
+  - Roteirizador
+  - OnMaps
+  - ClickEntregas
+  priority: high
+- name: Plataforma de Pagamentos
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: medium
+- name: Sistema de Gestão Ambiental
+  examples:
+  - SGA
+  - GreenPlat
+  - VG Resíduos
+  priority: medium
+- name: Aplicativo de Chamados
+  examples:
+  - Fresdesk
+  - OTRS
+  - Osticket
+  priority: low
+industry_faq:
+- question: Quais os horários de coleta no meu bairro?
+  answer_template: Os horários de coleta são [DIA] às [HORA]. Podemos enviar um lembrete por SMS no dia anterior. Posso cadastrar seu número?
+- question: Como solicitar uma caçamba para entulho?
+  answer_template: Para alugar uma caçamba, preciso do tipo de resíduo, endereço exato e período estimado de uso. Posso gerar um orçamento agora e agendar a entrega.
+- question: Meu lixo reciclável não foi coletado. O que fazer?
+  answer_template: Lamento pelo ocorrido. Para abrir um chamado, preciso do seu endereço e do tipo de material não coletado. Normalmente resolvemos em até 24 horas úteis.
+- question: Vocês emitem certificado de destinação final?
+  answer_template: Sim, emitimos certificado digital conforme a legislação. Ele é gerado automaticamente após a pesagem no aterro e disponibilizado no seu portal do cliente.
+- question: Qual a diferença entre coleta comum e seletiva?
+  answer_template: A coleta comum leva resíduos para aterro. A seletiva coleta materiais recicláveis (papel, plástico, metal, vidro) separados limpos e secos, enviando para cooperativas.
+- question: Como faço para cancelar o serviço?
+  answer_template: Para cancelar, precisamos de uma solicitação formal. Posso orientar sobre o período de aviso prévio e encaminhar para o setor responsável. Há alguma insatisfação que podemos resolver?
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preço na primeira ligação.
+  script: Entendo que o orçamento é importante. Nosso valor varia conforme volume, frequência e tipo de resíduo. Para uma estimativa precisa, posso fazer algumas perguntas rápidas? Por exemplo, quantas
+    caçambas por mês você gera?
+  goal: Coletar informações para qualificar o lead e evitar dar preço genérico.
+- trigger: contract_length_concern
+  situation: Cliente hesita com fidelidade de 12 meses.
+  script: A fidelidade garante preço estável e prioridade no agendamento. Oferecemos uma cláusula de saída antecipada sem multa caso a gestão de resíduos reduza em 20% com nossa consultoria. Que tal testarmos
+    por 3 meses com relatório de economia?
+  goal: Converter objeção em proposta de valor e reduzir percepção de risco.
+- trigger: competitor_mention
+  situation: Cliente cita concorrente local com preço menor.
+  script: É importante comparar o serviço completo. Incluímos relatório LGPD, certificado de destinação digital e otimização de rotas que pode reduzir custos em até 15%. Um preço mais baixo pode não incluir
+    isso e gerar multas. Posso mostrar um caso similar?
+  goal: Diferenciação por valor agregado e conformidade, não apenas preço.
+- trigger: not_interested_now
+  situation: Cliente diz que não tem interesse no momento.
+  script: Sem problemas. Posso apenas deixar uma informação valiosa? Muitas empresas estão sendo multadas por descarte irregular. Oferecemos uma auditoria gratuita de riscos ambientais. Posso agendar para
+    o mês que vem sem compromisso?
+  goal: Reagendar contato futuro com gancho de valor (auditoria grátis).
+competitors:
+- name: Estre Ambiental
+  positioning: Líder nacional em soluções ambientais completas.
+  strengths:
+  - Infraestrutura própria de aterros
+  - Grande porte
+  - Contratos com governos
+  weaknesses:
+  - Atendimento menos personalizado para PMEs
+  - Lentidão na adoção de tecnologia
+  our_differentiation: Foco em automação e atendimento ágil para PMEs com IA, integração direta e preços mais flexíveis.
+- name: EcoUrbis (Grupo Solví)
+  positioning: Grande operadora de limpeza urbana e coleta.
+  strengths:
+  - Ampla cobertura em São Paulo
+  - Frota própria
+  - Experiência
+  weaknesses:
+  - Principalmente B2G
+  - Menos foco em inovação digital
+  our_differentiation: Plataforma 100% digital para gestão do cliente, agentes de voz 24/7 e relatórios automáticos de sustentabilidade.
+- name: Veolia Brasil
+  positioning: Multinacional com foco em soluções para água, resíduos e energia.
+  strengths:
+  - Tecnologia avançada
+  - Presença global
+  - Recursos financeiros
+  weaknesses:
+  - Estrutura complexa e burocrática
+  - Preços elevados para pequenos negócios
+  our_differentiation: Soluções modulares e acessíveis para pequenas e médias empresas, com implementação rápida e suporte em português local.
+- name: Concorrentes regionais locais
+  positioning: Pequenas empresas familiares de coleta.
+  strengths:
+  - Preço baixo
+  - Relacionamento local
+  - Flexibilidade informal
+  weaknesses:
+  - Falta de certificações
+  - Risco de descarte irregular
+  - Sem suporte digital
+  our_differentiation: Oferecemos preço competitivo com toda a estrutura digital, conformidade legal e rastreabilidade que evitam multas e melhoram a imagem da empresa.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 50000
+  entry_point: 800
+  roi_examples:
+  - scenario: Empresa com 10 caçambas/mês otimizando rotas e reduzindo multas por atraso na coleta.
+    monthly_cost: 1200
+    monthly_savings: 2100
+    payback_months: 4
+  - scenario: Indústria evitando multa LGPD por falta de relatório de destinação.
+    monthly_cost: 1500
+    monthly_savings: 5000 (multa evitada uma vez)
+    payback_months: 0.3
+  value_anchors:
+  - Reduza custos de combustível em até 20% com rotas otimizadas por IA.
+  - Elimine o risco de multas ambientais que podem chegar a R$ 50 milhões.
+  - Automatize 70% do atendimento ao cliente, liberando sua equipe para tarefas estratégicas.
+market_context:
+  market_size: R$ 120 bilhões (gestão de resíduos sólidos)
+  growth_rate: 5-7% ao ano
+  key_trends:
+  - Fortalecimento da Política Nacional de Resíduos Sólidos e logística reversa.
+  - Crescimento da economia circular e valorização de resíduos.
+  - Digitalização forçada pós-pandemia para gestão de frotas e clientes.
+  - Aumento da fiscalização e multas por descarte irregular.
+  seasonality:
+    high:
+    - Janeiro (limpeza pós-festas)
+    - Período chuvoso (enchentes geram mais resíduos)
+    low:
+    - Férias de julho (redução atividade comercial)
+    - Fevereiro (Carnaval atrasa processos)
+typical_objections:
+- objection: Já tenho um fornecedor local, é mais barato.
+  response: Compreendo. Além do preço, você tem acesso a relatórios automáticos de sustentabilidade para seus clientes e certificação digital que evita autuações? Muitos clientes nossos migraram após uma
+    multa inesperada.
+- objection: Não precisamos de tanta tecnologia, o simples resolve.
+  response: Realmente, se tudo funciona, ótimo. Mas com as novas regras da LGPD e da logística reversa, o 'simples' pode se tornar complexo rapidamente. Nosso sistema previne esses problemas antes que custem
+    dinheiro.
+- objection: O orçamento está alto para este trimestre.
+  response: Podemos começar com um módulo específico, como apenas a otimização de rotas ou o emissor de certificados. Você já sente dor em alguma área, como custo com combustível ou tempo com documentação?
+- objection: Não confio em atendimento por máquina, quero falar com pessoa.
+  response: Perfeitamente. Nosso agente atende as questões rotineiras 24/7, mas qualquer complexidade é instantaneamente transferida para um especialista humano. Você ganha agilidade sem perder o contato
+    pessoal quando precisa.
+meta:
+  id: waste
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

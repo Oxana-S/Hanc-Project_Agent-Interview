@@ -1,0 +1,229 @@
+aliases:
+- waralaba
+- franchise
+- pewaralaba
+- pemberi waralaba
+- biaya awal
+- royalti
+- bisnis siap pakai
+- bisnis jadi
+- lisensi
+- kemitraan
+- dealer
+- distribusi
+- bisnis jaringan
+competitors:
+- name: PT Mitra Waralaba Indonesia
+  positioning: Pemain utama waralaba makanan dan minuman di Indonesia
+  strengths:
+  - Jaringan luas di kota besar
+  - Brand sudah dikenal masyarakat
+  - Sistem pelatihan terstruktur
+  weaknesses:
+  - Biaya awal relatif tinggi
+  - Kurang fleksibel untuk inovasi produk
+  our_differentiation: Menawarkan biaya masuk lebih terjangkau dan dukungan teknologi
+    digital lengkap
+- name: Waralaba Nusantara
+  positioning: Waralaba untuk segmen usaha kecil dan menengah
+  strengths:
+  - Fokus pada usaha mikro dan kecil
+  - Proses cepat dan mudah
+  weaknesses:
+  - Dukungan pemasaran terbatas
+  - Kurang pendampingan operasional intensif
+  our_differentiation: Memberikan pendampingan penuh dan pelatihan online interaktif
+- name: Fransiindo
+  positioning: Spesialis waralaba toko ritel dan jasa
+  strengths:
+  - Pengalaman lama di bidang ritel
+  - Sistem manajemen terintegrasi
+  weaknesses:
+  - Terbatas di area tertentu
+  - Harga paket waralaba mahal
+  our_differentiation: Menyediakan paket fleksibel dan integrasi CRM modern
+industry_faq:
+- question: Berapa biaya awal untuk memulai waralaba?
+  answer_template: Biaya awal biasanya mulai dari {{biaya_awal}} IDR dan royalti sekitar
+    {{persen_royalti}}% dari omzet. Mau saya jelaskan detailnya?
+- question: Berapa lama waktu balik modal waralaba ini?
+  answer_template: Rata-rata balik modal antara 12-24 bulan tergantung lokasi dan
+    jenis usaha.
+- question: Apakah diperlukan pengalaman bisnis sebelumnya?
+  answer_template: Tidak wajib, kami menyediakan pelatihan lengkap untuk pemula.
+- question: Apa saja yang termasuk dalam biaya awal?
+  answer_template: Biaya awal mencakup pelatihan, perlengkapan awal, branding, dan
+    dukungan pemasaran.
+- question: Di kota mana saja waralaba ini tersedia?
+  answer_template: Kami melayani sebagian besar kota besar di Indonesia, sebutkan
+    kota Anda untuk cek ketersediaan.
+- question: Apa persyaratan lokasi usaha?
+  answer_template: Lokasi ideal adalah area strategis dengan luas minimal {{luas_min}}
+    m2 dan akses mudah.
+pain_points:
+- description: Banyak calon mitra yang bertanya namun sulit dikonversi jadi pembeli
+  severity: high
+  solution_hint: Otomatisasi kualifikasi prospek berdasarkan budget dan lokasi
+- description: Proses negosiasi dan closing lama, membuat calon mitra kehilangan minat
+  severity: high
+  solution_hint: Pengingat otomatis dan pendekatan follow-up berkala
+- description: Sering ada pertanyaan teknis dan legal yang memakan waktu staf
+  severity: medium
+  solution_hint: FAQ interaktif dan pengiriman dokumen otomatis
+- description: Mitra lama sering butuh dukungan intensif yang tidak efisien
+  severity: medium
+  solution_hint: Sistem knowledge base dan chatbot untuk dukungan mandiri
+- description: Sulit memantau status prospek dan pipeline penjualan secara real-time
+  severity: medium
+  solution_hint: Integrasi dengan CRM dan update status otomatis
+- description: Regulasi PDP (Perlindungan Data Pribadi) menambah kompleksitas pengelolaan
+    data pelanggan
+  severity: high
+  solution_hint: Pengingat compliance dan validasi persetujuan data secara otomatis
+typical_services:
+- Penjualan lisensi waralaba
+- Konsultasi pembukaan usaha waralaba
+- Pelatihan pewaralaba dan staf
+- Pendampingan operasional harian
+- Dukungan pemasaran dan branding
+- Penyediaan perlengkapan dan peralatan
+- Audit dan kontrol kualitas rutin
+- Pengembangan sistem IT pendukung
+- Pengelolaan administrasi dan legalitas
+- Layanan pengembangan produk baru
+recommended_functions:
+- name: kualifikasi
+  priority: high
+  reason: Mengumpulkan data penting seperti budget, lokasi, dan pengalaman calon mitra
+- name: faq
+  priority: high
+  reason: Memberikan jawaban cepat atas pertanyaan umum terkait waralaba
+- name: pengiriman_material
+  priority: medium
+  reason: Otomatis kirim brosur dan dokumen pendukung
+- name: pengingat
+  priority: medium
+  reason: Mengingatkan calon mitra tentang jadwal diskusi dan follow-up
+- name: outbound_call
+  priority: medium
+  reason: Menghubungi ulang prospek lama untuk reaktivasi
+- name: compliance_check
+  priority: high
+  reason: Memastikan kepatuhan terhadap regulasi PDP dalam pengelolaan data
+typical_integrations:
+- name: CRM
+  examples:
+  - Salesforce Indonesia
+  - Qontak
+  - Mekari
+  priority: high
+- name: Email marketing
+  examples:
+  - MailTarget
+  - Klaviyo
+  - GetResponse
+  priority: medium
+- name: Telephony
+  examples:
+  - VoIP Telkom Indonesia
+  - MivoCloud
+  - PINTU
+  priority: high
+- name: Messenger
+  examples:
+  - WhatsApp Business
+  - Telegram
+  - LINE
+  priority: medium
+- name: Sistem ERP lokal
+  examples:
+  - HashMicro
+  - Jurnal.id
+  priority: medium
+sales_scripts:
+- trigger: price_question
+  situation: Saat pelanggan menanyakan biaya waralaba
+  script: Terima kasih atas minat Anda. Biaya awal mulai dari {{biaya_awal}} IDR dengan
+    royalti {{persen_royalti}}% per bulan. Saya bisa jelaskan detail paket dan manfaatnya
+    agar Anda dapat mempertimbangkan secara matang.
+  goal: Menjelaskan harga dan mengurangi kekhawatiran soal biaya
+- trigger: roi_question
+  situation: Ketika pelanggan ragu soal pengembalian modal
+  script: Rata-rata mitra kami balik modal dalam 12-24 bulan tergantung lokasi dan
+    usaha. Kami juga memiliki studi kasus yang bisa saya bagikan agar Anda lebih yakin.
+  goal: Meningkatkan kepercayaan terhadap potensi keuntungan
+- trigger: no_experience_objection
+  situation: Ketika pelanggan khawatir karena belum punya pengalaman bisnis
+  script: Tidak masalah, kami menyediakan pelatihan lengkap dan pendampingan agar
+    Anda siap menjalankan usaha dengan lancar.
+  goal: Menghilangkan hambatan pengalaman dan membangun rasa percaya diri
+- trigger: need_time
+  situation: Pelanggan ingin waktu berpikir
+  script: Tentu, saya akan kirimkan materi presentasi dan ringkasan biaya ke email
+    Anda. Boleh saya tahu alamat emailnya?
+  goal: Memastikan follow-up dengan pengiriman materi untuk keputusan selanjutnya
+typical_objections:
+- objection: Biayanya terlalu mahal
+  response: Kami menyediakan opsi cicilan dan paket yang lebih terjangkau dibandingkan
+    kompetitor.
+- objection: Saya takut usaha tidak balik modal
+  response: Kami punya banyak contoh mitra yang sukses dengan rata-rata balik modal
+    18 bulan. Saya bisa bagikan kisah mereka.
+- objection: Saya tidak punya waktu mengelola bisnis
+  response: Waralaba ini bisa dijalankan dengan manajer, dan kami bantu pelatihan
+    pengelolaan tim.
+- objection: Saya perlu waktu untuk pikir-pikir
+  response: Tidak masalah, saya akan kirimkan informasi lengkap supaya Anda bisa mempelajari
+    dulu.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 50000000
+  roi_examples:
+  - scenario: Waralaba kedai kopi di kota menengah
+    monthly_cost: 10000000
+    monthly_savings: 12000000
+    payback_months: 18
+  - scenario: Waralaba makanan cepat saji di pusat perbelanjaan
+    monthly_cost: 25000000
+    monthly_savings: 30000000
+    payback_months: 15
+  value_anchors:
+  - Investasi waralaba lebih terjangkau daripada memulai bisnis baru dari nol
+  - Dukungan penuh dari pemberi waralaba mempercepat keberhasilan usaha
+  - Sistem yang sudah terbukti mengurangi risiko kegagalan
+market_context:
+  market_size: 2000000000000
+  growth_rate: 0.12
+  key_trends:
+  - Peningkatan minat waralaba di segmen makanan dan minuman
+  - Digitalisasi proses penjualan dan pelatihan mitra
+  - Kepatuhan ketat terhadap regulasi perlindungan data pribadi (PDP)
+  - Munculnya waralaba berbasis online dan cloud kitchen
+  seasonality:
+    high:
+    - Ramadan
+    - Libur Tahun Baru Imlek
+    - Libur Lebaran
+    low:
+    - Bulan puasa awal
+    - Bulan setelah libur panjang
+success_benchmarks:
+  avg_call_duration_seconds: 320
+  target_automation_rate: 0.5
+  typical_kpis:
+  - Kualifikasi 85% prospek pada kontak pertama
+  - Konversi prospek berkualitas > 12%
+  - Pengurangan siklus penjualan 25%
+  - Reaktivasi 10% prospek lama
+meta:
+  id: franchise
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+_extends: _base/franchise

@@ -1,0 +1,197 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand durch manuelle Dokumentation und GDPR-konforme Datenverwaltung.
+  severity: high
+  solution_hint: Automatisierte Datenerfassung und -speicherung mit integrierten GDPR-Einwilligungsprozessen.
+- description: Personalengpässe, besonders außerhalb der Geschäftszeiten, führen zu verpassten Anrufen und potenziellen Kunden.
+  severity: high
+  solution_hint: 24/7 AI-Telefonagent zur ersten Ansprache, Terminvereinbarung und Beantwortung grundlegender Fragen.
+- description: Emotionale Belastung der Mitarbeiter bei der Erstberatung von trauernden Angehörigen.
+  severity: medium
+  solution_hint: AI-Agent übernimmt erste, einfühlsame Faktenabfrage und entlastet so das Personal für die persönliche Betreuung.
+- description: Ineffiziente Terminplanung und Koordination zwischen Bestatter, Geistlichen, Friedhofsverwaltung und Floristen.
+  severity: medium
+  solution_hint: Automatisierte Kalenderintegration und Terminabstimmung über den Voice Agent.
+- description: Wettbewerbsdruck durch Online-Direktbestatter und Preisvergleichsportale.
+  severity: high
+  solution_hint: AI-Agent kann 24/7 kompetent Auskünfte zu Leistungen und Preisen geben und so Vertrauen aufbauen, bevor Kunden zu Portalen abwandern.
+- description: Herausforderung bei der Erfassung und Weitergabe präziser Wünsche des Kunden für die individuelle Trauerfeier.
+  severity: medium
+  solution_hint: Strukturierte Abfrage von Wünschen (Musik, Blumen, Redner) durch den AI-Agenten für eine vollständigere Auftragsvorbereitung.
+typical_services:
+- Überführung des Verstorbenen
+- Beratung und Organisation der Trauerfeier
+- Vermittlung von Geistlichen / Rednern
+- Beschaffung und Aufbahrung des Sarges / der Urne
+- Kremation (Einäscherung)
+- Erdbestattung
+- Urnenbeisetzung
+- Trauerfeier in der Friedhofskapelle oder am Grab
+- Grabpflege und -schmuck
+- Druck von Trauerkarten und Danksagungen
+- Nachlass- und Behördengänge (Sterbeurkunden)
+recommended_functions:
+- name: 24/7 Erstanruf- und Terminvereinbarung
+  priority: high
+  reason: Fängt jeden Kontaktversuch ab, verhindert Kundenverlust außerhalb der Öffnungszeiten.
+- name: Automatisierte FAQ-Beantwortung (Kosten, Abläufe, Leistungen)
+  priority: high
+  reason: Entlastet Mitarbeiter von Standardfragen, schafft schnelle Transparenz für Kunden.
+- name: Lead-Qualifizierung und -Erfassung
+  priority: high
+  reason: Sammelt strukturiert Kontaktdaten und erste Informationen für eine effiziente Nachbearbeitung.
+- name: Erinnerungen und Follow-up-Anrufe
+  priority: medium
+  reason: Automatisiertes Erinnern an vereinbarte Termine oder Rückrufe steigert die Zuverlässigkeit.
+- name: Integration in Bestattungssoftware / CRM
+  priority: high
+  reason: Vermeidet Doppelerfassung und stellt alle Kundeninformationen zentral bereit.
+- name: Mehrsprachiger Support
+  priority: medium
+  reason: Wichtig in urbanen Gebieten, um eine breitere Kundschaft anzusprechen.
+typical_integrations:
+- name: Bestattungs-CRM / Verwaltungssoftware
+  examples:
+  - Friedwärts
+  - AVEVA
+  - iuvo
+  - Mento
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - DATEV
+  - Lexware
+  priority: medium
+- name: Online-Terminplaner
+  examples:
+  - Calendly
+  - Microsoft Bookings
+  priority: medium
+- name: Friedhofsverwaltungs-Systeme (kommunal)
+  examples:
+  - Individuelle lokale Lösungen
+  priority: low
+- name: Website / Kontaktformular
+  examples:
+  - WordPress
+  - Joomla
+  - TYPO3
+  priority: high
+industry_faq:
+- question: Was kostet eine einfache Bestattung?
+  answer_template: Die Kosten einer Bestattung hängen stark von Ihren individuellen Wünschen ab. Eine einfache Erd- oder Feuerbestattung beginnt bei etwa [EINTRITTSPREIS] €. Gerne erstellen wir Ihnen ein
+    unverbindliches, detailliertes Angebot. Dafür benötigen wir ein paar Informationen von Ihnen.
+- question: Kann man eine Bestattung im Voraus planen?
+  answer_template: Ja, eine Vorsorgeplanung ist sehr empfehlenswert. So entlasten Sie Ihre Angehörigen in einer schweren Zeit und stellen sicher, dass Ihre persönlichen Wünsche berücksichtigt werden. Wir
+    bieten hierfür eine persönliche Vorsorgeberatung an.
+- question: Welche Unterlagen benötigen Sie von uns?
+  answer_template: In der Regel benötigen wir die Sterbeurkunde, die Geburtsurkunde des Verstorbenen und gegebenenfalls den Heiratsurkunde. Unser Team sagt Ihnen nach der ersten Kontaktaufnahme genau, welche
+    Dokumente für Ihren Fall notwendig sind.
+- question: Wie lange dauert es bis zur Beisetzung?
+  answer_template: Die gesetzliche Ruhefrist vor der Beisetzung beträgt in der Regel 48 Stunden. Die Planung und Durchführung der Trauerfeier erfolgt meist innerhalb von 7 bis 10 Tagen. Dies können wir
+    jedoch ganz nach Ihren Wünschen und den Terminen der Beteiligten gestalten.
+- question: Bieten Sie auch ökologische Bestattungen an?
+  answer_template: Ja, wir beraten Sie gerne zu alternativen Bestattungsformen wie der Beisetzung in einem Friedwald, einer Seebestattung oder anderen naturnahen Optionen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Anrufer nach pauschalen Preisen fragt.
+  script: 'Ich verstehe, dass Transparenz über die Kosten wichtig ist. Da jede Bestattung sehr individuell ist - von der Art der Beisetzung über die Trauerfeier bis zur Auswahl des Sarges - können wir Ihnen
+    am besten ein maßgeschneidertes Angebot machen. Damit ich unsere Berater optimal vorbereiten kann: Haben Sie bereits eine Vorstellung, ob es eine Erd- oder Feuerbestattung werden soll?'
+  goal: Anrufer von einer Pauschalantwort weg- und in ein qualifizierendes Gespräch über seine Bedürfnisse führen, um einen Beratungstermin zu generieren.
+- trigger: objection_automation
+  situation: Wenn Kunden Bedenken äußern, wegen der sensiblen Thematik mit einer 'Maschine' zu sprechen.
+  script: Das ist ein sehr wichtiger Hinweis, vielen Dank. Unser AI-Assistent ist dazu da, Sie außerhalb unserer persönlichen Beratungszeiten erstzusversorgen und einfache organisatorische Fragen zu klären.
+    Für das einfühlsame, persönliche Gespräch verbinde ich Sie sofort mit einem unserer erfahrenen Bestatter. Einen Moment bitte.
+  goal: Bedenken ernst nehmen, den Mehrwert der Automatisierung erklären und nahtlos zur menschlichen Expertise überleiten.
+- trigger: request_info
+  situation: Wenn ein Anrufer Informationen über das Leistungsspektrum anfordert.
+  script: 'Gerne stelle ich Ihnen unsere Leistungen vor. Wir kümmern uns um die gesamte Organisation: Von der Überführung, der behördlichen Abwicklung über die Planung einer persönlichen Trauerfeier bis
+    zur Beisetzung. Um Ihnen die für Sie relevanten Informationen zu nennen: Handelt es sich um eine Vorsorge für Sie selbst oder um eine akute Bestattung?'
+  goal: Breite Leistungspalette nennen und sofort mit einer qualifizierenden Frage das Gespräch vertiefen, um zielgerichtet beraten zu können.
+competitors:
+- name: Lokale, traditionelle Familienbestattungen
+  positioning: Etablierte, inhabergeführte Betriebe mit starkem lokalen Vertrauen und persönlicher, langjähriger Beziehung zur Gemeinde.
+  strengths:
+  - Hohes lokales Vertrauen
+  - Persönliche, langjährige Kundenbeziehungen
+  - Tiefe Ortskenntnis
+  weaknesses:
+  - Oft eingeschränkte Öffnungszeiten
+  - Manuelle Prozesse können zu höheren Kosten führen
+  - Begrenztes Digitalangebot
+  our_differentiation: Wir kombinieren das Vertrauen und die persönliche Betreuung des Traditionsbetriebs mit der Effizienz und 24/7-Erreichbarkeit moderner Technologie.
+- name: Online-Direktbestatter (z.B. mymoria, dedeno)
+  positioning: Preisorientierte, stark digitalisierte Anbieter mit standardisierten Paketen und bundesweiter Abwicklung.
+  strengths:
+  - Niedrige Preise durch Standardisierung
+  - Transparente Online-Preise
+  - Bequeme Online-Buchung
+  weaknesses:
+  - Weniger persönliche, lokale Betreuung
+  - Eingeschränkte Individualisierungsmöglichkeiten
+  - Oft keine physische Anlaufstelle vor Ort
+  our_differentiation: Wir bieten die Preisklarheit und digitale Bequemlichkeit, verbunden mit der individuellen Beratung und lokalen Präsenz eines traditionellen Bestatters.
+- name: Große Bestattungskonzerne (z.B. HanseMerkur, Roland)
+  positioning: Bundesweit agierende Konzerne mit großer Markenbekanntheit und umfangreichem Vorsorge- und Versicherungsangebot.
+  strengths:
+  - Finanzielle Stärke und Markenpräsenz
+  - Umfassende Vorsorge- und Finanzprodukte
+  - Standardisierte Prozesse
+  weaknesses:
+  - Weniger persönliche, lokale Bindung
+  - Mögliche höhere Kosten für Individualleistungen
+  - Entscheidungen oft zentralisiert
+  our_differentiation: Wir entscheiden vor Ort und sind flexibler auf Ihre individuellen Wünsche und lokalen Gegebenheiten eingestellt, bei gleichbleibender professioneller Abwicklung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Automatisierung der Erstanrufe und Terminvereinbarung für einen mittelgroßen Bestatter.
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Verhindert den Verlust von bis zu 30% der außerhalb der Öffnungszeiten eingehenden Anrufe.
+  - Reduziert den administrativen Aufwand für Standardanfragen um bis zu 70%.
+  - Steigert die Effizienz Ihrer Berater durch vorqualifizierte Leads.
+market_context:
+  market_size: Ca. 20.000 Bestattungsunternehmen, Umsatzvolumen ca. 15-20 Mrd. EUR jährlich.
+  growth_rate: Stagnierend bis leicht rückläufig (demographisch bedingt), jedoch Verschiebung innerhalb des Marktes.
+  key_trends:
+  - Wachsende Nachfrage nach individuellen und persönlichen Trauerfeiern.
+  - Zunehmende Bedeutung von Vorsorgeverträgen.
+  - Steigendes Interesse an alternativen, ökologischen Bestattungsformen (Friedwald, Seebestattung).
+  - Digitalisierung der Kundenkommunikation und Prozesse.
+  seasonality:
+    high:
+    - Wintermonate (Dezember - Februar)
+    - Spätsommer (August)
+    low:
+    - Frühling (April - Mai)
+    - Hochsommer (Juli)
+typical_objections:
+- objection: Das ist für unseren sensiblen Bereich zu unpersönlich / technisch.
+  response: 'Ich verstehe Ihre Sorge vollkommen. Unser AI-Assistent ist kein Ersatz für das einfühlsame Gespräch, sondern eine Entlastung für Ihr Team. Er übernimmt die reine Organisation im Hintergrund,
+    sodass Ihre Mitarbeiter mehr Zeit für das Wesentliche haben: den persönlichen Kontakt zu den trauernden Familien.'
+- objection: Unsere älteren Kunden kommen mit so einer Technik nicht zurecht.
+  response: Der große Vorteil eines Voice Agents ist, dass er wie ein ganz normaler Telefonanruf funktioniert. Es muss nichts installiert oder angeklickt werden. Der Assistent führt die Kunden natürlich
+    durch das Gespräch und leitet bei komplexen Anliegen sofort an einen Menschen weiter.
+- objection: Die Investition lohnt sich bei unserer derzeitigen Auftragslage nicht.
+  response: Gerade bei schwankender Auslastung ist die Effizienzsteigerung entscheidend. Der Agent arbeitet kostendeckend, sobald er einen einzigen zusätzlichen Auftrag pro Monat generiert oder verwaltet,
+    der sonst verloren gegangen wäre. Zudem ist er skalierbar und wächst mit Ihrem Unternehmen mit.
+meta:
+  id: funeral
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- funeral
+- mortuary
+- cremation
+- memorial
+_extends: _base/funeral

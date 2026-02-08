@@ -1,0 +1,195 @@
+pain_points:
+- description: Variações climáticas imprevisíveis, como secas prolongadas e chuvas irregulares, afetam a produtividade das culturas.
+  severity: high
+  solution_hint: O agente de voz com IA pode fornecer alertas meteorológicos em tempo real e recomendações de adaptação das práticas agrícolas.
+- description: Escassez de mão-de-obra qualificada e custos elevados de contratação, especialmente em zonas rurais.
+  severity: medium
+  solution_hint: Automatizar tarefas repetitivas, como agendamento e atendimento ao cliente, para reduzir a dependência de pessoal.
+- description: Complexidade no cumprimento de regulamentações da UE, como o GDPR para gestão de dados agrícolas.
+  severity: high
+  solution_hint: Oferecer orientação automatizada sobre conformidade e ajudar na documentação necessária.
+- description: Flutuações nos preços de mercado e dificuldade em aceder a canais de distribuição eficientes.
+  severity: medium
+  solution_hint: Integrar com plataformas de mercado para monitorizar preços e otimizar a logística de vendas.
+- description: Limitado acesso a tecnologias de agricultura de precisão devido a custos elevados ou falta de conhecimento.
+  severity: medium
+  solution_hint: Fornecer consultoria acessível via voz sobre tecnologias e seu retorno sobre investimento.
+- description: Gestão ineficiente de recursos, como água e fertilizantes, levando a desperdícios.
+  severity: low
+  solution_hint: Monitorizar o uso de recursos através de sensores integrados e sugerir ajustes via comandos de voz.
+typical_services:
+- Consultoria em agricultura de precisão
+- Gestão de irrigação e recursos hídricos
+- Monitoramento de culturas e previsão de colheitas
+- Venda e manutenção de equipamentos agrícolas
+- Certificação de produtos orgânicos e sustentáveis
+- Financiamento agrícola e subsídios da UE
+- Treinamento em tecnologias agrícolas modernas
+- Logística e distribuição para mercados locais
+- Análise de solos e recomendações de nutrientes
+- Gestão integrada de pragas e doenças
+recommended_functions:
+- name: Agendamento de consultas técnicas
+  priority: high
+  reason: Reduz tempo de espera e melhora a eficiência no suporte a agricultores.
+- name: Resposta a perguntas sobre regulamentações
+  priority: high
+  reason: Ajuda os agricultores a cumprir rapidamente com requisitos legais como o GDPR.
+- name: Alertas personalizados de clima e pragas
+  priority: medium
+  reason: Permite ações proativas para proteger culturas e otimizar recursos.
+- name: Processamento de pedidos de equipamentos
+  priority: medium
+  reason: Automatiza vendas e reduz erros em transações.
+- name: Coleta de dados de campo via voz
+  priority: low
+  reason: Facilita o registo de informações sem necessidade de dispositivos complexos.
+- name: Suporte multilingue para trabalhadores migrantes
+  priority: low
+  reason: Melhora a comunicação em regiões com diversidade linguística.
+typical_integrations:
+- name: Sistemas de gestão agrícola
+  examples:
+  - Agroop
+  - Farmable
+  - Cropio
+  priority: high
+- name: Software de contabilidade
+  examples:
+  - Primavera
+  - SAP Business One
+  - Cegid
+  priority: medium
+- name: Plataformas de comércio agrícola
+  examples:
+  - Mercado Agrícola Online
+  - AgroNegócios
+  priority: medium
+- name: Sistemas de IoT para monitoramento
+  examples:
+  - Sensores locais de irrigação
+  - Dispositivos de rastreamento
+  priority: low
+- name: Aplicações de previsão meteorológica
+  examples:
+  - IPMA apps
+  - Weather Underground
+  priority: high
+industry_faq:
+- question: Quanto custa implementar a agricultura de precisão na minha quinta?
+  answer_template: Os custos variam consoante a escala, mas começam em torno de 500 EUR para soluções básicas. Podemos analisar o seu caso para otimizar o investimento.
+- question: Como posso cumprir o GDPR com os dados das minhas culturas?
+  answer_template: Oferecemos orientação automatizada para garantir que a recolha e processamento de dados sejam conformes, sem custos adicionais.
+- question: Quais são os benefícios de usar um agente de voz em vez de aplicações móveis?
+  answer_template: Permite operações mãos-livres, ideal para trabalho no campo, e integra-se facilmente com sistemas existentes.
+- question: Há subsídios da UE disponíveis para tecnologia agrícola?
+  answer_template: Sim, existem programas como o FEADER. Podemos ajudar a identificar oportunidades e gerir candidaturas.
+- question: Como posso melhorar a eficiência da irrigação com recursos limitados?
+  answer_template: Recomendamos sistemas de monitoramento via sensores e ajustes baseados em previsões climáticas, com ROI rápido.
+- question: O agente de voz funciona em zonas com conectividade fraca?
+  answer_template: Sim, oferecemos funcionalidades offline para recolha básica de dados, sincronizando quando a rede estiver disponível.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Compreendemos a importância do orçamento. Oferecemos soluções a partir de 300 EUR/mês, adaptadas à sua quinta. Posso detalhar como isso pode poupar-lhe tempo e recursos?
+  goal: Converter a pergunta em uma discussão sobre valor e retorno sobre investimento.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como gestão de irrigação.
+  script: Para gestão de irrigação, integramos sensores e alertas de voz para otimizar o uso de água. Isso pode reduzir custos em até 20%. Gostaria de marcar uma demonstração?
+  goal: Destacar benefícios tangíveis e agendar um próximo passo.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente durante a conversa.
+  script: Respeitamos os nossos concorrentes, mas diferenciamo-nos com suporte de voz 24/7 e integração local em português. Isso garante uma adaptação mais rápida às suas necessidades.
+  goal: Reforçar as vantagens únicas e construir confiança.
+- trigger: objection_technology
+  situation: Quando o cliente expressa ceticismo sobre o uso de tecnologia.
+  script: Entendemos que a tecnologia pode parecer complexa. Mas com o nosso agente de voz, é tão simples como falar. Já ajudamos quintas semelhantes a aumentar a produtividade. Posso partilhar alguns casos?
+  goal: Superar objeções com exemplos práticos e simplicidade.
+competitors:
+- name: Agroop
+  positioning: Líder em software de gestão agrícola em Portugal
+  strengths:
+  - Interface amigável
+  - Integração com dados da UE
+  - Suporte local
+  weaknesses:
+  - Custos elevados para pequenas quintas
+  - Funcionalidades de voz limitadas
+  our_differentiation: Oferecemos soluções de voz acessíveis e suporte 24/7, focadas em automação hands-free.
+- name: Farmable
+  positioning: Plataforma de monitoramento de culturas para agricultura de precisão
+  strengths:
+  - Aplicações móveis robustas
+  - Dados em tempo real
+  - Parcerias internacionais
+  weaknesses:
+  - Dependência de conectividade constante
+  - Pouco foco no mercado português
+  our_differentiation: Funcionalidades offline e adaptação específica às regulamentações e clima de Portugal.
+- name: Local consultorias agrícolas
+  positioning: Serviços tradicionais de consultoria presencial
+  strengths:
+  - Relacionamento pessoal
+  - Conhecimento local profundo
+  - Flexibilidade
+  weaknesses:
+  - Custos variáveis e altos
+  - Disponibilidade limitada
+  - Pouca escalabilidade
+  our_differentiation: Combinamos conhecimento local com tecnologia escalável, oferecendo suporte contínuo a um custo fixo.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 2000
+  entry_point: 300
+  roi_examples:
+  - scenario: Pequena quinta de olival que implementa monitoramento de irrigação
+    monthly_cost: 350
+    monthly_savings: 640
+    payback_months: 3
+  - scenario: Quintas médias com gestão automatizada de pedidos e conformidade
+    monthly_cost: 800
+    monthly_savings: 1600
+    payback_months: 2
+  value_anchors:
+  - Reduza o desperdício de água em até 30% com alertas de voz
+  - Automatize 50% das tarefas administrativas para focar na produção
+  - Cumpra com o GDPR sem custos adicionais de consultoria
+market_context:
+  market_size: Estimado em 500 milhões EUR para tecnologia agrícola em Portugal
+  growth_rate: 5% ao ano, impulsionado por fundos da UE e sustentabilidade
+  key_trends:
+  - Aumento da adopção de agricultura de precisão e IoT
+  - Crescente foco em certificações orgânicas e sustentáveis
+  - Digitalização de cadeias de abastecimento para mercados locais
+  seasonality:
+    high:
+    - Primavera (março a junho) para plantio
+    - Outono (setembro a novembro) para colheitas
+    low:
+    - Inverno (dezembro a fevereiro) para manutenção
+    - Verão (julho a agosto) para algumas culturas de sequeiro
+typical_objections:
+- objection: Não tenho tempo para aprender novas tecnologias.
+  response: Com o agente de voz, a curva de aprendizagem é mínima – basta falar. E oferecemos treinamento gratuito para garantir a sua conforto.
+- objection: É muito caro para a minha quinta pequena.
+  response: Temos pacotes a partir de 300 EUR/mês, projetados para quintas pequenas, com ROI rápido através de poupanças em recursos.
+- objection: Prefiro o contacto pessoal com consultores.
+  response: Combinamos o suporte de voz com consultoria humana quando necessário, oferecendo o melhor dos dois mundos a um custo reduzido.
+- objection: A minha conectividade de internet é fraca na zona rural.
+  response: As nossas soluções incluem modos offline para funcionalidades essenciais, sincronizando dados automaticamente quando possível.
+meta:
+  id: agriculture
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- agriculture
+- farming
+- agribusiness
+- farm
+_extends: _base/agriculture

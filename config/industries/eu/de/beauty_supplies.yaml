@@ -1,0 +1,265 @@
+pain_points:
+- description: Hohe Lagerkosten durch verderbliche Schönheitsprodukte mit begrenzter
+    Haltbarkeit.
+  severity: high
+  solution_hint: KI-Sprachassistent kann automatische Lagerbestandsüberwachung und
+    Nachbestellungen basierend auf Verfallsdaten verwalten.
+- description: Ineffiziente Terminverwaltung in Salons führt zu Leerlaufzeiten und
+    verpassten Einnahmen.
+  severity: medium
+  solution_hint: KI-Sprachassistent kann Terminbuchungen, Erinnerungen und Stornierungen
+    in Echtzeit automatisieren.
+- description: Herausforderungen bei der Einhaltung der DSGVO für Kundendaten in Marketing-
+    und Vertriebsprozessen.
+  severity: high
+  solution_hint: KI-Sprachassistent kann datenschutzkonforme Gespräche führen und
+    Einwilligungen dokumentieren.
+- description: Starker Wettbewerb durch Online-Händler wie Amazon, die Preise drücken
+    und Lieferzeiten verkürzen.
+  severity: medium
+  solution_hint: KI-Sprachassistent kann personalisierte Angebote und lokale Lieferoptionen
+    hervorheben, um Kunden zu binden.
+- description: Saisonale Nachfrageschwankungen, z.B. höhere Umsätze vor Feiertagen,
+    führen zu Planungsunsicherheiten.
+  severity: low
+  solution_hint: KI-Sprachassistent kann Vorhersagen basierend auf historischen Daten
+    liefern und Marketingkampagnen anpassen.
+- description: Sprachbarrieren in multikulturellen Regionen Deutschlands erschweren
+    die Kundenkommunikation.
+  severity: medium
+  solution_hint: KI-Sprachassistent bietet mehrsprachige Unterstützung für gängige
+    Sprachen wie Türkisch oder Englisch.
+- description: Schwierigkeiten, mit schnell wechselnden Beauty-Trends Schritt zu halten
+    und das Sortiment anzupassen.
+  severity: medium
+  solution_hint: KI-Sprachassistent kann Trendanalysen bereitstellen und Empfehlungen
+    für neue Produkte geben.
+typical_services:
+- Haarpflegeprodukte und Stylingartikel
+- Hautpflege- und Gesichtsbehandlungsprodukte
+- Make-up und Kosmetikzubehör
+- Nagelstudio-Bedarf und Maniküre-Produkte
+- Friseurbedarf und Salonausstattung
+- Kosmetikberatung und Produkttests
+- Schulungen für Fachpersonal im Beauty-Bereich
+- Online-Bestellungen und Lieferservice
+- Großhandel und B2B-Vertrieb von Beauty-Artikeln
+- Retail-Verkauf in Fachgeschäften und Drogerien
+recommended_functions:
+- name: Terminbuchung und -verwaltung
+  priority: high
+  reason: Kritisch für Salons und Spas, um Auslastung zu optimieren und Kunden zufrieden
+    zu stellen.
+- name: Lagerbestandsüberwachung und Nachbestellung
+  priority: high
+  reason: Verhindert Engpässe und reduziert Lagerkosten bei verderblichen Beauty-Produkten.
+- name: Kundenservice und FAQ-Beantwortung
+  priority: medium
+  reason: Entlastet Mitarbeiter und bietet 24/7-Unterstützung für häufige Anfragen.
+- name: Verkauf und Upselling von Produkten
+  priority: medium
+  reason: Steigert den Umsatz durch personalisierte Empfehlungen basierend auf Kundenbedürfnissen.
+- name: DSGVO-konforme Datenerfassung
+  priority: high
+  reason: Essentiell für die Einhaltung deutscher Datenschutzgesetze in allen Kundeninteraktionen.
+- name: Mehrsprachige Kommunikation
+  priority: low
+  reason: Wichtig in urbanen Gebieten, um eine breitere Kundschaft anzusprechen.
+- name: Trendbenachrichtigungen und Sortimentsupdates
+  priority: low
+  reason: Hilft Unternehmen, wettbewerbsfähig zu bleiben und neue Märkte zu erschließen.
+typical_integrations:
+- name: POS-Systeme
+  examples:
+  - Datev
+  - Lexware
+  - SevDesk
+  priority: high
+- name: CRM-Software
+  examples:
+  - Salesforce
+  - HubSpot
+  - Pipedrive
+  priority: medium
+- name: Lagerverwaltungssysteme
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - JTL-Software
+  priority: high
+- name: E-Commerce-Plattformen
+  examples:
+  - Shopify
+  - WooCommerce
+  - Magento
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Lexware
+  - Datev
+  - SevDesk
+  priority: medium
+industry_faq:
+- question: Wie lange dauert die Lieferung Ihrer Beauty-Produkte?
+  answer_template: Standardlieferung innerhalb von 2-3 Werktagen in Deutschland. Expressoptionen
+    sind verfügbar.
+- question: Bieten Sie Schulungen für neue Beauty-Trends an?
+  answer_template: Ja, wir bieten regelmäßige Schulungen und Webinars für Fachpersonal
+    an. Kontaktieren Sie uns für Termine.
+- question: Sind Ihre Produkte tierversuchsfrei und nachhaltig?
+  answer_template: Viele unserer Produkte sind zertifiziert tierversuchsfrei und umweltfreundlich
+    verpackt. Details auf Anfrage.
+- question: Kann ich Proben oder Testprodukte bestellen?
+  answer_template: Ja, wir bieten Probiersets für ausgewählte Produkte an. Fragen
+    Sie nach unseren aktuellen Angeboten.
+- question: Wie handle ich Rücksendungen oder beschädigte Lieferungen?
+  answer_template: Rücksendungen sind innerhalb von 14 Tagen möglich. Bei beschädigter
+    Lieferung kontaktieren Sie sofort unseren Support.
+- question: Unterstützen Sie Großhandelskunden mit Mengenrabatten?
+  answer_template: Ja, für B2B-Kunden bieten wir spezielle Konditionen und Rabatte
+    ab bestimmten Bestellmengen.
+- question: Ist Ihre Software DSGVO-konform?
+  answer_template: Ja, alle unsere Systeme sind vollständig DSGVO-konform und schützen
+    Ihre Kundendaten.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für Beauty-Produkte oder Dienstleistungen
+    fragt.
+  script: Hallo! Vielen Dank für Ihr Interesse. Unsere Preise variieren je nach Produkt
+    und Menge. Für eine persönliche Offerte, kann ich Ihnen helfen, die passenden
+    Optionen basierend auf Ihrem Budget zu finden. Möchten Sie mehr über unsere Einstiegspakete
+    erfahren?
+  goal: Kundenengagement fördern und zu einer detaillierten Beratung überleiten.
+- trigger: product_demo_request
+  situation: Wenn ein Kunde eine Demonstration oder mehr Informationen zu einem spezifischen
+    Produkt wünscht.
+  script: Gerne zeige ich Ihnen unsere Beauty-Produkte im Detail. Wir können eine
+    virtuelle Demo vereinbaren oder Sie besuchen uns vor Ort. Was sind Ihre spezifischen
+    Anforderungen? Ich kann auch Alternativen vorschlagen, die zu Ihren Bedürfnissen
+    passen.
+  goal: Interesse vertiefen und einen Termin für eine Demo oder Beratung vereinbaren.
+- trigger: closing_sale
+  situation: Am Ende eines Gesprächs, um den Verkauf abzuschließen.
+  script: Basierend auf unserem Gespräch, scheint unser Angebot perfekt für Sie zu
+    sein. Möchten Sie jetzt bestellen oder habe ich noch offene Fragen klären? Für
+    eine schnelle Abwicklung, kann ich Ihnen die Bestellbestätigung sofort zusenden.
+  goal: Abschluss des Verkaufs und Sicherstellung der Kundenzufriedenheit.
+- trigger: objection_handling
+  situation: Wenn ein Kunde Einwände wie zu hohe Kosten hat.
+  script: Ich verstehe Ihre Bedenken bezüglich der Kosten. Vielleicht kann ich Ihnen
+    unsere ROI-Beispiele zeigen, wie andere Kunden durch Effizienzsteigerungen gespart
+    haben. Oder wir beginnen mit einem kleineren Einstiegspaket, um Risiken zu minimieren.
+  goal: Einwände entkräften und Vertrauen in den Mehrwert aufbauen.
+competitors:
+- name: Douglas
+  positioning: Premium-Beauty-Einzelhändler mit breitem Sortiment und Flagship-Stores.
+  strengths:
+  - Starke Markenpräsenz
+  - Umfangreiche Produktpalette
+  - High-End-Kundenerlebnis
+  weaknesses:
+  - Höhere Preise
+  - Begrenzte B2B-Fokussierung
+  - Langsamere Lieferzeiten für Großbestellungen
+  our_differentiation: Wir bieten wettbewerbsfähige Preise, spezialisierte B2B-Dienstleistungen
+    und schnellere, lokale Lieferung.
+- name: dm-drogerie markt
+  positioning: Mass-market Drogerie mit erschwinglichen Beauty-Produkten.
+  strengths:
+  - Günstige Preise
+  - Weite Verbreitung in Deutschland
+  - Starker Fokus auf Nachhaltigkeit
+  weaknesses:
+  - Begrenzte Fachberatung
+  - Weniger Premium-Produkte
+  - Generisches Sortiment
+  our_differentiation: Wir bieten Fachberatung, maßgeschneiderte Lösungen für Unternehmen
+    und ein breiteres Sortiment an Profi-Produkten.
+- name: Rossmann
+  positioning: Ähnlich wie dm, mit Fokus auf Drogerieartikel und Basis-Beauty.
+  strengths:
+  - Große Filialnetz
+  - Regelmäßige Rabattaktionen
+  - Kundenbindungsprogramme
+  weaknesses:
+  - Mangel an High-End-Produkten
+  - Eingeschränkte Schulungsangebote
+  - Weniger B2B-Orientierung
+  our_differentiation: Wir konzentrieren uns auf professionelle Kunden wie Salons,
+    mit Schulungen und integrierten Softwarelösungen.
+- name: Lokale Beauty-Großhändler
+  positioning: Regionale Anbieter mit persönlichem Service und schneller Lieferung.
+  strengths:
+  - Lokale Expertise
+  - Flexible Konditionen
+  - Schnelle Reaktionszeiten
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - Höhere Kosten für Nischenprodukte
+  - Weniger digitale Angebote
+  our_differentiation: Wir kombinieren lokalen Service mit fortschrittlicher KI-Technologie
+    und europaweiter Lieferfähigkeit.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Ein Salon implementiert KI-gestützte Terminbuchung und reduziert Leerlaufzeiten.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Ein Einzelhändler nutzt Lagerverwaltung, um Überschüsse zu minimieren.
+    monthly_cost: 150
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 30% Lagerkosten mit automatisierter Bestandsverwaltung.
+  - Steigern Sie Ihre Umsätze durch 24/7-Kundenservice und Upselling.
+  - DSGVO-konforme Lösungen, die rechtliche Risiken minimieren.
+market_context:
+  market_size: Schätzungsweise 15 Milliarden EUR jährlich in Deutschland.
+  growth_rate: 3-5% YoY, getrieben durch Online-Handel und Nachhaltigkeitstrends.
+  key_trends:
+  - Wachsende Nachfrage nach natürlichen und tierversuchsfreien Produkten.
+  - Zunahme des E-Commerce und omnichannel-Verkaufs.
+  - Steigende Bedeutung von Fachberatung und Personalisierung.
+  - Integration von Technologie wie AI in Beauty-Dienstleistungen.
+  seasonality:
+    high:
+    - Weihnachtszeit
+    - Frühling (vor Events wie Hochzeiten)
+    - Sommer (Urlaubszeit)
+    low:
+    - Januar (nach den Feiertagen)
+    - Spätherbst
+typical_objections:
+- objection: Das ist zu teuer für mein kleines Unternehmen.
+  response: Ich verstehe Ihr Budgetbedenken. Unsere Einstiegspakete beginnen bei 200
+    EUR und können durch Einsparungen schnell amortisiert werden. Möchten Sie eine
+    Kosten-Nutzen-Analyse sehen?
+- objection: Ich bin bereits mit einem anderen Anbieter zufrieden.
+  response: Das ist gut zu hören! Vielleicht kann ich Ihnen zeigen, wie unsere KI-Lösungen
+    zusätzliche Effizienz bieten, die Ihr aktueller Anbieter nicht hat. Ein kurzer
+    Vergleich könnte lohnenswert sein.
+- objection: Ich habe keine Zeit, neue Software zu implementieren.
+  response: Unsere Lösungen sind einfach einzurichten und erfordern minimalen Schulungsaufwand.
+    Wir bieten volle Unterstützung während der Einführungsphase, um Störungen zu minimieren.
+- objection: Ich zweifle an der DSGVO-Konformität Ihrer Technologie.
+  response: Alle unsere Systeme sind streng DSGVO-konform und werden regelmäßig auditiert.
+    Wir können Ihnen Zertifizierungen und Referenzen von anderen deutschen Kunden
+    vorlegen.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

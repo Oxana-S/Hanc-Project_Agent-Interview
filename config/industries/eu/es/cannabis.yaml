@@ -1,0 +1,228 @@
+pain_points:
+- description: Cumplimiento normativo complejo y en constante cambio para clubes sociales
+    y venta de productos CBD.
+  severity: high
+  solution_hint: El agente de voz puede proporcionar actualizaciones automáticas sobre
+    regulaciones y asistir en la documentación necesaria.
+- description: Dificultad en la gestión de socios y reservas en clubes de cannabis,
+    leading a ineficiencias operativas.
+  severity: medium
+  solution_hint: Automatizar la programación de citas y recordatorios para mejorar
+    la experiencia del socio.
+- description: Limitaciones en marketing y publicidad debido a restricciones legales,
+    afectando la captación de clientes.
+  severity: high
+  solution_hint: El agente puede manejar consultas de manera discreta y calificar
+    leads a través de conversaciones naturales.
+- description: Problemas con procesamiento de pagos, ya que muchos bancos son reacios
+    a trabajar con negocios de cannabis.
+  severity: medium
+  solution_hint: Integrar con gateways de pago alternativos y proporcionar información
+    sobre opciones de pago seguras.
+- description: Control de inventario y cadena de suministro para productos CBD y accesorios,
+    con riesgo de desabastecimiento.
+  severity: medium
+  solution_hint: Monitorear niveles de stock y generar alertas automáticas para reordenar.
+- description: Alta competencia y falta de diferenciación en el mercado de CBD y clubes
+    sociales.
+  severity: low
+  solution_hint: El agente puede destacar servicios personalizados y ventajas únicas
+    durante las interacciones con clientes.
+typical_services:
+- Consultoría legal y de cumplimiento normativo
+- Gestión y administración de clubes sociales de cannabis
+- Venta y distribución de productos CBD (aceites, cremas, flores)
+- Asesoramiento en cultivo y producción sostenible
+- Desarrollo de software para gestión de socios y reservas
+- Marketing digital discreto y SEO para el sector
+- Formación y cursos sobre uso responsable y legalidad
+- Diseño y montaje de grow shops y espacios de cultivo
+- Servicios de logística y transporte seguro de productos
+- Análisis de mercado y estudios de competencia
+recommended_functions:
+- name: Calificación de leads automatizada
+  priority: high
+  reason: Eficiente para filtrar consultas y dirigir a clientes potenciales calificados,
+    crucial en un mercado regulado.
+- name: Programación de citas y recordatorios
+  priority: high
+  reason: Mejora la gestión de socios en clubes y reduce no-shows, aumentando la eficiencia
+    operativa.
+- name: Respuesta a preguntas frecuentes sobre legalidad
+  priority: high
+  reason: Proporciona información precisa y actualizada, reduciendo la carga del equipo
+    humano y construyendo confianza.
+- name: Seguimiento de ventas y post-venta
+  priority: medium
+  reason: Mejora la retención de clientes y fomenta compras recurrentes en un mercado
+    competitivo.
+- name: Integración con sistemas de inventario
+  priority: medium
+  reason: Ayuda a mantener un control preciso del stock, evitando pérdidas por desabastecimiento
+    o exceso.
+- name: Generación de informes de desempeño
+  priority: low
+  reason: Permite a los negocios monitorear métricas clave y tomar decisiones basadas
+    en datos.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Software de gestión de clubes sociales
+  examples:
+  - Canabiz
+  - Club Manager
+  - Social Club Software
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - PrestaShop
+  - WooCommerce
+  - Shopify
+  priority: medium
+- name: Sistemas de pago
+  examples:
+  - Stripe
+  - PayPal
+  - bizum
+  priority: medium
+- name: Herramientas de contabilidad
+  examples:
+  - Contasimple
+  - Sage
+  - Quaderno
+  priority: low
+industry_faq:
+- question: ¿Es legal vender productos de CBD en España?
+  answer_template: Sí, la venta de productos de CBD con menos del 0.2% de THC es legal,
+    pero sujeto a regulaciones específicas. Te recomendamos consultar con un asesor
+    legal para cumplir con todas las normativas.
+- question: ¿Cómo puedo abrir un club social de cannabis?
+  answer_template: Requiere un proceso legal complejo que incluye registro como asociación,
+    cumplimiento de leyes locales y gestión de socios. Ofrecemos servicios de consultoría
+    para guiarte paso a paso.
+- question: ¿Qué servicios ofrecen para mejorar la gestión de mi grow shop?
+  answer_template: Ofrecemos soluciones de automatización para inventario, atención
+    al cliente y marketing, diseñadas específicamente para el sector cannabis en España.
+- question: ¿Cuáles son las tendencias actuales en el mercado de cannabis en España?
+  answer_template: El mercado está creciendo, con aumento en la demanda de productos
+    CBD, expansión de clubes sociales y mayor enfoque en sostenibilidad y calidad.
+- question: ¿Cómo manejan la privacidad de los datos de los clientes?
+  answer_template: Cumplimos estrictamente con el GDPR, utilizando encriptación y
+    protocolos seguros para proteger toda la información de los clientes.
+- question: ¿Pueden ayudarme con el marketing en un sector tan regulado?
+  answer_template: Sí, utilizamos estrategias de marketing discreto y orgánico, como
+    SEO y contenido educativo, que respetan las restricciones legales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por el precio de nuestros servicios.
+  script: Entiendo que el precio es una consideración importante. Nuestros servicios
+    comienzan desde 200€ al mes, y personalizamos soluciones basadas en tus necesidades
+    específicas. ¿Podrías contarme más sobre tu negocio para ofrecerte una cotización
+    precisa?
+  goal: Calificar al lead y guiar la conversación hacia una propuesta personalizada.
+- trigger: service_inquiry
+  situation: Cuando un cliente muestra interés en un servicio específico, como gestión
+    de clubes sociales.
+  script: Me alegra que preguntes. Nuestro servicio de gestión de clubes sociales
+    incluye automatización de reservas, soporte legal y herramientas de comunicación.
+    ¿Te gustaría agendar una demostración gratuita para ver cómo puede optimizar tu
+    operación?
+  goal: Programar una demostración y avanzar en el funnel de ventas.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor.
+  script: Es bueno que compares opciones. A diferencia de otros, nosotros ofrecemos
+    integraciones completas con software local y soporte en español 24/7, adaptado
+    a las regulaciones españolas. ¿Qué es lo que más valoras en un proveedor?
+  goal: Diferenciar nuestros servicios y entender las prioridades del cliente.
+competitors:
+- name: Canabiz Solutions
+  positioning: Proveedor líder de software para clubes sociales de cannabis en España.
+  strengths:
+  - Amplia base de clientes
+  - Funcionalidades específicas para el sector
+  weaknesses:
+  - Soporte limitado en horarios
+  - Integraciones menos flexibles
+  our_differentiation: Ofrecemos soporte personalizado 24/7 y integraciones más adaptables
+    a diferentes modelos de negocio.
+- name: CBD Spain Market
+  positioning: Distribuidor mayorista de productos CBD.
+  strengths:
+  - Precios competitivos
+  - Catálogo extenso
+  weaknesses:
+  - Servicio al cliente lento
+  - Falta de asesoramiento legal
+  our_differentiation: Combinamos distribución con consultoría integral y herramientas
+    de automatización para un enfoque holístico.
+- name: GrowTech Iberia
+  positioning: Especialista en equipos y soluciones para cultivo.
+  strengths:
+  - Productos de alta calidad
+  - Experiencia técnica
+  weaknesses:
+  - Enfoque principalmente en hardware
+  - Poca presencia en servicios digitales
+  our_differentiation: Integramos soluciones digitales con hardware, proporcionando
+    un ecosistema completo para la gestión del negocio.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatización de gestión de socios para un club social
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reducción del 30% en tiempo de gestión administrativa
+  - Aumento del 20% en retención de socios con recordatorios automatizados
+  - Cumplimiento normativo garantizado, evitando multas costosas
+market_context:
+  market_size: Estimado en 500 millones de EUR anuales
+  growth_rate: 15% YoY
+  key_trends:
+  - Crecimiento rápido del mercado de CBD y bienestar
+  - Expansión de clubes sociales en áreas urbanas
+  - Mayor regulación y profesionalización del sector
+  - Aumento de la demanda de productos sostenibles y de origen local
+  seasonality:
+    high:
+    - Verano
+    - Festividades locales
+    low:
+    - Invierno
+    - Periodos post-festivos
+typical_objections:
+- objection: Es muy caro para mi negocio pequeño.
+  response: Entiendo tu preocupación. Nuestros planes escalables permiten comenzar
+    con funciones básicas desde 200€/mes, y el ROI suele ser rápido gracias a la eficiencia
+    ganada. ¿Podemos analizar tus costos actuales para demostrarlo?
+- objection: Ya tengo un sistema que funciona.
+  response: Me alegra que tengas un sistema. Muchos clientes como tú han encontrado
+    que nuestra integración mejora la productividad en un 40%. ¿Te interesaría una
+    comparativa gratuita para ver las diferencias?
+- objection: No confío en la automatización para un sector tan sensible.
+  response: Es comprensible. Diseñamos nuestros agentes con énfasis en seguridad y
+    cumplimiento GDPR, y ofrecemos soporte humano de respaldo. ¿Te gustaría hablar
+    con un cliente similar para escuchar su experiencia?
+meta:
+  id: cannabis
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

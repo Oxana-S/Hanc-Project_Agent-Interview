@@ -1,0 +1,258 @@
+pain_points:
+- description: Alta taxa de rotatividade de funcionários, especialmente em períodos
+    de alta demanda, como Black Friday e Natal.
+  severity: high
+  solution_hint: O agente de voz de IA pode treinar e assistir funcionários novos
+    rapidamente, reduzindo o tempo de adaptação e erros.
+- description: Gestão ineficiente de estoque, levando a excessos ou faltas de produtos,
+    causando perdas de vendas.
+  severity: high
+  solution_hint: O agente pode automatizar alertas de reabastecimento e integração
+    com sistemas de inventário para otimizar os níveis de estoque.
+- description: Altos custos operacionais devido a processos manuais, como atendimento
+    ao cliente e agendamento de entregas.
+  severity: medium
+  solution_hint: Automatizar chamadas e agendamentos com IA reduz mão de obra e aumenta
+    a eficiência.
+- description: Dificuldade em cumprir a LGPD (Lei Geral de Proteção de Dados) no tratamento
+    de dados de clientes.
+  severity: high
+  solution_hint: O agente pode ser configurado para seguir protocolos de privacidade,
+    garantindo conformidade automática nas interações.
+- description: Baixa fidelização de clientes devido a atendimento personalizado insuficiente.
+  severity: medium
+  solution_hint: Usar IA para oferecer recomendações personalizadas e lembretes de
+    compras, melhorando a experiência do cliente.
+- description: Desafios logísticos nas entregas, especialmente em regiões remotas
+    do Brasil.
+  severity: medium
+  solution_hint: Integrar com sistemas de logística para automatizar rastreamento
+    e notificações, reduzindo atrasos.
+typical_services:
+- Gestão de inventário e estoque
+- Atendimento ao cliente por telefone e chat
+- Agendamento de entregas e retiradas
+- Vendas por telefone e upsell
+- Suporte pós-venda e resolução de reclamações
+- Campanhas de marketing e promoções via voz
+- Monitoramento de conformidade com LGPD
+- Integração com e-commerce e marketplaces
+- Treinamento de equipe e onboarding
+- Análise de dados de vendas e relatórios
+recommended_functions:
+- name: Atendimento de chamadas automático
+  priority: high
+  reason: Reduz custos com operadores humanos e melhora a disponibilidade 24/7 para
+    clientes.
+- name: Agendamento inteligente de entregas
+  priority: high
+  reason: Otimiza logística e reduz erros em períodos de alta demanda, como feriados.
+- name: Upsell e cross-sell por voz
+  priority: medium
+  reason: Aumenta o valor médio das vendas através de recomendações personalizadas
+    durante as interações.
+- name: Conformidade com LGPD automatizada
+  priority: high
+  reason: Garante que todas as interações sigam as leis de proteção de dados, evitando
+    multas.
+- name: Integração com ERPs locais
+  priority: high
+  reason: Facilita a sincronização de dados com sistemas como TOTVS ou SAP, comum
+    no varejo brasileiro.
+- name: Relatórios de desempenho em tempo real
+  priority: medium
+  reason: Fornece insights para tomada de decisões rápidas baseadas em dados de vendas
+    e atendimento.
+typical_integrations:
+- name: Sistema ERP
+  examples:
+  - TOTVS
+  - SAP
+  - Oracle
+  priority: high
+- name: Plataforma de e-commerce
+  examples:
+  - Magento
+  - VTEX
+  - Nuvemshop
+  priority: high
+- name: Gateway de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - Cielo
+  priority: medium
+- name: Sistema de logística
+  examples:
+  - Correios
+  - Jadlog
+  - Loggi
+  priority: medium
+- name: CRM
+  examples:
+  - Salesforce
+  - RD Station
+  - Pipedrive
+  priority: medium
+industry_faq:
+- question: Como o agente de voz de IA pode ajudar a reduzir custos no meu varejo?
+  answer_template: Nosso agente automatiza tarefas repetitivas como atendimento ao
+    cliente e agendamentos, reduzindo a necessidade de funcionários e aumentando a
+    eficiência operacional, com ROI comprovado em poucos meses.
+- question: É compatível com a LGPD?
+  answer_template: Sim, configuramos o agente para seguir estritamente as diretrizes
+    da LGPD, com criptografia de dados e consentimento explícito em todas as interações,
+    garantindo conformidade total.
+- question: Posso integrar com meus sistemas atuais, como TOTVS?
+  answer_template: Absolutamente. Oferecemos integrações nativas com sistemas ERP
+    comuns no Brasil, como TOTVS, permitindo sincronização em tempo real sem interromper
+    seus processos.
+- question: Qual é o custo inicial para implementar?
+  answer_template: Temos planos acessíveis a partir de R$ 500 por mês, com opções
+    personalizadas baseadas no tamanho do seu negócio, e oferecemos uma demonstração
+    gratuita para você testar.
+- question: Como lida com picos de demanda como Black Friday?
+  answer_template: O agente é escalável automaticamente, lidando com milhares de chamadas
+    simultaneamente sem sobrecarregar sua equipe, garantindo atendimento rápido mesmo
+    em períodos de alta.
+- question: Precisa de treinamento extensivo para usar?
+  answer_template: Não, a implementação é simples e fornecemos suporte completo. Em
+    média, nossos clientes estão operacionais em menos de uma semana com mínima intervenção.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma demonstração ou ligação
+    inicial.
+  script: Olá! Entendo sua preocupação com custos. Nossos planos começam em R$ 500
+    por mês, mas o valor real está na economia que você terá. Por exemplo, ao automatizar
+    atendimentos, podemos reduzir seus custos operacionais em até 30% em poucos meses.
+    Posso agendar uma análise personalizada para mostrar números específicos para
+    seu varejo?
+  goal: Converter a pergunta de preço em uma demonstração de valor e agendar uma próxima
+    etapa.
+- trigger: lgpd_concern
+  situation: Quando um cliente expressa preocupação com conformidade à LGPD.
+  script: 'Excelente pergunta! A LGPD é crucial no Brasil. Nosso agente foi projetado
+    com foco total na privacidade: todas as interações são criptografadas, solicitamos
+    consentimento explícito e geramos relatórios de conformidade automáticos. Já ajudamos
+    vários varejistas a evitar multas. Posso compartilhar casos de sucesso?'
+  goal: Aliviar preocupações de conformidade e destacar nossa expertise local.
+- trigger: competition_mention
+  situation: Quando o cliente menciona um concorrente como alternativa.
+  script: Entendo que você está considerando outras opções. Diferente de soluções
+    genéricas, nossa IA é especializada no varejo brasileiro, com integrações locais
+    como TOTVS e suporte em português nativo. Além disso, oferecemos treinamento dedicado
+    e ROI mais rápido, muitas vezes em menos de 3 meses. Gostaria de comparar lado
+    a lado?
+  goal: Diferenciação baseada em localização e resultados tangíveis.
+- trigger: post_sale_support
+  situation: Após a venda, para garantir satisfação e upsell.
+  script: Olá! Espero que esteja satisfeito com nosso agente. Notamos que você está
+    usando principalmente para atendimento—gostaria de explorar funcionalidades adicionais
+    como upsell automático? Isso pode aumentar suas vendas em 15% sem custo extra
+    inicial. Podemos agendar uma rápida sessão?
+  goal: Aumentar o valor do cliente através de upsell e fidelização.
+competitors:
+- name: Zenvia
+  positioning: Plataforma de comunicação omnichannel focada em SMS e chatbots.
+  strengths:
+  - Ampla base de clientes no Brasil
+  - Integração com múltiplos canais
+  - Preços competitivos
+  weaknesses:
+  - Foco limitado em voz e IA
+  - Suporte menos personalizado para varejo
+  - Conformidade LGPD básica
+  our_differentiation: Oferecemos IA de voz especializada para varejo, com automação
+    avançada e conformidade LGPD robusta, além de integrações nativas com sistemas
+    ERP locais.
+- name: Take Blip
+  positioning: Solução de chatbots para atendimento ao cliente e vendas.
+  strengths:
+  - Forte em chatbots e mensagens
+  - Interface amigável
+  - Crescimento rápido na América Latina
+  weaknesses:
+  - Capacidades de voz limitadas
+  - Menos focado em automação operacional
+  - Custos ocultos em escalabilidade
+  our_differentiation: Nosso agente de voz é mais eficiente para interações por telefone,
+    comum no varejo brasileiro, com melhor ROI em redução de custos humanos.
+- name: Allya
+  positioning: IA para automação de processos em call centers.
+  strengths:
+  - Experiência em call centers
+  - Soluções customizadas
+  - Boa reputação no mercado
+  weaknesses:
+  - Preços mais altos
+  - Implementação mais lenta
+  - Menos integrações com e-commerce
+  our_differentiation: Temos preços mais acessíveis, implementação rápida e foco específico
+    no varejo, incluindo suporte para estações de venda físicas e online.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Pequeno varejista automatizando atendimento ao cliente
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Médio varejista com integração de estoque e vendas
+    monthly_cost: 2000
+    monthly_savings: 6000
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 40% com automação de voz
+  - ROI garantido em menos de 3 meses para a maioria dos varejistas
+  - Planos flexíveis sem custo de configuração inicial
+market_context:
+  market_size: Estimado em R$ 10 bilhões para soluções de automação no varejo brasileiro
+  growth_rate: 15% ao ano, impulsionado pela digitalização pós-pandemia
+  key_trends:
+  - Crescimento do e-commerce e necessidade de integração omnichannel
+  - Aumento da adoção de IA para personalização do atendimento
+  - Foco em conformidade com LGPD como diferencial competitivo
+  - Expansão do varejo em cidades menores com soluções acessíveis
+  seasonality:
+    high:
+    - Novembro (Black Friday)
+    - Dezembro (Natal)
+    - Junho (festas juninas)
+    low:
+    - Fevereiro (pós-carnaval)
+    - Julho (férias escolares)
+typical_objections:
+- objection: Não tenho orçamento para investir em tecnologia agora.
+  response: Entendo, mas considere que o custo de não automatizar pode ser maior—por
+    exemplo, com perdas por estoque descontrolado. Oferecemos planos a partir de R$
+    500/mês com ROI rápido. Podemos começar com um piloto de baixo risco?
+- objection: Minha equipe é tradicional e resiste a mudanças.
+  response: Isso é comum. Nosso agente é projetado para complementar, não substituir,
+    sua equipe—ajudando em tarefas chatas para que focam no atendimento humano. Fornecemos
+    treinamento gratuito e suporte para facilitar a transição.
+- objection: Já tenho um sistema e não quero mais complicações.
+  response: Nossa solução se integra facilmente aos sistemas existentes, como TOTVS
+    ou VTEX, sem interromper operações. Muitos clientes relatam melhorias em eficiência
+    em semanas. Posso mostrar como funciona na prática?
+- objection: A IA não entende o sotaque regional dos meus clientes.
+  response: Nosso agente é treinado com dados brasileiros e suporta variantes de português,
+    incluindo sotaques regionais. Temos casos de sucesso em todo o país, e oferecemos
+    ajustes personalizados se necessário.
+meta:
+  id: retail
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

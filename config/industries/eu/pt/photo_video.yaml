@@ -1,0 +1,260 @@
+pain_points:
+- description: Concorrência elevada de amadores com preços muito baixos que desvalorizam
+    o mercado profissional.
+  severity: high
+  solution_hint: Agente pode destacar a qualidade profissional, portfolio e diferenciais
+    de serviço premium.
+- description: Dificuldade em gerir a agenda, especialmente em épocas altas como casamentos
+    e festas de final de ano.
+  severity: high
+  solution_hint: Agente pode automatizar agendamentos, enviar lembretes e gerir reagendamentos.
+- description: Clientes que pedem orçamentos detalhados mas depois desaparecem sem
+    resposta (ghosting).
+  severity: medium
+  solution_hint: Agente pode fazer follow-up automático após envio de orçamento para
+    reconquistar o lead.
+- description: Atrasos no pagamento por parte dos clientes, afetando o fluxo de caixa.
+  severity: medium
+  solution_hint: Agente pode enviar lembretes de pagamento automáticos e facilitar
+    pagamentos por link.
+- description: Necessidade constante de atualizar portfolio online e redes sociais
+    para atrair novos clientes.
+  severity: medium
+  solution_hint: Agente pode agendar publicações automáticas e coletar depoimentos
+    pós-serviço.
+- description: Logística complexa para deslocações, especialmente com equipamento
+    pesado para eventos fora da cidade.
+  severity: low
+  solution_hint: Agente pode gerir logística com checklists e confirmações de localização.
+- description: Dificuldade em explicar pacotes e preços aos clientes, que muitas vezes
+    não entendem o valor do trabalho.
+  severity: medium
+  solution_hint: Agente pode explicar claramente os pacotes, mostrar exemplos e calcular
+    ROI para o cliente.
+typical_services:
+- Fotografia de Casamento
+- Fotografia de Batizado e Comunhão
+- Fotografia Corporativa e de Empresas
+- Fotografia de Estúdio para Retratos
+- Vídeo Institucional
+- Vídeo de Eventos
+- Edição e Pós-produção de Imagem
+- Cobertura Fotográfica de Festas
+- Fotografia de Produto para E-commerce
+- Serviços de Drone (Filmagens Aéreas)
+recommended_functions:
+- name: Agendamento Inteligente
+  priority: high
+  reason: Crítico para gerir alta demanda sazonal e evitar conflitos de agenda.
+- name: Follow-up de Orçamentos
+  priority: high
+  reason: Reduz significativamente a taxa de abandono após envio de proposta.
+- name: Captação de Depoimentos
+  priority: medium
+  reason: Testemunhos são essenciais para construção de reputação no mercado português.
+- name: Lembretes de Pagamento
+  priority: medium
+  reason: Melhora o fluxo de caixa com cobranças automáticas e educadas.
+- name: Triagem de Pedidos Básicos
+  priority: low
+  reason: 'Poupa tempo ao filtrar pedidos não qualificados (ex: orçamentos irreais).'
+- name: Agendamento de Publicações em Redes Sociais
+  priority: medium
+  reason: Mantém presença online constante com mínimo esforço.
+typical_integrations:
+- name: Software de Agendamento
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  - Setmore
+  priority: high
+- name: Sistema de Faturação
+  examples:
+  - PHC
+  - Primavera
+  - InvoiceXpress
+  - Factura24
+  priority: high
+- name: Plataforma de Portfolio
+  examples:
+  - Format
+  - Photoshelter
+  - Instaproofs
+  priority: medium
+- name: Ferramentas de Edição na Cloud
+  examples:
+  - Adobe Creative Cloud
+  - Dropbox
+  - Google Drive
+  priority: medium
+- name: CRM para Pequenos Negócios
+  examples:
+  - HubSpot
+  - Salesforce Essentials
+  - Pipedrive
+  priority: low
+industry_faq:
+- question: Quanto custa um serviço de fotografia de casamento?
+  answer_template: Os preços variam conforme o pacote, começando normalmente em [X]€
+    para cobertura básica. Posso enviar um folheto detalhado com os nossos pacotes.
+    Tem já uma data em mente?
+- question: Estão disponíveis para um evento no próximo sábado?
+  answer_template: Deixe-me verificar a nossa agenda imediatamente. Para confirmar
+    disponibilidade, preciso saber a localização e duração aproximada do evento.
+- question: Incluem a edição das fotos no preço?
+  answer_template: Sim, todos os nossos pacotes incluem edição profissional básica.
+    Edições avançadas ou retoques extensivos podem ter um custo adicional, que discutimos
+    antes do serviço.
+- question: Trabalham com vídeo também ou só fotografia?
+  answer_template: Sim, oferecemos serviços completos de foto e vídeo. Muitos clientes
+    optam por pacotes combinados que oferecem um melhor valor. Posso enviar alguns
+    exemplos do nosso trabalho em vídeo.
+- question: Como funciona o pagamento?
+  answer_template: Normalmente pedimos um sinal de 30% para reservar a data, com o
+    restante pago no dia do evento ou após entrega das fotos. Aceitamos transferência
+    bancária, MB Way e por vezes cartão.
+- question: Entregam todas as fotos ou fazem uma seleção?
+  answer_template: Entregamos todas as fotos com qualidade técnica garantida, após
+    uma curadoria inicial que remove imagens repetidas ou com problemas técnicos.
+    O número mínimo garantido depende do pacote.
+sales_scripts:
+- trigger: price_question
+  situation: Quando cliente pergunta sobre preços de forma genérica.
+  script: Compreendo que o orçamento é importante. Os nossos preços variam conforme
+    o tipo de serviço e duração. Para lhe dar uma proposta precisa, pode-me dizer
+    qual o tipo de evento e data prevista? Assim posso verificar disponibilidade e
+    enviar um orçamento personalizado.
+  goal: Qualificar o lead e obter dados para proposta personalizada.
+- trigger: competitor_mention
+  situation: Quando cliente menciona outro fotógrafo ou estúdio.
+  script: É uma boa prática comparar opções. Para além do preço, considere a experiência,
+    o estilo fotográfico e o que está incluído no pacote. Oferecemos uma consulta
+    gratuita para mostrar o nosso portfolio e discutir a sua visão em detalhe. O valor
+    está em captar a sua história de forma única.
+  goal: Refocar a conversa na qualidade e valor único, não apenas no preço.
+- trigger: hesitation_timing
+  situation: Quando cliente demonstra interesse mas diz 'vou pensar' ou 'não é para
+    já'.
+  script: Percebo perfeitamente, é uma decisão importante. Muitos dos nossos clientes
+    também precisaram de tempo para decidir. Posso enviar-lhe alguns exemplos do nosso
+    trabalho para o tipo de evento que pretende? E aviso-lhe que as datas, especialmente
+    aos fins-de-semana, costumam ficar reservadas com bastante antecedência.
+  goal: Manter o engajamento, fornecer valor adicional e criar urgência sutil.
+- trigger: request_discount
+  situation: Quando cliente pede desconto diretamente.
+  script: Valorizamos cada projeto e mantemos preços justos pela nossa qualidade e
+    experiência. Em vez de desconto, posso verificar se temos algum pacote promocional
+    para a sua época ou sugerir um pacote ligeiramente mais básico que se ajuste melhor
+    ao seu orçamento, mantendo a qualidade essencial. A satisfação garantida é o nosso
+    principal foco.
+  goal: Manter o valor percebido enquanto oferece alternativa flexível.
+competitors:
+- name: Fotografia Rodrigues
+  positioning: Estúdio familiar tradicional com forte presença local.
+  strengths:
+  - Reconhecimento de marca local
+  - Experiência de décadas
+  - Relações pessoais com clientes
+  weaknesses:
+  - Processos manuais
+  - Presença digital fraca
+  - Tecnologia desatualizada
+  our_differentiation: Automatização que liberta tempo para criatividade, atendimento
+    24/7 via agente, e ferramentas modernas de apresentação para o cliente.
+- name: PixelPerfect Lda
+  positioning: Estúdio jovem e moderno focado em redes sociais e conteúdo digital.
+  strengths:
+  - Fortes em redes sociais
+  - Estilo contemporâneo
+  - Rápida entrega para digital
+  weaknesses:
+  - Preços mais altos
+  - Pouca disponibilidade para eventos longos
+  - Foco principalmente em foto
+  our_differentiation: Soluções completas foto+video, gestão de agenda mais eficiente
+    para maior disponibilidade, e foco em experiência do cliente pós-venda.
+- name: Momento Captado
+  positioning: Fotógrafo freelancer com preços muito competitivos.
+  strengths:
+  - Preços baixos
+  - Flexibilidade total
+  - Estilo artístico pessoal
+  weaknesses:
+  - Capacidade limitada
+  - Sem backup em caso de doença
+  - Equipamento limitado
+  our_differentiation: Profissionalismo empresarial, equipa de apoio, equipamento
+    de topo e garantias contratuais que dão segurança ao cliente.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 3000
+  entry_point: 250
+  roi_examples:
+  - scenario: Agente automatiza agendamentos e follow-up, poupando 10 horas/mês ao
+      fotógrafo.
+    monthly_cost: 49
+    monthly_savings: 300
+    payback_months: 0.2
+  - scenario: Agente reduz taxa de abandono de orçamentos em 15%, gerando 1 novo cliente/mês.
+    monthly_cost: 49
+    monthly_savings: 600
+    payback_months: 0.1
+  value_anchors:
+  - Cada cliente perdido por falta de follow-up custa em média 800€ em receita.
+  - Automatizar agendamentos liberta até 15 horas/mês para trabalho criativo ou novos
+    clientes.
+  - Um depoimento positivo pode gerar até 3 novos contactos por referência.
+market_context:
+  market_size: Estimado em 120M€ anuais (serviços profissionais)
+  growth_rate: 4-6% ao ano
+  key_trends:
+  - Crescente procura por vídeo de curta duração (reels, stories) para redes sociais.
+  - Aumento de encomendas de fotografia de produto para marketplaces online.
+  - Clientes mais informados que comparam portfolios online antes de contactar.
+  - Valorização da experiência completa do cliente, desde o primeiro contacto até
+    à entrega final.
+  seasonality:
+    high:
+    - Abril a Outubro (época de casamentos)
+    - Novembro/Dezembro (festas de Natal e empresa)
+    - Maio/Junho (festa de final de ano escolar)
+    low:
+    - Janeiro a Março
+    - Agosto (férias generalizadas)
+typical_objections:
+- objection: É muito caro, encontro preços mais baixos.
+  response: Compreendo a preocupação. O preço reflete a nossa experiência, equipamento
+    profissional e o tempo dedicado à edição. Um serviço barato pode custar-lhe memórias
+    imperfeitas. Posso mostrar-lhe uma comparação lado a lado do que recebe em cada
+    pacote?
+- objection: Não preciso disto, consigo gerir sozinho.
+  response: 'Admiro a sua autonomia. Muitos dos nossos clientes também pensavam assim,
+    mas descobriram que automatizar tarefas repetitivas como agendamentos e cobranças
+    lhes deu mais tempo para o que realmente importa: a criatividade e a interação
+    com os clientes. Podemos experimentar por um mês sem risco?'
+- objection: Não confio em sistemas automatizados para o meu negócio pessoal.
+  response: A sua preocupação é válida. O nosso agente atua como um assistente, não
+    substitui o contacto humano. Ele gere as tarefas demoradas, mas a parte criativa
+    e o toque pessoal continuam totalmente consigo. Pode definir os limites e o tom
+    de comunicação.
+- objection: O meu volume de trabalho não justifica.
+  response: Mesmo com poucos clientes, o tempo que poupa em administrativo pode ser
+    usado para angariar mais negócios ou melhorar o seu serviço. Começamos com um
+    plano básico que se paga com o tempo que poupa num único agendamento complexo.
+    Vamos calcular o tempo que gasta atualmente com tarefas que poderiam ser automatizadas?
+meta:
+  id: photo_video
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

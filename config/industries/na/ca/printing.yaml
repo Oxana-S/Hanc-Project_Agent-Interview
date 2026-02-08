@@ -1,0 +1,262 @@
+pain_points:
+- description: Rising costs for paper, ink, and other consumables due to supply chain
+    issues and inflation, squeezing profit margins.
+  severity: high
+  solution_hint: AI agent can instantly compare supplier prices and suggest cost-saving
+    alternatives or reorder points.
+- description: Customers expecting rapid turnaround times (24-48 hours) for both digital
+    and offset jobs, creating scheduling bottlenecks.
+  severity: high
+  solution_hint: AI agent can provide real-time job status updates and manage customer
+    expectations on timelines.
+- description: Managing complex, multi-location orders for national clients with variable
+    specifications is error-prone.
+  severity: medium
+  solution_hint: AI agent can centralize order details, auto-distribute specifications,
+    and send confirmation summaries.
+- description: Frequent price inquiries and quote requests outside business hours
+    delay the sales process.
+  severity: medium
+  solution_hint: AI agent can provide instant, standardized ballpark quotes 24/7 and
+    schedule follow-ups with a sales rep.
+- description: Difficulty tracking and proving compliance with PIPEDA for handling
+    customer data and printed materials.
+  severity: medium
+  solution_hint: AI agent can log data handling consents and generate compliance checklists
+    for customer files.
+- description: High volume of repetitive customer service calls for tracking numbers,
+    file specifications, and basic pricing.
+  severity: low
+  solution_hint: AI agent can fully automate these FAQs, freeing staff for complex
+    issues.
+- description: Intense competition from online giants and local shops, making customer
+    retention challenging.
+  severity: medium
+  solution_hint: AI agent can run personalized loyalty check-ins and promotional offer
+    announcements.
+typical_services:
+- Offset Printing
+- Digital Printing
+- Large Format Printing (Banners, Signage)
+- Wide Format Printing
+- Business Cards & Stationery
+- Brochures & Flyers
+- Booklets & Catalogs
+- Direct Mail Services
+- Presentation Folders
+- Trade Show Displays
+recommended_functions:
+- name: Instant Quote Generator
+  priority: high
+  reason: Critical for capturing leads immediately, as customers shop multiple local
+    and online printers.
+- name: Order Status Tracker
+  priority: high
+  reason: Reduces high call volume for tracking and builds trust through transparency.
+- name: File Specification & Pre-flight Check Guide
+  priority: medium
+  reason: Minimizes production errors and delays by ensuring customer files are print-ready.
+- name: Appointment Scheduler for Press Checks/Consultations
+  priority: medium
+  reason: Streamlines complex job coordination for high-value clients.
+- name: PIPEDA Compliance Acknowledgment Collector
+  priority: medium
+  reason: Manages legal risk specific to Canadian privacy law for data-heavy print
+    jobs.
+- name: Recurring Order Management
+  priority: low
+  reason: Supports retention for clients with regular needs like stationery or marketing
+    materials.
+typical_integrations:
+- name: Accounting Software
+  examples:
+  - QuickBooks Online
+  - Sage 50cloud
+  priority: high
+- name: E-commerce Platforms
+  examples:
+  - Shopify
+  - WooCommerce
+  priority: medium
+- name: Customer Relationship Management (CRM)
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Project Management Tools
+  examples:
+  - Asana
+  - Trello
+  priority: low
+- name: Shipping & Fulfillment Software
+  examples:
+  - ShipStation
+  - Canada Post Solutions
+  priority: high
+industry_faq:
+- question: What is your turnaround time for 500 full-colour brochures?
+  answer_template: For 500 full-colour digital brochures, our standard turnaround
+    is 3-5 business days. Rush options are available. May I get your exact specifications
+    to provide a precise quote and timeline?
+- question: Do you handle the design or do I need to supply print-ready files?
+  answer_template: We focus on expert printing. We require print-ready PDF files.
+    We offer a pre-flight check service to ensure your files meet all specifications.
+    We can also refer you to trusted local design partners.
+- question: How do you ensure my customer data is safe for this direct mail campaign?
+  answer_template: We are PIPEDA compliant. All data is handled securely, used solely
+    for the intended print job, and securely destroyed upon completion. We can provide
+    a data processing agreement.
+- question: Can you match a price I got from another printer?
+  answer_template: We strive to offer competitive value. Please share the quote details,
+    and I will review it with our team. Our focus is on quality, reliability, and
+    service, not just the lowest price.
+- question: What is the cost difference between digital and offset printing for 1000
+    posters?
+  answer_template: Offset printing typically becomes more cost-effective at higher
+    quantities (usually 500+). For 1000 posters, offset may offer a better per-unit
+    cost and colour consistency. I can generate a comparative quote for you right
+    now.
+- question: Do you offer sustainable or recycled paper options?
+  answer_template: Yes, we offer a range of FSC-certified and recycled paper stocks.
+    Let me connect you with a specialist who can provide samples and discuss the environmental
+    benefits and cost implications.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential customer asks for a general price or quote.
+  script: 'I''d be happy to provide a ballpark estimate. To give you an accurate quote
+    in CAD, I just need a few details: what are you printing, the quantity, the finished
+    size, and do you have a preferred paper stock? Our prices are competitive, and
+    we guarantee the quality of our print and finishing.'
+  goal: Capture lead information and move them from a price shopper to a qualified
+    prospect by demonstrating ease and expertise.
+- trigger: service_inquiry
+  situation: When a caller asks if a specific service (e.g., large format, binding)
+    is offered.
+  script: Yes, we offer [Service They Asked About]. We specialize in that for clients
+    in [Their City/Region]. For example, we recently produced [Brief Example]. Could
+    you tell me about your specific project so I can guide you to the best solution
+    and provide an estimate?
+  goal: Confirm capability, establish local credibility, and pivot to qualifying the
+    specific project.
+- trigger: current_customer_follow_up
+  situation: Calling an existing customer 2-3 months after a previous order.
+  script: Hi [Customer Name], it's [Agent Name] from [Our Company]. I'm following
+    up on your previous order for [Previous Product]. We value your business. Do you
+    have any upcoming print needs, or would you like me to check if we can set up
+    a schedule for your recurring items to save you time?
+  goal: Customer retention, identifying repeat business, and promoting subscription-style
+    convenience.
+- trigger: objection_busy
+  situation: When a prospect says they are too busy to talk or get a quote.
+  script: I completely understand. My role is to save you time. If you can share the
+    project details via email or even a photo of a sample, I can have a formal quote
+    prepared for your review at your convenience. It often takes just 2 minutes now
+    to save hours later.
+  goal: Overcome the time objection by reframing the AI agent as a time-saving tool,
+    not a time cost.
+competitors:
+- name: Staples Print & Marketing Services
+  positioning: Nationwide retail and online giant.
+  strengths:
+  - Extensive retail network
+  - strong brand recognition
+  - basic online ordering
+  weaknesses:
+  - Impersonal service
+  - limited high-end/custom capabilities
+  - potential for lower consistency
+  our_differentiation: We offer dedicated account management, expertise in complex
+    commercial jobs, and higher quality control with a local touch.
+- name: Vistaprint (Cimpress)
+  positioning: Dominant online mass-market player.
+  strengths:
+  - Very low online prices for basic items
+  - user-friendly website
+  - fast turnaround on standard products
+  weaknesses:
+  - Limited customization
+  - quality can vary
+  - minimal customer service for complex issues
+  our_differentiation: We provide true customization, professional-grade materials,
+    and hands-on customer support throughout the process.
+- name: Local Independent Print Shops
+  positioning: Community-focused, service-oriented businesses.
+  strengths:
+  - Highly personalized service
+  - deep local knowledge
+  - flexibility
+  weaknesses:
+  - May lack advanced technology
+  - capacity for large runs
+  - or 24/7 accessibility
+  our_differentiation: We combine local relationship-building with scalable technology,
+    robust capacity, and 24/7 AI-assisted service for the best of both worlds.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 250
+  roi_examples:
+  - scenario: Automating quote generation and order status inquiries for a mid-sized
+      print shop.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Reducing missed after-hours quote requests leading to captured new business.
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Recover 15+ hours per week of administrative time.
+  - Close 20% more quotes by responding instantly, 24/7.
+  - Reduce customer service call volume by 40%.
+market_context:
+  market_size: Approximately $8 billion CAD
+  growth_rate: 1-2% YoY
+  key_trends:
+  - Shift from mass commercial printing to shorter-run, personalized, and on-demand
+    digital printing.
+  - Growing demand for sustainable printing practices and materials.
+  - Increased integration of web-to-print and online ordering platforms.
+  - Packaging and label printing showing stronger growth than commercial print.
+  seasonality:
+    high:
+    - September-November (Q4 marketing push)
+    - January (tax/legal document season)
+    low:
+    - Late July-August (summer holidays)
+    - December holiday period
+typical_objections:
+- objection: We're happy with our current printer.
+  response: That's great to hear. Many of our clients started with us for a second
+    opinion on a complex job or to fill a gap in their current printer's capabilities.
+    Could we be your reliable backup or specialist for [Mention a service you excel
+    in, e.g., large format]?
+- objection: It sounds too expensive for our budget.
+  response: I understand managing costs. Our solution often pays for itself by saving
+    staff time on repetitive tasks and capturing more business. Based on your volume,
+    the starting point is around [Entry Point] CAD. Could we explore a pilot project
+    to demonstrate the ROI?
+- objection: We don't really use phone support; we do everything by email.
+  response: Perfect. Our AI agent can actually integrate with your email or website
+    chat, providing instant answers to common queries any time of day, which complements
+    your email process. It's about giving your customers more responsive options.
+- objection: We're a small shop; we don't need automation.
+  response: Small shops benefit the most, as every hour saved is crucial. This tool
+    acts as a virtual front-desk employee, handling inquiries while you focus on production
+    and growth. It scales with you.
+meta:
+  id: printing
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

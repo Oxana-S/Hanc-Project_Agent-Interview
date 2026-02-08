@@ -1,0 +1,229 @@
+pain_points:
+- description: Fachkräftemangel in der Produktion, insbesondere bei qualifizierten
+    Maschinenbedienern und Technikern.
+  severity: high
+  solution_hint: AI-Stimmenagent kann automatisierte Schulungsanfragen bearbeiten
+    und Einstellungsprozesse durch Vorab-Fragen optimieren.
+- description: Hohe Energiekosten und unvorhersehbare Preissteigerungen belasten die
+    Betriebskosten.
+  severity: high
+  solution_hint: AI-Stimmenagent kann Energiedaten sammeln und Berichte für Effizienzmaßnahmen
+    vorbereiten, indem er Anrufe von Lieferanten koordiniert.
+- description: Komplexe Einhaltung von GDPR und anderen EU-Vorschriften bei Datenverarbeitung
+    in der Fertigung.
+  severity: medium
+  solution_hint: AI-Stimmenagent kann Compliance-Fragen standardisiert beantworten
+    und Datenschutzanfragen von Kunden verwalten.
+- description: Lieferkettenunterbrechungen und lange Beschaffungszeiten für Rohstoffe
+    aus dem Ausland.
+  severity: medium
+  solution_hint: AI-Stimmenagent kann Lieferanten anrufen, um Statusupdates zu automatisieren
+    und Bestellungen zu verfolgen.
+- description: Verzögerungen in der Produktion durch manuelle Planung und unzureichende
+    Digitalisierung.
+  severity: medium
+  solution_hint: AI-Stimmenagent kann Produktionspläne abfragen und Störungen melden,
+    um schnelle Reaktionen zu ermöglichen.
+- description: Qualitätssicherung ist arbeitsintensiv und fehleranfällig bei manuellen
+    Inspektionen.
+  severity: low
+  solution_hint: AI-Stimmenagent kann Qualitätsdaten erfassen und Berichte für automatische
+    Analysen vorbereiten.
+typical_services:
+- Maschinenbau und Anlagenfertigung
+- Metallverarbeitung und Schweißtechnik
+- Kunststoffspritzguss und Formteileherstellung
+- Automobilzulieferung und Komponentenfertigung
+- Elektrotechnik und Elektronikfertigung
+- Lebensmittelverarbeitung und Verpackungstechnik
+- Chemische Industrie und Prozessengineering
+- Reparatur- und Wartungsdienstleistungen
+- Just-in-Time-Produktion und Logistik
+- Industrie 4.0-Lösungen und Automatisierung
+recommended_functions:
+- name: Bestellungsannahme und -verfolgung
+  priority: high
+  reason: Häufige Kundenanfragen zu Lieferzeiten und Verfügbarkeit; reduziert manuelle
+    Arbeit im Vertrieb.
+- name: Kundenservice und Reklamationsmanagement
+  priority: high
+  reason: Wichtiger Teil der Kundenbindung; AI kann erste Supportanfragen bearbeiten
+    und Eskalationen vorbereiten.
+- name: Produktionsüberwachung und Störungsmeldung
+  priority: medium
+  reason: Ermöglicht schnelle Reaktion auf Ausfälle; kann automatisch Techniker benachrichtigen.
+- name: Energiedatenerfassung und -reporting
+  priority: medium
+  reason: Hilft bei Kostensenkung durch Effizienzanalysen; sammelt Daten von verschiedenen
+    Quellen.
+- name: Schulungs- und Einarbeitungsunterstützung
+  priority: low
+  reason: Adressiert Fachkräftemangel durch automatisierte Informationsbereitstellung
+    für neue Mitarbeiter.
+- name: Compliance- und GDPR-Abfragenbeantwortung
+  priority: medium
+  reason: Reduziert Risiken durch standardisierte Antworten auf regulatorische Fragen.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Infor LN
+  priority: high
+- name: Produktionsplanungssoftware
+  examples:
+  - MES-Systeme
+  - Asprova
+  - Preactor
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Energiemanagementsysteme
+  examples:
+  - Energy Monitoring Software
+  - Siemens MindSphere
+  priority: medium
+- name: Qualitätssicherungssysteme
+  examples:
+  - QMS-Software
+  - MasterControl
+  - IQMS
+  priority: low
+industry_faq:
+- question: Wie kann ich meine Produktionskosten in Österreich senken?
+  answer_template: Durch Automatisierung von Prozessen wie Bestellungen und Kundenservice
+    mit AI-Stimmenagenten können Sie Personalkosten reduzieren und Effizienz steigern.
+    Wir bieten Lösungen ab 500 EUR monatlich an.
+- question: Ist Ihre Lösung GDPR-konform für den Einsatz in der EU?
+  answer_template: Ja, unsere AI-Stimmenagenten sind speziell für GDPR-Anforderungen
+    in Österreich entwickelt und speichern Daten nur in EU-Rechenzentren.
+- question: Wie lange dauert die Implementierung in meinem Fertigungsbetrieb?
+  answer_template: Typische Implementierungszeit beträgt 2-4 Wochen, abhängig von
+    Ihren Integrationen. Wir bieten Schritt-für-Schritt-Unterstützung.
+- question: Kann der AI-Agent mit meiner bestehenden SAP-Software integriert werden?
+  answer_template: Ja, wir haben Standardintegrationen für SAP und andere ERP-Systeme,
+    um nahtlose Datenübertragung zu ermöglichen.
+- question: Welche Einsparungen kann ich durch den Einsatz erwarten?
+  answer_template: Kunden berichten von monatlichen Einsparungen von 1000-5000 EUR
+    durch reduzierte manuelle Arbeit und schnellere Reaktionszeiten.
+- question: Gibt es spezifische Lösungen für kleine und mittlere Unternehmen (KMU)
+    in Österreich?
+  answer_template: Ja, wir bieten skalierbare Pakete ab 300 EUR pro Monat, die auf
+    die Budgets und Anforderungen von KMUs zugeschnitten sind.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten für AI-Stimmenagenten in der Fertigung
+    fragt.
+  script: Guten Tag! Unsere AI-Stimmenagenten-Lösungen für die Fertigungsindustrie
+    starten bei 500 EUR monatlich und können je nach Umfang angepasst werden. Möchten
+    Sie eine detaillierte Kostenanalyse basierend auf Ihren spezifischen Prozessen?
+  goal: Interesse wecken und zu einem Beratungsgespräch überleiten.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde einen lokalen Wettbewerber wie Voestalpine oder Andritz
+    erwähnt.
+  script: Vielen Dank für die Erwähnung. Im Vergleich zu großen Konzernen bieten wir
+    maßgeschneiderte, agile Lösungen für KMUs in Österreich, die schnell implementierbar
+    sind und direkte ROI liefern. Können wir Ihre aktuellen Herausforderungen besprechen?
+  goal: Unterscheidung von Wettbewerbern und Fokus auf Kundenvorteile setzen.
+- trigger: efficiency_concern
+  situation: Wenn ein Kunde über ineffiziente Produktionsprozesse klagt.
+  script: Ich verstehe. Unsere AI-Stimmenagenten automatisieren Routineanrufe und
+    Datenaufnahme, was zu bis zu 30% Zeitersparnis führen kann. Darf ich Ihnen ein
+    Beispiel aus der österreichischen Metallverarbeitung zeigen?
+  goal: Lösungsorientiertes Gespräch führen und Vertrauen aufbauen.
+competitors:
+- name: Voestalpine
+  positioning: Großer Stahl- und Technologiekonzern mit eigener IT-Lösungen.
+  strengths:
+  - Breites Produktportfolio
+  - Starke Markenpräsenz in Österreich
+  - Hohe Investitionen in Forschung
+  weaknesses:
+  - Langsame Entscheidungsprozesse
+  - Höhere Kosten für KMUs
+  - Weniger flexible Lösungen
+  our_differentiation: Wir bieten kostengünstige, schnelle AI-Lösungen speziell für
+    KMUs, die in Wochen implementiert werden können.
+- name: Andritz
+  positioning: Internationaler Anlagenbauer mit Fokus auf Digitalisierung.
+  strengths:
+  - Globale Reichweite
+  - Tiefes Branchenwissen
+  - Umfassende Dienstleistungen
+  weaknesses:
+  - Komplexe Vertragsstrukturen
+  - Längere Implementierungszeiten
+  - Höhere Einstiegskosten
+  our_differentiation: Unsere AI-Stimmenagenten sind einfach zu bedienen und auf österreichische
+    KMUs zugeschnitten, mit transparenten Preisen.
+- name: Siemens Österreich
+  positioning: Technologieanbieter für Industrie 4.0 und Automatisierung.
+  strengths:
+  - Innovative Produkte
+  - Starke Integration mit Hardware
+  - Gute Kundenunterstützung
+  weaknesses:
+  - Teure Lizenzmodelle
+  - Übermäßige Komplexität für kleine Betriebe
+  - Längere Einführungsphasen
+  our_differentiation: Wir konzentrieren uns auf sprachbasierte AI, die ohne teure
+    Hardware auskommt und sofort einsatzbereit ist.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatisierung von Kundenanfragen in einem Metallverarbeitungsbetrieb
+    monthly_cost: 800
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Kosteneinsparungen von bis zu 2000 EUR monatlich durch reduzierte manuelle Arbeit.
+  - Schnelle Amortisation innerhalb von 3 Monaten für viele österreichische KMUs.
+  - Flexible Bezahlmodelle ohne langfristige Vertragsbindung.
+market_context:
+  market_size: ca. 50 Mrd. EUR jährlich in der österreichischen Fertigungsindustrie
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Zunehmende Digitalisierung und Adoption von Industrie 4.0
+  - Fokus auf Nachhaltigkeit und Energieeffizienz
+  - Steigende Nachfrage nach Automatisierungslösungen für KMUs
+  seasonality:
+    high:
+    - Q4 (Weihnachtsproduktion)
+    - Q1 (Neujahrsinvestitionen)
+    low:
+    - Juli-August (Ferienzeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das ist zu teuer für mein kleines Unternehmen.
+  response: Wir verstehen Budgetbedenken. Unsere Einstiegspakete ab 300 EUR monatlich
+    sind speziell für KMUs designed und zeigen oft ROI innerhalb von 3 Monaten. Können
+    wir eine kostenlose Demo vereinbaren?
+- objection: Ich habe Bedenken bezüglich Datensicherheit und GDPR.
+  response: Unsere Lösungen sind vollständig GDPR-konform mit Datenhosting in der
+    EU. Wir bieten vertragliche Zusicherungen und transparente Datenschutzrichtlinien.
+- objection: Meine Mitarbeiter sind nicht technisch versiert genug für AI.
+  response: AI-Stimmenagenten sind einfach zu bedienen und erfordern keine technischen
+    Kenntnisse. Wir bieten Schulungen und Support, um einen reibungslosen Übergang
+    zu gewährleisten.
+meta:
+  id: manufacturing
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

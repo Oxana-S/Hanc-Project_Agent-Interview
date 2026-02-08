@@ -1,0 +1,173 @@
+pain_points:
+- description: Dificultatea în gestionarea și programarea evenimentelor religioase, cum ar fi slujbe, nunti și botezuri.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza programările și trimite confirmări, reducând erorile și timpul de administrare.
+- description: Comunicarea ineficientă cu comunitatea și membrii, ducând la lipsă de participare la activități.
+  severity: medium
+  solution_hint: Agentul vocal AI poate trimite notificări și răspunde la întrebări frecvente, îmbunătățind angajamentul.
+- description: Strângerea de fonduri este laborioasă și are rate scăzute de răspuns.
+  severity: high
+  solution_hint: Agentul vocal AI poate gestiona donațiile prin apeluri automate și urmărire, crescând contribuțiile.
+- description: Administrarea voluntarilor și a resurselor umane este haotică, cu planificare slabă.
+  severity: medium
+  solution_hint: Agentul vocal AI poate coordona programele voluntarilor și aloca sarcini, optimizând resursele.
+- description: Conformitatea cu GDPR pentru protecția datelor membrilor este complexă și riscantă.
+  severity: high
+  solution_hint: Agentul vocal AI poate gestiona consimțămintele și asigura securitatea datelor, reducând riscurile legale.
+- description: Nivelul scăzut de digitalizare în administrarea bisericilor, cu procese manuale ineficiente.
+  severity: medium
+  solution_hint: Agentul vocal AI poate integra sisteme digitale pentru automatizare, sporind productivitatea.
+typical_services:
+- Slujbe religioase și ceremonii
+- Consiliere spirituală și rugăciuni
+- Organizarea evenimentelor comunitare
+- Strângere de fonduri și donații
+- Educație religioasă și cateheza
+- Administrarea membrilor și voluntarilor
+- Gestionarea spațiilor și resurselor
+- Servicii de caritate și ajutor social
+- Publicarea de anunțuri și buletine
+- Asistență pentru vizitatori și pelerini
+recommended_functions:
+- name: Programarea evenimentelor religioase
+  priority: high
+  reason: Reduce timpul de administrare și evită conflicte de programare pentru slujbe și ceremonii.
+- name: Răspuns la întrebări frecvente despre orele de slujbă și activități
+  priority: high
+  reason: Îmbunătățește experiența membrilor și vizitatorilor prin informare rapidă.
+- name: Gestionarea donațiilor și strângerii de fonduri
+  priority: medium
+  reason: Crește eficiența în colectarea fondurilor și urmărirea contribuțiilor.
+- name: Coordonarea voluntarilor și alocarea sarcinilor
+  priority: medium
+  reason: Optimizează resursele umane și asigură acoperirea evenimentelor.
+- name: Notificări automate pentru evenimente și anunțuri importante
+  priority: low
+  reason: Menține comunitatea informată și angajată cu actualizări regulate.
+- name: Asistență pentru conformitatea GDPR în gestionarea datelor
+  priority: high
+  reason: Asigură protecția datelor membrilor și reduce riscurile legale.
+typical_integrations:
+- name: Sisteme de gestionare a bisericilor
+  examples:
+  - ChurchSuite
+  - Biserica Digitală RO
+  priority: high
+- name: Platforme de plăți online în RON
+  examples:
+  - Netopia
+  - PayPal RO
+  priority: medium
+- name: Sisteme CRM pentru organizații religioase
+  examples:
+  - Salesforce for Nonprofits
+  - local CRM soluții
+  priority: medium
+- name: Software pentru evenimente și rezervări
+  examples:
+  - Eventbrite
+  - local platforme de rezervare
+  priority: low
+industry_faq:
+- question: Cum pot programa o slujbă sau o ceremonie?
+  answer_template: Puteți programa direct prin agentul nostru vocal. Spuneți tipul de eveniment și data preferată, iar vă vom confirma disponibilitatea.
+- question: Care sunt orele de slujbă pentru duminică?
+  answer_template: Slujbele de duminică încep la ora 9:00 și 11:00. Pentru detalii specifice, verificați anunțurile noastre sau contactați-ne.
+- question: Cum pot face o donație online?
+  answer_template: Donațiile pot fi făcute prin platformele noastre securizate în RON. Agentul vocal vă poate ghida pas cu pas.
+- question: Sunt necesare înscrieri pentru activitățile comunitare?
+  answer_template: Da, pentru unele activități este necesară înscrierea. Agentul nostru vă poate ajuta să vă înregistrați rapid.
+- question: Cum se protejează datele mele personale conform GDPR?
+  answer_template: Respectăm GDPR și folosim măsuri de securitate avansate. Datele dvs. sunt stocate în siguranță și șterse la cerere.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre costuri pentru servicii.
+  script: Bună ziua! Prețurile noastre încep de la 500 RON/lună pentru funcții de bază, cu ROI rapid prin economii de timp. Doriți să vă arăt cum vă putem ajuta?
+  goal: Să evidențiez valoarea și accesibilitatea, conducând la o demonstrație.
+- trigger: service_inquiry
+  situation: Când un client este interesat de gestionarea evenimentelor.
+  script: Salut! Agentul nostru vocal automatizează programările și notificările pentru evenimente, reducând erorile cu 50%. Vreți să încercați o probă gratuită?
+  goal: Să demonstrez beneficii concrete și să încurajez o acțiune de încercare.
+- trigger: competitor_mention
+  situation: Când clientul menționează un competitor.
+  script: Înțeleg. Spre deosebire de alții, soluția noastră este localizată în română și integrează sistemele locale, oferind suport GDPR dedicat. Să vă arăt diferențele?
+  goal: Să diferențiez oferta noastră și să creez încredere.
+competitors:
+- name: ChurchTech RO
+  positioning: Furnizor local de software pentru biserici
+  strengths:
+  - Cunoaștere profundă a pieței românești
+  - prețuri competitive
+  weaknesses:
+  - Funcționalități limitate
+  - suport tehnic slab
+  our_differentiation: Oferim AI vocal integrat cu automatizare avansată și conformitate GDPR garantată.
+- name: GlobalFaith Solutions
+  positioning: Companie internațională pentru organizații religioase
+  strengths:
+  - Resurse ample
+  - brand recunoscut
+  weaknesses:
+  - Nelimitat local pentru România
+  - costuri mari
+  our_differentiation: Suntem specializați pe România, cu prețuri în RON și suport în limba română.
+- name: DigiChurch App
+  positioning: Aplicație mobilă pentru gestionarea bisericilor
+  strengths:
+  - Ușor de utilizat
+  - accesibil pe dispozitive mobile
+  weaknesses:
+  - Lipsă integrare vocală
+  - funcționalități de bază
+  our_differentiation: Agentul nostru vocal adaugă automatizare vocală și gestionare proactivă, nu doar aplicații.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 300
+  - 2000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatizarea programărilor și notificărilor pentru o biserică mică
+    monthly_cost: 500
+    monthly_savings: 1000
+    payback_months: 2
+  value_anchors:
+  - Economisiți până la 10 ore pe săptămână în administrare
+  - Creșteți donațiile cu 20% prin apeluri automate
+market_context:
+  market_size: Aproximativ 5.000 de biserici și organizații religioase în România
+  growth_rate: 5% anual datorită digitalizării crescânde
+  key_trends:
+  - Tendința spre digitalizarea serviciilor religioase
+  - Creșterea donațiilor online
+  - Conformitatea GDPR devine prioritară
+  seasonality:
+    high:
+    - Perioada Paștelui
+    - Crăciunului
+    - Sărbători religioase
+    low:
+    - Lunile de vară
+    - Perioadele de vacanță
+typical_objections:
+- objection: Nu avem buget pentru tehnologie avansată.
+  response: Înțeleg. Soluția noastră începe de la 500 RON/lună și vă poate economisi timp și resurse, cu un ROI rapid. Putem începe cu un plan de bază.
+- objection: Suntem îngrijorați de securitatea datelor conform GDPR.
+  response: Respectăm strict GDPR și folosim criptare avansată. Vă putem arăta certificatele noastre de securitate și procesele de conformitate.
+- objection: Comunitatea noastră preferă metode tradiționale, nu tehnologie.
+  response: Agentul vocal completă metodele tradiționale, făcând administrarea mai eficientă fără a înlocui interacțiunile umane. Încercați o probă pentru a vedea beneficiile.
+meta:
+  id: religion
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- religion
+- church
+- temple
+- parish
+- ministry
+_extends: _base/religion

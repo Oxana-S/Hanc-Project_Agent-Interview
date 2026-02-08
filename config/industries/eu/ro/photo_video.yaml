@@ -1,0 +1,191 @@
+pain_points:
+- description: Difficultăți în gestionarea programărilor și programelor clienților,
+    ducând la pierderi de oportunități.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza programările și trimite confirmări
+    și mementouri.
+- description: Competiția ridicată din piață reduce prețurile și profitabilitatea.
+  severity: high
+  solution_hint: Agentul vocal AI poate identifica clienți potențiali și personaliza
+    ofertele pentru a crește conversia.
+- description: Vizibilitatea redusă online și cheltuieli mari pentru marketing digital.
+  severity: medium
+  solution_hint: Agentul vocal AI poate gestiona solicitările de pe site și social
+    media, reducând costurile.
+- description: Procese ineficiente de facturare și colectare a plăților, ducând la
+    întârzieri.
+  severity: medium
+  solution_hint: Agentul vocal AI poate trimite facturi și mementouri de plată automat.
+- description: Costuri ridicate pentru întreținerea și actualizarea echipamentelor
+    foto și video.
+  severity: medium
+  solution_hint: Agentul vocal AI poate programa întreținerea și recomanda oferte
+    pentru echipamente.
+- description: Fluctuații sezoniere ale cererii, cu perioade de vârf și de lent.
+  severity: low
+  solution_hint: Agentul vocal AI poate gestiona rezervările în perioadele de vârf
+    și promova serviciile în perioadele lente.
+typical_services:
+- Fotografie de evenimente
+- Fotografie de portret
+- Filmări video pentru nunți
+- Editare foto și video
+- Fotografie comercială
+- Fotografie de produs
+- Cursuri de fotografie
+- Închiriere de echipamente
+- Servicii de drone
+- Fotografie pentru social media
+recommended_functions:
+- name: Gestionarea programărilor
+  priority: high
+  reason: Reduce pierderile de clienți și crește eficiența operațională.
+- name: Răspunsuri la întrebări frecvente
+  priority: high
+  reason: Eliberează timpul personalului pentru sarcini complexe.
+- name: Calificarea lead-urilor
+  priority: medium
+  reason: Identifică clienții potențiali cu bugete adecvate.
+- name: Trimiteri de mementouri de plată
+  priority: medium
+  reason: Îmbunătățește fluxul de numerar și reduce întârzierile.
+- name: Programarea întreținerii echipamentelor
+  priority: low
+  reason: Asigură funcționarea optimă a echipamentelor.
+typical_integrations:
+- name: Sistem de gestionare a programărilor
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  priority: high
+- name: Software contabil
+  examples:
+  - SmartBill
+  - SPEED
+  priority: high
+- name: CRM
+  examples:
+  - HubSpot
+  - Pipedrive
+  priority: medium
+- name: Platforme de social media
+  examples:
+  - Facebook
+  - Instagram
+  priority: medium
+industry_faq:
+- question: Ce servicii oferiți pentru fotografii de evenimente?
+  answer_template: Oferim fotografie și filmări video pentru evenimente, inclusiv
+    nunți, botezuri și evenimente corporative. Prețurile încep de la 500 RON.
+- question: Care este termenul de livrare pentru editarea fotografiilor?
+  answer_template: Termenul de livrare standard este de 7-14 zile lucrătoare, în funcție
+    de complexitatea proiectului.
+- question: Sunteți conformi cu GDPR pentru datele clienților?
+  answer_template: Da, respectăm toate cerințele GDPR și protejăm datele clienților
+    în mod sigur.
+- question: Oferiți servicii de drone pentru filmări?
+  answer_template: Da, oferim servicii de drone pentru filmări aeriene, cu autorizații
+    necesare.
+- question: Care sunt opțiunile de plată acceptate?
+  answer_template: Acceptăm plăți prin transfer bancar, card sau numerar, cu facturi
+    emise conform legislației.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru servicii.
+  script: Bună ziua! Prețurile noastre pentru servicii foto și video încep de la 300
+    RON pentru sesiuni de portret. Pentru un pachet personalizat, vă pot ajuta să
+    alegeți opțiunile potrivite bugetului dumneavoastră.
+  goal: Să ofer o estimare clară și să trec la calificarea nevoilor.
+- trigger: service_inquiry
+  situation: Când un client solicită informații despre servicii specifice.
+  script: Vă mulțumim pentru interes! Oferim o gamă largă de servicii, inclusiv fotografie
+    de evenimente și editare video. Ce tip de eveniment aveți în plan?
+  goal: Să înțeleg nevoile clientului și să recomand servicii adecvate.
+- trigger: booking_request
+  situation: Când un client dorește să facă o rezervare.
+  script: Excelent! Pentru a programa o rezervare, am nevoie de data și ora preferată.
+    Vă pot confirma imediat disponibilitatea și trimite detalii.
+  goal: Să finalizeze rezervarea rapid și eficient.
+competitors:
+- name: FotoExpert România
+  positioning: Furnizor mare de servicii foto pentru evenimente și corporații.
+  strengths:
+  - Prezență națională
+  - Echipamente de top
+  weaknesses:
+  - Prețuri ridicate
+  - Servicii personalizate limitate
+  our_differentiation: Oferim prețuri competitive și servicii personalizate cu atenție
+    la detalii.
+- name: VideoStar Cluj
+  positioning: Specialist în filmări video pentru nunți și evenimente culturale.
+  strengths:
+  - Experiență în niche
+  - Calitate artistică
+  weaknesses:
+  - Atenție limitată la servicii foto
+  - Acoperire geografică redusă
+  our_differentiation: Avem o gamă completă de servicii foto și video, cu acoperire
+    națională.
+- name: Click Foto București
+  positioning: Studio de fotografie accesibil pentru portrete și evenimente mici.
+  strengths:
+  - Prețuri accesibile
+  - Localizare convenabilă
+  weaknesses:
+  - Echipamente mai vechi
+  - Timp de răspuns lent
+  our_differentiation: Utilizăm tehnologie modernă și oferim răspunsuri rapide prin
+    agent vocal AI.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatizarea programărilor pentru un studio de fotografie
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reducere de 20% a timpului pierdut pe programări
+  - Creștere cu 15% a conversiei clienților prin servicii personalizate
+market_context:
+  market_size: Estimare de 100 milioane RON anual în România
+  growth_rate: 5% pe an
+  key_trends:
+  - Creșterea cererii pentru servicii de drone
+  - Tendința către fotografii pentru social media
+  - Importanța GDPR în gestionarea datelor
+  seasonality:
+    high:
+    - Primăvară
+    - Vară
+    - Toamnă (sezonul nunților)
+    low:
+    - Iarnă (excepând sărbătorile)
+typical_objections:
+- objection: Prețurile dumneavoastră sunt prea mari.
+  response: Înțeleg preocuparea. Oferim servicii de înaltă calitate și personalizate,
+    care justifică investiția. Vă pot arăta exemple de ROI.
+- objection: Nu am nevoie de servicii suplimentare de editare.
+  response: Editarea foto și video poate îmbunătăți semnificativ rezultatele finale.
+    Oferim pachete flexibile pentru a se potrivi nevoilor dumneavoastră.
+- objection: Sunt deja mulți fotografi pe piață.
+  response: Corect, dar ne diferențiem prin tehnologie modernă și servicii automate,
+    care vă economisesc timpul și vă cresc satisfacția clienților.
+meta:
+  id: photo_video
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

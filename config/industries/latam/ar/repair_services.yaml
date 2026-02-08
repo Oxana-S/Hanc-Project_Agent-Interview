@@ -1,0 +1,227 @@
+pain_points:
+- description: Gestión ineficiente de citas y alta tasa de cancelaciones sin confirmación
+    previa.
+  severity: high
+  solution_hint: Automatizar la programación de citas con recordatorios automáticos
+    para reducir cancelaciones.
+- description: Dificultad en la comunicación con clientes fuera del horario laboral,
+    perdiendo oportunidades de negocio.
+  severity: medium
+  solution_hint: Agente de voz disponible 24/7 para responder consultas y agendar
+    citas en cualquier momento.
+- description: Alta dependencia de llamadas telefónicas manuales para seguimiento
+    de servicios, consumiendo tiempo del personal.
+  severity: high
+  solution_hint: Automatizar el seguimiento post-servicio con llamadas de voz para
+    recolectar feedback y programar mantenimientos.
+- description: Falta de estandarización en los precios y tiempos de reparación, generando
+    confusiones en los clientes.
+  severity: medium
+  solution_hint: Proporcionar cotizaciones instantáneas y claras a través del agente
+    de voz basadas en tarifas predefinidas.
+- description: Baja capacidad para manejar múltiples solicitudes simultáneas durante
+    picos de demanda, como en temporadas de calor o frío.
+  severity: high
+  solution_hint: Escalar automáticamente la atención con el agente de voz para gestionar
+    alto volumen de consultas sin colapsar.
+- description: Dificultades en la gestión de inventario de repuestos, llevando a retrasos
+    en las reparaciones.
+  severity: low
+  solution_hint: Integrar el agente con sistemas de inventario para verificar disponibilidad
+    y alertar sobre reposiciones.
+typical_services:
+- Reparación de electrodomésticos (heladeras, lavarropas)
+- Mantenimiento de aire acondicionado y calefacción
+- Reparación de celulares y tablets
+- Servicio de fontanería y gas
+- Reparación de automóviles y motos
+- Instalación y reparación de sistemas eléctricos
+- Servicio de cerrajería de emergencia
+- Reparación de computadoras y notebooks
+- Mantenimiento de jardines y herramientas
+- Reparación de muebles y carpintería
+recommended_functions:
+- name: Programación de citas automatizada
+  priority: high
+  reason: Reduce la carga administrativa y mejora la eficiencia en la gestión de clientes.
+- name: Procesamiento de pagos por voz
+  priority: medium
+  reason: Facilita transacciones rápidas y seguras, integrando con métodos locales
+    como MercadoPago.
+- name: Soporte al cliente multilingüe
+  priority: low
+  reason: Atiende a una base diversa en Argentina, especialmente en áreas turísticas.
+- name: Recordatorios y confirmaciones automáticas
+  priority: high
+  reason: Disminuye las tasas de no-show y mejora la satisfacción del cliente.
+- name: Generación de reportes de servicio
+  priority: medium
+  reason: Ayuda en el análisis de datos para optimizar operaciones y predecir demandas.
+- name: Integración con sistemas de inventario
+  priority: low
+  reason: Sincroniza la disponibilidad de repuestos para evitar retrasos.
+typical_integrations:
+- name: Sistemas de gestión de clientes (CRM)
+  examples:
+  - Zoho CRM
+  - local ERP systems
+  priority: high
+- name: Plataformas de pago locales
+  examples:
+  - MercadoPago
+  - Todo Pago
+  priority: high
+- name: Sistemas de inventario
+  examples:
+  - InventarioPro
+  - local software
+  priority: medium
+- name: Herramientas de calendario
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: medium
+- name: Redes sociales y mensajería
+  examples:
+  - WhatsApp Business
+  - Facebook
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una reparación básica de electrodomésticos?
+  answer_template: Los precios varían según el tipo de reparación, pero para servicios
+    básicos como revisión de heladeras o lavarropas, el costo inicial es de aproximadamente
+    5000 ARS. Podemos darle una cotización exacta una vez que evalúemos el problema.
+- question: ¿Ofrecen garantía en las reparaciones?
+  answer_template: Sí, todas nuestras reparaciones incluyen una garantía de 3 a 6
+    meses en repuestos y mano de obra, dependiendo del servicio. Los detalles se especifican
+    en el contrato.
+- question: ¿Pueden atender emergencias fuera de horario?
+  answer_template: Sí, ofrecemos servicio de emergencia 24/7 para fontanería, cerrajería
+    y aire acondicionado, con un recargo adicional del 20%. Nuestro agente de voz
+    puede ayudarle a programar una visita inmediata.
+- question: ¿Aceptan pagos con tarjeta o transferencia?
+  answer_template: Aceptamos múltiples métodos de pago, incluyendo efectivo, tarjetas
+    de crédito/débito, y plataformas como MercadoPago para su conveniencia.
+- question: ¿Cuánto tiempo tarda una reparación promedio?
+  answer_template: El tiempo de reparación depende de la complejidad, pero para la
+    mayoría de los servicios, como reparación de celulares o electrodomésticos, suele
+    tomar entre 1 y 3 horas en el lugar. En algunos casos, puede requerir llevar el
+    equipo a nuestro taller.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio específico.
+  script: ¡Hola! Entiendo que necesita conocer el costo. Para darle una cotización
+    precisa, puedo ayudarle a identificar el problema. Por ejemplo, para una reparación
+    de aire acondicionado, el precio base es de 8000 ARS. ¿Podría describir qué está
+    fallando?
+  goal: Obtener detalles del problema para ofrecer una cotización personalizada y
+    generar confianza.
+- trigger: emergency_service
+  situation: Cuando un cliente contacta por una emergencia, como una fuga de agua.
+  script: ¡Hola! Veo que necesita asistencia urgente. Nuestro servicio de emergencia
+    está disponible las 24 horas. El costo inicial es de 10000 ARS, incluyendo la
+    visita y evaluación. ¿Puedo programar un técnico para que vaya en la próxima hora?
+  goal: Resolver rápidamente la emergencia y asegurar una venta prioritaria.
+- trigger: follow_up
+  situation: Después de un servicio, para programar mantenimiento o recabar feedback.
+  script: ¡Hola! Soy de [Nombre de la Empresa], llamando para seguir su reparación
+    reciente. ¿Todo está funcionando bien? Además, quería ofrecerle un mantenimiento
+    preventivo a un precio especial de 6000 ARS para evitar futuros problemas.
+  goal: Mejorar la retención de clientes y vender servicios adicionales.
+competitors:
+- name: Reparaciones Rápidas SA
+  positioning: Cadena nacional con múltiples sucursales, enfocada en reparaciones
+    de electrodomésticos.
+  strengths:
+  - Amplia cobertura geográfica
+  - Precios competitivos
+  - Servicio rápido
+  weaknesses:
+  - Atención al cliente impersonal
+  - Alta rotación de personal
+  - Limitada integración tecnológica
+  our_differentiation: Ofrecemos atención personalizada con IA para programación automatizada
+    y seguimiento, mejorando la experiencia del cliente.
+- name: Técnicos Locales Asociados
+  positioning: Red de técnicos independientes que operan en Buenos Aires y alrededores.
+  strengths:
+  - Conocimiento local profundo
+  - Flexibilidad en precios
+  - Servicio cercano
+  weaknesses:
+  - Falta de estandarización
+  - Poca disponibilidad en horarios extendidos
+  - Escasa tecnología
+  our_differentiation: Proporcionamos un servicio estandarizado con garantías y soporte
+    24/7 mediante nuestro agente de voz.
+- name: Mundo Reparación
+  positioning: Plataforma online que conecta clientes con técnicos, similar a un marketplace.
+  strengths:
+  - Alta visibilidad en internet
+  - Variedad de servicios
+  - Reseñas de clientes
+  weaknesses:
+  - Comisiones altas para técnicos
+  - Calidad inconsistente
+  - Dependencia de terceros
+  our_differentiation: Somos una empresa integral con control directo sobre la calidad
+    y precios, usando IA para optimizar operaciones.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Automatización de programación de citas para un taller de reparación
+      de celulares
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Reduce el tiempo de gestión administrativa en un 30% con nuestra IA.
+  - Aumenta la satisfacción del cliente con recordatorios automáticos.
+  - Optimiza costos operativos al manejar múltiples consultas simultáneamente.
+market_context:
+  market_size: Estimado en 10 mil millones de ARS anuales en Argentina
+  growth_rate: 5% anual, impulsado por la demanda de mantenimiento preventivo y reparaciones
+    de tecnología
+  key_trends:
+  - Aumento en la reparación de dispositivos electrónicos debido al alto costo de
+    reemplazo
+  - Crecimiento de servicios a domicilio post-pandemia
+  - Adopción lenta pero creciente de tecnologías digitales en pequeñas empresas
+  seasonality:
+    high:
+    - Verano (diciembre-febrero) para aire acondicionado
+    - Invierno (junio-agosto) para calefacción
+    low:
+    - Otoño (marzo-mayo)
+    - Primavera (septiembre-noviembre) para algunos servicios
+typical_objections:
+- objection: Es muy caro, prefiero buscar opciones más baratas.
+  response: Entiendo su preocupación por el precio. Nuestro servicio incluye garantía,
+    repuestos de calidad y atención personalizada con IA que ahorra tiempo. A largo
+    plazo, puede ser más económico al evitar reparaciones recurrentes.
+- objection: No confío en la tecnología para agendar servicios importantes.
+  response: Comprendo su escepticismo. Nuestro agente de voz está diseñado para ser
+    seguro y confiable, con soporte humano disponible si es necesario. Además, ofrecemos
+    confirmaciones por múltiples canales para su tranquilidad.
+- objection: Ya tengo un técnico de confianza, no necesito cambiar.
+  response: ¡Excelente que tenga un técnico de confianza! Nuestro valor agregado es
+    la eficiencia con IA para programar citas rápidamente y ofrecer mantenimiento
+    preventivo. Podemos complementar su servicio actual sin reemplazarlo.
+meta:
+  id: repair_services
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

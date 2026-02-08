@@ -1,0 +1,240 @@
+meta:
+  id: logistics
+  country: mx
+  language: es
+  languages:
+  - es
+  currency: MXN
+  region: latam
+  compliance: LFPDPPP
+  created_at: '2024-11-01'
+  last_updated: '2024-11-01'
+  version: '1.0'
+  timezone: America/Mexico_City
+  phone_codes:
+  - '+52'
+  tests_run: 0
+  avg_validation_score: null
+aliases:
+- "logistics"
+- "shipping"
+- "freight"
+- "delivery"
+- "supply chain"
+pain_points:
+- description: Muchas llamadas preguntando "¿dónde está mi envío?"
+  severity: high
+  solution_hint: Estado automático por número de guía
+- description: Los clientes no pueden comunicarse en horas pico
+  severity: high
+  solution_hint: Agente de voz 24/7 para consultas de estado y FAQ
+- description: Los operadores pierden tiempo en preguntas rutinarias
+  severity: medium
+  solution_hint: Automatización de consultas típicas
+- description: Dificultades en la coordinación de tiempos de entrega
+  severity: medium
+  solution_hint: Automatización de la programación de entregas
+- description: Errores en la toma de pedidos por teléfono
+  severity: medium
+  solution_hint: Toma estructurada de pedidos
+- description: Retrasos en aduanas y trámites de importación/exportación
+  severity: high
+  solution_hint: Integración con sistemas aduaneros para actualizaciones
+- description: Falta de visibilidad en la cadena de suministro
+  severity: medium
+  solution_hint: Proporcionar actualizaciones en tiempo real
+typical_services:
+- Transporte terrestre
+- Logística de última milla
+- Almacenamiento y distribución
+- Servicios de mensajería y paquetería
+- Transporte de carga pesada
+- Logística inversa
+- Servicios aduanales
+- Gestión de inventarios
+- Transporte refrigerado
+- Servicios de consolidación de carga
+recommended_functions:
+- name: estado_de_envío
+  priority: high
+  reason: 70-80% de las llamadas son consultas de estado de envío
+- name: toma_de_pedidos
+  priority: high
+  reason: Automatización de la creación de nuevos pedidos
+- name: programación_de_entregas
+  priority: medium
+  reason: Coordinación de horarios de entrega con clientes
+- name: consultas_de_tarifas
+  priority: medium
+  reason: Respuestas automáticas sobre precios y servicios
+- name: soporte_aduanal
+  priority: low
+  reason: Asistencia en trámites de aduana
+- name: recordatorios
+  priority: medium
+  reason: Notificaciones de entregas y confirmaciones
+typical_integrations:
+- name: TMS
+  examples:
+  - SAP TM
+  - Oracle TMS
+  - Logística Mexicana S.A.
+  priority: high
+  reason: Obtención de estados y seguimiento de envíos
+- name: CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Alestra
+  priority: medium
+  reason: Historia del cliente y gestión de pedidos
+- name: Sistemas de Aduana
+  examples:
+  - Sistema de Ventanilla Única
+  - SAT
+  priority: high
+  reason: Integración para trámites aduaneros
+- name: Mensajería
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: high
+  reason: Notificaciones de estado de envío
+- name: Telefonía
+  examples:
+  - Mango Office
+  - Zadarma
+  priority: high
+  reason: Procesamiento de llamadas entrantes
+industry_faq:
+- question: ¿Dónde está mi paquete?
+  answer_template: Proporcione el número de guía o rastreo, y verificaré el estado
+    de entrega.
+- question: ¿Cuánto cuesta el envío?
+  answer_template: El costo depende del peso, dimensiones y ruta. Puedo calcularlo
+    si me proporciona los detalles.
+- question: ¿Cuándo llegará el mensajero?
+  answer_template: Proporcione el número de pedido, y le daré un tiempo estimado de
+    llegada.
+- question: ¿Puedo cambiar la dirección de entrega?
+  answer_template: Sí, es posible antes de que salga el mensajero. Proporcione la
+    nueva dirección.
+- question: ¿Trabajan los fines de semana?
+  answer_template: Trabajamos 7 días a la semana. La entrega en fines de semana es
+    posible.
+- question: ¿Cómo puedo hacer una devolución?
+  answer_template: Para devoluciones, contacte al remitente. Nosotros organizamos
+    la entrega de retorno.
+- question: ¿Qué documentos necesito para aduana?
+  answer_template: Para trámites aduaneros, necesitamos factura comercial, packing
+    list y otros documentos específicos.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios
+  script: Hola, para calcular el costo de envío, necesito saber el peso, dimensiones
+    y destino. ¿Puede proporcionarme esa información?
+  goal: Recopilar información para cotización y generar lead.
+- trigger: status_inquiry
+  situation: Cuando un cliente pregunta por el estado de un envío
+  script: Claro, para verificar el estado de su envío, necesito el número de guía.
+    ¿Lo tiene a mano?
+  goal: Resolver la consulta rápidamente y demostrar eficiencia.
+- trigger: new_order
+  situation: Cuando un cliente quiere hacer un nuevo pedido
+  script: Perfecto, para procesar su pedido, necesito los detalles de la carga y dirección.
+    ¿Podría proporcionármelos?
+  goal: Automatizar la toma de pedidos y reducir tiempo.
+- trigger: custom_clearance
+  situation: Cuando un cliente pregunta por servicios aduanales
+  script: Ofrecemos asistencia en trámites aduaneros. ¿Necesita ayuda con importación
+    o exportación?
+  goal: Promover servicios adicionales y captar clientes.
+competitors:
+- name: Estafeta
+  positioning: Líder en paquetería y mensajería en México
+  strengths:
+  - Amplia red de cobertura
+  - Reconocimiento de marca
+  - Servicios diversificados
+  weaknesses:
+  - Precios altos
+  - Tiempos de entrega variables en zonas remotas
+  our_differentiation: Precios más competitivos y seguimiento en tiempo real 24/7
+- name: DHL México
+  positioning: Empresa global de logística y mensajería
+  strengths:
+  - Servicios internacionales
+  - Infraestructura avanzada
+  - Experiencia global
+  weaknesses:
+  - Enfoque en clientes corporativos
+  - Puede ser costoso para PYMES
+  our_differentiation: Enfoque personalizado para PYMES y soluciones locales adaptadas
+- name: FedEx México
+  positioning: Proveedor de servicios de transporte y logística
+  strengths:
+  - Red global
+  - Servicios express
+  - Confiabilidad
+  weaknesses:
+  - Limitada penetración en zonas rurales
+  - Precios premium
+  our_differentiation: Cobertura extendida en zonas rurales y opciones de precio flexibles
+- name: Redpack
+  positioning: Empresa de paquetería y logística en México
+  strengths:
+  - Precios competitivos
+  - Servicios nacionales
+  - Atención a PYMES
+  weaknesses:
+  - Menor reconocimiento internacional
+  - Limitada integración tecnológica
+  our_differentiation: Integración tecnológica avanzada y soporte de IA para eficiencia
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatización de consultas de estado para una PYME
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 1
+  - scenario: Implementación de agente de voz para toma de pedidos
+    monthly_cost: 8000
+    monthly_savings: 20000
+    payback_months: 1
+  value_anchors:
+  - Reduce la carga de trabajo de operadores en un 40%
+  - Mejora la satisfacción del cliente con respuestas instantáneas
+  - Optimiza costos operativos con automatización
+market_context:
+  market_size: Estimado en 50 mil millones de MXN anuales
+  growth_rate: 8% YoY
+  key_trends:
+  - Aumento del comercio electrónico y demanda de logística de última milla
+  - Digitalización de procesos logísticos
+  - Enfoque en sostenibilidad y logística verde
+  - Integración de tecnologías como IoT y AI para seguimiento
+  seasonality:
+    high:
+    - Noviembre-Diciembre (temporada navideña)
+    - Julio (vacaciones)
+    low:
+    - Enero-Febrero
+    - Septiembre
+typical_objections:
+- objection: Tardo mucho en obtener una respuesta
+  response: Entiendo su preocupación. Soy un asistente virtual y respondo al instante
+    24/7.
+- objection: Prefiero hablar con una persona
+  response: Por supuesto, en este momento le conecto con un operador. El tiempo de
+    espera es de aproximadamente 2 minutos.
+- objection: La información del estado no es precisa
+  response: Los datos se actualizan cada 15 minutos. Puedo verificar con el despachador
+    y llamarle de vuelta.
+- objection: Es muy caro
+  response: Nuestros precios son competitivos y ofrecemos valor añadido con seguimiento
+    en tiempo real y soporte automatizado.
+_extends: _base/logistics

@@ -1,0 +1,258 @@
+pain_points:
+- description: Gestão ineficiente do inventário, levando a stocks em excesso ou roturas
+    de stock, especialmente em períodos sazonais.
+  severity: high
+  solution_hint: Agente pode automatizar verificações de stock e alertar para reposições
+    ou promoções.
+- description: Dificuldade em competir com grandes retalhistas e marketplaces online
+    em preço e visibilidade.
+  severity: high
+  solution_hint: Agente pode oferecer suporte personalizado 24/7, diferenciando pelo
+    serviço.
+- description: Alto custo e rotatividade de pessoal para atendimento ao cliente, especialmente
+    em horários alargados.
+  severity: medium
+  solution_hint: Agente pode lidar com consultas básicas, libertando funcionários
+    para tarefas complexas.
+- description: Desafio em gerir múltiplos canais de venda (loja física, online, redes
+    sociais) de forma coerente.
+  severity: medium
+  solution_hint: Agente pode centralizar pedidos e perguntas de todos os canais num
+    único ponto.
+- description: Dificuldade em fidelizar clientes e incentivar compras repetidas.
+  severity: medium
+  solution_hint: Agente pode realizar follow-ups automatizados e programas de fidelidade
+    personalizados.
+- description: Complexidade na logística de entregas e gestão de devoluções, um grande
+    ponto de insatisfação.
+  severity: medium
+  solution_hint: Agente pode fornecer atualizações automáticas de envio e gerir processos
+    de devolução.
+- description: Cumprimento do RGPD (GDPR) na recolha e processamento de dados dos
+    clientes.
+  severity: low
+  solution_hint: Agente pode ser configurado para operar dentro dos estritos protocolos
+    de consentimento e privacidade.
+typical_services:
+- Atendimento ao Cliente 24/7
+- Agendamento de Entregas e Recolhas
+- Gestão de Encomendas e Devoluções
+- Suporte Pós-Venda
+- Programas de Fidelização (Clube de Clientes)
+- Gestão de Reclamações
+- Alertas de Promoções e Novidades
+- Verificação de Disponibilidade de Stock
+- Agendamento de Visitas ou Serviços Técnicos
+- Processamento de Pedidos por Telefone
+recommended_functions:
+- name: Processador de Pedidos por Voz
+  priority: high
+  reason: Permite vender diretamente por telefone, crucial para clientes menos digitais.
+- name: Sistema de Alertas de Stock
+  priority: high
+  reason: Resolve um dos maiores pontos de dor ao automatizar a reposição.
+- name: Gestor de Reclamações e Devoluções
+  priority: medium
+  reason: Melhora a experiência pós-venda e reduz a carga da equipa.
+- name: Assistente de Fidelização
+  priority: medium
+  reason: Aumenta o valor vitalício do cliente através de contactos personalizados.
+- name: Integrador Multicanal
+  priority: high
+  reason: Unifica a comunicação de loja física, website e redes sociais.
+- name: Confirmador de Encomendas e Entregas
+  priority: medium
+  reason: Reduz significativamente as chamadas para apoio logístico.
+typical_integrations:
+- name: Sistema de Gestão (ERP)
+  examples:
+  - Primavera
+  - SAP Business One
+  - Odoo
+  priority: high
+- name: Plataforma de E-commerce
+  examples:
+  - Loja Online
+  - WooCommerce
+  - Shopify
+  priority: high
+- name: Software de Gestão de Stock
+  examples:
+  - Dictum
+  - Gescom
+  priority: medium
+- name: Sistema de Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - PipeDrive
+  priority: medium
+- name: Plataforma de Logística
+  examples:
+  - CTT
+  - DPD
+  - Glovo
+  priority: low
+industry_faq:
+- question: O agente de voz pode mesmo vender produtos?
+  answer_template: Sim, perfeitamente. O nosso agente pode guiar o cliente por um
+    catálogo, verificar stock, confirmar preços e finalizar o pedido com pagamento
+    seguro, tudo por telefone.
+- question: Como é que isto se integra com a minha caixa registadora ou sistema atual?
+  answer_template: Integramos com os sistemas mais comuns em Portugal, como Primavera
+    ou Odoo. A encomenda feita pelo agente é registada automaticamente no seu sistema
+    de gestão.
+- question: E se o cliente quiser falar com uma pessoa?
+  answer_template: O agente identifica situações complexas e transfere a chamada imediatamente
+    para um operador humano da sua equipa, sem que o cliente perca tempo.
+- question: Isto funciona fora do horário comercial?
+  answer_template: Funciona 24 horas por dia, 7 dias por semana. Pode atender encomendas,
+    dar informações ou agendar serviços mesmo quando a loja está fechada.
+- question: É compatível com o RGPD?
+  answer_template: Totalmente. Todo o processamento de dados e gravações são configurados
+    para o estrito cumprimento do RGPD. Obtemos e gerimos consentimentos de forma
+    transparente.
+- question: Quanto tempo demora a implementar?
+  answer_template: Uma implementação básica para começar a atender chamadas pode estar
+    operacional em 2 a 3 semanas, dependendo das suas integrações.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre o custo do serviço.
+  script: Entendo a sua preocupação com o investimento. O nosso modelo é flexível.
+    Temos um ponto de entrada a partir de 49€/mês para funcionalidades essenciais,
+    como atendimento básico 24/7. O valor final depende do volume de chamadas e das
+    integrações que precisar. Posso fazer uma simulação rápita consigo? Em média,
+    os nossos clientes do retalho recuperam o investimento em menos de 4 meses através
+    da redução de custos e aumento de vendas.
+  goal: Transparentar o preço, destacar o baixo ponto de entrada e pivotar para uma
+    conversa sobre ROI.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente ou solução alternativa.
+  script: É uma boa referência. A nossa diferença principal está na especialização
+    para o retalho português. Para além da tecnologia, oferecemos suporte local em
+    português, integração pronta com sistemas como o Primavera, e scripts construídos
+    para as necessidades específicas do seu negócio, como gerir a época do Natal ou
+    promoções relâmpago. Não somos apenas uma ferramenta, somos um parceiro para o
+    seu crescimento.
+  goal: Diferenciar pela especialização local e suporte, não apenas pelo preço.
+- trigger: objection_automation
+  situation: Quando o cliente receia que o agente seja demasiado impessoal.
+  script: É um receio comum e importante. O nosso agente não pretende substituir o
+    contacto humano, mas sim melhorá-lo. Ele trata das tarefas repetitivas (confirmar
+    entregas, stock, horários), libertando a sua equipa para oferecer um serviço verdadeiramente
+    personalizado nas lojas ou em situações complexas. Muitos clientes até preferem
+    a rapidez do agente para questões simples. Podemos configurar a personalidade
+    e tom de voz para refletir a marca da sua loja.
+  goal: Reframear a automação como um libertador para uma melhor interação humana.
+- trigger: initial_contact
+  situation: 'Primeiro contacto para retalho local (ex: loja de bairro, boutique).'
+  script: Bom dia! Falo da [Sua Empresa]. Muitos retalhistas como o senhor(a) estão
+    a usar os nossos agentes de voz para atender clientes, vender fora de horário
+    e gerir entregas, sem custos extras com funcionários. Permite-lhe competir melhor
+    com as grandes superfícies. Tem 2 minutos para eu lhe mostrar como a sua loja
+    poderia vender mais, mesmo fechada?
+  goal: Estabelecer relevância imediata, focar num benefício claro (vender mais) e
+    pedir um tempo curto.
+competitors:
+- name: Talkdesk
+  positioning: Plataforma global de contact center na cloud.
+  strengths:
+  - Marca global forte
+  - Funcionalidades muito abrangentes
+  - Grande capacidade de integração
+  weaknesses:
+  - Preço elevado para PME
+  - Menos foco em automação por voz específica para retalho
+  - Suporte menos personalizado para mercado português
+  our_differentiation: Preço acessível para PME, especialização no retalho português,
+    implementação rápida e focada em automação de voz que vende.
+- name: Altice Labs (soluções empresariais)
+  positioning: Fornecedor de telecomunicações e soluções TIC local.
+  strengths:
+  - Presença física e reputação em Portugal
+  - Pacotes que incluem telecomunicações
+  weaknesses:
+  - Soluções muitas vezes genéricas
+  - Menos ágeis em inovação de software puro
+  - Foco em hardware/infraestrutura
+  our_differentiation: Somos especialistas em IA conversacional, com uma solução software-first,
+    mais ágil, moderna e focada em gerar receita direta.
+- name: Outsystems (Low-code for CRM)
+  positioning: Plataforma low-code para construção de aplicações, incluindo CRM.
+  strengths:
+  - Extrema flexibilidade para criar soluções personalizadas
+  - Forte presença em Portugal
+  weaknesses:
+  - Requer desenvolvimento interno ou consultoria
+  - Custo total de propriedade e tempo de desenvolvimento altos
+  - Não é uma solução 'pronta a usar'
+  our_differentiation: Oferecemos uma solução pronta a usar, específica para atendimento
+    e vendas por voz, sem necessidade de desenvolvimento interno, operacional em semanas.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 49
+  roi_examples:
+  - scenario: Loja de moda que recebe 200 chamadas/mês para confirmar stock, horários
+      e fazer encomendas simples.
+    monthly_cost: 99
+    monthly_savings: 150
+    payback_months: 2
+  value_anchors:
+  - Custa menos que um part-time e trabalha 24/7.
+  - Recupere o investimento com as vendas feitas fora de horário comercial.
+  - Elimine chamadas perdidas que são vendas perdidas.
+market_context:
+  market_size: 'Pequeno e Médio Retalho português: > 100,000 empresas.'
+  growth_rate: 3-5% YoY, impulsionado pela digitalização pós-pandemia.
+  key_trends:
+  - 'Omnicanalidade: os clientes esperam uma experiência fluida entre online e loja
+    física.'
+  - Foco na experiência do cliente como diferencial contra grandes players.
+  - Aceleração do e-commerce e da logística de última milha.
+  - Dificuldade crescente em recrutar e reter pessoal para atendimento.
+  seasonality:
+    high:
+    - Novembro-Dezembro (Natal)
+    - Janeiro (Saldos)
+    - Páscoa
+    - Época de Verão (Junho-Agosto)
+    low:
+    - Fevereiro
+    - Outubro
+typical_objections:
+- objection: Os meus clientes são mais velhos e não vão gostar de falar com uma máquina.
+  response: Compreendo perfeitamente. Por isso mesmo, o nosso agente tem um tom de
+    voz natural e calmo, projetado para ser acolhedor. Ele serve exatamente para esses
+    clientes, que preferem telefonar a usar um chat online. E, se a qualquer momento
+    preferirem pessoa, transferimos imediatamente. Já vimos que esta transição é mais
+    suave do que se imagina.
+- objection: A minha loja é pequena, não tenho volume de chamadas para justificar.
+  response: É uma boa questão. Na verdade, para lojas pequenas, cada chamada perdida
+    ou cada hora extra paga a um funcionário tem um impacto grande. O nosso plano
+    de entrada cobre precisamente esse cenário, garantindo que nunca perde uma venda
+    ou um contacto após o fecho da porta. Pense nele como um empregado virtual de
+    baixíssimo custo que nunca falta.
+- objection: Já tenho um site com chat, não preciso de mais nada.
+  response: Excelente, o site com chat é muito importante. O nosso agente de voz complementa
+    essa oferta, captando o cliente que, por hábito, rapidez ou simples preferência,
+    levanta o telefone e liga. Além disso, podemos integrar-nos ao seu sistema para
+    que a informação partilhada por telefone e por chat seja consistente, oferecendo
+    uma verdadeira experiência omnicanal.
+meta:
+  id: retail
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

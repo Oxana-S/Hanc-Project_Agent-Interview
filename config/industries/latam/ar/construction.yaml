@@ -1,0 +1,183 @@
+pain_points:
+- description: Alta inflación que aumenta los costos de materiales y mano de obra de manera impredecible.
+  severity: high
+  solution_hint: El agente de voz IA puede monitorear precios y ajustar presupuestos en tiempo real.
+- description: Retrasos en la cadena de suministro debido a importaciones y problemas logísticos locales.
+  severity: medium
+  solution_hint: IA puede optimizar la gestión de inventario y predecir entregas con alertas automáticas.
+- description: Escasez de mano de obra calificada en ciertas regiones de Argentina.
+  severity: medium
+  solution_hint: Automatizar tareas administrativas para liberar recursos y enfocarse en capacitación.
+- description: Complejidad en trámites burocráticos y permisos municipales en diversas provincias.
+  severity: high
+  solution_hint: Asistir en la documentación y seguimiento de permisos con recordatorios inteligentes.
+- description: Demoras en pagos por parte de clientes, afectando el flujo de caja.
+  severity: high
+  solution_hint: Automatizar recordatorios de pagos y gestionar cobranzas mediante llamadas programadas.
+- description: Ineficiencias en la comunicación entre equipos en obra y oficina.
+  severity: medium
+  solution_hint: Centralizar comunicaciones y reportes con integración de mensajes de voz.
+typical_services:
+- Construcción residencial
+- Construcción comercial
+- Remodelaciones y reformas
+- Instalaciones eléctricas
+- Instalaciones sanitarias
+- Albañilería
+- Carpintería
+- Pintura y acabados
+- Gestión de proyectos
+- Supervisión de obras
+recommended_functions:
+- name: Asistente de presupuestos
+  priority: high
+  reason: Ayuda a calcular costos considerando la inflación y cambios en precios de materiales en Argentina.
+- name: Gestor de tareas
+  priority: medium
+  reason: Organiza y asigna tareas a equipos en obra, adaptándose a horarios y ubicaciones locales.
+- name: Monitor de permisos
+  priority: high
+  reason: Seguimiento de trámites burocráticos para evitar retrasos comunes en el mercado argentino.
+- name: Asistente de clientes
+  priority: medium
+  reason: Responde consultas y agenda citas automáticamente, mejorando la experiencia del cliente.
+- name: Analista de ROI
+  priority: low
+  reason: Evalúa el retorno de inversión en herramientas y servicios específicos para construcción en Argentina.
+- name: Integrador de sistemas
+  priority: medium
+  reason: Conecta con software local utilizado en Argentina para sincronizar datos en tiempo real.
+typical_integrations:
+- name: Software de gestión de proyectos
+  examples:
+  - Tango Software
+  - SAP
+  - Microsoft Project
+  priority: high
+- name: Sistemas de contabilidad
+  examples:
+  - Tango Contable
+  - SAP Business One
+  priority: high
+- name: Plataformas de CRM
+  examples:
+  - Zoho CRM
+  - Salesforce
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business
+  - Slack
+  priority: medium
+- name: Software de diseño
+  examples:
+  - AutoCAD
+  - SketchUp
+  priority: low
+industry_faq:
+- question: ¿Cuál es el tiempo estimado para completar un proyecto de construcción en Argentina?
+  answer_template: El tiempo varía según el tamaño y complejidad, pero con nuestra gestión eficiente y conocimiento local, podemos proporcionar un cronograma detallado tras evaluar sus necesidades.
+- question: ¿Cómo manejan los aumentos de precios debido a la inflación en Argentina?
+  answer_template: Utilizamos presupuestos dinámicos y monitoreo constante con IA para ajustar costos y minimizar impactos, asegurando transparencia.
+- question: ¿Ofrecen garantía por los trabajos realizados?
+  answer_template: Sí, todas nuestras obras cuentan con garantía según los términos acordados en el contrato, cumpliendo con normativas locales.
+- question: ¿Trabajan con materiales de calidad en el mercado argentino?
+  answer_template: Sí, solo utilizamos materiales certificados y de proveedores confiables locales para garantizar durabilidad y seguridad.
+- question: ¿Cómo gestionan los permisos municipales en diferentes provincias?
+  answer_template: Nos encargamos de todos los trámites burocráticos, utilizando IA para agilizar procesos y asegurar el cumplimiento normativo.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio en el contexto inflacionario argentino.
+  script: Entiendo su preocupación por los costos. Nuestros servicios están diseñados para ofrecer el mejor valor, considerando la calidad, eficiencia y ajustes por inflación. ¿Podría compartir más detalles
+    sobre su proyecto para proporcionarle un presupuesto preciso en ARS?
+  goal: Obtener información para personalizar la oferta y destacar el valor ante la incertidumbre económica.
+- trigger: timeline_inquiry
+  situation: Cuando un cliente pregunta sobre plazos de entrega, considerando retrasos comunes en Argentina.
+  script: Los plazos dependen de factores como permisos y suministros, pero con nuestra metodología optimizada y tecnología IA, podemos acelerar procesos sin comprometer la calidad. ¿Tiene una fecha límite
+    específica?
+  goal: Establecer expectativas realistas y demostrar eficiencia para ganar confianza.
+- trigger: quality_concern
+  situation: Cuando un cliente expresa dudas sobre la calidad debido a experiencias previas en el mercado.
+  script: La calidad es nuestra prioridad. Utilizamos materiales de primera y equipos calificados, con seguimiento continuo mediante IA. Además, ofrecemos garantías extendidas. ¿Hay algún aspecto específico
+    que le preocupe?
+  goal: Reasegurar al cliente y abordar preocupaciones específicas con evidencia de mejoras.
+competitors:
+- name: Constructora Sudamericana
+  positioning: Líder en proyectos grandes de infraestructura en Argentina.
+  strengths:
+  - Amplia experiencia
+  - recursos financieros sólidos
+  - red de contactos
+  weaknesses:
+  - Menos flexible para proyectos pequeños
+  - costos altos
+  - lentitud en adaptación tecnológica
+  our_differentiation: Ofrecemos soluciones personalizadas y precios competitivos con tecnología de punta para agilizar procesos.
+- name: Edifica Argentina
+  positioning: Especialista en construcción residencial con enfoque en Buenos Aires y Córdoba.
+  strengths:
+  - Enfoque en clientes residenciales
+  - buena reputación
+  - conocimiento local
+  weaknesses:
+  - Limitada en proyectos comerciales
+  - dependencia de métodos tradicionales
+  our_differentiation: Integramos IA para optimizar procesos, reducir tiempos y ofrecer soporte 24/7.
+- name: Grupo Constructor LATAM
+  positioning: Regional con presencia en varios países de América Latina, incluyendo Argentina.
+  strengths:
+  - Escala
+  - diversificación
+  - acceso a recursos internacionales
+  weaknesses:
+  - Poca adaptación local
+  - burocracia interna
+  - altos costos operativos
+  our_differentiation: Enfoque local con soporte personalizado y tecnología avanzada para eficiencia en costos.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 200000
+  - 10000000
+  entry_point: 100000
+  roi_examples:
+  - scenario: Implementación de maquinaria automatizada para acelerar procesos de construcción.
+    monthly_cost: 50000
+    monthly_savings: 75000
+    payback_months: 12
+  - scenario: Capacitación del personal en nuevas técnicas de construcción sostenible.
+    monthly_cost: 20000
+    monthly_savings: 35000
+    payback_months: 8
+meta:
+  id: construction
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- construction
+- building
+- renovation
+- contractor
+_extends: _base/construction
+market_context:
+  market_size: USD 25 mil millones
+  growth_rate: 4-6%
+  key_trends:
+  - Crecimiento en construcción sustentable y uso de materiales ecológicos
+  - Digitalización y adopción de tecnologías BIM en planificación y gestión
+  - Incremento en proyectos de infraestructura pública financiados por el Estado
+  - Mayor demanda de vivienda debido a crecimiento poblacional en áreas urbanas
+  - Adaptación a normativas ambientales y de seguridad más estrictas
+  seasonality:
+    high:
+    - octubre
+    - noviembre
+    - diciembre
+    low:
+    - junio
+    - julio
+    - agosto

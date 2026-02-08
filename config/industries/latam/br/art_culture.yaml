@@ -1,0 +1,255 @@
+pain_points:
+- description: Dificuldade em captar recursos e patrocínios de forma consistente para
+    financiar projetos culturais.
+  severity: high
+  solution_hint: O agente de voz pode realizar prospecção ativa de patrocinadores
+    potenciais, agendar reuniões e enviar lembretes automáticos de follow-up.
+- description: Gestão ineficiente da agenda de eventos, exposições e workshops, levando
+    a conflitos e baixa ocupação de espaços.
+  severity: high
+  solution_hint: Automatizar o agendamento, envio de confirmações e lembretes para
+    participantes e artistas, integrando com calendários digitais.
+- description: Alto custo e complexidade logística para transporte, montagem e seguro
+    de obras de arte.
+  severity: high
+  solution_hint: O agente pode cotar e agendar serviços com múltiplos fornecedores
+    de logística, garantindo os melhores preços e prazos.
+- description: Baixa visibilidade e divulgação de eventos para o público-alvo, especialmente
+    em canais digitais.
+  severity: medium
+  solution_hint: Disparar campanhas de marketing por voz e SMS, realizar pesquisas
+    de público e confirmar presenças em eventos.
+- description: Dificuldade em gerenciar a relação com artistas, fornecedores e o público,
+    resultando em falhas de comunicação.
+  severity: medium
+  solution_hint: Centralizar a comunicação via um assistente de voz que responde perguntas
+    frequentes, encaminha demandas e agenda compromissos.
+- description: Desafios na adaptação e conformidade com a LGPD (Lei Geral de Proteção
+    de Dados) no tratamento de dados de clientes e artistas.
+  severity: medium
+  solution_hint: O agente pode gerenciar consentimentos, registrar solicitações de
+    acesso a dados e garantir que todas as interações sigam os protocolos LGPD.
+- description: Sazonalidade acentuada da demanda, com picos em períodos festivos e
+    vales prolongados, afetando o fluxo de caixa.
+  severity: low
+  solution_hint: Programar campanhas de remarketing e ofertas especiais durante períodos
+    de baixa, usando o agente para reengajar clientes inativos.
+typical_services:
+- Curadoria de exposições
+- Produção de eventos culturais e festivais
+- Gestão de espaços culturais e galerias
+- Venda e leasing de obras de arte
+- Organização de workshops e cursos artísticos
+- Consultoria para editais e leis de incentivo (como Rouanet)
+- Restauração e conservação de obras
+- Desenvolvimento de projetos educacionais
+- Assessoria de imprensa e comunicação para artistas
+- Montagem e logística para exposições
+recommended_functions:
+- name: Agendamento Inteligente de Visitas e Eventos
+  priority: high
+  reason: Reduz falhas humanas, otimiza a ocupação de espaços e melhora a experiência
+    do visitante com lembretes automáticos.
+- name: Atendimento ao Cliente 24/7 para Informações
+  priority: high
+  reason: O setor cultural tem demanda fora do horário comercial; responde perguntas
+    sobre horários, preços e programação.
+- name: Captação e Qualificação de Leads para Patrocínio
+  priority: high
+  reason: Automatiza a prospecção inicial, identificando empresas com perfil para
+    incentivo cultural e agendando contatos.
+- name: Pesquisa de Satisfação Pós-Evento
+  priority: medium
+  reason: Coleta feedback imediato e valioso para melhorar futuros eventos e demonstrar
+    valor a patrocinadores.
+- name: Integração com Sistemas de Pagamento e Ingressos
+  priority: medium
+  reason: Permite vender ingressos e produtos via telefone, ampliando as formas de
+    acesso, especialmente para público menos digitalizado.
+- name: Gestão de Tarefas para Equipes e Fornecedores
+  priority: low
+  reason: Coordena equipes de montagem e artistas através de lembretes por voz, garantindo
+    cumprimento de prazos.
+typical_integrations:
+- name: Sistema de Gestão de Relacionamento com o Cliente (CRM)
+  examples:
+  - ContaAzul CRM
+  - Agendor
+  - Pipedrive
+  priority: high
+- name: Plataforma de Venda de Ingressos
+  examples:
+  - Sympla
+  - Eventbrite
+  - Ingresso.com
+  priority: high
+- name: Sistema de Gestão Financeira
+  examples:
+  - ContaAzul
+  - Omie
+  - Bling
+  priority: medium
+- name: Ferramentas de Automação de Marketing
+  examples:
+  - RD Station Marketing
+  - E-goi
+  - Mailchimp
+  priority: medium
+- name: Sistema de Gestão de Projetos
+  examples:
+  - Asana
+  - Trello
+  - ClickUp
+  priority: low
+industry_faq:
+- question: Quais são os horários de funcionamento da galeria?
+  answer_template: Nossa galeria funciona de terça a sexta, das 10h às 19h, e sábados
+    das 11h às 17h. Para horários especiais de eventos, recomendamos verificar nossa
+    programação online.
+- question: Como posso submeter meu portfólio para uma exposição?
+  answer_template: Aceitamos submissões de portfólios via nosso site. O processo leva
+    em média 4 semanas para análise. Enviaremos um retorno por e-mail.
+- question: Vocês oferecem desconto para grupos ou estudantes?
+  answer_template: Sim! Temos descontos para grupos acima de 10 pessoas e para estudantes
+    com carteirinha válida. Entre em contato para agendar sua visita.
+- question: Como funciona o processo de patrocínio para um projeto cultural?
+  answer_template: Trabalhamos com a elaboração de projetos para leis de incentivo
+    como a Lei Rouanet. Agendamos uma reunião inicial para entender sua proposta e
+    orientar sobre os próximos passos.
+- question: É possível agendar uma visita guiada para uma escola?
+  answer_template: Com certeza! Temos programas educativos específicos. Podemos agendar
+    uma visita guiada adaptada à faixa etária dos alunos. Vou conectar você com nossa
+    equipe pedagógica.
+- question: Vocês emitem nota fiscal para a compra de uma obra?
+  answer_template: Sim, emitimos nota fiscal para todas as vendas, com todos os detalhes
+    necessários para a documentação da obra.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um potencial cliente pergunta sobre o custo de um serviço de produção
+    de evento.
+  script: Entendo sua preocupação com o investimento. O valor varia conforme a complexidade
+    do evento, número de artistas e duração. Para uma estimativa precisa, posso conectar
+    você com nosso produtor para uma consulta gratuita de 15 minutos. Que tal agendarmos
+    para amanhã?
+  goal: Converter uma consulta de preço em uma reunião de qualificação.
+- trigger: objection_budget
+  situation: Quando o cliente diz que não tem orçamento no momento.
+  script: Compreendemos perfeitamente. Muitos projetos culturais começam com planejamento.
+    Oferecemos uma consultoria inicial sem custo para estruturar seu projeto e identificar
+    as melhores fontes de captação, como editais. Isso pode facilitar a liberação
+    de um orçamento futuro. Posso agendar essa conversa?
+  goal: Manter o engajamento e oferecer valor gratuito para nutrir o lead.
+- trigger: request_demo
+  situation: Quando um gestor cultural pergunta para ver o agente de voz em ação.
+  script: Perfeito! Vou agendar uma demonstração personalizada de 20 minutos. Mostraremos
+    como o agente pode gerenciar as inscrições do seu próximo workshop e confirmar
+    a presença dos participantes, liberando sua equipe para tarefas mais criativas.
+    Qual o melhor dia e horário para você?
+  goal: Agendar uma demonstração específica para o setor cultural.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona uma solução de CRM genérico que já utiliza.
+  script: 'Excelente ponto. Muitos CRMs genéricos são usados no setor. A diferença
+    do nosso agente é a especialização em cultura: ele já vem programado com termos
+    do setor, integrações com plataformas como Sympla e consegue lidar com perguntas
+    específicas sobre leis de incentivo. É como ter um assistente especializado, não
+    apenas uma ferramenta. Podemos focar a demonstração nisso?'
+  goal: Diferenciação pela especialização industrial e integrações locais.
+competitors:
+- name: Sympla
+  positioning: Líder em venda de ingressos e gestão de eventos no Brasil.
+  strengths:
+  - Reconhecimento de marca
+  - Ampla base de usuários
+  - Fácil usabilidade
+  weaknesses:
+  - Foco principal em ticketing, não em gestão completa do negócio cultural
+  - Solução menos personalizável para fluxos específicos de galerias/ateliers
+  our_differentiation: Oferecemos um assistente de voz que atua como um funcionário
+    virtual especializado, gerenciando desde o primeiro contato até o pós-evento,
+    indo além da venda de ingressos.
+- name: Eventbrite
+  positioning: Plataforma global de gestão de eventos, com presença no Brasil.
+  strengths:
+  - Interface internacional
+  - Ferramentas robustas de promoção
+  weaknesses:
+  - Suporte local menos ágil
+  - 'Menos adaptada a nuances do mercado cultural brasileiro (ex: leis de incentivo)'
+  our_differentiation: Solução 100% em português com foco no mercado latino, compreendendo
+    LGPD e processos locais de captação de recursos.
+- name: 'Sistema de gestão de galerias específico (ex: ArtBase)'
+  positioning: Sistemas de nicho para galerias de arte.
+  strengths:
+  - Muito especializados em inventário e catálogo de obras
+  weaknesses:
+  - Custo alto de implantação
+  - Geralmente não incluem atendimento ao cliente automatizado por voz
+  our_differentiation: Fornecemos uma solução acessível e ágil de automação de comunicação
+    que se integra a sistemas existentes, complementando-os sem substituí-los por
+    completo.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 297
+  roi_examples:
+  - scenario: Galeria pequena que gasta 40 horas/mês com agendamento e confirmação
+      de visitas por telefone.
+    monthly_cost: 397
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Custa menos que um estagiário em tempo integral.
+  - Recupere o investimento com a venda de apenas 2 ingressos extras por mês.
+  - Pague apenas pelos contatos atendidos, sem custo fixo alto.
+market_context:
+  market_size: Estimado em R$ 50 bilhões (incluindo mercados formais e informais)
+  growth_rate: 5-7% ao ano, impulsionado por retomada pós-pandemia e editais públicos
+  key_trends:
+  - Crescimento do mercado de arte digital e NFTs no Brasil.
+  - Maior busca por experiências culturais imersivas e presenciais.
+  - Aumento da preocupação com acessibilidade e inclusão em espaços culturais.
+  - Fortalecimento de circuitos culturais independentes e periféricos.
+  seasonality:
+    high:
+    - Março-Abril (pré-Bienal)
+    - Junho (festas juninas)
+    - Setembro-Outubro (primavera/estação de exposições)
+    - Novembro-Dezembro (encerramento de ano)
+    low:
+    - Janeiro (férias)
+    - Fevereiro (Carnaval)
+    - Julho (férias escolares de meio de ano)
+typical_objections:
+- objection: Meu público é mais velho e não se adapta bem a tecnologia.
+  response: Esta é uma ótima observação. Por isso nossa solução é por voz, a forma
+    mais natural e acessível de comunicação. Muitos idosos preferem falar ao telefone
+    a usar um aplicativo. Nosso agente fala claramente e com paciência, melhorando
+    justamente o acesso desse público.
+- objection: Já tenho uma equipe pequena que cuida disso. Não preciso automatizar.
+  response: Exatamente! Sua equipe é valiosa e criativa. Nosso objetivo é libertá-la
+    das tarefas repetitivas como confirmações e agendamentos, para que possam focar
+    no relacionamento profundo com artistas e curadoria, que é onde realmente fazem
+    a diferença. Que tal um teste para ver como eles reagiriam?
+- objection: É um custo adicional que não estava no planejamento este ano.
+  response: Entendo perfeitamente. Muitos clientes começam usando o agente para um
+    projeto ou evento específico, o que permite um orçamento pontual. Após ver os
+    resultados, como a redução de faltas em workshops ou o aumento no número de visitas
+    agendadas, incorporam o custo como um investimento fixo. Podemos começar com um
+    piloto de 3 meses?
+meta:
+  id: art_culture
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

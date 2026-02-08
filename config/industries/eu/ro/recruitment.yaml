@@ -1,0 +1,252 @@
+pain_points:
+- description: Dificultatea găsirii candidaților calificați pentru poziții specializate.
+  severity: high
+  solution_hint: Agentul vocal poate filtra rapid candidații pe baza criteriilor specificate
+    și poate programa interviuri automat.
+- description: Procesul lung și birocratic de recrutare care încetinește angajarea.
+  severity: high
+  solution_hint: Automatizarea comunicării și programărilor poate accelera procesul
+    și reduce timpul de așteptare.
+- description: Lipsa transparenței și comunicării eficiente cu candidații pe parcursul
+    procesului.
+  severity: medium
+  solution_hint: Agentul vocal poate oferi actualizări automate și răspunsuri rapide
+    la întrebările frecvente.
+- description: Conformitatea dificilă cu GDPR în gestionarea datelor candidaților.
+  severity: high
+  solution_hint: Agentul poate asigura consimțământul și poate gestiona datele în
+    conformitate cu regulile GDPR.
+- description: Costuri ridicate pentru recrutare prin metode tradiționale sau agenții
+    externe.
+  severity: medium
+  solution_hint: Automatizarea procesului reduce necesarul de resurse umane și cheltuieli
+    asociate.
+- description: Fluctuații sezoniere în cererea de forță de muncă dificultând planificarea.
+  severity: medium
+  solution_hint: Agentul poate adapta interacțiunile în funcție de sezon și poate
+    colecta date pentru prognoze.
+- description: Integrarea dificilă a datelor din multiple surse și platforme.
+  severity: medium
+  solution_hint: Agentul vocal poate colecta și centraliza informații din diverse
+    sisteme.
+typical_services:
+- Recrutare permanentă (plasare angajați pe termen lung)
+- Recrutare temporară (plasare angajați sezoniere sau temporare)
+- Headhunting pentru poziții executive
+- Consultanță în resurse umane și optimizarea proceselor de recrutare
+- Screening și selecție candidați
+- Interviuri preliminare și evaluări
+- Managementul ofertelor și negocierilor salariale
+- Administrare baze de date cu candidați
+- Training pentru recrutori și manageri de angajare
+- Servicii de employer branding
+recommended_functions:
+- name: Programare automată interviuri
+  priority: high
+  reason: Reduce timpul de organizare și elimină conflictele de program.
+- name: Răspuns la întrebări frecvente GDPR
+  priority: high
+  reason: Asigură conformitatea și liniștește candidații.
+- name: Actualizări automate status aplicare
+  priority: high
+  reason: Îmbunătățește experiența candidatului și reduce apelurile manuale.
+- name: Filtrare și calificare candidați prin conversație
+  priority: high
+  reason: Optimizează selecția și reduce volumul de muncă al recrutorilor.
+- name: Colectare consimțământ explicit pentru date personale
+  priority: high
+  reason: Respectă cerințele GDPR în mod automat.
+- name: Integrare cu sistemele ATS locale
+  priority: medium
+  reason: Asigură actualizarea în timp real a datelor.
+- name: Analiză și raportare a performanței recrutării
+  priority: medium
+  reason: Ajută la optimizarea proceselor și justifică investiția.
+typical_integrations:
+- name: Sistem ATS (Applicant Tracking System)
+  examples:
+  - Smartree
+  - EBS
+  - DevHR
+  priority: high
+- name: Platforme de joburi locale
+  examples:
+  - eJobs
+  - BestJobs
+  - Hipo
+  priority: high
+- name: CRM pentru recrutare
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Sisteme interne HR
+  examples:
+  - Sage HR
+  - SAP SuccessFactors
+  priority: medium
+- name: Platforme de verificare background
+  examples:
+  - Verifcare
+  - Checkr
+  priority: low
+- name: Soluții de semnătură electronică
+  examples:
+  - DocuSign
+  - Adobe Sign
+  priority: low
+industry_faq:
+- question: Cum asigurați protecția datelor mele personale conform GDPR?
+  answer_template: Datele dvs. sunt procesate strict conform regulilor GDPR. Agentul
+    nostru vocal colectează consimțământul explicit și nu partajează informațiile
+    fără acordul dvs.
+- question: Pot să programez un interviu prin agentul vocal?
+  answer_template: Da, agentul nostru poate programa automat interviuri la o oră convenabilă
+    pentru dvs. și recrutor.
+- question: Ce tipuri de joburi sunt disponibile prin serviciile voastre?
+  answer_template: Oferim poziții permanente, temporare și executive în diverse domenii
+    precum IT, vânzări, producție și altele.
+- question: Cum pot afla statusul aplicației mele?
+  answer_template: Agentul vocal vă poate oferi actualizări în timp real despre stadiul
+    procesului de recrutare.
+- question: Care sunt costurile serviciilor de recrutare?
+  answer_template: Costurile variază în funcție de tipul serviciului și poziția căutată.
+    Vă putem oferi o ofertă personalizată după o scurtă discuție.
+- question: Pot să retrag consimțământul pentru procesarea datelor mele?
+  answer_template: Da, aveți dreptul să vă retrageți consimțământul în orice moment,
+    iar noi vom șterge datele conform legislației în vigoare.
+- question: Cum pot fi sigur că sunt potrivit pentru un job înainte de interviu?
+  answer_template: Agentul vocal poate efectua un scurt screening pentru a evalua
+    compatibilitatea dvs. cu cerințele postului.
+sales_scripts:
+- trigger: pret_intrebare
+  situation: Client întreabă despre prețurile serviciilor noastre.
+  script: Înțeleg că prețul este un factor important. Serviciile noastre sunt personalizate
+    în funcție de nevoile companiei dvs. și oferim soluții eficiente care reduc costurile
+    pe termen lung. Pot să vă ofer o estimare după ce discutăm mai detaliat despre
+    cerințele dvs.?
+  goal: Stabilirea unei discuții detaliate pentru ofertare personalizată.
+- trigger: conformitate_gdpr
+  situation: Clientul este preocupat de respectarea GDPR.
+  script: Respectăm cu strictețe toate regulile GDPR și folosim tehnologii care asigură
+    protecția datelor candidaților și ale companiei dvs. Agentul nostru vocal gestionează
+    consimțămintele și poate oferi rapoarte de conformitate.
+  goal: Construirea încrederii în conformitate și securitate.
+- trigger: eficientizare_proces
+  situation: Clientul dorește să reducă timpul de recrutare.
+  script: Agentul nostru vocal automatizează programarea interviurilor și comunicarea
+    cu candidații, ceea ce accelerează procesul și reduce volumul de muncă al echipei
+    dvs. Astfel, puteți angaja mai rapid persoanele potrivite.
+  goal: Demonstrerea beneficiilor de eficiență.
+- trigger: obiectie_costuri
+  situation: Clientul consideră că serviciile sunt prea scumpe.
+  script: Înțeleg preocuparea dvs. privind costurile. Cu toate acestea, investiția
+    în automatizare aduce economii semnificative prin reducerea timpului și a resurselor
+    alocate recrutării. Vă pot prezenta câteva exemple concrete de ROI.
+  goal: Reducerea obiecției prin argumentare financiară.
+competitors:
+- name: eJobs România
+  positioning: Lider pe piața platformelor de recrutare online.
+  strengths:
+  - Bază mare de candidați
+  - platformă ușor de folosit
+  - brand puternic
+  weaknesses:
+  - Dependență de joburi postate
+  - servicii limitate de automatizare
+  our_differentiation: Oferim automatizări vocale integrate și servicii personalizate
+    care reduc timpul de recrutare.
+- name: BestJobs
+  positioning: Platformă populară pentru recrutare generalistă.
+  strengths:
+  - Acoperire națională
+  - interfață prietenoasă
+  - multe oferte
+  weaknesses:
+  - Mai puține servicii dedicate recrutării executive
+  our_differentiation: Serviciile noastre includ asistență vocală și integrare cu
+    sisteme ATS locale, pentru un flux complet.
+- name: Smartree
+  positioning: Furnizor important de servicii HR și recrutare.
+  strengths:
+  - Soluții integrate HR
+  - experiență solidă pe piață
+  weaknesses:
+  - Costuri mai ridicate
+  - proces mai puțin flexibil
+  our_differentiation: Automatizăm comunicarea și programările pentru a crește flexibilitatea
+    și a reduce costurile.
+- name: Hipo.ro
+  positioning: Platformă orientată spre tineri și joburi entry-level.
+  strengths:
+  - Focus pe segmentul tinerilor
+  - interfață modernă
+  weaknesses:
+  - Bază limitată pentru poziții senior
+  our_differentiation: Acoperim toate segmentele de joburi, inclusiv executive, și
+    oferim suport vocal avansat.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 2000
+  - 15000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Automatizarea programării interviurilor pentru o companie medie
+    monthly_cost: 3000
+    monthly_savings: 9000
+    payback_months: 1
+  - scenario: Reducerea timpului de recrutare cu 30% pentru o firmă IT
+    monthly_cost: 4500
+    monthly_savings: 13500
+    payback_months: 1
+  value_anchors:
+  - Reducem timpul mediu de angajare cu până la 50%.
+  - Automatizarea proceselor reduce erorile și costurile operaționale.
+  - Respectăm toate regulile GDPR, evitând amenzi costisitoare.
+  - Furnizăm suport 24/7 pentru candidați și recrutorii dvs.
+market_context:
+  market_size: 500000000
+  growth_rate: 8
+  key_trends:
+  - Creșterea utilizării tehnologiilor digitale în recrutare.
+  - Accent pe conformitatea GDPR și protecția datelor.
+  - Cerere crescută pentru recrutare temporară și flexibilă.
+  - Automatizarea proceselor pentru reducerea costurilor.
+  seasonality:
+    high:
+    - Primăvara
+    - Toamna
+    low:
+    - Iarna
+    - Luna august
+typical_objections:
+- objection: Serviciile voastre sunt prea scumpe pentru bugetul nostru.
+  response: Înțelegem preocuparea dumneavoastră. Totuși, investiția în automatizare
+    reduce costurile pe termen lung prin eficientizarea proceselor și scurtarea timpului
+    de recrutare.
+- objection: Nu suntem siguri că un agent vocal poate gestiona complexitatea recrutării.
+  response: Agentul vocal este conceput să sprijine echipa dvs., preluând sarcini
+    repetitive precum programarea și informarea candidaților, astfel încât recrutorii
+    să se poată concentra pe deciziile strategice.
+- objection: Ne temem de probleme legate de protecția datelor personale.
+  response: Respectăm cu strictețe legislația GDPR și folosim tehnologii care asigură
+    consimțământul explicit și securitatea datelor la cele mai înalte standarde.
+- objection: Nu avem experiență cu soluții digitale și ne este greu să le integrăm.
+  response: Oferim suport complet pentru integrare și training, astfel încât implementarea
+    să fie simplă și fără întreruperi ale activității curente.
+meta:
+  id: recruitment
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

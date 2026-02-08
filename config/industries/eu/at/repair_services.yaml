@@ -1,0 +1,254 @@
+pain_points:
+- description: Hohe Kosten für Kundenaquise durch traditionelle Werbung wie Zeitungsinserate
+    oder Google Ads.
+  severity: high
+  solution_hint: AI Voice Agent kann telefonische Anfragen automatisch bearbeiten
+    und Termine vereinbaren, wodurch Streuverluste reduziert werden.
+- description: Ineffiziente Terminplanung mit vielen verpassten Anrufen und doppelten
+    Buchungen im Kalender.
+  severity: high
+  solution_hint: Voice Agent kann rund um die Uhr Anrufe entgegennehmen, Verfügbarkeit
+    prüfen und Termine sofort bestätigen.
+- description: Lange Wartezeiten für Kunden am Telefon in Stoßzeiten führen zu frustrierten
+    Anrufern und verlorenen Aufträgen.
+  severity: medium
+  solution_hint: Der Agent kann mehrere Anrufe parallel bearbeiten, Warteschleifen
+    eliminieren und grundlegende Informationen im Voraus sammeln.
+- description: Schwierigkeiten, Stammkunden zu binden und an regelmäßige Wartungen
+    zu erinnern.
+  severity: medium
+  solution_hint: Automatisierte Erinnerungsanrufe für bevorstehende Wartungen oder
+    Follow-up-Anrufe nach Reparaturen durchführen.
+- description: Hoher administrativer Aufwand für die Angebotserstellung und Nachverfolgung
+    von Reparaturaufträgen.
+  severity: medium
+  solution_hint: Der Agent kann Kundendaten und Problembeschreibungen erfassen und
+    direkt in ein CRM oder Werkstattsystem übertragen.
+- description: Unklarheit über Reparaturkosten am Telefon führt zu späteren Diskussionen
+    und unzufriedenen Kunden.
+  severity: low
+  solution_hint: Voice Agent kann standardisierte Kostenschätzungen für häufige Reparaturen
+    basierend auf hinterlegten Preisen kommunizieren.
+typical_services:
+- Reparatur von Haushaltsgroßgeräten (Waschmaschine, Geschirrspüler, Kühlschrank)
+- Handy- und Smartphone-Reparatur
+- Laptop- und Computerreparatur
+- Fahrradreparatur und -service
+- Dienstwagenreparatur für KMU
+- Schlüsseldienst
+- Möbelreparatur und -restauration
+- Reparatur von Gartengeräten (Rasenmäher, Heckenschere)
+- Schuhreparatur
+- Reparatur von Unterhaltungselektronik (Fernseher, Soundsysteme)
+recommended_functions:
+- name: Terminvereinbarung und -verwaltung
+  priority: high
+  reason: Kernprozess für Reparaturdienstleister. Automatisierung steigert Auslastung
+    und reduziert Verwaltungszeit.
+- name: 24/7 Anrufentgegennahme und First-Level-Support
+  priority: high
+  reason: Fängt alle Kundenanfragen außerhalb der Geschäftszeiten ab und verhindert
+    Auftragsverlust.
+- name: Zahlungsaufforderung und -bestätigung
+  priority: medium
+  reason: Beschleunigt den Zahlungseingang, indem Kunden nach Reparaturabschluss automatisch
+    an die Rechnung erinnert werden.
+- name: Kundenfeedback und Bewertungssammlung
+  priority: medium
+  reason: Wichtig für Reputation und Google-Bewertungen im lokalen Servicegeschäft.
+- name: Erinnerungsanrufe für Wartungstermine
+  priority: medium
+  reason: Fördert die Kundenbindung und schafft wiederkehrende Einnahmen.
+- name: Basis-Fehlerdiagnose am Telefon
+  priority: low
+  reason: Kann Kunden einfache Lösungen vorschlagen oder den Techniker mit der richtigen
+    Ersatzteilerwartung losschicken.
+typical_integrations:
+- name: Werkstattverwaltungssoftware
+  examples:
+  - MEBIS
+  - autoserve
+  - Talento
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - einfache selbstgebaute Lösungen
+  - Excel-Listen
+  priority: medium
+- name: Kalendersysteme
+  examples:
+  - Google Calendar
+  - Outlook
+  priority: high
+- name: Zahlungsgateways
+  examples:
+  - Stripe
+  - PayPal
+  - Bankomat
+  priority: medium
+- name: Bewertungsplattformen
+  examples:
+  - Google Mein Unternehmen
+  - Heroal
+  priority: low
+industry_faq:
+- question: Wie schnell können Sie zu mir kommen?
+  answer_template: Vielen Dank für Ihre Anfrage. Unser nächstmöglicher Einsatztermin
+    ist in der Regel innerhalb von 24 Stunden. Für einen genauen Termin benötige ich
+    kurz Ihre Postleitzahl und eine Beschreibung des Problems.
+- question: Was kostet eine Reparatur ungefähr?
+  answer_template: 'Die Kosten hängen stark vom Gerät und dem Defekt ab. Eine grobe
+    Orientierung: Eine Diagnose kostet meist zwischen 40 und 80 Euro, die Reparatur
+    selbst beginnt bei etwa 80 Euro aufwärts, plus Ersatzteile. Ich kann Ihnen gerne
+    einen Festpreis für gängige Probleme nennen oder einen kostenlosen Rückruf für
+    eine detaillierte Schätzung vereinbaren.'
+- question: Haben Sie eine Bereitschaft für Notdienste, auch am Wochenende?
+  answer_template: Ja, wir bieten einen Notdienst an. Für Einsätze außerhalb unserer
+    regulären Öffnungszeiten (Mo-Fr, 8-18 Uhr) und am Wochenende berechnen wir einen
+    Bereitschaftszuschlag. Möchten Sie mehr dazu erfahren?
+- question: Geben Sie eine Garantie auf Ihre Reparaturen?
+  answer_template: Selbstverständlich. Auf unsere Reparaturarbeiten und die verbauten
+    neuen Ersatzteile geben wir standardmäßig 12 Monate Gewährleistung. Auf generalüberholte
+    Teile gilt eine Garantie von 6 Monaten.
+- question: Kann ich ein Festpreisangebot erhalten, bevor Sie beginnen?
+  answer_template: Ja, das ist unser Standardverfahren. Nach der Diagnose erstellen
+    wir ein verbindliches Festpreisangebot. Erst nach Ihrer Zustimmung beginnen wir
+    mit der Reparatur. So haben Sie absolute Kostensicherheit.
+sales_scripts:
+- trigger: initial_contact
+  situation: Wenn ein potenzieller Kunde zum ersten Mal anruft und nach Reparaturmöglichkeiten
+    fragt.
+  script: Guten Tag, [Firmenname] Reparaturservice, mein Name ist [KI-Name]. Wie kann
+    ich Ihnen helfen? ... Verstehe, Ihr [Gerät] hat ein Problem. Um Ihnen schnellstmöglich
+    helfen zu können, würde ich gerne einen Termin für Sie vereinbaren. Unser nächstmöglicher
+    Termin ist [Datum/Uhrzeit]. Passt Ihnen das? Großartig. Ich benötige noch kurz
+    Ihre Kontaktdaten für die Terminbestätigung per SMS.
+  goal: Kontaktdaten erfassen und einen konkreten Termin vereinbaren, um aus einer
+    Anfrage einen gebuchten Auftrag zu machen.
+- trigger: price_question
+  situation: Wenn der Kunde sofort nach den Kosten fragt, bevor Details bekannt sind.
+  script: Das ist eine wichtige Frage. Um Ihnen eine ehrliche und genaue Einschätzung
+    geben zu können, benötigen wir zunächst eine kurze Diagnose vor Ort. Diese kostet
+    pauschal [z.B. 59 Euro]. Dafür erhalten Sie ein verbindliches Festpreisangebot
+    für die Reparatur. Wenn Sie die Reparatur dann bei uns durchführen lassen, erlassen
+    wir die Diagnosegebühr. So haben Sie volle Kostentransparenz ohne Überraschungen.
+    Soll ich einen Termin für die Diagnose vereinbaren?
+  goal: Das Gespräch von einem vagen Preisgespräch auf die konkrete Buchung einer
+    Diagnose lenken, die zum Auftrag führt.
+- trigger: callback_request
+  situation: Wenn der Kunde einen Rückruf von einem Techniker oder der Geschäftsführung
+    wünscht.
+  script: Selbstverständlich kann ich einen Rückruf für Sie organisieren. Unser [Techniker/Geschäftsführer]
+    ruft Sie gerne heute bis spätestens [Uhrzeit] zurück. Um ihn optimal vorzubereiten,
+    dürfte ich kurz wissen, um welches Gerät und welches Problem es genau geht? Perfekt,
+    vielen Dank. Sie erhalten Ihren Rückruf an der Nummer, von der Sie gerade anrufen.
+  goal: Wertschätzung zeigen und den Rückruf zusagen, gleichzeitig wichtige Informationen
+    für den Kollegen sammeln.
+competitors:
+- name: Durchblicker & Co. (lokale Werkstattkette)
+  positioning: Lokal präsente Kette für Elektrogerätereparaturen.
+  strengths:
+  - Mehrere Standorte in Städten
+  - Bekannter Name
+  - Schnelle Verfügbarkeit von Standard-Ersatzteilen
+  weaknesses:
+  - Höhere Preise durch Filialkosten
+  - Oberflächliche Beratung unter Zeitdruck
+  - Begrenzte Spezialisierung
+  our_differentiation: Wir bieten persönliche Betreuung durch spezialisierte Techniker,
+    transparente Festpreise bevor es losgeht und kommen direkt zu Ihnen nach Hause.
+- name: Mister Minit / Schlüsseldienste mit 24/7-Service
+  positioning: Nationaler Anbieter für Schlüsselnotdienste und kleine Reparaturen.
+  strengths:
+  - Absolute 24/7-Verfügbarkeit
+  - Sehr schnelle Reaktionszeit
+  - Starke Markenbekanntheit
+  weaknesses:
+  - Sehr hohe Notfallpreise
+  - Oft nur einfache Dienstleistungen
+  - Unpersönlicher Service
+  our_differentiation: Wir sind Ihr fairer Partner für alle Reparaturen, nicht nur
+    im Notfall. Unsere Preise sind transparent und wir bauen eine langfristige Kundenbeziehung
+    auf.
+- name: Der freie Handwerker/Einzelunternehmer
+  positioning: Lokaler Soloselbstständiger mit breitem oder speziellem Angebot.
+  strengths:
+  - Sehr persönliche Betruung
+  - Oft günstigere Stundensätze
+  - Große Flexibilität
+  weaknesses:
+  - Begrenzte Erreichbarkeit (kein Telefonservice bei Arbeiten)
+  - Keine Garantie auf lange Sicht wenn Einzelperson
+  - Oft unprofessionelle Administration
+  our_differentiation: 'Wir vereinen die persönliche Betreuung und Expertise mit der
+    professionellen Zuverlässigkeit eines Unternehmens: 24/7 erreichbar, klare Garantie
+    und saubere Abrechnung.'
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 500
+  entry_point: 59
+  roi_examples:
+  - scenario: Kleiner Reparaturbetrieb mit 3 Technikern, der 50% der verpassten Anrufe
+      außerhalb der Geschäftszeiten zurückgewinnt.
+    monthly_cost: 149
+    monthly_savings: 1200
+    payback_months: 0.5
+  value_anchors:
+  - Jeder verpasste Anruf kostet Sie durchschnittlich 150€ an potenziellem Umsatz.
+  - Automatische Terminvereinbarung spart Ihren Mitarbeitern bis zu 10 Stunden pro
+    Woche an Verwaltungszeit.
+  - Erinnern Sie Ihre Kunden an Wartungen und steigern Sie Ihren Umsatz mit wiederkehrenden
+    Services.
+market_context:
+  market_size: Ca. 500 Mio. EUR jährlich für gewerbliche Reparaturdienstleistungen
+    in Österreich.
+  growth_rate: Stagnierend bis leicht positiv (1-2% p.a.), getrieben durch Nachhaltigkeitstrend
+    und 'Right to Repair'.
+  key_trends:
+  - Wachsende Nachfrage nach Reparatur statt Neukauf (Nachhaltigkeit).
+  - Steigende Komplexität der Geräte erfordert mehr Spezialwissen.
+  - Kunden erwarten zunehmend Online-Terminbuchung und digitale Abwicklung.
+  - Fachkräftemangel im Handwerk betrifft auch Reparaturbetriebe.
+  seasonality:
+    high:
+    - Frühjahr (Gartengeräte)
+    - Herbst (Vor-Winter-Check Heizungen/Geräte)
+    - Nach Weihnachten (neue Elektronik defekt)
+    low:
+    - Haupturlaubszeit (Juli, August)
+    - Zwischen Weihnachten und Neujahr
+typical_objections:
+- objection: Das ist mir zu teuer / Ich habe das Budget nicht.
+  response: 'Das verstehe ich gut. Bedenken Sie aber: Eine professionelle Reparatur
+    verlängert die Lebensdauer Ihres [Geräts] um Jahre. Ein Neukauf wäre ein Vielfaches
+    teurer. Unsere Festpreisgarantie gibt Ihnen Sicherheit. Könnten wir mit einer
+    einfacheren, kostengünstigeren Reparaturlösung starten?'
+- objection: Ich rufe lieber noch bei ein paar anderen Betrieben an und vergleiche.
+  response: Ein absolut vernünftiger Schritt. Damit Ihr Vergleich fair ist, empfehle
+    ich, überall nach einem verbindlichen Festpreisangebot nach der Diagnose zu fragen,
+    nicht nach einer vagen Schätzung am Telefon. Unser Angebot dazu haben Sie ja schon.
+    Darf ich Ihnen einen Diagnosetermin reservieren, den Sie bei Bedarf stornieren
+    können, wenn Sie sich anders entscheiden?
+- objection: Ich traue einer Maschine/KI nicht, mein komplexes Problem zu verstehen.
+  response: 'Das ist eine berechtigte Sorge. Lassen Sie mich klarstellen: Ich bin
+    hier, um Ihnen schnell und effizient einen Termin mit einem unserer erfahrenen
+    menschlichen Techniker zu vermitteln und alle organisatorischen Fragen zu klären.
+    Die fachliche Diagnose und Lösung erfolgt dann selbstverständlich durch unseren
+    Experten bei Ihnen vor Ort. Probieren wir es einfach aus?'
+meta:
+  id: repair_services
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

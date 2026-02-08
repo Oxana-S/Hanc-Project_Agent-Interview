@@ -1,0 +1,231 @@
+pain_points:
+- description: Fluctuaciones constantes en los precios de insumos como tinta y papel
+    debido a la inflación.
+  severity: high
+  solution_hint: El agente de voz puede proporcionar actualizaciones de precios en
+    tiempo real y sugerir alternativas económicas.
+- description: Competencia agresiva de grandes cadenas de impresión que ofrecen precios
+    bajos.
+  severity: medium
+  solution_hint: El agente puede destacar servicios personalizados y atención al cliente
+    superior para diferenciarse.
+- description: Gestión ineficiente de inventario que lleva a excesos o faltantes de
+    stock.
+  severity: medium
+  solution_hint: Automatizar el seguimiento de inventario con recordatorios y alertas
+    a través del agente.
+- description: Retrasos frecuentes en los pagos de clientes, afectando el flujo de
+    caja.
+  severity: high
+  solution_hint: El agente puede enviar recordatorios automáticos de pagos y facilitar
+    opciones de pago en línea.
+- description: Altos costos de mantenimiento y reparación de equipos de impresión.
+  severity: medium
+  solution_hint: Programar mantenimientos preventivos y conectar con técnicos locales
+    mediante el agente.
+- description: Falta de digitalización en procesos de pedidos y facturación, aumentando
+    errores.
+  severity: low
+  solution_hint: Implementar un sistema automatizado de toma de pedidos y facturación
+    a través del agente.
+- description: Dificultad para atraer y retener clientes nuevos en un mercado saturado.
+  severity: medium
+  solution_hint: Usar el agente para prospección activa y seguimiento personalizado
+    de leads.
+typical_services:
+- Impresión offset
+- Impresión digital
+- Diseño gráfico
+- Encuadernación
+- Corte y troquelado
+- Impresión de gran formato
+- Serigrafía
+- Impresión de etiquetas
+- Servicios de plotter
+- Impresión 3D
+recommended_functions:
+- name: Toma de pedidos automatizada
+  priority: high
+  reason: Reduce errores y acelera el proceso de recepción de órdenes, mejorando la
+    eficiencia.
+- name: Recordatorio de pagos y cobranzas
+  priority: high
+  reason: Ayuda a gestionar la morosidad y mantener un flujo de caja saludable.
+- name: Consulta de disponibilidad de stock
+  priority: medium
+  reason: Permite a los clientes verificar inventario en tiempo real, aumentando la
+    satisfacción.
+- name: Asistencia técnica básica
+  priority: medium
+  reason: Brinda soporte rápido para problemas comunes, reduciendo tiempos de inactividad.
+- name: Programación y seguimiento de entregas
+  priority: high
+  reason: Optimiza la logística y asegura el cumplimiento de plazos, mejorando la
+    confiabilidad.
+- name: Generación de leads y prospección
+  priority: low
+  reason: Automatiza la captación de nuevos clientes mediante llamadas personalizadas.
+typical_integrations:
+- name: Sistemas ERP locales
+  examples:
+  - Tango
+  - SisCont
+  - Bejerman
+  priority: high
+- name: Software de diseño gráfico
+  examples:
+  - Adobe Creative Suite
+  - CorelDRAW
+  priority: medium
+- name: Plataformas de e-commerce
+  examples:
+  - MercadoLibre
+  - Tienda Nube
+  priority: medium
+- name: Sistemas de gestión de inventario
+  examples:
+  - Zoho Inventory
+  - Odoo
+  priority: medium
+- name: Software de contabilidad
+  examples:
+  - ContaPlus
+  - Exactus
+  priority: medium
+industry_faq:
+- question: ¿Cuál es el tiempo de entrega típico para impresiones digitales?
+  answer_template: Para impresiones digitales estándar, el tiempo de entrega es de
+    24 a 48 horas, dependiendo del volumen y complejidad.
+- question: ¿Ofrecen servicios de diseño personalizado?
+  answer_template: Sí, contamos con diseñadores gráficos que pueden crear o adaptar
+    diseños según sus necesidades específicas.
+- question: ¿Qué métodos de pago aceptan?
+  answer_template: Aceptamos transferencias bancarias, tarjetas de crédito/débito,
+    y efectivo, con opciones de pago en línea para mayor comodidad.
+- question: ¿Tienen opciones de envío a todo el país?
+  answer_template: Sí, ofrecemos servicio de envío a domicilio a través de correos
+    y logística privada, con tarifas competitivas.
+- question: ¿Pueden imprimir en materiales especiales como vinilo o cartón?
+  answer_template: Absolutamente, trabajamos con una amplia gama de materiales incluyendo
+    vinilo, cartón, y papeles premium para proyectos especiales.
+- question: ¿Cómo manejan los pedidos urgentes?
+  answer_template: Contamos con servicio express para pedidos urgentes, con tiempos
+    de entrega reducidos y un pequeño recargo por prioridad.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios durante una llamada inicial.
+  script: Entiendo que necesita una cotización. Para ofrecerle el mejor precio, me
+    gustaría conocer detalles como el tipo de impresión, cantidad, y material. ¿Podría
+    compartir esa información?
+  goal: Obtener detalles específicos para proporcionar una cotización precisa y demostrar
+    profesionalismo.
+- trigger: service_inquiry
+  situation: Cuando un cliente muestra interés en servicios específicos como impresión
+    digital o diseño.
+  script: Nos especializamos en impresión digital de alta calidad y diseño personalizado.
+    ¿Hay algún proyecto en particular en el que esté trabajando? Podemos adaptarnos
+    a sus necesidades.
+  goal: Identificar oportunidades de venta cruzada y construir una relación basada
+    en soluciones.
+- trigger: follow_up
+  situation: Después de enviar una cotización, para seguir y cerrar la venta.
+  script: Hola, le contacto para seguir sobre la cotización que le envié. ¿Tiene alguna
+    pregunta o le gustaría proceder con el pedido? Estoy aquí para ayudarle.
+  goal: Cerrar la venta o resolver dudas finales para avanzar en el proceso.
+- trigger: objection_handling
+  situation: Cuando un cliente expresa preocupación por el precio o el tiempo de entrega.
+  script: Comprendo su preocupación. Nuestros precios incluyen calidad garantizada
+    y entregas puntuales. ¿Le interesaría una opción económica o un plan de pago flexible?
+  goal: Superar objeciones y mantener el interés del cliente ofreciendo alternativas.
+competitors:
+- name: Gráfica Latinoamericana
+  positioning: Cadena nacional grande con precios bajos.
+  strengths:
+  - Amplia red de sucursales
+  - Precios competitivos
+  weaknesses:
+  - Servicio impersonal
+  - Tiempos de entrega variables
+  our_differentiation: Ofrecemos atención personalizada, entregas rápidas y consistencia
+    en calidad.
+- name: Imprenta Digital SA
+  positioning: Especialista en impresión digital de alta gama.
+  strengths:
+  - Tecnología avanzada
+  - Enfoque en B2B
+  weaknesses:
+  - Precios elevados
+  - Limitado servicio a consumidores finales
+  our_differentiation: Precios accesibles para todos los segmentos, con soporte dedicado
+    y flexibilidad.
+- name: Print&Go Argentina
+  positioning: Servicio express en línea para impresiones rápidas.
+  strengths:
+  - Plataforma digital fácil de usar
+  - Entrega rápida en centros urbanos
+  weaknesses:
+  - Opciones limitadas de personalización
+  - Soporte al cliente básico
+  our_differentiation: Combinamos la conveniencia digital con soporte humano experto
+    y servicios personalizados.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Automatización de toma de pedidos para reducir errores manuales.
+    monthly_cost: 15000
+    monthly_savings: 25000
+    payback_months: 1
+  - scenario: Mejora en gestión de cobranzas para disminuir la morosidad.
+    monthly_cost: 10000
+    monthly_savings: 20000
+    payback_months: 1
+  value_anchors:
+  - Ahorro del 30% en tiempo administrativo
+  - Incremento del 20% en satisfacción del cliente
+  - Reducción del 15% en costos operativos
+market_context:
+  market_size: Estimado en 2 mil millones de ARS anuales en Argentina.
+  growth_rate: 4% anual, impulsado por la digitalización y demanda de personalización.
+  key_trends:
+  - Crecimiento de la impresión bajo demanda
+  - Adopción de tecnologías sostenibles
+  - Integración con e-commerce para empaques y etiquetas
+  seasonality:
+    high:
+    - Enero-Febrero (inicio escolar y planificación anual)
+    - Octubre-Diciembre (temporada de festividades y marketing)
+    low:
+    - Julio (vacaciones de invierno)
+    - Marzo (post-temporada alta)
+typical_objections:
+- objection: Es demasiado caro comparado con otros proveedores.
+  response: Entiendo, pero nuestros precios reflejan calidad consistente y soporte
+    dedicado. Ofrecemos garantías y opciones de pago para ajustarse a su presupuesto.
+- objection: Ya trabajo con otra imprenta y estoy satisfecho.
+  response: Me alegra escuchar eso. ¿Qué tal si probamos con un pedido pequeño para
+    que vea nuestra rapidez y atención personalizada? Podría complementar su proveedor
+    actual.
+- objection: No tengo tiempo para implementar nuevos sistemas o procesos.
+  response: Nuestra solución es fácil de integrar y el agente de voz maneja todo automáticamente,
+    ahorrándole tiempo desde el primer día.
+- objection: Prefiero manejar los pedidos personalmente por teléfono.
+  response: Comprendo, pero nuestro agente puede liberar su tiempo para tareas más
+    estratégicas, manteniendo la calidad del servicio y disponible 24/7.
+meta:
+  id: printing
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

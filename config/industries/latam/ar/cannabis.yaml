@@ -1,0 +1,210 @@
+pain_points:
+- description: Incertidumbre regulatoria y cambios frecuentes en las leyes del cannabis.
+  severity: high
+  solution_hint: El agente de voz puede proporcionar actualizaciones automatizadas
+    sobre cumplimiento y asesoría inicial.
+- description: Altos costos operativos debido a la mano de obra y logística ineficiente.
+  severity: medium
+  solution_hint: Automatizar tareas como programación y seguimiento de pedidos para
+    reducir costos.
+- description: Acceso limitado a servicios bancarios y financieros para transacciones
+    legales.
+  severity: high
+  solution_hint: Integrar con pasarelas de pago locales y ofrecer alternativas de
+    facturación.
+- description: Control de calidad inconsistente en los productos de cannabis.
+  severity: medium
+  solution_hint: Conectar con sistemas de monitoreo y proporcionar recordatorios para
+    pruebas de laboratorio.
+- description: Competencia del mercado informal que ofrece precios más bajos.
+  severity: high
+  solution_hint: Educar a los clientes sobre los beneficios de los productos legales
+    y regulados.
+- description: Falta de educación y conciencia en el mercado sobre los usos medicinales.
+  severity: low
+  solution_hint: El agente puede responder preguntas frecuentes y ofrecer información
+    básica.
+typical_services:
+- Cultivo de cannabis medicinal
+- Distribución de aceites y derivados
+- Consultoría en regulación y licencias
+- Venta de semillas y equipos de cultivo
+- Análisis de laboratorio para control de calidad
+- Marketing y educación para pacientes
+- Desarrollo de productos personalizados
+- Logística y cadena de suministro
+- Asesoramiento legal y cumplimiento
+- Capacitación para cultivadores autorizados
+recommended_functions:
+- name: Respuesta a preguntas frecuentes sobre cannabis
+  priority: high
+  reason: Es crucial para educar a clientes y disipar dudas sobre legalidad y uso.
+- name: Programación de citas para consultas
+  priority: medium
+  reason: Agiliza la interacción con clientes potenciales y mejora la experiencia.
+- name: Procesamiento de pedidos y facturación
+  priority: high
+  reason: Aumenta la eficiencia en ventas y reduce errores manuales.
+- name: Monitoreo de inventario y alertas
+  priority: medium
+  reason: Previene desabastecimientos y optimiza la gestión de stock.
+- name: Recordatorios de renovación de licencias
+  priority: low
+  reason: Ayuda a mantener el cumplimiento regulatorio de manera proactiva.
+- name: Análisis de tendencias de mercado
+  priority: low
+  reason: Proporciona insights para decisiones empresariales basadas en datos locales.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - Tango
+  - SAP localizado
+  priority: high
+- name: Sistemas CRM
+  examples:
+  - Zoho
+  - Salesforce adaptado
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - MercadoPago
+  - TodoPago
+  priority: high
+- name: Software de logística
+  examples:
+  - Andreani
+  - Correo Argentino
+  priority: medium
+- name: Herramientas de cumplimiento regulatorio
+  examples:
+  - Bases de datos del REPROCANN
+  priority: low
+industry_faq:
+- question: ¿Es legal el cannabis en Argentina?
+  answer_template: El cannabis medicinal es legal bajo regulación específica, como
+    el REPROCANN, pero el uso recreativo está restringido. Recomendamos consultar
+    con un asesor legal.
+- question: ¿Cómo obtengo una licencia para cultivar cannabis?
+  answer_template: Debe registrarse en el REPROCANN y cumplir con requisitos como
+    justificación médica. Podemos ayudarle con el proceso de solicitud.
+- question: ¿Qué productos de cannabis están disponibles?
+  answer_template: Hay aceites, cremas, y otros derivados para uso medicinal. La disponibilidad
+    varía según la regulación y el proveedor.
+- question: ¿Hay apoyo gubernamental para emprendimientos de cannabis?
+  answer_template: Existen programas limitados; le conectamos con recursos y asesoría
+    para acceder a posibles subsidios.
+- question: ¿Cómo aseguro la calidad de mis productos?
+  answer_template: Trabaje con laboratorios certificados y siga buenas prácticas de
+    cultivo. Ofrecemos servicios de análisis integrados.
+- question: ¿Cuáles son los costos típicos para iniciar?
+  answer_template: Los costos iniciales varían, pero pueden empezar desde 5000 ARS
+    para consultoría básica. Le damos un presupuesto personalizado.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por los precios de servicios.
+  script: Nuestros servicios empiezan desde 5000 ARS, ofreciendo soluciones personalizadas
+    que reducen costos a largo plazo. ¿Le interesa conocer más detalles?
+  goal: Convertir la consulta en una oportunidad de venta destacando el valor.
+- trigger: compliance_concern
+  situation: Cliente expresa preocupación por la legalidad del cannabis.
+  script: Entendemos sus dudas. Trabajamos con expertos legales para garantizar el
+    cumplimiento, y nuestro agente puede mantenerle actualizado sobre cambios regulatorios.
+  goal: Tranquilizar al cliente y posicionarnos como confiables.
+- trigger: competition_mention
+  situation: Cliente menciona a otros proveedores o el mercado informal.
+  script: A diferencia de la competencia, ofrecemos integración tecnológica y soporte
+    continuo, asegurando productos legales y de calidad. ¿Podemos mostrarle cómo?
+  goal: Destacar nuestras ventajas competitivas y cerrar la venta.
+- trigger: service_inquiry
+  situation: Pregunta específica sobre servicios como cultivo o distribución.
+  script: Ofrecemos cultivo, distribución, consultoría y más. ¿En qué área necesita
+    ayuda? Podemos personalizar una solución para su negocio.
+  goal: Identificar necesidades y proponer servicios relevantes.
+competitors:
+- name: Cannava
+  positioning: Líder en cultivo medicinal con enfoque en investigación.
+  strengths:
+  - Experiencia consolidada
+  - infraestructura avanzada
+  weaknesses:
+  - Precios elevados
+  - distribución limitada fuera de grandes ciudades
+  our_differentiation: Precios más accesibles y servicio personalizado con tecnología
+    integrada.
+- name: Green Leaf Argentina
+  positioning: Especializado en productos derivados como aceites y cremas.
+  strengths:
+  - Amplia variedad de productos
+  - fuerte presencia en marketing
+  weaknesses:
+  - Dependencia de importaciones
+  - tiempos de entrega largos
+  our_differentiation: Producción local sostenible y logística optimizada con AI.
+- name: Medicann
+  positioning: Consultoría y educación para pacientes y cultivadores.
+  strengths:
+  - Conocimiento profundo en regulación
+  - redes de contactos
+  weaknesses:
+  - Servicios limitados a asesoría
+  - alto costo por hora
+  our_differentiation: Soluciones integrales que combinan consultoría con automatización
+    para mayor eficiencia.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automatización de ventas y atención al cliente
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  value_anchors:
+  - Reduce costos operativos hasta un 30%
+  - Aumenta la eficiencia del personal en un 40%
+  - Mejora el cumplimiento regulatorio con actualizaciones automáticas
+market_context:
+  market_size: Estimado en 100 millones de ARS anuales para el sector medicinal
+  growth_rate: 25% YoY
+  key_trends:
+  - Aumento de la aceptación social y médica
+  - Expansión de licencias para cultivo personal
+  - Inversión creciente en investigación y desarrollo
+  seasonality:
+    high:
+    - Finales de año
+    - temporadas de cosecha en primavera y otoño
+    low:
+    - Invierno
+    - períodos de revisión regulatoria
+typical_objections:
+- objection: Es muy caro para mi negocio pequeño.
+  response: Entendemos, pero nuestros servicios ofrecen un ROI rápido; por ejemplo,
+    puede ahorrar 15000 ARS mensuales con una inversión inicial baja. ¿Podemos analizar
+    su caso?
+- objection: No estoy seguro de si es legal o seguro.
+  response: Trabajamos con asesores legales y garantizamos cumplimiento. Además, nuestro
+    agente proporciona información actualizada para su tranquilidad.
+- objection: Ya trabajo con otro proveedor y no quiero cambiar.
+  response: Ofrecemos ventajas adicionales como integración tecnológica que puede
+    mejorar su eficiencia sin interrumpir sus operaciones actuales. ¿Le interesa una
+    demostración?
+- objection: No tengo tiempo para implementar nueva tecnología.
+  response: Nuestro agente de voz es fácil de configurar y maneja tareas automáticamente,
+    liberando su tiempo para otras actividades.
+meta:
+  id: cannabis
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

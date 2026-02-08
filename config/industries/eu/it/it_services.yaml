@@ -1,0 +1,302 @@
+industry: it_services
+country: Italy
+currency: EUR
+language: it
+pain_points:
+- name: Infrastruttura IT obsoleta
+  description: Molte aziende italiane, in particolare PMI, utilizzano hardware e software
+    datati, difficili da gestire e vulnerabili a problemi di sicurezza e prestazioni.
+  severity: high
+  solution_hint: L'agente vocale può spiegare i vantaggi del cloud computing, della
+    virtualizzazione e di piani di manutenzione proattiva.
+- name: Sicurezza informatica insufficiente
+  description: Consapevolezza limitata sulle minacce cyber (phishing, ransomware)
+    e mancanza di risorse dedicate per la protezione dei dati, con particolare attenzione
+    al GDPR.
+  severity: high
+  solution_hint: L'agente può sottolineare l'importanza di audit di sicurezza, formazione
+    del personale e soluzioni di protezione endpoint.
+- name: Mancanza di competenze IT specializzate interne
+  description: Difficoltà nell'assumere e trattenere personale IT qualificato (es.
+    sistemisti cloud, esperti cybersecurity), con costi del personale elevati.
+  severity: high
+  solution_hint: L'agente può proporre servizi di assistenza esterna (helpdesk), consulenza
+    o formazione per il personale esistente.
+- name: Gestione inefficiente del supporto tecnico (helpdesk)
+  description: Ritardi nella risoluzione dei ticket, mancanza di un punto di contatto
+    unico, frustrazione dei dipendenti e perdita di produttività.
+  severity: medium
+  solution_hint: L'agente può illustrare i vantaggi di un helpdesk centralizzato,
+    servizi di assistenza remota 24/7 e dashboard di monitoraggio.
+- name: Costi IT imprevedibili e fuori budget
+  description: Spese per riparazioni di emergenza, licenze software non ottimizzate
+    e progetti IT che superano il preventivo iniziale.
+  severity: medium
+  solution_hint: L'agente può presentare piani di servizio (Managed IT) a costo fisso
+    mensile, garantendo prevedibilità dei costi.
+- name: Difficoltà nell'adozione dello smart working
+  description: Problemi tecnici nel fornire accesso sicuro e performante ai sistemi
+    aziendali da remoto, con rischi per la sicurezza.
+  severity: medium
+  solution_hint: L'agente può proporre soluzioni di VPN, VDI (Desktop Virtuali) e
+    strumenti di collaborazione sicuri.
+- name: Compliance normativa complessa (GDPR, ecc.)
+  description: Difficoltà nel rimanere conformi alle normative sulla protezione dei
+    dati e nel documentare i processi in modo adeguato.
+  severity: high
+  solution_hint: L'agente può offrire servizi di consulenza GDPR, valutazioni di conformità
+    e implementazione di policy.
+typical_services:
+- Manutenzione e assistenza IT (Help Desk)
+- Gestione della rete e infrastruttura (on-premise/cloud)
+- Consulenza e implementazione cybersecurity
+- Servizi cloud (migrazione, gestione, ottimizzazione)
+- Backup e Disaster Recovery
+- Sviluppo software personalizzato
+- Consulenza IT strategica e digitalizzazione
+- Gestione e ottimizzazione delle licenze software
+- Formazione del personale su strumenti IT e sicurezza
+- Valutazione di conformità GDPR e privacy
+recommended_functions:
+- name: Risponditore FAQ Tecniche
+  priority: high
+  reason: Riduce il carico sul supporto interno rispondendo immediatamente a domande
+    comuni su problemi IT, accessi, password.
+- name: Programmazione Appuntamenti per Supporto
+  priority: high
+  reason: Permette di prenotare interventi tecnici o consulenze in modo efficiente,
+    integrandosi con il calendario del team IT.
+- name: Segnalazione Guasti e Creazione Ticket
+  priority: high
+  reason: Consente agli utenti di segnalare problemi vocalmente, avviando automaticamente
+    un ticket nel sistema di helpdesk.
+- name: Verifica Stato Servizi/Sistemi
+  priority: medium
+  reason: Fornisce aggiornamenti vocali sullo stato di server, reti o applicazioni
+    critiche, aumentando la trasparenza.
+- name: Promemoria per Formazione e Scadenze
+  priority: medium
+  reason: Ricorda al personale sessioni di formazione sulla sicurezza o scadenze per
+    il rinnovo di licenze/backup.
+- name: Raccolta Feedback sul Servizio IT
+  priority: low
+  reason: Raccolge automaticamente valutazioni sugli interventi di supporto, aiutando
+    a migliorare la qualità del servizio.
+typical_integrations:
+- name: Sistema di Ticketing/Helpdesk
+  examples:
+  - Zammad
+  - OSTicket
+  - Freshservice
+  - Jira Service Management
+  priority: high
+- name: Software di Monitoraggio di Rete e Server
+  examples:
+  - PRTG
+  - Nagios
+  - Zabbix
+  priority: high
+- name: Piattaforma di Remote Desktop
+  examples:
+  - TeamViewer
+  - AnyDesk
+  - Remote Desktop Services
+  priority: high
+- name: Software di Fatturazione e Gestione (per MSP)
+  examples:
+  - TeamSystem
+  - Zucchetti
+  - SAP
+  priority: medium
+- name: Strumenti di Collaboration
+  examples:
+  - Microsoft Teams
+  - Google Workspace
+  priority: medium
+- name: Piattaforme Cloud
+  examples:
+  - Aruba Cloud
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  priority: high
+industry_faq:
+- question: Offrite un servizio di assistenza remota?
+  answer_template: Sì, forniamo assistenza remota 24/7 tramite strumenti sicuri. I
+    nostri tecnici possono risolvere la maggior parte dei problemi senza bisogno di
+    uno spostamento fisico, garantendo tempi di intervento rapidissimi.
+- question: Siamo una piccola azienda. I vostri servizi sono adatti a noi?
+  answer_template: Assolutamente sì. Proponiamo pacchetti di servizi IT gestiti (Managed
+    IT) scalabili, pensati proprio per le PMI. Partiamo da un livello base che include
+    monitoraggio e assistenza, per offrirvi tranquillità e costi prevedibili.
+- question: Ci aiutate a diventare compliant con il GDPR?
+  answer_template: Certo. Offriamo un servizio completo di consulenza GDPR che include
+    una valutazione iniziale, redazione della documentazione necessaria, formazione
+    del personale e supporto per la gestione dei dati personali.
+- question: Quanto tempo serve per risolvere un guasto critico?
+  answer_template: Per i guasti critici che bloccano l'operatività, garantiamo un
+    tempo di risposta di massimo 15 minuti e un intervento remoto immediato. Il tempo
+    di risoluzione dipende dalla natura del problema, ma la nostra priorità è sempre
+    ripristinare i servizi essenziali.
+- question: Fate anche sviluppo di software personalizzato?
+  answer_template: Sì, abbiamo un team di sviluppo interno. Possiamo creare applicazioni
+    su misura per le vostre esigenze aziendali, integrandole con i sistemi esistenti,
+    oppure ottimizzare il software che già utilizzate.
+- question: I vostri contratti sono vincolanti per lungo periodo?
+  answer_template: Proponiamo flessibilità. I nostri contratti di servizio gestito
+    hanno tipicamente una durata di 12 o 24 mesi, ma offriamo anche servizi a progetto
+    o consulenze spot senza vincoli contrattuali a lungo termine.
+sales_scripts:
+- trigger: price_question
+  situation: Quando il cliente chiede "Quanto costa?" all'inizio della conversazione.
+  script: Capisco perfettamente l'importanza di conoscere l'investimento. I nostri
+    servizi sono personalizzati in base alle sue esigenze specifiche. Per darle un'idea,
+    per un'azienda delle sue dimensioni partiamo da piani di assistenza e monitoraggio
+    base a partire da [X]€ al mese, che trasformano i costi IT imprevedibili in una
+    spesa fissa e controllata. Posso farle qualche domanda per capire meglio la sua
+    situazione e proporle un preventivo più preciso?
+  goal: Superare l'ostacolo del prezzo, dimostrare valore e flessibilità, e raccogliere
+    informazioni per qualificare la lead.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente (es. "Stiamo parlando anche
+    con Almaviva").
+  script: È positivo che stia valutando diverse opzioni. Rispettiamo molto [Nome Concorrente].
+    Ciò che spesso ci differenzia è un approccio più diretto e personalizzato, pensato
+    per le realtà italiane. Offriamo un contatto più snello, piani tariffari più trasparenti
+    senza costi nascosti, e siamo particolarmente specializzati nel supporto alle
+    PMI con servizi 'chiavi in mano'. Le interessa approfondire come possiamo adattarci
+    alle sue esigenze quotidiane?
+  goal: Riconoscere il concorrente, sottolineare la differenziazione (personalizzazione,
+    trasparenza, focus PMI) e riportare l'attenzione sui bisogni specifici del cliente.
+- trigger: objection_complexity
+  situation: Quando il cliente esprime preoccupazione per la complessità del passaggio
+    ("Sembra complicato migrare i nostri sistemi").
+  script: 'La sua preoccupazione è più che legittima. La migrazione è un processo
+    delicato. La nostra forza è proprio gestire questa complessità per lei. Seguiamo
+    un metodo collaudato: prima una valutazione approfondita, poi pianifichiamo la
+    migrazione a step, minimizzando i disagi. La assisteremo in ogni fase e forniremo
+    formazione al suo personale. Abbiamo già aiutato molte aziende simili alla sua
+    in questo passaggio. Possiamo pianificare una prima analisi senza impegno?'
+  goal: Rassicurare il cliente, presentare un processo strutturato, utilizzare prove
+    sociali e proporre un passo successivo a basso impegno.
+- trigger: lead_qualification
+  situation: All'inizio della chiamata per capire le esigenze del potenziale cliente.
+  script: Buongiorno, sono [Nome Agente] di [Nome Azienda]. Chiamiamo per offrire
+    supporto alle aziende che vogliono rendere i propri sistemi IT più sicuri, efficienti
+    e senza sorprese di costo. Per indirizzarla al meglio, posso farle due rapidissime
+    domande? Attualmente, come gestisce il supporto tecnico ai suoi dipendenti? E
+    ha mai valutato i rischi legati alla cybersecurity per la sua attività?
+  goal: Qualificare rapidamente la lead, identificando i bisogni potenziali (supporto,
+    sicurezza) e avviando una conversazione mirata.
+competitors:
+- name: Almaviva
+  positioning: Grande player nazionale, fornitore di servizi IT e consulenza per grandi
+    aziende e PA.
+  strengths:
+  - Portafoglio servizi vastissimo
+  - forte presenza nel settore pubblico
+  - grandi risorse
+  weaknesses:
+  - Possibile lentezza burocratica
+  - costi elevati
+  - meno focalizzati sulle PMI
+  our_differentiation: Offriamo un servizio più agile, reattivo e personalizzato,
+    con piani chiari e tariffe competitive pensate per le esigenze delle medie e piccole
+    imprese.
+- name: Engineering Group
+  positioning: Altra grande realtà italiana focalizzata su digital transformation
+    e progetti complessi.
+  strengths:
+  - Competenza profonda in settori verticali
+  - forte capacità di innovazione
+  weaknesses:
+  - Struttura complessa
+  - spesso orientata a progetti one-off di grande portata più che a servizi gestiti
+    continui
+  our_differentiation: Ci concentriamo sul rapporto di partnership continua e sulla
+    gestione operativa quotidiana dell'IT, garantendo assistenza diretta e costi ricorrenti
+    prevedibili.
+- name: Reti locali / Liberi professionisti
+  positioning: Tecnici o piccole realtà locali che forniscono assistenza spot.
+  strengths:
+  - Conoscenza diretta del cliente
+  - bassi costi per interventi singoli
+  - flessibilità informale
+  weaknesses:
+  - Copertura limitata delle competenze
+  - nessuna procedura standard
+  - rischio di dipendenza da una persona
+  - scarsa proattività
+  our_differentiation: Portiamo professionalità e processi strutturati di un'azienda
+    (monitoraggio proattivo, helpdesk 24/7, compliance) mantenendo un rapporto di
+    vicinanza e comprendendo le dinamiche delle imprese locali.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Pacchetto Managed IT Base per PMI di 20 dipendenti (monitoraggio, helpdesk,
+      patch management)
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 3
+  - scenario: Implementazione di un sistema di backup cloud e Disaster Recovery per
+      un'azienda di 50 dipendenti
+    monthly_cost: 400
+    monthly_savings: 6000
+    payback_months: 1
+  value_anchors:
+  - Il costo di un'ora di inattività del vostro sistema può superare i 1000€. Il nostro
+    monitoraggio proattivo lo previene.
+  - Un piano di servizio gestito costa meno di un sistemista interno a tempo pieno,
+    con più competenze e copertura 24/7.
+  - Investire in cybersecurity oggi evita multe GDPR da milioni di euro e danni reputazionali
+    irreparabili.
+market_context:
+  market_size: Circa 30 miliardi di EUR (mercato IT italiano)
+  growth_rate: 3-5% YoY, trainato da cloud e cybersecurity
+  key_trends:
+  - Accelerazione della migrazione verso il cloud (pubblico e privato)
+  - Crescente attenzione e investimenti in cybersecurity e compliance GDPR
+  - Domanda in aumento per servizi IT gestiti (Managed Services) da parte delle PMI
+  - Sviluppo di soluzioni per lo smart working ibrido e sicuro
+  - Digitalizzazione forzata di settori tradizionali (artigianato, agricoltura)
+  seasonality:
+    high:
+    - Settembre-Novembre (rientro post-ferie
+    - budget)
+    - Gennaio-Marzo (pianificazione nuovi budget)
+    low:
+    - Agosto (chiusura feriale generale)
+    - Dicembre (festività)
+    - metà Luglio
+typical_objections:
+- objection: Siamo piccoli, non abbiamo bisogno di servizi così strutturati.
+  response: Proprio perché siete piccoli, avete bisogno di concentrarvi sul core business.
+    Un IT inefficiente o un attacco hacker può mettere a rischio l'intera azienda.
+    I nostri pacchetti sono scalabili e partono da livelli base per darvi protezione
+    e tranquillità senza grandi investimenti.
+- objection: Abbiamo già un tecnico che ci segue.
+  response: Fantastico. Il nostro servizio non lo sostituisce, ma lo potenzia. Possiamo
+    affiancarlo per le emergenze fuori orario, per la gestione della sicurezza o per
+    progetti speciali, dando a voi e a lui una rete di sicurezza e competenze aggiuntive.
+- objection: I vostri servizi sembrano un costo fisso in più.
+  response: In realtà, trasformano tanti costi variabili e imprevedibili (riparazioni,
+    multe, tempi morti) in un unico costo fisso, controllato e pianificabile. È un
+    investimento per l'efficienza e la sicurezza, che protegge il suo fatturato.
+meta:
+  id: it_services
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

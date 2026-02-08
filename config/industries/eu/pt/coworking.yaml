@@ -1,0 +1,197 @@
+pain_points:
+- description: Dificuldade em gerir a ocupação das salas e manter um fluxo constante de membros, especialmente em cidades com forte sazonalidade turística ou fora dos grandes centros urbanos.
+  severity: high
+  solution_hint: Agente de voz pode automatizar consultas de disponibilidade, agendamentos de visitas e follow-ups, mantendo o pipeline ativo 24/7.
+- description: Gestão administrativa complexa com contratos flexíveis, faturas, pagamentos e conformidade com o GDPR para dados de membros.
+  severity: high
+  solution_hint: Agente pode tratar pedidos de documentação, lembrar renovações de contrato, e encaminhar questões complexas de faturação para a equipa certa, assegurando processamento rápido.
+- description: Alto custo de aquisição de cliente (CAC) devido à forte concorrência de grandes redes internacionais e plataformas de agregação.
+  severity: high
+  solution_hint: Agente pode qualificar leads de forma eficiente através de perguntas-chave, agendar demonstrações personalizadas e destacar diferenciais locais imediatamente.
+- description: Comunicação ineficiente com membros sobre eventos da comunidade, mudanças nas regras do espaço, ou manutenção programada.
+  severity: medium
+  solution_hint: Agente pode servir como canal de broadcast para anúncios importantes e responder a perguntas frequentes sobre o funcionamento do espaço, libertando a equipa operacional.
+- description: Dificuldade em fidelizar membros de longo prazo, com muitos a procurarem apenas soluções pontuais ou mensais muito curtas.
+  severity: medium
+  solution_hint: Agente pode identificar sinais de possível cancelamento em chamadas de rotina e oferecer incentivos personalizados para upgrade ou renovação.
+- description: Necessidade de suporte fora do horário comercial para membros com acesso 24/7, criando custos adicionais com equipa.
+  severity: low
+  solution_hint: Agente pode fornecer suporte básico noturno e de fim-de-semana para questões de acesso e informações de emergência.
+typical_services:
+- Hot Desk (Lugar Não Dedicado)
+- Dedicated Desk (Secretária Dedicada)
+- Escritório Privado (para 1-10 pessoas)
+- Sala de Reuniões (aluguer por hora/dia)
+- Sala de Eventos / Formação
+- Acesso 24 horas / 7 dias
+- Mail Handling (Serviço de Correio)
+- Receptionist Service (Serviço de Receção)
+- High-Speed Internet & IT Support
+- Membership para Rede / Comunidade (acesso a eventos, descontos)
+recommended_functions:
+- name: Qualificação e Agendamento de Visitas
+  priority: high
+  reason: O mercado é competitivo e a conversão depende de contacto rápido e personalizado. Esta função captura leads qualificados imediatamente.
+- name: Suporte ao Cliente 24/7 para Acesso e Informações
+  priority: high
+  reason: Membros com acesso 24/7 valorizam suporte imediato para problemas de entrada ou regras básicas, melhorando a experiência.
+- name: Gestão de Reservas de Salas
+  priority: high
+  reason: Processo manual frequente e crítico para a receita. Automação via voz liberta a equipa e reduz erros.
+- name: Follow-up de Renovações e Retenção
+  priority: medium
+  reason: A fidelização é um desafio. Contactos automáticos e personalizados antes do fim do contrato podem aumentar a retenção.
+- name: Triagem de Suporte Técnico (Wi-Fi, Impressoras)
+  priority: medium
+  reason: Desvia chamadas simples da equipa de IT, permitindo-lhes focar em problemas complexos.
+- name: Divulgação de Eventos da Comunidade
+  priority: low
+  reason: Promove o engajamento e o valor da comunidade, um diferencial chave para muitos espaços.
+typical_integrations:
+- name: Sistema de Gestão de Coworking (Coworking Management Software)
+  examples:
+  - Nexudus
+  - OfficeRnD
+  - Kisi
+  priority: high
+- name: Software de Contabilidade e Faturação
+  examples:
+  - Primavera
+  - Sage
+  - Moloni
+  priority: high
+- name: Calendário e Agendamento
+  examples:
+  - Google Calendar
+  - Microsoft 365/Outlook
+  priority: medium
+- name: Plataforma de Pagamentos
+  examples:
+  - MB Way
+  - Stripe
+  - PayPal
+  priority: medium
+- name: Sistema de Controlo de Acesso
+  examples:
+  - Kisi
+  - Salto KS
+  priority: medium
+industry_faq:
+- question: Quais são os vossos preços para um lugar de hot desk?
+  answer_template: Os nossos planos de hot desk começam em [PREÇO]€ por mês, com acesso durante o horário comercial. Temos opções mais vantajosas para compromissos de 6 ou 12 meses. Posso ajudá-lo a encontrar
+    o plano ideal para as suas necessidades?
+- question: Oferecem algum período experimental ou dia gratuito?
+  answer_template: Sim, oferecemos um dia experimental gratuito para que possa experienciar o nosso espaço e comunidade. Posso agendar a sua visita para o dia que for mais conveniente?
+- question: O acesso é 24 horas?
+  answer_template: Depende do plano selecionado. Temos planos com acesso 24/7 e planos com acesso em horário comercial. O plano [NOME DO PLANO] inclui acesso 24 horas através do nosso sistema de controlo
+    de acesso seguro.
+- question: Está incluído no preço o uso das salas de reuniões?
+  answer_template: O uso das salas de reuniões está normalmente incluído com um crédito mensal de horas, dependendo do seu plano. Horas adicionais podem ser adquiridas a uma tarifa preferencial para membros.
+- question: Como funciona o contrato? Existe fidelização mínima?
+  answer_template: Temos a flexibilidade que precisa. Oferecemos contratos mensais sem fidelização mínima, assim como planos com desconto para compromissos de 6 ou 12 meses. Posso explicar-lhe as diferenças?
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preços de forma genérica.
+  script: 'Percebo que o preço é um fator importante. Para lhe dar a resposta mais precisa, ajuda-me a entender: precisa de um lugar flexível (hot desk) ou de uma secretária ou sala fixa? E qual é a sua
+    previsão de utilização por semana? Com essa informação, posso apresentar as opções mais vantajosas para o seu caso.'
+  goal: Qualificar a necessidade do lead e guiá-lo para um plano específico, demonstrando personalização.
+- trigger: competitor_mention
+  situation: Cliente menciona um espaço concorrente específico.
+  script: 'Excelente pergunta. O [Nome do Competidor] é uma boa opção. A nossa principal diferença reside na [DIFERENCIAÇÃO, ex: comunidade mais focada em tech, localização mais tranquila, flexibilidade
+    de contrato sem fidelização]. Além disso, aqui inclui [BENEFÍCIO EXCLUSIVO, ex: crédito mensal maior para salas de reunião]. Valoriza mais a [VANTAGEM] ou a [OUTRA VANTAGEM]?'
+  goal: Reconhecer o competidor, destacar o nosso diferencial de forma objetiva e redirecionar a conversa para o valor que oferecemos.
+- trigger: contract_flexibility
+  situation: Cliente expressa preocupação com contratos longos ou fidelização.
+  script: A flexibilidade é uma das nossas maiores vantagens. Temos um plano de adesão mensal sem qualquer período mínimo de permanência. Pode cancelar com um aviso prévio de 30 dias. No entanto, se planear
+    ficar mais tempo, temos descontos significativos em planos de 6 ou 12 meses. Qual se adequa mais ao seu projeto atual?
+  goal: Tranquilizar o cliente sobre a flexibilidade, apresentando a opção sem compromisso, mas também plantando a semente para um plano mais económico de longo prazo.
+competitors:
+- name: Selina
+  positioning: Rede global focada em nómadas digitais, combinando coworking com hotel/hostel.
+  strengths:
+  - Marca global forte
+  - Comunidade internacional vibrante
+  - Experiência lifestyle completa (alojamento, eventos)
+  weaknesses:
+  - Pode ser mais caro
+  - Foco menos em negócios locais/empresas
+  - Localizações por vezes menos centrais para negócios tradicionais
+  our_differentiation: Foco mais profissional em negócios e startups locais, com planos mais flexíveis e adaptados às necessidades empresariais portuguesas, sem o custo adicional dos serviços de hotelaria.
+- name: Second Home
+  positioning: Espaço premium com design distintivo e forte foco em comunidade e sustentabilidade.
+  strengths:
+  - Design e arquitetura excecionais
+  - Comunidade curada de criativos e inovadores
+  - 'Localizações privilegiadas (ex: Lisboa)'
+  weaknesses:
+  - Preços muito premium
+  - Pode não ser a opção mais prática para equipas que precisam apenas de funcionalidade
+  our_differentiation: Oferecemos uma proposta de valor mais acessível e funcional, mantendo uma comunidade forte, mas com maior flexibilidade de preços e planos para freelancers e pequenas empresas.
+- name: Regus (IWG)
+  positioning: Maior rede global de espaços de trabalho flexíveis, com foco em empresas e profissionalismo corporativo.
+  strengths:
+  - Presença global e reputação corporativa
+  - Rede vasta de localizações
+  - Serviços empresariais completos
+  weaknesses:
+  - Perceção de ser menos pessoal e mais 'corporativo'
+  - Preços e contratos podem ser menos flexíveis
+  - Comunidade menos ativa
+  our_differentiation: Ambiente mais acolhedor, comunidade ativa e local, contratos significativamente mais flexíveis e preços mais transparentes e adaptados ao mercado português.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 800
+  entry_point: 99
+  roi_examples:
+  - scenario: Freelancer que aluga sala de reuniões ocasionalmente fora do seu espaço atual.
+    monthly_cost: 150
+    monthly_savings: 280
+    payback_months: 1
+  - scenario: Startup de 5 pessoas a comparar com escritório tradicional (caução, mobília, contratos longos).
+    monthly_cost: 1250
+    monthly_savings: 2300
+    payback_months: 1
+  value_anchors:
+  - Sem caução elevada ou custos de instalação.
+  - 'Tudo incluído: luz, água, internet rápida, limpeza.'
+  - 'Crescimento flexível: aumente ou reduza o espaço conforme necessário.'
+market_context:
+  market_size: ~120M€ (estimativa pré-pandemia, em recuperação/growth)
+  growth_rate: 8-12% YoY (impulsionado pelo trabalho híbrido e nómadas digitais)
+  key_trends:
+  - 'Expansão para cidades secundárias (ex: Porto, Braga, Coimbra, Faro) além de Lisboa.'
+  - Aumento da procura por espaços 'suburbanos' ou em zonas residenciais.
+  - Maior foco em comunidades temáticas (tech, impact social, criativos).
+  - Integração de wellness e sustentabilidade como fatores de decisão.
+  seasonality:
+    high:
+    - Janeiro (novos projetos)
+    - Setembro (regresso de férias)
+    low:
+    - Agosto (férias de verão)
+    - Dezembro (feriados)
+typical_objections:
+- objection: É muito caro, posso trabalhar de casa ou de um café.
+  response: Percebo perfeitamente. No entanto, considere o custo do seu tempo (interrupções em casa), a qualidade da ligação Wi-Fi, e o valor profissional de ter um espaço dedicado para reuniões com clientes.
+    O nosso espaço oferece produtividade, networking e uma imagem profissional por um custo diário muitas vezes inferior ao de um almoço fora.
+- objection: Preciso de pensar e falar com os meus sócios.
+  response: Claro, é uma decisão importante. Enquanto pondera, posso reservar-lhe o nosso dia experimental gratuito para a semana que vem? Assim, podem todos experienciar o espaço e a atmosfera antes de
+    decidir. É sem compromisso.
+- objection: Já temos um escritório, só precisamos ocasionalmente de uma sala de reuniões.
+  response: 'Excelente! Muitos dos nossos membros estão exatamente na mesma situação. A nossa vantagem é a flexibilidade: pode reservar uma sala apenas quando precisa, sem qualquer contrato mensal. Para
+    membros frequentes, temos packs de horas com descontos. Posso enviar-lhe a nossa tabela de preços para salas?'
+meta:
+  id: coworking
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

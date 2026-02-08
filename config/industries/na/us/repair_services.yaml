@@ -1,0 +1,250 @@
+pain_points:
+- description: High volume of customer calls for basic inquiries (hours, pricing,
+    service availability) overwhelming limited staff.
+  severity: high
+  solution_hint: AI agent can handle 24/7 inbound call routing, answer FAQs, and collect
+    preliminary service request details.
+- description: Missed appointment reminders lead to costly no-shows and inefficient
+    technician scheduling.
+  severity: high
+  solution_hint: Automate outbound confirmation calls and SMS reminders, reducing
+    schedule gaps and improving on-time arrivals.
+- description: Inconsistent communication and lack of updates after a repair job leads
+    to negative online reviews.
+  severity: medium
+  solution_hint: Proactive outbound calls post-service for feedback collection and
+    to schedule follow-up maintenance.
+- description: Difficulty capturing leads and scheduling estimates during after-hours
+    and weekends.
+  severity: medium
+  solution_hint: Voice agent can qualify leads, schedule estimate appointments, and
+    sync directly with the business calendar.
+- description: Managing parts inventory and coordinating with suppliers via phone
+    is time-consuming and error-prone.
+  severity: medium
+  solution_hint: Agent can take voice-based inventory check requests and forward formatted
+    orders to managers or integrated systems.
+- description: Customers frequently call for status updates on ongoing repairs, pulling
+    technicians off the job.
+  severity: low
+  solution_hint: Provide a self-service status update via the voice agent using a
+    work order number, freeing up staff.
+typical_services:
+- Appliance Repair (Refrigerator, Oven, Washer/Dryer)
+- HVAC Service and Maintenance
+- Plumbing Repairs and Emergency Services
+- Electrical Troubleshooting and Installation
+- Handyman Services (Drywall, Carpentry, Minor Repairs)
+- Auto Body and Mechanical Repair
+- Computer and Smartphone Repair
+- Furniture Restoration and Upholstery
+- Roof Leak Repair and Gutter Services
+- Locksmith and Security System Repair
+recommended_functions:
+- name: 24/7 Call Answering & Intelligent Routing
+  priority: high
+  reason: Captures every lead, provides basic info, and routes urgent calls (like
+    water leaks) to the right person immediately.
+- name: Automated Appointment Scheduling & Reminders
+  priority: high
+  reason: Directly addresses no-shows and maximizes technician utilization by filling
+    the schedule efficiently.
+- name: Post-Service Follow-up Calls
+  priority: medium
+  reason: Improves customer satisfaction, generates positive reviews, and identifies
+    opportunities for recurring maintenance contracts.
+- name: Lead Qualification & Estimate Booking
+  priority: medium
+  reason: Filters serious customers from price-shoppers and books high-intent appointments
+    during off-hours.
+- name: Parts & Inventory Inquiry Handler
+  priority: low
+  reason: Reduces manual phone work for common staff queries, allowing them to focus
+    on core repair tasks.
+typical_integrations:
+- name: Job Scheduling & Dispatch Software
+  examples:
+  - ServiceTitan
+  - Housecall Pro
+  - mHelpDesk
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Jobber
+  - Salesforce
+  - Zoho CRM
+  priority: high
+- name: Payment Processing Systems
+  examples:
+  - Square
+  - Stripe
+  - Clover
+  priority: medium
+- name: Inventory Management Software
+  examples:
+  - RepairShopr
+  - Finale Inventory
+  - OnSite
+  priority: medium
+- name: Marketing & Review Platforms
+  examples:
+  - Broadly
+  - Podium
+  - Birdeye
+  priority: low
+industry_faq:
+- question: Are you available for emergency repairs today?
+  answer_template: We strive to handle emergencies as quickly as possible. Let me
+    check real-time technician availability and schedule your priority service call.
+    May I have your zip code and a brief description of the issue?
+- question: What is your service call fee or diagnostic charge?
+  answer_template: Our standard service call/diagnostic fee is [X] dollars. This fee
+    is waived if you proceed with the recommended repair with us. Would you like me
+    to schedule a diagnostic appointment?
+- question: Do you offer warranties on your repairs?
+  answer_template: Yes, we stand behind our work. Most repairs come with a [90-day/1-year]
+    parts and labor warranty. Specific warranty details are provided with your written
+    estimate.
+- question: Do you use OEM (Original Equipment Manufacturer) parts?
+  answer_template: We typically use OEM or OEM-equivalent parts to ensure quality
+    and compatibility. We will always discuss part options and pricing with you before
+    any repair begins.
+- question: How long will the repair take?
+  answer_template: Repair time varies by job complexity. After our technician diagnoses
+    the issue, they will provide a time estimate. For common issues like [example],
+    it often takes about [X] hours.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential lead asks "How much does it cost to fix a [device]?"
+  script: That's a great question. Repair costs can vary based on the specific problem
+    and the parts needed. To give you an accurate estimate, our technician first needs
+    to diagnose the issue. Our service call fee is [X] dollars, which covers the diagnosis,
+    and that amount is applied toward the repair if you choose to proceed with us.
+    Would you like to schedule a convenient time for a technician to come out and
+    provide a firm quote?
+  goal: Convert a price inquiry into a scheduled service call/diagnostic appointment.
+- trigger: competitor_mention
+  situation: When a prospect mentions a big box store or national chain competitor.
+  script: I understand they're an option. Many of our customers come to us after experiences
+    with larger chains because we offer more personalized, expert service. Our technicians
+    are often specialized and we provide direct communication with the person doing
+    the work. Plus, we're locally owned and invested in our community's satisfaction.
+    Can I tell you more about our specific expertise with [their device]?
+  goal: Differentiate on quality, expertise, and local service versus impersonal,
+    corporate competitors.
+- trigger: hesitation_scheduling
+  situation: When a prospect is hesitant to book an appointment due to uncertainty.
+  script: I totally understand wanting to be sure. Scheduling a diagnostic appointment
+    doesn't obligate you to anything. It simply gives you the information and a firm
+    price you need to make a confident decision. We're transparent with our pricing
+    and will explain everything before any work begins. How about we find a 2-hour
+    window that works for you, so you can get the answers you need?
+  goal: Overcome hesitation by reducing perceived commitment and emphasizing transparency.
+competitors:
+- name: Geek Squad (Best Buy)
+  positioning: National chain for electronics and appliance repair.
+  strengths:
+  - Brand recognition
+  - convenient retail locations
+  - large service area
+  weaknesses:
+  - Often subcontract local technicians
+  - can be impersonal
+  - potentially higher prices for brand premium
+  our_differentiation: Direct employment of specialized technicians, faster local
+    response times, and more personalized customer care.
+- name: Mr. Appliance / Mr. Rooter (Neighborly)
+  positioning: Franchised service providers for specific trades (appliances, plumbing).
+  strengths:
+  - National brand with local franchises
+  - standardized processes
+  - wide service range
+  weaknesses:
+  - Quality can vary by franchise owner
+  - may use less experienced technicians
+  - franchise fees can increase customer cost
+  our_differentiation: We are independently owned, allowing for more flexible pricing
+    and a direct owner-operators commitment to quality in every job.
+- name: Local Independent Handyman
+  positioning: Solo operator or very small team offering generalized repair services.
+  strengths:
+  - Often lower cost
+  - highly flexible
+  - personal relationship
+  weaknesses:
+  - May lack specialized expertise or proper insurance
+  - limited capacity
+  - unreliable scheduling
+  our_differentiation: We offer the reliability, insured expertise, and capacity of
+    a professional company while maintaining local, personalized service.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Automating appointment reminders to reduce no-shows by 30%
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Capturing 20 additional after-hours leads per month with a 25% conversion
+      rate
+    monthly_cost: 300
+    monthly_savings: 2500
+    payback_months: 1
+  value_anchors:
+  - The average cost of a single missed appointment for a repair business is over
+    $150 in lost revenue and wasted time.
+  - A 1-star review due to poor communication can cost thousands in lost future business.
+  - Our system pays for itself by filling just 2-3 previously missed appointment slots
+    per month.
+market_context:
+  market_size: $150 Billion annually
+  growth_rate: 3.5%
+  key_trends:
+  - Increasing demand for smart home device repair and integration.
+  - Consumers preferring to repair rather than replace due to economic and environmental
+    concerns.
+  - Rise of on-demand service platforms creating new customer expectations for speed
+    and convenience.
+  seasonality:
+    high:
+    - Late Spring
+    - Early Fall
+    - Holiday Season (appliance breakdowns)
+    low:
+    - Mid-Winter (in cold regions)
+    - Major Holidays (e.g.
+    - Christmas Day)
+typical_objections:
+- objection: I think I can fix it myself or find someone cheaper on Craigslist.
+  response: That's understandable to look for value. The risk with DIY or unverified
+    help is that a small mistake can lead to a much more expensive problem or even
+    a safety hazard. Our technicians are licensed/insured, and our work is guaranteed,
+    which protects your home and your wallet in the long run.
+- objection: I need to think about it / talk to my spouse.
+  response: Absolutely, it's a good decision to discuss. To help with that conversation,
+    would it be okay if I emailed you a summary of the recommended repair, the warranty
+    details, and our quote? That way, you have all the information in front of you.
+    When would be a good time for me to follow up?
+- objection: Your service call fee seems high just to look at it.
+  response: I hear you. That fee isn't just for 'looking'—it's for the expertise and
+    time of a trained technician to properly diagnose the root cause, which is the
+    first critical step to a lasting repair. Without a correct diagnosis, any repair
+    is just a guess. This fee is fully applied to the repair cost if you choose us,
+    making it a no-risk investment in getting the right solution.
+meta:
+  id: repair_services
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

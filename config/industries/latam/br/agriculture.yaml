@@ -1,0 +1,203 @@
+pain_points:
+- description: Variação climática imprevisível afeta o planejamento de plantio e colheita.
+  severity: high
+  solution_hint: Agente de voz AI pode fornecer previsões meteorológicas em tempo
+    real e alertas personalizados.
+- description: Logística ineficiente para transporte de produtos agrícolas, especialmente
+    em regiões remotas.
+  severity: high
+  solution_hint: Agente pode otimizar rotas e agendar transportes integrando-se a
+    sistemas locais.
+- description: Escassez de mão de obra qualificada para operações no campo.
+  severity: medium
+  solution_hint: Automatizar tarefas administrativas e oferecer treinamento via voz
+    para capacitação.
+- description: Cumprimento da LGPD para proteção de dados de clientes e operações.
+  severity: high
+  solution_hint: Agente pode gerenciar consentimentos e garantir conformidade em interações.
+- description: Acesso limitado a informações de mercado sobre preços de commodities.
+  severity: medium
+  solution_hint: Fornecer atualizações de preços e tendências do mercado via chamadas
+    automáticas.
+- description: Gestão ineficiente de recursos hídricos para irrigação.
+  severity: medium
+  solution_hint: Monitorar e controlar sistemas de irrigação através de comandos de
+    voz integrados.
+typical_services:
+- Consultoria agrícola especializada
+- Monitoramento de safras via sensores
+- Gestão de irrigação automatizada
+- Análise de solo e nutrientes
+- Controle de pragas e doenças
+- Logística e transporte de produtos
+- Venda direta ao consumidor
+- Financiamento agrícola e subsídios
+- Treinamento para trabalhadores rurais
+- Certificação de produtos orgânicos
+recommended_functions:
+- name: Resposta a perguntas frequentes sobre LGPD
+  priority: high
+  reason: Essencial para garantir conformidade legal e construir confiança com clientes.
+- name: Agendamento automático de consultas técnicas
+  priority: medium
+  reason: Otimiza o tempo dos agricultores e melhora a eficiência operacional.
+- name: Fornecimento de preços de commodities em tempo real
+  priority: high
+  reason: Ajuda na tomada de decisões de venda e compra, crítico para lucratividade.
+- name: Monitoramento e alertas climáticos
+  priority: medium
+  reason: Reduz riscos relacionados ao clima e melhora o planejamento agrícola.
+- name: Processamento de pedidos via voz
+  priority: low
+  reason: Facilita transações para agricultores com acesso limitado a tecnologia digital.
+- name: Integração com sistemas de gestão agrícola
+  priority: high
+  reason: Permite automação completa e coleta de dados para análise.
+typical_integrations:
+- name: Sistema de Gestão Agrícola
+  examples:
+  - AgriManager
+  - FarmLogs Brasil
+  priority: high
+- name: Plataforma de Comércio Eletrônico
+  examples:
+  - Mercado Livre
+  - Agrofy
+  priority: medium
+- name: Sistema de Logística e Transporte
+  examples:
+  - CargoX
+  - TruckPad
+  priority: medium
+- name: Software de Conformidade LGPD
+  examples:
+  - DataGuard
+  - PrivacyTools
+  priority: high
+industry_faq:
+- question: Como o agente de voz AI ajuda a cumprir a LGPD?
+  answer_template: Nosso agente gerencia automaticamente consentimentos, criptografa
+    dados e fornece relatórios de conformidade, garantindo que todas as interações
+    estejam em conformidade com a LGPD.
+- question: Quais são os custos típicos para implementar automação na agricultura?
+  answer_template: Os custos variam, mas começam a partir de R$ 500 por mês para soluções
+    básicas, com ROI visível em 3-6 meses através de economia de mão de obra e melhorias
+    na produtividade.
+- question: Posso integrar o agente com meu sistema de irrigação existente?
+  answer_template: Sim, nosso agente é compatível com vários sistemas de irrigação
+    locais, permitindo controle por voz e monitoramento em tempo real para otimizar
+    o uso de água.
+- question: Como o agente lida com variações de sinal em áreas rurais?
+  answer_template: Utilizamos tecnologia offline-capable e sincronização periódica
+    para garantir funcionalidade mesmo em regiões com conectividade limitada.
+- question: Quais garantias oferecem para a segurança dos dados?
+  answer_template: Implementamos criptografia de ponta a ponta e auditorias regulares
+    para proteger dados sensíveis, alinhados com as exigências da LGPD.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Entendo sua preocupação com custos. Nossos planos começam em R$ 500
+    por mês, e com isso você pode economizar até R$ 2000 mensais em logística e mão
+    de obra. Gostaria de agendar uma demonstração personalizada para ver como isso
+    se aplica à sua fazenda?
+  goal: Converter a pergunta de preço em uma oportunidade de demonstração, destacando
+    o ROI.
+- trigger: compliance_concern
+  situation: Quando o cliente expressa preocupação com a LGPD.
+  script: Compreendemos a importância da LGPD. Nosso agente é projetado para automatizar
+    a conformidade, com recursos como gerenciamento de consentimentos e relatórios
+    automáticos. Isso não só reduz riscos, mas também economiza tempo em auditorias.
+    Posso explicar mais detalhes?
+  goal: Aliviar preocupações e posicionar o agente como uma solução de conformidade.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente como Agrosmart.
+  script: Agrosmart é uma boa opção, mas nosso diferencial está na integração completa
+    com sistemas locais e suporte em português 24/7 via voz, o que é crucial para
+    decisões rápidas no campo. Além disso, oferecemos planos mais flexíveis em BRL.
+    Que tal compararmos os benefícios específicos para sua operação?
+  goal: Diferenciação baseada em integração e suporte local.
+competitors:
+- name: Agrosmart
+  positioning: Líder em monitoramento de cultivos com IoT.
+  strengths:
+  - Tecnologia avançada de sensores
+  - Parcerias com grandes empresas
+  weaknesses:
+  - Preços elevados
+  - Suporte limitado em áreas rurais
+  our_differentiation: Oferecemos suporte por voz acessível e integração mais ampla
+    com software local.
+- name: Cromai
+  positioning: Especializada em análise de imagens para agricultura.
+  strengths:
+  - Precisão em detecção de pragas
+  - Interface amigável
+  weaknesses:
+  - Dependência de internet de alta velocidade
+  - Foco restrito a análise visual
+  our_differentiation: Funcionalidade offline e automação por voz para operações práticas
+    no campo.
+- name: Strider
+  positioning: Plataforma de gestão agrícola integrada.
+  strengths:
+  - Solução abrangente
+  - Base de usuários grande
+  weaknesses:
+  - Complexidade na implementação
+  - Custos ocultos
+  our_differentiation: Implementação simplificada com agentes de voz e suporte em
+    português nativo.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatização de agendamento e logística para uma fazenda média.
+    monthly_cost: 800
+    monthly_savings: 2500
+    payback_months: 3
+  value_anchors:
+  - Economize até 30% em custos operacionais com automação por voz.
+  - ROI garantido em menos de 6 meses para a maioria dos clientes.
+  - Preços transparentes em BRL, sem taxas ocultas.
+market_context:
+  market_size: Estimado em R$ 10 bilhões para tecnologia agrícola no Brasil.
+  growth_rate: 15% ao ano, impulsionado por adoção de precisão farming.
+  key_trends:
+  - Aumento da agricultura de precisão com drones e IoT.
+  - Crescimento da demanda por produtos orgânicos e sustentáveis.
+  - Integração de LGPD em todas as operações digitais.
+  seasonality:
+    high:
+    - Períodos de plantio (outubro a dezembro)
+    - Épocas de colheita (varia por cultura)
+    low:
+    - Meses de inverno em regiões sul (junho a agosto)
+typical_objections:
+- objection: O custo inicial é muito alto para minha fazenda pequena.
+  response: Entendo. Oferecemos planos escaláveis a partir de R$ 500, e com a economia
+    gerada, o investimento se paga rapidamente. Podemos começar com um teste de 30
+    dias sem compromisso.
+- objection: Não confio em tecnologia de voz para decisões importantes.
+  response: Nosso agente é treinado com dados locais e oferece suporte humano quando
+    necessário. Além disso, muitos agricultores já usam com sucesso—posso compartilhar
+    depoimentos.
+- objection: Já tenho sistemas antigos e a integração parece complicada.
+  response: Fazemos integração personalizada com sistemas comuns no Brasil, e nossa
+    equipe oferece suporte completo. A transição é suave e sem interrupções nas operações.
+meta:
+  id: agriculture
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

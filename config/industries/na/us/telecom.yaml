@@ -1,0 +1,223 @@
+pain_points:
+- description: High customer churn due to intense competition and price sensitivity.
+  severity: high
+  solution_hint: AI voice agent can analyze usage patterns to predict churn and offer
+    personalized retention plans.
+- description: Frequent billing errors and complex invoicing leading to customer disputes.
+  severity: medium
+  solution_hint: AI can automate billing inquiries, explain charges, and resolve discrepancies
+    in real-time.
+- description: Network outages and service reliability issues affecting customer satisfaction.
+  severity: high
+  solution_hint: AI can provide proactive outage notifications, schedule repairs,
+    and offer compensation.
+- description: Compliance burdens with CCPA and HIPAA for data privacy and security.
+  severity: high
+  solution_hint: AI can automate consent management, ensure data handling compliance,
+    and generate audit trails.
+- description: Inefficient customer support with long wait times and high call volumes.
+  severity: medium
+  solution_hint: AI can handle tier-1 support, route calls effectively, and reduce
+    average handling time.
+- description: Difficulty in upselling and cross-selling additional services to existing
+    customers.
+  severity: low
+  solution_hint: AI can analyze customer data to suggest relevant upgrades and promotions
+    during interactions.
+- description: High operational costs from manual processes and legacy systems.
+  severity: medium
+  solution_hint: AI can automate routine tasks like account updates and service activations,
+    cutting costs.
+typical_services:
+- Mobile phone plans
+- Home internet services
+- Cable TV packages
+- Business VoIP solutions
+- Cloud communications
+- Managed network services
+- IoT connectivity
+- Data center services
+- Network security solutions
+- Enterprise broadband
+recommended_functions:
+- name: Automated Billing Support
+  priority: high
+  reason: Reduces disputes and improves customer satisfaction by handling common billing
+    questions.
+- name: Churn Prevention Assistant
+  priority: high
+  reason: Critical for retention in a competitive market by identifying at-risk customers.
+- name: Compliance Monitor
+  priority: high
+  reason: Ensures adherence to CCPA and HIPAA, avoiding legal penalties.
+- name: Network Status Notifier
+  priority: medium
+  reason: Enhances transparency and trust by providing real-time service updates.
+- name: Sales Upsell Agent
+  priority: medium
+  reason: Increases revenue by promoting relevant services based on customer profiles.
+- name: Customer Onboarding Guide
+  priority: low
+  reason: Improves initial experience and reduces support calls for new customers.
+typical_integrations:
+- name: CRM Systems
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Billing Software
+  examples:
+  - Zuora
+  - Aria Systems
+  priority: high
+- name: Customer Support Platforms
+  examples:
+  - Zendesk
+  - Freshdesk
+  priority: medium
+- name: Network Management Tools
+  examples:
+  - Cisco DNA Center
+  - SolarWinds
+  priority: medium
+- name: Data Analytics Platforms
+  examples:
+  - Tableau
+  - Google Analytics
+  priority: low
+industry_faq:
+- question: What are the best mobile plans for families?
+  answer_template: We offer customizable family plans with shared data and unlimited
+    talk and text. Based on your usage, I can recommend options starting at $XX per
+    line.
+- question: How can I lower my internet bill?
+  answer_template: I can review your current plan and suggest promotions or bundle
+    deals with TV or phone services to reduce costs.
+- question: Is my data secure with your services?
+  answer_template: Yes, we comply with CCPA and HIPAA standards, using encryption
+    and secure protocols to protect your information.
+- question: What happens during a network outage?
+  answer_template: We provide real-time updates via our AI agent, and you may be eligible
+    for service credits. I can check the status and estimated repair time.
+- question: Can I upgrade my plan mid-cycle?
+  answer_template: Yes, upgrades are possible with prorated charges. I can assist
+    you in selecting a new plan and explain any fees.
+- question: Do you offer business solutions?
+  answer_template: Absolutely, we provide VoIP, managed networks, and IoT services
+    tailored for businesses. Let me connect you with a specialist.
+sales_scripts:
+- trigger: price_question
+  situation: When a customer asks about pricing for internet services.
+  script: Our home internet plans start at $49.99 per month for basic speeds, with
+    no hidden fees. Would you like me to compare options based on your household usage?
+  goal: Provide clear pricing and engage the customer in a needs-based conversation.
+- trigger: service_inquiry
+  situation: When a customer inquires about mobile plans.
+  script: We have a range of mobile plans from individual to family packages. Tell
+    me about your data needs, and I'll find the best fit, often with perks like streaming
+    subscriptions.
+  goal: Understand customer needs and highlight value-added features.
+- trigger: complaint_handling
+  situation: When a customer reports a billing issue.
+  script: I apologize for the inconvenience. Let me pull up your account and review
+    the charges. I can explain each item and correct any errors immediately.
+  goal: Resolve the issue quickly and restore customer trust.
+- trigger: upgrade_prompt
+  situation: When a customer's contract is nearing renewal.
+  script: I see your plan is expiring soon. We have new promotions, including faster
+    internet or added lines. Upgrading now could save you $20 monthly. Interested?
+  goal: Encourage retention and upsell to higher-margin services.
+competitors:
+- name: AT&T
+  positioning: Major provider with extensive network coverage.
+  strengths:
+  - Broad service portfolio
+  - strong brand recognition
+  - nationwide 5G rollout
+  weaknesses:
+  - Higher prices
+  - customer service complaints
+  - complex billing
+  our_differentiation: Our AI-driven support offers faster resolution and personalized
+    plans at competitive rates.
+- name: Verizon
+  positioning: Premium network reliability and performance.
+  strengths:
+  - High-speed networks
+  - loyal customer base
+  - innovative tech like 5G Ultra Wideband
+  weaknesses:
+  - Expensive plans
+  - limited rural coverage
+  - rigid contracts
+  our_differentiation: We provide flexible, no-contract options with transparent pricing
+    and proactive AI assistance.
+- name: T-Mobile
+  positioning: Value-focused with aggressive pricing.
+  strengths:
+  - Competitive pricing
+  - strong customer growth
+  - inclusive benefits like Netflix
+  weaknesses:
+  - Network coverage gaps in rural areas
+  - occasional service inconsistencies
+  our_differentiation: Our AI optimizes network management for better reliability
+    and offers tailored upsells without hidden fees.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 50
+  - 200
+  entry_point: 49.99
+  roi_examples:
+  - scenario: Automating customer support for a mid-sized telecom firm.
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 4
+  value_anchors:
+  - Reduce customer churn by 15% with AI-driven retention.
+  - Cut operational costs by 20% through automation.
+  - Improve upsell conversion rates by 25% with personalized offers.
+market_context:
+  market_size: Approximately $400 billion annually
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Rapid adoption of 5G technology
+  - Increasing demand for IoT and smart home services
+  - Shift towards streaming and cord-cutting affecting TV services
+  - Growing emphasis on data privacy and compliance
+  seasonality:
+    high:
+    - Back-to-school season
+    - Holiday promotions
+    low:
+    - Post-holiday January
+    - Summer months for some services
+typical_objections:
+- objection: Your prices are too high compared to competitors.
+  response: We offer value through reliable service and AI-powered support that reduces
+    downtime and saves you time. Let me show a cost-benefit analysis.
+- objection: I'm worried about switching providers and losing my number.
+  response: Number porting is seamless with us, and our AI agent can guide you through
+    the process hassle-free, often completed in under an hour.
+- objection: I don't need more services; my current plan is fine.
+  response: I understand. However, our AI can audit your usage to ensure you're not
+    overpaying. For example, you might save with a bundle you didn't know about.
+- objection: AI support sounds impersonal; I prefer human agents.
+  response: Our AI handles routine tasks quickly, freeing human agents for complex
+    issues. You get faster responses and 24/7 availability, with easy escalation if
+    needed.
+meta:
+  id: telecom
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

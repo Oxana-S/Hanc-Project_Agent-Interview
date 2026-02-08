@@ -1,0 +1,208 @@
+pain_points:
+- description: Dificuldade em encontrar e reter educadores qualificados devido à baixa
+    remuneração e alta rotatividade.
+  severity: high
+  solution_hint: O agente de voz AI pode auxiliar no recrutamento automatizado e no
+    agendamento de entrevistas.
+- description: Elevados custos operacionais com aluguer de espaços, utilities e materiais
+    educativos.
+  severity: high
+  solution_hint: Otimizar agendamentos e reduzir desperdícios através de automação.
+- description: Complexidade no cumprimento de regulamentações como GDPR e normas de
+    segurança infantil.
+  severity: high
+  solution_hint: Fornecer lembretes automáticos e checklists para conformidade.
+- description: Comunicação ineficiente com os pais sobre horários, atividades e pagamentos.
+  severity: medium
+  solution_hint: Automatizar notificações e atualizações via voz ou mensagens.
+- description: Dificuldade em gerir reservas e cancelamentos, levando a perdas de
+    receita.
+  severity: medium
+  solution_hint: Implementar um sistema de agendamento inteligente com confirmações
+    automáticas.
+- description: Falta de personalização nos serviços para atender necessidades individuais
+    das crianças.
+  severity: low
+  solution_hint: Usar dados para sugerir atividades adaptadas e melhorar o envolvimento.
+typical_services:
+- Creche (berçário e jardim-de-infância)
+- Babysitting ocasional
+- Atividades extracurriculares (música, desporto)
+- Apoio ao estudo e explicações
+- Campos de férias
+- Transporte escolar
+- Refeições e lanches
+- Workshops para pais
+- Serviços de emergência (cuidados de última hora)
+- Monitorização remota via câmaras (com consentimento)
+recommended_functions:
+- name: Agendamento de reservas e cancelamentos
+  priority: high
+  reason: Reduz perdas de receita e melhora a eficiência operacional.
+- name: Resposta a FAQs sobre horários e preços
+  priority: high
+  reason: Liberta tempo da equipa para tarefas mais críticas.
+- name: Lembretes de pagamento e facturação
+  priority: medium
+  reason: Melhora o fluxo de caixa e reduz inadimplência.
+- name: Triagem de chamadas para emergências
+  priority: medium
+  reason: Garante que situações urgentes são tratadas rapidamente.
+- name: Coleta de feedback dos pais
+  priority: low
+  reason: Ajuda a melhorar serviços com insights valiosos.
+- name: Suporte multilingue para expatriados
+  priority: low
+  reason: Atrai uma clientela diversificada em áreas urbanas.
+typical_integrations:
+- name: Sistemas de gestão ERP
+  examples:
+  - Primavera
+  - SAP
+  priority: high
+- name: Plataformas de pagamento
+  examples:
+  - MB Way
+  - PayPal
+  - Stripe
+  priority: high
+- name: Ferramentas de comunicação
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: medium
+- name: Software de contabilidade
+  examples:
+  - Cegid
+  - Sage
+  priority: medium
+- name: Sistemas de segurança e controlo de acesso
+  examples:
+  - Assa Abloy
+  - local providers
+  priority: low
+industry_faq:
+- question: Quais são os horários de funcionamento da creche?
+  answer_template: A nossa creche funciona das 7h30 às 19h30, de segunda a sexta,
+    com flexibilidade para horários estendidos sob pedido.
+- question: Quanto custa o serviço de babysitting por hora?
+  answer_template: O custo varia entre 8 a 12 EUR por hora, dependendo da experiência
+    do babysitter e do número de crianças.
+- question: Como é garantida a segurança das crianças?
+  answer_template: Seguimos rigorosas normas de segurança, com educadores formados
+    e instalações monitorizadas, em conformidade com o GDPR.
+- question: Oferecem descontos para irmãos?
+  answer_template: Sim, oferecemos um desconto de 10% para o segundo irmão e 15% para
+    o terceiro.
+- question: É possível agendar serviços de última hora?
+  answer_template: Sim, com disponibilidade limitada. Recomendamos reservar com antecedência
+    para garantir vaga.
+- question: Aceitam subsídios estatais ou seguro de saúde?
+  answer_template: Aceitamos subsídios como o Abono de Família e colaboramos com alguns
+    seguros de saúde privados.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um potencial cliente pergunta sobre preços no primeiro contacto.
+  script: Olá! Os nossos preços começam em 300 EUR por mês para creche em tempo parcial,
+    com opções personalizadas. Posso ajudá-lo a encontrar um plano que se ajuste ao
+    seu orçamento?
+  goal: Converter a consulta em uma conversa mais detalhada sobre necessidades.
+- trigger: service_inquiry
+  situation: Quando um cliente mostra interesse em serviços específicos como atividades
+    extracurriculares.
+  script: Oferecemos diversas atividades como música e desporto a partir de 50 EUR
+    por mês. Gostaria de agendar uma visita para conhecer as nossas instalações?
+  goal: Marcar uma visita ou demonstração.
+- trigger: objection_trust
+  situation: Quando um cliente expressa preocupações sobre segurança ou qualidade.
+  script: Entendemos a sua preocupação. Trabalhamos com educadores certificados e
+    temos sistemas de monitorização compatíveis com GDPR. Posso partilhar depoimentos
+    de outros pais?
+  goal: Construir confiança e superar objeções.
+competitors:
+- name: Creche Feliz
+  positioning: Rede nacional com preços acessíveis.
+  strengths:
+  - Ampla rede de locais
+  - preços competitivos
+  weaknesses:
+  - Serviços pouco personalizados
+  - alta rotatividade de staff
+  our_differentiation: Oferecemos automação AI para melhor comunicação e eficiência,
+    reduzindo custos ocultos.
+- name: Babysitters Portugal
+  positioning: Plataforma online para babysitting ocasional.
+  strengths:
+  - Flexibilidade
+  - fácil reserva online
+  weaknesses:
+  - Falta de supervisão contínua
+  - qualidade variável
+  our_differentiation: Fornecemos supervisão profissional e integração com sistemas
+    de gestão para tranquilidade.
+- name: EduKids
+  positioning: Serviços premium com foco em educação personalizada.
+  strengths:
+  - Alta qualidade educativa
+  - baixa ratio criança-educador
+  weaknesses:
+  - Preços elevados
+  - disponibilidade limitada
+  our_differentiation: Combinamos qualidade com automação acessível, otimizando operações
+    para manter preços razoáveis.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 800
+  entry_point: 300
+  roi_examples:
+  - scenario: Redução de 20% no tempo gasto com agendamentos manuais.
+    monthly_cost: 50
+    monthly_savings: 100
+    payback_months: 1
+  value_anchors:
+  - Economize até 10 horas por semana em tarefas administrativas.
+  - Aumente a satisfação dos pais com comunicação proativa.
+  - Cumpra GDPR automaticamente, evitando multas.
+market_context:
+  market_size: Estimado em 500 milhões EUR anuais
+  growth_rate: 3% YoY
+  key_trends:
+  - Aumento da demanda por creches flexíveis devido a horários de trabalho irregulares.
+  - Crescimento de serviços premium com tecnologia integrada.
+  - Maior foco em segurança e privacidade de dados (GDPR).
+  seasonality:
+    high:
+    - Setembro (início do ano escolar)
+    - Junho (fim do ano letivo)
+    low:
+    - Agosto (férias de verão)
+    - Dezembro (festas)
+typical_objections:
+- objection: É muito caro para o meu orçamento.
+  response: Entendo. Oferecemos planos flexíveis e podemos discutir opções como descontos
+    para irmãos ou pagamento faseado. O nosso ROI mostra economia a longo prazo.
+- objection: Prefiro falar com uma pessoa diretamente.
+  response: Claro! O nosso agente AI liberta a nossa equipa para interações mais pessoais
+    quando necessário. Posso conectá-lo agora com um educador?
+- objection: Não confio em tecnologia para cuidar dos meus filhos.
+  response: A tecnologia complementa, não substitui, o cuidado humano. Usamos AI para
+    melhorar eficiência, mantendo supervisão profissional em tudo.
+- objection: Já tenho um sistema em uso, não quero mudar.
+  response: Integramos facilmente com sistemas existentes como Primavera. Podemos
+    fazer uma demonstração sem compromisso para mostrar os benefícios.
+meta:
+  id: childcare
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

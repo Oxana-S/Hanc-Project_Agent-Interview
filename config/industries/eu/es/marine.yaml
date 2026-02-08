@@ -1,0 +1,239 @@
+pain_points:
+- description: Altos costes operativos debido al mantenimiento de embarcaciones y
+    personal.
+  severity: high
+  solution_hint: El agente de voz IA puede optimizar la programación y reducir costes
+    administrativos automatizando tareas.
+- description: Cumplimiento de regulaciones ambientales y de seguridad en el sector
+    marítimo.
+  severity: high
+  solution_hint: IA puede gestionar documentación y enviar recordatorios automáticos
+    para evitar multas.
+- description: Fluctuaciones estacionales de la demanda, con picos en verano y bajas
+    en invierno.
+  severity: medium
+  solution_hint: IA puede manejar reservas dinámicas y ajustar precios en tiempo real
+    para maximizar ingresos.
+- description: Competencia intensa en zonas costeras turísticas, dificultando la diferenciación.
+  severity: medium
+  solution_hint: IA ofrece servicio personalizado y soporte multilingüe para mejorar
+    la fidelización.
+- description: Dificultades en la gestión de inventario de piezas y repuestos, llevando
+    a retrasos.
+  severity: low
+  solution_hint: IA se integra con sistemas de inventario para predecir necesidades
+    y optimizar stock.
+- description: Problemas de comunicación con turistas internacionales debido a barreras
+    lingüísticas.
+  severity: medium
+  solution_hint: IA proporciona traducción automática en llamadas y chats para mejorar
+    la atención.
+- description: Mantenimiento predictivo insuficiente, resultando en averías costosas
+    y tiempo de inactividad.
+  severity: high
+  solution_hint: IA analiza datos operativos para predecir fallos y programar mantenimiento
+    preventivo.
+typical_services:
+- Alquiler de embarcaciones
+- Reparación y mantenimiento de barcos
+- Cursos de navegación y permisos
+- Tours turísticos por mar
+- Venta de embarcaciones nuevas y usadas
+- Seguros marítimos
+- Amarre y almacenamiento en puertos deportivos
+- Catering y eventos a bordo
+- Limpieza y detailing de embarcaciones
+- Asesoramiento legal y fiscal para empresas marítimas
+recommended_functions:
+- name: Gestión de reservas automatizada
+  priority: high
+  reason: Esencial para manejar la alta demanda estacional y reducir errores manuales.
+- name: Soporte al cliente 24/7
+  priority: high
+  reason: Mejora la satisfacción del cliente y permite atender consultas fuera de
+    horario.
+- name: Ventas y upselling integrado
+  priority: medium
+  reason: Aumenta los ingresos promoviendo servicios adicionales durante las interacciones.
+- name: Recordatorios de mantenimiento predictivo
+  priority: medium
+  reason: Reduce costes operativos al prevenir averías y prolongar la vida útil de
+    embarcaciones.
+- name: Traducción automática en tiempo real
+  priority: low
+  reason: Facilita la comunicación con clientes internacionales, ampliando el mercado.
+- name: Análisis de datos de mercado y tendencias
+  priority: medium
+  reason: Proporciona insights para estrategias comerciales basadas en datos locales.
+typical_integrations:
+- name: Sistemas de reserva en línea
+  examples:
+  - Reservamos
+  - Click&Boat
+  - Nautal
+  priority: high
+- name: CRM (Customer Relationship Management)
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Gesmar
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Contasol
+  - Sage
+  - SAP
+  priority: medium
+- name: Sistemas de inventario
+  examples:
+  - StockMaster
+  - InventPro
+  priority: medium
+- name: Plataformas de pagos en línea
+  examples:
+  - Redsys
+  - PayPal
+  - Stripe
+  priority: high
+industry_faq:
+- question: ¿Cuál es el precio para alquilar un barco por un día?
+  answer_template: El precio varía según el tipo de embarcación y temporada. Ofrecemos
+    opciones desde 300 EUR por día. ¿Le interesa alguna embarcación en particular?
+- question: ¿Necesito licencia para alquilar un barco en España?
+  answer_template: Depende del tipo de barco. Para embarcaciones pequeñas, no siempre
+    se requiere, pero le asesoramos sobre los permisos necesarios según la normativa
+    local.
+- question: ¿Qué incluye el servicio de mantenimiento básico?
+  answer_template: Nuestro mantenimiento incluye revisión de motor, limpieza, y verificación
+    de seguridad. Podemos personalizarlo según sus necesidades y presupuesto.
+- question: ¿Ofrecen seguros para actividades marítimas?
+  answer_template: Sí, trabajamos con compañías aseguradoras locales para ofrecer
+    coberturas adaptadas a su embarcación y uso, cumpliendo con GDPR.
+- question: ¿Cómo manejan las cancelaciones por mal tiempo?
+  answer_template: Tenemos políticas flexibles que permiten reprogramar o reembolsar
+    en caso de condiciones climáticas adversas, asegurando su satisfacción.
+- question: ¿Pueden gestionar eventos corporativos a bordo?
+  answer_template: ¡Claro! Organizamos eventos personalizados con catering, entretenimiento,
+    y todo lo necesario para una experiencia única y memorable.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios de alquiler o servicios.
+  script: Hola, gracias por su interés. Nuestros precios comienzan desde 300 EUR y
+    se adaptan a sus necesidades. ¿Para cuántas personas y qué fecha tiene en mente?
+    Podemos ofrecerle opciones personalizadas.
+  goal: Obtener detalles del cliente para proporcionar una cotización precisa y generar
+    interés.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios de mantenimiento o reparación.
+  script: Ofrecemos planes de mantenimiento preventivo que pueden ahorrarle hasta
+    un 20% en costes de reparación. ¿Le gustaría que le envíe más información sobre
+    nuestros paquetes?
+  goal: Promover servicios de valor añadido y cerrar una venta inicial.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor durante la conversación.
+  script: Entendemos que hay opciones, pero nos diferenciamos por nuestro servicio
+    personalizado y soporte 24/7 con IA. ¿Le importa si le cuento más sobre cómo podemos
+    mejorar su eficiencia?
+  goal: Destacar nuestras fortalezas únicas y superar objeciones basadas en la competencia.
+- trigger: booking_assistance
+  situation: Cuando un cliente necesita ayuda para hacer una reserva o consultar disponibilidad.
+  script: Puedo ayudarle a reservar en línea ahora mismo. Solo necesito algunos detalles
+    como fecha, número de personas, y tipo de embarcación. ¿Empezamos?
+  goal: Facilitar la reserva de manera rápida y convertir la consulta en una venta
+    confirmada.
+competitors:
+- name: Nautalia
+  positioning: Líder en alquiler de embarcaciones en la Costa del Sol y Baleares.
+  strengths:
+  - Amplia flota de embarcaciones
+  - Presencia en múltiples puertos deportivos
+  - Precios competitivos en temporada alta
+  weaknesses:
+  - Servicio al cliente limitado a horarios restringidos
+  - Poca personalización en servicios adicionales
+  our_differentiation: Ofrecemos soporte integral con IA 24/7 y soluciones personalizadas
+    que optimizan costes operativos.
+- name: Marinsa
+  positioning: Especialista en reparación y mantenimiento de barcos con talleres en
+    puertos clave.
+  strengths:
+  - Técnicos certificados y experiencia local
+  - Repuestos originales y garantía extendida
+  - Enfoque en calidad y durabilidad
+  weaknesses:
+  - Altos precios comparativos
+  - Tiempos de espera largos para citas
+  our_differentiation: Utilizamos IA para mantenimiento predictivo, reduciendo tiempos
+    de espera y costes mediante la automatización.
+- name: Barcos España
+  positioning: Plataforma online líder para venta y alquiler de embarcaciones en España.
+  strengths:
+  - Interfaz fácil de usar y amplio catálogo
+  - Reviews de clientes y transparencia en precios
+  - Alcance nacional a través de marketing digital
+  weaknesses:
+  - Comisiones altas para vendedores y arrendadores
+  - Soporte al cliente limitado a canales online
+  our_differentiation: Proporcionamos integración completa con servicios de valor
+    añadido y atención personalizada mediante agentes de voz IA.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Implementación de IA para automatización de reservas en una empresa
+      de alquiler.
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta un 30% en costes operativos con la automatización IA
+  - Mejore la satisfacción del cliente en un 40% con soporte 24/7
+  - Reduzca el tiempo de inactividad de embarcaciones mediante mantenimiento predictivo
+market_context:
+  market_size: Estimado en 2 mil millones EUR anuales en el sector marítimo español
+  growth_rate: 5% anual
+  key_trends:
+  - Aumento del turismo náutico y experiencias personalizadas
+  - Digitalización acelerada de servicios marítimos para mejorar la eficiencia
+  - Enfoque creciente en sostenibilidad y adopción de energías renovables en embarcaciones
+  seasonality:
+    high:
+    - Junio a septiembre
+    - Semana Santa y puentes festivos
+    low:
+    - Noviembre a febrero
+typical_objections:
+- objection: Es demasiado caro para mi negocio en este momento.
+  response: Entiendo su preocupación. Nuestra solución de IA está diseñada para ahorrarle
+    dinero a largo plazo, con un ROI rápido. ¿Podemos analizar su caso específico
+    para mostrar los ahorros potenciales?
+- objection: Ya tengo un sistema de gestión que funciona bien.
+  response: ¡Genial! Nuestra IA se integra fácilmente con sistemas existentes para
+    mejorar la eficiencia y reducir costes adicionales, sin interrumpir su operación
+    actual.
+- objection: No estoy seguro de cómo implementar IA en mi empresa marítima.
+  response: Nos encargamos de todo el proceso, desde la instalación hasta la formación
+    de su equipo. Hacemos que la transición sea sencilla y sin interrupciones, adaptándonos
+    a sus necesidades.
+- objection: Prefiero el contacto humano directo con mis clientes.
+  response: Nuestra IA complementa el contacto humano, liberando a su personal para
+    tareas más valiosas y mejorando la experiencia del cliente con respuestas inmediatas
+    y precisas.
+meta:
+  id: marine
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

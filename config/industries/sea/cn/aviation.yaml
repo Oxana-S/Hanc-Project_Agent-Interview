@@ -1,0 +1,212 @@
+pain_points:
+- description: 运营成本高昂，包括燃油、维护和人力费用。
+  severity: high
+  solution_hint: AI语音代理可以自动化日常查询和预订，减少人工客服成本。
+- description: 航班延误和取消时，客户服务响应不及时，导致投诉增多。
+  severity: high
+  solution_hint: AI语音代理可实时提供航班状态更新和处理退款请求，提高响应速度。
+- description: 多语言支持不足，国际航班客户体验差。
+  severity: medium
+  solution_hint: AI语音代理支持多语言自动翻译，改善国际客户沟通。
+- description: 票务预订系统复杂，用户操作不便。
+  severity: medium
+  solution_hint: AI语音代理简化预订流程，通过语音交互快速完成订票。
+- description: 安全合规监控繁琐，需人工审核大量数据。
+  severity: high
+  solution_hint: AI语音代理集成PIPL合规检查，自动监控和报告数据隐私问题。
+- description: 行李追踪信息不透明，客户焦虑增加。
+  severity: low
+  solution_hint: AI语音代理提供实时行李位置查询，增强客户信任。
+- description: 员工培训成本高，服务标准不一。
+  severity: medium
+  solution_hint: AI语音代理作为标准化培训工具，确保服务一致性。
+typical_services:
+- 航班预订服务
+- 行李托运与追踪
+- 机上餐饮预订
+- 贵宾休息室预约
+- 航班状态查询
+- 退改签处理
+- 里程积分管理
+- 机场接送安排
+- 旅游套餐销售
+- 紧急援助服务
+recommended_functions:
+- name: 自动预订助手
+  priority: high
+  reason: 简化客户订票流程，提高转化率。
+- name: 多语言客户支持
+  priority: high
+  reason: 覆盖国际客户，提升全球服务能力。
+- name: PIPL合规检查
+  priority: high
+  reason: 确保数据隐私合规，避免法律风险。
+- name: 实时航班信息播报
+  priority: medium
+  reason: 减少客户等待时间，增强满意度。
+- name: 智能投诉处理
+  priority: medium
+  reason: 快速响应客户问题，降低负面评价。
+- name: 个性化营销推荐
+  priority: low
+  reason: 基于客户历史数据，提升交叉销售机会。
+- name: 员工培训模拟
+  priority: low
+  reason: 降低成本，标准化服务流程。
+typical_integrations:
+- name: 预订系统
+  examples:
+  - 携程系统
+  - 飞猪平台
+  - 航空公司自有系统
+  priority: high
+- name: 客户关系管理(CRM)
+  examples:
+  - 销售易
+  - 用友CRM
+  - 金蝶
+  priority: high
+- name: 企业资源规划(ERP)
+  examples:
+  - SAP
+  - Oracle
+  - 本地化ERP解决方案
+  priority: medium
+- name: 机场运营系统
+  examples:
+  - 智能机场平台
+  - 空管系统接口
+  priority: medium
+- name: 支付网关
+  examples:
+  - 支付宝
+  - 微信支付
+  - 银联
+  priority: high
+- name: 数据分析工具
+  examples:
+  - 阿里云数据分析
+  - 腾讯云智能
+  priority: low
+industry_faq:
+- question: 如何查询航班实时状态？
+  answer_template: 您可以通过我们的AI语音代理提供航班号，我将为您实时查询最新状态。
+- question: 行李丢失怎么办？
+  answer_template: 请提供行李标签号，AI代理将立即启动追踪流程并通知您进展。
+- question: 退票需要多长时间处理？
+  answer_template: 退票通常需3-5个工作日，AI代理可加快处理，具体时间取决于支付方式。
+- question: 国际航班需要哪些证件？
+  answer_template: AI代理会根据目的地为您列出所需证件清单，如护照和签证要求。
+- question: 如何累积里程积分？
+  answer_template: 通过我们的语音代理预订航班或服务，即可自动累积积分到您的账户。
+- question: 航班延误有补偿吗？
+  answer_template: 根据航空公司政策，AI代理可协助您申请延误补偿，请提供航班详情。
+- question: 如何预订特殊餐食？
+  answer_template: 在预订时告知AI代理您的饮食需求，我们将为您安排合适的餐食选项。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问AI语音代理服务的价格时。
+  script: 我们的AI语音代理服务起价每月5000 CNY，可根据您的业务规模定制方案，帮助您节省高达30%的客服成本。
+  goal: 突出成本效益，引导进一步讨论。
+- trigger: efficiency_concern
+  situation: 当客户担心当前运营效率低下时。
+  script: 通过集成AI语音代理，您可以自动化处理80%的常规查询，将响应时间从分钟级降至秒级，提升客户满意度。
+  goal: 展示效率提升，建立信任。
+- trigger: compliance_worry
+  situation: 当客户提及PIPL合规压力时。
+  script: 我们的AI代理内置PIPL合规模块，自动加密和处理个人数据，确保您的业务完全合规，减少法律风险。
+  goal: 解决合规担忧，强调安全性。
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手的服务时。
+  script: 相比其他方案，我们的AI代理提供更深度的本地化集成，如支付宝和微信支付支持，并拥有更高的多语言准确率。
+  goal: 差异化优势，说服客户选择我们。
+- trigger: implementation_time
+  situation: 当客户担心实施时间过长时。
+  script: 标准实施周期为2-4周，我们提供全程技术支持，确保快速上线，不影响您的日常运营。
+  goal: 减轻顾虑，促进签约。
+competitors:
+- name: 阿里巴巴云智能客服
+  positioning: 大型科技公司提供的通用AI客服解决方案。
+  strengths:
+  - 强大的云基础设施
+  - 广泛的生态系统集成
+  - 品牌知名度高
+  weaknesses:
+  - 定制化程度低
+  - 航空行业专业知识有限
+  - 成本较高
+  our_differentiation: 我们专注于航空行业，提供深度定制和PIPL合规保障，性价比更高。
+- name: 腾讯企点
+  positioning: 基于社交平台的客户服务工具。
+  strengths:
+  - 与微信生态无缝连接
+  - 用户基数大
+  - 易于部署
+  weaknesses:
+  - 功能相对基础
+  - 不适合复杂航空流程
+  - 数据隐私控制弱
+  our_differentiation: 我们提供端到端的航空专用功能，如行李追踪和航班调度，确保数据安全。
+- name: 本地初创公司如智航科技
+  positioning: 新兴的航空科技服务商。
+  strengths:
+  - 行业聚焦
+  - 灵活定制
+  - 价格竞争性强
+  weaknesses:
+  - 技术成熟度低
+  - 支持资源有限
+  - 市场覆盖小
+  our_differentiation: 我们结合国际最佳实践和本地经验，提供稳定可靠的全天候支持，降低风险。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 10000
+  - 100000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 中型航空公司自动化客户服务
+    monthly_cost: 20000
+    monthly_savings: 60000
+    payback_months: 4
+  value_anchors:
+  - AI代理可减少50%的人工客服成本
+  - 提升客户满意度评分20%
+  - PIPL合规零风险保障
+market_context:
+  market_size: 约1000亿CNY
+  growth_rate: 10% YoY
+  key_trends:
+  - 数字化转型加速
+  - 智能机场建设
+  - 绿色航空倡议
+  - 跨境旅游复苏
+  seasonality:
+    high:
+    - 春节
+    - 国庆节
+    - 暑假
+    low:
+    - 冬季淡季
+    - 工作日非高峰
+typical_objections:
+- objection: AI语音代理会不会取代人工工作，导致员工失业？
+  response: AI代理旨在辅助员工处理重复任务，让他们专注于高价值服务，提升整体团队效率。
+- objection: 实施过程太复杂，担心影响现有系统。
+  response: 我们提供无缝集成方案和专业技术支持，确保平滑过渡，最小化业务中断。
+- objection: 成本太高，看不到即时回报。
+  response: 基于我们的ROI案例，AI代理通常在几个月内回本，长期节省显著，投资回报率高。
+meta:
+  id: aviation
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

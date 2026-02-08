@@ -1,0 +1,200 @@
+pain_points:
+- description: Begrenzte öffentliche Fördermittel und hoher bürokratischer Aufwand für Anträge.
+  severity: high
+  solution_hint: KI-Sprachagent kann Antragsfristen verwalten, Formularhilfe geben und Erinnerungen setzen.
+- description: Schwierigkeiten bei der Besuchergewinnung und -bindung, besonders bei jüngerem Publikum.
+  severity: high
+  solution_hint: Automatisierte Besucherkommunikation, Personalisierung und Event-Einladungen via Telefon.
+- description: Komplexe Abrechnung und Ticketing mit verschiedenen Preiskategorien und Rabattsystemen.
+  severity: medium
+  solution_hint: Sprachgesteuerte Ticketauskunft, Buchung und Zahlungsabwicklung automatisieren.
+- description: Mangelnde Digitalisierung in der Verwaltung und im Mitgliedermanagement.
+  severity: medium
+  solution_hint: KI-Agent übernimmt Terminvereinbarungen, Mitgliederanfragen und Datenpflege per Sprache.
+- description: Hoher Personalaufwand für telefonische Auskünfte zu Öffnungszeiten, Programmen und Preisen.
+  severity: medium
+  solution_hint: 24/7 Sprachassistent beantwortet Standardfragen und entlastet das Personal.
+- description: Geringe Sichtbarkeit kleinerer Kulturinstitutionen neben großen staatlichen Einrichtungen.
+  severity: medium
+  solution_hint: Proaktive Outbound-Anrufe zur Veranstaltungsbewerbung und Partnersuche automatisieren.
+typical_services:
+- Veranstaltungsorganisation und -durchführung
+- Ausstellungskuration und -management
+- Kulturvermittlung und Bildungsprogramme
+- Fundraising und Sponsoringakquise
+- Mitgliederverwaltung und -betreuung
+- Ticketverkauf und Kassenmanagement
+- Presse- und Öffentlichkeitsarbeit
+- Projektmanagement für Förderanträge
+- Vermietung von Räumlichkeiten
+- Museums- und Galeriemanagement
+recommended_functions:
+- name: Automatisierter Ticketverkauf und Buchungsbestätigung
+  priority: high
+  reason: Reduziert Personalaufwand und ermöglicht 24/7 Umsatz.
+- name: Intelligente Besucherbefragung und Feedback-Sammlung
+  priority: medium
+  reason: Wertvolle Daten für Programmoptimierung ohne manuelle Arbeit.
+- name: Förderantrags-Assistent mit Fristenmanagement
+  priority: high
+  reason: Existentiell für viele Kulturprojekte in Österreich.
+- name: Mehrsprachiger Informationsservice für Touristen
+  priority: medium
+  reason: Wichtig für touristische Regionen wie Wien, Salzburg, Tirol.
+- name: Spenden- und Mitgliederakquise per Outbound-Anruf
+  priority: medium
+  reason: Steigert langfristige Finanzierungssicherheit.
+- name: Integration in Veranstaltungskalender und Social Media
+  priority: low
+  reason: Erhöht Reichweite und Besucherzahlen.
+typical_integrations:
+- name: Ticketing-Systeme
+  examples:
+  - Oeticket
+  - Eventim
+  - local.box
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Vivent
+  - Salesforce
+  - eigene Lösungen
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - SAP
+  - BMD
+  priority: medium
+- name: Kalender- und Planungstools
+  examples:
+  - Google Workspace
+  - Microsoft 365
+  priority: low
+- name: Öffentliche Förderportale
+  examples:
+  - Kunst- und Kulturförderung des Bundes
+  - Landesportale
+  priority: high
+industry_faq:
+- question: Wie kann ein KI-Sprachagent meinem kleinen Museum helfen?
+  answer_template: Unser Agent übernimmt telefonische Auskünfte zu Öffnungszeiten und Eintrittspreisen, bucht Gruppenführungen und kann sogar Spendenanfragen bearbeiten. So gewinnen Sie Zeit für die inhaltliche
+    Arbeit.
+- question: Ist die Lösung DSGVO-konform für Österreich?
+  answer_template: Ja, alle Systeme hosten wir in der EU, Datenverarbeitung erfolgt vollständig DSGVO-konform. Wir bieten einen österreichischen Datenschutzvertrag an.
+- question: Wie hoch sind die monatlichen Kosten?
+  answer_template: Die Kosten beginnen bei €149/Monat für Basis-Funktionen wie Besucherauskunft. Ein individuelles Paket mit Ticketing und Fundraising erstellen wir gerne nach Ihren Bedürfnissen.
+- question: Brauche ich technisches Wissen für die Einrichtung?
+  answer_template: Nein, wir übernehmen die komplette Einrichtung und Schulung. Sie müssen nur Ihre häufigsten Besucherfragen und Prozesse mit uns besprechen.
+- question: Kann der Agent auch Dialekt verstehen?
+  answer_template: Unser System ist auf österreichisches Deutsch und gängige Dialekte trainiert. Bei sehr speziellen Dialekten bieten wir ein individuelles Training an.
+- question: Wie schnell ist die Agent nach der Bestellung einsatzbereit?
+  answer_template: Standard-Implementationen sind in 2-3 Werktagen betriebsbereit. Komplexere Integrationen benötigen 1-2 Wochen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach den Kosten fragt.
+  script: Die Investition beginnt bei €149 pro Monat für einen Basis-Agent. Damit automatisieren Sie bereits die häufigsten Besucheranfragen. Für ein auf Ihr Haus zugeschnittenes Paket mit Ticketing und
+    Förder-Management liegen die Kosten typischerweise zwischen €299 und €599 monatlich. Möchten Sie eine detaillierte Kosten-Nutzen-Rechnung für Ihre Institution sehen?
+  goal: Transparente Preisinformation mit Upsell-Möglichkeit bieten und zu konkretem Angebot überleiten.
+- trigger: objection_tech_skeptic
+  situation: Wenn ein Kunde Bedenken zur Technologie hat.
+  script: Das verstehe ich gut. Viele Kulturinstitutionen starten vorsichtig. Wir beginnen oft mit einem einfachen Informationsagenten, der nur Ihre Öffnungszeiten und Preise kennt. So können Sie testen,
+    wie Ihre Besucher reagieren. Der Agent lernt mit und wird nach Bedarf erweitert. Darf ich Ihnen zwei Referenzen aus österreichischen Museen nennen?
+  goal: Ängste nehmen durch schrittweisen Ansatz und sozialen Beweis.
+- trigger: competitor_mentioned
+  situation: Wenn der Kunde einen Mitbewerber nennt.
+  script: 'Ja, [Competitor Name] ist bekannt. Unser Fokus liegt speziell auf österreichischen Kulturinstitutionen. Wir haben vorgefertigte Templates für Förderanträge des Bundes und der Länder, Support
+    in österreichischem Deutsch und Integrationen zu heimischen Systemen wie Oeticket. Unser größter Vorteil: Wir bieten eine monatliche Kündigungsfrist, kein Jahresvertrag. Passt das besser zu Ihrer oft
+    projektbasierten Finanzierung?'
+  goal: Lokale Expertise und flexible Vertragsbedingungen als Differenzierung hervorheben.
+competitors:
+- name: Deutsche Standardlösungen (z.B. aus Deutschland)
+  positioning: Große, generalistische Anbieter
+  strengths:
+  - Breites Funktionsportfolio
+  - Internationale Erfahrung
+  weaknesses:
+  - Hohe Kosten
+  - Kaum Österreich-spezifische Features
+  - Lange Vertragslaufzeiten
+  our_differentiation: Auf österreichische Förderlandschaft und Dialekte spezialisiert, monatlich kündbar, lokaler Support.
+- name: Kleine lokale IT-Dienstleister
+  positioning: Individuelle Einzellösungen
+  strengths:
+  - Sehr individuelle Anpassung
+  - Persönlicher Kontakt
+  weaknesses:
+  - Höhere Kosten für Entwicklung
+  - Längere Implementierung
+  - Begrenzte KI-Expertise
+  our_differentiation: Sofort einsatzbereite, skalierbare KI-Lösung mit professionellem Sprachmodell zu vorhersehbaren Kosten.
+- name: All-in-One Eventmanagement-Plattformen
+  positioning: Ticketing und Event-Hosting
+  strengths:
+  - Starke Ticketing-Funktionen
+  - Bekannte Marke
+  weaknesses:
+  - Schwache telefonische KI
+  - Kaum Verwaltungsautomatisierung
+  - Teure Transaktionsgebühren
+  our_differentiation: Wir automatisieren den gesamten telefonischen Kundenkontakt und die Verwaltung, nicht nur Ticketing.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 1500
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleines Museum automatisiert telefonische Auskünfte und Gruppenbuchungen.
+    monthly_cost: 299
+    monthly_savings: 450
+    payback_months: 1
+  - scenario: Kulturverein automatisiert Mitgliedereinwurf und Spendenakquise.
+    monthly_cost: 449
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Die Kosten entsprechen ca. 3-5 Stunden Fachpersonalzeit.
+  - Ein erfolgreich automatisierter Förderantrag finanziert den Agent für Jahre.
+  - 24/7 Erreichbarkeit für internationale Touristen ohne Personalmehraufwand.
+market_context:
+  market_size: Ca. 5.000 potenzielle Kunden (Museen, Galerien, Vereine, Veranstalter)
+  growth_rate: 3-5% p.a., beschleunigt durch Digitalisierungsdruck
+  key_trends:
+  - Stärkere Fokussierung auf Besuchererlebnis und Personalisierung
+  - Wachsendes Interesse an barrierefreien Angeboten, auch digital
+  - Zunehmender Wettbewerb um private Fördergelder und Sponsoren
+  - Nachholbedarf bei Digitalisierung nach der Pandemie
+  seasonality:
+    high:
+    - Sommer (Tourismus)
+    - Advent- und Weihnachtszeit
+    - Festivalsaison (Frühjahr-Herbst)
+    low:
+    - Januar
+    - November (außer Beginn Advent)
+typical_objections:
+- objection: Das ist zu teuer für unser schmales Budget.
+  response: Ich verstehe das. Viele beginnen mit unserem Basis-Paket für €149. Das spart bereits eine halbe Personalstelle ein. Oder wir rechnen gemeinsam durch, wie viel Zeit Ihr Team aktuell für Telefonate
+    und Verwaltung aufwendet – oft ist die Ersparnis höher als die Kosten.
+- objection: Unsere Besucher möchten mit einem Menschen sprechen.
+  response: Absolut, und das sollen sie auch. Unser Agent entlastet Ihr Personal von Standardfragen. Bei komplexen Anliegen leitet er sofort zum Mitarbeiter weiter. So gewinnen Ihre Mitarbeiter Zeit für
+    qualitative Gespräche mit den Besuchern vor Ort.
+- objection: Wir haben schon ein Online-Ticketsystem.
+  response: Perfekt! Unser Agent kann direkt darauf zugreifen. Viele Besucher rufen aber trotzdem an, um Details zu erfragen oder haben Probleme mit der Online-Buchung. Der Agent löst diese Anrufe und entlastet
+    so Ihre Hotline. Möchten Sie sehen, wie die Integration funktioniert?
+meta:
+  id: art_culture
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- art
+- culture
+- museum
+- gallery
+- theater
+_extends: _base/art_culture

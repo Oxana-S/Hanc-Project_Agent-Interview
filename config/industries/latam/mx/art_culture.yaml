@@ -1,0 +1,225 @@
+pain_points:
+- description: Baja visibilidad y dificultad para atraer público a eventos y exposiciones.
+  severity: high
+  solution_hint: El agente de voz puede automatizar promociones y recordatorios para
+    aumentar la asistencia.
+- description: Gestión manual de reservas y venta de entradas, lo que causa errores
+    y pérdida de tiempo.
+  severity: high
+  solution_hint: Implementar un sistema automatizado de reservas que maneje pagos
+    y confirmaciones.
+- description: Falta de financiamiento y recursos limitados para mantener operaciones
+    y proyectos culturales.
+  severity: medium
+  solution_hint: El agente puede ayudar en la captación de donaciones y gestión de
+    membresías.
+- description: Dificultad en la promoción de artistas locales y eventos en redes sociales.
+  severity: medium
+  solution_hint: Integrar el agente con plataformas sociales para difusión automática
+    y participación.
+- description: Administración ineficiente del inventario de obras de arte, llevando
+    a pérdidas o daños.
+  severity: medium
+  solution_hint: Usar el agente para registrar y monitorear inventario con recordatorios
+    de mantenimiento.
+- description: Desafíos en el cumplimiento de la LFPDPPP para la protección de datos
+    de visitantes.
+  severity: low
+  solution_hint: Configurar el agente para manejar datos de forma segura y proporcionar
+    consentimientos claros.
+- description: Escasez de personal capacitado para atención al cliente durante horas
+    pico.
+  severity: low
+  solution_hint: El agente de voz puede ofrecer soporte 24/7 para consultas comunes
+    y reservas.
+typical_services:
+- Exposiciones de arte contemporáneo
+- Talleres de arte y cultura para todas las edades
+- Venta de obras de arte y artesanías locales
+- Gestión de galerías y espacios culturales
+- Organización de festivales culturales y eventos comunitarios
+- Tours guiados en museos y sitios históricos
+- Restauración y conservación de patrimonio artístico
+- Producción de eventos culturales y conciertos
+- Asesoría en proyectos de patrimonio cultural
+- Promoción y representación de artistas mexicanos
+recommended_functions:
+- name: Reserva y venta de entradas automatizada
+  priority: high
+  reason: Reduce errores manuales y aumenta la eficiencia en la gestión de eventos.
+- name: Atención al cliente 24/7 para consultas frecuentes
+  priority: high
+  reason: Mejora la experiencia del visitante y libera personal para tareas críticas.
+- name: Recordatorios personalizados de eventos y promociones
+  priority: medium
+  reason: Incrementa la asistencia y fidelización mediante comunicación proactiva.
+- name: Procesamiento de pagos y donaciones en línea
+  priority: medium
+  reason: Facilita transacciones seguras y apoya la sostenibilidad financiera.
+- name: Integración con redes sociales para difusión automática
+  priority: low
+  reason: Amplía el alcance de marketing con mínimo esfuerzo manual.
+- name: Gestión de inventario y seguimiento de obras de arte
+  priority: low
+  reason: Previene pérdidas y optimiza la logística de exposiciones.
+typical_integrations:
+- name: Sistemas de punto de venta
+  examples:
+  - MiPunto
+  - SICAFI
+  priority: high
+- name: Plataformas de reservas y boletos
+  examples:
+  - Ticketmaster MX
+  - Boletia
+  priority: high
+- name: Sistemas de gestión de inventario
+  examples:
+  - ArtBase
+  - CulturaSoft
+  priority: medium
+- name: Redes sociales
+  examples:
+  - Facebook
+  - Instagram
+  - Twitter
+  priority: medium
+- name: CRM y marketing
+  examples:
+  - Zoho CRM
+  - Salesforce adaptado para Latam
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los horarios de apertura de su galería?
+  answer_template: Nuestra galería está abierta de martes a domingo, de 10:00 a 18:00
+    horas. Para horarios especiales en eventos, consulte nuestra página web.
+- question: ¿Cómo puedo reservar entradas para una exposición?
+  answer_template: Puede reservar entradas a través de nuestro agente de voz, sitio
+    web o llamando al número proporcionado. Ofrecemos opciones en línea para su comodidad.
+- question: ¿Ofrecen descuentos para grupos o estudiantes?
+  answer_template: Sí, ofrecemos descuentos para grupos de más de 10 personas y estudiantes
+    con identificación válida. Póngase en contacto para más detalles.
+- question: ¿Qué exposiciones están disponibles actualmente?
+  answer_template: Actualmente, tenemos exposiciones de arte moderno mexicano y talleres
+    interactivos. Visite nuestro sitio para la lista completa y fechas.
+- question: ¿Cómo puedo donar o apoyar su institución cultural?
+  answer_template: Agradecemos su apoyo. Puede donar a través de nuestro agente de
+    voz, sitio web o visitando nuestra sede. Todas las donaciones son deducibles de
+    impuestos.
+- question: ¿Tienen opciones para eventos privados o corporativos?
+  answer_template: Sí, ofrecemos alquiler de espacios para eventos privados. Contáctenos
+    para personalizar paquetes según sus necesidades.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de servicios o entradas.
+  script: Hola, nuestros precios varían según el servicio. Por ejemplo, las entradas
+    individuales comienzan en 50 MXN, y ofrecemos paquetes grupales desde 200 MXN.
+    ¿Le interesa algún evento en particular?
+  goal: Proporcionar claridad de precios y guiar hacia una venta.
+- trigger: service_inquiry
+  situation: Cuando un cliente busca información sobre servicios específicos como
+    talleres o exposiciones.
+  script: Gracias por su interés. Ofrecemos talleres de arte desde 100 MXN por sesión
+    y exposiciones con entrada general de 80 MXN. ¿Prefiere algo educativo o cultural?
+  goal: Identificar necesidades y recomendar servicios adecuados.
+- trigger: objection_handling
+  situation: Cuando un cliente expresa preocupación por el precio o la utilidad.
+  script: Entiendo su preocupación. Nuestros servicios no solo ofrecen entretenimiento,
+    sino que también apoyan a artistas locales y preservan la cultura. Con nuestro
+    agente, puede ahorrar hasta un 20% en gestión manual.
+  goal: Superar objeciones y destacar el valor agregado.
+- trigger: follow_up
+  situation: Después de una consulta inicial para cerrar una venta o reserva.
+  script: Hola, le seguimos contactando sobre su interés en nuestros eventos. ¿Le
+    gustaría reservar ahora o prefiere más información? Ofrecemos descuentos por reserva
+    anticipada.
+  goal: Fomentar la acción y convertir consultas en ventas.
+competitors:
+- name: Galerías de arte independientes en Ciudad de México
+  positioning: Enfoque en arte local y nicho, con precios accesibles.
+  strengths:
+  - Conexión comunitaria fuerte
+  - Precios competitivos
+  weaknesses:
+  - Recursos limitados
+  - Falta de automatización
+  our_differentiation: Ofrecemos soluciones tecnológicas integradas que mejoran la
+    eficiencia y alcance.
+- name: Museos nacionales como el Museo Nacional de Arte
+  positioning: Instituciones establecidas con gran patrimonio y financiamiento público.
+  strengths:
+  - Amplia colección
+  - Reconocimiento internacional
+  weaknesses:
+  - Burocracia lenta
+  - Menos personalización
+  our_differentiation: Proporcionamos atención personalizada y herramientas digitales
+    para una experiencia más ágil.
+- name: Plataformas en línea como Boletia para eventos culturales
+  positioning: Servicios de ticketing y promoción digital para diversos eventos.
+  strengths:
+  - Alcance amplio
+  - Facilidad de uso
+  weaknesses:
+  - Tarifas por transacción
+  - Soplimitado para necesidades específicas del arte
+  our_differentiation: Integramos gestión completa, desde reservas hasta promoción,
+    con enfoque en el sector arte y cultura.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatización de venta de entradas para un evento mensual
+    monthly_cost: 1000
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Gestión de atención al cliente para una galería pequeña
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta un 30% en costos operativos con automatización.
+  - Incremente la asistencia a eventos en un 20% con promociones inteligentes.
+  - Cumpla fácilmente con la LFPDPPP para protección de datos.
+market_context:
+  market_size: Estimado en 10 mil millones MXN anuales en México
+  growth_rate: 5% anual
+  key_trends:
+  - Aumento en la digitalización de experiencias culturales
+  - Crecimiento del turismo cultural en regiones como Yucatán y Oaxaca
+  - Mayor interés en arte local y sostenible
+  seasonality:
+    high:
+    - Diciembre (festividades)
+    - Julio-Agosto (vacaciones)
+    low:
+    - Enero-Febrero (post-festividades)
+    - Septiembre (temporada escolar)
+typical_objections:
+- objection: Es muy caro para mi presupuesto.
+  response: Entiendo, pero nuestros servicios pueden ahorrarle dinero a largo plazo
+    al reducir costos manuales. Ofrecemos planes flexibles desde 500 MXN.
+- objection: No confío en la tecnología para manejar reservas.
+  response: Nuestro agente está diseñado para ser seguro y fácil de usar, con soporte
+    humano disponible. Cumplimos con la LFPDPPP para su tranquilidad.
+- objection: Prefiero el contacto humano directo.
+  response: Nuestra solución complementa al personal, no lo reemplaza. Le permite
+    enfocarse en interacciones más valiosas mientras automatizamos tareas rutinarias.
+meta:
+  id: art_culture
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

@@ -1,0 +1,226 @@
+pain_points:
+- description: Custos elevados com vigilância 24 horas e seguranças físicos.
+  severity: high
+  solution_hint: Automatizar monitoramento com IA para reduzir dependência de pessoal.
+- description: Integração complexa entre câmeras, alarmes e sistemas de controle de
+    acesso.
+  severity: medium
+  solution_hint: Agente de voz pode centralizar comandos e alertas.
+- description: Desafios em garantir conformidade com a LGPD no tratamento de dados
+    de vigilância.
+  severity: high
+  solution_hint: IA pode ajudar a automatizar anonimização e relatórios de conformidade.
+- description: Monitoramento ineficiente devido à grande quantidade de falsos alarmes.
+  severity: medium
+  solution_hint: Agente de IA pode filtrar e priorizar alertas baseados em padrões.
+- description: Dificuldade em escalar sistemas de segurança para múltiplas localidades.
+  severity: medium
+  solution_hint: Soluções baseadas em nuvem e IA permitem gestão centralizada.
+- description: Vandalismo e roubo de equipamentos de segurança.
+  severity: low
+  solution_hint: Sistemas com monitoramento remoto e alertas em tempo real.
+- description: Falta de treinamento adequado para operadores de segurança.
+  severity: medium
+  solution_hint: IA pode fornecer suporte e guias interativos para equipes.
+typical_services:
+- Instalação de câmeras de vigilância CFTV
+- Monitoramento remoto 24 horas por dia
+- Sistemas de alarme contra invasão
+- Controle de acesso com cartões ou biometria
+- Consultoria em segurança eletrônica
+- Manutenção preventiva e corretiva de equipamentos
+- Integração de sistemas de segurança com automação
+- Auditoria e conformidade LGPD para dados de segurança
+- Segurança perimetral com sensores e cercas elétricas
+- Soluções de nuvem para armazenamento de vídeos
+recommended_functions:
+- name: Agendamento de Manutenção
+  priority: high
+  reason: Reduz tempo de inatividade e garante funcionamento contínuo.
+- name: Resposta a Alertas de Segurança
+  priority: high
+  reason: Permite ação imediata em caso de emergências.
+- name: Relatórios de Conformidade LGPD
+  priority: medium
+  reason: Automatiza a geração de relatórios exigidos por lei.
+- name: Integração com Sistemas Existentes
+  priority: medium
+  reason: Facilita a comunicação entre diferentes plataformas de segurança.
+- name: Suporte ao Cliente 24/7
+  priority: high
+  reason: Oferece assistência constante sem custos adicionais de pessoal.
+- name: Treinamento Interativo para Operadores
+  priority: low
+  reason: Melhora a eficiência da equipe através de guias em tempo real.
+typical_integrations:
+- name: Sistemas de CFTV
+  examples:
+  - Intelbras
+  - Hikvision
+  - Dahua
+  priority: high
+- name: Sistemas de Alarme
+  examples:
+  - Alarme Total
+  - Tectoy
+  - JFL
+  priority: high
+- name: Software de Gestão de Segurança
+  examples:
+  - Genetec
+  - Milestone
+  - ISS SecurOS
+  priority: medium
+- name: Plataformas de Nuvem
+  examples:
+  - AWS
+  - Google Cloud
+  - Azure
+  priority: medium
+- name: Sistemas de Controle de Acesso
+  examples:
+  - Suprema
+  - ZKTeco
+  - HID Global
+  priority: medium
+industry_faq:
+- question: Como garantir que meu sistema de segurança está em conformidade com a
+    LGPD?
+  answer_template: Nossas soluções incluem recursos de anonimização de dados e relatórios
+    automáticos para ajudar na conformidade com a LGPD.
+- question: Qual é o custo médio de um sistema de segurança para uma pequena empresa?
+  answer_template: Os custos variam, mas soluções básicas começam a partir de R$ 500
+    por mês, dependendo dos serviços incluídos.
+- question: Posso integrar câmeras de diferentes marcas no mesmo sistema?
+  answer_template: Sim, oferecemos integração com múltiplas marcas através de protocolos
+    padrão do setor.
+- question: Como funciona o monitoramento remoto 24/7?
+  answer_template: Nossos centros de monitoramento utilizam IA para analisar feeds
+    em tempo real e acionar respostas quando necessário.
+- question: Quais são as opções de armazenamento de vídeos?
+  answer_template: Oferecemos armazenamento local em DVRs/NVRs ou na nuvem, com planos
+    flexíveis de retenção.
+- question: Como posso escalar meu sistema de segurança para múltiplas filiais?
+  answer_template: Nossas soluções em nuvem permitem gerenciar todas as localidades
+    de forma centralizada e escalável.
+sales_scripts:
+- trigger: price_inquiry
+  situation: Quando o cliente pergunta sobre preços
+  script: Olá! Oferecemos soluções personalizadas. Para uma pequena empresa, os planos
+    começam em R$ 300 por mês. Posso ajudá-lo a escolher o melhor pacote?
+  goal: Engajar o cliente e agendar uma demonstração.
+- trigger: lgpd_concern
+  situation: Cliente expressa preocupação com conformidade LGPD
+  script: Entendemos sua preocupação. Nossos sistemas são projetados para cumprir
+    a LGPD, com recursos de privacidade incorporados. Podemos agendar uma consultoria
+    para detalhar.
+  goal: Aliviar objeções e destacar conformidade.
+- trigger: integration_question
+  situation: Cliente pergunta sobre integração com sistemas existentes
+  script: Trabalhamos com as principais marcas do mercado. Podemos integrar suas câmeras
+    e alarmes atuais sem problemas. Vamos analisar sua configuração atual?
+  goal: Mostrar flexibilidade e facilitar a transição.
+- trigger: demo_request
+  situation: Cliente solicita uma demonstração
+  script: Perfeito! Agendaremos uma demonstração online para mostrar como nossa IA
+    pode melhorar sua segurança. Em qual horário você prefere?
+  goal: Concretizar o interesse e agendar reunião.
+competitors:
+- name: Intelbras
+  positioning: Líder em eletrônicos e segurança no Brasil
+  strengths:
+  - Ampla rede de distribuição
+  - Reconhecimento de marca
+  - Produtos acessíveis
+  weaknesses:
+  - Foco em hardware, menos em serviços
+  - Integração limitada com terceiros
+  our_differentiation: Soluções baseadas em IA e serviços de monitoramento proativo.
+- name: Tectoy Security
+  positioning: Especializada em alarmes e monitoramento
+  strengths:
+  - Experiência no mercado brasileiro
+  - Planos de monitoramento competitivos
+  weaknesses:
+  - Tecnologia menos atualizada
+  - Pouca integração com IA
+  our_differentiation: Uso avançado de IA para redução de falsos alarmes e eficiência.
+- name: Hikvision Brasil
+  positioning: Fabricante global de CFTV com presença local
+  strengths:
+  - Tecnologia de ponta
+  - Preços competitivos
+  weaknesses:
+  - Foco em venda de equipamentos
+  - Suporte local limitado
+  our_differentiation: Serviços completos com suporte local e conformidade LGPD.
+- name: Alarme Total
+  positioning: Rede de franquias de segurança residencial
+  strengths:
+  - Presença nacional
+  - Serviço personalizado
+  weaknesses:
+  - Modelo baseado em franquias, consistência variada
+  - Menos foco em comercial
+  our_differentiation: Soluções escaláveis para empresas com integração de IA.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Redução de custos com vigilância humana para uma loja de médio porte
+    monthly_cost: 800
+    monthly_savings: 1200
+    payback_months: 2
+  - scenario: Implementação de sistema de controle de acesso para escritório
+    monthly_cost: 500
+    monthly_savings: 800
+    payback_months: 1.5
+  value_anchors:
+  - Proteja seu negócio com tecnologia de ponta a partir de R$ 300/mês
+  - Atenda à LGPD sem complicações
+  - Reduza falsos alarmes em até 80% com IA
+market_context:
+  market_size: Estimado em R$ 15 bilhões em 2023
+  growth_rate: 10% ao ano
+  key_trends:
+  - Aumento da adoção de IA na segurança
+  - Crescimento da segurança baseada em nuvem
+  - Maior foco em conformidade com LGPD
+  - Expansão do mercado residencial
+  seasonality:
+    high:
+    - Fim de ano (novembro a janeiro)
+    - Períodos de férias escolares
+    low:
+    - Carnaval
+    - Meados do ano (junho a agosto)
+typical_objections:
+- objection: É muito caro para minha empresa.
+  response: Entendemos. Nossas soluções são escaláveis e podem começar com um investimento
+    baixo. Vamos analisar um plano que se adapte ao seu orçamento?
+- objection: Já tenho um sistema, não quero mudar.
+  response: Perfeito! Podemos integrar com seu sistema atual para melhorar a eficiência
+    sem substituir tudo. Vamos ver como?
+- objection: Não confio em segurança baseada em nuvem.
+  response: Nossos servidores são seguros e em conformidade com LGPD. Oferecemos opções
+    híbridas para maior controle.
+- objection: A IA pode substituir humanos completamente?
+  response: A IA complementa a segurança humana, aumentando a eficiência e reduzindo
+    custos, mas mantemos o suporte humano quando necessário.
+meta:
+  id: security
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

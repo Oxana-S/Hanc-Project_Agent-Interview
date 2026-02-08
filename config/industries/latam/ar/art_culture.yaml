@@ -1,0 +1,234 @@
+pain_points:
+- description: Falta de financiamiento público y privado para proyectos culturales
+    y artísticos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar solicitudes de subvenciones y
+    gestionar donaciones.
+- description: Dificultad para llegar a audiencias más amplias y diversificar el público.
+  severity: medium
+  solution_hint: Programar promociones y manejar consultas de eventos para aumentar
+    la visibilidad.
+- description: Alta carga administrativa en la gestión de eventos, como reservas y
+    pagos.
+  severity: high
+  solution_hint: Automatizar reservas, confirmaciones y procesamiento de pagos para
+    reducir tareas manuales.
+- description: Inestabilidad económica y fluctuaciones cambiarias que afectan los
+    presupuestos.
+  severity: high
+  solution_hint: Ofrecer soluciones de costo fijo en ARS para mejorar la previsibilidad
+    financiera.
+- description: Competencia intensa con otras instituciones culturales y eventos masivos.
+  severity: medium
+  solution_hint: Personalizar interacciones con clientes para fidelizar y destacar
+    ofertas únicas.
+- description: Limitaciones en la promoción digital debido a falta de recursos tecnológicos.
+  severity: medium
+  solution_hint: Integrar con redes sociales y enviar recordatorios automáticos para
+    marketing.
+- description: Complejidad en la coordinación de artistas, proveedores y voluntarios.
+  severity: low
+  solution_hint: Coordinar agendas y enviar notificaciones automatizadas para mejorar
+    la logística.
+typical_services:
+- Exposiciones de arte contemporáneo
+- Talleres culturales y educativos
+- Venta de obras de arte y artesanías
+- Organización de eventos culturales y festivales
+- Gestión de galerías y museos
+- Producción de espectáculos teatrales y musicales
+- Servicios de curaduría y asesoría artística
+- Alquiler de espacios para eventos culturales
+- Programas de membresía y suscripciones
+- Turismo cultural y visitas guiadas
+recommended_functions:
+- name: Manejo de reservas y venta de entradas
+  priority: high
+  reason: Esencial para gestionar eventos y optimizar ingresos en un mercado con alta
+    demanda estacional.
+- name: Atención al cliente y consultas frecuentes
+  priority: high
+  reason: Mejora la experiencia del usuario y reduce la carga del personal en horarios
+    pico.
+- name: Procesamiento de pagos en ARS
+  priority: high
+  reason: Facilita transacciones locales y mitiga riesgos cambiarios en Argentina.
+- name: Promoción y marketing automatizado
+  priority: medium
+  reason: Ayuda a llegar a audiencias más amplias en un contexto competitivo.
+- name: Gestión de inventario de obras y productos
+  priority: medium
+  reason: Optimiza la logística para galerías y ventas, reduciendo errores manuales.
+- name: Coordinación de agendas y recordatorios
+  priority: low
+  reason: Apoya en la organización de eventos y talleres, mejorando la eficiencia
+    operativa.
+typical_integrations:
+- name: Sistemas de venta de entradas
+  examples:
+  - Ticketek Argentina
+  - TuEntrada
+  - AllAccess
+  priority: high
+- name: Software de gestión de relaciones con clientes (CRM)
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - sistemas locales como Sirena
+  priority: medium
+- name: Plataformas de pago electrónico
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - Modo
+  priority: high
+- name: Herramientas de marketing digital
+  examples:
+  - Mailchimp
+  - Hootsuite
+  - plataformas locales como SocialPubli
+  priority: medium
+- name: Software contable y financiero
+  examples:
+  - Tango Gestión
+  - Sistemas SAP localizados
+  - Xero adaptado
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo reservar entradas para una exposición?
+  answer_template: Puede reservar entradas a través de nuestro agente de voz, que
+    le guiará en la selección de fechas y opciones de pago en ARS.
+- question: ¿Ofrecen descuentos para grupos o estudiantes?
+  answer_template: Sí, ofrecemos descuentos para grupos y estudiantes. Nuestro agente
+    puede ayudarle a aplicar promociones al momento de la reserva.
+- question: ¿Cuál es la política de cancelación para eventos?
+  answer_template: Nuestra política permite cancelaciones con hasta 48 horas de anticipación
+    para reembolsos. El agente de voz puede gestionar este proceso automáticamente.
+- question: ¿Puedo pagar con tarjetas de crédito internacionales?
+  answer_template: Aceptamos tarjetas de crédito internacionales, pero las transacciones
+    se procesan en ARS. El agente le asistirá con las conversiones si es necesario.
+- question: ¿Cómo me puedo enterar de nuevos eventos culturales?
+  answer_template: Puede suscribirse a nuestra lista de correo a través del agente
+    de voz para recibir actualizaciones y ofertas exclusivas.
+- question: ¿Ofrecen servicios para empresas o eventos privados?
+  answer_template: Sí, organizamos eventos personalizados. Nuestro agente puede coordinar
+    una consulta para discutir opciones y presupuestos en ARS.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de servicios de gestión de
+    eventos.
+  script: Hola, entiendo que está interesado en nuestros servicios. Ofrecemos soluciones
+    desde ARS 50.000 mensuales, que incluyen automatización de reservas y atención
+    al cliente. ¿Le gustaría que le detalle cómo esto puede ahorrarle tiempo y aumentar
+    sus ingresos?
+  goal: Presentar el precio de entrada y destacar el valor para superar objeciones
+    de costo.
+- trigger: interest_in_service
+  situation: Cuando un cliente muestra interés en talleres culturales pero duda por
+    la logística.
+  script: Me alegra que esté considerando nuestros talleres. Nuestro agente de voz
+    puede manejar inscripciones, recordatorios y pagos, reduciendo su carga administrativa.
+    ¿Podría contarme más sobre sus necesidades específicas?
+  goal: Personalizar la oferta y demostrar eficiencia operativa.
+- trigger: competitor_mention
+  situation: Cuando un cliente compara con otras soluciones locales.
+  script: Comprendo que hay opciones en el mercado. Nos diferenciamos al ofrecer integración
+    con sistemas como Mercado Pago y Ticketek, adaptado al contexto argentino con
+    soporte en español 24/7. ¿Le interesa una demostración?
+  goal: Destacar ventajas competitivas y adaptación local.
+- trigger: budget_constraint
+  situation: Cuando un cliente expresa limitaciones presupuestarias.
+  script: Entiendo las preocupaciones presupuestarias. Ofrecemos planes escalables,
+    y con nuestro ROI típico, puede recuperar la inversión en pocos meses gracias
+    a la automatización. ¿Puedo compartir un ejemplo concreto?
+  goal: Justificar la inversión con ejemplos de retorno.
+competitors:
+- name: CulturaTech Argentina
+  positioning: Proveedor local de software para gestión cultural
+  strengths:
+  - Conocimiento profundo del mercado argentino
+  - Precios competitivos en ARS
+  weaknesses:
+  - Soporte limitado fuera de horario laboral
+  - Integraciones menos flexibles
+  our_differentiation: Ofrecemos agente de voz con IA avanzada y soporte 24/7, mejor
+    adaptado para interacciones en tiempo real.
+- name: ArteDigital Latam
+  positioning: Plataforma regional para promoción de arte
+  strengths:
+  - Amplia red en Latinoamérica
+  - Herramientas de marketing robustas
+  weaknesses:
+  - Enfoque menos personalizado para Argentina
+  - Costos más altos debido a tarifas regionales
+  our_differentiation: Soluciones localizadas en ARS con funciones específicas para
+    el contexto económico argentino.
+- name: EventosPro
+  positioning: Servicio de gestión de eventos general en Argentina
+  strengths:
+  - Experiencia en logística de eventos
+  - Clientela diversa
+  weaknesses:
+  - Falta de especialización en arte y cultura
+  - Tecnología menos actualizada
+  our_differentiation: Especialización en arte_cultura con integraciones nativas para
+    ticketing y pagos locales.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 100000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Galería de arte que automatiza ventas y reservas
+    monthly_cost: 70000
+    monthly_savings: 150000
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 20 horas mensuales en tareas administrativas con nuestra automatización.
+  - Incremente sus ingresos en un 30% mediante mejor gestión de clientes y promociones.
+  - Soluciones en ARS sin sorpresas cambiarias, ideales para la economía local.
+market_context:
+  market_size: Estimado en 10 mil millones de ARS anuales
+  growth_rate: 5% año tras año
+  key_trends:
+  - Aumento de la digitalización en la promoción cultural
+  - Creciente interés en turismo cultural post-pandemia
+  - Expansión de mercados de arte en línea
+  seasonality:
+    high:
+    - Marzo a mayo (temporada de festivales)
+    - Septiembre a noviembre (eventos de fin de año)
+    low:
+    - Enero a febrero (vacaciones de verano)
+    - Julio (receso invernal)
+typical_objections:
+- objection: Es demasiado caro para mi pequeño negocio cultural.
+  response: Entiendo, pero nuestros planes escalables comienzan en ARS 50.000 y pueden
+    ahorrarle costos operativos significativos. ¿Podría considerar el retorno de inversión
+    a largo plazo?
+- objection: Prefiero manejar las reservas manualmente, como siempre.
+  response: Comprendo la tradición, pero la automatización puede liberar tiempo para
+    enfocarse en la creatividad. ¿Le gustaría ver cómo otros en Argentina han optimizado
+    sus procesos?
+- objection: No confío en la tecnología para interacciones con clientes.
+  response: Nuestro agente de voz está diseñado para ser amigable y confiable, con
+    soporte humano de respaldo. Podemos ofrecer una prueba gratuita para que lo experimente.
+- objection: Ya uso otro software y no quiero cambiar.
+  response: Nuestras integraciones flexibles permiten conectar con sistemas existentes.
+    ¿Podríamos evaluar cómo complementar su actual setup para mejorar la eficiencia?
+meta:
+  id: art_culture
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

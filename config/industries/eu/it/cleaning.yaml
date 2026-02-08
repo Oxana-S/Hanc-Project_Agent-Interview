@@ -1,0 +1,211 @@
+pain_points:
+- description: Difficoltà nel trovare personale affidabile e qualificato per le pulizie, con alta rotazione del personale.
+  severity: high
+  solution_hint: L'agente vocale può pre-screening dei candidati, programmare colloqui e rispondere alle domande frequenti sul lavoro 24/7.
+- description: Gestione inefficiente degli orari e degli appuntamenti, che porta a sovrapposizioni o clienti insoddisfatti.
+  severity: high
+  solution_hint: Integrazione del sistema di pianificazione per prenotazioni automatiche, conferme e promemoria via SMS/telefono.
+- description: Comunicazione lenta con i clienti per cambi di programma, richieste speciali o reclami.
+  severity: medium
+  solution_hint: Agente vocale che gestisce le richieste in tempo reale, inoltra i messaggi urgenti e fornisce aggiornamenti automatici.
+- description: Incertezza sui prezzi e difficoltà nel fornire preventivi rapidi e chiari ai potenziali clienti.
+  severity: medium
+  solution_hint: Agente vocale che calcola preventivi basati su metri quadrati, tipo di pulizia e frequenza, utilizzando un tariffario preimpostato.
+- description: Rispetto del GDPR nella gestione dei dati dei clienti e del personale, con rischi di sanzioni.
+  severity: high
+  solution_hint: Implementare procedure vocali automatizzate per la raccolta e gestione del consenso, e per l'accesso sicuro alle informazioni.
+- description: Basso tasso di fidelizzazione dei clienti a causa di servizi standardizzati e poca personalizzazione.
+  severity: medium
+  solution_hint: Agente vocale che raccoglie feedback post-servizio, ricorda le preferenze del cliente e promuove offerte personalizzate.
+- description: Perdita di tempo nella fatturazione e nel follow-up per i pagamenti.
+  severity: low
+  solution_hint: Integrazione con software di fatturazione per inviare promemoria di pagamento automatici via voce e messaggio.
+typical_services:
+- Pulizia domestica settimanale
+- Pulizie approfondite (spring cleaning)
+- Pulizia di uffici
+- Pulizia post-costruzione
+- Sanificazione ambientale
+- Lavaggio di vetri e finestre
+- Pulizia di tappeti e moquette
+- Pulizia di divani e poltrone
+- Pulizia di condizionatori
+- Servizio di lavanderia a gettone (per condomini)
+recommended_functions:
+- name: Prenotazione e scheduling intelligente
+  priority: high
+  reason: Riduce gli errori umani, massimizza l'utilizzo del personale e migliora la soddisfazione del cliente con conferme immediate.
+- name: Calcolo e invio preventivi vocali
+  priority: high
+  reason: Accelera il processo di vendita, fornisce trasparenza e cattura clienti al momento dell'interesse.
+- name: Gestione reclami e richieste
+  priority: medium
+  reason: Risolve problemi rapidamente, dimostra attenzione al cliente e raccoglie dati per migliorare il servizio.
+- name: Ricerca e pre-screening personale
+  priority: medium
+  reason: Riduce il carico amministrativo per l'assunzione e trova candidati più rapidamente.
+- name: Promemoria pagamenti e fatturazione
+  priority: low
+  reason: Migliora il cash flow riducendo i ritardi nei pagamenti con promemoria automatici.
+- name: Raccolta feedback post-servizio
+  priority: medium
+  reason: Migliora la qualità del servizio e fidelizza i clienti mostrando che il loro parere conta.
+typical_integrations:
+- name: Software di scheduling e gestione servizi
+  examples:
+  - Firmao
+  - TeamSystem
+  - MioDottore (per professionisti)
+  priority: high
+- name: Piattaforme di pagamento online
+  examples:
+  - Satispay
+  - PayPal
+  - Nexi
+  priority: medium
+- name: Software di fatturazione elettronica
+  examples:
+  - Aruba
+  - Sistema Fatturazione di TeamSystem
+  - DocFly
+  priority: high
+- name: App di messaggistica
+  examples:
+  - WhatsApp Business API
+  - Telegram
+  priority: medium
+- name: Portali di annunci di lavoro
+  examples:
+  - Indeed
+  - Subito.it
+  - InfoJobs
+  priority: low
+industry_faq:
+- question: Quanto costa una pulizia domestica?
+  answer_template: Il costo dipende dalla metratura, dalla tipologia di pulizia e dalla frequenza. Per una stima precisa, posso calcolare un preventivo in base alle sue esigenze. In genere, partiamo da
+    circa 15-20€ l'ora.
+- question: Siete assicurati per danni?
+  answer_template: Sì, la nostra azienda è coperta da una polizza RC professionale completa. Possiamo fornire i dettagli della copertura su richiesta.
+- question: Fornite i prodotti per le pulizie?
+  answer_template: Normalmente sì, utilizziamo prodotti professionali ecologici e sicuri. Se preferisce usare i suoi prodotti, possiamo organizzarci.
+- question: Posso cambiare l'orario dell'appuntamento?
+  answer_template: Certamente, può modificare o cancellare l'appuntamento senza costi fino a 24 ore prima. Posso aiutarla a trovare un nuovo orario.
+- question: Come gestite i miei dati personali?
+  answer_template: Rispettiamo rigorosamente il GDPR. I suoi dati sono utilizzati solo per fornire il servizio e non sono condivisi con terzi senza il suo consenso.
+- question: Offrite servizi di sanificazione?
+  answer_template: Sì, offriamo servizi di sanificazione certificati con prodotti virucidi autorizzati dal Ministero della Salute.
+- question: Cosa succede se non sono soddisfatto della pulizia?
+  answer_template: La sua soddisfazione è garantita. Se non è contento, riprendiamo la pulizia a nostre spese. Ci contatti entro 24 ore dal servizio.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui prezzi.
+  script: 'Grazie per il suo interesse. Per darle un preventivo accurato, mi servono alcune informazioni: di che tipo di immobile si tratta (casa, ufficio)? Qual è la metratura approssimativa? E desidera
+    una pulizia standard o approfondita? In base a questo, posso calcolare subito una stima.'
+  goal: Raccogliere informazioni per un preventivo personalizzato e dimostrare trasparenza.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente.
+  script: 'Capisco. Rispetto ad altri servizi, noi ci distinguiamo per l''uso di tecnologia che garantisce puntualità e comunicazione immediata. Inoltre, offriamo una garanzia di soddisfazione: se non è
+    contento, ripuliamo gratis. Possiamo anche personalizzare il servizio in base alle sue esigenze specifiche.'
+  goal: Evidenziare il nostro valore aggiunto tecnologico e la flessibilità.
+- trigger: hesitation_budget
+  situation: Quando il cliente esita per il prezzo.
+  script: Capisco che il budget sia una considerazione importante. Tuttavia, consideri che il nostro servizio le fa risparmiare tempo e stress. Inoltre, con i nostri pacchetti regolari, può ottenere uno
+    sconto del 10%. Un servizio professionale può anche prolungare la vita dei suoi mobili e superfici, risparmiando sui costi di sostituzione a lungo termine. Posso mostrarle alcune opzioni più economiche?
+  goal: Trasformare il costo in un investimento, offrire flessibilità e proporre un pacchetto entry-level.
+- trigger: request_reference
+  situation: Quando il cliente chiede referenze o recensioni.
+  script: Certamente. Abbiamo recensioni verificate su Google e Trustpilot che può consultare. Inoltre, possiamo metterla in contatto con alcuni clienti nella sua zona (con il loro permesso) per una testimonianza
+    diretta. La qualità del nostro servizio è confermata da un tasso di fidelizzazione superiore al 85%.
+  goal: Costruire fiducia attraverso prove sociali e dati concreti.
+competitors:
+- name: Helpling
+  positioning: Piattaforma online nazionale per prenotazione di pulizie domestiche.
+  strengths:
+  - Brand riconosciuto
+  - Facilità di prenotazione online
+  - Copertura nazionale
+  weaknesses:
+  - Prezzi più alti
+  - Minore personalizzazione
+  - Rotazione frequente delle collaboratrici
+  our_differentiation: Più attenzione alla relazione con il cliente, tecnologia vocale per supporto immediato, personale più stabile e formato.
+- name: Domestic Cleaning (rete locale di franchise)
+  positioning: Franchising presente in varie città con gestione semi-autonoma.
+  strengths:
+  - Presenza locale
+  - Contatto diretto con il titolare
+  - Alcuni franchise offrono buona qualità
+  weaknesses:
+  - Qualità non uniforme tra franchise
+  - Tecnologia spesso obsoleta
+  - Limitata scalabilità
+  our_differentiation: Qualità del servizio standardizzata e garantita, piattaforma tecnologica centralizzata ed efficiente, supporto 24/7.
+- name: Piccole imprese locali (idraulico/tuttofare che offre pulizie)
+  positioning: Artigiani locali che offrono pulizie come servizio aggiuntivo.
+  strengths:
+  - Prezzi molto bassi
+  - Rapporto di fiducia diretto
+  - Flessibilità estrema
+  weaknesses:
+  - Poco professionali
+  - Nessuna garanzia o assicurazione
+  - Disponibilità limitata
+  our_differentiation: Professionalità, assicurazione, uso di prodotti e attrezzature professionali, affidabilità negli orari.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 65
+  roi_examples:
+  - scenario: Ufficio di 150m² con pulizia bisettimanale
+    monthly_cost: 320
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Risparmia 10 ore al mese di tempo libero.
+  - Garanzia di soddisfazione al 100% o ripuliamo gratis.
+  - Prezzi chiari, senza costi nascosti.
+market_context:
+  market_size: Circa 4 miliardi di EUR annui (dati pre-Covid)
+  growth_rate: 3-5% YoY, trainato dalla maggiore attenzione all'igiene post-pandemia
+  key_trends:
+  - Domanda crescente per servizi di sanificazione e igienizzazione.
+  - Aumento delle prenotazioni online e via app.
+  - Richiesta di prodotti ecologici e sostenibili.
+  - Crescita del segmento 'pulizie per anziani'.
+  seasonality:
+    high:
+    - Settembre (post-ferie)
+    - Aprile (prima delle feste pasquali)
+    - Dicembre (pre-natale)
+    low:
+    - Agosto (ferie estive)
+    - Metà gennaio - febbraio
+typical_objections:
+- objection: Lo faccio da solo/a, mi costa meno.
+  response: Capisco, ma il tempo è denaro. Con il nostro servizio, lei guadagna ore da dedicare al lavoro, alla famiglia o al relax. Inoltre, noi usiamo prodotti professionali che puliscono più a fondo
+    e proteggono le superfici, risparmiando sui costi di manutenzione a lungo termine.
+- objection: Ho già una persona di fiducia.
+  response: È ottimo aver trovato qualcuno di fidato. Noi possiamo essere un valido backup per quando la sua persona non è disponibile, o per quei servizi più impegnativi come le pulizie approfondite o
+    la sanificazione. Offriamo anche flessibilità e garanzia.
+- objection: Ho provato un servizio di pulizie una volta ed è stato deludente.
+  response: 'Mi dispiace sentirlo. La nostra azienda si basa proprio sull''affidabilità. Usiamo checklist dettagliate, controlli qualità e, soprattutto, una garanzia di soddisfazione: se non è contento,
+    non paga. Possiamo iniziare con un servizio di prova a tariffa ridotta?'
+- objection: È troppo complicato organizzarsi con gli orari.
+  response: Con il nostro sistema, è semplicissimo. Può prenotare, modificare o cancellare via telefono o messaggio 24 ore su 24. Le inviamo promemoria automatici e il nostro personale è puntuale. Proviamo
+    a trovare uno slot fisso che si adatti alla sua routine?
+meta:
+  id: cleaning
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

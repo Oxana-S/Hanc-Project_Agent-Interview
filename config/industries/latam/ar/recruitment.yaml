@@ -1,0 +1,232 @@
+pain_points:
+- description: Alta rotación de personal en industrias específicas como tecnología
+    y ventas, lo que incrementa costos de reclutamiento.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar el seguimiento con candidatos
+    para mejorar la retención y reducir tiempos de contratación.
+- description: Dificultad para encontrar candidatos calificados debido a la brecha
+    de habilidades en el mercado laboral argentino.
+  severity: high
+  solution_hint: El agente puede usar filtros inteligentes para identificar candidatos
+    con habilidades específicas y contactarlos de manera proactiva.
+- description: Procesos manuales y burocráticos que ralentizan la selección, como
+    verificación de antecedentes y entrevistas iniciales.
+  severity: medium
+  solution_hint: Automatizar tareas repetitivas como programación de entrevistas y
+    preguntas frecuentes para agilizar el proceso.
+- description: Altos costos de publicidad en portales de empleo locales como Bumeran
+    o ZonaJobs.
+  severity: medium
+  solution_hint: Reducir dependencia de anuncios pagados usando el agente para captar
+    candidatos a través de llamadas directas y redes sociales.
+- description: Falta de seguimiento efectivo con candidatos después de la contratación,
+    afectando la experiencia del empleado.
+  severity: low
+  solution_hint: Implementar recordatorios automatizados para check-ins post-contratación
+    y mejorar la comunicación.
+- description: Competencia intensa con agencias de reclutamiento tradicionales que
+    ofrecen servicios personalizados pero caros.
+  severity: medium
+  solution_hint: Ofrecer soluciones asequibles y escalables con AI que reduzcan costos
+    y mantengan la calidad del servicio.
+typical_services:
+- Reclutamiento y selección de personal
+- Headhunting para posiciones ejecutivas
+- Outsourcing de nómina y administración
+- Evaluación psicotécnica y de competencias
+- Capacitación y desarrollo organizacional
+- Consultoría en gestión del talento
+- Reclutamiento masivo para temporadas altas
+- Servicios de employer branding
+- Reclutamiento en redes sociales (LinkedIn, Facebook)
+- Gestión de bases de datos de candidatos
+recommended_functions:
+- name: Programación automática de entrevistas
+  priority: high
+  reason: Reduce el tiempo manual en coordinación y mejora la experiencia del candidato
+    en Argentina, donde la puntualidad es valorada.
+- name: Filtrado inicial de candidatos por habilidades
+  priority: high
+  reason: Ayuda a manejar grandes volúmenes de aplicaciones comunes en portales locales,
+    identificando rápidamente a los más calificados.
+- name: Recordatorios de seguimiento post-entrevista
+  priority: medium
+  reason: Mejora la comunicación y retención de candidatos en un mercado con alta
+    competencia por talento.
+- name: Respuestas a preguntas frecuentes sobre vacantes
+  priority: low
+  reason: Libera tiempo del equipo de recursos humanos para tareas más estratégicas,
+    común en empresas argentinas con recursos limitados.
+- name: Captación proactiva de candidatos mediante llamadas
+  priority: medium
+  reason: Efectivo en regiones con menor penetración digital, complementando métodos
+    tradicionales de reclutamiento.
+- name: Generación de reportes de métricas de reclutamiento
+  priority: low
+  reason: Proporciona insights para optimizar procesos, alineado con la creciente
+    tendencia de data-driven HR en Argentina.
+typical_integrations:
+- name: Sistemas de gestión de recursos humanos (HRMS)
+  examples:
+  - Tango Gestión
+  - SAP HR
+  - Oracle HCM Cloud
+  priority: high
+- name: Portales de empleo locales
+  examples:
+  - Bumeran
+  - ZonaJobs
+  - Computrabajo
+  priority: high
+- name: Herramientas de evaluación en línea
+  examples:
+  - TestGroup Argentina
+  - Mercer
+  priority: medium
+- name: Software de nómina y contabilidad
+  examples:
+  - Sistemas locales como Gestionable
+  - o internacionales como ADP
+  priority: medium
+- name: Plataformas de comunicación
+  examples:
+  - WhatsApp Business
+  - Zoom
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: ¿Cuánto tiempo tarda normalmente un proceso de reclutamiento en Argentina?
+  answer_template: En Argentina, el tiempo promedio varía entre 2 a 4 semanas para
+    posiciones junior, y hasta 8 semanas para roles ejecutivos, dependiendo de la
+    industria y la disponibilidad de candidatos.
+- question: ¿Qué costos asociados tiene el reclutamiento con agencias tradicionales?
+  answer_template: Las agencias tradicionales suelen cobrar entre el 15% y 30% del
+    salario anual del candidato, lo que puede representar un gasto significativo para
+    las empresas.
+- question: ¿Cómo puedo reducir la rotación de personal en mi empresa?
+  answer_template: Implementar procesos de onboarding efectivos y seguimiento continuo,
+    junto con herramientas de AI para mejorar la comunicación y retención.
+- question: ¿Es común el uso de AI en reclutamiento en Argentina?
+  answer_template: Sí, está creciendo, especialmente en grandes ciudades como Buenos
+    Aires, para automatizar tareas repetitivas y mejorar la eficiencia.
+- question: ¿Qué legislación laboral debo considerar al reclutar en Argentina?
+  answer_template: Es clave cumplir con la Ley de Contrato de Trabajo y regulaciones
+    locales, como aportes a la seguridad social, para evitar sanciones.
+- question: ¿Cómo manejan la confidencialidad de los datos de candidatos?
+  answer_template: Utilizamos protocolos de seguridad avanzados y cumplimos con normativas
+    locales de protección de datos para garantizar la privacidad.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo del servicio de reclutamiento
+    con AI.
+  script: Hola, entiendo que el costo es una preocupación. Nuestro servicio de AI
+    comienza desde ARS 50.000 mensuales, mucho más bajo que las agencias tradicionales
+    que cobran porcentajes altos. ¿Le gustaría ver un ejemplo de ahorro específico
+    para su empresa?
+  goal: Demostrar el valor económico y convencer al cliente de solicitar una demostración.
+- trigger: efficiency_concern
+  situation: Cuando un cliente expresa que su proceso de reclutamiento es lento y
+    manual.
+  script: Comprendo que los procesos manuales ralentizan todo. Nuestro agente de voz
+    AI puede reducir el tiempo de contratación en hasta un 40% automatizando entrevistas
+    iniciales. ¿Podría contarme más sobre sus desafíos actuales?
+  goal: Identificar puntos de dolor y ofrecer una solución personalizada.
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona a un competidor como Bumeran o agencias locales.
+  script: Sí, conozco esos servicios. A diferencia de ellos, nuestro AI ofrece contacto
+    personalizado y continuo con candidatos, no solo publicidad. Esto mejora la calidad
+    de las contrataciones. ¿Le interesa comparar resultados?
+  goal: Destacar la diferenciación y fomentar una prueba gratuita.
+competitors:
+- name: Bumeran
+  positioning: Portal de empleo líder en Argentina con amplia base de datos.
+  strengths:
+  - Alto tráfico de candidatos
+  - reconocimiento de marca
+  - servicios básicos gratuitos
+  weaknesses:
+  - Costo elevado de anuncios premium
+  - limitada personalización
+  - enfoque en volumen sobre calidad
+  our_differentiation: Ofrecemos soluciones de AI con contacto proactivo y seguimiento,
+    mejorando la calidad del match candidato-empresa a menor costo.
+- name: Randstad Argentina
+  positioning: Agencia de reclutamiento global con presencia local.
+  strengths:
+  - Servicios personalizados
+  - red extensa
+  - experiencia en múltiples industrias
+  weaknesses:
+  - Precios altos
+  - procesos lentos
+  - dependencia de consultores humanos
+  our_differentiation: Automatizamos procesos clave con AI para reducir costos y tiempos,
+    manteniendo un servicio eficiente y escalable.
+- name: Computrabajo
+  positioning: Portal de empleo popular en Latinoamérica, incluyendo Argentina.
+  strengths:
+  - Cobertura regional
+  - interfaz sencilla
+  - opciones de pago flexibles
+  weaknesses:
+  - Menor filtrado de candidatos
+  - competencia alta por anuncios
+  - enfoque en posiciones junior
+  our_differentiation: Integramos AI para filtrado inteligente y captación proactiva,
+    enfocándonos en roles específicos y reduciendo ruido en las aplicaciones.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Automatización de reclutamiento para una PYME con 10 vacantes mensuales
+    monthly_cost: 70000
+    monthly_savings: 120000
+    payback_months: 1
+  value_anchors:
+  - Reduzca sus costos de reclutamiento hasta un 50% comparado con agencias tradicionales
+  - Ahorre hasta 40 horas mensuales en tareas manuales con nuestra solución AI
+market_context:
+  market_size: Estimado en ARS 10 mil millones anuales en servicios de reclutamiento
+  growth_rate: 8% YoY, impulsado por digitalización y demanda de talento tecnológico
+  key_trends:
+  - Aumento del uso de AI y automatización en procesos de HR
+  - Crecimiento del reclutamiento remoto post-pandemia
+  - Enfoque en employer branding para atraer millennials y Gen Z
+  seasonality:
+    high:
+    - Marzo-Abril (inicio del año fiscal)
+    - Septiembre-Octubre (previo a temporada festiva)
+    low:
+    - Enero (vacaciones de verano)
+    - Julio (receso invernal)
+typical_objections:
+- objection: No confío en que una máquina pueda manejar algo tan personal como el
+    reclutamiento.
+  response: Entiendo su preocupación. Nuestro AI está diseñado para complementar,
+    no reemplazar, el toque humano, manejando tareas repetitivas para que su equipo
+    se enfoque en interacciones más estratégicas.
+- objection: Ya uso portales de empleo gratuitos y me funciona bien.
+  response: Eso es común, pero los portales gratuitos suelen generar mucho ruido.
+    Nuestro AI filtra candidatos de calidad y los contacta directamente, mejorando
+    la eficiencia y ahorrando tiempo.
+- objection: El costo inicial es alto para mi presupuesto.
+  response: Considerelo como una inversión. Con el ahorro en tiempo y mejores contrataciones,
+    el ROI suele verse en menos de 3 meses. ¿Podemos analizar sus números específicos?
+meta:
+  id: recruitment
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

@@ -1,0 +1,247 @@
+pain_points:
+- description: Hohe Bürokratielast durch EU-Agrarförderung (GAP), Düngeverordnung
+    und Dokumentationspflichten.
+  severity: high
+  solution_hint: Automatisierte Erfassung und Vorbereitung von Anträgen und Berichten
+    per Spracheingabe.
+- description: Arbeitskräftemangel, besonders für Saisonarbeiten und Fachpersonal.
+  severity: high
+  solution_hint: Sprachgesteuerte Anleitung für Saisonkräfte und Automatisierung von
+    Verwaltungsaufgaben zur Entlastung.
+- description: Volatile Marktpreise für Agrarprodukte und steigende Kosten für Betriebsmittel
+    wie Dünger und Energie.
+  severity: high
+  solution_hint: Sprachbasierte Marktpreisabfragen und automatisierte Kostentracking-Erinnerungen.
+- description: Zunehmender Druck zur Einhaltung von Nachhaltigkeits- und Tierwohlstandards.
+  severity: medium
+  solution_hint: Sprachassistent zur Verwaltung von Nachhaltigkeitsdaten und Erinnerung
+    an Kontrolltermine.
+- description: Technische Komplexität und Integration von Landwirtschaft 4.0-Lösungen
+    (z.B. IoT-Sensoren, Farm-Management-Software).
+  severity: medium
+  solution_hint: Sprachschnittstelle als zentrale Steuerung für verschiedene digitale
+    Systeme des Hofes.
+- description: Wetterabhängigkeit und zunehmende Extremwetterereignisse.
+  severity: medium
+  solution_hint: Sprachgestützte Wettervorhersagen und Alarmierung für Frost- oder
+    Starkregengefahr.
+- description: Anforderung an präzise Dokumentation für die Lebensmittelsicherheit
+    (Rückverfolgbarkeit).
+  severity: medium
+  solution_hint: Diktieren von Feld- oder Stallprotokollen direkt in das digitale
+    Hofbuch.
+typical_services:
+- Schlagkraftberechnung und Arbeitsplanung
+- Dokumentation für Cross Compliance und Kontrollen
+- Bestandsführung und Futterberechnung
+- Maschinen- und Geräteverwaltung
+- Agrarförderantragsstellung (z.B. für GAP)
+- Buchhaltung und Liquiditätsplanung
+- Preismonitoring für Erzeugnisse und Einkauf
+- Wetterdaten- und Bodenanalyse-Auswertung
+- Tiergesundheitsmanagement
+- Energie- und Ressourcenmanagement
+recommended_functions:
+- name: Sprachgesteuerte Datenerfassung
+  priority: high
+  reason: Reduziert manuelle Eingabezeit für Dokumentationspflichten direkt im Feld
+    oder Stall.
+- name: Automatisierte Erinnerungen und Alarme
+  priority: high
+  reason: Sichert Fristen für Anträge, Behandlungen oder Wetterwarnungen.
+- name: Schnittstelle zu FMIS/Farm-Management-Informationssystemen
+  priority: high
+  reason: Zentrale Sprachsteuerung für etablierte Software wie 365FarmNet oder Agro-Net.
+- name: FAQ- und Wissensdatenbank-Abfrage
+  priority: medium
+  reason: Schnelle Antworten auf Fragen zu Förderrichtlinien, Pflanzenschutz oder
+    Tierhaltung.
+- name: Terminvereinbarung und Anrufmanagement
+  priority: medium
+  reason: Koordiniert Lieferanten, Berater und Tierarzttermine ohne Hände.
+- name: Einfache Berichtsgenerierung
+  priority: low
+  reason: Erstellt standardisierte Sprachprotokolle für interne oder behördliche Zwecke.
+typical_integrations:
+- name: Farm-Management-Informationssystem (FMIS)
+  examples:
+  - 365FarmNet
+  - Agro-Net
+  - FarmFacts
+  priority: high
+- name: Wetterdienst
+  examples:
+  - Deutscher Wetterdienst (DWD)
+  - Meteoblue
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  priority: medium
+- name: Maschinensteuerung (ISOBUS)
+  examples:
+  - FendtONE
+  - John Deere Operations Center
+  priority: medium
+- name: Marktplatz-/Einkaufsplattform
+  examples:
+  - Agri-Experts
+  - Landwirt.com
+  priority: low
+industry_faq:
+- question: Ist Ihre Lösung DSGVO-konform?
+  answer_template: Ja, absolut. Alle Sprachdaten werden verschlüsselt und gemäß der
+    europäischen DSGVO in Rechenzentren innerhalb der EU verarbeitet. Sie behalten
+    die volle Kontrolle über Ihre Daten.
+- question: Funktioniert das auch bei Lärm im Stall oder auf dem Feld?
+  answer_template: Unsere Technologie ist für raue Umgebungen optimiert. Mit speziellen
+    Rauschunterdrückungsalgorithmen und der Möglichkeit, ein Headset zu nutzen, erreichen
+    wir auch dort eine hohe Erkennungsgenauigkeit.
+- question: Kann das System mit meiner bestehenden Hofsoftware reden?
+  answer_template: In der Regel ja. Wir bieten Schnittstellen zu gängigen FMIS wie
+    365FarmNet oder Agro-Net. Gerne prüfen wir im Vorfeld die Kompatibilität mit Ihrer
+    spezifischen Software.
+- question: Wie schnell sehe ich einen Nutzen?
+  answer_template: Die Einsparung von Schreibarbeit für Dokumentationen und Anträge
+    spüren viele Betriebe bereits in den ersten Wochen. Ein typischer ROI zeigt sich
+    oft innerhalb eines Geschäftsjahres.
+- question: Brauche ich dafür ständiges Internet?
+  answer_template: Für die Spracherkennung und Datenabfrage ist eine Internetverbindung
+    ideal. Kernfunktionen wie lokale Sprachaufzeichnung für spätere Synchronisation
+    sind jedoch auch offline möglich.
+- question: Ist das für kleine Familienbetriebe geeignet?
+  answer_template: Unbedingt. Gerade kleine Betriebe profitieren von der Effizienzsteigerung,
+    da eine Person viele administrative Aufgaben per Sprache schneller erledigen kann.
+    Wir haben skalierbare Pakete.
+sales_scripts:
+- trigger: time_saving_question
+  situation: Wenn der Kunde nach Effizienzsteigerung fragt.
+  script: Stellen Sie sich vor, Sie könnten Ihre tägliche Dokumentation für Düngeverordnung
+    oder Tierkontrolle einfach diktieren, während Sie über den Hof gehen. Unser System
+    überträgt das direkt in Ihr digitales Hofbuch und spart Ihnen bis zu mehrere Stunden
+    Büroarbeit pro Woche. Möchten Sie wissen, wie das genau für Ihre Betriebsabläufe
+    funktioniert?
+  goal: Konkreten Zeitvorteil veranschaulichen und zum Detailgespräch einladen.
+- trigger: compliance_challenge
+  situation: Wenn der Kunde Bürokratie als Hauptproblem nennt.
+  script: Die Bürokratie lastet schwer, da sind Sie nicht allein. Unser Sprachassistent
+    ist Ihr digitaler Helfer für Cross Compliance. Er erinnert Sie an Fristen, hilft
+    bei der Vorbereitung von Kontrollunterlagen und macht die Dokumentation zum Nebenbei-Job.
+    So haben Sie den Kopf wieder frei für Ihr Kerngeschäft. Können wir kurz Ihre aktuellen
+    größten Dokumentations-Hürden besprechen?
+  goal: Empathie zeigen, Lösung als Entlastung positionieren und Bedarf analysieren.
+- trigger: price_question
+  situation: Wenn der Kunde nach den Kosten fragt.
+  script: Die Investition beginnt bei etwa 99 € pro Monat für einen grundlegenden
+    Start. Verglichen mit den Kosten für eine externe Buchhaltungshilfe oder den internen
+    Zeitaufwand für Anträge rechnet sich das oft schon in einem Jahr. Ein mittlerer
+    Betrieb spart typischerweise 2-3 Verwaltungsstunden pro Woche – das sind schnell
+    mehrere tausend Euro Wert pro Jahr. Soll ich Ihnen eine grobe ROI-Schätzung für
+    Ihre Betriebsgröße erstellen?
+  goal: Preis benennen, in Relation zu hohem Gegenwert setzen und zu individueller
+    Berechnung überleiten.
+competitors:
+- name: BayWa (FarmFacts)
+  positioning: Großer Agrarhändler mit eigener Softwarelösung (FarmFacts).
+  strengths:
+  - Starke Präsenz vor Ort
+  - Bundling mit anderen Dienstleistungen möglich
+  - Tiefe Branchenkenntnis
+  weaknesses:
+  - Software kann komplex sein
+  - Mögliche Vendor-Lock-in
+  - Sprachassistent nicht Kernkompetenz
+  our_differentiation: Wir sind spezialisiert auf die intuitive, sprachgesteuerte
+    Bedienung und integrieren uns agnostisch in bestehende Systemlandschaften, ohne
+    an einen Händler gebunden zu sein.
+- name: Claas (365FarmNet)
+  positioning: Hersteller von Landtechnik mit führender FMIS-Plattform.
+  strengths:
+  - Starke Integration in eigene und fremde Maschinen
+  - Umfassende Plattform
+  - Hoher Bekanntheitsgrad
+  weaknesses:
+  - Fokus auf große, technisierte Betriebe
+  - Kostenstruktur für kleinere Betriebe oft hoch
+  - Kein dedizierter Sprachagent
+  our_differentiation: Wir bieten eine kostengünstige, fokussierte Sprachlösung für
+    den Alltag, die unabhängig von der Maschinenmarke funktioniert und den Einstieg
+    in die Digitalisierung extrem vereinfacht.
+- name: xFarm Technologies
+  positioning: Internationaler Anbieter von Digital Farming-Lösungen.
+  strengths:
+  - Moderne, cloudbasierte Plattform
+  - Starke mobile App
+  - Internationale Ausrichtung
+  weaknesses:
+  - Weniger stark im deutschsprachigen Support
+  - Lokale Besonderheiten (z.B. deutsche Förderlandschaft) möglicherweise weniger
+    tief
+  - Sprachfunktion oft nachgelagert
+  our_differentiation: Unsere Lösung ist von Grund auf für die deutsche Sprache und
+    die spezifischen bürokratischen Anforderungen der deutschen und EU-Landwirtschaft
+    entwickelt. Unser Support kommt aus der Region.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 80
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Mittlerer Gemischtbetrieb spart Verwaltungszeit
+    monthly_cost: 149
+    monthly_savings: 300
+    payback_months: 6
+  value_anchors:
+  - Weniger als die Kosten für einen Tag externe Buchhaltungshilfe pro Monat.
+  - Die Zeitersparnis von nur 2 Stunden pro Woche macht die Investition rentabel.
+  - Vermeidet teure Sanktionen durch verpasste Fristen oder fehlerhafte Dokumentation.
+market_context:
+  market_size: Ca. 250.000 landwirtschaftliche Betriebe in Deutschland, davon ein
+    relevanter Teil für Digitalisierung offen.
+  growth_rate: 5-10% YoY für Digitalisierungs- und Softwarelösungen in der Landwirtschaft.
+  key_trends:
+  - Digitalisierung (Landwirtschaft 4.0) wird durch Förderprogramme vorangetrieben.
+  - Steigende Nachfrage nach Transparenz und Nachhaltigkeit in der Lieferkette.
+  - Konsolidierung bei Betrieben erhöht den Druck auf Effizienz.
+  - Zunehmende Nutzung von IoT und Sensordaten.
+  seasonality:
+    high:
+    - Frühjahr (Aussaat, Düngeperiode)
+    - Herbst (Ernte, Herbstantragstellung)
+    low:
+    - Tiefwinter (Dezember/Januar)
+typical_objections:
+- objection: Das ist mir zu modern/kompliziert. Ich komme mit meiner jetzigen Methode
+    klar.
+  response: Das verstehe ich gut. Viele Kollegen dachten am Anfang so. Der Punkt ist
+    nicht, alles umzukrempeln, sondern eine ganz konkrete Erleichterung für die lästige
+    Papierarbeit zu schaffen. Diktieren ist einfacher als Tippen. Wir starten gerne
+    mit einer einzigen Aufgabe, die Sie am meisten nervt – zum Beispiel das Düngeprotokoll.
+    Probieren wir es einen Monat risikofrei aus?
+- objection: Ich habe keine Zeit, mich in neue Software einzuarbeiten.
+  response: Genau dafür ist unsere Sprachsteuerung da. Es gibt fast nichts neues zu
+    lernen – Sie sprechen einfach deutsch, wie mit einem Mitarbeiter. Die Einarbeitung
+    besteht darin, zu lernen, welche Fragen Sie stellen können. Dafür sind wir mit
+    einem persönlichen Onboarding für Sie da. Die Zeitinvestition am Anfang holen
+    Sie vielfach später raus.
+- objection: Meine Daten sind mir zu sensibel, um sie einem Sprachsystem anzuvertrauen.
+  response: Ein sehr berechtigtes Anliegen. Datenschutz ist für uns oberstes Gebot.
+    Die Verarbeitung erfolgt ausschließlich in deutschen/europäischen Rechenzentzen
+    nach DSGVO. Die Daten gehören ausschließlich Ihnen. Wir können gerne unsere Zertifizierungen
+    und Sicherheitskonzepte mit Ihnen teilen. Vertrauen ist die Basis.
+meta:
+  id: agriculture
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

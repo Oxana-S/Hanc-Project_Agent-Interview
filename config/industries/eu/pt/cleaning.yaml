@@ -1,0 +1,193 @@
+pain_points:
+- description: Dificuldade em gerir agendamentos e reagendamentos de clientes de forma eficiente.
+  severity: high
+  solution_hint: O agente de voz pode automatizar o agendamento, confirmar horários e enviar lembretes.
+- description: Alta rotatividade de funcionários, levando a inconsistência na qualidade do serviço.
+  severity: high
+  solution_hint: O agente pode ajudar na triagem inicial de candidatos e na gestão de horários para reduzir sobrecarga.
+- description: Reclamações frequentes de clientes sobre detalhes não atendidos ou falta de comunicação.
+  severity: medium
+  solution_hint: O agente pode coletar feedback automático após cada serviço e encaminhar problemas em tempo real.
+- description: Concorrência de serviços informais ou de baixo custo que pressionam os preços.
+  severity: medium
+  solution_hint: O agente pode destacar a qualidade e profissionalismo nos pitches de vendas para justificar preços.
+- description: Dificuldades na faturação e recebimento de pagamentos de clientes.
+  severity: low
+  solution_hint: O agente pode integrar-se a sistemas de pagamento para enviar faturas e lembretes automáticos.
+- description: Gestão ineficiente de stocks de produtos de limpeza, levando a desperdícios.
+  severity: low
+  solution_hint: O agente pode monitorizar níveis de stock e alertar para reabastecimento.
+typical_services:
+- Limpeza residencial regular
+- Limpeza comercial (escritórios)
+- Limpeza pós-obras
+- Limpeza de estofados e carpetes
+- Limpeza de janelas e fachadas
+- Desinfecção e higienização
+- Limpeza de eventos (pós-festas)
+- Limpeza de cozinhas industriais
+- Serviços de passadeira (limpeza a seco)
+- Gestão de resíduos e reciclagem
+recommended_functions:
+- name: Agendamento automático
+  priority: high
+  reason: Reduz tempo perdido com chamadas e confirmações manuais, aumentando eficiência.
+- name: Suporte ao cliente 24/7
+  priority: high
+  reason: Resolve dúvidas e reclamações fora do horário comercial, melhorando satisfação.
+- name: Processamento de pagamentos
+  priority: medium
+  reason: Facilita o recebimento rápido através de integrações com métodos locais como MB Way.
+- name: Coleta de feedback
+  priority: medium
+  reason: Ajuda a monitorizar a qualidade do serviço e identificar áreas de melhoria.
+- name: Gestão de inventário
+  priority: low
+  reason: Otimiza stocks de produtos, reduzindo custos e desperdícios.
+- name: Envio de lembretes
+  priority: low
+  reason: Diminui faltas de clientes e funcionários, melhorando a pontualidade.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Plataformas de pagamento
+  examples:
+  - MB Way
+  - PayPal
+  - Stripe
+  priority: high
+- name: Software de agendamento
+  examples:
+  - Calendly
+  - Google Calendar
+  priority: medium
+- name: Ferramentas de comunicação
+  examples:
+  - WhatsApp Business
+  - Email
+  priority: medium
+- name: Sistemas de faturação
+  examples:
+  - InvoiceXpress
+  - SAP
+  priority: low
+industry_faq:
+- question: Quais são os vossos horários de serviço?
+  answer_template: Oferecemos serviços flexíveis, incluindo horários diurnos, noturnos e fins-de-semana. Podemos ajustar conforme as suas necessidades.
+- question: Como são calculados os preços?
+  answer_template: Os preços baseiam-se no tipo de serviço, tamanho do espaço e frequência. Fornecemos orçamentos personalizados sem compromisso.
+- question: Os vossos produtos de limpeza são ecológicos?
+  answer_template: Sim, utilizamos produtos amigos do ambiente sempre que possível, conforme solicitado pelo cliente.
+- question: O que acontece se não ficar satisfeito com o serviço?
+  answer_template: Garantimos a satisfação. Se houver problemas, reagendamos uma limpeza de correção sem custos adicionais.
+- question: Oferecem serviços urgentes?
+  answer_template: Sim, para serviços urgentes, podemos agendar dentro de 24 horas, sujeito a disponibilidade e uma pequena sobretaxa.
+- question: Como é tratada a proteção de dados dos clientes?
+  answer_template: Cumprimos rigorosamente o GDPR, protegendo todos os dados pessoais com medidas de segurança apropriadas.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial.
+  script: Olá! Os nossos preços começam em 30 EUR para serviços básicos, mas variam consoante as necessidades específicas. Posso ajudá-lo a obter um orçamento personalizado? Desta forma, garantimos o melhor
+    valor para si.
+  goal: Converter a consulta num orçamento e destacar a personalização.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre tipos de serviços disponíveis.
+  script: Oferecemos uma variedade de serviços, desde limpeza residencial regular a desinfecção especializada. Com base no que partilhou, recomendo [serviço específico]. Gostaria de marcar uma avaliação
+    gratuita?
+  goal: Educar o cliente e agendar uma avaliação para upsell.
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente.
+  script: Entendo que há várias opções. Diferimo-nos pela nossa atenção aos detalhes e suporte 24/7 via agente de voz, garantindo menos dores de cabeça para si. Posso mostrar-lhe alguns depoimentos de clientes
+    satisfeitos?
+  goal: Diferenciação e construção de confiança.
+- trigger: urgency_request
+  situation: Quando um cliente precisa de serviço urgente.
+  script: Para serviços urgentes, podemos agendar para amanhã com uma sobretaxa de 20%. A garantia de qualidade mantém-se. Posso avançar com a reserva?
+  goal: Fechar a venda rapidamente e justificar o preço mais alto.
+competitors:
+- name: Limpeza Total Lda.
+  positioning: Grande rede nacional com preços baixos.
+  strengths:
+  - Amplo alcance geográfico
+  - Preços competitivos
+  weaknesses:
+  - Serviço ao cliente impessoal
+  - Alta rotatividade de funcionários
+  our_differentiation: Oferecemos suporte personalizado via IA e maior consistência na qualidade.
+- name: CleanHouse PT
+  positioning: Especializada em serviços residenciais premium.
+  strengths:
+  - Alta qualidade nos serviços
+  - Produtos ecológicos
+  weaknesses:
+  - Preços elevados
+  - Disponibilidade limitada
+  our_differentiation: Combinamos qualidade com acessibilidade através de automação eficiente.
+- name: Mãos Limpas
+  positioning: Pequena empresa local com foco em serviços comerciais.
+  strengths:
+  - Relacionamento próximo com clientes
+  - Flexibilidade nos horários
+  weaknesses:
+  - Escalabilidade limitada
+  - Tecnologia antiquada
+  our_differentiation: Utilizamos IA para escalar sem perder o toque pessoal.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 30
+  roi_examples:
+  - scenario: Para um pequeno escritório que contrata limpeza semanal, reduzindo horas de gestão manual.
+    monthly_cost: 200
+    monthly_savings: 400
+    payback_months: 2
+  - scenario: Para um condomínio que implementa agendamento automático, diminuindo faltas de funcionários.
+    monthly_cost: 100
+    monthly_savings: 250
+    payback_months: 1
+  value_anchors:
+  - Reduza até 20% no tempo de gestão com agendamento automático.
+  - Aumente a satisfação do cliente com suporte 24/7.
+  - Economize em stocks com gestão inteligente de inventário.
+market_context:
+  market_size: Estimado em 500 milhões EUR anuais em Portugal
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento da procura por serviços ecológicos e sustentáveis.
+  - Crescimento do setor comercial pós-pandemia.
+  - Adoção de tecnologia para eficiência operacional.
+  seasonality:
+    high:
+    - Primavera (limpezas profundas)
+    - Fim do ano (limpezas pós-festas)
+    low:
+    - Agosto (férias de verão)
+    - Dezembro (feriados)
+typical_objections:
+- objection: É muito caro para o meu orçamento.
+  response: Compreendo. No entanto, a nossa eficiência via IA reduz custos a longo prazo. Podemos começar com um pacote básico e ajustar conforme as suas necessidades.
+- objection: Prefiro confiar em alguém que conheço pessoalmente.
+  response: A nossa IA garante consistência e disponibilidade 24/7, complementada por equipas locais verificadas. Oferecemos uma avaliação gratuita para ganhar a sua confiança.
+- objection: Já tenho um serviço que funciona bem.
+  response: Que ótimo! A nossa solução pode agregar valor com automação, como lembretes automáticos ou feedback instantâneo. Posso mostrar-lhe como podemos melhorar ainda mais?
+- objection: Não confio em tecnologia para este tipo de serviço.
+  response: A nossa IA é projetada para apoiar, não substituir, o toque humano. Testamos rigorosamente para garantir fiabilidade, e cumprimos o GDPR para proteger os seus dados.
+meta:
+  id: cleaning
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

@@ -1,0 +1,206 @@
+pain_points:
+- description: Difficoltà nella gestione delle chiamate e degli appuntamenti, con
+    perdita di clienti potenziali.
+  severity: high
+  solution_hint: L'agente vocale AI può rispondere 24/7, fissare appuntamenti e ridurre
+    le chiamate perse.
+- description: Alti costi per il personale di segreteria e supporto clienti.
+  severity: medium
+  solution_hint: Automazione delle risposte comuni e gestione iniziale delle richieste
+    per ridurre il carico di lavoro.
+- description: Bassa efficienza nella pianificazione degli interventi, con tempi morti
+    per i tecnici.
+  severity: high
+  solution_hint: Ottimizzazione degli itinerari e degli appuntamenti in tempo reale
+    tramite AI.
+- description: Difficoltà nel fornire preventivi rapidi e accurati ai clienti.
+  severity: medium
+  solution_hint: L'agente vocale può raccogliere informazioni preliminari e generare
+    stime basate su dati storici.
+- description: Mancanza di visibilità online e recensioni negative non gestite.
+  severity: low
+  solution_hint: Integrazione con piattaforme di recensioni e promozione di feedback
+    positivi tramite chiamate automatizzate.
+- description: Complessità nel rispetto del GDPR per la gestione dei dati dei clienti.
+  severity: medium
+  solution_hint: Implementazione di protocolli sicuri e consenso automatizzato nelle
+    interazioni vocali.
+typical_services:
+- Riparazione elettrodomestici
+- Manutenzione idraulica
+- Riparazione elettrica
+- Assistenza per condizionatori
+- Riparazione di dispositivi elettronici
+- Servizi di serramenti e infissi
+- Riparazione di motori e veicoli
+- Manutenzione di caldaie
+- Riparazione di mobili
+- Servizi di pronto intervento
+recommended_functions:
+- name: Pianificazione Appuntamenti
+  priority: high
+  reason: Riduce i no-show e migliora l'efficienza operativa gestendo gli orari in
+    modo automatizzato.
+- name: Supporto Clienti 24/7
+  priority: high
+  reason: Fornisce assistenza continua, catturando clienti anche fuori orario lavorativo.
+- name: Generazione Preventivi
+  priority: medium
+  reason: Accelera il processo di vendita offrendo stime immediate basate su domande
+    standardizzate.
+- name: Gestione Reclami
+  priority: medium
+  reason: Mitiga le recensioni negative risolvendo problemi in tempo reale e migliorando
+    la reputazione.
+- name: Promemoria e Follow-up
+  priority: low
+  reason: Aumenta la fedeltà dei clienti ricordando appuntamenti e offrendo servizi
+    di manutenzione.
+typical_integrations:
+- name: Software CRM
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - Argo
+  priority: high
+- name: Sistemi di Fatturazione
+  examples:
+  - Fatture in Cloud
+  - WinSemplice
+  - Danea
+  priority: high
+- name: Piattaforme di Prenotazione Online
+  examples:
+  - PrenotaFacile
+  - BookingKoala
+  - SimplyBook
+  priority: medium
+- name: Strumenti di Comunicazione
+  examples:
+  - WhatsApp Business
+  - Telegram
+  - Email
+  priority: medium
+industry_faq:
+- question: Quali sono i vostri orari di servizio?
+  answer_template: Offriamo assistenza 24 ore su 24, 7 giorni su 7 tramite il nostro
+    agente vocale AI, con interventi programmati negli orari lavorativi.
+- question: Quanto costa una riparazione media?
+  answer_template: I costi variano in base al tipo di guasto, ma partono da 50 euro
+    per una diagnosi e possono arrivare a 500 euro per riparazioni complesse.
+- question: Fornite una garanzia sulle riparazioni?
+  answer_template: Sì, tutte le nostre riparazioni sono coperte da una garanzia di
+    6 mesi per parti e manodopera.
+- question: Quanto tempo richiede un intervento?
+  answer_template: Di solito, interveniamo entro 24-48 ore dalla richiesta, a seconda
+    della disponibilità e dell'urgenza.
+- question: Accettate pagamenti con carta di credito?
+  answer_template: Sì, accettiamo pagamenti con carta, bonifico e contanti, e forniamo
+    fattura elettronica conforme.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi via telefono.
+  script: Grazie per la sua domanda. Il nostro servizio di riparazione parte da 50
+    euro per una diagnosi, con costi trasparenti basati sul lavoro effettivo. Possiamo
+    offrirle un preventivo personalizzato dopo aver valutato il problema. Le interessa
+    fissare un appuntamento?
+  goal: Convertire la richiesta in un appuntamento e dimostrare trasparenza sui costi.
+- trigger: service_inquiry
+  situation: Quando un cliente cerca un servizio specifico come riparazione di condizionatori.
+  script: Certamente! Siamo specialisti nella riparazione di condizionatori. Possiamo
+    programmare un controllo oggi stesso per identificare il guasto e fornirle una
+    soluzione rapida. Desidera procedere?
+  goal: Catturare l'interesse e fissare un appuntamento immediato.
+- trigger: objection_high_cost
+  situation: Quando un cliente solleva obiezioni sul prezzo.
+  script: Capisco la sua preoccupazione. Tuttavia, il nostro servizio include garanzia,
+    tecnici certificati e supporto continuo, che prevengono costi futuri. In media,
+    i nostri clienti risparmiano il 30% sulle riparazioni ripetute. Vuole saperne
+    di più?
+  goal: Superare l'obiezione evidenziando il valore e il risparmio a lungo termine.
+competitors:
+- name: Riparazioni Veloce Italia
+  positioning: Servizio rapido e conveniente per riparazioni domestiche.
+  strengths:
+  - Prezzi bassi
+  - Ampia copertura territoriale
+  weaknesses:
+  - Servizio clienti limitato
+  - Lunga attesa per appuntamenti
+  our_differentiation: Offriamo assistenza AI 24/7 con tempi di risposta immediati
+    e pianificazione ottimizzata.
+- name: Tecnici Associati
+  positioning: Rete di tecnici specializzati per riparazioni complesse.
+  strengths:
+  - Alta competenza tecnica
+  - Servizi personalizzati
+  weaknesses:
+  - Costi elevati
+  - Disponibilità limitata
+  our_differentiation: Combina expertise umana con automazione AI per costi ridotti
+    e efficienza superiore.
+- name: Pronto Intervento Casa
+  positioning: Servizi di emergenza per riparazioni urgenti.
+  strengths:
+  - Tempi di intervento rapidi
+  - Servizio 24/7 tradizionale
+  weaknesses:
+  - Altissimi costi per emergenze
+  - Nessuna pianificazione preventiva
+  our_differentiation: Gestione proattiva con AI per prevenire emergenze e offrire
+    tariffe fisse.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Riduzione del 20% delle chiamate perse e aumento degli appuntamenti
+      del 15%
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 2
+  value_anchors:
+  - Risparmia fino a 300 euro all'anno sulle riparazioni ripetute con la nostra manutenzione
+    preventiva.
+  - Aumenta la soddisfazione dei clienti del 40% con risposte immediate tramite AI.
+market_context:
+  market_size: Circa 2 miliardi di euro annui
+  growth_rate: 2.5% YoY
+  key_trends:
+  - Digitalizzazione delle prenotazioni e dei pagamenti
+  - Crescente domanda per servizi eco-sostenibili
+  - Integrazione di IoT per diagnosi remote
+  seasonality:
+    high:
+    - Estate per condizionatori
+    - Inverno per caldaie
+    low:
+    - Primavera per alcuni servizi domestici
+typical_objections:
+- objection: Non mi fido della tecnologia AI per servizi di riparazione.
+  response: Comprendo. Il nostro agente AI supporta i tecnici umani, migliorando l'efficienza
+    senza sostituire l'esperienza. Possiamo offrirle una demo gratuita per dimostrarlo.
+- objection: I vostri prezzi sono più alti rispetto ad altri.
+  response: I nostri prezzi riflettono qualità garantita, risparmio a lungo termine
+    e supporto continuo. Con la nostra AI, riduciamo i costi operativi e le passiamo
+    il vantaggio.
+- objection: Preferisco parlare con una persona reale.
+  response: Certamente! L'agente AI gestisce le richiste iniziali per velocizzare
+    il servizio, ma può sempre trasferirla a un operatore umano se necessario. Vuole
+    provare?
+meta:
+  id: repair_services
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

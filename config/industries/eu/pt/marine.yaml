@@ -1,0 +1,185 @@
+pain_points:
+- description: Custos operacionais elevados devido ao preço do combustível e manutenção.
+  severity: high
+  solution_hint: Agente de voz pode otimizar agendamentos e reduzir tempos de inatividade através de automação.
+- description: Sazonalidade do turismo afeta receitas consistentes no setor náutico.
+  severity: medium
+  solution_hint: Agente pode gerir reservas e promover ofertas fora de época com chamadas proativas.
+- description: Conformidade regulatória complexa com normas marítimas e GDPR.
+  severity: high
+  solution_hint: Automatizar registos e comunicações para garantir conformidade e evitar multas.
+- description: Concorrência intensa no mercado português de serviços marítimos.
+  severity: medium
+  solution_hint: Agente pode realizar prospeção de clientes e fidelização através de interações personalizadas.
+- description: Dificuldade em gerir manutenção preventiva de embarcações.
+  severity: medium
+  solution_hint: Agendamento automático e lembretes via voz para reduzir avarias.
+- description: Falta de pessoal qualificado para operações marítimas.
+  severity: high
+  solution_hint: Agente pode fornecer suporte básico e treinamento, liberando recursos humanos.
+- description: Volatilidade dos preços dos seguros marítimos.
+  severity: low
+  solution_hint: Agente pode comparar cotações e negociar melhores condições com seguradoras.
+typical_services:
+- Reparação e manutenção de embarcações
+- Aluguer de barcos (charter)
+- Venda de embarcações novas e usadas
+- Cursos de navegação e licenças
+- Seguros marítimos
+- Amarração e estacionamento em marinas
+- Fornecimento de combustível e lubrificantes
+- Serviços de limpeza e detalhe náutico
+- Transporte marítimo de mercadorias
+- Turismo náutico e passeios
+recommended_functions:
+- name: Agendamento de Manutenção
+  priority: high
+  reason: Reduz tempos de inatividade e otimiza recursos operacionais.
+- name: Atendimento ao Cliente 24/7
+  priority: high
+  reason: Melhora a satisfação do cliente em horários não comerciais, essencial para turismo.
+- name: Prospeção de Vendas
+  priority: medium
+  reason: Aumenta a base de clientes através de chamadas automatizadas e segmentadas.
+- name: Gestão de Reservas
+  priority: high
+  reason: Crucial para serviços de charter e turismo, maximizando ocupação.
+- name: Suporte Técnico Básico
+  priority: medium
+  reason: Auxilia clientes com problemas simples, reduzindo custos de suporte humano.
+- name: Lembretes de Pagamento
+  priority: low
+  reason: Garante fluxo de caixa regular e reduz inadimplência.
+typical_integrations:
+- name: Sistema de Gestão de Marinas
+  examples:
+  - MarinaSoft
+  - Portuário Pro
+  priority: high
+- name: Plataforma de Reservas Online
+  examples:
+  - Bookeo
+  - FareHarbor
+  priority: high
+- name: CRM para Clientes Náuticos
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Software de Manutenção
+  examples:
+  - Maintenance Connection
+  - Fiix
+  priority: medium
+- name: Sistema de Pagamentos
+  examples:
+  - MB Way
+  - PayPal
+  priority: low
+industry_faq:
+- question: Quais são os custos típicos de manutenção anual para um barco em Portugal?
+  answer_template: Os custos variam consoante o tamanho e tipo de embarcação, mas em média, podem rondar os 1000-5000 EUR por ano, incluindo inspeções e reparações.
+- question: Preciso de licença especial para operar um barco em Portugal?
+  answer_template: Sim, dependendo do tipo de embarcação e uso, é necessária uma licença de navegação emitida pela Autoridade Marítima Nacional, com requisitos específicos.
+- question: Como posso otimizar a temporada turística para o meu negócio náutico?
+  answer_template: Recomendamos diversificar serviços, oferecer pacotes fora de época e utilizar marketing direcionado com automação para aumentar reservas.
+- question: Quais são as normas de segurança obrigatórias para embarcações?
+  answer_template: Devem cumprir as normas da Direção-Geral de Recursos Naturais, Segurança e Serviços Marítimos, incluindo equipamentos e inspeções regulares.
+- question: Posso alugar o meu barco quando não estou a usar, e quais os requisitos?
+  answer_template: Sim, através de plataformas de charter, mas é necessário seguro adequado, conformidade legal e gestão eficiente, que podemos automatizar.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços de serviços marítimos.
+  script: Olá, os nossos preços variam consoante o serviço. Por exemplo, para manutenção básica, começamos em 150 EUR. Posso ajudá-lo a encontrar uma solução adequada ao seu orçamento?
+  goal: Engajar o cliente e fornecer informações claras para avançar na venda.
+- trigger: service_inquiry
+  situation: Cliente interessado em serviços específicos como charter ou reparação.
+  script: Entendo que precisa de [serviço]. Oferecemos isso com garantia de qualidade e suporte automatizado. Gostaria de agendar uma consulta gratuita para detalhar?
+  goal: Converter a consulta em uma oportunidade de venda com agendamento.
+- trigger: objection_handling
+  situation: Cliente diz que os custos de automação são muito elevados.
+  script: Compreendo a preocupação. No entanto, os nossos serviços incluem redução de custos operacionais e aumento de eficiência, com ROI rápido. Podemos analisar um caso prático?
+  goal: Superar objeções e destacar o valor a longo prazo.
+competitors:
+- name: Náutica Portugal
+  positioning: Líder em venda e manutenção de embarcações no mercado português.
+  strengths:
+  - Ampla rede de lojas
+  - Marca reconhecida
+  - Serviços completos
+  weaknesses:
+  - Preços elevados
+  - Serviço lento
+  - Pouca inovação tecnológica
+- name: Náutica Portugal
+  positioning: Líder em soluções náuticas com foco em inovação e atendimento personalizado.
+  strengths:
+  - Atendimento ao cliente altamente personalizado
+  - Tecnologia de ponta em equipamentos náuticos
+  - Ampla rede de parceiros e fornecedores
+  weaknesses:
+  - Preços elevados em comparação com concorrentes
+  - Cobertura limitada em regiões remotas
+  our_differentiation: Oferecemos preços competitivos e atendimento em todo o território nacional, com foco em sustentabilidade e inovação.
+- name: Maré Alta Náutica
+  positioning: Especialistas em aluguel e manutenção de embarcações para lazer e pesca.
+  strengths:
+  - Variedade de embarcações para diferentes necessidades
+  - Serviços de manutenção rápida e eficiente
+  - Equipe com experiência em navegação costeira
+  weaknesses:
+  - Presença limitada em grandes cidades
+  - Marketing digital pouco desenvolvido
+  our_differentiation: Integramos tecnologia avançada e atendimento digital para facilitar a experiência do cliente em todas as etapas do serviço.
+meta:
+  id: marine
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- marine
+- yacht club
+- marina
+- boating
+- sailing
+_extends: _base/marine
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 7000
+  entry_point: 500
+  roi_examples:
+  - scenario: Redução de custos com manutenção através de agendamento automatizado
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 3
+  - scenario: Aumento de reservas na baixa temporada com campanhas automatizadas
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 4
+  value_anchors:
+  - Automação reduz erros humanos e otimiza recursos
+  - Atendimento 24/7 melhora a satisfação e fidelização do cliente
+  - Gestão eficiente de reservas aumenta receitas mesmo fora da época alta
+market_context:
+  market_size: Estimado em 300 milhões de EUR anuais no setor náutico em Portugal
+  growth_rate: 4-6%
+  key_trends:
+  - Crescente interesse em turismo náutico sustentável
+  - Digitalização dos serviços de reservas e manutenção
+  - Aumento da procura por experiências personalizadas em marinas
+  seasonality:
+    high:
+    - Junho
+    - Julho
+    - Agosto
+    - Setembro
+    low:
+    - Novembro
+    - Dezembro
+    - Janeiro
+    - Fevereiro

@@ -1,0 +1,235 @@
+pain_points:
+- description: Hohe Betriebskosten durch teure Materialien (Papier, Druckertinte)
+    und steigende Energiepreise in der Schweiz.
+  severity: high
+  solution_hint: Unser AI Voice Agent kann Kostenvoranschläge von Lieferanten vergleichen
+    und automatisierte Bestellungen bei günstigen Angeboten auslösen.
+- description: Kurzfristige Aufträge und enge Deadlines führen zu überlasteten Mitarbeitern
+    und Planungsproblemen.
+  severity: high
+  solution_hint: Der Agent kann den Auftragsstatus abfragen und Kunden automatisch
+    über Fortschritte informieren, sodass das Personal entlastet wird.
+- description: Komplexe Preisgestaltung für Sonderleistungen (z.B. Sonderfarben, Veredelungen)
+    verursacht lange Kalkulationszeiten.
+  severity: medium
+  solution_hint: Integration eines Preiskalkulators, den der Agent per Sprachbefehl
+    nutzen kann, um sofortige Angebote zu erstellen.
+- description: Hoher administrativer Aufwand für die Einhaltung von Datenschutz (DSG,
+    FADP) bei personalisierten Druckaufträgen.
+  severity: high
+  solution_hint: Der Agent kann standardisierte Datenschutzhinweise versenden und
+    Einwilligungen dokumentieren, um Compliance sicherzustellen.
+- description: Starker Wettbewerb durch Online-Druckereien und den allgemeinen Trend
+    zur Digitalisierung.
+  severity: medium
+  solution_hint: Der Agent kann bestehende Kunden proaktiv zu neuen Services (z.B.
+    nachhaltige Druckverfahren) beraten und so die Kundenbindung stärken.
+- description: Ineffiziente Kommunikation mit Kunden bezüglich Dateiformaten, Auflösung
+    und Druckfreigabe.
+  severity: medium
+  solution_hint: Automatisierte Versendung von technischen Checklisten und Erinnerungen
+    an ausstehende Freigaben durch den Voice Agent.
+typical_services:
+- Digitaldruck
+- Offsetdruck
+- Großformatdruck (Plakate, Banner)
+- Verpackungsdruck (Faltschachteln)
+- Veredelungen (Prägung, Lackierung)
+- Buchbinderei und Weiterverarbeitung
+- Visitenkarten und Geschäftspapiere
+- Personalisierter Direktdruck (Mailings)
+- Nachhaltiger Druck (Recyclingpapier, Ökofarben)
+- 3D-Druck für Prototypen und Modelle
+recommended_functions:
+- name: Angebotserstellung
+  priority: high
+  reason: Sofortige Reaktion auf Kundenanfragen mit präziser Kalkulation senkt die
+    Absprungrate.
+- name: Auftragsstatus-Abfrage
+  priority: high
+  reason: Reduziert Anrufvolumen an der Rezeption und erhöht die Kundenzufriedenheit
+    durch Transparenz.
+- name: Terminvereinbarung für Abholung/Lieferung
+  priority: medium
+  reason: Optimiert die Logistikplanung und spart Zeit für die Disposition.
+- name: Zahlungserinnerung
+  priority: low
+  reason: Automatisierte, höfliche Erinnerungen verbessern den Cashflow ohne persönlichen
+    Konflikt.
+- name: Technische Beratung (Dateiformate)
+  priority: medium
+  reason: Verhindert kostspielige Nachbesserungen durch falsche Kundendaten.
+- name: Proaktive Kundenpflege
+  priority: medium
+  reason: Der Agent kann Kunden an wiederkehrende Aufträge (z.B. Jahresberichte) erinnern
+    und Cross-Selling betreiben.
+typical_integrations:
+- name: ERP-System
+  examples:
+  - Abacus
+  - SAP Business One
+  - Sage
+  priority: high
+- name: Web-to-Print Plattform
+  examples:
+  - PageFlex
+  - PlanetPress
+  - eigene Lösungen
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Bexio
+  - Lexware
+  - Datev
+  priority: high
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - Supero
+  priority: medium
+- name: Produktionsplanung (MIS)
+  examples:
+  - EFI Pace
+  - PrintPlus
+  priority: medium
+industry_faq:
+- question: Wie lange dauert die Produktion von 500 Broschüren?
+  answer_template: Die Standardproduktionszeit für 500 Broschüren im Digitaldruck
+    beträgt 3-5 Arbeitstage, inklusive Weiterverarbeitung. Bei Expressoptionen sind
+    24-48 Stunden möglich. Gerne erstelle ich Ihnen ein detailliertes Angebot.
+- question: Welche Dateiformate akzeptieren Sie für den Druck?
+  answer_template: Wir empfehlen PDF/X in hoher Auflösung (300 dpi). Akzeptiert werden
+    auch EPS, TIFF und native Adobe-Dateien (AI, PSD, INDD). Unser AI Agent kann Ihnen
+    vor dem Upload eine Checkliste senden.
+- question: Bieten Sie auch klimaneutrale Druckoptionen an?
+  answer_template: Ja, wir bieten Druck auf FSC-zertifiziertem Recyclingpapier mit
+    pflanzenbasierten Ökofarben und kompensieren CO2-Emissionen über zertifizierte
+    Projekte. Ich kann Ihnen die Mehrkosten sofort kalkulieren.
+- question: Können Sie personalisierte Mailings mit variablem Datendruck realisieren?
+  answer_template: Absolut. Unser System unterstützt variablen Datendruck unter strenger
+    Einhaltung des Schweizer Datenschutzgesetzes (FADP). Wir benötigen eine entsprechende
+    Einwilligung Ihrer Empfänger.
+- question: Was kostet der Druck von 1000 Visitenkarten?
+  answer_template: Der Preis hängt von Papier, Veredelung und Lieferung ab. Ein einfacher
+    Standardauftrag beginnt bei ca. 150 CHF. Für ein genaues Angebot teilen Sie mir
+    bitte Ihre gewünschten Spezifikationen mit.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach dem Preis für eine Standarddienstleistung wie Visitenkarten.
+  script: 'Vielen Dank für Ihre Anfrage. Für 1000 Visitenkarten auf 300g Premiumpapier
+    inklusive beidseitigem Mattlack beginnen die Preise bei etwa 180 CHF. Um Ihnen
+    ein exaktes, unverbindliches Angebot zu erstellen: Haben Sie bereits ein Design
+    oder benötigen Sie auch Gestaltungsunterstützung?'
+  goal: Vom Preis zum konkreten Auftrag überleiten und zusätzlichen Servicebedarf
+    identifizieren.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen günstigeren Online-Anbieter.
+  script: Das verstehe ich. Online-Druckereien haben oft niedrigere Basiskosten. Unser
+    Mehrwert liegt in der persönlichen Beratung, der lokalen Qualitätskontrolle vor
+    der Auslieferung und der flexiblen Reaktionsfähigkeit bei Sonderwünschen. Zudem
+    garantieren wir die Einhaltung der Schweizer Datenschutzvorgaben. Darf ich Ihnen
+    ein Vergleichsangebot für Ihre konkreten Anforderungen unterbreiten?
+  goal: Wertargumente gegenüber reinen Preisvorteilen betonen und Vertrauen aufbauen.
+- trigger: service_inquiry
+  situation: Kunde erkundigt sich nach einem komplexen Service wie Verpackungsdruck.
+  script: Für Verpackungsdruck benötigen wir spezifische Angaben zu Material, Grösse,
+    Stückzahl und Veredelung. Ich verbinde Sie direkt mit unserem Spezialisten Herrn
+    Müller, oder wir vereinbaren einen kurzen Beratungstermin, in dem wir Ihre Muster
+    kostenlos begutachten können. Was passt besser für Sie?
+  goal: Komplexe Anfrage an menschlichen Experten weiterleiten und Termin vereinbaren.
+competitors:
+- name: Vögeli AG
+  positioning: Traditionelle, grossformatige Druckerei mit Fokus auf Qualität und
+    Nachhaltigkeit.
+  strengths:
+  - Eigene Papierproduktion
+  - starke Marke in der Schweiz
+  - breites Maschinenpark
+  weaknesses:
+  - Höhere Preise
+  - weniger flexibel für Kleinaufträge
+  our_differentiation: Agilere digitale Prozesse und KI-gestützte Kundenkommunikation
+    für schnellere Abwicklung auch bei kleineren Losgrössen.
+- name: CEWE (Online)
+  positioning: Internationaler Online-Druckdienstleister mit Fokus auf Fotoprodukte
+    und Standarddruck.
+  strengths:
+  - Niedrige Preise
+  - benutzerfreundliche Online-Tools
+  - grosse Auswahl
+  weaknesses:
+  - Unpersönlicher Service
+  - limitierte Beratung
+  - längere Lieferzeiten in die Schweiz
+  our_differentiation: Lokale Produktion für schnellere Lieferung, persönliche Betreuung
+    und massgeschneiderte Lösungen für Geschäftskunden.
+- name: CopyQuick Filialnetz
+  positioning: Netzwerk von Kopierläden für Express- und Kleinaufträge.
+  strengths:
+  - Viele Standorte in der Schweiz
+  - sehr schnelle Abholung für Kleinmengen
+  weaknesses:
+  - Begrenzte Produktionsmöglichkeiten für grosse oder hochwertige Aufträge
+  our_differentiation: Professionelle Beratung und Produktion für mittlere bis grosse
+    Serien mit höherer Wertschöpfung und Qualität.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatisierung von Angebotserstellung und Kundenkommunikation für eine
+      Druckerei mit 10 Mitarbeitenden.
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 4.5
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden administrativen Aufwand pro Monat.
+  - Verbessern Sie Ihre Kundenbindung durch proaktive Kommunikation.
+  - Sofortige Angebote reduzieren verlorene Aufträge um geschätzte 20%.
+market_context:
+  market_size: Ca. 2.2 Mrd. CHF Jahresumsatz
+  growth_rate: -1.5%
+  key_trends:
+  - Starke Nachfrage nach nachhaltigen und personalisierten Drucklösungen.
+  - Digitalisierung der Auftragsabwicklung (Web-to-Print).
+  - Konsolidierung bei kleinen Druckereien, Spezialisierung bei grösseren.
+  seasonality:
+    high:
+    - September-November (Geschäftsberichte)
+    - Dezember (Weihnachtskarten)
+    low:
+    - Juli-August (Ferienzeit)
+    - Januar
+typical_objections:
+- objection: Das ist mir zu teuer für eine Automatisierungslösung.
+  response: 'Ich verstehe Ihre Budgetbedenken. Betrachten wir es als Investition:
+    Unser Agent spart Ihrem Team wertvolle Zeit für Kernaufgaben. Basierend auf vergleichbaren
+    Källen amortisiert sich die Lösung oft in unter 6 Monaten. Darf ich Ihnen eine
+    detaillierte ROI-Berechnung für Ihr Unternehmen zusenden?'
+- objection: Wir haben bereits langjährige, gute Prozesse.
+  response: Das ist ein grosses Plus. Unser Ansatz ist es, diese bewährten Prozesse
+    nicht zu ersetzen, sondern sie durch Entlastung bei repetitiven Tasks wie Terminvereinbarungen
+    und Statusanfragen zu unterstützen. So können sich Ihre Mitarbeiter noch besser
+    auf Qualität und Kundenbeziehungen konzentrieren.
+- objection: Wir haben schon ein CRM/ERP-System.
+  response: Perfekt! Unser Voice Agent integriert sich nahtlos in Systeme wie Abacus
+    oder Bexio. Er nutzt die vorhandenen Daten, um noch effizienter zu kommunizieren,
+    ohne doppelte Pflegeaufwände zu verursachen. Möchten Sie mehr zur technischen
+    Integration erfahren?
+meta:
+  id: printing
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

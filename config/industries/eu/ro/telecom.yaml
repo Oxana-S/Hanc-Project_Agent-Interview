@@ -1,0 +1,222 @@
+pain_points:
+- description: Înaltă rată de abandon a clienților din cauza concurenței agresive.
+  severity: high
+  solution_hint: Agentul vocal AI poate personaliza ofertele și să urmărească clienții
+    cu risc de abandon.
+- description: Probleme complexe de facturare și dispute frecvente cu clienții.
+  severity: medium
+  solution_hint: Agentul vocal AI poate răspunde automat la întrebări despre facturi
+    și să rezolve disputile rapid.
+- description: Întreruperi ale rețelei și disfuncționalități ale serviciilor care
+    afectează experiența clientului.
+  severity: high
+  solution_hint: Agentul vocal AI poate notifica clienții despre întreruperi și să
+    ofere soluții de depanare.
+- description: Conformitatea cu GDPR și alte reglementări europene, ceea ce necesită
+    resurse semnificative.
+  severity: medium
+  solution_hint: Agentul vocal AI poate automatiza procesele de consimțământ și gestionarea
+    datelor pentru conformitate.
+- description: Serviciile de asistență pentru clienți sunt ineficiente, cu timpi de
+    așteptare lungi.
+  severity: high
+  solution_hint: Agentul vocal AI poate prelua apelurile de bază, reducând timpul
+    de așteptare și îmbunătățind satisfacția.
+- description: Costuri operaționale ridicate pentru întreținerea rețelei și a personalului.
+  severity: medium
+  solution_hint: Agentul vocal AI poate automatiza sarcinile repetitive, reducând
+    costurile cu forța de muncă.
+- description: Riscuri de fraudă și probleme de securitate cibernetică.
+  severity: medium
+  solution_hint: Agentul vocal AI poate verifica identitatea clienților și să detecteze
+    activități suspecte.
+typical_services:
+- Planuri mobile
+- Internet fix
+- Televiziune prin cablu sau satelit
+- Telefonie fixă
+- Servicii de date pentru afaceri
+- Roaming internațional
+- Asigurare dispozitive
+- Servicii de cloud și stocare
+- Suport tehnic 24/7
+- Oferte bundle (pachete combinate)
+recommended_functions:
+- name: Suport client automatizat
+  priority: high
+  reason: Reduce timpul de așteptare și îmbunătățește experiența clientului pentru
+    întrebări frecvente.
+- name: Gestionarea facturilor și plăților
+  priority: high
+  reason: Rezolvă rapid dispute și oferă informații despre facturi, reducând apelurile
+    către agenți umani.
+- name: Vânzări și upselling
+  priority: medium
+  reason: Crește veniturile prin recomandarea ofertelor personalizate pe baza istoricului
+    clientului.
+- name: Notificări despre întreruperi de serviciu
+  priority: medium
+  reason: Îmbunătățește transparența și reduce nemulțumirea clienților prin comunicări
+    proactive.
+- name: Verificare conformitate GDPR
+  priority: low
+  reason: Asigură conformitatea cu reglementările prin automatizarea proceselor de
+    consimțământ.
+- name: Colectare feedback
+  priority: low
+  reason: Ajută la îmbunătățirea serviciilor prin analiza opiniilor clienților în
+    timp real.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - Sisteme locale cum ar fi SoftBrands
+  priority: high
+- name: Software de facturare
+  examples:
+  - SAP
+  - Oracle
+  - Sisteme personalizate românești
+  priority: high
+- name: Sisteme de management al rețelei
+  examples:
+  - Cisco
+  - Huawei
+  - Soluții locale integrate
+  priority: medium
+- name: Baze de date ale clienților
+  examples:
+  - MySQL
+  - PostgreSQL
+  - Baze de date cloud
+  priority: medium
+- name: Portaluri de plată
+  examples:
+  - PayU
+  - MobilPay
+  - Banca Transilvania API
+  priority: low
+industry_faq:
+- question: Cum pot verifica soldul facturii mele?
+  answer_template: Puteți verifica soldul facturii dvs. prin intermediul aplicației
+    noastre mobile sau vă pot ajuta să obțineți informațiile acum.
+- question: Care este acoperirea rețelei în zona mea?
+  answer_template: Acoperirea rețelei variază în funcție de locație. Vă pot oferi
+    detalii precise despre acoperirea în zona dvs. după ce verific în sistem.
+- question: Cum pot schimba planul meu de servicii?
+  answer_template: Pentru a schimba planul dvs., vă pot recomanda opțiuni disponibile
+    și vă asist în procesul de modificare.
+- question: Există taxe ascunse în factură?
+  answer_template: Toate taxele sunt transparente și afișate în factură. Pot explica
+    orice element al facturii dvs. dacă doriți.
+- question: Ce servicii sunt incluse în pachetul meu bundle?
+  answer_template: Pachetul dvs. bundle include servicii specifice. Pot detalia exact
+    ce servicii beneficiați în acest moment.
+- question: Cum pot rezolva o problemă de internet lent?
+  answer_template: Pentru probleme de internet lent, vă pot ghida prin pași de depanare
+    sau pot programa o vizită tehnică dacă este necesar.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețurile serviciilor.
+  script: Bună ziua! Înțeleg că doriți să aflați mai multe despre prețurile noastre.
+    Avem o gamă variată de planuri, începând de la 50 RON lunar pentru servicii de
+    bază. Ce tip de servicii vă interesează în special?
+  goal: Să angajez clientul în conversație și să identific nevoile pentru a oferi
+    o recomandare personalizată.
+- trigger: service_inquiry
+  situation: Când un client cere informații despre serviciile noastre.
+  script: Salut! Suntem încântați să vă ajutăm. Oferim servicii de telecomunicații
+    complete, inclusiv internet, TV și telefonie. Ce domeniu vă interesează mai mult
+    sau aveți nevoi specifice pentru afacerea dvs.?
+  goal: Să educ clientul despre oferte și să conduc către o vânzare potențială.
+- trigger: complaint_handling
+  situation: Când un client se plânge despre un serviciu.
+  script: Îmi pare rău să aud că întâmpinați probleme. Vă pot asista imediat pentru
+    a rezolva această situație. Puteți descrie mai detaliat problema pentru a vă ajuta
+    mai eficient?
+  goal: Să calmez clientul și să rezolv problema rapid, menținând satisfacția.
+competitors:
+- name: Orange România
+  positioning: Lider de piață cu acoperire națională extinsă.
+  strengths:
+  - Rețea robustă
+  - Brand puternic
+  - Oferte diversificate
+  weaknesses:
+  - Prețuri mai ridicate
+  - Serviciu clienți lent uneori
+  our_differentiation: Oferim servicii personalizate cu asistență vocală AI rapidă
+    și costuri reduse.
+- name: Vodafone România
+  positioning: Concurent important cu focus pe inovație.
+  strengths:
+  - Tehnologie avansată
+  - Campanii de marketing agresive
+  weaknesses:
+  - Complexitatea serviciilor
+  - Facturare confuză
+  our_differentiation: Simplificăm procesele cu automate transparente și suport prietenos.
+- name: Digi (RCS&RDS)
+  positioning: Provider cu prețuri competitive și pachete atractive.
+  strengths:
+  - Prețuri mici
+  - Oferte bundle economice
+  weaknesses:
+  - Calitatea serviciului inconsistentă
+  - Acoperire limitată în unele zone
+  our_differentiation: Combinăm prețuri competitive cu servicii de înaltă calitate
+    și asistență AI eficientă.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatizarea suportului clienți pentru o firmă mică
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Reducem timpul de așteptare la asistență cu până la 80%.
+  - Creștem satisfacția clienților prin răspunsuri instant.
+  - Scădem costurile operaționale cu automatizarea sarcinilor repetitive.
+market_context:
+  market_size: Aproximativ 10 miliarde RON anual
+  growth_rate: 3% pe an
+  key_trends:
+  - Creșterea cererii pentru servicii de internet de mare viteză
+  - Tranziția către 5G și tehnologii IoT
+  - Focus pe sustainabilitate și energie verde
+  seasonality:
+    high:
+    - Septembrie - Noiembrie (perioada școlară)
+    - Decembrie (sărbători)
+    low:
+    - Iulie - August (vacanțe de vară)
+typical_objections:
+- objection: Este prea scump pentru bugetul meu.
+  response: Înțeleg preocuparea. Avem opțiuni flexibile, inclusiv planuri de bază
+    accesibile. Pot recomanda ceva care se încadrează în bugetul dvs.?
+- objection: Sunt mulțumit de furnizorul actual.
+  response: Asta este minunat! Dar am putea să vă oferim beneficii suplimentare, cum
+    ar fi servicii mai rapide sau asistență 24/7. Ați dori să aflați mai multe?
+- objection: Nu am încredere în tehnologia AI.
+  response: Este normal să aveți rezerve. Agentul nostru vocal AI este proiectat să
+    fie prietenos și eficient, cu opțiunea de a vorbi cu un agent uman dacă este necesar.
+    Vă pot demonstra cum funcționează?
+meta:
+  id: telecom
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

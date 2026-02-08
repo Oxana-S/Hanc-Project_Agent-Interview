@@ -1,0 +1,285 @@
+pain_points:
+- description: Quản lý vận hành lưới điện phức tạp, khó theo dõi sự cố và phân tích
+    hiệu suất theo thời gian thực.
+  severity: high
+  solution_hint: Agent AI có thể tự động thu thập dữ liệu từ SCADA/EMS, phân tích
+    và báo cáo sự cố ngay lập tức qua điện thoại hoặc SMS.
+- description: Tỷ lệ tổn thất điện năng (thất thoát thương mại và kỹ thuật) còn cao,
+    khó xác định nguyên nhân chính xác.
+  severity: high
+  solution_hint: Agent AI phân tích dữ liệu tiêu thụ, phát hiện bất thường và gọi
+    điện tự động đến khu vực nghi ngờ có hành vi trộm cắp điện hoặc lỗi kỹ thuật.
+- description: Chăm sóc khách hàng bị quá tải, đặc biệt trong mùa nắng nóng, khó xử
+    lý kịp thời các khiếu nại về cắt điện hoặc hóa đơn.
+  severity: high
+  solution_hint: Triển khai tổng đài ảo 24/7 để tiếp nhận, phân loại và xử lý tự động
+    các cuộc gọi của khách hàng, giảm tải cho nhân viên.
+- description: Quy trình báo cáo tuân thủ (PDPD, an toàn lao động) thủ công, tốn nhiều
+    thời gian và dễ sai sót.
+  severity: medium
+  solution_hint: Agent AI nhắc nhở và hướng dẫn nhân viên thực hiện báo cáo qua cuộc
+    gọi, sau đó tổng hợp dữ liệu tự động vào hệ thống.
+- description: Khó khăn trong việc dự báo phụ tải chính xác để tối ưu hóa sản xuất
+    và mua bán điện, dẫn đến chi phí vận hành cao.
+  severity: medium
+  solution_hint: AI phân tích dữ liệu tiêu thụ lịch sử và yếu tố thời tiết, tự động
+    gửi cảnh báo và khuyến nghị điều độ phụ tải qua tin nhắn thoại.
+- description: Tuyên truyền, vận động khách hàng sử dụng điện tiết kiệm hoặc chuyển
+    đổi sang điện mặt trời áp mái hiệu quả chưa cao.
+  severity: low
+  solution_hint: Agent AI thực hiện chiến dịch gọi điện tự động đến từng hộ gia đình,
+    giải thích chính sách và tính toán lợi ích tài chính cụ thể.
+typical_services:
+- Phân phối và bán lẻ điện
+- Vận hành và bảo trì lưới điện (O&M)
+- Tư vấn lắp đặt điện mặt trời áp mái (Solar Rooftop)
+- Dịch vụ đo đếm điện năng thông minh (AMR)
+- Quản lý nhu cầu phụ tải (DR/DSM)
+- Thi công hệ thống điện công nghiệp & dân dụng
+- Kiểm định, hiệu chuẩn thiết bị điện
+- Tư vấn tiết kiệm năng lượng (ESCO)
+- Lắp đặt trạm sạc xe điện (EV Charging)
+- Cho thuê máy phát điện công nghiệp
+recommended_functions:
+- name: Tổng đài ảo hỗ trợ khách hàng 24/7
+  priority: high
+  reason: Giải quyết lượng lớn cuộc gọi khiếu nại về mất điện, hóa đơn; cải thiện
+    đáng kể trải nghiệm khách hàng tại Việt Nam.
+- name: Gọi điện tự động nhắc lịch bảo trì, kiểm định
+  priority: high
+  reason: Tự động hóa công việc hành chính lặp đi lặp lại, đảm bảo tuân thủ các quy
+    định an toàn và PDPD.
+- name: Giám sát & cảnh báo sự cố qua giọng nói
+  priority: high
+  reason: Cung cấp thông tin sự cố theo thời gian thực cho đội kỹ thuật hiện trường
+    thông qua thiết bị di động, tăng tốc độ xử lý.
+- name: Tư vấn và bán hàng tự động cho dịch vụ Solar Rooftop
+  priority: medium
+  reason: Tiếp cận số lượng lớn khách hàng tiềm năng với chi phí thấp, tự động tính
+    toán ROI và giải đáp các thắc mắc cơ bản.
+- name: Tích hợp thanh toán hóa đơn điện qua giọng nói (IVR Payment)
+  priority: medium
+  reason: Tạo sự thuận tiện, giảm áp lực cho tổng đài trong những đợt cao điểm thanh
+    toán hóa đơn.
+- name: Khảo sát mức độ hài lòng khách hàng (CSAT) tự động
+  priority: low
+  reason: Thu thập phản hồi liên tục để cải thiện chất lượng dịch vụ một cách chủ
+    động.
+typical_integrations:
+- name: Hệ thống SCADA/EMS/DMS
+  examples:
+  - Siemens Spectrum Power
+  - ABB MicroSCADA
+  - GE PowerOn
+  priority: high
+- name: Hệ thống quản lý thông tin khách hàng (CIS)
+  examples:
+  - Oracle CC&B
+  - SAP IS-U
+  - Công nghệ nội địa
+  priority: high
+- name: Hệ thống ERP
+  examples:
+  - SAP
+  - Oracle ERP
+  - MISA
+  priority: medium
+- name: Hệ thống GIS quản lý lưới điện
+  examples:
+  - ArcGIS
+  - Smallworld
+  priority: medium
+- name: Cổng thông tin Chính phủ & Cơ quan quản lý
+  examples:
+  - Cổng Dịch vụ công
+  - Hệ thống của EVN
+  - Bộ Công Thương
+  priority: high
+- name: Nền tảng đo đếm thông minh (AMI)
+  examples:
+  - Landis+Gyr
+  - Itron
+  - Hexing
+  priority: medium
+industry_faq:
+- question: Khi nào điện sẽ được cấp lại sau khi mất điện?
+  answer_template: Chào anh/chị, hiện sự cố đang được đội ngũ kỹ thuật của chúng tôi
+    khẩn trương xử lý. Dự kiến thời gian khôi phục là vào khoảng [thời gian dự kiến].
+    Chúng tôi rất xin lỗi vì sự bất tiện này và sẽ cập nhật ngay khi có thông tin
+    mới.
+- question: Hóa đơn điện tháng này của tôi cao bất thường, nguyên nhân do đâu?
+  answer_template: Chào anh/chị, hóa đơn có thể tăng do một số nguyên nhân như thời
+    tiết nắng nóng dùng nhiều điều hòa, thiết bị mới tiêu thụ lớn, hoặc có thể có
+    sự cố rò rỉ điện. Để kiểm tra chính xác, tôi có thể kết nối anh/chị với bộ phận
+    kỹ thuật để sắp xếp lịch kiểm tra đồng hồ và hệ thống điện tại nhà, hoặc hướng
+    dẫn anh/chị cách tự theo dõi công suất tiêu thụ qua ứng dụng.
+- question: Tôi muốn lắp điện mặt trời áp mái thì thủ tục thế nào?
+  answer_template: 'Chào anh/chị, quy trình lắp đặt Solar Rooftop bao gồm các bước:
+    khảo sát hiện trạng, tư vấn công suất & giải pháp, ký hợp đồng, lắp đặt và đấu
+    nối lưới, nghiệm thu và ký hợp đồng mua bán điện dư. Tôi sẽ chuyển thông tin của
+    anh/chị cho đội ngũ tư vấn chuyên sâu. Họ sẽ liên hệ lại trong vòng 24h để trao
+    đổi chi tiết và sắp xếp lịch khảo sát miễn phí.'
+- question: Làm thế nào để đăng ký sử dụng điện mới cho công trình xây dựng?
+  answer_template: Chào anh/chị, để đăng ký sử dụng điện mới, anh/chị cần chuẩn bị
+    bản sao giấy tờ chủ sở hữu (Sổ đỏ/Giấy ủy quyền), CMND/CCCD, và bản vẽ thiết kế
+    điện. Anh/chị có thể nộp hồ sơ trực tiếp tại chi nhánh điện lực địa phương hoặc
+    qua cổng dịch vụ công trực tuyến. Tôi có thể gửi đường link hướng dẫn chi tiết
+    và danh sách giấy tờ cần thiết qua SMS cho anh/chị ngay bây giờ.
+- question: Chính sách giá điện hiện tại cho hộ kinh doanh là bao nhiêu?
+  answer_template: Chào anh/chị, giá điện cho hộ kinh doanh hiện áp dụng theo biểu
+    giá bán lẻ điện. Mức giá phụ thuộc vào bậc thang điện năng tiêu thụ. Để có thông
+    tin chính xác nhất theo từng thời điểm, tôi khuyên anh/chị nên tra cứu trên website
+    chính thức của Tập đoàn Điện lực Việt Nam (EVN) hoặc tôi có thể kết nối anh/chị
+    với bộ phận kinh doanh để được tư vấn cụ thể về hợp đồng và biểu giá.
+sales_scripts:
+- trigger: general_service_inquiry
+  situation: Khách hàng hỏi chung về các dịch vụ của công ty trong lĩnh vực năng lượng.
+  script: Chào anh/chị, cảm ơn anh/chị đã quan tâm. Công ty chúng tôi cung cấp đa
+    dạng giải pháp từ vận hành lưới điện thông minh, lắp đặt điện mặt trời, đến dịch
+    vụ tư vấn tiết kiệm năng lượng. Để tôi có thể tư vấn chính xác, anh/chị có thể
+    cho biết mình đang quan tâm đến giải pháp cho hộ gia đình, doanh nghiệp hay là
+    các dự án công nghiệp ạ?
+  goal: Phân loại khách hàng và dẫn dắt vào cuộc nói chuyện tư vấn cụ thể.
+- trigger: price_question_solar
+  situation: Khách hàng hỏi về giá lắp đặt hệ thống điện mặt trời áp mái.
+  script: Chào anh/chị, chi phí lắp đặt Solar Rooftop phụ thuộc vào công suất, loại
+    pin và độ phức tạp của mái nhà. Mức đầu tư trung bình hiện nay dao động từ 15
+    đến 20 triệu VND cho mỗi kWp. Điều quan trọng là thời gian hoàn vốn chỉ khoảng
+    4-6 năm nhờ tiết kiệm hóa đơn điện và bán điện dư lên lưới. Để có báo giá chi
+    tiết và chính xác nhất, tôi sẽ sắp xếp cho kỹ sư của chúng tôi liên hệ tư vấn
+    và khảo sát miễn phí cho anh/chị, được không ạ?
+  goal: Đưa ra khung giá tham khảo, nhấn mạnh ROI hấp dẫn và chuyển sang bước khảo
+    sát thực tế.
+- trigger: complaint_about_service
+  situation: 'Khách hàng gọi vào để phàn nàn về chất lượng dịch vụ (ví dụ: mất điện
+    lâu, thái độ nhân viên).'
+  script: Trước tiên, tôi thay mặt công ty xin gửi lời xin lỗi chân thành đến anh/chị
+    vì sự bất tiện vừa qua. Tôi hiểu điều này ảnh hưởng đến sinh hoạt/kinh doanh của
+    anh/chị. Để giải quyết triệt để vấn đề, tôi sẽ ghi nhận đầy đủ thông tin và chuyển
+    ngay cho bộ phận quản lý chất lượng. Họ sẽ liên hệ lại với anh/chị trong vòng
+    2 giờ làm việc để làm rõ và đưa ra phương án khắc phục cụ thể. Anh/chị vui lòng
+    cho tôi biết thông tin liên hệ và tóm tắt sự việc được không ạ?
+  goal: Làm dịu sự bực tức của khách hàng, thể hiện thái độ chuyên nghiệp và cam kết
+    giải quyết, thu thập thông tin để chuyển tiếp.
+competitors:
+- name: Tập đoàn Điện lực Việt Nam (EVN) & các công ty thành viên
+  positioning: Nhà cung cấp dịch vụ điện lực độc quyền truyền thống.
+  strengths:
+  - Phủ lưới điện rộng khắp toàn quốc
+  - Đội ngũ nhân sự đông đảo
+  - Nắm giữ cơ sở hạ tầng trọng yếu
+  - Được nhà nước hỗ trợ
+  weaknesses:
+  - Thủ tục hành chính chậm
+  - Công nghệ cũ, khó đổi mới
+  - Trải nghiệm khách hàng chưa tốt
+  - Phản ứng với thị trường năng lượng tái tạo còn chậm
+  our_differentiation: Cung cấp giải pháp công nghệ AI linh hoạt, tự động hóa giúp
+    EVN và các công ty phân phối cải thiện hiệu quả vận hành và dịch vụ khách hàng
+    với chi phí tối ưu.
+- name: Các công ty tư nhân trong lĩnh vực Solar EPC & O&M
+  positioning: Chuyên về thi công và vận hành điện mặt trời.
+  strengths:
+  - Linh hoạt, quyết định nhanh
+  - Chuyên môn sâu về solar
+  - Dịch vụ khách hàng tốt hơn
+  - Giá cả cạnh tranh
+  weaknesses:
+  - Quy mô nhỏ, vốn hạn chế
+  - Khó tiếp cận khách hàng quy mô lớn
+  - Ít kinh nghiệm với hệ thống lưới điện phức tạp
+  our_differentiation: Cung cấp nền tảng AI như một dịch vụ (AIaaS), giúp các công
+    ty này tự động hóa chăm sóc khách hàng, giám sát nhà máy từ xa và tối ưu bán hàng
+    mà không cần đầu tư lớn vào CNTT.
+- name: Các hãng công nghệ đa quốc gia (Siemens, ABB, Schneider)
+  positioning: Nhà cung cấp giải pháp phần cứng và phần mềm lớn.
+  strengths:
+  - Công nghệ tiên tiến, toàn cầu
+  - Danh tiếng mạnh
+  - Dịch vụ tư vấn chuyên sâu
+  - Tích hợp hệ thống phức tạp
+  weaknesses:
+  - Giá thành cao
+  - Triển khai lâu
+  - Ít tập trung vào giải pháp 'voice-first' cho thị trường đại chúng Việt Nam
+  - Hỗ trợ địa phương đôi khi chậm
+  our_differentiation: Giải pháp AI bằng giọng nói tiếng Việt chuyên sâu, triển khai
+    nhanh với mô hình đăng ký (subscription) linh hoạt, phù hợp với ngân sách và nhu
+    cầu tự động hóa từng phần của doanh nghiệp vừa và nhỏ tại Việt Nam.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 30000000
+  roi_examples:
+  - scenario: Tự động hóa tổng đài chăm sóc khách hàng cho một công ty phân phối điện
+      địa phương
+    monthly_cost: 15000000
+    monthly_savings: 45000000
+    payback_months: 4
+  - scenario: Hệ thống giám sát & cảnh báo sự cố tự động cho 10 trạm biến áp
+    monthly_cost: 20000000
+    monthly_savings: 60000000
+    payback_months: 5
+  value_anchors:
+  - Giảm tới 40% chi phí vận hành tổng đài.
+  - Phát hiện sự cố nhanh hơn 80%, giảm thời gian mất điện.
+  - Tăng tỷ lệ chốt đơn dịch vụ Solar Rooftop lên 30% nhờ tư vấn tự động.
+  - Đảm bảo tuân thủ PDPD và an toàn lao động với chi phí tối thiểu.
+market_context:
+  market_size: Khoảng 10,000 - 15,000 doanh nghiệp có tiềm năng ứng dụng (bao gồm
+    EVN, công ty con, đơn vị phân phối, công ty tư nhân trong solar, ESCO).
+  growth_rate: 12-15% năm, thúc đẩy bởi nhu cầu năng lượng tăng, chính sách khuyến
+    khích điện tái tạo và chuyển đổi số ngành điện.
+  key_trends:
+  - Chính phủ thúc đẩy mạnh mẽ điện mặt trời áp mái và điện gió.
+  - Đầu tư nâng cấp lưới điện thông minh (Smart Grid) để tích hợp năng lượng tái tạo.
+  - Tăng cường áp dụng công nghệ 4.0 (IoT, AI) vào vận hành và kinh doanh.
+  - Sự phát triển của thị trường xe điện kéo theo nhu cầu về hạ tầng trạm sạc.
+  - Người tiêu dùng ngày càng quan tâm đến tiết kiệm năng lượng và nguồn điện xanh.
+  seasonality:
+    high:
+    - Tháng 4 đến Tháng 8 (mùa nắng nóng, nhu cầu điện đỉnh điểm)
+    - Cuối năm (thi công dự án)
+    low:
+    - Tháng 1, 2 (Tết Nguyên đán, hoạt động chậm lại)
+    - Tháng 9, 10 (mùa mưa, ảnh hưởng thi công)
+typical_objections:
+- objection: Giá của các giải pháp AI này có vẻ cao so với ngân sách của chúng tôi.
+  response: Tôi hoàn toàn hiểu mối quan tâm về ngân sách. Thực tế, giải pháp của chúng
+    tôi được thiết kế theo mô đun, anh/chị có thể bắt đầu với một tính năng cốt lõi
+    như tổng đài ảo với mức phí chỉ từ 30 triệu VND. Quan trọng hơn, chúng tôi cam
+    kết rõ ràng về ROI. Như ví dụ tôi chia sẻ, nhiều khách hàng hoàn vốn chỉ trong
+    4-6 tháng nhờ tiết kiệm chi phí vận hành. Chúng ta có thể thảo luận một lộ trình
+    triển khai từng bước phù hợp với dòng tiền của công ty.
+- objection: Công nghệ AI phức tạp, nhân viên chúng tôi không có chuyên môn để vận
+    hành.
+  response: Đây là điểm mạnh chính của chúng tôi. Giải pháp là một dịch vụ hoàn chỉnh
+    (SaaS). Chúng tôi phụ trách toàn bộ việc triển khai, đào tạo và hỗ trợ kỹ thuật
+    24/7. Nhân viên của anh/chị chỉ cần tương tác đơn giản qua giao diện web hoặc
+    ứng dụng điện thoại quen thuộc. Hơn nữa, agent AI giao tiếp bằng tiếng Việt tự
+    nhiên, rất dễ sử dụng. Chúng tôi sẽ đồng hành cho đến khi hệ thống hoạt động trơn
+    tru.
+- objection: Chúng tôi đã có phần mềm quản lý rồi, không cần thêm hệ thống mới.
+  response: Giải pháp của chúng tôi không thay thế, mà là bổ sung và kết nối với các
+    phần mềm hiện có của anh/chị (như ERP, SCADA). Mục tiêu là lấy dữ liệu từ các
+    hệ thống đó và biến chúng thành hành động tự động qua kênh thoại - điều mà phần
+    mềm truyền thống không làm được. Ví dụ, tự động gọi điện cho khách hàng có hóa
+    đơn quá hạn được lấy dữ liệu từ hệ thống CIS. Điều này giúp tận dụng tối đa đầu
+    tư CNTT hiện tại của anh/chị.
+meta:
+  id: energy
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

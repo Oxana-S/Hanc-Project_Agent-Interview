@@ -1,0 +1,207 @@
+pain_points:
+- description: Alta concorrência e dificuldade em se destacar no mercado local.
+  severity: high
+  solution_hint: O agente de voz pode automatizar o atendimento, oferecendo respostas
+    rápidas e personalizadas para captar clientes.
+- description: Falta de organização no agendamento de serviços, levando a perda de
+    compromissos.
+  severity: medium
+  solution_hint: Implementar agendamento automático via voz para reduzir falhas humanas
+    e melhorar a eficiência.
+- description: Dificuldade em gerenciar reclamações e garantir a satisfação do cliente.
+  severity: high
+  solution_hint: Usar o agente para coletar feedback pós-serviço e resolver problemas
+    proativamente.
+- description: Custos elevados com pessoal para atendimento telefônico 24/7.
+  severity: medium
+  solution_hint: Substituir atendentes humanos por agente de voz para reduzir custos
+    operacionais.
+- description: Complexidade em cumprir a LGPD na gestão de dados dos clientes.
+  severity: high
+  solution_hint: Integrar o agente com sistemas que garantam conformidade automática
+    com a LGPD.
+- description: Ineficiência na comunicação de preços e orçamentos, causando desconfiança.
+  severity: medium
+  solution_hint: O agente pode fornecer estimativas claras e instantâneas em português,
+    aumentando a transparência.
+typical_services:
+- Reparo de eletrodomésticos
+- Conserto de smartphones e tablets
+- Manutenção de computadores e notebooks
+- Serviços de assistência técnica automotiva
+- Reparo de equipamentos industriais
+- Manutenção de ar-condicionado
+- Conserto de eletrônicos em geral
+- Serviços de solda e reparos elétricos
+- Assistência para equipamentos de escritório
+- Reparo de ferramentas e máquinas
+recommended_functions:
+- name: Agendamento Automático de Serviços
+  priority: high
+  reason: Reduz falhas no agendamento e melhora a experiência do cliente com conveniência.
+- name: Atendimento ao Cliente 24/7
+  priority: high
+  reason: Atende clientes fora do horário comercial, aumentando a captação de negócios.
+- name: Processamento de Orçamentos e Pagamentos
+  priority: medium
+  reason: Agiliza as transações e reduz a necessidade de interação humana para vendas.
+- name: Coleta de Feedback Pós-Serviço
+  priority: medium
+  reason: Ajuda a monitorar satisfação e identificar áreas de melhoria automaticamente.
+- name: Integração com Sistemas de Gestão
+  priority: high
+  reason: Sincroniza dados com ERPs locais para eficiência operacional.
+- name: Resposta a Perguntas Frequentes (FAQ)
+  priority: low
+  reason: Libera a equipe para tarefas mais complexas, atendendo consultas básicas.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - TOTVS
+  - SAP
+  priority: high
+- name: Software de Gestão de Assistência Técnica
+  examples:
+  - GestãoClick
+  - OuroMobi
+  priority: high
+- name: Plataformas de Pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  priority: medium
+- name: Ferramentas de CRM
+  examples:
+  - RD Station
+  - PipeRun
+  priority: medium
+- name: Sistemas de Agendamento
+  examples:
+  - AgendaFácil
+  - Youse
+  priority: low
+industry_faq:
+- question: Quais são os preços dos serviços de reparo?
+  answer_template: Oferecemos orçamentos personalizados com base no tipo de serviço.
+    Posso ajudá-lo a agendar uma avaliação gratuita?
+- question: Vocês oferecem garantia nos reparos?
+  answer_template: Sim, todos os nossos serviços vêm com garantia de 90 dias para
+    sua tranquilidade.
+- question: Quanto tempo leva para consertar meu aparelho?
+  answer_template: O tempo varia conforme a complexidade, mas geralmente entre 1 a
+    3 dias úteis. Podemos fornecer uma estimativa mais precisa após a análise.
+- question: Vocês atendem em toda a região?
+  answer_template: Atendemos em várias cidades do Brasil. Verifique sua localidade
+    ou agende um serviço de coleta.
+- question: Como posso pagar pelos serviços?
+  answer_template: Aceitamos diversas formas de pagamento, incluindo cartões, PIX
+    e boletos, via integração com plataformas seguras.
+- question: Meus dados estão seguros com vocês?
+  answer_template: Sim, seguimos rigorosamente a LGPD para proteger todas as informações
+    dos clientes.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma ligação.
+  script: Olá! Entendo sua preocupação com custos. Oferecemos orçamentos competitivos
+    e personalizados. Posso ajudá-lo a agendar uma avaliação gratuita para dar um
+    preço exato? Isso pode economizar seu tempo e garantir transparência.
+  goal: Converter a consulta de preço em um agendamento para avaliação.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre um serviço específico, como reparo de
+    smartphone.
+  script: Olá! Para reparos de smartphone, oferecemos diagnóstico rápido e peças de
+    qualidade. Muitos clientes economizam até 30% comparado a serviços não autorizados.
+    Gostaria de agendar um horário?
+  goal: Educar o cliente sobre o valor e agendar um serviço.
+- trigger: compliance_concern
+  situation: Quando um cliente expressa preocupação com a LGPD ou segurança de dados.
+  script: Compreendo sua preocupação. Nosso sistema é totalmente compatível com a
+    LGPD, garantindo que seus dados sejam protegidos. Isso aumenta a confiança e evita
+    multas. Podemos demonstrar como isso funciona?
+  goal: Tranquilizar o cliente e destacar a conformidade como vantagem.
+competitors:
+- name: Multiassist
+  positioning: Rede nacional de assistência técnica com múltiplas localidades.
+  strengths:
+  - Amplo alcance geográfico
+  - Marcas parceiras reconhecidas
+  weaknesses:
+  - Preços elevados
+  - Atendimento impessoal
+  our_differentiation: Oferecemos atendimento por voz personalizado e eficiente, com
+    integração tecnológica que reduz custos.
+- name: Assistência Técnica Autorizada (ATA)
+  positioning: Especializada em reparos de marcas específicas com certificação.
+  strengths:
+  - Qualidade garantida pelas fabricantes
+  - Peças originais
+  weaknesses:
+  - Prazos longos de reparo
+  - Limitada a marcas específicas
+  our_differentiation: Nosso agente de voz agiliza o processo com agendamento rápido
+    e suporte 24/7, independente da marca.
+- name: Serviços locais independentes
+  positioning: Pequenas oficinas e técnicos autônomos com preços baixos.
+  strengths:
+  - Preços competitivos
+  - Atendimento personalizado local
+  weaknesses:
+  - Falta de padrão de qualidade
+  - Pouca confiabilidade
+  our_differentiation: Combinamos a eficiência tecnológica com transparência e conformidade
+    LGPD, oferecendo melhor custo-benefício.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatização do atendimento para uma oficina média, reduzindo custos
+      com funcionários.
+    monthly_cost: 500
+    monthly_savings: 2000
+    payback_months: 3
+  value_anchors:
+  - Economize até 40% em custos operacionais com atendimento automatizado.
+  - Aumente a satisfação do cliente com respostas instantâneas em português.
+  - Conformidade LGPD integrada, evitando riscos legais.
+market_context:
+  market_size: Estimado em R$ 50 bilhões anuais
+  growth_rate: 5% ao ano
+  key_trends:
+  - Crescimento na demanda por reparos de eletrônicos devido ao aumento no uso de
+    dispositivos.
+  - Tendência sustentável com foco em consertos em vez de descarte.
+  - Digitalização dos serviços, com mais clientes buscando agendamento online.
+  seasonality:
+    high:
+    - Férias escolares (julho e dezembro)
+    - Períodos pós-feriados
+    low:
+    - Meses chuvosos (janeiro a março em algumas regiões)
+    - Fim de ano (devido a fechamentos)
+typical_objections:
+- objection: É muito caro para meu negócio pequeno.
+  response: Entendo. Nosso sistema tem um ponto de entrada acessível e pode economizar
+    custos a longo prazo. Vamos analisar um plano personalizado?
+- objection: Não confio em atendimento por voz automatizado.
+  response: Nosso agente é projetado para ser natural e eficiente, com suporte humano
+    quando necessário. Podemos fazer uma demonstração?
+- objection: Já tenho um sistema que funciona bem.
+  response: Que bom! Nossa solução pode integrar-se ao seu sistema atual para melhorar
+    a eficiência sem interromper o fluxo. Gostaria de ver como?
+meta:
+  id: repair_services
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

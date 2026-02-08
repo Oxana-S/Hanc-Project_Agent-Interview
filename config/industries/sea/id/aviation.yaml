@@ -1,0 +1,260 @@
+pain_points:
+- description: Biaya bahan bakar yang fluktuatif dan tinggi sering kali menjadi beban
+    operasional terbesar, sulit diprediksi dalam perencanaan keuangan.
+  severity: high
+  solution_hint: Agen suara AI dapat memantau harga bahan bakar dan memberikan laporan
+    real-time serta analisis tren untuk membantu perencanaan anggaran.
+- description: Kepatuhan terhadap peraturan PDP (Perlindungan Data Pribadi) yang kompleks
+    dan sering berubah, berisiko denda besar jika terjadi pelanggaran.
+  severity: high
+  solution_hint: Agen dapat memberikan pembaruan regulasi otomatis dan checklist kepatuhan,
+    serta menjawab pertanyaan staf tentang prosedur PDP.
+- description: Tingkat pembatalan dan perubahan jadwal penumpang yang tinggi, menyebabkan
+    kerugian pendapatan dan beban kerja operasional yang meningkat.
+  severity: medium
+  solution_hint: Agen suara dapat menangani panggilan pembatalan dan perubahan secara
+    otomatis, menawarkan opsi penjadwalan ulang atau voucher, serta mengupdate sistem.
+- description: Keluhan pelanggan terkait keterlambatan penerbangan dan kehilangan
+    bagasi yang membanjiri pusat panggilan, merusak reputasi maskapai.
+  severity: medium
+  solution_hint: Agen dapat menjadi tier-1 support, memberikan informasi status real-time,
+    mengumpulkan detail klaim, dan mengalihkan kasus kompleks ke agen manusia.
+- description: Koordinasi yang tidak efisien antara kru darat, kru kabin, dan pihak
+    bandara, menyebabkan penundaan boarding dan turnaround pesawat.
+  severity: medium
+  solution_hint: Agen dapat berfungsi sebagai penghubung komunikasi terpadu, menyiarkan
+    pengumuman penting, dan mengonfirmasi penyelesaian tugas kepada semua pihak.
+- description: Permintaan informasi jadwal, harga, dan kebijakan perjalanan yang berulang
+    memakan waktu agen layanan pelanggan.
+  severity: low
+  solution_hint: Agen suara dapat menangani 80% pertanyaan umum ini 24/7, membebaskan
+    staf manusia untuk masalah yang lebih kompleks.
+typical_services:
+- Pemesanan Tiket Penerbangan (Domestik & Internasional)
+- Manajemen Check-in Online dan Boarding Pass
+- Layanan Informasi Jadwal dan Status Penerbangan
+- Penanganan Bagasi (Tracking dan Klaim Kehilangan)
+- Pemesanan Makanan Khusus dan Kursi (Special Meal & Seat Selection)
+- Layanan Penanganan Kelompok (Group Booking)
+- Program Loyalitas dan Manajemen Mileage
+- Dukungan untuk Penumpang dengan Kebutuhan Khusus (ABK)
+- Layanan Perubahan Jadwal dan Pembatalan Tiket
+- Penjualan Produk Ancillary (Asuransi Perjalanan, Akses Lounge)
+recommended_functions:
+- name: Pemrosesan Pembayaran via Suara
+  priority: high
+  reason: Memudahkan pelanggan untuk melakukan pembayaran tiket atau tambahan layanan
+    secara langsung melalui telepon, meningkatkan konversi.
+- name: Helpdesk Otomatis untuk Karyawan
+  priority: high
+  reason: Karyawan di bandara atau kantor dapat menanyakan SOP, info pesawat, atau
+    masalah IT dengan cepat via suara, meningkatkan efisiensi operasional.
+- name: Reservasi dan Manajemen Booking via Suara
+  priority: high
+  reason: Menangani permintaan pemesanan, perubahan, dan pembatalan yang merupakan
+    inti bisnis, tersedia 24 jam.
+- name: Notifikasi Proaktif untuk Pelanggan
+  priority: medium
+  reason: Mengirim panggilan suara otomatis untuk informasi delay, gate change, atau
+    pengingat check-in, meningkatkan pengalaman pelanggan.
+- name: Survei Kepuasan Pelanggan Otomatis
+  priority: medium
+  reason: Mengumpulkan umpan balik pelanggan secara real-time melalui panggilan singkat
+    setelah penerbangan, untuk perbaikan layanan.
+- name: Penerjemah Percakapan Real-time
+  priority: low
+  reason: Membantu agen manusia atau penumpang asing dalam komunikasi multibahasa,
+    khususnya di rute internasional.
+typical_integrations:
+- name: Sistem Computer Reservation System (CRS)/Global Distribution System (GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - TravelSky
+  priority: high
+- name: Sistem Departemen Control (DCS)
+  examples:
+  - Sistem lokal bandara
+  - Ultramain
+  priority: high
+- name: Sistem Enterprise Resource Planning (ERP)
+  examples:
+  - SAP
+  - Oracle
+  - Zahir
+  priority: medium
+- name: Sistem Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - 'Lokal: Qontak'
+  priority: medium
+- name: Platform Media Sosial dan Komunikasi
+  examples:
+  - WhatsApp Business API
+  - Instagram
+  - Line
+  priority: medium
+industry_faq:
+- question: Bagaimana cara membatalkan tiket dan apa kebijakan pengembalian dana?
+  answer_template: Untuk pembatalan tiket, silakan siapkan nomor booking. Kebijakan
+    refund berbeda-beda tergantung tipe tiket dan waktu pembatalan. Saya bantu cek
+    detailnya dan proses permintaan Anda.
+- question: Penerbangan saya delay, apa yang menjadi hak saya sebagai penumpang?
+  answer_template: Kami mohon maaf atas keterlambatan ini. Hak penumpang dapat berupa
+    makanan/minuman, akomodasi jika delay overnight, atau kompensasi sesuai peraturan
+    OT 90/2021. Silakan beri nomor booking untuk kami bantu lebih lanjut.
+- question: Bagaimana cara melacak bagasi saya yang belum muncul di carousel?
+  answer_template: Silakan beri nomor tag bagasi dan detail penerbangan. Saya akan
+    segera melacak status bagasi Anda melalui sistem dan menghubungi tim bagasi di
+    bandara tujuan.
+- question: Apakah ada biaya untuk memilih tempat duduk?
+  answer_template: Pemilihan tempat duduk (seat selection) dapat gratis atau berbayar,
+    tergantung kelas tiket dan rute. Untuk promo tertentu, biasanya ada biaya. Saya
+    bantu cek opsi yang tersedia untuk penerbangan Anda.
+- question: Bagaimana prosedur check-in untuk penerbangan domestik?
+  answer_template: Anda bisa check-in online via website/aplikasi kami mulai 48 jam
+    hingga 1 jam sebelum keberangkatan, atau langsung di konter bandara. Pastikan
+    membawa e-boarding pass dan KTP asli.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika prospek menanyakan harga dan menganggap solusi kami mahal.
+  script: Harga investasi kami mulai dari Rp 25 juta per bulan. Sebagai perbandingan,
+    biaya untuk satu agen call center manusia penuh-waktu bisa mencapai Rp 12-15 juta
+    per bulan, dan hanya melayani 8 jam/hari. Solusi kami bekerja 24/7 dan dapat menangani
+    ratusan panggilan secara bersamaan. Bapak/Ibu bisa mengalokasikan staf yang ada
+    untuk tugas yang lebih strategis. Boleh saya share studi kasus ROI dari maskapai
+    lain?
+  goal: Membingkai ulang harga sebagai investasi dengan ROI jelas, membandingkan dengan
+    biaya operasional saat ini.
+- trigger: competitor_mention
+  situation: Ketika prospek menyebutkan solusi dari pesaing.
+  script: Itu pilihan yang bagus. Yang membedakan kami adalah fokus khusus pada industri
+    penerbangan di Indonesia. Modul suara kami sudah terintegrasi dengan sistem CRS
+    seperti Amadeus dan Sabre yang umum digunakan di sini. Selain itu, kami memiliki
+    template kepatuhan PDP yang sudah disesuaikan dengan regulasi Indonesia, sehingga
+    mengurangi risiko untuk Bapak/Ibu. Apakah ada aspek spesifik dari solusi mereka
+    yang Bapak/Ibu pertimbangkan?
+  goal: Mengakui pesaing, kemudian menonjolkan diferensiasi lokal (integrasi dan compliance)
+    dan mengarahkan pembicaraan kembali ke kebutuhan spesifik.
+- trigger: need_approval
+  situation: Ketika kontak menyatakan perlu persetujuan dari atasan atau tim IT.
+  script: Tentu, saya mengerti. Banyak klien kami di industri penerbangan melibatkan
+    beberapa departemen. Untuk mempermudah proses approval, saya bisa siapkan demo
+    singkat yang difokuskan pada fungsi-fungsi utama seperti penanganan delay dan
+    perubahan jadwal. Saya juga bisa berikan dokumen ringkas tentang keamanan data
+    dan integrasi teknis untuk tim IT. Kira-kira kapan waktu yang tepat untuk kami
+    jadwalkan presentasi bersama tim yang relevan?
+  goal: Memfasilitasi proses pengambilan keputusan dengan menawarkan alat bantu (demo
+    targeted, dokumen teknis) dan mengamankan janji tindak lanjut.
+competitors:
+- name: Competitor A (Global Cloud Contact Center)
+  positioning: Penyedia platform omnichannel global dengan fitur lengkap.
+  strengths:
+  - Brand global kuat
+  - Fitur AI generik yang canggih
+  - Skalabilitas tinggi
+  weaknesses:
+  - Harga sangat tinggi untuk pasar Indonesia
+  - Kurangnya template khusus industri penerbangan lokal
+  - Support tidak 24/7 dalam WIB
+  our_differentiation: Kami menawarkan harga yang jauh lebih kompetitif dalam IDR,
+    modul siap pakai untuk reservasi & bagasi penerbangan, dan tim support lokal yang
+    memahami budaya bisnis dan regulasi Indonesia.
+- name: Competitor B (Startup AI Lokal)
+  positioning: Penyedia chatbot dan asisten virtual berbasis AI dengan harga murah.
+  strengths:
+  - Harga sangat terjangkau
+  - Tim pengembangan lokal
+  - Memahami bahasa dan slang Indonesia
+  weaknesses:
+  - Fitur suara (voice) terbatas
+  - Belum terintegrasi dengan sistem CRS/GDS
+  - Fokus pada retail, bukan aviation
+  our_differentiation: Solusi kami adalah agen suara (voice-first) yang dirancang
+    khusus untuk volume panggilan tinggi di penerbangan, dengan integrasi langsung
+    ke sistem inti operasional maskapai.
+- name: Competitor C (System Integrator Besar)
+  positioning: Perusahaan integrasi sistem besar yang menawarkan solusi custom.
+  strengths:
+  - Kemampuan kustomisasi tinggi
+  - Relasi kuat dengan enterprise
+  - Layanan konsultasi mendalam
+  weaknesses:
+  - Proyek implementasi lama (bulanan)
+  - Biaya pengembangan dan maintenance sangat tinggi
+  - Sulit di-upgrade
+  our_differentiation: Kami menawarkan solusi 'configure, not code' yang dapat di-deploy
+    dalam hitungan minggu dengan biaya bulanan yang pasti, memungkinkan maskapai bereksperimen
+    dan berkembang dengan cepat.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 25000000
+  - 150000000
+  entry_point: 25000000
+  roi_examples:
+  - scenario: Mengotomasi 40% panggilan ke call center untuk informasi jadwal dan
+      status.
+    monthly_cost: 40000000
+    monthly_savings: 60000000
+    payback_months: 1
+  value_anchors:
+  - Mengurangi biaya operasional call center hingga 30% dalam 6 bulan.
+  - Meningkatkan skor kepuasan pelanggan (CSAT) dengan notifikasi proaktif via suara.
+  - Memastikan kepatuhan PDP dengan pencatatan dan persetujuan otomatis setiap panggilan.
+market_context:
+  market_size: Diperkirakan > Rp 500 Miliar untuk solusi digital dan otomasi di sektor
+    penerbangan Indonesia.
+  growth_rate: 12-15% YoY, didorong oleh pemulihan travel pasca-pandemi dan ekspansi
+    maskapai low-cost.
+  key_trends:
+  - Peningkatan permintaan untuk travel experience tanpa sentuh (touchless) pasca
+    pandemi.
+  - Maskapai fokus pada pendapatan ancillary (tambahan) yang membutuhkan platform
+    penjualan yang agile.
+  - Regulasi PDP mendorong investasi dalam sistem yang aman dan transparan dalam pengolahan
+    data penumpang.
+  - Konsolidasi dan kemitraan antar maskapai menciptakan kebutuhan integrasi sistem
+    yang efisien.
+  seasonality:
+    high:
+    - Juni-Juli (libur sekolah)
+    - Desember-Januari (libur Natal & Tahun Baru)
+    - Hari Raya Idul Fitri
+    low:
+    - Februari-Maret
+    - September-Oktober
+typical_objections:
+- objection: Staf dan pelanggan kami mungkin tidak nyaman berinteraksi dengan mesin/robot.
+  response: Saya paham kekhawatiran itu. Agen suara AI kami dirancang dengan natural
+    language processing untuk bahasa Indonesia, termasuk logat daerah. Interaksinya
+    sangat natural seperti berbicara dengan manusia. Kami juga selalu menyediakan
+    opsi 'hubungi agen' untuk situasi kompleks. Banyak pilot project kami justru meningkatkan
+    CSAT karena mengurangi waktu tunggu.
+- objection: Sistem IT kami sudah tua dan rumit, khawatir tidak bisa terintegrasi.
+  response: Itu tantangan umum di industri. Tim teknis kami memiliki pengalaman khusus
+    mengintegrasikan solusi suara dengan sistem legacy di berbagai maskapai nasional.
+    Kami biasanya memulai dengan integrasi API yang sederhana terlebih dahulu, misalnya
+    untuk cek status penerbangan, sebelum ke modul yang lebih kompleks. Boleh kami
+    analisis sistem Bapak/Ibu terlebih dahulu?
+- objection: Kami sudah ada kontrak dengan vendor lain untuk layanan pelanggan.
+  response: Itu bagus. Solusi kami tidak selalu menggantikan, tapi bisa melengkapi.
+    Misalnya, agen suara AI kami bisa menjadi tier-1 support yang menangani panggilan
+    rutin di luar jam kerja vendor Bapak/Ibu atau saat beban panggilan memuncak (peak
+    season). Ini justru bisa mengoptimalkan kontrak yang ada. Bisa kita diskusikan
+    model hybrid seperti ini?
+meta:
+  id: aviation
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

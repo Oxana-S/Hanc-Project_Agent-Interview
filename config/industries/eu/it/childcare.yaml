@@ -1,0 +1,201 @@
+pain_points:
+- description: Difficoltà nel gestire le richieste di informazioni e iscrizioni 24/7, portando a perdita di potenziali clienti durante orari non lavorativi.
+  severity: high
+  solution_hint: Agente vocale AI può rispondere immediatamente, raccogliere dati di contatto e prenotare appuntamenti per visite.
+- description: Gestione manuale delle presenze, fatturazione e pagamenti risulta laboriosa e soggetta a errori.
+  severity: medium
+  solution_hint: Automatizzare la registrazione delle presenze, invio promemoria per i pagamenti e generazione fatture.
+- description: Comunicazione inefficiente con le famiglie per aggiornamenti quotidiani, menu o avvisi urgenti.
+  severity: medium
+  solution_hint: Invio automatizzato di messaggi vocali o SMS per comunicazioni di routine e emergenze.
+- description: Difficoltà nel trovare e gestire personale qualificato e nel coprire le assenze improvvise.
+  severity: high
+  solution_hint: Agente AI può gestire le prime fasi del reclutamento e coordinare le sostituzioni inviando avvisi.
+- description: Adempimento burocratico complesso (GDPR, normative regionali) per la gestione dei dati sensibili dei minori.
+  severity: high
+  solution_hint: Fornire modulistica digitale conforme e registrazioni vocali tracciate per il consenso, facilitando la compliance.
+- description: Basso tasso di fidelizzazione dopo il primo anno di frequenza del bambino.
+  severity: medium
+  solution_hint: Implementare check-in automatizzati e personalizzati con i genitori per costruire un rapporto più stretto.
+- description: Gestione complessa delle liste d'attesa e delle priorità di accesso (es. fratelli, residenti nel comune).
+  severity: low
+  solution_hint: Sistema automatizzato per aggiornare e comunicare la posizione in lista d'attesa ai genitori.
+typical_services:
+- Asilo Nido (0-3 anni)
+- Sezione Primavera (2-3 anni)
+- Micro-nido / Nido Famiglia
+- Servizio di Baby Parking
+- Centro Estivo / Summer Camp (3-12 anni)
+- Doposcuola e Assistenza Compiti
+- Ludoteca
+- Servizio di Pre e Post Asilo
+- Festa di Compleanno
+- Corso di Inglese per Bambini
+recommended_functions:
+- name: Prenotazione Visite e Iscrizioni
+  priority: high
+  reason: Convertire immediatamente le chiamate in lead qualificati, sfruttando l'alta domanda.
+- name: Gestione Pagamenti e Fatturazione
+  priority: high
+  reason: Ridurre il carico amministrativo e garantire un flusso di cassa puntuale.
+- name: Comunicazioni Proattive con le Famiglie
+  priority: medium
+  reason: Migliorare l'esperienza del genitore e la percezione del servizio, aumentando la fidelizzazione.
+- name: Gestione Presenze e Registri
+  priority: medium
+  reason: Automatizzare un compito obbligatorio per legge, riducendo errori e tempo impiegato.
+- name: Raccolta Feedback e Recensioni
+  priority: low
+  reason: Ottenere testimonianze positive automaticamente per il marketing e identificare aree di miglioramento.
+- name: Gestione Liste d'Attesa
+  priority: low
+  reason: Ottimizzare l'occupazione e comunicare professionalmente con le famiglie in attesa.
+typical_integrations:
+- name: Software di Gestione Asili
+  examples:
+  - Timbro
+  - AsiloWeb
+  - Kiddy
+  priority: high
+- name: Sistema di Pagamento Elettronico
+  examples:
+  - Satispay
+  - Nexi
+  - PayPal
+  priority: high
+- name: Piattaforma di Comunicazione
+  examples:
+  - Google Workspace
+  - Microsoft 365
+  priority: medium
+- name: Calendario / Agenda
+  examples:
+  - Google Calendar
+  - Apple Calendar
+  priority: medium
+- name: CRM
+  examples:
+  - Zoho CRM
+  - HubSpot
+  priority: low
+industry_faq:
+- question: Quali sono gli orari di apertura e i costi?
+  answer_template: Buongiorno! L'asilo è aperto dalle [ORE_APERTURA] alle [ORE_CHIUSURA], dal lunedì al venerdì. Per una quotazione personalizzata in base all'età del bambino e al pacchetto orario scelto,
+    posso prenotarle un appuntamento con la nostra coordinatrice. Le interessa?
+- question: Avete posti disponibili per [MESE]?
+  answer_template: Grazie per la sua domanda. Per verificare la disponibilità immediata e la posizione in lista d'attesa, ho bisogno di alcuni dettagli. Può dirmi l'età del bambino e il periodo di interesse
+    esatto? In ogni caso, posso registrare subito la sua richiesta.
+- question: Qual è il vostro rapporto educatore-bambini?
+  answer_template: Rispettiamo rigorosamente le normative regionali. Il nostro rapporto è tipicamente di 1 educatore ogni [NUMERO] bambini per la fascia 0-3 anni, garantendo massima cura e attenzione. Desidera
+    maggiori dettagli sul nostro progetto educativo?
+- question: Come gestite le allergie alimentari?
+  answer_template: La sicurezza è prioritaria. Collaboriamo con un nutrizionista e predisponiamo menu personalizzati per ogni esigenza certificata. Tutto il personale è formato sul primo soccorso pediatrico.
+    Vuole fissare un incontro per discutere il caso specifico di suo figlio?
+- question: Offrite il servizio di pre-asilo o post-asilo?
+  answer_template: Sì, offriamo un servizio di pre e post asilo per agevolare le famiglie con esigenze lavorative. Gli orari e i costi aggiuntivi variano. Posso trasferirla con la segreteria per un preventivo
+    dettagliato?
+sales_scripts:
+- trigger: price_question
+  situation: Genitore chiede informazioni sui costi al primo contatto.
+  script: Capisco perfettamente, il budget è una considerazione importante. I nostri piani partono da [PREZZO_INGRESSO] al mese per un pacchetto base. Tuttavia, il costo finale dipende dall'età del bambino,
+    dagli orari e da servizi aggiuntivi come il pre-asilo. Invece di darle una cifra generica, posso prenotarle una visita virtuale di 15 minuti? Così la nostra coordinatrice potrà mostrarle la struttura
+    e preparare una proposta su misura, valutando anche eventuali agevolazioni comunali a cui ha diritto. Le va bene?
+  goal: Convertire la domanda di prezzo in un appuntamento qualificato.
+- trigger: busy_signal
+  situation: Chiamata ricevuta fuori orario d'ufficio o linea occupata.
+  script: Buongiorno, questo è l'asilo nido [NOME]. Siamo spiacenti, al momento non possiamo rispondere telefonicamente. Sono il suo assistente digitale. Posso rispondere alle domande più frequenti, inviarle
+    via email tutte le informazioni o, meglio ancora, prenotarle un appuntamento per una chiamata di ritorno con la nostra coordinatrice in orario a lei comodo. Cosa preferisce?
+  goal: Catturare il lead e dimostrare efficienza e disponibilità 24/7.
+- trigger: efficiency_demo
+  situation: Direttrice/gestore esprime frustrazione per il carico amministrativo.
+  script: Mi rendo conto che gestire iscrizioni, pagamenti e comunicazioni toglie tempo prezioso alla cura dei bambini e alla qualità del servizio. Il nostro sistema automatizza proprio questi processi.
+    Ad esempio, può ridurre del 70% il tempo speso per le chiamate informative e garantire che il 100% dei pagamenti arrivi in tempo con promemoria vocali automatici. Questo significa più tempo per la sua
+    squadra educativa e meno stress. Le interessa vedere una demo di 10 minuti su come funziona?
+  goal: Collegare le funzionalità dell'agente AI al risparmio di tempo/tangibile.
+competitors:
+- name: MammeCare / BabySitter Private
+  positioning: Servizio di baby-sitting a domicilio informale.
+  strengths:
+  - Massima flessibilità oraria
+  - ambiente familiare per il bambino
+  weaknesses:
+  - Mancanza di supervisione professionale strutturata
+  - nessun progetto educativo
+  - rischio di last-minute cancellation
+  our_differentiation: Offriamo un ambiente educativo certificato, socializzazione con coetanei, programma pedagogico e massima affidabilità con personale qualificato.
+- name: Asili Nido Comunali
+  positioning: Servizio pubblico a costi calmierati.
+  strengths:
+  - Costi molto bassi
+  - strutture spesso ampie
+  weaknesses:
+  - Liste d'attesa lunghissime (anche anni)
+  - orari rigidi
+  - minore flessibilità nei servizi
+  our_differentiation: Disponibilità più immediata, orari flessibili (pre/post asilo), servizi aggiuntivi (corsi, centri estivi) e comunicazione diretta e reattiva con la famiglia.
+- name: Grandi Catene Private (es. "Giocamondo")
+  positioning: Asili nido privati su scala nazionale.
+  strengths:
+  - Brand riconosciuto
+  - strutture standardizzate
+  - potenzialmente più sedi
+  weaknesses:
+  - Minore attenzione personalizzata
+  - processi più burocratici
+  - costi più elevati per standardizzazione
+  our_differentiation: Gestione familiare e attenzione personalizzata al singolo bambino e alla famiglia, maggiore adattabilità alle esigenze locali, rapporto qualità-presso spesso più vantaggioso.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 400
+  - 900
+  entry_point: 450
+  roi_examples:
+  - scenario: Riduzione del 70% del tempo speso in chiamate informative e gestione appuntamenti manuali.
+    monthly_cost: 99
+    monthly_savings: 350
+    payback_months: 1
+  value_anchors:
+  - Recupera 10 ore al mese di lavoro amministrativo del tuo staff.
+  - Converti l'80% delle chiamate dopo le 18 in appuntamenti qualificati.
+  - Garantisci pagamenti puntuali al 100% con promemoria automatizzati.
+market_context:
+  market_size: Circa 3 miliardi di EUR annui (servizi per la prima infanzia 0-3)
+  growth_rate: Stabile, con leggera crescita guidata da aumento partecipazione femminile al lavoro e bonus asilo.
+  key_trends:
+  - Digitalizzazione della comunicazione asilo-famiglia (app, portali).
+  - Richiesta crescente di flessibilità oraria (pre/post asilo).
+  - Attenzione alla qualità pedagogica e alle diete biologiche/etiche.
+  - Utilizzo di voucher e bonus governativi (es. 'Bonus Asilo Nido').
+  seasonality:
+    high:
+    - Settembre (iscrizioni)
+    - Gennaio (iscrizioni per l'anno successivo)
+    - Giugno (iscrizioni centri estivi)
+    low:
+    - Agosto (chiusura estiva)
+    - Periodo natalizio
+typical_objections:
+- objection: Siamo una piccola struttura, non possiamo permetterci tecnologia avanzata.
+  response: Proprio per le piccole strutture è fondamentale. Parte da soli 99€ al mese e le fa risparmiare subito più di quanto costa, liberando risorse. Inoltre, le dà un vantaggio competitivo di professionalità
+    rispetto agli altri nidi della zona.
+- objection: I genitori preferiscono parlare con una persona, non con un robot.
+  response: Assolutamente d'accordo. Il nostro agente non sostituisce il contatto umano, lo potenzia. Filtra le chiamate routinarie (orari, costi), così il suo staff ha più tempo per conversazioni di qualità
+    con i genitori durante le visite o gli aggiornamenti quotidiani. Inoltre, è sempre disponibile, anche la domenica.
+- objection: Siamo già organizzati con WhatsApp e fogli Excel.
+  response: Capisco. WhatsApp ed Excel sono flessibili, ma non scalano, sono insicuri per i dati (GDPR) e dipendono dall'intervento manuale. Il nostro sistema automatizza e traccia tutto in un unico posto,
+    riducendo errori e rischi. Ha mai perso un pagamento o un messaggio importante in una chat di gruppo?
+meta:
+  id: childcare
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- childcare
+- daycare
+- nanny
+- kindergarten
+_extends: _base/childcare

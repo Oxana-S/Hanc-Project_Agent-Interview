@@ -1,0 +1,257 @@
+pain_points:
+- description: Coordinación compleja entre múltiples proveedores y clientes, lo que
+    genera retrasos y errores.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar la comunicación y programación,
+    reduciendo la carga manual.
+- description: Cambios de última hora que causan estrés y aumentan los costos.
+  severity: high
+  solution_hint: Proporcionar actualizaciones en tiempo real y gestionar ajustes automáticamente
+    para minimizar impactos.
+- description: Exceso de presupuesto debido a costos ocultos o mala planificación.
+  severity: medium
+  solution_hint: Ofrecer seguimiento de gastos y alertas para mantener el control
+    financiero.
+- description: Bajas tasas de asistencia a eventos, afectando el ROI.
+  severity: medium
+  solution_hint: Automatizar recordatorios y gestionar RSVP para mejorar la participación.
+- description: Cumplimiento del GDPR en el manejo de datos de invitados, lo que requiere
+    atención constante.
+  severity: high
+  solution_hint: Integrar procesos que aseguren el consentimiento y la protección
+    de datos automáticamente.
+- description: Fluctuaciones estacionales en la demanda, dificultando la planificación
+    a largo plazo.
+  severity: low
+  solution_hint: Analizar tendencias y ofrecer insights predictivos para optimizar
+    recursos.
+- description: Dificultad para encontrar proveedores confiables y de calidad en plazos
+    ajustados.
+  severity: medium
+  solution_hint: Conectar con bases de datos de proveedores verificados y gestionar
+    solicitudes eficientemente.
+typical_services:
+- Organización de eventos corporativos
+- Bodas y celebraciones
+- Congresos y convenciones
+- Catering y servicios de comida
+- Alquiler de equipos audiovisuales
+- Decoración y diseño de espacios
+- Gestión de invitados y RSVP
+- Marketing y promoción de eventos
+- Logística y transporte
+- Seguridad y control de acceso
+recommended_functions:
+- name: Reserva y programación automatizada
+  priority: high
+  reason: Reduce errores manuales y ahorra tiempo en la coordinación de eventos.
+- name: Manejo de consultas de clientes
+  priority: high
+  reason: Mejora la experiencia del cliente al proporcionar respuestas rápidas y precisas.
+- name: Recordatorios de pagos y facturación
+  priority: medium
+  reason: Ayuda a mantener el flujo de caja y reduce los retrasos en los pagos.
+- name: Recolección de feedback post-evento
+  priority: medium
+  reason: Facilita la mejora continua mediante insights valiosos de los asistentes.
+- name: Soporte multilingüe para eventos internacionales
+  priority: low
+  reason: Atrae a clientes globales y mejora la comunicación en diversos contextos.
+- name: Integración con sistemas CRM
+  priority: high
+  reason: Centraliza la información del cliente para un servicio más personalizado.
+- name: Actualizaciones en tiempo real para clientes
+  priority: medium
+  reason: Aumenta la transparencia y reduce la ansiedad por cambios inesperados.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - PayPal
+  - Stripe
+  - Bizum
+  - Redsys
+  priority: high
+- name: Software de gestión de eventos
+  examples:
+  - Eventbrite
+  - Ticketea
+  - Weezevent
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - Sage
+  - Contasimple
+  - A3Software
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - WhatsApp Business
+  - Telegram
+  - Slack
+  priority: medium
+- name: Plataformas de marketing digital
+  examples:
+  - Mailchimp
+  - Sendinblue
+  - Aweber
+  priority: low
+industry_faq:
+- question: ¿Cuál es el costo típico para organizar un evento corporativo en España?
+  answer_template: El costo varía según el tamaño y los servicios, pero generalmente
+    oscila entre 1.000 y 50.000 EUR. Podemos ofrecerte un presupuesto personalizado
+    basado en tus necesidades.
+- question: ¿Cómo manejan los cambios de última hora en los eventos?
+  answer_template: Nuestro agente de voz AI gestiona ajustes automáticamente, notificando
+    a todos los involucrados y actualizando los planes en tiempo real para minimizar
+    disruptions.
+- question: ¿Qué servicios están incluidos en la organización de bodas?
+  answer_template: Incluimos coordinación completa, catering, decoración, gestión
+    de invitados y más. Te proporcionaremos una lista detallada adaptada a tu evento.
+- question: ¿Cómo aseguran el cumplimiento del GDPR con los datos de los invitados?
+  answer_template: Integramos procesos que gestionan el consentimiento y protegen
+    los datos automáticamente, cumpliendo con todas las regulaciones de la UE.
+- question: ¿Pueden manejar eventos internacionales con asistencia multilingüe?
+  answer_template: Sí, nuestro agente ofrece soporte en varios idiomas y se integra
+    con traductores para facilitar la comunicación global.
+- question: ¿Qué pasa si hay bajas tasas de asistencia?
+  answer_template: Implementamos estrategias de recordatorio y promoción automatizadas
+    para maximizar la participación y el ROI.
+- question: ¿Cómo optimizan los presupuestos para evitar sobrecostos?
+  answer_template: Monitoreamos los gastos en tiempo real y enviamos alertas proactivas,
+    ayudándote a mantener el control financiero.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios durante una consulta inicial.
+  script: Hola, entiendo que quieres conocer los costos. Nuestros servicios comienzan
+    desde 1.000 EUR, pero el precio final depende de tus necesidades específicas.
+    ¿Podrías compartir algunos detalles sobre tu evento para darte una cotización
+    precisa?
+  goal: Obtener información del cliente y guiarlo hacia un presupuesto personalizado.
+- trigger: service_inquiry
+  situation: Cuando un cliente solicita información sobre servicios específicos.
+  script: Gracias por tu interés. Ofrecemos una gama completa de servicios, como organización
+    de eventos corporativos, bodas, y más. ¿Hay algún tipo de evento en particular
+    que te gustaría planificar? Puedo recomendarte opciones basadas en tus objetivos.
+  goal: Educar al cliente sobre los servicios y identificar sus necesidades.
+- trigger: objection_handling
+  situation: Cuando un cliente expresa preocupación por el costo o la confianza en
+    la tecnología.
+  script: Comprendo tu preocupación. Nuestra solución AI no solo reduce costos operativos
+    hasta un 30%, sino que también mejora la eficiencia y la satisfacción del cliente.
+    ¿Te gustaría ver un caso de éxito o una demostración para sentirte más seguro?
+  goal: Superar objeciones y construir confianza mediante pruebas tangibles.
+- trigger: follow_up
+  situation: Después de una consulta inicial para mantener el interés.
+  script: Hola, solo quería seguir contigo sobre tu evento. ¿Has tenido la oportunidad
+    de revisar nuestra propuesta? Estoy aquí para responder cualquier pregunta y ayudarte
+    a dar el siguiente paso.
+  goal: Mantener el compromiso y avanzar en el proceso de venta.
+competitors:
+- name: Eventos Barcelona
+  positioning: Líder en eventos corporativos y culturales en Cataluña.
+  strengths:
+  - Amplia red de proveedores
+  - experiencia local
+  - buena reputación
+  weaknesses:
+  - Altos costos
+  - procesos manuales
+  - limitada escalabilidad
+  our_differentiation: Ofrecemos automatización AI que reduce costos y mejora la eficiencia,
+    con integraciones avanzadas.
+- name: Madrid Events
+  positioning: Especializado en bodas y eventos sociales en la capital.
+  strengths:
+  - Diseño personalizado
+  - atención al detalle
+  - clientela de alto nivel
+  weaknesses:
+  - Poca flexibilidad para cambios
+  - dependencia de temporada alta
+  our_differentiation: Proporcionamos gestión en tiempo real y soporte multilingüe,
+    ideal para eventos dinámicos.
+- name: Congresos España
+  positioning: Enfoque en congresos y convenciones a nivel nacional.
+  strengths:
+  - Logística compleja
+  - relaciones con venues grandes
+  - expertise técnico
+  weaknesses:
+  - Lentitud en respuestas
+  - falta de innovación digital
+  our_differentiation: Automatizamos la comunicación y coordinación, ofreciendo rapidez
+    y precisión.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatización de gestiones de invitados para un evento corporativo
+      de 200 personas.
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Reducción de sobrecostos mediante seguimiento de presupuesto para una
+      boda.
+    monthly_cost: 150
+    monthly_savings: 450
+    payback_months: 1
+  value_anchors:
+  - Reduce los costos operativos hasta un 30% con nuestra automatización AI.
+  - Mejora la satisfacción del cliente con respuestas en tiempo real.
+  - Optimiza los presupuestos evitando gastos innecesarios.
+market_context:
+  market_size: Estimado en 10 mil millones EUR anuales en España
+  growth_rate: 5% YoY, impulsado por la recuperación post-pandemia y digitalización
+  key_trends:
+  - Aumento de eventos híbridos (presenciales y virtuales)
+  - Enfoque en sostenibilidad y eventos ecológicos
+  - Digitalización de procesos de planificación y gestión
+  seasonality:
+    high:
+    - Primavera
+    - Verano
+    - Otoño
+    low:
+    - Invierno
+typical_objections:
+- objection: Es demasiado caro para mi presupuesto.
+  response: Entiendo tu preocupación. Nuestra solución AI en realidad te ahorra dinero
+    a largo plazo al reducir costos operativos. ¿Podemos analizar tu caso específico
+    para mostrarte el ROI?
+- objection: No confío en la tecnología para gestionar algo tan importante como mi
+    evento.
+  response: Es comprensible. Nuestro agente está diseñado para complementar, no reemplazar,
+    el toque humano. Ofrecemos soporte 24/7 y casos de éxito que demuestran su eficacia.
+    ¿Te gustaría una demostración?
+- objection: Ya trabajo con un planificador de eventos y no quiero cambiar.
+  response: Nuestra herramienta puede integrarse con tu equipo existente, mejorando
+    su eficiencia sin interrumpir los procesos. Podría liberar tiempo para que se
+    enfoquen en aspectos creativos.
+- objection: Los eventos son impredecibles y necesito flexibilidad, no automatización
+    rígida.
+  response: Nuestro AI es altamente adaptable y maneja cambios en tiempo real, ofreciendo
+    más flexibilidad que los procesos manuales. Te mantendremos informado en cada
+    paso.
+meta:
+  id: events
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

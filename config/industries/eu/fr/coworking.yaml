@@ -1,0 +1,236 @@
+pain_points:
+- description: Difficultés dans la gestion administrative des réservations de salles et des inscriptions des nouveaux membres.
+  severity: high
+  solution_hint: Automatiser la prise de rendez-vous et le pré-remplissage des formulaires d'inscription.
+- description: Taux de rotation élevé des membres (turnover), rendant difficile la prévision des revenus.
+  severity: high
+  solution_hint: Identifier les motifs de départ via des enquêtes automatisées et proposer des offres de fidélisation.
+- description: Coûts opérationnels élevés (énergie, nettoyage, maintenance) qui grèvent la rentabilité.
+  severity: high
+  solution_hint: Optimiser la gestion des créneaux et des équipements pour réduire la consommation et les coûts.
+- description: Concurrence intense dans les grandes villes, nécessitant une différenciation constante.
+  severity: medium
+  solution_hint: Mettre en avant automatiquement les services uniques et les témoignages de membres satisfaits.
+- description: Gestion complexe des abonnements et des paiements récurrents avec différents plans tarifaires.
+  severity: medium
+  solution_hint: Automatiser les rappels de paiement, les mises à jour de forfaits et la facturation.
+- description: Difficulté à animer la communauté et à organiser des événements engageants régulièrement.
+  severity: medium
+  solution_hint: Promouvoir les événements via des appels automatisés et recueillir les feedbacks des participants.
+- description: Respect strict du RGPD pour la gestion des données des membres et des prospects.
+  severity: low
+  solution_hint: Fournir des scripts de consentement clairs et assurer le suivi des préférences de communication.
+typical_services:
+- Bureau dédié
+- Poste en open space (hot desk)
+- Salle de réunion à l'heure ou à la journée
+- Bureau virtuel (adresse postale, accueil téléphonique)
+- Salle de conférence / événementiel
+- Abonnement avec accès 24/7
+- Services aux entreprises (domiciliation, secrétariat)
+- Cafétéria / kitchenette commune
+- Espaces de détente (canapés, baby-foot)
+- Accès à des salles de call privées
+recommended_functions:
+- name: Gestionnaire de réservations intelligent
+  priority: high
+  reason: Réduit considérablement la charge administrative pour les salles de réunion et les bureaux.
+- name: Assistant à l'onboarding des nouveaux membres
+  priority: high
+  reason: Guide les nouveaux membres à travers les processus et présente les services, améliorant l'expérience initiale.
+- name: Collecteur de feedback et de renouvellement
+  priority: medium
+  reason: Permet de comprendre les raisons des départs et de proposer des offres de renouvellement personnalisées.
+- name: Rappel automatique de paiement et de facturation
+  priority: medium
+  reason: Améliore le taux de recouvrement et réduit les impayés.
+- name: Annonciateur d'événements et gestion des inscriptions
+  priority: medium
+  reason: Favorise l'engagement de la communauté et optimise la participation aux événements.
+- name: Répondeur FAQ 24/7 sur les tarifs et disponibilités
+  priority: low
+  reason: Capture les leads en dehors des heures ouvrables et répond aux questions récurrentes.
+typical_integrations:
+- name: Logiciel de réservation de salles
+  examples:
+  - OfficeRnD
+  - Essensys
+  - Archie
+  priority: high
+- name: CRM / Gestion de la relation membre
+  examples:
+  - Salesforce
+  - HubSpot
+  - Solutions locales
+  priority: high
+- name: Logiciel de comptabilité et de facturation
+  examples:
+  - Cegid
+  - Sage
+  - Quadratus
+  priority: medium
+- name: Outil de marketing automation
+  examples:
+  - Mailchimp
+  - Sendinblue
+  - ActiveCampaign
+  priority: medium
+- name: Système de contrôle d'accès
+  examples:
+  - Kisi
+  - Salto
+  - ASSA ABLOY
+  priority: low
+- name: Plateforme de visioconférence
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Google Meet
+  priority: low
+industry_faq:
+- question: Quels sont vos tarifs pour un bureau en open space ?
+  answer_template: Nos tarifs pour un poste en open space (hot desk) commencent à partir de [PRIX] € HT/mois. Ce forfait inclut généralement l'accès aux espaces communs, le WiFi haut débit et le café. Puis-je
+    vous proposer une visite pour discuter de vos besoins précis ?
+- question: Proposez-vous des contrats flexibles sans engagement de longue durée ?
+  answer_template: Absolument. Nous comprenons le besoin de flexibilité. Nous proposons des formules au mois sans engagement, ainsi que des engagements plus longs avec des tarifs avantageux. Quel type de
+    flexibilité recherchez-vous ?
+- question: Vos salles de réunion sont-elles équipées pour la visioconférence ?
+  answer_template: Oui, toutes nos salles de réunion sont équipées d'écrans, de caméras et de systèmes audio pour la visioconférence (Zoom, Teams, etc.). Vous pouvez réserver à l'heure ou à la journée directement
+    depuis notre application.
+- question: L'accès est-il possible 7j/7 et 24h/24 ?
+  answer_template: Cela dépend de votre abonnement. Nos formules premium offrent un accès 24/7 avec un système de badge. Les forfaits standard ont des horaires d'accès définis. Quel est votre rythme de
+    travail habituel ?
+- question: Proposez-vous des services supplémentaires comme une adresse postale ou un accueil téléphonique ?
+  answer_template: Oui, notre service de bureau virtuel inclut une adresse postale prestigieuse, la réception de votre courrier et un service d'accueil téléphonique personnalisable. Souhaitez-vous plus
+    de détails sur ces options ?
+- question: Comment gérez-vous la confidentialité et la sécurité des données (RGPD) ?
+  answer_template: Le respect du RGPD est une priorité. Nous avons des processus stricts pour la collecte et le traitement des données. Toutes nos intégrations logicielles sont conformes, et nos espaces
+    offrent des zones de travail confidentielles.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un prospect demande le prix d'un service spécifique.
+  script: Je comprends que le budget est un critère important. Nos tarifs sont adaptés à différents besoins, à partir de [PRIX_ENTRY] € HT/mois pour un accès de base. La meilleure façon de vous proposer
+    un devis précis est de comprendre comment vous comptez utiliser l'espace. Travaillez-vous seul ou en équipe ? Avez-vous besoin de salles de réunion régulièrement ?
+  goal: Qualifier le besoin et éviter une réponse tarifaire sèche, en orientant vers une discussion sur la valeur.
+- trigger: competitor_mention
+  situation: 'Quand le prospect mentionne un concurrent (ex: WeWork, Spaces).'
+  script: 'C''est une excellente référence. Ce que nos membres apprécient particulièrement chez nous, c''est [NOTRE DIFFÉRENCIATION, ex: notre communauté plus locale, notre flexibilité contractuelle supérieure
+    ou notre rapport qualité-prix]. Contrairement à certains grands réseaux, nous offrons un service plus personnalisé. Puis-je vous envoyer quelques témoignages de membres ayant fait ce choix ?'
+  goal: Reconnaître le concurrent, puis pivoter rapidement sur nos avantages différentiels et concrets.
+- trigger: availability_check
+  situation: Quand un prospect demande si un bureau dédié ou une salle est disponible à une date précise.
+  script: Je peux vérifier la disponibilité en temps réel pour vous. Pour un bureau dédié dans l'espace [NOM_ESPACE], il y a actuellement [NOMBRE] postes disponibles. Pour les salles de réunion, la disponibilité
+    dépend du créneau. Souhaitez-vous que je vous réserve une visite pour voir les espaces disponibles et discuter de vos besoins en détail ?
+  goal: Montrer réactivité, fournir une information claire et pousser vers un rendez-vous physique ou visuel.
+competitors:
+- name: WeWork
+  positioning: Leader global, forte présence dans les grandes villes françaises.
+  strengths:
+  - Marque reconnue
+  - Réseau international
+  - Design et aménagement soignés
+  - Application robuste
+  weaknesses:
+  - Tarifs élevés
+  - Image de grande corporate
+  - Moins de flexibilité sur les petits contrats
+  - Communauté parfois moins soudée
+  our_differentiation: Une approche plus locale et personnalisée, des contrats plus flexibles, et une communauté d'entrepreneurs et de TPE/PME plus engagée.
+- name: Spaces (IWG)
+  positioning: Réseau international axé sur les professionnels et les entreprises.
+  strengths:
+  - Très grand réseau
+  - Forfaits entreprises
+  - Locations de longue durée
+  weaknesses:
+  - Expérience parfois standardisée
+  - Moins adapté aux freelances
+  - Processus moins agile
+  our_differentiation: Une ambiance plus dynamique et créative, des services sur mesure pour les indépendants et petites équipes, et une gestion plus agile.
+- name: Morning
+  positioning: Réseau français premium, axé design et bien-être.
+  strengths:
+  - Design et architecture haut de gamme
+  - Focus sur le bien-être
+  - Restaurants et services intégrés
+  - Communauté sélective
+  weaknesses:
+  - Présence limitée à quelques villes
+  - Tarifs très premium
+  - Moins adapté aux budgets serrés
+  our_differentiation: Un excellent rapport qualité-prix, un accès à des services premium sans le prix exorbitant, et une communauté plus diversifiée.
+- name: Coworkings locaux indépendants
+  positioning: Petits espaces de quartier, souvent à gestion artisanale.
+  strengths:
+  - Ambiance familiale et conviviale
+  - Tarifs souvent compétitifs
+  - Très grande flexibilité
+  - Proximité géographique
+  weaknesses:
+  - Services et équipements parfois limités
+  - Gestion peu professionnalisée
+  - Peu ou pas de réseau
+  - Outils numériques basiques
+  our_differentiation: 'Le meilleur des deux mondes : la convivialité et l''agilité d''un indépendant, couplée à la professionnalisation, aux outils digitaux et au réseau d''un opérateur structuré.'
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 800
+  entry_point: 150
+  roi_examples:
+  - scenario: Freelance passant d'un café/domicile à un poste en open space
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: TPE de 5 personnes louant un bureau privé vs un espace coworking
+    monthly_cost: 1800
+    monthly_savings: 3600
+    payback_months: 2
+  value_anchors:
+  - Gagnez du temps et de l'argent en évitant les frais de bail, de maintenance et de services séparés.
+  - La flexibilité vous permet de grandir ou de réduire votre espace sans pénalité.
+  - L'accès à un réseau professionnel peut générer des opportunités commerciales inestimables.
+market_context:
+  market_size: Environ 1.5 milliard d'euros (avant pandémie), en reconfiguration post-Covid.
+  growth_rate: ~10% YoY, tiré par l'essor du travail hybride et des freelances.
+  key_trends:
+  - Demande croissante pour le travail hybride (2-3 jours/semaine au bureau).
+  - Développement des espaces en périphérie des villes (coworking de proximité).
+  - Importance accrue des services 'wellness' et de la qualité de l'air.
+  - Intégration forte de la technologie (apps, IoT, smart building).
+  seasonality:
+    high:
+    - Septembre (rentrée)
+    - Janvier (bonnes résolutions)
+    - Périodes de salons professionnels
+    low:
+    - Août (vacances d'été)
+    - Décembre (fêtes de fin d'année)
+    - Semaines de pont
+typical_objections:
+- objection: C'est trop cher par rapport à un bureau traditionnel.
+  response: Je comprends. Avez-vous calculé le coût total d'un bureau traditionnel ? Loyer, charges, équipement, internet, nettoyage, assurance... Chez nous, tout est inclus dans un prix fixe et prévisible.
+    De plus, vous gagnez en flexibilité et en réseau. Puis-je vous partager une simulation comparative ?
+- objection: Je travaille très bien de chez moi, je n'ai pas besoin d'un espace.
+  response: C'est tout à fait possible. Beaucoup de nos membres ont commencé ainsi. Ils viennent chez nous pour séparer vie pro/vie perso, rencontrer d'autres professionnels, ou accéder à des équipements
+    qu'ils n'ont pas à la maison (salles de réunion, imprimante professionnelle). Et si vous testiez avec un forfait 5 jours/mois pour commencer ?
+- objection: Je ne veux pas m'engager sur un an.
+  response: C'est justement l'un de nos principaux avantages. Nous proposons des engagements très flexibles, y compris des formules au mois sans engagement. Cela vous permet de tester l'espace et la communauté
+    sans risque. Quel niveau d'engagement vous conviendrait pour démarrer ?
+- objection: J'ai peur que ce soit trop bruyant pour me concentrer.
+  response: 'C''est une préoccupation légitime. Nos espaces sont conçus avec différentes zones : des open spaces dynamiques, des zones de concentration silencieuses, des salles fermées et des cabines téléphoniques.
+    Nous trouvons toujours le bon endroit pour chaque type de travail. Lors de la visite, je vous montrerai ces différents espaces.'
+meta:
+  id: coworking
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

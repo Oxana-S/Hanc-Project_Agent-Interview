@@ -1,0 +1,206 @@
+pain_points:
+- description: Khối lượng công việc hành chính và lịch hẹn quá tải, dẫn đến sai sót
+    và chậm trễ.
+  severity: high
+  solution_hint: Tự động hóa việc sắp xếp lịch và nhắc nhở qua điện thoại thông minh.
+- description: Khó khăn trong việc tuân thủ quy định PDPD về bảo vệ dữ liệu cá nhân.
+  severity: high
+  solution_hint: Cung cấp thông tin và hướng dẫn tuân thủ qua các cuộc gọi tự động.
+- description: Rào cản ngôn ngữ khi tiếp nhận khách hàng quốc tế, gây mất cơ hội.
+  severity: medium
+  solution_hint: Hỗ trợ đa ngôn ngữ trong tư vấn qua điện thoại ban đầu.
+- description: Chi phí cao cho nhân sự xử lý cuộc gọi và tư vấn cơ bản.
+  severity: medium
+  solution_hint: Giảm tải nhân viên bằng cách trả lời các câu hỏi thường gặp tự động.
+- description: Quản lý hồ sơ khách hàng thủ công, dễ thất lạc và khó truy xuất.
+  severity: medium
+  solution_hint: Tích hợp với hệ thống CRM để cập nhật thông tin qua điện thoại.
+- description: Thiếu công cụ hỗ trợ tiếp thị và thu hút khách hàng mới.
+  severity: low
+  solution_hint: Thực hiện cuộc gọi tiếp thị tự động cho các dịch vụ pháp lý phổ biến.
+typical_services:
+- Tư vấn pháp luật
+- Soạn thảo hợp đồng
+- Đại diện tố tụng
+- Đăng ký doanh nghiệp
+- Bảo hộ sở hữu trí tuệ
+- Tư vấn thuế và kế toán
+- Giải quyết tranh chấp lao động
+- Dịch vụ pháp lý cho bất động sản
+- Tư vấn tuân thủ PDPD
+- Hỗ trợ pháp lý cho startup
+recommended_functions:
+- name: Trả lời tự động các câu hỏi pháp lý cơ bản
+  priority: high
+  reason: Giảm áp lực cho luật sư và cải thiện trải nghiệm khách hàng.
+- name: Sắp xếp lịch hẹn thông minh
+  priority: high
+  reason: Tối ưu hóa thời gian và tránh xung đột lịch trình.
+- name: Nhắc nhở tuân thủ PDPD qua điện thoại
+  priority: medium
+  reason: Hỗ trợ doanh nghiệp tuân thủ quy định pháp luật Việt Nam.
+- name: Tư vấn đa ngôn ngữ cho khách quốc tế
+  priority: medium
+  reason: Mở rộng thị trường và thu hút khách hàng nước ngoài.
+- name: Tích hợp với CRM để cập nhật hồ sơ
+  priority: low
+  reason: Nâng cao hiệu quả quản lý thông tin khách hàng.
+- name: Gọi điện tiếp thị dịch vụ pháp lý
+  priority: low
+  reason: Tăng cường khả năng thu hút khách hàng mới.
+typical_integrations:
+- name: Hệ thống CRM
+  examples:
+  - Vietlaw CRM
+  - FPT CRM
+  - Salesforce
+  priority: high
+- name: Phần mềm quản lý văn bản
+  examples:
+  - MISA
+  - Fast
+  - Bravo
+  priority: medium
+- name: Hệ thống điện thoại doanh nghiệp
+  examples:
+  - VNPT
+  - Viettel
+  - FPT Telecom
+  priority: high
+- name: Công cụ lập lịch
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Kế toán 1A
+  priority: low
+industry_faq:
+- question: Dịch vụ pháp lý của bạn có hỗ trợ tuân thủ PDPD không?
+  answer_template: Có, chúng tôi cung cấp tư vấn và giải pháp tự động để giúp doanh
+    nghiệp tuân thủ PDPD một cách hiệu quả.
+- question: Chi phí cho tư vấn pháp lý qua điện thoại là bao nhiêu?
+  answer_template: Chi phí tùy thuộc vào loại dịch vụ, nhưng chúng tôi có gói cơ bản
+    từ 500.000 VND mỗi tháng cho tư vấn tự động.
+- question: Làm thế nào để đặt lịch hẹn với luật sư?
+  answer_template: Bạn có thể đặt lịch hẹn tự động qua hệ thống điện thoại của chúng
+    tôi, hoặc nhân viên sẽ hỗ trợ bạn ngay lập tức.
+- question: Dịch vụ có hỗ trợ tiếng Anh cho khách quốc tế không?
+  answer_template: Có, chúng tôi cung cấp tư vấn đa ngôn ngữ, bao gồm tiếng Anh, để
+    phục vụ khách hàng toàn cầu.
+- question: Tôi có thể tích hợp hệ thống của bạn với CRM hiện có không?
+  answer_template: Có, chúng tôi hỗ trợ tích hợp với nhiều hệ thống CRM phổ biến tại
+    Việt Nam như Vietlaw CRM.
+- question: Thời gian phản hồi cho các cuộc gọi tư vấn là bao lâu?
+  answer_template: Hệ thống của chúng tôi phản hồi ngay lập tức cho các câu hỏi cơ
+    bản, và chuyển tiếp đến luật sư trong vòng 5 phút nếu cần.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ.
+  script: Xin chào, chúng tôi cung cấp giải pháp tự động hóa với chi phí từ 500.000
+    VND mỗi tháng, giúp tiết kiệm đến 30% chi phí nhân sự. Bạn có muốn biết thêm chi
+    tiết không?
+  goal: Giới thiệu giá cả cạnh tranh và lợi ích tiết kiệm.
+- trigger: compliance_concern
+  situation: Khi khách hàng quan tâm đến tuân thủ PDPD.
+  script: Chúng tôi hiểu rằng PDPD là vấn đề quan trọng. Giải pháp của chúng tôi bao
+    gồm nhắc nhở và tư vấn tự động để đảm bảo tuân thủ, với chi phí chỉ 300.000 VND
+    mỗi tháng cho tính năng này.
+  goal: Đáp ứng nhu cầu tuân thủ và thuyết phục về giá trị.
+- trigger: efficiency_inquiry
+  situation: Khi khách hàng muốn cải thiện hiệu quả hoạt động.
+  script: Với hệ thống của chúng tôi, bạn có thể tự động hóa 50% cuộc gọi tư vấn,
+    giảm thời gian chờ đợi và tăng năng suất. Gói cơ bản từ 700.000 VND mỗi tháng.
+  goal: Trình bày lợi ích hiệu quả và khuyến khích dùng thử.
+- trigger: integration_request
+  situation: Khi khách hàng hỏi về tích hợp hệ thống.
+  script: Chúng tôi hỗ trợ tích hợp dễ dàng với các hệ thống CRM phổ biến tại Việt
+    Nam như MISA hoặc FPT. Chi phí tích hợp một lần từ 2.000.000 VND.
+  goal: Giải tỏa lo ngại về kỹ thuật và thúc đẩy quyết định.
+competitors:
+- name: LegalTech Vietnam
+  positioning: Nhà cung cấp giải pháp công nghệ pháp lý hàng đầu.
+  strengths:
+  - Mạng lưới khách hàng rộng
+  - hỗ trợ đa dịch vụ
+  weaknesses:
+  - Chi phí cao
+  - ít tùy chỉnh
+  our_differentiation: Chúng tôi cung cấp giải pháp tự động hóa giá rẻ với tích hợp
+    linh hoạt hơn.
+- name: FPT AI Legal
+  positioning: Giải pháp AI từ tập đoàn công nghệ lớn.
+  strengths:
+  - Công nghệ tiên tiến
+  - hậu thuẫn tài chính mạnh
+  weaknesses:
+  - Thời gian triển khai dài
+  - phức tạp cho doanh nghiệp nhỏ
+  our_differentiation: Chúng tôi tập trung vào tính đơn giản và hiệu quả tức thì với
+    chi phí thấp.
+- name: Vietlaw Connect
+  positioning: Nền tảng kết nối luật sư và khách hàng.
+  strengths:
+  - Cộng đồng luật sư đông đảo
+  - dễ sử dụng
+  weaknesses:
+  - Hạn chế tính năng tự động hóa
+  - phụ thuộc vào con người
+  our_differentiation: Chúng tôi tự động hóa hoàn toàn các tác vụ cơ bản, giảm sự
+    phụ thuộc vào nhân sự.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Tự động hóa 100 cuộc gọi tư vấn mỗi tháng
+    monthly_cost: 1000000
+    monthly_savings: 3000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm đến 50% chi phí nhân sự xử lý cuộc gọi
+  - Tăng hiệu quả làm việc với thời gian phản hồi dưới 5 giây
+  - Đảm bảo tuân thủ PDPD mà không cần đào tạo thêm
+market_context:
+  market_size: Khoảng 500 tỷ VND mỗi năm cho dịch vụ pháp lý công nghệ
+  growth_rate: 15% mỗi năm
+  key_trends:
+  - Tăng cường sử dụng AI trong tư vấn pháp lý
+  - Nhu cầu tuân thủ PDPD ngày càng cao
+  - Sự phát triển của các doanh nghiệp startup cần hỗ trợ pháp lý nhanh chóng
+  seasonality:
+    high:
+    - Tháng 1
+    - Tháng 7 do nhu cầu đăng ký doanh nghiệp và giải quyết tranh chấp cuối năm
+    low:
+    - Tháng 4
+    - Tháng 10 do thời điểm nghỉ lễ
+typical_objections:
+- objection: Tôi không tin tưởng vào tính chính xác của tư vấn tự động.
+  response: Hệ thống của chúng tôi được đào tạo dựa trên cơ sở dữ liệu pháp lý Việt
+    Nam và luôn có luật sư kiểm tra, đảm bảo độ chính xác cao.
+- objection: Chi phí quá cao so với ngân sách của tôi.
+  response: Với mức giá từ 500.000 VND, bạn đã tiết kiệm được chi phí nhân sự đáng
+    kể. Chúng tôi có thể cung cấp gói dùng thử miễn phí 1 tháng.
+- objection: Tôi lo ngại về vấn đề bảo mật dữ liệu.
+  response: Chúng tôi tuân thủ nghiêm ngặt PDPD và sử dụng công nghệ mã hóa để bảo
+    vệ thông tin khách hàng, đảm bảo an toàn tuyệt đối.
+meta:
+  id: legal
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

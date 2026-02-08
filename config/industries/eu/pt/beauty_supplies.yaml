@@ -1,0 +1,323 @@
+pain_points:
+- description: Dificuldade em competir com as grandes cadeias de varejo e marketplaces
+    online que oferecem preços muito baixos.
+  severity: high
+  solution_hint: Destacar a qualidade superior dos produtos, o aconselhamento personalizado
+    e o serviço pós-venda que uma loja especializada oferece.
+- description: Gestão de stock complexa devido à grande variedade de marcas, prazos
+    de validade curtos e modas que mudam rapidamente.
+  severity: high
+  solution_hint: Oferecer um sistema de gestão de inventário integrado que emita alertas
+    automáticos para reposição e produtos perto do prazo de validade.
+- description: Margens de lucro apertadas devido aos custos elevados de importação
+    e à pressão de preços dos concorrentes.
+  severity: high
+  solution_hint: Focar na venda de produtos de nicho ou de gamas profissionais com
+    maior valor acrescentado e margens mais saudáveis.
+- description: Falta de tempo para prospetar novos clientes, como salões de beleza
+    e esteticistas, e para os fidelizar.
+  severity: medium
+  solution_hint: Automatizar o processo de prospeção e follow-up com um agente de
+    voz que agende chamadas e envie lembretes de promoções.
+- description: Dificuldade em lidar com um volume elevado de consultas sobre composição
+    de produtos, prazos de entrega e disponibilidade.
+  severity: medium
+  solution_hint: Implementar um assistente virtual 24/7 para responder a perguntas
+    frequentes, libertando a equipa para tarefas mais complexas.
+- description: Processo de encomenda manual propenso a erros, especialmente para clientes
+    empresariais que fazem pedidos recorrentes.
+  severity: low
+  solution_hint: Permitir que os clientes repitam encomendas passadas via telefone
+    usando reconhecimento de voz, reduzindo erros e poupando tempo.
+- description: Dificuldade em comunicar promoções e novos produtos de forma eficaz
+    a toda a base de clientes.
+  severity: low
+  solution_hint: Utilizar o agente de voz para realizar campanhas de telemarketing
+    automatizadas e segmentadas, anunciando novidades e ofertas.
+typical_services:
+- Fornecimento de produtos de beleza profissionais para salões
+- Venda a retalho de cosmética e maquilhagem
+- Distribuição de marcas específicas de cuidados capilares
+- Consultoria e formação em produtos para profissionais
+- Serviço de entrega rápida (24/48h) para a zona de Lisboa/Porto
+- Programas de fidelização para clientes empresariais
+- Gestão de encomendas e reposição automática de stock
+- Testagem de produtos e fornecimento de amostras
+- Venda online com levantamento em loja (click & collect)
+- Assistência técnica e resolução de dúvidas sobre produtos
+recommended_functions:
+- name: Agendamento de entregas e recolhas
+  priority: high
+  reason: A logística é um fator crítico para clientes empresariais que dependem de
+    stock regular. Automatizar este agendamento melhora a eficiência.
+- name: Processamento de encomendas por voz
+  priority: high
+  reason: Permite a clientes regulares, como donos de salões, fazerem encomendas rapidamente
+    enquanto estão a trabalhar, aumentando a conveniência.
+- name: Suporte a consultas sobre stock e prazos de validade
+  priority: high
+  reason: Responde instantaneamente a uma das perguntas mais frequentes de profissionais,
+    que precisam de produtos frescos e disponíveis.
+- name: Prospeção de novos clientes (salões, esteticistas)
+  priority: medium
+  reason: Pode automatizar as chamadas iniciais para marcar reuniões de apresentação,
+    alargando a rede de clientes B2B de forma escalável.
+- name: Gestão de reclamações e devoluções
+  priority: medium
+  reason: Encaminha o cliente para o departamento correto e regista o incidente, melhorando
+    a percepção do serviço pós-venda.
+- name: Campanhas de marketing de retenção
+  priority: low
+  reason: Faz chamadas automáticas para informar sobre novas coleções ou ofertas personalizadas,
+    baseadas no histórico de compras.
+- name: Triagem de chamadas e encaminhamento
+  priority: low
+  reason: Direciona as chamadas para o departamento adequado (vendas, apoio técnico,
+    logística), melhorando a experiência do cliente.
+typical_integrations:
+- name: Software de gestão de salão/estética
+  examples:
+  - Photon
+  - Salonized
+  - SimplyBook.me
+  priority: medium
+- name: ERP (Enterprise Resource Planning)
+  examples:
+  - Primavera
+  - SAP Business One
+  - Microsoft Dynamics
+  priority: high
+- name: Plataforma de e-commerce
+  examples:
+  - Loja Online
+  - WooCommerce
+  - Shopify
+  priority: medium
+- name: Sistema de gestão de armazém e logística
+  examples:
+  - LogiNext
+  - ShipRush
+  - sistemas proprietários
+  priority: high
+- name: Software de faturação certificado pela AT
+  examples:
+  - Faturação Online
+  - GBTouch
+  - Maxifatura
+  priority: high
+- name: Ferramentas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Pipedrive
+  priority: medium
+industry_faq:
+- question: Qual é o prazo de entrega para a zona de Lisboa?
+  answer_template: Para encomendas realizadas até às 15h, oferecemos entrega no dia
+    útil seguinte na área metropolitana de Lisboa. Para o resto do país, o prazo é
+    de 2 a 3 dias úteis.
+- question: Têm produtos adequados para cabelos coloridos/profissionalmente tratados?
+  answer_template: Sim, trabalhamos com várias marcas profissionais especializadas
+    em cuidados para cabelos coloridos e danificados, como [Exemplo de Marca]. Posso
+    recomendar-lhe algumas opções?
+- question: Oferecem condições especiais para salões ou revendedores?
+  answer_template: Absolutamente. Temos um programa B2B com descontos progressivos,
+    condições de pagamento flexíveis e apoio técnico dedicado. Posso colocá-lo em
+    contacto com o nosso gestor de contas empresariais.
+- question: O que fazem em caso de produto avariado ou fora do prazo?
+  answer_template: A sua satisfação é prioritária. Em caso de produto não conforme,
+    organizamos a recolha e substituição imediata, sem custos adicionais, de acordo
+    com as nossas políticas.
+- question: Como posso saber se um produto está em stock?
+  answer_template: O nosso sistema está atualizado em tempo real. Pode perguntar-me
+    por um produto específico e eu confirmo de imediato a disponibilidade e as opções
+    de substituição, se necessário.
+- question: Aceitam devoluções de produtos abertos?
+  answer_template: Por razões de higiene e segurança, não aceitamos a devolução de
+    produtos de cosmética abertos, exceto em caso de defeito de fabrico. Produtos
+    selados podem ser devolvidos no prazo de 14 dias.
+- question: Têm formação sobre como utilizar os vossos produtos?
+  answer_template: Sim, organizamos regularmente webinars e sessões de formação presenciais
+    para profissionais. Posso adicionar o seu contacto à nossa lista para ser informado
+    sobre a próxima sessão?
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta pelo preço de um produto ou serviço e parece
+    preocupado com o custo.
+  script: Compreendo perfeitamente a sua preocupação com o orçamento. O preço do [Produto/Serviço]
+    reflete a sua qualidade profissional e os resultados superiores que oferece. Para
+    clientes como o seu, que valorizam performance, temos pacotes de fidelização que
+    reduzem o custo médio em até 15%. Posso explicar-lhe como funciona?
+  goal: Transpor a objeção do preço, destacando o valor e a qualidade, e introduzir
+    um programa de fidelização que mitiga o custo inicial.
+- trigger: reorder_request
+  situation: 'Quando um cliente empresarial (ex: dono de salão) liga para repetir
+    uma encomenda anterior.'
+  script: Olá [Nome do Cliente], é um prazer atendê-lo novamente. Vejo que quer repetir
+    a sua última encomenda. Para a sua conveniência, posso já processar isso e agendar
+    a entrega para o horário habitual? Aproveito para avisar que a [Marca X] que costuma
+    levar tem uma promoção de volume esta semana. Posso incluir mais algumas unidades
+    para si?
+  goal: Confirmar e facilitar o pedido recorrente, proporcionando uma experiência
+    eficiente, enquanto se faz up-selling/cross-selling com base no histórico.
+- trigger: new_business_inquiry
+  situation: 'Quando um potencial novo cliente (ex: novo salão) liga a pedir informação
+    geral.'
+  script: Bem-vindo à [Nome da Empresa]. Ficamos muito contentes com o seu contacto.
+    Para melhor o aconselhar, posso fazer-lhe duas perguntas rápidas? Que tipo de
+    produtos procura (cabelo, unhas, pele) e qual o volume de compra aproximado que
+    prevê mensalmente? Com esta informação, posso direcioná-lo para o nosso especialista
+    mais adequado e já partilhar algumas ofertas de boas-vindas.
+  goal: Qualificar o lead rapidamente, demonstrar profissionalismo e direcionar para
+    uma oferta personalizada, aumentando as hipóteses de conversão.
+- trigger: service_comparison
+  situation: Quando o cliente menciona um concorrente ou pergunta pela diferença para
+    outras lojas.
+  script: É uma excelente pergunta. Muitos dos nossos clientes começaram por comprar
+    noutros locais. A nossa principal diferença está no aconselhamento técnico especializado.
+    Não vendemos apenas produtos, somos parceiros dos profissionais. Oferecemos formação,
+    suporte técnico e condições logísticas adaptadas ao seu negócio. Posso partilhar
+    consigo um caso de sucesso de um salão semelhante ao seu?
+  goal: Diferenciar a empresa da concorrência baseando-se no valor acrescentado (serviço,
+    parceria) e não apenas no preço, usando provas sociais.
+- trigger: post_sale_follow_up
+  situation: Após uma primeira entrega a um novo cliente B2B, para garantir satisfação
+    e fomentar a recompra.
+  script: Olá [Nome do Cliente], sou a [Nome do Agente] da [Nome da Empresa]. Estou
+    a ligar para saber se a sua primeira encomenda chegou em boas condições e se a
+    equipa está satisfeita com os produtos. Tem alguma dúvida sobre a sua utilização?
+    Aproveito para lembrar que, como cliente novo, tem um desconto extra na próxima
+    encomenda se a fizer nos próximos 10 dias.
+  goal: Reforçar a relação pós-venda, resolver problemas rapidamente e incentivar
+    a próxima compra com uma oferta limitada no tempo.
+competitors:
+- name: Wells
+  positioning: Líder de mercado em retail de saúde e beleza, com presença física massiva.
+  strengths:
+  - Reconhecimento de marca
+  - Extensa rede de lojas
+  - Preços competitivos
+  - Grande variedade
+  weaknesses:
+  - Foco no consumidor final, não no profissional
+  - Serviço personalizado limitado
+  - Pouco aconselhamento técnico
+  our_differentiation: Especialização B2B e aconselhamento técnico profundo para profissionais,
+    com logística adaptada a salões.
+- name: Perfumes & Companhia
+  positioning: Grande retalhista especializado em perfumaria e cosmética.
+  strengths:
+  - Forte presença online
+  - Boas campanhas de marketing
+  - Marcas premium
+  weaknesses:
+  - Margens baixas
+  - Rotatividade de stock alta pode levar a falta de produtos específicos
+  - Serviço pouco personalizado
+  our_differentiation: Foco em marcas profissionais e de nicho com melhor margem para
+    o revendedor, e gestão de conta personalizada.
+- name: Distribuidores regionais locais
+  positioning: Distribuidores pequenos/médios que servem uma região específica.
+  strengths:
+  - Conhecimento hiperlocal
+  - Relações pessoais fortes
+  - Flexibilidade
+  weaknesses:
+  - Catálogo limitado
+  - Capacidade logística reduzida
+  - Falta de recursos para inovação tecnológica
+  our_differentiation: Combinamos o atendimento personalizado com a escala, catálogo
+    e plataformas tecnológicas (como este agente de voz) de um player nacional.
+- name: 'Marketplaces Online (ex: Amazon, Escolha do Mercado)'
+  positioning: Plataformas online genéricas onde qualquer um pode vender.
+  strengths:
+  - Conveniência extrema
+  - Preços muito agressivos
+  - Entrega rápida
+  weaknesses:
+  - Qualidade e autenticidade dos produtos por vezes questionável
+  - Zero suporte ou aconselhamento
+  - Impossibilidade de criar programas B2B estruturados
+  our_differentiation: Garantia de produtos 100% originais e diretos do fabricante,
+    contratos B2B com condições estáveis, e apoio técnico dedicado.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 200
+  roi_examples:
+  - scenario: Salão pequeno que automatiza encomendas e gestão de stock
+    monthly_cost: 50
+    monthly_savings: 150
+    payback_months: 0.33
+  - scenario: Distribuidor regional que automatiza prospeção de novos clientes
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 0.33
+  - scenario: Loja online que implementa suporte automático 24/7 para dúvidas frequentes
+    monthly_cost: 75
+    monthly_savings: 200
+    payback_months: 0.38
+  value_anchors:
+  - Poupe até 10 horas por semana em gestão de telefonemas e encomendas.
+  - Aumente a taxa de recompra dos seus clientes B2B em 20% com follow-up automatizado.
+  - Reduza erros nas encomendas em 95% com processamento por voz.
+  - Converta 15% mais leads qualificados com prospeção automática e direcionada.
+market_context:
+  market_size: Estimado em 850 milhões de EUR anuais (retalho especializado e B2B)
+  growth_rate: 3-4% ao ano
+  key_trends:
+  - Crescimento da procura por produtos de beleza 'clean', naturais e sustentáveis.
+  - Aumento do consumo de cosmética de gama profissional em casa (pós-pandemia).
+  - Fortalecimento do canal online, mas com necessidade crescente de aconselhamento
+    especializado.
+  - Consolidação do mercado, com pequenas lojas a especializarem-se em nichos para
+    sobreviver.
+  seasonality:
+    high:
+    - Setembro-Outubro (volta às aulas/rotinas)
+    - Novembro-Dezembro (Natal)
+    - Março-Abril (Páscoa/preparação para verão)
+    low:
+    - Janeiro (pós-Natal)
+    - Agosto (férias de verão, muitos salões fechados)
+typical_objections:
+- objection: É muito caro para o meu negócio pequeno.
+  response: Compreendo. Muitos dos nossos clientes começaram como negócios pequenos.
+    A nossa solução é escalável. Podemos começar com um módulo básico que automatiza
+    apenas as encomendas, por menos de 30€/mês, e que já lhe poupará tempo valioso.
+    Posso mostrar-lhe como?
+- objection: Já tenho um processo que funciona, não preciso de mudar.
+  response: Percebo que tenha uma rotina estabelecida. A nossa proposta não é mudar
+    o que funciona, é libertá-lo das tarefas repetitivas, como atender chamadas para
+    perguntas de stock, para que se possa focar no crescimento do seu negócio. Permita-me
+    partilhar um exemplo rápido?
+- objection: Não me sinto confortável com tecnologia tão avançada.
+  response: A sua preocupação é natural. A beleza do nosso sistema é que é tão simples
+    como atender uma chamada telefónica. Não precisa de instalar software complicado.
+    Nós tratamos de tudo e damos toda a formação. O seu cliente só nota um atendimento
+    mais rápido e eficiente.
+- objection: Prefiro tratar das coisas pessoalmente, é mais seguro.
+  response: Valorizo imenso a relação pessoal, e o nosso sistema foi desenhado para
+    a potenciar, não para a substituir. Ele trata do trabalho repetitivo, para que
+    a sua equipa tenha mais tempo para o contacto humano de valor acrescentado. Além
+    disso, somos 100% conformes com o RGPD, garantindo a segurança dos dados.
+- objection: Vou pensar nisso e ligo-lhe depois.
+  response: Claro, é uma decisão importante. Para o ajudar a pensar, posso enviar-lhe
+    por email um caso de estudo de um cliente seu concorrente que já está a usar a
+    nossa solução com sucesso? Assim tem uma referência concreta. Combinamos um breve
+    follow-up para daqui a três dias?
+meta:
+  id: beauty_supplies
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

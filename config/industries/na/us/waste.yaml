@@ -1,0 +1,252 @@
+pain_points:
+- description: Managing complex regulatory compliance including CCPA for data privacy
+    and HIPAA for medical waste, risking fines and legal issues.
+  severity: high
+  solution_hint: AI voice agent can automate compliance checks, send reminders, and
+    assist with documentation to reduce risks.
+- description: High operational costs due to fuel, labor, and maintenance, squeezing
+    profit margins.
+  severity: high
+  solution_hint: Optimize collection routes and schedules using AI-driven insights
+    to cut fuel usage and labor hours.
+- description: Inefficient customer service leading to high complaint volumes and
+    poor customer satisfaction.
+  severity: medium
+  solution_hint: Deploy AI voice agents to handle common inquiries, schedule pickups,
+    and resolve issues quickly, improving response times.
+- description: Billing errors and delayed payments causing cash flow disruptions.
+  severity: medium
+  solution_hint: Integrate AI with billing systems to automate invoicing, send payment
+    reminders, and reduce errors.
+- description: Recycling contamination and low participation rates, impacting sustainability
+    goals and revenue.
+  severity: medium
+  solution_hint: Use AI voice agents to educate customers on proper recycling practices
+    through automated calls and tips.
+- description: Seasonal waste volume fluctuations creating operational inefficiencies
+    and resource allocation challenges.
+  severity: low
+  solution_hint: Leverage AI to predict demand patterns and optimize resource planning
+    for peak and off-peak periods.
+typical_services:
+- Residential waste collection
+- Commercial waste collection
+- Recycling services
+- Hazardous waste disposal
+- Medical waste management
+- Dumpster rental
+- Landfill services
+- Composting services
+- E-waste recycling
+- Construction and demolition debris removal
+recommended_functions:
+- name: Automated scheduling and pickup coordination
+  priority: high
+  reason: Reduces manual effort, minimizes errors, and improves customer convenience
+    for service requests.
+- name: Compliance monitoring and alerts
+  priority: high
+  reason: Helps businesses stay updated on CCPA, HIPAA, and other regulations, avoiding
+    penalties.
+- name: Billing and payment automation
+  priority: high
+  reason: Streamlines cash flow by automating invoices, reminders, and reducing payment
+    delays.
+- name: Customer complaint resolution
+  priority: medium
+  reason: Enhances customer satisfaction by quickly addressing issues like missed
+    pickups or service queries.
+- name: Route optimization notifications
+  priority: medium
+  reason: Provides real-time updates to drivers and managers, cutting fuel costs and
+    improving efficiency.
+- name: Recycling education campaigns
+  priority: low
+  reason: Boosts recycling rates and reduces contamination through automated educational
+    messages.
+typical_integrations:
+- name: Fleet management systems
+  examples:
+  - Verizon Connect
+  - Geotab
+  - Samsara
+  priority: high
+- name: Enterprise Resource Planning (ERP) systems
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - Microsoft Dynamics
+  priority: high
+- name: Customer Relationship Management (CRM) systems
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Billing and accounting software
+  examples:
+  - QuickBooks
+  - FreshBooks
+  - Xero
+  priority: high
+- name: Route optimization software
+  examples:
+  - Route4Me
+  - OptimoRoute
+  - WorkWave Route Manager
+  priority: medium
+industry_faq:
+- question: What are your service hours for waste pickup?
+  answer_template: Our standard pickup hours are Monday to Friday, 6 AM to 6 PM. We
+    offer flexible scheduling for commercial clients—would you like to discuss your
+    specific needs?
+- question: How do I schedule a new waste collection service?
+  answer_template: You can schedule a service by calling us or using our online portal.
+    I can help you set it up right now—just provide your address and preferred pickup
+    frequency.
+- question: What items are accepted for recycling in my area?
+  answer_template: We accept common recyclables like paper, cardboard, plastic bottles,
+    and aluminum cans. For a detailed list, I can send you a guide via email or text.
+- question: What are your rates for commercial dumpster rental?
+  answer_template: Rates vary based on dumpster size and rental duration. Typically,
+    it ranges from $200 to $500 per month. I can provide a customized quote after
+    learning more about your requirements.
+- question: How do I report a missed pickup?
+  answer_template: You can report a missed pickup by calling our hotline or using
+    our app. I'll log the issue immediately and schedule a make-up pickup within 24
+    hours.
+- question: Do you handle hazardous or medical waste?
+  answer_template: Yes, we offer specialized services for hazardous and medical waste,
+    compliant with HIPAA and other regulations. I can connect you with our expert
+    team for details.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential customer asks about pricing for waste services.
+  script: I understand you're interested in pricing. Our services start at $50 per
+    month for residential pickup, with custom plans for businesses. To give you an
+    accurate quote, can you share your waste volume and frequency needs? This way,
+    I can highlight how we save you money through efficient routing and reduced disposal
+    costs.
+  goal: Gather information to provide a tailored quote and emphasize cost-saving benefits.
+- trigger: service_inquiry
+  situation: When a customer inquires about specific waste management services.
+  script: Thanks for asking! We offer a range of services from recycling to hazardous
+    waste disposal. Based on your business type, I recommend starting with a waste
+    audit to optimize costs. Would you like me to schedule a consultation to discuss
+    how we can streamline your operations and ensure compliance?
+  goal: Educate on service options and book a consultation to upsell and address pain
+    points.
+- trigger: competitor_mention
+  situation: When a customer compares us to competitors like Waste Management.
+  script: That's a great point. While others offer similar services, we differentiate
+    with AI-driven efficiency tools that cut your operational costs by up to 20%.
+    For example, our route optimization reduces fuel usage, and our automated billing
+    prevents errors. Can I show you a case study of how we helped a local business
+    save $500 monthly?
+  goal: Highlight unique value propositions and provide evidence to overcome competitor
+    comparisons.
+- trigger: compliance_concern
+  situation: When a customer expresses worry about regulatory compliance for waste
+    handling.
+  script: Compliance is crucial, especially with CCPA and HIPAA. Our AI voice agent
+    helps by automating compliance checks and documentation, reducing your risk of
+    fines. We've assisted clients in avoiding penalties up to $10,000 annually. Would
+    you like to learn how we can tailor this for your business?
+  goal: Address compliance fears and position our solution as a risk-mitigation tool.
+competitors:
+- name: Waste Management (WM)
+  positioning: National leader with extensive infrastructure and brand recognition.
+  strengths:
+  - Large fleet and landfill network
+  - Comprehensive service offerings
+  - Strong customer base
+  weaknesses:
+  - Higher prices for small businesses
+  - Less flexible technology adoption
+  - Slower customer service response
+  our_differentiation: We offer more affordable, AI-enhanced solutions with better
+    customer support and faster ROI through operational efficiencies.
+- name: Republic Services
+  positioning: Major competitor focusing on sustainability and recycling innovations.
+  strengths:
+  - Advanced recycling facilities
+  - Strong environmental initiatives
+  - Broad geographic coverage
+  weaknesses:
+  - Complex pricing structures
+  - Limited integration options for small businesses
+  - Higher contract lock-ins
+  our_differentiation: Our transparent pricing, easy integrations, and AI tools provide
+    greater flexibility and cost savings without long-term commitments.
+- name: Waste Connections
+  positioning: Growing player with a focus on rural and secondary markets.
+  strengths:
+  - Niche market expertise
+  - Agile operations
+  - Competitive pricing in targeted areas
+  weaknesses:
+  - Limited service range in urban areas
+  - Smaller scale compared to giants
+  - Fewer technology offerings
+  our_differentiation: We combine local market knowledge with cutting-edge AI to offer
+    scalable solutions that improve efficiency beyond basic collection services.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 50
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Small business reducing manual scheduling and billing errors
+    monthly_cost: 100
+    monthly_savings: 200
+    payback_months: 1
+  - scenario: Medium enterprise optimizing routes to cut fuel and labor costs
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Reduce operational costs by up to 20% with AI-driven efficiencies
+  - Minimize compliance risks and avoid fines up to $10,000 annually
+  - Improve customer satisfaction scores by 30% through automated service handling
+market_context:
+  market_size: Approximately $80 billion annually
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Increased focus on sustainability and circular economy
+  - Rising adoption of smart waste technologies
+  - Growing regulatory pressures for waste reduction and data privacy
+  - Expansion of e-waste and medical waste services
+  seasonality:
+    high:
+    - Summer months due to construction and events
+    - Post-holiday periods with increased waste volume
+    low:
+    - Winter months in northern regions with reduced outdoor activity
+typical_objections:
+- objection: Your service is too expensive compared to our current provider.
+  response: I understand cost is a concern. Our AI tools actually lower your total
+    cost by reducing operational inefficiencies. For instance, we can save you money
+    on fuel and labor—would you like to see a customized cost-benefit analysis?
+- objection: We're locked into a long-term contract with another waste company.
+  response: That's common, but our flexible plans can complement your existing service
+    or help you transition smoothly. We offer short-term trials to demonstrate value
+    without breaking your contract.
+- objection: We don't need new technology; our current system works fine.
+  response: Many businesses think that until they see the savings. Our AI voice agent
+    can integrate seamlessly to enhance what you have, like automating billing or
+    improving route planning. Can I share a quick demo of how it works?
+meta:
+  id: waste
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

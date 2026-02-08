@@ -1,0 +1,210 @@
+pain_points:
+- description: 线下客流量持续下降，实体店铺获客成本逐年攀升
+  severity: high
+  solution_hint: 智能语音外呼系统可自动联系潜在客户，进行促销活动通知和老客户回访，提升到店率
+- description: 客服人力成本高，招聘难，培训周期长，员工流动率大
+  severity: high
+  solution_hint: AI语音客服7x24小时自动处理咨询、订单查询和售后问题，降低人力成本
+- description: 促销活动通知效率低，电话营销团队管理困难，转化率不稳定
+  severity: medium
+  solution_hint: 自动外呼系统批量触达客户，标准化营销话术，实时记录通话数据和意向
+- description: 库存管理不精准，缺货和积压问题同时存在
+  severity: medium
+  solution_hint: AI语音系统可自动联系供应商进行库存查询和补货沟通
+- description: 客户数据分散在不同系统，无法形成统一客户视图
+  severity: medium
+  solution_hint: 语音系统与CRM、ERP集成，自动更新客户互动记录和偏好标签
+- description: 售后跟进不及时，客户满意度下降，复购率低
+  severity: medium
+  solution_hint: 自动化的售后回访和满意度调查，及时发现并处理客户问题
+- description: 跨平台订单处理效率低，线上线下库存不同步
+  severity: low
+  solution_hint: 语音系统可自动查询各平台订单状态，协调仓库发货流程
+typical_services:
+- 智能客服热线
+- 营销外呼自动化
+- 售后回访机器人
+- 订单状态查询
+- 库存预警通知
+- 会员积分查询
+- 促销活动播报
+- 店铺地址导航
+- 营业时间查询
+- 产品信息咨询
+recommended_functions:
+- name: 多轮对话理解
+  priority: high
+  reason: 中国客户咨询问题复杂，需要系统理解上下文进行准确回答
+- name: 方言识别能力
+  priority: high
+  reason: 中国地域广阔，需支持普通话及主要方言（如粤语、四川话）识别
+- name: 情感分析预警
+  priority: medium
+  reason: 及时识别客户不满情绪，自动转接人工或升级处理
+- name: 智能话术推荐
+  priority: medium
+  reason: 根据客户类型和对话进展，实时推荐最优销售话术
+- name: 实时通话转写
+  priority: high
+  reason: 满足PIPL合规要求，记录通话内容供质量检查和数据分析
+- name: 多系统数据同步
+  priority: high
+  reason: 零售企业通常使用多个业务系统，需要实时同步订单、库存等信息
+typical_integrations:
+- name: 电商平台系统
+  examples:
+  - 淘宝商家后台
+  - 京东商家中心
+  - 拼多多商家版
+  priority: high
+- name: 门店POS系统
+  examples:
+  - 海鼎
+  - 思迅
+  - 科脉
+  priority: high
+- name: 客户关系管理
+  examples:
+  - 纷享销客
+  - 销售易
+  - 腾讯企点
+  priority: medium
+- name: 企业资源计划
+  examples:
+  - 金蝶
+  - 用友
+  - SAP
+  priority: medium
+- name: 仓储管理系统
+  examples:
+  - 富勒
+  - 唯智
+  - 通天晓
+  priority: medium
+- name: 会员管理系统
+  examples:
+  - 微盟
+  - 有赞
+  - 客如云
+  priority: medium
+industry_faq:
+- question: 你们的语音系统能听懂方言吗？
+  answer_template: 我们的系统支持普通话和主流方言识别，目前已经优化了粤语、四川话、上海话等方言的识别准确率，准确率可达95%以上。
+- question: 如何保证客户数据安全？符合PIPL要求吗？
+  answer_template: 我们完全符合《个人信息保护法》要求，所有通话数据加密存储在中国境内的服务器，支持数据访问权限控制和审计日志，确保客户隐私安全。
+- question: 实施周期需要多久？
+  answer_template: 标准版本2-4周可上线，包括系统配置、话术定制和员工培训。复杂定制需求根据具体情况评估时间。
+- question: 能和我们现有的CRM系统对接吗？
+  answer_template: 支持主流CRM系统的API对接，如纷享销客、销售易等。我们也提供标准接口文档，方便技术团队对接自研系统。
+- question: AI客服会惹恼客户吗？
+  answer_template: 我们的系统经过大量零售场景训练，对话自然友好，遇到复杂问题会礼貌转接人工。数据显示客户满意度达88%以上。
+- question: 外呼营销会不会被标记骚扰电话？
+  answer_template: 我们严格遵守通信管理规定，提供"请勿打扰"名单管理，优化外呼时间和频率，减少客户不适感。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 我们的智能语音客服系统根据功能模块收费，基础版每月2980元起，包含5000分钟通话时长。您的具体需求是什么？我可以为您推荐最合适的方案。
+  goal: 了解客户具体需求，推荐合适套餐
+- trigger: competition_mention
+  situation: 客户提到竞争对手
+  script: 我们理解市场上有很多选择。与竞争对手相比，我们专门针对中国零售场景优化，方言支持更好，本地化服务团队响应更快，而且完全符合PIPL要求。
+  goal: 突出差异化优势
+- trigger: hesitation
+  situation: 客户犹豫不决时
+  script: 很多零售客户刚开始也有顾虑。我们可以先提供14天免费试用，您亲自体验效果。数据显示，使用后平均节省30%客服人力成本，促销转化率提升15%。
+  goal: 提供试用降低决策门槛
+- trigger: small_business
+  situation: 小型零售企业担心成本
+  script: 我们有针对小微企业的入门套餐，每月980元包含1000分钟。按您每天50通客服电话计算，每月可节省1个人力成本约6000元，投资回报很清晰。
+  goal: 用ROI说服小企业客户
+competitors:
+- name: 阿里云智能客服
+  positioning: 大型电商平台技术服务商
+  strengths:
+  - 电商场景深度整合
+  - 云计算资源丰富
+  - 品牌知名度高
+  weaknesses:
+  - 定制化成本高
+  - 中小客户服务响应慢
+  - 非核心业务
+  our_differentiation: 更专注零售垂直场景，价格更灵活，实施服务更及时
+- name: 腾讯云智聆
+  positioning: 通用语音技术提供商
+  strengths:
+  - 语音技术基础好
+  - 微信生态整合
+  - 资金实力强
+  weaknesses:
+  - 零售行业理解浅
+  - 解决方案标准化
+  - 售后服务不足
+  our_differentiation: 零售行业专属话术库，方言优化更好，售后支持团队更专业
+- name: 硅基智能
+  positioning: AI语音技术服务商
+  strengths:
+  - 技术团队强
+  - 融资规模大
+  - 市场推广力度大
+  weaknesses:
+  - 价格偏高
+  - 客户成功案例少
+  - 定制开发周期长
+  our_differentiation: 性价比更高，实施周期更短，更注重实际业务效果
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 980
+  roi_examples:
+  - scenario: 中型连锁超市使用客服机器人
+    monthly_cost: 4800
+    monthly_savings: 12000
+    payback_months: 0.4
+  - scenario: 服装品牌使用营销外呼系统
+    monthly_cost: 3200
+    monthly_savings: 8000
+    payback_months: 0.4
+  value_anchors:
+  - 相当于节省1个客服人员薪资
+  - 促销转化率提升15-25%
+  - 7x24小时不间断服务
+market_context:
+  market_size: 约120亿人民币
+  growth_rate: 25% YoY
+  key_trends:
+  - 全渠道零售融合加速
+  - 私域流量运营成为重点
+  - AI客服从成本中心向利润中心转变
+  - 数据驱动个性化营销
+  seasonality:
+    high:
+    - 双11前后
+    - 春节前
+    - 618大促
+    low:
+    - 春节假期
+    - 夏季淡季
+typical_objections:
+- objection: 我们店小，用不上这么高科技的东西
+  response: 恰恰是小店更需要效率工具。我们的入门套餐每月只要980元，能帮您自动处理咨询，让您更专注服务和销售。
+- objection: AI听起来不够人性化，客户可能不喜欢
+  response: 现在的AI语音已经很自然了，85%的客户对话都能满意解决。复杂问题会自动转人工，既提升效率又保证体验。
+- objection: 我们员工年纪大，不会用新系统
+  response: 系统操作非常简单，我们会提供完整培训。而且主要是AI自动工作，员工只需处理少量转接来电，反而减轻负担。
+meta:
+  id: retail
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

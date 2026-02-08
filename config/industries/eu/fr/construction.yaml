@@ -1,0 +1,223 @@
+pain_points:
+- description: Retards fréquents dans les projets de construction dus à des problèmes
+    de coordination et de planification.
+  severity: high
+  solution_hint: L'agent vocal IA peut automatiser la planification et les rappels
+    pour améliorer la coordination des équipes.
+- description: Dépassements de coûts imprévus liés à des estimations inexactes ou
+    à des changements de dernière minute.
+  severity: high
+  solution_hint: L'agent peut fournir des estimations rapides et mettre à jour les
+    coûts en temps réel via des intégrations logicielles.
+- description: Pénurie de main-d'œuvre qualifiée, en particulier pour les métiers
+    spécialisés comme la plomberie ou l'électricité.
+  severity: medium
+  solution_hint: L'agent peut aider à qualifier les leads pour recruter du personnel
+    ou à gérer les demandes de sous-traitants.
+- description: Conformité réglementaire complexe, notamment avec les normes environnementales
+    et de sécurité en France.
+  severity: high
+  solution_hint: L'agent peut informer sur les réglementations et automatiser les
+    vérifications de conformité pour réduire les risques.
+- description: Gestion inefficace des appels clients, entraînant des opportunités
+    manquées et une mauvaise expérience client.
+  severity: medium
+  solution_hint: L'agent vocal peut traiter les appels entrants, répondre aux questions
+    fréquentes et transférer les appels critiques.
+- description: Difficultés à suivre les paiements et les factures, causant des problèmes
+    de trésorerie.
+  severity: medium
+  solution_hint: L'agent peut intégrer des systèmes de comptabilité pour suivre les
+    paiements et envoyer des rappels automatiques.
+typical_services:
+- Travaux de construction neuve
+- Rénovation de bâtiments
+- Maçonnerie et gros œuvre
+- Plomberie et installation sanitaire
+- Électricité et éclairage
+- Chauffage et climatisation
+- Isolation thermique et acoustique
+- Menuiserie et agencement
+- Peinture et revêtements
+- Terrassement et fondations
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Réduit les pertes de temps et améliore la planification des visites sur
+    site.
+- name: Réponses aux questions fréquentes
+  priority: medium
+  reason: Libère le personnel pour des tâches complexes en traitant les demandes courantes.
+- name: Qualification des leads
+  priority: high
+  reason: Identifie rapidement les clients potentiels sérieux pour optimiser les efforts
+    de vente.
+- name: Gestion des réclamations
+  priority: medium
+  reason: Améliore la satisfaction client en traitant les problèmes de manière proactive.
+- name: Rappels de paiement
+  priority: low
+  reason: Soutient la trésorerie en automatisant les suivis de facturation.
+- name: Mise à jour des projets
+  priority: medium
+  reason: Informe les clients sur l'avancement des travaux sans intervention manuelle.
+typical_integrations:
+- name: ERP de gestion de projet
+  examples:
+  - Cegid
+  - Sage
+  - Oracle Primavera
+  priority: high
+- name: Logiciel de comptabilité
+  examples:
+  - QuickBooks
+  - Ciel
+  - EBP
+  priority: medium
+- name: Système de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Outils de planification
+  examples:
+  - Microsoft Project
+  - Asana
+  - Trello
+  priority: medium
+- name: Plateformes de réservation
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  priority: low
+industry_faq:
+- question: Quels sont vos délais moyens pour un projet de rénovation ?
+  answer_template: Nos délais varient en fonction de la taille du projet, mais généralement
+    entre 2 et 6 mois. Nous pouvons fournir une estimation précise après une visite
+    sur site.
+- question: Proposez-vous des garanties sur vos travaux ?
+  answer_template: Oui, nous offrons une garantie décennale pour les gros œuvres et
+    des garanties de parfait achèvement, conformément à la réglementation française.
+- question: Comment gérez-vous les dépassements de budget ?
+  answer_template: Nous établissons des devis détaillés et transparents, et toute
+    modification est validée par écrit pour éviter les surprises. Notre agent vocal
+    peut vous tenir informé en temps réel.
+- question: Êtes-vous conforme aux normes environnementales comme la RE2020 ?
+  answer_template: Absolument, nous suivons strictement les normes RE2020 et autres
+    réglementations pour des constructions durables et efficaces énergétiquement.
+- question: Proposez-vous des financements ou des aides ?
+  answer_template: Nous pouvons vous orienter vers des aides locales comme MaPrimeRénov'
+    ou des prêts spécifiques, et notre agent peut vous aider à remplir les démarches.
+- question: Comment puis-je suivre l'avancement de mon projet ?
+  answer_template: Grâce à notre système intégré, vous recevrez des mises à jour régulières
+    par notre agent vocal ou via un portail client en ligne.
+sales_scripts:
+- trigger: price_question
+  situation: Lorsqu'un client demande des informations sur les prix.
+  script: Bonjour, je comprends que le budget est une préoccupation majeure. Nous
+    proposons des solutions adaptées à votre projet, avec des devis personnalisés
+    pour éviter les dépassements. Puis-je en savoir plus sur vos besoins pour vous
+    donner une estimation précise ?
+  goal: Qualifier le lead et recueillir des informations pour une proposition ciblée.
+- trigger: objection_delai
+  situation: Lorsqu'un client exprime des inquiétudes sur les délais.
+  script: Merci de votre question. Nous utilisons des outils de planification avancés
+    et un agent vocal pour coordonner les équipes, ce qui réduit considérablement
+    les retards. Pouvons-nous planifier une visite pour évaluer votre projet ?
+  goal: Rassurer le client sur notre efficacité et encourager une prochaine étape.
+- trigger: lead_cold
+  situation: Pour un appel initial à un prospect froid dans le secteur de la construction.
+  script: Bonjour, je suis [Nom de l'agent] de [Entreprise]. Nous aidons les entreprises
+    de construction à optimiser leur gestion client et à réduire les coûts avec des
+    solutions IA. Seriez-vous ouvert à une courte discussion sur vos défis actuels
+    ?
+  goal: Engager la conversation et identifier des points de douleur potentiels.
+competitors:
+- name: Bouygues Construction
+  positioning: Leader du marché avec une forte présence internationale.
+  strengths:
+  - Ressources financières importantes
+  - Expertise multisectorielle
+  - Innovation technologique
+  weaknesses:
+  - Coûts élevés
+  - Lenteur décisionnelle due à la taille
+  our_differentiation: Nous offrons des solutions IA abordables et personnalisées
+    pour les PME, avec un support réactif et local.
+- name: Vinci Construction
+  positioning: Acteur majeur axé sur les grands projets et l'infrastructure.
+  strengths:
+  - Portefeuille de projets diversifié
+  - Réputation solide
+  - Capacités techniques avancées
+  weaknesses:
+  - Moins accessible aux petits clients
+  - Rigidité des processus
+  our_differentiation: Notre agent vocal est flexible et s'intègre facilement aux
+    outils existants, idéal pour les entreprises de taille moyenne.
+- name: Spie Batignolles
+  positioning: Spécialiste des services techniques et de l'énergie.
+  strengths:
+  - Expertise en efficacité énergétique
+  - Réseau étendu en France
+  - Focus sur la durabilité
+  weaknesses:
+  - Concentration sur des niches spécifiques
+  - Prix compétitifs limités
+  our_differentiation: Nous combinons automatisation et conseil personnalisé pour
+    améliorer la productivité globale, pas seulement les aspects techniques.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 100
+  roi_examples:
+  - scenario: Automatisation de la prise de rendez-vous pour une PME de construction
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 1
+  value_anchors:
+  - Réduction de 30% du temps passé sur la gestion administrative
+  - Amélioration de 20% de la satisfaction client grâce à des réponses rapides
+  - Conformité GDPR assurée avec nos solutions sécurisées
+market_context:
+  market_size: Environ 150 milliards d'euros annuels
+  growth_rate: 2-3% par an
+  key_trends:
+  - Augmentation des projets de rénovation énergétique
+  - Digitalisation des processus de construction
+  - Demande croissante pour des bâtiments durables
+  seasonality:
+    high:
+    - Printemps
+    - Été
+    low:
+    - Hiver
+typical_objections:
+- objection: Votre solution est trop chère pour notre petite entreprise.
+  response: Je comprends. Notre tarif d'entrée est à 100€, et nous avons des exemples
+    de ROI rapide, comme des économies sur la gestion des appels. Pouvons-nous discuter
+    de vos besoins spécifiques ?
+- objection: Nous préférons gérer les appels manuellement pour un contact humain.
+  response: Notre agent vocal complète votre équipe en traitant les tâches routinières,
+    libérant du temps pour des interactions plus personnalisées. Voulez-vous essayer
+    une démo gratuite ?
+- objection: Nous avons déjà un système logiciel, l'intégration semble compliquée.
+  response: Nos solutions sont conçues pour une intégration facile avec des outils
+    courants comme Sage ou Cegid. Nous pouvons vous aider à configurer cela sans perturbation.
+meta:
+  id: construction
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

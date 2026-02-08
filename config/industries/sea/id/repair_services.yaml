@@ -1,0 +1,239 @@
+pain_points:
+- description: Kesulitan mengelola janji temu pelanggan secara efisien, sering terjadi
+    tumpang tindih atau keterlambatan.
+  severity: high
+  solution_hint: Agen suara AI dapat mengotomatiskan penjadwalan dan mengirim pengingat
+    otomatis.
+- description: Kehilangan pelanggan karena waktu respon telepon yang lambat di luar
+    jam kerja.
+  severity: high
+  solution_hint: Agen AI dapat menjawab panggilan 24/7, menangkap detail servis, dan
+    mengalihkan ke teknisi darurat.
+- description: Kesulitan melacak riwayat servis dan suku cadang untuk setiap pelanggan.
+  severity: medium
+  solution_hint: Agen dapat terintegrasi dengan sistem untuk mengakses riwayat dan
+    memberikan rekomendasi yang dipersonalisasi.
+- description: Kompetisi ketat dari tukang servis informal (tukang) yang menawarkan
+    harga lebih murah.
+  severity: medium
+  solution_hint: Agen dapat menyoroti nilai tambah seperti garansi, profesionalisme,
+    dan pelacakan digital.
+- description: Kesalahan manual dalam penagihan dan pengiriman faktur, menyebabkan
+    keterlambatan pembayaran.
+  severity: medium
+  solution_hint: Agen dapat mengotomatiskan pembuatan dan pengiriman faktur setelah
+    servis selesai.
+- description: Minimnya kemampuan untuk menindaklanjuti pelanggan setelah servis untuk
+    mendapatkan ulasan atau bisnis berulang.
+  severity: low
+  solution_hint: Agen dapat mengirim permintaan ulasan otomatis dan penawaran untuk
+    servis berkala.
+typical_services:
+- Servis dan perbaikan AC
+- Perbaikan ponsel dan gadget
+- Servis elektronik rumah (TV, Kulkas, Mesin Cuci)
+- Perbaikan komputer dan laptop
+- Servis kendaraan bermotor (motor & mobil)
+- Perbaikan peralatan listrik rumah tangga
+- Bongkar pasang dan pemasangan baru
+- Pengecekan dan perawatan berkala (tune-up)
+- Penyediaan dan penggantian suku cadang
+- Servis darurat 24 jam
+recommended_functions:
+- name: Penjadwal Janji Temu Otomatis
+  priority: high
+  reason: Mengurangi missed call dan mengoptimalkan jadwal teknisi di lapangan.
+- name: Penanganan Pertanyaan Umum 24/7
+  priority: high
+  reason: Memberikan layanan instan kapan saja, meningkatkan kepuasan pelanggan.
+- name: Pengingat Janji Temu via WhatsApp/SMS
+  priority: high
+  reason: Mengurangi tingkat no-show dan menghormati waktu teknisi.
+- name: Penagihan dan Notifikasi Pembayaran
+  priority: medium
+  reason: Mempercepat arus kas dengan faktur dan pengingat yang otomatis.
+- name: Kuesioner Kepuasan Pelanggan Otomatis
+  priority: medium
+  reason: Mengumpulkan ulasan dan umpan balik untuk meningkatkan kualitas servis.
+- name: Pencatatan Riwayat Servis Berbasis Suara
+  priority: low
+  reason: Memungkinkan teknisi melaporkan pekerjaan secara hands-free untuk akurasi
+    data.
+typical_integrations:
+- name: Sistem POS/Akuntansi
+  examples:
+  - Moka
+  - Majoo
+  - Jurnal
+  priority: high
+- name: Aplikasi Pesan Instan
+  examples:
+  - WhatsApp Business API
+  priority: high
+- name: Software Manajemen Servis Lapangan
+  examples:
+  - Qlola
+  - ServisMoto
+  priority: medium
+- name: Marketplace Layanan
+  examples:
+  - GoFix
+  - Sweet Repair (Segment AC)
+  priority: medium
+- name: Pembayaran Digital
+  examples:
+  - Dana
+  - OVO
+  - LinkAja
+  priority: low
+industry_faq:
+- question: Berapa biaya servisnya? Apakah ada biaya pengecekan?
+  answer_template: Biaya servis bervariasi tergantung kerusakan. Kami biasanya mengenakan
+    biaya pengecekan sebesar Rp 50.000 yang akan dikurangi dari total biaya perbaikan
+    jika Anda setuju untuk melanjutkan.
+- question: Berapa lama waktu perbaikannya?
+  answer_template: Kami akan melakukan diagnosa terlebih dahulu. Untuk perbaikan standar,
+    biasanya selesai dalam 1-2 hari kerja. Untuk kasus yang kompleks, kami akan memberikan
+    estimasi waktu yang jelas.
+- question: Apakah servisnya bergaransi?
+  answer_template: Ya, kami memberikan garansi untuk jasa perbaikan kami selama 30-90
+    hari tergantung jenis servis. Garansi suku cadang mengikuti kebijakan supplier.
+- question: Apakah teknisi datang ke lokasi?
+  answer_template: Ya, untuk beberapa jenis servis seperti AC atau elektronik besar,
+    teknisi kami bisa datang ke rumah/ kantor Anda. Ada tambahan biaya transportasi
+    untuk area tertentu.
+- question: Bisa servis barang merek X?
+  answer_template: Kami menangani berbagai merek. Silakan beritahu model dan kerusakannya,
+    tim teknisi kami akan konfirmasi kesiapannya.
+- question: Bagaimana cara pembayarannya?
+  answer_template: Pembayaran dapat dilakukan via transfer bank, tunai, atau dompet
+    digital seperti OVO/Dana setelah servis selesai dan Anda puas.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon pelanggan menanyakan harga di telepon.
+  script: Halo, terima kasih telah menghubungi [Nama Usaha]. Biaya servis kami dimulai
+    dari Rp 100.000 tergantung jenis dan tingkat kerusakannya. Untuk mendapatkan estimasi
+    yang akurat, boleh saya tahu perangkat apa yang bermasalah dan gejala kerusakannya
+    seperti apa?
+  goal: Mengumpulkan informasi untuk memberikan estimasi yang relevan dan mengarahkan
+    ke penjadwalan janji temu.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan harga atau layanan dari tukang servis lain.
+  script: Saya mengerti. Yang membedakan kami adalah servis yang terdokumentasi, garansi
+    resmi, dan teknisi bersertifikat. Kami memprioritaskan keamanan data perangkat
+    Anda sesuai aturan PDP. Jadi, investasi sedikit lebih tinggi untuk hasil yang
+    terjamin dan aman.
+  goal: Membedakan layanan berdasarkan nilai profesionalisme, keamanan, dan kepatuhan.
+- trigger: hesitation
+  situation: Ketika calon pelanggan terdengar ragu-ragu.
+  script: Banyak pelanggan kami awalnya merasakan hal yang sama. Untuk itu, kami menawarkan
+    biaya pengecekan yang terjangkau. Setelah diagnosa, Anda akan mendapat laporan
+    detail dan estimasi biaya sebelum memutuskan. Tidak ada paksaan untuk memperbaiki.
+    Bagaimana, apakah besok ada waktu yang cocok untuk pengecekan?
+  goal: Mengatasi keraguan dengan menawarkan langkah pertama yang berisiko rendah
+    (pengecekan) dan mengamankan janji temu.
+- trigger: request_discount
+  situation: Ketika pelanggan meminta diskon.
+  script: Saya akan cek apakah ada promo yang tersedia saat ini. Untuk pelanggan tetap,
+    kami punya program servis berkala dengan harga khusus. Untuk servis kali ini,
+    saya bisa tawarkan paket lengkap termasuk pembersihan dan pengecekan keseluruhan
+    dengan harga paket yang lebih efisien. Apakah Anda tertarik?
+  goal: Mempertahankan nilai sambil menawarkan paket nilai tambah atau program loyalitas.
+competitors:
+- name: Tukang Servis Lokal/Informal
+  positioning: Penyedia servis dengan harga sangat murah dan fleksibel.
+  strengths:
+  - Harga sangat kompetitif
+  - Fleksibel dan cepat
+  - Akses lokal yang luas
+  weaknesses:
+  - Sering tanpa garansi tertulis
+  - Kualitas tidak konsisten
+  - Tidak ada dokumentasi servis
+  - Risiko keamanan data
+  our_differentiation: Servis terstandarisasi dengan garansi resmi, teknisi bersertifikat,
+    dan perlindungan data pelanggan sesuai PDP.
+- name: GoFix (by Gojek)
+  positioning: Platform digital untuk pesan tukang servis berbagai keahlian.
+  strengths:
+  - Brand besar dan terpercaya
+  - Kemudahan pesan via aplikasi
+  - Pilihan tukang yang banyak
+  weaknesses:
+  - Kualitas tukang bervariasi
+  - Model freelance (kurang kontrol kualitas)
+  - Biaya platform bisa menambah harga
+  our_differentiation: Kami adalah bengkel fisik dengan tim tetap, memberikan konsistensi
+    kualitas, akuntabilitas penuh, dan hubungan pelanggan yang lebih personal.
+- name: Bengkel Resmi Merek (Authorized Service Center)
+  positioning: Pusat servis resmi dengan suku cadang orisinal.
+  strengths:
+  - Suku cadang asli
+  - Teknisi terlatih khusus merek
+  - Garansi pabrik
+  weaknesses:
+  - Biaya sangat tinggi
+  - Waktu servis sering lama
+  - Hanya untuk merek tertentu
+  our_differentiation: Kami menawarkan harga yang lebih terjangkau daripada bengkel
+    resmi untuk berbagai merek, dengan tetap menggunakan suku cadang berkualitas dan
+    servis yang cepat.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000
+  - 5000000
+  entry_point: 100000
+  roi_examples:
+  - scenario: Bengkel Servis Elektronik Kecil mengotomatiskan penjadwalan dan penagihan.
+    monthly_cost: 750000
+    monthly_savings: 2000000
+    payback_months: 1
+  value_anchors:
+  - Mengurangi pelanggan no-show hingga 40% dengan pengingat otomatis.
+  - Meningkatkan penjualan servis berulang dengan penindaklanjutan otomatis.
+  - Teknisi bisa fokus pada perbaikan, bukan administrasi.
+market_context:
+  market_size: Diperkirakan mencapai puluhan triliun Rupiah, tersebar di segmen formal
+    dan informal.
+  growth_rate: 8-12% per tahun, didorong oleh pertumbuhan kepemilikan gadget dan kendaraan.
+  key_trends:
+  - Meningkatnya permintaan servis perangkat digital pribadi (HP, laptop).
+  - Pelanggan mulai mencari servis yang terpercaya dan bergaransi daripada hanya harga
+    murah.
+  - Adopsi platform digital untuk mencari dan memesan tukang servis.
+  seasonality:
+    high:
+    - Akhir tahun (Oktober-Desember)
+    - Awal tahun (Januari) setelah THR/bonus
+    - Musim panas (permintaan servis AC tinggi)
+    low:
+    - Bulan Ramadan (aktivitas melambat)
+    - Awal bulan puasa
+typical_objections:
+- objection: Harganya terlalu mahal dibandingkan tukang biasa.
+  response: Saya paham pertimbangan harganya. Perbedaannya ada pada garansi tertulis,
+    keamanan data perangkat Anda, dan diagnosa yang akurat. Bayar sedikit lebih mahal
+    untuk menghindari kerusakan berulang yang justru lebih boros.
+- objection: Saya tidak butuh yang ribet, cepat perbaiki saja.
+  response: Tentu, kecepatan adalah prioritas kami. Justru dengan sistem pencatatan
+    digital kami, teknisi bisa lebih cepat memahami riwayat perangkat dan menyiapkan
+    suku cadang yang tepat, sehingga mempercepat proses perbaikan.
+- objection: Saya khawatir dengan data di perangkat saya.
+  response: Kekhawatiran yang wajar. Kami beroperasi dengan protokol keamanan yang
+    jelas sesuai UU PDP. Teknisi kami terikat perjanjian kerahasiaan, dan kami tidak
+    mengakses data pribadi di luar kebutuhan servis teknis.
+meta:
+  id: repair_services
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

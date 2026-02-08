@@ -1,0 +1,252 @@
+pain_points:
+- description: Ketidakpastian regulasi dan perubahan kebijakan yang cepat membuat
+    bisnis kripto sulit beroperasi secara stabil.
+  severity: high
+  solution_hint: Agen suara AI dapat memberikan update regulasi real-time dan panduan
+    kepatuhan otomatis dalam bahasa Indonesia.
+- description: Tingginya risiko penipuan dan serangan siber terhadap dompet digital
+    dan platform trading.
+  severity: high
+  solution_hint: AI voice agent dapat melakukan verifikasi transaksi proaktif dan
+    mengingatkan pengguna tentang aktivitas mencurigakan.
+- description: Kurangnya edukasi dan pemahaman masyarakat tentang investasi kripto
+    yang aman dan legal.
+  severity: medium
+  solution_hint: Agen dapat memberikan penjelasan edukatif otomatis tentang dasar-dasar
+    kripto, risiko, dan cara melindungi aset.
+- description: Keterbatasan akses perbankan tradisional untuk transaksi kripto, menyebabkan
+    kesulitan liquiditas.
+  severity: medium
+  solution_hint: Voice agent dapat mengarahkan ke mitra pembayaran lokal yang mendukung
+    kripto dan membantu proses deposit/penarikan.
+- description: Volatilitas harga yang ekstrem menyebabkan kecemasan dan kepanikan
+    di kalangan investor pemula.
+  severity: medium
+  solution_hint: Agen memberikan notifikasi dan penjelasan tentang fluktuasi pasar
+    serta tips manajemen risiko sederhana.
+- description: Proses KYC (Know Your Customer) dan verifikasi yang lama dan rumit
+    menghambat onboarding pengguna baru.
+  severity: low
+  solution_hint: Otomatisasi proses verifikasi dengan panduan suara dan pemeriksaan
+    dokumen yang dipercepat.
+typical_services:
+- Pertukaran Aset Kripto (Cryptocurrency Exchange)
+- Dompet Digital Kripto (Crypto Wallet)
+- Layanan Tokenisasi Aset
+- Konsultasi dan Edukasi Investasi Kripto
+- Mining Pool dan Staking Services
+- Perdagangan Aset Kripto (Trading)
+- Layanan Pembayaran dengan Kripto
+- Penitipan Aset Kripto (Custodial Services)
+- Penjualan Token (Token Sales/ICO/IDO)
+- Analisis Pasar dan Riset Blockchain
+recommended_functions:
+- name: Dukungan Pelanggan 24/7 untuk Pertanyaan Dasar
+  priority: high
+  reason: Tingginya minat dari pemula yang butuh bantuan instan dalam bahasa Indonesia.
+- name: Verifikasi Transaksi dan Peringatan Keamanan
+  priority: high
+  reason: Mengurangi risiko penipuan dan meningkatkan kepercayaan pengguna.
+- name: Edukasi Konten Kripto dan Update Regulasi
+  priority: medium
+  reason: Membantu pengguna memahami lingkungan regulasi yang dinamis di Indonesia.
+- name: Asisten Trading dan Notifikasi Harga
+  priority: medium
+  reason: Memudahkan trader untuk mengambil keputusan berdasarkan informasi real-time.
+- name: Panduan Proses KYC dan Onboarding
+  priority: low
+  reason: Mempercepat proses registrasi dan kepatuhan sesuai peraturan PDP Indonesia.
+- name: Integrasi dengan Sistem Pembayaran Lokal
+  priority: medium
+  reason: Memfasilitasi deposit dan penarikan dalam IDR melalui channel lokal.
+typical_integrations:
+- name: Gateway Pembayaran Lokal
+  examples:
+  - Doku
+  - Midtrans
+  - Xendit
+  priority: high
+- name: Sistem Perbankan Indonesia
+  examples:
+  - BRImo
+  - BCA mobile
+  - Mandiri Online
+  priority: high
+- name: Platform Trading & Analisis
+  examples:
+  - TradingView
+  - Pintu
+  - Indodax API
+  priority: medium
+- name: Tools Komunikasi Bisnis
+  examples:
+  - Qiscus
+  - Sleekr
+  priority: low
+- name: Sistem KYC dan Verifikasi Identitas
+  examples:
+  - Vida
+  - PrivyID
+  priority: medium
+industry_faq:
+- question: Apakah investasi kripto legal di Indonesia?
+  answer_template: Ya, perdagangan aset kripto diakui sebagai komoditas yang dapat
+    diperdagangkan di bursa berjangka yang diawasi oleh Bappebti, namun regulasi terus
+    berkembang. Pastikan Anda menggunakan platform yang terdaftar resmi.
+- question: Bagaimana cara menyimpan aset kripto dengan aman?
+  answer_template: Gunakan dompet kripto yang terpercaya, aktifkan autentikasi dua
+    faktor, simpan frase pemulihan di tempat aman, dan hindari menyimpan aset besar
+    di exchange untuk jangka panjang.
+- question: Apa saja pajak yang berlaku untuk transaksi kripto?
+  answer_template: Keuntungan dari perdagangan kripto dikenakan PPh sesuai tarif progresif.
+    Transaksi jual-beli juga dikenakan PPN dan PPh 22. Konsultasikan dengan ahli pajak
+    untuk detail terbaru.
+- question: Platform apa yang direkomendasikan untuk pemula?
+  answer_template: Untuk pemula, pilih platform yang terdaftar di Bappebti, antarmuka
+    mudah digunakan, memiliki edukasi memadai, dan dukungan pelanggan dalam bahasa
+    Indonesia seperti [nama platform contoh].
+- question: Bagaimana jika terjadi pencurian aset kripto?
+  answer_template: Segera laporkan ke platform dan pihak berwenang. Aset kripto sulit
+    dilacak, jadi pencegahan dengan keamanan ketat adalah kunci. Pastikan Anda menggunakan
+    platform dengan sistem keamanan berlapis.
+- question: Apa itu blockchain dan mengapa penting?
+  answer_template: Blockchain adalah teknologi ledger terdesentralisasi yang mencatat
+    semua transaksi secara transparan dan aman. Ini merupakan dasar dari kripto, memastikan
+    keaslian dan mencegah pemalsuan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan tentang biaya layanan atau solusi.
+  script: Halo, terima kasih atas pertanyaannya. Investasi dalam solusi kami mulai
+    dari Rp 5 juta per bulan, disesuaikan dengan skala bisnis Anda. Dengan biaya ini,
+    Anda bisa otomatiskan dukungan pelanggan dan kurangi risiko operasional hingga
+    30%. Mau saya jelaskan detail paketnya?
+  goal: Memberikan harga awal dan langsung menghubungkan dengan nilai ROI.
+- trigger: security_concern
+  situation: Calon klien mengungkapkan kekhawatiran tentang keamanan platform kripto.
+  script: Sangat wajar khawatir tentang keamanan. Solusi kami dilengkapi dengan verifikasi
+    suara biometrik dan notifikasi real-time untuk setiap transaksi mencurigakan.
+    Kami sudah mematuhi standar PDP Indonesia. Bisa saya jadwalkan demo singkat tentang
+    fitur keamanan kami?
+  goal: Meredakan kekhawatiran dan menjadwalkan demonstrasi.
+- trigger: interest_in_automation
+  situation: Calon klien tertarik untuk mengotomatiskan layanan dukungan atau edukasi.
+  script: Bagus sekali! Banyak platform kripto di Indonesia menggunakan agen suara
+    AI kami untuk menangani 60% pertanyaan dasar, sehingga tim manusia bisa fokus
+    pada masalah kompleks. Rata-rata mereka hemat hingga Rp 15 juta per bulan untuk
+    biaya operasional. Ingin tahu studi kasusnya?
+  goal: Menunjukkan manfaat konkret dan mengarah ke penjualan lebih lanjut.
+- trigger: competitor_mention
+  situation: Calon klien menyebutkan nama pesaing.
+  script: Saya mengapresiasi [nama pesaing]. Perbedaan utama kami adalah fokus pada
+    personalisasi untuk pasar Indonesia, termasuk dukungan bahasa daerah dan integrasi
+    dengan sistem pembayaran lokal seperti GoPay dan OVO. Kami juga lebih mudah diadaptasi
+    untuk kepatuhan regulasi Bappebti yang sering berubah.
+  goal: Membedakan produk dan menekankan keunggulan lokal.
+competitors:
+- name: Indodax
+  positioning: Pertukaran kripto terbesar dan tertua di Indonesia.
+  strengths:
+  - Basis pengguna besar
+  - terdaftar di Bappebti
+  - banyak pilihan aset kripto
+  weaknesses:
+  - Antarmuka kurang modern
+  - edukasi terbatas
+  - volatilitas likuiditas
+  our_differentiation: Kami menyediakan solusi otomatisasi layanan pelanggan dan edukasi
+    yang dapat diintegrasikan ke platform seperti Indodax, meningkatkan pengalaman
+    pengguna mereka.
+- name: Tokocrypto
+  positioning: Platform kripto dengan fokus pada kemudahan penggunaan untuk pemula.
+  strengths:
+  - Antarmuka intuitif
+  - edukasi terstruktur
+  - dukungan Binance
+  weaknesses:
+  - Fitur terbatas untuk trader profesional
+  - ketergantungan pada ekosistem Binance
+  our_differentiation: AI voice agent kami dapat melengkapi dengan dukungan suara
+    24/7 dan analisis transaksi personal, sesuatu yang masih kurang di Tokocrypto.
+- name: Pintu
+  positioning: Aplikasi kripto mobile-first untuk investasi dan tabungan.
+  strengths:
+  - Fokus mobile
+  - pengalaman pengguna sederhana
+  - fitur "beli rutin"
+  weaknesses:
+  - Pilihan kripto terbatas
+  - lebih ke investasi pasif daripada trading aktif
+  our_differentiation: Kami menawarkan otomatisasi yang lebih dalam untuk edukasi
+    dan engagement pengguna, membantu platform seperti Pintu mempertahankan investor
+    pemula.
+- name: Luno (regional)
+  positioning: Exchange kripto global yang beroperasi di Indonesia.
+  strengths:
+  - Backing global
+  - keamanan kuat
+  - operasi di banyak negara
+  weaknesses:
+  - Kurang lokalisasi mendalam
+  - dukungan regulasi lokal yang lambat
+  our_differentiation: Keahlian lokal kami dalam regulasi Indonesia (PDP, Bappebti)
+    dan integrasi dengan pembayaran lokal memberikan keunggulan dalam melayani pasar
+    Indonesia.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 5000000
+  - 50000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Platform kripto menengah dengan 10.000 pengguna aktif.
+    monthly_cost: 15000000
+    monthly_savings: 20000000
+    payback_months: 1
+  value_anchors:
+  - Hemat hingga 40% biaya dukungan pelanggan dengan otomatisasi 24/7.
+  - Tingkatkan konversi onboarding pengguna baru sebesar 25% dengan panduan suara
+    interaktif.
+  - Patuhi regulasi PDP dengan biaya 30% lebih rendah melalui automasi dokumentasi.
+market_context:
+  market_size: Diperkirakan Rp 150 triliun (volume trading tahunan)
+  growth_rate: 35% YoY
+  key_trends:
+  - Peningkatan adopsi kripto sebagai alternatif investasi di kalangan muda.
+  - Regulasi yang semakin jelas dari Bappebti mendorong legitimasi industri.
+  - Integrasi kripto dengan fintech dan pembayaran digital lokal.
+  - Minat tumbuh pada NFT dan aset digital lainnya.
+  seasonality:
+    high:
+    - Akhir tahun (Oktober-Desember) seiring bonus THR dan investasi akhir tahun
+    low:
+    - Awal tahun (Januari-Februari) setelah periode liburan dan penyesuaian portofolio
+typical_objections:
+- objection: Ini terlalu riskan, kami khawatir dengan keamanan data pelanggan.
+  response: Keamanan justru alasan utama menggunakan AI kami. Sistem kami beroperasi
+    dengan enkripsi end-to-end dan sesuai UU PDP Indonesia. Kami bisa membantu mengurangi
+    risiko human error yang justru sering jadi celah keamanan.
+- objection: Biaya implementasinya tampak besar untuk startup kami.
+  response: Memahami kekhawatiran Anda. Solusi kami modular, bisa dimulai dengan fitur
+    dasar seperti FAQ suara dengan biaya Rp 5 juta/bulan. Banyak klien kami ROI dalam
+    2-3 bulan karena penghematan operasional. Mau kita hitung simulasi untuk skala
+    bisnis Anda?
+- objection: Kami sudah punya tim customer service yang cukup.
+  response: Itu bagus. AI voice agent bukan untuk mengganti tim Anda, tetapi menjadi
+    asisten 24/7 yang menangani pertanyaan repetitif. Tim Anda bisa fokus pada masalah
+    kompleks dan meningkatkan kepuasan pelanggan. Hasilnya, produktivitas tim bisa
+    naik hingga 50%.
+meta:
+  id: crypto
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

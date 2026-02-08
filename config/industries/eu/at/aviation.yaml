@@ -1,0 +1,256 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand durch komplexe Flugplanung und Crew-Einteilung,
+    oft manuell und fehleranfällig.
+  severity: high
+  solution_hint: Automatisierte Flugplanung und Crew-Management durch KI-gestützte
+    Systeme, die Vorschläge generieren und Compliance prüfen.
+- description: Last-Minute-Flugänderungen und -absagen führen zu unzufriedenen Passagieren
+    und hohen Umbuchungskosten.
+  severity: high
+  solution_hint: KI-gesteuerte Voice Agents informieren Passagiere proaktiv über Änderungen,
+    bieten automatisch Alternativen an und verarbeiten Umbuchungen.
+- description: Ineffiziente Kommunikation zwischen Bodenpersonal, Besatzung und Passagieren,
+    insbesondere bei Verspätungen.
+  severity: medium
+  solution_hint: Echtzeit-Kommunikationsplattform mit Sprachagenten für durchgängige
+    Informationen an alle Beteiligten.
+- description: Hohe Kosten für die Wartung von Flugzeugen durch ungeplante Ausfälle
+    und ineffiziente Planung.
+  severity: high
+  solution_hint: Predictive Maintenance durch KI, die Wartungsbedarf vorhersagt und
+    automatisch Termine koordiniert.
+- description: Schwierigkeiten bei der Personalisierung des Kundenservices für Vielflieger
+    und Geschäftsreisende.
+  severity: medium
+  solution_hint: KI-Analyse von Kundendaten für maßgeschneiderte Angebote und Services,
+    vermittelt durch Voice Agents.
+- description: Komplexität bei der Einhaltung österreichischer und EU-weiter Sicherheits-
+    und Datenschutzvorschriften (z.B. GDPR).
+  severity: high
+  solution_hint: Automatisierte Compliance-Checks und Datenschutzprotokolle, die in
+    alle Systeme integriert sind.
+typical_services:
+- Flugplanung und -überwachung
+- Crew-Management und -Einteilung
+- Passagier-Service und -Kommunikation
+- Flugzeugwartung und -instandhaltung
+- Bodenabfertigung und Gepäcklogistik
+- Buchungs- und Reservierungssysteme
+- Revenue Management und Tarifgestaltung
+- Sicherheits- und Compliance-Management
+- Treibstoffmanagement und -optimierung
+- Vielfliegerprogramm-Management
+recommended_functions:
+- name: Automatisierte Passagierinformation
+  priority: high
+  reason: Reduziert manuellen Aufwand bei Flugänderungen und erhöht Kundenzufriedenheit
+    durch sofortige Benachrichtigung.
+- name: Intelligente Crew-Einteilung
+  priority: high
+  reason: Optimiert Personaleinsatz, vermeidet Überstunden und stellt Einhaltung von
+    Ruhezeiten sicher.
+- name: Predictive Maintenance Anrufkoordination
+  priority: medium
+  reason: Proaktive Wartungsplanung reduziert ungeplante Ausfälle und spart Kosten.
+- name: GDPR-konforme Datenerfassung
+  priority: high
+  reason: Essentiell für Rechtskonformität in Österreich und der EU, vermeidet hohe
+    Strafen.
+- name: Personalisierte Upselling-Anrufe
+  priority: medium
+  reason: Erhöht den Umsatz durch gezielte Angebote an Vielflieger basierend auf deren
+    Präferenzen.
+- name: 24/7 Notfall-Hotline
+  priority: low
+  reason: Bietet rund um die Uhr Support bei betriebskritischen Vorfällen.
+typical_integrations:
+- name: Flugplanungssystem (FPS)
+  examples:
+  - Lufthansa Systems NetLine
+  - Sabre AirCentre
+  priority: high
+- name: Crew-Management-System (CMS)
+  examples:
+  - Jeppesen Crew Management
+  - Lufthansa Systems Crew
+  priority: high
+- name: Passagier-Service-System (PSS)
+  examples:
+  - Amadeus Altéa
+  - SabreSonic
+  priority: high
+- name: Wartungsmanagementsystem (MRO)
+  examples:
+  - AMOS
+  - SAP ERP für Luftfahrt
+  priority: medium
+- name: CRM-System
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  priority: medium
+- name: Buchungsplattformen
+  examples:
+  - Österreichische Fluglinien-Websites
+  - Booking.com
+  - Skyscanner
+  priority: low
+industry_faq:
+- question: Wie kann ein KI-Sprachagent bei kurzfristigen Flugausfällen helfen?
+  answer_template: Unser KI-Agent informiert automatisch alle betroffenen Passagiere
+    per Anruf oder SMS, bietet alternative Flugoptionen an und kann Umbuchungen direkt
+    bestätigen. Dies entlastet Ihre Hotline und beschleunigt die Lösung.
+- question: Ist Ihre Lösung mit unseren bestehenden Flugplanungssystemen kompatibel?
+  answer_template: Ja, unsere Lösung bietet APIs für gängige Systeme wie NetLine oder
+    Sabre AirCentre. Wir integrieren uns nahtlos in Ihre bestehende IT-Landschaft.
+- question: Wie gewährleisten Sie die Einhaltung der GDPR in Österreich?
+  answer_template: Alle unsere Sprachagenten sind nach dem Prinzip 'Privacy by Design'
+    konzipiert. Datenverarbeitung findet primär in der EU statt, und wir bieten vollständige
+    Protokollierung und Löschung nach Kundenvorgabe.
+- question: Können Sie auch österreichische Dialekte verstehen?
+  answer_template: Unser System ist auf Standarddeutsch trainiert, versteht aber gängige
+    österreichische Besonderheiten und Begriffe. Für stark dialektale Sprache bieten
+    wir optional eine Anpassung an.
+- question: Was passiert, wenn der Sprachagent eine Frage nicht beantworten kann?
+  answer_template: Der Agent erkennt seine Grenzen und leitet das Gespräch nahtlos
+    an einen menschlichen Kollegen in Ihrer Zentrale weiter, inklusive aller bereits
+    gesammelten Informationen.
+- question: Wie schnell kann die Lösung implementiert werden?
+  answer_template: Eine Basis-Integration für standardisierte Prozesse wie Passagierinformation
+    ist innerhalb von 4-6 Wochen möglich. Komplexere Anwendungen wie Crew-Management
+    benötigen 8-12 Wochen.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten der Lösung.
+  script: Sehr gerne. Unsere Preise beginnen bei einem monatlichen Basisbeitrag von
+    2.500 € für Kernfunktionen wie automatisierte Passagierinformation. Der genaue
+    Preis hängt vom Umfang Ihrer Flotte und den gewünschten Zusatzmodulen ab. Können
+    Sie mir eine grobe Vorstellung von Ihrer Flottengröße geben, damit ich ein passendes
+    Angebot erstellen kann?
+  goal: Qualifikation des Kunden und Erstellung eines maßgeschneiderten Angebots.
+- trigger: competitor_mentioned
+  situation: Kunde erwähnt einen Wettbewerber wie Lufthansa Systems.
+  script: Verständlich, [Wettbewerber] ist ein bekannter Anbieter. Unser Fokus liegt
+    speziell auf der Automatisierung von Sprach- und Kommunikationsprozessen mit KI,
+    was sie oft nur als Add-on anbieten. Wir sind schneller implementiert, agiler
+    und bieten eine echtzeitfähige Integration, die speziell für österreichische Compliance-Anforderungen
+    wie die GDPR optimiert ist. Darf ich Ihnen einen Vergleich anhand Ihrer konkreten
+    Schmerzpunkte zeigen?
+  goal: Differenzierung durch Spezialisierung, Agilität und Lokalvorteil.
+- trigger: objection_complexity
+  situation: Kunde befürchtet, die Implementierung sei zu komplex und störend.
+  script: Das ist eine wichtige Sorge. Unser Implementierungsansatz ist modular und
+    beginnt mit einem unkritischen Bereich, wie der Passagierinfo bei Verspätungen.
+    So sehen Sie schnell einen Nutzen, ohne Ihre Kernsysteme zu belasten. Wir begleiten
+    Sie mit einem dedizierten Projektteam, das auch in Österreich sitzt. Könnten wir
+    nächste Woche einen kurzen Termin für eine detaillierte Implementierungsplanung
+    vereinbaren?
+  goal: Bedenken zerstreuen durch schrittweisen Ansatz und lokalen Support.
+- trigger: request_demo
+  situation: Kunde möchte eine Demonstration der Technologie.
+  script: Perfekt. Ich richte gerne eine Demo ein, die genau auf Ihre Branche zugeschnitten
+    ist. Zeigen Sie mir Ihren größten Schmerzpunkt – sei es Crew-Einteilung oder Passagierkommunikation
+    – und ich stelle die entsprechende Funktion live vor. Welcher Bereich interessiert
+    Sie am meisten?
+  goal: Interesse konkretisieren und auf spezifische Demo vorbereiten.
+competitors:
+- name: Lufthansa Systems
+  positioning: Globaler Full-Service-Anbieter für Luftfahrt-IT.
+  strengths:
+  - Umfassendes Produktportfolio
+  - tiefe Branchenkenntnis
+  - globale Präsenz
+  weaknesses:
+  - Höhere Kosten
+  - weniger agil
+  - Standardlösungen weniger individuell
+  our_differentiation: Wir bieten spezialisierte, agile KI-Kommunikationslösungen
+    mit schnellerer Implementierung und Fokus auf österreichische KMUs.
+- name: Sabre Corporation
+  positioning: Führender Anbieter von Technologielösungen für die globale Reisewirtschaft.
+  strengths:
+  - Starke Buchungs- und Vertriebssysteme
+  - großes Partnernetzwerk
+  weaknesses:
+  - Komplexe Integration
+  - höherer Fokus auf Vertrieb vs. Betrieb
+  our_differentiation: Unsere Lösung ist leichter integrierbar, betriebsorientiert
+    und bietet echte KI-gestützte Interaktion, nicht nur Transaktionsverarbeitung.
+- name: Lokale IT-Dienstleister
+  positioning: Regionale Anbieter von allgemeiner Geschäftssoftware.
+  strengths:
+  - Lokale Präsenz
+  - persönlicher Service
+  - geringere Kosten
+  weaknesses:
+  - Fehlende Branchenspezialisierung
+  - keine vorgefertigten Luftfahrtlösungen
+  our_differentiation: Wir kombinieren lokalen Support mit tiefer Luftfahrt- und KI-Expertise
+    sowie branchenspezifischen, sofort einsatzfähigen Modulen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 2500
+  - 15000
+  entry_point: 2500
+  roi_examples:
+  - scenario: Automatisierung von Passagierinformationsanrufen bei Verspätungen für
+      eine Regionalfluglinie.
+    monthly_cost: 3000
+    monthly_savings: 6500
+    payback_months: 1.5
+  - scenario: Optimierung der Crew-Einteilung und Reduzierung von Überstunden.
+    monthly_cost: 5000
+    monthly_savings: 12000
+    payback_months: 2
+  value_anchors:
+  - Reduzieren Sie manuelle Anrufe bei Flugänderungen um bis zu 80%.
+  - Vermeiden Sie GDPR-Strafen durch automatisierte Compliance.
+  - Steigern Sie die Passagierzufriedenheit mit proaktivem Service.
+market_context:
+  market_size: Ca. 150-200 potenzielle Unternehmenskunden (Fluglinien, Flughäfen,
+    Dienstleister) in Österreich.
+  growth_rate: 4-6% YoY
+  key_trends:
+  - Zunehmende Digitalisierung von Kundenservice-Prozessen.
+  - Starker Fokus auf Nachhaltigkeit und Effizienzsteigerung.
+  - Wachsende Nachfrage nach personalisierten Reiseerlebnissen.
+  - Höhere regulatorische Anforderungen, insbesondere im Datenschutz.
+  seasonality:
+    high:
+    - Juli-August (Hauptreisezeit)
+    - Dezember (Weihnachtsferien)
+    low:
+    - Januar-Februar
+    - November
+typical_objections:
+- objection: Unsere Prozesse sind zu individuell für eine Standard-KI-Lösung.
+  response: Unsere Lösung ist modular und anpassbar. Wir starten mit einem Pilotprojekt
+    in einem klar umrissenen Bereich, um die Wirksamkeit zu beweisen, bevor wir erweitern.
+- objection: Die Investition ist im aktuellen wirtschaftlichen Umfeld zu riskant.
+  response: Gerade in unsicheren Zeiten senkt unsere Lösung operative Kosten und stabilisiert
+    den Service. Das ROI-Beispiel zeigt eine Amortisation oft innerhalb weniger Monate.
+- objection: Wir haben bereits IT-Personal, das sich darum kümmern kann.
+  response: Ihr IT-Personal ist wertvoll und sollte sich auf strategische Projekte
+    konzentrieren. Wir übernehmen die operative Last der Kommunikationsautomatisierung
+    und entlasten Ihr Team.
+- objection: Datensicherheit ist uns extrem wichtig – wir geben keine Kundendaten
+    aus der Hand.
+  response: Volle Zustimmung. Unsere Architektur ermöglicht es, dass die KI-Logik
+    bei uns läuft, die sensiblen Kundendaten aber in Ihrer sicheren Cloud-Umgebung
+    in Österreich bleiben. Wir arbeiten nur mit anonymisierten oder pseudonymisierten
+    Daten.
+meta:
+  id: aviation
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

@@ -1,0 +1,216 @@
+pain_points:
+- description: Biaya bahan baku seperti kertas dan tinta yang terus meningkat, mengurangi
+    margin keuntungan.
+  severity: high
+  solution_hint: AI voice agent dapat membantu memantau harga pasar dan mengotomatisasi
+    pembelian bahan baku dari pemasok termurah.
+- description: Persaingan ketat dari percetakan lokal dan online, membuat sulit mempertahankan
+    pelanggan.
+  severity: high
+  solution_hint: AI voice agent dapat menawarkan layanan pelanggan 24/7 dan kampanye
+    pemasaran otomatis untuk meningkatkan loyalitas.
+- description: Ketergantungan pada tenaga kerja manual untuk pemesanan dan layanan
+    pelanggan, menyebabkan kesalahan dan inefisiensi.
+  severity: medium
+  solution_hint: AI voice agent dapat mengotomatisasi proses pemesanan dan menjawab
+    pertanyaan umum, mengurangi beban kerja staf.
+- description: Tantangan dalam mengelola pesanan yang kompleks dan kustomisasi, sering
+    menyebabkan keterlambatan pengiriman.
+  severity: medium
+  solution_hint: AI voice agent dapat memandu pelanggan melalui opsi kustomisasi dan
+    memperkirakan waktu penyelesaian secara real-time.
+- description: Kepatuhan terhadap regulasi PDP (Perlindungan Data Pribadi) yang ketat,
+    meningkatkan risiko hukum.
+  severity: high
+  solution_hint: AI voice agent dapat menyimpan dan memproses data pelanggan dengan
+    aman, memastikan kepatuhan otomatis.
+- description: Fluktuasi permintaan musiman, menyebabkan overstock atau kekurangan
+    bahan baku.
+  severity: medium
+  solution_hint: AI voice agent dapat menganalisis tren permintaan dan mengoptimalkan
+    inventaris berdasarkan prediksi.
+typical_services:
+- Cetak Offset
+- Digital Printing
+- Sablon Kaos
+- Cetak Stiker Vinyl
+- Print Banner dan Spanduk
+- Cetak Buku dan Majalah
+- Print Kemasan Produk
+- Jilid dan Finishing
+- Layanan Desain Grafis
+- Cetak Kartu Nama dan Brosur
+recommended_functions:
+- name: Penerimaan Pesanan Otomatis
+  priority: high
+  reason: Mengurangi kesalahan manual dan mempercepat proses pemesanan, meningkatkan
+    kepuasan pelanggan.
+- name: Dukungan Pelanggan 24/7
+  priority: high
+  reason: Menjawab pertanyaan umum dan menangani keluhan kapan saja, meningkatkan
+    retensi pelanggan.
+- name: Pengingat Pembayaran dan Penagihan
+  priority: medium
+  reason: Mengotomatisasi penagihan dan mengurangi tunggakan, meningkatkan arus kas.
+- name: Rekomendasi Produk Berbasis AI
+  priority: medium
+  reason: Menganalisis kebutuhan pelanggan dan menawarkan layanan tambahan, meningkatkan
+    penjualan silang.
+- name: Pemantauan Status Pesanan
+  priority: high
+  reason: Memberikan update real-time kepada pelanggan, mengurangi pertanyaan berulang.
+- name: Integrasi dengan Sistem Inventaris
+  priority: low
+  reason: Mengoptimalkan stok bahan baku dan mencegah kehabisan, mengurangi biaya
+    operasional.
+typical_integrations:
+- name: Sistem Akuntansi
+  examples:
+  - Jurnal
+  - Accurate
+  - Zahir
+  priority: high
+- name: Manajemen Inventaris
+  examples:
+  - Moka POS
+  - iReap
+  priority: medium
+- name: Platform E-commerce
+  examples:
+  - Tokopedia
+  - Shopee
+  - Bukalapak
+  priority: high
+- name: Perangkat Lunak Desain
+  examples:
+  - Adobe Creative Suite
+  - CorelDRAW
+  priority: low
+industry_faq:
+- question: Berapa lama waktu produksi untuk cetak banner ukuran besar?
+  answer_template: Waktu produksi untuk cetak banner ukuran besar biasanya 2-4 hari
+    kerja, tergantung pada kuantitas dan kompleksitas desain. Kami dapat memberikan
+    estimasi yang lebih akurat setelah mengetahui detail pesanan.
+- question: Apakah Anda menerima pesanan dalam jumlah kecil?
+  answer_template: Ya, kami menerima pesanan dalam jumlah kecil dengan harga yang
+    kompetitif. Untuk kuantitas lebih besar, kami menawarkan diskon khusus.
+- question: Bagaimana dengan kualitas cetak dan bahan yang digunakan?
+  answer_template: Kami menggunakan bahan berkualitas tinggi dan teknologi cetak terbaru
+    untuk memastikan hasil yang tajam dan tahan lama. Contoh produk dapat disediakan
+    atas permintaan.
+- question: Apakah ada biaya tambahan untuk desain grafis?
+  answer_template: Layanan desain grafis tersedia dengan biaya tambahan yang terjangkau.
+    Jika Anda sudah memiliki file desain, tidak ada biaya tambahan.
+- question: Bagaimana cara pembayaran dan pengiriman?
+  answer_template: Kami menerima pembayaran via transfer bank, kartu kredit, atau
+    dompet digital. Pengiriman dapat dilakukan melalui kurir lokal dengan tarif yang
+    transparan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga layanan cetak.
+  script: Halo, terima kasih telah menghubungi. Harga layanan cetak kami bervariasi
+    berdasarkan jenis, kuantitas, dan bahan. Untuk memberikan penawaran terbaik, boleh
+    saya tahu detail kebutuhan Anda seperti ukuran dan jumlah?
+  goal: Mengumpulkan informasi spesifik untuk menawarkan harga yang kompetitif dan
+    meningkatkan konversi.
+- trigger: service_inquiry
+  situation: Ketika pelanggan bertanya tentang layanan yang tersedia.
+  script: Halo, kami menyediakan berbagai layanan cetak seperti digital printing,
+    cetak offset, sablon, dan finishing. Apakah ada kebutuhan khusus yang ingin Anda
+    diskusikan? Saya dapat merekomendasikan layanan yang sesuai.
+  goal: Memandu pelanggan ke layanan yang relevan dan membangun kepercayaan.
+- trigger: follow_up
+  situation: Setelah pelanggan menerima penawaran tetapi belum memutuskan.
+  script: Halo, saya ingin menindaklanjuti penawaran sebelumnya. Apakah ada pertanyaan
+    atau penyesuaian yang diperlukan? Kami juga menawarkan diskon untuk pesanan cepat
+    atau volume besar.
+  goal: Mendorong keputusan pembelian dengan menawarkan insentif tambahan.
+competitors:
+- name: PT. Cetak Indah Sejahtera
+  positioning: Penyedia layanan cetak tradisional dengan jaringan luas di kota-kota
+    besar.
+  strengths:
+  - Infrastruktur produksi yang mapan
+  - Harga kompetitif untuk pesanan massal
+  weaknesses:
+  - Layanan pelanggan yang lambat dan kurang responsif
+  - Teknologi terbatas untuk kustomisasi
+  our_differentiation: Kami menggunakan AI voice agent untuk layanan yang lebih cepat,
+    personal, dan efisien, dengan dukungan 24/7.
+- name: PrintOnline.co.id
+  positioning: Platform cetak online dengan fokus pada kemudahan pemesanan digital.
+  strengths:
+  - Antarmuka pengguna yang mudah digunakan
+  - Opsi pengiriman nasional
+  weaknesses:
+  - Kualitas konsisten terkadang bervariasi
+  - Dukungan teknis terbatas
+  our_differentiation: Kami menggabungkan teknologi AI dengan kualitas fisik yang
+    terjamin, menawarkan konsistensi dan dukungan langsung.
+- name: Percetakan Kreatif Mandiri
+  positioning: Percetakan lokal yang mengkhususkan pada desain kustom dan layanan
+    seni.
+  strengths:
+  - Fleksibilitas tinggi untuk proyek kreatif
+  - Perhatian detail yang baik
+  weaknesses:
+  - Kapasitas produksi terbatas
+  - Harga lebih tinggi untuk kustomisasi
+  our_differentiation: AI voice agent kami dapat menangani kustomisasi secara otomatis
+    dengan harga yang lebih terjangkau dan skalabilitas lebih besar.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000
+  - 5000000
+  entry_point: 100000
+  roi_examples:
+  - scenario: Mengotomatisasi pemesanan dan dukungan pelanggan untuk percetakan kecil.
+    monthly_cost: 1500000
+    monthly_savings: 3000000
+    payback_months: 0.5
+  value_anchors:
+  - Menghemat hingga 40% waktu staf dengan automasi AI.
+  - Meningkatkan konversi penjualan hingga 25% dengan layanan 24/7.
+  - Mengurangi kesalahan pesanan dan biaya bahan baku hingga 20%.
+market_context:
+  market_size: Estimasi pasar industri cetak di Indonesia mencapai Rp 15 triliun per
+    tahun.
+  growth_rate: 3-4% per tahun, didorong oleh digitalisasi dan permintaan kemasan.
+  key_trends:
+  - Pergeseran ke cetak digital untuk on-demand dan personalisasi.
+  - Permintaan meningkat untuk bahan ramah lingkungan dan berkelanjutan.
+  - Integrasi teknologi AI dan IoT dalam proses produksi.
+  seasonality:
+    high:
+    - Bulan Ramadan dan Lebaran untuk cetak promosi dan kemasan.
+    - Akhir tahun untuk cetak kalender dan merchandise.
+    low:
+    - Pertengahan tahun, terutama bulan-bulan setelah liburan besar.
+typical_objections:
+- objection: Saya sudah memiliki pemasok cetak yang mapan, tidak perlu beralih.
+  response: Kami menghargai loyalitas Anda. Dengan AI voice agent, kami menawarkan
+    efisiensi lebih tinggi, layanan yang lebih cepat, dan potensi penghematan biaya.
+    Boleh kami memberikan demo atau penawaran percobaan?
+- objection: Teknologi AI terdengar rumit dan mahal untuk bisnis kecil saya.
+  response: AI voice agent kami dirancang mudah digunakan dan terjangkau, dengan entry
+    point rendah. Ini dapat membantu mengotomatisasi tugas-tugas sederhana, sehingga
+    Anda fokus pada pertumbuhan bisnis.
+- objection: Saya khawatir dengan keamanan data pelanggan di sistem AI.
+  response: Kami mematuhi regulasi PDP Indonesia dan menggunakan enkripsi data yang
+    ketat. AI voice agent kami hanya mengakses informasi yang diperlukan untuk layanan,
+    dengan transparansi penuh.
+meta:
+  id: printing
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

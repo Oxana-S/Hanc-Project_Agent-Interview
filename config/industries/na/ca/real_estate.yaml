@@ -1,0 +1,243 @@
+aliases:
+- real estate
+- realtor
+- real estate agency
+- condo
+- house
+- cottage
+- rental
+- condo sale
+- new development
+- developer
+- mortgage
+- housing
+- office rental
+- commercial real estate
+competitors:
+- name: RE/MAX Canada
+  positioning: Leading national real estate brokerage
+  strengths:
+  - Extensive agent network nationwide
+  - Strong brand recognition
+  - Comprehensive MLS listings access
+  weaknesses:
+  - Higher commission fees
+  - Variable service quality depending on agent
+  our_differentiation: Personalized AI-enabled 24/7 lead qualification and instant
+    property info to improve customer engagement and reduce lost leads
+- name: Royal LePage
+  positioning: Well-established Canadian real estate company
+  strengths:
+  - Longstanding market presence
+  - Strong local market expertise
+  - Wide range of property listings
+  weaknesses:
+  - Less technology-driven
+  - Slower lead response times
+  our_differentiation: AI voice agents automate lead capture and follow-up, improving
+    speed and accuracy of customer communications
+- name: Century 21 Canada
+  positioning: Popular real estate franchise with broad coverage
+  strengths:
+  - National presence
+  - Experienced agents
+  - Good marketing support
+  weaknesses:
+  - Inconsistent agent engagement
+  - Limited online customer support
+  our_differentiation: AI voice assistant provides immediate answers to FAQs and schedules
+    showings, enhancing customer experience and agent efficiency
+industry_faq:
+- question: What properties do you currently have available?
+  answer_template: Please specify your preferences such as neighborhood, size, and
+    budget, and I will find suitable options for you.
+- question: What are your commission fees?
+  answer_template: Our commission typically ranges from 3% to 5% of the sale price,
+    payable upon closing.
+- question: Can I finance my purchase with a mortgage?
+  answer_template: Yes, we work with multiple lenders and can help you find mortgage
+    options that fit your needs.
+- question: When can I schedule a property viewing?
+  answer_template: I can book a viewing appointment for you. What date and time work
+    best?
+- question: Are there any hidden fees or costs?
+  answer_template: All fees and costs are fully disclosed upfront with no hidden charges.
+- question: Do you offer legal support during the transaction?
+  answer_template: Yes, we provide legal review and support to ensure a smooth closing
+    process.
+- question: How do I know if a property is a good investment?
+  answer_template: We can provide market analysis and valuation reports to help you
+    assess the property's potential.
+pain_points:
+- description: High volume of incoming calls from online listings overwhelms agents
+  severity: high
+  solution_hint: Use AI voice agent for initial lead qualification to filter serious
+    buyers
+- description: Customers call outside business hours and go to competitors
+  severity: high
+  solution_hint: 24/7 AI voice agent to capture and respond to inquiries anytime
+- description: Repeated showings and follow-up calls consume significant agent time
+  severity: medium
+  solution_hint: Automated sending of property details and follow-up reminders
+- description: Difficulty tracking status of multiple transactions and leads
+  severity: medium
+  solution_hint: Automatic notifications and status updates through voice agent integration
+- description: Low conversion rate from inquiry to showing appointment
+  severity: medium
+  solution_hint: Prompt callbacks and qualification by AI improve conversion rates
+- description: Complex compliance with PIPEDA data privacy requirements
+  severity: medium
+  solution_hint: Voice agents designed to securely handle personal data with compliance
+- description: Price negotiations and objections prolong sales cycles
+  severity: low
+  solution_hint: AI can provide instant responses to common objections and price queries
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 300000
+  - 1500000
+  entry_point: 900000
+  roi_examples:
+  - scenario: Reducing lost leads by automating first contact and qualification
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Saving agent time by automating appointment scheduling and FAQ handling
+    monthly_cost: 700
+    monthly_savings: 2100
+    payback_months: 1
+  value_anchors:
+  - Save time and increase lead conversion with automated 24/7 response
+  - Ensure compliance with Canadian privacy laws while handling customer data
+  - Improve customer experience with instant, accurate answers and scheduling
+  - Reduce operational costs by minimizing manual follow-up workload
+market_context:
+  market_size: 14000000000
+  growth_rate: 3.5
+  key_trends:
+  - Increasing adoption of digital tools and virtual tours
+  - Growing demand for rental properties in urban centers
+  - Rising interest in sustainable and energy-efficient homes
+  - Greater use of AI and automation in customer service
+  seasonality:
+    high:
+    - Spring (March to June)
+    - Fall (September to November)
+    low:
+    - Winter (December to February)
+    - Summer (July to August)
+recommended_functions:
+- name: lead_qualification
+  priority: high
+  reason: Collect buyer preferences like budget, location, property type, urgency
+    to qualify leads early
+- name: appointment_scheduling
+  priority: high
+  reason: Automate booking showings and meetings to reduce manual agent workload
+- name: faq_response
+  priority: medium
+  reason: Provide instant answers to common questions about properties, pricing, process
+- name: status_notifications
+  priority: medium
+  reason: Keep clients updated automatically on transaction progress
+- name: outbound_calls
+  priority: medium
+  reason: Proactive follow-up with leads and promotion of new listings
+- name: data_privacy_compliance
+  priority: high
+  reason: Ensure all interactions comply with PIPEDA regulations on personal data
+- name: objection_handling
+  priority: medium
+  reason: Respond to common sales objections to keep prospects engaged
+typical_integrations:
+- name: CRM
+  examples:
+  - Real Geeks
+  - Follow Up Boss
+  - Zoho CRM
+  priority: high
+- name: MLS Listing Platforms
+  examples:
+  - REALTOR.ca
+  - Zillow Canada
+  - Point2 Homes
+  priority: high
+- name: Telephony
+  examples:
+  - RingCentral
+  - 8x8
+  - Twilio
+  priority: high
+- name: Messaging Apps
+  examples:
+  - WhatsApp
+  - Facebook Messenger
+  - SMS gateways
+  priority: medium
+- name: Transaction Management Software
+  examples:
+  - Dotloop
+  - Skyslope
+  priority: medium
+typical_objections:
+- objection: I can find properties myself online
+  response: I understand, but we offer exclusive listings and personalized support
+    that you won’t find on public sites. Would you like me to share some exclusive
+    options?
+- objection: Your commission seems high
+  response: Let’s review your budget and goals so I can show you value-added services
+    that justify our commission.
+- objection: I’m not ready to decide now
+  response: No problem! Can I keep you updated with new listings that match your preferences?
+- objection: I can call back later
+  response: Certainly! Would you like me to hold a property option for you until then?
+- objection: I’m worried about privacy of my data
+  response: We strictly comply with Canadian privacy laws (PIPEDA) and ensure your
+    data is secure and confidential.
+sales_scripts:
+- trigger: price_question
+  situation: When customer asks about commission fees or pricing
+  script: Our standard commission ranges between 3% and 5% of the final sale price,
+    payable upon closing. If you’d like, I can explain how our fees translate into
+    value for you.
+  goal: Provide transparent pricing and justify commission value
+- trigger: schedule_viewing
+  situation: When customer wants to book a property showing
+  script: I can book a showing for you. Please tell me your preferred date and time,
+    and I will confirm the appointment with the agent.
+  goal: Secure appointment booking efficiently
+- trigger: mortgage_inquiry
+  situation: Customer asks about financing options
+  script: Yes, we work with multiple lenders and can help you find mortgage solutions
+    tailored to your needs. Would you like me to connect you with a mortgage specialist?
+  goal: Advance mortgage-related lead to specialist
+- trigger: objection_price_high
+  situation: Customer says price or commission is too high
+  script: I understand budget is important. Can you share your target budget? I can
+    find options that fit your price range and provide excellent value.
+  goal: Re-engage customer by focusing on budget fit
+- trigger: objection_not_ready
+  situation: Customer is hesitant to commit now
+  script: No worries. Can I keep you informed about new listings that match your criteria?
+    That way you won’t miss good opportunities.
+  goal: Maintain engagement and nurture lead over time
+typical_services:
+- Residential property sales
+- Rental property leasing (residential)
+- Commercial property leasing and sales
+- Mortgage brokerage and financing assistance
+- Real estate transaction support and coordination
+- Property appraisal and valuation
+- Legal and compliance consulting
+- Property management
+- New home and condo development sales
+- Investment property advisory
+meta:
+  id: real_estate
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+_extends: _base/real_estate

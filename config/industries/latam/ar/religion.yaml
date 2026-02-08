@@ -1,0 +1,226 @@
+pain_points:
+- description: Dificultad para gestionar y coordinar eventos religiosos (misas, bautismos,
+    matrimonios) de manera eficiente, llevando a solapamientos y falta de personal.
+  severity: medium
+  solution_hint: El agente de voz puede automatizar la agenda, confirmar asistencia
+    y enviar recordatorios a los feligreses.
+- description: Baja tasa de donaciones regulares y falta de seguimiento a los donantes,
+    afectando la sostenibilidad económica de la institución.
+  severity: high
+  solution_hint: El agente puede realizar llamadas amigables para recordar donaciones,
+    agradecer y ofrecer métodos de pago fáciles.
+- description: Comunicación ineficaz con la comunidad parroquial, especialmente con
+    miembros mayores menos familiarizados con medios digitales.
+  severity: medium
+  solution_hint: Agente de voz realiza llamadas personalizadas para informar sobre
+    actividades, horarios de misa y noticias importantes.
+- description: Alta carga administrativa para el clero y voluntarios en tareas repetitivas
+    como responder consultas básicas.
+  severity: medium
+  solution_hint: El agente maneja consultas frecuentes (horarios, sacramentos), liberando
+    tiempo para labores pastorales.
+- description: Dificultad para reclutar y coordinar voluntarios para actividades caritativas
+    y eventos comunitarios.
+  severity: low
+  solution_hint: El agente puede contactar potenciales voluntarios, explicar necesidades
+    y gestionar inscripciones.
+- description: Falta de un sistema centralizado para el seguimiento espiritual o pastoral
+    de feligreses en momentos clave (enfermedad, duelo).
+  severity: high
+  solution_hint: Agente programa llamadas de acompañamiento periódicas y deriva casos
+    sensibles al personal adecuado.
+typical_services:
+- Celebración de Misas y Servicios Religiosos
+- Administración de Sacramentos (Bautismo, Confirmación, Matrimonio)
+- Catequesis y Formación Religiosa
+- Asistencia y Obras de Caridad Comunitaria
+- Grupos de Oración y Crecimiento Espiritual
+- Consejería Pastoral y Acompañamiento
+- Organización de Peregrinaciones y Retiros
+- Gestión de Cementerios y Capillas
+- Eventos Comunitarios y Festividades Patronales
+- Programas de Juventud y Familia
+recommended_functions:
+- name: Coordinador de Eventos y Sacramentos
+  priority: high
+  reason: Fundamental para optimizar la logística de actividades clave y reducir errores
+    en la agenda.
+- name: Asistente de Donaciones y Finanzas
+  priority: high
+  reason: Ayuda a asegurar un flujo de ingresos estable, crítico para la operación
+    de la institución.
+- name: Comunicador Comunitario
+  priority: medium
+  reason: Mejora la conexión con la feligresía, especialmente con segmentos no digitales.
+- name: Respondedor de Consultas Frecuentes
+  priority: medium
+  reason: Libera tiempo valioso del personal administrativo y voluntariado.
+- name: Reclutador y Coordinador de Voluntarios
+  priority: low
+  reason: Automatiza un proceso que suele ser manual y reactivo.
+- name: Seguimiento Pastoral Automatizado
+  priority: high
+  reason: Permite un acompañamiento más personalizado y escalable a la comunidad.
+typical_integrations:
+- name: Sistema de Gestión Parroquial
+  examples:
+  - Sistema Integral Parroquial
+  - ParishSoft
+  priority: high
+- name: Plataforma de Pagos y Donaciones Online
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - PayPal
+  priority: high
+- name: Herramientas de Comunicación Masiva
+  examples:
+  - WhatsApp Business API
+  - Mailify
+  priority: medium
+- name: Calendario y Agenda Digital
+  examples:
+  - Google Calendar
+  - Calendario de la Diócesis
+  priority: medium
+- name: Base de Datos de Feligreses
+  examples:
+  - Sistema personalizado en Excel
+  - Access
+  priority: low
+industry_faq:
+- question: ¿A qué hora es la misa de los domingos?
+  answer_template: Las misas dominicales son a las [HORA1], [HORA2] y [HORA3]. Para
+    horarios especiales o de semana, puedo transferirle con un voluntario.
+- question: ¿Cómo puedo donar a la parroquia?
+  answer_template: Puede donar mediante transferencia bancaria, Mercado Pago en nuestro
+    sitio web, o acercándose personalmente. Agradecemos su generosidad para sostener
+    nuestra misión.
+- question: ¿Qué necesito para bautizar a mi hijo?
+  answer_template: Necesita la partida de nacimiento, los padrinos bautismales y asistir
+    a una charla pre-bautismal. Le ayudo a coordinar una cita con el secretariado.
+- question: ¿La parroquia ofrece ayuda social o alimentos?
+  answer_template: Sí, tenemos un comedor comunitario los días [DIAS]. Para más información
+    sobre asistencia, puedo conectarle con el área de Caritas.
+- question: ¿Hay grupos de jóvenes o catequesis para adultos?
+  answer_template: Sí, tenemos grupos para distintas edades. Los jóvenes se reúnen
+    los [DIAS] y la catequesis de adultos los [DIAS]. Le paso los datos del coordinador.
+sales_scripts:
+- trigger: initial_contact
+  situation: Primer contacto con una parroquia o institución religiosa.
+  script: Hola, soy [Nombre], de [Empresa]. Llamamos para ofrecerle un asistente de
+    voz que puede ayudar a su parroquia a gestionar donaciones, coordinar eventos
+    y estar más cerca de su comunidad, liberando tiempo para lo pastoral. ¿Le interesaría
+    conocer más?
+  goal: Generar interés y agendar una demostración.
+- trigger: price_question
+  situation: El cliente pregunta por el costo del servicio.
+  script: Entiendo. Nuestro servicio parte desde [ENTRY_POINT_ARS] mensuales, mucho
+    menos que el sueldo de un secretario. Se paga solo con el aumento en donaciones
+    y la eficiencia ganada. ¿Prefiere que le detalle un ejemplo con números de su
+    parroquia?
+  goal: Suavizar la objeción de precio mostrando ROI concreto.
+- trigger: objection_time
+  situation: El cliente dice que no tiene tiempo para implementar algo nuevo.
+  script: Justamente por eso llamamos. Nosotros nos encargamos de toda la implementación
+    y capacitación. Su equipo solo disfrutará de tener menos llamadas repetitivas
+    y más donaciones organizadas. ¿Podemos agendar 20 minutos la próxima semana para
+    mostrarle?
+  goal: Remover la barrera de la implementación y cerrar una cita.
+- trigger: follow_up_donation
+  situation: Seguimiento después de mencionar el problema de donaciones.
+  script: Retomando nuestra charla, nuestro agente puede aumentar las donaciones regulares
+    con recordatorios amables y agradecimientos automáticos. Una parroquia similar
+    vio un 20% más de donantes en 3 meses. ¿Le gustaría probarlo un mes sin compromiso?
+  goal: Cerrar una prueba piloto enfocada en un dolor concreto.
+competitors:
+- name: Soluciones de Gestión Parroquial Genéricas
+  positioning: Software de escritorio o web para administración básica.
+  strengths:
+  - Conocimiento del sector religioso
+  - Funcionalidades específicas para sacramentos
+  weaknesses:
+  - Sin automatización de voz
+  - Requiere capacitación extensa
+  - Costo inicial alto
+  our_differentiation: Ofrecemos interacción humana automatizada por voz, ideal para
+    conectar con toda la comunidad, no solo gestión de datos.
+- name: Plataformas de Donaciones Extranjeras
+  positioning: Herramientas online para recaudación de fondos.
+  strengths:
+  - Fáciles de usar
+  - Integración con redes sociales
+  weaknesses:
+  - No adaptadas a la cultura parroquial argentina
+  - Sin seguimiento personal por voz
+  our_differentiation: Agente de voz que explica y promueve la donación en el contexto
+    local, con integración a los métodos de pago argentinos.
+- name: Call Centers Tradicionales
+  positioning: Servicio externalizado de atención telefónica.
+  strengths:
+  - Presencia humana
+  - Flexibilidad
+  weaknesses:
+  - Muy costoso para instituciones religiosas
+  - Horarios limitados
+  our_differentiation: Costo una fracción de un call center, disponible 24/7 para
+    consultas, y con el tono pastoral adecuado.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 25000
+  entry_point: 7000
+  roi_examples:
+  - scenario: Parroquia mediana automatizando recordatorios de donación y agenda de
+      eventos.
+    monthly_cost: 8000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Cuesta menos que un voluntario de tiempo completo.
+  - Se recupera la inversión con 5 donaciones mensuales nuevas.
+  - Atención pastoral extendida sin aumentar la plantilla.
+market_context:
+  market_size: Aproximadamente 13,000 parroquias católicas y miles de templos de otros
+    cultos.
+  growth_rate: Estable, con crecimiento en adopción digital post-pandemia.
+  key_trends:
+  - Digitalización de la comunicación parroquial y donaciones online.
+  - Enfoque en retener y conectar con jóvenes y familias.
+  - Mayor necesidad de transparencia en el uso de fondos.
+  seasonality:
+    high:
+    - Diciembre (Navidad)
+    - Semana Santa
+    - Mes de María (Mayo)
+    low:
+    - Enero (vacaciones)
+    - Julio (receso escolar)
+typical_objections:
+- objection: Nuestra feligresía es mayor y no usa mucho el teléfono para estos trámites.
+  response: Justamente por eso es ideal. Nuestro agente usa un lenguaje claro y amable,
+    como una llamada personal, que es lo que su comunidad valora y entiende.
+- objection: No tenemos presupuesto para tecnología ahora.
+  response: Comprendo. Por eso nuestro plan de entrada es accesible. Pensemos en esto
+    como una inversión que ahorrará dinero en gestión y aumentará ingresos. ¿Podemos
+    hacer un cálculo para su caso?
+- objection: Ya tenemos voluntarios que hacen estas llamadas.
+  response: Qué bueno. Nuestro agente no los reemplaza, los potencia. Libera a sus
+    voluntarios de tareas repetitivas para que se enfoquen en el contacto humano más
+    profundo que solo ellos pueden dar.
+meta:
+  id: religion
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

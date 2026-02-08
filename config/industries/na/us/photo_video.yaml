@@ -1,0 +1,246 @@
+pain_points:
+- description: High competition leading to difficulty in standing out and acquiring
+    new clients.
+  severity: high
+  solution_hint: AI voice agent can help by automating lead qualification and follow-ups,
+    ensuring consistent outreach.
+- description: Inconsistent booking schedules causing revenue fluctuations.
+  severity: medium
+  solution_hint: Use AI voice agent for appointment scheduling and reminders to fill
+    gaps and manage bookings efficiently.
+- description: Client communication overload, especially during peak seasons, leading
+    to missed opportunities.
+  severity: high
+  solution_hint: Implement AI voice agent to handle initial inquiries, provide instant
+    responses, and triage calls.
+- description: Managing data privacy compliance with CCPA for client photos and videos.
+  severity: medium
+  solution_hint: AI voice agent can assist in collecting and managing consent forms,
+    ensuring compliance through automated workflows.
+- description: High operational costs for equipment maintenance and software subscriptions.
+  severity: medium
+  solution_hint: AI voice agent can optimize resource allocation by automating administrative
+    tasks, reducing manual labor costs.
+- description: Difficulty in upselling additional services like prints or extended
+    coverage.
+  severity: low
+  solution_hint: Train AI voice agent to suggest add-ons during client interactions
+    based on their needs and past purchases.
+- description: Seasonal demand spikes causing staffing challenges for events.
+  severity: medium
+  solution_hint: Use AI voice agent to pre-qualify and schedule backup photographers
+    or videographers during busy periods.
+typical_services:
+- Wedding Photography and Videography
+- Corporate Video Production
+- Event Coverage (e.g., conferences, parties)
+- Portrait Photography (e.g., family, senior photos)
+- Real Estate Photography
+- Product Photography for E-commerce
+- Social Media Content Creation
+- Drone Aerial Photography and Videography
+- Photo and Video Editing Services
+- Live Streaming Services
+recommended_functions:
+- name: Appointment Scheduling
+  priority: high
+  reason: Critical for managing bookings and reducing no-shows in a time-sensitive
+    industry.
+- name: Price and Package Quoting
+  priority: high
+  reason: Clients often inquire about costs first; quick, accurate quotes improve
+    conversion rates.
+- name: FAQ Handling
+  priority: medium
+  reason: Frees up human agents to focus on complex inquiries, improving efficiency.
+- name: Lead Qualification
+  priority: high
+  reason: Helps filter out non-serious inquiries and prioritize high-potential clients.
+- name: Payment Reminders and Processing
+  priority: medium
+  reason: Ensures timely payments and reduces administrative burden.
+- name: Service Upselling
+  priority: low
+  reason: Increases average transaction value by suggesting relevant add-ons.
+- name: Compliance Check (CCPA/HIPAA)
+  priority: medium
+  reason: Important for handling sensitive client data, especially in medical or private
+    event contexts.
+typical_integrations:
+- name: Customer Relationship Management (CRM)
+  examples:
+  - HubSpot
+  - Salesforce
+  - Zoho
+  priority: high
+- name: Booking and Scheduling Software
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  - HoneyBook
+  priority: high
+- name: Photo and Video Editing Tools
+  examples:
+  - Adobe Creative Cloud
+  - Final Cut Pro
+  - DaVinci Resolve
+  priority: medium
+- name: Payment Processing Systems
+  examples:
+  - Square
+  - Stripe
+  - PayPal
+  priority: medium
+- name: Cloud Storage Solutions
+  examples:
+  - Google Drive
+  - Dropbox
+  - Amazon S3
+  priority: medium
+- name: Social Media Platforms
+  examples:
+  - Instagram
+  - Facebook
+  - YouTube
+  priority: low
+industry_faq:
+- question: What is your pricing for a wedding photography package?
+  answer_template: Our wedding packages start at $2,500 and include 8 hours of coverage,
+    digital images, and a basic album. Would you like to schedule a consultation to
+    discuss custom options?
+- question: How long does it take to receive edited photos after an event?
+  answer_template: Typically, we deliver edited photos within 2-4 weeks, depending
+    on the package. Rush options are available for an additional fee.
+- question: Do you offer video services along with photography?
+  answer_template: Yes, we provide combined photo and video packages. Our videography
+    starts at $1,500 for basic coverage, and we can bundle it for savings.
+- question: Are you insured and compliant with data privacy laws like CCPA?
+  answer_template: Absolutely, we are fully insured and adhere to CCPA guidelines
+    to protect your data. We provide consent forms for all clients.
+- question: Can you accommodate last-minute bookings?
+  answer_template: We do our best to accommodate based on availability. Please call
+    our AI agent to check real-time scheduling and discuss urgent needs.
+- question: What equipment do you use for drone photography?
+  answer_template: We use FAA-compliant drones with high-resolution cameras for aerial
+    shots. All footage is edited professionally for optimal quality.
+- question: Do you provide raw files or only edited images?
+  answer_template: We deliver edited high-resolution images. Raw files can be provided
+    upon request for an additional charge, as per our licensing agreement.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about pricing over the phone.
+  script: Thank you for your interest! Our services are tailored to your needs, with
+    packages starting at $500 for basic sessions. Could you share more about your
+    event or project so I can provide a precise quote?
+  goal: Gather details to offer a customized quote and move towards a booking.
+- trigger: service_inquiry
+  situation: When a caller asks about specific services like wedding photography.
+  script: We specialize in wedding photography with packages that include engagement
+    shoots, full-day coverage, and albums. Our AI system can check availability for
+    your date. Would you like me to look that up?
+  goal: Engage the client by offering immediate value and scheduling a consultation.
+- trigger: competitor_mention
+  situation: When a client mentions another photography studio.
+  script: I understand you're comparing options. We differentiate with personalized
+    AI-assisted scheduling, faster turnaround times, and CCPA-compliant data handling.
+    Would you like to hear about our satisfaction guarantee?
+  goal: Highlight unique selling points to sway the decision in our favor.
+- trigger: objection_handling
+  situation: When a client hesitates due to budget concerns.
+  script: We offer flexible payment plans and have entry-level packages to fit various
+    budgets. Our ROI includes professional quality that enhances your brand or memories.
+    Can I share a cost-saving bundle option?
+  goal: Overcome price objections by emphasizing value and flexibility.
+competitors:
+- name: Shutterfly
+  positioning: Large-scale online photography and printing service.
+  strengths:
+  - Wide brand recognition
+  - user-friendly online platforms
+  - extensive product range
+  weaknesses:
+  - Less personalized service
+  - limited local presence for events
+  - higher prices for custom work
+  our_differentiation: We provide personalized AI voice support, local event coverage,
+    and competitive pricing with faster service.
+- name: Minted
+  positioning: Marketplace for independent photographers and designers.
+  strengths:
+  - Creative community
+  - unique designs
+  - strong online presence
+  weaknesses:
+  - Inconsistent quality control
+  - reliance on freelancers
+  - slower response times
+  our_differentiation: We offer consistent quality with in-house professionals, real-time
+    AI booking, and dedicated customer service.
+- name: Local photography studios (e.g., regional chains)
+  positioning: Brick-and-mortar studios focusing on portraits and events.
+  strengths:
+  - Local reputation
+  - face-to-face interactions
+  - tailored packages
+  weaknesses:
+  - Higher overhead costs
+  - limited scalability
+  - slower adoption of technology
+  our_differentiation: We combine local expertise with AI efficiency, offering scalable
+    solutions and integrated digital tools.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating client inquiries and scheduling for a small studio.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Professional photo/video services increase event satisfaction by 80%.
+  - AI-driven booking reduces administrative time by 50%.
+  - Competitive packages start at $500 with no hidden fees.
+market_context:
+  market_size: Estimated at $10 billion annually in the US.
+  growth_rate: 5% YoY, driven by social media and digital content demand.
+  key_trends:
+  - Rise of drone and 360-degree video for immersive experiences.
+  - Increasing demand for short-form video content for platforms like TikTok and Instagram.
+  - Growing emphasis on data privacy and compliance with regulations like CCPA.
+  seasonality:
+    high:
+    - Spring and summer (wedding season)
+    - Holiday periods (Q4 for events and portraits)
+    low:
+    - Winter months (excluding holiday events)
+    - Early year lulls in corporate bookings
+typical_objections:
+- objection: Your prices are too high compared to others.
+  response: We focus on value, including premium editing, fast delivery, and AI support
+    that saves you time. Let me show you a cost-benefit analysis.
+- objection: I can just use my smartphone for photos/videos.
+  response: Professional equipment and expertise ensure higher quality for lasting
+    memories or business impact. Our services enhance results significantly.
+- objection: I'm not sure about trusting an AI system with my bookings.
+  response: Our AI is designed to assist, not replace, human interaction. It handles
+    routine tasks so our team can provide personalized attention where it matters.
+- objection: We have a tight budget and need to cut costs.
+  response: We offer scalable packages and payment plans. Investing in quality now
+    can prevent re-shoots and boost ROI in the long run.
+meta:
+  id: photo_video
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

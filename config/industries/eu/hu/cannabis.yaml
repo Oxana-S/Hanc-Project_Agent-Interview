@@ -1,0 +1,233 @@
+pain_points:
+- description: A kannabiszipar jogi szabályozása és engedélyeztetési folyamatok bonyolultak
+    és gyakran változnak.
+  severity: high
+  solution_hint: AI hangügynök segíthet a legfrissebb jogi információk gyors átadásában
+    és az engedélyek követésében.
+- description: Ügyféladatok kezelése és GDPR-kompatibilis adatvédelem kihívásai.
+  severity: high
+  solution_hint: Automatikus GDPR-kompatibilis ügyféladatkezelési protokollok támogatása.
+- description: Piaci verseny egyre erősödik, nehéz megkülönböztetni a szolgáltatásokat.
+  severity: medium
+  solution_hint: Hangalapú értékesítési forgatókönyvek a termékek egyedi előnyeinek
+    kiemelésére.
+- description: Korlátozott ügyfélszolgálati kapacitás az információk gyors kiszolgálására.
+  severity: high
+  solution_hint: AI hangügynökök éjjel-nappal elérhető ügyfélszolgálatot biztosítanak.
+- description: Termékismeret hiánya a vásárlók részéről, ami a vásárlási döntéseket
+    lassítja.
+  severity: medium
+  solution_hint: Részletes terméktájékoztató automatizált hangalapú formában.
+- description: Árazási és készletinformációk manuális kezelése lassítja az értékesítést.
+  severity: medium
+  solution_hint: Valós idejű ár- és készletinformációk hangalapú lekérdezése.
+- description: Marketingkampányok eredményességének mérhetősége és automatizálása.
+  severity: low
+  solution_hint: AI hangügynök segíthet kampányokhoz kapcsolódó ügyfélszűrésben és
+    visszajelzések gyűjtésében.
+typical_services:
+- Kannabisz termékek értékesítése
+- Orvosi kannabisz tanácsadás
+- Termékinformáció szolgáltatás
+- Online rendelés és ügyfélszolgálat
+- Jogi és engedélyezési tanácsadás
+- Minőségellenőrzés és tanúsítás
+- Készletkezelés és raktárlogisztika
+- Marketingkampányok tervezése és lebonyolítása
+- Ügyféladatok GDPR-kompatibilis kezelése
+- Árazás és promóció menedzsment
+recommended_functions:
+- name: Termékinformáció lekérdezés
+  priority: high
+  reason: Gyors és pontos válaszok a vásárlók kérdéseire növeli az elégedettséget.
+- name: Ügyfélszolgálati automatizálás
+  priority: high
+  reason: Csökkenti az emberi erőforrás terhelését és növeli az elérhetőséget.
+- name: GDPR-kompatibilitás támogatása
+  priority: high
+  reason: Elengedhetetlen a jogi megfeleléshez a személyes adatok kezelésekor.
+- name: Rendelési és készletinformációk kezelése
+  priority: medium
+  reason: Segíti a hatékonyabb értékesítési folyamatokat.
+- name: Automatizált értékesítési szkriptek
+  priority: medium
+  reason: Javítja a konverziós arányokat és egységes kommunikációt biztosít.
+- name: Kampány- és visszajelzés kezelés
+  priority: low
+  reason: Segíti a marketinghatékonyság növelését.
+- name: Többnyelvű támogatás (magyar, angol)
+  priority: medium
+  reason: A turizmus és nemzetközi ügyfelek miatt előnyös.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - SugarCRM
+  priority: high
+- name: GDPR megfelelőségi szoftverek
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: high
+- name: Webáruház platformok
+  examples:
+  - Shoprenter
+  - Unas
+  - Magento
+  priority: medium
+- name: Készletkezelő rendszerek
+  examples:
+  - SAP Business One
+  - Navision
+  priority: medium
+- name: Jogszabályfigyelő rendszerek
+  examples:
+  - Jogtár
+  - CompLex
+  priority: medium
+industry_faq:
+- question: Milyen jogi feltételeknek kell megfelelnem a kannabisz kereskedelemben
+    Magyarországon?
+  answer_template: A kannabisz kereskedelme szigorúan szabályozott Magyarországon.
+    Fontos, hogy minden engedélyt megszerezzen, és megfeleljen a hatályos törvényeknek,
+    valamint a GDPR előírásainak. Javasoljuk, hogy konzultáljon jogi szakértővel a
+    pontos részletekért.
+- question: Hogyan biztosítják az adatvédelmet a vásárlóim személyes adatai esetében?
+  answer_template: Az adatvédelmet a GDPR szabályozza, amely előírja az ügyfelek adatainak
+    biztonságos és átlátható kezelését. Szolgáltatásunk automatikusan támogatja a
+    GDPR-kompatibilis adatkezelést.
+- question: Milyen termékek érhetők el jelenleg a piacon?
+  answer_template: Széles választékban kínálunk orvosi és rekreációs kannabisztermékeket,
+    beleértve olajokat, kapszulákat, és egyéb készítményeket. Kérjük, érdeklődjön
+    a részletes terméklistánkért.
+- question: Hogyan történik a rendelés leadása és visszaigazolása?
+  answer_template: A rendelést online vagy telefonon fogadjuk, majd azonnal visszaigazoljuk
+    a rendelés részleteit és várható szállítási időt.
+- question: Milyen árkategóriában mozognak a termékek?
+  answer_template: A termékek ára változó, általában 5 000 HUF-tól kezdődnek, a típus
+    és mennyiség függvényében. Részletes árlistát szívesen biztosítunk.
+- question: Tudnak segíteni a termék kiválasztásában?
+  answer_template: Természetesen, AI hangügynökünk segít Önnek a termékek közötti
+    eligazodásban és személyre szabott ajánlásokat ad.
+- question: Milyen támogatást nyújtanak az engedélyeztetéshez?
+  answer_template: Segítséget nyújtunk az engedélyek beszerzéséhez szükséges információk
+    és dokumentumok összegyűjtésében, valamint a folyamat követésében.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél árakról érdeklődik
+  script: Értem, hogy az árak fontosak Önnek. Termékeink különböző kategóriákban érhetők
+    el, kezdve 5 000 HUF-tól. Mely terméktípus érdekli leginkább, hogy pontosabb ajánlatot
+    adhassak?
+  goal: Árkategória ismertetése és további részletek kinyerése
+- trigger: product_info_request
+  situation: Amikor az ügyfél termékinformációt kér
+  script: Szívesen segítek eligazodni termékeink között. Milyen célra keres kannabiszterméket,
+    orvosi vagy rekreációs használatra?
+  goal: Ügyfél igényeinek pontosítása és személyre szabott ajánlat
+- trigger: compliance_concern
+  situation: Amikor az ügyfél aggódik a jogi szabályozás miatt
+  script: Teljes mértékben megértjük az aggályait. Szolgáltatásunk megfelel a magyar
+    jogszabályoknak és GDPR előírásoknak, így biztonságosan vásárolhat nálunk.
+  goal: Bizalomépítés és jogi megfelelőség hangsúlyozása
+- trigger: order_process_question
+  situation: Amikor az ügyfél a rendelési folyamatról érdeklődik
+  script: 'A rendelés egyszerű: online vagy telefonon leadhatja, és azonnal visszaigazolást
+    kap. Szeretnék segíteni a rendelés leadásában?'
+  goal: Vásárlás ösztönzése és folyamat leegyszerűsítése
+competitors:
+- name: GreenLife Hungary Kft.
+  positioning: Piaci vezető orvosi kannabisz forgalmazó
+  strengths:
+  - Széles termékválaszték
+  - erős jogi háttér
+  - megbízható logisztika
+  weaknesses:
+  - Magasabb árak
+  - kevésbé személyre szabott szolgáltatások
+  our_differentiation: Rugalmasabb ügyfélszolgálat és AI alapú személyre szabott ajánlások
+- name: NaturCannabis Kft.
+  positioning: Közepes méretű, főként rekreációs termékekre fókuszáló cég
+  strengths:
+  - Versenyképes árak
+  - gyors szállítás
+  weaknesses:
+  - Korlátozott termékkínálat
+  - kevés jogi támogatás
+  our_differentiation: Teljes körű jogi és adatvédelmi támogatás, komplex szolgáltatási
+    portfólió
+- name: BioHerb Solutions
+  positioning: Új belépő, innovatív termékekkel
+  strengths:
+  - Innovatív termékfejlesztés
+  - jó marketing
+  weaknesses:
+  - Kevés piaci tapasztalat
+  - kisebb ügyfélszolgálat
+  our_differentiation: Tapasztalt ügyfélszolgálat és stabil működés, GDPR kompatibilitás
+    biztosítása
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 5000
+  - 150000
+  entry_point: 5000
+  roi_examples:
+  - scenario: AI hangügynök bevezetése az ügyfélszolgálaton
+    monthly_cost: 50000
+    monthly_savings: 150000
+    payback_months: 1
+  - scenario: Automatizált rendeléskezelés és adatvédelem
+    monthly_cost: 70000
+    monthly_savings: 210000
+    payback_months: 1
+  value_anchors:
+  - Az AI hangügynök 24/7 elérhető, így növeli az ügyfélelégedettséget.
+  - Automatizált rendszerünk csökkenti a hibák számát és javítja a hatékonyságot.
+  - GDPR-kompatibilis megoldásaink biztosítják a jogi megfelelést és ügyfélbizalmat.
+  - Rövid megtérülési idő mellett optimalizálhatja működését.
+market_context:
+  market_size: 1500
+  growth_rate: 12
+  key_trends:
+  - A jogi szabályozás folyamatos változása és szigorodása
+  - Növekvő kereslet orvosi kannabisz termékek iránt
+  - Digitalizáció és online értékesítés előretörése
+  - Fókusz a minőségellenőrzés és biztonság növelésére
+  seasonality:
+    high:
+    - tavasz
+    - nyár
+    low:
+    - december
+    - január
+typical_objections:
+- objection: Túl bonyolult a jogi szabályozás, nem vagyok biztos a megfelelőségben.
+  response: Segítünk eligazodni a jogi követelmények között, és biztosítjuk, hogy
+    minden folyamat megfeleljen a hatályos előírásoknak.
+- objection: Az árak túl magasak a piaci átlagnál.
+  response: Szolgáltatásaink magas színvonalúak és teljes körű támogatást nyújtanak,
+    amelyek hosszú távon megtakarítást és hatékonyságot eredményeznek.
+- objection: Nem vagyok biztos benne, hogy az AI megoldás valóban segíteni fog.
+  response: Az AI hangügynökünk már több magyar cégnek bizonyított, növelve az ügyfélelégedettséget
+    és csökkentve a működési költségeket.
+- objection: Aggódom az adatvédelem miatt.
+  response: Megoldásaink teljes mértékben megfelelnek a GDPR előírásainak, így biztonságban
+    tudhatja ügyfelei adatait.
+- objection: Nincs elég technikai tudásom az AI rendszerekhez.
+  response: Teljes körű támogatást nyújtunk a bevezetéshez és az üzemeltetéshez, így
+    Önnek nem kell aggódnia a technikai részletek miatt.
+meta:
+  id: cannabis
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "cannabis"
+- "dispensary"
+- "marijuana"
+- "CBD"
+_extends: _base/cannabis

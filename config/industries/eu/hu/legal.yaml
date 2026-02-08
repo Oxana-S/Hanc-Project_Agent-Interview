@@ -1,0 +1,276 @@
+pain_points:
+- description: A hagyományos ügyfélfogadási és időpontfoglalási folyamatok jelentős
+    adminisztratív terhet jelentenek, időt és erőforrást emésztenek fel.
+  severity: high
+  solution_hint: Automatizált ügyfélfogadás és intelligens időpontbeosztás AI hangügynök
+    segítségével, 0/24-es elérhetőség mellett.
+- description: Az ügyfelek gyakori, ismétlődő jogi kérdésekre (pl. GDPR, szerződési
+    sablonok) keresnek választ, ami az ügyvédi kapacitásokat terheli.
+  severity: medium
+  solution_hint: Alapvető jogi információk és gyakori kérdések (FAQ) automatikus hangalapú
+    megválaszolása, az ügyvéd számára csak a komplex esetek kiszűrésével.
+- description: Az ügyiratkezelés és dokumentumok nyomon követése papíralapú vagy elavult
+    digitális rendszerekben történik, ami a kereshetőséget és a hatékonyságot rontja.
+  severity: high
+  solution_hint: Hangparancsokkal történő dokumentumkeresés és ügyféladatbázis-kezelés
+    integrált rendszerekhez (pl. Wolters Kluwer).
+- description: Az ügyfelek tájékoztatása folyamatban lévő ügyek állapotáról időigényes
+    telefonálást és e-mail írást jelent.
+  severity: medium
+  solution_hint: Automatikus státuszfrissítések és emlékeztetők küldése az ügyfeleknek
+    hangüzenet vagy SMS formájában.
+- description: Az új ügyfelek megszerzése és az érdeklődők követése nem elegendően
+    strukturált és automatizált.
+  severity: medium
+  solution_hint: AI hangügynök képes érdeklődők szűrésére, kvalifikálására és előzetes
+    információgyűjtésre, mielőtt az ügyvédhez kerülnek.
+- description: A GDPR-megfelelőség biztosítása az ügyfélkommunikációban és adatkezelésben
+    folyamatos kihívást jelent.
+  severity: high
+  solution_hint: A hangügynök konverzációit automatikusan naplózni és a GDPR előírásainak
+    megfelelően kezelni, beleértve a hozzájárulások kezelését.
+typical_services:
+- Szerződések tervezése és felülvizsgálata
+- Vállalati jogi tanácsadás és cégalapítás
+- Ingatlanjogi ügyek (vétel, eladás, bérleti szerződések)
+- Munkajogi tanácsadás és peres ügyek
+- Válóperes és családjogi ügyek
+- Öröklési ügyek és végrendelet-készítés
+- Adójogi tanácsadás
+- Szellemi tulajdonjog védelme
+- Gazdasági bűncselekményekkel kapcsolatos védelmi ügyek
+- Közbeszerzési jogi tanácsadás
+recommended_functions:
+- name: Intelligens Ügyfélfogadó és Időpontfoglaló
+  priority: high
+  reason: Csökkenti az adminisztratív terhet, javítja az ügyfélélményt, és 0/24-es
+    elérhetőséget biztosít az alapvető információkért.
+- name: Alapjogi Információk és FAQ Válaszadó
+  priority: medium
+  reason: Kiszűri az egyszerű kérdéseket, lehetővé téve az ügyvédeknek, hogy a komplex
+    esetekre koncentráljanak.
+- name: Ügyirat- és Határidő-Követő Emlékeztető
+  priority: high
+  reason: Növeli a hatékonyságot, minimalizálja a határidők elmulasztásának kockázatát,
+    automatikus értesítésekkel.
+- name: Ügyfélstátusz-Frissítés Automatizálása
+  priority: medium
+  reason: Fokozza az ügyfélkommunikáció transzparenciáját és bizalmát anélkül, hogy
+    az ügyvédi időt emésztené fel.
+- name: Érdeklődő Kvalifikálás és Lead Generálás
+  priority: medium
+  reason: Automatizálja az értékesítési tölcsér elejét, minőségi érdeklődőket szűrve
+    az ügyvédi csapat számára.
+- name: GDPR-Megfelelőségi Naplózás és Kérdéssor
+  priority: high
+  reason: Elengedhetetlen az EU-s és magyar jogszabályoknak való megfelelés biztosításához
+    minden ügyfélinterakciónál.
+typical_integrations:
+- name: Jogi Ügyiratszoftver / DMS
+  examples:
+  - Wolters Kluwer
+  - e-bíróság kapcsolódó rendszerek
+  - helyi fejlesztésű DMS
+  priority: high
+- name: Idő- és Feladatkezelő Rendszer
+  examples:
+  - Számlázz.hu
+  - Billingo
+  - Toggl
+  - Asana
+  priority: medium
+- name: E-mail és Naptár Rendszer
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  priority: high
+- name: CRM Rendszer
+  examples:
+  - Salesforce
+  - Pipedrive
+  - helyi fejlesztésű CRM
+  priority: medium
+- name: Videókonferencia Eszköz
+  examples:
+  - Microsoft Teams
+  - Zoom
+  - Google Meet
+  priority: low
+industry_faq:
+- question: Mennyi időbe telik egy szerződés felülvizsgálata?
+  answer_template: A szerződés felülvizsgálatának ideje a dokumentum összetettségétől
+    függ. Egy alapvető áttekintés általában 2-3 munkanapot vesz igénybe. Pontosabb
+    időbecslést tudunk adni, ha elküldi számunkra a dokumentumot előzetes áttekintés
+    céljából.
+- question: Milyen költségekkel kell számolnom egy cégalapítás során?
+  answer_template: A cégalapítás költsége a vállalkozás típusától (Kft., Zrt., stb.)
+    és a szükséges kiegészítő szolgáltatásoktól függ. Alapdíjak körülbelül 150.000
+    HUF-tól indulnak, de egy személyre szabott árajánlatot készítünk Önnek.
+- question: Segíthetnek GDPR-megfelelőség biztosításában?
+  answer_template: Igen, kínálunk GDPR tanácsadást, adatvédelmi szabályzatok elkészítését
+    és megfelelőségi auditokat. A szükséges lépések attól függenek, hogy Ön adatkezelő
+    vagy adatfeldolgozó.
+- question: Vállaltok sürgős eseteket is?
+  answer_template: Igen, sürgős esetekben igyekszünk azonnali segítséget nyújtani.
+    Kérjük, azonnal jelezze telefonon, hogy a lehető leggyorsabban tudjunk intézkedni.
+- question: Hogyan zajlik a számlázás?
+  answer_template: A számlázás általában óradíj vagy fix díj alapján történik, az
+    ügy típusától függően. Minden esetben előre egyeztetjük és transzparens módon
+    tájékoztatjuk Önt a várható költségekről.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy leendő ügyfél árat kér egy konkrét szolgáltatásra (pl. szerződés
+    felülvizsgálat).
+  script: Köszönöm a kérdését! A pontos ár az ügy egyediségétől és összetettségétől
+    függ. Hogy a legpontosabb árajánlatot tudjuk adni, szükségem lenne néhány rövid
+    kérdésre a részletekről. Megengedi, hogy feltegyem őket? Ez mindössze 2 percet
+    vesz igénybe, és segít Önnek is abban, hogy átlássa a folyamatot.
+  goal: A kvalifikálás folytatása és egy személyre szabott ajánlat lehetőségének megteremtése,
+    ne csak egy árat mondani.
+- trigger: busy_reception
+  situation: Amikor az ügyfél panaszt tesz, hogy nehezen éri el az ügyvédet vagy a
+    recepciót.
+  script: Teljes mértékben megértem a problémáját, és elnézést kérek a kellemetlenségért.
+    Éppen ezért fejlesztettük ki intelligens hangügynökünket, ami 0/24-ben képes alapvető
+    információkra válaszolni, időpontot foglalni és sürgős ügyeket továbbítani. Így
+    Ön azonnal kap választ, és az ügyvédi csapatunk a lehető leggyorsabban foglalkozik
+    az ügyével. Szeretné, hogy bemutassam, hogyan működik?
+  goal: A probléma megértése és a megoldás bemutatása, mint értékteremtő szolgáltatás,
+    nem pedig védekezés.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél megemlíti egy másik ügyvédi irodát vagy alternatív szolgáltatást.
+  script: Örvendek, hogy körbe nézett a piacon. A mi megközelítésünk különlegessége
+    a technológia mély integrációja a jogi szakértelembe. Míg mások csak tanácsot
+    adnak, mi automatizáljuk a rutinfeladatokat, mint az időpontfoglalás, státuszfrissítések
+    és GDPR-naplózás. Ez azt jelenti, hogy az ügyvédeink több időt tölthetnek a kreatív
+    jogi megoldásokkal, ami Önnek gyorsabb és költséghatékonyabb eredményt jelent.
+    Kíváncsi vagyok, Önnek milyen területen lenne a legnagyobb segítség egy ilyen
+    hatékonyabb rendszer?
+  goal: A differenciálás kiemelése a technológiai integráción és az ügyfélértéken
+    keresztül, valamint a beszélgetés visszairányítása az ügyfél igényeire.
+- trigger: objection_ai_impersonal
+  situation: Amikor az ügyfél attól fél, hogy az AI hangügynök túl személytelen a
+    jogi szektorban.
+  script: Teljesen igaza van, a személyes kapcsolat a jogi szakma lényege. A mi hangügynökünk
+    nem helyettesíti az ügyvédet. Célja, hogy eltávolítsa a felesleges adminisztrációs
+    akadályokat és információgyűjtést, így az első valódi emberi beszélgetés Önnel
+    már hatékonyabban és a tényleges jogi lényegre fókuszálva történhet. Olyan, mint
+    egy intelligens asszisztens, aki előkészíti a találkozót, nem pedig egy gép, ami
+    lecseréli a szakértőt. Így az ügyvédje maximális figyelmet tud Önre fordítani.
+  goal: A félreértés feloldása, az AI-t mint kiegészítő eszközt bemutatni, amely javítja
+    az emberi interakció minőségét.
+competitors:
+- name: Lakatos és Társai Ügyvédi Iroda
+  positioning: Nagy, tradicionális, teljeskörű ügyvédi iroda.
+  strengths:
+  - Hosszú múlt és kiváló hírnév
+  - Széles ügyvédi hálózat
+  - Komplex, nagyvállalati ügyekben erősek
+  weaknesses:
+  - Magas költségek
+  - Kevesebb rugalmasság kisvállalkozások számára
+  - Technológiai innovációban lassabbak
+  our_differentiation: Mi a hatékonyságot és az ügyfélélményt helyezzük előtérbe okos
+    automatizálással, amely hozzáférhetőbb árakat és gyorsabb szolgáltatást tesz lehetővé
+    a kis- és középvállalkozások számára is.
+- name: Schoenherr Budapest
+  positioning: Nemzetközi ügyvédi iroda regionális központja.
+  strengths:
+  - Erős nemzetközi kapcsolatok
+  - Külföldi beruházók ügyeiben jártas
+  - Vállalati és M&A ügyek specialistái
+  weaknesses:
+  - Főleg nagyvállalatokra koncentrálnak
+  - A helyi, magyar kisvállalati piac kevésbé hangsúlyos
+  - Nagyon magas díjak
+  our_differentiation: A helyi piac mély ismerete és a magyar nyelven történő, technológiailag
+    felszerelt személyes szolgáltatás kiemelése, amely a helyi vállalkozások igényeire
+    szabott.
+- name: Online jogi portálok / sablon szolgáltatók
+  positioning: Alacsony költségű, önkiszolgáló online megoldások.
+  strengths:
+  - Nagyon alacsony ár
+  - Azonnali hozzáférés
+  - Egyszerű, standard ügyekre alkalmas
+  weaknesses:
+  - Nincs személyre szabás
+  - Nincs jogi tanácsadás
+  - Magas kockázat helytelen alkalmazás esetén
+  - Nincs felelősségvállalás
+  our_differentiation: A technológia előnyeit ötvözzük valódi ügyvédi szakértelemmel
+    és felelősséggel. Nem csak sablont adunk, hanem olyan intelligens eszközt, amely
+    az ügyvédi tanácsadást előkészíti és támogatja, minimális kockázattal.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 300000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Időpontfoglalás és alapvető FAQ kezelésének automatizálása kis ügyvédi
+      irodánál
+    monthly_cost: 30000
+    monthly_savings: 40000
+    payback_months: 1
+  - scenario: Ügyfélkommunikáció (státuszfrissítések, emlékeztetők) automatizálása
+      közepes irodánál
+    monthly_cost: 60000
+    monthly_savings: 120000
+    payback_months: 1
+  value_anchors:
+  - Napi 2 órával kevesebb adminisztráció az ügyvédek számára
+  - 0/24-es ügyfélelérhetőség anélkül, hogy bérleti díjat kellene fizetnie
+  - GDPR-megfelelőség automatikus dokumentálása minden ügyfélhívással
+market_context:
+  market_size: Becslések szerint 150-200 milliárd HUF éves piac Magyarországon az
+    ügyvédi szolgáltatások terén.
+  growth_rate: ~3-5% éves növekedés
+  key_trends:
+  - A digitális átállás gyorsulása, különösen a videókonferenciás tanácsadás és az
+    e-aláírás terén.
+  - A GDPR és adatvédelmi követelmények egyre nagyobb hangsúlyt kapnak minden ügyfélkapcsolatban.
+  - A verseny növekszik az olcsóbb online alternatívák miatt, ami a hagyományos irodákat
+    hatékonyságnövelésre kényszeríti.
+  - Növekvő kereslet a kis- és középvállalkozások körében megfizethetőbb, de megbízható
+    jogi szolgáltatások iránt.
+  seasonality:
+    high:
+    - Január (adóév vége, új szerződések)
+    - Szeptember (szezonális ügyek visszatérése nyaralás után)
+    low:
+    - Július-augusztus (nyári szabadságok)
+    - December (ünnepi időszak)
+typical_objections:
+- objection: Túl drágának tűnik a befektetés.
+  response: Teljesen megértem. Nézzük meg együtt, hogy mennyi időt és pénzt takarítana
+    meg az Ön irodájában a rutinfeladatok automatizálása. Egy gyors elemzés alapján
+    látni fogja, hogy a havi költség többszörösen megtérül az ügyvédek felszabadított
+    idejében. Szeretne egy egyszerű ROI-számítót megnézni?
+- objection: Az ügyfeleink szeretik a személyes kapcsolatot, nem fognak egy géppel
+    beszélni.
+  response: És nagyon is igazuk van! A mi hangügynökünk pontosan azért van, hogy megvédje
+    és javítsa azt a személyes kapcsolatot. Azzal, hogy kezeli a repetitív feladatokat
+    (időpont, státusz, egyszerű információk), biztosítja, hogy amikor az ügyfél végül
+    Önnel beszél, az a beszélgetés a lényegre koncentráljon. Így az ügyfél tapasztalata
+    még személyesebb és értékesebb lesz.
+- objection: Nincs időnk egy ilyen rendszer beüzemelésére és tanulására.
+  response: Ez egy gyakori és jogos aggodalom. A mi megoldásunkat arra terveztük,
+    hogy minimális beavatkozást igényeljen. Mi végzük a beállítást, a képzést, és
+    folyamatos támogatást nyújtunk. A kezdeti befektetés csupán pár óra, amely hosszú
+    távon heti több óra takarékossággal térül meg. Kezdhetünk egy nagyon kis, kezelhető
+    területen, például csak az időpontfoglalás automatizálásával?
+meta:
+  id: legal
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

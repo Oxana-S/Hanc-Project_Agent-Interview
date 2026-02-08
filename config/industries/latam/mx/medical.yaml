@@ -1,0 +1,261 @@
+aliases:
+- medicina
+- salud
+- consultorio
+- hospital
+- clínica
+- médico
+- paciente
+- cita
+- diagnóstico
+competitors:
+- name: Médica Sur
+  positioning: Hospital privado de alta especialidad
+  strengths:
+  - Prestigio y reconocimiento
+  - Tecnología de punta
+  - Amplia oferta de especialidades
+  weaknesses:
+  - Costos elevados
+  - Ubicación específica en CDMX
+  our_differentiation: Soluciones de automatización accesibles para clínicas de todos
+    los tamaños
+- name: Grupo Ángeles
+  positioning: Red de hospitales privados
+  strengths:
+  - Cobertura nacional
+  - Infraestructura moderna
+  - Convenios con aseguradoras
+  weaknesses:
+  - Procesos administrativos lentos
+  - Atención al cliente impersonal
+  our_differentiation: Agente de voz que humaniza la primera interacción y reduce
+    tiempos de espera
+- name: Consultorio de cadena farmacéutica (Farmacias Similares, Benavides)
+  positioning: Atención básica de bajo costo
+  strengths:
+  - Precios accesibles
+  - Ubicaciones convenientes
+  - Sin cita previa
+  weaknesses:
+  - Tiempos de espera largos
+  - Limitada especialización
+  our_differentiation: Automatización que permite gestionar alta demanda y mejorar
+    la experiencia del paciente
+industry_faq:
+- answer_template: Por favor, indique la especialidad y una fecha preferida. Revisaré
+    la disponibilidad.
+  question: ¿Cómo puedo agendar una cita?
+- answer_template: Para bioquímica sanguínea, glucosa y perfil de lípidos, es necesario
+    acudir en ayunas de 8-12 horas. Para hemograma, es preferible.
+  question: ¿Qué análisis requieren ayuno?
+- answer_template: Evite alimentos flatulentos 3 días antes. El día del estudio, acuda
+    en ayunas.
+  question: ¿Cómo me preparo para un ultrasonido abdominal?
+- answer_template: Sí, atendemos sábados de 9:00 a 14:00 hrs. Domingos solo urgencias.
+  question: ¿Atienden los fines de semana?
+- answer_template: El servicio a domicilio está disponible para ciertos casos. Proporcione
+    su dirección y sintomatología.
+  question: ¿Pueden enviar un médico a domicilio?
+- answer_template: Sí, puede hacerlo por este medio. Necesito su nombre y la fecha
+    de su cita original.
+  question: ¿Puedo cancelar o reprogramar una cita?
+- answer_template: Varía según el especialista. Una consulta de medicina general inicia
+    desde $400 MXN.
+  question: ¿Cuánto cuesta una consulta?
+industry_specifics:
+  compliance:
+  - Cumplimiento de la LFPDPPP (protección de datos personales)
+  - No proporcionar diagnósticos ni recomendaciones médicas
+  - Casos de emergencia → derivar inmediatamente a operador humano o marcar 911
+  peak_times:
+  - Lunes en la mañana
+  - Después de días festivos
+  - Temporada de influenza (octubre-marzo)
+  tone:
+  - Empático y calmado
+  - Claro, evitando jerga médica compleja
+  - Respetuoso y paciente
+learnings: []
+market_context:
+  growth_rate: 4-6% anual
+  key_trends:
+  - Digitalización de procesos administrativos
+  - Aumento en la demanda de telemedicina
+  - Crecimiento del sector salud privado
+  market_size: Mercado de salud privado valuado en ~$25 mil millones USD
+  seasonality:
+    high:
+    - Invierno (temporada de influenza)
+    - Enero (gastos deducibles)
+    low:
+    - Diciembre (periodo vacacional)
+    - Semana Santa
+meta:
+  avg_validation_score: 0.0
+  country: mx
+  created_at: '2024-05-17'
+  currency: MXN
+  id: medical
+  language: es
+  languages:
+  - es
+  last_updated: '2024-05-17'
+  phone_codes:
+  - '+52'
+  region: latam
+  tests_run: 0
+  timezone: America/Mexico_City
+  version: '1.0'
+pain_points:
+- description: Largas esperas en línea telefónica para agendar citas
+  severity: high
+  solution_hint: Agente de voz para agendamiento 24/7, sin esperas
+- description: Pacientes no asisten a sus citas ('no-shows')
+  severity: high
+  solution_hint: Recordatorios automáticos vía WhatsApp y llamada 24 y 2 horas antes
+- description: Saturación de llamadas con preguntas repetitivas (horarios, ubicación,
+    costos)
+  severity: medium
+  solution_hint: FAQ automatizada para liberar al personal administrativo
+- description: Personal de recepción sobrecargado, especialmente en horas pico
+  severity: high
+  solution_hint: Automatización del primer contacto y triaje básico
+- description: Errores en el agendamiento (especialidad incorrecta, horario equivocado)
+  severity: medium
+  solution_hint: Flujo de agendamiento estructurado con confirmación por voz
+- description: Dificultad para gestionar reprogramaciones y cancelaciones de última
+    hora
+  severity: medium
+  solution_hint: Función de autoservicio para modificar o cancelar citas
+pricing_context:
+  currency: MXN
+  entry_point: 1500
+  roi_examples:
+  - monthly_cost: 2500
+    monthly_savings: 8000
+    payback_months: 1
+    scenario: Clínica pequeña que reduce 1 turno de recepcionista
+  - monthly_cost: 6000
+    monthly_savings: 18000
+    payback_months: 2
+    scenario: Red de 3 consultorios que reduce no-shows en 30% y libera 1 empleado
+  typical_budget_range:
+  - 1000
+  - 10000
+  value_anchors:
+  - Recupere el costo en menos de 2 meses
+  - Reduzca las inasistencias a citas hasta en un 40%
+  - Atienda un 50% más de llamadas sin contratar personal
+recommended_functions:
+- name: agendar_cita
+  priority: high
+  reason: 70% de las llamadas son para solicitar o confirmar citas
+- name: enviar_recordatorio
+  priority: high
+  reason: Reduce las inasistencias ('no-shows') entre 30-40%
+- name: responder_faq
+  priority: high
+  reason: Resuelve dudas comunes sobre horarios, preparación y ubicación
+- name: reprogramar_cita
+  priority: medium
+  reason: Facilita la gestión de cambios y mantiene la agenda optimizada
+- name: derivar_urgencia
+  priority: medium
+  reason: Identifica casos críticos y los deriva inmediatamente a un humano o servicio
+    de emergencia
+- name: verificar_disponibilidad
+  priority: low
+  reason: Permite a los pacientes consultar horarios rápidamente
+sales_scripts:
+- goal: Superar la objeción de precio destacando el retorno de inversión rápido
+  script: Entiendo que la inversión inicial es una consideración. Nuestro agente le
+    ayuda a recuperar ese costo rápidamente, reduciendo las citas perdidas y liberando
+    a su personal para tareas más importantes. ¿Le gustaría ver una proyección con
+    los números de su consultorio?
+  situation: Cuando el prospecto menciona que el costo es alto o pregunta por el precio
+  trigger: price_objection
+- goal: Presentar la solución como un diferenciador competitivo
+  script: Mientras sus competidores tienen esperas telefónicas de 10 minutos, su consultorio
+    podrá atender a cada paciente al instante, a cualquier hora. Esto mejora significativamente
+    la experiencia y la lealtad del paciente. ¿No le gustaría ofrecer ese nivel de
+    servicio?
+  situation: En la presentación inicial o cuando se habla de ventajas competitivas
+  trigger: competitive_advantage
+- goal: Cerrar la venta ofreciendo una prueba o demostración
+  script: La mejor forma de ver el impacto es probándolo. Podemos configurar una demostración
+    personalizada con el flujo de agendamiento de su consultorio en los próximos días,
+    sin compromiso. ¿Qué le parece el jueves?
+  situation: Cuando el prospecto muestra interés pero indecisión
+  trigger: trial_close
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reducción de no-shows en 35%
+  - Automatización del 70% de las llamadas de agendamiento
+  - Disponibilidad 24/7
+  - Satisfacción del paciente > 4.5/5
+typical_integrations:
+- examples:
+  - Consultorio
+  - MediSmart
+  - SoftClinic
+  name: Sistema Administrativo Médico (SAM)
+  priority: high
+  reason: Sincronización en tiempo real de agendas médicas y datos de pacientes
+- examples:
+  - Zoho CRM
+  - Salesforce Health Cloud
+  name: CRM
+  priority: medium
+  reason: Seguimiento del historial de interacción y lead scoring
+- examples:
+  - Telmex
+  - Totalplay Empresarial
+  name: Plataforma de Telefonía
+  priority: high
+  reason: Manejo de llamadas entrantes, IVR y desvíos
+- examples:
+  - WhatsApp Business API
+  - SMS Masivos
+  name: WhatsApp/SMS
+  priority: high
+  reason: Canal principal para recordatorios de citas en México
+- examples:
+  - Google Calendar
+  - Outlook 365
+  name: Calendario
+  priority: medium
+  reason: Sincronización de agendas para médicos y personal
+- examples:
+  - Clip
+  - Mercado Pago
+  name: Pasarela de Pagos
+  priority: low
+  reason: Permitir cobro de consultas o copagos por teléfono
+typical_objections:
+- objection: Prefiero hablar con una persona
+  response: Claro, le puedo conectar con nuestra recepcionista de inmediato. Sin embargo,
+    puedo agilizar el proceso si ya tiene los datos de su cita a la mano.
+- objection: Necesito ver al Dr. [Nombre] específico
+  response: Con gusto reviso la disponibilidad del Dr. [Nombre]. ¿Para qué fecha le
+    gustaría agendar?
+- objection: Es una emergencia
+  response: Entiendo. Por emergencias, le voy a transferir con nuestro personal de
+    guardia de inmediato. También puede marcar al 911.
+- objection: Está fuera de mi presupuesto
+  response: Comprendo. Nuestro servicio está diseñado para ahorrarle dinero a mediano
+    plazo reduciendo citas perdidas y optimizando su personal. ¿Puedo explicarle cómo?
+typical_services:
+- Consulta de medicina general
+- Consulta con especialista (pediatría, ginecología, etc.)
+- Estudios de laboratorio clínico
+- Ultrasonido diagnóstico
+- Tomografía computarizada (TAC) / Resonancia magnética (RM)
+- Servicio de odontología
+- Visita médica a domicilio
+- Aplicación de vacunas
+- Terapia física y rehabilitación
+- Chequeos de bienestar (check-up)
+_extends: _base/medical

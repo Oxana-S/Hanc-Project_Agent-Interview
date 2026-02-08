@@ -1,0 +1,195 @@
+pain_points:
+- description: Hohe Verwaltungsbelastung durch Papierkram bei Anmeldungen, Abwesenheiten und Elternkommunikation.
+  severity: high
+  solution_hint: Automatisierte Erfassung und digitale Übermittlung von Formularen, Erinnerungen an ausstehende Dokumente.
+- description: Ständige Unterbrechungen durch Telefonanrufe für einfache Anfragen (Öffnungszeiten, freie Plätze).
+  severity: high
+  solution_hint: 24/7 Sprachassistent beantwortet Standardfragen, leitet dringende Anrufe weiter.
+- description: Schwierigkeiten bei der kurzfristigen Vertretungsplanung bei Mitarbeiterausfällen.
+  severity: medium
+  solution_hint: Automatisierte Benachrichtigung von Springer-Pools, Verwaltung von Verfügbarkeiten.
+- description: Komplexe Abrechnung von unterschiedlichen Betreuungszeiten und öffentlichen Förderungen.
+  severity: medium
+  solution_hint: Integration mit Buchhaltungssoftware, automatische Berechnung basierend auf gebuchten Zeiten.
+- description: Herausfordernde Einhaltung der strengen DSGVO-Vorschriften bei sensiblen Kinderdaten.
+  severity: high
+  solution_hint: DSGVO-konforme Datenspeicherung und -verarbeitung, automatisierte Einwilligungsverwaltung.
+- description: Geringe Sichtbarkeit bei der Neukundengewinnung neben etablierten städtischen Einrichtungen.
+  severity: medium
+  solution_hint: Automatisierte Lead-Generierung durch Beantwortung von Website-Anfragen, Terminvereinbarung für Hausbesuche.
+typical_services:
+- Kinderkrippe (0-3 Jahre)
+- Kindergarten (3-6 Jahre)
+- Nachmittagsbetreuung (Hort)
+- Tagesmutter/-vater Vermittlung
+- Eltern-Kind-Gruppen
+- Ferienbetreuung
+- Eingewöhnungsbegleitung
+- Pädagogische Frühförderung
+- Mittagessenversorgung
+- Transportdienst zur Einrichtung
+recommended_functions:
+- name: 24/7 Informations-Assistent
+  priority: high
+  reason: Entlastet das Personal von Standardanfragen zu Öffnungszeiten, Konzept und Verfügbarkeit.
+- name: Terminbuchung für Besichtigungen
+  priority: high
+  reason: Konvertiert Interessenten direkt in konkrete Besuchstermine, verkürzt den Entscheidungsprozess.
+- name: Elternkommunikation & Erinnerungen
+  priority: medium
+  reason: Automatisiert Abwesenheitsmeldungen, Erinnerungen an Veranstaltungen oder Zahlungstermine.
+- name: Notfall-Anrufweiterleitung
+  priority: high
+  reason: Erkennt dringende Anrufe (z.B. 'Kind abholen') und verbindet sofort durch.
+- name: Feedback & Umfragen
+  priority: low
+  reason: Sammelt automatisiert Elternfeedback nach Veranstaltungen oder zur Zufriedenheit.
+- name: Vertretungsplan-Auskunft
+  priority: medium
+  reason: Gibt aktuelle Informationen zu gruppenübergreifenden Betreuungen oder Personalausfällen.
+typical_integrations:
+- name: Kita-Verwaltungssoftware
+  examples:
+  - Kita-Plan
+  - Kivita
+  - KitaClip
+  priority: high
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - BMD
+  - SAP Business One
+  priority: medium
+- name: Terminplanungstool
+  examples:
+  - Calendly
+  - Microsoft Bookings
+  priority: medium
+- name: E-Mail-Marketing
+  examples:
+  - Mailchimp
+  - CleverReach
+  priority: low
+- name: Website (CMS)
+  examples:
+  - WordPress
+  - Joomla
+  priority: high
+industry_faq:
+- question: Haben Sie noch freie Plätze für mein 2-jähriges Kind?
+  answer_template: Guten Tag. Für aktuelle Platzverfügbarkeiten benötigen wir einige Informationen. Ich verbinde Sie gerne mit unserer Leitung für ein persönliches Gespräch. Alternativ kann ich Ihnen sofort
+    einen Termin für eine Besichtigung anbieten.
+- question: Wie läuft die Eingewöhnung bei Ihnen ab?
+  answer_template: Wir orientieren uns am Berliner Modell, das eine behutsame und individuelle Eingewöhnung in Begleitung eines Elternteils vorsieht. Die Dauer ist abhängig vom Kind, beträgt aber in der
+    Regel zwei bis vier Wochen. Gerne sende ich Ihnen unser detailliertes Konzept per E-Mail zu.
+- question: Was kostet die Betreuung pro Monat?
+  answer_template: Die Kosten setzen sich aus dem Basismonatsbeitrag, der Verpflegungspauschale und eventuellen Zusatzleistungen zusammen. Die genaue Höhe ist von der gebuchten Betreuungszeit und der öffentlichen
+    Förderung abhängig. Unser Leitungs-Team erstellt Ihnen gerne ein persönliches, unverbindliches Angebot.
+- question: Bieten Sie auch Betreuung in den Schulferien an?
+  answer_template: Ja, wir haben ein spezielles Ferienprogramm. In den Sommerferien und an schulfreien Tagen bieten wir durchgehend Betreuung an, oft mit besonderen Ausflügen und Aktivitäten. Bitte beachten
+    Sie, dass hierfür eine gesonderte Anmeldung erforderlich ist.
+- question: Bis wann muss ich mein Kind für den nächsten Tag abmelden, wenn es krank ist?
+  answer_template: Krankmeldungen bitten wir bis spätestens 8:00 Uhr am gleichen Tag per Telefon oder über unsere Kita-App mitzuteilen. So können wir unseren Tagesplan und das Mittagessen rechtzeitig anpassen.
+sales_scripts:
+- trigger: opening_hours_inquiry
+  situation: Wenn ein Anrufer nach den Öffnungszeiten fragt.
+  script: Guten Tag, vielen Dank für Ihren Anruf. Unsere Kernöffnungszeiten sind Montag bis Freitag von 7:00 bis 17:00 Uhr. Individuelle Buchungszeiten können vereinbart werden. Hätten Sie Interesse an
+    einer virtuellen Hausbesichtigung oder soll ich Ihnen einen Info-Folder per E-Mail zusenden?
+  goal: Aus einer einfachen Informationsanfrage einen qualifizierten Lead generieren.
+- trigger: price_question
+  situation: Wenn ein Interessent direkt nach den Kosten fragt.
+  script: Das ist eine wichtige Frage. Die monatlichen Kosten sind von der gebuchten Betreuungszeit und den individuellen Förderungen des Landes bzw. der Gemeinde abhängig. Viele Familien zahlen nach Abzug
+    der Förderung einen Eigenanteil zwischen 150 und 400 Euro. Um Ihnen eine genaue Zahl nennen zu können, wäre ein kurzes, unverbindliches Beratungsgespräch ideal. Hätte es Zeit dafür?
+  goal: Den Preis nicht isoliert nennen, sondern den Wert betonen und zu einem Beratungsgespräch überleiten.
+- trigger: competitor_mention
+  situation: Wenn der Kunde eine andere Einrichtung (z.B. städtischen Kindergarten) erwähnt.
+  script: Die städtischen Einrichtungen sind eine gute Option. Unser Unterschied liegt in der größeren Flexibilität der Buchungszeiten, unserer speziellen pädagogischen Schwerpunktsetzung [z.B. Naturpädagogik]
+    und der intensiveren, digital gestützten Elternkommunikation. Bei uns bekommen Sie oft auch schneller einen Platz. Möchten Sie mehr zu unseren konkreten Vorteilen hören?
+  goal: Unsere einzigartigen Verkaufsargumente klar hervorheben und das Gespräch vertiefen.
+competitors:
+- name: Städtische Kindergärten Wien/Graz/etc.
+  positioning: Kosten-günstige Grundversorgung, etabliert.
+  strengths:
+  - Sehr niedrige Elternbeiträge
+  - Hohe Bekanntheit
+  - Oft wohnortnah
+  weaknesses:
+  - Lange Wartelisten
+  - Wenig flexible Öffnungszeiten
+  - Begrenzte pädagogische Schwerpunkte
+  our_differentiation: Kürzere Wartezeiten, flexible Buchungsmodelle, spezifisches pädagogisches Profil und digitale Service-Orientierung.
+- name: Konfessionelle Träger (Caritas, Diakonie)
+  positioning: Werteorientierte Betreuung mit sozialem Engagement.
+  strengths:
+  - Starkes Wertefundament
+  - Gut ausgebautes Netzwerk
+  - Ort der Gemeinschaft
+  weaknesses:
+  - Möglicherweise weniger pluralistisch
+  - Verwaltung kann bürokratisch sein
+  our_differentiation: Moderne, agile Verwaltung, Fokus auf Effizienz durch Digitalisierung und offen für alle Familien unabhängig von Konfession.
+- name: Elterninitiativen / Vereine
+  positioning: Hohe elterliche Mitbestimmung, familiäre Atmosphäre.
+  strengths:
+  - Sehr hohes Engagement der Eltern
+  - Starkes Gemeinschaftsgefühl
+  - Individuell gestaltbar
+  weaknesses:
+  - Hoher organisatorischer Aufwand für Eltern
+  - Professionalität kann variieren
+  - Oft personelle Engpässe
+  our_differentiation: Professionelles, verlässliches Management, entlastet die Eltern von Organisationsaufgaben und bietet stabiles, qualifiziertes Personal.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 800
+  entry_point: 49
+  roi_examples:
+  - scenario: Einsparung von 20 Stunden Verwaltungsarbeit pro Monat durch Automatisierung von Anrufen und Formularen.
+    monthly_cost: 99
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Kosten von weniger als einer Betreuungsstunde pro Monat.
+  - Steigert die Auslastung und senkt die Abbrecherquote.
+  - Professionellerer Erstkontakt steigert die Conversion bei Anfragen.
+market_context:
+  market_size: Über 400.000 Kinder in institutioneller Betreuung, Marktvolumen mehrere Milliarden EUR jährlich.
+  growth_rate: 2-3% p.a., getrieben durch steigende Frauenerwerbsquote und Ausbauoffensiven.
+  key_trends:
+  - Zunehmende Nachfrage nach flexibleren und längeren Betreuungszeiten.
+  - Fokus auf digitale Elternkommunikation und Transparenz.
+  - Stärkere Betonung von pädagogischen Profilen (Natur, Sprache, Digitalkompetenz).
+  - Fachkräftemangel als zentrale Herausforderung.
+  seasonality:
+    high:
+    - August/September (Einstieg nach Sommer)
+    - Jänner/Februar (Semesterbeginn)
+    low:
+    - Juli (vor den Sommerferien)
+    - Dezember (Weihnachtsferien)
+typical_objections:
+- objection: Das können wir auch selbst erledigen, dafür brauchen wir keine Software.
+  response: Das verstehe ich. Viele denken zunächst so. Unser System erspart Ihnen jedoch repetitive Aufgaben wie Standardanfragen zu beantworten und erinnert an Zahlungen. So gewinnen Sie wertvolle Zeit
+    für die eigentliche pädagogische Arbeit mit den Kindern. Möchten Sie eine kurze Demo sehen, wie es in Ihrer Einrichtung funktionieren könnte?
+- objection: Das ist mir zu teuer für unser schmales Budget.
+  response: 'Ich verstehe die Budgetsorgen. Bedenken Sie jedoch: Unser Service hilft, freie Plätze schneller zu besetzen und die Verwaltungskosten zu senken. Ein nicht vergebener Platz kostet Sie deutlich
+    mehr. Wir haben auch ein einfaches Starter-Paket für 49€/Monat. Könnten wir darüber sprechen?'
+- objection: Wir haben schon eine Website, das reicht.
+  response: Eine Website ist ein guter erster Schritt. Unser Sprachassistent ist aber aktiv, 24/7 erreichbar und fängt Interessenten genau dann ab, wenn sie eine Frage haben – auch abends oder am Wochenende.
+    So verpassen Sie keinen Lead und wirken sofort professionell. Darf ich Ihnen die Statistiken zu verpassten Anrufen zeigen?
+meta:
+  id: childcare
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- childcare
+- daycare
+- nanny
+- kindergarten
+_extends: _base/childcare

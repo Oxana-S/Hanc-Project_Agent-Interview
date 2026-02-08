@@ -1,0 +1,231 @@
+pain_points:
+- description: Alta estacionalidad que provoca picos de demanda difíciles de manejar
+  severity: high
+  solution_hint: El agente de voz puede gestionar reservas y consultas automáticamente,
+    escalando según la demanda
+- description: Gestión ineficiente de reservas y pagos, con errores manuales frecuentes
+  severity: high
+  solution_hint: Automatizar confirmaciones, recordatorios y procesamiento de pagos
+    para reducir errores
+- description: Atención al cliente limitada fuera de horarios laborales, perdiendo
+    ventas
+  severity: medium
+  solution_hint: Ofrecer soporte 24/7 para consultas y reservas, aumentando la captación
+    de clientes
+- description: Dificultades para cumplir con la LFPDPPP en el manejo de datos de clientes
+  severity: medium
+  solution_hint: Integrar protocolos de seguridad y consentimiento en las interacciones
+    del agente de voz
+- description: Competencia intensa de plataformas globales que ofrecen precios bajos
+  severity: high
+  solution_hint: Destacar servicio personalizado y soporte local mediante el agente
+    para diferenciarse
+- description: Coordinación deficiente con proveedores locales como hoteles y transportistas
+  severity: medium
+  solution_hint: Sincronizar en tiempo real con sistemas de proveedores para actualizar
+    disponibilidad y precios
+typical_services:
+- Reservas de vuelos nacionales e internacionales
+- Paquetes turísticos todo incluido
+- Alquiler de autos y traslados aeropuerto
+- Excursiones y tours culturales (e.g., ruinas mayas, playas)
+- Seguros de viaje y asistencia médica
+- Gestión de visas y documentos para viajes
+- Reservas de hoteles y alojamientos locales
+- Organización de eventos y viajes de incentivo
+- Servicios de guías turísticos bilingües
+- Cruceros y viajes en grupo
+recommended_functions:
+- name: Procesamiento de reservas automáticas
+  priority: high
+  reason: Reduce errores manuales y acelera la confirmación de viajes, mejorando la
+    experiencia del cliente
+- name: Atención al cliente multilingüe 24/7
+  priority: high
+  reason: Capta clientes en diferentes zonas horarias y atiende a turistas internacionales
+    en su idioma
+- name: Recordatorios de pagos y promociones
+  priority: medium
+  reason: Aumenta las tasas de conversión y fideliza clientes con ofertas personalizadas
+- name: Gestión de quejas y reclamaciones
+  priority: medium
+  reason: Resuelve problemas rápidamente, mejorando la satisfacción y reduciendo costos
+    de servicio
+- name: Recomendaciones personalizadas basadas en preferencias
+  priority: low
+  reason: Enriquece la experiencia de venta cruzada y aumenta el valor promedio por
+    transacción
+- name: Confirmación automática de reservas con proveedores
+  priority: high
+  reason: Garantiza precisión en la disponibilidad y reduce sobreventas
+typical_integrations:
+- name: Sistemas de gestión de propiedades (PMS)
+  examples:
+  - Cloudbeds
+  - Mews
+  - HotelRunner
+  priority: high
+- name: Plataformas de pago locales
+  examples:
+  - Conekta
+  - Openpay
+  - Mercado Pago
+  priority: high
+- name: Sistemas de reserva de aerolíneas
+  examples:
+  - Amadeus
+  - Sabre
+  - Volaris API
+  priority: medium
+- name: Herramientas de CRM y marketing
+  examples:
+  - Zoho CRM
+  - Salesforce
+  - Mailchimp
+  priority: medium
+- name: Sistemas de proveedores locales de tours
+  examples:
+  - Viator API
+  - plataformas de tours mexicanas
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los requisitos de visa para viajar a México desde otros países?
+  answer_template: Depende del país de origen. Para muchos países, no se requiere
+    visa para estancias cortas, pero le recomendamos verificar en la página del INM
+    o consultar con nosotros para asesoría personalizada.
+- question: ¿Cómo puedo cancelar o modificar mi reserva?
+  answer_template: Puede cancelar o modificar su reserva contactando a nuestro agente
+    de voz, quien le guiará a través del proceso y le informará sobre políticas y
+    posibles cargos.
+- question: ¿Qué seguro de viaje es recomendable para México?
+  answer_template: Recomendamos seguros que cubran gastos médicos y cancelación, adaptados
+    a sus actividades. Podemos ayudarle a comparar opciones y elegir la mejor.
+- question: ¿Ofrecen descuentos para grupos o familias?
+  answer_template: Sí, ofrecemos tarifas especiales para grupos y familias. Nuestro
+    agente puede proporcionar cotizaciones personalizadas basadas en el tamaño y necesidades
+    de su grupo.
+- question: ¿Cómo manejan los reembolsos en caso de cancelación?
+  answer_template: Los reembolsos siguen nuestras políticas de cancelación, que varían
+    por proveedor. El agente de voz le explicará los detalles y plazos específicos.
+- question: ¿Proporcionan asistencia en emergencias durante el viaje?
+  answer_template: Sí, ofrecemos soporte 24/7 para emergencias, incluyendo contactos
+    locales y coordinación con servicios de asistencia.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un paquete turístico
+  script: Gracias por su interés. Ofrecemos paquetes desde [mencionar entrada_point
+    en MXN] con opciones personalizadas. ¿Podría compartir sus fechas de viaje y preferencias
+    para darle una cotización exacta?
+  goal: Captar detalles del cliente para ofrecer una cotización precisa y destacar
+    el valor personalizado
+- trigger: service_inquiry
+  situation: Cuando un cliente consulta sobre servicios adicionales como tours o seguros
+  script: Además de las reservas básicas, ofrecemos tours exclusivos y seguros de
+    viaje. Por ejemplo, podemos incluir una excursión a Chichén Itzá con guía certificado.
+    ¿Le interesa conocer más?
+  goal: Promover ventas cruzadas y aumentar el valor del paquete
+- trigger: objection_handling
+  situation: Cuando un cliente dice 'Es muy caro' o compara con competidores
+  script: Entendemos su preocupación. Nuestro servicio incluye soporte local 24/7
+    y gestión personalizada, lo que garantiza una experiencia sin problemas. ¿Le gustaría
+    que le muestre cómo esto puede ahorrarle tiempo y estrés?
+  goal: Superar objeciones de precio destacando el valor agregado y servicio diferenciado
+- trigger: follow_up
+  situation: Después de una consulta inicial para cerrar una venta
+  script: Hola [nombre], le seguimos contactando sobre su viaje planeado. Tenemos
+    una promoción especial esta semana que podría interesarle. ¿Le gustaría que le
+    reserve ahora para asegurar el precio?
+  goal: Cerrar la venta mediante seguimiento proactivo y ofertas limitadas
+competitors:
+- name: Despegar
+  positioning: Plataforma online líder para reservas de viajes en Latinoamérica
+  strengths:
+  - Amplia oferta
+  - precios competitivos
+  - interfaz fácil de usar
+  weaknesses:
+  - Servicio al cliente impersonal
+  - menos enfoque en destinos locales mexicanos
+  our_differentiation: Ofrecemos atención personalizada con agente de voz y soporte
+    local especializado en México
+- name: Best Day
+  positioning: Agencia de viajes mexicana con fuerte presencia en paquetes turísticos
+  strengths:
+  - Enfoque en destinos mexicanos
+  - paquetes todo incluido
+  - red de proveedores locales
+  weaknesses:
+  - Limitada automatización
+  - tiempos de respuesta lentos en picos
+  our_differentiation: Automatizamos procesos con IA para respuestas rápidas y gestión
+    eficiente, manteniendo el toque personal
+- name: Aeroméxico Vacations
+  positioning: División de viajes de la aerolínea bandera, enfocada en paquetes con
+    vuelos
+  strengths:
+  - Integración con aerolínea
+  - ofertas exclusivas
+  - marca reconocida
+  weaknesses:
+  - Pocas opciones de personalización
+  - alto costo en temporada alta
+  our_differentiation: Proporcionamos flexibilidad en personalización y precios dinámicos
+    mediante nuestro agente de voz
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 100000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automatización de atención al cliente para una agencia mediana
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 1
+  - scenario: Gestión de reservas para aumentar ventas en temporada alta
+    monthly_cost: 10000
+    monthly_savings: 30000
+    payback_months: 2
+  value_anchors:
+  - Reduce costos operativos hasta un 40% con automatización
+  - Incrementa ventas en un 25% mediante atención 24/7
+  - Cumple con LFPDPPP de manera automática y segura
+market_context:
+  market_size: Estimado en 500 mil millones MXN anuales
+  growth_rate: 8% YoY
+  key_trends:
+  - Aumento en turismo sostenible y experiencias locales
+  - Digitalización acelerada post-pandemia
+  - Crecimiento de viajes de negocios y eventos
+  seasonality:
+    high:
+    - Diciembre-Enero
+    - Semana Santa
+    - Julio-Agosto
+    low:
+    - Septiembre-Octubre
+    - Febrero (excepto Carnaval)
+typical_objections:
+- objection: Prefiero reservar en línea yo mismo, es más barato
+  response: Entiendo, pero nuestro agente de voz ofrece precios competitivos y además
+    gestiona imprevistos, ahorrándole tiempo y preocupaciones. ¿Le gustaría comparar?
+- objection: No confío en dar mis datos a un sistema automatizado
+  response: Nuestro agente cumple con la LFPDPPP, asegurando la protección de sus
+    datos. Además, siempre puede hablar con un humano si lo prefiere.
+- objection: El costo inicial es muy alto para mi negocio pequeño
+  response: Comenzamos con planes escalables desde [entry_point MXN], y el ROI suele
+    verse en pocos meses. ¿Podemos analizar su caso específico?
+meta:
+  id: travel
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

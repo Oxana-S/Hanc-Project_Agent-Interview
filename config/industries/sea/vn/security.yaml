@@ -1,0 +1,278 @@
+pain_points:
+- description: Chi phí nhân sự giám sát an ninh 24/7 quá cao, đặc biệt là vào ban
+    đêm và ngày lễ
+  severity: high
+  solution_hint: AI Voice Agent có thể xử lý cuộc gọi cảnh báo ban đầu, phân loại
+    sự cố và chuyển tiếp thông minh, giảm tải cho trung tâm giám sát.
+- description: Khó khăn trong việc quản lý và báo cáo sự cố một cách nhanh chóng,
+    chính xác cho nhiều chi nhánh/cơ sở
+  severity: high
+  solution_hint: Tự động hóa quy trình báo cáo sự cố thông qua tương tác bằng giọng
+    nói, tổng hợp dữ liệu ngay lập tức.
+- description: Nhân viên bảo vệ/giám sát thiếu kỹ năng xử lý tình huống khẩn cấp và
+    giao tiếp chuyên nghiệp
+  severity: medium
+  solution_hint: Cung cấp kịch bản xử lý khẩn cấp chuẩn hóa qua Voice Agent, hướng
+    dẫn nhân viên từng bước.
+- description: Khó tuân thủ đầy đủ Luật Bảo vệ dữ liệu cá nhân (PDPD) trong việc ghi
+    âm, lưu trữ và xử lý thông tin
+  severity: high
+  solution_hint: Tích hợp cảnh báo và xác nhận tuân thủ PDPD ngay trong quy trình
+    tương tác, tự động ghi nhật ký có kiểm soát.
+- description: Tỷ lệ báo động giả cao từ hệ thống camera và cảm biến, gây lãng phí
+    thời gian phản hồi
+  severity: medium
+  solution_hint: 'Voice Agent thực hiện xác minh đa kênh đầu tiên (ví dụ: hỏi mã xác
+    nhận, mô tả hiện trường) trước khi điều động nhân sự.'
+- description: Khó khăn trong đào tạo nghiệp vụ liên tục và cập nhật quy trình cho
+    đội ngũ bảo vệ phân tán
+  severity: low
+  solution_hint: Triển khai hệ thống đào tạo và kiểm tra kiến thức định kỳ thông qua
+    cuộc gọi tự động từ Voice Agent.
+- description: Thiếu hệ thống chăm sóc khách hàng 24/7 để giải đáp thắc mắc, nhận
+    phản hồi từ khách hàng sử dụng dịch vụ
+  severity: medium
+  solution_hint: Voice Agent hoạt động như tổng đài ảo, trả lời FAQ, tiếp nhận yêu
+    cầu dịch vụ và khiếu nại mọi lúc.
+typical_services:
+- Dịch vụ bảo vệ vệ sĩ
+- Lắp đặt và giám sát hệ thống camera an ninh
+- Thiết kế và lắp đặt hệ thống báo động, kiểm soát ra vào
+- Dịch vụ tuần tra an ninh
+- Vận chuyển tiền và tài sản giá trị
+- Đánh giá và tư vấn rủi ro an ninh
+- Bảo vệ sự kiện
+- Giám sát trung tâm (Monitoring Center)
+- Lắp đặt hệ thống báo cháy và chữa cháy
+- Dịch vụ đào tạo nghiệp vụ bảo vệ
+recommended_functions:
+- name: Tiếp nhận & Phân loại cảnh báo khẩn cấp
+  priority: high
+  reason: Giảm thiểu thời gian phản hồi sự cố, lọc báo động giả, ưu tiên hóa tình
+    huống nguy hiểm.
+- name: Tổng đài ảo chăm sóc khách hàng
+  priority: high
+  reason: Cung cấp hỗ trợ 24/7, giải đáp thắc mắc cơ bản, tiếp nhận yêu cầu dịch vụ
+    không giới hạn thời gian.
+- name: Hỗ trợ tuân thủ PDPD trong tương tác
+  priority: high
+  reason: Tự động thông báo về việc thu âm, xin đồng ý và ghi nhận, giúp doanh nghiệp
+    tránh vi phạm pháp luật.
+- name: Đào tạo và kiểm tra nghiệp vụ qua điện thoại
+  priority: medium
+  reason: Nâng cao chất lượng nhân sự phân tán với chi phí thấp, đảm bảo thông suốt
+    quy trình.
+- name: Tự động hóa báo cáo sự cố và công việc hàng ngày
+  priority: medium
+  reason: Tiết kiệm thời gian viết báo cáo thủ công, số hóa dữ liệu ngay từ đầu, dễ
+    dàng truy xuất.
+- name: Xác thực danh tính và ủy quyền truy cập từ xa
+  priority: low
+  reason: Tăng cường bảo mật cho các yêu cầu truy cập thông tin nhạy cảm hoặc điều
+    khiển hệ thống từ xa.
+typical_integrations:
+- name: Hệ thống Giám sát & Báo động
+  examples:
+  - Hệ thống của các nhà cung cấp trong nước
+  - Dahua
+  - Hikvision
+  priority: high
+- name: Phần mềm Quản lý Nhân sự & Chấm công
+  examples:
+  - MISA
+  - Bravo
+  - Các phần mềm quản lý nội bộ
+  priority: high
+- name: Hệ thống CRM & Chăm sóc khách hàng
+  examples:
+  - CRMVIET
+  - Sapo
+  - Base.vn
+  priority: medium
+- name: Nền tảng Ghi âm & Lưu trữ Điện toán đám mây
+  examples:
+  - FPT Cloud
+  - VNPT Cloud
+  - Viettel IDC
+  priority: medium
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - VNPAY
+  - Momo
+  - ZaloPay
+  priority: low
+industry_faq:
+- question: Dịch vụ của các bạn có đảm bảo tuân thủ Luật PDPD không?
+  answer_template: Hoàn toàn có. Hệ thống của chúng tôi được thiết kế tích hợp sẵn
+    các cảnh báo và cơ chế xin đồng ý theo quy định của PDPD. Mọi cuộc gọi tương tác
+    đều được thông báo và ghi nhận sự đồng ý một cách minh bạch, đảm bảo quyền riêng
+    tư của khách hàng và đối tác.
+- question: AI Voice Agent có thể thay thế hoàn toàn nhân viên trực tổng đài không?
+  answer_template: Không hoàn toàn. Voice Agent đóng vai trò xử lý tự động các cuộc
+    gọi thường lệ, cảnh báo ban đầu và FAQ, giúp giảm tải đáng kể khối lượng công
+    việc. Các tình huống phức tạp, nhạy cảm sẽ được chuyển tiếp thông minh đến nhân
+    viên con người để xử lý tối ưu, đảm bảo chất lượng dịch vụ.
+- question: Chi phí triển khai hệ thống này là bao nhiêu?
+  answer_template: Chi phí rất linh hoạt, phụ thuộc vào quy mô và tính năng bạn cần.
+    Thường bắt đầu từ điểm vào thấp cho các gói cơ bản như tổng đài ảo, và có thể
+    mở rộng dần. Chúng tôi tập trung vào ROI rõ ràng, giúp bạn tiết kiệm chi phí nhân
+    sự vận hành và giảm thiểu rủi ro. Để có báo giá chính xác, tôi có thể kết nối
+    bạn với chuyên viên tư vấn không?
+- question: Hệ thống tích hợp được với camera an ninh hiện có của chúng tôi không?
+  answer_template: Có thể. Hệ thống Voice Agent của chúng tôi được thiết kế với API
+    mở, có khả năng kết nối với nhiều hệ thống camera và báo động phổ biến trên thị
+    trường Việt Nam. Đội ngũ kỹ thuật sẽ đánh giá cụ thể hệ thống hiện tại của bạn
+    để đề xuất giải pháp tích hợp tối ưu nhất.
+- question: Thời gian triển khai là bao lâu?
+  answer_template: Đối với gói dịch vụ cơ bản, thời gian triển khai có thể chỉ từ
+    1-2 tuần. Đối với các giải pháp tích hợp phức tạp hơn, thời gian có thể từ 3-6
+    tuần tùy thuộc vào hiện trạng hệ thống của quý khách. Chúng tôi luôn ưu tiên triển
+    khai nhanh để bạn sớm nhận thấy hiệu quả.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá hoặc nói 'dịch vụ này có vẻ đắt'
+  script: Tôi hoàn toàn hiểu mối quan tâm của anh/chị về chi phí. Thay vì xem đây
+    là một khoản chi phí thêm, nhiều khách hàng của chúng tôi coi đây là giải pháp
+    tiết kiệm lâu dài. Ví dụ, chỉ với chi phí tương đương 1 nhân viên trực tổng đài,
+    hệ thống có thể xử lý lượng cuộc gọi của 5-10 người, hoạt động 24/7 không ngày
+    nghỉ. Quan trọng hơn, nó giúp giảm thiểu rủi ro vi phạm PDPD - khoản phạt tiềm
+    ẩn có thể rất lớn. Tôi có thể chia sẻ một ví dụ tính toán ROI cụ thể cho mô hình
+    doanh nghiệp của anh/chị được không?
+  goal: Chuyển hướng từ giá cả sang giá trị và ROI, đề xuất cung cấp phân tích cụ
+    thể.
+- trigger: competitor_mention
+  situation: 'Khi khách hàng đề cập đến đối thủ cạnh tranh (ví dụ: ''Công ty X cũng
+    cung cấp dịch vụ tương tự'')'
+  script: Cảm ơn anh/chị đã chia sẻ. Chúng tôi đánh giá cao các nhà cung cấp khác
+    trên thị trường. Điểm khác biệt cốt lõi của chúng tôi nằm ở khả năng thích ứng
+    sâu với thị trường Việt Nam. Chúng tôi tập trung mạnh vào giải quyết các điểm
+    đau đặc thù như tuân thủ PDPD, tích hợp với phần mềm quản lý nội bộ phổ biến tại
+    Việt Nam (như MISA, Bravo), và hỗ trợ bằng tiếng Việt tự nhiên 24/7. Hơn nữa,
+    chúng tôi không chỉ bán công nghệ, mà còn đồng hành tư vấn quy trình để tối ưu
+    hóa hiệu quả đầu tư của anh/chị.
+  goal: Làm nổi bật sự khác biệt dựa trên hiểu biết thị trường địa phương và hỗ trợ
+    toàn diện.
+- trigger: need_consultation
+  situation: Khi khách hàng tỏ ra quan tâm nhưng chưa sẵn sàng quyết định, hoặc cần
+    thêm thông tin chuyên sâu
+  script: Tôi rất vui vì anh/chị quan tâm. Vấn đề an ninh và tối ưu vận hành thực
+    sự cần một giải pháp được thiết kế phù hợp. Để có thể tư vấn chính xác nhất, tôi
+    có thể kết nối anh/chị với một chuyên viên tư vấn giải pháp của chúng tôi không?
+    Họ sẽ giúp phân tích quy trình hiện tại, đánh giá nhu cầu tích hợp hệ thống và
+    đưa ra đề xuất cụ thể, bao gồm cả mô hình chi phí và lợi ích rõ ràng. Cuộc gọi
+    tư vấn này là hoàn toàn miễn phí và không ràng buộc.
+  goal: Chuyển giao lead chất lượng cho đội ngũ bán hàng chuyên sâu, khẳng định giá
+    trị từ việc tư vấn cá nhân hóa.
+competitors:
+- name: 'Các công ty Bảo vệ & An ninh truyền thống lớn (VD: Securitas, PSC)'
+  positioning: Nhà cung cấp dịch vụ bảo vệ vật lý và an ninh tổng thể truyền thống
+  strengths:
+  - Mạng lưới nhân sự rộng
+  - Uy tín lâu năm
+  - Dịch vụ vật lý toàn diện
+  weaknesses:
+  - Ứng dụng công nghệ tự động hóa chậm
+  - Chi phí nhân sự cao
+  - Hạn chế trong giải pháp số hóa và AI
+  our_differentiation: Chúng tôi bổ sung và nâng cấp dịch vụ của họ bằng lớp tự động
+    hóa thông minh, giúp họ giảm chi phí vận hành và tăng độ chính xác, tốc độ phản
+    hồi.
+- name: 'Các công ty Công nghệ/Camera an ninh thuần túy (VD: Hikvision, Dahua đại
+    lý)'
+  positioning: Nhà cung cấp thiết bị và phần mềm giám sát hình ảnh
+  strengths:
+  - Chuyên môn về thiết bị phần cứng
+  - Hệ sinh thái camera đa dạng
+  - Giá cả cạnh tranh
+  weaknesses:
+  - Thiếu giải pháp xử lý tương tác bằng giọng nói
+  - Ít tập trung vào tự động hóa quy trình nghiệp vụ
+  - Dịch vụ hỗ trợ sau bán hàng có thể hạn chế
+  our_differentiation: Chúng tôi cung cấp lớp xử lý thông minh phía trên hệ thống
+    camera của họ, biến tín hiệu hình ảnh thành hành động tự động qua giọng nói, tạo
+    thành giải pháp hoàn chỉnh 'Camera + AI Voice'.
+- name: Các Startup công nghệ trong nước về Smart Home/Office
+  positioning: Cung cấp giải pháp nhà thông minh, văn phòng thông minh tích hợp tính
+    năng an ninh cơ bản
+  strengths:
+  - Giao diện thân thiện, dễ sử dụng
+  - Giá thành hấp dẫn cho hộ gia đình & SME
+  - Ứng dụng mobile tốt
+  weaknesses:
+  - Chưa đáp ứng được nhu cầu nghiệp vụ phức tạp của an ninh chuyên nghiệp
+  - Khả năng tích hợp với hệ thống doanh nghiệp lớn hạn chế
+  - Chưa tập trung vào tuân thủ pháp lý như PDPD
+  our_differentiation: Chúng tôi tập trung vào thị trường an ninh chuyên nghiệp B2B,
+    với giải pháp có khả năng mở rộng cao, tuân thủ pháp luật chặt chẽ và tích hợp
+    sâu với hệ thống quản trị doanh nghiệp.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 10000000
+  - 500000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Công ty dịch vụ bảo vệ với 50 nhân viên hiện trường và 1 trung tâm giám
+      sát 3 người trực luân phiên
+    monthly_cost: 15000000
+    monthly_savings: 30000000
+    payback_months: 2
+  value_anchors:
+  - Chi phí chỉ bằng 1/3 nhân viên trực tổng đài, hiệu suất gấp 5 lần
+  - Tránh khoản phạt PDPD tiềm ẩn lên đến hàng tỷ đồng
+  - Tăng tốc độ phản hồi sự cố lên 70%, giảm thiệt hại tài sản
+market_context:
+  market_size: Khoảng 30,000 tỷ VND/năm (ước tính ngành dịch vụ bảo vệ và an ninh
+    chuyên nghiệp)
+  growth_rate: 10-15% mỗi năm
+  key_trends:
+  - Chuyển dịch từ bảo vệ thuần túy bằng con người sang mô hình kết hợp 'Con người
+    + Công nghệ' (Man + Machine)
+  - Nhu cầu tuân thủ PDPD đang thúc đẩy đầu tư vào hệ thống quản lý dữ liệu và ghi
+    âm minh bạch
+  - Sự phát triển của các khu đô thị, khu công nghiệp mới tạo ra nhu cầu an ninh tích
+    hợp, thông minh
+  - Các doanh nghiệp vừa và nhỏ (SME) ngày càng quan tâm đến giải pháp an ninh có
+    chi phí hợp lý, dễ vận hành
+  seasonality:
+    high:
+    - Tháng 9 - Tháng 12 (cuối năm, cận Tết Nguyên Đán)
+    - Các dịp lễ hội lớn
+    low:
+    - Tháng 1 - Tháng 2 (sau Tết Nguyên Đán)
+    - Mùa mưa bão (tùy khu vực)
+typical_objections:
+- objection: Chúng tôi đã có nhân viên trực tổng đài rồi, không cần thêm.
+  response: Điều đó rất tốt. Giải pháp của chúng tôi không thay thế hoàn toàn, mà
+    là để hỗ trợ và nâng cao hiệu quả cho đội ngũ hiện có. Nó giúp lọc và xử lý các
+    cuộc gọi thường lệ, để nhân viên của anh/chị tập trung vào những tình huống thực
+    sự phức tạp, đòi hỏi sự nhạy bén của con người. Điều này giúp giảm áp lực công
+    việc, tăng độ chính xác và có thể tiết kiệm chi phí tăng ca về lâu dài.
+- objection: Công nghệ AI còn mới, chúng tôi lo ngại về độ ổn định và bảo mật.
+  response: Mối quan tâm của anh/chị rất chính đáng. Hệ thống của chúng tôi được xây
+    dựng trên nền tảng ổn định, có cơ chế dự phòng và được lưu trữ trên các data center
+    uy tín tại Việt Nam, đảm bảo tuân thủ quy định về lưu trữ dữ liệu trong nước.
+    Hơn nữa, chúng tôi luôn có đội ngũ kỹ thuật hỗ trợ 24/7 và quy trình chuyển tiếp
+    khẩn cấp về con người. Chúng tôi sẵn sàng cung cấp tài liệu đánh giá bảo mật và
+    sắp xếp một buổi demo thử nghiệm để anh/chị an tâm hơn.
+- objection: Quy trình của chúng tôi rất đặc thù, không biết có tích hợp được không?
+  response: Đây chính là thế mạnh của chúng tôi. Thay vì một sản phẩm cứng nhắc, chúng
+    tôi cung cấp một nền tảng linh hoạt. Đội ngũ chuyên gia của chúng tôi sẽ làm việc
+    trực tiếp với anh/chị để tìm hiểu quy trình đặc thù, sau đó tùy chỉnh kịch bản
+    tương tác (workflow) và tích hợp với các hệ thống nội bộ hiện có. Chúng tôi đã
+    triển khai thành công cho nhiều khách hàng có nghiệp vụ riêng biệt. Tôi có thể
+    chia sẻ một vài case study có tính tương đồng được không?
+meta:
+  id: security
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

@@ -1,0 +1,273 @@
+aliases:
+- real estate
+- realtor
+- real estate agency
+- apartment
+- house
+- condo
+- rent
+- apartment sale
+- new construction
+- builder
+- mortgage
+- housing
+- office rent
+- commercial real estate
+competitors:
+- name: Zillow
+  positioning: Leading online real estate marketplace
+  strengths:
+  - Large database of listings
+  - Strong brand recognition
+  - Advanced search and valuation tools
+  weaknesses:
+  - High advertising fees for agents
+  - Some data inaccuracies reported
+  our_differentiation: Personalized agent support with local market expertise and
+    AI-assisted lead qualification
+- name: Redfin
+  positioning: Tech-enabled brokerage with discounted commissions
+  strengths:
+  - Lower commission fees
+  - User-friendly platform
+  - In-house agents
+  weaknesses:
+  - Limited coverage in some markets
+  - Less personalized service
+  our_differentiation: Full-service local agents combined with 24/7 AI voice assistance
+    for lead capture and qualification
+- name: RE/MAX
+  positioning: Large international real estate franchise
+  strengths:
+  - Extensive agent network
+  - Well-established brand
+  - Local market knowledge
+  weaknesses:
+  - Varying agent quality
+  - Traditional marketing approach
+  our_differentiation: Seamless integration of AI voice agents to automate lead handling
+    and improve conversion rates
+- name: Keller Williams
+  positioning: Largest real estate franchise by agent count
+  strengths:
+  - Agent training and support
+  - Strong local presence
+  - Technology investments
+  weaknesses:
+  - Commission splits can be high
+  - Agent-dependent service quality
+  our_differentiation: Automated initial contact and lead nurturing via AI voice agents,
+    freeing up agents to focus on closing deals
+industry_faq:
+- question: What types of properties do you offer?
+  answer_template: We offer a wide range of properties including apartments, houses,
+    condos, commercial spaces, and new constructions. Please specify your preferences.
+- question: How much is your commission fee?
+  answer_template: Our standard commission fee ranges from 5% to 6% of the sale price,
+    typically paid upon closing.
+- question: Do you assist with mortgage options?
+  answer_template: Yes, we work with trusted lenders to help you find mortgage options
+    that fit your financial situation.
+- question: Can I schedule a property viewing?
+  answer_template: Absolutely, I can help you schedule a viewing at a convenient date
+    and time.
+- question: Are there any hidden fees?
+  answer_template: No hidden fees. All costs and terms are clearly outlined in the
+    agreement before you commit.
+- question: How long does the buying process usually take?
+  answer_template: The buying process typically takes 30-60 days depending on financing
+    and inspections.
+- question: What areas do you cover?
+  answer_template: We cover multiple regions across the United States. Please specify
+    your preferred location.
+pain_points:
+- description: High volume of incoming calls from listings overwhelms agents
+  severity: high
+  solution_hint: AI voice agent can perform initial lead qualification and collect
+    key requirements
+- description: Prospective buyers contact outside business hours and go to competitors
+  severity: high
+  solution_hint: 24/7 AI voice agent captures leads and schedules callbacks
+- description: Scheduling and rescheduling property showings is time-consuming
+  severity: medium
+  solution_hint: Automated booking and reminders reduce manual coordination
+- description: Difficulty tracking deal status and follow-ups across multiple clients
+  severity: medium
+  solution_hint: AI voice agent provides automatic status updates and reminders
+- description: Low conversion rate from inquiries to property showings
+  severity: medium
+  solution_hint: Immediate lead response and qualification increases conversion
+- description: Inconsistent information delivery about listings causes customer frustration
+  severity: medium
+  solution_hint: AI agent provides standardized and instant answers to FAQs
+- description: Manual follow-up calls are costly and inefficient
+  severity: medium
+  solution_hint: Automated outbound calls to warm leads improve engagement
+typical_services:
+- Residential property sales
+- Residential rentals
+- Commercial property sales
+- Commercial property leasing
+- Mortgage assistance and pre-approval
+- Property valuation and appraisal
+- Transaction coordination and closing support
+- Legal document review and consultation
+- Property management services
+- New construction and development sales
+recommended_functions:
+- name: lead_qualification
+  priority: high
+  reason: Collect key client requirements such as budget, location, property type,
+    and urgency to prioritize leads
+- name: showing_scheduling
+  priority: high
+  reason: Automate booking and confirmation of property viewings to reduce manual
+    workload
+- name: faq_response
+  priority: medium
+  reason: Provide instant answers to common questions about listings, commissions,
+    and processes to improve customer experience
+- name: status_updates
+  priority: medium
+  reason: Notify clients about transaction milestones and follow-up reminders to keep
+    engagement high
+- name: outbound_followup
+  priority: medium
+  reason: Proactively call warm leads to present new listings and encourage showings
+- name: after_hours_lead_capture
+  priority: high
+  reason: Capture inquiries outside business hours to prevent lead loss
+typical_integrations:
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot CRM
+  - Follow Up Boss
+  priority: high
+- name: Real Estate Listing Platforms
+  examples:
+  - Zillow
+  - Realtor.com
+  - Redfin
+  priority: high
+- name: Telephony
+  examples:
+  - Twilio
+  - RingCentral
+  - Grasshopper
+  priority: high
+- name: Messaging Platforms
+  examples:
+  - WhatsApp Business
+  - Facebook Messenger
+  priority: medium
+- name: Calendar/Scheduling
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+- name: Transaction Management
+  examples:
+  - Dotloop
+  - DocuSign
+  priority: medium
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about commission or fees
+  script: '"Our commission typically ranges between 5% and 6% of the final sale price,
+    payable upon closing. This includes full support throughout the buying or selling
+    process to ensure a smooth transaction. Can I help you find properties within
+    your budget?"
+
+    '
+  goal: Clarify pricing and guide towards property options
+- trigger: schedule_viewing
+  situation: When a customer wants to see a property
+  script: '"Great! I can help you schedule a property viewing at a time that works
+    best for you. What days and times are you available?"
+
+    '
+  goal: Secure a viewing appointment
+- trigger: mortgage_inquiry
+  situation: When a prospect inquires about financing options
+  script: '"We partner with reputable lenders and can assist you in finding mortgage
+    options tailored to your financial needs. Would you like me to connect you with
+    a mortgage specialist?"
+
+    '
+  goal: Offer financing assistance and build trust
+- trigger: objection_too_expensive
+  situation: When a client says the service or property is too expensive
+  script: '"I understand budget is important. Can you share your price range? I can
+    find properties and services that fit your budget while still meeting your needs."
+
+    '
+  goal: Re-engage and qualify budget
+- trigger: objection_later_call
+  situation: When a prospect delays follow-up
+  script: '"No problem! Would you like me to hold a promising property for you until
+    tomorrow? The market moves quickly and I want to make sure you don''t miss out."
+
+    '
+  goal: Keep lead warm and encourage timely action
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 150000
+  - 1500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automated lead qualification saves 2 hours daily for 3 agents
+    monthly_cost: 300
+    monthly_savings: 2400
+    payback_months: 1
+  - scenario: Increased appointment bookings by 20% resulting in 3 additional closings
+      per quarter
+    monthly_cost: 300
+    monthly_savings: 4500
+    payback_months: 1
+  value_anchors:
+  - Reduce lost leads by ensuring 24/7 availability.
+  - Cut down manual follow-up time by automating calls and reminders.
+  - Increase conversion rates through immediate lead engagement.
+  - Enhance customer experience with instant answers to common questions.
+market_context:
+  market_size: 2500000000000
+  growth_rate: 4.5
+  key_trends:
+  - Increased reliance on digital platforms for property search
+  - Growing demand for virtual tours and remote buying tools
+  - Rising interest rates affecting mortgage affordability
+  - Expansion of suburban and secondary markets
+  - Integration of AI and automation in real estate services
+  seasonality:
+    high:
+    - Spring
+    - Early Summer
+    low:
+    - Winter
+    - Late Fall
+typical_objections:
+- objection: I can find properties on my own online.
+  response: I understand. However, our agents have access to exclusive listings and
+    can save you time by filtering options to your exact needs. Would you like me
+    to show you some exclusive properties?
+- objection: Your commission is too high.
+  response: Our commission covers comprehensive services including negotiation, paperwork,
+    and support to ensure you get the best deal. Let’s discuss your budget to find
+    options that work for you.
+- objection: I’m not ready to buy right now.
+  response: That’s perfectly fine. Would you like me to keep you updated on market
+    trends and new listings so you can decide when the time is right?
+- objection: I don’t want to be pressured.
+  response: We respect your pace and preferences. Our goal is to provide helpful information
+    and support without any pressure. How can I assist you best today?
+meta:
+  id: real_estate
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+_extends: _base/real_estate

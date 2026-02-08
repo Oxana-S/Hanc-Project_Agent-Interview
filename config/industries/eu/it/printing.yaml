@@ -1,0 +1,250 @@
+pain_points:
+- description: I costi delle materie prime, come carta e inchiostri, sono volatili
+    e impattano fortemente il margine.
+  severity: high
+  solution_hint: Un agente vocale può monitorare i prezzi dei fornitori e suggerire
+    ordini al momento giusto.
+- description: Gestione inefficiente delle richieste dei clienti, con molte chiamate
+    per preventivi e stato lavori.
+  severity: high
+  solution_hint: Automatizzare le risposte a domande frequenti e fornire aggiornamenti
+    in tempo reale 24/7.
+- description: Concorrenza aggressiva da parte di stampanti online e grandi catene
+    che offrono prezzi bassissimi.
+  severity: high
+  solution_hint: Un agente può qualificare le lead e concentrarsi su clienti che cercano
+    qualità e servizio personalizzato.
+- description: Difficoltà nel gestire ordini complessi e personalizzati, con alto
+    rischio di errori e rilavorazioni.
+  severity: medium
+  solution_hint: Guidare il cliente passo-passo nella configurazione dell'ordine,
+    riducendo gli errori.
+- description: Mantenimento della macchina parco stampa obsoleto, con frequenti fermi
+    macchina e costi di manutenzione elevati.
+  severity: medium
+  solution_hint: Programmare chiamate di manutenzione preventiva e ricordare gli interventi
+    necessari.
+- description: Rispetto del GDPR nella gestione dei dati dei clienti, soprattutto
+    per mailing e materiali personalizzati.
+  severity: medium
+  solution_hint: Fornire moduli di consenso vocali e registrare automaticamente le
+    autorizzazioni.
+typical_services:
+- Stampa offset
+- Stampa digitale
+- Biglietti da visita e carta intestata
+- Brochure e cataloghi
+- Manifesti e stampati pubblicitari grandi formato
+- Packaging e scatole personalizzate
+- Stampe su tessuto e merchandising
+- Servizi di rilegatura e finitura (plastificatura, taglio, cordonatura)
+- Servizi di grafica e impaginazione
+- Stampanti 3D e prototipazione
+recommended_functions:
+- name: Calcolo Preventivi Istantanei
+  priority: high
+  reason: I clienti si aspettano una risposta veloce. Riduce il carico di lavoro in
+    studio.
+- name: Prenotazione Appuntamenti e Ritiri
+  priority: high
+  reason: Ottimizza la logistica e riduce i tempi morti in negozio.
+- name: Supporto Tecnico di Base e Stato Lavori
+  priority: high
+  reason: Risponde alla maggior parte delle chiamate, liberando il personale per compiti
+    complessi.
+- name: Raccolta Brief e Specifiche Ordini
+  priority: medium
+  reason: Standardizza le richieste e riduce malintesi, specialmente per lavori personalizzati.
+- name: Promemoria Pagamenti e Scadenze
+  priority: medium
+  reason: Migliora il cash flow ricordando ai clienti i pagamenti in sospeso.
+- name: Invio Automatico di Offerte e Novità
+  priority: low
+  reason: Mantiene il contatto con la clientela esistente in modo automatizzato.
+typical_integrations:
+- name: Software di Gestione Tipografia (MIS)
+  examples:
+  - PrintVis
+  - avanti
+  - EFI Monarch
+  priority: high
+- name: Software di Prepress e Grafica
+  examples:
+  - Adobe Creative Cloud
+  - QuarkXPress
+  priority: high
+- name: Piattaforme E-commerce
+  examples:
+  - Magento
+  - Shopify
+  - piattaforme B2B personalizzate
+  priority: medium
+- name: Sistemi CRM
+  examples:
+  - Zoho CRM
+  - TeamSystem
+  - Salesforce
+  priority: medium
+- name: Software Contabilità
+  examples:
+  - Sage
+  - DATEV
+  - software gestionale italiano
+  priority: low
+industry_faq:
+- question: Quali sono i tempi di consegna per 1000 biglietti da visita?
+  answer_template: Per 1000 biglietti da visita stampa digitale, il tempo standard
+    è di 3-4 giorni lavorativi. Possiamo valutare un'opzione express se necessario.
+    Posso aiutarla a configurare l'ordine?
+- question: Offrite servizi di grafica?
+  answer_template: Sì, offriamo servizi completi di grafica e impaginazione per preparare
+    i suoi file per la stampa. Possiamo partire da una sua bozza o crearne una ex-novo.
+    Desidera fissare un appuntamento con il nostro grafico?
+- question: Potete stampare su materiali speciali?
+  answer_template: Assolutamente. Lavoriamo con una vasta gamma di carte, cartoni,
+    plastiche e tessuti. Possiamo organizzare una chiamata per discutere il suo progetto
+    specifico e trovare la soluzione migliore.
+- question: Come gestite la privacy dei miei dati per una mailing personalizzata?
+  answer_template: Rispettiamo rigorosamente il GDPR. Per ogni lavoro che coinvolge
+    dati personali, forniamo un modulo di consenso da far firmare. Il nostro sistema
+    registra e protegge tutte le autorizzazioni.
+- question: Cosa succede se il colore del prodotto finito non corrisponde alla prova?
+  answer_template: Utilizziamo sistemi di gestione colore professionali e forniamo
+    prove colore certificate. In caso di difformità significativa, rivalutiamo e rifacciamo
+    il lavoro a nostre spese.
+sales_scripts:
+- trigger: price_question
+  situation: Cliente chiede un preventivo generico via telefono.
+  script: 'Capisco che il prezzo sia importante. Per darle un''idea, per un lavoro
+    come il suo il budget tipico parte da circa 150-200 euro. Tuttavia, il costo preciso
+    dipende da molti fattori: quantità, tipo di carta, finiture. Per farle un preventivo
+    accurato e competitivo, posso raccogliere qualche informazione in più? Così evita
+    di ricevere sorprese dopo.'
+  goal: Qualificare la richiesta e ottenere dettagli specifici per un preventivo serio,
+    evitando la trappola del prezzo più basso.
+- trigger: competitor_mention
+  situation: Cliente dice che un altro stampante (es. online) offre un prezzo più
+    basso.
+  script: È normale trovare offerte a basso costo online. La differenza sta spesso
+    nella qualità della carta, nella precisione dei colori e nel servizio. Noi siamo
+    qui, sul territorio, e ci assumiamo la responsabilità del lavoro dalla progettazione
+    alla consegna. Vogliamo che sia soddisfatto, non solo che risparmi qualche euro.
+    Posso mostrarle la differenza con un campione gratuito?
+  goal: Spostare il focus dal prezzo al valore, alla qualità e al servizio locale,
+    proponendo una prova tangibile.
+- trigger: hesitation
+  situation: Cliente sembra indeciso e dice 'devo pensarci'.
+  script: Certamente, è una decisione importante. Molti nostri clienti prima di sceglierci
+    hanno avuto la stessa esitazione. Quello che li ha convinti è stata la possibilità
+    di fare una prova su un piccolo lotto per verificare la qualità. Possiamo organizzare
+    una stampa campione del suo materiale senza impegno? In questo modo può valutare
+    con calma.
+  goal: Superare l'inerzia offrendo un'azione a basso rischio (prova/campione) per
+    costruire fiducia.
+competitors:
+- name: Stampaprint (Online)
+  positioning: Stampante online low-cost per piccole quantità e prodotti standard.
+  strengths:
+  - Prezzi molto bassi e chiari
+  - sito web intuitivo
+  - consegna nazionale
+  weaknesses:
+  - Servizio clienti impersonale e solo online
+  - nessuna consulenza
+  - qualità variabile
+  - tempi lunghi per personalizzazioni
+  our_differentiation: Consulenza personale, qualità costante controllata in loco,
+    servizi di finitura complessi e velocità per le emergenze.
+- name: Copisteria locale/ Franchising (es. CopyColor)
+  positioning: Punto vendita fisico per stampa digitale rapida e servizi di copia.
+  strengths:
+  - Presenza fisica
+  - servizio rapido per piccoli lavori
+  - relazione di vicinato
+  weaknesses:
+  - Limitata capacità per grandi tirature o lavori speciali
+  - parco macchine spesso base
+  - prezzi più alti per quantità
+  our_differentiation: Capacità produttiva superiore (offset e digitale), competenza
+    tecnica specializzata, prezzi più competitivi per medie/grandi tirature.
+- name: Grande tipografia industriale regionale
+  positioning: Fornitore per grandi aziende e edizioni.
+  strengths:
+  - Capacità produttiva enorme
+  - automazione
+  - prezzi bassissimi per enormi quantità
+  weaknesses:
+  - Minima flessibilità per piccoli lotti
+  - servizio standardizzato
+  - tempi di attesa lunghi per ordini non standard
+  our_differentiation: Flessibilità e attenzione al cliente medio-piccolo, ordini
+    personalizzati e complessi, tempi di risposta rapidi e rapporto diretto.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automazione della gestione ordini e preventivi per una piccola tipografia
+    monthly_cost: 99
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Riduzione degli errori di ordine e rilavorazioni per una media azienda
+    monthly_cost: 149
+    monthly_savings: 450
+    payback_months: 1
+  value_anchors:
+  - Riduci del 70% il tempo perso al telefono per i preventivi.
+  - 'Automazione GDPR integrata: evita multe fino a 20.000 euro.'
+  - Servizio clienti attivo 24/7 senza assumere nuovo personale.
+market_context:
+  market_size: Circa 8 miliardi di EUR (pre-pandemia)
+  growth_rate: Stabile o leggermente in calo (-1% YoY), con ripresa nel digitale e
+    packaging.
+  key_trends:
+  - Crescente domanda di packaging personalizzato per l'e-commerce.
+  - Transizione dalla stampa offset a quella digitale per brevi tirature.
+  - Richiesta di sostenibilità (carte riciclate, inchiostri eco).
+  - Integrazione di stampa 3D per prototipi e piccole serie.
+  seasonality:
+    high:
+    - Settembre-Ottobre (rientro scuole/aziende)
+    - Novembre-Dicembre (natalizio)
+    - Aprile-Maggio (campagne estive)
+    low:
+    - Agosto (ferie generali)
+    - Gennaio (dopo le feste)
+    - Luglio (prima delle ferie)
+typical_objections:
+- objection: Sono abituato al mio fornitore da anni.
+  response: Lo capisco, la fiducia si costruisce col tempo. Posso chiederle, per curiosità,
+    se c'è qualcosa che il suo attuale fornitore non riesce a fare o che potrebbe
+    essere migliorato? A volte un secondo fornitore può essere una risorsa per progetti
+    speciali o come backup.
+- objection: Non voglio un robot, voglio parlare con una persona.
+  response: Concordo sul valore del contatto umano. Il nostro agente vocale è qui
+    per gestire le richieste semplici e ripetitive, come lo stato di un ordine o un
+    preventivo base, 24 ore su 24. In questo modo, quando chiederà di parlare con
+    un nostro esperto per una consulenza complessa, lo avrà subito e dedicato, senza
+    attese. Vuole provare a fare una domanda semplice per testarlo?
+- objection: I miei clienti non usano questi sistemi, preferiscono il telefono diretto.
+  response: È un punto valido. Molti dei nostri clienti stampatori la pensavano così.
+    Hanno scoperto che l'agente vocale risponde proprio al telefono diretto, in modo
+    professionale, e filtra solo le chiamate che necessitano davvero della sua attenzione.
+    In più, risponde anche fuori orario, catturando opportunità che altrimenti perderebbe.
+    Possiamo attivare una prova per un mese senza impegno?
+meta:
+  id: printing
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

@@ -1,0 +1,186 @@
+pain_points:
+- description: 竞争激烈导致价格战频发
+  severity: high
+  solution_hint: AI语音助手可提供智能定价建议和竞争对手分析
+- description: 库存管理困难，新品更新速度快
+  severity: high
+  solution_hint: 通过AI预测需求，优化库存水平
+- description: 客户忠诚度低，复购率不高
+  severity: medium
+  solution_hint: AI可个性化推荐产品，增强客户粘性
+- description: 遵守PIPL法规处理客户数据
+  severity: high
+  solution_hint: AI系统集成合规检查，确保数据安全
+- description: 线上线下渠道协调困难
+  severity: medium
+  solution_hint: AI统一管理多渠道客户交互
+- description: 营销成本高昂，效果难衡量
+  severity: medium
+  solution_hint: AI分析营销数据，优化广告投放
+typical_services:
+- 批发分销
+- 零售销售
+- 电商平台运营
+- 美妆产品定制品牌
+- 产品咨询与培训
+- 售后服务
+- 会员管理
+- 物流配送服务
+- 市场趋势分析
+- 促销活动策划
+recommended_functions:
+- name: 自动接单
+  priority: high
+  reason: 提高效率，减少人工错误
+- name: 客户咨询处理
+  priority: high
+  reason: 即时响应，提升客户满意度
+- name: 预约安排
+  priority: medium
+  reason: 方便客户，优化服务流程
+- name: 反馈收集
+  priority: medium
+  reason: 获取客户意见，改进产品
+- name: 销售推广
+  priority: high
+  reason: 增加销售额，推广新产品
+- name: 合规提醒
+  priority: high
+  reason: 确保遵守PIPL等法规
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: high
+- name: 电商平台
+  examples:
+  - 淘宝
+  - 京东
+  - 拼多多
+  priority: high
+- name: 支付系统
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: high
+- name: CRM系统
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: medium
+- name: 物流跟踪系统
+  examples:
+  - 顺丰
+  - 中通
+  priority: medium
+industry_faq:
+- question: 你们的产品质量如何保证？
+  answer_template: 我们所有产品均经过严格质量检测，并符合国家标准，确保安全有效。
+- question: 有没有折扣或促销活动？
+  answer_template: 是的，我们定期有促销活动。您可以关注我们的会员计划以获取专属优惠。
+- question: 下单后多久能发货？
+  answer_template: 通常下单后24小时内发货，具体时间取决于库存和物流情况。
+- question: 支持退货吗？
+  answer_template: 支持7天无理由退货，详情请参阅我们的退货政策。
+- question: 可以定制产品吗？
+  answer_template: 是的，我们提供定制服务，请联系我们的客服详细咨询。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问产品价格时
+  script: 您好！感谢您的询问。我们的产品价格根据规格和数量有所不同。我可以为您提供详细报价，并介绍当前的促销活动。
+  goal: 提供价格信息，引导进一步销售
+- trigger: product_inquiry
+  situation: 当客户询问特定产品时
+  script: 很高兴为您服务！这款产品是我们的热销款，具有XX特点。我可以为您详细介绍，并推荐相关搭配产品。
+  goal: 介绍产品优势，促进购买
+- trigger: follow_up
+  situation: 跟进潜在客户
+  script: 您好！我是XX公司的AI助手。上次您咨询了我们的产品，我想了解一下您是否有进一步的需求或问题？
+  goal: 重新联系客户，推动成交
+competitors:
+- name: 丝芙兰中国
+  positioning: 高端美妆零售商
+  strengths:
+  - 品牌知名度高
+  - 产品种类丰富
+  - 门店体验好
+  weaknesses:
+  - 价格较高
+  - 线上渠道较弱
+  our_differentiation: 我们提供更亲民的价格和更强的线上支持
+- name: 屈臣氏
+  positioning: 大众美妆及健康产品零售商
+  strengths:
+  - 门店分布广
+  - 价格适中
+  - 会员体系完善
+  weaknesses:
+  - 产品更新慢
+  - 数字化程度低
+  our_differentiation: 我们专注于美妆供应链，提供更快的新品上市和数字化管理
+- name: 完美日记
+  positioning: 本土美妆品牌，主打线上
+  strengths:
+  - 营销能力强
+  - 价格竞争力高
+  - 年轻消费者喜爱
+  weaknesses:
+  - 供应链依赖性强
+  - 线下渠道有限
+  our_differentiation: 我们作为供应商，提供全方位的B2B服务，支持品牌发展
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: 使用AI语音助手处理客户咨询
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: 自动化订单管理减少人工错误
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - 提高客户满意度30%
+  - 减少运营成本20%
+  - 增加销售额15%
+market_context:
+  market_size: 约5000亿CNY
+  growth_rate: 15% YoY
+  key_trends:
+  - 线上销售增长迅速
+  - 国货品牌崛起
+  - 个性化定制需求增加
+  - 可持续发展关注提升
+  seasonality:
+    high:
+    - 双十一
+    - '618'
+    - 春节前
+    low:
+    - 夏季淡季
+    - 传统节假日后期
+typical_objections:
+- objection: 价格太高了
+  response: 我们的价格包含了高质量产品和优质服务。相比竞争对手，我们提供更好的性价比和长期支持。
+- objection: 不需要AI服务，人工就够了
+  response: AI服务可以补充人工，提高效率，减少错误，并确保24/7服务可用性，从而提升客户体验。
+- objection: 担心数据安全
+  response: 我们严格遵守PIPL法规，所有数据都加密处理，并定期进行安全审计，确保您的数据安全。
+meta:
+  id: beauty_supplies
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

@@ -1,0 +1,202 @@
+pain_points:
+- description: Hohe Betriebskosten durch teure Hafenliegeplätze und Wartung in der Schweiz.
+  severity: high
+  solution_hint: AI-Agent kann Termine für kostengünstigere Wartung koordinieren und Liegeplatzverfügbarkeiten automatisiert abfragen.
+- description: Saisonale Nachfragespitzen (Sommer) führen zu überlasteten Service-Teams und verpassten Buchungen.
+  severity: high
+  solution_hint: Voice-Agent kann 24/7 Buchungsanfragen entgegennehmen und Vorab-Qualifikation durchführen, um das Team zu entlasten.
+- description: Komplexe administrative Anforderungen (FADP, Mehrwertsteuer auf Charter, Bootspapiere).
+  severity: medium
+  solution_hint: Agent kann Kunden durch standardisierte Dokumenten-Checklisten führen und Erinnerungen für Fristen senden.
+- description: Schwierigkeiten, qualifiziertes Fachpersonal (Bootsbauer, Elektriker) zu finden und zu binden.
+  severity: medium
+  solution_hint: AI-Agent übernimmt Erstkontakt und Terminvereinbarung für Stellenangebote, filtert ungeeignete Bewerber vor.
+- description: Wettbewerb durch grenznahe Anbieter in Italien, Frankreich und Deutschland mit niedrigeren Preisen.
+  severity: medium
+  solution_hint: Voice-Agent betont automatisiert Schweizer Qualität, Zuverlässigkeit und lokalen Service als Mehrwert.
+- description: Veraltete Buchungssysteme, die keine Online-Zahlung oder automatische Bestätigung bieten.
+  severity: low
+  solution_hint: Integration des AI-Agents in bestehende Systeme, um eine moderne Telefon-Schnittstelle mit Bestätigungsfunktion zu schaffen.
+typical_services:
+- Bootscharter und -vermietung
+- Winterlagerung und -einarbeiten
+- Yachtwartung und -reparatur
+- Motorinspektion und -service
+- Segelkurse und Skipper-Lizenzen
+- Elektronik-Installation (Echolot, GPS)
+- Bootstransport und -logistik
+- Hafenservice und Liegeplatzvermittlung
+- Bootswäsche und Aufbereitung
+- Versicherungsvermittlung für Wasserfahrzeuge
+recommended_functions:
+- name: 24/7 Terminbuchung und -bestätigung
+  priority: high
+  reason: Bewältigt saisonale Spitzenlast und verpasst keine Anfragen außerhalb der Geschäftszeiten.
+- name: FAQ-Beantwortung zu Preisen, Verfügbarkeit und Services
+  priority: high
+  reason: Reduziert erheblich die Last auf Service-Mitarbeiter für Standardanfragen.
+- name: Lead-Qualifikation und -Weiterleitung
+  priority: high
+  reason: Filtert ernsthafte Interessenten für Charter oder Kauf heraus und leitet sie mit Kontext weiter.
+- name: Zahlungserinnerungen und Rechnungsstatus-Auskunft
+  priority: medium
+  reason: Verbessert den Cashflow durch automatische, höfliche Erinnerungen.
+- name: Umfragen nach Service-Einsätzen
+  priority: medium
+  reason: Sammelt automatisiert Feedback zur kontinuierlichen Verbesserung der Servicequalität.
+- name: Mehrsprachiger Support (DE/FR/EN)
+  priority: low
+  reason: Wichtig für internationale Kunden an Schweizer Seen und für grenzüberschreitende Dienstleistungen.
+typical_integrations:
+- name: Buchungs- und Verwaltungssystem
+  examples:
+  - Molo
+  - float
+  - nauris
+  priority: high
+- name: Schweizer Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Sage
+  priority: high
+- name: CRM-System
+  examples:
+  - Microsoft Dynamics
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Kalendersysteme
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: medium
+- name: Schweizer Zahlungsdienstleister
+  examples:
+  - Twint
+  - PostFinance
+  - Stripe (CH)
+  priority: medium
+industry_faq:
+- question: Was kostet eine Winterlagerung für meine 10-Meter-Yacht?
+  answer_template: Die Kosten für die Winterlagerung hängen vom Boot, Standort und Serviceumfang ab. Für eine erste Schätzung benötigen wir einige Details. Ich verbinde Sie gerne mit einem Experten oder
+    sende Ihnen unseren digitalen Katalog mit allen Paketen zu.
+- question: Brauche ich einen speziellen Führerschein für einen Motorboot-Charter auf dem Genfersee?
+  answer_template: Für Motorboote über bestimmte PS-Grenzen ist auf Schweizer Seen ein Patent (Bootsführerschein) erforderlich. Gerne kläre ich für Sie, ob Ihr gewünschtes Boot unter diese Regelung fällt
+    und vermittle bei Bedarf Schnellkurse.
+- question: Können Sie auch Notfallreparaturen am Wochenende durchführen?
+  answer_template: Wir bieten einen eingeschränkten Pikettdienst für Notfälle an. Der AI-Assistent kann Ihre Situation vorqualifizieren und den zuständigen Techniker alarmieren. Es fallen außerhalb der
+    regulären Stunden Zuschläge an.
+- question: Ist die Mehrwertsteuer im Charterpreis enthalten?
+  answer_template: Für Charterleistungen in der Schweiz fällt die normale Mehrwertsteuer an. Für Ausflüge, die ins Ausland führen, gelten spezielle Regeln. Unser System berechnet dies korrekt. Gerne erstelle
+    ich Ihnen eine detaillierte Offerte.
+- question: Wie lange im Voraus sollte ich einen Liegeplatz für die Saison buchen?
+  answer_template: An beliebten Seen wie dem Zürich- oder Vierwaldstättersee empfehlen wir eine Buchung mindestens 6-9 Monate im Voraus. Ich kann sofort die Verfügbarkeit für Ihre Wunschhäfen prüfen.
+sales_scripts:
+- trigger: preis_frage_charter
+  situation: Kunde fragt nach dem Preis für eine Wochenend-Charter.
+  script: 'Sehr gerne! Für eine präzise Offerte brauche ich drei Informationen: 1) Gewünschtes Datum, 2) Bootstyp (Segel- oder Motorboot) und ungefähre Länge, 3) Welcher Heimathafen? Basierend darauf kann
+    ich Ihnen sofort verfügbare Optionen und Paketpreise nennen. Möchten Sie mit der Verfügbarkeitsprüfung starten?'
+  goal: Vom Preis zur konkreten Anfrage lenken und notwendige Daten für ein Angebot sammeln.
+- trigger: beschwerde_wartungszeit
+  situation: Kunde beschwert sich über lange Wartezeiten für einen Service-Termin.
+  script: Das tut mir leid zu hören. Unser Ziel ist ein schneller, zuverlässiger Service. Unser AI-Assistent kann in Echtzeit nach letzten Minute-Stornierungen oder Express-Slots in anderen Werften unseres
+    Netzwerks suchen. Darf ich das für Sie tun? So sparen Sie sich das Warten in der Warteschleife.
+  goal: De-Eskalation und demonstrieren von proaktiver Problemlösung durch Technologie.
+- trigger: interessent_kalt
+  situation: Neukontakt, der allgemeine Informationen über die Werft anfragt.
+  script: Herzlich willkommen bei [Firmenname]! Wir sind spezialisiert auf [Hauptservice, z.B. Yacht-Service]. Viele unserer Kunden schätzen unseren Schweizer Qualitätsanspruch und die transparente Abwicklung.
+    Was genau hat Ihr Interesse geweckt? Möchten Sie mehr über unsere Winterlager-Pakete, Charterflotte oder unseren Rundum-Sorglos-Service erfahren?
+  goal: Rapport aufbauen, Schweizer Qualität betonen und das Gespräch auf spezifische Bedürfnisse lenken.
+competitors:
+- name: Yachtcare Schweiz AG
+  positioning: Nationaler Full-Service-Anbieter für Hochpreissegment.
+  strengths:
+  - Umfassendes Netzwerk
+  - Markenwerkstätten
+  - Finanzierungsangebote
+  weaknesses:
+  - Sehr hohe Preise
+  - weniger flexibel für kleine Aufträge
+  our_differentiation: Unser AI-Agent bietet flexiblen, zugänglichen Einstiegspunkt für alle Bootsgrößen und personalisierte, effiziente Kommunikation.
+- name: Bootsvermietung Bodensee GmbH
+  positioning: Regionaler Marktführer für Charter am Bodensee.
+  strengths:
+  - Große Charterflotte
+  - perfekte Logistik am See
+  - starke Lokalpräsenz
+  weaknesses:
+  - Fokussiert nur auf Charter
+  - kein umfassender Service
+  our_differentiation: Wir bieten durch den AI-Agent eine nahtlose Kombination aus Charterbuchung und anschließendem Service/Wartung aus einer Hand.
+- name: Kleinere, lokale Werften (z.B. "Werft am Zürichsee")
+  positioning: Traditionelle Familienbetriebe mit starken Kundenbeziehungen.
+  strengths:
+  - Hohes Vertrauen
+  - handwerkliche Exzellenz
+  - lokale Verankerung
+  weaknesses:
+  - Oft veraltete Verwaltung
+  - limitierte Kapazität
+  - kaum digitale Angebote
+  our_differentiation: Wir ergänzen handwerkliche Qualität mit digitaler Effizienz. Der AI-Agent entlastet das Personal von Verwaltung, sodass es sich auf die Kernarbeit konzentrieren kann.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 150
+  roi_examples:
+  - scenario: AI-Agent übernimmt 20 Charter-Anfragen und 15 Service-Terminvereinbarungen pro Tag.
+    monthly_cost: 450
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - Keine verpassten Buchungen mehr – auch nachts und am Wochenende.
+  - Bis zu 80% weniger administrative Telefonate für Ihr Team.
+  - Schweizer Präzision in der Kundenkommunikation, rund um die Uhr.
+market_context:
+  market_size: Ca. 1.2 Mrd. CHF jährlich (Schätzung für gewerbliche Marine-Dienstleistungen)
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Zunehmende Nachfrage nach 'Share-Boat'- und Flex-Charter-Modellen.
+  - Starke Nachfrage nach Elektro- und Hybrid-Antrieben (E-Mobility auf dem Wasser).
+  - Hohe Sensibilität für Nachhaltigkeit und ökologische Werftbetriebe.
+  - Digitalisierung der Hafenservices (Smart Docking, kontaktlose Abwicklung).
+  seasonality:
+    high:
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    low:
+    - November
+    - Dezember
+    - Januar
+    - Februar
+typical_objections:
+- objection: Das ist mir zu teuer für eine Software.
+  response: Ich verstehe. Es geht hier weniger um Software, sondern um einen zusätzlichen, kosteneffizienten Mitarbeiter für Erstkontakt und Verwaltung. Bei den hohen Personalkosten in der Schweiz rechnet
+    sich dies oft in wenigen Wochen. Darf ich Ihnen eine einfache Beispielrechnung für Ihren Betrieb zeigen?
+- objection: Meine älteren Kunden mögen keine Automaten.
+  response: Das ist ein wichtiger Punkt. Der AI-Agent kann sehr menschlich und bedürfnisorientiert kommunizieren. Zudem entlastet er Ihr Personal genau für diese intensiven, persönlichen Beratungsgespräche
+    mit Stammkunden. Er filtert vor, sodass Ihr Team mehr Zeit für Wertschöpfung hat.
+- objection: Wir haben schon ein Buchungssystem.
+  response: Perfekt! Unser AI-Agent ist keine Konkurrenz, sondern die optimale Telefon-Schnittstelle dafür. Er spielt alle gewonnenen Informationen direkt in Ihr bestehendes System ein und holt Daten daraus
+    ab. So haben Sie moderne Kundenkommunikation ohne Systemwechsel.
+meta:
+  id: marine
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- marine
+- yacht club
+- marina
+- boating
+- sailing
+_extends: _base/marine

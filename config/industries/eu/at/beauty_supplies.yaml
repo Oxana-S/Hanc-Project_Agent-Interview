@@ -1,0 +1,243 @@
+pain_points:
+- description: Hoher Verwaltungsaufwand für Bestellungen und Lagerverwaltung
+  severity: high
+  solution_hint: KI-Stimmenagent kann Bestellungen automatisch aufnehmen und Lagerbestände
+    verfolgen
+- description: Kundenanfragen außerhalb der Geschäftszeiten führen zu verpassten Verkäufen
+  severity: medium
+  solution_hint: KI-Stimmenagent bietet 24/7-Kundenservice für Anfragen und Bestellungen
+- description: Schwierigkeiten bei der Personalisierung von Kundenempfehlungen für
+    Beauty-Produkte
+  severity: medium
+  solution_hint: KI-Stimmenagent kann Kundendaten analysieren, um maßgeschneiderte
+    Produktvorschläge zu machen
+- description: Ineffiziente Terminplanung für Beratungen oder Schulungen
+  severity: low
+  solution_hint: KI-Stimmenagent kann Termine automatisch buchen und Erinnerungen
+    senden
+- description: Hohe Kosten für manuelle Dateneingabe und Rechnungsstellung
+  severity: high
+  solution_hint: KI-Stimmenagent integriert sich mit Buchhaltungssystemen zur automatischen
+    Rechnungserstellung
+- description: Begrenzte Reichweite durch lokalen Markt und Online-Konkurrenz
+  severity: medium
+  solution_hint: KI-Stimmenagent kann über Telefonmarketing neue Kunden gewinnen und
+    Online-Präsenz unterstützen
+typical_services:
+- Kosmetikproduktverkauf
+- Professionelle Beauty-Beratung
+- Schulungen für Friseure und Kosmetiker
+- Großhandelslieferungen an Salons
+- Online-Shop mit Lieferservice
+- Produkttests und Demos
+- Kundenspezifische Beauty-Pakete
+- Nachfüllservice für Salonbedarf
+- Beauty-Workshops und Events
+- Wartung und Reparatur von Beauty-Geräten
+recommended_functions:
+- name: Bestellannahme
+  priority: high
+  reason: Automatisiert Verkaufsprozesse und reduziert manuelle Arbeit
+- name: Terminvereinbarung
+  priority: medium
+  reason: Optimiert Zeitplanung für Beratungen und Schulungen
+- name: Kundenunterstützung
+  priority: high
+  reason: Beantwortet häufig gestellte Fragen und löst Probleme rund um die Uhr
+- name: Produktempfehlungen
+  priority: medium
+  reason: Steigert Umsatz durch personalisierte Vorschläge basierend auf Kundendaten
+- name: Rechnungserstellung
+  priority: low
+  reason: Integriert mit Buchhaltungssystemen für effiziente Abrechnung
+- name: Marketinganrufe
+  priority: medium
+  reason: Erweitert Kundenstamm durch gezielte Telefonakquise
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Lexware
+  - Datev
+  priority: high
+- name: E-Commerce-Plattformen
+  examples:
+  - Shopify
+  - WooCommerce
+  - local hosting like World4You
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Sage
+  - Banana Buchhaltung
+  - SevDesk
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Pipedrive
+  - local solutions like econda
+  priority: medium
+- name: Lagerverwaltungssysteme
+  examples:
+  - Lagarsoft
+  - easyWMS
+  - in-house Lösungen
+  priority: low
+industry_faq:
+- question: Welche Beauty-Produkte bieten Sie an?
+  answer_template: Wir führen ein breites Sortiment an Kosmetik, Haarpflege, Salonbedarf
+    und professionellen Geräten, darunter Marken wie Balea, Alterra und internationale
+    Labels. Gerne beraten wir Sie persönlich zu Ihren Bedürfnissen.
+- question: Können Sie Produkte an meinen Salon liefern?
+  answer_template: Ja, wir bieten Lieferungen in ganz Österreich an, mit Optionen
+    für regelmäßige Großhandelsbestellungen oder Einzellieferungen. Die Kosten und
+    Zeiten hängen von der Region ab.
+- question: Gibt es Schulungen für neue Produkte?
+  answer_template: Absolut! Wir veranstalten regelmäßige Schulungen und Workshops
+    für Friseure und Kosmetiker, sowohl online als auch vor Ort. Melden Sie sich für
+    unseren Newsletter an, um Updates zu erhalten.
+- question: Wie handle ich mit Rücksendungen oder Reklamationen?
+  answer_template: Bei Problemen kontaktieren Sie bitte unseren Kundenservice unter
+    der angegebenen Nummer. Wir bearbeiten Rücksendungen innerhalb von 14 Tagen gemäß
+    unseren AGB, vorbehaltlich der GDPR-Compliance.
+- question: Unterstützen Sie Online-Bestellungen?
+  answer_template: Ja, unser Online-Shop ist 24/7 verfügbar, und Sie können auch per
+    Telefon über unseren KI-Stimmenagenten bestellen. Wir bieten sichere Zahlung und
+    schnelle Lieferung.
+- question: Was sind Ihre Öffnungszeiten?
+  answer_template: Unser physischer Laden hat Standardzeiten, aber unser KI-Stimmenagent
+    ist rund um die Uhr erreichbar für Bestellungen und Anfragen, sodass Sie flexibel
+    unterstützt werden.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach Preisen für Beauty-Produkte oder Dienstleistungen
+  script: Guten Tag! Vielen Dank für Ihr Interesse. Unsere Preise variieren je nach
+    Produkt und Menge, beginnen aber bei etwa 50 EUR für Basispakete. Möchten Sie
+    mehr über spezifische Angebote erfahren oder eine kostenlose Beratung vereinbaren?
+  goal: Kundeninteresse wecken und zu einem detaillierteren Gespräch führen
+- trigger: service_inquiry
+  situation: Kunde erkundigt sich nach Schulungen oder Beratungen
+  script: Hallo! Wir bieten maßgeschneiderte Beauty-Beratungen und Schulungen ab 100
+    EUR pro Session. Unser KI-Stimmenagent kann Ihnen sofort verfügbare Termine vorschlagen
+    oder weitere Details per E-Mail senden. Interessiert?
+  goal: Dienstleistung verkaufen und Termin vereinbaren
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen Mitbewerber wie dm oder Bipa
+  script: Verstanden! Im Vergleich zu großen Einzelhändlern bieten wir persönlichere
+    Beratung, spezialisierte Salonprodukte und flexible Lieferoptionen. Möchten Sie
+    hören, wie wir Ihr Geschäft mit KI-Unterstützung effizienter machen können?
+  goal: Differenzierung herausstellen und Wert proposition betonen
+- trigger: budget_concern
+  situation: Kunde äußert Bedenken zu den Kosten
+  script: Ich verstehe Ihre Budgetüberlegungen. Unsere KI-Lösungen starten bei 29
+    EUR pro Monat und können Ihnen bis zu 20% Zeit bei Verwaltungsaufgaben sparen.
+    Darf ich ein ROI-Beispiel teilen, wie andere Kunden profitieren?
+  goal: Objektionen entkräften und ROI demonstrieren
+competitors:
+- name: dm-drogerie markt
+  positioning: Großhandelsdrogerie mit breitem Beauty-Sortiment
+  strengths:
+  - Nationale Präsenz
+  - niedrige Preise
+  - starke Markenbekanntheit
+  weaknesses:
+  - Begrenzte Fachberatung
+  - generisches Sortiment
+  - wenig B2B-Fokus
+  our_differentiation: Wir bieten spezialisierte Salonprodukte, persönliche KI-gestützte
+    Beratung und maßgeschneiderte B2B-Lösungen
+- name: Bipa
+  positioning: Drogeriekette mit Schwerpunkt auf Kosmetik und Pflege
+  strengths:
+  - Dichte Filialnetz
+  - attraktive Eigenmarken
+  - gute Online-Präsenz
+  weaknesses:
+  - Weniger professionelle Ausrichtung
+  - begrenzte Großhandelsoptionen
+  our_differentiation: Unser Fokus auf professionelle Beauty-Branche, mit Schulungen
+    und KI-gesteuertem Kundenservice für Unternehmen
+- name: Parfümerie Douglas
+  positioning: Hochwertige Parfümerie und Luxus-Beauty
+  strengths:
+  - Premium-Marken
+  - exklusive Produkte
+  - ansprechendes Shopping-Erlebnis
+  weaknesses:
+  - Höhere Preise
+  - weniger erschwinglich für Gewerbekunden
+  our_differentiation: Wir kombinieren Qualitätsprodukte mit erschwinglichen KI-Lösungen
+    für effizientes Geschäftswachstum in der Beauty-Branche
+- name: Lokale Beauty-Großhändler
+  positioning: Regionale Anbieter von Salonbedarf
+  strengths:
+  - Lokale Expertise
+  - persönliche Beziehungen
+  - flexible Lieferung
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - veraltete Technologie
+  - höhere Kosten
+  our_differentiation: Unsere KI-Integration modernisiert Prozesse, reduziert Kosten
+    und erweitert Reichweite über regionale Grenzen hinaus
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 29
+  roi_examples:
+  - scenario: KI-Stimmenagent für Bestellannahme und Kundenservice
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 3
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden pro Woche mit automatisierter Verwaltung
+  - Steigern Sie Ihren Umsatz um 20% durch personalisierte KI-Empfehlungen
+  - Kosteneffiziente Lösungen ab 29 EUR/Monat für österreichische KMUs
+market_context:
+  market_size: ca. 1,5 Milliarden EUR jährlich
+  growth_rate: 3% YoY
+  key_trends:
+  - Wachsende Nachfrage nach natürlichen und nachhaltigen Beauty-Produkten
+  - Zunahme von Online-Verkäufen und E-Commerce in der Beauty-Branche
+  - Steigender Bedarf an professioneller Beratung für Salonbetriebe
+  seasonality:
+    high:
+    - Weihnachtszeit
+    - Frühling (für Friseursaison)
+    - Sommer (für Urlaubs- und Hochzeitssaison)
+    low:
+    - Januar (nach Weihnachten)
+    - Spätherbst
+typical_objections:
+- objection: Ich habe bereits ein System und brauche keine KI-Lösung.
+  response: Das verstehe ich. Unsere KI kann sich nahtlos in bestehende Systeme integrieren,
+    um Effizienz zu steigern, ohne Ihre Abläufe zu stören. Möchten Sie eine Demo sehen,
+    wie es funktioniert?
+- objection: KI ist zu teuer für mein kleines Geschäft.
+  response: Unsere Einstiegspreise sind bewusst niedrig gehalten, um KMUs zu unterstützen.
+    Mit Einsparungen von bis zu 200 EUR monatlich amortisiert sich die Investition
+    schnell. Darf ich ein Beispiel aus der Beauty-Branche teilen?
+- objection: Ich bevorzuge persönlichen Kontakt und traue der Technologie nicht.
+  response: Die KI ergänzt den persönlichen Service, indem sie Routineaufgaben übernimmt,
+    sodass Sie mehr Zeit für Kundenberatung haben. Viele österreichische Beauty-Shops
+    nutzen es bereits erfolgreich. Probieren Sie es unverbindlich aus?
+- objection: Datenschutz ist mir wichtig – ist das GDPR-konform?
+  response: Absolut! Unsere Lösungen sind streng nach GDPR in der EU entwickelt, mit
+    Datenverschlüsselung und Transparenz. Wir halten alle österreichischen Compliance-Anforderungen
+    ein.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

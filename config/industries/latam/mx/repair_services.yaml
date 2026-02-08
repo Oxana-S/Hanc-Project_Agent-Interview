@@ -1,0 +1,231 @@
+pain_points:
+- description: Alto volumen de llamadas que satura la línea telefónica, perdiendo
+    oportunidades de negocio.
+  severity: high
+  solution_hint: El agente de voz AI puede manejar llamadas simultáneas, filtrar consultas
+    y programar citas automáticamente.
+- description: Dificultad para gestionar citas y seguimiento de clientes de manera
+    eficiente.
+  severity: medium
+  solution_hint: Automatizar la programación y recordatorios de citas, mejorando la
+    organización y reduciendo no-shows.
+- description: Falta de personal capacitado para atención al cliente las 24/7, afectando
+    la satisfacción.
+  severity: high
+  solution_hint: Implementar un agente de voz AI disponible todo el tiempo para responder
+    preguntas básicas y derivar casos complejos.
+- description: Ineficiencia en la gestión de inventario de repuestos, causando retrasos
+    en las reparaciones.
+  severity: medium
+  solution_hint: Integrar con sistemas de inventario para actualizar stock en tiempo
+    real y alertar sobre pedidos necesarios.
+- description: Altos costos operativos por manejo manual de facturación y pagos.
+  severity: low
+  solution_hint: Automatizar procesos de facturación y cobro a través de integraciones
+    con software local, reduciendo errores.
+- description: Cumplimiento con la LFPDPPP en el manejo de datos de clientes, generando
+    preocupaciones legales.
+  severity: medium
+  solution_hint: El agente de voz AI puede asegurar el tratamiento seguro de datos,
+    con registros auditables y consentimiento explícito.
+typical_services:
+- Reparación de electrodomésticos
+- Mantenimiento de aire acondicionado
+- Servicio de fontanería
+- Reparación de automóviles
+- Arreglo de dispositivos electrónicos
+- Instalación eléctrica
+- Reparación de muebles
+- Servicio de cerrajería
+- Mantenimiento de computadoras
+- Reparación de teléfonos móviles
+recommended_functions:
+- name: Programación inteligente de citas
+  priority: high
+  reason: Reduce la carga administrativa y optimiza el tiempo de los técnicos, clave
+    para la alta demanda en México.
+- name: Respuesta automática a preguntas frecuentes
+  priority: high
+  reason: Mejora la experiencia del cliente al proporcionar información inmediata
+    sobre precios y servicios.
+- name: Recordatorios de citas por voz
+  priority: medium
+  reason: Disminuye las cancelaciones y no-shows, comunes en el mercado latinoamericano.
+- name: Integración con sistemas de inventario
+  priority: medium
+  reason: Ayuda a gestionar repuestos localmente, evitando retrasos en reparaciones.
+- name: Procesamiento de pagos seguros
+  priority: low
+  reason: Facilita cobros rápidos y cumple con normativas locales como LFPDPPP.
+- name: Generación de reportes de servicio
+  priority: low
+  reason: Proporciona insights para mejorar operaciones y satisfacción del cliente.
+typical_integrations:
+- name: Sistema de punto de venta
+  examples:
+  - SICOM
+  - CONTPAQi
+  - ASPEL
+  priority: high
+- name: Software de gestión de talleres
+  examples:
+  - TallerX
+  - AutoManager
+  - Gesrep
+  priority: high
+- name: Plataforma de pagos en línea
+  examples:
+  - Mercado Pago
+  - Openpay
+  - Clip
+  priority: medium
+- name: Sistema de inventario
+  examples:
+  - Inventarios Pro
+  - StockMaster
+  - AlmacenApp
+  priority: medium
+- name: Herramientas de CRM
+  examples:
+  - Zoho CRM
+  - Salesforce
+  - CRM local personalizado
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una reparación típica?
+  answer_template: El costo varía según el servicio, pero ofrecemos diagnósticos gratuitos.
+    Los precios parten desde 300 MXN.
+- question: ¿Ofrecen garantía en sus reparaciones?
+  answer_template: Sí, proporcionamos garantía de 3 a 6 meses en la mayoría de las
+    reparaciones, dependiendo del servicio.
+- question: ¿Cuánto tiempo tarda una reparación?
+  answer_template: El tiempo promedio es de 1 a 3 días hábiles, pero priorizamos servicios
+    urgentes con citas el mismo día.
+- question: ¿Trabajan con repuestos originales?
+  answer_template: Utilizamos repuestos de calidad, originales o equivalentes, según
+    la disponibilidad y preferencia del cliente.
+- question: ¿Cómo programo una cita?
+  answer_template: Puede programar una cita llamando o a través de nuestro agente
+    de voz AI, disponible las 24/7.
+- question: ¿Aceptan pagos con tarjeta?
+  answer_template: Sí, aceptamos múltiples métodos de pago, incluyendo tarjetas y
+    transferencias, con integraciones seguras.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio durante una llamada.
+  script: Hola, el costo depende del diagnóstico, pero ofrecemos una evaluación inicial
+    sin cargo. ¿Le gustaría programar una cita para que un técnico revise el problema?
+    Esto le ayudará a obtener un presupuesto preciso y ahorrar tiempo.
+  goal: Convertir la consulta en una cita programada.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta por un servicio específico, como reparación
+    de aire acondicionado.
+  script: Entiendo que necesita reparar su aire acondicionado. Ofrecemos mantenimiento
+    y reparación rápida, con técnicos certificados. Podemos agendar una visita hoy
+    mismo para evaluar y darle un estimado. ¿Le funciona en la mañana o tarde?
+  goal: Cerrar una venta de servicio programado.
+- trigger: objection_cost
+  situation: Cuando el cliente objeta que el servicio es demasiado caro.
+  script: Comprendo su preocupación. Nuestro servicio incluye garantía y uso de repuestos
+    de calidad, lo que evita costos futuros. Además, con nuestro agente AI, optimizamos
+    el proceso para ofrecer precios competitivos. ¿Podría considerar el ahorro a largo
+    plazo?
+  goal: Superar la objeción y resaltar el valor.
+- trigger: follow_up
+  situation: Después de una consulta previa, para seguir con un cliente indeciso.
+  script: Hola, le llamo para recordarle nuestra oferta de diagnóstico gratuito. ¿Aún
+    está interesado en resolver ese problema de fontanería? Podemos agendar una cita
+    ahora mismo para ayudarle rápidamente.
+  goal: Reactivar leads y aumentar conversiones.
+competitors:
+- name: Reparaciones Express
+  positioning: Cadena nacional enfocada en reparaciones rápidas de electrodomésticos.
+  strengths:
+  - Amplia red de sucursales
+  - Publicidad masiva en TV
+  weaknesses:
+  - Tiempos de espera largos
+  - Servicio al cliente impersonal
+  our_differentiation: Ofrecemos atención personalizada con AI, disponibilidad 24/7
+    y integraciones que optimizan la eficiencia.
+- name: Taller Mexicano
+  positioning: Taller local especializado en reparación de automóviles con precios
+    bajos.
+  strengths:
+  - Precios competitivos
+  - Conocimiento local
+  weaknesses:
+  - Falta de digitalización
+  - Gestión manual de citas
+  our_differentiation: Automatizamos procesos clave como citas y seguimiento, mejorando
+    la experiencia y reduciendo errores.
+- name: Servicios Hogar Plus
+  positioning: Proveedor regional de servicios de fontanería y electricidad.
+  strengths:
+  - Buena reputación local
+  - Técnicos experimentados
+  weaknesses:
+  - Limitada escalabilidad
+  - Alta dependencia de llamadas telefónicas
+  our_differentiation: Escalamos con AI para manejar múltiples consultas simultáneamente,
+    incrementando la capacidad de negocio.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Reducción de llamadas perdidas y aumento en citas programadas
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 0.33
+  - scenario: Automatización de facturación y cobros, reduciendo horas administrativas
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 0.33
+  value_anchors:
+  - Ahorra hasta un 40% en costos operativos con automatización
+  - Incrementa la satisfacción del cliente con respuestas inmediatas
+  - Cumple con LFPDPPP de manera eficiente y segura
+market_context:
+  market_size: Estimado en 15 mil millones de MXN anuales en México
+  growth_rate: 7% anual, impulsado por la urbanización y digitalización
+  key_trends:
+  - Aumento en la demanda de servicios a domicilio post-pandemia
+  - Creciente adopción de soluciones tecnológicas en talleres
+  - Enfoque en sostenibilidad y reparación en lugar de reemplazo
+  seasonality:
+    high:
+    - Verano (para aire acondicionado)
+    - Fin de año (para electrodomésticos y autos)
+    low:
+    - Enero (por gastos festivos)
+    - Septiembre (temporada de lluvias afecta algunos servicios)
+typical_objections:
+- objection: No confío en la tecnología para manejar mis reparaciones.
+  response: Entiendo su preocupación. Nuestro agente AI está diseñado para complementar
+    a los técnicos, no reemplazarlos. Mejora la eficiencia y asegura un servicio más
+    rápido y confiable, con seguimiento humano cuando sea necesario.
+- objection: Es muy caro para mi negocio pequeño.
+  response: Nuestra solución es escalable y parte desde precios accesibles. El ROI
+    es rápido, ya que reduce costos operativos y aumenta ingresos al manejar más clientes
+    sin aumentar personal.
+- objection: Prefiero tratar con personas directamente.
+  response: Nosotros también valoramos el contacto humano. El agente AI libera a su
+    personal para enfocarse en tareas más complejas y personales, mejorando la atención
+    al cliente en general.
+meta:
+  id: repair_services
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

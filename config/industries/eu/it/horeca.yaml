@@ -1,0 +1,259 @@
+aliases:
+- horeca
+- ristorante
+- bar
+- caffè
+- hotel
+- pizzeria
+- pub
+- enoteca
+- agriturismo
+- catering
+- delivery cibo
+- fast food
+- trattoria
+- osteria
+- prenotazione tavolo
+- banchetto
+competitors:
+- name: Glovo
+  positioning: Piattaforma leader di consegne a domicilio
+  strengths:
+  - Ampia copertura geografica
+  - Base di utenti molto ampia
+  - App user-friendly
+  weaknesses:
+  - Commissioni elevate per i ristoranti
+  - Poco personalizzazione per il brand del ristorante
+  our_differentiation: Offriamo un'agente vocale integrata che gestisce direttamente
+    le chiamate del ristorante, rafforzando il rapporto diretto con il cliente e riducendo
+    i costi di commissione.
+- name: TheFork (Tripadvisor)
+  positioning: Piattaforma di prenotazione ristoranti leader
+  strengths:
+  - Elevata visibilità online
+  - Programmi fedeltà per clienti
+  - Sistema di recensioni integrato
+  weaknesses:
+  - Costo per prenotazione (PPC o commissione)
+  - I clienti sono della piattaforma, non del ristorante
+  our_differentiation: Automatizziamo le prenotazioni direttamente sulla linea telefonica
+    del locale, mantenendo il controllo del cliente e eliminando i costi per prenotazione.
+- name: Deliveroo
+  positioning: Servizio di delivery premium
+  strengths:
+  - Servizio rapido e affidabile
+  - Target di clientela con potere d'acquisto medio-alto
+  - Opzioni di consegna in orari notturni
+  weaknesses:
+  - Presenza principalmente nelle grandi città
+  - Commissioni molto alte
+  our_differentiation: Il nostro agente può gestire gli ordini di delivery in entrata
+    direttamente, permettendo di usare i propri rider o servizi più economici, massimizzando
+    il margine.
+- name: MyMenu (CRMNEXT)
+  positioning: Software di gestione per ristoranti (POS, prenotazioni)
+  strengths:
+  - Soluzione tutto-in-uno
+  - Integrazione contabilità
+  - Supporto locale
+  weaknesses:
+  - Costi di licenza mensili elevati
+  - Complesso da implementare per piccoli esercizi
+  our_differentiation: Forniamo un modulo di automazione vocale agile e modulare che
+    si integra con sistemi esistenti, senza costi di licenza software pesanti e con
+    setup rapido.
+industry_faq:
+- answer_template: Per quale data e ora Le interessa? Per quante persone?
+  question: Avete tavoli disponibili?
+- answer_template: Posso inviarle il menù via WhatsApp o email. È anche disponibile
+    sul nostro sito web.
+  question: Potete mandarmi il menù?
+- answer_template: Sì, siamo aperti tutti i giorni. Nel weekend chiudiamo alle 02:00.
+  question: Siete aperti nel fine settimana?
+- answer_template: Certamente, abbiamo un menù bimbi e seggioloni a disposizione.
+  question: Avete un menù per bambini?
+- answer_template: Sì, organizziamo banchetti da 10 a 150 persone. Per quale data
+    sta organizzando?
+  question: Organizzate banchetti o eventi privati?
+- answer_template: Sì, abbiamo un parcheggio privato gratuito per 15 auto.
+  question: C'è un parcheggio?
+- answer_template: Accettiamo sia contanti che tutte le principali carte di credito/debito.
+  question: Quali metodi di pagamento accettate?
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: ~80 miliardi di EUR (pre-pandemia)
+  growth_rate: 4-6% YoY
+  key_trends:
+  - Forte crescita del food delivery e del take-away
+  - Domanda crescente per esperienze gastronomiche autentiche e locali (km 0)
+  - Digitalizzazione accelerata dei processi (prenotazioni online, pagamenti digitali)
+  - Importanza delle recensioni online (TripAdvisor, Google)
+  seasonality:
+    high:
+    - Periodo estivo (giugno-agosto) nelle zone turistiche
+    - Periodo natalizio (dicembre)
+    - Fine settimana
+    low:
+    - Gennaio e febbraio
+    - Lunedì e martedì serali
+meta:
+  avg_validation_score: 0.0
+  country: it
+  created_at: '2024-05-14'
+  currency: EUR
+  id: horeca
+  language: it
+  languages: []
+  last_updated: '2024-05-14'
+  phone_codes:
+  - '+39'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Rome
+  version: '1.0'
+pain_points:
+- description: Elevato volume di chiamate per prenotazioni durante l'ora di pranzo
+    e cena
+  severity: high
+  solution_hint: Prenotazione automatica tavoli 24/7 tramite agente vocale
+- description: No-show alle prenotazioni (fino al 25%)
+  severity: high
+  solution_hint: Invio automatico di SMS/WhatsApp di conferma e promemoria
+- description: Personale di sala distratto dal telefono, servizio al tavolo rallentato
+  severity: medium
+  solution_hint: L'agente vocale risponde al telefono, il personale si concentra sui
+    clienti in loco
+- description: Difficoltà a gestire e promuovere menu del giorno, promozioni e eventi
+  severity: medium
+  solution_hint: Campagne outbound automatizzate per clienti fedeli
+- description: Perdita di ordini di asporto e delivery durante i picchi di chiamate
+  severity: medium
+  solution_hint: Agente vocale che raccoglie gli ordini in autonomia, 24 ore su 24
+- description: Gestione complessa delle prenotazioni per grandi gruppi o eventi
+  severity: low
+  solution_hint: Questionario automatizzato per raccogliere tutti i dettagli dell'evento
+    (numero persone, menu, allergie)
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 99
+  roi_examples:
+  - monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+    scenario: Ristorante medio che automatizza il 60% delle chiamate in entrata per
+      prenotazioni e FAQ, riducendo no-show del 15%
+  value_anchors:
+  - Ripagato in meno di 30 giorni
+  - Costo inferiore a uno stipendio part-time
+  - Gestisci il picco delle chiamate senza assumere personale aggiuntivo
+recommended_functions:
+- name: prenotazione_tavolo
+  priority: high
+  reason: Funzione fondamentale per gestire il flusso di clienti e ottimizzare i turni
+- name: promemoria_conferma
+  priority: high
+  reason: Riduce drasticamente i no-show, aumentando il fatturato certo
+- name: ordine_asporto_delivery
+  priority: high
+  reason: Cattura ogni ordine, anche fuori orario di apertura, incrementando le vendite
+- name: gestione_faq
+  priority: medium
+  reason: Libera il personale dalle domande ricorrenti (orari, parcheggio, menu)
+- name: campagne_outbound
+  priority: low
+  reason: Per promuovere eventi speciali, menu stagionali e fidelizzare la clientela
+- name: questionario_eventi
+  priority: medium
+  reason: Standardizza la raccolta informazioni per banchetti e grandi gruppi, evitando
+    errori
+sales_scripts:
+- goal: Superare l'obiezione sul costo, mostrando il ROI immediato
+  script: Buongiorno, sono [Nome]. Chiamo da [Azienda]. Capisco che il budget sia
+    una considerazione importante. Molti nostri clienti nel settore Horeca iniziano
+    con un piano da 99 euro al mese. Con questo, automatizzano le prenotazioni e riducono
+    i no-show. In genere si ripaga in meno di un mese grazie al recupero di tavoli
+    persi. Posso mostrarle una simulazione con i suoi numeri?
+  situation: Quando il prospect solleva un'obiezione sul prezzo
+  trigger: price_objection
+- goal: Coinvolgere il decision maker evidenziando un problema specifico e doloroso
+  script: Buongiorno, parlo con il titolare o responsabile? Mi chiamo [Nome]. Notiamo
+    che molti ristoranti come il suo perdono fino al 25% di prenotazioni per no-show.
+    Questo significa tavoli vuoti e perdita di fatturato. Noi aiutiamo a ridurre questo
+    tasso sotto il 10% con conferme e promemoria automatici. Le interessa recuperare
+    parte di quel fatturato?
+  situation: Chiamata a freddo o primo contatto con un potenziale cliente
+  trigger: cold_call_opening
+- goal: Chiudere la demo o la chiamata informativa con una proposta chiara
+  script: Perfetto. Riassumendo, la nostra soluzione gestirà automaticamente le sue
+    prenotazioni 24/7, ridurrà i no-show e catturerà tutti gli ordini telefonici.
+    Il costo parte da 99€/mese. Per iniziare, le serve solo la sua linea telefonica
+    e un paio d'ore per il setup. Possiamo partire con una prova di 14 giorni. Le
+    mando il contratto via email?
+  situation: Dopo aver presentato la soluzione e risposto alle domande principali
+  trigger: post_demo_summary
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Riduzione no-show sotto il 10%
+  - Automazione del 70% delle prenotazioni telefoniche
+  - Tempo medio di prenotazione < 1 minuto
+  - Aumento degli ordini di asporto/delivery del 20%
+typical_integrations:
+- examples:
+  - Sislab
+  - Regusto
+  - Softrestaurant
+  name: POS / Sistema di Gestione
+  priority: high
+  reason: Sincronizzazione in tempo reale di disponibilità tavoli e inventario
+- examples:
+  - WhatsApp Business API
+  - Telegram Bot
+  name: Messaggistica
+  priority: medium
+  reason: Invio di conferme, promemoria e menu direttamente sul canale preferito dal
+    cliente
+- examples:
+  - Google My Business
+  - TripAdvisor
+  name: Piattaforme Prenotazioni Online
+  priority: medium
+  reason: Aggiornamento automatico della disponibilità per evitare overbooking
+- examples:
+  - Just Eat
+  - Deliveroo
+  - Glovo
+  name: Piattaforme di Delivery
+  priority: low
+  reason: Ingestione ordini da piattaforme terze (se API disponibili)
+typical_objections:
+- objection: Non abbiamo abbastanza chiamate per giustificare un agente automatico
+  response: Anche poche chiamate perse o mal gestite possono costarle centinaia di
+    euro al mese in tavoli vuoti o clienti insoddisfatti. Il nostro agente garantisce
+    che ogni chiamata sia un'opportunità, non un costo.
+- objection: I nostri clienti preferiscono parlare con una persona
+  response: Il nostro agente suona naturale e gestisce le interazioni di routine (prenotazioni,
+    orari). Il suo personale sarà libero per dedicare più tempo ai clienti in sala,
+    migliorando l'esperienza proprio come Lei desidera.
+- objection: La tecnologia è troppo complessa per noi
+  response: La configuriamo noi per Lei. Non deve installare software o cambiare le
+    sue abitudini. Funziona sul telefono che già usa. Le faremo una formazione di
+    30 minuti a tutto il personale.
+typical_services:
+- Prenotazione tavoli
+- Ordinazione cibo da asporto
+- Servizio di consegna a domicilio (delivery)
+- Organizzazione di banchetti e eventi privati
+- Servizio di catering
+- Prenotazione camere (per hotel/agriturismi)
+- Servizio in camera (room service)
+- Degustazioni guidate (per enoteche)
+- Organizzazione di cene a tema e cooking class
+- Gestione di happy hour e aperitivi
+_extends: _base/horeca

@@ -1,0 +1,223 @@
+pain_points:
+- description: Az eseményszervezők nehezen tudják kezelni a gyorsan változó résztvevői igényeket és a regisztrációs folyamatokat.
+  severity: high
+  solution_hint: AI hangügynök automatikusan kezeli a regisztrációkat és frissíti az adatokat valós időben.
+- description: A kommunikáció a résztvevők és a szolgáltatók között gyakran késik vagy hiányos, ami zavart okoz az esemény alatt.
+  severity: high
+  solution_hint: Hangalapú értesítések és emlékeztetők küldése az ügyfeleknek és beszállítóknak.
+- description: GDPR megfelelés nehézségei a személyes adatok kezelése során.
+  severity: medium
+  solution_hint: AI segít az adatvédelmi szabályok betartásában és az adatkezelési folyamatok dokumentálásában.
+- description: A helyi szolgáltatók és beszállítók koordinálása időigényes és hibalehetőségekkel teli.
+  severity: medium
+  solution_hint: AI hangügynök automatizált beszállító koordinációs funkciókat kínál.
+- description: Az események költségvetésének pontos követése és optimalizálása nehéz a sok változó miatt.
+  severity: medium
+  solution_hint: AI segíthet a költségvetés valós idejű monitorozásában és javaslatok adásában.
+- description: A jegyértékesítés és fizetések kezelése bonyolult, különösen több fizetési mód esetén.
+  severity: high
+  solution_hint: AI hangalapú támogatás a jegyvásárlási folyamatokban és fizetési megerősítésekben.
+- description: Az események utáni visszajelzések gyűjtése és elemzése időigényes.
+  severity: medium
+  solution_hint: Automatikus hangalapú kérdőívek és visszajelzés gyűjtése.
+typical_services:
+- Rendezvényszervezés (teljes körű szervezés)
+- Helyszínbérlés és dekoráció
+- Technikai felszerelés biztosítása (hang, fény, vetítés)
+- Catering szolgáltatások
+- Jegyértékesítés és regisztráció kezelése
+- Biztonsági szolgáltatások
+- Marketing és promóciós kampányok
+- Résztvevői kommunikáció és ügyfélszolgálat
+- Utókövetés és visszajelzés gyűjtése
+- Szponzori kapcsolatok kezelése
+recommended_functions:
+- name: Regisztráció kezelése
+  priority: high
+  reason: Gyors és pontos résztvevői adatfeldolgozás létfontosságú.
+- name: Esemény emlékeztetők küldése
+  priority: high
+  reason: Csökkenti a hiányzók arányát és növeli az elégedettséget.
+- name: GDPR megfelelés támogatás
+  priority: high
+  reason: Jogszabályi megfelelés kötelező, elkerülhetetlen.
+- name: Jegyértékesítés támogatása
+  priority: high
+  reason: Bevételek növelése és egyszerűsített fizetési folyamat.
+- name: Visszajelzés gyűjtése
+  priority: medium
+  reason: Minőségfejlesztéshez elengedhetetlen.
+- name: Beszállító koordináció
+  priority: medium
+  reason: Biztosítja a zökkenőmentes lebonyolítást.
+- name: Költségvetés monitorozás
+  priority: medium
+  reason: Segít a kiadások optimalizálásában.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - Bitrix24
+  priority: high
+- name: Jegyértékesítő platformok
+  examples:
+  - Jegymester
+  - Eventim
+  - TicketExpress
+  priority: high
+- name: Pénzügyi és számlázó rendszerek
+  examples:
+  - Számlázz.hu
+  - Billingo
+  - NAV kompatibilis könyvelő rendszerek
+  priority: medium
+- name: Marketing automatizáció
+  examples:
+  - Mailchimp
+  - Hootsuite
+  - eTarget
+  priority: medium
+- name: Kommunikációs platformok
+  examples:
+  - Slack
+  - Microsoft Teams
+  - Zoom
+  priority: low
+industry_faq:
+- question: Hogyan tudok GDPR-kompatibilis módon adatot gyűjteni az esemény résztvevőitől?
+  answer_template: Adatgyűjtéskor mindig tájékoztassa a résztvevőket az adatkezelés céljáról, kérje hozzájárulásukat, és biztosítsa az adatok biztonságos tárolását a GDPR előírásainak megfelelően.
+- question: Milyen fizetési módokat fogadnak el az eseményeken?
+  answer_template: Általában bankkártyás fizetés, banki átutalás, és készpénzes fizetés is elérhető; a pontos lehetőségeket az esemény szervezőjétől kérdezze meg.
+- question: Mikor kell elkezdeni az esemény szervezését?
+  answer_template: Nagyobb események esetén legalább 3-6 hónappal korábban, kisebb rendezvényeknél 1-2 hónappal előtte ajánlott megkezdeni a szervezést.
+- question: Hogyan tudom módosítani vagy lemondani a regisztrációmat?
+  answer_template: A regisztráció módosítására vagy lemondására vonatkozó feltételeket az esemény szervezője határozza meg, kérjük, vegye fel velük a kapcsolatot minél előbb.
+- question: Milyen biztonsági intézkedések vannak érvényben az eseményeken?
+  answer_template: Általában beléptető rendszer, biztonsági személyzet, és vészhelyzeti protokollok állnak rendelkezésre a résztvevők védelme érdekében.
+- question: Hogyan kaphatok visszajelzést az eseményről?
+  answer_template: A szervezők az esemény után gyakran küldenek kérdőívet vagy más formában kérik a résztvevők véleményét, ezt érdemes kitölteni a jövőbeni fejlesztések érdekében.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél érdeklődik az árakról
+  script: Az áraink az esemény típusától és méretétől függően változnak, de biztosítjuk, hogy versenyképes és átlátható díjakat kínálunk, amelyek a legjobb értéket nyújtják Önnek.
+  goal: Az árkérdésre pozitív és bizalomgerjesztő választ adni.
+- trigger: gdpr_concern
+  situation: Ha az ügyfél aggódik az adatvédelem miatt
+  script: Minden szolgáltatásunk a GDPR előírásainak megfelelően működik, így biztos lehet benne, hogy az adatai biztonságban vannak és csak a szükséges célokra használjuk fel őket.
+  goal: Az adatvédelmi aggodalmak csillapítása.
+- trigger: event_complexity
+  situation: Ha az ügyfél aggódik az esemény szervezés komplexitása miatt
+  script: Az AI hangügynökünk segít leegyszerűsíteni és automatizálni a szervezési folyamatokat, így Ön nyugodtabban fókuszálhat a sikeres esemény lebonyolítására.
+  goal: A komplexitás miatti félelmek oldása.
+- trigger: service_range
+  situation: Ha az ügyfél szeretné tudni, milyen szolgáltatásokat kínálunk
+  script: Széles körű szolgáltatásaink lefedik az eseményszervezés minden aspektusát a regisztrációtól a visszajelzés gyűjtéséig, hogy teljes körű támogatást nyújtsunk.
+  goal: Szolgáltatási paletta bemutatása és igénykeltés.
+- trigger: local_advantage
+  situation: Ha az ügyfél összehasonlít minket helyi versenytársakkal
+  script: Mivel helyi piacon vagyunk jelen, ismerjük a magyarországi szabályozásokat és üzleti szokásokat, így testreszabott megoldásokat kínálunk, amelyek jobban illeszkednek az Ön igényeihez.
+  goal: Helyi jelenlét és előnyök hangsúlyozása.
+competitors:
+- name: Eventrend Kft.
+  positioning: Magyarországi rendezvényszervező cég, erős szakmai háttérrel
+  strengths:
+  - Hosszú távú ügyfélkapcsolatok
+  - Széleskörű szolgáltatások
+  - Tapasztalt csapat
+  weaknesses:
+  - Magasabb árak
+  - Kevésbé innovatív technológiai megoldások
+  our_differentiation: Modern AI alapú automatizációval és költséghatékony megoldásokkal szolgálunk.
+- name: Jegy.hu
+  positioning: Népszerű jegyértékesítő platform Magyarországon
+  strengths:
+  - Nagy ügyfélkör
+  - Stabil technológia
+  - Könnyű jegyvásárlás
+  weaknesses:
+  - Korlátozott eseményszervezési szolgáltatások
+  - Kevés személyre szabott megoldás
+  our_differentiation: Integrált eseményszervezési szolgáltatásokat nyújtunk jegyértékesítéssel együtt.
+- name: Eventic
+  positioning: Digitális eseményszervezési megoldások
+  strengths:
+  - Innovatív digitális eszközök
+  - Jó felhasználói élmény
+  weaknesses:
+  - Kevés helyi ügyfélkapcsolat
+  - Korlátozott személyes támogatás
+  our_differentiation: Helyi támogatás és testreszabott AI hangagent funkciók.
+- name: Rendezvény.hu
+  positioning: Online rendezvényszervező portál és szolgáltató
+  strengths:
+  - Széles szolgáltatási kör
+  - Jó piaci ismertség
+  weaknesses:
+  - Kevés automatizáció
+  - Lassabb ügyfélszolgálat
+  our_differentiation: Gyors, automatizált AI alapú ügyfélszolgálat és kommunikáció.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Kisvállalati konferencia automatizált regisztrációval
+    monthly_cost: 150000
+    monthly_savings: 450000
+    payback_months: 1
+  - scenario: Közepes méretű céges rendezvény kommunikációs automatizálással
+    monthly_cost: 400000
+    monthly_savings: 1000000
+    payback_months: 1
+  - scenario: Többnapos fesztivál teljes szervezési támogatással
+    monthly_cost: 1000000
+    monthly_savings: 2500000
+    payback_months: 2
+  value_anchors:
+  - Az automatizáció csökkenti a munkaerő-költségeket és hibákat.
+  - Gyorsabb regisztráció és jobb ügyfélélmény növeli a résztvevők számát.
+  - GDPR megfelelés elkerüli a büntetéseket és jogi kockázatokat.
+  - Valós idejű adatok segítik a jobb döntéshozatalt.
+market_context:
+  market_size: 25000000000
+  growth_rate: 5
+  key_trends:
+  - Növekvő igény digitális és hibrid eseményekre
+  - Automatizált regisztráció és jegyértékesítés terjedése
+  - GDPR és adatvédelem kiemelt fontossága
+  - Fenntarthatóság és környezetbarát rendezvényszervezés erősödése
+  seasonality:
+    high:
+    - Május-június (céges konferenciák, szabadtéri fesztiválok)
+    - Szeptember-október (őszi szezon, szakmai rendezvények)
+    low:
+    - Január-február (téli időszak, kevesebb esemény)
+    - December (ünnepi időszak, kisebb rendezvények)
+typical_objections:
+- objection: Az automatizáció túl bonyolult és nehéz bevezetni.
+  response: Az AI hangügynökünk felhasználóbarát és könnyen integrálható meglévő rendszerekkel, így gyorsan megtérül a befektetés.
+- objection: Nem vagyok biztos benne, hogy megéri az árát.
+  response: A költségek gyorsan megtérülnek a munkaerő-megtakarítások és a hatékonyabb szervezés révén.
+- objection: Aggódom az adatvédelem miatt.
+  response: Minden megoldásunk megfelel a GDPR előírásainak, és szakértői támogatást nyújtunk az adatvédelemben.
+- objection: Már van saját rendezvényszervező csapatunk.
+  response: Az AI hangügynökünk kiegészíti és támogatja a csapat munkáját, csökkentve a terheket és javítva a hatékonyságot.
+- objection: Nincs időnk a technológiai újdonságok megtanulására.
+  response: Teljes körű oktatást és folyamatos támogatást biztosítunk, hogy zökkenőmentesen használhassa a rendszert.
+meta:
+  id: events
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- events
+- event planning
+- conference
+- catering
+_extends: _base/events

@@ -1,0 +1,262 @@
+aliases:
+- educação
+- ensino
+- cursos
+- escola online
+- edtech
+- treinamento
+- escola
+- universidade
+- faculdade
+- tutor
+- webinar
+- workshop
+- capacitação
+- educação complementar
+competitors:
+- name: Descomplica
+  positioning: Plataforma líder em ensino online para ensino médio e preparatórios
+  strengths:
+  - Conteúdo atualizado e focado em vestibulares
+  - Plataforma intuitiva e com bom engajamento
+  - Ampla base de usuários jovens
+  weaknesses:
+  - Pouca oferta de cursos corporativos
+  - Atendimento automatizado limitado
+  our_differentiation: Atendimento humano e automatizado integrado, foco em qualificação
+    e retenção
+- name: Stoodi
+  positioning: Plataforma de reforço escolar e preparatórios online
+  strengths:
+  - Preço competitivo
+  - Conteúdo focado em provas nacionais
+  - Material didático diversificado
+  weaknesses:
+  - Pouca personalização do atendimento
+  - Menor variedade de cursos
+  our_differentiation: Automação de vendas e suporte com AI, integração com CRM local
+- name: Kuadro
+  positioning: Plataforma de cursos técnicos e profissionalizantes
+  strengths:
+  - Foco em cursos técnicos e profissionalizantes
+  - Parcerias com empresas para estágio
+  weaknesses:
+  - Pouca presença no ensino superior
+  - Interface menos moderna
+  our_differentiation: Suporte proativo via voz, qualificação de leads para diversos
+    segmentos
+industry_faq:
+- question: Quanto custa a matrícula e os cursos?
+  answer_template: O preço varia conforme o curso. Nossos cursos começam a partir
+    de R$ 150, e oferecemos opções de parcelamento sem juros. Posso enviar o catálogo
+    com valores detalhados?
+- question: Qual o formato das aulas?
+  answer_template: Oferecemos aulas ao vivo via webinar, gravadas para assistir quando
+    quiser, e aulas presenciais em algumas unidades. Qual formato você prefere?
+- question: Recebo certificado ao concluir o curso?
+  answer_template: Sim, entregamos certificado reconhecido pelo MEC ou pela instituição
+    parceira, dependendo do curso.
+- question: Posso fazer uma aula experimental?
+  answer_template: Claro! A primeira aula é gratuita para que você conheça o conteúdo
+    e metodologia. Gostaria de agendar?
+- question: Quais garantias de aprendizado vocês oferecem?
+  answer_template: Se não estiver satisfeito com a qualidade, pode solicitar reembolso
+    em até 7 dias após a matrícula.
+- question: Vocês cumprem a LGPD para proteger meus dados?
+  answer_template: Sim, seguimos rigorosamente a LGPD para garantir a segurança e
+    privacidade dos seus dados pessoais.
+pain_points:
+- description: Alta demanda de inscrições e dificuldade dos atendentes para responder
+    rapidamente
+  severity: high
+  solution_hint: Automação na qualificação e agendamento de aulas experimentais por
+    voz
+- description: Baixa conversão de interessados que entram em contato para matrícula
+    efetiva
+  severity: high
+  solution_hint: Contato rápido via chamadas automáticas para apresentar planos e
+    tirar dúvidas
+- description: Desistências durante o curso por falta de engajamento e acompanhamento
+  severity: medium
+  solution_hint: Lembretes automáticos e mensagens motivacionais para retenção
+- description: Muitas dúvidas frequentes sobre preços, formatos e certificações
+  severity: medium
+  solution_hint: FAQ automatizado via assistente de voz para atendimento 24/7
+- description: Dificuldade em coletar avaliações e feedbacks dos alunos
+  severity: low
+  solution_hint: Pesquisas automáticas pós aula para melhorar a qualidade
+- description: Complexidade no cumprimento das normas da LGPD e comunicação clara
+    sobre privacidade
+  severity: medium
+  solution_hint: Mensagens automáticas explicando o uso dos dados e consentimentos
+- description: Desafios em integrar sistemas de pagamento locais com gestão acadêmica
+  severity: medium
+  solution_hint: Integração com gateways brasileiros para status e notificações de
+    pagamento
+typical_services:
+- Cursos online ao vivo
+- Cursos gravados on demand
+- Aulas presenciais
+- Preparatórios para ENEM e vestibulares
+- Cursos profissionalizantes técnicos
+- Capacitação corporativa
+- Idiomas
+- Workshops e oficinas
+- Educação infantil e fundamental complementar
+- Consultoria educacional e coaching
+recommended_functions:
+- name: qualificação
+  priority: high
+  reason: Identificar perfil e necessidades do aluno para direcionar oferta adequada
+- name: agendamento de aula experimental
+  priority: high
+  reason: Facilitar conversão por meio de marcação rápida e automática
+- name: faq
+  priority: medium
+  reason: Responder dúvidas frequentes sem sobrecarregar equipe
+- name: lembrete de aula e pagamento
+  priority: medium
+  reason: Reduzir faltas e inadimplência com avisos automáticos
+- name: pesquisa de satisfação
+  priority: low
+  reason: Coletar feedbacks para melhoria contínua
+- name: consentimento LGPD
+  priority: medium
+  reason: Garantir conformidade legal e transparência
+typical_integrations:
+- name: LMS
+  examples:
+  - Moodle
+  - Canvas
+  - Blackboard
+  - Google Classroom
+  priority: high
+- name: CRM
+  examples:
+  - RD Station
+  - Pipedrive
+  - Moskit
+  priority: high
+- name: Sistemas de pagamento
+  examples:
+  - PagSeguro
+  - MercadoPago
+  - Cielo
+  priority: medium
+- name: Mensageiros
+  examples:
+  - WhatsApp
+  - Telegram
+  - Facebook Messenger
+  priority: high
+- name: Ferramentas de webinar
+  examples:
+  - Zoom
+  - Google Meet
+  - Microsoft Teams
+  priority: medium
+sales_scripts:
+- trigger: preco
+  situation: Quando o cliente pergunta sobre valores dos cursos
+  script: Olá! Nossos cursos têm preços a partir de R$ 150, com opções de parcelamento
+    sem juros para facilitar o pagamento. Gostaria que eu envie a lista completa de
+    preços e planos?
+  goal: Informar preços e incentivar envio de informações
+- trigger: falta_tempo
+  situation: Cliente reclama de falta de tempo para estudar
+  script: Entendo, muitos alunos têm rotina corrida. Por isso oferecemos aulas gravadas
+    que você pode assistir quando quiser, e aulas ao vivo em horários flexíveis. Posso
+    ajudar a montar um plano adequado?
+  goal: Contornar objeção e oferecer flexibilidade
+- trigger: duvida_qualidade
+  situation: Cliente inseguro sobre qualidade e resultados
+  script: Para você experimentar sem riscos, oferecemos a primeira aula gratuita.
+    Assim você conhece nosso método e decide se quer continuar. Quer agendar sua aula
+    experimental agora?
+  goal: Gerar experimentação e confiança
+- trigger: preocupacao_privacidade
+  situation: Cliente questiona sobre proteção de dados pessoais
+  script: Nosso compromisso é total com a LGPD. Seus dados são protegidos e usados
+    somente para melhorar seu atendimento. Posso explicar como funciona?
+  goal: Tranquilizar e assegurar conformidade
+- trigger: cancelamento
+  situation: Cliente demonstra interesse em desistir ou cancelar
+  script: Sinto muito que esteja pensando em cancelar. Posso entender o motivo para
+    ajudar? Temos opções de suporte e planos que podem facilitar sua continuidade.
+  goal: Reverter cancelamento e manter aluno
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 150
+  - 1200
+  entry_point: 150
+  roi_examples:
+  - scenario: Redução do custo de atendimento manual e aumento da conversão em matrículas
+    monthly_cost: 800
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Diminuição da inadimplência por lembretes automáticos
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Economize tempo do seu time com atendimento automatizado
+  - Aumente sua taxa de conversão com agendamento inteligente
+  - Melhore a satisfação e retenção dos alunos com comunicação eficaz
+market_context:
+  market_size: 20 bilhões BRL (educação privada digital e presencial)
+  growth_rate: 12.5
+  key_trends:
+  - Expansão do ensino remoto e híbrido
+  - Aumento da demanda por qualificação profissional
+  - Crescimento das plataformas EdTech locais
+  - Maior atenção à LGPD e privacidade de dados
+  - Uso crescente de inteligência artificial e automação
+  seasonality:
+    high:
+    - Janeiro (matrículas para 1º semestre)
+    - Julho (matrículas para 2º semestre)
+    - Novembro (preparatórios para vestibulares)
+    low:
+    - Março
+    - Agosto
+typical_objections:
+- objection: Muito caro
+  response: Temos opções de parcelamento sem juros e planos acessíveis para diferentes
+    necessidades.
+- objection: Não tenho tempo para estudar
+  response: Oferecemos aulas gravadas que você pode assistir no seu ritmo, mesmo com
+    agenda apertada.
+- objection: Tenho dúvidas se vou conseguir acompanhar o curso
+  response: A primeira aula é gratuita para você experimentar e tirar suas dúvidas
+    sem compromisso.
+- objection: Prefiro estudar presencialmente
+  response: Também temos unidades presenciais e formatos híbridos para sua comodidade.
+- objection: Não quero fornecer muitos dados pessoais
+  response: Seguimos a LGPD rigorosamente para proteger sua privacidade e só usamos
+    seus dados com sua autorização.
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Conversão para aula experimental > 45%
+  - Conversão em matrícula > 20%
+  - Tempo médio de resposta < 2 minutos
+  - Taxa de retenção > 75%
+meta:
+  avg_validation_score: 0.0
+  country: br
+  created_at: '2024-06-20'
+  currency: BRL
+  id: education
+  language: pt
+  languages:
+  - pt
+  last_updated: '2024-06-20'
+  phone_codes:
+  - '+55'
+  region: latam
+  tests_run: 0
+  timezone: America/Sao_Paulo
+  version: '1.0'
+_extends: _base/education

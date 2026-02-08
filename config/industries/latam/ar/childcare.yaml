@@ -1,0 +1,245 @@
+pain_points:
+- description: Alta rotación de personal calificado, dificultando la estabilidad del
+    equipo y la calidad del cuidado.
+  severity: high
+  solution_hint: Agente de voz puede realizar screening inicial de candidatos, verificar
+    disponibilidad y programar entrevistas.
+- description: Dificultad para gestionar las comunicaciones con padres (ausencias,
+    pagos, novedades) fuera del horario laboral.
+  severity: high
+  solution_hint: Agente automatizado responde consultas 24/7, confirma asistencia
+    y envía recordatorios de pago.
+- description: Administración manual de la agenda de vacunación y controles médicos
+    de los niños, propensa a errores.
+  severity: medium
+  solution_hint: Sistema automatizado envía recordatorios personalizados a los padres
+    vía llamada o mensaje.
+- description: Pérdida de inscripciones potenciales por no responder llamadas fuera
+    del horario de atención.
+  severity: medium
+  solution_hint: Agente captura datos de interés, agenda visitas y deriva a personal
+    en horario laboral.
+- description: Ineficiencia en la gestión de cobranza de cuotas mensuales, generando
+    morosidad.
+  severity: high
+  solution_hint: Agente realiza recordatorios amables de vencimiento y confirma recepción
+    de pagos.
+- description: Complejidad en la organización de eventos (fiestas, reuniones) y confirmación
+    de asistencia de las familias.
+  severity: low
+  solution_hint: Agente realiza invitaciones y confirma asistencia de manera masiva
+    y organizada.
+typical_services:
+- Guardería / Jardín maternal
+- Jardín de infantes (preescolar)
+- Atención por hora o día suelto
+- Servicio de comedor y merienda
+- Talleres extracurriculares (música, inglés, arte)
+- Colonia de vacaciones (verano/invierno)
+- Transporte escolar
+- Asistencia psicológica o psicopedagógica
+- Estimulación temprana
+- Noche de padres (servicio nocturno esporádico)
+recommended_functions:
+- name: Recepción y derivación de consultas iniciales
+  priority: high
+  reason: Capturar leads fuera de horario es crítico para no perder inscripciones.
+- name: Confirmación de asistencia diaria
+  priority: high
+  reason: Fundamental para la logística de salas, comida y personal.
+- name: Recordatorio de pagos y cobranza amable
+  priority: high
+  reason: Mejora directamente el flujo de caja del negocio.
+- name: Recordatorios médicos y de vacunación
+  priority: medium
+  reason: Agrega valor para los padres y mejora el servicio diferenciado.
+- name: Encuestas de satisfacción automatizadas
+  priority: low
+  reason: Permite recabar feedback constante con bajo esfuerzo.
+- name: Agendamiento de entrevistas para admisión
+  priority: medium
+  reason: Optimiza el tiempo de la directora o administradora.
+typical_integrations:
+- name: Sistema de Gestión de Guarderías/Jardines
+  examples:
+  - Beliveo
+  - KidsTime
+  - software personalizado
+  priority: high
+- name: Plataforma de Pagos Online
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - Modo
+  priority: high
+- name: Software de Contabilidad
+  examples:
+  - Alegra
+  - Gestión Simple
+  - Tango
+  priority: medium
+- name: Calendario/Agenda Digital
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  priority: low
+- name: Sistema de Comunicación con Padres
+  examples:
+  - ClassDojo
+  - plataformas personalizadas
+  priority: medium
+industry_faq:
+- question: ¿Qué horarios de atención tienen?
+  answer_template: Nuestro horario de atención administrativa es de 8 a 18hs. Sin
+    embargo, nuestro agente virtual está disponible las 24 horas para tomar su consulta
+    y gestionar urgencias. ¿Le gustaría que le envie los horarios de ingreso y salida
+    por sala?
+- question: ¿Cuál es la cuota mensual y qué incluye?
+  answer_template: La cuota varía según la sala y la jornada (simple o completa).
+    Incluye estimulación pedagógica, alimentación (desayuno/merienda y almuerzo) y
+    materiales. Para darle un precio exacto, ¿podría indicarme la edad del niño y
+    la jornada de interés?
+- question: ¿Tienen vacante para [mes]?
+  answer_template: Para consultar la disponibilidad exacta necesitaríamos agendar
+    una entrevista. Nuestro agente puede coordinar un turno con la directora. ¿Le
+    viene bien algún día en particular de la semana?
+- question: ¿Qué protocolos de seguridad e higiene implementan?
+  answer_template: Cumplimos con todos los protocolos establecidos por el Ministerio
+    de Educación. Tenemos circuito cerrado, personal capacitado en RCP y un estricto
+    régimen de limpieza. Puedo enviarle el protocolo completo por correo electrónico.
+- question: ¿Cómo manejan la adaptación de los niños?
+  answer_template: Seguimos un período de adaptación gradual y personalizado, acompañado
+    por nuestra psicopedagoga. El proceso se coordina directamente con los padres
+    para minimizar la ansiedad.
+- question: ¿Realizan actividades extracurriculares?
+  answer_template: Sí, ofrecemos talleres de música, inglés y expresión corporal incluidos
+    en la cuota. En temporada, organizamos colonia de vacaciones con actividades especiales.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un padre consulta por el precio de la cuota mensual.
+  script: Entiendo que la inversión en la educación de su hijo es una decisión importante.
+    Nuestra cuota es una inversión integral que incluye alimentación balanceada, estimulación
+    profesional con materiales didácticos y un entorno seguro. Para calcularla con
+    exactitud, ¿me permite hacerle un par de preguntas sobre la jornada y edad del
+    niño?
+  goal: Desviar la conversación del mero precio al valor recibido y calificar al lead.
+- trigger: vacancy_inquiry
+  situation: Consulta por disponibilidad de vacantes.
+  script: Excelente que esté considerándonos. La disponibilidad de vacantes cambia
+    rápidamente. Para asegurarle un lugar y darle toda la información detallada, lo
+    mejor es una entrevista personal con la directora. Nuestro agente puede coordinar
+    un turno ahora mismo para los próximos días. ¿Le parece?
+  goal: Convertir la consulta en una entrevista concreta y demostrar alta demanda.
+- trigger: follow_up_after_info
+  situation: Luego de enviar información digital (protocolo, aranceles) y no hay respuesta.
+  script: Hola [Nombre], soy [Nombre del Agente] del [Nombre de la Guardería]. Llamo
+    para ver si recibió la información que le enviamos y si tiene alguna duda. La
+    entrevista inicial es sin cargo y sin compromiso, y es la mejor manera de conocer
+    nuestro espacio. ¿Le interesa reservar un turno para esta semana?
+  goal: Re-enganchar al lead frío y forzar una decisión de próximo paso.
+- trigger: objection_high_cost
+  situation: El cliente manifiesta que el precio es elevado.
+  script: 'Comprendo perfectamente. Le aseguro que nuestra cuota refleja la calidad
+    y seguridad que ofrecemos: ratio bajo de niños por maestra, alimentos de primera
+    calidad y proyectos educativos personalizados. Muchos padres encuentran que, al
+    comparar con otros lugares que cobran ''extra'' por todo, nuestro precio es finalmente
+    más conveniente y transparente. ¿Qué aspecto de la cuota le preocupa más?'
+  goal: Re-enmarcar el precio como valor y explorar la objeción real.
+competitors:
+- name: Konex Educación (Red de jardines)
+  positioning: Cadena grande con múltiples sedes en CABA y GBA.
+  strengths:
+  - Reconocimiento de marca
+  - infraestructura estandarizada
+  - oferta de talleres variados
+  weaknesses:
+  - Atención menos personalizada
+  - trámites burocráticos
+  - precios muy altos
+  our_differentiation: Trato familiar, adaptación personalizada y comunicación directa
+    y humana con los padres.
+- name: Jardines municipales
+  positioning: Opción de bajo costo o gratuita.
+  strengths:
+  - Costo muy accesible
+  - cercanía en algunos barrios
+  weaknesses:
+  - Listas de espera larguísimas
+  - recursos limitados
+  - cupos restringidos
+  our_differentiation: Vacantes inmediatas (sujetas a disponibilidad), instalaciones
+    modernas y seguras, y proyectos educativos actualizados.
+- name: Kidscare Argentina
+  positioning: Plataforma digital de búsqueda y gestión de cuidadores y jardines.
+  strengths:
+  - Amplio catálogo online
+  - funcionalidades de pago integrado
+  weaknesses:
+  - No gestionan la operación directa
+  - calidad variable de los listados
+  our_differentiation: Somos un centro físico con equipo propio y estable, ofreciendo
+    continuidad y comunidad, no solo un servicio puntual.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 45000
+  - 120000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Automatización de confirmación de asistencia y recordatorios de pago
+      para un jardín con 50 niños.
+    monthly_cost: 15000
+    monthly_savings: 40000
+    payback_months: 1
+  value_anchors:
+  - Libere 10 horas semanales de su personal administrativo para tareas de mayor valor.
+  - Recupere hasta un 15% de la morosidad en cuotas atrasadas con cobranza automatizada
+    y amable.
+  - Convierta el 30% de las consultas después de las 18hs en entrevistas concretas.
+market_context:
+  market_size: Estimado en más de 50 mil millones de ARS anuales (sector privado formal
+    e informal).
+  growth_rate: 3-5% anual, impulsado por mayor participación laboral femenina.
+  key_trends:
+  - Creciente demanda de jardines con proyectos educativos bilingües o con metodologías
+    alternativas (Montessori, Reggio Emilia).
+  - Aumento en la exigencia de protocolos de seguridad, higiene y transparencia (cámaras
+    online).
+  - Mayor valoración de la comunicación fluida y digital con los padres.
+  seasonality:
+    high:
+    - Enero (colonias de verano)
+    - Diciembre (cierre de ciclo)
+    - Febrero-Marzo (período de inscripción)
+    low:
+    - Julio (vacaciones de invierno)
+    - Segunda quincena de Diciembre
+typical_objections:
+- objection: Es muy caro, hay opciones más económicas.
+  response: 'Entiendo. La decisión es importante. Nuestra diferencia está en lo que
+    no se ve: la dedicación de nuestras maestras, la calidad de los alimentos y la
+    seguridad. Invitarlo a una visita es la mejor manera de que compruebe el valor.
+    ¿Podría pasar esta semana?'
+- objection: Prefiero hablar con una persona, no con una máquina.
+  response: Totalmente de acuerdo, la calidez humana es clave en nuestro rubro. Yo
+    justamente coordino para que hable con la persona indicada sin que pierda tiempo
+    llamando en horarios no laborales. ¿Me permite agendarle un turno con la directora?
+- objection: No estoy seguro de necesitar tanta tecnología.
+  response: La tecnología está para servirle a usted, no al revés. Nuestro sistema
+    le ahorra tiempo en trámites (pagos, justificativos) para que pueda disfrutar
+    más de la experiencia de su hijo en el jardín. ¿Qué gestión le lleva más tiempo
+    hoy?
+meta:
+  id: childcare
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

@@ -1,0 +1,199 @@
+pain_points:
+- description: 原材料成本不断上涨，压缩利润空间。
+  severity: high
+  solution_hint: AI语音代理可实时监控供应商价格，推荐优化采购策略。
+- description: 环保法规趋严，如PIPL数据保护要求增加合规压力。
+  severity: high
+  solution_hint: AI语音代理可自动提醒合规检查，并提供文档管理协助。
+- description: 市场竞争激烈，低价竞争导致质量下降。
+  severity: medium
+  solution_hint: AI语音代理可分析市场趋势，帮助差异化营销。
+- description: 客户订单碎片化，管理效率低。
+  severity: medium
+  solution_hint: AI语音代理可集成订单系统，自动处理查询和跟踪。
+- description: 技术更新慢，数字化程度不足。
+  severity: medium
+  solution_hint: AI语音代理可引导客户使用在线设计工具，提升服务体验。
+- description: 供应链不稳定，影响交货时间。
+  severity: low
+  solution_hint: AI语音代理可预测物流延迟，提前通知客户。
+- description: 人力资源短缺，特别是熟练工人。
+  severity: low
+  solution_hint: AI语音代理可提供基础培训和客户服务支持。
+typical_services:
+- 名片印刷
+- 海报印刷
+- 包装印刷
+- 书籍印刷
+- 宣传册印刷
+- 标签印刷
+- 数码快印
+- 3D打印服务
+- 环保印刷
+- 个性化定制印刷
+recommended_functions:
+- name: 订单状态查询
+  priority: high
+  reason: 客户经常询问进度，自动化可提高效率。
+- name: 即时报价估算
+  priority: high
+  reason: 快速响应价格问题，减少人工干预。
+- name: 设计文件审核
+  priority: medium
+  reason: 预防印刷错误，节省成本和时间。
+- name: 客户反馈收集
+  priority: medium
+  reason: 改进服务，增强客户粘性。
+- name: 促销活动通知
+  priority: low
+  reason: 提升销售机会，基于市场活动。
+- name: 合规提醒
+  priority: high
+  reason: 确保符合PIPL等法规，避免罚款。
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: high
+- name: 客户关系管理
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: high
+- name: 支付网关
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: medium
+- name: 设计软件
+  examples:
+  - Adobe Creative Cloud
+  - 本地设计工具
+  priority: medium
+- name: 物流跟踪
+  examples:
+  - 顺丰
+  - 京东物流
+  priority: low
+industry_faq:
+- question: 你们的印刷质量如何保证？
+  answer_template: 我们使用高端设备和环保油墨，并提供样品确认，确保每批印刷都符合标准。
+- question: 交货时间需要多久？
+  answer_template: 标准订单3-5个工作日，加急服务可24小时内完成，具体取决于订单复杂度。
+- question: 价格包含税费吗？
+  answer_template: 报价通常不含增值税，我们会提供明细发票，符合中国税务规定。
+- question: 支持小批量定制吗？
+  answer_template: 是的，我们擅长个性化和小批量印刷，最小起订量可低至100份。
+- question: 如何保护我的设计文件？
+  answer_template: 我们严格遵守PIPL，采用加密传输和存储，确保数据安全。
+- question: 有环保印刷选项吗？
+  answer_template: 提供使用再生纸和水性油墨的环保印刷，帮助您减少碳足迹。
+- question: 可以集成到我们的系统吗？
+  answer_template: 支持API集成，如与金蝶或微信对接，实现订单自动化。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问印刷服务价格时。
+  script: 您好！感谢咨询。价格取决于材料、数量和设计复杂度。例如，1000张名片起价约500元CNY。我们可以根据您的需求提供定制报价，帮助您控制成本。需要我帮您详细估算吗？
+  goal: 获取客户需求信息，引导到具体报价。
+- trigger: quality_concern
+  situation: 当客户担心印刷质量时。
+  script: 我们理解质量是关键。我们使用进口设备和严格质检流程，并提供免费打样。许多客户如XX公司都满意我们的服务。您想看看样品或案例吗？
+  goal: 建立信任，展示专业性。
+- trigger: delivery_time
+  situation: 当客户急需交货时。
+  script: 对于紧急订单，我们提供加急服务，最快24小时出货，额外费用约20%。这样可以确保您及时拿到产品，不影响业务。需要我安排吗？
+  goal: 向上销售加急服务，满足客户紧急需求。
+- trigger: customization_request
+  situation: 当客户需要个性化定制时。
+  script: 个性化定制是我们的强项！我们可以根据您的品牌调性设计独特方案，从材质到工艺全方位定制。例如，最近为YY公司做的包装印刷获得了好评。您有具体想法吗？
+  goal: 激发兴趣，收集定制需求。
+competitors:
+- name: 中国印刷集团
+  positioning: 大型国有印刷企业，覆盖全国。
+  strengths:
+  - 规模大
+  - 资源丰富
+  - 政府项目多
+  weaknesses:
+  - 灵活性低
+  - 价格较高
+  - 创新慢
+  our_differentiation: 我们提供更敏捷的数字化服务和个性化解决方案，价格透明。
+- name: 地区性小型印刷厂
+  positioning: 本地化服务，成本较低。
+  strengths:
+  - 价格便宜
+  - 响应快
+  - 本地关系好
+  weaknesses:
+  - 技术落后
+  - 质量不稳定
+  - 规模有限
+  our_differentiation: 我们结合先进技术和本地支持，确保质量的同时保持竞争力。
+- name: 在线印刷平台如世纪开元
+  positioning: 电商模式，方便快捷。
+  strengths:
+  - 在线下单
+  - 标准化高
+  - 营销强
+  weaknesses:
+  - 定制能力弱
+  - 服务缺乏个性化
+  our_differentiation: 我们提供深度定制和一对一顾问服务，更适合复杂需求。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: 自动化订单处理减少人工成本
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 1
+  - scenario: 提高客户留存率增加收入
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 2
+  value_anchors:
+  - 使用AI语音代理，平均节省30%客服时间。
+  - 集成系统后，订单处理效率提升50%。
+  - 环保印刷选项可帮助客户获得绿色认证。
+market_context:
+  market_size: 约5000亿元CNY
+  growth_rate: 5% 年增长率
+  key_trends:
+  - 数字化转型加速，智能印刷兴起。
+  - 环保需求增加，绿色印刷受追捧。
+  - 个性化和小批量定制成为新增长点。
+  seasonality:
+    high:
+    - 春节前
+    - 双十一期间
+    low:
+    - 夏季淡季
+    - 节假日过后
+typical_objections:
+- objection: 价格太高，超出预算。
+  response: 我们理解成本控制重要。我们可以调整材料或数量来优化报价，并提供分期付款选项。长期合作还有折扣。
+- objection: 担心数据安全，尤其是PIPL合规。
+  response: 我们完全遵守PIPL，所有数据处理都加密，并有第三方审计。您可以查看我们的合规证书。
+- objection: 现有供应商合作良好，不想更换。
+  response: 我们尊重您的选择。但我们可以提供免费试用或案例比较，展示我们在效率和质量上的优势。不妨一试？
+- objection: 技术太复杂，不会使用。
+  response: AI语音代理设计简单，我们会提供培训和支持，确保您轻松上手。许多客户反馈操作便捷。
+meta:
+  id: printing
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

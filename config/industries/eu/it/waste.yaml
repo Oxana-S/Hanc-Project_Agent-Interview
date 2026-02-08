@@ -1,0 +1,191 @@
+pain_points:
+- description: Gestione manuale e dispendiosa delle prenotazioni di ritiro rifiuti, con errori frequenti nella registrazione di data, ora e tipo di materiale.
+  severity: high
+  solution_hint: L'agente vocale può automatizzare la prenotazione, chiedendo dettagli specifici e confermando l'appuntamento senza errori.
+- description: Clienti confusi sui giorni di raccolta differenziata e sulle tipologie di rifiuto accettate, con conseguenti multe per smaltimento errato.
+  severity: medium
+  solution_hint: L'agente può fornire informazioni immediate e personalizzate sul calendario di raccolta e le regole comunali.
+- description: Difficoltà nel gestire le richieste di preventivo fuori orario d'ufficio, perdendo potenziali clienti.
+  severity: medium
+  solution_hint: L'agente vocale risponde 24/7, raccoglie i dati necessari e inoltra la richiesta per un contatto rapido.
+- description: Elevato volume di chiamate per tracciare lo stato dei ritiri o per reclami, sovraccaricando il centralino.
+  severity: high
+  solution_hint: L'agente fornisce aggiornamenti in tempo reale sullo stato dei servizi, riducendo le chiamate al personale.
+- description: Complessità nel calcolo dei costi in base a tariffazione comunale, tipologia e volume dei rifiuti, con errori di fatturazione.
+  severity: high
+  solution_hint: L'agente può calcolare preventivi preliminari basandosi su parametri locali, garantendo trasparenza.
+- description: Scarsa aderenza alle normative GDPR nella gestione dei dati dei clienti durante le interazioni telefoniche.
+  severity: medium
+  solution_hint: L'agente vocale è progettato per il trattamento sicuro dei dati, con registri e consensi automatici conformi al GDPR.
+typical_services:
+- Ritiro e smaltimento rifiuti solidi urbani (RSU)
+- Raccolta differenziata (carta, plastica, vetro, umido, secco residuo)
+- Servizio di noleggio cassonetti e container
+- Smaltimento rifiuti speciali (RAEE, ingombranti, inerti)
+- Bonifica e sanificazione aree
+- Trasporto e trattamento rifiuti industriali
+- Servizi di consulenza ambientale e MUD (Modello Unico di Dichiarazione)
+- Raccolta e riciclo oli esausti
+- Gestione rifiuti per attività commerciali (negozi, ristoranti)
+- Servizio di spazzamento strade e aree pubbliche
+recommended_functions:
+- name: Prenotazione automatica ritiri
+  priority: high
+  reason: Risolve il principale collo di bottiglia operativo, riducendo errori e tempi di attesa.
+- name: Calcolo preventivi in tempo reale
+  priority: high
+  reason: Aumenta le conversioni dando trasparenza sui costi basati su tariffazione locale.
+- name: Supporto informazioni regolamenti comunali
+  priority: medium
+  reason: Riduce multe per i clienti e chiamate di supporto per chiarimenti.
+- name: Tracciamento stato servizio
+  priority: medium
+  reason: Migliora la soddisfazione del cliente e libera risorse del centralino.
+- name: Gestione reclami e segnalazioni
+  priority: low
+  reason: Canalizza le lamentele in modo strutturato, consentendo un follow-up efficiente.
+- name: Invio promemoria per raccolta
+  priority: low
+  reason: Aumenta la puntualità dei clienti, ottimizzando i percorsi di raccolta.
+typical_integrations:
+- name: Software di gestione flotte e routing
+  examples:
+  - Fleet Manager Italia
+  - EcoRoute
+  - Zucchetti
+  priority: high
+- name: Sistemi ERP aziendali
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - TeamSystem
+  priority: high
+- name: Piattaforme di fatturazione elettronica
+  examples:
+  - Aruba
+  - Intesa Sanpaolo
+  - Sella
+  priority: medium
+- name: Software per dichiarazioni ambientali (MUD)
+  examples:
+  - EcoGest
+  - Ambiente Italia
+  priority: medium
+- name: App di comunicazione cittadino
+  examples:
+  - Junker
+  - Comune-specifiche app
+  priority: low
+industry_faq:
+- question: Quali sono gli orari e i giorni di raccolta nel mio comune?
+  answer_template: Per fornirle informazioni precise, ho bisogno del suo CAP. Posso consultare il calendario comunale e dirle giorni e orari per la sua zona.
+- question: Quanto costa il ritiro di un cassonetto per rifiuti inerti?
+  answer_template: Il costo dipende dalla dimensione del cassonetto e dalla sua ubicazione. Per un preventivo preciso, posso calcolarlo ora se mi indica il volume approssimativo e il CAP.
+- question: Come posso prenotare il ritiro di un ingombrante?
+  answer_template: Posso aiutarla a prenotare subito. Mi dica il tipo di oggetto, il suo indirizzo e una data preferita. Le confermerò la disponibilità e le invierò un promemoria.
+- question: Cosa succede se sbaglio a differenziare i rifiuti?
+  answer_template: Errori nella differenziata possono portare a multe comunali. Posso inviarle via SMS o email una guida specifica per il suo comune per evitare sanzioni.
+- question: Offrite servizi per ristoranti per lo smaltimento dell'umido?
+  answer_template: Certamente. Offriamo servizi dedicati per l'umido per attività commerciali, con contenitori specifici e ritiri frequenti. Posso creare un preventivo su misura per le sue esigenze.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede un preventivo generico per lo smaltimento rifiuti.
+  script: Certamente. Per darle un preventivo accurato, ho bisogno di qualche informazione. Che tipo di rifiuti deve smaltire (es. RSU, inerti, speciali)? Quale volume stimato (es. cassonetti da 3 mc, sacchi)?
+    E in quale comune si trova? Con questi dati posso calcolare subito un costo basato sulla tariffa comunale.
+  goal: Raccogliere dati specifici per un preventivo personalizzato e dimostrare trasparenza.
+- trigger: service_inquiry
+  situation: Quando un potenziale cliente chiede informazioni sui servizi per un'attività commerciale.
+  script: Capisco che per la sua attività sia cruciale uno smaltimento efficiente. Offriamo servizi su misura per negozi/ristoranti, inclusi ritiri frequenti, contenitori anti-odore e documentazione per
+    la compliance. Per iniziare, posso programmare una consulenza gratuita per analizzare le sue esigenze?
+  goal: Qualificare il lead e fissare un appuntamento per una consulenza.
+- trigger: competitor_mention
+  situation: Quando il cliente menziona un concorrente locale.
+  script: Rispettiamo molto [Nome Concorrente]. La nostra differenza è la trasparenza dei costi senza sorprese e un servizio clienti proattivo 24/7, anche per emergenze. Inoltre, integriamo tecnologie come
+    il tracciamento in tempo reale dei ritiri. Le interessa provare un servizio più efficiente?
+  goal: Differenziarsi sottolineando trasparenza, tecnologia e servizio clienti.
+competitors:
+- name: A2A Ambiente
+  positioning: Grande multiutility nazionale, forte nel Nord Italia.
+  strengths:
+  - Estesa rete infrastrutturale
+  - brand riconosciuto
+  - ampia gamma servizi
+  weaknesses:
+  - Servizio clienti meno personalizzato
+  - tempi di risposta lunghi
+  our_differentiation: Servizio più agile e personalizzato, con supporto diretto e tecnologico immediato.
+- name: Dusty
+  positioning: Startup tecnologica focalizzata sulla raccolta differenziata smart.
+  strengths:
+  - App user-friendly
+  - forte presenza digitale
+  - innovazione nel tracking
+  weaknesses:
+  - Copertura geografica limitata
+  - servizi per industriali meno sviluppati
+  our_differentiation: Combiniamo tecnologia avanzata con l'esperienza nel settore industriale e una copertura nazionale più ampia.
+- name: Impresa locale di famiglia (es. Esposti Smaltimenti)
+  positioning: Concorrente radicato nel territorio, basato su rapporti personali.
+  strengths:
+  - Conoscenza profonda del territorio
+  - rapporti diretti e fiducia locale
+  weaknesses:
+  - Processi manuali
+  - tecnologia limitata
+  - poca scalabilità
+  our_differentiation: Offriamo la stessa attenzione al territorio, ma con l'efficienza della automazione e della tracciabilità digitale.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Ristorante che riduce multe per errata differenziata e ottimizza i ritiri dell'umido.
+    monthly_cost: 200
+    monthly_savings: 450
+    payback_months: 1.3
+  - scenario: Piccola impresa edile che automatizza le prenotazioni per smaltimento inerti.
+    monthly_cost: 300
+    monthly_savings: 650
+    payback_months: 1.5
+  value_anchors:
+  - Risparmia fino al 20% sulle multe comunali per smaltimento errato.
+  - Riduci del 30% il tempo perso in chiamate per prenotazioni e reclami.
+  - Servizio 24/7 incluso, nessun costo aggiuntivo per le emergenze.
+market_context:
+  market_size: 10 miliardi di EUR (stimato)
+  growth_rate: 3.5%
+  key_trends:
+  - Crescita dell'economia circolare e obiettivi UE di riciclo.
+  - Digitalizzazione della raccolta (app, sensori nei cassonetti).
+  - Aumento della tariffazione puntuale (pay-as-you-throw) nei comuni.
+  seasonality:
+    high:
+    - Primavera (pulizie stagionali)
+    - Estate (aumento turismo e rifiuti)
+    low:
+    - Agosto (ferie estive)
+    - Natale (chiusure aziendali)
+typical_objections:
+- objection: I vostri servizi costano troppo rispetto al nostro fornitore attuale.
+  response: Capisco. Il nostro valore non è solo nel prezzo, ma nell'evitare costi nascosti come multe e inefficienze. Posso mostrarle un calcolo personalizzato del ROI? Spesso si risparmia in pochi mesi.
+- objection: Siamo una piccola attività, non abbiamo bisogno di tanta tecnologia.
+  response: La tecnologia che proponiamo serve proprio a liberare tempo per le piccole attività. Automatizzando prenotazioni e ricordandole gli orari di raccolta, lei può concentrarsi sul suo core business.
+- objection: Preferisco parlare con una persona, non con un robot.
+  response: 'Assolutamente. Il nostro agente vocale è qui per gestire le richieste semplici 24/7, ma per le questioni complesse la mette subito in contatto con un nostro consulente. È il meglio di entrambi
+    i mondi: efficienza e supporto umano quando serve.'
+meta:
+  id: waste
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- waste management
+- recycling
+- waste disposal
+- garbage collection
+_extends: _base/waste

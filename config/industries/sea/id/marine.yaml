@@ -1,0 +1,183 @@
+pain_points:
+- description: Biaya operasional dan pemeliharaan kapal yang sangat tinggi, terutama untuk suku cadang dan bahan bakar.
+  severity: high
+  solution_hint: Agen suara AI dapat membantu mengotomatisasi pemesanan suku cadang dan membandingkan harga bahan bakar dari berbagai pemasok.
+- description: Ketergantungan pada tenaga kerja manual untuk pelaporan dan dokumentasi, yang rentan terhadap kesalahan dan memakan waktu.
+  severity: medium
+  solution_hint: Agen suara AI dapat mengumpulkan data secara real-time melalui panggilan dan mengisi formulir digital secara otomatis.
+- description: Kesulitan dalam mengelola dan memprediksi jadwal perbaikan (docking) kapal, menyebabkan downtime yang tidak terencana.
+  severity: high
+  solution_hint: Agen AI dapat mengingatkan pemilik kapal berdasarkan jam operasi dan data pemeliharaan sebelumnya untuk penjadwalan yang proaktif.
+- description: Komunikasi yang tidak efisien antara kantor di darat dan kapal di laut, mengakibatkan keterlambatan informasi.
+  severity: medium
+  solution_hint: Agen suara dapat bertindak sebagai penghubung 24/7, meneruskan pesan penting dan update melalui panggilan otomatis.
+- description: Tantangan dalam mematuhi regulasi PDP (Perlindungan Data Pribadi) dan peraturan maritim Indonesia yang kompleks.
+  severity: high
+  solution_hint: Agen dapat memberikan pengingat otomatis tentang tenggat waktu pelaporan dan menyimpan log komunikasi untuk kepatuhan.
+- description: Persaingan harga yang ketat dari perusahaan pelayaran dan jasa logistik laut lainnya di wilayah Asia Tenggara.
+  severity: medium
+  solution_hint: Agen dapat membantu dalam pelayanan pelanggan yang lebih cepat dan personal, meningkatkan loyalitas untuk bersaing di luar harga.
+typical_services:
+- Perbaikan dan Pemeliharaan Kapal (Docking)
+- Pengadaan Suku Cadang Kapal
+- Jasa Bongkar Muat (Stevedoring)
+- Agen Kapal dan Keagenan Pelabuhan
+- Jasa Tunda dan Pandu (Tugboat & Pilotage)
+- Survei dan Inspeksi Kapal
+- Jasa Logistik dan Distribusi Laut
+- Pengelolaan Awak Kapal (Crew Management)
+- Pencucian dan Pembersihan Lambung Kapal (Hull Cleaning)
+- Konsultasi Hukum dan Asuransi Maritim
+recommended_functions:
+- name: Penjadwalan dan Pengingat Otomatis
+  priority: high
+  reason: Mengurangi downtime kapal dengan mengingatkan jadwal perbaikan dan dokumen berakhir.
+- name: Penerimaan Pesanan dan Booking 24/7
+  priority: high
+  reason: Memungkinkan klien booking jasa kapan saja, meningkatkan kesempatan penjualan.
+- name: Penanganan Pertanyaan Pelanggan (FAQ Otomatis)
+  priority: medium
+  reason: Mengurangi beban staf dengan menjawab pertanyaan umum tentang harga, layanan, dan jadwal.
+- name: Pengumpulan Data dan Pelaporan
+  priority: high
+  reason: Mengotomatisasi pelaporan operasional untuk kepatuhan dan analisis.
+- name: Konfirmasi Pembayaran dan Penagihan
+  priority: medium
+  reason: Mempercepat siklus pendapatan dengan konfirmasi dan pengingat pembayaran via telepon.
+- name: Pemantauan Status Pemesanan
+  priority: low
+  reason: Memberikan update real-time kepada klien tentang status perbaikan atau pengiriman.
+typical_integrations:
+- name: Sistem ERP Perusahaan Pelayaran
+  examples:
+  - Sistem internal perusahaan
+  - Software akuntansi lokal
+  priority: high
+- name: Sistem Pelacakan Kapal (AIS)
+  examples:
+  - AIS Indonesia
+  - Sistem pelacakan pihak ketaca lokal
+  priority: medium
+- name: Platform Marketplace Logistik Laut
+  examples:
+  - Kargo.co.id
+  - platform sejenis lokal
+  priority: medium
+- name: Sistem Manajemen Dokumen dan Kepatuhan
+  examples:
+  - Sistem arsip digital
+  - Software untuk regulasi PDP
+  priority: high
+industry_faq:
+- question: Berapa biaya untuk jasa perbaikan kapal (docking)?
+  answer_template: Biaya docking sangat bervariasi tergantung ukuran kapal, jenis perbaikan, dan lokasi galangan. Rata-rata mulai dari IDR 500 juta. Saya dapat menghubungkan Anda dengan tim penjualan untuk
+    penawaran yang lebih akurat.
+- question: Berapa lama waktu yang dibutuhkan untuk proses bongkar muat di pelabuhan?
+  answer_template: Waktu bongkar muat tergantung pada jenis barang, volume, dan kondisi pelabuhan. Rata-rata 1-3 hari. Sistem kami dapat membantu memperkirakan jadwal lebih efisien.
+- question: Apakah perusahaan Anda mematuhi regulasi PDP Indonesia?
+  answer_template: Ya, kami sepenuhnya mematuhi Undang-Undang Perlindungan Data Pribadi. Semua komunikasi dan data pelanggan diamankan dan diproses sesuai hukum.
+- question: Bagaimana cara memesan jasa tunda kapal secara darurat?
+  answer_template: Anda dapat menghubungi kami 24/7 melalui nomor ini. Agen suara kami akan segera mencatat detail lokasi dan kebutuhan Anda untuk mengirimkan tugboat terdekat.
+- question: Apa saja dokumen yang diperlukan untuk menggunakan jasa keagenan kapal?
+  answer_template: Dokumen umum termasuk Surat Perintah Kerja, Dokumen Kapal, dan izin pelabuhan. Agen kami akan memandu Anda secara detail melalui telepon.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga layanan di awal percakapan.
+  script: Halo, terima kasih atas pertanyaannya. Harga layanan kami disesuaikan dengan kebutuhan spesifik seperti jenis kapal dan lokasi. Sebagai gambaran, layanan dasar mulai dari IDR 50 juta per bulan.
+    Boleh saya tahu jenis kapal dan layanan apa yang Bapak/Ibu butuhkan agar saya bisa memberikan penawaran yang lebih tepat?
+  goal: Mengumpulkan informasi kebutuhan spesifik klien dan mengarahkan ke konsultasi lebih lanjut, bukan hanya memberi harga.
+- trigger: competitor_mention
+  situation: Ketika klien menyebutkan pesaing dengan harga yang lebih murah.
+  script: Saya mengerti pertimbangan harga. Perbedaan kami adalah layanan pelanggan 24/7 dan sistem otomatis yang mengurangi kesalahan dan downtime kapal. Banyak klien kami menghemat hingga 20% biaya operasional
+    dalam jangka panjang. Maukah saya jelaskan bagaimana caranya?
+  goal: Beralih dari perbandingan harga ke nilai jangka panjang dan efisiensi operasional.
+- trigger: objection_busy
+  situation: Ketika calon klien mengatakan terlalu sibuk untuk berbicara.
+  script: Saya mengerti waktu Bapak/Ibu sangat berharga. Bisakah saya jadwalkan panggilan singkat 5 menit di waktu yang lebih nyaman? Atau, saya bisa mengirimkan informasi utama via WhatsApp sekarang.
+  goal: Tetap menjaga keterlibatan dan menawarkan opsi komunikasi yang fleksibel.
+competitors:
+- name: PT Pelayaran Nasional Indonesia (Pelni)
+  positioning: BUMN besar dengan layanan luas dan jaringan pelabuhan nasional.
+  strengths:
+  - Infrastruktur kuat
+  - Skala besar
+  - Dukungan pemerintah
+  weaknesses:
+  - Birokrasi lambat
+  - Respons layanan pelanggan kurang cepat
+  our_differentiation: Kami menawarkan otomatisasi dan respons 24/7 yang lebih cepat untuk efisiensi operasional bisnis menengah.
+- name: Samudera Indonesia Group
+  positioning: Perusahaan logistik dan pelayaran swasta terkemuka.
+  strengths:
+  - Armada modern
+  - Layanan logistik terintegrasi
+  - Keuangan kuat
+  weaknesses:
+  - Fokus pada klien korporat besar
+  - Harga premium
+  our_differentiation: Solusi teknologi kami terjangkau untuk usaha kecil-menengah dan dapat diskalakan sesuai kebutuhan.
+- name: Penyedia jasa galangan kapal lokal kecil
+  positioning: Banyak bengkel kapal independen di berbagai pulau.
+  strengths:
+  - Harga negotiable
+  - Lokalitas dan akses cepat
+  - Fleksibel
+  weaknesses:
+  - Kapasitas terbatas
+  - Sering kurang standar
+  - Administrasi manual
+  our_differentiation: Kami menggabungkan jaringan lokal dengan sistem manajemen terpusat dan otomatis untuk kualitas dan keandalan.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 50000000
+  roi_examples:
+  - scenario: Otomatisasi penjadwalan perawatan dan pemesanan suku cadang untuk armada 5 kapal.
+    monthly_cost: 75000000
+    monthly_savings: 127500000
+    payback_months: 5
+  value_anchors:
+  - Hemat hingga 15% biaya bahan bakar dengan pemantauan dan pemesanan otomatis.
+  - Kurangi downtime kapal tidak terencana hingga 30% dengan pengingat perawatan proaktif.
+  - Otomatiskan 50% tugas administrasi untuk staf Anda.
+market_context:
+  market_size: Diperkirakan mencapai IDR 500 triliun, termasuk transportasi, logistik, dan jasa pendukung.
+  growth_rate: 4-6% per tahun, didorong oleh perdagangan antar pulau dan investasi infrastruktur pelabuhan.
+  key_trends:
+  - Digitalisasi operasi pelabuhan dan logistik (Pelabuhan Otomatis).
+  - Peningkatan fokus pada keberlanjutan dan regulasi emisi kapal.
+  - Permintaan tumbuh untuk jasa perbaikan dan pemeliharaan kapal yang andal.
+  seasonality:
+    high:
+    - Bulan Juni-Agustus (musim puncak ekspor)
+    - Desember-Januari (liburan dan distribusi tinggi)
+    low:
+    - Bulan Februari-Maret (setelah liburan)
+    - September-Oktober (musim penghujan di beberapa daerah)
+typical_objections:
+- objection: Sistem otomatis seperti ini terlalu mahal untuk bisnis saya.
+  response: Saya paham kekhawatiran biaya. Justru sistem kami dirancang untuk menghemat biaya operasional jangka panjang. Sebagai contoh, dengan mengurangi kesalahan manual, klien kami rata-rata menghemat
+    IDR 15 juta per bulan. Boleh saya tunjukkan simulasi sederhana untuk bisnis Anda?
+- objection: Kami sudah terbiasa dengan cara manual dan tidak perlu teknologi baru.
+  response: Itu dapat dimengerti. Banyak klien kami awalnya berpikir sama. Namun, setelah mencoba, mereka menemukan waktu yang dihemat untuk tugas administrasi dapat dialihkan untuk mengembangkan bisnis.
+    Maukah saya bagikan satu studi kasus dari klien serupa di Surabaya?
+- objection: Saya khawatir data perusahaan tidak aman dengan sistem otomatis.
+  response: Kekhawatiran yang sangat valid. Kami menggunakan teknologi keamanan tingkat tinggi dan sepenuhnya mematuhi Undang-Undang PDP Indonesia. Semua data dienkripsi dan hanya dapat diakses oleh pihak
+    yang berwenang. Kami bisa mengirimkan ringkasan kebijakan privasi kami.
+meta:
+  id: marine
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- marine
+- yacht club
+- marina
+- boating
+- sailing
+_extends: _base/marine

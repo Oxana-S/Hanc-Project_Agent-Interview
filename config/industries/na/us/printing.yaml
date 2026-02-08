@@ -1,0 +1,223 @@
+pain_points:
+- description: High production costs due to rising material prices and labor expenses.
+  severity: high
+  solution_hint: AI voice agent can suggest cost-effective materials and optimize
+    order scheduling to reduce waste.
+- description: Managing rush orders and tight deadlines leads to operational stress.
+  severity: medium
+  solution_hint: AI voice agent can automate order prioritization and provide real-time
+    updates to clients.
+- description: Inefficient communication with clients about order status and changes.
+  severity: medium
+  solution_hint: AI voice agent can handle customer inquiries 24/7 and send automated
+    notifications.
+- description: Compliance challenges with CCPA and HIPAA for handling sensitive documents.
+  severity: high
+  solution_hint: AI voice agent can verify compliance protocols and guide clients
+    on secure submission processes.
+- description: Intense competition from online printing services offering lower prices.
+  severity: medium
+  solution_hint: AI voice agent can highlight value-added services like personalized
+    support and local expertise.
+- description: Inventory management issues due to fluctuating demand for printed materials.
+  severity: low
+  solution_hint: AI voice agent can analyze order trends and suggest inventory adjustments.
+- description: Technological obsolescence with outdated printing equipment affecting
+    quality.
+  severity: medium
+  solution_hint: AI voice agent can recommend upgrade options and maintenance schedules.
+typical_services:
+- Digital Printing
+- Offset Printing
+- Large Format Printing
+- Business Cards
+- Brochures and Flyers
+- Banners and Signage
+- Book Printing
+- Stationery and Letterheads
+- Promotional Products
+- Packaging Printing
+recommended_functions:
+- name: Order Processing Assistant
+  priority: high
+  reason: Streamlines order entry and reduces manual errors, crucial for handling
+    high volume.
+- name: Customer Support Handler
+  priority: high
+  reason: Provides instant responses to common queries, improving customer satisfaction.
+- name: Compliance Checker
+  priority: high
+  reason: Ensures adherence to CCPA and HIPAA regulations, mitigating legal risks.
+- name: Pricing Calculator
+  priority: medium
+  reason: Offers quick quotes, helping clients make decisions faster.
+- name: Appointment Scheduler
+  priority: medium
+  reason: Facilitates consultations and follow-ups, enhancing client engagement.
+- name: Follow-up Reminder
+  priority: low
+  reason: Automates post-order check-ins to boost repeat business.
+- name: Upselling Assistant
+  priority: medium
+  reason: Suggests additional services based on client needs, increasing revenue.
+typical_integrations:
+- name: CRM Systems
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Accounting Software
+  examples:
+  - QuickBooks
+  - Xero
+  priority: high
+- name: Project Management Tools
+  examples:
+  - Asana
+  - Trello
+  priority: medium
+- name: E-commerce Platforms
+  examples:
+  - Shopify
+  - WooCommerce
+  priority: medium
+- name: Design Software
+  examples:
+  - Adobe Creative Cloud
+  priority: low
+industry_faq:
+- question: What is your typical turnaround time for standard orders?
+  answer_template: Our standard turnaround is 3-5 business days, but we offer rush
+    options for urgent needs.
+- question: Do you provide bulk discounts for large orders?
+  answer_template: Yes, we offer volume-based discounts. Let me check your order size
+    for specific rates.
+- question: How do you ensure print quality and consistency?
+  answer_template: We use state-of-the-art equipment and perform quality checks at
+    every stage.
+- question: Can you handle confidential documents in compliance with data protection
+    laws?
+  answer_template: Absolutely, we follow CCPA and HIPAA guidelines with secure processes
+    and encryption.
+- question: What file formats do you accept for printing?
+  answer_template: We accept PDF, AI, PSD, and JPG. For best results, we recommend
+    high-resolution PDFs.
+- question: Do you offer design services if I need help with my files?
+  answer_template: Yes, we have in-house designers who can assist with layout and
+    adjustments.
+- question: What are your payment terms and options?
+  answer_template: We accept credit cards, checks, and ACH, with net 30 terms for
+    established clients.
+sales_scripts:
+- trigger: price_question
+  situation: When a client asks about pricing for a specific service.
+  script: I understand you're looking for pricing. Based on your needs, our entry-level
+    packages start at $100 for basic prints. Would you like me to provide a detailed
+    quote?
+  goal: Engage the client with a starting price and move towards a customized quote.
+- trigger: service_inquiry
+  situation: When a client inquires about a service like large format printing.
+  script: Great question! We specialize in large format printing for banners and signs.
+    Our team ensures vibrant colors and durability. Can I help you with dimensions
+    and material options?
+  goal: Educate the client on the service and gather more details for a proposal.
+- trigger: compliance_concern
+  situation: When a client expresses worry about data security for sensitive prints.
+  script: Your concern is valid. We comply with CCPA and HIPAA by using encrypted
+    file transfers and secure disposal methods. Let me walk you through our process.
+  goal: Build trust by addressing compliance and reassuring the client.
+- trigger: rush_order
+  situation: When a client needs a fast turnaround.
+  script: We can accommodate rush orders with expedited processing. The cost may vary
+    based on urgency. What's your deadline?
+  goal: Capture the opportunity by offering a solution and clarifying terms.
+competitors:
+- name: Vistaprint
+  positioning: Online printing service with low-cost options.
+  strengths:
+  - User-friendly website
+  - wide product range
+  - competitive pricing
+  weaknesses:
+  - Limited personal support
+  - slower customization
+  our_differentiation: We provide local, personalized service with faster turnaround
+    and compliance expertise.
+- name: FedEx Office
+  positioning: Retail and business printing with physical locations.
+  strengths:
+  - Convenient locations
+  - quick copy services
+  - brand recognition
+  weaknesses:
+  - Higher prices for custom jobs
+  - less focus on large orders
+  our_differentiation: We offer specialized printing solutions and dedicated account
+    management.
+- name: AlphaGraphics
+  positioning: Franchise-based printing and marketing services.
+  strengths:
+  - Network of locations
+  - marketing integration
+  - consistent quality
+  weaknesses:
+  - Variable service by location
+  - can be pricey
+  our_differentiation: We have a more agile, technology-driven approach with AI-enhanced
+    support.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 100
+  roi_examples:
+  - scenario: Automating order processing and customer inquiries.
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 0.6
+  value_anchors:
+  - Reduce operational costs by 20%
+  - Improve customer retention with 24/7 support
+  - Ensure compliance to avoid fines
+market_context:
+  market_size: 80 billion USD
+  growth_rate: 3%
+  key_trends:
+  - Shift to digital and on-demand printing
+  - Increased focus on eco-friendly materials
+  - Integration of AI for automation
+  seasonality:
+    high:
+    - Q4 holiday season
+    - back-to-school periods
+    low:
+    - Summer months
+    - post-holiday January
+typical_objections:
+- objection: Your prices are higher than online competitors.
+  response: We offer personalized service, faster turnarounds, and compliance security
+    that adds value beyond price.
+- objection: I need my order completed in less than 24 hours.
+  response: We can prioritize your order with our rush service. Let me check availability
+    and provide a quote.
+- objection: I'm concerned about the quality of prints for my important project.
+  response: We use premium materials and have a satisfaction guarantee. I can share
+    samples or set up a proof review.
+- objection: I prefer to handle everything myself online.
+  response: Our AI voice agent makes it easy to manage orders via phone with instant
+    support, saving you time and hassle.
+meta:
+  id: printing
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

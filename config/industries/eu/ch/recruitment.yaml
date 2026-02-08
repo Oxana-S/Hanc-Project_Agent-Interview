@@ -1,0 +1,212 @@
+pain_points:
+- description: Hohe Personalkosten für Recruiter, besonders in der Deutschschweiz, machen die Besetzung von Stellen finanziell belastend.
+  severity: high
+  solution_hint: Automatisierung der Erstgespräche und Vorselektion durch KI, um den Zeitaufwand für Recruiter um bis zu 70% zu reduzieren.
+- description: Langer Zeitraum von der Stellenausschreibung bis zur Vertragsunterschrift, der oft mehrere Monate beträgt.
+  severity: high
+  solution_hint: KI-Agent beschleunigt den Prozess durch 24/7-Verfügbarkeit für Kandidaten, Terminvereinbarung und Follow-ups.
+- description: Mangel an qualifizierten Fachkräften (Fachkräftemangel) in Branchen wie IT, Engineering und Gesundheit.
+  severity: high
+  solution_hint: Passive Candidate Sourcing durch KI, die potenzielle Kandidaten in Netzwerken anspricht und initialisiert.
+- description: Komplexe Compliance mit FADP (neues Datenschutzgesetz) und DSGVO bei der Verarbeitung von Bewerberdaten.
+  severity: medium
+  solution_hint: KI-Agent mit integrierter Compliance-Checkliste und datenschutzkonformer Protokollierung aller Interaktionen.
+- description: Inaktive oder unpräzise Bewerberdaten in der ATS (Applicant Tracking System), die zu ineffizienten Prozessen führen.
+  severity: medium
+  solution_hint: Automatische Aktualisierung von Kandidatenprofilen und Status durch Konversationen mit dem KI-Agenten.
+- description: Hohe Kosten für Stellenportale wie jobs.ch und LinkedIn Recruiter Lizenzen ohne garantierte Ergebnisqualität.
+  severity: medium
+  solution_hint: KI-gestützte, gezielte Direktansprache reduziert die Abhängigkeit von teuren Plattformen.
+- description: Schwierigkeit, das Employer Branding konsistent und persönlich an eine grosse Anzahl von Kandidaten zu kommunizieren.
+  severity: low
+  solution_hint: Der KI-Agent vermittelt rund um die Uhr eine einheitliche, positive Markenbotschaft und beantwortet Unternehmensfragen.
+typical_services:
+- Kandidatensuche und Active Sourcing
+- Vorauswahl und Screening (Pre-Screening)
+- Vermittlung von Festanstellungen und Temporärstellen
+- Executive Search für Führungspositionen
+- Personaldiagnostik und Assessment Center
+- Employer Branding Beratung
+- Onboarding-Begleitung
+- Outplacement Beratung
+- Recruiting Prozess Outsourcing (RPO)
+- Gehaltsbenchmarking und Beratung
+recommended_functions:
+- name: Automatisiertes Erstinterview und Screening
+  priority: high
+  reason: Bewältigt die grösste Zeitlast der Recruiter, filtert effizient ungeeignete Kandidaten heraus und stellt standardisierte Fragen.
+- name: Terminvereinbarung für Interviews
+  priority: high
+  reason: Eliminiert das mühsame Hin-und-Her per E-Mail und synchronisiert Kalender von Kandidaten und Hiring Managern automatisch.
+- name: 24/7 Bewerber-Hotline und FAQ
+  priority: medium
+  reason: Beantwortet Standardfragen von Kandidaten zum Prozess und Unternehmen, entlastet die Personalabteilung und verbessert das Candidate Experience.
+- name: Status-Updates und Follow-ups
+  priority: medium
+  reason: Hält Kandidaten automatisch auf dem Laufenden, reduziert Rückfragen und bewahrt ein positives Image, auch bei Absagen.
+- name: Compliance-Check und Einwilligungsmanagement
+  priority: high
+  reason: Stellt sicher, dass alle Interaktionen und Datenerfassungen konform mit FADP/DSGVO sind – kritisch in der Schweiz.
+- name: Passive Candidate Outreach
+  priority: medium
+  reason: Kontaktiert und engagiert potenzielle Kandidaten auf LinkedIn/Xing basierend auf definierten Profilen, um den Talentpool zu erweitern.
+typical_integrations:
+- name: Applicant Tracking System (ATS)
+  examples:
+  - Avature
+  - PARiM
+  - Umantis (HR Access)
+  - Swiss ATS Lösungen
+  priority: high
+- name: HR- und Lohnsoftware
+  examples:
+  - Abacus
+  - Datev
+  - Visma
+  priority: medium
+- name: Kalendersysteme
+  examples:
+  - Google Calendar
+  - Microsoft Outlook/Exchange
+  - Infomaniak
+  priority: high
+- name: Stellenportale & Berufsnetzwerke
+  examples:
+  - jobs.ch
+  - LinkedIn
+  - Xing
+  - JobCloud
+  priority: medium
+- name: Videokonferenz-Tools
+  examples:
+  - Microsoft Teams
+  - Zoom
+  - Whereby
+  priority: medium
+industry_faq:
+- question: Wie gewährleistet der KI-Agent den Schweizer Datenschutz (FADP)?
+  answer_template: Unser System ist vollständig in der Schweiz gehosted und wurde speziell für die Compliance mit FADP und DSGVO entwickelt. Alle Datenverarbeitung folgt dem Prinzip 'Privacy by Design',
+    und wir schliessen notwendige Auftragsverarbeitungsverträge (AVV) ab.
+- question: Kann der Agent auch komplexe fachliche Fragen von IT-Ingenieuren beantworten?
+  answer_template: Der Agent ist konfigurierbar und kann mit Branchenwissen und spezifischen FAQ Ihres Unternehmens gefüttert werden. Für tiefgehende Fachgespräche leitet er nahtlos zu einem menschlichen
+    Recruiter weiter. Sein Hauptzweck ist die Effizienzsteigerung im Pre-Screening.
+- question: Was passiert, wenn ein Kandidat ungewöhnliche Fragen stellt?
+  answer_template: Unser Agent ist mit Eskalationsroutinen ausgestattet. Bei nicht standardisierten oder kritischen Fragen wird das Gespräch protokolliert und sofort an Ihren Recruiter weitergeleitet, damit
+    kein potenzieller Kandidat verloren geht.
+- question: Wie schnell lässt sich die Lösung in unser bestehendes ATS integrieren?
+  answer_template: Über standardisierte APIs (z.B. REST) ist eine erste Integration oft innerhalb von 2-3 Werktagen möglich. Unser Technikteam unterstützt Sie während des gesamten Onboardings.
+- question: Versteht der Agent Schweizerdeutsche Dialekte?
+  answer_template: Der Agent ist auf Hochdeutsch trainiert, das im geschäftlichen Kontext standardmässig verwendet wird. Wir empfehlen, die Interaktionen auf Hochdeutsch zu halten, um maximale Genauigkeit
+    zu gewährleisten. Dialekt-Erkennung ist in Entwicklung.
+- question: Kostet der Service pro Gespräch oder als Flatrate?
+  answer_template: Wir bieten transparente, monatliche Abonnements basierend auf Ihrem geschätzten Gesprächsvolumen. So haben Sie Kostensicherheit und keine unerwarteten Nebenkosten. Gerne unterbreiten
+    wir Ihnen ein massgeschneidertes Angebot.
+sales_scripts:
+- trigger: price_question
+  situation: Potenzielle Kunde fragt nach den Kosten.
+  script: Verständliche Frage. Statt hoher Einmalkosten oder Provisionen bieten wir ein planbares Abo-Modell. Ein typisches Paket für einen mittelgrossen Kunden beginnt bei etwa 300 CHF pro Monat. Das amortisiert
+    sich oft schon, wenn wir Ihren Recruitern nur 5-10 Stunden administrative Arbeit pro Woche abnehmen. Darf ich Ihnen eine detaillierte ROI-Berechnung für Ihr Unternehmen zeigen?
+  goal: Preisschock vermeiden, Wert über Zeitersparnis kommunizieren, zu konkretem Angebot überleiten.
+- trigger: objection_compliance
+  situation: Kunde äussert Bedenken bezüglich Datenschutz.
+  script: Das ist ein absolut kritisches Thema, besonders mit dem neuen FADP. Genau deshalb haben wir unsere Lösung von Grund auf für die Schweiz entwickelt. Unsere Server stehen in Zürich, und wir arbeiten
+    nur mit Schweizer Partnern. Wir stellen Ihnen gerne unsere Compliance-Dokumentation und einen standardisierten AVV zur Verfügung. Datenschutz ist für uns kein Feature, sondern die Grundlage.
+  goal: Bedenken ernst nehmen, Schweizer Expertise und technische Lösungen als Vertrauensbeweis darlegen.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen traditionellen Personaldienstleister.
+  script: Die grossen Personalvermittler leisten gute Arbeit, konzentrieren sich aber oft auf die Vermittlung gegen hohe Provision. Unsere Stärke ist die Prozessoptimierung *in Ihrer eigenen Personalabteilung*.
+    Wir machen Ihre existierenden Recruiter effizienter, reduzieren Time-to-Hire und senken langfristig Ihre Kosten pro Einstellung, ohne Provisionen. Es geht um Empowerment, nicht um Ersatz.
+  goal: Unterschied im Geschäftsmodell klarstellen (Tool vs. Dienstleister), interne Stärkung betonen.
+- trigger: initial_contact
+  situation: Erstkontakt mit einem Personalverantwortlichen.
+  script: 'Guten Tag [Name], mein Name ist [Name des KI-Agents/Analysten] von [Ihre Firma]. Ich helfe Schweizer Recruiting-Teams, bis zu 70% der Zeit für administrative Aufgaben wie Erstinterviews und Terminkoordination
+    einzusparen. Damit können sich Ihre Recruiter auf das Wesentliche konzentrieren: die besten Kandidaten zu überzeugen. Haben Sie aktuell Schwierigkeiten, mit dem Bewerberaufkommen Schritt zu halten?'
+  goal: Aufmerksamkeit erregen, konkreten Nutzen (Zeitersparnis) nennen und eine offene Diagnosefrage stellen.
+competitors:
+- name: Adecco Schweiz
+  positioning: Globaler Marktführer in der Personaldienstleistung, breites Portfolio von Temporär bis Permanent.
+  strengths:
+  - Unglaubliche Reichweite und Kandidatendatenbank
+  - Physische Präsenz in der ganzen Schweiz
+  - Umfassende Dienstleistungspalette
+  weaknesses:
+  - Höhere Kosten durch Provisionen/Marge
+  - Weniger auf Prozessautomatisierung spezialisiert
+  - Standardisierte Ansätze für KMU möglicherweise unflexibel
+  our_differentiation: Wir sind ein Automatisierungstool, das Ihre interne Effizienz steigert, nicht ein externer Dienstleister mit Provisionen. Geringere langfristige Kosten und mehr Kontrolle für Sie.
+- name: Michael Page Schweiz
+  positioning: Spezialisierte Vermittlung für Fach- und Führungskräfte (White Collar).
+  strengths:
+  - Starke Marke im Executive Search
+  - Branchenspezifisches Know-how
+  - Hohe Qualität der Kandidaten
+  weaknesses:
+  - Sehr hohe Vermittlungsprovisionen (oft 20-30% des Jahresgehalts)
+  - Fokus auf grosse, etablierte Unternehmen
+  our_differentiation: Unser Modell ist prädiktiv und skalierbar. Wir senken Ihre Cost-per-Hire drastisch, indem wir den gesamten frühen Prozess automatisieren, nicht nur die Spitzenpositionen.
+- name: jobs.ch
+  positioning: Führende Schweizer Stellenplattform.
+  strengths:
+  - Grösster lokaler Bewerberpool
+  - Hohe Bekanntheit bei Stellensuchenden
+  - Einfache Stellenpublikation
+  weaknesses:
+  - Bietet keine aktive Kandidatenselektion oder Prozessoptimierung
+  - Kosten für Inserate steigen stetig
+  - Passiver Ansatz ('Post and Pray')
+  our_differentiation: Wir gehen über das reine Ausschreiben hinaus. Unser Agent sucht aktiv und spricht Kandidaten an, führt Erstgespräche und managt den Prozess – eine aktive Ergänzung zu passiven Plattformen.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 250
+  - 2500
+  entry_point: 300
+  roi_examples:
+  - scenario: Mittelständisches Unternehmen mit 2 Recruitern, die je 15h/Woche für Screening & Terminierung aufwenden.
+    monthly_cost: 450
+    monthly_savings: 5400
+    payback_months: 1
+  value_anchors:
+  - Die durchschnittliche Stunde eines Recruiters in der Schweiz kostet über 120 CHF.
+  - Unsere Lösung automatisiert die ersten 3-5 Stunden pro Stellenbesetzung.
+  - Kosteneinsparung von mehreren tausend CHF pro Monat bei aktiver Nutzung.
+market_context:
+  market_size: Ca. 2.5 Mrd. CHF jährlich (Personaldienstleistungsmarkt Schweiz)
+  growth_rate: 3-4% p.a.
+  key_trends:
+  - Starker Fokus auf Digitalisierung und Candidate Experience
+  - Zunehmende Nutzung von Data Analytics für Recruiting-Entscheidungen
+  - Homeoffice und Remote Work erweitern den talent Pool über die Schweiz hinaus
+  - Skills-based Hiring gewinnt an Bedeutung gegenüber reinen Abschlüssen
+  seasonality:
+    high:
+    - Januar-Februar (Neujahrsvorsätze)
+    - August-September (nach den Sommerferien)
+    low:
+    - Dezember (Weihnachtszeit)
+    - Juli (Hauptferienzeit)
+typical_objections:
+- objection: Unsere Prozesse sind zu individuell für eine Automatisierung.
+  response: Genau deshalb ist unsere Lösung hochgradig anpassbar. Sie definieren die Fragen, den Tonfall und die Eskalationswege. Wir automatisieren die repetitiven Teile, damit Ihre Recruiter mehr Zeit
+    für die individuellen, menschlichen Aspekte haben.
+- objection: Wir fürchten einen unpersönlichen Eindruck bei den Kandidaten.
+  response: Ein gut konfigurierter KI-Agent ist verfügbarer und reaktionsschneller als ein überlasteter Mensch. Er stellt sicher, dass jeder Kandidat sofort ein konsistentes, informatives Feedback erhält.
+    Dies wird oft als *professioneller* empfunden als wochenlanges Warten. Bei komplexen Fragen übernimmt sofort ein Mensch.
+- objection: Wir haben kein Budget für neue Software.
+  response: Es geht nicht um eine zusätzliche Ausgabe, sondern um eine Investition, die sich schnell amortisiert. Wenn wir Ihnen helfen, nur einen Recruiter für 10 Stunden pro Monat zu entlasten, haben
+    Sie die Kosten bereits wieder hereingeholt. Lassen Sie uns gemeinsam eine einfache Kosten-Nutzen-Analyse für Ihre Situation machen.
+meta:
+  id: recruitment
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- recruitment
+- staffing
+- HR
+- headhunting
+- hiring
+_extends: _base/recruitment

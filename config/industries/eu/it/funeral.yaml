@@ -1,0 +1,231 @@
+pain_points:
+- description: Gestione delle chiamate 24/7, soprattutto durante le ore notturne e
+    nei fine settimana, che richiede personale sempre disponibile.
+  severity: high
+  solution_hint: L'agente vocale AI può rispondere alle chiamate fuori orario, prenotare
+    appuntamenti e fornire informazioni di base, riducendo il carico sul personale.
+- description: Coordinamento complesso con fornitori come fioristi, chiese e cimiteri,
+    che causa ritardi e inefficienze.
+  severity: medium
+  solution_hint: L'agente può automatizzare la comunicazione con i fornitori, inviare
+    reminder e aggiornare gli stati, migliorando la sincronizzazione.
+- description: Gestione della documentazione sensibile in conformità al GDPR, con
+    rischio di sanzioni per errori.
+  severity: high
+  solution_hint: L'agente può guidare le famiglie nella compilazione di moduli digitali
+    sicuri e garantire la conservazione conforme dei dati.
+- description: Alta pressione emotiva sulle famiglie in lutto, che rende difficile
+    la comunicazione chiara e la vendita di servizi.
+  severity: low
+  solution_hint: L'agente offre risposte empatiche e standardizzate, riducendo lo
+    stress e consentendo al personale di concentrarsi sul supporto personalizzato.
+- description: Competizione con grandi catene funerarie che offrono prezzi bassi,
+    mettendo sotto pressione le imprese familiari.
+  severity: medium
+  solution_hint: L'agente può evidenziare i servizi personalizzati e locali durante
+    le chiamate, differenziandosi dalla standardizzazione delle catene.
+- description: Costi operativi elevati per personale e attrezzature, che riducono
+    i margini di profitto.
+  severity: medium
+  solution_hint: Automazione delle attività ripetitive con l'agente vocale, riducendo
+    i costi del personale e aumentando l'efficienza.
+- description: Mancanza di personale specializzato per gestire le richieste multilingue
+    o tecniche, limitando la clientela.
+  severity: low
+  solution_hint: L'agente può supportare più lingue e fornire informazioni tecniche,
+    espandendo la base di clienti senza assumere nuovo personale.
+typical_services:
+- Servizio funebre completo
+- Cremazione
+- Trasporto della salma
+- Allestimento della camera ardente
+- Servizi di commemorazione e celebrazione
+- Assistenza amministrativa e burocratica
+- Vendita di urne, corone e ricordi
+- Consulenza legale e successoria
+- Servizi religiosi personalizzati
+- Pianificazione anticipata delle esequie
+recommended_functions:
+- name: Prenotazione appuntamenti
+  priority: high
+  reason: Riduce il tempo di attesa per le famiglie e ottimizza l'agenda del personale.
+- name: Risposte a domande frequenti su servizi e prezzi
+  priority: high
+  reason: Fornisce informazioni immediate, alleviando l'ansia delle famiglie e liberando
+    il personale per compiti complessi.
+- name: Gestione delle richieste urgenti fuori orario
+  priority: medium
+  reason: Assicura che le emergenze siano gestite rapidamente, migliorando la reputazione
+    dell'impresa.
+- name: Invio di reminder per documenti e pagamenti
+  priority: medium
+  reason: Migliora il flusso di cassa e la conformità, riducendo gli errori amministrativi.
+- name: Supporto multilingue per clienti stranieri
+  priority: low
+  reason: Amplia il mercato e migliora l'esperienza del cliente in un'Italia sempre
+    più multiculturale.
+- name: Integrazione con sistemi CRM per tracciare le interazioni
+  priority: high
+  reason: Permette un follow-up personalizzato e aumenta le conversioni delle vendite.
+typical_integrations:
+- name: Sistemi CRM
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - SAP
+  priority: high
+- name: Software di fatturazione
+  examples:
+  - Fatture in Cloud
+  - Aruba
+  - InfoCamere
+  priority: high
+- name: Piattaforme per la gestione cimiteriale
+  examples:
+  - Cimiteri Digitali
+  - Necrologi Online
+  priority: medium
+- name: Sistemi di pagamento elettronico
+  examples:
+  - Nexi
+  - Satispay
+  - PayPal
+  priority: medium
+- name: Software per la conformità GDPR
+  examples:
+  - Privacy Toolkit
+  - GDPR Local
+  priority: high
+industry_faq:
+- question: Quali servizi sono inclusi in un pacchetto funebre completo?
+  answer_template: Un pacchetto completo include trasporto della salma, allestimento
+    camera ardente, servizio religioso o laico, e assistenza burocratica. Possiamo
+    personalizzarlo in base alle sue esigenze.
+- question: Quanto costa una cremazione in Italia?
+  answer_template: I costi variano da 1.500 a 4.000 euro, dipendendo da servizi aggiuntivi
+    come l'urna o la cerimonia. Offriamo preventivi gratuiti e trasparenti.
+- question: È possibile pianificare le esequie in anticipo?
+  answer_template: Sì, offriamo servizi di pianificazione anticipata per alleggerire
+    il carico emotivo e finanziario sulle famiglie. Possiamo discutere le opzioni
+    disponibili.
+- question: Come gestite la privacy dei dati secondo il GDPR?
+  answer_template: Utilizziamo sistemi sicuri e procedure conformi al GDPR per proteggere
+    tutte le informazioni personali. I dati sono trattati solo per scopi funerari.
+- question: Offrite servizi per non residenti o stranieri?
+  answer_template: Sì, supportiamo clienti stranieri con servizi multilingue e assistenza
+    per le pratiche internazionali. Contattaci per maggiori dettagli.
+- question: Quali sono i tempi per organizzare un funerale?
+  answer_template: In genere, possiamo organizzare un funerale entro 2-3 giorni, ma
+    dipende dalla disponibilità dei fornitori e delle autorità. Siamo disponibili
+    per urgenze.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi durante una chiamata
+    iniziale.
+  script: Buongiorno, comprendiamo che i costi sono una preoccupazione. Offriamo pacchetti
+    personalizzati a partire da 2.000 euro, con trasparenza completa. Posso inviarle
+    un preventivo dettagliato via email?
+  goal: Ottenere i dettagli di contatto per un follow-up e dimostrare valore senza
+    pressione.
+- trigger: service_inquiry
+  situation: Quando un cliente è interessato a servizi specifici come la cremazione.
+  script: Grazie per il suo interesse. La cremazione include servizi di base e opzioni
+    come urne o cerimonie. Possiamo programmare una consulenza per discutere le sue
+    preferenze in modo rispettoso.
+  goal: Prenotare un appuntamento per una vendita personalizzata.
+- trigger: urgent_request
+  situation: Quando una famiglia chiama per una necessità immediata fuori orario.
+  script: Mi dispiace per la sua perdita. Siamo qui per aiutarla 24/7. Posso avviare
+    subito le procedure e collegarla con il nostro responsabile. Mi dica cosa serve.
+  goal: Fornire supporto immediato e costruire fiducia per futuri servizi.
+- trigger: competitor_mention
+  situation: Quando il cliente confronta con altre imprese funerarie.
+  script: Apprezziamo il suo confronto. Ci distinguiamo per servizi personalizzati
+    e supporto locale, con attenzione ai dettagli che contano per le famiglie. Possiamo
+    mostrargli le recensioni dei nostri clienti.
+  goal: Differenziarsi dalla competizione e chiudere la vendita.
+competitors:
+- name: Funerali Italia
+  positioning: Catena nazionale con ampia copertura e prezzi competitivi.
+  strengths:
+  - Presenza in molte città
+  - Pacchetti standardizzati a basso costo
+  weaknesses:
+  - Servizi meno personalizzati
+  - Supporto clienti limitato
+  our_differentiation: Offriamo servizi su misura con attenzione alle tradizioni locali
+    e supporto empatico continuo.
+- name: Cattolica San Lorenzo
+  positioning: Impresa familiare storica con forte reputazione nella regione.
+  strengths:
+  - Esperienza decennale
+  - Fiducia della comunità locale
+  weaknesses:
+  - Tecnologia obsoleta
+  - Limitata disponibilità 24/7
+  our_differentiation: Combina la tradizione con innovazione digitale, come agenti
+    vocali AI per migliorare l'accessibilità e l'efficienza.
+- name: Servizi Funebri Roma
+  positioning: Specializzato in servizi per la capitale, con focus su clienti esteri.
+  strengths:
+  - Competenza in pratiche internazionali
+  - Posizione strategica
+  weaknesses:
+  - Prezzi elevati
+  - Poca flessibilità nei pacchetti
+  our_differentiation: Prezzi trasparenti e servizi adattabili, con supporto multilingue
+    integrato per tutti i clienti.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automazione delle chiamate in entrata per una piccola impresa funeraria
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Riduzione del 30% del tempo di gestione delle chiamate con l'agente vocale AI.
+  - Aumento del 20% delle prenotazioni grazie alla disponibilità 24/7.
+  - Conformità GDPR garantita, evitando sanzioni fino a 10.000 euro.
+market_context:
+  market_size: Circa 1 miliardo di euro all'anno
+  growth_rate: 2% YoY
+  key_trends:
+  - Aumento della domanda per servizi di cremazione
+  - Digitalizzazione delle pratiche amministrative
+  - Crescente attenzione alla personalizzazione delle cerimonie
+  seasonality:
+    high:
+    - Inverno
+    - Periodi festivi come Natale e Pasqua
+    low:
+    - Estate
+    - Mesi di luglio e agosto
+typical_objections:
+- objection: Non abbiamo bisogno di tecnologia, preferiamo il contatto umano.
+  response: Condividiamo il valore del contatto umano. Il nostro agente AI libera
+    il personale per interazioni più significative, migliorando il servizio senza
+    sostituirlo.
+- objection: I costi sono troppo alti per la nostra piccola impresa.
+  response: L'investimento si ripaga in pochi mesi con risparmi su personale e errori.
+    Offriamo piani flessibili per adattarsi al suo budget.
+- objection: Siamo preoccupati per la sicurezza dei dati con sistemi digitali.
+  response: Utilizziamo tecnologie conformi al GDPR con crittografia avanzata. Possiamo
+    mostrarle le nostre certificazioni di sicurezza.
+meta:
+  id: funeral
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

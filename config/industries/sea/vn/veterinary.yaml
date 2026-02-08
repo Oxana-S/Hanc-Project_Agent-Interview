@@ -1,0 +1,225 @@
+pain_points:
+- description: Khó khăn trong việc quản lý lịch hẹn khám thú cưng một cách hiệu quả,
+    dẫn đến quá tải hoặc trùng lịch.
+  severity: high
+  solution_hint: Tự động hóa việc đặt lịch và nhắc nhở qua điện thoại để giảm thiểu
+    sai sót.
+- description: Chi phí vận hành cao do nhân sự và vật tư y tế, đặc biệt trong bối
+    cảnh cạnh tranh.
+  severity: high
+  solution_hint: Tối ưu hóa quy trình và giảm chi phí nhân công qua tự động hóa cuộc
+    gọi.
+- description: Thiếu sự tương tác và theo dõi khách hàng sau khi khám, gây mất lòng
+    trung thành.
+  severity: medium
+  solution_hint: Sử dụng AI để gọi điện nhắc nhở tái khám và thu thập phản hồi tự
+    động.
+- description: Khó khăn trong việc quản lý kho thuốc và vật tư, dẫn đến thiếu hụt
+    hoặc lãng phí.
+  severity: medium
+  solution_hint: Tích hợp với hệ thống quản lý kho để gửi cảnh báo qua giọng nói khi
+    cần bổ sung.
+- description: Áp lực tuân thủ quy định PDPD về bảo mật thông tin khách hàng trong
+    lưu trữ và xử lý.
+  severity: high
+  solution_hint: Hỗ trợ tự động hóa các cuộc gọi tuân thủ với bảo mật dữ liệu tích
+    hợp.
+- description: Cạnh tranh gay gắt từ các phòng khám lớn với dịch vụ cao cấp, khiến
+    các cơ sở nhỏ khó tồn tại.
+  severity: medium
+  solution_hint: Cung cấp công cụ AI giá rẻ để nâng cao dịch vụ khách hàng và cạnh
+    tranh hiệu quả.
+typical_services:
+- Khám bệnh tổng quát cho thú cưng
+- Tiêm phòng vaccine định kỳ
+- Phẫu thuật và điều trị ngoại khoa
+- Chăm sóc răng miệng thú y
+- Xét nghiệm máu và chẩn đoán hình ảnh
+- Tư vấn dinh dưỡng và sức khỏe
+- Dịch vụ lưu chuồng và chăm sóc tại nhà
+- Spa và vệ sinh thú cưng
+- Khám cấp cứu 24/7
+- Tư vấn huấn luyện thú cưng
+recommended_functions:
+- name: Đặt lịch hẹn tự động
+  priority: high
+  reason: Giảm tải cho nhân viên và tăng độ chính xác trong quản lý lịch trình.
+- name: Nhắc nhở tái khám và thanh toán
+  priority: high
+  reason: Cải thiện tỷ lệ khách hàng quay lại và thu hồi nợ nhanh chóng.
+- name: Hỗ trợ khách hàng qua điện thoại
+  priority: medium
+  reason: Cung cấp thông tin dịch vụ nhanh chóng, giảm thời gian chờ đợi.
+- name: Thu thập phản hồi và đánh giá
+  priority: medium
+  reason: Hiểu rõ nhu cầu khách hàng để cải thiện dịch vụ.
+- name: Cảnh báo quản lý kho hàng
+  priority: low
+  reason: Ngăn ngừa thiếu hụt vật tư y tế quan trọng.
+- name: Tư vấn dịch vụ cơ bản
+  priority: low
+  reason: Hỗ trợ khách hàng mới với thông tin nhanh về giá cả và dịch vụ.
+typical_integrations:
+- name: Phần mềm quản lý phòng khám thú y
+  examples:
+  - PetPro
+  - VetManage
+  - CliniSoft
+  priority: high
+- name: Hệ thống POS và thanh toán
+  examples:
+  - Momo
+  - ZaloPay
+  - cổng thanh toán ngân hàng địa phương
+  priority: high
+- name: Công cụ quản lý quan hệ khách hàng (CRM)
+  examples:
+  - Salesforce
+  - CRM đơn giản phát triển nội bộ
+  priority: medium
+- name: Hệ thống quản lý kho và tồn kho
+  examples:
+  - InventorySoft
+  - phần mềm kế toán
+  priority: medium
+- name: Nền tảng tuân thủ dữ liệu PDPD
+  examples:
+  - Hệ thống mã hóa dữ liệu cục bộ
+  priority: high
+industry_faq:
+- question: Giá khám bệnh cho chó mèo là bao nhiêu?
+  answer_template: Xin chào, giá khám bệnh cơ bản dao động từ 100.000 VND đến 300.000
+    VND tùy loại thú cưng. Chúng tôi có thể cung cấp báo giá chi tiết qua cuộc gọi.
+- question: Có dịch vụ khám cấp cứu vào ban đêm không?
+  answer_template: Vâng, chúng tôi có dịch vụ khám cấp cứu 24/7 với phí bổ sung. Vui
+    lòng gọi số hotline để được hỗ trợ ngay.
+- question: Làm thế nào để đặt lịch hẹn tiêm phòng?
+  answer_template: Bạn có thể đặt lịch hẹn tiêm phòng qua điện thoại tự động của chúng
+    tôi. Chúng tôi sẽ xác nhận và nhắc nhở trước ngày hẹn.
+- question: Có chính sách bảo hành cho phẫu thuật không?
+  answer_template: Có, chúng tôi cung cấp bảo hành tùy thuộc vào loại phẫu thuật.
+    Chi tiết sẽ được thảo luận trong buổi tư vấn trước phẫu thuật.
+- question: Làm sao để theo dõi sức khỏe thú cưng sau khi khám?
+  answer_template: Chúng tôi có dịch vụ gọi điện tự động để theo dõi và nhắc nhở tái
+    khám. Bạn sẽ nhận được cuộc gọi định kỳ từ hệ thống AI của chúng tôi.
+- question: Có hỗ trợ thanh toán qua ví điện tử không?
+  answer_template: Có, chúng tôi chấp nhận thanh toán qua Momo, ZaloPay và các ví
+    điện tử phổ biến khác tại Việt Nam.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá cả dịch vụ AI voice agent.
+  script: Xin chào, cảm ơn bạn đã quan tâm. Giá dịch vụ AI voice agent của chúng tôi
+    bắt đầu từ 500.000 VND mỗi tháng, giúp tiết kiệm đến 30% chi phí nhân sự. Bạn
+    có muốn tôi giải thích thêm về lợi ích không?
+  goal: Thu hút sự quan tâm và hướng đến cuộc gọi tư vấn chi tiết.
+- trigger: service_inquiry
+  situation: Khi khách hàng muốn biết cách AI có thể hỗ trợ phòng khám thú y.
+  script: Chào bạn, AI voice agent của chúng tôi có thể tự động đặt lịch, nhắc nhở
+    khách hàng, và hỗ trợ 24/7. Điều này giúp tăng hiệu quả vận hành và cải thiện
+    trải nghiệm khách hàng. Bạn có thử dùng bản demo miễn phí không?
+  goal: Giới thiệu dịch vụ và thúc đẩy dùng thử.
+- trigger: competitor_mention
+  situation: Khi khách hàng so sánh với đối thủ cạnh tranh.
+  script: Tôi hiểu có nhiều lựa chọn trên thị trường. Tuy nhiên, AI của chúng tôi
+    được tối ưu cho thị trường Việt Nam với tích hợp PDPD và giá cả phải chăng. Chúng
+    tôi cung cấp hỗ trợ tùy chỉnh để phù hợp với nhu cầu cụ thể của bạn.
+  goal: Nhấn mạnh sự khác biệt và giá trị gia tăng.
+- trigger: objection_high_cost
+  situation: Khi khách hàng phản đối vì chi phí cao.
+  script: Tôi hiểu mối quan ngại của bạn. Nhưng với AI, bạn có thể tiết kiệm hàng
+    triệu VND mỗi tháng từ việc giảm nhân công và tăng doanh thu từ khách hàng trung
+    thành. Hãy để tôi tính toán ROI cụ thể cho phòng khám của bạn.
+  goal: Vượt qua phản đối và chứng minh giá trị đầu tư.
+competitors:
+- name: Phòng khám Thú y PetCare Việt Nam
+  positioning: Chuỗi phòng khám cao cấp với dịch vụ toàn diện.
+  strengths:
+  - Cơ sở vật chất hiện đại
+  - đội ngũ bác sĩ giàu kinh nghiệm
+  - danh tiếng tốt
+  weaknesses:
+  - Chi phí cao
+  - ít tập trung vào tự động hóa
+  - dịch vụ khách hàng chưa linh hoạt
+  our_differentiation: Cung cấp giải pháp AI giá rẻ để các phòng khám nhỏ cạnh tranh,
+    với tự động hóa tăng hiệu quả.
+- name: Bệnh viện Thú y Sài Gòn
+  positioning: Bệnh viện lớn với dịch vụ chuyên sâu và nghiên cứu.
+  strengths:
+  - Uy tín lâu năm
+  - thiết bị y tế tiên tiến
+  - dịch vụ đa dạng
+  weaknesses:
+  - Quy mô lớn dẫn đến thủ tục phức tạp
+  - chi phí vận hành cao
+  - ít cá nhân hóa
+  our_differentiation: AI voice agent giúp đơn giản hóa quy trình và cá nhân hóa dịch
+    vụ khách hàng với chi phí thấp.
+- name: Công ty Công nghệ VetTech Đông Nam Á
+  positioning: Cung cấp phần mềm quản lý thú y trong khu vực SEA.
+  strengths:
+  - Giải pháp công nghệ tích hợp
+  - hỗ trợ đa ngôn ngữ
+  - phạm vi rộng
+  weaknesses:
+  - Giá cao
+  - ít tối ưu cho thị trường Việt Nam cụ thể
+  - hỗ trợ khách hàng chậm
+  our_differentiation: Tập trung vào thị trường Việt Nam với giải pháp AI bằng tiếng
+    Việt, tuân thủ PDPD, và giá cả cạnh tranh.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Phòng khám nhỏ tiết kiệm nhân công lễ tân và tăng tỷ lệ tái khám.
+    monthly_cost: 1000000
+    monthly_savings: 1500000
+    payback_months: 1
+  value_anchors:
+  - Chỉ với 500.000 VND mỗi tháng, bạn có thể tự động hóa 50% cuộc gọi khách hàng.
+  - Tiết kiệm đến 3 triệu VND hàng tháng từ giảm chi phí nhân sự và tăng doanh thu.
+  - Đầu tư AI có ROI dưới 6 tháng cho hầu hết phòng khám thú y tại Việt Nam.
+market_context:
+  market_size: Khoảng 10.000 phòng khám thú y trên toàn quốc, với tổng giá trị thị
+    trường ước tính 5.000 tỷ VND.
+  growth_rate: 15% mỗi năm do xu hướng nuôi thú cưng tăng.
+  key_trends:
+  - Sự gia tăng nuôi thú cưng trong các gia đình trẻ tại đô thị.
+  - Nhu cầu dịch vụ chăm sóc thú cưng cao cấp và tiện lợi.
+  - Áp dụng công nghệ số hóa trong quản lý phòng khám.
+  seasonality:
+    high:
+    - Tháng 12 đến tháng 2 do dịp lễ Tết
+    - mùa hè do nhu cầu tiêm phòng tăng
+    low:
+    - Tháng 6 đến tháng 8 do mùa mưa ảnh hưởng đến khám chữa bệnh
+typical_objections:
+- objection: Tôi không cần AI vì nhân viên của tôi đã làm tốt công việc.
+  response: Tôi hiểu điều đó. Nhưng AI có thể hỗ trợ nhân viên tập trung vào công
+    việc chuyên môn hơn, đồng thời giảm sai sót và tăng năng suất tổng thể.
+- objection: Chi phí đầu tư ban đầu quá cao so với ngân sách của tôi.
+  response: Chúng tôi có gói dịch vụ linh hoạt với giá bắt đầu từ 500.000 VND, và
+    ROI nhanh chóng sẽ bù đắp chi phí. Hãy thử bản demo miễn phí để trải nghiệm.
+- objection: Tôi lo ngại về bảo mật dữ liệu khách hàng với AI.
+  response: Hệ thống của chúng tôi tuân thủ nghiêm ngặt PDPD và sử dụng mã hóa dữ
+    liệu. Chúng tôi có thể cung cấp tài liệu đảm bảo bảo mật để bạn yên tâm.
+- objection: AI không thể thay thế sự tương tác con người trong chăm sóc thú cưng.
+  response: Đúng vậy, AI không thay thế mà bổ trợ. Nó xử lý các tác vụ lặp đi lặp
+    lại, giúp nhân viên có thời gian cho tương tác chất lượng hơn với khách hàng.
+meta:
+  id: veterinary
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

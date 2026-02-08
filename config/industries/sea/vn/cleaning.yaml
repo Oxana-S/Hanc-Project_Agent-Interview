@@ -1,0 +1,192 @@
+pain_points:
+- description: Khó khăn trong việc tuyển dụng và quản lý nhân viên dọn dẹp ổn định, thường xuyên gặp tình trạng nghỉ việc đột xuất.
+  severity: high
+  solution_hint: AI có thể tự động xử lý đặt lịch, phân công công việc và thông báo cho khách hàng khi có thay đổi, giảm áp lực quản lý nhân sự.
+- description: Khách hàng thường hủy lịch hoặc thay đổi giờ giấc vào phút chót, gây lãng phí thời gian và nhân lực.
+  severity: high
+  solution_hint: Agent tự động gọi xác nhận lịch trước ngày làm việc và xử lý các yêu cầu thay đổi lịch ngay lập tức.
+- description: Khó khăn trong việc định giá cạnh tranh và minh bạch với khách hàng, dẫn đến mất nhiều thời gian thương lượng.
+  severity: medium
+  solution_hint: Cung cấp báo giá tức thì dựa trên diện tích và loại hình dịch vụ, giải thích rõ ràng các gói giá trị.
+- description: Không có hệ thống theo dõi và nhắc nhở thanh toán hiệu quả, dẫn đến nợ xấu và mất thời gian đòi tiền.
+  severity: medium
+  solution_hint: Tự động gửi hóa đơn điện tử và nhắc nhở thanh toán qua nhiều kênh (SMS, Zalo, Cuộc gọi).
+- description: Phản hồi chất lượng dịch vụ từ khách hàng chậm trễ hoặc không có, khó cải thiện dịch vụ.
+  severity: low
+  solution_hint: Tự động khảo sát mức độ hài lòng sau mỗi lần làm việc và thu thập ý kiến phản hồi.
+- description: Cạnh tranh khốc liệt từ các cá nhân tự làm và các ứng dụng đặt dịch vụ lớn, làm giảm biên lợi nhuận.
+  severity: high
+  solution_hint: Nhấn mạnh giá trị khác biệt như đội ngũ được đào tạo, bảo hiểm và quy trình chuẩn hóa trong các cuộc gọi tư vấn.
+typical_services:
+- Dọn dẹp nhà ở định kỳ
+- Dọn dẹp nhà ở một lần (tổng vệ sinh)
+- Vệ sinh văn phòng/công ty
+- Vệ sinh sau xây dựng
+- Giặt thảm, rèm cửa
+- Đánh bóng sàn
+- Vệ sinh cửa kính tòa nhà cao tầng
+- Dọn dẹp, sắp xếp nhà cửa (home organizing)
+- Vệ sinh máy lạnh
+- Diệt côn trùng, khử mùi
+recommended_functions:
+- name: Đặt lịch & điều phối tự động
+  priority: high
+  reason: Giải quyết điểm đau chính về quản lý lịch trình và nhân sự, tăng hiệu quả vận hành.
+- name: Báo giá & tư vấn gói dịch vụ
+  priority: high
+  reason: Khách hàng Việt Nam thường quan tâm giá đầu tiên, cần cung cấp thông tin nhanh và rõ ràng.
+- name: Xử lý khiếu nại & phản hồi tự động
+  priority: medium
+  reason: Cải thiện trải nghiệm khách hàng và giữ chân họ bằng cách giải quyết vấn đề kịp thời.
+- name: Nhắc lịch & xác nhận cuộc hẹn
+  priority: high
+  reason: Giảm thiểu tình trạng khách hủy hoặc quên lịch, tối ưu hóa lịch làm việc của nhân viên.
+- name: Thu thập đánh giá sau dịch vụ
+  priority: low
+  reason: Giúp doanh nghiệp có dữ liệu để cải thiện chất lượng và xây dựng uy tín.
+- name: Nhắc thanh toán & gửi hóa đơn
+  priority: medium
+  reason: Tự động hóa quy trình tài chính, cải thiện dòng tiền và giảm công sức quản lý.
+typical_integrations:
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast
+  - Ketoan.pro
+  priority: high
+- name: Nền tảng đặt dịch vụ
+  examples:
+  - JupViec
+  - CleanVi
+  - BookingCare
+  priority: medium
+- name: Công cụ nhắn tin & MXH
+  examples:
+  - Zalo OA
+  - Facebook Messenger
+  priority: high
+- name: Phần mềm quản lý công việc
+  examples:
+  - Base.vn
+  - 1Office
+  priority: medium
+- name: Cổng thanh toán điện tử
+  examples:
+  - Momo
+  - VNPay
+  - ZaloPay
+  priority: high
+industry_faq:
+- question: Dịch vụ của các bạn có đảm bảo vệ sinh sạch sẽ không?
+  answer_template: Chúng tôi cam kết chất lượng với đội ngũ nhân viên được đào tạo bài bản, sử dụng hóa chất chuyên dụng an toàn. Nếu quý khách không hài lòng, chúng tôi sẽ dọn lại hoàn toàn miễn phí.
+- question: Giá dịch vụ được tính như thế nào?
+  answer_template: Giá dịch vụ thường dựa trên diện tích (m2), tình trạng thực tế và loại hình công việc. Tôi có thể cung cấp báo giá sơ bộ ngay. Để báo giá chính xác nhất, chúng tôi sẽ cử người khảo sát
+    thực tế miễn phí.
+- question: Nhân viên có mang theo dụng cụ và hóa chất không?
+  answer_template: Vâng, nhân viên của chúng tôi sẽ mang đầy đủ dụng cụ và hóa chất chuyên nghiệp, an toàn cho sức khỏe. Quý khách chỉ cần chuẩn bị nguồn điện và nước.
+- question: Tôi có cần ở nhà giám sát không?
+  answer_template: Không bắt buộc. Nhân viên của chúng tôi làm việc chuyên nghiệp và đáng tin cậy. Tuy nhiên, nếu quý khách muốn giám sát hoặc có yêu cầu đặc biệt, vui lòng thông báo trước.
+- question: Có hợp đồng và hóa đơn đầy đủ không?
+  answer_template: Có, chúng tôi cung cấp hợp đồng dịch vụ rõ ràng và hóa đơn VAT đầy đủ theo quy định pháp luật Việt Nam, đảm bảo quyền lợi cho cả đôi bên.
+- question: Làm thế nào để đặt lịch và thanh toán?
+  answer_template: 'Quý khách có thể đặt lịch ngay qua cuộc gọi này. Chúng tôi hỗ trợ nhiều hình thức thanh toán linh hoạt: tiền mặt, chuyển khoản ngân hàng hoặc qua ví điện tử MoMo, ZaloPay.'
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá trong lần đầu tư vấn.
+  script: Vâng, tôi hiểu giá cả là yếu tố quan trọng. Thay vì một mức giá chung, chúng tôi có các gói dịch vụ linh hoạt dựa trên diện tích và nhu cầu cụ thể của gia đình/công ty bạn. Ví dụ, dọn dẹp căn
+    hộ 60m2 định kỳ sẽ có mức giá khác với tổng vệ sinh nhà sau xây dựng. Để tôi có thể báo giá chính xác và tiết kiệm nhất cho bạn, bạn có thể cho tôi biết diện tích cần dọn dẹp và tình trạng hiện tại
+    được không ạ?
+  goal: Thu thập thông tin cụ thể để báo giá, chuyển hướng từ giá rẻ sang giá trị nhận được.
+- trigger: hesitation_comparison
+  situation: Khi khách hành so sánh giá với dịch vụ cá nhân hoặc đối thủ khác.
+  script: 'Tôi hoàn toàn hiểu bạn muốn tìm lựa chọn tốt nhất. Điểm khác biệt của chúng tôi không chỉ ở công việc dọn dẹp, mà là một dịch vụ chuyên nghiệp trọn gói: nhân viên được đào tạo & mặc đồng phục,
+    bảo hiểm trách nhiệm nếu có sự cố, hóa chất an toàn có kiểm định, và cam kết dọn lại nếu không hài lòng. Điều này giúp bạn tiết kiệm thời gian, công sức giám sát và hoàn toàn yên tâm. Một sự đầu tư
+    nhỏ cho sự an tâm lớn, bạn nghĩ sao ạ?'
+  goal: Vượt qua rào cản giá bằng cách nhấn mạnh giá trị gia tăng, sự chuyên nghiệp và giảm rủi ro.
+- trigger: request_discount
+  situation: Khi khách hàng yêu cầu giảm giá hoặc khuyến mãi.
+  script: 'Tôi đánh giá cao đề nghị của bạn. Hiện tại, chúng tôi có chính sách ưu đãi đặc biệt khi đặt gói dịch vụ định kỳ (ví dụ: hàng tuần hoặc hàng tháng) với mức giá ưu đãi hơn so với đặt lẻ, đồng thời
+    đảm bảo lịch trình ổn định cho bạn. Ngoài ra, chúng tôi có chương trình giới thiệu bạn bè nhận voucher giảm giá. Bạn có quan tâm đến gói định kỳ để vừa tiết kiệm chi phí dài hạn, vừa luôn có không gian
+    sạch sẽ không ạ?'
+  goal: Giữ vững giá trị, chuyển hướng sang bán gói dài hạn hoặc chương trình trung thành thay vì giảm giá trực tiếp.
+competitors:
+- name: JupViec
+  positioning: Nền tảng kết nối người giúp việc và khách hàng hàng đầu.
+  strengths:
+  - Thương hiệu lớn
+  - Ứng dụng tiện lợi
+  - Số lượng người giúp việc đông đảo
+  weaknesses:
+  - Chất lượng dịch vụ không đồng đều
+  - Khó kiểm soát trực tiếp nhân viên
+  - Tập trung chủ yếu vào giúp việc gia đình
+  our_differentiation: Tập trung vào dịch vụ vệ sinh chuyên nghiệp B2B & B2C với đội ngũ được đào tạo bài bản, quy trình chuẩn hóa và quản lý chất lượng chặt chẽ.
+- name: CleanVi
+  positioning: Dịch vụ vệ sinh công nghiệp và văn phòng.
+  strengths:
+  - Chuyên nghiệp trong vệ sinh công nghiệp
+  - Có kinh nghiệm với dự án lớn
+  weaknesses:
+  - Giá thành cao
+  - Ít linh hoạt với khách hàng cá nhân nhỏ lẻ
+  - Quy trình đặt lịch có thể phức tạp
+  our_differentiation: Cung cấp giải pháp linh hoạt cho cả hộ gia đình và doanh nghiệp vừa & nhỏ, với công nghệ đặt lịch & CSKH tự động thân thiện, giá cả cạnh tranh hơn.
+- name: Các cá nhân/tổ nhóm tự do
+  positioning: Dịch vụ vệ sinh giá rẻ, địa phương.
+  strengths:
+  - Giá rẻ
+  - Linh hoạt trong thương lượng
+  - Quen thuộc với khu vực
+  weaknesses:
+  - Không chuyên nghiệp, không đồng phục
+  - Không có bảo hiểm/ hợp đồng rõ ràng
+  - Chất lượng phụ thuộc vào cá nhân
+  - Không ổn định
+  our_differentiation: Dịch vụ đáng tin cậy với hợp đồng, hóa đơn rõ ràng, nhân viên được đào tạo và có bảo hiểm, đảm bảo an toàn và trách nhiệm cho tài sản của khách hàng.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 500000
+  - 10000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: Văn phòng 100m2, dọn dẹp 2 lần/tuần so với thuê nhân viên toàn thời gian
+    monthly_cost: 4000000
+    monthly_savings: 6000000
+    payback_months: 1
+  - scenario: Tổng vệ sinh căn hộ 70m2 sau xây dựng, tiết kiệm 2 ngày công tự làm
+    monthly_cost: 2500000
+    monthly_savings: 6250000
+    payback_months: 1
+  value_anchors:
+  - Chỉ từ 500,000 VND cho lần dọn đầu tiên
+  - Tiết kiệm đến 50% chi phí so với thuê nhân viên vệ sinh toàn thời gian
+  - Đầu tư 1 giờ công nghệ, tiết kiệm 10 giờ công sức của bạn
+meta:
+  id: cleaning
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning
+market_context:
+  market_size: Khoảng 5.000 tỷ VND
+  growth_rate: 8-10%
+  key_trends:
+  - Tăng trưởng nhu cầu dịch vụ vệ sinh chuyên nghiệp tại các thành phố lớn như Hà Nội và TP.HCM
+  - Sự quan tâm ngày càng cao đến vệ sinh an toàn, sử dụng hóa chất thân thiện môi trường
+  - Ứng dụng công nghệ số trong đặt lịch và quản lý dịch vụ
+  - Xu hướng thuê dịch vụ vệ sinh định kỳ cho văn phòng và căn hộ chung cư
+  seasonality:
+    high:
+    - Tết Nguyên Đán
+    - Cuối năm (tháng 11, 12)
+    low:
+    - Mùa mưa (tháng 6, 7, 8)

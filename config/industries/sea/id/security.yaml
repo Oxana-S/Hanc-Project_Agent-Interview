@@ -1,0 +1,210 @@
+pain_points:
+- description: Kesulitan dalam memantau keamanan 24/7 karena biaya tenaga penjaga keamanan yang tinggi
+  severity: high
+  solution_hint: AI voice agent dapat menangani pemantauan awal dan pemberitahuan, mengurangi ketergantungan pada staf manusia
+- description: Respons lambat terhadap insiden keamanan karena sistem yang tidak terintegrasi
+  severity: high
+  solution_hint: Voice agent dapat mengotomatisasi pemberitahuan insiden dan menghubungi pihak terkait secara instan
+- description: Pelatihan staf keamanan yang tidak konsisten dan memakan waktu
+  severity: medium
+  solution_hint: AI dapat memberikan pelatihan virtual dan penilaian berkala untuk staf keamanan
+- description: Sulitnya melacak dan mengelola izin akses untuk banyak karyawan
+  severity: medium
+  solution_hint: Voice agent dapat mengelola permintaan izin akses dan verifikasi identitas secara otomatis
+- description: Pemeliharaan peralatan keamanan yang sering terlupakan
+  severity: medium
+  solution_hint: AI dapat mengingatkan jadwal pemeliharaan dan troubleshooting dasar
+- description: Komunikasi tidak efektif antar tim keamanan di berbagai lokasi
+  severity: low
+  solution_hint: Voice agent dapat berfungsi sebagai pusat komunikasi terpadu untuk koordinasi tim
+- description: Kepatuhan terhadap regulasi PDP yang kompleks dan sering berubah
+  severity: high
+  solution_hint: AI dapat memberikan panduan kepatuhan dan memastikan prosedur sesuai dengan PDP
+typical_services:
+- Sistem CCTV dan pemantauan video
+- Penjagaan keamanan fisik
+- Sistem akses kontrol dan kartu pintar
+- Deteksi kebakaran dan sistem alarm
+- Keamanan siber untuk bisnis
+- Pengawasan perimeter dengan sensor
+- Konsultasi penilaian risiko keamanan
+- Manajemen aset dan keamanan gudang
+- Pelatihan kesadaran keamanan staf
+- Response team darurat keamanan
+recommended_functions:
+- name: Pemantauan dan pemberitahuan insiden otomatis
+  priority: high
+  reason: Respons cepat penting untuk mencegah kerugian yang lebih besar
+- name: Penjadwalan dan manajemen shift penjaga
+  priority: medium
+  reason: Mengoptimalkan penggunaan sumber daya manusia dan mengurangi kesalahan
+- name: Verifikasi identitas melalui voice biometric
+  priority: high
+  reason: Meningkatkan keamanan akses dengan teknologi modern
+- name: Panduan kepatuhan regulasi otomatis
+  priority: high
+  reason: PDP merupakan regulasi penting yang harus dipatuhi
+- name: Pelaporan insiden real-time
+  priority: medium
+  reason: Dokumentasi yang akurat penting untuk investigasi dan asuransi
+- name: Pengingat pemeliharaan perangkat
+  priority: low
+  reason: Memastikan peralatan keamanan selalu berfungsi optimal
+typical_integrations:
+- name: Sistem CCTV lokal
+  examples:
+  - Hikvision
+  - Dahua
+  - Panasonic Indonesia
+  priority: high
+- name: Software manajemen keamanan
+  examples:
+  - SMAT
+  - Guardso
+  - SecurityMax
+  priority: high
+- name: Sistem akses kontrol
+  examples:
+  - Suprema
+  - ZKTeco
+  - Matrix
+  priority: medium
+- name: Platform komunikasi
+  examples:
+  - WhatsApp Business API
+  - Telkomsel API
+  priority: medium
+- name: Sistem ERP lokal
+  examples:
+  - HashMicro
+  - Wings
+  - SAP Indonesia
+  priority: low
+industry_faq:
+- question: Bagaimana sistem ini mematuhi regulasi PDP Indonesia?
+  answer_template: Sistem kami dirancang khusus untuk mematuhi UU PDP dengan enkripsi data, penyimpanan lokal, dan mekanisme persetujuan yang sesuai dengan regulasi Indonesia.
+- question: Apakah sistem dapat terintegrasi dengan CCTV yang sudah ada?
+  answer_template: Ya, sistem kami mendukung integrasi dengan mayoritas merek CCTV yang umum digunakan di Indonesia termasuk Hikvision dan Dahua.
+- question: Berapa lama waktu implementasi sistem?
+  answer_template: Implementasi dasar membutuhkan 2-4 minggu tergantung kompleksitas infrastruktur keamanan yang sudah ada.
+- question: Apakah tersedia dukungan teknis lokal?
+  answer_template: Kami memiliki tim dukungan teknis lokal yang tersedia 24/7 dengan respon dalam 2 jam untuk masalah kritis.
+- question: Bagaimana sistem menangani gangguan jaringan internet?
+  answer_template: Sistem memiliki mode offline dengan penyimpanan data lokal dan akan sinkronisasi otomatis saat jaringan pulih.
+- question: Apakah tersaga versi mobile untuk monitoring?
+  answer_template: Ya, kami menyediakan aplikasi mobile yang kompatibel dengan iOS dan Android untuk monitoring real-time.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon klien menanyakan harga di awal percakapan
+  script: Halo, untuk sistem keamanan terintegrasi dengan AI voice agent, biaya mulai dari Rp 3-15 juta per bulan tergantung skala dan kebutuhan. Bisakah saya tahu ukuran properti dan jumlah titik yang
+    perlu diamankan agar dapat memberikan estimasi yang lebih akurat?
+  goal: Mendapatkan informasi lebih detail sambil menunjukkan fleksibilitas harga
+- trigger: competitor_comparison
+  situation: Klien menyebut kompetitor dengan harga lebih murah
+  script: Saya mengerti pentingnya anggaran. Perbedaan harga biasanya terkait dengan fitur otomatisasi AI yang kami tawarkan. Sistem kami dapat mengurangi kebutuhan staf penjaga hingga 30%, yang dalam 6-12
+    bulan biasanya sudah ROI. Maukah saya tunjukkan simulasi penghematannya?
+  goal: Mengalihkan fokus dari harga ke ROI dan efisiensi jangka panjang
+- trigger: security_concern
+  situation: Klien mengungkapkan keamanan data sebagai kekhawatiran utama
+  script: Kekhawatiran Anda sangat valid. Sistem kami menyimpan data di server lokal Indonesia dan sudah sesuai dengan UU PDP. Kami juga memiliki sertifikasi keamanan siber dari BSSN. Data Anda akan diamankan
+    dengan enkripsi end-to-end.
+  goal: Membangun kepercayaan dengan penjelasan teknis dan kepatuhan regulasi
+- trigger: implementation_time
+  situation: Klien membutuhkan solusi cepat
+  script: Kami memahami urgensi kebutuhan keamanan. Untuk implementasi dasar, kami dapat menyelesaikan dalam 10 hari kerja dengan tim khusus. Proses mencakup instalasi, integrasi, dan pelatihan staf. Apakah
+    timeline ini sesuai dengan kebutuhan Anda?
+  goal: Menawarkan solusi cepat dengan timeline yang jelas
+competitors:
+- name: Proguard Security
+  positioning: Penyedia keamanan fisik terbesar di Indonesia
+  strengths:
+  - Jaringan luas di seluruh Indonesia
+  - Pengalaman lebih dari 20 tahun
+  - Staf penjaga terlatih
+  weaknesses:
+  - Teknologi yang kurang modern
+  - Proses manual masih dominan
+  - Biaya operasional tinggi
+  our_differentiation: Solusi berbasis AI yang mengurangi ketergantungan pada tenaga manusia hingga 40% dengan biaya lebih efisien
+- name: Secom Indonesia
+  positioning: Perusahaan keamanan asal Jepang dengan teknologi tinggi
+  strengths:
+  - Teknologi canggih
+  - Standar internasional
+  - Monitoring 24/7
+  weaknesses:
+  - Harga premium
+  - Kurang familiar dengan regulasi lokal
+  - Respons lambat untuk wilayah tertentu
+  our_differentiation: Teknologi setara dengan harga lebih kompetitif dan pemahaman mendalam tentang pasar dan regulasi Indonesia
+- name: Satpam Online
+  positioning: Startup keamanan berbasis aplikasi
+  strengths:
+  - Model bisnis inovatif
+  - Harga terjangkau
+  - Aplikasi user-friendly
+  weaknesses:
+  - Jangkauan terbatas
+  - Dukungan teknis kurang
+  - Integrasi perangkat terbatas
+  our_differentiation: Kombinasi teknologi AI canggih dengan dukungan lokal yang kuat dan integrasi perangkat yang lebih luas
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 3000000
+  - 30000000
+  entry_point: 3000000
+  roi_examples:
+  - scenario: Perusahaan logistik dengan 3 gudang
+    monthly_cost: 12500000
+    monthly_savings: 20138900
+    payback_months: 9
+  - scenario: Gedung perkantoran 20 lantai
+    monthly_cost: 18000000
+    monthly_savings: 28636400
+    payback_months: 11
+  value_anchors:
+  - Pengurangan biaya penjaga keamanan hingga 40%
+  - Respons insiden 3x lebih cepat
+  - Kepatuhan PDP terjamin dengan sistem terotomatisasi
+  - Peningkatan produktivitas staf keamanan 50%
+market_context:
+  market_size: Rp 45 triliun (2024)
+  growth_rate: 12% YoY
+  key_trends:
+  - Adopsi teknologi IoT untuk keamanan semakin meningkat
+  - Permintaan solusi keamanan terintegrasi tumbuh pesat
+  - Kepatuhan PDP mendorong modernisasi sistem keamanan
+  - Perusahaan beralih dari keamanan reaktif ke proaktif
+  seasonality:
+    high:
+    - Desember-Januari (musim liburan)
+    - Juni-Juli (pertengahan tahun)
+    low:
+    - September-Oktober
+typical_objections:
+- objection: Kami sudah memiliki sistem keamanan yang cukup
+  response: Saya mengerti. Sistem yang ada mungkin sudah memadai, namun dengan teknologi AI terbaru, kami dapat mengoptimalkannya sehingga lebih efisien dan mengurangi biaya operasional jangka panjang.
+    Bolehkah saya melakukan assessment gratis untuk melihat peluang peningkatan?
+- objection: Biaya terlalu tinggi untuk anggaran kami
+  response: Investasi keamanan memang membutuhkan anggaran, namun sistem kami dirancang untuk memberikan ROI dalam 6-12 bulan melalui pengurangan biaya operasional. Kami juga menawarkan paket bertahap sesuai
+    kemampuan anggaran.
+- objection: Kami tidak yakin dengan teknologi baru
+  response: Kekhawatiran Anda wajar. Sistem kami dirancang user-friendly dengan pelatihan lengkap. 85% klien kami melaporkan kemudahan penggunaan dalam 2 minggu pertama. Kami juga menyediakan dukungan teknis
+    24/7.
+- objection: Proses migrasi akan mengganggu operasional
+  response: Kami melakukan implementasi bertahap di luar jam operasional utama untuk meminimalkan gangguan. Tim kami berpengalaman dalam migrasi smooth dengan downtime minimal.
+meta:
+  id: security
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- security
+- guard service
+- surveillance
+- alarm systems
+_extends: _base/security

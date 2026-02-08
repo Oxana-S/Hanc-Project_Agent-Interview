@@ -1,0 +1,202 @@
+pain_points:
+- description: Gestión compleja de inventario con productos perecederos y tendencias
+    cambiantes.
+  severity: high
+  solution_hint: El agente de voz IA puede automatizar alertas de stock bajo y sugerir
+    reposiciones basadas en ventas históricas.
+- description: Alta competencia de cadenas grandes como Primor y Druni que presionan
+    los precios.
+  severity: medium
+  solution_hint: IA puede analizar precios de competencia y recomendar estrategias
+    de precios dinámicos.
+- description: Cumplimiento estricto de GDPR en el manejo de datos de clientes para
+    marketing y ventas.
+  severity: high
+  solution_hint: Automatizar la gestión de consentimientos y actualizaciones de datos
+    mediante llamadas de voz.
+- description: Fluctuaciones estacionales en la demanda, con picos en Navidad y verano.
+  severity: medium
+  solution_hint: IA puede predecir demanda usando datos históricos y ajustar pedidos
+    automáticamente.
+- description: Costos elevados de envío y logística, especialmente para pedidos pequeños.
+  severity: high
+  solution_hint: Optimizar rutas de entrega y consolidar pedidos con integraciones
+    de software logístico.
+- description: Dificultad para fidelizar clientes en un mercado con alta rotación
+    de productos.
+  severity: medium
+  solution_hint: Programar recordatorios de recompra y ofertas personalizadas basadas
+    en preferencias.
+typical_services:
+- Venta al por mayor de cosméticos y maquillaje
+- Distribución de productos profesionales para peluquerías
+- Asesoramiento técnico sobre productos de belleza
+- Venta online B2B y B2C de suministros de belleza
+- Servicio de suscripción para kits de productos
+- Personalización de marcas blancas para retailers
+- Formación en uso de equipos y cosméticos
+- Alquiler de aparatología estética
+- Gestión de inventario para minoristas
+- Servicio de logística y entrega a domicilio
+recommended_functions:
+- name: Toma de pedidos por voz
+  priority: high
+  reason: Acelera el proceso de compra y reduce errores en pedidos frecuentes.
+- name: Consulta de disponibilidad de productos
+  priority: high
+  reason: Proporciona información en tiempo real, mejorando la satisfacción del cliente.
+- name: Programación de citas para demostraciones o asesorías
+  priority: medium
+  reason: Aumenta las ventas cruzadas y la lealtad del cliente.
+- name: Recordatorio de pagos pendientes
+  priority: low
+  reason: Mejora el flujo de caja con seguimiento automático.
+- name: Encuestas post-venta de satisfacción
+  priority: medium
+  reason: Recopila feedback valioso para mejorar servicios.
+- name: Actualización de datos de clientes cumpliendo GDPR
+  priority: high
+  reason: Garantiza el cumplimiento normativo en cada interacción.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - PrestaShop
+  - WooCommerce
+  priority: high
+- name: Software CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Sistemas de logística y envío
+  examples:
+  - Logista
+  - Correos
+  priority: medium
+- name: Pasarelas de pago
+  examples:
+  - Redsys
+  - Stripe
+  priority: high
+industry_faq:
+- question: ¿Ofrecen envío gratuito en España?
+  answer_template: Sí, ofrecemos envío gratuito para pedidos superiores a 50€ en la
+    península.
+- question: ¿Tienen productos veganos y cruelty-free?
+  answer_template: Absolutamente, contamos con una amplia gama certificada de productos
+    veganos y no testados en animales.
+- question: ¿Cómo manejan las devoluciones de productos?
+  answer_template: Aceptamos devoluciones dentro de los 30 días posteriores a la compra,
+    siempre que los productos estén sin usar.
+- question: ¿Proveen a salones de belleza y peluquerías?
+  answer_template: Sí, ofrecemos descuentos especiales y condiciones personalizadas
+    para profesionales del sector.
+- question: ¿Cumplen con las normativas europeas de seguridad?
+  answer_template: Todos nuestros productos cumplen con la normativa UE, incluyendo
+    GDPR para protección de datos.
+- question: ¿Tienen opciones de pago a plazos?
+  answer_template: Sí, disponemos de financiación flexible a través de nuestras pasarelas
+    de pago asociadas.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios o descuentos.
+  script: Hola, nuestros precios son competitivos y adaptados a su volumen de compra.
+    ¿Podría decirme qué productos le interesan para ofrecerle la mejor tarifa?
+  goal: Obtener detalles del pedido y cerrar una venta con condiciones personalizadas.
+- trigger: product_info
+  situation: Cuando se solicita información sobre ingredientes o uso de productos.
+  script: Claro, podemos detallar las características y beneficios de cada producto.
+    ¿Hay algún artículo específico sobre el que quiera conocer más?
+  goal: Educar al cliente y destacar ventajas para impulsar la compra.
+- trigger: complaint
+  situation: Al recibir una queja sobre envío o calidad.
+  script: Lamentamos mucho el inconveniente. Para resolverlo rápidamente, ¿puede proporcionarnos
+    el número de pedido o describir el problema?
+  goal: Gestionar la queja de forma eficiente y retener al cliente.
+competitors:
+- name: Primor
+  positioning: Cadena de perfumerías económica con amplia presencia nacional.
+  strengths:
+  - Precios bajos y frecuentes promociones.
+  - Gran variedad de marcas populares.
+  weaknesses:
+  - Servicio al cliente impersonal en tiendas físicas.
+  - Inventario limitado en productos profesionales.
+  our_differentiation: Ofrecemos asesoramiento experto personalizado y soluciones
+    B2B integradas.
+- name: Douglas
+  positioning: Perfumería de lujo con enfoque en experiencia premium.
+  strengths:
+  - Marcas exclusivas y alta gama.
+  - Ambiente de compra sofisticado.
+  weaknesses:
+  - Precios elevados comparados con el mercado.
+  - Menor enfoque en ventas online B2B.
+  our_differentiation: Proporcionamos precios competitivos y eficiencia en logística
+    para negocios.
+- name: Druni
+  positioning: Cadena de belleza y salud con productos variados.
+  strengths:
+  - Presencia en múltiples ciudades españolas.
+  - Combinación de cosmética y farmacia.
+  weaknesses:
+  - Gestión de inventario a veces lenta.
+  - Atención al cliente inconsistente.
+  our_differentiation: Implementamos sistemas automatizados de inventario y servicio
+    24/7 por voz.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatización de pedidos recurrentes para un salón de belleza.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Reduzca los costos operativos hasta un 20% con gestión automatizada.
+  - Aumente las ventas con recomendaciones personalizadas basadas en IA.
+market_context:
+  market_size: Estimado en 4.5 mil millones de euros anuales en España.
+  growth_rate: 2.5% año tras año.
+  key_trends:
+  - Creciente demanda de productos naturales y sostenibles.
+  - Expansión del e-commerce en el sector belleza post-pandemia.
+  - Personalización de cosméticos mediante tecnología.
+  seasonality:
+    high:
+    - Noviembre a Diciembre (Navidad)
+    - Junio a Agosto (verano y rebajas)
+    low:
+    - Enero (post-navidad)
+    - Agosto (vacaciones generales)
+typical_objections:
+- objection: Es demasiado caro para mi negocio.
+  response: Entendemos su preocupación. Nuestras soluciones ofrecen ahorro a largo
+    plazo y ROI rápido, ¿podemos analizar su caso específico?
+- objection: Ya trabajo con otro proveedor y estoy satisfecho.
+  response: ¡Es genial tener un buen proveedor! Podemos complementar ofreciendo servicios
+    adicionales como automatización, ¿le interesa probar sin compromiso?
+- objection: No confío en comprar suministros de belleza online sin probarlos.
+  response: Ofrecemos muestras gratuitas y garantía de devolución para que pruebe
+    con confianza, además de asesoramiento por expertos.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

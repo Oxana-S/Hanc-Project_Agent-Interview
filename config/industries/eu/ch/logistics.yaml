@@ -1,0 +1,258 @@
+aliases:
+- logistik
+- lieferung
+- transport
+- kurierdienst
+- spedition
+- lager
+- spedit
+- versand
+- sendung
+- paket
+- awb
+- rechnung
+competitors:
+- name: Die Schweizerische Post
+  positioning: Nationaler Marktführer für Paket- und Briefzustellung
+  strengths:
+  - Dichte landesweite Infrastruktur
+  - Hohe Markenbekanntheit und Vertrauen
+  - Staatlich unterstützt
+  weaknesses:
+  - Höhere Preise
+  - Weniger flexibel für Sonderlösungen
+  our_differentiation: Individuelle Automatisierungslösungen für mittlere Betriebe,
+    direkterer Support
+- name: DHL Schweiz
+  positioning: Internationaler Express- und Logistikdienstleister
+  strengths:
+  - Globale Netzwerke und Expertise
+  - Schnelle internationale Lieferungen
+  - Hoher Digitalisierungsgrad
+  weaknesses:
+  - Weniger Fokus auf lokale Schweizer Besonderheiten (z.B. Bergregionen)
+  - Standardisierte Lösungen
+  our_differentiation: Lokalisierte KI-Lösungen mit Fokus auf Schweizer KMU und deren
+    spezifische Prozesse
+- name: Planzer
+  positioning: Schweizer Familienunternehmen für nationale und internationale Transporte
+  strengths:
+  - Starke nationale Präsenz
+  - Erfahrung mit Sammelgut und Gefahrengut
+  - Persönlicher Kundenkontakt
+  weaknesses:
+  - Begrenztes digitales Selbstbedienungsangebot
+  - Längere Antwortzeiten außerhalb der Geschäftszeiten
+  our_differentiation: 24/7-Sprachagent zur sofortigen Entlastung, nahtlose Integration
+    in bestehende Schweizer TMS
+- name: Gebrüder Weiss
+  positioning: Internationaler Transport- und Logistikdienstleister mit Schweizer
+    Standorten
+  strengths:
+  - Starke Präsenz in Osteuropa
+  - Komplexe Supply-Chain-Lösungen
+  - Eigene Zollabteilung
+  weaknesses:
+  - Für reine Inlandslieferungen oft überdimensioniert
+  - Komplexe Strukturen
+  our_differentiation: Einfache, schnelle und kostengünstige Automatisierung für den
+    täglichen Kundenkontakt
+industry_faq:
+- answer_template: Nennen Sie bitte die Sendungsnummer oder den AWB, dann prüfe ich
+    den aktuellen Status für Sie.
+  question: Wo ist meine Sendung?
+- answer_template: Die Kosten hängen von Gewicht, Volumen, Strecke und Servicelevel
+    ab. Ich kann eine Schätzung vornehmen, wenn Sie mir die Details nennen.
+  question: Was kostet die Lieferung?
+- answer_template: Bitte nennen Sie Ihre Auftragsnummer. Ich kann Ihnen dann die voraussichtliche
+    Ankunftszeit mitteilen.
+  question: Wann kommt der Kurier?
+- answer_template: Eine Adressänderung ist möglich, solange die Sendung nicht ausgeliefert
+    wurde. Bitte nennen Sie die neue Adresse.
+  question: Kann ich die Lieferadresse noch ändern?
+- answer_template: Für Rücksendungen wenden Sie sich bitte zunächst an den Absender.
+    Wir organisieren dann den Rücktransport.
+  question: Wie kann ich eine Rücksendung veranlassen?
+- answer_template: Ja, wir bieten Lieferungen auch am Wochenende an, allerdings gegen
+    Aufpreis. Möchten Sie mehr Details?
+  question: Liefern Sie auch am Wochenende?
+- answer_template: Für Sendungen in die EU und weltweit ist eine Zolldeklaration erforderlich.
+    Wir unterstützen Sie gerne dabei.
+  question: Was brauche ich für einen internationalen Versand?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 2-3%
+  key_trends:
+  - Steigende Nachfrage nach E-Commerce-Logistik
+  - Fokus auf Nachhaltigkeit und CO2-Reduktion
+  - Automatisierung von Lager- und Verwaltungsprozessen
+  - Personalmangel im Fahrer- und Fachkräftebereich
+  market_size: ca. 40 Mrd. CHF
+  seasonality:
+    high:
+    - November/Dezember (Weihnachtsgeschäft)
+    - Q2/Q3 (Bau- und Tourismussaison)
+    low:
+    - Januar
+    - August (Ferienzeit)
+meta:
+  avg_validation_score: null
+  country: ch
+  created_at: '2024-05-17'
+  currency: CHF
+  id: logistics
+  language: de
+  languages:
+  - de
+  - fr
+  - it
+  last_updated: '2024-05-17'
+  phone_codes:
+  - '+41'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Zurich
+  version: '1.0'
+pain_points:
+- description: Viele Anrufe zur Sendungsverfolgung ("Wo ist meine Lieferung?") blockieren
+    die Telefonleitung.
+  severity: high
+  solution_hint: Automatische Statusabfrage per Sprachagent mit AWB-Nummer
+- description: Hohe Personalkosten und Fachkräftemangel belasten die Disposition und
+    den Kundenservice.
+  severity: high
+  solution_hint: Sprachagent übernimmt repetitive Anfragen, entlastet Mitarbeiter
+- description: Komplexe Zollformalitäten für EU- und Drittlandsendungen verursachen
+    Rückfragen und Verzögerungen.
+  severity: medium
+  solution_hint: Agent beantwortet Standard-FAQs zu Zoll und liefert Checklisten
+- description: Kunden wünschen flexible, kurzfristige Lieferzeitfenster, die schwer
+    zu koordinieren sind.
+  severity: medium
+  solution_hint: Automatische Terminabstimmung und Erinnerungen per Sprachagent
+- description: Einhaltung von DSGVO und FADP bei der Kommunikation erfordert sorgfältige
+    Prozesse.
+  severity: medium
+  solution_hint: Sprachagent ist datenschutzkonform konfiguriert und protokolliert
+    Einwilligungen
+- description: Staus in Transitachsen (z.B. Gotthard) führen zu unvorhergesehenen
+    Verzögerungen und vielen Nachfragen.
+  severity: medium
+  solution_hint: Proaktive Benachrichtigung über Verspätungen via Sprachagent oder
+    Integration in Stau-APIs
+pricing_context:
+  currency: CHF
+  entry_point: 500
+  roi_examples:
+  - monthly_cost: 1500
+    monthly_savings: 4000
+    payback_months: 1
+    scenario: Automatisierung von 70% der Statusanfragen und einfachen Bestellungen,
+      Einsparung von 2 Vollzeitstellen im Kundenservice
+  typical_budget_range:
+  - 500
+  - 5000
+  value_anchors:
+  - Reduzieren Sie die Wartezeit Ihrer Kunden von Minuten auf Sekunden.
+  - Senken Sie Ihre Personalkosten im Kundenservice nachhaltig.
+  - 24/7-Erreichbarkeit ohne zusätzliche Nacht- und Wochenendzuschläge.
+recommended_functions:
+- name: sendungsverfolgung
+  priority: high
+  reason: 60-80% der Anrufe sind Statusanfragen. Automatisierung bringt sofortige
+    Entlastung.
+- name: auftragsannahme
+  priority: high
+  reason: Strukturierte Erfassung neuer Transportaufträge per Telefon, weniger Fehler.
+- name: faq
+  priority: medium
+  reason: Beantwortung häufiger Fragen zu Preisen, Lieferzeiten, Zoll und Services.
+- name: terminvereinbarung
+  priority: medium
+  reason: Automatische Koordination von Abhol- und Lieferzeitfenstern mit Kunden.
+- name: weiterleitung
+  priority: low
+  reason: Gezielte Weiterleitung komplexer Anliegen (z.B. Schadensmeldungen) an den
+    richtigen Mitarbeiter.
+- name: benachrichtigung
+  priority: low
+  reason: Proaktive Anrufe bei erheblichen Verspätungen oder Terminänderungen.
+sales_scripts:
+- goal: Vertrauen aufbauen und den konkreten Nutzen der Automatisierung für den Kunden
+    aufzeigen.
+  script: Guten Tag, mein Name ist [Name des Agents]. Ich bin der digitale Assistent
+    von [Ihre Firma]. Ich helfe Unternehmen wie Ihrem, den Kundenservice in der Logistik
+    zu automatisieren. Viele unserer Kunden sparen so bis zu 40% der Zeit ihrer Disponenten
+    und beantworten Anfragen zu Sendungsstatus rund um die Uhr. Darf ich Ihnen in
+    2 Minuten erklären, wie das genau funktioniert?
+  situation: Erstanruf bei einem potentiellen Kunden (Logistikunternehmen, Spedition).
+  trigger: outbound_call
+- goal: Das Kostenargument entkräften und auf den ROI lenken.
+  script: Ich verstehe, dass Investitionen gut überlegt sein müssen. Unser Sprachagent
+    startet bereits bei 500 CHF pro Monat. Bei durchschnittlich 100 Statusanfragen
+    pro Tag amortisiert sich das in wenigen Wochen, da Ihre Mitarbeiter wieder Zeit
+    für wertschöpfende Aufgaben haben. Möchten Sie eine Beispielrechnung für Ihr Unternehmen
+    sehen?
+  situation: Kunde äußert Bedenken bezüglich der Kosten.
+  trigger: price_objection
+- goal: Den Kunden zu einer Testphase oder einem Gespräch bewegen.
+  script: Am besten erleben Sie den Nutzen in einer unverbindlichen Testphase. Wir
+    richten den Agenten für Ihre häufigsten Fragen ein und Sie sehen live, wie viele
+    Anrufe automatisiert werden. Können wir nächste Woche einen kurzen Termin für
+    eine Demo vereinbaren?
+  situation: Kunde zeigt Interesse, zögert aber mit einer Entscheidung.
+  trigger: interest_but_hesitant
+typical_integrations:
+- examples:
+  - SAP Transport Management
+  - Prophet
+  - Transmate
+  name: TMS
+  priority: high
+  reason: Essenziell für Echtzeit-Sendungsdaten, Verfolgung und Disposition.
+- examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  - orangehrm
+  name: CRM/ERP
+  priority: medium
+  reason: Für Kundendatenhistorie, Angebots- und Rechnungserstellung.
+- examples:
+  - Swisscom
+  - Sunrise
+  name: Telefonieanbieter
+  priority: high
+  reason: Anbindung des Sprachagents an die bestehende Telefonie-Infrastruktur.
+- examples:
+  - SwissPost E-Fox
+  - DHL API
+  - DPD CH API
+  name: Kurier-APIs
+  priority: medium
+  reason: Für direkte Statusabfragen bei Subunternehmen oder Partnern.
+typical_objections:
+- objection: Ich möchte lieber mit einem Menschen sprechen.
+  response: Selbstverständlich, ich verbinde Sie gerne mit meinem Kollegen. Die Wartezeit
+    beträgt derzeit etwa [X] Minuten. Bis dahin kann ich Ihnen vielleicht schon mit
+    der Sendungsnummer weiterhelfen?
+- objection: Ich habe Bedenken wegen dem Datenschutz (FADP/DSGVO).
+  response: Das ist sehr verständlich. Unsere Lösung ist speziell für den Schweizer
+    Markt entwickelt und hält die FADP sowie DSGVO streng ein. Alle Daten werden in
+    der Schweiz verarbeitet. Gerne sende ich Ihnen unsere Compliance-Dokumentation
+    zu.
+- objection: Die Lieferinformationen in Ihrem System sind nicht aktuell.
+  response: Die Daten werden alle 15 Minuten aktualisiert. Bei akuten Dispositionsproblemen,
+    etwa durch Stau am Gotthard, verbinde ich Sie sofort mit unserer Disposition für
+    eine manuelle Prüfung.
+typical_services:
+- Paket- und Kurierdienst
+- Stückgut- und Sammelguttransport
+- nationale und internationale Spedition
+- Lagerlogistik und Kommissionierung
+- Zollabfertigung und Dokumentation
+- Express-Lieferungen
+- Gefahrguttransport
+- Zustellung letzte Meile
+- Nachhaltige Logistiklösungen
+_extends: _base/logistics

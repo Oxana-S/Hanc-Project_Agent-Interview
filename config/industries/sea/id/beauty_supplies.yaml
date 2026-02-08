@@ -1,0 +1,264 @@
+pain_points:
+- description: Manajemen inventori yang rumit karena banyaknya merek dan varian produk
+    kecantikan lokal dan impor, sering menyebabkan stock kosong atau overstock.
+  severity: high
+  solution_hint: AI voice agent dapat mencatat dan melacak permintaan produk, mengirimkan
+    alert otomatis saat stok menipis, serta membantu mengatur pesanan ulang berdasarkan
+    tren penjualan.
+- description: Kompetisi harga sangat ketat dari marketplace besar (Shopee, Tokopedia)
+    dan toko fisik, sehingga sulit mempertahankan margin keuntungan.
+  severity: high
+  solution_hint: Agent dapat menyediakan analisis harga kompetitor secara real-time
+    dan menawarkan paket bundling atau program loyalitas untuk meningkatkan nilai
+    pelanggan.
+- description: Tingkat pembatalan dan perubahan pesanan yang tinggi, terutama untuk
+    pre-order produk Korea dan Jepang, menyebabkan kerugian waktu dan administrasi.
+  severity: medium
+  solution_hint: Agent dapat menangani konfirmasi dan pembaruan pesanan secara otomatis
+    via telepon atau WhatsApp, mengurangi beban kerja staf.
+- description: Kesulitan dalam edukasi produk kepada pelanggan, terutama untuk skincare
+    dengan bahan aktif spesifik, yang berpotensi menyebabkan komplain.
+  severity: medium
+  solution_hint: Agent dapat memberikan informasi produk, cara pakai, dan rekomendasi
+    yang konsisten 24/7 berdasarkan database pengetahuan produk.
+- description: Proses pengumpulan pembayaran (collection) dari reseller atau toko
+    kecil yang lambat, mempengaruhi cash flow.
+  severity: medium
+  solution_hint: Agent dapat mengirimkan pengingat pembayaran otomatis dan terjadwal
+    melalui panggilan, serta memverifikasi penerimaan pembayaran.
+- description: Kepatuhan terhadap Peraturan Perlindungan Data Pribadi (PDP) dalam
+    menyimpan data pelanggan dan riwayat transaksi.
+  severity: high
+  solution_hint: Sistem AI agent dirancang dengan prinsip privasi-by-design, membantu
+    mencatat persetujuan pelanggan dan mengelola data secara aman.
+- description: Volume panggilan tinggi di periode promosi (seperti 10.10 atau Harbolnas)
+    untuk menanyakan ketersediaan stok dan promo, menyebabkan antrian dan missed call.
+  severity: low
+  solution_hint: Agent dapat menangani puluhan panggilan secara bersamaan, menjawab
+    pertanyaan umum, dan hanya meneruskan ke manusia untuk kasus kompleks.
+typical_services:
+- Pemesanan ulang otomatis untuk produk fast-moving
+- Layanan pelacakan pengiriman (tracking order) untuk reseller
+- Pendaftaran dan manajemen program reseller / dropshipper
+- Dukungan pra-penjualan (rekomendasi produk berdasarkan jenis kulit)
+- Layanan after-sales dan penanganan komplain
+- Pengaturan janji temu untuk konsultasi produk dengan beauty advisor
+- Pengiriman reminder untuk pembayaran invoice
+- Pembaruan informasi stok dan harga secara real-time
+- Pengumpulan testimoni dan ulasan pelanggan
+- Pemrosesan pesanan via telepon (phone order)
+recommended_functions:
+- name: Order Tracking & Notification
+  priority: high
+  reason: Permintaan pelacakan pengiriman sangat tinggi. Agent dapat otomatis memberikan
+    status via panggilan atau WA, mengurangi beban CS.
+- name: Product Recommendation Assistant
+  priority: high
+  reason: Membantu pelanggan memilih produk yang tepat, meningkatkan kepuasan dan
+    mengurangi retur, terutama untuk skincare.
+- name: Stock Inquiry & Auto-Reorder
+  priority: high
+  reason: Menjawab pertanyaan ketersediaan stok dan langsung menghubungkan sistem
+    ke supplier untuk pesan ulang jika stok rendah.
+- name: Payment Reminder & Confirmation
+  priority: medium
+  reason: Mengoptimalkan cash flow dengan reminder otomatis yang sopan dan verifikasi
+    pembayaran tanpa menunggu staf.
+- name: FAQ & Troubleshooting Guide
+  priority: medium
+  reason: Memberikan solusi instan untuk masalah umum seperti produk iritasi atau
+    cara pakai, mengedukasi pelanggan 24/7.
+- name: Appointment Scheduler
+  priority: low
+  reason: Mengatur janji untuk konsultasi di toko atau demo produk, meningkatkan engagement
+    dan konversi penjualan offline.
+typical_integrations:
+- name: POS & Inventory Management
+  examples:
+  - Moka POS
+  - iSeller
+  - Majoo
+  - Oy!
+  priority: high
+- name: E-commerce Platform
+  examples:
+  - Tokopedia
+  - Shopee
+  - Bukalapak
+  priority: high
+- name: Accounting Software
+  examples:
+  - Jurnal
+  - Accurate Online
+  - BukuWarung
+  priority: medium
+- name: Delivery/Logistics API
+  examples:
+  - JNE
+  - SiCepat
+  - GoSend
+  - GrabExpress
+  priority: medium
+- name: CRM & Marketing Automation
+  examples:
+  - Qontak
+  - Kirim.email
+  - ESB
+  priority: low
+industry_faq:
+- question: Apakah produk ini original dan ada garansinya?
+  answer_template: Ya, semua produk kami 100% original dengan garansi dari distributor
+    resmi. Kami menyediakan invoice dan bisa dicek keasliannya melalui website merek
+    terkait.
+- question: Bagaimana cara menjadi reseller dan apa syaratnya?
+  answer_template: Anda bisa mendaftar via telepon ini. Syaratnya minimal order pertama
+    Rp 1.000.000. Anda akan mendapatkan harga khusus reseller, katalog, dan dukungan
+    pemasaran.
+- question: Kapan produk pre-order (PO) Korean skincare sampai?
+  answer_template: Untuk produk PO, estimasi pengiriman adalah 3-4 minggu setelah
+    tutup PO. Kami akan kirim update via WhatsApp begitu barang ready di gudang kami.
+- question: Bisa pesan via telepon dan bayar nanti?
+  answer_template: Tentu. Kami bisa proses pesanan via telepon dan kirimkan invoice.
+    Pembayaran bisa via transfer sebelum pengiriman atau COD dengan syarat area terjangkau.
+- question: Ada promo atau diskon untuk pembelian grosir?
+  answer_template: Untuk pembelian grosir di atas Rp 5 juta, kami berikan diskon tambahan
+    5%. Juga ada program loyalitas dengan poin yang bisa ditukar produk.
+- question: Produk yang saya terima rusak, bagaimana prosedur komplainnya?
+  answer_template: Mohon maaf atas ketidaknyamanannya. Silakan siapkan foto/video
+    produk dan invoice, lalu tim kami akan pandu proses penggantian atau refund via
+    telepon ini.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon pelanggan atau reseller menanyakan harga dan merasa mahal.
+  script: Halo, terima kasih atas ketertarikannya. Harga kami memang sedikit lebih
+    tinggi karena kami jamin keaslian 100% dan ada layanan after-sales. Untuk bandingkan
+    nilai sebenarnya, selain produk original, Bapak/Ibu juga dapat dukungan konsultasi
+    produk dan sistem restock otomatis agar tidak kehabisan bestseller. Apakah ada
+    produk spesifik yang ingin Bapak/Ibu jadikan modal usaha?
+  goal: Beralih dari diskusi harga ke penawaran nilai (keaslian, dukungan, kemudahan)
+    dan menggali kebutuhan bisnis mereka.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan toko online atau competitor lain yang lebih
+    murah.
+  script: Paham sekali. Memang banyak pilihan di luar. Perbedaan utama dengan kami
+    adalah keandalan stok dan kecepatan respon. Banyak reseller kami yang pindah karena
+    di sini ada sistem notifikasi stok via WhatsApp dan bisa pesan via telepon kapan
+    saja. Selain itu, data reseller kami dilindungi sesuai UU PDP. Ingin coba sistem
+    pemesanan yang lebih terintegrasi?
+  goal: Menonjolkan diferensiasi pada layanan, keandalan, dan kepatuhan hukum, lalu
+    ajak trial.
+- trigger: hesitation_no_time
+  situation: Ketika calon pelanggan tertarik tetapi sibuk atau menunda keputusan.
+  script: Saya mengerti waktunya sangat berharga. Karena itu, sistem kami justru dirancang
+    untuk menghemat waktu Bapak/Ibu. Contohnya, agent kami bisa handle order via telepon
+    saat Bapak/Ibu sedang keluar, dan kirimkan laporan penjualan bulanan secara otomatis.
+    Bolehkah kami kirimkan informasi program reseller via WhatsApp untuk Bapak/Ibu
+    baca nanti?
+  goal: Mengatasi keberatan dengan menawarkan efisiensi waktu sebagai solusi, dan
+    minta izin untuk follow-up via channel lain.
+competitors:
+- name: Sociolla (The Ladies Republic)
+  positioning: Marketplace dan retail omnichannel premium untuk beauty enthusiasts.
+  strengths:
+  - Brand image kuat dan terpercaya
+  - Ragam produk internasional sangat luas
+  - Konten edukasi dan komunitas aktif
+  weaknesses:
+  - Harga relatif tinggi untuk segmen UKM/reseller
+  - Fokus pada end-user, kurang personal untuk kebutuhan grosir
+  our_differentiation: Kami fokus pada kebutuhan bisnis reseller dan toko dengan harga
+    grosir, layanan pemesanan via telepon yang lebih personal, dan dukungan logistik
+    yang fleksibel untuk berbagai daerah.
+- name: Brunel
+  positioning: Distributor dan supplier besar untuk berbagai merek kecantikan dan
+    perawatan tubuh.
+  strengths:
+  - Portfolio merek sangat lengkap
+  - Infrastruktur gudang dan distribusi kuat
+  - Reputasi lama di industri
+  weaknesses:
+  - Minimal order tinggi untuk UKM baru
+  - Layanan kurang responsif untuk order kecil-menengah
+  - Proses administrasi manual
+  our_differentiation: Kami menyediakan akses yang lebih mudah dengan minimal order
+    lebih rendah, didukung teknologi AI untuk layanan cepat 24/7, dan sistem inventori
+    real-time.
+- name: 'Toko Ritel Lokal (contoh: Guardian, Watsons)'
+  positioning: Rantai toko kesehatan dan kecantikan dengan lokasi strategis.
+  strengths:
+  - Kenyamanan belanja langsung
+  - Promo in-store yang menarik
+  - Merek terkenal dan mudah diakses
+  weaknesses:
+  - Harga eceran (non-grosir)
+  - Stok terbatas untuk varian lengkap
+  - Tidak ada program khusus untuk reseller
+  our_differentiation: Kami menawarkan harga khusus reseller, stok yang lebih dalam
+    untuk varian lengkap, dan kemudahan pemesanan jarak jauh tanpa perlu datang ke
+    toko.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 500000
+  - 10000000
+  entry_point: 1000000
+  roi_examples:
+  - scenario: Menggunakan agent untuk automasi 50% panggilan terkait cek stok, tracking,
+      dan reminder pembayaran.
+    monthly_cost: 1500000
+    monthly_savings: 4500000
+    payback_months: 1
+  value_anchors:
+  - Hemat hingga 3x biaya customer service manual.
+  - Tingkatkan konversi penjualan via telepon hingga 20% dengan follow-up otomatis.
+  - Bayar kurang dari harga 1 box sheet mask premium per bulan untuk sistem otomasi
+    lengkap.
+market_context:
+  market_size: Diperkirakan mencapai Rp 40 triliun pada 2023 (ritel produk kecantikan).
+  growth_rate: 12-15% YoY, didorong tren skincare dan makeup lokal.
+  key_trends:
+  - Booming produk skincare dengan bahan alami (natural) dan halal.
+  - Merek kecantikan lokal (local brand) semakin diminati dan bersaing dengan merek
+    internasional.
+  - Pertumbuhan penjualan melalui live commerce (TikTok Shop, Instagram Live) sangat
+    signifikan.
+  - Kesadaran akan skincare routine untuk pria meningkat.
+  seasonality:
+    high:
+    - Bulan Ramadan & menjelang Lebaran
+    - Harbolnas (12.12)
+    - '10.10'
+    - Valentine's Day
+    low:
+    - Bulan pertama setelah Lebaran
+    - Pertengahan tahun (Juni-Juli)
+typical_objections:
+- objection: Saya sudah biasa order via marketplace, lebih praktis.
+  response: Betul, marketplace memang praktis. Namun, dengan sistem kami, Anda bisa
+    dapat harga reseller yang lebih baik, dukungan langsung via telepon jika ada masalah,
+    dan tidak perlu khawatir terebut stok karena ada sistem prioritas untuk reseller
+    tetap. Mau coba bandingkan harga untuk bestseller Anda?
+- objection: Harganya terlalu mahal untuk bisnis saya yang masih kecil.
+  response: Sangat kami pahami di awal bisnis. Itu sebabnya kami desain layanan ini
+    scalable. Anda bisa mulai dengan paket dasar yang hanya otomasi panggilan penting.
+    Biaya per bulan setara dengan 2-3 botol toner. Dengan layanan ini, Anda bisa lebih
+    fokus ke penjualan dan ekspansi. Bagaimana kalau kita hitung potensi penghematan
+    waktu Anda dulu?
+- objection: Saya tidak paham teknologi, takut ribet.
+  response: Tenang, sistem kami justru dirancang agar tidak ribet. Tidak perlu instal
+    software. Semua bisa diakses via telepon dan WhatsApp seperti biasa. Tim kami
+    akan pandu dari nol sampai bisa. Banyak reseller usia lanjut yang sudah sukses
+    pakai. Boleh kami jadwalkan demo singkat 10 menit via WhatsApp call?
+meta:
+  id: beauty_supplies
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

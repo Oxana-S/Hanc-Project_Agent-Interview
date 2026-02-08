@@ -1,0 +1,215 @@
+pain_points:
+- description: Administrative Überlastung durch manuelle Mitgliederverwaltung und
+    Spendenabrechnung.
+  severity: high
+  solution_hint: Automatisierte Datenpflege und Berichtserstellung durch Sprachbefehle.
+- description: Hoher Aufwand für die Terminplanung von Gottesdiensten, Seelsorgeterminen
+    und Gemeindeveranstaltungen.
+  severity: high
+  solution_hint: KI-gestützte Kalenderverwaltung und Erinnerungen per Sprachansage.
+- description: Schwierigkeiten bei der Erreichung jüngerer Zielgruppen und digitaler
+    Kommunikation.
+  severity: medium
+  solution_hint: Automatisierte Anrufe für Eventeinladungen und digitale Seelsorge-Angebote.
+- description: Nachlassende regelmäßige Spendenbereitschaft und unvorhersehbare Einnahmen.
+  severity: high
+  solution_hint: Automatisierte Spendenaufforderungen und Dankesanrufe zur Bindung.
+- description: Begrenzte personelle Ressourcen für Rundrufe bei Kranken, Senioren
+    oder in Krisenfällen.
+  severity: medium
+  solution_hint: Skalierbare, mitfühlende Anrufe durch KI für regelmäßige Kontaktpflege.
+- description: Komplexität der GDPR-konformen Verwaltung sensibler Mitgliederdaten.
+  severity: medium
+  solution_hint: DSGVO-konforme Sprachsysteme mit automatischer Einwilligungsverwaltung.
+- description: Ineffiziente Koordination von Ehrenamtlichen und Ressourcen für Veranstaltungen.
+  severity: low
+  solution_hint: Automatisierte Anrufe zur Planungsabstimmung und Erinnerungen.
+typical_services:
+- Gottesdienst- und Veranstaltungsplanung
+- Mitgliederverwaltung und -kommunikation
+- Spendenmanagement und -akquise
+- Seelsorge und Krisenintervention
+- Gemeindebrief- und Newsletterverteilung
+- Ehrenamtskoordination
+- Religiöse Unterrichts- und Kursverwaltung
+- Tauf-, Trau- und Beerdigungskoordination
+- Fundraising- und Sponsoringaktivitäten
+- Digitale Präsenz und Social-Media-Management
+recommended_functions:
+- name: Automatisierte Mitgliederbetreuung
+  priority: high
+  reason: Entlastet das Personal durch regelmäßige Check-in-Anrufe und Erinnerungen.
+- name: Intelligente Terminvereinbarung
+  priority: high
+  reason: Optimiert die Planung von Seelsorgeterminen und Veranstaltungen.
+- name: Spendenmanagement-Assistent
+  priority: high
+  reason: Automatisiert Spendenaufforderungen und bedankt sich, um die Bindung zu
+    stärken.
+- name: GDPR-konformer Datenschutzassistent
+  priority: medium
+  reason: Stellt die konforme Verarbeitung sensibler Daten sicher.
+- name: Mehrsprachiger Gemeindeservice
+  priority: medium
+  reason: Ermöglicht Kommunikation in verschiedenen Sprachen innerhalb diverser Gemeinden.
+- name: Event-Koordinator
+  priority: low
+  reason: Unterstützt bei der Planung und Abstimmung von Gemeindeveranstaltungen.
+typical_integrations:
+- name: Kirchenverwaltungssoftware
+  examples:
+  - KIVUKON
+  - Gemeindeverwaltung.net
+  - ChurchTools
+  priority: high
+- name: Buchhaltungssysteme
+  examples:
+  - DATEV
+  - Lexware
+  priority: medium
+- name: Terminplanungstools
+  examples:
+  - Calendly
+  - Google Kalender
+  priority: medium
+- name: Kommunikationsplattformen
+  examples:
+  - Newsletter2Go
+  - Mailchimp
+  priority: low
+- name: Spendenportale
+  examples:
+  - Betterplace
+  - PayPal
+  priority: medium
+industry_faq:
+- question: Wie gewährleistet Ihr System den Datenschutz nach GDPR?
+  answer_template: Unsere KI-Agenten arbeiten mit Ende-zu-Ende-Verschlüsselung und
+    speichern Daten nur mit ausdrücklicher Einwilligung, voll konform mit der DSGVO.
+- question: Kann der Sprachagent persönliche Seelsorgegespräche führen?
+  answer_template: Der Agent unterstützt bei administrativen Aufgaben und einfachen
+    Check-ins, ersetzt aber keine menschliche Seelsorge bei komplexen Themen.
+- question: Wie werden ältere Gemeindemitglieder ohne Smartphone erreicht?
+  answer_template: Unser System kann traditionelle Telefonanrufe tätigen, sodass alle
+    Mitglieder erreicht werden, unabhängig von der Technologie.
+- question: Ist eine Integration in unsere bestehende Verwaltungssoftware möglich?
+  answer_template: Ja, wir bieten Schnittstellen zu gängigen Systemen wie KIVUKON
+    oder ChurchTools für eine nahtlose Datenübertragung.
+- question: Wie hoch sind die monatlichen Kosten für einen KI-Sprachagenten?
+  answer_template: Die Kosten beginnen bei 99 € pro Monat und skalieren je nach Umfang
+    der Funktionen und Anrufvolumen.
+- question: Kann der Agent mehrsprachige Anrufe für internationale Gemeinden tätigen?
+  answer_template: Ja, unser System unterstützt mehrere Sprachen, darunter Deutsch,
+    Englisch, Türkisch und andere, je nach Bedarf.
+sales_scripts:
+- trigger: time_saving_question
+  situation: Wenn ein Kunde nach Effizienzsteigerung fragt.
+  script: Guten Tag, unser KI-Sprachagent kann bis zu 20 Stunden administrative Arbeit
+    pro Woche einsparen, indem er Anrufe automatisiert und Termine verwaltet. Möchten
+    Sie eine Demo vereinbaren?
+  goal: Den Nutzen der Zeitersparnis hervorheben und zu einer Demo einladen.
+- trigger: gdpr_concern
+  situation: Wenn Bedenken zum Datenschutz geäußert werden.
+  script: Wir verstehen Ihre Sorge. Unser System ist speziell für die DSGVO entwickelt
+    und verschlüsselt alle Daten. Wir bieten eine kostenlose Datenschutzfolgenabschätzung
+    an.
+  goal: Bedenken ausräumen und Vertrauen durch Fachkompetenz aufbauen.
+- trigger: budget_constraint
+  situation: Wenn der Kunde Budgetbeschränkungen erwähnt.
+  script: Unser Einstiegspaket kostet nur 99 € im Monat und spart Ihnen durch Automatisierung
+    typischerweise das Doppelte an Personalkosten. Möchten Sie eine ROI-Berechnung
+    für Ihre Gemeinde sehen?
+  goal: Die Kosteneffizienz betonen und mit ROI-Argumenten überzeugen.
+competitors:
+- name: Telefonfundraising-Agenturen
+  positioning: Traditionelle Dienstleister für Spendenakquise per Telefon.
+  strengths:
+  - Persönlicher Kontakt
+  - Erfahrung im Non-Profit-Bereich
+  weaknesses:
+  - Hohe Kosten
+  - Begrenzte Skalierbarkeit
+  - Manuelle Prozesse
+  our_differentiation: Vollautomatisierte, kostengünstige KI-Lösung mit 24/7-Verfügbarkeit
+    und DSGVO-Konformität.
+- name: Standard Callcenter-Dienstleister
+  positioning: Generische Callcenter für Kundenservice.
+  strengths:
+  - Flexible Einsätze
+  - Große Kapazitäten
+  weaknesses:
+  - Hohe Kosten pro Anruf
+  - Keine Branchenspezialisierung
+  - Datenschutzrisiken
+  our_differentiation: Branchenspezifische KI, die Gemeindebedürfnisse versteht und
+    persönlichere Interaktionen bietet.
+- name: Kirchensoftware-Anbieter
+  positioning: Anbieter von Verwaltungssoftware für Gemeinden.
+  strengths:
+  - Tiefe Integration in Verwaltungsprozesse
+  - Branchenkenntnis
+  weaknesses:
+  - Oft keine Sprachfunktionen
+  - Höhere Gesamtkosten für separate Lösungen
+  our_differentiation: Nahtlose Integration in bestehende Software plus fortschrittliche
+    Sprachautomatisierung als All-in-One-Lösung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Kleine Gemeinde mit 200 Mitgliedern für Mitgliederbetreuung und Spendenaufforderungen.
+    monthly_cost: 149
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Mittlere Gemeinde mit 500 Mitgliedern für umfassende Event- und Terminverwaltung.
+    monthly_cost: 299
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 80% der Kosten im Vergleich zu manuellen Telefonaktionen.
+  - Erhöhen Sie die Spendenbereitschaft durch regelmäßige, persönliche Anrufe um durchschnittlich
+    15%.
+market_context:
+  market_size: Ca. 500 Millionen EUR jährlich für Verwaltungs- und Kommunikationstechnologie
+    in religiösen Einrichtungen.
+  growth_rate: 3% YoY
+  key_trends:
+  - Zunehmende Digitalisierung von Gemeindearbeiten.
+  - Wachsender Bedarf an DSGVO-konformen Lösungen.
+  - Steigende Nachfrage nach digitaler Seelsorge und Online-Gottesdiensten.
+  seasonality:
+    high:
+    - Dezember (Weihnachten)
+    - Ostern
+    - Erntedank
+    low:
+    - Sommerferien
+    - Januar
+typical_objections:
+- objection: Unsere älteren Mitglieder werden mit Technologie nicht zurechtkommen.
+  response: Unser System arbeitet mit normalen Telefonaten, keine Apps nötig. Wir
+    bieten auch Einführungshilfen an.
+- objection: Persönlicher Kontakt ist in unserer Gemeinde unersetzlich.
+  response: Der KI-Agent entlastet Sie von Routinearbeiten, sodass Sie mehr Zeit für
+    echte zwischenmenschliche Kontakte haben.
+- objection: Wir haben bereits ein Verwaltungssystem, das gut funktioniert.
+  response: Unsere Lösung integriert sich nahtlos und ergänzt es um Sprachautomatisierung,
+    ohne bestehende Prozesse zu stören.
+meta:
+  id: religion
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "religion"
+- "church"
+- "temple"
+- "parish"
+- "ministry"
+_extends: _base/religion

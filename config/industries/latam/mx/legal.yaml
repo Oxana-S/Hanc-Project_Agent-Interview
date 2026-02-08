@@ -1,0 +1,273 @@
+pain_points:
+- description: Alto volumen de llamadas entrantes para consultas básicas que consumen
+    tiempo valioso de abogados.
+  severity: high
+  solution_hint: Agente de voz IA puede manejar consultas frecuentes, clasificar casos
+    y agendar citas, liberando tiempo de abogados para asuntos complejos.
+- description: Dificultad para realizar seguimiento a clientes potenciales y existentes
+    de manera constante, generando pérdida de oportunidades.
+  severity: medium
+  solution_hint: Automatización de recordatorios de citas, seguimiento post-consulta
+    y envío de información relevante para nutrir leads.
+- description: Cumplimiento complejo y administración de la Ley Federal de Protección
+    de Datos Personales en Posesión de los Particulares (LFPDPPP).
+  severity: high
+  solution_hint: Agente de voz configurado para operar dentro de marcos de privacidad,
+    con grabaciones y manejo de datos bajo consentimiento explícito.
+- description: Ineficiencias en la programación y confirmación de citas, generando
+    tiempos muertos y ausentismo de clientes.
+  severity: medium
+  solution_hint: Sistema automatizado de agenda que confirma, reprograma o cancela
+    citas por voz, sincronizando con calendarios digitales.
+- description: Falta de disponibilidad 24/7 para capturar consultas urgentes de clientes
+    en diferentes zonas horarias.
+  severity: medium
+  solution_hint: Agente de voz disponible todo el día para capturar información inicial,
+    calificar la urgencia y dirigir al profesional adecuado.
+- description: Saturación en horarios pico, como lunes por la mañana, que genera largas
+    esperas y mala experiencia del cliente.
+  severity: low
+  solution_hint: Distribución inteligente de llamadas y manejo de preguntas frecuentes
+    para reducir la carga en horas de alta demanda.
+typical_services:
+- Derecho mercantil y contractual
+- Derecho laboral
+- Derecho familiar (divorcios, pensiones)
+- Derecho inmobiliario
+- Derecho penal
+- Propiedad intelectual
+- Asesoría fiscal y cumplimiento legal
+- Derecho migratorio
+- Derecho corporativo y fusiones
+- Amparos y litigio constitucional
+recommended_functions:
+- name: Recepción y clasificación de casos
+  priority: high
+  reason: Filtra consultas iniciales, identifica el área legal y dirige al abogado
+    especializado, optimizando el primer contacto.
+- name: Agendamiento y confirmación de citas
+  priority: high
+  reason: Reduce los tiempos muertos y las ausencias mediante recordatorios automáticos,
+    mejorando la productividad del bufete.
+- name: Respuestas automatizadas a preguntas frecuentes (FAQs)
+  priority: medium
+  reason: Libera al personal de responder consultas repetitivas sobre honorarios,
+    documentos requeridos y procesos básicos.
+- name: Seguimiento de clientes potenciales (lead nurturing)
+  priority: medium
+  reason: Mantiene el interés de prospectos mediante información segmentada y recordatorios,
+    aumentando la tasa de conversión.
+- name: Encuestas de satisfacción post-servicio
+  priority: low
+  reason: Recopila feedback de manera automatizada para evaluar la calidad del servicio
+    y mejorar la reputación en línea.
+- name: Recordatorio de pagos y vencimientos
+  priority: medium
+  reason: Mejora el flujo de caja al notificar a clientes sobre pagos pendientes y
+    fechas límite de manera oportuna.
+typical_integrations:
+- name: Software de gestión legal (ERP Legal)
+  examples:
+  - LegalBox
+  - LexDoctor
+  - AbogadEZ
+  priority: high
+- name: Calendario y agendas
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: high
+- name: Plataformas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Sistemas de facturación y contabilidad
+  examples:
+  - Contpaq i
+  - Facturama
+  - SAT (Portal del contribuyente)
+  priority: medium
+- name: Herramientas de comunicación unificada
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - WhatsApp Business API
+  priority: low
+industry_faq:
+- question: ¿Cuáles son sus honorarios por una consulta inicial?
+  answer_template: Nuestra consulta inicial tiene un costo de [Monto] MXN. Durante
+    esta sesión, evaluaremos su caso y le proporcionaremos un plan de acción claro
+    con honorarios transparentes.
+- question: ¿Qué documentos debo llevar para mi primera cita?
+  answer_template: Para agilizar el proceso, le recomendamos traer identificación
+    oficial, cualquier documento relacionado con su caso (contratos, notificaciones)
+    y, si aplica, datos de las partes involucradas.
+- question: ¿Manejan casos de derecho laboral por despido injustificado?
+  answer_template: Sí, contamos con especialistas en derecho laboral. Para evaluar
+    su caso, necesitaremos detalles como su contrato, la notificación de despido y
+    los años de servicio.
+- question: ¿Cuánto tiempo tarda un proceso de divorcio?
+  answer_template: La duración varía según sea contencioso o mutuo acuerdo. Un divorcio
+    administrativo (mutuo acuerdo) puede tomar semanas, mientras que uno contencioso
+    puede extenderse varios meses.
+- question: ¿Ofrecen asesoría para cumplir con la LFPDPPP?
+  answer_template: Absolutamente. Ayudamos a empresas a establecer avisos de privacidad,
+    procedimientos de manejo de datos y cumplir con todos los requisitos de la Ley
+    de Protección de Datos.
+- question: ¿Pueden ayudarme con un amparo?
+  answer_template: Sí, realizamos un análisis previo de su situación para determinar
+    la viabilidad del amparo. Es fundamental contar con la resolución o acto authority
+    que se impugna.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un prospecto pregunta por el costo del servicio en la primera
+    llamada.
+  script: Entendemos que la claridad en costos es crucial. Nuestro modelo se basa
+    en la eficiencia que brindamos. Por ejemplo, automatizando la recepción de casos,
+    bufetes similares ahorran hasta 15 horas semanales en administración, lo que se
+    traduce en [Monto] MXN mensuales en productividad recuperada. ¿Podemos agendar
+    una breve reunión para analizar sus volúmenes de llamada y ofrecerle una cotización
+    exacta?
+  goal: Evitar dar un precio genérico, enlazar el costo al ROI y capturar una cita
+    para calificación.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor o solución alternativa.
+  script: Es excelente que esté explorando opciones. Nuestra diferenciación clave
+    es la comprensión del contexto legal mexicano, incluyendo el cumplimiento con
+    la LFPDPPP desde el diseño. A diferencia de soluciones genéricas, nuestro agente
+    maneja la terminología jurídica local y se integra con software como LegalBox
+    o Contpaq, que son estándar en la industria aquí. ¿Qué es lo más importante para
+    usted en una herramienta de automatización?
+  goal: Resaltar la especialización local y redirigir la conversación hacia las necesidades
+    específicas del cliente.
+- trigger: objection_time
+  situation: Cuando el cliente dice 'No tengo tiempo para implementar algo nuevo'.
+  script: Justamente por su falta de tiempo, nuestra solución es ideal. Nos encargamos
+    de la implementación completa y la configuración en menos de una semana, sin interrumpir
+    sus operaciones. Usted solo necesita dedicar 30 minutos para la capacitación inicial.
+    Imagina recuperar horas cada semana desde el inicio. ¿Le gustaría ver un caso
+    de éxito de un bufete en [Ciudad] con desafíos similares?
+  goal: Convertir la objeción en una demostración de valor y ofrecer una prueba social
+    concreta.
+- trigger: initial_contact
+  situation: Primer contacto con un bufete o abogado independiente.
+  script: Buen día, hablamos de [Nombre de tu empresa]. Ayudamos a bufetes legales
+    en México a recuperar hasta 3 horas diarias en tareas administrativas mediante
+    un asistente de voz que atiende llamadas, agenda citas y da seguimiento a clientes
+    de manera automática y cumpliendo con la LFPDPPP. ¿Tiene unos minutos para conocer
+    cómo podría impactar en su productividad?
+  goal: Presentar el valor clave (ahorro de tiempo) de manera concisa y generar interés
+    para una conversación más larga.
+competitors:
+- name: Vozy
+  positioning: Plataforma de IA conversacional genérica para servicio al cliente en
+    Latam.
+  strengths:
+  - Presencia regional establecida
+  - Interfaz amigable
+  - Soporte en español
+  weaknesses:
+  - No especializado en el nicho legal
+  - Integraciones limitadas con software jurídico local
+  - Poco conocimiento de la LFPDPPP en profundidad
+  our_differentiation: Especialización profunda en procesos y terminología legal mexicana,
+    con integraciones nativas a ERPs legales y diseño centrado en el cumplimiento
+    de la protección de datos desde el primer día.
+- name: AbogadEZ (módulo de llamadas)
+  positioning: Software de gestión legal integral con módulo básico de llamadas.
+  strengths:
+  - Integración total con su suite de gestión
+  - Conocimiento del flujo de trabajo legal
+  weaknesses:
+  - Funcionalidad de voz básica y poco inteligente
+  - Suele requerir mucha configuración manual
+  - Costo alto por el paquete completo
+  our_differentiation: Ofrecemos una solución de voz IA best-in-class que se integra
+    fácilmente con AbogadEZ y otros sistemas, especializada en la interacción natural
+    con clientes, sin forzar a cambiar todo su software de gestión.
+- name: Soluciones personalizadas in-house
+  positioning: Desarrollos internos o por encargo de grandes bufetes.
+  strengths:
+  - Totalmente adaptadas a procesos específicos
+  - Control absoluto
+  weaknesses:
+  - Costo de desarrollo y mantenimiento muy alto
+  - Tiempos de implementación largos
+  - Escalabilidad limitada
+  our_differentiation: Ofrecemos una plataforma robusta y especializada a una fracción
+    del costo, con tiempos de implementación rápidos y actualizaciones constantes,
+    sin sacrificar la personalización para el flujo de trabajo legal.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 2000
+  - 15000
+  entry_point: 2499
+  roi_examples:
+  - scenario: Bufete pequeño (2-3 abogados) con ~100 llamadas de consulta mensuales.
+    monthly_cost: 2999
+    monthly_savings: 8000
+    payback_months: 1
+  - scenario: Bufete mediano con secretaria dedicada a llamadas y agenda.
+    monthly_cost: 7499
+    monthly_savings: 25000
+    payback_months: 1
+  value_anchors:
+  - Recupere el equivalente a un día laboral de un abogado senior cada semana.
+  - Convierta llamadas perdidas después de horario en citas agendadas automáticamente.
+  - Cumpla con la LFPDPPP en cada interacción con el cliente, mitigando riesgos.
+market_context:
+  market_size: Estimado en más de 500,000 profesionales legales y 50,000 bufetes en
+    México.
+  growth_rate: 3-5% anual, con aceleración en la adopción de tecnología post-pandemia.
+  key_trends:
+  - Digitalización acelerada de trámites y procesos judiciales (Justicia Digital).
+  - Mayor demanda de transparencia en costos y comunicación por parte de los clientes.
+  - Enfoque creciente en la ciberseguridad y protección de datos personales (LFPDPPP).
+  - Aumento de abogados y bufetes independientes compitiendo en línea.
+  seasonality:
+    high:
+    - Enero (propósitos de año nuevo)
+    - Septiembre (fin de ciclo escolar/familiar)
+    low:
+    - Diciembre (festividades)
+    - Semana Santa
+typical_objections:
+- objection: Mis clientes prefieren el trato humano directo, no una máquina.
+  response: Totalmente de acuerdo. Nuestro agente no reemplaza el trato humano, lo
+    potencia. Se encarga de las tareas repetitivas (confirmar citas, dar información
+    básica) para que su equipo tenga *más* tiempo y energía para el contacto humano
+    de alto valor en los asuntos complejos. Es una extensión de su servicio, no un
+    reemplazo.
+- objection: Es muy caro para mi presupuesto actual.
+  response: Comprendemos la consideración del presupuesto. Pensemos en esto como una
+    inversión, no un gasto. Si el agente le ahorra a su secretaria o a usted mismo
+    solo 5 horas a la semana, ¿cuál es el valor de ese tiempo? Nuestro plan de entrada
+    cuesta menos que una hora de trabajo de muchos abogados. Podemos empezar con funciones
+    básicas y escalar. ¿Cuál es el principal cuello de botella que le gustaría aliviar
+    primero?
+- objection: La tecnología siempre falla y no quiero riesgos con mis clientes.
+  response: 'La confiabilidad es crítica, especialmente en el ámbito legal. Nuestra
+    plataforma tiene un tiempo de actividad del 99.9% y siempre hay un plan de contingencia,
+    como desviar llamadas a un número de respaldo. Además, ofrecemos un período de
+    prueba para que pueda comprobar su estabilidad sin compromiso. La pregunta es:
+    ¿cuál es el riesgo y costo de *no* automatizar tareas que pueden estar generando
+    ineficiencias y pérdida de clientes hoy?'
+meta:
+  id: legal
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

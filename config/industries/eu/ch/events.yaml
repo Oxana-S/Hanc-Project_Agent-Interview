@@ -1,0 +1,241 @@
+pain_points:
+- description: Hoher administrativer Aufwand für die Erstellung von Angeboten und
+    Verträgen, besonders bei kurzfristigen Anfragen.
+  severity: high
+  solution_hint: Automatische Angebotserstellung durch Sprachantworten auf Kundenanfragen
+    mit Vorlagen.
+- description: Schwierigkeiten bei der Personalplanung, insbesondere während der Hauptsaison
+    (Herbst/Winter).
+  severity: high
+  solution_hint: Automatisierte Schichtplanung und Verfügbarkeitsabfragen bei Mitarbeitern
+    per Telefon.
+- description: Last-Minute-Stornierungen führen zu erheblichen Einnahmeverlusten und
+    Logistikproblemen.
+  severity: high
+  solution_hint: Automatisierte Stornierungsgebühren-Berechnung und Wartelistenverwaltung
+    via Telefon.
+- description: Komplexe Mehrsprachigkeit bei internationalen Veranstaltungen in der
+    Schweiz.
+  severity: medium
+  solution_hint: Mehrsprachige Sprachantworten für Teilnehmeranfragen in DE/FR/IT/EN.
+- description: Hoher Koordinationsaufwand mit Lieferanten (Catering, Technik, Location).
+  severity: medium
+  solution_hint: Automatisierte Statusabfragen und Terminbestätigungen mit Partnern
+    per Sprachanruf.
+- description: Datenschutzanforderungen (DSG/GDPR) bei der Teilnehmerverwaltung sind
+    aufwändig umzusetzen.
+  severity: medium
+  solution_hint: DSG/GDPR-konforme Einwilligungserfassung und Datenverwaltung via
+    Sprachantworten.
+- description: Schwierige Preisgestaltung bei volatilen Kosten (Lebensmittel, Energie).
+  severity: low
+  solution_hint: Dynamische Preisinformationen basierend auf aktuellen Kosten via
+    Sprachauskunft.
+typical_services:
+- Eventplanung und -organisation
+- Messe- und Kongressmanagement
+- Firmenevent-Organisation
+- Hochzeitsplanung
+- Seminar- und Workshop-Organisation
+- Catering-Koordination
+- Location-Scouting
+- Technische Eventausstattung
+- Teilnehmerregistrierung und Ticketing
+- Event-Marketing und Promotion
+recommended_functions:
+- name: Angebotserstellung
+  priority: high
+  reason: Beschleunigt den Verkaufsprozess und reduziert administrativen Aufwand um
+    40%.
+- name: Terminbuchung und -bestätigung
+  priority: high
+  reason: Automatisiert die häufigsten Kundeninteraktionen und belegt Kalender.
+- name: Zahlungserinnerung und Mahnwesen
+  priority: medium
+  reason: Verbessert Cashflow durch automatische Verfolgung offener Rechnungen.
+- name: Teilnehmerbefragung
+  priority: medium
+  reason: Ermöglicht schnelles Feedback nach Events für Qualitätsverbesserung.
+- name: Notfall-Hotline
+  priority: medium
+  reason: Bietet 24/7 Unterstützung bei dringenden Event-Problemen.
+- name: Sprachübersetzung für internationale Gäste
+  priority: low
+  reason: Wichtig für Events in mehrsprachiger Schweiz und internationale Kunden.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Bexio
+  - Accounto
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - Microsoft Dynamics
+  - SugarCRM
+  - HubSpot
+  priority: high
+- name: Event-Management-Plattformen
+  examples:
+  - Eventfrog
+  - Meetup
+  - Eventbrite
+  priority: high
+- name: Kalendersysteme
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Apple Calendar
+  priority: medium
+- name: Zahlungssysteme
+  examples:
+  - Twint
+  - Stripe
+  - Payrexx
+  priority: medium
+- name: Projektmanagement-Tools
+  examples:
+  - Asana
+  - Trello
+  - monday.com
+  priority: low
+industry_faq:
+- question: Wie schnell können Sie ein Angebot für ein Firmenevent erstellen?
+  answer_template: Unser System erstellt innerhalb von 15 Minuten ein detailliertes
+    Angebot basierend auf Ihren Anforderungen. Bitte nennen Sie mir die gewünschte
+    Teilnehmerzahl, Datum und Event-Typ.
+- question: Bieten Sie auch virtuelle Event-Optionen an?
+  answer_template: Ja, wir organisieren hybriden und vollständig virtuelle Events
+    mit technischer Unterstützung. Die Kosten beginnen bei 2'500 CHF für Basis-Pakete.
+- question: Wie handhaben Sie Last-Minute-Stornierungen?
+  answer_template: Unsere Stornierungsbedingungen sind vertraglich festgelegt. Bei
+    Stornierung innerhalb von 14 Tagen fallen 50% der Kosten an, innerhalb 7 Tagen
+    80%.
+- question: Sind Ihre Dienstleistungen DSG/GDPR-konform?
+  answer_template: Ja, alle unsere Prozesse entsprechen der schweizerischen DSG und
+    europäischen GDPR. Wir bieten datenschutzkonforme Teilnehmerverwaltung.
+- question: Können Sie Mehrsprachen-Support für internationale Gäste bieten?
+  answer_template: Ja, wir unterstützen Deutsch, Französisch, Italienisch und Englisch
+    für alle Event-Kommunikation.
+- question: Welche Zahlungsbedingungen bieten Sie an?
+  answer_template: Standard sind 30% Anzahlung bei Buchung, 50% 4 Wochen vor dem Event,
+    20% nach Durchführung. Zahlung via Rechnung, Kreditkarte oder Twint möglich.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn Kunde nach Preisen für Event-Organisation fragt
+  script: 'Vielen Dank für Ihre Anfrage. Unsere Preise beginnen bei 1''500 CHF für
+    kleinere Events und richten sich nach Umfang, Teilnehmerzahl und Services. Für
+    ein maßgeschneidertes Angebot benötige ich einige Details: Welcher Event-Typ ist
+    geplant, wie viele Teilnehmer erwarten Sie und wann soll das Event stattfinden?'
+  goal: Qualifizierung der Anfrage und Erfassung von Basis-Informationen für Angebotserstellung
+- trigger: competitor_comparison
+  situation: Wenn Kunde unsere Preise mit Mitbewerbern vergleicht
+  script: Ich verstehe, dass Sie Preise vergleichen. Unser Mehrwert liegt in der vollständigen
+    Automatisierung, die Ihnen bis zu 15 Arbeitsstunden pro Event spart. Bei einem
+    typischen Firmenevent von 50 Personen bedeutet das eine Einsparung von ca. 2'000
+    CHF an Personalkosten zusätzlich zu unserem Festpreis.
+  goal: Wertargumentation statt Preisdiskussion, ROI-Darstellung
+- trigger: implementation_time
+  situation: Wenn Kunde nach Implementierungszeit fragt
+  script: Unsere Lösung ist innerhalb von 48 Stunden einsatzbereit für erste Funktionen.
+    Die vollständige Integration mit Ihren bestehenden Systemen dauert typischerweise
+    1-2 Wochen, abhängig von der Komplexität. Wir bieten eine kostenlose Testphase
+    von 14 Tagen an.
+  goal: Hürdenabbau durch schnelle Implementierung und Testmöglichkeit
+competitors:
+- name: Eventfrog
+  positioning: Online-Eventmarktplatz und Ticketing-Plattform
+  strengths:
+  - Große Reichweite
+  - Einfache Ticketing-Lösung
+  - Bekannte Marke in der Schweiz
+  weaknesses:
+  - Begrenzte Personalisierung
+  - Keine vollständige Event-Organisation
+  - Eher für kleinere Events
+  our_differentiation: Wir bieten vollständige Event-Organisation mit persönlichem
+    Service und Automatisierung für mittlere bis große Events
+- name: MCI Group
+  positioning: Full-Service Agentur für große Events und Kongresse
+  strengths:
+  - Internationale Präsenz
+  - Erfahrung mit Großevents
+  - Umfassende Services
+  weaknesses:
+  - Hohe Preise
+  - Längere Entscheidungswege
+  - Weniger flexibel für kleinere Events
+  our_differentiation: Schnellere Reaktionszeiten durch Automatisierung, skalierbare
+    Lösungen für alle Größen, transparente Festpreise
+- name: Lokal organisierte Event-Agenturen
+  positioning: Regionale Full-Service Agenturen
+  strengths:
+  - Lokale Expertise
+  - Persönliche Beziehungen
+  - Flexible Abwicklung
+  weaknesses:
+  - Begrenzte Kapazitäten
+  - Höhere Kosten durch manuelle Prozesse
+  - Weniger technologische Integration
+  our_differentiation: Kosteneffizienz durch Automatisierung, 24/7 Verfügbarkeit,
+    bessere Skalierbarkeit bei Spitzenzeiten
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 1500
+  - 50000
+  entry_point: 1490
+  roi_examples:
+  - scenario: Mittleres Firmenevent mit 100 Teilnehmern
+    monthly_cost: 890
+    monthly_savings: 2450
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 15 Stunden Administrationszeit pro Event
+  - Reduzieren Sie Last-Minute-Stornierungskosten um 30%
+  - Automatisierte Mehrsprachigkeit für internationale Events inklusive
+  - DSG/GDPR-konforme Datenverarbeitung gewährleistet
+market_context:
+  market_size: Ca. 3.2 Mrd. CHF Jahresumsatz
+  growth_rate: 4.5% pro Jahr
+  key_trends:
+  - Zunehmende Nachfrage nach hybriden Events
+  - Automatisierung von Registrierung und Ticketing
+  - Nachhaltigkeit als wichtiges Kriterium
+  - Kürzere Planungszeiträume für Events
+  seasonality:
+    high:
+    - September-November
+    - Mai-Juni
+    low:
+    - Dezember-Januar
+    - Juli-August
+typical_objections:
+- objection: Das ist zu teuer für unser Budget.
+  response: Ich verstehe Ihr Budget-Bedürfnis. Unsere Lösung spart Ihnen jedoch durch
+    Automatisierung typischerweise 2'000-5'000 CHF pro Event an Personalkosten. Könnten
+    wir einen reduzierten Starter-Plan für Ihr nächstes kleineres Event besprechen?
+- objection: Wir haben bereits etablierte Prozesse, die funktionieren.
+  response: Das ist hervorragend! Unsere Lösung integriert sich in Ihre bestehenden
+    Prozesse und automatisiert nur die zeitaufwändigen Teile. Dadurch gewinnen Ihre
+    Mitarbeiter Kapazität für wichtigere Aufgaben. Möchten Sie eine Demo sehen, wie
+    das in der Praxis funktioniert?
+- objection: Wir brauchen persönlichen Kontakt, keine Automatisierung.
+  response: Sie behalten den persönlichen Kontakt zu Ihren Kunden - wir übernehmen
+    nur die Routineaufgaben im Hintergrund. So können Sie sich mehr auf die strategische
+    Event-Planung konzentrieren. Viele unserer Kunden schätzen diese Kombination aus
+    persönlichem Service und effizienter Automatisierung.
+meta:
+  id: events
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

@@ -1,0 +1,250 @@
+pain_points:
+- description: Hoher administrativer Aufwand durch manuelle Bewerberkommunikation
+    und Terminkoordination.
+  severity: high
+  solution_hint: Automatisierung von Erstgesprächen, Erinnerungen und Status-Updates
+    via Sprachagent.
+- description: Fachkräftemangel führt zu sehr langen Besetzungszeiten und hohen Kosten
+    pro Einstellung.
+  severity: high
+  solution_hint: KI-gestütztes Active Sourcing und 24/7-Kandidatenansprache zur Erweiterung
+    des Talent-Pools.
+- description: Unzureichende Datenschutz-Compliance (DSGVO) bei der Bewerberdatenverarbeitung.
+  severity: high
+  solution_hint: DSGVO-konforme Protokollierung aller Interaktionen und automatisierte
+    Einwilligungsmanagement.
+- description: Ineffiziente Vorauswahl von Bewerbern führt zu vielen unpassenden Vorstellungsgesprächen.
+  severity: medium
+  solution_hint: Automatisierte Erstinterviews mit standardisierten Fragen zur Qualifikationsprüfung.
+- description: Schwierige Erreichbarkeit von passiven Kandidaten außerhalb der Geschäftszeiten.
+  severity: medium
+  solution_hint: Sprachagent kann zu jeder Zeit initialen Kontakt herstellen und Interesse
+    erfragen.
+- description: Hohe Kosten durch externe Personaldienstleister oder teure Jobportale.
+  severity: medium
+  solution_hint: Kosteneffiziente Automatisierung der Erstkontakte reduziert Abhängigkeit
+    von Drittanbietern.
+typical_services:
+- Personalvermittlung (Executive Search)
+- Active Sourcing
+- Personalleasing (Arbeitnehmerüberlassung)
+- Recruitment Process Outsourcing (RPO)
+- Employer Branding
+- Bewerbermanagement
+- Onboarding-Begleitung
+- Outplacement
+- Personalmarketing
+- Candidate Relationship Management (CRM)
+recommended_functions:
+- name: Automatisierte Bewerber-Vorauswahl
+  priority: high
+  reason: Spart massiv Zeit durch Filterung ungeeigneter Kandidaten vor dem menschlichen
+    Kontakt.
+- name: Terminvereinbarung für Vorstellungsgespräche
+  priority: high
+  reason: Eliminiert das zeitaufwändige Hin-und-Her bei der Koordination zwischen
+    Kandidaten und Recruitern.
+- name: Ersteinschätzung und FAQ-Beantwortung für Kandidaten
+  priority: medium
+  reason: Entlastet die Personalabteilung von repetitiven Anfragen und bietet 24/7-Service.
+- name: Passive Kandidatenansprache
+  priority: medium
+  reason: Erweitert den Talent-Pool durch kontinuierliche, personalisierte Outreach-Kampagnen.
+- name: Bewerber-Follow-up und Status-Updates
+  priority: medium
+  reason: Verbessert die Candidate Experience und hält Interessenten im Prozess.
+- name: DSGVO-konforme Dokumentation der Einwilligungen
+  priority: high
+  reason: Kritische Compliance-Anforderung im deutschen Recruiting.
+typical_integrations:
+- name: Bewerbermanagementsystem (ATS)
+  examples:
+  - Personio
+  - Softgarden
+  - Recruitee
+  - SAP SuccessFactors
+  priority: high
+- name: Kalender- und Terminplanungssysteme
+  examples:
+  - Microsoft Outlook/365
+  - Google Calendar
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Unternehmens-Messenger
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: medium
+- name: HR- und Gehaltsabrechnungssysteme
+  examples:
+  - DATEV
+  - Lexware
+  priority: low
+industry_faq:
+- question: Ist die Nutzung eines Sprachassistenten mit der DSGVO vereinbar?
+  answer_template: Absolut. Unser System ist nach deutschen und EU-Datenschutzstandards
+    (DSGVO) konzipiert. Alle Gespräche werden verschlüsselt, Bewerberdaten nur mit
+    Einwilligung verarbeitet und Sie behalten die volle Datenhoheit. Wir unterstützen
+    Sie bei der Dokumentation der Compliance.
+- question: Kann der Sprachagent auch komplexe Fragen von Bewerbern beantworten?
+  answer_template: Ja, für standardisierte Fragen zu Unternehmenskultur, Benefits,
+    Bewerbungsprozess oder Stellenprofilen ist er ideal. Bei sehr spezifischen oder
+    vertraulichen Themen leitet er nahtlos an Ihren Personaler weiter. Sie definieren
+    die Wissensbasis.
+- question: Wie wird die Qualität der Kandidaten-Vorauswahl sichergestellt?
+  answer_template: Die Vorauswahl basiert auf von Ihnen definierten Kriterien (z.B.
+    Qualifikation, Verfügbarkeit, Gehaltsvorstellung). Der Agent stellt präzise Nachfragen
+    und protokolliert alle Antworten. Die finale Entscheidung trifft immer ein menschlicher
+    Recruiter auf Basis der vollständigen Gesprächsprotokolle.
+- question: Funktioniert das auch für Fachkräfte- und Führungspositionen?
+  answer_template: Gerade dort ist die Effizienzsteigerung groß. Der Agent übernimmt
+    die zeitintensive Erstansprache und Terminierung. Die persönliche, vertrauliche
+    Beratung durch Ihren Executive Search Berater erfolgt dann mit bereits vorgefilterten,
+    interessierten Kandidaten.
+- question: Welche technische Einrichtung ist notwendig?
+  answer_template: Sehr wenig. Sie benötigen lediglich eine Internetverbindung. Die
+    Integration in Ihre bestehenden Systeme (wie Ihr ATS) unterstützen wir aktiv.
+    Der Voice Agent ist cloud-basiert und startet innerhalb weniger Tage.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Personalverantwortlicher nach den Kosten fragt.
+  script: Die Kosten richten sich nach Ihrem individuellen Bedarf, zum Beispiel der
+    Anzahl zu besetzender Stellen oder der gewünschten Ansprache-Frequenz. Typischerweise
+    liegen unsere Kunden im Bereich von X bis Y EUR pro Monat und sparen dabei durchschnittlich
+    Z Stunden administrativer Arbeit ein. Darf ich Ihnen eine maßgeschneiderte Kalkulation
+    basierend auf Ihren aktuellen Besetzungshürden erstellen?
+  goal: Das Gespräch von einem Preis- zu einem Wert- und Lösungsgespräch lenken und
+    Bedarf analysieren.
+- trigger: efficiency_doubt
+  situation: Wenn Kunde Zweifel an der Effektivität der Automatisierung äußert.
+  script: 'Ich verstehe die Skepsis. Viele unserer Kunden hatten anfangs ähnliche
+    Bedenken. Entscheidend ist, was automatisiert wird: Wir nehmen Ihren Recruitern
+    nicht das persönliche Gespräch ab, sondern die zeitfressende Vorarbeit – das Aufspüren,
+    Erstkontaktieren und Terminieren. Das entlastet Ihr Team für die wertschöpfenden
+    Gespräche. Möchten Sie ein konkretes Beispiel aus Ihrer Branche hören?'
+  goal: Ängste nehmen und den konkreten Nutzen für den Alltag des Kunden verdeutlichen.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen etablierten Personaldienstleister wie Hays oder
+    Robert Half nennt.
+  script: Ein fairer Vergleich. Traditionelle Dienstleister bieten hauptsächlich menschliche
+    Beratung zu entsprechenden Tagessätzen. Unsere Stärke ist die Skalierbarkeit und
+    Geschwindigkeit in der ersten Phase – wir erweitern und screenen Ihren Talent-Pool
+    kostengünstig 24/7. Oft kombinieren Kunden unsere Lösung mit ihrer bestehenden
+    Personalabteilung, um diese zu entlasten und schneller zu werden. So behalten
+    Sie die Kontrolle und senken die Kosten pro Einstellung.
+  goal: Positionierung als komplementäre, kosteneffiziente Ergänzung, nicht als direkter
+    Ersatz.
+- trigger: request_demo
+  situation: Wenn Interesse an einer Demonstration besteht.
+  script: Sehr gerne. Am anschaulichsten ist eine Demo anhand einer Ihrer aktuellen
+    oder typischen Vakanzen. Wir simulieren gemeinsam, wie der Sprachagent einen passiven
+    Kandidaten anspricht, ein Erstgespräch führt und einen Termin mit Ihrem Recruiter
+    vereinbart. Wann hätten Sie ca. 30 Minuten Zeit für eine persönliche Online-Demo?
+  goal: Konkreten Demotermin vereinbaren und den Nutzen praxisnah vermitteln.
+competitors:
+- name: Hays
+  positioning: Marktführer in der klassischen Personalvermittlung und Arbeitnehmerüberlassung.
+  strengths:
+  - Umfangreiche Branchenexpertise und großes Kandidatennetzwerk
+  - Präsenz in vielen deutschen Städten
+  - Etablierter Name und hohe Wiedererkennung
+  weaknesses:
+  - Sehr hohe Kosten (oft 25-30% des Jahresgehalts)
+  - Weniger auf Automatisierung und Skalierung fokussiert
+  - Prozesse können langsam sein
+  our_differentiation: Wir bieten keine Vermittlung, sondern Automatisierung Ihrer
+    eigenen Prozesse. Deutlich niedrigere, vorhersehbare monatliche Kosten und volle
+    Transparenz sowie Kontrolle über Ihre Daten und Ihre Employer Brand.
+- name: Robert Half
+  positioning: Internationaler Spezialist für Fach- und Führungskräfte in Finanzen,
+    IT und Verwaltung.
+  strengths:
+  - Starke Spezialisierung in Nischenbereichen
+  - Globales Netzwerk
+  - Hohe Qualitätsansprüche
+  weaknesses:
+  - Noch höhere Preise als der Marktdurchschnitt
+  - Begrenzt auf bestimmte Fachbereiche
+  - Längere Besetzungsprozesse
+  our_differentiation: Unser Ansatz ist technologiegetrieben und branchenunabhängig
+    skalierbar. Wir helfen Ihnen, interne Prozesse zu optimieren und unabhängiger
+    von teuren externen Dienstleistern zu werden.
+- name: Personio (als Software-Anbieter)
+  positioning: Führendes HR- und Bewerbermanagementsystem (ATS) für KMUs.
+  strengths:
+  - Umfassende HR-Software-Suite
+  - Benutzerfreundlich und gut integrierbar
+  - Stark im deutschsprachigen Raum
+  weaknesses:
+  - Bietet selbst keine aktive Kandidatenansprache oder Vorauswahl
+  - Fokussiert auf Verwaltung, nicht auf Akquise
+  our_differentiation: Wir sind die perfekte Ergänzung zu Personio – wir liefern die
+    aktive Ansprache und Vorselektion von Kandidaten, die dann nahtlos in Ihr Personio-ATS
+    übertragen werden. Wir automatisieren den Teil vor dem ATS.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 3000
+  entry_point: 299
+  roi_examples:
+  - scenario: Automatisierung der Erstansprache und Terminvereinbarung für 5 offene
+      Stellen pro Monat.
+    monthly_cost: 499
+    monthly_savings: 1600
+    payback_months: 0.3
+  value_anchors:
+  - 'Kosten einer einzelnen Vermittlung über einen Headhunter: oft 15.000 - 30.000
+    EUR+'
+  - 'Durchschnittliche Zeitersparnis pro besetzter Stelle: 10-15 Stunden'
+  - Steigerung der Bewerberreichweite um bis zu 300% durch 24/7 Aktivität
+market_context:
+  market_size: ca. 12 Mrd. EUR (für Personaldienstleistungen in Deutschland)
+  growth_rate: ca. 3-5% p.a.
+  key_trends:
+  - Digitalisierung und Automatisierung der Recruiting-Prozesse (HR-Tech)
+  - Starker Fokus auf DSGVO-Compliance und Datensicherheit
+  - Zunehmender War for Talents, besonders in MINT-Berufen
+  - Rise of Remote Work erweitert den geografischen Talent-Pool
+  - Candidate Experience wird zum entscheidenden Differenzierungsfaktor
+  seasonality:
+    high:
+    - Januar - März (Neujahrsvorsätze, Budgetfreigabe)
+    - September - Oktober (nach der Urlaubssaison)
+    low:
+    - Juli - August (Urlaubszeit)
+    - Dezember (Weihnachtsgeschäft)
+typical_objections:
+- objection: Das klingt zu unpersönlich für unsere Unternehmenskultur.
+  response: Das ist ein wichtiger Punkt. Unser Agent ist das erste, neutrale Filter-Gate.
+    Er stellt nur Faktenfragen. Die persönliche, kulturelle Bewertung und die Vertrauensebene
+    baut nach wie vor Ihr menschlicher Recruiter im direkten Gespräch auf – nun aber
+    mit besser vorqualifizierten Kandidaten.
+- objection: Wir haben schon ein ATS, das reicht uns.
+  response: 'Ein ATS ist hervorragend für die Verwaltung von Bewerbungen. Unser Sprachagent
+    arbeitet davor: Er generiert mehr und qualifiziertere Bewerbungen für Ihr ATS,
+    indem er passive Kandidaten aktiv anspricht und vorqualifiziert. Er füllt Ihr
+    ATS mit besseren Leads.'
+- objection: Die Einrichtung und Anlernzeit ist uns zu aufwändig.
+  response: Der Aufwand ist minimal. Wir richten den Agenten basierend auf Ihren Stellenprofilen
+    und FAQs ein. Die Einlernzeit übernehmen wir. Innerhalb einer Woche kann er live
+    für Sie arbeiten. Wir bieten umfassenden Support beim Roll-out.
+meta:
+  id: recruitment
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "recruitment"
+- "staffing"
+- "HR"
+- "headhunting"
+- "hiring"
+_extends: _base/recruitment

@@ -1,0 +1,254 @@
+pain_points:
+- description: Khách hàng phản hồi chậm do lượng yêu cầu hỗ trợ kỹ thuật và khiếu
+    nại lớn, đặc biệt vào giờ cao điểm và sau khi ra mắt bản cập nhật game.
+  severity: high
+  solution_hint: Triển khai tổng đài AI tự động phân loại và xử lý 80% câu hỏi thường
+    gặp, giảm tải cho đội ngũ CSKH.
+- description: Khó khăn trong việc thu thập và phân tích phản hồi từ cộng đồng game
+    thủ trên nhiều nền tảng (Facebook, Zalo, diễn đàn).
+  severity: medium
+  solution_hint: Agent AI có thể tự động khảo sát, tổng hợp ý kiến và báo cáo xu hướng
+    theo thời gian thực.
+- description: Tỷ lệ churn cao do người chơi cảm thấy thiếu tương tác và hỗ trợ cá
+    nhân hóa.
+  severity: high
+  solution_hint: Sử dụng AI để gửi thông báo, nhắc nhở sự kiện trong game và hỗ trợ
+    24/7 bằng giọng nói tự nhiên, tăng độ gắn kết.
+- description: Gian lận (cheat, hack) và tài khoản bị đánh cắp gây mất cân bằng game
+    và mất niềm tin của người chơi.
+  severity: high
+  solution_hint: AI voice agent có thể xác minh chủ tài khoản qua giọng nói và tự
+    động báo cáo hành vi khả nghi.
+- description: Quy trình nạp thẻ (top-up) phức tạp, nhiều bước, gây mất khách hàng
+    tiềm năng.
+  severity: medium
+  solution_hint: Tích hợp agent AI để hướng dẫn nạp thẻ bằng giọng nói qua các cổng
+    phổ biến (Momo, ZaloPay), rút gọn quy trình.
+- description: Khó khăn trong việc tuyển dụng và đào tạo nhân sự CSKH có hiểu biết
+    sâu về game và kỹ năng giao tiếp tốt.
+  severity: medium
+  solution_hint: Agent AI đóng vai trò đào tạo viên ảo, cung cấp kiến thức và kịch
+    bản xử lý tình huống mẫu cho nhân viên mới.
+typical_services:
+- Hỗ trợ kỹ thuật & sửa lỗi game
+- Hỗ trợ nạp thẻ (top-up) & giao dịch
+- Quản lý cộng đồng & fanpage
+- Tổ chức sự kiện trong game & ngoài game
+- Chăm sóc khách hàng (CSKH) 24/7
+- Phát triển & cân bằng nội dung game (game balance)
+- Marketing & truyền thông game
+- Phòng chống gian lận (anti-cheat)
+- Dịch thuật & bản địa hóa nội dung
+- Phân tích dữ liệu người chơi (player analytics)
+recommended_functions:
+- name: Hỗ trợ đa kênh tự động
+  priority: high
+  reason: Game thủ Việt liên hệ qua nhiều kênh (gọi điện, fanpage, Zalo). Cần một
+    agent thống nhất để trả lời ngay lập tức, giảm bỏ sót.
+- name: Xử lý giao dịch & nạp thẻ bằng giọng nói
+  priority: high
+  reason: Tăng tỷ lệ chuyển đổi bằng trải nghiệm nạp thẻ thuận tiện, an toàn, phù
+    hợp với thói quen sử dụng ví điện tử tại Việt Nam.
+- name: Giám sát & báo cáo gian lận tự động
+  priority: high
+  reason: Bảo vệ môi trường game công bằng, tự động phát hiện và cảnh báo các hành
+    vi bất thường thông qua phân tích cuộc gọi/phản hồi.
+- name: Khảo sát & thu thập ý kiến cộng đồng
+  priority: medium
+  reason: Thay vì khảo sát qua form, agent AI có thể gọi điện hoặc chat để lấy phản
+    hồi chân thực, chi tiết hơn từ game thủ.
+- name: Chăm sóc người chơi cũ (retention call)
+  priority: medium
+  reason: Tự động gọi cho người chơi không hoạt động, mời họ quay lại với ưu đãi cá
+    nhân hóa, giảm tỷ lệ rời bỏ game.
+- name: Đào tạo nội bộ cho nhân viên CSKH
+  priority: low
+  reason: Mô phỏng các tình huống khiếu nại phức tạp để đào tạo nhân viên mới, giảm
+    chi phí đào tạo truyền thống.
+typical_integrations:
+- name: Cổng thanh toán
+  examples:
+  - Momo
+  - ZaloPay
+  - VNPAY
+  - Napas
+  priority: high
+- name: Nền tảng mạng xã hội
+  examples:
+  - Zalo OA
+  - Facebook Messenger
+  priority: high
+- name: Hệ thống CRM
+  examples:
+  - CRMVIET
+  - LadiesSoft
+  priority: medium
+- name: Công cụ hỗ trợ game (Game Engine)
+  examples:
+  - Unity
+  - Unreal Engine
+  priority: low
+- name: Nền tảng phân tích dữ liệu
+  examples:
+  - Google Analytics
+  - Local BI tools
+  priority: medium
+industry_faq:
+- question: Dịch vụ này có giá bao nhiêu?
+  answer_template: Chào anh/chị! Chi phí triển khai linh hoạt tùy vào quy mô game
+    và tính năng cần thiết. Gói cơ bản cho tự động hóa CSKH bắt đầu từ 15 triệu VND/tháng.
+    Để có báo giá chính xác, em có thể kết nối anh/chị với chuyên viên tư vấn được
+    không ạ?
+- question: Triển khai mất bao lâu?
+  answer_template: Thông thường, chúng tôi triển khai tích hợp hệ thống cơ bản trong
+    vòng 2-4 tuần. Thời gian có thể thay đổi tùy vào độ phức tạp của hệ thống hiện
+    tại và các tính năng đặc thù của game.
+- question: Agent AI có hiểu được tiếng lóng và ngôn ngữ game thủ Việt Nam không?
+  answer_template: Hoàn toàn có thể ạ! Hệ thống của chúng tôi được đào tạo trên kho
+    dữ liệu tiếng Việt đa dạng, bao gồm cả tiếng lóng, từ viết tắt phổ biến trong
+    cộng đồng game để giao tiếp tự nhiên và chính xác nhất.
+- question: Có tuân thủ Luật Bảo vệ dữ liệu cá nhân (PDPD) không?
+  answer_template: Có, chúng tôi tuân thủ nghiêm ngặt PDPD. Tất cả dữ liệu cuộc gọi
+    và thông tin người chơi được mã hóa và lưu trữ trên server đặt tại Việt Nam, đảm
+    bảo an toàn tuyệt đối.
+- question: Có hỗ trợ tích hợp với nền tảng game hiện tại của chúng tôi không?
+  answer_template: Được ạ. Giải pháp của chúng tôi cung cấp API linh hoạt để kết nối
+    với hầu hết các hệ thống quản lý game (game server, CMS). Đội ngũ kỹ thuật sẽ
+    hỗ trợ tích hợp trơn tru.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về giá khi được giới thiệu giải pháp.
+  script: Chào anh/chị! Thay vì một mức giá cố định, chúng tôi sẽ xây dựng gói dịch
+    vụ tối ưu dựa trên nhu cầu thực tế của game. Ví dụ, nếu game đang gặp vấn đề về
+    quá tải hỗ trợ sau giờ ra mắt, chúng tôi có gói tập trung vào tự động hóa CSKH
+    với chi phí chỉ từ 15-20 triệu VND/tháng, giúp tiết kiệm tới 40% chi phí nhân
+    sự. Anh/chị quan tâm đến giải quyết bài toán cụ thể nào nhất ạ?
+  goal: Chuyển từ thảo luận giá cả sang thảo luận giá trị và ROI, đồng thời thu thập
+    thông tin về nhu cầu cụ thể.
+- trigger: competitor_mention
+  situation: Khách hàng đề cập họ đang dùng dịch vụ của đối thủ cạnh tranh.
+  script: Đúng vậy, hiện có một số đơn vị cung cấp dịch vụ liên quan. Điểm khác biệt
+    lớn nhất của chúng tôi là AI voice agent được tối ưu hóa riêng cho thị trường
+    game Việt, từ ngữ điệu, tiếng lóng đến tích hợp sâu với các cổng thanh toán phổ
+    biến như Momo, ZaloPay. Ngoài ra, chúng tôi tập trung mạnh vào tính năng phòng
+    chống gian lận qua giọng nói - điều mà ít đối thủ có. Anh/chị có thể chia sẻ thêm
+    về những hạn chế anh/chị gặp phải với giải pháp hiện tại không?
+  goal: Làm nổi bật sự khác biệt địa phương hóa và chuyên sâu ngành, đồng thời khám
+    phá điểm đau của khách hàng với đối thủ.
+- trigger: objection_too_expensive
+  situation: Khách hành cho rằng giải pháp có vẻ đắt.
+  script: Em hiểu quan ngại của anh/chị. Thực tế, nếu tính toán kỹ, đây là khoản đầu
+    tư tiết kiệm chi phí. Ví dụ, với 20 triệu VND/tháng cho agent AI, anh/chị có thể
+    xử lý hàng ngàn cuộc gọi/yêu cầu, tương đương với chi phí thuê 3-4 nhân viên CSKH
+    (bao gồm lương, đào tạo, quản lý). Hơn nữa, hệ thống hoạt động 24/7, giúp giảm
+    tỷ lệ churn và tăng doanh thu từ người chơi hài lòng. Chúng ta có thể cùng phân
+    tích kỹ hơn về chi phí thực tế anh/chị đang bỏ ra cho CSKH hiện tại được không?
+  goal: Chuyển đổi góc nhìn từ 'chi phí' sang 'đầu tư' bằng cách trình bày ROI rõ
+    ràng và so sánh với chi phí thực tế đang phát sinh.
+competitors:
+- name: VNG (Zalo AI)
+  positioning: Gã khổng lồ công nghệ địa phương, cung cấp giải pháp AI tích hợp sẵn
+    trong hệ sinh thái Zalo.
+  strengths:
+  - Thương hiệu mạnh, độ phủ rộng
+  - Tích hợp liền mạch với Zalo OA
+  - Có sẵn cơ sở hạ tầng lớn
+  weaknesses:
+  - Giải pháp chung chung, không chuyên sâu cho gaming
+  - Ít tùy biến theo nhu cầu đặc thù
+  - Chi phí có thể cao đối với studio nhỏ
+  our_differentiation: Giải pháp chuyên biệt cho ngành game với tính năng đặc thù
+    (anti-cheat, player analytics), tích hợp đa nền tảng (không chỉ Zalo), và mô hình
+    giá linh hoạt hơn.
+- name: Garena (các dịch vụ nội bộ)
+  positioning: Nhà phát hành game lớn, phát triển giải pháp nội bộ cho các tựa game
+    của mình.
+  strengths:
+  - Hiểu sâu nghiệp vụ game
+  - Kiểm soát toàn bộ trải nghiệm người dùng
+  - Nguồn lực tài chính mạnh
+  weaknesses:
+  - Không cung cấp rộng rãi ra thị trường
+  - Có thể không linh hoạt bằng giải pháp từ bên thứ ba
+  - Tập trung vào game của họ là chính
+  our_differentiation: Chúng tôi là đối tác độc lập, cung cấp giải pháp cho mọi studio
+    game từ lớn đến nhỏ, với dịch vụ khách hàng tận tâm và lộ trình phát triển sản
+    phẩm dựa trên nhu cầu chung của thị trường.
+- name: Các công ty outsourcing CSKH truyền thống
+  positioning: Cung cấp dịch vụ chăm sóc khách hàng thuê ngoài với con người là chủ
+    yếu.
+  strengths:
+  - Tương tác con người linh hoạt
+  - Có kinh nghiệm trong CSKH cơ bản
+  weaknesses:
+  - Chi phí nhân sự cao và biến động
+  - Khó scale nhanh
+  - Không xử lý 24/7 hiệu quả
+  - Hạn chế về công nghệ và phân tích dữ liệu
+  our_differentiation: Kết hợp sức mạnh tự động hóa của AI để xử lý 80% công việc
+    lặp đi lặp lại, giúp giảm chi phí đến 50% và cung cấp dịch vụ 24/7, trong khi
+    đội ngũ con người tập trung vào các vấn đề phức tạp hơn.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 15000000
+  - 200000000
+  entry_point: 15000000
+  roi_examples:
+  - scenario: Studio game mobile vừa, ~50k người chơi, gặp vấn đề hỗ trợ kỹ thuật
+      và nạp thẻ.
+    monthly_cost: 30000000
+    monthly_savings: 45000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm tới 40% chi phí vận hành CSKH so với mô hình truyền thống.
+  - Tăng tỷ lệ giữ chân người chơi (retention) lên 15-25% nhờ hỗ trợ 24/7.
+  - Giảm 30% tỷ lệ gian lận với hệ thống giám sát bằng AI.
+market_context:
+  market_size: Khoảng 700 triệu USD (2023)
+  growth_rate: 8-10% YoY
+  key_trends:
+  - Game mobile chiếm ưu thế, đặc biệt là thể loại casual và MMORPG.
+  - Xu hướng live-service game và tựa game có cộng đồng mạnh.
+  - Người chơi sẵn sàng chi trả cao hơn cho trải nghiệm mượt mà và hỗ trợ tốt.
+  - Sự gia tăng của các studio game độc lập (indie) trong nước.
+  seasonality:
+    high:
+    - Tháng 6 - Tháng 8 (nghỉ hè)
+    - Dịp Tết Nguyên Đán
+    - Cuối tuần
+    low:
+    - Tháng 2 - Tháng 4 (sau Tết)
+    - Giờ học/giờ làm trong ngày
+typical_objections:
+- objection: Nhân viên của chúng tôi vẫn xử lý tốt, chưa cần đến AI.
+  response: Điều đó thật tuyệt! Giải pháp của chúng tôi không thay thế hoàn toàn đội
+    ngũ xuất sắc của anh/chị, mà sẽ hỗ trợ họ bằng cách xử lý các câu hỏi lặp đi lặp
+    lại, giúp họ có thời gian tập trung vào những vấn đề phức tạp và sáng tạo hơn,
+    từ đó nâng cao hiệu quả tổng thể.
+- objection: Người chơi của chúng tôi quen tương tác qua chat, không quen gọi điện.
+  response: Hoàn toàn đúng! Giải pháp của chúng tôi hỗ trợ đa kênh, bao gồm cả chat
+    (qua Zalo, Facebook) lẫn gọi điện. Quan trọng là chúng tôi cung cấp một hệ thống
+    AI thống nhất phía sau, đảm bảo trải nghiệm liền mạch dù khách hàng liên hệ bằng
+    cách nào. Ngoài ra, trong những tình huống khẩn cấp (như bị hack tài khoản), cuộc
+    gọi voice có thể mang lại sự an tâm và tốc độ xử lý nhanh hơn.
+- objection: Tích hợp hệ thống phức tạp, sợ ảnh hưởng đến server game.
+  response: Chúng tôi hiểu nỗi lo này. Agent AI của chúng tôi hoạt động như một lớp
+    dịch vụ độc lập, giao tiếp với hệ thống game thông qua API nhẹ nhàng. Quá trình
+    tích hợp được thực hiện bởi đội ngũ kỹ thuật giàu kinh nghiệm và có thể chạy thử
+    nghiệm (pilot) trên môi trường test trước để đảm bảo không ảnh hưởng đến server
+    chính.
+meta:
+  id: gaming
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

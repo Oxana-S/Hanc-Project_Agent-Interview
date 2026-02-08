@@ -1,0 +1,211 @@
+pain_points:
+- description: Complexidade na gestão de carteiras de criptomoedas para clientes, exigindo conhecimentos técnicos avançados.
+  severity: high
+  solution_hint: Agente de voz pode orientar clientes sobre passos básicos de segurança e uso de plataformas.
+- description: Dificuldade em explicar conceitos de blockchain e criptoativos a investidores tradicionais em Portugal.
+  severity: medium
+  solution_hint: Agente pode fornecer explicações simples e automatizadas, em português, 24/7.
+- description: Alto volume de consultas sobre tributação de criptomoedas (IRS) e regulamentação portuguesa.
+  severity: high
+  solution_hint: Agente pode triar consultas e agendar reuniões com especialistas fiscais, fornecendo informação básica.
+- description: Medo e desconfiança (FUD) devido a notícias de scams e volatilidade do mercado.
+  severity: medium
+  solution_hint: Agente pode oferecer comunicações proativas com atualizações confiáveis e check-ins para tranquilizar clientes.
+- description: Processos manuais de verificação de identidade (KYC) que atrasam o onboarding de novos clientes.
+  severity: medium
+  solution_hint: Agente pode guiar o cliente pelo processo de upload de documentos e verificar status.
+- description: Dificuldade em monitorar múltiplas exchanges e alertas de preço em tempo real.
+  severity: low
+  solution_hint: Agente pode ser integrado a APIs para fornecer atualizações de preço por voz e configurar alertas.
+typical_services:
+- Consultoria em Investimento em Criptoativos
+- Gestão de Carteiras de Criptomoedas (Custody)
+- Explicação e Educação sobre Blockchain e Web3
+- Suporte Técnico para Wallets e Exchanges
+- Assessoria Fiscal para Criptomoedas (IRS)
+- Desenvolvimento de Smart Contracts
+- Auditoria de Segurança de Projetos DeFi
+- Otimização de Estratégias de Staking e Yield Farming
+- Integração de Pagamentos em Criptomoedas para Negócios
+- Recuperação de Carteiras Perdidas (quando possível)
+recommended_functions:
+- name: Triagem de Suporte Técnico e Fiscal
+  priority: high
+  reason: Alto volume de perguntas complexas; agente pode categorizar e direcionar para o departamento correto.
+- name: Agendamento de Consultas com Especialistas
+  priority: high
+  reason: Necessidade comum de reuniões personalizadas para investimentos e dúvidas fiscais.
+- name: Atualizações de Mercado e Preços Personalizadas
+  priority: medium
+  reason: Investidores querem informação rápida; agente pode fornecer por voz sem necessidade de app.
+- name: Onboarding e Verificação KYC Guiado
+  priority: medium
+  reason: Simplifica um processo burocrático que é uma barreira de entrada.
+- name: Respostas a FAQs sobre Regulamentação Portuguesa
+  priority: high
+  reason: Clareza jurídica é uma das maiores preocupações dos clientes em Portugal.
+- name: Alertas Proativos de Segurança e Notícias
+  priority: low
+  reason: Constrói confiança e engajamento com comunicações úteis.
+typical_integrations:
+- name: Software de Gestão de Relacionamento com o Cliente (CRM)
+  examples:
+  - PipeDrive
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Plataformas de Trading e Exchanges
+  examples:
+  - Binance
+  - Coinbase
+  - Bitcoin.com Exchange
+  priority: high
+- name: Ferramentas de Comunicação
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - Google Meet
+  priority: medium
+- name: Software de Contabilidade e Faturação
+  examples:
+  - Primavera
+  - SAGE
+  - Moloni
+  priority: medium
+- name: Ferramentas de Análise de Blockchain
+  examples:
+  - Glassnode
+  - Dune Analytics
+  - Nansen
+  priority: low
+industry_faq:
+- question: Como são taxados os lucros das criptomoedas em Portugal?
+  answer_template: Em Portugal, os lucros ocasionais de venda de criptomoedas estão geralmente isentos de IRS, mas a atividade profissional é taxada. Recomendamos consultar um especialista fiscal para a
+    sua situação específica. Podemos agendar uma consulta para si.
+- question: Qual é a maneira mais segura de armazenar as minhas criptomoedas?
+  answer_template: Para quantias significativas, recomenda-se uma hardware wallet (como Ledger ou Trezor). Para quantias menores ou trading frequente, uma wallet de software reputável ou custódia numa exchange
+    segura pode ser suficiente. Posso explicar-lhe as diferenças.
+- question: O que é staking e como funciona?
+  answer_template: Staking é o processo de bloquear as suas criptomoedas para ajudar a proteger uma rede blockchain e, em troca, receber recompensas. É como ganhar juros. A rentabilidade e os riscos variam
+    consoante a criptomoeda.
+- question: A minha exchange faliu. O que posso fazer?
+  answer_template: Lamentamos saber disso. Em primeiro lugar, reúna todos os comprovativos de transações. Contacte a administração da exchange e fique atento a comunicações oficiais. Para o futuro, considere
+    a regra 'not your keys, not your crypto' e use wallets pessoais.
+- question: O que é uma NFT?
+  answer_template: Um NFT (Non-Fungible Token) é um ativo digital único certificado por blockchain, representando propriedade de itens como arte digital, colecionáveis ou até itens no metaverso. É diferente
+    de uma criptomoeda, que é fungível (como o euro).
+- question: Como posso começar a investir em criptomoedas em Portugal?
+  answer_template: Recomendamos começar por educar-se sobre os riscos. Depois, pode criar uma conta numa exchange regulada, como a Binance ou Coinbase, fazer uma pequena primeira compra e considerar armazenamento
+    seguro. Oferecemos sessões de onboarding para iniciantes.
+sales_scripts:
+- trigger: info_geral
+  situation: Quando um potencial cliente liga a pedir informação genérica sobre criptomoedas.
+  script: Olá! Obrigado pelo seu contacto. Entendo que queira saber mais sobre criptomoedas. Em Portugal, é um tópico que gera muitas dúvidas, especialmente sobre segurança e impostos. Para a orientar melhor,
+    posso saber se o seu interesse é principalmente em investimento, em usar criptomoedas para um negócio, ou em entender a tecnologia por trás?
+  goal: Qualificar o lead e direcionar a conversa para uma necessidade específica.
+- trigger: preocupacao_seguranca
+  situation: Quando o cliente expressa medo ou ceticismo sobre a segurança das criptomoedas.
+  script: A sua preocupação é totalmente compreensível e partilhada por muitos. A segurança é o pilar fundamental. A nossa abordagem foca-se na educação e nas melhores práticas, como o uso de hardware wallets
+    e verificação em duas etapas. Trabalhamos apenas com parceiros de infraestrutura de máxima confiança. Posso agendar uma breve explicação gratuita sobre os 3 pilares da segurança cripto?
+  goal: Validar a preocupação do cliente, estabelecer credibilidade e agendar um próximo passo concreto (uma explicação).
+- trigger: comparacao_concorrencia
+  situation: Quando o cliente menciona que está a considerar os serviços de um concorrente.
+  script: 'É excelente que esteja a pesquisar as suas opções. O que o atrai especificamente na oferta deles? Muitas vezes, as empresas focam-se apenas no trading. A nossa diferença está no suporte local
+    completo em português: desde a educação e suporte fiscal específico para Portugal até à gestão de segurança proativa. Para si, que valoriza mais: o preço mais baixo ou ter um especialista local para
+    o guiar em questões fiscais e de segurança?'
+  goal: Descobrir o critério de decisão do cliente e destacar o nosso diferencial de suporte local integrado.
+competitors:
+- name: Binance
+  positioning: Exchange global líder, com presença em Portugal.
+  strengths:
+  - Liquidez enorme
+  - Variedade enorme de criptomoedas
+  - Plataforma avançada
+  weaknesses:
+  - Suporte ao cliente lento e não localizado
+  - Complexa para iniciantes
+  - Pouco foco em suporte fiscal português
+  our_differentiation: Oferecemos suporte personalizado e local em português, focado na educação e assessoria fiscal para o contexto português, não apenas no trading.
+- name: Coinbase
+  positioning: Exchange focada em facilidade de uso e conformidade, popular entre iniciantes.
+  strengths:
+  - Interface muito amigável
+  - Fortes medidas de conformidade e segurança
+  - Nome reconhecido
+  weaknesses:
+  - Taxas mais elevadas
+  - Ofertas mais limitadas fora do mercado principal
+  - Pouca personalização para o mercado português
+  our_differentiation: Oferecemos taxas competitivas e, crucialmente, assessoria fiscal e educacional específica para residentes em Portugal, algo que uma plataforma global não fornece.
+- name: Mind The Coin
+  positioning: Agência de consultoria e educação em criptomoedas em Portugal.
+  strengths:
+  - Foco total no mercado português
+  - Conteúdo educativo em português
+  - Conhecimento local
+  weaknesses:
+  - Escala menor
+  - Pode não ter a infraestrutura técnica de grandes exchanges
+  - Menor reconhecimento de marca
+  our_differentiation: Combinamos o conhecimento local e suporte personalizado com a automação e escalabilidade de um agente de IA, oferecendo suporte 24/7 e integração com ferramentas técnicas avançadas.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Empresário que evita uma multa por declaração fiscal incorreta de criptoativos.
+    monthly_cost: 150
+    monthly_savings: 380
+    payback_months: 1
+  - scenario: Investidor que recupera tempo em gestão manual de carteiras e monitorização de preços.
+    monthly_cost: 80
+    monthly_savings: 160
+    payback_months: 2
+  value_anchors:
+  - A paz de espírito de estar em conformidade com o IRS português não tem preço.
+  - Evitar o roubo de uma carteira pode poupar-lhe dezenas de milhares de euros.
+  - O tempo que poupa em pesquisa e gestão manual pode ser investido no seu negócio principal.
+market_context:
+  market_size: Estimativa de 500.000 a 1 milhão de investidores retail em Portugal.
+  growth_rate: 15-25% YoY
+  key_trends:
+  - Aumento da adoção de criptomoedas como reserva de valor por jovens e profissionais de tech.
+  - Crescente interesse de PMEs em aceitar pagamentos em criptomoedas.
+  - Maior escrutínio regulatório e necessidade de clarificação fiscal por parte das autoridades.
+  - Expansão de comunidades locais de Web3 e NFT em Lisboa e Porto.
+  seasonality:
+    high:
+    - Q1 (período de declarações de IRS, gera dúvidas)
+    - Q4 (fim de ano, planeamento financeiro)
+    low:
+    - Agosto (férias de verão)
+typical_objections:
+- objection: É muito arriscado. Não quero perder o meu dinheiro.
+  response: Concordo plenamente que o risco existe, como em qualquer investimento. A nossa função não é eliminar o risco, mas sim ajudá-lo a geri-lo de forma inteligente através de educação, diversificação
+    e práticas de segurança sólidas. Começamos sempre com pequenos valores para aprender. Gostaria de ver o nosso guia para primeiros passos com risco controlado?
+- objection: É muito complicado tecnologicamente para mim.
+  response: É uma barreira comum e legítima. A beleza do nosso serviço é que simplificamos essa complexidade. O nosso agente de IA guia-o por processos passo-a-passo em português simples, e os nossos consultores
+    humanos estão disponíveis para o que for necessário. Tornamos o técnico em acessível.
+- objection: Os impostos são uma confusão. Prefiro evitar.
+  response: Evitar pode levar a problemas maiores com as finanças. Em Portugal, a situação para o investidor casual pode ser favorável. Nós especializamo-nos em clarificar esta confusão exata. Oferecemos
+    uma sessão inicial de esclarecimento fiscal sem compromisso. Assim, fica a saber exatamente onde está, sem surpresas.
+- objection: Já tenho uma conta na Binance. Não preciso de mais nada.
+  response: 'Excelente, já deu o primeiro passo! A Binance é uma ótima ferramenta para comprar. Nós somos o seu parceiro local para tudo o que vem a seguir: como declarar esses ganhos no IRS português,
+    como transferir para uma carteira mais segura, ou como diversificar para além das opções mais comuns. Pense em nós como o seu consultor pessoal para o mundo cripto, adaptado a Portugal.'
+meta:
+  id: crypto
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- crypto
+- cryptocurrency
+- blockchain
+- bitcoin
+- exchange
+_extends: _base/crypto

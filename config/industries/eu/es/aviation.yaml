@@ -1,0 +1,202 @@
+pain_points:
+- description: Alta competencia en el mercado español que reduce los márgenes de beneficio.
+  severity: high
+  solution_hint: Un agente de voz con IA puede optimizar las ventas y fidelizar clientes
+    con ofertas personalizadas.
+- description: Cumplimiento de regulaciones estrictas como GDPR y normas de aviación
+    EASA.
+  severity: high
+  solution_hint: Automatizar procesos de consentimiento y notificaciones para asegurar
+    compliance.
+- description: Ineficiencias en la gestión de reservas y operaciones, causando sobrecostos.
+  severity: medium
+  solution_hint: Integrar sistemas de reserva con agentes de voz para manejar consultas
+    y cambios automáticamente.
+- description: Costes elevados de mantenimiento de la flota aérea.
+  severity: high
+  solution_hint: Programar mantenimiento predictivo y gestionar órdenes de trabajo
+    a través de voz.
+- description: Demanda estacional variable, con picos en verano y bajas en invierno.
+  severity: medium
+  solution_hint: Usar IA para ajustar precios y promociones dinámicamente basado en
+    la demanda.
+- description: Comunicación multilingüe ineficiente con pasajeros internacionales.
+  severity: low
+  solution_hint: Agentes de voz multilingües para atender consultas en tiempo real.
+typical_services:
+- Vuelos nacionales e internacionales
+- Servicios de carga aérea
+- Alquiler de aviones privados
+- Mantenimiento y reparación de aeronaves (MRO)
+- Servicios de handling en aeropuertos
+- Formación y capacitación de pilotos
+- Consultoría en aviación
+- Gestión de flotas
+- Servicios de catering a bordo
+- Seguros de aviación
+recommended_functions:
+- name: Reserva y modificación de vuelos
+  priority: high
+  reason: Es una función básica para atender a clientes y reducir carga operativa.
+- name: Información sobre estado de vuelos
+  priority: high
+  reason: Proporciona actualizaciones en tiempo real, mejorando la experiencia del
+    cliente.
+- name: Gestión de reclamaciones
+  priority: medium
+  reason: Automatiza el proceso de reclamaciones, ahorrando tiempo y recursos.
+- name: Ventas cruzadas y upselling
+  priority: medium
+  reason: Aumenta los ingresos al ofrecer servicios adicionales como seguros o asientos
+    premium.
+- name: Programación de mantenimiento
+  priority: low
+  reason: Ayuda a coordinar el mantenimiento de la flota, optimizando costos.
+- name: Asistencia multilingüe
+  priority: low
+  reason: Atiende a pasajeros internacionales en su idioma nativo.
+typical_integrations:
+- name: Sistemas de Reserva (CRS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Travelport
+  priority: high
+- name: Sistemas de Gestión de Flotas
+  examples:
+  - ACMI
+  - Flightradar24 integrations
+  priority: medium
+- name: Sistemas de Mantenimiento (MRO)
+  examples:
+  - IBM Maximo
+  - SAP for Aviation
+  priority: medium
+- name: Plataformas de Servicio al Cliente
+  examples:
+  - Zendesk
+  - Salesforce Service Cloud
+  priority: low
+- name: Sistemas de Facturación y Contabilidad
+  examples:
+  - SAP
+  - Oracle Financials
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo cambiar mi reserva de vuelo?
+  answer_template: Puede cambiar su reserva a través de nuestro agente de voz. Por
+    favor, proporcione su número de reserva y las nuevas fechas deseadas.
+- question: ¿Cuáles son las políticas de cancelación?
+  answer_template: Nuestras políticas de cancelación varían según la tarifa. El agente
+    de voz puede proporcionarle detalles específicos basados en su reserva.
+- question: ¿Ofrecen servicios para pasajeros con movilidad reducida?
+  answer_template: Sí, ofrecemos asistencia especial. Puede solicitarla durante la
+    reserva o a través del agente de voz.
+- question: ¿Cómo puedo reclamar por un vuelo retrasado?
+  answer_template: Puede presentar una reclamación a través de nuestro agente de voz.
+    Necesitaremos los detalles de su vuelo y el motivo del retraso.
+- question: ¿Tienen vuelos directos a América Latina?
+  answer_template: Sí, operamos vuelos directos a varios destinos en América Latina.
+    Consulte disponibilidad con el agente de voz.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios de vuelos.
+  script: Hola, somos [Nombre de la Empresa]. Ofrecemos precios competitivos con flexibilidad
+    en cambios. ¿A qué destino y fechas está interesado?
+  goal: Captar el interés del cliente y obtener detalles para una cotización personalizada.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios adicionales.
+  script: Además de vuelos, ofrecemos servicios de handling, seguro de viaje y más.
+    ¿Le interesa alguno en particular?
+  goal: Promover ventas cruzadas y aumentar el valor de la transacción.
+- trigger: complaint_handling
+  situation: Cuando un cliente tiene una queja.
+  script: Lamentamos los inconvenientes. Nuestro agente de voz puede ayudarle a resolver
+    su problema rápidamente. ¿Puede proporcionar su número de reserva?
+  goal: Manejar la queja de manera eficiente y retener al cliente.
+competitors:
+- name: Iberia
+  positioning: Aerolínea bandera de España, con amplia red internacional.
+  strengths:
+  - Red extensa
+  - Marca reconocida
+  - Alianzas globales
+  weaknesses:
+  - Costos operativos altos
+  - Burocracia
+  our_differentiation: Ofrecemos soluciones de automatización que reducen costos y
+    mejoran la eficiencia.
+- name: Vueling
+  positioning: Aerolínea low-cost con base en Barcelona.
+  strengths:
+  - Precios bajos
+  - Frecuencia de vuelos
+  - Enfoque en Europa
+  weaknesses:
+  - Servicio al cliente limitado
+  - Tarifas adicionales
+  our_differentiation: Nuestros agentes de voz proporcionan servicio al cliente 24/7,
+    mejorando la experiencia.
+- name: Air Europa
+  positioning: Aerolínea española con enfoque en largo recorrido.
+  strengths:
+  - Comodidad en vuelos largos
+  - Programa de fidelización
+  weaknesses:
+  - Menor red que competidores
+  - Dependencia de turismo
+  our_differentiation: Integramos IA para personalizar ofertas y optimizar operaciones.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatización de consultas de estado de vuelos
+    monthly_cost: 600
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta un 40% en costos operativos
+  - Mejore la satisfacción del cliente con respuestas instantáneas
+  - Escalable para temporadas altas sin contratar personal adicional
+market_context:
+  market_size: Estimado en 10 mil millones EUR anuales en servicios de aviación en
+    España.
+  growth_rate: 3% anual
+  key_trends:
+  - Aumento del turismo sostenible
+  - Digitalización de operaciones aeroportuarias
+  - Demanda creciente de vuelos low-cost
+  seasonality:
+    high:
+    - Verano (junio-agosto)
+    - Semana Santa
+    low:
+    - Invierno (enero-febrero)
+    - Noviembre
+typical_objections:
+- objection: Es demasiado caro implementar un agente de voz.
+  response: Nuestra solución tiene un ROI rápido, con ahorros mensuales que superan
+    el costo en pocos meses.
+- objection: Prefiero el contacto humano para servicio al cliente.
+  response: Nuestro agente de voz complementa al personal humano, manejando consultas
+    rutinarias para que su equipo se enfoque en casos complejos.
+- objection: No estamos seguros de la seguridad de los datos con IA.
+  response: Cumplimos con GDPR y tenemos medidas de seguridad robustas para proteger
+    la información de sus clientes.
+meta:
+  id: aviation
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

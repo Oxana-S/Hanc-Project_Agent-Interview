@@ -1,0 +1,212 @@
+pain_points:
+- description: Quy trình xử lý bồi thường thủ công, mất nhiều thời gian gây bất mãn cho khách hàng.
+  severity: high
+  solution_hint: AI có thể tự động hóa các bước đầu tiên của quy trình, thu thập thông tin và phân loại hồ sơ, giảm thời gian chờ đợi.
+- description: Tỷ lệ từ chối yêu cầu bảo hiểm cao do khách hàng không hiểu rõ điều khoản, dẫn đến tranh chấp.
+  severity: high
+  solution_hint: Agent voice AI có thể giải thích chính sách bằng ngôn ngữ đơn giản ngay khi khách hàng gọi, tăng cường minh bạch.
+- description: Khó khăn trong việc thu thập và xác minh thông tin khách hàng một cách nhanh chóng và chính xác.
+  severity: medium
+  solution_hint: AI có thể tích hợp với cơ sở dữ liệu để xác minh thông tin và điền tự động vào biểu mẫu trong cuộc gọi.
+- description: Áp lực cạnh tranh về giá lớn, đặc biệt từ các công ty bảo hiểm trực tuyến mới.
+  severity: medium
+  solution_hint: Agent có thể tập trung vào việc bán giá trị của dịch vụ và hỗ trợ khách hàng 24/7, một điểm khác biệt so với đối thủ chỉ có giá rẻ.
+- description: Chi phí cao cho đội ngũ chăm sóc khách hàng và telesales hoạt động 24/7.
+  severity: high
+  solution_hint: Triển khai AI voice agent để xử lý các cuộc gọi cơ bản, câu hỏi thường gặp và sàng lọc khách hàng tiềm năng, giảm tải cho nhân viên.
+- description: Tỷ lệ khách hàng không gia hạn hợp đồng (lapse rate) cao do thiếu tương tác nhắc nhở cá nhân hóa.
+  severity: medium
+  solution_hint: AI có thể tự động gọi điện nhắc nhở gia hạn, cung cấp thông tin ưu đãi mới một cách cá nhân hóa.
+- description: Khó khăn trong việc bán chéo (cross-selling) các sản phẩm bảo hiểm do thiếu hiểu biết về nhu cầu thực tế của khách hàng hiện có.
+  severity: medium
+  solution_hint: Agent AI phân tích lịch sử tương tác và dữ liệu khách hàng để đề xuất các gói bảo hiểm bổ sung phù hợp trong cuộc gọi.
+typical_services:
+- Bảo hiểm sức khỏe
+- Bảo hiểm nhân thọ
+- Bảo hiểm xe cơ giới (bắt buộc và tự nguyện)
+- Bảo hiểm tai nạn con người
+- Bảo hiểm du lịch
+- Bảo hiểm tài sản và hỏa hoạn
+- Bảo hiểm trách nhiệm dân sự
+- Bảo hiểm sức khỏe cho người lao động (BHLĐ)
+- Bảo hiểm nông nghiệp
+- Bảo hiểm công trình xây dựng
+recommended_functions:
+- name: Tiếp nhận và sàng lọc yêu cầu bồi thường
+  priority: high
+  reason: Giải quyết điểm đau chính về thời gian xử lý, thu thập thông tin chuẩn ngay từ đầu.
+- name: Hỗ trợ khách hàng & Trả lời FAQ 24/7
+  priority: high
+  reason: Giảm chi phí vận hành và nâng cao trải nghiệm khách hàng với dịch vụ luôn sẵn sàng.
+- name: Nhắc lịch gia hạn hợp đồng tự động
+  priority: medium
+  reason: Cải thiện tỷ lệ giữ chân khách hàng bằng tương tác cá nhân hóa kịp thời.
+- name: Tư vấn và bán sản phẩm cơ bản
+  priority: medium
+  reason: Tận dụng cuộc gọi để tạo doanh thu, đặc biệt cho các sản phẩm đơn giản, phổ biến.
+- name: Thu thập thông tin và xác minh khách hàng tiềm năng (lead qualification)
+  priority: high
+  reason: Tối ưu hóa hiệu quả cho đội ngũ sales con người bằng cách cung cấp lead chất lượng cao.
+- name: Khảo sát mức độ hài lòng sau dịch vụ (CSAT)
+  priority: low
+  reason: Thu thập phản hồi liên tục để cải thiện dịch vụ mà không tốn nhiều nhân lực.
+typical_integrations:
+- name: Hệ thống Quản lý Quan hệ Khách hàng (CRM)
+  examples:
+  - Công ty phần mềm nội địa
+  - Salesforce
+  - Zoho
+  priority: high
+- name: Hệ thống Quản lý Bồi thường (Claims Management System)
+  examples:
+  - Guidewire
+  - SAP FS-CD
+  - Phần mềm tùy chỉnh nội bộ
+  priority: high
+- name: Cổng Thanh toán Trực tuyến
+  examples:
+  - VNPay
+  - Momo
+  - ZaloPay
+  - OnePay
+  priority: medium
+- name: Hệ thống Quản lý Hợp đồng/Hồ sơ điện tử
+  examples:
+  - DocuSign
+  - Các nền tảng ký số nội địa
+  - Microsoft SharePoint
+  priority: medium
+- name: Cơ sở dữ liệu quốc gia (để xác minh)
+  examples:
+  - Cổng Dịch vụ công
+  - Cơ sở dữ liệu về phương tiện (Bộ GTVT)
+  priority: low
+industry_faq:
+- question: Thủ tục yêu cầu bồi thường như thế nào?
+  answer_template: Quý khách vui lòng chuẩn bị giấy tờ như CMND, hợp đồng bảo hiểm, biên bản sự việc. Chúng tôi có thể hỗ trợ quý khách ghi nhận thông tin ngay trên cuộc gọi này và hướng dẫn các bước tiếp
+    theo.
+- question: Phí bảo hiểm của tôi có thể thay đổi không?
+  answer_template: Phí bảo hiểm có thể điều chỉnh theo các yếu tố như lịch sử bồi thường, thay đổi pháp luật, hoặc khi quý khách điều chỉnh phạm vi bảo hiểm. Chúng tôi sẽ thông báo trước cho quý khách trước
+    khi gia hạn hợp đồng.
+- question: Tôi có thể mua bảo hiểm trực tuyến không?
+  answer_template: Hoàn toàn được. Chúng tôi có website và ứng dụng di động để quý khách tham khảo, tính phí và mua bảo hiểm phù hợp. Tôi cũng có thể hỗ trợ kết nối quý khách với nhân viên tư vấn nếu cần.
+- question: Điều khoản loại trừ trong hợp đồng là gì?
+  answer_template: Đây là những trường hợp công ty bảo hiểm không chi trả bồi thường, ví dụ như thiệt hại do lỗi cố ý, chiến tranh, hay rủi ro đã có trong điều khoản loại trừ cụ thể. Tôi khuyên quý khách
+    nên đọc kỹ phần này trong hợp đồng.
+- question: Làm sao để yêu cầu tư vấn về gói bảo hiểm phù hợp?
+  answer_template: Dựa trên nhu cầu và ngân sách của quý khách, tôi có thể cung cấp thông tin cơ bản về các gói. Để được tư vấn chi tiết và so sánh sản phẩm, tôi sẽ chuyển tiếp cuộc gọi đến chuyên viên
+    tư vấn của chúng tôi.
+- question: Tôi cần hỗ trợ khẩn cấp khi xảy ra tai nạn thì làm thế nào?
+  answer_template: Xin hãy bình tĩnh và gọi ngay đến đường dây nóng hỗ trợ khẩn cấp [Số điện thoại] của chúng tôi. Nhân viên sẽ hướng dẫn quý khách các bước xử lý hiện trường và hỗ trợ ngay lập tức.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá hoặc nói 'sản phẩm của bạn đắt quá'.
+  script: 'Tôi hiểu ngân sách là mối quan tâm quan trọng. Thay vì chỉ so sánh giá, chúng tôi tập trung vào giá trị bảo vệ toàn diện và dịch vụ hỗ trợ 24/7 như tôi đang đây. Chỉ với khoảng [X] VND mỗi ngày,
+    quý khách có thể an tâm cho [Lợi ích cụ thể, ví dụ: sức khỏe cả gia đình]. Tôi có thể phân tích một chút về nhu cầu của quý khách để đề xuất gói tiết kiệm nhất mà vẫn đủ bảo vệ không ạ?'
+  goal: Chuyển hướng từ cuộc thảo luận về giá sang cuộc thảo luận về giá trị và nhu cầu, thu thập thông tin để tư vấn phù hợp.
+- trigger: competitor_mention
+  situation: Khi khách hàng đề cập đến một đối thủ cạnh tranh hoặc gói bảo hiểm khác.
+  script: 'Cảm ơn quý khách đã tìm hiểu. Đúng là trên thị trường có nhiều lựa chọn. Điểm khác biệt lớn nhất của chúng tôi là dịch vụ khách hàng được hỗ trợ bởi AI như tôi, luôn sẵn sàng 24/7 để giải đáp
+    thắc mắc hoặc tiếp nhận bồi thường sơ bộ ngay lập tức, giúp tiết kiệm thời gian chờ đợi quý báu của quý khách. Bên cạnh đó, chúng tôi có [Ưu điểm khác, ví dụ: mạng lưới bệnh viện liên kết rộng]. Quý
+    khách có quan tâm đến việc so sánh chi tiết các quyền lợi không ạ?'
+  goal: Làm nổi bật điểm khác biệt về công nghệ và dịch vụ, mời gọi so sánh sâu hơn về giá trị thực.
+- trigger: callback_request
+  situation: Khi khách hàng nói 'Tôi cần suy nghĩ thêm' hoặc 'Gọi lại cho tôi sau'.
+  script: Tôi hoàn toàn tôn trọng quyết định của quý khách. Để thuận tiện cho quý khách, tôi có thể ghi chú lại thời gian quý khách muốn nhận cuộc gọi nhắc nhở. Trong lúc đó, tôi có thể gửi email tóm tắt
+    các thông tin và ưu đãi chúng ta đã trao đổi được không? Điều này giúp quý khách dễ tham khảo lại.
+  goal: Giữ liên lạc, thu thập thông tin để lên lịch tiếp cận lại và cung cấp tài liệu hỗ trợ quyết định.
+- trigger: product_inquiry
+  situation: Khi khách hàng hỏi thông tin chung về một sản phẩm bảo hiểm.
+  script: 'Cảm ơn quý khách đã quan tâm đến [Tên sản phẩm]. Sản phẩm này giúp bảo vệ quý khách khỏi [Rủi ro chính]. Để tôi có thể tư vấn chính xác nhất, quý khách có thể cho tôi biết mục đích chính khi
+    mua bảo hiểm lần này là gì ạ? (Ví dụ: bảo vệ sức khỏe, tích lũy tài chính, hay bảo hiểm cho xe ô tô mới)?'
+  goal: Thu thập thông tin về nhu cầu cốt lõi để chuyển hướng cuộc gọi từ cung cấp thông tin chung sang tư vấn có mục tiêu.
+competitors:
+- name: Bảo Việt (Bao Viet Insurance)
+  positioning: Doanh nghiệp nhà nước lâu đời, thị phần lớn, mạng lưới rộng.
+  strengths:
+  - Uy tín lâu năm
+  - Mạng lưới chi nhánh phủ rộng toàn quốc
+  - Sản phẩm đa dạng
+  - Nhiều đại lý
+  weaknesses:
+  - Quy trình có thể cồng kềnh
+  - Ứng dụng công nghệ có thể chậm hơn đối thủ mới
+  our_differentiation: Tập trung vào trải nghiệm khách hàng số hóa với AI hỗ trợ 24/7, tốc độ xử lý nhanh và minh bạch hơn.
+- name: PVI Insurance
+  positioning: Công ty bảo hiểm phi nhân thọ hàng đầu, mạnh về bảo hiểm doanh nghiệp và dự án.
+  strengths:
+  - Thế mạnh trong bảo hiểm doanh nghiệp và công trình lớn
+  - Năng lực tài chính vững mạnh
+  - Có ngân hàng mẹ (VPBank) hỗ trợ
+  weaknesses:
+  - Có thể ít tập trung vào thị trường cá nhân và bán lẻ
+  - Nhận diện thương hiệu với khách hàng phổ thông có thể thấp hơn
+  our_differentiation: Giải pháp AI của chúng tôi có thể cá nhân hóa cao và dễ dàng triển khai cho cả khách hàng cá nhân lẫn doanh nghiệp vừa và nhỏ (SME), với chi phí hợp lý.
+- name: FWD Vietnam
+  positioning: Công ty bảo hiểm nhân thọ quốc tế mới nổi, tập trung vào trải nghiệm khách hàng số.
+  strengths:
+  - Công nghệ hiện đại, trải nghiệm khách hàng số tốt
+  - Sản phẩm sáng tạo
+  - Chiến lược marketing trẻ trung
+  weaknesses:
+  - Mạng lưới đại lý truyền thống chưa sâu rộng bằng đối thủ lâu năm
+  - Chủ yếu tập trung vào bảo hiểm nhân thọ
+  our_differentiation: Giải pháp AI voice agent của chúng tôi có thể tích hợp vào bất kỳ hệ thống nào, giúp các công ty bảo hiểm truyền thống nâng cấp dịch vụ khách hàng số mà không cần thay đổi cấu trúc
+    hạ tầng lớn.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 20000000
+  - 500000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Tự động hóa trung tâm tổng đài cho dịch vụ hỗ trợ cơ bản và tiếp nhận bồi thường sơ bộ.
+    monthly_cost: 30000000
+    monthly_savings: 45000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm đến 40% chi phí vận hành tổng đài sau 6 tháng.
+  - Xử lý hồ sơ bồi thường nhanh hơn 50% ngay từ bước tiếp nhận đầu tiên.
+  - Tăng tỷ lệ giữ chân khách hàng nhờ nhắc nhở gia hạn tự động và cá nhân hóa.
+market_context:
+  market_size: Khoảng 200 nghìn tỷ VND (tổng phí bảo hiểm, ước tính)
+  growth_rate: 15-20% năm
+  key_trends:
+  - 'Số hóa mạnh mẽ: ngày càng nhiều người tiêu dùng trẻ tìm hiểu và mua bảo hiểm trực tuyến.'
+  - Nhu cầu về bảo hiểm sức khỏe và nhân thọ tăng cao sau đại dịch.
+  - Các sản phẩm bảo hiểm vi mô và bảo hiểm theo yêu cầu (on-demand) đang phát triển.
+  - Chính phủ khuyến khích bảo hiểm bắt buộc TNDS ô tô và các loại hình bảo hiểm xã hội mở rộng.
+  seasonality:
+    high:
+    - Cuối năm (Q4) - mùa mua sắm, du lịch và gia hạn hợp đồng
+    - Đầu năm (Q1) - thực hiện kế hoạch tài chính cá nhân mới
+    - Mùa mưa bão (khoảng tháng 8-11) - nhu cầu bảo hiểm tài sản, xe cộ tăng
+    low:
+    - Tháng 5-6 - thời điểm giữa năm, ít các sự kiện thúc đẩy tài chính lớn
+typical_objections:
+- objection: Tôi không tin tưởng vào bảo hiểm, khi cần thì khó bồi thường lắm.
+  response: Tôi rất hiểu mối lo ngại đó. Chính vì vậy, chúng tôi phát triển dịch vụ AI để minh bạch hóa quy trình. Tôi có thể giải thích rõ các điều khoản ngay bây giờ, và khi cần bồi thường, quý khách
+    có thể báo cáo sơ bộ ngay qua tổng đài tự động của chúng tôi 24/7, giảm thiểu thủ tục giấy tờ ban đầu.
+- objection: Tôi còn trẻ và khỏe, chưa cần bảo hiểm.
+  response: Đó chính là thời điểm tốt nhất để tham gia bảo hiểm ạ, vì phí bảo hiểm lúc này thấp nhất và điều kiện sức khỏe dễ được chấp thuận nhất. Bảo hiểm như một kế hoạch tài chính phòng xa, bảo vệ bản
+    thân và gia đình khỏi những rủi ro bất ngờ. Hơn nữa, nhiều sản phẩm còn có tính chất tích lũy, giống như một khoản tiết kiệm có bảo vệ.
+- objection: Tôi đã có bảo hiểm từ công ty rồi.
+  response: Thật tuyệt khi công ty của quý khách có chế độ đó. Tuy nhiên, gói bảo hiểm của công ty thường có giới hạn và chỉ có hiệu lực khi quý khách còn làm việc. Một gói bảo hiểm cá nhân sẽ bổ sung để
+    đảm bảo sự bảo vệ toàn diện và liên tục cho quý khách và gia đình, đồng thời có thể được thiết kế phù hợp với nhu cầu riêng của quý khách.
+- objection: Tôi không có thời gian để nghe tư vấn dài.
+  response: Tôi tôn trọng thời gian của quý khách. Tôi chỉ cần 3 phút để hiểu nhu cầu cốt lõi của quý khách. Sau đó, tôi có thể gửi một bản tóm tắt các lựa chọn phù hợp nhất qua email/SMS để quý khách xem
+    xét khi thuận tiện. Được chứ ạ?
+meta:
+  id: insurance
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- insurance
+- coverage
+- policy
+- underwriting
+_extends: _base/insurance

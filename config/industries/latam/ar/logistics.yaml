@@ -1,0 +1,211 @@
+aliases:
+- logística
+- transporte
+- distribución
+- mensajería
+- empresa de transporte
+- depósito
+- carga
+- envío
+- paquetería
+- remito
+- factura
+- seguimiento
+pain_points:
+- description: Alta frecuencia de llamadas preguntando por el estado de los envíos.
+  severity: high
+  solution_hint: Agente de voz automatizado para consultas de seguimiento 24/7.
+- description: Dificultades para coordinar horarios de entrega con los clientes.
+  severity: high
+  solution_hint: Sistema automatizado de confirmación y asignación de franjas horarias.
+- description: Inestabilidad en los costos operativos debido a la inflación.
+  severity: high
+  solution_hint: Agente capaz de proporcionar cotizaciones actualizadas en tiempo
+    real.
+- description: Demoras aduaneras y trámites burocráticos que generan incertidumbre.
+  severity: medium
+  solution_hint: Respuestas automatizadas sobre requisitos y estado de trámites aduaneros.
+- description: Falta de comunicación proactiva sobre retrasos en la entrega.
+  severity: medium
+  solution_hint: Agente que envía notificaciones automáticas de cambios en el estado.
+- description: Errores en la toma de datos al recibir pedidos por teléfono.
+  severity: medium
+  solution_hint: Formulario de voz guiado para capturar órdenes de manera estructurada.
+typical_services:
+- Transporte de carga general
+- Distribución última milla
+- Servicio de mensajería expresa
+- Almacenaje y depósito
+- Despachante de aduana
+- Carga consolidada (groupage)
+- Transporte interurbano e internacional
+- Logística inversa (devoluciones)
+- Seguimiento y trazabilidad en tiempo real
+- Servicios logísticos para e-commerce
+recommended_functions:
+- name: estado_de_envío
+  priority: high
+  reason: Más del 60% de las llamadas son consultas de seguimiento.
+- name: cotización
+  priority: high
+  reason: Necesidad constante de precios actualizados debido a la inflación.
+- name: toma_de_pedidos
+  priority: high
+  reason: Automatiza la creación de órdenes, reduciendo errores.
+- name: reprogramación
+  priority: medium
+  reason: Alta demanda para modificar horarios y direcciones de entrega.
+- name: faq_general
+  priority: medium
+  reason: Responde preguntas comunes sobre zonas, documentos y tiempos.
+- name: notificación_proactiva
+  priority: low
+  reason: Mejora la experiencia del cliente informando retrasos o confirmaciones.
+typical_integrations:
+- name: TMS (Sistema de Gestión de Transporte)
+  examples:
+  - SAP TM
+  - Logística Argentina S.A.
+  - TMS local personalizado
+  priority: high
+  reason: Fuente principal de datos para estados de envío y gestión de flotas.
+- name: CRM
+  examples:
+  - Zoho CRM
+  - Salesforce
+  - Sistemas locales
+  priority: medium
+  reason: Acceso al historial del cliente y detalles de órdenes previas.
+- name: Mensajería
+  examples:
+  - WhatsApp Business API
+  - Telegram Bot
+  priority: high
+  reason: Canal principal de comunicación y notificaciones en Latam.
+- name: Telefonía
+  examples:
+  - VoIP local
+  - Planta virtual
+  priority: high
+  reason: Gestión de llamadas entrantes y enrutamiento.
+industry_faq:
+- question: ¿Dónde está mi envío?
+  answer_template: Por favor, proporcioná el número de guía o remito para verificar
+    el estado actual.
+- question: ¿Cuánto cuesta enviar un paquete a Córdoba?
+  answer_template: El costo depende del peso, volumen y urgencia. Decime los detalles
+    para darte una cotización.
+- question: ¿A qué hora llega el camión/repardidor?
+  answer_template: Necesito el número de orden para consultar la ventana horaria estimada
+    de entrega.
+- question: ¿Puedo cambiar la dirección de entrega?
+  answer_template: Sí, es posible antes de que salga el vehículo para la distribución.
+    Indicame la nueva dirección.
+- question: ¿Trabajan los fines de semana y feriados?
+  answer_template: Sí, ofrecemos servicio los fines de semana con un recargo. Te confirmo
+    la disponibilidad.
+- question: ¿Qué documentación necesito para un envío internacional?
+  answer_template: Generalmente se requiere factura comercial y conocimiento de embarque.
+    Te detallo según el país de destino.
+sales_scripts:
+- trigger: consulta_de_precio
+  situation: Cliente llama preguntando por el costo de un envío.
+  script: '¡Hola! Para darte un precio preciso, necesito saber: ¿Cuál es el destino?
+    ¿Cuál es el peso y tamaño aproximado del paquete? ¿Es urgente o estándar?'
+  goal: Capturar datos clave para generar una cotización y convertir la consulta en
+    un pedido.
+- trigger: queja_por_retraso
+  situation: Cliente llama molesto por un envío que no llegó a tiempo.
+  script: Lamento la demora. Para ayudarte rápidamente, ¿podrías darme el número de
+    seguimiento? Voy a verificar el estado actual y la causa del retraso.
+  goal: Calmar al cliente, obtener información y ofrecer una solución concreta.
+- trigger: primer_contacto
+  situation: Posible cliente nuevo busca servicios logísticos.
+  script: ¡Bienvenido! Somos expertos en soluciones logísticas para empresas. ¿Podrías
+    contarme un poco sobre tu negocio y los tipos de envíos que manejás? Así te recomiendo
+    el mejor servicio.
+  goal: Entender las necesidades del prospecto y presentar los servicios relevantes.
+competitors:
+- name: Andreani
+  positioning: Líder en logística nacional, fuerte en e-commerce y paquetería.
+  strengths:
+  - Amplia red de sucursales y centros de distribución.
+  - Marca muy reconocida.
+  - Soluciones integrales para e-commerce.
+  weaknesses:
+  - Puede tener precios más altos.
+  - Atención al cliente saturada en picos.
+  our_differentiation: Agente de voz 24/7 para consultas instantáneas y cotizaciones
+    automatizadas sin espera.
+- name: OCA
+  positioning: Especialista en envíos puerta a puerta y logística empresarial.
+  strengths:
+  - Cobertura extensa en todo el país.
+  - Servicios financieros integrados (cobranza).
+  weaknesses:
+  - Procesos menos ágiles para empresas.
+  - Menos flexible en servicios personalizados.
+  our_differentiation: Integración directa con el TMS del cliente para seguimiento
+    en tiempo real y menor margen de error.
+- name: Correo Argentino
+  positioning: Operador estatal con servicio postal universal.
+  strengths:
+  - Presencia en todo el territorio.
+  - Tarifas accesibles para envíos básicos.
+  weaknesses:
+  - Tiempos de entrega menos predecibles.
+  - Tecnología obsoleta en seguimiento.
+  our_differentiation: Comunicación proactiva automatizada y soporte prioritario para
+    cuentas empresariales.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 25000
+  roi_examples:
+  - scenario: Automatización de consultas de estado para una PYME con 500 envíos/mes.
+    monthly_cost: 80000
+    monthly_savings: 120000
+    payback_months: 1
+  value_anchors:
+  - Reducí las llamadas a tu operador en un 40%.
+  - Cotizaciones instantáneas sin esperar a un agente.
+  - Seguimiento automatizado 24/7, incluso fines de semana.
+market_context:
+  market_size: USD 15 mil millones (estimado 2023)
+  growth_rate: 8% anual, impulsado por el e-commerce.
+  key_trends:
+  - Crecimiento explosivo del comercio electrónico.
+  - Mayor demanda de logística inversa (devoluciones).
+  - Necesidad de trazabilidad total en la cadena de suministro.
+  - Presión por reducir costos logísticos debido a la inflación.
+  seasonality:
+    high:
+    - Noviembre-Diciembre (Black Friday, Navidad)
+    - Mayo (días festivos, liquidaciones)
+    low:
+    - Enero (vacaciones de verano)
+    - Julio (receso invernal)
+typical_objections:
+- objection: Prefiero hablar con una persona.
+  response: Entiendo. Te puedo transferir a un agente, pero mientras tanto puedo resolver
+    consultas básicas al instante, como el estado de tu envío.
+- objection: ¿Los precios son fijos o cambian?
+  response: Los precios se ajustan periódicamente por la inflación. Nuestro agente
+    te da siempre la cotización más actual al momento de la consulta.
+- objection: Ya tengo un proveedor, ¿por qué cambiar?
+  response: Comprendo. Nuestra ventaja es la automatización que te ahorra tiempo en
+    consultas y cotizaciones. Podés probar solo ese módulo sin cambiar todo tu operador.
+meta:
+  id: logistics
+  country: ar
+  region: latam
+  language: es
+  currency: ARS
+  created_at: '2024-06-01'
+  last_updated: '2024-06-01'
+  version: '1.0'
+  phone_codes:
+  - '+54'
+_extends: _base/logistics

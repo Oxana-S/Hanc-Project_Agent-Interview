@@ -1,0 +1,236 @@
+pain_points:
+- description: Altos costos de atención al cliente debido a la necesidad de personal
+    humano, especialmente en horarios extendidos.
+  severity: high
+  solution_hint: Agente de voz AI puede manejar consultas básicas y ventas las 24/7,
+    reduciendo costos laborales.
+- description: Gestión ineficiente de inventario que lleva a desabastos o excesos,
+    afectando las ventas y rentabilidad.
+  severity: high
+  solution_hint: AI puede integrarse con sistemas de inventario para monitorear y
+    alertar sobre niveles críticos en tiempo real.
+- description: Dificultad para cumplir con la LFPDPPP en el manejo de datos de clientes,
+    arriesgando multas.
+  severity: medium
+  solution_hint: Agentes de voz AI pueden diseñarse para cumplir con protocolos de
+    privacidad, automatizando consentimientos y registros.
+- description: Alta rotación de empleados en ventas y servicio, aumentando costos
+    de capacitación y afectando la experiencia del cliente.
+  severity: medium
+  solution_hint: Automatización con AI reduce dependencia de personal, manteniendo
+    consistencia en la atención.
+- description: Competencia creciente de e-commerce y grandes cadenas, presionando
+    a minoristas locales.
+  severity: high
+  solution_hint: AI puede ayudar a personalizar ofertas y mejorar el engagement con
+    clientes locales, diferenciándose de competidores.
+- description: Estacionalidad pronunciada en ventas, con picos en temporadas como
+    Navidad que sobrecargan operaciones.
+  severity: medium
+  solution_hint: Agentes de voz AI escalan automáticamente para manejar picos de demanda
+    sin costo adicional.
+typical_services:
+- Ventas al por menor
+- Gestión de inventario
+- Atención al cliente y soporte
+- Marketing digital y promociones
+- Logística y distribución
+- Análisis de datos de ventas
+- Programas de fidelización
+- Servicios de pago y facturación
+- Consultoría en cumplimiento legal
+- Optimización de procesos operativos
+recommended_functions:
+- name: Automatización de llamadas entrantes para ventas
+  priority: high
+  reason: Reduce costos operativos y captura leads de manera eficiente en un mercado
+    con alta demanda de atención.
+- name: Recordatorios de pago y cobranza
+  priority: medium
+  reason: Mejora el flujo de caja al automatizar seguimientos, común en retail con
+    ventas a crédito.
+- name: Soporte multilingüe para turistas
+  priority: low
+  reason: Atrae clientes internacionales en zonas turísticas de México, mejorando
+    la experiencia.
+- name: Integración con sistemas POS locales
+  priority: high
+  reason: Facilita la sincronización de ventas e inventario, clave para eficiencia
+    operativa.
+- name: Análisis de tendencias de compra
+  priority: medium
+  reason: Ayuda a minoristas a adaptar inventario y promociones basadas en comportamiento
+    local.
+- name: Monitoreo de cumplimiento LFPDPPP
+  priority: high
+  reason: Evita riesgos legales en un entorno regulatorio estricto en México.
+typical_integrations:
+- name: Sistemas de punto de venta (POS)
+  examples:
+  - Aspel COI
+  - Komet Sales
+  - SAP Business One
+  priority: high
+- name: Software de gestión empresarial (ERP)
+  examples:
+  - Aspel SAE
+  - Oracle NetSuite
+  - Microsoft Dynamics
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - Mercado Libre
+  - Amazon México
+  - Linio
+  priority: medium
+- name: Sistemas de pago
+  examples:
+  - Clip
+  - Stripe México
+  - Openpay
+  priority: medium
+- name: Herramientas de marketing digital
+  examples:
+  - Mailchimp
+  - HubSpot
+  - Facebook Ads
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta implementar un agente de voz AI para mi negocio retail?
+  answer_template: Nuestros precios comienzan desde 10,000 MXN mensuales, con planes
+    escalables basados en el tamaño de tu operación. Ofrecemos un ROI rápido al reducir
+    costos de atención.
+- question: ¿Cómo maneja el agente de voz AI la privacidad de datos según la LFPDPPP?
+  answer_template: Diseñamos nuestros agentes para cumplir con la LFPDPPP, incluyendo
+    consentimientos grabados y cifrado de datos, asegurando la protección de información
+    de clientes.
+- question: ¿Puede integrarse con mi sistema POS actual?
+  answer_template: Sí, integramos con sistemas POS comunes en México como Aspel o
+    Komet, permitiendo sincronización en tiempo real para ventas e inventario.
+- question: ¿Qué pasa durante temporadas altas como Navidad?
+  answer_template: Nuestros agentes escalan automáticamente para manejar picos de
+    llamadas, sin costos adicionales, asegurando que no pierdas ventas.
+- question: ¿Requiere capacitación especial para mi equipo?
+  answer_template: No, nuestra solución es fácil de usar y viene con soporte en español
+    para una implementación rápida, minimizando interrupciones.
+- question: ¿Cómo mejora la experiencia del cliente?
+  answer_template: Proporciona atención inmediata las 24/7, personaliza ofertas basadas
+    en historial, y reduce tiempos de espera, aumentando la satisfacción.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta sobre el costo de nuestros servicios.
+  script: Hola, entiendo que estás interesado en optimizar tu retail. Nuestros planes
+    comienzan desde 10,000 MXN al mes, ajustados a tu volumen de ventas. ¿Podemos
+    agendar una demostración para mostrarte el ahorro potencial?
+  goal: Convertir la consulta en una cita de demostración.
+- trigger: service_inquiry
+  situation: Cuando el cliente pregunta sobre funciones específicas, como integración
+    con POS.
+  script: Gracias por tu pregunta. Nuestro agente de voz AI se integra fácilmente
+    con sistemas como Aspel o Komet, automatizando ventas e inventario. ¿Te gustaría
+    ver cómo funciona en un caso similar al tuyo?
+  goal: Destacar la facilidad de integración y programar una demo.
+- trigger: compliance_concern
+  situation: Cuando el cliente expresa preocupación por el cumplimiento de LFPDPPP.
+  script: Es una preocupación válida. Nuestra solución incluye funciones de cumplimiento
+    como consentimientos automáticos y cifrado, diseñadas para la normativa mexicana.
+    Podemos discutir cómo protegemos tus datos.
+  goal: Construir confianza y abordar objeciones legales.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor.
+  script: Entiendo que hay opciones. Nos diferenciamos con integraciones locales,
+    soporte en español 24/7, y enfoque en ROI rápido para minoristas mexicanos. ¿Qué
+    te parece si comparamos beneficios específicos?
+  goal: Resaltar ventajas competitivas y personalizar la oferta.
+competitors:
+- name: Vozy
+  positioning: Proveedor regional de soluciones de voz AI para empresas en Latam.
+  strengths:
+  - Presencia establecida en México
+  - Soluciones personalizadas
+  weaknesses:
+  - Precios más altos
+  - Integraciones limitadas con sistemas locales
+  our_differentiation: Ofrecemos precios más accesibles y integraciones profundas
+    con software mexicano como Aspel.
+- name: AI Sense
+  positioning: Startup local enfocada en automatización para retail.
+  strengths:
+  - Conocimiento del mercado mexicano
+  - Enfoque en pequeñas empresas
+  weaknesses:
+  - Tecnología menos escalable
+  - Soporte básico
+  our_differentiation: Proporcionamos escalabilidad para picos de demanda y soporte
+    24/7 con expertos locales.
+- name: Google Cloud AI
+  positioning: Soluciones globales de AI adaptadas para varios sectores.
+  strengths:
+  - Tecnología avanzada
+  - Recursos globales
+  weaknesses:
+  - Menos especialización en retail mexicano
+  - Costos elevados
+  our_differentiation: Especialización en retail de México, con precios competitivos
+    y cumplimiento local LFPDPPP.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 10000
+  roi_examples:
+  - scenario: Reducción de costos de atención al cliente en una tienda mediana.
+    monthly_cost: 15000
+    monthly_savings: 20000
+    payback_months: 1
+  value_anchors:
+  - Ahorra hasta un 30% en costos operativos con automatización.
+  - Incrementa ventas en un 15% con atención personalizada las 24/7.
+  - Cumple con LFPDPPP sin esfuerzo adicional.
+market_context:
+  market_size: El mercado retail en México vale aproximadamente 300 mil millones de
+    MXN anuales.
+  growth_rate: 4% anual
+  key_trends:
+  - Aumento acelerado del e-commerce y omnicanalidad.
+  - Digitalización de procesos para competir con grandes cadenas.
+  - Enfoque en experiencias personalizadas para clientes locales.
+  seasonality:
+    high:
+    - Noviembre-Diciembre (Navidad)
+    - Mayo (Día de la Madre)
+    - Septiembre (Fiestas Patrias)
+    low:
+    - Enero
+    - Agosto
+typical_objections:
+- objection: Es muy caro para mi pequeño negocio.
+  response: Entiendo tu preocupación. Nuestro plan de entrada está diseñado para PYMES
+    y el ahorro en costos laborales suele pagar la inversión en pocos meses. ¿Podemos
+    analizar tus números?
+- objection: No confío en que la AI entienda a mis clientes mexicanos.
+  response: Nuestros agentes están entrenados con dialectos y culturas locales, asegurando
+    una comunicación natural. Además, ofrecemos pruebas gratuitas para que lo verifiques.
+- objection: Ya tengo sistemas, no quiero complicaciones con integraciones.
+  response: Nos especializamos en integraciones sencillas con software común en México,
+    como Aspel. Te apoyamos durante la transición para que sea sin problemas.
+- objection: Prefiero el contacto humano en ventas.
+  response: Completamente de acuerdo, el contacto humano es clave. Nuestra AI complementa
+    a tu equipo, manejando tareas repetitivas para que ellos se enfoquen en ventas
+    complejas y servicio premium.
+meta:
+  id: retail
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

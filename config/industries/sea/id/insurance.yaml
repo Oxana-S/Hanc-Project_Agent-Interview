@@ -1,0 +1,214 @@
+pain_points:
+- description: Biaya operasional yang tinggi karena proses manual dan banyaknya dokumen
+    fisik.
+  severity: high
+  solution_hint: Otomatisasi proses dengan agen suara AI untuk mengurangi beban kerja
+    staf dan mempercepat penanganan.
+- description: Proses klaim yang lambat dan rumit, menyebabkan ketidakpuasan pelanggan.
+  severity: high
+  solution_hint: Agen suara AI dapat membantu pelanggan melaporkan klaim secara real-time
+    dan memberikan pembaruan status.
+- description: Rendahnya literasi asuransi di masyarakat, sulitnya menjelaskan produk
+    asuransi.
+  severity: medium
+  solution_hint: Agen suara AI dapat memberikan penjelasan sederhana dan interaktif
+    tentang produk asuransi dalam bahasa Indonesia.
+- description: Persaingan ketat dengan banyak perusahaan asuransi, sulit mempertahankan
+    pelanggan.
+  severity: medium
+  solution_hint: Agen suara AI dapat digunakan untuk engagement pelanggan secara proaktif
+    dan personalisasi layanan.
+- description: Kepatuhan terhadap regulasi PDP (Perlindungan Data Pribadi) yang kompleks
+    dan berisiko denda.
+  severity: high
+  solution_hint: Agen suara AI dapat diintegrasikan dengan sistem yang aman untuk
+    memastikan kepatuhan data secara otomatis.
+- description: Tingkat penipuan asuransi yang tinggi, meningkatkan risiko keuangan.
+  severity: medium
+  solution_hint: Agen suara AI dapat membantu deteksi penipuan awal melalui analisis
+    pola percakapan dan verifikasi data.
+typical_services:
+- Asuransi Jiwa
+- Asuransi Kesehatan
+- Asuransi Kendaraan Bermotor
+- Asuransi Properti
+- Asuransi Perjalanan
+- Asuransi Pendidikan
+- Asuransi Bisnis
+- Asuransi Kecelakaan Diri
+- Asuransi Tanggung Gugat
+- Asuransi Investasi (Unit Link)
+recommended_functions:
+- name: Generasi Lead
+  priority: high
+  reason: Meningkatkan akuisisi pelanggan baru dengan menjangkau calon pelanggan melalui
+    panggilan otomatis.
+- name: Dukungan Pelanggan 24/7
+  priority: high
+  reason: Memberikan layanan cepat untuk pertanyaan umum, klaim, dan pembaruan polis
+    tanpa batas waktu.
+- name: Bantuan Klaim
+  priority: medium
+  reason: Memandu pelanggan melalui proses klaim, mengurangi waktu penyelesaian dan
+    meningkatkan kepuasan.
+- name: Penjualan dan Upselling
+  priority: medium
+  reason: Menawarkan produk asuransi tambahan berdasarkan profil pelanggan dan kebutuhan
+    mereka.
+- name: Verifikasi Data
+  priority: low
+  reason: Memastikan keakuratan data pelanggan untuk kepatuhan PDP dan mengurangi
+    penipuan.
+- name: Pengingat Pembayaran Premi
+  priority: low
+  reason: Mengurangi tunggakan premi dengan mengirimkan pengingat otomatis melalui
+    panggilan suara.
+typical_integrations:
+- name: Sistem CRM
+  examples:
+  - Mekari Jurnal
+  - Sleekr
+  - Zahir
+  priority: high
+- name: Sistem Manajemen Klaim
+  examples:
+  - Asuransi-in-a-Box
+  - Local custom solutions
+  priority: high
+- name: Integrasi Perbankan
+  examples:
+  - BCA
+  - Mandiri
+  - BRI
+  priority: medium
+- name: Platform Komunikasi
+  examples:
+  - WhatsApp Business API
+  - Telepon seluler lokal
+  priority: medium
+- name: Sistem Kepatuhan PDP
+  examples:
+  - Tools berbasis cloud lokal
+  priority: low
+industry_faq:
+- question: Apa saja dokumen yang diperlukan untuk mengajukan klaim asuransi?
+  answer_template: Untuk mengajukan klaim, biasanya diperlukan polis asli, identitas
+    diri, bukti kejadian (seperti laporan polisi untuk kecelakaan), dan formulir klaim
+    yang diisi. Silakan hubungi kami untuk panduan lebih lanjut.
+- question: Berapa lama proses pencairan klaim asuransi kesehatan?
+  answer_template: Proses pencairan klaim asuransi kesehatan biasanya memakan waktu
+    7-14 hari kerja setelah dokumen lengkap diterima. Kami akan memperbarui status
+    melalui agen suara AI.
+- question: Apakah premi asuransi bisa dibayar secara cicilan?
+  answer_template: Ya, banyak perusahaan asuransi menawarkan opsi pembayaran premi
+    secara cicilan bulanan atau tahunan. Agen suara AI dapat membantu Anda mengatur
+    pembayaran.
+- question: Bagaimana cara membandingkan produk asuransi yang berbeda?
+  answer_template: Anda dapat membandingkan berdasarkan cakupan, premi, dan fitur
+    tambahan. Agen suara AI kami dapat memberikan rekomendasi personalized berdasarkan
+    kebutuhan Anda.
+- question: Apa yang terjadi jika saya lupa membayar premi?
+  answer_template: Jika premi tidak dibayar, polis mungkin masuk masa tenggang atau
+    lapse. Agen suara AI akan mengingatkan Anda sebelum jatuh tempo untuk menghindari
+    hal ini.
+- question: Apakah data pribadi saya aman dengan penggunaan agen suara AI?
+  answer_template: Ya, kami mematuhi regulasi PDP Indonesia dan menggunakan enkripsi
+    untuk melindungi data Anda selama interaksi dengan agen suara AI.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga produk asuransi.
+  script: Halo, terima kasih atas pertanyaannya. Premi asuransi kami mulai dari IDR
+    100.000 per bulan, tergantung cakupan dan usia. Boleh saya tahu kebutuhan spesifik
+    Anda untuk memberikan penawaran yang tepat?
+  goal: Mengumpulkan informasi kebutuhan pelanggan dan memulai proses penjualan.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan pesaing.
+  script: Saya paham ada banyak pilihan. Keunggulan kami adalah layanan 24/7 dengan
+    agen suara AI yang dapat membantu kapan saja, dan proses klaim yang lebih cepat.
+    Apakah Anda pernah mengalami kesulitan dengan layanan pesaing?
+  goal: Menyoroti diferensiasi dan mengidentifikasi pain points pelanggan.
+- trigger: interest_expression
+  situation: Ketika pelanggan menunjukkan minat pada produk.
+  script: Bagus sekali! Untuk memulai, saya dapat membantu Anda menghitung premi berdasarkan
+    profil Anda. Boleh saya mengetahui usia dan pekerjaan Anda?
+  goal: Mengonversi minat menjadi lead dengan mengumpulkan data awal.
+competitors:
+- name: Prudential Indonesia
+  positioning: Pemimpin pasar asuransi jiwa dan investasi.
+  strengths:
+  - Brand recognition yang kuat
+  - Jaringan agen yang luas
+  - Produk Unit Link populer
+  weaknesses:
+  - Biaya tinggi
+  - Proses klaim terkadang lambat
+  our_differentiation: Layanan otomatis 24/7 dengan agen suara AI untuk efisiensi
+    dan kecepatan.
+- name: Allianz Indonesia
+  positioning: Fokus pada asuransi umum dan kesehatan.
+  strengths:
+  - Reputasi global
+  - Produk komprehensif
+  weaknesses:
+  - Kurang personalisasi untuk pelanggan kecil
+  our_differentiation: Personalisasi layanan melalui AI untuk semua segmen pelanggan.
+- name: AXA Financial Indonesia
+  positioning: Berbasis pada asuransi dan perencanaan keuangan.
+  strengths:
+  - Integrasi layanan keuangan
+  - Teknologi digital
+  weaknesses:
+  - Harga premium
+  our_differentiation: Solusi berbasis AI yang lebih terjangkau dan mudah diakses.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 100000
+  - 500000
+  entry_point: 100000
+  roi_examples:
+  - scenario: Otomatisasi layanan pelanggan untuk perusahaan asuransi kecil.
+    monthly_cost: 5000000
+    monthly_savings: 10000000
+    payback_months: 1
+  value_anchors:
+  - Mengurangi biaya operasional hingga 30% dengan agen suara AI.
+  - Meningkatkan kepuasan pelanggan dengan klaim 50% lebih cepat.
+market_context:
+  market_size: Rp 300 triliun (perkiraan 2023)
+  growth_rate: 8% YoY
+  key_trends:
+  - Digitalisasi asuransi melalui aplikasi mobile dan AI.
+  - Peningkatan kesadaran asuransi kesehatan pasca pandemi.
+  - Regulasi PDP mendorong keamanan data yang lebih ketat.
+  seasonality:
+    high:
+    - Akhir tahun (Oktober-Desember) untuk perencanaan keuangan.
+    - Awal tahun ajaran baru (Juni-Juli) untuk asuransi pendidikan.
+    low:
+    - Pertengahan tahun (Maret-Mei) karena musim liburan.
+typical_objections:
+- objection: Saya sudah punya asuransi, tidak perlu yang lain.
+  response: Itu bagus! Namun, apakah cakupan asuransi Anda sudah mencakup semua risiko?
+    Kami dapat meninjau polis Anda dan menawarkan tambahan jika diperlukan.
+- objection: Harganya terlalu mahal untuk budget saya.
+  response: Saya mengerti. Kami memiliki opsi premi fleksibel mulai dari IDR 100.000.
+    Mari kita diskusikan kebutuhan prioritas Anda untuk menyesuaikan dengan budget.
+- objection: Saya tidak percaya dengan asuransi digital, takut data bocor.
+  response: Kami sangat serius dengan keamanan data dan mematuhi UU PDP Indonesia.
+    Agen suara AI kami menggunakan enkripsi dan sistem yang aman untuk melindungi
+    informasi Anda.
+meta:
+  id: insurance
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

@@ -1,0 +1,243 @@
+pain_points:
+- description: Hohe regulatorische Anforderungen durch FINMA, GDPR und FADP führen
+    zu komplexen Compliance-Prozessen.
+  severity: high
+  solution_hint: KI-Sprachagent kann automatisierte Compliance-Checks und Dokumentationserinnerungen
+    bereitstellen.
+- description: Kunden benötigen umfassende Aufklärung über Krypto-Risiken und Steuerimplikationen
+    in der Schweiz.
+  severity: medium
+  solution_hint: Agent bietet 24/7 Erklärungen zu Steuern, Sicherheit und Produkten
+    in einfachem Deutsch.
+- description: Manuelle Überwachung von Transaktionen auf Betrug und Geldwäsche ist
+    zeitintensiv und fehleranfällig.
+  severity: high
+  solution_hint: KI-gestützte Echtzeitanalyse und Alarmierung bei verdächtigen Aktivitäten.
+- description: Marktvolatilität erschwert die Kundenberatung und Portfoliomanagement.
+  severity: medium
+  solution_hint: Agent liefert automatisierte Marktupdates und Risikohinweise basierend
+    auf Kundeprofil.
+- description: Hoher administrativer Aufwand für KYC (Know Your Customer) und Client
+    Onboarding.
+  severity: high
+  solution_hint: Sprachagent führt initiale KYC-Fragen, terminiert Folgetermine und
+    erklärt den Prozess.
+- description: Technische Komplexität von Wallets und Blockchain-Technologie überfordert
+    viele Nutzer.
+  severity: medium
+  solution_hint: Schritt-für-Schritt Anleitungen und Fehlerbehebung via Sprachassistent.
+typical_services:
+- Krypto-Handel und Exchange-Dienste
+- Asset-Verwahrung (Custody) für digitale Werte
+- Steuerberatung und Reporting für Krypto-Assets
+- Compliance- und Regulatory-Tech Lösungen
+- Blockchain-Entwicklung und Smart Contracts
+- ICO/STO-Beratung und Durchführung
+- Wallet-Dienste und Schlüsselverwaltung
+- Sicherheitsaudits und Penetrationstests
+- Vermögensverwaltung für digitale Assets
+- Schulungen und Workshops zu Kryptotechnologie
+recommended_functions:
+- name: Automatisierte Kundenbetreuung und FAQ-Beantwortung
+  priority: high
+  reason: Reduziert Supportkosten und bietet sofortige Hilfe auf Deutsch zu Schweizer
+    Spezifika.
+- name: Compliance- und Risikomanagement-Assistent
+  priority: high
+  reason: Kritisch für Einhaltung von FINMA, GDPR und FADP in der Schweiz.
+- name: Personalisierte Handels- und Portfolioalarme
+  priority: medium
+  reason: Unterstützt Kunden bei volatilen Märkten mit relevanten Benachrichtigungen.
+- name: Steuerreporting-Vorbereitung
+  priority: medium
+  reason: Wichtiger Service für Schweizer Steuerpflichtige mit Kryptoerträgen.
+- name: Sicherheitswarnungen und Betrugserkennung
+  priority: high
+  reason: Schützt Kundenassets und verbessert Vertrauen in den Service.
+- name: Onboarding-Assistent für neue Kunden
+  priority: medium
+  reason: Beschleunigt und vereinfacht den KYC-Prozess.
+typical_integrations:
+- name: Schweizer Banking- und Payment-Systeme
+  examples:
+  - Twint
+  - Swissquote
+  - PostFinance
+  priority: high
+- name: Compliance- und KYC-Tools
+  examples:
+  - Avaloq
+  - Onfido
+  - Jumio
+  priority: high
+- name: Handels- und Exchange-Plattformen
+  examples:
+  - Bitcoin Suisse
+  - Bity
+  - Lykke
+  priority: medium
+- name: Steuer- und Buchhaltungssoftware
+  examples:
+  - Abacus
+  - Taxeasy
+  - Bexio
+  priority: medium
+- name: Sicherheits- und Wallet-Lösungen
+  examples:
+  - Ledger
+  - Trezor
+  - Metaco
+  priority: medium
+industry_faq:
+- question: Wie sicher ist meine Kryptowährung bei Ihnen in der Schweiz?
+  answer_template: Ihre Assets werden in FINMA-konformer Custody mit Mehrfachsignatur
+    und Cold Storage gesichert. Wir unterliegen strengen Schweizer Datenschutzgesetzen
+    (FADP).
+- question: Welche Steuern fallen auf Kryptogewinne in der Schweiz an?
+  answer_template: Kryptowährungen sind in der Schweiz als Privatvermögen steuerpflichtig.
+    Gewinne aus privaten Veräußerungen sind steuerfrei, bei gewerblicher Tätigkeit
+    gelten normale Einkommenssteuern. Wir empfehlen eine individuelle Steuerberatung.
+- question: Unterstützen Sie Staking und Yield Farming?
+  answer_template: Ja, wir bieten regulierte Staking-Dienste mit transparenten Renditeangaben
+    an. Alle Produkte entsprechen den FINMA-Richtlinien.
+- question: Wie lange dauert der KYC-Prozess?
+  answer_template: Unser digitaler Onboarding-Prozess mit KI-Unterstützung dauert
+    typischerweise 10-15 Minuten, die endgültige Freigabe kann bis zu 2 Werktage in
+    Anspruch nehmen.
+- question: Was sind Ihre Gebühren für den Handel?
+  answer_template: Unsere Gebührenstruktur ist transparent und wettbewerbsfähig. Sie
+    beginnt bei 0.5% pro Trade und reduziert sich bei höheren Volumen. Genaue Konditionen
+    erstellen wir gerne individuell.
+- question: Ist mein Investment durch die Einlagensicherung geschützt?
+  answer_template: Kryptowährungen unterliegen nicht der herkömmlichen Einlagensicherung.
+    Wir setzen auf institutionelle Sicherheitsstandards und Versicherungen für Custody-Assets.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach Preisen oder Gebühren für Kryptodienstleistungen.
+  script: Vielen Dank für Ihre Anfrage. Unser Pricing basiert auf Ihrem individuellen
+    Nutzungsprofil und Volumen. Ein Basispaket für sichere Custody und Handel beginnt
+    bei 500 CHF monatlich. Darf ich mehr zu Ihren spezifischen Anforderungen erfahren,
+    um ein maßgeschneidertes Angebot zu erstellen?
+  goal: Qualifikation des Kunden und Terminvereinbarung für detaillierte Besprechung.
+- trigger: service_inquiry
+  situation: Kunde erkundigt sich nach bestimmten Dienstleistungen wie Trading oder
+    Steuerberatung.
+  script: Gerne erkläre ich unsere Dienstleistungen. Wir bieten ganzheitliche Kryptolösungen
+    von sicherem Handel über steueroptimierte Verwahrung bis zu Compliance-Support
+    – alles gemäß Schweizer Regulatorik. Welcher Bereich interessiert Sie primär?
+  goal: Verständnis der Kundenbedürfnisse und Hinleitung zu relevantem Service.
+- trigger: compliance_concern
+  situation: Kunde äußert Bedenken hinsichtlich Regulierung oder Datenschutz (GDPR/FADP).
+  script: Ihre Sorge ist verständlich. Als Schweizer Unternehmen arbeiten wir streng
+    nach FINMA-Vorgaben, GDPR und FADP. Unsere KI-gestützten Compliance-Tools minimieren
+    Risiken automatisch. Möchten Sie mehr zu unseren Sicherheitsprotokollen erfahren?
+  goal: Vertrauen aufbauen und Sicherheitsvorteile kommunizieren.
+- trigger: demo_request
+  situation: Kunde bittet um eine Demonstration unserer Plattform oder Services.
+  script: Sehr gerne organisiere ich eine persönliche Demo unserer Plattform. Wir
+    zeigen Ihnen live, wie unser KI-Assistent Compliance, Trading und Reporting vereinfacht.
+    Passt nächste Woche Mittwoch für einen 30-minütigen Termin?
+  goal: Konkreten Demotermin vereinbaren und Commitment erhalten.
+competitors:
+- name: Bitcoin Suisse
+  positioning: Etablierter Schweizer Krypto-Broker und Service Provider.
+  strengths:
+  - Breites Dienstleistungsangebot
+  - Lange Markterfahrung
+  - FINMA-Lizenzantrag gestellt
+  weaknesses:
+  - Höhere Gebühren
+  - Begrenzte Automatisierung
+  - Langsamere Kundenbetreuung
+  our_differentiation: Unser KI-Sprachagent bietet 24/7 persönliche Betreuung und
+    proaktive Compliance, zu geringeren Kosten durch Automatisierung.
+- name: Swissquote
+  positioning: Traditionelle Bank mit Kryptoangebot.
+  strengths:
+  - Vollbanklizenz
+  - Hohes Vertrauen
+  - Integriertes Banking
+  weaknesses:
+  - Weniger innovative Kryptolösungen
+  - Höhere Mindestanlagen
+  - Langsame Prozesse
+  our_differentiation: Wir sind spezialisierter, agiler und bieten fortschrittliche
+    KI-Tools für Echtzeit-Verwaltung und Steueroptimierung.
+- name: Bity
+  positioning: Krypto-Exchange und Payment-Lösungen.
+  strengths:
+  - Einfache Benutzeroberfläche
+  - Fokus auf Retail-Kunden
+  - Schnelle Transaktionen
+  weaknesses:
+  - Begrenzte Institutionelle Dienste
+  - Weniger Compliance-Tiefe
+  - Keine Vollcustody
+  our_differentiation: Unser Fokus auf institutionelle und anspruchsvolle Privatkunden
+    mit vollintegrierter Custody und Steuerreporting.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung von Compliance- und Kundenbetreuung für eine kleine
+      Kryptofirma.
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 2
+  - scenario: KI-gestütztes Steuerreporting für ein Portfolio von 500,000 CHF.
+    monthly_cost: 750
+    monthly_savings: 2000
+    payback_months: 3
+  value_anchors:
+  - Vermeiden Sie FINMA-Compliance-Strafen durch proaktive KI-Überwachung.
+  - Sparen Sie bis zu 70% der Supportkosten mit unserem deutschsprachigen KI-Agenten.
+  - Optimieren Sie Ihre Steuerlast auf Kryptogewinne mit automatisiertem Reporting.
+market_context:
+  market_size: Ca. 10-15 Mrd. CHF verwaltete Kryptoassets in der Schweiz
+  growth_rate: 15-20% YoY
+  key_trends:
+  - Zunehmende Institutionalisierung und Regulierung durch FINMA.
+  - Wachsende Nachfrage nach steueroptimierten Kryptolösungen.
+  - Integration von Krypto in traditionelle Schweizer Vermögensverwaltung.
+  - Höhere Sicherheits- und Compliance-Anforderungen nach GDPR/FADP.
+  seasonality:
+    high:
+    - Q1 (Steuerplanung)
+    - Q4 (Jahresend-Investitionen)
+    low:
+    - August (Ferienzeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das ist zu teuer für unseren kleinen Betrieb.
+  response: Unser KI-Ansatz senkt langfristig Ihre Betriebskosten deutlich. Der ROI
+    liegt oft unter 6 Monaten. Darf ich ein konkretes Beispiel für Ihre Größe berechnen?
+- objection: Wir vertrauen KI nicht mit sensiblen Finanzdaten.
+  response: Verständlich. Unsere KI läuft auf Schweizer Servern, ist FADP-konform
+    und dient als Assistent – finale Entscheidungen bleiben bei Ihnen. Wir bieten
+    gerne eine Sicherheitsdokumentation.
+- objection: Unsere bestehende Software reicht aus.
+  response: Viele Tools decken nicht die spezifischen Schweizer Krypto-Compliance-
+    und Steueranforderungen ab. Unser Agent integriert sich nahtlos und schließt diese
+    Lücken. Interessiert ein kurzer Vergleich?
+- objection: Der Markt ist zu volatil für langfristige Investitionen.
+  response: Gerade Volatilität macht professionelle Tools entscheidend. Unser Agent
+    hilft bei Risikomanagement und automatischen Alerts, um Chancen zu nutzen und
+    Risiken zu minimieren.
+meta:
+  id: crypto
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

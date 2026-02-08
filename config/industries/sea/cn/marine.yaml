@@ -1,0 +1,201 @@
+pain_points:
+- description: 运营成本高，尤其是燃料和劳动力成本持续上升。
+  severity: high
+  solution_hint: AI语音助手可通过优化航线规划和自动化报告降低燃料和人工成本。
+- description: 劳动力短缺，特别是在船员和港口工人方面，招聘困难。
+  severity: medium
+  solution_hint: AI语音助手可以处理日常客户查询和预约，减少对人力的依赖。
+- description: 环保法规（如PIPL和海事环保标准）合规压力大，罚款风险高。
+  severity: high
+  solution_hint: AI语音助手可自动提醒合规日期和生成合规报告，确保遵守法规。
+- description: 信息技术基础设施落后，导致数据孤岛和效率低下。
+  severity: medium
+  solution_hint: AI语音助手可集成现有系统，提供统一数据接口，提升信息处理效率。
+- description: 供应链中断风险，由于天气或地缘政治因素影响物流。
+  severity: medium
+  solution_hint: AI语音助手可实时监控供应链状态并发送预警，帮助及时调整计划。
+- description: 客户服务响应慢，尤其是在高峰时段，影响客户满意度。
+  severity: low
+  solution_hint: AI语音助手可24/7处理客户查询，提高响应速度和客户体验。
+- description: 船舶维护计划不精准，导致意外停机和高维修成本。
+  severity: medium
+  solution_hint: AI语音助手可基于数据分析预测维护需求，优化维护计划。
+typical_services:
+- 船舶租赁
+- 货物运输
+- 港口服务
+- 船舶维护与修理
+- 海事咨询
+- 保险服务
+- 物流管理
+- 船员培训
+- 法规合规咨询
+- 信息技术支持
+recommended_functions:
+- name: 自动客户查询处理
+  priority: high
+  reason: 常见问题如价格和服务范围可自动化，减少人工负担。
+- name: 订单管理集成
+  priority: high
+  reason: 集成现有ERP系统，提升订单处理效率和准确性。
+- name: 合规提醒与报告
+  priority: medium
+  reason: PIPL等法规要求严格，自动化提醒可避免罚款。
+- name: 供应链监控
+  priority: medium
+  reason: 中国沿海地区供应链复杂，实时监控降低风险。
+- name: 数据分析与预测
+  priority: low
+  reason: 基于历史数据优化运营，提高决策质量。
+- name: 多语言支持
+  priority: low
+  reason: 中国海洋行业涉及国际业务，需处理中文和英语查询。
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 金蝶
+  - 用友
+  priority: high
+- name: CRM系统
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: medium
+- name: 海事管理软件
+  examples:
+  - 中海系统
+  - 港口管理系统
+  priority: high
+- name: 物流跟踪系统
+  examples:
+  - 顺丰系统
+  - 京东物流
+  priority: medium
+- name: 合规数据库
+  examples:
+  - PIPL合规平台
+  - 海事法规数据库
+  priority: medium
+industry_faq:
+- question: 你们的服务价格是多少？
+  answer_template: 我们的服务价格根据您的具体需求定制，起价3000元每月，可提供个性化方案。
+- question: AI语音助手能处理哪些类型的查询？
+  answer_template: 可处理订单状态、价格咨询、服务预约等常见问题，24小时在线响应。
+- question: 如何确保数据安全和PIPL合规？
+  answer_template: 我们采用加密技术和本地服务器，严格遵循PIPL法规，保障客户数据安全。
+- question: 集成现有系统需要多长时间？
+  answer_template: 通常需要1-2周，取决于系统复杂性，我们提供专业支持以确保平滑过渡。
+- question: 响应时间多长？
+  answer_template: AI语音助手即时响应，复杂问题转人工后24小时内回复。
+- question: 服务范围包括哪些地区？
+  answer_template: 主要覆盖中国沿海地区，如上海、深圳、青岛等港口城市。
+- question: 能否处理多语言查询？
+  answer_template: 是的，支持中文和英语，满足国际业务需求。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问服务价格时。
+  script: 您好，我们的AI语音助手服务起价3000元每月，可根据您的业务量定制方案。例如，帮助您降低20%的运营成本。需要我为您详细介绍一下吗？
+  goal: 提供价格信息并引导至价值讨论，避免直接拒绝。
+- trigger: service_inquiry
+  situation: 当客户询问服务内容时。
+  script: 我们的AI语音助手可处理客户查询、订单管理和合规提醒等服务。很多客户反馈效率提升了30%。您最关心哪个方面？
+  goal: 突出服务优势并了解客户需求，促进进一步沟通。
+- trigger: compliance_concern
+  situation: 当客户担心PIPL合规时。
+  script: 请放心，我们严格遵守PIPL法规，提供加密数据存储和自动合规报告。这能帮您避免高额罚款。需要看看我们的合规案例吗？
+  goal: 消除合规担忧并建立信任，推动签约。
+- trigger: integration_doubt
+  situation: 当客户担心系统集成问题时。
+  script: 我们已成功集成金蝶、用友等本地系统，通常1-2周即可完成。免费提供测试期，确保无缝对接。
+  goal: 解决技术疑虑并展示可靠性，加速决策过程。
+competitors:
+- name: 中远海运
+  positioning: 大型国有航运公司，市场领导者。
+  strengths:
+  - 规模大
+  - 资源丰富
+  - 政府支持
+  weaknesses:
+  - 创新慢
+  - 客户服务响应慢
+  - 成本高
+  our_differentiation: 我们的AI语音助手更灵活、成本低，提供个性化自动化解决方案。
+- name: 招商局集团
+  positioning: 综合性海事服务提供商，覆盖港口和物流。
+  strengths:
+  - 业务多元化
+  - 品牌强
+  - 技术投入多
+  weaknesses:
+  - 服务标准化不足
+  - 中小客户覆盖少
+  our_differentiation: 我们专注于中小型企业，提供高性价比的AI驱动服务，快速部署。
+- name: 中国船舶集团
+  positioning: 船舶制造和维修巨头，技术实力强。
+  strengths:
+  - 技术领先
+  - 制造能力强
+  - 研发投入大
+  weaknesses:
+  - 服务范围窄
+  - 数字化程度低
+  our_differentiation: 我们补充其服务，提供数字化客户支持和运营优化，增强整体价值链。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 3000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: 小型航运公司使用AI语音助手处理客户查询
+    monthly_cost: 5000
+    monthly_savings: 8000
+    payback_months: 1
+  - scenario: 中型港口集成AI语音助手进行订单管理
+    monthly_cost: 20000
+    monthly_savings: 30000
+    payback_months: 1
+  value_anchors:
+  - 提高客户满意度20%
+  - 降低运营成本15%
+  - 确保100%PIPL合规
+  - 24/7自动化服务
+market_context:
+  market_size: 中国海洋经济市场规模约10万亿元人民币
+  growth_rate: 年增长率8%
+  key_trends:
+  - 数字化转型加速
+  - 绿色航运政策推动
+  - 一带一路倡议带动需求
+  - 智能港口建设
+  seasonality:
+    high:
+    - 春节前后
+    - 夏季航运旺季
+    low:
+    - 冬季
+    - 台风季节
+typical_objections:
+- objection: 太贵了，我们预算有限。
+  response: 理解您的顾虑。我们的服务起价低，且ROI高，通常1个月内就能回本。可以先试用基础方案吗？
+- objection: 我们不信任新技术，怕出错。
+  response: 我们已为多家企业成功部署，提供免费培训和测试期。数据安全有保障，完全符合PIPL。
+- objection: 我们已经有了现有的系统，不想更换。
+  response: 我们的AI语音助手可以无缝集成您现有系统，不要求更换，旨在补充和提升效率。
+- objection: 响应时间不够快，我们需要即时支持。
+  response: AI语音助手提供即时响应，复杂问题转人工后也保证24小时内解决，比传统方式更快。
+meta:
+  id: marine
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

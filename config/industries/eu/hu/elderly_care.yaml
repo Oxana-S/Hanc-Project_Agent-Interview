@@ -1,0 +1,246 @@
+pain_points:
+- description: Az idősek gondozásában dolgozó személyzet hiánya és túlterheltsége
+    miatt csökken a szolgáltatások minősége.
+  severity: high
+  solution_hint: Az AI hangügynök segíthet a rutin kérdések és adminisztráció automatizálásában,
+    csökkentve a személyzet terhelését.
+- description: Nehézségek az idősek egészségügyi adatainak GDPR-kompatibilis kezelése
+    és nyomon követése.
+  severity: high
+  solution_hint: AI megoldásokkal automatizálható az adatgyűjtés és a GDPR-megfelelőség
+    ellenőrzése.
+- description: Kommunikációs problémák az idősekkel vagy családtagjaikkal, akik nem
+    mindig érhetők el vagy nehezen értenek meg komplex információkat.
+  severity: medium
+  solution_hint: Hangalapú asszisztens egyszerű, érthető tájékoztatást és emlékeztetőket
+    nyújt.
+- description: Az adminisztrációs terhek és a szolgáltatások dokumentálásának időigényessége.
+  severity: medium
+  solution_hint: Hangalapú bevitellel gyorsítható a dokumentáció és jelentéskészítés.
+- description: A szolgáltatások összehangolásának és időbeosztásának nehézségei a
+    változó igények miatt.
+  severity: medium
+  solution_hint: AI-alapú időpont egyeztetés és ügyfélkezelő modulok bevezetése.
+- description: Magas költségek és alacsony finanszírozási támogatás miatt nehéz fenntartani
+    a szolgáltatások színvonalát.
+  severity: high
+  solution_hint: Hatékonyabb ügyfélkezeléssel és automatizált folyamatokkal csökkenthető
+    a működési költség.
+- description: A helyi nyelvi és kulturális sajátosságok miatt a nemzetközi szoftvermegoldások
+    nem mindig megfelelőek.
+  severity: medium
+  solution_hint: Magyar nyelvű, helyi szokásokhoz igazított AI hangügynök fejlesztése.
+typical_services:
+- Idősgondozás otthon
+- Egészségügyi állapot monitorozása
+- Gyógyszeremlékeztetés
+- Étkeztetés és diétás tanácsadás
+- Mozgás- és rehabilitációs támogatás
+- Szállítás és kíséret orvosi vizsgálatokra
+- Mentális egészség támogatása és társasági programok szervezése
+- Időpont egyeztetés és adminisztráció
+- Sürgősségi értesítőrendszer kiépítése
+- Családi kapcsolattartás segítése
+recommended_functions:
+- name: Egészségügyi emlékeztetők
+  priority: high
+  reason: Fontos az idősek gyógyszerbevételének és orvosi vizsgálatainak pontos követése.
+- name: Időpontfoglalás és módosítás
+  priority: high
+  reason: Az időpontok gyors és egyszerű kezelése javítja a szolgáltatás hatékonyságát.
+- name: Közvetlen kommunikáció családtagokkal
+  priority: medium
+  reason: A családtagok tájékoztatása növeli a bizalmat és a szolgáltatás átláthatóságát.
+- name: Adatvédelmi szabályok betartásának támogatása
+  priority: high
+  reason: GDPR-kompatibilis megoldások nélkül nem működhet a szolgáltatás legálisan.
+- name: Vészhelyzeti értesítések kezelése
+  priority: high
+  reason: Gyors reagálás szükséges életveszélyes helyzetekben.
+- name: Rendszeres riportok és statisztikák generálása
+  priority: medium
+  reason: Az adminisztráció és minőségbiztosítás támogatása.
+- name: Többnyelvű támogatás (magyar és német)
+  priority: low
+  reason: A határ menti régiókban hasznos.
+typical_integrations:
+- name: Idősgondozási ügyviteli rendszerek
+  examples:
+  - CareSystem
+  - SZOFTIDŐ
+  priority: high
+- name: Egészségügyi adatkezelő rendszerek
+  examples:
+  - MedSol
+  - e-Egészségügy
+  priority: high
+- name: Kommunikációs platformok
+  examples:
+  - Messenger
+  - Viber
+  - WhatsApp
+  priority: medium
+- name: Vészhelyzeti riasztórendszerek
+  examples:
+  - SOS Készülékek
+  - MobilAppok
+  priority: high
+- name: HR és munkaidő nyilvántartó rendszerek
+  examples:
+  - HumanSoft
+  - Számlázz.hu
+  priority: medium
+- name: Elektronikus számlázó rendszerek
+  examples:
+  - Billingo
+  - Számlázz.hu
+  priority: medium
+industry_faq:
+- question: Milyen szolgáltatásokat nyújtanak az idősgondozók?
+  answer_template: Az idősgondozók segítenek az otthoni ellátásban, gyógyszeremlékeztetésben,
+    egészségügyi állapot monitorozásában, valamint társasági és mentális támogatást
+    is nyújtanak.
+- question: Hogyan biztosítják az adatvédelmet az idősgondozás során?
+  answer_template: Minden adatot a GDPR előírásainak megfelelően kezelünk, titkosított
+    rendszereket és biztonságos adatátvitelt alkalmazunk.
+- question: Milyen gyakran látogatják meg az időseket?
+  answer_template: A látogatások gyakorisága az egyéni igényektől függ, lehet napi,
+    heti vagy szükség szerinti.
+- question: Tudnak segíteni a gyógyszerek szedésének nyomon követésében?
+  answer_template: Igen, AI hangügynökünk emlékeztet a gyógyszerek bevételére és dokumentálja
+    azt.
+- question: Milyen költségekkel kell számolni az idősgondozás kapcsán?
+  answer_template: A szolgáltatás díja az ellátás típusától és gyakoriságától függ,
+    jellemzően 50 000 és 200 000 HUF között mozog havonta.
+- question: Hogyan lehet kapcsolatot tartani a gondozóval?
+  answer_template: Telefonon, e-mailben vagy AI hangügynökünkön keresztül bármikor
+    elérhető a gondozó.
+- question: Milyen előnyei vannak az AI hangügynök használatának?
+  answer_template: Automatizálja az emlékeztetőket, egyszerűsíti az adminisztrációt,
+    és gyors kommunikációt tesz lehetővé.
+sales_scripts:
+- trigger: ár_érdeklődés
+  situation: Amikor az ügyfél árajánlatot kér
+  script: Köszönjük érdeklődését! Szolgáltatásaink díja az ellátás típusától és időtartamától
+    függ, de már havi 50 000 HUF-tól elérhető. Személyre szabott ajánlatot készítünk
+    az Ön igényei alapján.
+  goal: Árajánlat iránti érdeklődés fenntartása és személyes kapcsolat kialakítása
+- trigger: adatvédelem_kérdés
+  situation: Amikor az ügyfél az adatvédelemről kérdez
+  script: Fontos számunkra a személyes adatok védelme, ezért minden folyamatunk teljes
+    mértékben megfelel a GDPR előírásainak, így biztonságban tudhatja adatait.
+  goal: Bizalomépítés az adatvédelmi szabályok kommunikálásával
+- trigger: szolgáltatás_funkció_ismertetés
+  situation: Az ügyfél a szolgáltatások részleteire kíváncsi
+  script: AI-alapú hangügynökünk segít a gyógyszeremlékeztetésben, időpontfoglalásban,
+    és gyors kommunikációt biztosít az idősek és családtagjaik között, így megkönnyítve
+    a mindennapokat.
+  goal: A szolgáltatás előnyeinek bemutatása és igényfelkeltés
+- trigger: költségmegtakarítás
+  situation: Az ügyfél a költségek csökkentéséről érdeklődik
+  script: Automatizált megoldásainkkal jelentős időt és költséget takaríthat meg,
+    mivel csökkenthetők az adminisztrációs és személyzeti terhek.
+  goal: A megtakarítási potenciál hangsúlyozása az értékesítés elősegítésére
+competitors:
+- name: Vitalidő Idősgondozás
+  positioning: Országosan ismert, nagy ügyfélkörrel rendelkező szolgáltató
+  strengths:
+  - Kiterjedt hálózat
+  - Profi személyzet
+  - Stabil pénzügyi háttér
+  weaknesses:
+  - Magasabb árak
+  - Kevés digitális innováció
+  our_differentiation: Innovatív AI hangügynök integrációval csökkentjük a költségeket
+    és javítjuk a szolgáltatás minőségét
+- name: Gondos Otthon
+  positioning: Középvárosi és vidéki régiókban erős jelenlét
+  strengths:
+  - Jó helyi kapcsolatok
+  - Rugalmas szolgáltatások
+  weaknesses:
+  - Limitált technológiai megoldások
+  - Kevés automatizáció
+  our_differentiation: Korszerű, GDPR-konform AI megoldásokat kínálunk, amelyek növelik
+    a hatékonyságot
+- name: SeniorCare Hungary
+  positioning: Luxus idősgondozási szolgáltatások Budapesten
+  strengths:
+  - Magas színvonalú ellátás
+  - Szakértői csapat
+  weaknesses:
+  - Magas árak
+  - Nem minden ügyfél számára elérhető
+  our_differentiation: Versenyképes áron nyújtunk professzionális, technológiailag
+    támogatott ellátást
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Gyógyszeremlékeztetés és adminisztráció automatizálása egy 10 fős gondozói
+      csapatban
+    monthly_cost: 75000
+    monthly_savings: 150000
+    payback_months: 1
+  - scenario: Időpontfoglalási folyamatok digitalizálása közepes méretű otthoni gondozó
+      szolgáltatónál
+    monthly_cost: 60000
+    monthly_savings: 90000
+    payback_months: 2
+  value_anchors:
+  - Automatizált emlékeztetők csökkentik a hibák számát és növelik a biztonságot.
+  - Az AI megoldásokkal csökkenthető a személyzet adminisztrációs terhe.
+  - GDPR-kompatibilis rendszereink megvédik ügyfelei adatait és a szolgáltató hírnevét.
+  - Hatékonyabb ügyfélkezelés több elégedett ügyfelet eredményez.
+market_context:
+  market_size: 15000000000
+  growth_rate: 5
+  key_trends:
+  - Fokozódó igény az otthoni idősgondozásra a népesség öregedése miatt.
+  - Digitális és AI alapú megoldások térnyerése a szolgáltatás minőségének javítására.
+  - GDPR és egyéb uniós szabályozások szigorodása az adatvédelem területén.
+  - Növekvő kereslet a személyre szabott és rugalmas gondozási szolgáltatások iránt.
+  seasonality:
+    high:
+    - Ősz
+    - Tél
+    - Karácsonyi időszak
+    low:
+    - Nyár
+    - Augusztus
+typical_objections:
+- objection: Nem vagyunk biztosak abban, hogy az AI megoldás valóban hasznos lesz
+    számunkra.
+  response: Az AI hangügynökünk kifejezetten az idősgondozás specifikus igényeire
+    lett tervezve, így bizonyítottan csökkenti az adminisztrációs terheket és javítja
+    a kommunikációt.
+- objection: Aggódunk az adatvédelem miatt.
+  response: Rendszerünk teljes mértékben megfelel a GDPR előírásainak, és minden adatot
+    titkosított módon kezelünk, így biztonságban tudhatja ügyfelei adatait.
+- objection: Túl magasnak találjuk a bevezetési költségeket.
+  response: A befektetés gyorsan megtérül a költségmegtakarításokon és a hatékonyabb
+    működésen keresztül, ráadásul rugalmas csomagokat kínálunk.
+- objection: A személyzetünk nem biztos, hogy elfogadja a technológiát.
+  response: Képzést és folyamatos támogatást nyújtunk, hogy a személyzet könnyedén
+    és magabiztosan használhassa a rendszert.
+- objection: Nem vagyunk biztosak abban, hogy a magyar nyelv megfelelően támogatott
+    lesz.
+  response: Megoldásunk teljes mértékben magyar nyelvű, és a helyi kulturális sajátosságokat
+    is figyelembe vesszük.
+meta:
+  id: elderly_care
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

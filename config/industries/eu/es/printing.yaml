@@ -1,0 +1,176 @@
+pain_points:
+- description: Alta competencia en el mercado, reduciendo márgenes de beneficio.
+  severity: high
+  solution_hint: El agente de voz AI puede identificar clientes de alto valor y optimizar estrategias de ventas.
+- description: Aumento de costes de materiales como tinta y papel debido a la inflación.
+  severity: medium
+  solution_hint: Sugerir proveedores locales y optimizar la gestión de inventario para reducir costes.
+- description: Gestión ineficiente de pedidos y plazos de entrega, leading to retrasos.
+  severity: high
+  solution_hint: Automatizar el seguimiento de pedidos y enviar notificaciones proactivas a clientes.
+- description: Necesidad de actualizar equipos tecnológicos para mantenerse competitivo.
+  severity: medium
+  solution_hint: Asesorar sobre opciones de financiación y calcular el ROI de nuevas inversiones.
+- description: Cumplimiento con GDPR para la protección de datos de clientes en procesos de impresión.
+  severity: high
+  solution_hint: Proporcionar recordatorios automáticos y guías de cumplimiento integradas.
+- description: Dificultad en la fidelización de clientes recurrentes.
+  severity: medium
+  solution_hint: Implementar recordatorios de seguimiento y ofertas personalizadas mediante CRM.
+typical_services:
+- Impresión offset
+- Impresión digital
+- Diseño gráfico
+- Encuadernación
+- Tarjetas de visita
+- Folletos y catálogos
+- Carteles y vallas publicitarias
+- Impresión de libros
+- Servicios de plotter para grandes formatos
+- Personalización con variable data printing
+recommended_functions:
+- name: Toma de pedidos automatizada
+  priority: high
+  reason: Reduce errores y acelera el procesamiento de pedidos en un mercado competitivo.
+- name: Consulta de precios en tiempo real
+  priority: high
+  reason: Permite a los clientes obtener cotizaciones rápidamente, mejorando la experiencia.
+- name: Seguimiento de envíos integrado
+  priority: medium
+  reason: Aumenta la transparencia y reduce consultas manuales sobre estado de pedidos.
+- name: Recordatorios de pagos y facturación
+  priority: low
+  reason: Ayuda en la gestión de flujo de caja y reduce morosidad.
+- name: Asistencia en preparación de archivos
+  priority: medium
+  reason: Guía a clientes en formatos correctos, minimizando reprocesos.
+typical_integrations:
+- name: Software de gestión empresarial (ERP)
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - A3Software
+  priority: high
+- name: Sistemas de gestión de relaciones con clientes (CRM)
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Odoo
+  priority: high
+- name: Software de diseño gráfico
+  examples:
+  - Adobe Creative Cloud
+  - CorelDRAW
+  priority: medium
+- name: Plataformas de e-commerce
+  examples:
+  - WooCommerce
+  - PrestaShop
+  priority: medium
+industry_faq:
+- question: ¿Cuál es el tiempo de entrega para imprimir 500 tarjetas de visita?
+  answer_template: El tiempo estándar es de 3-5 días laborables, pero ofrecemos opciones express con un coste adicional si lo necesita.
+- question: ¿Ofrecen servicios de diseño gráfico incluidos?
+  answer_template: Sí, tenemos diseñadores que pueden ayudar con la creación o modificación de diseños, con tarifas según complejidad.
+- question: ¿Qué tipos de papel recomiendan para folletos publicitarios?
+  answer_template: Para folletos, recomendamos papel couché brillante de 150g para un acabado profesional, pero tenemos opciones ecológicas disponibles.
+- question: ¿Cómo garantizan la calidad de la impresión en color?
+  answer_template: Utilizamos equipos calibrados y realizamos pruebas de color para asegurar consistencia y alta calidad en cada pedido.
+- question: ¿Tienen opciones de impresión sostenible o ecológica?
+  answer_template: Sí, ofrecemos papel reciclado y tintas basadas en vegetales, cumpliendo con normativas medioambientales en España.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio de impresión.
+  script: Hola, gracias por contactarnos. Para darle un precio exacto en EUR, necesito detalles como cantidad, tipo de material y acabados. ¿Podría compartir esa información?
+  goal: Obtener detalles específicos para una cotización personalizada y demostrar transparencia.
+- trigger: service_inquiry
+  situation: Cuando un cliente indaga sobre servicios específicos como impresión digital o grandes formatos.
+  script: Ofrecemos una amplia gama de servicios, desde impresión digital rápida hasta proyectos personalizados. ¿En qué tipo de proyecto está interesado?
+  goal: Identificar necesidades del cliente y presentar soluciones adecuadas.
+- trigger: deadline_concern
+  situation: Cuando el cliente expresa preocupación por plazos de entrega ajustados.
+  script: Entendemos la urgencia. Podemos ajustar nuestra programación para cumplir su fecha límite, con opciones express disponibles, aunque con un coste adicional.
+  goal: Tranquilizar al cliente y ofrecer flexibilidad para cerrar la venta.
+competitors:
+- name: Vistaprint
+  positioning: Líder en impresión online con precios bajos y amplio catálogo.
+  strengths:
+  - Marca reconocida internacionalmente
+  - Facilidad de pedido online
+  - Precios competitivos para volúmenes pequeños
+  weaknesses:
+  - Calidad variable en algunos productos
+  - Servicio al cliente menos personalizado
+  - Tiempos de entrega más largos para pedidos complejos
+  our_differentiation: Ofrecemos atención personalizada, calidad consistente y plazos más rápidos con soporte local en España.
+- name: Vistaprint
+  positioning: Servicios de impresión personalizados para pequeñas empresas y consumidores individuales.
+  strengths:
+  - Amplia variedad de productos personalizados.
+  - Plataforma online fácil de usar.
+  - Precios competitivos.
+  weaknesses:
+  - Tiempo de entrega puede ser largo.
+  - Calidad variable en productos específicos.
+  our_differentiation: Ofrecemos atención personalizada y tiempos de entrega más rápidos con una calidad constante.
+- name: Printful
+  positioning: Impresión bajo demanda y dropshipping para emprendedores y negocios en línea.
+  strengths:
+  - Integración con plataformas de comercio electrónico.
+  - No requiere inventario previo.
+  - Variedad de productos para impresión.
+  weaknesses:
+  - Costos más altos por unidad.
+  - Menor control sobre el proceso de impresión.
+  our_differentiation: Brindamos soporte local y productos con acabados premium adaptados al mercado español.
+meta:
+  id: printing
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- printing
+- print shop
+- typography
+- packaging
+_extends: _base/printing
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 15000
+  entry_point: 50
+  roi_examples:
+  - scenario: Reducción de errores en pedidos mediante automatización
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 2
+  - scenario: Optimización de inventario y reducción de desperdicios
+    monthly_cost: 300
+    monthly_savings: 900
+    payback_months: 3
+  value_anchors:
+  - Ahorro significativo en costos operativos mediante automatización.
+  - Mejora en tiempos de entrega que fideliza clientes.
+  - Reducción de errores humanos en la gestión de pedidos.
+market_context:
+  market_size: aproximadamente 1.2 mil millones de EUR en 2023
+  growth_rate: 3-5%
+  key_trends:
+  - Incremento en demanda de impresión digital y personalizada.
+  - Mayor adopción de soluciones sostenibles y papel reciclado.
+  - Integración de tecnologías digitales para mejorar la eficiencia.
+  - Creciente uso de comercio electrónico para pedidos de impresión.
+  seasonality:
+    high:
+    - abril
+    - mayo
+    - septiembre
+    - octubre
+    low:
+    - julio
+    - agosto
+    - diciembre

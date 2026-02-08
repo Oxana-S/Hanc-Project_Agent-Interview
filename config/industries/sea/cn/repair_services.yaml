@@ -1,0 +1,188 @@
+pain_points:
+- description: 客户预约频繁取消或变更，导致技师时间浪费和服务效率低下。
+  severity: high
+  solution_hint: AI语音助手可自动管理预约，发送提醒，减少爽约率。
+- description: 专业技师短缺，招聘和培训成本高昂。
+  severity: high
+  solution_hint: AI语音助手可处理基础咨询和预约，解放技师时间，降低人力依赖。
+- description: 客户对维修价格和透明度不信任，常引发争议。
+  severity: medium
+  solution_hint: AI语音助手可提供标准报价和详细解释，增强客户信任。
+- description: 竞争对手如在线平台（如58同城）压价竞争，利润空间被压缩。
+  severity: medium
+  solution_hint: AI语音助手可自动化服务流程，降低成本，提升服务差异化。
+- description: 备件库存管理混乱，导致维修延误和客户不满。
+  severity: low
+  solution_hint: AI语音助手可集成库存系统，自动跟踪和预警补货。
+- description: 客户售后服务跟进不足，复购率低。
+  severity: medium
+  solution_hint: AI语音助手可自动进行售后回访，收集反馈，促进客户忠诚。
+typical_services:
+- 手机维修
+- 电脑维修
+- 家电维修（如冰箱、空调）
+- 汽车维修与保养
+- 智能设备维修（如智能手表）
+- 家具维修
+- 管道维修
+- 电路维修
+- 门窗维修
+- 手表维修
+recommended_functions:
+- name: 自动预约调度
+  priority: high
+  reason: 高效管理客户预约，减少人工错误和空闲时间。
+- name: 客户服务与咨询
+  priority: high
+  reason: 处理常见问题，提供24/7支持，提升客户满意度。
+- name: 支付处理集成
+  priority: medium
+  reason: 支持微信支付和支付宝，简化交易流程。
+- name: 售后服务跟进
+  priority: medium
+  reason: 自动回访客户，收集反馈，提高复购率。
+- name: 库存管理提醒
+  priority: low
+  reason: 集成ERP系统，预警备件短缺，避免服务中断。
+- name: 多语言支持
+  priority: low
+  reason: 适应中国多方言环境，服务更广泛客户。
+typical_integrations:
+- name: 支付系统
+  examples:
+  - 微信支付
+  - 支付宝
+  priority: high
+- name: 客户关系管理（CRM）
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: high
+- name: 企业资源规划（ERP）
+  examples:
+  - 金蝶
+  - 用友
+  priority: medium
+- name: 社交媒体平台
+  examples:
+  - 微信
+  - 微博
+  priority: medium
+- name: 地图与导航服务
+  examples:
+  - 百度地图
+  - 高德地图
+  priority: low
+industry_faq:
+- question: 维修服务需要多长时间？
+  answer_template: 通常，简单维修如手机屏幕更换需1-2小时，复杂维修如家电故障可能需要1-3天，具体时间取决于问题和备件库存。
+- question: 维修价格是否透明？有没有隐藏费用？
+  answer_template: 我们的价格完全透明，AI语音助手可提供实时报价，包含所有费用，无隐藏收费，符合中国消费者权益保护法。
+- question: 提供保修服务吗？保修期多久？
+  answer_template: 是的，所有维修服务提供30天保修，具体条款可在服务完成后通过微信发送给您。
+- question: 如何预约维修服务？
+  answer_template: 您可以通过我们的AI语音助手直接预约，支持电话或在线聊天，我们会根据您的位置安排最近技师。
+- question: 支持哪些支付方式？
+  answer_template: 我们支持微信支付、支付宝和现金支付，确保便捷安全。
+- question: 数据安全如何保障？符合PIPL吗？
+  answer_template: 是的，我们严格遵守中国《个人信息保护法》（PIPL），所有客户数据加密存储，仅用于服务目的。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问维修价格时。
+  script: 您好！我们的维修服务价格基于问题类型和备件成本，AI语音助手可为您提供即时报价。例如，手机屏幕更换起价200元CNY。需要我帮您详细估算吗？
+  goal: 提供透明报价，引导客户预约。
+- trigger: service_inquiry
+  situation: 当客户咨询具体服务时。
+  script: 我们提供多种维修服务，如手机、家电、汽车维修等。AI语音助手可快速匹配您的需求并安排技师。您目前需要什么帮助？
+  goal: 了解客户需求，促进服务预订。
+- trigger: trust_objection
+  situation: 当客户表达对服务质量的怀疑时。
+  script: 理解您的担忧。我们所有技师都经过认证，并提供30天保修。AI语音助手可实时更新维修进度，确保透明。许多客户反馈满意度达95%以上。
+  goal: 建立信任，消除疑虑。
+- trigger: competitor_comparison
+  situation: 当客户提到竞争对手时。
+  script: 相比其他平台，我们专注于专业维修和AI优化服务，价格透明且效率更高。例如，我们的平均响应时间在10分钟内，减少您等待的烦恼。
+  goal: 突出差异化优势，促成交易。
+competitors:
+- name: 58同城
+  positioning: 在线分类信息平台，提供广泛维修服务列表。
+  strengths:
+  - 流量大
+  - 服务种类多
+  - 用户基数广
+  weaknesses:
+  - 服务质量参差不齐
+  - 价格不透明
+  - 缺乏专业认证
+  our_differentiation: 我们提供AI驱动的专业服务，确保质量、透明度和效率，并有专人跟进。
+- name: 美团
+  positioning: O2O服务平台，整合本地维修服务。
+  strengths:
+  - 便捷的预订系统
+  - 用户评价体系
+  - 促销活动多
+  weaknesses:
+  - 佣金高导致服务商利润低
+  - 标准化不足
+  our_differentiation: 我们直接运营，降低成本，AI语音助手提供个性化服务，无中间商差价。
+- name: 本地维修小店
+  positioning: 传统实体店，依赖口碑和地理位置。
+  strengths:
+  - 本地信任度高
+  - 服务灵活
+  weaknesses:
+  - 技术更新慢
+  - 管理效率低
+  - 缺乏数字化
+  our_differentiation: 我们结合AI技术，提升管理效率，提供远程支持和全国网络覆盖。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: 小型维修店使用AI语音助手处理预约和咨询。
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - AI语音助手可节省30%人工成本
+  - 提升客户满意度20%
+  - 减少预约取消率50%
+market_context:
+  market_size: 约5000亿元CNY
+  growth_rate: 8%
+  key_trends:
+  - 智能设备维修需求增长
+  - 在线预约服务普及
+  - 绿色维修和循环经济兴起
+  seasonality:
+    high:
+    - 春节前后
+    - 夏季空调维修季
+    low:
+    - 冬季部分户外维修
+typical_objections:
+- objection: 价格太高，我可以在其他地方找到更便宜的。
+  response: 我们的价格包含高质量服务和保修，AI优化确保效率，长期看可节省您的时间和维修成本。例如，减少返修率意味着更少额外支出。
+- objection: 我不信任AI处理我的维修需求。
+  response: AI语音助手用于辅助，所有关键决策由认证技师完成。它提高响应速度并提供透明更新，实际上增强服务可靠性。
+- objection: 我已经有固定的维修渠道，不需要改变。
+  response: 理解您的习惯。我们的AI服务可无缝集成，提供额外便利如24/7支持和自动提醒，不妨试试我们的免费咨询体验。
+- objection: 担心数据安全，尤其是PIPL合规。
+  response: 我们完全遵守PIPL，数据加密存储，仅用于服务改进。您可以查看我们的隐私政策，确保您的信息安全。
+meta:
+  id: repair_services
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

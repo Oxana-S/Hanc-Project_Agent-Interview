@@ -1,0 +1,192 @@
+pain_points:
+- description: Custos elevados de matérias-primas, como papel e tinta, afetam a margem
+    de lucro.
+  severity: high
+  solution_hint: Agente de voz pode ajudar a negociar melhores preços com fornecedores
+    via automação.
+- description: Gerenciamento ineficiente de pedidos, levando a atrasos e erros.
+  severity: high
+  solution_hint: Integrar com sistemas ERP locais para automatizar fluxos de trabalho.
+- description: Concorrência com alternativas digitais, reduzindo demanda por impressão
+    tradicional.
+  severity: medium
+  solution_hint: Agente pode promover serviços personalizados e de valor agregado.
+- description: Cumprimento da LGPD para proteção de dados de clientes em processos
+    de impressão.
+  severity: high
+  solution_hint: Automatizar consentimentos e garantir conformidade em comunicações.
+- description: Flutuações sazonais na demanda, causando picos e vales na produção.
+  severity: medium
+  solution_hint: Usar previsões baseadas em dados para otimizar agendamentos.
+- description: Desafios logísticos na entrega, especialmente em regiões remotas do
+    Brasil.
+  severity: medium
+  solution_hint: Coordenar com serviços de entrega locais via integrações.
+typical_services:
+- Impressão offset
+- Impressão digital
+- Impressão de cartões de visita
+- Impressão de flyers e panfletos
+- Impressão de banners e outdoor
+- Serviços de acabamento (laminação, corte, dobra)
+- Impressão sob demanda
+- Impressão de livros e revistas
+- Design gráfico personalizado
+- Serviços de encadernação
+recommended_functions:
+- name: Agendamento automático de pedidos
+  priority: high
+  reason: Reduz atrasos e melhora a eficiência operacional.
+- name: Consulta de preços em tempo real
+  priority: high
+  reason: Aumenta a conversão de vendas com respostas rápidas.
+- name: Suporte ao cliente 24/7
+  priority: medium
+  reason: Melhora a satisfação do cliente em um mercado competitivo.
+- name: Follow-up de vendas automatizado
+  priority: medium
+  reason: Aumenta a retenção de clientes e oportunidades de upsell.
+- name: Integração com sistemas de gestão
+  priority: high
+  reason: Otimiza processos internos e reduz erros manuais.
+- name: Automação de orçamentos
+  priority: medium
+  reason: Acelera o processo de vendas e personaliza ofertas.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - TOTVS
+  - SAP
+  priority: high
+- name: Softwares de gestão financeira
+  examples:
+  - ContaAzul
+  - Bling
+  priority: medium
+- name: Plataformas de e-commerce
+  examples:
+  - Mercado Livre
+  - Shopee
+  priority: medium
+- name: Ferramentas de design
+  examples:
+  - CorelDRAW
+  - Adobe Creative Cloud
+  priority: low
+industry_faq:
+- question: Quanto custa imprimir 1000 flyers em tamanho A4?
+  answer_template: O preço varia conforme o material e acabamento, mas geralmente
+    entre R$ 200 e R$ 500. Posso gerar um orçamento personalizado para você.
+- question: Qual é o prazo de entrega para impressão de cartões de visita?
+  answer_template: Normalmente de 3 a 5 dias úteis, mas oferecemos opções expressas
+    com custo adicional.
+- question: Vocês oferecem serviços de design gráfico incluídos?
+  answer_template: Sim, temos pacotes que incluem design básico, ou podemos conectar
+    você a nossos designers parceiros.
+- question: Como a LGPD afeta meus dados ao solicitar orçamentos?
+  answer_template: Seguimos estritamente a LGPD, seus dados são protegidos e usados
+    apenas para finalidades acordadas.
+- question: Posso encomendar impressões personalizadas em pequenas quantidades?
+  answer_template: Sim, especializamos-nos em impressão sob demanda para quantidades
+    flexíveis e personalização.
+sales_scripts:
+- trigger: price_question
+  situation: Cliente pergunta sobre preços de serviços de impressão.
+  script: Olá! Oferecemos preços competitivos com foco em qualidade. Por exemplo,
+    para flyers, partimos de R$ 0,20 por unidade. Posso elaborar um orçamento baseado
+    nas suas necessidades específicas?
+  goal: Converter a consulta em uma oportunidade de venda.
+- trigger: service_inquiry
+  situation: Cliente quer saber sobre serviços de acabamento.
+  script: Temos vários acabamentos como laminação brilho ou fosca, corte vinco e mais.
+    Isso aumenta a durabilidade e apelo visual. Gostaria de recomendar uma opção para
+    seu projeto?
+  goal: Promover serviços de valor agregado.
+- trigger: compliance_concern
+  situation: Cliente expressa preocupação com LGPD.
+  script: Entendemos sua preocupação. Nossos processos são totalmente compatíveis
+    com a LGPD, garantindo segurança dos dados. Podemos fornecer certificados de conformidade.
+  goal: Construir confiança e fechar a venda.
+competitors:
+- name: Copymax
+  positioning: Grande rede nacional com preços baixos.
+  strengths:
+  - Ampla rede de lojas
+  - Preços acessíveis
+  weaknesses:
+  - Serviço personalizado limitado
+  - Tempos de entrega mais longos
+  our_differentiation: Oferecemos automação e atendimento personalizado via IA para
+    eficiência superior.
+- name: Gráfica Estrela
+  positioning: Especializada em impressão de alta qualidade para empresas.
+  strengths:
+  - Qualidade premium
+  - Foco em B2B
+  weaknesses:
+  - Preços mais altos
+  - Pouca flexibilidade em pedidos pequenos
+  our_differentiation: Combinamos qualidade com preços competitivos e suporte automatizado
+    24/7.
+- name: PrintExpress
+  positioning: Foco em impressão rápida e sob demanda.
+  strengths:
+  - Entrega rápida
+  - Tecnologia moderna
+  weaknesses:
+  - Custos operacionais elevados
+  - Limitada a regiões urbanas
+  our_differentiation: Integramos logística inteligente para alcance nacional e preços
+    otimizados.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automação de agendamento de pedidos para uma gráfica média.
+    monthly_cost: 300
+    monthly_savings: 1000
+    payback_months: 1
+  value_anchors:
+  - Reduza custos operacionais em até 30% com nossa automação.
+  - Aumente a satisfação do cliente com respostas instantâneas via IA.
+market_context:
+  market_size: Estimado em R$ 15 bilhões anuais
+  growth_rate: 3% ao ano
+  key_trends:
+  - Crescente demanda por impressão sustentável e ecológica.
+  - Digitalização de processos para competir com mídia online.
+  - Personalização em massa para marketing direcionado.
+  seasonality:
+    high:
+    - Fevereiro (volta às aulas)
+    - Novembro (Natal)
+    low:
+    - Janeiro (férias)
+    - Julho (meio do ano)
+typical_objections:
+- objection: Seus preços são mais altos que os concorrentes.
+  response: Nosso valor está na qualidade, automação e suporte premium que reduzem
+    custos totais a longo prazo.
+- objection: Não confio em sistemas automatizados para meu negócio.
+  response: Entendo. Nossa IA é projetada para complementar sua equipe, não substituí-la,
+    aumentando eficiência com segurança.
+- objection: Já tenho um fornecedor estabelecido.
+  response: Que ótimo! Podemos oferecer uma integração suave ou serviços complementares
+    para otimizar ainda mais seus processos.
+meta:
+  id: printing
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

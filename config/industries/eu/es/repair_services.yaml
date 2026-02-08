@@ -1,0 +1,240 @@
+pain_points:
+- description: Los clientes no se presentan a las citas programadas, causando pérdida
+    de tiempo y recursos.
+  severity: high
+  solution_hint: El agente de voz puede enviar recordatorios automáticos y confirmar
+    citas para reducir las no comparecencias.
+- description: Dificultad para gestionar la programación de emergencias y reparaciones
+    urgentes.
+  severity: high
+  solution_hint: El agente puede priorizar y programar llamadas de emergencia de manera
+    eficiente, notificando al técnico disponible más cercano.
+- description: Alta competencia y presión para ofrecer precios bajos, afectando la
+    rentabilidad.
+  severity: medium
+  solution_hint: El agente puede destacar el valor añadido y los ahorros a largo plazo
+    durante las conversaciones de venta.
+- description: Complicaciones en la gestión de inventario de repuestos y suministros.
+  severity: medium
+  solution_hint: Integrar con sistemas de inventario para que el agente pueda verificar
+    la disponibilidad en tiempo real y hacer pedidos automáticos.
+- description: Quejas de clientes sobre tiempos de espera largos y falta de transparencia
+    en los procesos.
+  severity: medium
+  solution_hint: El agente puede proporcionar actualizaciones en tiempo real sobre
+    el estado de la reparación y estimaciones precisas.
+- description: Cumplimiento con GDPR para el manejo de datos de clientes, lo que añade
+    complejidad administrativa.
+  severity: low
+  solution_hint: El agente puede asegurar el consentimiento y el manejo seguro de
+    datos durante las interacciones, siguiendo protocolos automatizados.
+typical_services:
+- Reparación de electrodomésticos
+- Reparación de automóviles
+- Servicios de fontanería
+- Reparación de dispositivos electrónicos
+- Servicios de electricidad
+- Reparación de calefacción y aire acondicionado
+- Servicios de cerrajería
+- Reparación de muebles
+- Mantenimiento preventivo
+- Servicios de emergencia a domicilio
+recommended_functions:
+- name: Programación de citas
+  priority: high
+  reason: Esencial para optimizar el flujo de trabajo y reducir las no comparecencias
+    de clientes.
+- name: Soporte al cliente 24/7
+  priority: high
+  reason: Permite manejar consultas y emergencias fuera del horario laboral, mejorando
+    la satisfacción.
+- name: Procesamiento de pagos
+  priority: medium
+  reason: Facilita transacciones rápidas y seguras, integrando con sistemas locales
+    de pago.
+- name: Recordatorios y confirmaciones
+  priority: medium
+  reason: Ayuda a mantener altas tasas de asistencia y reduce pérdidas por citas fallidas.
+- name: Generación de presupuestos
+  priority: high
+  reason: Proporciona estimaciones rápidas y personalizadas, aumentando las conversiones
+    de ventas.
+- name: Gestión de quejas
+  priority: low
+  reason: Permite resolver problemas de manera eficiente, mejorando la retención de
+    clientes.
+typical_integrations:
+- name: Sistema CRM
+  examples:
+  - A3CRM
+  - Odoo
+  - FacturaScripts
+  priority: high
+- name: Software de contabilidad
+  examples:
+  - ContaPlus
+  - Anfix
+  - Sage
+  priority: medium
+- name: Gestión de inventario
+  examples:
+  - Dokan
+  - StockSync
+  - Integra
+  priority: medium
+- name: Plataformas de pago
+  examples:
+  - Redsys
+  - PayPal
+  - Bizum
+  priority: high
+- name: Herramientas de programación
+  examples:
+  - Calendly
+  - Google Calendar
+  - Microsoft Outlook
+  priority: low
+industry_faq:
+- question: ¿Cuánto cuesta una reparación estándar?
+  answer_template: El costo varía según el servicio. Ofrecemos un presupuesto gratuito
+    tras una evaluación inicial para garantizar transparencia.
+- question: ¿Ofrecen garantía en las reparaciones?
+  answer_template: Sí, todas nuestras reparaciones incluyen una garantía de 6 meses
+    en piezas y mano de obra, cumpliendo con los estándares locales.
+- question: ¿Cuánto tiempo suele tardar una reparación?
+  answer_template: Depende de la complejidad. Para servicios comunes, aimamos a completarlos
+    en 24-48 horas, con actualizaciones en tiempo real.
+- question: ¿Trabajan con seguros o ofrecen financiación?
+  answer_template: Sí, colaboramos con varias aseguradoras y ofrecemos opciones de
+    pago a plazos para facilitar la accesibilidad.
+- question: ¿Pueden hacer reparaciones a domicilio?
+  answer_template: Absolutamente, proporcionamos servicios a domicilio en la mayoría
+    de áreas urbanas y rurales, con cita previa.
+- question: ¿Cómo manejan los datos de los clientes bajo GDPR?
+  answer_template: Cumplimos estrictamente con el GDPR, asegurando el consentimiento
+    y protección de datos en todas las interacciones.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio.
+  script: Hola, entiendo que el precio es importante. Ofrecemos presupuestos personalizados
+    sin compromiso. ¿Puede describir brevemente el problema para que podamos darle
+    una estimación precisa?
+  goal: Obtener detalles del problema para proporcionar un presupuesto competitivo
+    y destacar valor.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta por un servicio específico, como reparación
+    de electrodomésticos.
+  script: Gracias por su interés. Especializamos en reparaciones rápidas y confiables.
+    ¿Tiene el modelo y síntomas del aparato a mano? Podemos programar una evaluación
+    hoy mismo.
+  goal: Capturar información clave y programar una cita para avanzar en la venta.
+- trigger: emergency_call
+  situation: Cuando un cliente necesita una reparación urgente, como una fuga de agua.
+  script: Entiendo la urgencia. Nuestro agente puede conectarle con un técnico disponible
+    de inmediato. ¿Puede confirmar su ubicación para priorizar el servicio?
+  goal: Proporcionar una respuesta rápida y asegurar la conversión en una reparación
+    de emergencia.
+- trigger: objection_handling
+  situation: Cuando un cliente expresa preocupación por el costo o el tiempo.
+  script: Comprendo su preocupación. Nuestros servicios incluyen garantía y ahorran
+    dinero a largo plazo al evitar futuras averías. ¿Le gustaría ver un ejemplo de
+    cómo otros clientes han ahorrado?
+  goal: Superar objeciones y resaltar el retorno de la inversión.
+competitors:
+- name: Repsol Autoservicio
+  positioning: Cadena nacional de talleres de reparación de automóviles.
+  strengths:
+  - Amplia red de ubicaciones
+  - Marca bien establecida
+  - Servicios múltiples
+  weaknesses:
+  - Precios premium
+  - Menos personalización
+  - Tiempos de espera largos
+  our_differentiation: Ofrecemos un servicio más ágil y personalizado con tecnología
+    AI para programación y soporte, a precios competitivos.
+- name: Fagor Electrodomésticos Servicio Técnico
+  positioning: Servicio oficial de reparación de electrodomésticos de marca.
+  strengths:
+  - Expertise en marcas específicas
+  - Garantías extendidas
+  - Repuestos originales
+  weaknesses:
+  - Limitado a ciertas marcas
+  - Costos más altos
+  - Disponibilidad geográfica restringida
+  our_differentiation: Somos independientes y reparamos múltiples marcas, con mayor
+    flexibilidad y precios transparentes.
+- name: Fontanería Sánchez (cadena local)
+  positioning: Cadena regional de servicios de fontanería en áreas urbanas.
+  strengths:
+  - Reconocimiento local
+  - Respuesta rápida
+  - Precios asequibles
+  weaknesses:
+  - Cobertura limitada
+  - Falta de escalabilidad
+  - Tecnología obsoleta
+  our_differentiation: Utilizamos AI para optimizar rutas y programación, ofreciendo
+    cobertura más amplia y eficiencia mejorada.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 30
+  - 500
+  entry_point: 25
+  roi_examples:
+  - scenario: Automatización de programación de citas para reducir no comparecencias.
+    monthly_cost: 80
+    monthly_savings: 250
+    payback_months: 1
+  - scenario: Soporte AI para manejar consultas básicas, liberando tiempo del personal.
+    monthly_cost: 120
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta un 30% en costos operativos con automatización
+  - Incremente la satisfacción del cliente con respuestas instantáneas
+  - Reduzca el tiempo de inactividad con programación eficiente.
+market_context:
+  market_size: Estimado en 4.5 mil millones de EUR anuales en España.
+  growth_rate: 2.5% anual, impulsado por el envejecimiento de infraestructuras y dispositivos.
+  key_trends:
+  - Aumento de la demanda de reparaciones sostenibles y ecológicas
+  - Crecimiento del servicio a domicilio y móvil
+  - Adopción de tecnología para transparencia y eficiencia.
+  seasonality:
+    high:
+    - Verano para reparaciones de aire acondicionado
+    - Invierno para calefacción y fontanería por heladas.
+    low:
+    - Primavera y otoño, con menor demanda de servicios urgentes.
+typical_objections:
+- objection: Es demasiado caro comparado con otros servicios.
+  response: Entiendo. Nuestros precios reflejan la calidad y garantía que ofrecemos,
+    además de ahorros a largo plazo. ¿Podemos analizar su caso específico para mostrar
+    el valor?
+- objection: No tengo tiempo para programar una cita o esperar.
+  response: Con nuestro agente AI, puede programar en minutos y recibir actualizaciones
+    en tiempo real. Ofrecemos horarios flexibles, incluso emergencias.
+- objection: Prefiero hacerlo yo mismo o buscar opciones más baratas.
+  response: Comprendo, pero las reparaciones incorrectas pueden costar más a largo
+    plazo. Ofrecemos asesoramiento gratuito y presupuestos sin compromiso para asegurar
+    la mejor solución.
+- objection: He tenido malas experiencias con servicios de reparación en el pasado.
+  response: Lamentamos eso. Nos destacamos por la transparencia y seguimiento con
+    tecnología AI. ¿Le gustaría ver testimonios de clientes satisfechos?
+meta:
+  id: repair_services
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

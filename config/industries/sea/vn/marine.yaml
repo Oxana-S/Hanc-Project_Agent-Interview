@@ -1,0 +1,224 @@
+pain_points:
+- description: Quản lý hồ sơ và tuân thủ quy định PDPD phức tạp và tốn thời gian.
+  severity: high
+  solution_hint: AI có thể tự động hóa việc lưu trữ và báo cáo tuân thủ.
+- description: Thiếu thông tin thời gian thực về vị trí và tình trạng tàu.
+  severity: high
+  solution_hint: Tích hợp với hệ thống theo dõi GPS để cập nhật tự động.
+- description: Khó khăn trong phối hợp giữa các bộ phận như kho bãi, vận tải, và khách
+    hàng.
+  severity: medium
+  solution_hint: AI có thể điều phối thông tin và tự động hóa liên lạc.
+- description: Chi phí nhiên liệu và bảo trì tăng cao không kiểm soát.
+  severity: high
+  solution_hint: Phân tích dữ liệu để tối ưu hóa lộ trình và lịch bảo trì.
+- description: Đối phó với thời tiết xấu và rủi ro hàng hải.
+  severity: medium
+  solution_hint: Cảnh báo tự động dựa trên dự báo thời tiết và đề xuất biện pháp.
+- description: Quản lý đơn hàng và hóa đơn thủ công dễ sai sót.
+  severity: medium
+  solution_hint: Tự động hóa xử lý đơn hàng và phát hành hóa đơn.
+- description: Khó khăn trong tuyển dụng và đào tạo nhân sự có kinh nghiệm.
+  severity: low
+  solution_hint: AI có thể hỗ trợ đào tạo và cung cấp hướng dẫn trực tuyến.
+typical_services:
+- Vận tải container đường biển
+- Dịch vụ logistics và hải quan
+- Bảo trì và sửa chữa tàu
+- Dịch vụ kho bãi cảng
+- Đại lý tàu biển
+- Dịch vụ cứu hộ hàng hải
+- Tư vấn tuân thủ PDPD
+- Dịch vụ bảo hiểm hàng hải
+- Cho thuê tàu và thiết bị
+- Dịch vụ kiểm tra và giám định
+recommended_functions:
+- name: Đặt lịch hẹn tự động
+  priority: high
+  reason: Tiết kiệm thời gian và giảm sai sót trong lập lịch vận chuyển.
+- name: Xử lý khiếu nại khách hàng
+  priority: high
+  reason: Cải thiện dịch vụ khách hàng và giữ chân khách hàng.
+- name: Cập nhật thông tin vận chuyển
+  priority: medium
+  reason: Cung cấp thông tin thời gian thực cho khách hàng và nội bộ.
+- name: Tự động hóa báo cáo tuân thủ
+  priority: high
+  reason: Đảm bảo tuân thủ PDPD và giảm rủi ro pháp lý.
+- name: Phân tích chi phí và tối ưu hóa
+  priority: medium
+  reason: Giúp kiểm soát chi phí và tăng hiệu quả hoạt động.
+- name: Hỗ trợ đào tạo nhân viên
+  priority: low
+  reason: Nâng cao kỹ năng nhân viên mà không tốn nhiều chi phí.
+typical_integrations:
+- name: Hệ thống ERP
+  examples:
+  - SAP
+  - Oracle
+  - Phần mềm ERP nội địa như BRAVO
+  priority: high
+- name: Hệ thống quản lý cảng
+  examples:
+  - Port Community System
+  - Hệ thống của cảng Sài Gòn
+  priority: high
+- name: Hệ thống theo dõi GPS
+  examples:
+  - Fleet Management Systems
+  - Ứng dụng di động theo dõi tàu
+  priority: medium
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  priority: medium
+- name: Hệ thống quản lý quan hệ khách hàng (CRM)
+  examples:
+  - Salesforce
+  - CRM nội địa
+  priority: medium
+industry_faq:
+- question: Dịch vụ của bạn có tuân thủ PDPD không?
+  answer_template: Có, chúng tôi tích hợp các biện pháp tuân thủ PDPD tự động để đảm
+    bảo an toàn dữ liệu.
+- question: Làm thế nào để theo dõi vị trí hàng hóa?
+  answer_template: Bạn có thể theo dõi thời gian thực thông qua ứng dụng hoặc hệ thống
+    trực tuyến của chúng tôi.
+- question: Chi phí dịch vụ vận tải biển là bao nhiêu?
+  answer_template: Chi phí phụ thuộc vào tuyến đường, loại hàng hóa và dịch vụ bổ
+    sung. Chúng tôi sẽ cung cấp báo giá chi tiết.
+- question: Thời gian vận chuyển từ Việt Nam đến các nước khác là bao lâu?
+  answer_template: Thời gian dao động từ 7-30 ngày tùy thuộc vào điểm đến và điều
+    kiện thời tiết.
+- question: Bạn có hỗ trợ dịch vụ hải quan không?
+  answer_template: Có, chúng tôi cung cấp dịch vụ khai báo hải quan trọn gói để đơn
+    giản hóa quy trình.
+- question: Làm thế nào để giảm chi phí logistics?
+  answer_template: Chúng tôi tối ưu hóa lộ trình và sử dụng công nghệ để giảm chi
+    phí nhiên liệu và thời gian.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá dịch vụ.
+  script: Xin chào, chúng tôi hiểu rằng chi phí là quan trọng. Dựa trên nhu cầu của
+    bạn, chúng tôi có thể cung cấp gói dịch vụ tối ưu với giá cạnh tranh. Bạn có thể
+    cho tôi biết thêm về khối lượng hàng hóa và tuyến đường không?
+  goal: Thu thập thông tin để cung cấp báo giá phù hợp và giới thiệu giá trị.
+- trigger: compliance_concern
+  situation: Khi khách hàng lo ngại về tuân thủ PDPD.
+  script: Chúng tôi đã tích hợp các công cụ tự động để đảm bảo tuân thủ PDPD đầy đủ.
+    Điều này giúp giảm rủi ro pháp lý và tiết kiệm thời gian cho bạn. Bạn có muốn
+    tôi giải thích chi tiết hơn không?
+  goal: Xoa dịu mối lo và thể hiện chuyên môn.
+- trigger: efficiency_inquiry
+  situation: Khi khách hàng hỏi về cải thiện hiệu quả.
+  script: Với AI của chúng tôi, chúng tôi có thể tự động hóa nhiều quy trình, từ lập
+    lịch đến báo cáo, giúp tăng năng suất lên đến 30%. Bạn có gặp vấn đề cụ thể nào
+    trong quản lý vận tải không?
+  goal: Trình bày lợi ích và tìm hiểu nhu cầu cụ thể.
+- trigger: competitor_mention
+  situation: Khi khách hàng so sánh với đối thủ.
+  script: Chúng tôi hiểu có nhiều lựa chọn. Điểm khác biệt của chúng tôi là công nghệ
+    AI tiên tiến giúp tiết kiệm chi phí và thời gian thực sự. Chúng tôi có thể cung
+    cấp báo cáo ROI cụ thể dựa trên trường hợp của bạn.
+  goal: Nổi bật sự khác biệt và thuyết phục về giá trị.
+competitors:
+- name: Vinalines
+  positioning: Tập đoàn vận tải biển quốc doanh lớn nhất.
+  strengths:
+  - Mạng lưới rộng
+  - Hỗ trợ chính phủ
+  - Kinh nghiệm lâu năm
+  weaknesses:
+  - Công nghệ lỗi thời
+  - Thủ tục cồng kềnh
+  - Phản hồi chậm
+  our_differentiation: Công nghệ AI hiện đại, dịch vụ nhanh chóng và linh hoạt hơn.
+- name: Gemadept
+  positioning: Công ty logistics và cảng tư nhân hàng đầu.
+  strengths:
+  - Cơ sở hạ tầng tốt
+  - Dịch vụ đa dạng
+  - Khách hàng trung thành
+  weaknesses:
+  - Chi phí cao
+  - Ít tập trung vào công nghệ mới
+  our_differentiation: Giải pháp công nghệ tiết kiệm chi phí và tăng hiệu quả.
+- name: Sotrans
+  positioning: Công ty vận tải và logistics lớn.
+  strengths:
+  - Mạng lưới trong nước mạnh
+  - Dịch vụ khách hàng tốt
+  weaknesses:
+  - Hạn chế trong tuân thủ quốc tế
+  - Công nghệ chưa đồng bộ
+  our_differentiation: Tập trung vào tự động hóa và tuân thủ PDPD toàn diện.
+- name: APL Logistics Vietnam
+  positioning: Công ty logistics quốc tế có chi nhánh tại Việt Nam.
+  strengths:
+  - Tiêu chuẩn quốc tế
+  - Mạng lưới toàn cầu
+  - Chuyên môn cao
+  weaknesses:
+  - Chi phí cao
+  - Ít tùy chỉnh cho thị trường địa phương
+  our_differentiation: Giải pháp địa phương hóa với công nghệ tiên tiến và giá cạnh
+    tranh.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 10000000
+  roi_examples:
+  - scenario: Tự động hóa quản lý đội tàu 10 tàu
+    monthly_cost: 20000000
+    monthly_savings: 50000000
+    payback_months: 0.4
+  value_anchors:
+  - Tiết kiệm đến 30% chi phí vận hành
+  - Tăng năng suất 40% với AI
+  - Tuân thủ PDPD không tốn phí phạt
+market_context:
+  market_size: Khoảng 10 tỷ USD năm 2023
+  growth_rate: 8% mỗi năm
+  key_trends:
+  - Số hóa logistics
+  - Tăng cường tuân thủ môi trường
+  - Phát triển cảng biển xanh
+  - Ứng dụng IoT trong theo dõi hàng hải
+  seasonality:
+    high:
+    - Tháng 9-12 do mùa xuất khẩu nông sản
+    - Tháng 1-3 cho hàng công nghiệp
+    low:
+    - Tháng 4-6 do mùa mưa bão
+    - Tháng 7-8 thời điểm chuyển giao
+typical_objections:
+- objection: Giá của bạn quá cao so với đối thủ.
+  response: Chúng tôi cung cấp giá trị vượt trội với công nghệ AI, giúp tiết kiệm
+    chi phí lâu dài. Hãy để tôi trình bày báo cáo ROI cụ thể.
+- objection: Chúng tôi đã có hệ thống hiện tại, không cần thay đổi.
+  response: Hệ thống của chúng tôi có thể tích hợp dễ dàng và cải thiện hiệu quả mà
+    không làm gián đoạn hoạt động. Bạn có muốn thử nghiệm miễn phí không?
+- objection: Công nghệ AI quá phức tạp cho nhân viên của chúng tôi.
+  response: Giao diện thân thiện và chúng tôi cung cấp đào tạo đầy đủ. AI sẽ hỗ trợ,
+    không thay thế, nhân viên của bạn.
+- objection: Tuân thủ PDPD là đủ với biện pháp hiện tại.
+  response: PDPD yêu cầu cập nhật liên tục. AI của chúng tôi tự động hóa việc này,
+    giảm rủi ro và công sức.
+meta:
+  id: marine
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

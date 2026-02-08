@@ -1,0 +1,250 @@
+pain_points:
+- description: Mangel an qualifizierten Arbeitskräften führt zu Verzögerungen und
+    erhöhten Kosten.
+  severity: high
+  solution_hint: AI-Agent kann erste Anrufe von Bewerbern entgegennehmen, Fragen beantworten
+    und Termine für Vorstellungsgespräche koordinieren.
+- description: Ineffiziente Kommunikation zwischen Baustelle, Büro und Kunden verursacht
+    Fehler und Nacharbeiten.
+  severity: high
+  solution_hint: Automatisierte Status-Updates an Kunden, Erinnerungen an Meister
+    für Berichte und zentrale Informationsweitergabe.
+- description: Hoher administrativer Aufwand für Angebotserstellung, Rechnungsstellung
+    und Dokumentation.
+  severity: medium
+  solution_hint: Voice-Agent kann Kundenanfragen erfassen, Termine für Angebotserstellung
+    vereinbaren und Zahlungserinnerungen versenden.
+- description: Schwierigkeiten bei der Terminplanung und Koordination von Subunternehmern
+    und Materiallieferungen.
+  severity: medium
+  solution_hint: Automatische Anrufe zur Terminbestätigung bei Lieferanten und Handwerkern
+    sowie Verschiebungsbenachrichtigungen.
+- description: Preisschwankungen und Lieferengpässe bei Baumaterialien erschweren
+    die Kalkulation.
+  severity: high
+  solution_hint: AI-Agent kann bei Lieferanten Preisanfragen stellen und Lieferverfügbarkeit
+    abfragen, um Einkäufer zu entlasten.
+- description: Strenge gesetzliche Vorschriften und Vorgaben (z.B. EnEV, BauGB) erfordern
+    ständige Aufmerksamkeit.
+  severity: medium
+  solution_hint: Automatisierte Erinnerungen für Fristen und Genehmigungen sowie Bereitstellung
+    von Basisinformationen zu Vorschriften.
+- description: Kunden beschweren sich über mangelnde Transparenz während des Bauprozesses.
+  severity: low
+  solution_hint: Regelmäßige, automatisierte Sprach-Updates an Kunden über den Baufortschritt
+    ohne manuellen Aufwand.
+typical_services:
+- Neubau (Wohn- und Gewerbebau)
+- Altbausanierung und Modernisierung
+- Bauschadensbehebung und Trockenlegung
+- Dachdeckerarbeiten
+- Maurerarbeiten
+- Zimmerei / Holzbau
+- Tiefbau (Kanalisation, Erdarbeiten)
+- Bodenlegerarbeiten
+- Bauüberwachung / Bauleitung
+- Bauplanung und Architekturleistungen
+recommended_functions:
+- name: Erstanruf- und Terminmanagement
+  priority: high
+  reason: Fängt Kundenanfragen rund um die Uhr ab, qualifiziert Leads und vereinbart
+    Beratungstermine für Vertrieb.
+- name: Kunden-Update-Anrufe
+  priority: high
+  reason: Bietet automatisiert Transparenz, reduziert Anrufe im Büro und steigert
+    die Kundenzufriedenheit während der Bauphase.
+- name: Subunternehmer- und Lieferantenkoordination
+  priority: medium
+  reason: Automatisiert repetitive Kommunikation wie Terminbestätigungen und vereinfacht
+    die Logistik.
+- name: Bewerber-Vorqualifizierung
+  priority: medium
+  reason: Beantwortet erste Fragen von Jobsuchenden, filtert grundlegende Eignung
+    und vereinbart Gesprächstermine.
+- name: Zahlungserinnerungen
+  priority: low
+  reason: Sendet höfliche, automatisierte Erinnerungen für ausstehende Rechnungen
+    und verbessert den Cashflow.
+- name: FAQ- und Service-Hotline
+  priority: medium
+  reason: Entlastet die Bauleitung von Standardfragen zu Öffnungszeiten, Anfahrtswegen
+    oder Dokumentenanfragen.
+typical_integrations:
+- name: Bausoftware / ERP-Systeme
+  examples:
+  - Aenit BAVARIA
+  - RIB iTWO
+  - SAP für Bauunternehmen
+  priority: high
+- name: Terminplanung / Kalender
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Pipedrive
+  - lokale Lösungen
+  priority: medium
+- name: Telefonie / VoIP-Systeme
+  examples:
+  - NFON
+  - Sipgate
+  - Deutsche Telekom Cloud PBX
+  priority: medium
+- name: Dokumentenmanagementsysteme (DMS)
+  examples:
+  - DocuWare
+  - M-Files
+  - SEAL Systems
+  priority: low
+industry_faq:
+- question: Wie schnell können Sie mit meinem Bauprojekt beginnen?
+  answer_template: Unser aktueller Auslastungsplan variiert. Gerne prüfe ich das für
+    Sie und vereinbare einen Termin für eine genaue Besprechung Ihrer Zeitplanung
+    mit einem unserer Bauleiter.
+- question: Bieten Sie eine kostenlose Erstberatung an?
+  answer_template: Ja, wir bieten ein unverbindliches Erstgespräch an, um Ihr Projekt
+    zu verstehen und Ihnen eine erste Einschätzung geben zu können. Ich kann Ihnen
+    gerne einen Termin dafür vermitteln.
+- question: Sind Sie ein Mitglied der Handwerkskammer?
+  answer_template: Ja, unser Unternehmen ist eingetragenes Mitglied der Handwerkskammer
+    und verfügt über alle notwendigen Qualifikationen und Eintragungen.
+- question: Können Sie auch Fördermittel wie KfW-Darlehen beantragen?
+  answer_template: Wir beraten Sie gerne zu förderfähigen Maßnahmen und arbeiten mit
+    Partnern zusammen. Die eigentliche Beantragung erfolgt jedoch in der Regel durch
+    Sie oder Ihren Finanzberater.
+- question: Was passiert, wenn es während der Bauphase zu Verzögerungen kommt, z.B.
+    durch schlechtes Wetter?
+  answer_template: Wir erstellen einen realistischen Zeitplan und kommunizieren mögliche
+    wetterbedingte Verzögerungen transparent. Unser Ziel ist eine termingerechte Abwicklung
+    unter Einhaltung aller Qualitätsstandards.
+sales_scripts:
+- trigger: general_inquiry
+  situation: Kunde ruft an und fragt allgemein nach Bauleistungen.
+  script: 'Guten Tag, [Firmenname] Bau GmbH, mein Name ist [KI-Name]. Vielen Dank
+    für Ihren Anruf. Wir realisieren Bauprojekte vom Neubau bis zur Sanierung. Um
+    Ihnen optimal weiterhelfen zu können: Handelt es sich um ein privates Wohnprojekt
+    oder ein gewerbliches Vorhaben?'
+  goal: Lead qualifizieren und Gespräch an richtigen Ansprechpartner weiterleiten
+    oder Termin vereinbaren.
+- trigger: price_question
+  situation: Kunde fragt sofort nach einem Pauschalpreis.
+  script: Ich verstehe Ihren Wunsch nach Kostentransparenz. Für eine seriöse Kostenermittlung
+    benötigen unsere Experten zunächst Details zu Ihrem Vorhaben, wie Größe, gewünschte
+    Materialien und den genauen Leistungsumfang. Auf dieser Basis erstellen wir ein
+    maßgeschneidertes, transparentes Angebot. Darf ich für Sie einen kostenlosen Beratungstermin
+    vereinbaren?
+  goal: Von ungenauer Preisdiskussion ablenken und Wert auf individuelle Beratung
+    legen, um Termin zu vereinbaren.
+- trigger: objection_too_expensive
+  situation: Kunde äußert, dass das Angebot zu teuer sei.
+  script: Das kann ich nachvollziehen. Investitionen in Bauqualität und verlässliche
+    Planung zahlen sich langfristig durch Langlebigkeit und weniger Folgekosten aus.
+    Unser Angebot beinhaltet eine detaillierte Leistungsbeschreibung und feste Preisbindung,
+    sodass keine unangenehmen Überraschungen auftreten. Möchten Sie, dass wir gemeinsam
+    die Optionen durchgehen, um vielleicht an bestimmten Stellen zu optimieren?
+  goal: Wert und Sicherheit betonen und zu einem weiteren, klärenden Gespräch einladen.
+competitors:
+- name: STRABAG AG / STRABAG SE
+  positioning: Europäischer Marktführer im Bereich Großbau und Infrastruktur.
+  strengths:
+  - Finanzkraft
+  - Komplettlösungen
+  - Großprojekterfahrung
+  - Internationale Präsenz
+  weaknesses:
+  - Weniger flexibel für kleine Privatprojekte
+  - Höhere Overhead-Kosten
+  our_differentiation: Wir bieten mittelständische Agilität, persönliche Betreuung
+    durch den Chef oder Bauleiter und sind spezialisiert auf regionale Wohn- und Gewerbeprojekte.
+- name: Hochtief AG
+  positioning: Globaler Konzern mit Fokus auf Hoch- und Ingenieurbau.
+  strengths:
+  - Technologische Expertise
+  - Ressourcen für komplexe Projekte
+  - Starker Markenname
+  weaknesses:
+  - Bürokratische Strukturen
+  - Längere Entscheidungswege
+  our_differentiation: Kurze Entscheidungswege, direkter Kundenkontakt und hohe Flexibilität
+    bei Planungsanpassungen.
+- name: Lokale mittelständische Baubetriebe
+  positioning: Regionale Handwerks- und Bauunternehmen.
+  strengths:
+  - Lokale Verankerung und Kenntnis
+  - Persönliche Beziehung
+  - Flexibilität
+  weaknesses:
+  - Oft limitierte Kapazitäten
+  - Manueller Verwaltungsaufwand kann zu Kommunikationslücken führen
+  our_differentiation: Wir kombinieren handwerkliche Qualität und lokale Nähe mit
+    moderner Prozessdigitalisierung (z.B. durch unseren AI-Agent) für bessere Kommunikation
+    und Planungssicherheit.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 249
+  roi_examples:
+  - scenario: Automatisierung von Kunden-Updates und Terminerinnerungen für ein Bauunternehmen
+      mit 5 laufenden Projekten.
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 0.2
+  - scenario: Lead-Qualifizierung und Terminvereinbarung für Vertrieb, erspart 15
+      Stunden administrative Arbeit pro Monat.
+    monthly_cost: 299
+    monthly_savings: 1500
+    payback_months: 0.2
+  value_anchors:
+  - Kostet weniger als ein halber Tagessatz eines Bauleiters.
+  - Führt zu schnellerer Reaktionszeit auf Kundenanfragen und mehr Abschlüssen.
+  - Reduziert Kommunikationsfehler, die zu teuren Nacharbeiten führen können.
+market_context:
+  market_size: Über 130 Mrd. EUR Jahresumsatz (Bauhauptgewerbe in Deutschland)
+  growth_rate: Leicht volatile, aber stabile Nachfrage mit Fokus auf Sanierung und
+    Modernisierung.
+  key_trends:
+  - Nachhaltigkeit und energieeffizientes Bauen (KfW-Standards)
+  - Digitalisierung der Baustelle (BIM, Drohnen, digitale Dokumentation)
+  - Fachkräftemangel als größte Wachstumsbremse
+  - Steigende Material- und Energiepreise
+  seasonality:
+    high:
+    - Frühjahr (März - Juni)
+    - Frühherbst (September - Oktober)
+    low:
+    - Spätherbst / Winter (November - Februar, abhängig von Wetter)
+typical_objections:
+- objection: Das brauche ich nicht, wir machen das schon immer so per Telefon und
+    WhatsApp.
+  response: Das ist verständlich. Unser AI-Agent ergänzt diese Kanäle, indem er die
+    einfachen, repetitiven Anrufe und Nachrichten übernimmt. So haben Sie und Ihre
+    Mitarbeiter mehr Zeit für die komplexen Gespräche und die eigentliche Arbeit auf
+    der Baustelle. Können wir eine zweiwöchige Testphase vereinbaren?
+- objection: Meine Daten sind mir wichtig, ist das mit der DSGVO konform?
+  response: Absolut. Unser System ist nach DSGVO entwickelt und hostet Daten sicher
+    in der EU. Wir bieten eine vertragliche Vereinbarung zur Auftragsverarbeitung
+    (AVV) an. Datensicherheit hat für uns höchste Priorität.
+- objection: Meine Kunden erwarten ein persönliches Gespräch, keine Maschine.
+  response: Ganz richtig. Der AI-Agent führt nur standardisierte Gespräche wie Terminabsprachen
+    oder Status-Updates. Bei komplexen Anliegen oder auf Wunsch des Kunden wird sofort
+    und nahtlos eine lebende Person zugeschaltet. So gewinnen Sie Zeit für die wirklich
+    wichtigen persönlichen Gespräche.
+meta:
+  id: construction
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

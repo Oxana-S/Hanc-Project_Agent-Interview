@@ -1,0 +1,251 @@
+pain_points:
+- description: Pengumpulan sampah yang tidak terjadwal dan tidak efisien menyebabkan
+    penumpukan di lokasi pelanggan.
+  severity: high
+  solution_hint: AI voice agent dapat mengatur jadwal pengumpulan otomatis berdasarkan
+    kebutuhan dan mengirimkan notifikasi.
+- description: Kesulitan dalam melacak armada dan biaya operasional yang tinggi karena
+    rute tidak optimal.
+  severity: high
+  solution_hint: AI voice agent dapat mengintegrasikan data GPS untuk memberikan rute
+    efisien dan melaporkan real-time.
+- description: Kepatuhan terhadap regulasi PDP dan lingkungan sering terlewatkan,
+    berisiko denda.
+  severity: high
+  solution_hint: AI voice agent dapat mengingatkan tentang tenggat waktu kepatuhan
+    dan menyediakan dokumen otomatis.
+- description: Komunikasi dengan pelanggan lambat, menyebabkan keluhan tidak tertangani
+    dengan cepat.
+  severity: medium
+  solution_hint: AI voice agent dapat menangani panggilan keluhan 24/7 dan memberikan
+    solusi instan.
+- description: Pemisahan sampah yang tidak tepat oleh pelanggan mengurangi nilai daur
+    ulang.
+  severity: medium
+  solution_hint: AI voice agent dapat memberikan edukasi otomatis melalui panggilan
+    tentang cara memisahkan sampah.
+- description: Biaya tenaga kerja tinggi untuk administrasi penjadwalan dan penagihan.
+  severity: medium
+  solution_hint: AI voice agent dapat mengotomatiskan penjadwalan, konfirmasi, dan
+    pengingat pembayaran.
+- description: Kurangnya data real-time tentang volume sampah untuk perencanaan kapasitas.
+  severity: low
+  solution_hint: AI voice agent dapat mengumpulkan data dari pelanggan via panggilan
+    untuk analisis prediktif.
+typical_services:
+- Pengumpulan sampah rumah tangga
+- Pengumpulan sampah industri
+- Daur ulang sampah plastik dan kertas
+- Pengolahan sampah organik menjadi kompos
+- Pengelolaan limbah B3 (bahan berbahaya dan beracun)
+- Jasa pembersihan lokasi konstruksi
+- Pengangkutan sampah ke TPA (tempat pembuangan akhir)
+- Konsultasi pengelolaan sampah berkelanjutan
+- Penyewaan tong sampah dan kontainer
+- Layanan emergency untuk kebocoran atau tumpahan
+recommended_functions:
+- name: Penjadwalan Otomatis
+  priority: high
+  reason: Mengurangi penundaan pengumpulan dan meningkatkan efisiensi operasional.
+- name: Penanganan Keluhan
+  priority: high
+  reason: Meningkatkan kepuasan pelanggan dengan respons cepat 24/7.
+- name: Pengingat Kepatuhan PDP
+  priority: high
+  reason: Menghindari denda dengan mengingatkan regulasi data dan lingkungan.
+- name: Edukasi Pelanggan
+  priority: medium
+  reason: Meningkatkan kualitas sampah untuk daur ulang melalui informasi otomatis.
+- name: Konfirmasi Pembayaran
+  priority: medium
+  reason: Mengurangi tunggakan dengan pengingat otomatis via telepon.
+- name: Pelacakan Armada
+  priority: low
+  reason: Memberikan update real-time kepada pelanggan tentang kedatangan.
+- name: Pengumpulan Data Survey
+  priority: low
+  reason: Mengumpulkan feedback untuk perbaikan layanan.
+typical_integrations:
+- name: Sistem ERP lokal
+  examples:
+  - SAP Indonesia
+  - Odoo versi lokal
+  - Jurnal.id
+  priority: high
+- name: Software manajemen sampah
+  examples:
+  - Waste4Change
+  - Cleansio
+  - Gringgo
+  priority: high
+- name: Aplikasi pembayaran digital
+  examples:
+  - GoPay
+  - OVO
+  - Dana
+  priority: medium
+- name: Platform GPS dan logistik
+  examples:
+  - Google Maps API
+  - Loket
+  - Maxim
+  priority: medium
+- name: Sistem CRM
+  examples:
+  - Salesforce
+  - HubSpot dengan kustomisasi lokal
+  priority: low
+- name: Database pemerintah untuk izin
+  examples:
+  - OSS (Online Single Submission)
+  - Sistem daerah
+  priority: low
+industry_faq:
+- question: Berapa biaya layanan pengumpulan sampah per bulan?
+  answer_template: Biaya mulai dari IDR 500.000 per bulan tergantung volume dan frekuensi.
+    Kami dapat memberikan penawaran khusus setelah konsultasi.
+- question: Apakah Anda menangani sampah berbahaya seperti limbah B3?
+  answer_template: Ya, kami memiliki layanan khusus untuk limbah B3 dengan sertifikasi
+    dan prosedur yang sesuai regulasi PDP.
+- question: Bagaimana cara menjadwalkan pengumpulan sampah?
+  answer_template: Anda dapat menjadwalkan via telepon dengan AI agent kami yang tersedia
+    24/7, atau melalui aplikasi kami.
+- question: Apakah ada diskon untuk kontrak jangka panjang?
+  answer_template: Ya, kami menawarkan diskon hingga 20% untuk kontrak tahunan dengan
+    layanan tambahan seperti pelaporan rutin.
+- question: Bagaimana jika saya melewatkan jadwal pengumpulan?
+  answer_template: AI agent kami akan mengingatkan Anda sebelumnya, dan jika terlewat,
+    kami dapat menjadwalkan ulang tanpa biaya tambahan dalam 24 jam.
+- question: Apakah layanan Anda ramah lingkungan?
+  answer_template: Sangat, kami fokus pada daur ulang dan pengolahan berkelanjutan,
+    dengan pelaporan dampak lingkungan.
+- question: Bagaimana dengan kepatuhan data pelanggan?
+  answer_template: Kami mematuhi PDP Indonesia dengan enkripsi data dan akses terbatas,
+    dijelaskan oleh AI agent kami.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga layanan via telepon.
+  script: Halo, terima kasih telah menghubungi. Biaya layanan kami disesuaikan dengan
+    kebutuhan Anda. Untuk mulai, kami punya paket entry di IDR 500.000 per bulan dengan
+    pengumpulan mingguan. Apakah Anda ingin saya jelaskan lebih detail?
+  goal: Mengarahkan percakapan ke konsultasi kebutuhan dan menunjukkan nilai.
+- trigger: service_inquiry
+  situation: Ketika pelanggan bertanya tentang layanan daur ulang.
+  script: Halo, kami menyediakan layanan daur ulang komprehensif untuk plastik, kertas,
+    dan organik. Dengan AI agent, kami bisa mengoptimalkan pemilahan dan meningkatkan
+    nilai jual kembali. Maukah saya jadwalkan survei gratis?
+  goal: Mendorong penjadwalan survei untuk penawaran personal.
+- trigger: complaint_followup
+  situation: Setelah menangani keluhan, untuk menawarkan upgrade layanan.
+  script: Senang bisa membantu menyelesaikan masalah Anda. Untuk mencegah hal serupa,
+    kami punya paket premium dengan monitoring real-time. Hanya tambah IDR 200.000
+    per bulan. Tertarik?
+  goal: Upselling layanan tambahan berdasarkan kebutuhan yang teridentifikasi.
+- trigger: contract_renewal
+  situation: Mendekati akhir kontrak, untuk memperpanjang.
+  script: Halo, kontrak Anda akan berakhir segera. Kami punya penawaran spesial untuk
+    perpanjangan dengan fitur AI agent baru yang lebih efisien. Bisa saya kirimkan
+    detailnya?
+  goal: Mempertahankan pelanggan dengan nilai tambah teknologi.
+competitors:
+- name: Waste4Change
+  positioning: Pemain utama dalam pengelolaan sampah berkelanjutan di Indonesia.
+  strengths:
+  - Jaringan luas
+  - Fokus pada edukasi
+  - Kemitraan dengan pemerintah
+  weaknesses:
+  - Biaya tinggi
+  - Respons pelanggan lambat
+  our_differentiation: AI voice agent kami memberikan respons instant 24/7 dan otomatisasi
+    yang mengurangi biaya operasional.
+- name: PT. Arah Environmental Indonesia
+  positioning: Spesialis dalam limbah industri dan B3.
+  strengths:
+  - Sertifikasi lengkap
+  - Teknologi pengolahan canggih
+  weaknesses:
+  - Layanan terbatas untuk UMKM
+  - Integrasi digital minimal
+  our_differentiation: Kami menawarkan solusi terjangkau dengan AI untuk semua skala
+    bisnis, termasuk UMKM.
+- name: Cleansio
+  positioning: Startup tech dalam manajemen sampah perkotaan.
+  strengths:
+  - Aplikasi mobile user-friendly
+  - Data analytics real-time
+  weaknesses:
+  - Cakupan geografis terbatas
+  - Ketergantungan pada internet
+  our_differentiation: Voice agent kami bekerja tanpa aplikasi, via telepon biasa,
+    menjangkau daerah dengan akses internet rendah.
+- name: Regional players dari Singapura
+  positioning: Perusahaan internasional yang berekspansi ke Indonesia.
+  strengths:
+  - Modal besar
+  - Pengalaman global
+  weaknesses:
+  - Kurang memahami regulasi lokal
+  - Biaya sangat tinggi
+  our_differentiation: Kami dirancang khusus untuk pasar Indonesia dengan kepatuhan
+    PDP dan harga kompetitif.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: UMKM mengurangi biaya tenaga kerja administrasi
+    monthly_cost: 750000
+    monthly_savings: 1500000
+    payback_months: 3
+  - scenario: Perusahaan menurunkan denda kepatuhan lingkungan
+    monthly_cost: 2000000
+    monthly_savings: 3000000
+    payback_months: 4
+  value_anchors:
+  - Hemat hingga 30% biaya operasional dengan otomatisasi AI.
+  - Tidak ada denda PDP dengan pengingat otomatis.
+  - Tingkatkan kepuasan pelanggan dengan respons telepon 24/7.
+market_context:
+  market_size: Diperkirakan IDR 50 triliun per tahun
+  growth_rate: 10% YoY
+  key_trends:
+  - Meningkatnya regulasi lingkungan dan PDP mendorong adopsi teknologi.
+  - Permintaan untuk daur ulang dan ekonomi sirkular tumbuh cepat.
+  - Digitalisasi layanan sampah melalui aplikasi dan AI.
+  - Kemitraan publik-swasta dalam pengelolaan sampah perkotaan.
+  seasonality:
+    high:
+    - Musim hujan (November-Maret) karena peningkatan volume sampah
+    - Liburan besar seperti Lebaran
+    low:
+    - Musim kemarau (April-Oktober) dengan aktivitas konstruksi berkurang
+typical_objections:
+- objection: Terlalu mahal untuk bisnis kecil saya.
+  response: Dengan AI agent, Anda justru menghemat biaya tenaga kerja dalam jangka
+    panjang. Mari hitung ROI spesifik untuk bisnis Anda.
+- objection: Saya sudah puas dengan layanan saat ini.
+  response: Bagus sekali! Tapi dengan AI kami, Anda bisa dapat layanan 24/7 dan pelaporan
+    otomatis yang meningkatkan efisiensi. Boleh saya tunjukkan demo?
+- objection: Teknologi AI terlalu rumit untuk diadopsi.
+  response: Tenang, AI voice agent kami dirancang sederhana, bekerja via telepon biasa
+    tanpa instalasi kompleks. Kami bantu dari awal.
+- objection: Takut data pelanggan tidak aman.
+  response: Kami patuh PDP Indonesia dengan enkripsi ketat. AI agent hanya mengakses
+    data yang diperlukan untuk layanan, dan kami sertakan klausa keamanan dalam kontrak.
+meta:
+  id: waste
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

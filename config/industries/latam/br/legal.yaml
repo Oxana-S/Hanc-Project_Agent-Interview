@@ -1,0 +1,221 @@
+pain_points:
+- description: Alta carga administrativa com documentação e processos manuais
+  severity: high
+  solution_hint: Automatizar agendamentos, lembretes e gerenciamento de documentos
+    via voz
+- description: Dificuldade em cumprir prazos processuais e evitar multas
+  severity: high
+  solution_hint: Lembretes automáticos de prazos por voz e integração com calendários
+- description: Custos elevados com atendimento ao cliente e suporte inicial
+  severity: medium
+  solution_hint: Agente de voz para triagem de casos e respostas a perguntas frequentes
+    24/7
+- description: Conformidade complexa com a LGPD para proteção de dados de clientes
+  severity: high
+  solution_hint: Automatizar consentimentos e notificações via voz, com registros
+    seguros
+- description: Comunicação ineficiente com clientes, levando a atrasos e insatisfação
+  severity: medium
+  solution_hint: Canais de voz para atualizações em tempo real e agendamento flexível
+- description: Dificuldade em escalar serviços sem aumentar custos operacionais
+  severity: medium
+  solution_hint: Agente de voz para lidar com consultas iniciais e liberar tempo da
+    equipe
+typical_services:
+- Consultoria jurídica
+- Elaboração e revisão de contratos
+- Representação em processos judiciais
+- Due diligence empresarial
+- Conformidade com LGPD e regulamentações
+- Mediação e arbitragem
+- Direito tributário e planejamento
+- Direito trabalhista e previdenciário
+- Propriedade intelectual e marcas
+- Direito civil e familiar
+recommended_functions:
+- name: Agendamento inteligente de consultas
+  priority: high
+  reason: Reduz atrasos e melhora a experiência do cliente com agendamentos por voz
+- name: Atendimento ao cliente 24/7 para triagem inicial
+  priority: high
+  reason: Diminui custos operacionais e fornece suporte imediato em horários flexíveis
+- name: Lembretes automáticos de prazos processuais
+  priority: high
+  reason: Evita multas e perdas processuais com notificações por voz
+- name: Integração com sistemas de gestão jurídica
+  priority: medium
+  reason: Automatiza fluxos de trabalho e sincroniza dados com ferramentas locais
+- name: Respostas a FAQs sobre serviços e LGPD
+  priority: medium
+  reason: Educa clientes e reduz a carga de chamadas para a equipe
+- name: Coleta de consentimentos para LGPD via voz
+  priority: low
+  reason: Simplifica a conformidade com registros auditáveis
+typical_integrations:
+- name: Sistemas de gestão jurídica
+  examples:
+  - Juridoc
+  - LegalOne
+  - SaaS Jurídico
+  priority: high
+- name: CRM para advocacia
+  examples:
+  - Salesforce
+  - Pipedrive
+  - HubSpot
+  priority: medium
+- name: Ferramentas de comunicação
+  examples:
+  - Zoom
+  - Microsoft Teams
+  - WhatsApp Business
+  priority: low
+- name: Bancos de dados jurídicos
+  examples:
+  - Jusbrasil
+  - Consultor Jurídico
+  - Senado Federal
+  priority: high
+- name: Sistemas de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: medium
+industry_faq:
+- question: Como posso agendar uma consulta jurídica?
+  answer_template: Você pode agendar uma consulta diretamente pelo nosso agente de
+    voz, que verificará a disponibilidade e confirmará o horário. Estamos disponíveis
+    24/7.
+- question: Quais são os custos iniciais para serviços legais?
+  answer_template: Os custos variam conforme o serviço, mas oferecemos opções a partir
+    de R$ 300 para consultas iniciais. Nosso agente pode fornecer estimativas personalizadas.
+- question: Como vocês garantem a conformidade com a LGPD?
+  answer_template: Utilizamos agentes de voz com criptografia e registros seguros
+    para coletar consentimentos e proteger dados, alinhados às exigências da LGPD.
+- question: Posso receber lembretes de prazos importantes?
+  answer_template: Sim, nosso agente de voz envia lembretes automáticos por chamada
+    ou mensagem para evitar atrasos em prazos processuais.
+- question: Vocês integram com outros softwares jurídicos?
+  answer_template: Sim, integramos com sistemas populares como Juridoc e LegalOne
+    para automatizar tarefas e melhorar a eficiência.
+- question: O atendimento por voz é disponível em horários noturnos?
+  answer_template: Absolutamente, nosso agente de voz opera 24/7 para triagem, agendamento
+    e suporte básico, mesmo fora do horário comercial.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços durante uma chamada inicial
+  script: Entendemos que custos são importantes. Oferecemos soluções a partir de R$
+    300 mensais, com ROI rápido através da automação de tarefas manuais. Posso explicar
+    como economizamos seu tempo?
+  goal: Converter a preocupação com preço em uma demonstração de valor e agendar uma
+    consulta
+- trigger: lgpd_concern
+  situation: Quando um cliente expressa preocupação com conformidade de dados
+  script: A LGPD é crucial. Nosso agente de voz gerencia consentimentos e notificações
+    com segurança, reduzindo riscos. Posso mostrar como isso funciona na prática?
+  goal: Construir confiança e destacar nossa expertise em conformidade
+- trigger: efficiency_inquiry
+  situation: Quando um cliente busca melhorar a eficiência do escritório
+  script: Com automação por voz, reduzimos tarefas administrativas em até 30%, liberando
+    tempo para casos complexos. Gostaria de uma demonstração gratuita?
+  goal: Demonstrar benefícios tangíveis e gerar um lead qualificado
+- trigger: competitor_mention
+  situation: Quando um cliente menciona um concorrente como Juridoc
+  script: Respeitamos Juridoc, mas nossa solução de voz oferece atendimento 24/7 e
+    integração mais ágil. Podemos personalizar para suas necessidades específicas.
+    Que tal testar?
+  goal: Diferenciação e captura de interesse com personalização
+competitors:
+- name: Juridoc
+  positioning: Líder em software de gestão jurídica no Brasil
+  strengths:
+  - Interface amigável
+  - Integração ampla
+  - Base de clientes grande
+  weaknesses:
+  - Foco limitado em automação por voz
+  - Custos elevados para pequenos escritórios
+  our_differentiation: Oferecemos agentes de voz 24/7 com foco em atendimento e conformidade
+    LGPD, a preços mais acessíveis
+- name: LegalOne
+  positioning: Solução abrangente para escritórios de advocacia
+  strengths:
+  - Recursos avançados de gestão
+  - Suporte localizado
+  - Conformidade regulatória
+  weaknesses:
+  - Complexidade para usuários iniciantes
+  - Menos ênfase em automação de voz
+  our_differentiation: Simplificamos a automação com voz, priorizando eficiência operacional
+    e redução de custos
+- name: Jusbrasil
+  positioning: Plataforma de informação jurídica e gestão de casos
+  strengths:
+  - Banco de dados extenso
+  - Ferramentas de pesquisa
+  - Visibilidade online
+  weaknesses:
+  - Serviços limitados de automação
+  - Foco mais em conteúdo que em operações
+  our_differentiation: Complementamos com automação por voz para gestão prática e
+    atendimento ao cliente
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Escritório pequeno automatizando agendamentos e lembretes
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Escritório médio reduzindo custos com atendimento ao cliente
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Reduza custos administrativos em até 30% com automação por voz
+  - Agendamentos 24/7 sem aumentar a equipe
+  - Conformidade LGPD simplificada com registros de voz
+market_context:
+  market_size: Estimado em R$ 60 bilhões anuais
+  growth_rate: 4% ao ano
+  key_trends:
+  - Aumento da digitalização e adoção de tecnologia em escritórios
+  - Crescimento da demanda por conformidade com LGPD
+  - Expansão de serviços jurídicos online e remotos
+  seasonality:
+    high:
+    - Janeiro a março (período de planejamento tributário)
+    - Agosto a outubro (renovações contratuais)
+    low:
+    - Dezembro (férias e festas)
+    - Julho (recesso escolar)
+typical_objections:
+- objection: Não confio em automação por voz para questões jurídicas sensíveis
+  response: Entendo sua preocupação. Nosso agente é projetado com segurança e conformidade
+    LGPD, e podemos começar com funções simples como agendamento para construir confiança.
+- objection: Os custos são muito altos para meu escritório pequeno
+  response: Oferecemos planos flexíveis a partir de R$ 300, com ROI rápido. Muitos
+    clientes economizam mais do que gastam em poucos meses. Posso mostrar um caso
+    similar?
+- objection: Já uso outro software e não quero mudar
+  response: Nossa solução integra-se facilmente com sistemas existentes como Juridoc,
+    complementando com automação por voz sem substituir suas ferramentas atuais.
+meta:
+  id: legal
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

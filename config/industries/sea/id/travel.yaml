@@ -1,0 +1,270 @@
+pain_points:
+- description: Sulitnya mengelola reservasi pelanggan secara real-time karena volume
+    pemesanan yang tinggi dan variasi preferensi.
+  severity: high
+  solution_hint: Agen suara AI dapat mengotomatisasi pemesanan dan mengonfirmasi ketersediaan
+    secara langsung.
+- description: Tingginya biaya operasional untuk layanan pelanggan yang harus tersedia
+    24/7.
+  severity: high
+  solution_hint: Agen suara AI dapat memberikan layanan pelanggan nonstop tanpa tambahan
+    staf.
+- description: Kesulitan dalam mengelola perubahan jadwal dan pembatalan yang sering
+    terjadi.
+  severity: medium
+  solution_hint: AI voice agent dapat menangani permintaan perubahan jadwal dan pembatalan
+    secara cepat.
+- description: Kurangnya personalisasi layanan berdasarkan preferensi dan riwayat
+    pelanggan.
+  severity: medium
+  solution_hint: AI dapat mengakses data pelanggan untuk memberikan rekomendasi yang
+    relevan.
+- description: Kendala bahasa dan komunikasi dengan wisatawan asing dan domestik yang
+    beragam.
+  severity: medium
+  solution_hint: Agen suara AI dapat mendukung bahasa Indonesia dan bahasa asing secara
+    multi-bahasa.
+- description: Kepatuhan terhadap regulasi perlindungan data pribadi (PDP) yang ketat.
+  severity: high
+  solution_hint: AI voice agent dapat diprogram untuk mematuhi standar PDP dalam pengumpulan
+    data.
+- description: Kesulitan dalam menyediakan informasi terkini terkait cuaca, transportasi,
+    dan kondisi destinasi.
+  severity: medium
+  solution_hint: Integrasi AI dengan sumber data lokal untuk update real-time.
+typical_services:
+- Pemesanan tiket pesawat
+- Reservasi hotel dan penginapan
+- Paket wisata dan tur lokal
+- Layanan antar-jemput bandara
+- Penyewaan kendaraan (mobil/motor)
+- Informasi destinasi wisata
+- Layanan panduan wisata virtual
+- Penanganan keluhan dan bantuan pelanggan
+- Penjualan tiket atraksi dan event lokal
+- Asuransi perjalanan dan perlindungan kesehatan
+recommended_functions:
+- name: Pemesanan dan konfirmasi otomatis
+  priority: high
+  reason: Mempercepat proses booking dan mengurangi kesalahan manual
+- name: Penanganan perubahan jadwal dan pembatalan
+  priority: high
+  reason: Meningkatkan fleksibilitas layanan bagi pelanggan
+- name: Rekomendasi personalisasi paket wisata
+  priority: medium
+  reason: Menambah nilai layanan dengan pengalaman yang disesuaikan
+- name: Dukungan multi bahasa
+  priority: high
+  reason: Melayani wisatawan domestik dan internasional dengan efektif
+- name: Pengingat dan notifikasi real-time
+  priority: medium
+  reason: Memastikan pelanggan mendapat informasi terkini dan tepat waktu
+- name: Pengumpulan dan kepatuhan data PDP
+  priority: high
+  reason: Menjamin keamanan dan legalitas data pelanggan
+- name: Integrasi dengan sistem pembayaran lokal
+  priority: medium
+  reason: Memudahkan transaksi dengan metode pembayaran populer di Indonesia
+typical_integrations:
+- name: Sistem reservasi penerbangan
+  examples:
+  - Traveloka
+  - Tiket.com
+  priority: high
+- name: Sistem reservasi hotel
+  examples:
+  - Airbnb Indonesia
+  - Pegipegi
+  priority: high
+- name: Layanan pembayaran digital
+  examples:
+  - OVO
+  - GoPay
+  - DANA
+  priority: high
+- name: CRM dan manajemen pelanggan
+  examples:
+  - Salesforce Indonesia
+  - HubSpot
+  priority: medium
+- name: Sistem manajemen tur dan paket wisata
+  examples:
+  - TourCMS
+  - Lokaloka
+  priority: medium
+- name: Platform komunikasi pelanggan
+  examples:
+  - WhatsApp Business
+  - Telegram API
+  priority: medium
+industry_faq:
+- question: Bagaimana cara memesan tiket pesawat melalui layanan ini?
+  answer_template: Anda dapat memesan tiket pesawat dengan menyebutkan tujuan dan
+    tanggal keberangkatan, kami akan membantu prosesnya secara cepat.
+- question: Apakah saya bisa mengubah jadwal perjalanan setelah memesan?
+  answer_template: Ya, Anda dapat mengajukan perubahan jadwal melalui agen suara kami
+    kapan saja selama kebijakan pembatalan memungkinkan.
+- question: Metode pembayaran apa saja yang diterima?
+  answer_template: Kami menerima berbagai metode pembayaran digital populer seperti
+    OVO, GoPay, DANA, serta transfer bank.
+- question: Apakah data pribadi saya aman saat menggunakan layanan ini?
+  answer_template: Kami mematuhi regulasi PDP dan memastikan semua data Anda disimpan
+    dengan aman dan hanya digunakan untuk keperluan layanan.
+- question: Bisakah saya mendapatkan rekomendasi paket wisata sesuai preferensi saya?
+  answer_template: Tentu, dengan beberapa pertanyaan singkat, agen suara kami akan
+    memberikan rekomendasi paket yang sesuai dengan keinginan Anda.
+- question: Apakah tersedia layanan bantuan jika terjadi masalah saat perjalanan?
+  answer_template: Ya, layanan bantuan pelanggan kami siap membantu Anda 24/7 melalui
+    agen suara AI dan kanal komunikasi lainnya.
+- question: Apakah ada diskon atau promo untuk pemesanan paket wisata?
+  answer_template: Kami sering menawarkan promo menarik, silakan tanyakan kepada agen
+    suara kami untuk informasi terbaru.
+sales_scripts:
+- trigger: price_question
+  situation: Saat pelanggan menanyakan harga layanan atau paket wisata
+  script: Terima kasih atas pertanyaan Anda. Harga paket kami mulai dari IDR 1.000.000
+    tergantung pilihan destinasi dan layanan tambahan. Apakah Anda ingin saya jelaskan
+    paket yang paling sesuai dengan kebutuhan Anda?
+  goal: Memberikan gambaran harga awal dan mengarahkan ke penjelasan paket
+- trigger: service_benefit_inquiry
+  situation: Saat pelanggan ingin tahu keuntungan menggunakan layanan kami
+  script: Dengan agen suara AI kami, Anda mendapatkan kemudahan pemesanan 24 jam,
+    informasi real-time, dan layanan personal tanpa harus menunggu lama. Apakah Anda
+    tertarik mencoba layanan kami sekarang?
+  goal: Menekankan nilai tambah dan mendorong konversi
+- trigger: data_privacy_concern
+  situation: Ketika pelanggan khawatir tentang keamanan data pribadi
+  script: Kami sangat memperhatikan keamanan data Anda sesuai regulasi PDP. Semua
+    data disimpan dengan enkripsi dan hanya digunakan untuk keperluan layanan. Apakah
+    ada hal lain yang ingin Anda tanyakan terkait keamanan?
+  goal: Menghilangkan kekhawatiran dan membangun kepercayaan
+- trigger: booking_assistance_request
+  situation: Saat pelanggan meminta bantuan membuat reservasi
+  script: Saya siap membantu Anda melakukan reservasi. Mohon sebutkan tujuan dan tanggal
+    perjalanan Anda, lalu saya akan memprosesnya segera.
+  goal: Memudahkan proses pemesanan melalui agen suara
+- trigger: follow_up_interest
+  situation: Setelah pelanggan menunjukkan minat tapi belum mengambil keputusan
+  script: Apakah ada informasi tambahan yang bisa saya bantu untuk membantu Anda membuat
+    keputusan? Kami juga menawarkan promo khusus jika Anda memesan sekarang.
+  goal: Mendorong closing dan mempercepat keputusan pembelian
+competitors:
+- name: Traveloka
+  positioning: Pemimpin pasar pemesanan tiket dan hotel online di Indonesia
+  strengths:
+  - Jaringan luas dan brand kuat
+  - Integrasi pembayaran lengkap
+  - User interface mudah digunakan
+  weaknesses:
+  - Kurang personalisasi layanan pelanggan
+  - Layanan otomatisasi suara masih terbatas
+  our_differentiation: Menawarkan agen suara AI yang responsif dengan personalisasi
+    tinggi dan layanan 24/7.
+- name: Tiket.com
+  positioning: Platform pemesanan tiket pesawat dan hotel populer dengan fitur lengkap
+  strengths:
+  - Promo dan diskon menarik
+  - Sistem pembayaran fleksibel
+  - Dukungan multi bahasa
+  weaknesses:
+  - Layanan pelanggan kadang lambat
+  - Kurang integrasi layanan tur lokal
+  our_differentiation: Fokus pada otomasi layanan pelanggan dan integrasi paket wisata
+    lokal melalui agen suara AI.
+- name: Pegipegi
+  positioning: Penyedia layanan pemesanan hotel dan tiket kereta api terbesar kedua
+  strengths:
+  - Penawaran khusus untuk perjalanan domestik
+  - Kemudahan pemesanan kereta api
+  weaknesses:
+  - Kurang penetrasi pasar internasional
+  - Fitur otomatisasi terbatas
+  our_differentiation: Menyediakan layanan suara multi bahasa dengan kemampuan personalisasi
+    dan update real-time destinasi.
+- name: Lokaloka
+  positioning: Platform paket wisata dan tur lokal dengan fokus destinasi Indonesia
+  strengths:
+  - Paket wisata unik dan lokal
+  - Pengalaman pelanggan yang baik
+  weaknesses:
+  - Skala pasar terbatas
+  - Kurang dukungan teknologi otomatisasi
+  our_differentiation: Integrasi AI voice agent untuk mempercepat pemesanan dan meningkatkan
+    pengalaman pelanggan dengan layanan 24/7.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 1000000
+  - 50000000
+  entry_point: 1000000
+  roi_examples:
+  - scenario: Penggunaan agen suara AI untuk pemesanan dan layanan pelanggan pada
+      agen travel menengah
+    monthly_cost: 5000000
+    monthly_savings: 15000000
+    payback_months: 1
+  - scenario: Otomatisasi layanan pelanggan di perusahaan travel besar dengan volume
+      tinggi
+    monthly_cost: 15000000
+    monthly_savings: 45000000
+    payback_months: 1
+  - scenario: Penyedia paket wisata lokal yang mengimplementasikan AI untuk rekomendasi
+      dan pemesanan
+    monthly_cost: 7000000
+    monthly_savings: 21000000
+    payback_months: 1
+  value_anchors:
+  - Mengurangi biaya operasional layanan pelanggan hingga 60%.
+  - Meningkatkan kepuasan pelanggan dengan respons cepat dan akurat.
+  - Mempercepat proses pemesanan dan mengurangi kesalahan manual.
+  - Mematuhi regulasi perlindungan data pribadi (PDP) untuk keamanan pelanggan.
+  - Mendukung pertumbuhan bisnis dengan layanan 24/7 tanpa tambahan staf.
+market_context:
+  market_size: 15000000000000
+  growth_rate: 12
+  key_trends:
+  - Peningkatan penggunaan aplikasi mobile untuk booking travel.
+  - Permintaan tinggi untuk paket wisata lokal dan destinasi baru.
+  - Peralihan ke pembayaran digital dan cashless.
+  - Peningkatan kesadaran keamanan data pelanggan.
+  - Adopsi teknologi AI dan otomatisasi dalam layanan pelanggan.
+  seasonality:
+    high:
+    - Libur Lebaran (Idul Fitri)
+    - Libur Natal dan Tahun Baru
+    - Musim liburan sekolah
+    low:
+    - Awal tahun dan bulan kerja reguler
+    - Periode pasca liburan panjang
+typical_objections:
+- objection: Saya khawatir data pribadi saya tidak aman dengan sistem otomatis.
+  response: Kami memahami kekhawatiran Anda dan memastikan sistem kami telah mematuhi
+    standar PDP dengan enkripsi data yang kuat dan penggunaan data hanya untuk layanan.
+- objection: Biaya layanan ini terlalu mahal bagi bisnis kecil kami.
+  response: Layanan kami dapat disesuaikan dengan kebutuhan dan skala bisnis Anda,
+    membantu mengurangi biaya operasional secara signifikan sehingga justru menghemat
+    biaya jangka panjang.
+- objection: Saya lebih suka berbicara langsung dengan staf manusia.
+  response: Agen suara AI kami dirancang untuk menangani tugas rutin dengan cepat
+    sehingga staf manusia dapat fokus pada kebutuhan khusus dan kompleks Anda.
+- objection: Bagaimana jika sistem gagal atau ada kesalahan dalam pemesanan?
+  response: Kami menyediakan monitoring 24/7 dan dukungan pelanggan yang siap membantu
+    untuk memastikan setiap transaksi berjalan lancar dan aman.
+- objection: Saya tidak yakin pelanggan saya akan nyaman menggunakan agen suara AI.
+  response: Kami menawarkan pengalaman interaksi yang mudah dan ramah, serta dukungan
+    multi bahasa untuk memastikan semua pelanggan merasa nyaman menggunakan layanan
+    ini.
+meta:
+  id: travel
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

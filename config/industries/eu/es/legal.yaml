@@ -1,0 +1,218 @@
+pain_points:
+- description: Alta carga administrativa que consume tiempo valioso de abogados.
+  severity: high
+  solution_hint: Un agente de voz IA puede automatizar tareas como programación de
+    citas y gestión de documentos, liberando tiempo para asesoría legal.
+- description: Dificultad en la gestión eficiente de comunicación con clientes, llevando
+    a retrasos.
+  severity: medium
+  solution_hint: IA puede manejar consultas iniciales y seguimientos, mejorando la
+    respuesta rápida y la satisfacción del cliente.
+- description: Cumplimiento complejo con GDPR y normativas locales españolas, aumentando
+    riesgos legales.
+  severity: high
+  solution_hint: Agentes de voz pueden verificar y recordar requisitos de consentimiento
+    y privacidad en interacciones.
+- description: Altos costes operativos por personal administrativo y software especializado.
+  severity: medium
+  solution_hint: Automatización con IA reduce la necesidad de personal adicional,
+    optimizando costes.
+- description: Falta de disponibilidad 24/7 para consultas urgentes de clientes.
+  severity: low
+  solution_hint: IA ofrece soporte fuera del horario laboral, captando clientes potenciales
+    en todo momento.
+- description: Ineficiencias en la gestión de casos y documentación, causando errores.
+  severity: medium
+  solution_hint: Integración con sistemas legales para actualizar y acceder a información
+    de casos automáticamente.
+typical_services:
+- Asesoría legal en derecho mercantil
+- Derecho laboral y contratación
+- Asesoría fiscal y tributaria
+- Derecho de familia y sucesiones
+- Propiedad intelectual e industrial
+- Derecho penal
+- Mediación y resolución de conflictos
+- Derecho inmobiliario
+- Compliance y protección de datos (GDPR)
+- Servicios notariales y registrales
+recommended_functions:
+- name: Programación de citas automática
+  priority: high
+  reason: Reduce la carga administrativa y mejora la eficiencia en la gestión del
+    tiempo.
+- name: Intake de clientes inicial
+  priority: high
+  reason: Captura información relevante de nuevos clientes de forma estructurada y
+    rápida.
+- name: Respuesta a consultas frecuentes
+  priority: medium
+  reason: Libera a abogados de preguntas repetitivas, enfocándose en casos complejos.
+- name: Recordatorios de plazos legales
+  priority: high
+  reason: Ayuda a cumplir con fechas límite críticas, evitando sanciones.
+- name: Integración con sistemas de gestión legal
+  priority: medium
+  reason: Sincroniza datos automáticamente, reduciendo errores manuales.
+- name: Soporte multilingüe para clientes internacionales
+  priority: low
+  reason: Amplía el alcance del bufete en un mercado globalizado.
+typical_integrations:
+- name: Software de gestión legal
+  examples:
+  - A3Software
+  - LegalSoft
+  - LexNet
+  priority: high
+- name: Herramientas de productividad
+  examples:
+  - Microsoft 365
+  - Google Workspace
+  priority: medium
+- name: Sistemas de facturación
+  examples:
+  - ContaPlus
+  - FacturaDirecta
+  priority: medium
+- name: Plataformas de videoconferencia
+  examples:
+  - Zoom
+  - Microsoft Teams
+  priority: low
+- name: Bases de datos legales
+  examples:
+  - Westlaw
+  - Aranzadi
+  priority: high
+industry_faq:
+- question: ¿Cuánto cuesta una consulta inicial con un abogado?
+  answer_template: Ofrecemos consultas iniciales gratuitas para evaluar su caso. Los
+    precios varían según la complejidad, desde 50 EUR por hora.
+- question: ¿Ofrecen servicios online o a distancia?
+  answer_template: Sí, utilizamos tecnología segura para consultas virtuales y gestión
+    de documentos, cumpliendo con GDPR.
+- question: ¿Cómo manejan la confidencialidad de mis datos?
+  answer_template: Implementamos medidas estrictas de seguridad y cumplimos con GDPR
+    para proteger toda la información del cliente.
+- question: ¿Pueden ayudarme con trámites burocráticos en España?
+  answer_template: Sí, especializados en normativas locales españolas, desde contratos
+    hasta compliance fiscal.
+- question: ¿Qué pasa si necesito asistencia fuera del horario laboral?
+  answer_template: Nuestro agente de voz IA está disponible 24/7 para consultas urgentes
+    y programación de citas.
+- question: ¿Tienen experiencia en derecho laboral para empresas?
+  answer_template: Absolutamente, ofrecemos asesoría integral en contratación, despidos,
+    y compliance laboral.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta sobre precios en una llamada inicial.
+  script: Hola, entiendo su interés en los costes. Nuestros servicios comienzan desde
+    100 EUR al mes para funciones básicas de automatización, y personalizamos según
+    sus necesidades. ¿Puedo ayudarle a calcular el ahorro estimado en tiempo administrativo?
+  goal: Transmitir flexibilidad y valor, enfocándose en ROI en lugar de precio fijo.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos como asesoría
+    fiscal.
+  script: Ofrecemos asesoría fiscal completa, desde declaraciones hasta planificación.
+    Con nuestra IA, podemos agilizar la documentación y recordatorios de plazos, reduciendo
+    errores. ¿Le gustaría programar una consulta para discutir su caso?
+  goal: Destacar eficiencia y especialización, impulsando una cita de seguimiento.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor como LegalSoft.
+  script: LegalSoft es una buena opción, pero nuestra solución integra IA de voz para
+    una comunicación más natural y automatización 24/7. Además, ofrecemos soporte
+    personalizado en español y cumplimiento GDPR integrado. ¿Podemos demostrarle cómo
+    ahorramos hasta un 30% en tiempo administrativo?
+  goal: Diferenciar mediante innovación y ahorro de costes, cerrando una demostración.
+competitors:
+- name: LegalSoft
+  positioning: Líder en software de gestión legal tradicional en España.
+  strengths:
+  - Amplia base de clientes
+  - Funcionalidades robustas para bufetes grandes
+  weaknesses:
+  - Poca innovación en IA
+  - Costes altos de implementación
+  our_differentiation: Ofrecemos agentes de voz IA asequibles y fáciles de integrar,
+    con soporte 24/7 y enfoque en automatización conversacional.
+- name: A3Software
+  positioning: Especializado en soluciones legales para pequeñas y medianas empresas.
+  strengths:
+  - Precios competitivos
+  - Enfoque en PYMEs españolas
+  weaknesses:
+  - Limitada escalabilidad
+  - Falta de funciones de IA
+  our_differentiation: Nuestra plataforma es escalable y utiliza IA avanzada para
+    mejorar la productividad, ideal para crecimiento futuro.
+- name: LexNet
+  positioning: Plataforma digital para trámites legales y notariales.
+  strengths:
+  - Conexión con administración pública
+  - Enfoque en digitalización
+  weaknesses:
+  - Interfaz compleja
+  - Poco personalizado para automatización interna
+  our_differentiation: Complementamos con agentes de voz que simplifican la interacción
+    cliente-bufete, no solo trámites externos.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 50
+  roi_examples:
+  - scenario: Bufete pequeño automatizando programación de citas y consultas iniciales.
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  - scenario: Empresa mediana integrando IA para gestión de casos y compliance.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Ahorre hasta 20 horas mensuales en tareas administrativas con nuestra IA.
+  - Cumpla con GDPR automáticamente en todas las comunicaciones.
+  - Mejore la satisfacción del cliente con respuestas instantáneas 24/7.
+market_context:
+  market_size: Estimado en 2 mil millones EUR anuales para servicios legales en España.
+  growth_rate: 5% anual, impulsado por digitalización y demanda de compliance.
+  key_trends:
+  - Aumento de la adopción de tecnología legal (LegalTech) en bufetes.
+  - Mayor enfoque en cumplimiento GDPR y sostenibilidad.
+  - Crecimiento de servicios legales online post-pandemia.
+  seasonality:
+    high:
+    - Enero (inicio fiscal)
+    - Septiembre (vuelta al trabajo)
+    low:
+    - Agosto (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: No confío en que una máquina maneje asuntos legales delicados.
+  response: Entiendo su preocupación. Nuestra IA actúa como asistente, no reemplaza
+    abogados. Supervisamos todas las interacciones y garantizamos seguridad GDPR,
+    mejorando la eficiencia sin comprometer calidad.
+- objection: Es demasiado caro para mi bufete pequeño.
+  response: Comienza desde 50 EUR al mes, y el ahorro en tiempo administrativo suele
+    pagarse en el primer mes. ¿Podemos analizar su flujo de trabajo para personalizar
+    una solución económica?
+- objection: Ya uso software tradicional, ¿por qué cambiar?
+  response: Nuestra IA añade valor con automatización conversacional y soporte 24/7,
+    integrable con su sistema actual. Le demostramos cómo reduce errores y capta más
+    clientes.
+meta:
+  id: legal
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "legal"
+- "law firm"
+- "attorney"
+- "lawyer"
+- "notary"
+_extends: _base/legal

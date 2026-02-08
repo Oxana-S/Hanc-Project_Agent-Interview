@@ -1,0 +1,191 @@
+pain_points:
+- description: Ritardi burocratici nelle autorizzazioni comunali e regionali per i
+    progetti edilizi.
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare il monitoraggio degli stati
+    delle pratiche e inviare promemoria.
+- description: Scarsità di manodopera qualificata, specialmente per mestieri tradizionali.
+  severity: high
+  solution_hint: L'agente può gestire le richieste di personale e coordinare gli appuntamenti
+    per i colloqui.
+- description: Fluttuazioni dei costi dei materiali da costruzione, come cemento e
+    acciaio.
+  severity: medium
+  solution_hint: L'agente può fornire aggiornamenti sui prezzi dei materiali e suggerire
+    alternative.
+- description: Gestione inefficiente dei cantieri, con ritardi nella consegna dei
+    progetti.
+  severity: medium
+  solution_hint: L'agente può ottimizzare la schedulazione delle attività e inviare
+    avvisi sui ritardi.
+- description: Difficoltà nel rispettare le normative ambientali e di sicurezza sul
+    lavoro.
+  severity: high
+  solution_hint: L'agente può offrire consigli sulle compliance e gestire la documentazione
+    richiesta.
+- description: Bassa adozione di tecnologie digitali per la gestione dei progetti.
+  severity: medium
+  solution_hint: L'agente può introdurre soluzioni di automazione e formare il personale.
+typical_services:
+- Ristrutturazione edilizia
+- Costruzione di nuove abitazioni
+- Manutenzione ordinaria e straordinaria
+- Impiantistica idraulica ed elettrica
+- Isolamento termico e acustico
+- Pavimentazioni e rivestimenti
+- Demolizioni controllate
+- Progettazione architettonica
+- Bonifica da amianto
+- Installazione di pannelli solari
+recommended_functions:
+- name: Prenotazione appuntamenti per sopralluoghi
+  priority: high
+  reason: Riduce i tempi morti e migliora l'efficienza operativa.
+- name: Risposta automatica a domande frequenti sui permessi
+  priority: high
+  reason: Alleggerisce il carico di lavoro del personale amministrativo.
+- name: Gestione delle richieste di preventivo
+  priority: medium
+  reason: Accelera il processo di vendita e aumenta le conversioni.
+- name: Monitoraggio dello stato dei cantieri
+  priority: medium
+  reason: Fornisce trasparenza ai clienti e riduce le chiamate di follow-up.
+- name: Invio di promemoria per le scadenze normative
+  priority: high
+  reason: Aiuta a evitare sanzioni e ritardi nei progetti.
+typical_integrations:
+- name: Sistemi ERP per l'edilizia
+  examples:
+  - EdilPro
+  - Cantiere Facile
+  - SAP per settore costruzioni
+  priority: high
+- name: Software di progettazione CAD/BIM
+  examples:
+  - AutoCAD
+  - ArchiCAD
+  - Revit
+  priority: medium
+- name: Piattaforme per gestione documentale GDPR-compliant
+  examples:
+  - DocEasy
+  - FileCloud EU
+  priority: high
+- name: Sistemi di fatturazione elettronica
+  examples:
+  - Aruba Fatturazione
+  - Sistemi locali italiani
+  priority: medium
+industry_faq:
+- question: Quanto tempo richiede per ottenere un permesso di costruire in Italia?
+  answer_template: I tempi variano da comune a comune, ma in media possono richiedere
+    da 3 a 6 mesi. Il nostro agente vocale può aiutare a monitorare lo stato della
+    pratica.
+- question: Quali sono i costi medi per una ristrutturazione di un appartamento?
+  answer_template: I costi dipendono dalla metratura e dai materiali, ma generalmente
+    partono da 20.000 EUR. Offriamo preventivi personalizzati via telefono.
+- question: Offrite garanzie sui lavori eseguiti?
+  answer_template: Sì, forniamo garanzie fino a 10 anni per alcuni interventi, in
+    conformità con le normative italiane.
+- question: Come gestite i ritardi dovuti a maltempo?
+  answer_template: Pianifichiamo con buffer di tempo e utilizziamo l'agente vocale
+    per aggiornare i clienti in tempo reale sulle modifiche.
+- question: Siete conformi al GDPR per la gestione dei dati dei clienti?
+  answer_template: Assolutamente sì, utilizziamo sistemi sicuri e formiamo il personale
+    sulle best practices per la privacy.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi durante una chiamata.
+  script: Grazie per l'interesse. I nostri prezzi partono da 5.000 EUR per servizi
+    base, con opzioni personalizzate. Posso aiutarla a valutare le sue esigenze specifiche?
+  goal: Impegnare il cliente in una conversazione per un preventivo dettagliato.
+- trigger: service_inquiry
+  situation: Quando un cliente chiede dettagli su un servizio come la ristrutturazione.
+  script: Certamente. Offriamo ristrutturazioni complete con focus su qualità e tempi
+    certi. Desidera fissare un sopralluogo gratuito?
+  goal: Convertire l'interesse in un appuntamento o una vendita.
+- trigger: competitor_mention
+  situation: Quando un cliente confronta con altri operatori del mercato.
+  script: Rispetto ad altri, ci distinguiamo per l'uso di tecnologie AI che riducono
+    i ritari e migliorano la comunicazione. Volete saperne di più?
+  goal: Evidenziare i nostri punti di forza unici.
+competitors:
+- name: Costruzioni Italiane S.p.A.
+  positioning: Leader nazionale con ampia rete di cantieri.
+  strengths:
+  - Esperienza decennale
+  - Grande capacità finanziaria
+  weaknesses:
+  - Processi burocratici lenti
+  - Poca flessibilità nei prezzi
+  our_differentiation: Offriamo automazione via AI per efficienza e trasparenza superiore.
+- name: Edilizia Locale & Co.
+  positioning: Impresa familiare focalizzata su piccoli progetti.
+  strengths:
+  - Rapporti personalizzati con i clienti
+  - Prezzi competitivi per lavori minori
+  weaknesses:
+  - Limitata scalabilità
+  - Tecnologia obsoleta
+  our_differentiation: Combiniamo il tocco personale con strumenti digitali all'avanguardia.
+- name: TechBuild Innovazioni
+  positioning: Startup tecnologica per edilizia smart.
+  strengths:
+  - Forte focus su innovazione
+  - Soluzioni digitali integrate
+  weaknesses:
+  - Esperienza limitata sul campo
+  - Costi iniziali elevati
+  our_differentiation: Abbiamo un equilibrio provato tra tradizione edilizia e automazione
+    AI.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 10000
+  - 200000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automazione della gestione cantieri per una piccola impresa
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 4
+  value_anchors:
+  - Riduzione del 30% dei tempi di completamento dei progetti
+  - Miglioramento della soddisfazione cliente grazie a comunicazioni tempestive
+market_context:
+  market_size: Circa 150 miliardi di EUR all'anno
+  growth_rate: 2% YoY
+  key_trends:
+  - Aumento della domanda per ristrutturazioni efficienti energeticamente
+  - Digitalizzazione dei processi amministrativi
+  - Crescita dell'edilizia sostenibile e green building
+  seasonality:
+    high:
+    - Primavera
+    - Estate
+    low:
+    - Inverno
+typical_objections:
+- objection: È troppo costoso rispetto ad altri.
+  response: I nostri prezzi riflettono qualità e risparmi futuri grazie all'automazione.
+    Possiamo discutere opzioni flessibili.
+- objection: Non mi fido delle nuove tecnologie.
+  response: Comprendiamo le preoccupazioni. Offriamo formazione e supporto continuo
+    per una transizione graduale.
+- objection: Ho già un fornitore affidabile.
+  response: È ottimo. Possiamo mostrare come la nostra AI integra e migliora i processi
+    esistenti senza interruzioni.
+meta:
+  id: construction
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

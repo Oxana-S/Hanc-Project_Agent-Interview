@@ -1,0 +1,217 @@
+pain_points:
+- description: Intârzieri frecvente în programări și servicii din cauza supraîncărcării.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza programările și trimite notificări
+    pentru a reduce așteptarea.
+- description: Comunicare ineficientă cu clienții pentru actualizări de stare sau
+    întrebări.
+  severity: medium
+  solution_hint: Agentul poate răspunde la întrebări comune și oferi actualizări în
+    timp real.
+- description: Gestionarea dificilă a inventarului de piese de schimb și a stocurilor.
+  severity: high
+  solution_hint: Integrarea cu sisteme de inventar pentru actualizări automate și
+    comenzi.
+- description: Pierderea clienților din cauza lipsei de urmărire post-serviciu.
+  severity: medium
+  solution_hint: Agentul poate efectua apeluri de follow-up pentru feedback și oferte
+    personalizate.
+- description: Costuri ridicate ale forței de muncă și dificultăți în găsirea tehnicieni
+    calificați.
+  severity: high
+  solution_hint: Automatizarea sarcinilor administrative pentru a permite tehnicienilor
+    să se concentreze pe reparații.
+- description: Concurență crescută din partea serviciilor neoficiale sau a lanțurilor
+    mari.
+  severity: medium
+  solution_hint: Agentul poate evidenția serviciile de calitate și ofertele competitive
+    pentru a atrage clienți.
+typical_services:
+- Reparații auto (e.g., schimb ulei, frâne, motor)
+- Service electronice (e.g., telefoane, laptopuri, electrocasnice)
+- Reparații instalații sanitare (e.g., țevi, chiuvete, toalete)
+- Reparații echipamente de birou (e.g., imprimante, calculatoare)
+- Reparații mobile (e.g., mobilier, uși, ferestre)
+- Reparații biciclete și scutere
+- Reparații aparate de aer condiționat și încălzire
+- Reparații instrumente muzicale
+- Reparații echipamente sportive
+- Reparații jucării și gadget-uri
+recommended_functions:
+- name: Programare automată a serviciilor
+  priority: high
+  reason: Reduce timpul de așteptare și îmbunătățește satisfacția clienților.
+- name: Răspuns la întrebări frecvente (FAQ)
+  priority: medium
+  reason: Eliberează personalul pentru sarcini complexe și oferă informații rapide
+    clienților.
+- name: Notificări de stare a reparației
+  priority: high
+  reason: Menține clienții informați și reduce apelurile de verificare.
+- name: Confirmare și amintire a programărilor
+  priority: medium
+  reason: Minimizează absenteismul și optimizează programarea.
+- name: Urmărire post-serviciu pentru feedback
+  priority: low
+  reason: Îmbunătățește loialitatea clienților și identifică zone de îmbunătățire.
+- name: Gestionare integrată a plăților și facturilor
+  priority: medium
+  reason: Simplifică procesele financiare și reduce erorile.
+typical_integrations:
+- name: Sisteme CRM locale
+  examples:
+  - eMAG Marketplace Tools
+  - SmartBill
+  - FGO
+  priority: high
+- name: Sisteme de inventar
+  examples:
+  - Dăruie.ro
+  - SAGA
+  priority: high
+- name: Platforme de programare online
+  examples:
+  - Calendly adaptat pentru RO
+  - BookingRomania
+  priority: medium
+- name: Sisteme de contabilitate
+  examples:
+  - SmartBill
+  - Conta
+  priority: medium
+- name: Aplicații de mesagerie și social media
+  examples:
+  - WhatsApp Business
+  - Facebook Messenger
+  priority: low
+industry_faq:
+- question: Cât timp durează o reparație tipică?
+  answer_template: Durata variază în funcție de complexitatea problemei, dar pentru
+    majoritatea serviciilor, estimăm între 1-3 zile. Vă putem oferi o estimare mai
+    precisă după diagnostic.
+- question: Care sunt costurile pentru o reparație?
+  answer_template: Prețurile încep de la 50 RON pentru servicii simple, cum ar fi
+    schimbul unui filtru. Oferim devize gratuite pentru evaluări detaliate.
+- question: Oferiți garanție pentru reparații?
+  answer_template: Da, oferim garanție de 6-12 luni pentru majoritatea reparațiilor,
+    în funcție de serviciu. Detaliile sunt incluse în factură.
+- question: Puteți programa o intervenție de urgență?
+  answer_template: Da, avem servicii de urgență disponibile, cu taxe suplimentare.
+    Vă rugăm să ne sunați pentru a discuta opțiunile.
+- question: Acceptați plăți cu cardul?
+  answer_template: Da, acceptăm plăți cu cardul, transfer bancar și numerar pentru
+    confortul dumneavoastră.
+- question: Care sunt orele de funcționare?
+  answer_template: Funcționăm de luni până vineri, 9:00-18:00, și sâmbătă, 9:00-14:00.
+    Serviciile de urgență sunt disponibile și în afara orelor normale.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri în timpul unui apel.
+  script: Bună ziua! Înțeleg că sunteți interesat de costuri. Prețurile noastre încep
+    de la 50 RON pentru servicii de bază și oferim devize personalizate gratuite.
+    Ați putea să-mi spuneți mai multe despre problema pe care o aveți, astfel încât
+    să vă pot oferi o estimare exactă?
+  goal: Captarea interesului și obținerea de detalii pentru o ofertă personalizată.
+- trigger: objection_budget
+  situation: Când un client menționează că bugetul este limitat.
+  script: Înțeleg preocupările legate de buget. Oferim opțiuni flexibile, inclusiv
+    pachete de servicii cu reducere sau planuri de plată. De asemenea, vă putem ajuta
+    să prioritizați reparațiile esențiale pentru a optimiza costurile. Sunteți interesat
+    să discutăm mai multe?
+  goal: Menținerea dialogului și prezentarea de soluții accesibile.
+- trigger: follow_up
+  situation: După o estimare sau consultație, pentru a închide vânzarea.
+  script: Bună ziua din nou! Am discutat recent despre reparația dumneavoastră. Pentru
+    a vă programa, putem stabili o dată convenabilă. Oferim și o garanție extinsă
+    pentru pacea dumneavoastră. Sunteți gata să trecem la următorul pas?
+  goal: Închiderea vânzării și programarea serviciului.
+competitors:
+- name: AutoDoc Romania
+  positioning: Lanț național de service auto.
+  strengths:
+  - Prezență largă în țară
+  - Piese de schimb originale
+  - Promoții frecvente
+  weaknesses:
+  - Costuri ridicate
+  - Timpi de așteptare lungi
+  our_differentiation: Servicii personalizate cu prețuri competitive și programare
+    rapidă prin AI.
+- name: Service Quick
+  positioning: Service local pentru electronice și electrocasnice.
+  strengths:
+  - Răspuns rapid la cereri
+  - Tehnicieni specializați
+  weaknesses:
+  - Acoperire geografică limitată
+  - Lipsa integrării digitale
+  our_differentiation: Automatizare completă a comunicării și urmărire în timp real
+    a reparațiilor.
+- name: Reparații Urban
+  positioning: Platformă online pentru diverse servicii de reparații.
+  strengths:
+  - Interfață ușor de utilizat
+  - Recenzii de la clienți
+  weaknesses:
+  - Calitate variabilă a serviciilor
+  - Costuri ascunse
+  our_differentiation: Control asupra calității prin parteneri verificați și transparență
+    totală a prețurilor.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 50
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatizarea programărilor pentru un service auto mic.
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 0.4
+  - scenario: Reducerea apelurilor manuale pentru un service electronic.
+    monthly_cost: 150
+    monthly_savings: 300
+    payback_months: 0.5
+  value_anchors:
+  - Reduceți timpul de așteptare cu 50% prin programare automată.
+  - Creșteți satisfacția clienților cu notificări în timp real.
+  - Optimizați costurile operaționale cu integrari inteligente.
+market_context:
+  market_size: Estimare de 1 miliard RON anual în servicii de reparații în Romania.
+  growth_rate: 5% pe an, datorită creșterii utilizării tehnologiei.
+  key_trends:
+  - Tendința către servicii rapide și mobile.
+  - Creșterea cererii pentru reparații durabile și eco-friendly.
+  - Digitalizarea proceselor în industria reparațiilor.
+  seasonality:
+    high:
+    - Primăvară și toamnă pentru reparații auto și AC.
+    - Perioada pre-sărbători pentru electrocasnice.
+    low:
+    - Iarnă pentru unele servicii exterioare.
+    - Lunile de vară pentru servicii neurgente.
+typical_objections:
+- objection: Sunt prea ocupat pentru a programa un serviciu.
+  response: Înțeleg că timpul este valoros. Cu agentul nostru vocal, puteți programa
+    în doar câteva minute, oricând doriți, fără așteptare la telefon.
+- objection: Prefer să vorbesc cu o persoană reală, nu cu un robot.
+  response: Agentul nostru AI este proiectat să ofere o experiență personalizată și
+    eficientă, dar dacă doriți, vă putem conecta imediat cu un reprezentant uman.
+- objection: Costul este prea mare pentru bugetul meu.
+  response: Oferim opțiuni flexibile, inclusiv planuri de plată și devize gratuite
+    pentru a vă ajuta să găsiți cea mai bună soluție. Investiția în servicii de calitate
+    poate economisi bani pe termen lung.
+meta:
+  id: repair_services
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

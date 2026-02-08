@@ -1,0 +1,229 @@
+pain_points:
+- description: Alta rotación de personal debido a bajos salarios y estrés laboral.
+  severity: high
+  solution_hint: Automatizar tareas administrativas para reducir carga de trabajo
+    y mejorar retención.
+- description: Dificultad en la coordinación de citas médicas y seguimiento de tratamientos.
+  severity: high
+  solution_hint: Usar agentes de voz para programar y recordar citas, mejorando la
+    adherencia.
+- description: Costos operativos elevados por personal y suministros médicos.
+  severity: medium
+  solution_hint: Implementar sistemas de monitoreo remoto para reducir visitas innecesarias
+    y ahorrar costos.
+- description: Comunicación ineficiente con familiares sobre el estado de los pacientes.
+  severity: medium
+  solution_hint: Proporcionar actualizaciones automáticas vía voz o mensajes para
+    mantener a las familias informadas.
+- description: Falta de personal capacitado en cuidados especializados para ancianos.
+  severity: high
+  solution_hint: Ofrecer capacitación virtual y soporte mediante agentes de voz para
+    guiar a cuidadores.
+- description: Burocracia en trámites de salud y seguros, causando retrasos.
+  severity: low
+  solution_hint: Automatizar procesos de documentación y envío de formularios para
+    agilizar trámites.
+typical_services:
+- Cuidado domiciliario integral
+- Asistencia en actividades de la vida diaria (AVD)
+- Acompañamiento a citas médicas
+- Servicios de enfermería a domicilio
+- Terapia física y rehabilitación
+- Planificación nutricional y preparación de comidas
+- Transporte adaptado para personas mayores
+- Apoyo emocional y compañía social
+- Gestión y administración de medicamentos
+- Monitoreo remoto de salud y seguridad
+recommended_functions:
+- name: Programación automática de citas
+  priority: high
+  reason: Reduce errores y mejora la eficiencia en la coordinación de cuidados médicos.
+- name: Recordatorios de medicamentos
+  priority: high
+  reason: Aumenta la adherencia al tratamiento y previene complicaciones de salud.
+- name: Comunicación con familiares
+  priority: medium
+  reason: Mejora la transparencia y reduce la ansiedad de las familias.
+- name: Monitoreo de signos vitales
+  priority: high
+  reason: Permite detección temprana de problemas y reduce costos de emergencias.
+- name: Respuesta a emergencias
+  priority: high
+  reason: Proporciona asistencia inmediata en situaciones críticas, mejorando la seguridad.
+- name: Gestión de pagos y facturación
+  priority: low
+  reason: Simplifica procesos administrativos y reduce errores en cobros.
+typical_integrations:
+- name: Sistemas de salud públicos
+  examples:
+  - Sistema Nacional de Salud
+  - programas provinciales de salud
+  priority: high
+- name: Software de gestión de pacientes
+  examples:
+  - SoftClinic
+  - GesSalud
+  priority: high
+- name: Plataformas de pago locales
+  examples:
+  - MercadoPago
+  - TodoPago
+  priority: medium
+- name: Aplicaciones de telemedicina
+  examples:
+  - Docademic
+  - Telemedicina Argentina
+  priority: medium
+- name: Sistemas de monitoreo remoto
+  examples:
+  - VitalCheck
+  - SeniorSafe
+  priority: high
+industry_faq:
+- question: ¿Qué servicios incluye el cuidado de ancianos a domicilio?
+  answer_template: Ofrecemos servicios personalizados que incluyen asistencia en actividades
+    diarias, acompañamiento médico, y monitoreo de salud, adaptados a las necesidades
+    específicas de cada paciente.
+- question: ¿Cómo se garantiza la calidad del personal?
+  answer_template: Trabajamos con cuidadores certificados y proporcionamos capacitación
+    continua, además de usar tecnología para supervisar y mejorar los servicios.
+- question: ¿Cuál es el costo promedio de los servicios?
+  answer_template: Los costos varían según los servicios requeridos, con precios desde
+    ARS 50,000 mensuales para planes básicos, ofreciendo transparencia y opciones
+    flexibles.
+- question: ¿Hay disponibilidad de servicios de emergencia las 24 horas?
+  answer_template: Sí, contamos con soporte las 24 horas mediante agentes de voz y
+    personal de respaldo para responder a emergencias de manera inmediata.
+- question: ¿Cómo manejan la comunicación con los familiares?
+  answer_template: Utilizamos actualizaciones automáticas y canales directos para
+    mantener a las familias informadas sobre el estado y progreso de sus seres queridos.
+- question: ¿Aceptan seguros de salud o obras sociales?
+  answer_template: Sí, coordinamos con diversas obras sociales y seguros para facilitar
+    los pagos y reducir los costos directos para las familias.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios durante una consulta inicial.
+  script: Entendemos que el costo es una preocupación importante. Nuestros servicios
+    comienzan desde ARS 50,000 mensuales, ofreciendo planes personalizados que pueden
+    ahorrarle hasta un 20% en gastos médicos a largo plazo. ¿Le gustaría que le detalle
+    las opciones disponibles?
+  goal: Convertir la consulta en una conversación sobre valor y ahorro, no solo precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente busca información sobre servicios específicos para
+    un familiar mayor.
+  script: Gracias por contactarnos. Ofrecemos desde cuidado básico hasta servicios
+    especializados como monitoreo remoto, que mejora la seguridad y reduce visitas
+    innecesarias al médico. ¿Podría contarme más sobre las necesidades de su familiar
+    para recomendarle el mejor plan?
+  goal: Identificar necesidades y personalizar la oferta para aumentar la probabilidad
+    de venta.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor durante la conversación.
+  script: Es bueno que compare opciones. A diferencia de otros, nosotros integramos
+    agentes de voz AI para automatizar tareas como recordatorios de medicamentos y
+    citas, lo que reduce errores y mejora la calidad de vida. Esto puede traducirse
+    en ahorros significativos y mayor tranquilidad. ¿Le interesa saber más?
+  goal: Destacar diferenciadores únicos y enfocarse en beneficios prácticos.
+- trigger: follow_up
+  situation: Después de una consulta inicial, para re-enganchar al cliente.
+  script: Hola, le escribo para seguir sobre el cuidado de ancianos que discutimos.
+    ¿Ha tenido la oportunidad de considerar cómo nuestra solución de monitoreo remoto
+    podría ayudar a su familiar? Estamos aquí para responder cualquier duda adicional.
+  goal: Mantener el interés y avanzar hacia el cierre de la venta.
+competitors:
+- name: CuidarMayores Argentina
+  positioning: Proveedor establecido de cuidado domiciliario con amplia red.
+  strengths:
+  - Experiencia en el mercado
+  - red nacional de cuidadores
+  - reconocimiento de marca
+  weaknesses:
+  - Tecnología limitada
+  - altos costos operativos
+  - comunicación lenta
+  our_differentiation: Integración de AI para eficiencia y personalización, con costos
+    reducidos y soporte 24/7.
+- name: SeniorHelp Latam
+  positioning: Servicios regionales de cuidado con enfoque en telemedicina.
+  strengths:
+  - Cobertura regional
+  - alianzas con clínicas
+  - servicios digitales
+  weaknesses:
+  - Poco enfoque local en Argentina
+  - precios variables
+  - soporte inconsistente
+  our_differentiation: Soluciones adaptadas al mercado argentino, con integraciones
+    locales y precios transparentes en ARS.
+- name: Asistencia Dorada
+  positioning: Proveedor premium de cuidado especializado para ancianos.
+  strengths:
+  - Alta calidad de servicio
+  - personal altamente capacitado
+  - opciones personalizadas
+  weaknesses:
+  - Precios muy elevados
+  - disponibilidad limitada
+  - poca innovación tecnológica
+  our_differentiation: Combinación de cuidado humano con tecnología AI para ofrecer
+    calidad a precios más accesibles y escalables.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Implementación de monitoreo remoto para reducir visitas de emergencia.
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - La automatización puede reducir costos operativos hasta un 30% en el primer año.
+  - Mejora en la adherencia a tratamientos que previene hospitalizaciones costosas.
+  - Inversión en tecnología que aumenta la seguridad y tranquilidad de las familias.
+market_context:
+  market_size: Estimado en ARS 10 mil millones anuales
+  growth_rate: 8% anual
+  key_trends:
+  - Aumento de la población anciana debido al envejecimiento demográfico.
+  - Crecimiento de la telemedicina y cuidado remoto post-pandemia.
+  - Mayor demanda de servicios personalizados y tecnológicamente avanzados.
+  seasonality:
+    high:
+    - Invierno
+    - debido a mayores necesidades de salud y festividades
+    low:
+    - Verano
+    - por vacaciones y menor actividad
+typical_objections:
+- objection: El precio es demasiado alto para nuestro presupuesto.
+  response: Entendemos su preocupación. Nuestros servicios están diseñados para ahorrarle
+    dinero a largo plazo mediante la prevención de costos médicos altos. ¿Podemos
+    analizar un plan básico que se ajuste a su presupuesto?
+- objection: Prefiero el cuidado tradicional sin tecnología.
+  response: La tecnología complementa el cuidado humano, no lo reemplaza. Agentes
+    de voz AI ayudan a cuidadores a ser más eficientes, permitiéndoles enfocarse en
+    la atención personalizada. ¿Le gustaría ver un demo de cómo funciona?
+- objection: Ya tenemos un cuidador, no necesitamos más servicios.
+  response: Nuestra solución puede apoyar a su cuidador actual con recordatorios y
+    monitoreo, reduciendo su carga y mejorando la calidad del cuidado. Es una forma
+    de optimizar lo que ya tiene.
+- objection: No confío en sistemas automatizados para la salud.
+  response: Compartimos su precaución. Nuestros sistemas están diseñados con supervisión
+    humana y cumplen estándares de seguridad. Podemos empezar con funciones simples
+    y escalar según su comodidad.
+meta:
+  id: elderly_care
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

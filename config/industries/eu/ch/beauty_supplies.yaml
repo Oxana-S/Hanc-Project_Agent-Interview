@@ -1,0 +1,264 @@
+pain_points:
+- description: Hohe Preisempfindlichkeit der Kunden bei gleichzeitig steigenden Einkaufskosten
+    für Rohstoffe.
+  severity: high
+  solution_hint: KI-Agent kann automatisierte Preisvergleiche und personalisierte
+    Angebote basierend auf Bestellhistorie erstellen.
+- description: Komplexe Lagerverwaltung aufgrund einer grossen Produktvielfalt mit
+    unterschiedlichen Haltbarkeitsdaten.
+  severity: high
+  solution_hint: KI-Agent kann Lagerbestände überwachen, Mindesthaltbarkeitsdaten
+    tracken und automatische Nachbestellungen auslösen.
+- description: Zeitintensiver Kunden-Support für Produktberatung (z.B. Haartyp, Hauttyp)
+    während der Öffnungszeiten.
+  severity: medium
+  solution_hint: KI-Agent bietet 24/7-Beratung durch intelligente Frage-Antwort-Systeme
+    zu Produkteigenschaften und Anwendung.
+- description: Herausfordernde Einhaltung von Schweizer Datenschutzgesetzen (FADP)
+    und EU-GDPR bei Online-Bestellungen.
+  severity: high
+  solution_hint: KI-Agent kann datenschutzkonforme Prozesse für Bestellungen automatisch
+    durchführen und Einwilligungen dokumentieren.
+- description: Verluste durch nicht abgeholte Online-Bestellungen (Click & Collect)
+    und aufwändige Rückverfolgung.
+  severity: medium
+  solution_hint: KI-Agent sendet automatisierte Erinnerungen für Abholungen und koordiniert
+    Nachlieferungen.
+- description: Schwierigkeiten bei der Akquise von neuen professionellen Kunden (Friseure,
+    Kosmetikstudios).
+  severity: medium
+  solution_hint: KI-Agent kann gezielte Outbound-Anrufe zur Neukundengewinnung mit
+    Informationen zu Grosshandelskonditionen durchführen.
+- description: Administrativer Aufwand für die Verwaltung von Kundenkarten und Treueprogrammen.
+  severity: low
+  solution_hint: KI-Agent kann Treuepunkte verwalten, Kundengeburtstage erkennen und
+    personalisierte Gutscheine versenden.
+typical_services:
+- Haarpflege- und Stylingprodukte (Professionell & Retail)
+- Kosmetik und Hautpflege (Gesicht & Körper)
+- Nagelstudio-Bedarf (Gel, Acryl, Werkzeuge)
+- Friseurbedarf (Scheren, Waagen, Färbemittel)
+- Wimpern- und Augenbrauenprodukte
+- Professionelle Geräte (Haartrockner, Lockenstäbe, Sterilisatoren)
+- Desinfektionsmittel und Salonhygiene
+- Duftöle und Aromatherapie
+- Naturkosmetik und vegane Produkte
+- Beratung und Schulungen für Fachkräfte
+recommended_functions:
+- name: Bestellannahme und -verfolgung
+  priority: high
+  reason: Reduziert manuellen Aufwand bei häufigen Nachbestellungen von Stammkunden
+    und erhöht die Kundenzufriedenheit durch Transparenz.
+- name: Lagerabfrage und Produktverfügbarkeit
+  priority: high
+  reason: Beantwortet sofort die häufigste Kundenfrage, verhindert Fehlbestellungen
+    und steigert Umsatz durch Alternativvorschläge.
+- name: Terminbuchung für Beratungsgespräche oder Schulungen
+  priority: medium
+  reason: Erschliesst zusätzlichen Service-Umsatz und bindet professionelle Kunden
+    durch persönlichen Kontakt.
+- name: Rechnungsstatus- und Zahlungserinnerung
+  priority: medium
+  reason: Verbessert das Cashflow-Management automatisch und hält den Kundenkontakt
+    freundlich und professionell.
+- name: Datenschutz-Compliance-Check (FADP/GDPR)
+  priority: high
+  reason: Vermeidet kostspielige rechtliche Risiken in der datensensitiven Schweiz
+    bei jeder Kundeninteraktion.
+- name: Kundengewinnungs-Anrufe (Outbound)
+  priority: low
+  reason: Erweitert den Kundenstamm im B2B-Bereich mit gezielter Ansprache von Frisörsalons
+    und Kosmetikstudios.
+typical_integrations:
+- name: ERP-System
+  examples:
+  - Abacus
+  - Bexio
+  - ERP AGRESSO
+  priority: high
+- name: E-Commerce-Plattform
+  examples:
+  - Shopify
+  - Swisscom e-shop
+  - woocommerce
+  priority: high
+- name: CRM-System
+  examples:
+  - bpm' online
+  - Microsoft Dynamics
+  - Zoho CRM
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  priority: medium
+- name: Lagerverwaltungssystem (LVS)
+  examples:
+  - JTL-Wawi
+  - easyWMS
+  priority: high
+industry_faq:
+- question: Haben Sie Produkt XY auf Lager?
+  answer_template: Gerne überprüfe ich das für Sie. Für eine genaue Auskunft benötige
+    ich die genaue Produktbezeichnung oder Artikelnummer. Sollte es nicht vorrätig
+    sein, kann ich die Lieferzeit erfragen oder ein alternatives Produkt vorschlagen.
+- question: Bieten Sie professionelle Konditionen für Frisörsalons an?
+  answer_template: Ja, wir haben spezielle Grosshandelskonditionen für gewerbliche
+    Kunden. Ich verbinde Sie gerne mit unserem B2B-Betreuer oder sende Ihnen die Anmeldeunterlagen
+    für ein Geschäftskonto zu.
+- question: Sind Ihre Kosmetikprodukte vegan und tierversuchsfrei?
+  answer_template: Viele unserer Produkte sind vegan und tierversuchsfrei. Ich kann
+    Ihnen basierend auf der gewünschten Kategorie eine entsprechende Produktliste
+    zusammenstellen. Bitte geben Sie mir dazu mehr Details.
+- question: Wie lange ist die Lieferzeit in die Schweiz?
+  answer_template: Die Standardlieferzeit innerhalb der Schweiz beträgt 2-3 Werktage.
+    Für dringende Bestellungen bieten wir einen Expressservice an. Die genauen Kosten
+    und Zeiten kann ich Ihnen direkt nennen.
+- question: Wie handle ich eine Retoure oder Reklamation?
+  answer_template: Bitte teilen Sie mir Ihre Auftragsnummer mit. Ich erstelle sofort
+    ein Rücksendeetikett für Sie und leite den Fall an unsere Qualitätskontrolle weiter.
+    Sie erhalten innerhalb von 5 Werktagen Rückmeldung.
+- question: Organisieren Sie auch Schulungen zur Produktanwendung?
+  answer_template: Ja, wir bieten regelmässig Schulungen für Fachpersonal an, sowohl
+    online als auch in unseren Showrooms. Ich kann Sie in unseren Verteiler für Einladungen
+    aufnehmen oder freie Termine nennen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach dem Preis für einen bestimmten Service oder ein Produktpaket
+    fragt.
+  script: Vielen Dank für Ihre Anfrage. Unser KI-gestützter Telefonservice zur Automatisierung
+    von Bestellungen und Support beginnt bei einem monatlichen Grundpaket von 299
+    CHF. Der genaue Preis hängt vom Umfang Ihrer täglichen Anrufe und den gewünschten
+    Integrationen ab. Darf ich Ihnen eine detaillierte, unverbindliche Offerte basierend
+    auf Ihren aktuellen Kundenanruf-Zahlen erstellen?
+  goal: Ein konkretes, aber flexibles Preisfenster nennen und zu einer detaillierten
+    Analyse überleiten, um den Mehrwert zu zeigen.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber wie 'Parfumerie' oder 'Douglas' erwähnt.
+  script: Das ist eine gute Frage. Viele unserer Kunden schätzen besonders, dass unsere
+    Lösung speziell für den Schweizer Fachhandel für Beauty-Bedarf entwickelt ist.
+    Im Gegensatz zu generischen Systemen verstehen wir Ihre spezifischen Prozesse
+    wie Haltbarkeitsverwaltung, Grosshandelsbestellungen und FADP-Compliance. Darf
+    ich Ihnen ein konkretes Beispiel nennen, wie wir einem Salon in Zürich 15 Stunden
+    Admin-Aufwand pro Woche gespart haben?
+  goal: Nicht den Wettbewerb schlechtreden, sondern auf die spezifische Industrieexpertise
+    und lokale Erfolgsbeispiele fokussieren.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde den vorgeschlagenen Preis als zu hoch empfindet.
+  script: 'Ich verstehe Ihre Budgetüberlegungen vollkommen. Lassen Sie uns kurz den
+    ROI betrachten: Bei monatlichen Kosten von z.B. 350 CHF sparen Sie bereits, wenn
+    wir nur 10 Stunden manuelle Telefonarbeit pro Monat automatisieren – was in der
+    Schweiz schnell erreicht ist. Zusätzlich generieren Sie durch verpasste Anrufe
+    nach Geschäftsschluss oft mehr Umsatz. Könnten wir eine 4-wöchige Testphase mit
+    einem reduzierten Einsteigerpaket vereinbaren, damit Sie den Nutzen selbst sehen?'
+  goal: Die Kosten in konkrete Zeiteinsparung und Umsatzchancen übersetzen und eine
+    risikofreie Testmöglichkeit anbieten.
+competitors:
+- name: Parfumerie / Drogerien (z.B. Müller, Import Parfumerie)
+  positioning: Stationärer und online Detailhandel für Endverbraucher.
+  strengths:
+  - Breite physische Präsenz
+  - Starke Markenbekanntheit
+  - Sofortige Verfügbarkeit für Retail-Kunden
+  weaknesses:
+  - Begrenztes Fachsortiment für Profis
+  - Höhere Retail-Preise
+  - Keine spezifische B2B-Betreuung
+  our_differentiation: Wir fokussieren auf den professionellen B2B-Bereich (Salons)
+    und bieten tiefgehende Integration in deren Geschäftsprozesse und Grosshandelskonditionen
+    an.
+- name: Douglas
+  positioning: Premium-Detailhändler für Beauty mit Fokus auf Markenkosmetik.
+  strengths:
+  - Premium-Markenportfolio
+  - Umfassender Online-Shop
+  - Gute Customer Experience
+  weaknesses:
+  - Sehr hohe Preise
+  - Geringer Fokus auf Salon-Bedarf/Profiprodukte
+  - Generische Services
+  our_differentiation: Unsere KI-Lösung ist auf die operativen Herausforderungen von
+    Beauty-Fachhändlern zugeschnitten (Lager, Fachberatung), nicht auf den Luxus-Retail-Verkauf.
+- name: Online-Grosshändler (z.B. Salonelite, Kosmetikgrosshandel)
+  positioning: B2B-Online-Händler für Salonbedarf.
+  strengths:
+  - Gute Grosshandelspreise
+  - Umfangreiches Profi-Sortiment
+  - B2B-geeignete Plattformen
+  weaknesses:
+  - Oft eingeschränkter persönlicher Support
+  - Wenige lokale Schnittstellen (ERP)
+  - Standardisierte Abläufe
+  our_differentiation: Wir ergänzen diese Händler, indem wir ihren Kunden einen intelligenten,
+    persönlichen und automatisierten Voice-Service bieten, der genau auf deren gekauftes
+    Sortiment zugeschnitten ist.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 250
+  - 1200
+  entry_point: 299
+  roi_examples:
+  - scenario: Kleiner Fachhändler mit ca. 50 Kundenanrufen/Woche für Bestellungen
+      und Verfügbarkeitsanfragen.
+    monthly_cost: 350
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Mittleres Distributionsunternehmen, das 24/7-Erreichbarkeit für Salon-Bestellungen
+      benötigt.
+    monthly_cost: 850
+    monthly_savings: 2200
+    payback_months: 1
+  value_anchors:
+  - Einsparung von mindestens 15 administrativen Arbeitsstunden pro Monat.
+  - Keine verlorenen Umsätze durch verpasste Anrufe nach 18 Uhr oder am Wochenende.
+  - Vollständige FADP/GDPR-Konformität bei jeder Kundeninteraktion.
+market_context:
+  market_size: Ca. 1.2 Mrd. CHF Jahresumsatz (Fachhandel für Beauty-Bedarf inkl. Profibereich)
+  growth_rate: 3-4% p.a.
+  key_trends:
+  - Starke Nachfrage nach nachhaltigen, veganen und 'Clean Beauty' Produkten.
+  - Wachsender Online-Anteil im B2B-Bereich (Bestellungen der Salons).
+  - Fusion von Retail und Service (Salons verkaufen auch Produkte an Endkunden).
+  - Erhöhte Anforderungen an Hygiene und Desinfektion im professionellen Umfeld.
+  seasonality:
+    high:
+    - November (Weihnachtsgeschenke)
+    - Februar/März (Frühjahrsneuheiten)
+    - August (Sommer-Styling)
+    low:
+    - Januar (nach Weihnachten)
+    - Juli (Ferienzeit)
+typical_objections:
+- objection: Meine Kunden erwarten einen persönlichen Kontakt, keine Maschine.
+  response: Das verstehe ich gut. Unser KI-Agent arbeitet als Ihr persönlicher Assistent
+    im Hintergrund. Er entlastet Ihr Team von Routinefragen wie Lagerstand oder Lieferzeit,
+    sodass sich Ihre Mitarbeiter voll auf die komplexe, beratungsintensive persönliche
+    Betreuung konzentrieren können. Er schützt also die Zeit für echten persönlichen
+    Kontakt.
+- objection: Die Einrichtung und Integration klingt zu aufwändig für unser kleines
+    Team.
+  response: Wir haben den Onboarding-Prozess für Schweizer KMU stark vereinfacht.
+    Unser Team übernimmt den Grossteil der Integration mit Systemen wie Bexio oder
+    Abacus. In der Regel sind Sie innerhalb von 2 Wochen startbereit, mit voller Unterstützung
+    durch unseren deutschsprachigen Support.
+- objection: Wir haben zu wenig Anrufvolumen, um das zu rechtfertigen.
+  response: Das mag auf den ersten Blick so scheinen. Oft werden jedoch viele potenzielle
+    Anrufe durch nicht besetzte Leitungen oder lange Wartezeiten gar nicht erst getätigt
+    – das ist verlorener Umsatz. Unser Einstiegspaket ist bereits für wenige Anrufe
+    pro Tag wirtschaftlich. Lassen Sie uns doch eine einfache Analyse Ihrer aktuellen
+    Telefonie-Kosten durchführen.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

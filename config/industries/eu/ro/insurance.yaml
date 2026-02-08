@@ -1,0 +1,255 @@
+pain_points:
+- description: Volum mare de apeluri pentru întrebări simple (stare poliţă, documente
+    necesare) care blochează operatorii umani pentru cazuri complexe.
+  severity: high
+  solution_hint: Agentul vocal AI poate prelua 80% din aceste apeluri cu RPA pentru
+    interogarea sistemelor, eliberând echipa.
+- description: Procesarea lentă a daunelor din cauza verificării manuale a documentelor
+    şi a comunicării slabe cu clientul.
+  severity: high
+  solution_hint: AI-ul poate colecta datele iniţiale ale daunelor prin voce, notifica
+    clientul în timp real şi trimite dosarul complet către ajustor.
+- description: Rata scăzută de reînnoire a poliţelor din cauza lipsei de follow-up
+    personalizat şi a ofertelor proactive.
+  severity: medium
+  solution_hint: Agentul poate efectua campanii automate de reînnoire, cu reminder-uri
+    vocale şi oferte personalizate bazate pe istoric.
+- description: Provocări în conformitatea cu GDPR la gestionarea consimţământului
+    clienţilor pentru marketing şi procesarea datelor.
+  severity: medium
+  solution_hint: Sistemul vocal poate înregistra şi gestiona automat consimţământul
+    vocal, păstrând un audit trail pentru orice audit.
+- description: Dificultatea în cross-selling şi up-selling din cauza lipsei de vizibilitate
+    în timp real asupra portofoliului clientului în timpul apelului.
+  severity: medium
+  solution_hint: 'AI-ul integrat cu CRM-ul poate sugera în timp real produse complementare
+    (ex: asigurare de sănătate pentru deţinătorul de RCA) în dialog.'
+- description: Costuri ridicate şi timpi lungi de instruire pentru agenţii noi din
+    call center.
+  severity: low
+  solution_hint: Agentul vocal acţionează ca un asistent inteligent pentru noii angajaţi,
+    oferind răspunsuri instant la proceduri şi scripturi.
+typical_services:
+- Asigurare RCA (Răspundere Civilă Auto)
+- Asigurare CASCO
+- Asigurare de viaţă
+- Asigurare de sănătate
+- Asigurare de locuinţă
+- Asigurare de călătorie
+- Asigurare de accidente
+- Asigurare pentru afaceri (D&O, bunuri, răspundere civilă profesională)
+- Asigurare pentru animale de companie
+- Asigurare cyber (pentru date online)
+recommended_functions:
+- name: Triaj intelligent al apelurilor şi FAQ vocal
+  priority: high
+  reason: Reducere imediată a volumului către operatorii umani, îmbunătăţire a experienţei
+    clientului cu răspunsuri instant.
+- name: Robot de procesare a daunelor (Claims Bot)
+  priority: high
+  reason: Viteza de procesare a daunelor este un factor critic de competitivitate
+    şi satisfacţie în piaţa românească.
+- name: Sistem automat de programare a vizitelor la cabinetele medico-legale sau pentru
+    inspecţii
+  priority: medium
+  reason: Optimizează logistică şi reduce timpii de aşteptare pentru client, crescând
+    gradul de încredere.
+- name: Asistent pentru cross-selling/up-selling vocal
+  priority: medium
+  reason: Creşte valoarea medie a portofoliului prin identificarea automată a oportunităţilor
+    în dialog.
+- name: Campanii vocale automate pentru reînnoire poliţe
+  priority: medium
+  reason: Combate pierderea pasivă a clienţilor, o problemă cronică în sector.
+- name: Verificare vocală a documentelor şi a identităţii (biometrie vocală)
+  priority: low
+  reason: Îmbunătăţeşte securitatea şi conformitatea, reducând fraudă.
+typical_integrations:
+- name: Sistem de gestionare a poliţelor (Policy Administration System)
+  examples:
+  - FIBO
+  - SSI Sprint
+  - soluţii custom
+  priority: high
+- name: CRM pentru asigurări
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce Financial Services Cloud
+  - Vertafore
+  priority: high
+- name: Platformă pentru semnătura electronică şi arhivare documente
+  examples:
+  - DocuSign
+  - Universign
+  - E-SIGN România
+  priority: medium
+- name: Sistem de notificare plăţi şi facturare
+  examples:
+  - SmartBill
+  - Agiro
+  - Luxoft
+  priority: medium
+- name: Platforma de raportare a poliţelor RCA către BAAR (Biroul Asigurătorilor Auto
+    din România)
+  examples:
+  - BAAR Sistem
+  - Integrări API personalizate
+  priority: high
+- name: Sisteme de plată online
+  examples:
+  - NETOPIA
+  - GPeC
+  - GiroPay
+  - G Pay
+  priority: medium
+industry_faq:
+- question: Ce documente sunt necesare pentru a încheia o asigurare RCA?
+  answer_template: 'Pentru a încheia o asigurare RCA, aveţi nevoie de: cartea de identitate,
+    certificatul de înmatriculare al autovehiculului (CIV) şi datele de contact. Procesul
+    poate fi finalizat telefonic sau online în câteva minute.'
+- question: Cât durează până primesc despăgubirea în urma unei daune?
+  answer_template: Termenul de soluţionare a unei daune depinde de complexitatea cazului.
+    Pentu daune simple, cu dosar complet, obiectivul nostru este să procesăm despăgubirea
+    în maxim 7-10 zile lucrătoare. Vă vom ţine la curent la fiecare pas.
+- question: Pot să modific beneficiarii asigurării de viaţă?
+  answer_template: Da, puteţi modifica beneficiarii asigurării de viaţă în orice moment.
+    Este necesară completarea unei cereri scrise sau, dacă serviciul este disponibil,
+    o confirmare vocală în sistemul nostru securizat.
+- question: Ce acoperă asigurarea de sănătate standard?
+  answer_template: Asigurarea noastră de sănătate standard acoperă consultaţii specializate,
+    analize medicale, spitalizare şi, în unele pachete, medicamente. Vă invit să discutăm
+    pentru a personaliza pachetul în funcţie de nevoile dumneavoastră.
+- question: Cum vă protejaţi datele mele personale (conform GDPR)?
+  answer_template: Datele dumneavoastră sunt procesate în strictă conformitate cu
+    GDPR. Folosim sisteme securizate, accesul este restricţionat şi păstrăm datele
+    doar atât timp cât este necesar. Puteţi retrage consimţământul oricând.
+- question: Ce se întâmplă dacă uit să plătesc prima de asigurare?
+  answer_template: La expirarea termenului de plată, polița intră în perioadă de grație
+    (de obicei 10-15 zile). Dacă nu se efectuează plata, asigurarea se suspendă. Vă
+    vom contacta proactiv cu reminder-uri pentru a evita acest lucru.
+sales_scripts:
+- trigger: price_question_rca
+  situation: Clientul solicită o ofertă de preţ pentru RCA.
+  script: 'Bună ziua! Pentru a vă pregăti o ofertă precisă pentru RCA, am nevoie de
+    câteva informaţii: numărul de înmatriculare al maşinii sau marca/modelul/anul
+    de fabricaţie. Apoi vă pot oferi imediat cele mai bune preţuri de pe piaţă, inclusiv
+    bonusul dumneavoastră de fidelitate dacă aveţi deja o poliţă la noi. Sunteţi la
+    volan acum sau preferaţi să vă trimit oferta pe email/SMS?'
+  goal: Colectarea datelor necesare pentru o cotare exactă şi captarea interesului
+    prin promisiunea unui preţ competitiv şi personalizat.
+- trigger: post_claim_follow_up
+  situation: După închiderea unui dosar de daună, pentru refacerea relaţiei.
+  script: 'Bună ziua, [Nume Client], sun din partea [Companie] cu privire la dauna
+    recentă. Sper că totul a fost în regulă cu soluţionarea. Am sunat special pentru
+    a vă oferi un mic cadou pentru răbdarea dumneavoastră: o analiză gratuită a asigurărilor
+    dumneavoastră pentru a vă asigura că sunteţi optim acoperit pe toate planurile.
+    Sunt aici pentru orice altă întrebare legată de poliţa dumneavoastră.'
+  goal: Creşterea loialităţii după o experienţă negativă (dauna) şi crearea unei oportunităţi
+    de cross-selling.
+- trigger: renewal_reminder
+  situation: La 30 de zile înainte de expirarea unei poliţe.
+  script: Bună ziua, [Nume Client]! Sunt [Nume Agent], asistentul vocal de la [Companie].
+    Vă contactez pentru a vă reaminti că poliţa dumneavoastră de [Tip Asigurare] expiră
+    pe [Data]. Pentru a evita orice întrerupere în acoperire, vă pot reînnoi poliţa
+    chiar acum, telefonic. Noua ofertă păstrează toate beneficiile, iar preţul rămâne
+    competitiv. Doriţi să procedez cu reînnoirea?
+  goal: Asigurarea reînnoirii pasive şi prevenirea pierderii clientului către un competitor.
+competitors:
+- name: Allianz-Ţiriac
+  positioning: Lider de piaţă cu portofoliu complet şi reţea extinsă.
+  strengths:
+  - Brand puternic şi recunoscut
+  - Reţea vastă de agenţii şi parteneri
+  - Solide rezerve financiare
+  weaknesses:
+  - Structuri mai greoaie, lente la inovaţie digitală
+  - Costuri operative ridicate
+  our_differentiation: Noi oferim servicii digitale superioare şi interacţiune vocală
+    24/7, cu viteză de răspuns şi personalizare pe care structurile mari le ating
+    greu.
+- name: Omniasig
+  positioning: Competitor agresiv pe preţ, deţinut de Vienna Insurance Group.
+  strengths:
+  - Preţuri foarte competitive
+  - Promoţii frecvente
+  - Focus puternic pe online
+  weaknesses:
+  - Percepţia unei calităţi a serviciului post-vânzare mai scăzute
+  - Fluxuri de lucru digitale încă în dezvoltare
+  our_differentiation: Combinăm preţul competitiv cu un serviciu de relaţii clienţi
+    premium, automatizat prin AI, garantând că nu sacrificăm calitatea interacţiunii
+    pentru preţ.
+- name: Groupama
+  positioning: Jucător consolidat cu accent pe asigurări generale şi servicii pentru
+    clienţi fideli.
+  strengths:
+  - Experienţă lungă pe piaţa românească
+  - Programe solide de fidelitate
+  - Servicii pentru afaceri bine dezvoltate
+  weaknesses:
+  - Digitalizarea are loc mai lent
+  - Portofoliu mai conservator
+  our_differentiation: Agentul nostru vocal aduce inovaţia digitală de nivel premium
+    chiar pentru clienţii fideli, automatizând totul de la reînnoiri la daune, în
+    timp ce ei încă se bazează pe canale tradiţionale.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Asigurator mediu care automatizează 50% din apelurile de triaj şi FAQ
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Reduceţi timpul de procesare a daunelor cu 40%.
+  - Creşteţi rata de reînnoire a poliţelor cu până la 15% prin follow-up automat.
+  - Un agent vocal AI lucrează echivalentul a 3 angajaţi full-time, fără pauze.
+market_context:
+  market_size: Circa 10 miliarde RON (prim brute totale)
+  growth_rate: ~5-7% anual
+  key_trends:
+  - Digitalizare accelerată a vânzărilor şi serviciilor post-vânzare.
+  - Creşterea cererii pentru asigurări de sănătate private.
+  - Consolidare în sector prin achiziţii.
+  - 'Apariţia asigurărilor parametrice (ex: pentru întârzieri de zbor).'
+  seasonality:
+    high:
+    - Decembrie-Ianuarie (reînnoiri RCA, cadouri)
+    - Iunie-August (înainte de vacanţe, asigurări de călătorie)
+    low:
+    - Septembrie-Octombrie (perioadă de tranziţie)
+typical_objections:
+- objection: Nu vreau să vorbesc cu un robot, prefer o persoană.
+  response: Înţeleg perfect. Agentul nostru vocal este aici tocmai pentru a vă salva
+    timpul la întrebări simple şi pentru a asigura că, când vorbiţi cu un specialist
+    uman, acesta are deja toate informaţiile şi vă poate ajuta mult mai repede şi
+    mai bine.
+- objection: Sunt îngrijorat cu privire la securitatea datelor mele într-un astfel
+    de sistem.
+  response: Aceasta este o preocupare foarte validă. Sistemul nostru este certificat
+    şi auditat conform celor mai înalte standarde din UE (GDPR). Consimţământul dumneavoastră
+    vocal este înregistrat criptat, iar datele sunt accesibile doar pentru scopul
+    strict al serviciului solicitat.
+- objection: Sistemul existent funcţionează, de ce să schimb?
+  response: Felicitări pentru stabilitate! Într-adevăr, dacă funcţionează, e bine.
+    Noi nu vă propunem să înlocuiţi, ci să completaţi. Vă propunem să automatizaţi
+    părţile repetitive care consumă timp şi resurse, permiţând echipei dumneavoastră
+    să se concentreze pe clienţi şi vânzări complexe, crescând astfel profitul. Putem
+    începe cu un pilot fără risc pe un flux mic.
+meta:
+  id: insurance
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

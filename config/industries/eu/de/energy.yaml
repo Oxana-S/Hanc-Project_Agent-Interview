@@ -1,0 +1,247 @@
+pain_points:
+- description: Hohe Energiekosten und volatile Preise belasten die Budgetplanung.
+  severity: high
+  solution_hint: Automatisierte Preisvergleiche und Vertragsmanagement durch KI-Stimmenassistenten.
+- description: Komplexe gesetzliche Vorgaben (Energiewende, EEG-Umlage) erfordern
+    ständige Anpassungen.
+  severity: high
+  solution_hint: KI-Agenten können über Compliance-Updates informieren und Prozesse
+    anpassen.
+- description: Ineffiziente Lastgangmessung und ungenaue Verbrauchsprognosen führen
+    zu Mehrkosten.
+  severity: medium
+  solution_hint: Echtzeit-Analyse von Verbrauchsdaten und automatische Prognose-Optimierung.
+- description: Kundenanfragen zu Abrechnungen und Tarifwechseln überlasten die Hotlines.
+  severity: medium
+  solution_hint: KI-Stimmenassistent beantwortet Standardanfragen rund um die Uhr.
+- description: Dekarbonisierungsdruck und Nachhaltigkeitsberichterstattung sind aufwändig.
+  severity: high
+  solution_hint: Automatisierte Datenerfassung und Berichterstellung für ESG-Kennzahlen.
+- description: Technische Störungen in dezentralen Erzeugungsanlagen (PV, Wind) werden
+    spät erkannt.
+  severity: medium
+  solution_hint: KI-gestützte Fernüberwachung und automatische Störungsmeldung.
+typical_services:
+- Strom- und Gaslieferung
+- Energieberatung und Audit
+- Photovoltaik- und Speicherlösungen
+- Contracting und Energiedienstleistungen (EDL)
+- Elektromobilitäts-Lösungen (Ladeinfrastruktur)
+- Fernwärme- und Kälteversorgung
+- Lastmanagement und Demand Response
+- Energieeffizienz- und Gebäudeautomation
+- Grünstromzertifizierung (HKN, REGO)
+- Notstrom- und unterbrechungsfreie Stromversorgung (USV)
+recommended_functions:
+- name: Vertrags- und Preisanfragen bearbeiten
+  priority: high
+  reason: Hohes Anfrageaufkommen zu Tarifen und Wechselmodalitäten.
+- name: Störungsmeldungen entgegennehmen und priorisieren
+  priority: high
+  reason: Schnelle Reaktion auf Ausfälle ist kritisch für die Kundenzufriedenheit.
+- name: Verbrauchsauskunft und -analyse geben
+  priority: medium
+  reason: Kunden wollen Transparenz über ihren Energieverbrauch.
+- name: Terminvereinbarung für Vor-Ort-Service
+  priority: medium
+  reason: Koordination von Technikereinsätzen ist zeitintensiv.
+- name: Compliance-Updates und Fristenüberwachung
+  priority: high
+  reason: Gesetzliche Änderungen im Energierecht sind häufig.
+- name: Proaktive Störungserkennung bei Anlagen
+  priority: medium
+  reason: Verhindert Ertragsausfälle bei dezentralen Erzeugungsanlagen.
+typical_integrations:
+- name: Smart-Meter-Gateway-Management
+  examples:
+  - SMGW
+  - EDIFACT
+  - MSCONS
+  priority: high
+- name: Energiehandelsplattform
+  examples:
+  - EEX
+  - EPEX Spot
+  priority: high
+- name: Customer-Relationship-Management (CRM)
+  examples:
+  - SAP CRM
+  - Salesforce
+  - Microsoft Dynamics
+  priority: high
+- name: Enterprise-Resource-Planning (ERP)
+  examples:
+  - SAP S/4HANA
+  - Oracle ERP Cloud
+  priority: high
+- name: Gebäudeleitsystem (GLT)
+  examples:
+  - Siemens Desigo
+  - Schneider Electric EcoStruxure
+  priority: medium
+- name: Photovoltaik-Überwachungssystem
+  examples:
+  - SMA Sunny Portal
+  - Fronius Solar.web
+  priority: low
+industry_faq:
+- question: Wie kann ich meinen Stromverbrauch senken?
+  answer_template: Wir analysieren Ihren Lastgang und identifizieren Einsparpotenziale,
+    z.B. durch Lastverschiebung oder effizientere Geräte. Gerne vereinbaren wir einen
+    Energieberatungstermin.
+- question: Welche Förderungen gibt es für Photovoltaikanlagen?
+  answer_template: Für PV-Anlagen gibt es diverse Förderungen, wie die Einspeisevergütung
+    nach EEG oder KfW-Kredite. Die aktuellen Konditionen sind abhängig von der Anlagengröße
+    und Installation. Ich kann Sie an unseren Fördermittelexperten verbinden.
+- question: Meine Stromrechnung erscheint zu hoch. Was kann ich tun?
+  answer_template: Bitte überprüfen Sie zunächst den Zählerstand und vergleichen Sie
+    ihn mit der Abrechnung. Bei Unstimmigkeiten oder für eine detaillierte Verbrauchsanalyse
+    stellen wir gerne den Kontakt zur Kundenbetreuung her.
+- question: Wie funktioniert ein Anbieterwechsel?
+  answer_template: Der Wechsel ist einfach. Wir kündigen für Sie beim alten Versorger
+    und melden Sie beim neuen an. Die Strom- bzw. Gaslieferung bleibt während des
+    Wechsels garantiert. Bitte haben Sie Ihre Zählernummer und letzte Rechnung bereit.
+- question: Was passiert bei einer Störung oder einem Stromausfall?
+  answer_template: Bei einem Netzausfall wenden Sie sich bitte an Ihren lokalen Netzbetreiber.
+    Für Störungen an hauseigenen Anlagen wie PV oder BHKW nutzen Sie bitte unseren
+    Störungsdienst. Ich kann die Störung für Sie melden.
+- question: Was ist ein Smart Meter und ist es Pflicht?
+  answer_template: Ein Smart Meter ist ein digitaler Zähler mit Kommunikationseinheit.
+    Der Einbau ist für bestimmte Verbrauchsgruppen gesetzlich vorgeschrieben (z.B.
+    >6000 kWh/a). Gerne informieren wir Sie über die Einbaupflicht und Kosten.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für eine Energieberatung oder einen neuen
+    Tarif.
+  script: Sehr gerne. Unser Service beginnt bereits ab 49€ monatlich und umfasst eine
+    detaillierte Verbrauchsanalyse sowie individuelle Einsparempfehlungen. Möchten
+    Sie mehr über die konkreten Einsparmöglichkeiten für Ihr Unternehmen erfahren?
+  goal: Interesse wecken und zum konkreten Angebotsgespräch überleiten.
+- trigger: competitor_mention
+  situation: Kunde erwähnt ein Angebot eines Mitbewerbers (z.B. E.ON, Vattenfall).
+  script: Das ist eine gute Wahl. Wir unterscheiden uns durch unsere vollständige
+    Fokussierung auf mittelständische Unternehmen und bieten eine proaktive KI-gestützte
+    Überwachung Ihrer Energiekosten, die bei reinen Lieferanten oft extra kostet.
+    Darf ich Ihnen einen Vergleich unserer Leistungen schicken?
+  goal: Differenzierung durch spezialisierten Service und Technologie betonen.
+- trigger: objection_complexity
+  situation: Kunde zeigt Bedenken wegen des Aufwands für Umstellung oder Integration.
+  script: Wir übernehmen den gesamten Prozess für Sie – von der Analyse bis zur Implementierung.
+    Unsere KI-Lösung integriert sich nahtlos in Ihre bestehenden Systeme wie SAP oder
+    Ihre Smart Meter. Sie sparen langfristig Zeit und Kosten. Können wir nächste Woche
+    einen kurzen Technik-Call vereinbaren?
+  goal: Bedenken ausräumen und nächsten konkreten Schritt vereinbaren.
+- trigger: interest_sustainability
+  situation: Kunde äußert Interesse an grünen Energie- oder Effizienzlösungen.
+  script: Ausgezeichnet. Wir helfen Ihnen nicht nur bei der Beschaffung von zertifiziertem
+    Grünstrom, sondern auch bei der Reduktion Ihres eigenen Fußabdrucks durch Effizienzmaßnahmen
+    und Eigenerzeugung. So erreichen Sie Ihre ESG-Ziele schneller. Sollen wir mit
+    einer ersten Potentialanalyse starten?
+  goal: Vom Interesse zur konkreten Analyse als ersten Servicebaustein führen.
+competitors:
+- name: E.ON
+  positioning: Einer der größten integrierten Energieversorger.
+  strengths:
+  - Breite Marktpräsenz
+  - großes Portfolio
+  - starke Finanzkraft
+  weaknesses:
+  - Weniger agil
+  - Standardlösungen für Großkunden
+  our_differentiation: Wir bieten maßgeschneiderte, KI-gestützte Dienstleistungen
+    speziell für den Mittelstand mit höherer Automatisierung und proaktivem Service.
+- name: Vattenfall
+  positioning: Großer europäischer Energieerzeuger und -versorger mit Fokus auf Dekarbonisierung.
+  strengths:
+  - Starker Fokus auf Erneuerbare
+  - internationale Reichweite
+  weaknesses:
+  - Langsame Entscheidungsprozesse in Deutschland
+  our_differentiation: Unser reiner Dienstleistungsansatz ohne eigene Erzeugung ermöglicht
+    unabhängige Beratung und schnellere, lokale Implementierung.
+- name: Entega (MVV Energie)
+  positioning: Regionaler Versorger mit starkem Fokus auf Ökostrom und dezentrale
+    Energielösungen.
+  strengths:
+  - Starker Regionalbezug
+  - guter Ruf für Öko-Energie
+  weaknesses:
+  - Primär auf Privatkunden und kleine Gewerbe fokussiert
+  our_differentiation: Wir konzentrieren uns auf komplexe gewerbliche und industrielle
+    Anforderungen mit tiefer technischer Integration und Automatisierung.
+- name: Octopus Energy Germany
+  positioning: Digitaler Neuanbieter mit agilen Tarifen und KI-Plattform.
+  strengths:
+  - Hoch digitalisiert
+  - innovative Tarifmodelle
+  - gute Kundenerfahrung
+  weaknesses:
+  - Noch begrenzte Marktdurchdringung im Gewerbe
+  - weniger Vor-Ort-Service
+  our_differentiation: Unsere Lösung ist auf tiefgehende Prozessautomatisierung und
+    Integration in betriebliche Abläufe ausgelegt, nicht nur auf Vertrieb und Abrechnung.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 49
+  roi_examples:
+  - scenario: Automatisierung der Verbrauchsdatenerfassung und -analyse für ein mittelständisches
+      Unternehmen.
+    monthly_cost: 199
+    monthly_savings: 850
+    payback_months: 1
+  value_anchors:
+  - Durchschnittlich 15% Senkung der Energiekosten im ersten Jahr.
+  - Reduktion des Administrationsaufwands für Energiemanagement um bis zu 80%.
+  - Schnelle Amortisation durch identifizierte Einsparpotenziale.
+market_context:
+  market_size: Ca. 200 Mrd. EUR Jahresumsatz (Energieversorgung Deutschland)
+  growth_rate: 2-4% p.a., getrieben durch Dekarbonisierung und Digitalisierung
+  key_trends:
+  - Dezentralisierung der Erzeugung (Prosumer)
+  - Sektorkopplung (Strom, Wärme, Mobilität)
+  - Steigende Bedeutung von Flexibilitätsmärkten und Demand Response
+  - Wachsender regulatorischer Druck (EU-Green-Deal, nationale Klimaziele)
+  - Digitale Zwillinge und KI für Netz- und Anlagenoptimierung
+  seasonality:
+    high:
+    - Q4 (Abrechnungszeitraum, Heizperiode)
+    - Q1 (Neugeschäft nach Jahreswechsel)
+    low:
+    - August (Urlaubszeit)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das ist mir zu teuer / Das Budget ist gerade nicht da.
+  response: Ich verstehe. Gerne zeigen wir Ihnen eine detaillierte ROI-Berechnung.
+    Oft amortisiert sich die Investition in wenigen Monaten. Wir können auch mit einem
+    kleinen, kostengünstigen Starterpaket beginnen.
+- objection: Wir haben schon einen zuverlässigen Versorger / Langjährige Partnerschaft.
+  response: Das ist ein gutes Argument. Unsere Stärke liegt nicht in der reinen Lieferung,
+    sondern im aktiven Management und der Optimierung Ihrer Energiekosten und -prozesse
+    zusätzlich zu Ihrem Liefervertrag. So stärken Sie Ihre bestehende Partnerschaft
+    durch Einsparungen.
+- objection: Die Umstellung klingt zu aufwändig und komplex.
+  response: Wir kümmern uns um die gesamte Implementierung und Integration. Unser
+    Team begleitet Sie Schritt für Schritt. Der laufende Betrieb ist dann durch unsere
+    KI weitgehend automatisiert und entlastet Ihr Personal.
+- objection: Wir haben bereits interne Ressourcen für Energiemanagement.
+  response: Sehr gut. Unsere KI-Lösung kann Ihre internen Experten ideal unterstützen,
+    indem sie repetitive Aufgaben übernimmt und Daten aufbereitet. So haben Ihre Mitarbeiter
+    mehr Zeit für strategische Entscheidungen.
+meta:
+  id: energy
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "energy"
+- "solar"
+- "renewable"
+- "power"
+- "utilities"
+_extends: _base/energy

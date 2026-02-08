@@ -1,0 +1,248 @@
+pain_points:
+- description: Hohe Compliance-Kosten aufgrund strenger deutscher Umweltgesetze und
+    DSGVO.
+  severity: high
+  solution_hint: KI-Stimmenagent kann automatisierte Compliance-Checks durchführen
+    und Dokumentation verwalten.
+- description: Ineffiziente Routenplanung führt zu erhöhten Treibstoffkosten und CO2-Emissionen.
+  severity: high
+  solution_hint: Agent kann Echtzeit-Routenoptimierung basierend auf Verkehr und Aufträgen
+    anbieten.
+- description: Kundenbeschwerden über verspätete Abholungen und schlechte Kommunikation.
+  severity: medium
+  solution_hint: Automatische Benachrichtigungen und Beschwerdebehandlung per Sprachassistent.
+- description: Manuelle Abrechnungsprozesse verursachen Fehler und Verzögerungen.
+  severity: medium
+  solution_hint: Integration mit Abrechnungssoftware für automatische Rechnungsstellung
+    und Anfragen.
+- description: Mangelnde Transparenz für Kunden bezüglich Recyclingquoten und Entsorgungswegen.
+  severity: low
+  solution_hint: Agent kann Recycling-Informationen und Nachhaltigkeitsberichte bereitstellen.
+- description: Personalengpässe, besonders bei Fachkräften für Sondermüllentsorgung.
+  severity: medium
+  solution_hint: KI kann Schulungsinhalte vermitteln und Support bei komplexen Anfragen
+    geben.
+- description: Steigende Entsorgungspreise für Gewerbeabfälle durch neue gesetzliche
+    Vorgaben.
+  severity: high
+  solution_hint: Agent hilft bei der Kostenvorhersage und optimiert Entsorgungspläne.
+typical_services:
+- Restmüllabholung
+- Wertstoffabholung (Gelber Sack)
+- Bioabfallabholung
+- Papier- und Pappeabholung
+- Sondermüllentsorgung
+- Sperrmüllabholung
+- Recycling-Dienstleistungen
+- Abfallberatung und Consulting
+- Containerverleih
+- Entsorgung von Bauschutt
+recommended_functions:
+- name: Terminvereinbarung und -verwaltung
+  priority: high
+  reason: Essenziell für die Planung von Abholungen und Reduzierung von Ausfallzeiten.
+- name: Beschwerde- und Störungsmanagement
+  priority: high
+  reason: Verbessert Kundenzufriedenheit durch schnelle Problemlösung in de.
+- name: Rechnungs- und Zahlungsanfragen
+  priority: medium
+  reason: Automatisiert häufige Kundenanfragen zu Kosten und Abrechnung.
+- name: Routenoptimierung und Fahrzeugüberwachung
+  priority: high
+  reason: Senkt Betriebskosten und erhöht Effizienz durch KI-gestützte Analysen.
+- name: Compliance- und Dokumentationssupport
+  priority: high
+  reason: Hilft bei Einhaltung deutscher Umweltvorschriften und DSGVO.
+- name: Kundeninformation und Service-Updates
+  priority: medium
+  reason: Bietet Transparenz über Abholzeiten und Recyclingprozesse.
+- name: Vertrags- und Angebotsverwaltung
+  priority: low
+  reason: Unterstützt Vertrieb bei der Erstellung maßgeschneiderter Lösungen.
+typical_integrations:
+- name: ERP-Systeme
+  examples:
+  - SAP
+  - Oracle NetSuite
+  priority: high
+- name: Flottenmanagementsysteme
+  examples:
+  - FleetBoard
+  - TomTom Telematics
+  priority: high
+- name: Abrechnungs- und Buchhaltungssoftware
+  examples:
+  - Datev
+  - Lexware
+  priority: medium
+- name: CRM-Systeme
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Umwelt- und Compliance-Datenbanken
+  examples:
+  - EcoOnline
+  - Enviro
+  priority: low
+- name: Kommunikationsplattformen
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: low
+industry_faq:
+- question: Wann wird mein Müll abgeholt?
+  answer_template: Ihre Abholtermine können Sie in unserem digitalen Kundenportal
+    einsehen oder wir senden Ihnen Erinnerungen per App oder Sprachbenachrichtigung.
+- question: Wie viel kostet die Entsorgung von Sondermüll für mein Unternehmen?
+  answer_template: Die Kosten variieren je nach Art und Menge des Abfalls. Wir erstellen
+    gerne ein individuelles Angebot – bitte nennen Sie uns Details zu Ihrem Bedarf.
+- question: Was darf in den Gelben Sack geworfen werden?
+  answer_template: Verpackungen aus Kunststoff, Metall und Verbundmaterialien wie
+    Getränkekartons. Spezifische Listen finden Sie auf unserer Website.
+- question: Wie bestelle ich zusätzliche Abfallbehälter?
+  answer_template: Sie können Behälter über unser Online-Formular, per Telefon oder
+    direkt über unseren KI-Stimmenagenten bestellen – schnell und unkompliziert.
+- question: Wie wird mein Recycling-Material weiterverarbeitet?
+  answer_template: Wir arbeiten mit zertifizierten Anlagen zusammen, die eine hochwertige
+    Sortierung und Wiederverwertung gemäß deutschen Recyclingstandards sicherstellen.
+- question: Was sind die aktuellen gesetzlichen Vorgaben für Gewerbeabfälle?
+  answer_template: Die Vorschriften ändern sich regelmäßig. Unser Agent kann Sie über
+    Neuerungen informieren und bei der Compliance unterstützen.
+- question: Kann ich meine Abholtermine kurzfristig ändern?
+  answer_template: Ja, über unseren Sprachagenten können Sie Termine flexibel anpassen,
+    vorbehaltlich Verfügbarkeit.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde erkundigt sich nach Kosten für Abfallentsorgungsdienstleistungen.
+  script: Guten Tag, unsere Preise basieren auf Ihrem individuellen Abfallaufkommen
+    und Serviceumfang. Für ein detailliertes Angebot, könnten Sie mir bitte grobe
+    Mengen und Arten Ihres Abfalls nennen?
+  goal: Lead qualifizieren und Grundlage für maßgeschneidertes Angebot schaffen.
+- trigger: service_inquiry
+  situation: Kunde möchte Informationen über verfügbare Entsorgungslösungen.
+  script: Wir bieten umfassende Services von Standardabholungen bis zu speziellen
+    Recyclingprogrammen. Erzählen Sie mir mehr über Ihr Unternehmen, damit ich die
+    passenden Optionen empfehlen kann.
+  goal: Dienstleistungen vorstellen und Kundenbedürfnisse identifizieren.
+- trigger: complaint_handling
+  situation: Kunde meldet eine verspätete Abholung oder Serviceprobleme.
+  script: Es tut uns leid für die Unannehmlichkeiten. Ich überprüfe sofort den Status
+    und koordiniere eine Lösung. Könnten Sie mir bitte Ihre Auftragsnummer oder Adresse
+    nennen?
+  goal: Problem schnell lösen und Kundenzufriedenheit wiederherstellen.
+- trigger: competitor_mention
+  situation: Kunde erwähnt einen anderen Anbieter wie Remondis oder ALBA.
+  script: Vielen Dank für die Information. Im Vergleich bieten wir mehr digitale Flexibilität
+    und KI-gestützte Effizienz, die Ihre Kosten senken kann. Darf ich ein Beispiel
+    teilen?
+  goal: Unsere Vorteile herausstellen und Differenzierung betonen.
+competitors:
+- name: Remondis
+  positioning: Einer der größten privaten Entsorgungsdienstleister in Deutschland
+    mit breitem Portfolio.
+  strengths:
+  - Umfangreiches Netzwerk
+  - internationale Erfahrung
+  - starke Markenpräsenz
+  weaknesses:
+  - Höhere Preise für KMUs
+  - weniger agile digitale Lösungen
+  our_differentiation: Lokalere Betreuung mit kostengünstigen, KI-optimierten Services
+    und einfacher Integration.
+- name: ALBA Group
+  positioning: Führender Anbieter für Recycling und Kreislaufwirtschaft mit Fokus
+    auf Nachhaltigkeit.
+  strengths:
+  - Hohe Recyclingquoten
+  - innovative Technologien
+  - starke Umweltkompetenz
+  weaknesses:
+  - Komplexe Vertragsmodalitäten
+  - längere Implementierungszeiten
+  our_differentiation: Schnellere digitale Onboarding-Prozesse und transparente, monatliche
+    Preismodelle.
+- name: Suez Deutschland
+  positioning: Internationaler Konzert mit Schwerpunkt auf Wasser- und Abfallmanagement.
+  strengths:
+  - Globales Wissen
+  - nachhaltige Großprojekte
+  - robuste Infrastruktur
+  weaknesses:
+  - Weniger Fokus auf kleine Betriebe
+  - starre Servicepakete
+  our_differentiation: Maßgeschneiderte Lösungen für mittelständische Unternehmen
+    mit KI-gestütztem Kundenservice.
+- name: Veolia Deutschland
+  positioning: Weltweit agierender Umweltdienstleister mit integrierten Lösungen.
+  strengths:
+  - Breites Dienstleistungsspektrum
+  - starke Forschungsabteilung
+  weaknesses:
+  - Höhere Verwaltungskosten
+  - langsamere Entscheidungswege
+  our_differentiation: Agilere digitale Tools und direktere Kundenkommunikation über
+    Sprachagenten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 10000
+  entry_point: 150
+  roi_examples:
+  - scenario: Routenoptimierung für einen mittelständischen Betrieb mit 10 Fahrzeugen.
+    monthly_cost: 500
+    monthly_savings: 800
+    payback_months: 1
+  - scenario: Automatisierte Compliance-Dokumentation für ein Unternehmen mit hohem
+      Sondermüllaufkommen.
+    monthly_cost: 300
+    monthly_savings: 400
+    payback_months: 2
+  value_anchors:
+  - Reduzieren Sie Ihre Entsorgungskosten um bis zu 25% durch KI-gestützte Planung.
+  - Vermeiden Sie Bußgelder mit automatisierter DSGVO- und Umweltcompliance.
+  - Steigern Sie Kundenzufriedenheit mit 24/7-Sprachsupport.
+market_context:
+  market_size: 60 Milliarden EUR jährlich in Deutschland
+  growth_rate: 4%
+  key_trends:
+  - Digitalisierung und IoT in der Abfallwirtschaft
+  - steigende Recyclingquoten durch gesetzliche Vorgaben
+  - wachsende Nachfrage nach kreislaufwirtschaftlichen Lösungen
+  seasonality:
+    high:
+    - Frühling und Sommer
+    - aufgrund von Gartenabfällen und Bauaktivitäten
+    low:
+    - Winter
+    - geringere Gewerbeabfallmengen in einigen Branchen
+typical_objections:
+- objection: Das ist zu teuer für unser kleines Unternehmen.
+  response: Unsere Einstiegspreise sind flexibel und die KI-Optimierung spart Ihnen
+    langfristig mehr, als sie kostet. Lassen Sie uns eine kostenlose Analyse durchführen.
+- objection: Wir haben bereits einen zuverlässigen Anbieter und sehen keinen Bedarf
+    zu wechseln.
+  response: Verständlich. Könnten wir Ihnen trotzdem zeigen, wie unsere digitalen
+    Services Ihre Effizienz steigern und administrative Last reduzieren könnten?
+- objection: KI-Lösungen sind zu komplex und erfordern zu viel Schulung.
+  response: Unser Sprachagent ist intuitiv und in deutscher Sprache verfügbar. Wir
+    bieten umfassende Einführung und Support – der Wechsel ist einfach.
+- objection: Die Datensicherheit bei Cloud-Lösungen bereitet uns Sorgen, besonders
+    mit DSGVO.
+  response: Wir halten strenge DSGVO-Konformität ein und nutzen sichere, lokale Server
+    in der EU. Ihre Daten sind geschützt.
+meta:
+  id: waste
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

@@ -1,0 +1,245 @@
+pain_points:
+- description: Gestione inefficiente delle prenotazioni e alta percentuale di no-show,
+    specialmente nei musei più piccoli.
+  severity: medium
+  solution_hint: L'agente vocale può automatizzare conferme, promemoria e gestire
+    ri-prenotazioni, riducendo il lavoro manuale.
+- description: Difficoltà nel raggiungere un pubblico internazionale a causa della
+    barriera linguistica per informazioni di base.
+  severity: high
+  solution_hint: Fornire informazioni multilingue 24/7 su orari, biglietti e percorsi,
+    liberando il personale per interazioni più complesse.
+- description: Basso tasso di conversione dalle richieste di informazioni online alle
+    vendite effettive di biglietti o membership.
+  severity: high
+  solution_hint: L'agente può rispondere immediatamente alle domande, guidare alla
+    prenotazione e inviare link diretti per l'acquisto.
+- description: Gestione complessa degli eventi (mostre temporanee, conferenze) con
+    alto volume di chiamate per dettagli.
+  severity: medium
+  solution_hint: Centralizzare tutte le FAQ sugli eventi, gestire iscrizioni e inviare
+    promemoria automatici via voce e SMS.
+- description: Ridotte risorse per il fundraising e la fidelizzazione dei donatori
+    (soci, amici dei musei).
+  severity: medium
+  solution_hint: Automatizzare le chiamate di ringraziamento, aggiornare sui benefici
+    e promuovere nuove campagne di tesseramento.
+- description: Difficoltà nel monitorare la soddisfazione del visitatore in tempo
+    reale.
+  severity: low
+  solution_hint: Condurre brevi sondaggi vocali post-visita per raccogliere feedback
+    immediato e migliorabile.
+typical_services:
+- Visite guidate private e di gruppo
+- Noleggio spazi per eventi (matrimoni, conferenze)
+- Vendita biglietti online e in loco
+- Servizi di didattica e laboratori per scuole
+- Membership e programmi "Amici del Museo"
+- Restauro e conservazione opere d'arte
+- Organizzazione mostre temporanee
+- Bookshop e vendita merchandising
+- Servizi di catalogazione e archivio digitale
+- Fundraising e crowdfunding per progetti culturali
+recommended_functions:
+- name: Prenotazione e Vendita Biglietti
+  priority: high
+  reason: Fonte di revenue primaria. Riduce la perdita di vendite al di fuori degli
+    orari di apertura.
+- name: Supporto Multilingue (IT, EN, FR, DE, ES)
+  priority: high
+  reason: Fondamentale per il turismo in Italia. Migliora l'accessibilità e l'esperienza
+    del visitatore.
+- name: Gestione FAQ 24/7
+  priority: high
+  reason: Sgrava il personale da domande ripetitive su orari, prezzi, accessibilità
+    e eventi.
+- name: Promemoria Appuntamenti e Eventi
+  priority: medium
+  reason: Riduce i no-show per visite guidate ed eventi speciali, ottimizzando le
+    risorse.
+- name: Sondaggio Soddisfazione Vocale
+  priority: low
+  reason: Permette di raccogliere feedback prezioso in modo semplice e immediato.
+- name: Gestione Iscrizioni a Laboratori/Corsi
+  priority: medium
+  reason: Automatizza un processo spesso manuale e soggetto a errori, migliorando
+    l'efficienza.
+typical_integrations:
+- name: Sistemi di Ticketing e POS
+  examples:
+  - Vivaticket
+  - TicketOne
+  - Musea
+  priority: high
+- name: CRM e Database Donatori
+  examples:
+  - DonorPerfect
+  - Salesforce
+  - database personalizzati
+  priority: medium
+- name: Calendari Eventi
+  examples:
+  - Google Calendar
+  - Microsoft 365
+  - soluzioni proprietarie museali
+  priority: medium
+- name: Sistemi di Pagamento Online
+  examples:
+  - Nexi
+  - PayPal
+  - Satispay
+  priority: high
+- name: Sistemi di Prenotazione Visite
+  examples:
+  - Museumpass
+  - guide locali come Cooperativa Ilaria
+  priority: medium
+industry_faq:
+- question: Quali sono gli orari di apertura e i giorni di chiusura?
+  answer_template: Siamo aperti da [Giorno] a [Giorno] dalle [Ora] alle [Ora]. Siamo
+    chiusi il [Giorno di chiusura]. Per orari speciali durante le festività, visiti
+    il nostro sito web.
+- question: Quanto costa il biglietto d'ingresso? Ci sono sconti?
+  answer_template: Il biglietto intero costa [X]€. Sono disponibili riduzioni per
+    [es. studenti, over 65]. L'ingresso è gratuito per [es. bambini sotto i 6 anni].
+    Tutte le tariffe sono disponibili sul nostro sito.
+- question: È necessaria la prenotazione per le visite guidate?
+  answer_template: Sì, consigliamo vivamente la prenotazione, specialmente nei weekend
+    e per i gruppi. Può prenotare chiamando questo numero o tramite il nostro sito
+    web.
+- question: Il museo è accessibile per persone con disabilità motoria?
+  answer_template: Sì, l'edificio è completamente accessibile. Sono disponibili ascensori
+    e percorsi dedicati. Su richiesta, possiamo fornire sedie a rotelle.
+- question: Offrite servizi didattici per le scuole?
+  answer_template: Certamente! Proponiamo visite guidate e laboratori didattici su
+    misura per tutte le fasce d'età. Può contattare il nostro ufficio didattica per
+    maggiori informazioni e prezzi.
+- question: Posso organizzare un evento privato (es. matrimonio) nel vostro spazio?
+  answer_template: Sì, abbiamo spazi disponibili per eventi privati. La invitiamo
+    a visitare la sezione "Noleggio Spazi" sul nostro sito o a lasciare i suoi recapiti
+    per essere ricontattata dal nostro responsabile eventi.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un potenziale cliente chiede informazioni sui costi di un servizio
+    (es. biglietti, visite guidate).
+  script: Grazie per il suo interesse! Il prezzo dipende dal servizio scelto. Per
+    esempio, un biglietto standard costa X€, ma con la nostra soluzione di automazione
+    vocale, può ridurre i costi di gestione delle prenotazioni fino al 30%. Le interessa
+    approfondire come funziona?
+  goal: Spostare la conversazione dal costo del biglietto al risparmio operativo generato
+    dalla nostra soluzione.
+- trigger: info_overload
+  situation: Quando un gestore culturale si lamenta dell'alto volume di chiamate per
+    informazioni ripetitive.
+  script: Capisco perfettamente. Il nostro agente vocale può gestire automaticamente
+    l'80% di quelle chiamate, rispondendo a domande su orari, prezzi e eventi in più
+    lingue. Questo libererebbe il suo staff per attività più valorizzanti. Posso mostrarle
+    un esempio?
+  goal: Dimostrare efficienza e risparmio di tempo, proponendo una demo.
+- trigger: low_budget
+  situation: Quando il cliente ritiene di non avere budget per nuove tecnologie.
+  script: La soluzione parte da soli [Entry Point Price]€ al mese. Consideri che,
+    automatizzando le prenotazioni e riducendo i no-show, molti nostri clienti recuperano
+    l'investimento in meno di 6 mesi attraverso entrate aggiuntive e risparmio sul
+    personale. Possiamo analizzare insieme il suo caso?
+  goal: Presentare il prezzo di ingresso basso e un chiaro ritorno sull'investimento
+    (ROI).
+competitors:
+- name: Tour Operator Locali / Guide Turistiche
+  positioning: Fornitori tradizionali di servizi di visita e accoglienza.
+  strengths:
+  - Relazione umana diretta
+  - conoscenza locale approfondita
+  weaknesses:
+  - Scalabilità limitata
+  - costo elevato
+  - disponibilità non 24/7
+  our_differentiation: Automazione 24/7 a costi ridotti, perfetta per informazioni
+    di base e prenotazioni, integrabile con le guide umane per servizi premium.
+- name: Piattaforme di Prenotazione Online Generiche (es. Tripadvisor Experiences)
+  positioning: Marketplace per la vendita di biglietti ed esperienze.
+  strengths:
+  - Grande portata
+  - riconoscimento del brand
+  - sistema di pagamento integrato
+  weaknesses:
+  - Commissioni alte
+  - poca personalizzazione
+  - nessun supporto post-vendita vocale
+  our_differentiation: Soluzione proprietaria e personalizzata che riduce le commissioni,
+    fidelizza il cliente diretto e offre supporto vocale integrato prima e dopo la
+    visita.
+- name: Sistemi di Call Center Outsourced
+  positioning: Servizi di gestione chiamate esternalizzati.
+  strengths:
+  - Gestione del picco di chiamate
+  - personale addestrato
+  weaknesses:
+  - Costi molto alti
+  - qualità variabile
+  - limitata integrazione con i sistemi interni
+  our_differentiation: Costo prevedibile e basso, integrazione profonda con i sistemi
+    esistenti (CRM, ticketing), e consistenza del servizio 24/7.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 1000
+  entry_point: 89
+  roi_examples:
+  - scenario: Piccolo museo che automatizza le risposte alle FAQ e le prenotazioni
+      telefoniche.
+    monthly_cost: 129
+    monthly_savings: 400
+    payback_months: 3
+  value_anchors:
+  - Riduci fino al 30% il tempo del personale dedicato alle chiamate informative.
+  - Converti più richieste in biglietti venduti con risposte immediate 24/7.
+  - Migliora l'esperienza del visitatore internazionale con supporto multilingue integrato.
+market_context:
+  market_size: Oltre 5.000 tra musei, monumenti e aree archeologiche in Italia.
+  growth_rate: 3-5% YoY, trainato dalla digitalizzazione e dal ritorno del turismo
+    post-pandemico.
+  key_trends:
+  - Digitalizzazione delle collezioni e tour virtuali.
+  - Esperienze immersive e personalizzate per i visitatori.
+  - Crescente importanza della sostenibilità e dell'accessibilità.
+  seasonality:
+    high:
+    - Aprile-Giugno
+    - Settembre-Ottobre
+    - Festività natalizie
+    low:
+    - Gennaio-Febbraio
+    - Luglio-Agosto (per musei cittadini)
+typical_objections:
+- objection: La tecnologia è troppo complessa per il nostro staff, non siamo pronti.
+  response: La nostra soluzione è progettata per essere semplice. Non richiede formazione
+    tecnica. Noi ci occupiamo di tutto il setup e il supporto, il suo staff dovrà
+    solo beneficiare del tempo risparmiato.
+- objection: I nostri visitatori, soprattutto anziani, preferiscono parlare con una
+    persona.
+  response: Assolutamente, e l'agente vocale non sostituisce il contatto umano per
+    le cose complesse. Si occupa invece delle domande ripetitive, così che il suo
+    personale sia più disponibile per quelle conversazioni di valore che i visitatori
+    apprezzano davvero.
+- objection: Abbiamo già un sito web con tutte le informazioni.
+  response: Ottimo! Il nostro agente vocale si integra con il sito, catturando i clienti
+    che preferiscono una risposta immediata per telefono. È un canale aggiuntivo che
+    converte meglio le persone meno abituate a navigare online, aumentando le vendite
+    complessive.
+meta:
+  id: art_culture
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

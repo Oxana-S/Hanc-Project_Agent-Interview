@@ -1,0 +1,222 @@
+pain_points:
+- description: Alta volatilidad en los precios de la energía, especialmente en el mercado mayorista, lo que dificulta la planificación de costes a medio y largo plazo para empresas y particulares.
+  severity: high
+  solution_hint: El agente de voz puede ofrecer actualizaciones en tiempo real sobre precios y alertas de cambios, además de asesorar sobre contratos de precio fijo o indexado.
+- description: Complejidad en la comprensión de las facturas eléctricas y de gas, con múltiples conceptos (término de potencia, término de energía, impuestos, subvenciones) que generan confusión.
+  severity: medium
+  solution_hint: El agente puede analizar facturas subidas por el cliente, explicar cada concepto en lenguaje sencillo y señalar posibles errores o optimizaciones.
+- description: Procedimientos administrativos lentos y burocráticos para cambios de comercializadora, altas/bajas de suministro o solicitud de bono social.
+  severity: medium
+  solution_hint: Automatizar la recogida de documentación necesaria (DNI, CUPS, última factura) y guiar al cliente paso a paso en el proceso, reduciendo tiempos de espera.
+- description: Dificultad para gestionar eficientemente la demanda de potencia en pymes y comercios, lo que genera pagos por exceso de potencia contratada o penalizaciones por superarla.
+  severity: high
+  solution_hint: El agente puede analizar históricos de consumo, recomendar ajustes de potencia óptimos y configurar alertas para prevenir picos de demanda.
+- description: Falta de conocimiento y asesoramiento sobre ayudas y subvenciones disponibles para autoconsumo, eficiencia energética o movilidad eléctrica a nivel autonómico y estatal.
+  severity: medium
+  solution_hint: Mantener una base de datos actualizada de convocatorias y realizar un cuestionario inicial para filtrar y ofrecer las ayudas más relevantes para el perfil del cliente.
+- description: Interrupciones del servicio o baja calidad del suministro en ciertas zonas rurales, con tiempos de respuesta de las distribuidoras a veces prolongados.
+  severity: low
+  solution_hint: El agente puede tomar nota automáticamente de la incidencia, notificar a la distribuidora correspondiente y ofrecer seguimiento proactivo del estado hasta su resolución.
+typical_services:
+- Comparador de tarifas eléctricas y de gas natural
+- Estudio de optimización de potencia contratada
+- Asesoría para instalaciones de autoconsumo fotovoltaico
+- Gestión de altas, bajas y cambios de comercializadora
+- Solicitud y gestión del Bono Social eléctrico
+- Monitorización y análisis de consumos (smart meters)
+- Asesoramiento en ayudas a la eficiencia energética (IDAE, comunidades autónomas)
+- Contratación de mantenimiento de instalaciones eléctricas y de gas
+- Gestión de certificados de eficiencia energética para viviendas
+- Consultoría para cumplimiento normativo (Registro de Huella de Carbono, etc.)
+recommended_functions:
+- name: Analizador de factura energética
+  priority: high
+  reason: Es la principal fuente de confusión y queja de los clientes. Automatizar su análisis genera confianza inmediata y oportunidades de ahorro.
+- name: Monitor de precios del mercado diario (OMIE)
+  priority: high
+  reason: Permite ofrecer asesoramiento objetivo sobre el mejor momento para contratar o cambiar de tarifa, basado en datos en tiempo real.
+- name: Gestor documental para trámites
+  priority: medium
+  reason: Agiliza procesos administrativos tediosos, mejorando significativamente la experiencia del cliente y reduciendo la carga del personal.
+- name: Simulador de ahorro con placas solares
+  priority: medium
+  reason: El autoconsumo es una tendencia clave. Una simulación personalizada y clara acelera la decisión de compra.
+- name: Recordatorio de fechas de revisión obligatoria
+  priority: low
+  reason: Ayuda a los clientes a cumplir con la normativa de inspecciones periódicas de instalaciones, evitando sanciones.
+- name: Asistente para emergencias y averías
+  priority: medium
+  reason: Proporciona un canal inmediato y guiado para reportar incidencias, mejorando la percepción de servicio y soporte.
+typical_integrations:
+- name: Sistemas de facturación de comercializadoras
+  examples:
+  - SAP IS-U
+  - Facturazione
+  - soluciones personalizadas
+  priority: high
+- name: Plataformas de distribución (e-Distribución, Redexis, Nedgia)
+  examples:
+  - APIs de e-Distribución
+  - Portales de Redexis
+  priority: high
+- name: Software de gestión de instalaciones fotovoltaicas
+  examples:
+  - SolarEdge Monitoring
+  - Fronius Solar.web
+  - GoodWe
+  priority: medium
+- name: Herramientas de Business Intelligence (BI)
+  examples:
+  - Power BI
+  - Tableau
+  - Qlik Sense
+  priority: medium
+- name: CRM del sector
+  examples:
+  - Salesforce Energy & Utilities Cloud
+  - Microsoft Dynamics 365
+  - Ónuba
+  priority: high
+- name: Plataformas de subvenciones públicas
+  examples:
+  - Sede electrónica del IDAE
+  - portales de comunidades autónomas
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo saber si mi potencia contratada es la correcta?
+  answer_template: Para optimizar su potencia, necesitamos analizar su historial de consumo. Con su permiso, puedo guiarle para que suba su última factura o consulte los datos en su área de cliente. Le
+    explicaré los picos de consumo y le recomendaré una potencia que evite pagos innecesarios sin afectar su confort.
+- question: ¿Merece la pena instalar placas solares en mi vivienda?
+  answer_template: Depende de su consumo, orientación de la cubierta y ubicación. Con una breve simulación puedo estimar su ahorro aproximado, el período de amortización y las ayudas a las que podría optar,
+    como la deducción en el IBI o las subvenciones del Plan de Recuperación.
+- question: ¿Qué es la tarifa PVPC y en qué se diferencia de una tarifa de mercado libre?
+  answer_template: La tarifa PVPC (Precio Voluntario para el Pequeño Consumidor) es regulada y su precio cambia hora a hora según el mercado mayorista. En mercado libre, el precio lo fija la comercializadora
+    (puede ser fijo, indexado o mixto). Le ayudo a comparar cuál se adapta mejor a sus hábitos.
+- question: ¿Tengo derecho al Bono Social Eléctrico?
+  answer_template: El Bono Social es un descuento en la factura para consumidores vulnerables. Para saber si cumple los requisitos (renta, potencia contratada), necesito algunas datos. Puedo hacerle un
+    pre-chequeo ahora mismo y, si es viable, guiarle en la solicitud con la documentación necesaria.
+- question: ¿Qué pasa si me cambio de compañía? ¿Me cortarán la luz?
+  answer_template: No, el suministro es continuo. El cambio de comercializadora es un trámite administrativo. La distribuidora (la dueña de los cables) sigue siendo la misma. Solo cambia quién le factura
+    y a qué precio. El proceso tarda unos 15-20 días hábiles.
+- question: ¿Cómo interpreto los términos 'término de potencia' y 'término de energía' en mi factura?
+  answer_template: 'Piense en ''potencia'' como el tamaño de la tubería: paga un precio fijo por mes por tenerla disponible (€/kW mes). ''Energía'' es el agua que pasa por ella: paga por lo que consume
+    (€/kWh). Optimizar la potencia suele ser la forma más directa de ahorrar.'
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un servicio o compara con otra oferta.
+  script: Entiendo que el precio es clave. En lugar de un precio genérico, ¿me permite hacerle un par de preguntas sobre su consumo y factura actual? Así podré calcularle un ahorro personalizado y real.
+    Muchas ofertas baratas luego se encarecen por no ajustar bien la potencia o la tarifa a su caso.
+  goal: Evitar la comparación directa de precio sin contexto y captar datos para una propuesta de valor personalizada.
+- trigger: competitor_mention
+  situation: El cliente menciona a una compañía grande como Endesa, Iberdrola o Naturgy.
+  script: Son excelentes compañías con una gran trayectoria. Nuestra ventaja no es el tamaño, sino la especialización y el servicio personal. Nos centramos en analizar su caso concreto para encontrar el
+    ahorro real, no en venderle una tarifa estándar. Además, gestionamos todo el papeleo por usted y le damos soporte rápido, sin largas esperas en call centers.
+  goal: Reforzar la confianza reconociendo al competidor, y pivotar hacia nuestro diferencial de servicio personalizado y especializado.
+- trigger: objection_complexity
+  situation: El cliente expresa que todo el sector es muy complejo y no quiere más líos.
+  script: Le entiendo perfectamente. Por eso hemos creado un servicio donde nosotros nos encargamos de la complejidad. Usted solo nos facilita los datos una vez. Nosotros analizamos, le explicamos en lenguaje
+    claro sus opciones y gestionamos los cambios. Imagine tener un asesor energético siempre disponible, sin letra pequeña.
+  goal: Transformar la percepción de complejidad en una promesa de simplicidad y gestión integral por nuestra parte.
+- trigger: initial_contact
+  situation: Primer contacto con un cliente potencial que ha mostrado interés en ahorrar energía.
+  script: Hola [Nombre], me alegro de conectar con usted. Somos especialistas en ayudar a hogares y pymes en España a entender y reducir su factura de luz y gas. Para empezar, ¿podría decirme aproximadamente
+    cuánto paga al mes en su factura de electricidad? Con eso ya puedo darle una primera idea de si podemos ayudarle a ahorrar.
+  goal: Establecer credibilidad, centrar la conversación en el ahorro y captar un dato cuantificable inicial (gasto mensual) para avanzar.
+competitors:
+- name: Endesa
+  positioning: Líder del mercado, comercializadora histórica con amplia base de clientes.
+  strengths:
+  - Reconocimiento de marca
+  - Amplia red de oficinas
+  - Portafolio completo de energía y servicios
+  weaknesses:
+  - Servicio al cliente impersonal
+  - Tiempos de respuesta lentos
+  - Poca flexibilidad en tarifas para nichos
+  our_differentiation: Asesoramiento personalizado y proactivo, no solo venta. Nos convertimos en su gestor energético, revisando periódicamente su contrato para asegurar el mejor precio.
+- name: Iberdrola
+  positioning: Energética global con fuerte apuesta por renovables y digitalización.
+  strengths:
+  - Imagen verde y innovadora
+  - Inversión en redes inteligentes
+  - Soluciones para movilidad eléctrica
+  weaknesses:
+  - Enfoque en clientes grandes
+  - Complejidad para el pequeño consumidor
+  - Precios no siempre competitivos
+  our_differentiation: Enfoque 100% en el cliente residencial y pyme. Traducimos la innovación del sector en ahorros tangibles y comprensibles para su día a día.
+- name: Holaluz
+  positioning: Comercializadora 100% renovable con modelo digital y precios indexados.
+  strengths:
+  - Modelo digital ágil
+  - Comunicación clara y moderna
+  - Compromiso con energía verde
+  weaknesses:
+  - Menor experiencia en gestión de incidencias complejas
+  - Oferta menos personalizada para perfiles de alto consumo
+  - Dependencia total de canales digitales
+  our_differentiation: Combinamos la agilidad digital con el soporte humano de un asesor especializado. No solo ofrecemos verde, sino la combinación óptima de origen sostenible, precio y servicio.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 99
+  roi_examples:
+  - scenario: Optimización de potencia y cambio a tarifa indexada para una pyme con contrato en mercado libre antiguo.
+    monthly_cost: 50
+    monthly_savings: 120
+    payback_months: 1
+  - scenario: Estudio de viabilidad y gestión de subvenciones para una instalación fotovoltaica residencial de 3kW.
+    monthly_cost: 150
+    monthly_savings: 230
+    payback_months: 18
+  value_anchors:
+  - El 80% de los clientes reducen su factura entre un 15% y un 25% el primer mes.
+  - Gestionamos más de 500 trámites al mes con las distribuidoras, ahorrando una media de 3 horas de gestión a cada cliente.
+  - Nuestros clientes tienen un asesor dedicado que revisa su contrato cada 6 meses sin coste adicional.
+market_context:
+  market_size: Mercado liberalizado de ~28 millones de puntos de suministro eléctrico
+  growth_rate: 2-3% anual, impulsado por electrificación y autoconsumo
+  key_trends:
+  - Crecimiento explosivo del autoconsumo fotovoltaico residencial e industrial.
+  - Digitalización y telemedida obligatoria (contadores inteligentes).
+  - Aparición de comunidades energéticas locales.
+  - Mayor sensibilidad del consumidor hacia el origen verde de la energía.
+  - Regulación cambiante (nuevo Bono Social, impuestos a energéticas).
+  seasonality:
+    high:
+    - Enero-Febrero (facturas de invierno)
+    - Julio-Agosto (refrigeración)
+    - Octubre (cambio a tarifa de invierno)
+    low:
+    - Abril-Mayo
+    - Septiembre
+typical_objections:
+- objection: Estoy atado por una cláusula de permanencia con mi actual compañía.
+  response: Comprendo. Primero, revisemos su contrato actual. Muchas permanencias tienen excepciones por subida de precio o pueden tener una penalización menor de lo esperado. Le ayudo a calcular si el
+    ahorro futuro compensa la penalización. A menudo, sí.
+- objection: No quiero más contratos ni complicaciones.
+  response: Nuestro servicio está diseñado para simplificar, no para añadir trámites. Nosotros nos encargamos de todo con su compañía actual o nueva. Usted firma una sola vez la autorización y nosotros
+    hacemos el resto. Es un cambio a mejor, sin trabajo extra para usted.
+- objection: He probado comparadores web y siempre acabo pagando más de lo esperado.
+  response: 'Los comparadores online suelen trabajar con precios genéricos. Nosotros vamos más allá: analizamos su historial real, no solo la potencia. Detectamos ineficiencias y le asesoramos sobre hábitos
+    o mejoras en su instalación. No es solo comparar, es optimizar.'
+- objection: No confío en que una empresa pequeña pueda gestionar mejor que las grandes.
+  response: Precisamente por ser más pequeños, nuestro éxito depende de cada cliente. No puede permitirse un mal servicio. Nuestros asesores son expertos del sector y tienen más tiempo para dedicarle a
+    su caso. La prueba es que nuestra tasa de satisfacción supera el 95%.
+meta:
+  id: energy
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- energy
+- solar
+- renewable
+- power
+- utilities
+_extends: _base/energy

@@ -1,0 +1,263 @@
+pain_points:
+- description: Alta tasa de siniestralidad y fraude en reclamaciones, lo que aumenta
+    costos operativos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la verificación inicial de reclamos,
+    filtrando inconsistencias con preguntas estructuradas.
+- description: Baja retención de clientes debido a procesos de renovación manuales
+    y poco personalizados.
+  severity: medium
+  solution_hint: Implementar recordatorios automatizados de renovación y ofertas personalizadas
+    vía llamadas proactivas.
+- description: Dificultad para contactar a clientes para actualizaciones de pólizas
+    o cobranza.
+  severity: medium
+  solution_hint: El agente realiza llamadas masivas automatizadas para confirmar datos,
+    recordar pagos y ofrecer asesoría.
+- description: Saturación en líneas de atención al cliente durante catástrofes o eventos
+    masivos.
+  severity: high
+  solution_hint: Derivar consultas básicas y toma de datos de siniestros al agente
+    de IA, liberando agentes humanos para casos complejos.
+- description: Inflación y volatilidad económica que complica el cálculo y ajuste
+    de primas.
+  severity: high
+  solution_hint: El agente puede comunicar ajustes de forma clara y automatizada,
+    explicando los motivos vinculados a índices oficiales.
+- description: Procesos de suscripción lentos por falta de integración digital con
+    bases de datos externas.
+  severity: medium
+  solution_hint: Integrar el agente con APIs para consultar datos de forma rápida
+    y pre-calificar riesgos durante la llamada.
+- description: Desconfianza del cliente hacia procesos digitales y preferencia por
+    el trato humano en asuntos complejos.
+  severity: low
+  solution_hint: El agente deriva conversaciones complejas a un asesor humano de manera
+    fluida, generando confianza inicial.
+typical_services:
+- Seguro de Automóviles (Cobertura Total / Terceros Completos)
+- Seguro de Hogar (Incendio, Robo, Responsabilidad Civil)
+- Seguro de Vida (Tradicional / Colectivo)
+- Seguro de Accidentes Personales
+- ART (Aseguradora de Riesgos del Trabajo)
+- Seguro de Salud (Medicina Prepaga / Complementario)
+- Seguro de Caución (Fianzas)
+- Seguro para Pymes (Incendio, Robo, Cristales)
+- Seguro de Responsabilidad Civil Profesional
+- Seguro de Transporte (Mercaderías)
+recommended_functions:
+- name: Toma de reclamos inicial
+  priority: high
+  reason: Agiliza el proceso más crítico post-siniestro, capturando datos esenciales
+    24/7.
+- name: Recordatorio de renovación y cobranza
+  priority: high
+  reason: Mejora directamente la retención y el cash flow, crucial en un contexto
+    inflacionario.
+- name: Ventas cruzadas y upselling
+  priority: medium
+  reason: Aprovecha el contacto para identificar necesidades no cubiertas y aumentar
+    el valor promedio de póliza.
+- name: Confirmación de citas para inspecciones o asesorías
+  priority: medium
+  reason: Optimiza la logística de los peritos y asesores, reduciendo costos de coordinación.
+- name: Encuestas de satisfacción post-atencion
+  priority: low
+  reason: Genera datos valiosos para mejorar el servicio con bajo costo operativo.
+- name: Pre-calificación para seguros de vida o salud
+  priority: medium
+  reason: Acelera el proceso de suscripción filtrando clientes que no cumplen condiciones
+    básicas.
+typical_integrations:
+- name: Sistema de Gestión de Aseguradoras (Core Insurance)
+  examples:
+  - Tango Gestión
+  - SISAP
+  - sistemas propietarios
+  priority: high
+- name: CRM
+  examples:
+  - Xubio
+  - Salesforce
+  - VTEX
+  priority: high
+- name: Plataforma de Pagos y Cobranzas
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - Prisma Medios de Pago
+  priority: medium
+- name: Sistemas de Peritaje y Siniestros
+  examples:
+  - ClickAR
+  - sistemas internos
+  priority: medium
+- name: Bases de datos externas (DNI, registros automotor)
+  examples:
+  - Sistemas de organismos oficiales
+  priority: low
+industry_faq:
+- question: ¿Cómo hago un reclamo si tengo un accidente?
+  answer_template: Para iniciar el reclamo, necesito algunos datos. ¿Podría proporcionarme
+    el número de póliza y contarme brevemente qué sucedió? Le guiaré por los primeros
+    pasos y le conectaré con un perito si es necesario.
+- question: ¿Mi póliza cubre daños por granizo/inundación?
+  answer_template: La cobertura por fenómenos naturales depende del tipo de póliza
+    que tenga contratada. Para confirmarlo, puedo consultar su cobertura. ¿Me autoriza
+    a acceder a sus datos con su número de documento o póliza?
+- question: ¿Puedo pagar la prima en cuotas?
+  answer_template: Sí, generalmente ofrecemos planes de pago. Para ver las opciones
+    disponibles para su póliza y los posibles intereses, necesito localizar su contrato.
+    ¿Tiene a mano su número de cliente?
+- question: ¿Qué documentación necesito para asegurar mi auto nuevo?
+  answer_template: Necesitará la cédula verde (título) del auto, su DNI y la licencia
+    de conducir. Podemos continuar con la cotización ahora si me facilita algunos
+    datos del vehículo, como marca, modelo y año.
+- question: ¿Hay un periodo de espera para que mi seguro de salud comience a regir?
+  answer_template: Sí, los seguros de salud suelen tener un periodo de carencia para
+    ciertas prestaciones. El plazo exacto varía según el plan. Para darle información
+    precisa, ¿podría decirme qué cobertura le interesa más?
+- question: ¿Ajustan el valor de mi premio por inflación?
+  answer_template: Sí, las primas se ajustan periódicamente según índices regulatorios
+    para mantener la cobertura. Le enviaremos una notificación con el detalle antes
+    de cualquier ajuste. ¿Desea que le explique cómo se calcula el próximo ajuste?
+sales_scripts:
+- trigger: price_question
+  situation: Cuando el cliente pregunta por el precio de una cobertura básica.
+  script: 'Entiendo que el precio es una consideración clave. En lugar de dar un número
+    genérico, ¿me permite hacerle un par de preguntas para ajustar la cotización a
+    su perfil real? Así evita pagar por coberturas que no necesita. Por ejemplo, ¿para
+    qué uso principal destinaría el seguro de auto: trabajo, familiar o recreativo?'
+  goal: Calificar al cliente y derivar a una cotización personalizada, no a una guerra
+    de precios.
+- trigger: loyalty_discount_request
+  situation: Cliente pide descuento por ser cliente antiguo o por tener múltiples
+    pólizas.
+  script: Valoramos mucho su lealtad. Efectivamente, tenemos beneficios por tener
+    más de un producto con nosotros. Permítame revisar su cartera para encontrar el
+    mejor paquete y descuento disponible para usted. ¿Tiene unos segundos?
+  goal: Reforzar la lealtad y promover la venta cruzada, no solo ofrecer un descuento
+    plano.
+- trigger: competitor_mention
+  situation: El cliente menciona que tiene una oferta más barata de otra aseguradora.
+  script: Es importante comparar. Le sugiero que verifique no solo el precio, sino
+    también los límites de cobertura, los deducibles y la asistencia en ruta. Nuestra
+    fortaleza es la red de talleres y la gestión ágil de siniestros. ¿La oferta que
+    le hicieron incluye asistencia las 24 horas?
+  goal: Cambiar la conversación de precio a valor y diferenciadores de servicio.
+- trigger: post_claim_contact
+  situation: Contacto con un cliente que acaba de hacer un reclamo.
+  script: Llamo para seguir el estado de su reclamo y, ya que estamos, verificar que
+    el resto de sus coberturas estén al día. Después de un incidente, muchos clientes
+    revisan sus seguros. ¿Tiene asegurados, por ejemplo, sus otros bienes o ha considerado
+    un seguro de vida?
+  goal: Capitalizar un momento de alta relevancia para vender coberturas adicionales.
+competitors:
+- name: Sancor Seguros
+  positioning: Cooperativa líder con fuerte presencia en el interior y en seguros
+    masivos.
+  strengths:
+  - Amplia red de productores
+  - fuerte marca
+  - solidez financiera
+  weaknesses:
+  - Procesos a veces burocráticos
+  - menor agilidad digital
+  our_differentiation: Procesos digitales ágiles y atención automatizada 24/7 para
+    resolver trámites rápido.
+- name: Provincia Seguros
+  positioning: Aseguradora estatal con precios competitivos y amplia aceptación.
+  strengths:
+  - Precios bajos
+  - respaldo estatal
+  - amplia gama
+  weaknesses:
+  - Saturación en la atención
+  - lentitud en siniestros complejos
+  our_differentiation: Servicio al cliente proactivo y eficiente, con menor tiempo
+    de espera gracias a la automatización.
+- name: Mercado Libre Seguros
+  positioning: Plataforma digital de comparación y venta de seguros.
+  strengths:
+  - Experiencia 100% digital
+  - comparación fácil
+  - marca fuerte
+  weaknesses:
+  - Atención post-venta menos personalizada
+  - dependencia de las aseguradoras socias
+  our_differentiation: Combinamos la facilidad digital con un soporte humano calificado
+    al que se accede fácilmente mediante el agente de voz.
+- name: Allianz
+  positioning: Aseguradora global para segmentos corporativos y de alto valor.
+  strengths:
+  - Solidez internacional
+  - productos complejos
+  - servicio a grandes empresas
+  weaknesses:
+  - Puede ser percibida como costosa para el mercado masivo
+  our_differentiation: Llevamos un servicio personalizado y eficiente, típico de seguros
+    de alta gama, al segmento masivo y PYME.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 7000
+  roi_examples:
+  - scenario: Automatización de recordatorios de renovación para una cartera de 1000
+      pólizas.
+    monthly_cost: 150000
+    monthly_savings: 450000
+    payback_months: 1
+  - scenario: Manejo inicial del 30% de los reclamos de automóviles vía agente de
+      voz.
+    monthly_cost: 200000
+    monthly_savings: 600000
+    payback_months: 2
+  value_anchors:
+  - Reduzca la fuga de clientes en renovación hasta un 15%.
+  - Libere a sus agentes humanos para tareas de alto valor, mejorando la satisfacción.
+  - Capture reclamos 24/7, acelerando los tiempos de respuesta en momentos críticos.
+market_context:
+  market_size: Aproximadamente 1 billón de ARS en primas emitidas anuales.
+  growth_rate: 4-6% anual en términos reales, impulsado por la digitalización y seguros
+    obligatorios.
+  key_trends:
+  - Digitalización acelerada de la venta y gestión post-venta.
+  - Aumento de la demanda de seguros para bicicletas y monopatines eléctricos.
+  - Crecimiento del segmento PYME buscando coberturas integrales.
+  - Mayor foco en la experiencia del cliente y la retención.
+  seasonality:
+    high:
+    - Marzo-Abril (inicio escolar y renovaciones)
+    - Septiembre-Octubre (primavera y planificación)
+    low:
+    - Enero (vacaciones)
+    - Julio (vacaciones de invierno)
+typical_objections:
+- objection: No confío en que una máquina entienda mi problema.
+  response: Totalmente comprensible. Por eso nuestro agente está diseñado para ocuparse
+    de trámites simples y, ante cualquier duda compleja o su preferencia, lo deriva
+    inmediatamente a un especialista humano. Es un equipo.
+- objection: Ya tengo todo automatizado en mi página web.
+  response: Excelente. Nuestro agente de voz complementa su web llegando a clientes
+    que prefieren llamar o que no completaron un formulario online. Además, puede
+    proactivar llamadas para retención, algo que una web pasiva no hace.
+- objection: Es un costo adicional en un momento económico difícil.
+  response: En realidad, es una herramienta para reducir costos y aumentar ingresos.
+    Automatizando tareas repetitivas, libera personal para vender más y evita la pérdida
+    de clientes por falta de contacto. El ROI suele verse en menos de 3 meses.
+meta:
+  id: insurance
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

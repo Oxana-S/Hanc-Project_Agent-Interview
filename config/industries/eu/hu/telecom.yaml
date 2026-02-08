@@ -1,0 +1,238 @@
+pain_points:
+- description: A magas ügyfélforgalom kezelése hosszú várakozási időket okoz, amely
+    az ügyfélteljesítményt csökkenti.
+  severity: high
+  solution_hint: A hangügynök automatikus híváskezeléssel csökkentheti a várakozást
+    és szabadíthatja fel az ügyfélszolgálatot.
+- description: Hullámzó hívásmennyiség, ami nehéz tervezést és erőforrás-allokációt
+    jelent.
+  severity: medium
+  solution_hint: Intelligens hívásirányítás és előrejelzés a hívásmennyiség alapján,
+    optimalizálva a személyzet beosztását.
+- description: Folyamatosan változó szabályozási környezet és GDPR megfelelőségi követelmények.
+  severity: high
+  solution_hint: A hangügynök automatikusan naplózza és kezeli a GDPR-kompatibilis
+    adatfeldolgozási nyilatkozatokat a hívások során.
+- description: Magas költségű, ismétlődő kérdések kezelése, mint például számlainformációk
+    vagy csomagváltoztatások.
+  severity: medium
+  solution_hint: A hangügynök kiszolgálhatja az ismétlődő lekérdezéseket 0/24, csökkentve
+    a kezelési költségeket.
+- description: Versenyképes árak kialakítása a komplex előfizetői csomagok mellett.
+  severity: medium
+  solution_hint: A hangügynök személyre szabott ajánlatokat és árkomparációt tud nyújtani
+    a valós idejű piaci adatok alapján.
+- description: Szolgáltatáshiányok és hálózati problémák gyors és hatékony kommunikációja
+    az ügyfelekkel.
+  severity: high
+  solution_hint: Proaktív értesítések küldése hangügynökön keresztül a karbantartásokról
+    és a problémamegoldás előrehaladásáról.
+typical_services:
+- Mobil előfizetések
+- Otthoni internet (vezetékes és optikai)
+- IPTV és televíziós csomagok
+- Vállalati vonalas és VoIP megoldások
+- Adatkapcsolatok és dedikált vonalak
+- Felhőalapú telefonközpont (cloud PBX)
+- Rendszeres ügyfélszolgálat és műszaki támogatás
+- Számlakezelés és fizetési lehetőségek
+- Szolgáltatáscsomagok testreszabása
+- Mobileszközök és készülékek értékesítése
+recommended_functions:
+- name: Automatikus hívásfogadás és ügyintézés
+  priority: high
+  reason: Alapvető a hosszú várakozási sorok csökkentésére és az első ügyfélszintű
+    támogatás biztosítására.
+- name: Proaktív szolgáltatásértesítések
+  priority: high
+  reason: Növeli az ügyfélelégültséget a karbantartások, hálózati frissítések és számlaemlékeztetők
+    automatikus kommunikációjával.
+- name: Személyre szabott ajánlatkészítés
+  priority: medium
+  reason: Segít a versenyképes piaci pozíció megtartásában a felhasználói preferenciák
+    alapján történő ajánlatokkal.
+- name: Multinyelvű támogatás
+  priority: medium
+  reason: Fontos a nemzetközi ügyfelek és a magyarországi nemzeti kisebbségek kiszolgálásához.
+- name: Érzelmi hangulatfelismerés
+  priority: low
+  reason: Segít az elégedetlen ügyfelek korai azonosításában és a problémák eszkalálásában
+    a megfelelő csatornákon.
+- name: Számla- és fizetési lekérdezés
+  priority: high
+  reason: A leggyakoribb ismétlődő hívások egyike, amely jelentős költségmegtakarítást
+    jelent.
+typical_integrations:
+- name: CRM rendszer
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  - további helyi megoldások
+  priority: high
+- name: Számlázó rendszer
+  examples:
+  - SAP
+  - Oracle
+  - helyi számlázó szoftverek
+  priority: high
+- name: Problémakezelő (ticketing) rendszer
+  examples:
+  - Zendesk
+  - Jira Service Management
+  - helyi alternatívák
+  priority: medium
+- name: Telefonközpont (PBX)
+  examples:
+  - Avaya
+  - Cisco
+  - cloud alapú PBX megoldások
+  priority: medium
+- name: Hálózatfigyelő rendszer
+  examples:
+  - Nagios
+  - PRTG
+  - helyi fejlesztésű monitorozó eszközök
+  priority: low
+industry_faq:
+- question: Mikor lesz helyreállítva az internet szolgáltatásom a területemen?
+  answer_template: Tisztelt Ügyfelünk, jelenleg már dolgozunk a hiba elhárításán.
+    A várható helyreállítás ideje [IDŐ]. Köszönjük türelmét és megértését.
+- question: Hogyan változtathatom meg a csomagomat?
+  answer_template: A csomagváltoztatáshoz kérjük, adja meg az előfizetői azonosítóját.
+    Ezután felkínáljuk az Ön számára elérhető alternatívákat a jelenlegi szerződési
+    feltételei alapján.
+- question: Mikor érkezik meg a havi számlám?
+  answer_template: A számlákat általában a hónap első hetében küldjük ki elektronikus
+    úton. Ha még nem kapta meg, ellenőrizze a 'Levélszemét' mappáját, vagy lépjen
+    kapcsolatba velünk a számlaadatok egyeztetéséhez.
+- question: Elérhető-e a szolgáltatásom külföldön?
+  answer_template: Igen, a roaming szolgáltatásunk aktív. Ajánljuk, hogy a külföldi
+    használat előtt tekintse meg a naprakész roaming díjszabásunkat a weboldalunkon,
+    hogy elkerülje a váratlan költségeket.
+- question: Mit tehetek, ha a hálózati sebesség lassabb, mint a szerződésben szereplő?
+  answer_template: Először is javasoljuk egy egyszerű újraindítást a modemnek. Ha
+    a probléma továbbra is fennáll, kérjük, jelezze nekünk, hogy műszaki csapatunk
+    elindíthassa a hibaelhárítást a kapcsolatában.
+- question: Hogyan mondhatom fel a szerződésemet?
+  answer_template: A szerződésfelmondáshoz kérjük, írjon nekünk a [CÍM] címre, vagy
+    hívja ügyfélszolgálatunkat. Fontos, hogy a szerződés lejárata előtt legalább 30
+    nappal tegye meg a felmondást a szerződéses kötelezettségek elkerülése érdekében.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy potenciális ügyfél árakat kér mobilcsomagokkal kapcsolatban.
+  script: 'Köszönöm a kérdését! Jelenleg kiemelt ajánlatunk van az új ügyfelek számára:
+    korlátlan beszélgetés és 20 GB mobilinternet csak [ÁR] HUF/hó. Ezen felül az első
+    3 hónap 50%-os kedvezménnyel jár. Szeretné részletesebben ismertetni a feltételeket?'
+  goal: Az ügyfél figyelmének megragadása egy versenyképes bevezető ajánlattal, és
+    a részletesebb tárgyalás megkezdése.
+- trigger: service_outage
+  situation: Amikor egy meglévő ügyfél szolgáltatáshiány miatt panaszkodik.
+  script: Elnézést a kellemetlenségért, hogy szolgáltatásunk megszakadt. Már jeleztük
+    a problémát a műszaki csapatunknak, akik a lehető leghamarabb dolgoznak a helyreállításon.
+    A rendszerünk szerint a hiba [BECSLÉS] percen belül elhárul. Köszönjük a türelmét,
+    és felajánljuk, hogy értesítjük a helyreállításról.
+  goal: Az ügyfél nyugtatása és bizalomának visszaállítása gyors, pontos információval
+    és proaktív kommunikációval.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél egy versenytárs árát vagy szolgáltatását említi.
+  script: Értem, hogy figyelembe veszi a [VERSENYTÁRS] ajánlatát is. Nálunk azonban
+    nemcsak az ár a versenyképes, hanem a 0/24-es magyar nyelvű ügyfélszolgálat és
+    a garantált 99.9%-os hálózat elérhetőség is. Ezen felül rugalmasan testreszabhatja
+    a csomagját. Szeretne egy személyre szabott összehasonlítást?
+  goal: Az árverseny kiterjesztése az érték-alapú értékesítésre, kiemelve a különböző
+    előnyöket, és egyedi ajánlat felé terelni a beszélgetést.
+- trigger: contract_renewal
+  situation: Amikor egy meglévő ügyfél szerződés lejáratáról érdeklődik.
+  script: 'Örülök, hogy felhozta a szerződésének megújítását! Mint hűséges ügyfelünk,
+    különleges ajánlatunk van: megtarthatja jelenlegi kedvezményeit, és ingyenesen
+    frissítheti a mobilkészülékét is egy új 24 hónapos szerződéssel. Szeretné részletezni
+    a lehetőségeket?'
+  goal: Az ügyfél megtartása és a szerződés hosszabbítása egy értéknövelő ajánlattal,
+    amely a hűséget jutalmazza.
+competitors:
+- name: Telekom Hungary
+  positioning: Piacvezető, legnagyobb lefedettségű hálózattal.
+  strengths:
+  - Széles körű infrastruktúra
+  - Erős márkanév
+  - Átfogó vállalati megoldások
+  weaknesses:
+  - Magasabb árak
+  - Lassabb ügyfélsegédlet egyes panaszok esetén
+  our_differentiation: Gyorsabb, személyre szabottabb ügyfélszolgálat és versenyképesebb
+    árazás a modern technológia felhasználásával.
+- name: Vodafone Hungary
+  positioning: Erős innovátor, kiemelt hangsúly a mobilcsomagokon és nemzetközi szolgáltatásokon.
+  strengths:
+  - Erős nemzetközi partnerek
+  - Innovatív digitális szolgáltatások
+  - Jó minőségű mobilhálózat
+  weaknesses:
+  - Korlátozabb vezetékes lefedettség
+  - Komplex számlázási rendszer
+  our_differentiation: Egyszerűbb és átláthatóbb számlázás, valamint jobb otthoni
+    internet csomagok a helyi igényekre fókuszálva.
+- name: Digi
+  positioning: Diszkont árkategóriás játékos, agresszív árazással.
+  strengths:
+  - Nagyon versenyképes árak
+  - Egyszerű, átlátható csomagok
+  - Gyors növekedés
+  weaknesses:
+  - Kisebb hálózati lefedettség, különösen vidéken
+  - Korlátozott prémium szolgáltatások
+  our_differentiation: 'Kiegyensúlyozott értékajánlat: a jó ár mellett megbízhatóbb
+    hálózat és átfogóbb ügyféltámogatás.'
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 2990
+  - 14990
+  entry_point: 4990
+  roi_examples:
+  - scenario: Egy kisvállalat 10 munkavonal automatikus kezelése hangügynökkel
+    monthly_cost: 25000
+    monthly_savings: 75000
+    payback_months: 1
+  value_anchors:
+  - Átlagosan 40%-kal csökkentheti az ügyfélszolgálati költségeket.
+  - Az első hívés megoldási arányt 30%-kal növelheti.
+  - Az ügyfél elégedettség 20%-os növekedése 6 hónapon belül.
+market_context:
+  market_size: Becslések szerint ~1200 milliárd HUF éves forgalom
+  growth_rate: ~2-3% éves növekedés
+  key_trends:
+  - Erős felhőalapú szolgáltatások (pl. Cloud PBX) iránti kereslet növekedése.
+  - Az 5G hálózatok kiépítésének és a hozzá kapcsolódó szolgáltatásoknak a térnyerése.
+  - A converge (tv-internet-mobil) csomagok egyre nagyobb népszerűsége.
+  - A mesterséges intelligencia alapú ügyfélszolgálati eszközök elterjedése.
+  seasonality:
+    high:
+    - szeptember
+    - október
+    - január
+    low:
+    - július
+    - augusztus
+typical_objections:
+- objection: Túl drága lenne a számunkra.
+  response: Teljesen megértem. Azonban, ha megnézzük, hogy a hangügynök hosszú távon
+    mennyi időt és pénzt takarít meg az Ön ügyfélszolgálati csapatának, a megtérülés
+    gyors és jelentős. Készíthetünk egy személyre szabott költség-megtakarítási elemzést
+    is.
+- objection: Nem bízunk a technológiai megoldásokban, inkább az emberi kapcsolatot
+    részesítjük előnyben.
+meta:
+  id: telecom
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

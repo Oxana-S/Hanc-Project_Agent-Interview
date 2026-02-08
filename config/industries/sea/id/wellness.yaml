@@ -1,0 +1,216 @@
+aliases:
+- wellness
+- spa
+- pijat
+- salon kecantikan
+- klinik kecantikan
+- manicure
+- pedicure
+- salon rambut
+- barbershop
+- fitness
+- yoga
+- pilates
+- studio kecantikan
+- estetika
+- perawatan tubuh
+- relaksasi
+competitors:
+- name: Martha Tilaar Salon
+  positioning: Salon kecantikan tradisional dengan produk alami
+  strengths:
+  - Merek terkenal dan terpercaya
+  - Produk berbahan alami Indonesia
+  - Jaringan luas di seluruh Indonesia
+  weaknesses:
+  - Harga relatif tinggi
+  - Teknologi booking kurang maju
+  our_differentiation: Kami menawarkan booking otomatis 24/7 dan harga yang lebih kompetitif
+- name: Celebrity Fitness
+  positioning: Pusat kebugaran premium dengan fasilitas lengkap
+  strengths:
+  - Fasilitas modern dan lengkap
+  - Lokasi di mall-mall besar
+  - Program fitness beragam
+  weaknesses:
+  - Biaya keanggotaan mahal
+  - Sering ramai pada jam puncak
+  our_differentiation: Sistem booking cerdas untuk menghindari keramaian dan paket fleksibel
+- name: Body Fit
+  positioning: Studio fitness dengan harga terjangkau
+  strengths:
+  - Harga terjangkau untuk masyarakat umum
+  - Kelas grup yang variatif
+  - Lokasi strategis di perkotaan
+  weaknesses:
+  - Fasilitas terbatas
+  - Layanan personal kurang
+  our_differentiation: Layanan pelanggan personal melalui agen suara AI dan reminder otomatis
+industry_faq:
+- answer_template: Harga tergantung jenis layanan dan durasi. Pijat tradisional mulai dari Rp 100.000. Bisa saya jelaskan lebih detail?
+  question: Berapa harga pijat?
+- answer_template: Sesi standar biasanya 60 menit. Tersedia juga pilihan ekspres 30 menit.
+  question: Berapa lama prosedurnya?
+- answer_template: Saya bisa buatkan janji sekarang. Layanan apa yang diinginkan dan untuk hari apa?
+  question: Bagaimana cara membuat janji?
+- answer_template: Ya, tentu. Sebutkan nama Anda dan waktu baru yang nyaman.
+  question: Bisa pindah janji?
+- answer_template: Kontraindikasi tergantung prosedur. Silakan konfirmasi dengan terapis sebelum sesi.
+  question: Ada pantangan atau kontraindikasi?
+- answer_template: Ya, kami buka setiap hari. Bisa dijadwalkan untuk Sabtu atau Minggu.
+  question: Apakah buka di akhir pekan?
+- answer_template: Ya, kami menerima pembayaran tunai, kartu debit/kredit, dan transfer bank.
+  question: Metode pembayaran apa yang diterima?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 10-15% per tahun
+  key_trends:
+  - Peningkatan kesadaran kesehatan dan kebugaran
+  - Permintaan layanan wellness digital dan online booking
+  - Tren perawatan alami dan tradisional Indonesia
+  market_size: Sekitar Rp 50 triliun
+  seasonality:
+    high:
+    - Liburan Natal dan Tahun Baru
+    - Bulan Ramadhan dan Idul Fitri
+    - Musim panas
+    low:
+    - Awal tahun setelah liburan
+    - Musim hujan
+meta:
+  avg_validation_score: 0.0
+  country: id
+  created_at: '2024-07-18'
+  currency: IDR
+  id: wellness
+  language: id
+  languages: []
+  last_updated: '2024-07-18'
+  phone_codes:
+  - '+62'
+  region: sea
+  tests_run: 0
+  timezone: WIB
+  version: '1.0'
+pain_points:
+- description: Klien tidak bisa menghubungi untuk membuat janji pada jam sibuk
+  severity: high
+  solution_hint: Agen suara AI untuk booking 24/7
+- description: Banyak janji yang tidak datang (no-show)
+  severity: high
+  solution_hint: Pengingat otomatis satu hari dan dua jam sebelum janji
+- description: Staf administrasi kewalahan dengan pertanyaan serupa
+  severity: medium
+  solution_hint: Jawaban otomatis untuk pertanyaan umum (FAQ)
+- description: Sulit mempromosikan promo dan penawaran khusus
+  severity: medium
+  solution_hint: Panggilan keluar dengan penawaran personal
+- description: Klien membuat janji lalu lupa
+  severity: medium
+  solution_hint: Pengingat melalui WhatsApp dan SMS
+- description: Kesulitan mengelola jadwal terapis yang berubah-ubah
+  severity: low
+  solution_hint: Integrasi dengan sistem CRM untuk update jadwal real-time
+pricing_context:
+  currency: IDR
+  entry_point: 50000
+  roi_examples:
+  - monthly_cost: 1000000
+    monthly_savings: 2500000
+    payback_months: 2
+    scenario: Pengurangan no-show dengan agen suara AI
+  typical_budget_range:
+  - 50000
+  - 500000
+  value_anchors:
+  - Booking mudah kapan saja tanpa telepon
+  - Pengingat otomatis untuk hindari no-show
+  - Layanan pelanggan 24/7
+recommended_functions:
+- name: booking
+  priority: high
+  reason: Fungsi utama - membuat janji dengan pilihan terapis dan waktu
+- name: pengingat
+  priority: high
+  reason: Mengurangi no-show hingga 5% melalui pengingat otomatis
+- name: faq
+  priority: medium
+  reason: Menjawab pertanyaan tentang harga, layanan, persiapan
+- name: pindah_janji
+  priority: medium
+  reason: Memindahkan atau membatalkan janji tanpa staf administrasi
+- name: penjualan
+  priority: low
+  reason: Menginformasikan promo dan paket langganan
+- name: konfirmasi_pembayaran
+  priority: low
+  reason: Memastikan pembayaran sebelum janji untuk mengurangi risiko
+sales_scripts:
+- goal: Meningkatkan konversi booking dengan penawaran promo
+  script: Halo, ini dari [Nama Bisnis]. Kami punya promo khusus untuk pijat tradisional hanya Rp 100.000 hari ini. Ingin saya jadwalkan?
+  situation: Saat klien bertanya tentang harga atau layanan
+  trigger: price_question
+- goal: Mengurangi no-show dengan konfirmasi ulang
+  script: Halo, ini pengingat untuk janji pijat besok pukul 15.00. Apakah masih bisa datang? Silakan konfirmasi ya.
+  situation: Sehari sebelum janji untuk konfirmasi kehadiran
+  trigger: reminder_call
+- goal: Mempromosikan paket langganan untuk retensi pelanggan
+  script: Untuk pengunjung rutin, kami punya paket bulanan dengan diskon 20%. Tertarik untuk info lebih lanjut?
+  situation: Setelah klien menyelesaikan layanan pertama
+  trigger: post_service_followup
+success_benchmarks:
+  avg_call_duration_seconds: 120
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Pengurangan no-show hingga 5%
+  - Booking melalui agen — 40% dari semua booking
+  - Waktu rata-rata booking < 2 menit
+  - Kepuasan pelanggan > 4.5/5
+typical_integrations:
+- examples:
+  - Moka
+  - Qlapa
+  - Sribu
+  name: CRM/Sistem Booking
+  priority: high
+  reason: Jadwal terapis, reservasi slot
+- examples:
+  - WhatsApp
+  - Telegram
+  name: Aplikasi Pesan
+  priority: high
+  reason: Pengingat dan konfirmasi booking
+- examples:
+  - Twilio
+  - Nexmo
+  name: SMS
+  priority: medium
+  reason: SMS pengingat untuk klien tanpa aplikasi pesan
+- examples:
+  - Telkomsel
+  - Indosat
+  name: Telepon
+  priority: medium
+  reason: Penanganan panggilan masuk
+typical_objections:
+- objection: Terlalu mahal
+  response: Kami punya paket langganan dengan diskon hingga 20%. Mau saya jelaskan?
+- objection: Tidak ada waktu
+  response: Ada prosedur ekspres 30 menit. Juga buka sampai jam 21.00.
+- objection: Saya pikir-pikir dulu
+  response: Baiklah! Mau saya tuliskan untuk tanggal sementara, agar waktunya terjamin?
+- objection: Sudah punya tempat lain
+  response: Kami menawarkan booking mudah 24/7 dan pengingat otomatis. Coba sekali untuk pengalaman berbeda?
+typical_services:
+- Pijat (tradisional, refleksi, olahraga)
+- Manicure dan pedicure
+- Potong rambut dan styling
+- Perawatan wajah (facial)
+- SPA (mandi lulur, body scrub)
+- Waxing/epilasi
+- Sauna atau steam room
+- Program fitness dan kebugaran
+- Kelas yoga dan peregangan
+- Perawatan tubuh (body treatment)
+_extends: _base/wellness

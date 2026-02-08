@@ -1,0 +1,183 @@
+pain_points:
+- description: Complianța strictă cu reglementările legale și GDPR pentru protecția datelor pacienților.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza verificări de conformitate și oferi răspunsuri standardizate.
+- description: Managementul complex al lanțului de aprovizionare și urmărirea stocurilor.
+  severity: high
+  solution_hint: AI poate integra sisteme de inventar și oferi actualizări în timp real.
+- description: Educarea clienților despre utilizarea medicinală și reducerea stigmatului.
+  severity: medium
+  solution_hint: Agentul poate răspunde la întrebări educaționale și oferi resurse personalizate.
+- description: Procesarea plăților din cauza restricțiilor legale în industria cannabisului.
+  severity: medium
+  solution_hint: AI poate ghida clienții prin opțiuni de plată sigure și conforme.
+- description: Marketing limitat din cauza reglementărilor publicitare.
+  severity: medium
+  solution_hint: Agentul poate folosi abordări de marketing prin conținut educațional.
+- description: Controlul calității și testarea produselor pentru a respecta standardele.
+  severity: high
+  solution_hint: AI poate automatiza rapoarte de calitate și notificări.
+typical_services:
+- Cultivarea cannabisului medicinal
+- Distribuția produselor către farmacii
+- Consiliere medicală și prescripții
+- Testarea și controlul calității produselor
+- Asistență în obținerea autorizațiilor legale
+- Vânzarea de echipamente pentru cultivare
+- Servicii de logistică și depozitare
+- Educație și training pentru profesioniști
+- Consultanță în conformitate GDPR
+- Asigurări pentru riscuri specifice industriei
+recommended_functions:
+- name: Răspunsuri automate la FAQ-uri
+  priority: high
+  reason: Reduceți presiunea pe echipa de suport și oferiți informații rapide clienților.
+- name: Programare de consultații medicale
+  priority: high
+  reason: Simplifică procesul pentru pacienți și crește accesibilitatea.
+- name: Asistență pentru comenzile online
+  priority: medium
+  reason: Îmbunătățește experiența de cumpărare și reduce erorile.
+- name: Verificarea stocului în timp real
+  priority: medium
+  reason: Ajută la gestionarea aprovizionării și evită indisponibilitățile.
+- name: Suport pentru conformitatea GDPR
+  priority: high
+  reason: Asigură respectarea reglementărilor și protejează datele sensibile.
+- name: Educație despre produse și efecte
+  priority: medium
+  reason: Crește încrederea clienților și reduce obiecțiile.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - Odoo
+  priority: high
+- name: Sisteme CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  - Pipedrive
+  priority: high
+- name: Sisteme de inventar
+  examples:
+  - Zoho Inventory
+  - TradeGecko
+  - Lightspeed
+  priority: medium
+- name: Platforme de plată
+  examples:
+  - PayU
+  - Netopia
+  - MobilPay
+  priority: medium
+- name: Sisteme de conformitate GDPR
+  examples:
+  - OneTrust
+  - TrustArc
+  - GDPR365
+  priority: high
+industry_faq:
+- question: Este legal cannabisul medicinal în România?
+  answer_template: Da, cannabisul medicinal este legal cu prescripție medicală, în conformitate cu legile românești și UE.
+- question: Cum pot obține o prescripție pentru cannabis medicinal?
+  answer_template: Puteți consulta un medic specializat care vă poate evalua și emite o prescripție în baza nevoilor dumneavoastră medicale.
+- question: Care sunt efectele secundare ale cannabisului medicinal?
+  answer_template: Efectele variază în funcție de individ și doză; vă recomandăm să discutați cu medicul dumneavoastră pentru informații personalizate.
+- question: Unde pot cumpăra produse din cannabis medicinal?
+  answer_template: Produsele sunt disponibile în farmacii autorizate sau prin distribuitori certificați; vă putem ajuta să găsiți puncte de vânzare.
+- question: Cât costă tratamentul cu cannabis medicinal?
+  answer_template: Prețurile depind de produs și doză; oferim consultanță pentru a găsi opțiuni accesibile în bugetul dumneavoastră.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri.
+  script: Bună ziua! Prețurile pentru cannabis medicinal încep de la 200 RON/lună, în funcție de tratament. Vă pot ajuta să alegeți o opțiune potrivită bugetului dumneavoastră.
+  goal: Să oferim claritate și să inițiem o discuție despre valoare.
+- trigger: interest_in_products
+  situation: Când un client arată interes pentru produse.
+  script: Vă mulțumim pentru interes! Avem o gamă de produse certificate, inclusiv uleiuri și capsule. Doriți să vă programez o consultație pentru a afla mai multe?
+  goal: Să convertim interesul în acțiune prin programare.
+- trigger: concern_about_legality
+  situation: Când un client este îngrijorat de aspectele legale.
+  script: Înțeleg preocupările dumneavoastră. Cannabisul medicinal este complet legal în România cu prescripție, și respectăm toate reglementările GDPR pentru protecția dumneavoastră.
+  goal: Să construim încredere și să alinie obiecțiile.
+competitors:
+- name: Cannabis Medical România
+  positioning: Lider pe piața locală a cannabisului medicinal.
+  strengths:
+  - Rețea largă de farmacii
+  - Experiență în conformitate
+  weaknesses:
+  - Prețuri ridicate
+  - Suport limitat online
+  our_differentiation: Oferim asistență vocală AI pentru accesibilitate mai bună și prețuri competitive.
+- name: Green Leaf EU
+  positioning: Distribuitor european cu accent pe calitate.
+  strengths:
+  - Produse de înaltă calitate
+  - Logistică eficientă
+  weaknesses:
+  - Prezență redusă în România
+  - Servicii limitate în limba română
+  our_differentiation: Suntem localizați în România, cu suport complet în română și integrare AI.
+- name: MedCan Services
+  positioning: Furnizor de servicii de consultanță și educație.
+  strengths:
+  - Expertiză în educație medicală
+  - Relații puternice cu medici
+  weaknesses:
+  - Gamă redusă de produse
+  - Costuri mari pentru clienți
+  our_differentiation: Combinăm produse cu tehnologie AI pentru o experiență completă și eficientă.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 200
+  roi_examples:
+  - scenario: Automatizarea suportului clienți pentru o farmacie
+    monthly_cost: 500
+    monthly_savings: 1000
+    payback_months: 2
+  value_anchors:
+  - Reducerea costurilor de conformitate cu 30%
+  - Creșterea satisfacției clienților cu 40%
+  - Optimizarea stocurilor pentru a evita pierderi
+market_context:
+  market_size: Estimare de 50 milioane RON în 2023
+  growth_rate: 15% anual
+  key_trends:
+  - Creșterea acceptării cannabisului medicinal
+  - Digitalizarea serviciilor medicale
+  - Reglementări mai stricte pentru calitate
+  seasonality:
+    high:
+    - Toamna
+    - Iarna din cauza condițiilor medicale
+    low:
+    - Vara când cererea scade ușor
+typical_objections:
+- objection: Prețul este prea mare pentru bugetul meu.
+  response: Înțeleg, dar investiția în sănătate poate reduce costurile pe termen lung; vă pot oferi opțiuni personalizate.
+- objection: Nu sunt sigur dacă este legal.
+  response: Este complet legal cu prescripție, și vă oferim toate documentele necesare pentru liniște.
+- objection: Mă tem de efectele secundare.
+  response: Discutăm cu medicii noștri pentru a vă ghida spre produse sigure și doze adecvate.
+- objection: Am încercat alte produse care nu au funcționat.
+  response: Fiecare persoană reacționează diferit; cu suportul nostru AI, putem găsi o soluție adaptată nevoilor dumneavoastră.
+meta:
+  id: cannabis
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- cannabis
+- dispensary
+- marijuana
+- CBD
+_extends: _base/cannabis

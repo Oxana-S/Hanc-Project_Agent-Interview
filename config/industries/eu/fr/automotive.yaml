@@ -1,0 +1,274 @@
+aliases:
+- automobile
+- garage
+- concessionnaire
+- atelier de réparation
+- entretien auto
+- réparation voiture
+- service après-vente
+- contrôle technique
+- montage pneus
+- vidange
+- carrosserie
+- mécanique
+- diagnostic auto
+- vente voiture
+- tuning
+- detailing
+competitors:
+- name: Norauto
+  positioning: Leader national en entretien et réparation automobile
+  strengths:
+  - Réseau étendu de centres auto
+  - Large gamme de services et pièces
+  - Forte notoriété de marque
+  weaknesses:
+  - Prix parfois plus élevés
+  - Attente fréquente en atelier
+  our_differentiation: Service client personnalisé avec prise de rendez-vous rapide
+    et assistance vocale automatisée
+- name: Feu Vert
+  positioning: Spécialiste entretien, pneus et accessoires auto
+  strengths:
+  - Offres promotionnelles régulières
+  - Large réseau national
+  - Services rapides
+  weaknesses:
+  - Moins d’expertise en réparation complexe
+  - Moins centré sur la vente de véhicules neufs
+  our_differentiation: Solutions digitales intégrées pour suivi en temps réel et gestion
+    simplifiée des rendez-vous
+- name: Midas
+  positioning: Réparateur automobile indépendant reconnu
+  strengths:
+  - Expertise technique reconnue
+  - Garantie sur les réparations
+  - Service client disponible
+  weaknesses:
+  - Moins de points de service que les grands réseaux
+  - Tarifs parfois perçus comme élevés
+  our_differentiation: Automatisation des réponses aux questions fréquentes et optimisation
+    de la gestion des interventions
+- name: Euromaster
+  positioning: Spécialiste du pneu et de l’entretien rapide
+  strengths:
+  - Spécialisation pneus et services rapides
+  - Réseau national
+  - Partenariats avec grands groupes
+  weaknesses:
+  - Moins de services complexes (moteur, carrosserie)
+  - Moins présent dans la vente de véhicules
+  our_differentiation: Interface vocale multicanale pour prise de rendez-vous et suivi
+    personnalisé
+industry_faq:
+- question: Quel est le prix moyen d'une vidange chez vous ?
+  answer_template: Le prix moyen dépend du type de véhicule et de l'huile utilisée,
+    généralement entre 70 € et 150 € avec la main-d'œuvre.
+- question: Combien de temps dure un entretien périodique ?
+  answer_template: Un entretien standard prend généralement entre 1 et 2 heures selon
+    les opérations à effectuer.
+- question: Proposez-vous des garanties sur les réparations ?
+  answer_template: Oui, toutes nos réparations sont garanties 12 mois ou 20 000 km
+    selon la première éventualité.
+- question: Puis-je prendre rendez-vous en ligne pour un contrôle technique ?
+  answer_template: Oui, vous pouvez réserver un créneau directement via notre site
+    ou par téléphone avec notre assistant vocal.
+- question: Travaillez-vous avec toutes les marques de voitures ?
+  answer_template: Oui, nous intervenons sur toutes les marques, de la citadine à
+    la voiture de luxe.
+- question: Comment puis-je suivre l’avancement de la réparation de mon véhicule ?
+  answer_template: Donnez-nous votre numéro de dossier ou immatriculation, je vous
+    informe du statut en temps réel.
+- question: Avez-vous des pièces détachées d’origine ?
+  answer_template: Oui, nous utilisons majoritairement des pièces d’origine ou homologuées,
+    selon votre préférence.
+market_context:
+  market_size: 45 milliards EUR
+  growth_rate: 2.5%
+  key_trends:
+  - Transition vers la mobilité électrique et hybrides
+  - Digitalisation du service client et gestion des rendez-vous
+  - Montée en puissance des solutions écologiques et recyclage
+  - Importance croissante du contrôle technique et conformité environnementale
+  - Développement des services de maintenance prédictive
+  seasonality:
+    high:
+    - Janvier (révisions après l’hiver)
+    - Avril (préparation saison estivale)
+    - Septembre (rentrée et contrôle technique)
+    low:
+    - Août (vacances)
+    - Décembre (fin d’année)
+pain_points:
+- description: Difficulté à gérer le volume élevé d’appels pour le suivi des réparations
+  severity: high
+  solution_hint: Système vocal automatisé pour fournir le statut en temps réel
+- description: Complexité pour les clients de prendre rendez-vous rapidement
+  severity: high
+  solution_hint: Plateforme de prise de rendez-vous en ligne avec confirmation instantanée
+- description: Répétition des questions sur les prix, délais et garanties
+  severity: medium
+  solution_hint: Réponses automatisées via FAQ vocale accessible 24/7
+- description: Oubli des rappels d’entretien périodique par les clients
+  severity: medium
+  solution_hint: Envoi automatique de rappels personnalisés par SMS et appels vocaux
+- description: Interruption fréquente des techniciens par des appels entrants
+  severity: high
+  solution_hint: Filtrage et redirection des appels grâce à un assistant vocal
+- description: Gestion difficile des demandes d’assistance urgente et dépannage
+  severity: medium
+  solution_hint: Prise en charge vocale immédiate avec transfert vers service d’urgence
+- description: Manque de visibilité sur la disponibilité des pièces détachées en stock
+  severity: medium
+  solution_hint: Consultation vocale intégrée au système de gestion des stocks
+typical_services:
+- Entretien périodique (vidange, filtres, contrôles)
+- Réparation moteur et transmission
+- Diagnostic électronique
+- Carrosserie et peinture
+- Montage et équilibrage pneus
+- Contrôle technique
+- Vente et reprise de véhicules neufs et d’occasion
+- Installation accessoires et tuning
+- Assistance dépannage et remorquage
+- Nettoyage et detailing auto
+recommended_functions:
+- name: suivi_statut_reparation
+  priority: high
+  reason: 45-55 % des appels concernent le suivi des réparations
+- name: prise_rdv
+  priority: high
+  reason: Facilite la réservation et allège la charge téléphonique
+- name: faq_tarifs_delais
+  priority: medium
+  reason: Réponses aux questions fréquentes sur prix et délais
+- name: rappels_entretien
+  priority: medium
+  reason: Augmente la fidélisation et le respect des échéances
+- name: gestion_pieces_stock
+  priority: medium
+  reason: Informe rapidement sur la disponibilité des pièces
+- name: prise_urgence
+  priority: medium
+  reason: Gère efficacement les demandes d’assistance urgente
+- name: transfert_vers_technicien
+  priority: low
+  reason: Oriente vers un expert pour les cas complexes
+typical_integrations:
+- name: ERP gestion atelier
+  examples:
+  - DIMO Maint
+  - AutoFluent
+  - EBP Auto-Entretien
+  priority: high
+- name: CRM
+  examples:
+  - Sellsy
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Téléphonie IP
+  examples:
+  - OVH Télécom
+  - Alcatel-Lucent
+  - RingCentral
+  priority: high
+- name: Messagerie et notifications
+  examples:
+  - WhatsApp Business
+  - SMS via Twilio
+  priority: medium
+- name: Agenda en ligne
+  examples:
+  - Google Agenda
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+sales_scripts:
+- trigger: demande_prix
+  situation: Le client souhaite connaître le tarif d’un service
+  script: Bonjour, merci de votre intérêt. Pour quel véhicule et service souhaitez-vous
+    un devis ? Je peux vous fournir une estimation rapide.
+  goal: Fournir une estimation et engager la conversation commerciale
+- trigger: prise_rdv
+  situation: Le client veut prendre rendez-vous
+  script: Je peux vous aider à choisir le meilleur créneau selon vos disponibilités.
+    Quel jour et quelle heure vous conviennent ?
+  goal: Finaliser la prise de rendez-vous rapidement
+- trigger: suivi_reparation
+  situation: Le client demande où en est la réparation
+  script: Pourriez-vous me donner votre numéro de dossier ou immatriculation ? Je
+    vous informe immédiatement du statut.
+  goal: Réduire l’attente et améliorer la satisfaction client
+- trigger: objection_prix
+  situation: Le client trouve le prix trop élevé
+  script: Je comprends vos préoccupations. Nos tarifs incluent des pièces d’origine
+    et le travail de techniciens certifiés. Souhaitez-vous que je détaille le devis
+    ?
+  goal: Rassurer et convaincre sur la qualité
+- trigger: demande_assistance_urgence
+  situation: Le client a une demande urgente
+  script: Je comprends l’urgence. Je vais organiser une intervention rapide ou un
+    rendez-vous prioritaire. Pouvez-vous me donner plus de détails sur la situation
+    ?
+  goal: Prendre en charge rapidement et efficacement l’urgence
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 70
+  roi_examples:
+  - scenario: Réduction des appels pour suivi réparation
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Augmentation prise de rendez-vous et réduction des annulations
+    monthly_cost: 200
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Réduction du temps passé au téléphone
+  - Amélioration de la satisfaction client
+  - Optimisation de la gestion des rendez-vous
+  - Réduction des erreurs humaines
+typical_objections:
+- objection: C’est trop cher pour un simple entretien
+  response: Nos tarifs incluent des pièces certifiées et la garantie de nos interventions.
+    Je peux vous proposer des options adaptées.
+- objection: Je ne veux pas attendre plusieurs jours pour un rendez-vous
+  response: Je peux vérifier la disponibilité la plus proche et vous proposer un créneau
+    rapidement.
+- objection: Je préfère parler directement à un technicien
+  response: Je vous mets en relation avec un expert pour répondre à toutes vos questions.
+- objection: Pourquoi choisir votre garage plutôt qu’un autre ?
+  response: Nous offrons rapidité, qualité et suivi personnalisé grâce à notre assistant
+    vocal.
+- objection: Je ne suis pas à l’aise avec la technologie vocale
+  response: Notre service est simple d’utilisation et vous pouvez toujours parler
+    à un conseiller humain.
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Automatisation de 60 % des demandes de suivi de réparation
+  - Réduction de 30 % des appels traités par le personnel
+  - Conversion en rendez-vous > 25 %
+  - Satisfaction client > 4,5/5
+meta:
+  avg_validation_score: 0.85
+  country: fr
+  created_at: '2024-06-01'
+  currency: EUR
+  id: automotive
+  language: fr
+  languages:
+  - fr
+  last_updated: '2024-06-01'
+  phone_codes:
+  - '+33'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Paris
+  version: '1.0'
+_extends: _base/automotive

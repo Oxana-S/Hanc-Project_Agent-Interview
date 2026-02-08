@@ -1,0 +1,253 @@
+pain_points:
+- description: Gestion inefficace des stocks entraînant des ruptures ou des surstocks
+  severity: high
+  solution_hint: L'agent vocal peut automatiser les appels pour vérifier les niveaux
+    de stock et générer des alertes en temps réel
+- description: Temps d'attente élevé pour le service client, surtout pendant les pics
+    saisonniers
+  severity: high
+  solution_hint: L'agent peut gérer simultanément de nombreux appels, réduire les
+    temps d'attente et offrir une assistance 24/7
+- description: Difficulté à convertir les appels entrants en ventes, manque de formation
+    des équipes
+  severity: medium
+  solution_hint: Scripts de vente automatisés et personnalisés pour guider chaque
+    conversation vers la conversion
+- description: Absence de suivi post-vente systématique, perte d'opportunités de fidélisation
+  severity: medium
+  solution_hint: Appels automatisés de suivi pour recueillir des avis et proposer
+    des produits complémentaires
+- description: Coûts salariaux élevés pour le service client, notamment le soir et
+    le week-end
+  severity: high
+  solution_hint: Automatisation des tâches répétitives pour réduire la charge et les
+    coûts des équipes internes
+- description: Concurrence féroce des géants du e-commerce, pression sur les marges
+  severity: high
+  solution_hint: Différenciation par un service client réactif et personnalisé, disponible
+    à tout moment
+typical_services:
+- Service client multilingue 24/7
+- Prise de commande par téléphone
+- Gestion des rendez-vous en magasin
+- Suivi des livraisons et relance
+- Gestion des retours et réclamations
+- Enquêtes de satisfaction post-achat
+- Rappels de paniers abandonnés par téléphone
+- Alertes promotionnelles et lancement de nouvelles collections
+- Support technique pour les produits électroniques
+- Programme de fidélité et gestion des cartes cadeaux
+recommended_functions:
+- name: Gestionnaire d'appels entrants
+  priority: high
+  reason: Réduit les temps d'attente et aiguille efficacement les clients vers le
+    bon service
+- name: Preneur de commande vocal
+  priority: high
+  reason: Convertit directement les appels en ventes sans intervention humaine
+- name: Sondage de satisfaction automatique
+  priority: medium
+  reason: Améliore l'expérience client et fournit des données précieuses sans effort
+- name: Rappel de rendez-vous et de livraison
+  priority: high
+  reason: Réduit les taux de no-show et améliore la logistique
+- name: Assistant de vente cross-selling
+  priority: medium
+  reason: Augmente le panier moyen en suggérant des produits complémentaires
+- name: Alerte de rupture de stock pro-active
+  priority: low
+  reason: Prévient les clients et propose des alternatives, préservant la satisfaction
+typical_integrations:
+- name: ERP / Logiciel de gestion
+  examples:
+  - Cegid
+  - Sage
+  - Microsoft Dynamics
+  priority: high
+- name: Plateforme e-commerce
+  examples:
+  - PrestaShop
+  - Shopify
+  - WooCommerce
+  priority: high
+- name: CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: medium
+- name: Logiciel de caisse (TPV)
+  examples:
+  - SumUp
+  - Lightspeed
+  - iZettle
+  priority: medium
+- name: Outil de livraison / Logistique
+  examples:
+  - Mondial Relay
+  - Chronopost
+  - Sendcloud
+  priority: low
+industry_faq:
+- question: Est-ce que l'agent vocal comprend l'argot ou les accents régionaux ?
+  answer_template: Notre solution utilise une technologie de pointe entraînée sur
+    des données françaises, elle comprend une large variété d'accents et s'adapte
+    au contexte conversationnel.
+- question: Comment gérez-vous la conformité RGPD avec les appels enregistrés ?
+  answer_template: Nous sommes entièrement conformes au RGPD. Les données sont chiffrées,
+    les clients sont informés de l'enregistrement, et vous contrôlez la durée de rétention.
+- question: Pouvez-vous intégrer l'agent à notre système de gestion des stocks actuel
+    ?
+  answer_template: Absolument. Nous proposons des connecteurs API pour la plupart
+    des ERP français comme Cegid ou Sage, et nous pouvons développer une intégration
+    sur mesure si nécessaire.
+- question: Que se passe-t-il si l'agent ne comprend pas une demande complexe ?
+  answer_template: L'agent est conçu pour reconnaître ses limites et transférer l'appel
+    en douceur vers un opérateur humain, sans faire répéter le client.
+- question: Est-ce que cela remplace complètement mon service client ?
+  answer_template: Non, c'est un outil d'assistance. Il gère les tâches répétitives
+    et les pics d'appels, permettant à vos équipes de se concentrer sur les cas complexes
+    et la relation client.
+- question: Quel est le délai de mise en place typique ?
+  answer_template: Pour une configuration standard avec vos flux de travail, comptez
+    2 à 4 semaines. Nous travaillons main dans la main avec vos équipes pour un déploiement
+    fluide.
+sales_scripts:
+- trigger: service_hours_question
+  situation: Le client s'inquiète de la disponibilité en dehors des horaires d'ouverture
+  script: Je comprends parfaitement. Avec notre agent vocal, vos clients peuvent appeler
+    pour un suivi de commande, prendre rendez-vous ou avoir une assistance simple,
+    24 heures sur 24 et 7 jours sur 7, même le dimanche. Cela réduit la frustration
+    et capture des ventes en dehors des horaires classiques. Souhaitez-vous voir un
+    exemple de scénario pour votre secteur ?
+  goal: Transformer une inquiétude en avantage concurrentiel et démontrer la valeur
+    ajoutée
+- trigger: cost_objection
+  situation: Le client pense que l'automatisation est trop chère
+  script: C'est une excellente question. En réalité, un agent vocal représente souvent
+    moins d'un quart du coût d'un équivalent temps plein sur une année. Il ne prend
+    jamais de congés et gère des centaines d'appels simultanément. Nous observons
+    généralement un retour sur investissement en 3 à 6 mois grâce aux ventes supplémentaires
+    et aux économies sur les charges. Puis-je vous partager une simulation basée sur
+    votre volume d'appels mensuel ?
+  goal: Quantifier le ROI et présenter la solution comme un investissement, pas une
+    dépense
+- trigger: competitor_mention
+  situation: Le client mentionne un concurrent moins cher
+  script: 'Je connais cette solution. Ils proposent effectivement un prix d''entrée
+    bas, mais leur technologie de reconnaissance vocale est souvent moins adaptée
+    au français et leur support est limité. Notre force est notre expertise sur le
+    marché français : une compréhension linguistique supérieure, des intégrations
+    locales clés comme PrestaShop ou Cegid, et un support technique basé à Paris.
+    La fiabilité pour votre image de marque a aussi une valeur, n''est-ce pas ?'
+  goal: Défendre notre prix par la qualité, l'expertise locale et la fiabilité
+competitors:
+- name: Octopush (Voxist)
+  positioning: Solution française de voix sur IP et automatisation basique
+  strengths:
+  - Prix attractif
+  - Connaissance du marché français
+  - Interface simple
+  weaknesses:
+  - IA conversationnelle limitée
+  - Intégrations peu profondes
+  - Focus sur l'envoi de messages plutôt que la réception
+  our_differentiation: Notre IA est spécialisée dans la compréhension et la gestion
+    de conversations complexes en entrée, pas seulement l'envoi de messages. Nous
+    offrons une véritable autonomie conversationnelle.
+- name: DialOnce
+  positioning: Plateforme d'expérience client omnicanale
+  strengths:
+  - Bonne couverture des canaux (chat, email, réseaux sociaux)
+  - Interface utilisateur moderne
+  weaknesses:
+  - L'agent vocal n'est qu'un module parmi d'autres, moins performant
+  - Coût total élevé pour utiliser l'ensemble de la plateforme
+  our_differentiation: Nous sommes des spécialistes de la voix. Notre technologie
+    centrale est plus robuste, plus naturelle et mieux intégrée spécifiquement pour
+    les flux téléphoniques du retail.
+- name: 'Solutions internationales génériques (ex: Twilio Autopilot)'
+  positioning: Outils de développement flexibles pour les grandes entreprises
+  strengths:
+  - Grande flexibilité technique
+  - Portefeuille d'outils large
+  - Marque reconnue
+  weaknesses:
+  - Nécessite une équipe technique interne importante
+  - Peu ou pas d'adaptation culturelle/linguistique pour la France
+  - Support moins réactif localement
+  our_differentiation: Nous fournissons une solution clé en main, conçue et optimisée
+    pour les commerçants français, sans besoin d'une armée de développeurs. Nous parlons
+    votre langage métier.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: Boutique en ligne avec 500 appels/mois traités manuellement
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 4
+  - scenario: Chaîne de magasins avec gestion centralisée des rendez-vous
+    monthly_cost: 850
+    monthly_savings: 2800
+    payback_months: 3
+  value_anchors:
+  - Moins cher qu'un mi-temps au SMIC, mais disponible 24/7
+  - Convertit 15% d'appels en plus grâce aux scripts de vente optimisés
+  - Évite jusqu'à 30% de pertes de vente dues aux ruptures de stock mal communiquées
+market_context:
+  market_size: Plus de 500 000 entreprises de retail en France, dont une majorité
+    de TPE/PME
+  growth_rate: 8-12% par an pour les solutions d'automatisation client
+  key_trends:
+  - 'Omnicanalité : les clients attendent une expérience fluide entre le site web,
+    l''appel téléphonique et le magasin physique'
+  - 'Personnalisation : demande croissante pour des interactions individuelles et
+    pertinentes'
+  - 'Instantanéité : tolérance zéro pour les temps d''attente ou les réponses lentes'
+  - 'Commerce conversationnel : la voix redevient un canal clé, surtout pour les questions
+    complexes ou les achats engageants'
+  seasonality:
+    high:
+    - Novembre-Décembre (Noël)
+    - Janvier (Soldes)
+    - Mai-Juin (Pré-été/ Soldes)
+    - Septembre (Rentrée)
+    low:
+    - Août (vacances d'été)
+    - Février (hors soldes)
+typical_objections:
+- objection: Nos clients préfèrent parler à un humain, ils vont détester un robot.
+  response: C'est justement pour préserver le contact humain que notre agent est utile.
+    Il filtre les appels simples (suivi de commande, horaires...), laissant vos conseillers
+    disponibles pour les conversations à haute valeur ajoutée où leur expertise fait
+    la différence. L'agent peut aussi transférer vers un humain à tout moment, sans
+    faire répéter le client.
+- objection: Notre activité est trop spécifique, l'agent ne comprendra pas nos produits.
+  response: C'est là que nous excellons. Nous passons du temps à former l'agent spécifiquement
+    pour votre secteur et votre catalogue. Nous intégrons votre base de produits et
+    vos FAQ. Après une phase d'adaptation, il maîtrisera vos spécificités mieux qu'un
+    nouveau recruté.
+- objection: Nous avons déjà un standard téléphonique, c'est suffisant.
+  response: Un standard redirige, mais ne résout pas. Notre agent apporte des réponses
+    instantanées aux questions les plus fréquentes, 24h/24. Cela libère votre standardiste
+    pour des tâches plus stratégiques et améliore nettement l'expérience client, qui
+    obtient une réponse immédiate au lieu d'être mis en attente.
+meta:
+  id: retail
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

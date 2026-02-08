@@ -1,0 +1,239 @@
+pain_points:
+- description: La gestion des appels 24h/24 et 7j/7 est épuisante pour notre petite
+    équipe.
+  severity: high
+  solution_hint: L'agent vocal IA peut répondre aux appels après les heures de bureau,
+    prendre les informations essentielles et programmer un rappel.
+- description: Les familles en deuil posent souvent les mêmes questions, ce qui monopolise
+    le temps du personnel.
+  severity: medium
+  solution_hint: Un agent vocal peut gérer les FAQs courantes (tarifs, démarches,
+    options) pour libérer le personnel pour des tâches plus complexes.
+- description: Perte de prospects pendant les heures de fermeture ou lors des appels
+    simultanés.
+  severity: high
+  solution_hint: L'agent ne perd jamais un appel, prend un message précis et qualifie
+    le lead immédiatement pour un rappel prioritaire.
+- description: La collecte et la saisie manuelle des données du défunt et de la famille
+    est longue et sujette aux erreurs.
+  severity: medium
+  solution_hint: L'agent vocal peut intégrer un questionnaire structuré pour collecter
+    les informations directement dans le logiciel métier, réduisant les erreurs.
+- description: Difficulté à communiquer clairement nos services et options additionnelles
+    (marbrerie, fleuristerie, conciergerie) sous le stress de l'appel.
+  severity: low
+  solution_hint: L'agent suit un script pour présenter systématiquement toutes les
+    options de manière calme et claire, sans oublis.
+- description: Respect du RGPD et confidentialité des données sensibles des familles.
+  severity: high
+  solution_hint: L'agent vocal conçu pour le marché européen ne stocke pas de données
+    sans consentement et guide vers des canaux sécurisés pour les informations sensibles.
+typical_services:
+- Services funéraires complets (pompes funèbres)
+- Organisation des obsèques religieuses ou civiles
+- Location de salle de cérémonie
+- Transport du corps (corbillard)
+- Soins de thanatopraxie
+- Fleuristerie funéraire et décoration
+- Conciergerie funéraire (faire-part, logistique)
+- Marbrerie et conception de monuments
+- Crémation et gestion des cendres
+- Services de prévoyance obsèques
+recommended_functions:
+- name: Répondeur et prise de rendez-vous intelligent 24/7
+  priority: high
+  reason: Capitalise sur chaque appel entrant, même en dehors des heures d'ouverture,
+    essentiel dans ce secteur d'urgence.
+- name: Qualification automatique du lead et collecte d'informations
+  priority: high
+  reason: Permet de recueillir les informations cruciales (nom du défunt, lieu, contact
+    de la famille) pour un premier dossier structuré.
+- name: FAQ vocale automatisée sur les tarifs et démarches
+  priority: medium
+  reason: Libère le personnel des questions récurrentes, surtout pendant les pics
+    d'activité.
+- name: Prise de commande pour services additionnels (fleurs, faire-part)
+  priority: low
+  reason: Augmente le panier moyen en présentant et en permettant de commander des
+    options complémentaires directement.
+- name: Intégration avec le logiciel de gestion funéraire
+  priority: high
+  reason: Élimine la ressaisie manuelle, améliore la précision et accélère le processus
+    de création du dossier.
+typical_integrations:
+- name: Logiciel de Gestion Funéraire (Pompes Funèbres)
+  examples:
+  - Funeraldirect
+  - AGS Funéraire
+  - Elytis
+  - Ogf
+  priority: high
+- name: CRM (Gestion de la Relation Client)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Dolibarr
+  priority: medium
+- name: Logiciel de Comptabilité
+  examples:
+  - Ciel
+  - Sage
+  - Quadratus
+  priority: medium
+- name: Agenda / Calendrier
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendrier partagé interne
+  priority: high
+industry_faq:
+- question: Quels sont vos tarifs pour des obsèques simples ?
+  answer_template: Nos forêts pour une crémation ou une inhumation simple démarrent
+    à partir de [X]€ TTC. Le prix final dépend des options choisies (cercueil, transport,
+    cérémonie...). Je peux vous orienter vers un conseiller pour une estimation personnalisée,
+    souhaitez-vous que je programme un appel ?
+- question: Quelles sont les démarches administratives à effectuer après un décès
+    ?
+  answer_template: Nous nous chargeons de la majorité des démarches. Il vous faudra
+    généralement fournir le certificat de décès, la carte d'identité du défunt et
+    le livret de famille. Notre conseiller vous guidera pas à pas.
+- question: Proposez-vous des services de prévoyance obsèques ?
+  answer_template: Oui, nous proposons des contrats de prévoyance qui permettent de
+    préparer et de financer ses obsèques à l'avance, soulageant ainsi ses proches.
+    Voulez-vous que je vous envoie une documentation par email ?
+- question: Est-il possible d'organiser une cérémonie laïque ?
+  answer_template: Absolument. Nous organisons des cérémonies civiles ou personnalisées,
+    selon les souhaits du défunt et de la famille. Nous pouvons vous aider à créer
+    un moment unique.
+- question: Quels délais faut-il prévoir pour l'organisation ?
+  answer_template: Généralement, les obsèques ont lieu sous 6 jours ouvrés. Nous nous
+    adaptons à vos contraintes et aux disponibilités des salles. L'urgence est notre
+    priorité.
+sales_scripts:
+- trigger: initial_contact
+  situation: Lors du premier appel d'une famille endeuillée.
+  script: Bonjour, [Nom de l'entreprise] vous accompagne dans ces moments difficiles.
+    Je suis [Nom de l'agent IA]. Pour vous aider au mieux, puis-je vous poser quelques
+    questions rapides ? Pouvez-vous me donner le nom du défunt et la ville où le décès
+    a eu lieu ? Ensuite, je vous mettrai immédiatement en relation avec un de nos
+    conseillers dédiés.
+  goal: Recueillir les informations critiques, rassurer, et transférer un lead qualifié
+    à un conseiller humain rapidement.
+- trigger: price_question
+  situation: Quand le prospect demande les prix dès le premier contact.
+  script: Je comprends votre besoin de transparence. Nos tarifs varient selon les
+    souhaits (inhumation ou crémation) et les options (type de cercueil, cérémonie...).
+    Pour une estimation précise et personnalisée, sans engagement, notre conseiller
+    a besoin de quelques détails. Puis-je programmer un rappel sous 30 minutes pour
+    qu'il vous appelle ?
+  goal: Éviter de donner un prix nu sans contexte, et convertir la demande en un rendez-vous
+    qualifié avec un expert.
+- trigger: callback_request
+  situation: Quand le prospect demande à être rappelé plus tard.
+  script: Bien sûr. Pour que notre conseiller soit parfaitement préparé et vous apporte
+    les réponses les plus précises, puis-je lui laisser une note avec le nom du défunt
+    et votre numéro de téléphone ? À quel moment de la journée préférez-vous être
+    contacté ?
+  goal: Obtenir des informations de qualification même pour un rappel, et fixer une
+    attente claire pour améliorer le taux de conversion.
+competitors:
+- name: Les Pompes Funèbres Générales (PFG)
+  positioning: Leader national, réseau très étendu.
+  strengths:
+  - Notoriété nationale
+  - Réseau de partenaires complet
+  - Services standardisés
+  weaknesses:
+  - Peu de personnalisation
+  - Tarifs parfois perçus comme élevés
+  - Service parfois impersonnel
+  our_differentiation: Service hyper-personnalisé et local, avec une technologie qui
+    nous permet d'être plus réactifs et attentifs aux détails uniques de chaque famille.
+- name: Régie de Pompes Funèbres (RPF) municipales
+  positioning: Service public, souvent obligatoire pour la mise en bière et le transport.
+  strengths:
+  - Tarifs réglementés
+  - Obligation dans certaines communes
+  - Simplicité
+  weaknesses:
+  - Services basiques
+  - Peu d'options additionnelles
+  - Délais parfois longs
+  our_differentiation: Nous complétons le service public en offrant un accompagnement
+    complet, des options de personnalisation et une gestion du stress administratif
+    pour la famille.
+- name: Artisans funéraires indépendants
+  positioning: Prestataires locaux, souvent familiaux.
+  strengths:
+  - Relation de proximité
+  - Souplesse
+  - Connaissance du terrain
+  weaknesses:
+  - Disponibilité limitée (pas de permanence 24/7)
+  - Ressources technologiques limitées
+  - Difficile à joindre en urgence
+  our_differentiation: Nous combinons le relationnel humain et la réactivité d'une
+    entreprise locale avec la puissance et la disponibilité 24/7 d'une technologie
+    de pointe.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 3000
+  - 8000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Agence funéraire moyenne évitant la perte de 5 appels/mois en dehors
+      des heures d'ouverture grâce à l'agent IA.
+    monthly_cost: 150
+    monthly_savings: 3750
+    payback_months: 0.04
+  value_anchors:
+  - Ne perdez plus jamais un appel d'une famille en détresse.
+  - Libérez votre personnel des tâches répétitives pour qu'il se concentre sur l'humain.
+  - Un investissement inférieur au coût d'une seule obsèques peut transformer votre
+    réactivité.
+market_context:
+  market_size: Environ 2,5 milliards d'euros par an
+  growth_rate: Stable (~1% an), lié au taux de mortalité.
+  key_trends:
+  - Augmentation de la demande de crémation (dépassant 40%).
+  - Personnalisation croissante des cérémonies (musique, thème, lieu original).
+  - Dématérialisation des démarches et recherche d'informations en ligne.
+  - Développement de la prévoyance pour soulager les familles.
+  seasonality:
+    high:
+    - Hiver (pic de mortalité)
+    - Périodes de fêtes (sensibilité accrue)
+    low:
+    - Été
+typical_objections:
+- objection: C'est trop impersonnel pour un moment aussi intime.
+  response: Je comprends tout à fait. Notre agent vocal n'a pas pour but de remplacer
+    le conseiller humain, mais de s'assurer que votre appel ne soit jamais perdu et
+    que votre conseiller soit immédiatement informé et préparé à vous apporter tout
+    le soutien personnalisé dont vous avez besoin.
+- objection: Nous sommes une petite entreprise familiale, la technologie c'est trop
+    pour nous.
+  response: Justement, notre solution est conçue pour les entreprises comme la vôtre.
+    Elle est simple à utiliser, sans installation complexe, et vous permet d'offrir
+    une disponibilité de grand groupe tout en conservant votre âme familiale. Nous
+    vous formons en 1 heure.
+- objection: Les familles endeuillées ont besoin de parler à un humain directement.
+  response: Absolument, et c'est ce qui se passera. L'agent vocal fait juste le 'triage'
+    initial en recueillant les informations essentielles (nom, lieu) pour que l'humain
+    que vous leur passerez ensuite soit déjà informé et puisse se concentrer immédiatement
+    sur le soutien et l'écoute, sans perdre de temps sur les bases administratives.
+meta:
+  id: funeral
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

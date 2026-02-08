@@ -1,0 +1,209 @@
+pain_points:
+- description: Dificultăți în gestionarea programărilor pentru întreținerea și reparația
+    ambarcațiunilor.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza programările și trimite reminder-uri.
+- description: Comunicarea ineficientă cu clienții pentru servicii de charter și turism
+    nautic.
+  severity: medium
+  solution_hint: Agentul vocal AI poate răspunde la întrebări frecvente și prelua
+    rezervări.
+- description: Probleme cu gestionarea stocurilor de piese de schimb și echipamente
+    nautice.
+  severity: high
+  solution_hint: Agentul vocal AI poate integra cu sisteme de inventar pentru actualizări
+    automate.
+- description: Costuri ridicate ale forței de muncă pentru servicii de marina.
+  severity: medium
+  solution_hint: Agentul vocal AI poate reduce necesitatea personalului pentru servicii
+    de relații cu clienții.
+- description: Conformitatea cu reglementările GDPR pentru protecția datelor clienților.
+  severity: high
+  solution_hint: Agentul vocal AI poate fi configurat pentru a respecta GDPR în procesarea
+    datelor.
+- description: Sezonalitate marcată care afectează veniturile în industriile marine.
+  severity: medium
+  solution_hint: Agentul vocal AI poate gestiona campanii de marketing în perioadele
+    de sezon scăzut.
+typical_services:
+- Reparații și întreținere ambarcațiuni
+- Închiriere bărci și iahturi
+- Vânzare de ambarcațiuni noi și second-hand
+- Servicii de marina și docking
+- Instalare și service echipamente nautice
+- Cursuri de navigație și permise
+- Asigurări nautice
+- Turism nautic și excursii
+- Transport și logistică ambarcațiuni
+- Consultanță pentru proiecte marine
+recommended_functions:
+- name: Programare automată a serviciilor
+  priority: high
+  reason: Reduce timpul de așteptare și îmbunătățește satisfacția clienților.
+- name: Răspuns la întrebări frecvente
+  priority: medium
+  reason: Eliberează personalul pentru sarcini mai complexe.
+- name: Gestionare rezervări pentru charter
+  priority: high
+  reason: Crește eficiența în perioadele de vârf.
+- name: Notificări și reminder-uri pentru întreținere
+  priority: medium
+  reason: Ajută la prevenirea problemelor tehnice.
+- name: Integrare cu sisteme CRM
+  priority: high
+  reason: Îmbunătățește gestionarea relațiilor cu clienții.
+- name: Rapoarte automate despre performanță
+  priority: low
+  reason: Furnizează insights pentru decizii de afaceri.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - Microsoft Dynamics
+  - Salesforce
+  - SAGA
+  priority: high
+- name: Sisteme de contabilitate
+  examples:
+  - ContaPlus
+  - SmartBill
+  priority: medium
+- name: Sisteme de inventar
+  examples:
+  - ERP local
+  - SAP
+  priority: high
+- name: Platforme de plăți online
+  examples:
+  - Netopia
+  - MobilPay
+  priority: medium
+- name: Sisteme de rezervări
+  examples:
+  - Booking sistem local
+  - Resengo
+  priority: high
+industry_faq:
+- question: Ce servicii oferiți pentru întreținerea ambarcațiunilor?
+  answer_template: Oferim servicii complete de întreținere, inclusiv verificări tehnice,
+    reparații și înlocuire piese.
+- question: Cât costă închirierea unei bărci pentru o zi?
+  answer_template: Prețurile încep de la 500 RON pe zi, în funcție de tipul ambarcațiunii
+    și sezon.
+- question: Sunteți conforme cu GDPR?
+  answer_template: Da, toate datele clienților sunt procesate în conformitate cu reglementările
+    GDPR.
+- question: Cum pot programa o revizie pentru ambarcațiunea mea?
+  answer_template: Puteți programa direct prin agentul nostru vocal sau online, oferim
+    flexibilitate maximă.
+- question: Oferiți asigurări pentru ambarcațiuni?
+  answer_template: Da, colaborăm cu companii de asigurări pentru a oferi pachete personalizate.
+- question: Care sunt perioadele de vârf pentru serviciile voastre?
+  answer_template: Perioadele de vârf sunt din mai până în septembrie, recomandăm
+    programări anticipate.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri pentru servicii.
+  script: Bună ziua! Prețurile noastre pentru servicii marine încep de la 300 RON
+    pentru consultanță de bază. Vă pot oferi o estimare personalizată după ce înțelegem
+    nevoile dumneavoastră.
+  goal: Atragerea interesului și colectarea informațiilor pentru o ofertă personalizată.
+- trigger: service_inquiry
+  situation: Când un client solicită informații despre un serviciu specific.
+  script: Mulțumim pentru interes! Pentru serviciul de întreținere ambarcațiuni, oferim
+    pachete personalizate. Doriți să discutați detaliile acum sau să programați o
+    consultație?
+  goal: Convertirea întrebării într-o oportunitate de vânzare.
+- trigger: competitor_mention
+  situation: Când un client menționează un competitor.
+  script: Înțeleg că aveți opțiuni. Noi ne diferențiem prin servicii personalizate
+    și suport 24/7 prin agentul vocal AI, care reduce timpul de așteptare.
+  goal: Sublinierea avantajelor competitive și încheierea vânzării.
+competitors:
+- name: Marina Delta
+  positioning: Lider pe piața serviciilor de marina din Delta Dunării.
+  strengths:
+  - Amplasare strategică
+  - Experiență pe piață
+  weaknesses:
+  - Tehnologie învechită
+  - Costuri ridicate
+  our_differentiation: Oferim automate prin AI pentru eficiență crescută și costuri
+    reduse.
+- name: Nautic România
+  positioning: Furnizor major de ambarcațiuni și echipamente.
+  strengths:
+  - Gama largă de produse
+  - Rețea de distribuție
+  weaknesses:
+  - Servicii post-vânzare limitate
+  - Timpi de răspuns lungi
+  our_differentiation: Agentul vocal AI asigură suport rapid și gestionare eficientă
+    a clienților.
+- name: Charter Black Sea
+  positioning: Specializat în servicii de charter pe Marea Neagră.
+  strengths:
+  - Flotă diversificată
+  - Prețuri competitive
+  weaknesses:
+  - Sezonalitate marcată
+  - Comunicare slabă
+  our_differentiation: Automatizăm rezervările și comunicarea pentru disponibilitate
+    24/7.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automatizarea programărilor pentru un serviciu de întreținere.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Reduceți timpul de așteptare cu 50% prin automatizare.
+  - Creșteți satisfacția clienților cu suport non-stop.
+market_context:
+  market_size: 50 milioane RON anual
+  growth_rate: 5% YoY
+  key_trends:
+  - Creșterea interesului pentru turism nautic intern.
+  - Adoptarea tehnologiilor digitale în serviciile marine.
+  - Presiuni pentru sustenabilitate și reglementări ecologice.
+  seasonality:
+    high:
+    - mai
+    - iunie
+    - iulie
+    - august
+    - septembrie
+    low:
+    - noiembrie
+    - decembrie
+    - ianuarie
+    - februarie
+typical_objections:
+- objection: Prețul este prea mare.
+  response: Înțeleg preocuparea. Investiția în AI se recuperează rapid prin economii
+    de timp și resurse. Vă pot arăta un calcul ROI personalizat.
+- objection: Nu avem nevoie de automatizare.
+  response: Automatizarea vă poate elibera personalul pentru sarcini cu valoare adăugată,
+    crescând eficiența. Să discutăm cum vă poate ajuta.
+- objection: Suntem mulțumiți cu actualul sistem.
+  response: Este minunat! Cu AI, puteți îmbunătăți și mai mult experiența clienților
+    și reduceți costurile. Vreți să vă prezint un caz de succes?
+meta:
+  id: marine
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

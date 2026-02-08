@@ -1,0 +1,256 @@
+pain_points:
+- description: Cạnh tranh gay gắt từ các studio nhỏ và nhiếp ảnh gia cá nhân, khiến
+    việc định giá và thu hút khách hàng trở nên khó khăn.
+  severity: high
+  solution_hint: AI voice agent có thể hỗ trợ tư vấn giá cả cạnh tranh và tự động
+    hóa các cuộc gọi chăm sóc khách hàng để tăng tỷ lệ giữ chân.
+- description: Chi phí thiết bị và phần mềm chỉnh sửa cao, đặc biệt với công nghệ
+    mới như máy ảnh mirrorless và drone.
+  severity: medium
+  solution_hint: AI voice agent có thể cung cấp thông tin về các gói dịch vụ tiết
+    kiệm hoặc tư vấn thuê thiết bị, giảm chi phí đầu tư ban đầu.
+- description: 'Nhu cầu theo mùa rõ rệt (ví dụ: cao điểm vào mùa cưới, lễ hội), dẫn
+    đến doanh thu không ổn định.'
+  severity: high
+  solution_hint: AI voice agent có thể tự động đặt lịch hẹn và nhắc nhở khách hàng
+    đặt trước cho mùa cao điểm, tối ưu hóa lịch làm việc.
+- description: Khó khăn trong việc quản lý nhiều dự án cùng lúc, dẫn đến sai sót trong
+    giao hàng hoặc chậm trễ.
+  severity: medium
+  solution_hint: AI voice agent có thể tích hợp với phần mềm quản lý dự án để cập
+    nhật tiến độ và gửi thông báo tự động cho khách hàng.
+- description: Yêu cầu về tuân thủ PDPD khi xử lý dữ liệu khách hàng và hình ảnh,
+    gây ra rủi ro pháp lý.
+  severity: medium
+  solution_hint: AI voice agent có thể được lập trình để tuân thủ PDPD, tự động xóa
+    dữ liệu cũ và cung cấp thông tin về chính sách bảo mật.
+- description: Khách hàng ngày càng đòi hỏi chất lượng cao và xu hướng mới (như video
+    ngắn cho mạng xã hội), đòi hỏi cập nhật kỹ năng liên tục.
+  severity: low
+  solution_hint: AI voice agent có thể cung cấp thông tin về các khóa đào tạo hoặc
+    xu hướng mới, giúp doanh nghiệp thích ứng nhanh.
+typical_services:
+- Chụp ảnh cưới
+- Quay phim sự kiện (đám cưới, sinh nhật)
+- Chụp ảnh thương mại (sản phẩm, doanh nghiệp)
+- Chỉnh sửa hậu kỳ và retouch ảnh
+- Quay video quảng cáo (TVC, social media)
+- Chụp ảnh chân dung và gia đình
+- Dịch vụ flycam (aerial photography)
+- Cho thuê thiết bị (máy ảnh, đèn, drone)
+- Đào tạo nhiếp ảnh và quay phim
+- In ấn và album ảnh
+recommended_functions:
+- name: Đặt lịch hẹn tự động
+  priority: high
+  reason: Giúp tối ưu hóa lịch làm việc, giảm thiểu sai sót và tăng trải nghiệm khách
+    hàng trong mùa cao điểm.
+- name: Tư vấn dịch vụ và báo giá
+  priority: high
+  reason: Cung cấp thông tin nhanh chóng, cá nhân hóa dựa trên nhu cầu khách hàng,
+    cải thiện tỷ lệ chuyển đổi.
+- name: Nhắc nhở thanh toán và giao hàng
+  priority: medium
+  reason: Tự động hóa các công việc hành chính, giảm công sức nhân viên và đảm bảo
+    dòng tiền ổn định.
+- name: Hỗ trợ khách hàng sau bán hàng
+  priority: medium
+  reason: Tăng cường sự hài lòng và lòng trung thành của khách hàng thông qua các
+    cuộc gọi chăm sóc định kỳ.
+- name: Thu thập phản hồi và đánh giá
+  priority: low
+  reason: Giúp cải thiện dịch vụ dựa trên ý kiến khách hàng và xây dựng uy tín trực
+    tuyến.
+- name: Cập nhật xu hướng và chương trình khuyến mãi
+  priority: low
+  reason: Giữ cho khách hàng thông tin về các dịch vụ mới, thúc đẩy doanh số trong
+    mùa thấp điểm.
+typical_integrations:
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  - Ketoan.vn
+  priority: high
+- name: Hệ thống CRM
+  examples:
+  - CRMVIET
+  - Salesforce
+  - Zoho CRM
+  priority: medium
+- name: Công cụ quản lý dự án
+  examples:
+  - Trello
+  - Asana
+  - Base.vn
+  priority: medium
+- name: Nền tảng mạng xã hội
+  examples:
+  - Facebook
+  - Instagram
+  - Tiktok
+  priority: high
+- name: Phần mềm chỉnh sửa ảnh
+  examples:
+  - Adobe Creative Cloud
+  - Lightroom
+  - Capture One
+  priority: low
+industry_faq:
+- question: Dịch vụ chụp ảnh cưới của bạn có giá bao nhiêu?
+  answer_template: Chào bạn, chúng tôi có nhiều gói dịch vụ chụp ảnh cưới linh hoạt,
+    bắt đầu từ 5.000.000 VND. Tôi có thể tư vấn chi tiết dựa trên nhu cầu cụ thể của
+    bạn. Bạn có muốn đặt lịch tư vấn không?
+- question: Thời gian giao hàng cho album ảnh là bao lâu?
+  answer_template: Thông thường, thời gian giao hàng cho album ảnh là từ 2-4 tuần
+    sau khi chụp, tùy thuộc vào độ phức tạp của chỉnh sửa. Chúng tôi luôn cố gắng
+    đảm bảo chất lượng và đúng hẹn.
+- question: Bạn có tuân thủ PDPD khi xử lý dữ liệu khách hàng không?
+  answer_template: Có, chúng tôi tuân thủ nghiêm ngặt PDPD để bảo vệ thông tin cá
+    nhân của khách hàng. Tất cả dữ liệu đều được mã hóa và xóa sau khi hoàn thành
+    dịch vụ, trừ khi có sự đồng ý của bạn.
+- question: Tôi có thể thuê thiết bị riêng không?
+  answer_template: Có, chúng tôi cung cấp dịch vụ cho thuê thiết bị như máy ảnh, đèn
+    và drone với giá cả cạnh tranh. Bạn có thể tham khảo báo giá chi tiết trên website
+    hoặc tôi có thể gửi cho bạn ngay.
+- question: Bạn có hỗ trợ quay video cho mạng xã hội không?
+  answer_template: Có, chúng tôi chuyên cung cấp dịch vụ quay video ngắn phù hợp với
+    xu hướng mạng xã hội như TikTok hay Facebook Reels. Chúng tôi có thể tư vấn kịch
+    bản và định dạng tối ưu.
+- question: Làm thế nào để đặt lịch chụp trong mùa cao điểm?
+  answer_template: Để đảm bảo lịch trình, chúng tôi khuyến nghị đặt trước ít nhất
+    3 tháng cho mùa cao điểm. Bạn có thể sử dụng hệ thống đặt lịch trực tuyến hoặc
+    tôi có thể hỗ trợ bạn ngay bây giờ.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá dịch vụ qua điện thoại.
+  script: Chào bạn, cảm ơn bạn đã quan tâm. Giá dịch vụ của chúng tôi phụ thuộc vào
+    gói bạn chọn, bắt đầu từ 3.000.000 VND cho các dịch vụ cơ bản. Tôi có thể tư vấn
+    chi tiết hơn nếu bạn chia sẻ nhu cầu cụ thể, như loại sự kiện hoặc số lượng ảnh.
+    Bạn có muốn tôi gửi bảng giá qua email không?
+  goal: Thu thập thông tin khách hàng và chuyển hướng sang tư vấn cá nhân hóa, tránh
+    mất khách vì giá cả.
+- trigger: service_inquiry
+  situation: Khi khách hàng hỏi về các dịch vụ cụ thể như chụp ảnh cưới.
+  script: Chào bạn, chúng tôi cung cấp đầy đủ dịch vụ chụp ảnh cưới từ truyền thống
+    đến hiện đại, bao gồm album và video. Dựa trên ngân sách và phong cách bạn mong
+    muốn, tôi có thể đề xuất gói phù hợp. Bạn có thời gian để thảo luận thêm không?
+  goal: Giới thiệu dịch vụ một cách hấp dẫn và thiết lập cuộc hẹn tư vấn trực tiếp.
+- trigger: objection_expensive
+  situation: Khi khách hàng phàn nàn về giá cao.
+  script: Tôi hiểu mối quan tâm của bạn. Giá của chúng tôi phản ánh chất lượng cao
+    với thiết bị hiện đại và đội ngũ chuyên nghiệp. Chúng tôi cũng có các gói linh
+    hoạt hoặc chương trình trả góp để phù hợp với ngân sách. Bạn có muốn tôi giải
+    thích thêm về giá trị bạn nhận được không?
+  goal: Làm nổi bật giá trị dịch vụ và đề xuất giải pháp thay thế để giữ chân khách
+    hàng.
+- trigger: follow_up
+  situation: Sau khi gửi báo giá, để theo dõi khách hàng.
+  script: Chào bạn, tôi là [Tên] từ [Tên công ty]. Tôi gọi để kiểm tra xem bạn đã
+    nhận được báo giá và có câu hỏi nào không. Chúng tôi có thể sắp xếp một buổi thảo
+    luận ngắn để làm rõ mọi thứ. Bạn có tiện nói chuyện bây giờ không?
+  goal: Tăng tỷ lệ chuyển đổi bằng cách duy trì kết nối và giải quyết các thắc mắc
+    kịp thời.
+competitors:
+- name: Studio Áo Cưới
+  positioning: Thương hiệu lâu năm chuyên về ảnh cưới với nhiều chi nhánh trên cả
+    nước.
+  strengths:
+  - Mạng lưới rộng
+  - Danh tiếng tốt
+  - Dịch vụ trọn gói
+  weaknesses:
+  - Giá cao
+  - Ít linh hoạt trong cá nhân hóa
+  - Công nghệ cũ hơn
+  our_differentiation: Chúng tôi cung cấp giải pháp công nghệ cao với AI voice agent
+    để tự động hóa và cá nhân hóa dịch vụ, giảm chi phí và tăng trải nghiệm khách
+    hàng.
+- name: Flycam Vietnam
+  positioning: Chuyên về dịch vụ flycam và quay phim trên không cho sự kiện và quảng
+    cáo.
+  strengths:
+  - Công nghệ drone tiên tiến
+  - Đội ngũ kỹ thuật giỏi
+  - Portfolio ấn tượng
+  weaknesses:
+  - Giới hạn dịch vụ
+  - Ít tích hợp với các dịch vụ khác
+  - Chi phí đầu tư lớn
+  our_differentiation: Chúng tôi tích hợp flycam với các dịch vụ photo_video toàn
+    diện, hỗ trợ bởi AI để quản lý dự án hiệu quả và giá cả cạnh tranh hơn.
+- name: Ảnh Việt Pro
+  positioning: Công ty khởi nghiệp tập trung vào ảnh thương mại và mạng xã hội.
+  strengths:
+  - Xu hướng mới nhanh nhạy
+  - Giá cả phải chăng
+  - Tương tác tốt trên social media
+  weaknesses:
+  - Quy mô nhỏ
+  - Khả năng mở rộng hạn chế
+  - Thiếu tuân thủ PDPD
+  our_differentiation: Chúng tôi có hệ thống tự động hóa với AI voice agent đảm bảo
+    tuân thủ PDPD và khả năng mở rộng, cung cấp dịch vụ ổn định và chuyên nghiệp.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 3000000
+  - 50000000
+  entry_point: 3000000
+  roi_examples:
+  - scenario: Tự động hóa đặt lịch và chăm sóc khách hàng cho studio nhỏ
+    monthly_cost: 1000000
+    monthly_savings: 3000000
+    payback_months: 1
+  - scenario: Giảm chi phí nhân sự cho dịch vụ hỗ trợ khách hàng 24/7
+    monthly_cost: 2000000
+    monthly_savings: 5000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm tới 50% thời gian quản lý với AI voice agent
+  - Tăng tỷ lệ chuyển đổi khách hàng lên 30% nhờ tư vấn tự động
+  - Đảm bảo tuân thủ PDPD, tránh phạt pháp lý lên tới 100 triệu VND
+market_context:
+  market_size: Khoảng 500 tỷ VND năm 2023, theo ước tính từ các báo cáo ngành.
+  growth_rate: 10-15% mỗi năm, nhờ sự phát triển của mạng xã hội và nhu cầu sự kiện.
+  key_trends:
+  - Xu hướng video ngắn cho TikTok và Reels đang bùng nổ
+  - Nhu cầu cá nhân hóa cao trong ảnh cưới và gia đình
+  - Ứng dụng AI trong chỉnh sửa ảnh và quản lý khách hàng
+  seasonality:
+    high:
+    - Tháng 9 đến Tháng 12 (mùa cưới)
+    - Dịp Tết Nguyên Đán
+    - Mùa hè (du lịch và sự kiện)
+    low:
+    - Tháng 1 đến Tháng 3 (sau Tết)
+    - Mùa mưa ở một số khu vực
+typical_objections:
+- objection: Tôi không cần AI, tôi đã có nhân viên để làm việc này.
+  response: Tôi hiểu điều đó. AI voice agent không thay thế nhân viên mà hỗ trợ họ
+    bằng cách tự động hóa các tác vụ lặp đi lặp lại, giúp nhân viên tập trung vào
+    công việc sáng tạo và tăng năng suất. Bạn có muốn tôi chia sẻ một case study cụ
+    thể không?
+- objection: Chi phí triển khai AI quá cao so với ngân sách của tôi.
+  response: Chúng tôi có các gói linh hoạt với mức giá bắt đầu từ 1.000.000 VND mỗi
+    tháng, và ROI thường đạt được trong vòng 1-2 tháng nhờ tiết kiệm chi phí nhân
+    sự và tăng doanh thu. Tôi có thể tính toán chi tiết cho doanh nghiệp của bạn.
+- objection: Tôi lo ngại về bảo mật dữ liệu với AI.
+  response: Chúng tôi tuân thủ nghiêm ngặt PDPD và sử dụng công nghệ mã hóa để bảo
+    vệ dữ liệu. AI voice agent chỉ xử lý thông tin cần thiết và có thể được tùy chỉnh
+    để đáp ứng yêu cầu bảo mật cụ thể của bạn. Bạn có muốn xem chứng chỉ tuân thủ
+    của chúng tôi không?
+meta:
+  id: photo_video
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

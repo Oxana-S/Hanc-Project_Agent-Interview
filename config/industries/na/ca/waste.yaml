@@ -1,0 +1,256 @@
+pain_points:
+- description: High contamination rates in recycling streams due to incorrect sorting
+    by residents, leading to increased processing costs and potential fines.
+  severity: high
+  solution_hint: AI voice agent can educate callers on proper sorting guidelines and
+    schedule special collection for contaminated bins.
+- description: Fluctuating commodity prices for recycled materials (e.g., paper, plastics)
+    creating budget uncertainty and reduced profitability.
+  severity: medium
+  solution_hint: Voice agent can proactively communicate service fee adjustments linked
+    to market indexes and offer flexible contract terms.
+- description: Driver shortage and high turnover leading to route disruptions, missed
+    pickups, and increased overtime costs.
+  severity: high
+  solution_hint: Automate routine customer inquiries (missed pickup reports, schedule
+    changes) to free up dispatch and customer service staff.
+- description: Complex and varying municipal bylaws and provincial regulations (like
+    Extended Producer Responsibility programs) requiring constant compliance monitoring.
+  severity: high
+  solution_hint: Provide automated updates on regulatory changes and confirm compliance
+    requirements during service sign-up calls.
+- description: Inefficient routing due to seasonal factors (snow, construction) and
+    new residential developments, increasing fuel and labor costs.
+  severity: medium
+  solution_hint: Integrate with routing software to provide dynamic pickup status
+    updates and efficiently reschedule missed collections.
+- description: Customer frustration and high call volumes related to missed pickups,
+    holiday schedule changes, and billing inquiries.
+  severity: medium
+  solution_hint: Instantly resolve common inquiries 24/7, provide account balance,
+    and process service requests without human intervention.
+typical_services:
+- Residential curbside garbage collection
+- Single-stream and multi-stream recycling programs
+- Organic waste (green bin) collection
+- Bulky item and appliance pickup
+- Construction and demolition (C&D) waste disposal
+- Roll-off dumpster rental for commercial projects
+- Hazardous waste (HHW) depot services
+- Document shredding and secure destruction
+- Landfill and transfer station operation
+- Waste auditing and sustainability consulting
+recommended_functions:
+- name: Missed Pickup Reporting & Rescheduling
+  priority: high
+  reason: This is the highest volume driver of customer service calls. Automation
+    drastically reduces call center load and improves customer satisfaction.
+- name: Billing & Payment Inquiries
+  priority: high
+  reason: Reduces accounts receivable time by allowing customers to check balances
+    and make payments over the phone instantly.
+- name: Service Change Requests (Start, Stop, Pause)
+  priority: medium
+  reason: Streamlines onboarding and offboarding for residential moves and seasonal
+    residents, ensuring accurate billing.
+- name: Recycling & Waste Sorting Guidance
+  priority: medium
+  reason: Directly addresses contamination issues by providing instant, standardized
+    answers to "Can I recycle this?" questions.
+- name: Holiday Schedule Information
+  priority: low
+  reason: High seasonal call volume that is repetitive and easily automated, especially
+    around major holidays like Christmas and Canada Day.
+- name: Quote Generation for New Commercial Services
+  priority: medium
+  reason: Captures lead information and provides preliminary estimates after hours,
+    speeding up the sales cycle.
+typical_integrations:
+- name: Fleet Management & Routing Software
+  examples:
+  - RouteOptima
+  - WasteWorks
+  - TruckLogic
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - locally built systems
+  priority: high
+- name: Accounting & Billing Systems
+  examples:
+  - QuickBooks
+  - Sage Intacct
+  - proprietary municipal systems
+  priority: high
+- name: Waste Weighing Systems (at transfer stations/landfills)
+  examples:
+  - CompuWeigh
+  - WasteWORKS
+  priority: medium
+- name: Document Management Systems
+  examples:
+  - SharePoint
+  - DocuWare
+  priority: low
+industry_faq:
+- question: What day is my garbage and recycling pickup, and has it been changed for
+    the holiday?
+  answer_template: Your regular collection day is [Day]. For the upcoming [Holiday
+    Name], collections will be [delayed by one day / as scheduled]. You can also confirm
+    your full annual schedule on our website.
+- question: My bin wasn't emptied today. What should I do?
+  answer_template: I apologize for the missed pickup. I can report this to our dispatch
+    team right now. Please leave your bin at the curb, and a truck will typically
+    return within 24-48 business hours. May I have your address to log the service
+    request?
+- question: What items are accepted in the blue recycling bin?
+  answer_template: 'In our program, we accept clean paper, cardboard, plastic containers
+    #1-5 & #7, metal food cans, and glass bottles & jars. Plastic bags, Styrofoam,
+    and electronics are not accepted curbside. I can text you a detailed list.'
+- question: How do I get a new bin or repair a damaged one?
+  answer_template: I can submit a work order for a bin replacement/repair. There is
+    typically a [e.g., $25] fee for replacement bins, which will be added to your
+    next invoice. Damaged lids or wheels are often repaired for free. Is it the garbage,
+    recycling, or organics bin?
+- question: How are my waste collection fees calculated?
+  answer_template: Fees are based on the level of service (bin size, frequency) and
+    are set by your municipal contract or, for commercial clients, by your specific
+    service agreement. I can look up your current rate if you provide your account
+    number or address.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential commercial customer asks about pricing for dumpster
+    rental or ongoing collection services.
+  script: Our pricing is tailored to your specific needs—factors like bin size, pickup
+    frequency, waste type, and location all affect the rate. For a standard 10-yard
+    bin with weekly pickup, you can expect to start in the range of [e.g., $150-$250]
+    per month. To get you a precise, no-obligation quote, I just need a few details
+    about your project or business.
+  goal: Move the conversation from a generic price question to a qualified lead by
+    collecting specific information for a custom quote.
+- trigger: compliance_concern
+  situation: When a business owner expresses worry about proper waste disposal regulations
+    or landfill bans.
+  script: You're right to focus on compliance. Mis-handling waste can lead to significant
+    fines. Our service guarantees proper documentation and disposal at certified facilities
+    for all materials, especially regulated ones like construction debris or organics.
+    We handle the compliance paperwork, so you don't have to. Would a free waste audit
+    help clarify your specific requirements?
+  goal: Position the service as a risk-mitigation and compliance solution, not just
+    a cost, and offer a high-value next step (waste audit).
+- trigger: competitor_mention
+  situation: When a customer mentions they are currently using or considering a competitor
+    like Waste Connections.
+  script: They are a great company. Many of our clients switched to us for more personalized
+    service and flexible scheduling. We're locally managed, so decisions are made
+    here, not at a distant head office. This often means faster response times and
+    contracts that adapt to your actual needs, not a one-size-fits-all model. Can
+    I show you a side-by-side comparison?
+  goal: Acknowledge the competitor, pivot to a key differentiator (local flexibility),
+    and propose a direct comparison.
+competitors:
+- name: Waste Connections of Canada
+  positioning: National, full-service giant
+  strengths:
+  - Extensive network of landfills and transfer stations
+  - Large fleet and resources
+  - Brand recognition
+  weaknesses:
+  - Can be less flexible with contracts
+  - Customer service can be impersonal
+  - Pricing may be less competitive for smaller contracts
+  our_differentiation: Local decision-making authority, more tailored service agreements,
+    and often more competitive pricing for small to mid-sized commercial clients.
+- name: GFL Environmental Inc.
+  positioning: Major integrated environmental services provider
+  strengths:
+  - Diversified services (liquid waste
+  - soil remediation)
+  - Aggressive acquisition strategy
+  - Significant recycling infrastructure
+  weaknesses:
+  - Rapid growth can lead to integration and service consistency issues
+  - Complex corporate structure
+  our_differentiation: Focused specifically on solid waste collection and recycling,
+    providing more consistent, dedicated service without the distractions of other
+    business units.
+- name: Municipal Public Works Department
+  positioning: Default provider for residential service in many areas
+  strengths:
+  - Perceived as a public service
+  - Mandatory for residents
+  - Stable funding
+  weaknesses:
+  - Often limited to basic residential services
+  - Less innovation and efficiency focus
+  - Bureaucratic processes
+  our_differentiation: We offer commercial services they don't, superior customer
+    service responsiveness, and advanced solutions like organics processing that municipalities
+    may outsource.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automating 50% of inbound customer service calls for a mid-sized waste
+      hauler.
+    monthly_cost: 1200
+    monthly_savings: 4000
+    payback_months: 1
+  value_anchors:
+  - Reduce your customer service call volume by up to 40%.
+  - Get paid faster with integrated phone payments.
+  - Turn compliance questions into a competitive advantage.
+market_context:
+  market_size: Approximately $8-10 billion CAD annually
+  growth_rate: 3-5% YoY, driven by recycling mandates and organics diversion programs
+  key_trends:
+  - Push for Circular Economy models and increased producer responsibility (EPR).
+  - Rapid expansion of municipal organic waste (green bin) programs.
+  - Increased demand for waste-to-energy and advanced recycling solutions.
+  - Technology adoption for route optimization and customer self-service.
+  seasonality:
+    high:
+    - Spring (clean-up)
+    - Fall (leaf collection
+    - post-renovation)
+    - Post-major holidays
+    low:
+    - Winter in some regions (frozen bins
+    - holiday pauses)
+    - Late summer
+typical_objections:
+- objection: We're under contract with another provider for another year.
+  response: I understand. Contracts are important. My goal is to be your preferred
+    partner when you're next able to evaluate. Could we schedule a brief waste audit
+    now? It's free and will give you concrete data to compare when your renewal comes
+    up, ensuring you get the best value next time.
+- objection: Your service is more expensive than our current option.
+  response: 'It''s important to look at total value. Our price includes [mention key
+    differentiators: e.g., superior customer service portal, guaranteed compliance
+    documentation, more frequent pickup options]. A small premium often saves significant
+    time, avoids fines, and improves your sustainability reporting. Can we do a detailed
+    line-item comparison?'
+- objection: We're a small business; we just put our garbage in the municipal bin.
+  response: That's a common start. However, commercial waste in a municipal system
+    is often against bylaws and can lead to fines. A small, locked bin from us protects
+    you from those risks and from dumping by others. For as little as [mention entry_point
+    price] a month, you get reliable, compliant service.
+meta:
+  id: waste
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

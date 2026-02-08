@@ -1,0 +1,250 @@
+pain_points:
+- description: Complessità normativa e conformità GDPR per le criptovalute.
+  severity: high
+  solution_hint: L'agente vocale può fornire aggiornamenti normativi e assistenza
+    nella documentazione.
+- description: Supporto clienti insufficiente per problemi di trading e transazioni.
+  severity: medium
+  solution_hint: Automatizzare le risposte a domande frequenti e gestire ticket di
+    supporto.
+- description: Preoccupazioni sulla sicurezza e rischio di frodi.
+  severity: high
+  solution_hint: Educare i clienti sulle best practices di sicurezza e monitorare
+    attività sospette.
+- description: Gestione della volatilità del mercato e decisioni di investimento.
+  severity: medium
+  solution_hint: Fornire analisi di mercato in tempo reale e alert personalizzati.
+- description: Reporting fiscale e contabilità per le transazioni in criptovalute.
+  severity: high
+  solution_hint: Integrare con software contabili locali e generare report automatici.
+- description: Onboarding difficoltoso per nuovi utenti a causa della complessità
+    tecnica.
+  severity: medium
+  solution_hint: Guide vocali interattive per semplificare l'iscrizione e l'uso.
+- description: Integrazione limitata con sistemi bancari italiani.
+  severity: medium
+  solution_hint: Facilitare le connessioni API con banche locali per depositi e prelievi.
+typical_services:
+- Trading di criptovalute
+- Portafogli digitali (wallet)
+- Staking e yield farming
+- Scambi P2P (peer-to-peer)
+- Servizi di custodia (custody)
+- Consulenza sugli investimenti in crypto
+- Sviluppo di token e ICO/STO
+- Educazione e formazione su blockchain
+- Integrazione con pagamenti tradizionali
+- Monitoraggio del mercato e alert
+recommended_functions:
+- name: Assistente per la conformità normativa
+  priority: high
+  reason: Essenziale per evitare sanzioni e mantenere la legalità in Italia.
+- name: Supporto clienti 24/7 per transazioni
+  priority: high
+  reason: Il mercato crypto opera sempre, quindi supporto continuo è cruciale.
+- name: Educatore su sicurezza e frodi
+  priority: medium
+  reason: Ridurre i rischi e costruire fiducia con i clienti locali.
+- name: Analista di mercato vocale
+  priority: medium
+  reason: Aiutare i clienti a prendere decisioni informate basate su trend italiani.
+- name: Integratore con sistemi contabili
+  priority: high
+  reason: Semplificare la gestione fiscale, obbligatoria in Italia.
+- name: Onboarding automatizzato
+  priority: medium
+  reason: Migliorare l'esperienza utente e ridurre l'abbandono tra i nuovi investitori.
+- name: Gestore di alert per volatilità
+  priority: low
+  reason: Utile per trader attivi, ma non essenziale per tutti i clienti.
+typical_integrations:
+- name: Sistemi contabili
+  examples:
+  - Fatture in Cloud
+  - TeamSystem
+  - Zucchetti
+  priority: high
+- name: Piattaforme di pagamento
+  examples:
+  - Satispay
+  - Nexi
+  - PayPal Italia
+  priority: high
+- name: CRM locali
+  examples:
+  - MioDottore
+  - SalesForce localizzato
+  priority: medium
+- name: Sistemi bancari
+  examples:
+  - Intesa Sanpaolo API
+  - UniCredit API
+  priority: high
+- name: Software per la sicurezza
+  examples:
+  - CERT-AGID
+  - soluzioni locali di cybersecurity
+  priority: medium
+- name: Tool per il trading
+  examples:
+  - MetaTrader
+  - TradingView integrato
+  priority: medium
+industry_faq:
+- question: Come posso investire in criptovalute in modo sicuro in Italia?
+  answer_template: In Italia, è consigliato utilizzare piattaforme regolamentate e
+    seguire le linee guida dell'Organismo di Vigilanza. Offriamo servizi di consulenza
+    per guidarti.
+- question: Quali sono le tasse sulle criptovalute in Italia?
+  answer_template: Le plusvalenze da criptovalute sono tassate al 26%. Il nostro agente
+    può aiutarti a generare report fiscali automatici conformi.
+- question: È legale usare criptovalute in Italia?
+  answer_template: Sì, ma devono essere rispettate le normative anti-riciclaggio e
+    GDPR. Siamo conformi a tutte le leggi italiane.
+- question: Come posso convertire criptovalute in euro?
+  answer_template: Offriamo integrazioni con banche italiane per prelievi diretti.
+    Il processo è semplice e sicuro.
+- question: Quali criptovalute sono più popolari in Italia?
+  answer_template: Bitcoin ed Ethereum sono le più diffuse, ma seguiamo le tendenze
+    locali per consigliarti.
+- question: Cosa succede se perdo l'accesso al mio wallet?
+  answer_template: Forniamo supporto per il recupero e sistemi di backup. Contattaci
+    immediatamente in caso di problemi.
+- question: È possibile fare pagamenti con criptovalute in negozi italiani?
+  answer_template: Alcuni negozi accettano pagamenti crypto. Ti aiutiamo a trovare
+    punti vendita compatibili.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi dei servizi.
+  script: Grazie per il tuo interesse! Offriamo soluzioni personalizzate a partire
+    da 50€ al mese. Posso aiutarti a capire quale pacchetto è più adatto alle tue
+    esigenze?
+  goal: Indirizzare verso una conversazione di vendita e qualificare il lead.
+- trigger: security_concern
+  situation: Quando un cliente esprime preoccupazioni sulla sicurezza.
+  script: La sicurezza è la nostra priorità. Utilizziamo tecnologie avanzate e siamo
+    conformi al GDPR. Vuoi che ti spieghi come proteggiamo i tuoi asset?
+  goal: Rassicurare il cliente e costruire fiducia.
+- trigger: competitor_mention
+  situation: Quando un cliente menziona un concorrente.
+  script: Rispettiamo i nostri concorrenti, ma offriamo integrazioni più solide con
+    sistemi italiani e supporto in lingua locale. Ti interessa una demo?
+  goal: Differenziarsi e spingere per una dimostrazione.
+- trigger: onboarding_assistance
+  situation: Quando un cliente ha difficoltà con l'iscrizione.
+  script: Posso guidarti passo passo nell'onboarding. È semplice e veloce, e saremo
+    qui per assisterti in ogni fase.
+  goal: Facilitare l'adozione e ridurre l'attrito.
+- trigger: tax_question
+  situation: Quando un cliente chiede aiuto con le tasse.
+  script: Gestiamo automaticamente il reporting fiscale per te, in conformità con
+    le leggi italiane. Questo ti fa risparmiare tempo e evita errori.
+  goal: Evidenziare il valore aggiunto e chiudere la vendita.
+competitors:
+- name: Bitpanda Italia
+  positioning: Piattaforma di trading crypto regolamentata in UE.
+  strengths:
+  - Regolamentazione
+  - interfaccia user-friendly
+  - ampia selezione di asset
+  weaknesses:
+  - Commissioni elevate
+  - supporto clienti limitato in italiano
+  our_differentiation: Integrazione più profonda con sistemi bancari italiani e supporto
+    vocale 24/7.
+- name: Coinbase Europe
+  positioning: Exchange globale con presenza in Italia.
+  strengths:
+  - Brand riconosciuto
+  - sicurezza
+  - liquidità
+  weaknesses:
+  - Poche funzionalità localizzate
+  - costi alti per piccoli trader
+  our_differentiation: Prezzi competitivi per il mercato italiano e assistenza fiscale
+    automatizzata.
+- name: Young Platform
+  positioning: Exchange italiano focalizzato su educazione.
+  strengths:
+  - Locale
+  - educazione
+  - community
+  weaknesses:
+  - Offerta limitata di servizi
+  - scalabilità
+  our_differentiation: Automazione avanzata con agenti vocali e servizi B2B per aziende.
+- name: Conio
+  positioning: Wallet e carta di debito crypto in Italia.
+  strengths:
+  - Semplice da usare
+  - integrazione con carte
+  weaknesses:
+  - Funzionalità di trading limitate
+  - fee nascoste
+  our_differentiation: Piattaforma completa con trading, staking, e supporto vocale
+    multilingue.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automazione del supporto clienti per una piccola exchange
+    monthly_cost: 200
+    monthly_savings: 800
+    payback_months: 0.25
+  - scenario: Gestione fiscale automatizzata per un trader attivo
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 0.33
+  value_anchors:
+  - Risparmia fino all'80% sui costi di supporto
+  - Conformità GDPR garantita
+  - Aumenta l'efficienza operativa del 50%
+market_context:
+  market_size: Circa 2 miliardi di EUR in volumi di trading annuali
+  growth_rate: 15% YoY
+  key_trends:
+  - Aumento dell'adozione da parte delle PMI
+  - Regolamentazione più stringente
+  - Crescita del DeFi (Finanza Decentralizzata)
+  - Integrazione con pagamenti tradizionali
+  seasonality:
+    high:
+    - Fine anno (dicembre)
+    - Periodo fiscale (marzo-aprile)
+    low:
+    - Agosto
+    - Festività natalizie
+typical_objections:
+- objection: Le criptovalute sono troppo rischiose.
+  response: Capisco la preoccupazione. Offriamo strumenti di gestione del rischio
+    e educazione per mitigare i pericoli. Inoltre, siamo regolamentati.
+- objection: Costa troppo.
+  response: I nostri servizi ti fanno risparmiare tempo e denaro a lungo termine.
+    Con l'automazione, riduci i costi operativi. Posso mostrarti un calcolo ROI.
+- objection: Preferisco usare soluzioni internazionali.
+  response: Le nostre soluzioni sono localizzate per l'Italia, con supporto in italiano
+    e conformità alle leggi locali, cosa che le piattaforme globali spesso trascurano.
+- objection: Non ho tempo per imparare.
+  response: Il nostro agente vocale semplifica tutto. Ti guida passo passo, quindi
+    non devi essere un esperto. Inizia con una demo gratuita.
+- objection: Ho già un fornitore.
+  response: Fantastico! Possiamo integrarci con i tuoi sistemi esistenti per migliorare
+    l'efficienza. Vuoi esplorare come possiamo aggiungere valore?
+meta:
+  id: crypto
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

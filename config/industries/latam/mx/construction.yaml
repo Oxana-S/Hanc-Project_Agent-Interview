@@ -1,0 +1,222 @@
+pain_points:
+- description: Retrasos en permisos y trámites burocráticos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar recordatorios y seguimiento con
+    autoridades municipales.
+- description: Fluctuaciones en los costos de materiales de construcción.
+  severity: high
+  solution_hint: El agente puede proporcionar actualizaciones en tiempo real sobre
+    precios y sugerir alternativas de proveedores.
+- description: Escasez de mano de obra calificada.
+  severity: medium
+  solution_hint: El agente puede ayudar en la gestión de reclutamiento y programación
+    de capacitaciones.
+- description: Cumplimiento de normativas de seguridad como NOM-031-STPS-2011.
+  severity: high
+  solution_hint: El agente puede recordar inspecciones y gestionar documentación de
+    cumplimiento automáticamente.
+- description: Gestión ineficiente de proveedores y subcontratistas.
+  severity: medium
+  solution_hint: El agente puede coordinar comunicaciones, pagos y seguimiento de
+    entregas.
+- description: Control de presupuesto y sobrecostos en proyectos.
+  severity: high
+  solution_hint: El agente puede monitorear gastos y alertar sobre desviaciones en
+    tiempo real.
+- description: Comunicación lenta con clientes y stakeholders.
+  severity: low
+  solution_hint: El agente puede manejar consultas frecuentes y actualizaciones de
+    proyecto automáticamente.
+typical_services:
+- Construcción residencial
+- Construcción comercial
+- Obras civiles (puentes, carreteras)
+- Remodelación y renovación
+- Instalaciones eléctricas y de plomería
+- Gestión de proyectos de construcción
+- Supervisión de obra
+- Mantenimiento de edificios
+- Diseño arquitectónico
+- Estructuras metálicas
+recommended_functions:
+- name: Programación de citas
+  priority: high
+  reason: Para coordinar reuniones con clientes, proveedores y autoridades de manera
+    eficiente.
+- name: Estimación de costos
+  priority: high
+  reason: Ayuda a proporcionar presupuestos rápidos y precisos basados en datos locales.
+- name: Seguimiento de permisos
+  priority: medium
+  reason: Automatiza el monitoreo del estado de trámites burocráticos para reducir
+    retrasos.
+- name: Gestión de inventario
+  priority: medium
+  reason: Controla los niveles de materiales y evita desabastecimientos en obra.
+- name: Recordatorios de seguridad
+  priority: high
+  reason: Asegura el cumplimiento de normativas y reduce accidentes laborales.
+- name: Atención al cliente 24/7
+  priority: low
+  reason: Mejora la satisfacción del cliente con respuestas inmediatas a consultas
+    comunes.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - Microsoft Dynamics
+  priority: high
+- name: Software de gestión de proyectos
+  examples:
+  - Microsoft Project
+  - Primavera P6
+  - Asana
+  priority: high
+- name: Plataformas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Software de contabilidad
+  examples:
+  - Contpaq
+  - QuickBooks
+  - SAP Business One
+  priority: medium
+- name: Sistemas de BIM (Building Information Modeling)
+  examples:
+  - Autodesk Revit
+  - ArchiCAD
+  priority: low
+industry_faq:
+- question: ¿Cuál es el tiempo promedio para obtener permisos de construcción en México?
+  answer_template: El tiempo varía según la ubicación, pero normalmente es de 4 a
+    8 semanas. Podemos ayudarle a agilizar el proceso con seguimiento automatizado.
+- question: ¿Cómo manejan los sobrecostos en los proyectos?
+  answer_template: Implementamos controles estrictos de presupuesto y monitoreo continuo
+    con tecnología para minimizar desviaciones.
+- question: ¿Ofrecen garantía en sus servicios?
+  answer_template: Sí, proporcionamos garantías según el tipo de obra, generalmente
+    de 1 a 5 años, cumpliendo con normativas locales.
+- question: ¿Trabajan con subcontratistas?
+  answer_template: Sí, colaboramos con subcontratistas certificados y gestionamos
+    la coordinación para asegurar calidad y cumplimiento.
+- question: ¿Cuáles son los requisitos de seguridad en obra en México?
+  answer_template: Seguimos la NOM-031-STPS-2011 y otras normativas, y nuestro agente
+    puede ayudar en la documentación y recordatorios.
+- question: ¿Cómo protegen los datos de los clientes?
+  answer_template: Cumplimos con la LFPDPPP y utilizamos medidas de seguridad para
+    garantizar la confidencialidad de la información.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de nuestros servicios.
+  script: Hola, gracias por su interés. Nuestros precios en MXN varían según el proyecto,
+    pero podemos ofrecerle un presupuesto personalizado. ¿Podría compartir algunos
+    detalles como el tamaño y tipo de obra?
+  goal: Obtener información del cliente para proporcionar una cotización precisa y
+    destacar valor.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por el cumplimiento normativo.
+  script: Entendemos su preocupación. Nos especializamos en cumplir con todas las
+    normativas locales, incluyendo LFPDPPP para protección de datos. ¿En qué aspecto
+    específico necesita asistencia?
+  goal: Tranquilizar al cliente y destacar nuestra experiencia en cumplimiento mexicano.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona un competidor local.
+  script: Hemos escuchado de ellos. Lo que nos diferencia es nuestro enfoque en automatización
+    con AI para reducir costos operativos y mejorar eficiencia. ¿Le gustaría conocer
+    un caso de éxito en México?
+  goal: Diferenciar nuestros servicios y generar interés con ejemplos locales.
+competitors:
+- name: ICA (Ingenieros Civiles Asociados)
+  positioning: Una de las mayores constructoras en México con proyectos a gran escala.
+  strengths:
+  - Experiencia extensa
+  - recursos financieros sólidos
+  - presencia nacional
+  weaknesses:
+  - Burocracia interna
+  - lentitud en adaptación tecnológica
+  our_differentiation: Ofrecemos soluciones ágiles y tecnológicas específicas para
+    optimizar procesos con AI.
+- name: Grupo Carso (división de construcción)
+  positioning: Conglomerado con diversificación en construcción en Latinoamérica.
+  strengths:
+  - Diversificación
+  - estabilidad financiera
+  - marca reconocida
+  weaknesses:
+  - Enfoque menos especializado en tecnología para automatización
+  our_differentiation: Especialización en integración de AI y automatización para
+    construcción con soporte local.
+- name: Softtek (servicios de TI para construcción)
+  positioning: Proveedor de servicios tecnológicos con presencia en México.
+  strengths:
+  - Expertise en TI
+  - soluciones personalizadas
+  - experiencia regional
+  weaknesses:
+  - Costo alto
+  - enfoque no específico a necesidades diarias de construcción
+  our_differentiation: Soluciones específicas para la industria construcción con precios
+    competitivos y fácil implementación.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 50000
+  - 5000000
+  entry_point: 10000
+  roi_examples:
+  - scenario: Automatización de gestión de permisos para una constructora mediana
+    monthly_cost: 5000
+    monthly_savings: 15000
+    payback_months: 1
+  - scenario: Reducción de sobrecostos con monitoreo de presupuesto
+    monthly_cost: 8000
+    monthly_savings: 20000
+    payback_months: 2
+  value_anchors:
+  - Reduce los retrasos en proyectos hasta un 30%
+  - Ahorra hasta 20% en costos operativos con automatización
+  - Cumple con LFPDPPP y normativas de seguridad automáticamente
+market_context:
+  market_size: Estimado en 200 mil millones de MXN anuales en el sector construcción
+    en México
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Aumento en construcción sostenible y eficiencia energética
+  - Adopción de BIM y tecnologías digitales
+  - Regulaciones más estrictas de seguridad y protección de datos
+  seasonality:
+    high:
+    - Enero a Marzo
+    - Septiembre a Noviembre
+    low:
+    - Diciembre
+    - Julio a Agosto
+typical_objections:
+- objection: Es muy caro para nuestro presupuesto en MXN.
+  response: Nuestra solución puede ahorrarle más de lo que cuesta en el primer año.
+    ¿Podemos mostrarle un análisis de ROI basado en proyectos similares en México?
+- objection: No confío en la tecnología para gestionar proyectos de construcción.
+  response: Entiendo su preocupación. Muchos clientes en México han visto mejoras
+    significativas en eficiencia. ¿Le gustaría hablar con uno de ellos para referencias?
+- objection: Ya tenemos un proceso establecido y no queremos cambios.
+  response: Perfecto, podemos integrarnos sin interrumpir su flujo de trabajo actual.
+    ¿Podemos demostrar cómo se adapta a sus necesidades específicas?
+meta:
+  id: construction
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

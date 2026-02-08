@@ -1,0 +1,228 @@
+pain_points:
+- description: A coworking irodákban gyakori a helyhiány és az állandó asztalok korlátozott száma, ami megnehezíti a rugalmas munkavégzést.
+  severity: high
+  solution_hint: Az AI hangalapú asszisztens gyorsan tájékoztathatja a felhasználót az aktuális helyfoglaltságról és alternatív lehetőségekről.
+- description: A bérleti díjak és szolgáltatások átláthatóságának hiánya miatt a potenciális ügyfelek nehezen tudnak dönteni.
+  severity: medium
+  solution_hint: Az AI hangasszisztens részletes, személyre szabott ár- és szolgáltatásbemutatást nyújthat.
+- description: A GDPR szabályozásoknak való megfelelés bonyolult, különösen az ügyféladatok kezelésekor.
+  severity: high
+  solution_hint: Az AI segíthet a GDPR-kompatibilis adatkezelési folyamatok automatizálásában és az ügyfelek informálásában.
+- description: A helyi startupok és vállalkozók számára fontos a közösségépítés, de a networking események szervezése idő- és erőforrásigényes.
+  severity: medium
+  solution_hint: Az AI hangagent képes események időpontjainak egyeztetésére, regisztrációkra és emlékeztetők küldésére.
+- description: A coworking szolgáltatások piacán erős a verseny, ezért nehéz kitűnni és új ügyfeleket szerezni.
+  severity: high
+  solution_hint: Az AI hangasszisztens személyre szabott bemutatókkal és gyors válaszokkal növelheti az ügyfél-elégedettséget.
+- description: A különböző szolgáltatások (pl. tárgyalóhasználat, postai szolgáltatások) bonyolult foglalási rendszere miatt ügyfélpanaszok jelentkeznek.
+  severity: medium
+  solution_hint: Az AI automatikusan kezeli a foglalásokat és emlékeztetőket küld az ügyfeleknek.
+- description: Az ügyfélkör változó igényeihez nehéz gyorsan alkalmazkodni, például rövid távú igények esetén.
+  severity: medium
+  solution_hint: A hangalapú agent segíthet gyors információval és azonnali foglalási lehetőséggel.
+typical_services:
+- Rugalmas asztalbérlet
+- Dedikált munkaállomások
+- Tárgyaló- és konferenciaterem bérlés
+- Virtuális iroda szolgáltatások (postai cím, cégbejegyzés)
+- High-speed internet és IT támogatás
+- Nyomtatási és fénymásolási szolgáltatások
+- Kávézó és közösségi terek használata
+- Networking és szakmai események szervezése
+- Recepciós szolgáltatások
+- Parkolási lehetőség és közlekedési támogatás
+recommended_functions:
+- name: Helyfoglaltság lekérdezése
+  priority: high
+  reason: Gyors tájékoztatás az elérhető asztalokról és tárgyalókról.
+- name: Foglalás és módosítás kezelése
+  priority: high
+  reason: Egyszerűsíti az ügyfelek számára a szolgáltatások igénybevételét.
+- name: Árajánlat és szolgáltatás ismertetése
+  priority: medium
+  reason: Segít az átlátható információadásban és a döntés támogatásában.
+- name: Események és networking időpontok kezelése
+  priority: medium
+  reason: Közösségépítő események hatékony szervezése.
+- name: GDPR tájékoztatás és beleegyezés kezelése
+  priority: high
+  reason: Biztosítja a jogszabályi megfelelést és ügyfélbizalmat.
+- name: Ügyfélszolgálati kérdések megválaszolása
+  priority: high
+  reason: Gyors és folyamatos ügyféltámogatás.
+- name: Számlázási információk nyújtása
+  priority: medium
+  reason: Segíti az ügyfelek pénzügyi tájékozódását.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - HubSpot
+  - Bitrix24
+  priority: high
+- name: Foglalási rendszerek
+  examples:
+  - OfficeRnD
+  - Nexudus
+  priority: high
+- name: Számlázó szoftverek
+  examples:
+  - Számlázz.hu
+  - Billingo
+  priority: medium
+- name: GDPR megfelelőségi eszközök
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+- name: Közösségi eseménynaptárak
+  examples:
+  - Meetup
+  - Eventbrite
+  priority: low
+- name: Kommunikációs platformok
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: medium
+industry_faq:
+- question: Milyen szolgáltatások érhetők el a coworking irodában?
+  answer_template: Coworking irodánkban rugalmas asztalbérlet, dedikált munkaállomások, tárgyaló- és konferenciaterem bérlés, valamint virtuális iroda szolgáltatások állnak rendelkezésre.
+- question: Hogyan foglalhatok asztalt vagy tárgyalót?
+  answer_template: Asztal vagy tárgyaló foglalásához használhatja online rendszerünket vagy kérheti a hangalapú asszisztens segítségét, aki azonnal elvégzi a foglalást.
+- question: Milyen hosszú távra bérelhetek helyet?
+  answer_template: Rugalmas bérleti időszakokat kínálunk, akár órára, napra vagy hosszabb hónapokra is, az Ön igényei szerint.
+- question: Hogyan biztosítják az adatvédelmet és a GDPR megfelelést?
+  answer_template: Minden ügyféladatot a GDPR előírásainak megfelelően kezelünk és tárolunk, az adatvédelmi tájékoztatónk elérhető honlapunkon.
+- question: Van lehetőség próbanapra vagy bemutatóra?
+  answer_template: Igen, kérhet próbanapot vagy személyes bemutatót, hogy megismerje szolgáltatásainkat és környezetünket.
+- question: Milyen extra szolgáltatásokat nyújtanak a networkinghez?
+  answer_template: Rendszeresen szervezünk szakmai és közösségi eseményeket, workshopokat, melyeken Ön is részt vehet és kapcsolatokat építhet.
+- question: Hogyan történik a számlázás és fizetés?
+  answer_template: Számlázás havonta történik, elfogadunk készpénzt, bankkártyát és banki átutalást is. Részletes számlainformációt kérhet az asszisztenstől.
+sales_scripts:
+- trigger: ar_kerdes
+  situation: Ügyfél érdeklődik az árakról telefonon vagy online
+  script: Köszönöm az érdeklődést! Szolgáltatásaink árai rugalmasak, az igényelt szolgáltatásoktól függően változnak. Segíthetek a pontos igényei alapján egy személyre szabott ajánlatot készíteni?
+  goal: Pontos igényfelmérés és ajánlatadás
+- trigger: foglalas_kerdes
+  situation: Ügyfél a foglalás menetéről kérdez
+  script: Egyszerűen foglalhat nálunk online vagy telefonon keresztül, de ha szeretné, segítek most azonnal lefoglalni az Önnek megfelelő munkaállomást vagy tárgyalót.
+  goal: Foglalás lebonyolítása hangalapon
+- trigger: gdpr_aggodalom
+  situation: Ügyfél adatvédelmi kérdéseket tesz fel
+  script: Fontos számunkra az Ön adatainak védelme. Minden adatkezelésünk megfelel a GDPR előírásainak, és bármikor tájékoztatást adunk az adatkezelési elvekről.
+  goal: Ügyfél bizalmának erősítése
+- trigger: versenyhelyzet
+  situation: Ügyfél a versenytársakról kérdez vagy összehasonlít
+  script: Számos előnyünk van, mint például a 24/7 hozzáférés, személyre szabott ügyfélszolgálat és közösségi programok, amelyek megkülönböztetnek minket a többi coworking irodától.
+  goal: Versenyelőny hangsúlyozása és ügyfél megtartása
+- trigger: proba_nap_kerdes
+  situation: Ügyfél próbanap lehetőséget szeretne
+  script: Természetesen, szívesen biztosítunk Önnek próbanapot, hogy személyesen is megtapasztalja a coworking irodánk előnyeit. Mikor lenne Önnek megfelelő az időpont?
+  goal: Próbanap lefoglalása és ügyfél elkötelezése
+competitors:
+- name: Kaptár Coworking
+  positioning: Budapest egyik legnépszerűbb startup-központja
+  strengths:
+  - Erős közösségi programok
+  - Jó lokáció a város központjában
+  - Modern infrastruktúra
+  weaknesses:
+  - Magasabb árak
+  - Korlátozott parkolási lehetőség
+  our_differentiation: Rugalmasabb bérleti konstrukciók és alacsonyabb árak, valamint személyre szabott ügyfélszolgálat
+- name: Loffice
+  positioning: Kreatív és digitális szakemberek körében népszerű iroda
+  strengths:
+  - Innovatív design
+  - Kiterjedt közösségi hálózat
+  - Különleges események
+  weaknesses:
+  - Kevésbé fókuszált a GDPR támogatásra
+  - Limitált tárgyalókapacitás
+  our_differentiation: Jobb adatvédelmi megfelelés és nagyobb tárgyalóterem választék
+- name: Impact Hub Budapest
+  positioning: Nemzetközi coworking hálózat magyarországi képviselete
+  strengths:
+  - Nemzetközi kapcsolatok
+  - Széles körű szolgáltatások
+  - Profi rendezvények
+  weaknesses:
+  - Komplex árstruktúra
+  - Néha túlzsúfolt terek
+  our_differentiation: Egyszerűbb árképzés és kisebb, családiasabb közösség
+- name: Mosaik Coworking
+  positioning: Középkategóriás, fiatal vállalkozóknak szánt iroda
+  strengths:
+  - Versenyképes árak
+  - Kényelmes elhelyezkedés
+  - Barátságos légkör
+  weaknesses:
+  - Kevesebb technikai szolgáltatás
+  - Kevésbé ismert márka
+  our_differentiation: Teljes körű technikai támogatás és professzionális szolgáltatások
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 30000
+  - 150000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Egyéni vállalkozó havi asztalbérlete
+    monthly_cost: 40000
+    monthly_savings: 73300
+    payback_months: 3
+  - scenario: Kisvállalkozás tárgyalóhasználat havi szinten
+    monthly_cost: 60000
+    monthly_savings: 105000
+    payback_months: 4
+  - scenario: Virtuális iroda csomag éves szinten
+    monthly_cost: 35000
+    monthly_savings: 58300
+    payback_months: 6
+  value_anchors:
+  - Versenyképes árak a budapesti piacon
+  - Rugalmas bérleti konstrukciók a költséghatékonyságért
+  - Magas színvonalú szolgáltatások és kényelmi funkciók
+  - GDPR-kompatibilis adatkezelés és biztonság
+market_context:
+  market_size: 15000
+  growth_rate: 12
+  key_trends:
+  - Növekvő igény a rugalmas munkavégzésre
+  - Fókusz az adatvédelem és GDPR megfelelés erősítésére
+  - Digitális nomádok és startup közösségek bővülése
+  - Zöld és fenntartható irodai megoldások térnyerése
+  - Technológiai integrációk és automatizáció növekedése
+  seasonality:
+    high:
+    - Január–március
+    - Szeptember–november
+    low:
+    - Július–augusztus
+    - December
+typical_objections:
+- objection: Túl drágának találom az árakat a piaci versenytársakhoz képest.
+  response: Értjük az aggodalmát, de szolgáltatásaink rugalmassága és magas színvonala hosszú távon jelentős megtakarítást és kényelmet biztosít Önnek.
+- objection: Nem vagyok biztos abban, hogy mennyire biztonságos az adatkezelés.
+  response: Minden adatot a GDPR előírásainak megfelelően kezelünk, és folyamatosan fejlesztjük adatvédelmi gyakorlatainkat, hogy biztosítsuk az Ön adatai védelmét.
+- objection: Nem szeretnék hosszú távú elköteleződést vállalni.
+  response: Szolgáltatásaink között talál rugalmas, akár havi vagy akár óránkénti bérleti lehetőségeket is, így Ön szabadon dönthet a használat idejéről.
+- objection: Nem vagyok biztos abban, hogy valóban kihasználom majd az összes szolgáltatást.
+  response: Az igényekhez igazított csomagokat kínálunk, így Ön csak azokat a szolgáltatásokat fizeti, amelyeket valóban használni szeretne.
+- objection: Nem tudom, mennyire egyszerű a foglalási rendszer használata.
+  response: Hangalapú asszisztensünk és online rendszereink segítségével egyszerű és gyors a foglalás, minden kérdésben támogatjuk Önt.
+meta:
+  id: coworking
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking

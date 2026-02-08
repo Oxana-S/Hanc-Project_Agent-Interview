@@ -1,0 +1,234 @@
+pain_points:
+- description: Managing multiple vendor contracts and communications across different
+    time zones and regions in Canada.
+  severity: high
+  solution_hint: AI voice agent can automate vendor follow-ups and coordinate schedules
+    using natural language processing.
+- description: Handling last-minute changes and cancellations due to unpredictable
+    Canadian weather, especially for outdoor events.
+  severity: high
+  solution_hint: AI voice agent can send real-time updates to clients and vendors,
+    reducing manual communication overhead.
+- description: Ensuring compliance with PIPEDA for handling client and attendee data
+    during event registration and management.
+  severity: high
+  solution_hint: AI voice agent can securely process data inquiries and provide compliance
+    reminders without storing sensitive information.
+- description: High staffing costs and shortages during peak seasons like summer and
+    holidays, leading to operational inefficiencies.
+  severity: medium
+  solution_hint: AI voice agent can handle routine tasks like booking confirmations
+    and FAQ responses, reducing reliance on temporary staff.
+- description: Coordinating bilingual services (English and French) for events in
+    provinces like Quebec or bilingual regions.
+  severity: medium
+  solution_hint: AI voice agent can support multilingual interactions, improving client
+    satisfaction and broadening market reach.
+- description: Managing budget constraints and price sensitivity among clients in
+    a competitive Canadian market.
+  severity: medium
+  solution_hint: AI voice agent can provide instant cost estimates and value propositions
+    based on local pricing data.
+- description: Integrating various event software tools for ticketing, marketing,
+    and analytics, leading to data silos.
+  severity: low
+  solution_hint: AI voice agent can act as a unified interface, pulling data from
+    multiple systems to streamline operations.
+typical_services:
+- Full-service event planning and coordination
+- Venue sourcing and contract negotiation
+- Catering and bar service management
+- Audio-visual production and equipment rental
+- Entertainment booking (e.g., live bands, DJs, speakers)
+- Decor, theme design, and floral arrangements
+- Registration, ticketing, and attendee management
+- On-site event staffing and logistics
+- Post-event feedback collection and reporting
+- Virtual or hybrid event hosting solutions
+recommended_functions:
+- name: Automated client intake and inquiry handling
+  priority: high
+  reason: Reduces response time and captures leads efficiently in a fast-paced Canadian
+    market.
+- name: Vendor coordination and scheduling
+  priority: high
+  reason: Streamlines communication with local vendors, saving time and reducing errors.
+- name: Multilingual support for English and French
+  priority: medium
+  reason: Essential for serving diverse regions like Quebec and bilingual clients
+    across Canada.
+- name: Payment reminder and processing assistance
+  priority: medium
+  reason: Improves cash flow by automating follow-ups on invoices in CAD.
+- name: Event day reminders and updates
+  priority: low
+  reason: Enhances attendee experience by sending timely notifications via voice calls.
+- name: Compliance check for PIPEDA in data handling
+  priority: high
+  reason: Ensures legal adherence and builds trust with Canadian clients.
+typical_integrations:
+- name: Customer Relationship Management (CRM) systems
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Event management platforms
+  examples:
+  - Eventbrite
+  - Cvent
+  - Ticketmaster
+  priority: high
+- name: Payment gateways
+  examples:
+  - Stripe
+  - PayPal
+  - Interac e-Transfer
+  priority: medium
+- name: Project management tools
+  examples:
+  - Asana
+  - Trello
+  - Monday.com
+  priority: medium
+- name: Accounting software
+  examples:
+  - QuickBooks
+  - Xero
+  - Wave
+  priority: low
+industry_faq:
+- question: What is the average cost for event planning services in Canada?
+  answer_template: Costs vary based on event size and services; our packages start
+    at 500 CAD for basic planning, with full-service options ranging from 2000 to
+    50000 CAD.
+- question: How do you handle data privacy under PIPEDA?
+  answer_template: We use AI voice agents that comply with PIPEDA by processing data
+    securely without storage, ensuring client and attendee information is protected.
+- question: Can you manage events in both English and French?
+  answer_template: Yes, our AI voice agents support bilingual interactions, making
+    it easy to coordinate events across Canada's diverse linguistic regions.
+- question: What happens if there are last-minute changes due to weather?
+  answer_template: Our AI system sends automated updates to all stakeholders, and
+    we have contingency plans to adjust quickly, minimizing disruptions.
+- question: Do you offer virtual event services?
+  answer_template: Absolutely, we provide hybrid and virtual event solutions, including
+    tech support and engagement tools tailored for the Canadian market.
+- question: How can AI voice agents save me money?
+  answer_template: By automating tasks like vendor calls and client inquiries, we
+    reduce labor costs by up to 30%, with ROI often within the first month.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about pricing during an initial call.
+  script: Our pricing is flexible and based on your specific needs. For example, a
+    basic event package starts at 500 CAD, which includes initial planning and vendor
+    coordination. Would you like me to outline a custom quote based on your event
+    details?
+  goal: Educate the client on value and move towards a detailed consultation.
+- trigger: compliance_concern
+  situation: When a client expresses worry about data privacy under PIPEDA.
+  script: We understand your concern. Our AI voice agents are designed to handle data
+    inquiries without storing sensitive information, ensuring full PIPEDA compliance.
+    This actually enhances security compared to manual processes.
+  goal: Build trust by addressing compliance proactively.
+- trigger: competitor_mention
+  situation: When a client mentions a local competitor like 'Event Planning Canada'.
+  script: While they offer great services, our AI-driven approach reduces costs by
+    automating routine tasks, saving you up to 20% on operational expenses. Plus,
+    we provide real-time updates and bilingual support, which is key in Canada.
+  goal: Differentiate by highlighting efficiency and local adaptability.
+- trigger: objection_budget
+  situation: When a client says their budget is tight.
+  script: I hear you. Many Canadian event planners face similar challenges. Our entry-level
+    package at 500 CAD focuses on essential services, and the AI components can cut
+    hidden costs like staff overtime. Let's explore how we can maximize your budget.
+  goal: Overcome budget objections by emphasizing cost savings.
+competitors:
+- name: Event Planning Canada
+  positioning: Nationwide full-service event management company
+  strengths:
+  - Extensive local vendor network
+  - Strong reputation in major cities like Toronto and Vancouver
+  weaknesses:
+  - Higher pricing due to manual processes
+  - Limited technology integration
+  our_differentiation: We use AI voice agents to automate tasks, reducing costs by
+    20-30% and improving response times with 24/7 availability.
+- name: Canadian Event Solutions
+  positioning: Boutique agency specializing in corporate events
+  strengths:
+  - Personalized service
+  - Expertise in regulatory compliance
+  weaknesses:
+  - Small team, limited scalability
+  - Slow adoption of digital tools
+  our_differentiation: Our scalable AI solutions handle high-volume inquiries and
+    multilingual needs, making us more efficient for growing businesses.
+- name: Maple Leaf Events
+  positioning: Mid-market provider focusing on social and wedding events
+  strengths:
+  - Creative design services
+  - Strong client testimonials
+  weaknesses:
+  - Seasonal staffing issues
+  - Inconsistent communication during peak times
+  our_differentiation: AI voice agents ensure consistent, prompt communication year-round,
+    reducing errors and enhancing client satisfaction.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating client inquiry handling for a small event planning business
+    monthly_cost: 100
+    monthly_savings: 500
+    payback_months: 1
+  - scenario: Reducing vendor coordination time for a mid-sized agency
+    monthly_cost: 300
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Save up to 30% on administrative costs
+  - Increase client booking rates by 15% through faster responses
+  - Achieve ROI within the first month of use
+market_context:
+  market_size: Estimated at 2 billion CAD annually
+  growth_rate: 6% YoY, driven by virtual events and post-pandemic recovery
+  key_trends:
+  - Growth in hybrid events combining in-person and virtual elements
+  - Increased focus on sustainability and eco-friendly practices
+  - Rising demand for personalized attendee experiences
+  seasonality:
+    high:
+    - May to September for outdoor events
+    - November to December for holiday parties
+    low:
+    - January to March, especially in colder regions
+typical_objections:
+- objection: We prefer handling things manually with our existing team.
+  response: Our AI voice agent complements your team by taking over repetitive tasks,
+    allowing them to focus on creative and strategic aspects, which can boost overall
+    productivity.
+- objection: AI might not understand the nuances of Canadian event planning.
+  response: Our agents are trained on local data, including bilingual support and
+    PIPEDA compliance, ensuring they adapt seamlessly to Canadian market specifics.
+- objection: The upfront cost seems high for our small budget.
+  response: With entry points as low as 500 CAD and potential monthly savings of 500
+    CAD or more, the investment pays for itself quickly, often within the first event
+    cycle.
+meta:
+  id: events
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

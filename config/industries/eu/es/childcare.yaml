@@ -1,0 +1,270 @@
+pain_points:
+- description: Alta rotación de personal en guarderías, lo que afecta la continuidad
+    del cuidado y aumenta los costes de contratación.
+  severity: high
+  solution_hint: El agente de voz AI puede automatizar procesos de reclutamiento y
+    gestión de horarios para reducir la carga administrativa.
+- description: Dificultad para gestionar las reservas y pagos de los padres, especialmente
+    en horarios pico.
+  severity: medium
+  solution_hint: Implementar un sistema de reservas automatizado con confirmaciones
+    por voz y recordatorios de pago.
+- description: Cumplimiento normativo complejo, incluyendo GDPR y regulaciones locales
+    de seguridad infantil.
+  severity: high
+  solution_hint: El agente puede proporcionar recordatorios y asesoría sobre cumplimiento
+    a través de respuestas preconfiguradas.
+- description: Comunicación ineficiente con los padres sobre el progreso de los niños
+    y eventos del centro.
+  severity: medium
+  solution_hint: Automatizar actualizaciones diarias y notificaciones personalizadas
+    para mejorar la transparencia.
+- description: Gestión manual de actividades y menús, lo que consume tiempo y puede
+    llevar a errores.
+  severity: low
+  solution_hint: Integrar con software de planificación para automatizar la creación
+    de horarios y menús.
+- description: Competencia intensa con otras guarderías y servicios de canguros, dificultando
+    la retención de clientes.
+  severity: medium
+  solution_hint: Usar el agente para ofrecer promociones personalizadas y mejorar
+    la experiencia del cliente.
+- description: Falta de personalización en el cuidado debido a la alta ratio niño-educador.
+  severity: high
+  solution_hint: Implementar herramientas AI para monitorear necesidades individuales
+    y sugerir ajustes en el cuidado.
+typical_services:
+- Guardería infantil (cuidado diurno)
+- Canguro a domicilio
+- Actividades extraescolares
+- Campamentos de verano
+- Talleres educativos para niños
+- Servicio de comedor escolar
+- Asistencia para niños con necesidades especiales
+- Clases de idiomas para niños
+- Eventos y fiestas infantiles
+- Consultoría educativa para padres
+recommended_functions:
+- name: Reserva de plazas y citas
+  priority: high
+  reason: Automatiza el proceso de inscripción y reduce la carga de trabajo del personal
+    administrativo.
+- name: Gestión de pagos y facturación
+  priority: high
+  reason: Facilita el cobro recurrente y mejora el flujo de caja para las guarderías.
+- name: Comunicación con padres
+  priority: medium
+  reason: Envía actualizaciones automáticas sobre el progreso de los niños y eventos,
+    mejorando la satisfacción.
+- name: Soporte para cumplimiento normativo
+  priority: high
+  reason: Ayuda a las guarderías a mantenerse al día con GDPR y regulaciones locales
+    mediante recordatorios.
+- name: Gestión de horarios del personal
+  priority: medium
+  reason: Optimiza la asignación de turnos y reduce conflictos en la planificación.
+- name: Respuestas a preguntas frecuentes
+  priority: low
+  reason: Libera tiempo del personal al manejar consultas comunes de manera automatizada.
+- name: Promociones y marketing
+  priority: medium
+  reason: Automatiza campañas para atraer nuevos clientes y retener a los existentes.
+typical_integrations:
+- name: Sistemas de gestión educativa
+  examples:
+  - Aula1
+  - EducaChild
+  - Childcare Manager ES
+  priority: high
+- name: Software de facturación
+  examples:
+  - Factusol
+  - ContaPlus
+  - SumUp
+  priority: high
+- name: Plataformas de reservas online
+  examples:
+  - ReservaGuardería
+  - Timify
+  - Calendly
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - ClassDojo
+  - Remind
+  - WhatsApp Business
+  priority: medium
+- name: Sistemas de nómina
+  examples:
+  - NominaPlus
+  - Sage 50cloud
+  priority: low
+- name: Aplicaciones de menú y nutrición
+  examples:
+  - Menuter
+  - NutriChild
+  priority: low
+industry_faq:
+- question: ¿Cuál es el ratio niño-educador en vuestra guardería?
+  answer_template: Cumplimos con la normativa española, que establece un ratio máximo
+    de [número] niños por educador, asegurando atención personalizada.
+- question: ¿Ofrecéis servicios para niños con alergias o necesidades especiales?
+  answer_template: Sí, adaptamos nuestros servicios y contamos con personal capacitado
+    para manejar alergias y necesidades especiales, priorizando la seguridad.
+- question: ¿Cómo gestionáis la seguridad y privacidad de los datos de los niños?
+  answer_template: Aseguramos el cumplimiento del GDPR y normas locales con protocolos
+    estrictos de seguridad y acceso limitado a la información.
+- question: ¿Qué actividades educativas incluís en el programa diario?
+  answer_template: Nuestro programa incluye actividades lúdico-educativas, talleres
+    creativos, y desarrollo de habilidades sociales, adaptadas por edades.
+- question: ¿Hay flexibilidad en los horarios de recogida y entrega?
+  answer_template: Ofrecemos horarios flexibles con opciones de ampliación, y podemos
+    gestionar cambios a través de nuestro sistema automatizado.
+- question: ¿Cómo se manejan los pagos y las facturas?
+  answer_template: Los pagos se gestionan de forma automática con recordatorios y
+    facturas electrónicas, facilitando la administración para los padres.
+- question: ¿Qué medidas tenéis para emergencias o enfermedades?
+  answer_template: Contamos con protocolos de emergencia, personal formado en primeros
+    auxilios, y comunicación inmediata con los padres en caso necesario.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de los servicios.
+  script: Hola, entiendo que quieres conocer nuestros precios. Ofrecemos planes desde
+    [entry_point] EUR al mes, con opciones personalizadas según las necesidades de
+    tu hijo. ¿Te gustaría que te explique los detalles para encontrar el plan ideal?
+  goal: Convertir la consulta en una conversación sobre valor y personalización, no
+    solo precio.
+- trigger: service_inquiry
+  situation: Cuando un cliente se interesa por un servicio específico, como guardería
+    diurna.
+  script: Gracias por tu interés en nuestra guardería. Proporcionamos cuidado de calidad
+    con actividades educativas y seguimiento personalizado. ¿Podrías contarme más
+    sobre la edad de tu hijo y tus horarios preferidos para adaptarnos mejor?
+  goal: Recopilar información para ofrecer una solución a medida y destacar beneficios.
+- trigger: competitor_mention
+  situation: Cuando un cliente compara con otra guardería o servicio.
+  script: Es bueno que compares opciones. Nos diferenciamos por nuestra atención personalizada,
+    integración de tecnología para comunicación transparente, y cumplimiento riguroso
+    de normativas. ¿Qué es lo más importante para ti en el cuidado de tu hijo?
+  goal: Enfocarse en diferenciadores clave y entender las prioridades del cliente.
+- trigger: objection_cost
+  situation: Cuando un cliente objeta que el precio es demasiado alto.
+  script: Comprendo tu preocupación por el coste. Nuestros servicios incluyen ventajas
+    como [mencionar valor añadido, e.g., actividades extra, comunicaciones AI], que
+    ahorran tiempo y mejoran la experiencia. ¿Te gustaría ver un ejemplo de cómo otros
+    padres han ahorrado con nuestra eficiencia?
+  goal: Reforzar el valor y mostrar ROI para justificar el precio.
+competitors:
+- name: ChiquiTin
+  positioning: Cadena de guarderías con múltiples ubicaciones en España.
+  strengths:
+  - Amplia red de centros
+  - Reconocimiento de marca
+  - Servicios estandarizados
+  weaknesses:
+  - Menos personalización
+  - Precios elevados
+  - Comunicación menos directa
+  our_differentiation: Ofrecemos atención más personalizada con tecnología AI para
+    comunicación en tiempo real y precios competitivos con mayor flexibilidad.
+- name: Escuela Infantil Nemomarlin
+  positioning: Guarderías premium con enfoque educativo innovador.
+  strengths:
+  - Metodología educativa avanzada
+  - Instalaciones modernas
+  - Enfoque en desarrollo infantil
+  weaknesses:
+  - Coste muy alto
+  - Disponibilidad limitada en algunas zonas
+  - Poca integración tecnológica
+  our_differentiation: Combinamos cuidado de calidad con soluciones AI asequibles
+    que mejoran la eficiencia operativa sin sacrificar la atención.
+- name: Kanguro
+  positioning: Plataforma online para servicios de canguro a domicilio.
+  strengths:
+  - Flexibilidad horaria
+  - Opciones a la carta
+  - Facilidad de reserva online
+  weaknesses:
+  - Menos supervisión estructurada
+  - Variabilidad en la calidad del cuidado
+  - Falta de programas educativos
+  our_differentiation: Proporcionamos un entorno más seguro y estructurado con supervisión
+    profesional y actividades educativas integradas.
+- name: Grupo Alventus
+  positioning: Proveedor de actividades extraescolares y campamentos.
+  strengths:
+  - Variedad de actividades
+  - Experiencia en educación no formal
+  - Colaboraciones con colegios
+  weaknesses:
+  - Enfoque limitado a cuidado diurno
+  - Menos atención individual
+  - Logística compleja
+  our_differentiation: Ofrecemos un enfoque integral que combina cuidado diurno con
+    actividades extraescolares, todo gestionado con eficiencia AI.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 600
+  entry_point: 250
+  roi_examples:
+  - scenario: Automatización de reservas y comunicaciones para una guardería mediana
+    monthly_cost: 100
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Ahorra hasta 10 horas semanales en tareas administrativas con nuestra solución
+    AI.
+  - Mejora la satisfacción de los padres con comunicaciones automáticas y personalizadas.
+  - Cumple con GDPR y normativas locales sin esfuerzo adicional.
+market_context:
+  market_size: Estimado en 5 mil millones EUR anuales en España
+  growth_rate: 3-5% anual
+  key_trends:
+  - Aumento de la demanda por guarderías bilingües y con metodologías innovadoras.
+  - Creciente adopción de tecnología para mejorar la eficiencia operativa.
+  - Mayor conciencia sobre seguridad y privacidad de datos en servicios infantiles.
+  seasonality:
+    high:
+    - Septiembre (inicio escolar)
+    - Junio (fin de curso y campamentos)
+    low:
+    - Agosto (vacaciones de verano)
+    - Diciembre (festividades)
+typical_objections:
+- objection: Es demasiado caro para mi presupuesto.
+  response: Entiendo tu preocupación. Nuestros servicios están diseñados para ahorrarte
+    tiempo y estrés, lo que puede traducirse en mayor productividad. ¿Podemos explorar
+    opciones más básicas que se ajusten a tu presupuesto?
+- objection: Prefiero el contacto humano directo, no la tecnología.
+  response: Valoramos el contacto humano, y nuestra tecnología complementa, no reemplaza,
+    a nuestro personal. Ayuda a liberar tiempo para que los educadores se enfoquen
+    más en los niños.
+- objection: Ya tengo un sistema que funciona, ¿por qué cambiar?
+  response: Es genial que tengas un sistema. Nuestra solución puede integrarse con
+    lo que ya usas para mejorar la eficiencia, como automatizar recordatorios o gestionar
+    pagos. ¿Te gustaría una demostración?
+- objection: No estoy seguro de que funcione en mi guardería pequeña.
+  response: Nuestras soluciones son escalables y se adaptan a guarderías de todos
+    los tamaños. Empezamos con funciones básicas y crecemos contigo. ¿Podemos analizar
+    tus necesidades específicas?
+- objection: Me preocupa la seguridad de los datos con AI.
+  response: Priorizamos la seguridad y cumplimos estrictamente con el GDPR. Usamos
+    encriptación y controles de acceso para proteger toda la información. Te podemos
+    compartir nuestros protocolos de seguridad.
+meta:
+  id: childcare
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "childcare"
+- "daycare"
+- "nanny"
+- "kindergarten"
+_extends: _base/childcare

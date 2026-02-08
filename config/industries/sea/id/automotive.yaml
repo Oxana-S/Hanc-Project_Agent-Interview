@@ -1,0 +1,268 @@
+aliases:
+- bisnis otomotif
+- dealer mobil
+- bengkel mobil
+- bengkel
+- mobil
+- dealer
+- stasiun servis
+- tukang ban
+- perawatan berkala
+- servis berkala
+- perbaikan mobil
+- kendaraan
+- otomotif
+- tuning
+- detailing
+- garasi
+- cuci mobil
+competitors:
+- name: Auto2000
+  positioning: Dealer resmi Toyota terbesar dengan jaringan luas
+  strengths:
+  - Jaringan bengkel resmi yang luas
+  - Suku cadang asli dan garansi
+  - Reputasi merek yang kuat
+  weaknesses:
+  - Harga lebih tinggi
+  - Waktu tunggu panjang untuk perjanjian
+  our_differentiation: Waktu perjanjian lebih fleksibel, harga kompetitif dengan kualitas
+    setara
+- name: bengkel-nusantara.com
+  positioning: Jaringan bengkel independen dengan teknologi terbaru
+  strengths:
+  - Harga kompetitif
+  - Teknologi diagnostik modern
+  weaknesses:
+  - Ketersediaan suku cadang terbatas
+  - Kualitas tidak konsisten antar outlet
+  our_differentiation: Suku cadang berkualitas dengan standar operasi terpusat
+- name: FastService
+  positioning: Layanan cepat untuk perawatan dasar dan ganti ban
+  strengths:
+  - Layanan cepat (under 1 jam)
+  - Banyak lokasi
+  - Harga transparan
+  weaknesses:
+  - Layanan terbatas untuk perbaikan kompleks
+  - Antrian panjang saat musim ganti ban
+  our_differentiation: Sistem reservasi cerdas untuk menghindari antrian, layanan
+    komprehensif
+industry_faq:
+- answer_template: Biaya bervariasi tergantung merk mobil dan jenis oli. Rata-rata
+    mulai dari Rp 200.000 hingga Rp 600.000 termasuk jasa.
+  question: Berapa biaya ganti oli?
+- answer_template: Sebutkan nomor SPK atau plat nomor kendaraan, saya akan cek statusnya.
+  question: Bagaimana cara cek status perbaikan?
+- answer_template: Servis berkala biasanya memakan waktu 1 hingga 3 jam tergantung
+    paket layanan.
+  question: Berapa lama waktu untuk servis berkala?
+- answer_template: Ya, kami melayani semua merk kendaraan. Dengan merk apa yang Anda
+    tanyakan?
+  question: Apakah melayani merk mobil saya?
+- answer_template: Saya bisa cek ketersediaan. Sebutkan merk, model, dan bagian apa
+    yang dibutuhkan.
+  question: Apakah suku cadang tersedia?
+- answer_template: Ya, kami memberikan garansi 6 bulan atau 10.000 km untuk pekerjaan
+    kami.
+  question: Apakah memberikan garansi untuk pekerjaan?
+- answer_template: Kami buka Senin hingga Sabtu jam 8 pagi sampai 6 sore. Minggu hanya
+    untuk keadaan darurat.
+  question: Jam berapa bengkel buka?
+industry_specifics:
+  compliance:
+  - PDP Indonesia (Perlindungan Data Pribadi)
+  - Standar lingkungan untuk pembuangan oli dan limbah
+  peak_times:
+  - Senin pagi
+  - Jumat sore
+  - Musim hujan (Oktober-Maret) untuk pengecekan AC dan rem
+  - Musim ganti ban (Maret-April dan September-Oktober)
+  tone:
+  - Sopan dan ramah
+  - Teknis namun mudah dimengerti
+  - Responsif dan membantu
+learnings:
+- date: '2026-02-04'
+  insight: 'Peringatan: [scenario_match] Sedikit kecocokan integrasi: 1/4'
+  source: test_auto_service
+- date: '2026-02-05'
+  insight: 'Peringatan: [metrics] Terlalu lama: 975 detik (maks 900)'
+  source: test_auto_service
+market_context:
+  market_size: Rp 150 triliun per tahun
+  growth_rate: 7% YoY
+  key_trends:
+  - Meningkatnya permintaan untuk kendaraan listrik dan hybrid
+  - Konsumen lebih sadar akan servis berkala
+  - Pertumbuhan layanan mobile dan pickup-delivery untuk bengkel
+  seasonality:
+    high:
+    - Awal tahun (Januari-Februari) - bonus tahunan
+    - Sebelum liburan panjang (Juni, Desember)
+    low:
+    - Bulan Ramadan (kecuali menjelang Lebaran)
+    - Pertengahan tahun (Juli-Agustus)
+meta:
+  avg_validation_score: 0.75
+  country: id
+  created_at: '2026-02-04'
+  currency: IDR
+  id: automotive
+  language: id
+  languages:
+  - id
+  last_updated: '2026-02-05'
+  phone_codes:
+  - '+62'
+  region: sea
+  tests_run: 3
+  timezone: WIB/WITA/WIT
+  version: '1.1'
+pain_points:
+- description: Pelanggan sering telepon untuk menanyakan status perbaikan
+  severity: high
+  solution_hint: Status otomatis berdasarkan nomor SPK
+- description: Banyak telepon menanyakan harga tanpa konfirmasi janji
+  severity: medium
+  solution_hint: Kalkulasi otomatis untuk layanan standar
+- description: Sulit mendapatkan janji pada waktu yang diinginkan
+  severity: medium
+  solution_hint: Reservasi online dengan pilihan waktu langsung
+- description: Pelanggan lupa jadwal servis berkala berikutnya
+  severity: medium
+  solution_hint: Pengingat otomatis berdasarkan kilometer atau tanggal
+- description: Mekanik terganggu oleh telepon rutin
+  severity: high
+  solution_hint: Agen suara menangani pertanyaan rutin
+- description: Kehilangan pelanggan karena antrian panjang saat musim tertentu
+  severity: medium
+  solution_hint: Sistem antrian virtual dan notifikasi via WhatsApp
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 200000
+  - 5000000
+  entry_point: 150000
+  roi_examples:
+  - scenario: Otomatisasi 50% panggilan status dan penjadwalan
+    monthly_cost: 5000000
+    monthly_savings: 7500000
+    payback_months: 2
+  - scenario: Mengurangi 30% telepon yang tidak terjawab selama jam sibuk
+    monthly_cost: 3000000
+    monthly_savings: 4500000
+    payback_months: 2
+  value_anchors:
+  - Hemat hingga 15 jam per minggu untuk staf admin
+  - Tingkat konversi reservasi meningkat 25%
+  - Kepuasan pelanggan lebih tinggi dengan update real-time
+recommended_functions:
+- name: status_perbaikan
+  priority: high
+  reason: 40-50% panggilan adalah untuk mengecek status
+- name: reservasi
+  priority: high
+  reason: Reservasi untuk servis berkala, ganti ban, dll.
+- name: faq_otomatis
+  priority: medium
+  reason: Harga, ketersediaan suku cadang, jam operasional
+- name: pengingat_servis
+  priority: medium
+  reason: Mengingatkan pelanggan untuk servis berkala
+- name: penerimaan_darurat
+  priority: medium
+  reason: Menerima panggilan darurat untuk mobil mogok atau kecelakaan
+- name: routing_ahli
+  priority: low
+  reason: Pertanyaan teknis kompleks dialihkan ke mekanik senior
+sales_scripts:
+- trigger: price_question
+  situation: Ketika pelanggan menanyakan harga untuk layanan tertentu
+  script: Terima kasih telah menghubungi. Untuk layanan [nama_layanan], harga mulai
+    dari [harga]. Harga dapat bervariasi tergantung kondisi kendaraan. Apakah Anda
+    ingin saya jadwalkan inspeksi gratis untuk estimasi yang lebih akurat?
+  goal: Mengkonversi pertanyaan harga menjadi janji temu
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan harga atau layanan kompetitor
+  script: 'Saya mengerti. Kami menawarkan [keunggulan_kami, seperti: garansi lebih
+    panjang, suku cadang asli, layanan pickup-delivery]. Maukah Anda mencoba layanan
+    kami sekali untuk merasakan perbedaannya? Saya bisa berikan diskon 10% untuk kunjungan
+    pertama.'
+  goal: Menonjolkan diferensiasi dan menawarkan insentif percobaan
+- trigger: busy_schedule
+  situation: Ketika pelanggan mengeluh tentang jadwal yang penuh
+  script: Maaf atas ketidaknyamanannya. Sistem kami menunjukkan ada slot [waktu_terdekat].
+    Atau, kami menawarkan layanan antar-jemput mobil sehingga Anda tidak perlu menunggu.
+    Tertarik untuk menjadwalkan?
+  goal: Menawarkan solusi alternatif dan mengamankan janji
+- trigger: service_reminder
+  situation: Setelah membahas servis berkala yang sudah lewat jadwal
+  script: Berdasarkan catatan, servis berkala terakhir Anda [bulan_lalu]. Untuk menjaga
+    performa dan keamanan, disarankan servis setiap 6 bulan atau 10.000 km. Saya bisa
+    jadwalkan untuk Anda sekarang? Kami berikan gratis pengecekan AC.
+  goal: Mengkonversi percakapan menjadi janji servis
+success_benchmarks:
+  avg_call_duration_seconds: 180
+  target_automation_rate: 0.6
+  typical_kpis:
+  - Otomatisasi 60% permintaan status
+  - Pengurangan beban staf admin 40%
+  - Konversi reservasi > 25%
+  - Kepuasan pelanggan > 4.2/5
+typical_integrations:
+- examples:
+  - Qontak
+  - Mekari Jurnal
+  - Sleekr
+  name: CRM Lokal
+  priority: high
+  reason: Manajemen hubungan pelanggan, riwayat servis
+- examples:
+  - Odoo
+  - HashMicro
+  name: Sistem Manajemen Bengkel
+  priority: high
+  reason: Manajemen SPK, inventaris suku cadang, penjadwalan
+- examples:
+  - MokoTel
+  - NFON
+  name: Teleponi
+  priority: high
+  reason: Menangani panggilan masuk, IVR
+- examples:
+  - WhatsApp Business API
+  - Telegram Bot
+  name: Platform Pesan
+  priority: medium
+  reason: Notifikasi status, pengingat, konfirmasi janji
+- examples:
+  - Google Calendar
+  - Calendly
+  name: Kalender
+  priority: medium
+  reason: Sinkronisasi jadwal dengan mekanik
+typical_objections:
+- objection: Terlalu mahal
+  response: Saya paham. Kami menggunakan suku cadang berkualitas tinggi dan mekanik
+    bersertifikat untuk keamanan kendaraan Anda. Boleh saya tawarkan paket perawatan
+    berkala yang lebih hemat?
+- objection: Tidak punya waktu untuk menunggu
+  response: Kami punya layanan antar-jemput mobil. Atau, kami bisa jadwalkan di hari
+    dan waktu yang Anda inginkan. Kapan biasanya Anda luang?
+- objection: Sudah ada bengkel langganan
+  response: Bagus sekali. Sebagai percobaan, bagaimana jika kami tawarkan inspeksi
+    gratis dan diskon 15% untuk servis pertama? Jadi Anda bisa bandingkan kualitas
+    layanan kami.
+typical_services:
+- Servis Berkala (Periodical Service)
+- Perbaikan Mesin
+- Perbaikan Sistem Kelistrikan
+- Perbaikan Body dan Cat
+- Ganti Ban dan Spooring
+- Service AC Mobil
+- Cuci Mobil dan Detailing
+- Penggantian Aki
+- Penjualan Mobil Baru dan Bekas
+- Layanan Darurat Jalan
+_extends: _base/automotive

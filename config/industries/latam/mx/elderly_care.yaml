@@ -1,0 +1,192 @@
+pain_points:
+- description: Alta rotación de personal de cuidadores, lo que afecta la continuidad del servicio.
+  severity: high
+  solution_hint: Automatizar la programación y monitoreo para reducir carga administrativa y mejorar la retención.
+- description: Dificultad en la gestión de horarios y turnos, causando sobrecarga operativa.
+  severity: high
+  solution_hint: Implementar un agente de voz para coordinar citas y asignaciones en tiempo real.
+- description: Cumplimiento con la LFPDPPP para el manejo seguro de datos personales de pacientes.
+  severity: medium
+  solution_hint: Integrar recordatorios automatizados de consentimiento y protocolos de privacidad.
+- description: Barreras de comunicación con las familias de los adultos mayores, generando desconfianza.
+  severity: medium
+  solution_hint: Usar un agente de voz para enviar actualizaciones y responder consultas frecuentes.
+- description: Altos costos operativos debido a ineficiencias en la administración.
+  severity: high
+  solution_hint: Optimizar procesos con automatización para reducir gastos en personal administrativo.
+- description: Falta de adopción tecnológica, limitando la escalabilidad del negocio.
+  severity: medium
+  solution_hint: Ofrecer soluciones accesibles y fáciles de usar para incentivar la digitalización.
+typical_services:
+- Cuidado en el hogar
+- Asistencia médica a domicilio
+- Terapia física y rehabilitación
+- Servicios de enfermería especializada
+- Actividades recreativas y sociales
+- Alimentación y planificación nutricional
+- Transporte asistido para citas médicas
+- Acompañamiento emocional y psicológico
+- Monitoreo remoto de salud
+- Servicios de limpieza y mantenimiento del hogar
+recommended_functions:
+- name: Programación automatizada de citas
+  priority: high
+  reason: Reduce errores y ahorra tiempo en la coordinación de servicios.
+- name: Recordatorio de medicamentos
+  priority: high
+  reason: Mejora la adherencia al tratamiento y previene complicaciones de salud.
+- name: Monitoreo de síntomas y alertas
+  priority: medium
+  reason: Permite una respuesta rápida ante emergencias, aumentando la seguridad.
+- name: Comunicación con familiares
+  priority: medium
+  reason: Fortalece la confianza al mantener informados a los seres queridos.
+- name: Gestión de documentación y consentimientos
+  priority: low
+  reason: Asegura el cumplimiento con la LFPDPPP y reduce riesgos legales.
+- name: Soporte multilingüe
+  priority: low
+  reason: Atiende a una población diversa en México, mejorando la accesibilidad.
+typical_integrations:
+- name: Sistemas de gestión de citas
+  examples:
+  - Doctoralia
+  - Meditoc
+  - Agendapro
+  priority: high
+- name: Software de facturación
+  examples:
+  - Contpaq
+  - Aspel
+  - Facturama
+  priority: medium
+- name: Plataformas de comunicación
+  examples:
+  - WhatsApp Business API
+  - Telegram Bots
+  priority: high
+- name: Sistemas de historial clínico
+  examples:
+  - SISGEC
+  - Medilink
+  - Clinisoft
+  priority: medium
+- name: Herramientas de nómina
+  examples:
+  - Nomilinea
+  - Siigo Nómina
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los costos promedio de sus servicios de cuidado de ancianos?
+  answer_template: Los costos varían según el nivel de cuidado, pero típicamente oscilan entre 5,000 y 20,000 MXN mensuales. Podemos personalizar un plan según sus necesidades específicas.
+- question: ¿Cómo garantizan la calidad y seguridad del cuidado proporcionado?
+  answer_template: Trabajamos con personal capacitado y usamos tecnología para monitoreo continuo, además de cumplir con todas las normativas locales como la LFPDPPP.
+- question: ¿Ofrecen servicios de emergencia o atención 24/7?
+  answer_template: Sí, contamos con soporte las 24 horas a través de nuestro agente de voz integrado para alertas y respuestas inmediatas.
+- question: ¿Qué métodos de pago aceptan y hay opciones de financiamiento?
+  answer_template: Aceptamos transferencias bancarias, tarjetas de crédito y ofrecemos planes de pago flexibles para adaptarnos a su presupuesto.
+- question: ¿Cómo manejan la privacidad de los datos de los pacientes?
+  answer_template: Implementamos protocolos estrictos alineados con la LFPDPPP, incluyendo cifrado de datos y consentimiento informado automatizado.
+- question: ¿Pueden integrarse con nuestros sistemas existentes?
+  answer_template: Sí, nuestro agente de voz es compatible con diversas plataformas locales, como sistemas de gestión y comunicación, para una integración sencilla.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por los precios durante una llamada inicial.
+  script: Entiendo su preocupación por los costos. Nuestra solución empieza desde 3,000 MXN mensuales y puede ahorrarle hasta un 30% en gastos administrativos. ¿Le gustaría que le detalle un plan personalizado?
+  goal: Convertir la objeción de precio en una oportunidad para demostrar el valor y ROI.
+- trigger: service_inquiry
+  situation: Cuando un cliente se interesa en los servicios específicos ofrecidos.
+  script: Nos especializamos en cuidado en el hogar con tecnología avanzada, como monitoreo remoto y recordatorios automatizados. ¿Hay algún servicio en particular que le preocupe, como la gestión de medicamentos?
+  goal: Educar al cliente sobre los beneficios y personalizar la oferta.
+- trigger: compliance_concern
+  situation: Cuando un cliente menciona inquietudes sobre cumplimiento normativo.
+  script: Nos aseguramos de cumplir con la LFPDPPP mediante integraciones que gestionan consentimientos y datos de forma segura. Esto reduce sus riesgos legales. ¿Le gustaría una demostración?
+  goal: Aliviar preocupaciones y destacar nuestra ventaja competitiva en seguridad.
+- trigger: competitor_comparison
+  situation: Cuando un cliente compara con otras empresas del mercado.
+  script: A diferencia de competidores que se enfocan solo en cuidado básico, nosotros combinamos servicios humanos con IA para eficiencia y tranquilidad. Ofrecemos soporte 24/7 a un costo accesible.
+  goal: Diferenciar nuestro producto y enfatizar el valor agregado.
+competitors:
+- name: Cuidado de Ancianos México
+  positioning: Proveedor tradicional con enfoque en cuidado presencial.
+  strengths:
+  - Amplia red de cuidadores
+  - reconocimiento local
+  weaknesses:
+  - Tecnología limitada
+  - altos costos operativos
+  our_differentiation: Integración de IA para automatización y reducción de costos.
+- name: Senior Care Latam
+  positioning: Cadena regional con servicios estandarizados.
+  strengths:
+  - Presencia en múltiples ciudades
+  - servicios diversificados
+  weaknesses:
+  - Falta de personalización
+  - tiempos de respuesta lentos
+  our_differentiation: Soluciones personalizadas y soporte en tiempo real con agente de voz.
+- name: Hogar Dulce Hogar
+  positioning: Enfoque en cuidado emocional y comunitario.
+  strengths:
+  - Ambiente familiar
+  - actividades sociales
+  weaknesses:
+  - Poca escalabilidad
+  - dependencia de personal humano
+  our_differentiation: Combinación de cuidado humano con tecnología para mayor eficiencia y alcance.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 20000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Reducción de costos administrativos mediante automatización de citas.
+    monthly_cost: 3000
+    monthly_savings: 6000
+    payback_months: 2
+  - scenario: Mejora en la adherencia a medicamentos, reduciendo visitas de emergencia.
+    monthly_cost: 5000
+    monthly_savings: 10000
+    payback_months: 2
+  value_anchors:
+  - Ahorre hasta un 30% en gastos operativos con nuestra tecnología.
+  - 'Invierta en tranquilidad: soporte 24/7 por menos de 100 MXN diarios.'
+  - Cumplimiento garantizado con la LFPDPPP, evitando multas costosas.
+market_context:
+  market_size: Estimado en 10,000 millones de MXN anuales
+  growth_rate: 6% anual
+  key_trends:
+  - Aumento de la población adulta mayor en México.
+  - Creciente preferencia por el cuidado en el hogar sobre instituciones.
+  - Digitalización acelerada en el sector salud post-pandemia.
+  - Mayor demanda de servicios personalizados y flexibles.
+  seasonality:
+    high:
+    - Diciembre
+    - Enero debido a festividades y reuniones familiares.
+    low:
+    - Septiembre
+    - Octubre por temporada de lluvias y menor movilidad.
+typical_objections:
+- objection: El servicio es demasiado caro para nuestro presupuesto.
+  response: Entiendo, pero considere el ahorro a largo plazo. Nuestra solución reduce costos operativos y mejora la eficiencia, con un ROI en pocos meses. ¿Podemos analizar su caso específico?
+- objection: No confiamos en la tecnología para el cuidado de nuestros seres queridos.
+  response: La tecnología complementa, no reemplaza, el cuidado humano. Nuestro agente de voz facilita tareas administrativas, permitiendo que los cuidadores se enfoquen en lo importante. ¿Le gustaría una
+    prueba gratuita?
+- objection: Ya trabajamos con otro proveedor y no queremos cambiar.
+  response: Nuestra integración con sistemas existentes hace la transición sencilla. Ofrecemos mayor flexibilidad y soporte continuo. ¿Podemos mostrarle cómo mejorar su servicio actual sin interrupciones?
+meta:
+  id: elderly_care
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- elderly care
+- senior care
+- nursing home
+- home care
+_extends: _base/elderly_care

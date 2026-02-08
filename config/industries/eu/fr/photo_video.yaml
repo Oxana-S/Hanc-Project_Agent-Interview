@@ -1,0 +1,204 @@
+pain_points:
+- description: La gestion administrative et la facturation prennent un temps considérable, au détriment de la création.
+  severity: high
+  solution_hint: Automatiser la prise de rendez-vous, l'envoi de devis et de factures.
+- description: Difficulté à fidéliser une clientèle régulière en dehors des pics saisonniers (mariages, fêtes).
+  severity: medium
+  solution_hint: Implémenter un système de rappels et d'offres personnalisées pour les anciens clients.
+- description: La concurrence est féroce, notamment sur les plateformes en ligne, rendant la visibilité complexe.
+  severity: high
+  solution_hint: Automatiser la gestion des avis clients et des rendez-vous de prospection.
+- description: Les délais de paiement des clients peuvent être longs, affectant la trésorerie.
+  severity: medium
+  solution_hint: Automatiser les relances de paiement avec courtoisie et professionnalisme.
+- description: Gérer les demandes de renseignements en dehors des heures de bureau (soirs, week-ends) est épuisant.
+  severity: medium
+  solution_hint: Un assistant vocal peut répondre 24h/24 et 7j/7 pour capturer les leads.
+- description: La complexité de la communication pour expliquer les différents forfaits et options techniques.
+  severity: low
+  solution_hint: Fournir des réponses claires et standardisées sur les services et tarifs.
+typical_services:
+- Photographie de mariage
+- Reportage d'entreprise
+- Tournage et montage vidéo publicitaire
+- Portrait studio
+- Photographie culinaire
+- Photographie immobilière
+- Retouche photo avancée
+- Création de contenu pour les réseaux sociaux
+- Film de baptême/anniversaire
+- Drone et prise de vues aériennes
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Permet de capturer les clients immédiatement, sans attente, crucial pour les événements à date fixe.
+- name: Réponses aux FAQ (tarifs, disponibilités, services)
+  priority: high
+  reason: Libère le professionnel des questions répétitives, surtout en période de forte demande.
+- name: Envoi automatisé de devis et de contrats
+  priority: high
+  reason: Accélère le processus de vente et donne une image professionnelle et organisée.
+- name: Relance de paiement automatisée
+  priority: medium
+  reason: Améliore la trésorerie sans créer d'inconfort dans la relation client.
+- name: Qualification des leads entrants
+  priority: medium
+  reason: Pose des questions clés (date, type d'événement, budget) pour prioriser les appels en retour.
+- name: Rappel de rendez-vous
+  priority: low
+  reason: Réduit les taux de rendez-vous manqués, optimisant l'emploi du temps.
+typical_integrations:
+- name: Logiciel de gestion de planning
+  examples:
+  - Calendly
+  - Acuity Scheduling
+  - planificateur interne
+  priority: high
+- name: CRM (Gestion de la Relation Client)
+  examples:
+  - HubSpot
+  - Salesforce
+  - solution personnalisée
+  priority: medium
+- name: Logiciel de facturation/comptabilité
+  examples:
+  - QuickBooks
+  - Sage
+  - Ciel Compta
+  priority: high
+- name: Plateforme de galerie/photos en ligne
+  examples:
+  - Pixieset
+  - ShootProof
+  - SmugMug
+  priority: medium
+- name: Outils de communication
+  examples:
+  - WhatsApp Business
+  - Outlook
+  - Gmail
+  priority: low
+industry_faq:
+- question: Quels sont vos tarifs pour un reportage de mariage ?
+  answer_template: Nos tarifs pour un mariage commencent à partir de [X]€ et sont personnalisés selon la durée, le nombre de photographes et les produits finaux (album, retouches). Je peux vous envoyer
+    notre brochure détaillée par email si vous le souhaitez.
+- question: Êtes-vous disponible le [date] pour un événement d'entreprise ?
+  answer_template: Je vais vérifier notre disponibilité pour cette date. Pourriez-vous me confirmer le lieu et la durée prévue de l'événement afin que je puisse vous préparer une estimation précise ?
+- question: Proposez-vous des forfaits pour les photos de produits ?
+  answer_template: Absolument. Nous proposons des forfaits au shooting ou à l'heure, incluant la prise de vue, le stylisme basique et la retouche. Le prix dépend du nombre de produits et du style souhaité.
+- question: Combien de temps faut-il pour recevoir les photos après le shooting ?
+  answer_template: Notre délai de traitement standard est de [10-15] jours ouvrables. Pour les projets urgents, une option express est disponible avec un supplément.
+- question: Travaillez-vous avec un deuxième photographe ou assistant ?
+  answer_template: Oui, pour les grands événements comme les mariages, un deuxième photographe est fortement recommandé et peut être ajouté à votre forfait. Cela garantit une couverture complète sous plusieurs
+    angles.
+- question: Comment sont protégées mes données et mes photos ?
+  answer_template: Nous respectons strictement le Règlement Général sur la Protection des Données (RGPD/GDPR). Vos données et photos sont stockées de manière sécurisée et ne seront jamais utilisées sans
+    votre consentement explicite.
+sales_scripts:
+- trigger: price_question
+  situation: Quand un client demande le prix dès le premier contact.
+  script: Je comprends que le budget est un critère important. Nos tarifs sont adaptés à chaque projet pour garantir la meilleure qualité. Pour vous proposer une estimation juste, puis-je vous poser quelques
+    questions rapides sur votre événement (date, lieu, durée) ? Cela me permettra de vous orienter vers la formule la plus adaptée.
+  goal: Qualifier le lead et éviter une discussion purement basée sur le prix en engageant une conversation.
+- trigger: competitor_mention
+  situation: Quand le client mentionne un devis moins cher d'un concurrent.
+  script: C'est tout à fait normal de comparer. Notre valeur ajoutée réside dans [l'expérience, la qualité de retouche, l'équipement professionnel, le service personnalisé]. Un prix bas peut parfois cacher
+    des prestations limitées ou des surprises après coup. Nous garantissons une transparence totale et un produit fini qui vous satisfera sur le long terme.
+  goal: Re-centrer la conversation sur la valeur et la qualité, pas seulement le prix.
+- trigger: hesitation_busy
+  situation: Quand le client dit être trop occupé pour discuter.
+  script: Je comprends parfaitement. C'est précisément pour gagner du temps aux professionnels comme vous que notre système existe. En 2 minutes, je peux noter vos besoins essentiels et vous envoyer une
+    proposition claire par email. Vous pourrez la consulter quand cela vous arrange. Cela vous convient-il ?
+  goal: Surmonter l'objection de temps en proposant un processus rapide et non intrusif.
+- trigger: request_demo
+  situation: Quand le client demande à voir des exemples de travaux.
+  script: Avec plaisir. Puis-je vous demander quel type de projet vous avez en tête ? Cela me permettra de vous envoyer directement le lien vers notre portfolio correspondant (mariage, entreprise, portrait...)
+    plutôt qu'un lien général, pour gagner votre temps.
+  goal: Montrer de l'écoute active et personnaliser la démonstration.
+competitors:
+- name: Videaste Pro
+  positioning: Plateforme nationale de mise en relation avec des vidéastes.
+  strengths:
+  - Large réseau de professionnels
+  - interface simple
+  - options variées
+  weaknesses:
+  - Commission élevée
+  - service client standardisé
+  - peu de personnalisation
+  our_differentiation: Nous automatisons la gestion interne du photographe lui-même, nous ne sommes pas une plateforme de mise en relation. Nous l'aidons à gagner du temps sur son activité existante.
+- name: Pixi
+  positioning: Solution tout-en-un pour photographes (site web, galerie, vente).
+  strengths:
+  - Spécialisé photo
+  - outils de vente en ligne intégrés
+  weaknesses:
+  - Focalisé sur la galerie client
+  - moins sur l'automatisation des processus administratifs et de communication téléphonique
+  our_differentiation: Notre assistant vocal gère la première interaction client (appels, qualification) et l'automatisation administrative, complémentaire à des outils comme Pixi.
+- name: Prestataires indépendants généralistes (type Malt)
+  positioning: Plateformes de freelances tous métiers.
+  strengths:
+  - Volume de clients potentiels
+  - simplicité d'inscription
+  weaknesses:
+  - Concurrence par les prix
+  - faible fidélisation
+  - clients pas toujours qualifiés
+  our_differentiation: Nous aidons le professionnel à développer et fidéliser sa clientèle directe, en réduisant sa dépendance aux plateformes et leurs commissions.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1500
+  - 5000
+  entry_point: 49
+  roi_examples:
+  - scenario: Automatisation de la prise de rendez-vous et des réponses aux FAQ pour un photographe de mariage.
+    monthly_cost: 79
+    monthly_savings: 130
+    payback_months: 5.3
+  - scenario: Relances de paiement automatiques pour améliorer la trésorerie d'un vidéaste corporate.
+    monthly_cost: 59
+    monthly_savings: 200
+    payback_months: 0.3
+  value_anchors:
+  - Récupérez l'équivalent de 2 jours de travail par mois en administration.
+  - Ne manquez plus jamais un appel client, même à 22h un dimanche.
+  - Des rappels automatiques qui préservent votre relation client.
+market_context:
+  market_size: Environ 2.5 milliards d'euros (marché de la photo/vidéo pro en France)
+  growth_rate: ~4% par an
+  key_trends:
+  - Forte demande pour le contenu vidéo, surtout court, pour les réseaux sociaux.
+  - Importance croissante de la protection des données (GDPR) dans la gestion des fichiers clients.
+  - Les clients recherchent de plus en plus une expérience 'tout numérique' et fluide, du devis à la livraison.
+  seasonality:
+    high:
+    - Avril à Octobre (saison des mariages)
+    - Novembre-Décembre (événements d'entreprise et fêtes)
+    low:
+    - Janvier, Février
+typical_objections:
+- objection: Je préfère le contact humain, un robot ne comprendra pas les nuances de mon métier.
+  response: Tout à fait, le relationnel est central. Notre assistant gère les tâches répétitives (rdv, FAQ basique) pour vous libérer du temps. Vous reprenez la main pour les échanges importants et créatifs.
+    C'est un gain de temps, pas un remplacement.
+- objection: C'est trop cher pour mon petit budget.
+  response: Je comprends. À partir de [49€/mois], vous automatisez la capture de leads. Si cela vous permet de ne pas rater un seul mariage à 3000€, l'investissement est très rapidement amorti. Pouvons-nous
+    regarder cela ensemble ?
+- objection: Je ne suis pas très à l'aise avec la technologie.
+  response: C'est une préoccupation fréquente. Notre système est conçu pour être très simple. Nous nous chargeons de tout le paramétrage initial selon vos besoins, et vous n'avez ensuite qu'à l'utiliser
+    comme un standard téléphonique classique. Un accompagnement est inclus.
+meta:
+  id: photo_video
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- photo studio
+- video production
+- photography
+- videography
+_extends: _base/photo_video

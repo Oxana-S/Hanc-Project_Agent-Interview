@@ -1,0 +1,276 @@
+pain_points:
+- description: Manque de main-d'œuvre qualifiée, surtout pendant les périodes de récolte
+  severity: high
+  solution_hint: Agent vocal peut gérer les appels pour le recrutement saisonnier
+    et les rappels automatisés
+- description: Volatilité des prix des matières premières et difficultés de prévision
+    des revenus
+  severity: high
+  solution_hint: Notifications vocales automatiques sur les cours du marché et alertes
+    de prix
+- description: Charge administrative croissante liée à la PAC et aux normes environnementales
+  severity: high
+  solution_hint: Assistant vocal pour rappels des échéances et aide au remplissage
+    des formulaires
+- description: Gestion inefficace des rendez-vous avec les techniciens agricoles ou
+    les vétérinaires
+  severity: medium
+  solution_hint: Prise de rendez-vous automatisée et rappels vocaux pour les visites
+- description: Difficultés de communication avec les fournisseurs et les coopératives
+  severity: medium
+  solution_hint: Agent vocal pour passer des commandes ou signaler des problèmes 24h/24
+- description: Surveillance constante des conditions météorologiques et des systèmes
+    d'irrigation
+  severity: medium
+  solution_hint: Alertes vocales personnalisées basées sur les données des capteurs
+- description: Isolement des agriculteurs dans les zones rurales et accès limité au
+    support
+  severity: low
+  solution_hint: Point de contact vocal immédiat pour le support technique ou les
+    urgences
+typical_services:
+- Conseil agronomique
+- Gestion des exploitations agricoles
+- Vente directe à la ferme
+- Location de matériel agricole
+- Services de moissonnage
+- Traitements phytosanitaires
+- Irrigation et gestion de l'eau
+- Élevage bovin/ovin
+- Culture céréalière
+- Viticululture et œnologie
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Réduit considérablement le temps perdu en gestion administrative des visites
+    techniques
+- name: Alertes météo et irrigation
+  priority: high
+  reason: Critique pour optimiser les ressources et protéger les récoltes dans le
+    climat français
+- name: Passation de commandes fournisseurs
+  priority: medium
+  reason: Automatise une tâche répétitive cruciale pour la continuité des activités
+- name: Rappels de conformité PAC
+  priority: high
+  reason: Évite les pénalités coûteuses liées aux réglementations européennes et françaises
+- name: Support multilingue basique
+  priority: low
+  reason: Utile pour les saisonniers étrangers dans certaines régions agricoles
+- name: Collecte de feedback clients
+  priority: medium
+  reason: Important pour les producteurs en vente directe afin d'améliorer leur offre
+typical_integrations:
+- name: Logiciel de gestion d'exploitation
+  examples:
+  - Isagri
+  - SMAG
+  - Ekylibre
+  priority: high
+- name: Station météo connectée
+  examples:
+  - Netatmo
+  - Davis Instruments
+  - Météo-France API
+  priority: medium
+- name: Plateforme de commercialisation
+  examples:
+  - Agriconomie
+  - La Fourche
+  - Place du Marché
+  priority: medium
+- name: Suivi de traçabilité
+  examples:
+  - FarmLEAP
+  - Systèmes internes de coopératives
+  priority: high
+- name: Gestion de la relation client (CRM)
+  examples:
+  - HubSpot
+  - Zoho CRM
+  - Solutions sur mesure
+  priority: low
+industry_faq:
+- question: Votre système fonctionne-t-il dans les zones rurales avec une mauvaise
+    connexion internet ?
+  answer_template: Notre agent vocal fonctionne sur des appels téléphoniques standards,
+    nécessitant seulement une connexion basique. Nous avons des modes dégradés pour
+    les zones à faible couverture.
+- question: Pouvez-vous gérer les spécificités des aides PAC (Politique Agricole Commune)
+    ?
+  answer_template: Oui, notre système peut être configuré pour les rappels et formalités
+    liées à la PAC, en restant bien sûr complémentaire à votre conseiller agricole
+    agréé.
+- question: Est-ce adapté pour une petite exploitation familiale ?
+  answer_template: Absolument. Notre solution est modulaire et scalable. Vous ne payez
+    que pour les fonctions dont vous avez besoin, à partir d'un tarif accessible aux
+    petites structures.
+- question: Comment gérez-vous la confidentialité des données de mon exploitation
+    ?
+  answer_template: Nous sommes entièrement conformes au RGPD. Vos données restent
+    votre propriété et sont hébergées dans l'UE. Nous pouvons vous fournir un contrat
+    de traitement des données.
+- question: Pouvez-vous intégrer le système avec mon logiciel de gestion actuel ?
+  answer_template: Nous avons des connecteurs pour les principaux logiciels agricoles
+    français. Notre équipe technique peut étudier une intégration sur mesure si nécessaire.
+- question: Le système comprend-t-il le jargon technique agricole ?
+  answer_template: Oui, notre agent est entraîné avec le vocabulaire spécifique des
+    filières agricoles et viticoles françaises, et s'adapte à votre secteur.
+sales_scripts:
+- trigger: time_saving_inquiry
+  situation: Quand le prospect mentionne la charge administrative ou le manque de
+    temps
+  script: Je comprends tout à fait. Beaucoup d'agriculteurs comme vous passent plus
+    de 10 heures par semaine sur des tâches administratives et logistiques. Notre
+    agent vocal peut automatiser jusqu'à 70% de ces appels répétitifs. Vous pourriez
+    récupérer l'équivalent d'un jour de travail par semaine. Cela vous intéresserait-il
+    de voir comment cela fonctionnerait pour vos rendez-vous techniques ou vos commandes
+    d'intrants ?
+  goal: Montrer la valeur concrète en temps gagné et amorcer une démonstration ciblée
+- trigger: price_question
+  situation: Quand le prospect demande le prix en premier
+  script: Notre tarification commence à 49€ par mois pour une exploitation typique,
+    avec un engagement trimestriel. Ce prix inclut généralement la gestion des rendez-vous
+    et les alertes météo. Le coût exact dépend des fonctions dont vous avez besoin.
+    Pour vous donner une estimation précise, puis-je vous poser deux questions sur
+    le volume d'appels que vous traitez actuellement et vos principales sources de
+    perte de temps téléphonique ?
+  goal: Déflection douce vers une qualification tout en donnant un point de repère
+    tarifaire
+- trigger: competitor_mention
+  situation: Quand le prospect mentionne un concurrent local
+  script: 'Je connais bien [Nom du concurrent]. Ils font du bon travail sur [leur
+    point fort]. Notre différenciation pour les agriculteurs français est triple :
+    une spécialisation sur le vocabulaire et les processus agricoles locaux, une intégration
+    plus poussée avec les logiciels comme Isagri ou SMAG, et un support technique
+    basé en France. Nous nous concentrons sur l''automatisation des tâches qui vous
+    prennent du temps au quotidien, pas seulement sur la téléphonie générique. Souhaitez-vous
+    que je vous détaille comment cela se traduit pour votre type d''exploitation ?'
+  goal: Reconnaître le concurrent, puis repositionner sur nos forces différenciantes
+    spécifiques au marché français
+- trigger: objection_technology
+  situation: Quand le prospect dit ne pas être à l'aise avec la technologie
+  script: C'est une préoccupation fréquente et tout à fait compréhensible. La bonne
+    nouvelle, c'est que notre solution n'exige aucune compétence technique de votre
+    part. Vous interagissez naturellement par téléphone, comme avec un assistant.
+    Pas d'application à installer, pas d'écran à apprendre. Nous nous occupons de
+    toute la configuration et de la formation en français simple. De nombreux agriculteurs
+    peu technophiles l'utilisent aujourd'hui sans difficulté. Accepteriez-vous un
+    appel de démonstration de 15 minutes, juste pour entendre comment l'agent vous
+    répondrait ?
+  goal: Dédramatiser la technologie et proposer une expérience à risque zéro
+competitors:
+- name: SMAG (Groupe InVivo)
+  positioning: Leader des logiciels de gestion d'exploitation, proposant désormais
+    des modules de communication
+  strengths:
+  - Très forte implantation historique
+  - Connaissance profonde du métier
+  - Intégration native avec ses propres logiciels
+  weaknesses:
+  - Solutions souvent onéreuses
+  - Innovation parfois plus lente
+  - Moins spécialisé sur l'automatisation vocale pure
+  our_differentiation: Nous nous focalisons exclusivement sur l'automatisation vocale
+    intelligente et accessible, avec une intégration ouverte à tous les logiciels,
+    à un prix bien plus abordable pour les fonctions de base.
+- name: Ekylibre
+  positioning: Solution open-source de gestion agricole avec une communauté active
+  strengths:
+  - Coût initial faible
+  - Grande flexibilité et personnalisation possible
+  - Engagement de la communauté
+  weaknesses:
+  - Nécessite une expertise technique en interne
+  - Support structuré limité
+  - Fonctionnalités de communication basiques
+  our_differentiation: Nous offrons une solution clé en main, sans besoin de ressources
+    informatiques, avec un support professionnel dédié et une technologie vocale avancée
+    prête à l'emploi.
+- name: Acteurs génériques de centre d'appels
+  positioning: Sociétés de télémarketing ou de standardistes externalisées
+  strengths:
+  - Présence humaine
+  - Gamme large de services téléphoniques
+  weaknesses:
+  - Coût très élevé à la minute ou à l'heure
+  - Pas de spécialisation agricole
+  - Disponibilité limitée aux horaires de bureau
+  our_differentiation: Notre agent travaille 24h/24 à un coût fixe prévisible, comprend
+    le contexte agricole, et traite les appels routiniers pour libérer votre temps
+    et celui de vos équipes pour les tâches à valeur ajoutée.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 49
+  roi_examples:
+  - scenario: Exploitation céréalière moyenne automatisant la prise de RDV des techniciens
+      et les commandes d'intrants
+    monthly_cost: 89
+    monthly_savings: 180
+    payback_months: 1
+  - scenario: Élevage bovin automatisant les rappels de visites vétérinaires et la
+      collecte de feedback des clients en vente directe
+    monthly_cost: 65
+    monthly_savings: 110
+    payback_months: 1
+  value_anchors:
+  - Moins de 2€ par jour pour un assistant vocal spécialisé
+  - Remboursé par le temps gagné sur 1-2 appels administratifs par jour
+  - Coût fixe mensuel, contrairement à un standardiste externalisé facturé à l'heure
+market_context:
+  market_size: Estimé à 250-300K exploitations agricoles potentielles en France
+  growth_rate: ~8-12% par an pour les solutions agri-tech digitales
+  key_trends:
+  - Digitalisation accélérée des exploitations, poussée par les jeunes agriculteurs
+  - Défis croissants de main-d'œuvre stimulant la demande d'automatisation
+  - Importance grandissante de la vente directe et du lien au consommateur
+  - Pressions réglementaires (environnement, traçabilité) augmentant la charge administrative
+  - Recours accru aux données (météo, sol, marché) pour la prise de décision
+  seasonality:
+    high:
+    - Printemps (semis, traitements)
+    - Été (irrigation, surveillance)
+    - Automne (récoltes, vendanges)
+    low:
+    - Début d'hiver (après les récoltes)
+typical_objections:
+- objection: Je préfère le contact humain avec mes clients et fournisseurs.
+  response: Tout à fait, et c'est primordial. Notre agent gère justement les appels
+    répétitifs et administratifs pour vous libérer du temps. Vous conservez ainsi
+    toute votre énergie et votre disponibilité pour les appels à forte valeur relationnelle,
+    où le contact humain fait la différence.
+- objection: Mon exploitation est trop petite pour justifier un tel investissement.
+  response: 'Au contraire, les petites exploitations sont souvent celles où le temps
+    de l''agriculteur est le plus précieux et le plus étiré. Notre formule d''entrée
+    de gamme est conçue pour être accessible. Calculons ensemble : combien d''heures
+    par semaine passez-vous au téléphone pour des tâches comme prendre un rendez-vous
+    ou rappeler un fournisseur ?'
+- objection: Je suis déjà débordé, je n'ai pas le temps de mettre en place un nouveau
+    système.
+  response: C'est le paradoxe qu'on résout. La mise en place est justement très légère
+    pour vous. En un seul appel de configuration, nous paramétrons l'agent selon vos
+    besoins. Vous n'avez rien à installer. Ensuite, il commence à travailler immédiatement.
+    Pouvons-nous planifier ce court appel de configuration la semaine prochaine ?
+- objection: J'ai des saisonniers étrangers, l'agent ne les comprendra pas.
+  response: C'est un bon point. Nous proposons des modules de compréhension basique
+    dans plusieurs langues (anglais, espagnol, polonais) pour les interactions simples
+    comme pointer son arrivée ou signaler un problème. Pour les échanges complexes,
+    une bascule sur un humain reste possible. Cela couvrirait-il le besoin principal
+    ?
+meta:
+  id: agriculture
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

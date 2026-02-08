@@ -1,0 +1,165 @@
+pain_points:
+- description: Kurangnya tenaga ahli IT yang terampil di Indonesia.
+  severity: high
+  solution_hint: AI voice agent dapat membantu otomatisasi dukungan teknis dan mengurangi ketergantungan pada staf.
+- description: Biaya tinggi untuk implementasi dan pemeliharaan sistem IT.
+  severity: high
+  solution_hint: Menawarkan solusi berbasis AI yang lebih terjangkau dan efisien.
+- description: Ancaman keamanan siber yang meningkat.
+  severity: high
+  solution_hint: AI dapat memantau dan merespons ancaman secara real-time.
+- description: Kepatuhan terhadap regulasi PDP (Perlindungan Data Pribadi).
+  severity: medium
+  solution_hint: AI voice agent dapat membantu dalam pelaporan dan audit kepatuhan.
+- description: Integrasi sistem yang rumit dengan perangkat lunak lokal.
+  severity: medium
+  solution_hint: AI dapat memfasilitasi integrasi dengan API dan sistem yang ada.
+- description: Respons pelanggan yang lambat untuk dukungan teknis.
+  severity: medium
+  solution_hint: AI voice agent menyediakan dukungan 24/7 dengan respon cepat.
+- description: Kesulitan dalam skalabilitas sistem IT seiring pertumbuhan bisnis.
+  severity: low
+  solution_hint: Solusi AI yang mudah diskalakan sesuai kebutuhan.
+typical_services:
+- Pengembangan Perangkat Lunak Kustom
+- Manajemen Jaringan dan Infrastruktur IT
+- Keamanan Siber dan Penetration Testing
+- Dukungan Teknis dan Helpdesk
+- Konsultasi IT dan Strategi Digital
+- Implementasi ERP dan CRM
+- Cloud Migration dan Manajemen
+- Pemeliharaan Sistem dan Update
+- Pelatihan dan Sertifikasi IT
+- Outsourcing IT Staff
+recommended_functions:
+- name: Penjadwalan Janji Temu
+  priority: high
+  reason: Memudahkan klien untuk mengatur konsultasi tanpa menunggu lama.
+- name: Dukungan Pelanggan 24/7
+  priority: high
+  reason: Memberikan respon cepat untuk masalah teknis, meningkatkan kepuasan pelanggan.
+- name: Penjualan dan Pemasaran
+  priority: medium
+  reason: Menjawab pertanyaan tentang layanan dan harga, mengarahkan ke penjualan.
+- name: Pengumpulan Feedback
+  priority: medium
+  reason: Meng
+meta:
+  id: it_services
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- IT services
+- tech support
+- managed services
+- IT consulting
+_extends: _base/it_services
+sales_scripts:
+- trigger: price_question
+  situation: Ketika klien menanyakan harga layanan IT secara langsung.
+  script: Terima kasih atas pertanyaannya. Kami menawarkan berbagai paket yang dapat disesuaikan dengan kebutuhan dan anggaran Anda. Apakah Anda ingin saya jelaskan paket-paket yang tersedia?
+  goal: Menjelaskan opsi harga secara fleksibel dan mengarahkan ke diskusi lebih lanjut.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Saat klien menyebutkan kompetitor dalam pembicaraan.
+  script: Kami menghargai pilihan Anda dan ingin menunjukkan bagaimana solusi AI voice agent kami dapat memberikan layanan dukungan 24/7 dengan respons lebih cepat dan biaya lebih efisien.
+  goal: Membedakan layanan kami dari kompetitor dan menunjukkan keunggulan.
+  effectiveness: high
+- trigger: budget_constraint
+  situation: Jika klien mengungkapkan keterbatasan anggaran.
+  script: Kami memahami pentingnya efisiensi biaya. Dengan solusi AI voice agent kami, Anda dapat mengurangi biaya operasional hingga 30% tanpa mengorbankan kualitas layanan.
+  goal: Meyakinkan klien bahwa layanan kami hemat biaya dan bernilai tinggi.
+  effectiveness: high
+- trigger: feature_inquiry
+  situation: Ketika klien ingin tahu fitur spesifik dari layanan.
+  script: Solusi kami dilengkapi dengan kemampuan otomatisasi penjadwalan, dukungan pelanggan 24/7, dan analisis data real-time yang dapat meningkatkan produktivitas dan kepuasan pelanggan Anda.
+  goal: Menyoroti fitur utama yang relevan dengan kebutuhan klien.
+  effectiveness: medium
+- trigger: security_concern
+  situation: Saat klien mengkhawatirkan keamanan data dan privasi.
+  script: Kami mematuhi regulasi PDP Indonesia dan menggunakan teknologi enkripsi tingkat tinggi untuk memastikan data Anda aman dan terlindungi setiap saat.
+  goal: Menenangkan kekhawatiran klien terkait keamanan dan kepatuhan.
+  effectiveness: high
+competitors:
+- name: PT XYZ Solusi IT
+  positioning: Pemain besar dengan layanan IT menyeluruh di pasar Indonesia.
+  strengths:
+  - Jaringan klien yang luas di berbagai sektor industri.
+  - Pengalaman panjang dalam pengelolaan infrastruktur IT.
+  weaknesses:
+  - Kurang fokus pada solusi AI dan otomatisasi suara.
+  - Biaya layanan yang relatif tinggi.
+  our_differentiation: AI voice agent kami menawarkan otomatisasi dukungan 24/7 yang mengurangi biaya operasional dan meningkatkan responsivitas.
+- name: CV Teknologi Nusantara
+  positioning: Penyedia layanan IT menengah dengan fokus pada UKM.
+  strengths:
+  - Harga kompetitif untuk bisnis kecil dan menengah.
+  - Pelayanan personal dan konsultasi langsung.
+  weaknesses:
+  - Kapasitas layanan terbatas dan kurang inovatif.
+  - Kurangnya integrasi teknologi AI canggih.
+  our_differentiation: Kami menghadirkan teknologi AI voice agent yang canggih dan skalabel, cocok untuk bisnis dari UKM hingga korporasi besar.
+- name: PT Digital Mandiri
+  positioning: Startup yang berkembang dengan solusi digital inovatif.
+  strengths:
+  - Fokus pada pengembangan aplikasi mobile dan cloud.
+  - Layanan cepat dan adaptif terhadap tren teknologi terbaru.
+  weaknesses:
+  - Kurangnya pengalaman di pasar korporasi besar.
+  - Kapabilitas dukungan pelanggan terbatas.
+  our_differentiation: Solusi AI voice agent kami menyediakan dukungan pelanggan 24/7 yang andal dan dapat diintegrasikan dengan sistem yang sudah ada.
+- name: Mitra Solusi Teknologi
+  positioning: Penyedia layanan IT lokal dengan jaringan luas di Jawa.
+  strengths:
+  - Pemahaman mendalam tentang kebutuhan pasar lokal.
+  - Harga layanan yang bersaing.
+  weaknesses:
+  - Teknologi yang digunakan cenderung konvensional dan kurang otomatisasi.
+  - Kurang investasi dalam teknologi AI dan keamanan siber.
+  our_differentiation: Kami menonjol dengan teknologi AI voice agent yang meningkatkan efisiensi layanan dan keamanan data sesuai regulasi PDP.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 10000000
+  - 75000000
+  entry_point: 10000000
+  roi_examples:
+  - scenario: Mengurangi kebutuhan staf dukungan teknis dengan AI voice agent.
+    monthly_cost: 15000000
+    monthly_savings: 30000000
+    payback_months: 1
+  - scenario: Otomatisasi penjadwalan janji temu untuk perusahaan IT menengah.
+    monthly_cost: 10000000
+    monthly_savings: 18000000
+    payback_months: 1
+  - scenario: Penggunaan AI untuk pemantauan keamanan siber real-time.
+    monthly_cost: 20000000
+    monthly_savings: 40000000
+    payback_months: 1
+  value_anchors:
+  - Menghemat biaya operasional hingga 50% dibandingkan metode konvensional.
+  - Meningkatkan efektivitas layanan pelanggan dengan dukungan 24/7.
+  - Mematuhi regulasi PDP untuk keamanan dan privasi data di Indonesia.
+  - Solusi skalabel yang dapat disesuaikan dengan kebutuhan bisnis Anda.
+market_context:
+  market_size: Rp 25 triliun per tahun
+  growth_rate: 8-10%
+  key_trends:
+  - Adopsi AI dan otomatisasi dalam layanan IT semakin meningkat.
+  - Permintaan untuk solusi keamanan siber real-time terus tumbuh.
+  - Perusahaan semakin fokus pada kepatuhan terhadap regulasi PDP.
+  - Pertumbuhan startup teknologi yang mendorong inovasi layanan IT.
+  seasonality:
+    high:
+    - Januari
+    - Februari
+    - September
+    - Oktober
+    low:
+    - Mei
+    - Juni
+    - Desember

@@ -1,0 +1,253 @@
+pain_points:
+- description: High rates of customer no-shows and last-minute cancellations, leading
+    to wasted technician time and lost revenue.
+  severity: high
+  solution_hint: Automate appointment confirmations, reminders, and rescheduling via
+    AI voice agent to reduce no-shows.
+- description: Difficulty managing inbound customer calls during peak hours, leading
+    to missed opportunities and poor customer experience.
+  severity: high
+  solution_hint: Use an AI voice agent to handle initial intake, triage emergencies,
+    schedule callbacks, and answer basic FAQs 24/7.
+- description: Seasonal fluctuations in demand (e.g., HVAC in summer, furnace in winter)
+    make staffing and inventory management challenging.
+  severity: medium
+  solution_hint: Implement automated pre-season maintenance reminder campaigns to
+    smooth demand and optimize scheduling.
+- description: Customer frustration with unclear or inconsistent pricing and long
+    wait times for service estimates.
+  severity: medium
+  solution_hint: Deploy an AI agent to provide standardized service descriptions and
+    ballpark pricing based on common issues before dispatch.
+- description: High operational costs due to fuel, vehicle maintenance, and insurance
+    for mobile technicians across large Canadian geographies.
+  severity: medium
+  solution_hint: Optimize routing and scheduling through integrated systems to reduce
+    travel time and fuel costs.
+- description: Managing compliance with Canadian privacy laws (PIPEDA) for customer
+    data collected over the phone.
+  severity: low
+  solution_hint: Use a compliant AI system with built-in consent capture and secure
+    data handling protocols.
+typical_services:
+- Appliance Repair (Washer, Dryer, Fridge, Oven)
+- HVAC System Repair and Maintenance
+- Furnace and Boiler Service
+- Plumbing Repair and Emergency Services
+- Electrical Repair and Fixture Installation
+- Smart Home Device Setup and Troubleshooting
+- Garage Door Opener Repair
+- Window and Door Repair
+- Appliance Tune-Up and Safety Inspection
+- Drain Cleaning and Sewer Line Services
+recommended_functions:
+- name: 24/7 Automated Appointment Booking & Intake
+  priority: high
+  reason: Captures leads and schedules jobs outside business hours, reducing missed
+    calls and improving customer convenience.
+- name: Proactive Maintenance Reminders
+  priority: high
+  reason: Helps stabilize seasonal demand, builds customer loyalty, and generates
+    recurring revenue.
+- name: Automated Appointment Confirmation and Reminder
+  priority: high
+  reason: Directly addresses the high-severity no-show problem, saving technician
+    time and revenue.
+- name: Call Triage and Emergency Dispatch
+  priority: medium
+  reason: Ensures urgent calls (e.g., flooding, no heat) are prioritized and routed
+    correctly, improving service quality.
+- name: Post-Service Feedback Collection
+  priority: medium
+  reason: Automates the process of gathering Google reviews and testimonials, crucial
+    for local reputation.
+- name: Basic Troubleshooting and DIY Guidance
+  priority: low
+  reason: Can resolve simple issues over the phone, building goodwill and potentially
+    freeing up technicians for complex jobs.
+- name: Upsell/Cross-sell for Service Plans
+  priority: low
+  reason: Generates additional revenue by promoting annual maintenance plans after
+    a successful repair.
+typical_integrations:
+- name: Job Scheduling & Dispatch Software
+  examples:
+  - ServiceTitan
+  - Housecall Pro
+  - mHelpDesk
+  - Simpro
+  priority: high
+- name: Accounting & Invoicing Software
+  examples:
+  - QuickBooks Online
+  - Sage
+  - Xero
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - RepairShopr
+  - Salesforce
+  - Zoho CRM
+  priority: medium
+- name: Payment Processing
+  examples:
+  - Square
+  - Stripe
+  - Moneris
+  priority: medium
+- name: Inventory Management
+  examples:
+  - TradeGecko
+  - inFlow Inventory
+  priority: low
+industry_faq:
+- question: Are your technicians licensed and insured?
+  answer_template: Yes, all of our technicians are fully licensed, bonded, and insured
+    for your complete peace of mind. We can provide documentation upon request.
+- question: Do you offer a warranty on your repairs?
+  answer_template: Absolutely. We offer a [90-day/1-year] warranty on all parts and
+    labour for our repairs. Specific warranty details are provided on your invoice.
+- question: What are your service areas?
+  answer_template: We service the [City/Region] area. You can provide your postal
+    code, and I can immediately confirm if we service your location and our estimated
+    travel time.
+- question: Do you charge a trip/diagnostic fee?
+  answer_template: We typically charge a standard diagnostic/service call fee of [Amount]
+    CAD, which is waived if you proceed with the recommended repair with us.
+- question: Can you provide a quote over the phone?
+  answer_template: I can provide a ballpark estimate for common issues based on your
+    description. For an accurate quote, our technician will need to perform an on-site
+    diagnosis.
+- question: How soon can you get someone out?
+  answer_template: We often have same-day or next-day availability for emergency services.
+    For standard repairs, I can check our schedule right now for the next available
+    slot.
+sales_scripts:
+- trigger: general_inquiry
+  situation: When a potential customer calls asking about services.
+  script: Thank you for calling [Business Name]. My name is [AI Name], your virtual
+    assistant. I'm here to help you book a repair or answer any questions. Are you
+    calling about a specific appliance or system that needs attention today?
+  goal: Qualify the lead, identify the service need, and capture contact info for
+    booking.
+- trigger: price_question
+  situation: When a customer asks about cost before booking.
+  script: I understand wanting to know the cost upfront. For common issues like [mention
+    likely issue based on intake], repairs typically range from [X] to [Y] CAD, including
+    parts and labour. The exact price depends on the diagnosis. Our [Amount] CAD service
+    call fee is applied to the final repair cost. Would you like to schedule a diagnosis
+    with one of our certified technicians?
+  goal: Provide transparent pricing context, justify the diagnostic fee, and move
+    towards booking.
+- trigger: competitor_mention
+  situation: When a customer mentions they are shopping around or using another provider.
+  script: That's a smart way to make a decision. Many of our customers chose us because
+    of our [Key Differentiator, e.g., 'same-day guarantee', 'lifetime labour warranty
+    on select repairs']. We also use an automated system to remind you of maintenance,
+    which can prevent costly emergencies. Can I schedule a quick consultation so we
+    can provide you with a competitive quote?
+  goal: Gently differentiate based on value, not just price, and secure a consultation.
+- trigger: busy_reception
+  situation: When the line is busy or after hours.
+  script: You've reached [Business Name] after hours. I'm here to help you 24/7. I
+    can schedule an appointment, answer frequently asked questions, or have a technician
+    call you back at your preferred time. What can I assist you with today?
+  goal: Capture the lead immediately, prevent hang-ups, and demonstrate superior availability.
+competitors:
+- name: Mr. Appliance / Mr. Rooter (Neighbourly Brands)
+  positioning: National franchise network with strong brand recognition.
+  strengths:
+  - National marketing
+  - standardized processes
+  - large technician network
+  weaknesses:
+  - Can be more expensive
+  - potentially less personal service
+  - franchisee variability
+  our_differentiation: We are a locally owned and operated business offering more
+    personalized service and flexibility, often at better value, supported by the
+    same advanced AI scheduling technology.
+- name: Local Independent Repair Shops
+  positioning: Small, owner-operated businesses serving specific neighbourhoods.
+  strengths:
+  - Deep local knowledge
+  - high trust
+  - often lower overhead
+  weaknesses:
+  - Limited hours
+  - may lack scale for complex jobs
+  - inconsistent booking processes
+  our_differentiation: We combine local expertise with professional, scalable operations,
+    24/7 booking, and automated customer service they can't match.
+- name: Big-Box Retailer Repair Services (e.g., Home Depot, Best Buy)
+  positioning: Large retailers offering repair for products they sell.
+  strengths:
+  - Convenient for in-warranty purchases
+  - perceived reliability
+  weaknesses:
+  - Often subcontracted
+  - long wait times
+  - limited to specific brands
+  our_differentiation: We are brand-agnostic experts focused solely on repair, offering
+    faster response times and servicing a much wider range of appliances and systems.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 89
+  - 1500
+  entry_point: 89
+  roi_examples:
+  - scenario: Reducing no-shows by 20% for a shop with 5 daily appointments.
+    monthly_cost: 299
+    monthly_savings: 1780
+    payback_months: 0.2
+  value_anchors:
+  - Turn missed calls into booked appointments, 24/7.
+  - Reduce costly no-shows by up to 30% with automated reminders.
+  - Improve customer satisfaction with instant service and clear communication.
+market_context:
+  market_size: Multi-billion dollar industry across residential and commercial segments.
+  growth_rate: Steady 3-5% YoY, driven by aging housing stock and consumer electronics.
+  key_trends:
+  - Increasing demand for smart home integration and repair services.
+  - Growth of subscription-based maintenance plans for predictable revenue.
+  - Consumer preference for repairing over replacing due to cost and sustainability.
+  - Rise of the 'gig economy' model for freelance technicians.
+  seasonality:
+    high:
+    - Spring (post-winter damage)
+    - Late Summer (AC units)
+    - Early Fall (furnace prep)
+    low:
+    - Winter holidays (Dec 20 - Jan 5)
+    - Mid-summer vacation periods
+typical_objections:
+- objection: Your service is too expensive compared to the handyman I usually use.
+  response: I appreciate you're mindful of cost. Our certified technicians bring specialized
+    training, proper insurance, and warranties that a general handyman often cannot
+    offer. This protects your home and investment. Could we focus on the value of
+    a guaranteed, long-lasting repair?
+- objection: I'm happy with my current repair company.
+  response: That's great to hear. Loyalty is important. Many of our clients switched
+    to us for our reliability and technology, like our 24/7 booking and automatic
+    maintenance reminders that help avoid emergencies. Would you be open to a second
+    quote next time you need service, just to compare?
+- objection: I don't want to talk to a machine; I want a real person.
+  response: I completely understand. My job is to get you to the right real person,
+    fast. I can book you immediately with our next available technician or schedule
+    a precise callback so you don't wait on hold. Would you like me to do that for
+    you right now?
+meta:
+  id: repair_services
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "repair services"
+- "service center"
+- "phone repair"
+- "tech repair"
+_extends: _base/repair_services

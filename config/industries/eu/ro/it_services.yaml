@@ -1,0 +1,190 @@
+pain_points:
+- description: Lipsa de profesioniști IT calificați pe piață, ceea ce duce la dificultăți în angajare și costuri ridicate.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza sarcinile administrative și de suport, eliberând resurse umane pentru sarcini complexe.
+- description: Costuri crescute pentru actualizări tehnologice și mentenanță, afectând bugetele firmele mici și mijlocii.
+  severity: medium
+  solution_hint: Agentul vocal AI poate oferi soluții scalabile și cost-eficiente pentru monitorizare și alertare, reducând nevoia de investiții majore.
+- description: Amenințări crescute de securitate cibernetică, cu riscuri de încălcare a GDPR, ceea ce poate duce la amenzi și pierderi de reputație.
+  severity: high
+  solution_hint: Agentul vocal AI poate gestiona verificări de conformitate și răspunsuri la incidente, îmbunătățind securitatea.
+- description: Integrarea dificilă cu sisteme legacy sau software-uri vechi, cauzând ineficiențe și downtime.
+  severity: medium
+  solution_hint: Agentul vocal AI poate facilita migrarea și integrarea prin automatizare, reducând timpul de implementare.
+- description: Gestionarea echipelor remote și a proiectelor distribuite, ducând la probleme de comunicare și coordonare.
+  severity: medium
+  solution_hint: Agentul vocal AI poate coordona întâlniri și rapoarte, îmbunătățind colaborarea și transparența.
+- description: Presiune pentru inovare rapidă și adaptare la trendurile tehnologice, cum ar fi cloud și AI, fără resurse suficiente.
+  severity: medium
+  solution_hint: Agentul vocal AI poate oferi insights și recomandări personalizate bazate pe date, accelerând inovarea.
+typical_services:
+- Consultanță IT și strategie digitală
+- Dezvoltare software personalizat și aplicații web
+- Suport tehnic și helpdesk
+- Securitate cibernetică și protecția datelor (conform GDPR)
+- Migrare și management cloud (AWS, Azure, Google Cloud)
+- Administrare rețea și infrastructură IT
+- Testare și asigurarea calității software
+- Mentenanță și actualizări sistem
+- Integrare sisteme și automatizare procese
+- Formare și training IT pentru angajați
+recommended_functions:
+- name: Programare automată de întâlniri și reminder-uri
+  priority: high
+  reason: Reduce timpul administrativ și îmbunătășeșeșe coordonarea în echipele IT.
+- name: Răspuns la întrebări frecvente despre servicii și prețuri
+  priority: high
+  reason: Oferă informații rapide clienților, crescând satisfacția și reducând volumul de apeluri.
+- name: Generare rapoarte de performanță și monitorizare sisteme
+  priority: medium
+  reason: Ajută la identificarea problemelor și optimizarea resurselor IT.
+- name: Suport pentru clienți prin triaj automat de tickete
+  priority: high
+  reason: Acceleră rezolvarea problemelor și reduce timpul de așteptare.
+- name: Vânzări și marketing prin prezentări automate de produse
+  priority: medium
+  reason: Atrage noi clienți și explică valoarea serviciilor într-un mod eficient.
+- name: Automatizare procese de back-office, cum ar fi facturare
+  priority: low
+  reason: Reduce erorile umane și costurile operaționale.
+typical_integrations:
+- name: Sisteme ERP
+  examples:
+  - SAP
+  - Oracle
+  - Softwin (soluții locale)
+  priority: high
+- name: Sisteme CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - HubSpot
+  priority: high
+- name: Instrumente de securitate cibernetică
+  examples:
+  - Bitdefender
+  - Kaspersky
+  - Palo Alto Networks
+  priority: high
+- name: Platforme cloud
+  examples:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud Platform
+  priority: medium
+- name: Instrumente de colaborare și comunicare
+  examples:
+  - Microsoft Teams
+  - Slack
+  - Zoom
+  priority: medium
+industry_faq:
+- question: Ce servicii IT oferiți și cum se potrivesc nevoilor mele?
+  answer_template: Oferim o gamă completă de servicii IT, de la consultanță la suport tehnic, personalizate pentru a vă spori eficiența și securitatea. Vă putem ajuta să identificați soluțiile optime.
+- question: Cât costă implementarea serviciilor voastre și care este bugetul tipic?
+  answer_template: Costurile variază în funcție de complexitate, cu puncte de intrare de la 1000 RON lunar. Vă oferim o estimare personalizată bazată pe nevoile dumneavoastră.
+- question: Cum asigurați securitatea datelor și conformitatea cu GDPR în România?
+  answer_template: Implementăm măsuri de securitate avansate și procese conforme GDPR, inclusiv criptare și audituri regulate, pentru a proteja datele dumneavoastră.
+- question: Aveți experiență în proiecte similare în România sau regiunea UE?
+  answer_template: Da, avem o experiență vastă în proiecte IT în România și UE, cu cazuri de succes în diverse industrii, garantând soluții adaptate pieței locale.
+- question: Ce faceti în caz de defecțiuni sau urgente IT?
+  answer_template: Oferim suport tehnic non-stop și planuri de rezolvare rapidă a incidentelor, minimizând downtime-ul și impactul asupra afacerii dumneavoastră.
+- question: Cum vă diferentiați de alți furnizori IT din România?
+  answer_template: Ne concentrăm pe soluții personalizate, prețuri competitive și suport excepțional, cu accent pe inovare și conformitate locală.
+sales_scripts:
+- trigger: price_question
+  situation: Când clientul întreabă despre prețuri sau costuri inițiale.
+  script: Bună ziua! Înțeleg că sunteți interesat de costuri. Prețurile noastre încep de la 1000 RON lunar pentru servicii de bază și sunt personalizate pentru a vă oferi cel mai bun ROI. V-aș putea ajuta
+    cu o analiză gratuită pentru a determina soluția optimă?
+  goal: Să explice flexibilitatea prețurilor și să câștige încrederea pentru o discuție mai detaliată.
+- trigger: service_inquiry
+  situation: Când clientul cere informații despre servicii specifice, cum ar fi securitatea IT.
+  script: Bun venit! Pentru securitate IT, oferim soluții complete conform GDPR, inclusiv monitorizare și răspuns la incidente. Vă pot detalia cum vă putem proteja afacerea la costuri eficiente?
+  goal: Să prezinte valoarea serviciilor și să identifice nevoile clientului.
+- trigger: competitor_mention
+  situation: Când clientul menționează un competitor sau compară oferte.
+  script: Înțeleg că explorați opțiuni. Spre deosebire de alți furnizori, ne concentrăm pe suport local și integrare ușoară, asigurând o tranziție fără probleme și costuri reduse pe termen lung. Doriți
+    să discutăm beneficiile concrete?
+  goal: Să evidențieze diferențierea și să convingă de avantajele ofertei noastre.
+- trigger: urgency_indicated
+  situation: Când clientul exprimă o nevoie urgentă, cum ar fi o problemă de securitate.
+  script: Vă pot ajuta imediat! Avem echipe disponibile non-stop pentru rezolvarea rapidă a incidentelor. Vă propun o evaluare urgentă pentru a minimiza riscurile și costurile. Sunteți disponibil acum?
+  goal: Să demonstreze responsabilitatea și să captureze clientul într-o situație critică.
+competitors:
+- name: Bitdefender
+  positioning: Lider în securitate cibernetică, cu accent pe produse software.
+  strengths:
+  - Recunoaștere globală în securitate
+  - Produse inovatoare
+  - Prezență puternică în România
+  weaknesses:
+  - Servicii limitate de consultanță IT generală
+  - Costuri ridicate pentru soluții complete
+  our_differentiation: Oferim soluții IT integrate, inclusiv securitate, cu servicii personalizate și suport local dedicat.
+- name: Endava
+  positioning: Furnizor de servicii IT și consultanță, cu accent pe outsourcing.
+  strengths:
+  - Experiență internațională
+  - Abilități tehnice diverse
+  - Scalabilitate pentru proiecte mari
+  weaknesses:
+  - Prețuri mai mari comparativ cu furnizorii locali
+  - Personalizare limitată pentru firme mici
+  our_differentiation: Avem prețuri competitive și abordare adaptată firmelor mici și mijlocii din România, cu răspuns rapid.
+- name: Softwin
+  positioning: Companie locală de software și servicii IT, cu soluții pentru diverse industrii.
+  strengths:
+  - Cunoaștere profundă a pieței locale
+  - Produse personalizate
+  - Relații strânse cu clienții români
+  weaknesses:
+  - Limitări în tehnologii avansate cum ar fi AI
+  - Capacitate redusă pentru proiecte internaționale
+  our_differentiation: Combinăm inovația cu experiența locală, oferind tehnologii de vârf și conformitate GDPR la costuri accesibile.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 1000
+  roi_examples:
+  - scenario: Automatizare procese administrative pentru o firmă mică
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Implementare securitate cibernetică pentru conformitate GDPR
+    monthly_cost: 5000
+    monthly_savings: 10000
+    payback_months: 2
+  value_anchors:
+  - Reducerea costurilor operaționale cu până la 30% prin automatizare
+  - Protejarea datelor și evitarea amendelor GDPR cu investiții eficiente
+  - Creșterea productivității echipei IT cu suport inteligent
+market_context:
+  market_size: Estimarea pieței IT din România este de aproximativ 2 miliarde EUR anual, în creștere constantă.
+  growth_rate: 10-15% pe an
+  key_trends:
+  - Digitalizarea accelerată a firmelor mici și mijlocii
+  - Adoptarea cloud-ului și a soluțiilor hibride
+  - Creșterea cererii pentru
+  seasonality:
+    high:
+    - Septembrie
+    - Octombrie
+    low:
+    - Iulie
+    - August
+meta:
+  id: it_services
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- IT services
+- tech support
+- managed services
+- IT consulting
+_extends: _base/it_services

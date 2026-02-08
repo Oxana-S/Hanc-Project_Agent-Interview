@@ -1,0 +1,213 @@
+pain_points:
+- description: Hohe Kosten für den Kundenservice durch manuelle Abwicklung.
+  severity: high
+  solution_hint: Automatisierte Sprachagenten können Routineanfragen bearbeiten und
+    Kosten senken.
+- description: Netzausfälle und Störungen führen zu unzufriedenen Kunden.
+  severity: high
+  solution_hint: AI-Agenten können Störungsmeldungen entgegennehmen und priorisieren.
+- description: Komplexe Tarifstrukturen verursachen Verwirrung bei Kunden.
+  severity: medium
+  solution_hint: Sprachagenten können Tarifberatung anbieten und personalisierte Empfehlungen
+    geben.
+- description: Lange Wartezeiten in der Hotline frustrieren Kunden.
+  severity: medium
+  solution_hint: 24/7 verfügbare AI-Agenten reduzieren Wartezeiten und verbessern
+    die Servicequalität.
+- description: Rechnungsfehler und Inkonsistenzen im Abrechnungssystem.
+  severity: low
+  solution_hint: Integration mit Billing-Software für automatische Fehlererkennung
+    und Korrektur.
+- description: Schwierigkeiten bei der Kundenbindung und Vertragsverlängerung.
+  severity: medium
+  solution_hint: Proaktive AI-Agenten können Verlängerungsangebote machen und Kunden
+    ansprechen.
+typical_services:
+- Festnetztelefonie
+- Mobilfunkverträge
+- Breitband-Internet (DSL, Glasfaser)
+- IPTV und Streaming-Dienste
+- Cloud-Speicher und Hosting
+- Business-Lösungen (z.B. VPN, M2M)
+- Roaming-Pakete
+- Smart Home Integration
+- 5G-Netzwerke
+- VoIP-Telefonie
+recommended_functions:
+- name: Automatisierte Störungsannahme
+  priority: high
+  reason: Reduziert manuellen Aufwand und verbessert Reaktionszeiten bei Netzproblemen.
+- name: Tarifberatung und Upselling
+  priority: high
+  reason: Erhöht den Umsatz durch personalisierte Angebote basierend auf Kundennutzung.
+- name: Rechnungsauskunft und Zahlungserinnerungen
+  priority: medium
+  reason: Senkt Inkassokosten und verbessert die Kundenzufriedenheit durch transparente
+    Abrechnung.
+- name: Vertragsverlängerungsmanagement
+  priority: medium
+  reason: Steigert die Kundenbindung durch automatische Erinnerungen und Angebote.
+- name: FAQ-Antworten und Selbstbedienung
+  priority: low
+  reason: Entlastet den Kundenservice durch Beantwortung häufiger Fragen.
+- name: Terminvereinbarung für Technikerbesuche
+  priority: low
+  reason: Optimiert die Planung und reduziert Wartezeiten für Kunden.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - SAP CRM
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Billing- und Abrechnungssysteme
+  examples:
+  - SAP Billing
+  - Oracle BRM
+  - local solutions like A1 systems
+  priority: high
+- name: Netzwerkmanagement-Tools
+  examples:
+  - Cisco systems
+  - Juniper Networks
+  - proprietary Austrian tools
+  priority: medium
+- name: Datenbanken für Kundendaten
+  examples:
+  - MySQL
+  - PostgreSQL
+  - MongoDB
+  priority: medium
+- name: Compliance- und GDPR-Tools
+  examples:
+  - OneTrust
+  - TrustArc
+  - local GDPR software
+  priority: low
+industry_faq:
+- question: Wie kann ich meinen Tarif wechseln?
+  answer_template: Gerne berate ich Sie zu passenden Tarifen. Bitte nennen Sie mir
+    Ihre aktuellen Nutzungsdaten.
+- question: Was tun bei Netzstörungen?
+  answer_template: Ich nehme Ihre Störungsmeldung entgegen und leite sie weiter. Bitte
+    beschreiben Sie das Problem.
+- question: Wie verlängere ich meinen Vertrag?
+  answer_template: Ich kann Ihnen Verlängerungsoptionen anbieten. Möchten Sie ein
+    Angebot erhalten?
+- question: Welche Roaming-Kosten fallen im EU-Ausland an?
+  answer_template: In der EU gelten oft inkludierte Roaming-Pakete. Ich prüfe gerne
+    Ihren Tarif für Details.
+- question: Wie sicher ist mein Internetanschluss?
+  answer_template: Wir bieten Sicherheitspakete an. Ich empfehle eine Überprüfung
+    Ihrer aktuellen Einstellungen.
+- question: Kann ich meinen Vertrag kostenlos kündigen?
+  answer_template: Kündigungsbedingungen hängen von Ihrer Vertragslaufzeit ab. Ich
+    schaue mir Ihren Fall an.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für einen neuen Tarif fragt.
+  script: Guten Tag! Ich helfe Ihnen gerne bei der Tarifauswahl. Basierend auf Ihrem
+    Nutzungsprofil kann ich Ihnen personalisierte Angebote machen. Möchten Sie mit
+    mir sprechen?
+  goal: Lead generieren und zum Gespräch einladen.
+- trigger: contract_renewal
+  situation: Wenn ein Kunde seinen Vertrag verlängern möchte.
+  script: Sehr geehrter Kunde, ich sehe, Ihr Vertrag läuft bald aus. Ich habe spezielle
+    Verlängerungsangebote für Sie. Interessiert?
+  goal: Vertragsverlängerung abschließen und Kundenbindung stärken.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach zusätzlichen Dienstleistungen wie Smart Home fragt.
+  script: Vielen Dank für Ihr Interesse! Wir bieten innovative Lösungen wie Smart
+    Home Integration. Darf ich Ihnen mehr dazu erzählen?
+  goal: Upselling und Cross-Selling von Dienstleistungen.
+- trigger: complaint_handling
+  situation: Wenn ein Kunde eine Beschwerde über Service oder Netz hat.
+  script: Es tut mir leid zu hören, dass Sie Probleme haben. Ich nehme Ihr Anliegen
+    auf und sorge für eine schnelle Lösung. Können Sie mir Details nennen?
+  goal: Kunden zufriedenstellen und Eskalation verhindern.
+competitors:
+- name: A1 Telekom Austria
+  positioning: Marktführer mit breitem Festnetz- und Mobilfunkangebot.
+  strengths:
+  - Umfangreiches Netzwerk
+  - Hohe Markenbekanntheit
+  - Vielseitige Dienstleistungen
+  weaknesses:
+  - Höhere Preise
+  - Langsame Innovation in einigen Bereichen
+  our_differentiation: Wir bieten agilere AI-gesteuerte Lösungen für personalisierten
+    Service.
+- name: Magenta (Telekom)
+  positioning: Großer Anbieter mit Fokus auf Entertainment und Internet.
+  strengths:
+  - Starke TV- und Streaming-Angebote
+  - Gute Netzabdeckung
+  weaknesses:
+  - Komplexe Tarifstrukturen
+  - Mittelmäßiger Kundenservice
+  our_differentiation: Unsere AI-Agenten vereinfachen Tarifauswahl und verbessern
+    den Service.
+- name: Drei (Hutchison Drei Austria)
+  positioning: Innovativer Mobilfunkanbieter mit wettbewerbsfähigen Preisen.
+  strengths:
+  - Attraktive Preise
+  - Fokus auf Mobilfunk
+  - Junge Zielgruppe
+  weaknesses:
+  - Begrenztes Festnetzangebot
+  - Schwächere Business-Lösungen
+  our_differentiation: Wir kombinieren kosteneffiziente AI-Lösungen mit umfassendem
+    Service.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 20
+  roi_examples:
+  - scenario: Automatisierung des Kundenservices für einen mittelgroßen Anbieter
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 4
+  value_anchors:
+  - Kosteneinsparungen von bis zu 30% durch automatisierte Prozesse
+  - Steigerung der Kundenzufriedenheit um 20% mit 24/7 Service
+  - Schnelle Amortisation innerhalb weniger Monate
+market_context:
+  market_size: Etwa 5 Milliarden EUR jährlich
+  growth_rate: 2-3% pro Jahr
+  key_trends:
+  - Ausbau von 5G-Netzwerken
+  - Zunehmende Nachfrage nach Glasfaser-Internet
+  - Integration von AI und IoT in Telekomdienstleistungen
+  - Stärkerer Fokus auf Datenschutz und GDPR-Compliance
+  seasonality:
+    high:
+    - Schulbeginn im September
+    - Weihnachtszeit
+    low:
+    - Sommerferien (Juli-August)
+typical_objections:
+- objection: AI-Agenten sind unpersönlich und nicht effektiv.
+  response: Unsere AI-Agenten sind darauf trainiert, menschliche Interaktionen zu
+    simulieren und bieten schnelle, präzise Hilfe.
+- objection: Die Einführung ist zu teuer und komplex.
+  response: Wir bieten skalierbare Lösungen mit klarem ROI. Oft amortisieren sich
+    die Kosten innerhalb weniger Monate.
+- objection: Wir haben bereits ausreichend Kundenservice-Mitarbeiter.
+  response: AI-Agenten ergänzen Ihr Team, entlasten es von Routineaufgaben und ermöglichen
+    Fokus auf komplexe Fälle.
+meta:
+  id: telecom
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

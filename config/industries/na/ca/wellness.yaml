@@ -1,0 +1,228 @@
+aliases:
+- wellness
+- spa
+- massage
+- salon
+- aesthetics
+- fitness
+- yoga
+- pilates
+- studio
+- beauty
+- skincare
+competitors:
+- name: Hand & Stone Massage and Facial Spa
+  positioning: Nationwide franchise offering affordable, accessible massage and facial services.
+  strengths:
+  - Strong brand recognition across Canada
+  - Consistent service quality and pricing
+  - Convenient locations and extended hours
+  weaknesses:
+  - Can feel impersonal due to franchise model
+  - Less flexibility for personalized treatment plans
+  - High therapist turnover in some locations
+  our_differentiation: We offer a more personalized, holistic experience with dedicated practitioners and customized wellness plans.
+- name: GoodLife Fitness
+  positioning: Largest fitness club chain in Canada, focusing on gym facilities and group classes.
+  strengths:
+  - Extensive network of clubs
+  - Wide variety of equipment and classes
+  - Strong corporate wellness programs
+  weaknesses:
+  - Can be crowded, especially during peak hours
+  - Less focus on one-on-one wellness services like massage or aesthetics
+  - Membership contracts can be rigid
+  our_differentiation: We provide integrated wellness services beyond just fitness, including recovery, aesthetics, and personalized coaching.
+- name: Sephora
+  positioning: Global beauty retailer with in-store skincare services and consultations.
+  strengths:
+  - Vast product selection and brand access
+  - Trend-driven services and expertise
+  - Loyalty program with strong perks
+  weaknesses:
+  - Services can be product-sales focused
+  - Limited time for comprehensive treatments
+  - Less focus on therapeutic or relaxation services
+  our_differentiation: Our services are treatment and results-oriented, not primarily designed for product sales, offering a more relaxing and therapeutic environment.
+industry_faq:
+- answer_template: The price depends on the service and duration. A standard 60-minute Swedish massage starts at $90 CAD. Can I tell you more about our options?
+  question: How much does a massage cost?
+- answer_template: A standard treatment is 60 minutes. We also offer express 30-minute options and extended 90-minute sessions for deeper relaxation.
+  question: How long is a typical session?
+- answer_template: I can book for you right now. What service are you interested in and for what day?
+  question: How do I book an appointment?
+- answer_template: Yes, absolutely. Please provide your name and the new preferred time.
+  question: Can I reschedule my appointment?
+- answer_template: Contraindications vary by treatment. It's best to consult with your practitioner beforehand. We recommend disclosing any medical conditions during booking.
+  question: Are there any contraindications?
+- answer_template: We are closed on statutory holidays, but we are open most weekends. I can check availability for Saturday or Sunday for you.
+  question: Are you open on weekends?
+- answer_template: We accept credit cards (Visa, Mastercard, Amex), debit, and sometimes e-transfer. Payment is due at the time of service.
+  question: What methods of payment do you accept?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: 5-7% YoY
+  key_trends:
+  - Increased demand for mental wellness and stress-reduction services
+  - Growth in at-home service requests and mobile wellness
+  - Focus on holistic health integrating fitness, nutrition, and recovery
+  - Rising popularity of non-invasive aesthetic treatments
+  market_size: Estimated $20+ billion CAD
+  seasonality:
+    high:
+    - January (New Year resolutions)
+    - May-June (pre-summer)
+    - November-December (holiday stress and gifting)
+    low:
+    - Late summer (August)
+    - Early fall (September)
+meta:
+  avg_validation_score: 0.0
+  country: ca
+  created_at: '2024-07-17'
+  currency: CAD
+  id: wellness
+  language: en
+  languages:
+  - en
+  - fr
+  last_updated: '2024-07-17'
+  phone_codes:
+  - '+1'
+  region: na
+  tests_run: 0
+  timezone: America/Toronto
+  version: '1.0'
+pain_points:
+- description: High volume of missed calls during peak hours (lunchtime, evenings), leading to lost bookings.
+  severity: high
+  solution_hint: AI voice agent to answer calls 24/7, capture leads, and schedule appointments.
+- description: Significant number of no-shows and last-minute cancellations, wasting practitioner time.
+  severity: high
+  solution_hint: Automated SMS/email reminders 48 hours and 2 hours before appointments, with easy cancellation/rescheduling.
+- description: Administrative staff spend excessive time answering repetitive questions about services, prices, and hours.
+  severity: medium
+  solution_hint: AI agent handling FAQs, freeing staff for higher-value tasks and in-person client care.
+- description: Difficulty filling last-minute cancellation slots, resulting in lost revenue.
+  severity: medium
+  solution_hint: AI agent can manage a waitlist and proactively contact clients to fill sudden openings.
+- description: Challenges in promoting seasonal packages, memberships, and promotions to existing clients.
+  severity: medium
+  solution_hint: Outbound calls or messages from the AI agent to inform clients of personalized offers based on their service history.
+- description: Client information and preferences are not consistently captured or updated, leading to a less personalized experience.
+  severity: low
+  solution_hint: AI agent can gently ask for and record preferences during the booking or confirmation call for the CRM.
+pricing_context:
+  currency: CAD
+  entry_point: 65
+  roi_examples:
+  - monthly_cost: 300
+    monthly_savings: 1500
+    payback_months: 1
+    scenario: Reducing no-shows by 15% and automating 20 hours of admin work per month.
+  typical_budget_range:
+  - 65
+  - 200
+  value_anchors:
+  - Investing in wellness saves on future healthcare costs.
+  - Our personalized plans deliver better long-term results than one-off treatments.
+  - Time is valuable; we help you optimize your health efficiently.
+recommended_functions:
+- name: booking
+  priority: high
+  reason: Core function - booking appointments with service, practitioner, and time slot selection, integrated with local booking software.
+- name: reminders
+  priority: high
+  reason: Critical for reducing no-shows. Automated reminders via preferred channel (SMS/email).
+- name: faq
+  priority: medium
+  reason: Handles common queries about services, preparation, pricing, and policies instantly.
+- name: reschedule_cancel
+  priority: medium
+  reason: Allows clients to change or cancel appointments easily, improving customer experience and freeing slots.
+- name: waitlist_management
+  priority: medium
+  reason: Fills last-minute cancellations by automatically contacting waitlisted clients, optimizing revenue.
+- name: promotions_outreach
+  priority: low
+  reason: Proactively informs clients about relevant promotions, memberships, or seasonal packages.
+sales_scripts:
+- goal: Convert a price inquiry into a booked appointment by emphasizing value and options.
+  script: I understand. Our pricing reflects the expertise of our certified practitioners and the quality of our products. We also offer introductory packages for new clients and memberships that provide
+    significant savings. Would you like to hear about our introductory offer, or shall I find a time for a consultation?
+  situation: When a potential client expresses concern about price ("That seems expensive").
+  trigger: price_objection
+- goal: Overcome indecision and secure a tentative booking.
+  script: Of course, take your time. To ensure you don't miss out, I can tentatively hold a spot for you for [suggest next 2-3 days]. This just reserves the time – you can confirm or cancel with 24 hours'
+    notice. Would that work?
+  situation: When a client is hesitant and says "I need to think about it" or "Let me check my calendar."
+  trigger: hesitation
+- goal: Upsell a single session to a package or membership.
+  script: That's a great choice. For clients looking to see sustained results, we offer a package of [number] sessions at a [percentage] discount. It's our most popular option as it ensures you get the
+    full benefit. Would you like to start with the package today?
+  situation: After a client books a single session for a service that typically requires multiple visits (e.g., laser hair removal, treatment facials).
+  trigger: single_session_booking
+success_benchmarks:
+  avg_call_duration_seconds: 150
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reduce no-show rate to <10%
+  - 50% of new bookings via AI agent
+  - Average booking time < 3 minutes
+  - Client satisfaction score > 4.7/5
+typical_integrations:
+- examples:
+  - Mindbody
+  - Jane App
+  - Timely
+  - Versum
+  name: Booking/Wellness CRM
+  priority: high
+  reason: Essential for real-time schedule management, client profiles, and processing bookings.
+- examples:
+  - Twilio
+  - Telnyx
+  name: SMS/Communications Platform
+  priority: high
+  reason: For sending appointment reminders, confirmations, and promotions.
+- examples:
+  - Klaviyo
+  - Mailchimp
+  name: Email Marketing
+  priority: medium
+  reason: For newsletters, promotional campaigns, and automated follow-ups.
+- examples:
+  - Shopify
+  - Square
+  name: Point of Sale (POS)
+  priority: medium
+  reason: For processing payments, selling retail products, and gift certificates.
+- examples:
+  - Zoom
+  - Google Meet
+  name: Virtual Consultation Tools
+  priority: low
+  reason: For offering remote wellness consultations or classes.
+typical_objections:
+- objection: It's too expensive.
+  response: We focus on value and long-term results. Our introductory packages offer a lower cost per session, and many clients find the benefits for their stress and health far outweigh the cost. Can I
+    tell you about our introductory offer?
+- objection: I don't have the time.
+  response: We understand busy schedules. We offer express services and early/late appointments. Investing an hour in your wellness can actually make you more productive and focused for the rest of the
+    week.
+- objection: I'm not sure if it's for me.
+  response: That's perfectly normal. We recommend starting with a consultation or a beginner-friendly session like a relaxation massage. There's no pressure, and it's a great way to see if our approach
+    fits your needs.
+typical_services:
+- Massage Therapy (Swedish, Deep Tissue, Sports, Hot Stone)
+- Esthetician Services (Facials, Chemical Peels, Microdermabrasion)
+- Manicure & Pedicure
+- Hair Styling & Cutting
+- Body Treatments & Wraps
+- Laser Hair Removal & Electrolysis
+- Fitness Training & Personal Coaching
+- Yoga & Pilates Classes
+- Nutritional Counseling
+- Infrared Sauna Sessions
+_extends: _base/wellness

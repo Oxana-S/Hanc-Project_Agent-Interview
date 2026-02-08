@@ -1,0 +1,208 @@
+pain_points:
+- description: Patients face long wait times on phone lines for appointment scheduling.
+  severity: high
+  solution_hint: AI voice agent for 24/7 instant appointment booking.
+- description: High no-show rates due to forgotten appointments.
+  severity: high
+  solution_hint: Automated reminders via call, SMS, or email before appointments.
+- description: Frequent calls for routine inquiries about clinic hours, services, and test preparations.
+  severity: medium
+  solution_hint: AI-powered FAQ system to answer common questions automatically.
+- description: Administrative staff overwhelmed, reducing time for patient care.
+  severity: high
+  solution_hint: Automate appointment management and basic inquiries to free up staff.
+- description: Errors in booking, such as incorrect doctor or time slots.
+  severity: medium
+  solution_hint: Structured booking process with confirmation steps to minimize mistakes.
+typical_services:
+- Physician Consultation
+- Diagnostic Imaging (X-ray, MRI, CT Scan)
+- Laboratory Tests (Blood Work, Urinalysis)
+- Ultrasound
+- Vaccination Services
+- Physiotherapy
+- Dental Care
+- Mental Health Services
+- Home Care Services
+- Emergency Triage
+recommended_functions:
+- name: appointment_booking
+  priority: high
+  reason: Over 60% of calls are for booking or rescheduling appointments.
+- name: appointment_reminder
+  priority: high
+  reason: Reduces no-show rates by 30-40% with automated reminders.
+- name: faq_handler
+  priority: high
+  reason: Handles common questions about hours, services, and test preparations efficiently.
+- name: prescription_refill
+  priority: medium
+  reason: Allows patients to request prescription renewals without calling during busy hours.
+- name: insurance_verification
+  priority: medium
+  reason: Verifies patient insurance coverage before appointments to avoid billing issues.
+- name: symptom_checker
+  priority: low
+  reason: Provides basic triage to direct patients to appropriate care levels.
+typical_integrations:
+- name: EHR Systems
+  examples:
+  - EPIC
+  - Cerner
+  - Meditech
+  priority: high
+  reason: Integrates with patient records for scheduling and accessing medical history.
+- name: Practice Management Software
+  examples:
+  - Jane App
+  - MediRecords
+  - ClinicMaster
+  priority: high
+  reason: Manages appointments, billing, and patient data seamlessly.
+- name: Telephony Systems
+  examples:
+  - RingCentral
+  - 8x8
+  - Vonage
+  priority: high
+  reason: Handles incoming calls and enables call routing for emergencies.
+- name: Messaging Platforms
+  examples:
+  - Twilio for SMS
+  - Email integrations
+  priority: medium
+  reason: Sends appointment reminders and notifications to patients.
+- name: CRM Systems
+  examples:
+  - Salesforce Health Cloud
+  - HubSpot
+  priority: medium
+  reason: Tracks patient interactions and improves follow-up care.
+industry_faq:
+- question: How do I book an appointment?
+  answer_template: Please provide the doctor's specialty and a preferred date, and I'll check available slots for you.
+- question: What tests require fasting?
+  answer_template: Blood glucose and lipid profile tests require fasting. For general blood tests, it's recommended to be on an empty stomach.
+- question: How do I prepare for an abdominal ultrasound?
+  answer_template: Avoid gas-producing foods for 3 days prior. On the day of the test, come on an empty stomach.
+- question: Are you open on weekends?
+  answer_template: Yes, we are open on Saturdays from 9 AM to 5 PM, and have on-call doctors available on Sundays.
+- question: Can I get a doctor's home visit?
+  answer_template: Yes, home visits are available. Please provide your address and describe your symptoms.
+- question: How much does a consultation cost?
+  answer_template: Costs vary by specialist. An initial consultation with a general practitioner starts from 100 CAD.
+sales_scripts:
+- trigger: price_question
+  situation: When a potential client asks about the cost of the AI voice agent solution.
+  script: Our AI voice agent solution starts at 200 CAD per month and can reduce administrative costs by up to 40%. Would you like a personalized ROI estimate based on your clinic's volume?
+  goal: Demonstrate value and encourage further discussion on savings.
+- trigger: competitor_mention
+  situation: When the client mentions a competitor like TELUS Health or WELL Health.
+  script: Unlike general telemedicine platforms, our AI voice agent is specifically designed to automate your clinic's phone operations — appointment booking, reminders, and FAQ handling — integrating seamlessly
+    with your existing EHR and phone systems. This means less disruption for your staff and immediate ROI from day one.
+  goal: Differentiate from competitors by highlighting integration and operational focus.
+- trigger: insurance_inquiry
+  situation: when a potential client asks if the medical services are covered by insurance
+  script: 'Client: Do you accept insurance for your medical services?
+
+    Sales Rep: Absolutely, we work with most major insurance providers here in California to ensure you get the coverage you deserve. If you’d like, I can check your specific plan details for you right
+    now to confirm coverage and any out-of-pocket costs. Our goal is to make healthcare accessible and affordable for you. Would you like me to proceed with that?'
+  goal: to inform the client about insurance acceptance and encourage them to share their insurance details for personalized assistance
+meta:
+  id: medical
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- medical
+- healthcare
+- clinic
+- hospital
+- doctor
+_extends: _base/medical
+competitors:
+- name: Maple
+  positioning: Leading virtual healthcare provider in Canada
+  strengths:
+  - Extensive network of licensed physicians
+  - User-friendly app for virtual consultations
+  - 24/7 availability for patients
+  weaknesses:
+  - Limited integration with existing clinic telephony systems
+  - Focused mainly on virtual visits, less on in-clinic automation
+  our_differentiation: AI voice agent automates appointment booking and reminders seamlessly across virtual and physical care settings.
+- name: Babylon by TELUS Health
+  positioning: Prominent AI-driven healthcare platform
+  strengths:
+  - Advanced AI symptom checker
+  - Strong backing from TELUS Health
+  - Integrated health monitoring tools
+  weaknesses:
+  - Higher cost for clinics to adopt
+  - Limited customization for practice-specific workflows
+  our_differentiation: Customizable AI voice agent tailored to clinic workflows, reducing call wait times and no-shows effectively.
+- name: Medeo
+  positioning: Popular telemedicine app in Canada
+  strengths:
+  - Easy video consultations
+  - Secure messaging platform
+  - Integration with provincial health systems
+  weaknesses:
+  - Less focus on automation of administrative tasks
+  - Limited support for multi-lingual voice agents
+  our_differentiation: AI voice agent enhances patient experience by handling appointment logistics automatically in English, improving access and reducing administrative burden.
+- name: TELUS Health Virtual Care
+  positioning: Comprehensive digital health solutions provider
+  strengths:
+  - Broad suite of digital health services
+  - Integration with electronic medical records
+  - Strong presence in Canadian healthcare market
+  weaknesses:
+  - Complex setup process for smaller clinics
+  - Higher pricing tiers for advanced features
+  our_differentiation: Quick deployment AI voice agent focused on reducing phone wait times and improving patient engagement with cost-effective automation.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 3000
+  entry_point: 500
+  roi_examples:
+  - scenario: Clinic reduces phone wait times and no-show rates using AI voice agent.
+    monthly_cost: 1000
+    monthly_savings: 2500
+    payback_months: 1
+  - scenario: Automated reminders decrease missed appointments, increasing revenue.
+    monthly_cost: 1500
+    monthly_savings: 4000
+    payback_months: 1
+  - scenario: AI FAQ handling reduces staff workload, enabling operational cost savings.
+    monthly_cost: 700
+    monthly_savings: 1800
+    payback_months: 1
+  value_anchors:
+  - Reduces patient wait times by up to 50%
+  - Cuts no-show rates by up to 40%
+  - Saves administrative staff time, allowing focus on patient care
+  - Improves patient satisfaction with 24/7 service availability
+market_context:
+  market_size: CAD 4 billion annually
+  growth_rate: 6-8%
+  key_trends:
+  - Increasing adoption of telemedicine and digital health tools
+  - Growing demand for AI-driven automation in healthcare administration
+  - Rising patient expectations for convenience and 24/7 access
+  - Emphasis on data privacy and compliance with PIPEDA
+  seasonality:
+    high:
+    - January
+    - February
+    - October
+    - November
+    low:
+    - July
+    - August
+    - December

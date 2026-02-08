@@ -1,0 +1,238 @@
+pain_points:
+- description: Retrasos frecuentes en los plazos de entrega debido a una mala coordinación
+    entre equipos y proveedores.
+  severity: high
+  solution_hint: El agente de voz IA puede automatizar la comunicación y seguimiento
+    de tareas, alertando sobre posibles retrasos.
+- description: Aumento imprevisto de costos por cambios en materiales o mano de obra
+    no planificados.
+  severity: high
+  solution_hint: IA puede monitorizar presupuestos en tiempo real y alertar sobre
+    desviaciones, facilitando ajustes rápidos.
+- description: Dificultades en el cumplimiento de normativas locales y GDPR para la
+    gestión de datos de clientes y empleados.
+  severity: medium
+  solution_hint: El agente puede proporcionar recordatorios y guías sobre requisitos
+    de cumplimiento, reduciendo riesgos legales.
+- description: Escasez de mano de obra cualificada, especialmente en períodos de alta
+    demanda.
+  severity: medium
+  solution_hint: IA puede ayudar en la automatización de procesos administrativos,
+    liberando recursos para tareas críticas.
+- description: Baja eficiencia en la gestión de citas y consultas de clientes, perdiendo
+    oportunidades de venta.
+  severity: low
+  solution_hint: Un agente de voz puede gestionar llamadas y programar citas automáticamente,
+    mejorando la atención al cliente.
+- description: Falta de visibilidad en el progreso de proyectos, llevando a decisiones
+    basadas en información desactualizada.
+  severity: medium
+  solution_hint: IA puede integrarse con sistemas de gestión para proporcionar actualizaciones
+    en tiempo real vía voz.
+typical_services:
+- Construcción residencial
+- Reformas y rehabilitaciones
+- Gestión de proyectos de obra
+- Instalaciones eléctricas y de fontanería
+- Aislamiento térmico y acústico
+- Construcción sostenible y eficiencia energética
+- Mantenimiento de edificios
+- Demoliciones controladas
+- Certificaciones energéticas
+- Consultoría en permisos y licencias
+recommended_functions:
+- name: Programación de citas automática
+  priority: high
+  reason: Mejora la eficiencia al reducir tiempos muertos en la coordinación con clientes
+    y proveedores.
+- name: Respuesta a preguntas frecuentes sobre servicios y precios
+  priority: high
+  reason: Libera al personal para tareas más complejas y proporciona información inmediata
+    a clientes potenciales.
+- name: Calificación de leads basada en criterios predefinidos
+  priority: medium
+  reason: Ayuda a priorizar oportunidades de venta y optimizar esfuerzos comerciales.
+- name: Recordatorios de pagos y facturación
+  priority: medium
+  reason: Reduce la morosidad y mejora el flujo de caja mediante automatización.
+- name: Integración con sistemas ERP para actualizaciones de proyecto
+  priority: high
+  reason: Proporciona visibilidad en tiempo real, crucial para la toma de decisiones
+    en construcción.
+- name: Soporte multilingüe para trabajadores internacionales
+  priority: low
+  reason: Facilita la comunicación en obras con equipos diversos, común en España.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - SAP
+  - Microsoft Dynamics
+  - A3Software
+  priority: high
+- name: Software de gestión de proyectos
+  examples:
+  - Trello
+  - Asana
+  - PlanRadar
+  priority: medium
+- name: Herramientas de contabilidad
+  examples:
+  - Contasimple
+  - Sage
+  - Quipu
+  priority: medium
+- name: Plataformas CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Aplicaciones de mensajería y comunicación
+  examples:
+  - WhatsApp Business
+  - Slack
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los plazos típicos para un proyecto de reforma?
+  answer_template: Los plazos varían según la envergadura, pero para una reforma media,
+    suelen ser de 2 a 4 meses. Podemos proporcionar un cronograma detallado tras evaluar
+    su caso específico.
+- question: ¿Cómo garantizan el cumplimiento de normativas como GDPR en la gestión
+    de datos?
+  answer_template: Implementamos protocolos de seguridad y confidencialidad, y nuestro
+    agente IA está diseñado para alertar sobre requisitos de cumplimiento, asegurando
+    que todos los datos se manejen según la ley.
+- question: ¿Ofrecen servicios de construcción sostenible?
+  answer_template: Sí, especializamos en eficiencia energética y materiales ecológicos,
+    ayudando a obtener certificaciones como la etiqueta energética en España.
+- question: ¿Qué pasa si hay retrasos imprevistos en la obra?
+  answer_template: Nuestro sistema IA monitoriza el progreso y notifica proactivamente
+    sobre posibles retrasos, permitiendo ajustes rápidos para minimizar impactos.
+- question: ¿Cómo manejan los pagos y facturas?
+  answer_template: Automatizamos la facturación y recordatorios de pago a través de
+    nuestro agente de voz, asegurando transparencia y reduciendo errores.
+- question: ¿Tienen experiencia en obras en zonas históricas o protegidas?
+  answer_template: Sí, contamos con experiencia en gestionar permisos especiales y
+    adaptar proyectos a normativas locales, como las de ayuntamientos españoles.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de nuestros servicios de automatización.
+  script: Hola, entiendo que quiere conocer el precio. Nuestros planes empiezan desde
+    50 EUR al mes para funciones básicas como gestión de citas, y pueden escalar según
+    sus necesidades. ¿Le gustaría que le detalle los beneficios en ahorro de tiempo
+    y costos?
+  goal: Convertir la consulta de precio en una discusión sobre valor y ROI.
+- trigger: service_inquiry
+  situation: Cuando un cliente pregunta sobre servicios específicos de construcción.
+  script: Gracias por su interés. Ofrecemos desde reformas hasta gestión de proyectos
+    completos. Nuestro agente IA puede ayudarle a coordinar todo de manera eficiente.
+    ¿En qué tipo de proyecto está pensando?
+  goal: Calificar el lead y dirigir hacia una demostración o consulta personalizada.
+- trigger: compliance_concern
+  situation: Cuando un cliente expresa preocupación por el cumplimiento normativo.
+  script: Comprendo su preocupación. En España, el cumplimiento con GDPR y normativas
+    locales es clave. Nuestra solución incluye alertas automáticas y guías para asegurar
+    que todo esté en regla, reduciendo riesgos.
+  goal: Aliviar objeciones y destacar nuestra ventaja en cumplimiento.
+- trigger: free_trial_request
+  situation: Cuando un cliente solicita una prueba gratuita.
+  script: Claro, ofrecemos una prueba de 14 días sin compromiso. Durante este tiempo,
+    podrá ver cómo nuestro agente IA optimiza su comunicación y gestión. ¿Le parece
+    bien programar una configuración inicial?
+  goal: Cerrar la venta inicial y fomentar la adopción.
+competitors:
+- name: ACS
+  positioning: Líder en construcción a gran escala en España y Europa.
+  strengths:
+  - Amplia experiencia y recursos
+  - Portafolio diverso de proyectos
+  - Fuerte presencia internacional
+  weaknesses:
+  - Menor flexibilidad para PYMES
+  - Procesos lentos y burocráticos
+  our_differentiation: Ofrecemos soluciones de automatización accesibles y personalizadas
+    para PYMES, con enfoque en agilidad y reducción de costos.
+- name: Ferrovial
+  positioning: Especializada en infraestructuras y servicios urbanos.
+  strengths:
+  - Innovación en sostenibilidad
+  - Grandes contratos públicos
+  - Reputación sólida
+  weaknesses:
+  - Enfoque menos en digitalización para pequeñas empresas
+  - Precios altos
+  our_differentiation: Proporcionamos herramientas digitales asequibles que integran
+    IA para mejorar la eficiencia operativa diaria.
+- name: Local PYMES de construcción
+  positioning: Pequeñas empresas familiares con conocimiento local.
+  strengths:
+  - Atención personalizada
+  - Conocimiento de mercados locales
+  - Precios competitivos
+  weaknesses:
+  - Limitaciones en tecnología y escalabilidad
+  - Dependencia de métodos tradicionales
+  our_differentiation: Complementamos su operativa con IA que no requiere gran inversión,
+    mejorando su competitividad sin perder el toque personal.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 500
+  entry_point: 50
+  roi_examples:
+  - scenario: Automatización de gestión de citas para una PYME de construcción
+    monthly_cost: 50
+    monthly_savings: 200
+    payback_months: 1
+  - scenario: Integración con ERP para seguimiento de proyectos
+    monthly_cost: 150
+    monthly_savings: 500
+    payback_months: 3
+  value_anchors:
+  - Ahorre hasta un 30% en costos administrativos con nuestra IA.
+  - 'Invierta en eficiencia: cada euro en automatización retorna en productividad.'
+  - Soluciones escalables desde 50 EUR/mes, ideales para el mercado español.
+market_context:
+  market_size: Aproximadamente 100 mil millones EUR anuales en el sector construcción
+    en España.
+  growth_rate: 2-3% anual, impulsado por renovaciones y construcción sostenible.
+  key_trends:
+  - Aumento de la digitalización y uso de BIM (Building Information Modeling).
+  - Creciente demanda de eficiencia energética y certificaciones verdes.
+  - Regulaciones más estrictas en seguridad y protección de datos.
+  seasonality:
+    high:
+    - Primavera y verano (marzo a septiembre)
+    low:
+    - Invierno (diciembre a febrero), debido a condiciones climáticas.
+typical_objections:
+- objection: Es demasiado caro para mi pequeña empresa.
+  response: Entiendo su preocupación. Nuestro plan de entrada es de solo 50 EUR/mes,
+    y el ahorro en tiempo y errores suele compensar la inversión en pocos meses. ¿Le
+    gustaría ver un cálculo personalizado?
+- objection: No confío en la tecnología para gestionar algo tan crítico como una obra.
+  response: Nuestra IA está diseñada para complementar, no reemplazar, la experiencia
+    humana. Proporciona alertas y apoyo, reduciendo riesgos. Podemos mostrarle casos
+    de éxito en España.
+- objection: Ya tengo sistemas en marcha y no quiero complicaciones.
+  response: Nuestras integraciones son sencillas y se adaptan a sus herramientas existentes.
+    La transición es suave y el agente IA aprende de sus procesos para minimizar interrupciones.
+- objection: ¿Qué pasa si hay fallos técnicos durante la obra?
+  response: Contamos con soporte técnico 24/7 y redundancia en sistemas. Además, la
+    IA puede operar de forma autónoma, asegurando continuidad incluso en caso de incidencias.
+meta:
+  id: construction
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

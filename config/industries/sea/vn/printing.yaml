@@ -1,0 +1,256 @@
+pain_points:
+- description: Chi phí nguyên vật liệu (giấy, mực) biến động thường xuyên, khó dự
+    đoán và kiểm soát.
+  severity: high
+  solution_hint: Đề xuất hệ thống theo dõi và cảnh báo biến động giá từ nhà cung cấp,
+    giúp chủ in ấn đặt hàng với mức giá tối ưu.
+- description: Quản lý đơn hàng phức tạp, dễ nhầm lẫn thông số kỹ thuật (kích thước,
+    chất liệu, số lượng) giữa các đơn.
+  severity: high
+  solution_hint: Triển khai chatbot tự động xác nhận thông tin đơn hàng, ghi nhận
+    yêu cầu và gửi báo cáo chi tiết cho khách hàng.
+- description: Khách hàng thường gọi điện hỏi trạng thái đơn hàng, tốn nhiều thời
+    gian nhân viên tư vấn.
+  severity: medium
+  solution_hint: AI tổng đài tự động thông báo tiến độ in ấn, thời gian giao hàng
+    dự kiến 24/7, giảm tải cho bộ phận chăm sóc khách hàng.
+- description: Khó khăn trong việc thu hút và giữ chân khách hàng cũ do cạnh tranh
+    giá gay gắt.
+  severity: medium
+  solution_hint: Hệ thống gọi điện tự động nhắc lịch, chăm sóc khách hàng cũ, thông
+    báo chương trình ưu đãi, tăng tỷ lệ quay lại.
+- description: Xử lý thanh toán chậm từ khách hàng, đặc biệt là khách hàng doanh nghiệp,
+    ảnh hưởng đến dòng tiền.
+  severity: medium
+  solution_hint: Bot tự động gọi nhắc nợ theo lịch trình, gửi hóa đơn điện tử và nhắc
+    nhở thanh toán một cách chuyên nghiệp.
+- description: Khó tiếp cận khách hàng tiềm năng mới ở các khu vực ngoại thành hoặc
+    tỉnh lẻ.
+  severity: low
+  solution_hint: Triển khai chiến dịch tiếp thị qua cuộc gọi tự động (telemarketing)
+    đến danh sách khách hàng mục tiêu được phân vùng.
+typical_services:
+- In offset công nghiệp
+- In kỹ thuật số (in nhanh)
+- In bao bì, hộp giấy
+- In catalogue, brochure
+- In name card, thiệp
+- In decal, nhãn mác
+- In backdrop, standee quảng cáo
+- Dịch vụ thiết kế đồ họa
+- Gia công sau in (cán màng, bế, xén, đóng gáy)
+- In áo đồng phục (in chuyển nhiệt, in lụa)
+recommended_functions:
+- name: Tiếp nhận & xác nhận đơn hàng tự động
+  priority: high
+  reason: Giảm thiểu sai sót thông tin đơn hàng, tiết kiệm thời gian cho nhân viên
+    tư vấn, chuyên nghiệp hóa trải nghiệm đặt hàng.
+- name: Thông báo tiến độ đơn hàng
+  priority: high
+  reason: Giải đáp 24/7 thắc mắc phổ biến của khách hàng về trạng thái đơn, giảm tới
+    70% cuộc gọi hỏi thăm thủ công.
+- name: Nhắc lịch giao hàng & thu hồi công nợ
+  priority: medium
+  reason: Tối ưu hóa dòng tiền bằng cách nhắc nợ tự động, chuyên nghiệp, đảm bảo lịch
+    giao hàng chính xác.
+- name: Chăm sóc khách hàng cũ & cross-selling
+  priority: medium
+  reason: Tự động liên hệ, cảm ơn và đề xuất dịch vụ mới dựa trên lịch sử đặt hàng,
+    tăng doanh thu từ khách hiện tại.
+- name: Tổng đài ảo tiếp thị (telemarketing)
+  priority: low
+  reason: Mở rộng phạm vi tiếp cận khách hàng tiềm năng với chi phí thấp, chủ động
+    tạo nguồn đơn hàng mới.
+typical_integrations:
+- name: Phần mềm quản lý in ấn (MIS)
+  examples:
+  - PrintIQ
+  - EFI Monarch
+  - Avanti
+  priority: high
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast
+  - BRAVO
+  priority: high
+- name: Nền tảng Thương mại điện tử/Website
+  examples:
+  - Haravan
+  - Shopify
+  - WordPress (WooCommerce)
+  priority: medium
+- name: Công cụ CRM
+  examples:
+  - CRMVIET
+  - Sales365
+  - HubSpot
+  priority: medium
+- name: Phần mềm thiết kế
+  examples:
+  - Adobe Creative Cloud
+  - CorelDRAW
+  priority: low
+industry_faq:
+- question: Báo giá in 1000 tờ catalogue A4, 20 trang, cán màng bóng là bao nhiêu?
+  answer_template: 'Chào anh/chị, để báo giá chính xác, hệ thống cần thêm một vài
+    thông tin: chất liệu giấy anh/chị dự định (ví dụ: Couche, Ford), số lượng màu
+    in (4/4 hay 4/0), và thời gian giao hàng. Tôi có thể kết nối anh/chị với bộ phận
+    kinh doanh để nhận báo giá chi tiết trong 5 phút được không ạ?'
+- question: Đơn hàng của tôi đang ở công đoạn nào rồi?
+  answer_template: Chào anh/chị, vui lòng cho tôi biết mã đơn hàng hoặc số điện thoại
+    đặt hàng. Tôi sẽ kiểm tra ngay trạng thái mới nhất của đơn hàng và thông báo chi
+    tiết cho anh/chị.
+- question: Có nhận in số lượng ít (dưới 100 tờ) không?
+  answer_template: Chào anh/chị, bên em có dịch vụ in kỹ thuật số chuyên xử lý các
+    đơn hàng số lượng ít, thời gian giao nhanh. Tuy giá thành trên một đơn vị có thể
+    cao hơn in offset, nhưng phù hợp với nhu cầu in thử, in gấp. Anh/chị có thể chia
+    sẻ cụ thể sản phẩm cần in để em hỗ trợ tốt hơn không ạ?
+- question: Thời gian in và giao hàng trong nội thành HCM mất bao lâu?
+  answer_template: Thời gian hoàn thành phụ thuộc vào độ phức tạp và số lượng đơn
+    hàng. Ví dụ, đơn in name card số lượng 1000 thường giao trong 1-2 ngày làm việc.
+    Đối với đơn hàng lớn hoặc có gia công phức tạp (như bế hộp), thời gian có thể
+    từ 3-7 ngày. Bộ phận kinh doanh sẽ báo thời gian dự kiến cụ thể khi nhận đủ thông
+    tin đơn hàng.
+- question: Có hỗ trợ thiết kế mẫu in không?
+  answer_template: Vâng, bên em có đội ngũ thiết kế chuyên nghiệp hỗ trợ thiết kế
+    hoặc chỉnh sửa file theo yêu cầu. Chi phí thiết kế sẽ được báo riêng dựa trên
+    độ phức tạp của mẫu. Anh/chị có thể gửi ý tưởng hoặc yêu cầu cơ bản để em báo
+    giá sơ bộ được không?
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng tiềm năng hỏi về giá cả chung chung hoặc so sánh giá.
+  script: Chào anh/chị, cảm ơn anh/chị đã quan tâm. Giá thành in ấn phụ thuộc vào
+    nhiều yếu tố như chất liệu, kích thước, số lượng và công đoạn gia công. Thay vì
+    một mức giá cố định, chúng tôi tập trung tối ưu chi phí tổng thể để đem lại chất
+    lượng tốt nhất cho đơn hàng của anh/chị. Anh/chị có thể chia sẻ cụ thể sản phẩm
+    đang cần in để em phân tích và đề xuất giải pháp tiết kiệm nhất được không ạ?
+  goal: Chuyển hướng từ thảo luận giá cả sang thảo luận nhu cầu cụ thể, thể hiện sự
+    chuyên nghiệp và định vị về giá trị.
+- trigger: cart_abandonment
+  situation: Khách hàng để lại thông tin trên website nhưng chưa đặt hàng hoặc bỏ
+    dở đơn online.
+  script: Chào anh/chị, em là [Tên Bot] từ [Tên Công ty In]. Em thấy anh/chị vừa xem
+    sản phẩm [Tên sản phẩm] trên website. Có phải anh/chị đang cần tư vấn thêm về
+    chất liệu, quy cách in hoặc báo giá chi tiết không ạ? Em có thể hỗ trợ ngay bây
+    giờ.
+  goal: Tái kích hoạt khách hàng tiềm năng, giải đáp vướng mắc ngay lập tức để chốt
+    đơn hàng.
+- trigger: post_service_followup
+  situation: Sau khi giao hàng 3-5 ngày, gọi để khảo sát mức độ hài lòng.
+  script: Chào anh/chị [Tên KH], em là [Tên Bot] từ [Tên Cty In]. Em gọi để hỏi thăm
+    đơn hàng [Mã đơn] vừa giao đã nhận được ổn định chưa ạ? Chất lượng in và màu sắc
+    có đúng như kỳ vọng không? Bên em luôn nỗ lực hoàn thiện dịch vụ, nên rất mong
+    nhận được phản hồi từ anh/chị.
+  goal: Nâng cao trải nghiệm khách hàng, thể hiện sự chuyên nghiệp, tăng cơ hội nhận
+    đơn hàng tiếp theo và thu thập testimonial.
+competitors:
+- name: Các xưởng in gia đình/công ty in nhỏ lẻ
+  positioning: Giá rẻ, linh hoạt với đơn hàng nhỏ, tập trung địa phương.
+  strengths:
+  - Giá thành cạnh tranh rất cao
+  - Quy trình đơn giản, giao tiếp trực tiếp
+  - Linh hoạt về thời gian (có thể làm ngoài giờ)
+  weaknesses:
+  - Công nghệ lạc hậu, chất lượng không ổn định
+  - Không có chính sách bảo hành rõ ràng
+  - Khả năng xử lý đơn hàng lớn/số lượng nhiều hạn chế
+  our_differentiation: Ứng dụng công nghệ quản lý và in ấn hiện đại, đảm bảo chất
+    lượng đồng đều, có chính sách bảo hành và hỗ trợ khách hàng 24/7 qua AI.
+- name: Các công ty in ấn lớn (In Hồng Hà, In Tiến Phong...)
+  positioning: Thương hiệu lâu năm, năng lực sản xuất lớn, phục vụ doanh nghiệp.
+  strengths:
+  - Năng lực sản xuất quy mô lớn
+  - Máy móc thiết bị hiện đại
+  - Danh tiếng và độ tin cậy cao
+  weaknesses:
+  - Giá thành cao
+  - Quy trình cứng nhắc, ít linh hoạt với đơn hàng nhỏ
+  - Thời gian phản hồi và xử lý đơn hàng đôi khi chậm
+  our_differentiation: Cung cấp dịch vụ linh hoạt cho cả đơn nhỏ và lớn với quy trình
+    tự động hóa, thời gian phản hồi nhanh chóng 24/7 và mức giá tối ưu hơn.
+- name: Các nền tảng in ấn trực tuyến (Printgo,  Printify VN)
+  positioning: Giao diện trực tuyến thân thiện, giá niêm yết, tập trung vào khách
+    hàng cá nhân & startup.
+  strengths:
+  - Trải nghiệm đặt hàng online thuận tiện
+  - Giá niêm yết minh bạch
+  - Nhiều mẫu thiết kế có sẵn
+  weaknesses:
+  - Khó tư vấn kỹ thuật chuyên sâu
+  - Ít linh hoạt trong chỉnh sửa yêu cầu đặc biệt
+  - Chất lượng gia công có thể không đồng đều giữa các đối tác in
+  our_differentiation: Kết hợp lợi thế công nghệ với đội ngũ tư vấn chuyên sâu qua
+    tổng đài AI, hỗ trợ tối đa các yêu cầu đặc thù và cam kết chất lượng từ xưởng
+    in riêng.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 500000
+  - 50000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Tự động hóa tiếp nhận & trả lời 50 cuộc gọi hỏi tiến độ đơn hàng/ngày
+    monthly_cost: 1500000
+    monthly_savings: 6000000
+    payback_months: 1
+  - scenario: Tự động chăm sóc & nhắc lịch cho 200 khách hàng cũ, tăng tỷ lệ quay
+      lại 15%
+    monthly_cost: 2000000
+    monthly_savings: 10000000
+    payback_months: 1
+  value_anchors:
+  - Tiết kiệm 80% thời gian trả lời các cuộc gọi lặp đi lặp lại về tiến độ đơn hàng.
+  - Tăng 30% tỷ lệ thu hồi công nợ đúng hạn với hệ thống nhắc nợ tự động, chuyên nghiệp.
+  - Mở rộng phạm vi tiếp thị mà không cần thuê thêm nhân viên tele-sales.
+market_context:
+  market_size: Khoảng 3-4 tỷ USD (2023)
+  growth_rate: 6-8% mỗi năm
+  key_trends:
+  - Chuyển dịch từ in offset truyền thống sang in kỹ thuật số để đáp ứng đơn hàng
+    số lượng ít, cá nhân hóa.
+  - Nhu cầu in bao bì thân thiện môi trường (giấy tái chế, mực sinh học) đang tăng.
+  - Số hóa và kết nối đặt hàng trực tuyến trở thành xu hướng tất yếu.
+  - Tự động hóa trong quy trình quản lý sản xuất và chăm sóc khách hàng để cắt giảm
+    chi phí.
+  seasonality:
+    high:
+    - Tháng 9 - Tháng 12 (cao điểm cuối năm, Tết Dương lịch & Âm lịch)
+    - Tháng 3 - Tháng 5 (mùa hội chợ, khai trương)
+    low:
+    - Tháng 1 - Tháng 2 (sau Tết Âm lịch)
+    - Tháng 6 - Tháng 7 (mùa mưa, đầu hè)
+typical_objections:
+- objection: Dịch vụ của bạn nghe có vẻ tốt, nhưng tôi không rành về công nghệ, sợ
+    khó sử dụng.
+  response: 'Anh/chị hoàn toàn yên tâm. Hệ thống của chúng tôi được thiết kế để vận
+    hành tự động. Bên em sẽ hỗ trợ cài đặt ban đầu và hướng dẫn sử dụng đơn giản nhất.
+    Quan trọng là anh/chị sẽ thấy ngay hiệu quả: khách hàng gọi đến sẽ được phục vụ
+    nhanh hơn, đơn hàng ít sai sót hơn mà không cần anh/chị can thiệp nhiều.'
+- objection: Chi phí đầu tư ban đầu có vẻ cao so với quy mô in ấn nhỏ của tôi.
+  response: 'Đúng vậy, đây là sự đầu tư. Nhưng hãy xem xét chi phí cơ hội: mỗi đơn
+    hàng sai sót do ghi nhận thông tin sai, mỗi khách hàng cũ bị mất do không được
+    chăm sóc, và thời gian nhân viên dành cho các cuộc gọi lặp lại đều là chi phí.
+    Giải pháp của chúng tôi có mức phí thấp hơn nhiều so với việc thuê thêm một nhân
+    viên, nhưng lại giải quyết được nhiều vấn đề cùng lúc, giúp xưởng in của anh/chị
+    vận hành trơn tru và chuyên nghiệp hơn.'
+- objection: Tôi đã có nhân viên chăm sóc khách hàng và kế toán rồi, không cần thêm.
+  response: Giải pháp của chúng tôi không thay thế con người, mà là công cụ hỗ trợ
+    đắc lực để nhân viên của anh/chị làm việc hiệu quả hơn. Thay vì trả lời các câu
+    hỏi lặp đi lặp lại, nhân viên có thể tập trung vào tư vấn chuyên sâu, chốt đơn
+    hàng lớn hoặc xử lý các vấn đề phức tạp. Điều này nâng cao năng suất và giá trị
+    công việc của họ.
+meta:
+  id: printing
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "printing"
+- "print shop"
+- "typography"
+- "packaging"
+_extends: _base/printing

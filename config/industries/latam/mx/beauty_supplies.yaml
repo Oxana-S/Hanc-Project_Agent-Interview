@@ -1,0 +1,252 @@
+pain_points:
+- description: Gestión ineficiente de inventario que lleva a desabastecimientos o
+    exceso de stock, afectando las ventas y aumentando costos.
+  severity: high
+  solution_hint: El agente de voz puede automatizar el seguimiento de inventario,
+    enviar alertas de reposición y optimizar los pedidos basados en tendencias de
+    ventas.
+- description: Alta competencia de cadenas grandes y comercio electrónico, dificultando
+    la diferenciación y retención de clientes.
+  severity: high
+  solution_hint: El agente puede personalizar ofertas y recordatorios de fidelización
+    para clientes frecuentes, mejorando la experiencia del cliente.
+- description: Cumplimiento complejo con la LFPDPPP en el manejo de datos de clientes,
+    lo que requiere procedimientos seguros y transparentes.
+  severity: medium
+  solution_hint: El agente puede integrar protocolos de privacidad en las interacciones,
+    asegurando el consentimiento y protección de datos personales.
+- description: Falta de capacitación del personal en nuevos productos y tendencias
+    de belleza, reduciendo las ventas cruzadas y asesoría.
+  severity: medium
+  solution_hint: El agente puede proporcionar información actualizada sobre productos
+    y recomendaciones personalizadas a clientes, supliendo la falta de conocimiento.
+- description: Estacionalidad marcada en ventas, con picos en festividades y bajas
+    en ciertos meses, complicando la planificación financiera.
+  severity: low
+  solution_hint: El agente puede analizar datos históricos para predecir demandas
+    estacionales y ajustar estrategias de marketing proactivamente.
+- description: Dificultad en la gestión de pedidos y logística, especialmente para
+    entregas a domicilio en zonas urbanas congestionadas.
+  severity: medium
+  solution_hint: El agente puede coordinar entregas, rastrear envíos y manejar consultas
+    de clientes sobre el estado de sus pedidos, reduciendo errores.
+typical_services:
+- Venta de productos de belleza y cuidado personal
+- Distribución mayorista de insumos para salones y spas
+- Asesoría en rutinas de skincare y maquillaje
+- Venta de equipos profesionales para estética
+- Servicios de personalización de productos (ej. fragancias, cremas)
+- Capacitación y talleres para profesionales de la belleza
+- Alquiler de espacio para eventos de belleza
+- Suscripciones a cajas de productos beauty mensuales
+- Venta de productos naturales y orgánicos
+- Servicios de e-commerce con entrega a domicilio
+recommended_functions:
+- name: Tomar pedidos y procesar ventas
+  priority: high
+  reason: Automatiza la captura de órdenes, reduce errores humanos y acelera el proceso
+    de compra para clientes.
+- name: Responder preguntas frecuentes sobre productos y precios
+  priority: high
+  reason: Libera tiempo del personal para tareas más complejas y mejora la satisfacción
+    del cliente con respuestas instantáneas.
+- name: Programar citas para consultorías o servicios
+  priority: medium
+  reason: Optimiza la agenda del negocio, reduce conflictos de horarios y aumenta
+    la eficiencia operativa.
+- name: Enviar recordatorios de inventario bajo y reabastecimiento
+  priority: medium
+  reason: Previene desabastecimientos, asegura disponibilidad de productos clave y
+    mantiene ventas consistentes.
+- name: Gestionar quejas y devoluciones de clientes
+  priority: low
+  reason: Mejora la retención de clientes al manejar problemas de manera rápida y
+    profesional, sin sobrecargar al equipo.
+- name: Realizar encuestas de satisfacción post-venta
+  priority: low
+  reason: Recopila feedback valioso para mejorar servicios y productos, fomentando
+    la lealtad del cliente.
+typical_integrations:
+- name: Sistemas de punto de venta (POS)
+  examples:
+  - Linio POS
+  - ClickPOS
+  - Tango POS
+  priority: high
+- name: Software de gestión de inventario
+  examples:
+  - SAP Business One
+  - Odoo
+  - Inventario MX
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - Mercado Libre
+  - Amazon México
+  - Tienda Nube
+  priority: medium
+- name: Sistemas de contabilidad
+  examples:
+  - Contpaq
+  - Aspel COI
+  - Facturama
+  priority: medium
+- name: Herramientas de marketing digital
+  examples:
+  - Mailchimp
+  - Hootsuite
+  - Google Ads
+  priority: low
+industry_faq:
+- question: ¿Cuáles son sus horarios de atención?
+  answer_template: Estamos abiertos de lunes a viernes de 9:00 a 18:00 horas, y sábados
+    de 10:00 a 14:00 horas. También puedes realizar pedidos en línea 24/7.
+- question: ¿Ofrecen descuentos por compras al mayoreo?
+  answer_template: Sí, ofrecemos descuentos escalonados para compras mayores a 10,000
+    MXN. Ponte en contacto con nosotros para personalizar una cotización.
+- question: ¿Los productos son originales y cuentan con garantía?
+  answer_template: Todos nuestros productos son 100% originales de marcas reconocidas
+    y cuentan con garantía del fabricante. Proporcionamos facturas electrónicas para
+    cualquier reclamo.
+- question: ¿Realizan entregas a domicilio en todo México?
+  answer_template: Sí, ofrecemos entregas a domicilio en la mayoría de las ciudades
+    principales, con costos variables según la ubicación. Los tiempos de entrega suelen
+    ser de 2 a 5 días hábiles.
+- question: ¿Cómo puedo devolver un producto si no estoy satisfecho?
+  answer_template: Aceptamos devoluciones dentro de los 30 días posteriores a la compra,
+    siempre que el producto esté en su empaque original. Comunícate con nuestro servicio
+    al cliente para iniciar el proceso.
+- question: ¿Ofrecen asesoría personalizada para rutinas de belleza?
+  answer_template: Sí, contamos con expertos que pueden brindarte asesoría gratuita
+    por teléfono o agendar una cita en tienda para recomendaciones personalizadas.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por precios o descuentos en productos.
+  script: Hola, gracias por tu interés. Nuestros precios son competitivos y ofrecemos
+    descuentos especiales para clientes frecuentes o compras al mayoreo. ¿Podrías
+    contarme más sobre tus necesidades para darte una cotización precisa?
+  goal: Capturar información del cliente y guiarlo hacia una venta, destacando valor
+    agregado.
+- trigger: product_inquiry
+  situation: Cuando un cliente busca recomendaciones o información específica sobre
+    un producto.
+  script: Claro, estamos aquí para ayudarte. ¿Podrías decirme tu tipo de piel o preferencias
+    para recomendarte los mejores productos? También podemos enviarte muestras o agendar
+    una demostración.
+  goal: Educar al cliente, construir confianza y aumentar la probabilidad de compra.
+- trigger: follow_up
+  situation: Después de un primer contacto, para recordar ofertas o seguimiento de
+    pedidos.
+  script: Hola [Nombre del cliente], soy [Nombre del agente] de [Nombre del negocio].
+    Te contactaba para recordarte nuestra oferta especial en [Producto] o ver si necesitas
+    ayuda con tu pedido reciente. ¿Hay algo en lo que pueda asistirte?
+  goal: Mantener el engagement del cliente, fomentar ventas recurrentes y resolver
+    dudas pendientes.
+- trigger: competitor_comparison
+  situation: Cuando un cliente menciona precios o servicios de la competencia.
+  script: Entiendo que compares opciones. Nos diferenciamos por ofrecer productos
+    de alta calidad con asesoría personalizada y soporte post-venta. Además, cumplimos
+    con todas las normativas locales como la LFPDPPP. ¿Te gustaría probar nuestro
+    servicio con una garantía de satisfacción?
+  goal: Destacar ventajas competitivas y reducir la fuga de clientes a la competencia.
+competitors:
+- name: Sephora México
+  positioning: Cadena internacional de lujo en productos de belleza.
+  strengths:
+  - Amplia variedad de marcas premium
+  - Experiencia de compra en tienda
+  - Programas de fidelización robustos
+  weaknesses:
+  - Precios elevados
+  - Enfoque menos personalizado para PYMEs
+  - Logística limitada en zonas rurales
+  our_differentiation: Ofrecemos precios más accesibles, asesoría localizada y servicios
+    adaptados a negocios pequeños y medianos en México.
+- name: Liverpool (departamento de belleza)
+  positioning: Grandes almacenes con sección de belleza diversa.
+  strengths:
+  - Presencia nacional extensa
+  - Crédito y facilidades de pago
+  - Variedad de productos bajo un mismo techo
+  weaknesses:
+  - Atención menos especializada
+  - Inventario genérico
+  - Falta de enfoque en nichos de belleza
+  our_differentiation: Nos especializamos exclusivamente en belleza, con expertos
+    capacitados y productos dirigidos a profesionales y entusiastas.
+- name: Distribuidoras locales como 'Belleza MX'
+  positioning: Distribuidores regionales de insumos para salones.
+  strengths:
+  - Precios bajos por volumen
+  - Conocimiento del mercado local
+  - Entrega rápida en áreas específicas
+  weaknesses:
+  - Servicio al cliente limitado
+  - Poca innovación en productos
+  - Falta de integración digital
+  our_differentiation: Combinamos la eficiencia de distribución con tecnología avanzada,
+    como agentes de voz, para mejorar la experiencia del cliente y la operatividad.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Automatización de atención al cliente para una tienda pequeña
+    monthly_cost: 1500
+    monthly_savings: 3000
+    payback_months: 1
+  - scenario: Gestión de inventario para un distribuidor mediano
+    monthly_cost: 5000
+    monthly_savings: 10000
+    payback_months: 1
+  value_anchors:
+  - Reduce costos operativos hasta un 30% con automatización inteligente.
+  - Incrementa las ventas recurrentes mediante recordatorios personalizados.
+  - Cumple con la LFPDPPP sin esfuerzo adicional en el manejo de datos.
+market_context:
+  market_size: Estimado en 10 mil millones de MXN anuales para la industria de suministros
+    de belleza en México.
+  growth_rate: 8% anual, impulsado por el aumento en el consumo de productos de cuidado
+    personal y e-commerce.
+  key_trends:
+  - Creciente demanda de productos naturales y orgánicos.
+  - Expansión del comercio electrónico y entregas a domicilio.
+  - Personalización de productos y servicios basados en datos del cliente.
+  seasonality:
+    high:
+    - Diciembre (festividades)
+    - Mayo (Día de las Madres)
+    - Septiembre (Fiestas Patrias)
+    low:
+    - Enero (post-navideño)
+    - Julio (temporada de lluvias en algunas regiones)
+typical_objections:
+- objection: Es muy caro para mi negocio pequeño.
+  response: Entiendo tu preocupación. Nuestras soluciones están escaladas para adaptarse
+    a presupuestos pequeños, con un punto de entrada bajo y ROI rápido. Podemos empezar
+    con un plan básico y ajustarlo según tus resultados.
+- objection: Prefiero manejar todo personalmente, sin tecnología.
+  response: Comprendo la preferencia por el control manual. Sin embargo, nuestra tecnología
+    está diseñada para complementar, no reemplazar, tu trabajo, liberándote de tareas
+    repetitivas para que te enfoques en crecer tu negocio. ¿Te gustaría una demostración
+    sin compromiso?
+- objection: Ya tengo un proveedor establecido y no quiero cambiar.
+  response: Valoro la lealtad a tus proveedores. Ofrecemos servicios adicionales,
+    como integración con sistemas existentes y soporte 24/7, que podrían mejorar tu
+    operación actual sin interrupciones. ¿Podemos analizar cómo podemos agregar valor
+    a tu proceso actual?
+meta:
+  id: beauty_supplies
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

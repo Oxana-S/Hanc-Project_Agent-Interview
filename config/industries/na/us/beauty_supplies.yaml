@@ -1,0 +1,234 @@
+pain_points:
+- description: Inventory management for seasonal beauty trends causes frequent overstock
+    or stockouts.
+  severity: high
+  solution_hint: AI voice agent can monitor inventory levels in real-time and automate
+    reordering based on sales data.
+- description: High customer acquisition costs due to intense competition from online
+    and brick-and-mortar retailers.
+  severity: high
+  solution_hint: AI voice agent can handle inbound inquiries efficiently, qualifying
+    leads and reducing marketing spend.
+- description: Managing customer returns and inquiries manually leads to slow response
+    times and dissatisfaction.
+  severity: medium
+  solution_hint: AI voice agent can automate return processing and provide instant
+    answers to common questions, improving customer experience.
+- description: Compliance with CCPA for customer data privacy adds administrative
+    burden and risk.
+  severity: medium
+  solution_hint: AI voice agent can ensure compliant data handling by automating consent
+    management and secure information processing.
+- description: Fluctuating demand during peak seasons like holidays strains staff
+    and operations.
+  severity: medium
+  solution_hint: AI voice agent can scale customer support and sales efforts during
+    high-demand periods without additional hiring.
+- description: Difficulty in upselling and cross-selling products due to lack of personalized
+    recommendations.
+  severity: low
+  solution_hint: AI voice agent can analyze purchase history to suggest relevant products,
+    increasing average order value.
+typical_services:
+- Retail sales of beauty and skincare products
+- Wholesale distribution to salons and spas
+- Beauty consultations and personalized recommendations
+- Subscription boxes for monthly beauty supplies
+- Custom beauty kit assembly
+- Educational workshops on beauty trends
+- Online ordering with same-day delivery options
+- Loyalty and rewards programs
+- Product demonstrations and sampling
+- Brand partnership and exclusive product launches
+recommended_functions:
+- name: Order Processing
+  priority: high
+  reason: Streamlines sales by allowing customers to place orders via voice, reducing
+    cart abandonment.
+- name: Customer Support Automation
+  priority: high
+  reason: Handles common inquiries instantly, freeing up staff for complex issues
+    and improving satisfaction.
+- name: Inventory Management Alerts
+  priority: high
+  reason: Prevents stockouts by providing real-time updates and automated restocking
+    suggestions.
+- name: Appointment Scheduling
+  priority: medium
+  reason: Facilitates bookings for consultations or classes, enhancing service accessibility.
+- name: FAQ and Policy Information
+  priority: low
+  reason: Provides quick answers on return policies or product details, reducing call
+    volume.
+- name: Upsell and Cross-sell Suggestions
+  priority: medium
+  reason: Increases revenue by recommending complementary products based on customer
+    preferences.
+typical_integrations:
+- name: E-commerce Platform
+  examples:
+  - Shopify
+  - BigCommerce
+  - WooCommerce
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: high
+- name: Accounting Software
+  examples:
+  - QuickBooks
+  - Xero
+  - FreshBooks
+  priority: medium
+- name: Inventory Management System
+  examples:
+  - Skubana
+  - TradeGecko
+  - Cin7
+  priority: high
+- name: Payment Gateway
+  examples:
+  - Stripe
+  - PayPal
+  - Square
+  priority: high
+industry_faq:
+- question: What is your return policy for beauty products?
+  answer_template: We offer a 30-day return policy for unopened items with proof of
+    purchase. Please contact us with your order number to initiate a return.
+- question: Do you offer wholesale pricing for salons?
+  answer_template: Yes, we provide discounted wholesale rates for licensed professionals.
+    You can apply through our website or speak to a representative for a custom quote.
+- question: Are your products cruelty-free and vegan?
+  answer_template: We carry a range of cruelty-free and vegan products. Specific details
+    are listed on each product page, and our agents can help you find suitable options.
+- question: How long does shipping take within the US?
+  answer_template: Standard shipping takes 3-5 business days, with expedited options
+    available. Delivery times may vary during peak seasons like holidays.
+- question: Can I set up a recurring subscription for beauty supplies?
+  answer_template: Absolutely! We offer flexible subscription plans that can be customized
+    for frequency and products. Our voice agent can assist you in setting one up.
+- question: What payment methods do you accept?
+  answer_template: We accept all major credit cards, PayPal, and Apple Pay. For wholesale
+    accounts, we also offer net-30 terms upon approval.
+sales_scripts:
+- trigger: price_question
+  situation: When a customer inquires about pricing for products or services.
+  script: Our pricing is competitive and tailored to your needs, with volume discounts
+    available. Would you like me to provide a quote based on your specific requirements?
+  goal: To engage the customer and gather details for a personalized pricing offer.
+- trigger: product_inquiry
+  situation: When a customer asks about a specific beauty product or category.
+  script: I can help you with that! We have a wide selection of products. Could you
+    tell me more about your skin type or beauty goals so I can recommend the best
+    options?
+  goal: To understand customer needs and guide them towards a purchase with personalized
+    suggestions.
+- trigger: discount_request
+  situation: When a customer asks for discounts or promotions.
+  script: We often have promotions and loyalty rewards. Are you interested in our
+    current deals, or would you like to hear about our subscription plan that includes
+    discounts?
+  goal: To retain the customer by offering value-added options and encouraging longer-term
+    engagement.
+competitors:
+- name: Sephora
+  positioning: High-end beauty retailer with a focus on prestige brands and in-store
+    experiences.
+  strengths:
+  - Extensive brand portfolio
+  - Strong loyalty program (Beauty Insider)
+  - Omnichannel presence
+  weaknesses:
+  - Higher price points
+  - Limited focus on professional supplies
+  - Can be impersonal online
+  our_differentiation: We offer more personalized service through AI voice agents
+    and cater to both consumers and professionals with competitive pricing.
+- name: Ulta Beauty
+  positioning: Mass and prestige beauty retailer combining salon services with retail.
+  strengths:
+  - Wide range from drugstore to luxury brands
+  - In-store salon services
+  - Frequent promotions
+  weaknesses:
+  - Crowded stores leading to poor service
+  - Inconsistent online user experience
+  - Less focus on wholesale
+  our_differentiation: Our AI-driven automation provides 24/7 support and efficient
+    order management, enhancing online and offline integration.
+- name: Sally Beauty
+  positioning: Supplier of professional beauty products primarily for stylists and
+    salons.
+  strengths:
+  - Specialized professional products
+  - Educational resources and training
+  - Strong wholesale network
+  weaknesses:
+  - Niche market appeal
+  - Less consumer-friendly branding
+  - Limited e-commerce features
+  our_differentiation: We bridge the gap with AI voice agents that serve both consumer
+    and professional markets, offering seamless automation and broader accessibility.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automating customer service inquiries for a mid-sized beauty store.
+    monthly_cost: 300
+    monthly_savings: 1500
+    payback_months: 0.2
+  - scenario: Implementing AI voice agent for inventory management to reduce stockouts.
+    monthly_cost: 200
+    monthly_savings: 1200
+    payback_months: 0.17
+  value_anchors:
+  - Reduce operational costs by up to 30% with automated processes.
+  - Increase sales conversion rates by providing instant, personalized support.
+  - Minimize compliance risks with CCPA-ready data handling.
+market_context:
+  market_size: The US beauty and personal care market is estimated at $90 billion
+    annually.
+  growth_rate: 5% year-over-year
+  key_trends:
+  - Rise of clean and sustainable beauty products
+  - Increased demand for personalized and subscription-based services
+  - Growth in online shopping and social media-driven purchases
+  seasonality:
+    high:
+    - November-December (holiday season)
+    - August-September (back-to-school)
+    low:
+    - January-February (post-holiday slump)
+    - July (summer slowdown)
+typical_objections:
+- objection: We already have a customer service team; we don't need an AI agent.
+  response: Our AI agent complements your team by handling routine tasks, allowing
+    them to focus on complex issues and improving overall efficiency.
+- objection: The setup and integration seem too time-consuming.
+  response: We offer seamless integration with popular systems like Shopify and QuickBooks,
+    with minimal downtime. Our team provides full support to get you up and running
+    quickly.
+- objection: I'm concerned about the cost versus the benefits.
+  response: With our ROI-focused approach, most clients see payback within months
+    through cost savings and increased revenue. Let me share some case studies specific
+    to the beauty industry.
+meta:
+  id: beauty_supplies
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

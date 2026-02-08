@@ -1,0 +1,203 @@
+pain_points:
+- description: 家属在丧事期间情绪压力大，难以处理繁杂事务。
+  severity: high
+  solution_hint: AI语音助手可提供24/7情感支持，自动安排日程，减轻家属负担。
+- description: 丧葬服务价格不透明，客户常被隐形收费困扰。
+  severity: medium
+  solution_hint: AI语音助手可实时报价，解释费用明细，增强信任。
+- description: 传统殡仪馆预约流程繁琐，排队时间长。
+  severity: high
+  solution_hint: AI语音助手可自动化预约，集成在线系统，减少等待。
+- description: 个性化丧礼需求增多，但服务标准化难以满足。
+  severity: medium
+  solution_hint: AI语音助手可收集客户偏好，定制服务方案，提升体验。
+- description: 遵守PIPL法规，客户数据保护要求高，手动处理易出错。
+  severity: high
+  solution_hint: AI语音助手可加密处理数据，自动化合规检查，降低风险。
+- description: 市场竞争对手多，客户获取成本高。
+  severity: medium
+  solution_hint: AI语音助手可进行智能外呼，筛选潜在客户，提高转化率。
+- description: 丧葬服务季节性强，高峰期人手不足。
+  severity: low
+  solution_hint: AI语音助手可分流咨询，处理常规问题，优化资源分配。
+typical_services:
+- 遗体接送服务
+- 遗体冷藏与防腐
+- 火化服务
+- 土葬服务
+- 告别仪式策划
+- 骨灰盒销售与安置
+- 丧礼用品租赁
+- 殡仪馆场地租赁
+- 悼念活动组织
+- 后续祭扫服务
+recommended_functions:
+- name: 自动预约系统
+  priority: high
+  reason: 简化预约流程，减少人工干预，提高效率。
+- name: 价格查询与解释
+  priority: high
+  reason: 增强透明度，建立客户信任，减少纠纷。
+- name: 情感支持与FAQ回答
+  priority: medium
+  reason: 在敏感时期提供即时帮助，缓解客户焦虑。
+- name: 客户数据管理
+  priority: high
+  reason: 确保PIPL合规，安全存储和处理个人信息。
+- name: 市场调研与客户筛选
+  priority: medium
+  reason: 识别高意向客户，降低营销成本。
+- name: 多语言支持
+  priority: low
+  reason: 适应中国多民族地区需求，扩大服务范围。
+- name: 服务定制推荐
+  priority: medium
+  reason: 根据客户偏好提供个性化方案，提升满意度。
+typical_integrations:
+- name: 殡葬管理软件
+  examples:
+  - 九霄云殡葬系统
+  - 龙驭殡仪管理平台
+  priority: high
+- name: 支付网关
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: high
+- name: 客户关系管理(CRM)系统
+  examples:
+  - 用友CRM
+  - 金蝶云星空
+  priority: medium
+- name: 政府监管平台
+  examples:
+  - 民政部殡葬服务系统
+  priority: high
+- name: 地图与物流服务
+  examples:
+  - 高德地图API
+  - 顺丰速运集成
+  priority: medium
+- name: 云存储服务
+  examples:
+  - 阿里云
+  - 腾讯云
+  priority: low
+industry_faq:
+- question: 你们提供哪些丧葬服务套餐？
+  answer_template: 我们提供从基础火化到全套告别仪式的多种套餐，价格透明，可根据您的需求定制。
+- question: 如何预约遗体接送服务？
+  answer_template: 您可以通过我们的AI语音助手24小时在线预约，我们会安排专业团队及时上门。
+- question: 费用包含哪些项目？有没有隐形收费？
+  answer_template: 所有费用明细会在合同中明确列出，无隐形收费，AI助手可实时为您解析。
+- question: 如何处理骨灰？有哪些安置选项？
+  answer_template: 我们提供骨灰盒销售、墓地安置等多种选项，并协助办理相关手续。
+- question: 丧礼可以个性化定制吗？
+  answer_template: 是的，我们支持个性化定制，如主题告别仪式，AI助手可帮助您规划细节。
+- question: 数据隐私如何保护？
+  answer_template: 我们严格遵守PIPL法规，所有客户数据加密处理，确保安全。
+- question: 高峰期服务是否会延迟？
+  answer_template: 我们利用AI优化调度，高峰期优先处理紧急需求，尽量减少延迟。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问服务价格时。
+  script: 您好，我们的服务价格从¥5,000起，根据套餐不同有所调整。AI助手可以为您生成详细报价单，确保透明无隐形收费。请问您需要了解哪种服务？
+  goal: 引导客户提供需求信息，促进进一步沟通。
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时。
+  script: 感谢您提到其他服务商。我们的优势在于AI驱动的个性化服务和PIPL合规数据保护，能为您节省时间并提供更安心的体验。您最看重服务的哪个方面？
+  goal: 突出差异化优势，转移焦点到客户需求。
+- trigger: initial_contact
+  situation: 首次接触潜在客户时。
+  script: 您好，我们是专业殡葬服务提供商，通过AI语音助手提供24/7支持，帮助您轻松安排丧事。现在预约可享优惠，请问您是否需要咨询？
+  goal: 建立初步联系，介绍核心价值。
+- trigger: objection_high_cost
+  situation: 当客户认为价格过高时。
+  script: 我们理解成本考虑。我们的服务通过AI优化，长期可节省人工和时间成本，例如，自动化预约每月可节省¥2,000。您愿意了解更多ROI案例吗？
+  goal: 展示价值，缓解价格顾虑。
+competitors:
+- name: 北京八宝山殡仪馆
+  positioning: 国营传统殡仪馆，市场份额大。
+  strengths:
+  - 品牌知名度高
+  - 政府支持
+  - 设施完善
+  weaknesses:
+  - 服务标准化，个性化不足
+  - 预约流程繁琐
+  - 价格不透明
+  our_differentiation: 我们提供AI驱动的个性化服务和透明定价，体验更便捷。
+- name: 福寿园国际集团
+  positioning: 私营高端殡葬服务商。
+  strengths:
+  - 服务多样化
+  - 市场覆盖广
+  - 创新产品
+  weaknesses:
+  - 价格较高
+  - 数据管理可能不足
+  - 客户支持有限
+  our_differentiation: 我们通过AI降低成本，提供性价比更高的服务，并加强PIPL合规。
+- name: 本地小型殡葬公司
+  positioning: 区域性强，价格竞争激烈。
+  strengths:
+  - 价格灵活
+  - 本地关系好
+  - 响应快速
+  weaknesses:
+  - 服务不规范
+  - 技术落后
+  - 数据风险高
+  our_differentiation: 我们整合先进AI技术，确保服务质量和数据安全，提升可靠性。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 自动化预约与客户管理
+    monthly_cost: 1000
+    monthly_savings: 2000
+    payback_months: 1
+  value_anchors:
+  - AI助手每月可节省¥2,000人工成本
+  - 透明定价避免纠纷
+  - PIPL合规减少法律风险
+market_context:
+  market_size: 约2000亿CNY
+  growth_rate: 5% YoY
+  key_trends:
+  - 绿色殡葬需求上升
+  - 数字化服务普及
+  - 个性化定制趋势增强
+  seasonality:
+    high:
+    - 春节前后
+    - 清明节期间
+    low:
+    - 夏季
+    - 普通工作日
+typical_objections:
+- objection: 我不需要AI，传统方式就够了。
+  response: 传统方式可能耗时耗力。我们的AI助手可以帮您快速处理事务，让您更专注于缅怀亲人。
+- objection: 价格太贵，我预算有限。
+  response: 我们提供多种套餐选择，起价¥5,000，且AI优化能长期节省成本。您可以先试用基础服务。
+- objection: 数据安全有风险吗？
+  response: 我们严格遵循PIPL法规，所有数据加密处理，AI系统定期审计，确保安全无忧。
+- objection: AI不够人性化，不适合丧事。
+  response: 我们的AI助手设计注重情感支持，可模拟人性化交流，并随时转接人工服务，确保关怀到位。
+meta:
+  id: funeral
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

@@ -1,0 +1,198 @@
+pain_points:
+- description: Incertidumbre regulatoria y falta de claridad en las leyes sobre criptomonedas en México, como la Ley Fintech y LFPDPPP.
+  severity: high
+  solution_hint: El agente de voz puede proporcionar actualizaciones regulatorias y asesoría sobre cumplimiento.
+- description: Falta de educación financiera y comprensión sobre criptomonedas entre usuarios y empresarios mexicanos.
+  severity: high
+  solution_hint: El agente puede ofrecer tutoriales personalizados y respuestas a preguntas frecuentes en español.
+- description: Preocupaciones de seguridad, como hackeos y fraudes en plataformas de exchange y wallets.
+  severity: high
+  solution_hint: El agente puede recomendar prácticas de seguridad y alertar sobre amenazas en tiempo real.
+- description: Alta volatilidad de precios en criptomonedas, generando ansiedad y pérdidas potenciales.
+  severity: medium
+  solution_hint: El agente puede proporcionar análisis de mercado y herramientas de gestión de riesgo.
+- description: Dificultad para integrar criptomonedas con sistemas tradicionales de pago y contabilidad en México.
+  severity: medium
+  solution_hint: El agente puede guiar en integraciones con software local como Contpaq o MercadoPago.
+- description: Costos elevados de transacción y comisiones en exchanges, afectando la rentabilidad.
+  severity: medium
+  solution_hint: El agente puede comparar tarifas y sugerir alternativas de bajo costo.
+- description: Baja adopción en comercios tradicionales, limitando el uso práctico de criptomonedas.
+  severity: low
+  solution_hint: El agente puede promover casos de éxito y facilitar conexiones con negocios locales.
+typical_services:
+- Exchange de criptomonedas
+- Billetera digital (wallet) segura
+- Minería de criptomonedas
+- Consultoría en blockchain y cumplimiento LFPDPPP
+- Desarrollo de smart contracts
+- Trading automatizado y señales de mercado
+- Educación y capacitación en cripto
+- Servicios de custodia y almacenamiento
+- Plataformas de pagos con cripto
+- Análisis técnico y fundamental
+recommended_functions:
+- name: Asistente de soporte al cliente
+  priority: high
+  reason: Resuelve dudas comunes en español y mejora la experiencia del usuario.
+- name: Agente de ventas automatizado
+  priority: high
+  reason: Promueve servicios locales y maneja objeciones específicas del mercado mexicano.
+- name: Educador financiero en criptomonedas
+  priority: medium
+  reason: Ayuda a superar la falta de educación y construye confianza.
+- name: Monitor de seguridad y cumplimiento
+  priority: high
+  reason: Alerta sobre riesgos y asegura adherencia a regulaciones como LFPDPPP.
+- name: Integrador de sistemas locales
+  priority: medium
+  reason: Facilita la conexión con software contable y de pago mexicano.
+- name: Recolector de feedback y encuestas
+  priority: low
+  reason: Recopila insights para adaptar servicios al contexto local.
+typical_integrations:
+- name: Sistemas de pago locales
+  examples:
+  - MercadoPago
+  - Conekta
+  - OpenPay
+  priority: high
+- name: Software contable mexicano
+  examples:
+  - Contpaq
+  - Aspel COI
+  - Sistemas SAP localizados
+  priority: medium
+- name: Plataformas de trading
+  examples:
+  - Bitso
+  - Binance
+  - eToro
+  priority: high
+- name: APIs de blockchain
+  examples:
+  - Ethereum API
+  - Bitcoin Core
+  - Ripple Net
+  priority: medium
+- name: Herramientas de CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - HubSpot
+  priority: low
+- name: Sistemas de compliance
+  examples:
+  - Herramientas para LFPDPPP
+  - KYC/AML software
+  priority: high
+industry_faq:
+- question: ¿Es legal usar criptomonedas en México?
+  answer_template: Sí, pero están reguladas por la Ley Fintech y deben cumplir con LFPDPPP para protección de datos. Le recomendamos usar exchanges registrados.
+- question: ¿Cómo puedo comprar criptomonedas en México de forma segura?
+  answer_template: Puede usar exchanges locales como Bitso o globales con presencia en México, asegurándose de habilitar autenticación de dos factores.
+- question: ¿Qué criptomonedas son más populares en el mercado mexicano?
+  answer_template: Bitcoin, Ethereum y stablecoins como USDT son comunes, pero varie según la plataforma. Podemos asesorarle en la elección.
+- question: ¿Cómo declaro impuestos sobre ganancias de criptomonedas en México?
+  answer_template: Las ganancias deben declararse al SAT. Ofrecemos herramientas para simplificar el reporte y cumplimiento fiscal.
+- question: ¿Qué riesgos de seguridad debo considerar al usar criptomonedas?
+  answer_template: Riesgos incluyen hackeos y phishing. Recomendamos usar wallets frías y nuestro agente puede monitorear actividades sospechosas.
+- question: ¿Puedo pagar con criptomonedas en comercios mexicanos?
+  answer_template: La adopción es limitada, pero creciente. Podemos ayudarle a integrar soluciones de pago con cripto en su negocio.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de servicios en cripto.
+  script: Hola, nuestros servicios comienzan desde 500 MXN mensuales, con opciones escalables. ¿Le gustaría una cotización personalizada basada en sus necesidades?
+  goal: Convertir la consulta en una oportunidad de venta y destacar el valor.
+- trigger: security_concern
+  situation: Cuando el cliente expresa preocupación por la seguridad de las criptomonedas.
+  script: Entiendo su preocupación. Implementamos medidas avanzadas como encriptación y cumplimiento con LFPDPPP. ¿Puedo explicarle cómo protegemos sus activos?
+  goal: Tranquilizar al cliente y resaltar nuestras características de seguridad.
+- trigger: education_needed
+  situation: Cuando el cliente necesita aprender sobre criptomonedas antes de invertir.
+  script: Claro, le ofrezco una sesión educativa gratuita para explicar conceptos básicos y cómo empezar. ¿Prefiere una llamada o materiales en línea?
+  goal: Educar al cliente y construir confianza para futuras ventas.
+- trigger: integration_request
+  situation: Cuando un negocio quiere integrar cripto con sus sistemas existentes.
+  script: Perfecto, podemos integrar con software local como Contpaq o MercadoPago. ¿Tiene algún sistema específico en mente?
+  goal: Facilitar la adopción y mostrar nuestra adaptación al mercado mexicano.
+competitors:
+- name: Bitso
+  positioning: Principal exchange de criptomonedas en México, regulado y con gran base de usuarios.
+  strengths:
+  - Regulación local
+  - Interfaz en español
+  - Soporte para pesos mexicanos
+  weaknesses:
+  - Tarifas altas
+  - Soporte al cliente lento
+  - Opciones limitadas de cripto
+  our_differentiation: Ofrecemos tarifas más competitivas, soporte 24/7 y herramientas avanzadas de trading.
+- name: Volabit
+  positioning: Exchange local enfocado en Latinoamérica, con enfoque en facilidad de uso.
+  strengths:
+  - Interfaz amigable
+  - Buen soporte en español
+  - Enfoque regional
+  weaknesses:
+  - Liquidez menor
+  - Menos criptomonedas disponibles
+  - Crecimiento lento
+  our_differentiation: Proporcionamos mayor liquidez, más opciones de cripto y integraciones personalizadas.
+- name: Binance
+  positioning: Exchange global con presencia en México, ofreciendo amplia selección de criptomonedas.
+  strengths:
+  - Amplia selección
+  - Alta liquidez
+  - Herramientas avanzadas
+  weaknesses:
+  - Complejidad para principiantes
+  - Soporte menos localizado
+  - Regulación menos clara en México
+  our_differentiation: Enfoque localizado con soporte en español y adaptación a regulaciones mexicanas como LFPDPPP.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Uso de trading automatizado para un pequeño inversionista
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 0.4
+  - scenario: Implementación de consultoría en blockchain para una PYME
+    monthly_cost: 10000
+    monthly_savings: 30000
+    payback_months: 0.33
+  value_anchors:
+  - Reduzca sus comisiones de transacción hasta un 30% con nuestras herramientas.
+  - Aumente la seguridad y cumplimiento con LFPDPPP, evitando multas costosas.
+market_context:
+  market_size: null
+  seasonality:
+    high:
+    - diciembre
+    - enero
+    low:
+    - julio
+    - agosto
+  key_trends:
+  - aumento de adopción de criptomonedas en México
+  - incremento en regulaciones gubernamentales
+  - mayor uso de stablecoins para transacciones diarias
+meta:
+  id: crypto
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- crypto
+- cryptocurrency
+- blockchain
+- bitcoin
+- exchange
+_extends: _base/crypto

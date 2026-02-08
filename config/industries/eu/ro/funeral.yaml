@@ -1,0 +1,210 @@
+pain_points:
+- description: Costuri ridicate și neașteptate ale serviciilor funerare, care provoacă
+    stres financiar familiilor.
+  severity: high
+  solution_hint: Agentul vocal AI poate oferi estimări clare de preț și pachete personalizate
+    pentru a reduce incertitudinea.
+- description: Dificultăți în gestionarea documentației și conformitatea cu GDPR pentru
+    datele personale ale decedaților.
+  severity: high
+  solution_hint: Agentul poate automatiza solicitările de documente și asigura îndrumări
+    privind protecția datelor.
+- description: Timp de răspuns lent la apelurile de urgență, deoarece personalul este
+    limitat.
+  severity: medium
+  solution_hint: Agentul vocal poate răspunde imediat la apeluri, programând servicii
+    și redirecționând către asistență umană.
+- description: Concurență crescută de la firme mici care oferă prețuri mici, dar cu
+    calitate slabă.
+  severity: medium
+  solution_hint: Agentul poate evidenția avantajele serviciilor noastre de calitate
+    prin comparări automate.
+- description: Logistica complicată pentru transportul și organizarea înmormântărilor
+    în zone rurale.
+  severity: medium
+  solution_hint: Agentul poate coordona detaliile logistice și oferi actualizări în
+    timp real.
+- description: Presiune emoțională asupra familiilor care nu știu ce pași să urmeze.
+  severity: low
+  solution_hint: Agentul poate oferi îndrumări empatici și răspunsuri la întrebări
+    frecvente.
+typical_services:
+- Înmormântare tradițională
+- Incinerare
+- Servicii de transport funerar
+- Închiriere salon pentru ceremonii
+- Furnizare cosciug și urnă
+- Aranjamente florale
+- Asistență pentru documente legale
+- Organizare ceremonii religioase
+- Servicii de pompe funebre complete
+- Consiliere în doliu
+recommended_functions:
+- name: Răspuns la apeluri de urgență
+  priority: high
+  reason: Asigură o reacție rapidă în momente critice, crescând satisfacția clienților.
+- name: Programare servicii funerare
+  priority: high
+  reason: Simplifică procesul pentru familii, reducând timpul de așteptare.
+- name: Furnizare informații despre prețuri
+  priority: high
+  reason: Oferă transparență, ajutând la luarea deciziilor financiare.
+- name: Gestionare solicitări GDPR
+  priority: medium
+  reason: Asigură conformitatea legală și protecția datelor.
+- name: Recomandare pachete personalizate
+  priority: medium
+  reason: Crește vânzările prin oferte adaptate nevoilor.
+- name: Reminder pentru evenimente
+  priority: low
+  reason: Îmbunătățește experiența clienților cu follow-up automat.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - Microsoft Dynamics 365
+  - SAP Business One
+  priority: high
+- name: Software de contabilitate
+  examples:
+  - Saga
+  - WinMentor
+  priority: medium
+- name: Platforme de gestionare funerară
+  examples:
+  - FunerarSoft
+  - PompFunebre Manager
+  priority: high
+- name: Sisteme de plăți online
+  examples:
+  - Netopia
+  - EuPlatesc
+  priority: medium
+- name: Aplicații pentru documente
+  examples:
+  - DocuSign
+  - Semnatura.ro
+  priority: low
+industry_faq:
+- question: Care sunt costurile aproximative pentru o înmormântare?
+  answer_template: Costurile variază între 5.000 și 20.000 RON, în funcție de serviciile
+    alese. Vă putem oferi o estimare personalizată după o discuție.
+- question: Ce documente sunt necesare pentru organizarea unei înmormântări?
+  answer_template: Aveți nevoie de certificatul de deces, actele de identitate ale
+    familiei și eventual aprobări locale. Vă asistăm cu toate detaliile.
+- question: Ofiriți servicii de incinerare?
+  answer_template: Da, oferim servicii complete de incinerare, inclusiv urnă și ceremonii,
+    cu prețuri de la 3.000 RON.
+- question: Cât durează procesul de organizare?
+  answer_template: În medie, 1-3 zile, dar putem accelera în cazuri de urgență. Agentul
+    nostru vă poate ajuta cu planificarea.
+- question: Sunt conforme cu GDPR?
+  answer_template: Da, respectăm strict regulile GDPR pentru protecția datelor dvs.
+    personale.
+- question: Puteți gestiona înmormântări în zone rurale?
+  answer_template: Absolut, avem parteneri pentru transport și logistică în toată
+    țara.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri.
+  script: 'Bună ziua! Înțeleg că doriți informații despre costuri. Pentru o estimare
+    precisă, pot să vă ajut cu câteva detalii: ce tip de servicii ați prefera? De
+    exemplu, avem pachete de la 4.000 RON care includ elemente esențiale.'
+  goal: Obține detalii pentru o ofertă personalizată și evidențiază valoarea.
+- trigger: emergency_call
+  situation: Când un client apelează într-o situație urgentă.
+  script: Vă suntem alături în acest moment dificil. Agentul nostru vă poate programa
+    imediat o consultație sau vă pot conecta cu un specialist. Ce asistență aveți
+    nevoie acum?
+  goal: Oferă suport rapid și cald pentru a câștiga încrederea.
+- trigger: service_inquiry
+  situation: Când un client întreabă despre servicii specifice.
+  script: Mulțumesc pentru interes! Oferim servicii complete, de la înmormântări tradiționale
+    la incinerare. Care dintre acestea vă interesează? Pot explica avantajele fiecăruia.
+  goal: Identifică nevoile și promovează servicii relevante.
+- trigger: objection_handling
+  situation: Când un client spune că prețul este prea mare.
+  script: Înțeleg preocuparea. Calitatea serviciilor noastre asigură demnitate și
+    suport complet. Putem discuta opțiuni pentru a se încadra în buget, cum ar fi
+    pachete basic de la 4.000 RON.
+  goal: Convinge clientul de valoare și oferă alternative.
+competitors:
+- name: Pomp Funebră Transilvania
+  positioning: Furnizor major cu prezență națională.
+  strengths:
+  - Rețea largă de sucursale
+  - Servicii diverse
+  weaknesses:
+  - Prețuri ridicate
+  - Răspuns lent la apeluri
+  our_differentiation: Agentul nostru vocal oferă răspunsuri imediate și prețuri transparente.
+- name: Servicii Funerare București
+  positioning: Concentrat pe zona urbană, cu focus pe calitate.
+  strengths:
+  - Experiență în orașe mari
+  - Parteneriate locale
+  weaknesses:
+  - Acoperire limitată în zone rurale
+  - Costuri ascunse
+  our_differentiation: Avem acoperire națională și integrare tehnologică pentru eficiență.
+- name: Funerara Gloria
+  positioning: Firma mică cu prețuri competitive.
+  strengths:
+  - Prețuri mici
+  - Abordare personalizată
+  weaknesses:
+  - Resurse limitate
+  - Lipsă de automatizare
+  our_differentiation: Folosim AI pentru a scala serviciile menținând prețuri accesibile.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 4000
+  - 20000
+  entry_point: 4000
+  roi_examples:
+  - scenario: Automatizarea apelurilor de urgență cu agent vocal
+    monthly_cost: 500
+    monthly_savings: 1000
+    payback_months: 1
+  value_anchors:
+  - Prețuri transparente fără costuri ascunse
+  - Eficiență sporită cu economii de până la 30% în timp
+  - Servicii complete de la 4.000 RON
+market_context:
+  market_size: Aproximativ 500 de milioane RON anual
+  growth_rate: 2-3% pe an
+  key_trends:
+  - Creșterea cererii pentru servicii online și automate
+  - Conștientizare sporită a GDPR
+  - Tendința către înmormântări simplificate
+  seasonality:
+    high:
+    - Iarna din cauza condițiilor meteorologice
+    - Perioade de sărbători
+    low:
+    - Vara
+    - Luni de vară
+typical_objections:
+- objection: Prețul este prea mare pentru serviciile dvs.
+  response: Înțeleg, dar oferim valoare prin asistență completă și eficiență. Putem
+    ajusta pachetul pentru a se potrivi bugetului dvs.
+- objection: Nu am nevoie de tehnologie în acest domeniu.
+  response: Tehnologia noastră vă ajută să economisiți timp și stres, cu răspunsuri
+    rapide și gestionare ușoară.
+- objection: Sunt multe firme mai ieftine.
+  response: Da, dar calitatea și suportul nostru asigură o experiență demnă. Agentul
+    vocal reduce costurile noastre, permițând prețuri competitive.
+meta:
+  id: funeral
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

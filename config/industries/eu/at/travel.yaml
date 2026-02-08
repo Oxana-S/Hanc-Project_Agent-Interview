@@ -1,0 +1,227 @@
+pain_points:
+- description: Ständige Personalknappheit, insbesondere in der Hochsaison, führt zu
+    überlasteten Mitarbeitern und langen Wartezeiten für Kunden.
+  severity: high
+  solution_hint: AI Voice Agent kann 24/7 Basis-Anfragen beantworten, Buchungen annehmen
+    und so das Personal entlasten.
+- description: Komplexe und sich ständig ändernde Reisebestimmungen und COVID-Regeln
+    führen zu Unsicherheit und erhöhtem Beratungsaufwand.
+  severity: high
+  solution_hint: Voice Agent kann aktuelle Bestimmungen für Zielländer automatisiert
+    abrufen und dem Kunden kommunizieren.
+- description: Niedrige Margen bei Standard-Pauschalreisen durch starken Preisdruck
+    von Online-Portalen.
+  severity: medium
+  solution_hint: Agent kann Upselling für individuelle Zusatzleistungen (z.B. Zimmerupgrades,
+    Versicherungen) automatisiert durchführen.
+- description: Hohe Anzahl von Stornierungen und Umbuchungen, die manuell bearbeitet
+    werden müssen.
+  severity: medium
+  solution_hint: Automatisierte Bearbeitung von Stornierungs- und Umbuchungsanfragen
+    durch den Voice Agent gemäß AGB.
+- description: Schwierigkeiten, außerhalb der Bürozeiten erreichbar zu sein, was zu
+    potenziellen Buchungsverlusten führt.
+  severity: medium
+  solution_hint: 24/7 Erreichbarkeit durch den AI Voice Agent für erste Kontaktaufnahme
+    und Terminvereinbarung.
+- description: Inkonsistente Qualität der Kundenberatung bei verschiedenen Mitarbeitern.
+  severity: low
+  solution_hint: Voice Agent liefert standardisierte, qualitätsgesicherte Informationen
+    zu Reiseleistungen.
+typical_services:
+- Pauschalreisen (Last Minute & Frühbucher)
+- Individuelle Rundreisen & Städtereisen
+- Skireisen & Winterurlaub in den Alpen
+- Wellness- & Kururlaube
+- Busreisen & Gruppenreisen
+- Mietwagen & Transfers
+- Reiseversicherungen (z.B. ERV, Allianz)
+- Beratung zu Einreisebestimmungen & Visum
+- Hotelbuchungen & Privatunterkünfte
+- Event- & Konzertreisen
+recommended_functions:
+- name: 24/7 Kunden-Hotline & Erstberatung
+  priority: high
+  reason: Grundlegende Erreichbarkeit und Lead-Generierung außerhalb der Geschäftszeiten
+    sicherstellen.
+- name: Buchungsannahme & -bestätigung
+  priority: high
+  reason: Ermöglicht direkte Abschlüsse und entlastet die Mitarbeiter von Routinebuchungen.
+- name: Stornierungs- & Umbuchungsmanagement
+  priority: medium
+  reason: Automatisiert einen großen Teil des administrativen Aufwands im Nachverkauf.
+- name: Upselling & Cross-Selling
+  priority: medium
+  reason: Erhöht die durchschnittliche Transaktionssumme durch automatisierte Angebote
+    von Zusatzleistungen.
+- name: Terminvereinbarung für Detailberatung
+  priority: low
+  reason: Fängt komplexe Anfragen ein und leitet sie geordnet an menschliche Berater
+    weiter.
+typical_integrations:
+- name: Buchungs- & Reservierungssystem (PMS/CRS)
+  examples:
+  - Amadeus
+  - Travelport
+  - Sabre
+  - VERSATILE
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Österreichische Kleinsysteme
+  priority: high
+- name: Telefonie & Contact Center
+  examples:
+  - Avaya
+  - Cisco
+  - Mitel
+  - Cloud-basierte Lösungen
+  priority: medium
+- name: Dokumenten-Management & E-Signatur
+  examples:
+  - Adobe Sign
+  - DocuSign
+  - Fachspezifische Lösungen
+  priority: low
+industry_faq:
+- question: Kann ich meine Reise stornieren oder umbuchen?
+  answer_template: Ja, Stornierungen und Umbuchungen sind gemäß unserer AGB möglich.
+    Bitte haben Sie Ihre Buchungsnummer bereit. Ich kann Ihnen sofort die aktuellen
+    Konditionen mitteilen und den Prozess einleiten.
+- question: Benötige ich für mein Reiseziel eine besondere Reiseversicherung?
+  answer_template: Das hängt vom Zielland ab. Für viele Länder außerhalb der EU wird
+    eine Reisekrankenversicherung dringend empfohlen. Ich kann Ihnen auf Basis Ihrer
+    Reisedaten sofort ein passendes Angebot unterbreiten.
+- question: Sind Flug, Hotel und Transfer inklusive?
+  answer_template: Das kommt auf das gebuchte Paket an. Bei Pauschalreisen sind diese
+    Leistungen typischerweise inkludiert. Gerne überprüfe ich für Sie die Details
+    Ihrer Buchung oder erstelle ein Angebot.
+- question: Wie steht es mit der Datensicherheit? Werden meine Daten geschützt?
+  answer_template: Selbstverständlich. Wir halten uns strikt an die österreichischen
+    und europäischen Datenschutzbestimmungen (DSGVO). Alle Daten werden verschlüsselt
+    übertragen und gespeichert.
+- question: Kann ich eine Reise auch kurzfristig buchen?
+  answer_template: Ja, wir bieten auch Last-Minute-Angebote an. Lassen Sie mich Ihre
+    Wünsche (Reiseziel, Zeitraum, Personen) wissen, und ich suche sofort nach verfügbaren
+    Optionen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach dem Preis für eine Reise oder Dienstleistung fragt.
+  script: 'Sehr gerne erstelle ich Ihnen ein persönliches und unverbindliches Angebot.
+    Um Ihnen den besten Preis und die passendste Reise zu finden, benötige ich nur
+    ein paar Details: Wohin und wann möchten Sie verreisen und für wie viele Personen?'
+  goal: Vom allgemeinen Preisgespräch zur konkreten Bedarfsermittlung und Lead-Generierung
+    überleiten.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen günstigeren Preis bei einem Online-Portal erwähnt.
+  script: Das kann ich verstehen. Unsere Stärke liegt nicht nur im Preis, sondern
+    im umfassenden Service. Dazu gehören eine persönliche Beratung, Unterstützung
+    bei Problemen vor Ort und die sorgfältige Auswahl unserer Partner. Bei uns buchen
+    Sie Sicherheit und Ruhe. Möchten Sie hören, was im Preis alles inkludiert ist?
+  goal: Wert und Sicherheit gegenüber dem reinen Online-Preis betonen und Vertrauen
+    aufbauen.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde das Angebot als zu teuer empfindet.
+  script: Ich verstehe, dass der Preis ein wichtiger Faktor ist. Lassen Sie uns gemeinsam
+    schauen, ob wir durch eine alternative Reiszeit, ein anderes Hotel der gleichen
+    Kategorie oder ein Frühbucher-Angebot eine passendere Lösung finden. Die Investition
+    in eine sorgenfreie Reise lohnt sich.
+  goal: Einwand auffangen und Gespräch in Richtung alternativer, preisangepasster
+    Lösungen lenken.
+competitors:
+- name: Österreichisches Verkehrsbüro (ÖVB) / Ruefa
+  positioning: Etablierte, stationäre Reisebüro-Kette mit breiter Präsenz.
+  strengths:
+  - Hohe Markenbekanntheit
+  - Umfassendes Filialnetz
+  - Langjährige Erfahrung
+  weaknesses:
+  - Höhere Kostenstruktur
+  - Weniger flexibel in digitalen Prozessen
+  our_differentiation: Wir kombinieren persönlichen Service mit modernster, kosteneffizienter
+    AI-Technologie für 24/7 Erreichbarkeit.
+- name: HolidayCheck
+  positioning: Großes Online-Bewertungsportal mit Buchungsfunktion.
+  strengths:
+  - Große Community & viele Bewertungen
+  - Starker Fokus auf Transparenz
+  weaknesses:
+  - Unpersönlich
+  - Keine individuelle Beratung bei Problemen
+  our_differentiation: Wir bieten echte, persönliche Betreuung vor, während und nach
+    der Reise durch Mensch und AI im Team.
+- name: Lokale, inhabergeführte Reisebüros
+  positioning: Sehr persönlicher Service in der Region.
+  strengths:
+  - Starke Kundenbindung
+  - Tiefe Ortskenntnis
+  - Hohes Vertrauen
+  weaknesses:
+  - Begrenzte Ressourcen & Öffnungszeiten
+  - Oft keine 24/7 Erreichbarkeit
+  our_differentiation: Wir erweitern deren Reichweite durch unsere AI-Lösung, sodass
+    sie auch nachts und am Wochenende Leads generieren können, ohne Personal vorhalten
+    zu müssen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Kleines Reisebüro entlastet Kundenhotline um 30% der Standardanfragen.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Keine verpassten Buchungen mehr am Wochenende.
+  - Bis zu 40% Zeitersparnis für Ihr Berater-Team.
+  - Automatisches Upselling steigert Ihren durchschnittlichen Buchungswert.
+market_context:
+  market_size: Ca. 12 Mrd. EUR Jahresumsatz (vor Pandemie)
+  growth_rate: 8-12% YoY (Erholung nach Pandemie)
+  key_trends:
+  - Starke Nachfrage nach nachhaltigem und regionalem Tourismus.
+  - Zunehmende Buchung von Last-Minute-Reisen über mobile Geräte.
+  - Wachsende Bedeutung von flexiblen Stornierungsbedingungen.
+  - Steigende Nachfrage nach individuellen Erlebnissen statt Standardpaketen.
+  seasonality:
+    high:
+    - Dezember (Winterurlaub)
+    - Juli-August (Sommerferien)
+    - Februar (Semesterferien)
+    low:
+    - November
+    - Januar (nach den Feiertagen)
+    - Oktober
+typical_objections:
+- objection: Das brauchen wir nicht, wir kommen mit unserem kleinen Team gut zurecht.
+  response: Das ist großartig zu hören. Stellen Sie sich vor, Ihr Team könnte sich
+    voll auf die komplexen und lukrativen Beratungen konzentrieren, während unsere
+    AI die Routineanfragen erledigt. So steigern Sie die Zufriedenheit Ihrer Kunden
+    und Mitarbeiter.
+- objection: Die Technik ist uns zu kompliziert. Wir sind kein IT-Unternehmen.
+  response: Das ist genau unser Ansatz. Unsere Lösung ist so gestaltet, dass Sie keine
+    IT-Experten benötigen. Wir kümmern uns um Einrichtung, Integration und Schulung.
+    Sie müssen sich um nichts kümmern.
+- objection: Unsere Kunden wollen nur mit einem Menschen sprechen.
+  response: Das ist absolut richtig für die komplexe Beratung. Unser AI Agent ist
+    die perfekte erste Anlaufstelle, die einfache Fragen beantwortet und Termine für
+    die persönliche Beratung vereinbart. So garantieren Sie, dass Ihr menschliches
+    Fachpersonal Zeit für das Wesentliche hat.
+meta:
+  id: travel
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "travel"
+- "tourism"
+- "travel agency"
+- "tour operator"
+_extends: _base/travel

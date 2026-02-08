@@ -1,0 +1,217 @@
+pain_points:
+- description: Sulit mengelola booking dan penjadwalan klien secara manual, sering
+    terjadi double booking atau jadwal bentrok.
+  severity: high
+  solution_hint: Agen suara AI dapat menangani penjadwalan otomatis, mengonfirmasi
+    janji temu, dan mengirim pengingat kepada klien.
+- description: Banyak waktu terbuang untuk menjawab pertanyaan umum klien tentang
+    paket, harga, dan ketersediaan via telepon/chat.
+  severity: medium
+  solution_hint: Agen AI dapat memberikan informasi paket dan harga secara instan,
+    serta menjawab FAQ 24/7.
+- description: Proses follow-up klien potensial dan penagihan yang tidak teratur,
+    menyebabkan hilangnya peluang dan keterlambatan pembayaran.
+  severity: high
+  solution_hint: Otomatisasi follow-up dan pengingat pembayaran melalui agen suara
+    AI dapat meningkatkan konversi dan cash flow.
+- description: Persaingan harga yang ketat di platform media sosial seperti Instagram,
+    membuat sulit menonjolkan nilai layanan.
+  severity: medium
+  solution_hint: Agen AI dapat membantu menjual nilai dan pengalaman, bukan hanya
+    harga, dengan menyoroti keunikan layanan.
+- description: Kesulitan mengelola ekspektasi klien terkait hasil editing, lokasi,
+    dan cuaca, yang sering menyebabkan ketidakpuasan.
+  severity: medium
+  solution_hint: Agen AI dapat mengomunikasikan detail layanan dengan jelas sejak
+    awal dan menyediakan kontrak digital.
+- description: Biaya operasional peralatan dan transportasi yang tinggi, terutama
+    untuk pemotretan di luar kota.
+  severity: low
+  solution_hint: AI dapat membantu mengoptimalkan rute dan penjadwalan untuk mengurangi
+    biaya transportasi.
+typical_services:
+- Fotografi Pernikahan
+- Fotografi Prewedding
+- Fotografi Produk & Makanan
+- Fotografi Acara (Event)
+- Videografi Cinematic
+- Video Company Profile
+- Drone Photography & Videography
+- Editing Foto & Video
+- Paket Foto Keluarga
+- Live Streaming Acara
+recommended_functions:
+- name: Penjadwalan Otomatis
+  priority: high
+  reason: Mengurangi double booking dan menghemat waktu administratif.
+- name: FAQ Otomatis 24/7
+  priority: high
+  reason: Menjawab pertanyaan umum klien kapan saja, meningkatkan responsivitas.
+- name: Follow-up Klien Potensial
+  priority: medium
+  reason: Meningkatkan konversi penjualan dengan mengingatkan klien yang tertarik.
+- name: Pengingat Pembayaran
+  priority: medium
+  reason: Mempercepat cash flow dengan otomatisasi penagihan.
+- name: Kuesioner Pra-Pemotretan
+  priority: low
+  reason: Mengumpulkan kebutuhan klien secara terstruktur sebelum sesi.
+typical_integrations:
+- name: Kalender & Penjadwalan
+  examples:
+  - Google Calendar
+  - Calendly
+  priority: high
+- name: WhatsApp Business API
+  examples:
+  - WhatsApp
+  priority: high
+- name: Software Akuntansi
+  examples:
+  - Accurate Online
+  - Jurnal
+  priority: medium
+- name: Media Sosial
+  examples:
+  - Instagram
+  - TikTok
+  priority: medium
+- name: Platform Portofolio
+  examples:
+  - Behance
+  - Pixieset
+  priority: low
+industry_faq:
+- question: Berapa harga paket fotografi pernikahan?
+  answer_template: Harga paket fotografi pernikahan dimulai dari Rp 5.000.000, tergantung
+    durasi, jumlah fotografer, dan hasil editing. Bisa saya bantu rekomendasikan paket
+    sesuai kebutuhan Anda?
+- question: Apakah harga sudah termasuk editing foto?
+  answer_template: Ya, semua paket kami sudah termasuk editing dasar. Untuk editing
+    khusus seperti retouch advanced, tersedia sebagai add-on dengan biaya tambahan.
+- question: Berapa lama proses editing selesai?
+  answer_template: Proses editing biasanya memakan waktu 7-14 hari kerja setelah sesi
+    pemotretan, tergantung jumlah foto dan kompleksitas permintaan.
+- question: Bisakah sesi pemotretan dilakukan di luar kota?
+  answer_template: Tentu bisa. Kami melayani pemotretan di luar kota dengan biaya
+    tambahan untuk transportasi dan akomodasi jika diperlukan.
+- question: Bagaimana jika cuaca buruk pada hari pemotretan?
+  answer_template: Kami akan menjadwalkan ulang sesi pemotretan tanpa biaya tambahan
+    jika cuaca benar-benar tidak memungkinkan. Safety dan kualitas hasil adalah prioritas
+    kami.
+sales_scripts:
+- trigger: price_question
+  situation: Saat calon klien menanyakan harga via telepon.
+  script: Halo, terima kasih sudah menghubungi [Nama Studio]. Untuk memberikan penawaran
+    terbaik, boleh saya tahu acara apa yang akan difoto dan tanggalnya kapan? Harga
+    kami mulai dari Rp 3.000.000, disesuaikan dengan paket dan kebutuhan Anda.
+  goal: Mengumpulkan informasi kebutuhan klien dan mengarahkan ke konsultasi lebih
+    lanjut.
+- trigger: busy_response
+  situation: Saat calon klien mengatakan sedang sibuk.
+  script: Oh, tidak masalah. Saya bisa kirimkan informasi paket dan portofolio kami
+    via WhatsApp agar Anda bisa lihat saat ada waktu. Boleh nomor WhatsApp-nya?
+  goal: Mendapatkan kontak untuk follow-up dan menjaga minat klien.
+- trigger: competitor_mention
+  situation: Saat klien menyebutkan pesaing dengan harga lebih murah.
+  script: Saya mengerti budget menjadi pertimbangan. Yang membedakan kami adalah [sebutkan
+    keunggulan, seperti pengalaman, peralatan profesional, atau garansi]. Boleh saya
+    jadwalkan konsultasi singkat untuk menunjukkan nilai lebih layanan kami?
+  goal: Menonjolkan diferensiasi dan mengajak klien melihat nilai, bukan hanya harga.
+competitors:
+- name: SweetEscape
+  positioning: Platform marketplace fotografer dengan harga terjangkau dan booking
+    instan.
+  strengths:
+  - Jaringan fotografer luas di banyak kota
+  - Aplikasi mobile yang user-friendly
+  - Harga transparan dan kompetitif
+  weaknesses:
+  - Kualitas fotografer bervariasi
+  - Layanan pasca-pemotretan terbatas
+  our_differentiation: Kami menyediakan fotografer tetap dengan kualitas terjamin,
+    konsultasi personal, dan layanan end-to-end termasuk editing profesional.
+- name: Studio 7even
+  positioning: Studio fotografi premium khusus pernikahan dan prewedding.
+  strengths:
+  - Portofolio yang kuat di niche pernikahan
+  - Peralatan high-end
+  - Reputasi established
+  weaknesses:
+  - Harga sangat tinggi
+  - Jadwal sering penuh jauh hari
+  our_differentiation: Kami menawarkan fleksibilitas harga dengan paket modular dan
+    lebih responsif dalam komunikasi dengan klien.
+- name: Fotografer freelance di Instagram
+  positioning: Fotografer individu dengan harga negotiable dan gaya personal.
+  strengths:
+  - Harga sering lebih murah
+  - Gaya fotografi unik dan personal
+  - Proses booking informal
+  weaknesses:
+  - Profesionalitas tidak konsisten (kontrak, pembayaran, delivery)
+  - Risiko keterlambatan atau cancel last minute
+  our_differentiation: Kami menjamin profesionalitas dengan kontrak jelas, sistem
+    pembayaran aman, dan tim support untuk handling komplain atau perubahan jadwal.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 3000000
+  - 50000000
+  entry_point: 3000000
+  roi_examples:
+  - scenario: Otomatisasi penjadwalan dan FAQ mengurangi waktu admin 20 jam/bulan.
+    monthly_cost: 500000
+    monthly_savings: 2000000
+    payback_months: 1
+  - scenario: Follow-up otomatis meningkatkan konversi leads sebesar 15%.
+    monthly_cost: 750000
+    monthly_savings: 3750000
+    payback_months: 1
+  value_anchors:
+  - Hemat hingga 20 jam waktu admin per bulan untuk fokus pada kreativitas.
+  - Tingkatkan konversi leads hingga 15% dengan follow-up yang konsisten.
+  - Berikan pengalaman klien yang profesional sejak pertama kali mereka menghubungi.
+market_context:
+  market_size: Diperkirakan Rp 10 triliun per tahun
+  growth_rate: 12% YoY
+  key_trends:
+  - Permintaan untuk konten video dan drone meningkat pesat untuk media sosial.
+  - Tren 'micro-wedding' dan prewedding intimate yang membutuhkan fotografer spesialis.
+  - Banyak UMKM di bidang F&B dan retail membutuhkan fotografi produk profesional.
+  seasonality:
+    high:
+    - Juni-Agustus (musim pernikahan)
+    - Desember (akhir tahun, acara perusahaan)
+    low:
+    - Januari-Februari (pasca liburan)
+    - Bulan Ramadhan
+typical_objections:
+- objection: Mahal banget, bisa lebih murah?
+  response: Saya mengerti pertimbangan budget. Harga kami mencerminkan kualitas peralatan,
+    pengalaman tim, dan hasil editing profesional yang akan Anda dapatkan. Mungkin
+    kita bisa diskusikan paket yang lebih sesuai dengan anggaran, namun tetap menjaga
+    kualitas di area-area penting?
+- objection: Saya masih lihat-lihat dulu, banyak pilihan.
+  response: Tentu, sangat wajar untuk membandingkan. Selain portofolio, yang penting
+    juga adalah komunikasi dan kepercayaan dengan fotografer. Boleh saya kirimkan
+    studi kasus atau testimoni dari klien dengan kebutuhan serupa untuk membantu pertimbangan
+    Anda?
+- objection: Saya takut hasilnya tidak sesuai ekspektasi.
+  response: Kekhawatiran yang sangat valid. Kami punya proses konsultasi detail sebelum
+    pemotretan dan memberikan preview editing. Plus, semua dibahas dalam kontrak yang
+    jelas. Kami prioritaskan komunikasi agar hasilnya sesuai yang Anda bayangkan.
+meta:
+  id: photo_video
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

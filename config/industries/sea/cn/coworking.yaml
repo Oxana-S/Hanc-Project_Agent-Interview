@@ -1,0 +1,212 @@
+pain_points:
+- description: 空置率高，尤其是在非核心商务区，场地利用率不足
+  severity: high
+  solution_hint: 智能语音助手可以主动联系潜在客户，进行24/7咨询接待，提高转化率
+- description: 会员续费不稳定，客户流动性大，忠诚度低
+  severity: high
+  solution_hint: AI语音助手可以定期回访会员，了解需求变化，推送个性化续费方案
+- description: 水电、保洁、网络等运营成本持续上涨
+  severity: medium
+  solution_hint: 通过智能系统集成，优化能耗管理和服务调度，降低运营成本
+- description: 同质化竞争严重，缺乏差异化服务
+  severity: medium
+  solution_hint: AI助手可以收集客户反馈，分析需求趋势，帮助设计增值服务
+- description: 客户咨询量大，人工客服响应不及时，错失商机
+  severity: high
+  solution_hint: 7x24小时智能接待，多轮对话理解需求，即时转接人工
+- description: 传统营销方式效果差，获客成本高
+  severity: medium
+  solution_hint: 智能外呼系统精准触达目标客户，自动化跟进意向客户
+- description: 会员投诉处理效率低，影响品牌口碑
+  severity: low
+  solution_hint: AI语音助手第一时间响应投诉，分类处理，自动生成工单
+typical_services:
+- 灵活工位(按小时/天计费)
+- 固定工位(月租/季租/年租)
+- 独立办公室(1-20人间)
+- 虚拟办公室(注册地址+邮件处理)
+- 会议室按时租赁
+- 活动场地租赁
+- 企业定制办公解决方案
+- 前台接待与电话接听服务
+- 行政代办服务(工商注册等)
+- 社区活动与资源对接
+recommended_functions:
+- name: 7x24小时智能接待
+  priority: high
+  reason: 中国客户习惯随时咨询，错失咨询即可能损失客户
+- name: 多轮对话需求分析
+  priority: high
+  reason: 客户需求复杂，需要深入了解办公人数、预算、位置偏好等
+- name: 智能外呼获客
+  priority: medium
+  reason: 主动营销对提升入驻率至关重要，需合规(PIPL)触达
+- name: 会员满意度回访
+  priority: medium
+  reason: 提升续费率的关键，及时发现问题并处理
+- name: 会议场地智能推荐
+  priority: low
+  reason: 会议室使用率提升可显著增加收入
+- name: 多语言支持(中英文)
+  priority: medium
+  reason: 服务外企和跨国团队的需求
+typical_integrations:
+- name: 办公空间管理软件
+  examples:
+  - 创富港系统
+  - 优客工场U Suite
+  - Distrii办伴
+  priority: high
+- name: 客户关系管理(CRM)
+  examples:
+  - 销售易
+  - 纷享销客
+  - 企业微信CRM
+  priority: high
+- name: 在线预订系统
+  examples:
+  - 微信小程序预订
+  - 自有APP
+  - 第三方平台接口
+  priority: medium
+- name: 智能门禁与考勤
+  examples:
+  - 海康威视
+  - 大华
+  - 本地门禁系统
+  priority: medium
+- name: 财务与支付系统
+  examples:
+  - 用友
+  - 金蝶
+  - 支付宝/微信支付接口
+  priority: high
+industry_faq:
+- question: 你们的位置在哪里？交通方便吗？
+  answer_template: 我们位于[区域]，靠近[地铁站/地标]。具体地址是[地址]，周边有[交通描述]。您什么时候方便过来看看？
+- question: 灵活工位怎么收费？有优惠吗？
+  answer_template: 灵活工位按[小时/天]计费，[价格]元起。现在办理[月卡/季卡]可享受[折扣]优惠。您主要是什么时间段使用？
+- question: 网络速度怎么样？稳定吗？
+  answer_template: 我们提供专线光纤网络，下载速度可达[速度]MB/s，7x24小时专业维护，保障您视频会议和文件传输的稳定性。
+- question: 周末和节假日开放吗？
+  answer_template: 我们[7天开放/周末部分开放]，具体时间是[时间]。节假日安排可提前在会员APP查看，部分服务可能需要预约。
+- question: 可以注册公司吗？需要什么材料？
+  answer_template: 可以，我们提供虚拟办公室服务，包含注册地址。需要您提供[材料清单]。我们可以推荐合作的代理记账公司。
+- question: 会议室怎么预订？最早可以提前多久？
+  answer_template: 通过[微信小程序/APP/电话]即可预订，会员可提前[天数]天预订，非会员提前[天数]天。现在新用户首次预订可享受[优惠]。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 您好！我们的价格根据工位类型和使用时长灵活定制。比如灵活工位[价格]元/天起，固定工位[价格]元/月起。请问您这边大概几位使用？主要用来办公还是会议？我为您推荐最合适的方案。
+  goal: 了解客户具体需求，避免直接报价导致客户流失，转向需求分析
+- trigger: competitor_comparison
+  situation: 当客户提到其他共享办公品牌时
+  script: 您提到的[竞争对手]确实也不错。我们的特色在于[差异化点，如：社区活跃度更高、网络更稳定、增值服务更全面]。很多客户选择我们是因为[具体优势]。您最看重办公空间的哪些方面呢？
+  goal: 突出自身优势，将竞争转向价值对比，而非单纯价格战
+- trigger: hesitation
+  situation: 当客户表示再考虑考虑时
+  script: 完全理解，选择办公空间确实需要慎重。我们最近有[限时优惠/体验活动]，您可以先来体验一天，感受一下我们的环境和社区氛围。您看本周三还是周四方便？
+  goal: 创造再次接触机会，通过体验转化潜在客户
+- trigger: need_consultation
+  situation: 当客户需要更详细的咨询时
+  script: 好的，我可以为您安排专业的空间顾问，根据您的团队规模、预算和办公习惯，免费定制2-3个方案。顾问会带您实地参观，并详细介绍我们的会员权益。您什么时候比较方便？
+  goal: 预约线下看房，提高转化率
+competitors:
+- name: 优客工场
+  positioning: 全国性连锁，规模最大
+  strengths:
+  - 品牌知名度高
+  - 网点覆盖广
+  - 融资能力强
+  weaknesses:
+  - 部分网点空置率高
+  - 服务标准化程度不一
+  - 价格偏高
+  our_differentiation: 我们更注重本地化服务和社区运营，性价比更高，服务更灵活
+- name: 梦想加
+  positioning: 科技驱动的高端共享办公
+  strengths:
+  - 智能办公系统先进
+  - 设计感强
+  - 聚焦一线城市核心区
+  weaknesses:
+  - 价格昂贵
+  - 网点数量有限
+  - 中小客户接受度低
+  our_differentiation: 我们提供更亲民的价格和更实用的服务，适合成长型中小企业
+- name: 创富港
+  positioning: 中小企业一站式办公服务商
+  strengths:
+  - 服务链条完整
+  - 价格实惠
+  - 虚拟办公室业务强
+  weaknesses:
+  - 空间设计普通
+  - 社区氛围较弱
+  - 品牌形象偏传统
+  our_differentiation: 我们拥有更现代的办公环境和更活跃的创业社区，吸引年轻团队
+- name: 本地小型共享空间
+  positioning: 区域型，成本低
+  strengths:
+  - 价格极低
+  - 决策灵活
+  - 本地资源丰富
+  weaknesses:
+  - 设施不专业
+  - 服务不稳定
+  - 缺乏品牌保障
+  our_differentiation: 我们提供品牌化、标准化服务，专业运营保障，风险更低
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 800
+  - 8000
+  entry_point: 800
+  roi_examples:
+  - scenario: 使用AI语音助手替代部分客服人力
+    monthly_cost: 2000
+    monthly_savings: 6000
+    payback_months: 1
+  - scenario: 通过智能外呼提升入驻率5%
+    monthly_cost: 1500
+    monthly_savings: 10000
+    payback_months: 1
+  value_anchors:
+  - 一个成功转化的客户年价值可达万元
+  - 24/7接待避免错失任何商机
+  - 自动化跟进让销售效率提升3倍
+market_context:
+  market_size: 约200亿元人民币
+  growth_rate: 15% YoY
+  key_trends:
+  - 从一线城市向二三线城市下沉
+  - 企业定制化需求增加
+  - 混合办公模式成为新常态
+  - 社区化运营成为差异化关键
+  seasonality:
+    high:
+    - 3-5月(春节后招聘季)
+    - 9-10月(毕业季后)
+    low:
+    - 1-2月(春节前后)
+    - 7-8月(暑期)
+typical_objections:
+- objection: 我们公司小，用不上这么专业的共享办公
+  response: 正是因为公司小，才更需要专业的办公环境来提升形象和效率。我们有很多1-5人的初创团队，他们反馈在这里办公不仅成本可控，还能接触到更多合作机会。
+- objection: 价格比我们租传统办公室贵
+  response: 看似单价稍高，但我们包含了水电、网络、保洁、前台等所有费用，还有灵活的租期。传统办公室通常要签长期合同，还有押金和装修成本。算下来总成本可能更低，而且更灵活。
+- objection: 担心隐私和安全问题
+  response: 我们提供独立办公室和固定工位，私密性有保障。整个空间都有24小时监控和门禁管理。重要文件可以锁在私人储物柜。很多法律、咨询公司都在我们这里办公，安全您可以放心。
+meta:
+  id: coworking
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "coworking"
+- "shared office"
+- "flexible workspace"
+_extends: _base/coworking

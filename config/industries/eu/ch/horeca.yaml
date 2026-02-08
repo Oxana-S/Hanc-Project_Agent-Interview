@@ -1,0 +1,218 @@
+aliases:
+- horeca
+- Gastronomie
+- Restaurant
+- Café
+- Hotel
+- Bar
+- Pub
+- Catering
+- Essenslieferung
+- Takeaway
+- Fastfood
+- Pizzeria
+- Sushi
+- Tischreservierung
+- Bankett
+competitors:
+- name: Deister
+  positioning: Führender Anbieter für Kassensysteme und Prozessautomatisierung
+  strengths:
+  - Umfassende Hardware- und Softwarelösungen
+  - Starke Präsenz in der Deutschschweiz
+  - Guter Kundenservice
+  weaknesses:
+  - Höhere Kosten
+  - Weniger fokussiert auf reine Sprach-AI
+  our_differentiation: Kosteneffiziente, reine Cloud- und Sprachlösung ohne teure Hardware-Investition
+- name: Loyverse
+  positioning: Kostenlose Kassensoftware mit einfacher Bedienung
+  strengths:
+  - Niedrige Einstiegshürde (kostenlose Basisversion)
+  - Einfache Einrichtung
+  - Mobile Nutzung
+  weaknesses:
+  - Begrenzte Funktionen in kostenloser Version
+  - Keine spezifische Sprach-AI-Integration
+  our_differentiation: Dedizierte, natürliche Sprachverarbeitung für komplexe Kundeninteraktionen wie Reservierungen und Bestellungen
+- name: Gastronovi
+  positioning: All-in-One-Lösung für die Gastronomie
+  strengths:
+  - Umfangreiche Funktionalitäten (Reservierung, Bestellung, CRM)
+  - Schweizer Unternehmen mit lokalem Support
+  weaknesses:
+  - Komplexe und teure Implementierung
+  - Nicht primär auf Voice-AI ausgelegt
+  our_differentiation: Schnelle, plug-and-play Voice-AI, die sich in bestehende Systeme integrieren lässt, ohne den gesamten Betrieb umzustellen
+industry_faq:
+- answer_template: Für welches Datum und welche Uhrzeit? Wie viele Personen sind es?
+  question: Haben Sie noch einen Tisch frei?
+- answer_template: Ich kann Ihnen die Speisekarte per WhatsApp oder E-Mail senden. Sie finden sie auch auf unserer Website.
+  question: Können Sie mir die Speisekarte schicken?
+- answer_template: Ja, wir haben durchgehend geöffnet. An Wochenenden bis 01:00 Uhr.
+  question: Sind Sie auch an Wochenenden geöffnet?
+- answer_template: Ja, wir führen eine Kinderspeisekarte und haben Hochstühle für die Kleinen.
+  question: Haben Sie eine Kinderspeisekarte?
+- answer_template: Ja, wir organisieren Bankette für 10 bis 100 Personen. Für welches Datum planen Sie?
+  question: Kann man bei Ihnen ein Bankett buchen?
+- answer_template: Ja, wir bieten 20 kostenlose Parkplätze direkt beim Eingang.
+  question: Haben Sie einen Parkplatz?
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: Ca. CHF 18 Mrd. jährlicher Umsatz
+  growth_rate: 2-3% p.a.
+  key_trends:
+  - Steigende Nachfrage nach Liefer- und Takeaway-Dienstleistungen
+  - Hoher Personalmangel und Lohnkosten
+  - Digitalisierung der Gästekommunikation
+  - Nachhaltigkeit und regionale Produkte
+  seasonality:
+    high:
+    - Dezember (Weihnachtsfeiern)
+    - Juli-August (Tourismus)
+    - Skisaison in Bergregionen
+    low:
+    - Januar
+    - November
+meta:
+  avg_validation_score: 0.0
+  country: ch
+  created_at: '2026-02-04'
+  currency: CHF
+  id: horeca
+  language: de
+  languages: []
+  last_updated: '2026-02-04'
+  phone_codes:
+  - '+41'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Zurich
+  version: '1.0'
+pain_points:
+- description: Viele Anrufe für Tischreservierungen zu Stoßzeiten (Mittag/Abend)
+  severity: high
+  solution_hint: Automatische 24/7-Tischreservierung per Sprachassistent
+- description: No-Shows bei Reservierungen (bis zu 15%)
+  severity: high
+  solution_hint: Automatische Bestätigungen und SMS/WhatsApp-Erinnerungen
+- description: Personal wird durch Telefonate vom Service abgelenkt
+  severity: medium
+  solution_hint: Sprachagent übernimmt Standardanfragen
+- description: Schwierigkeit, Stammgäste über neue Menüs oder Events zu informieren
+  severity: medium
+  solution_hint: Automatisierte Outbound-Anrufe für Marketingaktionen
+- description: Verlust von Liefer- und Takeaway-Bestellungen in Stoßzeiten
+  severity: medium
+  solution_hint: Sprachgesteuerte automatische Bestellannahme
+- description: Hoher administrativer Aufwand für die Schichtplanung bei Personalmangel
+  severity: low
+  solution_hint: Entlastung durch Automatisierung von Standardanfragen
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 100
+  - 500
+  entry_point: 149
+  roi_examples:
+  - scenario: Kleines Restaurant automatisiert 50% der Reservierungsanrufe
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Hotel reduziert No-Shows um 50%
+    monthly_cost: 349
+    monthly_savings: 2500
+    payback_months: 1
+  value_anchors:
+  - Kostet weniger als eine Teilzeitkraft pro Monat
+  - Reduziert No-Shows und steigert den Umsatz
+  - 24/7-Erreichbarkeit ohne zusätzliche Personalkosten
+recommended_functions:
+- name: Reservierung
+  priority: high
+  reason: Automatische Tisch- oder Zimmerreservierung mit Zeit- und Präferenzauswahl
+- name: Erinnerung
+  priority: high
+  reason: Sendet Bestätigungen und Erinnerungen per SMS/WhatsApp, reduziert No-Shows
+- name: Bestellannahme
+  priority: high
+  reason: Nimmt Liefer- und Takeaway-Bestellungen entgegen, auch außerhalb der Öffnungszeiten
+- name: FAQ
+  priority: medium
+  reason: Beantwortet Fragen zu Menü, Preisen, Öffnungszeiten, Parkplatz und Events
+- name: Outbound
+  priority: low
+  reason: Informiert Stammgäste über Aktioinen, Events oder neue Menüs
+sales_scripts:
+- trigger: price_question
+  situation: Wenn der Kunde nach den Kosten fragt.
+  script: Unser Service beginnt bei CHF 149 pro Monat. Das ist oft günstiger als die Kosten für eine Teilzeitkraft, die nur Anrufe entgegennimmt. Wie viele Reservierungsanfragen erhalten Sie pro Tag?
+  goal: Wert demonstrieren und Bedarf ermitteln.
+- trigger: objection_technology
+  situation: Wenn der Kunde Bedenken wegen neuer Technologie hat.
+  script: Ich verstehe Ihre Zurückhaltung. Unser System ist sehr benutzerfreundlich und benötigt keine Schulung. Wir integrieren es in Ihr bestehendes System wie Gastronovi oder Ihr Telefon. Können wir
+    eine kostenlose Testwoche vereinbaren?
+  goal: Ängste nehmen und zu einem Test überleiten.
+- trigger: competitor_mentioned
+  situation: Wenn der Kunde einen Mitbewerber nennt.
+  script: Ja, [Competitor] ist ein guter Anbieter. Unser Fokus liegt speziell auf der Sprachautomatisierung. Wir ersetzen keine ganze Kasse, sondern ergänzen sie, um Ihr Personal von Telefonaten zu entlasten.
+    Möchten Sie sehen, wie es in der Praxis funktioniert?
+  goal: Differenzierung aufzeigen und Demo anbieten.
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Reduktion der No-Shows auf unter 10%
+  - Automatisierung von 70% aller Reservierungsanrufe
+  - Durchschnittliche Reservierungsdauer unter 1 Minute
+  - Steigerung der Wiederkehrrate um 20%
+typical_integrations:
+- name: Kassensystem / POS
+  examples:
+  - Gastronovi
+  - iiko
+  - Loyverse
+  - Poster
+  priority: high
+  reason: Integration für Echtzeit-Tischverfügbarkeit, Bestellungen und Menü
+- name: Reservierungssystem
+  examples:
+  - Opentable
+  - Quandoo
+  - собственная Lösung
+  priority: high
+  reason: Synchronisation von Tischreservierungen und Gästedaten
+- name: Lieferplattformen
+  examples:
+  - Uber Eats
+  - Just Eat Takeaway.com
+  - Smood
+  priority: medium
+  reason: Annahme und Weiterleitung von Lieferbestellungen
+- name: Messenger
+  examples:
+  - WhatsApp
+  - Telegram
+  priority: medium
+  reason: Versand von Bestätigungen, Menüs und Marketingnachrichten
+typical_objections:
+- objection: Das ist mir zu teuer.
+  response: Bei CHF 149 pro Monat sparen Sie sich oft schon die Kosten für eine Aushilfskraft. Wie viel Zeit verbringt Ihr Team täglich am Telefon mit Reservierungen?
+- objection: Die Technologie ist zu kompliziert für uns.
+  response: Unser System ist plug-and-play. Wir kümmern uns um die Einrichtung und Integration. Sie müssen nichts installieren oder umlernen.
+- objection: Wir haben schon ein Reservierungssystem.
+  response: Perfekt! Unser Sprachagent kann sich direkt in Ihr System einklinken. So müssen Ihre Gäste nicht online buchen, sondern können einfach anrufen, und die Reservierung landet automatisch in Ihrem
+    System.
+typical_services:
+- Tischreservierung
+- Essensbestellung zum Mitnehmen (Takeaway)
+- Essenslieferung (Lieferdienst)
+- Bankette und Gruppenfeiern
+- Catering-Service
+- Zimmerreservierung (Hotels)
+- Zimmerservice (Room Service)
+- Veranstaltungsorganisation
+- Bereitstellung von Speisekarten und Öffnungszeiten
+- Annahme von Bestellungen für Apéros
+_extends: _base/horeca

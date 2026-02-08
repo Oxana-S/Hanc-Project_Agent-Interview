@@ -1,0 +1,207 @@
+meta:
+  id: real_estate
+  country: cn
+  language: zh
+  currency: CNY
+  region: sea
+  compliance: PIPL
+  version: '1.0'
+  created_at: '2024-02-04'
+  last_updated: '2024-02-04'
+  phone_codes:
+  - '+86'
+aliases:
+- 房地产
+- 经纪人
+- 中介
+- 房产中介
+- 二手房
+- 新房
+- 楼盘
+- 开发商
+- 房贷
+- 房屋出租
+- 写字楼
+- 商铺
+- 豪宅
+- 公寓
+pain_points:
+- description: 大量来自58同城、贝壳的咨询电话，人工客服接不过来，客户流失
+  severity: high
+  solution_hint: AI语音助手进行初步需求筛选和客户信息收集
+- description: 客户经常在下班后或周末咨询，错过最佳跟进时机
+  severity: high
+  solution_hint: 24/7智能接听，记录意向并安排人工回访
+- description: 重复性带看安排和房源信息查询占用大量时间
+  severity: medium
+  solution_hint: 自动发送房源详情、图片和视频，在线预约带看时间
+- description: 客户跟进过程混乱，容易遗忘后续沟通
+  severity: medium
+  solution_hint: CRM集成自动提醒，跟踪客户状态和下一步行动
+- description: 网络获客成本高，转化率低
+  severity: medium
+  solution_hint: AI快速回访潜在客户，提升初次接触效率
+- description: 客户对中介费敏感，沟通解释工作繁重
+  severity: low
+  solution_hint: 标准化解释服务内容和费用构成，提供透明化方案
+typical_services:
+- 二手房买卖
+- 新房代理销售
+- 住宅租赁
+- 商业地产租赁（写字楼、商铺）
+- 房贷咨询与办理
+- 交易过户全程代办
+- 房产价值评估
+- 产权调查与法律风险审核
+- 房屋托管服务
+- 海外房产咨询
+recommended_functions:
+- name: 客户需求筛选
+  priority: high
+  reason: 快速收集预算、意向区域、户型、购房资格等关键信息
+- name: 带看预约
+  priority: high
+  reason: 根据经纪人日程和房源状态，高效安排线下看房时间
+- name: 常见问题解答
+  priority: medium
+  reason: 即时回答关于房源、政策、税费、流程的基础问题
+- name: 客户跟进提醒
+  priority: medium
+  reason: 自动提醒经纪人回访客户，推送新房源信息
+- name: 线索回访
+  priority: medium
+  reason: 自动回访网站、平台留资客户，提高转化率
+- name: 信息收集与登记
+  priority: low
+  reason: 自动记录客户沟通要点，同步至CRM系统
+typical_integrations:
+- name: CRM系统
+  examples:
+  - 纷享销客
+  - 销帮帮
+  - 明源云客
+  priority: high
+  reason: 管理客户档案、房源信息、跟进记录，实现销售流程自动化
+- name: 房源平台
+  examples:
+  - 贝壳找房
+  - 安居客
+  - 58同城
+  priority: high
+  reason: 同步房源信息，获取并分配平台线索
+- name: 电话系统
+  examples:
+  - 容联云
+  - 腾讯云呼叫中心
+  - 阿里云通信
+  priority: high
+  reason: 处理来自各广告渠道的呼入电话，管理通话记录
+- name: 即时通讯
+  examples:
+  - 企业微信
+  - 钉钉
+  priority: medium
+  reason: 与客户沟通，发送房源资料、合同文件等
+- name: 电子签约
+  examples:
+  - 上上签
+  - 法大大
+  priority: low
+  reason: 在线签署委托协议、看房确认书等初步文件
+industry_faq:
+- question: 你们在XX区有什么房源？
+  answer_template: 我们在XX区有较多选择。请告诉我您的具体需求，比如预算、面积和户型，我为您精准匹配。
+- question: 中介费怎么收？
+  answer_template: 我们的服务费通常为成交总价的X%。收费透明，服务完成后支付，包含交易全流程保障。
+- question: 可以帮忙办理贷款吗？
+  answer_template: 可以的。我们与多家银行合作，可以根据您的情况推荐最优贷款方案，并协助办理。
+- question: 什么时候可以看房？
+  answer_template: 可以预约。您方便的时间是？我会为您安排经纪人，并提前确认房源可看状态。
+- question: 除了中介费还有其他费用吗？
+  answer_template: 我们的报价已包含主要服务费。交易中可能涉及的税费、工本费等，我们会提前清晰说明，无隐藏收费。
+- question: 怎么保证交易安全？
+  answer_template: 我们提供产权调查、资金监管和全程法律支持，确保交易合规、资金安全。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户咨询房源价格或表示预算有限时
+  script: 理解您的预算考虑。市场上有不同价位的选择。为了给您推荐最合适的，可以了解一下您对区域、面积和户型的核心要求吗？有时稍微调整需求，就能找到性价比很高的房子。
+  goal: 深化需求沟通，转移单纯价格关注，引导至价值匹配
+- trigger: competitor_mention
+  situation: 当客户提到正在与其他中介（如链家、我爱我家）接触时
+  script: 您多比较是明智的。我们的优势在于[例如：更专注本地商圈/与某些开发商有独家合作/提供更灵活的佣金方案]。可以给我一个机会，为您提供一份我们精选的备选清单做个参考吗？
+  goal: 突出自身差异化优势，争取展示机会
+- trigger: hesitation
+  situation: 当客户表示“再想想”、“再看看”时
+  script: 完全理解，买房是大事。为了帮您节省时间，我可以将符合您条件的房源信息整理好，包括近期价格趋势，发到您微信上吗？这样您比较起来更直观。好的房源流动很快，我们也会第一时间通知您新上或调价的房子。
+  goal: 保持联系，提供附加价值，建立持续沟通渠道
+competitors:
+- name: 链家
+  positioning: 全国性直营连锁，规模最大
+  strengths:
+  - 品牌知名度高，门店覆盖广
+  - 真房源数据库强大
+  - 线上流量入口（贝壳找房）
+  weaknesses:
+  - 中介费率相对固定，议价空间小
+  - 服务标准化，个性化程度可能不足
+  our_differentiation: 我们提供更灵活的佣金协商和更个性化的本地深度服务，专注于满足您的定制化需求。
+- name: 我爱我家
+  positioning: 大型综合房产服务平台
+  strengths:
+  - 业务线全面（买卖、租赁、资产管理）
+  - 部分区域市场占有率领先
+  weaknesses:
+  - 不同门店服务水平可能参差不齐
+  - 线上平台流量次于贝壳
+  our_differentiation: 我们拥有更紧密的社区关系和更快的本地市场响应速度，能获取一些未公开的优质房源。
+- name: 本地小型中介
+  positioning: 区域深耕，关系型销售
+  strengths:
+  - 本地人脉资源丰富，信息灵通
+  - 服务灵活，佣金可谈
+  weaknesses:
+  - 服务流程可能不规范
+  - 风险把控能力参差不齐
+  our_differentiation: 我们结合了本地化优势和正规公司的标准化流程、资金监管及法律保障，兼顾灵活与安全。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 2000000
+  - 10000000
+  entry_point: 5000
+  roi_examples:
+  - scenario: 自动化处理初步咨询和预约，节省初级客服人力
+    monthly_cost: 2000
+    monthly_savings: 8000
+    payback_months: 0.25
+  - scenario: 通过24/7接听和线索回访，每月增加10个有效客户
+    monthly_cost: 2000
+    monthly_savings: 50000
+    payback_months: 0.04
+  value_anchors:
+  - AI助手可全年无休，抓住每一个潜在客户
+  - 将经纪人从重复咨询中解放，专注成交转化
+  - 标准化服务流程，提升客户信任感和体验
+market_context:
+  market_size: 超25万亿人民币（年交易额）
+  growth_rate: 稳中有升，结构性增长
+  key_trends:
+  - 存量房（二手房）交易占比持续增加
+  - 数字化看房（VR、直播）成为标配
+  - 购房者更关注房屋品质、社区服务和保值能力
+  - 房产交易线上化、合规化要求提高
+  seasonality:
+    high:
+    - 3-5月（金三银四）
+    - 9-11月（金九银十）
+    low:
+    - 1-2月（春节前后）
+    - 7-8月（盛夏淡季）
+typical_objections:
+- objection: 我自己在网上看看
+  response: 网上信息多，但也杂。我们掌握很多未公开或刚上架的优质房源，并且能帮您分析价格和谈判。不妨告诉我您的需求，我发几个我们的独家房源您参考下？
+- objection: 你们中介费太贵了
+  response: 我们的费用对应的是从选房、谈判、贷款到过户的全流程服务和风险保障。如果您对费用有考虑，我们可以根据您的具体交易情况，商量一个能体现服务价值的方案。
+- objection: 我暂时不着急，再等等看
+  response: 理解，市场观察很重要。我可以把您加到我们的潜在客户名单里，定期为您推送符合您条件的房源和市场分析。这样您既能掌握动态，又不错过突然出现的好机会。
+_extends: _base/real_estate

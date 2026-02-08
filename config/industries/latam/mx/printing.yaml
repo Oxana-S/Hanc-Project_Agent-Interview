@@ -1,0 +1,199 @@
+pain_points:
+- description: Altos costos de materiales como tinta y papel debido a fluctuaciones en el mercado y dependencia de importaciones.
+  severity: high
+  solution_hint: El agente de voz puede optimizar pedidos y sugerir proveedores locales para reducir costos.
+- description: Competencia creciente de medios digitales que reduce la demanda de impresos tradicionales.
+  severity: medium
+  solution_hint: Promover servicios de impresión personalizada y de alta gama que los digitales no pueden replicar.
+- description: Cumplimiento con la LFPDPPP para el manejo seguro de datos personales de clientes, lo que añade complejidad operativa.
+  severity: high
+  solution_hint: Integrar sistemas automatizados que aseguren el cumplimiento normativo en todos los procesos de datos.
+- description: Ineficiencias en la gestión de inventario, leading a sobrestock o faltantes de materiales críticos.
+  severity: medium
+  solution_hint: Automatizar el monitoreo de inventario con alertas en tiempo real para optimizar niveles de stock.
+- description: Dificultad para cobrar pagos a tiempo de clientes, afectando el flujo de caja.
+  severity: medium
+  solution_hint: Implementar recordatorios automáticos de pagos y facilitar opciones de pago en línea integradas.
+- description: Falta de personal capacitado en tecnologías de impresión modernas, slowing la adopción de innovaciones.
+  severity: low
+  solution_hint: Ofrecer capacitación virtual y soporte técnico a través del agente de voz para upskilling del equipo.
+- description: Variabilidad en la calidad de impresión debido a equipos desactualizados o mantenimiento irregular.
+  severity: high
+  solution_hint: Programar mantenimiento predictivo y recomendar actualizaciones basadas en datos de uso del equipo.
+typical_services:
+- Impresión offset
+- Impresión digital
+- Diseño gráfico
+- Encuadernación
+- Impresión en gran formato
+- Serigrafía
+- Impresión de etiquetas
+- Tarjetas de presentación
+- Folletos y catálogos
+- Impresión sobre materiales especiales (como tela o plástico)
+recommended_functions:
+- name: Cotización Automática
+  priority: high
+  reason: Permite a los clientes obtener precios instantáneos, mejorando la experiencia y acelerando las ventas.
+- name: Seguimiento de Pedidos
+  priority: high
+  reason: Proporciona visibilidad en tiempo real del estado de pedidos, reduciendo consultas manuales.
+- name: Recordatorio de Pagos
+  priority: medium
+  reason: Ayuda a cobrar a tiempo, mejorando el flujo de caja y reduciendo deudas incobrables.
+- name: Asistencia para Diseño
+  priority: low
+  reason: Guía a los clientes en la preparación de archivos para impresión, evitando errores costosos.
+- name: Gestión de Inventario
+  priority: medium
+  reason: Automatiza el control de stock, alertando sobre materiales bajos y optimizando compras.
+- name: Programación de Mantenimiento
+  priority: low
+  reason: Coordina mantenimiento preventivo para equipos, minimizando tiempos de inactividad.
+typical_integrations:
+- name: Sistema ERP
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - ASPEL
+  priority: high
+- name: Software de Diseño
+  examples:
+  - Adobe Creative Cloud
+  - CorelDRAW
+  - GIMP con plugins locales
+  priority: medium
+- name: Sistema de Contabilidad
+  examples:
+  - QuickBooks
+  - Contpaq
+  - Aspel COI
+  priority: high
+- name: Plataforma de E-commerce
+  examples:
+  - Shopify
+  - Mercado Shops
+  - Tiendanube
+  priority: medium
+industry_faq:
+- question: ¿Cuál es el tiempo de entrega para imprimir 1000 folletos?
+  answer_template: El tiempo de entrega para 1000 folletos es de aproximadamente 3-5 días hábiles, dependiendo del diseño y materiales seleccionados.
+- question: ¿Ofrecen servicios de diseño gráfico incluidos?
+  answer_template: Sí, ofrecemos servicios completos de diseño gráfico para asegurar que sus impresos sean profesionales y atractivos.
+meta:
+  id: printing
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- printing
+- print shop
+- typography
+- packaging
+_extends: _base/printing
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios o tarifas de impresión.
+  script: Entiendo que el precio es un factor importante. ¿Le gustaría que le proporcione una cotización instantánea basada en sus necesidades específicas? Así podrá comparar y tomar una mejor decisión.
+  goal: Facilitar una cotización rápida para aumentar la probabilidad de venta.
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a la competencia o compara precios.
+  script: Es excelente que esté explorando opciones. Nuestro agente de voz puede ofrecerle un servicio personalizado y seguimiento en tiempo real, asegurando que reciba la mejor calidad y atención.
+  goal: Diferenciar nuestros servicios y resaltar ventajas competitivas.
+  effectiveness: medium
+- trigger: delivery_time_inquiry
+  situation: Cuando el cliente pregunta sobre tiempos de entrega.
+  script: Generalmente, entregamos 1000 folletos en 3-5 días hábiles, pero podemos priorizar su pedido si es urgente. ¿Le gustaría que revise la disponibilidad para su fecha específica?
+  goal: Confirmar tiempos y ofrecer atención personalizada para cerrar la venta.
+  effectiveness: high
+- trigger: data_privacy_concern
+  situation: Cliente expresa preocupación sobre el manejo de datos personales.
+  script: Cumplimos estrictamente con la LFPDPPP para proteger su información. Nuestro sistema automatizado garantiza la seguridad y confidencialidad en todo momento.
+  goal: Generar confianza y reducir objeciones relacionadas con privacidad.
+  effectiveness: high
+- trigger: design_service_inquiry
+  situation: Cliente pregunta si ofrecemos servicios de diseño gráfico.
+  script: Sí, contamos con un equipo profesional que puede ayudarle a crear diseños atractivos y personalizados para sus impresos. ¿Le gustaría una asesoría sin costo inicial?
+  goal: Promover servicios adicionales para aumentar el valor de la venta.
+  effectiveness: medium
+competitors:
+- name: Imprenta Express MX
+  positioning: Líder en impresión rápida y económica en Ciudad de México.
+  strengths:
+  - Entregas rápidas
+  - Precios competitivos
+  - Amplia red de clientes locales
+  weaknesses:
+  - Menor personalización en servicios
+  - Atención al cliente limitada fuera de horario
+  our_differentiation: Nuestro agente de voz ofrece atención 24/7 y cotizaciones instantáneas personalizadas que mejoran la experiencia del cliente.
+- name: Print Solutions Guadalajara
+  positioning: Especialista en impresión digital y diseño en Jalisco.
+  strengths:
+  - Alta calidad en impresión digital
+  - Servicios de diseño integrados
+  - Buen soporte técnico
+  weaknesses:
+  - Precios más altos
+  - Procesos menos automatizados
+  our_differentiation: Automatizamos cotizaciones y seguimiento, reduciendo tiempos de respuesta y mejorando la eficiencia operativa.
+- name: Gráficas Monterrey
+  positioning: Empresa tradicional con amplia trayectoria en el norte de México.
+  strengths:
+  - Experiencia sólida
+  - Amplia gama de servicios de impresión
+  - Relaciones establecidas con proveedores
+  weaknesses:
+  - Menor innovación tecnológica
+  - Procesos manuales que generan retrasos
+  our_differentiation: Implementamos sistemas automáticos que garantizan cumplimiento normativo y agilizan procesos, aumentando la satisfacción del cliente.
+- name: Digital Print MX
+  positioning: Enfocados en impresión digital personalizada en línea.
+  strengths:
+  - Plataforma digital intuitiva
+  - Entregas a nivel nacional
+  - Opciones de personalización avanzadas
+  weaknesses:
+  - Falta de soporte humano inmediato
+  - Limitada atención en casos especiales
+  our_differentiation: Nuestro agente de voz combina automatización con interacción humana para resolver dudas y brindar soporte personalizado en tiempo real.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 1500
+  - 30000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Ahorro en costos al optimizar pedidos y reducir desperdicios con cotización automática.
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 1
+  - scenario: Reducción de consultas manuales y tiempos muertos gracias al seguimiento automatizado.
+    monthly_cost: 1500
+    monthly_savings: 4000
+    payback_months: 1
+  value_anchors:
+  - Reducción significativa de errores en pedidos y tiempos de entrega más precisos.
+  - Mejora en la experiencia del cliente con respuestas instantáneas y personalizadas.
+  - Cumplimiento garantizado de la LFPDPPP para proteger datos sensibles.
+  - Optimización del flujo de caja con recordatorios automáticos de pagos.
+market_context:
+  market_size: El mercado de impresión en México está valorado en aproximadamente 25 mil millones MXN anuales.
+  growth_rate: 3-5%
+  key_trends:
+  - Incremento en la demanda de impresión digital y personalizada.
+  - Mayor integración de tecnologías automatizadas en procesos de impresión.
+  - Enfoque creciente en cumplimiento de normativas de privacidad de datos.
+  - Competencia con medios digitales impulsando innovación en productos impresos de alta calidad.
+  seasonality:
+    high:
+    - noviembre
+    - diciembre
+    - enero
+    low:
+    - julio
+    - agosto

@@ -1,0 +1,196 @@
+pain_points:
+- description: 高峰期电话预订过多，导致人手不足和客户等待时间长
+  severity: high
+  solution_hint: 24/7自动语音代理处理预订，减少人工干预
+- description: 预订后未到店率高达20%，造成资源浪费
+  severity: high
+  solution_hint: 自动发送确认短信和提醒，降低未到店率
+- description: 员工忙于接听电话，影响店内服务质量和效率
+  severity: medium
+  solution_hint: AI语音代理接管预订和咨询电话，释放员工时间
+- description: 促销活动和特色菜品推广困难，客户触达率低
+  severity: medium
+  solution_hint: 自动外呼通知老客户，提高活动参与度
+- description: 外卖订单在用餐高峰期容易丢失或延迟处理
+  severity: medium
+  solution_hint: 集成外卖平台，自动接单和状态更新
+- description: 节假日期间需求激增，预订和管理混乱
+  severity: high
+  solution_hint: 智能分配资源和排队管理，优化客户体验
+typical_services:
+- 桌位预订
+- 外卖服务
+- 宴会承办
+- 餐饮配送
+- 酒店房间预订
+- 客房服务
+- 活动策划
+- 团餐服务
+- 在线点餐
+- 会员管理
+recommended_functions:
+- name: reservation
+  priority: high
+  reason: 自动处理桌位和房间预订，支持选择时间和区域
+- name: reminder
+  priority: high
+  reason: 发送预订确认和提醒，有效减少未到店情况
+- name: order_taking
+  priority: high
+  reason: 接收外卖、堂食和自助订单，提高订单处理效率
+- name: faq
+  priority: medium
+  reason: 回答常见问题，如菜单、价格、营业时间和停车信息
+- name: outbound_calls
+  priority: low
+  reason: 主动联系客户推广促销活动，增加回头客
+- name: complaint_handling
+  priority: medium
+  reason: 初步处理客户投诉，收集反馈以改进服务
+typical_integrations:
+- name: 预订系统
+  examples:
+  - 美团
+  - 大众点评
+  - 携程
+  priority: high
+  reason: 同步桌位和房间状态，管理预订流程
+- name: 外卖平台
+  examples:
+  - 美团外卖
+  - 饿了么
+  priority: medium
+  reason: 集成订单数据，自动处理外卖请求
+- name: 酒店管理系统
+  examples:
+  - Opera
+  - 石基
+  priority: high
+  reason: 连接PMS处理房间预订和客户信息
+- name: 支付系统
+  examples:
+  - 支付宝
+  - 微信支付
+  priority: medium
+  reason: 支持在线支付和退款，提升交易便利性
+- name: CRM系统
+  examples:
+  - 客户关系管理软件
+  priority: low
+  reason: 维护客户数据，实现个性化服务
+industry_faq:
+- question: 你们有包间吗？
+  answer_template: 是的，我们提供多种包间选择。您需要预订吗？请告知日期和人数。
+- question: 外卖多长时间能送到？
+  answer_template: 正常情况下30-45分钟送达，高峰期可能需要60分钟。您可以通过APP实时跟踪。
+- question: 营业时间是什么？
+  answer_template: 每日营业时间为10:00至22:00，周末延长至23:00。节假日可能调整。
+- question: 有儿童餐吗？
+  answer_template: 有的，我们提供专用儿童菜单和婴儿椅，欢迎带小朋友光临。
+- question: 可以承办婚宴吗？
+  answer_template: 可以，我们承办各类宴会，最多容纳200人。请提供具体日期和需求。
+- question: 停车方便吗？
+  answer_template: 餐厅/酒店附近有免费停车场，可容纳50辆车。建议提前预订车位。
+sales_scripts:
+- trigger: price_question
+  situation: 客户询问服务价格时
+  script: 我们的AI语音代理服务起价每月500元，根据功能定制。例如，可帮您节省20%的人力成本，投资回报快。
+  goal: 强调价值与ROI，引导进一步讨论
+- trigger: competitor_mention
+  situation: 客户提到其他竞争对手如美团时
+  script: 相比通用平台，我们专为餐饮酒店业设计，集成更简单，提供24/7自动服务，成本更低且效果更好。
+  goal: 突出行业定制化和成本优势
+- trigger: free_trial_request
+  situation: 客户要求试用服务
+  script: 我们可以提供14天免费试用，让您体验自动预订和客户管理功能，无风险评估效果。
+  goal: 促成试用，展示实际效益
+- trigger: compliance_concern
+  situation: 客户担心数据合规如PIPL
+  script: 我们的系统完全符合PIPL等本地法规，数据加密存储在中国服务器，确保安全合规。
+  goal: 消除合规疑虑，建立信任
+competitors:
+- name: 美团
+  positioning: 综合生活服务平台，覆盖预订、外卖等
+  strengths:
+  - 用户基数庞大
+  - 品牌知名度高
+  - 多功能集成
+  weaknesses:
+  - 费用较高
+  - 定制化服务有限
+  - 对中小商家支持不足
+  our_differentiation: 专为horeca行业优化的AI语音代理，提供更经济的自动化解决方案和深度行业集成
+- name: 阿里云智能客服
+  positioning: 云端客服和语音技术提供商
+  strengths:
+  - 技术先进
+  - 云基础设施强大
+  - 支持多场景
+  weaknesses:
+  - 配置复杂
+  - 定价不透明
+  - 行业专注度低
+  our_differentiation: 简化部署，针对餐饮酒店业预配置，提供本地化支持和快速ROI
+- name: 腾讯云小微
+  positioning: 智能语音助手和对话平台
+  strengths:
+  - 生态丰富
+  - 与微信等集成好
+  - 用户界面友好
+  weaknesses:
+  - 行业解决方案较少
+  - 功能通用化
+  our_differentiation: 深度行业知识库，处理预订、订单等具体场景，提高运营效率
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: 中型餐厅减少人力成本和未到店损失
+    monthly_cost: 1000
+    monthly_savings: 3000
+    payback_months: 0.33
+  - scenario: 酒店自动化预订和客户服务
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 0.4
+  value_anchors:
+  - 每月可节省高达30%的客服人力成本
+  - 未到店率降低至10%以下
+  - 提升客户满意度评分20%
+market_context:
+  market_size: 超过5万亿元人民币
+  growth_rate: 年均增长率约8-10%
+  key_trends:
+  - 数字化转型加速，AI应用增多
+  - 外卖和在线预订市场持续扩张
+  - 消费者对个性化和便捷服务需求上升
+  - 合规要求如PIPL推动技术升级
+  seasonality:
+    high:
+    - 春节
+    - 国庆黄金周
+    - 暑假旅游季
+    low:
+    - 工作日非用餐时段
+    - 淡季如冬季非节假日
+typical_objections:
+- objection: 太贵了，我们预算有限
+  response: 我们的服务起价低，且能帮您节省更多成本，比如减少未到店损失和人力
+meta:
+  id: horeca
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "HoReCa"
+- "restaurant"
+- "hotel"
+- "cafe"
+- "hospitality"
+_extends: _base/horeca

@@ -1,0 +1,255 @@
+pain_points:
+- description: Khó khăn trong việc tiếp cận và quảng bá các sự kiện văn hóa nghệ thuật
+    đến đúng đối tượng khách hàng mục tiêu.
+  severity: high
+  solution_hint: Trợ lý giọng nói AI có thể hỗ trợ gửi thông báo cá nhân hóa và nhắc
+    nhở sự kiện phù hợp với sở thích người dùng.
+- description: Quản lý lịch trình biểu diễn và đặt vé phức tạp, dễ gây nhầm lẫn hoặc
+    trùng lặp.
+  severity: high
+  solution_hint: Hệ thống đặt vé qua giọng nói giúp tự động hóa và đồng bộ hóa lịch
+    trình, giảm sai sót.
+- description: Thiếu thông tin chi tiết và cập nhật nhanh về các hoạt động, triển
+    lãm, lễ hội nghệ thuật địa phương.
+  severity: medium
+  solution_hint: Trợ lý AI cung cấp thông tin tức thời, trả lời câu hỏi về sự kiện,
+    địa điểm, giá vé.
+- description: Khó khăn trong việc thu thập phản hồi và đánh giá từ khách tham quan,
+    nghệ sĩ.
+  severity: medium
+  solution_hint: Thu thập ý kiến qua giọng nói giúp tăng tỷ lệ phản hồi và phân tích
+    dữ liệu nhanh.
+- description: Vấn đề bảo mật dữ liệu cá nhân theo quy định PDPD khi lưu trữ và xử
+    lý thông tin khách hàng.
+  severity: high
+  solution_hint: Giọng nói AI tích hợp các tiêu chuẩn bảo mật và tuân thủ PDPD để
+    bảo vệ dữ liệu.
+- description: Chi phí vận hành và nhân sự cao trong việc quản lý nhiều sự kiện cùng
+    lúc.
+  severity: medium
+  solution_hint: Tự động hóa tác vụ qua trợ lý giọng nói giảm tải công việc thủ công,
+    tiết kiệm nhân lực.
+- description: Giao tiếp đa ngôn ngữ và đa phương tiện còn hạn chế, ảnh hưởng đến
+    trải nghiệm du khách quốc tế.
+  severity: medium
+  solution_hint: Hỗ trợ nhiều ngôn ngữ và tương tác giọng nói giúp nâng cao trải nghiệm
+    khách tham quan nước ngoài.
+typical_services:
+- Tổ chức và quảng bá sự kiện văn hóa nghệ thuật
+- Quản lý lịch trình biểu diễn và triển lãm
+- Dịch vụ đặt vé và thanh toán trực tuyến
+- Hỗ trợ thông tin khách tham quan qua chatbot và trợ lý giọng nói
+- Thu thập phản hồi và khảo sát ý kiến khách hàng
+- Quản lý nghệ sĩ, diễn viên và đội ngũ tổ chức
+- Tư vấn phát triển sản phẩm nghệ thuật địa phương
+- Đào tạo kỹ năng biểu diễn và quản lý sự kiện
+- Cung cấp nội dung số và truyền thông đa phương tiện
+- Tư vấn tuân thủ quy định pháp lý và bảo vệ bản quyền nghệ thuật
+recommended_functions:
+- name: Thông báo và nhắc nhở sự kiện
+  priority: high
+  reason: Giúp khách hàng cập nhật lịch trình và không bỏ lỡ các hoạt động quan trọng.
+- name: Đặt vé và thanh toán bằng giọng nói
+  priority: high
+  reason: Tăng trải nghiệm tiện lợi, giảm thời gian chờ đợi và sai sót khi đặt vé.
+- name: Tư vấn thông tin sự kiện theo yêu cầu
+  priority: high
+  reason: Cung cấp nhanh thông tin chính xác giúp khách tham quan dễ dàng lựa chọn.
+- name: Thu thập phản hồi và đánh giá
+  priority: medium
+  reason: Giúp ban tổ chức cải thiện chất lượng dịch vụ dựa trên ý kiến thực tế.
+- name: Hỗ trợ đa ngôn ngữ
+  priority: medium
+  reason: Phục vụ khách du lịch quốc tế, mở rộng tầm ảnh hưởng và tăng doanh thu.
+- name: Quản lý lịch biểu tự động
+  priority: medium
+  reason: Giảm thiểu lỗi và tối ưu hóa việc tổ chức các sự kiện đồng thời.
+- name: Tư vấn tuân thủ bảo mật dữ liệu
+  priority: medium
+  reason: Đảm bảo tuân thủ quy định PDPD, tạo sự tin tưởng cho khách hàng và đối tác.
+typical_integrations:
+- name: Hệ thống quản lý sự kiện (Event Management)
+  examples:
+  - VnEvent
+  - GapoEvents
+  priority: high
+- name: Cổng thanh toán trực tuyến (Online Payment)
+  examples:
+  - MoMo
+  - ZaloPay
+  - VNPay
+  priority: high
+- name: Hệ thống CRM
+  examples:
+  - AMIS CRM
+  - Base CRM
+  priority: medium
+- name: Phần mềm quản lý vé và đặt chỗ
+  examples:
+  - Ticketbox
+  - VeXeRe
+  priority: high
+- name: Nền tảng truyền thông xã hội
+  examples:
+  - Facebook Việt Nam
+  - Zalo
+  priority: medium
+- name: Hệ thống phân tích dữ liệu khách hàng
+  examples:
+  - Google Analytics
+  - VTData
+  priority: medium
+industry_faq:
+- question: Làm sao để đặt vé tham gia các sự kiện nghệ thuật tại Việt Nam?
+  answer_template: Quý khách có thể đặt vé qua website chính thức hoặc sử dụng trợ
+    lý giọng nói của chúng tôi để đặt vé nhanh chóng bằng giọng nói.
+- question: Trợ lý giọng nói có hỗ trợ tiếng Anh cho khách nước ngoài không?
+  answer_template: Vâng, trợ lý giọng nói hỗ trợ đa ngôn ngữ bao gồm cả tiếng Anh
+    để phục vụ khách tham quan quốc tế.
+- question: Tôi có thể hủy hoặc đổi vé nếu thay đổi kế hoạch không?
+  answer_template: Chính sách hủy và đổi vé phụ thuộc vào từng sự kiện, quý khách
+    vui lòng liên hệ trực tiếp hoặc hỏi trợ lý giọng nói để được hỗ trợ nhanh nhất.
+- question: Dữ liệu cá nhân của tôi được bảo mật như thế nào khi sử dụng dịch vụ?
+  answer_template: Chúng tôi tuân thủ nghiêm ngặt quy định PDPD, đảm bảo thông tin
+    cá nhân của quý khách được bảo vệ an toàn tuyệt đối.
+- question: Làm thế nào để gửi phản hồi về các sự kiện đã tham gia?
+  answer_template: Quý khách có thể gửi phản hồi trực tiếp qua giọng nói hoặc điền
+    form khảo sát trên website sau mỗi sự kiện.
+- question: Có hỗ trợ đặt vé nhóm hoặc doanh nghiệp không?
+  answer_template: Có, chúng tôi cung cấp các gói ưu đãi cho nhóm và doanh nghiệp,
+    vui lòng liên hệ trợ lý để được tư vấn chi tiết.
+- question: Tôi muốn biết lịch diễn và địa điểm các sự kiện nghệ thuật sắp tới?
+  answer_template: Quý khách có thể hỏi trợ lý giọng nói để nhận được thông tin cập
+    nhật về lịch diễn và địa điểm một cách nhanh chóng và chính xác.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá dịch vụ tổ chức sự kiện hoặc trợ lý giọng nói.
+  script: Giá dịch vụ của chúng tôi rất linh hoạt, bắt đầu từ 5 triệu VND cho mỗi
+    sự kiện nhỏ và có thể tùy chỉnh theo yêu cầu cụ thể. Chúng tôi sẽ giúp bạn tối
+    ưu chi phí và hiệu quả tổ chức.
+  goal: Thuyết phục khách hàng nhận thấy giá cả phù hợp và có thể tùy chỉnh.
+- trigger: data_security_concern
+  situation: Khi khách hàng bày tỏ lo ngại về bảo mật dữ liệu cá nhân.
+  script: Chúng tôi hoàn toàn tuân thủ quy định bảo mật dữ liệu PDPD và áp dụng công
+    nghệ mã hóa tiên tiến để bảo vệ thông tin cá nhân của bạn.
+  goal: Xóa bỏ nỗi lo về bảo mật và tạo sự tin tưởng.
+- trigger: language_support
+  situation: Khi khách hàng hỏi về khả năng hỗ trợ đa ngôn ngữ cho khách quốc tế.
+  script: Trợ lý giọng nói của chúng tôi hỗ trợ đa ngôn ngữ, bao gồm tiếng Anh và
+    tiếng Việt, giúp phục vụ khách du lịch và đối tác quốc tế một cách thuận tiện.
+  goal: Tăng sự hài lòng và mở rộng thị trường khách hàng.
+- trigger: event_management_efficiency
+  situation: Khi khách hàng quan tâm đến tối ưu hóa quản lý sự kiện.
+  script: Với trợ lý giọng nói thông minh, bạn sẽ giảm thiểu lỗi và tiết kiệm thời
+    gian trong quản lý lịch trình, đặt vé và hỗ trợ khách hàng, giúp tăng hiệu quả
+    vận hành.
+  goal: Thuyết phục khách hàng về lợi ích tự động hóa.
+- trigger: feedback_collection
+  situation: Khi khách hàng muốn cải thiện dịch vụ dựa trên phản hồi.
+  script: Chúng tôi cung cấp tính năng thu thập ý kiến khách hàng qua giọng nói, giúp
+    tăng tỷ lệ phản hồi và cải tiến chất lượng sự kiện liên tục.
+  goal: Khuyến khích khách hàng sử dụng tính năng phản hồi.
+competitors:
+- name: VnEvent
+  positioning: Nhà cung cấp giải pháp tổ chức sự kiện số hàng đầu tại Việt Nam
+  strengths:
+  - Mạng lưới khách hàng rộng khắp
+  - Nền tảng quản lý sự kiện đa năng
+  - Hỗ trợ thanh toán trực tuyến hiệu quả
+  weaknesses:
+  - Ít hỗ trợ đa ngôn ngữ cho khách quốc tế
+  - Chi phí dịch vụ cao so với thị trường
+  our_differentiation: Tập trung vào trải nghiệm giọng nói thân thiện, hỗ trợ đa ngôn
+    ngữ và tuân thủ nghiêm ngặt PDPD.
+- name: Ticketbox
+  positioning: Nền tảng bán vé sự kiện phổ biến tại Việt Nam
+  strengths:
+  - Giao diện dễ sử dụng
+  - Hệ thống thanh toán đa dạng
+  - Tích hợp mạng xã hội
+  weaknesses:
+  - Ít tính năng tự động hóa qua giọng nói
+  - Hạn chế trong thu thập phản hồi trực tiếp
+  our_differentiation: Tích hợp trợ lý giọng nói AI giúp tự động hóa toàn diện từ
+    đặt vé đến chăm sóc khách hàng.
+- name: GapoEvents
+  positioning: Công ty cung cấp giải pháp tổ chức và quảng bá sự kiện mới nổi
+  strengths:
+  - Nền tảng công nghệ mới, linh hoạt
+  - Hỗ trợ tương tác đa kênh
+  weaknesses:
+  - Thị phần nhỏ, ít khách hàng lớn
+  - Ít tích hợp hệ thống thanh toán phổ biến
+  our_differentiation: Mạng lưới tích hợp rộng, hỗ trợ đa dạng hệ thống thanh toán
+    và bảo mật cao theo PDPD.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 5000000
+  - 100000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Tổ chức sự kiện văn hóa quy mô nhỏ với trợ lý giọng nói hỗ trợ đặt vé
+      và thông báo
+    monthly_cost: 10000000
+    monthly_savings: 15000000
+    payback_months: 1
+  - scenario: Quản lý chuỗi sự kiện nghệ thuật quy mô vừa với thu thập phản hồi và
+      tự động nhắc nhở
+    monthly_cost: 30000000
+    monthly_savings: 50000000
+    payback_months: 1
+  value_anchors:
+  - Đầu tư vào giải pháp giọng nói giúp giảm 30% chi phí nhân sự và tăng tương tác
+    khách hàng.
+  - Tự động hóa giúp giảm thiểu sai sót và tăng hiệu quả vận hành sự kiện.
+  - Tuân thủ quy định bảo mật PDPD tránh rủi ro pháp lý và uy tín doanh nghiệp.
+market_context:
+  market_size: 3000000000000
+  growth_rate: 12
+  key_trends:
+  - Gia tăng nhu cầu trải nghiệm văn hóa nghệ thuật đa dạng từ giới trẻ.
+  - Ứng dụng công nghệ số hóa và AI trong quản lý sự kiện ngày càng phổ biến.
+  - Sự phát triển mạnh mẽ của du lịch văn hóa kết hợp giải trí.
+  - Tăng cường bảo vệ bản quyền và dữ liệu cá nhân trong lĩnh vực nghệ thuật.
+  seasonality:
+    high:
+    - Tết Nguyên Đán
+    - Ngày Quốc Khánh 2/9
+    - Mùa lễ hội hè
+    low:
+    - Tháng 7 âm lịch
+    - Mùa mưa bão
+typical_objections:
+- objection: Chi phí cho trợ lý giọng nói quá cao so với ngân sách hiện tại.
+  response: Chúng tôi có nhiều gói dịch vụ linh hoạt, phù hợp với ngân sách đa dạng
+    và giúp tiết kiệm chi phí vận hành lâu dài.
+- objection: Tôi lo ngại về bảo mật thông tin cá nhân khi sử dụng dịch vụ.
+  response: Giải pháp của chúng tôi tuân thủ nghiêm ngặt quy định PDPD, đảm bảo an
+    toàn và bảo mật tuyệt đối cho dữ liệu của bạn.
+- objection: Khách hàng của tôi chủ yếu là người lớn tuổi, liệu họ có thể sử dụng
+    trợ lý giọng nói dễ dàng?
+  response: Trợ lý giọng nói được thiết kế thân thiện, dễ sử dụng với giao diện tối
+    giản và hướng dẫn rõ ràng phù hợp với mọi đối tượng.
+- objection: Dịch vụ của các đối thủ cũng tương tự, sao tôi nên chọn bên bạn?
+  response: Chúng tôi tập trung vào trải nghiệm giọng nói tự nhiên, hỗ trợ đa ngôn
+    ngữ và tích hợp sâu các hệ thống thanh toán phổ biến, giúp bạn tối ưu hóa vận
+    hành hiệu quả hơn.
+- objection: Làm sao để tôi biết dịch vụ này thực sự mang lại hiệu quả?
+  response: Chúng tôi cung cấp các ví dụ thực tế về ROI rõ ràng và hỗ trợ báo cáo
+    chi tiết giúp bạn đánh giá hiệu quả đầu tư chính xác.
+meta:
+  id: art_culture
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

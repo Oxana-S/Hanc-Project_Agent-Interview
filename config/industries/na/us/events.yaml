@@ -1,0 +1,252 @@
+pain_points:
+- name: High No-Show Rates
+  description: Clients often book events but then cancel last minute or don't show
+    up, leaving venues with lost revenue and wasted resources.
+  severity: high
+  solution_hint: AI agent can implement proactive reminder calls and confirmations,
+    reducing last-minute cancellations by confirming details directly with the booker.
+- name: Inefficient Lead Qualification
+  description: Event planners spend excessive time on the phone with leads who aren't
+    serious or don't fit their venue/service criteria.
+  severity: medium
+  solution_hint: AI agent can automatically screen incoming calls, ask qualifying
+    questions, and only transfer genuinely interested, qualified leads to a human.
+- name: After-Hours Inquiry Loss
+  description: Potential clients call or inquire on weekends and evenings when the
+    office is closed, leading to missed bookings as they move on to competitors.
+  severity: high
+  solution_hint: A 24/7 AI voice agent can capture these inquiries, schedule callbacks,
+    and even book preliminary appointments, ensuring no lead is lost.
+- name: Manual Appointment Scheduling Chaos
+  description: Coordinating site visits, tastings, and planning meetings via back-and-forth
+    emails and calls is time-consuming and error-prone.
+  severity: medium
+  solution_hint: AI agent can integrate directly with the team's calendar (e.g., Google
+    Calendar) to find mutual availability and book appointments instantly over the
+    phone.
+- name: Post-Event Feedback Bottleneck
+  description: Gathering reviews and testimonials is critical but manually calling
+    clients after an event has low response rates and feels intrusive.
+  severity: low
+  solution_hint: AI agent can conduct automated, polite post-event feedback calls
+    at a scheduled time, recording responses for marketing and service improvement.
+- name: High Volume of Repetitive Questions
+  description: Staff are constantly answering the same questions about capacity, pricing,
+    availability, and package inclusions.
+  severity: medium
+  solution_hint: AI agent can handle these frequent FAQs instantly, freeing staff
+    to focus on complex planning and sales tasks.
+typical_services:
+- Venue Rental & Site Selection
+- Full-Service Event Planning & Coordination
+- Catering & Beverage Service
+- Audiovisual & Technical Production
+- Decor, Florals, and Theming
+- Entertainment Booking (DJs, Bands, Performers)
+- Guest Registration & Check-in Solutions
+- Transportation and Valet Services
+- Event Marketing and Promotion
+- Post-Event Cleanup and Breakdown
+recommended_functions:
+- name: 24/7 Lead Intake & Qualification
+  priority: high
+  reason: Captures inquiries outside business hours and filters out unqualified leads,
+    drastically increasing sales team efficiency.
+- name: Automated Appointment Scheduling
+  priority: high
+  reason: Eliminates the scheduling back-and-forth, a major time sink, and books more
+    site tours which directly increase conversion rates.
+- name: Proactive Event Confirmation Calls
+  priority: medium
+  reason: Reduces costly no-shows and last-minute cancellations by verifying details
+    with clients one week and one day before the event.
+- name: Post-Event Feedback Collection
+  priority: low
+  reason: Systematically gathers valuable testimonials and service feedback with high
+    consistency and without burdening staff.
+- name: Payment Reminder & Collection
+  priority: medium
+  reason: Automates the process of sending polite payment reminders for deposits and
+    balances, improving cash flow.
+typical_integrations:
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho
+  priority: high
+- name: Calendar & Scheduling Software
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: high
+- name: Event Management Software
+  examples:
+  - Social Tables
+  - Tripleseat
+  - Cvent
+  priority: medium
+- name: Point of Sale (POS) & Payment Processing
+  examples:
+  - Square
+  - Toast
+  - Clover
+  priority: medium
+- name: Email Marketing Platform
+  examples:
+  - Mailchimp
+  - Constant Contact
+  - Klaviyo
+  priority: low
+industry_faq:
+- question: What is your venue's capacity for a seated dinner?
+  answer_template: Our main ballroom can accommodate up to [Capacity] guests for a
+    seated dinner. For a more precise layout based on your specific needs, I can connect
+    you with our event coordinator or schedule a site visit.
+- question: Do you offer all-inclusive packages?
+  answer_template: Yes, we offer several tiered all-inclusive packages that cover
+    venue rental, catering, basic audiovisual, and standard decor. I can text or email
+    you our package PDF, or would you prefer to discuss what's most important for
+    your event with a planner?
+- question: What is your availability for [Month]?
+  answer_template: Let me check our live calendar for [Month]. I see we have [Number]
+    Saturdays available and [Number] Fridays. To hold a specific date, we typically
+    require a deposit. Shall I connect you with someone to discuss details?
+- question: Can we use our own caterer or vendor?
+  answer_template: For food and beverage, we work with a select list of approved caterers
+    to ensure quality and compliance. For other vendors like florists or photographers,
+    you are generally welcome to use your own, subject to a certificate of insurance.
+- question: What is your cancellation policy?
+  answer_template: Our standard policy requires cancellations at least [Number] days
+    prior to the event for a partial deposit refund. The specific terms are outlined
+    in our contract. I can have our coordinator send you a sample agreement for review.
+sales_scripts:
+- trigger: price_question
+  situation: When a caller leads with "How much does it cost to book your venue?"
+  script: I'd be happy to discuss pricing, which can vary based on your guest count,
+    date, and specific services. To give you the most accurate estimate, could you
+    tell me your target date and approximate number of guests? This way, I can check
+    availability and provide a tailored quote or connect you with a planner who can
+    detail our package options.
+  goal: Qualify the lead and move the conversation beyond a generic price, setting
+    the stage for a detailed consultation.
+- trigger: competitor_mention
+  situation: When a caller says, "I'm also looking at [Competitor Venue]."
+  script: That's a great venue as well. Many clients choose us because of our [Key
+    Differentiation, e.g., dedicated on-site coordinator, more flexible vendor policy,
+    superior in-house AV]. What are the top two or three things most important to
+    you for your event? I can highlight how we specifically excel in those areas.
+  goal: Acknowledge the competition politely, pivot to our unique value proposition,
+    and deepen understanding of the client's priorities.
+- trigger: hesitation_time
+  situation: When a caller seems interested but hesitant, saying "I need to think
+    about it" or "I'll get back to you."
+  script: I completely understand wanting to consider your options. To help your decision,
+    would it be useful if I emailed you a detailed comparison of our packages and
+    availability for your date? Also, would you be open to a quick, no-obligation
+    virtual tour later this week to get a better feel for the space?
+  goal: Overcome stall tactics by providing immediate, tangible next steps (information,
+    visual tour) to maintain engagement and momentum.
+competitors:
+- name: Local Independent Venues
+  positioning: Boutique, unique spaces with personalized service.
+  strengths:
+  - Strong local reputation
+  - unique character
+  - flexible arrangements
+  weaknesses:
+  - Limited marketing budget
+  - inconsistent online presence
+  - manual booking processes
+  our_differentiation: We combine personalized service with scalable technology (like
+    our AI agent) for superior responsiveness and efficiency, ensuring no lead is
+    missed.
+- name: National Hotel Chains (e.g., Marriott, Hilton)
+  positioning: One-stop-shop with reliable standards and loyalty points.
+  strengths:
+  - Brand recognition
+  - integrated accommodations
+  - corporate sales teams
+  weaknesses:
+  - Less personalized
+  - can be formulaic
+  - higher costs for added services
+  our_differentiation: We offer more dedicated, flexible planning attention and often
+    more competitive pricing for comparable premium services, without the corporate
+    rigidity.
+- name: Online Marketplace Platforms (e.g., Peerspace, Splacer)
+  positioning: Tech-forward, self-service booking for unconventional spaces.
+  strengths:
+  - Vast inventory
+  - easy online booking
+  - lower price points for basic rental
+  weaknesses:
+  - Minimal service support
+  - hidden costs for add-ons
+  - variable quality
+  our_differentiation: We provide full-service support, quality assurance, and professional
+    vendor networks, reducing risk and workload for the client compared to a DIY platform
+    booking.
+pricing_context:
+  currency: USD
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Automating lead intake and appointment scheduling for a mid-sized venue.
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Our system helps convert 30% more after-hours inquiries into booked tours.
+  - Clients using automated confirmations see a 15% reduction in last-minute cancellations.
+  - Free up 20+ hours per week for your sales team by automating FAQ calls and initial
+    screening.
+market_context:
+  market_size: 100 billion
+  growth_rate: 10%
+  key_trends:
+  - Hybrid & Virtual Event Components becoming standard.
+  - Increased demand for personalized and experiential events.
+  - Sustainability and eco-friendly practices as a key decision factor.
+  seasonality:
+    high:
+    - Spring (April-June)
+    - Fall (September-November)
+    low:
+    - Late December
+    - January
+    - July
+typical_objections:
+- objection: Your service is too expensive.
+  response: I appreciate you're mindful of your budget. It's an investment in ensuring
+    your event runs smoothly and your time is freed up. Many clients find our automation
+    actually saves them money by preventing lost bookings and no-shows. Could we explore
+    a pilot program focused on one pain point, like lead qualification, to demonstrate
+    the value?
+- objection: We don't need this; our staff handles calls just fine.
+  response: That's great you have a dedicated team. Our goal isn't to replace them,
+    but to empower them. By letting our AI handle the repetitive after-hours and initial
+    screening calls, your staff can focus on high-value tasks like closing deals and
+    creative planning. This often leads to higher job satisfaction and revenue.
+- objection: I'm concerned about it sounding robotic and losing our personal touch.
+  response: That's a valid concern. Our AI agents are specifically trained with natural,
+    warm conversation flows and are designed to hand off to a human at the right moment.
+    The personal touch comes from your team, now having more time to dedicate to clients
+    who are already pre-qualified and interested.
+meta:
+  id: events
+  region: na
+  country: us
+  language: en
+  currency: USD
+  phone_codes:
+  - '+1'
+aliases:
+- "events"
+- "event planning"
+- "conference"
+- "catering"
+_extends: _base/events

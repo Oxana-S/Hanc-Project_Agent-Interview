@@ -1,0 +1,227 @@
+pain_points:
+- description: Concorrência intensa no setor de beleza resulta em guerras de preços
+    que reduzem margens de lucro.
+  severity: high
+  solution_hint: O agente de voz pode ajudar a destacar o valor agregado e serviços
+    personalizados para evitar competir apenas por preço.
+- description: Dificuldade em gerenciar estoque de produtos perecíveis ou com alta
+    rotatividade, levando a perdas ou falta de produtos.
+  severity: medium
+  solution_hint: Agente de voz pode integrar-se a sistemas de gestão para monitorar
+    estoque em tempo real e alertar sobre necessidades de reposição.
+- description: Clientes frequentemente mudam de fornecedor devido à falta de programas
+    de fidelidade ou atendimento personalizado.
+  severity: medium
+  solution_hint: Implementar programas de fidelidade via agente de voz, com lembretes
+    de compras e ofertas exclusivas.
+- description: Dificuldade em cumprir as regulamentações da LGPD para proteção de
+    dados dos clientes.
+  severity: high
+  solution_hint: Agente de voz pode ser configurado para coletar e processar dados
+    de forma segura, garantindo conformidade.
+- description: Atrasos na entrega de produtos devido a problemas logísticos, especialmente
+    em regiões remotas.
+  severity: medium
+  solution_hint: Agente de voz pode fornecer atualizações em tempo real sobre o status
+    das entregas e otimizar rotas.
+- description: Produtos de beleza muitas vezes são devolvidos devido a insatisfação
+    com a qualidade ou adequação.
+  severity: low
+  solution_hint: Oferecer consultoria via agente de voz para recomendar produtos adequados
+    às necessidades dos clientes, reduzindo devoluções.
+- description: Variações significativas na demanda durante períodos como festas ou
+    verão, dificultando o planejamento.
+  severity: medium
+  solution_hint: Agente de voz pode analisar dados históricos para prever demanda
+    e ajustar estoques e promoções.
+typical_services:
+- Venda de produtos de beleza
+- Consultoria personalizada
+- Programa de fidelidade
+- Entrega rápida
+- Suporte técnico
+- Treinamento para revendedores
+- Personalização de kits
+- Serviço de assinatura
+- Reposição automática
+- Análise de tendências
+recommended_functions:
+- name: Agendamento de consultas
+  priority: high
+  reason: Permite agendar consultas personalizadas, aumentando o engajamento do cliente.
+- name: Processamento de pedidos
+  priority: high
+  reason: Facilita a compra rápida e eficiente, melhorando a experiência do usuário.
+- name: Suporte ao cliente 24/7
+  priority: medium
+  reason: Oferece assistência contínua, resolvendo dúvidas e problemas a qualquer
+    hora.
+- name: Recomendação de produtos
+  priority: high
+  reason: Usa IA para sugerir produtos baseados nas preferências do cliente, aumentando
+    vendas.
+- name: Integração com sistemas de estoque
+  priority: medium
+  reason: Mantém o estoque atualizado e evita falta de produtos.
+- name: Coleta de feedback
+  priority: low
+  reason: Ajuda a melhorar serviços com base nas opiniões dos clientes.
+typical_integrations:
+- name: Sistema ERP
+  examples:
+  - TOTVS
+  - SAP
+  priority: high
+- name: Plataforma de e-commerce
+  examples:
+  - Magento
+  - Shopify
+  - Linx Commerce
+  priority: high
+- name: Sistema de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  priority: high
+- name: Software de logística
+  examples:
+  - Intelipost
+  - Jadlog
+  priority: medium
+- name: CRM
+  examples:
+  - Salesforce
+  - PipeDrive
+  priority: medium
+industry_faq:
+- question: Quais são os produtos mais vendidos?
+  answer_template: Nossos produtos mais vendidos incluem bases líquidas, hidratantes
+    faciais e shampoos para cabelos cacheados. Podemos personalizar recomendações
+    para você.
+- question: Oferecem entrega para todo o Brasil?
+  answer_template: Sim, oferecemos entrega para todo o Brasil com opções de frete
+    rápido e rastreamento em tempo real.
+- question: Como funciona o programa de fidelidade?
+  answer_template: Nosso programa de fidelidade acumula pontos a cada compra, que
+    podem ser trocados por descontos ou produtos exclusivos.
+- question: Os produtos são testados em animais?
+  answer_template: Todos os nossos produtos são cruelty-free e não são testados em
+    animais, atendendo às demandas éticas do mercado.
+- question: Posso devolver um produto se não gostar?
+  answer_template: Sim, aceitamos devoluções dentro de 30 dias após a compra, desde
+    que o produto esteja em condições originais.
+- question: Como garantir a conformidade com a LGPD?
+  answer_template: Nossos sistemas são projetados para cumprir a LGPD, protegendo
+    seus dados com criptografia e consentimento explícito.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços ou descontos.
+  script: Olá! Entendemos que o preço é importante. Oferecemos preços competitivos
+    com valor agregado, como consultoria personalizada e entrega rápida. Gostaria
+    de saber mais sobre nossos pacotes?
+  goal: Converter a conversa para o valor, não apenas preço.
+- trigger: product_inquiry
+  situation: Quando o cliente pergunta sobre produtos específicos.
+  script: Olá! Temos uma ampla variedade de produtos de beleza. Posso ajudá-lo a encontrar
+    o ideal para suas necessidades. Você busca algo para skincare, maquiagem ou cabelo?
+  goal: Engajar o cliente e entender suas necessidades para recomendar produtos.
+- trigger: service_demo
+  situation: Quando o cliente está interessado em uma demonstração dos serviços.
+  script: Claro! Podemos agendar uma demonstração gratuita do nosso agente de voz,
+    mostrando como ele pode otimizar suas vendas e atendimento. Que tal marcarmos
+    para amanhã?
+  goal: Agendar uma demonstração para fechar a venda.
+- trigger: compliance_concern
+  situation: Quando o cliente expressa preocupação com conformidade, como LGPD.
+  script: Compreendemos suas preocupações. Nosso agente de voz é totalmente compatível
+    com a LGPD, garantindo segurança dos dados. Podemos fornecer documentação e suporte
+    contínuo.
+  goal: Aliviar preocupações e destacar a conformidade.
+competitors:
+- name: Beleza Natural
+  positioning: Líder em produtos naturais e orgânicos.
+  strengths:
+  - Marca reconhecida
+  - Produtos sustentáveis
+  weaknesses:
+  - Preços altos
+  - Limitação geográfica
+  our_differentiation: Oferecemos preços mais acessíveis e entrega nacional.
+- name: O Boticário
+  positioning: Grande rede de varejo de beleza.
+  strengths:
+  - Presença física extensa
+  - Variedade de produtos
+  weaknesses:
+  - Atendimento impessoal
+  - Menos foco em digital
+  our_differentiation: Atendimento personalizado via IA e integração digital completa.
+- name: Sephora Brasil
+  positioning: Loja de luxo e variedade internacional.
+  strengths:
+  - Marcas premium
+  - Experiência de compra
+  weaknesses:
+  - Custo elevado
+  - Acessibilidade limitada
+  our_differentiation: Foco em acessibilidade e soluções tecnológicas para todos os
+    tamanhos de negócio.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 300
+  roi_examples:
+  - scenario: Redução de custos com atendimento ao cliente
+    monthly_cost: 300
+    monthly_savings: 600
+    payback_months: 0.5
+  - scenario: Aumento de vendas com recomendações personalizadas
+    monthly_cost: 400
+    monthly_savings: 1000
+    payback_months: 0.4
+  value_anchors:
+  - Reduza custos operacionais em até 30% com automação.
+  - Aumente a fidelização de clientes com atendimento personalizado 24/7.
+  - Garanta conformidade com LGPD sem esforço adicional.
+market_context:
+  market_size: Estimado em R$ 50 bilhões anuais
+  growth_rate: 10% ao ano
+  key_trends:
+  - Crescimento do mercado de beleza natural e orgânica.
+  - Aumento da digitalização e compras online.
+  - Demanda por personalização e sustentabilidade.
+  seasonality:
+    high:
+    - Dezembro
+    - Verão
+    low:
+    - Julho
+    - Abril
+typical_objections:
+- objection: É muito caro para o meu negócio.
+  response: Entendemos o custo, mas nosso serviço pode economizar até 40% em despesas
+    operacionais. Vamos analisar um plano personalizado para o seu orçamento.
+- objection: Não confio em tecnologia para atendimento ao cliente.
+  response: Nosso agente de voz é complementar ao atendimento humano, melhorando a
+    eficiência sem perder o toque pessoal. Podemos mostrar casos de sucesso.
+- objection: Já tenho um sistema em funcionamento.
+  response: Excelente! Nosso agente pode integrar-se facilmente aos seus sistemas
+    existentes, como ERP ou CRM, para otimizar ainda mais.
+- objection: Preocupo-me com a segurança dos dados.
+  response: Totalmente compreensível. Cumprimos rigorosamente a LGPD com criptografia
+    e protocolos de segurança. Fornecemos todas as certificações necessárias.
+meta:
+  id: beauty_supplies
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

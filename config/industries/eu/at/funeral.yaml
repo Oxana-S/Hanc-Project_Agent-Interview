@@ -1,0 +1,270 @@
+pain_points:
+- description: Hoher administrativer Aufwand für Sterbefallmeldungen an verschiedene
+    Behörden und Versicherungen.
+  severity: high
+  solution_hint: Automatisierte Erstellung und Versendung von Meldungen via Sprachbefehl
+    oder Integration.
+- description: Kunden erwarten rund um die Uhr Erreichbarkeit für erste Informationen
+    und Terminvereinbarungen.
+  severity: high
+  solution_hint: AI Voice Agent beantwortet Basis-Fragen und vereinbart 24/7 Termine,
+    entlastet Mitarbeiter.
+- description: Schwierigkeiten bei der Koordination von Dienstleistern (Blumengeschäft,
+    Geistliche, Musiker, Catering).
+  severity: medium
+  solution_hint: Voice Agent kann als zentrale Anlaufstelle für Kunden dienen und
+    Statusupdates an alle Beteiligten weiterleiten.
+- description: Emotional belastete Angehörige können am Telefon Fragen nicht präzise
+    stellen oder Informationen vergessen.
+  severity: medium
+  solution_hint: Geduldiger, einfühlsamer AI Agent wiederholt Informationen, schickt
+    Zusammenfassungen per E-Mail.
+- description: Wettbewerbsdruck durch große Ketten und Online-Vorabinformation der
+    Kunden über Preise.
+  severity: medium
+  solution_hint: Agent kann transparente, sofortige Kostenvoranschläge geben und Wertargumente
+    (persönliche Betreuung) kommunizieren.
+- description: Manuelle Dokumentation von Kundenwünschen und -daten ist zeitaufwändig
+    und fehleranfällig.
+  severity: low
+  solution_hint: Sprachgesteuerte Dateneingabe direkt ins CRM-System, Vermeidung von
+    Doppeleingaben.
+- description: Planung von Trauerfeiern in stark ausgelasteten Kirchen oder städtischen
+    Trauerhallen.
+  severity: low
+  solution_hint: Agent prüft via Kalenderintegration sofort verfügbare Termine und
+    schlägt Alternativen vor.
+typical_services:
+- Erdbestattung
+- Feuerbestattung (Einäscherung)
+- Aussegnung / Trauerfeier
+- Überführung (national & international)
+- Sterbe- und Trauerfallvorsorge (Vorsorgevertrag)
+- Organisation der Trauerfeier (Musik, Redner, Blumen)
+- Druck von Trauerkarten und Danksagungen
+- Beisetzung / Urnenbeisetzung
+- Nachlassregelung (Vermittlung zu Notar)
+- Trauerbegleitung / Seelsorge (Vermittlung)
+recommended_functions:
+- name: Terminvereinbarung & Verfügbarkeitsprüfung
+  priority: high
+  reason: Entlastet Mitarbeiter bei der ersten Kontaktaufnahme, bietet sofortige Hilfe
+    in emotionaler Ausnahmesituation.
+- name: FAQ-Beantworter zu Kosten & Abläufen
+  priority: high
+  reason: Schafft Transparenz und Vertrauen, beantwortet sensible Fragen diskret und
+    rund um die Uhr.
+- name: Datenaufnahme für Sterbefallmeldung
+  priority: high
+  reason: Beschleunigt und automatisiert den administrativ aufwändigsten Teil der
+    Dienstleistung.
+- name: Angebotserstellung & Versand
+  priority: medium
+  reason: Kann basierend auf Kundenangaben ein erstes, unverbindliches Angebot generieren
+    und per E-Mail senden.
+- name: Erinnerungen & Follow-ups
+  priority: medium
+  reason: Erinnert Kunden an anstehende Termine oder benötigte Unterlagen, steigert
+    Kundenzufriedenheit.
+- name: Übersetzung einfacher Phrasen
+  priority: low
+  reason: Kann in multikulturellen Städten wie Wien bei grundlegender Kommunikation
+    mit nicht-deutschsprachigen Angehörigen helfen.
+typical_integrations:
+- name: Bestattungs-Software / CRM
+  examples:
+  - A-VAS
+  - Bestattungsassistent
+  - TrauerProfi
+  priority: high
+- name: Terminplanungs- & Ressourcenmanagement
+  examples:
+  - Microsoft 365 Kalender
+  - Google Calendar
+  - Teamplaner
+  priority: high
+- name: E-Mail & Kommunikationssystem
+  examples:
+  - GMX
+  - Web.de
+  - Outlook
+  - Telefonanlage
+  priority: medium
+- name: Zahlungsabwicklung
+  examples:
+  - Bankomat
+  - PayPal
+  - Vereinssysteme
+  priority: medium
+- name: Dokumenten-Management
+  examples:
+  - Dropbox
+  - Nextcloud
+  - lokale Serverlösungen
+  priority: low
+industry_faq:
+- question: Was kostet eine einfache Bestattung in Österreich?
+  answer_template: Die Kosten sind stark von Ihren Wünschen abhängig. Eine direkte
+    Feuerbestattung ohne Feier beginnt bei etwa € 1.500. Eine traditionelle Erdbestattung
+    mit Feier liegt oft zwischen € 4.000 und € 7.000. Gerne erstelle ich Ihnen ein
+    unverbindliches, persönliches Angebot.
+- question: Welche Unterlagen benötigen Sie von uns?
+  answer_template: Wir benötigen die Sterbeurkunde, die Meldebestätigung des Verstorbenen
+    sowie dessen Personalausweis oder Reisepass. Wenn vorhanden, sind ein Vorsorgevertrag
+    oder Testament sehr hilfreich. Ich sende Ihnen gerne eine vollständige Checkliste
+    per E-Mail zu.
+- question: Können wir eine Trauerfeier in einer bestimmten Kirche oder Halle buchen?
+  answer_template: Ja, wir kümmern uns um die gesamte Organisation. Dazu prüfen wir
+    die Verfügbarkeit Ihrer Wunschkirche oder städtischen Trauerhalle und reservieren
+    den Termin. Alternativen besprechen wir natürlich mit Ihnen.
+- question: Wie lange dauert es bis zur Beisetzung?
+  answer_template: In der Regel findet die Beisetzung 7 bis 10 Tage nach dem Tod statt.
+    Bei Überführungen aus dem Ausland oder bei erforderlichen behördlichen Genehmigungen
+    kann es länger dauern. Wir halten Sie über jeden Schritt auf dem Laufenden.
+- question: Bieten Sie auch ökologische Bestattungen an?
+  answer_template: Ja, absolut. Wir bieten Alternativen wie die Baumbestattung in
+    einem Friedwald oder die Seebestattung an. Gerne informiere ich Sie detailliert
+    über die Möglichkeiten und rechtlichen Rahmenbedingungen in Österreich.
+- question: Was ist ein Vorsorgevertrag und warum ist er sinnvoll?
+  answer_template: Mit einem Vorsorgevertrag legen Sie Ihre Wünsche fest und fixieren
+    die Kosten zum heutigen Stand. Das entlastet Ihre Angehörigen finanziell und emotional
+    in einer schweren Zeit. Wir beraten Sie dazu gerne unverbindlich.
+sales_scripts:
+- trigger: opening_hours_question
+  situation: Wenn ein Anrufer außerhalb der Geschäftszeiten nach Öffnungszeiten fragt.
+  script: Guten Tag, hier spricht der digitale Assistent von [Ihr Bestattungsinstitut].
+    Wir sind zwar aktuell persönlich nicht erreichbar, aber ich kann Ihnen schon jetzt
+    helfen. Ich kann Ihre Fragen zu ersten Schritten, Kosten oder Abläufen beantworten
+    und einen Beratungstermin für Sie vereinbaren. Wie kann ich Ihnen helfen?
+  goal: Dem Anrufer sofortige Unterstützung bieten und einen qualifizierten Termin
+    generieren, statt ihn abzuweisen.
+- trigger: price_question
+  situation: Wenn ein Kunde nach pauschalen Preisen fragt.
+  script: Ich verstehe, dass Transparenz wichtig ist. Die Gesamtkosten setzen sich
+    aus vielen Wahlmöglichkeiten zusammen, wie der Art der Bestattung, der Trauerfeier
+    oder dem Sargmodell. Um Ihnen ein seriöses Angebot zu machen, wäre es hilfreich,
+    ein paar kurze Fragen zu klären. Darf ich Ihnen 2-3 Fragen stellen, um Ihnen ein
+    wirklich passendes und transparentes Preisbild geben zu können?
+  goal: Vom Pauschalpreis wegzuführen, Vertrauen durch Fachkompetenz aufzubauen und
+    zur Dateneingabe für ein Angebot zu führen.
+- trigger: callback_request
+  situation: Wenn der Kunde explizit einen Rückruf wünscht.
+  script: 'Selbstverständlich kann sich ein erfahrener Bestatter bei Ihnen melden.
+    Um sicherzustellen, dass der Kollege bestmöglich vorbereitet ist und alle notwendigen
+    Unterlagen parat hat, möchte ich kurz die wichtigsten Daten erfassen: Ihren Namen,
+    Ihre Telefonnummer und ob es bereits eine Sterbeurkunde gibt. Dann wird sich jemand
+    innerhalb der nächsten Stunde bei Ihnen melden.'
+  goal: Wertvollen Lead erfassen und den nachfolgenden Mitarbeiter mit Kontext vorbereiten,
+    um die Beratungsqualität zu steigern.
+- trigger: competitor_mention
+  situation: Wenn der Kunde erwähnt, dass er auch bei einem anderen Institut angerufen
+    hat.
+  script: Das ist verständlich, dass Sie sich informieren. Unser Fokus liegt auf einer
+    sehr persönlichen und umfassenden Betreuung, die für die Angehörigen in dieser
+    Zeit entlastend wirkt. Wir übernehmen die gesamte Organisation und behalten auch
+    nach der Bestattung ein offenes Ohr für Sie. Darf ich Ihnen erzählen, wie unser
+    Ablauf typischerweise aussieht und was unsere Kunden besonders schätzen?
+  goal: Nicht auf Preis zu reduzieren, sondern den emotionalen Mehrwert und die Service-Tiefe
+    als Differenzierung herausstellen.
+competitors:
+- name: Bestattung Wien (Gebietskrankenkasse)
+  positioning: Großer, kostengünstiger Standardanbieter in Wien, stark nachgefragt.
+  strengths:
+  - Sehr bekannte Marke
+  - Niedrige Preise für Basisleistungen
+  - Städtische Infrastruktur
+  weaknesses:
+  - Weniger persönliche Betreuung
+  - Längere Wartezeiten
+  - Eingeschränkte Individualität
+  our_differentiation: Wir bieten deutlich mehr Zeit, flexible Termine und individuelle
+    Wunscherfüllung in einer persönlichen, einfühlsamen Atmosphäre.
+- name: Pax Bestattungen
+  positioning: Katholisch geprägte, traditionelle Bestattungsinstitute in mehreren
+    Bundesländern.
+  strengths:
+  - Breite Filialnetz
+  - Starker Fokus auf religiöse Bestattungen
+  - Langjährige Tradition
+  weaknesses:
+  - Weniger modernes Auftreten
+  - Eingeschränktes Angebot für alternative Bestattungen
+  our_differentiation: Wir sind modern, digital und offen für alle Glaubensrichtungen
+    und individuellen Wünsche, von traditionell bis ökologisch.
+- name: Lokale, familiengeführte Bestatter
+  positioning: Stark verwurzelt in der Gemeinde, hohes Vertrauen im lokalen Umfeld.
+  strengths:
+  - Sehr persönliche Beziehung
+  - Tiefe Ortskenntnis
+  - Hohe Reputation über Generationen
+  weaknesses:
+  - Oft limitierte Digitalisierung
+  - Evtl. eingeschränkte Erreichbarkeit
+  - Kleinere Ressourcen
+  our_differentiation: Wir kombinieren die persönliche, einfühlsame Betreuung des
+    Familienbetriebs mit der Effizienz und 24/7-Erreichbarkeit durch moderne Technologie
+    wie diesem Sprachassistenten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1500
+  - 10000
+  entry_point: 149
+  roi_examples:
+  - scenario: Automatisierung der ersten Kundenansprache und Terminvereinbarung
+    monthly_cost: 150
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Automatisierte Sterbefallmeldung an 5 verschiedene Stellen
+    monthly_cost: 50
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie bis zu 10 Stunden Verwaltungsaufwand pro Sterbefall.
+  - Steigern Sie Ihre Erreichbarkeit auf 24/7 ohne zusätzliches Personal.
+  - Bieten Sie Ihren Kunden sofortige Transparenz in einer emotional schwierigen Zeit.
+market_context:
+  market_size: Ca. 1,4 Mrd. EUR jährlich (geschätzt, Österreich)
+  growth_rate: Stagnierend bis leicht rückläufig (~ -1% p.a.) aufgrund demografischer
+    Veränderungen, aber steigender Durchschnittskosten pro Bestattung.
+  key_trends:
+  - Zunahme von Feuerbestattungen (über 60%)
+  - Nachfrage nach alternativen, ökologischen Bestattungsformen (Friedwald, Seebestattung)
+  - Digitalisierung der Vorsorge (Online-Vorsorgeverträge)
+  - Steigende Bedeutung von Trauerbegleitung über die Beisetzung hinaus
+  seasonality:
+    high:
+    - Wintermonate (Januar, Februar)
+    - Spätherbst
+    low:
+    - Hauptsommermonate (Juli, August)
+    - Dezember (Feiertage)
+typical_objections:
+- objection: Das klingt zu unpersönlich für so ein sensibles Thema.
+  response: 'Das verstehe ich gut. Unser Ziel ist genau das Gegenteil: Der Assistent
+    übernimmt die zeitaufwändigen administrativen Aufgaben, damit sich unsere Bestatter
+    viel mehr Zeit für das persönliche, einfühlsame Gespräch mit Ihnen nehmen können.'
+- objection: Die Technik ist mir zu kompliziert / wir sind nicht digital.
+  response: Die Bedienung ist so einfach wie ein Telefongespräch. Sie oder Ihre Kunden
+    müssen nichts installieren. Der Assistent führt Sie durch alle Fragen. Wir richten
+    alles für Sie ein und schulen Ihr Team einmalig. So gewinnen Sie Zeit für das
+    Wesentliche.
+- objection: Das können unsere aktuellen Mitarbeiter doch auch erledigen.
+  response: Absolut. Doch gerade bei Sterbefällen außerhalb der Bürozeiten oder bei
+    parallelen Anfragen entlastet der Assistent Ihr Team enorm. So vermeiden Sie Überlastung
+    und können sich in den persönlichen Gesprächen voll auf den Kunden konzentrieren.
+    Es ist eine Unterstützung, kein Ersatz.
+meta:
+  id: funeral
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

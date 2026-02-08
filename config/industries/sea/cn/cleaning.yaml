@@ -1,0 +1,198 @@
+pain_points:
+- description: 员工流失率高，导致服务不稳定和培训成本增加。
+  severity: high
+  solution_hint: AI语音助手可自动处理员工排班和招聘，优化人力资源。
+- description: 客户预约管理混乱，经常出现时间冲突和漏单。
+  severity: medium
+  solution_hint: AI语音助手能自动管理预约，实时更新日程，减少错误。
+- description: 清洁质量难以标准化，客户投诉多。
+  severity: high
+  solution_hint: AI语音助手可通过收集反馈和监控流程，帮助提升服务质量。
+- description: 成本控制困难，物料和人工费用不断上涨。
+  severity: medium
+  solution_hint: AI语音助手可优化采购和调度，降低运营成本。
+- description: 市场竞争激烈，获客成本高。
+  severity: high
+  solution_hint: AI语音助手能自动处理客户咨询和跟进，提高转化率。
+- description: 数据管理不规范，难以分析业务表现。
+  severity: low
+  solution_hint: AI语音助手集成CRM系统，自动记录和分析数据。
+typical_services:
+- 家庭日常清洁
+- 办公室深度清洁
+- 地毯清洗
+- 窗户清洁
+- 消毒服务
+- 物业保洁
+- 商业空间清洁
+- 特殊场景清洁（如医院、学校）
+- 定期保洁套餐
+- 搬家后清洁
+recommended_functions:
+- name: 自动预约管理
+  priority: high
+  reason: 简化客户预约流程，减少人工错误，提高效率。
+- name: 客户咨询处理
+  priority: high
+  reason: 快速响应客户问题，提升服务体验和满意度。
+- name: 支付集成处理
+  priority: medium
+  reason: 支持微信支付和支付宝，方便客户付款，加快资金周转。
+- name: 反馈收集与分析
+  priority: medium
+  reason: 自动收集客户反馈，帮助改进服务质量。
+- name: 员工调度优化
+  priority: high
+  reason: 根据需求自动分配任务，提高人力资源利用率。
+- name: 营销活动推广
+  priority: low
+  reason: 通过语音呼叫推广服务，降低获客成本。
+typical_integrations:
+- name: 支付系统
+  examples:
+  - 微信支付
+  - 支付宝
+  priority: high
+- name: CRM系统
+  examples:
+  - 用友CRM
+  - 金蝶云星辰
+  priority: medium
+- name: 办公协作工具
+  examples:
+  - 钉钉
+  - 企业微信
+  priority: high
+- name: 调度软件
+  examples:
+  - 58到家系统
+  - 阿姨帮平台
+  priority: medium
+- name: 财务软件
+  examples:
+  - 用友财务软件
+  - 金蝶KIS
+  priority: low
+industry_faq:
+- question: 清洁服务的价格是如何计算的？
+  answer_template: 价格根据服务类型、面积和频率定制，起价500元，我们提供免费上门评估。
+- question: 你们能提供消毒服务吗？
+  answer_template: 是的，我们提供专业的消毒服务，使用环保清洁剂，符合卫生标准。
+- question: 预约后可以取消或改期吗？
+  answer_template: 可以，请提前24小时通知，我们通过AI语音助手灵活处理。
+- question: 清洁质量有保障吗？
+  answer_template: 我们使用标准化流程和AI监控，确保高质量服务，并提供满意度调查。
+- question: 如何支付费用？
+  answer_template: 支持微信支付、支付宝等多种方式，付款便捷安全。
+- question: 服务覆盖哪些区域？
+  answer_template: 目前覆盖主要城市区域，具体可查询我们的服务地图或咨询AI助手。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时
+  script: 感谢您的询问！我们的清洁服务起价500元，具体根据您的需求定制。我们可以安排免费评估，优化您的预算。
+  goal: 获取客户需求信息，引导进一步沟通。
+- trigger: service_inquiry
+  situation: 当客户咨询具体服务时
+  script: 我们提供家庭、办公室等多种清洁服务。请问您需要哪种？我可以详细说明并推荐合适套餐。
+  goal: 了解客户需求，推荐个性化服务。
+- trigger: competitor_mention
+  situation: 当客户提到竞争对手时
+  script: 我们专注于AI优化清洁流程，确保质量稳定和成本控制。相比其他平台，我们提供更智能的调度和客户服务。
+  goal: 突出我们的差异化优势，建立信任。
+- trigger: objection_handling
+  situation: 当客户犹豫不决时
+  script: 我理解您的顾虑。我们的AI系统能帮助您节省时间和成本，很多客户反馈效率提升明显。可以先尝试小规模服务看看效果。
+  goal: 缓解客户疑虑，促成试用或购买。
+competitors:
+- name: 58到家
+  positioning: 大型综合家政服务平台
+  strengths:
+  - 品牌知名度高
+  - 服务种类丰富
+  - 覆盖城市广
+  weaknesses:
+  - 服务质量不一致
+  - 价格较高
+  - 客户服务响应慢
+  our_differentiation: 我们使用AI语音助手优化全流程，提供更稳定、高效和个性化的清洁服务。
+- name: 阿姨帮
+  positioning: 专注于家庭保洁的O2O平台
+  strengths:
+  - 用户界面友好
+  - 预约方便
+  - 价格透明
+  weaknesses:
+  - 服务标准化不足
+  - 扩展性有限
+  - 技术集成弱
+  our_differentiation: 我们集成智能调度和数据分析，提升服务质量和运营效率。
+- name: 好慷在家
+  positioning: 高端家庭清洁服务提供商
+  strengths:
+  - 服务质量高
+  - 员工培训严格
+  - 客户口碑好
+  weaknesses:
+  - 价格昂贵
+  - 服务区域有限
+  - 技术应用较少
+  our_differentiation: 我们以AI驱动，平衡成本和质量，提供高性价比的智能清洁解决方案。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 1000
+  - 10000
+  entry_point: 500
+  roi_examples:
+  - scenario: 小型办公室月度清洁
+    monthly_cost: 2000
+    monthly_savings: 3500
+    payback_months: 4
+  - scenario: 家庭定期保洁
+    monthly_cost: 1000
+    monthly_savings: 1800
+    payback_months: 3
+  value_anchors:
+  - 提高清洁效率30%
+  - 减少管理成本20%
+  - 提升客户满意度
+  - 符合PIPL数据合规
+market_context:
+  market_size: 约1000亿人民币
+  growth_rate: 12%年增长率
+  key_trends:
+  - 智能化清洁设备普及
+  - 线上预约成为主流
+  - 环保和健康需求上升
+  - 数据驱动运营优化
+  seasonality:
+    high:
+    - 春节前
+    - 国庆节前
+    - 春季大扫除期间
+    low:
+    - 夏季高温期
+    - 冬季寒冷期
+typical_objections:
+- objection: 我们已经有清洁工了，不需要额外服务。
+  response: 我们的AI系统可以优化您现有团队的调度和效率，帮助节省成本并提升质量。
+- objection: 价格太贵，超出预算。
+  response: 我们提供灵活套餐，起价500元，并且AI优化能长期节省您的运营费用，性价比高。
+- objection: 担心数据安全和隐私。
+  response: 我们严格遵守PIPL法规，数据加密处理，只用于服务优化，确保安全合规。
+- objection: 技术太复杂，不会使用。
+  response: AI语音助手操作简单，语音交互即可完成预约和管理，我们会提供培训支持。
+meta:
+  id: cleaning
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

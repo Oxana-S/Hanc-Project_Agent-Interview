@@ -1,0 +1,226 @@
+pain_points:
+- description: Képzett IT szakemberek hiánya a piacon.
+  severity: high
+  solution_hint: AI hangügynök automatizálhatja a felvételi folyamatokat és szűrheti
+    az önéletrajzokat.
+- description: Magas működési költségek, különösen a felhőszolgáltatások és licencdíjak
+    miatt.
+  severity: medium
+  solution_hint: AI hangügynök optimalizálhatja a költségeket ajánlásokkal és riasztásokkal.
+- description: Növekvő kiberbiztonsági fenyegetések és adatvédelem (GDPR) követelmények.
+  severity: high
+  solution_hint: AI hangügynök monitorozhatja a biztonsági eseményeket és értesítheti
+    a csapatot.
+- description: Gyorsan változó technológiai trendek követésének nehézsége.
+  severity: medium
+  solution_hint: AI hangügynök szolgáltathat naprakész információk trendekről és képzésekről.
+- description: Ügyfelek elégedetlensége a lassú válaszidők és támogatás miatt.
+  severity: high
+  solution_hint: AI hangügynök biztosíthat 24/7 ügyfélszolgálatot gyors válaszokkal.
+- description: Projektmenedzsment komplexitása és határidők betartásának kihívásai.
+  severity: medium
+  solution_hint: AI hangügynök segíthet a feladatok nyomon követésében és emlékeztetők
+    küldésében.
+typical_services:
+- Hálózati támogatás és karbantartás
+- Felhőszolgáltatások migráció és kezelés
+- Szoftverfejlesztés és testreszabás
+- Kiberbiztonsági megoldások és audit
+- Adatmentés és katasztrófahelyreállítás
+- IT tanácsadás és stratégia
+- Rendszerintegráció és API fejlesztés
+- Mobilalkalmazás fejlesztés
+- Webfejlesztés és e-kereskedelmi megoldások
+- IT infrastruktúra optimalizálás
+recommended_functions:
+- name: Ügyfélleadszűrés
+  priority: high
+  reason: Segít azonosítani a minőségi ügyfeleket és növeli az átalakulási arányt.
+- name: Időpontfoglalás
+  priority: high
+  reason: Automatizálja a konzultációk és találkozók szervezését, időt takarít meg.
+- name: Árajánlat generálás
+  priority: medium
+  reason: Gyors és pontos árakat biztosít, javítja az ügyfélélményt.
+- name: Támogatási jegykezelés
+  priority: high
+  reason: Hatékonyabban kezeli az ügyfélkérelmeket és csökkenti a válaszidőt.
+- name: KPI jelentéskészítés
+  priority: low
+  reason: Automatikus jelentéseket készít a teljesítményről, segít döntéshozatalban.
+- name: Képzési anyagok terjesztése
+  priority: medium
+  reason: Könnyen hozzáférhető információkat biztosít az ügyfeleknek és munkatársaknak.
+typical_integrations:
+- name: CRM rendszerek
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  - Bitrix24
+  priority: high
+- name: ERP rendszerek
+  examples:
+  - SAP
+  - Oracle NetSuite
+  - NAV integrációk
+  priority: high
+- name: Projektmenedzsment eszközök
+  examples:
+  - Jira
+  - Asana
+  - Trello
+  priority: medium
+- name: Kommunikációs platformok
+  examples:
+  - Microsoft Teams
+  - Slack
+  - Zoom
+  priority: medium
+- name: Pénzügyi szoftverek
+  examples:
+  - Számviteli programok
+  - NAV online számlázó
+  priority: low
+industry_faq:
+- question: Mennyi időt vesz igénybe egy IT projekt átlagosan?
+  answer_template: A projekt időtartama a komplexitástól függ, általában 2-6 hónap
+    között mozog. Részletes idővonalat készítünk egyéni konzultáció után.
+- question: Hogyan kezelitek az adatvédelmi (GDPR) követelményeket?
+  answer_template: Minden megoldásunkat GDPR-kompatibilisen tervezzük, és rendszeres
+    auditokat végzünk. Részletes tájékoztatót küldünk Önnek.
+- question: Milyen támogatást nyújtatok a bevezetés után?
+  answer_template: 24/7 technikai támogatást, dokumentációt és képzéseket biztosítunk.
+    A szerződés részletei az SLA-ban találhatók.
+- question: Mennyibe kerül egy alap IT szolgáltatás?
+  answer_template: Az árak a szolgáltatásoktól függenek, kezdve 50.000 HUF/hó-tól.
+    Egyedi árajánlatot készítünk az Ön igényei alapján.
+- question: Milyen garanciát adtok a minőségre?
+  answer_template: Minőségbiztosítási folyamataink vannak, és garanciát nyújtunk a
+    hibák gyors javítására. Referenciáinkat megtekintheti.
+- question: Hogyan integrálható a meglévő rendszeremmel?
+  answer_template: API-kat és egyedi integrációkat fejlesztünk. Előzetes elemzést
+    végzünk a kompatibilitás ellenőrzésére.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy ügyfél árakat kérdez.
+  script: Köszönöm a kérdését! Az árak a szükséges szolgáltatásoktól függenek. Egy
+    alap csomag 50.000 HUF/hó-tól kezdődik, de személyre szabott ajánlatot készíthetünk.
+    Megoszthatná röviden az Ön igényeit?
+  goal: Az ügyfél igényeinek összegyűjtése és egy konzultáció beidőzítése.
+- trigger: competitor_mention
+  situation: Amikor az ügyfél versenytársakat említ.
+  script: Értem, hogy más lehetőségeket is fontolgat. Mi a helyi piaci ismereteinkkel
+    és gyors válaszidőinkkel különbözünk. Kipróbálná egy ingyenes demo-t a megoldásainkból?
+  goal: A versenyelőny kiemelése és a demó bemutatása.
+- trigger: service_details
+  situation: Amikor az ügyfél egy specifikus szolgáltatás részleteit kérdezi.
+  script: Természetesen! Például a kiberbiztonsági szolgáltatásaink tartalmaznak sebezhetőségi
+    vizsgálatot és valós idejű monitorozást. Küldhetek Önnek részletes leírást e-mailben?
+  goal: Információ szolgáltatása és a kapcsolattartási adatok gyűjtése.
+- trigger: objection_cost
+  situation: Amikor az ügyfél a költségeket túl magasnak tartja.
+  script: Megértem a költségérzékenységét. Gondolja át, hogy a hatékony IT támogatás
+    hosszú távon megtakarítást jelent, például kevesebb állásidővel. Egy ROI elemzést
+    készíthetünk Önnek.
+  goal: Az érték demonstrálása és az ellenállás csökkentése.
+competitors:
+- name: 4iG
+  positioning: Nagyvállalati IT szolgáltató a hazai piacon.
+  strengths:
+  - Széles szolgáltatási portfólió
+  - Erős hazai jelenlét
+  - Állami megrendelések
+  weaknesses:
+  - Magas árak
+  - Lassú válaszidők
+  - Kevesebb személyre szabottság
+  our_differentiation: Gyorsabb és rugalmasabb szolgáltatás alacsonyabb költségekkel,
+    AI-alapú megoldásokkal.
+- name: Evosoft
+  positioning: Szoftverfejlesztési szakosodás.
+  strengths:
+  - Magas színvonalú fejlesztés
+  - Nemzetközi tapasztalat
+  - Innovatív technológiák
+  weaknesses:
+  - Korlátozott támogatási szolgáltatások
+  - Magas belépési küszöb
+  our_differentiation: Átfogó IT szolgáltatások, beleértve támogatást és karbantartást,
+    hozzáférhető áron.
+- name: Deloitte Hungary
+  positioning: Globális tanácsadó cég IT szolgáltatásokkal.
+  strengths:
+  - Globális hálózat
+  - Komplex tanácsadás
+  - Nagyvállalati ügyfelek
+  weaknesses:
+  - Nagyon magas költségek
+  - Kevésbé személyes megközelítés
+  our_differentiation: Helyi szakértelem és személyre szabott ügyfélkezelés, költséghatékonyan.
+- name: K&H Bank IT szolgáltatások
+  positioning: Banki háttér IT szolgáltatások.
+  strengths:
+  - Erős pénzügyi háttér
+  - Magas biztonsági szabványok
+  - Integrált megoldások
+  weaknesses:
+  - Korlátozott külső ügyfelek számára
+  - Kevesebb innováció
+  our_differentiation: Független szolgáltatóként innovatív és rugalmas megoldásokat
+    kínálunk minden ügyfélnek.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 50000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Automatizált ügyfélszolgálat bevezetése
+    monthly_cost: 100000
+    monthly_savings: 150000
+    payback_months: 2
+  value_anchors:
+  - Átlagosan 30% megtakarítás a hagyományos IT támogatáshoz képest.
+  - Gyorsabb válaszidők, akár 50%-kal csökkentett üzleti állásidő.
+  - GDPR-kompatibilis megoldások, elkerülve a büntetéseket.
+market_context:
+  market_size: Kb. 500 milliárd HUF éves piac
+  growth_rate: 8% YoY
+  key_trends:
+  - Növekvő felhőszolgáltatások iránti kereslet.
+  - AI és automatizáció integrálása IT folyamatokba.
+  - Távoli munkavégzés miatti biztonsági kihívások.
+  seasonality:
+    high:
+    - Szeptember-október (év végi projektek)
+    - Január (új budgetek)
+    low:
+    - Július-augusztus (nyári szabadságok)
+typical_objections:
+- objection: Túl drágának tűnik a szolgáltatásotok.
+  response: Megértem. De gondoljon a hosszú távú megtakarításokra, mint például a
+    csökkentett állásidő. Egy ingyenes ROI elemzést kínálunk a pontos megtakarítások
+    bemutatására.
+- objection: Már van egy IT szolgáltatónk.
+  response: Kiváló! Mi kiegészítő szolgáltatásokat vagy másodlagos támogatást kínálunk,
+    hogy növeljük a rugalmasságot. Kipróbálná egy kis részben?
+- objection: Nem vagyok biztos a technológiai képességeitekben.
+  response: Referenciáinkat és esettanulmányainkat megoszthatjuk Önnel. Ezenkívül
+    egy demo-t is bemutathatunk, hogy gyakorlatban lássa a megoldásainkat.
+- objection: A bevezetés túl sok időt vesz igénybe.
+  response: Fokozatos bevezetési tervvel dolgozunk, hogy minimalizáljuk a zavarást.
+    Az első lépések akár egy héten belül megvalósíthatók.
+meta:
+  id: it_services
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

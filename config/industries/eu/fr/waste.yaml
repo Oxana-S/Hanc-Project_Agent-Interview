@@ -1,0 +1,238 @@
+pain_points:
+- description: Les coûts de collecte et de traitement des déchets augmentent constamment,
+    pesant sur la marge opérationnelle.
+  severity: high
+  solution_hint: L'agent vocal peut optimiser les tournées de collecte pour réduire
+    la consommation de carburant et les heures de main-d'œuvre.
+- description: Difficulté à gérer efficacement les demandes et réclamations des clients,
+    entraînant une insatisfaction.
+  severity: medium
+  solution_hint: Automatiser la prise de rendez-vous, le suivi des plaintes et les
+    rappels de paiement.
+- description: Conformité réglementaire complexe (REP, tri à la source, GDPR pour
+    les données clients).
+  severity: high
+  solution_hint: Fournir des rappels automatisés sur les obligations et aider à la
+    tenue de registres numériques.
+- description: Optimisation insuffisante du remplissage des bennes, conduisant à des
+    collectes inutiles.
+  severity: medium
+  solution_hint: Intégrer des données de capteurs pour déclencher les collectes uniquement
+    lorsque nécessaire.
+- description: Gestion manuelle et chronophage de la facturation et du recouvrement.
+  severity: medium
+  solution_hint: Automatiser l'émission de factures, les relances et le traitement
+    des paiements.
+- description: Manque de visibilité en temps réel sur l'état des opérations pour les
+    responsables.
+  severity: low
+  solution_hint: Fournir des rapports vocaux synthétiques sur les collectes, les incidents
+    et la productivité.
+typical_services:
+- Collecte des ordures ménagères résiduelles
+- Collecte sélective (emballages, papier, verre)
+- Enlèvement des encombrants
+- Gestion des déchets verts
+- Location de bennes et conteneurs
+- Nettoyage de locaux et voirie
+- Dépollution et gestion des déchets dangereux
+- Conseil en réduction et valorisation des déchets
+- Prestations liées à la REP (Responsabilité Élargie du Producteur)
+recommended_functions:
+- name: Prise de rendez-vous et modification de collecte
+  priority: high
+  reason: Réduit considérablement la charge du standard téléphonique, surtout pour
+    les collectes d'encombrants.
+- name: Gestion des réclamations et incidents
+  priority: high
+  reason: Capture et classe immédiatement les problèmes clients, permettant une résolution
+    plus rapide.
+- name: Relance de paiement automatisée
+  priority: medium
+  reason: Améliore le taux de recouvrement sans effort supplémentaire pour le service
+    administratif.
+- name: Réponses aux FAQ réglementaires
+  priority: medium
+  reason: Éduque les clients sur les règles de tri, réduisant les erreurs de flux
+    et les contaminations.
+- name: Rapport quotidien d'activité vocal
+  priority: low
+  reason: Permet aux gestionnaires de terrain d'avoir un briefing rapide sans consulter
+    un écran.
+typical_integrations:
+- name: Logiciel de gestion d'entreprise (ERP)
+  examples:
+  - Sage
+  - Cegid
+  - EBP
+  priority: high
+- name: Logiciel de gestion de flotte
+  examples:
+  - Masternaut
+  - Geotab
+  - Fleetio
+  priority: high
+- name: Solution de facturation électronique
+  examples:
+  - Chorus Pro
+  - Sage Facturation
+  - SRM
+  priority: medium
+- name: Plateforme de gestion des relations clients (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+industry_faq:
+- question: Quels sont vos jours de collecte dans ma commune ?
+  answer_template: Bonjour, pour connaître les jours précis de collecte à votre adresse,
+    je vais avoir besoin de votre code postal et du nom de votre rue. Je peux vous
+    connecter avec le plan de tournée ou vous donner les informations immédiatement
+    si elles sont dans mon système.
+- question: Mon bac n'a pas été vidé, que faire ?
+  answer_template: Je m'excuse pour ce désagrément. Pour déclarer un oubli de collecte,
+    je vais créer un ticket d'incident. Pouvez-vous me confirmer votre adresse et
+    la couleur du bac concerné ? Un agent prendra contact pour programmer une collecte
+    de rattrapage.
+- question: Comment obtenir un nouveau bac ou un bac supplémentaire ?
+  answer_template: Pour demander un nouveau bac, une commande doit être passée auprès
+    de votre collectivité ou de votre prestataire. Je peux vous transmettre à la personne
+    concernée ou notifier directement la demande. Des frais peuvent s'appliquer pour
+    les bacs supplémentaires.
+- question: 'Que faire des déchets qui ne vont dans aucun bac ? (ex : peinture, piles)'
+  answer_template: Ces déchets sont considérés comme des déchets spéciaux. Ils doivent
+    être apportés en déchèterie ou à un point de collecte spécifique. Je peux vous
+    indiquer la déchèterie la plus proche de chez vous et ses horaires d'ouverture.
+- question: Ma facture me semble élevée, puis-je avoir une explication ?
+  answer_template: Je comprends votre préoccupation. La facturation est généralement
+    basée sur la fréquence de collecte, le volume et le type de déchets. Pour analyser
+    votre situation précise, je vais vous transférer au service comptabilité ou prendre
+    note de votre demande de rappel pour qu'ils vous expliquent le détail.
+sales_scripts:
+- trigger: price_question
+  situation: 'Le client demande le prix d''un service (ex : location de benne).'
+  script: Le tarif dépend de plusieurs facteurs comme la taille de la benne, la durée
+    de location, le type de déchets et votre localisation. Pour vous donner une estimation
+    précise et compétitive, pourriez-vous me préciser ces éléments ? Je peux également
+    vérifier s'il existe des forfaits adaptés à votre projet.
+  goal: Collecter des informations pour un devis personnalisé et éviter de donner
+    un prix générique non compétitif.
+- trigger: competitor_mention
+  situation: 'Le client mentionne un concurrent (ex : Veolia, Suez).'
+  script: Je comprends. Nous travaillons avec de nombreuses entreprises qui recherchaient
+    une relation plus personnalisée et réactive. Notre force est de proposer des solutions
+    technologiques, comme cet agent vocal, qui réduisent vos coûts opérationnels et
+    améliorent le service à vos propres clients. Puis-je vous montrer comment cela
+    fonctionne concrètement ?
+  goal: Se différencier sur la qualité de service et l'innovation plutôt que sur le
+    prix seul.
+- trigger: objection_budget
+  situation: Le client dit ne pas avoir le budget maintenant.
+  script: Je comprends tout à fait la gestion du budget. Souvent, notre solution génère
+    des économies qui couvrent son coût (carburant, main-d'œuvre, recouvrement). Seriez-vous
+    ouvert à une analyse rapide de votre situation actuelle ? Cela nous permettrait
+    d'identifier des gains potentiels et éventuellement de proposer un plan d'engagement
+    progressif.
+  goal: Transformer une objection budget en opportunité de démontrer la valeur et
+    la rentabilité.
+competitors:
+- name: Veolia
+  positioning: Leader mondial, offre intégrée (eau, déchets, énergie).
+  strengths:
+  - Réseau national immense
+  - Grande capacité de traitement
+  - Expertise technique
+  weaknesses:
+  - Lourdeur bureaucratique
+  - Peu réactif pour les petites structures
+  - Tarifs élevés
+  our_differentiation: Agilité, personnalisation et outils d'automatisation accessibles
+    pour les PME et collectivités.
+- name: Suez
+  positioning: Autre géant historique, fort sur l'innovation environnementale.
+  strengths:
+  - R&D avancée
+  - Solutions de valorisation
+  - Présence internationale
+  weaknesses:
+  - Priorisation des gros contrats
+  - Complexité des offres
+  our_differentiation: Interface client simplifiée et automatisation des processus
+    courants pour un service plus fluide.
+- name: Paprec
+  positioning: Grand groupe français indépendant, spécialiste du recyclage.
+  strengths:
+  - Expertise du recyclage
+  - Esprit entrepreneurial
+  - Réseau de plateformes
+  weaknesses:
+  - Couverture géographique variable
+  - Services parfois limités aux déchets recyclables
+  our_differentiation: Solution complète de gestion client et logistique, quel que
+    soit le flux de déchets.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 49
+  roi_examples:
+  - scenario: Petite entreprise de nettoyage réduisant ses appels manuels de 20h/mois.
+    monthly_cost: 99
+    monthly_savings: 600
+    payback_months: 0.2
+  - scenario: Société de location de bennes automatisant la prise de commande et le
+      planning.
+    monthly_cost: 299
+    monthly_savings: 1500
+    payback_months: 0.2
+  value_anchors:
+  - Réduisez jusqu'à 30% le temps passé au téléphone.
+  - Améliorez votre taux de recouvrement de 15% avec des relances automatiques.
+  - Optimisez vos tournées et économisez du carburant.
+market_context:
+  market_size: Environ 18 milliards d'EUR
+  growth_rate: 3-4% par an
+  key_trends:
+  - Obligation du tri à la source des biodéchets pour tous (2024)
+  - Développement de l'économie circulaire et de la valorisation matière
+  - Digitalisation et traçabilité accrue des flux de déchets
+  - Pression réglementaire croissante (REP, TGAP)
+  seasonality:
+    high:
+    - Printemps (nettoyages, déchets verts)
+    - Rentrée de septembre
+    low:
+    - Août (congés d'été)
+    - Période de Noël
+typical_objections:
+- objection: Nous avons toujours fait comme ça, ça fonctionne.
+  response: C'est tout à votre honneur. L'idée n'est pas de tout changer, mais de
+    vous libérer du temps sur les tâches répétitives pour vous concentrer sur le cœur
+    de votre métier. Puis-je vous montrer comment cela pourrait simplifier la journée
+    de votre équipe d'accueil ?
+- objection: Mes clients préfèrent parler à une personne.
+  response: Je partage ce souci du contact humain. Notre agent gère les demandes standard
+    (horaires, rdv, informations) 24h/24, ce qui permet à vos équipes d'être plus
+    disponibles pour les situations complexes ou les clients qui ont vraiment besoin
+    d'une conversation approfondie.
+- objection: L'intégration avec notre logiciel semble compliquée.
+  response: C'est une préoccupation légitime. Nos intégrations sont conçues pour être
+    simples avec les logiciels les plus courants en France. Nous pouvons souvent vous
+    proposer une période de test sans connexion technique pour valider l'utilité du
+    service en premier lieu.
+meta:
+  id: waste
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "waste management"
+- "recycling"
+- "waste disposal"
+- "garbage collection"
+_extends: _base/waste

@@ -1,0 +1,200 @@
+pain_points:
+- description: Difficulté à trouver des talents informatiques qualifiés, en particulier pour les technologies émergentes comme l'IA ou la cybersécurité.
+  severity: high
+  solution_hint: L'agent vocal peut qualifier les besoins en compétences et proposer des solutions de formation ou d'externalisation adaptées.
+- description: Complexité de mise en conformité avec le RGPD et autres réglementations européennes pour les clients.
+  severity: high
+  solution_hint: L'agent peut présenter des services d'audit et de conseil en conformité, et planifier des démonstrations avec des experts.
+- description: Gestion inefficace des tickets de support, entraînant des temps de résolution longs et une insatisfaction client.
+  severity: medium
+  solution_hint: L'agent peut expliquer les avantages d'un centre de services (service desk) automatisé et prendre rendez-vous pour une évaluation.
+- description: Coûts imprévisibles liés à la maintenance et aux pannes du système informatique.
+  severity: medium
+  solution_hint: L'agent peut décrire les bénéfices d'un contrat d'infogérance (outsourcing) avec des coûts mensuels fixes.
+- description: Difficulté à moderniser les anciens systèmes (legacy) sans perturber l'activité.
+  severity: high
+  solution_hint: L'agent peut présenter une approche progressive de migration cloud et connecter avec un architecte solutions.
+- description: Risques croissants de cyberattaques et de violation de données.
+  severity: high
+  solution_hint: L'agent peut proposer un diagnostic de sécurité initial gratuit et planifier un appel avec un spécialiste.
+typical_services:
+- Infogérance et support informatique
+- Développement d'applications sur mesure
+- Migration et hébergement cloud (AWS, Azure, Google Cloud)
+- Sécurité informatique et conformité RGPD
+- Conseil en transformation digitale
+- Intégration de systèmes (ERP, CRM)
+- Maintenance préventive et curative
+- Services managés (Managed Services)
+- Externalisation de services informatiques (ITO)
+- Audit et optimisation de l'infrastructure IT
+recommended_functions:
+- name: Prise de rendez-vous pour audit initial
+  priority: high
+  reason: Les entreprises françaises valorisent un contact humain structuré pour discuter de problèmes complexes.
+- name: Réponses aux FAQs sur la conformité RGPD
+  priority: high
+  reason: Sujet critique et source majeure d'inquiétude, permettant d'établir de la crédibilité.
+- name: Présentation des options de tarification et de forfaits
+  priority: medium
+  reason: La transparence sur les coûts est essentielle pour construire la confiance dès le premier contact.
+- name: Qualification des besoins en support (niveau de criticité, nombre d'utilisateurs)
+  priority: high
+  reason: Permet de router efficacement le prospect vers le bon consultant ou package de service.
+- name: Collecte d'informations de base pour un devis (secteur, taille, problématique principale)
+  priority: medium
+  reason: Accélère le processus de vente en préparant le travail du commercial.
+typical_integrations:
+- name: Logiciel de gestion commerciale (ERP)
+  examples:
+  - Cegid
+  - Sage
+  - ERP5
+  - Odoo
+  priority: high
+- name: Logiciel de relation client (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Microsoft Dynamics 365
+  - Dolibarr
+  priority: high
+- name: Outil de ticketing et centre de services
+  examples:
+  - Zendesk
+  - Freshdesk
+  - GLPI
+  - ServiceNow
+  priority: medium
+- name: Solutions de cybersécurité
+  examples:
+  - Stormshield
+  - Check Point
+  - Fortinet
+  - Palo Alto Networks
+  priority: high
+- name: Outils de supervision
+  examples:
+  - Centreon
+  - PRTG
+  - Nagios
+  - Datadog
+  priority: medium
+industry_faq:
+- question: Proposez-vous un support informatique 24/7 ?
+  answer_template: Oui, absolument. Nous proposons différents niveaux de service, incluant des forfaits avec support 24/7 et intervention sur site si nécessaire. Puis-je vous envoyer plus de détails par
+    email ?
+- question: Comment garantissez-vous la conformité RGPD ?
+  answer_template: Nous effectuons un audit complet de vos processus et infrastructures, puis nous mettons en place les mesures techniques et organisationnelles nécessaires. Nos consultants sont certifiés
+    sur le sujet.
+- question: Quelle est votre délai d'intervention moyen pour une panne critique ?
+  answer_template: Pour nos clients sous contrat de services managés, notre engagement commence à 2 heures pour les incidents de niveau 1. Le délai exact dépend du niveau de service choisi.
+- question: Travaillez-vous avec des technologies spécifiques (Microsoft, Linux, etc.) ?
+  answer_template: Nos équipes sont compétentes sur un large éventail de technologies, des environnements Microsoft aux solutions Open Source. Nous nous adaptons à votre écosystème existant.
+- question: Pouvez-vous reprendre la gestion de notre infrastructure actuelle ?
+  answer_template: Oui, la reprise d'infrastructure (onboarding) fait partie de nos services courants. Nous assurons une transition en douceur sans interruption de votre activité.
+sales_scripts:
+- trigger: price_question
+  situation: Quand le prospect demande le prix dès le début de la conversation.
+  script: Je comprends votre souci de maîtriser les coûts. Nos tarifs dépendent fortement de la complexité de votre infrastructure et du niveau de service souhaité. Pour vous donner une estimation précise,
+    puis-je vous poser deux ou trois questions rapides sur votre parc informatique actuel ?
+  goal: Qualifier le prospect avant de discuter prix, et montrer que notre offre est personnalisée.
+- trigger: competitor_mention
+  situation: 'Quand le prospect mentionne un concurrent local (ex: Atos, Capgemini pour les grands comptes, ou un petit prestataire local).'
+  script: 'C''est une bonne référence. La différence principale avec nous réside souvent dans notre approche plus agile et notre focalisation sur [mentionner un point fort pertinent, ex: ''la relation de
+    proximité'' ou ''les PME'']. Nous offrons une flexibilité et une réactivité adaptées aux besoins évolutifs des entreprises comme la vôtre.'
+  goal: Se différencier sans dénigrer, et recentrer sur les besoins du client.
+- trigger: objection_complexity
+  situation: Quand le prospect exprime que son système est trop complexe ou unique pour être externalisé.
+  script: C'est justement pour les environnements complexes que notre expertise est la plus précieuse. Nous avons l'habitude d'intervenir sur des systèmes hétérogènes. Une première analyse d'audit, souvent
+    gratuite, nous permettrait d'identifier les risques et les opportunités d'amélioration.
+  goal: Transformer une objection en opportunité pour une offre de valeur ajoutée (audit).
+competitors:
+- name: Capgemini / Atos
+  positioning: Grands groupes du CAC40, leaders sur les très grands comptes et les projets d'envergure.
+  strengths:
+  - Ressources importantes
+  - Portefeuille clients large
+  - Expertise sur grands projets
+  weaknesses:
+  - Tarifs élevés
+  - Moins réactifs pour les PME
+  - Processus parfois lourds
+  our_differentiation: Agilité, réactivité, et tarifs adaptés aux PME et ETI, avec un contact direct et personnalisé.
+- name: Prestataires informatiques locaux indépendants
+  positioning: Petites structures régionales, souvent généralistes.
+  strengths:
+  - Proximité géographique
+  - Connaissance du tissu local
+  - Relation personnelle
+  weaknesses:
+  - Expertise limitée sur les sujets pointus (sécurité, cloud)
+  - Ressources humaines limitées
+  - Capacité d'innovation
+  our_differentiation: Expertise certifiée sur les technologies avancées, capacité à gérer des projets complexes, et support structuré 24/7.
+- name: ESN (Entreprises de Services du Numérique) de taille moyenne
+  positioning: Spécialisées dans la prestation de ressources humaines (ingénieurs en régie) et certains services.
+  strengths:
+  - Flexibilité de la main d'œuvre
+  - Expertise technique
+  - Présence nationale
+  weaknesses:
+  - Moins orientées 'service managé' global
+  - Focus sur la facturation temps/matériel
+  - Peu de responsabilité globale
+  our_differentiation: Nous proposons une vraie responsabilité opérationnelle avec des forfaits prédictifs, en nous focalisant sur les résultats et la pérennité de votre SI, pas seulement sur la provision
+    de consultants.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Externalisation du support informatique pour une PME de 50 utilisateurs
+    monthly_cost: 2500
+    monthly_savings: 4400
+    payback_months: 4
+  value_anchors:
+  - Réduction jusqu'à 30% des coûts d'exploitation IT
+  - Temps de résolution des incidents divisé par deux
+  - Mise en conformité RGPD garantie
+market_context:
+  market_size: Environ 60 milliards d'euros
+  growth_rate: 4-5% par an
+  key_trends:
+  - Accélération de l'adoption du cloud hybride
+  - Demande explosive en services de cybersécurité
+  - Pénurie continue de talents IT poussant à l'externalisation
+  - Fort focus sur la souveraineté numérique et les données en Europe
+  seasonality:
+    high:
+    - Septembre-Novembre (budgets annuels)
+    - Janvier (nouveaux projets)
+    low:
+    - Août (vacances d'été)
+    - Décembre (fin d'année)
+typical_objections:
+- objection: Nous préférons garder le contrôle en interne.
+  response: Je comprends parfaitement. Notre rôle n'est pas de vous remplacer, mais de vous soulager des tâches techniques répétitives pour que votre équipe interne se concentre sur des projets à plus forte
+    valeur ajoutée pour votre métier. Nous travaillons en parfaite transparence avec vos équipes.
+- objection: C'est trop cher pour notre budget.
+  response: Avez-vous calculé le coût réel des pannes, du temps perdu par vos collaborateurs et des risques de sécurité ? Notre offre transforme souvent une dépense imprévisible en un investissement maîtrisé.
+    Nous pouvons commencer par un service ciblé, comme la sécurité, avec un budget limité.
+- objection: Nous avons déjà un prestataire, nous sommes satisfaits.
+  response: C'est une excellente nouvelle. L'objectif n'est pas nécessairement de tout changer, mais peut-être de compléter leur offre sur un point précis où vous pourriez gagner en efficacité, comme la
+    gestion proactive 24/7 ou un audit de sécurité. Seriez-vous ouvert à une comparaison sans engagement ?
+meta:
+  id: it_services
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- IT services
+- tech support
+- managed services
+- IT consulting
+_extends: _base/it_services

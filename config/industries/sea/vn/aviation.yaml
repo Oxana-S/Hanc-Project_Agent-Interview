@@ -1,0 +1,256 @@
+pain_points:
+- description: Chi phí nhân công cao và thiếu hụt nhân viên có kinh nghiệm, đặc biệt
+    là kỹ thuật viên và phi công.
+  severity: high
+  solution_hint: AI voice agent có thể tự động hóa các cuộc gọi tư vấn tuyển dụng,
+    sàng lọc ứng viên sơ bộ và trả lời các câu hỏi thường gặp 24/7, giảm tải cho bộ
+    phận HR.
+- description: Tỷ lệ khách hàng hủy vé hoặc thay đổi lịch trình cao, gây khó khăn
+    trong quản lý chỗ ngồi và doanh thu.
+  severity: high
+  solution_hint: Agent tự động gọi xác nhận chuyến bay, thông báo thay đổi và xử lý
+    yêu cầu đổi/hủy vé qua điện thoại, giảm thời gian chờ đợi.
+- description: Khó khăn trong việc quản lý và cập nhật thông tin chuyến bay (delay,
+    hủy chuyến) tới hành khách một cách nhanh chóng.
+  severity: high
+  solution_hint: Triển khai hệ thống thông báo tự động bằng giọng nói cho hành khách
+    về mọi thay đổi, giảm số lượng cuộc gọi đến tổng đài.
+- description: Áp lực cạnh tranh giá vé gay gắt từ các hãng hàng không giá rẻ và đại
+    lý trực tuyến.
+  severity: medium
+  solution_hint: Agent có thể thực hiện chiến dịch gọi điện chào bán vé giá ưu đãi,
+    gói dịch vụ cho khách hàng thân thiết một cách cá nhân hóa.
+- description: Quy trình hỗ trợ khách hàng sau bán hàng (hỗ trợ tại sân bay, thủ tục
+    hành lý, hoàn tiền) còn chậm và phức tạp.
+  severity: medium
+  solution_hint: Tự động hóa quy trình hỗ trợ qua tổng đài ảo, hướng dẫn khách các
+    bước cần thiết và thu thập thông tin để nhân viên xử lý nhanh hơn.
+- description: Khó khăn trong việc thu thập và phân tích phản hồi từ khách hàng sau
+    chuyến bay để cải thiện dịch vụ.
+  severity: low
+  solution_hint: Agent tự động gọi khảo sát mức độ hài lòng bằng giọng nói sau chuyến
+    bay, tổng hợp dữ liệu thành báo cáo chi tiết.
+typical_services:
+- Dịch vụ đặt vé máy bay nội địa & quốc tế
+- Dịch vụ check-in trực tuyến & tại quầy
+- Dịch vụ hành lý (ký gửi, quá cảnh, thất lạc)
+- Dịch vụ ăn uống trên không (special meals)
+- Dịch vụ chỗ ngồi đặc biệt (ghế thoải mái, ghế cạnh cửa sổ)
+- Dịch vụ đưa đón sân bay & hỗ trợ khách VIP
+- Dịch vụ bảo hiểm du lịch & hỗ trợ y tế
+- Dịch vụ đổi/hủy vé & hoàn tiền
+- Dịch vụ cho thuê phòng chờ hạng thương gia
+- Chương trình khách hàng thân thiết (tích điểm, thăng hạng)
+recommended_functions:
+- name: Xác nhận đặt chỗ & nhắc lịch bay
+  priority: high
+  reason: Giảm thiểu tỷ lệ no-show, cải thiện trải nghiệm khách hàng ngay từ đầu.
+- name: Hỗ trợ đổi/hủy vé & chính sách hoàn tiền
+  priority: high
+  reason: Xử lý nhanh các yêu cầu phổ biến, giảm tải lớn cho tổng đài vào giờ cao
+    điểm.
+- name: Thông báo chuyến bay bị delay/hủy
+  priority: high
+  reason: Cung cấp thông tin kịp thời, chính xác, giảm sự bức xúc và số cuộc gọi hỏi
+    đáp của khách.
+- name: Tư vấn & đặt dịch vụ bổ trợ (hành lý, bữa ăn)
+  priority: medium
+  reason: Tăng doanh thu phụ trợ thông qua bán hàng chủ động và tự phục vụ.
+- name: Khảo sát mức độ hài lòng sau chuyến bay
+  priority: medium
+  reason: Thu thập dữ liệu phản hồi khách quan bằng giọng nói để cải thiện dịch vụ.
+- name: Hỗ trợ tìm kiếm hành lý thất lạc
+  priority: low
+  reason: Hướng dẫn khách các bước cần làm, giảm căng thẳng và đẩy nhanh quy trình
+    xử lý.
+typical_integrations:
+- name: Hệ thống đặt chỗ (PSS/GDS)
+  examples:
+  - Amadeus
+  - Sabre
+  - Hệ thống nội bộ của Vietnam Airlines/Vietjet
+  priority: high
+- name: Hệ thống Quản lý Quan hệ Khách hàng (CRM)
+  examples:
+  - CRM Viettel
+  - CRM FPT
+  - Salesforce
+  priority: high
+- name: Hệ thống Quản lý Hỗ trợ & Sự cố (Ticketing)
+  examples:
+  - Zalo OA
+  - Zendesk
+  - Jira Service Management
+  priority: medium
+- name: Cổng thanh toán trực tuyến
+  examples:
+  - VNPay
+  - Momo
+  - ZaloPay
+  - OnePay
+  priority: medium
+- name: Hệ thống thông tin nội bộ & nhân sự
+  examples:
+  - MISA
+  - HRM của các tập đoàn lớn
+  priority: low
+industry_faq:
+- question: Làm thế nào để thay đổi hoặc hủy vé máy bay?
+  answer_template: Chào anh/chị, để thay đổi hoặc hủy vé, anh/chị vui lòng cung cấp
+    mã đặt chỗ. Tôi có thể hỗ trợ kiểm tra chính sách và hướng dẫn các bước tiếp theo
+    ngay. Phí đổi/hủy sẽ phụ thuộc vào hạng vé và thời điểm thông báo.
+- question: Tôi cần làm gì khi chuyến bay bị hoãn hoặc hủy?
+  answer_template: Xin lỗi vì sự bất tiện này. Khi chuyến bay bị thay đổi, chúng tôi
+    sẽ tự động thông báo qua SMS và cuộc gọi này. Tôi có thể hỗ trợ anh/chị tìm chuyến
+    bay thay thế hoặc hướng dẫn thủ tục hoàn tiền/đền bù theo quy định.
+- question: Chính sách hành lý ký gửi của hãng như thế nào?
+  answer_template: Chào anh/chị, chính sách hành lý sẽ khác nhau tùy hạng vé và tuyến
+    bay. Tôi có thể kiểm tra ngay cho anh/chị số kg được miễn phí và phí phát sinh
+    nếu vượt quá. Anh/chị có thể mua thêm hành lý trước để tiết kiệm chi phí.
+- question: Làm sao để tích điểm và sử dụng điểm thưởng từ chương trình khách hàng
+    thân thiết?
+  answer_template: Anh/chị vui lòng cung cấp số hội viên. Tôi có thể tra cứu số điểm
+    hiện có và các chuyến bay đủ điều kiện để sử dụng điểm thưởng. Điểm thường có
+    thể dùng để nâng hạng vé hoặc đổi vé miễn phí.
+- question: Tôi có thể chọn/chỉnh sửa chỗ ngồi và bữa ăn đặc biệt được không?
+  answer_template: Được ạ. Dịch vụ lựa chọn chỗ ngồi và bữa ăn đặc biệt (như đồ chay,
+    kiêng dị ứng) có sẵn. Tôi có thể kiểm tra tùy chọn cho chuyến bay của anh/chị
+    và hỗ trợ đặt ngay. Một số dịch vụ có thể phát sinh phí.
+sales_scripts:
+- trigger: price_question
+  situation: Khách hàng hỏi về giá dịch vụ hoặc so sánh giá với đối thủ.
+  script: 'Chào anh/chị, cảm ơn anh/chị đã quan tâm. Bên cạnh mức giá cạnh tranh,
+    giải pháp của chúng tôi tập trung vào tiết kiệm tới 30% chi phí vận hành tổng
+    đài và tăng tỷ lệ giữ chân khách hàng nhờ hỗ trợ 24/7. Anh/chị quan tâm nhất đến
+    việc cắt giảm chi phí ở khâu nào ạ: nhân sự tổng đài hay xử lý khiếu nại?'
+  goal: Chuyển hướng từ so sánh giá thuần túy sang trao đổi về tổng chi phí sở hữu
+    và giá trị mang lại.
+- trigger: competitor_mention
+  situation: Khách hàng nhắc đến một đối thủ cạnh tranh khác.
+  script: Vâng, chúng tôi đánh giá cao giải pháp của họ. Điểm khác biệt lớn nhất của
+    chúng tôi là khả năng tùy biến sâu cho ngành hàng không tại Việt Nam, bao gồm
+    tích hợp sẵn với các hệ thống đặt vé phổ biến và hỗ trợ đa kênh (gọi điện, Zalo).
+    Đặc biệt, chúng tôi tuân thủ nghiêm ngặt PDPD về bảo vệ dữ liệu khách hàng. Anh/chị
+    có gặp khó khăn gì với việc tuân thủ quy định này không ạ?
+  goal: Làm nổi bật sự am hiểu thị trường địa phương và lợi thế tuân thủ, chuyển sang
+    thảo luận về nhu cầu cụ thể của khách.
+- trigger: service_detail
+  situation: Khách hàng muốn tìm hiểu chi tiết về một tính năng cụ thể, như thông
+    báo delay tự động.
+  script: Tính năng này hoạt động rất hiệu quả. Khi hệ thống PSS/GDS của hãng cập
+    nhật lịch bay, agent của chúng tôi sẽ tự động gọi cho tất cả hành khách bị ảnh
+    hưởng, đọc thông tin mới và cung cấp các lựa chọn tiếp theo. Điều này giảm tới
+    80% cuộc gọi hỏi đập vào tổng đài trong sự cố. Tôi có thể gửi anh/chị một bản
+    ghi âm minh họa cuộc gọi mẫu được không?
+  goal: Làm rõ giá trị cụ thể (giảm 80% cuộc gọi), sử dụng minh chứng thực tế (bản
+    ghi âm mẫu) để tạo niềm tin.
+competitors:
+- name: Các công ty BPO/Contact Center truyền thống (FPT, Viettel)
+  positioning: Nhà cung cấp dịch vụ tổng đài & chăm sóc khách hàng thuê ngoài lớn.
+  strengths:
+  - Cơ sở hạ tầng mạnh
+  - Đội ngũ nhân sự đông đảo
+  - Quen thuộc với thị trường VN
+  weaknesses:
+  - Chi phí cao
+  - Khó tùy biến nhanh
+  - Ứng dụng AI/Automation còn hạn chế
+  our_differentiation: Giải pháp AI tự động hóa hoàn toàn, chi phí thấp hơn rõ rệt,
+    triển khai nhanh và có thể tích hợp chuyên sâu cho ngành hàng không.
+- name: Các nền tảng CRM/Sales quốc tế (Salesforce, Zendesk)
+  positioning: Nền tảng phần mềm doanh nghiệp toàn cầu có module hỗ trợ khách hàng.
+  strengths:
+  - Tính năng phong phú
+  - Thương hiệu mạnh
+  - Hệ sinh thái rộng
+  weaknesses:
+  - Chi phí rất cao (phí license, triển khai)
+  - Thiếu tùy chỉnh cho thị trường VN
+  - Hỗ trợ tiếng Việt & tích hợp cổng thanh toán địa phương có thể hạn chế
+  our_differentiation: Sản phẩm tập trung chuyên sâu vào tự động hóa cuộc gọi bằng
+    giọng nói, giá cả phù hợp với doanh nghiệp VN, hỗ trợ tận tình bằng tiếng Việt
+    và tích hợp sẵn các công nghệ địa phương.
+- name: Các startup công nghệ trong khu vực Đông Nam Á
+  positioning: Cung cấp giải pháp AI Conversation cho nhiều ngành.
+  strengths:
+  - Công nghệ hiện đại
+  - Mô hình linh hoạt
+  - Giá cạnh tranh
+  weaknesses:
+  - Hiểu biết sâu về ngành hàng không VN còn hạn chế
+  - Chưa có nhiều case study tại thị trường VN
+  - Khả năng tuân thủ PDPD có thể chưa rõ ràng
+  our_differentiation: Chuyên môn hóa sâu cho ngành hàng không Việt Nam, am hiểu quy
+    trình nghiệp vụ, văn hóa giao tiếp và các yêu cầu pháp lý đặc thù tại Việt Nam.
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 50000000
+  - 500000000
+  entry_point: 30000000
+  roi_examples:
+  - scenario: Hãng hàng không tầm trung muốn tự động hóa thông báo delay/hủy chuyến
+      và hỗ trợ đổi vé cơ bản.
+    monthly_cost: 50000000
+    monthly_savings: 80000000
+    payback_months: 1.5
+  value_anchors:
+  - Tiết kiệm chi phí nhân sự tổng đài lên đến 40%
+  - Giảm tỷ lệ khách hàng khiếu nại do thông tin chậm trễ
+  - Tăng tỷ lệ bán chéo dịch vụ (hành lý, bữa ăn) thêm 15%
+  - Hệ thống hoạt động 24/7 không nghỉ, kể cả ngày lễ Tết
+market_context:
+  market_size: Khoảng 200-300 doanh nghiệp vận tải hàng không & đại lý lớn có nhu
+    cầu
+  growth_rate: 15-20% YoY (nhờ sự phục hồi mạnh mẽ sau đại dịch và gia tăng du lịch
+    nội địa)
+  key_trends:
+  - Số lượng khách hàng nội địa tăng nhanh, đòi hỏi dịch vụ hỗ trợ bằng tiếng Việt
+    chất lượng cao.
+  - Xu hướng đặt vé và tự phục vụ (self-service) qua di động ngày càng phổ biến.
+  - Các hãng hàng không tập trung vào tối ưu chi phí vận hành và nâng cao trải nghiệm
+    khách hàng (CX).
+  - Yêu cầu tuân thủ bảo vệ dữ liệu cá nhân (PDPD) ngày càng nghiêm ngặt.
+  seasonality:
+    high:
+    - Tháng 1 (Tết Nguyên Đán)
+    - Tháng 4 (Giỗ Tổ, 30/4 - 1/5)
+    - Tháng 6-8 (mùa hè, du lịch biển)
+    - Tháng 12 (cuối năm, Noel)
+    low:
+    - Tháng 2 (sau Tết)
+    - Tháng 9
+    - Tháng 10 (trừ tuần lễ 20/10)
+typical_objections:
+- objection: Nhân viên của chúng tôi đã quen làm việc thủ công, sợ khó áp dụng công
+    nghệ mới.
+  response: Tôi hoàn toàn hiểu điều đó. Giải pháp của chúng tôi được thiết kế để bổ
+    trợ và giải phóng nhân viên khỏi những công việc lặp đi lặp lại nhàm chán, giúp
+    họ tập trung vào các vấn đề phức tạp và mang lại giá trị cao hơn. Chúng tôi sẽ
+    hỗ trợ đào tạo và chuyển giao công nghệ bài bản.
+- objection: Chất lượng giọng nói AI nghe có tự nhiên và thân thiện với khách hàng
+    Việt Nam không?
+  response: Đây là mối quan tâm rất chính đáng. Chúng tôi sử dụng công nghệ tổng hợp
+    giọng nói (TTS) chất lượng cao, được đào tạo trên kho dữ liệu tiếng Việt khổng
+    lồ, với ngữ điệu tự nhiên, phù hợp với từng ngữ cảnh (thông báo, hỗ trợ). Tôi
+    có thể cho anh/chị nghe thử ngay một đoạn hội thoại mẫu.
+- objection: Chi phí đầu tư ban đầu có vẻ cao so với ngân sách hiện tại.
+  response: Nếu xét về chi phí đầu tư ban đầu thì có thể vậy. Nhưng nếu nhìn vào tổng
+    chi phí vận hành (OPEX) hàng tháng cho nhân sự tổng đài, chi phí mất khách hàng
+    do phục vụ chậm, thì giải pháp này có thời gian hoàn vốn rất nhanh, chỉ từ 1-3
+    tháng như ví dụ tôi vừa chia sẻ. Chúng ta có thể bắt đầu với gói nhỏ nhất để đánh
+    giá hiệu quả trước.
+meta:
+  id: aviation
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "aviation"
+- "private jet"
+- "charter flight"
+- "business aviation"
+_extends: _base/aviation

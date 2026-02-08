@@ -1,0 +1,209 @@
+pain_points:
+- description: 劳动力短缺和管理困难，导致项目进度延迟。
+  severity: high
+  solution_hint: AI语音助手可以自动调度工人，跟踪出勤，并提供实时沟通，减少协调问题。
+- description: 建筑材料成本波动大，预算控制难。
+  severity: high
+  solution_hint: 通过AI语音助手集成供应链系统，实时监控价格变化，自动调整采购订单，优化成本。
+- description: 法规合规要求复杂，如PIPL数据保护，审批流程繁琐。
+  severity: medium
+  solution_hint: AI语音助手可提供合规检查提醒，自动处理文档提交，确保符合本地法规。
+- description: 项目协调不畅，信息传递延迟，影响效率。
+  severity: medium
+  solution_hint: AI语音助手实现多方通话记录和任务分配，提升团队协作和实时更新。
+- description: 施工现场安全风险高，事故频发。
+  severity: high
+  solution_hint: AI语音助手可发送安全提醒，进行培训语音指导，并报告异常情况。
+- description: 技术应用滞后，数字化程度低。
+  severity: low
+  solution_hint: AI语音助手简化技术操作，通过语音命令管理设备，促进数字化转型。
+- description: 客户咨询处理慢，响应不及时。
+  severity: medium
+  solution_hint: AI语音助手24/7自动回答常见问题，分流客户，提高服务效率。
+typical_services:
+- 住宅建设
+- 商业建筑
+- 基础设施工程
+- 室内装修
+- 工程咨询
+- 项目管理
+- 建筑材料供应
+- 设备租赁
+- 绿色建筑认证
+- 维修与保养
+recommended_functions:
+- name: 客户咨询自动化
+  priority: high
+  reason: 快速响应客户询问，提升满意度，减少人工成本。
+- name: 预约管理
+  priority: medium
+  reason: 自动安排会议和现场检查，优化资源分配。
+- name: 报价生成
+  priority: high
+  reason: 根据客户需求即时生成报价，加速销售流程。
+- name: 订单跟踪
+  priority: medium
+  reason: 提供项目进度更新，增强客户信任。
+- name: 合规检查
+  priority: high
+  reason: 确保业务符合PIPL等法规，避免罚款。
+- name: 市场调研
+  priority: low
+  reason: 收集行业数据，帮助制定竞争策略。
+- name: 投诉处理
+  priority: medium
+  reason: 自动记录和分类投诉，及时解决问题。
+typical_integrations:
+- name: ERP系统
+  examples:
+  - 用友
+  - 金蝶
+  priority: high
+- name: 项目管理工具
+  examples:
+  - 钉钉
+  - 企业微信
+  priority: high
+- name: CRM系统
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: medium
+- name: 会计软件
+  examples:
+  - 畅捷通
+  - 速达
+  priority: medium
+- name: BIM软件
+  examples:
+  - 广联达
+  - 鲁班
+  priority: low
+industry_faq:
+- question: 你们的服务价格是多少？
+  answer_template: 我们的价格根据项目规模和需求定制，起价为50000元人民币，提供详细报价单。
+- question: 项目周期通常需要多久？
+  answer_template: 项目周期从几个月到几年不等，取决于类型，我们通过AI优化可缩短10-20%时间。
+- question: 如何保证施工质量？
+  answer_template: 我们使用高标准材料和严格监理，AI语音助手实时监控进度，确保质量达标。
+- question: 有哪些资质证书？
+  answer_template: 我们拥有建筑行业相关资质，如施工总承包资质，并符合PIPL数据保护要求。
+- question: 如何处理客户投诉？
+  answer_template: 通过AI语音助手快速记录投诉，24小时内响应，并提供解决方案跟踪。
+- question: 是否支持绿色建筑项目？
+  answer_template: 是的，我们提供绿色建筑认证服务，帮助您实现环保和节能目标。
+- question: 如何应对材料成本上涨？
+  answer_template: 我们集成供应链系统，AI助手可预警价格波动，优化采购策略以控制成本。
+sales_scripts:
+- trigger: price_question
+  situation: 当客户询问价格时。
+  script: 您好，我们的服务起价为50000元人民币，具体根据您的项目需求定制。我们可以通过AI语音助手优化成本，节省高达15%的预算。您有兴趣了解详情吗？
+  goal: 解释定价灵活性，突出价值主张，引导进一步讨论。
+- trigger: interest_in_service
+  situation: 当客户对特定服务表现出兴趣时。
+  script: 感谢您的关注！例如，我们的项目管理服务结合AI语音助手，可实时跟踪进度，减少延迟。您当前有相关项目计划吗？
+  goal: 强调技术优势，激发需求，促进销售。
+- trigger: concern_about_time
+  situation: 当客户担心项目时间时。
+  script: 我们理解时间紧迫。AI语音助手可自动协调团队，预估缩短20%周期。我们可以为您定制一个时间优化方案。
+  goal: 缓解时间焦虑，展示效率提升，推动决策。
+- trigger: compliance_inquiry
+  situation: 当客户询问合规问题时。
+  script: 请放心，我们的系统集成PIPL合规检查，AI语音助手确保数据安全，避免法律风险。这能帮您节省管理成本。
+  goal: 建立信任，强调合规优势，促成合作。
+competitors:
+- name: 中国建筑
+  positioning: 大型国有企业，主导基础设施项目。
+  strengths:
+  - 资金雄厚
+  - 政府关系强
+  - 项目经验丰富
+  weaknesses:
+  - 反应速度慢
+  - 数字化程度较低
+  - 客户服务一般
+  our_differentiation: 我们提供AI驱动的灵活解决方案，响应更快，成本更低，专注于中小型企业。
+- name: 万科
+  positioning: 领先的住宅开发商。
+  strengths:
+  - 品牌知名度高
+  - 质量控制好
+  - 市场份额大
+  weaknesses:
+  - 服务价格高
+  - 创新技术应用有限
+  - 定制化服务少
+  our_differentiation: 我们通过AI语音助手提供个性化服务和实时支持，性价比更高，适合多样化需求。
+- name: 碧桂园
+  positioning: 大规模房地产开发公司。
+  strengths:
+  - 快速扩张
+  - 成本控制强
+  - 覆盖范围广
+  weaknesses:
+  - 质量参差不齐
+  - 客户投诉多
+  - 技术整合不足
+  our_differentiation: 我们注重质量监控和客户互动，AI工具提升透明度和满意度。
+- name: 钉钉集成的服务商
+  positioning: 利用钉钉平台提供项目管理工具。
+  strengths:
+  - 用户基数大
+  - 集成便捷
+  - 沟通方便
+  weaknesses:
+  - 功能单一
+  - 定制化差
+  - 缺乏AI深度
+  our_differentiation: 我们提供专属AI语音助手，功能更全面，自动化程度更高，专为建筑行业优化。
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 100000
+  - 10000000
+  entry_point: 50000
+  roi_examples:
+  - scenario: 使用AI语音助手进行客户咨询自动化
+    monthly_cost: 2000
+    monthly_savings: 5000
+    payback_months: 1
+  value_anchors:
+  - AI语音助手可节省高达20%人工成本
+  - 提升项目效率30%
+  - 合规风险降低50%
+market_context:
+  market_size: 约15万亿元人民币年产值
+  growth_rate: 4-6% 年增长率
+  key_trends:
+  - 数字化转型加速
+  - 绿色建筑需求增长
+  - 智能施工技术普及
+  - 城市化持续推进
+  seasonality:
+    high:
+    - 春季
+    - 秋季
+    low:
+    - 冬季
+    - 夏季雨季
+typical_objections:
+- objection: 价格太贵了，我们预算有限。
+  response: 我们理解预算考虑。AI语音助手能长期节省成本，例如减少延迟罚款，投资回报快。我们可以提供分期付款选项。
+- objection: 担心AI技术不可靠，影响项目。
+  response: 我们的AI系统经过本地化测试，稳定可靠，并有专人支持。它辅助而非替代人工，提升整体效率。
+- objection: 没有时间学习新系统。
+  response: AI语音助手设计简单，语音操作便捷，无需额外培训。我们可以提供上手指导，确保快速适应。
+meta:
+  id: construction
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

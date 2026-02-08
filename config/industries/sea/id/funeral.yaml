@@ -1,0 +1,246 @@
+pain_points:
+- description: Biaya operasional tinggi untuk transportasi jenazah dan peralatan pemakaman
+  severity: high
+  solution_hint: Agent suara AI dapat menangani permintaan jadwal dan penawaran transportasi
+    24/7, mengurangi kebutuhan staf call center.
+- description: Komunikasi tidak efisien dengan keluarga berduka, menyebabkan kesalahan
+    informasi dan penjadwalan
+  severity: high
+  solution_hint: Agent dapat memberikan informasi yang konsisten, menjawab pertanyaan
+    umum, dan mengumpulkan data awal dengan empati.
+- description: Kesulitan dalam pencatatan dan administrasi manual yang rentan terhadap
+    kesalahan
+  severity: medium
+  solution_hint: Mengintegrasikan agent dengan sistem CRM/ERP untuk entri data otomatis
+    dari percakapan telepon.
+- description: Fluktuasi permintaan yang tidak terduga, sulit untuk mengatur tenaga
+    kerja dan persediaan
+  severity: medium
+  solution_hint: Agent dapat mengumpulkan data tren panggilan untuk membantu perencanaan
+    kapasitas dan manajemen inventaris.
+- description: Kompetisi harga yang ketat dari penyedia layanan pemakaman tradisional
+    dan informal
+  severity: high
+  solution_hint: Agent dapat dengan cepat menyajikan paket nilai tambah dan membedakan
+    layanan berdasarkan kualitas, bukan hanya harga.
+- description: Kepatuhan terhadap peraturan privasi data (PDP) dalam menangani data
+    sensitif keluarga
+  severity: medium
+  solution_hint: Agent yang terkonfigurasi dengan aman memastikan data pelanggan dikumpulkan
+    dan disimpan sesuai protokol PDP.
+typical_services:
+- Paket Pemakaman Lengkap (Tradisional/Modern)
+- Jasa Antar Jenazah 24 Jam
+- Penyewaan Mobil Jenazah dan Mobil Keluarga
+- Persiapan dan Perawatan Jenazah (Taharah/Mandi Jenazah)
+- Penyediaan Peti Jenazah (Kayu/Besi)
+- Penyewaan Tenda dan Kursi untuk Acara Duka
+- Layanan Pemakaman Agama (Islam, Kristen, Katolik, Hindu, Buddha)
+- Pembelian dan Pengurusan Tanah Makam
+- Jasa Dokumentasi (Foto & Video)
+- Layanan Pasca-Pemakaman (Ziarah, Perawatan Makam)
+recommended_functions:
+- name: Penanganan Panggilan Pertama 24/7
+  priority: high
+  reason: Industri ini membutuhkan respons cepat setiap saat. Agent dapat menjawab
+    panggilan darurat, memberikan belasungkawa awal, dan mengumpulkan data penting.
+- name: Penjadwalan Otomatis untuk Transportasi dan Petugas
+  priority: high
+  reason: Menghilangkan konflik penjadwalan manual dan memastikan layanan tepat waktu
+    ke rumah duka, rumah sakit, atau kamar jenazah.
+- name: Pemrosesan dan Pengingat Pembayaran
+  priority: medium
+  reason: Mengotomatiskan pengiriman invoice dan pengingat pembayaran yang sensitif,
+    mengurangi beban administrasi dan meningkatkan cash flow.
+- name: Pengumpulan Umpan Balik Pasca-Layanan
+  priority: medium
+  reason: Memungkinkan pengumpulan testimoni dan identifikasi area perbaikan dengan
+    cara yang tidak mengganggu.
+- name: Pembaruan Status Layanan secara Proaktif
+  priority: low
+  reason: Mengirim pemberitahuan otomatis kepada keluarga mengenai status persiapan,
+    keberangkatan mobil jenazah, dll., untuk mengurangi kecemasan.
+typical_integrations:
+- name: Sistem CRM
+  examples:
+  - Jurnal
+  - Salesforce
+  - Majoo
+  priority: high
+- name: Sistem Akuntansi & Keuangan
+  examples:
+  - Zahir
+  - Accurate Online
+  - Jurnal
+  priority: high
+- name: Platform Komunikasi
+  examples:
+  - WhatsApp Business API
+  - Telegram Bot
+  priority: medium
+- name: Sistem Manajemen Inventaris
+  examples:
+  - BukuKas
+  - TokoIQ
+  priority: medium
+- name: Software Manajemen SDM & Penjadwalan
+  examples:
+  - Gajihub
+  - Talenta
+  priority: low
+industry_faq:
+- question: Berapa biaya paket pemakaman lengkap?
+  answer_template: Harga paket lengkap kami mulai dari Rp 8.000.000, tergantung pilihan
+    peti, transportasi, dan layanan tambahan. Saya dapat membantu menjelaskan detailnya.
+    Apakah ada agama atau preferensi khusus yang perlu dipertimbangkan?
+- question: Apakah Anda melayani pengantaran jenazah ke luar kota?
+  answer_template: Ya, kami menyediakan layanan antar-jemput jenazah ke berbagai kota.
+    Biaya akan disesuaikan dengan jarak dan persyaratan. Untuk perkiraan harga yang
+    lebih akurat, dapatkah Anda memberi tahu saya kota tujuan?
+- question: Apa saja yang termasuk dalam paket dasar?
+  answer_template: Paket dasar biasanya mencakup jasa perawatan jenazah, peti jenazah
+    standar, mobil jenazah, dan 1 mobil keluarga. Paket dapat disesuaikan dengan kebutuhan
+    keluarga. Apakah Anda ingin saya jelaskan pilihan paket kami?
+- question: Berapa lama proses dari panggilan hingga pengantaran?
+  answer_template: Tim kami siap bergerak dalam waktu 60-90 menit setelah konfirmasi.
+    Waktu persiapan jenazah dan perijinan mungkin bervariasi. Kami akan memberikan
+    update yang jelas setiap langkahnya.
+- question: Apakah Anda bisa mengurus perizinan pemakaman?
+  answer_template: Ya, tim kami akan membantu mengurus surat kematian dan perizinan
+    yang diperlukan dari rumah sakit atau kelurahan setempat sebagai bagian dari layanan.
+sales_scripts:
+- trigger: price_question
+  situation: Ketika calon pelanggan menanyakan harga di awal percakapan.
+  script: Saya mengerti pentingnya memahami anggaran di masa yang sulit ini. Harga
+    layanan kami dimulai dari Rp 8.000.000 untuk paket dasar, namun sangat disesuaikan
+    dengan kebutuhan dan keinginan keluarga untuk menghormati almarhum/almah. Daripada
+    saya sebutkan semua harga, bolehkah saya bertanya terlebih dahulu tentang kebutuhan
+    spesifik Bapak/Ibu? Misalnya, agama almarhum/almah dan lokasi pemakaman yang diinginkan?
+  goal: Mengalihkan percakapan dari harga menuju nilai dan personalisasi layanan,
+    sambil mengumpulkan informasi kualifikasi.
+- trigger: competitor_mention
+  situation: Ketika pelanggan menyebutkan layanan dari pesaing.
+  script: Itu pilihan yang baik. Yang membedakan layanan kami adalah pendekatan kami
+    yang terintegrasi penuh dan penuh perhatian. Kami tidak hanya mengantarkan, tetapi
+    tim kami terlatih dalam tata cara agama, membantu administrasi, dan memberikan
+    dukungan pasca-pemakaman. Selain itu, dengan sistem teknologi kami, keluarga mendapatkan
+    update real-time sehingga mengurangi kecemasan. Apakah kenyamanan dan kejelasan
+    informasi seperti ini yang Bapak/Ibu cari?
+  goal: Membedakan layanan berdasarkan nilai tambah, empati, dan teknologi, bukan
+    sekadar harga.
+- trigger: objection_budget
+  situation: Ketika pelanggan menyatakan anggaran terbatas.
+  script: Saya sungguh memahami situasi ini. Sebagai bentuk hormat, kami menawarkan
+    beberapa pilihan yang lebih hemat tanpa mengorbankan martabat almarhum/almah.
+    Misalnya, dengan memilih paket esensial atau waktu pelaksanaan tertentu. Bolehkah
+    saya menjelaskan 1-2 opsi yang mungkin sesuai? Komitmen kami adalah membantu keluarga
+    melewati masa ini dengan layanan yang terhormat dan terjangkau.
+  goal: Menunjukkan empati, menawarkan solusi fleksibel, dan mempertahankan keterlibatan
+    dalam percakapan.
+competitors:
+- name: OTO Funeral
+  positioning: Penyedia layanan pemakaman online terkemuka dengan jaringan nasional.
+  strengths:
+  - Brand awareness kuat
+  - Platform online mudah diakses
+  - Jaringan mitra luas
+  weaknesses:
+  - Mungkin kurang personal
+  - Harga bisa lebih tinggi karena biaya marketing
+  - Ketergantungan pada mitra eksternal
+  our_differentiation: Kami menawarkan kontrol kualitas langsung, hubungan yang lebih
+    personal dengan keluarga, dan integrasi teknologi yang memperlancar operasi internal
+    untuk keandalan yang lebih baik.
+- name: Layanan Pemakaman Rumah Sakit/Milik Pemerintah
+  positioning: Layanan standar yang terafiliasi dengan institusi.
+  strengths:
+  - Akses langsung ke jenazah
+  - Prosedur terdokumentasi
+  - Seringkali lebih terjangkau
+  weaknesses:
+  - Pilihan terbatas
+  - Mungkin kurang fleksibel
+  - Antrean dan birokrasi
+  our_differentiation: Kami memberikan pilihan yang dapat disesuaikan, layanan yang
+    lebih cepat dan responsif, serta pendampingan penuh untuk keluarga di luar prosedur
+    administratif.
+- name: Penyedia Tradisional/Lokal (Undertaker)
+  positioning: Penyedia individu atau bisnis keluarga skala kecil di daerah.
+  strengths:
+  - Hubungan personal yang sangat kuat
+  - Pengetahuan lokal mendalam
+  - Harga sangat fleksibel
+  weaknesses:
+  - Ketersediaan terbatas
+  - Metode administrasi manual
+  - Sumber daya dan peralatan terbatas
+  our_differentiation: Kami menggabungkan kepercayaan lokal dengan profesionalisme,
+    sistem pendukung teknologi (seperti agent AI ini), dan jaminan ketersediaan 24/7
+    dengan tim yang terlatih.
+pricing_context:
+  currency: IDR
+  typical_budget_range:
+  - 8000000
+  - 35000000
+  entry_point: 8000000
+  roi_examples:
+  - scenario: Mengurangi 50% panggilan yang terlewat di luar jam kerja dengan agent
+      AI.
+    monthly_cost: 1500000
+    monthly_savings: 4000000
+    payback_months: 1
+  value_anchors:
+  - Teknologi kami membantu keluarga fokus pada berkabung, bukan administrasi.
+  - Setiap panggilan darurat dijawab dengan segera, kapan pun.
+  - Hindari kesalahan penjadwalan dan komunikasi yang memperparah kesedihan.
+market_context:
+  market_size: Diperkirakan mencapai Rp 20-30 Triliun per tahun (termasuk layanan
+    dan barang pendukung).
+  growth_rate: 3-5% YoY, didorong oleh kesadaran akan layanan profesional dan pertumbuhan
+    populasi.
+  key_trends:
+  - Meningkatnya permintaan untuk layanan pemakaman yang sesuai syariat Islam secara
+    profesional.
+  - Preferensi terhadap paket praktis dan lengkap (all-in-one package) oleh keluarga
+    urban.
+  - Kesadaran akan pentingnya dokumentasi digital untuk acara duka.
+  - Pertumbuhan layanan pra-perencanaan (pre-need) di kalangan menengah atas.
+  seasonality:
+    high:
+    - Bulan Ramadan dan sekitar Hari Raya Idul Fitri
+    - Akhir tahun (Desember)
+    low:
+    - Pertengahan tahun (Juni-Juli)
+typical_objections:
+- objection: Ini bukan saatnya membicarakan teknologi, keluarga kami sedang berduka.
+  response: Saya sungguh memaklumi. Justru di saat seperti inilah teknologi kami hadir
+    untuk meringankan beban. Agent kami membantu menjawab pertanyaan praktis kapan
+    saja, sehingga keluarga dan staf Anda bisa lebih fokus memberikan dukungan emosional
+    yang penting. Bolehkah saya jelaskan secara singkat bagaimana ini bekerja?
+- objection: Kami sudah punya proses manual yang baik, tidak butuh yang rumit.
+  response: Itu bagus sekali. Sistem kami justru dirancang untuk mendukung proses
+    yang sudah baik Bapak/Ibu miliki, bukan menggantikannya. Bayangkan jika proses
+    pencatatan janji dan pengiriman informasi dasar ke pelanggan bisa otomatis, sehingga
+    staf Anda punya lebih banyak waktu untuk layanan langsung yang membutuhkan sentuhan
+    manusiawi. Apakah ada bagian administrasi yang terasa paling menyita waktu?
+- objection: Harganya terlalu mahal untuk bisnis kami yang kecil.
+  response: Saya paham kekhawatiran tentang anggaran. Mari kita lihat sebagai investasi.
+    Dengan menangani lebih banyak panggilan otomatis dan mengurangi kesalahan administrasi,
+    agent ini dapat membantu meningkatkan kapasitas layanan dan kepuasan pelanggan
+    tanpa menambah staf tetap. Dari contoh ROI tadi, biaya bulanan seringkali tertutup
+    hanya dari beberapa panggilan yang 'terselamatkan'. Apakah kita bisa menghitung
+    potensi penghematan untuk operasional Bapak/Ibu?
+meta:
+  id: funeral
+  region: sea
+  country: id
+  language: id
+  currency: IDR
+  phone_codes:
+  - '+62'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

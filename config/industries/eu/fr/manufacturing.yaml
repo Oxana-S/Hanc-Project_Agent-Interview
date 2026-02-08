@@ -1,0 +1,261 @@
+pain_points:
+- description: Coûts énergétiques élevés et volatils qui impactent la rentabilité
+    des chaînes de production.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la collecte de données de consommation
+    et planifier des rappels pour des audits énergétiques.
+- description: Pénurie de main-d'œuvre qualifiée, notamment pour la maintenance et
+    la conduite de machines complexes.
+  severity: high
+  solution_hint: L'agent peut gérer le premier niveau de support technique, filtrer
+    les appels et orienter vers des ressources documentaires.
+- description: Complexité et délais dans la gestion des approvisionnements et des
+    ruptures de chaîne logistique.
+  severity: high
+  solution_hint: L'agent peut automatiser les appels de relance aux fournisseurs et
+    mettre à jour les statuts de commandes en temps réel.
+- description: Conformité réglementaire stricte (REACH, GDPR pour les données employés,
+    normes environnementales) générant une charge administrative.
+  severity: medium
+  solution_hint: L'agent peut diffuser des rappels automatisés sur les échéances réglementaires
+    et collecter des déclarations via questionnaire vocal.
+- description: Difficulté à moderniser l'outil industriel (Industrie 4.0) par manque
+    de compétences internes et peur des investissements lourds.
+  severity: medium
+  solution_hint: L'agent peut présenter des solutions par étapes, planifier des démonstrations
+    et répondre aux questions courantes sur la digitalisation.
+- description: Gestion inefficace des appels entrants hors heures ouvrables (pannes,
+    urgences) conduisant à des temps d'arrêt prolongés.
+  severity: low
+  solution_hint: L'agent vocal assure un service 24/7, trie les urgences, et contacte
+    automatiquement le technicien de garde.
+typical_services:
+- Automatisation industrielle et robotique
+- Maintenance prédictive et curative
+- Gestion de la Production Assistée par Ordinateur (GPAO)
+- Conseil en transformation numérique (Industrie 4.0)
+- Optimisation des processus et lean manufacturing
+- Sécurité industrielle et conformité réglementaire
+- Formation des opérateurs sur nouveaux équipements
+- Audit énergétique et optimisation des consommations
+- Intégration de systèmes (ERP/MES)
+- Télémaintenance et support à distance
+recommended_functions:
+- name: Prise de rendez-vous pour démonstrations/maintenance
+  priority: high
+  reason: Les dirigeants et responsables maintenance sont très sollicités. L'automatisation
+    de l'agenda est un gain de temps immédiat.
+- name: Tri et routage des appels d'urgence (panne machine)
+  priority: high
+  reason: Réduit les temps d'arrêt coûteux en connectant rapidement l'appelant au
+    bon intervenant.
+- name: Réponses aux FAQ sur les produits/services techniques
+  priority: medium
+  reason: Libère les équipes techniques des questions récurrentes sur les fonctionnalités
+    ou les procédures.
+- name: Relance automatique des fournisseurs et clients
+  priority: medium
+  reason: Améliore la fluidité de la supply chain sans effort manuel constant.
+- name: Collecte de feedback post-intervention
+  priority: low
+  reason: Automatise l'assurance qualité et fournit des données pour améliorer le
+    service.
+- name: Diffusion d'alertes internes (arrêt de ligne, réunion)
+  priority: low
+  reason: Assure une communication rapide et fiable au sein d'environnements bruyants.
+typical_integrations:
+- name: ERP (Enterprise Resource Planning)
+  examples:
+  - SAP
+  - Sage X3
+  - Cegid
+  - Microsoft Dynamics 365
+  priority: high
+- name: GMAO (Gestion de Maintenance Assistée par Ordinateur)
+  examples:
+  - Coswin
+  - MP2
+  - IMO
+  - Swmain
+  priority: high
+- name: CRM (Customer Relationship Management)
+  examples:
+  - Salesforce
+  - HubSpot
+  - SuiteCRM
+  priority: medium
+- name: Logiciel de GPAO
+  examples:
+  - Pronode
+  - Prodsmart
+  - Katana
+  priority: medium
+- name: Outils de communication d'entreprise
+  examples:
+  - Microsoft Teams
+  - Slack
+  priority: low
+industry_faq:
+- question: Votre solution est-elle compatible avec notre ERP actuel ?
+  answer_template: Absolument. Notre agent vocal s'intègre via des APIs standards
+    avec les principaux ERP du marché comme SAP, Sage ou Cegid. Nous pouvons planifier
+    une session technique pour vérifier la compatibilité spécifique avec votre système.
+- question: Combien de temps faut-il pour mettre en place et former nos équipes ?
+  answer_template: Le déploiement standard prend 2 à 4 semaines. La formation de vos
+    équipes est très intuitive et se fait en moins d'une journée, car l'agent converse
+    naturellement. Nous fournissons un support dédié pendant la période de rodage.
+- question: Comment gérez-vous la sécurité et la confidentialité de nos données industrielles
+    ?
+  answer_template: La sécurité est primordiale. Notre solution est hébergée en UE
+    et est pleinement conforme au RGPD. Les appels sont cryptés et nous pouvons fonctionner
+    en mode on-premise si votre politique l'exige. Nous serons transparents sur nos
+    certifications.
+- question: Quel est le retour sur investissement typique pour une PMI manufacturière
+    ?
+  answer_template: Nos clients constatent généralement un ROI en 4 à 6 mois grâce
+    à la réduction des temps d'arrêt, l'optimisation de la main-d'œuvre sur des tâches
+    à valeur ajoutée et la diminution des erreurs de communication. Je peux vous partager
+    une étude de cas chiffrée proche de votre secteur.
+- question: Pouvez-vous fonctionner dans un environnement d'atelier bruyant ?
+  answer_template: Oui, nos agents sont entraînés avec des filtres de bruit de fond
+    spécifiques à l'industrie. Nous recommandons un test dans votre environnement
+    réel pour valider la qualité de la reconnaissance vocale. Des microphones directionnels
+    peuvent être suggérés si nécessaire.
+sales_scripts:
+- trigger: price_question
+  situation: Le prospect demande le prix après une présentation initiale.
+  script: Je comprends que l'investissement est un critère clé. Notre tarification
+    démarre à partir de 199€ par mois pour un package de base incluant la prise de
+    rendez-vous et le tri d'appels. Le coût final dépend du volume d'appels et des
+    intégrations nécessaires. L'objectif est un retour sur investissement rapide via
+    des gains de productivité. Puis-je vous proposer une analyse personnalisée et
+    gratuite de vos flux d'appels pour vous donner une estimation précise ?
+  goal: Éviter de donner un prix trop tôt, proposer une valorisation personnalisée
+    et maintenir l'engagement vers une démonstration.
+- trigger: competitor_mention
+  situation: Le prospect mentionne un concurrent local ou une solution interne.
+  script: C'est intéressant. De nombreuses solutions existent, mais notre spécialisation
+    dans l'industrie manufacturière française fait la différence. Nous comprenons
+    vos contraintes réglementaires, vos flux de production et nous intégrons nativement
+    aux GMAO françaises comme Coswin. Contrairement à une solution générique ou un
+    développement interne coûteux à maintenir, nous vous apportons une expertise sectorielle
+    immédiate. Puis-je vous montrer comment nous gérons spécifiquement un appel d'urgence
+    de maintenance ?
+  goal: Différencier par l'expertise sectorielle et la connaissance du contexte local,
+    recentrer sur une démonstration de valeur concrète.
+- trigger: demo_request
+  situation: Le prospect est intéressé et demande une démonstration.
+  script: Excellent. Pour que la démo soit la plus pertinente possible, pourriez-vous
+    me décrire brièvement un scénario d'appel récurrent qui vous prend du temps, comme
+    la gestion des arrêts machine ou les demandes de statut de commande ? Cela me
+    permettra de personnaliser la démonstration sur vos processus réels. Quel créatin
+    cette semaine vous conviendrait-il ?
+  goal: Qualifier le besoin pour une démo personnalisée, montrer notre adaptabilité,
+    et verrouiller un rendez-vous.
+competitors:
+- name: Capgemini / Altran (maintenant Altran)
+  positioning: Gros acteur de l'ingénierie et de la transformation digitale.
+  strengths:
+  - Fortes capacités en intégration systèmes
+  - Présence globale et historique
+  - Portefeuille de services large
+  weaknesses:
+  - Coûts élevés, orientés grands comptes
+  - Temps de déploiement longs
+  - Moins agile pour les PME
+  our_differentiation: Nous offrons une solution SaaS abordable, déployable en quelques
+    semaines, spécialement conçue pour les besoins opérationnels quotidiens des PMI/ETI,
+    avec un support réactif et dédié.
+- name: Ekimetrics
+  positioning: Cabinet de conseil en data science et AI.
+  strengths:
+  - Expertise pointue en data et IA
+  - Prestige et références
+  - Approche stratégique
+  weaknesses:
+  - Focus sur la stratégie plus que sur l'opérationnel
+  - Peu de solution 'clé en main' pour l'automatisation vocale
+  - Tarifs très élevés
+  our_differentiation: Nous fournissons une solution opérationnelle et immédiatement
+    utilisable (l'agent vocal), pas un rapport de conseil. Nous nous concentrons sur
+    l'automatisation des processus de communication concrets avec un ROI rapide et
+    mesurable.
+- name: 'Solutions CRM génériques (ex : centre d''appels basique)'
+  positioning: Modules de centres d'appels inclus dans des suites logicielles.
+  strengths:
+  - Familiers pour les équipes
+  - 'Intégrés à un écosystème (ex : Microsoft)'
+  - Fonctionnalités basiques incluses
+  weaknesses:
+  - Pas conçus pour les spécificités de l'industrie (bruit, urgences)
+  - Manque d'intelligence pour trier des appels techniques
+  - Configuration complexe pour des scénarios métier
+  our_differentiation: Notre agent est entraîné sur le jargon industriel français,
+    comprend les contextes d'urgence, et s'intègre directement aux outils métier (GMAO,
+    GPAO), offrant une expérience sur mesure sans développement complexe.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 1000
+  entry_point: 199
+  roi_examples:
+  - scenario: PME de 50 salariés réduisant les temps d'arrêt machine grâce au tri
+      urgent des appels et automatisant la prise de RDV maintenance.
+    monthly_cost: 299
+    monthly_savings: 750
+    payback_months: 4
+  value_anchors:
+  - Le coût d'une heure d'arrêt d'une ligne de production peut dépasser 500€.
+  - Notre solution permet de réaffecter au moins 10h/mois de temps administratif vers
+    des tâches productives.
+  - Déployable pour moins que le salaire mensuel d'un apprenti.
+market_context:
+  market_size: Estimé à 450M€ pour les solutions logicielles d'automatisation et de
+    productivité dans l'industrie manufacturière française.
+  growth_rate: 8-10% YoY, tiré par l'adoption de l'Industrie 4.0 et les plans de relance.
+  key_trends:
+  - Souveraineté industrielle et relocalisation de certaines productions.
+  - Accélération de la digitalisation (jumeaux numériques, IoT) pour rester compétitif.
+  - Pression forte sur l'efficacité énergétique et l'économie circulaire.
+  - Investissement dans la formation et l'upskilling face à la pénurie de compétences.
+  seasonality:
+    high:
+    - Septembre - Novembre (reprise post-été, finalisation des budgets)
+    - Janvier - Mars (début d'exercice, nouveaux projets)
+    low:
+    - Juillet - Août (vacances d'été, ralentissement)
+    - Décembre (période de fêtes)
+typical_objections:
+- objection: Nos processus sont trop spécifiques, une solution standard ne pourra
+    pas les gérer.
+  response: C'est justement notre force. Nous personnalisons les scénarios de dialogue
+    et les intégrations en fonction de vos processus précis. Commençons par automatiser
+    un seul flux critique, vous verrez l'adaptabilité. Pouvons-nous examiner ce processus
+    spécifique ensemble ?
+- objection: Nous n'avons pas le temps de former tout le monde à un nouvel outil.
+  response: 'C''est la beauté d''un agent vocal : il n''y a rien de nouveau à apprendre
+    pour vos équipes. Elles interagissent naturellement par téléphone comme elles
+    le font déjà. La formation se concentre sur les responsables qui supervisent l''agent,
+    et elle est très légère.'
+- objection: Je ne suis pas sûr que l'IA soit suffisamment fiable pour gérer nos appels
+    clients ou fournisseurs importants.
+  response: Votre prudence est justifiée. Notre agent n'opère pas en 'pilote automatique'
+    complet sur des sujets critiques sans validation humaine. Il agit comme un assistant
+    ultra-efficace pour trier, collecter des informations et planifier. Vous gardez
+    le contrôle total. Nous pouvons configurer des règles strictes pour rediriger
+    systématiquement certains interlocuteurs vers un humain.
+meta:
+  id: manufacturing
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "manufacturing"
+- "factory"
+- "production"
+- "industrial"
+_extends: _base/manufacturing

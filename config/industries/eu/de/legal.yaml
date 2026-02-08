@@ -1,0 +1,199 @@
+pain_points:
+- description: Hoher Zeitaufwand für wiederkehrende Kundenanfragen zu Standardthemen wie Erstberatung, Kosten oder Verfahrensabläufen.
+  severity: high
+  solution_hint: AI Voice Agent kann häufig gestellte Fragen automatisiert beantworten und Termine für Erstgespräche vereinbaren, um die Mitarbeiter zu entlasten.
+- description: Schwierigkeiten bei der termingerechten Erinnerung an Fristen und Mandantentermine, was zu kostspieligen Versäumnissen führen kann.
+  severity: high
+  solution_hint: Automatisierte Erinnerungsanrufe und Benachrichtigungen für anstehende Fristen und Termine direkt an Mandanten.
+- description: Ineffiziente Erfassung und Weiterleitung von neuen Mandatsanfragen außerhalb der Geschäftszeiten.
+  severity: medium
+  solution_hint: Voice Agent kann Anfragen 24/7 entgegennehmen, relevante Daten erfassen und sofort eine Bestätigung an den potenziellen Mandanten senden.
+- description: Hoher administrativer Aufwand für die Planung und Bestätigung von Terminen, was wertvolle Zeit bindet.
+  severity: medium
+  solution_hint: Vollautomatisierte Terminvereinbarung und -änderung über Sprachsteuerung, synchronisiert mit der Kanzlei-Software.
+- description: Herausforderungen bei der Einhaltung der DSGVO bei telefonischen Erstkontakten und der Datenverarbeitung.
+  severity: high
+  solution_hint: Voice Agent kann standardisierte Einwilligungserklärungen abfragen und dokumentieren, um Compliance von Beginn an zu gewährleisten.
+- description: Verpasste Chancen durch nicht erreichbare Telefone während der Mittagszeit oder bei hohem Anrufaufkommen.
+  severity: medium
+  solution_hint: Rund-um-die-Uhr Erreichbarkeit durch den AI Voice Agent, der Anrufe entgegennimmt und qualifiziert.
+- description: Mangelnde Standardisierung bei der Erfassung von Mandatsdaten, führt zu Inkonsistenzen und Nacharbeit.
+  severity: low
+  solution_hint: Geführte Datenerfassung per Sprachdialog gemäß Kanzleivorgaben für einheitliche und vollständige Akten.
+typical_services:
+- Familienrecht
+- Arbeitsrecht
+- Miet- und Wohnungseigentumsrecht
+- Verkehrsrecht
+- Strafrecht
+- Vertrags- und Wirtschaftsrecht
+- Erbrecht
+- Steuerrecht
+- Sozialrecht
+- Immobilienrecht
+recommended_functions:
+- name: Automatisierte Erstberatungs-Terminvereinbarung
+  priority: high
+  reason: Fängt primären Kundenkontakt effizient ein und sorgt für zuverlässige Weiterleitung an den Anwalt.
+- name: Fristen- und Termin-Erinnerungsanrufe
+  priority: high
+  reason: Verhindert kostenintensive Verfahrensfehler und verbessert die Mandantenbindung durch Proaktivität.
+- name: 24/7-Anrufentgegennahme und -qualifizierung
+  priority: medium
+  reason: Erhöht die Conversion-Rate bei neuen Mandaten und verbessert den Servicegrad.
+- name: DSGVO-konforme Einwilligungsmanagement
+  priority: high
+  reason: Essenziell für die Compliance in der deutschen Rechtsbranche und reduziert Haftungsrisiken.
+- name: Integration mit DATEV und Kanzleisoftware
+  priority: medium
+  reason: Nahtloser Workflow ohne doppelte Datenerfassung, steigert die Effizienz im Backoffice.
+- name: Automatisierte FAQ-Beantwortung
+  priority: low
+  reason: Entlastet das Personal von Standardfragen zu Kosten, Öffnungszeiten und allgemeinen Abläufen.
+typical_integrations:
+- name: Kanzleimanagement-Software
+  examples:
+  - Anegis
+  - juris
+  - Lexware
+  priority: high
+- name: Buchhaltungs- & Steuersoftware
+  examples:
+  - DATEV
+  priority: high
+- name: Dokumentenmanagementsysteme (DMS)
+  examples:
+  - docuglobe
+  - ELO
+  priority: medium
+- name: Kalendersysteme
+  examples:
+  - Microsoft Outlook
+  - Google Calendar
+  priority: medium
+- name: E-Akte-Systeme
+  examples:
+  - AnnoClick
+  - BCT
+  priority: low
+industry_faq:
+- question: Können Sie mir erste rechtliche Auskünfte geben?
+  answer_template: Ich kann Sie über unsere Leistungen informieren und direkt einen Termin für ein Erstgespräch mit einem unserer Anwälte vereinbaren. Eine individuelle Rechtsberatung erfolgt immer im persönlichen
+    Gespräch.
+- question: Wie hoch sind Ihre Kosten für eine Erstberatung?
+  answer_template: Die Kosten für eine Erstberatung richten sich nach dem Aufwand und der gesetzlichen Gebührenordnung (RVG). Gerne vereinbare ich einen Termin, in dem Ihnen die Kosten transparent erläutert
+    werden.
+- question: Sind meine Daten bei Ihnen sicher und DSGVO-konform?
+  answer_template: Ja, absolut. Die Datenverarbeitung erfolgt streng nach den Vorgaben der DSGVO. Ihre Einwilligung wird dokumentiert und die Daten sicher übertragen und gespeichert.
+- question: Wie lange dauert es, bis mich ein Anwalt zurückruft?
+  answer_template: Ich leite Ihre Anfrage sofort weiter. Ein Kollege aus dem zuständigen Rechtsgebiet meldet sich in der Regel innerhalb eines Werktages bei Ihnen. Bei dringenden Anliegen kann ich dies
+    besonders kennzeichnen.
+- question: Kann ich auch außerhalb der Geschäftszeiten Dokumente hochladen?
+  answer_template: Für die Dokumentenübermittlung nutzen Sie bitte unseren gesicherten Online-Zugang, der rund um die Uhr verfügbar ist. Die Zugangsdaten erhalten Sie nach Mandatserteilung.
+- question: Welche Unterlagen benötigen Sie für ein Erstgespräch?
+  answer_template: Bitte bringen Sie alle relevanten Unterlagen zum Thema mit, z.B. Verträge, Schriftverkehr oder behördliche Bescheide. Ich notiere gerne schon jetzt Ihr Anliegen für die Vorbereitung.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Mandant nach den Kosten fragt.
+  script: Die Kosten orientieren sich an der gesetzlichen Gebührenordnung und der Komplexität Ihres Falls. Viele Mandanten schätzen jedoch, dass wir durch effiziente Prozesse wie unsere automatische Terminvereinbarung
+    und Erinnerungsfunktion Zeit und damit Kosten sparen. Möchten Sie einen unverbindlichen Erstberatungstermin vereinbaren, um eine konkrete Kosteneinschätzung zu erhalten?
+  goal: Von der Kostenfrage wegzuführen und einen konkreten nächsten Schritt (Termin) zu vereinbaren.
+- trigger: concern_automation
+  situation: Wenn Bedenken geäußert werden, dass der Service zu unpersönlich oder Automatisierung im Rechtsbereich unpassend sei.
+  script: Ich verstehe Ihre Bedenken. Unser AI Voice Agent entlastet unsere Anwälte von administrativen Aufgaben, damit diese mehr Zeit für die persönliche, intensive Beratung in Ihrem Fall haben. Er sorgt
+    dafür, dass Sie nie ein besetztes Telefon antreffen und wichtige Fristen nicht vergessen werden. Es geht um bessere Unterstützung, nicht um Ersatz.
+  goal: Bedenken ausräumen und den Mehrwert der Effizienzsteigerung für den Mandanten kommunizieren.
+- trigger: request_demo
+  situation: Wenn Interesse an einer Vorführung der Technologie besteht.
+  script: Sehr gerne. Ich kann Ihnen einen Demotermin mit unserem Vertriebsteam vereinbaren. Wir zeigen Ihnen live, wie der Voice Agent typische Anfragen bearbeitet, wie die Integration in Ihre bestehende
+    Software wie DATEV funktioniert und wie Sie die DSGVO-Compliance sicherstellen. Passt es nächste Woche?
+  goal: Einen konkreten Demotermin zu vereinbaren und die key Features in Aussicht zu stellen.
+competitors:
+- name: anwalt.de
+  positioning: Online-Marktplatz für Rechtsberatung und Vermittlung.
+  strengths:
+  - Große Reichweite
+  - Bekannter Markenname
+  - Einfache Kontaktaufnahme
+  weaknesses:
+  - Wenig Prozessautomatisierung für Kanzleien
+  - Fokus auf Vermittlung
+  - Begrenzte Integrationstiefe
+  our_differentiation: Wir bieten eine vollständige Automatisierungslösung für die interne Kanzleiprozesse (Termine, Erinnerungen, Compliance), nicht nur ein Vermittlungsportal.
+- name: LexDoktor (Anbieter von Kanzleisoftware)
+  positioning: Anbieter von umfassender Fachsoftware für Anwaltskanzleien.
+  strengths:
+  - Tiefe Integrationen
+  - Branchenspezifische Features
+  - Starke Verbreitung
+  weaknesses:
+  - Begrenzte AI-/Sprachschnittstellen
+  - Oft komplexe Bedienung
+  - Höhere Gesamtkosten
+  our_differentiation: Unsere Voice-Agent-Lösung ist als agile, komplementäre Erweiterung für jede bestehende Software konzipiert, spezialisiert auf Kundenkommunikation und einfache Bedienung per Sprache.
+- name: Lokale Callcenter-Dienstleister
+  positioning: Manuelle Telefonannahme und Terminvereinbarung als Outsourcing.
+  strengths:
+  - Menschlicher Ansprechpartner
+  - Flexibilität bei komplexen Anfragen
+  weaknesses:
+  - Sehr hohe Kosten
+  - Begrenzte Skalierbarkeit
+  - Fehleranfälligkeit
+  - DSGVO-Herausforderungen
+  our_differentiation: Deutlich niedrigere Kosten, 24/7-Verfügbarkeit, perfekte Reproduzierbarkeit von Prozessen und integrierte DSGVO-Compliance.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 50
+  - 300
+  entry_point: 79
+  roi_examples:
+  - scenario: Kleine Kanzlei spart 10 Stunden/Monat an Administrationsaufwand für Terminvereinbarung und Erinnerungen.
+    monthly_cost: 99
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Verhindern Sie einen einzigen verpassten Fristentermin – der kann schnell ein Vielfaches unserer monatlichen Kosten verursachen.
+  - Gewinnen Sie auch außerhalb der Bürozeiten neue Mandanten, ohne zusätzliches Personal.
+  - DSGVO-Compliance von der ersten Sekunde des Kundenkontakts an.
+market_context:
+  market_size: Über 165.000 zugelassene Rechtsanwälte in Deutschland in etwa 60.000 Kanzleien.
+  growth_rate: Stabil, mit Trend zu Digitalisierung und Spezialisierung.
+  key_trends:
+  - Digitalisierung der Kanzleiarbeit (E-Akte, Cloud-Lösungen).
+  - Steigender Kostendruck und Erwartung an Effizienz.
+  - Zunehmende Nachfrage nach Remote-Beratung.
+  - Verschärfte Compliance-Anforderungen (DSGVO, Geldwäsche).
+  seasonality:
+    high:
+    - Januar (Steuerrecht, Jahreswechsel)
+    - September (nach Urlaubszeit)
+    low:
+    - Dezember (Weihnachtsferien)
+    - Juli/August (Haupturlaubszeit)
+typical_objections:
+- objection: Das ist mir zu teuer für eine Automatisierung.
+  response: Verständlich. Betrachten Sie es als Versicherung gegen kostspielige Fehler wie verpasste Fristen und als Werkzeug, um neue Einnahmequellen durch bessere Erreichbarkeit zu erschließen. Bei welcher
+    Stundenzahlersparnis pro Monat würde sich die Investition für Sie rechnen?
+- objection: Ich möchte den persönlichen Kontakt zu meinen Mandanten nicht verlieren.
+  response: Genau darum geht es. Der Voice Agent übernimmt die repetitiven, zeitraubenden Aufgaben wie Terminfindung und Erinnerungen. Das gibt Ihnen mehr hochwertige Zeit für den wirklich persönlichen
+    und beratungsintensiven Kontakt in den entscheidenden Gesprächen.
+- objection: Die Technik ist mir zu unsicher, besonders bezüglich der Mandantendaten.
+  response: Datensicherheit hat für uns höchste Priorität. Unsere Lösung ist nach deutschen und EU-Standards (DSGVO) entwickelt, nutzt Ende-zu-Ende-Verschlüsselung und kann on-premise oder in einer deutschen
+    Cloud betrieben werden. Gerne stellen wir Ihnen unser Sicherheitskonzept im Detail vor.
+meta:
+  id: legal
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- legal
+- law firm
+- attorney
+- lawyer
+- notary
+_extends: _base/legal

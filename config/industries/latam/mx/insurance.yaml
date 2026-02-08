@@ -1,0 +1,231 @@
+pain_points:
+- description: Alta rotación de clientes debido a experiencias de servicio deficientes
+    y falta de seguimiento.
+  severity: high
+  solution_hint: El agente de voz AI puede realizar llamadas proactivas para retención,
+    ofreciendo renovaciones y resolviendo inquietudes en tiempo real.
+- description: Procesos de reclamación lentos y burocráticos, causando insatisfacción
+    del cliente.
+  severity: high
+  solution_hint: Automatizar el inicio de reclamaciones vía voz, guiando a los clientes
+    paso a paso y reduciendo tiempos de espera.
+- description: Baja penetración digital y resistencia al cambio entre clientes tradicionales.
+  severity: medium
+  solution_hint: Usar un agente de voz amigable para educar sobre beneficios digitales
+    y facilitar transiciones sin fricción.
+- description: Fraudes y siniestros falsos que incrementan costos operativos.
+  severity: medium
+  solution_hint: Implementar verificaciones de voz y preguntas de seguridad automatizadas
+    para detectar patrones sospechosos temprano.
+- description: Complejidad regulatoria con la LFPDPPP, requiriendo manejo cuidadoso
+    de datos personales.
+  severity: high
+  solution_hint: Integrar recordatorios y protocolos de consentimiento en las interacciones
+    de voz para asegurar cumplimiento.
+- description: Competencia intensa basada en precios bajos, reduciendo márgenes de
+    ganancia.
+  severity: medium
+  solution_hint: Enfocar scripts de ventas en valor y personalización, no solo precio,
+    usando datos locales para destacar.
+typical_services:
+- Seguro de Automóvil
+- Seguro de Vida
+- Seguro de Hogar
+- Seguro de Salud
+- Seguro de Negocios o Empresarial
+- Seguro de Viaje
+- Seguro de Responsabilidad Civil
+- Seguro Agrícola o Agropecuario
+- Seguro de Pensiones
+- Seguro Educativo
+recommended_functions:
+- name: Asistente de Cotizaciones en Tiempo Real
+  priority: high
+  reason: Permite a los clientes obtener precios rápidamente, aumentando conversiones
+    y reduciendo abandonos.
+- name: Soporte para Reclamaciones las 24/7
+  priority: high
+  reason: Mejora la satisfacción del cliente al ofrecer ayuda inmediata en momentos
+    críticos.
+- name: Recordatorios Automatizados de Pagos y Renovaciones
+  priority: medium
+  reason: Reduce la morosidad y mejora la retención con recordatorios personalizados.
+- name: Educación sobre Coberturas y Productos
+  priority: medium
+  reason: Ayuda a los clientes a entender opciones, aumentando ventas cruzadas y lealtad.
+- name: Integración con CRM para Seguimiento de Leads
+  priority: high
+  reason: Optimiza el funnel de ventas al sincronizar datos de interacciones de voz.
+- name: Verificación de Identidad por Voz para Cumplimiento
+  priority: low
+  reason: Asegura el cumplimiento de LFPDPPP en transacciones sensibles.
+typical_integrations:
+- name: Sistemas CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - sistemas locales como Softtek
+  priority: high
+- name: Plataformas de Core Seguros
+  examples:
+  - Guidewire
+  - sistemas adaptados como SISCO
+  priority: high
+- name: Pasarelas de Pago
+  examples:
+  - Mercado Pago
+  - Openpay
+  - Conekta
+  priority: medium
+- name: Herramientas de Cumplimiento Regulatorio
+  examples:
+  - Sistemas para LFPDPPP como soluciones de Protección de Datos
+  priority: high
+- name: Software de Análisis de Datos
+  examples:
+  - Tableau
+  - Power BI
+  - herramientas locales
+  priority: medium
+industry_faq:
+- question: ¿Cuánto cuesta un seguro de auto básico en México?
+  answer_template: El costo varía según factores como modelo del auto y ubicación,
+    pero un seguro básico puede partir de alrededor de 3,000 MXN anuales. ¿Le gustaría
+    una cotización personalizada?
+- question: ¿Qué cubre un seguro de vida típico?
+  answer_template: Un seguro de vida generalmente cubre fallecimiento por cualquier
+    causa, y puede incluir beneficios adicionales como invalidez. Le recomiendo revisar
+    las coberturas específicas de su póliza.
+- question: ¿Cómo puedo presentar una reclamación?
+  answer_template: Puede iniciar su reclamación llamándonos directamente. Le guiaré
+    paso a paso para recopilar la información necesaria y acelerar el proceso.
+- question: ¿Es obligatorio el seguro en México?
+  answer_template: Para autos, sí es obligatorio en la mayoría de los estados. Para
+    otros seguros, depende del producto, pero le ayudo a entender los requisitos locales.
+- question: ¿Qué pasa si no pago mi prima a tiempo?
+  answer_template: Su cobertura podría suspenderse. Ofrecemos recordatorios y opciones
+    de pago flexibles; puedo ayudarle a configurarlos ahora.
+- question: ¿Cómo protegen mis datos personales?
+  answer_template: Cumplimos con la LFPDPPP, usando medidas de seguridad en todas
+    las interacciones. Sus datos están protegidos y solo se usan para fines autorizados.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un seguro.
+  script: Hola, entiendo que busca información sobre precios. En México, los costos
+    dependen de factores como su perfil y necesidades. Por ejemplo, un seguro de auto
+    puede partir de 3,000 MXN anuales. ¿Me permite hacerle unas preguntas para darle
+    una cotización exacta y personalizada?
+  goal: Convertir la consulta en una oportunidad de venta con personalización.
+- trigger: product_inquiry
+  situation: Cuando un cliente muestra interés en un producto específico, como seguro
+    de hogar.
+  script: Excelente que considere un seguro de hogar. En México, es clave proteger
+    su inversión contra robos o daños. Nuestras pólizas incluyen coberturas adaptadas
+    a riesgos locales. ¿Le gustaría que le explique las opciones disponibles?
+  goal: Educar al cliente y destacar beneficios locales para cerrar la venta.
+- trigger: renewal_reminder
+  situation: Para recordar a un cliente sobre la renovación de su póliza.
+  script: Hola, le llamo para recordarle que su póliza está por renovarse. En México,
+    mantener su seguro activo le evita gaps en cobertura. ¿Puedo ayudarle a procesar
+    la renovación ahora mismo, ofreciéndole posiblemente un descuento por lealtad?
+  goal: Asegurar la retención del cliente y aumentar la lealtad.
+- trigger: cross_sell_opportunity
+  situation: Cuando un cliente tiene un producto y se puede ofrecer otro, como de
+    auto a vida.
+  script: Noto que tiene seguro de auto con nosotros. ¿Ha considerado un seguro de
+    vida para proteger a su familia? En México, es una forma inteligente de planificar
+    el futuro. ¿Le interesa conocer más?
+  goal: Incrementar el valor por cliente mediante ventas cruzadas.
+competitors:
+- name: GNP (Grupo Nacional Provincial)
+  positioning: Líder tradicional con amplia red de agentes.
+  strengths:
+  - Marca reconocida
+  - amplia cobertura geográfica
+  - productos diversificados
+  weaknesses:
+  - Procesos lentos
+  - altos costos operativos
+  - limitada innovación digital
+  our_differentiation: Ofrecemos soluciones digitales más ágiles con agentes de voz
+    AI para servicio rápido y personalizado.
+- name: AXA México
+  positioning: Competidor global con enfoque en segmentos medios y altos.
+  strengths:
+  - Fuerte respaldo internacional
+  - productos innovadores
+  - buena reputación
+  weaknesses:
+  - Precios elevados
+  - servicio al cliente menos personalizado en zonas rurales
+  our_differentiation: Enfatizamos precios competitivos y atención localizada con
+    tecnología accesible para todos los segmentos.
+- name: MetLife México
+  positioning: Especialista en seguros de vida y pensiones.
+  strengths:
+  - Experiencia en vida
+  - gran base de clientes corporativos
+  - solidez financiera
+  weaknesses:
+  - Limitada oferta en seguros de propiedad
+  - lenta adaptación digital
+  our_differentiation: Proporcionamos un portafolio integral con integración de voz
+    AI para mejorar la experiencia en todos los productos.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 3000
+  roi_examples:
+  - scenario: Automatización de servicio al cliente para una pyme aseguradora.
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  value_anchors:
+  - Reduce costos operativos hasta un 30% con agentes de voz AI.
+  - Aumenta la retención de clientes en un 20% con recordatorios proactivos.
+  - Mejora la eficiencia en reclamaciones, reduciendo tiempos de 5 días a 24 horas.
+market_context:
+  market_size: Estimado en 600 mil millones de MXN anuales
+  growth_rate: 5% YoY
+  key_trends:
+  - Aumento en la demanda de seguros digitales y por suscripción.
+  - Mayor enfoque en cumplimiento regulatorio con LFPDPPP.
+  - Crecimiento de seguros para pymes y sector informal.
+  seasonality:
+    high:
+    - Enero a Marzo (temporada fiscal)
+    - Septiembre a Noviembre (huracanes y festividades)
+    low:
+    - Junio a Agosto (vacaciones de verano)
+typical_objections:
+- objection: Es muy caro, puedo encontrar precios más bajos en otros lados.
+  response: Entiendo su preocupación por el precio. En México, ofrecemos valor añadido
+    con servicio personalizado y coberturas adaptadas a riesgos locales. ¿Permíteme
+    mostrarle cómo nuestro seguro le ahorra costos a largo plazo?
+- objection: No confío en los seguros digitales, prefiero hablar con un agente humano.
+  response: Comprendo su preferencia por el contacto humano. Nuestro agente de voz
+    AI está diseñado para complementar, no reemplazar, ofreciendo asistencia rápida
+    las 24/7 mientras mantenemos opciones humanas cuando sea necesario.
+- objection: El proceso de reclamación es complicado y toma mucho tiempo.
+  response: Con nuestra solución, simplificamos los reclamaciones usando voz para
+    guiarle paso a paso, reduciendo tiempos significativamente. ¿Le gustaría una demostración?
+- objection: Ya tengo seguro con otra compañía y no quiero cambiar.
+  response: Valoro su lealtad. ¿Qué le parece si comparamos coberturas y precios?
+    En México, a menudo podemos ofrecer mejores beneficios o ahorros sin comprometer
+    la calidad.
+meta:
+  id: insurance
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance

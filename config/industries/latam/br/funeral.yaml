@@ -1,0 +1,239 @@
+pain_points:
+- description: Alto estresse emocional para famílias durante o planejamento funerário.
+  severity: high
+  solution_hint: Agente de voz AI pode oferecer informações claras e compassivas,
+    reduzindo a carga emocional através de respostas automatizadas e empáticas.
+- description: Dificuldades logísticas na coordenação de transportes, velórios e serviços
+    diversos.
+  severity: medium
+  solution_hint: Automatizar agendamentos e comunicações para melhorar eficiência
+    operacional e reduzir erros.
+- description: Conformidade com a LGPD para proteção de dados sensíveis dos clientes.
+  severity: high
+  solution_hint: Integrar verificações de conformidade em interações de voz, garantindo
+    que dados sejam tratados conforme a lei.
+- description: Falta de transparência nos preços e serviços, levando a desconfiança
+    dos clientes.
+  severity: medium
+  solution_hint: Fornecer detalhes precisos sobre custos e opções via voz, aumentando
+    a confiança e reduzindo dúvidas.
+- description: Concorrência acirrada no mercado funerário brasileiro, com pressão
+    sobre preços.
+  severity: high
+  solution_hint: Diferenciação através de atendimento 24/7 e personalização, destacando
+    eficiência e suporte contínuo.
+- description: Ineficiências no atendimento ao cliente fora do horário comercial.
+  severity: medium
+  solution_hint: Agente de voz disponível a qualquer hora para responder perguntas
+    e agendar serviços, melhorando a experiência.
+- description: Gestão complexa de pagamentos e financiamentos funerários.
+  severity: low
+  solution_hint: Facilitar processos de pagamento com integrações locais, oferecendo
+    opções de parcelamento em BRL.
+typical_services:
+- Cremação
+- Enterro tradicional
+- Planos funerários pré-pagos
+- Transporte funerário
+- Cerimônia religiosa
+- Velório
+- Floricultura e arranjos funerários
+- Assessoria jurídica para documentação
+- Repatriação de corpos
+- Memorialização digital e obituários online
+recommended_functions:
+- name: Atendimento de FAQs automático
+  priority: high
+  reason: Reduz a carga de trabalho da equipe e fornece respostas rápidas em momentos
+    de necessidade urgente.
+- name: Agendamento de serviços e consultas
+  priority: high
+  reason: Automatiza a marcação, aumentando eficiência e reduzindo conflitos de horário.
+- name: Processamento de pagamentos integrado
+  priority: medium
+  reason: Facilita transações em BRL com sistemas locais, melhorando a conveniência
+    para clientes.
+- name: Notificações e lembretes personalizados
+  priority: low
+  reason: Mantém clientes informados sobre agendamentos e prazos, melhorando a experiência.
+- name: Coleta de feedback pós-serviço
+  priority: medium
+  reason: Ajuda a melhorar serviços com base em experiências reais, adaptando-se ao
+    mercado brasileiro.
+- name: Integração com CRM para gestão de clientes
+  priority: high
+  reason: Sincroniza dados para melhor personalização e conformidade com LGPD.
+typical_integrations:
+- name: Sistema de Gestão Funerária
+  examples:
+  - Funerária Online
+  - SisFunerário
+  - Manager Funerário
+  priority: high
+- name: CRM Local
+  examples:
+  - Totvs CRM
+  - Oracle NetSuite adaptado
+  - Salesforce com configurações LATAM
+  priority: medium
+- name: Sistema Financeiro e Contábil
+  examples:
+  - ContaAzul
+  - SAP Business One
+  - Bluesoft
+  priority: medium
+- name: Plataforma de Pagamentos Brasileira
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: high
+- name: Sistemas de Conformidade LGPD
+  examples:
+  - LGPD Compliance Suite
+  - Data Privacy Manager BR
+  - Privacidade Segura
+  priority: high
+industry_faq:
+- question: Quais são as opções de serviço funerário disponíveis e seus preços?
+  answer_template: Oferecemos cremação, enterro tradicional, planos pré-pagos e mais,
+    com preços transparentes a partir de R$ 1500. Posso detalhar cada opção em BRL?
+- question: Como funciona o plano funerário pré-pago e quais são os benefícios?
+  answer_template: O plano pré-pago permite garantir serviços futuros com valores
+    atuais, oferecendo tranquilidade e planejamento financeiro, compatível com a LGPD.
+- question: Quais são os requisitos e custos para repatriação de corpos no Brasil?
+  answer_template: Envolve documentação específica e coordenação com autoridades.
+    Os custos variam, mas podemos fornecer um orçamento detalhado em BRL após avaliação.
+- question: Como é garantida a proteção de dados segundo a LGPD durante o atendimento?
+  answer_template: Seguimos rigorosamente a LGPD, com criptografia e processos seguros
+    em todas as interações, garantindo confidencialidade dos dados sensíveis.
+- question: Quais formas de pagamento são aceitas e há opções de parcelamento?
+  answer_template: Aceitamos cartões, transferências e parcelamentos em até 12x, tudo
+    integrado com plataformas locais como PagSeguro.
+- question: Há atendimento 24 horas para emergências funerárias?
+  answer_template: Sim, nosso agente de voz está disponível 24/7 para atender dúvidas
+    e agendar serviços imediatamente, assegurando suporte contínuo.
+sales_scripts:
+- trigger: price_question
+  situation: Quando o cliente pergunta sobre preços iniciais ou orçamentos.
+  script: Olá, entendemos a importância de um planejamento acessível. Oferecemos serviços
+    a partir de R$ 1500, com total transparência e opções de parcelamento. Posso ajudar
+    a encontrar uma solução que caiba no seu orçamento em BRL?
+  goal: Converter a consulta em oportunidade de venda, destacando flexibilidade e
+    preços competitivos.
+- trigger: service_inquiry
+  situation: Quando o cliente pergunta sobre serviços específicos como cremação ou
+    planos pré-pagos.
+  script: Com certeza! Temos diversas opções, incluindo cremação e planos pré-pagos,
+    cada um com benefícios como conformidade LGPD e suporte 24/7. Gostaria de saber
+    mais sobre algum em particular?
+  goal: Educar o cliente sobre serviços e guiá-lo para uma escolha informada, enfatizando
+    diferenciais locais.
+- trigger: lgpd_concern
+  situation: Quando o cliente expressa preocupação com privacidade de dados durante
+    o atendimento.
+  script: Sua preocupação é muito importante. Seguimos a LGPD à risca, com processos
+    auditados para proteger todas as informações. Nossos agentes de voz são configurados
+    para garantir essa segurança.
+  goal: Construir confiança e assegurar conformidade, destacando nosso compromisso
+    com a privacidade no contexto brasileiro.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona concorrentes como Funerária Nacional ou Memorial.
+  script: Respeitamos todas as opções do mercado. Nos diferenciamos pelo atendimento
+    mais eficiente e personalizado, com tecnologia que reduz custos e melhora a experiência,
+    sempre em conformidade com a LGPD.
+  goal: Diferenciação positiva, focando em eficiência e suporte superior para o mercado
+    LATAM.
+competitors:
+- name: Funerária Nacional
+  positioning: Líder de mercado com ampla rede nacional e tradição.
+  strengths:
+  - Grande capilaridade em várias regiões
+  - Marca reconhecida
+  - Serviços completos integrados
+  weaknesses:
+  - Preços elevados em comparação
+  - Atendimento às vezes impessoal e lento
+  our_differentiation: Atendimento mais ágil e compassivo com automação, reduzindo
+    custos e melhorando a experiência personalizada.
+- name: Memorial Serviços Funerários
+  positioning: Especializado em planos pré-pagos e serviços personalizados de alto
+    padrão.
+  strengths:
+  - Planos flexíveis e customizáveis
+  - Atendimento especializado e humano
+  weaknesses:
+  - Cobertura geográfica limitada
+  - Processos manuais que podem causar atrasos
+  our_differentiation: Automação que acelera processos e oferece suporte 24/7, com
+    integração LGPD para maior segurança.
+- name: Santa Casa Funerária
+  positioning: Tradicional, associada a instituições religiosas e comunitárias.
+  strengths:
+  - Confiança baseada em longa tradição
+  - Parcerias fortes com igrejas e comunidades
+  weaknesses:
+  - Tecnologia defasada e pouca inovação
+  - Falta de transparência em preços
+  our_differentiation: Combinação de tradição com modernidade, usando voz AI para
+    eficiência e conformidade, com preços claros em BRL.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 2000
+  - 10000
+  entry_point: 1500
+  roi_examples:
+  - scenario: Automação de atendimento para uma funerária média no Brasil, reduzindo
+      custos operacionais.
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 3
+  value_anchors:
+  - Redução de 30% no tempo de atendimento com respostas automáticas
+  - Aumento de 20% na satisfação do cliente através de suporte 24/7
+  - Conformidade LGPD garantida sem custos adicionais
+  - Economia de até R$ 1000 mensais em operações manuais
+market_context:
+  market_size: Estimado em R$ 10 bilhões anuais no setor funerário brasileiro
+  growth_rate: 3% ao ano, impulsionado por digitalização e envelhecimento populacional
+  key_trends:
+  - Crescente adoção de cremação por questões ambientais e de custo
+  - Digitalização de serviços, como memorialização online
+  - Ênfase em sustentabilidade e serviços verdes
+  - Aumento da regulamentação com foco em LGPD e transparência
+  seasonality:
+    high:
+    - Inverno (junho a agosto)
+    - Períodos de festas de fim de ano
+    low:
+    - Verão (dezembro a fevereiro)
+typical_objections:
+- objection: É muito caro para o meu orçamento.
+  response: Entendemos. Oferecemos diversas opções a partir de R$ 1500 e planos de
+    parcelamento flexíveis em BRL para adequar aos seus recursos.
+- objection: Prefiro tratar pessoalmente com um atendente humano.
+  response: Respeitamos sua preferência. Nosso agente pode agendar uma consulta presencial
+    imediatamente, combinando eficiência digital com o toque humano necessário.
+- objection: Não confio em sistemas automatizados para algo tão sensível como um funeral.
+  response: Compreendemos a sensibilidade. Nosso sistema é projetado para ser compassivo
+    e seguro, com suporte humano disponível sempre que necessário, e em total conformidade
+    com a LGPD.
+- objection: Já tenho um plano com outra empresa e não quero mudar.
+  response: Excelente que já está planejado. Podemos oferecer serviços complementares
+    ou uma análise para garantir que tenha o melhor suporte, sem custos adicionais
+    desnecessários.
+meta:
+  id: funeral
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

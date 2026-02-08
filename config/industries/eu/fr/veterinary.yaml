@@ -1,0 +1,239 @@
+pain_points:
+- description: Les rendez-vous non honorés créent des trous dans l'emploi du temps
+    et des pertes de revenus.
+  severity: high
+  solution_hint: L'agent vocal peut gérer les confirmations et rappels automatiques,
+    et proposer des créaux de remplacement.
+- description: Appels fréquents en dehors des heures d'ouverture pour des questions
+    non urgentes, épuisant le personnel.
+  severity: medium
+  solution_hint: L'agent peut répondre 24/7 aux questions courantes (vaccins, symptômes
+    légers) et orienter vers l'urgence si nécessaire.
+- description: Surcharge administrative pour la prise de rendez-vous, la facturation
+    et la gestion des dossiers clients.
+  severity: high
+  solution_hint: Automatiser la prise de RDV, l'envoi de rappels et l'intégration
+    avec le logiciel de gestion de cabinet.
+- description: Difficulté à fidéliser les clients dans un marché concurrentiel local.
+  severity: medium
+  solution_hint: L'agent peut personnaliser les communications (rappel vaccinal, anniversaire
+    de l'animal) et promouvoir les forfaits préventifs.
+- description: Gestion inefficace des stocks de médicaments et de produits, conduisant
+    à des ruptures ou du surstock.
+  severity: medium
+  solution_hint: L'agent peut générer des rappels automatiques pour les commandes
+    basées sur les rendez-vous planifiés.
+- description: Perte de temps à répondre aux mêmes questions fréquentes sur les tarifs,
+    les horaires, les procédures.
+  severity: low
+  solution_hint: Fournir des réponses instantanées et précises via l'agent, libérant
+    le temps du standardiste.
+typical_services:
+- Consultation générale
+- Vaccination et rappels
+- Chirurgie (stérilisation, castration)
+- Dentisterie vétérinaire
+- Analyses de laboratoire (sang, urine)
+- Imagerie médicale (radiographie, échographie)
+- Hospitalisation et soins intensifs
+- Pharmacie et vente d'aliments spéciaux
+- Toilettage et soins d'hygiène
+- Services d'urgence et de garde
+recommended_functions:
+- name: Prise de rendez-vous automatisée
+  priority: high
+  reason: Réduit considérablement la charge du standard et comble les créneaux annulés.
+- name: Répondeur intelligent 24/7
+  priority: high
+  reason: Gère les appels après fermeture, filtre les urgences et rassure les propriétaires.
+- name: Rappels automatiques (vaccins, RDV)
+  priority: high
+  reason: Augmente le taux de présence et améliore la médecine préventive, source
+    de revenus.
+- name: FAQ vocale interactive
+  priority: medium
+  reason: Libère le personnel des questions répétitives sur les tarifs, préparatifs,
+    etc.
+- name: Sondage de satisfaction post-consultation
+  priority: medium
+  reason: Permet de recueillir des avis précieux et d'identifier les problèmes rapidement.
+- name: Promotion des forfaits et abonnements
+  priority: low
+  reason: Augmente la valeur moyenne du client et fidélise.
+typical_integrations:
+- name: Logiciel de Gestion de Cabinet Vétérinaire
+  examples:
+  - AniMate
+  - EasyVet
+  - VetBoard
+  - EDI
+  priority: high
+- name: Logiciel de Comptabilité
+  examples:
+  - Cegid
+  - Sage
+  - Quadratus
+  priority: medium
+- name: Agenda en ligne
+  examples:
+  - Doctolib
+  - Planity
+  priority: high
+- name: Système de Paiement
+  examples:
+  - SumUp
+  - Lydia
+  - Stripe
+  priority: medium
+- name: Plateforme de Marketing Email/SMS
+  examples:
+  - Mailchimp
+  - Sendinblue
+  priority: low
+industry_faq:
+- question: Quels sont vos horaires d'ouverture et comment prendre rendez-vous en
+    urgence ?
+  answer_template: Nous sommes ouverts du lundi au vendredi de 9h à 19h et le samedi
+    de 9h à 12h. En dehors de ces heures, pour une urgence vitale, composez le [numéro
+    de garde]. Pour prendre un rendez-vous standard, je peux vous aider immédiatement.
+- question: Quel est le prix d'une consultation pour un chien/chat ?
+  answer_template: Le tarif d'une consultation standard commence à XX euros. Il peut
+    varier en fonction de la complexité de la visite. Puis-je vous proposer un créneau
+    pour une estimation plus précise avec l'un de nos vétérinaires ?
+- question: Mon animal doit-il être à jeun avant une prise de sang ?
+  answer_template: Oui, il est généralement recommandé d'être à jeun pendant 8 à 12
+    heures avant une prise de sang pour des résultats optimaux. Des exceptions existent,
+    je vous conseille de confirmer lors de la prise de rendez-vous.
+- question: Proposez-vous des forfaits pour les vaccins ou la stérilisation ?
+  answer_template: Oui, nous proposons plusieurs forfaits préventifs (vaccinations
+    + bilan) et des packs chirurgicaux tout compris. Cela permet de maîtriser votre
+    budget. Je peux vous envoyer les détails par email ou SMS.
+- question: Acceptez-vous les animaux exotiques (rongeurs, oiseaux, reptiles) ?
+  answer_template: Certains de nos vétérinaires sont spécialisés dans les NAC (Nouveaux
+    Animaux de Compagnie). Merci de le préciser lors de la prise de rendez-vous pour
+    que nous puissions vous orienter vers le bon praticien.
+sales_scripts:
+- trigger: opening_hours_inquiry
+  situation: Un client appelle pour connaître les horaires.
+  script: Bonjour, je suis [Nom de l'Agent], l'assistant vocal du cabinet vétérinaire
+    [Nom du Cabinet]. Nous sommes ouverts du lundi au vendredi de 9h à 19h et le samedi
+    matin. Puis-je vous aider à prendre un rendez-vous dès maintenant ou vous renseigner
+    sur nos services ?
+  goal: Convertir une simple demande d'information en prise de rendez-vous ou qualification.
+- trigger: price_question
+  situation: Un client demande le prix d'une consultation.
+  script: Je comprends que la transparence tarifaire est importante. Une consultation
+    de base démarre à [montant] euros. Cependant, le tarif final dépend des soins
+    spécifiques prodigués. Pour vous donner une estimation exacte et sans engagement,
+    puis-je vous proposer un court appel avec notre secrétariat qui pourra considérer
+    le cas de votre animal ?
+  goal: Contourner l'objection prix en offrant une estimation personnalisée et en
+    reprenant contact avec un humain.
+- trigger: follow_up_after_visit
+  situation: Appel automatique quelques jours après une consultation.
+  script: Bonjour [Nom du Client], c'est l'assistant du cabinet vétérinaire [Nom].
+    Nous espérons que [Nom de l'Animal] se porte mieux après sa récente visite. Tout
+    se passe bien à la maison ? Si vous avez la moindre question, n'hésitez pas. Puis-je
+    également noter un prochain rappel pour son vaccin ?
+  goal: Renforcer la relation client, détecter d'éventuels problèmes et planifier
+    le prochain rendez-vous préventif.
+competitors:
+- name: Doctolib (pour vétérinaires)
+  positioning: Plateforme nationale de prise de RDV en ligne, gratuite pour les patients.
+  strengths:
+  - Notoriété nationale
+  - Interface utilisateur simple
+  - Gratuit pour le client
+  weaknesses:
+  - Peu personnalisé pour le domaine vétérinaire
+  - Pas de gestion de la relation client (CRM) intégrée
+  - Concurrence féroce sur la plateforme
+  our_differentiation: Notre agent est dédié à votre cabinet, gère l'intégralité de
+    la relation téléphonique (pas seulement le RDV) et s'intègre profondément à votre
+    logiciel métier.
+- name: Cliniques vétérinaires locales concurrentes
+  positioning: Concurrence directe sur la même zone géographique.
+  strengths:
+  - Relation de proximité
+  - Confiance établie
+  - Possibilité de visites à domicile
+  weaknesses:
+  - Heures d'ouverture limitées
+  - Standard souvent saturé
+  - Peu d'automatisation
+  our_differentiation: Nous vous aidons à offrir un service 24/7, à réduire les rendez-vous
+    manqués et à personnaliser la communication, vous permettant de rivaliser sur
+    le service, pas seulement sur le prix.
+- name: Assureurs animaux (offrant des services de téléconseil)
+  positioning: Service de conseil inclus dans certaines assurances.
+  strengths:
+  - Gratuit pour l'assuré
+  - Orientation vers leur réseau
+  weaknesses:
+  - Conseil généraliste, pas spécifique à votre cabinet
+  - Objectif de réduire les sinistres pour l'assureur
+  - Pas de prise de RDV directe
+  our_differentiation: Notre agent représente VOTRE cabinet, fidélise VOS clients
+    vers VOS services, et conduit à des rendez-vous dans VOTRE clinique.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 99
+  - 399
+  entry_point: 99
+  roi_examples:
+  - scenario: Réduction de 20% des rendez-vous non honorés et automatisation de 50%
+      des appels de standard.
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Économisez l'équivalent d'un salaire à temps partiel en réceptionniste.
+  - Générez 2 rendez-vous préventifs supplémentaires par mois et rentabilisez l'agent.
+  - Service client 24h/24 pour le prix d'une consultation.
+market_context:
+  market_size: Environ 5 000 cliniques et hôpitaux vétérinaires en France.
+  growth_rate: ~3-5% par an, porté par l'augmentation du nombre de foyers avec animaux.
+  key_trends:
+  - Fort développement de l'assurance santé animale.
+  - Demande croissante pour la médecine préventive et les forfaits de soins.
+  - Digitalisation progressive du secteur (RDV en ligne, rappels digitaux).
+  - Attention accrue au bien-être animal et aux médecines alternatives.
+  seasonality:
+    high:
+    - Printemps (période des puces/tiques, stérilisations)
+    - Automne (rappel de vaccins)
+    - Périodes de fêtes (risques alimentaires)
+    low:
+    - Août (tradition des vacances)
+    - Début janvier
+typical_objections:
+- objection: C'est trop cher pour notre petite structure.
+  response: Je comprends. Avez-vous calculé le coût d'un rendez-vous manqué ou d'une
+    heure de standardiste à répondre à des questions simples ? Notre solution démarre
+    à 99€/mois, ce qui représente souvent moins qu'un seul rendez-vous perdu. Pouvons-nous
+    analyser votre taux actuel de RDV non honorés ?
+- objection: Nos clients âgés préfèrent parler à une personne.
+  response: Tout à fait, et c'est crucial. Notre agent ne les remplace pas, il les
+    assiste. Il filtre les appels non urgents la nuit, rappelle les vaccins, et laisse
+    les appels importants ou complexes être traités par votre équipe, plus disponible.
+    Il améliore le service pour TOUS vos clients.
+- objection: Nous avons déjà un logiciel de gestion, cela va être compliqué à intégrer.
+  response: L'intégration est notre priorité. Nous nous connectons aux principaux
+    logiciels vétérinaires comme AniMate ou EasyVet. Le déploiement est rapide et
+    notre support vous accompagne. Cela évite la double saisie et rend votre système
+    actuel plus puissant.
+meta:
+  id: veterinary
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- "veterinary"
+- "vet clinic"
+- "animal hospital"
+- "pet care"
+_extends: _base/veterinary

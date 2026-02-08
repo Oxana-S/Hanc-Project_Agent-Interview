@@ -1,0 +1,276 @@
+pain_points:
+- description: High competition from both large retail chains and online international
+    sellers, squeezing profit margins for local beauty supply stores.
+  severity: high
+  solution_hint: AI agent can help by efficiently qualifying inbound calls for high-margin
+    products or professional services, saving staff time.
+- description: Managing inventory across a vast and geographically dispersed country
+    leads to high shipping costs and stock imbalances between regions.
+  severity: high
+  solution_hint: Voice agent can handle routine stock level inquiries and direct customers
+    to in-stock items at their nearest warehouse location.
+- description: Customer expectations for fast, often free, shipping driven by major
+    e-commerce platforms, which is costly for smaller businesses to provide.
+  severity: medium
+  solution_hint: Agent can clearly explain shipping policies, manage expectations,
+    and upsell to order minimums that qualify for free local delivery.
+- description: Difficulty attracting and retaining skilled staff for retail sales
+    and beauty consultations in a competitive labor market.
+  severity: medium
+  solution_hint: Automate routine calls (hours, location, basic product info) with
+    AI, allowing human staff to focus on complex consultations and sales.
+- description: Navigating PIPEDA compliance for customer data, especially when handling
+    phone orders and customer inquiries about their personal information.
+  severity: medium
+  solution_hint: Agent can be programmed with compliant data handling scripts and
+    direct privacy-related inquiries to the proper human contact.
+- description: Seasonal demand fluctuations, with peaks around holidays and back-to-school,
+    causing staffing and inventory planning challenges.
+  severity: medium
+  solution_hint: Use AI to efficiently handle high call volumes during peak seasons
+    for order taking and FAQ, preventing lost sales.
+- description: Educating customers on the proper use and benefits of professional-grade
+    vs. retail beauty products over the phone.
+  severity: low
+  solution_hint: Agent can deliver consistent, pre-programmed educational snippets
+    about key product lines before transferring to a specialist.
+typical_services:
+- Wholesale distribution to salons and spas
+- Retail beauty supply storefront
+- E-commerce platform for beauty professionals and public
+- Professional salon equipment sales and leasing
+- Beauty product subscriptions (e.g., lash extensions, acrylics)
+- In-store or virtual beauty consultations
+- Private label product development for salons
+- Cruelty-free and vegan product lines
+- Bulk purchases for esthetics schools
+- Loyalty programs for frequent buyers
+recommended_functions:
+- name: Appointment Booking & Management
+  priority: high
+  reason: Crucial for scheduling in-store consultations, equipment demos, or will-call
+    pickups, freeing up staff.
+- name: Order Status & Tracking Inquiries
+  priority: high
+  reason: One of the most frequent call drivers; automation provides instant answers
+    and reduces call center load.
+- name: Basic Product Information & Inventory Check
+  priority: high
+  reason: Allows customers to quickly confirm price, availability, and key specs before
+    visiting or ordering online.
+- name: PIPEDA-Compliant Callback Requests
+  priority: medium
+  reason: Securely captures contact info for callbacks when specialists are busy,
+    ensuring no lead is lost and maintaining privacy.
+- name: FAQ Handling for Store Hours, Locations, Policies
+  priority: medium
+  reason: Handles repetitive questions efficiently, available 24/7.
+- name: Lead Qualification for Wholesale Accounts
+  priority: low
+  reason: Can ask preliminary questions (business type, volume) to route high-potential
+    leads to the correct sales rep.
+typical_integrations:
+- name: E-commerce Platform
+  examples:
+  - Shopify
+  - WooCommerce
+  - BigCommerce
+  priority: high
+- name: POS/Inventory Management
+  examples:
+  - Lightspeed Retail
+  - Square
+  - Revel Systems
+  priority: high
+- name: CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  - Zoho CRM
+  priority: medium
+- name: Accounting Software
+  examples:
+  - QuickBooks Online Canada
+  - Xero
+  - Sage
+  priority: medium
+- name: Shipping & Logistics
+  examples:
+  - Canada Post APIs
+  - ShipStation
+  - EasyShip
+  priority: medium
+industry_faq:
+- question: Do you ship to [Province/Territory]? How much does it cost and how long
+    will it take?
+  answer_template: Yes, we ship across Canada. Shipping costs and times vary based
+    on your location and order size. For a precise quote, I can connect you with our
+    shipping department or you can enter your postal code at checkout on our website.
+- question: Are your products cruelty-free and vegan?
+  answer_template: We carry a wide selection of both cruelty-free and vegan product
+    lines. I can transfer you to a beauty consultant who can recommend specific products
+    based on your preferences, or you can filter for these attributes on our website.
+- question: I'm a salon owner. Do you offer professional/wholesale pricing?
+  answer_template: Absolutely. We have dedicated accounts and pricing for licensed
+    professionals and salons. To set up a wholesale account and access pricing, I'll
+    need to connect you with our business sales team. May I have your name and salon
+    information to arrange a callback?
+- question: How do you handle my personal information under PIPEDA?
+  answer_template: We take your privacy seriously and comply fully with PIPEDA. Your
+    personal information is only used to process your order and improve your experience.
+    You can review our full privacy policy on our website or request a copy by phone.
+- question: My order arrived damaged or is incorrect. What do I do?
+  answer_template: I'm sorry to hear that. To resolve this quickly, please have your
+    order number ready. I will immediately transfer you to our customer care team
+    who will initiate a replacement or return for you.
+- question: Do you price match competitors?
+  answer_template: We strive to offer competitive pricing. Our price match policy
+    has specific terms, such as verifying the competitor's in-stock price. For the
+    fastest service on a price match inquiry, please visit our store with the competitor's
+    ad or transfer to a store manager for assistance.
+sales_scripts:
+- trigger: wholesale_inquiry
+  situation: When a caller identifies as a salon owner, esthetician, or other beauty
+    professional asking about business purchasing.
+  script: That's great you're reaching out. Our wholesale program is designed specifically
+    for professionals like you, offering competitive pricing on bulk orders and exclusive
+    professional-grade lines. To get you the correct pricing and set up your account,
+    I'll connect you with our business account specialist, [Name]. They can also discuss
+    our salon startup kits and flexible delivery options. May I tell them your name
+    and salon name?
+  goal: Qualify the lead, create a warm transfer to the correct sales rep, and establish
+    value.
+- trigger: price_question
+  situation: When a customer asks for the price of a specific product or service.
+  script: I can provide you with the current price for that item. For the most accurate,
+    up-to-date pricing and to check real-time inventory at your nearest location,
+    our website is the best resource. Would you like me to SMS you a direct link to
+    that product page? Alternatively, I can connect you with a store associate.
+  goal: Provide immediate help, drive to self-service (website) for efficiency, or
+    offer human assist without delay.
+- trigger: objection_busy_staff
+  situation: When a customer complains about long hold times or difficulty reaching
+    a person.
+  script: I sincerely apologize for the wait and any frustration. My purpose is to
+    help get you answers faster for common questions like store hours, product availability,
+    or order status. For something specific I can't handle, I can ensure you get a
+    callback from the right person without waiting on hold. How can I help you right
+    now?
+  goal: Acknowledge the pain point, demonstrate the agent's value in solving it, and
+    regain control of the call.
+- trigger: cart_abandonment_callback
+  situation: When returning a call to a customer who left their number after browsing
+    online.
+  script: Hi [Customer Name], this is [AI Agent Name] calling back from [Company Name]
+    about your recent interest in our beauty supplies. I saw you were looking at [Product
+    Category]. Were you able to find everything you needed, or did you have any questions
+    about products, pricing, or shipping that I can answer for you?
+  goal: Re-engage the potential customer, personalize the call, and overcome final
+    hurdles to completing a sale.
+competitors:
+- name: Sally Beauty
+  positioning: Nationwide chain serving both DIY enthusiasts and licensed professionals.
+  strengths:
+  - Extensive store network
+  - Strong brand recognition
+  - Wide product range
+  - Loyalty program
+  weaknesses:
+  - Can be impersonal
+  - Limited localized service
+  - Standardized pricing
+  our_differentiation: More personalized service, stronger focus on local salon relationships,
+    and potentially more flexible delivery options for businesses.
+- name: Shoppers Drug Mart / Pharmaprix (Beauty Boutique)
+  positioning: Mass-market retail with a growing premium beauty section.
+  strengths:
+  - Ubiquitous locations
+  - Convenience
+  - Points program (PC Optimum)
+  - Mix of mass and prestige brands
+  weaknesses:
+  - Limited professional-grade supplies
+  - Less expertise in salon-specific needs
+  our_differentiation: Specialized, deep knowledge in professional beauty supplies,
+    equipment, and ingredients that retail chains cannot match.
+- name: Local Independent Beauty Supply Stores
+  positioning: Community-focused, often niche (e.g., specializing in Black hair care,
+    K-beauty).
+  strengths:
+  - Deep community ties
+  - Highly curated selection
+  - Personalized advice
+  weaknesses:
+  - Limited scale
+  - Smaller inventory
+  - May have less robust e-commerce
+  our_differentiation: We combine local market understanding with the scale, omnichannel
+    capabilities, and wholesale purchasing power of a larger regional player.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 200
+  - 5000
+  entry_point: 49
+  roi_examples:
+  - scenario: Automating 20 hours/month of basic phone inquiries for order status,
+      hours, and location.
+    monthly_cost: 199
+    monthly_savings: 600
+    payback_months: 1
+  - scenario: Capturing and routing 15 qualified wholesale leads per month that were
+      previously missed after hours.
+    monthly_cost: 299
+    monthly_savings: 4500
+    payback_months: 1
+  value_anchors:
+  - Convert more callers into customers, even when your store is closed.
+  - Free up your beauty consultants to sell, not just answer phones.
+  - Reduce missed calls and lost sales during holiday rushes.
+market_context:
+  market_size: Approximately $1.5 billion CAD annually for professional beauty supplies
+    and equipment.
+  growth_rate: 3-5% YoY, driven by growth in professional services and clean beauty
+    trends.
+  key_trends:
+  - Rising demand for 'clean', cruelty-free, and sustainable beauty products.
+  - Growth of at-home beauty treatments and DIY kits post-pandemic.
+  - Increasing popularity of niche categories (e.g., scalp care, men's grooming).
+  - Salons seeking 'one-stop-shop' suppliers for both products and equipment.
+  seasonality:
+    high:
+    - November-December (Holidays)
+    - August-September (Back-to-School/Salon refreshes)
+    - February (Valentine's)
+    low:
+    - January (post-holiday slowdown)
+    - Late March-Early April (tax season)
+typical_objections:
+- objection: This seems expensive for an automated system.
+  response: I understand. Consider that it works 24/7 to capture leads and answer
+    questions. If it saves just 10 hours of staff time per month or secures one extra
+    wholesale account, it pays for itself immediately. We can start with a basic package
+    focused on your biggest pain point.
+- objection: I prefer my customers to always talk to a real person.
+  response: Absolutely, and so do we. The goal isn't to replace your team but to empower
+    them. By letting the AI handle repetitive tasks like 'are you open?' or 'do you
+    have this in stock?', your staff has more time for meaningful, revenue-generating
+    conversations about products and consultations.
+- objection: We're too small / our call volume isn't high enough.
+  response: Even a few missed calls can mean lost sales. Our system scales with you.
+    It ensures every call is answered professionally, captures leads after hours,
+    and provides consistent information. This helps you look and operate like a larger,
+    more established business, which builds customer trust.
+meta:
+  id: beauty_supplies
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

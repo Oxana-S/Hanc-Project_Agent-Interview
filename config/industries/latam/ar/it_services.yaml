@@ -1,0 +1,228 @@
+pain_points:
+- description: Alto costo de profesionales de TI calificados debido a la escasez de
+    talento.
+  severity: high
+  solution_hint: Nuestro agente de voz AI puede automatizar tareas repetitivas, reduciendo
+    la dependencia de personal costoso.
+- description: Dificultades en la escalabilidad de infraestructura IT ante crecimientos
+    imprevistos.
+  severity: medium
+  solution_hint: El agente puede gestionar solicitudes de recursos y alertas, optimizando
+    la escalabilidad.
+- description: Amenazas de ciberseguridad en aumento, especialmente con el teletrabajo.
+  severity: high
+  solution_hint: Ofrece monitoreo proactivo y respuestas rápidas a incidentes a través
+    de alertas automatizadas.
+- description: Falta de expertise en transformación digital para pymes.
+  severity: medium
+  solution_hint: Proporciona consultas iniciales y guías personalizadas para iniciar
+    la digitalización.
+- description: Integración compleja de sistemas legacy con nuevas tecnologías.
+  severity: medium
+  solution_hint: Facilita la coordinación entre equipos y proveedores para migraciones
+    suaves.
+- description: Inflación alta que afecta la planificación presupuestaria en ARS.
+  severity: high
+  solution_hint: Ayuda a optimizar costos con análisis en tiempo real y recomendaciones
+    de eficiencia.
+- description: Cumplimiento de regulaciones locales de protección de datos, como la
+    Ley de Protección de Datos Personales.
+  severity: medium
+  solution_hint: Automatiza recordatorios y verificaciones de compliance para reducir
+    riesgos.
+typical_services:
+- Desarrollo de software a medida
+- Soporte técnico remoto y presencial
+- Consultoría en ciberseguridad
+- Migración y gestión de servicios en la nube
+- Mantenimiento y actualización de sistemas
+- Integración de APIs y microservicios
+- Análisis de datos y business intelligence
+- Implementación de sistemas ERP y CRM
+- Servicios de help desk y mesa de ayuda
+- Capacitación y entrenamiento en tecnologías IT
+recommended_functions:
+- name: Agendamiento de citas y reuniones
+  priority: high
+  reason: Esencial para coordinar con clientes en un mercado donde la comunicación
+    personalizada es clave.
+- name: Respuesta a consultas técnicas básicas
+  priority: medium
+  reason: Reduce la carga del equipo de soporte y mejora la satisfacción del cliente
+    con respuestas rápidas.
+- name: Seguimiento de proyectos y actualizaciones
+  priority: high
+  reason: Mantiene a los clientes informados, crucial en entornos con alta competencia.
+- name: Recordatorios de pagos y facturación
+  priority: low
+  reason: Ayuda a gestionar el flujo de caja en una economía con volatilidad monetaria.
+- name: Encuestas de satisfacción post-servicio
+  priority: medium
+  reason: Proporciona retroalimentación valiosa para ajustar servicios en un mercado
+    en crecimiento.
+- name: Prospección de clientes potenciales
+  priority: high
+  reason: Aumenta la base de clientes en un sector con alta demanda de soluciones
+    digitales.
+typical_integrations:
+- name: Sistemas de facturación y contabilidad
+  examples:
+  - AFIP
+  - sistemas locales como Tango Gestión
+  priority: high
+- name: Herramientas de gestión de proyectos
+  examples:
+  - Trello
+  - Jira
+  priority: high
+- name: Plataformas de nube
+  examples:
+  - AWS
+  - Google Cloud Platform
+  priority: medium
+- name: Software de CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  priority: high
+- name: Sistemas de comunicación
+  examples:
+  - Slack
+  - Microsoft Teams
+  priority: medium
+industry_faq:
+- question: ¿Cuánto cuesta un servicio de desarrollo de software personalizado?
+  answer_template: El costo varía según la complejidad, pero ofrecemos planes desde
+    50000 ARS mensuales para proyectos básicos, con estimaciones personalizadas tras
+    una consulta.
+- question: ¿Ofrecen soporte técnico 24/7?
+  answer_template: Sí, proporcionamos soporte remoto 24/7 para incidentes críticos,
+    con planes escalables según sus necesidades.
+- question: ¿Cómo garantizan la seguridad de nuestros datos?
+  answer_template: Implementamos protocolos de ciberseguridad avanzados y cumplimos
+    con regulaciones locales, como la Ley de Protección de Datos Personales.
+- question: ¿Pueden integrar nuestros sistemas legacy con nuevas tecnologías?
+  answer_template: Absolutamente, especializamos en migraciones suaves y integración
+    de APIs para modernizar su infraestructura sin interrupciones.
+- question: ¿Qué ventajas tienen sobre competidores como Globant?
+  answer_template: Ofrecemos precios más competitivos en ARS, servicio personalizado
+    y soluciones adaptadas al mercado argentino.
+- question: ¿Cómo manejan la inflación en los precios?
+  answer_template: Ajustamos nuestros contratos con cláusulas de revisión periódica
+    para mantener la transparencia y el valor.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por los costos iniciales.
+  script: Entiendo su preocupación por el presupuesto. Nuestros servicios están diseñados
+    para ofrecer un retorno de inversión rápido, con planes desde 50000 ARS mensuales.
+    ¿Puedo explicarle cómo podemos reducir sus costos operativos?
+  goal: Educar al cliente sobre el valor y suavizar objeciones de precio.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor local.
+  script: Respetamos a nuestros competidores, pero nos diferenciamos con soluciones
+    más adaptadas al contexto argentino, como soporte en español nativo y conocimiento
+    de regulaciones locales. ¿Le gustaría ver un caso de éxito?
+  goal: Destacar nuestras ventajas únicas y redirigir la conversación al valor.
+- trigger: service_detail
+  situation: Cuando el cliente busca detalles sobre un servicio específico, como ciberseguridad.
+  script: Para ciberseguridad, ofrecemos evaluaciones de riesgo, monitoreo continuo
+    y respuestas automatizadas. En Argentina, esto es clave con el aumento de ataques.
+    ¿Podría contarme más sobre sus necesidades actuales?
+  goal: Profundizar en las necesidades del cliente y personalizar la oferta.
+- trigger: follow_up
+  situation: Después de una consulta inicial para reactivar el interés.
+  script: Hola [Nombre], le escribo para seguir sobre su interés en nuestros servicios
+    IT. ¿Hay algo específico en lo que podamos ayudarle esta semana? Ofrecemos una
+    consulta gratuita para analizar sus desafíos.
+  goal: Mantener el engagement y cerrar una próxima acción.
+competitors:
+- name: Globant
+  positioning: Líder global en desarrollo de software con fuerte presencia en Argentina.
+  strengths:
+  - Marca reconocida internacionalmente
+  - Amplia cartera de clientes grandes
+  weaknesses:
+  - Precios altos en comparación con locales
+  - Menor flexibilidad para pymes
+  our_differentiation: Precios más competitivos en ARS y enfoque en personalización
+    para el mercado argentino.
+- name: Accenture Argentina
+  positioning: Consultoría IT integral para grandes empresas.
+  strengths:
+  - Recursos globales y expertise diverso
+  - Capacidad para proyectos a gran escala
+  weaknesses:
+  - Enfoque menos ágil y costos elevados
+  - Menor atención a medianas empresas
+  our_differentiation: Agilidad en implementación y soluciones escalables adaptadas
+    a pymes y empresas medianas.
+- name: Hexacta
+  positioning: Desarrollador de software local con experiencia en Latinoamérica.
+  strengths:
+  - Conocimiento profundo del mercado latinoamericano
+  - Servicios de nearshoring
+  weaknesses:
+  - Menor alcance global
+  - Limitada oferta de servicios en la nube
+  our_differentiation: Integración completa de servicios en la nube y soporte automatizado
+    con AI para mayor eficiencia.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 100000
+  - 500000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Automatización de procesos de help desk para una empresa mediana.
+    monthly_cost: 100000
+    monthly_savings: 150000
+    payback_months: 1
+  - scenario: Migración a la nube que reduce costos de infraestructura.
+    monthly_cost: 200000
+    monthly_savings: 300000
+    payback_months: 1
+  value_anchors:
+  - Reduzca sus costos operativos en hasta un 30% con nuestra automatización.
+  - Aumente la productividad de su equipo IT con soporte proactivo.
+  - Proteja su negocio de ciberamenazas con soluciones accesibles en ARS.
+market_context:
+  market_size: Estimado en 15 mil millones de dólares anuales en Argentina.
+  growth_rate: 10% año tras año.
+  key_trends:
+  - Crecimiento acelerado de la adopción de cloud computing en pymes.
+  - Aumento de la demanda de ciberseguridad debido a normativas locales.
+  - Expansión del teletrabajo impulsando servicios de soporte remoto.
+  seasonality:
+    high:
+    - Septiembre a Noviembre (fin de año fiscal y lanzamiento de proyectos)
+    - Marzo a Mayo (inicio del año laboral)
+    low:
+    - Enero (vacaciones de verano)
+    - Julio (receso invernal)
+typical_objections:
+- objection: Es demasiado caro para nuestro presupuesto en ARS.
+  response: Entiendo, pero nuestros servicios ofrecen un ROI rápido que compensa la
+    inversión. ¿Podemos analizar un plan escalable que se ajuste a sus finanzas?
+- objection: Ya trabajamos con otro proveedor de IT.
+  response: Excelente, eso muestra su compromiso. ¿Qué tal si complementamos con soluciones
+    de automatización para mejorar la eficiencia sin reemplazar todo?
+- objection: No estamos seguros de necesitar transformación digital ahora.
+  response: En el mercado actual, la digitalización es clave para competir. Ofrecemos
+    una evaluación gratuita para identificar oportunidades de mejora inmediata.
+- objection: Temo los riesgos de seguridad con soluciones nuevas.
+  response: Nuestra prioridad es la seguridad, cumplimos con todas las regulaciones
+    argentinas y usamos tecnología probada. ¿Le gustaría ver nuestros certificados?
+meta:
+  id: it_services
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "IT services"
+- "tech support"
+- "managed services"
+- "IT consulting"
+_extends: _base/it_services

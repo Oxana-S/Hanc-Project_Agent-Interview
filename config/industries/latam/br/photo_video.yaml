@@ -1,0 +1,230 @@
+pain_points:
+- description: Dificuldade em gerenciar agendamentos e confirmações de clientes manualmente,
+    levando a sobreposições e perdas de oportunidades.
+  severity: high
+  solution_hint: Agente de voz pode automatizar agendamentos, enviar lembretes e confirmar
+    disponibilidade em tempo real.
+- description: Captura insuficiente de leads qualificados devido à dependência de
+    redes sociais e referências, com alto custo de aquisição.
+  severity: medium
+  solution_hint: Agente de voz pode qualificar leads por telefone, coletar informações
+    e agendar consultas diretamente.
+- description: Altos custos com equipamentos, manutenção e software de edição, afetando
+    a rentabilidade.
+  severity: high
+  solution_hint: Agente de voz pode promover pacotes de serviços que maximizam o uso
+    de equipamentos e sugerir integrações com ferramentas econômicas.
+- description: Concorrência intensa com preços baixos, especialmente de amadores,
+    dificultando a diferenciação.
+  severity: medium
+  solution_hint: Agente de voz pode destacar serviços premium e valor agregado, como
+    atendimento personalizado e automação.
+- description: Desafios com conformidade à LGPD no manuseio de dados de clientes,
+    como fotos e informações pessoais.
+  severity: high
+  solution_hint: Agente de voz pode educar clientes sobre políticas de privacidade
+    e automatizar consentimentos no processo de agendamento.
+- description: Ineficiência em processos administrativos, como faturamento e follow-up,
+    consumindo tempo que poderia ser usado para produção criativa.
+  severity: medium
+  solution_hint: Agente de voz pode integrar-se a sistemas de pagamento e enviar lembretes
+    automáticos de cobrança.
+typical_services:
+- Fotografia de casamento
+- Ensaios fotográficos pessoais
+- Vídeos corporativos e institucionais
+- Cobertura de eventos sociais
+- Edição e pós-produção de fotos
+- Filmagem com drone para paisagens e imóveis
+- Fotografia de produtos para e-commerce
+- Criação de conteúdo para redes sociais
+- Serviços de estúdio com iluminação profissional
+- Workshops e cursos de fotografia básica
+recommended_functions:
+- name: Agendamento automático de sessões
+  priority: high
+  reason: Reduz falhas humanas e otimiza a agenda, aumentando a capacidade de atendimento.
+- name: Resposta a perguntas frequentes sobre serviços e preços
+  priority: medium
+  reason: Libera tempo da equipe para tarefas criativas e melhora a experiência do
+    cliente.
+- name: Captura e qualificação de leads por telefone
+  priority: high
+  reason: Aumenta a conversão de vendas com leads pré-qualificados e reduz custos
+    de marketing.
+- name: Lembretes de pagamento e follow-up
+  priority: medium
+  reason: Melhora o fluxo de caixa e reduz inadimplência com automação.
+- name: Coleta de feedback pós-serviço
+  priority: low
+  reason: Fornece insights para melhorias e fortalece relacionamentos com clientes.
+- name: Integração com calendários e sistemas de CRM
+  priority: high
+  reason: Sincroniza dados e evita conflitos de agendamento, aumentando a eficiência.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - RD Station
+  - Pipefy
+  - Salesforce
+  priority: high
+- name: Plataformas de agendamento
+  examples:
+  - Agendor
+  - SimplyBook.me
+  - Google Calendar
+  priority: high
+- name: Gateways de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: medium
+- name: Software de edição e armazenamento
+  examples:
+  - Adobe Creative Cloud
+  - Canva
+  - Google Drive
+  priority: medium
+- name: Ferramentas de marketing digital
+  examples:
+  - Mailchimp
+  - Facebook Ads
+  - Google Ads
+  priority: low
+industry_faq:
+- question: Quanto custa um ensaio fotográfico básico?
+  answer_template: Oferecemos ensaios a partir de R$ 500, com pacotes personalizados
+    que incluem edição e entrega digital. Posso ajudá-lo a escolher a melhor opção?
+- question: Quais serviços estão incluídos nos pacotes de casamento?
+  answer_template: Nossos pacotes de casamento incluem cobertura completa, álbum físico
+    e vídeo highlight, com valores a partir de R$ 3000. Podemos ajustar conforme suas
+    necessidades.
+- question: Como funciona o processo de agendamento?
+  answer_template: Você pode agendar diretamente por telefone com nosso agente de
+    voz, que confirma disponibilidade e envia detalhes por e-mail, tudo de forma automatizada.
+- question: Vocês editam as fotos antes de entregar?
+  answer_template: Sim, todas as fotos passam por edição profissional para garantir
+    qualidade, com ajustes de cor e luz inclusos no serviço.
+- question: Qual é o prazo médio de entrega após a sessão?
+  answer_template: O prazo é de 7 a 14 dias úteis para fotos e até 21 dias para vídeos,
+    dependendo do pacote escolhido.
+- question: Aceitam pagamento parcelado?
+  answer_template: Sim, oferecemos parcelamento em até 12x sem juros via cartão de
+    crédito, integrado a sistemas como PagSeguro.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços no primeiro contato.
+  script: Olá! Entendemos que orçamento é importante. Nossos serviços começam em R$
+    300 para ensaios simples, com opções personalizadas. Posso agendar uma consulta
+    gratuita para discutir suas necessidades?
+  goal: Converter a consulta em uma reunião agendada para qualificar o lead e apresentar
+    soluções.
+- trigger: service_inquiry
+  situation: Quando um cliente demonstra interesse em um serviço específico, como
+    fotografia de casamento.
+  script: Perfeito! Para casamentos, oferecemos cobertura completa com vídeo e álbum.
+    Nossos pacotes são flexíveis e incluem suporte do agente de voz para agendamento.
+    Gostaria de ver um portfólio?
+  goal: Aumentar o engajamento e direcionar para uma demonstração ou portfólio online.
+- trigger: objection_handling
+  situation: Quando um cliente menciona que já tem um fotógrafo ou acha caro.
+  script: Compreendemos. Nossa diferenciação está na automação que reduz custos operacionais,
+    permitindo preços competitivos com qualidade premium. Podemos mostrar casos de
+    sucesso?
+  goal: Superar objeções e destacar o valor agregado para fechar a venda.
+competitors:
+- name: Fotografo.com
+  positioning: Plataforma online que conecta clientes a fotógrafos freelancers em
+    todo o Brasil.
+  strengths:
+  - Ampla rede de profissionais
+  - preços acessíveis
+  - facilidade de uso
+  weaknesses:
+  - Qualidade inconsistente
+  - suporte ao cliente limitado
+  - pouca personalização
+  our_differentiation: Oferecemos agentes de voz para atendimento personalizado e
+    integração completa com automação, garantindo qualidade e eficiência.
+- name: Studio F Premium
+  positioning: Estúdio de fotografia e vídeo de alto padrão com sede em São Paulo.
+  strengths:
+  - Qualidade excepcional
+  - equipe experiente
+  - serviços completos
+  weaknesses:
+  - Preços elevados
+  - agendamento rígido
+  - foco apenas em grandes eventos
+  our_differentiation: Automação acessível que mantém a qualidade premium, com flexibilidade
+    de agendamento e suporte via voz para todos os tamanhos de projetos.
+- name: Click Photos Express
+  positioning: Serviços rápidos e econômicos para fotografia básica e eventos pequenos.
+  strengths:
+  - Preços baixos
+  - entrega rápida
+  - ampla disponibilidade
+  weaknesses:
+  - Serviços limitados
+  - pouca edição
+  - atendimento impessoal
+  our_differentiation: Soluções personalizadas com eficiência de custo, usando agentes
+    de voz para melhorar o atendimento e oferecer serviços adicionais como edição.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 300
+  - 10000
+  entry_point: 300
+  roi_examples:
+  - scenario: Automação de agendamento e follow-up para um fotógrafo independente
+    monthly_cost: 200
+    monthly_savings: 800
+    payback_months: 1
+  value_anchors:
+  - Reduza custos administrativos em até 30% com automação
+  - Aumente a conversão de leads em 40% com atendimento por voz
+  - Pague menos por serviços premium com eficiência operacional
+market_context:
+  market_size: Estimado em R$ 15 bilhões anuais no setor de foto e vídeo no Brasil
+  growth_rate: 10% ao ano, impulsionado pela digitalização e demanda por conteúdo
+    online
+  key_trends:
+  - Crescimento de vídeos para redes sociais como Instagram e TikTok
+  - Aumento da procura por ensaios pessoais pós-pandemia
+  - Adoção de drones para filmagens criativas e imobiliárias
+  - Foco em conformidade com LGPD para proteção de dados
+  seasonality:
+    high:
+    - Outubro a Março
+    - devido a casamentos e festas de fim de ano
+    low:
+    - Junho a Agosto
+    - períodos mais frios e férias escolares
+typical_objections:
+- objection: Não tenho certeza se preciso de automação, meu negócio é pequeno.
+  response: Entendemos! Para negócios pequenos, a automação pode liberar tempo para
+    focar na criatividade, com custos a partir de R$ 100 mensais. Podemos começar
+    com um teste gratuito.
+- objection: Já uso um sistema de agendamento manual que funciona bem.
+  response: Ótimo! Nosso agente de voz integra-se a sistemas existentes para eliminar
+    falhas e aumentar a eficiência, sem substituir o que já funciona. Vamos demonstrar?
+- objection: O preço é alto comparado a outros serviços.
+  response: Nosso valor está na economia de tempo e no aumento de vendas com atendimento
+    24/7. Em média, clientes recuperam o investimento em 2 meses. Posso mostrar um
+    cálculo personalizado?
+meta:
+  id: photo_video
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "photo studio"
+- "video production"
+- "photography"
+- "videography"
+_extends: _base/photo_video

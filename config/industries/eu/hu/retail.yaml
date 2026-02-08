@@ -1,0 +1,248 @@
+pain_points:
+- description: Az ügyfélkiszolgálás lassúsága és pontatlansága a bolti és online értékesítésben.
+  severity: high
+  solution_hint: Az AI hangügynök gyors és pontos információt nyújt az árukészletről
+    és rendelésekről.
+- description: A készletkezelés nehézségei, túl- vagy alulkészletezés miatt.
+  severity: high
+  solution_hint: Hangalapú készletlekérdezés és automatikus riasztások segíthetnek.
+- description: A GDPR-nak való megfelelés bonyolultsága az ügyféladatok kezelése során.
+  severity: medium
+  solution_hint: AI segíthet az adatvédelmi tájékoztatók és hozzájárulások automatizált
+    kezelésében.
+- description: Munkaerőhiány és a csapat új munkatársainak betanítása.
+  severity: high
+  solution_hint: Hangalapú oktató modulok és automatikus ügyfélszolgálati válaszok
+    tehermentesítik a személyzetet.
+- description: Többcsatornás kommunikáció kezelése és integrálása.
+  severity: medium
+  solution_hint: Egységes hangalapú interfész az ügyfelek számára a gyorsabb elérés
+    érdekében.
+- description: Az ügyfélelégedettség mérése és visszacsatolás gyűjtése manuálisan
+    időigényes.
+  severity: medium
+  solution_hint: Automatikus hangalapú visszajelzés-gyűjtés és elemzés.
+- description: A szezonális forgalom ingadozásának menedzselése.
+  severity: low
+  solution_hint: AI hangügynök segíthet az időszakos kampányok kommunikációjában.
+typical_services:
+- Ügyfélszolgálati telefonos támogatás
+- Online rendelésfelvétel és státusz lekérdezés
+- Készletinformációk hangalapú lekérése
+- Személyre szabott ajánlatok és promóciók ismertetése
+- Panaszkezelés és reklamációs ügyintézés
+- Termékinformációk részletes ismertetése
+- Árajánlatkérés és rendelés módosítás
+- Szállítási információk és időpont egyeztetés
+- Ügyfél-elégedettség mérés hangalapú kérdőívekkel
+- GDPR hozzájárulások és adatvédelmi tájékoztatók kezelése
+recommended_functions:
+- name: Rendelés állapot lekérdezése
+  priority: high
+  reason: A vásárlók leggyakoribb kérdése, gyors válasz növeli az elégedettséget.
+- name: Termékkeresés és ajánlás
+  priority: high
+  reason: Segíti a vásárlót a megfelelő termék megtalálásában, növeli az értékesítést.
+- name: Panasz- és reklamációkezelés
+  priority: high
+  reason: Gyors és hatékony ügyintézés javítja a reputációt.
+- name: Készletinformációk szolgáltatása
+  priority: medium
+  reason: Csökkenti a túlzott telefonos terhelést az alkalmazottakon.
+- name: GDPR tájékoztatók és hozzájárulások kezelése
+  priority: medium
+  reason: Biztosítja a megfelelést és az ügyfél bizalmát.
+- name: Kampányok és akciók ismertetése
+  priority: medium
+  reason: Aktuális ajánlatok továbbítása növeli a forgalmat.
+- name: Ügyfél-elégedettség mérés
+  priority: low
+  reason: Segít a folyamatos fejlesztésben és ügyfélmegtartásban.
+typical_integrations:
+- name: ERP rendszerek
+  examples:
+  - RLB
+  - Kulcs-Soft
+  - SAP Hungary
+  priority: high
+- name: CRM rendszerek
+  examples:
+  - Salesforce
+  - Microsoft Dynamics
+  - HubSpot
+  priority: high
+- name: E-kereskedelmi platformok
+  examples:
+  - Shoprenter
+  - Unas
+  - Magento
+  priority: high
+- name: Pénzügyi és számlázó rendszerek
+  examples:
+  - Billingo
+  - Számlázz.hu
+  - NAV Online Számla
+  priority: medium
+- name: Ügyfélszolgálati ticket rendszerek
+  examples:
+  - Zendesk
+  - Freshdesk
+  - LiveAgent
+  priority: medium
+- name: Adatvédelmi és GDPR megfelelési szoftverek
+  examples:
+  - OneTrust
+  - DataGuard
+  priority: low
+industry_faq:
+- question: Mikor érkezik meg a rendelése?
+  answer_template: Köszönjük érdeklődését! A rendelése várhatóan {szállítási_idő}
+    napon belül érkezik meg. Amennyiben pontosabb információra van szüksége, kérem
+    adja meg rendelési számát.
+- question: Hogyan tudom visszaküldeni a terméket?
+  answer_template: A termék visszaküldéséhez kérjük, kövesse az oldalon található
+    visszaküldési útmutatót, vagy vegye fel velünk a kapcsolatot telefonon a további
+    segítségért.
+- question: Milyen fizetési módokat fogadnak el?
+  answer_template: Elfogadunk bankkártyát, utánvétet és online átutalást is. Részleteket
+    a fizetési információk között talál.
+- question: Van-e garancia a termékekre?
+  answer_template: Igen, minden termékünkre a törvényben előírt garanciát biztosítjuk,
+    általában 1-2 évig. Részletekért kérjük, nézze meg a termékleírást.
+- question: Hogyan tudom módosítani a rendelésemet?
+  answer_template: Rendelése módosításához kérjük, lépjen kapcsolatba ügyfélszolgálatunkkal
+    a lehető leghamarabb, hogy segíthessünk.
+- question: Hogyan védik az adataimat?
+  answer_template: Az Ön adatainak védelme kiemelten fontos számunkra. Minden adatot
+    a GDPR előírásainak megfelelően kezelünk és csak az Ön hozzájárulásával használjuk
+    fel.
+- question: Mikor van legközelebb akció vagy kedvezmény?
+  answer_template: Aktuális akcióinkról rendszeresen tájékoztatjuk hírlevelünkben
+    és weboldalunkon. Érdemes feliratkozni, hogy elsőként értesüljön!
+sales_scripts:
+- trigger: price_question
+  situation: Amikor az ügyfél árinformációt kér a szolgáltatásról.
+  script: Köszönöm érdeklődését! Szolgáltatásaink ára a választott funkcióktól és
+    integrációktól függően változik, de már havi {entry_point} Ft-tól elérhetők, amelyek
+    gyors megtérülést biztosítanak. Szeretnék részletes árajánlatot készíteni Önnek?
+  goal: Árajánlatkérés elindítása és árérzékenység kezelése
+- trigger: gdpr_concern
+  situation: Amikor az ügyfél aggódik az adatvédelem miatt.
+  script: Teljes mértékben megértjük a GDPR fontosságát. Rendszerünk úgy lett kialakítva,
+    hogy teljes körű megfelelést biztosítson, és Ön bármikor ellenőrizheti az adatai
+    kezelését. Szeretnék részletesebb tájékoztatást adni erről?
+  goal: Bizalom építése adatvédelmi aggályok esetén
+- trigger: competitor_comparison
+  situation: Amikor az ügyfél összehasonlít minket más szolgáltatókkal.
+  script: Értékelem, hogy alaposan tájékozódik. Ami minket megkülönböztet, az a helyi
+    piacra szabott megoldásaink, gyors ügyféltámogatásunk és kedvező ár-érték arányunk.
+    Szívesen bemutatom részletesebben, hogyan tudunk segíteni az Ön cégének.
+  goal: Megkülönböztetés kiemelése és bizalom erősítése
+- trigger: budget_concern
+  situation: Amikor az ügyfél aggódik a költségek miatt.
+  script: Megértem, hogy a költségek fontosak. Fontos tudni, hogy a szolgáltatásunkkal
+    jelentős idő- és költségmegtakarítást érhet el, ami rövid időn belül megtérül.
+    Szeretném megmutatni, hogyan számolhatja ki ezt pontosan.
+  goal: ROI szemlélet kialakítása és költségérzékenység kezelése
+- trigger: implementation_question
+  situation: Amikor az ügyfél az integráció és bevezetés menetéről érdeklődik.
+  script: A bevezetésünk egyszerű és gyors, tapasztalt csapatunk támogatja minden
+    lépésben, és a helyi rendszerekkel zökkenőmentesen integrálható. Szeretne egy
+    részletes ütemtervet kapni?
+  goal: Biztonságérzet növelése a bevezetési folyamat kapcsán
+competitors:
+- name: Logme
+  positioning: Hazai piacvezető AI hangalapú ügyfélszolgálati megoldásokban
+  strengths:
+  - Erős helyi jelenlét
+  - Testreszabható megoldások
+  - Jó ügyféltámogatás magyar nyelven
+  weaknesses:
+  - Magasabb árképzés
+  - Kevésbé rugalmas szerződési feltételek
+  our_differentiation: Rugalmasabb árstruktúra, gyorsabb implementáció és kifejezetten
+    kiskereskedelmi igényekre szabott funkciók
+- name: Talk-AI Hungary
+  positioning: Újonnan megjelenő innovatív AI voice szolgáltató
+  strengths:
+  - Modern technológia
+  - Versenyképes árak
+  - Integrált chatbot megoldások
+  weaknesses:
+  - Kisebb referenciák
+  - Korlátozott ügyfélszolgálati kapacitás
+  our_differentiation: Több éves tapasztalat és nagyobb ügyfélkör, stabilabb szolgáltatás
+    és magyar nyelvű specializáció
+- name: VoicePro
+  positioning: Nemzetközi szereplő magyarországi leányvállalattal
+  strengths:
+  - Erős technológiai háttér
+  - Széles körű funkcionalitás
+  weaknesses:
+  - Magas költségek
+  - Kevés helyi adaptáció
+  our_differentiation: Versenyképes ár és mélyebb helyi piacismeret, jobb GDPR megfelelésre
+    fókuszálás
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 150000
+  - 800000
+  entry_point: 150000
+  roi_examples:
+  - scenario: Egy közepes méretű kereskedelmi bolt automatizált ügyfélszolgálata
+    monthly_cost: 200000
+    monthly_savings: 500000
+    payback_months: 1
+  - scenario: Online webáruház hangalapú rendelésfelvétele és panaszkezelése
+    monthly_cost: 300000
+    monthly_savings: 700000
+    payback_months: 1
+  value_anchors:
+  - Az AI hangügynök 24/7 elérhető, így növeli az ügyfél-elégedettséget.
+  - Jelentős munkaerő-költséget takaríthat meg a rutin feladatok automatizálásával.
+  - Gyorsabb válaszidő, kevesebb elveszett rendelés és panasz.
+  - Teljes GDPR megfelelés az automatizált adatkezelés által.
+  - Rugalmasan bővíthető, így csak a szükséges funkciókért fizet.
+market_context:
+  market_size: 15000000000
+  growth_rate: 7.5
+  key_trends:
+  - Fokozódó online és omnichannel értékesítés.
+  - Növekvő igény az automatizált ügyfélszolgálati megoldásokra.
+  - GDPR és adatvédelmi előírások szigorodása.
+  - Munkaerőhiány miatti automatizációs törekvések.
+  - Fenntarthatóság és környezettudatos vásárlói magatartás erősödése.
+  seasonality:
+    high:
+    - Karácsonyi szezon (november-december)
+    - Black Friday
+    - Nyári leárazások
+    low:
+    - Február
+    - Augusztus vége-szeptember eleje
+typical_objections:
+- objection: Túl drágának találom a szolgáltatást.
+  response: Megértem, hogy fontos a költséghatékonyság. Az automatizációval azonban
+    jelentős idő- és munkaerő-megtakarítást érhet el, ami gyors megtérülést biztosít.
+- objection: Nem vagyok biztos benne, hogy a rendszer illeszkedik a meglévő folyamataimhoz.
+  response: Rendszerünk rugalmasan integrálható a legnépszerűbb hazai rendszerekkel,
+    és szakértőink segítenek a zökkenőmentes bevezetésben.
+- objection: Aggódom az adatvédelem miatt.
+  response: Teljes mértékben megfelelünk a GDPR előírásainak, és az adatkezelés minden
+    lépését átlátható módon biztosítjuk.
+- objection: Nincs elég tapasztalatom az AI megoldásokkal kapcsolatban.
+  response: Segítünk a folyamatok megértésében és az oktatásban, hogy könnyen és gyorsan
+    használni tudja a rendszert.
+- objection: Nem vagyok biztos benne, hogy megéri a befektetést.
+  response: Sok ügyfelünk már az első hónapban megtapasztalta a költségcsökkenést
+    és hatékonyságnövelést. Szívesen bemutatjuk a személyre szabott megtérülési számításokat.
+meta:
+  id: retail
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+_extends: _base/retail

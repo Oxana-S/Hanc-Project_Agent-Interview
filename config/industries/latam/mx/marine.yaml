@@ -1,0 +1,249 @@
+pain_points:
+- description: Gestión ineficiente de reservas y programación, lo que lleva a sobrecarga
+    de trabajo manual y errores.
+  severity: high
+  solution_hint: Automatizar reservas y recordatorios mediante agentes de voz IA para
+    reducir errores y mejorar la eficiencia.
+- description: Altos costos operativos debido a mantenimiento reactivo en lugar de
+    preventivo en embarcaciones.
+  severity: high
+  solution_hint: Implementar seguimiento automatizado de mantenimiento con alertas
+    de voz IA para optimizar costos y evitar averías.
+- description: Cumplimiento complejo con regulaciones locales como la LFPDPPP para
+    protección de datos en servicios marinos.
+  severity: medium
+  solution_hint: Integrar agentes de voz IA con sistemas de cumplimiento para automatizar
+    registros y notificaciones, asegurando conformidad.
+- description: Comunicación lenta con clientes para consultas de servicios o emergencias,
+    afectando la satisfacción.
+  severity: medium
+  solution_hint: Usar agentes de voz IA para proporcionar respuestas inmediatas las
+    24/7, mejorando el servicio al cliente.
+- description: Dificultad en la gestión de inventario de repuestos y suministros navales,
+    causando retrasos en reparaciones.
+  severity: medium
+  solution_hint: Automatizar pedidos y seguimiento de inventario a través de integraciones
+    con voz IA para reducir tiempos de espera.
+- description: Falta de integración entre sistemas de gestión marina y software contable,
+    aumentando la carga administrativa.
+  severity: low
+  solution_hint: Conectar agentes de voz IA con ERP locales para sincronizar datos
+    y simplificar reportes financieros.
+typical_services:
+- Mantenimiento de embarcaciones
+- Reparaciones navales
+- Alquiler de barcos y yates
+- Servicios de puerto y marina
+- Venta de repuestos y equipos marinos
+- Capacitación y cursos náuticos
+- Inspecciones y certificaciones
+- Logística y transporte marítimo
+- Diseño y construcción naval
+- Turismo y excursiones marinas
+recommended_functions:
+- name: Reservas automatizadas
+  priority: high
+  reason: Reduce errores manuales y mejora la eficiencia en la gestión de citas y
+    alquileres en la industria marina.
+- name: Recordatorios de mantenimiento
+  priority: high
+  reason: Ayuda a prevenir averías costosas mediante alertas proactivas para mantenimiento
+    preventivo de embarcaciones.
+- name: Asistencia al cliente 24/7
+  priority: medium
+  reason: Proporciona soporte inmediato para consultas y emergencias, aumentando la
+    satisfacción del cliente en servicios marinos.
+- name: Integración con CRM
+  priority: medium
+  reason: Sincroniza datos de clientes y ventas para personalizar interacciones y
+    mejorar el seguimiento en el mercado mexicano.
+- name: Reportes automatizados
+  priority: low
+  reason: Facilita la generación de informes operativos y financieros, ahorrando tiempo
+    en cumplimiento y análisis.
+- name: Gestión de inventario
+  priority: medium
+  reason: Optimiza el control de repuestos y suministros, reduciendo costos y retrasos
+    en reparaciones navales.
+typical_integrations:
+- name: Sistemas de gestión marina
+  examples:
+  - Navis
+  - MarinaSoft MX
+  - Sistema Portuario Integral
+  priority: high
+- name: Software CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - CRM local adaptado
+  priority: medium
+- name: ERP contable
+  examples:
+  - SAP
+  - Oracle Netsuite
+  - Contpaq i
+  priority: medium
+- name: Sistemas de cumplimiento LFPDPPP
+  examples:
+  - Software de protección de datos mexicano
+  - Integraciones personalizadas
+  priority: high
+- name: Plataformas de reservas
+  examples:
+  - Bookeo
+  - Reservamos.mx
+  - Sistemas propietarios
+  priority: low
+industry_faq:
+- question: ¿Cómo puedo reducir los costos de mantenimiento de mi barco?
+  answer_template: Nuestro agente de voz IA automatiza el seguimiento de mantenimiento
+    preventivo, ayudando a evitar reparaciones costosas y optimizando su presupuesto
+    en MXN.
+- question: ¿Es seguro usar agentes de voz IA para manejar datos de clientes según
+    la LFPDPPP?
+  answer_template: Sí, nuestros sistemas están diseñados para cumplir con la LFPDPPP,
+    integrando protocolos de seguridad y encriptación para proteger la información
+    personal.
+- question: ¿Qué servicios marinos pueden automatizarse con IA?
+  answer_template: Podemos automatizar reservas, recordatorios de inspecciones, asistencia
+    al cliente y gestión de inventario, adaptados a la industria marina en México.
+- question: ¿Cuánto tiempo toma implementar un agente de voz IA en mi negocio naval?
+  answer_template: La implementación típica es de 2 a 4 semanas, dependiendo de las
+    integraciones, con soporte continuo para asegurar una transición sin problemas.
+- question: ¿Puede el agente de voz IA manejar emergencias marinas?
+  answer_template: Sí, puede proporcionar respuestas inmediatas y conectar con servicios
+    de emergencia, mejorando la seguridad y respuesta en situaciones críticas.
+- question: ¿Cómo se integra con mi software existente?
+  answer_template: Ofrecemos integraciones flexibles con sistemas comunes en México,
+    como CRM y ERP, mediante APIs para una sincronización sin esfuerzo.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre el costo de implementar un agente de
+    voz IA para su negocio naval.
+  script: Entendemos que el presupuesto es clave. Nuestros planes comienzan desde
+    5,000 MXN mensuales, con un ROI rápido al reducir costos operativos en mantenimiento
+    y servicio al cliente. ¿Le gustaría una demostración personalizada?
+  goal: Convertir la consulta de precio en una demostración para mostrar el valor.
+- trigger: service_inquiry
+  situation: Cuando un cliente se interesa en cómo la IA puede mejorar sus servicios
+    marinos.
+  script: Nuestro agente de voz IA puede automatizar reservas, enviar recordatorios
+    de mantenimiento y ofrecer soporte 24/7, todo en español y adaptado a regulaciones
+    mexicanas. ¿En qué área necesita más ayuda?
+  goal: Identificar necesidades específicas y proponer soluciones personalizadas.
+- trigger: competitor_mention
+  situation: Cuando un cliente compara con competidores locales en la industria marina.
+  script: A diferencia de otras soluciones, nos especializamos en integraciones con
+    software mexicano y cumplimiento LFPDPPP, ofreciendo soporte local y ahorros comprobados.
+    ¿Le interesa ver casos de éxito?
+  goal: Diferenciar nuestro servicio y cerrar la venta.
+- trigger: objection_complexity
+  situation: Cuando un cliente expresa preocupación por la complejidad de implementación.
+  script: Nos encargamos de toda la configuración y capacitación, con un equipo en
+    México que asegura una transición sencilla. Además, nuestro agente es intuitivo
+    y se adapta a sus flujos de trabajo existentes.
+  goal: Aliviar preocupaciones y avanzar hacia la implementación.
+competitors:
+- name: Marina Solutions MX
+  positioning: Proveedor local de software de gestión marina
+  strengths:
+  - Conocimiento del mercado mexicano
+  - Soporte en español
+  - Precios competitivos
+  weaknesses:
+  - Integraciones limitadas con IA
+  - Falta de funciones de voz
+  - Cumplimiento básico con LFPDPPP
+  our_differentiation: Ofrecemos agentes de voz IA con automatización avanzada y cumplimiento
+    integral, mejorando la eficiencia y servicio al cliente.
+- name: Naviera Tecnológica
+  positioning: Empresa regional de soluciones navales en latam
+  strengths:
+  - Amplia red en América Latina
+  - Servicios personalizados
+  - Experiencia en logística
+  weaknesses:
+  - Enfoque menos en automatización
+  - Costos más altos
+  - Soporte menos ágil
+  our_differentiation: Nos centramos en automatización con IA para reducir costos
+    y tiempos, con implementación rápida y ROI demostrable en MXN.
+- name: TechMarine Global
+  positioning: Proveedor internacional con presencia en México
+  strengths:
+  - Tecnología avanzada
+  - Marcado reconocido
+  - Soporte multilingüe
+  weaknesses:
+  - Precios en USD, no adaptados a MXN
+  - Falta de localización para regulaciones mexicanas
+  - Menor enfoque en servicio al cliente local
+  our_differentiation: Ofrecemos precios en MXN, cumplimiento local con LFPDPPP, y
+    agentes de voz en español diseñados para la industria marina mexicana.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 10000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Reducción de costos de mantenimiento preventivo en una flota de 10 embarcaciones
+    monthly_cost: 15000
+    monthly_savings: 20000
+    payback_months: 2
+  - scenario: Mejora en eficiencia de reservas y servicio al cliente para una marina
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 3
+  value_anchors:
+  - Ahorre hasta un 30% en costos operativos con automatización IA
+  - Cumpla fácilmente con la LFPDPPP usando nuestras integraciones seguras
+  - Mejore la satisfacción del cliente con soporte 24/7 en español
+market_context:
+  market_size: El mercado marino en México tiene un valor estimado de 50,000 millones
+    de MXN anuales.
+  growth_rate: 4% anual, impulsado por el turismo y la digitalización.
+  key_trends:
+  - Aumento en la adopción de tecnologías digitales para gestión marina
+  - Enfoque en sostenibilidad y regulaciones ambientales
+  - Crecimiento del turismo náutico en costas mexicanas
+  - Demanda de automatización para reducir costos en un contexto inflacionario
+  seasonality:
+    high:
+    - diciembre a abril
+    - verano y vacaciones
+    low:
+    - septiembre a noviembre
+    - temporada de lluvias en algunas regiones
+typical_objections:
+- objection: Es muy caro para mi negocio pequeño.
+  response: Entendemos, por eso ofrecemos planes escalables desde 5,000 MXN, con ROI
+    rápido que puede pagar la inversión en pocos meses. ¿Podemos analizar sus necesidades
+    específicas?
+- objection: No confío en la IA para manejar mis operaciones marinas.
+  response: Nuestros agentes están diseñados con supervisión humana y cumplen con
+    estándares mexicanos. Además, proporcionamos capacitación y soporte continuo para
+    asegurar su confianza.
+- objection: Ya tengo sistemas, no quiero más complicaciones.
+  response: Nos integramos sin problemas con su software existente, simplificando
+    procesos en lugar de añadir complejidad. Le mostramos cómo puede centralizar operaciones
+    con nuestra solución.
+- objection: El cumplimiento con LFPDPPP es demasiado engorroso.
+  response: Nuestra plataforma automatiza el cumplimiento, manejando datos de manera
+    segura y generando reportes automáticos, ahorrándole tiempo y riesgos.
+meta:
+  id: marine
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- "marine"
+- "yacht club"
+- "marina"
+- "boating"
+- "sailing"
+_extends: _base/marine

@@ -1,0 +1,240 @@
+pain_points:
+- description: Gestione complessa dell'inventario con prodotti a scadenza rapida (es.
+    cosmetici organici) e stagionalità delle tendenze.
+  severity: high
+  solution_hint: Agente vocale può automatizzare gli alert di scadenza e suggerire
+    riordini basati sulle vendite stagionali.
+- description: Difficoltà nella formazione continua del personale su nuovi prodotti
+    e tecniche di vendita.
+  severity: medium
+  solution_hint: Agente può fornire brevi training vocali su specifiche linee di prodotti
+    e rispondere a domande tecniche dello staff.
+- description: Concorrenza aggressiva da parte di grandi catene e e-commerce, con
+    pressione sui prezzi.
+  severity: high
+  solution_hint: Agente può evidenziare valore aggiunto (consulenza, prodotti di nicchia)
+    e gestire programmi fedeltà.
+- description: Adempimento GDPR per la gestione dei dati dei clienti (preferenze cosmetiche,
+    acquisti).
+  severity: medium
+  solution_hint: Agente può gestire consensi GDPR in modo strutturato durante le interazioni
+    e assicurare compliance.
+- description: Fidelizzazione della clientela in un mercato con molte alternative.
+  severity: high
+  solution_hint: Agente può personalizzare le chiamate di follow-up, ricordare compleanni
+    e suggerire prodotti correlati.
+- description: Logistica e costi di consegna per ordini online e a professionisti
+    (parrucchieri, estetiste).
+  severity: medium
+  solution_hint: Agente può verificare la disponibilità del corriere, comunicare tempistiche
+    e gestire reclami sulle spedizioni.
+typical_services:
+- Vendita al dettaglio di prodotti per capelli (shampoo, balsami, tinte)
+- Vendita al dettaglio di cosmetici e make-up
+- Vendita all'ingrosso a parrucchieri e centri estetici (B2B)
+- E-commerce con consegna a domicilio
+- Consulenza personalizzata per la scelta dei prodotti
+- Fornitura di attrezzature professionali (asciugacapelli, spazzole)
+- Servizio di ricarica per prodotti sfusi (es. shampoo)
+- Programmi fedeltà per clienti abituali
+- Vendita di prodotti per la cura della pelle (skincare)
+- Organizzazione di eventi e workshop di bellezza
+recommended_functions:
+- name: Gestione ordini e prenotazioni
+  priority: high
+  reason: Riduce il carico telefonico per ordini ricorrenti dei clienti B2B e ritiro
+    in negozio.
+- name: Assistente FAQ prodotto
+  priority: high
+  reason: Risponde a domande comuni su ingredienti, utilizzo e compatibilità, liberando
+    il personale.
+- name: Prenotazione appuntamenti consulenza
+  priority: medium
+  reason: Aumenta le vendite di valore più alto tramite consulenze prenotate in negozio.
+- name: Upselling e cross-selling intelligente
+  priority: medium
+  reason: Suggerisce prodotti complementari basati sull'acquisto o sulle esigenze
+    del cliente.
+- name: Raccolta feedback post-vendita
+  priority: low
+  reason: Automizza la raccolta di recensioni e identifica problemi per migliorare
+    il servizio.
+- name: Verifica compliance GDPR nelle interazioni
+  priority: medium
+  reason: Essenziale per operare in Italia/UE, gestisce consensi in modo automatico
+    e sicuro.
+typical_integrations:
+- name: Sistema POS/Cassa
+  examples:
+  - SumUp
+  - Nexi
+  - Timengo
+  priority: high
+- name: Piattaforma E-commerce
+  examples:
+  - Shopify
+  - WooCommerce (su siti italiani)
+  - Magento
+  priority: high
+- name: Software gestione magazzino
+  examples:
+  - Zucchetti
+  - TeamSystem
+  - Odoo (configurato in italiano)
+  priority: high
+- name: Software contabilità
+  examples:
+  - TeamSystem
+  - Arancia
+  - Sage
+  priority: medium
+- name: CRM/Email Marketing
+  examples:
+  - MailUp
+  - Sendinblue
+  - ActiveCampaign
+  priority: medium
+industry_faq:
+- question: Fate consegne a domicilio?
+  answer_template: Sì, offriamo consegne in tutta Italia. I tempi e i costi dipendono
+    dal codice postale. Posso verificare per il suo indirizzo.
+- question: Accettate resi di prodotti cosmetici aperti?
+  answer_template: Per motivi igienici, non accettiamo resi di prodotti cosmetici
+    aperti, salvo difetti di fabbricazione. I prodotti non aperti possono essere restituiti
+    entro 14 giorni.
+- question: Offrite sconti per parrucchieri o estetiste?
+  answer_template: Assolutamente sì. Abbiamo programmi B2B dedicati con prezzi all'ingrosso
+    e condizioni vantaggiose. Posso metterla in contatto con il nostro responsabile
+    commerciale.
+- question: Avete la linea [Nome Marchio] in negozio?
+  answer_template: Verifico subito la disponibilità per lei. Molti prodotti sono disponibili
+    anche sul nostro sito con la funzione 'ritira in negozio'.
+- question: I miei dati di acquisto sono al sicuro?
+  answer_template: Sì, rispettiamo rigorosamente il Regolamento GDPR. I suoi dati
+    sono utilizzati solo per migliorare il suo servizio e non sono ceduti a terzi
+    senza il suo consenso esplicito.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede il prezzo di un servizio o confronta con la
+    concorrenza.
+  script: Capisco che il prezzo sia un fattore importante. Oltre al prodotto, con
+    noi ottiene una consulenza esperta per scegliere esattamente ciò che serve, risparmiando
+    su acquisti sbagliati. Inoltre, con il nostro programma fedeltà accumula punti
+    per sconti futuri. Le interessa un preventivo dettagliato?
+  goal: Spostare il focus dal prezzo al valore, presentare il servizio di consulenza
+    e il programma fedeltà.
+- trigger: new_product_launch
+  situation: Per presentare una nuova linea di prodotti a clienti abituali o potenziali.
+  script: Buongiorno [Nome], sono [Nome Agente] di [Nome Azienda]. La chiamo per presentarle
+    la nostra nuova linea [Nome Linea], tutta naturale e made in Italy. Visto il suo
+    interesse per prodotti simili, ho pensato potesse interessarle. Possiamo fissare
+    una breve consulenza telefonica per capire se fa al caso suo?
+  goal: Generare interesse per un nuovo prodotto, personalizzando l'approccio e fissando
+    un prossimo passo.
+- trigger: competitor_mention
+  situation: Il cliente menziona un competitor come Kiko o Limoni.
+  script: Sì, conosco bene quei marchi. La nostra forza è la cura del dettaglio e
+    la selezione di prodotti spesso di nicchia o più specifici per professionisti.
+    Noi ci concentriamo su una relazione diretta e su consigli veramente personalizzati,
+    non solo sulla vendita. Le farei provare la differenza?
+  goal: Differenziarsi dalla concorrenza di massa, enfatizzare la specializzazione
+    e il rapporto personalizzato.
+competitors:
+- name: Kiko Milano
+  positioning: Grande catena di cosmetici low-cost, diffusissima.
+  strengths:
+  - Prezzi molto competitivi
+  - Ampia rete di negozi
+  - Branding forte e trendy
+  weaknesses:
+  - Servizio clienti spesso impersonale
+  - Prodotti meno adatti al professionista
+  - Alta rotazione personale
+  our_differentiation: Consulenza esperta e personalizzata, focus su prodotti per
+    professionisti (B2B) e nicchie di qualità.
+- name: Limoni
+  positioning: Catena specializzata in profumeria e cosmesi.
+  strengths:
+  - Ampia gamma di marche famose
+  - Negozi in posizioni centrali
+  - Spesso hanno profumeria
+  weaknesses:
+  - Prezzi premium
+  - Poco focalizzati sul B2B
+  - Servizio variabile
+  our_differentiation: Prezzi più accessibili per la gamma professionale, rapporto
+    diretto e continuativo con il cliente.
+- name: I Provenzali (NaturaSì beauty corner)
+  positioning: Punta sul biologico e naturale nelle catene di alimentari bio.
+  strengths:
+  - Fortissimo appeal sul biologico/naturale
+  - Clientela fedele e consapevole
+  weaknesses:
+  - Gamma limitata
+  - Presenza principalmente in negozi alimentari
+  - Poca attenzione al make-up tradizionale
+  our_differentiation: Gamma completa che include naturale E tradizionale, supporto
+    tecnico per professionisti.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 99
+  roi_examples:
+  - scenario: Automazione della gestione ordini B2B e appuntamenti per un negozio
+      medio.
+    monthly_cost: 149
+    monthly_savings: 400
+    payback_months: 1
+  value_anchors:
+  - Libera 10 ore a settimana del tuo personale da compiti ripetitivi.
+  - Aumenta il valore medio dell'ordine con consigli di acquisto intelligenti.
+  - Riduce gli errori di ordine e le scadenze di magazzino dimenticate.
+market_context:
+  market_size: Circa 12 miliardi di EUR (cosmesi e cura personale)
+  growth_rate: 2-3% YoY
+  key_trends:
+  - Crescente domanda di cosmetici naturali, bio e cruelty-free.
+  - Aumento del mercato maschile (men's grooming).
+  - Fortissima crescita dell'e-commerce nel settore beauty.
+  - Personalizzazione spinta dei prodotti (es. fondotinta su misura).
+  seasonality:
+    high:
+    - Novembre-Dicembre (Regali Natale)
+    - Febbraio-Marzo (Pre-Estate)
+    - Settembre (Rientro)
+    low:
+    - Gennaio (post-saldi)
+    - Agosto (ferie estive)
+typical_objections:
+- objection: È troppo costoso per la mia piccola attività.
+  response: Capisco. Partiamo spesso con un piano base che automatizza solo le attività
+    più dispendiose in tempo, come la gestione ordini. Così vede subito un risparmio.
+    Possiamo parlarne senza impegno?
+- objection: I miei clienti preferiscono venire in negozio, non servono chiamate.
+  response: Esattamente. Il nostro agente non sostituisce il negozio, ma lo potenzia.
+    Gestisce le chiamate di routine (orari, disponibilità prodotti) mentre lei si
+    concentra sui clienti in negozio. Inoltre, può richiamare clienti persi per riportarli
+    da lei.
+- objection: Ho già un sito web, mi basta quello.
+  response: 'Il sito è fondamentale. Il nostro agente vocale è il complemento perfetto:
+    risponde subito a chi chiama fuori orario, prenota consulenze dal sito e converte
+    le chiamate in appuntamenti in negozio, che il sito da solo non fa.'
+- objection: La tecnologia è complicata, non ho tempo per imparare.
+  response: La bellezza della nostra soluzione è che non deve imparare nulla. La configuriamo
+    noi in base alle sue esigenze e funziona da subito. Lei riceve solo i benefici,
+    come più tempo per i clienti e meno chiamate perse.
+meta:
+  id: beauty_supplies
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

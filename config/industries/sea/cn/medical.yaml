@@ -1,0 +1,191 @@
+pain_points:
+- description: 患者预约难，电话经常占线
+  severity: high
+  solution_hint: AI语音助手提供24/7自动预约服务
+- description: 患者忘记预约时间，导致未到诊率高
+  severity: high
+  solution_hint: 自动发送短信或微信提醒，提前一天和前一小时
+- description: 重复性咨询问题多，如工作时间、检查准备
+  severity: medium
+  solution_hint: 内置FAQ自动回答常见问题，减轻人工负担
+- description: 医护人员工作压力大，处理来电效率低
+  severity: high
+  solution_hint: 自动化处理常规预约和查询，释放人力资源
+- description: 医疗资源分布不均，患者流向大医院
+  severity: medium
+  solution_hint: AI助手帮助分流，引导到合适科室或医生
+- description: 信息化水平低，预约系统不互通
+  severity: medium
+  solution_hint: 集成主流医疗信息系统，实现数据同步
+typical_services:
+- 医生咨询
+- 体检服务
+- 化验检查
+- 影像检查（如CT、MRI）
+- 中医诊疗
+- 疫苗接种
+- 家庭医生上门服务
+- 专科门诊
+- 急诊服务
+- 康复治疗
+recommended_functions:
+- name: 预约
+  priority: high
+  reason: 60-70%的来电为预约或改期，自动化可大幅提升效率
+- name: 提醒
+  priority: high
+  reason: 减少未到诊率30-40%，提高资源利用率
+- name: FAQ回答
+  priority: high
+  reason: 快速处理常见咨询，如检查准备、医保报销
+- name: 转接
+  priority: medium
+  reason: 紧急情况或复杂问题转人工坐席，确保患者安全
+- name: 家庭医生呼叫
+  priority: medium
+  reason: 支持上门服务预约，满足老龄化需求
+- name: 报告查询
+  priority: low
+  reason: 患者可语音查询检查结果，提升便利性
+typical_integrations:
+- name: 医疗信息系统
+  examples:
+  - 金蝶医疗
+  - 用友医疗
+  - 东软医疗
+  priority: high
+  reason: 同步医生排班、患者记录，实现无缝预约
+- name: CRM系统
+  examples:
+  - 销售易
+  - 纷享销客
+  priority: medium
+  reason: 管理患者历史记录和随访，提升服务质量
+- name: 电话系统
+  examples:
+  - 阿里云通信
+  - 腾讯云呼叫中心
+  priority: high
+  reason: 集成来电处理，支持多渠道接入
+- name: 消息平台
+  examples:
+  - 微信
+  - 支付宝
+  priority: high
+  reason: 发送预约提醒和健康通知，提高患者参与度
+- name: 日历系统
+  examples:
+  - 钉钉日历
+  - 腾讯日历
+  priority: medium
+  reason: 同步医护人员日程，避免冲突
+industry_faq:
+- question: 如何预约医生？
+  answer_template: 请告诉我您想预约的科室或医生姓名，以及方便的时间，我会为您查询空余档期。
+- question: 检查前需要空腹吗？
+  answer_template: 血液化验如血糖、血脂需要空腹8-12小时；具体准备请参考检查单说明。
+- question: 周末上班吗？
+  answer_template: 我们周六正常营业，时间为9:00-17:00；周日有值班医生，可处理紧急情况。
+- question: 可以上门服务吗？
+  answer_template: 是的，提供家庭医生上门服务。请告知地址和症状，我会帮您安排。
+- question: 咨询费用是多少？
+  answer_template: 费用因医生级别和科室而异。普通门诊咨询起价200元，专科医生可能更高。
+- question: 医保可以报销吗？
+  answer_template: 部分服务可医保报销，具体请提供医保类型，或咨询我们的财务人员。
+sales_scripts:
+- trigger: price_question
+  situation: 当潜在客户询问AI语音助手的价格时
+  script: 我们的AI语音助手每月仅需500元起，可自动化处理60%的来电，帮助您节省人力成本，提高患者满意度。根据诊所规模，投资回报率通常在1-3个月内实现。
+  goal: 展示成本效益，促成试用或购买
+- trigger: efficiency_concern
+  situation: 当客户担心现有预约系统效率低下时
+  script: 通过AI语音助手，您可以实现24/7自动预约，减少电话占线，并将未到诊率降低30%。我们已经为多家诊所带来显著效率提升。
+  goal: 突出自动化优势，建立信任
+- trigger: data_security
+  situation: 当客户担忧数据安全和PIPL合规时
+  script: 我们的系统完全符合中国PIPL法规，数据加密存储，仅用于预约和提醒，确保患者隐私安全。我们提供合规性报告供您审核。
+  goal: 消除安全顾虑，推动决策
+- trigger: competitor_mention
+  situation: 当客户提到其他竞争对手如科大讯飞时
+  script: 相比其他方案，我们更注重定制化和本地支持，价格更灵活，并能快速集成到您的现有系统，确保无缝过渡。
+  goal: 差异化竞争，强调价值
+competitors:
+- name: 科大讯飞医疗
+  positioning: 领先的医疗AI和语音技术提供商
+  strengths:
+  - 强大的语音识别和自然语言处理技术
+  - 广泛的医院合作案例
+  weaknesses:
+  - 解决方案标准化，定制化程度低
+  - 价格较高，适合大型机构
+  our_differentiation: 提供更灵活的定制服务，中小型诊所友好，价格更具竞争力
+- name: 百度医疗AI
+  positioning: 基于AI的医疗搜索和辅助诊断平台
+  strengths:
+  - 大数据和搜索引擎优势
+  - 患者流量导入能力
+  weaknesses:
+  - 侧重线上，线下集成经验不足
+  - 语音交互功能相对较弱
+  our_differentiation: 专注于语音助手落地，深度集成预约和管理流程，提升实操效率
+- name: 阿里健康
+  positioning: 综合医疗健康服务平台
+  strengths:
+  - 电商和支付生态整合
+  - 药品配送和在线咨询服务
+  weaknesses:
+  - 线下医疗机构合作深度有限
+  - AI语音助手非核心业务
+  our_differentiation: 专注于诊所和医院的语音自动化，提供端到端解决方案，优化患者体验
+pricing_context:
+  currency: CNY
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: 小型诊所使用基本预约和提醒功能
+    monthly_cost: 500
+    monthly_savings: 1500
+    payback_months: 0.33
+  value_anchors:
+  - 自动化处理60%的来电，释放医护人员时间
+  - 减少未到诊率30%，直接增加营收
+  - 7x24小时服务，提升患者满意度
+market_context:
+  market_size: 估计中国医疗AI市场规模超1000亿元
+  growth_rate: 年增长率约25%
+  key_trends:
+  - 政策推动数字化转型和AI医疗应用
+  - 老龄化加剧，家庭医疗需求增长
+  - 患者对便捷预约和个性化服务期望提高
+  seasonality:
+    high:
+    - 春季体检季（3-5月）
+    - 秋冬流感高发期（10-12月）
+    low:
+    - 夏季暑假期间（7-8月）
+typical_objections:
+- objection: 太贵了，我们预算有限
+  response: 我们的系统能帮您节省更多。例如，减少未到诊率可每月节省上千元人力成本，投资回报快。
+- objection: 不需要AI，人工就够了
+  response: AI可以补充人工，处理重复性工作，让医护人员专注于核心医疗，提高整体效率。
+- objection: 担心数据泄露，PIPL合规吗？
+  response: 我们严格遵守PIPL，数据加密处理，仅用于必要服务，并提供合规保障，请放心使用。
+- objection: 操作复杂，员工不会用
+  response: 系统设计简洁，无需培训即可使用。我们还提供本地技术支持，确保顺利上线。
+meta:
+  id: medical
+  region: sea
+  country: cn
+  language: zh
+  currency: CNY
+  phone_codes:
+  - '+86'
+aliases:
+- "medical"
+- "healthcare"
+- "clinic"
+- "hospital"
+- "doctor"
+_extends: _base/medical

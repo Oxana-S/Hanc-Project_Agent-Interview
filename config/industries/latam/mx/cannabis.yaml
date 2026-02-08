@@ -1,0 +1,231 @@
+pain_points:
+- description: Cumplimiento normativo complejo y cambios frecuentes en la legislación mexicana.
+  severity: high
+  solution_hint: El agente de voz IA puede proporcionar actualizaciones en tiempo real y asistencia en documentación para LFPDPPP.
+- description: Dificultades en la cadena de suministro y logística debido a regulaciones estrictas.
+  severity: medium
+  solution_hint: Automatizar la gestión de inventario y coordinación con proveedores autorizados.
+- description: Restricciones bancarias y problemas con el procesamiento de pagos electrónicos.
+  severity: high
+  solution_hint: Integrar soluciones de pago alternativas y asesorar sobre transacciones seguras y compatibles.
+- description: Estigma social y percepción negativa del cannabis en algunas comunidades.
+  severity: medium
+  solution_hint: Educar a los clientes con información verificada y manejar consultas de manera profesional.
+- description: Competencia del mercado informal y precios no regulados que afectan la rentabilidad.
+  severity: high
+  solution_hint: Destacar la calidad, legalidad y ventajas de los productos regulados a través de comunicación automatizada.
+- description: Altos costos de licencias y impuestos asociados a la operación legal.
+  severity: medium
+  solution_hint: Ayudar en la optimización de costos y gestión financiera con herramientas de IA.
+- description: Preocupaciones de seguridad y robos en instalaciones de cultivo o distribución.
+  severity: low
+  solution_hint: Integrar sistemas de monitoreo y alertas proactivas para mejorar la seguridad.
+typical_services:
+- Cultivo de cannabis medicinal
+- Procesamiento de extractos y derivados
+- Distribución a farmacias y centros de salud autorizados
+- Venta al por menor en dispensarios regulados
+- Consultoría en regulación y cumplimiento normativo
+- Análisis de laboratorio para control de calidad
+- Capacitación y educación sobre usos del cannabis
+- Desarrollo de productos personalizados
+- Marketing y posicionamiento de marca en el mercado latinoamericano
+- Gestión de residuos y prácticas sostenibles
+recommended_functions:
+- name: Respuesta a preguntas frecuentes sobre legalidad y regulaciones
+  priority: high
+  reason: Los clientes tienen muchas dudas sobre las leyes mexicanas, y es crucial para la confianza.
+- name: Programación de citas para consultas y ventas
+  priority: medium
+  reason: Facilita la gestión de clientes y aumenta la eficiencia en un mercado en crecimiento.
+- name: Asistencia en cumplimiento de LFPDPPP y otras normativas
+  priority: high
+  reason: Evita multas y problemas legales, que son comunes en este sector regulado.
+- name: Monitoreo de inventario y gestión de pedidos
+  priority: medium
+  reason: Optimiza la operación y reduce pérdidas en una industria con altos costos.
+- name: Educación sobre beneficios del cannabis medicinal
+  priority: low
+  reason: Ayuda a combatir el estigma y aumentar la aceptación y ventas.
+- name: Integración con sistemas de pago locales
+  priority: high
+  reason: Resuelve un punto crítico para las transacciones debido a las restricciones bancarias.
+- name: Alertas sobre cambios normativos y tendencias del mercado
+  priority: high
+  reason: Mantiene al negocio actualizado y competitivo en un entorno dinámico.
+typical_integrations:
+- name: Sistema ERP
+  examples:
+  - SAP
+  - Oracle
+  - Contpaq
+  priority: high
+- name: Sistema de gestión de relación con clientes (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Sistemas de pago electrónico
+  examples:
+  - Stripe
+  - PayPal
+  - Transferencias bancarias locales como BBVA o Banorte
+  priority: high
+- name: Software de cumplimiento normativo
+  examples:
+  - Sistemas personalizados para cannabis
+  - Herramientas de gestión de datos bajo LFPDPPP
+  priority: high
+- name: Plataformas de e-commerce
+  examples:
+  - Shopify
+  - Mercado Libre
+  - Amazon México
+  priority: medium
+- name: Sistemas de seguridad y vigilancia
+  examples:
+  - Sistemas de cámaras locales
+  - Software de monitoreo de acceso
+  priority: low
+industry_faq:
+- question: ¿Es legal el cannabis en México?
+  answer_template: Sí, el cannabis medicinal está regulado por autoridades sanitarias, y el uso adulto está en proceso de legalización. Es esencial cumplir con las leyes federales y locales.
+- question: ¿Qué licencias necesito para operar un negocio de cannabis?
+  answer_template: 'Depende de la actividad: se requieren licencias de cultivo, procesamiento, distribución o venta, emitidas por COFEPRIS y otras entidades. Recomendamos asesoría especializada.'
+- question: ¿Cómo manejar los pagos de manera segura y conforme a la ley?
+  answer_template: Integre sistemas de pago electrónico que cumplan con regulaciones bancarias y la LFPDPPP para proteger datos personales. Podemos ayudarle con opciones locales.
+- question: ¿Cuáles son los costos típicos para entrar al mercado?
+  answer_template: Los costos varían desde 50,000 MXN para consultoría inicial, hasta varios millones para operaciones completas, incluyendo licencias y equipamiento.
+- question: ¿Cómo asegurar la calidad de los productos de cannabis?
+  answer_template: Implemente controles de laboratorio certificados y siga buenas prácticas de manufactura (BPM) para garantizar estándares y cumplimiento.
+- question: ¿Qué tendencias están impactando el mercado del cannabis en México?
+  answer_template: Crecimiento en cannabis medicinal, aumento de productos derivados como aceites, y mayor inversión extranjera en el sector latinoamericano.
+- question: ¿Cómo combatir el estigma asociado al cannabis?
+  answer_template: Mediante educación continua, marketing basado en evidencia científica, y participación en comunidades para promover usos responsables.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de nuestros servicios de automatización con IA.
+  script: Hola, entiendo que el costo es una consideración clave. Ofrecemos soluciones personalizadas desde 50,000 MXN, diseñadas para maximizar su retorno de inversión en el complejo mercado mexicano.
+    ¿Puedo ayudarle a evaluar sus necesidades específicas?
+  goal: Convertir la consulta en una oportunidad de venta destacando el valor y adaptación local.
+- trigger: service_inquiry
+  situation: Cliente interesado en nuestros servicios de cultivo o procesamiento de cannabis.
+  script: ¡Hola! Especializamos en servicios completos de cultivo y procesamiento de cannabis medicinal, cumpliendo con todas las regulaciones mexicanas. ¿Le gustaría agendar una consulta para discutir
+    cómo podemos optimizar su operación?
+  goal: Programar una cita para venta consultiva y construir confianza.
+- trigger: compliance_concern
+  situation: Cliente preocupado por el cumplimiento de LFPDPPP y otras normativas.
+  script: Nos enfocamos en ayudar a negocios a cumplir con la LFPDPPP y leyes locales. Nuestro agente de voz IA ofrece asistencia 24/7 con actualizaciones y gestión de documentación, reduciendo riesgos.
+    ¿Desea más información?
+  goal: Generar confianza y vender servicios de cumplimiento y automatización.
+- trigger: competitor_mention
+  situation: Cliente menciona a un competidor como Khiron o empresas locales.
+  script: Entiendo que está explorando opciones. Nos diferenciamos por nuestra integración de IA adaptada al mercado mexicano, soporte en español nativo, y enfoque en eficiencia de costos. ¿Qué aspectos
+    son más importantes para su negocio?
+  goal: Destacar nuestras ventajas competitivas y personalizar la oferta.
+- trigger: objection_budget
+  situation: Cliente expresa que su presupuesto es limitado para tecnología.
+  script: Comprendo. Ofrecemos planes escalables que pueden iniciar con una inversión baja y crecer con su negocio. Además, el ahorro en cumplimiento y productividad puede pagar la inversión en pocos meses.
+    ¿Podemos analizar un caso de ROI juntos?
+  goal: Superar la objeción de costo manteniendo el interés y demostrando valor.
+competitors:
+- name: Khiron Life Sciences
+  positioning: Líder en cannabis medicinal con presencia en Latinoamérica
+  strengths:
+  - Amplia experiencia clínica
+  - Alianzas internacionales
+  - Productos diversificados
+  weaknesses:
+  - Enfoque menos localizado en México
+  - Costos elevados para PYMEs
+  our_differentiation: Ofrecemos soluciones de IA específicas para el mercado mexicano, con precios más accesibles y soporte en español 24/7.
+- name: Canopy Growth
+  positioning: Empresa global de cannabis con operaciones en múltiples países
+  strengths:
+  - Gran escala de producción
+  - Recursos financieros sólidos
+  - Innovación en productos
+  weaknesses:
+  - Menor adaptación a regulaciones mexicanas
+  - Respuesta lenta a cambios locales
+  our_differentiation: Enfoque personalizado en México, integración rápida con normativas locales, y tecnología de automatización avanzada.
+- name: Empresas locales informales
+  positioning: Mercado no regulado con precios bajos
+  strengths:
+  - Precios competitivos
+  - Acceso rápido en algunas regiones
+  weaknesses:
+  - Calidad inconsistente
+  - Altos riesgos legales
+  - Falta de transparencia
+  our_differentiation: Garantía de calidad y cumplimiento legal, servicios profesionales con IA, y confiabilidad en el largo plazo.
+- name: Startups mexicanas de cannabis
+  positioning: Innovadores en el sector con enfoque en nichos
+  strengths:
+  - Agilidad y adaptación local
+  - Conexión con comunidades
+  - Enfoque en sostenibilidad
+  weaknesses:
+  - Recursos limitados
+  - Falta de escalabilidad en tecnología
+  our_differentiation: Combinamos innovación con experiencia robusta en IA, ofreciendo soluciones escalables y soporte integral.
+pricing_context:
+  currency: MXN
+  typical_budget_range:
+  - 50000
+  - 5000000
+  entry_point: 50000
+  roi_examples:
+  - scenario: Implementación de agente IA para gestión de cumplimiento y reducción de errores
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 2
+  - scenario: Automatización de ventas y atención al cliente para aumentar conversiones
+    monthly_cost: 20000
+    monthly_savings: 30000
+    payback_months: 1.5
+  value_anchors:
+  - Ahorre hasta un 30% en costos de cumplimiento normativo
+  - Aumente sus ventas con atención al cliente automatizada 24/7
+  - Reduzca errores humanos y mejore la eficiencia operativa con IA
+market_context:
+  market_size: Estimado en más de 500 millones de USD anuales, con potencial de crecimiento
+  growth_rate: 20% anual, impulsado por la legalización y mayor aceptación
+  key_trends:
+  - Expansión del cannabis medicinal
+  - Aumento de inversión extranjera en LATAM
+  - Tecnología aplicada para optimización de cultivos
+  - Enfoque en sostenibilidad y regulaciones estrictas
+  seasonality:
+    high:
+    - Fin de año por demanda de productos medicinales
+    - Temporadas de cosecha en regiones agrícolas
+    low:
+    - Primer trimestre por ajustes normativos
+    - Periodos de sequía que afectan cultivos
+typical_objections:
+- objection: Es muy caro para mi pequeño negocio.
+  response: Entiendo su preocupación. Nuestras soluciones son escalables y pueden adaptarse a su presupuesto, ofreciendo un retorno de inversión rápido. ¿Podemos revisar un plan básico juntos?
+- objection: No confío en la tecnología para manejar datos sensibles bajo LFPDPPP.
+  response: Nuestros sistemas cumplen con la LFPDPPP y utilizan encriptación avanzada. Además, ofrecemos capacitación y soporte continuo para garantizar seguridad y confianza.
+- objection: El mercado del cannabis en México es muy incierto y cambiante.
+  response: La incertidumbre es una oportunidad. Con nuestra IA, puede adaptarse rápidamente a cambios normativos y mantenerse competitivo con alertas y actualizaciones automáticas.
+- objection: Ya trabajo con un proveedor de servicios o competidor.
+  response: ¡Excelente! Siempre es bueno evaluar opciones. Nos diferenciamos por nuestro enfoque en automatización con IA y soporte local en español. ¿Qué le gustaría mejorar de su proveedor actual?
+- objection: Necesito más tiempo para decidir, es una inversión grande.
+  response: Claro, tome su tiempo. Mientras tanto, puedo enviarle información detallada y casos de éxito en México. ¿Cuándo sería un buen momento para seguir conversando?
+meta:
+  id: cannabis
+  region: latam
+  country: mx
+  language: es
+  currency: MXN
+  phone_codes:
+  - '+52'
+aliases:
+- cannabis
+- dispensary
+- marijuana
+- CBD
+_extends: _base/cannabis

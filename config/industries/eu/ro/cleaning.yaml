@@ -1,0 +1,232 @@
+pain_points:
+- description: Dificultăți în gestionarea programărilor și a angajaților, cu multe
+    apeluri și e-mailuri neorganizate.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza programările, confirmările și comunicarea
+    cu clienții, reducând timpul administrativ.
+- description: Rata mare de rotație a personalului, care duce la costuri suplimentare
+    de formare și încălcări ale programărilor.
+  severity: high
+  solution_hint: Agentul poate gestiona resursele umane prin programări inteligente
+    și notificări, minimizând erorile.
+- description: Probleme cu plata și facturarea, inclusiv întârzieri și neînțelegeri
+    privind prețurile.
+  severity: medium
+  solution_hint: AI poate integra sisteme de plată și trimite facturi automate, îmbunătățind
+    fluxul de numerar.
+- description: Concurență crescută, cu clienți sensibili la preț și cerințe personalizate.
+  severity: medium
+  solution_hint: Agentul poate oferi răspunsuri rapide la întrebări despre prețuri
+    și servicii, creșterea retenției clienților.
+- description: Nevoia de conformitate cu GDPR pentru gestionarea datelor clienților,
+    ceea ce poate fi complex.
+  severity: low
+  solution_hint: AI poate automatiza consimțământul și securitatea datelor, asigurând
+    conformitatea.
+- description: Sezonalitate în cerere, cu perioade aglomerate și lente, afectând planificarea.
+  severity: medium
+  solution_hint: Agentul poate analiza tendințele și optimiza programările pentru
+    a gestiona variațiile.
+typical_services:
+- Curățenie rezidențială
+- Curățenie de birouri
+- Curățenie după construcție
+- Curățenie industrială
+- Curățenie de covoare și tapițerii
+- Curățenie pentru evenimente
+- Servicii de dezinfectare
+- Curățenie periodică (săptămânală/lunară)
+- Curățenie de ferestre
+- Gestionarea deșeurilor
+recommended_functions:
+- name: Programare automată a serviciilor
+  priority: high
+  reason: Reduce timpul administrativ și minimizează erorile de programare, crește
+    satisfacția clienților.
+- name: Confirmare și amintire a programărilor
+  priority: high
+  reason: Asigură că clienții sunt informați, reduce ratarea programărilor și îmbunătățește
+    fiabilitatea.
+- name: Răspuns la întrebări frecvente despre prețuri și servicii
+  priority: medium
+  reason: Economisește timpul angajaților și oferă informații rapide clienților, sprijinind
+    vânzările.
+- name: Integrare cu sisteme de facturare și plată
+  priority: medium
+  reason: Automatizează procesele financiare, reduce întârzierile și îmbunătățește
+    fluxul de numerar.
+- name: Gestionarea feedback-ului și reclamațiilor
+  priority: low
+  reason: Îmbunătățește relațiile cu clienții prin răspunsuri prompte și identificarea
+    problemelor.
+- name: Analiză a datelor de programare pentru optimizare
+  priority: low
+  reason: Ajută la planificarea resurselor și gestionarea sezonalității, crește eficiența.
+typical_integrations:
+- name: Sisteme CRM
+  examples:
+  - HubSpot
+  - Salesforce
+  - Bitrix24
+  priority: high
+- name: Sisteme de facturare și contabilitate
+  examples:
+  - 1C
+  - Saga
+  - SmartBill
+  priority: high
+- name: Platforme de plată online
+  examples:
+  - PayU
+  - Netopia
+  - Stripe
+  priority: medium
+- name: Sisteme de gestionare a proiectelor
+  examples:
+  - Trello
+  - Asana
+  - Monday.com
+  priority: low
+- name: Aplicații de calendar și programare
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - Calendly
+  priority: medium
+industry_faq:
+- question: Cât costă serviciile voastre de curățenie?
+  answer_template: Prețurile noastre încep de la [entry_point] RON și variază în funcție
+    de tipul serviciului și dimensiunea spațiului. Vă putem oferi o estimare personalizată
+    după o scurtă discuție.
+- question: Oferiți servicii de curățenie de urgență?
+  answer_template: Da, oferim servicii de curățenie de urgență pentru situații neprevăzute.
+    Vă rugăm să ne contactați imediat pentru a programa.
+- question: Sunt produsele voastre de curățenie eco-friendly?
+  answer_template: Da, utilizăm produse de curățenie ecologice și sigure pentru mediu,
+    conform standardelor europene.
+- question: Cum gestionați securitatea datelor mele conform GDPR?
+  answer_template: Respectăm strict regulile GDPR prin sisteme securizate și consimțământ
+    explicit pentru gestionarea datelor dvs.
+- question: Puteți oferi servicii recurente, cum ar fi curățenie săptămânală?
+  answer_template: Absolut! Oferim pachete recurente cu discounturi pentru curățenie
+    săptămânală, lunară sau personalizată.
+- question: Ce fac dacă nu sunt mulțumit de serviciu?
+  answer_template: Avem o politică de garantare a satisfacției. Vă rugăm să ne anunțați
+    în 24 de ore pentru a remedia orice problemă.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre prețuri la primul contact.
+  script: Bună ziua! Înțeleg că doriți să aflați prețurile noastre. Pentru a vă oferi
+    o estimare exactă, aș putea să vă întreb câteva detalii despre spațiul dvs. și
+    tipul de curățenie necesar? De exemplu, este vorba de un birou sau o locuință?
+  goal: Captarea interesului și colectarea informațiilor pentru o ofertă personalizată.
+- trigger: service_details
+  situation: Când un client cere detalii despre servicii specifice.
+  script: Cu plăcere! Oferim servicii complete, inclusiv curățenie generală, dezinfectare
+    și gestionare deșeuri. Pentru servicii recurente, avem pachete cu discounturi.
+    Doriți să vă explic mai multe despre opțiunile noastre?
+  goal: Educarea clientului și promovarea serviciilor pentru a închide vânzarea.
+- trigger: objection_budget
+  situation: Când un client spune că bugetul este limitat.
+  script: Înțeleg preocupările legate de buget. Oferim soluții flexibile și puteți
+    începe cu un serviciu de bază la [entry_point] RON. De asemenea, serviciile noastre
+    pot economisi timp și bani pe termen lung prin reducerea necesității de curățenie
+    frecventă.
+  goal: Depășirea obiecției și evidențierea valorii ofertei.
+- trigger: follow_up
+  situation: Pentru urmărirea după o discuție inițială.
+  script: Bună ziua! Am vorbit recent despre serviciile noastre de curățenie. Aveți
+    întrebări suplimentare sau doriți să programați o ofertă gratuită?
+  goal: Reînnoirea contactului și închiderea vânzării.
+competitors:
+- name: CleanExpert Romania
+  positioning: Furnizor național de servicii de curățenie pentru companii și gospodării.
+  strengths:
+  - Prezență largă în orașe mari
+  - echipă mare de angajați
+  - servicii diversificate
+  weaknesses:
+  - Costuri ridicate
+  - timpi de răspuns lungi
+  - feedback mixte privind calitatea
+  our_differentiation: Oferim tehnologie AI pentru automatizare, prețuri competitive
+    și servicii personalizate cu răspuns rapid.
+- name: MegaClean
+  positioning: Specializat în curățenie industrială și după construcție.
+  strengths:
+  - Experiență în proiecte mari
+  - echipamente avansate
+  - parteneriate cu firme de construcții
+  weaknesses:
+  - Servicii limitate pentru clienți mici
+  - lipsa opțiunilor recurente
+  - procese lente de facturare
+  our_differentiation: Avem soluții scalabile pentru toate dimensiunile de afaceri,
+    cu integrari software pentru eficiență.
+- name: Curățenie Profesională București
+  positioning: Focalizat pe piața locală din București, cu servicii rezidențiale.
+  strengths:
+  - Cunoaștere profundă a pieței locale
+  - prețuri accesibile
+  - recenzii bune de la clienți
+  weaknesses:
+  - Acoperire geografică limitată
+  - resurse umane reduse
+  - lipsa automatizării
+  our_differentiation: Folosim AI pentru a extinde acoperirea și a oferi servicii
+    consistente în întreaga țară, cu suport 24/7.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 200
+  - 2000
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatizarea programărilor și facturării pentru o firmă mică de curățenie.
+    monthly_cost: 300
+    monthly_savings: 500
+    payback_months: 1
+  value_anchors:
+  - Economisiți până la 10 ore pe săptămână cu programarea automată.
+  - Reducerea ratării programărilor cu 30% prin confirmări AI.
+  - Servicii personalizate care cresc satisfacția clienților cu 20%.
+market_context:
+  market_size: 500 milioane RON anual
+  growth_rate: 5% YoY
+  key_trends:
+  - Creșterea cererii pentru servicii eco-friendly și dezinfectare post-pandemie.
+  - Adoptarea tehnologiei în managementul afacerilor de curățenie.
+  - Tendința către servicii recurente și abonamente.
+  seasonality:
+    high:
+    - Septembrie-Noiembrie
+    - Martie-Mai
+    low:
+    - Decembrie-Ianuarie
+    - Iulie-August
+typical_objections:
+- objection: Prețul este prea mare pentru bugetul meu.
+  response: Înțeleg preocuparea. Oferim pachete flexibile și puteți începe cu servicii
+    de bază. De asemenea, AI-ul nostru vă poate ajuta să economisiți bani pe termen
+    lung prin eficiență.
+- objection: Nu am nevoie de servicii recurente; doar ocazional.
+  response: Serviciile noastre ocazionale sunt disponibile, dar cu pachete recurente
+    puteți beneficia de discounturi și o curățenie mai consistentă. Putem discuta
+    opțiuni personalizate.
+- objection: Sunt îngrijorat de securitatea datelor cu un sistem AI.
+  response: Respectăm strict GDPR și folosim sisteme securizate. Datele dvs. sunt
+    protejate, iar AI-ul doar automatizează procese pentru a vă economisi timpul.
+meta:
+  id: cleaning
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "cleaning"
+- "janitorial"
+- "housekeeping"
+- "maid service"
+_extends: _base/cleaning

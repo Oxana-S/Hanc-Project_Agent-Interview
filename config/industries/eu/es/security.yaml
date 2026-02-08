@@ -1,0 +1,261 @@
+pain_points:
+- description: La alta rotación de personal y la dificultad para encontrar vigilantes
+    de seguridad cualificados afectan la calidad del servicio y la continuidad operativa.
+  severity: high
+  solution_hint: El agente de voz puede automatizar la preselección de candidatos,
+    realizar encuestas de satisfacción y gestionar recordatorios de formación obligatoria.
+- description: El incumplimiento de los estrictos requisitos de la Ley 5/2014 de Seguridad
+    Privada y el GDPR puede resultar en multas elevadas.
+  severity: high
+  solution_hint: El agente puede enviar alertas automatizadas sobre renovaciones de
+    licencias, cambios normativos y realizar comprobaciones de consentimiento para
+    el tratamiento de datos.
+- description: La gestión manual de las rondas de vigilancia y los partes de incidencias
+    es lenta, propensa a errores y dificulta la auditoría.
+  severity: medium
+  solution_hint: La integración del agente con software de gestión de rondas permite
+    la notificación vocal de incidencias en tiempo real y la generación automática
+    de informes.
+- description: Los clientes finales exigen una comunicación inmediata ante alarmas
+    o incidencias, saturando las líneas telefónicas.
+  severity: medium
+  solution_hint: El agente de voz puede atender llamadas iniciales, verificar alarmas
+    mediante protocolos pregrabados y redirigir solo las situaciones críticas al operador
+    humano.
+- description: La estacionalidad de la demanda (eventos, temporada turística) complica
+    la planificación de recursos y la rentabilidad.
+  severity: medium
+  solution_hint: El agente puede gestionar solicitudes de servicios puntuales, cotizaciones
+    automáticas para eventos y coordinar la disponibilidad de vigilantes temporales.
+- description: La competencia basada únicamente en el precio presiona los márgenes
+    y reduce la percepción de valor del servicio.
+  severity: low
+  solution_hint: El agente puede destacar en llamadas comerciales nuestros diferenciales
+    de valor, como la tecnología, la formación y los informes detallados.
+typical_services:
+- Vigilancia de Seguridad Física
+- Control de Accesos (portería virtual y física)
+- Custodia de Llaves y Recintos
+- Servicios de Escolta y Protección de Personas
+- Sistemas de Alarmas y CCTV Monitoreado (Central Receptora de Alarmas)
+- Respuesta a Alarmas y Servicio de Intervención
+- Seguridad para Eventos (Conciertos, Ferias)
+- Transporte de Valores
+- Análisis de Riesgos y Planes de Autoprotección
+- Consultoría en Ciberseguridad para Infraestructuras Físicas
+recommended_functions:
+- name: Captación y Preselección de Personal
+  priority: high
+  reason: Mitiga el problema crítico de la falta de vigilantes cualificados mediante
+    la automatización de las primeras fases del reclutamiento.
+- name: Gestión de Incidencias por Voz
+  priority: high
+  reason: Agiliza la reportación de incidentes desde el campo, mejora la precisión
+    de los datos y genera trazas auditables automáticamente.
+- name: Atención al Cliente 24/7 para Alarmas
+  priority: high
+  reason: Descongestiona la central receptora, proporciona respuesta inmediata al
+    cliente y filtra falsas alarmas antes de movilizar recursos.
+- name: Recordatorios Automatizados de Cumplimiento Normativo
+  priority: medium
+  reason: Reduce el riesgo de costosas sanciones por olvidos en renovaciones de licencias
+    o formación obligatoria del personal.
+- name: Captación de Leads para Servicios Puntuales (Eventos)
+  priority: medium
+  reason: Aprovecha la estacionalidad de la demanda permitiendo solicitudes y cotizaciones
+    rápidas fuera del horario comercial.
+- name: Encuestas de Satisfacción Post-Servicio
+  priority: low
+  reason: Proporciona feedback valioso para mejorar el servicio y fidelizar clientes
+    con una mínima intervención manual.
+typical_integrations:
+- name: Software de Gestión de Guardias y Turnos
+  examples:
+  - GuardService
+  - NoaLink
+  - Gesgusa
+  priority: high
+- name: Software de Control de Accesos y Videovigilancia
+  examples:
+  - Salto Systems
+  - AXIS Camera Station
+  - Hikvision iVMS
+  priority: high
+- name: Plataforma de Central Receptora de Alarmas (CRA)
+  examples:
+  - G4S Connect
+  - Securitas Direct TAVIP
+  - Prosegur Alarmas MyAPP
+  priority: medium
+- name: Software de Facturación y Contabilidad
+  examples:
+  - ContaPlus
+  - Sage
+  - A3Software
+  priority: medium
+- name: Herramientas de CRM
+  examples:
+  - Microsoft Dynamics 365
+  - Salesforce
+  - Zoho CRM
+  priority: low
+industry_faq:
+- question: ¿Cumplen con la Ley de Seguridad Privada y el RGPD?
+  answer_template: Absolutamente. Nuestros protocolos, formación del personal y sistemas
+    de datos están diseñados para el estricto cumplimiento de la Ley 5/2014 y el Reglamento
+    Europeo de Protección de Datos (RGPD). Le podemos facilitar nuestra política de
+    cumplimiento.
+- question: ¿Qué formación tiene su personal de vigilancia?
+  answer_template: Todo nuestro personal posee la TIP (Tarjeta de Identificación Profesional)
+    vigente, expedida por el Ministerio del Interior. Además, reciben formación continua
+    en prevención de riesgos, atención al cliente y el uso de nuestras tecnologías
+    de apoyo.
+- question: ¿Ofrecen servicios de respuesta a alarmas?
+  answer_template: Sí, disponemos de servicio de intervención con vehículos patrulla
+    y vigilantes que actúan ante una alarma verificada desde nuestra central receptora,
+    las 24 horas del día.
+- question: ¿Pueden personalizar un plan de seguridad para mi negocio?
+  answer_template: Por supuesto. Realizamos un análisis de riesgos gratuito para adaptar
+    nuestros servicios (vigilancia física, CCTV, control de accesos) a las necesidades
+    específicas de su empresa.
+- question: ¿Cómo gestionan la sustitución de un vigilante si se pone enfermo?
+  answer_template: Contamos con un pool de personal de reserva y sistemas de alerta
+    automatizados que nos permiten cubrir cualquier baja con personal igualmente cualificado
+    en un plazo máximo de 4 horas.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente potencial pregunta por el precio nada más iniciar la
+    conversación.
+  script: Entiendo que el presupuesto es una consideración clave. Para darle una cotización
+    precisa, necesito entender mejor sus necesidades. ¿Podría contarme brevemente
+    qué tipo de negocio tiene y cuáles son sus principales preocupaciones de seguridad?
+    Así podré orientarle sobre las opciones más eficientes para usted.
+  goal: Evitar dar un precio genérico y cambiar el foco hacia la valoración de necesidades
+    para posicionar nuestro servicio como una solución a medida.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona que está considerando a un competidor grande
+    (ej. Prosegur, Securitas).
+  script: Comprendo. Esas son empresas muy reconocidas. Nuestra ventaja reside en
+    que somos más ágiles y ofrecemos una atención más personalizada. Mientras ellos
+    pueden tener un enfoque más estandarizado, nosotros asignamos un gestor de cuenta
+    dedicado y adaptamos nuestros informes y rondas a lo que usted realmente necesita,
+    a menudo con una relación calidad-precio más favorable.
+  goal: Reconocer la competencia, pero destacar nuestro diferencial de servicio personalizado
+    y agilidad, evitando una guerra de precios directa.
+- trigger: objection_compliance_complexity
+  situation: Cuando el cliente expresa preocupación por la complejidad de cumplir
+    con la normativa.
+  script: Esa es una preocupación muy común y válida. Nosotros nos encargamos de eso.
+    Nuestro servicio incluye la gestión documental para la autorización de los vigilantes,
+    los planes de autoprotección adaptados a su sector y las garantías de tratamiento
+    de datos según el RGPD. Usted tendrá la tranquilidad de estar cubierto, sin tener
+    que gestionar esa complejidad internamente.
+  goal: Transformar una objeción en una ventaja, presentándonos como aliados que simplifican
+    y asumen la carga del cumplimiento normativo.
+competitors:
+- name: Prosegur
+  positioning: Líder del mercado global con presencia masiva en España.
+  strengths:
+  - Amplísima red de clientes
+  - marca muy reconocida
+  - oferta integral (alarmas
+  - efectivo
+  - seguridad física)
+  - recursos financieros.
+  weaknesses:
+  - Puede ser percibido como impersonal y lento en la atención
+  - servicios menos personalizados
+  - precios generalmente más altos.
+  our_differentiation: Atención ágil y personalizada con un gestor de cuenta dedicado,
+    mayor flexibilidad para adaptar servicios y precios más competitivos para PYMES.
+- name: Securitas Direct
+  positioning: Líder especializado en alarmas monitoreadas y seguridad electrónica
+    para hogares y negocios.
+  strengths:
+  - Tecnología propia muy desarrollada (Verisure)
+  - fuerte marketing
+  - amplia base de clientes residenciales.
+  weaknesses:
+  - Menor enfoque en la seguridad física presencial
+  - modelo de contratación de larga duración que puede ser poco flexible.
+  our_differentiation: Ofrecemos un enfoque híbrido y flexible, combinando seguridad
+    física humana con tecnología, y contratos más adaptables a las necesidades cambiantes
+    del cliente.
+- name: Empresas de seguridad regionales/locales
+  positioning: Pequeñas empresas que compiten principalmente por precio en su área
+    geográfica.
+  strengths:
+  - Conocimiento muy local
+  - precios bajos
+  - trato cercano.
+  weaknesses:
+  - Recursos limitados
+  - posible falta de cumplimiento normativo total
+  - incapacidad para escalar o cubrir bajas.
+  our_differentiation: Combinamos el trato cercano y el conocimiento local con los
+    recursos, garantías de cumplimiento y solidez de una empresa nacional estructurada
+    y tecnológica.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 300
+  - 5000
+  entry_point: 450
+  roi_examples:
+  - scenario: 'Para una nave industrial: Sustitución de 1 vigilante 24/7 por un sistema
+      de CCTV monitoreado con rondas puntuales.'
+    monthly_cost: 850
+    monthly_savings: 2100
+    payback_months: 4
+  value_anchors:
+  - La multa media por incumplimiento de la Ley de Seguridad Privada puede superar
+    los 30.000€.
+  - Un robo con allanamiento en un comercio supone una media de 4.000€ en pérdidas
+    materiales más el cierre por peritaje.
+  - Nuestros informes detallados pueden reducir su prima de seguro hasta un 15%.
+market_context:
+  market_size: Estimado en 2.800 millones de euros anuales
+  growth_rate: 3.5% anual
+  key_trends:
+  - Fusión de seguridad física y electrónica (soluciones híbridas).
+  - Mayor demanda de ciberseguridad para sistemas físicos (IoT, cámaras IP).
+  - Creciente preocupación por la protección de datos (RGPD) en el uso de videovigilancia.
+  seasonality:
+    high:
+    - Verano (turismo
+    - festivales)
+    - Navidades (comercio
+    - eventos corporativos)
+    low:
+    - Enero
+    - Agosto (fuera de zonas turísticas)
+typical_objections:
+- objection: Es un gasto que ahora mismo no puedo asumir.
+  response: Lo entiendo. En lugar de verlo como un gasto, permítame mostrarle cómo
+    es una inversión en protección de su patrimonio y continuidad del negocio. ¿Podría
+    calcular el coste que tendría para usted un incidente de seguridad grave? A menudo,
+    un mes de nuestro servicio cuesta menos que el deducible del seguro.
+- objection: Ya tengo alarmas, no necesito vigilantes.
+  response: Las alarmas son un gran disuasorio y una alerta temprana. Sin embargo,
+    un vigilante proporciona disuasión visible, verificación física inmediata de una
+    alarma (evitando falsas alarmas a la policía) y capacidad de reacción in situ.
+    Es la capa adicional que evita que un intento se convierta en un éxito.
+- objection: Prefiero internalizar el servicio con mi propio personal.
+  response: Es una opción, pero conlleva una carga administrativa y de responsabilidad
+    importante (contratación según Ley de Seguridad Privada, formación obligatoria,
+    sustituciones, responsabilidad civil...). Nosotros asumimos todo ese riesgo y
+    gestión. Usted paga por un servicio llave en mano y se centra en su negocio.
+meta:
+  id: security
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- "security"
+- "guard service"
+- "surveillance"
+- "alarm systems"
+_extends: _base/security

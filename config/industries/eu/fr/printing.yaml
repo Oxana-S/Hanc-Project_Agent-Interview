@@ -1,0 +1,214 @@
+pain_points:
+- description: Les coûts du papier et des encres augmentent constamment, réduisant les marges bénéficiaires.
+  severity: high
+  solution_hint: L'agent vocal peut automatiser la recherche des meilleurs fournisseurs et négocier des tarifs en temps réel.
+- description: Gestion inefficace des commandes urgentes qui perturbe la planification de la production.
+  severity: medium
+  solution_hint: L'agent peut trier et prioriser les appels entrants, et proposer des créneaux de production optimisés.
+- description: Absence de suivi client après la vente, menant à une faible fidélisation et des opportunités de réimpression perdues.
+  severity: medium
+  solution_hint: Mettre en place des rappels automatiques pour les réassorts et solliciter des retours d'expérience.
+- description: Difficultés à expliquer les subtilités techniques (types de papier, finitions) aux clients par téléphone.
+  severity: low
+  solution_hint: L'agent peut fournir des explications standardisées et claires, et transférer vers un expert si nécessaire.
+- description: Retards fréquents dans les livraisons dues aux problèmes logistiques ou aux grèves.
+  severity: high
+  solution_hint: L'agent informe proactivement les clients des retards et propose des solutions alternatives.
+- description: Concurrence féroce des grandes enseignes en ligne qui proposent des prix bas.
+  severity: high
+  solution_hint: Mettre en avant l'expertise locale, la qualité et le service personnalisé via le script de vente de l'agent.
+- description: Surcharge administrative liée à la conformité et à la facturation.
+  severity: medium
+  solution_hint: L'agent peut collecter les informations nécessaires pour générer automatiquement des devis et des factures conformes.
+typical_services:
+- Impression numérique
+- Impression offset
+- Création graphique et mise en page
+- Impression grand format (bâches, stickers, adhésifs)
+- Brochures et dépliants
+- Cartes de visite et papeterie commerciale
+- Façonnage (plastification, reliure, découpe)
+- Impression textile (t-shirts, sacs)
+- Documents administratifs et légaux (carnets à souches, formulaires)
+- Photocopie et reprographie
+recommended_functions:
+- name: Prise de commande et devis automatisés
+  priority: high
+  reason: Réduit le temps de traitement initial et capture les leads 24/7.
+- name: Gestion des rendez-vous pour la consultation graphique
+  priority: medium
+  reason: Organise le calendrier des graphistes et améliore l'expérience client.
+- name: Suivi de l'état de la commande
+  priority: high
+  reason: Répond à la question la plus fréquente des clients et libère le standard téléphonique.
+- name: Rappel pour la maintenance des équipements clients
+  priority: low
+  reason: Crée un contact proactif et ouvre des opportunités de vente de consommables.
+- name: Sondage de satisfaction post-livraison
+  priority: medium
+  reason: Collecte des témoignages et identifie les problèmes récurrents.
+- name: Prise en charge des réclamations
+  priority: high
+  reason: Canalise et classe les réclamations pour un traitement plus rapide.
+typical_integrations:
+- name: Logiciel de gestion d'imprimerie (MIS)
+  examples:
+  - EFI Pace
+  - Cegid
+  - PrintPlus
+  priority: high
+- name: Logiciel de gestion commerciale (ERP)
+  examples:
+  - Sage
+  - Cegid
+  - Odoo
+  priority: high
+- name: Logiciel de PAO (Publication Assistée par Ordinateur)
+  examples:
+  - Suite Adobe
+  - QuarkXPress
+  priority: medium
+- name: Plateforme e-commerce
+  examples:
+  - PrestaShop
+  - Shopify
+  - Solutions propriétaires
+  priority: medium
+- name: Logiciel de comptabilité
+  examples:
+  - Sage Comptabilité
+  - Cegid Comptabilité
+  - Quadratus
+  priority: low
+industry_faq:
+- question: Quel est votre délai d'impression pour 500 flyers ?
+  answer_template: Pour 500 flyers en impression numérique, le délai standard est de 2 à 3 jours ouvrables. Nous pouvons proposer un service express sous 24h avec un supplément. Puis-je prendre vos coordonnées
+    pour vous établir un devis précis ?
+- question: Proposez-vous des options de papier écologique ?
+  answer_template: Absolument. Nous travaillons avec plusieurs papiers recyclés et certifiés FSC ou PEFC. Je peux vous envoyer par email nos échantillons et les différences de tarif.
+- question: Pouvez-vous créer le design de notre brochure ?
+  answer_template: Oui, notre service de création graphique peut s'en charger. Nous aurons besoin de vos éléments (textes, logos, photos) et de vos idées. Un rendez-vous avec notre graphiste est recommandé
+    pour discuter de votre projet en détail.
+- question: Livrez-vous dans toute la France ?
+  answer_template: Oui, nous livrons partout en France métropolitaine via nos transporteurs partenaires. Le coût et le délai dépendent du poids et de la destination. C'est calculé automatiquement dans votre
+    devis.
+- question: Que se passe-t-il si je trouve une erreur dans les fichiers que je vous ai envoyés ?
+  answer_template: Il est crucial de valider votre BAT (Bon À Tirer) numérique. Avant l'impression, nous vous envoyons toujours un BAT. Tant que l'impression n'a pas commencé, vous pouvez corriger sans
+    frais. Après validation, les corrections sont facturées.
+- question: Acceptez-vous les fichiers provenant de Canva ou autres créateurs en ligne ?
+  answer_template: Oui, mais pour garantir une qualité optimale, nous demandons que les fichiers nous soient fournis en haute résolution (300 DPI) et dans un format finalisé (PDF/X-1a ou PDF haute qualité).
+    Notre équipe peut vous guider.
+sales_scripts:
+- trigger: price_question
+  situation: 'Client demande un prix pour un projet standard (ex: cartes de visite).'
+  script: Je comprends votre besoin de clarté sur les tarifs. Pour les cartes de visite, le prix dépend de la quantité, du type de papier et des finitions. Par exemple, pour 500 cartes sur papier couché
+    brillant 300g, nous sommes à environ XX€ TTC. La vraie valeur ajoutée chez nous est le conseil personnalisé pour que votre support communique efficacement. Puis-je vous poser quelques questions pour
+    affiner ce devis ?
+  goal: Transformer une question tarifaire en conversation qualifiante pour comprendre le besoin réel et mettre en avant l'expertise.
+- trigger: competitor_mention
+  situation: 'Client compare nos prix avec ceux d''un grand concurrent en ligne (ex: Vistaprint).'
+  script: C'est une comparaison intéressante. Les plateformes en ligne excellent sur le volume et le prix bas. Notre force, en tant qu'imprimerie locale, est la qualité contrôlée, le conseil proche et la
+    flexibilité. Nous corrigeons souvent les fichiers provenant de ces plateformes qui ne sont pas optimaux pour l'impression. Un support qui représente mal votre entreprise peut vous coûter plus cher à
+    long terme. Puis-je vous montrer des échantillons de notre travail ?
+  goal: Différencier sur la qualité, le service et l'expertise plutôt que de se battre uniquement sur le prix.
+- trigger: objection_digital
+  situation: Client pense que l'impression est un média dépassé à l'ère du digital.
+  script: C'est un point de vue que j'entends souvent. En réalité, l'impression et le digital sont complémentaires. Un flyer ou une carte de visite bien conçu crée un contact tangible et mémorable que le
+    digital seul ne permet pas. C'est un point d'entrée physique vers votre univers digital. De nombreuses études montrent que le print améliore la rétention d'information et la perception de la marque.
+    Cherchez-vous à renforcer votre image de marque ou à cibler un événement local par exemple ?
+  goal: Repositionner l'impression comme un média complémentaire et efficace, et qualifier le besoin marketing derrière la demande.
+competitors:
+- name: Vistaprint (Cimpress)
+  positioning: Leader du print en ligne pour les TPE/PME et particuliers.
+  strengths:
+  - Site web très simple et automatisé
+  - Prix bas et promotions agressives
+  - Large gamme de produits standards
+  - Livraison nationale
+  weaknesses:
+  - Service client souvent critiqué
+  - Qualité variable selon les produits
+  - Peu de personnalisation et de conseil
+  - Fichiers clients parfois mal traités
+  our_differentiation: Conseil expert en amont, contrôle qualité rigoureux, personnalisation poussée et relation de proximité. Nous sommes un partenaire, pas un fournisseur distant.
+- name: Copies de Paris / Chaînes de reprographie
+  positioning: Réseaux locaux ou nationaux pour l'impression rapide et la reprographie.
+  strengths:
+  - Présence physique en centre-ville
+  - Service rapide pour les petites quantités
+  - Tirage de plans et documents techniques
+  weaknesses:
+  - Offre parfois limitée aux bases
+  - Peu de services de création
+  - Tarifs élevés pour les moyennes/grosses séries
+  - Horaires limités
+  our_differentiation: Capacité de production industrielle pour les moyennes et grosses séries à des prix compétitifs, accompagnement complet de la création à la finition.
+- name: Imprimeries artisanales locales
+  positioning: Petits ateliers spécialisés sur un territoire restreint.
+  strengths:
+  - Relation de confiance très forte
+  - Grande flexibilité et réactivité
+  - Travail de qualité artisanale
+  - Expertise sur des niches (livres d'art, sérigraphie)
+  weaknesses:
+  - Capacités de production limitées
+  - Outils marketing et digitaux souvent absents
+  - Tarifs plus élevés pour le standard
+  - Dépendance à l'artisan propriétaire
+  our_differentiation: Alliage d'une relation de proximité avec la puissance d'outils modernes (devis en ligne, suivi digital), une capacité de production scalable et un service structuré.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Un restaurant commande 200 menus et 500 flyers par mois.
+    monthly_cost: 180
+    monthly_savings: 310
+    payback_months: 4.5
+  value_anchors:
+  - Évitez les erreurs d'impression coûteuses avec notre vérification experte des fichiers.
+  - Gagnez 5 heures par mois en automatisant vos commandes récurrentes.
+  - Une image de marque professionnelle vous aide à justifier une tarification 10% plus élevée.
+market_context:
+  market_size: Environ 8 milliards d'euros (chiffre d'affaires du secteur)
+  growth_rate: Stagnant à légèrement négatif (-1 à 0% par an), mais niches en croissance.
+  key_trends:
+  - Demande croissante pour des supports d'impression courts et personnalisés (print on demand).
+  - Importance accrue des encres écologiques et des papiers recyclés/certifiés.
+  - 'Intégration des technologies digitales : QR codes, réalité augmentée sur les supports print.'
+  - Consolidation du marché avec la fermeture de petites imprimeries.
+  seasonality:
+    high:
+    - Septembre (rentrée scolaire/entreprises)
+    - Novembre-Décembre (cadeaux d'entreprise, calendriers)
+    - Mai-Juin (événements, brochures touristiques)
+    low:
+    - Juillet-Août (vacances d'été)
+    - Début janvier
+typical_objections:
+- objection: C'est trop cher par rapport à ce que je trouve sur internet.
+  response: Je comprends parfaitement. Le prix est un critère important. Puis-je vous demander ce que le moins cher sur internet inclut exactement ? Souvent, des finitions basiques, un papier standard et
+    aucun contrôle de vos fichiers. Une erreur sur 1000 flyers, c'est 1000 flyers à jeter. Notre devis inclut la sécurité d'un travail bien fait. Et si nous commencions par un petit projet pour que vous
+    jugiez de la différence ?
+- objection: On imprime de moins en moins, je ne suis pas sûr d'en avoir besoin régulièrement.
+  response: 'C''est vrai, la tendance est à la réduction du volume, mais souvent à un gain en qualité et en pertinence. Au lieu d''imprimer en masse, l''objectif est d''imprimer mieux : des supports qui
+    auront un impact fort et durable. Pouvez-vous me citer le dernier support imprimé qui vous a vraiment marqué ? Travaillons ensemble sur un projet qui aura cet impact pour votre entreprise.'
+- objection: Je préfère gérer ça par email, c'est plus simple pour avoir une trace écrite.
+  response: Tout à fait d'accord sur la nécessité d'une trace. Notre agent vocal peut d'ailleurs générer un récapitulatif de notre conversation et un devis pré-rempli par email en fin d'appel. L'avantage
+    du téléphone est de régler les questions en 2 minutes au lieu de 10 échanges de mails. Testons-le pour ce projet ? Si vous n'êtes pas satisfait, vous pourrez toujours revenir à l'email.
+meta:
+  id: printing
+  region: eu
+  country: fr
+  language: fr
+  currency: EUR
+  phone_codes:
+  - '+33'
+aliases:
+- printing
+- print shop
+- typography
+- packaging
+_extends: _base/printing

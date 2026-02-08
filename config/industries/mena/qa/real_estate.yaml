@@ -1,0 +1,182 @@
+pain_points:
+- description: كثرة المكالمات الواردة من الإعلانات، وعدم قدرة المدراء على التعامل
+    معها جميعاً.
+  severity: high
+  solution_hint: التأهيل الأولي للعملاء المحتملين عبر الوكيل الصوتي
+- description: العملاء يتصلون في أوقات غير عمل ويتجهون للمنافسين.
+  severity: high
+  solution_hint: الوكيل الصوتي يعمل 24/7 لجمع الطلبات
+- description: الوقت الضائع في العروض المتكررة والتوضيحات.
+  severity: medium
+  solution_hint: الإرسال التلقائي لمعلومات العقار
+- description: صعوبة تتبع حالة الصفقات.
+  severity: medium
+  solution_hint: الإشعارات التلقائية عن الحالة
+- description: انخفاض معدل التحويل من الاستفسار إلى العرض.
+  severity: medium
+  solution_hint: الاتصال السريع والتأهيل
+- description: التحديات اللغوية مع العملاء الأجانب.
+  severity: low
+  solution_hint: الوكيل الصوتي متعدد اللغات
+typical_services:
+- بيع الشقق
+- تأجير العقارات السكنية
+- تأجير العقارات التجارية
+- تمويل الرهن العقاري
+- مرافقة الصفقات
+- تقييم العقارات
+- التحقق القانوني
+- إدارة العقارات
+- استشارات استثمار العقارات
+- خدمات ما بعد البيع
+recommended_functions:
+- name: تأهيل
+  priority: high
+  reason: 'جمع المتطلبات: الميزانية، المنطقة، المساحة، الاستعجال'
+- name: حجز العروض
+  priority: high
+  reason: حجز موعد لمشاهدة العقار
+- name: الأسئلة الشائعة
+  priority: medium
+  reason: الإجابة على الأسئلة حول العقارات، المناطق، الأسعار
+- name: التذكير
+  priority: medium
+  reason: تذكير بالعروض، حالة الصفقة
+- name: المكالمات الصادرة
+  priority: medium
+  reason: الاتصال بالقاعدة، عرض عقارات جديدة
+typical_integrations:
+- name: CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - Odoo
+  priority: high
+  reason: قاعدة البيانات، بطاقات العملاء، قمع المبيعات
+- name: الموقع/الكاتالوج
+  examples:
+  - PropertyFinder
+  - Bayut
+  - Opensooq
+  priority: medium
+  reason: مزامنة الإعلانات، الاستفسارات من المنصات
+- name: الهاتفية
+  examples:
+  - Twilio
+  - Avaya
+  - Cisco
+  priority: high
+  reason: معالجة المكالمات الواردة من الإعلانات
+- name: المراسلات
+  examples:
+  - WhatsApp
+  - Telegram
+  - Signal
+  priority: medium
+  reason: إرسال الصور، المخططات، المستندات
+industry_faq:
+- question: ما هي الشقق المتوفرة؟
+  answer_template: 'يرجى توضيح رغباتك: المنطقة، المساحة، الميزانية — وسأقوم باختيار
+    الخيارات.'
+- question: كم تبلغ عمولتكم؟
+  answer_template: العمولة تشكل X٪ من قيمة الصفقة. الدفع بعد توقيع العقد.
+- question: هل يمكن التمويل بالرهن العقاري؟
+  answer_template: نعم، نعمل مع الرهن العقاري. نساعد في اختيار البنك بأفضل الشروط.
+- question: متى يمكن مشاهدة الشقة؟
+  answer_template: يمكنني حجز موعد للمشاهدة. ما هو اليوم والوقت المناسب لك؟
+- question: هل هناك رسوم خفية؟
+  answer_template: جميع الشروط واضحة ومكتوبة في العقد. لا توجد عمولات خفية.
+sales_scripts:
+- trigger: سعر_السؤال
+  situation: عندما يسأل العميل عن سعر العقار
+  script: نعم، يمكننا مناقشة الميزانية. ما هو نطاق سعرك المفضل؟ سأقوم بتقديم خيارات
+    مناسبة.
+  goal: فهم ميزانية العميل وتأهيله للعقارات المناسبة
+- trigger: مشاهدة_العقار
+  situation: عندما يطلب العميل مشاهدة عقار
+  script: ممتاز! يمكنني حجز موعد للمشاهدة. ما هو الوقت المناسب لك هذا الأسبوع؟
+  goal: حجز موعد للمشاهدة وزيادة احتمالية البيع
+- trigger: مقارنة_المنافسين
+  situation: عندما يذكر العميل المنافسين
+  script: فهمت. نحن نقدم عقارات حصرية وخدمة شخصية. هل ترغب في رؤية بعض الخيارات التي
+    لا تظهر في الإعلانات؟
+  goal: تمييز خدماتنا وتقديم قيمة مضافة
+competitors:
+- name: Better Homes
+  positioning: وكالة عقارية رائدة في قطر
+  strengths:
+  - شبكة واسعة
+  - سمعة جيدة
+  - خدمات متكاملة
+  weaknesses:
+  - أسعار مرتفعة
+  - بطء في الاستجابة
+  our_differentiation: أسعار تنافسية وخدمة سريعة 24/7
+- name: Asteco
+  positioning: شركة إدارة عقارات دولية
+  strengths:
+  - خبرة عالمية
+  - إدارة محترفة
+  weaknesses:
+  - تركيز على الشركات الكبيرة
+  - قلة الخيارات للمستثمرين الأفراد
+  our_differentiation: اهتمام شخصي لكل عميل وعقارات متنوعة
+- name: Qatar Living Properties
+  positioning: منصة عقارية محلية
+  strengths:
+  - معرفة بالسوق المحلي
+  - أسعار معقولة
+  weaknesses:
+  - خدمة محدودة
+  - قلة الدعم القانوني
+  our_differentiation: خدمة شاملة مع دعم قانوني وتمويل
+pricing_context:
+  currency: QAR
+  typical_budget_range:
+  - 500000
+  - 5000000
+  entry_point: 300000
+  roi_examples:
+  - scenario: تخفيض وقت المكالمات الواردة
+    monthly_cost: 1000
+    monthly_savings: 5000
+    payback_months: 0.2
+  value_anchors:
+  - أسعار تنافسية في سوق قطر
+  - عمولة شفافة بدون رسوم خفية
+  - عوائد استثمارية عالية
+market_context:
+  market_size: حوالي 10 مليار QAR سنوياً
+  growth_rate: 5٪ نمو سنوي
+  key_trends:
+  - زيادة الطلب على العقارات الفاخرة
+  - التحول الرقمي في شراء العقارات
+  - نمو سوق التأجير قصير الأجل
+  seasonality:
+    high:
+    - شتاء
+    - أثناء الأحداث الكبرى مثل كأس العالم
+    low:
+    - صيف
+    - شهر رمضان
+typical_objections:
+- objection: سأجد بنفسي
+  response: أتفهم، ولكن وكلائنا يرون العقارات قبل النشر. هل يمكنني عرض عقارات حصرية؟
+- objection: غالي
+  response: دعنا نحدد الميزانية — سأختار خيارات في نطاق سعرك.
+- objection: سأتصل لاحقاً
+  response: بالتأكيد! هل تريد أن أحجز العقار لك حتى الغد؟ الخيارات الجيدة تذهب بسرعة.
+meta:
+  id: real_estate
+  region: mena
+  country: qa
+  language: ar
+  currency: QAR
+  phone_codes:
+  - '+974'
+aliases:
+- "real estate"
+- "property"
+- "realtor"
+- "realty"
+_extends: _base/real_estate

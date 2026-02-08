@@ -1,0 +1,200 @@
+pain_points:
+- description: Los altos costos operativos, como el alquiler y los servicios públicos, afectan la rentabilidad.
+  severity: high
+  solution_hint: Un agente de voz IA puede optimizar la gestión de recursos y reducir costos automatizando tareas administrativas.
+- description: Baja ocupación durante periodos no laborables, como fines de semana o vacaciones, leading to revenue loss.
+  severity: medium
+  solution_hint: El agente puede promover ofertas especiales y gestionar reservas flexibles para maximizar el uso del espacio.
+- description: Dificultad en la administración de membresías y facturación, leading to errores y insatisfacción del cliente.
+  severity: high
+  solution_hint: Automatizar la gestión de miembros y pagos para mejorar la eficiencia y precisión.
+- description: Competencia intensa de otros espacios de coworking en ciudades principales, haciendo difícil destacar.
+  severity: high
+  solution_hint: Usar el agente para destacar servicios únicos y personalizar la experiencia del cliente en tiempo real.
+- description: Cumplimiento de regulaciones como el GDPR, que requiere manejo cuidadoso de datos de clientes.
+  severity: high
+  solution_hint: Integrar funciones que aseguren el cumplimiento automático en las interacciones y almacenamiento de datos.
+- description: Retención de clientes y satisfacción, con altas tasas de rotación debido a la falta de engagement.
+  severity: medium
+  solution_hint: Recopilar feedback y ofrecer soporte proactivo a través del agente para fidelizar miembros.
+typical_services:
+- Escritorio fijo
+- Escritorio flexible (hot desk)
+- Oficina privada
+- Sala de reuniones
+- Acceso 24/7
+- Servicios de recepción y secretaría virtual
+- Impresión y copia
+- Café y áreas comunes
+- Eventos de networking y talleres
+- Espacios para eventos corporativos
+recommended_functions:
+- name: Reservar espacios
+  priority: high
+  reason: Fundamental para gestionar la disponibilidad y bookings de los clientes, mejorando la eficiencia operativa.
+- name: Gestionar membresías
+  priority: high
+  reason: Automatiza suscripciones, renovaciones y pagos, reduciendo errores y ahorrando tiempo.
+- name: Responder preguntas frecuentes
+  priority: medium
+  reason: Mejora la experiencia del cliente al proporcionar respuestas inmediatas sobre servicios y precios.
+- name: Procesar pagos y facturas
+  priority: high
+  reason: Asegura transacciones seguras y eficientes, integrando con sistemas locales de pago.
+- name: Recopilar feedback de clientes
+  priority: low
+  reason: Ayuda a mejorar servicios y retener miembros mediante insights en tiempo real.
+- name: Integrar con software de gestión
+  priority: medium
+  reason: Facilita la sincronización con CRM y herramientas locales, optimizando flujos de trabajo.
+typical_integrations:
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Pasarelas de pago
+  examples:
+  - Bizum
+  - PayPal
+  - Stripe
+  priority: high
+- name: Plataformas de reserva
+  examples:
+  - Ticketea
+  - Eventbrite
+  priority: medium
+- name: Software de contabilidad
+  examples:
+  - Contasimple
+  - Sage
+  priority: medium
+- name: Herramientas de comunicación
+  examples:
+  - Slack
+  - Microsoft Teams
+  priority: low
+industry_faq:
+- question: ¿Cuáles son los precios de los espacios de coworking?
+  answer_template: Ofrecemos una variedad de opciones, desde pases diarios a partir de €20 hasta membresías mensuales desde €150. ¿Te gustaría más detalles sobre nuestros planes?
+- question: ¿
+meta:
+  id: coworking
+  region: eu
+  country: es
+  language: es
+  currency: EUR
+  phone_codes:
+  - '+34'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta sobre precios y planes disponibles
+  script: Nuestros espacios de coworking en España ofrecen planes desde €20 diarios hasta membresías mensuales a partir de €150. ¿Desea que le detalle las opciones que mejor se adapten a sus necesidades?
+  goal: Informar claramente sobre precios para facilitar la decisión de compra
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Cuando un cliente menciona a un competidor específico
+  script: Entiendo que está considerando otras opciones, pero nuestro servicio se diferencia por ofrecer una gestión automatizada vía IA que mejora la eficiencia y reduce costos operativos, algo que pocos
+    competidores ofrecen en España.
+  goal: Destacar la ventaja competitiva para persuadir al cliente
+  effectiveness: medium
+- trigger: membership_management_question
+  situation: Cuando un cliente pregunta sobre la gestión de membresías y facturación
+  script: Contamos con un sistema automatizado que facilita la gestión de su membresía y pagos, evitando errores y garantizando una experiencia fluida. ¿Le gustaría saber cómo funciona?
+  goal: Promover la automatización para mejorar la satisfacción del cliente
+  effectiveness: high
+- trigger: low_occupancy_concern
+  situation: Cuando se discuten problemas de baja ocupación en ciertos periodos
+  script: Sabemos que los periodos no laborables pueden afectar la ocupación, por eso nuestro agente de voz IA promueve ofertas especiales y reservas flexibles para maximizar el uso del espacio.
+  goal: Presentar soluciones para aumentar la ocupación y los ingresos
+  effectiveness: medium
+- trigger: general_inquiry
+  situation: Cuando el cliente solicita información general sobre el coworking
+  script: Ofrecemos espacios flexibles y privados adaptados a profesionales y empresas, con tecnología avanzada para facilitar su experiencia. ¿Quiere que le explique nuestras facilidades y servicios?
+  goal: Generar interés y avanzar en el proceso de venta
+  effectiveness: medium
+competitors:
+- name: WeWork España
+  positioning: Líder global con fuerte presencia local
+  strengths:
+  - Amplia red de espacios en ciudades principales
+  - Marca reconocida y confiable
+  - Servicios adicionales como eventos y networking
+  weaknesses:
+  - Precios elevados para pymes y autónomos
+  - Menor flexibilidad en contratos
+  our_differentiation: Nuestro agente de voz IA automatiza procesos para reducir costos y mejorar la experiencia, algo que WeWork no ofrece a este nivel.
+- name: Utopicus
+  positioning: Operador local con enfoque en empresas medianas y grandes
+  strengths:
+  - Espacios premium con servicios corporativos
+  - Ubicaciones céntricas en ciudades importantes
+  weaknesses:
+  - Menor presencia en ciudades secundarias
+  - Costos más altos para startups y freelancers
+  our_differentiation: Brindamos opciones flexibles y automatización que facilita la gestión para todo tipo de clientes, incluidos autónomos.
+- name: Spaces
+  positioning: Cadena internacional con oferta variada en España
+  strengths:
+  - Diseño moderno y espacios bien equipados
+  - Comunidad activa y eventos frecuentes
+  weaknesses:
+  - Atención personalizada limitada
+  - Sistema manual en la gestión de membresías
+  our_differentiation: Incorporamos un agente de voz IA para responder consultas y gestionar membresías automáticamente, mejorando la atención al cliente.
+- name: Impact Hub Madrid
+  positioning: Fuerte enfoque en emprendimiento social y startups
+  strengths:
+  - Comunidad colaborativa y programas de apoyo
+  - Eventos temáticos y networking
+  weaknesses:
+  - Espacios limitados y alta demanda
+  - Procesos de reserva manuales
+  our_differentiation: Nuestra solución automatiza reservas y pagos, facilitando el acceso y reduciendo tiempos de espera para los usuarios.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 20
+  - 500
+  entry_point: 20
+  roi_examples:
+  - scenario: Reducir errores en facturación mediante automatización
+    monthly_cost: 100
+    monthly_savings: 250
+    payback_months: 1
+  - scenario: Optimización del uso del espacio con promociones automatizadas
+    monthly_cost: 150
+    monthly_savings: 400
+    payback_months: 1
+  - scenario: Automatización de gestión de membresías para ahorro de tiempo
+    monthly_cost: 120
+    monthly_savings: 300
+    payback_months: 1
+  value_anchors:
+  - Ahorro significativo en costos administrativos gracias a la automatización.
+  - Incremento de ingresos al maximizar la ocupación del espacio.
+  - Mejora en la experiencia del cliente con respuestas rápidas y precisas.
+  - Reducción de errores humanos en facturación y gestión de membresías.
+market_context:
+  market_size: Aproximadamente 300 millones de euros en 2023
+  growth_rate: 6-8%
+  key_trends:
+  - Creciente demanda de espacios flexibles post-pandemia
+  - Integración de tecnología y automatización en la gestión
+  - Aumento de trabajadores remotos y freelancers
+  - Mayor interés en sostenibilidad y espacios eco-amigables
+  seasonality:
+    high:
+    - Septiembre
+    - Octubre
+    - Enero
+    - Febrero
+    low:
+    - Agosto
+    - Diciembre
+    - Julio

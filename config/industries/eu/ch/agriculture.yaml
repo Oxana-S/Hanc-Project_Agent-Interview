@@ -1,0 +1,234 @@
+pain_points:
+- description: Hoher administrativer Aufwand durch Bürokratie und Dokumentationspflichten
+    für Subventionen und Kontrollen.
+  severity: high
+  solution_hint: Automatisierte Erfassung und Vorbereitung von Dokumenten via Sprachanweisungen.
+- description: Schwierigkeiten bei der Rekrutierung und Bindung von saisonalen Arbeitskräften.
+  severity: high
+  solution_hint: Voice Agent kann erste Anrufe von Bewerbern entgegennehmen und Fragen
+    beantworten.
+- description: Unvorhersehbare Wettereinflüsse und mangelnde Echtzeitdaten für präzise
+    Entscheidungen.
+  severity: medium
+  solution_hint: Sprachgesteuerte Abfrage von Wettervorhersagen und Sensordaten vom
+    eigenen Feld.
+- description: Komplexe Planung von Maschineneinsätzen und Wartungsintervallen.
+  severity: medium
+  solution_hint: Voice Agent koordiniert Termine für Maschineneinsätze und erinnert
+    an Wartungen.
+- description: Steigende Kosten für Betriebsmittel wie Dünger und Energie.
+  severity: high
+  solution_hint: Agent kann aktuelle Marktpreise abfragen und günstige Bezugsquellen
+    vorschlagen.
+- description: Zunehmender Druck durch gesetzliche Vorgaben zu Umwelt- und Tierschutz.
+  severity: medium
+  solution_hint: Automatische Benachrichtigung über neue Verordnungen und Checklisten
+    zur Einhaltung.
+typical_services:
+- Melkroboter-Service und -Wartung
+- Präzisionslandwirtschaft und Bodenanalyse
+- Landmaschinen-Vermietung und Lohnunternehmen
+- Agrarsoftware und Betriebsmanagement (Buchhaltung, Dokumentation)
+- Biologische Schädlingsbekämpfung
+- Bewässerungssystem-Installation und -Management
+- Direktvermarktung und Hofladen-Beratung
+- Agrarbau und Stallneubau
+- Energieberatung und Photovoltaik für Landwirte
+- Ausbildung und Kurse für moderne Landwirtschaft
+recommended_functions:
+- name: Automatisierte Terminbuchung
+  priority: high
+  reason: Entlastet bei der Koordination mit Lieferanten, Kunden und Lohnunternehmen.
+- name: FAQ-Beantworter zu Subventionen (z.B. Direktzahlungen)
+  priority: high
+  reason: Reduziert Anrufe beim Büro zu häufigen bürokratischen Fragen.
+- name: Bestellaufnahme für Hofladen oder Abo-Kisten
+  priority: medium
+  reason: Ermöglicht 24/7-Bestellungen und entlastet das Personal.
+- name: Störungsmeldung für Technik (z.B. Melkroboter)
+  priority: high
+  reason: Schnelle Weiterleitung an Servicetechniker, minimiert Produktionsausfall.
+- name: Erntehelfer-Recruiting-Assistent
+  priority: medium
+  reason: Filtert erste Anfragen und vereinbart Vorstellungsgespräche.
+- name: Lagerbestandsabfrage per Sprache
+  priority: low
+  reason: Schnelle Info über Futter- oder Düngervorräte vom Feld aus.
+typical_integrations:
+- name: Betriebsmanagementsoftware
+  examples:
+  - AgriCircle
+  - 365FarmNet
+  - AGRANIS FarmManager
+  priority: high
+- name: Wetter- und Bodensensordienste
+  examples:
+  - MeteoSchweiz
+  - Swiss AgroSense
+  priority: medium
+- name: Online-Marktplätze für Landwirte
+  examples:
+  - AgriMercato
+  - farmy.ch
+  priority: medium
+- name: Zahlungs- und Rechnungssysteme
+  examples:
+  - Twint
+  - E-Banking der Raiffeisen/PostFinance
+  priority: high
+- name: Tierverwaltungssysteme
+  examples:
+  - Vereinigte Informationssysteme Tierhaltung (VIT)
+  priority: medium
+industry_faq:
+- question: Wie schützen Sie meine Betriebsdaten?
+  answer_template: Ihre Daten werden gemäss Schweizer DSG (FADP) und europäischer
+    GDPR ausschliesslich in Rechenzentren in der EU/CH verarbeitet. Wir bieten vollständige
+    Transparenz über die Datennutzung.
+- question: Was kostet die Einrichtung eines solchen Systems?
+  answer_template: Die Kosten richten sich nach Ihrem Betrieb. Einfache Voice Agent-Lösungen
+    starten bei ca. 200 CHF/Monat. Gerne erstellen wir eine individuelle Offerte.
+- question: Kann der Agent mit unserer bestehenden Software reden?
+  answer_template: Ja, wir integrieren uns in gängige Systeme wie AgriCircle oder
+    365FarmNet. Bitte teilen Sie uns Ihre Software mit, wir prüfen die Kompatibilität.
+- question: Funktioniert das bei Lärm im Stall oder auf dem Feld?
+  answer_template: Unsere Technologie verfügt über fortschrittliche Rauschunterdrückung
+    und ist für den Einsatz in landwirtschaftlichen Umgebungen optimiert.
+- question: Brauchen wir spezielle Schulungen für unser Team?
+  answer_template: Nein, die Bedienung erfolgt natürlich per Sprache. Wir führen ein
+    kurzes Onboarding durch, danach ist das System sofort nutzbar.
+- question: Wie schnell sehen wir einen Return on Investment (ROI)?
+  answer_template: Durch Zeitersparnis im Büro und reduzierte Leerlaufzeiten bei Maschinen
+    sehen viele Betriebe innerhalb von 6-9 Monaten einen positiven ROI.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten, nachdem er die Grundfunktionen erklärt bekam.
+  script: Die Investition orientiert sich an Ihrer Betriebsgrösse und den gewünschten
+    Funktionen. Ein einfacher Einstieg zur Entlastung Ihrer Büroarbeit beginnt bei
+    etwa 200 CHF pro Monat. Bei einem durchschnittlichen Zeitgewinn von 10 Stunden
+    pro Monat für administrative Aufgaben hat sich dies schnell amortisiert. Darf
+    ich eine detaillierte, unverbindliche Kosten-Nutzen-Analyse für Ihren Hof erstellen?
+  goal: Bedenken wegen Kosten nehmen und auf konkreten ROI hinweisen, um zum nächsten
+    Schritt (Analyse) zu führen.
+- trigger: competitor_mentioned
+  situation: Kunde erwähnt einen Mitbewerber oder eine alternative, manuelle Lösung.
+  script: Das ist interessant. Viele unserer Kunden schätzen insbesondere, dass unsere
+    Lösung speziell für die Schweizer Landwirtschaft mit ihren bürokratischen Anforderungen
+    (Direktzahlungen, DSG) entwickelt wurde. Im Gegensatz zu generischen Systemen
+    sprechen wir Ihre Fachsprache und integrieren uns direkt in Tools wie AgriCircle.
+    Können wir einen kurzen Test einrichten, damit Sie den Unterschied hören?
+  goal: Unsere lokale Spezialisierung und tiefe Integration als Hauptvorteil hervorheben
+    und zu einer Demo überleiten.
+- trigger: objection_complexity
+  situation: Kunde äussert Bedenken, die Technologie sei zu kompliziert.
+  script: 'Ich verstehe Ihre Sorge vollkommen. Unser System wurde genau für diesen
+    Zweck entwickelt: Es soll Komplexität reduzieren, nicht erhöhen. Sie sprechen
+    mit dem Agenten wie mit einem Mitarbeiter – auf Schweizerdeutsch oder Hochdeutsch.
+    Es sind keine IT-Kenntnisse nötig. Wir übernehmen die gesamte Einrichtung und
+    Sie starten innerhalb weniger Tage. Möchten Sie es kurz mit einer simulierten
+    Situation probieren?'
+  goal: Angst vor Technik nehmen durch Betonung der einfachen, sprachbasierten Bedienung
+    und des Full-Service, mit Aufforderung zum Ausprobieren.
+competitors:
+- name: AgroTech Solutions AG
+  positioning: Etablierter Anbieter von Farmmanagementsoftware in der Schweiz.
+  strengths:
+  - Tiefe Branchenkenntnis
+  - breite Software-Funktionalität
+  - lokaler Support
+  weaknesses:
+  - Keine spezialisierten Voice-Agenten
+  - höhere Gesamtkosten
+  - komplexere Bedienung
+  our_differentiation: Wir bieten eine native Sprachschnittstelle, die direkte, hands-free
+    Interaktion ermöglicht und speziell für die Entlastung von Büroaufgaben optimiert
+    ist.
+- name: FarmBetter (international)
+  positioning: Cloud-basierte Plattform für globale Präzisionslandwirtschaft.
+  strengths:
+  - Starke Analyse-Tools
+  - internationale Datenbenchmarks
+  - skalierbare Plattform
+  weaknesses:
+  - Geringe Lokalisierung für CH-Bürokratie
+  - Support oft nicht auf Deutsch
+  - Datenspeicherung ausserhalb CH/EU
+  our_differentiation: Vollständige Fokussierung auf den Schweizer Markt mit DSG/GDPR-konformer
+    Datenhaltung, Integration lokaler Systeme und Support in Landessprachen.
+- name: Traditionelle Bürohilfe / Quereinsteiger
+  positioning: Manuelle Verwaltung durch (teure) Teilzeitkräfte oder Familienmitglieder.
+  strengths:
+  - Persönlicher Kontakt
+  - flexible Anpassung
+  weaknesses:
+  - Hohe Personalkosten
+  - begrenzte Verfügbarkeit
+  - Fehleranfälligkeit bei komplexen Vorschriften
+  our_differentiation: Unser Agent ist 24/7 verfügbar, arbeitet kosteneffizient ohne
+    Lohnnebenkosten und hat alle gesetzlichen Änderungen immer aktuell parat.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 150
+  - 800
+  entry_point: 200
+  roi_examples:
+  - scenario: Mittlerer Milchviehbetrieb reduziert Büroaufwand für Direktzahlungsantrag
+      und tägliche Dokumentation.
+    monthly_cost: 350
+    monthly_savings: 600
+    payback_months: 7
+  value_anchors:
+  - Kostet weniger als eine Stunde Arbeit einer Fachkraft pro Woche.
+  - Amortisiert sich oft durch die Vermeidung einer einzigen Strafzahlung wegen verspäteter
+    Meldung.
+  - 'Investition in die Zukunft Ihres Hofes: Steigert die Attraktivität für die nächste
+    Generation.'
+market_context:
+  market_size: Ca. 50'000 landwirtschaftliche Betriebe in der Schweiz als potenzielle
+    Kundenbasis.
+  growth_rate: Stabil, mit starkem Wachstum im Segment Digitalisierung und Präzisionslandwirtschaft
+    (>10% p.a.).
+  key_trends:
+  - Stark steigende Nachfrage nach Bio- und Regionalprodukten.
+  - Digitalisierung als Antwort auf Fachkräftemangel.
+  - Politische Fokussierung auf ökologische Leistungen (ÖLN).
+  - Energieautarkie durch eigene Solaranlagen.
+  seasonality:
+    high:
+    - Frühjahr (Aussaat
+    - Düngung)
+    - Herbst (Ernte
+    - Herbstweide)
+    low:
+    - Tiefwinter (Dezember/Januar)
+typical_objections:
+- objection: Das ist mir zu teuer für etwas, was meine Familie auch erledigen kann.
+  response: 'Ich verstehe den Gedanken. Bedenken Sie aber die Opportunitätskosten:
+    Was könnte Ihre Familie in dieser Zeit stattdessen, vielleicht gewinnbringender,
+    tun? Unser System ist eine Investition, die Ihre Familie von repetitiver Büroarbeit
+    befreit und mehr Zeit für die eigentliche Hofarbeit oder die Familie schafft.'
+- objection: Ich traue der Technik mit meinen sensiblen Betriebsdaten nicht.
+  response: Das ist eine sehr berechtigte Sorge. Datensicherheit ist unser oberstes
+    Gebot. Wir halten uns strikt an das Schweizer Datenschutzgesetz (FADP). Die Daten
+    bleiben unter Ihrer Kontrolle und werden in der Schweiz oder EU gehostet. Wir
+    können eine vertragliche Vereinbarung dazu treffen.
+- objection: Bei uns auf dem Hof ist es immer laut und hektisch, da versteht uns so
+    ein Computer nie.
+  response: Genau für diese Umgebung ist unsere Technik gemacht. Sie filtert Hintergrundgeräusche
+    wie Traktoren oder Tiere effektiv heraus. Lassen Sie uns eine kostenlose Testwoche
+    vereinbaren – Sie werden überrascht sein, wie robust es funktioniert.
+meta:
+  id: agriculture
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "agriculture"
+- "farming"
+- "agribusiness"
+- "farm"
+_extends: _base/agriculture

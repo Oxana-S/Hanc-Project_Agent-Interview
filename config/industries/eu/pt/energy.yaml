@@ -1,0 +1,196 @@
+pain_points:
+- description: Flutuações significativas nos preços da energia, aumentando os custos operacionais.
+  severity: high
+  solution_hint: O agente de voz pode monitorar preços em tempo real e sugerir momentos ideais para compra de energia.
+- description: Dependência de fontes de energia externas, levando a vulnerabilidades no abastecimento.
+  severity: medium
+  solution_hint: O agente pode promover soluções de energia renovável local para reduzir dependência.
+- description: Ineficiências no consumo de energia, resultando em desperdício e custos elevados.
+  severity: medium
+  solution_hint: O agente pode analisar padrões de consumo e recomendar medidas de eficiência energética.
+- description: Complexidade na gestão de contratos de energia com múltiplos fornecedores.
+  severity: low
+  solution_hint: O agente pode automatizar a comparação e renovação de contratos, simplificando a gestão.
+- description: Dificuldades na integração de energias renováveis na rede existente.
+  severity: high
+  solution_hint: O agente pode coordenar a instalação e monitoramento de sistemas renováveis com integração suave.
+- description: Conformidade regulatória rigorosa, incluindo GDPR, exigindo atenção constante.
+  severity: medium
+  solution_hint: O agente pode verificar e alertar sobre requisitos de conformidade, garantindo aderência.
+typical_services:
+- Consultoria em eficiência energética
+- Gestão de contratos de eletricidade e gás
+- Instalação de painéis solares fotovoltaicos
+- Monitoramento de consumo de energia em tempo real
+- Auditorias energéticas para otimização
+- Serviços de manutenção de equipamentos energéticos
+- Venda de energia renovável certificada
+- Sistemas de armazenamento de energia (baterias)
+- Integração de redes inteligentes (smart grids)
+- Gestão de emissões de carbono e sustentabilidade
+recommended_functions:
+- name: Assistente de atendimento ao cliente
+  priority: high
+  reason: Para resolver rapidamente consultas sobre faturas, serviços ou emergências.
+- name: Agendamento de manutenção preventiva
+  priority: medium
+  reason: Para garantir a operação contínua e eficiente dos sistemas energéticos.
+- name: Processamento de pagamentos e faturas
+  priority: high
+  reason: Para automatizar transações financeiras e reduzir erros.
+- name: Resposta automática a perguntas frequentes
+  priority: medium
+  reason: Para libertar recursos humanos e fornecer informações imediatas.
+- name: Coleta de feedback pós-serviço
+  priority: low
+  reason: Para melhorar a qualidade do serviço com base no feedback do cliente.
+- name: Suporte técnico remoto
+  priority: high
+  reason: Para diagnosticar e resolver problemas técnicos sem deslocação.
+- name: Gestão de alertas de emergência
+  priority: medium
+  reason: Para notificar rapidamente sobre falhas ou interrupções no fornecimento.
+typical_integrations:
+- name: Sistemas de ERP (Enterprise Resource Planning)
+  examples:
+  - SAP
+  - Primavera
+  priority: high
+- name: Software de gestão energética
+  examples:
+  - Schneider Electric EcoStruxure
+  - Siemens MindSphere
+  priority: high
+- name: Plataformas de pagamento locais
+  examples:
+  - MB Way
+  - SIBS
+  priority: medium
+- name: Sistemas de CRM (Customer Relationship Management)
+  examples:
+  - Salesforce
+  - HubSpot
+  priority: medium
+- name: Dispositivos IoT para monitoramento
+  examples:
+  - Sensores de energia portugueses
+  - Plataformas locais de IoT
+  priority: low
+industry_faq:
+- question: Como posso reduzir a minha conta de eletricidade?
+  answer_template: Recomendamos uma auditoria energética para identificar desperdícios e sugerir soluções como painéis solares ou equipamentos eficientes, que podem reduzir custos em até 20%.
+- question: Quais são as opções de energia renovável disponíveis em Portugal?
+  answer_template: Em Portugal, as opções incluem energia solar, eólica e hídrica. Podemos ajudar na instalação de sistemas personalizados, aproveitando incentivos governamentais.
+- question: Como funciona a integração com smart grids?
+  answer_template: A integração com smart grids permite monitorar e otimizar o consumo em tempo real, melhorando a eficiência e reduzindo picos de carga, com suporte do nosso agente de voz.
+- question: Quais são os requisitos de conformidade, incluindo GDPR?
+  answer_template: Cumprimos todas as regulamentações locais e GDPR, garantindo a segurança dos dados dos clientes. O nosso agente pode auxiliar na documentação e alertas de conformidade.
+- question: Posso obter financiamento para projetos de energia renovável?
+  answer_template: Sim, existem subsídios e empréstimos disponíveis através de programas como o Fundo Ambiental. Podemos orientar no processo de candidatura.
+- question: Como é feita a manutenção dos sistemas de energia?
+  answer_template: Oferecemos manutenção preventiva agendada pelo agente de voz, com inspeções regulares para garantir desempenho máximo e evitar avarias.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre o preço dos serviços.
+  script: Olá! Os nossos serviços começam a partir de 500 EUR, mas o valor exato depende das suas necessidades específicas. Posso agendar uma consulta gratuita para analisar o seu caso e mostrar o retorno
+    do investimento?
+  goal: Converter o interesse numa reunião para discutir soluções personalizadas.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre os serviços oferecidos.
+  script: Oferecemos uma gama completa, desde consultoria em eficiência energética até instalação de painéis solares. Qual é a sua principal preocupação? Posso detalhar como podemos ajudar.
+  goal: Identificar necessidades e promover um pacote de serviços adequado.
+- trigger: competitor_mention
+  situation: Quando o cliente menciona um concorrente como EDP ou Galp.
+  script: Compreendemos! Diferimos pela nossa abordagem personalizada e foco em tecnologia, como o agente de voz que automatiza tarefas e reduz custos. Gostaria de saber mais sobre os nossos casos de sucesso?
+  goal: Destacar a nossa diferenciação e ganhar a confiança do cliente.
+- trigger: objection_handling
+  situation: Quando o cliente objeta ao custo inicial.
+  script: Entendo a preocupação. No entanto, com as nossas soluções, o retorno do investimento é rápido—por exemplo, a instalação solar pode pagar-se em 24 meses. Posso partilhar um cálculo personalizado?
+  goal: Superar a objeção focando no valor a longo prazo.
+competitors:
+- name: EDP (Energias de Portugal)
+  positioning: Principal utility com rede extensa e serviços tradicionais.
+  strengths:
+  - Presença nacional forte
+  - Infraestrutura consolidada
+  weaknesses:
+  - Inovação lenta
+  - Serviço ao cliente menos personalizado
+  our_differentiation: Oferecemos soluções tecnológicas avançadas com agente de voz para maior eficiência e suporte proativo.
+- name: Galp
+  positioning: Empresa de energia com foco em combustíveis e renováveis emergentes.
+  strengths:
+  - Marca reconhecida
+  - Diversificação em renováveis
+  weaknesses:
+  - Menos foco em eficiência energética
+  - Integração limitada de smart grids
+  our_differentiation: Especialização em eficiência energética e integração completa de renováveis com automação.
+- name: Endesa
+  positioning: Player internacional com operações em Portugal.
+  strengths:
+  - Recursos financeiros robustos
+  - Experiência global
+  weaknesses:
+  - Abordagem menos localizada
+  - Resposta lenta a mudanças regulatórias
+  our_differentiation: Expertise local profunda e conformidade ágil com regulamentos portugueses e GDPR.
+- name: Pequenas empresas locais de energia
+  positioning: Nichos especializados em serviços específicos como instalação solar.
+  strengths:
+  - Flexibilidade e atendimento próximo
+  - Preços competitivos
+  weaknesses:
+  - Escala limitada
+  - Falta de soluções integradas
+  our_differentiation: Soluções abrangentes desde consultoria até manutenção, com suporte de IA para escalabilidade.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Instalação de painéis solares para uma PME
+    monthly_cost: 200
+    monthly_savings: 310
+    payback_months: 24
+  value_anchors:
+  - Redução de custos energéticos em até 30% com as nossas soluções
+  - Retorno do investimento garantido em menos de 3 anos
+  - Conformidade total com GDPR e regulamentos portugueses sem esforço adicional
+market_context:
+  market_size: 15 mil milhões de EUR anualmente
+  growth_rate: 6% ao ano
+  key_trends:
+  - Expansão acelerada da energia solar fotovoltaica
+  - Transição para veículos elétricos e infraestruturas de carregamento
+  - Digitalização e adopção de smart grids para gestão eficiente
+  seasonality:
+    high:
+    - Verão para produção de energia solar
+    - Inverno para picos de consumo de aquecimento
+    low:
+    - Primavera e outono para manutenção e planeamento
+typical_objections:
+- objection: O preço inicial é muito elevado para o nosso orçamento.
+  response: Compreendemos, mas focamos no retorno a longo prazo. Com as nossas soluções, as poupanças mensais podem cobrir o investimento rapidamente. Podemos explorar opções de financiamento.
+- objection: Não temos recursos internos para gerir a implementação.
+  response: Oferecemos serviços turnkey com suporte completo do nosso agente de voz, que automatiza muitas tarefas, minimizando a carga para a sua equipa.
+- objection: Já trabalhamos com um fornecedor de energia estabelecido.
+  response: Valorizamos a fidelidade. No entanto, podemos
+meta:
+  id: energy
+  region: eu
+  country: pt
+  language: pt
+  currency: EUR
+  phone_codes:
+  - '+351'
+aliases:
+- energy
+- solar
+- renewable
+- power
+- utilities
+_extends: _base/energy

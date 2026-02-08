@@ -1,0 +1,249 @@
+pain_points:
+- description: Lieferschwierigkeiten bei Baumaterialien führen zu Projektverzögerungen.
+  severity: high
+  solution_hint: Automatisierte Lieferantenanfragen und Bestandsverfolgung via Sprachagent.
+- description: Fachkräftemangel, insbesondere bei qualifizierten Handwerkern und Bauleitern.
+  severity: high
+  solution_hint: Automatisierte Erstkontaktaufnahme und Terminvereinbarung mit Bewerbern.
+- description: Komplexe und zeitaufwändige Angebotserstellung und Kalkulation.
+  severity: medium
+  solution_hint: Sprachgesteuerte Vorab-Kalkulation und Angebotsvorlagen-Abfrage.
+- description: Hoher administrativer Aufwand für Bauanträge, Dokumentation und Rechnungsstellung.
+  severity: medium
+  solution_hint: Sprachbefehle zur Dokumentenerstellung und Erinnerungen für Fristen.
+- description: Koordinationsprobleme zwischen verschiedenen Gewerken auf der Baustelle.
+  severity: medium
+  solution_hint: Automatisierte Termin- und Ressourcenkoordination via Sprachinterface.
+- description: Strenges Baurecht und hohe Compliance-Anforderungen (z.B. DSGVO für
+    Bauherrendaten).
+  severity: high
+  solution_hint: DSGVO-konforme Datenerfassung und -verwaltung durch den Sprachagenten.
+- description: Unvorhergesehene Mehrkosten durch versteckte Mängel oder Planungsänderungen.
+  severity: medium
+  solution_hint: Frühzeitige Erkennung von Abweichungen durch regelmäßige Sprach-Updates
+    vom Baufortschritt.
+typical_services:
+- Bauleitung und Projektsteuerung
+- Hochbau (Wohn- und Gewerbebau)
+- Tiefbau (Straßen-, Kanal- und Erdarbeiten)
+- Sanierung und Modernisierung
+- Innenausbau
+- Bauüberwachung und Bauabnahme
+- Statische Berechnungen und Planung
+- Baugrunduntersuchungen
+- Energieeffizientes Bauen (KfW-Standard)
+- Schlüsselfertiges Bauen
+recommended_functions:
+- name: Anfragemanagement und Erstkontakt
+  priority: high
+  reason: Schnelle Reaktion auf Bauherren-Anfragen ist entscheidend für Auftragsakquise.
+- name: Terminvereinbarung für Baustellenbegehungen
+  priority: high
+  reason: Koordinierung von Besichtigungsterminen mit Kunden und Subunternehmen.
+- name: Lieferstatus- und Materialbestandsabfrage
+  priority: medium
+  reason: Reduziert Projektverzögerungen durch transparente Lieferketten-Information.
+- name: Automatisierte Angebotserstellung
+  priority: medium
+  reason: Beschleunigt den Verkaufsprozess und erhöht die Professionalität.
+- name: Baustellen-Fortschrittsmeldungen
+  priority: low
+  reason: Automatische Updates an Bauherren verbessern die Kommunikation und Zufriedenheit.
+- name: Rechnungserinnerungen und Zahlungsnachverfolgung
+  priority: medium
+  reason: Verbessert den Cashflow durch pünktliche Mahnungen.
+typical_integrations:
+- name: Bau-Software und ERP-Systeme
+  examples:
+  - AplusB
+  - BauOffice
+  - RIB iTWO
+  priority: high
+- name: Terminplanungs- und Projektmanagement-Tools
+  examples:
+  - Microsoft Project
+  - Asana
+  - BauWert Kalender
+  priority: medium
+- name: CAD/BIM-Software
+  examples:
+  - Allplan
+  - Autodesk Revit
+  - Nemetschek
+  priority: medium
+- name: Buchhaltungssoftware
+  examples:
+  - Datev
+  - SAP Business One
+  priority: high
+- name: Lieferantenportale und Marktplätze
+  examples:
+  - Baunativ
+  - Bauforum
+  - Hellweg Profi
+  priority: low
+industry_faq:
+- question: Können Sie mir bei der Beantragung der Baugenehmigung helfen?
+  answer_template: Wir unterstützen Sie bei der Zusammenstellung der erforderlichen
+    Unterlagen für das Bauamt. Die eigentliche Einreichung und Kommunikation mit den
+    Behörden obliegt jedoch in der Regel einem autorisierten Planer oder Architekten.
+- question: Wie lange dauert ein typisches Einfamilienhaus-Projekt bis zur Fertigstellung?
+  answer_template: Die Dauer variiert stark, aber für ein schlüsselfertiges Einfamilienhaus
+    planen Sie mit etwa 9 bis 12 Monaten nach Baugenehmigung, abhängig von Größe,
+    Ausstattung und Witterung.
+- question: Bieten Sie Festpreise an?
+  answer_template: Ja, wir arbeiten auf Wunsch mit transparenten Festpreisen, basierend
+    auf einem detaillierten Leistungsverzeichnis. Unvorhergesehene geologische oder
+    behördliche Auflagen können jedoch zu Nachträgen führen.
+- question: Sind Sie versichert?
+  answer_template: Ja, selbstverständlich. Wir verfügen über die gesetzlich vorgeschriebenen
+    Versicherungen wie Bauleistungs-, Betriebshaftpflicht- und Unfallversicherung.
+    Gerne legen wir Ihnen entsprechende Nachweise vor.
+- question: Wie handhaben Sie Änderungswünsche während der Bauphase?
+  answer_template: Änderungswünsche besprechen wir umgehend und erstellen einen transparenten
+    Nachtragsvertrag mit Auswirkungen auf Kosten und Zeitplan, bevor die Arbeiten
+    umgesetzt werden.
+- question: Welche Gewährleistung bieten Sie?
+  answer_template: Für Bauwerke beträgt die gesetzliche Gewährleistung 5 Jahre. Für
+    einzelne Handwerksleistungen gelten teilweise kürzere Fristen. Alle Details sind
+    im Werkvertrag festgehalten.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein potenzieller Kunde nach den Kosten fragt.
+  script: 'Sehr gerne erstelle ich Ihnen ein unverbindliches Angebot. Um dies so präzise
+    wie möglich zu machen: Können Sie mir grob das Bauvolumen (z.B. Wohnfläche), den
+    gewünschten Standard und Ihre ungefähre Zeitplanung nennen? Auf Basis dessen kann
+    ich Ihnen eine erste Kostenspanne nennen und einen detaillierten Beratungstermin
+    vereinbaren.'
+  goal: Qualifizierung des Leads und Terminvereinbarung für eine detaillierte Beratung.
+- trigger: competitor_mention
+  situation: Wenn der Kunde einen Mitbewerber nennt.
+  script: Das ist eine gute Wahl. Wir schätzen viele unserer Kollegen. Unser Fokus
+    liegt besonders auf einer transparenten, digital gestützten Kommunikation und
+    Projektsteuerung. Das bedeutet für Sie weniger unerwartete Verzögerungen und Kosten
+    und mehr Kontrolle über den Baufortschritt – oft über eine einfache Sprach- oder
+    App-Nachricht. Darf ich Ihnen ein konkretes Beispiel aus einem ähnlichen Projekt
+    zeigen?
+  goal: Herausstellen des eigenen Mehrwerts (digitale Transparenz) ohne direkte Abwertung
+    des Konkurrenten.
+- trigger: objection_too_expensive
+  situation: Wenn der Kunde den Preis als zu hoch empfindet.
+  script: Ich verstehe, dass die Investition bedeutend ist. Unsere Preise spiegeln
+    qualitativ hochwertige Materialien, erfahrene Fachkräfte und vor allem einen reibungslosen,
+    termingerechten Ablauf wider. Eine kostengünstigere Alternative kann oft versteckte
+    Risiken wie Verzögerungen oder Qualitätsmängel bedeuten, die am Ende teurer werden.
+    Können wir gemeinsam die Punkte besprechen, die Ihnen besonders wichtig sind,
+    um die beste Wert-Lösung für Sie zu finden?
+  goal: Wertargumentation und Wiedererlangung des Gesprächsfadens zur Bedarfsanalyse.
+- trigger: request_demo
+  situation: Wenn der Kunde eine Demo der Technologie wünscht.
+  script: 'Sehr gerne. Ich kann Ihnen sofort eine kurze Demo unserer Sprachsteuerung
+    geben: Sie könnten mich zum Beispiel fragen ''Wie ist der aktuelle Status bei
+    Lieferung der Fenster für Projekt Müllerstraße?'' oder ''Vereinbare einen Termin
+    für eine Baustellenbesichtigung nächste Woche''. Möchten Sie das ausprobieren,
+    oder soll ich einen Screenshare-Termin mit einem unserer Technikberater vereinbaren,
+    der Ihnen die Integration in Ihre bestehende Software zeigt?'
+  goal: Sofortige Wertdemonstration und Weiterleitung zu technischer Vertiefung.
+competitors:
+- name: Hochtief Österreich
+  positioning: Großer, internationaler Generalunternehmer für Großprojekte.
+  strengths:
+  - Finanzstark
+  - Erfahrung mit Großprojekten
+  - Umfangreiche eigene Kapazitäten
+  weaknesses:
+  - Weniger flexibel für KMUs/Kleinprojekte
+  - Höhere Overhead-Kosten
+  - Längere Entscheidungswege
+  our_differentiation: Wir bieten agile, digitale Prozesse speziell für mittelständische
+    Bauunternehmen und private Bauherren mit persönlicher Betreuung.
+- name: STRABAG
+  positioning: Marktführer im DACH-Raum für Infrastruktur und Hochbau.
+  strengths:
+  - Allrounder
+  - Starke Marke
+  - Eigene Forschungsabteilung
+  weaknesses:
+  - Bürokratisch
+  - Teuer
+  - Fokus auf sehr große Projekte
+  our_differentiation: Unser KI-gestützter Sprachagent automatisiert genau die administrativen
+    Aufgaben, die bei großen Konzernen langsam sind – für kleine und mittlere Betriebe
+    bezahlbar.
+- name: Lokale mittelständische Baubetriebe
+  positioning: Regional verankerte Familienunternehmen.
+  strengths:
+  - Lokales Wissen und Netzwerk
+  - Persönliche Beziehungen
+  - Flexibilität
+  weaknesses:
+  - Oft veraltete Verwaltungsprozesse
+  - Begrenzte Digitalisierung
+  - Kapazitätsengpässe
+  our_differentiation: Wir ergänzen deren handwerkliche Stärke mit modernster digitaler
+    Effizienz, ohne deren persönliche Note zu ersetzen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 5000
+  - 50000
+  entry_point: 99
+  roi_examples:
+  - scenario: Kleines Bauunternehmen spart Verwaltungszeit für Angebotserstellung
+      und Terminplanung.
+    monthly_cost: 199
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Mittlerer Betrieb reduziert Projektverzögerungen durch bessere Lieferantenkommunikation.
+    monthly_cost: 449
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Bis zu 15 Stunden administrative Zeitersparnis pro Monat.
+  - Reduzierung von Projektverzögerungen um durchschnittlich 20%.
+  - DSGVO-konforme Dokumentation aller Kundenanfragen und -daten.
+market_context:
+  market_size: Ca. 30 Mrd. EUR Jahresumsatz (Bauhauptgewerbe)
+  growth_rate: 2-3% p.a. (stabil, getrieben von Sanierung und Infrastruktur)
+  key_trends:
+  - Nachhaltigkeit und energieeffizientes Bauen (Klimaziele)
+  - Digitale Baustelle (BIM, Drohnen, IoT)
+  - Fachkräftesicherung durch Automatisierung
+  - Rohstoffknappheit und Kreislaufwirtschaft
+  seasonality:
+    high:
+    - Frühjahr (März-Mai)
+    - Spätsommer/Frühherbst (August-Oktober)
+    low:
+    - Winter (Dezember-Februar, bei Frost)
+    - Hauptferienzeit (Juli-August, eingeschränkt)
+typical_objections:
+- objection: Das ist mir zu technisch/neu. Ich arbeite lieber mit persönlichen Ansprechpartnern.
+  response: Das verstehe ich vollkommen. Unser Sprachagent ersetzt nicht Ihren persönlichen
+    Ansprechpartner, sondern entlastet ihn von Routineaufgaben wie Terminvereinbarungen
+    und Statusabfragen. So hat er mehr Zeit für die wirklich wichtigen, persönlichen
+    Gespräche mit Ihnen auf der Baustelle.
+- objection: Mein Betrieb ist zu klein für so eine Technologie.
+  response: Gerade kleinere Betriebe profitieren enorm, da sie oft keine eigene Assistenz
+    oder IT-Abteilung haben. Unser System ist so einfach wie ein Telefonat zu bedienen
+    und skaliert perfekt mit Ihrem Wachstum. Wir beginnen oft mit einer einzigen,
+    entlastenden Funktion wie dem Anfragemanagement.
+- objection: Die Einrichtung und Einarbeitung kostet zu viel Zeit.
+  response: Wir übernehmen den Großteil der Einrichtung und schulen Ihr Team in weniger
+    als einem Tag. Die Bedienung erfolgt über natürliche Sprache – es ist also kein
+    Programmierwissen nötig. Die investierte Zeit amortisiert sich durch die Zeitersparnis
+    meist innerhalb der ersten Wochen.
+meta:
+  id: construction
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

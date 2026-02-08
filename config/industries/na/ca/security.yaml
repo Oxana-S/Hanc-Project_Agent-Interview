@@ -1,0 +1,199 @@
+pain_points:
+- description: High staff turnover and difficulty in finding qualified security personnel, especially in remote areas.
+  severity: high
+  solution_hint: AI voice agent can handle routine inquiries and scheduling, reducing administrative workload on existing staff.
+- description: Managing compliance with PIPEDA and provincial privacy laws adds administrative complexity.
+  severity: high
+  solution_hint: Automate compliance reminders and client data handling procedures through voice agent scripts.
+- description: Clients frequently request after-hours emergency support, leading to high overtime costs.
+  severity: medium
+  solution_hint: Voice agent can triage emergency calls, provide basic troubleshooting, and only escalate critical issues.
+- description: Difficulty tracking and billing for mobile patrol services accurately across large geographic areas.
+  severity: medium
+  solution_hint: Integrate voice agent with GPS tracking systems to automatically log patrol check-ins and generate reports.
+- description: Seasonal demand fluctuations (summer events, winter security for vacant properties) strain scheduling.
+  severity: medium
+  solution_hint: Use voice agent to manage on-call lists and automatically contact available personnel for surge needs.
+- description: Intense competition from both large national firms and small local operators pressures margins.
+  severity: high
+  solution_hint: Voice agent can handle high call volumes for quotes and basic info, freeing staff for high-value consultations.
+typical_services:
+- Residential alarm monitoring
+- Commercial security system installation
+- 24/7 armed response
+- Mobile patrol services
+- Access control systems
+- CCTV surveillance installation
+- Security guard services (static and mobile)
+- Fire alarm monitoring and inspection
+- Alarm verification services
+- Remote video monitoring
+recommended_functions:
+- name: Emergency call triage
+  priority: high
+  reason: Critical for handling after-hours calls efficiently and reducing false alarm dispatches.
+- name: Service scheduling and dispatch
+  priority: high
+  reason: Core to managing mobile patrols, guard rotations, and technician appointments across time zones.
+- name: Quote generation and follow-up
+  priority: medium
+  reason: High volume of pricing inquiries in competitive market requires quick response to capture leads.
+- name: Compliance documentation assistant
+  priority: medium
+  reason: PIPEDA and provincial regulations require careful data handling and client consent management.
+- name: Billing inquiry handler
+  priority: low
+  reason: Common source of routine calls that can be automated to free up accounting staff.
+typical_integrations:
+- name: Alarm monitoring software
+  examples:
+  - Alarm.com
+  - Surety
+  - GeoArm
+  priority: high
+- name: Security company management software
+  examples:
+  - Siterep
+  - TrackTik
+  - Silent Partner
+  priority: high
+- name: Payment processing
+  examples:
+  - Moneris
+  - Stripe Canada
+  - Square Canada
+  priority: medium
+- name: CRM systems
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Video management systems
+  examples:
+  - Milestone
+  - Genetec
+  - ExacqVision
+  priority: low
+industry_faq:
+- question: Are your monitoring services compliant with Canadian privacy laws?
+  answer_template: Yes, our monitoring center is ULCS certified and all our procedures are fully compliant with PIPEDA and provincial privacy regulations. We'll provide a compliance overview during your
+    consultation.
+- question: What's your average response time for alarms in my area?
+  answer_template: Our average armed response time is [X] minutes in your region. We can provide specific performance data for your postal code during our security assessment.
+- question: Do you offer monitoring for DIY security systems?
+  answer_template: We specialize in professional installations, but we do offer monitoring services for certain certified DIY systems. Let me connect you with our technical team to review your specific
+    equipment.
+- question: How do you handle false alarms?
+  answer_template: We use two-call verification to reduce false dispatches whenever possible. Our voice agent will first attempt to contact the premises before dispatching authorities, which can save you
+    from municipal fines.
+- question: What happens during a power or internet outage?
+  answer_template: All our systems include battery backup and cellular communication as standard. We guarantee 24/7 monitoring even during outages, with automated alerts if backup systems engage.
+sales_scripts:
+- trigger: price_question
+  situation: When a prospect asks about pricing for basic monitoring
+  script: I understand budget is important. For basic 24/7 monitoring with our two-call verification, we start at $34.95 CAD monthly. This includes cellular backup and reduces false alarm fines by up to
+    80%. Would you like me to schedule a 15-minute security assessment to get you an exact quote?
+  goal: Provide entry price while emphasizing value and transition to consultation.
+- trigger: competitor_mention
+  situation: When prospect mentions a specific competitor like ADT or Reliance
+  script: That's a good comparison. Many clients choose us because we're locally owned and offer more flexible contracts than the national providers. Our Canadian-based monitoring means faster local response
+    times. Could I show you some response time comparisons for your area?
+  goal: Differentiate on local ownership and performance metrics rather than price.
+- trigger: objection_too_small
+  situation: When a small business owner says they're too small for professional security
+  script: Actually, 60% of break-ins target small businesses. Our basic commercial package starts at just $89 monthly and can reduce your insurance premiums by 15-20%. That's often a net savings. Would
+    you like to hear about our most popular package for businesses like yours?
+  goal: Reframe security as cost-saving investment rather than expense.
+competitors:
+- name: ADT Canada
+  positioning: National market leader with brand recognition
+  strengths:
+  - National advertising
+  - 24/7 call centers
+  - Broad product range
+  weaknesses:
+  - Long-term contracts
+  - Higher prices
+  - Less local knowledge
+  our_differentiation: Month-to-month contracts, local response teams, and personalized service
+- name: Reliance Protectron
+  positioning: Major Canadian-owned provider
+  strengths:
+  - Canadian-owned
+  - Strong commercial focus
+  - Multiple monitoring centers
+  weaknesses:
+  - Complex pricing
+  - Less residential focus
+  - Slow quote process
+  our_differentiation: Simpler pricing, faster quote turnaround, and specialized residential expertise
+- name: Local independent security companies
+  positioning: Community-focused operators
+  strengths:
+  - Personal relationships
+  - Local knowledge
+  - Flexible service
+  weaknesses:
+  - Limited scale
+  - Manual processes
+  - Limited backup resources
+  our_differentiation: Combines local service with enterprise-grade technology and backup systems
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 500
+  - 10000
+  entry_point: 34
+  roi_examples:
+  - scenario: Small retail store with basic alarm system
+    monthly_cost: 89
+    monthly_savings: 135
+    payback_months: 6
+  - scenario: Multi-property residential investor
+    monthly_cost: 245
+    monthly_savings: 320
+    payback_months: 8
+  value_anchors:
+  - 'Average insurance premium reduction: 15-25%'
+  - Municipal false alarm fines reduced by 80% with verification
+  - 24/7 monitoring costs less than minimum wage for 2 hours
+market_context:
+  market_size: $8.2 billion annually
+  growth_rate: 4.3% YoY
+  key_trends:
+  - Integration of AI video analytics with traditional alarm systems
+  - Growing demand for remote monitoring of vacation properties
+  - Increased insurance requirements driving professional system adoption
+  - Mobile-first security management through apps
+  seasonality:
+    high:
+    - November-January (holiday vacancies)
+    - Summer months (vacation properties)
+    low:
+    - February-March
+    - September-October
+typical_objections:
+- objection: We've never had a break-in, so we don't need professional monitoring.
+  response: That's actually the best time to install a system - before anything happens. Most businesses without systems that experience a break-in don't recover. Plus, many insurers offer premium discounts
+    that can cover most of the monitoring cost.
+- objection: Your startup costs are too high compared to DIY systems.
+  response: Professional installation ensures proper placement and reduces false alarms. More importantly, our monitoring includes cellular backup that DIY systems lack. When you factor in potential false
+    alarm fines and insurance savings, our system pays for itself within 12-18 months.
+- objection: We're locked into a contract with our current provider.
+  response: Many clients don't realize their contracts have buyout clauses or expiration dates. We offer a free contract review and can often cover buyout fees for annual contracts. Would you like me to
+    schedule a quick consultation to review your options?
+meta:
+  id: security
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- security
+- guard service
+- surveillance
+- alarm systems
+_extends: _base/security

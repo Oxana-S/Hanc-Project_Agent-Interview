@@ -1,0 +1,219 @@
+pain_points:
+- description: La alta inflación en Argentina hace que los precios de los productos
+    de belleza fluctúen constantemente, complicando la fijación de precios y la planificación
+    financiera.
+  severity: high
+  solution_hint: El agente de voz de IA puede proporcionar actualizaciones en tiempo
+    real sobre precios y ofertas para mantener la competitividad.
+- description: Dificultades en la cadena de suministro para importar productos internacionales
+    debido a restricciones y costos logísticos elevados.
+  severity: high
+  solution_hint: El agente puede gestionar pedidos y rastrear envíos, alertando sobre
+    retrasos y sugiriendo alternativas locales.
+- description: Competencia intensa de grandes cadenas y marcas locales que ofrecen
+    descuentos agresivos, afectando a pequeños minoristas.
+  severity: medium
+  solution_hint: El agente puede automatizar campañas de marketing personalizadas
+    para fidelizar clientes y destacar productos exclusivos.
+- description: Gestión ineficiente de inventario que lleva a desabastecimiento o exceso
+    de stock, especialmente en productos perecederos como cremas.
+  severity: medium
+  solution_hint: El agente puede integrarse con sistemas de inventario para predecir
+    demanda y optimizar órdenes de compra.
+- description: Retrasos en los pagos de clientes y proveedores, generando problemas
+    de flujo de caja en un entorno económico volátil.
+  severity: high
+  solution_hint: El agente puede recordar pagos pendientes y facilitar transacciones
+    rápidas mediante integraciones con pasarelas locales.
+- description: Falta de asesoramiento profesional en tiendas para clientes que buscan
+    productos específicos para tipos de piel o cabello locales.
+  severity: low
+  solution_hint: El agente puede ofrecer recomendaciones personalizadas basadas en
+    preferencias y condiciones climáticas de Argentina.
+typical_services:
+- Venta de productos de belleza importados y nacionales
+- Asesoramiento en cuidado de la piel y maquillaje
+- Distribución mayorista a peluquerías y estéticas
+- Servicio de pedidos en línea con entrega a domicilio
+- Personalización de kits de belleza para regalos
+- Capacitación en técnicas de aplicación de productos
+- Alquiler de equipos para tratamientos estéticos
+- Reposición de productos de marcas premium
+- Programas de fidelización con descuentos acumulativos
+- Servicio de suscripción para productos esenciales
+recommended_functions:
+- name: Atención al cliente 24/7
+  priority: high
+  reason: En Argentina, los clientes valoran la disponibilidad continua para consultas
+    sobre productos y pedidos, especialmente en horarios no laborables.
+- name: Gestión de inventario inteligente
+  priority: high
+  reason: Ayuda a prevenir pérdidas por caducidad y optimiza costos en un mercado
+    con alta inflación y demanda variable.
+- name: Procesamiento de pagos en ARS
+  priority: high
+  reason: Facilita transacciones en moneda local, integrando con sistemas como Mercado
+    Pago para mejorar la experiencia del cliente.
+- name: Recordatorios de pedidos y promociones
+  priority: medium
+  reason: Incrementa las ventas recurrentes al mantener a los clientes informados
+    sobre ofertas y reposiciones, clave en un mercado competitivo.
+- name: Análisis de tendencias de belleza locales
+  priority: low
+  reason: Permite adaptar el catálogo a preferencias regionales, como productos para
+    piel sensible debido al clima argentino.
+typical_integrations:
+- name: Sistemas de punto de venta (POS)
+  examples:
+  - Todo Pago
+  - Ualá
+  - sistemas personalizados
+  priority: high
+- name: Plataformas de comercio electrónico
+  examples:
+  - Mercado Libre
+  - Tienda Nube
+  - WooCommerce local
+  priority: high
+- name: Software de gestión de inventario
+  examples:
+  - GestiónShop
+  - WinLine
+  - sistemas basados en la nube
+  priority: medium
+- name: Pasarelas de pago locales
+  examples:
+  - Mercado Pago
+  - Todo Pago
+  - Transferencias bancarias
+  priority: high
+industry_faq:
+- question: ¿Ofrecen envíos a todo el país y cuál es el costo?
+  answer_template: Sí, realizamos envíos a toda Argentina a través de correos locales.
+    El costo varía según la ubicación y el peso, pero ofrecemos envío gratis para
+    pedidos superiores a 5000 ARS.
+- question: ¿Tienen productos para piel sensible que sea adecuada para el clima de
+    Buenos Aires?
+  answer_template: Absolutamente, contamos con una línea de productos hipoalergénicos
+    y con protección solar, ideales para el clima húmedo y variable de Buenos Aires.
+- question: ¿Aceptan pagos en cuotas sin interés?
+  answer_template: Sí, trabajamos con varias tarjetas de crédito para ofrecer cuotas
+    sin interés en compras superiores a 3000 ARS, sujeto a disponibilidad.
+- question: ¿Pueden personalizar pedidos para eventos como casamientos?
+  answer_template: Claro, ofrecemos kits personalizados para eventos con productos
+    de alta gama y asesoramiento especializado. Contáctenos para más detalles.
+- question: ¿Cómo manejan la garantía de productos defectuosos?
+  answer_template: Ofrecemos garantía de 30 días para productos defectuosos, con proceso
+    de devolución sencillo a través de nuestro servicio al cliente.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el precio de un producto específico durante
+    una llamada.
+  script: Hola, gracias por contactarnos. Para el producto que mencionas, el precio
+    actual es de [insertar precio en ARS]. Dado que los precios pueden variar por
+    la inflación, te recomiendo aprovechar nuestra oferta vigente este mes. ¿Te gustaría
+    que reserve una unidad para ti?
+  goal: Cerrar una venta rápidamente ofreciendo transparencia y un incentivo inmediato.
+- trigger: service_inquiry
+  situation: Cuando un cliente potencial pregunta sobre servicios de asesoramiento
+    o distribución.
+  script: Entiendo que buscas asesoramiento profesional. En nuestra tienda, ofrecemos
+    sesiones gratuitas para analizar tus necesidades y recomendarte productos locales
+    de alta calidad. ¿Podemos agendar una cita esta semana?
+  goal: Convertir la consulta en una cita o venta, destacando el valor añadido del
+    servicio.
+- trigger: competitor_comparison
+  situation: Cuando un cliente menciona precios o servicios de competidores.
+  script: Aprecio que compares opciones. A diferencia de otros, nosotros enfatizamos
+    productos nacionales que se adaptan mejor al mercado argentino, con soporte continuo
+    y descuentos por fidelidad. ¿Te interesa probar una muestra gratuita?
+  goal: Diferenciar la oferta y fomentar la lealtad del cliente.
+competitors:
+- name: Farmacity
+  positioning: Cadena grande de farmacias y perfumerías con amplia presencia nacional.
+  strengths:
+  - Múltiples ubicaciones
+  - marcas reconocidas
+  - promociones frecuentes
+  weaknesses:
+  - Poca personalización
+  - servicio al cliente limitado
+  our_differentiation: Ofrecemos asesoramiento especializado y productos de nicho
+    no disponibles en grandes cadenas.
+- name: Mercado Libre (sección belleza)
+  positioning: Plataforma de comercio electrónico dominante en Argentina.
+  strengths:
+  - Alcance masivo
+  - precios competitivos
+  - facilidad de compra
+  weaknesses:
+  - Calidad variable
+  - soporte post-venta deficiente
+  our_differentiation: Proporcionamos garantía directa y servicio personalizado, con
+    envíos rápidos y confiables.
+- name: Perfumerías locales independientes
+  positioning: Pequeñas tiendas con enfoque en marcas premium y servicio cercano.
+  strengths:
+  - Atención personalizada
+  - productos exclusivos
+  weaknesses:
+  - Inventario limitado
+  - precios más altos
+  our_differentiation: Combinamos la personalización con escalabilidad, usando tecnología
+    para optimizar costos y mantener precios accesibles.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 2000
+  - 20000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Implementación de un agente de voz para automatizar pedidos y servicio
+      al cliente en una tienda mediana.
+    monthly_cost: 10000
+    monthly_savings: 15000
+    payback_months: 1
+  value_anchors:
+  - Reduzca sus costos operativos hasta un 20% con automatización inteligente.
+  - Incremente sus ventas recurrentes con recordatorios personalizados en ARS.
+market_context:
+  market_size: Estimado en 500 millones de ARS anuales para el sector de suministros
+    de belleza en Argentina.
+  growth_rate: 5% YoY, impulsado por la creciente demanda de productos de cuidado
+    personal y e-commerce.
+  key_trends:
+  - Aumento en la preferencia por productos naturales y orgánicos fabricados localmente.
+  - Crecimiento del comercio electrónico en belleza, especialmente en grandes ciudades
+    como Córdoba y Rosario.
+  - Mayor conciencia sobre sostenibilidad y envases reciclables.
+  seasonality:
+    high:
+    - Septiembre a Diciembre (temporada de festividades y verano)
+    - Marzo (vuelta a clases)
+    low:
+    - Enero a Febrero (vacaciones de verano)
+    - Julio (invierno)
+typical_objections:
+- objection: Es muy caro para mi presupuesto actual.
+  response: Entiendo tu preocupación. Ofrecemos planes de pago flexibles en ARS y
+    descuentos por volumen. ¿Podemos ajustar el pedido para que se adapte a tus necesidades?
+- objection: Prefiero comprar en tiendas físicas para probar los productos.
+  response: Comprendo. Para eso, ofrecemos muestras gratuitas con envío a domicilio
+    y políticas de devolución flexibles, para que pruebes sin riesgo.
+- objection: Ya trabajo con otro proveedor y estoy satisfecho.
+  response: Valoro tu lealtad. Nos diferenciamos con soporte 24/7 y análisis de tendencias
+    locales que pueden ayudarte a expandir tu negocio. ¿Te interesa una comparativa
+    sin compromiso?
+meta:
+  id: beauty_supplies
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "beauty supplies"
+- "cosmetics wholesale"
+- "salon products"
+_extends: _base/beauty_supplies

@@ -1,0 +1,258 @@
+pain_points:
+- description: Personalnot und Überlastung der Pflegekräfte führt zu langen Wartezeiten
+    für Dienstplanbesprechungen und Betreuungsanfragen.
+  severity: high
+  solution_hint: Ein Voice Agent kann 24/7 eingehende Anrufe zu allgemeinen Fragen
+    entgegennehmen, Termine vereinbaren und Routinenfragen beantworten, um das Personal
+    zu entlasten.
+- description: Häufige Missverständnisse bei der Terminvereinbarung oder Dienstplanänderung
+    durch manuelle Eintragung und Kommunikation per Papier oder Chat.
+  severity: medium
+  solution_hint: Sprachgesteuerte, direkte Eintragung in digitale Dienstplan-Systeme
+    (z.B. Personio) reduziert Fehler und spart Zeit.
+- description: Hoher administrativer Aufwand für die Dokumentation von Pflegemaßnahmen
+    gemäß den gesetzlichen Vorgaben (z.B. SGB XI).
+  severity: high
+  solution_hint: Der Voice Agent kann durch Spracherkennung Pflegeberichte diktieren
+    und direkt in die Pflegedokumentation (z.B. CarePlanner) übertragen.
+- description: Angehörige sind außerhalb der Bürozeiten oft nicht erreichbar und haben
+    dringende Fragen zum Zustand oder zu organisatorischen Themen.
+  severity: medium
+  solution_hint: Ein 24/7 erreichbarer Voice Agent kann Standardfragen von Angehörigen
+    beantworten und dringende Mitteilungen an die zuständige Pflegekraft weiterleiten.
+- description: Schwierigkeiten bei der Akquise neiner Klienten aufgrund begrenzter
+    Kapazitäten im Vertriebsteam.
+  severity: medium
+  solution_hint: Der Voice Agent kann Erstgespräche führen, Grundinformationen sammeln
+    und qualifizierte Interessenten an den Vertrieb weiterleiten.
+- description: Inkonsistente und zeitaufwändige Einarbeitung neuer Mitarbeiter in
+    Abläufe und Protokolle.
+  severity: low
+  solution_hint: Der Voice Agent kann als interaktives Schulungstool fungieren und
+    neue Mitarbeiter durch Standardprozeduren führen und Fragen beantworten.
+typical_services:
+- Ambulante Pflege (Häusliche Pflege)
+- Tagespflege und Nachtpflege
+- Verhinderungspflege
+- Kurzzeitpflege
+- Betreutes Wohnen im Alter
+- Pflegeberatung nach §7a SGB XI
+- Hausnotrufdienst
+- Essen auf Rädern / Menüservice
+- Hauswirtschaftliche Hilfen
+- Begleitender Dienst / Alltagsbegleitung
+recommended_functions:
+- name: Terminvereinbarung und -verwaltung
+  priority: high
+  reason: Entlastet die Pflegedienstleitung von vielen Telefonaten und reduziert Doppelbuchungen.
+- name: 24/7 Erreichbarkeit für Angehörige
+  priority: high
+  reason: Bietet außerhalb der Kernzeiten Sicherheit und schnelle Antworten auf dringende
+    Nicht-Notfall-Fragen.
+- name: Erfassung von Pflegedokumentation per Sprache
+  priority: high
+  reason: Spart Pflegekräften erheblich Zeit bei der Dokumentation und erhöht die
+    Datenqualität.
+- name: Interne Wissensdatenbank für Mitarbeiter
+  priority: medium
+  reason: Schneller Zugriff auf Protokolle, Medikamentenpläne und Pflegestandards
+    per Sprachbefehl.
+- name: Qualifizierung von Neukunden-Anrufen
+  priority: medium
+  reason: Automatisiertes Pre-Screening von Interessenten, um Vertriebszeit effizient
+    zu nutzen.
+- name: Erinnerungen und Benachrichtigungen
+  priority: low
+  reason: Automatische Sprachbenachrichtigungen für Medikamenteneinnahme oder Besuchstermine
+    für Klienten/Angehörige.
+typical_integrations:
+- name: Pflegedokumentations-Software
+  examples:
+  - CarePlanner
+  - Vivendi
+  - Altenpflege Software
+  priority: high
+- name: Dienstplan-Software
+  examples:
+  - Personio
+  - ZEP
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  priority: medium
+- name: Hausnotruf-Systeme
+  examples:
+  - Bosche
+  - Tunstall
+  priority: medium
+- name: Telefonanlage (VoIP)
+  examples:
+  - NFON
+  - Sipgate
+  priority: high
+industry_faq:
+- question: Sind Sie auch außerhalb der regulären Bürozeiten erreichbar?
+  answer_template: Ja, mit unserem AI Voice Agent sind wir für Sie 24 Stunden am Tag,
+    7 Tage die Woche erreichbar. Sie können jederzeit anrufen, um dringende Nicht-Notfall-Anfragen
+    zu stellen oder Informationen zu erhalten. Bei medizinischen Notfällen wählen
+    Sie bitte weiterhin die 112.
+- question: Wie läuft die Beantragung der Pflegegrade über Sie ab?
+  answer_template: Wir bieten umfassende Pflegeberatung an, inklusive Unterstützung
+    bei der Antragstellung für Pflegegrade bei der Pflegekasse. Unser Voice Agent
+    kann Ihnen die notwendigen Dokumente nennen und einen Beratungstermin mit unseren
+    Experten vereinbaren.
+- question: Was kostet die ambulante Pflege bei Ihnen?
+  answer_template: Die Kosten richten sich nach dem Pflegegrad, dem Umfang der benötigten
+    Leistungen und Ihrer individuellen Situation. Wir arbeiten transparent nach der
+    gesetzlichen Pflegeversicherung und mit privaten Zuzahlungen. Gerne erstellen
+    wir ein unverbindliches, persönliches Angebot für Sie.
+- question: Kann ich kurzfristig einen Pflegetermin absagen oder verschieben?
+  answer_template: Ja, natürlich. Sie können jederzeit über unseren Voice Agent Termine
+    verschieben oder absagen. Bitte geben Sie uns nach Möglichkeit 24 Stunden Bescheid,
+    damit wir die Pflegekraft einplanen können.
+- question: Wie gewährleisten Sie den Datenschutz bei der Nutzung des Voice Agents?
+  answer_template: Datenschutz hat für uns höchste Priorität. Unser Voice Agent arbeitet
+    vollständig konform mit der europäischen DSGVO (GDPR). Alle Sprachdaten werden
+    verschlüsselt übertragen und verarbeitet. Sie können jederzeit Auskunft, Berichtigung
+    oder Löschung Ihrer Daten verlangen.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Anrufer nach den Kosten für Pflegeleistungen fragt.
+  script: Die Kosten sind stark von Ihrem individuellen Bedarf abhängig. Die gesetzliche
+    Pflegeversicherung übernimmt je nach Pflegegrad einen Teil. Um Ihnen ein genaues
+    Angebot zu machen, benötigen wir etwas mehr Information. Haben Sie bereits einen
+    Pflegegrad beantragt oder wissen Sie, welcher Grad vorliegt? Ich kann Ihnen direkt
+    einen Termin mit unserer unverbindlichen Beratung vermitteln.
+  goal: Vom Preis ablenken, auf individuelle Beratung lenken und einen qualifizierten
+    Termin vereinbaren.
+- trigger: service_question
+  situation: Wenn ein Anrufer wissen möchte, welche spezifischen Dienstleistungen
+    angeboten werden.
+  script: Wir bieten ein umfassendes Portfolio, von der Grundpflege über hauswirtschaftliche
+    Hilfe bis zur Tagesbetreuung. Damit ich Ihnen die passenden Optionen nennen kann,
+    sagen Sie mir bitte, für wen Sie die Pflege suchen und welche Hilfe aktuell am
+    dringendsten benötigt wird – zum Beispiel beim Aufstehen, bei der Körperpflege
+    oder im Haushalt?
+  goal: Herausfinden des konkreten Bedarfs, um das Gespräch zu vertiefen und die passenden
+    Dienstleistungen zu empfehlen.
+- trigger: availability_question
+  situation: Wenn ein Anrufer wissen möchte, ob sofort oder kurzfristig Kapazitäten
+    frei sind.
+  script: Wir verstehen den dringenden Bedarf. Unsere Verfügbarkeit hängt von der
+    Region und dem benötigten Pflegeumfang ab. Ich kann sofort in unser System schauen.
+    In welcher Postleitzahl wohnt die zu pflegende Person und ab wann wird die Hilfe
+    benötigt?
+  goal: Erfassen der essentiellen Informationen (PLZ, Startdatum), um Verfügbarkeit
+    zu prüfen und den Interessenten im System zu erfassen.
+competitors:
+- name: AWO (Arbeiterwohlfahrt)
+  positioning: Großer, etablierter Wohlfahrtsverband mit flächendeckender Präsenz.
+  strengths:
+  - Sehr hohe Bekanntheit und Vertrauen
+  - Breites Leistungsspektrum über Pflege hinaus
+  - Oft gemeinnützig und nicht gewinnorientiert
+  weaknesses:
+  - Manchmal bürokratische Strukturen
+  - Weniger flexibel bei individuellen Sonderwünschen
+  our_differentiation: Wir setzen auf moderne Technologie für mehr Effizienz und persönliche
+    Betreuung, mit schnelleren Entscheidungswegen und maßgeschneiderten Lösungen.
+- name: Caritas
+  positioning: Kirchlicher Träger mit starker ethischer Ausrichtung und umfassendem
+    Netzwerk.
+  strengths:
+  - Tief verwurzelt in lokalen Gemeinden
+  - Sehr guter Ruf durch langjährige Erfahrung
+  - Starke Unterstützung durch Ehrenamtliche
+  weaknesses:
+  - Möglicherweise konservativere Ansätze
+  - Technologische Innovation nicht immer im Fokus
+  our_differentiation: Unser AI-gestützter Service bietet eine nie dagewesene 24/7-Erreichbarkeit
+    und entlastet die Pflegekräfte durch Automatisierung von Verwaltung, was mehr
+    Zeit für die eigentliche Pflege schafft.
+- name: Privat geführte Pflegedienste (z.B. 'Pflege & Hilfe' o.ä.)
+  positioning: Lokale, inhabergeführte Anbieter mit persönlichem Kontakt.
+  strengths:
+  - Sehr persönliche Kundenbeziehung
+  - Flexibel und anpassungsfähig
+  - Kurze Entscheidungswege
+  weaknesses:
+  - Begrenzte Ressourcen und Reichweite
+  - Oft weniger investitionsstark in neue Technologien
+  our_differentiation: Wir kombinieren die persönliche Betreuung eines inhabergeführten
+    Dienstes mit der Skalierbarkeit und technologischen Leistungsfähigkeit einer modernen
+    Plattform, inklusive vollständiger DSGVO-Konformität.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 3500
+  entry_point: 150
+  roi_examples:
+  - scenario: Automatisierung der telefonischen Terminvereinbarung und Angehörigen-Kommunikation
+      für einen mittelgroßen Pflegedienst (20 Mitarbeiter).
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 1
+  - scenario: Sprachgesteuerte Pflegedokumentation für 10 Pflegekräfte, die 30 Minuten
+      pro Tag an Verwaltung sparen.
+    monthly_cost: 499
+    monthly_savings: 3750
+    payback_months: 1
+  value_anchors:
+  - Sparen Sie wertvolle Zeit Ihrer Pflegekräfte – bis zu 2 Stunden pro Tag und Mitarbeiter.
+  - Steigern Sie die Zufriedenheit der Angehörigen durch 24/7 Erreichbarkeit ohne
+    zusätzliches Personal.
+  - Reduzieren Sie Fehler in der Pflegedokumentation und bleiben Sie gesetzeskonform.
+market_context:
+  market_size: ca. 30 Mrd. EUR (ambulanter Sektor, DE)
+  growth_rate: 4-6% p.a.
+  key_trends:
+  - Deutlicher Fachkräftemangel treibt Innovation und Automatisierung.
+  - Wunsch der älteren Generation, so lange wie möglich in den eigenen vier Wänden
+    zu wohnen (Ambiente).
+  - Zunehmende Digitalisierung der Pflegedokumentation und Telemedizin.
+  - Steigende Erwartungen der Angehörigen an Transparenz und Kommunikation.
+  seasonality:
+    high:
+    - November bis Februar (erhöhter Betreuungsbedarf bei kaltem Wetter, Feiertage)
+    - Nach Krankenhausaufenthalten (typische Entlassungszeiträume)
+    low:
+    - Späte Frühjahrsmonate (Mai/Juni)
+    - Hochsommermonate (Juli/August, Urlaubszeit)
+typical_objections:
+- objection: Das ist mir zu teuer. Das kann ich mir nicht leisten.
+  response: Ich verstehe, dass Kosten ein wichtiger Faktor sind. Denken Sie daran,
+    dass unsere Lösung hilft, erhebliche Personalkosten einzusparen und mehr Pflegezeit
+    freizusetzen. Oft amortisiert sich die Investition innerhalb weniger Monate. Können
+    wir eine konkrete ROI-Berechnung für Ihre Einrichtung durchführen?
+- objection: Meine Mitarbeiter sind nicht technikaffin. Das wird nicht angenommen.
+  response: Das ist ein verständliches Bedenken. Unser Voice Agent ist speziell für
+    einfache, sprachbasierte Bedienung entwickelt – wie mit einem Kollegen zu sprechen.
+    Wir bieten umfassende Einführung und Support an. Oft sind die Pflegekräfte dankbar,
+    wenn lästige Papierarbeit wegfällt.
+- objection: Ich habe Bedenken bezüglich des Datenschutzes, besonders bei Sprachaufnahmen.
+  response: Absolut berechtigt. Datenschutz ist für uns nicht verhandelbar. Unsere
+    Lösung ist 100% DSGVO-konform, Daten werden verschlüsselt und können lokal gehostet
+    werden. Wir arbeiten nur mit zertifizierten deutschen Rechenzentren zusammen.
+    Gerne sende ich Ihnen unsere detaillierte Datenschutzerklärung zu.
+- objection: Wir sind ein kleiner Betrieb, dafür ist das zu groß.
+  response: Ganz im Gegenteil. Gerade kleine Betriebe profitieren enorm, weil sie
+    so administrative Aufgaben automatisieren können, für die sie keine eigene Vollzeitkraft
+    beschäftigen können. Unsere Pakete sind skalierbar und beginnen bereits für Ein-Mann-Betriebe.
+    So können Sie wachsen, ohne Ihre persönliche Note zu verlieren.
+meta:
+  id: elderly_care
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

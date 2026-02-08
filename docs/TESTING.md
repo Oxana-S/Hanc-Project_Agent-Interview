@@ -10,9 +10,10 @@
 | 2. Интеграция | Связи между модулями | pytest + fixtures | Все интеграционные тесты passed |
 | 3. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
 | 4. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
-| 5. Подключения | DeepSeek, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
+| 5. Подключения | DeepSeek, Azure OpenAI, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
 | 6. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
 | 7. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
+| 8. Мульти-региональная KB | 960 YAML-профилей, 23 страны | validate scripts | 0 errors, 0 deep warnings |
 
 ---
 
@@ -116,8 +117,11 @@ pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 
 ### Требования
 
-- DEEPSEEK_API_KEY в .env
-- Баланс на аккаунте DeepSeek
+- **LLM провайдер** (один из):
+  - DeepSeek: `DEEPSEEK_API_KEY` в .env, баланс на аккаунте
+  - Azure OpenAI: `AZURE_CHAT_OPENAI_KEY`, `AZURE_CHAT_OPENAI_ENDPOINT`, `AZURE_CHAT_OPENAI_DEPLOYMENT_NAME` в .env
+- Переменная `LLM_PROVIDER` определяет активного провайдера (`azure` по умолчанию, `deepseek` — альтернативный)
+- Фабрика клиентов: `src/llm/factory.py` → `create_llm_client(provider)`
 
 ### Доступные сценарии
 
@@ -381,11 +385,56 @@ asyncio.run(test())
 | Credentials | API Key + Secret валидны |
 | Статус | Для голосового режима — обязательно |
 
-### 5.5 Сводная таблица подключений
+### 5.5 Azure OpenAI API
+
+```bash
+# Проверка подключения к Azure OpenAI
+python -c "
+import asyncio
+from src.llm.azure_chat import AzureChatClient
+
+async def test():
+    client = AzureChatClient()
+    try:
+        response = await client.chat(
+            messages=[{'role': 'user', 'content': 'ping'}],
+            max_tokens=50
+        )
+        print(f'✅ Azure OpenAI: Connected, response length: {len(response)}')
+    except Exception as e:
+        print(f'❌ Azure OpenAI: {e}')
+
+asyncio.run(test())
+"
+```
+
+| Проверка | Критерий |
+|----------|----------|
+| Подключение | Response получен без ошибок |
+| API Key | Не возвращает 401/403 |
+| Deployment | Указанная модель доступна |
+
+**Альтернативно**, через LLM Factory (универсальная проверка):
+
+```bash
+python -c "
+import asyncio
+from src.llm.factory import create_llm_client
+
+async def test():
+    client = create_llm_client('azure')
+    r = await client.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
+    print(f'✅ Azure OpenAI (via factory): {len(r)} chars')
+
+asyncio.run(test())
+"
+```
+
+### 5.6 Сводная таблица подключений
 
 | Сервис | Текстовый режим | Голосовой режим | High-load prod |
 |--------|-----------------|-----------------|----------------|
-| DeepSeek API | ✅ Обязательно | ✅ Обязательно | ✅ Обязательно |
+| LLM API (DeepSeek / Azure OpenAI) | ✅ Обязательно (один из) | ✅ Обязательно | ✅ Обязательно |
 | SQLite | ✅ Достаточно | ✅ Достаточно | ❌ Недостаточно |
 | PostgreSQL | ⚠️ Опционально | ⚠️ Опционально | ✅ Обязательно |
 | Redis | ⚠️ Опционально | ⚠️ Опционально | ✅ Обязательно |
@@ -412,8 +461,13 @@ docker-compose -f config/docker-compose.yml logs -f
 
 | Параметр | Описание | Проверка |
 |----------|----------|----------|
+| LLM_PROVIDER | Активный LLM провайдер (`azure` / `deepseek`) | По умолчанию `azure` |
 | DEEPSEEK_API_KEY | API ключ DeepSeek | `python -c "..."` из 5.1 |
 | DEEPSEEK_BASE_URL | Endpoint API | По умолчанию `https://api.deepseek.com` |
+| AZURE_CHAT_OPENAI_KEY | API ключ Azure OpenAI | `python -c "..."` из 5.5 |
+| AZURE_CHAT_OPENAI_ENDPOINT | Endpoint Azure OpenAI | Формат: `https://<resource>.openai.azure.com/` |
+| AZURE_CHAT_OPENAI_DEPLOYMENT_NAME | Имя deployment модели | Например: `gpt-4.1-mini-dev-gs-swedencentral` |
+| AZURE_CHAT_OPENAI_API_VERSION | Версия API | По умолчанию `2024-12-01-preview` |
 | LIVEKIT_URL | WebSocket URL LiveKit | `python -c "..."` из 5.4 |
 | LIVEKIT_API_KEY | Ключ LiveKit | Проверяется в 5.4 |
 | LIVEKIT_API_SECRET | Секрет LiveKit | Проверяется в 5.4 |
@@ -524,8 +578,23 @@ async def test():
 asyncio.run(test())
 "
 
-# 5. LLM-симуляция (один сценарий)
+# 5. Azure OpenAI (реальное подключение)
+python -c "
+import asyncio
+from src.llm.azure_chat import AzureChatClient
+async def test():
+    c = AzureChatClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
+    print(f'✅ Azure OpenAI: {len(r)} chars')
+asyncio.run(test())
+"
+
+# 6. LLM-симуляция (один сценарий)
 python scripts/run_test.py auto_service --quiet
+
+# 7. Knowledge Base валидация (960 профилей)
+python scripts/validate_all_profiles.py --errors-only
+python scripts/validate_deep.py
 ```
 
 ---
@@ -613,6 +682,119 @@ pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term
 
 ---
 
+## Этап 8: Мульти-региональная Knowledge Base (валидация и ремонт)
+
+Проект содержит **960 YAML-профилей** (40 отраслей × 23 страны + 40 базовых), покрывающих 7 регионов: EU, NA, LATAM, MENA, SEA, RU и базовые профили (`_base`).
+
+### 8.1 Базовая валидация (L1–L5)
+
+Скрипт `validate_all_profiles.py` проверяет 5 уровней:
+
+| Уровень | Что проверяет |
+|---------|---------------|
+| L1 | Структурная целостность — обязательные поля, минимальные количества |
+| L2 | Полнота контента — наличие v2.0 секций (competitors, pricing_context, market_context) |
+| L3 | Корректность метаданных — meta.id, region, country, language, currency |
+| L4 | Качество локализации — язык соответствует стране, локальные конкуренты |
+| L5 | Валидность значений — severity/priority enums (high/medium/low), числовые цены |
+
+```bash
+# Полная базовая валидация (все 960 профилей)
+python scripts/validate_all_profiles.py
+
+# С подробным выводом
+python scripts/validate_all_profiles.py --verbose
+
+# По конкретному региону
+python scripts/validate_all_profiles.py --region eu
+
+# Только ошибки (без предупреждений)
+python scripts/validate_all_profiles.py --errors-only
+```
+
+**Критерий прохождения:** 920/920 региональных профилей valid, 0 errors.
+
+### 8.2 Глубокая валидация (L6–L11)
+
+Скрипт `validate_deep.py` выполняет расширенные проверки:
+
+| Уровень | Что проверяет |
+|---------|---------------|
+| L6 | Качество контента — дубликаты, минимальная длина, обрезанные описания |
+| L7 | Глубина локализации — эвристики языкового соответствия по Unicode-скриптам |
+| L8 | Кросс-профильная консистентность — матрица покрытия, идентичные профили, _extends |
+| L9 | Качество sales scripts — уникальность trigger, effectiveness, длина скриптов |
+| L10 | Когерентность pricing — entry_point в range, payback_months (1–36), ROI-примеры |
+| L11 | Целостность данных — размер файлов, None-значения, YAML re-serializability |
+
+```bash
+# Глубокая валидация
+python scripts/validate_deep.py
+
+# С подробным выводом
+python scripts/validate_deep.py --verbose
+```
+
+**Критерий прохождения:** 0 errors, 0 warnings (info — допустимо).
+
+### 8.3 Инструментарий ремонта профилей
+
+При обнаружении проблем используются специализированные скрипты:
+
+| Скрипт | Назначение | Что исправляет |
+|--------|------------|----------------|
+| `fix_enums.py` | Нормализация enum-значений | hoch→high, mittel→medium, alto→high и т.д. для 11+ языков |
+| `fix_aliases.py` | Генерация aliases | Добавляет блок `aliases` с 3–6 синонимами отрасли |
+| `fix_entry_points.py` | Числовые entry_point | "150 CHF für..."→150, "$65"→65, "Rp 50.000"→50000 |
+| `fix_incomplete_profiles.py` | Дополнение профилей (LLM) | Генерирует отсутствующие секции через Azure OpenAI |
+| `fix_l2_subfields.py` | Дополнение sub-fields (LLM) | Добавляет sales_scripts, competitors, seasonality, roi_examples |
+| `fix_l10_pricing.py` | Исправление pricing | payback=0→1, non-numeric→число, payback>36→пересчёт |
+
+```bash
+# Примеры запуска
+python scripts/fix_enums.py
+python scripts/fix_aliases.py
+python scripts/fix_entry_points.py
+python scripts/fix_l10_pricing.py
+
+# LLM-скрипты (требуют Azure OpenAI API)
+python scripts/fix_incomplete_profiles.py --provider=azure
+python scripts/fix_l2_subfields.py --provider=azure
+```
+
+### 8.4 Генерация профилей
+
+Для создания новых региональных профилей используется `generate_profiles.py`:
+
+```bash
+# Генерация профилей для конкретной страны
+python scripts/generate_profiles.py --country de --provider azure
+
+# Генерация всех профилей для региона
+python scripts/generate_profiles.py --region eu --provider azure
+
+# Список поддерживаемых стран
+python scripts/generate_profiles.py --list-countries
+```
+
+**Поддерживаемые провайдеры:** `azure` (по умолчанию), `deepseek`.
+
+### 8.5 Сводная таблица
+
+| Проверка | Критерий |
+|----------|----------|
+| Базовая валидация (L1–L5) | 920/920 valid, 0 errors |
+| Глубокая валидация (L6–L11) | 0 errors, 0 warnings |
+| Покрытие стран | 23/23 страны, все 40 отраслей |
+| Enum-значения | Только English: high, medium, low |
+| entry_point / budget | Числовые значения, без текста |
+| ROI payback_months | 1–36, числовые |
+| sales_scripts | ≥3 на профиль, trigger уникальны |
+| competitors | ≥2 на профиль, реальные компании |
+| Языковая локализация | Контент на языке страны |
+
+---
+
 ## Troubleshooting
 
 | Проблема | Решение |
@@ -620,11 +802,18 @@ pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term
 | `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
 | `pytest: command not found` | `pip install pytest pytest-cov pytest-asyncio` |
 | `DeepSeek API error 400` | Проверьте DEEPSEEK_API_KEY в .env |
+| `Azure OpenAI 401/403` | Проверьте AZURE_CHAT_OPENAI_KEY и AZURE_CHAT_OPENAI_ENDPOINT в .env |
+| `Azure OpenAI deployment not found` | Проверьте AZURE_CHAT_OPENAI_DEPLOYMENT_NAME — должно совпадать с deployment в Azure Portal |
 | `Redis connection refused` | Запустите Redis: `redis-server` |
 | `PostgreSQL connection failed` | Проверьте DATABASE_URL и что postgres запущен |
 | `LiveKit connection failed` | Проверьте LIVEKIT_URL и что сервер запущен |
 | Тест зависает | Добавьте `--timeout=60` к pytest |
 | Пустая анкета после теста | Проверьте логи в `logs/anketa.log` |
+| KB валидация: non-numeric entry_point | Запустите `python scripts/fix_entry_points.py` |
+| KB валидация: enum не English | Запустите `python scripts/fix_enums.py` |
+| KB валидация: payback_months=0 или >36 | Запустите `python scripts/fix_l10_pricing.py` |
+| KB валидация: отсутствуют секции | Запустите `python scripts/fix_incomplete_profiles.py --provider=azure` |
+| KB: "Rp 50.000" парсится как 50 | Индонезийская точка = разделитель тысяч, исправьте вручную на 50000 |
 
 ---
 

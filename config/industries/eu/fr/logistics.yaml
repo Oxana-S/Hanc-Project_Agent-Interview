@@ -1,0 +1,302 @@
+aliases:
+- logistique
+- transport
+- messagerie
+- entreposage
+- fret
+- expédition
+- livraison
+- colis
+- transport routier
+- livraison dernier kilomètre
+competitors:
+- name: DHL Express France
+  positioning: Leader mondial du transport express
+  strengths:
+  - Réseau international très étendu
+  - Délais de livraison garantis
+  - Service client reconnu
+  weaknesses:
+  - Tarifs élevés
+  - Moins flexible pour les petites entreprises locales
+  - Processus parfois rigides
+  our_differentiation: Solutions sur mesure et tarifs plus compétitifs pour les PME
+    françaises.
+- name: Chronopost (La Poste)
+  positioning: Acteur historique national, fort ancrage local
+  strengths:
+  - Réseau de points de retrait très dense (bureaux de poste)
+  - Livraison en J+1 pour l'hexagone
+  - Forte notoriété et confiance
+  weaknesses:
+  - Traitement des litiges parfois lent
+  - Moins performant sur les livraisons internationales urgentes
+  - Systèmes informatiques parfois obsolètes
+  our_differentiation: Interface numérique moderne et fluidité des processus, intégration
+    CRM aisée.
+- name: Geodis
+  positioning: Leader français de la logistique et du transport
+  strengths:
+  - Offre complète (transport, entreposage, supply chain)
+  - Forte expertise industrielle
+  - Capacité à gérer des projets complexes
+  weaknesses:
+  - Principalement orienté grands comptes
+  - Moins accessible pour les très petites entreprises
+  - Réactivité parfois inférieure sur les petits envois
+  our_differentiation: Accessibilité et réactivité pour les TPE/PME, services adaptés
+    au e-commerce.
+- name: DB Schenker France
+  positioning: Spécialiste du transport et de la logistique internationale
+  strengths:
+  - Expertise en douane et logistique internationale
+  - Réseau terrestre et aérien performant
+  - Solide présence en Europe
+  weaknesses:
+  - Service perçu comme impersonnel
+  - Interface client peu intuitive
+  - Centré sur les grands volumes
+  our_differentiation: Relation de proximité et outils de suivi en temps réel plus
+    accessibles.
+industry_faq:
+- question: Où est ma livraison ?
+  answer_template: Donnez-moi votre numéro de suivi ou de commande, et je vérifie
+    immédiatement son statut.
+- question: Quel est le tarif pour une livraison ?
+  answer_template: Le prix dépend du poids, des dimensions, de la destination et du
+    service. Je peux vous faire une estimation si vous me communiquez ces détails.
+- question: À quelle heure le livreur passera-t-il ?
+  answer_template: Pour connaître la plage horaire précise, j'ai besoin de votre numéro
+    de commande. Je peux la consulter dans notre système.
+- question: Puis-je modifier l'adresse de livraison ?
+  answer_template: Oui, c'est possible avant que le colis ne quitte notre centre de
+    tri. Merci de me fournir le numéro de suivi et la nouvelle adresse.
+- question: Livrez-vous le week-end ?
+  answer_template: Oui, nous proposons des options de livraison le samedi. Pour le
+    dimanche, cela dépend de la destination et du service choisi.
+- question: Comment procéder à un retour ?
+  answer_template: Contactez d'abord le vendeur pour obtenir une autorisation de retour.
+    Ensuite, nous pouvons organiser l'enlèvement ou vous indiquer un point de dépôt.
+- question: Êtes-vous conformes au RGPD pour mes données ?
+  answer_template: Absolument. Nous protégeons toutes les données personnelles conformément
+    au Règlement Général sur la Protection des Données (RGPD) de l'UE.
+industry_specifics: null
+learnings:
+- date: '2026-02-05'
+  insight: 'Erreur de validation: [scenario_match] Société non correspondante: attendue
+    ''TruckOnline''; Peu de correspondances sur les intégrations: 1/4'
+  source: test_logistics_company
+- date: '2026-02-06'
+  insight: 'Erreur de validation: [scenario_match] Société non correspondante: attendue
+    ''TruckOnline''; Peu de correspondances sur les intégrations: 1/4'
+  source: test_logistics_company
+market_context:
+  market_size: Environ 220 milliards d'euros
+  growth_rate: 3-4% par an
+  key_trends:
+  - Digitalisation et automatisation des entrepôts
+  - Forte croissance du e-commerce et de la livraison du dernier kilomètre
+  - Demande croissante pour une logistique verte et décarbonée
+  - Optimisation des flux via l'IA et la data
+  seasonality:
+    high:
+    - Novembre-Décembre (période des fêtes)
+    - Septembre (rentrée)
+    - Périodes de soldes
+    low:
+    - Août (traditionnellement plus calme)
+    - Début janvier
+meta:
+  avg_validation_score: 0.833
+  country: fr
+  created_at: '2026-02-04'
+  currency: EUR
+  id: logistics
+  language: fr
+  languages: []
+  last_updated: '2026-02-06'
+  phone_codes:
+  - '+33'
+  region: eu
+  tests_run: 2
+  timezone: Europe/Paris
+  version: '1.0'
+pain_points:
+- description: Volume élevé d'appels pour demander "où est mon colis ?"
+  severity: high
+  solution_hint: Vérification automatique du statut par numéro de suivi
+- description: Clients impossibles à joindre pendant les heures de pointe
+  severity: high
+  solution_hint: Assistant vocal 24/7 pour les statuts et FAQ
+- description: Les opérateurs passent trop de temps sur des questions répétitives
+  severity: medium
+  solution_hint: Automatisation des demandes standards (tarifs, délais)
+- description: Coordination difficile des créneaux de livraison avec les clients
+  severity: medium
+  solution_hint: Système de confirmation et modification de rendez-vous automatisé
+- description: Erreurs de saisie lors de la prise de commande par téléphone
+  severity: medium
+  solution_hint: Formulaire vocal guidé pour la saisie structurée des commandes
+- description: Gestion complexe des réclamations et litiges
+  severity: medium
+  solution_hint: Tri et routage intelligent des appels vers le service concerné
+- description: Conformité au RGPD dans la gestion des données clients
+  severity: high
+  solution_hint: Scripts et procédures vocales intégrant les bonnes pratiques RGPD
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 2000
+  entry_point: 99
+  roi_examples:
+  - scenario: Automatisation des demandes de statut et de FAQ pour une PME
+    monthly_cost: 199
+    monthly_savings: 800
+    payback_months: 0.25
+  - scenario: Réduction des erreurs de saisie et meilleure planification des tournées
+    monthly_cost: 299
+    monthly_savings: 1200
+    payback_months: 0.25
+  value_anchors:
+  - Réduction de 40% du temps passé par vos équipes sur le téléphone
+  - Amélioration de la satisfaction client avec un temps de réponse inférieur à 5
+    secondes
+  - Conformité RGPD intégrée dès la conception
+recommended_functions:
+- name: vérifier le statut
+  priority: high
+  reason: 70-80% des appels concernent le suivi des livraisons
+- name: prendre une commande
+  priority: high
+  reason: Automatisation de la création de nouvelles expéditions sans erreur
+- name: gérer les FAQ
+  priority: medium
+  reason: Répondre instantanément aux questions sur les tarifs, délais, zones desservies
+- name: modifier une livraison
+  priority: medium
+  reason: Permettre aux clients de changer l'adresse ou le créneau avant l'expédition
+- name: routage intelligent
+  priority: medium
+  reason: Transférer efficacement les appels complexes (réclamations, douane) au bon
+    service
+- name: rappel programmé
+  priority: low
+  reason: Notifier les clients de l'arrivée imminente du livreur ou confirmer un rendez-vous
+sales_scripts:
+- trigger: price_question
+  situation: Quand un client demande le prix d'un service de livraison
+  script: Je comprends que le budget est important. Notre solution d'assistant vocal
+    démarre à 99€ par mois. Elle permet de traiter automatiquement la majorité des
+    appels de suivi, libérant votre équipe pour des tâches à plus forte valeur ajoutée.
+    Un de nos clients, une boutique en ligne, a réduit ses appels entrants de 60%
+    en 3 mois. Souhaitez-vous que je vous envoie cette étude de cas ?
+  goal: Montrer la valeur et le ROI rapide, pas seulement le prix.
+- trigger: competitor_mention
+  situation: Quand le client mentionne un concurrent comme Chronopost ou DHL
+  script: 'C''est un excellent point de référence. Ces acteurs sont très bons sur
+    le transport lui-même. Notre valeur ajoutée est différente : nous optimisons et
+    automations toute la relation téléphonique avec *vos* clients. Nous vous aidons
+    à offrir un service de suivi et d''information 24/7 qui vous différencie, tout
+    en réduisant vos coûts opérationnels. Pouvons-nous planifier une démonstration
+    de 15 minutes ?'
+  goal: Se différencier en se positionnant comme un complément/service, pas un concurrent
+    direct.
+- trigger: busy_operators
+  situation: Quand le client se plaint que ses lignes sont saturées ou que les clients
+    ne parviennent pas à les joindre
+  script: C'est un défi courant qui coûte des ventes et de la satisfaction client.
+    Notre assistant vocal agit comme un standardiste infatigable qui répond immédiatement,
+    24h/24. Il traite les demandes simples et aiguille les appels urgents. Cela peut
+    réduire la charge de vos opérateurs de 40% dès le premier mois. Voulez-vous voir
+    comment il gérerait les 5 questions les plus fréquentes de vos clients ?
+  goal: Résoudre une frustration immédiate avec une solution tangible.
+- trigger: gdpr_concern
+  situation: Quand le client exprime une inquiétude concernant la conformité RGPD
+  script: Votre vigilance est justifiée. Notre solution est conçue et hébergée en
+    France, en pleine conformité avec le RGPD. Les données des appels sont traitées
+    de manière sécurisée et nous pouvons configurer des règles de suppression automatique.
+    Nous fournissons également la documentation nécessaire pour votre registre des
+    traitements.
+  goal: Rassurer sur un point critique de conformité et en faire un avantage.
+success_benchmarks:
+  avg_call_duration_seconds: 150
+  target_automation_rate: 0.75
+  typical_kpis:
+  - Réduction de 40% de la charge des opérateurs
+  - Automatisation de 80% des demandes de statut
+  - Temps de réponse moyen < 3 secondes
+  - Satisfaction client (CSAT) > 4.2/5
+  - Taux de résolution en première interaction > 65%
+typical_integrations:
+- name: TMS (Transport Management System)
+  examples:
+  - Generix Group
+  - SAP TM
+  - Oracle TMS
+  - Descartes
+  priority: high
+  reason: Accès en temps réel aux statuts d'expédition, création de tournées.
+- name: CRM
+  examples:
+  - Salesforce
+  - Microsoft Dynamics 365
+  - HubSpot
+  - Sellsy
+  priority: medium
+  reason: Enrichissement des fiches clients avec l'historique des interactions et
+    des commandes.
+- name: WMS (Warehouse Management System)
+  examples:
+  - Generix WMS
+  - Manhattan Associates
+  - Easy WMS
+  priority: medium
+  reason: Vérification du stock et des dates de préparation pour les commandes.
+- name: Téléphonie / Contact Center
+  examples:
+  - Aircall
+  - Ringover
+  - Cisco
+  - Avaya
+  priority: high
+  reason: Intégration native pour la gestion des appels, la mise en attente, le transfert.
+- name: Plateforme E-commerce
+  examples:
+  - Shopify
+  - WooCommerce
+  - PrestaShop
+  - Wizaplace
+  priority: medium
+  reason: Récupération automatique des numéros de commande pour le suivi.
+typical_objections:
+- objection: Je préfère parler à un humain.
+  response: Je comprends tout à fait. Pour les questions complexes, je peux vous mettre
+    en relation avec un conseiller spécialisé en moins d'une minute. Pour les demandes
+    simples comme un suivi, je peux vous répondre instantanément, même en dehors des
+    heures d'ouverture.
+- objection: Les systèmes automatiques ne comprennent pas bien.
+  response: Notre assistant est entraîné spécifiquement sur le vocabulaire de la logistique
+    et comprend plusieurs accents français. En cas de doute, il transfère immédiatement
+    à un opérateur. Voulez-vous faire un test avec une question type ?
+- objection: C'est trop cher pour mon activité.
+  response: Prenons un moment pour calculer. Combien d'heures par semaine votre équipe
+    passe-t-elle au téléphone sur des questions répétitives ? Souvent, le coût de
+    notre solution est inférieur à une semaine de salaire d'un employé, tout en offrant
+    un service 24/7.
+- objection: La mise en place semble compliquée.
+  response: La plupart de nos intégrations se font en quelques clics. Nous vous accompagnons
+    avec un chef de projet dédié. Une configuration standard pour gérer les demandes
+    de suivi peut être opérationnelle en moins d'une semaine.
+typical_services:
+- Transport routier de marchandises
+- Messagerie et livraison express
+- Livraison du dernier kilomètre (e-commerce)
+- Entreposage et stockage
+- Affrètement
+- Groupage (fret groupé)
+- Logistique inverse (retours)
+- Services douaniers et dédouanement
+- Suivi et traçabilité en temps réel
+- Gestion des tournées de livraison
+_extends: _base/logistics

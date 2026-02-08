@@ -1,0 +1,235 @@
+pain_points:
+- description: Hohe Kundenfluktuation aufgrund intensiven Wettbewerbs und aggressiver
+    Werbung der Mitbewerber.
+  severity: high
+  solution_hint: AI Voice Agent kann proaktive Kundenbindungsanrufe durchführen und
+    personalisierte Angebote basierend auf Nutzungsdaten anbieten.
+- description: Komplexe Abrechnung und Einhaltung von Datenschutzvorschriften wie
+    DSGVO und FADP, die zu hohem administrativen Aufwand führen.
+  severity: high
+  solution_hint: Automatisierte Rechnungsprüfung und Datenschutz-Compliance-Checks
+    via AI Voice Agent, um Fehler zu minimieren.
+- description: Häufige Netzwerkstörungen und Wartungsarbeiten, die zu Kundendissatisfaktion
+    führen.
+  severity: medium
+  solution_hint: AI Voice Agent kann Störungsmeldungen automatisch erfassen und Kunden
+    über Fortschritte informieren.
+- description: Überlastung des Kundenservices während Spitzenzeiten, z.B. bei neuen
+    Tarifeinführungen.
+  severity: medium
+  solution_hint: AI Voice Agent kann Routineanfragen wie Tarifwechsel oder Rechnungsfragen
+    rund um die Uhr bearbeiten.
+- description: Hohe Kosten für die Integration neuer Technologien wie 5G und IoT-Lösungen.
+  severity: medium
+  solution_hint: AI Voice Agent kann Schulungen und Support für neue Dienste automatisieren,
+    um Schulungskosten zu senken.
+- description: Schwierigkeiten bei der Personalisierung von Dienstleistungen für unterschiedliche
+    Kundensegmente.
+  severity: low
+  solution_hint: AI Voice Agent analysiert Kundendaten, um maßgeschneiderte Angebote
+    in Echtzeit vorzuschlagen.
+typical_services:
+- Mobilfunkverträge mit Datenflatrate
+- Festnetz- und Breitband-Internet
+- IPTV und Streaming-Dienste
+- VoIP-Telefonie für Unternehmen
+- Cloud-Speicher und Backup-Lösungen
+- IoT-Netzwerke für Smart Home
+- 5G-Netzabdeckung und Roaming
+- Kundensupport und Störungsbehebung
+- Telekommunikationsberatung für KMU
+recommended_functions:
+- name: Automatisierte Kundenbetreuung
+  priority: high
+  reason: Reduziert Wartezeiten und verbessert die Kundenzufriedenheit durch 24/7-Verfügbarkeit.
+- name: Vertragsverwaltung und -verlängerung
+  priority: high
+  reason: Senkt die Kundenfluktuation durch proaktive Erinnerungen und personalisierte
+    Angebote.
+- name: Störungsmeldung und -status
+  priority: medium
+  reason: Bietet Echtzeit-Updates und reduziert Anrufvolumen im Kundenservice.
+- name: Verkauf und Upselling von Diensten
+  priority: medium
+  reason: Steigert Umsatz durch datengestützte Empfehlungen während Kundengesprächen.
+- name: Compliance-Checks für Datenschutz
+  priority: high
+  reason: Sichert Einhaltung von DSGVO und FADP, um Bußgelder zu vermeiden.
+- name: Integration mit CRM-Systemen
+  priority: medium
+  reason: Verbessert Datenkonsistenz und ermöglicht personalisierte Interaktionen.
+typical_integrations:
+- name: CRM-Systeme
+  examples:
+  - SAP CRM
+  - Oracle Siebel
+  - Local solutions like Zoho CRM
+  priority: high
+- name: Abrechnungssoftware
+  examples:
+  - SAP FI/CO
+  - DATEV
+  - Swiss billing systems like Abacus
+  priority: high
+- name: Netzwerkmanagementsysteme
+  examples:
+  - SolarWinds
+  - Cisco Prime
+  - Local tools like Nagios
+  priority: medium
+- name: Kundenservice-Plattformen
+  examples:
+  - Zendesk
+  - Freshdesk
+  - Local systems like Jira Service Desk
+  priority: medium
+- name: Datenschutz-Compliance-Tools
+  examples:
+  - OneTrust
+  - TrustArc
+  - Local adaptations for FADP
+  priority: high
+industry_faq:
+- question: Wie hoch sind die monatlichen Kosten für einen Business-Internetanschluss?
+  answer_template: Die Kosten variieren je nach Bandbreite und Servicelevel. Typischerweise
+    beginnen Business-Tarife bei 50 CHF pro Monat für Basis-Internet. Gerne erstelle
+    ich ein individuelles Angebot basierend auf Ihren Anforderungen.
+- question: Bieten Sie 5G-Abdeckung in der gesamten Schweiz an?
+  answer_template: Ja, unser 5G-Netz deckt bereits die meisten urbanen Gebiete ab,
+    und wir expandieren kontinuierlich. Für genaue Abdeckung in Ihrer Region kann
+    ich Ihnen eine detaillierte Karte zur Verfügung stellen.
+- question: Wie wird der Datenschutz gemäß DSGVO und FADP gewährleistet?
+  answer_template: Wir halten strikte Datenschutzrichtlinien ein, mit verschlüsselten
+    Systemen und regelmäßigen Audits. Unsere AI Voice Agent ist so konfiguriert, dass
+    alle Interaktionen konform mit diesen Vorschriften sind.
+- question: Kann ich meinen Vertrag ohne Strafgebühren kündigen?
+  answer_template: Kündigungsbedingungen hängen von Ihrem Vertrag ab. Oft gibt es
+    flexible Optionen nach der Mindestvertragslaufzeit. Ich kann Ihre Vertragsdetails
+    überprüfen und die besten Optionen aufzeigen.
+- question: Was tun bei Netzwerkstörungen?
+  answer_template: Bei Störungen können Sie diese über unseren AI Voice Agent melden.
+    Wir bearbeiten sie priorisiert und informieren Sie in Echtzeit über den Status.
+    Alternativ kontaktieren Sie unseren Support.
+- question: Gibt es Pakete für kleine Unternehmen?
+  answer_template: Ja, wir bieten maßgeschneiderte Pakete für KMU, die Internet, Telefonie
+    und Cloud-Dienste kombinieren. Diese starten ab 100 CHF pro Monat und sind skalierbar.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Kunde nach Preisen für Telekomdienste fragt.
+  script: Guten Tag, vielen Dank für Ihr Interesse. Unsere Tarife sind wettbewerbsfähig
+    und starten ab 30 CHF für Mobilfunk oder 50 CHF für Business-Internet. Basierend
+    auf Ihrem Nutzungsprofil kann ich ein personalisiertes Angebot erstellen. Möchten
+    Sie mehr über unsere Flexibilität und zusätzliche Dienste wie 24/7-Support erfahren?
+  goal: Interesse wecken und zu einem detaillierten Gespräch über individuelle Bedürfnisse
+    führen.
+- trigger: service_inquiry
+  situation: Wenn ein Kunde nach spezifischen Diensten wie 5G oder Cloud-Lösungen
+    fragt.
+  script: Sehr gerne. Wir bieten umfassende 5G-Abdeckung und Cloud-Dienste, die für
+    Schweizer Unternehmen optimiert sind. Können Sie mir mehr über Ihre Anforderungen
+    erzählen, z.B. ob Sie IoT-Integration oder hohe Bandbreite benötigen? So kann
+    ich die passende Lösung vorschlagen.
+  goal: Kundenspezifische Anforderungen identifizieren und passende Dienste empfehlen.
+- trigger: competitor_mention
+  situation: Wenn ein Kunde Wettbewerber wie Swisscom oder Sunrise erwähnt.
+  script: Ich verstehe, dass es viele Optionen gibt. Im Vergleich zu anderen bieten
+    wir oft flexiblere Verträge und einen persönlicheren AI-gestützten Support, der
+    Kosten spart. Möchten Sie ein Vergleichsangebot sehen, das auf Ihre Bedürfnisse
+    zugeschnitten ist?
+  goal: Unsere Vorteile hervorheben und den Kunden zum Wechsel motivieren.
+competitors:
+- name: Swisscom
+  positioning: Marktführer mit umfassender Infrastruktur.
+  strengths:
+  - Breite Abdeckung in der ganzen Schweiz
+  - Hohe Markenbekanntheit und Vertrauen
+  - Vielfältiges Dienstleistungsportfolio
+  weaknesses:
+  - Höhere Preise im Vergleich zu Mitbewerbern
+  - Weniger flexible Vertragsbedingungen
+  our_differentiation: Wir bieten wettbewerbsfähigere Preise und innovativen AI-Support
+    für bessere Kundenerfahrung.
+- name: Sunrise
+  positioning: Preisaggressiver Anbieter mit Fokus auf Innovation.
+  strengths:
+  - Attraktive Preise und Angebote
+  - Starke 5G-Expansion
+  - Guter Kundenservice
+  weaknesses:
+  - Begrenzte Abdeckung in ländlichen Gebieten
+  - Weniger etabliertes Business-Portfolio
+  our_differentiation: Unsere AI Voice Agent ermöglicht effizientere Betriebskosten,
+    die wir in bessere Services investieren.
+- name: Salt
+  positioning: Discount-Anbieter mit einfachen Tarifen.
+  strengths:
+  - Sehr niedrige Einstiegspreise
+  - Einfache, transparente Verträge
+  - Gute Mobilfunkabdeckung
+  weaknesses:
+  - Eingeschränkte Business-Lösungen
+  - Weniger persönlicher Support
+  our_differentiation: Wir kombinieren erschwingliche Preise mit hochwertigem AI-gestütztem
+    Service für Unternehmen.
+pricing_context:
+  currency: CHF
+  typical_budget_range:
+  - 30
+  - 500
+  entry_point: 30
+  roi_examples:
+  - scenario: Automatisierung von Kundenservice-Anrufen für ein KMU
+    monthly_cost: 200
+    monthly_savings: 500
+    payback_months: 4
+  - scenario: Reduzierung von Vertragskündigungen durch proaktive Betreuung
+    monthly_cost: 150
+    monthly_savings: 300
+    payback_months: 5
+  value_anchors:
+  - Sparen Sie bis zu 20% Betriebskosten mit unserem AI Voice Agent.
+  - Erhalten Sie 24/7-Support ohne zusätzliche Gebühren.
+  - Flexible Verträge, die mit Ihrem Geschäft wachsen.
+market_context:
+  market_size: Geschätzt auf 10 Mrd. CHF jährlich
+  growth_rate: 3% YoY
+  key_trends:
+  - Zunehmende Nachfrage nach 5G und IoT-Lösungen
+  - Wachsender Fokus auf Datenschutz und Compliance
+  - Steigende Akzeptanz von AI-gestützten Diensten
+  seasonality:
+    high:
+    - Q4 (Weihnachtsgeschäft und Neujahrsangebote)
+    - Q2 (Frühlingskampagnen und Schulferien)
+    low:
+    - Q1 (nach den Feiertagen)
+    - Q3 (Sommerferien, geringere Geschäftsaktivität)
+typical_objections:
+- objection: Ich bin mit meinem aktuellen Anbieter zufrieden und sehe keinen Grund
+    zum Wechsel.
+  response: Das ist verständlich. Oft gibt es versteckte Einsparungen oder bessere
+    Services, die Sie verpassen. Dürfte ich Ihnen einen kostenlosen Vergleich anbieten,
+    um zu sehen, ob wir Ihnen mehr Wert bieten können?
+- objection: AI-Systeme sind zu unpersönlich für meinen Kundenservice.
+  response: Unsere AI Voice Agent ist darauf ausgelegt, menschliche Interaktionen
+    zu ergänzen, nicht zu ersetzen. Sie übernimmt Routineaufgaben, sodass Ihr Team
+    sich auf komplexere Anfragen konzentrieren kann, was die persönliche Betreuung
+    sogar verbessert.
+- objection: Die Implementierungskosten sind zu hoch.
+  response: Wir bieten skalierbare Lösungen mit klarem ROI. In vielen Fällen amortisieren
+    sich die Kosten innerhalb weniger Monate durch Einsparungen. Gerne zeige ich Ihnen
+    anhand eines Beispiels, wie das funktioniert.
+meta:
+  id: telecom
+  region: eu
+  country: ch
+  language: de
+  currency: CHF
+  phone_codes:
+  - '+41'
+aliases:
+- "telecom"
+- "ISP"
+- "internet provider"
+- "mobile operator"
+_extends: _base/telecom

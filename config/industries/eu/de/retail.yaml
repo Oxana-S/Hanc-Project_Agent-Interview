@@ -1,0 +1,206 @@
+pain_points:
+- description: Hoher Personalaufwand für Kundenanfragen während Stoßzeiten
+  severity: high
+  solution_hint: Automatisierte Beantwortung von Standardanfragen zu Öffnungszeiten, Lagerbeständen und Retouren durch den KI-Sprachagenten.
+- description: Verpasste Anrufe und Leads außerhalb der Geschäftszeiten
+  severity: high
+  solution_hint: 24/7-Erreichbarkeit, die Terminvereinbarungen entgegennimmt oder dringende Anfragen an das richtige Team weiterleitet.
+- description: Ineffiziente Prozesse bei Terminbuchungen (z.B. für Beratung oder Reparatur)
+  severity: medium
+  solution_hint: Automatische Terminvereinbarung und -verwaltung im Kalender des Teams, inklusive Erinnerungen.
+- description: Hohe Kosten für Callcenter-Dienstleister
+  severity: high
+  solution_hint: Kosteneffiziente Automatisierung eines großen Teils des einfachen Kundenverkehrs.
+- description: Schwierigkeiten bei der GDPR-konformen Erfassung von Kunden-Einwilligungen
+  severity: medium
+  solution_hint: Integrierte, DSGVO-konforme Protokollierung von Zustimmungen während des Telefonats.
+- description: Lange Wartezeiten frustrieren Kunden und führen zu abgebrochenen Anrufen
+  severity: medium
+  solution_hint: Sofortiger Anrufentgegennahme und intelligente Weiterleitung, um Wartezeiten zu eliminieren.
+- description: Fehlende einheitliche Kundenansprache über verschiedene Kanäle (Telefon, Web, Social Media)
+  severity: low
+  solution_hint: Der KI-Agent kann als zentrale erste Anlaufstelle dienen und konsistente Informationen bereitstellen.
+typical_services:
+- Bestellannahme und -statusabfrage
+- Terminvereinbarung für Beratungsgespräche
+- Lagerabfrage und Click & Collect-Reservierung
+- Retouren- und Umtauschmanagement
+- Reklamationsentgegennahme und -weiterleitung
+- Kundenrückgewinnung (Win-back)
+- Produktinformationen und Verfügbarkeitschecks
+- Weitergabe von aktuellem Aktions- und Prospektmaterial
+- Weiterleitung zu Fachabteilungen
+- Feedback- und Bewertungssammlung
+recommended_functions:
+- name: Automatische Terminbuchung
+  priority: high
+  reason: Entlastet das Personal erheblich und bietet dem Kunden sofortigen Komfort, besonders für Reparatur- oder Beratungstermine.
+- name: 24/7-Basisabfrage (Bestand, Öffnungszeiten)
+  priority: high
+  reason: Fängt den Großteil der außerhalb der Öffnungszeiten eingehenden Anrufe ab und generiert Leads.
+- name: DSGVO-konforme Einwilligungserfassung
+  priority: high
+  reason: Essentiell für rechtssicheren Betrieb in Deutschland und Vertrauensaufbau.
+- name: Intelligente Weiterleitung mit Kontext
+  priority: medium
+  reason: Stellt sicher, dass komplexe Anfragen an den richtigen, informierten Mitarbeiter gehen, was die Lösungszeit verkürzt.
+- name: Mehrsprachiger Support (z.B. Deutsch, Englisch, Türkisch)
+  priority: medium
+  reason: Wichtiger Service in einem vielfältigen Markt wie Deutschland.
+- name: Integration mit Warenwirtschaft (z.B. JTL)
+  priority: medium
+  reason: Ermöglicht Echtzeit-Bestandsabfragen und schafft einen nahtlosen Workflow.
+typical_integrations:
+- name: Warenwirtschaftssystem (WaWi)
+  examples:
+  - JTL-Wawi
+  - Lexware
+  - Sage
+  priority: high
+- name: E-Commerce-Plattform
+  examples:
+  - Shopware
+  - WooCommerce
+  - Shopify
+  priority: high
+- name: Terminplanungs-/Kalendersoftware
+  examples:
+  - Microsoft 365 Kalender
+  - Google Calendar
+  - Calendly
+  priority: medium
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - einfache hauseigene Lösungen
+  priority: medium
+- name: Telefonanlage (Cloud)
+  examples:
+  - Sipgate
+  - Placetel
+  - Deutsche Telekom Cloud PBX
+  priority: high
+industry_faq:
+- question: Ist der KI-Assistent DSGVO-konform?
+  answer_template: Absolut. Unser System ist von Grund auf nach DSGVO-Richtlinien entwickelt und hostet alle Daten in europäischen Rechenzentren. Jede Datenerfassung erfolgt nur mit expliziter Einwilligung
+    des Anrufers.
+- question: Kann das System mit unserer bestehenden Warenwirtschaft (z.B. JTL) sprechen?
+  answer_template: Ja, über standardisierte Schnittstellen (APIs) können wir eine Verbindung zu den meisten gängigen Warenwirtschafts- und Shop-Systemen herstellen. So hat der KI-Assistent immer aktuelle
+    Bestandsinformationen.
+- question: Klingt der KI-Assistent roboterhaft und schreckt Kunden ab?
+  answer_template: Ganz im Gegenteil. Wir verwenden fortschrittliche, natürliche Sprachverarbeitung mit deutscher Sprachmelodie. Die meisten Kunden bemerken keinen Unterschied zu einem menschlichen Gespräch
+    für Standardanfragen.
+- question: Was passiert, wenn der KI-Assistent eine Frage nicht beantworten kann?
+  answer_template: Der Assistent erkennt seine Grenzen und leitet das Gespräch nahtlos und mit allen gesammelten Informationen an einen geeigneten menschlichen Kollegen in Ihrem Team weiter. Der Kunde muss
+    nichts wiederholen.
+- question: Wie lange dauert die Einrichtung?
+  answer_template: Nach einer kurzen Analyse Ihrer Prozesse ist ein grundlegender Assistent für Standardanfragen oft innerhalb von 2-3 Wochen einsatzbereit. Komplexere Integrationen benötigen entsprechend
+    mehr Zeit.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn ein Einzelhändler nach den Kosten fragt.
+  script: 'Die Investition beginnt bei etwa 200€ pro Monat für einen Basisservice. Der genaue Preis hängt vom Funktionsumfang und Anrufvolumen ab. Entscheidend ist der ROI: Viele unserer Kunden sparen sich
+    die Kosten für eine halbe Teilzeitkraft oder reduzieren verpasste Leads um über 30%. Darf ich Ihnen eine grobe Schätzung basierend auf Ihrer aktuellen Anrufzahl geben?'
+  goal: Den Fokus von reinen Kosten auf den Wert und die Einsparung lenken und zu einer detaillierteren Analyse überleiten.
+- trigger: busy_periods
+  situation: Wenn der Kunde Stoßzeiten (Weihnachten, Black Friday) als Problem nennt.
+  script: Genau für diese Stoßzeiten ist unsere Lösung ideal. Der KI-Assistent kann den plötzlichen Ansturm an Anrufen zu Öffnungszeiten, Bestand oder Click & Collect abfangen, ohne dass Sie saisonales
+    Personal einstellen müssen. So bleiben Ihre Stammmitarbeiter für die komplexen Verkaufsgespräche frei und kein Kunde geht verloren.
+  goal: Die Lösung als spezifische Antwort auf ein genanntes Schmerzpunkt positionieren.
+- trigger: integration_doubt
+  situation: Wenn der Kunde Bedenken bezüglich der Kompatibilität mit seiner Software hat.
+  script: Das ist eine sehr wichtige Frage. Wir integrieren uns primär über Ihre Telefonanlage, die wir nahezu immer anbinden können. Für Daten wie Lagerbestand nutzen wir standardisierte Schnittstellen.
+    Können Sie mir verraten, mit welcher Warenwirtschaft oder welchem Shop-System Sie aktuell arbeiten? Dann kann ich Ihnen eine konkrete Kompatibilitätsaussage geben.
+  goal: Das technische Risiko entkräften und durch eine spezifische Nachfrage das Gespräch vertiefen.
+competitors:
+- name: Telefónica / O2 Callcenter Services
+  positioning: Großer Telekommunikationsanbieter mit umfassenden Callcenter-Dienstleistungen.
+  strengths:
+  - Markenbekanntheit
+  - große Infrastruktur
+  - persönliche Agenten
+  weaknesses:
+  - Sehr teuer
+  - wenig flexibel
+  - Fokus auf menschliche Agenten
+  - kaum KI-Automatisierung
+  our_differentiation: Wir automatisieren kostengünstig die einfachen Anfragen, was zu massiven Kosteneinsparungen führt, und bieten moderne KI-Technologie.
+- name: Diabolocom
+  positioning: Anbieter von Cloud-Telefonie-Lösungen mit integrierten Contact-Center-Funktionen.
+  strengths:
+  - Starke Telefonie-Infrastruktur
+  - Integrationen
+  - europäischer Anbieter
+  weaknesses:
+  - Komplexe
+  - teure All-in-One-Lösung
+  - KI-Funktionen oft Add-on
+  our_differentiation: Wir sind spezialisierte KI-Sprachagenten, die sich leicht in bestehende Systeme einfügen und bieten eine schnelle, fokussierte Lösung für Automatisierung.
+- name: Lokale Callcenter-Agenturen
+  positioning: Regionale Anbieter von persönlichem Telefonservice.
+  strengths:
+  - Persönlicher Kontakt
+  - lokales Verständnis
+  - flexible Verträge
+  weaknesses:
+  - Hohe Personalkosten
+  - begrenzte Skalierbarkeit
+  - keine 24/7-Verfügbarkeit wirtschaftlich
+  our_differentiation: Unser KI-Agent arbeitet 24/7 zum Festpreis, skaliert sofort mit dem Anrufaufkommen und entlastet menschliche Mitarbeiter für wertschöpfende Tätigkeiten.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 150
+  - 1500
+  entry_point: 199
+  roi_examples:
+  - scenario: Mittelständischer Modeeinzelhändler mit 2 Filialen. Automatisierung von 70% der eingehenden Anrufe (Öffnungszeiten, Bestand, Terminvereinbarung).
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 1
+  value_anchors:
+  - Kostet weniger als eine Minijob-Kraft.
+  - Reduziert verpasste Anrufe und damit verlorene Umsätze.
+  - Steigert die Zufriedenheit Ihrer Stammmitarbeiter durch Entlastung von Routineaufgaben.
+market_context:
+  market_size: Der deutsche Einzelhandelsumsatz lag 2023 bei über 600 Mrd. EUR.
+  growth_rate: Leicht positiv, getrieben vor allem durch Omnichannel-Ansätze.
+  key_trends:
+  - 'Omnichannel: Nahtlose Verknüpfung von Online und Offline (Click & Collect, Rückgabe online gekaufter Ware im Laden).'
+  - Nachhaltigkeit und Transparenz in der Lieferkette als Kaufkriterium.
+  - Steigende Personal- und Energiekosten erhöhen den Druck zur Prozessoptimierung.
+  - Kunden erwarten 24/7-Service und sofortige Informationen.
+  seasonality:
+    high:
+    - November/Dezember (Weihnachtsgeschäft)
+    - Black Friday/Cyber Monday
+    - Schulferien-Beginn
+    low:
+    - Januar
+    - Spätsommer (August)
+typical_objections:
+- objection: Das ist mir zu teuer für mein kleines Geschäft.
+  response: 'Ich verstehe das. Lassen Sie uns konkret durchrechnen: Wie viele Anrufe verpassen Sie im Monat, die ein potenzieller Verkauf gewesen wären? Oder wie viel Zeit wendet Ihr Personal für reine
+    Informationsanfragen auf? Oft amortisiert sich die Investition schon, wenn wir nur einen Teil dieser verpassten Chancen auffangen oder Zeit einsparen.'
+- objection: Meine Kunden wollen mit einem Menschen sprechen, keine Maschine.
+  response: Das wollen wir auch! Genau deshalb entlastet der KI-Assistent Ihre Mitarbeiter von den einfachen, sich wiederholenden Fragen. So haben sie mehr Zeit für die wirklich wichtigen, beratungsintensiven
+    Gespräche, bei denen der persönliche Kontakt zählt. Der Assistent ist die perfekte Vorauswahl.
+- objection: Meine Prozesse sind zu individuell, das kann kein Standard-System abbilden.
+  response: Unser großer Vorteil ist die Anpassungsfähigkeit. Wir trainieren den KI-Assistenten genau auf Ihre Dienstleistungen, Ihre Produktkategorien und Ihre FAQs. Er lernt, wie Sie kommunizieren. Lassen
+    Sie uns über Ihre drei häufigsten Kundenanfragen sprechen – ich zeige Ihnen, wie wir das abbilden können.
+meta:
+  id: retail
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- retail
+- shop
+- store
+- e-commerce
+- merchandise
+_extends: _base/retail

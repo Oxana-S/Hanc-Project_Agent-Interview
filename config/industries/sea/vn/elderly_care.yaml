@@ -1,0 +1,271 @@
+pain_points:
+- description: Khó khăn trong việc tuyển dụng và đào tạo nhân viên chăm sóc người
+    già có chuyên môn và tận tâm.
+  severity: high
+  solution_hint: Đại lý giọng nói AI có thể hỗ trợ hướng dẫn đào tạo, cung cấp thông
+    tin nhanh cho nhân viên mới.
+- description: Giao tiếp không hiệu quả giữa người chăm sóc, người già và gia đình,
+    dẫn đến hiểu lầm và thiếu thông tin.
+  severity: high
+  solution_hint: Đại lý giọng nói AI giúp cập nhật thông tin, nhắc nhở lịch trình
+    và báo cáo tình trạng kịp thời.
+- description: Quản lý hồ sơ sức khỏe và tuân thủ quy định pháp lý như PDPD phức tạp
+    và mất thời gian.
+  severity: medium
+  solution_hint: Tự động hóa ghi nhận và truy xuất dữ liệu qua lệnh thoại, giảm sai
+    sót và tăng tốc độ xử lý.
+- description: Chi phí vận hành cao và khó kiểm soát ngân sách trong dịch vụ chăm
+    sóc dài hạn.
+  severity: medium
+  solution_hint: Hỗ trợ theo dõi và phân tích chi phí qua giọng nói, cảnh báo chi
+    tiêu vượt mức.
+- description: Thiếu công nghệ hỗ trợ trong việc chăm sóc tại nhà, đặc biệt ở vùng
+    sâu vùng xa.
+  severity: high
+  solution_hint: Đại lý giọng nói AI cung cấp hỗ trợ từ xa, hướng dẫn chăm sóc và
+    kết nối nhanh với chuyên gia.
+- description: Người già khó tiếp cận các dịch vụ chăm sóc hiện đại do hạn chế về
+    nhận thức công nghệ.
+  severity: high
+  solution_hint: Giao diện giọng nói thân thiện, dễ sử dụng giúp người già tương tác
+    thuận tiện hơn.
+- description: Khó khăn trong việc theo dõi và nhắc nhở uống thuốc, tái khám đúng
+    lịch.
+  severity: high
+  solution_hint: Đại lý giọng nói AI nhắc nhở uống thuốc, đặt lịch tái khám tự động
+    qua giọng nói.
+typical_services:
+- Chăm sóc y tế tại nhà
+- Hỗ trợ sinh hoạt hàng ngày
+- Tư vấn dinh dưỡng và sức khỏe
+- Vận chuyển và hỗ trợ đi lại
+- Tổ chức hoạt động giải trí và phục hồi chức năng
+- Giám sát an toàn và cảnh báo khẩn cấp
+- Tư vấn pháp lý liên quan đến người cao tuổi
+- Đào tạo nhân viên chăm sóc
+- Tư vấn tâm lý và hỗ trợ tinh thần
+- Quản lý hồ sơ sức khỏe điện tử
+recommended_functions:
+- name: Nhắc nhở uống thuốc và lịch tái khám
+  priority: high
+  reason: Giúp người già duy trì lịch trình chăm sóc y tế chính xác, giảm nguy cơ
+    quên thuốc.
+- name: Cập nhật tình trạng sức khỏe và báo cáo nhanh
+  priority: high
+  reason: Giúp nhân viên và gia đình nắm bắt kịp thời tình trạng người già, hỗ trợ
+    quyết định chăm sóc.
+- name: Hỗ trợ giao tiếp đa chiều giữa người già, nhân viên và gia đình
+  priority: high
+  reason: Tăng cường sự minh bạch và thông tin đầy đủ, giảm hiểu nhầm.
+- name: Hướng dẫn sử dụng dịch vụ và quy trình chăm sóc
+  priority: medium
+  reason: Giúp người dùng mới nhanh chóng làm quen với dịch vụ, giảm tải nhân sự hỗ
+    trợ.
+- name: Tích hợp lịch làm việc và quản lý nhân viên
+  priority: medium
+  reason: Tối ưu hóa lịch trình làm việc, đảm bảo nhân lực phù hợp.
+- name: Báo động khẩn cấp qua giọng nói
+  priority: high
+  reason: Nhanh chóng phản ứng khi xảy ra sự cố, giúp cứu trợ kịp thời.
+- name: Thu thập phản hồi và đánh giá chất lượng dịch vụ
+  priority: medium
+  reason: Giúp cải thiện dịch vụ dựa trên ý kiến thực tế của khách hàng.
+typical_integrations:
+- name: Phần mềm quản lý hồ sơ sức khỏe điện tử
+  examples:
+  - Medlink
+  - VNPT eHealth
+  priority: high
+- name: Hệ thống quản lý nhân sự và lịch làm việc
+  examples:
+  - FastWork
+  - Base.vn
+  priority: medium
+- name: Ứng dụng đặt lịch và thanh toán trực tuyến
+  examples:
+  - VNPAY
+  - Momo
+  priority: medium
+- name: Hệ thống cảnh báo khẩn cấp và giám sát từ xa
+  examples:
+  - Viettel IoT
+  - VNPT SmartCare
+  priority: high
+- name: Nền tảng chăm sóc sức khỏe từ xa (Telehealth)
+  examples:
+  - Doctor Anywhere
+  - eDoctor
+  priority: medium
+- name: Phần mềm quản lý đào tạo nhân viên
+  examples:
+  - Edmicro
+  - Topica
+  priority: low
+industry_faq:
+- question: Dịch vụ chăm sóc người già tại nhà của quý công ty bao gồm những gì?
+  answer_template: Dịch vụ của chúng tôi bao gồm chăm sóc y tế, hỗ trợ sinh hoạt,
+    tư vấn dinh dưỡng, giám sát an toàn và nhiều tiện ích khác nhằm đảm bảo sức khỏe
+    và tinh thần cho người cao tuổi.
+- question: Làm thế nào để đặt lịch chăm sóc và thanh toán?
+  answer_template: Quý khách có thể gọi điện thoại hoặc sử dụng ứng dụng của chúng
+    tôi để đặt lịch. Thanh toán được thực hiện qua các ví điện tử phổ biến như Momo,
+    VNPAY hoặc chuyển khoản ngân hàng.
+- question: Nhân viên chăm sóc có được đào tạo chuyên sâu không?
+  answer_template: Tất cả nhân viên của chúng tôi đều được đào tạo bài bản, có chứng
+    chỉ chuyên môn và trải qua kiểm tra sức khỏe định kỳ để đảm bảo chất lượng dịch
+    vụ.
+- question: Công ty có hỗ trợ dịch vụ chăm sóc 24/7 không?
+  answer_template: Chúng tôi cung cấp dịch vụ chăm sóc 24/7 với đội ngũ nhân viên
+    túc trực và hệ thống cảnh báo khẩn cấp giúp xử lý kịp thời mọi tình huống.
+- question: Làm sao để cập nhật tình trạng sức khỏe của người thân thường xuyên?
+  answer_template: Quý khách sẽ nhận được báo cáo định kỳ qua điện thoại hoặc email,
+    đồng thời có thể yêu cầu cập nhật thông tin bất cứ lúc nào qua đại lý giọng nói
+    AI của chúng tôi.
+- question: Chính sách bảo mật thông tin cá nhân ra sao?
+  answer_template: Chúng tôi tuân thủ nghiêm ngặt quy định PDPD, đảm bảo thông tin
+    cá nhân và hồ sơ sức khỏe của khách hàng được bảo mật tuyệt đối.
+sales_scripts:
+- trigger: gia_cuoc_hoi
+  situation: Khi khách hàng hỏi về giá dịch vụ chăm sóc người già
+  script: Kính chào quý khách, mức giá dịch vụ chăm sóc tại nhà của chúng tôi bắt
+    đầu từ 5 triệu VND/tháng, tùy theo mức độ hỗ trợ và nhu cầu cụ thể của người thân.
+    Chúng tôi có thể tư vấn chi tiết hơn để lựa chọn gói phù hợp nhất với ngân sách
+    của quý khách.
+  goal: Cung cấp thông tin giá cơ bản và mời gọi tư vấn chi tiết
+- trigger: loi_ich_cua_dai_ly_giong_noi
+  situation: Khi khách hàng nghi ngờ hiệu quả của đại lý giọng nói AI trong chăm sóc
+  script: Đại lý giọng nói AI của chúng tôi giúp nhắc nhở thuốc, cập nhật tình trạng
+    sức khỏe và kết nối nhanh với nhân viên, giúp giảm thiểu sai sót và tăng cường
+    an toàn cho người thân của quý khách.
+  goal: Thuyết phục về lợi ích công nghệ AI trong chăm sóc
+- trigger: dang_ky_dich_vu
+  situation: Khi khách hàng muốn đăng ký hoặc tìm hiểu thủ tục
+  script: Quý khách có thể đăng ký dịch vụ qua điện thoại hoặc website của chúng tôi.
+    Đội ngũ nhân viên sẽ hỗ trợ tận tình từ bước đầu để đảm bảo quy trình nhanh chóng
+    và thuận tiện.
+  goal: Khuyến khích khách hàng đăng ký dịch vụ
+- trigger: phan_hoi_ve_chat_luong
+  situation: Khi khách hàng bày tỏ quan tâm về chất lượng dịch vụ
+  script: Chúng tôi luôn lắng nghe và cải thiện dựa trên phản hồi của khách hàng.
+    Đại lý giọng nói AI cũng giúp thu thập ý kiến thường xuyên để đảm bảo dịch vụ
+    luôn đáp ứng mong đợi.
+  goal: Tăng sự tin tưởng và cam kết dịch vụ chất lượng
+- trigger: so_sanh_dich_vu
+  situation: Khi khách hàng hỏi về sự khác biệt so với đối thủ
+  script: Khác biệt của chúng tôi nằm ở công nghệ đại lý giọng nói AI tiên tiến, đội
+    ngũ nhân viên chuyên nghiệp và cam kết tuân thủ đầy đủ quy định bảo mật PDPD,
+    mang lại sự an tâm tuyệt đối cho gia đình quý khách.
+  goal: Nêu bật điểm mạnh cạnh tranh và tạo lợi thế
+competitors:
+- name: Công ty Dịch vụ Chăm sóc Người Cao Tuổi An Khang
+  positioning: Nhà cung cấp dịch vụ chăm sóc tại nhà hàng đầu tại TP.HCM
+  strengths:
+  - Mạng lưới phủ sóng rộng
+  - Đội ngũ nhân viên đào tạo bài bản
+  - Hệ thống giám sát an toàn hiện đại
+  weaknesses:
+  - Giá thành cao hơn mặt bằng chung
+  - Hạn chế hỗ trợ công nghệ AI
+  our_differentiation: Tích hợp đại lý giọng nói AI giúp tối ưu giao tiếp và quản
+    lý thông tin hiệu quả
+- name: Trung tâm Chăm sóc Sức khỏe Người Cao Tuổi Phúc An
+  positioning: Trung tâm chăm sóc tập trung với dịch vụ đa dạng tại Hà Nội
+  strengths:
+  - Cơ sở vật chất hiện đại
+  - Đa dạng dịch vụ phục hồi chức năng
+  - Phản hồi khách hàng tích cực
+  weaknesses:
+  - Chưa có dịch vụ chăm sóc tại nhà rộng rãi
+  - Thiếu tích hợp công nghệ tự động hóa
+  our_differentiation: Chuyên sâu trong chăm sóc tại nhà với hỗ trợ AI giọng nói thân
+    thiện, phù hợp vùng nông thôn và thành thị
+- name: Công ty TNHH Dịch vụ Chăm sóc Người Cao Tuổi Bình An
+  positioning: Nhà cung cấp dịch vụ chăm sóc toàn quốc quy mô vừa và nhỏ
+  strengths:
+  - Giá cả cạnh tranh
+  - Dịch vụ cá nhân hóa cao
+  - Phục vụ nhiều tỉnh thành
+  weaknesses:
+  - Hạn chế về đào tạo nhân viên chuyên sâu
+  - Công nghệ hỗ trợ còn đơn giản
+  our_differentiation: Kết hợp công nghệ AI hiện đại với đào tạo chuyên sâu, đảm bảo
+    chất lượng đồng đều và nâng cao trải nghiệm khách hàng
+- name: Công ty Công nghệ Y tế VN Care
+  positioning: Startup công nghệ y tế tập trung vào chăm sóc từ xa và AI
+  strengths:
+  - Công nghệ tiên tiến
+  - Hệ thống telehealth hiện đại
+  - Hỗ trợ giám sát từ xa
+  weaknesses:
+  - Dịch vụ chăm sóc trực tiếp hạn chế
+  - Chưa có mạng lưới chăm sóc toàn quốc
+  our_differentiation: Phát triển đại lý giọng nói AI tích hợp đầy đủ chức năng chăm
+    sóc tại nhà, dễ sử dụng cho người già
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 5000000
+  - 20000000
+  entry_point: 5000000
+  roi_examples:
+  - scenario: Giảm chi phí do quên thuốc và tái khám đúng lịch, tránh nhập viện
+    monthly_cost: 7000000
+    monthly_savings: 10000000
+    payback_months: 1
+  - scenario: Tối ưu lịch làm việc nhân viên, giảm giờ làm ngoài giờ và chi phí overtime
+    monthly_cost: 6000000
+    monthly_savings: 8000000
+    payback_months: 2
+  value_anchors:
+  - Giảm thiểu rủi ro sức khỏe nhờ nhắc nhở thuốc và theo dõi kịp thời.
+  - Tăng hiệu quả quản lý nhân sự, giảm chi phí vận hành.
+  - Nâng cao sự hài lòng và an tâm của gia đình người cao tuổi.
+  - Tuân thủ nghiêm ngặt các quy định bảo mật thông tin cá nhân PDPD.
+market_context:
+  market_size: 5000
+  growth_rate: 12
+  key_trends:
+  - Gia tăng nhu cầu chăm sóc tại nhà do già hóa dân số nhanh.
+  - Ứng dụng công nghệ AI và IoT trong chăm sóc sức khỏe.
+  - Chính sách hỗ trợ phát triển dịch vụ chăm sóc người cao tuổi từ chính phủ.
+  - Xu hướng cá nhân hóa dịch vụ theo nhu cầu từng khách hàng.
+  - Gia đình đa thế hệ cần hỗ trợ giao tiếp và quản lý tốt hơn.
+  seasonality:
+    high:
+    - Tết Nguyên Đán
+    - Mùa mưa bão
+    - Mùa dịch bệnh gia tăng
+    low:
+    - Mùa hè nóng bức
+    - Giai đoạn giữa năm không có lễ lớn
+typical_objections:
+- objection: Dịch vụ có giá quá cao so với khả năng chi trả của gia đình tôi.
+  response: Chúng tôi có nhiều gói dịch vụ linh hoạt phù hợp với ngân sách khác nhau
+    và luôn tư vấn để lựa chọn giải pháp tối ưu nhất cho quý khách.
+- objection: Tôi lo ngại người già không quen sử dụng công nghệ AI sẽ khó tiếp nhận.
+  response: Đại lý giọng nói AI của chúng tôi được thiết kế thân thiện, dễ sử dụng,
+    hỗ trợ giọng nói tiếng Việt chuẩn và có thể tùy chỉnh theo thói quen người dùng.
+- objection: Thông tin cá nhân và sức khỏe có được bảo mật tốt không?
+  response: Chúng tôi tuân thủ nghiêm ngặt quy định PDPD và áp dụng các biện pháp
+    bảo mật tiên tiến để bảo vệ dữ liệu khách hàng tuyệt đối.
+- objection: Làm sao tôi biết dịch vụ có thực sự hiệu quả?
+  response: Chúng tôi cung cấp báo cáo định kỳ và hỗ trợ phản hồi tức thời qua đại
+    lý giọng nói AI, giúp quý khách theo dõi và đánh giá chất lượng dịch vụ liên tục.
+- objection: Nhân viên chăm sóc có đủ chuyên môn và tận tâm không?
+  response: Đội ngũ nhân viên của chúng tôi được đào tạo chuyên sâu, có chứng chỉ
+    và thường xuyên cập nhật kỹ năng để đảm bảo chăm sóc tốt nhất cho người thân của
+    quý khách.
+meta:
+  id: elderly_care
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- "elderly care"
+- "senior care"
+- "nursing home"
+- "home care"
+_extends: _base/elderly_care

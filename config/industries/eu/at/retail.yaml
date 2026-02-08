@@ -1,0 +1,259 @@
+pain_points:
+- description: Personalmangel während Stoßzeiten und Saisonzeiten führt zu Überlastung
+    des bestehenden Teams.
+  severity: high
+  solution_hint: Automatisierte Anrufbeantwortung und Terminvereinbarung entlasten
+    Mitarbeiter, sodass sie sich auf den Verkauf konzentrieren können.
+- description: Hohe Kosten für Kundenakquise und schwierige Kundenrückgewinnung.
+  severity: high
+  solution_hint: KI-gesteuerte Outbound-Kampagnen für Follow-ups und personalisierte
+    Angebote erhöhen die Conversion-Rate.
+- description: Verpasste Anrufe außerhalb der Öffnungszeiten führen zu verlorenen
+    Verkäufen.
+  severity: medium
+  solution_hint: 24/7-Anrufbeantworter nimmt Anfragen entgegen und vereinbart Rückruftermine,
+    sodass kein Lead verloren geht.
+- description: Inkonsistente Kundenbetreuung über verschiedene Kanäle (Telefon, E-Mail,
+    Soziale Medien).
+  severity: medium
+  solution_hint: Zentrale KI-Schnittstelle bietet einheitliche Antworten und protokolliert
+    alle Kundeninteraktionen.
+- description: Aufwändige Verwaltung von Terminen für Services wie Reparaturen oder
+    Montagen.
+  severity: low
+  solution_hint: Voice Agent vereinbart und verwaltet Termine automatisch im Kalendersystem
+    und sendet Erinnerungen.
+- description: Herausforderungen bei der Einhaltung der DSGVO bei Kundenkommunikation
+    und Datenspeicherung.
+  severity: medium
+  solution_hint: KI-Agent ist DSGVO-konform konfiguriert, protokolliert Einwilligungen
+    und verwaltet Daten gemäß lokaler Vorschriften.
+- description: Geringe Markttransparenz und unzureichende Kundenfeedback-Erhebung.
+  severity: low
+  solution_hint: Automatisierte Feedback-Anrufe nach Kauf sammeln wertvolle Insights
+    für Serviceverbesserungen.
+typical_services:
+- Öffnungszeitenverwaltung und Kundeninformation
+- Bestandsabfrage und Lieferverfolgung
+- Terminvereinbarung für Service und Beratung
+- Kundenbindungsprogramme und Treuepunkte
+- Reklamationsmanagement und Umtausch
+- Personalisiertes Produktmarketing und Angebote
+- Mehrkanal-Kundensupport (Telefon, WhatsApp, Web)
+- Notfall- und Störungsmeldung für Technik
+- Reservierung von Sonderartikeln oder Größen
+- Zahlungsabwicklung und Rechnungsauskunft
+recommended_functions:
+- name: Intelligente Anrufweiterleitung und Priorisierung
+  priority: high
+  reason: Reduziert Wartezeiten während Stoßzeiten und leitet dringende Anfragen (z.B.
+    Lieferprobleme) sofort weiter.
+- name: Automatisierte Terminbuchung und Kalendersynchronisation
+  priority: high
+  reason: Spart manuellen Verwaltungsaufwand, besonders für Einzelhändler mit Montage-
+    oder Reparaturservices.
+- name: Mehrsprachige Kundenunterstützung (Deutsch, Englisch, ggf. Balkan-Sprachen)
+  priority: medium
+  reason: Wichtig für Tourismusgebiete und internationale Kunden in Österreich.
+- name: Integration mit lokalen Zahlungssystemen (z.B. EPS, Klarna)
+  priority: medium
+  reason: Erhöht Konversionsrate durch vertraute, lokale Zahlungsoptionen.
+- name: Loyalitätsprogramm-Abfrage und Punktestand
+  priority: low
+  reason: Fördert Kundenbindung durch einfachen Zugriff auf Bonusstände und Vorteile.
+- name: Notfallbenachrichtigung bei Systemausfällen oder Lieferverzögerungen
+  priority: medium
+  reason: Proaktive Kommunikation erhöht Kundenzufriedenheit bei unvorhergesehenen
+    Problemen.
+typical_integrations:
+- name: Kassensystem (POS)
+  examples:
+  - Oracle MICROS
+  - LS Retail
+  - Zielpunkt POS
+  priority: high
+- name: ERP/Warenwirtschaft
+  examples:
+  - SAP Business One
+  - Microsoft Dynamics
+  - Prologic
+  priority: high
+- name: Terminplanungstool
+  examples:
+  - Calendly
+  - Setmore
+  - Reservio
+  priority: medium
+- name: E-Commerce-Plattform
+  examples:
+  - Shopware
+  - Magento
+  - Shoptrotter
+  priority: medium
+- name: CRM-System
+  examples:
+  - HubSpot
+  - Salesforce
+  - Österreichische Banken-CRMs
+  priority: medium
+- name: Lieferdienst-Software
+  examples:
+  - Lieferando Restaurant-Backend
+  - Mjam
+  - Logistikpartner-Schnittstellen
+  priority: low
+industry_faq:
+- question: Können Sie auch außerhalb unserer Geschäftszeiten Anrufe entgegennehmen?
+  answer_template: Ja, unser KI-Assistent ist 24/7 für Sie erreichbar. Er nimmt Nachrichten
+    entgegen, beantwortet Standardfragen und vereinbart Rückruftermine, die dann in
+    Ihr Kalendersystem übernommen werden.
+- question: Ist die Lösung DSGVO-konform für Österreich?
+  answer_template: Absolut. Unser System ist gemäß DSGVO und österreichischem Datenschutzgesetz
+    konzipiert. Alle Daten werden in EU-Rechenzentren gespeichert und wir unterstützen
+    Sie bei der Dokumentation der Einwilligungen.
+- question: Wie wird die KI auf unsere spezifischen Produkte und Dienstleistungen
+    trainiert?
+  answer_template: Wir passen die Sprachdatenbank an Ihre Produktpalette, Öffnungszeiten
+    und FAQs an. Die Einrichtung erfolgt in enger Abstimmung mit Ihrem Team, um lokale
+    Besonderheiten und Dialekte zu berücksichtigen.
+- question: Können auch Bestellungen über den Sprachassistenten aufgegeben werden?
+  answer_template: Ja, der Assistent kann Bestellungen entgegennehmen und direkt in
+    Ihr Kassensystem übertragen. Für komplexe Anfragen leitet er zum menschlichen
+    Mitarbeiter weiter.
+- question: Was kostet die Implementierung und wie lange dauert sie?
+  answer_template: Die Einrichtung dauert typischerweise 2-4 Wochen. Die Kosten beginnen
+    bei 299€ monatlich und richten sich nach Umfang und Anrufvolumen. Ein Return on
+    Investment zeigt sich oft bereits nach 3 Monaten.
+- question: Funktioniert das System auch mit österreichischen Dialekten?
+  answer_template: Ja, unser Sprachmodell ist speziell auf österreichisches Deutsch
+    und gängige Dialekte trainiert. Wir passen es zusätzlich an Ihre regionalen Kunden
+    an.
+sales_scripts:
+- trigger: opening_hours_issue
+  situation: Wenn der Kunde über verpasste Anrufe außerhalb der Öffnungszeiten klagt.
+  script: Verstehe, dass verlorene Anrufe direkt verlorene Umsätze bedeuten. Unser
+    KI-Assistent arbeitet rund um die Uhr als erste Anlaufstelle, filtert dringende
+    Anfragen heraus und vereinbart Termine. So gewinnen Sie bis zu 30% mehr Leads
+    zurück. Darf ich Ihnen ein konkretes Beispiel aus der österreichischen Einzelhandelsbranche
+    zeigen?
+  goal: Lösungsorientiertes Angebot unterstreichen und mit Branchenbeispiel Vertrauen
+    aufbauen.
+- trigger: price_question
+  situation: Wenn der Kunde nach Kosten fragt.
+  script: Die Investition beginnt bei 299€ pro Monat für einen Basisumfang. Das entspricht
+    etwa den Kosten einer 20-Stunden-Hilfskraft – arbeitet aber 24/7. Bei einem mittleren
+    Einzelhändler amortisiert sich das meist innerhalb eines Quartals durch zurückgewonnene
+    Verkäufe und Personaleinsparungen. Möchten Sie eine detaillierte ROI-Berechnung
+    für Ihr Geschäft?
+  goal: Preis rechtfertigen durch Vergleich mit Personalkosten und klare ROI-Perspektive
+    bieten.
+- trigger: competitor_mention
+  situation: Wenn der Kunde andere Anbieter nennt.
+  script: Interessant, dass Sie [Competitor] kennen. Unser Fokus liegt speziell auf
+    österreichischen Einzelhändlern – mit DSGVO-konformer Datenspeicherung in der
+    EU, Integrationen zu lokalen Kassensystemen wie Zielpunkt POS und speziellem Training
+    für österreichische Dialekte. Während andere globale Lösungen anbieten, bieten
+    wir maßgeschneiderte Lokalexpertise. Könnte das für Sie relevanter sein?
+  goal: Lokale Stärken und kulturelle Anpassung als Differenzierungsmerkmal hervorheben.
+- trigger: objection_complexity
+  situation: Wenn der Kunde Bedenken wegen technischer Komplexität äußert.
+  script: Die Bedenken sind nachvollziehbar. Unsere Lösung ist jedoch so konzipiert,
+    dass sie ohne IT-Vorkenntnisse nutzbar ist. Wir übernehmen die gesamte Einrichtung,
+    schulen Ihr Team und bieten österreichischen Telefonsupport. Viele unserer Kunden
+    sind familiengeführte Fachhändler – die schätzen besonders die einfache Bedienung.
+    Darf ich Ihnen eine Demo zeigen, wie unkompliziert das Dashboard ist?
+  goal: Technische Barrieren abbauen und mit Zielgruppenbeispielen sowie Supportangeboten
+    überzeugen.
+competitors:
+- name: Runtastic (Adidas)
+  positioning: Lokaler österreichischer Player mit Fokus auf Fitness-Einzelhandel,
+    nun global.
+  strengths:
+  - Starke Markenpräsenz in Österreich
+  - Lokale Wurzeln bekannt
+  weaknesses:
+  - Begrenzt auf Fitness-Segment
+  - Keine branchenübergreifende KI-Kommunikationslösung
+  our_differentiation: Wir bieten branchenübergreifende, maßgeschneiderte KI-Lösungen
+    für den gesamten österreichischen Einzelhandel, nicht nur Nischensegment.
+- name: Storyblok (Linz)
+  positioning: Österreichisches Content-Management-System mit globaler Reichweite.
+  strengths:
+  - Headless-Architektur
+  - Gute österreichische Unternehmenspräsenz
+  weaknesses:
+  - Fokus auf Content, nicht auf Voice-Kommunikation
+  - Keine spezifischen Einzelhandels-KI-Features
+  our_differentiation: Wir spezialisieren uns auf Voice-basierte Kundeninteraktion
+    und Verkaufsunterstützung, die direkt mit Einzelhandelssystemen integriert.
+- name: Zendesk
+  positioning: Globaler Customer-Service-Gigant mit österreichischen Kunden.
+  strengths:
+  - Umfassende Service-Suite
+  - Internationale Präsenz
+  weaknesses:
+  - Höhere Kosten
+  - Weniger auf österreichische Einzelhandelsbesonderheiten angepasst
+  our_differentiation: Kosteneffiziente, lokal adaptierte Lösung mit Fokus auf typische
+    österreichische Einzelhandelsprozesse und Systeme.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 200
+  - 1500
+  entry_point: 299
+  roi_examples:
+  - scenario: Mittelständischer Modeeinzelhändler in Wien mit 2 Filialen
+    monthly_cost: 450
+    monthly_savings: 1200
+    payback_months: 1.5
+  value_anchors:
+  - Geringerer als ein Teilzeit-Mitarbeiter, arbeitet aber 24/7
+  - Durchschnittlich 15 zurückgewonnene Verkäufe pro Monat decken Kosten
+  - Keine versteckten Kosten, österreichischer Support inklusive
+market_context:
+  market_size: ca. 70 Mrd. EUR Einzelhandelsumsatz jährlich in Österreich
+  growth_rate: 2-3% p.a., mit stärkerem Online-Wachstum (ca. 10%)
+  key_trends:
+  - Stärkerer Fokus auf lokale Produkte und Nachhaltigkeit
+  - Zunehmende Verknüpfung von Online- und Offline-Kanälen (Click & Collect)
+  - Tourismus als wichtiger Umsatzfaktor, besonders in Bundesländern wie Tirol und
+    Salzburg
+  - Wachsendes Bewusstsein für Datenschutz (DSGVO) bei Kunden
+  seasonality:
+    high:
+    - November-Dezember (Weihnachtsgeschäft)
+    - Juli-August (Tourismus-Saison)
+    - Schulstart-Periode
+    low:
+    - Januar (nach Weihnachten)
+    - Februar
+    - Spätherbst (außer Weihnachten)
+typical_objections:
+- objection: Das klingt zu technisch für unser traditionelles Familienunternehmen.
+  response: Viele unserer Kunden sind familiengeführte Betriebe. Wir passen die Lösung
+    genau an Ihre Prozesse an – so einfach wie ein Telefon zu bedienen. Möchten Sie
+    mit einem ähnlichen Kunden aus Österreich sprechen?
+- objection: Wir haben bereits eine Website und Social Media, das reicht.
+  response: Online-Präsenz ist wichtig, aber viele Kunden rufen noch immer an – besonders
+    bei dringenden Fragen oder Serviceanfragen. Unser Assistent verbindet beide Welten
+    und sorgt für konsistente Antworten über alle Kanäle.
+- objection: Bei persönlichem Kontakt verkaufen wir besser.
+  response: Absolut, persönlicher Kontakt ist unschlagbar. Unser Assistent entlastet
+    Ihr Team jedoch von Routineanfragen wie Öffnungszeiten oder Lagerabfrage, sodass
+    mehr Zeit für beratungsintensive Verkaufsgespräche bleibt.
+meta:
+  id: retail
+  region: eu
+  country: at
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+43'
+aliases:
+- "retail"
+- "shop"
+- "store"
+- "e-commerce"
+- "merchandise"
+_extends: _base/retail

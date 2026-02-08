@@ -1,0 +1,237 @@
+pain_points:
+- description: Altos impostos sobre hardware e software de jogos importados, aumentando
+    os custos para desenvolvedores e distribuidores.
+  severity: high
+  solution_hint: O agente de voz IA pode auxiliar na otimização de preços e na educação
+    sobre incentivos fiscais locais para reduzir custos.
+- description: Desafios no processamento de pagamentos devido à preferência por métodos
+    locais como boleto bancário e parcelamento.
+  severity: medium
+  solution_hint: Integrar gateways de pagamento locais via IA para automatizar transações
+    e aumentar as taxas de conversão.
+- description: Necessidade de localização para o português brasileiro, incluindo adaptações
+    culturais além da tradução simples.
+  severity: high
+  solution_hint: Usar IA para fornecer suporte em português e adaptar conteúdos automaticamente
+    com base no feedback dos jogadores.
+- description: Conformidade com a LGPD para o manejo de dados dos usuários, com risco
+    de multas por não conformidade.
+  severity: high
+  solution_hint: Automatizar a coleta de consentimentos e notificações de privacidade
+    através do agente de voz, garantindo conformidade.
+- description: Alta competição no mercado de jogos mobile, com dificuldade em se destacar
+    e reter jogadores.
+  severity: medium
+  solution_hint: Implementar chatbots de IA para engajamento personalizado e programas
+    de fidelidade baseados em dados locais.
+- description: Problemas de infraestrutura de internet afetando a experiência de jogos
+    online, especialmente em regiões menos desenvolvidas.
+  severity: low
+  solution_hint: O agente pode oferecer suporte técnico básico e dicas de otimização
+    para mitigar problemas de conectividade.
+typical_services:
+- Desenvolvimento de jogos para PC e console
+- Desenvolvimento de jogos mobile
+- Localização e tradução para português brasileiro
+- Marketing digital e gestão de mídias sociais
+- Suporte técnico e atendimento ao cliente
+- Gestão de comunidades e eventos de esports
+- Monetização via microtransações e assinaturas
+- Portabilidade de jogos para múltiplas plataformas
+- Testes de qualidade e controle de bugs
+- Consultoria em LGPD e conformidade de dados
+recommended_functions:
+- name: Atendimento ao cliente 24/7
+  priority: high
+  reason: Melhora a experiência do jogador com respostas rápidas em português, reduzindo
+    abandono.
+- name: Processamento de pagamentos locais
+  priority: high
+  reason: Facilita transações com métodos brasileiros como boleto, aumentando vendas.
+- name: Suporte técnico básico
+  priority: medium
+  reason: Reduz a carga sobre equipes humanas ao lidar com consultas repetitivas sobre
+    instalação e configuração.
+- name: Coleta de feedback e pesquisas
+  priority: medium
+  reason: Ajuda a adaptar jogos ao mercado local com insights diretos dos jogadores.
+- name: Agendamento de eventos e torneios
+  priority: low
+  reason: Aumenta o engajamento da comunidade ao automatizar a organização de competições.
+- name: Monitoramento de conformidade LGPD
+  priority: high
+  reason: Evita multas ao garantir que todas as interações respeitem a privacidade
+    de dados.
+typical_integrations:
+- name: Sistemas de pagamento
+  examples:
+  - PagSeguro
+  - Mercado Pago
+  - PicPay
+  priority: high
+- name: Plataformas de distribuição de jogos
+  examples:
+  - Steam
+  - Epic Games Store
+  - Google Play
+  - App Store
+  priority: high
+- name: ERP e gestão empresarial
+  examples:
+  - TOTVS
+  - Sankhya
+  - Bluesoft
+  priority: medium
+- name: Ferramentas de análise de dados
+  examples:
+  - Google Analytics
+  - Mixpanel
+  - Heatmap
+  priority: medium
+- name: Sistemas de CRM
+  examples:
+  - Salesforce
+  - HubSpot
+  - PipeDrive
+  priority: medium
+industry_faq:
+- question: Como garantir a conformidade com a LGPD para meu jogo no Brasil?
+  answer_template: Recomendamos implementar políticas de privacidade claras, obter
+    consentimento explícito dos usuários e usar agentes de voz IA para automatizar
+    notificações e gerenciamento de dados, assegurando conformidade contínua.
+- question: Quais são os métodos de pagamento mais eficazes para jogos no mercado
+    brasileiro?
+  answer_template: Os métodos mais populares incluem boleto bancário, cartões de crédito
+    com parcelamento, e carteiras digitais como PicPay. Integrar esses via IA pode
+    aumentar significativamente as taxas de conversão.
+- question: É necessário investir em localização além da tradução para o português?
+  answer_template: Sim, a localização cultural é crucial. Inclui adaptar referências,
+    humor e elementos visuais para ressoar com jogadores brasileiros, e agentes de
+    voz podem ajudar a testar e refinar isso.
+- question: Como lidar com a alta concorrência no setor de jogos mobile no Brasil?
+  answer_template: Foque em diferenciação através de suporte localizado e engajamento
+    com IA, como chatbots personalizados que oferecem recompensas baseadas em comportamentos
+    de jogadores brasileiros.
+- question: Quais tendências de mercado devo observar no Brasil atualmente?
+  answer_template: Trends incluem o crescimento de esports, a ascensão de jogos com
+    temáticas locais, e a expansão do cloud gaming. Agentes de voz podem ajudar a
+    capitalizar essas tendências com campanhas direcionadas.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre os custos dos serviços de automação
+    com IA.
+  script: Olá! Entendemos que o orçamento é uma preocupação. Nossas soluções começam
+    em R$ 500 por mês, com um ROI típico de 2-3 meses através da redução de custos
+    operacionais. Posso elaborar um plano personalizado para suas necessidades?
+  goal: Educar sobre preços acessíveis e destacar o rápido retorno sobre investimento.
+- trigger: lgpd_concern
+  situation: Quando o cliente expressa preocupação com a conformidade da LGPD.
+  script: Percebemos sua atenção à LGPD. Nossos agentes de voz são configurados para
+    automatizar o consentimento e a proteção de dados, alinhados às regulamentações
+    brasileiras. Isso reduz riscos e economiza tempo na conformidade manual.
+  goal: Aliviar preocupações legais e mostrar valor em conformidade automatizada.
+- trigger: competitor_mention
+  situation: Quando o cliente compara com concorrentes locais ou internacionais.
+  script: Vemos que há opções no mercado. Nossa vantagem é a especialização no setor
+    de jogos no Brasil, com suporte em português 24/7 e integrações com sistemas locais
+    como PagSeguro. Isso otimiza a experiência do seu jogador e reduz custos.
+  goal: Diferenciação baseada em localização e eficiência operacional.
+competitors:
+- name: Level Up Games
+  positioning: Distribuidora e publicadora líder no mercado brasileiro de jogos.
+  strengths:
+  - Ampla rede de distribuição física e digital
+  - Forte conhecimento do mercado local
+  - Experiência em localização de jogos AAA
+  weaknesses:
+  - Foco limitado em desenvolvedores independentes
+  - Menos flexibilidade em soluções personalizadas de automação
+  our_differentiation: Oferecemos automação com IA específica para operações internas
+    e atendimento, não apenas distribuição, com maior escalabilidade e redução de
+    custos.
+- name: Aquiris Game Studio
+  positioning: Desenvolvedora brasileira reconhecida por jogos indie e mobile como
+    Horizon Chase.
+  strengths:
+  - Criatividade e inovação em design
+  - Sucesso internacional com temáticas locais
+  - Agilidade em desenvolvimento
+  weaknesses:
+  - Recursos limitados para suporte e marketing em escala
+  - Dependência de parcerias para distribuição
+  our_differentiation: Fornecemos ferramentas de IA para escalar o suporte ao cliente
+    e marketing, permitindo que estúdios como Aquiris foquem no core business enquanto
+    melhoramos a retenção de jogadores.
+- name: 'Empresas internacionais (ex: Ubisoft, Electronic Arts)'
+  positioning: Grandes publicadoras globais com presença no Brasil.
+  strengths:
+  - Orçamentos elevados para marketing e desenvolvimento
+  - Portfólios extensos e marcas consolidadas
+  - Infraestrutura global
+  weaknesses:
+  - Lentidão em adaptação a particularidades do mercado brasileiro
+  - Processos burocráticos que dificultam a agilidade
+  our_differentiation: Nossa solução é mais ágil e customizada para o contexto brasileiro,
+    com foco em eficiência de custos e conformidade local, ideal para operações regionais.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 1000
+  - 20000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automação do atendimento ao cliente para um jogo com 50.000 usuários
+      ativos mensais
+    monthly_cost: 1500
+    monthly_savings: 4500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos com suporte em até 40% usando IA localizada
+  - Aumente a satisfação do cliente com respostas em português 24/7
+  - Garanta conformidade LGPD sem esforço adicional, evitando multas de até R$ 50
+    milhões
+market_context:
+  market_size: Estimado em R$ 12 bilhões em 2023, com projeção de crescimento.
+  growth_rate: 18% YoY
+  key_trends:
+  - Expansão rápida do mobile gaming e jogos casuais
+  - Crescimento de esports e transmissões ao vivo no YouTube e Twitch
+  - Aumento da demanda por jogos com narrativas e temas brasileiros
+  - Adoção crescente de modelos de negócio freemium com microtransações
+  seasonality:
+    high:
+    - Férias de verão (dezembro a fevereiro)
+    - 'Período de lançamentos de consoles (ex: fim de ano)'
+    - Eventos de esports como o Brasil Game Show
+    low:
+    - Meses de volta às aulas (março a abril)
+    - Período pós-carnaval
+typical_objections:
+- objection: Acho que um agente de voz IA não vai entender a cultura e as gírias dos
+    jogadores brasileiros.
+  response: Nosso agente é treinado com datasets locais e atualizado constantemente
+    com tendências brasileiras, garantindo interações naturais e relevantes. Podemos
+    mostrar demonstrações com exemplos reais.
+- objection: O investimento inicial é muito alto para o meu estúdio pequeno ou startup.
+  response: Oferecemos planos escaláveis a partir de R$ 500 por mês, e o ROI é rápido—em
+    média, clientes economizam R$ 2000 mensais em custos de suporte dentro de 3 meses.
+    Isso permite que você invista mais em desenvolvimento.
+- objection: Já temos uma equipe dedicada ao suporte, então não vemos necessidade
+    de automação.
+  response: A automação com IA pode liberar sua equipe para tarefas de maior valor,
+    como engajamento estratégico da comunidade, enquanto o agente lida com consultas
+    rotineiras. Isso aumenta a produtividade e a satisfação dos jogadores.
+meta:
+  id: gaming
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "gaming"
+- "esports"
+- "game center"
+- "internet cafe"
+_extends: _base/gaming

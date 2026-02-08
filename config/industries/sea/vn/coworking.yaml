@@ -1,0 +1,201 @@
+pain_points:
+- description: Chi phí vận hành cao bao gồm tiền thuê mặt bằng, điện nước, và bảo trì.
+  severity: high
+  solution_hint: AI voice agent có thể tự động hóa quy trình đặt chỗ và quản lý năng lượng để giảm chi phí.
+- description: Tỷ lệ lấp đầy không gian thấp do cạnh tranh gay gắt và nhu cầu biến động.
+  severity: high
+  solution_hint: AI voice agent có thể phân tích dữ liệu để đề xuất chiến lược giá và tiếp thị nhắm mục tiêu.
+- description: Khó khăn trong việc giữ chân khách hàng do thiếu dịch vụ cá nhân hóa.
+  severity: medium
+  solution_hint: AI voice agent có thể cung cấp hỗ trợ 24/7 và thu thập phản hồi để cải thiện trải nghiệm.
+- description: Gánh nặng hành chính như quản lý hợp đồng, thanh toán, và báo cáo thuế.
+  severity: medium
+  solution_hint: AI voice agent có thể tích hợp với phần mềm kế toán để tự động hóa các tác vụ hành chính.
+- description: Thách thức tuân thủ PDPD trong việc bảo vệ dữ liệu khách hàng.
+  severity: high
+  solution_hint: AI voice agent có thể được cấu hình để tuân thủ PDPD bằng cách mã hóa dữ liệu và quản lý đồng ý.
+- description: Cạnh tranh từ các văn phòng truyền thống với giá thuê thấp hơn.
+  severity: medium
+  solution_hint: AI voice agent có thể highlight các tiện ích gia tăng và linh hoạt để thuyết phục khách hàng.
+typical_services:
+- Phòng làm việc chung
+- Văn phòng riêng
+- Phòng họp
+- Không gian sự kiện
+- Dịch vụ lễ tân
+- Kết nối internet tốc độ cao
+- Dịch vụ in ấn và scan
+- Cafe và giải khát miễn phí
+- Hỗ trợ hành chính
+- Dịch vụ gia tăng như mentorship và networking
+recommended_functions:
+- name: Đặt chỗ không gian tự động
+  priority: high
+  reason: Tăng hiệu quả sử dụng không gian và giảm công sức quản lý thủ công.
+- name: Hỗ trợ khách hàng 24/7
+  priority: high
+  reason: Cải thiện sự hài lòng và giữ chân khách hàng với phản hồi tức thì.
+- name: Xử lý thanh toán và nhắc nhở
+  priority: high
+  reason: Tự động hóa tài chính, giảm nợ quá hạn và tăng dòng tiền.
+- name: Thu thập và phân tích phản hồi
+  priority: medium
+  reason: Hiểu rõ nhu cầu khách hàng để điều chỉnh dịch vụ và chiến lược.
+- name: Quản lý thành viên và truy cập
+  priority: high
+  reason: Đảm bảo an ninh và dễ dàng theo dõi việc sử dụng không gian.
+- name: Báo cáo hiệu suất không gian
+  priority: low
+  reason: Cung cấp insights cho quản lý để tối ưu hóa hoạt động.
+typical_integrations:
+- name: Hệ thống CRM
+  examples:
+  - CRMVIET
+  - Salesforce
+  priority: high
+- name: Phần mềm kế toán
+  examples:
+  - MISA
+  - Fast Accounting
+  priority: high
+- name: Hệ thống đặt chỗ trực tuyến
+  examples:
+  - Bookeo
+  - Calendly
+  priority: high
+- name: Cổng thanh toán điện tử
+  examples:
+  - Momo
+  - VNPay
+  priority: high
+- name: Hệ thống an ninh và kiểm soát ra vào
+  examples:
+  - Local security brands
+  priority: medium
+industry_faq:
+- question: Giá thuê văn phòng chung tại đây là bao nhiêu?
+  answer_template: Giá thuê bắt đầu từ 1.500.000 VND/tháng cho bàn làm việc chung, tùy thuộc vào vị trí và tiện ích. Chúng tôi có nhiều gói linh hoạt để phù hợp với ngân sách của bạn.
+- question: Có dịch vụ internet tốc độ cao và ổn định không?
+  answer_template: Có, chúng tôi cung cấp internet tốc độ cao với đường truyền ổn định, đảm bảo cho công việc trực tuyến hiệu quả.
+- question: Tôi có thể đặt phòng họp trực tuyến không?
+  answer_template: Có, bạn có thể dễ dàng đặt phòng họp qua website hoặc ứng dụng di động của chúng tôi với xác nhận tức thì.
+- question: Dịch vụ này có tuân thủ PDPD không?
+  answer_template: Có, chúng tôi tuân thủ nghiêm ngặt PDPD để bảo vệ dữ liệu cá nhân của khách hàng, với các biện pháp bảo mật tiên tiến.
+- question: Có dịch vụ hỗ trợ nào cho startups không?
+  answer_template: Có, chúng tôi cung cấp dịch vụ gia tăng như mentorship, networking events, và hỗ trợ pháp lý cơ bản cho startups.
+sales_scripts:
+- trigger: price_question
+  situation: Khi khách hàng hỏi về giá thuê văn phòng chung
+  script: Giá thuê tại coworking space của chúng tôi bắt đầu từ 1.500.000 VND/tháng cho bàn làm việc chung, với nhiều gói linh hoạt phù hợp nhiều nhu cầu và ngân sách. Anh/chị có thể cho tôi biết yêu cầu
+    cụ thể để tôi tư vấn gói phù hợp nhất?
+  goal: Cung cấp thông tin giá rõ ràng và khuyến khích khách hàng chia sẻ nhu cầu chi tiết
+  effectiveness: high
+- trigger: competitor_mention
+  situation: Khi khách hàng nhắc đến đối thủ cạnh tranh
+  script: Cảm ơn anh/chị đã chia sẻ. Chúng tôi tự hào về dịch vụ hỗ trợ 24/7 và hệ thống đặt chỗ tự động giúp khách hàng tiết kiệm thời gian. Anh/chị có muốn trải nghiệm dùng thử để so sánh không?
+  goal: Nhấn mạnh điểm mạnh độc đáo của dịch vụ và mời khách hàng dùng thử
+  effectiveness: medium
+- trigger: booking_help
+  situation: Khi khách hàng cần trợ giúp đặt phòng họp hoặc chỗ làm việc
+  script: Anh/chị có thể đặt phòng họp hoặc bàn làm việc dễ dàng qua website hoặc ứng dụng của chúng tôi, với xác nhận ngay lập tức. Tôi có thể hướng dẫn anh/chị cách sử dụng nếu cần.
+  goal: Hỗ trợ khách hàng sử dụng hệ thống đặt chỗ tiện lợi, tăng tỷ lệ đặt chỗ thành công
+  effectiveness: high
+- trigger: service_features
+  situation: Khi khách hàng muốn biết các tiện ích và dịch vụ kèm theo
+  script: Ngoài không gian làm việc hiện đại, chúng tôi cung cấp internet tốc độ cao, phòng họp đa dạng và khu vực nghỉ ngơi thoải mái. Anh/chị có muốn tham quan hoặc nhận thêm thông tin chi tiết không?
+  goal: Truyền tải giá trị dịch vụ toàn diện và khuyến khích khách hàng tương tác tiếp
+  effectiveness: medium
+- trigger: retention_concern
+  situation: Khi khách hàng bày tỏ lo ngại về dịch vụ cá nhân hóa hoặc hỗ trợ
+  script: Chúng tôi có đội ngũ hỗ trợ khách hàng 24/7 và hệ thống thu thập phản hồi liên tục để phục vụ anh/chị tốt hơn. Anh/chị có thể chia sẻ thêm mong muốn để chúng tôi cải thiện trải nghiệm?
+  goal: Xây dựng lòng tin và tạo cơ hội thu thập phản hồi để cải thiện dịch vụ
+  effectiveness: medium
+meta:
+  id: coworking
+  region: sea
+  country: vn
+  language: vi
+  currency: VND
+  phone_codes:
+  - '+84'
+aliases:
+- coworking
+- shared office
+- flexible workspace
+_extends: _base/coworking
+competitors:
+- name: Toong
+  positioning: Chuỗi coworking cao cấp với nhiều tiện ích hiện đại tại các thành phố lớn
+  strengths:
+  - Vị trí đắc địa, thiết kế không gian chuyên nghiệp
+  - Dịch vụ khách hàng tận tâm, đa dạng tiện ích
+  weaknesses:
+  - Giá thuê tương đối cao so với mặt bằng chung
+  - Chưa áp dụng nhiều công nghệ tự động hóa trong quản lý
+  our_differentiation: AI voice agent giúp tự động hóa đặt chỗ và hỗ trợ khách hàng 24/7, giảm chi phí vận hành và nâng cao trải nghiệm cá nhân hóa
+- name: Dreamplex
+  positioning: Không gian làm việc sáng tạo tập trung vào startup và doanh nghiệp nhỏ
+  strengths:
+  - Môi trường năng động, cộng đồng startup sôi nổi
+  - Dịch vụ tổ chức sự kiện và networking chuyên nghiệp
+  weaknesses:
+  - Không gian hạn chế, dễ bị quá tải vào giờ cao điểm
+  - Hệ thống đặt chỗ và quản lý còn thủ công
+  our_differentiation: AI voice agent tự động xử lý đặt chỗ và nhắc nhở thanh toán giúp tăng hiệu quả sử dụng không gian và giảm sai sót
+- name: Up Co-working Space
+  positioning: Coworking hướng đến nhóm làm việc linh hoạt với chi phí hợp lý
+  strengths:
+  - Giá thuê cạnh tranh, phù hợp với freelancer và nhóm nhỏ
+  - Mạng lưới nhiều chi nhánh tại TP.HCM
+  weaknesses:
+  - Ít dịch vụ giá trị gia tăng, hỗ trợ khách hàng hạn chế
+  - Thiếu tích hợp công nghệ quản lý hiện đại
+  our_differentiation: AI voice agent cung cấp hỗ trợ khách hàng 24/7 và phân tích dữ liệu để tối ưu hóa dịch vụ và giữ chân khách hàng
+- name: CirCO
+  positioning: Không gian làm việc sáng tạo kết hợp quán cà phê và khu vui chơi
+  strengths:
+  - Không gian sáng tạo, thân thiện với cộng đồng trẻ
+  - Nhiều sự kiện văn hóa và workshop hấp dẫn
+  weaknesses:
+  - Quy mô nhỏ, không phù hợp doanh nghiệp lớn
+  - Thiếu công cụ tự động hóa trong quản lý vận hành
+  our_differentiation: AI voice agent giúp tự động hóa quy trình đặt chỗ và cung cấp dịch vụ cá nhân hóa, nâng cao hiệu quả vận hành và trải nghiệm khách hàng
+pricing_context:
+  currency: VND
+  typical_budget_range:
+  - 1500000
+  - 8000000
+  entry_point: 1500000
+  roi_examples:
+  - scenario: Giảm chi phí quản lý thủ công và tăng tỷ lệ lấp đầy không gian
+    monthly_cost: 3000000
+    monthly_savings: 6000000
+    payback_months: 1
+  - scenario: Tự động hóa nhắc nhở và xử lý thanh toán giảm nợ quá hạn
+    monthly_cost: 2000000
+    monthly_savings: 4500000
+    payback_months: 1
+  - scenario: Hỗ trợ khách hàng 24/7 nâng cao trải nghiệm và giữ chân khách hàng
+    monthly_cost: 2500000
+    monthly_savings: 5500000
+    payback_months: 1
+  value_anchors:
+  - Giảm chi phí vận hành và tăng hiệu quả sử dụng không gian
+  - Nâng cao sự hài lòng và giữ chân khách hàng
+  - Tự động hóa quy trình tài chính và giảm nợ xấu
+  - Hỗ trợ đặt chỗ và phản hồi khách hàng nhanh chóng, chính xác
+market_context:
+  market_size: Khoảng 500 tỷ VND năm 2024
+  growth_rate: 10-15%
+  key_trends:
+  - Nhu cầu không gian linh hoạt tăng do làm việc từ xa và startup phát triển
+  - Ứng dụng công nghệ trong quản lý và trải nghiệm khách hàng ngày càng phổ biến
+  - Tăng cường dịch vụ cá nhân hóa và tiện ích tích hợp
+  - Mở rộng mạng lưới tại các thành phố lớn và khu công nghiệp
+  seasonality:
+    high:
+    - Tháng 1-3 (mùa đầu năm, nhiều doanh nghiệp khởi động dự án mới)
+    - Tháng 9-11 (mùa cao điểm hoạt động kinh doanh)
+    low:
+    - Tháng 6-7 (mùa hè, nhiều người nghỉ phép)
+    - Tháng 12 (cuối năm, doanh nghiệp tập trung tổng kết)

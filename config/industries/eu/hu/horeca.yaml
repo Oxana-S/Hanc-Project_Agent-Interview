@@ -1,0 +1,246 @@
+meta:
+  id: horeca
+  country: hu
+  currency: HUF
+  language: hu
+  languages:
+  - hu
+  region: eu
+  created_at: '2024-02-04'
+  last_updated: '2024-02-04'
+  version: '1.0'
+  avg_validation_score: 0.0
+  phone_codes:
+  - '+36'
+  timezone: Europe/Budapest
+  tests_run: 0
+aliases:
+- horeca
+- étterem
+- kávézó
+- szálloda
+- hotel
+- bár
+- pub
+- konyha
+- ételkiszállítás
+- vendéglátás
+- menza
+- gyorsétterem
+- pizzéria
+- sushi
+- asztalfoglalás
+- bankett
+competitors:
+- name: Wolt
+  positioning: Ételkiszállítási platform
+  strengths:
+  - Széles étteremhálózat
+  - Felhasználóbarát mobilalkalmazás
+  weaknesses:
+  - Magas jutalékok az éttermeknek
+  - Intenzív verseny más platformokkal
+  our_differentiation: Integrált megoldás foglalásokra és rendelésekre, alacsonyabb
+    havi költségek és AI-alapú személyre szabás
+- name: Foodpanda
+  positioning: Globális ételkiszállítási szolgáltató
+  strengths:
+  - Erős globális márka
+  - Gyors szállítási idők
+  weaknesses:
+  - Hasonló magas jutalékstruktúra
+  - Korlátozott integrációk helyi rendszerekkel
+  our_differentiation: Hangügynökös automatizálás, amely csökkenti a személyzet terhelését
+    és növeli a hatékonyságot NTAK-kompatibilis módon
+- name: NetPincér
+  positioning: Helyi ételkiszállítás és foglalási platform
+  strengths:
+  - Helyi piaci ismeret
+  - Népszerű Magyarországon
+  weaknesses:
+  - Kevesebb nemzetközi támogatás
+  - Változó minőségű éttermi partnerségek
+  our_differentiation: Teljes körű AI hangügynök megoldás, amely kezeli a foglalásokat,
+    rendeléseket és ügyfélszolgálatot egyetlen rendszerben
+industry_faq:
+- question: Van szabad asztal?
+  answer_template: Milyen dátumra és időpontra gondolt? Hány főre lenne szükség?
+- question: Mi a menüje?
+  answer_template: Elküldhetem a menüt WhatsAppon vagy emailben. A weboldalunkon is
+    megtalálható.
+- question: Nyitva van hétvégén is?
+  answer_template: Igen, minden nap nyitva vagyunk. Hétvégén 01:00-ig.
+- question: Van gyerekmenü?
+  answer_template: Igen, van gyerekmenünk és babaszék is a kisebb vendégek számára.
+- question: Lehet bankettet rendezni?
+  answer_template: Igen, banketteket szervezünk 10-től 100 főig. Milyen dátumra tervezi?
+- question: Van parkoló?
+  answer_template: Igen, ingyenes parkoló 20 autó számára közvetlenül a bejáratnál.
+- question: Elfogadnak kártyát?
+  answer_template: Igen, minden főbb bankkártyát elfogadunk, és van lehetőség mobilfizetésre
+    is.
+industry_specifics: null
+learnings: []
+market_context:
+  market_size: körülbelül 500 milliárd HUF éves forgalom
+  growth_rate: 4-6% éves növekedés
+  key_trends:
+  - A digitalizáció gyorsulása a vendéglátásban
+  - Növekvő kereslet online foglalásokra és ételkiszállításra
+  - A fenntarthatóság és helyi alapanyagok hangsúlyozása
+  seasonality:
+    high:
+    - Nyári turistaszezon (június-augusztus)
+    - Ünnepi időszakok (karácsony, szilveszter)
+    low:
+    - Tavaszi és őszi hónapok (március-április, szeptember-október)
+    - Hétköznapok délután
+pain_points:
+- description: Sok telefonhívás a foglalások miatt a csúcsidőszakokban
+  severity: high
+  solution_hint: Automatikus asztalfoglalás 24/7
+- description: No-show a foglalásoknál (akár 20%)
+  severity: high
+  solution_hint: Automatikus megerősítések és emlékeztetők SMS-ben vagy emailben
+- description: A személyzet a telefon miatt elvonja a figyelmét a vendéglátástól
+  severity: medium
+  solution_hint: AI hangügynök fogadja a foglalásokat és rendeléseket
+- description: Nehéz a különleges ajánlatokat és akciókat népszerűsíteni
+  severity: medium
+  solution_hint: Kimenő hanghívások a rendszeres vendégeknek új akciókról
+- description: Elveszett ételkiszállítási rendelések a csúcsidőszakban
+  severity: medium
+  solution_hint: Automatikus rendelésfelvétel és státuszfrissítések
+- description: Adminisztratív terhek az NTAK-jelentések miatt
+  severity: medium
+  solution_hint: Integrált adatgyűjtés és jelentéskészítés a hangügynök által
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 10000
+  - 50000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Kis étterem foglalási automatizálása
+    monthly_cost: 10000
+    monthly_savings: 30000
+    payback_months: 0.33
+  - scenario: Közepes szálloda ügyfélszolgálat automatizálása
+    monthly_cost: 25000
+    monthly_savings: 60000
+    payback_months: 0.42
+  value_anchors:
+  - Napi 2 óra munkaidő megtakarítása a személyzet számára
+  - No-show arány csökkentése 50%-kal
+  - 24/7 ügyfélszolgálat anélkül, hogy további alkalmazottakat kellene felvenni
+recommended_functions:
+- name: foglalás
+  priority: high
+  reason: Asztalfoglalás időpont és terem választással, NTAK-kompatibilis
+- name: emlékeztető
+  priority: high
+  reason: Foglalás megerősítése és emlékeztetés, no-show csökkentése
+- name: rendelésfelvétel
+  priority: high
+  reason: Rendelés felvétele szállításra vagy személyes átvételre, integráció szállítási
+    platformokkal
+- name: gyakran ismételt kérdések
+  priority: medium
+  reason: Menü, árak, nyitvatartás, parkolás és egyéb információk gyors megválaszolása
+- name: kimenő hívások
+  priority: low
+  reason: Akciók, események és hűségprogramok népszerűsítése a rendszeres vendégeknek
+- name: jelentéskészítés
+  priority: medium
+  reason: Automatikus adatgyűjtés és jelentések készítése az NTAK számára
+sales_scripts:
+- trigger: ár_kérdés
+  situation: Amikor a potenciális ügyfél az árakról kérdez
+  script: Köszönöm a kérdését. Szolgáltatásunk havi 5000 Ft-tól kezdődik, ami napi
+    több óra munkaidőt takarít meg. Szeretné egy demo hívást lefoglalni a részletekhez?
+  goal: Az alacsony belépési ár és a megtakarítások bemutatása, demo időpont egyeztetése
+- trigger: foglalás_gond
+  situation: Amikor az ügyfél panaszkodik a foglalási problémákra
+  script: Megértem, hogy a foglalások kezelése nehéz lehet. AI hangügynökünk 24/7
+    kezeli a foglalásokat, csökkenti a no-show-t és felszabadítja a személyzetet.
+    Szeretné kipróbálni egy hónapig ingyen?
+  goal: A probléma megoldásának bemutatása és ingyenes próbaidőszak ajánlása
+- trigger: integráció_kérdés
+  situation: Amikor az ügyfél kérdezi a meglévő rendszerekkel való kompatibilitást
+  script: Igen, hangügynökünk integrálható a legtöbb helyi rendszerrel, mint a Vendéglátó
+    vagy a NetPincér, és NTAK-kompatibilis. Segíthetek beállítani egy próbaintegrációt?
+  goal: A technikai kompatibilitás bizonyítása és a próba beállításának elősegítése
+- trigger: verseny_kérdés
+  situation: Amikor az ügyfél más szolgáltatókat említ
+  script: Más platformok főként a szállításra fókuszálnak, míg mi teljes körű megoldást
+    kínálunk foglalásokra, rendelésekre és ügyfélszolgálatra egyben, olcsóbban. Látna
+    egy összehasonlító táblázatot?
+  goal: A differenciáló értékek hangsúlyozása és részletes információ szolgáltatása
+success_benchmarks:
+  avg_call_duration_seconds: 90
+  target_automation_rate: 0.65
+  typical_kpis:
+  - No-show csökkentése 10%-ra
+  - Foglalások 60%-ának automatizálása
+  - Átlagos foglalási idő < 1 perc
+  - Ismétlő látogatások növekedése 15%-kal
+typical_integrations:
+- name: Foglalási rendszer
+  examples:
+  - Tablein
+  - Bookatable
+  - helyi rendszerek
+  priority: high
+  reason: Asztalfoglalások szinkronizálása, üresjárati idők csökkentése
+- name: Szállítási platform
+  examples:
+  - Wolt
+  - Foodpanda
+  - NetPincér
+  priority: medium
+  reason: Rendelések automatikus felvétele és státuszfrissítések
+- name: PMS (Szállodai menedzsment rendszer)
+  examples:
+  - Opera
+  - Protel
+  - helyi megoldások
+  priority: high
+  reason: Szobafoglalások kezelése, érkezési információk
+- name: Messengerek
+  examples:
+  - WhatsApp
+  - Viber
+  - Telegram
+  priority: medium
+  reason: Azonnali értesítések, menü küldés, ügyfélszolgálat
+- name: POS rendszer
+  examples:
+  - Vendéglátó
+  - NTAK-kompatibilis szoftverek
+  priority: high
+  reason: Pénzügyi adatok és jelentések integrálása
+typical_objections:
+- objection: Nincs szabad asztal a kívánt időpontra
+  response: Tudok ajánlani asztalt 30 perccel korábbra vagy későbbre. Vagy felírhatom
+    a várólistára és értesítem, ha felszabadul?
+- objection: Túl hosszú a szállítási idő
+  response: Csúcsidőben a szállítás 45-60 perc. Meg tudom szervezni az átvételt –
+    20 percen belül kész, és van expressz szállítási opciónk is.
+- objection: Túl drága a szolgáltatás
+  response: A havi 5000 Ft kezdő ára napi 2 óra munkaidőt takarít meg, ami gyorsan
+    megtérül. Emellett ajánlunk ingyenes próbaidőszakot a bizonyításhoz.
+- objection: Nehéz beilleszteni a meglévő rendszerünkbe
+  response: Hangügynökünk könnyen integrálható a legtöbb helyi rendszerrel, és segítünk
+    a beállításban. Ingyenes technikai támogatást is kínálunk.
+typical_services:
+- Asztalfoglalás
+- Étel rendelése elvitelre
+- Ételszállítás
+- Bankettek szervezése
+- Konyhaszolgáltatás (catering)
+- Szobafoglalás (szállodák számára)
+- Szobaszerviz
+- Események szervezése
+- Bár szolgáltatások és italrendelés
+- Üzleti ebéd és csomagajánlatok
+_extends: _base/horeca

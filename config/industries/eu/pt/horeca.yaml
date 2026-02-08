@@ -1,0 +1,232 @@
+aliases:
+- horeca
+- restauração
+- hotelaria
+- cafetaria
+- bar
+- pub
+- hotel
+- catering
+- take-away
+- entrega de comida
+- pizzaria
+- sushi
+- tasquinha
+- pastelaria
+- reserva de mesa
+- banquete
+competitors:
+- name: TheFork
+  positioning: Plataforma dominante de reservas online
+  strengths:
+  - Grande base de utilizadores
+  - Integração com muitos restaurantes
+  - Sistema de descontos e pontos
+  weaknesses:
+  - Comissões altas para os estabelecimentos
+  - Clientes são fiéis à plataforma, não ao restaurante
+  our_differentiation: Agente de voz integrado diretamente, sem comissões por reserva,
+    fidelizando o cliente diretamente connosco.
+- name: Zomato/Glovo/Uber Eats
+  positioning: Agregadores de entrega de comida
+  strengths:
+  - Alcance de mercado massivo
+  - Logística de entrega
+  - Facilidade de uso para o cliente
+  weaknesses:
+  - Margens muito reduzidas para o restaurante
+  - Pouco controlo sobre a experiência do cliente final
+  our_differentiation: Captação de pedidos de entrega diretamente por voz, evitando
+    comissões e mantendo o cliente na nossa base.
+- name: Soluções de POS (SITIO, Primma)
+  positioning: Software de gestão e faturação
+  strengths:
+  - Controlo total de operações
+  - Integração com contabilidade
+  weaknesses:
+  - Módulos de reserva/atendimento telefónico básicos ou inexistentes
+  - Foco na faturação, não no atendimento ao cliente
+  our_differentiation: Agente de voz especializado em atendimento e vendas, complementando
+    o sistema POS com automação inteligente.
+industry_faq:
+- answer_template: Para que data e hora gostaria? Para quantas pessoas?
+  question: Tem mesas disponíveis?
+- answer_template: Pode consultar o menu no nosso website. Também posso enviar por
+    email ou WhatsApp.
+  question: Qual é o vosso menu?
+- answer_template: Sim, estamos abertos todos os dias. Aos fins-de-semana fechamos
+    às 02h.
+  question: Estão abertos ao fim de semana?
+- answer_template: Sim, temos ementa infantil e cadeirinhas para bebés.
+  question: Têm menu para crianças?
+- answer_template: Sim, organizamos banquetes para grupos de 10 a 150 pessoas. Para
+    quando está a planear?
+  question: É possível reservar para um banquete ou evento?
+- answer_template: Temos parque de estacionamento privativo gratuito para clientes.
+  question: Têm estacionamento?
+- answer_template: Sim, aceitamos todos os cartões principais. Também MB Way.
+  question: Aceitam pagamento com cartão?
+industry_specifics: null
+learnings: []
+market_context:
+  growth_rate: ~4% YoY
+  key_trends:
+  - Aumento da procura por take-away e entrega
+  - Digitalização dos processos de reserva e pagamento
+  - Valorização da experiência local e produtos regionais
+  - Dificuldade em encontrar e reter pessoal qualificado
+  market_size: ~15 mil milhões EUR (setor restauração e bebidas)
+  seasonality:
+    high:
+    - Verão (Junho a Setembro)
+    - Época festiva (Natal e Ano Novo)
+    - Feriados nacionais e regionais
+    low:
+    - Janeiro
+    - Novembro
+meta:
+  avg_validation_score: 0.0
+  country: pt
+  created_at: '2026-02-04'
+  currency: EUR
+  id: horeca
+  language: pt
+  languages: []
+  last_updated: '2026-02-04'
+  phone_codes:
+  - '+351'
+  region: eu
+  tests_run: 0
+  timezone: Europe/Lisbon
+  version: '1.0'
+pain_points:
+- description: Pico de chamadas para reservas durante a hora de almoço e jantar
+  severity: high
+  solution_hint: Reserva automática de mesa 24/7 via agente de voz
+- description: No-shows nas reservas (podem chegar a 15-20%)
+  severity: high
+  solution_hint: Confirmações e lembretes automáticos por SMS/WhatsApp
+- description: Funcionários ocupados com o telefone em vez de atender clientes no
+    local
+  severity: medium
+  solution_hint: Agente de voz trata todas as reservas e perguntas iniciais
+- description: Dificuldade em comunicar menus do dia, promoções e eventos especiais
+  severity: medium
+  solution_hint: Campanhas de voz outbound para a base de clientes
+- description: Perda de pedidos de take-away e entrega em horas de ponta
+  severity: medium
+  solution_hint: Agente de voz aceita e processa pedidos automaticamente
+- description: Gestão manual e propensa a erros das listas de espera para mesas
+  severity: low
+  solution_hint: Sistema automático de gestão de lista de espera com callbacks
+pricing_context:
+  currency: EUR
+  entry_point: 49
+  roi_examples:
+  - monthly_cost: 99
+    monthly_savings: 300
+    payback_months: 1
+    scenario: Restaurante médio que automatiza 70% das chamadas de reserva e reduz
+      no-shows em 50%.
+  typical_budget_range:
+  - 50
+  - 200
+  value_anchors:
+  - Economiza o equivalente a 1 salário de meio tempo em atendimento telefónico
+  - Reduz as no-shows e aumenta o faturamento das mesas
+  - Não paga comissões a plataformas de reserva externas
+recommended_functions:
+- name: reserva_de_mesa
+  priority: high
+  reason: Processo central do negócio, permite captar cliente 24/7 sem perder chamadas.
+- name: lembretes_automaticos
+  priority: high
+  reason: Reduz drasticamente as taxas de no-show, aumentando a ocupação.
+- name: atendimento_de_pedidos
+  priority: high
+  reason: Captura pedidos de take-away e entrega diretamente, sem intermediários.
+- name: faq_automatico
+  priority: medium
+  reason: Responde a perguntas sobre horários, menu, preços, libertando a equipa.
+- name: campanhas_outbound
+  priority: low
+  reason: Promove eventos, menus degustação e fideliza clientes regulares.
+sales_scripts:
+- goal: Converter uma consulta de preço numa reserva.
+  script: Percebo a sua preocupação. Para além da relação qualidade-preço, oferecemos
+    uma experiência única. Posso reservar já uma mesa para experimentar? Para novas
+    reservas, temos uma sobremesa tradicional de cortesia.
+  situation: Quando um cliente pergunta sobre preços ou diz 'é caro'.
+  trigger: price_objection
+- goal: Aumentar o ticket médio e promover serviços adicionais.
+  script: Excelente escolha. Para completar a experiência, recomendo também uma entrada
+    típica da região para partilhar. E para beber, temos vinhos locais premiados.
+    Posso adicionar à reserva?
+  situation: Após o cliente confirmar uma reserva básica.
+  trigger: upselling_opportunity
+- goal: Recuperar um cliente que cancela ou hesita por falta de disponibilidade.
+  script: Lamento, realmente está esgotado para essa hora. Posso colocá-lo na nossa
+    lista de espera prioritária e contactá-lo imediatamente se houver uma desistência?
+    Alternativamente, temos disponibilidade para o dia seguinte no mesmo horário.
+  situation: Quando não há mesas para o horário desejado pelo cliente.
+  trigger: no_availability
+success_benchmarks:
+  avg_call_duration_seconds: 75
+  target_automation_rate: 0.7
+  typical_kpis:
+  - Redução de no-shows para menos de 10%
+  - Automação de 65% das chamadas de reserva
+  - Tempo médio de reserva < 45 segundos
+  - Aumento de 20% em pedidos de take-away captados por telefone
+typical_integrations:
+- examples:
+  - SITIO
+  - Primma
+  - Lightspeed
+  name: Sistema POS/Restauração
+  priority: high
+  reason: Sincronização em tempo real da disponibilidade de mesas e gestão de pedidos.
+- examples:
+  - TheFork
+  - TripAdvisor
+  name: Plataformas de Reserva Online
+  priority: medium
+  reason: Evitar double-booking e centralizar a agenda.
+- examples:
+  - Glovo
+  - Uber Eats
+  - Bolt Food
+  name: Plataformas de Entrega
+  priority: medium
+  reason: Encaminhar pedidos de entrega recebidos por voz para a plataforma.
+- examples:
+  - WhatsApp Business API
+  - SMS gateways
+  name: Canais de Comunicação
+  priority: high
+  reason: Enviar confirmações, lembretes e menus.
+typical_objections:
+- objection: É muito caro.
+  response: Compreendemos. A nossa proposta de valor inclui produtos locais de alta
+    qualidade e um serviço personalizado. Temos um menu executivo de almoço a partir
+    de 12€. Posso enviar-lhe a ementa?
+- objection: Não têm mesa para a hora que quero.
+  response: Para esse horário está realmente concorrido. Posso sugerir uma mesa 30
+    minutos antes ou depois? Ou, caso prefira, posso adicioná-lo à nossa lista de
+    espera e contactamo-lo se houver uma desistência.
+- objection: Prefiro reservar pela App/TheFork para ter desconto.
+  response: Ao reservar diretamente connosco, garante a melhor mesa disponível e um
+    atendimento mais personalizado. Além disso, como cliente direto, terá prioridade
+    em futuras reservas e ofertas especiais.
+typical_services:
+- Reserva de mesas
+- Take-away (para levar)
+- Entrega de comida ao domicílio (Delivery)
+- Organização de banquetes e eventos
+- Serviço de catering para empresas
+- Reserva de quartos (hotéis)
+- Serviço de quarto (Room Service)
+- Aluguer de espaços para eventos privados
+- Menus degustação e experiências gastronómicas
+- Cursos de cozinha ou workshops
+_extends: _base/horeca

@@ -1,0 +1,201 @@
+pain_points:
+- description: A gyászoló családok érzelmi terhelése és a gyakori kérdések kezelése
+    nehézkes.
+  severity: high
+  solution_hint: AI hangügynök automatikusan válaszolhat gyakori kérdésekre, csökkentve
+    a személyes terhelést.
+- description: Az adminisztratív feladatok, például a dokumentumok kitöltése és a
+    hatósági engedélyek intézése időigényes.
+  severity: medium
+  solution_hint: Hangügynök segíthet az időpontfoglalásokban és az alapvető információszolgáltatásban.
+- description: Az ártranszparencia hiánya és a váratlan költségek miatti ügyfél bizalmatlanság.
+  severity: high
+  solution_hint: AI ügynök azonnali árinformációkat adhat, növelve az átláthatóságot.
+- description: A hívások és ügyfelek kezelése munkaidőn kívül nehéz, mivel a gyász
+    ügye sürgős lehet.
+  severity: medium
+  solution_hint: 24/7 elérhető hangügynök kezelheti a sürgős hívásokat és üzeneteket.
+- description: Versenytársakkal szembeni differenciálódás nehézsége a hasonló szolgáltatások
+    miatt.
+  severity: medium
+  solution_hint: Hangügynök személyre szabott ajánlatokat és információkat közvetíthet.
+- description: A GDPR megfelelőség biztosítása és az adatvédelmi követelmények betartása
+    komplex.
+  severity: low
+  solution_hint: Hangügynök integrált GDPR-tájékoztatást nyújthat, egyszerűsítve a
+    jogi megfelelőséget.
+typical_services:
+- Temetés (hagyományos földi temetés)
+- Kremáció (hamvasztás)
+- Gyászszertartás szervezése
+- Koporsó és egyéb felszerelés biztosítása
+- Halotti anyakönyvi kivonat intézése
+- Gyászjelentés megírása és közzététele
+- Temetői sírhely kiválasztása és fenntartása
+- Utólagos gondozási szolgáltatások (pl. sírkő karbantartás)
+- Gyászpszichológus kapcsolata
+- Online gyászportál és emlékoldal létrehozása
+recommended_functions:
+- name: Ügyfélszolgálati híváskezelés
+  priority: high
+  reason: A gyászoló családok gyakran hívnak, és gyors válaszra van szükségük.
+- name: Időpontfoglalás a temetésre
+  priority: high
+  reason: A temetés időpontja kritikus, és hatékony ütemezésre van szükség.
+- name: Árinformáció szolgáltatása
+  priority: medium
+  reason: Az ügyfelek tisztán akarják látni a költségeket.
+- name: GDPR-kompatibilis adatkezelés tájékoztatás
+  priority: low
+  reason: Fontos a jogi megfelelőség biztosítása az EU-ban.
+- name: Gyakori kérdések automatikus válaszolása
+  priority: medium
+  reason: Csökkenti a munkaterhelést és gyorsabb szolgáltatást nyújt.
+- name: Ügyfél visszahívás beütemezése
+  priority: low
+  reason: Segít a kapcsolattartásban és a további szolgáltatások ajánlásában.
+typical_integrations:
+- name: Számlázó szoftver
+  examples:
+  - Számlázz.hu
+  - Billingo
+  priority: high
+- name: CRM rendszer
+  examples:
+  - Salesforce
+  - helyi CRM megoldások
+  priority: medium
+- name: Temetői nyilvántartó rendszer
+  examples:
+  - Helyi temetői szoftverek
+  priority: medium
+- name: Online fizetési rendszer
+  examples:
+  - SimplePay
+  - Barion
+  priority: low
+industry_faq:
+- question: Mennyibe kerül egy átlagos temetés Magyarországon?
+  answer_template: Egy átlagos temetés költsége kb. 500.000 HUF és 1.500.000 HUF között
+    mozog, függően a választott szolgáltatásoktól.
+- question: Milyen dokumentumokra van szükség a temetéshez?
+  answer_template: Szükséges a halotti anyakönyvi kivonat, személyi igazolvány, és
+    esetleg további hatósági engedélyek.
+- question: Mennyi időt vesz igénybe egy temetés szervezése?
+  answer_template: Általában 3-7 nap, de sürgős esetekben gyorsabban is intézhető.
+- question: Lehetőség van-e kremációra?
+  answer_template: Igen, kremációt is kínálunk, és részletes információt adunk a folyamatról.
+- question: Hogyan lehet időpontot foglalni?
+  answer_template: Időpontot telefonon, online, vagy személyesen is foglalhat, mi
+    segítünk a legmegfelelőbb idő kiválasztásában.
+- question: Mi a GDPR vonatkozása a temetkezési adatokra?
+  answer_template: Minden adatkezelésünk GDPR-kompatibilis, és biztosítjuk az ügyfelek
+    adatvédelmét.
+sales_scripts:
+- trigger: price_question
+  situation: Amikor egy leendő ügyfél az árakat kérdezi.
+  script: Köszönjük az érdeklődését. A temetési szolgáltatásaink árai a választott
+    csomagtól függenek, általában 500.000 HUF-tól kezdődnek. Szeretne részletes árajánlatot
+    kérni?
+  goal: Árinformáció szolgáltatása és további érdeklődés felkeltése.
+- trigger: service_inquiry
+  situation: Amikor ügyfél a szolgáltatásokról kérdez.
+  script: Örülünk, hogy felhívott. Kínálunk temetést, kremációt, gyászszertartás szervezést
+    és egyéb kapcsolódó szolgáltatásokat. Miben segíthetünk ma?
+  goal: Szolgáltatások bemutatása és ügyfél igények felmérése.
+- trigger: objection_cost
+  situation: Amikor ügyfél panaszt emel a költségek miatt.
+  script: Megértjük, hogy a költségek fontos szempontok. Kínálunk különböző árú csomagokat,
+    és segítünk a legmegfelelőbb választásban, hogy illeszkedjen a keretéhez.
+  goal: Ellenállás csökkentése és érték kiemelése.
+- trigger: follow_up
+  situation: Amikor ügyfél korábban érdeklődött, de nem döntött.
+  script: Szia, visszahívunk az előző beszélgetésünkre. Segíthetünk még valamiben
+    a temetés szervezésével kapcsolatban?
+  goal: Kapcsolattartás és értékesítési lehetőség megteremtése.
+competitors:
+- name: Budapesti Temetkezési Vállalat
+  positioning: Nagyvállalat, széles szolgáltatási kínálattal
+  strengths:
+  - Hagyomány
+  - országos lefedettség
+  - összetett szolgáltatások
+  weaknesses:
+  - Magas árak
+  - kevés személyre szabás
+  our_differentiation: Mi személyre szabottabb, kedvezményes árak és modern technológiai
+    megoldások.
+- name: Csendház Temetkezés
+  positioning: Kisebb, családi vállalkozás
+  strengths:
+  - Személyes megközelítés
+  - helyi ismeret
+  weaknesses:
+  - Korlátozott szolgáltatások
+  - kevés digitális jelenlét
+  our_differentiation: AI-alapú hatékony ügyfélszolgálat és online eszközök.
+- name: Gyászsegítő Központ
+  positioning: Non-profit szervezet
+  strengths:
+  - Alacsony árak
+  - közösségi támogatás
+  weaknesses:
+  - Korlátozott források
+  - hosszabb várakozási idők
+  our_differentiation: Profi szolgáltatások gyors reagálással és átlátható árazással.
+pricing_context:
+  currency: HUF
+  typical_budget_range:
+  - 300000
+  - 2000000
+  entry_point: 500000
+  roi_examples:
+  - scenario: AI hangügynök bevezetése ügyfélszolgálati hívások kezelésére
+    monthly_cost: 50000
+    monthly_savings: 100000
+    payback_months: 1
+  value_anchors:
+  - Átlagosan 30%-kal csökkentheti az ügyfélszolgálati költségeket
+  - Gyorsabb válaszidő növeli az ügyfél elégedettséget
+  - GDPR-kompatibilis adatkezelés biztosítása
+market_context:
+  market_size: Becslések szerint a magyar temetkezési piac évi kb. 20-30 milliárd
+    HUF
+  growth_rate: Évi 2-3%-os növekedés
+  key_trends:
+  - Növekvő igény a kremációra
+  - Digitális megoldások térnyerése a temetkezésben
+  - Nagyobb hangsúly az egyéni gyászszertartásokon
+  seasonality:
+    high:
+    - tél hónapjai
+    - ünnepi időszakok
+    low:
+    - nyár hónapjai
+typical_objections:
+- objection: Túl drága a szolgáltatásotok.
+  response: Megértjük az aggodalmat. Kínálunk különböző árú lehetőségeket, és segítünk
+    a legjobb választásban a keretéhez igazítva.
+- objection: Nem bízom az ilyen technológiában.
+  response: A hangügynökünk kiegészíti a személyes szolgáltatást, gyorsabb információhoz
+    jutást biztosítva, miközben az emberi kapcsolat megmarad.
+- objection: Miért kellene változtatnom a jelenlegi szolgáltatón?
+  response: Modern megoldásainkkal hatékonyabbá és költséghatékonyabbá tehetjük a
+    temetkezési folyamatot, jobb élményt nyújtva.
+- objection: Nincs szükségem ilyen szolgáltatásra most.
+  response: Értjük, de a jövőbeli tervezés segíthet elkerülni a stresszt. Ingyenes
+    konzultációt kínálunk a lehetőségekről.
+meta:
+  id: funeral
+  region: eu
+  country: hu
+  language: hu
+  currency: HUF
+  phone_codes:
+  - '+36'
+aliases:
+- "funeral"
+- "mortuary"
+- "cremation"
+- "memorial"
+_extends: _base/funeral

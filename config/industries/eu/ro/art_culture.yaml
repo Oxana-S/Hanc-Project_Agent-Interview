@@ -1,0 +1,220 @@
+pain_points:
+- description: Finanțare limitată de la autorități și sponsorii privați.
+  severity: high
+  solution_hint: Agentul vocal AI poate automatiza solicitările de finanțare și gestionarea
+    relațiilor cu partenerilor.
+- description: Birocratie excesivă pentru autorizații și evenimente culturale.
+  severity: high
+  solution_hint: Automatizarea documentației și a procedurilor administrative prin
+    integrarea cu sistemele guvernamentale.
+- description: Atracție publică redusă și dificultăți în marketingul evenimentelor.
+  severity: medium
+  solution_hint: Agentul poate gestiona campanii de marketing vocal, reminder-uri
+    și promovarea evenimentelor pe canale multiple.
+- description: Management ineficient al biletelor și rezervărilor.
+  severity: medium
+  solution_hint: Sistem automat de rezervări și vânzări de bilete cu confirmare vocală
+    și plată online.
+- description: Lipsa personalului pentru servicii de relații cu publicul în afara
+    orelor de program.
+  severity: low
+  solution_hint: Asistent vocal non-stop pentru răspunsuri la întrebări frecvente
+    și asistență clienți.
+- description: Dificultăți în digitalizarea colecțiilor și experiențelor culturale.
+  severity: medium
+  solution_hint: Integrare cu platforme digitale pentru tururi virtuale și gestionarea
+    conținutului cultural.
+typical_services:
+- Expoziții de artă contemporană
+- Workshop-uri de arte tradiționale românești
+- Concerte de muzică clasică și folk
+- Tururi ghidate la muzee și galerii
+- Evenimente culturale tematice (e.g., sărbători naționale)
+- Servicii de inchiriere spații pentru evenimente artistice
+- Cursuri de educație artistică pentru copii și adulți
+- Producție și distribuire de materiale culturale (cărți, filme)
+- Organizare de festivaluri de artă și cultură
+- Consultanță în restaurarea patrimoniului cultural
+recommended_functions:
+- name: Rezervări și vânzări bilete
+  priority: high
+  reason: Îmbunătățește accesul publicului și reduce timpul de așteptare, esențial
+    pentru venituri.
+- name: Asistență clienți non-stop
+  priority: high
+  reason: Asigură suport continuu pentru întrebări despre programe, prețuri și evenimente.
+- name: Reminder-uri pentru evenimente
+  priority: medium
+  reason: Crește rata de participare prin notificări automate pentru rezervări și
+    evenimente viitoare.
+- name: Gestionare donații și sponsorizări
+  priority: medium
+  reason: Automatizează procesele de strângere de fonduri, cruciale pentru finanțare.
+- name: Integrare cu calendarul evenimentelor
+  priority: low
+  reason: Asigură sincronizarea cu platforme populare pentru a atrage mai mulți participanți.
+- name: Răspunsuri la întrebări frecvente despre expoziții
+  priority: medium
+  reason: Reduce povara asupra personalului și îmbunătățește experiența vizitatorilor.
+typical_integrations:
+- name: Sistem de gestionare evenimente
+  examples:
+  - Eventbook.ro
+  - SapteSeri
+  - Eventbrite
+  priority: high
+- name: Platformă de plăți online
+  examples:
+  - PayU
+  - Netopia
+  - MobilPay
+  priority: high
+- name: CRM pentru relații cu publicul
+  examples:
+  - HubSpot
+  - Local CRM solutions like Softlead
+  priority: medium
+- name: Sistem de gestionare patrimoniu cultural
+  examples:
+  - Colecții digitale românești
+  - Custom museum software
+  priority: low
+- name: Platforme de social media
+  examples:
+  - Facebook
+  - Instagram
+  - Local platforms
+  priority: medium
+industry_faq:
+- question: Care sunt orele de deschidere ale muzeului?
+  answer_template: Muzeul este deschis de marți până duminică, între orele 10:00 și
+    18:00. Vă rugăm să verificați site-ul nostru pentru excepții.
+- question: Cum pot cumpăra bilete online?
+  answer_template: Puteți cumpăra bilete direct de pe site-ul nostru sau prin apelarea
+    serviciului nostru vocal, care vă ghidează prin proces.
+- question: Există reduceri pentru studenți sau seniori?
+  answer_template: Da, oferim reduceri pentru studenți, seniori și grupuri. Detaliile
+    sunt disponibile la secțiunea de prețuri pe site sau prin apel.
+- question: Organizați evenimente private?
+  answer_template: Da, oferim servicii de inchiriere spații și organizare evenimente
+    private. Contactați-ne pentru o ofertă personalizată.
+- question: Ce măsuri de siguranță sunt implementate?
+  answer_template: Respectăm toate reglementările locale și GDPR pentru protecția
+    datelor. Detaliile sunt afișate la intrare și pe site.
+- question: Cum pot dona sau sponsoriza evenimente culturale?
+  answer_template: Puteți dona prin site-ul nostru sau contacta serviciul nostru vocal
+    pentru a vă ghida prin opțiunile de sponsorizare.
+sales_scripts:
+- trigger: price_question
+  situation: Când un client întreabă despre costul serviciilor sau biletelor.
+  script: Bună ziua! Prețurile noastre încep de la 500 RON pentru servicii de bază,
+    cu opțiuni personalizate în funcție de nevoile dumneavoastră. Vă pot oferi mai
+    multe detalii pentru a găsi cea mai bună soluție.
+  goal: Să informăm despre prețuri și să evidențiem flexibilitatea ofertei.
+- trigger: service_inquiry
+  situation: Când un client solicită informații despre organizarea unui eveniment
+    cultural.
+  script: Salut! Suntem specializați în organizarea de evenimente culturale, de la
+    expoziții la concerte. Putem discuta despre buget, logistică și promovare pentru
+    a vă crea o experiență memorabilă.
+  goal: Să prezentăm gama de servicii și să stabilim o discuție detaliată.
+- trigger: competitor_mention
+  situation: Când clientul compară cu alte instituții culturale.
+  script: Înțeleg că există alte opțiuni. Noi ne diferențiem prin servicii automate
+    non-stop și integrarea tehnologică care reduce costurile și îmbunătățește accesul
+    publicului. Vă putem arăta cum funcționează.
+  goal: Să evidențiem avantajele competitive și valoarea adăugată.
+competitors:
+- name: Muzeul Național de Artă al României
+  positioning: Instituție publică de top cu colecții istorice
+  strengths:
+  - Colecție vastă și recunoscută
+  - Finanțare guvernamentală stabilă
+  weaknesses:
+  - Birocratie înaltă
+  - Tehnologie învechită
+  - Flexibilitate limitată
+  our_differentiation: Oferim soluții digitale personalizate, servicii automate non-stop
+    și integrare ușoară cu platforme moderne.
+- name: Centrul Cultural German din București
+  positioning: Instituție culturală străină cu evenimente diverse
+  strengths:
+  - Resurse financiare solide
+  - Rețea internațională
+  weaknesses:
+  - Focus limitat pe cultura locală
+  - Accesibilitate redusă pentru publicul larg
+  our_differentiation: Ne concentrăm pe promovarea culturii românești cu tehnologie
+    accesibilă și prețuri competitive.
+- name: Art Safari
+  positioning: Expoziții de artă contemporană și evenimente private
+  strengths:
+  - Evenimente de nișă populare
+  - Sponsorizare privată puternică
+  weaknesses:
+  - Scalabilitate limitată
+  - Dependență de sezon
+  our_differentiation: Sistem de gestionare integrală a evenimentelor cu asistență
+    vocală pentru a crește participarea și eficiența.
+pricing_context:
+  currency: RON
+  typical_budget_range:
+  - 1000
+  - 50000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatizarea vânzărilor de bilete pentru un muzeu mic
+    monthly_cost: 1000
+    monthly_savings: 1500
+    payback_months: 1
+  - scenario: Servicii non-stop de asistență clienți pentru un centru cultural
+    monthly_cost: 2000
+    monthly_savings: 3000
+    payback_months: 1
+  value_anchors:
+  - Reducerea costurilor cu personalul cu până la 30% prin automatizare
+  - Creșterea vânzărilor de bilete cu 20% prin reminder-uri automate
+  - Îmbunătățirea satisfacției clienților cu servicii non-stop
+market_context:
+  market_size: 'Estimare: 200 milioane RON anual în industria artă și cultură din
+    Romania'
+  growth_rate: 4% pe an, impulsată de digitalizare și fonduri UE
+  key_trends:
+  - Digitalizarea experiențelor culturale prin tururi virtuale
+  - Creșterea interesului pentru evenimente locale și tradiționale
+  - Integrarea tehnologiei AI în promovarea și gestionarea evenimentelor
+  seasonality:
+    high:
+    - Primăvară (martie-mai)
+    - Toamnă (septembrie-noiembrie)
+    low:
+    - Iarna (decembrie-februarie)
+    - Vara (iunie-august) din cauza vacanțelor
+typical_objections:
+- objection: Este prea scump pentru bugetul nostru redus.
+  response: Înțelegem preocuparea. Soluțiile noastre sunt proiectate pentru a reduce
+    costurile pe termen lung prin automatizare, oferind un ROI rapid. Putem începe
+    cu un pachet de bază adaptabil.
+- objection: Nu avem nevoie de tehnologie, folosim metode tradiționale.
+  response: Metodele tradiționale sunt valoroase, dar tehnologia poate îmbunătăți
+    eficiența și aduce mai mulți vizitatori. Vă putem demonstra cum sistemele noastre
+    completează, nu înlocuiesc, abordarea dumneavoastră.
+- objection: Suntem îngrijorați de securitatea datelor cu GDPR.
+  response: Respectăm strict GDPR și toate reglementările UE. Sistemele noastre sunt
+    securizate și integrate cu platforme conforme, asigurând protecția datelor clienților
+    dumneavoastră.
+meta:
+  id: art_culture
+  region: eu
+  country: ro
+  language: ro
+  currency: RON
+  phone_codes:
+  - '+40'
+aliases:
+- "art"
+- "culture"
+- "museum"
+- "gallery"
+- "theater"
+_extends: _base/art_culture

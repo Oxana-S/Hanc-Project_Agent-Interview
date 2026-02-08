@@ -1,0 +1,224 @@
+pain_points:
+- description: Alta inflación que dificulta la planificación financiera y la estabilidad
+    de presupuestos.
+  severity: high
+  solution_hint: El agente de voz AI puede ofrecer actualizaciones en tiempo real
+    y ajustar estrategias automáticamente.
+- description: Cambios frecuentes en regulaciones bancarias y fiscales que requieren
+    constante actualización.
+  severity: high
+  solution_hint: Automatizar la comunicación de cambios regulatorios y asistir en
+    cumplimiento.
+- description: Altos costos operativos debido a ineficiencias en procesos manuales.
+  severity: medium
+  solution_hint: Implementar automatización para reducir tiempos y errores en tareas
+    repetitivas.
+- description: Dificultad en la gestión de cobranzas y alta morosidad de clientes.
+  severity: medium
+  solution_hint: Usar el agente para recordatorios automatizados y seguimiento de
+    pagos.
+- description: Falta de digitalización en servicios al cliente, leading to largos
+    tiempos de espera.
+  severity: medium
+  solution_hint: Proporcionar asistencia 24/7 a través del agente de voz para consultas
+    comunes.
+- description: Competencia intensa con bancos tradicionales que ofrecen tasas bajas.
+  severity: low
+  solution_hint: Diferenciarse con servicios personalizados y eficiencia operativa
+    mediante AI.
+typical_services:
+- Asesoramiento financiero personalizado
+- Créditos personales y préstamos
+- Inversiones en pesos y dólares
+- Seguros de vida y patrimoniales
+- Tarjetas de crédito y débito
+- Cuentas bancarias corrientes y de ahorro
+- Fondos comunes de inversión (FCI)
+- Financiamiento hipotecario
+- Gestión de cobranzas
+- Planificación de jubilación
+recommended_functions:
+- name: Asistente virtual para servicio al cliente
+  priority: high
+  reason: Reduce tiempos de espera y mejora la experiencia del cliente en un mercado
+    con alta demanda.
+- name: Automatizador de recordatorios de pagos
+  priority: high
+  reason: Ayuda a gestionar la morosidad, un problema común en Argentina debido a
+    la inestabilidad económica.
+- name: Procesador de consultas regulatorias
+  priority: medium
+  reason: Facilita el cumplimiento ante cambios frecuentes en leyes financieras locales.
+- name: Asesor de inversiones básico
+  priority: medium
+  reason: Proporciona información accesible sobre opciones de inversión en un contexto
+    inflacionario.
+- name: Integrador con sistemas bancarios locales
+  priority: high
+  reason: Permite conexión fluida con software existente, clave para la adopción.
+- name: Generador de reportes financieros
+  priority: low
+  reason: Optimiza la toma de decisiones con datos en tiempo real.
+typical_integrations:
+- name: Sistemas de gestión bancaria
+  examples:
+  - Bancor
+  - Galicia Connect
+  - Santander Río Online
+  priority: high
+- name: Software contable
+  examples:
+  - Tango Gestión
+  - SAP Local
+  - Oracle NetSuite adaptado
+  priority: high
+- name: Plataformas de pago
+  examples:
+  - Mercado Pago
+  - Ualá
+  - Modo
+  priority: medium
+- name: Herramientas de CRM
+  examples:
+  - Vtiger localizado
+  - Salesforce adaptado
+  priority: medium
+- name: Sistemas de cumplimiento regulatorio
+  examples:
+  - Sistemas propios de bancos
+  - soluciones de KYC locales
+  priority: low
+industry_faq:
+- question: ¿Cuáles son las tasas de interés actuales para préstamos en Argentina?
+  answer_template: Las tasas varían según el producto y su perfil crediticio. Nuestro
+    agente puede proporcionarle información actualizada y personalizada.
+- question: ¿Cómo puedo protegerme de la inflación con mis inversiones?
+  answer_template: Recomendamos diversificar en instrumentos como dólares o FCIs ajustados
+    por inflación. El agente puede asesorarle sobre opciones.
+- question: ¿Es seguro usar servicios financieros digitales en Argentina?
+  answer_template: Sí, con medidas de seguridad robustas. Nuestro agente utiliza encriptación
+    y cumple con estándares locales para proteger sus datos.
+- question: ¿Qué documentos necesito para abrir una cuenta bancaria?
+  answer_template: Generalmente, DNI, comprobante de domicilio y recibo de sueldo.
+    El agente puede guiarle paso a paso.
+- question: ¿Cómo manejan los cambios regulatorios frecuentes?
+  answer_template: Nuestro sistema se actualiza automáticamente con nuevas regulaciones,
+    asegurando que siempre esté en cumplimiento.
+- question: ¿Ofrecen soporte en horarios extendidos?
+  answer_template: Sí, nuestro agente de voz está disponible 24/7 para asistirle con
+    consultas urgentes.
+sales_scripts:
+- trigger: price_question
+  situation: Cuando un cliente pregunta por el costo de nuestros servicios.
+  script: Entendemos que la rentabilidad es clave en el contexto económico actual.
+    Nuestros planes comienzan desde 30,000 ARS mensuales, diseñados para reducir sus
+    costos operativos significativamente. ¿Le gustaría una demostración personalizada?
+  goal: Convertir la consulta en una oportunidad de venta destacando el ROI.
+- trigger: competitor_mention
+  situation: Cuando el cliente menciona a un competidor como Banco Galicia.
+  script: Apreciamos su investigación. A diferencia de los bancos tradicionales, ofrecemos
+    soluciones automatizadas que reducen tiempos de espera y errores, con un enfoque
+    más personalizado y eficiente. ¿Podemos mostrarle cómo?
+  goal: Diferenciar nuestro servicio y cerrar la venta.
+- trigger: objection_security
+  situation: Cuando el cliente expresa preocupaciones sobre seguridad.
+  script: La seguridad es nuestra prioridad. Utilizamos tecnología de encriptación
+    avanzada y cumplimos con todos los estándares regulatorios argentinos. Además,
+    nuestro agente reduce riesgos humanos en el manejo de datos.
+  goal: Aliviar preocupaciones y construir confianza.
+- trigger: interest_in_demo
+  situation: Cuando el cliente muestra interés en una demostración.
+  script: Perfecto. Programemos una demo donde podrá ver cómo nuestro agente optimiza
+    sus procesos financieros, desde consultas hasta cobranzas, en tiempo real.
+  goal: Avanzar en el ciclo de ventas hacia una prueba o compra.
+competitors:
+- name: Banco Galicia
+  positioning: Líder en banca retail con amplia red física.
+  strengths:
+  - Marca reconocida
+  - Amplia gama de productos
+  - Presencia nacional
+  weaknesses:
+  - Altos costos operativos
+  - Lentitud en innovación digital
+  our_differentiation: Ofrecemos soluciones automatizadas y escalables que reducen
+    costos y mejoran la eficiencia.
+- name: Mercado Pago
+  positioning: Principal plataforma de pagos digitales en Argentina.
+  strengths:
+  - Alta adopción usuario
+  - Integración con comercio electrónico
+  weaknesses:
+  - Enfoque limitado a pagos
+  - Menos servicios financieros completos
+  our_differentiation: Proporcionamos un asistente de voz integral para múltiples
+    servicios financieros, no solo pagos.
+- name: Santander Río
+  positioning: Banco internacional con fuerte presencia local.
+  strengths:
+  - Solidez financiera
+  - Servicios corporativos
+  weaknesses:
+  - Procesos burocráticos
+  - Poca personalización para PYMEs
+  our_differentiation: Enfocamos en automatización y personalización para PYMEs, con
+    soporte ágil.
+pricing_context:
+  currency: ARS
+  typical_budget_range:
+  - 50000
+  - 200000
+  entry_point: 30000
+  roi_examples:
+  - scenario: Automatización de servicio al cliente para una PYME
+    monthly_cost: 50000
+    monthly_savings: 80000
+    payback_months: 0.63
+  - scenario: Gestión automatizada de cobranzas para un banco pequeño
+    monthly_cost: 100000
+    monthly_savings: 150000
+    payback_months: 0.67
+  value_anchors:
+  - Reduce costos operativos hasta un 30% con automatización.
+  - Mejora la satisfacción del cliente con respuestas instantáneas.
+  - Se paga solo en menos de un mes con los ahorros generados.
+market_context:
+  market_size: Estimado en 100 mil millones de ARS anuales para servicios financieros
+    digitales.
+  growth_rate: 8% anual, impulsado por la digitalización acelerada.
+  key_trends:
+  - Digitalización acelerada de servicios bancarios.
+  - Mayor adopción de fintechs debido a la inflación.
+  - Enfoque en seguridad y cumplimiento regulatorio.
+  seasonality:
+    high:
+    - Fin de año
+    - Temporada de impuestos (abril y agosto)
+    low:
+    - Enero
+    - Vacaciones de verano (diciembre-febrero)
+typical_objections:
+- objection: El costo inicial es muy alto para mi empresa pequeña.
+  response: Entendemos. Nuestro plan de entrada es accesible y el ROI rápido. ¿Podemos
+    analizar sus necesidades específicas para ajustar la solución?
+- objection: Prefiero el contacto humano en lugar de un agente automatizado.
+  response: Nuestro agente complementa el servicio humano, liberando a su personal
+    para tareas más estratégicas, sin eliminar el contacto personalizado.
+- objection: Ya tenemos sistemas establecidos y no queremos cambiar.
+  response: Nuestra solución se integra fácilmente con sus sistemas existentes, mejorando
+    la eficiencia sin interrupciones. ¿Le mostramos cómo?
+meta:
+  id: finance
+  region: latam
+  country: ar
+  language: es
+  currency: ARS
+  phone_codes:
+  - '+54'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

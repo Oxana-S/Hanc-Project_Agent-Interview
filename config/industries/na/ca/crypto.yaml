@@ -1,0 +1,256 @@
+pain_points:
+- description: Complex regulatory compliance with PIPEDA, provincial securities laws,
+    and FINTRAC reporting requirements creates significant administrative burden and
+    risk.
+  severity: high
+  solution_hint: AI agent can provide automated compliance checklists, document collection
+    prompts, and schedule follow-ups for regulatory submissions.
+- description: High customer support volume related to transaction status, wallet
+    security, and basic crypto education, especially for new users.
+  severity: high
+  solution_hint: AI agent can handle tier-1 support inquiries 24/7, provide instant
+    transaction confirmations, and direct users to educational resources.
+- description: Security concerns and fraud attempts, including phishing and social
+    engineering, erode customer trust.
+  severity: high
+  solution_hint: AI agent can verify caller identity with multi-factor authentication
+    before discussing account details and send proactive security alert notifications.
+- description: Managing volatility and explaining market risks to customers during
+    periods of high price fluctuation.
+  severity: medium
+  solution_hint: AI agent can deliver pre-approved market updates, risk disclosures,
+    and direct customers to official statements, reducing emotional support calls.
+- description: Tax reporting complexity for customers, as crypto transactions must
+    be reported to the CRA, leading to many procedural questions.
+  severity: medium
+  solution_hint: AI agent can guide customers to generate tax documents from their
+    account, explain capital gains basics, and connect them to tax partner resources.
+- description: Onboarding delays due to manual KYC/AML verification processes, causing
+    customer frustration and drop-off.
+  severity: medium
+  solution_hint: AI agent can streamline the onboarding call, collect initial information,
+    upload documents, and set clear expectations for verification timelines.
+typical_services:
+- Crypto Exchange Services (CAD Pairs)
+- Cryptocurrency Wallet Management (Hot & Cold Storage)
+- Staking and Yield-Generating Services
+- Crypto Tax Reporting and CRA Compliance Tools
+- Registered Accounts Integration (Crypto in TFSA/RRSP where applicable)
+- Over-the-Counter (OTC) Trading Desk
+- Blockchain Development & Smart Contract Auditing
+- Institutional Custody Solutions
+- Crypto Payment Gateway for Merchants
+- Digital Asset Insurance
+recommended_functions:
+- name: Compliance Verification Callback Scheduler
+  priority: high
+  reason: Critical for meeting PIPEDA and FINTRAC deadlines; automates a manual, time-sensitive
+    task.
+- name: Transaction Status and History Inquiries
+  priority: high
+  reason: One of the highest volume support requests; instant resolution drastically
+    improves customer satisfaction.
+- name: Security Alert and Two-Factor Authentication (2FA) Management
+  priority: high
+  reason: Directly addresses top security concerns and empowers users to secure their
+    own accounts proactively.
+- name: Basic Tax Reporting Guidance
+  priority: medium
+  reason: High seasonal demand around tax filing; reduces load on specialized tax
+    support staff.
+- name: New User Onboarding and Education
+  priority: medium
+  reason: Essential for customer acquisition and retention in a complex industry.
+- name: Market Update and Volatility Messaging
+  priority: low
+  reason: Manages customer expectations during stressful market periods with consistent,
+    approved messaging.
+typical_integrations:
+- name: Accounting & Bookkeeping Software
+  examples:
+  - QuickBooks Online
+  - Xero
+  - Wave
+  priority: high
+- name: KYC/AML Identity Verification
+  examples:
+  - Shufti Pro
+  - Trulioo
+  - Jumio
+  priority: high
+- name: Customer Relationship Management (CRM)
+  examples:
+  - Salesforce
+  - HubSpot
+  - Zoho CRM
+  priority: medium
+- name: Canadian Banking & Payment APIs
+  examples:
+  - Interac E-Transfer API
+  - Flinks
+  - Plaid
+  priority: high
+- name: Tax Preparation Software
+  examples:
+  - Wealthsimple Tax
+  - TurboTax
+  - CryptoTaxCalculator
+  priority: medium
+industry_faq:
+- question: Is cryptocurrency legal and regulated in Canada?
+  answer_template: Yes, cryptocurrencies are legal in Canada. The industry is regulated
+    by several bodies. Crypto exchanges are considered Money Services Businesses (MSBs)
+    and must register with FINTRAC, comply with PIPEDA for data protection, and adhere
+    to provincial securities laws where applicable. We operate in full compliance
+    with all Canadian regulations.
+- question: How do I report my crypto taxes to the CRA?
+  answer_template: The CRA treats cryptocurrency as a commodity, so transactions may
+    trigger capital gains or income tax. We provide annual tax documents summarizing
+    your transaction history. For specific filing advice, we recommend consulting
+    with a tax professional experienced in digital assets. Our AI assistant can help
+    you generate your transaction report.
+- question: What security measures do you have to protect my assets?
+  answer_template: We employ industry-leading security including cold storage for
+    the majority of funds, mandatory two-factor authentication (2FA), and continuous
+    monitoring. Remember, we will never call or email you asking for your password
+    or 2FA codes. You can manage security settings directly in your account or with
+    our AI assistant.
+- question: How long do CAD deposits and withdrawals take?
+  answer_template: CAD deposits via Interac e-Transfer are typically instant. Bank
+    wire transfers may take 1-3 business days. Withdrawals to your Canadian bank account
+    usually process within 1 business day. Processing times can vary slightly depending
+    on your financial institution.
+- question: Can I hold crypto in my TFSA or RRSP?
+  answer_template: Currently, you cannot hold direct cryptocurrency in a registered
+    TFSA or RRSP. However, there are regulated investment products, like ETFs, that
+    provide exposure to crypto within these accounts. We recommend speaking with a
+    financial advisor to explore options that suit your retirement and tax-planning
+    goals.
+sales_scripts:
+- trigger: compliance_concern
+  situation: When a business prospect expresses worry about regulatory complexity.
+  script: I understand completely. Navigating PIPEDA, FINTRAC, and provincial regulations
+    is a major challenge. Our AI agent is specifically configured for the Canadian
+    landscape. It automates client onboarding checks, maintains audit trails for data
+    requests under PIPEDA, and can even schedule your mandatory reporting reminders.
+    This turns compliance from a cost center into a streamlined process. Can I explain
+    how it would integrate with your current KYC flow?
+  goal: Reframe compliance from a fear point to a solvable efficiency gain.
+- trigger: price_question
+  situation: When asked about the cost of implementing an AI voice agent solution.
+  script: Our pricing starts at a monthly subscription of $299 CAD, which typically
+    replaces a significant portion of tier-1 support and administrative tasks. For
+    a mid-sized exchange, we often see a reduction of 300+ manual support hours per
+    month. This translates to a payback period of under 3 months, followed by ongoing
+    savings and improved customer satisfaction scores. Would you like to see a tailored
+    ROI estimate based on your current support volume?
+  goal: Provide clear pricing, immediately justify it with ROI, and offer a next step.
+- trigger: security_objection
+  situation: When a prospect is concerned about AI handling sensitive financial information.
+  script: Security is our foremost priority, especially in crypto. Our AI agent never
+    stores sensitive data like private keys. It operates with strict access controls,
+    only retrieving non-sensitive account info after rigorous voice authentication.
+    It actually enhances security by consistently enforcing verification protocols
+    and reducing human error on routine calls. It's a layer of protection, not a risk.
+    We can provide a detailed security white paper for your team.
+  goal: Alleviate security fears by explaining built-in safeguards and positioning
+    AI as a security asset.
+competitors:
+- name: Wealthsimple Crypto
+  positioning: User-friendly, trusted brand for mainstream Canadian investors.
+  strengths:
+  - Seamless integration with Wealthsimple Trade
+  - strong brand trust
+  - simple interface
+  weaknesses:
+  - Limited coin selection
+  - less advanced trading features
+  - primarily retail-focused
+  our_differentiation: Our AI agent provides deep, automated operational support for
+    both retail and business clients, focusing on compliance and complex query resolution
+    beyond basic trading.
+- name: Coinberry
+  positioning: Canadian-regulated exchange emphasizing simplicity and security.
+  strengths:
+  - Proudly Canadian brand
+  - easy CAD on-ramps
+  - regulated as an MSB
+  weaknesses:
+  - Smaller liquidity pool
+  - fewer advanced features compared to global giants
+  our_differentiation: We offer the AI tools that businesses like exchanges need to
+    scale their operations and customer support efficiently, which is a different
+    product category than their consumer exchange.
+- name: Newton
+  positioning: Low-fee Canadian exchange with a wide altcoin selection.
+  strengths:
+  - Competitive low fees
+  - broad range of altcoins
+  - transparent pricing
+  weaknesses:
+  - Customer support scalability has been a public challenge during market surges
+  our_differentiation: Our core solution directly addresses their key weakness—scalable,
+    instant, 24/7 customer support and operational automation to handle volatile periods
+    smoothly.
+pricing_context:
+  currency: CAD
+  typical_budget_range:
+  - 250
+  - 5000
+  entry_point: 299
+  roi_examples:
+  - scenario: Mid-sized Crypto Exchange reducing tier-1 support calls
+    monthly_cost: 750
+    monthly_savings: 3200
+    payback_months: 2.5
+  value_anchors:
+  - Reduce compliance-related administrative hours by up to 70%.
+  - Handle over 50% of routine customer inquiries instantly, 24/7.
+  - Improve customer satisfaction (CSAT) scores by automating wait times for simple
+    requests.
+market_context:
+  market_size: Approximately 2-3 million crypto owners in Canada
+  growth_rate: Estimated 15-20% YoY
+  key_trends:
+  - Increasing regulatory clarity from OSC and other provincial regulators.
+  - Growth in institutional adoption and Bitcoin ETF products.
+  - Rising demand for crypto payment solutions among Canadian SMEs.
+  - Focus on 'Crypto winters' accelerating consolidation and demand for operational
+    efficiency.
+  seasonality:
+    high:
+    - January (Tax season planning)
+    - Q4 (Year-end portfolio activity)
+    low:
+    - Summer months (July-August)
+typical_objections:
+- objection: Our processes are too complex for an AI to handle.
+  response: Our AI is designed to handle defined, repetitive processes—like compliance
+    checks or status inquiries—which frees your human team to focus on the truly complex,
+    high-value issues. We start by automating one specific workflow to demonstrate
+    value.
+- objection: We're concerned about the cost during a market downturn ('crypto winter').
+  response: A 'crypto winter' is precisely when operational efficiency matters most.
+    Our AI agent reduces fixed support costs, protects your margins, and maintains
+    service quality even if you need to adjust staff levels. It's an investment in
+    resilience.
+- objection: We already use chatbots; we don't need a voice agent.
+  response: Voice is critical for high-stakes, high-trust interactions common in crypto—like
+    account recovery, large transaction verification, or complex compliance questions.
+    Customers prefer voice for sensitive issues. Our agent provides a seamless, secure
+    voice layer that integrates with your existing chat tools.
+meta:
+  id: crypto
+  region: na
+  country: ca
+  language: en
+  currency: CAD
+  phone_codes:
+  - '+1'
+aliases:
+- "crypto"
+- "cryptocurrency"
+- "blockchain"
+- "bitcoin"
+- "exchange"
+_extends: _base/crypto

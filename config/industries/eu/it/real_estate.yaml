@@ -1,0 +1,248 @@
+aliases:
+- immobiliare
+- agenzia immobiliare
+- appartamento
+- casa
+- villa
+- affitto
+- vendita appartamenti
+- nuovo complesso
+- costruttore
+- mutuo
+- abitazione
+- affitto ufficio
+- immobili commerciali
+competitors:
+- name: Gabetti
+  positioning: Leader nazionale con forte presenza nelle grandi città
+  strengths:
+  - Ampio portafoglio immobili
+  - Rete di agenti capillare
+  - Servizi di consulenza mutui e legali
+  weaknesses:
+  - Costi di commissione elevati
+  - Processo di risposta lento
+  our_differentiation: Uso di agenti vocali AI per risposte immediate e qualificazione
+    lead
+- name: Tecnocasa
+  positioning: Franchising diffuso con forte orientamento al cliente privato
+  strengths:
+  - Presenza capillare sul territorio
+  - Servizi di valutazione immobili
+  - Supporto mutui e finanziamenti
+  weaknesses:
+  - Processo tradizionale poco digitalizzato
+  - Limitata disponibilità 24/7
+  our_differentiation: Automazione e disponibilità continua tramite AI per lead generation
+- name: Engel & Völkers Italia
+  positioning: Immobiliare di lusso e alto standing
+  strengths:
+  - Specializzazione in immobili di pregio
+  - Rete internazionale
+  - Marketing mirato e personalizzato
+  weaknesses:
+  - Target di nicchia limitato
+  - Costi superiori alla media
+  our_differentiation: Flessibilità nelle fasce di prezzo con automazione per volume
+    medio
+industry_faq:
+- question: Quali immobili avete disponibili in zona?
+  answer_template: Mi dica la zona di interesse, il tipo di immobile e il budget;
+    le mostro le migliori opzioni.
+- question: Quanto costa la vostra commissione?
+  answer_template: La nostra commissione varia dal 2% al 3% del prezzo di vendita,
+    pagabile al rogito.
+- question: Offrite assistenza per il mutuo?
+  answer_template: Sì, collaboriamo con diverse banche per offrirle le migliori condizioni.
+- question: Posso visitare l’immobile prima di decidere?
+  answer_template: Certamente, posso prenotare una visita nel giorno e orario a lei
+    più comodi.
+- question: Ci sono costi nascosti?
+  answer_template: No, tutte le condizioni sono trasparenti e incluse nel contratto.
+- question: Come funziona la valutazione dell’immobile?
+  answer_template: Effettuiamo una perizia basata su mercato, zona e stato dell’immobile
+    per definirne il valore.
+pain_points:
+- description: Alto volume di chiamate non qualificate da annunci online
+  severity: high
+  solution_hint: Qualificazione automatica dei lead tramite agente vocale AI
+- description: Clienti chiamano fuori orario e perdono interesse
+  severity: high
+  solution_hint: Disponibilità 24/7 per raccolta richieste e prenotazioni
+- description: Tempi lunghi per organizzare visite e chiarire dubbi
+  severity: medium
+  solution_hint: Prenotazione automatica visite e invio informazioni dettagliate
+- description: Complessità nella gestione dello stato delle trattative
+  severity: medium
+  solution_hint: Notifiche automatiche aggiornate sullo stato delle offerte e documenti
+- description: Difficoltà nel filtrare clienti seri da semplici curiosi
+  severity: medium
+  solution_hint: Domande qualificanti integrate nell’agente per profilare i lead
+- description: Necessità di assistenza multilingue per clienti stranieri
+  severity: medium
+  solution_hint: Supporto multilingue tramite AI per rispondere in inglese o altre
+    lingue
+- description: Gestione manuale dei documenti e firme digitali non integrata
+  severity: low
+  solution_hint: Integrazione con sistemi di gestione documentale per automatizzare
+    processi
+typical_services:
+- Vendita di appartamenti
+- Affitto residenziale
+- Affitto commerciale
+- Consulenza mutui e finanziamenti
+- Valutazione immobiliare professionale
+- Assistenza legale e notarile
+- Gestione e amministrazione condominiale
+- Intermediazione immobiliare per aziende
+- Supporto nella compravendita
+- Promozione immobili online e offline
+recommended_functions:
+- name: Qualificazione lead
+  priority: high
+  reason: Raccolta dati chiave come budget, zona e tempistiche per profilare clienti
+- name: Prenotazione visite
+  priority: high
+  reason: Organizzazione automatica appuntamenti per visite immobili
+- name: FAQ automatizzate
+  priority: medium
+  reason: Risposte immediate a domande frequenti su immobili e servizi
+- name: Promemoria appuntamenti
+  priority: medium
+  reason: Ridurre no-show e migliorare esperienza cliente con notifiche
+- name: Notifiche stato trattativa
+  priority: medium
+  reason: Aggiornare clienti e agenti su avanzamento offerte e documenti
+- name: Supporto multilingue
+  priority: medium
+  reason: Assistenza a clienti stranieri in lingua
+- name: Chiamate outbound
+  priority: medium
+  reason: Ricontattare lead e proporre nuove offerte
+typical_integrations:
+- name: CRM
+  examples:
+  - RevoAgent
+  - Realisti.co
+  - Gestionale Immobiliare
+  priority: high
+- name: Portali immobiliari
+  examples:
+  - Immobiliare.it
+  - Idealista.it
+  - Casa.it
+  priority: high
+- name: Sistemi di telefonia
+  examples:
+  - 3CX
+  - VoipVoice
+  - Wildix
+  priority: high
+- name: Sistemi di firma digitale
+  examples:
+  - ArubaSign
+  - InfoCert
+  - DocuSign
+  priority: medium
+- name: Software di gestione documentale
+  examples:
+  - DocuWare
+  - M-Files
+  priority: medium
+- name: Chat e messaggistica
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: medium
+sales_scripts:
+- trigger: price_question
+  situation: Il cliente chiede informazioni sui costi della commissione
+  script: 'Capisco la sua preoccupazione sul prezzo. La nostra commissione è tra il
+    2% e il 3%, ma le garantiamo un servizio completo e trasparente, incluso supporto
+    legale e mutui. Vuole che le mostri alcune opzioni nel suo budget?
+
+    '
+  goal: Convincere il cliente a considerare il valore del servizio e proseguire con
+    la ricerca
+- trigger: hesitant_lead
+  situation: Il cliente esita a fissare un appuntamento
+  script: 'Capisco che prendere una decisione richiede tempo. Posso prenotare una
+    visita senza impegno, così potrà vedere gli immobili con calma. Le va bene un
+    giorno e orario che preferisce?
+
+    '
+  goal: Ottenere l’impegno per una visita senza pressione
+- trigger: competitor_comparison
+  situation: Il cliente confronta con altri agenti o cerca offerte dirette
+  script: 'È importante valutare tutte le opzioni. Noi offriamo immobili esclusivi
+    e un’assistenza continua grazie alla nostra tecnologia AI che risponde 24/7. Vuole
+    che le mostri qualche proposta esclusiva?
+
+    '
+  goal: Differenziarsi dai competitor e attrarre il cliente con vantaggi esclusivi
+- trigger: no_time_to_call
+  situation: Il cliente dice che richiamerà più tardi
+  script: 'Capisco, posso lasciare una proposta selezionata a suo nome fino a domani?
+    Così non rischia di perdere buone occasioni.
+
+    '
+  goal: Tenere il lead caldo e ridurre la perdita di opportunità
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100000
+  - 1000000
+  entry_point: 2000
+  roi_examples:
+  - scenario: Riduzione del 50% del tempo speso dagli agenti in qualificazione lead
+    monthly_cost: 1500
+    monthly_savings: 4000
+    payback_months: 1
+  - scenario: Aumento del 30% nella conversione visite grazie a prenotazioni immediate
+    monthly_cost: 1500
+    monthly_savings: 3500
+    payback_months: 1
+  value_anchors:
+  - Risposte immediate 24/7 per non perdere clienti
+  - Automazione che libera tempo agli agenti per trattative complesse
+  - Migliore qualificazione lead con domande mirate
+market_context:
+  market_size: 3500000000
+  growth_rate: 4.5
+  key_trends:
+  - Crescente digitalizzazione e uso di AI nel customer service
+  - Aumento della domanda di immobili in aree urbane e turistiche
+  - Interesse in immobili secondari e vacanze post-pandemia
+  - Maggiore attenzione a trasparenza e compliance GDPR
+  seasonality:
+    high:
+    - Primavera (aprile-giugno)
+    - Autunno (settembre-ottobre)
+    low:
+    - Agosto (vacanze estive)
+    - Dicembre-gennaio (periodo festivo)
+typical_objections:
+- objection: Posso cercare da solo su internet
+  response: Capisco, ma grazie al nostro agente AI può ricevere subito risposte personalizzate
+    e offerte esclusive non sempre pubblicate online.
+- objection: Le commissioni sono troppo alte
+  response: Le commissioni coprono un servizio completo, inclusa assistenza legale
+    e finanziaria. Posso mostrarle opzioni su misura per il suo budget.
+- objection: Richiamami più tardi
+  response: Certamente! Posso fissare un appuntamento in un momento più comodo per
+    lei? Così non perde le opportunità migliori.
+- objection: Non sono sicuro di voler fare subito una visita
+  response: Nessun problema, posso inviarle tutte le informazioni e foto dettagliate
+    così può valutare con calma prima di decidere.
+- objection: Preferisco trattare direttamente con il proprietario
+  response: Spesso i proprietari si affidano ad agenzie per gestire trattative e documenti.
+    Noi garantiamo professionalità e sicurezza in ogni fase. Vuole maggiori dettagli?
+meta:
+  id: real_estate
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+_extends: _base/real_estate

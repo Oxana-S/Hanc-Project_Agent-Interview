@@ -1,0 +1,216 @@
+pain_points:
+- description: Atrasos frequentes no cronograma das obras devido a imprevistos climáticos
+    ou problemas na cadeia de suprimentos.
+  severity: high
+  solution_hint: Agente de voz pode automatizar alertas e ajustar cronogramas em tempo
+    real com integração a sistemas de gestão.
+- description: Custos extras não previstos no orçamento inicial, como aumento no preço
+    de materiais ou mão de obra.
+  severity: high
+  solution_hint: Agente de voz pode fornecer atualizações de preços via integração
+    com fornecedores e sugerir alternativas econômicas.
+- description: Dificuldade em gerenciar a equipe de trabalho, incluindo faltas e treinamento
+    inadequado.
+  severity: medium
+  solution_hint: Agente de voz pode agendar turnos, enviar lembretes de treinamento
+    e coletar feedback dos funcionários.
+- description: Complexidade na conformidade com a LGPD para proteger dados de clientes
+    e projetos.
+  severity: medium
+  solution_hint: Agente de voz pode orientar sobre práticas de segurança de dados
+    e automatizar consentimentos.
+- description: Comunicação ineficiente entre clientes, arquitetos e empreiteiros,
+    levando a mal-entendidos.
+  severity: medium
+  solution_hint: Agente de voz pode centralizar comunicações e fornecer atualizações
+    automáticas por voz ou mensagem.
+- description: Riscos de segurança no canteiro de obras, resultando em acidentes e
+    multas.
+  severity: high
+  solution_hint: Agente de voz pode enviar alertas de segurança e verificar protocolos
+    diários.
+typical_services:
+- Construção civil residencial
+- Reformas e ampliações
+- Instalações elétricas e hidráulicas
+- Alvenaria e estruturas
+- Acabamentos (pintura, revestimento)
+- Projeto arquitetônico e execução
+- Gerenciamento de obras
+- Demolição e terraplanagem
+- Manutenção predial
+- Instalação de sistemas sustentáveis (energia solar)
+recommended_functions:
+- name: Agendamento de visitas técnicas
+  priority: high
+  reason: Otimiza o tempo da equipe e melhora a experiência do cliente com agilidade.
+- name: Atendimento ao cliente 24/7 para orçamentos
+  priority: high
+  reason: Aumenta as conversões respondendo a consultas fora do horário comercial.
+- name: Integração com sistemas ERP locais
+  priority: high
+  reason: Facilita a gestão financeira e de projetos, reduzindo erros manuais.
+- name: Lembretes automáticos de pagamentos
+  priority: medium
+  reason: Melhora o fluxo de caixa e reduz inadimplências.
+- name: Resposta a perguntas frequentes sobre LGPD
+  priority: medium
+  reason: Ajuda na conformidade regulatória, evitando penalidades.
+- name: Coleta de feedback pós-obra
+  priority: low
+  reason: Fortalece a reputação e identifica áreas de melhoria.
+typical_integrations:
+- name: Sistemas ERP
+  examples:
+  - TOTVS Protheus
+  - SAP Business One
+  - Senior Sistemas
+  priority: high
+- name: Software de gestão de projetos
+  examples:
+  - BuildMais
+  - OrçaFascio
+  - MS Project
+  priority: high
+- name: CRM
+  examples:
+  - Salesforce
+  - RD Station
+  - Pipedrive
+  priority: medium
+- name: Sistemas de contabilidade
+  examples:
+  - ContaAzul
+  - Bling
+  - Omie
+  priority: medium
+- name: Aplicativos de comunicação
+  examples:
+  - WhatsApp Business
+  - Telegram
+  priority: low
+industry_faq:
+- question: Qual é o prazo médio para uma reforma residencial?
+  answer_template: O prazo varia conforme o escopo, mas geralmente entre 1 a 3 meses.
+    Podemos fornecer um cronograma detalhado após uma avaliação.
+- question: Como vocês lidam com atrasos na entrega de materiais?
+  answer_template: Trabalhamos com fornecedores confiáveis e usamos sistemas de monitoramento
+    para minimizar atrasos, com comunicação proativa.
+- question: Oferecem garantia para os serviços?
+  answer_template: Sim, garantimos nossos serviços por até 12 meses, conforme o contrato,
+    com suporte contínuo.
+- question: Como é feito o orçamento? É gratuito?
+  answer_template: Sim, oferecemos orçamento gratuito com base em uma visita técnica.
+    Usamos softwares precisos para evitar surpresas.
+- question: Vocês estão em conformidade com a LGPD?
+  answer_template: Absolutamente, seguimos todas as diretrizes da LGPD para proteger
+    seus dados, com processos automatizados de segurança.
+- question: Aceitam financiamento ou parcelamento?
+  answer_template: Sim, trabalhamos com diversas opções de pagamento, incluindo parcelamento
+    e links com instituições financeiras.
+sales_scripts:
+- trigger: price_question
+  situation: Quando um cliente pergunta sobre preços no primeiro contato.
+  script: Olá! Entendo que o orçamento é uma preocupação. Oferecemos uma avaliação
+    gratuita para fornecer um preço justo e personalizado. Posso agendar uma visita
+    técnica para detalharmos?
+  goal: Converter a consulta em um agendamento para qualificar o lead.
+- trigger: service_inquiry
+  situation: Quando um cliente pergunta sobre serviços específicos, como reformas.
+  script: Olá! Para reformas, trabalhamos com projetos completos desde o planejamento
+    até o acabamento. Podemos discutir suas necessidades e integrar soluções de automação
+    para otimizar o processo. Tem interesse em saber mais?
+  goal: Educar o cliente sobre serviços e apresentar valor agregado.
+- trigger: objection_budget
+  situation: Quando o cliente diz que o orçamento está alto.
+  script: Compreendo sua preocupação. Nosso foco é em qualidade e eficiência, que
+    reduzem custos a longo prazo. Podemos ajustar o escopo ou mostrar casos de ROI
+    onde clientes economizaram com nossa gestão automatizada. Gostaria de ver um exemplo?
+  goal: Superar a objeção destacando o valor e flexibilidade.
+competitors:
+- name: MRV Engenharia
+  positioning: Líder em construção residencial econômica
+  strengths:
+  - Grande escala
+  - preços competitivos
+  - presença nacional
+  weaknesses:
+  - Atendimento personalizado limitado
+  - lentidão em inovações digitais
+  our_differentiation: Oferecemos automação via voz para atendimento ágil e integração
+    em tempo real, melhorando a experiência do cliente.
+- name: Cyrela
+  positioning: Construtora de alto padrão com foco em sustentabilidade
+  strengths:
+  - Qualidade reconhecida
+  - projetos inovadores
+  - forte marca
+  weaknesses:
+  - Custos elevados
+  - processos manuais em comunicações
+  our_differentiation: Nossa solução de voz reduz custos operacionais e acelera respostas,
+    mantendo a qualidade.
+- name: Softwares como BuildMais
+  positioning: Fornecedor de software de gestão para construção
+  strengths:
+  - Soluções especializadas
+  - integrações locais
+  weaknesses:
+  - Foco apenas em software
+  - sem atendimento vocal
+  our_differentiation: Combinamos gestão com agentes de voz para automação end-to-end,
+    aumentando a eficiência além do software.
+pricing_context:
+  currency: BRL
+  typical_budget_range:
+  - 20000
+  - 500000
+  entry_point: 5000
+  roi_examples:
+  - scenario: Automação de agendamentos e lembretes para uma construtora média
+    monthly_cost: 300
+    monthly_savings: 1500
+    payback_months: 1
+  value_anchors:
+  - Reduza custos com mão de obra em até 20% usando nossa automação vocal.
+  - Aumente a satisfação do cliente com respostas instantâneas 24/7.
+  - Conformidade LGPD garantida sem esforço adicional.
+market_context:
+  market_size: Estimado em R$ 300 bilhões anuais
+  growth_rate: 3% ao ano
+  key_trends:
+  - Crescimento de construções sustentáveis e eficiência energética.
+  - Adoção de tecnologias digitais para gestão de projetos.
+  - Aumento na demanda por reformas pós-pandemia.
+  seasonality:
+    high:
+    - Abril a Setembro
+    - período seco
+    low:
+    - Outubro a Março
+    - chuvas intensas
+typical_objections:
+- objection: Não confio em automação para algo tão importante como minha obra.
+  response: Entendo sua cautela. Nossa solução é complementar, com suporte humano
+    sempre disponível. Já ajudamos várias empresas a reduzirem erros e atrasos.
+- objection: É muito caro para o meu negócio pequeno.
+  response: Oferecemos planos escaláveis a partir de R$ 5.000. O retorno vem rápido
+    com economia em tempo e recursos. Podemos começar com um teste gratuito.
+- objection: Prefiro o contato pessoal, não quero falar com uma máquina.
+  response: Nosso agente de voz é projetado para ser natural e eficiente, liberando
+    sua equipe para tarefas mais estratégicas. Você ainda tem opção de falar com um
+    humano quando precisar.
+meta:
+  id: construction
+  region: latam
+  country: br
+  language: pt
+  currency: BRL
+  phone_codes:
+  - '+55'
+aliases:
+- "construction"
+- "building"
+- "renovation"
+- "contractor"
+_extends: _base/construction

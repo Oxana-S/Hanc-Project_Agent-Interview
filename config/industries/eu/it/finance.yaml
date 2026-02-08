@@ -1,0 +1,230 @@
+pain_points:
+- description: L'elevato costo operativo per la gestione dei servizi clienti tramite
+    personale umano.
+  severity: high
+  solution_hint: L'agente vocale AI può automatizzare le chiamate in entrata e in
+    uscita, riducendo i costi del personale.
+- description: Difficoltà nel rispettare le normative GDPR per la protezione dei dati
+    dei clienti.
+  severity: high
+  solution_hint: L'agente vocale AI può essere configurato per gestire i dati in modo
+    conforme al GDPR, con registrazioni e consensi automatizzati.
+- description: Lentezza nell'elaborazione delle richieste dei clienti, come aperture
+    di conti o richieste di prestito.
+  severity: medium
+  solution_hint: Automatizzare i processi di onboarding e supporto con risposte immediate
+    tramite AI.
+- description: Alta incidenza di frodi e richieste di supporto per sicurezza.
+  severity: high
+  solution_hint: Implementare funzionalità di rilevamento frodi in tempo reale e avvisi
+    vocali per i clienti.
+- description: Mancanza di personalizzazione nei servizi offerti ai clienti.
+  severity: medium
+  solution_hint: Utilizzare AI per analizzare i dati dei clienti e offrire consigli
+    personalizzati durante le chiamate.
+- description: Sovraccarico di lavoro durante periodi di picco, come fine mese o stagioni
+    fiscali.
+  severity: medium
+  solution_hint: Scalare automaticamente il supporto vocale AI per gestire picchi
+    di chiamate senza costi aggiuntivi.
+typical_services:
+- Consulenza finanziaria personalizzata
+- Gestione patrimoniale
+- Servizi bancari online e mobili
+- Assicurazioni sulla vita e patrimoniali
+- Prestiti e mutui
+- Investimenti in azioni e obbligazioni
+- Pianificazione pensionistica
+- Servizi di pagamento e bonifici
+- Controllo e prevenzione delle frodi
+- Supporto clienti 24/7
+recommended_functions:
+- name: Programmazione appuntamenti
+  priority: high
+  reason: Riduce il tempo di attesa per i clienti e ottimizza l'agenda dei consulenti.
+- name: Risposte alle FAQ automatiche
+  priority: high
+  reason: Libera il personale da richieste ripetitive e migliora l'efficienza.
+- name: Rilevamento frodi in tempo reale
+  priority: high
+  reason: Aumenta la sicurezza e riduce le perdite finanziarie.
+- name: Onboarding clienti automatizzato
+  priority: medium
+  reason: Accelera il processo di apertura conti e riduce gli errori umani.
+- name: Aggiornamenti su mercati finanziari
+  priority: low
+  reason: Fornisce informazioni tempestive ai clienti, migliorando l'esperienza.
+- name: Raccolta feedback post-chiamata
+  priority: medium
+  reason: Aiuta a monitorare la soddisfazione del cliente e a migliorare i servizi.
+typical_integrations:
+- name: Sistemi CRM
+  examples:
+  - Salesforce
+  - Zoho CRM
+  - HubSpot
+  priority: high
+- name: Software contabile
+  examples:
+  - SAP
+  - Oracle Financials
+  - TeamSystem
+  priority: high
+- name: Piattaforme bancarie
+  examples:
+  - Nexi
+  - SIA
+  - CBI
+  priority: high
+- name: Sistemi di compliance GDPR
+  examples:
+  - OneTrust
+  - TrustArc
+  priority: medium
+- name: API di pagamento
+  examples:
+  - Satispay
+  - PayPal
+  - Stripe
+  priority: medium
+industry_faq:
+- question: Quanto costa utilizzare il vostro servizio di agente vocale AI?
+  answer_template: I nostri prezzi partono da €X al mese, con piani scalabili in base
+    al volume di chiamate. Possiamo discutere un piano personalizzato per le vostre
+    esigenze.
+- question: È sicuro per i dati dei miei clienti?
+  answer_template: Sì, rispettiamo rigorosamente il GDPR e utilizziamo crittografia
+    end-to-end per proteggere tutti i dati.
+- question: Come posso integrare l'agente vocale con i miei sistemi esistenti?
+  answer_template: Offriamo API facili da usare e supporto per integrazioni con i
+    principali software CRM e bancari in Italia.
+- question: Qual è il tempo di implementazione?
+  answer_template: In genere, l'implementazione richiede 2-4 settimane, a seconda
+    della complessità delle integrazioni.
+- question: L'agente può gestire chiamate in dialetto o con accenti regionali?
+  answer_template: Sì, il nostro AI è addestrato su vari accenti italiani per garantire
+    un'accurata comprensione.
+- question: Cosa succede se l'agente non capisce una domanda del cliente?
+  answer_template: L'agente trasferisce la chiamata a un operatore umano o richiede
+    chiarimenti, garantendo un servizio senza interruzioni.
+sales_scripts:
+- trigger: price_question
+  situation: Quando un cliente chiede informazioni sui prezzi durante una chiamata
+    iniziale.
+  script: Grazie per il tuo interesse. I nostri piani partono da €50 al mese per le
+    piccole imprese, con risparmi fino al 30% sui costi operativi. Possiamo programmare
+    una demo gratuita per mostrarti come funziona?
+  goal: Ottenere un appuntamento per una demo e chiarire il valore del ROI.
+- trigger: feature_request
+  situation: Quando un cliente è interessato a funzionalità specifiche come integrazioni
+    o sicurezza.
+  script: Capisco le tue esigenze. Il nostro agente offre integrazioni complete con
+    sistemi come SAP e Salesforce, e garantisce compliance GDPR. Posso inviarti maggiori
+    dettagli via email?
+  goal: Fornire informazioni dettagliate e incoraggiare il passo successivo.
+- trigger: competitor_mention
+  situation: Quando un cliente menziona un concorrente durante la conversazione.
+  script: Rispetto ai concorrenti, offriamo un supporto 24/7 in italiano con AI più
+    accurata per accenti regionali, e prezzi più trasparenti senza costi nascosti.
+  goal: Evidenziare i nostri punti di forza e differenziarci dai concorrenti.
+- trigger: objection_security
+  situation: Quando un cliente solleva preoccupazioni sulla sicurezza dei dati.
+  script: La sicurezza è una nostra priorità. Utilizziamo tecnologie all'avanguardia
+    con certificazioni GDPR e audit regolari per garantire la protezione dei dati
+    dei tuoi clienti.
+  goal: Rassicurare il cliente e costruire fiducia.
+competitors:
+- name: Banca Sella
+  positioning: Fornitore tradizionale di servizi bancari con soluzioni digitali.
+  strengths:
+  - Presenza consolidata in Italia
+  - ampia rete di filiali
+  - fiducia dei clienti
+  weaknesses:
+  - Lenta nell'innovazione
+  - costi operativi elevati
+  - integrazioni limitate
+  our_differentiation: Offriamo automazione AI più avanzata a costi inferiori, con
+    implementazione rapida e supporto personalizzato.
+- name: Fintech come Satispay
+  positioning: Startup fintech focalizzata su pagamenti digitali.
+  strengths:
+  - Innovazione rapida
+  - interfacce user-friendly
+  - crescita del mercato
+  weaknesses:
+  - Servizi limitati a pagamenti
+  - minore esperienza in servizi finanziari completi
+  our_differentiation: Forniamo una soluzione olistica per tutto il ciclo finanziario,
+    non solo pagamenti, con AI per migliorare l'intera esperienza cliente.
+- name: IBM Watson per il settore finanziario
+  positioning: Soluzioni AI globali per il banking.
+  strengths:
+  - Tecnologia robusta
+  - presenza internazionale
+  - risorse di R&D
+  weaknesses:
+  - Prezzi elevati
+  - supporto locale limitato in Italia
+  - complessità di implementazione
+  our_differentiation: Siamo più convenienti, con focus sul mercato italiano e supporto
+    in lingua italiana dedicato.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 100
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Automazione del supporto clienti per una piccola banca
+    monthly_cost: 200
+    monthly_savings: 600
+    payback_months: 1
+  value_anchors:
+  - Riduci i costi operativi fino al 40%
+  - Migliora la soddisfazione del cliente del 25%
+  - Implementazione in meno di un mese
+market_context:
+  market_size: 10 miliardi di EUR
+  growth_rate: 8% YoY
+  key_trends:
+  - Digitalizzazione accelerata post-COVID
+  - Aumento della domanda per servizi finanziari personalizzati
+  - Crescita del fintech in Italia
+  seasonality:
+    high:
+    - Fine anno fiscale (dicembre-gennaio)
+    - Periodi di bonus e stipendi (giugno-luglio)
+    low:
+    - Agosto (ferie estive)
+    - Festività natalizie (parte di dicembre)
+typical_objections:
+- objection: Non sono sicuro che l'AI possa sostituire il contatto umano con i nostri
+    clienti.
+  response: L'AI non sostituisce il contatto umano, ma lo integra, liberando il personale
+    per compiti più complessi e migliorando l'efficienza.
+- objection: I costi iniziali sono troppo alti per la nostra piccola impresa.
+  response: I nostri piani flessibili partono da €50 al mese, con un ROI rapido che
+    giustifica l'investimento. Possiamo iniziare con una prova pilota a basso costo.
+- objection: Abbiamo già sistemi obsoleti e temiamo problemi di integrazione.
+  response: Offriamo consulenza gratuita per l'integrazione e supporto tecnico per
+    adattare l'AI ai vostri sistemi esistenti, minimizzando i disagi.
+- objection: Il mercato italiano è conservativo e i clienti potrebbero diffidare della
+    tecnologia AI.
+  response: L'AI è sempre più accettata in Italia, e possiamo personalizzare gli script
+    per suonare più naturale e rassicurante, basandoci su esempi di successo nel settore.
+meta:
+  id: finance
+  region: eu
+  country: it
+  language: it
+  currency: EUR
+  phone_codes:
+  - '+39'
+aliases:
+- "finance"
+- "banking"
+- "loans"
+- "credit"
+- "financial services"
+_extends: _base/finance

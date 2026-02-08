@@ -1,0 +1,197 @@
+pain_points:
+- description: Schwierigkeiten bei der Personalbeschaffung und -bindung aufgrund von Saisonarbeit und hoher Fluktuation.
+  severity: high
+  solution_hint: AI Voice Agent kann automatische Vorstellungsgespräche führen und Mitarbeiteranfragen priorisieren.
+- description: Ineffiziente Terminplanung und Routenoptimierung, die zu Zeitverschwendung und höheren Kosten führt.
+  severity: medium
+  solution_hint: AI Voice Agent kann intelligente Buchungssysteme integrieren und optimierte Reinigungspläne erstellen.
+- description: Hoher Verwaltungsaufwand für Rechnungsstellung, Buchhaltung und Kundenkommunikation.
+  severity: medium
+  solution_hint: AI Voice Agent kann automatisierte Rechnungen generieren und FAQ-basierte Kundenanfragen bearbeiten.
+- description: Ungelöste Kundenbeschwerden und schlechte Kommunikation führen zu negativen Bewertungen.
+  severity: high
+  solution_hint: AI Voice Agent kann sofortige Reklamationsbearbeitung anbieten und Eskalationsprozesse einleiten.
+- description: Herausforderungen bei der Einhaltung von GDPR und anderen Datenschutzbestimmungen für Kundendaten.
+  severity: high
+  solution_hint: AI Voice Agent kann datenschutzkonforme Gespräche führen und Einwilligungen automatisch verwalten.
+- description: Unvorhergesehene Ausfälle von Reinigungskräften, die Notfallplanung erfordern.
+  severity: low
+  solution_hint: AI Voice Agent kann Ersatzplanung automatisieren und Kunden über Änderungen informieren.
+typical_services:
+- Büroreinigung
+- Haushaltsreinigung
+- Teppichreinigung
+- Fensterreinigung
+- Grundreinigung
+- Unterhaltsreinigung
+- Desinfektionsreinigung
+- Baureinigung
+- Maschinenreinigung
+- Spezialreinigung für sensible Bereiche
+recommended_functions:
+- name: Automatische Terminbuchung
+  priority: high
+  reason: Reduziert Verwaltungsaufwand und verbessert Kundenbindung durch sofortige Verfügbarkeit.
+- name: Reklamationsmanagement
+  priority: high
+  reason: Schnelle Bearbeitung von Beschwerden erhöht Kundenzufriedenheit und verhindert negative Bewertungen.
+- name: Personalplanung und -einsatz
+  priority: medium
+  reason: Optimiert Mitarbeiterressourcen und reduziert Kosten durch effiziente Routenplanung.
+- name: Rechnungsstellung und Zahlungserinnerungen
+  priority: medium
+  reason: Automatisiert Finanzprozesse und verbessert Cashflow.
+- name: FAQ-Beantwortung für Kundenanfragen
+  priority: low
+  reason: Entlastet Mitarbeiter von Routinefragen und bietet 24/7-Support.
+- name: Datenschutz-Compliance-Checks
+  priority: high
+  reason: Sichert Einhaltung von GDPR bei Kundendatenverarbeitung.
+typical_integrations:
+- name: Buchhaltungssoftware
+  examples:
+  - DATEV
+  - Lexware
+  - SevDesk
+  priority: high
+- name: Kalender- und Terminplanungssysteme
+  examples:
+  - Google Calendar
+  - Microsoft Outlook
+  - local apps wie TimeSlot
+  priority: high
+- name: CRM-Systeme
+  examples:
+  - HubSpot
+  - Salesforce
+  - deutsche Lösungen wie Odoo
+  priority: medium
+- name: Zahlungsgateways
+  examples:
+  - PayPal
+  - Stripe
+  - lokale Bankenschnittstellen
+  priority: medium
+- name: Kommunikationstools
+  examples:
+  - Slack
+  - Microsoft Teams
+  - WhatsApp Business API
+  priority: low
+industry_faq:
+- question: Wie oft sollten Reinigungsdienste gebucht werden?
+  answer_template: Wir empfehlen wöchentliche oder zweiwöchentliche Reinigungen für optimale Hygiene, abhängig von Ihren Bedürfnissen.
+- question: Sind Ihre Reinigungskräfte versichert und geschult?
+  answer_template: Ja, alle unsere Mitarbeiter sind umfassend versichert und erhalten regelmäßige Schulungen nach deutschen Standards.
+- question: Welche Reinigungsmittel verwenden Sie?
+  answer_template: Wir nutzen umweltfreundliche und zertifizierte Reinigungsmittel, die sicher für Gesundheit und Umwelt sind.
+- question: Können Sie kurzfristige Reinigungen anbieten?
+  answer_template: Ja, wir bieten flexible Buchungen an, inklusive Notfallreinigung innerhalb von 24 Stunden.
+- question: Wie handle ich mit Beschädigungen während der Reinigung?
+  answer_template: Alle Vorfälle werden sofort dokumentiert und über unsere Versicherung abgedeckt. Kontaktieren Sie uns direkt für eine Lösung.
+- question: Bieten Sie auch Desinfektionsdienste an?
+  answer_template: Ja, wir spezialisieren uns auf Desinfektionsreinigung für Büros und sensible Bereiche mit hochwirksamen Methoden.
+sales_scripts:
+- trigger: price_question
+  situation: Wenn Kunden nach Preisen für Reinigungsdienste fragen.
+  script: Hallo! Unsere Preise beginnen bei 50€ pro Stunde für Standardreinigung, angepasst an Ihre Fläche und Anforderungen. Möchten Sie ein maßgeschneidertes Angebot?
+  goal: Interesse wecken und zu einem detaillierten Gespräch über individuelle Bedürfnisse führen.
+- trigger: service_inquiry
+  situation: Wenn Kunden nach spezifischen Reinigungsdienstleistungen fragen.
+  script: Wir bieten eine Vielzahl von Dienstleistungen, von Büro- bis Haushaltsreinigung. Erzählen Sie mir mehr über Ihre Anforderungen, und ich empfehle das passende Paket.
+  goal: Kundenbedürfnisse verstehen und passende Dienstleistungen vorschlagen.
+- trigger: competitor_comparison
+  situation: Wenn Kunden Vergleiche mit anderen Anbietern anstellen.
+  script: Im Gegensatz zu vielen Mitbewerbern bieten wir transparente Preise, GDPR-konforme Datenverarbeitung und 24/7-Support via AI. Probieren Sie unseren kostenlosen Ersttermin!
+  goal: Unsere einzigartigen Vorteile hervorheben und zur Aktion motivieren.
+- trigger: objection_budget
+  situation: Wenn Kunden Budgetbedenken äußern.
+  script: Wir verstehen Budgetbeschränkungen. Mit unserer effizienten Planung sparen Sie langfristig bis zu 20% Zeit und Kosten. Lassen Sie uns eine kostenlose Analyse durchführen.
+  goal: Wertdemonstration und Überwindung von Preiswiderständen.
+competitors:
+- name: Helpling
+  positioning: Online-Marktplatz für Haushaltsreinigung
+  strengths:
+  - Breite Verfügbarkeit
+  - Einfache Online-Buchung
+  - Kundenbewertungssystem
+  weaknesses:
+  - Hohe Provisionen für Reinigungskräfte
+  - Begrenzte Business-Dienste
+  - Variable Qualität
+  our_differentiation: Wir bieten spezialisierte Business-Lösungen mit festen Teams und GDPR-Compliance, nicht nur private Dienste.
+- name: Book a Tiger
+  positioning: Premium-Reinigungsdienst für Büros
+  strengths:
+  - Hohe Qualitätsstandards
+  - Feste Reinigungsteams
+  - Transparente Preise
+  weaknesses:
+  - Höhere Kosten
+  - Begrenzte Flexibilität für kurzfristige Buchungen
+  - Weniger Fokus auf Datenschutz
+  our_differentiation: Unsere AI-gestützte Plattform ermöglicht flexiblere Buchungen und automatisiertes Reklamationsmanagement zu wettbewerbsfähigen Preisen.
+- name: Lokale Reinigungsfirmen
+  positioning: Traditionelle, kleinere Anbieter
+  strengths:
+  - Lokale Expertise
+  - Persönlicher Service
+  - Niedrigere Einstiegspreise
+  weaknesses:
+  - Begrenzte Skalierbarkeit
+  - Manuelle Verwaltung
+  - Oft keine GDPR-Compliance
+  our_differentiation: Wir kombinieren lokalen Service mit moderner Technologie für effiziente, datenschutzkonforme Lösungen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 50
+  roi_examples:
+  - scenario: Büroreinigung für ein mittelständisches Unternehmen
+    monthly_cost: 1000
+    monthly_savings: 1800
+    payback_months: 3
+  value_anchors:
+  - Sparen Sie bis zu 20% Personalkosten durch automatisierte Planung.
+  - Reduzieren Sie Ausfallzeiten mit 24/7-Support.
+  - GDPR-konforme Datenverarbeitung inklusive.
+market_context:
+  market_size: ca. 10 Milliarden EUR jährlich in Deutschland
+  growth_rate: 3-5% YoY
+  key_trends:
+  - Zunehmende Nachfrage nach ökologischen Reinigungsmitteln.
+  - Wachsender Fokus auf Desinfektionsdienste nach COVID-19.
+  - Digitalisierung und Automatisierung in der Reinigungsbranche.
+  seasonality:
+    high:
+    - Januar (Neujahrsreinigung)
+    - Frühjahr (Frühjahrsputz)
+    - September (Rückkehr aus Urlaub)
+    low:
+    - Dezember (Feiertage)
+    - Sommer (Urlaubszeit)
+typical_objections:
+- objection: Das ist zu teuer für unser Budget.
+  response: Wir bieten skalierbare Pakete an. Eine effiziente Reinigung spart Ihnen langfristig Geld durch weniger Ausfälle und höhere Produktivität. Möchten Sie ein maßgeschneidertes Angebot?
+- objection: Wir haben bereits einen Reinigungsdienst.
+  response: Verstehen Sie! Vielleicht können wir mit unserer AI-Technologie Prozesse optimieren oder Notfalldienste anbieten. Dürfen wir eine kostenlose Effizienzanalyse durchführen?
+- objection: Ich vertraue nicht auf automatisierte Systeme.
+  response: Unsere AI Voice Agent ergänzt menschliche Mitarbeiter, indem sie Routineaufgaben übernimmt, während Sie die Kontrolle behalten. Probieren Sie es risikofrei mit einem Testmonat.
+- objection: Datenschutz ist mir wichtig – sind Sie GDPR-konform?
+  response: Absolut! Wir sind spezialisiert auf GDPR-Compliance in Deutschland und verwenden verschlüsselte Systeme. Alle Daten werden gemäß EU-Verordnungen verarbeitet.
+meta:
+  id: cleaning
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- cleaning
+- janitorial
+- housekeeping
+- maid service
+_extends: _base/cleaning

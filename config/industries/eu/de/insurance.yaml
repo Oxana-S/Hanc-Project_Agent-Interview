@@ -1,0 +1,232 @@
+pain_points:
+- description: Langsame Schadenbearbeitung mit hohem manuellem Aufwand
+  severity: high
+  solution_hint: KI-gestützte Schadenerfassung und automatische Vorprüfung per Sprachagent
+    beschleunigen Prozesse.
+- description: Hohe Kosten im Vertrieb durch hohe Provisionsstrukturen
+  severity: high
+  solution_hint: Voice Agent als kostengünstiger First-Level-Ansprechpartner für Neukundenakquise.
+- description: Unzufriedenheit mit 24/7-Erreichbarkeit und langen Wartezeiten in der
+    Kundenhotline
+  severity: medium
+  solution_hint: Sprachagent bietet sofortige Antworten und routiniert Anfragen rund
+    um die Uhr.
+- description: Komplexe Produktlandschaft erschwert Kundenberatung
+  severity: medium
+  solution_hint: Agent kann mittels Wissensdatenbank präzise Produktinformationen
+    und -vergleiche liefern.
+- description: Ineffiziente Prozesse bei Policenverwaltung und -verlängerung
+  severity: medium
+  solution_hint: Automatisierte Erinnerungen und Verlängerungsprozesse per Voice Agent
+    initiieren.
+- description: Herausforderungen bei der Umsetzung von GDPR/DSGVO-konformen Kundeninteraktionen
+  severity: low
+  solution_hint: Agent kann standardisierte, protokollierte Einwilligungserklärungen
+    einholen.
+- description: Niedrige Cross-Selling-Quote aufgrund verpasster Kontaktmomente
+  severity: low
+  solution_hint: Proaktive, personalisierte Angebote im Kundengespräch durch den Agenten
+    platzieren.
+typical_services:
+- Haftpflichtversicherung
+- Kfz-Versicherung
+- Hausratversicherung
+- Wohngebäudeversicherung
+- Rechtsschutzversicherung
+- Berufsunfähigkeitsversicherung
+- Private Krankenversicherung
+- Lebensversicherung
+- Unfallversicherung
+- Reiseversicherung
+recommended_functions:
+- name: Schadenmeldung entgegennehmen
+  priority: high
+  reason: Häufigster Kundenkontaktpunkt; kann sofort dokumentiert und priorisiert
+    werden.
+- name: Terminvereinbarung für Beratung
+  priority: high
+  reason: Führt kalte Anfragen direkt zu einem qualifizierten Vertriebsmitarbeiter.
+- name: Policeninformationen abfragen und erklären
+  priority: high
+  reason: Entlastet die Hotline von Standardanfragen und verbessert Kundenservice.
+- name: Vertragsverlängerungsprozess anstoßen
+  priority: medium
+  reason: Bindet Kunden und verhindert Abwanderung durch Proaktivität.
+- name: Cross-Selling-Angebote unterbreiten
+  priority: medium
+  reason: Erhöht den Kundenwert durch Analyse bestehender Verträge.
+- name: Einholung von Einwilligungserklärungen (DSGVO)
+  priority: low
+  reason: Sichert Compliance in sensiblen Kommunikationsprozessen.
+typical_integrations:
+- name: CRM-System
+  examples:
+  - SAP CRM
+  - Salesforce
+  - HubSpot
+  priority: high
+- name: Policenverwaltungssystem
+  examples:
+  - AS400-basierte Lösungen
+  - Sapiens
+  - msg.versicherung
+  priority: high
+- name: Dokumenten-Management-System
+  examples:
+  - IBM FileNet
+  - Doxis4
+  - Adobe Experience Manager
+  priority: medium
+- name: Schadenmanagementsystem
+  examples:
+  - Guidewire
+  - Sapiens IDIT
+  - SAP FS-CD
+  priority: medium
+- name: Telefonie/CTI
+  examples:
+  - Avaya
+  - Genesys
+  - Cisco
+  priority: high
+industry_faq:
+- question: Wie schnell wird mein Schaden bearbeitet?
+  answer_template: Vielen Dank für Ihre Anfrage. Sobald die Schadenmeldung bei uns
+    vollständig vorliegt, bearbeiten wir diese in der Regel innerhalb von X Werktagen.
+    Unser Sprachassistent kann Ihnen helfen, alle notwendigen Unterlagen direkt zu
+    erfassen.
+- question: Kann ich meine Police vor Ablauf kündigen?
+  answer_template: Ja, in der Regel ist eine Kündigung zum Ende der Vertragslaufzeit
+    mit einer Frist von 3 Monaten möglich. Für eine genaue Prüfung Ihrer individuellen
+    Konditionen verbinde ich Sie gerne mit einem Kollegen aus der Kundenbetreuung.
+- question: Was ist im Beitrag enthalten?
+  answer_template: Ihr Beitrag setzt sich aus der Grunddeckung und etwaigen Zusatzbausteinen
+    zusammen. Gerne liste ich Ihnen die konkreten Leistungen Ihrer Police auf oder
+    erstelle einen Vergleich mit anderen Tarifen.
+- question: Wie sicher sind meine Daten bei einer digitalen Abwicklung?
+  answer_template: Sehr sicher. Alle unsere Prozesse, inklusive der Sprachassistenz,
+    sind streng nach der Europäischen Datenschutz-Grundverordnung (DSGVO) zertifiziert.
+    Ihre Daten werden verschlüsselt übertragen und verarbeitet.
+- question: Bekomme ich eine Beitragsrückerstattung?
+  answer_template: Ob eine Beitragsrückerstattung anfällt, hängt von der Art Ihrer
+    Versicherung und der Schadenbilanz des Kollektivs ab. Ich kann für Sie in unserem
+    System die Voraussetzungen und die Höhe prüfen.
+- question: Wie ändere ich meine Adresse oder Bankverbindung?
+  answer_template: Diese Änderung kann ich für Sie sofort vornehmen. Bitte bestätigen
+    Sie mir kurz die neuen Daten. Sie erhalten anschließend eine aktualisierte Vertragsbestätigung.
+sales_scripts:
+- trigger: price_question
+  situation: Kunde fragt nach den Kosten für eine Dienstleistung oder ein Produkt.
+  script: Verstehe. Die Investition richtet sich nach Ihrem gewünschten Umfang. Ein
+    Basispaket zur Entlastung Ihrer Hotline startet bei etwa 500€ monatlich. Darin
+    sind X Gesprächsminuten und Standardfunktionen enthalten. Wofür setzen Sie aktuell
+    die meisten personellen Ressourcen ein?
+  goal: Qualifikation der Anfrage und Lenkung zum konkreten Bedarf.
+- trigger: objection_too_expensive
+  situation: Kunde äußert, dass die Lösung zu teuer sei.
+  script: 'Das ist ein wichtiger Punkt. Betrachten wir den ROI: Wenn unser Agent nur
+    10 Stunden manuelle Telefonie pro Woche übernimmt, spart das bereits Y€ Personalkosten.
+    Bei einem monatlichen Beitrag von Z€ haben Sie die Kosten in wenigen Monaten amortisiert.
+    Sollen wir eine konkrete Kalkulation für Ihren Fall erstellen?'
+  goal: Wert und ROI kommunizieren, zum nächsten Schritt einladen.
+- trigger: appointment_request
+  situation: Kunde zeigt Interesse an einem detaillierten Gespräch.
+  script: Sehr gerne. Ich sehe einen Termin am [Datum] um [Uhrzeit] frei. Passt Ihnen
+    das? Per Videokonferenz können wir Ihnen dann eine Live-Demo zeigen und auf Ihre
+    spezifischen Prozesse eingehen. Ich sende Ihnen sofort eine Terminbestätigung
+    zu.
+  goal: Termin verbindlich vereinbaren und Demo verkaufen.
+competitors:
+- name: Allianz
+  positioning: Marktführer mit Full-Service-Angebot
+  strengths:
+  - Breites Filialnetz
+  - starke Marke
+  - umfassendes Produktportfolio
+  weaknesses:
+  - Höhere Kostenstruktur
+  - langsamere digitale Transformation
+  our_differentiation: Wir bieten eine agile, KI-gestützte Lösung, die speziell auf
+    die Automatisierung von Standardprozessen ausgelegt ist und schneller ROI liefert.
+- name: HUK-Coburg
+  positioning: Kosteneffizienter Direktversicherer mit Fokus auf Massengeschäft
+  strengths:
+  - Sehr günstige Tarife
+  - effiziente Prozesse
+  - großer Kundenstamm
+  weaknesses:
+  - Eingeschränkter persönlicher Service
+  - weniger Flexibilität
+  our_differentiation: Unsere Lösung ergänzt ihre Effizienz durch personalisierte,
+    digitale Kundeninteraktion, die ihren Service aufwertet, ohne die Kostenstruktur
+    zu sprengen.
+- name: AXA
+  positioning: Innovativer Anbieter mit Schwerpunkt auf digitale Lösungen
+  strengths:
+  - Starke digitale Präsenz
+  - innovative Produkte
+  - internationale Ausrichtung
+  weaknesses:
+  - Komplexe interne Strukturen
+  - manchmal hohe Prämien
+  our_differentiation: Unser Voice Agent ist als spezialisierte, leicht integrierbare
+    Komponente konzipiert und lässt sich schneller und flexibler in bestehende Systeme
+    einbinden als umfassende Plattformlösungen.
+pricing_context:
+  currency: EUR
+  typical_budget_range:
+  - 500
+  - 5000
+  entry_point: 500
+  roi_examples:
+  - scenario: Automatisierung der ersten Schadenmeldungen für eine mittelgroße Versicherung
+    monthly_cost: 1200
+    monthly_savings: 3000
+    payback_months: 0.4
+  value_anchors:
+  - Reduzieren Sie Ihre Kosten pro Telefonat um bis zu 80%.
+  - Steigern Sie die Kundenzufriedenheit durch 24/7-Erreichbarkeit.
+  - Generieren Sie qualifizierte Leads ohne zusätzliche Vertriebskosten.
+market_context:
+  market_size: ca. 220 Mrd. EUR Prämienvolumen pro Jahr
+  growth_rate: ca. 2-3% p.a.
+  key_trends:
+  - Digitalisierung und Self-Service-Angebote
+  - Personalisierte Tarife (Pay-as-you-live/drive)
+  - Klimawandel und steigende Naturgefahren
+  - Regulatorischer Druck (z.B. IDD, DSGVO)
+  seasonality:
+    high:
+    - Januar (Neujahrsvorsätze)
+    - November/Dezember (Versicherungswechsel)
+    low:
+    - August (Urlaubszeit)
+typical_objections:
+- objection: Ich traue einer KI nicht, meine sensiblen Kundendaten zu übergeben.
+  response: Das ist verständlich. Unser System arbeitet in ihrer bestehenden, sicheren
+    Infrastruktur. Die Daten verlassen nie ihr Rechenzentrum. Zudem sind alle Prozesse
+    DSGVO-konform und vollständig protokollierbar. Wir können zunächst einen Test
+    mit anonymisierten Daten starten.
+- objection: Meine Kunden erwarten immer noch den persönlichen Kontakt.
+  response: Absolut, und der bleibt für komplexe Beratungen erhalten. Unser Agent
+    übernimmt jedoch die repetitiven, zeitaufwändigen Anfragen und entlastet so Ihre
+    Mitarbeiter. Diese haben dann mehr Zeit für die wirklich wertschöpfenden und persönlichen
+    Gespräche.
+- objection: Die Integration in unsere alten Systeme ist zu kompliziert.
+  response: Wir haben spezielle Schnittstellen für gängige Versicherungssysteme wie
+    SAP oder AS400. Unser Onboarding-Team übernimmt die komplette Integration und
+    Schulung. Meist ist der Agent innerhalb weniger Wochen einsatzbereit.
+meta:
+  id: insurance
+  region: eu
+  country: de
+  language: de
+  currency: EUR
+  phone_codes:
+  - '+49'
+aliases:
+- "insurance"
+- "coverage"
+- "policy"
+- "underwriting"
+_extends: _base/insurance
