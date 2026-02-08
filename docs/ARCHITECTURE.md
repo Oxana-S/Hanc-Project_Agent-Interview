@@ -1,6 +1,6 @@
 # Архитектура Hanc.AI Voice Consultant
 
-Версия: 3.3 | Обновлено: 2026-02-07
+Версия: 3.5 | Обновлено: 2026-02-08
 
 ## Общая архитектура
 
@@ -299,26 +299,27 @@ src/
     │
     └─► python scripts/consultant_demo.py
             │
-            └─► ConsultantInterviewer
+            └─► ConsultantInterviewer(document_context=...)
                     │
-                    ├─► [Загрузка документов из input/ если есть]
-                    ├─► [IndustryKnowledgeManager — база знаний]
+                    ├─► [DocumentLoader → DocumentAnalyzer → DocumentContext]
+                    ├─► [IndustryKnowledgeManager — 40 отраслей]
+                    ├─► [EnrichedContextBuilder(KB + Documents + Learnings)]
                     │
                     ├─► ФАЗА 1: DISCOVERY
-                    │       └─► DeepSeek: диалог, сбор информации
+                    │       └─► DeepSeek + enriched context: диалог, сбор информации
                     │
                     ├─► ФАЗА 2: ANALYSIS
-                    │       └─► DeepSeek: BusinessAnalysis, PainPoints
+                    │       └─► DeepSeek + enriched context: BusinessAnalysis, PainPoints
                     │
                     ├─► ФАЗА 3: PROPOSAL
-                    │       └─► DeepSeek: ProposedSolution, functions
+                    │       └─► DeepSeek + enriched context: ProposedSolution, functions
                     │
                     ├─► ФАЗА 4: REFINEMENT
-                    │       ├─► AnketaExtractor.extract()
+                    │       ├─► AnketaExtractor.extract(document_context=...)
                     │       └─► OutputManager.save_anketa() + save_dialogue()
                     │
                     └─► Результат: output/{date}/{company}_v{N}/
-                            ├── anketa.md
+                            ├── anketa.md    (содержит данные из документов)
                             ├── anketa.json
                             └── dialogue.md
 ```
@@ -372,16 +373,21 @@ src/
 
 YAML-профили отраслей в `config/industries/`:
 
-| Профиль | Файл |
-|---------|------|
-| Автобизнес / СТО | automotive.yaml |
-| Образование | education.yaml |
-| Франшизы | franchise.yaml |
-| Рестораны / Отели | horeca.yaml |
-| Логистика | logistics.yaml |
-| Медицина | medical.yaml |
-| Недвижимость | real_estate.yaml |
-| Wellness / Красота | wellness.yaml |
+40 отраслей (полный список в `_index.yaml`):
+
+| Профиль | Файл | Профиль | Файл |
+|---------|------|---------|------|
+| Автобизнес / СТО | automotive.yaml | Страхование | insurance.yaml |
+| Образование | education.yaml | Ритейл | retail.yaml |
+| Франшизы | franchise.yaml | Строительство | construction.yaml |
+| Рестораны / Отели | horeca.yaml | IT-услуги | it_services.yaml |
+| Логистика | logistics.yaml | Рекрутинг | recruitment.yaml |
+| Медицина | medical.yaml | Туризм | travel.yaml |
+| Недвижимость | real_estate.yaml | Производство | manufacturing.yaml |
+| Wellness / Красота | wellness.yaml | Сельское хозяйство | agriculture.yaml |
+| Юридические услуги | legal.yaml | Ветеринария | veterinary.yaml |
+| Финансы | finance.yaml | Клининг | cleaning.yaml |
+| ... и ещё 20 отраслей | | | |
 
 **v1.0 поля:** aliases, typical_services, pain_points, recommended_functions, typical_integrations, industry_faq, learnings, success_benchmarks.
 
@@ -403,18 +409,18 @@ YAML-профили отраслей в `config/industries/`:
 ```text
 config/industries/
 ├── _index.yaml              # Глобальный индекс отраслей
-├── _countries.yaml          # Метаданные 22 стран (язык, валюта, телефон)
+├── _countries.yaml          # Метаданные 23 стран (язык, валюта, телефон)
 ├── _base/                   # Базовые профили (шаблоны для наследования)
 │   ├── automotive.yaml
 │   ├── medical.yaml
-│   └── ...                  # 8 базовых профилей
+│   └── ...                  # 40 базовых профилей
 │
 ├── eu/                      # Европа
 │   ├── de/                  # Германия
 │   │   └── automotive.yaml  # Локализованный профиль
 │   ├── at/                  # Австрия
 │   ├── ch/                  # Швейцария
-│   └── ...                  # 11 стран EU
+│   └── ...                  # 11 стран EU (at, bg, ch, es, fr, gr, hu, it, pt, ro)
 │
 ├── na/                      # Северная Америка
 │   ├── us/                  # США
@@ -486,6 +492,79 @@ print(profile.currency)  # "EUR"
 print(profile.competitors)  # [ATU, Vertragshändler, ...]
 ```
 
+## Поток документов клиента (Document Pipeline)
+
+```text
+input/{company}/
+├── brief.md
+├── company_info.txt
+├── data.xlsx
+├── commercial_offer.docx
+└── presentation.pdf
+        │
+        ▼
+┌─────────────────┐
+│ DocumentParser   │  PyMuPDF (PDF), python-docx (DOCX),
+│ DocumentLoader   │  openpyxl (XLSX), regex (MD/TXT)
+└────────┬────────┘
+         │  List[ParsedDocument]
+         ▼
+┌─────────────────┐
+│ DocumentAnalyzer │  Извлечение: services, contacts,
+│ (sync)           │  key_facts, FAQ, prices
+└────────┬────────┘
+         │  DocumentContext
+         ▼
+┌─────────────────────────────────────────────────┐
+│              EnrichedContextBuilder               │
+│                                                   │
+│  Industry KB  +  DocumentContext  +  Learnings   │
+│       │               │                │          │
+│       └───────────────┼────────────────┘          │
+│                       ▼                           │
+│              Enriched Prompt Context              │
+└────────────────────────┬──────────────────────────┘
+                         │
+         ┌───────────────┼───────────────┐
+         ▼               ▼               ▼
+   ┌──────────┐   ┌──────────┐   ┌──────────────┐
+   │ DISCOVERY │   │ ANALYSIS │   │ PROPOSAL /   │
+   │ phase     │   │ phase    │   │ REFINEMENT   │
+   └──────────┘   └──────────┘   └──────┬───────┘
+                                         │
+                                         ▼
+                                  ┌──────────────┐
+                                  │AnketaExtractor│
+                                  │(+doc_context) │
+                                  └──────┬───────┘
+                                         │
+                                         ▼
+                                  ┌──────────────┐
+                                  │ FinalAnketa  │
+                                  │ (с данными   │
+                                  │  из документов)│
+                                  └──────────────┘
+```
+
+### EnrichedContextBuilder (`src/knowledge/enriched_builder.py`)
+
+Объединяет три источника контекста для каждой фазы консультации:
+
+1. **Industry KB** — профиль отрасли (pain_points, recommended_functions, competitors, pricing_context)
+2. **DocumentContext** — данные из документов клиента (services, contacts, key_facts)
+3. **Learnings** — накопленный опыт из предыдущих консультаций
+
+```python
+from src.knowledge import EnrichedContextBuilder, IndustryKnowledgeManager
+
+manager = IndustryKnowledgeManager()
+builder = EnrichedContextBuilder(manager, document_context=doc_context)
+
+# Генерация контекста для фазы
+context = builder.build_for_phase("discovery", dialogue_history)
+# → строка для добавления в промпт LLM
+```
+
 ## Хранилища данных
 
 | Хранилище | Путь | Содержимое | Режим |
@@ -495,7 +574,7 @@ print(profile.competitors)  # [ATU, Vertragshändler, ...]
 | PostgreSQL | `localhost:5432` | CompletedAnketa, InterviewSessionDB | Maximum |
 | Output | `output/{date}/{company}_v{N}/` | anketa.md, anketa.json, dialogue.md | Все |
 | Логи | `logs/*.log` | 10 файлов по направлениям + errors.log | Voice + Server |
-| База знаний | `config/industries/` | 8 базовых + региональные профили | Все |
+| База знаний | `config/industries/` | 40 базовых + 920 региональных профилей (968 всего) | Все |
 | Сценарии | `tests/scenarios/*.yaml` | 12 тестовых сценариев | Тестирование |
 | Промпты | `prompts/` | YAML промпты для LLM | Все |
 | Конфигурация | `config/` | профили отраслей, словари, уведомления | Все |
@@ -542,10 +621,10 @@ config/
 │   ├── _countries.yaml          # Метаданные стран (язык, валюта, телефон)
 │   ├── _base/                   # Базовые профили (шаблоны)
 │   │   ├── automotive.yaml
-│   │   └── ...                  # 8 базовых профилей
+│   │   └── ...                  # 40 базовых профилей
 │   ├── eu/de/                   # Региональные профили
 │   │   └── automotive.yaml      # Локализованный профиль (наследует от _base/)
-│   └── ...                      # 6 регионов × 22 страны
+│   └── ...                      # 6 регионов, 23 страны
 ├── synonyms/                    # Словари нормализации полей анкеты
 │   ├── base.yaml                # Общие синонимы (название → company_name)
 │   ├── ru.yaml                  # Русские варианты

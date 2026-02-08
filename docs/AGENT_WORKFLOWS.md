@@ -180,8 +180,9 @@ src/consultant/
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────────┐    │
 │  │  ИНИЦИАЛИЗАЦИЯ                                              │    │
-│  │  ├─► Загрузка IndustryKnowledgeManager (8 профилей)        │    │
-│  │  ├─► Загрузка документов из input/ (если есть)             │    │
+│  │  ├─► Загрузка IndustryKnowledgeManager (40 отраслей)       │    │
+│  │  ├─► Загрузка документов из input/ → DocumentContext      │    │
+│  │  ├─► EnrichedContextBuilder(KB + Documents + Learnings)   │    │
 │  │  └─► ConsultationConfig (профиль: fast/standard/thorough)  │    │
 │  └─────────────────────────────────────────────────────────────┘    │
 │           │                                                          │
@@ -235,11 +236,39 @@ src/consultant/
 | total_max_turns | 25 | 50 | 80 |
 | temperature | 0.5 | 0.7 | 0.8 |
 
-### 2.6 Обогащение контекста
+### 2.6 Обогащение контекста (EnrichedContextBuilder)
 
-- **IndustryKnowledgeManager**: определяет отрасль из диалога, подгружает pain_points, recommended_functions, typical_integrations, FAQ
-- **DocumentContext**: если в `input/` есть документы — парсит PDF/DOCX/MD и добавляет в контекст
-- **KBContextBuilder**: формирует дополнение к промпту из базы знаний
+Три источника контекста объединяются для каждой фазы консультации:
+
+1. **IndustryKnowledgeManager** (40 отраслей, 968 профилей): определяет отрасль из диалога, подгружает pain_points, recommended_functions, typical_integrations, competitors, pricing_context, sales_scripts
+2. **DocumentContext**: если в `input/` есть документы — парсит PDF/DOCX/XLSX/MD/TXT и извлекает services, contacts, key_facts, FAQ
+3. **Learnings**: накопленный опыт из предыдущих консультаций (до 5 последних)
+
+```text
+EnrichedContextBuilder.build_for_phase(phase, dialogue_history)
+    │
+    ├─► IndustryProfile (из KBContextBuilder)
+    │       pain_points, functions, integrations, competitors
+    │
+    ├─► DocumentContext.to_prompt_context()
+    │       key_facts, services, contacts, questions_to_clarify
+    │
+    ├─► Learnings (из profile.learnings)
+    │       + успешные стратегии, • инсайты
+    │
+    └─► → Единая строка контекста для промпта LLM
+```
+
+Контекст передаётся во все 4 фазы и в AnketaExtractor:
+
+```text
+ConsultantInterviewer(document_context=doc_ctx)
+    ├─► DISCOVERY:   _get_kb_context() → EnrichedContextBuilder
+    ├─► ANALYSIS:    _get_kb_context() → EnrichedContextBuilder
+    ├─► PROPOSAL:    _get_kb_context() → EnrichedContextBuilder
+    ├─► REFINEMENT:  _get_kb_context() → EnrichedContextBuilder
+    └─► AnketaExtractor.extract(document_context=doc_ctx)
+```
 
 ### 2.7 Запуск
 
@@ -492,8 +521,9 @@ python scripts/run_test.py auto_service
 python scripts/run_test.py --list
 python scripts/run_test.py auto_service --quiet --no-save
 
-# С документами
-python scripts/run_test.py logistics_company --input-dir input/test_logistics/
+# С документами клиента (Stage 7.5)
+python scripts/run_test.py logistics_company --input-dir input/test_docs/
+python scripts/run_test.py auto_service --input-dir input/test/
 
 # Программно
 from src.agent_client_simulator import SimulatedClient, ConsultationTester
@@ -502,6 +532,12 @@ client = SimulatedClient.from_yaml("tests/scenarios/auto_service.yaml")
 tester = ConsultationTester(client=client, verbose=True)
 result = await tester.run("auto_service")
 ```
+
+При использовании `--input-dir`:
+- Документы загружаются через `DocumentLoader` → `DocumentAnalyzer`
+- `DocumentContext` передаётся в `ConsultantInterviewer` и далее во все 4 фазы
+- `AnketaExtractor.extract()` получает `document_context` для обогащения анкеты
+- В отчёте `TestResult` появляется поле `documents_loaded` со списком файлов
 
 ---
 

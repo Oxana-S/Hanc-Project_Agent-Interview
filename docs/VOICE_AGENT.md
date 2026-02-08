@@ -129,6 +129,7 @@ python scripts/run_voice_agent.py start
 
 ```python
 from livekit.plugins import openai as lk_openai
+from livekit.plugins.openai.realtime.realtime_model import TurnDetection
 
 model = lk_openai.realtime.RealtimeModel.with_azure(
     azure_deployment="gpt-4o-realtime-preview",
@@ -137,8 +138,18 @@ model = lk_openai.realtime.RealtimeModel.with_azure(
     api_version="2024-12-17",
     voice="alloy",
     temperature=0.7,
+    turn_detection=TurnDetection(
+        type="server_vad",
+        threshold=0.6,
+        prefix_padding_ms=300,
+        silence_duration_ms=1200,
+    ),
 )
 ```
+
+> **Миграция (livekit-plugins-openai >= 1.2.18):** Класс `ServerVadOptions` удалён.
+> Используйте `TurnDetection(type="server_vad", ...)` из
+> `livekit.plugins.openai.realtime.realtime_model`.
 
 ### VoiceAgent & AgentSession
 
@@ -250,6 +261,7 @@ node tests/e2e_voice_test.js
 
 ## Версии
 
-- LiveKit Agents SDK: 1.2.18
+- LiveKit Agents SDK: >= 1.2.18
+- livekit-plugins-openai: >= 1.2.18 (TurnDetection вместо ServerVadOptions)
 - livekit-client (JS): 2.9.3
 - Azure OpenAI API: 2024-12-17

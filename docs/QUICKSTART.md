@@ -121,10 +121,23 @@ http://localhost:8000
 
 ## 6. Запуск тестов
 
-### Юнит-тесты (252 теста)
+### Юнит-тесты (972 теста)
 
 ```bash
 pytest
+```
+
+### Парсинг документов клиента (Stage 6.5)
+
+```bash
+# Генерация тестовых документов (PDF, DOCX, XLSX, TXT, MD)
+python scripts/generate_test_documents.py
+
+# Тест парсинга всех форматов
+python scripts/test_document_parsing.py
+
+# Подробный вывод
+python scripts/test_document_parsing.py --verbose
 ```
 
 ### Симуляция консультации (12 сценариев)
@@ -141,6 +154,9 @@ python scripts/run_test.py auto_service --quiet
 
 # Без сохранения отчётов
 python scripts/run_test.py auto_service --no-save
+
+# С документами клиента (Stage 7.5)
+python scripts/run_test.py logistics_company --input-dir input/test_docs/
 ```
 
 ### Pipeline: Тест → Ревью

@@ -10,7 +10,7 @@
 |------|---------------|------------|----------------------|
 | 1. Юнит-тесты | Логика модулей | pytest | 100% passed, coverage ≥50% |
 | 2. Интеграция | Связи между модулями | pytest + fixtures | Все интеграционные тесты passed |
-| 3. Мульти-региональная KB | 960 YAML-профилей, 23 страны | validate scripts | 0 errors, 0 deep warnings |
+| 3. Мульти-региональная KB | 968 YAML-профилей, 23 страны | validate scripts | 0 errors, 0 deep warnings |
 | 4. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
 | 5. Подключения | DeepSeek, Azure OpenAI, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
 | 6. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
@@ -58,7 +58,7 @@ pytest tests/unit/test_knowledge.py -v
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
-| Тесты passed | 100% | 953/953 |
+| Тесты passed | 100% | 972/972 |
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
@@ -125,7 +125,7 @@ pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 
 ## Этап 3: Мульти-региональная Knowledge Base (валидация и ремонт)
 
-Проект содержит **960 YAML-профилей** (40 отраслей × 23 страны + 40 базовых), покрывающих 7 регионов: EU, NA, LATAM, MENA, SEA, RU и базовые профили (`_base`).
+Проект содержит **968 YAML-профилей** (40 отраслей × 23 страны + 40 базовых), покрывающих 7 регионов: EU, NA, LATAM, MENA, SEA, RU и базовые профили (`_base`).
 
 > **Почему этот этап идёт третьим:** KB валидация — полностью оффлайн-операция (не требует API-ключей или внешних сервисов). Выявляет проблемы данных до того, как они повлияют на функциональные тесты в этапах 6–8.
 
@@ -142,7 +142,7 @@ pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 | L5 | Валидность значений — severity/priority enums (high/medium/low), числовые цены |
 
 ```bash
-# Полная базовая валидация (все 960 профилей)
+# Полная базовая валидация (все 968 профилей)
 python scripts/validate_all_profiles.py
 
 # С подробным выводом
@@ -596,14 +596,15 @@ python -c "
 from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
 
 manager = IndustryKnowledgeManager()
-builder = EnrichedContextBuilder(manager)
+builder = EnrichedContextBuilder(manager, document_context=None)
 
 dialogue = [{'role': 'user', 'content': 'Мы автосервис, занимаемся ремонтом машин'}]
 
 for phase in ['discovery', 'analysis', 'proposal', 'refinement']:
     context = builder.build_for_phase(phase, dialogue)
     has_learnings = 'НАКОПЛЕННЫЙ ОПЫТ' in context
-    print(f'{phase}: {len(context)} chars, learnings: {has_learnings}')
+    has_docs = 'ДОКУМЕНТЫ КЛИЕНТА' in context
+    print(f'{phase}: {len(context)} chars, learnings: {has_learnings}, docs: {has_docs}')
 "
 ```
 
@@ -767,8 +768,14 @@ python scripts/test_document_parsing.py --dir input/test_docs
 |----------|---------|-----------|
 | auto_service | Автосервис | Базовый |
 | auto_service_skeptic | Автосервис | Скептик |
+| beauty_salon_glamour | Салон красоты | С документами |
 | logistics_company | Логистика | Средний |
 | medical_center | Медицина | Средний |
+| medical_clinic | Медицина | Детальный |
+| online_school | Образование | Средний |
+| real_estate_agency | Недвижимость | Средний |
+| realestate_domstroy | Недвижимость | С документами |
+| restaurant_delivery | HoReCa | Средний |
 | restaurant_italiano | HoReCa | Средний |
 | vitalbox | Франшиза | Сложный |
 
@@ -1005,7 +1012,7 @@ pytest --tb=short
 # 2. Покрытие (Этап 1 — должно быть ≥50%)
 pytest --cov=src --cov-report=term | tail -5
 
-# 3. Knowledge Base валидация (Этап 3 — 960 профилей)
+# 3. Knowledge Base валидация (Этап 3 — 968 профилей)
 python scripts/validate_all_profiles.py --errors-only
 python scripts/validate_deep.py
 
