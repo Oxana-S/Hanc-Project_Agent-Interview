@@ -8,6 +8,11 @@
 
 import asyncio
 import os
+import sys
+
+# Добавляем корень проекта в path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from datetime import datetime
 from dotenv import load_dotenv
 from rich.console import Console
