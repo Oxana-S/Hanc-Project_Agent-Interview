@@ -159,7 +159,8 @@ class ConsultationTester:
             # Create interviewer
             self.interviewer = ConsultantInterviewer(
                 pattern=self.pattern,
-                locale="ru"
+                locale="ru",
+                document_context=self.document_context
             )
 
             # Run with mocked input

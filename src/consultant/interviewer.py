@@ -787,7 +787,8 @@ class ConsultantInterviewer:
                 dialogue_history=self.dialogue_history,
                 business_analysis=self.business_analysis,
                 proposed_solution=self.proposed_solution,
-                duration_seconds=duration_seconds
+                duration_seconds=duration_seconds,
+                document_context=self.document_context
             )
 
             # === REVIEW STEP ===

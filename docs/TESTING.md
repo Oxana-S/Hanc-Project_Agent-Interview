@@ -14,7 +14,9 @@
 | 4. Production readiness | .env, директории, API | чек-лист + smoke test | Все проверки пройдены |
 | 5. Подключения | DeepSeek, Azure OpenAI, Redis, PostgreSQL, LiveKit | python scripts | Реальные соединения установлены |
 | 6. Обогащение контекста | Knowledge Base, Documents, Learnings | python scripts | Профили валидны, контекст генерируется |
+| 6.5. Парсинг документов | PDF, DOCX, XLSX, TXT, MD из input/ | test_document_parsing.py | 25/25 файлов, 5 форматов, 5 папок |
 | 7. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
+| 7.5. LLM + документы | Симуляция с --input-dir | run_test.py --input-dir | Документы загружены, контекст в консультации |
 | 8. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
 
 **Фазы:**
@@ -646,6 +648,107 @@ pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term
 
 ---
 
+## Этап 6.5: Парсинг документов из input/
+
+> **Требования:** Библиотеки PyMuPDF, python-docx, openpyxl установлены. Тестовые документы сгенерированы.
+
+### 6.5.1 Описание
+
+Пользователи размещают документы о своей компании в папках `input/{company_name}/`. DocumentParser парсит файлы, DocumentAnalyzer извлекает контекст, который потом используется в консультации (Stage 7 с `--input-dir`).
+
+### 6.5.2 Поддерживаемые форматы
+
+| Формат | Библиотека | Что извлекается |
+|--------|-----------|-----------------|
+| PDF | PyMuPDF (fitz) | Текст по страницам, метаданные (title, author) |
+| DOCX | python-docx | Параграфы по секциям, таблицы, метаданные |
+| XLSX/XLS | openpyxl | Данные по листам, формат: `col1 \| col2 \| col3` |
+| MD | regex | Секции по заголовкам `#` |
+| TXT | regex | Весь текст как один чанк |
+
+### 6.5.3 Структура input/
+
+```text
+input/
+├── test_docs/           # ГрузовичкоФ (логистика)
+│   ├── test_brief.md    # Бриф (16 строк)
+│   ├── company_info.txt # Описание компании
+│   ├── data.xlsx        # Прайс-лист + скидки
+│   ├── commercial_offer.docx  # Коммерческое предложение
+│   └── presentation.pdf # Презентация (3 стр.)
+├── restaurant_italiano/ # Bella Italia (HoReCa)
+│   ├── brief.md
+│   ├── company_info.txt
+│   ├── data.xlsx        # Меню + статистика
+│   ├── commercial_offer.docx
+│   └── presentation.pdf
+├── beauty_salon/        # Glamour (wellness)
+│   ├── brief.md
+│   ├── company_info.txt
+│   ├── data.xlsx        # Прайс + загрузка филиалов
+│   ├── commercial_offer.docx
+│   └── presentation.pdf
+├── realestate/          # АН ДомСтрой (недвижимость)
+│   ├── brief.md
+│   ├── company_info.txt
+│   ├── data.xlsx        # Объекты + воронка продаж
+│   ├── commercial_offer.docx
+│   └── presentation.pdf
+└── test/                # АвтоПрофи (автосервис)
+    ├── brief.md
+    ├── company_info.txt
+    ├── data.xlsx        # Прайс-лист
+    ├── commercial_offer.docx
+    └── presentation.pdf
+```
+
+### 6.5.4 Генерация тестовых документов
+
+```bash
+# Генерация/регенерация всех тестовых файлов (20 файлов, 5 папок)
+python scripts/generate_test_documents.py
+```
+
+Скрипт создаёт TXT, XLSX, DOCX, PDF для каждой из 5 компаний и проверяет парсинг.
+
+### 6.5.5 Запуск теста
+
+```bash
+# Полный тест парсинга (все 5 папок, все форматы)
+python scripts/test_document_parsing.py
+
+# С подробным выводом (preview чанков, контакты, промпт)
+python scripts/test_document_parsing.py --verbose
+
+# Конкретная папка
+python scripts/test_document_parsing.py --dir input/test_docs
+```
+
+### 6.5.6 Что проверяется
+
+| # | Проверка | Описание | Критерий |
+|---|----------|----------|----------|
+| 1 | Парсинг PDF | PyMuPDF извлекает текст | chunks > 0, words > 0 |
+| 2 | Парсинг DOCX | python-docx читает параграфы и таблицы | chunks > 0, words > 0 |
+| 3 | Парсинг XLSX | openpyxl читает листы и строки | chunks > 0, words > 0 |
+| 4 | Парсинг TXT | Текст читается целиком | chunks > 0, words > 0 |
+| 5 | Парсинг MD | Разбивка по заголовкам | chunks > 0, words > 0 |
+| 6 | DocumentLoader | Загрузка всех файлов из папки | count == кол-во файлов |
+| 7 | DocumentAnalyzer | Извлечение контекста | key_facts > 0, contacts > 0 |
+| 8 | to_prompt_context() | Генерация строки для промпта | length > 0 |
+
+### 6.5.7 Критерии прохождения
+
+| Метрика | Критерий | Текущее |
+|---------|----------|---------|
+| Файлов распарсено | 25/25 | 25/25 ✅ |
+| Форматов покрыто | 5/5 (.pdf, .docx, .xlsx, .txt, .md) | 5/5 ✅ |
+| Папок протестировано | 5/5 | 5/5 ✅ |
+| Analyzer: контакты | ≥1 на папку | 3/папку ✅ |
+| Analyzer: prompt context | >0 chars на папку | 1000-1400 chars ✅ |
+
+---
+
 ## Этап 7: LLM-симуляция
 
 > **Требования:** Этап 5 пройден (подключение к LLM API работает).
@@ -705,6 +808,66 @@ python scripts/run_test.py logistics_company --input-dir input/test_docs/
 - `output/tests/{scenario}_{timestamp}.json` — полный отчёт
 - `output/tests/{scenario}_{timestamp}.md` — человекочитаемый отчёт
 - Console: Rich-таблица с результатами
+
+---
+
+## Этап 7.5: LLM-симуляция с документами
+
+> **Требования:** Этапы 6.5 и 7 пройдены (документы парсятся, симуляция без документов работает).
+
+### 7.5.1 Описание
+
+Проверяет, что документы из `input/` реально подгружаются и влияют на консультацию. Используется флаг `--input-dir`.
+
+### 7.5.2 Запуск
+
+```bash
+# Логистика с документами ГрузовичкоФ
+python scripts/run_test.py logistics_company --input-dir input/test_docs/
+
+# Автосервис с документами АвтоПрофи
+python scripts/run_test.py auto_service --input-dir input/test/
+
+# Ресторан с документами Bella Italia
+python scripts/run_test.py restaurant_italiano --input-dir input/restaurant_italiano/
+```
+
+### 7.5.3 Что проверяется
+
+| # | Проверка | Описание | Критерий |
+|---|----------|----------|----------|
+| 1 | Документы загружены | В логе видно `Загружено N документов` | N > 0 |
+| 2 | Все форматы прочитаны | MD + TXT + XLSX + DOCX + PDF | 5 файлов |
+| 3 | Контекст создан | DocumentAnalyzer возвращает DocumentContext | summary не пустая |
+| 4 | Контакты извлечены | Телефон, email из документов | contacts > 0 |
+| 5 | Консультация завершена | 4/4 фазы, анкета 100% | status = completed |
+| 6 | documents_loaded в отчёте | TestResult содержит список файлов | list не пуст |
+
+### 7.5.4 Критерии прохождения
+
+| Метрика | Критерий |
+|---------|----------|
+| Документы загружены | 5 файлов из input/test_docs/ |
+| Консультация | 4/4 фазы, анкета ≥90% |
+| documents_loaded | Непустой список в TestResult |
+| Ошибки | 0 ошибок загрузки документов |
+
+### 7.5.5 Конфигурация документов в YAML-сценарии
+
+Альтернативно, можно указать `input_dir` прямо в YAML-сценарии:
+
+```yaml
+# tests/scenarios/logistics_company.yaml
+persona:
+  name: "Дмитрий Волков"
+  company: "ГрузовикОнлайн"
+  # ...
+
+documents:
+  input_dir: "input/test_docs/"
+```
+
+При наличии `documents.input_dir` в YAML, флаг `--input-dir` не нужен.
 
 ---
 
@@ -882,8 +1045,14 @@ async def test():
 asyncio.run(test())
 "
 
+# 6.5. Парсинг документов (Этап 6.5 — все форматы)
+python scripts/test_document_parsing.py
+
 # 7. LLM-симуляция (Этап 7 — один сценарий)
 python scripts/run_test.py auto_service --quiet
+
+# 7.5. LLM + документы (Этап 7.5 — с input-dir)
+python scripts/run_test.py logistics_company --input-dir input/test_docs/ --quiet
 ```
 
 ---
@@ -907,6 +1076,11 @@ python scripts/run_test.py auto_service --quiet
 | KB валидация: payback_months=0 или >36 | Запустите `python scripts/fix_l10_pricing.py` |
 | KB валидация: отсутствуют секции | Запустите `python scripts/fix_incomplete_profiles.py --provider=azure` |
 | KB: "Rp 50.000" парсится как 50 | Индонезийская точка = разделитель тысяч, исправьте вручную на 50000 |
+| PDF не парсится | `pip install pymupdf` (библиотека fitz) |
+| DOCX не парсится | `pip install python-docx` |
+| XLSX не парсится | `pip install openpyxl` |
+| Нет тестовых документов в input/ | `python scripts/generate_test_documents.py` |
+| DocumentLoader: 0 documents | Проверьте расширения файлов (.pdf, .docx, .md, .xlsx, .txt) |
 | `ServerVadOptions` not found | `livekit-plugins-openai` >= 1.2.18 удалил `ServerVadOptions`. Используйте `TurnDetection(type="server_vad", ...)` из `livekit.plugins.openai.realtime.realtime_model` |
 | E2E: STT не транскрибирует | Puppeteer fake audio = синтетический тон. Замените `tests/fixtures/test_speech_ru.wav` на WAV с настоящей речью (см. Этап 8.2) |
 | E2E: Agent не отвечает | Проверьте `/tmp/agent_entrypoint.log`. Если `STEP 1/5 FAILED` — ошибка SDK. Если `USER STATE: away` — нет аудио |
