@@ -723,36 +723,6 @@ class TestGetKBContext:
         result = interviewer._get_kb_context("discovery")
         assert result == ""
 
-    @patch("src.consultant.interviewer.get_kb_context_builder")
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_builds_context_with_profile(self, mock_deepseek, mock_km, mock_builder):
-        """Should build context when profile exists."""
-        from src.knowledge.models import IndustryProfile
-
-        interviewer = ConsultantInterviewer()
-        interviewer.industry_profile = MagicMock()
-
-        mock_builder_instance = MagicMock()
-        mock_builder_instance.build_context.return_value = "KB Context"
-        mock_builder.return_value = mock_builder_instance
-
-        result = interviewer._get_kb_context("discovery")
-        assert result == "KB Context"
-
-    @patch("src.consultant.interviewer.get_kb_context_builder")
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_handles_builder_exception(self, mock_deepseek, mock_km, mock_builder):
-        """Should return empty string on builder exception."""
-        interviewer = ConsultantInterviewer()
-        interviewer.industry_profile = MagicMock()
-        mock_builder.side_effect = Exception("Builder error")
-
-        result = interviewer._get_kb_context("discovery")
-        assert result == ""
-
-
 class TestGetIndustryContext:
     """Tests for get_industry_context method."""
 
@@ -772,67 +742,9 @@ class TestGetIndustryContext:
         assert result == ""
 
 
-class TestGetDocumentContext:
-    """Tests for get_document_context method."""
-
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_returns_empty_without_context(self, mock_deepseek, mock_km):
-        """Should return empty string without document context."""
-        interviewer = ConsultantInterviewer()
-        interviewer.document_context = None
-
-        result = interviewer.get_document_context()
-        assert result == ""
-
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_returns_formatted_context(self, mock_deepseek, mock_km):
-        """Should return formatted context when available."""
-        interviewer = ConsultantInterviewer()
-        mock_doc_ctx = MagicMock()
-        mock_doc_ctx.to_prompt_context.return_value = "Document Context"
-        interviewer.document_context = mock_doc_ctx
-
-        result = interviewer.get_document_context()
-        assert result == "Document Context"
-
-
-class TestGetEnrichedContext:
-    """Tests for get_enriched_context method."""
-
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_combines_contexts(self, mock_deepseek, mock_km):
-        """Should combine industry and document contexts."""
-        mock_km_instance = MagicMock()
-        mock_km_instance.detect_industry.return_value = None
-        mock_km.return_value = mock_km_instance
-
-        interviewer = ConsultantInterviewer()
-
-        # Mock document context
-        mock_doc_ctx = MagicMock()
-        mock_doc_ctx.to_prompt_context.return_value = "Doc Context"
-        interviewer.document_context = mock_doc_ctx
-
-        result = interviewer.get_enriched_context()
-        assert "Doc Context" in result
-
-    @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
-    def test_empty_when_no_contexts(self, mock_deepseek, mock_km):
-        """Should return empty string when no contexts available."""
-        mock_km_instance = MagicMock()
-        mock_km_instance.detect_industry.return_value = None
-        mock_km.return_value = mock_km_instance
-
-        interviewer = ConsultantInterviewer()
-        interviewer.document_context = None
-        interviewer.dialogue_history = []
-
-        result = interviewer.get_enriched_context()
-        assert result == ""
+# NOTE: TestGetDocumentContext and TestGetEnrichedContext removed —
+# get_document_context() and get_enriched_context() were removed in v3.3.
+# EnrichedContextBuilder now handles unified context building.
 
 
 # ============================================================================

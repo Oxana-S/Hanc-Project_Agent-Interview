@@ -165,6 +165,12 @@ class IndustryProfileLoader:
         entry = index.industries[industry_id]
         profile_path = self.config_dir / entry.file
 
+        # Fallback to _base/ directory if not found at root
+        if not profile_path.exists():
+            base_path = self.config_dir / "_base" / entry.file
+            if base_path.exists():
+                profile_path = base_path
+
         # Загружаем YAML
         data = self._load_yaml(profile_path)
         if not data:
@@ -246,6 +252,8 @@ class IndustryProfileLoader:
         if extends:
             # Load base profile
             base_path = self.config_dir / f"{extends}.yaml"
+            if not base_path.exists():
+                base_path = self.config_dir / "_base" / f"{extends}.yaml"
             base_data = self._load_yaml(base_path)
             if not base_data:
                 logger.warning("Base profile not found for inheritance", extends=extends)

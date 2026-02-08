@@ -2,9 +2,13 @@ meta:
   id: logistics
   version: '1.0'
   created_at: '2026-02-04'
-  last_updated: '2026-02-06'
-  tests_run: 2
+  last_updated: '2026-02-08'
+  tests_run: 3
   avg_validation_score: 0.833
+  language: ru
+  languages: []
+  phone_codes: []
+  currency: RUB
 aliases:
 - логистика
 - доставка
@@ -129,6 +133,10 @@ learnings:
 - date: '2026-02-06'
   insight: 'Ошибка валидации: [scenario_match] Компания не совпадает: ожидали ''ГрузовикОнлайн'';
     Мало совпадений по интеграциям: 1/4'
+  source: test_logistics_company
+- date: '2026-02-08'
+  insight: 'Ошибка валидации: [scenario_match] Компания не совпадает: ожидали ''ГрузовикОнлайн'';
+    Мало совпадений по интеграциям: 0/4'
   source: test_logistics_company
 success_benchmarks:
   avg_call_duration_seconds: 180

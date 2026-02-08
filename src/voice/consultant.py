@@ -39,6 +39,7 @@ from livekit.agents import (
 from livekit.agents.voice import Agent as VoiceAgent, AgentSession
 from livekit.agents.voice.room_io import RoomInputOptions
 from livekit.plugins import openai as lk_openai
+from livekit.plugins.openai.realtime.realtime_model import TurnDetection
 
 from src.anketa import AnketaExtractor, AnketaGenerator
 from src.config.prompt_loader import get_prompt
@@ -573,7 +574,8 @@ def _create_realtime_model():
         api_version=azure_api_version,
         voice="alloy",
         temperature=0.7,
-        turn_detection=lk_openai.realtime.ServerVadOptions(
+        turn_detection=TurnDetection(
+            type="server_vad",
             threshold=0.6,
             prefix_padding_ms=300,
             silence_duration_ms=1200,
