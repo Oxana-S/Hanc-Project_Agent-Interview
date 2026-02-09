@@ -31,6 +31,7 @@ class VoiceInterviewerApp {
         this.uniqueLink = null;
         this.isRecording = false;
         this.isConnected = false;
+        this.agentAudioElements = new Map(); // trackSid -> { track, element }
 
         // Anketa state
         this.anketaPollingInterval = null;
@@ -324,11 +325,23 @@ class VoiceInterviewerApp {
             });
             if (track.kind === Track.Kind.Audio) {
                 LOG.info('Attaching AUDIO track from agent to DOM');
+
+                // Clean up any existing element for this track (re-subscribe scenario)
+                const existing = this.agentAudioElements.get(track.sid);
+                if (existing) {
+                    LOG.info('Cleaning up previous audio element for track', track.sid);
+                    existing.track.detach();
+                    if (existing.element.parentNode) existing.element.remove();
+                    existing.element.srcObject = null;
+                    this.agentAudioElements.delete(track.sid);
+                }
+
                 const audioElement = track.attach();
                 audioElement.id = `agent-audio-${track.sid}`;
                 audioElement.muted = false;
                 audioElement.volume = 1.0;
                 document.body.appendChild(audioElement);
+                this.agentAudioElements.set(track.sid, { track, element: audioElement });
 
                 // Ensure playback starts (browser autoplay policy)
                 const playPromise = audioElement.play();
@@ -357,6 +370,18 @@ class VoiceInterviewerApp {
                 trackKind: track.kind,
                 participantIdentity: participant.identity,
             });
+
+            // Clean up audio elements to prevent memory leaks and stale playback
+            if (track.kind === Track.Kind.Audio) {
+                const entry = this.agentAudioElements.get(track.sid);
+                if (entry) {
+                    LOG.info('Cleaning up audio element for unsubscribed track', track.sid);
+                    track.detach();
+                    if (entry.element.parentNode) entry.element.remove();
+                    entry.element.srcObject = null;
+                    this.agentAudioElements.delete(track.sid);
+                }
+            }
         });
 
         this.room.on(RoomEvent.TrackPublished, (publication, participant) => {
@@ -448,6 +473,14 @@ class VoiceInterviewerApp {
             if (data.unique_link) {
                 this.uniqueLink = data.unique_link;
             }
+
+            // Clean up all agent audio elements before disconnect
+            this.agentAudioElements.forEach(({ track, element }) => {
+                track.detach();
+                if (element.parentNode) element.remove();
+                element.srcObject = null;
+            });
+            this.agentAudioElements.clear();
 
             if (this.room) {
                 await this.room.disconnect();

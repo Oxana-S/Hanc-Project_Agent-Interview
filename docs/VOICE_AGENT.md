@@ -226,6 +226,25 @@ room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
 2. Убедитесь, что `audioElement.play()` не заблокирован
 3. Проверьте громкость в системе
 
+### Агент замолкает после прерывания (stuttering/silence)
+
+Известный баг LiveKit Agents SDK ([#3418](https://github.com/livekit/agents/issues/3418)):
+при быстрых последовательных прерываниях флаг `_interrupted_event` не сбрасывается,
+и аудио-фреймы нового ответа молча отбрасываются. Агент в состоянии `speaking`,
+текст генерируется, но аудио — тишина.
+
+**Решение:**
+
+- `AgentSession` настроен с `min_interruption_duration=0.5`, `min_interruption_words=1`,
+  `false_interruption_timeout=2.0`, `resume_false_interruption=True`
+- Это предотвращает ложные срабатывания VAD и восстанавливает речь после ложных прерываний
+- Для полного исправления рекомендуется обновить `livekit-agents` до >= 1.4.0
+
+Также Azure OpenAI Realtime API может:
+
+- Переключиться на text-only стрим (без TTS) при быстрой отмене+создании ответа
+- Приостановить отправку событий на 20-40 секунд ([Community report](https://community.openai.com/t/1368051))
+
 ### Агент не подключается
 
 1. Проверьте LIVEKIT_* переменные в `.env`

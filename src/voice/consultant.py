@@ -20,6 +20,7 @@ v1.3: Подробное логирование для диагностики.
 
 import asyncio
 import os
+import sys
 import traceback
 import uuid
 from datetime import datetime
@@ -659,6 +660,10 @@ async def entrypoint(ctx: JobContext):
         session = AgentSession(
             llm=realtime_model,
             allow_interruptions=True,
+            min_interruption_duration=0.5,   # Ignore speech < 0.5s (noise filter)
+            min_interruption_words=1,        # Require at least 1 word from STT
+            false_interruption_timeout=2.0,  # Wait 2s before declaring false positive
+            resume_false_interruption=True,  # Resume agent speech after false positive
         )
         debug_log.info("STEP 4/5: AgentSession created")
 
@@ -736,6 +741,12 @@ def run_voice_agent():
         azure_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
     )
     logger.info("=" * 60)
+
+    # LiveKit Agents SDK >= 1.0 требует subcommand (dev/start/connect).
+    # По умолчанию запускаем в dev-режиме для совместимости с документацией:
+    #   python scripts/run_voice_agent.py
+    if len(sys.argv) == 1:
+        sys.argv.append("dev")
 
     # agent_name отключает автоматический dispatch - агент будет запускаться
     # только при явном вызове через CreateAgentDispatchRequest
