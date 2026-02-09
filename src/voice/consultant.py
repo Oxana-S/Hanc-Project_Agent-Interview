@@ -575,6 +575,7 @@ def _create_realtime_model():
         api_version=azure_api_version,
         voice="alloy",
         temperature=0.7,
+        max_response_output_tokens=4096,  # Allow long responses (lists of 20+ items)
         turn_detection=TurnDetection(
             type="server_vad",
             threshold=0.6,
