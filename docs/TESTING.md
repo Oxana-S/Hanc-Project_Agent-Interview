@@ -63,7 +63,7 @@ pytest tests/unit/test_knowledge.py -v
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
-| Тесты passed | 100% | 1032/1032 |
+| Тесты passed | 100% | 1039/1039 |
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
@@ -124,7 +124,7 @@ tests/
 │   ├── test_cli_interface.py      # CLI dashboard
 │   ├── test_knowledge.py          # Industry profiles, matching
 │   ├── test_documents.py          # Document parsing, analysis
-│   ├── test_voice_pipeline_wiring.py  # Pipeline wiring (32 теста)
+│   ├── test_voice_pipeline_wiring.py  # Pipeline wiring (39 тестов)
 │   │   ├── TestVoiceConsultationSessionFlags  # Флаги: review_started, research_done, kb_enriched
 │   │   ├── TestNotificationManagerWiring      # NotificationManager → _finalize_and_save()
 │   │   ├── TestReviewPhaseWiring              # Review phase → _extract_and_update_anketa()
@@ -168,14 +168,15 @@ tests/
 | 7 | `test_limit_parameter` | `?limit=2` ограничивает результат |
 | 8 | `test_multiple_sessions_ordered_newest_first` | Порядок: новые сначала |
 
-#### API Server: `TestPageRoutes` (4 теста)
+#### API Server: `TestPageRoutes` (5 тестов)
 
 | # | Тест | Что проверяет |
 |---|------|---------------|
-| 1 | `test_root_does_not_500` | `GET /` не возвращает 500 |
-| 2 | `test_session_page_valid_link_does_not_500` | `GET /session/{link}` для существующей сессии |
-| 3 | `test_review_page_invalid_link_returns_404` | `GET /session/bad/review` → 404 |
-| 4 | `test_review_page_valid_link_does_not_500` | `GET /session/{link}/review` для существующей сессии |
+| 1 | `test_index_does_not_500` | `GET /` не возвращает 500 |
+| 2 | `test_session_page_invalid_link_returns_404` | `GET /session/{bad_link}` → 404 |
+| 3 | `test_session_page_valid_link_does_not_500` | `GET /session/{link}` для существующей сессии |
+| 4 | `test_review_page_invalid_link_returns_404` | `GET /session/bad/review` → 404 |
+| 5 | `test_review_page_valid_link_does_not_500` | `GET /session/{link}/review` для существующей сессии |
 
 #### SessionManager: `TestDeleteSessions` (5 тестов)
 
@@ -1757,7 +1758,7 @@ node tests/e2e_voice_test.js
 Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
 
 ```bash
-# 1. Юнит-тесты (Этап 1 — должны пройти все, 1032 теста)
+# 1. Юнит-тесты (Этап 1 — должны пройти все, 1039 тестов)
 pytest --tb=short
 
 # 1.1. Dashboard/UI тесты (Этап 1 — 19 тестов)
