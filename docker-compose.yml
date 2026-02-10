@@ -8,27 +8,18 @@ services:
       - "443:443"
     volumes:
       - ./config/nginx/nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+      - ./config/nginx/start.sh:/start.sh:ro
       - ./data/certbot/conf:/etc/letsencrypt:ro
       - ./data/certbot/www:/var/www/certbot:ro
     environment:
       - DOMAIN=${DOMAIN:-localhost}
-      - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
-      - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
-      - NGINX_ENVSUBST_FILTER=DOMAIN
     depends_on:
       web:
         condition: service_started
     restart: unless-stopped
     networks:
       - hanc_network
-    # Process template (entrypoint skips envsubst when CMD != "nginx")
-    # then reload every 6h to pick up renewed certificates
-    command: >
-      /bin/sh -c '
-        envsubst "$${DOMAIN}" < /etc/nginx/templates/nginx.conf.template > /etc/nginx/nginx.conf &&
-        while :; do sleep 6h & wait $${!}; nginx -s reload; done &
-        nginx -g "daemon off;"
-      '
+    command: ["/bin/sh", "/start.sh"]
 
   # --- Certbot (auto-renewal) ---
   certbot:
