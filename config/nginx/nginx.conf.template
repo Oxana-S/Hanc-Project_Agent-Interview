@@ -49,8 +49,9 @@ http {
 
     # HTTPS
     server {
-        listen 443 ssl http2;
-        listen [::]:443 ssl http2;
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        http2 on;
         server_name ${DOMAIN};
 
         # SSL certificates (Let's Encrypt)
@@ -63,12 +64,6 @@ http {
         ssl_session_timeout 1d;
         ssl_session_cache shared:SSL:10m;
         ssl_session_tickets off;
-
-        # OCSP Stapling
-        ssl_stapling on;
-        ssl_stapling_verify on;
-        resolver 8.8.8.8 8.8.4.4 valid=300s;
-        resolver_timeout 5s;
 
         # Security headers
         add_header Strict-Transport-Security "max-age=63072000; includeSubDomains" always;
