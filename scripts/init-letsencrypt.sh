@@ -13,9 +13,11 @@
 
 set -euo pipefail
 
-# Load .env
+# Load .env (only KEY=VALUE lines, strip inline comments)
 if [ -f .env ]; then
-    export $(grep -v '^#' .env | grep -v '^\s*$' | xargs)
+    set -a
+    . .env
+    set +a
 fi
 
 DOMAIN="${DOMAIN:?ERROR: Set DOMAIN in .env}"
