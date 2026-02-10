@@ -21,9 +21,11 @@ services:
     restart: unless-stopped
     networks:
       - hanc_network
-    # Reload every 6h to pick up renewed certificates
+    # Process template (entrypoint skips envsubst when CMD != "nginx")
+    # then reload every 6h to pick up renewed certificates
     command: >
       /bin/sh -c '
+        envsubst "$${DOMAIN}" < /etc/nginx/templates/nginx.conf.template > /etc/nginx/nginx.conf &&
         while :; do sleep 6h & wait $${!}; nginx -s reload; done &
         nginx -g "daemon off;"
       '
