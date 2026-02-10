@@ -1,20 +1,79 @@
 /**
- * Voice Interviewer Web UI
- * Клиентское приложение для голосового взаимодействия
+ * Hanc.AI Voice Consultant — Web UI
+ * Dashboard + Session management + Voice interview
  */
 
-// Debug logger - all messages prefixed for easy filtering in console
 const LOG = {
     info: (...args) => console.log('%c[HANC]', 'color: #2563eb; font-weight: bold', ...args),
     warn: (...args) => console.warn('%c[HANC]', 'color: #d97706; font-weight: bold', ...args),
     error: (...args) => console.error('%c[HANC]', 'color: #dc2626; font-weight: bold', ...args),
-    step: (n, total, msg) => console.log(
-        `%c[HANC STEP ${n}/${total}]`, 'color: #059669; font-weight: bold', msg
-    ),
     event: (name, data) => console.log(
         `%c[HANC EVENT: ${name}]`, 'color: #7c3aed; font-weight: bold', data || ''
     ),
 };
+
+
+// =====================================================================
+// Simple Router
+// =====================================================================
+
+class Router {
+    constructor(app) {
+        this.app = app;
+        window.addEventListener('popstate', () => this.resolve());
+    }
+
+    navigate(path) {
+        window.history.pushState({}, '', path);
+        this.resolve();
+    }
+
+    resolve() {
+        const path = window.location.pathname;
+
+        // /session/:link/review
+        let match = path.match(/^\/session\/([a-f0-9-]+)\/review$/i);
+        if (match) {
+            this.app.showSessionReview(match[1]);
+            return;
+        }
+
+        // /session/:link
+        match = path.match(/^\/session\/([a-f0-9-]+)$/i);
+        if (match) {
+            this.app.showSession(match[1]);
+            return;
+        }
+
+        // / (dashboard)
+        this.app.showDashboard();
+    }
+}
+
+
+// =====================================================================
+// Toast notifications (replaces alert/confirm)
+// =====================================================================
+
+function showToast(message, type = 'info', duration = 3000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('toast-fade');
+        setTimeout(() => toast.remove(), 300);
+    }, duration);
+}
+
+
+// =====================================================================
+// Main Application
+// =====================================================================
 
 class VoiceInterviewerApp {
     constructor() {
@@ -31,7 +90,7 @@ class VoiceInterviewerApp {
         this.uniqueLink = null;
         this.isRecording = false;
         this.isConnected = false;
-        this.agentAudioElements = new Map(); // trackSid -> { track, element }
+        this.agentAudioElements = new Map();
 
         // Anketa state
         this.anketaPollingInterval = null;
@@ -39,251 +98,620 @@ class VoiceInterviewerApp {
         this.focusedField = null;
         this.localEdits = {};
         this.lastServerAnketa = {};
+        this.messageCount = 0;
+        this.roomName = null;
 
-        // Anketa field definitions (order matters for display)
+        // Dashboard state
+        this.currentFilter = '';
+
+        // Anketa field definitions — matches FinalAnketa v2.0 schema
         this.anketaFields = [
-            'company_name', 'contact_name', 'contact_role',
-            'phone', 'email', 'industry', 'company_description',
-            'services', 'current_problems', 'agent_tasks', 'integrations',
+            'company_name', 'contact_name', 'contact_role', 'phone', 'email', 'website',
+            'industry', 'specialization', 'business_type', 'company_description',
+            'services', 'client_types', 'current_problems', 'business_goals',
+            'agent_name', 'agent_purpose', 'agent_tasks',
+            'integrations', 'voice_gender', 'voice_tone', 'call_direction',
+            'transfer_conditions',
+            'constraints', 'compliance_requirements',
             'call_volume', 'budget', 'timeline', 'additional_notes'
         ];
 
-        // Array fields (stored as arrays on server, shown as newline-separated text)
         this.arrayFields = new Set([
-            'services', 'current_problems', 'agent_tasks', 'integrations'
+            'services', 'client_types', 'current_problems', 'business_goals',
+            'agent_tasks', 'integrations', 'transfer_conditions',
+            'constraints', 'compliance_requirements'
         ]);
+
+        this.aiBlocks = [
+            { key: 'faq_items', label: 'FAQ' },
+            { key: 'objection_handlers', label: 'Возражения' },
+            { key: 'sample_dialogue', label: 'Пример диалога' },
+            { key: 'financial_metrics', label: 'Финмодель' },
+            { key: 'competitors', label: 'Конкуренты' },
+            { key: 'market_insights', label: 'Рынок' },
+            { key: 'escalation_rules', label: 'Эскалация' },
+            { key: 'success_kpis', label: 'KPI' },
+            { key: 'launch_checklist', label: 'Чеклист' },
+            { key: 'ai_recommendations', label: 'Рекомендации' },
+        ];
 
         // DOM Elements
         this.elements = {
-            startBtn: document.getElementById('start-btn'),
+            newSessionBtn: document.getElementById('new-session-btn'),
+            logoLink: document.getElementById('logo-link'),
+            // Interview
+            backBtn: document.getElementById('back-to-dashboard'),
             micBtn: document.getElementById('mic-btn'),
             stopBtn: document.getElementById('stop-btn'),
-            newBtn: document.getElementById('new-btn'),
             connectionStatus: document.getElementById('connection-status'),
-            phaseIndicator: document.getElementById('phase-indicator'),
+            sessionCompany: document.getElementById('session-company'),
             progressFill: document.getElementById('progress-fill'),
             progressText: document.getElementById('progress-text'),
             dialogueContainer: document.getElementById('dialogue-container'),
             voiceIndicator: document.getElementById('voice-indicator'),
             voiceStatus: document.getElementById('voice-status'),
-            resultsStats: document.getElementById('results-stats'),
-            resultsFiles: document.getElementById('results-files'),
-            // Anketa elements
+            // Anketa
             anketaForm: document.getElementById('anketa-form'),
             anketaStatusBadge: document.getElementById('anketa-status-badge'),
             confirmAnketaBtn: document.getElementById('confirm-anketa-btn'),
             saveLeaveBtn: document.getElementById('save-leave-btn'),
             copyLinkBtn: document.getElementById('copy-link-btn'),
+            // Document upload
+            docUploadBtn: document.getElementById('doc-upload-btn'),
+            docUploadInput: document.getElementById('doc-upload-input'),
+            docUploadStatus: document.getElementById('doc-upload-status'),
+            // Voice settings
+            silenceSlider: document.getElementById('silence-slider'),
+            silenceValue: document.getElementById('silence-value'),
+            // Review
+            reviewBackBtn: document.getElementById('review-back-btn'),
+            reviewResumeBtn: document.getElementById('review-resume-btn'),
+            reviewCopyLinkBtn: document.getElementById('review-copy-link-btn'),
         };
 
         // Screens
         this.screens = {
-            welcome: document.getElementById('welcome-screen'),
+            dashboard: document.getElementById('dashboard-screen'),
             interview: document.getElementById('interview-screen'),
-            results: document.getElementById('results-screen'),
+            review: document.getElementById('review-screen'),
         };
-
-        // Check LiveKit SDK
-        if (typeof LivekitClient !== 'undefined') {
-            LOG.info('LiveKit JS SDK loaded:', LivekitClient.version || 'version unknown');
-        } else {
-            LOG.error('LiveKit JS SDK NOT LOADED - voice will not work!');
-        }
 
         this.init();
         LOG.info('=== VoiceInterviewerApp ready ===');
     }
 
     init() {
-        this.elements.startBtn.addEventListener('click', () => this.startSession());
+        // Header
+        this.elements.logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.router.navigate('/');
+        });
+        this.elements.newSessionBtn.addEventListener('click', () => this.createAndGoToSession());
+
+        // Interview controls
+        this.elements.backBtn.addEventListener('click', () => this.goBackToDashboard());
         this.elements.micBtn.addEventListener('click', () => this.toggleRecording());
         this.elements.stopBtn.addEventListener('click', () => this.endSession());
-        this.elements.newBtn.addEventListener('click', () => this.resetSession());
 
+        // Anketa actions
         this.elements.confirmAnketaBtn.addEventListener('click', () => this.confirmAnketa());
         this.elements.saveLeaveBtn.addEventListener('click', () => this.saveAndLeave());
         this.elements.copyLinkBtn.addEventListener('click', () => this.copySessionLink());
 
-        this.setupAnketaFieldListeners();
-        this.checkSessionResumption();
-    }
-
-    // ===== Anketa Field Listeners =====
-
-    setupAnketaFieldListeners() {
-        const formFields = this.elements.anketaForm.querySelectorAll('input, textarea');
-        formFields.forEach(field => {
-            const fieldName = field.dataset.field;
-
-            field.addEventListener('focus', () => {
-                this.focusedField = fieldName;
+        // Document upload
+        if (this.elements.docUploadBtn && this.elements.docUploadInput) {
+            this.elements.docUploadBtn.addEventListener('click', () => {
+                this.elements.docUploadInput.click();
             });
-
-            field.addEventListener('blur', () => {
-                if (this.focusedField === fieldName) {
-                    this.focusedField = null;
+            this.elements.docUploadInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    this.uploadDocuments(e.target.files);
                 }
             });
+        }
 
-            field.addEventListener('input', () => {
-                this.localEdits[fieldName] = true;
-                this.scheduleAnketaSave();
+        // Voice settings slider
+        if (this.elements.silenceSlider) {
+            this.elements.silenceSlider.addEventListener('input', (e) => {
+                this.elements.silenceValue.textContent = (e.target.value / 1000).toFixed(1);
+            });
+        }
+
+        // Dashboard filters
+        document.getElementById('filter-tabs')?.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-tab');
+            if (!btn) return;
+            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentFilter = btn.dataset.status || '';
+            this.loadSessions(this.currentFilter);
+        });
+
+        // Review
+        this.elements.reviewBackBtn?.addEventListener('click', () => this.router.navigate('/'));
+        this.elements.reviewResumeBtn?.addEventListener('click', () => {
+            if (this._reviewLink) this.router.navigate(`/session/${this._reviewLink}`);
+        });
+        this.elements.reviewCopyLinkBtn?.addEventListener('click', () => {
+            if (this._reviewLink) {
+                this.copyToClipboard(`${window.location.origin}/session/${this._reviewLink}`);
+                showToast('Ссылка скопирована');
+            }
+        });
+
+        this.setupAnketaFieldListeners();
+
+        // Init router — must be last
+        this.router = new Router(this);
+        this.router.resolve();
+    }
+
+    // ===== Screen Management =====
+
+    showScreen(screenName) {
+        Object.values(this.screens).forEach(s => s.classList.remove('active'));
+        if (this.screens[screenName]) {
+            this.screens[screenName].classList.add('active');
+        }
+    }
+
+    // ===== DASHBOARD =====
+
+    async showDashboard() {
+        this.showScreen('dashboard');
+        this.stopAnketaPolling();
+        await this.loadSessions(this.currentFilter);
+    }
+
+    async loadSessions(statusFilter = '') {
+        this._currentStatusFilter = statusFilter;
+        try {
+            const url = statusFilter
+                ? `/api/sessions?status=${statusFilter}`
+                : '/api/sessions';
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const data = await resp.json();
+            this.renderSessionsTable(data.sessions);
+        } catch (error) {
+            LOG.error('Failed to load sessions:', error);
+            showToast('Ошибка загрузки сессий', 'error');
+        }
+    }
+
+    renderSessionsTable(sessions) {
+        const tbody = document.getElementById('sessions-tbody');
+        const empty = document.getElementById('dashboard-empty');
+        const table = document.getElementById('sessions-table');
+        const selectAll = document.getElementById('select-all-sessions');
+        const deleteBtn = document.getElementById('delete-selected-btn');
+
+        if (!sessions || sessions.length === 0) {
+            tbody.innerHTML = '';
+            table.style.display = 'none';
+            empty.style.display = 'flex';
+            if (deleteBtn) deleteBtn.style.display = 'none';
+            if (selectAll) selectAll.checked = false;
+            return;
+        }
+
+        table.style.display = '';
+        empty.style.display = 'none';
+
+        const statusLabels = {
+            active: 'активна',
+            paused: 'на паузе',
+            confirmed: 'подтверждена',
+            declined: 'отклонена',
+            reviewing: 'на проверке',
+        };
+
+        const LIVEKIT_CLOUD_BASE = 'https://cloud.livekit.io';
+
+        tbody.innerHTML = sessions.map(s => {
+            const date = this._formatDate(s.created_at);
+            const company = s.company_name || '—';
+            const contact = s.contact_name || '—';
+            const status = statusLabels[s.status] || s.status;
+            const duration = s.duration_seconds > 0
+                ? `${Math.round(s.duration_seconds / 60)} мин`
+                : '—';
+            const isActive = s.status === 'active' || s.status === 'paused';
+            const shortId = s.session_id.substring(0, 8);
+            const roomName = s.room_name || '—';
+
+            return `<tr data-link="${s.unique_link}" data-status="${s.status}" data-session-id="${s.session_id}">
+                <td class="td-checkbox"><input type="checkbox" class="session-checkbox" data-id="${s.session_id}"></td>
+                <td class="td-id" title="${s.session_id}">${shortId}</td>
+                <td class="td-date">${date}</td>
+                <td class="td-company">${this._escapeHtml(company)}</td>
+                <td class="td-contact">${this._escapeHtml(contact)}</td>
+                <td class="td-docs">${s.has_documents ? '<span class="doc-indicator" title="Есть документы">📎</span>' : ''}</td>
+                <td class="td-room">${roomName !== '—' ? `<a href="${LIVEKIT_CLOUD_BASE}" target="_blank" class="room-link" title="${roomName}">${roomName}</a>` : '—'}</td>
+                <td><span class="status-badge status-${s.status}">${status}</span></td>
+                <td class="td-duration">${duration}</td>
+                <td class="td-actions">
+                    ${isActive
+                        ? `<button class="btn-table btn-table-primary" data-action="open" data-link="${s.unique_link}">Открыть</button>`
+                        : `<button class="btn-table" data-action="review" data-link="${s.unique_link}">Просмотр</button>`
+                    }
+                    <button class="btn-table btn-table-muted" data-action="copy" data-link="${s.unique_link}" title="Копировать ссылку">🔗</button>
+                </td>
+            </tr>`;
+        }).join('');
+
+        // Checkbox handlers
+        this._setupCheckboxHandlers();
+
+        // Click handlers for table buttons
+        tbody.querySelectorAll('button[data-action]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const action = btn.dataset.action;
+                const link = btn.dataset.link;
+                if (action === 'open') {
+                    this.router.navigate(`/session/${link}`);
+                } else if (action === 'review') {
+                    this.router.navigate(`/session/${link}/review`);
+                } else if (action === 'copy') {
+                    this.copyToClipboard(`${window.location.origin}/session/${link}`);
+                    showToast('Ссылка скопирована');
+                }
+            });
+        });
+
+        // Click on row to navigate (but not on checkbox or link)
+        tbody.querySelectorAll('tr[data-link]').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (e.target.closest('.session-checkbox') || e.target.closest('.td-checkbox') || e.target.closest('a') || e.target.closest('button')) return;
+                const link = row.dataset.link;
+                const status = row.dataset.status;
+                if (status === 'active' || status === 'paused') {
+                    this.router.navigate(`/session/${link}`);
+                } else {
+                    this.router.navigate(`/session/${link}/review`);
+                }
             });
         });
     }
 
-    // ===== Session Resumption =====
+    _setupCheckboxHandlers() {
+        const selectAll = document.getElementById('select-all-sessions');
+        const deleteBtn = document.getElementById('delete-selected-btn');
 
-    async checkSessionResumption() {
-        const path = window.location.pathname;
-        const match = path.match(/^\/session\/([a-f0-9-]+)$/i);
-        if (!match) return;
+        const updateDeleteBtn = () => {
+            const checked = document.querySelectorAll('.session-checkbox:checked');
+            if (deleteBtn) {
+                deleteBtn.style.display = checked.length > 0 ? '' : 'none';
+                deleteBtn.textContent = `Удалить выбранные (${checked.length})`;
+            }
+            if (selectAll) {
+                const all = document.querySelectorAll('.session-checkbox');
+                selectAll.checked = all.length > 0 && checked.length === all.length;
+                selectAll.indeterminate = checked.length > 0 && checked.length < all.length;
+            }
+        };
 
-        const link = match[1];
-        LOG.info('Attempting session resumption for link:', link);
+        // Select all toggle
+        if (selectAll) {
+            selectAll.addEventListener('change', () => {
+                document.querySelectorAll('.session-checkbox').forEach(cb => {
+                    cb.checked = selectAll.checked;
+                });
+                updateDeleteBtn();
+            });
+        }
 
+        // Individual checkbox change
+        document.querySelectorAll('.session-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateDeleteBtn);
+            cb.addEventListener('click', (e) => e.stopPropagation());
+        });
+
+        // Delete button
+        if (deleteBtn) {
+            deleteBtn.onclick = () => this.deleteSelectedSessions();
+        }
+    }
+
+    async deleteSelectedSessions() {
+        const checked = document.querySelectorAll('.session-checkbox:checked');
+        const ids = Array.from(checked).map(cb => cb.dataset.id);
+        if (ids.length === 0) return;
+
+        try {
+            const resp = await fetch('/api/sessions/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ session_ids: ids }),
+            });
+            const data = await resp.json();
+            showToast(`Удалено ${data.deleted} сессий`);
+            this.loadSessions(this._currentStatusFilter);
+        } catch (error) {
+            LOG.error('Delete sessions failed:', error);
+            showToast('Ошибка при удалении', 'error');
+        }
+    }
+
+    // ===== SESSION (Interview) =====
+
+    async showSession(link) {
+        // If already in this session, just show the screen
+        if (this.uniqueLink === link && this.sessionId) {
+            this.showScreen('interview');
+            return;
+        }
+
+        this.showScreen('interview');
+        await this.resumeOrStartSession(link);
+    }
+
+    async resumeOrStartSession(link) {
         try {
             let sessionData = null;
 
+            // Try to find session by link
             let response = await fetch(`/api/session/by-link/${link}`);
             if (response.ok) {
                 sessionData = await response.json();
-                LOG.info('Session found by link:', sessionData.session_id);
             } else {
                 response = await fetch(`/api/session/${link}`);
                 if (response.ok) {
                     sessionData = await response.json();
-                    LOG.info('Session found by ID:', sessionData.session_id);
                 }
             }
 
-            if (sessionData) {
-                this.sessionId = sessionData.session_id || link;
-                this.uniqueLink = sessionData.unique_link || link;
+            if (!sessionData) {
+                showToast('Сессия не найдена', 'error');
+                this.router.navigate('/');
+                return;
+            }
 
-                this.showScreen('interview');
+            this.sessionId = sessionData.session_id || link;
+            this.uniqueLink = sessionData.unique_link || link;
+            this.roomName = sessionData.room_name || null;
+
+            // Update header
+            this.elements.sessionCompany.textContent = sessionData.company_name || 'Новая сессия';
+            this.updateAnketaStatus(sessionData.status || 'active');
+
+            if (sessionData.status === 'active' || sessionData.status === 'paused') {
+                this.elements.stopBtn.disabled = false;
+            }
+
+            // Restore dialogue
+            this.elements.dialogueContainer.innerHTML = '';
+            this.messageCount = 0;
+            if (sessionData.dialogue_history && Array.isArray(sessionData.dialogue_history)) {
+                sessionData.dialogue_history.forEach(msg => {
+                    const role = msg.role === 'assistant' ? 'ai' : 'user';
+                    this.addMessage(role, msg.content);
+                });
+            }
+
+            // Restore anketa
+            if (sessionData.anketa_data) {
+                this.populateAnketaForm(sessionData.anketa_data);
+                this.lastServerAnketa = { ...sessionData.anketa_data };
+            }
+
+            this.startAnketaPolling();
+
+            // Reconnect to LiveKit if active
+            if (sessionData.status === 'active' || sessionData.status === 'paused') {
+                try {
+                    const reconResp = await fetch(`/api/session/${this.sessionId}/reconnect`);
+                    if (reconResp.ok) {
+                        const reconData = await reconResp.json();
+                        await this.connectToRoom(reconData.livekit_url, reconData.user_token, reconData.room_name);
+                        this.updateConnectionStatus(true);
+                        setTimeout(() => this.startRecording(), 1000);
+                    }
+                } catch (err) {
+                    LOG.error('Reconnect error:', err);
+                    this.updateConnectionStatus(false);
+                }
+            } else {
                 this.updateConnectionStatus(false);
-
-                if (sessionData.status === 'active' || sessionData.status === 'paused') {
-                    this.elements.stopBtn.disabled = false;
-                }
-
-                this.updateAnketaStatus(sessionData.status || 'active');
-
-                if (sessionData.dialogue_history && Array.isArray(sessionData.dialogue_history)) {
-                    sessionData.dialogue_history.forEach(msg => {
-                        const role = msg.role === 'assistant' ? 'ai' : 'user';
-                        this.addMessage(role, msg.content);
-                    });
-                }
-
-                if (sessionData.anketa_data) {
-                    this.populateAnketaForm(sessionData.anketa_data);
-                    this.lastServerAnketa = { ...sessionData.anketa_data };
-                }
-
-                this.startAnketaPolling();
-
-                if (sessionData.status === 'paused') {
-                    this.addMessage('ai', 'Добро пожаловать обратно! Вы можете продолжить заполнение анкеты или подтвердить её.');
-                }
             }
+
         } catch (error) {
-            LOG.error('Error resuming session:', error);
+            LOG.error('Error loading session:', error);
+            showToast('Ошибка загрузки сессии', 'error');
         }
     }
 
-    // ===== Session Management =====
+    async createAndGoToSession() {
+        LOG.info('=== CREATE SESSION ===');
+        this.elements.newSessionBtn.disabled = true;
+        this.elements.newSessionBtn.textContent = 'Подключение...';
 
-    async startSession() {
-        LOG.info('=== START SESSION ===');
         try {
-            this.elements.startBtn.disabled = true;
-            this.elements.startBtn.textContent = 'Подключение...';
+            // Check agent health
+            try {
+                const healthResp = await fetch('/api/agent/health');
+                const health = await healthResp.json();
+                if (!health.worker_alive) {
+                    throw new Error('Голосовой агент не запущен. Запустите: ./scripts/agent.sh start');
+                }
+            } catch (e) {
+                if (e.message.includes('агент')) throw e;
+            }
 
-            // Step 1: Create session via API
-            LOG.step(1, 4, 'Creating session via POST /api/session/create ...');
+            // Create session
             const response = await fetch('/api/session/create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ pattern: 'interaction' }),
+                body: JSON.stringify({
+                    pattern: 'interaction',
+                    voice_settings: {
+                        silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '4000', 10),
+                    },
+                }),
             });
 
-            if (!response.ok) {
-                const text = await response.text();
-                LOG.error('Session create failed:', response.status, text);
-                throw new Error(`Failed to create session: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
             const data = await response.json();
             this.sessionId = data.session_id;
             this.uniqueLink = data.unique_link;
+            this.roomName = data.room_name;
 
-            LOG.step(1, 4, 'Session created:');
-            LOG.info('  session_id:', data.session_id);
-            LOG.info('  room_name:', data.room_name);
-            LOG.info('  livekit_url:', data.livekit_url);
-            LOG.info('  token_length:', data.user_token ? data.user_token.length : 0);
-            LOG.info('  unique_link:', data.unique_link);
+            // Reset state
+            this.elements.dialogueContainer.innerHTML = '';
+            this.messageCount = 0;
+            this.localEdits = {};
+            this.lastServerAnketa = {};
+            this.focusedField = null;
+            this.clearAnketaForm();
 
-            if (!data.user_token) {
-                LOG.error('TOKEN IS EMPTY - LiveKit connection will fail!');
-            }
-            if (!data.livekit_url) {
-                LOG.error('LIVEKIT_URL IS EMPTY - LiveKit connection will fail!');
-            }
-
-            // Step 2: Connect to LiveKit room
-            LOG.step(2, 4, `Connecting to LiveKit room: ${data.room_name} ...`);
-            await this.connectToRoom(data.livekit_url, data.user_token, data.room_name);
-            LOG.step(2, 4, 'Connected to LiveKit room');
-
-            // Step 3: Show interview screen
-            LOG.step(3, 4, 'Showing interview screen');
-            this.showScreen('interview');
-            this.updateConnectionStatus(true);
-            this.elements.stopBtn.disabled = false;
+            // Update UI
+            this.elements.sessionCompany.textContent = 'Новая сессия';
             this.updateAnketaStatus('active');
+            this.elements.stopBtn.disabled = false;
+
+            // Navigate
+            this.router.navigate(`/session/${data.unique_link}`);
+
+            // Connect to LiveKit
+            await this.connectToRoom(data.livekit_url, data.user_token, data.room_name);
+            this.updateConnectionStatus(true);
+            this.startAnketaPolling();
 
             this.addMessage('ai', 'Здравствуйте! Я помогу вам создать голосового агента для вашего бизнеса. Расскажите, чем занимается ваша компания?');
 
-            // Step 4: Start anketa polling
-            LOG.step(4, 4, 'Starting anketa polling');
-            this.startAnketaPolling();
-
-            LOG.info('=== SESSION STARTED SUCCESSFULLY ===');
-
-            // Auto-enable microphone after connection
-            LOG.info('Auto-enabling microphone in 1 second...');
             setTimeout(() => this.startRecording(), 1000);
 
         } catch (error) {
-            LOG.error('=== SESSION START FAILED ===', error);
-            this.elements.startBtn.disabled = false;
-            this.elements.startBtn.textContent = 'Начать консультацию';
-            alert('Ошибка подключения: ' + error.message);
+            LOG.error('Session create failed:', error);
+            showToast(error.message || 'Ошибка создания сессии', 'error', 5000);
+        } finally {
+            this.elements.newSessionBtn.disabled = false;
+            this.elements.newSessionBtn.textContent = '+ Новая консультация';
         }
     }
 
+    goBackToDashboard() {
+        // Don't disconnect — session stays active
+        this.stopAnketaPolling();
+        this.router.navigate('/');
+    }
+
+    // ===== SESSION REVIEW =====
+
+    async showSessionReview(link) {
+        this.showScreen('review');
+        this._reviewLink = link;
+
+        try {
+            const resp = await fetch(`/api/session/by-link/${link}`);
+            if (!resp.ok) throw new Error('Сессия не найдена');
+            const data = await resp.json();
+
+            // Header
+            document.getElementById('review-company').textContent = data.company_name || '—';
+            const badge = document.getElementById('review-status-badge');
+            const statusLabels = { active: 'активна', paused: 'на паузе', confirmed: 'подтверждена', declined: 'отклонена' };
+            badge.textContent = statusLabels[data.status] || data.status;
+            badge.className = `anketa-status-badge status-${data.status}`;
+
+            const dur = document.getElementById('review-duration');
+            dur.textContent = data.duration_seconds > 0
+                ? `${Math.round(data.duration_seconds / 60)} мин`
+                : '';
+
+            // Show/hide resume button
+            const resumeBtn = this.elements.reviewResumeBtn;
+            resumeBtn.style.display = (data.status === 'active' || data.status === 'paused') ? '' : 'none';
+
+            // Render anketa read-only
+            this._renderReviewAnketa(data.anketa_data || {});
+
+            // Render dialogue
+            this._renderReviewDialogue(data.dialogue_history || []);
+
+        } catch (error) {
+            LOG.error('Error loading review:', error);
+            showToast('Ошибка загрузки сессии', 'error');
+        }
+    }
+
+    _renderReviewAnketa(anketa) {
+        const container = document.getElementById('review-anketa-content');
+        const normalized = this._normalizeAnketaData(anketa);
+
+        const sections = [
+            { title: 'Контакты', fields: ['company_name', 'contact_name', 'contact_role', 'phone', 'email', 'website'] },
+            { title: 'О бизнесе', fields: ['industry', 'specialization', 'business_type', 'company_description', 'services', 'client_types', 'current_problems', 'business_goals'] },
+            { title: 'Голосовой агент', fields: ['agent_name', 'agent_purpose', 'agent_tasks', 'integrations', 'voice_gender', 'voice_tone', 'call_direction', 'transfer_conditions'] },
+            { title: 'Дополнительно', fields: ['constraints', 'compliance_requirements', 'call_volume', 'budget', 'timeline', 'additional_notes'] },
+        ];
+
+        const fieldLabels = {
+            company_name: 'Компания', contact_name: 'Контакт', contact_role: 'Должность',
+            phone: 'Телефон', email: 'Email', website: 'Сайт',
+            industry: 'Отрасль', specialization: 'Специализация', business_type: 'Тип бизнеса',
+            company_description: 'Описание', services: 'Услуги', client_types: 'Типы клиентов',
+            current_problems: 'Проблемы', business_goals: 'Цели',
+            agent_name: 'Имя агента', agent_purpose: 'Назначение', agent_tasks: 'Задачи',
+            integrations: 'Интеграции', voice_gender: 'Голос', voice_tone: 'Тон',
+            call_direction: 'Направление', transfer_conditions: 'Перевод на оператора',
+            constraints: 'Ограничения', compliance_requirements: 'Требования регулятора',
+            call_volume: 'Объём', budget: 'Бюджет', timeline: 'Сроки', additional_notes: 'Примечания',
+        };
+
+        let html = '';
+        for (const section of sections) {
+            const filledFields = section.fields.filter(f => {
+                const v = normalized[f];
+                return v && (Array.isArray(v) ? v.length > 0 : String(v).trim() !== '');
+            });
+            if (filledFields.length === 0) continue;
+
+            html += `<div class="review-section"><div class="review-section-title">${section.title}</div>`;
+            for (const f of filledFields) {
+                const value = normalized[f];
+                const display = Array.isArray(value) ? value.join(', ') : String(value);
+                html += `<div class="review-field">
+                    <span class="review-label">${fieldLabels[f] || f}</span>
+                    <span class="review-value">${this._escapeHtml(display)}</span>
+                </div>`;
+            }
+            html += '</div>';
+        }
+
+        container.innerHTML = html || '<p class="review-empty">Анкета пуста</p>';
+    }
+
+    _renderReviewDialogue(history) {
+        const container = document.getElementById('review-dialogue');
+        if (!history.length) {
+            container.innerHTML = '<p class="review-empty">Нет сообщений</p>';
+            return;
+        }
+
+        container.innerHTML = history.map(msg => {
+            const role = msg.role === 'assistant' ? 'ai' : 'user';
+            const label = role === 'ai' ? 'Агент' : 'Клиент';
+            return `<div class="review-msg review-msg-${role}">
+                <span class="review-msg-author">${label}</span>
+                <span class="review-msg-text">${this._escapeHtml(msg.content)}</span>
+            </div>`;
+        }).join('');
+    }
+
+    // ===== LiveKit Connection =====
+
     async connectToRoom(url, token, roomName) {
-        LOG.info('connectToRoom called:', { url, roomName, tokenLength: token ? token.length : 0 });
+        LOG.info('connectToRoom:', { url, roomName, tokenLength: token ? token.length : 0 });
 
         const { Room, RoomEvent, Track } = LivekitClient;
 
-        this.room = new Room({
-            adaptiveStream: true,
-            dynacast: true,
-        });
-        LOG.info('Room object created');
-
-        // ---- LiveKit Room Event Handlers (detailed) ----
+        this.room = new Room({ adaptiveStream: true, dynacast: true });
 
         this.room.on(RoomEvent.Connected, () => {
-            LOG.event('Connected', {
-                roomName: this.room.name,
-                localIdentity: this.room.localParticipant?.identity,
-                remoteParticipants: this.room.remoteParticipants?.size || 0,
-            });
+            LOG.event('Connected', { roomName: this.room.name });
             this.isConnected = true;
         });
 
@@ -293,70 +721,31 @@ class VoiceInterviewerApp {
             this.updateConnectionStatus(false);
         });
 
-        this.room.on(RoomEvent.Reconnecting, () => {
-            LOG.event('Reconnecting');
-        });
-
-        this.room.on(RoomEvent.Reconnected, () => {
-            LOG.event('Reconnected');
-        });
-
-        this.room.on(RoomEvent.ParticipantConnected, (participant) => {
-            LOG.event('ParticipantConnected', {
-                identity: participant.identity,
-                sid: participant.sid,
-                isAgent: participant.identity?.includes('agent'),
-            });
-        });
-
-        this.room.on(RoomEvent.ParticipantDisconnected, (participant) => {
-            LOG.event('ParticipantDisconnected', {
-                identity: participant.identity,
-            });
-        });
+        this.room.on(RoomEvent.Reconnecting, () => LOG.event('Reconnecting'));
+        this.room.on(RoomEvent.Reconnected, () => LOG.event('Reconnected'));
 
         this.room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
-            LOG.event('TrackSubscribed', {
-                trackKind: track.kind,
-                trackSid: track.sid,
-                participantIdentity: participant.identity,
-                isAudio: track.kind === Track.Kind.Audio,
-                isVideo: track.kind === Track.Kind.Video,
-            });
+            LOG.event('TrackSubscribed', { trackKind: track.kind, participant: participant.identity });
             if (track.kind === Track.Kind.Audio) {
-                LOG.info('Attaching AUDIO track from agent to DOM');
-
-                // Clean up any existing element for this track (re-subscribe scenario)
                 const existing = this.agentAudioElements.get(track.sid);
                 if (existing) {
-                    LOG.info('Cleaning up previous audio element for track', track.sid);
                     existing.track.detach();
                     if (existing.element.parentNode) existing.element.remove();
-                    existing.element.srcObject = null;
                     this.agentAudioElements.delete(track.sid);
                 }
 
                 const audioElement = track.attach();
-                audioElement.id = `agent-audio-${track.sid}`;
                 audioElement.muted = false;
                 audioElement.volume = 1.0;
                 document.body.appendChild(audioElement);
                 this.agentAudioElements.set(track.sid, { track, element: audioElement });
 
-                // Ensure playback starts (browser autoplay policy)
                 const playPromise = audioElement.play();
                 if (playPromise) {
-                    playPromise.then(() => {
-                        LOG.info('Audio element PLAYING, muted:', audioElement.muted,
-                            'volume:', audioElement.volume, 'paused:', audioElement.paused);
-                    }).catch(err => {
-                        LOG.error('Audio play() blocked by browser:', err.message);
-                        LOG.warn('User interaction needed to unmute - click anywhere on page');
-                        // Add one-time click handler to resume audio
+                    playPromise.catch(() => {
                         const resumeAudio = () => {
                             audioElement.muted = false;
                             audioElement.play().catch(() => {});
-                            LOG.info('Audio resumed after user click');
                             document.removeEventListener('click', resumeAudio);
                         };
                         document.addEventListener('click', resumeAudio);
@@ -365,154 +754,63 @@ class VoiceInterviewerApp {
             }
         });
 
-        this.room.on(RoomEvent.TrackUnsubscribed, (track, publication, participant) => {
-            LOG.event('TrackUnsubscribed', {
-                trackKind: track.kind,
-                participantIdentity: participant.identity,
-            });
-
-            // Clean up audio elements to prevent memory leaks and stale playback
+        this.room.on(RoomEvent.TrackUnsubscribed, (track) => {
             if (track.kind === Track.Kind.Audio) {
                 const entry = this.agentAudioElements.get(track.sid);
                 if (entry) {
-                    LOG.info('Cleaning up audio element for unsubscribed track', track.sid);
                     track.detach();
                     if (entry.element.parentNode) entry.element.remove();
-                    entry.element.srcObject = null;
                     this.agentAudioElements.delete(track.sid);
                 }
             }
         });
 
-        this.room.on(RoomEvent.TrackPublished, (publication, participant) => {
-            LOG.event('TrackPublished', {
-                trackName: publication.trackName,
-                trackKind: publication.kind,
-                participantIdentity: participant.identity,
-            });
-        });
-
-        this.room.on(RoomEvent.ActiveSpeakersChanged, (speakers) => {
-            if (speakers.length > 0) {
-                LOG.event('ActiveSpeakersChanged', {
-                    speakers: speakers.map(s => s.identity),
-                });
-            }
-        });
-
         this.room.on(RoomEvent.DataReceived, (payload, participant) => {
-            LOG.event('DataReceived', {
-                participantIdentity: participant?.identity,
-                payloadSize: payload.byteLength,
-            });
             try {
                 const data = JSON.parse(new TextDecoder().decode(payload));
-                LOG.info('Data message parsed:', data);
                 this.handleAgentMessage(data);
             } catch (e) {
                 LOG.warn('Failed to parse data message:', e);
             }
         });
 
-        this.room.on(RoomEvent.ConnectionQualityChanged, (quality, participant) => {
-            LOG.event('ConnectionQualityChanged', {
-                quality,
-                participantIdentity: participant.identity,
-            });
-        });
-
-        this.room.on(RoomEvent.SignalConnected, () => {
-            LOG.event('SignalConnected');
-        });
-
-        this.room.on(RoomEvent.MediaDevicesError, (error) => {
-            LOG.error('MediaDevicesError:', error);
-        });
-
-        // ---- Connect ----
-        LOG.info('Calling room.connect()...');
-        try {
-            await this.room.connect(url, token);
-            this.localParticipant = this.room.localParticipant;
-            LOG.info('room.connect() succeeded:', {
-                roomName: this.room.name,
-                roomSid: this.room.sid,
-                localIdentity: this.localParticipant?.identity,
-                state: this.room.state,
-                remoteParticipants: this.room.remoteParticipants?.size || 0,
-            });
-
-            // Log all current participants
-            if (this.room.remoteParticipants) {
-                this.room.remoteParticipants.forEach((p, sid) => {
-                    LOG.info('Remote participant already in room:', {
-                        identity: p.identity,
-                        sid: p.sid,
-                    });
-                });
-            }
-
-        } catch (error) {
-            LOG.error('room.connect() FAILED:', error);
-            throw error;
-        }
+        await this.room.connect(url, token);
+        this.localParticipant = this.room.localParticipant;
+        LOG.info('Connected to room:', this.room.name);
     }
+
+    // ===== Session End / Leave =====
 
     async endSession() {
         LOG.info('=== END SESSION ===');
         try {
             this.stopAnketaPolling();
 
-            const response = await fetch(`/api/session/${this.sessionId}/end`, {
-                method: 'POST',
-            });
-
+            const response = await fetch(`/api/session/${this.sessionId}/end`, { method: 'POST' });
             const data = await response.json();
-            LOG.info('End session response:', data);
 
-            if (data.unique_link) {
-                this.uniqueLink = data.unique_link;
-            }
+            if (data.unique_link) this.uniqueLink = data.unique_link;
 
-            // Clean up all agent audio elements before disconnect
             this.agentAudioElements.forEach(({ track, element }) => {
                 track.detach();
                 if (element.parentNode) element.remove();
-                element.srcObject = null;
             });
             this.agentAudioElements.clear();
 
             if (this.room) {
                 await this.room.disconnect();
-                LOG.info('Room disconnected');
             }
 
-            this.showResults(data);
+            this.updateConnectionStatus(false);
+            this.updateAnketaStatus('paused');
+            this.elements.stopBtn.disabled = true;
+
+            showToast('Сессия сохранена');
+            this.router.navigate('/');
 
         } catch (error) {
             LOG.error('Error ending session:', error);
-        }
-    }
-
-    resetSession() {
-        LOG.info('=== RESET SESSION ===');
-        this.stopAnketaPolling();
-        this.sessionId = null;
-        this.uniqueLink = null;
-        this.isRecording = false;
-        this.focusedField = null;
-        this.localEdits = {};
-        this.lastServerAnketa = {};
-        this.elements.dialogueContainer.innerHTML = '';
-        this.clearAnketaForm();
-        this.updateProgress(0);
-        this.showScreen('welcome');
-        this.elements.startBtn.disabled = false;
-        this.elements.startBtn.textContent = 'Начать консультацию';
-        this.elements.stopBtn.disabled = true;
-
-        if (window.location.pathname.startsWith('/session/')) {
-            window.history.pushState({}, '', '/');
+            showToast('Ошибка завершения сессии', 'error');
         }
     }
 
@@ -527,71 +825,48 @@ class VoiceInterviewerApp {
     }
 
     async startRecording() {
-        if (this.isRecording) {
-            LOG.info('startRecording called but already recording, skipping');
-            return;
-        }
-        LOG.info('=== START RECORDING (mic) ===');
+        if (this.isRecording) return;
+        LOG.info('=== START RECORDING ===');
         try {
-            LOG.info('Creating local audio track via createLocalAudioTrack...');
             const { createLocalAudioTrack } = LivekitClient;
             this.audioTrack = await createLocalAudioTrack({
                 echoCancellation: true,
                 noiseSuppression: true,
                 autoGainControl: true,
             });
-            LOG.info('LocalAudioTrack created:', {
-                kind: this.audioTrack.kind,
-                sid: this.audioTrack.sid,
-                isMuted: this.audioTrack.isMuted,
-            });
 
-            LOG.info('Publishing audio track to room...');
             await this.localParticipant.publishTrack(this.audioTrack);
-            LOG.info('Audio track PUBLISHED to room:', {
-                trackSid: this.audioTrack.sid,
-                isMuted: this.audioTrack.isMuted,
-            });
 
-            // Verify track is not muted
             if (this.audioTrack.isMuted) {
-                LOG.warn('Track is MUTED! Trying to unmute...');
-                // Try to unmute
                 await this.audioTrack.unmute();
-                LOG.info('Track unmuted, isMuted:', this.audioTrack.isMuted);
             }
 
             this.isRecording = true;
             this.elements.micBtn.classList.add('recording');
             this.elements.voiceStatus.textContent = 'Слушаю...';
-            document.querySelector('.wave').classList.remove('inactive');
+            document.querySelector('.wave')?.classList.remove('inactive');
 
-            LOG.info('=== MIC IS NOW LIVE ===');
-
-            // Start audio level monitoring to verify mic is working
             this.startAudioLevelMonitor();
 
         } catch (error) {
-            LOG.error('=== MIC START FAILED ===', error);
-            alert('Не удалось получить доступ к микрофону: ' + error.message);
+            LOG.error('Mic start failed:', error);
+            showToast('Не удалось получить доступ к микрофону', 'error');
         }
     }
 
     async stopRecording() {
-        LOG.info('=== STOP RECORDING (mic) ===');
+        LOG.info('=== STOP RECORDING ===');
         if (this.audioTrack) {
             await this.localParticipant.unpublishTrack(this.audioTrack);
             this.audioTrack.stop();
             this.audioTrack = null;
-            LOG.info('Audio track unpublished and stopped');
         }
 
         this.isRecording = false;
         this.elements.micBtn.classList.remove('recording');
-        this.elements.voiceStatus.textContent = 'Нажмите и говорите';
-        document.querySelector('.wave').classList.add('inactive');
+        this.elements.voiceStatus.textContent = 'Микрофон выключен';
+        document.querySelector('.wave')?.classList.add('inactive');
 
-        // Stop audio level monitoring
         if (this.audioLevelInterval) {
             clearInterval(this.audioLevelInterval);
             this.audioLevelInterval = null;
@@ -599,78 +874,41 @@ class VoiceInterviewerApp {
     }
 
     startAudioLevelMonitor() {
-        // Get the underlying MediaStreamTrack
-        if (!this.audioTrack || !this.audioTrack.mediaStreamTrack) {
-            LOG.warn('Cannot monitor audio level - no mediaStreamTrack');
-            return;
-        }
+        if (!this.audioTrack || !this.audioTrack.mediaStreamTrack) return;
 
         const mediaStreamTrack = this.audioTrack.mediaStreamTrack;
         const stream = new MediaStream([mediaStreamTrack]);
-
-        // Create audio context for level analysis
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const source = audioContext.createMediaStreamSource(stream);
         const analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
-
         source.connect(analyser);
 
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
-        let maxLevel = 0;
         let sampleCount = 0;
 
         this.audioLevelInterval = setInterval(() => {
             analyser.getByteFrequencyData(dataArray);
-
-            // Calculate average level
-            let sum = 0;
-            for (let i = 0; i < dataArray.length; i++) {
-                sum += dataArray[i];
-            }
-            const avgLevel = sum / dataArray.length;
-
-            if (avgLevel > maxLevel) {
-                maxLevel = avgLevel;
-            }
-
             sampleCount++;
-
-            // Log every 2 seconds (20 samples at 100ms interval)
-            if (sampleCount % 20 === 0) {
-                LOG.info(`🎤 AUDIO LEVEL: current=${avgLevel.toFixed(1)}, max=${maxLevel.toFixed(1)}, trackMuted=${this.audioTrack?.isMuted}`);
-
-                if (maxLevel < 5) {
-                    LOG.warn('⚠️ VERY LOW AUDIO - Check microphone! Is it muted in system settings?');
-                }
+            if (sampleCount % 40 === 0) {
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+                const avg = sum / dataArray.length;
+                if (avg < 5) LOG.warn('Very low audio level — check microphone');
             }
         }, 100);
-
-        LOG.info('Audio level monitoring started');
     }
 
     // ===== Message Handling =====
 
     handleAgentMessage(data) {
-        LOG.info('handleAgentMessage:', data);
         switch (data.type) {
-            case 'message':
-                this.addMessage('ai', data.content);
-                break;
-            case 'transcript':
-                this.addMessage('user', data.content);
-                break;
-            case 'phase':
-                this.updatePhase(data.phase);
-                break;
-            case 'progress':
-                this.updateProgress(data.percentage);
-                break;
-            case 'complete':
-                this.showResults(data);
-                break;
-            default:
-                LOG.warn('Unknown message type:', data.type);
+            case 'message': this.addMessage('ai', data.content); break;
+            case 'transcript': this.addMessage('user', data.content); break;
+            case 'phase': break;
+            case 'progress': this.updateProgress(data.percentage); break;
+            case 'complete': break;
+            default: LOG.warn('Unknown message type:', data.type);
         }
     }
 
@@ -680,7 +918,8 @@ class VoiceInterviewerApp {
 
         const authorSpan = document.createElement('div');
         authorSpan.className = 'author';
-        authorSpan.textContent = author === 'ai' ? 'AI-Консультант' : 'Вы';
+        const authorLabels = { ai: 'AI-Консультант', user: 'Вы', system: 'Система' };
+        authorSpan.textContent = authorLabels[author] || author;
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'content';
@@ -691,15 +930,15 @@ class VoiceInterviewerApp {
 
         this.elements.dialogueContainer.appendChild(messageDiv);
         this.elements.dialogueContainer.scrollTop = this.elements.dialogueContainer.scrollHeight;
+
+        this.messageCount++;
     }
 
     // ===== Anketa Polling =====
 
     startAnketaPolling() {
         this.stopAnketaPolling();
-        this.anketaPollingInterval = setInterval(() => {
-            this.pollAnketa();
-        }, 2000);
+        this.anketaPollingInterval = setInterval(() => this.pollAnketa(), 2000);
         this.pollAnketa();
     }
 
@@ -719,20 +958,158 @@ class VoiceInterviewerApp {
 
             const data = await response.json();
 
-            if (data.status) {
-                this.updateAnketaStatus(data.status);
+            if (data.status) this.updateAnketaStatus(data.status);
+
+            // Update company name in header
+            if (data.company_name) {
+                this.elements.sessionCompany.textContent = data.company_name;
             }
 
             if (data.anketa_data) {
+                const keys = Object.keys(data.anketa_data).filter(
+                    k => data.anketa_data[k] && data.anketa_data[k] !== '' &&
+                    !(Array.isArray(data.anketa_data[k]) && data.anketa_data[k].length === 0)
+                );
                 this.updateAnketaFromServer(data.anketa_data);
+                this.updateAIBlocksSummary(data.anketa_data);
                 this.lastServerAnketa = { ...data.anketa_data };
+
+                const pct = this.anketaFields.length > 0
+                    ? Math.round(keys.length / this.anketaFields.length * 100)
+                    : 0;
+                this.updateProgress(pct);
             }
         } catch (error) {
-            // Suppress polling errors to avoid console spam
+            // Silent failure for polling
         }
     }
 
+    // ===== Anketa Normalization =====
+
+    _normalizeAnketaData(data) {
+        const normalized = { ...data };
+
+        if (data.business_description && !data.company_description) {
+            normalized.company_description = data.business_description;
+        }
+        if (data.contact_phone && !data.phone) {
+            normalized.phone = data.contact_phone;
+        }
+        if (data.contact_email && !data.email) {
+            normalized.email = data.contact_email;
+        }
+        if (data.agent_functions && Array.isArray(data.agent_functions) && !data.agent_tasks) {
+            normalized.agent_tasks = data.agent_functions.map(f => {
+                if (typeof f === 'object' && f !== null) {
+                    return f.name + (f.description ? ': ' + f.description : '');
+                }
+                return String(f);
+            });
+        }
+        if (data.integrations && Array.isArray(data.integrations) && data.integrations.length > 0) {
+            if (typeof data.integrations[0] === 'object' && data.integrations[0] !== null) {
+                normalized.integrations = data.integrations.map(i => {
+                    if (typeof i === 'object') return i.name + (i.purpose ? ' — ' + i.purpose : '');
+                    return String(i);
+                });
+            }
+        }
+
+        return normalized;
+    }
+
+    // ===== Document Upload =====
+
+    async uploadDocuments(fileList) {
+        if (!this.sessionId) return;
+
+        const statusEl = this.elements.docUploadStatus;
+        const btn = this.elements.docUploadBtn;
+
+        btn.disabled = true;
+        btn.textContent = 'Загрузка...';
+        if (statusEl) statusEl.textContent = '';
+
+        const formData = new FormData();
+        for (const file of fileList) formData.append('files', file);
+
+        try {
+            const response = await fetch(
+                `/api/session/${this.sessionId}/documents/upload`,
+                { method: 'POST', body: formData }
+            );
+
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({ detail: response.statusText }));
+                throw new Error(err.detail || `Upload failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const names = data.documents.join(', ');
+            if (statusEl) {
+                statusEl.innerHTML =
+                    `<span class="upload-success">${names}</span>` +
+                    (data.summary ? `<span class="upload-summary">${data.summary}</span>` : '');
+            }
+
+            this.addMessage('system', `Документ загружен: ${names}. Анализирую...`);
+
+        } catch (error) {
+            LOG.error('Document upload failed:', error);
+            if (statusEl) statusEl.innerHTML = `<span class="upload-error">${error.message}</span>`;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Прикрепить документ';
+            this.elements.docUploadInput.value = '';
+        }
+    }
+
+    // ===== AI Blocks Summary =====
+
+    updateAIBlocksSummary(data) {
+        let hasAny = false;
+        let html = '';
+        for (const block of this.aiBlocks) {
+            const items = data[block.key];
+            const count = Array.isArray(items) ? items.length : 0;
+            if (count > 0) hasAny = true;
+            const cls = count > 0 ? 'ai-block-filled' : 'ai-block-empty';
+            html += `<div class="ai-block-item ${cls}">
+                <span class="ai-block-label">${block.label}</span>
+                <span class="ai-block-count">${count}</span>
+            </div>`;
+        }
+
+        const section = document.getElementById('ai-blocks-section');
+        const summary = document.getElementById('ai-blocks-summary');
+        if (section && summary) {
+            section.style.display = hasAny ? 'block' : 'none';
+            summary.innerHTML = html;
+        }
+    }
+
+    // ===== Anketa Form =====
+
+    setupAnketaFieldListeners() {
+        const formFields = this.elements.anketaForm?.querySelectorAll('input, textarea');
+        if (!formFields) return;
+
+        formFields.forEach(field => {
+            const fieldName = field.dataset.field;
+            field.addEventListener('focus', () => { this.focusedField = fieldName; });
+            field.addEventListener('blur', () => {
+                if (this.focusedField === fieldName) this.focusedField = null;
+            });
+            field.addEventListener('input', () => {
+                this.localEdits[fieldName] = true;
+                this.scheduleAnketaSave();
+            });
+        });
+    }
+
     updateAnketaFromServer(anketaData) {
+        const normalized = this._normalizeAnketaData(anketaData);
+
         this.anketaFields.forEach(fieldName => {
             if (this.focusedField === fieldName) return;
             if (this.localEdits[fieldName]) return;
@@ -740,7 +1117,7 @@ class VoiceInterviewerApp {
             const element = document.getElementById(`anketa-${fieldName}`);
             if (!element) return;
 
-            const serverValue = anketaData[fieldName];
+            const serverValue = normalized[fieldName];
             let displayValue = '';
 
             if (serverValue !== null && serverValue !== undefined) {
@@ -754,19 +1131,19 @@ class VoiceInterviewerApp {
             if (element.value !== displayValue) {
                 element.value = displayValue;
                 element.classList.add('field-updated');
-                setTimeout(() => {
-                    element.classList.remove('field-updated');
-                }, 1500);
+                setTimeout(() => element.classList.remove('field-updated'), 1500);
             }
         });
     }
 
     populateAnketaForm(anketaData) {
+        const normalized = this._normalizeAnketaData(anketaData);
+
         this.anketaFields.forEach(fieldName => {
             const element = document.getElementById(`anketa-${fieldName}`);
             if (!element) return;
 
-            const value = anketaData[fieldName];
+            const value = normalized[fieldName];
             if (value !== null && value !== undefined) {
                 if (this.arrayFields.has(fieldName) && Array.isArray(value)) {
                     element.value = value.join('\n');
@@ -779,29 +1156,33 @@ class VoiceInterviewerApp {
 
     clearAnketaForm() {
         this.anketaFields.forEach(fieldName => {
-            const element = document.getElementById(`anketa-${fieldName}`);
-            if (element) {
-                element.value = '';
-            }
+            const el = document.getElementById(`anketa-${fieldName}`);
+            if (el) el.value = '';
         });
         this.updateAnketaStatus('');
     }
 
-    // ===== Anketa Saving (Debounced) =====
-
     scheduleAnketaSave() {
-        if (this.anketaSaveTimeout) {
-            clearTimeout(this.anketaSaveTimeout);
-        }
-        this.anketaSaveTimeout = setTimeout(() => {
-            this.saveAnketa();
-        }, 1000);
+        if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
+        this.anketaSaveTimeout = setTimeout(() => this.saveAnketa(), 1000);
     }
 
     async saveAnketa() {
         if (!this.sessionId) return;
 
-        const anketaData = this.collectAnketaData();
+        const anketaData = {};
+        this.anketaFields.forEach(fieldName => {
+            const el = document.getElementById(`anketa-${fieldName}`);
+            if (!el) return;
+            const rawValue = el.value.trim();
+            if (this.arrayFields.has(fieldName)) {
+                anketaData[fieldName] = rawValue
+                    ? rawValue.split('\n').map(s => s.trim()).filter(s => s.length > 0)
+                    : [];
+            } else {
+                anketaData[fieldName] = rawValue || '';
+            }
+        });
 
         try {
             const response = await fetch(`/api/session/${this.sessionId}/anketa`, {
@@ -809,7 +1190,6 @@ class VoiceInterviewerApp {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ anketa_data: anketaData }),
             });
-
             if (response.ok) {
                 this.localEdits = {};
                 this.lastServerAnketa = { ...anketaData };
@@ -819,170 +1199,104 @@ class VoiceInterviewerApp {
         }
     }
 
-    collectAnketaData() {
-        const data = {};
-        this.anketaFields.forEach(fieldName => {
-            const element = document.getElementById(`anketa-${fieldName}`);
-            if (!element) return;
-
-            const rawValue = element.value.trim();
-            if (this.arrayFields.has(fieldName)) {
-                data[fieldName] = rawValue
-                    ? rawValue.split('\n').map(s => s.trim()).filter(s => s.length > 0)
-                    : [];
-            } else {
-                data[fieldName] = rawValue || '';
-            }
-        });
-        return data;
-    }
-
     // ===== Anketa Actions =====
 
     async confirmAnketa() {
         if (!this.sessionId) return;
 
-        if (this.anketaSaveTimeout) {
-            clearTimeout(this.anketaSaveTimeout);
-        }
+        if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
         await this.saveAnketa();
 
         try {
-            const response = await fetch(`/api/session/${this.sessionId}/confirm`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-            });
-
+            const response = await fetch(`/api/session/${this.sessionId}/confirm`, { method: 'POST' });
             if (response.ok) {
                 this.updateAnketaStatus('confirmed');
                 this.addMessage('ai', 'Анкета подтверждена! Спасибо. Мы свяжемся с вами в ближайшее время.');
                 this.elements.confirmAnketaBtn.disabled = true;
                 this.elements.confirmAnketaBtn.textContent = 'Подтверждено';
+                showToast('Анкета подтверждена');
             } else {
-                alert('Ошибка при подтверждении анкеты.');
+                showToast('Ошибка подтверждения', 'error');
             }
         } catch (error) {
-            LOG.error('Error confirming anketa:', error);
-            alert('Ошибка при подтверждении анкеты.');
+            LOG.error('Error confirming:', error);
+            showToast('Ошибка подтверждения', 'error');
         }
     }
 
     async saveAndLeave() {
         if (!this.sessionId) return;
 
-        if (this.anketaSaveTimeout) {
-            clearTimeout(this.anketaSaveTimeout);
-        }
+        if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
         await this.saveAnketa();
 
         try {
-            const response = await fetch(`/api/session/${this.sessionId}/end`, {
-                method: 'POST',
-            });
-
-            const data = await response.json();
-            const link = data.unique_link || this.uniqueLink;
+            await fetch(`/api/session/${this.sessionId}/end`, { method: 'POST' });
 
             this.stopAnketaPolling();
 
-            if (this.room) {
-                await this.room.disconnect();
-            }
+            if (this.room) await this.room.disconnect();
 
-            const fullLink = `${window.location.origin}/session/${link}`;
-            this.elements.dialogueContainer.innerHTML = '';
-            this.addMessage('ai',
-                `Сессия сохранена. Вы можете вернуться по ссылке:\n${fullLink}\n\nСсылка также скопирована в буфер обмена.`
-            );
+            const link = `${window.location.origin}/session/${this.uniqueLink}`;
+            this.copyToClipboard(link);
 
-            this.copyToClipboard(fullLink);
+            showToast('Сессия сохранена. Ссылка скопирована.');
             this.updateAnketaStatus('paused');
             this.updateConnectionStatus(false);
 
+            this.router.navigate('/');
+
         } catch (error) {
-            LOG.error('Error saving and leaving:', error);
-            alert('Ошибка сохранения сессии.');
+            LOG.error('Error saving:', error);
+            showToast('Ошибка сохранения', 'error');
         }
     }
 
     async copySessionLink() {
-        const link = this.uniqueLink;
-        if (!link) {
-            alert('Ссылка ещё не доступна. Начните сессию.');
+        if (!this.uniqueLink) {
+            showToast('Ссылка ещё не доступна');
             return;
         }
-
-        const fullLink = `${window.location.origin}/session/${link}`;
-        const success = await this.copyToClipboard(fullLink);
-
-        if (success) {
-            this.elements.copyLinkBtn.textContent = 'Скопировано!';
-            this.elements.copyLinkBtn.classList.add('copied');
-            setTimeout(() => {
-                this.elements.copyLinkBtn.textContent = 'Копировать ссылку';
-                this.elements.copyLinkBtn.classList.remove('copied');
-            }, 2000);
-        } else {
-            prompt('Скопируйте ссылку:', fullLink);
-        }
+        const link = `${window.location.origin}/session/${this.uniqueLink}`;
+        await this.copyToClipboard(link);
+        showToast('Ссылка скопирована');
     }
 
     async copyToClipboard(text) {
         try {
             await navigator.clipboard.writeText(text);
             return true;
-        } catch (error) {
+        } catch {
             const textarea = document.createElement('textarea');
             textarea.value = text;
             textarea.style.position = 'fixed';
             textarea.style.opacity = '0';
             document.body.appendChild(textarea);
             textarea.select();
-            try {
-                document.execCommand('copy');
-                return true;
-            } catch (e) {
-                return false;
-            } finally {
-                document.body.removeChild(textarea);
-            }
+            try { document.execCommand('copy'); return true; }
+            catch { return false; }
+            finally { document.body.removeChild(textarea); }
         }
     }
 
-    // ===== Anketa Status =====
+    // ===== UI Helpers =====
 
     updateAnketaStatus(status) {
         const badge = this.elements.anketaStatusBadge;
         if (!badge) return;
 
         badge.className = 'anketa-status-badge';
-
-        const statusLabels = {
-            'active': 'активна',
-            'paused': 'пауза',
-            'reviewing': 'на проверке',
-            'confirmed': 'подтверждена',
-            'declined': 'отклонена',
+        const labels = {
+            active: 'активна', paused: 'на паузе', reviewing: 'на проверке',
+            confirmed: 'подтверждена', declined: 'отклонена',
         };
-
-        badge.textContent = statusLabels[status] || 'ожидание';
-
-        if (status) {
-            badge.classList.add(`status-${status}`);
-        }
-    }
-
-    // ===== UI Updates =====
-
-    showScreen(screenName) {
-        Object.values(this.screens).forEach(screen => {
-            screen.classList.remove('active');
-        });
-        this.screens[screenName].classList.add('active');
+        badge.textContent = labels[status] || 'ожидание';
+        if (status) badge.classList.add(`status-${status}`);
     }
 
     updateConnectionStatus(connected) {
         const status = this.elements.connectionStatus;
+        if (!status) return;
         if (connected) {
             status.classList.add('connected');
             status.querySelector('.text').textContent = 'Подключен';
@@ -992,57 +1306,46 @@ class VoiceInterviewerApp {
         }
     }
 
-    updatePhase(phase) {
-        const phaseNames = {
-            discovery: 'Знакомство',
-            analysis: 'Анализ',
-            proposal: 'Предложение',
-            refinement: 'Анкета',
-        };
-
-        this.elements.phaseIndicator.querySelector('.phase').textContent =
-            phaseNames[phase] || phase;
-    }
-
     updateProgress(percentage) {
-        this.elements.progressFill.style.width = `${percentage}%`;
-        this.elements.progressText.textContent = `${Math.round(percentage)}% заполнено`;
+        if (this.elements.progressFill) {
+            this.elements.progressFill.style.width = `${percentage}%`;
+        }
+        if (this.elements.progressText) {
+            this.elements.progressText.textContent = `${Math.round(percentage)}% заполнено`;
+        }
     }
 
-    showResults(data) {
-        this.stopAnketaPolling();
+    _formatDate(isoString) {
+        if (!isoString) return '—';
+        const d = new Date(isoString);
+        const now = new Date();
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const hours = String(d.getHours()).padStart(2, '0');
+        const mins = String(d.getMinutes()).padStart(2, '0');
 
-        this.elements.resultsStats.innerHTML = `
-            <p><span>Длительность:</span><span>${Math.round(data.duration / 60)} мин</span></p>
-            <p><span>Сообщений:</span><span>${data.message_count || 0}</span></p>
-            <p><span>Полей заполнено:</span><span>${data.fields_filled || 0}</span></p>
-        `;
-
-        if (data.files) {
-            this.elements.resultsFiles.innerHTML = `
-                <a href="${data.files.json}" download>Скачать JSON</a>
-                <a href="${data.files.markdown}" download>Скачать Markdown</a>
-            `;
+        if (d.toDateString() === now.toDateString()) {
+            return `Сегодня ${hours}:${mins}`;
         }
 
-        if (this.uniqueLink || data.unique_link) {
-            const link = data.unique_link || this.uniqueLink;
-            const fullLink = `${window.location.origin}/session/${link}`;
-            this.elements.resultsFiles.innerHTML += `
-                <div class="return-link-section">
-                    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.875rem;">
-                        Ссылка для возврата к сессии:
-                    </p>
-                    <a href="${fullLink}" style="word-break: break-all;">${fullLink}</a>
-                </div>
-            `;
+        const yesterday = new Date(now);
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (d.toDateString() === yesterday.toDateString()) {
+            return `Вчера ${hours}:${mins}`;
         }
 
-        this.showScreen('results');
+        return `${day}.${month} ${hours}:${mins}`;
+    }
+
+    _escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 }
 
-// Инициализация приложения
+
+// Init
 document.addEventListener('DOMContentLoaded', () => {
     LOG.info('DOM loaded, creating app...');
     window.app = new VoiceInterviewerApp();

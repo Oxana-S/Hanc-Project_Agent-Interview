@@ -71,7 +71,7 @@
 | Хранение (Maximum — кэш) | Redis | Кэш активных сессий (TTL 2ч) |
 | Хранение (Maximum — БД) | PostgreSQL | Постоянное хранение анкет |
 | Хранение (вывод) | Файловая система | output/{дата}/{компания}/ |
-| База знаний | YAML-профили | 8 отраслей с типичными болями и решениями |
+| База знаний | YAML-профили | 40+ отраслей, 968 профилей (базовые + региональные) |
 
 ## Быстрый старт
 
@@ -115,12 +115,21 @@ DEEPSEEK_MODEL=deepseek-reasoner
 
 **Терминал 1 — веб-сервер:**
 ```bash
-./venv/bin/python -m uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+./venv/bin/python scripts/run_server.py
 ```
 
 **Терминал 2 — голосовой агент:**
 ```bash
-./venv/bin/python scripts/run_voice_agent.py dev
+./scripts/agent.sh start
+```
+
+**Управление агентом:**
+```bash
+./scripts/agent.sh status    # Статус процессов
+./scripts/agent.sh stop      # Остановить
+./scripts/agent.sh restart   # Перезапустить
+./scripts/agent.sh logs      # Логи (tail -f)
+./scripts/agent.sh kill-all  # Аварийное завершение
 ```
 
 **Браузер:** откройте `http://localhost:8000`, нажмите «Начать консультацию».
@@ -265,8 +274,10 @@ Maximum режим проводит 3-фазную консультацию (DIS
 │   └── models.py                    # Базовые модели (315 строк: InterviewPattern, InterviewContext, CompletedAnketa, QuestionResponse и др.)
 │
 ├── scripts/                         # Точки входа
-│   ├── run_voice_agent.py           # Запуск голосового агента
+│   ├── agent.sh                     # Управление агентом (start/stop/restart/status/logs/kill-all)
+│   ├── run_voice_agent.py           # Запуск голосового агента (PID-файл, защита от дублей)
 │   ├── run_server.py                # Запуск FastAPI сервера
+│   ├── cleanup_rooms.py             # Очистка LiveKit-комнат (CLI)
 │   ├── consultant_demo.py           # Текстовый AI-консультант (CLI)
 │   ├── run_test.py                  # Запуск тестовых симуляций
 │   ├── run_pipeline.py              # Pipeline: тест → ревью
@@ -275,7 +286,7 @@ Maximum режим проводит 3-фазную консультацию (DIS
 │   └── test_deepseek_api.py         # Тест DeepSeek API
 │
 ├── config/                          # YAML-конфигурация
-│   ├── industries/                  # Профили 8 отраслей
+│   ├── industries/                  # Профили 40+ отраслей (968 файлов, 6 регионов)
 │   ├── synonyms/                    # Словари (base, ru, en)
 │   ├── consultant/                  # Контекст для KB
 │   ├── personas/                    # Персоны и трейты
@@ -300,7 +311,7 @@ Maximum режим проводит 3-фазную консультацию (DIS
 │       ├── extract.yaml             # Извлечение данных из диалога
 │       └── expert.yaml              # Генерация FAQ, KPI, рекомендаций
 │
-├── tests/                           # Тесты (252 юнит-теста)
+├── tests/                           # Тесты (972 юнит-теста)
 │   ├── unit/                        # Юнит-тесты (9 модулей)
 │   └── scenarios/                   # YAML-сценарии (12 штук)
 │
@@ -366,16 +377,21 @@ Redis и PostgreSQL поднимаются через `config/docker-compose.yml
 | `GET` | `/api/session/by-link/{link}` | Получить сессию по ссылке |
 | `GET` | `/api/session/{id}` | Данные сессии |
 | `GET` | `/api/session/{id}/anketa` | Данные анкеты (polling каждые 2 сек) |
+| `GET` | `/api/session/{id}/reconnect` | Восстановление сессии (новый токен, пересоздание комнаты) |
 | `PUT` | `/api/session/{id}/anketa` | Обновить анкету (клиент редактирует) |
 | `POST` | `/api/session/{id}/confirm` | Подтвердить анкету |
 | `POST` | `/api/session/{id}/end` | Завершить сессию |
+| `POST` | `/api/session/{id}/kill` | Принудительное завершение (удаление комнаты) |
+| `GET` | `/api/agent/health` | Проверка доступности голосового агента |
+| `GET` | `/api/rooms` | Список активных LiveKit-комнат |
+| `DELETE` | `/api/rooms` | Удаление всех LiveKit-комнат |
 
 Автоматическая документация (Swagger UI): `http://localhost:8000/docs`
 
 ## Тестирование
 
 ```bash
-# Юнит-тесты (252 теста)
+# Юнит-тесты (972 теста)
 ./venv/bin/python -m pytest tests/ -v
 
 # Тестовая симуляция

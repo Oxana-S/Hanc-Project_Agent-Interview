@@ -27,7 +27,7 @@ src/voice/
 └── livekit_client.py       # LiveKitClient (генерация токенов)
 
 src/web/
-└── server.py               # FastAPI (9 эндпоинтов)
+└── server.py               # FastAPI (14 эндпоинтов)
 
 public/
 └── index.html              # Фронтенд + LiveKit JS SDK
@@ -46,6 +46,7 @@ public/
 │                                                                      │
 │  2. Нажимает "Начать"                                               │
 │     │                                                                │
+│     ├─► GET /api/agent/health (проверка агента)                     │
 │     └─► POST /api/session/create                                    │
 │              │                                                       │
 │              ├─► SessionManager.create_session() → SQLite           │
@@ -148,11 +149,20 @@ active → paused → active → reviewing → confirmed
 
 ```bash
 # Процесс 1: Web сервер
-uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+./venv/bin/python scripts/run_server.py
 
-# Процесс 2: Голосовой агент
-python scripts/run_voice_agent.py dev
+# Процесс 2: Голосовой агент (через agent.sh — рекомендуется)
+./scripts/agent.sh start
+
+# Управление агентом
+./scripts/agent.sh status    # Статус процессов
+./scripts/agent.sh stop      # Остановить
+./scripts/agent.sh restart   # Перезапустить
+./scripts/agent.sh logs      # Логи
+./scripts/agent.sh kill-all  # Аварийное завершение
 ```
+
+При старте сервера автоматически очищаются старые LiveKit-комнаты. Агент защищён от дублирования через PID-файл (`.agent.pid`).
 
 ---
 
@@ -273,7 +283,7 @@ ConsultantInterviewer(document_context=doc_ctx)
 ### 2.7 Запуск
 
 ```bash
-python scripts/consultant_demo.py
+./venv/bin/python scripts/consultant_demo.py
 ```
 
 ---
@@ -370,7 +380,7 @@ scripts/
 docker compose -f config/docker-compose.yml up -d
 
 # Запуск интервью
-python scripts/demo.py
+./venv/bin/python scripts/demo.py
 ```
 
 ### 3.7 MOCK-режим
@@ -398,10 +408,10 @@ MOCK-режим позволяет тестировать UI и логику б�
 
 ```bash
 # Через переменную окружения
-MOCK_MODE=true python scripts/demo.py
+MOCK_MODE=true ./venv/bin/python scripts/demo.py
 
 # Или через CLI-флаг (если поддерживается)
-python scripts/demo.py --mock
+./venv/bin/python scripts/demo.py --mock
 ```
 
 #### Отличия от MAXIMUM режима
@@ -517,13 +527,13 @@ tests/scenarios/          # 12 YAML-сценариев + шаблон
 
 ```bash
 # CLI через скрипт
-python scripts/run_test.py auto_service
-python scripts/run_test.py --list
-python scripts/run_test.py auto_service --quiet --no-save
+./venv/bin/python scripts/run_test.py auto_service
+./venv/bin/python scripts/run_test.py --list
+./venv/bin/python scripts/run_test.py auto_service --quiet --no-save
 
 # С документами клиента (Stage 7.5)
-python scripts/run_test.py logistics_company --input-dir input/test_docs/
-python scripts/run_test.py auto_service --input-dir input/test/
+./venv/bin/python scripts/run_test.py logistics_company --input-dir input/test_docs/
+./venv/bin/python scripts/run_test.py auto_service --input-dir input/test/
 
 # Программно
 from src.agent_client_simulator import SimulatedClient, ConsultationTester
@@ -690,16 +700,16 @@ if result.is_success and result.changed:
 
 ```bash
 # Полный pipeline
-python scripts/run_pipeline.py auto_service
+./venv/bin/python scripts/run_pipeline.py auto_service
 
 # С автоматическим одобрением (без ревью)
-python scripts/run_pipeline.py auto_service --auto-approve
+./venv/bin/python scripts/run_pipeline.py auto_service --auto-approve
 
 # Без этапа ревью
-python scripts/run_pipeline.py auto_service --skip-review
+./venv/bin/python scripts/run_pipeline.py auto_service --skip-review
 
 # С указанием выходной папки
-python scripts/run_pipeline.py auto_service --output-dir output/final
+./venv/bin/python scripts/run_pipeline.py auto_service --output-dir output/final
 ```
 
 ---

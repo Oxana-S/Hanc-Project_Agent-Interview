@@ -71,6 +71,23 @@ class SessionManager:
             )
         """)
         self._conn.commit()
+
+        # Migration: add document_context column for existing DBs
+        try:
+            self._conn.execute("SELECT document_context FROM sessions LIMIT 1")
+        except sqlite3.OperationalError:
+            self._conn.execute("ALTER TABLE sessions ADD COLUMN document_context TEXT")
+            self._conn.commit()
+            logger.info("migration_added_document_context_column")
+
+        # Migration: add voice_config column for existing DBs
+        try:
+            self._conn.execute("SELECT voice_config FROM sessions LIMIT 1")
+        except sqlite3.OperationalError:
+            self._conn.execute("ALTER TABLE sessions ADD COLUMN voice_config TEXT")
+            self._conn.commit()
+            logger.info("migration_added_voice_config_column")
+
         logger.debug("sessions_table_ensured")
 
     def _session_from_row(self, row: sqlite3.Row) -> ConsultationSession:
@@ -93,13 +110,15 @@ class SessionManager:
             dialogue_history=json.loads(row["dialogue_history"]),
             anketa_data=json.loads(row["anketa_data"]) if row["anketa_data"] else None,
             anketa_md=row["anketa_md"],
+            document_context=json.loads(row["document_context"]) if row["document_context"] else None,
+            voice_config=json.loads(row["voice_config"]) if row["voice_config"] else None,
             company_name=row["company_name"],
             contact_name=row["contact_name"],
             duration_seconds=row["duration_seconds"],
             output_dir=row["output_dir"],
         )
 
-    def create_session(self, room_name: str = "") -> ConsultationSession:
+    def create_session(self, room_name: str = "", voice_config: dict = None) -> ConsultationSession:
         """
         Create a new consultation session.
 
@@ -107,6 +126,7 @@ class SessionManager:
 
         Args:
             room_name: LiveKit room name (optional).
+            voice_config: Voice agent settings (silence_duration_ms, etc.).
 
         Returns:
             Newly created ConsultationSession.
@@ -119,6 +139,7 @@ class SessionManager:
             status="active",
             created_at=now,
             updated_at=now,
+            voice_config=voice_config,
         )
 
         self._conn.execute(
@@ -127,8 +148,8 @@ class SessionManager:
                 session_id, room_name, unique_link, status,
                 created_at, updated_at, dialogue_history,
                 anketa_data, anketa_md, company_name, contact_name,
-                duration_seconds, output_dir
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                duration_seconds, output_dir, voice_config
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 session.session_id,
@@ -144,6 +165,7 @@ class SessionManager:
                 None,  # contact_name
                 session.duration_seconds,
                 None,  # output_dir
+                json.dumps(voice_config, ensure_ascii=False) if voice_config else None,
             ),
         )
         self._conn.commit()
@@ -229,10 +251,12 @@ class SessionManager:
                 dialogue_history = ?,
                 anketa_data = ?,
                 anketa_md = ?,
+                document_context = ?,
                 company_name = ?,
                 contact_name = ?,
                 duration_seconds = ?,
-                output_dir = ?
+                output_dir = ?,
+                voice_config = ?
             WHERE session_id = ?
             """,
             (
@@ -243,10 +267,12 @@ class SessionManager:
                 json.dumps(session.dialogue_history, ensure_ascii=False),
                 json.dumps(session.anketa_data, ensure_ascii=False) if session.anketa_data else None,
                 session.anketa_md,
+                json.dumps(session.document_context, ensure_ascii=False) if session.document_context else None,
                 session.company_name,
                 session.contact_name,
                 session.duration_seconds,
                 session.output_dir,
+                json.dumps(session.voice_config, ensure_ascii=False) if session.voice_config else None,
                 session.session_id,
             ),
         )
@@ -297,6 +323,41 @@ class SessionManager:
         logger.info("session_anketa_updated", session_id=session_id)
         return True
 
+    def update_document_context(self, session_id: str, document_context: dict) -> bool:
+        """
+        Update only the document_context field of a session.
+
+        Args:
+            session_id: Short session identifier.
+            document_context: Serialized DocumentContext dict.
+
+        Returns:
+            True if the session was found and updated, False otherwise.
+        """
+        now = datetime.now()
+
+        cursor = self._conn.execute(
+            """
+            UPDATE sessions SET
+                document_context = ?,
+                updated_at = ?
+            WHERE session_id = ?
+            """,
+            (
+                json.dumps(document_context, ensure_ascii=False),
+                now.isoformat(),
+                session_id,
+            ),
+        )
+        self._conn.commit()
+
+        if cursor.rowcount == 0:
+            logger.warning("session_document_context_update_no_rows", session_id=session_id)
+            return False
+
+        logger.info("session_document_context_updated", session_id=session_id)
+        return True
+
     def update_status(self, session_id: str, status: str) -> bool:
         """
         Update only the status of a session.
@@ -339,6 +400,105 @@ class SessionManager:
 
         logger.info("session_status_updated", session_id=session_id, status=status)
         return True
+
+    def update_metadata(self, session_id: str, company_name: str = None, contact_name: str = None) -> bool:
+        """Update only company_name and/or contact_name (no full session overwrite)."""
+        updates = []
+        params = []
+        if company_name is not None:
+            updates.append("company_name = ?")
+            params.append(company_name)
+        if contact_name is not None:
+            updates.append("contact_name = ?")
+            params.append(contact_name)
+        if not updates:
+            return False
+        updates.append("updated_at = ?")
+        params.append(datetime.now().isoformat())
+        params.append(session_id)
+        cursor = self._conn.execute(
+            f"UPDATE sessions SET {', '.join(updates)} WHERE session_id = ?",
+            params,
+        )
+        self._conn.commit()
+        return cursor.rowcount > 0
+
+    def update_dialogue(self, session_id: str, dialogue_history: list, duration_seconds: float, status: str = None) -> bool:
+        """Update dialogue_history, duration, and optionally status (no full session overwrite)."""
+        now = datetime.now()
+        if status:
+            cursor = self._conn.execute(
+                "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, status = ?, updated_at = ? WHERE session_id = ?",
+                (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, status, now.isoformat(), session_id),
+            )
+        else:
+            cursor = self._conn.execute(
+                "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, updated_at = ? WHERE session_id = ?",
+                (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, now.isoformat(), session_id),
+            )
+        self._conn.commit()
+        return cursor.rowcount > 0
+
+    def list_sessions_summary(self, status: str = None, limit: int = 50, offset: int = 0) -> list:
+        """
+        List sessions as lightweight dicts (no dialogue_history, anketa_data, document_context).
+
+        Args:
+            status: Filter by status (optional).
+            limit: Max number of results.
+            offset: Skip first N results.
+
+        Returns:
+            List of dicts with summary fields.
+        """
+        query = """
+            SELECT session_id, unique_link, status, created_at, updated_at,
+                   company_name, contact_name, duration_seconds, room_name,
+                   CASE WHEN document_context IS NOT NULL THEN 1 ELSE 0 END AS has_documents
+            FROM sessions
+        """
+        params = []
+
+        if status:
+            query += " WHERE status = ?"
+            params.append(status)
+
+        query += " ORDER BY created_at DESC LIMIT ? OFFSET ?"
+        params.extend([limit, offset])
+
+        cursor = self._conn.execute(query, params)
+        rows = cursor.fetchall()
+
+        sessions = []
+        for row in rows:
+            sessions.append({
+                "session_id": row["session_id"],
+                "unique_link": row["unique_link"],
+                "status": row["status"],
+                "created_at": row["created_at"],
+                "updated_at": row["updated_at"],
+                "company_name": row["company_name"],
+                "contact_name": row["contact_name"],
+                "duration_seconds": row["duration_seconds"],
+                "room_name": row["room_name"],
+                "has_documents": bool(row["has_documents"]),
+            })
+
+        logger.debug("sessions_summary_listed", count=len(sessions), status_filter=status)
+        return sessions
+
+    def delete_sessions(self, session_ids: list) -> int:
+        """Delete sessions by IDs. Returns count of deleted rows."""
+        if not session_ids:
+            return 0
+        placeholders = ",".join("?" * len(session_ids))
+        cursor = self._conn.execute(
+            f"DELETE FROM sessions WHERE session_id IN ({placeholders})",
+            session_ids,
+        )
+        self._conn.commit()
+        logger.info("sessions_deleted", count=cursor.rowcount, session_ids=session_ids)
+        return cursor.rowcount
 
     def list_sessions(self, status: str = None) -> List[ConsultationSession]:
         """

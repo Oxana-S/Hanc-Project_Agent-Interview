@@ -29,10 +29,12 @@ FastAPI сервер для:
 - Раздача статики (`public/`)
 - API для создания сессий (`/api/session/create`)
 - Генерация LiveKit токенов
-- Управление сессиями
+- Управление сессиями и комнатами
+- Health check голосового агента (`/api/agent/health`)
+- Автоочистка старых LiveKit-комнат при старте
 
 ```bash
-python scripts/run_server.py
+./venv/bin/python scripts/run_server.py
 # Запускается на http://localhost:8000
 ```
 
@@ -42,11 +44,15 @@ LiveKit Agent, который:
 - Подключается к комнате при появлении клиента
 - Использует Azure OpenAI Realtime API для STT/TTS/LLM
 - Ведёт диалог по заданному промпту
-- Извлекает данные в анкету
+- Извлекает данные в анкету (каждые 6 сообщений через DeepSeek)
+- Защищён от дублирования через PID-файл (`.agent.pid`)
 
 ```bash
-python scripts/run_voice_agent.py
-# Регистрируется в LiveKit Cloud
+# Рекомендуется: через agent.sh
+./scripts/agent.sh start
+
+# Или напрямую
+./venv/bin/python scripts/run_voice_agent.py
 ```
 
 ### 3. Browser Client (`public/app.js`)
@@ -108,20 +114,45 @@ AZURE_OPENAI_API_VERSION=2024-12-17
 
 ```bash
 # Терминал 1: Web server
-python scripts/run_server.py
+./venv/bin/python scripts/run_server.py
 
-# Терминал 2: Voice agent
-python scripts/run_voice_agent.py
+# Терминал 2: Voice agent (через agent.sh — рекомендуется)
+./scripts/agent.sh start
 
 # Открыть http://localhost:8000
 ```
+
+### Управление процессами (`scripts/agent.sh`)
+
+```bash
+./scripts/agent.sh start      # Запустить агент в фоне
+./scripts/agent.sh stop       # Остановить (SIGTERM, затем SIGKILL через 10 сек)
+./scripts/agent.sh restart    # Перезапустить
+./scripts/agent.sh status     # Показать статус всех процессов
+./scripts/agent.sh logs       # tail -f логов агента
+./scripts/agent.sh kill-all   # Аварийное завершение (SIGKILL)
+```
+
+Агент защищён от дублирования: PID записывается в `.agent.pid`, при попытке запуска второй копии скрипт предупредит. PID-файл автоматически удаляется при корректном завершении (`SIGTERM`, `atexit`).
+
+### Health Check
+
+```bash
+# Проверка через API
+curl http://localhost:8000/api/agent/health
+# {"worker_alive": true, "worker_pid": 12345}
+```
+
+Фронтенд автоматически проверяет доступность агента перед созданием сессии. Если агент не запущен — показывает сообщение с инструкцией.
 
 ### Production
 
 ```bash
 # Voice agent (режим определяется через ENVIRONMENT в .env)
-python scripts/run_voice_agent.py
+./venv/bin/python scripts/run_voice_agent.py prod
 ```
+
+Для systemd-сервисов см. [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Ключевые классы
 
@@ -140,9 +171,10 @@ model = lk_openai.realtime.RealtimeModel.with_azure(
     temperature=0.7,
     turn_detection=TurnDetection(
         type="server_vad",
-        threshold=0.6,
-        prefix_padding_ms=300,
-        silence_duration_ms=1200,
+        threshold=0.85,        # Строгий фильтр шума (0.5=default, выше=менее чувствительный)
+        prefix_padding_ms=500,  # Буфер аудио перед началом речи
+        silence_duration_ms=2000,  # 2с тишины до окончания реплики
+        eagerness="low",        # Терпеливый: ждёт дольше перед ответом ("high"=немедленно)
     ),
 )
 ```
@@ -158,7 +190,15 @@ from livekit.agents.voice import Agent as VoiceAgent, AgentSession
 from livekit.agents.voice.room_io import RoomInputOptions
 
 agent = VoiceAgent(instructions=system_prompt)
-session = AgentSession(llm=realtime_model, allow_interruptions=True)
+session = AgentSession(
+    llm=realtime_model,
+    allow_interruptions=True,
+    min_interruption_duration=1.5,   # Минимум 1.5с речи для прерывания
+    min_interruption_words=3,        # Минимум 3 слова
+    min_endpointing_delay=1.5,       # Ждать 1.5с после тишины перед ответом
+    false_interruption_timeout=2.5,  # Время на определение ложного прерывания
+    resume_false_interruption=True,  # Возобновлять речь после ложного прерывания
+)
 
 room_input = RoomInputOptions(audio_enabled=True)
 await session.start(agent, room=ctx.room, room_input_options=room_input)
@@ -208,6 +248,31 @@ room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
 });
 ```
 
+## Восстановление сессий
+
+При перезагрузке страницы сессия восстанавливается автоматически:
+
+1. URL обновляется через `pushState` после создания сессии (`/session/{uniqueLink}`)
+2. При загрузке страницы фронтенд проверяет URL и вызывает `GET /api/session/{id}/reconnect`
+3. Сервер проверяет LiveKit-комнату, при необходимости пересоздаёт и диспатчит агента
+4. Клиент получает новый токен и переподключается к комнате
+
+## Управление LiveKit-комнатами
+
+```bash
+# Список активных комнат
+curl http://localhost:8000/api/rooms
+
+# Удаление всех комнат (очистка)
+curl -X DELETE http://localhost:8000/api/rooms
+
+# CLI-скрипт для очистки
+./venv/bin/python scripts/cleanup_rooms.py
+./venv/bin/python scripts/cleanup_rooms.py --force  # без подтверждения
+```
+
+При старте сервера все старые комнаты автоматически удаляются.
+
 ## Troubleshooting
 
 ### Агент не слышит пользователя
@@ -226,19 +291,30 @@ room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
 2. Убедитесь, что `audioElement.play()` не заблокирован
 3. Проверьте громкость в системе
 
-### Агент замолкает после прерывания (stuttering/silence)
+### Агент обрезает фразы / "заикается" (v2.0 fix)
 
-Известный баг LiveKit Agents SDK ([#3418](https://github.com/livekit/agents/issues/3418)):
-при быстрых последовательных прерываниях флаг `_interrupted_event` не сбрасывается,
-и аудио-фреймы нового ответа молча отбрасываются. Агент в состоянии `speaking`,
-текст генерируется, но аудио — тишина.
+**Проблема:** Агент начинает отвечать, но обрывается на полуслове. Пользователь слышит
+"Расскажите, пожалуйста, о вашей компании: чем" — и тишина.
 
-**Решение:**
+**Причина (диагностировано из логов):** Призрачные VAD-триггеры. Azure server_vad
+детектирует шум/эхо/дыхание как "речь", STT возвращает пустую строку, агент начинает
+отвечать на ничего, реальная речь пользователя прерывает этот призрачный ответ.
+За 71 секунд сессии — 4 призрачных триггера.
 
-- `AgentSession` настроен с `min_interruption_duration=0.5`, `min_interruption_words=1`,
-  `false_interruption_timeout=2.0`, `resume_false_interruption=True`
-- Это предотвращает ложные срабатывания VAD и восстанавливает речь после ложных прерываний
-- Для полного исправления рекомендуется обновить `livekit-agents` до >= 1.4.0
+**Решение (v2.0):**
+
+Серверная сторона (TurnDetection — Azure VAD):
+- `threshold`: 0.65 → **0.85** (строже фильтрует шум)
+- `silence_duration_ms`: 1500 → **2000** (ждёт 2с тишины)
+- `prefix_padding_ms`: 300 → **500** (больше контекста)
+- `eagerness`: не задан → **"low"** (терпеливый, не торопится отвечать)
+
+Клиентская сторона (AgentSession — LiveKit SDK):
+- `min_interruption_duration`: 0.8 → **1.5** (1.5с речи для прерывания)
+- `min_interruption_words`: 2 → **3** (минимум 3 слова)
+- `min_endpointing_delay`: 0.5 → **1.5** (ждать 1.5с перед ответом)
+- `false_interruption_timeout`: 1.5 → **2.5** (было ниже дефолта 2.0 — ошибка v1.5!)
+- `resume_false_interruption`: True (возобновлять после ложных прерываний)
 
 Также Azure OpenAI Realtime API может:
 

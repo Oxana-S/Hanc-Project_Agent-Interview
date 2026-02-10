@@ -1,0 +1,42 @@
+Управление задержкой ответа агента (silence_duration_ms)
+Что это
+Параметр silence_duration_ms в Azure OpenAI Realtime API — сколько миллисекунд тишины агент ждёт после того, как пользователь замолчал, прежде чем начать отвечать. Было захардкожено 4000. Теперь настраивается через слайдер (2.0–5.0 сек).
+
+Цепочка данных
+
+UI слайдер → POST /api/session/create → SQLite → Agent reads → Azure RealtimeModel
+Что изменено (7 файлов)
+1. models.py:55-59 — новое поле voice_config: Optional[Dict] в модели ConsultationSession
+
+2. manager.py — 4 изменения:
+
+Миграция SQLite: ALTER TABLE sessions ADD COLUMN voice_config TEXT
+_session_from_row(): десериализация json.loads(row["voice_config"])
+create_session(voice_config=...): приём параметра + INSERT
+update_session(): сериализация в UPDATE
+3. server.py:107-108 — CreateSessionRequest принимает voice_settings: Optional[dict], передаёт в session_mgr.create_session(voice_config=req.voice_settings)
+
+4. consultant.py — критическое изменение:
+
+Перестроен порядок в entrypoint(): DB lookup перенесён на Шаг 1 (ДО создания модели, было Шаг 4)
+_create_realtime_model(voice_config=...) — читает silence_duration_ms из voice_config, clamp 1500–6000мс
+Новый порядок: 1) DB lookup → 2) RealtimeModel → 3) VoiceAgent → 4) Connect → 5) AgentSession
+5. index.html:34-38 — слайдер на dashboard:
+
+
+<input type="range" id="silence-slider" min="2000" max="5000" step="500" value="4000">
+6. app.js — читает слайдер, отправляет в POST body:
+
+
+voice_settings: { silence_duration_ms: parseInt(slider.value, 10) }
+7. styles.css — стили .voice-settings
+
+Как проверить
+
+# В логе агента после создания сессии со слайдером на 2.5с:
+grep "silence_duration_ms" /tmp/agent_entrypoint.log
+# → silence_duration_ms=2500
+Хранение в БД
+
+SELECT session_id, voice_config FROM sessions ORDER BY created_at DESC LIMIT 1;
+-- → cce3edfd | {"silence_duration_ms": 2500}

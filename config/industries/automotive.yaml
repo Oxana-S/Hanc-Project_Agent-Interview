@@ -2,9 +2,13 @@ meta:
   id: automotive
   version: '1.0'
   created_at: '2026-02-04'
-  last_updated: '2026-02-05'
-  tests_run: 2
-  avg_validation_score: 0.792
+  last_updated: '2026-02-09'
+  tests_run: 3
+  avg_validation_score: 0.806
+  language: ru
+  languages: []
+  phone_codes: []
+  currency: RUB
 aliases:
 - автобизнес
 - автосалон
@@ -138,6 +142,12 @@ learnings:
   source: test_auto_service
 - date: '2026-02-05'
   insight: 'Предупреждение: [metrics] Слишком долго: 975 сек (макс 900)'
+  source: test_auto_service
+- date: '2026-02-09'
+  insight: 'Предупреждение: [scenario_match] Мало совпадений по интеграциям: 0/4'
+  source: test_auto_service
+- date: '2026-02-09'
+  insight: 'Предупреждение: [no_loops] Обнаружено зацикливание: 0 повторов'
   source: test_auto_service
 success_benchmarks:
   avg_call_duration_seconds: 200

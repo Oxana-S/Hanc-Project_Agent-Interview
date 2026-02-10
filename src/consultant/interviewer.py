@@ -813,7 +813,7 @@ class ConsultantInterviewer:
 
             # Генерируем контент
             anketa_md = AnketaGenerator.render_markdown(anketa)
-            anketa_json = anketa.model_dump()
+            anketa_json = anketa.model_dump(mode="json")
 
             # Сохраняем анкету
             anketa_paths = output_manager.save_anketa(company_dir, anketa_md, anketa_json)
@@ -846,7 +846,7 @@ class ConsultantInterviewer:
 
         return {
             "status": "completed",
-            "anketa": anketa.model_dump(),
+            "anketa": anketa.model_dump(mode="json"),
             "files": {
                 "json": str(json_path),
                 "markdown": str(md_path),

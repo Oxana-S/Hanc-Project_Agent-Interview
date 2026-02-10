@@ -20,10 +20,10 @@ pip install -r requirements-minimal.txt
 Затем запустите один из режимов:
 ```bash
 # Текстовый режим (Consultant, 4 фазы)
-python scripts/consultant_demo.py
+./venv/bin/python scripts/consultant_demo.py
 
 # Или Maximum режим (3 фазы, требует Redis + PostgreSQL)
-python scripts/demo.py
+./venv/bin/python scripts/demo.py
 ```
 
 ## Вариант 2: Установите Python 3.11-3.13 через pyenv
@@ -59,7 +59,7 @@ docker compose -f config/docker-compose.yml up -d
 После установки зависимостей проверьте:
 
 ```bash
-python scripts/healthcheck.py
+./venv/bin/python scripts/healthcheck.py
 ```
 
 Скрипт проверит подключение к внешним сервисам (DeepSeek API, Redis, PostgreSQL и др.).
@@ -69,7 +69,7 @@ python scripts/healthcheck.py
 Запустите демо-режим БЕЗ внешних зависимостей:
 
 ```bash
-python scripts/demo.py
+./venv/bin/python scripts/demo.py
 ```
 
 В demo.py выберите MOCK-режим — он симулирует работу агента без подключения к API.

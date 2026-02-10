@@ -300,7 +300,87 @@ class TestEndSession:
 
 
 # ---------------------------------------------------------------------------
-# Page routes (GET /, GET /session/{link})
+# GET /api/sessions (Dashboard)
+# ---------------------------------------------------------------------------
+
+
+class TestListSessions:
+    """Tests for the GET /api/sessions dashboard endpoint."""
+
+    def test_returns_200_empty(self, client):
+        resp = client.get("/api/sessions")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["sessions"] == []
+        assert data["total"] == 0
+
+    def test_returns_created_sessions(self, client, created_session):
+        resp = client.get("/api/sessions")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] == 1
+        assert data["sessions"][0]["session_id"] == created_session["session_id"]
+
+    def test_summary_has_expected_fields(self, client, created_session):
+        sessions = client.get("/api/sessions").json()["sessions"]
+        s = sessions[0]
+        for field in ("session_id", "unique_link", "status", "created_at",
+                      "updated_at", "company_name", "contact_name",
+                      "duration_seconds", "room_name"):
+            assert field in s, f"Missing field: {field}"
+
+    def test_summary_excludes_heavy_fields(self, client, created_session):
+        """Dashboard summaries must NOT contain dialogue_history or anketa_data."""
+        sid = created_session["session_id"]
+        client.put(
+            f"/api/session/{sid}/anketa",
+            json={"anketa_data": {"company_name": "Test"}},
+        )
+        sessions = client.get("/api/sessions").json()["sessions"]
+        s = sessions[0]
+        assert "dialogue_history" not in s
+        assert "anketa_data" not in s
+        assert "anketa_md" not in s
+
+    def test_filter_by_status(self, client):
+        s1 = client.post("/api/session/create", json={}).json()
+        s2 = client.post("/api/session/create", json={}).json()
+        # End s1 -> paused
+        client.post(f"/api/session/{s1['session_id']}/end")
+
+        active = client.get("/api/sessions?status=active").json()
+        assert active["total"] == 1
+        assert active["sessions"][0]["session_id"] == s2["session_id"]
+
+        paused = client.get("/api/sessions?status=paused").json()
+        assert paused["total"] == 1
+        assert paused["sessions"][0]["session_id"] == s1["session_id"]
+
+    def test_filter_no_matches(self, client, created_session):
+        resp = client.get("/api/sessions?status=confirmed")
+        assert resp.status_code == 200
+        assert resp.json()["total"] == 0
+
+    def test_limit_parameter(self, client):
+        for _ in range(3):
+            client.post("/api/session/create", json={})
+        resp = client.get("/api/sessions?limit=2")
+        assert resp.json()["total"] == 2
+
+    def test_multiple_sessions_ordered_newest_first(self, client):
+        s1 = client.post("/api/session/create", json={}).json()
+        client.post("/api/session/create", json={})
+        s3 = client.post("/api/session/create", json={}).json()
+
+        sessions = client.get("/api/sessions").json()["sessions"]
+        assert len(sessions) == 3
+        # Newest first
+        assert sessions[0]["session_id"] == s3["session_id"]
+        assert sessions[2]["session_id"] == s1["session_id"]
+
+
+# ---------------------------------------------------------------------------
+# Page routes (GET /, GET /session/{link}, GET /session/{link}/review)
 # ---------------------------------------------------------------------------
 
 
@@ -326,6 +406,59 @@ class TestPageRoutes:
         resp = client.get(f"/session/{link}")
         # Either 200 (public/index.html exists) or non-500 error
         assert resp.status_code != 500
+
+    def test_review_page_invalid_link_returns_404(self, client):
+        resp = client.get("/session/nonexistent-link/review")
+        assert resp.status_code == 404
+
+    def test_review_page_valid_link_does_not_500(self, client, created_session):
+        link = created_session["unique_link"]
+        resp = client.get(f"/session/{link}/review")
+        assert resp.status_code != 500
+
+
+# ---------------------------------------------------------------------------
+# POST /api/sessions/delete (Bulk delete)
+# ---------------------------------------------------------------------------
+
+
+class TestDeleteSessions:
+    """Tests for the POST /api/sessions/delete endpoint."""
+
+    def test_delete_sessions_returns_count(self, client):
+        s1 = client.post("/api/session/create", json={}).json()
+        s2 = client.post("/api/session/create", json={}).json()
+        resp = client.post(
+            "/api/sessions/delete",
+            json={"session_ids": [s1["session_id"], s2["session_id"]]},
+        )
+        assert resp.status_code == 200
+        assert resp.json()["deleted"] == 2
+
+    def test_delete_empty_returns_zero(self, client):
+        resp = client.post("/api/sessions/delete", json={"session_ids": []})
+        assert resp.status_code == 200
+        assert resp.json()["deleted"] == 0
+
+    def test_deleted_not_in_dashboard(self, client):
+        s1 = client.post("/api/session/create", json={}).json()
+        s2 = client.post("/api/session/create", json={}).json()
+
+        # Delete s1
+        client.post("/api/sessions/delete", json={"session_ids": [s1["session_id"]]})
+
+        # Dashboard should only have s2
+        dashboard = client.get("/api/sessions").json()
+        assert dashboard["total"] == 1
+        assert dashboard["sessions"][0]["session_id"] == s2["session_id"]
+
+    def test_delete_nonexistent_returns_zero(self, client):
+        resp = client.post(
+            "/api/sessions/delete",
+            json={"session_ids": ["nonexistent-id"]},
+        )
+        assert resp.status_code == 200
+        assert resp.json()["deleted"] == 0
 
 
 # ---------------------------------------------------------------------------
@@ -415,3 +548,59 @@ class TestFullLifecycleFlow:
         # Session should also be retrievable by link
         by_link = client.get(f"/api/session/by-link/{session['unique_link']}").json()
         assert by_link["status"] == "paused"
+
+    def test_dashboard_lifecycle_flow(self, client):
+        """Dashboard flow: empty list -> create sessions -> filter -> review data.
+
+        Simulates the web UI lifecycle:
+        1. Dashboard shows empty state
+        2. Create two sessions, fill anketa in one
+        3. End one session (paused)
+        4. Dashboard lists both, filter works
+        5. Session data accessible via by-link for review screen
+        """
+        # 1. Dashboard is empty
+        empty = client.get("/api/sessions").json()
+        assert empty["total"] == 0
+
+        # 2. Create two sessions
+        s1 = client.post("/api/session/create", json={}).json()
+        s2 = client.post("/api/session/create", json={}).json()
+
+        # 3. Fill anketa in s1
+        client.put(
+            f"/api/session/{s1['session_id']}/anketa",
+            json={"anketa_data": {"company_name": "Альфа", "industry": "IT"}},
+        )
+
+        # 4. Dashboard shows 2 active sessions
+        dashboard = client.get("/api/sessions").json()
+        assert dashboard["total"] == 2
+
+        active_only = client.get("/api/sessions?status=active").json()
+        assert active_only["total"] == 2
+
+        # 5. End s1 -> paused
+        client.post(f"/api/session/{s1['session_id']}/end")
+
+        # 6. Filter: 1 active, 1 paused
+        active = client.get("/api/sessions?status=active").json()
+        assert active["total"] == 1
+        assert active["sessions"][0]["session_id"] == s2["session_id"]
+
+        paused = client.get("/api/sessions?status=paused").json()
+        assert paused["total"] == 1
+        assert paused["sessions"][0]["session_id"] == s1["session_id"]
+
+        # 7. Review: session data accessible via by-link
+        review = client.get(f"/api/session/by-link/{s1['unique_link']}").json()
+        assert review["status"] == "paused"
+        assert review["anketa_data"]["company_name"] == "Альфа"
+        assert "dialogue_history" in review  # Full data for review screen
+
+        # 8. Confirm s1 -> confirmed
+        client.post(f"/api/session/{s1['session_id']}/confirm")
+
+        confirmed = client.get("/api/sessions?status=confirmed").json()
+        assert confirmed["total"] == 1
+        assert confirmed["sessions"][0]["session_id"] == s1["session_id"]

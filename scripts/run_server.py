@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Start the Hanc.AI web server."""
 
 import sys

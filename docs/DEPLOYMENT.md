@@ -78,6 +78,27 @@ docker compose -f config/docker-compose.yml down
 docker compose -f config/docker-compose.yml down -v
 ```
 
+## Управление процессами (Development)
+
+Для разработки используйте `scripts/agent.sh`:
+
+```bash
+# Запуск
+./venv/bin/python scripts/run_server.py          # Терминал 1: Web server
+./scripts/agent.sh start                          # Терминал 2: Voice agent (фоном)
+
+# Мониторинг
+./scripts/agent.sh status                         # Статус всех процессов
+./scripts/agent.sh logs                           # Логи агента (tail -f)
+
+# Перезапуск / остановка
+./scripts/agent.sh restart                        # Перезапуск агента
+./scripts/agent.sh stop                           # Graceful stop
+./scripts/agent.sh kill-all                       # Аварийное завершение
+```
+
+Агент защищён от дублирования через PID-файл (`.agent.pid`).
+
 ## Production Checklist
 
 ### Проверка подключений перед деплоем
@@ -269,15 +290,43 @@ curl http://localhost:8000/health
 # Expected: {"status": "ok", "redis": "connected", "postgres": "connected"}
 ```
 
-### Agent Health
+### Agent Health (встроенный endpoint)
 
 ```bash
-# Проверка процесса
+# Проверка через API (PID-файл + pgrep fallback)
+curl http://localhost:8000/api/agent/health
+# Expected: {"worker_alive": true, "worker_pid": 12345}
+```
+
+Фронтенд автоматически проверяет доступность агента перед созданием сессии.
+
+### Agent Health (CLI)
+
+```bash
+# Через agent.sh (рекомендуется для dev)
+./scripts/agent.sh status
+
+# Ручная проверка процесса
 pgrep -f "run_voice_agent.py"
 
 # Проверка логов на ошибки
 tail -n 100 logs/agent.log | grep -i error
 ```
+
+### LiveKit-комнаты
+
+```bash
+# Список активных комнат
+curl http://localhost:8000/api/rooms
+
+# Очистка всех комнат
+curl -X DELETE http://localhost:8000/api/rooms
+
+# CLI-скрипт
+./venv/bin/python scripts/cleanup_rooms.py --force
+```
+
+При старте сервера все старые комнаты автоматически удаляются.
 
 ## Масштабирование
 

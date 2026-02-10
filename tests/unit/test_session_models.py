@@ -168,7 +168,8 @@ class TestModelDump:
             "session_id", "room_name", "unique_link", "status",
             "created_at", "updated_at", "dialogue_history",
             "anketa_data", "anketa_md", "company_name", "contact_name",
-            "duration_seconds", "output_dir",
+            "duration_seconds", "output_dir", "document_context",
+            "voice_config",
         }
         assert set(data.keys()) == expected_keys
 

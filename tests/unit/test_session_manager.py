@@ -345,6 +345,159 @@ class TestJsonRoundTrip:
         assert isinstance(loaded.dialogue_history, list)
 
 
+class TestListSessionsSummary:
+    """Test list_sessions_summary — lightweight query for dashboard."""
+
+    def test_returns_empty_list_when_no_sessions(self, manager):
+        """list_sessions_summary returns [] when DB is empty."""
+        result = manager.list_sessions_summary()
+        assert result == []
+
+    def test_returns_correct_fields(self, manager):
+        """Each summary dict has exactly the expected lightweight fields."""
+        session = manager.create_session(room_name="room-summary")
+        session.company_name = "SummaryCorp"
+        session.contact_name = "Иван"
+        manager.update_session(session)
+
+        summaries = manager.list_sessions_summary()
+        assert len(summaries) == 1
+
+        s = summaries[0]
+        expected_keys = {
+            "session_id", "unique_link", "status", "created_at",
+            "updated_at", "company_name", "contact_name", "duration_seconds",
+            "room_name", "has_documents",
+        }
+        assert set(s.keys()) == expected_keys
+        assert s["company_name"] == "SummaryCorp"
+        assert s["contact_name"] == "Иван"
+        assert s["room_name"] == "room-summary"
+
+    def test_excludes_heavy_fields(self, manager):
+        """Summary must NOT include dialogue_history, anketa_data, etc."""
+        session = manager.create_session()
+        session.dialogue_history = [{"role": "agent", "content": "Hello"}]
+        manager.update_anketa(session.session_id, {"company_name": "Heavy"})
+        manager.update_session(session)
+
+        summaries = manager.list_sessions_summary()
+        s = summaries[0]
+        assert "dialogue_history" not in s
+        assert "anketa_data" not in s
+        assert "anketa_md" not in s
+        assert "document_context" not in s
+
+    def test_filter_by_status(self, manager):
+        """list_sessions_summary filters by status."""
+        s1 = manager.create_session()
+        s2 = manager.create_session()
+        s3 = manager.create_session()
+        manager.update_status(s1.session_id, "paused")
+        manager.update_status(s2.session_id, "confirmed")
+        # s3 stays active
+
+        paused = manager.list_sessions_summary(status="paused")
+        assert len(paused) == 1
+        assert paused[0]["session_id"] == s1.session_id
+
+        active = manager.list_sessions_summary(status="active")
+        assert len(active) == 1
+        assert active[0]["session_id"] == s3.session_id
+
+        confirmed = manager.list_sessions_summary(status="confirmed")
+        assert len(confirmed) == 1
+
+    def test_filter_no_matches(self, manager):
+        """Returns empty list when status filter has no matches."""
+        manager.create_session()
+        result = manager.list_sessions_summary(status="declined")
+        assert result == []
+
+    def test_limit_and_offset(self, manager):
+        """Limit and offset work correctly."""
+        for _ in range(5):
+            manager.create_session()
+
+        all_sessions = manager.list_sessions_summary()
+        assert len(all_sessions) == 5
+
+        limited = manager.list_sessions_summary(limit=2)
+        assert len(limited) == 2
+
+        offset_result = manager.list_sessions_summary(limit=2, offset=3)
+        assert len(offset_result) == 2
+
+        too_much_offset = manager.list_sessions_summary(offset=10)
+        assert len(too_much_offset) == 0
+
+    def test_ordered_by_created_at_desc(self, manager):
+        """Sessions are returned newest first."""
+        s1 = manager.create_session()
+        manager.create_session()
+        s3 = manager.create_session()
+
+        summaries = manager.list_sessions_summary()
+        # Newest first: s3, _, s1
+        assert summaries[0]["session_id"] == s3.session_id
+        assert summaries[2]["session_id"] == s1.session_id
+
+    def test_no_filter_returns_all_statuses(self, manager):
+        """Without status filter, all sessions are returned regardless of status."""
+        s1 = manager.create_session()
+        s2 = manager.create_session()
+        manager.create_session()
+        manager.update_status(s1.session_id, "paused")
+        manager.update_status(s2.session_id, "confirmed")
+
+        all_sessions = manager.list_sessions_summary()
+        assert len(all_sessions) == 3
+        statuses = {s["status"] for s in all_sessions}
+        assert statuses == {"active", "paused", "confirmed"}
+
+
+class TestDeleteSessions:
+    """Test delete_sessions — bulk deletion."""
+
+    def test_delete_single_session(self, manager):
+        """Deleting a single session removes it from the database."""
+        s = manager.create_session()
+        deleted = manager.delete_sessions([s.session_id])
+        assert deleted == 1
+        assert manager.get_session(s.session_id) is None
+
+    def test_delete_multiple_sessions(self, manager):
+        """Deleting multiple sessions removes all of them."""
+        s1 = manager.create_session()
+        s2 = manager.create_session()
+        s3 = manager.create_session()
+        deleted = manager.delete_sessions([s1.session_id, s3.session_id])
+        assert deleted == 2
+        assert manager.get_session(s1.session_id) is None
+        assert manager.get_session(s2.session_id) is not None
+        assert manager.get_session(s3.session_id) is None
+
+    def test_delete_nonexistent_returns_zero(self, manager):
+        """Deleting non-existent IDs returns 0."""
+        deleted = manager.delete_sessions(["nonexistent-id"])
+        assert deleted == 0
+
+    def test_delete_empty_list(self, manager):
+        """Deleting empty list returns 0 without error."""
+        manager.create_session()
+        deleted = manager.delete_sessions([])
+        assert deleted == 0
+
+    def test_deleted_sessions_not_in_summary(self, manager):
+        """Deleted sessions do not appear in list_sessions_summary."""
+        s1 = manager.create_session()
+        s2 = manager.create_session()
+        manager.delete_sessions([s1.session_id])
+        summaries = manager.list_sessions_summary()
+        assert len(summaries) == 1
+        assert summaries[0]["session_id"] == s2.session_id
+
+
 class TestClose:
     """Test manager close behavior."""
 

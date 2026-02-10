@@ -46,6 +46,18 @@ class ConsultationSession(BaseModel):
         description="Anketa rendered as Markdown"
     )
 
+    # Documents (uploaded by client during consultation)
+    document_context: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Serialized DocumentContext from uploaded files"
+    )
+
+    # Voice agent configuration (silence_duration_ms, etc.)
+    voice_config: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Voice agent configuration (silence_duration_ms, etc.)"
+    )
+
     # Metadata
     company_name: Optional[str] = Field(default=None, description="Company name from consultation")
     contact_name: Optional[str] = Field(default=None, description="Contact person name")

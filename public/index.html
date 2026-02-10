@@ -3,54 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Консультант | Voice Interviewer</title>
+    <title>Hanc.AI | Голосовой консультант</title>
     <script src="https://unpkg.com/livekit-client@2.9.3/dist/livekit-client.umd.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <div id="app">
-        <!-- Header -->
+        <!-- Header / Navigation -->
         <header class="header">
-            <h1>AI-Консультант</h1>
-            <span class="version">v3.0</span>
+            <a href="/" class="logo" id="logo-link">Hanc.AI</a>
+            <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая консультация</button>
         </header>
-
-        <!-- Status Bar -->
-        <div class="status-bar">
-            <div class="status-indicator" id="connection-status">
-                <span class="dot"></span>
-                <span class="text">Не подключен</span>
-            </div>
-            <div class="phase-indicator" id="phase-indicator">
-                <span class="phase">—</span>
-            </div>
-        </div>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Welcome Screen -->
-            <div id="welcome-screen" class="screen active">
-                <div class="welcome-card">
-                    <div class="icon">🎤</div>
-                    <h2>Добро пожаловать!</h2>
-                    <p>Я помогу создать голосового агента для вашего бизнеса.</p>
-                    <p class="phases">
-                        <span class="phase-tag discovery">Знакомство</span>
-                        <span class="arrow">→</span>
-                        <span class="phase-tag analysis">Анализ</span>
-                        <span class="arrow">→</span>
-                        <span class="phase-tag proposal">Предложение</span>
-                        <span class="arrow">→</span>
-                        <span class="phase-tag refinement">Анкета</span>
-                    </p>
-                    <button id="start-btn" class="btn btn-primary">
-                        Начать консультацию
-                    </button>
+
+            <!-- ========== DASHBOARD SCREEN ========== -->
+            <div id="dashboard-screen" class="screen">
+                <!-- Filters + Bulk Actions -->
+                <div class="dashboard-filters">
+                    <div class="filter-tabs" id="filter-tabs">
+                        <button class="filter-tab active" data-status="">Все</button>
+                        <button class="filter-tab" data-status="active">Активные</button>
+                        <button class="filter-tab" data-status="paused">На паузе</button>
+                        <button class="filter-tab" data-status="confirmed">Завершённые</button>
+                    </div>
+                    <button id="delete-selected-btn" class="btn btn-danger" style="display:none">Удалить выбранные</button>
+                </div>
+
+                <!-- Voice Settings -->
+                <div class="voice-settings" id="voice-settings">
+                    <label for="silence-slider">Задержка ответа: <span id="silence-value">4.0</span> сек</label>
+                    <input type="range" id="silence-slider" min="2000" max="5000" step="500" value="4000">
+                </div>
+
+                <!-- Sessions Table -->
+                <div class="sessions-table-wrap">
+                    <table class="sessions-table" id="sessions-table">
+                        <thead>
+                            <tr>
+                                <th class="th-checkbox"><input type="checkbox" id="select-all-sessions"></th>
+                                <th>ID</th>
+                                <th>Дата</th>
+                                <th>Компания</th>
+                                <th>Контакт</th>
+                                <th>Док.</th>
+                                <th>Комната</th>
+                                <th>Статус</th>
+                                <th>Длительность</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="sessions-tbody">
+                            <!-- Rows rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Empty State -->
+                <div id="dashboard-empty" class="dashboard-empty" style="display:none">
+                    <div class="empty-icon">🎤</div>
+                    <h3>Нет сессий</h3>
+                    <p>Начните первую голосовую консультацию</p>
                 </div>
             </div>
 
-            <!-- Interview Screen -->
+            <!-- ========== INTERVIEW SCREEN ========== -->
             <div id="interview-screen" class="screen">
+                <!-- Session Header -->
+                <div class="session-header">
+                    <button id="back-to-dashboard" class="btn-back" type="button">← Назад</button>
+                    <div class="session-meta">
+                        <span class="session-company" id="session-company">Новая сессия</span>
+                        <span class="anketa-status-badge" id="anketa-status-badge">активна</span>
+                    </div>
+                    <div class="session-meta-right">
+                        <div class="status-indicator" id="connection-status">
+                            <span class="dot"></span>
+                            <span class="text">Не подключен</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Progress -->
                 <div class="progress-section">
                     <div class="progress-bar">
@@ -94,70 +128,166 @@
                             <!-- Anketa Header -->
                             <div class="anketa-header">
                                 <h3>Анкета</h3>
-                                <span class="anketa-status-badge" id="anketa-status-badge">ожидание</span>
                             </div>
 
-                            <!-- Anketa Form -->
+                            <!-- Document Upload -->
+                            <div class="document-upload" id="document-upload">
+                                <input type="file" id="doc-upload-input" multiple
+                                       accept=".pdf,.docx,.xlsx,.xls,.txt,.md" hidden>
+                                <button id="doc-upload-btn" class="btn btn-upload" type="button">
+                                    Прикрепить документ
+                                </button>
+                                <div id="doc-upload-status" class="upload-status"></div>
+                            </div>
+
+                            <!-- Anketa Form (v2.0 — full schema) -->
                             <form id="anketa-form" class="anketa-form" autocomplete="off">
-                                <div class="anketa-field">
-                                    <label for="anketa-company_name">Название компании</label>
-                                    <input type="text" id="anketa-company_name" data-field="company_name" placeholder="ООО Пример">
+                                <!-- Section 1: Contacts -->
+                                <div class="anketa-section">
+                                    <div class="anketa-section-title">Контакты</div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-company_name">Название компании</label>
+                                        <input type="text" id="anketa-company_name" data-field="company_name" placeholder="ООО Пример">
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-contact_name">Контактное лицо</label>
+                                        <input type="text" id="anketa-contact_name" data-field="contact_name" placeholder="Иван Иванов">
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-contact_role">Должность</label>
+                                        <input type="text" id="anketa-contact_role" data-field="contact_role" placeholder="Директор">
+                                    </div>
+                                    <div class="anketa-field-row">
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-phone">Телефон</label>
+                                            <input type="text" id="anketa-phone" data-field="phone" placeholder="+7 999 123-45-67">
+                                        </div>
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-email">Email</label>
+                                            <input type="text" id="anketa-email" data-field="email" placeholder="info@company.ru">
+                                        </div>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-website">Сайт</label>
+                                        <input type="text" id="anketa-website" data-field="website" placeholder="https://company.ru">
+                                    </div>
                                 </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-contact_name">Контактное лицо</label>
-                                    <input type="text" id="anketa-contact_name" data-field="contact_name" placeholder="Иван Иванов">
+
+                                <!-- Section 2: Business -->
+                                <div class="anketa-section">
+                                    <div class="anketa-section-title">О бизнесе</div>
+                                    <div class="anketa-field-row">
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-industry">Отрасль</label>
+                                            <input type="text" id="anketa-industry" data-field="industry" placeholder="Медицина, логистика...">
+                                        </div>
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-specialization">Специализация</label>
+                                            <input type="text" id="anketa-specialization" data-field="specialization" placeholder="Стоматология...">
+                                        </div>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-business_type">Тип бизнеса</label>
+                                        <input type="text" id="anketa-business_type" data-field="business_type" placeholder="B2B, B2C, B2B2C">
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-company_description">Описание компании</label>
+                                        <textarea id="anketa-company_description" data-field="company_description" rows="2" placeholder="Чем занимается компания..."></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-services">Услуги / продукты <span class="field-hint">(каждый с новой строки)</span></label>
+                                        <textarea id="anketa-services" data-field="services" data-array="true" rows="2" placeholder="Услуга 1&#10;Услуга 2"></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-client_types">Типы клиентов <span class="field-hint">(каждый с новой строки)</span></label>
+                                        <textarea id="anketa-client_types" data-field="client_types" data-array="true" rows="2" placeholder="Физ. лица&#10;Юр. лица"></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-current_problems">Текущие проблемы <span class="field-hint">(каждая с новой строки)</span></label>
+                                        <textarea id="anketa-current_problems" data-field="current_problems" data-array="true" rows="2" placeholder="Проблема 1&#10;Проблема 2"></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-business_goals">Цели автоматизации <span class="field-hint">(каждая с новой строки)</span></label>
+                                        <textarea id="anketa-business_goals" data-field="business_goals" data-array="true" rows="2" placeholder="Снизить нагрузку&#10;Ускорить обработку"></textarea>
+                                    </div>
                                 </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-contact_role">Должность</label>
-                                    <input type="text" id="anketa-contact_role" data-field="contact_role" placeholder="Директор">
+
+                                <!-- Section 3: Voice Agent -->
+                                <div class="anketa-section">
+                                    <div class="anketa-section-title">Голосовой агент</div>
+                                    <div class="anketa-field-row">
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-agent_name">Имя агента</label>
+                                            <input type="text" id="anketa-agent_name" data-field="agent_name" placeholder="Алиса, Макс...">
+                                        </div>
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-call_direction">Направление</label>
+                                            <input type="text" id="anketa-call_direction" data-field="call_direction" placeholder="inbound / outbound">
+                                        </div>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-agent_purpose">Назначение агента</label>
+                                        <textarea id="anketa-agent_purpose" data-field="agent_purpose" rows="2" placeholder="Обработка входящих звонков, запись на приём..."></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-agent_tasks">Задачи агента <span class="field-hint">(каждая с новой строки)</span></label>
+                                        <textarea id="anketa-agent_tasks" data-field="agent_tasks" data-array="true" rows="2" placeholder="Приём звонков&#10;Запись на приём"></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-integrations">Интеграции <span class="field-hint">(каждая с новой строки)</span></label>
+                                        <textarea id="anketa-integrations" data-field="integrations" data-array="true" rows="2" placeholder="CRM&#10;1С&#10;Телефония"></textarea>
+                                    </div>
+                                    <div class="anketa-field-row">
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-voice_gender">Пол голоса</label>
+                                            <input type="text" id="anketa-voice_gender" data-field="voice_gender" placeholder="female / male">
+                                        </div>
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-voice_tone">Тон</label>
+                                            <input type="text" id="anketa-voice_tone" data-field="voice_tone" placeholder="professional">
+                                        </div>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-transfer_conditions">Перевод на оператора <span class="field-hint">(каждое с новой строки)</span></label>
+                                        <textarea id="anketa-transfer_conditions" data-field="transfer_conditions" data-array="true" rows="2" placeholder="Жалоба&#10;Запрос менеджера"></textarea>
+                                    </div>
                                 </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-phone">Телефон</label>
-                                    <input type="text" id="anketa-phone" data-field="phone" placeholder="+7 (999) 123-45-67">
+
+                                <!-- Section 4: Additional -->
+                                <div class="anketa-section">
+                                    <div class="anketa-section-title">Дополнительно</div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-constraints">Ограничения <span class="field-hint">(каждое с новой строки)</span></label>
+                                        <textarea id="anketa-constraints" data-field="constraints" data-array="true" rows="2" placeholder="Бюджет&#10;Сроки"></textarea>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-compliance_requirements">Требования регулятора <span class="field-hint">(каждое с новой строки)</span></label>
+                                        <textarea id="anketa-compliance_requirements" data-field="compliance_requirements" data-array="true" rows="2" placeholder="152-ФЗ&#10;GDPR"></textarea>
+                                    </div>
+                                    <div class="anketa-field-row">
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-call_volume">Объём звонков</label>
+                                            <input type="text" id="anketa-call_volume" data-field="call_volume" placeholder="~100/день">
+                                        </div>
+                                        <div class="anketa-field anketa-field-half">
+                                            <label for="anketa-budget">Бюджет</label>
+                                            <input type="text" id="anketa-budget" data-field="budget" placeholder="50 000 руб/мес">
+                                        </div>
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-timeline">Сроки</label>
+                                        <input type="text" id="anketa-timeline" data-field="timeline" placeholder="1-2 месяца">
+                                    </div>
+                                    <div class="anketa-field">
+                                        <label for="anketa-additional_notes">Примечания</label>
+                                        <textarea id="anketa-additional_notes" data-field="additional_notes" rows="2" placeholder="Любая дополнительная информация..."></textarea>
+                                    </div>
                                 </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-email">Email</label>
-                                    <input type="text" id="anketa-email" data-field="email" placeholder="info@company.ru">
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-industry">Отрасль</label>
-                                    <input type="text" id="anketa-industry" data-field="industry" placeholder="Медицина, логистика, торговля...">
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-company_description">Описание компании</label>
-                                    <textarea id="anketa-company_description" data-field="company_description" rows="3" placeholder="Чем занимается компания..."></textarea>
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-services">Услуги / продукты <span class="field-hint">(каждый с новой строки)</span></label>
-                                    <textarea id="anketa-services" data-field="services" data-array="true" rows="3" placeholder="Услуга 1&#10;Услуга 2"></textarea>
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-current_problems">Текущие проблемы <span class="field-hint">(каждая с новой строки)</span></label>
-                                    <textarea id="anketa-current_problems" data-field="current_problems" data-array="true" rows="3" placeholder="Проблема 1&#10;Проблема 2"></textarea>
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-agent_tasks">Задачи для агента <span class="field-hint">(каждая с новой строки)</span></label>
-                                    <textarea id="anketa-agent_tasks" data-field="agent_tasks" data-array="true" rows="3" placeholder="Задача 1&#10;Задача 2"></textarea>
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-integrations">Интеграции <span class="field-hint">(каждая с новой строки)</span></label>
-                                    <textarea id="anketa-integrations" data-field="integrations" data-array="true" rows="3" placeholder="CRM&#10;1С&#10;Телефония"></textarea>
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-call_volume">Объём звонков</label>
-                                    <input type="text" id="anketa-call_volume" data-field="call_volume" placeholder="~100 в день">
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-budget">Бюджет</label>
-                                    <input type="text" id="anketa-budget" data-field="budget" placeholder="50 000 руб/мес">
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-timeline">Сроки</label>
-                                    <input type="text" id="anketa-timeline" data-field="timeline" placeholder="1-2 месяца">
-                                </div>
-                                <div class="anketa-field">
-                                    <label for="anketa-additional_notes">Дополнительные заметки</label>
-                                    <textarea id="anketa-additional_notes" data-field="additional_notes" rows="3" placeholder="Любая дополнительная информация..."></textarea>
+
+                                <!-- Section 5: AI Expert Analysis (read-only, shown when populated) -->
+                                <div class="anketa-section" id="ai-blocks-section" style="display:none">
+                                    <div class="anketa-section-title">AI-экспертиза</div>
+                                    <div class="ai-blocks-summary" id="ai-blocks-summary"></div>
                                 </div>
                             </form>
 
@@ -178,30 +308,57 @@
                 </div>
             </div>
 
-            <!-- Results Screen -->
-            <div id="results-screen" class="screen">
-                <div class="results-card">
-                    <div class="icon">✅</div>
-                    <h2>Консультация завершена!</h2>
-                    <div class="stats" id="results-stats">
-                        <!-- Stats will be added here -->
+            <!-- ========== SESSION REVIEW SCREEN ========== -->
+            <div id="review-screen" class="screen">
+                <div class="session-header">
+                    <button id="review-back-btn" class="btn-back" type="button">← Назад</button>
+                    <div class="session-meta">
+                        <span class="session-company" id="review-company">—</span>
+                        <span class="anketa-status-badge" id="review-status-badge">—</span>
                     </div>
-                    <div class="files" id="results-files">
-                        <!-- File links will be added here -->
+                    <div class="session-meta-right">
+                        <span class="review-duration" id="review-duration"></span>
                     </div>
-                    <button id="new-btn" class="btn btn-primary">
-                        Новая консультация
-                    </button>
+                </div>
+
+                <div class="review-columns">
+                    <!-- LEFT: Anketa read-only -->
+                    <div class="review-left">
+                        <div class="review-panel">
+                            <h3>Анкета</h3>
+                            <div id="review-anketa-content" class="review-anketa-content">
+                                <!-- Rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT: Dialogue history -->
+                    <div class="review-right">
+                        <div class="review-panel">
+                            <h3>История диалога</h3>
+                            <div id="review-dialogue" class="review-dialogue">
+                                <!-- Rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-actions">
+                    <button id="review-resume-btn" class="btn btn-primary" type="button">Продолжить сессию</button>
+                    <button id="review-copy-link-btn" class="btn btn-copy-link" type="button">Копировать ссылку</button>
                 </div>
             </div>
+
         </main>
+
+        <!-- Toast Container -->
+        <div id="toast-container" class="toast-container"></div>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Voice Interviewer Agent &copy; 2026</p>
+            <p>Hanc.AI &copy; 2026</p>
         </footer>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/app.js"></script>
 </body>
 </html>

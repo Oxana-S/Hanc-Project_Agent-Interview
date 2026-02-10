@@ -53,7 +53,8 @@
 Запуск:
 
 ```bash
-uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+./venv/bin/python scripts/run_server.py
+# или: ./venv/bin/python -m uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 ```
 
 Отвечает за:
@@ -63,6 +64,9 @@ uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 - Создание LiveKit комнат с agent dispatch
 - Генерацию LiveKit токенов для клиентов
 - Polling анкеты из SQLite для UI
+- Health check голосового агента (PID-файл + `pgrep` fallback)
+- Автоочистку старых LiveKit-комнат при старте сервера
+- Управление LiveKit-комнатами (список, удаление)
 
 Эндпоинты:
 
@@ -74,9 +78,16 @@ uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 | GET | `/api/session/by-link/{link}` | Получение сессии по уникальной ссылке |
 | GET | `/api/session/{id}` | Полные данные сессии |
 | GET | `/api/session/{id}/anketa` | Данные анкеты (polling каждые ~2 сек) |
+| GET | `/api/session/{id}/reconnect` | Восстановление сессии (новый токен, пересоздание комнаты) |
 | PUT | `/api/session/{id}/anketa` | Обновление анкеты из UI |
 | POST | `/api/session/{id}/confirm` | Подтверждение анкеты + уведомления |
 | POST | `/api/session/{id}/end` | Завершение сессии |
+| POST | `/api/session/{id}/kill` | Принудительное завершение (удаление комнаты + статус declined) |
+| GET | `/api/agent/health` | Проверка доступности голосового агента |
+| GET | `/api/rooms` | Список активных LiveKit-комнат |
+| DELETE | `/api/rooms` | Удаление всех LiveKit-комнат |
+
+Startup-событие: `_cleanup_stale_rooms()` — удаляет все LiveKit-комнаты при старте сервера.
 
 Логгеры: `server`, `livekit`, `session`
 
@@ -85,7 +96,11 @@ uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 Запуск:
 
 ```bash
-python scripts/run_voice_agent.py dev
+# Рекомендуется: через agent.sh (управление процессами, PID-файл, логи)
+./scripts/agent.sh start
+
+# Или напрямую:
+./venv/bin/python scripts/run_voice_agent.py dev
 ```
 
 Отвечает за:
@@ -96,6 +111,7 @@ python scripts/run_voice_agent.py dev
 - Периодическое извлечение анкеты (каждые 6 сообщений)
 - Синхронизацию состояния с SQLite (SessionManager)
 - Финализацию: полное извлечение анкеты + сохранение файлов
+- Защиту от дублирования через PID-файл (`.agent.pid`)
 
 Этапы инициализации (5 шагов):
 
@@ -149,7 +165,7 @@ src/
 │   └── livekit_client.py        # LiveKitClient (токены)
 │
 ├── web/                         # Web сервер
-│   └── server.py                # FastAPI приложение (9 эндпоинтов)
+│   └── server.py                # FastAPI приложение (14 эндпоинтов)
 │
 ├── consultant/                  # Текстовый CLI консультант
 │   ├── interviewer.py           # ConsultantInterviewer (4 фазы)

@@ -17,6 +17,11 @@ Endpoints:
         PUT  /api/session/{session_id}/anketa - Update anketa (client edits)
         POST /api/session/{session_id}/confirm - Confirm anketa
         POST /api/session/{session_id}/end  - End active session
+        POST /api/session/{session_id}/kill - Force-kill session + LiveKit room
+
+    API - Rooms:
+        GET    /api/rooms                   - List active LiveKit rooms
+        DELETE /api/rooms                   - Delete all active LiveKit rooms
 
     Static:
         /*                                  - Static files from public/
@@ -24,9 +29,10 @@ Endpoints:
 
 import asyncio
 import os
-from typing import Optional
+from pathlib import Path
+from typing import List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -37,7 +43,14 @@ setup_logging("server")
 
 import structlog
 
-from livekit.api import LiveKitAPI, CreateRoomRequest, RoomAgentDispatch, CreateAgentDispatchRequest
+from livekit.api import (
+    LiveKitAPI,
+    CreateRoomRequest,
+    DeleteRoomRequest,
+    ListRoomsRequest,
+    RoomAgentDispatch,
+    CreateAgentDispatchRequest,
+)
 from src.session.manager import SessionManager
 
 logger = structlog.get_logger("server")
@@ -53,6 +66,37 @@ app = FastAPI(title="Hanc.AI Voice Consultant")
 # Singleton session manager
 session_mgr = SessionManager()
 
+
+# ---------------------------------------------------------------------------
+# Startup: clean stale LiveKit rooms
+# ---------------------------------------------------------------------------
+
+@app.on_event("startup")
+async def _cleanup_stale_rooms():
+    """Delete old LiveKit rooms left from previous server runs."""
+    try:
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        result = await lk_api.room.list_rooms(ListRoomsRequest())
+        count = 0
+        for r in result.rooms:
+            try:
+                await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
+                count += 1
+                logger.info("startup_cleanup_room", room=r.name)
+            except Exception:
+                pass
+        await lk_api.aclose()
+        if count:
+            logger.info("startup_cleanup_done", deleted=count)
+        else:
+            logger.info("startup_no_stale_rooms")
+    except Exception as exc:
+        logger.warning("startup_cleanup_failed", error=str(exc))
+
 # ---------------------------------------------------------------------------
 # Pydantic request / response models
 # ---------------------------------------------------------------------------
@@ -61,6 +105,7 @@ session_mgr = SessionManager()
 class CreateSessionRequest(BaseModel):
     """Request body for creating a new consultation session."""
     pattern: str = "interaction"
+    voice_settings: Optional[dict] = None  # e.g. {"silence_duration_ms": 3000}
 
 
 class CreateSessionResponse(BaseModel):
@@ -91,11 +136,16 @@ async def index():
 
 @app.get("/session/{link}")
 async def session_page(link: str):
-    """Serve consultation page for returning clients.
+    """Serve consultation page for returning clients."""
+    session = session_mgr.get_session_by_link(link)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return FileResponse("public/index.html")
 
-    Verifies that the unique link exists, then serves the same index page.
-    The JS frontend reads session data from the API using the link.
-    """
+
+@app.get("/session/{link}/review")
+async def session_review_page(link: str):
+    """Serve review page for completed sessions (SPA handles rendering)."""
     session = session_mgr.get_session_by_link(link)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -105,6 +155,44 @@ async def session_page(link: str):
 # ---------------------------------------------------------------------------
 # API: Sessions
 # ---------------------------------------------------------------------------
+
+
+@app.get("/api/sessions")
+async def list_sessions(status: str = None, limit: int = 50, offset: int = 0):
+    """List all sessions (lightweight summaries for dashboard)."""
+    sessions = session_mgr.list_sessions_summary(status, limit, offset)
+    return {"sessions": sessions, "total": len(sessions)}
+
+
+@app.post("/api/sessions/delete")
+async def delete_sessions(req: dict):
+    """Delete sessions by IDs. Also deletes associated LiveKit rooms."""
+    session_ids = req.get("session_ids", [])
+    if not session_ids:
+        return {"deleted": 0}
+
+    # Delete LiveKit rooms for each session
+    rooms_deleted = 0
+    try:
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        for sid in session_ids:
+            room_name = f"consultation-{sid}"
+            try:
+                await lk_api.room.delete_room(DeleteRoomRequest(room=room_name))
+                rooms_deleted += 1
+            except Exception:
+                pass  # room may not exist
+        await lk_api.aclose()
+    except Exception as e:
+        livekit_log.warning("bulk_room_delete_failed", error=str(e))
+
+    deleted = session_mgr.delete_sessions(session_ids)
+    session_log.info("sessions_bulk_deleted", deleted=deleted, rooms_deleted=rooms_deleted)
+    return {"deleted": deleted, "rooms_deleted": rooms_deleted}
 
 
 @app.post("/api/session/create", response_model=CreateSessionResponse)
@@ -118,7 +206,7 @@ async def create_session(req: CreateSessionRequest):
     logger.info("=== SESSION CREATE START ===", pattern=req.pattern)
 
     # Step 1: Create DB session
-    session = session_mgr.create_session()
+    session = session_mgr.create_session(voice_config=req.voice_settings)
     room_name = f"consultation-{session.session_id}"
     session.room_name = room_name
     session_mgr.update_session(session)
@@ -260,6 +348,71 @@ async def get_anketa(session_id: str):
     }
 
 
+@app.get("/api/session/{session_id}/reconnect")
+async def reconnect_session(session_id: str):
+    """Get new LiveKit token to reconnect to an existing session room.
+
+    Used when the user reloads the page and needs to rejoin the room.
+    If the room no longer exists, creates a new one with agent dispatch.
+    Also resumes paused sessions by setting status back to active.
+    """
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    # Resume paused sessions
+    if session.status == "paused":
+        session_mgr.update_status(session_id, "active")
+        session_log.info("session_resumed", session_id=session_id)
+
+    room_name = session.room_name or f"consultation-{session_id}"
+    livekit_url = os.getenv("LIVEKIT_URL", "")
+
+    # Generate a new token for this room
+    try:
+        from src.voice.livekit_client import LiveKitClient
+        lk = LiveKitClient()
+        user_token = lk.create_token(room_name, f"client-{session_id}")
+    except Exception as exc:
+        livekit_log.error("reconnect_token_failed", error=str(exc))
+        raise HTTPException(status_code=500, detail="Failed to generate token")
+
+    # Check if room still exists; if not, recreate + dispatch agent
+    try:
+        lk_api = LiveKitAPI(
+            url=livekit_url,
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        result = await lk_api.room.list_rooms(ListRoomsRequest())
+        room_exists = any(r.name == room_name for r in result.rooms)
+
+        if not room_exists:
+            livekit_log.info("reconnect_room_not_found_recreating", room=room_name)
+            await lk_api.room.create_room(
+                CreateRoomRequest(name=room_name, empty_timeout=300)
+            )
+            await lk_api.agent_dispatch.create_dispatch(
+                CreateAgentDispatchRequest(room=room_name, agent_name="hanc-consultant")
+            )
+
+        await lk_api.aclose()
+    except Exception as exc:
+        livekit_log.warning("reconnect_room_check_failed", error=str(exc))
+
+    session_log.info(
+        "session_reconnect",
+        session_id=session_id,
+        room_name=room_name,
+        room_existed=room_exists if 'room_exists' in dir() else "unknown",
+    )
+    return {
+        "room_name": room_name,
+        "livekit_url": livekit_url,
+        "user_token": user_token,
+    }
+
+
 @app.put("/api/session/{session_id}/anketa")
 async def update_anketa(session_id: str, req: UpdateAnketaRequest):
     """Update anketa data (client edits from the frontend)."""
@@ -314,6 +467,279 @@ async def end_session(session_id: str):
         "message_count": len(session.dialogue_history),
         "unique_link": session.unique_link,
     }
+
+
+@app.post("/api/session/{session_id}/kill")
+async def kill_session(session_id: str):
+    """Force-kill session: delete LiveKit room and mark as declined."""
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    room_name = session.room_name or f"consultation-{session_id}"
+    room_deleted = False
+
+    try:
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        await lk_api.room.delete_room(DeleteRoomRequest(room=room_name))
+        room_deleted = True
+        livekit_log.info("room_deleted", room=room_name)
+        await lk_api.aclose()
+    except Exception as e:
+        livekit_log.warning("room_delete_failed", room=room_name, error=str(e))
+
+    session_mgr.update_status(session_id, "declined")
+    session_log.info("session_killed", session_id=session_id, room_deleted=room_deleted)
+
+    return {
+        "status": "killed",
+        "room_deleted": room_deleted,
+        "room_name": room_name,
+    }
+
+
+# ---------------------------------------------------------------------------
+# API: Agent health check
+# ---------------------------------------------------------------------------
+
+
+def _check_agent_alive() -> tuple:
+    """Check if voice agent worker is running. Uses PID file + pgrep fallback."""
+    import subprocess
+
+    # Method 1: PID file
+    _project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    pid_file = os.path.join(_project_root, ".agent.pid")
+    if os.path.exists(pid_file):
+        try:
+            with open(pid_file) as f:
+                pid = int(f.read().strip())
+            os.kill(pid, 0)
+            return True, pid
+        except (OSError, ValueError):
+            pass
+
+    # Method 2: pgrep fallback (PID file may not exist)
+    try:
+        result = subprocess.run(
+            ["pgrep", "-f", "run_voice_agent.py"],
+            capture_output=True, text=True, timeout=3,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            pid = int(result.stdout.strip().split('\n')[0])
+            return True, pid
+    except (subprocess.TimeoutExpired, ValueError):
+        pass
+
+    return False, None
+
+
+@app.get("/api/agent/health")
+async def agent_health():
+    """Check if a voice agent worker process is alive."""
+    alive, pid = _check_agent_alive()
+    return {"worker_alive": alive, "worker_pid": pid}
+
+
+# ---------------------------------------------------------------------------
+# API: LiveKit Rooms
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/rooms")
+async def list_rooms():
+    """List all active LiveKit rooms."""
+    lk_api = LiveKitAPI(
+        url=os.getenv("LIVEKIT_URL"),
+        api_key=os.getenv("LIVEKIT_API_KEY"),
+        api_secret=os.getenv("LIVEKIT_API_SECRET"),
+    )
+    result = await lk_api.room.list_rooms(ListRoomsRequest())
+    await lk_api.aclose()
+
+    rooms = [
+        {
+            "name": r.name,
+            "sid": r.sid,
+            "participants": r.num_participants,
+            "created_at": r.creation_time,
+        }
+        for r in result.rooms
+    ]
+    return {"rooms": rooms, "count": len(rooms)}
+
+
+@app.delete("/api/rooms")
+async def cleanup_all_rooms():
+    """Delete ALL active LiveKit rooms."""
+    lk_api = LiveKitAPI(
+        url=os.getenv("LIVEKIT_URL"),
+        api_key=os.getenv("LIVEKIT_API_KEY"),
+        api_secret=os.getenv("LIVEKIT_API_SECRET"),
+    )
+    result = await lk_api.room.list_rooms(ListRoomsRequest())
+    deleted = []
+    for r in result.rooms:
+        try:
+            await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
+            deleted.append(r.name)
+            livekit_log.info("room_cleanup_deleted", room=r.name)
+        except Exception as e:
+            livekit_log.warning("room_cleanup_failed", room=r.name, error=str(e))
+    await lk_api.aclose()
+
+    logger.info("rooms_cleanup_done", deleted_count=len(deleted))
+    return {"deleted": deleted, "count": len(deleted)}
+
+
+# ---------------------------------------------------------------------------
+# API: Document Upload
+# ---------------------------------------------------------------------------
+
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
+MAX_FILES_PER_SESSION = 5
+SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".xls", ".txt", ".md"}
+
+
+@app.post("/api/session/{session_id}/documents/upload")
+async def upload_documents(
+    session_id: str,
+    files: List[UploadFile] = File(...),
+):
+    """Upload documents for analysis during consultation.
+
+    Parses uploaded files (PDF, DOCX, XLSX, TXT, MD), analyzes them
+    with LLM, stores DocumentContext in the session, and triggers
+    immediate anketa extraction enriched with document data.
+    """
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    if len(files) > MAX_FILES_PER_SESSION:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Maximum {MAX_FILES_PER_SESSION} files per session",
+        )
+
+    # Save uploaded files to data/uploads/{session_id}/
+    upload_dir = Path("data/uploads") / session_id
+    upload_dir.mkdir(parents=True, exist_ok=True)
+
+    from src.documents import DocumentParser, DocumentAnalyzer
+
+    parser = DocumentParser()
+    parsed_docs = []
+    saved_files = []
+
+    for file in files:
+        # Validate extension
+        ext = Path(file.filename or "").suffix.lower()
+        if ext not in SUPPORTED_EXTENSIONS:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Unsupported file type: {ext}. Supported: {', '.join(sorted(SUPPORTED_EXTENSIONS))}",
+            )
+
+        # Read and validate size
+        content = await file.read()
+        if len(content) > MAX_FILE_SIZE:
+            raise HTTPException(
+                status_code=413,
+                detail=f"File {file.filename} exceeds {MAX_FILE_SIZE // (1024*1024)}MB limit",
+            )
+
+        # Save to disk
+        file_path = upload_dir / file.filename
+        file_path.write_bytes(content)
+        saved_files.append(file.filename)
+
+        # Parse
+        doc = parser.parse(file_path)
+        if doc:
+            parsed_docs.append(doc)
+            logger.info("document_parsed", filename=file.filename, chunks=len(doc.chunks))
+        else:
+            logger.warning("document_parse_failed", filename=file.filename)
+
+    if not parsed_docs:
+        raise HTTPException(status_code=400, detail="No documents could be parsed")
+
+    # Analyze with LLM
+    analyzer = DocumentAnalyzer()
+    doc_context = await analyzer.analyze(parsed_docs)
+
+    # Store in session
+    context_dict = doc_context.model_dump(mode="json")
+    # Remove heavy chunks from storage (keep summary + extracted info only)
+    for doc_data in context_dict.get("documents", []):
+        doc_data.pop("chunks", None)
+    session_mgr.update_document_context(session_id, context_dict)
+
+    logger.info(
+        "documents_uploaded_and_analyzed",
+        session_id=session_id,
+        files=saved_files,
+        key_facts=len(doc_context.key_facts),
+        services=len(doc_context.services_mentioned),
+    )
+
+    # Trigger immediate anketa extraction with document context
+    task = asyncio.create_task(
+        _extract_anketa_with_documents(session_id, doc_context)
+    )
+    task.add_done_callback(lambda t: t.result() if not t.cancelled() and not t.exception() else None)
+
+    return {
+        "status": "success",
+        "documents": saved_files,
+        "document_count": len(parsed_docs),
+        "summary": doc_context.summary,
+        "key_facts": doc_context.key_facts[:5],
+        "services": doc_context.services_mentioned[:10],
+    }
+
+
+async def _extract_anketa_with_documents(session_id: str, doc_context):
+    """Background task: extract anketa enriched with document data."""
+    try:
+        session = session_mgr.get_session(session_id)
+        if not session:
+            return
+
+        from src.anketa import AnketaExtractor, AnketaGenerator
+        from src.llm.deepseek import DeepSeekClient
+
+        extractor = AnketaExtractor(DeepSeekClient())
+        anketa = await extractor.extract(
+            dialogue_history=session.dialogue_history or [],
+            duration_seconds=session.duration_seconds,
+            document_context=doc_context,
+        )
+
+        anketa_data = anketa.model_dump(mode="json")
+        anketa_md = AnketaGenerator.render_markdown(anketa)
+        session_mgr.update_anketa(session_id, anketa_data, anketa_md)
+
+        if anketa.company_name or anketa.contact_name:
+            session_mgr.update_metadata(
+                session_id,
+                company_name=anketa.company_name,
+                contact_name=anketa.contact_name,
+            )
+
+        logger.info(
+            "document_anketa_extracted",
+            session_id=session_id,
+            company=anketa.company_name,
+            completion=f"{anketa.completion_rate():.0f}%",
+        )
+    except Exception as e:
+        logger.warning("document_anketa_extraction_failed", session_id=session_id, error=str(e))
 
 
 # ---------------------------------------------------------------------------

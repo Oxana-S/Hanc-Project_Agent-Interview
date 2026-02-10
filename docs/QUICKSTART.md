@@ -139,20 +139,42 @@ python scripts/demo.py
 ### Шаг 1: Запуск web-сервера
 
 ```bash
-# Вариант 1: через uvicorn напрямую
-uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+# Вариант 1: через скрипт (рекомендуется)
+./venv/bin/python scripts/run_server.py
 
-# Вариант 2: через скрипт
-python scripts/run_server.py
+# Вариант 2: через uvicorn напрямую
+./venv/bin/python -m uvicorn src.web.server:app --host 0.0.0.0 --port 8000
+
+# Вариант 3: активировать venv, потом запускать напрямую
+source venv/bin/activate
+./scripts/run_server.py
 ```
+
+При старте сервер автоматически очищает старые LiveKit-комнаты от предыдущих запусков.
 
 ### Шаг 2: Запуск голосового агента
 
 В отдельном терминале:
 
 ```bash
-python scripts/run_voice_agent.py
+# Вариант 1: через agent.sh (рекомендуется — управление процессами)
+./scripts/agent.sh start
+
+# Вариант 2: напрямую
+./venv/bin/python scripts/run_voice_agent.py
 ```
+
+**Управление агентом через `agent.sh`:**
+
+```bash
+./scripts/agent.sh status    # Статус процессов
+./scripts/agent.sh stop      # Остановить агент (graceful)
+./scripts/agent.sh restart   # Перезапустить
+./scripts/agent.sh logs      # Показать логи (tail -f)
+./scripts/agent.sh kill-all  # Аварийное завершение всех процессов
+```
+
+Агент защищён от дублирования через PID-файл (`.agent.pid`). При попытке запустить второй экземпляр скрипт предупредит и завершится.
 
 ### Шаг 3: Открыть браузер
 
@@ -162,10 +184,12 @@ http://localhost:8000
 
 Нажмите "Начать консультацию" — система:
 
-1. Создаст сессию в SQLite
-2. Сгенерирует LiveKit комнату с agent dispatch
-3. Подключит голосового агента
-4. Покажет анкету в реальном времени (polling каждые ~2 сек)
+1. Проверит, что голосовой агент запущен (health check)
+2. Создаст сессию в SQLite
+3. Сгенерирует LiveKit комнату с agent dispatch
+4. Подключит голосового агента
+5. Покажет анкету в реальном времени (polling каждые ~2 сек)
+6. Обновит URL страницы — при перезагрузке сессия восстановится
 
 ## 6. Запуск тестов
 
@@ -303,9 +327,13 @@ sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;
 | `Azure OpenAI credentials not configured` | Заполните `AZURE_CHAT_OPENAI_*` в `.env` |
 | `Azure Realtime credentials not configured` | Заполните `AZURE_OPENAI_*` в `.env` (для голосового режима) |
 | Агент не подключается к комнате | Проверьте `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` |
+| «Голосовой агент не запущен» в браузере | Запустите агент: `./scripts/agent.sh start`, проверьте: `./scripts/agent.sh status` |
 | Нет звука в браузере | Разрешите доступ к микрофону, проверьте HTTPS |
 | `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
 | Redis/PostgreSQL connection refused | `docker compose -f config/docker-compose.yml up -d` |
+| Несколько процессов агента (конфликт) | `./scripts/agent.sh kill-all` и затем `./scripts/agent.sh start` |
+| Порт 8000 занят | `lsof -ti:8000 \| xargs kill -9` или `./scripts/kill_8000.sh` |
+| Старые комнаты LiveKit | Перезапустите сервер (очистка при старте) или: `curl -X DELETE http://localhost:8000/api/rooms` |
 
 ## Дальнейшее чтение
 

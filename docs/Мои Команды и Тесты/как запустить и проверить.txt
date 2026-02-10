@@ -1,0 +1,30 @@
+Для проверки нужно запустить сервер + агент и открыть UI:
+
+
+# 1. Запустить сервер
+./venv/bin/python scripts/run_server.py &
+
+# 2. Запустить агент
+./scripts/agent.sh start
+
+# 3. Открыть http://localhost:8000
+Что проверять в UI:
+
+На dashboard виден слайдер "Задержка ответа: 4.0 сек"
+Двигаем на нужное значение (например 3.0)
+Нажимаем "+ Новая консультация"
+Проверить что параметр сохранился в БД:
+
+
+sqlite3 data/sessions.db "SELECT session_id, voice_config FROM sessions ORDER BY created_at DESC LIMIT 1"
+# → abcd1234 | {"silence_duration_ms": 3000}
+Проверить что агент получил настройку — в логе:
+
+
+grep "silence_duration_ms" /tmp/agent_entrypoint.log | tail -3
+# → VAD silence_duration_ms silence_duration_ms=3000 from_voice_config=True
+Проверить что тесты проходят:
+
+
+./venv/bin/python -m pytest --tb=short -q
+# → 1039 passed

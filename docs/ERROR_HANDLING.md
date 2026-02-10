@@ -73,7 +73,29 @@ logger.error(f"DeepSeek API error: status={status_code}, detail={response.text}"
 | `Room not found` | Комната не существует | Проверьте session_id |
 | `Connection timeout` | Сетевые проблемы | Проверьте LIVEKIT_URL |
 | `Track publish failed` | WebRTC проблемы | Проверьте firewall/NAT |
-| `Agent dispatch failed` | Агент не запущен | Запустите run_voice_agent.py |
+| `Agent dispatch failed` | Агент не запущен | Запустите `./scripts/agent.sh start` |
+
+### VAD / Прерывания
+
+| Ошибка | Причина | Решение |
+|--------|---------|---------|
+| Агент обрезает фразы на полуслове ("заикается") | Призрачные VAD-триггеры: шум/эхо/дыхание детектируется как речь, STT возвращает `''`, агент начинает отвечать на ничего, реальная речь пользователя прерывает призрачный ответ | Повысить `threshold` (→0.85), добавить `eagerness="low"`, увеличить `min_interruption_duration` (→1.5) |
+| `USER SPEECH: '' (final=False)` в логах | VAD сработал на шум, STT не распознал слов | Повысить `threshold` в TurnDetection. Проверить эхо от колонок |
+| Агент не реагирует на речь | `threshold` слишком высокий или `silence_duration_ms` слишком длинный | Понизить `threshold` (→0.7), уменьшить `silence_duration_ms` (→1500) |
+| Агент отвечает слишком быстро, не дождавшись конца фразы | `silence_duration_ms` или `min_endpointing_delay` слишком низкие | Увеличить оба параметра (2000мс и 1.5с соответственно) |
+| Ложные прерывания не восстанавливаются | `false_interruption_timeout` слишком низкий | Увеличить до ≥2.0с (ниже дефолта = хуже!), проверить `resume_false_interruption=True` |
+
+**Диагностика:** проверьте `logs/agent.log`:
+
+```bash
+# Призрачные триггеры (пустая речь)
+grep 'USER SPEECH.*final=False' logs/agent.log | grep "''" | wc -l
+
+# Прерывания агента (speaking → listening)
+grep 'AGENT STATE: speaking -> listening' logs/agent.log | wc -l
+
+# Соотношение: ghost_triggers / total_interruptions > 30% = проблема
+```
 
 ### Обработка в агенте
 
