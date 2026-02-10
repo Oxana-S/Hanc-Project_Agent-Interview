@@ -46,6 +46,9 @@ class SessionManager:
         self._conn = sqlite3.connect(db_path, check_same_thread=False)
         self._conn.row_factory = sqlite3.Row
 
+        # Enable WAL mode for safe multi-process access (web + agent containers)
+        self._conn.execute("PRAGMA journal_mode=WAL")
+
         # Create table if not exists
         self._create_table()
 

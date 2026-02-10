@@ -1,0 +1,93 @@
+services:
+  web:
+    build: .
+    container_name: hanc_web
+    command: python scripts/run_server.py
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=postgres
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-interviewer_user}:${POSTGRES_PASSWORD:-change_me}@postgres:5432/${POSTGRES_DB:-voice_interviewer}
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - app_data:/app/data
+      - app_logs:/app/logs
+      - app_output:/app/output
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - hanc_network
+
+  agent:
+    build: .
+    container_name: hanc_agent
+    command: python scripts/run_voice_agent.py dev
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=postgres
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-interviewer_user}:${POSTGRES_PASSWORD:-change_me}@postgres:5432/${POSTGRES_DB:-voice_interviewer}
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - app_data:/app/data
+      - app_logs:/app/logs
+      - app_output:/app/output
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - hanc_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: hanc_redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hanc_network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: hanc_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-voice_interviewer}
+      POSTGRES_USER: ${POSTGRES_USER:-interviewer_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-interviewer_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hanc_network
+
+volumes:
+  app_data:
+  app_logs:
+  app_output:
+  redis_data:
+  postgres_data:
+
+networks:
+  hanc_network:
+    driver: bridge
