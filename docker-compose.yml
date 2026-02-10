@@ -1,10 +1,56 @@
 services:
+  # --- Nginx reverse proxy (SSL termination) ---
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: hanc_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+      - ./data/certbot/conf:/etc/letsencrypt:ro
+      - ./data/certbot/www:/var/www/certbot:ro
+    environment:
+      - DOMAIN=${DOMAIN:-localhost}
+      - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
+      - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
+      - NGINX_ENVSUBST_FILTER=DOMAIN
+    depends_on:
+      web:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - hanc_network
+    # Reload every 6h to pick up renewed certificates
+    command: >
+      /bin/sh -c '
+        while :; do sleep 6h & wait $${!}; nginx -s reload; done &
+        nginx -g "daemon off;"
+      '
+
+  # --- Certbot (auto-renewal) ---
+  certbot:
+    image: certbot/certbot:latest
+    container_name: hanc_certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: >
+      /bin/sh -c '
+        trap exit TERM;
+        while :; do certbot renew --quiet; sleep 12h & wait $${!}; done
+      '
+    restart: unless-stopped
+    networks:
+      - hanc_network
+
+  # --- Web server (FastAPI) ---
   web:
     build: .
     container_name: hanc_web
     command: python scripts/run_server.py
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     env_file: .env
     environment:
       - REDIS_HOST=redis
@@ -24,6 +70,7 @@ services:
     networks:
       - hanc_network
 
+  # --- Voice agent (LiveKit worker) ---
   agent:
     build: .
     container_name: hanc_agent
@@ -47,6 +94,7 @@ services:
     networks:
       - hanc_network
 
+  # --- Redis (session cache, optional) ---
   redis:
     image: redis:7-alpine
     container_name: hanc_redis
@@ -62,6 +110,7 @@ services:
     networks:
       - hanc_network
 
+  # --- PostgreSQL (long-term storage, optional) ---
   postgres:
     image: postgres:16-alpine
     container_name: hanc_postgres

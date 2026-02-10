@@ -19,12 +19,14 @@
 | 7. LLM-симуляция | Полный цикл консультации | run_test.py | 4/4 фазы, анкета сгенерирована |
 | 7.5. LLM + документы | Симуляция с --input-dir | run_test.py --input-dir | Документы загружены, контекст в консультации |
 | 8. Голосовой агент | WebRTC + STT/TTS | e2e_voice_test.js | Все этапы passed |
+| **9. Docker-деплой** | **Сборка, SSL, nginx, healthcheck** | **docker compose + curl** | **6/6 сервисов Up, HTTPS 200** |
 
 **Фазы:**
 - **Фаза A (Оффлайн):** Этапы 1–3 — не требуют внешних сервисов
 - **Фаза B (Конфигурация):** Этап 4 — проверка .env и инфраструктуры
 - **Фаза C (Подключения):** Этап 5 — реальные соединения к сервисам
 - **Фаза D (Функциональные):** Этапы 6–8 — требуют живых API
+- **Фаза E (Деплой):** Этап 9 — Docker-контейнеры, SSL, nginx reverse proxy
 
 > **ВАЖНО — Урок KB-инцидента (v4.0):** Этапы 1–3 и 6 ранее тестировали компоненты **изолированно**: юнит-тесты проверяли, что `get_enriched_system_prompt()` генерирует контекст, а Этап 6.3 проверял, что KB-контекст создаётся. Но **ни один тест не проверял, что эта функция вызывается** из `entrypoint()` голосового агента. В результате 968 KB-профилей были полностью реализованы, но **не подключены** к голосовому агенту на протяжении всей разработки. Этап 2.5 (Wiring Verification) добавлен для предотвращения подобных инцидентов.
 
@@ -1831,6 +1833,167 @@ python scripts/run_test.py auto_service --quiet
 # 7.5. LLM + документы (Этап 7.5 — с input-dir)
 python scripts/run_test.py logistics_company --input-dir input/test_docs/ --quiet
 ```
+
+---
+
+## Этап 9: Docker-деплой и SSL
+
+Проверка контейнеризированного деплоя: сборка образа, запуск 6 сервисов, nginx reverse proxy, SSL-сертификат Let's Encrypt.
+
+### 9.1 Требования
+
+- Docker Engine 24+
+- Docker Compose v2
+- Домен с A-записью на IP сервера
+- Порты 80 и 443 открыты на сервере
+- `.env` настроен: `DOMAIN`, `CERTBOT_EMAIL`, все API-ключи
+
+### 9.2 Сборка образа
+
+```bash
+docker compose build
+```
+
+**Критерий:** `Successfully built`, 0 errors. Образ `hanc-ai` собран на базе `python:3.14-slim`.
+
+### 9.3 Первичное получение SSL-сертификата
+
+```bash
+./scripts/init-letsencrypt.sh
+```
+
+**Критерий:** скрипт завершился с `SUCCESS`, сертификат в `data/certbot/conf/live/$DOMAIN/`.
+
+### 9.4 Запуск контейнеров
+
+```bash
+docker compose up -d
+docker compose ps
+```
+
+**Критерий:** все 6 сервисов в статусе `Up` / `running`:
+
+| Сервис | Контейнер | Ожидаемый статус |
+|--------|-----------|------------------|
+| nginx | hanc_nginx | Up (ports 80, 443) |
+| certbot | hanc_certbot | Up |
+| web | hanc_web | Up (expose 8000) |
+| agent | hanc_agent | Up |
+| redis | hanc_redis | Up (healthy) |
+| postgres | hanc_postgres | Up (healthy) |
+
+### 9.5 Healthcheck сервисов
+
+```bash
+# Web (FastAPI)
+curl -s http://localhost:8000/api/sessions
+# Ожидание: JSON с sessions (внутри Docker-сети)
+
+# Agent
+docker compose logs agent --tail=5
+# Ожидание: "Агент готов к подключению клиентов"
+
+# Redis
+docker compose exec redis redis-cli ping
+# Ожидание: PONG
+
+# PostgreSQL
+docker compose exec postgres pg_isready -U ${POSTGRES_USER:-interviewer_user}
+# Ожидание: accepting connections
+
+# Nginx
+curl -I https://$DOMAIN
+# Ожидание: 200 OK + Strict-Transport-Security header
+
+# Certbot
+docker compose logs certbot --tail=5
+# Ожидание: "no renewals were attempted" или "renewed successfully"
+```
+
+### 9.6 SSL и HTTPS
+
+```bash
+# HTTP → HTTPS редирект
+curl -I http://$DOMAIN
+# Ожидание: 301 Moved Permanently → https://$DOMAIN
+
+# HTTPS работает
+curl -I https://$DOMAIN
+# Ожидание: 200 OK
+
+# Проверить security headers
+curl -sI https://$DOMAIN | grep -E "Strict-Transport|X-Frame|X-Content-Type"
+# Ожидание:
+#   Strict-Transport-Security: max-age=63072000; includeSubDomains
+#   X-Frame-Options: DENY
+#   X-Content-Type-Options: nosniff
+
+# Проверить сертификат
+openssl s_client -connect $DOMAIN:443 -servername $DOMAIN < /dev/null 2>/dev/null | \
+    openssl x509 -noout -dates -issuer
+# Ожидание: issuer = Let's Encrypt, notAfter > сегодня + 60 дней
+```
+
+### 9.7 API через nginx
+
+```bash
+curl -s https://$DOMAIN/api/sessions | jq .
+# Ожидание: JSON ответ, не 502 Bad Gateway / 504 Gateway Timeout
+```
+
+### 9.8 Микрофон (getUserMedia)
+
+1. Открыть `https://$DOMAIN` в браузере
+2. Нажать "Начать консультацию"
+3. **Критерий:** браузер запрашивает разрешение на микрофон (НЕ ошибка `getUserMedia is not available`)
+
+> **Напоминание:** `getUserMedia()` работает ТОЛЬКО через HTTPS или localhost. Это главная причина, почему нужен nginx + SSL.
+
+### 9.9 Загрузка документов через nginx
+
+```bash
+# Создать тестовый файл
+echo "Test document" > /tmp/test.txt
+
+# Загрузить через nginx
+curl -X POST https://$DOMAIN/api/session/{session_id}/documents/upload \
+    -F "files=@/tmp/test.txt"
+# Ожидание: 200 OK, файл обработан
+# НЕ 413 Request Entity Too Large (nginx client_max_body_size = 50m)
+```
+
+### 9.10 Логи (отсутствие ошибок)
+
+```bash
+docker compose logs web --tail=20       # нет tracebacks
+docker compose logs agent --tail=20     # нет ModuleNotFoundError
+docker compose logs nginx --tail=20     # нет 502/504 ошибок
+```
+
+**Критерий:** все логи чистые, нет Python tracebacks или nginx upstream errors.
+
+### 9.11 Перезапуск и устойчивость
+
+```bash
+docker compose restart web
+sleep 5
+curl -s https://$DOMAIN/api/sessions | jq .
+# Ожидание: сервис восстановился, ответ 200
+```
+
+### 9.12 Troubleshooting Docker
+
+| Проблема | Причина | Решение |
+|----------|---------|---------|
+| `ModuleNotFoundError: src.output` | `.gitignore` игнорировал `src/output/` | Исправить `.gitignore`: `output/` → `/output/` |
+| `ModuleNotFoundError: uvicorn` | Не указан в `requirements.txt` | Добавить `fastapi` и `uvicorn` в requirements.txt |
+| nginx: `502 Bad Gateway` | web контейнер не запустился | `docker compose logs web` — смотреть traceback |
+| certbot: `challenge failed` | DNS A-запись не указывает на сервер | Проверить `dig $DOMAIN` → IP сервера |
+| `getUserMedia undefined` | Сайт открыт по HTTP | Настроить HTTPS (nginx + certbot) |
+| `413 Request Entity Too Large` | `client_max_body_size` < размера файла | Увеличить в `nginx.conf.template` |
+| SSL certificate expired | Certbot не обновил | `docker compose exec certbot certbot renew --force-renewal` |
+| nginx не стартует | Нет сертификатов | Запустить `./scripts/init-letsencrypt.sh` |
+| Agent падает в restart loop | Ошибка в коде или env | `docker compose logs agent --tail=50` |
 
 ---
 
