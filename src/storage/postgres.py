@@ -62,6 +62,18 @@ class InterviewSessionDB(Base):
     session_metadata = Column(JSON, nullable=True)
 
 
+class LearningDB(Base):
+    """Industry learnings из голосовых сессий."""
+    __tablename__ = "learnings"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    industry_id = Column(String, nullable=False, index=True)
+    insight = Column(Text, nullable=False)
+    source = Column(String, nullable=True, index=True)
+    is_success = Column(String, default="false", index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+
+
 # ===== STORAGE MANAGER =====
 
 class PostgreSQLStorageManager:
@@ -329,13 +341,21 @@ class PostgreSQLStorageManager:
                 industry_name = industry[0]
                 industry_counts[industry_name] = industry_counts.get(industry_name, 0) + 1
             
+            # Learnings statistics
+            total_learnings = session.query(LearningDB).count()
+            success_learnings = session.query(LearningDB).filter(
+                LearningDB.is_success == "true"
+            ).count()
+
             stats = InterviewStatistics(
                 total_interviews=total,
                 completed_interviews=completed,
                 average_duration_minutes=avg_duration_minutes,
                 completion_rate=(completed / total * 100) if total > 0 else 0.0,
                 pattern_breakdown=pattern_counts,
-                industry_breakdown=industry_counts
+                industry_breakdown=industry_counts,
+                total_learnings=total_learnings,
+                success_learnings=success_learnings,
             )
             
             return stats
@@ -346,6 +366,55 @@ class PostgreSQLStorageManager:
         finally:
             session.close()
     
+    async def save_learning(self, industry_id: str, insight: str, source: str) -> bool:
+        """Сохранить learning в PostgreSQL."""
+        session = self._get_session()
+        try:
+            is_success = "true" if "[SUCCESS]" in insight else "false"
+            learning = LearningDB(
+                industry_id=industry_id,
+                insight=insight,
+                source=source,
+                is_success=is_success,
+            )
+            session.add(learning)
+            session.commit()
+            logger.info("learning_saved", industry_id=industry_id, source=source)
+            return True
+        except SQLAlchemyError as e:
+            session.rollback()
+            logger.error("save_learning_failed", error=str(e))
+            return False
+        finally:
+            session.close()
+
+    async def get_learnings(
+        self, industry_id: Optional[str] = None, limit: int = 50
+    ) -> list:
+        """Получить learnings, опционально фильтр по отрасли."""
+        session = self._get_session()
+        try:
+            query = session.query(LearningDB).order_by(LearningDB.created_at.desc())
+            if industry_id:
+                query = query.filter(LearningDB.industry_id == industry_id)
+            rows = query.limit(limit).all()
+            return [
+                {
+                    "id": r.id,
+                    "industry_id": r.industry_id,
+                    "insight": r.insight,
+                    "source": r.source,
+                    "is_success": r.is_success,
+                    "created_at": r.created_at.isoformat() if r.created_at else None,
+                }
+                for r in rows
+            ]
+        except SQLAlchemyError as e:
+            logger.error("get_learnings_failed", error=str(e))
+            return []
+        finally:
+            session.close()
+
     def health_check(self) -> bool:
         """Проверить подключение к БД"""
         try:

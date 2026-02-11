@@ -95,6 +95,9 @@ class VoiceConsultationSession:
         self.kb_enriched = False  # True after industry KB context injected
         self.review_started = False  # True when review phase activated
         self.research_done = False  # True after background research launched
+        self.current_phase = "discovery"  # discovery → analysis → proposal → refinement
+        self.detected_industry_id = None  # Cached industry ID
+        self.detected_profile = None  # Cached IndustryProfile
 
     def add_message(self, role: str, content: str):
         """Добавить сообщение в историю диалога."""
@@ -102,7 +105,7 @@ class VoiceConsultationSession:
             "role": role,
             "content": content,
             "timestamp": datetime.now().isoformat(),
-            "phase": "voice"  # Единая фаза для голосового режима
+            "phase": self.current_phase
         })
         dialogue_log.info(
             "DIALOGUE_MESSAGE",
@@ -201,15 +204,19 @@ def get_system_prompt() -> str:
     return get_prompt("voice/consultant", "system_prompt")
 
 
-def get_enriched_system_prompt(dialogue_history: List[Dict[str, Any]]) -> str:
+def get_enriched_system_prompt(
+    dialogue_history: List[Dict[str, Any]],
+    phase: str = "discovery",
+) -> str:
     """
     Get system prompt with industry context.
 
     Detects industry from dialogue and enriches prompt with
-    relevant knowledge base information.
+    relevant knowledge base information for the given phase.
 
     Args:
         dialogue_history: Current dialogue history
+        phase: Consultation phase for KB context selection
 
     Returns:
         Enriched system prompt
@@ -224,10 +231,12 @@ def get_enriched_system_prompt(dialogue_history: List[Dict[str, Any]]) -> str:
         manager = IndustryKnowledgeManager()
         builder = EnrichedContextBuilder(manager)
 
-        voice_context = builder.build_for_voice(dialogue_history)
+        voice_context = builder.build_for_voice_full(
+            dialogue_history, phase=phase,
+        )
 
         if voice_context:
-            return f"{base_prompt}\n\n### Контекст отрасли:\n{voice_context}"
+            return f"{base_prompt}\n\n### Контекст отрасли ({phase}):\n{voice_context}"
     except Exception as e:
         logger.warning("Failed to get enriched context", error=str(e))
 
@@ -343,8 +352,8 @@ def _try_get_redis():
         if mgr.health_check():
             _redis_mgr = mgr
             return mgr
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("Redis unavailable", error=str(e))
     return None
 
 
@@ -366,8 +375,8 @@ def _try_get_postgres():
         if mgr.health_check():
             _postgres_mgr = mgr
             return mgr
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug("PostgreSQL unavailable", error=str(e))
     return None
 
 
@@ -426,13 +435,27 @@ async def _run_background_research(
         anketa_log.warning("background_research_failed", error=str(e))
 
 
-def _sync_to_db(consultation: VoiceConsultationSession, session_id: str):
-    """Sync dialogue history and duration to the database."""
-    session = _session_mgr.get_session(session_id)
-    if session:
-        session.dialogue_history = consultation.dialogue_history
-        session.duration_seconds = consultation.get_duration_seconds()
-        _session_mgr.update_session(session)
+def _detect_consultation_phase(
+    message_count: int,
+    completion_rate: float,
+    review_started: bool,
+) -> str:
+    """
+    Determine consultation phase from heuristics.
+
+    Phases map to kb_context.yaml sections:
+    - "discovery"   — messages < 8, completion < 0.15
+    - "analysis"    — messages 8-14, completion 0.15-0.35
+    - "proposal"    — messages 14-20, completion 0.35-0.50
+    - "refinement"  — completion >= 0.50 or review_started
+    """
+    if review_started or completion_rate >= 0.50:
+        return "refinement"
+    if completion_rate >= 0.35 or message_count >= 14:
+        return "proposal"
+    if completion_rate >= 0.15 or message_count >= 8:
+        return "analysis"
+    return "discovery"
 
 
 async def _extract_and_update_anketa(
@@ -499,8 +522,8 @@ async def _extract_and_update_anketa(
                     if m.get("role") == "user"
                 )
                 industry_id_for_research = mgr.detect_industry(user_text_r)
-            except Exception:
-                pass
+            except Exception as e:
+                anketa_log.debug("industry_detection_for_research_failed", error=str(e))
             task = asyncio.create_task(_run_background_research(
                 consultation, session_id, agent_session,
                 website=anketa.website,
@@ -528,46 +551,58 @@ async def _extract_and_update_anketa(
                         "updated_at": datetime.now().isoformat(),
                     }),
                 )
-            except Exception:
-                pass  # Non-critical
+            except Exception as e:
+                anketa_log.debug("redis_cache_update_failed", error=str(e))
 
-        # --- Inject industry KB context with regional awareness (once) ---
-        if not consultation.kb_enriched and agent_session is not None:
+        # --- Inject/update industry KB context based on phase ---
+        if agent_session is not None:
             try:
-                from src.knowledge.country_detector import get_country_detector
+                # Detect industry once, cache in session
+                if consultation.detected_profile is None:
+                    from src.knowledge.country_detector import get_country_detector
 
-                user_text = " ".join(
-                    m.get("content", "") for m in consultation.dialogue_history
-                    if m.get("role") == "user"
-                )
-                manager = IndustryKnowledgeManager()
-                industry_id = manager.detect_industry(user_text)
+                    user_text = " ".join(
+                        m.get("content", "") for m in consultation.dialogue_history
+                        if m.get("role") == "user"
+                    )
+                    manager = IndustryKnowledgeManager()
+                    industry_id = manager.detect_industry(user_text)
 
-                if industry_id:
-                    # Detect country from dialogue language + phone
-                    detector = get_country_detector()
-                    phone = getattr(anketa, 'contact_phone', None)
-                    region, country = detector.detect(
-                        phone=phone,
-                        dialogue_text=user_text,
+                    if industry_id:
+                        detector = get_country_detector()
+                        phone = getattr(anketa, 'contact_phone', None)
+                        region, country = detector.detect(
+                            phone=phone,
+                            dialogue_text=user_text,
+                        )
+                        if region and country:
+                            profile = manager.loader.load_regional_profile(
+                                region, country, industry_id
+                            )
+                        else:
+                            profile = manager.get_profile(industry_id)
+                        consultation.detected_profile = profile
+                        consultation.detected_industry_id = industry_id
+
+                # Detect phase and re-inject KB on phase change
+                if consultation.detected_profile:
+                    new_phase = _detect_consultation_phase(
+                        message_count=len(consultation.dialogue_history),
+                        completion_rate=anketa.completion_rate() if anketa else 0.0,
+                        review_started=consultation.review_started,
                     )
 
-                    # Load regional profile (falls back to _base automatically)
-                    if region and country:
-                        profile = manager.loader.load_regional_profile(
-                            region, country, industry_id
-                        )
-                    else:
-                        profile = manager.get_profile(industry_id)
-
-                    if profile:
-                        builder = EnrichedContextBuilder(manager)
-                        voice_context = builder.build_for_voice(
-                            consultation.dialogue_history
+                    if new_phase != consultation.current_phase or not consultation.kb_enriched:
+                        consultation.current_phase = new_phase
+                        builder = EnrichedContextBuilder(IndustryKnowledgeManager())
+                        voice_context = builder.build_for_voice_full(
+                            consultation.dialogue_history,
+                            profile=consultation.detected_profile,
+                            phase=new_phase,
                         )
                         if voice_context:
                             base_prompt = get_system_prompt()
-                            enriched = f"{base_prompt}\n\n### Контекст отрасли:\n{voice_context}"
+                            enriched = f"{base_prompt}\n\n### Контекст отрасли ({new_phase}):\n{voice_context}"
                             activity = getattr(agent_session, '_activity', None)
                             if activity and hasattr(activity, 'update_instructions'):
                                 await activity.update_instructions(enriched)
@@ -575,9 +610,8 @@ async def _extract_and_update_anketa(
                                 anketa_log.info(
                                     "KB context injected",
                                     session_id=session_id,
-                                    industry=industry_id,
-                                    region=region,
-                                    country=country,
+                                    industry=consultation.detected_industry_id,
+                                    phase=new_phase,
                                 )
             except Exception as e:
                 anketa_log.warning("KB injection failed (non-fatal)", error=str(e))
@@ -700,6 +734,15 @@ async def _finalize_and_save(
                 f"длительность: {round(session.duration_seconds / 60, 1)} мин"
             )
             manager.record_learning(industry_id, insight, f"voice_{session_id}")
+
+            # Dual-write to PostgreSQL (fire-and-forget)
+            pg_learning = _try_get_postgres()
+            if pg_learning:
+                try:
+                    await pg_learning.save_learning(industry_id, insight, f"voice_{session_id}")
+                except Exception:
+                    pass  # Non-fatal: YAML is primary
+
             anketa_log.info("learning_recorded", industry_id=industry_id)
     except Exception as e:
         anketa_log.warning("record_learning_failed", error=str(e))
@@ -732,8 +775,8 @@ async def _finalize_and_save(
     if redis_mgr:
         try:
             redis_mgr.client.delete(f"voice:session:{session_id}")
-        except Exception:
-            pass
+        except Exception as e:
+            anketa_log.debug("redis_cache_cleanup_failed", error=str(e))
 
 
 def _lookup_db_session(room_name: str):

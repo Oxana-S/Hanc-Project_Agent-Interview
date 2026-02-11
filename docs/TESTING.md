@@ -2,6 +2,94 @@
 
 Полный чек-лист для проверки работоспособности проекта и готовности к запуску.
 
+## Оглавление
+
+- [Быстрая проверка (10 минут)](#быстрая-проверка-10-минут)
+- [Обзор](#обзор)
+- [Этап 1: Юнит-тесты](#этап-1-юнит-тесты)
+- [Этап 2: Интеграционные тесты](#этап-2-интеграционные-тесты)
+- [Этап 2.5: Wiring Verification](#этап-25-wiring-verification-проверка-подключённости-пайплайнов)
+- [Этап 2.6: KB Phase Integration](#этап-26-kb-phase-integration)
+- [Этап 3: Мульти-региональная Knowledge Base](#этап-3-мульти-региональная-knowledge-base-валидация-и-ремонт)
+- [Этап 4: Production Readiness](#этап-4-production-readiness)
+- [Этап 5: Проверка подключений к сервисам](#этап-5-проверка-подключений-к-сервисам)
+- [Этап 6: Модуль обогащения контекста](#этап-6-модуль-обогащения-контекста)
+- [Этап 6.5: Парсинг документов](#этап-65-парсинг-документов-из-input)
+- [Этап 7: LLM-симуляция](#этап-7-llm-симуляция)
+- [Этап 7.5: LLM-симуляция с документами](#этап-75-llm-симуляция-с-документами)
+- [Этап 8: Голосовой агент (E2E)](#этап-8-голосовой-агент-e2e)
+- [Этап 9: Docker-деплой и SSL](#этап-9-docker-деплой-и-ssl)
+- [Troubleshooting](#troubleshooting)
+- [Автоматизация (CI/CD)](#автоматизация-cicd-planned)
+
+---
+
+## Быстрая проверка (10 минут)
+
+Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
+
+```bash
+# 1. Юнит-тесты + интеграционные (Этап 1 + 2.6 — должны пройти все, 1508 тестов)
+./venv/bin/python -m pytest --tb=short
+
+# 2. Покрытие (Этап 1 — должно быть ≥50%)
+./venv/bin/python -m pytest --cov=src --cov-report=term | tail -5
+
+# 2.5. Wiring verification (Этап 2.5 — пайплайны подключены, 39 тестов)
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py -v
+
+# 3. Knowledge Base валидация (Этап 3 — 968 профилей)
+./venv/bin/python scripts/validate_all_profiles.py --errors-only
+./venv/bin/python scripts/validate_deep.py
+
+# 4. DeepSeek API (Этап 5 — реальное подключение)
+./venv/bin/python -c "
+import asyncio
+from src.llm.deepseek import DeepSeekClient
+async def test():
+    c = DeepSeekClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}])
+    print(f'✅ DeepSeek: {len(r)} chars')
+asyncio.run(test())
+"
+
+# 5. Azure OpenAI (Этап 5 — реальное подключение)
+./venv/bin/python -c "
+import asyncio
+from src.llm.azure_chat import AzureChatClient
+async def test():
+    c = AzureChatClient()
+    r = await c.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
+    print(f'✅ Azure OpenAI: {len(r)} chars')
+asyncio.run(test())
+"
+
+# 6. LiveKit (Этап 5 — реальное подключение)
+./venv/bin/python -c "
+import asyncio, os
+from dotenv import load_dotenv
+from livekit import api
+load_dotenv()
+async def test():
+    lk = api.LiveKitAPI(os.getenv('LIVEKIT_URL'), os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET'))
+    rooms = await lk.room.list_rooms(api.ListRoomsRequest())
+    print(f'✅ LiveKit: {len(rooms.rooms)} rooms')
+    await lk.aclose()
+asyncio.run(test())
+"
+
+# 6.5. Парсинг документов (Этап 6.5 — все форматы)
+./venv/bin/python scripts/test_document_parsing.py
+
+# 7. LLM-симуляция (Этап 7 — один сценарий)
+./venv/bin/python scripts/run_test.py auto_service --quiet
+
+# 7.5. LLM + документы (Этап 7.5 — с input-dir)
+./venv/bin/python scripts/run_test.py logistics_company --input-dir input/test_docs/ --quiet
+```
+
+---
+
 ## Обзор
 
 Этапы упорядочены по принципу зависимостей: **дешёвые оффлайн-проверки → конфигурация → подключения → функциональные тесты**.
@@ -43,27 +131,24 @@
 ### 1.2 Запуск
 
 ```bash
-# Активация venv
-source venv/bin/activate
-
 # Все тесты
-pytest
+./venv/bin/python -m pytest
 
 # С покрытием
-pytest --cov=src --cov-report=term-missing
+./venv/bin/python -m pytest --cov=src --cov-report=term-missing
 
 # Подробный вывод
-pytest -v
+./venv/bin/python -m pytest -v
 
 # Конкретный модуль
-pytest tests/unit/test_knowledge.py -v
+./venv/bin/python -m ./venv/bin/python -m pytest tests/unit/test_knowledge.py -v
 ```
 
 ### 1.3 Критерии прохождения
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
-| Тесты passed | 100% | 1039/1039 |
+| Тесты passed | 100% | 1508/1508 |
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
@@ -134,9 +219,39 @@ tests/
 │   │   ├── TestRedisWiring                    # RedisStorageManager → hot cache
 │   │   ├── TestFunctionsImportable            # Все pipeline-функции импортируются
 │   │   └── TestReviewPhaseHelpers             # format_anketa_for_voice, get_review_system_prompt
-│   └── ...
-└── scenarios/                     # YAML для LLM-симуляции
+│   ├── test_anketa_extractor.py       # AnketaExtractor pipeline (88 тестов)
+│   ├── test_anketa_generator.py       # AnketaGenerator markdown/JSON (58 тестов)
+│   ├── test_anketa_generator_standalone.py  # LLMAnketaGenerator enrichment (18 тестов)
+│   ├── test_azure_chat.py             # Azure OpenAI Chat client (23 теста)
+│   ├── test_consultant_core.py        # Voice consultant core functions (87 тестов)
+│   ├── test_country_detector.py       # Country/region detection (34 теста)
+│   ├── test_deepseek.py               # DeepSeek LLM client (33 теста)
+│   ├── test_enriched_context.py       # EnrichedContextBuilder (25 тестов)
+│   ├── test_interview_context.py      # Interview context management (27 тестов)
+│   ├── test_llm_factory.py            # LLM client factory (12 тестов)
+│   ├── test_locale_loader.py          # YAML locale loader (21 тест)
+│   ├── test_markdown_parser.py        # Anketa markdown parser (91 тест)
+│   ├── test_maximum_interviewer.py    # Maximum interviewer logic (50 тестов)
+│   ├── test_notifications.py          # NotificationManager email+webhook (32 теста)
+│   ├── test_prompt_loader.py          # YAML prompt loader (53 теста)
+│   ├── test_research_engine.py        # Research engine orchestration (31 тест)
+│   ├── test_review_service.py         # Anketa review workflow (32 теста)
+│   ├── test_session_models.py         # Session pydantic models (38 тестов)
+│   ├── test_synonym_loader.py         # Synonym loader + deep merge (33 теста)
+│   ├── test_web_search.py             # Web search client (25 тестов)
+│   └── test_website_parser.py         # Website HTML parser (37 тестов)
+├── integration/
+│   └── test_kb_phase_integration.py   # KB full injection + phase re-injection (26 тестов)
+│       ├── TestP1_FullKBInjection           # build_for_voice_full() с синтетическим профилем (11 тестов)
+│       ├── TestP1_RealKBProfiles            # Реальные YAML-профили из config/industries/ (3 теста)
+│       ├── TestP2_PhaseDetection            # _detect_consultation_phase() переходы (6 тестов)
+│       ├── TestP2_SessionPhaseTracking      # VoiceConsultationSession phase fields (3 теста)
+│       ├── TestP2_KBReinjection             # E2E: KB реинжекция при смене фазы (3 теста)
+│       └── TestP2_EnrichedPromptPhase       # get_enriched_system_prompt() с параметром phase (2 теста)
+└── scenarios/                         # YAML для LLM-симуляции
 ```
+
+**Итого: 34 тестовых файла, 1508 тестов** (1482 unit + 26 integration).
 
 ### 1.6 UI / Dashboard тесты
 
@@ -219,24 +334,24 @@ tests/
 
 ```bash
 # Тесты с реальными fixtures
-pytest tests/unit/test_api_server.py -v
+./venv/bin/python -m pytest tests/unit/test_api_server.py -v
 
 # Проверка полного flow анкеты
-pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
+./venv/bin/python -m pytest tests/unit/test_data_cleaner.py::TestAnketaPostProcessor -v
 
 # Dashboard API + lifecycle
-pytest tests/unit/test_api_server.py::TestListSessions -v
-pytest tests/unit/test_api_server.py::TestPageRoutes -v
-pytest tests/unit/test_api_server.py::TestFullLifecycleFlow::test_dashboard_lifecycle_flow -v
+./venv/bin/python -m pytest tests/unit/test_api_server.py::TestListSessions -v
+./venv/bin/python -m pytest tests/unit/test_api_server.py::TestPageRoutes -v
+./venv/bin/python -m pytest tests/unit/test_api_server.py::TestFullLifecycleFlow::test_dashboard_lifecycle_flow -v
 
 # SessionManager: lightweight dashboard query
-pytest tests/unit/test_session_manager.py::TestListSessionsSummary -v
+./venv/bin/python -m pytest tests/unit/test_session_manager.py::TestListSessionsSummary -v
 
 # Bulk delete — SessionManager
-pytest tests/unit/test_session_manager.py::TestDeleteSessions -v
+./venv/bin/python -m pytest tests/unit/test_session_manager.py::TestDeleteSessions -v
 
 # Bulk delete — API
-pytest tests/unit/test_api_server.py::TestDeleteSessions -v
+./venv/bin/python -m pytest tests/unit/test_api_server.py::TestDeleteSessions -v
 ```
 
 ### 2.2 Критерии
@@ -264,7 +379,7 @@ pytest tests/unit/test_api_server.py::TestDeleteSessions -v
 
 ```bash
 # Wiring verification: все проверки должны пройти
-python -c "
+./venv/bin/python -c "
 import ast, sys
 
 # Parse consultant.py AST
@@ -311,7 +426,7 @@ sys.exit(0 if all_ok else 1)
 
 ```bash
 # Поиск определённых, но не вызываемых функций в consultant.py
-python -c "
+./venv/bin/python -c "
 import re
 
 with open('src/voice/consultant.py') as f:
@@ -352,7 +467,6 @@ for func in defs:
 
 | Компонент | Файл | Статус | Причина |
 | --- | --- | --- | --- |
-| `_sync_to_db()` | `consultant.py` | Dead code | Вызовы удалены в v4.0 (race condition fix) |
 | `get_enriched_system_prompt()` | `consultant.py:204` | Dead code (v4.1) | Заменена inline KB enrichment с CountryDetector в `_extract_and_update_anketa()`. Используется только в тестах |
 | `entrypoint()` | `consultant.py` | Ложный dead code | Вызывается LiveKit SDK через декоратор `@ctx.connect()`, не напрямую |
 | `get_industry_faq()` | `knowledge/manager.py:164` | Не вызывается из voice | Только в CLI-режиме (KB инъекция покрывает FAQ) |
@@ -360,6 +474,15 @@ for func in defs:
 | `ProfileValidator` | `knowledge/validator.py` | Dev/test | Не используется в runtime |
 
 > **Подключены в v4.1:** NotificationManager, Review phase, record_learning, CountryDetector, ResearchEngine, RedisStorageManager — см. таблицу 2.5.3. **Рекомендация:** При добавлении нового пайплайна — добавьте wiring-проверку в Этап 2.5.1 и обновите таблицу 2.5.3.
+
+### 2.5.5 Дополнительные workflows (не пайплайны)
+
+Эти workflows не являются отдельными пайплайнами, но участвуют в работе голосового агента:
+
+| Workflow | Описание | Точка входа | Тестовое покрытие |
+| --- | --- | --- | --- |
+| **DocumentContext** | Загруженные документы клиента (`input/`) передаются в `AnketaExtractor` через `DocumentContext` для учёта при извлечении анкеты. Если `db_session.document_context` заполнен, создаётся `DocumentContext` объект. | `_extract_and_update_anketa()`, `_finalize_and_save()` | `test_documents.py` (документы), `test_voice_pipeline_wiring.py` (wiring) |
+| **Session Resume** | При повторном подключении к существующей сессии (комната `consultation-{id}`), агент восстанавливает контекст: `dialogue_history`, `anketa_data`, `document_context` из SQLite через `SessionManager.get_session()`. | `entrypoint()` → `_lookup_db_session()` | `test_session_manager.py`, `test_api_server.py` |
 
 ### 2.5.6 Автоматические wiring-тесты (39 тестов)
 
@@ -369,16 +492,16 @@ for func in defs:
 
 ```bash
 # Запуск всех wiring-тестов
-pytest tests/unit/test_voice_pipeline_wiring.py -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py -v
 
 # Запуск тестов конкретного пайплайна
-pytest tests/unit/test_voice_pipeline_wiring.py::TestNotificationManagerWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestReviewPhaseWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestRecordLearningWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestCountryDetectorWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestResearchEngineWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestRedisWiring -v
-pytest tests/unit/test_voice_pipeline_wiring.py::TestPostgreSQLWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestNotificationManagerWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestReviewPhaseWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestRecordLearningWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestCountryDetectorWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestResearchEngineWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestRedisWiring -v
+./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestPostgreSQLWiring -v
 ```
 
 #### Pipeline 1: NotificationManager (2 теста)
@@ -482,10 +605,10 @@ pytest tests/unit/test_voice_pipeline_wiring.py::TestPostgreSQLWiring -v
 
 ```bash
 # Терминал 1: Веб-сервер
-./venv/bin/python scripts/run_server.py
+./venv/bin/./venv/bin/python scripts/run_server.py
 
 # Терминал 2: Голосовой агент
-./scripts/agent.sh start
+./scripts/hanc.sh start
 
 # Терминал 3: Мониторинг логов (все пайплайны)
 tail -f /tmp/agent_entrypoint.log | grep -E "notification_sent|review_phase_started|learning_recorded|KB context injected|research_launched|research_injected|Redis|redis"
@@ -571,8 +694,102 @@ echo "Результат: $pass/6 пайплайнов подтверждены"
 | AST wiring checks (2.5.1) | 10/10 ✅ |
 | Dead code analysis (2.5.2) | 0 неожиданных dead functions (известные — в таблице 2.5.4) |
 | Модули подключены (2.5.3) | Все 11 критических пайплайнов ✅ |
-| Автоматические wiring-тесты (2.5.6) | 32/32 passed |
+| Автоматические wiring-тесты (2.5.6) | 39/39 passed |
 | Ручная верификация (2.5.7) | 6/6 пайплайнов подтверждены в логах (при наличии Redis) |
+
+---
+
+## Этап 2.6: KB Phase Integration
+
+> **Предпосылка:** В v4.2 аудит показал, что `build_for_voice()` отдаёт ~200 байт (10% KB данных). FAQ, возражения, скрипты продаж, конкуренты, ценообразование и рынок — 0% использования. KB инжектился один раз за сессию без учёта фазы разговора.
+>
+> **Решение:** `build_for_voice_full()` собирает полный контекст (~2-5 KB) с учётом фазы. Фаза определяется при каждой extraction и KB реинжектится при смене фазы (discovery → analysis → proposal → refinement).
+
+### 2.6.1 Запуск
+
+```bash
+# Все интеграционные тесты KB + фазы (26 тестов)
+./venv/bin/python -m pytest tests/integration/test_kb_phase_integration.py -v
+
+# Отдельно P1 (полная KB-инжекция)
+./venv/bin/python -m pytest tests/integration/test_kb_phase_integration.py::TestP1_FullKBInjection -v
+./venv/bin/python -m pytest tests/integration/test_kb_phase_integration.py::TestP1_RealKBProfiles -v
+
+# Отдельно P2 (фазовая реинжекция)
+./venv/bin/python -m pytest tests/integration/test_kb_phase_integration.py::TestP2_PhaseDetection -v
+./venv/bin/python -m pytest tests/integration/test_kb_phase_integration.py::TestP2_KBReinjection -v
+```
+
+### 2.6.2 P1: Полная KB-инжекция (14 тестов)
+
+**TestP1_FullKBInjection** (11 тестов) — синтетический профиль со всеми v2.0 полями:
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_voice_full_includes_phase_kb_context` | `build_for_voice_full()` возвращает непустой контекст с pain points |
+| 2 | `test_voice_full_includes_competitors` | Конкуренты (FedEx, UPS) присутствуют в discovery/analysis фазах |
+| 3 | `test_voice_full_includes_pricing` | Ценообразование (бюджет, entry point) в discovery фазе |
+| 4 | `test_voice_full_includes_market` | Рыночный контекст ($1.6T, тренды) в discovery фазе |
+| 5 | `test_voice_full_includes_sales_scripts_in_proposal` | Скрипты продаж (триггеры) в proposal фазе |
+| 6 | `test_voice_full_includes_learnings` | Раздел "НАКОПЛЕННЫЙ ОПЫТ" при наличии learnings |
+| 7 | `test_voice_full_respects_token_budget` | Контекст не превышает 4000 символов |
+| 8 | `test_voice_full_empty_without_profile` | Пустая строка при отсутствии профиля |
+| 9 | `test_voice_full_vs_voice_compact_size` | Full контекст > 2x размер compact контекста |
+| 10 | `test_all_four_phases_produce_different_context` | Разные фазы дают разный контекст |
+
+**TestP1_RealKBProfiles** (3 теста) — реальные YAML-профили из `config/industries/`:
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_us_logistics_has_v2_data` | `na/us/logistics.yaml` содержит sales_scripts, competitors, pricing, market |
+| 2 | `test_us_logistics_full_context_is_rich` | Реальный профиль даёт >500 символов контекста |
+| 3 | `test_de_logistics_full_context` | `eu/de/logistics.yaml` — региональный профиль работает (skip если не найден) |
+
+### 2.6.3 P2: Фазовая реинжекция (12 тестов)
+
+**TestP2_PhaseDetection** (6 тестов) — `_detect_consultation_phase()`:
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_discovery_phase_start` | <8 сообщений, completion <0.15 → discovery |
+| 2 | `test_analysis_phase` | 8-14 сообщений или completion 0.15-0.35 → analysis |
+| 3 | `test_proposal_phase` | 14-20 сообщений или completion 0.35-0.50 → proposal |
+| 4 | `test_refinement_phase` | completion ≥0.50 или review_started → refinement |
+| 5 | `test_review_started_overrides_all` | `review_started=True` → refinement при любых метриках |
+| 6 | `test_phase_progression_with_increasing_messages` | Фазы прогрессируют монотонно, никогда не идут назад |
+
+**TestP2_SessionPhaseTracking** (3 теста):
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_default_phase_is_discovery` | Новая сессия начинается в discovery |
+| 2 | `test_phase_persists_in_messages` | Сообщения записывают текущую фазу |
+| 3 | `test_cached_profile_prevents_re_detection` | Кешированный профиль не пересоздаётся |
+
+**TestP2_KBReinjection** (3 теста) — E2E с mocked agent_session:
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_kb_reinjected_on_phase_change` | Первая инжекция: определяется отрасль, страна, фаза; `update_instructions()` вызван |
+| 2 | `test_kb_not_reinjected_when_phase_unchanged` | Та же фаза + `kb_enriched=True` → `update_instructions()` НЕ вызван |
+| 3 | `test_phase_transition_triggers_reinjection` | Смена analysis→proposal → `update_instructions()` вызван с новым контекстом |
+
+**TestP2_EnrichedPromptPhase** (2 теста):
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_phase_appears_in_enriched_prompt` | Имя фазы появляется в заголовке промпта |
+| 2 | `test_different_phases_call_builder_with_different_phase` | Builder вызывается с правильным phase параметром |
+
+### 2.6.4 Критерии прохождения
+
+| Метрика | Минимум | Текущее значение |
+|---------|---------|------------------|
+| P1: Full KB injection | 14/14 passed | 14/14 ✅ (1 skip: DE profile) |
+| P2: Phase re-injection | 12/12 passed | 12/12 ✅ |
+| Полный контекст > компактного | >2x | ✅ |
+| Фазы монотонно прогрессируют | Никогда назад | ✅ |
+| Реальные YAML-профили загружаются | US logistics | ✅ |
 
 ---
 
@@ -596,16 +813,16 @@ echo "Результат: $pass/6 пайплайнов подтверждены"
 
 ```bash
 # Полная базовая валидация (все 968 профилей)
-python scripts/validate_all_profiles.py
+./venv/bin/python scripts/validate_all_profiles.py
 
 # С подробным выводом
-python scripts/validate_all_profiles.py --verbose
+./venv/bin/python scripts/validate_all_profiles.py --verbose
 
 # По конкретному региону
-python scripts/validate_all_profiles.py --region eu
+./venv/bin/python scripts/validate_all_profiles.py --region eu
 
 # Только ошибки (без предупреждений)
-python scripts/validate_all_profiles.py --errors-only
+./venv/bin/python scripts/validate_all_profiles.py --errors-only
 ```
 
 **Критерий прохождения:** 920/920 региональных профилей valid, 0 errors.
@@ -625,17 +842,19 @@ python scripts/validate_all_profiles.py --errors-only
 
 ```bash
 # Глубокая валидация
-python scripts/validate_deep.py
+./venv/bin/python scripts/validate_deep.py
 
 # С подробным выводом
-python scripts/validate_deep.py --verbose
+./venv/bin/python scripts/validate_deep.py --verbose
 ```
 
 **Критерий прохождения:** 0 errors, 0 warnings (info — допустимо).
 
 ### 3.3 Инструментарий ремонта профилей
 
-При обнаружении проблем используются специализированные скрипты:
+> **Примечание:** Эти скрипты были одноразовыми и удалены. Профили уже исправлены.
+
+При обнаружении проблем использовались специализированные скрипты:
 
 | Скрипт | Назначение | Что исправляет |
 |--------|------------|----------------|
@@ -646,17 +865,7 @@ python scripts/validate_deep.py --verbose
 | `fix_l2_subfields.py` | Дополнение sub-fields (LLM) | Добавляет sales_scripts, competitors, seasonality, roi_examples |
 | `fix_l10_pricing.py` | Исправление pricing | payback=0→1, non-numeric→число, payback>36→пересчёт |
 
-```bash
-# Примеры запуска
-python scripts/fix_enums.py
-python scripts/fix_aliases.py
-python scripts/fix_entry_points.py
-python scripts/fix_l10_pricing.py
-
-# LLM-скрипты (требуют Azure OpenAI API)
-python scripts/fix_incomplete_profiles.py --provider=azure
-python scripts/fix_l2_subfields.py --provider=azure
-```
+> Все скрипты ремонта были одноразовыми и удалены после исправления профилей.
 
 ### 3.4 Генерация профилей
 
@@ -664,13 +873,13 @@ python scripts/fix_l2_subfields.py --provider=azure
 
 ```bash
 # Генерация профилей для конкретной страны
-python scripts/generate_profiles.py --country de --provider azure
+./venv/bin/python scripts/generate_profiles.py --country de --provider azure
 
 # Генерация всех профилей для региона
-python scripts/generate_profiles.py --region eu --provider azure
+./venv/bin/python scripts/generate_profiles.py --region eu --provider azure
 
 # Список поддерживаемых стран
-python scripts/generate_profiles.py --list-countries
+./venv/bin/python scripts/generate_profiles.py --list-countries
 ```
 
 **Поддерживаемые провайдеры:** `azure` (по умолчанию), `deepseek`.
@@ -731,7 +940,7 @@ git ls-files --error-unmatch .env 2>/dev/null && echo ".env tracked: ❌ DANGER!
 
 ```bash
 # Проверка работы API (требует запущенный сервер)
-python -c "
+./venv/bin/python -c "
 import asyncio
 from httpx import ASGITransport, AsyncClient
 from src.web.server import app
@@ -791,7 +1000,7 @@ asyncio.run(test())
 
 ```bash
 # Development
-python scripts/run_server.py
+./venv/bin/python scripts/run_server.py
 
 # Production (с gunicorn)
 gunicorn src.web.server:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
@@ -827,13 +1036,13 @@ docker --version
 docker info > /dev/null 2>&1 && echo "Docker: ✅ Running" || echo "Docker: ❌ Not running"
 
 # 2. Запустить Redis и PostgreSQL через Docker Compose
-docker-compose -f config/docker-compose.yml up -d redis postgres
+docker compose -f config/docker-compose.yml up -d redis postgres
 
 # 3. Дождаться готовности (10-15 секунд)
 sleep 10
 
 # 4. Проверить статус контейнеров
-docker-compose -f config/docker-compose.yml ps
+docker compose -f config/docker-compose.yml ps
 ```
 
 **Альтернатива без Docker (локальная установка):**
@@ -853,7 +1062,7 @@ sudo systemctl start redis postgresql
 
 ```bash
 # Проверка подключения к DeepSeek
-python -c "
+./venv/bin/python -c "
 import asyncio
 from src.llm.deepseek import DeepSeekClient
 
@@ -878,7 +1087,7 @@ asyncio.run(test())
 
 ```bash
 # Проверка подключения к Redis
-python -c "
+./venv/bin/python -c "
 import asyncio
 import os
 from dotenv import load_dotenv
@@ -909,7 +1118,7 @@ asyncio.run(test())
 
 ```bash
 # Проверка подключения к PostgreSQL
-python -c "
+./venv/bin/python -c "
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -941,7 +1150,7 @@ else:
 
 ```bash
 # Проверка подключения к LiveKit
-python -c "
+./venv/bin/python -c "
 import os
 import asyncio
 from dotenv import load_dotenv
@@ -983,7 +1192,7 @@ asyncio.run(test())
 
 ```bash
 # Проверка подключения к Azure OpenAI
-python -c "
+./venv/bin/python -c "
 import asyncio
 from src.llm.azure_chat import AzureChatClient
 
@@ -1011,7 +1220,7 @@ asyncio.run(test())
 **Альтернативно**, через LLM Factory (универсальная проверка):
 
 ```bash
-python -c "
+./venv/bin/python -c "
 import asyncio
 from src.llm.factory import create_llm_client
 
@@ -1038,13 +1247,13 @@ asyncio.run(test())
 
 ```bash
 # Запуск Redis + PostgreSQL
-docker-compose -f config/docker-compose.yml up -d
+docker compose -f config/docker-compose.yml up -d
 
 # Проверка статуса
-docker-compose -f config/docker-compose.yml ps
+docker compose -f config/docker-compose.yml ps
 
 # Логи
-docker-compose -f config/docker-compose.yml logs -f
+docker compose -f config/docker-compose.yml logs -f
 ```
 
 ---
@@ -1057,7 +1266,7 @@ docker-compose -f config/docker-compose.yml logs -f
 
 ```bash
 # Валидация всех профилей отраслей
-python -c "
+./venv/bin/python -c "
 from src.knowledge import IndustryKnowledgeManager
 from src.knowledge.validator import ProfileValidator
 
@@ -1078,7 +1287,7 @@ for industry_id in manager.get_all_industries():
 
 ```bash
 # Тест генерации контекста для всех фаз
-python -c "
+./venv/bin/python -c "
 from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
 
 manager = IndustryKnowledgeManager()
@@ -1094,40 +1303,34 @@ for phase in ['discovery', 'analysis', 'proposal', 'refinement']:
 "
 ```
 
-### 6.3 Проверка Voice интеграции
+### 6.3 Проверка Voice интеграции (KB Enrichment)
 
-> **ВАЖНО:** Этот тест проверяет, что функция `get_enriched_system_prompt()` **генерирует** контекст (компонент работает). Но он **НЕ проверяет**, что эта функция **вызывается** из голосового агента. Wiring-проверку см. в Этапе 2.5.
+> **Контекст (v4.1):** Функция `get_enriched_system_prompt()` — **dead code**. KB-обогащение теперь выполняется inline в `_extract_and_update_anketa()` через `EnrichedContextBuilder.build_for_voice()` + `CountryDetector` + `update_instructions()`. Wiring проверяется в Этапе 2.5.
 
 ```bash
-# Проверка 1: Функция генерирует отраслевой контекст (компонент)
-python -c "
-from src.voice.consultant import get_enriched_system_prompt
+# Проверка: KB enrichment pipeline подключён (wiring-тесты)
+./venv/bin/python -m ./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py::TestCountryDetectorWiring -v
 
-dialogue = [
-    {'role': 'assistant', 'content': 'Здравствуйте! Расскажите о вашем бизнесе.'},
-    {'role': 'user', 'content': 'У нас клиника, записываем пациентов на приём'}
-]
+# Проверка: EnrichedContextBuilder генерирует контекст
+./venv/bin/./venv/bin/python -c "
+from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
 
-prompt = get_enriched_system_prompt(dialogue)
-print(f'Prompt length: {len(prompt)} chars')
-has_context = 'Контекст отрасли' in prompt
-print(f'Contains industry context: {has_context}')
+manager = IndustryKnowledgeManager()
+builder = EnrichedContextBuilder(manager, document_context=None)
+context = builder.build_for_voice('logistics', dialogue_history=[])
+print(f'Voice context length: {len(context)} chars')
+print(f'Has content: {bool(context)}')
 "
-
-# Проверка 2: Функция ВЫЗЫВАЕТСЯ из голосового агента (wiring)
-grep -n "get_enriched_system_prompt" src/voice/consultant.py | grep -v "^.*def " | grep -v "^.*import "
-# Ожидается: хотя бы одна строка с вызовом (не def, не import)
-# Если пусто — KB НЕ ПОДКЛЮЧЕНА к голосовому агенту!
 ```
 
 ### 6.4 Тесты модуля обогащения
 
 ```bash
 # Запуск unit-тестов для модуля обогащения
-pytest tests/unit/test_enriched_context.py -v
+./venv/bin/python -m pytest tests/unit/test_enriched_context.py -v
 
 # С покрытием
-pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term-missing
+./venv/bin/python -m pytest tests/unit/test_enriched_context.py --cov=src/knowledge --cov-report=term-missing
 ```
 
 ### 6.5 Сводная таблица
@@ -1182,24 +1385,19 @@ input/
 
 ### 6.5.4 Генерация тестовых документов
 
-```bash
-# Генерация/регенерация тестовых файлов
-python scripts/generate_test_documents.py
-```
-
-Скрипт создаёт TXT, XLSX, DOCX, PDF и проверяет парсинг.
+> Скрипт `generate_test_documents.py` удалён — документы уже сгенерированы и хранятся в `input/`.
 
 ### 6.5.5 Запуск теста
 
 ```bash
 # Полный тест парсинга (все папки, все форматы)
-python scripts/test_document_parsing.py
+./venv/bin/python scripts/test_document_parsing.py
 
 # С подробным выводом (preview чанков, контакты, промпт)
-python scripts/test_document_parsing.py --verbose
+./venv/bin/python scripts/test_document_parsing.py --verbose
 
 # Конкретная папка
-python scripts/test_document_parsing.py --dir input/test_docs
+./venv/bin/python scripts/test_document_parsing.py --dir input/test_docs
 ```
 
 ### 6.5.6 Что проверяется
@@ -1260,19 +1458,19 @@ python scripts/test_document_parsing.py --dir input/test_docs
 
 ```bash
 # Список сценариев
-python scripts/run_test.py --list
+./venv/bin/python scripts/run_test.py --list
 
 # Один сценарий
-python scripts/run_test.py logistics_company
+./venv/bin/python scripts/run_test.py logistics_company
 
 # Тихий режим
-python scripts/run_test.py logistics_company --quiet
+./venv/bin/python scripts/run_test.py logistics_company --quiet
 
 # Полный pipeline (тест + ревью анкеты)
-python scripts/run_pipeline.py logistics_company
+./venv/bin/python scripts/run_pipeline.py logistics_company
 
 # С документами клиента
-python scripts/run_test.py logistics_company --input-dir input/test_docs/
+./venv/bin/python scripts/run_test.py logistics_company --input-dir input/test_docs/
 ```
 
 ### 7.4 Критерии прохождения
@@ -1307,13 +1505,13 @@ python scripts/run_test.py logistics_company --input-dir input/test_docs/
 
 ```bash
 # Логистика с документами ГрузовичкоФ
-python scripts/run_test.py logistics_company --input-dir input/test_docs/
+./venv/bin/python scripts/run_test.py logistics_company --input-dir input/test_docs/
 
 # Автосервис с документами АвтоПрофи
-python scripts/run_test.py auto_service --input-dir input/test/
+./venv/bin/python scripts/run_test.py auto_service --input-dir input/test/
 
 # Ресторан с документами Bella Italia
-python scripts/run_test.py restaurant_italiano --input-dir input/restaurant_italiano/
+./venv/bin/python scripts/run_test.py restaurant_italiano --input-dir input/restaurant_italiano/
 ```
 
 ### 7.5.3 Что проверяется
@@ -1374,7 +1572,7 @@ node -e "require('puppeteer'); console.log('Puppeteer: OK')" 2>/dev/null || echo
 test -f tests/fixtures/test_speech_ru.wav && echo "Test audio: OK" || echo "Test audio: MISSING — see section 8.2"
 
 # 4. livekit-plugins-openai (требуется >= 1.2.18, TurnDetection вместо ServerVadOptions)
-python -c "
+./venv/bin/python -c "
 import importlib.metadata
 v = importlib.metadata.version('livekit-plugins-openai')
 print(f'livekit-plugins-openai: {v}')
@@ -1392,7 +1590,7 @@ curl -s -o /dev/null http://localhost:8000 && echo "Port 8000: BUSY — kill exi
 
 ```bash
 # Полный аудит: перечисление, классификация и очистка
-python -c "
+./venv/bin/python -c "
 import asyncio, os
 from dotenv import load_dotenv
 load_dotenv()
@@ -1459,7 +1657,7 @@ asyncio.run(audit_and_cleanup())
 
 ```bash
 # CLI (с автоподтверждением)
-python scripts/cleanup_rooms.py --force
+./venv/bin/python scripts/cleanup_rooms.py --force
 
 # API (при запущенном сервере)
 curl -s http://localhost:8000/api/rooms | python -m json.tool   # список
@@ -1508,10 +1706,10 @@ ffmpeg -i test.aiff -ar 48000 -ac 1 tests/fixtures/test_speech_ru.wav -y
 
 ```bash
 # Терминал 1: Веб-сервер
-./venv/bin/python scripts/run_server.py
+./venv/bin/./venv/bin/python scripts/run_server.py
 
-# Терминал 2: Голосовой агент (рекомендуется через agent.sh)
-./scripts/agent.sh start
+# Терминал 2: Голосовой агент (рекомендуется через hanc.sh)
+./scripts/hanc.sh start
 
 # Терминал 3: E2E тест
 node tests/e2e_voice_test.js
@@ -1719,7 +1917,7 @@ node tests/e2e_voice_test.js
 
 ```bash
 # 1. Запустить LLM-симуляцию (Этап 7) — генерирует >= 20 сообщений
-./venv/bin/python scripts/run_test.py auto_service --quiet
+./venv/bin/./venv/bin/python scripts/run_test.py auto_service --quiet
 
 # 2. Или ручной тест через браузер (>= 6 минут, упомянуть URL сайта)
 # Открыть http://localhost:8000, провести полную консультацию
@@ -1749,90 +1947,6 @@ node tests/e2e_voice_test.js
 ============================================================
   RESULT: ALL REQUIRED PIPELINES FIRED
 ============================================================
-```
-
----
-
-## Быстрая проверка (10 минут)
-
-Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
-
-```bash
-# 1. Юнит-тесты (Этап 1 — должны пройти все, 1039 тестов)
-pytest --tb=short
-
-# 1.1. Dashboard/UI тесты (Этап 1 — 19 тестов)
-pytest tests/unit/test_session_manager.py::TestListSessionsSummary -v
-pytest tests/unit/test_api_server.py::TestListSessions -v
-pytest tests/unit/test_api_server.py::TestPageRoutes -v
-pytest tests/unit/test_api_server.py::TestFullLifecycleFlow::test_dashboard_lifecycle_flow -v
-
-# 1.2. Bulk delete тесты (Этап 1 — 9 тестов)
-pytest tests/unit/test_session_manager.py::TestDeleteSessions -v
-pytest tests/unit/test_api_server.py::TestDeleteSessions -v
-
-# 2. Покрытие (Этап 1 — должно быть ≥50%)
-pytest --cov=src --cov-report=term | tail -5
-
-# 2.5. Wiring verification (Этап 2.5 — пайплайны подключены, 39 тестов)
-# Автоматические тесты: все 7 пайплайнов реально вызываются агентом
-pytest tests/unit/test_voice_pipeline_wiring.py -v
-
-# AST-проверка: все 11 критических функций вызываются в consultant.py
-grep -c "update_instructions\|update_anketa\|_extract_and_update_anketa\|_finalize_and_save\|on_session_confirmed\|record_learning\|get_country_detector\|_run_background_research\|_try_get_redis\|_try_get_postgres\|get_review_system_prompt" src/voice/consultant.py
-# Ожидается: ≥24 совпадений (определения + вызовы)
-
-# PostgreSQL wiring check
-grep -n "PostgreSQLStorageManager\|_try_get_postgres\|postgres_saved" src/voice/consultant.py
-
-# 3. Knowledge Base валидация (Этап 3 — 968 профилей)
-python scripts/validate_all_profiles.py --errors-only
-python scripts/validate_deep.py
-
-# 4. DeepSeek API (Этап 5 — реальное подключение)
-python -c "
-import asyncio
-from src.llm.deepseek import DeepSeekClient
-async def test():
-    c = DeepSeekClient()
-    r = await c.chat([{'role': 'user', 'content': 'ping'}])
-    print(f'✅ DeepSeek: {len(r)} chars')
-asyncio.run(test())
-"
-
-# 5. Azure OpenAI (Этап 5 — реальное подключение)
-python -c "
-import asyncio
-from src.llm.azure_chat import AzureChatClient
-async def test():
-    c = AzureChatClient()
-    r = await c.chat([{'role': 'user', 'content': 'ping'}], max_tokens=50)
-    print(f'✅ Azure OpenAI: {len(r)} chars')
-asyncio.run(test())
-"
-
-# 6. LiveKit (Этап 5 — реальное подключение)
-python -c "
-import asyncio, os
-from dotenv import load_dotenv
-from livekit import api
-load_dotenv()
-async def test():
-    lk = api.LiveKitAPI(os.getenv('LIVEKIT_URL'), os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET'))
-    rooms = await lk.room.list_rooms(api.ListRoomsRequest())
-    print(f'✅ LiveKit: {len(rooms.rooms)} rooms')
-    await lk.aclose()
-asyncio.run(test())
-"
-
-# 6.5. Парсинг документов (Этап 6.5 — все форматы)
-python scripts/test_document_parsing.py
-
-# 7. LLM-симуляция (Этап 7 — один сценарий)
-python scripts/run_test.py auto_service --quiet
-
-# 7.5. LLM + документы (Этап 7.5 — с input-dir)
-python scripts/run_test.py logistics_company --input-dir input/test_docs/ --quiet
 ```
 
 ---
@@ -2012,15 +2126,15 @@ curl -s https://$DOMAIN/api/sessions | jq .
 | `LiveKit connection failed` | Проверьте LIVEKIT_URL и что сервер запущен |
 | Тест зависает | Добавьте `--timeout=60` к pytest |
 | Пустая анкета после теста | Проверьте логи в `logs/anketa.log` |
-| KB валидация: non-numeric entry_point | Запустите `python scripts/fix_entry_points.py` |
-| KB валидация: enum не English | Запустите `python scripts/fix_enums.py` |
-| KB валидация: payback_months=0 или >36 | Запустите `python scripts/fix_l10_pricing.py` |
-| KB валидация: отсутствуют секции | Запустите `python scripts/fix_incomplete_profiles.py --provider=azure` |
+| KB валидация: non-numeric entry_point | ~~`./venv/bin/python scripts/fix_entry_points.py`~~ (скрипт удалён, профили уже исправлены) |
+| KB валидация: enum не English | ~~`./venv/bin/python scripts/fix_enums.py`~~ (скрипт удалён, профили уже исправлены) |
+| KB валидация: payback_months=0 или >36 | ~~`./venv/bin/python scripts/fix_l10_pricing.py`~~ (скрипт удалён, профили уже исправлены) |
+| KB валидация: отсутствуют секции | ~~`./venv/bin/python scripts/fix_incomplete_profiles.py --provider=azure`~~ (скрипт удалён, профили уже исправлены) |
 | KB: "Rp 50.000" парсится как 50 | Индонезийская точка = разделитель тысяч, исправьте вручную на 50000 |
 | PDF не парсится | `pip install pymupdf` (библиотека fitz) |
 | DOCX не парсится | `pip install python-docx` |
 | XLSX не парсится | `pip install openpyxl` |
-| Нет тестовых документов в input/ | `python scripts/generate_test_documents.py` |
+| Нет тестовых документов в input/ | ~~`./venv/bin/python scripts/generate_test_documents.py`~~ (скрипт удалён, документы уже сгенерированы) |
 | DocumentLoader: 0 documents | Проверьте расширения файлов (.pdf, .docx, .md, .xlsx, .txt) |
 | `ServerVadOptions` not found | `livekit-plugins-openai` >= 1.2.18 удалил `ServerVadOptions`. Используйте `TurnDetection(type="server_vad", ...)` из `livekit.plugins.openai.realtime.realtime_model` |
 | E2E: STT не транскрибирует | Puppeteer fake audio = синтетический тон. Замените `tests/fixtures/test_speech_ru.wav` на WAV с настоящей речью (см. Этап 8.2) |
@@ -2034,7 +2148,9 @@ curl -s https://$DOMAIN/api/sessions | jq .
 
 ---
 
-## Автоматизация (CI/CD)
+## Автоматизация (CI/CD) *(Planned)*
+
+> **Статус:** CI/CD и pre-commit hooks запланированы, но ещё не настроены. Ниже — рекомендуемая конфигурация.
 
 ### GitHub Actions
 
@@ -2052,7 +2168,7 @@ jobs:
         with:
           python-version: '3.14'
       - run: pip install -r requirements.txt
-      - run: pytest --cov=src --cov-fail-under=50
+      - run: ./venv/bin/python -m pytest --cov=src --cov-fail-under=50
 ```
 
 ### Pre-commit hook
@@ -2060,5 +2176,5 @@ jobs:
 ```bash
 # .git/hooks/pre-commit
 #!/bin/sh
-pytest --tb=short -q
+./venv/bin/python -m pytest --tb=short -q
 ```

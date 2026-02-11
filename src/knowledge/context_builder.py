@@ -120,6 +120,10 @@ class KBContextBuilder:
             'success_benchmarks': profile.success_benchmarks,
             'industry_specifics': profile.industry_specifics,
             'learnings': profile.learnings,
+            'sales_scripts': profile.sales_scripts,
+            'competitors': profile.competitors,
+            'pricing_context': profile.pricing_context,
+            'market_context': profile.market_context,
         }
         return key_mapping.get(key)
 
@@ -150,6 +154,14 @@ class KBContextBuilder:
             return self._format_specifics_list(data, format_config)
         elif format_name == 'learnings_list':
             return self._format_learnings_list(data, format_config)
+        elif format_name == 'sales_script_list':
+            return self._format_sales_scripts(data, format_config)
+        elif format_name == 'competitor_list':
+            return self._format_competitors(data, format_config)
+        elif format_name == 'pricing_format':
+            return self._format_pricing(data, format_config)
+        elif format_name == 'market_format':
+            return self._format_market(data, format_config)
 
         # Fallback: simple bullet list
         return self._format_bullet_list(data, format_config)
@@ -291,6 +303,103 @@ class KBContextBuilder:
             items.append(f"{prefix} {clean_insight}")
 
         return "\n".join(items)
+
+    def _format_sales_scripts(self, data: List, config: Dict) -> str:
+        """Format sales scripts with triggers and goals."""
+        if not data:
+            return ""
+        items = []
+        for item in data:
+            if hasattr(item, 'trigger'):
+                trigger = item.trigger
+                script = item.script if hasattr(item, 'script') else ''
+                goal = item.goal if hasattr(item, 'goal') else ''
+                items.append(f"Триггер: {trigger}\nСкрипт: {script}\nЦель: {goal}")
+            elif isinstance(item, dict):
+                items.append(
+                    f"Триггер: {item.get('trigger', '')}\n"
+                    f"Скрипт: {item.get('script', '')}\n"
+                    f"Цель: {item.get('goal', '')}"
+                )
+        return "\n\n".join(items)
+
+    def _format_competitors(self, data: List, config: Dict) -> str:
+        """Format competitor analysis."""
+        if not data:
+            return ""
+        items = []
+        for item in data:
+            if hasattr(item, 'name') and hasattr(item, 'positioning'):
+                diff = getattr(item, 'our_differentiation', '') or ''
+                weaknesses = getattr(item, 'weaknesses', [])
+                weak_str = f" | Слабости: {', '.join(weaknesses)}" if weaknesses else ""
+                diff_str = f" | Наше отличие: {diff}" if diff else ""
+                items.append(f"- {item.name}: {item.positioning}{weak_str}{diff_str}")
+            elif isinstance(item, dict):
+                diff = item.get('our_differentiation', '') or ''
+                weaknesses = item.get('weaknesses', [])
+                weak_str = f" | Слабости: {', '.join(weaknesses)}" if weaknesses else ""
+                diff_str = f" | Наше отличие: {diff}" if diff else ""
+                items.append(f"- {item.get('name', '')}: {item.get('positioning', '')}{weak_str}{diff_str}")
+        return "\n".join(items)
+
+    def _format_pricing(self, data: Any, config: Dict) -> str:
+        """Format pricing context with budget ranges and ROI."""
+        if not data:
+            return ""
+        parts = []
+        if hasattr(data, 'typical_budget_range'):
+            budget = data.typical_budget_range
+            currency = getattr(data, 'currency', 'EUR')
+            if budget and len(budget) == 2 and (budget[0] > 0 or budget[1] > 0):
+                parts.append(f"Бюджет: {budget[0]:.0f}-{budget[1]:.0f} {currency}")
+            entry = getattr(data, 'entry_point', 0)
+            if entry > 0:
+                parts.append(f"Входная цена: {entry:.0f} {currency}")
+            roi_examples = getattr(data, 'roi_examples', [])
+            for roi in roi_examples[:2]:
+                scenario = roi.scenario if hasattr(roi, 'scenario') else roi.get('scenario', '')
+                months = roi.payback_months if hasattr(roi, 'payback_months') else roi.get('payback_months', 0)
+                parts.append(f"ROI: {scenario} → окупаемость {months} мес")
+            anchors = getattr(data, 'value_anchors', [])
+            if anchors:
+                parts.append(f"Ценностные якоря: {', '.join(anchors[:3])}")
+        elif isinstance(data, dict):
+            budget = data.get('typical_budget_range', [0, 0])
+            currency = data.get('currency', 'EUR')
+            if budget and len(budget) == 2 and (budget[0] > 0 or budget[1] > 0):
+                parts.append(f"Бюджет: {budget[0]:.0f}-{budget[1]:.0f} {currency}")
+            for roi in data.get('roi_examples', [])[:2]:
+                parts.append(f"ROI: {roi.get('scenario', '')} → окупаемость {roi.get('payback_months', 0)} мес")
+        return "\n".join(parts)
+
+    def _format_market(self, data: Any, config: Dict) -> str:
+        """Format market context with size, growth and trends."""
+        if not data:
+            return ""
+        parts = []
+        if hasattr(data, 'market_size'):
+            if data.market_size:
+                parts.append(f"Объём рынка: {data.market_size}")
+            growth = getattr(data, 'growth_rate', None)
+            if growth:
+                parts.append(f"Рост: {growth}")
+            trends = getattr(data, 'key_trends', [])
+            if trends:
+                parts.append(f"Тренды: {', '.join(trends[:4])}")
+            seasonality = getattr(data, 'seasonality', None)
+            if seasonality:
+                high = getattr(seasonality, 'high', [])
+                if high:
+                    parts.append(f"Высокий сезон: {', '.join(high)}")
+        elif isinstance(data, dict):
+            if data.get('market_size'):
+                parts.append(f"Объём рынка: {data['market_size']}")
+            if data.get('growth_rate'):
+                parts.append(f"Рост: {data['growth_rate']}")
+            if data.get('key_trends'):
+                parts.append(f"Тренды: {', '.join(data['key_trends'][:4])}")
+        return "\n".join(parts)
 
 
 # Singleton accessor

@@ -743,6 +743,49 @@ async def _extract_anketa_with_documents(session_id: str, doc_context):
 
 
 # ---------------------------------------------------------------------------
+# Analytics & Learnings (PostgreSQL)
+# ---------------------------------------------------------------------------
+
+_pg_mgr = None
+
+
+def _try_get_postgres():
+    """Lazy-init PostgreSQL connection (fail-safe)."""
+    global _pg_mgr
+    if _pg_mgr is not None:
+        return _pg_mgr
+    pg_url = os.getenv("POSTGRES_URL") or os.getenv("DATABASE_URL")
+    if pg_url:
+        try:
+            from src.storage.postgres import PostgreSQLStorageManager
+            _pg_mgr = PostgreSQLStorageManager(pg_url)
+            return _pg_mgr
+        except Exception:
+            pass
+    return None
+
+
+@app.get("/api/statistics")
+async def get_statistics():
+    """Статистика по всем сессиям и отраслям."""
+    pg_mgr = _try_get_postgres()
+    if not pg_mgr:
+        raise HTTPException(status_code=503, detail="PostgreSQL not configured")
+    stats = await pg_mgr.get_statistics()
+    return stats.model_dump()
+
+
+@app.get("/api/learnings")
+async def get_learnings(industry_id: Optional[str] = None, limit: int = 50):
+    """Learnings по отраслям."""
+    pg_mgr = _try_get_postgres()
+    if not pg_mgr:
+        raise HTTPException(status_code=503, detail="PostgreSQL not configured")
+    learnings = await pg_mgr.get_learnings(industry_id=industry_id, limit=limit)
+    return {"learnings": learnings, "count": len(learnings)}
+
+
+# ---------------------------------------------------------------------------
 # Static files - mounted AFTER API routes so API paths take priority
 # ---------------------------------------------------------------------------
 

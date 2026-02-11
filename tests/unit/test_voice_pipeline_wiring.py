@@ -470,7 +470,7 @@ class TestCountryDetectorWiring:
             mock_km_cls.return_value = mock_manager
 
             mock_builder = MagicMock()
-            mock_builder.build_for_voice.return_value = "[Отрасль: logistics] | Боли: Много звонков"
+            mock_builder.build_for_voice_full.return_value = "[Отрасль: logistics] | Боли: Много звонков"
             mock_ecb_cls.return_value = mock_builder
 
             await _extract_and_update_anketa(consultation, "test-001", agent_session)
@@ -516,7 +516,7 @@ class TestCountryDetectorWiring:
             mock_km_cls.return_value = mock_manager
 
             mock_builder = MagicMock()
-            mock_builder.build_for_voice.return_value = "[Отрасль: logistics]"
+            mock_builder.build_for_voice_full.return_value = "[Отрасль: logistics]"
             mock_ecb_cls.return_value = mock_builder
 
             await _extract_and_update_anketa(consultation, "test-001", agent_session)

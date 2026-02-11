@@ -248,3 +248,5 @@ class InterviewStatistics(BaseModel):
     
     pattern_breakdown: Dict[str, int] = {}
     industry_breakdown: Dict[str, int] = {}
+    total_learnings: int = 0
+    success_learnings: int = 0

@@ -130,6 +130,100 @@ class EnrichedContextBuilder:
 
         return " | ".join(parts)
 
+    def build_for_voice_full(
+        self,
+        dialogue_history: List[Dict[str, Any]],
+        profile: Optional[IndustryProfile] = None,
+        phase: str = "discovery",
+    ) -> str:
+        """
+        Build full KB context for voice agent with phase awareness.
+
+        Combines phase-specific KB context + v2.0 data (sales scripts,
+        competitors, pricing, market) + learnings + documents.
+
+        Args:
+            dialogue_history: Current dialogue history
+            profile: Pre-detected industry profile (avoids re-detection)
+            phase: Current consultation phase
+
+        Returns:
+            Full formatted context string for prompt injection
+        """
+        MAX_CONTEXT_CHARS = 4000
+
+        if profile is None:
+            profile = self._detect_profile(dialogue_history)
+        if not profile:
+            return ""
+
+        parts: List[str] = []
+
+        # 1. Phase-specific KB context (uses kb_context.yaml blocks)
+        kb_context = self._kb_builder.build_context(profile, phase)
+        if kb_context:
+            parts.append(kb_context)
+
+        # 2. v2.0 data not covered by phase blocks
+        v2_parts = self._build_v2_context(profile, phase)
+        if v2_parts:
+            parts.append(v2_parts)
+
+        # 3. Learnings
+        learnings_context = self._include_learnings(profile)
+        if learnings_context:
+            parts.append(learnings_context)
+
+        # 4. Document context
+        doc_context = self._include_documents()
+        if doc_context:
+            parts.append(doc_context)
+
+        if not parts:
+            return ""
+
+        # Combine and enforce token budget
+        combined = "\n\n".join(parts)
+        if len(combined) > MAX_CONTEXT_CHARS:
+            combined = combined[:MAX_CONTEXT_CHARS] + "\n[...контекст сокращён]"
+
+        return self._prioritize_by_dialogue(combined, dialogue_history)
+
+    def _build_v2_context(self, profile: IndustryProfile, phase: str) -> str:
+        """
+        Build context from v2.0 KB fields not covered by phase blocks.
+
+        Only includes data relevant to the current phase to avoid duplication
+        with what KBContextBuilder already provides.
+        """
+        parts: List[str] = []
+
+        # Sales scripts — relevant in proposal and refinement
+        if phase in ("proposal", "refinement") and profile.sales_scripts:
+            # Already included via kb_context.yaml blocks, skip to avoid duplication
+            pass
+
+        # Competitors — relevant in analysis and proposal
+        if phase in ("analysis", "discovery") and profile.competitors:
+            comp_text = self._kb_builder._format_competitors(profile.competitors, {})
+            if comp_text:
+                parts.append(f"\nКонкурентный анализ:\n{comp_text}")
+
+        # Pricing — relevant in proposal
+        if phase == "discovery" and profile.pricing_context:
+            price_text = self._kb_builder._format_pricing(profile.pricing_context, {})
+            if price_text:
+                parts.append(f"\nЦенообразование:\n{price_text}")
+
+        # Market — relevant in discovery
+        if phase in ("discovery", "proposal") and profile.market_context:
+            # Already in analysis via kb_context.yaml, add to other phases
+            market_text = self._kb_builder._format_market(profile.market_context, {})
+            if market_text:
+                parts.append(f"\nРыночный контекст:\n{market_text}")
+
+        return "\n".join(parts) if parts else ""
+
     def _detect_profile(
         self,
         dialogue_history: List[Dict[str, Any]]

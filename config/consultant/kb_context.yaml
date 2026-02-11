@@ -2,7 +2,7 @@
 # Шаблоны для добавления KB контекста в промпты консультанта
 
 meta:
-  version: "1.0"
+  version: "2.0"
   description: "Templates for injecting industry knowledge into consultant prompts"
 
 # Секции контекста для каждой фазы
@@ -22,6 +22,11 @@ sections:
         format: bullet_list
         instruction: "Уточни, какие из этих услуг предоставляет клиент"
 
+      - key: industry_specifics
+        label: "Специфика отрасли"
+        format: specifics_list
+        instruction: "Учитывай комплаенс и тон общения"
+
   # Analysis: анализ ситуации клиента
   analysis:
     header: "ДАННЫЕ ДЛЯ АНАЛИЗА"
@@ -36,6 +41,16 @@ sections:
         label: "Типичные интеграции в отрасли"
         format: integration_list
         instruction: "Учти при формировании анализа"
+
+      - key: market_context
+        label: "Рыночный контекст"
+        format: market_format
+        instruction: "Используй для понимания рынка клиента"
+
+      - key: industry_specifics
+        label: "Специфика отрасли"
+        format: specifics_list
+        instruction: "Учитывай регуляторные требования"
 
   # Proposal: предложение решения
   proposal:
@@ -57,6 +72,21 @@ sections:
         format: kpi_list
         instruction: "Используй для обоснования ценности"
 
+      - key: sales_scripts
+        label: "Скрипты продаж"
+        format: sales_script_list
+        instruction: "Используй при обсуждении ценности и предложения"
+
+      - key: competitors
+        label: "Конкурентный анализ"
+        format: competitor_list
+        instruction: "Используй для позиционирования нашего решения"
+
+      - key: pricing_context
+        label: "Ценообразование"
+        format: pricing_format
+        instruction: "Ориентируйся на бюджетные рамки отрасли"
+
   # Refinement: уточнение деталей
   refinement:
     header: "СПРАВОЧНАЯ ИНФОРМАЦИЯ"
@@ -71,6 +101,11 @@ sections:
         label: "Типичные возражения"
         format: objection_list
         instruction: "Будь готов к этим возражениям"
+
+      - key: sales_scripts
+        label: "Скрипты для работы с возражениями"
+        format: sales_script_list
+        instruction: "Используй скрипты при закрытии возражений"
 
 # Форматы вывода данных
 formats:
@@ -112,4 +147,20 @@ formats:
 
   kpi_list:
     template: "- {item}"
+    separator: "\n"
+
+  sales_script_list:
+    template: "Триггер: {trigger}\nСкрипт: {script}\nЦель: {goal}"
+    separator: "\n\n"
+
+  competitor_list:
+    template: "- {name}: {positioning}"
+    separator: "\n"
+
+  pricing_format:
+    template: "Бюджет: {range} {currency}"
+    separator: "\n"
+
+  market_format:
+    template: "Рынок: {market_size}"
     separator: "\n"
