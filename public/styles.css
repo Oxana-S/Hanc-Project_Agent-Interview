@@ -29,7 +29,8 @@ body {
 #app {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* ===== Header ===== */
@@ -92,6 +93,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .screen {
@@ -105,9 +108,10 @@ body {
     flex-direction: column;
 }
 
-/* Interview screen: fill viewport, no page scroll */
+/* Interview screen: fill remaining space, no page scroll */
 #interview-screen.active {
-    height: calc(100vh - 52px - 37px);  /* viewport - header - footer */
+    flex: 1;
+    min-height: 0;
     overflow: hidden;
 }
 
@@ -1201,6 +1205,7 @@ body {
 
 @media (max-width: 900px) {
     #interview-screen.active {
+        flex: none;
         height: auto;
         overflow: visible;
     }

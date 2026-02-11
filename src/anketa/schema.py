@@ -317,8 +317,12 @@ class FinalAnketa(BaseModel):
     quality_metrics: Dict[str, float] = Field(default_factory=dict, description="Quality metrics for this anketa")
 
     def completion_rate(self) -> float:
-        """Calculate the percentage of filled fields."""
-        # Core fields that should be filled
+        """Calculate the percentage of filled USER-collected fields.
+
+        Only counts fields gathered from the client conversation.
+        AI-generated blocks (faq_items, objection_handlers, etc.) are excluded
+        because DeepSeek generates them automatically, inflating the rate.
+        """
         core_fields = {
             'company_name': self.company_name,
             'industry': self.industry,
@@ -330,14 +334,6 @@ class FinalAnketa(BaseModel):
             'agent_purpose': self.agent_purpose,
             'agent_functions': self.agent_functions,
             'integrations': self.integrations,
-            'faq_items': self.faq_items,
-            'objection_handlers': self.objection_handlers,
-            'sample_dialogue': self.sample_dialogue,
-            'financial_metrics': self.financial_metrics,
-            'escalation_rules': self.escalation_rules,
-            'success_kpis': self.success_kpis,
-            'launch_checklist': self.launch_checklist,
-            'ai_recommendations': self.ai_recommendations,
         }
 
         total = len(core_fields)
@@ -357,7 +353,7 @@ class FinalAnketa(BaseModel):
                 else:
                     filled += 1
 
-        return (filled / total * 100) if total > 0 else 0.0
+        return (filled / total) if total > 0 else 0.0
 
     def get_required_fields_status(self) -> dict:
         """Check status of required fields."""

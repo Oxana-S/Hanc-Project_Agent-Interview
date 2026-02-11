@@ -428,6 +428,12 @@ class VoiceInterviewerApp {
         if (ids.length === 0) return;
 
         try {
+            // Stop polling if we're deleting the current session
+            if (this.sessionId && ids.includes(this.sessionId)) {
+                this.stopAnketaPolling();
+                this.sessionId = null;
+            }
+
             const resp = await fetch('/api/sessions/delete', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -545,6 +551,9 @@ class VoiceInterviewerApp {
 
     async createAndGoToSession() {
         LOG.info('=== CREATE SESSION ===');
+        // Stop any existing polling to prevent dual-polling
+        this.stopAnketaPolling();
+
         this.elements.newSessionBtn.disabled = true;
         this.elements.newSessionBtn.textContent = 'Подключение...';
 
@@ -816,6 +825,21 @@ class VoiceInterviewerApp {
             }
         });
 
+        // LiveKit Agents SDK forwards transcriptions automatically via Transcription API
+        const transcriptionEvent = RoomEvent.TranscriptionReceived || 'transcriptionReceived';
+        this.room.on(transcriptionEvent, (segments, participant) => {
+            if (!segments || segments.length === 0) return;
+
+            for (const segment of segments) {
+                if (!segment.final) continue;
+                const text = segment.text?.trim();
+                if (!text) continue;
+
+                const isUser = participant?.identity === this.room.localParticipant?.identity;
+                this.addMessage(isUser ? 'user' : 'ai', text);
+            }
+        });
+
         await this.room.connect(url, token);
         this.localParticipant = this.room.localParticipant;
         LOG.info('Connected to room:', this.room.name);
@@ -1030,12 +1054,14 @@ class VoiceInterviewerApp {
             }
 
             if (data.anketa_data) {
-                // Count only core anketa fields (exclude AI blocks like faq_items, etc.)
+                // Normalize field names (business_description→company_description, etc.)
+                // BEFORE counting, so mapped fields are included in progress
+                const normalized = this._normalizeAnketaData(data.anketa_data);
                 const anketaFieldSet = new Set(this.anketaFields);
-                const keys = Object.keys(data.anketa_data).filter(
+                const keys = Object.keys(normalized).filter(
                     k => anketaFieldSet.has(k) &&
-                    data.anketa_data[k] && data.anketa_data[k] !== '' &&
-                    !(Array.isArray(data.anketa_data[k]) && data.anketa_data[k].length === 0)
+                    normalized[k] && normalized[k] !== '' &&
+                    !(Array.isArray(normalized[k]) && normalized[k].length === 0)
                 );
                 this.updateAnketaFromServer(data.anketa_data);
                 this.updateAIBlocksSummary(data.anketa_data);

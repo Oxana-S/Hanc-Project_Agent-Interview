@@ -621,7 +621,7 @@ async def _extract_and_update_anketa(
             try:
                 rate = anketa.completion_rate()
                 msg_count = len(consultation.dialogue_history)
-                if rate >= 0.5 and msg_count >= 16:
+                if rate >= 0.6 and msg_count >= 16:
                     consultation.review_started = True
                     summary = format_anketa_for_voice(anketa_data)
                     review_prompt = get_review_system_prompt(summary)
