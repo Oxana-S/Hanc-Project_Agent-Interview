@@ -45,7 +45,7 @@ from openai.types.beta.realtime.session import InputAudioTranscription
 
 from src.anketa import AnketaExtractor, AnketaGenerator
 from src.config.prompt_loader import get_prompt
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
 from src.output import OutputManager
 from src.session.manager import SessionManager
@@ -147,6 +147,7 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
 
     # v5.0: Determine consultation type for routing
     _ct = "consultation"
+    _fin_session = None
     try:
         _fin_session = _session_mgr.get_session(consultation.session_id)
         if _fin_session and _fin_session.voice_config:
@@ -155,8 +156,11 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
         pass
 
     try:
-        deepseek = DeepSeekClient()
-        extractor = AnketaExtractor(deepseek)
+        _llm_provider = None
+        if _fin_session and _fin_session.voice_config:
+            _llm_provider = _fin_session.voice_config.get("llm_provider")
+        llm = create_llm_client(_llm_provider)
+        extractor = AnketaExtractor(llm)
 
         anketa = await extractor.extract(
             dialogue_history=consultation.dialogue_history,
@@ -498,8 +502,11 @@ async def _extract_and_update_anketa(
             except Exception:
                 pass  # Use dict fallback — extractor handles both
 
-        deepseek = DeepSeekClient()
-        extractor = AnketaExtractor(deepseek)
+        _llm_provider = None
+        if db_session and db_session.voice_config:
+            _llm_provider = db_session.voice_config.get("llm_provider")
+        llm = create_llm_client(_llm_provider)
+        extractor = AnketaExtractor(llm)
 
         anketa = await extractor.extract(
             dialogue_history=consultation.dialogue_history,
@@ -697,8 +704,11 @@ async def _finalize_and_save(
                 except Exception:
                     pass
 
-            deepseek = DeepSeekClient()
-            extractor = AnketaExtractor(deepseek)
+            _fin_llm_provider = None
+            if session and session.voice_config:
+                _fin_llm_provider = session.voice_config.get("llm_provider")
+            llm = create_llm_client(_fin_llm_provider)
+            extractor = AnketaExtractor(llm)
 
             anketa = await extractor.extract(
                 dialogue_history=consultation.dialogue_history,
@@ -1123,6 +1133,14 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
         old_voice = old_cfg.get("voice_gender", "neutral")
         new_verbosity = new_cfg.get("verbosity", "normal")
         old_verbosity = old_cfg.get("verbosity", "normal")
+
+        log.info(
+            f"voice_config diff: "
+            f"silence={old_silence}->{new_silence}, "
+            f"speed={old_speed}->{new_speed}, "
+            f"voice={old_voice}->{new_voice}, "
+            f"verbosity={old_verbosity}->{new_verbosity}"
+        )
 
         if (new_silence == old_silence and new_speed == old_speed
                 and new_voice == old_voice and new_verbosity == old_verbosity):

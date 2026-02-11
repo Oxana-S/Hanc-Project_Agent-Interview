@@ -37,6 +37,7 @@ from src.interview.phases import (
     CollectedInfo, PhaseTransition, ANKETA_FIELDS
 )
 from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 from src.anketa.extractor import AnketaExtractor
 from src.anketa.generator import AnketaGenerator
 from src.output.manager import OutputManager
@@ -60,7 +61,8 @@ class MaximumInterviewer:
         deepseek_client: Optional[DeepSeekClient] = None
     ):
         self.pattern = pattern
-        self.deepseek = deepseek_client or DeepSeekClient()
+        # MaximumInterviewer uses analyze_answer() — DeepSeek-specific method
+        self.deepseek = deepseek_client or DeepSeekClient()  # type: ignore[assignment]
 
         # Состояние
         self.session_id = str(uuid.uuid4())
@@ -715,8 +717,8 @@ async def main():
 
     # Проверяем DeepSeek
     try:
-        deepseek = DeepSeekClient()
-        console.print("[green]✓ DeepSeek AI подключен[/green]\n")
+        deepseek = create_llm_client()
+        console.print("[green]✓ LLM подключен[/green]\n")
     except Exception as e:
         console.print(f"[red]✗ DeepSeek недоступен: {e}[/red]")
         console.print("[yellow]Maximum режим требует DeepSeek API![/yellow]")

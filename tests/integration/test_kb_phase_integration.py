@@ -535,7 +535,7 @@ class TestP2_KBReinjection:
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -615,7 +615,7 @@ class TestP2_KBReinjection:
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -673,7 +673,7 @@ class TestP2_KBReinjection:
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \

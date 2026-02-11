@@ -147,6 +147,14 @@
                             <label class="segment"><input type="radio" name="verbosity" value="normal" checked><span>Нормально</span></label>
                             <label class="segment"><input type="radio" name="verbosity" value="verbose"><span>Подробно</span></label>
                         </fieldset>
+                        <fieldset class="segment-control segment-control--wide" data-setting="llm_provider">
+                            <legend class="setting-label">LLM модель</legend>
+                            <label class="segment"><input type="radio" name="llm_provider" value="deepseek" checked><span>DeepSeek</span></label>
+                            <label class="segment"><input type="radio" name="llm_provider" value="azure"><span>Azure GPT</span></label>
+                            <label class="segment"><input type="radio" name="llm_provider" value="openai"><span>OpenAI</span></label>
+                            <label class="segment"><input type="radio" name="llm_provider" value="anthropic"><span>Claude</span></label>
+                            <label class="segment"><input type="radio" name="llm_provider" value="xai"><span>Grok</span></label>
+                        </fieldset>
                         <div class="setting-slider">
                             <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x</label>
                             <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">

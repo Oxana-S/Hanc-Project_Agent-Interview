@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
 
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 
 from .personas import (
     BehaviorConfig,
@@ -171,7 +171,7 @@ class SimulatedClient:
     def __init__(
         self,
         persona: ClientPersona,
-        llm_client: Optional[DeepSeekClient] = None,
+        llm_client=None,
         behavior_config: Optional[BehaviorConfig] = None,
     ):
         """
@@ -183,7 +183,7 @@ class SimulatedClient:
             behavior_config: Behavior configuration (optional)
         """
         self.persona = persona
-        self.llm = llm_client or DeepSeekClient()
+        self.llm = llm_client or create_llm_client()
         self.conversation_history: List[Dict[str, str]] = []
         self.response_count = 0
 
@@ -198,7 +198,7 @@ class SimulatedClient:
         self._current_phase = "discovery"
 
     @classmethod
-    def from_yaml(cls, scenario_path: str, llm_client: Optional[DeepSeekClient] = None) -> "SimulatedClient":
+    def from_yaml(cls, scenario_path: str, llm_client=None) -> "SimulatedClient":
         """
         Load client from YAML scenario file.
 

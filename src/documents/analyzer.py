@@ -35,9 +35,9 @@ class DocumentAnalyzer:
     def llm(self):
         """Lazy loading LLM клиента."""
         if self._llm_client is None:
-            from src.llm.deepseek import DeepSeekClient
+            from src.llm.factory import create_llm_client
 
-            self._llm_client = DeepSeekClient()
+            self._llm_client = create_llm_client()
         return self._llm_client
 
     async def analyze(self, documents: List[ParsedDocument]) -> DocumentContext:

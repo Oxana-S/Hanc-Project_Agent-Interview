@@ -28,7 +28,7 @@ from src.consultant.models import (
     BusinessAnalysis, PainPoint, Opportunity,
     ProposedSolution, ProposedFunction, ProposedIntegration
 )
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 from src.config.prompt_loader import get_prompt, render_prompt
 from src.config.locale_loader import t
 
@@ -151,7 +151,7 @@ class ConsultantInterviewer:
     def __init__(
         self,
         pattern: InterviewPattern = InterviewPattern.INTERACTION,
-        deepseek_client: Optional[DeepSeekClient] = None,
+        deepseek_client=None,
         research_engine: Optional[Any] = None,  # ResearchEngine
         locale: str = "ru",
         config: Optional[ConsultationConfig] = None,
@@ -178,7 +178,7 @@ class ConsultantInterviewer:
         from pathlib import Path
 
         self.pattern = pattern
-        self.deepseek = deepseek_client or DeepSeekClient()
+        self.deepseek = deepseek_client or create_llm_client()
         self.research_engine = research_engine
         self.locale = locale
 

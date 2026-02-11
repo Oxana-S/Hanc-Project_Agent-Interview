@@ -604,3 +604,32 @@ class TestFullLifecycleFlow:
         confirmed = client.get("/api/sessions?status=confirmed").json()
         assert confirmed["total"] == 1
         assert confirmed["sessions"][0]["session_id"] == s1["session_id"]
+
+
+# ===================================================================
+# LLM Providers endpoint
+# ===================================================================
+
+class TestLLMProvidersEndpoint:
+    """Tests for GET /api/llm/providers."""
+
+    def test_returns_200(self, client):
+        """Endpoint returns 200 OK."""
+        resp = client.get("/api/llm/providers")
+        assert resp.status_code == 200
+
+    def test_response_structure(self, client):
+        """Response has 'providers' list and 'default' string."""
+        data = client.get("/api/llm/providers").json()
+        assert "providers" in data
+        assert "default" in data
+        assert isinstance(data["providers"], list)
+        assert len(data["providers"]) == 5
+
+    def test_each_provider_has_required_fields(self, client):
+        """Each provider entry has id, name, available."""
+        data = client.get("/api/llm/providers").json()
+        for p in data["providers"]:
+            assert "id" in p
+            assert "name" in p
+            assert "available" in p

@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field
 
 from src.research.website_parser import WebsiteParser
 from src.research.web_search import WebSearchClient
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 
 
 class ResearchResult(BaseModel):
@@ -62,7 +62,7 @@ class ResearchEngine:
 
     def __init__(
         self,
-        deepseek_client: Optional[DeepSeekClient] = None,
+        deepseek_client=None,
         web_search_client: Optional[WebSearchClient] = None,
         enable_web_search: bool = True,
         enable_website_parser: bool = True,
@@ -78,7 +78,7 @@ class ResearchEngine:
             enable_website_parser: Включить парсинг сайтов
             enable_rag: Включить RAG (Azure Cognitive Search)
         """
-        self.deepseek = deepseek_client or DeepSeekClient()
+        self.deepseek = deepseek_client or create_llm_client()
         self.web_search = web_search_client or WebSearchClient()
         self.website_parser = WebsiteParser()
 

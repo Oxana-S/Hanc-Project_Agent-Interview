@@ -7,6 +7,8 @@
 - [Быстрая проверка (10 минут)](#быстрая-проверка-10-минут)
 - [Обзор](#обзор)
 - [Этап 1: Юнит-тесты](#этап-1-юнит-тесты)
+  - [1.7 Mid-session Voice Config](#17-mid-session-voice-config-тесты-v50)
+  - [1.8 LLM Мульти-провайдер тесты](#18-llm-мульти-провайдер-тесты-v52)
 - [Этап 2: Интеграционные тесты](#этап-2-интеграционные-тесты)
 - [Этап 2.5: Wiring Verification](#этап-25-wiring-verification-проверка-подключённости-пайплайнов)
 - [Этап 2.6: KB Phase Integration](#этап-26-kb-phase-integration)
@@ -19,6 +21,8 @@
 - [Этап 7.5: LLM-симуляция с документами](#этап-75-llm-симуляция-с-документами)
 - [Этап 8: Голосовой агент (E2E)](#этап-8-голосовой-агент-e2e)
 - [Этап 9: Docker-деплой и SSL](#этап-9-docker-деплой-и-ssl)
+- [Ручное тестирование v5.0](#ручное-тестирование-v50--чеклист-для-пользователя)
+- [Методология тестирования задачи](#методология-тестирования-задачи)
 - [Troubleshooting](#troubleshooting)
 - [Автоматизация (CI/CD)](#автоматизация-cicd-planned)
 
@@ -29,7 +33,7 @@
 Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
 
 ```bash
-# 1. Юнит-тесты + интеграционные (Этап 1 + 2.6 — должны пройти все, 1806 тестов)
+# 1. Юнит-тесты + интеграционные (Этап 1 + 2.6 — должны пройти все, 1815 тестов)
 ./venv/bin/python -m pytest --tb=short
 
 # 2. Покрытие (Этап 1 — должно быть ≥50%)
@@ -42,14 +46,14 @@
 ./venv/bin/python scripts/validate_all_profiles.py --errors-only
 ./venv/bin/python scripts/validate_deep.py
 
-# 4. DeepSeek API (Этап 5 — реальное подключение)
+# 4. LLM Factory (Этап 5 — реальное подключение через фабрику)
 ./venv/bin/python -c "
 import asyncio
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 async def test():
-    c = DeepSeekClient()
+    c = create_llm_client()  # LLM_PROVIDER из .env, default='deepseek'
     r = await c.chat([{'role': 'user', 'content': 'ping'}])
-    print(f'✅ DeepSeek: {len(r)} chars')
+    print(f'✅ LLM ({type(c).__name__}): {len(r)} chars')
 asyncio.run(test())
 "
 
@@ -148,7 +152,7 @@ asyncio.run(test())
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
-| Тесты passed | 100% | 1806/1806 |
+| Тесты passed | 100% | 1815/1815 |
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
@@ -177,7 +181,7 @@ tests/
 ├── conftest.py                    # Общие fixtures
 ├── unit/
 │   ├── test_models.py             # Core models
-│   ├── test_api_server.py         # FastAPI endpoints (48 тестов)
+│   ├── test_api_server.py         # FastAPI endpoints (51 тест)
 │   │   ├── TestCreateSession      # POST /api/session/create
 │   │   ├── TestGetSession         # GET /api/session/{id}
 │   │   ├── TestGetSessionByLink   # GET /api/session/by-link/{link}
@@ -205,8 +209,9 @@ tests/
 │   ├── test_postgres_storage.py   # PostgreSQL operations
 │   ├── test_data_cleaner.py       # JSON repair, dialogue cleaning
 │   ├── test_output_manager.py     # File output, versioning
-│   ├── test_consultant_interviewer.py  # Consultation phases
-│   ├── test_cli_interface.py      # CLI dashboard
+│   ├── test_consultant_interview_mode.py # Interview mode voice agent (48 тестов)
+│   ├── test_consultant_interviewer.py  # Consultation phases (57 тестов)
+│   ├── test_cli_interface.py      # CLI dashboard (31 тест)
 │   ├── test_knowledge.py          # Industry profiles, matching
 │   ├── test_documents.py          # Document parsing, analysis
 │   ├── test_voice_pipeline_wiring.py  # Pipeline wiring (39 тестов)
@@ -237,8 +242,12 @@ tests/
 │   ├── test_country_detector.py       # Country/region detection (34 теста)
 │   ├── test_deepseek.py               # DeepSeek LLM client (33 теста)
 │   ├── test_enriched_context.py       # EnrichedContextBuilder (25 тестов)
+│   ├── test_export_api.py            # Export API endpoints (39 тестов)
+│   ├── test_exporter.py              # Anketa exporter MD/PDF (76 тестов)
+│   ├── test_extractor_interview.py   # Interview anketa extraction (56 тестов)
+│   ├── test_interview_anketa.py      # Interview anketa schema (46 тестов)
 │   ├── test_interview_context.py      # Interview context management (27 тестов)
-│   ├── test_llm_factory.py            # LLM client factory (12 тестов)
+│   ├── test_llm_factory.py            # LLM client factory (18 тестов)
 │   ├── test_locale_loader.py          # YAML locale loader (21 тест)
 │   ├── test_markdown_parser.py        # Anketa markdown parser (91 тест)
 │   ├── test_maximum_interviewer.py    # Maximum interviewer logic (50 тестов)
@@ -251,7 +260,7 @@ tests/
 │   ├── test_web_search.py             # Web search client (25 тестов)
 │   └── test_website_parser.py         # Website HTML parser (37 тестов)
 ├── integration/
-│   └── test_kb_phase_integration.py   # KB full injection + phase re-injection (26 тестов)
+│   └── test_kb_phase_integration.py   # KB full injection + phase re-injection (27 тестов)
 │       ├── TestP1_FullKBInjection           # build_for_voice_full() с синтетическим профилем (11 тестов)
 │       ├── TestP1_RealKBProfiles            # Реальные YAML-профили из config/industries/ (3 теста)
 │       ├── TestP2_PhaseDetection            # _detect_consultation_phase() переходы (6 тестов)
@@ -261,7 +270,7 @@ tests/
 └── scenarios/                         # YAML для LLM-симуляции
 ```
 
-**Итого: 39 тестовых файлов, 1806 тестов** (1779 unit + 27 integration).
+**Итого: 39 тестовых файлов, 1815 тестов** (1788 unit + 27 integration).
 
 ### 1.6 UI / Dashboard тесты
 
@@ -391,6 +400,87 @@ tests/
 | 4 | `test_no_old_prefix_adds_new` | Нет prefix → prepend новый |
 | 5 | `test_preserves_kb_and_resume_context` | KB + resume context сохраняются при смене verbosity |
 | 6 | `test_exception_is_non_fatal` | RuntimeError → log.warning, нет propagation |
+
+### 1.8 LLM Мульти-провайдер тесты (v5.2)
+
+Тесты покрывают фабрику `create_llm_client()` и все 5 LLM-провайдеров.
+
+#### `test_llm_factory.py` — `TestCreateLLMClientDeepSeek` (3 теста)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_create_deepseek_returns_deepseek_client` | `create_llm_client("deepseek")` → `DeepSeekClient` |
+| 2 | `test_create_deepseek_case_insensitive` | `"DeepSeek"` → нормализация регистра |
+| 3 | `test_create_deepseek_with_spaces` | `"  deepseek  "` → strip пробелов |
+
+#### `test_llm_factory.py` — `TestCreateLLMClientAzure` (3 теста)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_create_azure_returns_azure_client` | `"azure"` → `AzureChatClient` |
+| 2 | `test_create_azure_openai_alias` | `"azure_openai"` → алиас для azure |
+| 3 | `test_create_openai_returns_openai_client` | `"openai"` → `OpenAICompatibleClient` (отдельный от Azure) |
+
+#### `test_llm_factory.py` — `TestCreateLLMClientDefault` (2 теста)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_default_provider_from_env` | `provider=None` + `LLM_PROVIDER=deepseek` → DeepSeek |
+| 2 | `test_default_provider_deepseek_when_no_env` | `provider=None`, нет `LLM_PROVIDER` → fallback "deepseek" |
+
+#### `test_llm_factory.py` — `TestCreateLLMClientErrors` (4 теста)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_unknown_provider_raises_value_error` | `"google_gemini"` → `ValueError` |
+| 2 | `test_error_message_contains_provider_name` | Сообщение ошибки содержит имя провайдера |
+| 3 | `test_deepseek_missing_api_key_propagates` | Нет `DEEPSEEK_API_KEY` → `ValueError` с именем переменной |
+| 4 | `test_azure_missing_config_propagates` | Нет `AZURE_CHAT_OPENAI_*` → `ValueError` с именем переменной |
+
+#### `test_llm_factory.py` — `TestGetAvailableProviders` (6 тестов)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_returns_all_five_providers` | Результат содержит все 5 провайдеров в правильном порядке |
+| 2 | `test_available_true_when_key_set` | Провайдер доступен если env key задан |
+| 3 | `test_available_false_when_key_empty` | Провайдер недоступен если env key пуст |
+| 4 | `test_default_from_env` | `LLM_PROVIDER` env var → поле `default` |
+| 5 | `test_default_fallback_deepseek` | Без `LLM_PROVIDER` → fallback "deepseek" |
+| 6 | `test_provider_names_present` | Каждый провайдер имеет непустое `name` |
+
+#### `test_api_server.py` — `TestLLMProvidersEndpoint` (3 теста)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_returns_200` | `GET /api/llm/providers` → 200 OK |
+| 2 | `test_response_structure` | Ответ содержит `providers` (5 шт.) и `default` |
+| 3 | `test_each_provider_has_required_fields` | Каждый провайдер имеет `id`, `name`, `available` |
+
+#### Архитектура LLM-клиентов
+
+```text
+OpenAICompatibleClient (base)
+├── DeepSeekClient (inherits, + доп. методы analyze_answer, suggest_restrictions)
+├── OpenAI direct (configured via factory, endpoint=api.openai.com)
+└── xAI Grok (configured via factory, endpoint=api.x.ai)
+
+AzureChatClient (standalone, отдельная авторизация api-key + deployment URL)
+
+AnthropicClient (standalone, Messages API, x-api-key + system поле верхнего уровня)
+```
+
+#### Проверка mock-патчинга после рефакторинга
+
+При замене `DeepSeekClient()` на `create_llm_client()` во всех модулях, mock-патчи в тестах должны ссылаться на `create_llm_client` **в целевом модуле**, а не на `DeepSeekClient`:
+
+```python
+# ✅ Правильно:
+@patch("src.voice.consultant.create_llm_client")
+@patch("src.anketa.extractor.create_llm_client")
+
+# ❌ Неправильно (после рефакторинга):
+@patch("src.voice.consultant.DeepSeekClient")
+```
 
 ---
 
@@ -2178,6 +2268,118 @@ curl -s https://$DOMAIN/api/sessions | jq .
 
 ---
 
+## Методология тестирования задачи
+
+> **Назначение:** Этот чек-лист используется при тестировании ЛЮБОЙ задачи. Когда пользователь просит протестировать задачу, Claude следует этой методологии последовательно, чтобы ничего не пропустить.
+
+### Фаза 0: Подготовка
+
+```
+[ ] Прочитать описание задачи и определить затронутые модули
+[ ] Определить тип задачи: новая фича / баг-фикс / рефакторинг / UI-изменение
+[ ] Составить список файлов, которые были изменены (git diff --name-only)
+[ ] Прочитать изменённые файлы и понять что именно менялось
+```
+
+### Фаза 1: Юнит-тесты (обязательно)
+
+```
+[ ] Запустить полный набор тестов: ./venv/bin/python -m pytest --tb=short -q
+[ ] Все тесты passed (0 failed)
+[ ] Если есть новые модули — проверить что для них есть тестовый файл
+[ ] Если есть новые публичные функции — проверить что они покрыты тестами
+[ ] Если изменились импорты — проверить что mock-патчи в тестах обновлены
+    (mock должен ссылаться на модуль-потребитель, не на модуль-источник)
+[ ] Если изменились сигнатуры функций — проверить что тесты используют новые сигнатуры
+```
+
+### Фаза 2: Статический анализ
+
+```
+[ ] Нет ImportError при import изменённых модулей
+[ ] Нет циклических зависимостей
+[ ] Все переменные окружения, используемые в коде, документированы в .env.example
+[ ] Нет хардкоженных секретов (API ключей, паролей) в коде
+```
+
+### Фаза 3: Интеграция (если задача затрагивает связи между модулями)
+
+```
+[ ] Wiring-тесты проходят: ./venv/bin/python -m pytest tests/unit/test_voice_pipeline_wiring.py -v
+[ ] KB-интеграция: ./venv/bin/python -m pytest tests/integration/ -v
+[ ] Если задача затрагивает voice pipeline — проверить что pipeline wiring не нарушен
+[ ] Если задача затрагивает API endpoints — проверить test_api_server.py
+[ ] Если задача затрагивает anketa — проверить test_anketa_extractor.py
+```
+
+### Фаза 4: Backend API (если задача затрагивает server.py или новые эндпоинты)
+
+```
+[ ] Новый эндпоинт документирован (URL, метод, параметры, ответ)
+[ ] Эндпоинт возвращает корректный JSON
+[ ] Обработка ошибок: невалидные параметры → 400/404, не 500
+[ ] Проверка через curl или тест: запрос → ожидаемый ответ
+```
+
+### Фаза 5: Frontend (если задача затрагивает HTML/CSS/JS)
+
+```
+[ ] Новые UI-элементы видны в браузере (http://localhost:8000)
+[ ] Responsive: проверить на 375px (мобильная) и 1920px (десктоп)
+[ ] Настройки сохраняются в localStorage и восстанавливаются при перезагрузке
+[ ] Нет ошибок в DevTools Console
+[ ] Нет красных запросов в DevTools Network
+[ ] Keyboard navigation работает (Tab, Enter, стрелки)
+[ ] ARIA-атрибуты на интерактивных элементах
+```
+
+### Фаза 6: Voice Agent (если задача затрагивает consultant.py или голосовой pipeline)
+
+```
+[ ] Сервер запускается: make start
+[ ] Агент подключается к комнате LiveKit
+[ ] Агент произносит приветствие
+[ ] Агент слышит пользователя (STT работает)
+[ ] Анкета заполняется после 3-4 реплик
+[ ] Настройки голоса (speed, silence, voice, verbosity) применяются
+[ ] Логи агента чистые: cat /tmp/agent_entrypoint.log | tail -20
+```
+
+### Фаза 7: Регрессия
+
+```
+[ ] Существующие фичи НЕ сломались (smoke test основного сценария)
+[ ] Все 1815+ тестов по-прежнему проходят
+[ ] Если менялись общие модули (factory, schema, models) — проверить все зависимые модули
+[ ] .env.example синхронизирован с реальным .env (новые переменные добавлены)
+```
+
+### Фаза 8: Документация
+
+```
+[ ] TESTING.md обновлён: новые тесты добавлены в дерево (секция 1.5)
+[ ] Счётчики тестов обновлены (секция 1.3, 1.5, Быстрая проверка)
+[ ] Если новый ручной QA — добавлена секция в «Ручное тестирование v5.0»
+[ ] Если новый этап — добавлен в Оглавление
+[ ] Troubleshooting: новые known issues добавлены
+```
+
+### Матрица «Тип задачи → Обязательные фазы»
+
+| Тип задачи | Ф0 | Ф1 | Ф2 | Ф3 | Ф4 | Ф5 | Ф6 | Ф7 | Ф8 |
+|------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Новая фича (backend) | ✅ | ✅ | ✅ | ✅ | ✅ | — | — | ✅ | ✅ |
+| Новая фича (frontend) | ✅ | ✅ | ✅ | — | — | ✅ | — | ✅ | ✅ |
+| Новая фича (full-stack) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | ✅ | ✅ |
+| Voice agent изменение | ✅ | ✅ | ✅ | ✅ | — | — | ✅ | ✅ | ✅ |
+| Баг-фикс | ✅ | ✅ | ✅ | — | — | — | — | ✅ | — |
+| Рефакторинг | ✅ | ✅ | ✅ | ✅ | — | — | — | ✅ | ✅ |
+| UI-only (CSS/HTML) | ✅ | ✅ | — | — | — | ✅ | — | ✅ | — |
+
+> **Важно:** Фаза 1 (юнит-тесты) и Фаза 7 (регрессия) обязательны для ЛЮБОГО типа задачи.
+
+---
+
 ## Troubleshooting
 
 | Проблема | Решение |
@@ -2430,6 +2632,22 @@ jobs:
 [ ] Логи агента: grep "verbosity updated" /tmp/agent_entrypoint.log — есть записи (если менялась словоохотливость)
 ```
 
+### 15. LLM Провайдер (мульти-провайдер)
+
+```
+[ ] Settings Panel: видно поле «LLM модель» с 5 сегментами (DeepSeek, Azure GPT, OpenAI, Claude, Grok)
+[ ] Недоступные провайдеры (без API ключа) — сегмент серый, некликабельный
+[ ] GET /api/llm/providers → JSON с available: true/false для каждого провайдера
+[ ] Выбрать доступный провайдер (напр. Azure GPT) → сохраняется в localStorage
+[ ] Перезагрузка страницы → выбранный провайдер восстановлен
+[ ] Создать сессию с DeepSeek → агент отвечает, анкета заполняется
+[ ] Создать сессию с Azure GPT → агент отвечает, анкета заполняется
+[ ] Создать сессию с Claude → агент отвечает, анкета заполняется
+[ ] Переключить провайдер mid-session НЕ влияет на текущую сессию
+[ ] DevTools Network: POST /api/session/create содержит llm_provider в voice_config
+[ ] Логи агента: grep "LLM provider" /tmp/agent_entrypoint.log — видно какой провайдер используется
+```
+
 ### Итог
 
 | Секция | Пунктов | Пройдено |
@@ -2449,4 +2667,5 @@ jobs:
 | 12. Responsive | 4 | /4 |
 | 13. Множественные сессии | 5 | /5 |
 | 14. DevTools | 5 | /5 |
-| **ИТОГО** | **101** | **/101** |
+| 15. LLM Провайдер | 11 | /11 |
+| **ИТОГО** | **112** | **/112** |

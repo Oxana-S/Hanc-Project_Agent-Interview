@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import structlog
 
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 from src.anketa.schema import (
     FinalAnketa, AgentFunction, Integration,
     # v2.0 models
@@ -40,7 +40,7 @@ class AnketaExtractor:
 
     def __init__(
         self,
-        llm: Optional[DeepSeekClient] = None,
+        llm=None,
         strict_cleaning: bool = True,
         use_smart_extraction: bool = True,
         max_json_retries: int = 3
@@ -54,7 +54,7 @@ class AnketaExtractor:
             use_smart_extraction: If True, use SmartExtractor for dialogue parsing
             max_json_retries: Number of JSON repair attempts
         """
-        self.llm = llm or DeepSeekClient()
+        self.llm = llm or create_llm_client()
         self.strict_cleaning = strict_cleaning
         self.use_smart_extraction = use_smart_extraction
         self.max_json_retries = max_json_retries

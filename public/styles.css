@@ -262,6 +262,24 @@ body {
     z-index: 1;
 }
 
+/* Wide variant — for 5+ segments (smaller text, tighter padding) */
+.segment-control--wide .segment span {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.72rem;
+}
+
+/* Disabled segment (provider unavailable) */
+.segment-control .segment.disabled {
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.segment-control .segment.disabled span {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
 /* Setting sliders */
 
 .setting-slider {

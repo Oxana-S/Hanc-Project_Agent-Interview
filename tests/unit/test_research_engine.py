@@ -131,7 +131,7 @@ class TestResearchEngineInit:
     @pytest.mark.unit
     def test_init_defaults(self):
         """Default init creates DeepSeekClient, WebSearchClient, WebsiteParser."""
-        with patch("src.research.engine.DeepSeekClient") as MockDS, \
+        with patch("src.research.engine.create_llm_client") as MockDS, \
              patch("src.research.engine.WebSearchClient") as MockWS, \
              patch("src.research.engine.WebsiteParser") as MockWP:
             eng = ResearchEngine()
@@ -155,7 +155,7 @@ class TestResearchEngineInit:
     @pytest.mark.unit
     def test_init_flags_disabled(self):
         """Flags can disable web_search, website_parser, enable rag."""
-        with patch("src.research.engine.DeepSeekClient"), \
+        with patch("src.research.engine.create_llm_client"), \
              patch("src.research.engine.WebSearchClient"), \
              patch("src.research.engine.WebsiteParser"):
             eng = ResearchEngine(
@@ -170,7 +170,7 @@ class TestResearchEngineInit:
     @pytest.mark.unit
     def test_init_website_parser_always_created(self):
         """WebsiteParser is always instantiated regardless of flags."""
-        with patch("src.research.engine.DeepSeekClient"), \
+        with patch("src.research.engine.create_llm_client"), \
              patch("src.research.engine.WebSearchClient"), \
              patch("src.research.engine.WebsiteParser") as MockWP:
             ResearchEngine(enable_website_parser=False)

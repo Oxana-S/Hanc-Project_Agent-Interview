@@ -10,7 +10,7 @@ LLM-powered генератор структурированной анкеты.
 from typing import Optional
 
 from src.anketa.schema import FinalAnketa
-from src.llm.deepseek import DeepSeekClient
+from src.llm.factory import create_llm_client
 
 
 class LLMAnketaGenerator:
@@ -20,8 +20,8 @@ class LLMAnketaGenerator:
     Обогащает частично заполненную FinalAnketa через DeepSeek.
     """
 
-    def __init__(self, deepseek_client: Optional[DeepSeekClient] = None):
-        self.client = deepseek_client or DeepSeekClient()
+    def __init__(self, deepseek_client=None):
+        self.client = deepseek_client or create_llm_client()
 
     async def generate(self, anketa: FinalAnketa) -> FinalAnketa:
         """

@@ -129,7 +129,7 @@ class TestConsultantInterviewerInit:
     """Tests for ConsultantInterviewer initialization."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_default_initialization(self, mock_deepseek, mock_km):
         """Should initialize with default values."""
         mock_deepseek_instance = MagicMock()
@@ -146,21 +146,21 @@ class TestConsultantInterviewerInit:
         assert interviewer.session_id is not None
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_custom_pattern(self, mock_deepseek, mock_km):
         """Should accept custom pattern."""
         interviewer = ConsultantInterviewer(pattern=InterviewPattern.MANAGEMENT)
         assert interviewer.pattern == InterviewPattern.MANAGEMENT
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_custom_locale(self, mock_deepseek, mock_km):
         """Should accept custom locale."""
         interviewer = ConsultantInterviewer(locale="en")
         assert interviewer.locale == "en"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_custom_config(self, mock_deepseek, mock_km):
         """Should accept custom config."""
         config = ConsultationConfig.fast()
@@ -169,14 +169,14 @@ class TestConsultantInterviewerInit:
         assert interviewer.discovery_min_turns == 3
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_config_profile(self, mock_deepseek, mock_km):
         """Should use config_profile if no config provided."""
         interviewer = ConsultantInterviewer(config_profile="thorough")
         assert interviewer.config.discovery_min_turns == 8
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_custom_deepseek_client(self, mock_deepseek_class, mock_km):
         """Should accept custom deepseek client."""
         mock_client = MagicMock()
@@ -184,7 +184,7 @@ class TestConsultantInterviewerInit:
         assert interviewer.deepseek == mock_client
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_initial_state(self, mock_deepseek, mock_km):
         """Should have correct initial state."""
         interviewer = ConsultantInterviewer()
@@ -202,7 +202,7 @@ class TestHandleCommand:
     """Tests for _handle_command method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_quit_command_raises_interrupt(self, mock_deepseek, mock_km):
         """Should raise KeyboardInterrupt on quit."""
         interviewer = ConsultantInterviewer()
@@ -210,7 +210,7 @@ class TestHandleCommand:
             interviewer._handle_command("quit", turn_count=1)
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     @patch("src.consultant.interviewer.console")
     def test_status_command_shows_status(self, mock_console, mock_deepseek, mock_km):
         """Should show status and return True."""
@@ -220,7 +220,7 @@ class TestHandleCommand:
         assert mock_console.print.called
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     @patch("src.consultant.interviewer.console")
     def test_done_command_min_turns_not_met(self, mock_console, mock_deepseek, mock_km):
         """Should warn if min turns not met."""
@@ -231,7 +231,7 @@ class TestHandleCommand:
         assert interviewer.phase == ConsultantPhase.DISCOVERY
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_done_command_transitions_phase(self, mock_deepseek, mock_km):
         """Should transition phase when min turns met."""
         interviewer = ConsultantInterviewer()
@@ -241,7 +241,7 @@ class TestHandleCommand:
         assert interviewer.phase == ConsultantPhase.ANALYSIS
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_unknown_command_returns_false(self, mock_deepseek, mock_km):
         """Should return False for unknown commands."""
         interviewer = ConsultantInterviewer()
@@ -249,7 +249,7 @@ class TestHandleCommand:
         assert result is False
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_command_case_insensitive(self, mock_deepseek, mock_km):
         """Should handle commands case-insensitively."""
         interviewer = ConsultantInterviewer()
@@ -265,7 +265,7 @@ class TestExtractWebsite:
     """Tests for _extract_website method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_extract_https_url(self, mock_deepseek, mock_km):
         """Should extract https URL."""
         interviewer = ConsultantInterviewer()
@@ -273,7 +273,7 @@ class TestExtractWebsite:
         assert result == "https://example.com"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_extract_http_url(self, mock_deepseek, mock_km):
         """Should extract http URL."""
         interviewer = ConsultantInterviewer()
@@ -281,7 +281,7 @@ class TestExtractWebsite:
         assert result == "http://example.org/page"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_extract_simple_domain_ru(self, mock_deepseek, mock_km):
         """Should extract .ru domain."""
         interviewer = ConsultantInterviewer()
@@ -289,7 +289,7 @@ class TestExtractWebsite:
         assert result == "https://example.ru"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_extract_simple_domain_com(self, mock_deepseek, mock_km):
         """Should extract .com domain."""
         interviewer = ConsultantInterviewer()
@@ -297,7 +297,7 @@ class TestExtractWebsite:
         assert result == "https://mysite.com"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_extract_domain_io(self, mock_deepseek, mock_km):
         """Should extract .io domain."""
         interviewer = ConsultantInterviewer()
@@ -305,7 +305,7 @@ class TestExtractWebsite:
         assert result == "https://startup.io"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_no_website_returns_none(self, mock_deepseek, mock_km):
         """Should return None when no website found."""
         interviewer = ConsultantInterviewer()
@@ -321,7 +321,7 @@ class TestReadyForAnalysis:
     """Tests for _ready_for_analysis method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_not_ready_if_below_min_turns(self, mock_deepseek, mock_km):
         """Should return False if below min turns."""
         interviewer = ConsultantInterviewer()
@@ -329,7 +329,7 @@ class TestReadyForAnalysis:
         assert interviewer._ready_for_analysis(turn_count=3) is False
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_ready_if_required_percentage_high(self, mock_deepseek, mock_km):
         """Should return True if 30%+ required fields filled."""
         interviewer = ConsultantInterviewer()
@@ -340,7 +340,7 @@ class TestReadyForAnalysis:
         assert interviewer._ready_for_analysis(turn_count=5) is True
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_ready_if_basic_info_present(self, mock_deepseek, mock_km):
         """Should return True if company_name and industry present."""
         interviewer = ConsultantInterviewer()
@@ -350,7 +350,7 @@ class TestReadyForAnalysis:
         assert interviewer._ready_for_analysis(turn_count=5) is True
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_ready_with_initialized_fields(self, mock_deepseek, mock_km):
         """Fields are always initialized, so has_company/has_industry are always truthy."""
         interviewer = ConsultantInterviewer()
@@ -368,7 +368,7 @@ class TestGetFieldSuggestion:
     """Tests for _get_field_suggestion method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_suggest_company_name_from_analysis(self, mock_deepseek, mock_km):
         """Should suggest company_name from business analysis."""
         interviewer = ConsultantInterviewer()
@@ -382,7 +382,7 @@ class TestGetFieldSuggestion:
         assert result == "TestCo"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_suggest_industry_from_analysis(self, mock_deepseek, mock_km):
         """Should suggest industry from business analysis."""
         interviewer = ConsultantInterviewer()
@@ -396,7 +396,7 @@ class TestGetFieldSuggestion:
         assert result == "IT"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_suggest_from_field_examples(self, mock_deepseek, mock_km):
         """Should suggest from field examples if no other source."""
         interviewer = ConsultantInterviewer()
@@ -409,7 +409,7 @@ class TestGetFieldSuggestion:
         assert result == "Example 1"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_no_suggestion_available(self, mock_deepseek, mock_km):
         """Should return None when no suggestion available."""
         interviewer = ConsultantInterviewer()
@@ -430,7 +430,7 @@ class TestGetSessionStats:
     """Tests for _get_session_stats method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_returns_session_stats(self, mock_deepseek, mock_km):
         """Should return session statistics."""
         interviewer = ConsultantInterviewer()
@@ -456,7 +456,7 @@ class TestTransitionPhase:
     """Tests for _transition_phase method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     @patch("src.consultant.interviewer.console")
     def test_transitions_phase(self, mock_console, mock_deepseek, mock_km):
         """Should transition to new phase."""
@@ -467,7 +467,7 @@ class TestTransitionPhase:
         assert interviewer.phase == ConsultantPhase.ANALYSIS
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     @patch("src.consultant.interviewer.console")
     def test_prints_transition_message(self, mock_console, mock_deepseek, mock_km):
         """Should print transition message."""
@@ -484,7 +484,7 @@ class TestShowStatus:
     """Tests for _show_status method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     @patch("src.consultant.interviewer.console")
     def test_shows_current_phase(self, mock_console, mock_deepseek, mock_km):
         """Should print current phase."""
@@ -502,7 +502,7 @@ class TestFormatAnalysis:
     """Tests for _format_analysis method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_format_basic_analysis(self, mock_deepseek, mock_km):
         """Should format basic analysis information."""
         interviewer = ConsultantInterviewer()
@@ -521,7 +521,7 @@ class TestFormatAnalysis:
         assert "B2B" in result
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_format_analysis_with_pain_points(self, mock_deepseek, mock_km):
         """Should include pain points in analysis."""
         interviewer = ConsultantInterviewer()
@@ -539,7 +539,7 @@ class TestFormatAnalysis:
         assert "Long response times" in result
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_format_analysis_with_opportunities(self, mock_deepseek, mock_km):
         """Should include opportunities in analysis."""
         interviewer = ConsultantInterviewer()
@@ -555,7 +555,7 @@ class TestFormatAnalysis:
         assert "Automate FAQ" in result
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_format_analysis_with_constraints(self, mock_deepseek, mock_km):
         """Should include constraints in analysis."""
         interviewer = ConsultantInterviewer()
@@ -569,7 +569,7 @@ class TestFormatAnalysis:
         assert "Budget limited" in result
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_format_analysis_with_research_data(self, mock_deepseek, mock_km):
         """Should include research data if provided."""
         interviewer = ConsultantInterviewer()
@@ -589,7 +589,7 @@ class TestPopulateFromAnalysis:
     """Tests for _populate_from_analysis method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_populates_company_name(self, mock_deepseek, mock_km):
         """Should populate company_name from analysis."""
         interviewer = ConsultantInterviewer()
@@ -602,7 +602,7 @@ class TestPopulateFromAnalysis:
         assert field.value == "AnalysisCo"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_populates_industry(self, mock_deepseek, mock_km):
         """Should populate industry from analysis."""
         interviewer = ConsultantInterviewer()
@@ -615,7 +615,7 @@ class TestPopulateFromAnalysis:
         assert field.value == "Healthcare"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_populates_pain_points(self, mock_deepseek, mock_km):
         """Should populate current_problems from pain points."""
         interviewer = ConsultantInterviewer()
@@ -633,7 +633,7 @@ class TestPopulateFromAnalysis:
         assert "Problem 1" in (field.value or [])
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_no_action_without_analysis(self, mock_deepseek, mock_km):
         """Should do nothing if no business analysis."""
         interviewer = ConsultantInterviewer()
@@ -651,7 +651,7 @@ class TestPopulateFromProposal:
     """Tests for _populate_from_proposal method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_populates_agent_purpose(self, mock_deepseek, mock_km):
         """Should populate agent_purpose from proposal."""
         interviewer = ConsultantInterviewer()
@@ -671,7 +671,7 @@ class TestPopulateFromProposal:
         assert "Автоматизация поддержки" in (field.value or "")
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_populates_integrations(self, mock_deepseek, mock_km):
         """Should populate integrations from proposal."""
         interviewer = ConsultantInterviewer()
@@ -696,7 +696,7 @@ class TestPopulateFromProposal:
         assert "SMS" not in integrations
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_no_action_without_proposal(self, mock_deepseek, mock_km):
         """Should do nothing if no proposed solution."""
         interviewer = ConsultantInterviewer()
@@ -714,7 +714,7 @@ class TestGetKBContext:
     """Tests for _get_kb_context method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_returns_empty_without_profile(self, mock_deepseek, mock_km):
         """Should return empty string if no industry profile."""
         interviewer = ConsultantInterviewer()
@@ -727,7 +727,7 @@ class TestGetIndustryContext:
     """Tests for get_industry_context method."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_returns_empty_without_profile(self, mock_deepseek, mock_km):
         """Should return empty string without industry profile."""
         mock_km_instance = MagicMock()
@@ -755,7 +755,7 @@ class TestConsultantInterviewerIntegration:
     """Integration tests for ConsultantInterviewer."""
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_full_state_workflow(self, mock_deepseek, mock_km):
         """Should maintain correct state through workflow."""
         interviewer = ConsultantInterviewer()
@@ -791,7 +791,7 @@ class TestConsultantInterviewerIntegration:
         assert field.value == "TestCo"
 
     @patch("src.consultant.interviewer.IndustryKnowledgeManager")
-    @patch("src.consultant.interviewer.DeepSeekClient")
+    @patch("src.consultant.interviewer.create_llm_client")
     def test_config_affects_behavior(self, mock_deepseek, mock_km):
         """Config profile should affect interviewer behavior."""
         fast_interviewer = ConsultantInterviewer(config_profile="fast")

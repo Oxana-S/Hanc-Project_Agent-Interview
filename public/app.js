@@ -233,6 +233,9 @@ class VoiceInterviewerApp {
         // Restore settings from localStorage
         this._restoreSettings();
 
+        // Check available LLM providers and disable unavailable ones
+        this._loadAvailableProviders();
+
         // Persist settings on change
         document.querySelectorAll('.segment-control input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', () => this._persistSettings());
@@ -282,6 +285,7 @@ class VoiceInterviewerApp {
             voice_gender: document.querySelector('input[name="voice_gender"]:checked')?.value || 'neutral',
             consultation_type: document.querySelector('input[name="consultation_type"]:checked')?.value || 'consultation',
             verbosity: document.querySelector('input[name="verbosity"]:checked')?.value || 'normal',
+            llm_provider: document.querySelector('input[name="llm_provider"]:checked')?.value || 'deepseek',
         };
     }
 
@@ -307,11 +311,43 @@ class VoiceInterviewerApp {
             }
 
             // Restore radio buttons
-            for (const name of ['voice_gender', 'consultation_type', 'verbosity']) {
+            for (const name of ['voice_gender', 'consultation_type', 'verbosity', 'llm_provider']) {
                 if (saved[name]) {
                     const radio = document.querySelector(`input[name="${name}"][value="${saved[name]}"]`);
                     if (radio) radio.checked = true;
                 }
+            }
+        } catch {}
+    }
+
+    async _loadAvailableProviders() {
+        try {
+            const resp = await fetch('/api/llm/providers');
+            if (!resp.ok) return;
+            const data = await resp.json();
+            const providers = data.providers || [];
+            for (const p of providers) {
+                const radios = document.querySelectorAll(`input[name="llm_provider"][value="${p.id}"]`);
+                radios.forEach(radio => {
+                    if (!p.available) {
+                        radio.disabled = true;
+                        radio.closest('.segment')?.classList.add('disabled');
+                    }
+                });
+            }
+            // If current selection is disabled, fall back to default
+            const checked = document.querySelector('input[name="llm_provider"]:checked');
+            if (checked && checked.disabled) {
+                const defaultProvider = data.default || 'deepseek';
+                const fallback = document.querySelector(`input[name="llm_provider"][value="${defaultProvider}"]`);
+                if (fallback && !fallback.disabled) {
+                    fallback.checked = true;
+                } else {
+                    // Pick first available
+                    const first = document.querySelector('input[name="llm_provider"]:not(:disabled)');
+                    if (first) first.checked = true;
+                }
+                this._persistSettings();
             }
         } catch {}
     }
@@ -537,10 +573,22 @@ class VoiceInterviewerApp {
     // ===== SESSION (Interview) =====
 
     async showSession(link) {
-        // If already in this session, just show the screen
+        // If already in this session, just show the screen + push any setting changes
         if (this.uniqueLink === link && this.sessionId) {
             this.showScreen('interview');
             this.startAnketaPolling();
+            // Send updated voice settings (user may have changed them on Dashboard)
+            try {
+                await fetch(`/api/session/${this.sessionId}/voice-config`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.getVoiceSettings()),
+                });
+                await fetch(`/api/session/${this.sessionId}/reconnect`);
+                LOG.info('Voice config synced on session return');
+            } catch (e) {
+                LOG.warn('Failed to sync voice config on return:', e);
+            }
             return;
         }
 
@@ -1086,6 +1134,22 @@ class VoiceInterviewerApp {
         this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
         this.elements.micBtn.disabled = false;
         document.getElementById('pause-overlay')?.classList.remove('visible');
+
+        // Send updated voice settings so agent picks up mid-session changes
+        if (this.sessionId) {
+            try {
+                await fetch(`/api/session/${this.sessionId}/voice-config`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.getVoiceSettings()),
+                });
+                // Signal agent to re-read config via room metadata
+                await fetch(`/api/session/${this.sessionId}/reconnect`);
+                LOG.info('Voice config updated on resume');
+            } catch (e) {
+                LOG.warn('Failed to update voice config on resume:', e);
+            }
+        }
 
         // Restart recording
         await this.startRecording();

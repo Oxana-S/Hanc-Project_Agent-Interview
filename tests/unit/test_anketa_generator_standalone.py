@@ -67,7 +67,7 @@ class TestLLMAnketaGeneratorInit:
         assert generator.client is mock_client
 
     @patch.dict(os.environ, {"DEEPSEEK_API_KEY": "test-key-12345"})
-    @patch("src.llm.anketa_generator.DeepSeekClient")
+    @patch("src.llm.anketa_generator.create_llm_client")
     def test_init_creates_default_client(self, MockDeepSeekClass):
         """When no client is provided, a default DeepSeekClient is created."""
         mock_instance = MagicMock()

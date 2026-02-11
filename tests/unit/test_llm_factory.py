@@ -10,7 +10,7 @@ import os
 import pytest
 from unittest.mock import patch, MagicMock
 
-from src.llm.factory import create_llm_client
+from src.llm.factory import create_llm_client, get_available_providers
 
 
 # ---------------------------------------------------------------------------
@@ -97,13 +97,14 @@ class TestCreateLLMClientAzure:
         from src.llm.azure_chat import AzureChatClient
         assert isinstance(client, AzureChatClient)
 
-    def test_create_openai_alias(self):
-        """'openai' is accepted as an alias for 'azure'."""
-        with patch.dict(os.environ, AZURE_ENV):
+    def test_create_openai_returns_openai_client(self):
+        """'openai' provider returns an OpenAICompatibleClient (not Azure)."""
+        env = {"OPENAI_API_KEY": "test-openai-key"}
+        with patch.dict(os.environ, env):
             client = create_llm_client("openai")
 
-        from src.llm.azure_chat import AzureChatClient
-        assert isinstance(client, AzureChatClient)
+        from src.llm.openai_client import OpenAICompatibleClient
+        assert isinstance(client, OpenAICompatibleClient)
 
 
 # ===================================================================
@@ -122,15 +123,15 @@ class TestCreateLLMClientDefault:
         from src.llm.deepseek import DeepSeekClient
         assert isinstance(client, DeepSeekClient)
 
-    def test_default_provider_azure_when_no_env(self):
-        """When provider is None and LLM_PROVIDER not set, defaults to 'azure'."""
+    def test_default_provider_deepseek_when_no_env(self):
+        """When provider is None and LLM_PROVIDER not set, defaults to 'deepseek'."""
         clean = _clean_env()
-        clean.update(AZURE_ENV)  # need Azure keys so constructor succeeds
+        clean.update(DEEPSEEK_ENV)  # need DeepSeek keys so constructor succeeds
         with patch.dict(os.environ, clean, clear=True):
             client = create_llm_client()  # provider=None, no LLM_PROVIDER
 
-        from src.llm.azure_chat import AzureChatClient
-        assert isinstance(client, AzureChatClient)
+        from src.llm.deepseek import DeepSeekClient
+        assert isinstance(client, DeepSeekClient)
 
 
 # ===================================================================
@@ -163,3 +164,53 @@ class TestCreateLLMClientErrors:
         with patch.dict(os.environ, clean, clear=True):
             with pytest.raises(ValueError, match="AZURE_CHAT_OPENAI"):
                 create_llm_client("azure")
+
+
+# ===================================================================
+# 5. TestGetAvailableProviders
+# ===================================================================
+
+class TestGetAvailableProviders:
+    """Tests for get_available_providers() helper."""
+
+    def test_returns_all_five_providers(self):
+        """Result always contains all 5 registered providers."""
+        result = get_available_providers()
+        ids = [p["id"] for p in result["providers"]]
+        assert ids == ["deepseek", "azure", "openai", "anthropic", "xai"]
+
+    def test_available_true_when_key_set(self):
+        """Provider is available when its env key is non-empty."""
+        with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "key123"}):
+            result = get_available_providers()
+        ds = next(p for p in result["providers"] if p["id"] == "deepseek")
+        assert ds["available"] is True
+
+    def test_available_false_when_key_empty(self):
+        """Provider is unavailable when its env key is empty."""
+        clean = _clean_env()
+        clean["OPENAI_API_KEY"] = ""
+        with patch.dict(os.environ, clean, clear=True):
+            result = get_available_providers()
+        oai = next(p for p in result["providers"] if p["id"] == "openai")
+        assert oai["available"] is False
+
+    def test_default_from_env(self):
+        """Default provider comes from LLM_PROVIDER env var."""
+        with patch.dict(os.environ, {"LLM_PROVIDER": "azure"}):
+            result = get_available_providers()
+        assert result["default"] == "azure"
+
+    def test_default_fallback_deepseek(self):
+        """Without LLM_PROVIDER, default is 'deepseek'."""
+        clean = _clean_env()
+        with patch.dict(os.environ, clean, clear=True):
+            result = get_available_providers()
+        assert result["default"] == "deepseek"
+
+    def test_provider_names_present(self):
+        """Each provider entry has a human-readable name."""
+        result = get_available_providers()
+        for p in result["providers"]:
+            assert "name" in p
+            assert len(p["name"]) > 0

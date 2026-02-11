@@ -814,7 +814,7 @@ class TestFinalizeConsultation:
         mock_anketa.contact_name = "Ivan"
         mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
 
-        with patch("src.voice.consultant.DeepSeekClient"), \
+        with patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.OutputManager") as mock_out_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen:
@@ -855,7 +855,7 @@ class TestFinalizeConsultation:
         mock_anketa.contact_name = "Ivan"
         mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
 
-        with patch("src.voice.consultant.DeepSeekClient"), \
+        with patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.OutputManager") as mock_out_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen:
@@ -881,7 +881,7 @@ class TestFinalizeConsultation:
         """On extraction error, status is set to 'error'."""
         c = _make_consultation(messages=4)
 
-        with patch("src.voice.consultant.DeepSeekClient", side_effect=Exception("API down")):
+        with patch("src.voice.consultant.create_llm_client", side_effect=Exception("API down")):
             await finalize_consultation(c)
             assert c.status == "error"
 
@@ -895,7 +895,7 @@ class TestFinalizeConsultation:
         mock_anketa.contact_name = "Ivan"
         mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
 
-        with patch("src.voice.consultant.DeepSeekClient"), \
+        with patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.OutputManager") as mock_out_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen:
@@ -928,7 +928,7 @@ class TestFinalizeConsultation:
         mock_anketa.contact_name = "Ivan"
         mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
 
-        with patch("src.voice.consultant.DeepSeekClient"), \
+        with patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.OutputManager") as mock_out_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen:

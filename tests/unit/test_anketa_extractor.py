@@ -195,7 +195,7 @@ class TestAnketaExtractorInit:
 
     def test_init_default_params(self):
         """Test initialization with default parameters."""
-        with patch('src.anketa.extractor.DeepSeekClient'):
+        with patch('src.anketa.extractor.create_llm_client'):
             extractor = AnketaExtractor()
             assert extractor.strict_cleaning is True
             assert extractor.use_smart_extraction is True

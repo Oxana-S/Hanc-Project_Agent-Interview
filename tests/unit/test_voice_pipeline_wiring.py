@@ -144,7 +144,7 @@ class TestNotificationManagerWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock) as mock_notify, \
@@ -175,7 +175,7 @@ class TestNotificationManagerWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock, side_effect=Exception("SMTP down")), \
@@ -215,7 +215,7 @@ class TestReviewPhaseWiring:
         anketa = _make_anketa_mock(completion_rate=0.6)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -250,7 +250,7 @@ class TestReviewPhaseWiring:
         anketa = _make_anketa_mock(completion_rate=0.3)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -281,7 +281,7 @@ class TestReviewPhaseWiring:
         anketa = _make_anketa_mock(completion_rate=0.8)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -313,7 +313,7 @@ class TestReviewPhaseWiring:
         anketa = _make_anketa_mock(completion_rate=0.8)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -355,7 +355,7 @@ class TestRecordLearningWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
@@ -397,7 +397,7 @@ class TestRecordLearningWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
@@ -442,7 +442,7 @@ class TestCountryDetectorWiring:
         anketa = _make_anketa_mock(completion_rate=0.3, contact_phone="+7 999 123 45 67")
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -489,7 +489,7 @@ class TestCountryDetectorWiring:
         anketa = _make_anketa_mock(completion_rate=0.3)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -543,7 +543,7 @@ class TestResearchEngineWiring:
         anketa = _make_anketa_mock(completion_rate=0.3, website="https://example.com")
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -576,7 +576,7 @@ class TestResearchEngineWiring:
         anketa = _make_anketa_mock(completion_rate=0.3, website=None)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -608,7 +608,7 @@ class TestResearchEngineWiring:
         anketa = _make_anketa_mock(completion_rate=0.3, website="https://example.com")
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -758,7 +758,7 @@ class TestRedisWiring:
         mock_redis.client = MagicMock()
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=mock_redis):
@@ -790,7 +790,7 @@ class TestRedisWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
@@ -900,7 +900,7 @@ class TestPostgreSQLWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
@@ -943,7 +943,7 @@ class TestPostgreSQLWiring:
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
-             patch("src.voice.consultant.DeepSeekClient"), \
+             patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
