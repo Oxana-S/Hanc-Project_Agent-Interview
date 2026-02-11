@@ -109,6 +109,11 @@ class VoiceInterviewerApp {
         // Dashboard state
         this.currentFilter = '';
 
+        // Settings lock — settings that cannot change mid-session
+        this._lockedSettings = ['voice_gender', 'consultation_type', 'llm_provider'];
+        this._sessionOriginalConfig = null;
+        this._pushLiveSettingsTimer = null;
+
         // Anketa field definitions — matches FinalAnketa v2.0 schema
         this.anketaFields = [
             'company_name', 'contact_name', 'contact_role', 'phone', 'email', 'website',
@@ -174,6 +179,13 @@ class VoiceInterviewerApp {
             reviewBackBtn: document.getElementById('review-back-btn'),
             reviewResumeBtn: document.getElementById('review-resume-btn'),
             reviewCopyLinkBtn: document.getElementById('review-copy-link-btn'),
+            // Quick settings
+            quickSettingsBtn: document.getElementById('quick-settings-btn'),
+            quickSettingsPanel: document.getElementById('quick-settings-panel'),
+            speedSliderQuick: document.getElementById('speed-slider-quick'),
+            speedValueQuick: document.getElementById('speed-value-quick'),
+            silenceSliderQuick: document.getElementById('silence-slider-quick'),
+            silenceValueQuick: document.getElementById('silence-value-quick'),
         };
 
         // Screens
@@ -236,15 +248,42 @@ class VoiceInterviewerApp {
         // Check available LLM providers and disable unavailable ones
         this._loadAvailableProviders();
 
-        // Persist settings on change
+        // Persist settings on change + sync to quick panel + push live if active session
         document.querySelectorAll('.segment-control input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', () => this._persistSettings());
+            radio.addEventListener('change', () => {
+                this._persistSettings();
+                // Sync editable settings to quick panel
+                if (radio.name === 'verbosity') {
+                    const qr = document.querySelector(`input[name="verbosity_quick"][value="${radio.value}"]`);
+                    if (qr) qr.checked = true;
+                }
+                // Push live for editable settings during active session
+                if (this.sessionId && !this._lockedSettings.includes(radio.name)) {
+                    this._pushLiveSettings();
+                }
+            });
         });
         if (this.elements.silenceSlider) {
-            this.elements.silenceSlider.addEventListener('change', () => this._persistSettings());
+            this.elements.silenceSlider.addEventListener('change', () => {
+                this._persistSettings();
+                // Sync to quick panel
+                if (this.elements.silenceSliderQuick) {
+                    this.elements.silenceSliderQuick.value = this.elements.silenceSlider.value;
+                    this.elements.silenceValueQuick.textContent = this.elements.silenceValue.textContent;
+                }
+                if (this.sessionId) this._pushLiveSettings();
+            });
         }
         if (this.elements.speedSlider) {
-            this.elements.speedSlider.addEventListener('change', () => this._persistSettings());
+            this.elements.speedSlider.addEventListener('change', () => {
+                this._persistSettings();
+                // Sync to quick panel
+                if (this.elements.speedSliderQuick) {
+                    this.elements.speedSliderQuick.value = this.elements.speedSlider.value;
+                    this.elements.speedValueQuick.textContent = this.elements.speedValue.textContent;
+                }
+                if (this.sessionId) this._pushLiveSettings();
+            });
         }
 
         // Dashboard filters
@@ -271,6 +310,26 @@ class VoiceInterviewerApp {
 
         this.setupAnketaFieldListeners();
 
+        // Quick settings panel
+        this._initQuickSettings();
+
+        // Click on locked settings → toast
+        document.querySelectorAll('[data-lockable]').forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (el.classList.contains('segment-control--locked')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const setting = el.dataset.setting;
+                    const labels = {
+                        voice_gender: 'Голос нельзя изменить во время сессии',
+                        consultation_type: 'Тип консультации нельзя изменить во время сессии',
+                        llm_provider: 'LLM модель нельзя изменить во время сессии',
+                    };
+                    showToast(labels[setting] || 'Настройка заблокирована на время сессии', 'info', 2000);
+                }
+            });
+        });
+
         // Init router — must be last
         this.router = new Router(this);
         this.router.resolve();
@@ -279,7 +338,7 @@ class VoiceInterviewerApp {
     // ===== Voice Settings =====
 
     getVoiceSettings() {
-        return {
+        const settings = {
             speech_speed: parseFloat(this.elements.speedSlider?.value || '100') / 100,
             silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '2000', 10),
             voice_gender: document.querySelector('input[name="voice_gender"]:checked')?.value || 'neutral',
@@ -287,6 +346,17 @@ class VoiceInterviewerApp {
             verbosity: document.querySelector('input[name="verbosity"]:checked')?.value || 'normal',
             llm_provider: document.querySelector('input[name="llm_provider"]:checked')?.value || 'deepseek',
         };
+
+        // Guard: if session is active, force locked settings to original values
+        if (this.sessionId && this._sessionOriginalConfig) {
+            for (const key of this._lockedSettings) {
+                if (this._sessionOriginalConfig[key] !== undefined) {
+                    settings[key] = this._sessionOriginalConfig[key];
+                }
+            }
+        }
+
+        return settings;
     }
 
     _persistSettings() {
@@ -318,6 +388,122 @@ class VoiceInterviewerApp {
                 }
             }
         } catch {}
+    }
+
+    // ===== Settings Lock & Quick Settings =====
+
+    _updateSettingsLockState() {
+        const hasSession = !!this.sessionId;
+        const banner = document.getElementById('settings-lock-banner');
+
+        // Banner visibility
+        if (banner) banner.classList.toggle('visible', hasSession);
+
+        // Lock/unlock fieldsets
+        document.querySelectorAll('[data-lockable]').forEach(el => {
+            el.classList.toggle('segment-control--locked', hasSession);
+        });
+
+        // Live badges visibility
+        document.querySelectorAll('.setting-live-badge').forEach(el => {
+            el.classList.toggle('visible', hasSession);
+        });
+    }
+
+    _initQuickSettings() {
+        const btn = this.elements.quickSettingsBtn;
+        const panel = this.elements.quickSettingsPanel;
+        if (!btn || !panel) return;
+
+        // Toggle panel
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = panel.classList.contains('visible');
+            panel.classList.toggle('visible', !isOpen);
+            btn.classList.toggle('active', !isOpen);
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+                panel.classList.remove('visible');
+                btn.classList.remove('active');
+            }
+        });
+
+        // Quick speed slider
+        if (this.elements.speedSliderQuick) {
+            this.elements.speedSliderQuick.addEventListener('input', (e) => {
+                const val = e.target.value;
+                this.elements.speedValueQuick.textContent = (val / 100).toFixed(1);
+                // Sync to dashboard slider
+                if (this.elements.speedSlider) {
+                    this.elements.speedSlider.value = val;
+                    this.elements.speedValue.textContent = (val / 100).toFixed(1);
+                }
+                this._pushLiveSettings();
+            });
+        }
+
+        // Quick silence slider
+        if (this.elements.silenceSliderQuick) {
+            this.elements.silenceSliderQuick.addEventListener('input', (e) => {
+                const val = e.target.value;
+                this.elements.silenceValueQuick.textContent = (val / 1000).toFixed(1);
+                // Sync to dashboard slider
+                if (this.elements.silenceSlider) {
+                    this.elements.silenceSlider.value = val;
+                    this.elements.silenceValue.textContent = (val / 1000).toFixed(1);
+                }
+                this._pushLiveSettings();
+            });
+        }
+
+        // Quick verbosity radios
+        document.querySelectorAll('input[name="verbosity_quick"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                // Sync to dashboard
+                const dashRadio = document.querySelector(`input[name="verbosity"][value="${radio.value}"]`);
+                if (dashRadio) dashRadio.checked = true;
+                this._pushLiveSettings();
+            });
+        });
+    }
+
+    _syncQuickSettings() {
+        // Copy current dashboard values to quick settings panel
+        if (this.elements.speedSliderQuick && this.elements.speedSlider) {
+            this.elements.speedSliderQuick.value = this.elements.speedSlider.value;
+            this.elements.speedValueQuick.textContent = this.elements.speedValue.textContent;
+        }
+        if (this.elements.silenceSliderQuick && this.elements.silenceSlider) {
+            this.elements.silenceSliderQuick.value = this.elements.silenceSlider.value;
+            this.elements.silenceValueQuick.textContent = this.elements.silenceValue.textContent;
+        }
+        const currentVerbosity = document.querySelector('input[name="verbosity"]:checked')?.value || 'normal';
+        const quickRadio = document.querySelector(`input[name="verbosity_quick"][value="${currentVerbosity}"]`);
+        if (quickRadio) quickRadio.checked = true;
+    }
+
+    _pushLiveSettings() {
+        // Debounced: send updated settings to backend during active session
+        if (this._pushLiveSettingsTimer) clearTimeout(this._pushLiveSettingsTimer);
+        this._pushLiveSettingsTimer = setTimeout(async () => {
+            if (!this.sessionId) return;
+            try {
+                const settings = this.getVoiceSettings();
+                await fetch(`/api/session/${this.sessionId}/voice-config`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settings),
+                });
+                await fetch(`/api/session/${this.sessionId}/reconnect`);
+                LOG.info('Live settings pushed:', settings);
+                this._persistSettings();
+            } catch (e) {
+                LOG.warn('Failed to push live settings:', e);
+            }
+        }, 500);
     }
 
     async _loadAvailableProviders() {
@@ -390,6 +576,7 @@ class VoiceInterviewerApp {
         }
 
         this.showScreen('dashboard');
+        this._updateSettingsLockState();
         await this.loadSessions(this.currentFilter);
     }
 
@@ -576,8 +763,9 @@ class VoiceInterviewerApp {
         // If already in this session, just show the screen + push any setting changes
         if (this.uniqueLink === link && this.sessionId) {
             this.showScreen('interview');
+            this._syncQuickSettings();
             this.startAnketaPolling();
-            // Send updated voice settings (user may have changed them on Dashboard)
+            // Send updated voice settings (user may have changed editable ones on Dashboard)
             try {
                 await fetch(`/api/session/${this.sessionId}/voice-config`, {
                     method: 'PUT',
@@ -638,6 +826,13 @@ class VoiceInterviewerApp {
                 this.consultationType = 'consultation';
             }
 
+            // Save original config for locked settings guard
+            if (sessionData.voice_config) {
+                this._sessionOriginalConfig = { ...sessionData.voice_config };
+            } else {
+                this._sessionOriginalConfig = { ...this.getVoiceSettings() };
+            }
+
             // Reset state
             this.isPaused = false;
             this.localEdits = {};
@@ -667,6 +862,7 @@ class VoiceInterviewerApp {
             this.updateProgress(0);
 
             this.startAnketaPolling();
+            this._syncQuickSettings();
 
             // Reconnect to LiveKit if active
             if (sessionData.status === 'active' || sessionData.status === 'paused') {
@@ -746,6 +942,7 @@ class VoiceInterviewerApp {
             this._lastPct = 0;
             this._agentSpoke = false;
             this.consultationType = this.getVoiceSettings().consultation_type || 'consultation';
+            this._sessionOriginalConfig = { ...this.getVoiceSettings() };
             this.clearAnketaForm();
 
             // Update UI
@@ -760,6 +957,7 @@ class VoiceInterviewerApp {
             await this.connectToRoom(data.livekit_url, data.user_token, data.room_name);
             this.updateConnectionStatus(true);
             this.startAnketaPolling();
+            this._syncQuickSettings();
 
             this.addMessage('ai', 'Здравствуйте! Я помогу вам создать голосового агента для вашего бизнеса. Расскажите, чем занимается ваша компания?');
 
@@ -1773,6 +1971,7 @@ class VoiceInterviewerApp {
             this.sessionId = null;
             this.uniqueLink = null;
             this.localParticipant = null;
+            this._sessionOriginalConfig = null;
 
             this.router.navigate('/');
 

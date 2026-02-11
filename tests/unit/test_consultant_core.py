@@ -1370,8 +1370,8 @@ class TestApplyVoiceConfigUpdate:
         assert td.silence_duration_ms == 3000
 
     @patch("src.voice.consultant._session_mgr")
-    def test_voice_change_calls_update_options(self, mock_mgr):
-        """When voice_gender changes, update_options gets new voice ID."""
+    def test_voice_change_skipped_mid_session(self, mock_mgr):
+        """When voice_gender changes, update_options is NOT called (Azure locks voice after first audio)."""
         db_session = _make_db_session(voice_config={
             "silence_duration_ms": 2000,
             "speech_speed": 1.0,
@@ -1386,13 +1386,13 @@ class TestApplyVoiceConfigUpdate:
         }}
         log = MagicMock()
         _apply_voice_config_update(model, state, "test-001", log)
-        model.update_options.assert_called_once()
-        kwargs = model.update_options.call_args[1]
-        assert kwargs["voice"] == "echo"
+        model.update_options.assert_not_called()
+        # But config_state is still updated
+        assert state["config"]["voice_gender"] == "male"
 
     @patch("src.voice.consultant._session_mgr")
-    def test_multiple_changes_combined(self, mock_mgr):
-        """All changed settings are passed together in one update_options call."""
+    def test_multiple_changes_isolated_calls(self, mock_mgr):
+        """Speed and silence are sent as separate update_options calls; voice is skipped."""
         db_session = _make_db_session(voice_config={
             "silence_duration_ms": 3500,
             "speech_speed": 0.85,
@@ -1407,11 +1407,18 @@ class TestApplyVoiceConfigUpdate:
         }}
         log = MagicMock()
         _apply_voice_config_update(model, state, "test-001", log)
-        model.update_options.assert_called_once()
-        kwargs = model.update_options.call_args[1]
-        assert kwargs["speed"] == 0.85
-        assert kwargs["voice"] == "shimmer"
-        assert kwargs["turn_detection"].silence_duration_ms == 3500
+        # Two isolated calls: one for speed, one for silence
+        assert model.update_options.call_count == 2
+        calls = model.update_options.call_args_list
+        # First call: speed
+        assert calls[0][1]["speed"] == 0.85
+        assert "turn_detection" not in calls[0][1]
+        # Second call: silence
+        assert calls[1][1]["turn_detection"].silence_duration_ms == 3500
+        assert "speed" not in calls[1][1]
+        # Voice is NOT in any call
+        for call in calls:
+            assert "voice" not in call[1]
 
     @patch("src.voice.consultant._session_mgr")
     def test_config_state_updated_after_apply(self, mock_mgr):
@@ -1474,9 +1481,10 @@ class TestApplyVoiceConfigUpdate:
         model.update_options.side_effect = RuntimeError("Azure WebSocket error")
         state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
         log = MagicMock()
-        # Should not raise
+        # Should not raise — isolated call catches exception
         _apply_voice_config_update(model, state, "test-001", log)
-        log.warning.assert_called_once()
+        # Warning logged for the failed silence update
+        assert log.warning.call_count >= 1
 
     @patch("src.voice.consultant._session_mgr")
     def test_verbosity_change_schedules_async_task(self, mock_mgr):
@@ -1547,7 +1555,7 @@ class TestApplyVoiceConfigUpdate:
 
     @patch("src.voice.consultant._session_mgr")
     def test_all_five_settings_changed(self, mock_mgr):
-        """All 5 settings changed: speed, silence, voice, verbosity — all applied."""
+        """All 5 settings changed: speed+silence as isolated calls, voice skipped, verbosity async."""
         db_session = _make_db_session(voice_config={
             "silence_duration_ms": 3000,
             "speech_speed": 1.25,
@@ -1569,12 +1577,54 @@ class TestApplyVoiceConfigUpdate:
                 _apply_voice_config_update(model, state, "test-001", log, agent_session=agent_session)
         finally:
             loop.close()
-        # update_options called with speed + voice + turn_detection
-        model.update_options.assert_called_once()
-        kwargs = model.update_options.call_args[1]
-        assert kwargs["speed"] == 1.25
-        assert kwargs["voice"] == "echo"
-        assert kwargs["turn_detection"].silence_duration_ms == 3000
+        # update_options called twice: once for speed, once for silence (isolated)
+        assert model.update_options.call_count == 2
+        calls = model.update_options.call_args_list
+        assert calls[0][1]["speed"] == 1.25
+        assert calls[1][1]["turn_detection"].silence_duration_ms == 3000
+        # voice is NOT sent mid-session (Azure locks after first audio)
+        for call in calls:
+            assert "voice" not in call[1]
+
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_speed_failure_does_not_block_silence(self, mock_mgr):
+        """If speed update_options fails, silence update_options is still attempted."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.25,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        # First call (speed) fails, second call (silence) succeeds
+        model.update_options.side_effect = [RuntimeError("speed failed"), None]
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        # Both calls were attempted
+        assert model.update_options.call_count == 2
+        # Warning logged for speed failure
+        assert any("speed" in str(c) for c in log.warning.call_args_list)
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_voice_change_logs_skip_message(self, mock_mgr):
+        """Voice change logs an informational skip message."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "female",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        # No update_options call
+        model.update_options.assert_not_called()
+        # Info log about voice skip
+        log_messages = [str(c) for c in log.info.call_args_list]
+        assert any("skipped" in msg.lower() or "locks voice" in msg.lower() for msg in log_messages)
 
 
 class TestGetVerbosityPromptPrefix:

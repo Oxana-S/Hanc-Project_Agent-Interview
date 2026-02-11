@@ -1147,28 +1147,35 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
             log.info("voice_config unchanged on reconnect, no update needed")
             return
 
-        # Sync updates: speed, silence, voice → RealtimeModel.update_options()
-        kwargs = {}
-        if new_silence != old_silence:
-            new_silence = max(300, min(5000, new_silence))
-            kwargs["turn_detection"] = TurnDetection(
-                type="server_vad",
-                threshold=0.9,
-                prefix_padding_ms=500,
-                silence_duration_ms=new_silence,
-            )
+        # Sync updates: speed and silence → isolated RealtimeModel.update_options() calls.
+        # voice_gender is NOT sent mid-session — Azure Realtime API locks voice after first audio output.
+        # Isolated calls prevent one rejected parameter from blocking others.
 
         if new_speed != old_speed:
             new_speed = max(0.75, min(1.5, new_speed))
-            kwargs["speed"] = new_speed
+            try:
+                realtime_model.update_options(speed=new_speed)
+                log.info(f"voice_config updated mid-session (speed): {new_speed}")
+            except Exception as e:
+                log.warning(f"speed update_options failed: {e}")
+
+        if new_silence != old_silence:
+            new_silence = max(300, min(5000, new_silence))
+            try:
+                realtime_model.update_options(
+                    turn_detection=TurnDetection(
+                        type="server_vad",
+                        threshold=0.9,
+                        prefix_padding_ms=500,
+                        silence_duration_ms=new_silence,
+                    )
+                )
+                log.info(f"voice_config updated mid-session (silence): {new_silence}ms")
+            except Exception as e:
+                log.warning(f"silence update_options failed: {e}")
 
         if new_voice != old_voice:
-            voice_map = {"male": "echo", "female": "shimmer", "neutral": "alloy"}
-            kwargs["voice"] = voice_map.get(new_voice, "alloy")
-
-        if kwargs:
-            realtime_model.update_options(**kwargs)
-            log.info(f"voice_config updated mid-session (realtime): {kwargs}")
+            log.info(f"voice_gender changed {old_voice}->{new_voice} — skipped (Azure locks voice after first audio)")
 
         # Async update: verbosity → AgentActivity.update_instructions()
         if new_verbosity != old_verbosity and agent_session is not None:

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanc.AI | Голосовой консультант</title>
     <script src="https://unpkg.com/livekit-client@2.9.3/dist/livekit-client.umd.js"></script>
-    <link rel="stylesheet" href="/styles.css?v=5.0">
+    <link rel="stylesheet" href="/styles.css?v=5.1">
 </head>
 <body>
     <div id="app">
@@ -130,24 +130,27 @@
                 <details class="settings-panel" id="settings-panel" open>
                     <summary class="settings-toggle">Настройки консультации</summary>
                     <div class="settings-body">
-                        <fieldset class="segment-control" data-setting="consultation_type">
+                        <div id="settings-lock-banner" class="settings-session-banner">
+                            Некоторые настройки заблокированы на время активной сессии
+                        </div>
+                        <fieldset class="segment-control" data-setting="consultation_type" data-lockable="true">
                             <legend class="setting-label">Тип</legend>
                             <label class="segment"><input type="radio" name="consultation_type" value="consultation" checked><span>Консультация</span></label>
                             <label class="segment"><input type="radio" name="consultation_type" value="interview"><span>Интервью</span></label>
                         </fieldset>
-                        <fieldset class="segment-control" data-setting="voice_gender">
+                        <fieldset class="segment-control" data-setting="voice_gender" data-lockable="true">
                             <legend class="setting-label">Голос</legend>
                             <label class="segment"><input type="radio" name="voice_gender" value="female"><span>Женский</span></label>
                             <label class="segment"><input type="radio" name="voice_gender" value="male"><span>Мужской</span></label>
                             <label class="segment"><input type="radio" name="voice_gender" value="neutral" checked><span>Нейтральный</span></label>
                         </fieldset>
                         <fieldset class="segment-control" data-setting="verbosity">
-                            <legend class="setting-label">Ответы</legend>
+                            <legend class="setting-label">Ответы <span class="setting-live-badge" data-live-for="verbosity">применяется сразу</span></legend>
                             <label class="segment"><input type="radio" name="verbosity" value="concise"><span>Кратко</span></label>
                             <label class="segment"><input type="radio" name="verbosity" value="normal" checked><span>Нормально</span></label>
                             <label class="segment"><input type="radio" name="verbosity" value="verbose"><span>Подробно</span></label>
                         </fieldset>
-                        <fieldset class="segment-control segment-control--wide" data-setting="llm_provider">
+                        <fieldset class="segment-control segment-control--wide" data-setting="llm_provider" data-lockable="true">
                             <legend class="setting-label">LLM модель</legend>
                             <label class="segment"><input type="radio" name="llm_provider" value="deepseek" checked><span>DeepSeek</span></label>
                             <label class="segment"><input type="radio" name="llm_provider" value="azure"><span>Azure GPT</span></label>
@@ -156,11 +159,11 @@
                             <label class="segment"><input type="radio" name="llm_provider" value="xai"><span>Grok</span></label>
                         </fieldset>
                         <div class="setting-slider">
-                            <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x</label>
+                            <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x <span class="setting-live-badge" data-live-for="speech_speed">применяется сразу</span></label>
                             <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">
                         </div>
                         <div class="setting-slider">
-                            <label for="silence-slider">Задержка тишины: <span id="silence-value">2.0</span> сек</label>
+                            <label for="silence-slider">Задержка тишины: <span id="silence-value">2.0</span> сек <span class="setting-live-badge" data-live-for="silence_duration_ms">применяется сразу</span></label>
                             <input type="range" id="silence-slider" min="500" max="4000" step="250" value="2000">
                         </div>
                     </div>
@@ -262,13 +265,36 @@
                                 <span class="status-text" id="voice-status">Нажмите и говорите</span>
                             </div>
 
-                            <div class="buttons">
+                            <div class="buttons" style="position: relative;">
                                 <button id="mic-btn" class="btn btn-mic" aria-label="Микрофон">
                                     <span class="icon">🎤</span>
                                 </button>
                                 <button id="pause-btn" class="btn btn-pause" disabled aria-label="Пауза">
                                     <span class="icon">⏸</span>
                                 </button>
+                                <button id="quick-settings-btn" class="btn btn-quick-settings" aria-label="Быстрые настройки" title="Быстрые настройки">
+                                    <span class="icon">⚙</span>
+                                </button>
+                                <!-- Quick Settings Floating Panel -->
+                                <div id="quick-settings-panel" class="quick-settings-panel">
+                                    <div class="quick-settings-title">Быстрые настройки</div>
+                                    <div class="quick-setting-item">
+                                        <label for="speed-slider-quick">Скорость речи: <span id="speed-value-quick">1.0</span>x</label>
+                                        <input type="range" id="speed-slider-quick" min="75" max="200" step="25" value="100">
+                                    </div>
+                                    <div class="quick-setting-item">
+                                        <label for="silence-slider-quick">Задержка тишины: <span id="silence-value-quick">2.0</span> сек</label>
+                                        <input type="range" id="silence-slider-quick" min="500" max="4000" step="250" value="2000">
+                                    </div>
+                                    <div class="quick-setting-item">
+                                        <label>Ответы</label>
+                                        <div class="quick-setting-segments">
+                                            <label><input type="radio" name="verbosity_quick" value="concise"><span>Кратко</span></label>
+                                            <label><input type="radio" name="verbosity_quick" value="normal" checked><span>Нормально</span></label>
+                                            <label><input type="radio" name="verbosity_quick" value="verbose"><span>Подробно</span></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -526,6 +552,6 @@
         </footer>
     </div>
 
-    <script src="/app.js?v=5.0"></script>
+    <script src="/app.js?v=5.1"></script>
 </body>
 </html>

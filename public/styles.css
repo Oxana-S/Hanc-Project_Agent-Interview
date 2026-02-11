@@ -1397,6 +1397,180 @@ body {
     transform: scale(0.97);
 }
 
+/* ===== Settings Lock (mid-session) ===== */
+
+.settings-session-banner {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    color: var(--warning);
+    width: 100%;
+}
+
+.settings-session-banner.visible {
+    display: flex;
+}
+
+.segment-control--locked .segment {
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.segment-control--locked .setting-label::after {
+    content: ' \1F512';
+    font-size: 0.65rem;
+}
+
+.setting-live-badge {
+    display: none;
+    font-size: 0.6rem;
+    color: var(--secondary);
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+.setting-live-badge::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--secondary);
+    margin-right: 0.25rem;
+    vertical-align: middle;
+}
+
+.setting-live-badge.visible {
+    display: inline;
+}
+
+/* ===== Quick Settings Panel ===== */
+
+.btn-quick-settings {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background: var(--surface-light);
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.btn-quick-settings:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-quick-settings.active {
+    background: var(--primary);
+    color: white;
+}
+
+.quick-settings-panel {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--surface-light);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    min-width: 280px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 50;
+}
+
+.quick-settings-panel.visible {
+    display: block;
+}
+
+.quick-settings-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.quick-setting-item {
+    margin-bottom: 0.75rem;
+}
+
+.quick-setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.quick-setting-item label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.quick-setting-item input[type="range"] {
+    width: 100%;
+}
+
+.quick-setting-segments {
+    display: flex;
+    gap: 0;
+}
+
+.quick-setting-segments label {
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.quick-setting-segments label input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.quick-setting-segments label span {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: var(--background);
+    border: 1px solid var(--surface-light);
+    transition: all 0.15s;
+}
+
+.quick-setting-segments label:first-of-type span {
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.quick-setting-segments label:last-of-type span {
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.quick-setting-segments label:not(:first-of-type) span {
+    border-left: none;
+}
+
+.quick-setting-segments label input:checked + span {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 /* ===== Toast Notifications ===== */
 
 .toast-container {
