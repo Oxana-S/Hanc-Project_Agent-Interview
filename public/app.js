@@ -323,6 +323,9 @@ class VoiceInterviewerApp {
         if (this.screens[screenName]) {
             this.screens[screenName].classList.add('active');
         }
+        if (screenName === 'landing') {
+            this._initLandingAnimations();
+        }
     }
 
     _initLandingAnimations() {

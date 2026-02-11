@@ -29,7 +29,7 @@
 Минимальный набор команд для проверки работоспособности (порядок соответствует этапам):
 
 ```bash
-# 1. Юнит-тесты + интеграционные (Этап 1 + 2.6 — должны пройти все, 1508 тестов)
+# 1. Юнит-тесты + интеграционные (Этап 1 + 2.6 — должны пройти все, 1806 тестов)
 ./venv/bin/python -m pytest --tb=short
 
 # 2. Покрытие (Этап 1 — должно быть ≥50%)
@@ -148,7 +148,7 @@ asyncio.run(test())
 
 | Метрика | Минимум | Текущее значение |
 |---------|---------|------------------|
-| Тесты passed | 100% | 1508/1508 |
+| Тесты passed | 100% | 1806/1806 |
 | Coverage | ≥50% | 50% |
 | Критические модули | ≥80% | см. таблицу ниже |
 
@@ -223,7 +223,17 @@ tests/
 │   ├── test_anketa_generator.py       # AnketaGenerator markdown/JSON (58 тестов)
 │   ├── test_anketa_generator_standalone.py  # LLMAnketaGenerator enrichment (18 тестов)
 │   ├── test_azure_chat.py             # Azure OpenAI Chat client (23 теста)
-│   ├── test_consultant_core.py        # Voice consultant core functions (87 тестов)
+│   ├── test_consultant_core.py        # Voice consultant core functions (118 тестов)
+│   │   ├── TestVoiceConsultationSession     # VCS init, add_message, get_duration, get_company_name
+│   │   ├── TestGetSystemPrompt              # Загрузка системного промпта
+│   │   ├── TestGetEnrichedSystemPrompt      # Обогащённый промпт с KB
+│   │   ├── TestBuildResumeContext           # Контекст возобновления сессии
+│   │   ├── TestHandleConversationItem       # Обработка событий диалога
+│   │   ├── TestRegisterEventHandlers        # Регистрация обработчиков
+│   │   ├── TestGetVoiceId                   # voice_gender → Azure voice ID (6 тестов)
+│   │   ├── TestApplyVoiceConfigUpdate       # Mid-session speed/silence/voice/verbosity (15 тестов)
+│   │   ├── TestGetVerbosityPromptPrefix     # Verbosity prefix strings (5 тестов)
+│   │   └── TestApplyVerbosityUpdate         # Async verbosity instruction update (6 тестов)
 │   ├── test_country_detector.py       # Country/region detection (34 теста)
 │   ├── test_deepseek.py               # DeepSeek LLM client (33 теста)
 │   ├── test_enriched_context.py       # EnrichedContextBuilder (25 тестов)
@@ -251,7 +261,7 @@ tests/
 └── scenarios/                         # YAML для LLM-симуляции
 ```
 
-**Итого: 34 тестовых файла, 1508 тестов** (1482 unit + 26 integration).
+**Итого: 39 тестовых файлов, 1806 тестов** (1779 unit + 27 integration).
 
 ### 1.6 UI / Dashboard тесты
 
@@ -325,6 +335,62 @@ tests/
 7. Review: `GET /api/session/by-link/{link}` → полные данные (с anketa_data, dialogue_history)
 8. `POST /api/session/{id}/confirm` → s1 переходит в confirmed
 9. Фильтрация: `?status=confirmed` → 1
+
+### 1.7 Mid-session Voice Config тесты (v5.0)
+
+Тесты покрывают применение настроек голоса mid-session при возвращении пользователя в существующую сессию.
+
+#### `TestGetVoiceId` (6 тестов)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_none_config_returns_alloy` | `None` voice_config → "alloy" |
+| 2 | `test_empty_config_returns_alloy` | `{}` → "alloy" |
+| 3 | `test_male_returns_echo` | `voice_gender="male"` → "echo" |
+| 4 | `test_female_returns_shimmer` | `voice_gender="female"` → "shimmer" |
+| 5 | `test_neutral_returns_alloy` | `voice_gender="neutral"` → "alloy" |
+| 6 | `test_unknown_returns_alloy` | Неизвестное значение → "alloy" (fallback) |
+
+#### `TestApplyVoiceConfigUpdate` (15 тестов)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_no_session_id_returns_early` | Пустой session_id → нет чтения из БД |
+| 2 | `test_session_not_found_returns_early` | Несуществующая сессия → graceful return |
+| 3 | `test_unchanged_config_skips_update` | Неизменённый config → нет `update_options()` |
+| 4 | `test_speed_change_calls_update_options` | speed 1.0→1.25 → `update_options(speed=1.25)` |
+| 5 | `test_silence_change_calls_update_options` | silence 2000→3000 → `TurnDetection(silence=3000)` |
+| 6 | `test_voice_change_calls_update_options` | neutral→male → `update_options(voice="echo")` |
+| 7 | `test_multiple_changes_combined` | 3 параметра → один вызов `update_options` |
+| 8 | `test_config_state_updated_after_apply` | `config_state` обновляется после применения |
+| 9 | `test_speed_clamped_to_range` | 5.0 → clamped to 1.5 |
+| 10 | `test_silence_clamped_to_range` | 100ms → clamped to 300ms |
+| 11 | `test_exception_is_non_fatal` | RuntimeError → `log.warning`, нет propagation |
+| 12 | `test_verbosity_change_schedules_async_task` | verbosity normal→concise → `create_task()` |
+| 13 | `test_verbosity_unchanged_no_async_task` | verbosity не менялся → `get_running_loop` не вызван |
+| 14 | `test_verbosity_change_no_agent_session_skips` | Нет agent_session → async task не планируется |
+| 15 | `test_all_five_settings_changed` | Все 5 настроек → `update_options` + async task |
+
+#### `TestGetVerbosityPromptPrefix` (5 тестов)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_concise` | "concise" → prefix с "МАКСИМАЛЬНО кратко" |
+| 2 | `test_verbose` | "verbose" → prefix с "развёрнутые ответы" |
+| 3 | `test_normal_returns_empty` | "normal" → пустая строка |
+| 4 | `test_unknown_returns_empty` | Неизвестное значение → пустая строка |
+| 5 | `test_prefixes_dict_has_concise_and_verbose` | `_VERBOSITY_PREFIXES` содержит concise/verbose, но не normal |
+
+#### `TestApplyVerbosityUpdate` (6 тестов)
+
+| # | Тест | Что проверяет |
+|---|------|---------------|
+| 1 | `test_no_activity_logs_warning` | Нет `_activity` → log.warning |
+| 2 | `test_strips_old_concise_prefix_adds_verbose` | concise→verbose: strip старый prefix, prepend новый |
+| 3 | `test_strips_old_verbose_prefix_adds_nothing_for_normal` | verbose→normal: strip prefix, без нового |
+| 4 | `test_no_old_prefix_adds_new` | Нет prefix → prepend новый |
+| 5 | `test_preserves_kb_and_resume_context` | KB + resume context сохраняются при смене verbosity |
+| 6 | `test_exception_is_non_fatal` | RuntimeError → log.warning, нет propagation |
 
 ---
 
@@ -2178,3 +2244,209 @@ jobs:
 #!/bin/sh
 ./venv/bin/python -m pytest --tb=short -q
 ```
+
+---
+
+## Ручное тестирование v5.0 — чеклист для пользователя
+
+> **Подготовка:** `make start` (или `./scripts/hanc.sh start`), открыть `http://localhost:8000` в Chrome.
+> После каждого этапа — проверить DevTools Console на ошибки.
+> Обозначения: `[ ]` — не проверено, `[x]` — пройдено, `[!]` — баг.
+
+### 0. Перед началом
+
+```
+[ ] Сервер запущен: `make status` → server running, agent running
+[ ] В браузере открыт http://localhost:8000
+[ ] DevTools Console открыта (F12 → Console), ошибок нет
+[ ] localStorage очищен: DevTools → Application → Local Storage → Clear All
+```
+
+### 1. Landing Page (первый визит)
+
+```
+[ ] Открыть http://localhost:8000 → показывается Landing Page (не Dashboard)
+[ ] Hero: заголовок «Голосовой AI, который слушает бизнес» с gradient-текстом
+[ ] 3 карточки «Как это работает» (Запустите сессию / Говорите / Заберите результат)
+[ ] 2 карточки режимов: AI-Консультант (фиолетовый акцент) и AI-Интервьюер (зелёный)
+[ ] 4 карточки «Что под капотом» (Анкета, Аналитика, 40+ отраслей, Экспорт)
+[ ] Scroll-анимации: секции fade-in при скролле вниз
+[ ] CTA кнопка «Начать бесплатно» → переход на Dashboard
+[ ] После клика CTA: localStorage.hasVisited === '1'
+[ ] Перезагрузка страницы → сразу Dashboard (не Landing)
+[ ] Ссылка «О продукте» в header → возврат на Landing
+```
+
+### 2. Settings Panel (Dashboard)
+
+```
+[ ] На Dashboard видна панель <details> «Настройки консультации» (раскрыта по умолчанию)
+[ ] Клик на заголовок → панель сворачивается/раскрывается
+[ ] 3 segmented controls: Тип (Консультация/Интервью), Голос (Жен/Муж/Нейтр), Ответы (Кратко/Норм/Подробно)
+[ ] 2 слайдера: Скорость речи (0.75x—2.0x), Задержка тишины (0.5с—4.0с)
+[ ] Keyboard: Tab между контролами, стрелки между radio-кнопками
+[ ] Изменить настройки → перезагрузить страницу → настройки восстановлены из localStorage
+```
+
+### 3. Создание сессии (Консультация)
+
+```
+[ ] Настройки: Тип=Консультация, Голос=Нейтральный, Ответы=Нормально, Скорость=1.0x, Тишина=2.0с
+[ ] Нажать «+ Новая консультация»
+[ ] Loading spinner виден при подключении к комнате
+[ ] Spinner исчезает после подключения
+[ ] Статус «Подключен» (зелёная точка) в header
+[ ] Progress bar: 0% заполнено
+[ ] Агент произносит приветствие (первое голосовое сообщение)
+[ ] Сообщение AI появляется в чате с timestamp (формат HH:MM)
+[ ] Ваш ответ голосом → сообщение «Вы» появляется в чате с timestamp
+[ ] ARIA: mic-кнопка имеет aria-label="Микрофон" (DevTools → Elements)
+[ ] ARIA: pause-кнопка имеет aria-label="Пауза"
+[ ] ARIA: progress-bar имеет role="progressbar"
+```
+
+### 4. Пауза и resume
+
+```
+[ ] Нажать «Пауза» → overlay «На паузе» (полупрозрачный, opacity ~0.5)
+[ ] Диалог ЧИТАЕТСЯ через overlay (не полностью закрыт)
+[ ] Снова нажать → пауза снята, overlay убран
+[ ] История чата НЕ пропала после resume
+```
+
+### 5. Смена настроек mid-session (КЛЮЧЕВОЙ ТЕСТ)
+
+```
+[ ] Во время активной сессии: нажать «← Назад» → Dashboard
+[ ] Изменить скорость речи на 1.5x
+[ ] Изменить голос на «Мужской»
+[ ] Изменить Ответы на «Кратко»
+[ ] Изменить задержку тишины на 3.0с
+[ ] Нажать на сессию в таблице → возврат в сессию
+[ ] DevTools Network: PUT /api/session/{id}/voice-config → 200 (body содержит все 5 полей)
+[ ] DevTools Network: GET /api/session/{id}/reconnect → 200
+[ ] Агент теперь говорит МУЖСКИМ голосом (не нейтральным)
+[ ] Агент говорит БЫСТРЕЕ (скорость 1.5x)
+[ ] Агент отвечает КРАТКО (1-2 предложения + вопрос, без длинных вступлений)
+[ ] Тишина до ответа ~3 секунды (не 2)
+```
+
+### 6. Второй цикл смены настроек
+
+```
+[ ] Снова выйти на Dashboard
+[ ] Изменить голос на «Женский»
+[ ] Изменить Ответы на «Подробно»
+[ ] Вернуться в сессию
+[ ] Агент говорит ЖЕНСКИМ голосом
+[ ] Агент даёт РАЗВЁРНУТЫЕ ответы с примерами
+```
+
+### 7. Анкета (Консультация)
+
+```
+[ ] После 3-4 реплик: анкета начинает заполняться (toast «Анкета заполняется автоматически»)
+[ ] Progress bar обновляется (> 0%)
+[ ] Поля анкеты видны в правой панели: Контакты, О бизнесе, Голосовой агент, Дополнительно
+[ ] Лейблы полей читаемые (font-size 0.875rem, не мелкие)
+[ ] Можно редактировать поле вручную → значение сохраняется при следующем polling (не перезаписывается)
+```
+
+### 8. Завершение сессии (inline confirm)
+
+```
+[ ] Нажать «Завершить» → появляется модальное окно (НЕ нативный confirm())
+[ ] Модалка в тёмной теме, кнопки «Да, завершить» и «Отмена»
+[ ] «Отмена» → модалка закрывается, сессия продолжается
+[ ] «Да, завершить» → сессия завершена, переход на Dashboard
+[ ] Сессия в таблице: статус «на паузе» или «завершена»
+```
+
+### 9. Review Screen + Export
+
+```
+[ ] Клик на сессию в таблице → Interview screen
+[ ] Нажать «Подтвердить анкету» → переход на Review screen
+[ ] Review: анкета слева, диалог справа
+[ ] Все секции анкеты отображаются (Контакты, О бизнесе, Агент, Дополнительно)
+[ ] Кнопки экспорта видны: [MD] [PDF] (button group, не dropdown)
+[ ] Клик [MD] → скачивается файл .md с данными анкеты
+[ ] Клик [PDF] → открывается новая вкладка со стилизованным HTML для печати
+[ ] «Продолжить сессию» → возврат в interview screen
+[ ] «Копировать ссылку» → ссылка в буфере обмена
+```
+
+### 10. Создание сессии (Интервью)
+
+```
+[ ] На Dashboard: переключить Тип → «Интервью»
+[ ] Нажать «+ Новая консультация»
+[ ] Агент представляется как ИНТЕРВЬЮЕР (спрашивает, не советует)
+[ ] Агент задаёт открытые вопросы: «Расскажите подробнее...», «Можете привести пример?»
+[ ] Агент НЕ даёт советов и рекомендаций
+[ ] Анкета: отображаются Q&A пары (Вопросы и ответы), а НЕ бизнес-поля
+[ ] Анкета: секции «Респондент», «Вопросы и ответы», «Выявленные темы», «Ключевые цитаты»
+[ ] Progress bar: считается по Q&A coverage (не по полям)
+```
+
+### 11. Review Screen (Интервью)
+
+```
+[ ] Завершить интервью → Review screen
+[ ] Review: Q&A пары с тегами тем
+[ ] Detected topics: теги-бейджи
+[ ] Key quotes: цитаты с фиолетовой полоской слева
+[ ] AI-анализ: summary + insights (если сессия длинная)
+[ ] Экспорт [MD] → markdown содержит Q&A пары
+```
+
+### 12. Responsive (мобильная версия)
+
+```
+[ ] DevTools → Toggle Device Toolbar → iPhone SE (375px)
+[ ] Landing: карточки стопкой (1 колонка), текст читаемый
+[ ] Dashboard: Settings panel стопкой (flex-direction: column)
+[ ] Interview: диалог на полную ширину, анкета под ним
+[ ] Toast уведомления не обрезаются
+```
+
+### 13. Множественные сессии
+
+```
+[ ] Создать 3 сессии (2 консультации, 1 интервью)
+[ ] Dashboard: таблица показывает все 3
+[ ] Фильтры: «Активные» → только активные, «На паузе» → только paused
+[ ] Выбрать 2 чекбоксом → кнопка «Удалить выбранные» появляется
+[ ] Удалить → сессии пропали из таблицы
+```
+
+### 14. DevTools — финальная проверка
+
+```
+[ ] Console: 0 ошибок (warnings допустимы)
+[ ] Network: нет failed requests (красных)
+[ ] Application → Local Storage: hanc_voice_settings и hasVisited сохранены
+[ ] Логи агента: cat /tmp/agent_entrypoint.log | grep "voice_config updated" — есть записи mid-session update
+[ ] Логи агента: grep "verbosity updated" /tmp/agent_entrypoint.log — есть записи (если менялась словоохотливость)
+```
+
+### Итог
+
+| Секция | Пунктов | Пройдено |
+|--------|---------|----------|
+| 0. Подготовка | 4 | /4 |
+| 1. Landing Page | 10 | /10 |
+| 2. Settings Panel | 6 | /6 |
+| 3. Создание сессии | 13 | /13 |
+| 4. Пауза и resume | 4 | /4 |
+| 5. Смена настроек mid-session | 12 | /12 |
+| 6. Второй цикл смены | 5 | /5 |
+| 7. Анкета | 5 | /5 |
+| 8. Завершение (inline confirm) | 5 | /5 |
+| 9. Review + Export | 9 | /9 |
+| 10. Интервью | 8 | /8 |
+| 11. Review (Интервью) | 6 | /6 |
+| 12. Responsive | 4 | /4 |
+| 13. Множественные сессии | 5 | /5 |
+| 14. DevTools | 5 | /5 |
+| **ИТОГО** | **101** | **/101** |

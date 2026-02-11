@@ -49,6 +49,11 @@ from src.voice.consultant import (
     _handle_conversation_item,
     _register_event_handlers,
     finalize_consultation,
+    _apply_voice_config_update,
+    _apply_verbosity_update,
+    _get_voice_id,
+    _get_verbosity_prompt_prefix,
+    _VERBOSITY_PREFIXES,
 )
 
 
@@ -1242,3 +1247,460 @@ class TestEdgeCases:
         assert "Собранная информация" not in result
         # But should contain the history
         assert "Клиент: Hi" in result
+
+
+# ---------------------------------------------------------------------------
+# _get_voice_id
+# ---------------------------------------------------------------------------
+
+class TestGetVoiceId:
+    """Tests for _get_voice_id() voice gender mapping."""
+
+    def test_none_config_returns_alloy(self):
+        assert _get_voice_id(None) == "alloy"
+
+    def test_empty_config_returns_alloy(self):
+        assert _get_voice_id({}) == "alloy"
+
+    def test_male_returns_echo(self):
+        assert _get_voice_id({"voice_gender": "male"}) == "echo"
+
+    def test_female_returns_shimmer(self):
+        assert _get_voice_id({"voice_gender": "female"}) == "shimmer"
+
+    def test_neutral_returns_alloy(self):
+        assert _get_voice_id({"voice_gender": "neutral"}) == "alloy"
+
+    def test_unknown_gender_returns_alloy(self):
+        assert _get_voice_id({"voice_gender": "robot"}) == "alloy"
+
+
+# ---------------------------------------------------------------------------
+# _apply_voice_config_update
+# ---------------------------------------------------------------------------
+
+class TestApplyVoiceConfigUpdate:
+    """Tests for mid-session voice config update mechanism.
+
+    This is the function triggered by room_metadata_changed when
+    the server signals that voice_config has been updated in the DB.
+    """
+
+    def test_no_session_id_returns_early(self):
+        """When session_id is empty, function returns without DB read."""
+        model = MagicMock()
+        state = {"config": {}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "", log)
+        model.update_options.assert_not_called()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_session_not_found_returns_early(self, mock_mgr):
+        """When session is not in DB, function returns gracefully."""
+        mock_mgr.get_session.return_value = None
+        model = MagicMock()
+        state = {"config": {}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_not_called()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_unchanged_config_skips_update(self, mock_mgr):
+        """When voice_config hasn't changed, update_options is not called."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        }}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_not_called()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_speed_change_calls_update_options(self, mock_mgr):
+        """When speech_speed changes, update_options is called with new speed."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.25,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        }}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_called_once()
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["speed"] == 1.25
+        assert "turn_detection" not in kwargs
+        assert "voice" not in kwargs
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_silence_change_calls_update_options(self, mock_mgr):
+        """When silence_duration_ms changes, update_options gets new TurnDetection."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        }}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_called_once()
+        kwargs = model.update_options.call_args[1]
+        assert "turn_detection" in kwargs
+        td = kwargs["turn_detection"]
+        assert td.silence_duration_ms == 3000
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_voice_change_calls_update_options(self, mock_mgr):
+        """When voice_gender changes, update_options gets new voice ID."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "male",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        }}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_called_once()
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["voice"] == "echo"
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_multiple_changes_combined(self, mock_mgr):
+        """All changed settings are passed together in one update_options call."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3500,
+            "speech_speed": 0.85,
+            "voice_gender": "female",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        }}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        model.update_options.assert_called_once()
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["speed"] == 0.85
+        assert kwargs["voice"] == "shimmer"
+        assert kwargs["turn_detection"].silence_duration_ms == 3500
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_config_state_updated_after_apply(self, mock_mgr):
+        """After successful update, config_state stores the new config."""
+        new_cfg = {
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.25,
+            "voice_gender": "male",
+        }
+        db_session = _make_db_session(voice_config=new_cfg)
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"silence_duration_ms": 2000, "speech_speed": 1.0, "voice_gender": "neutral"}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        assert state["config"] == new_cfg
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_speed_clamped_to_range(self, mock_mgr):
+        """Speed is clamped between 0.75 and 1.5."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 5.0,  # way above max
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["speed"] == 1.5
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_silence_clamped_to_range(self, mock_mgr):
+        """Silence is clamped between 300 and 5000ms."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 100,  # below min
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
+        log = MagicMock()
+        _apply_voice_config_update(model, state, "test-001", log)
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["turn_detection"].silence_duration_ms == 300
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_exception_is_non_fatal(self, mock_mgr):
+        """If update_options raises, function logs warning but doesn't propagate."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        model.update_options.side_effect = RuntimeError("Azure WebSocket error")
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral"}}
+        log = MagicMock()
+        # Should not raise
+        _apply_voice_config_update(model, state, "test-001", log)
+        log.warning.assert_called_once()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_verbosity_change_schedules_async_task(self, mock_mgr):
+        """When verbosity changes and agent_session is provided, async task is scheduled."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+            "verbosity": "concise",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral", "verbosity": "normal"}}
+        log = MagicMock()
+        agent_session = MagicMock()
+
+        # Create a real event loop to test create_task scheduling
+        loop = asyncio.new_event_loop()
+        try:
+            with patch("asyncio.get_running_loop", return_value=loop):
+                _apply_voice_config_update(model, state, "test-001", log, agent_session=agent_session)
+        finally:
+            loop.close()
+        # model.update_options should NOT be called (no speed/silence/voice change)
+        model.update_options.assert_not_called()
+        # config_state should be updated
+        assert state["config"]["verbosity"] == "concise"
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_verbosity_unchanged_no_async_task(self, mock_mgr):
+        """When only verbosity is unchanged but other fields differ, no verbosity task is scheduled."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+            "verbosity": "normal",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral", "verbosity": "normal"}}
+        log = MagicMock()
+        agent_session = MagicMock()
+
+        with patch("asyncio.get_running_loop") as mock_loop:
+            _apply_voice_config_update(model, state, "test-001", log, agent_session=agent_session)
+            # asyncio.get_running_loop should NOT be called (verbosity didn't change)
+            mock_loop.assert_not_called()
+        # But update_options should still be called for silence change
+        model.update_options.assert_called_once()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_verbosity_change_no_agent_session_skips(self, mock_mgr):
+        """When verbosity changes but no agent_session, async task is NOT scheduled."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 2000,
+            "speech_speed": 1.0,
+            "voice_gender": "neutral",
+            "verbosity": "verbose",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {"speech_speed": 1.0, "silence_duration_ms": 2000, "voice_gender": "neutral", "verbosity": "normal"}}
+        log = MagicMock()
+
+        with patch("asyncio.get_running_loop") as mock_loop:
+            _apply_voice_config_update(model, state, "test-001", log)  # no agent_session
+            mock_loop.assert_not_called()
+
+    @patch("src.voice.consultant._session_mgr")
+    def test_all_five_settings_changed(self, mock_mgr):
+        """All 5 settings changed: speed, silence, voice, verbosity — all applied."""
+        db_session = _make_db_session(voice_config={
+            "silence_duration_ms": 3000,
+            "speech_speed": 1.25,
+            "voice_gender": "male",
+            "verbosity": "verbose",
+        })
+        mock_mgr.get_session.return_value = db_session
+        model = MagicMock()
+        state = {"config": {
+            "speech_speed": 1.0, "silence_duration_ms": 2000,
+            "voice_gender": "neutral", "verbosity": "normal",
+        }}
+        log = MagicMock()
+        agent_session = MagicMock()
+
+        loop = asyncio.new_event_loop()
+        try:
+            with patch("asyncio.get_running_loop", return_value=loop):
+                _apply_voice_config_update(model, state, "test-001", log, agent_session=agent_session)
+        finally:
+            loop.close()
+        # update_options called with speed + voice + turn_detection
+        model.update_options.assert_called_once()
+        kwargs = model.update_options.call_args[1]
+        assert kwargs["speed"] == 1.25
+        assert kwargs["voice"] == "echo"
+        assert kwargs["turn_detection"].silence_duration_ms == 3000
+
+
+class TestGetVerbosityPromptPrefix:
+    """Tests for _get_verbosity_prompt_prefix()."""
+
+    def test_concise(self):
+        prefix = _get_verbosity_prompt_prefix("concise")
+        assert "МАКСИМАЛЬНО кратко" in prefix
+        assert prefix.endswith("\n\n")
+
+    def test_verbose(self):
+        prefix = _get_verbosity_prompt_prefix("verbose")
+        assert "развёрнутые ответы" in prefix
+        assert prefix.endswith("\n\n")
+
+    def test_normal_returns_empty(self):
+        assert _get_verbosity_prompt_prefix("normal") == ""
+
+    def test_unknown_returns_empty(self):
+        assert _get_verbosity_prompt_prefix("unknown_value") == ""
+
+    def test_prefixes_dict_has_concise_and_verbose(self):
+        assert "concise" in _VERBOSITY_PREFIXES
+        assert "verbose" in _VERBOSITY_PREFIXES
+        assert "normal" not in _VERBOSITY_PREFIXES
+
+
+class TestApplyVerbosityUpdate:
+    """Tests for _apply_verbosity_update() async function."""
+
+    @pytest.mark.asyncio
+    async def test_no_activity_logs_warning(self):
+        """If agent_session has no _activity, log warning and return."""
+        agent_session = MagicMock()
+        agent_session._activity = None
+        log = MagicMock()
+        await _apply_verbosity_update(agent_session, "concise", log)
+        log.warning.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_strips_old_concise_prefix_adds_verbose(self):
+        """Strips old concise prefix and adds verbose prefix."""
+        activity = MagicMock()
+        concise_prefix = _VERBOSITY_PREFIXES["concise"]
+        activity.instructions = concise_prefix + "Base system prompt here"
+        activity.update_instructions = AsyncMock()
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        await _apply_verbosity_update(agent_session, "verbose", log)
+
+        activity.update_instructions.assert_called_once()
+        new_instructions = activity.update_instructions.call_args[0][0]
+        verbose_prefix = _VERBOSITY_PREFIXES["verbose"]
+        assert new_instructions.startswith(verbose_prefix)
+        assert "Base system prompt here" in new_instructions
+        assert concise_prefix not in new_instructions
+
+    @pytest.mark.asyncio
+    async def test_strips_old_verbose_prefix_adds_nothing_for_normal(self):
+        """Strips verbose prefix, adds nothing for 'normal'."""
+        activity = MagicMock()
+        verbose_prefix = _VERBOSITY_PREFIXES["verbose"]
+        activity.instructions = verbose_prefix + "Base prompt"
+        activity.update_instructions = AsyncMock()
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        await _apply_verbosity_update(agent_session, "normal", log)
+
+        new_instructions = activity.update_instructions.call_args[0][0]
+        assert new_instructions == "Base prompt"
+
+    @pytest.mark.asyncio
+    async def test_no_old_prefix_adds_new(self):
+        """If no verbosity prefix exists, just prepends the new one."""
+        activity = MagicMock()
+        activity.instructions = "Base prompt without prefix"
+        activity.update_instructions = AsyncMock()
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        await _apply_verbosity_update(agent_session, "concise", log)
+
+        new_instructions = activity.update_instructions.call_args[0][0]
+        concise_prefix = _VERBOSITY_PREFIXES["concise"]
+        assert new_instructions == concise_prefix + "Base prompt without prefix"
+
+    @pytest.mark.asyncio
+    async def test_preserves_kb_and_resume_context(self):
+        """KB context and resume context are preserved when changing verbosity."""
+        activity = MagicMock()
+        concise_prefix = _VERBOSITY_PREFIXES["concise"]
+        full_prompt = concise_prefix + "Base prompt\n\n### Контекст отрасли:\nMedical context\n\n### Контекст предыдущего разговора:\nResume data"
+        activity.instructions = full_prompt
+        activity.update_instructions = AsyncMock()
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        await _apply_verbosity_update(agent_session, "verbose", log)
+
+        new_instructions = activity.update_instructions.call_args[0][0]
+        verbose_prefix = _VERBOSITY_PREFIXES["verbose"]
+        assert new_instructions.startswith(verbose_prefix)
+        assert "Контекст отрасли" in new_instructions
+        assert "Контекст предыдущего разговора" in new_instructions
+
+    @pytest.mark.asyncio
+    async def test_exception_is_non_fatal(self):
+        """If update_instructions raises, logs warning but doesn't propagate."""
+        activity = MagicMock()
+        activity.instructions = "Base prompt"
+        activity.update_instructions = AsyncMock(side_effect=RuntimeError("connection closed"))
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        # Should not raise
+        await _apply_verbosity_update(agent_session, "concise", log)
+        log.warning.assert_called_once()

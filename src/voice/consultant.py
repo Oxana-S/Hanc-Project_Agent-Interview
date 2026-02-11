@@ -1053,11 +1053,56 @@ def _get_voice_id(voice_config: dict = None) -> str:
     return voice_map.get(gender, "alloy")
 
 
-def _apply_voice_config_update(realtime_model, config_state: dict, session_id: str, log):
+# Verbosity prompt prefixes — prepended to system prompt to adjust agent's response length.
+# Must match exactly between _apply_verbosity_update (strip) and entrypoint (add).
+_VERBOSITY_PREFIXES = {
+    "concise": "ВАЖНО: Отвечай МАКСИМАЛЬНО кратко — 1-2 предложения + 1 вопрос. Без длинных вступлений.\n\n",
+    "verbose": "ВАЖНО: Давай развёрнутые ответы с примерами и пояснениями. Объясняй подробно.\n\n",
+}
+
+
+def _get_verbosity_prompt_prefix(verbosity: str) -> str:
+    """Return the verbosity instruction prefix for the given setting."""
+    return _VERBOSITY_PREFIXES.get(verbosity, "")
+
+
+async def _apply_verbosity_update(agent_session, new_verbosity: str, log):
+    """Update agent instructions mid-session to reflect new verbosity setting.
+
+    Strips the old verbosity prefix (if any) from current instructions,
+    then prepends the new one. Preserves all other prompt content
+    (KB context, resume context, review phase, etc.).
+    """
+    try:
+        activity = getattr(agent_session, '_activity', None)
+        if not activity or not hasattr(activity, 'update_instructions'):
+            log.warning("verbosity update: no activity or update_instructions available")
+            return
+
+        current = getattr(activity, 'instructions', '') or ''
+
+        # Strip old verbosity prefix if present
+        for prefix in _VERBOSITY_PREFIXES.values():
+            if current.startswith(prefix):
+                current = current[len(prefix):]
+                break
+
+        # Prepend new verbosity prefix (empty for "normal")
+        new_prefix = _get_verbosity_prompt_prefix(new_verbosity)
+        new_instructions = new_prefix + current
+
+        await activity.update_instructions(new_instructions)
+        log.info(f"verbosity updated mid-session: {new_verbosity}")
+    except Exception as e:
+        log.warning(f"verbosity mid-session update failed (non-fatal): {e}")
+
+
+def _apply_voice_config_update(realtime_model, config_state: dict, session_id: str, log, agent_session=None):
     """Re-read voice_config from DB and update RealtimeModel mid-session if changed.
 
-    Called when a client audio track is (re-)subscribed, which happens on reconnect.
-    Uses RealtimeModel.update_options() which sends session.update to Azure.
+    Called when room metadata changes (server signals reconnect) or client track is subscribed.
+    Uses RealtimeModel.update_options() for speed/silence/voice (sync, sends session.update to Azure).
+    Uses AgentActivity.update_instructions() for verbosity (async, scheduled via event loop).
     """
     try:
         if not session_id:
@@ -1076,11 +1121,15 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
         old_speed = float(old_cfg.get("speech_speed", 1.0))
         new_voice = new_cfg.get("voice_gender", "neutral")
         old_voice = old_cfg.get("voice_gender", "neutral")
+        new_verbosity = new_cfg.get("verbosity", "normal")
+        old_verbosity = old_cfg.get("verbosity", "normal")
 
-        if new_silence == old_silence and new_speed == old_speed and new_voice == old_voice:
+        if (new_silence == old_silence and new_speed == old_speed
+                and new_voice == old_voice and new_verbosity == old_verbosity):
             log.info("voice_config unchanged on reconnect, no update needed")
             return
 
+        # Sync updates: speed, silence, voice → RealtimeModel.update_options()
         kwargs = {}
         if new_silence != old_silence:
             new_silence = max(300, min(5000, new_silence))
@@ -1099,9 +1148,20 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
             voice_map = {"male": "echo", "female": "shimmer", "neutral": "alloy"}
             kwargs["voice"] = voice_map.get(new_voice, "alloy")
 
-        realtime_model.update_options(**kwargs)
+        if kwargs:
+            realtime_model.update_options(**kwargs)
+            log.info(f"voice_config updated mid-session (realtime): {kwargs}")
+
+        # Async update: verbosity → AgentActivity.update_instructions()
+        if new_verbosity != old_verbosity and agent_session is not None:
+            import asyncio
+            try:
+                loop = asyncio.get_running_loop()
+                loop.create_task(_apply_verbosity_update(agent_session, new_verbosity, log))
+            except RuntimeError:
+                log.warning("verbosity update skipped: no running event loop")
+
         config_state["config"] = new_cfg
-        log.info(f"voice_config updated mid-session: {kwargs}")
     except Exception as e:
         log.warning(f"voice_config mid-session update failed (non-fatal): {e}")
 
@@ -1261,13 +1321,14 @@ async def entrypoint(ctx: JobContext):
         else:
             prompt = get_system_prompt()
 
-        # v5.0: Verbosity injection — prepend instruction based on voice_config
+        # v5.0: Verbosity injection — prepend instruction based on voice_config.
+        # Uses _VERBOSITY_PREFIXES dict so mid-session _apply_verbosity_update() can
+        # strip/replace the exact same prefix strings.
         if voice_config:
             verbosity = voice_config.get("verbosity", "normal")
-            if verbosity == "concise":
-                prompt = "ВАЖНО: Отвечай МАКСИМАЛЬНО кратко — 1-2 предложения + 1 вопрос. Без длинных вступлений.\n\n" + prompt
-            elif verbosity == "verbose":
-                prompt = "ВАЖНО: Давай развёрнутые ответы с примерами и пояснениями. Объясняй подробно.\n\n" + prompt
+            verbosity_prefix = _get_verbosity_prompt_prefix(verbosity)
+            if verbosity_prefix:
+                prompt = verbosity_prefix + prompt
 
         # Инъекция контекста предыдущего разговора для возобновлённых сессий
         if db_session and db_session.dialogue_history:
@@ -1399,13 +1460,24 @@ async def entrypoint(ctx: JobContext):
     def on_track_subscribed(track, publication, participant):
         debug_log.info(f"ROOM EVENT: Track subscribed: {track.kind} from {participant.identity}")
         # v5.0: Re-read voice_config from DB when client reconnects (audio track re-subscribed).
-        # This enables mid-session updates to speech_speed, silence_duration_ms, voice_gender.
+        # This enables mid-session updates to speech_speed, silence_duration_ms, voice_gender, verbosity.
         if participant.identity.startswith("client-"):
-            _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log)
+            _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session)
 
     @ctx.room.on("track_published")
     def on_track_published(publication, participant):
         debug_log.info(f"ROOM EVENT: Track published: {publication.kind} from {participant.identity}")
+
+    @ctx.room.on("room_metadata_changed")
+    def on_room_metadata_changed(old_metadata, new_metadata):
+        """Triggered by server reconnect endpoint to signal voice_config change.
+
+        The server updates room metadata with a config_version timestamp
+        when a client reconnects. This is the primary mechanism for applying
+        mid-session voice settings (speed, silence, voice gender, verbosity).
+        """
+        debug_log.info(f"ROOM EVENT: Room metadata changed: {old_metadata!r} -> {new_metadata!r}")
+        _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session)
 
     # Step 5: Start agent session and trigger greeting
     try:

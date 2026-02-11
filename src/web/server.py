@@ -51,6 +51,7 @@ from livekit.api import (
     RoomAgentDispatch,
     CreateAgentDispatchRequest,
 )
+from livekit.protocol.room import UpdateRoomMetadataRequest
 from src.session.manager import SessionManager
 
 logger = structlog.get_logger("server")
@@ -408,6 +409,21 @@ async def reconnect_session(session_id: str):
             await lk_api.agent_dispatch.create_dispatch(
                 CreateAgentDispatchRequest(room=room_name, agent_name="hanc-consultant")
             )
+        else:
+            # Signal running agent to re-read voice_config from DB.
+            # Updates room metadata which triggers "room_metadata_changed" event
+            # on the agent, so it picks up changed speech_speed / silence / voice.
+            import json, time
+            try:
+                await lk_api.room.update_room_metadata(
+                    UpdateRoomMetadataRequest(
+                        room=room_name,
+                        metadata=json.dumps({"config_version": time.time()}),
+                    )
+                )
+                livekit_log.info("reconnect_metadata_signal_sent", room=room_name)
+            except Exception as meta_exc:
+                livekit_log.warning("reconnect_metadata_signal_failed", error=str(meta_exc))
 
         await lk_api.aclose()
     except Exception as exc:
