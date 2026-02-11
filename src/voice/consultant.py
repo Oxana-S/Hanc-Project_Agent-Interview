@@ -1069,10 +1069,17 @@ def _create_realtime_model(voice_config: dict = None):
     # - prefix_padding_ms 500: Keep as is
     #
     # v4.1: silence_duration_ms is configurable per session via voice_config
-    silence_ms = 4000  # default
+    # v4.3: range extended to 300-5000ms (was 1500-6000), speech_speed added
+    silence_ms = 2000  # default (was 4000)
     if voice_config and "silence_duration_ms" in voice_config:
         silence_ms = int(voice_config["silence_duration_ms"])
-        silence_ms = max(1500, min(6000, silence_ms))  # clamp to safe range
+        silence_ms = max(300, min(5000, silence_ms))  # clamp to safe range
+
+    # v4.3: speech_speed — audio playback speed multiplier (0.75-2.0)
+    speech_speed = 1.0  # default
+    if voice_config and "speech_speed" in voice_config:
+        speech_speed = float(voice_config["speech_speed"])
+        speech_speed = max(0.75, min(2.0, speech_speed))  # clamp to safe range
 
     model = lk_openai.realtime.RealtimeModel.with_azure(
         azure_deployment=azure_deployment,
@@ -1081,6 +1088,7 @@ def _create_realtime_model(voice_config: dict = None):
         api_version=azure_api_version,
         voice="alloy",
         temperature=0.7,
+        speed=speech_speed,
         # Explicit input audio transcription — required for user speech to appear
         # as text in dialogue_history. Without this, the Realtime API processes
         # audio internally (model can "hear") but no text transcript is produced,
@@ -1097,6 +1105,7 @@ def _create_realtime_model(voice_config: dict = None):
     azure_log.info(
         "AGENT: VAD silence_duration_ms",
         silence_duration_ms=silence_ms,
+        speech_speed=speech_speed,
         from_voice_config=voice_config is not None,
     )
 
@@ -1206,16 +1215,27 @@ async def entrypoint(ctx: JobContext):
         #   - min_interruption_words 3→4: Need 4 words before interrupting
         #   - min_endpointing_delay 1.5→2.5: Wait 2.5s of silence before responding
         #   - false_interruption_timeout 2.5→3.0: 3s window to detect false positives
+        #
+        # v4.3 — min_endpointing_delay proportional to silence_duration_ms:
+        #   500ms→0.3s, 1000ms→0.6s, 2000ms→1.2s, 3000ms→1.8s, 4000ms→2.4s
+        vc_silence = 2000
+        if voice_config and "silence_duration_ms" in voice_config:
+            vc_silence = int(voice_config["silence_duration_ms"])
+        endpointing_delay = max(0.3, min(3.0, vc_silence / 1000 * 0.6))
+
         session = AgentSession(
             llm=realtime_model,
             allow_interruptions=True,
             min_interruption_duration=2.0,
             min_interruption_words=4,
-            min_endpointing_delay=2.5,
+            min_endpointing_delay=endpointing_delay,
             false_interruption_timeout=3.0,
             resume_false_interruption=True,
         )
-        debug_log.info("STEP 5/5: AgentSession created")
+        debug_log.info(
+            "STEP 5/5: AgentSession created",
+            extra={"min_endpointing_delay": endpointing_delay},
+        )
 
         # session_id and db_session already obtained in Step 1
         consultation = _init_consultation(ctx.room.name, db_session)

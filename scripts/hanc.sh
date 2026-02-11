@@ -124,12 +124,28 @@ stop_service() {
 # ============================================================
 
 start_server() {
+    # Автоматическая остановка, если уже запущен
     local existing
     existing=$(get_server_pids)
     if [ -n "$existing" ]; then
-        echo -e "${YELLOW}Server уже запущен (PID $(echo $existing | head -1))${NC}"
-        echo "  Используйте: ./scripts/hanc.sh restart server"
-        return 1
+        echo -e "${YELLOW}Server уже запущен (PID $(echo $existing | head -1)) — перезапускаю...${NC}"
+        stop_server
+        sleep 1
+    fi
+
+    # Проверяем порт 8000 — если занят чем-то другим, освобождаем
+    local port_pids
+    port_pids=$(lsof -ti:8000 2>/dev/null)
+    if [ -n "$port_pids" ]; then
+        echo -e "${YELLOW}Порт 8000 занят (PID $port_pids) — освобождаю...${NC}"
+        echo "$port_pids" | xargs kill 2>/dev/null || true
+        sleep 1
+        # Если SIGTERM не помог — SIGKILL
+        port_pids=$(lsof -ti:8000 2>/dev/null)
+        if [ -n "$port_pids" ]; then
+            echo "$port_pids" | xargs kill -9 2>/dev/null || true
+            sleep 1
+        fi
     fi
 
     ensure_log_dir
@@ -160,14 +176,15 @@ stop_server() {
 # ============================================================
 
 start_agent() {
+    # Автоматическая остановка, если уже запущен
     local existing
     existing=$(get_agent_pids)
     if [ -n "$existing" ]; then
         local count
         count=$(echo "$existing" | wc -l | tr -d ' ')
-        echo -e "${YELLOW}Agent уже запущен ($count процесс, PID $(echo $existing | tr '\n' ' '))${NC}"
-        echo "  Используйте: ./scripts/hanc.sh restart agent"
-        return 1
+        echo -e "${YELLOW}Agent уже запущен ($count процесс, PID $(echo $existing | tr '\n' ' ')) — перезапускаю...${NC}"
+        stop_agent
+        sleep 1
     fi
 
     ensure_log_dir
@@ -363,7 +380,7 @@ case "$CMD" in
         case "$TARGET" in
             server)  start_server ;;
             agent)   start_agent ;;
-            all|*)   start_server; echo ""; start_agent ;;
+            all|*)   start_server || true; echo ""; start_agent || true ;;
         esac
         echo ""
         show_status
@@ -379,7 +396,7 @@ case "$CMD" in
         case "$TARGET" in
             server)  stop_server; sleep 1; start_server ;;
             agent)   stop_agent; sleep 1; start_agent ;;
-            all|*)   stop_agent; stop_server; sleep 1; start_server; echo ""; start_agent ;;
+            all|*)   stop_agent; stop_server; sleep 1; start_server || true; echo ""; start_agent || true ;;
         esac
         echo ""
         show_status

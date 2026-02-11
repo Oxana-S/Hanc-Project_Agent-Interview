@@ -164,6 +164,8 @@ class VoiceInterviewerApp {
             // Voice settings
             silenceSlider: document.getElementById('silence-slider'),
             silenceValue: document.getElementById('silence-value'),
+            speedSlider: document.getElementById('speed-slider'),
+            speedValue: document.getElementById('speed-value'),
             // Review
             reviewBackBtn: document.getElementById('review-back-btn'),
             reviewResumeBtn: document.getElementById('review-resume-btn'),
@@ -211,10 +213,15 @@ class VoiceInterviewerApp {
             });
         }
 
-        // Voice settings slider
+        // Voice settings sliders
         if (this.elements.silenceSlider) {
             this.elements.silenceSlider.addEventListener('input', (e) => {
                 this.elements.silenceValue.textContent = (e.target.value / 1000).toFixed(1);
+            });
+        }
+        if (this.elements.speedSlider) {
+            this.elements.speedSlider.addEventListener('input', (e) => {
+                this.elements.speedValue.textContent = (e.target.value / 100).toFixed(2);
             });
         }
 
@@ -441,6 +448,7 @@ class VoiceInterviewerApp {
         // If already in this session, just show the screen
         if (this.uniqueLink === link && this.sessionId) {
             this.showScreen('interview');
+            this.startAnketaPolling();
             return;
         }
 
@@ -554,7 +562,8 @@ class VoiceInterviewerApp {
                 body: JSON.stringify({
                     pattern: 'interaction',
                     voice_settings: {
-                        silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '4000', 10),
+                        silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '2000', 10),
+                        speech_speed: parseFloat(this.elements.speedSlider?.value || '100') / 100,
                     },
                 }),
             });

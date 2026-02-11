@@ -153,8 +153,9 @@ body {
 
 .voice-settings {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 8px 16px;
     padding: 8px 16px;
     background: var(--surface);
     border: 1px solid var(--surface-light);
@@ -168,9 +169,10 @@ body {
 }
 .voice-settings input[type="range"] {
     flex: 1;
-    max-width: 200px;
+    max-width: 180px;
+    min-width: 100px;
 }
-#silence-value {
+#silence-value, #speed-value {
     font-weight: 600;
     color: var(--text);
     min-width: 24px;
