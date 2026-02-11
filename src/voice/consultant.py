@@ -1075,11 +1075,12 @@ def _create_realtime_model(voice_config: dict = None):
         silence_ms = int(voice_config["silence_duration_ms"])
         silence_ms = max(300, min(5000, silence_ms))  # clamp to safe range
 
-    # v4.3: speech_speed — audio playback speed multiplier (0.75-2.0)
+    # v4.3: speech_speed — audio playback speed multiplier (0.75-1.5)
+    # Azure Realtime max is 1.5 — exceeding it rejects the ENTIRE session.update
     speech_speed = 1.0  # default
     if voice_config and "speech_speed" in voice_config:
         speech_speed = float(voice_config["speech_speed"])
-        speech_speed = max(0.75, min(2.0, speech_speed))  # clamp to safe range
+        speech_speed = max(0.75, min(1.5, speech_speed))  # Azure max is 1.5
 
     model = lk_openai.realtime.RealtimeModel.with_azure(
         azure_deployment=azure_deployment,
