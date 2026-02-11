@@ -273,7 +273,7 @@ DEEPSEEK_MODEL=deepseek-reasoner
 │   ├── consultant/                  # Контекст для KB
 │   ├── personas/                    # Персоны и трейты
 │   ├── notifications.yaml           # Настройки уведомлений
-│   ├── docker-compose.yml           # Redis 7 + PostgreSQL 16 (для Maximum режима)
+│   ├── docker-compose.yml           # Dev: Redis 7 + PostgreSQL 16 + pgAdmin + Redis Commander
 │   └── init_db.sql                  # SQL-схема PostgreSQL
 │
 ├── prompts/                         # YAML промпты для LLM
@@ -302,6 +302,7 @@ DEEPSEEK_MODEL=deepseek-reasoner
 ├── logs/                            # Логи (10 файлов по направлениям)
 ├── locales/                         # Локализация (ru, en)
 │
+├── docker-compose.yml               # Production: Nginx + Certbot + Web + Agent + Redis + PostgreSQL
 ├── .env                             # Конфигурация (не коммитить!)
 ├── .env.example                     # Пример конфигурации (копия .env)
 ├── requirements.txt                 # Все зависимости
@@ -347,7 +348,7 @@ DISCOVERY → STRUCTURED → SYNTHESIS
 | **PostgreSQL** | Maximum режим | Постоянное хранение анкет |
 | **Файловая система** (`output/`) | Все режимы | Финальный вывод: MD, JSON, логи диалогов |
 
-Redis и PostgreSQL поднимаются через `config/docker-compose.yml` (Redis 7 + PostgreSQL 16). Схема БД — `config/init_db.sql`.
+Redis и PostgreSQL поднимаются через `config/docker-compose.yml` (dev — только инфраструктура) или корневой `docker-compose.yml` (production — всё приложение целиком). Схема БД — `config/init_db.sql`. Подробнее: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## API эндпоинты (голосовой режим)
 
@@ -445,6 +446,7 @@ lsof -ti:8000 | xargs kill -9
 - [AGENT_WORKFLOWS.md](docs/AGENT_WORKFLOWS.md) — workflow агентов и pipeline
 - [TESTING.md](docs/TESTING.md) — юнит-тесты, симуляция, E2E тесты
 - [DEPLOYMENT.md](docs/DEPLOYMENT.md) — деплой и production-конфигурация
+- [DOCKER.md](docs/DOCKER.md) — справочник Docker-команд (production compose)
 - [ERROR_HANDLING.md](docs/ERROR_HANDLING.md) — обработка ошибок
 - [LOGGING.md](docs/LOGGING.md) — система логирования
 - [PYTHON_3.14_SETUP.md](docs/PYTHON_3.14_SETUP.md) — установка с Python 3.14

@@ -2,6 +2,9 @@
 
 Справочник по Docker-командам для проекта Hanc.AI Voice Agent.
 
+> Этот документ описывает **корневой `docker-compose.yml`** (production — все 6 сервисов).
+> Для dev-инфраструктуры (только Redis + PostgreSQL + pgAdmin) см. `config/docker-compose.yml` и [DEPLOYMENT.md](DEPLOYMENT.md#docker-compose-developmentstaging).
+
 ## Архитектура
 
 ```

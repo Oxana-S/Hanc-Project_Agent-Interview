@@ -118,7 +118,12 @@ python scripts/consultant_demo.py
 ### Шаг 1: Запуск инфраструктуры
 
 ```bash
+# Dev (только Redis + PostgreSQL)
 docker compose -f config/docker-compose.yml up -d
+
+# Или Production (всё приложение: Nginx + Web + Agent + Redis + PostgreSQL)
+# docker compose up -d
+# Подробнее: docs/DEPLOYMENT.md → Docker Compose (Production)
 ```
 
 ### Шаг 2: Запуск
@@ -327,7 +332,7 @@ sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;
 | «Голосовой агент не запущен» в браузере | Запустите агент: `./scripts/hanc.sh start`, проверьте: `./scripts/hanc.sh status` |
 | Нет звука в браузере | Разрешите доступ к микрофону, проверьте HTTPS |
 | `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
-| Redis/PostgreSQL connection refused | `docker compose -f config/docker-compose.yml up -d` |
+| Redis/PostgreSQL connection refused | Dev: `docker compose -f config/docker-compose.yml up -d`, Prod: `docker compose up -d` |
 | Несколько процессов агента (конфликт) | `./scripts/hanc.sh kill-all` и затем `./scripts/hanc.sh start` |
 | Порт 8000 занят | `lsof -ti:8000 \| xargs kill -9` или `./scripts/hanc.sh kill-all` |
 | Старые комнаты LiveKit | Перезапустите сервер (очистка при старте) или: `curl -X DELETE http://localhost:8000/api/rooms` |

@@ -30,11 +30,12 @@
 
 ## Варианты развёртывания
 
-| Вариант | Описание | Рекомендуется для |
-|---------|----------|-------------------|
-| Docker Compose | Локальная инфраструктура | Разработка, staging |
-| Kubernetes | Полноценный оркестратор | Production |
-| Managed Services | LiveKit Cloud + Azure + RDS | Минимум ops |
+| Вариант | Описание | Файл | Рекомендуется для |
+|---------|----------|------|-------------------|
+| Docker Compose (Dev) | Redis + PostgreSQL + отладка | `config/docker-compose.yml` | Разработка |
+| Docker Compose (Prod) | Nginx + Certbot + Web + Agent + Redis + PostgreSQL | `docker-compose.yml` (корень) | Staging, Production |
+| Kubernetes | Полноценный оркестратор | — | Большие нагрузки |
+| Managed Services | LiveKit Cloud + Azure + RDS | — | Минимум ops |
 
 ## Docker Compose (Development/Staging)
 
@@ -77,6 +78,100 @@ docker compose -f config/docker-compose.yml down
 # С удалением volumes (очистка данных)
 docker compose -f config/docker-compose.yml down -v
 ```
+
+## Docker Compose (Production)
+
+Корневой `docker-compose.yml` поднимает **всё приложение целиком** — 6 сервисов в единой сети `hanc_network`:
+
+| Сервис | Контейнер | Описание |
+|--------|-----------|----------|
+| `nginx` | `hanc_nginx` | Reverse proxy, SSL termination (порты 80/443) |
+| `certbot` | `hanc_certbot` | Автообновление Let's Encrypt сертификатов (каждые 12ч) |
+| `web` | `hanc_web` | FastAPI сервер (внутренний порт 8000) |
+| `agent` | `hanc_agent` | Голосовой агент (LiveKit worker) |
+| `redis` | `hanc_redis` | Кэш сессий (Redis 7, healthcheck) |
+| `postgres` | `hanc_postgres` | Долгосрочное хранение анкет (PostgreSQL 16, healthcheck) |
+
+### 1. Подготовка
+
+```bash
+# Заполните .env (обязательно: DOMAIN, POSTGRES_PASSWORD, API ключи)
+cp .env.example .env
+nano .env
+```
+
+Ключевые переменные для production:
+
+```env
+DOMAIN=your-domain.com
+POSTGRES_PASSWORD=<сгенерированный_пароль_32_символа>
+POSTGRES_USER=interviewer_user
+POSTGRES_DB=voice_interviewer
+```
+
+### 2. Получение SSL-сертификата (первый раз)
+
+```bash
+# Инициализация Let's Encrypt
+./scripts/init-letsencrypt.sh
+```
+
+### 3. Запуск
+
+```bash
+# Запуск всех 6 сервисов
+docker compose up -d
+
+# Проверка статуса
+docker compose ps
+
+# Логи конкретного сервиса
+docker compose logs -f web
+docker compose logs -f agent
+```
+
+Ожидаемый вывод `docker compose ps`:
+
+```
+NAME             STATUS           PORTS
+hanc_nginx       Up               0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp
+hanc_certbot     Up
+hanc_web         Up
+hanc_agent       Up
+hanc_redis       Up (healthy)
+hanc_postgres    Up (healthy)
+```
+
+### 4. Остановка
+
+```bash
+# Graceful stop
+docker compose down
+
+# С удалением volumes (ВНИМАНИЕ: удалит данные БД!)
+docker compose down -v
+```
+
+### 5. Volumes
+
+| Volume | Содержимое |
+|--------|-----------|
+| `app_data` | SQLite база (`data/sessions.db`) |
+| `app_logs` | Логи приложения (`logs/`) |
+| `app_output` | Результаты консультаций (`output/`) |
+| `redis_data` | Redis AOF persistence |
+| `postgres_data` | Данные PostgreSQL |
+
+### Отличие от dev-compose
+
+| | `config/docker-compose.yml` (Dev) | `docker-compose.yml` (Prod) |
+|---|---|---|
+| **Назначение** | Только инфраструктура | Всё приложение |
+| **Сервисы** | Redis, PostgreSQL, pgAdmin, Redis Commander | Nginx, Certbot, Web, Agent, Redis, PostgreSQL |
+| **Порты наружу** | 6379, 5432, 5050, 8081 | 80, 443 |
+| **SSL** | Нет | Let's Encrypt (Nginx + Certbot) |
+| **Web/Agent** | Запускаются вручную | Запускаются в контейнерах |
+| **Отладка** | pgAdmin, Redis Commander (--profile tools) | Нет |
 
 ## Управление процессами (Development)
 
@@ -380,6 +475,7 @@ chmod 750 /opt/hanc-voice-consultant/input
 
 ## Связанная документация
 
+- [DOCKER.md](DOCKER.md) — справочник Docker-команд (production docker-compose)
 - [QUICKSTART.md](QUICKSTART.md) — быстрый старт
 - [VOICE_AGENT.md](VOICE_AGENT.md) — архитектура голосового агента
 - [LOGGING.md](LOGGING.md) — настройка логирования

@@ -595,6 +595,13 @@ context = builder.build_for_phase("discovery", dialogue_history)
 | Промпты | `prompts/` | YAML промпты для LLM | Все |
 | Конфигурация | `config/` | профили отраслей, словари, уведомления | Все |
 
+**Docker Compose:**
+
+- `config/docker-compose.yml` — dev-инфраструктура (Redis + PostgreSQL + pgAdmin + Redis Commander)
+- `docker-compose.yml` (корень) — production (Nginx + Certbot + Web + Agent + Redis + PostgreSQL)
+
+Подробнее: [DEPLOYMENT.md](DEPLOYMENT.md)
+
 ## Внешние зависимости
 
 | Сервис | Назначение | Переменная окружения |
