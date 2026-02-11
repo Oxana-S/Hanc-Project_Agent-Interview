@@ -221,7 +221,7 @@ class VoiceInterviewerApp {
         }
         if (this.elements.speedSlider) {
             this.elements.speedSlider.addEventListener('input', (e) => {
-                this.elements.speedValue.textContent = (e.target.value / 100).toFixed(2);
+                this.elements.speedValue.textContent = (e.target.value / 100).toFixed(1);
             });
         }
 
@@ -489,8 +489,10 @@ class VoiceInterviewerApp {
                 this.elements.pauseBtn.disabled = false;
             }
 
-            // Reset pause state
+            // Reset state
             this.isPaused = false;
+            this.localEdits = {};
+            this.focusedField = null;
             this.elements.pauseBtn.classList.remove('paused');
             this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
             this.elements.micBtn.disabled = false;
@@ -506,11 +508,14 @@ class VoiceInterviewerApp {
                 });
             }
 
-            // Restore anketa
+            // Restore anketa (or clear if empty)
             if (sessionData.anketa_data) {
                 this.populateAnketaForm(sessionData.anketa_data);
-                this.lastServerAnketa = { ...sessionData.anketa_data };
+            } else {
+                this.clearAnketaForm();
             }
+            this.lastServerAnketa = sessionData.anketa_data ? { ...sessionData.anketa_data } : {};
+            this.updateProgress(0);
 
             this.startAnketaPolling();
 
@@ -736,10 +741,30 @@ class VoiceInterviewerApp {
             LOG.event('Disconnected', { reason });
             this.isConnected = false;
             this.updateConnectionStatus(false);
+            // Stop recording and clean up on disconnect
+            if (this.isRecording) {
+                this.stopRecording();
+            }
+            this.stopAnketaPolling();
+            // Clean up orphaned audio elements
+            this.agentAudioElements.forEach(({ track, element }) => {
+                try { track.detach(); } catch {}
+                if (element.parentNode) element.remove();
+            });
+            this.agentAudioElements.clear();
         });
 
         this.room.on(RoomEvent.Reconnecting, () => LOG.event('Reconnecting'));
-        this.room.on(RoomEvent.Reconnected, () => LOG.event('Reconnected'));
+        this.room.on(RoomEvent.Reconnected, () => {
+            LOG.event('Reconnected');
+            this.isConnected = true;
+            this.updateConnectionStatus(true);
+            // Restore recording if not paused
+            if (!this.isPaused && !this.isRecording) {
+                this.startRecording();
+            }
+            this.startAnketaPolling();
+        });
 
         this.room.on(RoomEvent.TrackSubscribed, (track, publication, participant) => {
             LOG.event('TrackSubscribed', { trackKind: track.kind, participant: participant.identity });
@@ -872,6 +897,8 @@ class VoiceInterviewerApp {
 
         } catch (error) {
             LOG.error('Mic start failed:', error);
+            this.isRecording = false;
+            this.elements.micBtn.classList.remove('recording');
             showToast('Не удалось получить доступ к микрофону', 'error');
         }
     }
@@ -1003,8 +1030,11 @@ class VoiceInterviewerApp {
             }
 
             if (data.anketa_data) {
+                // Count only core anketa fields (exclude AI blocks like faq_items, etc.)
+                const anketaFieldSet = new Set(this.anketaFields);
                 const keys = Object.keys(data.anketa_data).filter(
-                    k => data.anketa_data[k] && data.anketa_data[k] !== '' &&
+                    k => anketaFieldSet.has(k) &&
+                    data.anketa_data[k] && data.anketa_data[k] !== '' &&
                     !(Array.isArray(data.anketa_data[k]) && data.anketa_data[k].length === 0)
                 );
                 this.updateAnketaFromServer(data.anketa_data);
@@ -1012,7 +1042,7 @@ class VoiceInterviewerApp {
                 this.lastServerAnketa = { ...data.anketa_data };
 
                 const pct = this.anketaFields.length > 0
-                    ? Math.round(keys.length / this.anketaFields.length * 100)
+                    ? Math.min(100, Math.round(keys.length / this.anketaFields.length * 100))
                     : 0;
                 this.updateProgress(pct);
             }
@@ -1239,7 +1269,8 @@ class VoiceInterviewerApp {
     // ===== Anketa Actions =====
 
     async confirmAnketa() {
-        if (!this.sessionId) return;
+        if (!this.sessionId || this._confirmingAnketa) return;
+        this._confirmingAnketa = true;
 
         if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
         await this.saveAnketa();
@@ -1258,12 +1289,15 @@ class VoiceInterviewerApp {
         } catch (error) {
             LOG.error('Error confirming:', error);
             showToast('Ошибка подтверждения', 'error');
+        } finally {
+            this._confirmingAnketa = false;
         }
     }
 
     async saveAndLeave() {
-        if (!this.sessionId) return;
+        if (!this.sessionId || this._savingAndLeaving) return;
         if (!confirm('Завершить консультацию? Голосовое соединение будет прервано.')) return;
+        this._savingAndLeaving = true;
 
         if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
         await this.saveAnketa();
@@ -1275,7 +1309,7 @@ class VoiceInterviewerApp {
             await this.stopRecording();
 
             this.agentAudioElements.forEach(({ track, element }) => {
-                track.detach();
+                try { track.detach(); } catch {}
                 if (element.parentNode) element.remove();
             });
             this.agentAudioElements.clear();
@@ -1304,6 +1338,8 @@ class VoiceInterviewerApp {
         } catch (error) {
             LOG.error('Error saving:', error);
             showToast('Ошибка сохранения', 'error');
+        } finally {
+            this._savingAndLeaving = false;
         }
     }
 
@@ -1362,11 +1398,12 @@ class VoiceInterviewerApp {
     }
 
     updateProgress(percentage) {
+        const clamped = Math.min(100, Math.max(0, percentage));
         if (this.elements.progressFill) {
-            this.elements.progressFill.style.width = `${percentage}%`;
+            this.elements.progressFill.style.width = `${clamped}%`;
         }
         if (this.elements.progressText) {
-            this.elements.progressText.textContent = `${Math.round(percentage)}% заполнено`;
+            this.elements.progressText.textContent = `${Math.round(clamped)}% заполнено`;
         }
     }
 
