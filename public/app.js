@@ -930,6 +930,11 @@ class VoiceInterviewerApp {
 
         const { Room, RoomEvent, Track } = LivekitClient;
 
+        // Disconnect previous room to avoid orphaned connections
+        if (this.room) {
+            try { await this.room.disconnect(); } catch {}
+        }
+
         this.room = new Room({ adaptiveStream: true, dynacast: true });
 
         this.room.on(RoomEvent.Connected, () => {

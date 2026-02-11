@@ -1053,6 +1053,59 @@ def _get_voice_id(voice_config: dict = None) -> str:
     return voice_map.get(gender, "alloy")
 
 
+def _apply_voice_config_update(realtime_model, config_state: dict, session_id: str, log):
+    """Re-read voice_config from DB and update RealtimeModel mid-session if changed.
+
+    Called when a client audio track is (re-)subscribed, which happens on reconnect.
+    Uses RealtimeModel.update_options() which sends session.update to Azure.
+    """
+    try:
+        if not session_id:
+            return
+
+        db_session = _session_mgr.get_session(session_id)
+        if not db_session or not db_session.voice_config:
+            return
+
+        new_cfg = db_session.voice_config
+        old_cfg = config_state.get("config") or {}
+
+        new_silence = int(new_cfg.get("silence_duration_ms", 2000))
+        old_silence = int(old_cfg.get("silence_duration_ms", 2000))
+        new_speed = float(new_cfg.get("speech_speed", 1.0))
+        old_speed = float(old_cfg.get("speech_speed", 1.0))
+        new_voice = new_cfg.get("voice_gender", "neutral")
+        old_voice = old_cfg.get("voice_gender", "neutral")
+
+        if new_silence == old_silence and new_speed == old_speed and new_voice == old_voice:
+            log.info("voice_config unchanged on reconnect, no update needed")
+            return
+
+        kwargs = {}
+        if new_silence != old_silence:
+            new_silence = max(300, min(5000, new_silence))
+            kwargs["turn_detection"] = TurnDetection(
+                type="server_vad",
+                threshold=0.9,
+                prefix_padding_ms=500,
+                silence_duration_ms=new_silence,
+            )
+
+        if new_speed != old_speed:
+            new_speed = max(0.75, min(1.5, new_speed))
+            kwargs["speed"] = new_speed
+
+        if new_voice != old_voice:
+            voice_map = {"male": "echo", "female": "shimmer", "neutral": "alloy"}
+            kwargs["voice"] = voice_map.get(new_voice, "alloy")
+
+        realtime_model.update_options(**kwargs)
+        config_state["config"] = new_cfg
+        log.info(f"voice_config updated mid-session: {kwargs}")
+    except Exception as e:
+        log.warning(f"voice_config mid-session update failed (non-fatal): {e}")
+
+
 def _create_realtime_model(voice_config: dict = None):
     """Build the Azure OpenAI RealtimeModel from environment variables."""
     azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT", "").rstrip("/")
@@ -1334,6 +1387,9 @@ async def entrypoint(ctx: JobContext):
         debug_log.error(f"STEP 5/5 FAILED: {e}")
         raise
 
+    # Track voice_config for mid-session updates (mutable dict for closure access)
+    _voice_config_state = {"config": voice_config}
+
     # Add room event handlers for debugging participant/track connections
     @ctx.room.on("participant_connected")
     def on_participant_connected(participant):
@@ -1342,6 +1398,10 @@ async def entrypoint(ctx: JobContext):
     @ctx.room.on("track_subscribed")
     def on_track_subscribed(track, publication, participant):
         debug_log.info(f"ROOM EVENT: Track subscribed: {track.kind} from {participant.identity}")
+        # v5.0: Re-read voice_config from DB when client reconnects (audio track re-subscribed).
+        # This enables mid-session updates to speech_speed, silence_duration_ms, voice_gender.
+        if participant.identity.startswith("client-"):
+            _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log)
 
     @ctx.room.on("track_published")
     def on_track_published(publication, participant):
