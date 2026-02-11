@@ -124,6 +124,15 @@ class MarketInsight(BaseModel):
     relevance: str = Field(default="high", description="Relevance: high, medium, low")
 
 
+class QAPair(BaseModel):
+    """Question-answer pair from an interview."""
+
+    question: str = Field(..., description="The question asked")
+    answer: str = Field(default="", description="Respondent's answer")
+    topic: str = Field(default="general", description="Topic tag")
+    follow_ups: List[str] = Field(default_factory=list, description="Follow-up questions")
+
+
 # === MAIN ANKETA MODEL ===
 
 class FinalAnketa(BaseModel):
@@ -386,3 +395,79 @@ class FinalAnketa(BaseModel):
             'launch_checklist': len(self.launch_checklist),
             'ai_recommendations': len(self.ai_recommendations),
         }
+
+
+# === INTERVIEW ANKETA MODEL ===
+
+class InterviewAnketa(BaseModel):
+    """
+    Anketa for interview mode — structured Q&A collection.
+
+    Used when consultation_type == "interview".
+    Focuses on collecting respondent answers rather than business analysis.
+    """
+
+    # Identity
+    anketa_id: str = Field(default_factory=lambda: str(uuid4()), description="Unique anketa ID")
+    interview_id: str = Field(default="", description="Associated session ID")
+    anketa_type: str = Field(default="interview", description="Always 'interview'")
+
+    # Contacts
+    company_name: str = Field(default="", description="Company or respondent organization")
+    contact_name: str = Field(default="", description="Respondent name")
+    contact_role: str = Field(default="", description="Respondent role")
+    contact_email: str = Field(default="", description="Email")
+    contact_phone: str = Field(default="", description="Phone")
+
+    # Interview settings
+    interview_type: str = Field(default="general", description="Type: market_research, customer_discovery, hr, survey, requirements")
+    interview_title: str = Field(default="", description="Title or topic of the interview")
+    target_topics: List[str] = Field(default_factory=list, description="Topics to cover")
+
+    # Q&A data (core)
+    qa_pairs: List[QAPair] = Field(default_factory=list, description="Question-answer pairs")
+    detected_topics: List[str] = Field(default_factory=list, description="Topics detected in conversation")
+    key_quotes: List[str] = Field(default_factory=list, description="Notable quotes from respondent")
+
+    # Respondent profile
+    interviewee_context: str = Field(default="", description="Context about respondent")
+    interviewee_industry: str = Field(default="", description="Respondent's industry")
+
+    # AI analysis (generated after interview)
+    summary: str = Field(default="", description="AI-generated interview summary")
+    key_insights: List[str] = Field(default_factory=list, description="Key insights from interview")
+    ai_recommendations: List[AIRecommendation] = Field(default_factory=list, description="AI recommendations")
+    unresolved_topics: List[str] = Field(default_factory=list, description="Topics not fully covered")
+
+    # Metadata
+    created_at: datetime = Field(default_factory=datetime.now, description="Creation timestamp")
+    consultation_duration_seconds: float = Field(default=0.0, description="Duration")
+    anketa_version: str = Field(default="2.0", description="Schema version")
+
+    def completion_rate(self) -> float:
+        """Calculate completion based on Q&A coverage and contact info."""
+        score = 0.0
+        total = 0.0
+
+        # Contact info (weight: 20%)
+        contact_fields = [self.company_name, self.contact_name, self.interview_title]
+        contact_filled = sum(1 for f in contact_fields if f and f.strip())
+        score += 0.2 * (contact_filled / max(len(contact_fields), 1))
+        total += 0.2
+
+        # Q&A pairs (weight: 70%)
+        if self.qa_pairs:
+            answered = sum(1 for qa in self.qa_pairs if qa.answer.strip())
+            score += 0.7 * (answered / len(self.qa_pairs))
+        total += 0.7
+
+        # Topics detected (weight: 10%)
+        if self.detected_topics:
+            score += 0.1
+        total += 0.1
+
+        return score / total if total > 0 else 0.0
+
+
+# Backward-compatible alias
+ConsultationAnketa = FinalAnketa

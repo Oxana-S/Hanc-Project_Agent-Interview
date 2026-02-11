@@ -5,21 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanc.AI | Голосовой консультант</title>
     <script src="https://unpkg.com/livekit-client@2.9.3/dist/livekit-client.umd.js"></script>
-    <link rel="stylesheet" href="/styles.css?v=4.7">
+    <link rel="stylesheet" href="/styles.css?v=5.0">
 </head>
 <body>
     <div id="app">
         <!-- Header / Navigation -->
         <header class="header">
             <a href="/" class="logo" id="logo-link">Hanc.AI</a>
+            <a href="#" class="about-link" onclick="app.showScreen('landing'); return false;">О продукте</a>
             <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая консультация</button>
         </header>
 
         <!-- Main Content -->
         <main class="main-content">
 
+            <!-- ===== LANDING PAGE ===== -->
+            <div id="landing-screen" class="screen" style="display:none">
+                <div class="landing-container">
+                    <!-- Hero -->
+                    <section class="landing-hero">
+                        <h1 class="hero-title">Голосовой AI, который слушает бизнес</h1>
+                        <p class="hero-subtitle">
+                            Проведите структурированную консультацию или интервью с AI-агентом —
+                            и получите готовый документ вместо записей на салфетке.
+                        </p>
+                        <button class="btn-primary btn-hero" onclick="app.goToDashboard()">
+                            Начать бесплатно
+                        </button>
+                    </section>
+
+                    <!-- How it works -->
+                    <section class="landing-section landing-steps">
+                        <h2 class="landing-section-title">Как это работает</h2>
+                        <div class="steps-grid">
+                            <div class="step-card landing-animate">
+                                <div class="step-number">1</div>
+                                <h3>Запустите сессию</h3>
+                                <p>Выберите тип: консультация или интервью. Настройте голос и скорость.</p>
+                            </div>
+                            <div class="step-card landing-animate">
+                                <div class="step-number">2</div>
+                                <h3>Говорите как обычно</h3>
+                                <p>AI ведёт беседу, задаёт правильные вопросы. Анкета заполняется в реальном времени.</p>
+                            </div>
+                            <div class="step-card landing-animate">
+                                <div class="step-number">3</div>
+                                <h3>Заберите результат</h3>
+                                <p>Структурированная анкета, AI-рекомендации. Экспорт в Markdown или PDF.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Two modes -->
+                    <section class="landing-section landing-modes">
+                        <h2 class="landing-section-title">Два режима работы</h2>
+                        <div class="modes-grid">
+                            <div class="mode-card mode-consultation landing-animate">
+                                <h3>AI-Консультант</h3>
+                                <p class="mode-desc">Эксперт, который разберёт ваш бизнес по полочкам</p>
+                                <ul>
+                                    <li>Анализ бизнес-процессов</li>
+                                    <li>Рекомендации по автоматизации</li>
+                                    <li>База знаний 40+ отраслей</li>
+                                    <li>FAQ, возражения, KPI</li>
+                                </ul>
+                                <p class="mode-example">Пример: «Хочу автоматизировать приём звонков в клинике»</p>
+                            </div>
+                            <div class="mode-card mode-interview landing-animate">
+                                <h3>AI-Интервьюер</h3>
+                                <p class="mode-desc">Нейтральный исследователь, который слушает и структурирует</p>
+                                <ul>
+                                    <li>Customer discovery</li>
+                                    <li>HR-интервью</li>
+                                    <li>Сбор требований</li>
+                                    <li>Маркетинговые исследования</li>
+                                </ul>
+                                <p class="mode-example">Пример: «Нужно опросить 20 клиентов о новом продукте»</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Features -->
+                    <section class="landing-section landing-features">
+                        <h2 class="landing-section-title">Что под капотом</h2>
+                        <div class="features-grid">
+                            <div class="feature-card landing-animate">
+                                <h4>Анкета в реальном времени</h4>
+                                <p>Пока вы говорите, AI извлекает данные и заполняет форму. Каждые 6 сообщений — обновление.</p>
+                            </div>
+                            <div class="feature-card landing-animate">
+                                <h4>AI-аналитика</h4>
+                                <p>Конкуренты, KPI, FAQ, сценарии возражений — генерируются автоматически на основе вашей отрасли.</p>
+                            </div>
+                            <div class="feature-card landing-animate">
+                                <h4>40+ отраслей</h4>
+                                <p>База знаний с профилями для медицины, ритейла, логистики, IT, образования и других отраслей.</p>
+                            </div>
+                            <div class="feature-card landing-animate">
+                                <h4>Экспорт</h4>
+                                <p>Markdown, PDF. Готовый документ для команды или клиента.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Bottom CTA -->
+                    <section class="landing-section landing-cta">
+                        <h2>Попробуйте — это займёт 10 минут</h2>
+                        <p>Первая сессия бесплатна. Никакой регистрации.</p>
+                        <button class="btn-primary btn-hero" onclick="app.goToDashboard()">
+                            Начать консультацию
+                        </button>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="landing-footer">
+                        <p>Hanc.AI — платформа голосовых AI-агентов для бизнеса</p>
+                    </footer>
+                </div>
+            </div>
+
             <!-- ========== DASHBOARD SCREEN ========== -->
             <div id="dashboard-screen" class="screen">
+                <!-- Settings Panel -->
+                <details class="settings-panel" id="settings-panel" open>
+                    <summary class="settings-toggle">Настройки консультации</summary>
+                    <div class="settings-body">
+                        <fieldset class="segment-control" data-setting="consultation_type">
+                            <legend class="setting-label">Тип</legend>
+                            <label class="segment"><input type="radio" name="consultation_type" value="consultation" checked><span>Консультация</span></label>
+                            <label class="segment"><input type="radio" name="consultation_type" value="interview"><span>Интервью</span></label>
+                        </fieldset>
+                        <fieldset class="segment-control" data-setting="voice_gender">
+                            <legend class="setting-label">Голос</legend>
+                            <label class="segment"><input type="radio" name="voice_gender" value="female"><span>Женский</span></label>
+                            <label class="segment"><input type="radio" name="voice_gender" value="male"><span>Мужской</span></label>
+                            <label class="segment"><input type="radio" name="voice_gender" value="neutral" checked><span>Нейтральный</span></label>
+                        </fieldset>
+                        <fieldset class="segment-control" data-setting="verbosity">
+                            <legend class="setting-label">Ответы</legend>
+                            <label class="segment"><input type="radio" name="verbosity" value="concise"><span>Кратко</span></label>
+                            <label class="segment"><input type="radio" name="verbosity" value="normal" checked><span>Нормально</span></label>
+                            <label class="segment"><input type="radio" name="verbosity" value="verbose"><span>Подробно</span></label>
+                        </fieldset>
+                        <div class="setting-slider">
+                            <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x</label>
+                            <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">
+                        </div>
+                        <div class="setting-slider">
+                            <label for="silence-slider">Задержка тишины: <span id="silence-value">2.0</span> сек</label>
+                            <input type="range" id="silence-slider" min="500" max="4000" step="250" value="2000">
+                        </div>
+                    </div>
+                </details>
+
                 <!-- Filters + Bulk Actions -->
                 <div class="dashboard-filters">
                     <div class="filter-tabs" id="filter-tabs">
@@ -29,14 +167,6 @@
                         <button class="filter-tab" data-status="confirmed">Завершённые</button>
                     </div>
                     <button id="delete-selected-btn" class="btn btn-danger" style="display:none">Удалить выбранные</button>
-                </div>
-
-                <!-- Voice Settings -->
-                <div class="voice-settings" id="voice-settings">
-                    <label for="silence-slider">Задержка ответа: <span id="silence-value">2.0</span> сек</label>
-                    <input type="range" id="silence-slider" min="500" max="4000" step="250" value="2000">
-                    <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x</label>
-                    <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">
                 </div>
 
                 <!-- Sessions Table -->
@@ -89,7 +219,7 @@
 
                 <!-- Progress -->
                 <div class="progress-section">
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                     </div>
                     <div class="progress-text" id="progress-text">0% заполнено</div>
@@ -125,10 +255,10 @@
                             </div>
 
                             <div class="buttons">
-                                <button id="mic-btn" class="btn btn-mic">
+                                <button id="mic-btn" class="btn btn-mic" aria-label="Микрофон">
                                     <span class="icon">🎤</span>
                                 </button>
-                                <button id="pause-btn" class="btn btn-pause" disabled>
+                                <button id="pause-btn" class="btn btn-pause" disabled aria-label="Пауза">
                                     <span class="icon">⏸</span>
                                 </button>
                             </div>
@@ -358,13 +488,29 @@
                 <div class="review-actions">
                     <button id="review-resume-btn" class="btn btn-primary" type="button">Продолжить сессию</button>
                     <button id="review-copy-link-btn" class="btn btn-copy-link" type="button">Копировать ссылку</button>
+                    <div class="export-group">
+                        <span class="export-label">Экспорт:</span>
+                        <button class="btn-export" data-format="md" onclick="app.exportAnketa('md')">MD</button>
+                        <button class="btn-export" data-format="pdf" onclick="app.exportAnketa('pdf')">PDF</button>
+                    </div>
                 </div>
             </div>
 
         </main>
 
+        <!-- Inline Confirm Modal -->
+        <div id="confirm-modal" class="confirm-modal" style="display:none">
+            <div class="confirm-modal-box">
+                <p class="confirm-modal-text" id="confirm-modal-text">Вы уверены?</p>
+                <div class="confirm-modal-actions">
+                    <button class="btn btn-primary confirm-modal-yes" id="confirm-modal-yes">Да, завершить</button>
+                    <button class="btn confirm-modal-no" id="confirm-modal-no">Отмена</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Toast Container -->
-        <div id="toast-container" class="toast-container"></div>
+        <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
 
         <!-- Footer -->
         <footer class="footer">
@@ -372,6 +518,6 @@
         </footer>
     </div>
 
-    <script src="/app.js?v=4.7"></script>
+    <script src="/app.js?v=5.0"></script>
 </body>
 </html>

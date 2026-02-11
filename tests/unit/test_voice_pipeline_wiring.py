@@ -69,6 +69,7 @@ def _make_db_session(**overrides):
         "anketa_data": {"company_name": "TestLogistics", "industry": "logistics", "services": "Грузоперевозки"},
         "anketa_md": "## Анкета\n- Компания: TestLogistics",
         "unique_link": "abc-123",
+        "voice_config": None,
     }
     defaults.update(overrides)
     return SimpleNamespace(**defaults)

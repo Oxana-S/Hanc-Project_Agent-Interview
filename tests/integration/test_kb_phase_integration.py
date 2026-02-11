@@ -531,6 +531,7 @@ class TestP2_KBReinjection:
             duration_seconds=300,
             document_context=None,
             anketa_data={},
+            voice_config=None,
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
@@ -610,7 +611,7 @@ class TestP2_KBReinjection:
         mock_db_session = SimpleNamespace(
             session_id="test-002", company_name="TestCo", contact_name="Jane",
             status="active", dialogue_history=[], duration_seconds=400,
-            document_context=None, anketa_data={},
+            document_context=None, anketa_data={}, voice_config=None,
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
@@ -668,7 +669,7 @@ class TestP2_KBReinjection:
         mock_db_session = SimpleNamespace(
             session_id="test-003", company_name="TestCo", contact_name="Jane",
             status="active", dialogue_history=[], duration_seconds=500,
-            document_context=None, anketa_data={},
+            document_context=None, anketa_data={}, voice_config=None,
         )
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \

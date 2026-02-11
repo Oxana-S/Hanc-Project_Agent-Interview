@@ -33,7 +33,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -348,6 +348,19 @@ async def get_anketa(session_id: str):
     }
 
 
+@app.put("/api/session/{session_id}/voice-config")
+async def update_voice_config(session_id: str, req: dict):
+    """Update voice_config for an existing session (e.g. speech_speed, silence_duration_ms)."""
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    session.voice_config = req
+    session_mgr.update_session(session)
+    session_log.info("voice_config_updated", session_id=session_id, voice_config=req)
+    return {"ok": True}
+
+
 @app.get("/api/session/{session_id}/reconnect")
 async def reconnect_session(session_id: str):
     """Get new LiveKit token to reconnect to an existing session room.
@@ -500,6 +513,49 @@ async def kill_session(session_id: str):
         "room_deleted": room_deleted,
         "room_name": room_name,
     }
+
+
+@app.get("/api/session/{session_id}/export/{format}")
+async def export_session(session_id: str, format: str):
+    """Export session anketa in the requested format (md or pdf/print-html)."""
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    anketa_md = session.anketa_md
+    company_name = session.company_name
+    voice_config = session.voice_config if session.voice_config else {}
+    session_type = voice_config.get("consultation_type", "consultation")
+
+    if format == "md":
+        from src.anketa.exporter import export_markdown
+
+        content, filename = export_markdown(anketa_md or "", company_name or "")
+        session_log.info("session_exported", session_id=session_id, format="md")
+        return Response(
+            content=content,
+            media_type="text/markdown",
+            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+        )
+
+    elif format == "pdf":
+        from src.anketa.exporter import export_print_html
+
+        content, filename = export_print_html(
+            anketa_md or "", company_name or "", session_type
+        )
+        session_log.info("session_exported", session_id=session_id, format="pdf")
+        return Response(
+            content=content,
+            media_type="text/html",
+            headers={"Content-Disposition": f'inline; filename="{filename}"'},
+        )
+
+    else:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported export format: {format}. Supported: md, pdf",
+        )
 
 
 # ---------------------------------------------------------------------------

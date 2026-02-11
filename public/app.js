@@ -98,6 +98,7 @@ class VoiceInterviewerApp {
         this.anketaSaveTimeout = null;
         this.focusedField = null;
         this.localEdits = {};
+        this.consultationType = 'consultation'; // 'consultation' or 'interview'
         this.lastServerAnketa = {};
         this.messageCount = 0;
         this.roomName = null;
@@ -177,6 +178,7 @@ class VoiceInterviewerApp {
 
         // Screens
         this.screens = {
+            landing: document.getElementById('landing-screen'),
             dashboard: document.getElementById('dashboard-screen'),
             interview: document.getElementById('interview-screen'),
             review: document.getElementById('review-screen'),
@@ -228,6 +230,20 @@ class VoiceInterviewerApp {
             });
         }
 
+        // Restore settings from localStorage
+        this._restoreSettings();
+
+        // Persist settings on change
+        document.querySelectorAll('.segment-control input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => this._persistSettings());
+        });
+        if (this.elements.silenceSlider) {
+            this.elements.silenceSlider.addEventListener('change', () => this._persistSettings());
+        }
+        if (this.elements.speedSlider) {
+            this.elements.speedSlider.addEventListener('change', () => this._persistSettings());
+        }
+
         // Dashboard filters
         document.getElementById('filter-tabs')?.addEventListener('click', (e) => {
             const btn = e.target.closest('.filter-tab');
@@ -257,6 +273,49 @@ class VoiceInterviewerApp {
         this.router.resolve();
     }
 
+    // ===== Voice Settings =====
+
+    getVoiceSettings() {
+        return {
+            speech_speed: parseFloat(this.elements.speedSlider?.value || '100') / 100,
+            silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '2000', 10),
+            voice_gender: document.querySelector('input[name="voice_gender"]:checked')?.value || 'neutral',
+            consultation_type: document.querySelector('input[name="consultation_type"]:checked')?.value || 'consultation',
+            verbosity: document.querySelector('input[name="verbosity"]:checked')?.value || 'normal',
+        };
+    }
+
+    _persistSettings() {
+        try {
+            localStorage.setItem('hanc_voice_settings', JSON.stringify(this.getVoiceSettings()));
+        } catch {}
+    }
+
+    _restoreSettings() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('hanc_voice_settings'));
+            if (!saved) return;
+
+            // Restore sliders
+            if (saved.silence_duration_ms && this.elements.silenceSlider) {
+                this.elements.silenceSlider.value = saved.silence_duration_ms;
+                this.elements.silenceValue.textContent = (saved.silence_duration_ms / 1000).toFixed(1);
+            }
+            if (saved.speech_speed && this.elements.speedSlider) {
+                this.elements.speedSlider.value = Math.round(saved.speech_speed * 100);
+                this.elements.speedValue.textContent = saved.speech_speed.toFixed(1);
+            }
+
+            // Restore radio buttons
+            for (const name of ['voice_gender', 'consultation_type', 'verbosity']) {
+                if (saved[name]) {
+                    const radio = document.querySelector(`input[name="${name}"][value="${saved[name]}"]`);
+                    if (radio) radio.checked = true;
+                }
+            }
+        } catch {}
+    }
+
     // ===== Screen Management =====
 
     showScreen(screenName) {
@@ -266,11 +325,32 @@ class VoiceInterviewerApp {
         }
     }
 
+    _initLandingAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.landing-animate').forEach(el => observer.observe(el));
+    }
+
     // ===== DASHBOARD =====
 
     async showDashboard() {
-        this.showScreen('dashboard');
         this.stopAnketaPolling();
+
+        // First-time visitors see the landing page instead of the dashboard
+        if (!localStorage.getItem('hasVisited')) {
+            this.showScreen('landing');
+            this._initLandingAnimations();
+            return;
+        }
+
+        this.showScreen('dashboard');
         await this.loadSessions(this.currentFilter);
     }
 
@@ -498,6 +578,15 @@ class VoiceInterviewerApp {
                 this.elements.pauseBtn.disabled = false;
             }
 
+            // Detect consultation type from voice_config or anketa_data
+            if (sessionData.voice_config && sessionData.voice_config.consultation_type) {
+                this.consultationType = sessionData.voice_config.consultation_type;
+            } else if (sessionData.anketa_data && sessionData.anketa_data.anketa_type === 'interview') {
+                this.consultationType = 'interview';
+            } else {
+                this.consultationType = 'consultation';
+            }
+
             // Reset state
             this.isPaused = false;
             this.localEdits = {};
@@ -531,6 +620,13 @@ class VoiceInterviewerApp {
             // Reconnect to LiveKit if active
             if (sessionData.status === 'active' || sessionData.status === 'paused') {
                 try {
+                    // Send current slider values so the agent uses updated voice_config
+                    await fetch(`/api/session/${this.sessionId}/voice-config`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(this.getVoiceSettings()),
+                    });
+
                     const reconResp = await fetch(`/api/session/${this.sessionId}/reconnect`);
                     if (reconResp.ok) {
                         const reconData = await reconResp.json();
@@ -578,10 +674,7 @@ class VoiceInterviewerApp {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     pattern: 'interaction',
-                    voice_settings: {
-                        silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '2000', 10),
-                        speech_speed: parseFloat(this.elements.speedSlider?.value || '100') / 100,
-                    },
+                    voice_settings: this.getVoiceSettings(),
                 }),
             });
 
@@ -601,6 +694,7 @@ class VoiceInterviewerApp {
             this._lastFieldCount = 0;
             this._lastPct = 0;
             this._agentSpoke = false;
+            this.consultationType = this.getVoiceSettings().consultation_type || 'consultation';
             this.clearAnketaForm();
 
             // Update UI
@@ -646,6 +740,11 @@ class VoiceInterviewerApp {
             if (!resp.ok) throw new Error('Сессия не найдена');
             const data = await resp.json();
 
+            // Store session ID for export functionality
+            if (data.session_id) {
+                this.sessionId = data.session_id;
+            }
+
             // Header
             document.getElementById('review-company').textContent = data.company_name || '—';
             const badge = document.getElementById('review-status-badge');
@@ -676,6 +775,13 @@ class VoiceInterviewerApp {
 
     _renderReviewAnketa(anketa) {
         const container = document.getElementById('review-anketa-content');
+
+        // v5.0: Interview mode review rendering
+        if (anketa.anketa_type === 'interview') {
+            this._renderReviewAnketaInterview(anketa, container);
+            return;
+        }
+
         const normalized = this._normalizeAnketaData(anketa);
 
         const sections = [
@@ -721,6 +827,78 @@ class VoiceInterviewerApp {
         container.innerHTML = html || '<p class="review-empty">Анкета пуста</p>';
     }
 
+    _renderReviewAnketaInterview(anketa, container) {
+        let html = '';
+
+        // Section 1: Respondent info
+        const infoFields = [
+            { key: 'contact_name', label: 'Имя' },
+            { key: 'contact_role', label: 'Роль' },
+            { key: 'interview_title', label: 'Тема интервью' },
+        ];
+        const filledInfo = infoFields.filter(f => anketa[f.key] && String(anketa[f.key]).trim());
+        if (filledInfo.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Респондент</div>';
+            for (const f of filledInfo) {
+                html += `<div class="review-field">
+                    <span class="review-label">${f.label}</span>
+                    <span class="review-value">${this._escapeHtml(String(anketa[f.key]))}</span>
+                </div>`;
+            }
+            html += '</div>';
+        }
+
+        // Section 2: Q&A Pairs
+        const qaPairs = anketa.qa_pairs || [];
+        if (qaPairs.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Вопросы и ответы</div>';
+            for (const qa of qaPairs) {
+                const topic = qa.topic && qa.topic !== 'general' ? ` <span class="qa-topic">${this._escapeHtml(qa.topic)}</span>` : '';
+                html += `<div class="qa-pair">
+                    <div class="qa-question">В: ${this._escapeHtml(qa.question || '')}${topic}</div>
+                    <div class="qa-answer">${this._escapeHtml(qa.answer || '\u2014')}</div>
+                </div>`;
+            }
+            html += '</div>';
+        }
+
+        // Section 3: Detected topics
+        const topics = anketa.detected_topics || [];
+        if (topics.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Выявленные темы</div>';
+            html += `<div class="topics-list">${topics.map(t => `<span class="topic-tag">${this._escapeHtml(t)}</span>`).join(' ')}</div>`;
+            html += '</div>';
+        }
+
+        // Section 4: Key quotes
+        const quotes = anketa.key_quotes || [];
+        if (quotes.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Ключевые цитаты</div>';
+            for (const q of quotes) {
+                html += `<blockquote class="key-quote">"${this._escapeHtml(q)}"</blockquote>`;
+            }
+            html += '</div>';
+        }
+
+        // Section 5: AI Summary & Insights
+        if (anketa.summary || (anketa.key_insights && anketa.key_insights.length > 0)) {
+            html += '<div class="review-section"><div class="review-section-title">AI-анализ</div>';
+            if (anketa.summary) {
+                html += `<p class="interview-summary">${this._escapeHtml(anketa.summary)}</p>`;
+            }
+            if (anketa.key_insights && anketa.key_insights.length > 0) {
+                html += '<div class="insights-list">';
+                for (const insight of anketa.key_insights) {
+                    html += `<div class="insight-item">${this._escapeHtml(insight)}</div>`;
+                }
+                html += '</div>';
+            }
+            html += '</div>';
+        }
+
+        container.innerHTML = html || '<p class="review-empty">Анкета интервью пуста</p>';
+    }
+
     _renderReviewDialogue(history) {
         const container = document.getElementById('review-dialogue');
         if (!history.length) {
@@ -742,6 +920,13 @@ class VoiceInterviewerApp {
 
     async connectToRoom(url, token, roomName) {
         LOG.info('connectToRoom:', { url, roomName, tokenLength: token ? token.length : 0 });
+
+        // Show loading spinner
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.className = 'loading-overlay visible';
+        loadingOverlay.id = 'loading-overlay';
+        loadingOverlay.innerHTML = '<div class="spinner"></div><div class="loading-text">Подключение...</div>';
+        this.elements.dialogueContainer.appendChild(loadingOverlay);
 
         const { Room, RoomEvent, Track } = LivekitClient;
 
@@ -852,6 +1037,8 @@ class VoiceInterviewerApp {
         });
 
         await this.room.connect(url, token);
+        // Remove loading spinner
+        document.getElementById('loading-overlay')?.remove();
         this.localParticipant = this.room.localParticipant;
         LOG.info('Connected to room:', this.room.name);
     }
@@ -1024,8 +1211,13 @@ class VoiceInterviewerApp {
         contentDiv.className = 'content';
         contentDiv.textContent = content;
 
+        const timeEl = document.createElement('time');
+        timeEl.className = 'message-time';
+        timeEl.textContent = this._formatTime(new Date());
+
         messageDiv.appendChild(authorSpan);
         messageDiv.appendChild(contentDiv);
+        messageDiv.appendChild(timeEl);
 
         this.elements.dialogueContainer.appendChild(messageDiv);
         this.elements.dialogueContainer.scrollTop = this.elements.dialogueContainer.scrollHeight;
@@ -1078,6 +1270,11 @@ class VoiceInterviewerApp {
             }
 
             if (data.anketa_data) {
+                // v5.0: Detect anketa type for rendering
+                if (data.anketa_data.anketa_type === 'interview') {
+                    this.consultationType = 'interview';
+                }
+
                 // Normalize field names (business_description→company_description, etc.)
                 // BEFORE counting, so mapped fields are included in progress
                 const normalized = this._normalizeAnketaData(data.anketa_data);
@@ -1087,13 +1284,24 @@ class VoiceInterviewerApp {
                     normalized[k] && normalized[k] !== '' &&
                     !(Array.isArray(normalized[k]) && normalized[k].length === 0)
                 );
-                this.updateAnketaFromServer(data.anketa_data);
-                this.updateAIBlocksSummary(data.anketa_data);
+                if (this.consultationType === 'interview') {
+                    this.updateAnketaFromServerInterview(data.anketa_data);
+                } else {
+                    this.updateAnketaFromServer(data.anketa_data);
+                    this.updateAIBlocksSummary(data.anketa_data);
+                }
                 this.lastServerAnketa = { ...data.anketa_data };
 
-                const pct = this.anketaFields.length > 0
-                    ? Math.min(100, Math.round(keys.length / this.anketaFields.length * 100))
-                    : 0;
+                let pct;
+                if (this.consultationType === 'interview') {
+                    const qaPairs = data.anketa_data.qa_pairs || [];
+                    const answered = qaPairs.filter(qa => qa.answer && qa.answer.trim()).length;
+                    pct = qaPairs.length > 0 ? Math.min(100, Math.round(answered / qaPairs.length * 100)) : 0;
+                } else {
+                    pct = this.anketaFields.length > 0
+                        ? Math.min(100, Math.round(keys.length / this.anketaFields.length * 100))
+                        : 0;
+                }
                 this.updateProgress(pct);
 
                 // Status ticker + toast notifications
@@ -1218,6 +1426,100 @@ class VoiceInterviewerApp {
         if (section && summary) {
             section.style.display = hasAny ? 'block' : 'none';
             summary.innerHTML = html;
+        }
+    }
+
+    // ===== Interview Anketa Rendering =====
+
+    updateAnketaFromServerInterview(anketaData) {
+        // For interview mode, we render Q&A pairs instead of form fields
+        const container = this.elements.anketaForm;
+        if (!container) return;
+
+        // Clear form and render interview data
+        container.innerHTML = '';
+
+        // Section 1: Respondent info
+        const infoSection = document.createElement('div');
+        infoSection.className = 'anketa-section';
+        infoSection.innerHTML = `
+            <div class="anketa-section-title">Респондент</div>
+            <div class="anketa-field">
+                <label>Имя</label>
+                <input type="text" value="${this._escapeHtml(anketaData.contact_name || '')}" readonly>
+            </div>
+            <div class="anketa-field">
+                <label>Роль</label>
+                <input type="text" value="${this._escapeHtml(anketaData.contact_role || '')}" readonly>
+            </div>
+            <div class="anketa-field">
+                <label>Тема интервью</label>
+                <input type="text" value="${this._escapeHtml(anketaData.interview_title || '')}" readonly>
+            </div>
+        `;
+        container.appendChild(infoSection);
+
+        // Section 2: Q&A Pairs
+        const qaPairs = anketaData.qa_pairs || [];
+        if (qaPairs.length > 0) {
+            const qaSection = document.createElement('div');
+            qaSection.className = 'anketa-section';
+            let qaHtml = '<div class="anketa-section-title">Вопросы и ответы</div>';
+            for (const qa of qaPairs) {
+                const topic = qa.topic && qa.topic !== 'general' ? `<span class="qa-topic">${this._escapeHtml(qa.topic)}</span>` : '';
+                qaHtml += `
+                    <div class="qa-pair">
+                        <div class="qa-question">В: ${this._escapeHtml(qa.question || '')} ${topic}</div>
+                        <div class="qa-answer">${this._escapeHtml(qa.answer || '\u2014')}</div>
+                    </div>
+                `;
+            }
+            qaSection.innerHTML = qaHtml;
+            container.appendChild(qaSection);
+        }
+
+        // Section 3: Detected topics
+        const topics = anketaData.detected_topics || [];
+        if (topics.length > 0) {
+            const topicSection = document.createElement('div');
+            topicSection.className = 'anketa-section';
+            topicSection.innerHTML = `
+                <div class="anketa-section-title">Выявленные темы</div>
+                <div class="topics-list">${topics.map(t => `<span class="topic-tag">${this._escapeHtml(t)}</span>`).join(' ')}</div>
+            `;
+            container.appendChild(topicSection);
+        }
+
+        // Section 4: Key quotes
+        const quotes = anketaData.key_quotes || [];
+        if (quotes.length > 0) {
+            const quotesSection = document.createElement('div');
+            quotesSection.className = 'anketa-section';
+            let quotesHtml = '<div class="anketa-section-title">Ключевые цитаты</div>';
+            for (const q of quotes) {
+                quotesHtml += `<blockquote class="key-quote">"${this._escapeHtml(q)}"</blockquote>`;
+            }
+            quotesSection.innerHTML = quotesHtml;
+            container.appendChild(quotesSection);
+        }
+
+        // Section 5: AI Summary & Insights
+        if (anketaData.summary || (anketaData.key_insights && anketaData.key_insights.length > 0)) {
+            const aiSection = document.createElement('div');
+            aiSection.className = 'anketa-section';
+            let aiHtml = '<div class="anketa-section-title">AI-анализ</div>';
+            if (anketaData.summary) {
+                aiHtml += `<p class="interview-summary">${this._escapeHtml(anketaData.summary)}</p>`;
+            }
+            if (anketaData.key_insights && anketaData.key_insights.length > 0) {
+                aiHtml += '<div class="insights-list">';
+                for (const insight of anketaData.key_insights) {
+                    aiHtml += `<div class="insight-item">${this._escapeHtml(insight)}</div>`;
+                }
+                aiHtml += '</div>';
+            }
+            aiSection.innerHTML = aiHtml;
+            container.appendChild(aiSection);
         }
     }
 
@@ -1362,7 +1664,8 @@ class VoiceInterviewerApp {
 
     async saveAndLeave() {
         if (!this.sessionId || this._savingAndLeaving) return;
-        if (!confirm('Завершить консультацию? Голосовое соединение будет прервано.')) return;
+        const confirmed = await this._showConfirmModal('Завершить консультацию? Голосовое соединение будет прервано.');
+        if (!confirmed) return;
         this._savingAndLeaving = true;
 
         if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
@@ -1417,6 +1720,43 @@ class VoiceInterviewerApp {
         const link = `${window.location.origin}/session/${this.uniqueLink}`;
         await this.copyToClipboard(link);
         showToast('Ссылка скопирована');
+    }
+
+    goToDashboard() {
+        localStorage.setItem('hasVisited', '1');
+        this.showScreen('dashboard');
+        this.loadSessions();
+    }
+
+    async exportAnketa(format) {
+        if (!this.sessionId) {
+            showToast('Нет активной сессии');
+            return;
+        }
+
+        try {
+            if (format === 'pdf') {
+                // Open styled HTML in new tab for print-to-PDF
+                window.open(`/api/session/${this.sessionId}/export/pdf`, '_blank');
+            } else if (format === 'md') {
+                // Download markdown file
+                const response = await fetch(`/api/session/${this.sessionId}/export/md`);
+                if (!response.ok) throw new Error('Export failed');
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = response.headers.get('Content-Disposition')?.split('filename="')[1]?.replace('"', '') || 'anketa.md';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('Markdown скачан');
+            }
+        } catch (error) {
+            console.error('Export error:', error);
+            showToast('Ошибка экспорта', 'error');
+        }
     }
 
     async copyToClipboard(text) {
@@ -1500,6 +1840,38 @@ class VoiceInterviewerApp {
         }
 
         return `${day}.${month} ${hours}:${mins}`;
+    }
+
+    _formatTime(date) {
+        const h = String(date.getHours()).padStart(2, '0');
+        const m = String(date.getMinutes()).padStart(2, '0');
+        return `${h}:${m}`;
+    }
+
+    _showConfirmModal(text) {
+        return new Promise((resolve) => {
+            const modal = document.getElementById('confirm-modal');
+            const textEl = document.getElementById('confirm-modal-text');
+            const yesBtn = document.getElementById('confirm-modal-yes');
+            const noBtn = document.getElementById('confirm-modal-no');
+            if (!modal) { resolve(confirm(text)); return; }
+
+            textEl.textContent = text;
+            modal.style.display = '';
+
+            const cleanup = (result) => {
+                modal.style.display = 'none';
+                yesBtn.removeEventListener('click', onYes);
+                noBtn.removeEventListener('click', onNo);
+                resolve(result);
+            };
+
+            const onYes = () => cleanup(true);
+            const onNo = () => cleanup(false);
+
+            yesBtn.addEventListener('click', onYes);
+            noBtn.addEventListener('click', onNo);
+        });
     }
 
     _escapeHtml(str) {

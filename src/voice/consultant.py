@@ -145,13 +145,23 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
         consultation.status = "completed"
         return
 
+    # v5.0: Determine consultation type for routing
+    _ct = "consultation"
+    try:
+        _fin_session = _session_mgr.get_session(consultation.session_id)
+        if _fin_session and _fin_session.voice_config:
+            _ct = _fin_session.voice_config.get("consultation_type", "consultation")
+    except Exception:
+        pass
+
     try:
         deepseek = DeepSeekClient()
         extractor = AnketaExtractor(deepseek)
 
         anketa = await extractor.extract(
             dialogue_history=consultation.dialogue_history,
-            duration_seconds=consultation.get_duration_seconds()
+            duration_seconds=consultation.get_duration_seconds(),
+            consultation_type=_ct,
         )
 
         company_name = anketa.company_name or consultation.get_company_name()
@@ -475,6 +485,12 @@ async def _extract_and_update_anketa(
         # Fetch document_context from DB if client uploaded files
         doc_context = None
         db_session = _session_mgr.get_session(session_id)
+
+        # v5.0: Determine consultation type for routing
+        _consultation_type = "consultation"
+        if db_session and db_session.voice_config:
+            _consultation_type = db_session.voice_config.get("consultation_type", "consultation")
+
         if db_session and db_session.document_context:
             try:
                 from src.documents import DocumentContext
@@ -489,6 +505,7 @@ async def _extract_and_update_anketa(
             dialogue_history=consultation.dialogue_history,
             duration_seconds=consultation.get_duration_seconds(),
             document_context=doc_context,
+            consultation_type=_consultation_type,
         )
 
         anketa_data = anketa.model_dump(mode="json")
@@ -512,7 +529,7 @@ async def _extract_and_update_anketa(
         )
 
         # --- Launch background research if website detected ---
-        if not consultation.research_done and anketa.website:
+        if not consultation.research_done and anketa.website and _consultation_type != "interview":
             consultation.research_done = True  # set early to prevent duplicates
             industry_id_for_research = None
             try:
@@ -555,7 +572,8 @@ async def _extract_and_update_anketa(
                 anketa_log.debug("redis_cache_update_failed", error=str(e))
 
         # --- Inject/update industry KB context based on phase ---
-        if agent_session is not None:
+        # v5.0: Skip KB enrichment for interview mode (interviewer should be neutral)
+        if agent_session is not None and _consultation_type != "interview":
             try:
                 # Detect industry once, cache in session
                 if consultation.detected_profile is None:
@@ -668,6 +686,10 @@ async def _finalize_and_save(
             # Fetch document_context if client uploaded files
             doc_context = None
             session = _session_mgr.get_session(session_id)
+            # v5.0: Determine consultation type for extraction routing
+            _fin_ct = "consultation"
+            if session and session.voice_config:
+                _fin_ct = session.voice_config.get("consultation_type", "consultation")
             if session and session.document_context:
                 try:
                     from src.documents import DocumentContext
@@ -682,6 +704,7 @@ async def _finalize_and_save(
                 dialogue_history=consultation.dialogue_history,
                 duration_seconds=consultation.get_duration_seconds(),
                 document_context=doc_context,
+                consultation_type=_fin_ct,
             )
 
             anketa_data = anketa.model_dump(mode="json")
@@ -1021,6 +1044,15 @@ def _handle_conversation_item(
         )
 
 
+def _get_voice_id(voice_config: dict = None) -> str:
+    """Map voice_gender setting to Azure OpenAI voice ID."""
+    if not voice_config:
+        return "alloy"
+    gender = voice_config.get("voice_gender", "neutral")
+    voice_map = {"male": "echo", "female": "shimmer", "neutral": "alloy"}
+    return voice_map.get(gender, "alloy")
+
+
 def _create_realtime_model(voice_config: dict = None):
     """Build the Azure OpenAI RealtimeModel from environment variables."""
     azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT", "").rstrip("/")
@@ -1087,7 +1119,7 @@ def _create_realtime_model(voice_config: dict = None):
         azure_endpoint=wss_endpoint,
         api_key=azure_api_key,
         api_version=azure_api_version,
-        voice="alloy",
+        voice=_get_voice_id(voice_config),
         temperature=0.7,
         speed=speech_speed,
         # Explicit input audio transcription — required for user speech to appear
@@ -1169,7 +1201,20 @@ async def entrypoint(ctx: JobContext):
     # Step 3: Create VoiceAgent with instructions (+ resume context if returning)
     try:
         debug_log.info("STEP 3/5: Creating VoiceAgent...")
-        prompt = get_system_prompt()
+        # v5.0: Route prompt based on consultation_type
+        consultation_type = voice_config.get("consultation_type", "consultation") if voice_config else "consultation"
+        if consultation_type == "interview":
+            prompt = get_prompt("voice/interviewer", "system_prompt")
+        else:
+            prompt = get_system_prompt()
+
+        # v5.0: Verbosity injection — prepend instruction based on voice_config
+        if voice_config:
+            verbosity = voice_config.get("verbosity", "normal")
+            if verbosity == "concise":
+                prompt = "ВАЖНО: Отвечай МАКСИМАЛЬНО кратко — 1-2 предложения + 1 вопрос. Без длинных вступлений.\n\n" + prompt
+            elif verbosity == "verbose":
+                prompt = "ВАЖНО: Давай развёрнутые ответы с примерами и пояснениями. Объясняй подробно.\n\n" + prompt
 
         # Инъекция контекста предыдущего разговора для возобновлённых сессий
         if db_session and db_session.dialogue_history:

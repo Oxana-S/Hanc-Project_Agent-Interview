@@ -23,7 +23,9 @@ from src.anketa.schema import (
     # v2.0 models
     FAQItem, ObjectionHandler, DialogueExample, FinancialMetric,
     Competitor, MarketInsight, EscalationRule, KPIMetric,
-    ChecklistItem, AIRecommendation, TargetAudienceSegment
+    ChecklistItem, AIRecommendation, TargetAudienceSegment,
+    # v5.0 interview models
+    InterviewAnketa, QAPair
 )
 from src.anketa.data_cleaner import (
     JSONRepair, DialogueCleaner, SmartExtractor, AnketaPostProcessor
@@ -72,8 +74,9 @@ class AnketaExtractor:
         business_analysis: Optional[Dict[str, Any]] = None,
         proposed_solution: Optional[Dict[str, Any]] = None,
         duration_seconds: float = 0.0,
-        document_context: Optional[Any] = None
-    ) -> FinalAnketa:
+        document_context: Optional[Any] = None,
+        consultation_type: str = "consultation",
+    ) -> Any:
         """
         Extract structured data from all sources into FinalAnketa.
 
@@ -92,6 +95,10 @@ class AnketaExtractor:
             business_analysis = business_analysis.model_dump()
         if proposed_solution and hasattr(proposed_solution, 'model_dump'):
             proposed_solution = proposed_solution.model_dump()
+
+        # v5.0: Route to interview extraction if interview mode
+        if consultation_type == "interview":
+            return await self._extract_interview(dialogue_history, duration_seconds)
 
         prompt = self._build_extraction_prompt(
             dialogue_history,
@@ -1190,3 +1197,110 @@ class AnketaExtractor:
 
         anketa.anketa_version = "2.0"
         return anketa
+
+    # =========================================================================
+    # V5.0: INTERVIEW EXTRACTION
+    # =========================================================================
+
+    async def _extract_interview(
+        self,
+        dialogue_history: List[Dict[str, str]],
+        duration_seconds: float = 0.0,
+    ) -> InterviewAnketa:
+        """Extract structured interview data into InterviewAnketa."""
+        dialogue_text = "\n".join([
+            f"{msg.get('role', 'unknown').upper()}: {msg.get('content', '')}"
+            for msg in dialogue_history[-50:]
+        ])
+
+        prompt = f"""Ты — эксперт по извлечению данных из интервью.
+
+ЗАДАЧА: Извлеки структурированные данные из интервью в JSON.
+
+ПРАВИЛА:
+1. Извлекай ВСЕ пары вопрос-ответ из диалога
+2. Определи темы, которые обсуждались
+3. Выдели ключевые цитаты респондента
+4. Заполни профиль респондента если данные есть
+5. Верни ТОЛЬКО валидный JSON
+
+ДИАЛОГ ИНТЕРВЬЮ:
+{dialogue_text}
+
+СХЕМА JSON:
+{{
+  "contact_name": "имя респондента",
+  "contact_role": "роль/должность",
+  "company_name": "организация респондента",
+  "interview_title": "тема интервью",
+  "interviewee_context": "контекст о респонденте (опыт, бэкграунд)",
+  "interviewee_industry": "отрасль респондента",
+  "qa_pairs": [
+    {{"question": "заданный вопрос", "answer": "ответ респондента", "topic": "тег темы"}}
+  ],
+  "detected_topics": ["тема 1", "тема 2"],
+  "key_quotes": ["важная цитата 1", "важная цитата 2"],
+  "summary": "краткое резюме интервью (2-3 предложения)",
+  "key_insights": ["инсайт 1", "инсайт 2"]
+}}
+
+Верни ТОЛЬКО JSON:"""
+
+        system_prompt = "Ты — эксперт по анализу интервью. Извлекай данные точно и структурированно."
+
+        try:
+            response = await self.llm.chat(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.1,
+                max_tokens=8192
+            )
+
+            data, _ = self._parse_json_with_repair(response)
+            return self._build_interview_anketa(data, duration_seconds)
+
+        except Exception as e:
+            logger.error("Interview extraction failed", error=str(e))
+            return self._build_interview_anketa({}, duration_seconds)
+
+    def _build_interview_anketa(self, data: dict, duration_seconds: float) -> InterviewAnketa:
+        """Build InterviewAnketa from extracted data."""
+        qa_pairs = []
+        for qa in data.get('qa_pairs', []):
+            if isinstance(qa, dict):
+                qa_pairs.append(QAPair(
+                    question=qa.get('question', ''),
+                    answer=qa.get('answer', ''),
+                    topic=qa.get('topic', 'general'),
+                    follow_ups=qa.get('follow_ups', []),
+                ))
+
+        ai_recs = []
+        for rec in data.get('ai_recommendations', []):
+            if isinstance(rec, dict):
+                ai_recs.append(AIRecommendation(
+                    recommendation=rec.get('recommendation', ''),
+                    impact=rec.get('impact', ''),
+                    priority=rec.get('priority', 'medium'),
+                    effort=rec.get('effort', 'medium'),
+                ))
+
+        return InterviewAnketa(
+            company_name=data.get('company_name', ''),
+            contact_name=data.get('contact_name', ''),
+            contact_role=data.get('contact_role', ''),
+            interview_title=data.get('interview_title', ''),
+            interview_type=data.get('interview_type', 'general'),
+            interviewee_context=data.get('interviewee_context', ''),
+            interviewee_industry=data.get('interviewee_industry', ''),
+            qa_pairs=qa_pairs,
+            detected_topics=data.get('detected_topics', []),
+            key_quotes=data.get('key_quotes', []),
+            summary=data.get('summary', ''),
+            key_insights=data.get('key_insights', []),
+            ai_recommendations=ai_recs,
+            unresolved_topics=data.get('unresolved_topics', []),
+            consultation_duration_seconds=duration_seconds,
+        )
