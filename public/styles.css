@@ -521,6 +521,39 @@ body {
     margin-top: 0.2rem;
 }
 
+/* Status Ticker */
+
+.status-ticker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--surface-light);
+    border-radius: 0.375rem;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+}
+
+.status-ticker-dot.pulse {
+    animation: ticker-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ticker-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
 /* Dialogue */
 
 .dialogue-container {

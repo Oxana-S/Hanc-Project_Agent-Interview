@@ -40,18 +40,21 @@ class IndustryMatcher:
         index = self.loader.load_index()
 
         for industry_id, entry in index.industries.items():
-            # Добавляем aliases из индекса
+            # Добавляем aliases из индекса (skip < 3 chars — too generic)
             for alias in entry.aliases:
-                self._alias_map[alias.lower()] = industry_id
+                if len(alias) >= 3:
+                    self._alias_map[alias.lower()] = industry_id
 
             # Также добавляем само название
-            self._alias_map[entry.name.lower()] = industry_id
+            if len(entry.name) >= 3:
+                self._alias_map[entry.name.lower()] = industry_id
 
             # Загружаем полный профиль для дополнительных aliases
             profile = self.loader.load_profile(industry_id)
             if profile:
                 for alias in profile.aliases:
-                    self._alias_map[alias.lower()] = industry_id
+                    if len(alias) >= 3:
+                        self._alias_map[alias.lower()] = industry_id
 
         self._loaded = True
         logger.info("Alias map built", total_aliases=len(self._alias_map))

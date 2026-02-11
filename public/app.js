@@ -101,6 +101,9 @@ class VoiceInterviewerApp {
         this.lastServerAnketa = {};
         this.messageCount = 0;
         this.roomName = null;
+        this._lastFieldCount = 0;
+        this._lastPct = 0;
+        this._agentSpoke = false;
 
         // Dashboard state
         this.currentFilter = '';
@@ -595,6 +598,9 @@ class VoiceInterviewerApp {
             this.localEdits = {};
             this.lastServerAnketa = {};
             this.focusedField = null;
+            this._lastFieldCount = 0;
+            this._lastPct = 0;
+            this._agentSpoke = false;
             this.clearAnketaForm();
 
             // Update UI
@@ -744,6 +750,7 @@ class VoiceInterviewerApp {
         this.room.on(RoomEvent.Connected, () => {
             LOG.event('Connected', { roomName: this.room.name });
             this.isConnected = true;
+            this.updateStatusTicker('Консультация началась');
         });
 
         this.room.on(RoomEvent.Disconnected, (reason) => {
@@ -837,6 +844,10 @@ class VoiceInterviewerApp {
 
                 const isUser = participant?.identity === this.room.localParticipant?.identity;
                 this.addMessage(isUser ? 'user' : 'ai', text);
+                if (!isUser && !this._agentSpoke) {
+                    this._agentSpoke = true;
+                    this.updateStatusTicker('Агент слушает вас');
+                }
             }
         });
 
@@ -1042,11 +1053,24 @@ class VoiceInterviewerApp {
 
         try {
             const response = await fetch(`/api/session/${this.sessionId}/anketa`);
-            if (!response.ok) return;
+            if (!response.ok) {
+                if (response.status === 404) {
+                    console.warn(`Session ${this.sessionId} not found, stopping polling`);
+                    this.stopAnketaPolling();
+                }
+                return;
+            }
 
             const data = await response.json();
 
-            if (data.status) this.updateAnketaStatus(data.status);
+            if (data.status) {
+                this.updateAnketaStatus(data.status);
+                if (data.status === 'reviewing') {
+                    this.updateStatusTicker('Проверка анкеты...', true);
+                } else if (data.status === 'confirmed') {
+                    this.updateStatusTicker('Консультация завершена');
+                }
+            }
 
             // Update company name in header
             if (data.company_name) {
@@ -1071,6 +1095,22 @@ class VoiceInterviewerApp {
                     ? Math.min(100, Math.round(keys.length / this.anketaFields.length * 100))
                     : 0;
                 this.updateProgress(pct);
+
+                // Status ticker + toast notifications
+                const prevCount = this._lastFieldCount || 0;
+                if (prevCount === 0 && keys.length > 0) {
+                    showToast('Анкета заполняется автоматически по ходу беседы', 'info', 4000);
+                    this.updateStatusTicker('Анкета заполняется автоматически');
+                } else if (keys.length > prevCount && prevCount > 0) {
+                    const diff = keys.length - prevCount;
+                    showToast(`Анкета обновлена — +${diff} ${diff === 1 ? 'поле' : 'полей'}`, 'info', 2500);
+                    this.updateStatusTicker(`Заполнено ${keys.length} из ${this.anketaFields.length} полей`);
+                }
+                if (pct >= 50 && (this._lastPct || 0) < 50) {
+                    this.updateStatusTicker('Собрано больше половины данных');
+                }
+                this._lastFieldCount = keys.length;
+                this._lastPct = pct;
             }
         } catch (error) {
             // Silent failure for polling
@@ -1431,6 +1471,13 @@ class VoiceInterviewerApp {
         if (this.elements.progressText) {
             this.elements.progressText.textContent = `${Math.round(clamped)}% заполнено`;
         }
+    }
+
+    updateStatusTicker(text, pulsing = false) {
+        const ticker = document.getElementById('status-ticker-text');
+        const dot = document.querySelector('.status-ticker-dot');
+        if (ticker) ticker.textContent = text;
+        if (dot) dot.classList.toggle('pulse', pulsing);
     }
 
     _formatDate(isoString) {
