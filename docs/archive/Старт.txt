@@ -1,5 +1,5 @@
 # Терминал 1: убить старый сервер и запустить новый
-./scripts/kill_8000.sh
+./scripts/hanc.sh kill-all
 ./venv/bin/python -m uvicorn src.web.server:app --host 0.0.0.0 --port 8000
 
 # Терминал 2: перезапустить голосового агента

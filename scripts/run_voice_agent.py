@@ -54,7 +54,7 @@ def _check_duplicate():
             elif _is_process_alive(old_pid):
                 print(f"⚠️  Агент уже запущен (PID {old_pid})!")
                 print(f"   Остановите его: kill {old_pid}")
-                print("   Или используйте: ./scripts/agent.sh restart")
+                print("   Или используйте: ./scripts/hanc.sh restart agent")
                 sys.exit(1)
             else:
                 # Stale PID file — процесс мёртв, удаляем

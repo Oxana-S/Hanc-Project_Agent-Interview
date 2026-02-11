@@ -89,6 +89,7 @@ class VoiceInterviewerApp {
         this.sessionId = null;
         this.uniqueLink = null;
         this.isRecording = false;
+        this.isPaused = false;
         this.isConnected = false;
         this.agentAudioElements = new Map();
 
@@ -142,7 +143,7 @@ class VoiceInterviewerApp {
             // Interview
             backBtn: document.getElementById('back-to-dashboard'),
             micBtn: document.getElementById('mic-btn'),
-            stopBtn: document.getElementById('stop-btn'),
+            pauseBtn: document.getElementById('pause-btn'),
             connectionStatus: document.getElementById('connection-status'),
             sessionCompany: document.getElementById('session-company'),
             progressFill: document.getElementById('progress-fill'),
@@ -191,7 +192,7 @@ class VoiceInterviewerApp {
         // Interview controls
         this.elements.backBtn.addEventListener('click', () => this.goBackToDashboard());
         this.elements.micBtn.addEventListener('click', () => this.toggleRecording());
-        this.elements.stopBtn.addEventListener('click', () => this.endSession());
+        this.elements.pauseBtn.addEventListener('click', () => this.togglePause());
 
         // Anketa actions
         this.elements.confirmAnketaBtn.addEventListener('click', () => this.confirmAnketa());
@@ -477,8 +478,15 @@ class VoiceInterviewerApp {
             this.updateAnketaStatus(sessionData.status || 'active');
 
             if (sessionData.status === 'active' || sessionData.status === 'paused') {
-                this.elements.stopBtn.disabled = false;
+                this.elements.pauseBtn.disabled = false;
             }
+
+            // Reset pause state
+            this.isPaused = false;
+            this.elements.pauseBtn.classList.remove('paused');
+            this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
+            this.elements.micBtn.disabled = false;
+            document.getElementById('pause-overlay')?.classList.remove('visible');
 
             // Restore dialogue
             this.elements.dialogueContainer.innerHTML = '';
@@ -569,7 +577,7 @@ class VoiceInterviewerApp {
             // Update UI
             this.elements.sessionCompany.textContent = 'Новая сессия';
             this.updateAnketaStatus('active');
-            this.elements.stopBtn.disabled = false;
+            this.elements.pauseBtn.disabled = false;
 
             // Navigate
             this.router.navigate(`/session/${data.unique_link}`);
@@ -779,39 +787,44 @@ class VoiceInterviewerApp {
         LOG.info('Connected to room:', this.room.name);
     }
 
-    // ===== Session End / Leave =====
+    // ===== Session Pause / Resume =====
 
-    async endSession() {
-        LOG.info('=== END SESSION ===');
-        try {
-            this.stopAnketaPolling();
-
-            const response = await fetch(`/api/session/${this.sessionId}/end`, { method: 'POST' });
-            const data = await response.json();
-
-            if (data.unique_link) this.uniqueLink = data.unique_link;
-
-            this.agentAudioElements.forEach(({ track, element }) => {
-                track.detach();
-                if (element.parentNode) element.remove();
-            });
-            this.agentAudioElements.clear();
-
-            if (this.room) {
-                await this.room.disconnect();
-            }
-
-            this.updateConnectionStatus(false);
-            this.updateAnketaStatus('paused');
-            this.elements.stopBtn.disabled = true;
-
-            showToast('Сессия сохранена');
-            this.router.navigate('/');
-
-        } catch (error) {
-            LOG.error('Error ending session:', error);
-            showToast('Ошибка завершения сессии', 'error');
+    togglePause() {
+        if (this.isPaused) {
+            this.resumeSession();
+        } else {
+            this.pauseSession();
         }
+    }
+
+    async pauseSession() {
+        LOG.info('=== PAUSE SESSION ===');
+        this.isPaused = true;
+
+        // Stop mic but keep room connected
+        await this.stopRecording();
+
+        // UI: pause button → resume button
+        this.elements.pauseBtn.classList.add('paused');
+        this.elements.pauseBtn.querySelector('.icon').textContent = '▶';
+        this.elements.micBtn.disabled = true;
+        document.getElementById('pause-overlay')?.classList.add('visible');
+        this.elements.voiceStatus.textContent = 'На паузе';
+        document.querySelector('.wave')?.classList.add('inactive');
+    }
+
+    async resumeSession() {
+        LOG.info('=== RESUME SESSION ===');
+        this.isPaused = false;
+
+        // UI: resume button → pause button
+        this.elements.pauseBtn.classList.remove('paused');
+        this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
+        this.elements.micBtn.disabled = false;
+        document.getElementById('pause-overlay')?.classList.remove('visible');
+
+        // Restart recording
+        await this.startRecording();
     }
 
     // ===== Recording =====
@@ -856,8 +869,25 @@ class VoiceInterviewerApp {
 
     async stopRecording() {
         LOG.info('=== STOP RECORDING ===');
+
+        if (this.audioLevelInterval) {
+            clearInterval(this.audioLevelInterval);
+            this.audioLevelInterval = null;
+        }
+
+        if (this._monitorAudioContext) {
+            try { this._monitorAudioContext.close(); } catch {}
+            this._monitorAudioContext = null;
+        }
+
         if (this.audioTrack) {
-            await this.localParticipant.unpublishTrack(this.audioTrack);
+            try {
+                if (this.localParticipant) {
+                    await this.localParticipant.unpublishTrack(this.audioTrack);
+                }
+            } catch (e) {
+                LOG.warn('unpublishTrack error (room may be disconnected):', e);
+            }
             this.audioTrack.stop();
             this.audioTrack = null;
         }
@@ -866,11 +896,6 @@ class VoiceInterviewerApp {
         this.elements.micBtn.classList.remove('recording');
         this.elements.voiceStatus.textContent = 'Микрофон выключен';
         document.querySelector('.wave')?.classList.add('inactive');
-
-        if (this.audioLevelInterval) {
-            clearInterval(this.audioLevelInterval);
-            this.audioLevelInterval = null;
-        }
     }
 
     startAudioLevelMonitor() {
@@ -883,6 +908,9 @@ class VoiceInterviewerApp {
         const analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
         source.connect(analyser);
+
+        // Store reference for cleanup
+        this._monitorAudioContext = audioContext;
 
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
         let sampleCount = 0;
@@ -1226,6 +1254,7 @@ class VoiceInterviewerApp {
 
     async saveAndLeave() {
         if (!this.sessionId) return;
+        if (!confirm('Завершить консультацию? Голосовое соединение будет прервано.')) return;
 
         if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);
         await this.saveAnketa();
@@ -1234,8 +1263,18 @@ class VoiceInterviewerApp {
             await fetch(`/api/session/${this.sessionId}/end`, { method: 'POST' });
 
             this.stopAnketaPolling();
+            await this.stopRecording();
 
-            if (this.room) await this.room.disconnect();
+            this.agentAudioElements.forEach(({ track, element }) => {
+                track.detach();
+                if (element.parentNode) element.remove();
+            });
+            this.agentAudioElements.clear();
+
+            if (this.room) {
+                await this.room.disconnect();
+                this.room = null;
+            }
 
             const link = `${window.location.origin}/session/${this.uniqueLink}`;
             this.copyToClipboard(link);
@@ -1243,6 +1282,13 @@ class VoiceInterviewerApp {
             showToast('Сессия сохранена. Ссылка скопирована.');
             this.updateAnketaStatus('paused');
             this.updateConnectionStatus(false);
+            this.elements.pauseBtn.disabled = true;
+            this.isPaused = false;
+
+            // Reset session identity so showSession() will reconnect
+            this.sessionId = null;
+            this.uniqueLink = null;
+            this.localParticipant = null;
 
             this.router.navigate('/');
 

@@ -48,8 +48,8 @@ LiveKit Agent, который:
 - Защищён от дублирования через PID-файл (`.agent.pid`)
 
 ```bash
-# Рекомендуется: через agent.sh
-./scripts/agent.sh start
+# Рекомендуется: через hanc.sh
+./scripts/hanc.sh start
 
 # Или напрямую
 ./venv/bin/python scripts/run_voice_agent.py
@@ -116,21 +116,21 @@ AZURE_OPENAI_API_VERSION=2024-12-17
 # Терминал 1: Web server
 ./venv/bin/python scripts/run_server.py
 
-# Терминал 2: Voice agent (через agent.sh — рекомендуется)
-./scripts/agent.sh start
+# Терминал 2: Voice agent (через hanc.sh — рекомендуется)
+./scripts/hanc.sh start
 
 # Открыть http://localhost:8000
 ```
 
-### Управление процессами (`scripts/agent.sh`)
+### Управление процессами (`scripts/hanc.sh`)
 
 ```bash
-./scripts/agent.sh start      # Запустить агент в фоне
-./scripts/agent.sh stop       # Остановить (SIGTERM, затем SIGKILL через 10 сек)
-./scripts/agent.sh restart    # Перезапустить
-./scripts/agent.sh status     # Показать статус всех процессов
-./scripts/agent.sh logs       # tail -f логов агента
-./scripts/agent.sh kill-all   # Аварийное завершение (SIGKILL)
+./scripts/hanc.sh start      # Запустить агент в фоне
+./scripts/hanc.sh stop       # Остановить (SIGTERM, затем SIGKILL через 10 сек)
+./scripts/hanc.sh restart    # Перезапустить
+./scripts/hanc.sh status     # Показать статус всех процессов
+./scripts/hanc.sh logs       # tail -f логов агента
+./scripts/hanc.sh kill-all   # Аварийное завершение (SIGKILL)
 ```
 
 Агент защищён от дублирования: PID записывается в `.agent.pid`, при попытке запуска второй копии скрипт предупредит. PID-файл автоматически удаляется при корректном завершении (`SIGTERM`, `atexit`).

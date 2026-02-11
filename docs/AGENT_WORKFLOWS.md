@@ -151,15 +151,15 @@ active → paused → active → reviewing → confirmed
 # Процесс 1: Web сервер
 ./venv/bin/python scripts/run_server.py
 
-# Процесс 2: Голосовой агент (через agent.sh — рекомендуется)
-./scripts/agent.sh start
+# Процесс 2: Голосовой агент (через hanc.sh — рекомендуется)
+./scripts/hanc.sh start
 
 # Управление агентом
-./scripts/agent.sh status    # Статус процессов
-./scripts/agent.sh stop      # Остановить
-./scripts/agent.sh restart   # Перезапустить
-./scripts/agent.sh logs      # Логи
-./scripts/agent.sh kill-all  # Аварийное завершение
+./scripts/hanc.sh status    # Статус процессов
+./scripts/hanc.sh stop      # Остановить
+./scripts/hanc.sh restart   # Перезапустить
+./scripts/hanc.sh logs      # Логи
+./scripts/hanc.sh kill-all  # Аварийное завершение
 ```
 
 При старте сервера автоматически очищаются старые LiveKit-комнаты. Агент защищён от дублирования через PID-файл (`.agent.pid`).

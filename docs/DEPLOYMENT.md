@@ -80,21 +80,21 @@ docker compose -f config/docker-compose.yml down -v
 
 ## Управление процессами (Development)
 
-Для разработки используйте `scripts/agent.sh`:
+Для разработки используйте `scripts/hanc.sh`:
 
 ```bash
 # Запуск
 ./venv/bin/python scripts/run_server.py          # Терминал 1: Web server
-./scripts/agent.sh start                          # Терминал 2: Voice agent (фоном)
+./scripts/hanc.sh start                          # Терминал 2: Voice agent (фоном)
 
 # Мониторинг
-./scripts/agent.sh status                         # Статус всех процессов
-./scripts/agent.sh logs                           # Логи агента (tail -f)
+./scripts/hanc.sh status                         # Статус всех процессов
+./scripts/hanc.sh logs                           # Логи агента (tail -f)
 
 # Перезапуск / остановка
-./scripts/agent.sh restart                        # Перезапуск агента
-./scripts/agent.sh stop                           # Graceful stop
-./scripts/agent.sh kill-all                       # Аварийное завершение
+./scripts/hanc.sh restart                        # Перезапуск агента
+./scripts/hanc.sh stop                           # Graceful stop
+./scripts/hanc.sh kill-all                       # Аварийное завершение
 ```
 
 Агент защищён от дублирования через PID-файл (`.agent.pid`).
@@ -303,8 +303,8 @@ curl http://localhost:8000/api/agent/health
 ### Agent Health (CLI)
 
 ```bash
-# Через agent.sh (рекомендуется для dev)
-./scripts/agent.sh status
+# Через hanc.sh (рекомендуется для dev)
+./scripts/hanc.sh status
 
 # Ручная проверка процесса
 pgrep -f "run_voice_agent.py"

@@ -157,21 +157,21 @@ source venv/bin/activate
 В отдельном терминале:
 
 ```bash
-# Вариант 1: через agent.sh (рекомендуется — управление процессами)
-./scripts/agent.sh start
+# Вариант 1: через hanc.sh (рекомендуется — управление процессами)
+./scripts/hanc.sh start
 
 # Вариант 2: напрямую
 ./venv/bin/python scripts/run_voice_agent.py
 ```
 
-**Управление агентом через `agent.sh`:**
+**Управление агентом через `hanc.sh`:**
 
 ```bash
-./scripts/agent.sh status    # Статус процессов
-./scripts/agent.sh stop      # Остановить агент (graceful)
-./scripts/agent.sh restart   # Перезапустить
-./scripts/agent.sh logs      # Показать логи (tail -f)
-./scripts/agent.sh kill-all  # Аварийное завершение всех процессов
+./scripts/hanc.sh status    # Статус процессов
+./scripts/hanc.sh stop      # Остановить агент (graceful)
+./scripts/hanc.sh restart   # Перезапустить
+./scripts/hanc.sh logs      # Показать логи (tail -f)
+./scripts/hanc.sh kill-all  # Аварийное завершение всех процессов
 ```
 
 Агент защищён от дублирования через PID-файл (`.agent.pid`). При попытке запустить второй экземпляр скрипт предупредит и завершится.
@@ -202,9 +202,6 @@ pytest
 ### Парсинг документов клиента (Stage 6.5)
 
 ```bash
-# Генерация тестовых документов (PDF, DOCX, XLSX, TXT, MD)
-python scripts/generate_test_documents.py
-
 # Тест парсинга всех форматов
 python scripts/test_document_parsing.py
 
@@ -327,12 +324,12 @@ sqlite3 data/sessions.db "SELECT session_id, status, company_name FROM sessions;
 | `Azure OpenAI credentials not configured` | Заполните `AZURE_CHAT_OPENAI_*` в `.env` |
 | `Azure Realtime credentials not configured` | Заполните `AZURE_OPENAI_*` в `.env` (для голосового режима) |
 | Агент не подключается к комнате | Проверьте `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET` |
-| «Голосовой агент не запущен» в браузере | Запустите агент: `./scripts/agent.sh start`, проверьте: `./scripts/agent.sh status` |
+| «Голосовой агент не запущен» в браузере | Запустите агент: `./scripts/hanc.sh start`, проверьте: `./scripts/hanc.sh status` |
 | Нет звука в браузере | Разрешите доступ к микрофону, проверьте HTTPS |
 | `ModuleNotFoundError` | Активируйте venv: `source venv/bin/activate` |
 | Redis/PostgreSQL connection refused | `docker compose -f config/docker-compose.yml up -d` |
-| Несколько процессов агента (конфликт) | `./scripts/agent.sh kill-all` и затем `./scripts/agent.sh start` |
-| Порт 8000 занят | `lsof -ti:8000 \| xargs kill -9` или `./scripts/kill_8000.sh` |
+| Несколько процессов агента (конфликт) | `./scripts/hanc.sh kill-all` и затем `./scripts/hanc.sh start` |
+| Порт 8000 занят | `lsof -ti:8000 \| xargs kill -9` или `./scripts/hanc.sh kill-all` |
 | Старые комнаты LiveKit | Перезапустите сервер (очистка при старте) или: `curl -X DELETE http://localhost:8000/api/rooms` |
 
 ## Дальнейшее чтение

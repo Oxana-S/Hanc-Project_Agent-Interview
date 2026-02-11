@@ -17,13 +17,10 @@ pip install --upgrade pip
 pip install -r requirements-minimal.txt
 ```
 
-Затем запустите один из режимов:
+Затем запустите текстовый режим:
 ```bash
 # Текстовый режим (Consultant, 4 фазы)
 ./venv/bin/python scripts/consultant_demo.py
-
-# Или Maximum режим (3 фазы, требует Redis + PostgreSQL)
-./venv/bin/python scripts/demo.py
 ```
 
 ## Вариант 2: Установите Python 3.11-3.13 через pyenv
@@ -48,7 +45,7 @@ pip install -r requirements.txt
 
 ## Вариант 3: Используйте Docker для инфраструктуры
 
-Docker Compose используется для Redis + PostgreSQL (нужны только для Maximum режима):
+Docker Compose используется для Redis + PostgreSQL:
 
 ```bash
 docker compose -f config/docker-compose.yml up -d
@@ -59,20 +56,10 @@ docker compose -f config/docker-compose.yml up -d
 После установки зависимостей проверьте:
 
 ```bash
-./venv/bin/python scripts/healthcheck.py
+./venv/bin/python -m pytest --tb=short -q
 ```
 
-Скрипт проверит подключение к внешним сервисам (DeepSeek API, Redis, PostgreSQL и др.).
-
-## Если всё равно не работает
-
-Запустите демо-режим БЕЗ внешних зависимостей:
-
-```bash
-./venv/bin/python scripts/demo.py
-```
-
-В demo.py выберите MOCK-режим — он симулирует работу агента без подключения к API.
+Тесты проверят корректность установки и работоспособность модулей.
 
 ---
 

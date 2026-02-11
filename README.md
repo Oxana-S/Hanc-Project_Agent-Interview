@@ -4,15 +4,14 @@
 
 Клиент общается с агентом голосом через браузер или текстом через CLI — агент проводит консультацию (4-фазную в режимах Voice/Consultant или 3-фазную в Maximum режиме), формирует анкету и сохраняет результат.
 
-## Три режима работы
+## Два режима работы
 
 | Режим | Интерфейс | Транспорт | Скрипт | Хранение |
 |-------|-----------|-----------|--------|----------|
 | **Голосовой** | Браузер (WebRTC) | LiveKit + Azure OpenAI Realtime | `scripts/run_voice_agent.py` + `uvicorn` | SQLite |
 | **Текстовый CLI (Consultant)** | CLI (Rich) | DeepSeek | `scripts/consultant_demo.py` | Файловая система (output/) |
-| **Текстовый CLI (Maximum)** | CLI (Rich) | DeepSeek + Redis + PostgreSQL | `scripts/demo.py` | Redis + PostgreSQL |
 
-Голосовой и Consultant режимы проводят 4-фазную консультацию (DISCOVERY → ANALYSIS → PROPOSAL → REFINEMENT) и генерируют анкету FinalAnketa v2.0. Maximum режим проводит 3-фазную консультацию (DISCOVERY → STRUCTURED → SYNTHESIS) с расширенным сбором данных и MOCK-режимом для тестирования.
+Голосовой и Consultant режимы проводят 4-фазную консультацию (DISCOVERY → ANALYSIS → PROPOSAL → REFINEMENT) и генерируют анкету FinalAnketa v2.0.
 
 ## Архитектура
 
@@ -65,7 +64,6 @@
 | Голосовой агент | LiveKit Agents SDK | Приём голоса, генерация ответов |
 | STT/TTS | Azure OpenAI Realtime API | Распознавание и синтез речи (WebSocket) |
 | Текстовая логика (Consultant) | ConsultantInterviewer | 4-фазная консультация (Discovery → Refinement) |
-| Текстовая логика (Maximum) | MaximumInterviewer | 3-фазная консультация (Discovery → Structured → Synthesis) |
 | Анализ и анкета | DeepSeek LLM | Извлечение данных, формирование анкеты |
 | Хранение (голос) | SQLite | Сессии, диалоги, анкеты |
 | Хранение (Maximum — кэш) | Redis | Кэш активных сессий (TTL 2ч) |
@@ -120,16 +118,16 @@ DEEPSEEK_MODEL=deepseek-reasoner
 
 **Терминал 2 — голосовой агент:**
 ```bash
-./scripts/agent.sh start
+./scripts/hanc.sh start
 ```
 
 **Управление агентом:**
 ```bash
-./scripts/agent.sh status    # Статус процессов
-./scripts/agent.sh stop      # Остановить
-./scripts/agent.sh restart   # Перезапустить
-./scripts/agent.sh logs      # Логи (tail -f)
-./scripts/agent.sh kill-all  # Аварийное завершение
+./scripts/hanc.sh status    # Статус процессов
+./scripts/hanc.sh stop      # Остановить
+./scripts/hanc.sh restart   # Перезапустить
+./scripts/hanc.sh logs      # Логи (tail -f)
+./scripts/hanc.sh kill-all  # Аварийное завершение
 ```
 
 **Браузер:** откройте `http://localhost:8000`, нажмите «Начать консультацию».
@@ -143,20 +141,6 @@ DEEPSEEK_MODEL=deepseek-reasoner
 ```
 
 Выберите тип агента (INTERACTION / MANAGEMENT), затем ведите диалог в терминале.
-
-### Текстовый режим — Maximum (CLI)
-
-Требуется: DeepSeek API + Redis + PostgreSQL.
-
-```bash
-# Поднять Redis и PostgreSQL
-cd config && docker-compose up -d && cd ..
-
-# Запуск Maximum Interview
-./venv/bin/python scripts/demo.py
-```
-
-Maximum режим проводит 3-фазную консультацию (DISCOVERY → STRUCTURED → SYNTHESIS) с расширенным сбором данных. Поддерживает MOCK-режим для тестирования без LLM.
 
 ### Тестовая симуляция
 
@@ -274,15 +258,13 @@ Maximum режим проводит 3-фазную консультацию (DIS
 │   └── models.py                    # Базовые модели (315 строк: InterviewPattern, InterviewContext, CompletedAnketa, QuestionResponse и др.)
 │
 ├── scripts/                         # Точки входа
-│   ├── agent.sh                     # Управление агентом (start/stop/restart/status/logs/kill-all)
+│   ├── hanc.sh                      # Управление агентом и процессами (start/stop/restart/status/logs/kill-all)
 │   ├── run_voice_agent.py           # Запуск голосового агента (PID-файл, защита от дублей)
 │   ├── run_server.py                # Запуск FastAPI сервера
 │   ├── cleanup_rooms.py             # Очистка LiveKit-комнат (CLI)
 │   ├── consultant_demo.py           # Текстовый AI-консультант (CLI)
 │   ├── run_test.py                  # Запуск тестовых симуляций
 │   ├── run_pipeline.py              # Pipeline: тест → ревью
-│   ├── demo.py                      # Maximum Interview режим + MOCK-режим (Redis + PostgreSQL)
-│   ├── healthcheck.py               # Проверка системы
 │   └── test_deepseek_api.py         # Тест DeepSeek API
 │
 ├── config/                          # YAML-конфигурация

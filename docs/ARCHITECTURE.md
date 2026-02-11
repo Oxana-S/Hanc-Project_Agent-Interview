@@ -96,8 +96,8 @@ Startup-событие: `_cleanup_stale_rooms()` — удаляет все LiveK
 Запуск:
 
 ```bash
-# Рекомендуется: через agent.sh (управление процессами, PID-файл, логи)
-./scripts/agent.sh start
+# Рекомендуется: через hanc.sh (управление процессами, PID-файл, логи)
+./scripts/hanc.sh start
 
 # Или напрямую:
 ./venv/bin/python scripts/run_voice_agent.py dev

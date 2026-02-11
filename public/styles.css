@@ -105,6 +105,12 @@ body {
     flex-direction: column;
 }
 
+/* Interview screen: fill viewport, no page scroll */
+#interview-screen.active {
+    height: calc(100vh - 52px - 37px);  /* viewport - header - footer */
+    overflow: hidden;
+}
+
 /* ===== Dashboard ===== */
 
 .dashboard-filters {
@@ -461,6 +467,7 @@ body {
     gap: 1.5rem;
     flex: 1;
     min-height: 0;
+    overflow: hidden;
 }
 
 .interview-left {
@@ -468,6 +475,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    overflow: hidden;
 }
 
 .interview-right {
@@ -475,6 +483,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    overflow: hidden;
 }
 
 /* Progress */
@@ -512,6 +521,7 @@ body {
     background: var(--surface);
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .message {
@@ -556,6 +566,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    flex-shrink: 0;
 }
 
 .voice-indicator {
@@ -599,7 +610,7 @@ body {
     gap: 1rem;
 }
 
-.btn-mic, .btn-stop {
+.btn-mic, .btn-pause {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -627,16 +638,24 @@ body {
     50% { transform: scale(1.05); }
 }
 
-.btn-stop {
+.btn-pause {
     background: var(--surface-light);
 }
 
-.btn-stop:hover:not(:disabled) {
-    background: var(--danger);
+.btn-pause:hover:not(:disabled) {
+    background: var(--warning);
 }
 
-.btn-stop:disabled {
+.btn-pause:disabled {
     opacity: 0.3;
+}
+
+.btn-pause.paused {
+    background: var(--secondary);
+}
+
+.btn-pause.paused:hover {
+    background: #0d9668;
 }
 
 /* ===== Anketa Panel ===== */
@@ -760,7 +779,7 @@ body {
 
 .anketa-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
     border-top: 1px solid var(--surface-light);
@@ -770,7 +789,7 @@ body {
 .btn-confirm {
     background: var(--secondary);
     color: white;
-    width: 100%;
+    flex: 2;
 }
 
 .btn-confirm:hover {
@@ -780,7 +799,7 @@ body {
 .btn-save-leave {
     background: var(--surface-light);
     color: var(--text);
-    width: 100%;
+    flex: 1;
 }
 
 .btn-save-leave:hover {
@@ -791,8 +810,8 @@ body {
     background: transparent;
     border: 1px solid var(--surface-light);
     color: var(--text-muted);
-    width: 100%;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.65rem;
 }
 
 .btn-copy-link:hover {
@@ -1128,6 +1147,41 @@ body {
     }
 }
 
+/* ===== Pause Overlay ===== */
+
+.pause-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    z-index: 10;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    gap: 0.5rem;
+}
+
+.pause-overlay.visible {
+    display: flex;
+}
+
+.pause-overlay-icon {
+    font-size: 2.5rem;
+    opacity: 0.7;
+}
+
+.pause-overlay-text {
+    font-size: 1.1rem;
+    color: var(--warning);
+    font-weight: 600;
+}
+
+.pause-overlay-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
 /* ===== Footer ===== */
 
 .footer {
@@ -1141,14 +1195,24 @@ body {
 /* ===== Responsive ===== */
 
 @media (max-width: 900px) {
+    #interview-screen.active {
+        height: auto;
+        overflow: visible;
+    }
+
     .interview-columns,
     .review-columns {
         flex-direction: column;
     }
 
+    .interview-columns {
+        padding-bottom: 100px;
+    }
+
     .interview-left {
         flex: 0 0 auto;
         min-height: 350px;
+        overflow: visible;
     }
 
     .interview-right {
@@ -1158,6 +1222,17 @@ body {
 
     .anketa-panel {
         max-height: 500px;
+    }
+
+    .controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--surface);
+        padding: 0.75rem 1rem;
+        border-top: 1px solid var(--surface-light);
     }
 
     .review-left, .review-right {

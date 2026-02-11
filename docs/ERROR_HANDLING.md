@@ -73,7 +73,7 @@ logger.error(f"DeepSeek API error: status={status_code}, detail={response.text}"
 | `Room not found` | Комната не существует | Проверьте session_id |
 | `Connection timeout` | Сетевые проблемы | Проверьте LIVEKIT_URL |
 | `Track publish failed` | WebRTC проблемы | Проверьте firewall/NAT |
-| `Agent dispatch failed` | Агент не запущен | Запустите `./scripts/agent.sh start` |
+| `Agent dispatch failed` | Агент не запущен | Запустите `./scripts/hanc.sh start` |
 
 ### VAD / Прерывания
 

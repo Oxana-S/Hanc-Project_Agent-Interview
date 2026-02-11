@@ -25,42 +25,71 @@ help: ## Show all available commands
 	@echo "  Hanc.AI -- Voice Interviewer Agent"
 	@echo "  ==================================="
 	@echo ""
+	@echo "  SERVICES (daemon mode — не занимают терминал)"
+	@echo "  --------"
+	@echo "  make start              Start server + agent (background)"
+	@echo "  make stop               Stop all services"
+	@echo "  make restart            Restart all services"
+	@echo "  make status             Show process status"
+	@echo "  make logs               Tail all logs"
+	@echo ""
 	@echo "  SETUP"
 	@echo "  -----"
-	@echo "  make install          Create venv and install all dependencies"
-	@echo "  make install-min      Install minimal deps (Python 3.14)"
+	@echo "  make install            Create venv and install all dependencies"
+	@echo "  make install-min        Install minimal deps (Python 3.14)"
 	@echo ""
-	@echo "  MODES"
-	@echo "  -----"
-	@echo "  make consultant       Run Consultant mode (CLI, DeepSeek)"
-	@echo "  make maximum          Run Maximum mode (CLI, DeepSeek + Redis + PostgreSQL)"
-	@echo "  make voice            Run Voice mode (start server + agent)"
-	@echo "  make server           Run web server only (port 8000)"
-	@echo "  make agent            Run voice agent only (LiveKit)"
+	@echo "  FOREGROUND (для разработки — выводят логи в терминал)"
+	@echo "  ----------"
+	@echo "  make server             Run web server (foreground)"
+	@echo "  make agent              Run voice agent (foreground)"
+	@echo "  make consultant         Run Consultant mode (CLI demo)"
 	@echo ""
 	@echo "  INFRASTRUCTURE"
 	@echo "  --------------"
-	@echo "  make infra-up         Start Redis + PostgreSQL via docker-compose"
-	@echo "  make infra-down       Stop Redis + PostgreSQL"
-	@echo "  make infra-status     Check Redis + PostgreSQL container status"
+	@echo "  make infra-up           Start Redis + PostgreSQL via docker-compose"
+	@echo "  make infra-down         Stop Redis + PostgreSQL"
+	@echo "  make infra-status       Check Redis + PostgreSQL container status"
 	@echo ""
 	@echo "  TESTING"
 	@echo "  -------"
-	@echo "  make test             Run all unit tests (252 tests)"
-	@echo "  make test-sim         Run test simulation (list available scenarios)"
-	@echo "  make test-scenario    Run a specific scenario"
-	@echo "                        usage: make test-scenario SCENARIO=auto_service"
-	@echo "  make pipeline         Run pipeline: test scenario + review"
-	@echo "                        usage: make pipeline SCENARIO=vitalbox"
+	@echo "  make test               Run all unit tests (1481 tests)"
+	@echo "  make test-sim           Run test simulation (list scenarios)"
+	@echo "  make test-scenario      Run a specific scenario"
+	@echo "                          usage: make test-scenario SCENARIO=auto_service"
+	@echo "  make pipeline           Run pipeline: test scenario + review"
+	@echo "                          usage: make pipeline SCENARIO=vitalbox"
 	@echo ""
 	@echo "  UTILITIES"
 	@echo "  ---------"
-	@echo "  make healthcheck      Check system health (env, deps, Redis, PostgreSQL)"
-	@echo "  make test-deepseek    Test DeepSeek API connection"
-	@echo "  make kill-port        Kill process on port 8000"
-	@echo "  make logs             Tail all log files"
-	@echo "  make clean            Remove output/ and logs/"
+	@echo "  make test-deepseek      Test DeepSeek API connection"
+	@echo "  make cleanup-rooms      List/delete LiveKit rooms"
+	@echo "  make kill-all           Emergency kill all processes (SIGKILL)"
+	@echo "  make clean              Remove output/ and logs/"
 	@echo ""
+
+# ============================================================================
+#  SERVICES (daemon mode via hanc.sh)
+# ============================================================================
+
+.PHONY: start stop restart status logs kill-all
+
+start: ## Start server + agent in background
+	@bash $(SCRIPTS)/hanc.sh start
+
+stop: ## Stop all services
+	@bash $(SCRIPTS)/hanc.sh stop
+
+restart: ## Restart all services
+	@bash $(SCRIPTS)/hanc.sh restart
+
+status: ## Show process status
+	@bash $(SCRIPTS)/hanc.sh status
+
+logs: ## Tail all log files
+	@bash $(SCRIPTS)/hanc.sh logs
+
+kill-all: ## Emergency kill all processes
+	@bash $(SCRIPTS)/hanc.sh kill-all
 
 # ============================================================================
 #  SETUP
@@ -87,30 +116,18 @@ install-min: ## Install minimal dependencies (Python 3.14)
 	@echo "Done. Activate with:  source venv/bin/activate"
 
 # ============================================================================
-#  MODES
+#  FOREGROUND (development)
 # ============================================================================
 
-.PHONY: consultant maximum voice server agent
+.PHONY: consultant server agent
 
 consultant: ## Run Consultant mode (CLI, DeepSeek)
 	$(PYTHON) $(SCRIPTS)/consultant_demo.py
 
-maximum: ## Run Maximum mode (CLI, DeepSeek + Redis + PostgreSQL)
-	$(PYTHON) $(SCRIPTS)/demo.py
-
-voice: ## Run Voice mode (start server + agent in parallel)
-	@echo "--- Starting Voice mode ---"
-	@echo "    Server: http://localhost:8000"
-	@echo "    Agent:  LiveKit voice agent"
-	@echo ""
-	$(PYTHON) $(SCRIPTS)/run_server.py &
-	@sleep 2
-	$(PYTHON) $(SCRIPTS)/run_voice_agent.py
-
-server: ## Run web server only (port 8000)
+server: ## Run web server only (foreground, port 8000)
 	$(PYTHON) $(SCRIPTS)/run_server.py
 
-agent: ## Run voice agent only (LiveKit)
+agent: ## Run voice agent only (foreground, LiveKit)
 	$(PYTHON) $(SCRIPTS)/run_voice_agent.py
 
 # ============================================================================
@@ -137,7 +154,7 @@ infra-status: ## Check Redis + PostgreSQL container status
 
 .PHONY: test test-sim test-scenario pipeline
 
-test: ## Run all unit tests (252 tests)
+test: ## Run all unit tests (1481 tests)
 	$(PYTEST) tests/ -m "unit or not integration"
 
 test-sim: ## Run test simulation (list available scenarios)
@@ -153,19 +170,13 @@ pipeline: ## Run pipeline: test scenario + review (SCENARIO=vitalbox)
 #  UTILITIES
 # ============================================================================
 
-.PHONY: healthcheck test-deepseek kill-port logs clean
-
-healthcheck: ## Check system health (env, deps, Redis, PostgreSQL)
-	$(PYTHON) $(SCRIPTS)/healthcheck.py
+.PHONY: test-deepseek cleanup-rooms clean
 
 test-deepseek: ## Test DeepSeek API connection
 	$(PYTHON) $(SCRIPTS)/test_deepseek_api.py
 
-kill-port: ## Kill process on port 8000
-	@bash $(SCRIPTS)/kill_8000.sh
-
-logs: ## Tail all log files
-	@tail -f logs/*.log 2>/dev/null || echo "No log files found in logs/"
+cleanup-rooms: ## List/delete LiveKit rooms
+	$(PYTHON) $(SCRIPTS)/cleanup_rooms.py
 
 clean: ## Remove output/ and logs/
 	rm -rf output/ logs/

@@ -99,6 +99,11 @@
                     <div class="interview-left">
                         <!-- Dialogue -->
                         <div class="dialogue-container" id="dialogue-container">
+                            <div class="pause-overlay" id="pause-overlay">
+                                <div class="pause-overlay-icon">⏸</div>
+                                <div class="pause-overlay-text">На паузе</div>
+                                <div class="pause-overlay-hint">Нажмите ▶ чтобы продолжить</div>
+                            </div>
                             <!-- Messages will be added here -->
                         </div>
 
@@ -115,8 +120,8 @@
                                 <button id="mic-btn" class="btn btn-mic">
                                     <span class="icon">🎤</span>
                                 </button>
-                                <button id="stop-btn" class="btn btn-stop" disabled>
-                                    <span class="icon">⏹</span>
+                                <button id="pause-btn" class="btn btn-pause" disabled>
+                                    <span class="icon">⏸</span>
                                 </button>
                             </div>
                         </div>
@@ -128,6 +133,9 @@
                             <!-- Anketa Header -->
                             <div class="anketa-header">
                                 <h3>Анкета</h3>
+                                <button id="copy-link-btn" class="btn btn-copy-link" type="button">
+                                    Скопировать ссылку
+                                </button>
                             </div>
 
                             <!-- Document Upload -->
@@ -297,10 +305,7 @@
                                     Подтвердить анкету
                                 </button>
                                 <button id="save-leave-btn" class="btn btn-save-leave" type="button">
-                                    Сохранить и уйти
-                                </button>
-                                <button id="copy-link-btn" class="btn btn-copy-link" type="button">
-                                    Копировать ссылку
+                                    Завершить
                                 </button>
                             </div>
                         </div>
