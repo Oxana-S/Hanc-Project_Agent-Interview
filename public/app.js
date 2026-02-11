@@ -486,7 +486,8 @@ class VoiceInterviewerApp {
     }
 
     _pushLiveSettings() {
-        // Debounced: send updated settings to backend during active session
+        // Debounced: send updated settings to backend during active session.
+        // voice-config PUT now signals the agent via room metadata automatically.
         if (this._pushLiveSettingsTimer) clearTimeout(this._pushLiveSettingsTimer);
         this._pushLiveSettingsTimer = setTimeout(async () => {
             if (!this.sessionId) return;
@@ -497,7 +498,6 @@ class VoiceInterviewerApp {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(settings),
                 });
-                await fetch(`/api/session/${this.sessionId}/reconnect`);
                 LOG.info('Live settings pushed:', settings);
                 this._persistSettings();
             } catch (e) {
@@ -765,14 +765,15 @@ class VoiceInterviewerApp {
             this.showScreen('interview');
             this._syncQuickSettings();
             this.startAnketaPolling();
-            // Send updated voice settings (user may have changed editable ones on Dashboard)
+            // Send updated voice settings (user may have changed editable ones on Dashboard).
+            // voice-config PUT now signals the agent via room metadata automatically —
+            // no need to call /reconnect (which could recreate room + dispatch a 2nd agent).
             try {
                 await fetch(`/api/session/${this.sessionId}/voice-config`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(this.getVoiceSettings()),
                 });
-                await fetch(`/api/session/${this.sessionId}/reconnect`);
                 LOG.info('Voice config synced on session return');
             } catch (e) {
                 LOG.warn('Failed to sync voice config on return:', e);
@@ -950,8 +951,12 @@ class VoiceInterviewerApp {
             this.updateAnketaStatus('active');
             this.elements.pauseBtn.disabled = false;
 
-            // Navigate
-            this.router.navigate(`/session/${data.unique_link}`);
+            // Update URL without triggering router.resolve() → showSession().
+            // showSession's quick-path calls /reconnect which can dispatch a 2nd agent
+            // due to LiveKit Cloud eventual consistency (list_rooms misses just-created room).
+            window.history.pushState({}, '', `/session/${data.unique_link}`);
+
+            this.showScreen('interview');
 
             // Connect to LiveKit
             await this.connectToRoom(data.livekit_url, data.user_token, data.room_name);
@@ -959,7 +964,8 @@ class VoiceInterviewerApp {
             this.startAnketaPolling();
             this._syncQuickSettings();
 
-            this.addMessage('ai', 'Здравствуйте! Я помогу вам создать голосового агента для вашего бизнеса. Расскажите, чем занимается ваша компания?');
+            // Agent sends its own greeting via voice (appears via TranscriptionReceived).
+            // No hardcoded greeting — avoids duplicate messages in chat.
 
             setTimeout(() => this.startRecording(), 1000);
 
@@ -1333,7 +1339,8 @@ class VoiceInterviewerApp {
         this.elements.micBtn.disabled = false;
         document.getElementById('pause-overlay')?.classList.remove('visible');
 
-        // Send updated voice settings so agent picks up mid-session changes
+        // Send updated voice settings so agent picks up mid-session changes.
+        // voice-config PUT signals the agent via room metadata automatically.
         if (this.sessionId) {
             try {
                 await fetch(`/api/session/${this.sessionId}/voice-config`, {
@@ -1341,8 +1348,6 @@ class VoiceInterviewerApp {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(this.getVoiceSettings()),
                 });
-                // Signal agent to re-read config via room metadata
-                await fetch(`/api/session/${this.sessionId}/reconnect`);
                 LOG.info('Voice config updated on resume');
             } catch (e) {
                 LOG.warn('Failed to update voice config on resume:', e);

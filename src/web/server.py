@@ -351,7 +351,12 @@ async def get_anketa(session_id: str):
 
 @app.put("/api/session/{session_id}/voice-config")
 async def update_voice_config(session_id: str, req: dict):
-    """Update voice_config for an existing session (e.g. speech_speed, silence_duration_ms)."""
+    """Update voice_config for an existing session (e.g. speech_speed, silence_duration_ms).
+
+    After saving to DB, signals the running agent to re-read the config
+    by updating room metadata. This avoids calling /reconnect which can
+    accidentally recreate rooms and dispatch duplicate agents.
+    """
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -359,6 +364,27 @@ async def update_voice_config(session_id: str, req: dict):
     session.voice_config = req
     session_mgr.update_session(session)
     session_log.info("voice_config_updated", session_id=session_id, voice_config=req)
+
+    # Signal running agent to re-read voice_config via room metadata
+    room_name = session.room_name or f"consultation-{session_id}"
+    try:
+        import json, time
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        await lk_api.room.update_room_metadata(
+            UpdateRoomMetadataRequest(
+                room=room_name,
+                metadata=json.dumps({"config_version": time.time()}),
+            )
+        )
+        await lk_api.aclose()
+        livekit_log.info("voice_config_signal_sent", room=room_name)
+    except Exception as e:
+        livekit_log.debug("voice_config_signal_skipped", room=room_name, error=str(e))
+
     return {"ok": True}
 
 
