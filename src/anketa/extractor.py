@@ -143,6 +143,9 @@ class AnketaExtractor:
                     dialogue_extracted, anketa_data
                 )
 
+            # Step 3.5: SPRINT 2 - Contextual post-processing for "да/нет" answers
+            anketa_data = self._post_process_contextual_lists(anketa_data, dialogue_history)
+
             # Step 4: Post-process to clean dialogue contamination
             anketa_data, processing_report = self.post_processor.process(anketa_data)
             if processing_report['cleaning_changes']:
@@ -151,16 +154,43 @@ class AnketaExtractor:
                     changes=len(processing_report['cleaning_changes'])
                 )
 
+            # Step 4.5: SPRINT 2 - Fallback regex extraction for phone/email
+            if not anketa_data.get('contact_phone') or not anketa_data.get('contact_email'):
+                fallback_contacts = self._fallback_contact_extraction(dialogue_history)
+                if fallback_contacts.get('contact_phone') and not anketa_data.get('contact_phone'):
+                    anketa_data['contact_phone'] = fallback_contacts['contact_phone']
+                if fallback_contacts.get('contact_email') and not anketa_data.get('contact_email'):
+                    anketa_data['contact_email'] = fallback_contacts['contact_email']
+
             # Build FinalAnketa from cleaned data
             anketa = self._build_anketa(anketa_data, duration_seconds)
 
             # Generate AI expert content for v2.0 blocks
             anketa = await self._generate_expert_content(anketa)
 
+            # SPRINT 5: Enhanced logging with field counts
+            # Count filled fields (non-empty values)
+            filled_count = sum(1 for field_name in [
+                'company_name', 'industry', 'specialization', 'contact_name', 'contact_role',
+                'contact_phone', 'contact_email', 'business_description', 'agent_name', 'agent_purpose'
+            ] if getattr(anketa, field_name, None))
+
+            # Count filled lists
+            filled_count += sum(1 for field_name in [
+                'services', 'client_types', 'current_problems', 'business_goals',
+                'agent_functions', 'integrations'
+            ] if getattr(anketa, field_name, None) and len(getattr(anketa, field_name, [])) > 0)
+
             logger.info(
                 "Anketa extracted successfully",
                 company=anketa.company_name,
-                completion_rate=f"{anketa.completion_rate():.0f}%"
+                completion_rate=f"{anketa.completion_rate():.0f}%",
+                fields_filled=filled_count,
+                total_fields=16,  # 10 strings + 6 lists
+                dialogue_turns=len(dialogue_history),
+                extraction_method='smart' if dialogue_extracted else 'llm_only',
+                has_phone=bool(anketa.contact_phone),
+                has_email=bool(anketa.contact_email)
             )
 
             return anketa
@@ -427,6 +457,194 @@ class AnketaExtractor:
 
         # Last resort: raise original error
         return json.loads(json_text)
+
+    def _fallback_contact_extraction(self, dialogue: List[Dict[str, str]]) -> Dict[str, str]:
+        """
+        Fallback: search entire dialogue for phone/email using regex.
+
+        SPRINT 2: If LLM failed to extract phone/email, try regex on full text.
+        """
+        full_text = ' '.join([
+            msg.get('content', '')
+            for msg in dialogue
+            if msg.get('role', '').lower() in ('user', 'client', 'клиент')
+        ])
+
+        result = {}
+
+        import re
+
+        # Phone patterns (речевой ввод)
+        phone_patterns = [
+            r'(\+\d{1,3}\s?\d{3}\s?\d{3}\s?\d{2,4}\s?\d{2,4})',  # +43 664 755 03580
+            r'плюс\s+(\d{2,3})\s+(\d{3})\s+(\d{3})\s+(\d{2,4})\s+(\d{2,4})',  # "плюс сорок три..."
+            r'(?:телефон|номер|позвонить)\s*[:—]?\s*([+\d\s\-()]{10,20})',
+        ]
+
+        for pattern in phone_patterns:
+            match = re.search(pattern, full_text, re.IGNORECASE)
+            if match:
+                if match.lastindex and match.lastindex > 1:
+                    # Reconstruct from groups: "плюс 43 664..." → +43664...
+                    groups = [g for g in match.groups() if g]
+                    phone = '+' + ''.join(groups).replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
+                    # Validate length
+                    if 10 <= len(phone) <= 20:
+                        result['contact_phone'] = phone
+                        logger.debug("Fallback phone extraction", phone=phone)
+                        break
+                else:
+                    phone = match.group(1).strip()
+                    # Clean and validate
+                    digits = re.sub(r'\D', '', phone)
+                    if 7 <= len(digits) <= 15:
+                        result['contact_phone'] = phone
+                        logger.debug("Fallback phone extraction", phone=phone)
+                        break
+
+        # Email patterns (речевой ввод)
+        email_patterns = [
+            r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)',  # standard email
+            r'([a-zA-Z0-9_.+-]+)\s+(?:эт|at)\s+([a-zA-Z0-9-]+)\s+(?:точка|dot)\s+([a-zA-Z0-9-]+)',  # "channel эт gmail точка com"
+            r'(?:email|емейл|мейл|почта)\s*[:—]?\s*([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)',
+        ]
+
+        for pattern in email_patterns:
+            match = re.search(pattern, full_text, re.IGNORECASE)
+            if match:
+                if match.lastindex and match.lastindex >= 3:
+                    # Reconstruct: "channel эт gmail точка com" → channel@gmail.com
+                    groups = [g for g in match.groups() if g]
+                    if len(groups) >= 3:
+                        email = f"{groups[0]}@{groups[1]}.{groups[2]}"
+                        # Validate
+                        if '@' in email and '.' in email.split('@')[-1]:
+                            result['contact_email'] = email
+                            logger.debug("Fallback email extraction", email=email)
+                            break
+                else:
+                    email = match.group(1).strip()
+                    # Validate
+                    if '@' in email and '.' in email.split('@')[-1] and len(email) < 100:
+                        result['contact_email'] = email
+                        logger.debug("Fallback email extraction", email=email)
+                        break
+
+        return result
+
+    def _post_process_contextual_lists(
+        self,
+        data: Dict[str, Any],
+        dialogue: List[Dict[str, str]]
+    ) -> Dict[str, Any]:
+        """
+        Post-process list fields to handle contextual "да/нет" answers.
+
+        SPRINT 2: If agent mentions options and user says "да все" / "да, интересно",
+        fill all mentioned options.
+        """
+        # Define affirmative patterns
+        affirmative_patterns = [
+            r'да\s+все',
+            r'все\s+интересн',
+            r'все\s+подходит',
+            r'всё\s+устра',
+            r'да,?\s+однозначно',
+            r'конечно',
+            r'именно\s+так',
+            r'подходит',
+        ]
+
+        import re
+        affirmative_re = re.compile('|'.join(affirmative_patterns), re.IGNORECASE)
+
+        # Process agent_functions
+        if not data.get('agent_functions') or len(data.get('agent_functions', [])) == 0:
+            for i, msg in enumerate(dialogue):
+                if msg.get('role', '').lower() in ('assistant', 'agent'):
+                    content = msg['content'].lower()
+
+                    # Check if agent mentioned roles
+                    roles_mentioned = []
+                    if 'администратор' in content:
+                        roles_mentioned.append({
+                            "name": "администратор",
+                            "description": "приём звонков и запись на приём 24/7",
+                            "priority": "high"
+                        })
+                    if 'напоминатель' in content or 'напоминани' in content:
+                        roles_mentioned.append({
+                            "name": "напоминатель",
+                            "description": "напоминания клиентам о записи",
+                            "priority": "medium"
+                        })
+                    if 'консультант' in content:
+                        roles_mentioned.append({
+                            "name": "консультант",
+                            "description": "консультации по услугам и ценам",
+                            "priority": "medium"
+                        })
+                    if 'маршрутизатор' in content or 'направл' in content or 'переключ' in content:
+                        roles_mentioned.append({
+                            "name": "маршрутизатор",
+                            "description": "направление звонков нужным специалистам",
+                            "priority": "medium"
+                        })
+
+                    # Check next user message for affirmative
+                    if roles_mentioned and i + 1 < len(dialogue):
+                        next_msg = dialogue[i + 1]
+                        if next_msg.get('role', '').lower() in ('user', 'client', 'клиент'):
+                            user_response = next_msg['content'].lower()
+                            if affirmative_re.search(user_response):
+                                data['agent_functions'] = roles_mentioned
+                                logger.debug(
+                                    "Contextual post-processing filled agent_functions",
+                                    count=len(roles_mentioned)
+                                )
+                                break
+
+        # Process integrations
+        if not data.get('integrations') or len(data.get('integrations', [])) == 0:
+            for i, msg in enumerate(dialogue):
+                if msg.get('role', '').lower() in ('assistant', 'agent'):
+                    content = msg['content'].lower()
+
+                    # Check if agent mentioned integrations
+                    integrations_mentioned = []
+                    if 'crm' in content or 'систем' in content and 'учёт' in content:
+                        integrations_mentioned.append({
+                            "name": "CRM",
+                            "purpose": "интеграция с системой учёта клиентов",
+                            "required": True
+                        })
+                    if 'календар' in content or 'запис' in content and 'интеграц' in content:
+                        integrations_mentioned.append({
+                            "name": "Календарь",
+                            "purpose": "синхронизация записей",
+                            "required": True
+                        })
+                    if 'телефон' in content and 'интеграц' in content:
+                        integrations_mentioned.append({
+                            "name": "Телефония",
+                            "purpose": "интеграция с телефонной системой",
+                            "required": True
+                        })
+
+                    # Check next user message for affirmative
+                    if integrations_mentioned and i + 1 < len(dialogue):
+                        next_msg = dialogue[i + 1]
+                        if next_msg.get('role', '').lower() in ('user', 'client', 'клиент'):
+                            user_response = next_msg['content'].lower()
+                            if affirmative_re.search(user_response):
+                                data['integrations'] = integrations_mentioned
+                                logger.debug(
+                                    "Contextual post-processing filled integrations",
+                                    count=len(integrations_mentioned)
+                                )
+                                break
+
+        return data
 
     def _build_anketa(self, data: Dict[str, Any], duration_seconds: float) -> FinalAnketa:
         """Build FinalAnketa from extracted data."""

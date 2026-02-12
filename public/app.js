@@ -106,6 +106,13 @@ class VoiceInterviewerApp {
         this._lastPct = 0;
         this._agentSpoke = false;
 
+        // SPRINT 5: Debug mode
+        this.debugMode = localStorage.getItem('anketa_debug') === 'true' || window.location.search.includes('debug=true');
+        if (this.debugMode) {
+            console.log('[DEBUG MODE] Anketa debugging enabled');
+            this._initDebugPanel();
+        }
+
         // Dashboard state
         this.currentFilter = '';
 
@@ -217,6 +224,55 @@ class VoiceInterviewerApp {
 
         this.init();
         LOG.info('=== VoiceInterviewerApp ready ===');
+    }
+
+    // SPRINT 5: Debug panel for anketa monitoring
+    _initDebugPanel() {
+        const debugPanel = document.createElement('div');
+        debugPanel.id = 'anketa-debug-panel';
+        debugPanel.innerHTML = `
+            <div style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.85); color: white; padding: 12px; border-radius: 6px; font-size: 12px; font-family: monospace; z-index: 10000; min-width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                <div style="font-weight: bold; margin-bottom: 8px; color: #4ade80;">⚙️ Anketa Debug</div>
+                <div id="debug-completion" style="margin-bottom: 4px;">Completion: 0%</div>
+                <div id="debug-fields" style="margin-bottom: 4px;">Fields: 0/28</div>
+                <div id="debug-messages" style="margin-bottom: 4px;">Messages: 0</div>
+                <div id="debug-polling" style="margin-bottom: 4px;">Polling: <span style="color: #4ade80;">active</span></div>
+                <div id="debug-errors" style="color: #fbbf24;">Errors: 0</div>
+                <button id="debug-close-btn" style="margin-top: 8px; padding: 4px 8px; background: #374151; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 11px;">Close</button>
+            </div>
+        `;
+        document.body.appendChild(debugPanel);
+
+        // Close button
+        document.getElementById('debug-close-btn')?.addEventListener('click', () => {
+            debugPanel.remove();
+            this.debugMode = false;
+            localStorage.removeItem('anketa_debug');
+        });
+
+        LOG.info('[DEBUG] Debug panel initialized');
+    }
+
+    _updateDebugPanel(completion, filledCount, totalFields, messageCount, pollingActive = true) {
+        if (!this.debugMode) return;
+
+        const completionEl = document.getElementById('debug-completion');
+        const fieldsEl = document.getElementById('debug-fields');
+        const messagesEl = document.getElementById('debug-messages');
+        const pollingEl = document.getElementById('debug-polling');
+        const errorsEl = document.getElementById('debug-errors');
+
+        if (completionEl) completionEl.textContent = `Completion: ${Math.round(completion)}%`;
+        if (fieldsEl) fieldsEl.textContent = `Fields: ${filledCount}/${totalFields}`;
+        if (messagesEl) messagesEl.textContent = `Messages: ${messageCount}`;
+        if (pollingEl) {
+            pollingEl.innerHTML = pollingActive
+                ? 'Polling: <span style="color: #4ade80;">active</span>'
+                : 'Polling: <span style="color: #ef4444;">stopped</span>';
+        }
+        if (errorsEl && this._pollingFailureCount) {
+            errorsEl.textContent = `Errors: ${this._pollingFailureCount}`;
+        }
     }
 
     init() {
@@ -1835,6 +1891,26 @@ class VoiceInterviewerApp {
 
             const data = await response.json();
 
+            // SPRINT 5: Debug logging
+            const completion = data.completion_rate || 0;
+            const messageCount = this.messageHistory?.length || 0;
+            const filledFields = data.anketa_data ? Object.keys(data.anketa_data).filter(
+                k => data.anketa_data[k] && data.anketa_data[k] !== '' &&
+                !(Array.isArray(data.anketa_data[k]) && data.anketa_data[k].length === 0)
+            ).length : 0;
+
+            LOG.debug('[POLLING] Anketa update', {
+                session_id: this.sessionId,
+                completion_rate: completion,
+                message_count: messageCount,
+                fields_filled: filledFields,
+                total_fields: this.anketaFields.length,
+                status: data.status
+            });
+
+            // SPRINT 5: Update debug panel
+            this._updateDebugPanel(completion, filledFields, this.anketaFields.length, messageCount, true);
+
             if (data.status) {
                 this.updateAnketaStatus(data.status);
                 if (data.status === 'reviewing') {
@@ -1930,7 +2006,14 @@ class VoiceInterviewerApp {
                 this._lastPct = pct;
             }
         } catch (error) {
-            // Silent failure for polling
+            // SPRINT 5: Not silent anymore - log errors with failure count
+            LOG.error('[POLLING] Anketa fetch failed:', error);
+
+            // Show toast only after multiple consecutive failures
+            this._pollingFailureCount = (this._pollingFailureCount || 0) + 1;
+            if (this._pollingFailureCount >= 3) {
+                showToast('Проблема с обновлением анкеты. Попробуйте обновить страницу.', 'warning', 5000);
+            }
         }
     }
 
