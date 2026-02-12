@@ -30,7 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 /* ===== Header ===== */
@@ -75,7 +75,35 @@ body {
     border-bottom-color: var(--primary);
 }
 
-.header-actions { flex-shrink: 0; }
+.header-actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-auth {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--surface-light);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s, color 0.15s;
+}
+.btn-auth:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-sm {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+}
 
 .btn-new-session {
     font-size: 0.875rem;
@@ -115,7 +143,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 .screen {
@@ -139,7 +167,7 @@ body {
 #session-screen.active {
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 /* ===== Dashboard ===== */
@@ -150,6 +178,13 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.dashboard-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 .filter-tabs {
@@ -187,7 +222,7 @@ body {
     background: var(--surface);
     border: 1px solid var(--surface-light);
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 .settings-toggle {
@@ -419,7 +454,7 @@ body {
     font-size: 0.75rem;
     white-space: nowrap;
     max-width: 160px;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
     text-overflow: ellipsis;
 }
 
@@ -625,7 +660,7 @@ body {
     gap: 1.5rem;
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden - blocked scrolling */
 }
 
 .interview-left {
@@ -633,7 +668,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 .interview-right {
@@ -641,7 +676,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 /* Progress */
@@ -655,7 +690,7 @@ body {
     height: 6px;
     background: var(--surface-light);
     border-radius: 9999px;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 .progress-fill {
@@ -875,7 +910,7 @@ body {
     border: 1px solid var(--surface-light);
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
 }
 
 .anketa-header {
@@ -969,6 +1004,17 @@ body {
     cursor: pointer;
     z-index: 2;
     flex-shrink: 0;
+}
+
+/* v4.3: Hover feedback */
+.stepper-step:not(.locked):hover .step-circle {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    transition: all 0.2s;
+}
+
+.stepper-step.locked {
+    cursor: not-allowed;
 }
 
 .step-circle {
@@ -1127,10 +1173,25 @@ body {
     color: var(--surface-light);
 }
 
+/* Skeleton loading state for anketa fields */
+.anketa-field input.field-loading,
+.anketa-field textarea.field-loading {
+    background: linear-gradient(90deg, var(--surface-light) 25%, rgba(99,102,241,0.08) 50%, var(--surface-light) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 .anketa-field input.field-updated,
 .anketa-field textarea.field-updated {
-    background-color: rgba(99, 102, 241, 0.08);
-    border-color: rgba(99, 102, 241, 0.3);
+    background-color: rgba(46, 204, 113, 0.18);
+    border-color: rgba(46, 204, 113, 0.5);
+    box-shadow: inset 0 0 0 2px rgba(46, 204, 113, 0.3);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .anketa-actions {
@@ -1248,7 +1309,7 @@ body {
 .upload-status {
     font-size: 0.7rem;
     line-height: 1.3;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
     flex: 1;
 }
 
@@ -1262,7 +1323,7 @@ body {
     color: var(--text-muted);
     display: block;
     margin-top: 0.15rem;
-    overflow: hidden;
+    overflow: visible;  /* v4.3: was hidden */
     text-overflow: ellipsis;
     white-space: nowrap;
 }

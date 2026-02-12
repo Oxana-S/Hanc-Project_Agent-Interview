@@ -24,7 +24,12 @@
                 <a href="/" class="header-nav-item" id="nav-sessions">Мои сессии</a>
             </nav>
             <div class="header-actions">
-                <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая сессия</button>
+                <button id="auth-btn" class="btn-auth" title="Войти">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
             </div>
         </header>
 
@@ -163,7 +168,10 @@
                         <button class="filter-tab" data-status="paused">На паузе</button>
                         <button class="filter-tab" data-status="confirmed">Подтверждённые</button>
                     </div>
-                    <button id="delete-selected-btn" class="btn btn-danger" style="display:none">Удалить выбранные</button>
+                    <div class="dashboard-actions">
+                        <button id="new-session-btn" class="btn btn-primary btn-sm">+ Новая сессия</button>
+                        <button id="delete-selected-btn" class="btn btn-danger btn-sm" style="display:none">Удалить выбранные</button>
+                    </div>
                 </div>
 
                 <!-- Sessions Table -->

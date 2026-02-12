@@ -331,18 +331,32 @@ class FinalAnketa(BaseModel):
         Only counts fields gathered from the client conversation.
         AI-generated blocks (faq_items, objection_handlers, etc.) are excluded
         because DeepSeek generates them automatically, inflating the rate.
+
+        v4.3: Expanded to 15 fields including contact info and critical agent parameters.
         """
         core_fields = {
+            # Business information (6 fields)
             'company_name': self.company_name,
             'industry': self.industry,
             'business_description': self.business_description,
             'services': self.services,
             'current_problems': self.current_problems,
             'business_goals': self.business_goals,
+
+            # Agent configuration (4 fields)
             'agent_name': self.agent_name,
             'agent_purpose': self.agent_purpose,
             'agent_functions': self.agent_functions,
             'integrations': self.integrations,
+
+            # Contact information (3 fields - CRITICAL)
+            'contact_name': self.contact_name,
+            'contact_phone': self.contact_phone,
+            'contact_email': self.contact_email,
+
+            # Agent critical parameters (2 fields)
+            'transfer_conditions': self.transfer_conditions,
+            'call_direction': self.call_direction,
         }
 
         total = len(core_fields)

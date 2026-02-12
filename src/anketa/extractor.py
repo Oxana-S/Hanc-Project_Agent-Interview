@@ -243,12 +243,26 @@ class AnketaExtractor:
 ДОКУМЕНТЫ КЛИЕНТА:
 {document_context.to_prompt_context()}
 """
+                    # v4.3: Debug logging to verify document context is used
+                    logger.info(
+                        "document_context_added_to_extraction_prompt",
+                        has_to_prompt_context=True,
+                        key_facts_count=len(document_context.key_facts) if hasattr(document_context, 'key_facts') else 0,
+                        has_summary=bool(getattr(document_context, 'summary', None)),
+                    )
                 elif hasattr(document_context, 'summary') and document_context.summary:
                     document_text = f"""
 ДОКУМЕНТЫ КЛИЕНТА:
 {document_context.summary}
 """
-            except Exception:
+                    logger.info(
+                        "document_context_added_to_extraction_prompt",
+                        has_to_prompt_context=False,
+                        has_summary=True,
+                        summary_length=len(document_context.summary),
+                    )
+            except Exception as e:
+                logger.warning("failed_to_add_document_context_to_prompt", error=str(e))
                 pass  # Ignore document context errors
 
         return f"""Ты — эксперт по извлечению структурированных данных из консультаций.

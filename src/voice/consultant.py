@@ -264,16 +264,43 @@ def get_review_system_prompt(anketa_summary: str) -> str:
 
 
 def format_anketa_for_voice(anketa_data: dict) -> str:
-    """Format anketa data as readable text for voice review."""
+    """Format anketa data as readable text for voice review.
+
+    Порядок полей соответствует визуальному порядку на форме (index.html).
+    """
     sections = [
+        # Секция "О компании"
         ("Название компании", anketa_data.get("company_name")),
         ("Контактное лицо", anketa_data.get("contact_name")),
-        ("Сфера деятельности", anketa_data.get("industry")),
-        ("Услуги компании", anketa_data.get("services")),
+        ("Должность", anketa_data.get("contact_role")),
+        ("Телефон", anketa_data.get("phone")),
+        ("Email", anketa_data.get("email")),
+        ("Сайт", anketa_data.get("website")),
+        # Секция "О бизнесе"
+        ("Отрасль", anketa_data.get("industry")),
+        ("Специализация", anketa_data.get("specialization")),
+        ("Тип бизнеса", anketa_data.get("business_type")),
+        ("Описание компании", anketa_data.get("company_description")),
+        ("Услуги / продукты", anketa_data.get("services")),
+        ("Типы клиентов", anketa_data.get("client_types")),
         ("Текущие проблемы", anketa_data.get("current_problems")),
-        ("Предлагаемые задачи для агента", anketa_data.get("proposed_tasks")),
+        ("Цели автоматизации", anketa_data.get("business_goals")),
+        # Секция "Настройки агента"
+        ("Имя агента", anketa_data.get("agent_name")),
+        ("Направление звонков", anketa_data.get("call_direction")),
+        ("Назначение агента", anketa_data.get("agent_purpose")),
+        ("Задачи агента", anketa_data.get("agent_tasks")),
         ("Интеграции", anketa_data.get("integrations")),
-        ("Дополнительные заметки", anketa_data.get("notes")),
+        ("Пол голоса", anketa_data.get("voice_gender")),
+        ("Тон голоса", anketa_data.get("voice_tone")),
+        ("Перевод на оператора", anketa_data.get("transfer_conditions")),
+        # Секция "Дополнительно"
+        ("Ограничения", anketa_data.get("constraints")),
+        ("Требования регулятора", anketa_data.get("compliance_requirements")),
+        ("Объём звонков", anketa_data.get("call_volume")),
+        ("Бюджет", anketa_data.get("budget")),
+        ("Сроки", anketa_data.get("timeline")),
+        ("Примечания", anketa_data.get("additional_notes")),
     ]
 
     lines: list[str] = []
@@ -472,6 +499,77 @@ def _detect_consultation_phase(
     return "discovery"
 
 
+def _merge_anketa_data(user_data: dict, extracted_data: dict) -> dict:
+    """
+    Объединить данные из БД (ручные правки) с данными из экстракции.
+
+    Приоритет у ручных правок пользователя (user_data).
+    Если поле заполнено пользователем, сохраняем его значение.
+    Если поле пустое в user_data, берем из extracted_data.
+
+    Args:
+        user_data: Данные из БД (могут содержать ручные правки)
+        extracted_data: Свежие данные из DeepSeek экстракции
+
+    Returns:
+        Объединенные данные с приоритетом ручных правок
+    """
+    merged = extracted_data.copy()
+
+    for key, user_value in user_data.items():
+        # Если пользователь заполнил поле вручную, сохраняем его значение
+        if user_value:
+            # Для строк: проверяем что не пустая
+            if isinstance(user_value, str) and user_value.strip():
+                merged[key] = user_value
+            # Для списков: проверяем что не пустой
+            elif isinstance(user_value, list) and len(user_value) > 0:
+                merged[key] = user_value
+            # Для других типов (числа, bool, dict): если не None
+            elif user_value is not None:
+                merged[key] = user_value
+
+    return merged
+
+
+def _check_required_fields(anketa_data: dict) -> bool:
+    """
+    Проверить заполнение обязательных полей для перехода в REVIEW.
+
+    Обязательные поля согласно consultant.yaml:252-260:
+    - Название компании
+    - Отрасль
+    - Описание компании (чем занимается)
+    - Услуги/продукты (минимум 1)
+    - Текущие проблемы (минимум 1)
+    - Задачи для автоматизации (минимум 1)
+    """
+    required = {
+        "company_name": anketa_data.get("company_name"),
+        "industry": anketa_data.get("industry"),
+        "business_description": anketa_data.get("business_description"),  # FIXED: was company_description
+        "services": anketa_data.get("services"),
+        "current_problems": anketa_data.get("current_problems"),
+        "agent_tasks": anketa_data.get("agent_tasks") or anketa_data.get("business_goals"),
+        # v4.3: Add contact information (CRITICAL)
+        "contact_name": anketa_data.get("contact_name"),
+        "contact_phone": anketa_data.get("contact_phone") or anketa_data.get("phone"),
+        "contact_email": anketa_data.get("contact_email") or anketa_data.get("email"),
+    }
+
+    for field_name, value in required.items():
+        if not value:
+            return False
+        # Для списков проверяем что есть хотя бы один элемент
+        if isinstance(value, list) and len(value) == 0:
+            return False
+        # Для строк проверяем что не пустая после strip
+        if isinstance(value, str) and not value.strip():
+            return False
+
+    return True
+
+
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -516,6 +614,16 @@ async def _extract_and_update_anketa(
         )
 
         anketa_data = anketa.model_dump(mode="json")
+
+        # FIX: Сохранить ручные правки пользователя (merge с данными из БД)
+        # Если пользователь редактировал форму вручную, приоритет у его данных
+        if db_session and db_session.anketa_data:
+            anketa_data = _merge_anketa_data(db_session.anketa_data, anketa_data)
+            anketa_log.debug(
+                "anketa_merged_with_manual_edits",
+                session_id=session_id,
+            )
+
         anketa_md = AnketaGenerator.render_markdown(anketa)
         _session_mgr.update_anketa(session_id, anketa_data, anketa_md)
 
@@ -646,7 +754,15 @@ async def _extract_and_update_anketa(
             try:
                 rate = anketa.completion_rate()
                 msg_count = len(consultation.dialogue_history)
-                if rate >= 0.6 and msg_count >= 16:
+
+                # УСИЛЕННАЯ ПРОВЕРКА: требуем заполнения обязательных полей
+                required_fields_filled = _check_required_fields(anketa_data)
+
+                # Переход в REVIEW только если:
+                # 1. completion_rate >= 60%
+                # 2. Минимум 16 сообщений
+                # 3. ВСЕ обязательные поля заполнены
+                if rate >= 0.6 and msg_count >= 16 and required_fields_filled:
                     consultation.review_started = True
                     summary = format_anketa_for_voice(anketa_data)
                     review_prompt = get_review_system_prompt(summary)
@@ -662,6 +778,15 @@ async def _extract_and_update_anketa(
                             completion_rate=rate,
                             message_count=msg_count,
                         )
+                elif msg_count >= 16:
+                    # Логируем почему НЕ перешли в REVIEW (для отладки)
+                    anketa_log.debug(
+                        "review_phase_not_ready",
+                        session_id=session_id,
+                        completion_rate=rate,
+                        message_count=msg_count,
+                        required_fields_filled=required_fields_filled,
+                    )
             except Exception as e:
                 anketa_log.warning("review_phase_start_failed", error=str(e))
 
@@ -973,6 +1098,27 @@ def _register_event_handlers(
         """Вызывается при закрытии сессии (отключение клиента)."""
         reason = getattr(event, 'reason', 'unknown')
         event_log.info(f"SESSION CLOSE: reason={reason}, messages={len(consultation.dialogue_history)}")
+
+        # CRITICAL FIX: Синхронное сохранение dialogue_history ПЕРЕД async finalization
+        # Агент выходит сразу после disconnect, поэтому async task может быть отменен
+        if session_id and db_backed and consultation.dialogue_history:
+            try:
+                _session_mgr.update_dialogue(
+                    session_id,
+                    dialogue_history=consultation.dialogue_history,
+                    duration_seconds=consultation.get_duration_seconds(),
+                    status="processing",  # Временный статус до завершения финализации
+                )
+                event_log.info(
+                    "dialogue_saved_sync",
+                    session_id=session_id,
+                    messages=len(consultation.dialogue_history),
+                    duration=consultation.get_duration_seconds()
+                )
+            except Exception as e:
+                event_log.error(f"Failed to save dialogue_history: {e}")
+
+        # Затем запускаем async финализацию (anketa extraction, file writes)
         asyncio.create_task(_finalize_and_save(consultation, session_id))
 
     event_log.info("All event handlers registered successfully")
@@ -1500,8 +1646,33 @@ async def entrypoint(ctx: JobContext):
         The server updates room metadata with a config_version timestamp
         when a client reconnects. This is the primary mechanism for applying
         mid-session voice settings (speed, silence, voice gender, verbosity).
+
+        v4.3: Also handles document_context_updated notifications when files are uploaded.
         """
         debug_log.info(f"ROOM EVENT: Room metadata changed: {old_metadata!r} -> {new_metadata!r}")
+
+        # Handle document upload notification
+        try:
+            import json as _json
+            metadata = _json.loads(new_metadata) if new_metadata else {}
+            if metadata.get("document_context_updated"):
+                # Re-load session to get fresh document_context
+                if session_id:
+                    fresh_session = _session_mgr.get_session(session_id)
+                    if fresh_session and fresh_session.document_context:
+                        event_log.info(
+                            "documents_uploaded_agent_notified",
+                            session_id=session_id,
+                            document_count=metadata.get("document_count", 0),
+                            key_facts=metadata.get("key_facts_count", 0),
+                        )
+                        debug_log.info(f"Agent received document notification: {metadata}")
+                        # Optionally: trigger immediate anketa extraction
+                        # or inject document context via session.update_instructions()
+        except Exception as e:
+            debug_log.warning(f"Failed to handle document notification: {e}")
+
+        # Handle voice_config updates
         _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session)
 
     # Step 5: Start agent session and trigger greeting

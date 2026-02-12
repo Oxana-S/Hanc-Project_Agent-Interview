@@ -279,6 +279,11 @@ class DialogueCleaner:
         re.compile(r'(уловили суть|всё верно|именно так|правильно понял|точно подметили)', re.IGNORECASE),
         re.compile(r'\?$'),  # Ends with question mark
         re.compile(r'.{200,}'),  # Too long for identifier fields
+
+        # v4.3: Reject verb phrases (action descriptions instead of names)
+        re.compile(r'\b(сталкиваемся|работаем|занимаемся|делаем|предлагаем|оказываем|предоставляем|решаем)\b', re.IGNORECASE),
+        re.compile(r'\b(в области|в сфере|с проблем|с задач|в направлении|по вопросам)\b', re.IGNORECASE),
+        re.compile(r'\b(мы|они|вы|клиенты|сотрудники|партнеры)\b.*\b(сталкива|работа|делаем|говор|помога|реша)\w*', re.IGNORECASE),
     ]
 
     # Fields that should never contain dialogue

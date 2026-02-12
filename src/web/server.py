@@ -798,6 +798,27 @@ async def upload_documents(
         services=len(doc_context.services_mentioned),
     )
 
+    # v4.3: Notify running agent via LiveKit room metadata
+    try:
+        room_name = f"consultation-{session_id}"
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        import json as _json
+        metadata = _json.dumps({
+            "document_context_updated": True,
+            "document_count": len(parsed_docs),
+            "key_facts_count": len(doc_context.key_facts),
+        })
+        await lk_api.room.update_room_metadata(
+            UpdateRoomMetadataRequest(room=room_name, metadata=metadata)
+        )
+        logger.info("agent_notified_about_documents", session_id=session_id, room=room_name)
+    except Exception as e:
+        logger.warning("failed_to_notify_agent_about_documents", error=str(e), session_id=session_id)
+
     # Trigger immediate anketa extraction with document context
     task = asyncio.create_task(
         _extract_anketa_with_documents(session_id, doc_context)
