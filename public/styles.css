@@ -901,6 +901,137 @@ body {
     color: var(--danger);
 }
 
+/* ===== Anketa Stepper Pipeline (v5.4) ===== */
+
+.anketa-stepper {
+    display: flex;
+    padding: 10px 16px 8px;
+    border-bottom: 1px solid var(--surface-light);
+    flex-shrink: 0;
+    background: var(--surface);
+}
+
+.stepper-track {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.stepper-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.step-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--surface-light);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: all 0.3s;
+}
+
+.stepper-step.active .step-circle {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.stepper-step.partial .step-circle {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.stepper-step.complete .step-circle {
+    border-color: var(--secondary);
+    background: var(--secondary);
+    color: white;
+}
+
+.step-label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.stepper-step.active .step-label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.stepper-connector {
+    flex: 1;
+    height: 2px;
+    background: var(--surface-light);
+    position: relative;
+    align-self: center;
+    margin: 0 2px;
+    margin-top: -10px;
+}
+
+.stepper-connector-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    transition: width 0.5s ease;
+    border-radius: 1px;
+}
+
+.stepper-connector.complete .stepper-connector-fill {
+    background: var(--secondary);
+    width: 100%;
+}
+
+.stepper-separator {
+    width: 12px;
+    border-top: 1px dashed var(--text-muted);
+    opacity: 0.3;
+    align-self: center;
+    margin-top: -10px;
+    margin-left: 4px;
+}
+
+.stepper-step.locked .step-circle {
+    border-style: dashed;
+    opacity: 0.4;
+}
+
+.stepper-step.locked .step-label {
+    opacity: 0.4;
+}
+
+/* Section number badge in form body */
+.section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary);
+    font-size: 0.6rem;
+    font-weight: 700;
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
 .anketa-form {
     flex: 1;
     overflow-y: auto;
@@ -1017,6 +1148,8 @@ body {
 }
 
 .anketa-section-title {
+    display: flex;
+    align-items: center;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;

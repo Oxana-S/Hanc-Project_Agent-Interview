@@ -320,11 +320,41 @@
                                 <div id="doc-upload-status" class="upload-status"></div>
                             </div>
 
+                            <!-- Stepper Pipeline (v5.4) -->
+                            <div class="anketa-stepper" id="anketa-stepper">
+                                <div class="stepper-track">
+                                    <div class="stepper-step" data-section="0">
+                                        <div class="step-circle">1</div>
+                                        <div class="step-label">Знак.</div>
+                                    </div>
+                                    <div class="stepper-connector"><div class="stepper-connector-fill"></div></div>
+                                    <div class="stepper-step" data-section="1">
+                                        <div class="step-circle">2</div>
+                                        <div class="step-label">Бизнес</div>
+                                    </div>
+                                    <div class="stepper-connector"><div class="stepper-connector-fill"></div></div>
+                                    <div class="stepper-step" data-section="2">
+                                        <div class="step-circle">3</div>
+                                        <div class="step-label">Решение</div>
+                                    </div>
+                                    <div class="stepper-connector"><div class="stepper-connector-fill"></div></div>
+                                    <div class="stepper-step" data-section="3">
+                                        <div class="step-circle">4</div>
+                                        <div class="step-label">Детали</div>
+                                    </div>
+                                    <div class="stepper-separator"></div>
+                                    <div class="stepper-step locked" data-section="4">
+                                        <div class="step-circle">5</div>
+                                        <div class="step-label">AI</div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Anketa Form (v2.0 — full schema) -->
                             <form id="anketa-form" class="anketa-form" autocomplete="off">
                                 <!-- Section 1: Contacts -->
-                                <div class="anketa-section">
-                                    <div class="anketa-section-title">Контакты</div>
+                                <div class="anketa-section" data-section-index="0">
+                                    <div class="anketa-section-title"><span class="section-number">1</span> Контакты</div>
                                     <div class="anketa-field">
                                         <label for="anketa-company_name">Название компании</label>
                                         <input type="text" id="anketa-company_name" data-field="company_name" placeholder="ООО Пример">
@@ -354,8 +384,8 @@
                                 </div>
 
                                 <!-- Section 2: Business -->
-                                <div class="anketa-section">
-                                    <div class="anketa-section-title">О бизнесе</div>
+                                <div class="anketa-section" data-section-index="1">
+                                    <div class="anketa-section-title"><span class="section-number">2</span> О бизнесе</div>
                                     <div class="anketa-field-row">
                                         <div class="anketa-field anketa-field-half">
                                             <label for="anketa-industry">Отрасль</label>
@@ -393,8 +423,8 @@
                                 </div>
 
                                 <!-- Section 3: Voice Agent -->
-                                <div class="anketa-section">
-                                    <div class="anketa-section-title">Голосовой агент</div>
+                                <div class="anketa-section" data-section-index="2">
+                                    <div class="anketa-section-title"><span class="section-number">3</span> Голосовой агент</div>
                                     <div class="anketa-field-row">
                                         <div class="anketa-field anketa-field-half">
                                             <label for="anketa-agent_name">Имя агента</label>
@@ -434,8 +464,8 @@
                                 </div>
 
                                 <!-- Section 4: Additional -->
-                                <div class="anketa-section">
-                                    <div class="anketa-section-title">Дополнительно</div>
+                                <div class="anketa-section" data-section-index="3">
+                                    <div class="anketa-section-title"><span class="section-number">4</span> Дополнительно</div>
                                     <div class="anketa-field">
                                         <label for="anketa-constraints">Ограничения <span class="field-hint">(каждое с новой строки)</span></label>
                                         <textarea id="anketa-constraints" data-field="constraints" data-array="true" rows="2" placeholder="Бюджет&#10;Сроки"></textarea>
@@ -465,8 +495,8 @@
                                 </div>
 
                                 <!-- Section 5: AI Expert Analysis (read-only, shown when populated) -->
-                                <div class="anketa-section" id="ai-blocks-section" style="display:none">
-                                    <div class="anketa-section-title">AI-экспертиза</div>
+                                <div class="anketa-section" id="ai-blocks-section" data-section-index="4" style="display:none">
+                                    <div class="anketa-section-title"><span class="section-number">5</span> AI-экспертиза</div>
                                     <div class="ai-blocks-summary" id="ai-blocks-summary"></div>
                                 </div>
                             </form>

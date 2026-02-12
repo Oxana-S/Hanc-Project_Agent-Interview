@@ -132,6 +132,25 @@ class VoiceInterviewerApp {
             'constraints', 'compliance_requirements'
         ]);
 
+        // v5.4: Section definitions for stepper pipeline
+        this.sectionDefs = [
+            { id: 'contacts', label: 'Знакомство',
+              fields: ['company_name','contact_name','contact_role','phone','email','website'] },
+            { id: 'business', label: 'Бизнес',
+              fields: ['industry','specialization','business_type','company_description',
+                       'services','client_types','current_problems','business_goals'] },
+            { id: 'agent', label: 'Решение',
+              fields: ['agent_name','call_direction','agent_purpose','agent_tasks',
+                       'integrations','voice_gender','voice_tone','transfer_conditions'] },
+            { id: 'additional', label: 'Детали',
+              fields: ['constraints','compliance_requirements','call_volume','budget',
+                       'timeline','additional_notes'] },
+        ];
+        this._userScrolling = false;
+        this._userScrollTimer = null;
+        this._scrollDebounceTimer = null;
+        this._previousFieldValues = {};
+
         this.aiBlocks = [
             { key: 'faq_items', label: 'FAQ' },
             { key: 'objection_handlers', label: 'Возражения' },
@@ -1578,6 +1597,7 @@ class VoiceInterviewerApp {
                         : 0;
                 }
                 this.updateProgress(pct);
+                this._updateStepperProgress(normalized);
 
                 // Status ticker + toast notifications
                 const prevCount = this._lastFieldCount || 0;
@@ -1815,10 +1835,35 @@ class VoiceInterviewerApp {
                 this.scheduleAnketaSave();
             });
         });
+
+        // v5.4: User scroll guard — suppress auto-scroll when user scrolls manually
+        const anketaForm = document.getElementById('anketa-form');
+        if (anketaForm) {
+            anketaForm.addEventListener('scroll', () => {
+                this._userScrolling = true;
+                clearTimeout(this._userScrollTimer);
+                this._userScrollTimer = setTimeout(() => { this._userScrolling = false; }, 5000);
+            }, { passive: true });
+        }
+
+        // v5.4: Stepper click-to-scroll
+        document.querySelectorAll('.stepper-step[data-section]').forEach(step => {
+            step.addEventListener('click', () => {
+                const idx = step.dataset.section;
+                const section = document.querySelector(`.anketa-section[data-section-index="${idx}"]`);
+                if (section && anketaForm) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    this._userScrolling = true;
+                    clearTimeout(this._userScrollTimer);
+                    this._userScrollTimer = setTimeout(() => { this._userScrolling = false; }, 5000);
+                }
+            });
+        });
     }
 
     updateAnketaFromServer(anketaData) {
         const normalized = this._normalizeAnketaData(anketaData);
+        let firstNewFieldSection = -1;
 
         this.anketaFields.forEach(fieldName => {
             if (this.focusedField === fieldName) return;
@@ -1839,11 +1884,33 @@ class VoiceInterviewerApp {
             }
 
             if (element.value !== displayValue) {
+                // v5.4: Detect first-time fill for auto-scroll
+                const wasPreviouslyEmpty = !this._previousFieldValues[fieldName];
+                const isNowFilled = displayValue !== '';
+
                 element.value = displayValue;
                 element.classList.add('field-updated');
                 setTimeout(() => element.classList.remove('field-updated'), 1500);
+
+                // Track first newly-filled field's section for auto-scroll
+                if (wasPreviouslyEmpty && isNowFilled && firstNewFieldSection === -1) {
+                    for (let i = 0; i < this.sectionDefs.length; i++) {
+                        if (this.sectionDefs[i].fields.includes(fieldName)) {
+                            firstNewFieldSection = i;
+                            break;
+                        }
+                    }
+                }
             }
+
+            // Track field values for next comparison
+            this._previousFieldValues[fieldName] = displayValue;
         });
+
+        // v5.4: Auto-scroll to section with first newly-filled field
+        if (firstNewFieldSection >= 0 && !this._userScrolling) {
+            this._scrollToSection(firstNewFieldSection);
+        }
     }
 
     populateAnketaForm(anketaData) {
@@ -2086,6 +2153,82 @@ class VoiceInterviewerApp {
         }
         if (this.elements.progressText) {
             this.elements.progressText.textContent = `${Math.round(clamped)}% заполнено`;
+        }
+    }
+
+    // v5.4: Scroll anketa form to a section by index (debounced)
+    _scrollToSection(sectionIndex) {
+        if (this._scrollDebounceTimer) return; // debounce active
+        this._scrollDebounceTimer = setTimeout(() => { this._scrollDebounceTimer = null; }, 600);
+
+        const section = document.querySelector(`.anketa-section[data-section-index="${sectionIndex}"]`);
+        if (!section) return;
+
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // v5.4: Update stepper pipeline progress per section
+    _updateStepperProgress(normalized) {
+        if (this.consultationType === 'interview') return; // stepper is for consultation mode only
+
+        const steps = document.querySelectorAll('.stepper-step[data-section]');
+        const connectors = document.querySelectorAll('.stepper-connector');
+        let lastFilledSection = -1;
+
+        this.sectionDefs.forEach((sec, i) => {
+            const filled = sec.fields.filter(f => {
+                const v = normalized[f];
+                return v && v !== '' && !(Array.isArray(v) && v.length === 0);
+            }).length;
+            const total = sec.fields.length;
+            const pct = Math.round(filled / total * 100);
+            const step = steps[i];
+            if (!step) return;
+
+            // Remove all state classes
+            step.classList.remove('active', 'partial', 'complete');
+
+            if (pct === 100) {
+                step.classList.add('complete');
+                lastFilledSection = i;
+            } else if (pct > 0) {
+                step.classList.add('partial');
+                lastFilledSection = i;
+            }
+
+            // Update connector fill (connector[i] connects step[i] to step[i+1])
+            if (i < connectors.length) {
+                const connector = connectors[i];
+                const fill = connector.querySelector('.stepper-connector-fill');
+                if (fill) {
+                    fill.style.width = `${pct}%`;
+                }
+                connector.classList.toggle('complete', pct === 100);
+            }
+        });
+
+        // Mark the last section with new data as "active"
+        if (lastFilledSection >= 0) {
+            const activeStep = steps[lastFilledSection];
+            if (activeStep && !activeStep.classList.contains('complete')) {
+                activeStep.classList.add('active');
+            } else if (activeStep && activeStep.classList.contains('complete')) {
+                // If last filled is complete, mark next incomplete as active
+                for (let j = lastFilledSection + 1; j < this.sectionDefs.length; j++) {
+                    if (steps[j] && !steps[j].classList.contains('complete')) {
+                        steps[j].classList.add('active');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Section 5 (AI): check if ai-blocks-section is visible
+        const aiStep = steps[4];
+        const aiSection = document.getElementById('ai-blocks-section');
+        if (aiStep && aiSection && aiSection.style.display !== 'none') {
+            aiStep.classList.remove('locked');
+            aiStep.classList.add('complete');
         }
     }
 

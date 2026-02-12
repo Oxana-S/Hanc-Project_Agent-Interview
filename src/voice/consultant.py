@@ -867,7 +867,7 @@ def _register_event_handlers(
 ):
     """Register LiveKit AgentSession event handlers."""
     # При возобновлении сессии продолжаем счёт, а не начинаем с нуля
-    messages_since_last_extract = [len(consultation.dialogue_history) % 6]
+    messages_since_last_extract = [len(consultation.dialogue_history) % 4]
 
     # Create file-based logger for event debugging
     import logging
@@ -899,7 +899,7 @@ def _register_event_handlers(
             consultation.add_message("user", transcript.strip())
             if db_backed and session_id:
                 messages_since_last_extract[0] += 1
-                if messages_since_last_extract[0] >= 6:
+                if messages_since_last_extract[0] >= 4:
                     messages_since_last_extract[0] = 0
                     asyncio.create_task(
                         _extract_and_update_anketa(consultation, session_id, session)
@@ -1040,7 +1040,7 @@ def _handle_conversation_item(
 
         messages_since_last_extract[0] += 1
 
-        if messages_since_last_extract[0] >= 6:
+        if messages_since_last_extract[0] >= 4:
             messages_since_last_extract[0] = 0
             asyncio.create_task(
                 _extract_and_update_anketa(consultation, session_id, agent_session)
