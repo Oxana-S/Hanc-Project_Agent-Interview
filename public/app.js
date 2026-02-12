@@ -1903,14 +1903,17 @@ class VoiceInterviewerApp {
                 !(Array.isArray(data.anketa_data[k]) && data.anketa_data[k].length === 0)
             ).length : 0;
 
-            LOG.debug('[POLLING] Anketa update', {
-                session_id: this.sessionId,
-                completion_rate: completion,
-                message_count: messageCount,
-                fields_filled: filledFields,
-                total_fields: this.anketaFields.length,
-                status: data.status
-            });
+            // Debug logging (console only, no visual noise)
+            if (window.location.search.includes('debug=true')) {
+                console.log('[POLLING] Anketa update', {
+                    session_id: this.sessionId,
+                    completion_rate: completion,
+                    message_count: messageCount,
+                    fields_filled: filledFields,
+                    total_fields: this.anketaFields.length,
+                    status: data.status
+                });
+            }
 
             // SPRINT 5: Update debug panel
             this._updateDebugPanel(completion, filledFields, this.anketaFields.length, messageCount, true);
