@@ -463,11 +463,49 @@ class SmartExtractor:
             r'плюс\s+(\d{2,3}(?:\s+\d{2,4}){3,5})',
         ],
         'contact_email': [
+            # Standard format
             r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)',
             r'email[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
             r'(?:почта|мейл|имейл)[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
-            r'([a-zA-Z0-9_.+-]+)\s+(?:эт|at)\s+([a-zA-Z0-9-]+)(?:\s+(?:точка|dot)\s+([a-zA-Z0-9-]+))?',
+            # Speech-to-text with spaces: "channel.my.honey @ gmail . com"
+            r'([a-zA-Z0-9_.+-]+)\s*@\s*([a-zA-Z0-9-]+)\s*\.\s*([a-zA-Z0-9-.]+)',
         ],
+    }
+
+    # FIX: Speech-to-text word-to-digit mapping (Russian + English)
+    WORD_TO_DIGIT = {
+        # Russian
+        'ноль': '0', 'нуль': '0',
+        'один': '1', 'одна': '1',
+        'два': '2', 'две': '2',
+        'три': '3',
+        'четыре': '4',
+        'пять': '5',
+        'шесть': '6',
+        'семь': '7',
+        'восемь': '8',
+        'девять': '9',
+        'десять': '10',
+        # Teens
+        'одиннадцать': '11', 'двенадцать': '12', 'тринадцать': '13',
+        'четырнадцать': '14', 'пятнадцать': '15', 'шестнадцать': '16',
+        'семнадцать': '17', 'восемнадцать': '18', 'девятнадцать': '19',
+        # Tens
+        'двадцать': '20', 'тридцать': '30', 'сорок': '40',
+        'пятьдесят': '50', 'шестьдесят': '60', 'семьдесят': '70',
+        'восемьдесят': '80', 'девяносто': '90',
+        # Hundreds
+        'сто': '100', 'двести': '200', 'триста': '300',
+        'четыреста': '400', 'пятьсот': '500', 'шестьсот': '600',
+        'семьсот': '700', 'восемьсот': '800', 'девятьсот': '900',
+        # English
+        'zero': '0', 'one': '1', 'two': '2', 'three': '3', 'four': '4',
+        'five': '5', 'six': '6', 'seven': '7', 'eight': '8', 'nine': '9',
+        'ten': '10', 'twenty': '20', 'thirty': '30', 'forty': '40',
+        'fifty': '50', 'sixty': '60', 'seventy': '70', 'eighty': '80', 'ninety': '90',
+        # Email markers
+        'собака': '@', 'эт': '@', 'at': '@',
+        'точка': '.', 'dot': '.',
     }
 
     def __init__(self):
@@ -478,6 +516,23 @@ class SmartExtractor:
                 re.compile(p, re.IGNORECASE | re.UNICODE)
                 for p in patterns
             ]
+
+    def _normalize_speech_to_text(self, text: str) -> str:
+        """
+        Convert speech-to-text words to digits/symbols.
+
+        Examples:
+            "плюс сорок три шесть шесть четыре" → "плюс 43 6 6 4"
+            "channel собака gmail точка com" → "channel@gmail.com"
+        """
+        words = text.split()
+        normalized = []
+
+        for word in words:
+            word_lower = word.lower().strip('.,!?;:')
+            normalized.append(self.WORD_TO_DIGIT.get(word_lower, word))
+
+        return ' '.join(normalized)
 
     def extract_from_dialogue(
         self,
@@ -502,8 +557,9 @@ class SmartExtractor:
             if msg.get('role', '').lower() in ('user', 'client', 'клиент')
         ]
 
-        # Combine all client text
+        # Combine all client text and normalize speech-to-text words
         client_text = ' '.join(client_messages)
+        client_text = self._normalize_speech_to_text(client_text)
 
         # Extract each field
         for field, patterns in self._compiled_patterns.items():

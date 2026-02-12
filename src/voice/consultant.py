@@ -1005,6 +1005,9 @@ def _register_event_handlers(
     # При возобновлении сессии продолжаем счёт, а не начинаем с нуля
     messages_since_last_extract = [len(consultation.dialogue_history) % 4]
 
+    # FIX: Prevent duplicate extraction (race condition between 2 triggers)
+    extraction_running = [False]  # mutable for closure
+
     # Create file-based logger for event debugging
     import logging
     event_log = logging.getLogger("agent.events")
@@ -1037,9 +1040,23 @@ def _register_event_handlers(
                 messages_since_last_extract[0] += 1
                 if messages_since_last_extract[0] >= 4:
                     messages_since_last_extract[0] = 0
-                    asyncio.create_task(
-                        _extract_and_update_anketa(consultation, session_id, session)
-                    )
+
+                    # FIX: Skip if extraction already running (prevent duplication)
+                    if extraction_running[0]:
+                        logger.debug("extraction_skipped_already_running", trigger="user_input")
+                        return
+
+                    extraction_running[0] = True
+
+                    async def run_extraction():
+                        try:
+                            await _extract_and_update_anketa(consultation, session_id, session)
+                        except Exception as e:
+                            logger.error("extraction_failed", error=str(e), trigger="user_input")
+                        finally:
+                            extraction_running[0] = False
+
+                    asyncio.create_task(run_extraction())
 
     @session.on("user_state_changed")
     def on_user_state_changed(event):
@@ -1209,9 +1226,23 @@ def _handle_conversation_item(
 
         if messages_since_last_extract[0] >= 4:
             messages_since_last_extract[0] = 0
-            asyncio.create_task(
-                _extract_and_update_anketa(consultation, session_id, agent_session)
-            )
+
+            # FIX: Skip if extraction already running (prevent duplication)
+            if extraction_running[0]:
+                logger.debug("extraction_skipped_already_running", trigger="conversation_item")
+                return
+
+            extraction_running[0] = True
+
+            async def run_extraction():
+                try:
+                    await _extract_and_update_anketa(consultation, session_id, agent_session)
+                except Exception as e:
+                    logger.error("extraction_failed", error=str(e), trigger="conversation_item")
+                finally:
+                    extraction_running[0] = False
+
+            asyncio.create_task(run_extraction())
 
     except Exception as e:
         logger.error(
