@@ -998,14 +998,23 @@ class VoiceInterviewerApp {
                 this._sessionOriginalConfig = { ...this.getVoiceSettings() };
             }
 
-            // Reset state
-            this.isPaused = false;
+            // ✅ FIX БАГ #6: Reset state, but preserve isPaused if session is paused
+            this.isPaused = (sessionData.status === 'paused');
             this.localEdits = {};
             this.focusedField = null;
-            this.elements.pauseBtn.classList.remove('paused');
-            this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
-            this.elements.micBtn.disabled = false;
-            document.getElementById('pause-overlay')?.classList.remove('visible');
+
+            // Restore paused UI state if session is paused
+            if (sessionData.status === 'paused') {
+                this.elements.pauseBtn.classList.add('paused');
+                this.elements.pauseBtn.querySelector('.icon').textContent = '▶';
+                this.elements.micBtn.disabled = true;
+                document.getElementById('pause-overlay')?.classList.add('visible');
+            } else {
+                this.elements.pauseBtn.classList.remove('paused');
+                this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
+                this.elements.micBtn.disabled = false;
+                document.getElementById('pause-overlay')?.classList.remove('visible');
+            }
 
             // Restore dialogue
             this.elements.dialogueContainer.innerHTML = '';
@@ -1045,9 +1054,14 @@ class VoiceInterviewerApp {
             this.startAnketaPolling();
             this._syncQuickSettings();
 
-            // Reconnect to LiveKit if active
-            if (sessionData.status === 'active' || sessionData.status === 'paused') {
+            // ✅ FIX БАГ #3: Reconnect to LiveKit if active, paused, OR processing
+            if (sessionData.status === 'active' || sessionData.status === 'paused' || sessionData.status === 'processing') {
                 try {
+                    // ✅ UX #1: Show feedback during reconnect (0-1000ms window)
+                    this.elements.voiceStatus.textContent = 'Подключаемся к серверу...';
+                    this.updateConnectionStatus(false);
+                    showToast('Восстанавливаем соединение...', 'info');
+
                     // Send current slider values so the agent uses updated voice_config
                     await fetch(`/api/session/${this.sessionId}/voice-config`, {
                         method: 'PUT',
@@ -1060,19 +1074,32 @@ class VoiceInterviewerApp {
                         const reconData = await reconResp.json();
                         await this.connectToRoom(reconData.livekit_url, reconData.user_token, reconData.room_name);
                         this.updateConnectionStatus(true);
-                        setTimeout(() => this.startRecording(), 1000);
+                        // ✅ FIX БАГ #4: REMOVED setTimeout — startRecording will be triggered by RoomEvent.Connected
+                        // Store session status for RoomEvent.Connected handler
+                        this._resumedSessionStatus = sessionData.status;
+
+                        // ✅ UX: Update voice status after reconnect
+                        if (sessionData.status === 'paused') {
+                            this.elements.voiceStatus.textContent = 'На паузе';
+                            document.querySelector('.wave')?.classList.add('inactive');
+                        } else {
+                            this.elements.voiceStatus.textContent = 'Подключено. Ожидание...';
+                        }
                     }
                 } catch (err) {
                     LOG.error('Reconnect error:', err);
                     this.updateConnectionStatus(false);
                 }
             } else {
-                // v4.3: Hide connection status for saved sessions (confirmed/declined)
-                // to avoid showing false "connection error" indicator
+                // ✅ UX #2: Hide connection status ONLY for truly finished sessions
+                // For other statuses (processing, reviewing), show connection status
                 if (sessionData.status === 'confirmed' || sessionData.status === 'declined') {
                     const status = this.elements.connectionStatus;
                     if (status) status.style.display = 'none';
                 } else {
+                    // Show connection status for all other statuses
+                    const status = this.elements.connectionStatus;
+                    if (status) status.style.display = 'flex';
                     this.updateConnectionStatus(false);
                 }
             }
@@ -1162,7 +1189,7 @@ class VoiceInterviewerApp {
             // Agent sends its own greeting via voice (appears via TranscriptionReceived).
             // No hardcoded greeting — avoids duplicate messages in chat.
 
-            setTimeout(() => this.startRecording(), 1000);
+            // ✅ FIX БАГ #4: REMOVED setTimeout — startRecording will be triggered by RoomEvent.Connected
 
         } catch (error) {
             LOG.error('Session create failed:', error);
@@ -1402,6 +1429,17 @@ class VoiceInterviewerApp {
             LOG.event('Connected', { roomName: this.room.name });
             this.isConnected = true;
             this.updateStatusTicker('Консультация началась');
+
+            // ✅ FIX БАГ #4: Auto-start recording when room is fully connected (resume scenario)
+            // Only start if NOT paused and NOT already recording
+            if (!this.isPaused && !this.isRecording && this.sessionId) {
+                // Small delay to ensure localParticipant is fully initialized
+                setTimeout(() => {
+                    if (!this.isPaused && !this.isRecording) {
+                        this.startRecording();
+                    }
+                }, 500);
+            }
         });
 
         this.room.on(RoomEvent.Disconnected, (reason) => {
@@ -1581,6 +1619,14 @@ class VoiceInterviewerApp {
 
     async startRecording() {
         if (this.isRecording) return;
+
+        // ✅ FIX БАГ #5: Guard check for localParticipant
+        if (!this.localParticipant) {
+            LOG.error('Cannot start recording: localParticipant is null');
+            showToast('Ошибка подключения к комнате. Попробуйте через несколько секунд.', 'error');
+            return;
+        }
+
         LOG.info('=== START RECORDING ===');
         try {
             const { createLocalAudioTrack } = LivekitClient;

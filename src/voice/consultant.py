@@ -804,13 +804,24 @@ async def _finalize_and_save(
     if not session_id:
         return
 
+    # ✅ FIX БАГ #2: Re-read session to get current status (may have been paused)
+    fresh_session = _session_mgr.get_session(session_id)
+    current_status = fresh_session.status if fresh_session else "reviewing"
+
+    # Only update to "reviewing" if status is still "active" or "processing"
+    # Don't overwrite "paused", "confirmed", "declined"
+    if current_status in ("active", "processing"):
+        final_status = "reviewing"
+    else:
+        final_status = current_status
+
     # Save dialogue + duration + status via field-specific update
     # (no full session overwrite that could race with document_context/anketa)
     _session_mgr.update_dialogue(
         session_id,
         dialogue_history=consultation.dialogue_history,
         duration_seconds=consultation.get_duration_seconds(),
-        status="reviewing",
+        status=final_status,  # ✅ Preserve paused/confirmed/declined
     )
 
     if consultation.status == "completed":
@@ -1103,17 +1114,27 @@ def _register_event_handlers(
         # Агент выходит сразу после disconnect, поэтому async task может быть отменен
         if session_id and db_backed and consultation.dialogue_history:
             try:
+                # ✅ FIX БАГ #2: Read current status to avoid overwriting "paused"
+                fresh_session = _session_mgr.get_session(session_id)
+                current_status = fresh_session.status if fresh_session else "processing"
+
+                # Only update to "processing" if status is still "active"
+                # Don't overwrite "paused", "confirmed", "declined"
+                final_status = "processing" if current_status == "active" else current_status
+
                 _session_mgr.update_dialogue(
                     session_id,
                     dialogue_history=consultation.dialogue_history,
                     duration_seconds=consultation.get_duration_seconds(),
-                    status="processing",  # Временный статус до завершения финализации
+                    status=final_status,  # ✅ Preserve paused/confirmed/declined
                 )
                 event_log.info(
                     "dialogue_saved_sync",
-                    session_id=session_id,
-                    messages=len(consultation.dialogue_history),
-                    duration=consultation.get_duration_seconds()
+                    extra={
+                        "session_id": session_id,
+                        "messages": len(consultation.dialogue_history),
+                        "duration": consultation.get_duration_seconds()
+                    }
                 )
             except Exception as e:
                 event_log.error(f"Failed to save dialogue_history: {e}")
