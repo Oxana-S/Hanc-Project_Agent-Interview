@@ -340,12 +340,31 @@ async def get_anketa(session_id: str):
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
+
+    # Calculate completion_rate from anketa_data
+    completion_rate = 0.0
+    if session.anketa_data:
+        try:
+            from src.anketa.schema import FinalAnketa, InterviewAnketa
+
+            # Detect anketa type
+            anketa_type = session.anketa_data.get('anketa_type')
+            if anketa_type == 'interview':
+                anketa = InterviewAnketa(**session.anketa_data)
+            else:
+                anketa = FinalAnketa(**session.anketa_data)
+
+            completion_rate = anketa.completion_rate()
+        except Exception as e:
+            logger.warning("completion_rate_calc_failed", error=str(e), session_id=session_id)
+
     return {
         "anketa_data": session.anketa_data,
         "anketa_md": session.anketa_md,
         "status": session.status,
         "company_name": session.company_name,
         "updated_at": session.updated_at.isoformat(),
+        "completion_rate": completion_rate,
     }
 
 
