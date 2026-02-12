@@ -441,7 +441,7 @@ class SmartExtractor:
             r'(?:занимаемся|работаем в сфере|в области)\s+([А-ЯЁа-яё\w\s\-]+)',
         ],
         'contact_name': [
-            r'меня зовут\s+([А-ЯЁ][а-яё]+(?:\s+[А-ЯЁ][а-яё]+)?)',
+            r'меня зовут\s+([А-ЯЁ][а-яё]+)(?:\s+[А-ЯЁ][а-яё]+)?(?=\s|,|$|\.|!)',  # Lookahead to stop at punctuation
             r'это\s+([А-ЯЁ][а-яё]+),?\s+(?:директор|руководитель|менеджер)',
         ],
         'contact_role': [
@@ -457,18 +457,22 @@ class SmartExtractor:
             r'сайт\s*[-:–]?\s*([а-яёa-z0-9\-\.]+\.[a-zа-яё]{2,})',
         ],
         'contact_phone': [
+            # Speech-to-text normalized: "Плюс 40 3 6 6 4..." or "Телефон плюс 7 900..."
+            r'[Пп]люс\s+([\d\s]+?)(?=\s*(?:[^\d\s]|$))',  # Until non-digit/non-space or end
+            r'(?:телефон|номер)[:\s]+плюс\s+([\d\s]+?)(?=\s*(?:[^\d\s]|$))',  # "Телефон плюс 7 900..."
+            # Standard formats
             r'телефон[:\s]+([+\d\s\-()]+)',
             r'(?:позвонить|связаться|номер)[:\s]+([+\d\s\-()]+)',
             r'(\+\d{1,3}\s?\d{3}\s?\d{3}\s?\d{2,4}\s?\d{2,4})',
-            r'плюс\s+(\d{2,3}(?:\s+\d{2,4}){3,5})',
         ],
         'contact_email': [
             # Standard format
             r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)',
             r'email[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
             r'(?:почта|мейл|имейл)[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
-            # Speech-to-text with spaces: "channel.my.honey @ gmail . com"
-            r'([a-zA-Z0-9_.+-]+)\s*@\s*([a-zA-Z0-9-]+)\s*\.\s*([a-zA-Z0-9-.]+)',
+            # Speech-to-text with spaces: "channel . my . honey @ gmail . com"
+            # Capture everything before @ (with dots/spaces), then domain, then TLD
+            r'([a-zA-Z0-9_.\s-]+?)\s*@\s*([a-zA-Z0-9-]+)\s*\.\s*([a-zA-Z0-9-.]+)',
         ],
     }
 
@@ -532,7 +536,28 @@ class SmartExtractor:
             word_lower = word.lower().strip('.,!?;:')
             normalized.append(self.WORD_TO_DIGIT.get(word_lower, word))
 
-        return ' '.join(normalized)
+        # Merge compound numbers: "40 3" → "43", "50 7" → "57", etc.
+        # BUT NOT: "900 0" (сотни) or "7 9" (single digits)
+        result = []
+        i = 0
+        tens_only = ['20', '30', '40', '50', '60', '70', '80', '90']
+        units_only = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+        while i < len(normalized):
+            current = normalized[i]
+
+            # ONLY merge tens (20-90) + units (1-9), NOT hundreds or anything else
+            if (i + 1 < len(normalized) and
+                current in tens_only and
+                normalized[i + 1] in units_only):
+                # Merge: 40 + 3 → 43
+                result.append(str(int(current) + int(normalized[i + 1])))
+                i += 2  # Skip next token
+            else:
+                result.append(current)
+                i += 1
+
+        return ' '.join(result)
 
     def extract_from_dialogue(
         self,
@@ -572,18 +597,29 @@ class SmartExtractor:
                 if match:
                     # Handle multi-group patterns (e.g., email with "эт" and "точка")
                     if field == 'contact_email' and match.lastindex and match.lastindex > 1:
-                        # Reconstruct email from groups: "channel эт gmail точка com" -> channel@gmail.com
+                        # Reconstruct email from groups: "channel . my . honey @ gmail . com" -> channel.my.honey@gmail.com
                         groups = [g for g in match.groups() if g]
                         if len(groups) >= 2:
-                            value = f"{groups[0]}@{groups[1]}"
+                            # Remove extra spaces from username part: "channel . my . honey" -> "channel.my.honey"
+                            username = groups[0].replace(' . ', '.').replace(' ', '').strip()
+                            domain = groups[1].strip('. ')
+                            value = f"{username}@{domain}"
                             if len(groups) >= 3:
-                                value = f"{value}.{groups[2]}"
+                                tld = groups[2].strip('. ')
+                                value = f"{value}.{tld}"
                         else:
                             value = match.group(1).strip()
-                    elif field == 'contact_phone' and match.lastindex and match.lastindex > 1:
-                        # Reconstruct phone from groups: "плюс 43 664 755..." -> +43664755...
-                        groups = [g for g in match.groups() if g]
-                        value = '+' + ''.join(groups).replace(' ', '')
+                    elif field == 'contact_phone':
+                        # Handle different phone patterns
+                        if match.lastindex and match.lastindex > 1:
+                            # Multi-group pattern: reconstruct from groups
+                            groups = [g for g in match.groups() if g]
+                            value = '+' + ''.join(groups).replace(' ', '')
+                        else:
+                            # Single group pattern: "Плюс 40 3 6 6 4..." -> "+4036647550358 0"
+                            raw = match.group(1).strip()
+                            # Remove all spaces and add +
+                            value = '+' + raw.replace(' ', '')
                     else:
                         value = match.group(1).strip()
 

@@ -1094,7 +1094,7 @@ def _register_event_handlers(
         event_log.info(f"CONVERSATION: role={role}, content='{display[:80]}'")
         _handle_conversation_item(
             event, consultation, session_id, db_backed,
-            messages_since_last_extract, session,
+            messages_since_last_extract, session, extraction_running,
         )
 
     # === ERROR EVENTS ===
@@ -1169,6 +1169,7 @@ def _handle_conversation_item(
     db_backed: bool,
     messages_since_last_extract: list,
     agent_session: Optional[AgentSession] = None,
+    extraction_running: list = None,
 ):
     """Process a single conversation item from LiveKit."""
     try:
@@ -1228,11 +1229,12 @@ def _handle_conversation_item(
             messages_since_last_extract[0] = 0
 
             # FIX: Skip if extraction already running (prevent duplication)
-            if extraction_running[0]:
+            if extraction_running and extraction_running[0]:
                 logger.debug("extraction_skipped_already_running", trigger="conversation_item")
                 return
 
-            extraction_running[0] = True
+            if extraction_running:
+                extraction_running[0] = True
 
             async def run_extraction():
                 try:
@@ -1240,7 +1242,8 @@ def _handle_conversation_item(
                 except Exception as e:
                     logger.error("extraction_failed", error=str(e), trigger="conversation_item")
                 finally:
-                    extraction_running[0] = False
+                    if extraction_running:
+                        extraction_running[0] = False
 
             asyncio.create_task(run_extraction())
 
