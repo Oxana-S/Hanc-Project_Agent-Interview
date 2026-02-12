@@ -606,6 +606,11 @@ class VoiceInterviewerApp {
         if (screenName === 'landing') {
             this._initLandingAnimations();
         }
+        // Show "Мои сессии" link only for returning users
+        const mySessionsLink = document.getElementById('my-sessions-link');
+        if (mySessionsLink) {
+            mySessionsLink.style.display = localStorage.getItem('hasVisited') ? '' : 'none';
+        }
     }
 
     _initLandingAnimations() {
@@ -648,10 +653,33 @@ class VoiceInterviewerApp {
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             const data = await resp.json();
             this.renderSessionsTable(data.sessions);
+            // Update filter counts when loading all sessions
+            if (!statusFilter) {
+                this._updateFilterCounts(data.sessions || []);
+            }
         } catch (error) {
             LOG.error('Failed to load sessions:', error);
             showToast('Ошибка загрузки сессий', 'error');
         }
+    }
+
+    _updateFilterCounts(sessions) {
+        const counts = { '': sessions.length };
+        sessions.forEach(s => {
+            counts[s.status] = (counts[s.status] || 0) + 1;
+        });
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            const status = tab.dataset.status;
+            const count = counts[status] || 0;
+            const existing = tab.querySelector('.filter-count');
+            if (existing) existing.remove();
+            if (count > 0) {
+                const badge = document.createElement('span');
+                badge.className = 'filter-count';
+                badge.textContent = count;
+                tab.appendChild(badge);
+            }
+        });
     }
 
     renderSessionsTable(sessions) {
@@ -678,7 +706,7 @@ class VoiceInterviewerApp {
             paused: 'на паузе',
             confirmed: 'подтверждена',
             declined: 'отклонена',
-            reviewing: 'на проверке',
+            reviewing: 'AI обрабатывает',
         };
 
         const LIVEKIT_CLOUD_BASE = 'https://cloud.livekit.io';
@@ -1601,7 +1629,7 @@ class VoiceInterviewerApp {
             if (data.status) {
                 this.updateAnketaStatus(data.status);
                 if (data.status === 'reviewing') {
-                    this.updateStatusTicker('Проверка анкеты...', true);
+                    this.updateStatusTicker('AI анализирует ответы...', true);
                 } else if (data.status === 'confirmed') {
                     this.updateStatusTicker('Консультация завершена');
                 }
@@ -2038,10 +2066,18 @@ class VoiceInterviewerApp {
             const response = await fetch(`/api/session/${this.sessionId}/confirm`, { method: 'POST' });
             if (response.ok) {
                 this.updateAnketaStatus('confirmed');
-                this.addMessage('ai', 'Анкета подтверждена! Спасибо. Мы свяжемся с вами в ближайшее время.');
                 this.elements.confirmAnketaBtn.disabled = true;
                 this.elements.confirmAnketaBtn.textContent = 'Подтверждено';
                 showToast('Анкета подтверждена');
+                // Disconnect voice and navigate to review screen
+                this.stopAnketaPolling();
+                await this.stopRecording();
+                if (this.room) {
+                    await this.room.disconnect();
+                    this.room = null;
+                }
+                document.getElementById('session-screen')?.classList.remove('voice-active');
+                this.router.navigate(`/session/${this.uniqueLink}/review`);
             } else {
                 showToast('Ошибка подтверждения', 'error');
             }
@@ -2055,7 +2091,7 @@ class VoiceInterviewerApp {
 
     async saveAndLeave() {
         if (!this.sessionId || this._savingAndLeaving) return;
-        const confirmed = await this._showConfirmModal('Завершить консультацию? Голосовое соединение будет прервано.');
+        const confirmed = await this._showConfirmModal('Сохранить и выйти? Голосовое соединение будет прервано, но данные сохранятся.');
         if (!confirmed) return;
         this._savingAndLeaving = true;
 
@@ -2177,7 +2213,7 @@ class VoiceInterviewerApp {
 
         badge.className = 'anketa-status-badge';
         const labels = {
-            active: 'активна', paused: 'на паузе', reviewing: 'на проверке',
+            active: 'активна', paused: 'на паузе', reviewing: 'AI обрабатывает',
             confirmed: 'подтверждена', declined: 'отклонена',
         };
         badge.textContent = labels[status] || 'ожидание';

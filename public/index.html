@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanc.AI | Голосовой консультант</title>
+    <title>Голосовой AI-ассистент для бизнеса — консультации и интервью | Hanc.AI</title>
+    <meta name="description" content="Hanc.AI — голосовой AI-агент для бизнес-консультаций и структурированных интервью. Говорите голосом — получите готовый отчёт с рекомендациями за 10 минут. 40+ отраслей. Бесплатно.">
+    <link rel="canonical" href="https://hanc.ai/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Голосовой AI-ассистент для бизнеса — консультации и интервью | Hanc.AI">
+    <meta property="og:description" content="Говорите голосом — получите готовый отчёт с рекомендациями за 10 минут. 40+ отраслей. Бесплатно.">
+    <meta property="og:url" content="https://hanc.ai/">
+    <meta property="og:locale" content="ru_RU">
     <script src="https://unpkg.com/livekit-client@2.9.3/dist/livekit-client.umd.js"></script>
-    <link rel="stylesheet" href="/styles.css?v=5.1">
+    <link rel="stylesheet" href="/styles.css?v=6.0">
 </head>
 <body>
     <div id="app">
@@ -13,6 +20,7 @@
         <header class="header">
             <a href="/" class="logo" id="logo-link">Hanc.AI</a>
             <a href="#" class="about-link" onclick="app.showScreen('landing'); return false;">О продукте</a>
+            <a href="/" class="about-link" id="my-sessions-link" onclick="app.router.navigate('/'); return false;">Мои сессии</a>
             <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая консультация</button>
         </header>
 
@@ -24,110 +32,110 @@
                 <div class="landing-container">
                     <!-- Hero -->
                     <section class="landing-hero">
-                        <h1 class="hero-title">AI-ассистент для бизнес-консультаций</h1>
+                        <h1 class="hero-title">Голосовой AI-ассистент для бизнес-консультаций и интервью</h1>
                         <p class="hero-subtitle">
-                            Проведите структурированную консультацию или интервью с AI-агентом —
-                            и получите готовый документ вместо записей на салфетке.
+                            Просто расскажите о своём бизнесе голосом — AI задаст нужные вопросы
+                            и соберёт всё в готовый отчёт с рекомендациями.
                         </p>
-                        <p class="hero-cta-hint">Выберите режим работы ниже</p>
+                        <p class="hero-cta-hint">Выберите, с чего начать — это бесплатно</p>
                     </section>
 
-                    <!-- How it works -->
-                    <section class="landing-section landing-steps">
-                        <h2 class="landing-section-title">Как это работает</h2>
-                        <div class="steps-grid">
-                            <div class="step-card landing-animate">
-                                <div class="step-number">1</div>
-                                <h3>Запустите сессию</h3>
-                                <p>Выберите тип: консультация или интервью. Настройте голос и скорость.</p>
-                            </div>
-                            <div class="step-card landing-animate">
-                                <div class="step-number">2</div>
-                                <h3>Говорите как обычно</h3>
-                                <p>AI ведёт беседу, задаёт правильные вопросы. Анкета заполняется в реальном времени.</p>
-                            </div>
-                            <div class="step-card landing-animate">
-                                <div class="step-number">3</div>
-                                <h3>Заберите результат</h3>
-                                <p>Структурированная анкета, AI-рекомендации. Экспорт в Markdown или PDF.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Mode Selection Cards -->
+                    <!-- Mode Selection Cards (immediately after hero) -->
                     <section class="landing-section landing-mode-selection">
-                        <h2 class="landing-section-title">Выберите режим</h2>
-                        <p class="landing-section-subtitle">Каждый режим создаёт свой тип документа</p>
+                        <h2 class="landing-section-title">Два сценария — одна платформа</h2>
+                        <p class="landing-section-subtitle">Выберите задачу, AI подстроится</p>
                         <div class="modes-grid">
                             <div class="mode-card mode-consultation landing-animate" onclick="app.startWithMode('consultation')">
                                 <span class="mode-badge">Популярный</span>
                                 <h3>AI-Консультант</h3>
-                                <p class="mode-for">Для владельцев бизнеса и менеджеров</p>
+                                <p class="mode-for">Для предпринимателей и руководителей</p>
                                 <ul>
-                                    <li>Анализ бизнес-процессов</li>
+                                    <li>Разбор процессов и узких мест</li>
                                     <li>Рекомендации по автоматизации</li>
-                                    <li>База знаний 40+ отраслей</li>
-                                    <li>FAQ, возражения, KPI</li>
+                                    <li>Знание специфики вашей отрасли</li>
+                                    <li>Готовые ответы на частые вопросы клиентов</li>
                                 </ul>
                                 <div class="mode-result">
                                     <span class="mode-result-label">Результат:</span>
-                                    Структурированная анкета (100+ полей) + AI-аналитика
+                                    Подробный отчёт о вашем бизнесе + рекомендации от AI
                                 </div>
                                 <div class="mode-meta">
-                                    <span>~15 мин</span>
-                                    <span>Голосовой диалог</span>
+                                    <span>~15 минут</span>
+                                    <span>Живой разговор с AI</span>
                                 </div>
                                 <button class="btn btn-primary btn-mode">Начать консультацию</button>
                             </div>
                             <div class="mode-card mode-interview landing-animate" onclick="app.startWithMode('interview')">
                                 <h3>AI-Интервьюер</h3>
-                                <p class="mode-for">Для исследователей и HR</p>
+                                <p class="mode-for">Для HR-специалистов и продуктовых команд</p>
                                 <ul>
-                                    <li>Customer discovery</li>
-                                    <li>HR-интервью</li>
-                                    <li>Сбор требований</li>
-                                    <li>Маркетинговые исследования</li>
+                                    <li>Исследование потребностей клиентов</li>
+                                    <li>HR-интервью и оценка кандидатов</li>
+                                    <li>Сбор требований к продукту</li>
+                                    <li>Маркетинговые опросы</li>
                                 </ul>
                                 <div class="mode-result">
                                     <span class="mode-result-label">Результат:</span>
-                                    Q&A пары + ключевые инсайты + саммари
+                                    Расшифровка с ключевыми выводами и итоговым отчётом
                                 </div>
                                 <div class="mode-meta">
-                                    <span>~10 мин</span>
-                                    <span>Структурированное интервью</span>
+                                    <span>~10 минут</span>
+                                    <span>AI ведёт беседу по плану</span>
                                 </div>
                                 <button class="btn btn-primary btn-mode btn-mode-interview">Начать интервью</button>
                             </div>
                         </div>
                     </section>
 
+                    <!-- How it works -->
+                    <section class="landing-section landing-steps">
+                        <h2 class="landing-section-title">Как работает голосовой AI-ассистент</h2>
+                        <div class="steps-grid">
+                            <div class="step-card landing-animate">
+                                <div class="step-number">1</div>
+                                <h3>Начните разговор</h3>
+                                <p>Выберите задачу и нажмите одну кнопку. AI готов через 5 секунд.</p>
+                            </div>
+                            <div class="step-card landing-animate">
+                                <div class="step-number">2</div>
+                                <h3>Просто разговаривайте</h3>
+                                <p>AI задаёт точные вопросы и фиксирует ответы. Вам не нужно ничего печатать.</p>
+                            </div>
+                            <div class="step-card landing-animate">
+                                <div class="step-number">3</div>
+                                <h3>Скачайте готовый документ</h3>
+                                <p>Отчёт с анализом и рекомендациями — уже оформлен. Скачайте в PDF или отправьте команде.</p>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Features -->
                     <section class="landing-section landing-features">
-                        <h2 class="landing-section-title">Что под капотом</h2>
+                        <h2 class="landing-section-title">Возможности платформы</h2>
                         <div class="features-grid">
                             <div class="feature-card landing-animate">
-                                <h4>Анкета в реальном времени</h4>
-                                <p>Пока вы говорите, AI извлекает данные и заполняет форму. Каждые 6 сообщений — обновление.</p>
+                                <h4>Документ формируется на лету</h4>
+                                <p>Пока вы разговариваете, AI заполняет отчёт о вашем бизнесе. Вы видите результат прямо во время беседы.</p>
                             </div>
                             <div class="feature-card landing-animate">
-                                <h4>AI-аналитика</h4>
-                                <p>Конкуренты, KPI, FAQ, сценарии возражений — генерируются автоматически на основе вашей отрасли.</p>
+                                <h4>Рекомендации под вашу отрасль</h4>
+                                <p>AI подготовит анализ конкурентов, ключевые показатели, ответы на вопросы клиентов и сценарии работы с возражениями.</p>
                             </div>
                             <div class="feature-card landing-animate">
-                                <h4>40+ отраслей</h4>
-                                <p>База знаний с профилями для медицины, ритейла, логистики, IT, образования и других отраслей.</p>
+                                <h4>Знает вашу отрасль</h4>
+                                <p>Медицина, ритейл, логистика, IT, образование — AI разбирается в специфике более 40 отраслей.</p>
                             </div>
                             <div class="feature-card landing-animate">
-                                <h4>Экспорт</h4>
-                                <p>Markdown, PDF. Готовый документ для команды или клиента.</p>
+                                <h4>Готово к отправке</h4>
+                                <p>Скачайте результат в PDF — и сразу передайте команде или клиенту. Ничего не нужно переписывать.</p>
                             </div>
                         </div>
                     </section>
 
                     <!-- Bottom CTA -->
                     <section class="landing-section landing-cta">
-                        <h2>Попробуйте — это займёт 10 минут</h2>
-                        <p>Первая сессия бесплатна. Никакой регистрации.</p>
+                        <h2>Попробуйте прямо сейчас — 10 минут, и документ готов</h2>
+                        <p>Бесплатно. Без регистрации. Без обязательств.</p>
                         <div class="cta-buttons">
                             <button class="btn btn-primary btn-hero" onclick="app.startWithMode('consultation')">Начать консультацию</button>
                             <button class="btn btn-outline btn-hero" onclick="app.startWithMode('interview')">Начать интервью</button>
@@ -136,7 +144,7 @@
 
                     <!-- Footer -->
                     <footer class="landing-footer">
-                        <p>Hanc.AI — платформа голосовых AI-агентов для бизнеса</p>
+                        <p>Hanc.AI — голосовой AI-помощник для бизнеса</p>
                     </footer>
                 </div>
             </div>
@@ -149,7 +157,7 @@
                         <button class="filter-tab active" data-status="">Все</button>
                         <button class="filter-tab" data-status="active">Активные</button>
                         <button class="filter-tab" data-status="paused">На паузе</button>
-                        <button class="filter-tab" data-status="confirmed">Завершённые</button>
+                        <button class="filter-tab" data-status="confirmed">Подтверждённые</button>
                     </div>
                     <button id="delete-selected-btn" class="btn btn-danger" style="display:none">Удалить выбранные</button>
                 </div>
@@ -180,8 +188,9 @@
                 <!-- Empty State -->
                 <div id="dashboard-empty" class="dashboard-empty" style="display:none">
                     <div class="empty-icon">🎤</div>
-                    <h3>Нет сессий</h3>
-                    <p>Начните первую голосовую консультацию</p>
+                    <h3>У вас пока нет сессий</h3>
+                    <p>Начните первую голосовую консультацию — это займёт 10 минут</p>
+                    <button class="btn btn-primary" onclick="app.startWithMode('consultation')" style="margin-top:1rem">Начать консультацию</button>
                 </div>
             </div>
 
@@ -189,7 +198,7 @@
             <div id="session-screen" class="screen">
                 <!-- Session Header -->
                 <div class="session-header">
-                    <button id="back-to-dashboard" class="btn-back" type="button">← Назад</button>
+                    <button id="back-to-dashboard" class="btn-back" type="button">← К сессиям</button>
                     <div class="session-meta">
                         <span class="session-company" id="session-company">Новая сессия</span>
                         <span class="anketa-status-badge" id="anketa-status-badge">активна</span>
@@ -518,7 +527,7 @@
                                     Перейти к результатам
                                 </button>
                                 <button id="save-leave-btn" class="btn btn-save-leave" type="button">
-                                    Завершить
+                                    Сохранить и выйти
                                 </button>
                             </div>
                         </div>
@@ -529,7 +538,7 @@
             <!-- ========== SESSION REVIEW SCREEN ========== -->
             <div id="review-screen" class="screen">
                 <div class="session-header">
-                    <button id="review-back-btn" class="btn-back" type="button">← Назад</button>
+                    <button id="review-back-btn" class="btn-back" type="button">← К сессиям</button>
                     <div class="session-meta">
                         <span class="session-company" id="review-company">—</span>
                         <span class="anketa-status-badge" id="review-status-badge">—</span>

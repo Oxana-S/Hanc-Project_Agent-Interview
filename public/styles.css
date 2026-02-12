@@ -108,7 +108,13 @@ body {
     flex-direction: column;
 }
 
-/* Interview screen: fill remaining space, no page scroll */
+/* Scrollable screens: landing and dashboard need vertical scroll */
+#landing-screen.active,
+#dashboard-screen.active {
+    overflow-y: auto;
+}
+
+/* Session screen: fill remaining space, no page scroll */
 #session-screen.active {
     flex: 1;
     min-height: 0;
@@ -889,6 +895,11 @@ body {
 .anketa-status-badge.status-reviewing {
     background: rgba(6, 182, 212, 0.2);
     color: #06b6d4;
+    animation: pulse-reviewing 2s ease-in-out infinite;
+}
+@keyframes pulse-reviewing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
 }
 
 .anketa-status-badge.status-confirmed {
@@ -899,6 +910,19 @@ body {
 .anketa-status-badge.status-declined {
     background: rgba(239, 68, 68, 0.2);
     color: var(--danger);
+}
+
+/* Filter count badges */
+.filter-count {
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 1rem;
+    margin-left: 0.4rem;
+    display: inline-block;
+    min-width: 1.2rem;
+    text-align: center;
 }
 
 /* ===== Anketa Stepper Pipeline (v5.4) ===== */
