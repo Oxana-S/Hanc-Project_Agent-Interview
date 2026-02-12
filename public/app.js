@@ -1430,6 +1430,18 @@ class VoiceInterviewerApp {
             this.isConnected = true;
             this.updateStatusTicker('Консультация началась');
 
+            // ✅ SPRINT 3: Проактивное уведомление об автозаполнении анкеты
+            if (!this.isPaused && this.consultationType === 'consultation') {
+                setTimeout(() => {
+                    showToast(
+                        '💡 Агент автоматически заполняет анкету во время разговора',
+                        'info',
+                        6000
+                    );
+                    this.updateStatusTicker('🎯 Анкета заполняется автоматически');
+                }, 2000);
+            }
+
             // ✅ FIX БАГ #4: Auto-start recording when room is fully connected (resume scenario)
             // Only start if NOT paused and NOT already recording
             if (!this.isPaused && !this.isRecording && this.sessionId) {
@@ -1881,6 +1893,26 @@ class VoiceInterviewerApp {
                 this.updateProgress(pct);
                 this._updateStepperProgress(normalized);
 
+                // SPRINT 3: Update header anketa status
+                const headerStatus = document.getElementById('header-anketa-status');
+                const headerProgress = document.getElementById('header-anketa-progress');
+
+                if (this.consultationType === 'consultation' && !this.isPaused && this.isConnected) {
+                    if (pct > 0 && pct < 100 && headerStatus) {
+                        headerStatus.style.display = 'flex';
+                        if (headerProgress) {
+                            headerProgress.textContent = `${Math.round(pct)}%`;
+                        }
+                    }
+
+                    // Hide when complete
+                    if (pct >= 100 && headerStatus) {
+                        setTimeout(() => {
+                            headerStatus.style.display = 'none';
+                        }, 5000);
+                    }
+                }
+
                 // Status ticker + toast notifications
                 const prevCount = this._lastFieldCount || 0;
                 if (prevCount === 0 && keys.length > 0) {
@@ -1888,8 +1920,8 @@ class VoiceInterviewerApp {
                     this.updateStatusTicker('Анкета заполняется автоматически');
                 } else if (keys.length > prevCount && prevCount > 0) {
                     const diff = keys.length - prevCount;
-                    showToast(`Анкета обновлена — +${diff} ${diff === 1 ? 'поле' : 'полей'}`, 'info', 2500);
-                    this.updateStatusTicker(`Заполнено ${keys.length} из ${this.anketaFields.length} полей`);
+                    showToast(`Анкета обновлена — +${diff} ${diff === 1 ? 'поле' : 'полей'}`, 'success', 4000);  // SPRINT 4: было 'info', 2500ms
+                    this.updateStatusTicker(`Заполнено ${keys.length} из ${this.anketaFields.length} полей`, true);  // pulse = true
                 }
                 if (pct >= 50 && (this._lastPct || 0) < 50) {
                     this.updateStatusTicker('Собрано больше половины данных');
@@ -2486,6 +2518,12 @@ class VoiceInterviewerApp {
         const clamped = Math.min(100, Math.max(0, percentage));
         if (this.elements.progressFill) {
             this.elements.progressFill.style.width = `${clamped}%`;
+
+            // SPRINT 4: Анимация при обновлении
+            this.elements.progressFill.classList.add('updated');
+            setTimeout(() => {
+                this.elements.progressFill.classList.remove('updated');
+            }, 500);
         }
         if (this.elements.progressText) {
             this.elements.progressText.textContent = `${Math.round(clamped)}% заполнено`;

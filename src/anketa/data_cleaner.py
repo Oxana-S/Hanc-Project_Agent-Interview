@@ -456,6 +456,18 @@ class SmartExtractor:
             r'(https?://[^\s]+)',
             r'сайт\s*[-:–]?\s*([а-яёa-z0-9\-\.]+\.[a-zа-яё]{2,})',
         ],
+        'contact_phone': [
+            r'телефон[:\s]+([+\d\s\-()]+)',
+            r'(?:позвонить|связаться|номер)[:\s]+([+\d\s\-()]+)',
+            r'(\+\d{1,3}\s?\d{3}\s?\d{3}\s?\d{2,4}\s?\d{2,4})',
+            r'плюс\s+(\d{2,3}(?:\s+\d{2,4}){3,5})',
+        ],
+        'contact_email': [
+            r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)',
+            r'email[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
+            r'(?:почта|мейл|имейл)[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
+            r'([a-zA-Z0-9_.+-]+)\s+(?:эт|at)\s+([a-zA-Z0-9-]+)(?:\s+(?:точка|dot)\s+([a-zA-Z0-9-]+))?',
+        ],
     }
 
     def __init__(self):
@@ -502,7 +514,23 @@ class SmartExtractor:
             for pattern in patterns:
                 match = pattern.search(client_text)
                 if match:
-                    value = match.group(1).strip()
+                    # Handle multi-group patterns (e.g., email with "эт" and "точка")
+                    if field == 'contact_email' and match.lastindex and match.lastindex > 1:
+                        # Reconstruct email from groups: "channel эт gmail точка com" -> channel@gmail.com
+                        groups = [g for g in match.groups() if g]
+                        if len(groups) >= 2:
+                            value = f"{groups[0]}@{groups[1]}"
+                            if len(groups) >= 3:
+                                value = f"{value}.{groups[2]}"
+                        else:
+                            value = match.group(1).strip()
+                    elif field == 'contact_phone' and match.lastindex and match.lastindex > 1:
+                        # Reconstruct phone from groups: "плюс 43 664 755..." -> +43664755...
+                        groups = [g for g in match.groups() if g]
+                        value = '+' + ''.join(groups).replace(' ', '')
+                    else:
+                        value = match.group(1).strip()
+
                     # Basic validation
                     if self._validate_extracted_value(field, value):
                         extracted[field] = value
@@ -532,6 +560,15 @@ class SmartExtractor:
             # Should be reasonable length, not a sentence
             return len(value) < 100 and value.count(' ') < 5
 
+        if field == 'contact_phone':
+            # Should contain digits and reasonable length
+            digits = re.sub(r'\D', '', value)
+            return 7 <= len(digits) <= 15
+
+        if field == 'contact_email':
+            # Should have @ and domain with dot
+            return '@' in value and '.' in value.split('@')[-1] and len(value) < 100
+
         return True
 
     def merge_with_llm_data(
@@ -550,7 +587,7 @@ class SmartExtractor:
         # Fields where dialogue extraction is more reliable
         reliable_fields = {
             'company_name', 'contact_name', 'contact_role',
-            'website', 'employee_count'
+            'website', 'employee_count', 'contact_phone', 'contact_email'
         }
 
         for field, value in dialogue_data.items():

@@ -479,6 +479,8 @@ class AnketaExtractor:
             website=data.get('website'),
             contact_name=data.get('contact_name', ''),
             contact_role=data.get('contact_role', ''),
+            contact_phone=data.get('contact_phone', ''),
+            contact_email=data.get('contact_email', ''),
 
             # Business context
             business_description=data.get('business_description', ''),
