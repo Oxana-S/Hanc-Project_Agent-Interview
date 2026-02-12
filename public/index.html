@@ -24,14 +24,12 @@
                 <div class="landing-container">
                     <!-- Hero -->
                     <section class="landing-hero">
-                        <h1 class="hero-title">Голосовой AI, который слушает бизнес</h1>
+                        <h1 class="hero-title">AI-ассистент для бизнес-консультаций</h1>
                         <p class="hero-subtitle">
                             Проведите структурированную консультацию или интервью с AI-агентом —
                             и получите готовый документ вместо записей на салфетке.
                         </p>
-                        <button class="btn-primary btn-hero" onclick="app.goToDashboard()">
-                            Начать бесплатно
-                        </button>
+                        <p class="hero-cta-hint">Выберите режим работы ниже</p>
                     </section>
 
                     <!-- How it works -->
@@ -56,31 +54,49 @@
                         </div>
                     </section>
 
-                    <!-- Two modes -->
-                    <section class="landing-section landing-modes">
-                        <h2 class="landing-section-title">Два режима работы</h2>
+                    <!-- Mode Selection Cards -->
+                    <section class="landing-section landing-mode-selection">
+                        <h2 class="landing-section-title">Выберите режим</h2>
+                        <p class="landing-section-subtitle">Каждый режим создаёт свой тип документа</p>
                         <div class="modes-grid">
-                            <div class="mode-card mode-consultation landing-animate">
+                            <div class="mode-card mode-consultation landing-animate" onclick="app.startWithMode('consultation')">
+                                <span class="mode-badge">Популярный</span>
                                 <h3>AI-Консультант</h3>
-                                <p class="mode-desc">Эксперт, который разберёт ваш бизнес по полочкам</p>
+                                <p class="mode-for">Для владельцев бизнеса и менеджеров</p>
                                 <ul>
                                     <li>Анализ бизнес-процессов</li>
                                     <li>Рекомендации по автоматизации</li>
                                     <li>База знаний 40+ отраслей</li>
                                     <li>FAQ, возражения, KPI</li>
                                 </ul>
-                                <p class="mode-example">Пример: «Хочу автоматизировать приём звонков в клинике»</p>
+                                <div class="mode-result">
+                                    <span class="mode-result-label">Результат:</span>
+                                    Структурированная анкета (100+ полей) + AI-аналитика
+                                </div>
+                                <div class="mode-meta">
+                                    <span>~15 мин</span>
+                                    <span>Голосовой диалог</span>
+                                </div>
+                                <button class="btn btn-primary btn-mode">Начать консультацию</button>
                             </div>
-                            <div class="mode-card mode-interview landing-animate">
+                            <div class="mode-card mode-interview landing-animate" onclick="app.startWithMode('interview')">
                                 <h3>AI-Интервьюер</h3>
-                                <p class="mode-desc">Нейтральный исследователь, который слушает и структурирует</p>
+                                <p class="mode-for">Для исследователей и HR</p>
                                 <ul>
                                     <li>Customer discovery</li>
                                     <li>HR-интервью</li>
                                     <li>Сбор требований</li>
                                     <li>Маркетинговые исследования</li>
                                 </ul>
-                                <p class="mode-example">Пример: «Нужно опросить 20 клиентов о новом продукте»</p>
+                                <div class="mode-result">
+                                    <span class="mode-result-label">Результат:</span>
+                                    Q&A пары + ключевые инсайты + саммари
+                                </div>
+                                <div class="mode-meta">
+                                    <span>~10 мин</span>
+                                    <span>Структурированное интервью</span>
+                                </div>
+                                <button class="btn btn-primary btn-mode btn-mode-interview">Начать интервью</button>
                             </div>
                         </div>
                     </section>
@@ -112,9 +128,10 @@
                     <section class="landing-section landing-cta">
                         <h2>Попробуйте — это займёт 10 минут</h2>
                         <p>Первая сессия бесплатна. Никакой регистрации.</p>
-                        <button class="btn-primary btn-hero" onclick="app.goToDashboard()">
-                            Начать консультацию
-                        </button>
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary btn-hero" onclick="app.startWithMode('consultation')">Начать консультацию</button>
+                            <button class="btn btn-outline btn-hero" onclick="app.startWithMode('interview')">Начать интервью</button>
+                        </div>
                     </section>
 
                     <!-- Footer -->
@@ -126,49 +143,6 @@
 
             <!-- ========== DASHBOARD SCREEN ========== -->
             <div id="dashboard-screen" class="screen">
-                <!-- Settings Panel -->
-                <details class="settings-panel" id="settings-panel" open>
-                    <summary class="settings-toggle">Настройки консультации</summary>
-                    <div class="settings-body">
-                        <div id="settings-lock-banner" class="settings-session-banner">
-                            Некоторые настройки заблокированы на время активной сессии
-                        </div>
-                        <fieldset class="segment-control" data-setting="consultation_type" data-lockable="true">
-                            <legend class="setting-label">Тип</legend>
-                            <label class="segment"><input type="radio" name="consultation_type" value="consultation" checked><span>Консультация</span></label>
-                            <label class="segment"><input type="radio" name="consultation_type" value="interview"><span>Интервью</span></label>
-                        </fieldset>
-                        <fieldset class="segment-control" data-setting="voice_gender" data-lockable="true">
-                            <legend class="setting-label">Голос</legend>
-                            <label class="segment"><input type="radio" name="voice_gender" value="female"><span>Женский</span></label>
-                            <label class="segment"><input type="radio" name="voice_gender" value="male"><span>Мужской</span></label>
-                            <label class="segment"><input type="radio" name="voice_gender" value="neutral" checked><span>Нейтральный</span></label>
-                        </fieldset>
-                        <fieldset class="segment-control" data-setting="verbosity">
-                            <legend class="setting-label">Ответы <span class="setting-live-badge" data-live-for="verbosity">применяется сразу</span></legend>
-                            <label class="segment"><input type="radio" name="verbosity" value="concise"><span>Кратко</span></label>
-                            <label class="segment"><input type="radio" name="verbosity" value="normal" checked><span>Нормально</span></label>
-                            <label class="segment"><input type="radio" name="verbosity" value="verbose"><span>Подробно</span></label>
-                        </fieldset>
-                        <fieldset class="segment-control segment-control--wide" data-setting="llm_provider" data-lockable="true">
-                            <legend class="setting-label">LLM модель</legend>
-                            <label class="segment"><input type="radio" name="llm_provider" value="deepseek" checked><span>DeepSeek</span></label>
-                            <label class="segment"><input type="radio" name="llm_provider" value="azure"><span>Azure GPT</span></label>
-                            <label class="segment"><input type="radio" name="llm_provider" value="openai"><span>OpenAI</span></label>
-                            <label class="segment"><input type="radio" name="llm_provider" value="anthropic"><span>Claude</span></label>
-                            <label class="segment"><input type="radio" name="llm_provider" value="xai"><span>Grok</span></label>
-                        </fieldset>
-                        <div class="setting-slider">
-                            <label for="speed-slider">Скорость речи: <span id="speed-value">1.0</span>x <span class="setting-live-badge" data-live-for="speech_speed">применяется сразу</span></label>
-                            <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">
-                        </div>
-                        <div class="setting-slider">
-                            <label for="silence-slider">Задержка тишины: <span id="silence-value">2.0</span> сек <span class="setting-live-badge" data-live-for="silence_duration_ms">применяется сразу</span></label>
-                            <input type="range" id="silence-slider" min="500" max="4000" step="250" value="2000">
-                        </div>
-                    </div>
-                </details>
-
                 <!-- Filters + Bulk Actions -->
                 <div class="dashboard-filters">
                     <div class="filter-tabs" id="filter-tabs">
@@ -211,14 +185,15 @@
                 </div>
             </div>
 
-            <!-- ========== INTERVIEW SCREEN ========== -->
-            <div id="interview-screen" class="screen">
+            <!-- ========== SESSION SCREEN ========== -->
+            <div id="session-screen" class="screen">
                 <!-- Session Header -->
                 <div class="session-header">
                     <button id="back-to-dashboard" class="btn-back" type="button">← Назад</button>
                     <div class="session-meta">
                         <span class="session-company" id="session-company">Новая сессия</span>
                         <span class="anketa-status-badge" id="anketa-status-badge">активна</span>
+                        <span class="session-mode-badge" id="session-mode-badge"></span>
                     </div>
                     <div class="session-meta-right">
                         <div class="status-indicator" id="connection-status">
@@ -246,6 +221,42 @@
                 <div class="interview-columns">
                     <!-- LEFT: Dialogue + Controls -->
                     <div class="interview-left">
+                        <!-- Pre-session settings (visible before voice connection) -->
+                        <div class="pre-session-panel" id="pre-session-panel">
+                            <h3>Настройки сессии</h3>
+                            <div class="pre-session-settings">
+                                <fieldset class="segment-control" data-setting="voice_gender" data-lockable="true">
+                                    <legend class="setting-label">Голос</legend>
+                                    <label class="segment"><input type="radio" name="voice_gender" value="female"><span>Женский</span></label>
+                                    <label class="segment"><input type="radio" name="voice_gender" value="male"><span>Мужской</span></label>
+                                    <label class="segment"><input type="radio" name="voice_gender" value="neutral" checked><span>Нейтральный</span></label>
+                                </fieldset>
+                                <fieldset class="segment-control" data-setting="verbosity">
+                                    <legend class="setting-label">Ответы</legend>
+                                    <label class="segment"><input type="radio" name="verbosity" value="concise"><span>Кратко</span></label>
+                                    <label class="segment"><input type="radio" name="verbosity" value="normal" checked><span>Нормально</span></label>
+                                    <label class="segment"><input type="radio" name="verbosity" value="verbose"><span>Подробно</span></label>
+                                </fieldset>
+                                <fieldset class="segment-control segment-control--wide" data-setting="llm_provider" data-lockable="true">
+                                    <legend class="setting-label">LLM модель</legend>
+                                    <label class="segment"><input type="radio" name="llm_provider" value="deepseek" checked><span>DeepSeek</span></label>
+                                    <label class="segment"><input type="radio" name="llm_provider" value="azure"><span>Azure</span></label>
+                                    <label class="segment"><input type="radio" name="llm_provider" value="openai"><span>OpenAI</span></label>
+                                    <label class="segment"><input type="radio" name="llm_provider" value="anthropic"><span>Claude</span></label>
+                                    <label class="segment"><input type="radio" name="llm_provider" value="xai"><span>Grok</span></label>
+                                </fieldset>
+                                <div class="setting-slider pre-session-slider">
+                                    <label>Скорость речи: <span id="speed-value">1.0</span>x</label>
+                                    <input type="range" id="speed-slider" min="75" max="200" step="25" value="100">
+                                </div>
+                                <div class="setting-slider pre-session-slider">
+                                    <label>Задержка тишины: <span id="silence-value">2.0</span> сек</label>
+                                    <input type="range" id="silence-slider" min="500" max="4000" step="250" value="2000">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-start-voice" onclick="app._startVoiceFromPreSession()">Начать разговор</button>
+                        </div>
+
                         <!-- Dialogue -->
                         <div class="dialogue-container" id="dialogue-container">
                             <div class="pause-overlay" id="pause-overlay">
@@ -253,7 +264,7 @@
                                 <div class="pause-overlay-text">На паузе</div>
                                 <div class="pause-overlay-hint">Нажмите ▶ чтобы продолжить</div>
                             </div>
-                            <!-- Messages will be added here -->
+                            <div class="dialogue-placeholder" id="dialogue-placeholder">AI сейчас поздоровается и задаст первый вопрос...</div>
                         </div>
 
                         <!-- Controls -->
@@ -504,7 +515,7 @@
                             <!-- Anketa Actions -->
                             <div class="anketa-actions">
                                 <button id="confirm-anketa-btn" class="btn btn-confirm" type="button">
-                                    Подтвердить анкету
+                                    Перейти к результатам
                                 </button>
                                 <button id="save-leave-btn" class="btn btn-save-leave" type="button">
                                     Завершить

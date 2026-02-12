@@ -211,7 +211,7 @@ class VoiceInterviewerApp {
         this.screens = {
             landing: document.getElementById('landing-screen'),
             dashboard: document.getElementById('dashboard-screen'),
-            interview: document.getElementById('interview-screen'),
+            session: document.getElementById('session-screen'),
             review: document.getElementById('review-screen'),
         };
 
@@ -225,7 +225,7 @@ class VoiceInterviewerApp {
             e.preventDefault();
             this.router.navigate('/');
         });
-        this.elements.newSessionBtn.addEventListener('click', () => this.createAndGoToSession());
+        this.elements.newSessionBtn.addEventListener('click', () => this._showPreSession(this.consultationType || 'consultation'));
 
         // Interview controls
         this.elements.backBtn.addEventListener('click', () => this.goBackToDashboard());
@@ -349,6 +349,14 @@ class VoiceInterviewerApp {
             });
         });
 
+        // Warn on tab close during active session
+        window.addEventListener('beforeunload', (e) => {
+            if (this.sessionId && this.isRecording) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
         // Init router — must be last
         this.router = new Router(this);
         this.router.resolve();
@@ -361,7 +369,7 @@ class VoiceInterviewerApp {
             speech_speed: parseFloat(this.elements.speedSlider?.value || '100') / 100,
             silence_duration_ms: parseInt(this.elements.silenceSlider?.value || '2000', 10),
             voice_gender: document.querySelector('input[name="voice_gender"]:checked')?.value || 'neutral',
-            consultation_type: document.querySelector('input[name="consultation_type"]:checked')?.value || 'consultation',
+            consultation_type: this.consultationType || 'consultation',
             verbosity: document.querySelector('input[name="verbosity"]:checked')?.value || 'normal',
             llm_provider: document.querySelector('input[name="llm_provider"]:checked')?.value || 'deepseek',
         };
@@ -400,13 +408,44 @@ class VoiceInterviewerApp {
             }
 
             // Restore radio buttons
-            for (const name of ['voice_gender', 'consultation_type', 'verbosity', 'llm_provider']) {
+            for (const name of ['voice_gender', 'verbosity', 'llm_provider']) {
                 if (saved[name]) {
                     const radio = document.querySelector(`input[name="${name}"][value="${saved[name]}"]`);
                     if (radio) radio.checked = true;
                 }
             }
         } catch {}
+    }
+
+    // ===== Pre-Session Flow =====
+
+    async startWithMode(mode) {
+        if (this._startingMode) return;
+        this._startingMode = true;
+        try {
+            localStorage.setItem('hasVisited', '1');
+            this.consultationType = mode;
+            this._showPreSession(mode);
+        } finally {
+            this._startingMode = false;
+        }
+    }
+
+    _showPreSession(mode) {
+        const badge = document.getElementById('session-mode-badge');
+        if (badge) {
+            badge.textContent = mode === 'interview' ? 'Интервью' : 'Консультация';
+            badge.classList.toggle('badge-interview', mode === 'interview');
+        }
+        document.getElementById('session-screen').classList.remove('voice-active');
+        this.showScreen('session');
+        this._restoreSettings();
+    }
+
+    async _startVoiceFromPreSession() {
+        this._persistSettings();
+        document.getElementById('session-screen').classList.add('voice-active');
+        await this.createAndGoToSession();
     }
 
     // ===== Settings Lock & Quick Settings =====
@@ -781,7 +820,8 @@ class VoiceInterviewerApp {
     async showSession(link) {
         // If already in this session, just show the screen + push any setting changes
         if (this.uniqueLink === link && this.sessionId) {
-            this.showScreen('interview');
+            this.showScreen('session');
+            document.getElementById('session-screen').classList.add('voice-active');
             this._syncQuickSettings();
             this.startAnketaPolling();
             // Send updated voice settings (user may have changed editable ones on Dashboard).
@@ -800,7 +840,8 @@ class VoiceInterviewerApp {
             return;
         }
 
-        this.showScreen('interview');
+        this.showScreen('session');
+        document.getElementById('session-screen').classList.add('voice-active');
         await this.resumeOrStartSession(link);
     }
 
@@ -975,9 +1016,14 @@ class VoiceInterviewerApp {
             // due to LiveKit Cloud eventual consistency (list_rooms misses just-created room).
             window.history.pushState({}, '', `/session/${data.unique_link}`);
 
-            this.showScreen('interview');
+            const sessionScreen = document.getElementById('session-screen');
+            if (!sessionScreen.classList.contains('active')) {
+                this.showScreen('session');
+            }
+            sessionScreen.classList.add('voice-active');
 
             // Connect to LiveKit
+            this.updateConnectionStatus('connecting');
             await this.connectToRoom(data.livekit_url, data.user_token, data.room_name);
             this.updateConnectionStatus(true);
             this.startAnketaPolling();
@@ -1493,6 +1539,9 @@ class VoiceInterviewerApp {
     }
 
     addMessage(author, content) {
+        const placeholder = document.getElementById('dialogue-placeholder');
+        if (placeholder) placeholder.remove();
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${author}`;
 
@@ -2044,6 +2093,7 @@ class VoiceInterviewerApp {
             this.uniqueLink = null;
             this.localParticipant = null;
             this._sessionOriginalConfig = null;
+            document.getElementById('session-screen')?.classList.remove('voice-active');
 
             this.router.navigate('/');
 
@@ -2134,14 +2184,17 @@ class VoiceInterviewerApp {
         if (status) badge.classList.add(`status-${status}`);
     }
 
-    updateConnectionStatus(connected) {
+    updateConnectionStatus(state) {
         const status = this.elements.connectionStatus;
         if (!status) return;
-        if (connected) {
+        status.classList.remove('connected', 'connecting');
+        if (state === true) {
             status.classList.add('connected');
             status.querySelector('.text').textContent = 'Подключен';
+        } else if (state === 'connecting') {
+            status.classList.add('connecting');
+            status.querySelector('.text').textContent = 'Подключаемся...';
         } else {
-            status.classList.remove('connected');
             status.querySelector('.text').textContent = 'Не подключен';
         }
     }

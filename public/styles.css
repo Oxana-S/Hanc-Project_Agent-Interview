@@ -109,7 +109,7 @@ body {
 }
 
 /* Interview screen: fill remaining space, no page scroll */
-#interview-screen.active {
+#session-screen.active {
     flex: 1;
     min-height: 0;
     overflow: hidden;
@@ -1704,6 +1704,96 @@ body {
     border-color: var(--primary);
 }
 
+/* ===== Pre-Session Panel ===== */
+
+.pre-session-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.pre-session-panel h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.pre-session-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.pre-session-settings .segment-control--wide {
+    grid-column: span 2;
+}
+
+.pre-session-slider {
+    grid-column: span 1;
+}
+
+.btn-start-voice {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-start-voice:hover {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    transform: translateY(-1px);
+}
+
+/* CSS state toggle: pre-session vs active voice */
+#session-screen .interview-left .dialogue-container { display: none; }
+#session-screen .interview-left .controls { display: none; }
+#session-screen.voice-active .pre-session-panel { display: none; }
+#session-screen.voice-active .interview-left .dialogue-container { display: flex !important; flex-direction: column; }
+#session-screen.voice-active .interview-left .controls { display: flex !important; }
+
+/* Session mode badge */
+.session-mode-badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.session-mode-badge:empty {
+    display: none;
+}
+
+.session-mode-badge.badge-interview {
+    background: #10b981;
+}
+
+/* Connecting status */
+.status-indicator.connecting .dot {
+    background: var(--warning);
+    animation: ticker-pulse 1.5s ease-in-out infinite;
+}
+
+/* Dialogue placeholder */
+.dialogue-placeholder {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
 /* ===== Toast Notifications ===== */
 
 .toast-container {
@@ -1880,7 +1970,7 @@ body {
 /* ===== Responsive ===== */
 
 @media (max-width: 900px) {
-    #interview-screen.active {
+    #session-screen.active {
         flex: none;
         height: auto;
         overflow: visible;
@@ -1967,6 +2057,14 @@ body {
 
     .review-actions {
         flex-direction: column;
+    }
+
+    .pre-session-settings {
+        grid-template-columns: 1fr;
+    }
+
+    .pre-session-settings .segment-control--wide {
+        grid-column: span 1;
     }
 
     .toast-container {
@@ -2109,11 +2207,20 @@ body {
     border: 1px solid var(--border);
     border-radius: 0.75rem;
     padding: 1.75rem;
-    transition: border-color 0.2s;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .mode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(99,102,241,0.2);
     border-color: var(--primary);
+}
+
+.mode-interview:hover {
+    border-color: #10b981;
+    box-shadow: 0 8px 30px rgba(16,185,129,0.2);
 }
 
 .mode-consultation {
@@ -2169,6 +2276,94 @@ body {
     font-style: italic;
     padding-top: 0.5rem;
     border-top: 1px solid var(--border);
+}
+
+.mode-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.mode-result {
+    background: rgba(99,102,241,0.08);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+
+.mode-interview .mode-result {
+    background: rgba(16,185,129,0.08);
+}
+
+.mode-result-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.mode-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.mode-for {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-mode {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-mode-interview {
+    background: #10b981;
+}
+
+.btn-mode-interview:hover {
+    background: #059669;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #10b981;
+    color: #10b981;
+}
+
+.btn-outline:hover {
+    background: #10b981;
+    color: white;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.landing-section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.hero-cta-hint {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
 }
 
 /* Features */
