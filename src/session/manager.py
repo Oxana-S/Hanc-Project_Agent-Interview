@@ -292,16 +292,31 @@ class SessionManager:
         """
         Update only the anketa-related fields of a session.
 
+        IMPORTANT: This method now does a MERGE, not a REPLACE. It reads existing
+        anketa_data, merges new fields, and writes back. This prevents client edits
+        from erasing LLM-extracted data.
+
         Args:
             session_id: Short session identifier.
             anketa_data: Anketa data as dict (e.g. from FinalAnketa.model_dump()).
+                         New fields will be merged into existing data.
             anketa_md: Anketa rendered as Markdown (optional).
 
         Returns:
             True if the session was found and updated, False otherwise.
         """
-        now = datetime.now()
+        # 1. Read existing anketa to preserve LLM-extracted data
+        session = self.get_session(session_id)
+        if not session:
+            logger.warning("session_not_found_for_anketa_update", session_id=session_id)
+            return False
 
+        # 2. Merge: new values overwrite old, but existing fields are preserved
+        existing_anketa = json.loads(session.anketa_data) if session.anketa_data else {}
+        existing_anketa.update(anketa_data)
+
+        # 3. Update database with merged data
+        now = datetime.now()
         cursor = self._conn.execute(
             """
             UPDATE sessions SET
@@ -311,7 +326,7 @@ class SessionManager:
             WHERE session_id = ?
             """,
             (
-                json.dumps(anketa_data, ensure_ascii=False),
+                json.dumps(existing_anketa, ensure_ascii=False),
                 anketa_md,
                 now.isoformat(),
                 session_id,

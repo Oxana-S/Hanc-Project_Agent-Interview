@@ -1883,13 +1883,17 @@ class VoiceInterviewerApp {
             const response = await fetch(`/api/session/${this.sessionId}/anketa`);
             if (!response.ok) {
                 if (response.status === 404) {
-                    console.warn(`Session ${this.sessionId} not found, stopping polling`);
+                    LOG.warn(`[POLLING] Session ${this.sessionId} not found, stopping polling`);
                     this.stopAnketaPolling();
                 }
+                // Don't increment failure count for non-200 responses (could be intentional 404)
                 return;
             }
 
             const data = await response.json();
+
+            // SUCCESS: Reset failure count
+            this._pollingFailureCount = 0;
 
             // SPRINT 5: Debug logging
             const completion = data.completion_rate || 0;
