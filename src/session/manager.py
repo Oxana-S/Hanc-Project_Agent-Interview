@@ -312,7 +312,8 @@ class SessionManager:
             return False
 
         # 2. Merge: new values overwrite old, but existing fields are preserved
-        existing_anketa = json.loads(session.anketa_data) if session.anketa_data else {}
+        # NOTE: session.anketa_data is already a dict (deserialized in _session_from_row)
+        existing_anketa = session.anketa_data if session.anketa_data else {}
         existing_anketa.update(anketa_data)
 
         # 3. Update database with merged data
