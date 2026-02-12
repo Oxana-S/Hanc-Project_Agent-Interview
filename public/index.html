@@ -18,10 +18,14 @@
     <div id="app">
         <!-- Header / Navigation -->
         <header class="header">
-            <a href="/" class="logo" id="logo-link">Hanc.AI</a>
-            <a href="#" class="about-link" onclick="app.showScreen('landing'); return false;">О продукте</a>
-            <a href="/" class="about-link" id="my-sessions-link" onclick="app.router.navigate('/'); return false;">Мои сессии</a>
-            <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая консультация</button>
+            <a href="/" class="header-brand" id="logo-link">Hanc.AI</a>
+            <nav class="header-nav" id="header-nav">
+                <a href="#" class="header-nav-item" id="nav-about">О платформе</a>
+                <a href="/" class="header-nav-item" id="nav-sessions">Мои сессии</a>
+            </nav>
+            <div class="header-actions">
+                <button id="new-session-btn" class="btn btn-primary btn-new-session">+ Новая сессия</button>
+            </div>
         </header>
 
         <!-- Main Content -->

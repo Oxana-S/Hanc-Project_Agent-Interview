@@ -220,9 +220,28 @@ class VoiceInterviewerApp {
     }
 
     init() {
-        // Header
-        this.elements.logoLink.addEventListener('click', (e) => {
+        // Header — logo with session guard
+        this.elements.logoLink.addEventListener('click', async (e) => {
             e.preventDefault();
+            if (this.isConnected && this._currentScreenName === 'session') {
+                const confirmed = await this._showConfirmModal('Покинуть сессию? Данные сохранятся автоматически.');
+                if (!confirmed) return;
+                await this.saveAnketa();
+            }
+            this.router.navigate('/');
+        });
+        // Header — nav links
+        document.getElementById('nav-about')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showScreen('landing');
+        });
+        document.getElementById('nav-sessions')?.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (this.isConnected && this._currentScreenName === 'session') {
+                const confirmed = await this._showConfirmModal('Покинуть сессию? Данные сохранятся автоматически.');
+                if (!confirmed) return;
+                await this.saveAnketa();
+            }
             this.router.navigate('/');
         });
         this.elements.newSessionBtn.addEventListener('click', () => this._showPreSession(this.consultationType || 'consultation'));
@@ -599,6 +618,7 @@ class VoiceInterviewerApp {
     // ===== Screen Management =====
 
     showScreen(screenName) {
+        this._currentScreenName = screenName;
         Object.values(this.screens).forEach(s => s.classList.remove('active'));
         if (this.screens[screenName]) {
             this.screens[screenName].classList.add('active');
@@ -606,11 +626,31 @@ class VoiceInterviewerApp {
         if (screenName === 'landing') {
             this._initLandingAnimations();
         }
-        // Show "Мои сессии" link only for returning users
-        const mySessionsLink = document.getElementById('my-sessions-link');
-        if (mySessionsLink) {
-            mySessionsLink.style.display = localStorage.getItem('hasVisited') ? '' : 'none';
-        }
+        this._updateHeaderContext(screenName);
+    }
+
+    _updateHeaderContext(screenName) {
+        const navAbout = document.getElementById('nav-about');
+        const navSessions = document.getElementById('nav-sessions');
+        const newSessionBtn = this.elements.newSessionBtn;
+
+        // Visibility rules per screen:
+        // Landing:   hide "О платформе" (we ARE on it), show "Мои сессии" (if returning), hide CTA (landing has its own)
+        // Dashboard: show "О платформе", hide "Мои сессии" (we ARE on it), show CTA
+        // Session:   show "О платформе", show "Мои сессии", hide CTA (already in session)
+        // Review:    show "О платформе", show "Мои сессии", show CTA
+        const hasVisited = !!localStorage.getItem('hasVisited');
+
+        if (navAbout) navAbout.style.display = screenName === 'landing' ? 'none' : '';
+        if (navSessions) navSessions.style.display =
+            (screenName === 'dashboard' || !hasVisited) ? 'none' : '';
+        if (newSessionBtn) newSessionBtn.style.display =
+            (screenName === 'landing' || screenName === 'session') ? 'none' : '';
+
+        // Active indicator
+        document.querySelectorAll('.header-nav-item').forEach(el => el.classList.remove('active'));
+        if (screenName === 'landing' && navAbout) navAbout.classList.add('active');
+        if (screenName === 'dashboard' && navSessions) navSessions.classList.add('active');
     }
 
     _initLandingAnimations() {

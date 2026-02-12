@@ -42,19 +42,40 @@ body {
     padding: 0.75rem 2rem;
     background: var(--surface);
     border-bottom: 1px solid var(--surface-light);
+    gap: 1rem;
 }
 
-.logo {
+.header-brand {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.02em;
+    flex-shrink: 0;
+}
+.header-brand:hover { color: var(--primary); }
+
+.header-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-.logo:hover {
-    color: var(--primary);
+.header-nav-item {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
 }
+.header-nav-item:hover { color: var(--primary); }
+.header-nav-item.active {
+    color: var(--text);
+    border-bottom-color: var(--primary);
+}
+
+.header-actions { flex-shrink: 0; }
 
 .btn-new-session {
     font-size: 0.875rem;
@@ -2046,8 +2067,12 @@ body {
 
 @media (max-width: 640px) {
     .header, .screen {
-        padding: 1rem;
+        padding: 0.75rem 1rem;
     }
+
+    .header-nav { gap: 0.75rem; }
+    .header-nav-item { font-size: 0.75rem; }
+    .btn-new-session { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
 
     .message {
         max-width: 95%;
@@ -2448,17 +2473,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* About link on dashboard */
-.about-link {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.15s;
-}
-
-.about-link:hover {
-    color: var(--primary);
-}
+/* (removed .about-link — replaced by .header-nav-item) */
 
 /* Scroll animations */
 .landing-animate {
