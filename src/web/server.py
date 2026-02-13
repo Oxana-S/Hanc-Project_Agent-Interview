@@ -587,10 +587,11 @@ async def reconnect_session(session_id: str):
         raise HTTPException(status_code=404, detail="Session not found")
 
     # Validate session can be resumed
-    if session.status not in ["paused", "active"]:
+    # Allow 'processing' status as fallback for race condition (stop → disconnect timing)
+    if session.status not in ["paused", "active", "processing"]:
         raise HTTPException(
             status_code=400,
-            detail=f"Cannot reconnect: session status is '{session.status}'. Only 'paused' or 'active' sessions can be resumed."
+            detail=f"Cannot reconnect: session status is '{session.status}'. Only 'paused', 'active', or 'processing' sessions can be resumed."
         )
 
     room_name = session.room_name or f"consultation-{session_id}"

@@ -935,7 +935,8 @@ class VoiceInterviewerApp {
                 if (e.target.closest('.session-checkbox') || e.target.closest('.td-checkbox') || e.target.closest('a') || e.target.closest('button')) return;
                 const link = row.dataset.link;
                 const status = row.dataset.status;
-                if (status === 'active' || status === 'paused') {
+                // Allow resuming sessions that are active, paused, or processing
+                if (status === 'active' || status === 'paused' || status === 'processing') {
                     this.router.navigate(`/session/${link}`);
                 } else {
                     this.router.navigate(`/session/${link}/review`);
@@ -1342,13 +1343,9 @@ class VoiceInterviewerApp {
         const confirmMsg = 'Остановить текущую сессию?';
         if (!confirm(confirmMsg)) return;
 
-        // Stop recording and disconnect
-        await this.stopRecording();
-        if (this.room) {
-            await this.room.disconnect();
-        }
-
-        // Update session status to 'paused' on backend using existing endpoint
+        // CRITICAL FIX: Update backend status to 'paused' FIRST (before disconnect)
+        // This prevents race condition where voice agent sees 'active' status
+        // and changes it to 'processing' → 'reviewing'
         if (this.sessionId) {
             try {
                 await fetch(`/api/session/${this.sessionId}/end`, {
@@ -1358,6 +1355,12 @@ class VoiceInterviewerApp {
             } catch (err) {
                 console.error('Failed to end session:', err);
             }
+        }
+
+        // THEN stop recording and disconnect (in this order)
+        await this.stopRecording();
+        if (this.room) {
+            await this.room.disconnect();
         }
 
         // Update UI
@@ -1408,15 +1411,15 @@ class VoiceInterviewerApp {
         }
 
         try {
-            // Use existing export endpoint with json format
-            const resp = await fetch(`/api/session/${this.sessionId}/export/json`);
+            // Use existing export endpoint with markdown format
+            const resp = await fetch(`/api/session/${this.sessionId}/export/md`);
             if (!resp.ok) throw new Error('Export failed');
 
             const blob = await resp.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `session-${this.sessionId}-${Date.now()}.json`;
+            a.download = `session-${this.sessionId}-${Date.now()}.md`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
