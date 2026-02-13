@@ -789,7 +789,9 @@ async def _extract_and_update_anketa(
         )
 
         extraction_time = time.time() - start_time
+        completion_rate = anketa.completion_rate()
 
+        # v5.0 Phase 4: Enhanced performance monitoring
         anketa_log.info(
             "extraction_completed",
             session_id=session_id,
@@ -797,6 +799,8 @@ async def _extract_and_update_anketa(
             is_windowed=is_windowed,
             message_count=len(dialogue_for_extraction),
             total_dialogue_length=len(dialogue_history),
+            model=llm.model,
+            completion_rate=round(completion_rate, 2),
         )
 
         anketa_data = anketa.model_dump(mode="json")
