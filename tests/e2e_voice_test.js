@@ -116,6 +116,25 @@ async function runTest() {
         );
         results.push({ test: 'Session created', status: '✅' });
 
+        // Extract session ID - wait for room connection to get actual session ID
+        await sleep(2000); // Wait for room connection logs
+
+        // Get session ID from console logs (room name)
+        let sessionId = null;
+        const roomLog = consoleLogs.find(log => log.includes('Connected to room: consultation-'));
+        if (roomLog) {
+            const match = roomLog.match(/consultation-([a-f0-9]+)/);
+            if (match) {
+                sessionId = match[1];
+            }
+        }
+
+        if (!sessionId) {
+            console.log('  ⚠️ Could not extract session ID from logs');
+        } else {
+            console.log(`  📌 Session ID: ${sessionId}`);
+        }
+
         await sleep(5000); // Wait for LiveKit connection
 
         // Check if session screen is in voice-active state (LiveKit connected)
@@ -231,8 +250,39 @@ async function runTest() {
         browser = null; // Prevent double-close in finally
 
         // _finalize_and_save() fires on disconnect: extraction + DB saves + notifications
-        // Takes 10-20s depending on DeepSeek API latency
-        await sleep(20000);
+        // Poll database to check if finalization completed (max 60s)
+        // Note: LiveKit disconnect can take 40-50s after browser close
+        let finalized = false;
+        if (sessionId) {
+            console.log(`  ⏳ Polling session ${sessionId} for finalization...`);
+            const maxAttempts = 60;
+            for (let i = 0; i < maxAttempts; i++) {
+                try {
+                    const { execSync } = require('child_process');
+                    const result = execSync(
+                        `./venv/bin/python scripts/check_session_finalized.py ${sessionId}`,
+                        { timeout: 2000 }
+                    ).toString();
+
+                    if (result.includes('FINALIZED')) {
+                        finalized = true;
+                        console.log(`  ✅ Session finalized after ${i + 1}s`);
+                        break;
+                    }
+                } catch (error) {
+                    // Script returns exit code 1 if not finalized yet
+                }
+                await sleep(1000);
+            }
+
+            if (!finalized) {
+                console.log(`  ⚠️ Session not finalized after ${maxAttempts}s (agent process may have exited too early)`);
+            }
+        } else {
+            console.log(`  ⚠️ Skipping finalization check (session ID not found)`);
+            // Fallback to old behavior
+            await sleep(60000);
+        }
 
         // === STEP 11: Pipeline Verification ===
         console.log('1️⃣1️⃣ Verifying pipeline markers in agent log...');
