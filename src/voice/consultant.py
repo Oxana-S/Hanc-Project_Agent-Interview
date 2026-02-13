@@ -26,6 +26,8 @@ import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
+import httpx
+
 from src.logging_config import setup_logging
 
 setup_logging("agent")
@@ -421,6 +423,66 @@ def _try_get_postgres():
     return None
 
 
+# ---------------------------------------------------------------------------
+# API Integration - Update anketa via web server API
+# ---------------------------------------------------------------------------
+# CRITICAL: Voice agent runs as SEPARATE PROCESS from web server.
+# SQLite in WAL mode ISOLATES writes between different connections.
+# Therefore, voice agent MUST use HTTP API to update anketa, not direct DB writes.
+# ---------------------------------------------------------------------------
+
+async def _update_anketa_via_api(
+    session_id: str,
+    anketa_data: dict,
+    anketa_md: str = None
+) -> bool:
+    """
+    Update anketa via web server API instead of direct database write.
+
+    This prevents SQLite WAL isolation issue where voice agent writes
+    are not visible to web server (different processes = different connections).
+
+    Returns:
+        bool: True if update succeeded, False otherwise
+    """
+    server_url = os.getenv("WEB_SERVER_URL", "http://localhost:8000")
+    url = f"{server_url}/api/session/{session_id}/anketa"
+
+    payload = {
+        "anketa_data": anketa_data,
+        "anketa_md": anketa_md
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.put(url, json=payload)
+
+            if response.status_code == 200:
+                logger.info(
+                    "anketa_updated_via_api",
+                    session_id=session_id,
+                    fields_count=len(anketa_data)
+                )
+                return True
+            else:
+                logger.warning(
+                    "anketa_api_update_failed",
+                    session_id=session_id,
+                    status_code=response.status_code,
+                    response=response.text
+                )
+                return False
+
+    except Exception as e:
+        logger.error(
+            "anketa_api_update_error",
+            session_id=session_id,
+            error=str(e),
+            traceback=traceback.format_exc()
+        )
+        return False
+
+
 async def _run_background_research(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -625,16 +687,13 @@ async def _extract_and_update_anketa(
             )
 
         anketa_md = AnketaGenerator.render_markdown(anketa)
-        _session_mgr.update_anketa(session_id, anketa_data, anketa_md)
 
-        # Update metadata via field-specific method (no full session overwrite
-        # that could race with update_document_context or update_anketa)
-        if anketa.company_name or anketa.contact_name:
-            _session_mgr.update_metadata(
-                session_id,
-                company_name=anketa.company_name,
-                contact_name=anketa.contact_name,
-            )
+        # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
+        # SQLite WAL mode isolates writes between processes → use HTTP API
+        await _update_anketa_via_api(session_id, anketa_data, anketa_md)
+
+        # Note: update_metadata() is redundant - company_name/contact_name
+        # are already in anketa_data and will be updated via API
 
         anketa_log.info(
             "periodic_anketa_extracted",
@@ -855,14 +914,9 @@ async def _finalize_and_save(
 
             anketa_data = anketa.model_dump(mode="json")
             anketa_md = AnketaGenerator.render_markdown(anketa)
-            _session_mgr.update_anketa(session_id, anketa_data, anketa_md)
 
-            if anketa.company_name or anketa.contact_name:
-                _session_mgr.update_metadata(
-                    session_id,
-                    company_name=anketa.company_name,
-                    contact_name=anketa.contact_name,
-                )
+            # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
+            await _update_anketa_via_api(session_id, anketa_data, anketa_md)
 
         except Exception as e:
             anketa_log.warning("final_anketa_extraction_failed", error=str(e))
