@@ -576,6 +576,66 @@ async def kill_session(session_id: str):
     }
 
 
+@app.post("/api/session/{session_id}/reconnect")
+async def reconnect_session(session_id: str):
+    """
+    Reconnect to a paused session - generates fresh LiveKit token.
+    Only works for sessions with status='paused'.
+    """
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    # Validate session can be resumed
+    if session.status not in ["paused", "active"]:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Cannot reconnect: session status is '{session.status}'. Only 'paused' or 'active' sessions can be resumed."
+        )
+
+    room_name = session.room_name or f"consultation-{session_id}"
+
+    # Generate fresh LiveKit token
+    try:
+        from src.voice.livekit_client import LiveKitClient
+        lk = LiveKitClient()
+        user_token = lk.create_token(room_name, f"client-{session.session_id}")
+        livekit_log.info(
+            "session_reconnect_token_generated",
+            session_id=session_id,
+            room=room_name,
+            token_length=len(user_token),
+        )
+    except Exception as exc:
+        livekit_log.error(
+            "session_reconnect_token_failed",
+            session_id=session_id,
+            error=str(exc),
+            error_type=type(exc).__name__,
+        )
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to generate LiveKit token: {str(exc)}"
+        )
+
+    # Update session status to 'active'
+    session_mgr.update_status(session_id, "active")
+    session_log.info(
+        "session_reconnected",
+        session_id=session_id,
+        room=room_name,
+        previous_status=session.status,
+    )
+
+    return {
+        "token": user_token,
+        "room_name": room_name,
+        "livekit_url": os.getenv("LIVEKIT_URL", ""),
+        "session_id": session_id,
+        "status": "active",
+    }
+
+
 @app.get("/api/session/{session_id}/export/{format}")
 async def export_session(session_id: str, format: str):
     """Export session anketa in the requested format (md or pdf/print-html)."""

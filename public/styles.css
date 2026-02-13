@@ -687,6 +687,67 @@ body {
 
 /* ===== Interview Screen ===== */
 
+/* Session Control Bar (Level 1 - Global Controls) */
+.session-control-bar {
+    display: flex;
+    gap: 12px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-wrap: wrap;
+}
+
+.btn-session-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-session-control:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-session-control:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-session-control.btn-danger {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+
+.btn-session-control.btn-danger:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.btn-session-control.btn-success {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: #22c55e;
+}
+
+.btn-session-control.btn-success:hover:not(:disabled) {
+    background: rgba(34, 197, 94, 0.3);
+}
+
+.btn-session-control svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 .interview-columns {
     display: flex;
     flex-direction: row;
@@ -921,19 +982,63 @@ body {
     font-size: 1.5rem;
 }
 
+/* Enhanced Microphone Indicator - Bigger & More Visible */
 .btn-mic {
+    width: 80px !important;
+    height: 80px !important;
     background: var(--primary);
+    position: relative;
+    overflow: visible;
 }
 
 .btn-mic:hover {
     background: var(--primary-dark);
 }
 
+/* Recording State - Green with pulse */
 .btn-mic.recording {
-    background: var(--danger);
-    animation: pulse 1s infinite;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.btn-mic.recording::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    animation: micPulse 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes micPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Paused State - Orange */
+.btn-mic.paused {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.5), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Inactive State - Gray */
+.btn-mic.inactive {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.7;
+}
+
+/* Legacy pulse animation - keep for compatibility */
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -984,6 +1089,68 @@ body {
 .anketa-header h3 {
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+/* Anketa Header Controls (Level 3 - Anketa Controls) */
+.anketa-header-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-anketa-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid var(--surface-light);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-anketa-control:hover {
+    background: var(--surface);
+    border-color: var(--surface-dark);
+}
+
+.btn-anketa-control.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-color: #2563eb;
+    color: white;
+}
+
+.btn-anketa-control.btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.btn-anketa-control svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* Disabled Anketa Form - Read-only State */
+#anketa-fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#anketa-fieldset:disabled {
+    opacity: 0.7;
+}
+
+#anketa-fieldset:disabled input,
+#anketa-fieldset:disabled textarea,
+#anketa-fieldset:disabled select {
+    background: var(--surface);
+    cursor: not-allowed;
+    color: var(--text-muted);
 }
 
 .anketa-status-badge {
@@ -1751,8 +1918,8 @@ body {
 /* ===== Quick Settings Panel ===== */
 
 .btn-quick-settings {
-    width: 44px;
-    height: 44px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2183,6 +2350,16 @@ body {
     .review-label {
         flex: 0 0 100px;
     }
+
+    /* Session control bar - reduce padding */
+    .session-control-bar {
+        gap: 8px;
+        padding: 12px 16px;
+    }
+
+    .btn-session-control {
+        min-width: 50px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -2193,6 +2370,17 @@ body {
     .header-nav { gap: 0.75rem; }
     .header-nav-item { font-size: 0.75rem; }
     .btn-new-session { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+
+    /* Session control bar - icon only on mobile */
+    .btn-session-control span {
+        display: none;
+    }
+
+    .btn-session-control {
+        padding: 10px;
+        min-width: 44px;
+        justify-content: center;
+    }
 
     .message {
         max-width: 95%;
@@ -2635,5 +2823,19 @@ body {
 
     .landing-section {
         padding: 2rem 0;
+    }
+}
+
+/* ===== Extra Small Screens (Mobile Optimization) ===== */
+@media (max-width: 400px) {
+    /* Reduce mic size to prevent overflow */
+    .btn-mic {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    /* Reduce gap between controls */
+    .controls .buttons {
+        gap: 12px;
     }
 }

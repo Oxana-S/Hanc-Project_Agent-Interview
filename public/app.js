@@ -105,6 +105,7 @@ class VoiceInterviewerApp {
         this._lastFieldCount = 0;
         this._lastPct = 0;
         this._agentSpoke = false;
+        this.isAnketaEditable = false; // v5.5: Anketa edit mode state
 
         // SPRINT 5: Debug mode
         this.debugMode = localStorage.getItem('anketa_debug') === 'true' || window.location.search.includes('debug=true');
@@ -302,10 +303,55 @@ class VoiceInterviewerApp {
         this.elements.micBtn.addEventListener('click', () => this.toggleRecording());
         this.elements.pauseBtn.addEventListener('click', () => this.togglePause());
 
+        // Session controls (Level 1 - Global)
+        const btnAllSessions = document.getElementById('btn-all-sessions');
+        const btnStopSession = document.getElementById('btn-stop-session');
+        const btnStartSession = document.getElementById('btn-start-session');
+        const btnRecordSession = document.getElementById('btn-record-session');
+        const btnGoToResults = document.getElementById('btn-go-to-results');
+
+        if (btnAllSessions) {
+            btnAllSessions.addEventListener('click', () => this.handleAllSessions());
+        }
+        if (btnStopSession) {
+            btnStopSession.addEventListener('click', () => this.handleStopSession());
+        }
+        if (btnStartSession) {
+            btnStartSession.addEventListener('click', () => this.handleStartSession());
+        }
+        if (btnRecordSession) {
+            btnRecordSession.addEventListener('click', () => this.handleRecordSession());
+        }
+        if (btnGoToResults) {
+            btnGoToResults.addEventListener('click', () => this.handleGoToResults());
+        }
+
         // Anketa actions
         this.elements.confirmAnketaBtn.addEventListener('click', () => this.confirmAnketa());
         this.elements.saveLeaveBtn.addEventListener('click', () => this.saveAndLeave());
         this.elements.copyLinkBtn.addEventListener('click', () => this.copySessionLink());
+
+        // Anketa edit/save controls (Level 3)
+        const btnEditAnketa = document.getElementById('btn-edit-anketa');
+        const btnSaveAnketa = document.getElementById('btn-save-anketa');
+        const anketaFieldset = document.getElementById('anketa-fieldset');
+
+        if (btnEditAnketa && btnSaveAnketa && anketaFieldset) {
+            btnEditAnketa.addEventListener('click', () => {
+                this.isAnketaEditable = true;
+                anketaFieldset.disabled = false;
+                btnEditAnketa.style.display = 'none';
+                btnSaveAnketa.style.display = 'flex';
+            });
+
+            btnSaveAnketa.addEventListener('click', async () => {
+                await this.handleSaveAnketa();
+                this.isAnketaEditable = false;
+                anketaFieldset.disabled = true;
+                btnEditAnketa.style.display = 'flex';
+                btnSaveAnketa.style.display = 'none';
+            });
+        }
 
         // Document upload
         if (this.elements.docUploadBtn && this.elements.docUploadInput) {
@@ -1030,6 +1076,9 @@ class VoiceInterviewerApp {
             this.uniqueLink = sessionData.unique_link || link;
             this.roomName = sessionData.room_name || null;
 
+            // Sync settings lock state when resuming session
+            this._updateSettingsLockState();
+
             // Update header
             this.elements.sessionCompany.textContent = sessionData.company_name || 'Новая сессия';
             this.updateAnketaStatus(sessionData.status || 'active');
@@ -1206,6 +1255,9 @@ class VoiceInterviewerApp {
             this.uniqueLink = data.unique_link;
             this.roomName = data.room_name;
 
+            // Sync settings lock state when creating new session
+            this._updateSettingsLockState();
+
             // Reset state
             this.elements.dialogueContainer.innerHTML = '';
             this.messageCount = 0;
@@ -1271,6 +1323,146 @@ class VoiceInterviewerApp {
         this.localParticipant = null;
         document.getElementById('session-screen')?.classList.remove('voice-active');
         this.router.navigate('/');
+    }
+
+    // ===== SESSION CONTROL HANDLERS (Level 1 - Global) =====
+
+    handleAllSessions() {
+        if (this.isRecording) {
+            const confirmMsg = 'Сессия активна. Остановить и вернуться к списку?';
+            if (!confirm(confirmMsg)) return;
+            this.handleStopSession();
+        }
+        this.router.navigate('/');
+    }
+
+    async handleStopSession() {
+        if (!this.isRecording && !this.isConnected) return;
+
+        const confirmMsg = 'Остановить текущую сессию?';
+        if (!confirm(confirmMsg)) return;
+
+        // Stop recording and disconnect
+        await this.stopRecording();
+        if (this.room) {
+            await this.room.disconnect();
+        }
+
+        // Update session status to 'paused' on backend using existing endpoint
+        if (this.sessionId) {
+            try {
+                await fetch(`/api/session/${this.sessionId}/end`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (err) {
+                console.error('Failed to end session:', err);
+            }
+        }
+
+        // Update UI
+        document.getElementById('btn-stop-session')?.setAttribute('disabled', 'true');
+        document.getElementById('btn-start-session')?.removeAttribute('disabled');
+
+        showToast('Сессия приостановлена', 'info', 2000);
+    }
+
+    async handleStartSession() {
+        if (!this.sessionId) {
+            showToast('Нет активной сессии для возобновления', 'error', 2000);
+            return;
+        }
+
+        try {
+            // Fetch fresh token from reconnect endpoint
+            const resp = await fetch(`/api/session/${this.sessionId}/reconnect`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!resp.ok) {
+                const errData = await resp.json();
+                throw new Error(errData.detail || 'Reconnect failed');
+            }
+
+            const data = await resp.json();
+
+            // Reconnect to LiveKit room with fresh token
+            await this.connectToRoom(data.livekit_url, data.token, data.room_name);
+
+            // Update UI
+            document.getElementById('btn-stop-session')?.removeAttribute('disabled');
+            document.getElementById('btn-start-session')?.setAttribute('disabled', 'true');
+
+            showToast('Сессия возобновлена', 'success', 2000);
+        } catch (err) {
+            console.error('Failed to restart session:', err);
+            showToast(`Ошибка возобновления: ${err.message}`, 'error', 3000);
+        }
+    }
+
+    async handleRecordSession() {
+        if (!this.sessionId) {
+            showToast('Нет активной сессии для экспорта', 'error', 2000);
+            return;
+        }
+
+        try {
+            // Use existing export endpoint with json format
+            const resp = await fetch(`/api/session/${this.sessionId}/export/json`);
+            if (!resp.ok) throw new Error('Export failed');
+
+            const blob = await resp.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `session-${this.sessionId}-${Date.now()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            showToast('Сессия сохранена', 'success', 2000);
+        } catch (err) {
+            console.error('Failed to export session:', err);
+            showToast('Ошибка при сохранении сессии', 'error', 2000);
+        }
+    }
+
+    handleGoToResults() {
+        if (!this.sessionId) {
+            showToast('Нет активной сессии', 'error', 2000);
+            return;
+        }
+
+        // Navigate to review screen
+        if (this.uniqueLink) {
+            this.router.navigate(`/review/${this.uniqueLink}`);
+        } else {
+            showToast('Ссылка на результаты недоступна', 'error', 2000);
+        }
+    }
+
+    async handleSaveAnketa() {
+        if (!this.sessionId) {
+            showToast('Нет активной сессии', 'error', 2000);
+            return;
+        }
+
+        // Guard: prevent saving if not in edit mode
+        if (!this.isAnketaEditable) {
+            console.warn('Anketa is read-only, save aborted');
+            return;
+        }
+
+        try {
+            // Reuse existing saveAnketa logic
+            await this.saveAnketa();
+            showToast('Анкета сохранена', 'success', 2000);
+        } catch (err) {
+            console.error('Failed to save anketa:', err);
+            showToast(`Ошибка сохранения: ${err.message}`, 'error', 3000);
+        }
     }
 
     // ===== SESSION REVIEW =====
@@ -1641,6 +1833,8 @@ class VoiceInterviewerApp {
         this.elements.pauseBtn.classList.add('paused');
         this.elements.pauseBtn.querySelector('.icon').textContent = '▶';
         this.elements.micBtn.disabled = true;
+        this.elements.micBtn.classList.remove('inactive');
+        this.elements.micBtn.classList.add('paused');
         document.getElementById('pause-overlay')?.classList.add('visible');
         this.elements.voiceStatus.textContent = 'На паузе';
         document.querySelector('.wave')?.classList.add('inactive');
@@ -1654,6 +1848,7 @@ class VoiceInterviewerApp {
         this.elements.pauseBtn.classList.remove('paused');
         this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
         this.elements.micBtn.disabled = false;
+        this.elements.micBtn.classList.remove('paused');
         document.getElementById('pause-overlay')?.classList.remove('visible');
 
         // Send updated voice settings so agent picks up mid-session changes.
@@ -1711,6 +1906,7 @@ class VoiceInterviewerApp {
             }
 
             this.isRecording = true;
+            this.elements.micBtn.classList.remove('inactive', 'paused');
             this.elements.micBtn.classList.add('recording');
             this.elements.micBtn.title = 'Остановить запись (идет запись)';  // v4.3: tooltip
             this.elements.voiceStatus.textContent = 'Слушаю...';
@@ -1757,6 +1953,7 @@ class VoiceInterviewerApp {
 
         this.isRecording = false;
         this.elements.micBtn.classList.remove('recording');
+        this.elements.micBtn.classList.add('inactive');
         this.elements.micBtn.title = 'Начать запись';  // v4.3: tooltip
         this.elements.voiceStatus.textContent = 'Микрофон выключен';
         document.querySelector('.wave')?.classList.add('inactive');
