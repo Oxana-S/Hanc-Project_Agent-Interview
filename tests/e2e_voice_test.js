@@ -78,19 +78,38 @@ async function runTest() {
         // Navigate to dashboard
         console.log('2️⃣ Opening dashboard...');
         await page.goto(BASE_URL, { waitUntil: 'networkidle2', timeout: 30000 });
+
+        // Set localStorage to bypass landing page (first-time visitor check)
+        await page.evaluate(() => {
+            localStorage.setItem('hasVisited', 'true');
+        });
+
+        // Reload to show dashboard instead of landing
+        await page.reload({ waitUntil: 'networkidle2' });
         results.push({ test: 'Page load', status: '✅' });
 
         // Verify dashboard is visible
         await page.waitForSelector('#dashboard-screen', { timeout: 5000 });
         results.push({ test: 'Dashboard loaded', status: '✅' });
 
-        // Click "Новая консультация" button
-        console.log('3️⃣ Creating new session from dashboard...');
-        await page.waitForSelector('#new-session-btn', { timeout: 5000 });
-        await page.click('#new-session-btn');
+        // Click "Новая консультация" button (shows pre-session screen)
+        console.log('3️⃣ Opening pre-session screen from dashboard...');
+        await page.waitForSelector('#new-session-btn', { visible: true, timeout: 5000 });
+        await page.evaluate(() => {
+            document.getElementById('new-session-btn').click();
+        });
+
+        // Wait for pre-session screen to appear
+        await page.waitForSelector('.btn-start-voice', { visible: true, timeout: 5000 });
+
+        // Click "Начать разговор" button (actually creates session)
+        console.log('4️⃣ Creating session and starting voice conversation...');
+        await page.evaluate(() => {
+            document.querySelector('.btn-start-voice').click();
+        });
 
         // Wait for session creation and redirect to /session/:link
-        console.log('4️⃣ Waiting for session creation and LiveKit connection...');
+        console.log('5️⃣ Waiting for LiveKit connection...');
         await page.waitForFunction(
             () => window.location.pathname.startsWith('/session/'),
             { timeout: 15000 }
@@ -99,13 +118,13 @@ async function runTest() {
 
         await sleep(5000); // Wait for LiveKit connection
 
-        // Check if interview screen is visible
-        const interviewVisible = await page.evaluate(() => {
-            const interview = document.getElementById('interview-screen');
-            return interview && !interview.classList.contains('hidden');
+        // Check if session screen is in voice-active state (LiveKit connected)
+        const voiceActive = await page.evaluate(() => {
+            const session = document.getElementById('session-screen');
+            return session && session.classList.contains('voice-active');
         });
 
-        if (interviewVisible) {
+        if (voiceActive) {
             results.push({ test: 'LiveKit connection', status: '✅' });
         } else {
             results.push({ test: 'LiveKit connection', status: '❌' });
@@ -113,7 +132,7 @@ async function runTest() {
         }
 
         // Check if audio track was published
-        console.log('5️⃣ Checking audio track publication...');
+        console.log('6️⃣ Checking audio track publication...');
         const audioPublished = consoleLogs.some(log =>
             log.includes('START RECORDING') || log.includes('Audio track PUBLISHED') || log.includes('MIC IS NOW LIVE')
         );
@@ -126,7 +145,7 @@ async function runTest() {
         }
 
         // Wait for agent greeting (audio file is ~14s, agent needs time to greet first)
-        console.log('6️⃣ Waiting for agent greeting...');
+        console.log('7️⃣ Waiting for agent greeting...');
         await sleep(20000); // Wait for agent to greet + user audio to play
 
         // Check if agent message appeared in chat
@@ -143,7 +162,7 @@ async function runTest() {
         }
 
         // Check agent log for USER STATE
-        console.log('7️⃣ Checking agent received audio...');
+        console.log('8️⃣ Checking agent received audio...');
         const { execSync } = require('child_process');
         let agentLog = execSync('tail -n 500 /tmp/agent_entrypoint.log 2>/dev/null || echo ""').toString();
 
@@ -169,7 +188,7 @@ async function runTest() {
         }
 
         // Wait for agent response after user speech
-        console.log('8️⃣ Waiting for agent response to user speech...');
+        console.log('9️⃣ Waiting for agent response to user speech...');
         await sleep(20000); // Wait for agent to process speech and respond
 
         // Re-read agent log
@@ -206,8 +225,8 @@ async function runTest() {
             results.push({ test: 'Conversation in UI', status: '⚠️ (only greeting visible)' });
         }
 
-        // === STEP 9: Close browser and wait for agent finalization ===
-        console.log('9️⃣ Closing browser, waiting for agent finalization...');
+        // === STEP 10: Close browser and wait for agent finalization ===
+        console.log('🔟 Closing browser, waiting for agent finalization...');
         await browser.close();
         browser = null; // Prevent double-close in finally
 
@@ -215,8 +234,8 @@ async function runTest() {
         // Takes 10-20s depending on DeepSeek API latency
         await sleep(20000);
 
-        // === STEP 10: Pipeline Verification ===
-        console.log('🔟 Verifying pipeline markers in agent log...');
+        // === STEP 11: Pipeline Verification ===
+        console.log('1️⃣1️⃣ Verifying pipeline markers in agent log...');
         agentLog = execSync('tail -n 2000 /tmp/agent_entrypoint.log 2>/dev/null || echo ""').toString();
 
         const pipelineResults = [];
