@@ -409,20 +409,17 @@ async def update_voice_config(session_id: str, req: dict):
 
 @app.get("/api/session/{session_id}/reconnect")
 async def reconnect_session(session_id: str):
-    """Get new LiveKit token to reconnect to an existing session room.
+    """Get new LiveKit token to reconnect to an existing session room (idempotent).
 
     Used when the user reloads the page and needs to rejoin the room.
     If the room no longer exists, creates a new one with agent dispatch.
-    Also resumes paused sessions by setting status back to active.
+    Does NOT change session status - use POST /resume to resume paused sessions.
     """
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    # Resume paused sessions
-    if session.status == "paused":
-        session_mgr.update_status(session_id, "active")
-        session_log.info("session_resumed", session_id=session_id)
+    # REMOVED: session_mgr.update_status() — GET должен быть idempotent
 
     room_name = session.room_name or f"consultation-{session_id}"
     livekit_url = os.getenv("LIVEKIT_URL", "")
@@ -485,6 +482,26 @@ async def reconnect_session(session_id: str):
         "livekit_url": livekit_url,
         "user_token": user_token,
     }
+
+
+@app.post("/api/session/{session_id}/resume")
+async def resume_session(session_id: str):
+    """Resume paused session - changes status to 'active'.
+
+    This is a separate POST endpoint to avoid GET side effects.
+    Frontend should call this when user explicitly clicks Resume button.
+    """
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    if session.status != "paused":
+        raise HTTPException(status_code=400, detail="Session is not paused")
+
+    session_mgr.update_status(session_id, "active")
+    session_log.info("session_resumed", session_id=session_id)
+
+    return {"status": "active", "message": "Session resumed"}
 
 
 @app.put("/api/session/{session_id}/anketa")

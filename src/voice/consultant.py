@@ -1097,7 +1097,7 @@ def _register_event_handlers(
             consultation.add_message("user", transcript.strip())
             if db_backed and session_id:
                 messages_since_last_extract[0] += 1
-                if messages_since_last_extract[0] >= 4:
+                if messages_since_last_extract[0] >= 12:
                     messages_since_last_extract[0] = 0
 
                     # FIX: Skip if extraction already running (prevent duplication)
@@ -1284,7 +1284,7 @@ def _handle_conversation_item(
 
         messages_since_last_extract[0] += 1
 
-        if messages_since_last_extract[0] >= 4:
+        if messages_since_last_extract[0] >= 12:
             messages_since_last_extract[0] = 0
 
             # FIX: Skip if extraction already running (prevent duplication)

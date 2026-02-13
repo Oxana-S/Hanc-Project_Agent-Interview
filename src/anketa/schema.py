@@ -326,57 +326,50 @@ class FinalAnketa(BaseModel):
     quality_metrics: Dict[str, float] = Field(default_factory=dict, description="Quality metrics for this anketa")
 
     def completion_rate(self) -> float:
-        """Calculate the percentage of filled USER-collected fields.
-
-        Only counts fields gathered from the client conversation.
-        AI-generated blocks (faq_items, objection_handlers, etc.) are excluded
-        because DeepSeek generates them automatically, inflating the rate.
-
-        v4.3: Expanded to 15 fields including contact info and critical agent parameters.
         """
-        core_fields = {
-            # Business information (6 fields)
+        Weighted completion: основные поля 90%, дополнительные +10%.
+        Контакты (phone/email) опциональны для voice interview.
+
+        v4.4: Weighted schema - required fields (9) = 90%, optional (6) = 10%.
+        """
+        # Обязательные (9 полей) — вес 90%
+        required_fields = {
             'company_name': self.company_name,
             'industry': self.industry,
             'business_description': self.business_description,
             'services': self.services,
             'current_problems': self.current_problems,
             'business_goals': self.business_goals,
-
-            # Agent configuration (4 fields)
             'agent_name': self.agent_name,
             'agent_purpose': self.agent_purpose,
             'agent_functions': self.agent_functions,
-            'integrations': self.integrations,
+        }
 
-            # Contact information (3 fields - CRITICAL)
+        # Дополнительные (6 полей) — вес 10%
+        optional_fields = {
             'contact_name': self.contact_name,
-            'contact_phone': self.contact_phone,
-            'contact_email': self.contact_email,
-
-            # Agent critical parameters (2 fields)
+            'contact_phone': self.contact_phone,      # voice редко собирает
+            'contact_email': self.contact_email,      # voice редко собирает
+            'integrations': self.integrations,
             'transfer_conditions': self.transfer_conditions,
             'call_direction': self.call_direction,
         }
 
-        total = len(core_fields)
-        filled = 0
+        required_filled = sum(
+            1 for v in required_fields.values()
+            if (isinstance(v, list) and len(v) > 0) or
+               (isinstance(v, str) and v.strip()) or v
+        )
+        required_rate = (required_filled / len(required_fields)) * 0.9  # макс 90%
 
-        for key, value in core_fields.items():
-            if value:
-                if isinstance(value, list):
-                    if len(value) > 0:
-                        filled += 1
-                elif isinstance(value, str):
-                    if value.strip():
-                        filled += 1
-                elif isinstance(value, dict):
-                    if value:
-                        filled += 1
-                else:
-                    filled += 1
+        optional_filled = sum(
+            1 for v in optional_fields.values()
+            if (isinstance(v, list) and len(v) > 0) or
+               (isinstance(v, str) and v.strip()) or v
+        )
+        optional_rate = (optional_filled / len(optional_fields)) * 0.1  # макс 10%
 
-        return (filled / total) if total > 0 else 0.0
+        return min(required_rate + optional_rate, 1.0)
 
     def get_required_fields_status(self) -> dict:
         """Check status of required fields."""

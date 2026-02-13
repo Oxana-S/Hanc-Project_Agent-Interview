@@ -1563,6 +1563,115 @@ class VoiceInterviewerApp {
             html += '</div>';
         }
 
+        // AI-секции (если есть данные)
+        const aiSections = [
+            {
+                title: 'FAQ (Часто задаваемые вопросы)',
+                key: 'faq_items',
+                render: (items) => items.map(i => `
+                    <div class="review-ai-item">
+                        <div class="review-ai-label">Вопрос:</div>
+                        <div class="review-ai-value">${this._escapeHtml(i.question)}</div>
+                        <div class="review-ai-label">Ответ:</div>
+                        <div class="review-ai-value">${this._escapeHtml(i.answer)}</div>
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Обработка возражений',
+                key: 'objection_handlers',
+                render: (items) => items.map(i => `
+                    <div class="review-ai-item">
+                        <strong>Возражение:</strong> ${this._escapeHtml(i.objection)}<br>
+                        <strong>Ответ:</strong> ${this._escapeHtml(i.response)}
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Пример диалога',
+                key: 'sample_dialogue',
+                render: (items) => items.map(i => `
+                    <div class="review-dialogue-msg ${i.role}">
+                        <strong>${i.role === 'agent' ? 'Агент' : 'Клиент'}:</strong> ${this._escapeHtml(i.message)}
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Ключевые показатели (KPI)',
+                key: 'success_kpis',
+                render: (items) => items.map(i => `
+                    <div class="review-kpi-item">
+                        <strong>${this._escapeHtml(i.name)}:</strong> ${this._escapeHtml(i.target)}
+                        <span class="kpi-benchmark">(эталон: ${this._escapeHtml(i.benchmark)})</span>
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Финансовые метрики',
+                key: 'financial_metrics',
+                render: (items) => items.map(i => `
+                    <div class="review-metric-item">
+                        <strong>${this._escapeHtml(i.name)}:</strong> ${this._escapeHtml(i.value)}
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Конкуренты',
+                key: 'competitors',
+                render: (items) => items.map(i => `
+                    <div class="review-competitor-item">
+                        <strong>${this._escapeHtml(i.name)}</strong><br>
+                        Сильные стороны: ${this._escapeHtml(i.strengths)}<br>
+                        Слабые стороны: ${this._escapeHtml(i.weaknesses)}
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Рыночные инсайты',
+                key: 'market_insights',
+                render: (items) => items.map(i => `
+                    <div class="review-insight-item">${this._escapeHtml(i.insight)}</div>
+                `).join('')
+            },
+            {
+                title: 'Правила эскалации',
+                key: 'escalation_rules',
+                render: (items) => items.map(i => typeof i === 'string' ? `<div class="review-rule-item">${this._escapeHtml(i)}</div>` : `<div class="review-rule-item">${this._escapeHtml(JSON.stringify(i))}</div>`).join('')
+            },
+            {
+                title: 'Чеклист запуска',
+                key: 'launch_checklist',
+                render: (items) => items.map(i => `
+                    <div class="review-checklist-item">
+                        <input type="checkbox" ${i.required ? 'required' : ''}>
+                        ${this._escapeHtml(i.item)}
+                        <span class="checklist-responsible">(${this._escapeHtml(i.responsible)})</span>
+                    </div>
+                `).join('')
+            },
+            {
+                title: 'Рекомендации AI',
+                key: 'ai_recommendations',
+                render: (items) => items.map(i => `
+                    <div class="review-recommendation-item priority-${i.priority}">
+                        <strong>${this._escapeHtml(i.recommendation)}</strong><br>
+                        Влияние: ${this._escapeHtml(i.impact)}
+                    </div>
+                `).join('')
+            },
+        ];
+
+        // Добавить AI-секции в рендеринг
+        for (const section of aiSections) {
+            const items = normalized[section.key];
+            if (!Array.isArray(items) || items.length === 0) continue;
+
+            html += `<div class="review-section review-ai-section">
+                <div class="review-section-title">${section.title}</div>
+                ${section.render(items)}
+            </div>`;
+        }
+
         container.innerHTML = html || '<p class="review-empty">Анкета пуста</p>';
     }
 
@@ -1669,11 +1778,41 @@ class VoiceInterviewerApp {
 
         const { Room, RoomEvent, Track } = LivekitClient;
 
-        // Disconnect previous room to avoid orphaned connections
+        // ========== ПОЛНЫЙ CLEANUP ==========
+
+        // 1. Disconnect old room
         if (this.room) {
-            try { await this.room.disconnect(); } catch {}
+            try { await this.room.disconnect(); } catch (e) { LOG.warn('Room disconnect error:', e); }
         }
 
+        // 2. Stop audio level monitoring → prevents memory leak
+        if (this.audioLevelInterval) {
+            clearInterval(this.audioLevelInterval);
+            this.audioLevelInterval = null;
+        }
+
+        // 3. Close AudioContext
+        if (this._monitorAudioContext) {
+            try { await this._monitorAudioContext.close(); } catch (e) { LOG.warn('AudioContext close error:', e); }
+            this._monitorAudioContext = null;
+        }
+
+        // 4. Clean orphaned audio elements
+        if (this.agentAudioElements) {
+            this.agentAudioElements.forEach(({ track, element }) => {
+                try { track.detach(); } catch {}
+                if (element.parentNode) element.remove();
+            });
+            this.agentAudioElements.clear();
+        }
+
+        // 5. Stop anketa polling temporarily (will restart in Connected event)
+        if (this.anketaPollingInterval) {
+            clearInterval(this.anketaPollingInterval);
+            this.anketaPollingInterval = null;
+        }
+
+        // ========== CREATE NEW ROOM ==========
         this.room = new Room({ adaptiveStream: true, dynacast: true });
 
         this.room.on(RoomEvent.Connected, () => {
@@ -1853,6 +1992,20 @@ class VoiceInterviewerApp {
         this.elements.micBtn.disabled = false;
         this.elements.micBtn.classList.remove('paused');
         document.getElementById('pause-overlay')?.classList.remove('visible');
+
+        // ✅ FIX БАГ #3: Call POST /resume to change status on backend
+        if (this.sessionId) {
+            try {
+                const resumeResp = await fetch(`/api/session/${this.sessionId}/resume`, { method: 'POST' });
+                if (resumeResp.ok) {
+                    LOG.info('Session status changed to active on backend');
+                } else {
+                    LOG.warn('Failed to resume session on backend:', await resumeResp.text());
+                }
+            } catch (e) {
+                LOG.warn('Failed to call POST /resume:', e);
+            }
+        }
 
         // Send updated voice settings so agent picks up mid-session changes.
         // voice-config PUT signals the agent via room metadata automatically.
@@ -2308,24 +2461,69 @@ class VoiceInterviewerApp {
     // ===== AI Blocks Summary =====
 
     updateAIBlocksSummary(data) {
-        let hasAny = false;
         let html = '';
         for (const block of this.aiBlocks) {
             const items = data[block.key];
-            const count = Array.isArray(items) ? items.length : 0;
-            if (count > 0) hasAny = true;
-            const cls = count > 0 ? 'ai-block-filled' : 'ai-block-empty';
-            html += `<div class="ai-block-item ${cls}">
-                <span class="ai-block-label">${block.label}</span>
-                <span class="ai-block-count">${count}</span>
-            </div>`;
+            if (!Array.isArray(items) || items.length === 0) continue;
+
+            html += `<div class="ai-block-card">
+                <div class="ai-block-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <h4>${block.label}</h4>
+                    <span class="ai-block-count">${items.length}</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="ai-block-content">`;
+
+            // Рендерим каждый тип блока
+            if (block.key === 'faq_items') {
+                items.forEach(item => {
+                    html += `<div class="ai-item faq-item">
+                        <div class="ai-item-label">Вопрос:</div>
+                        <div class="ai-item-value">${this._escapeHtml(item.question)}</div>
+                        <div class="ai-item-label">Ответ:</div>
+                        <div class="ai-item-value">${this._escapeHtml(item.answer)}</div>
+                    </div>`;
+                });
+            } else if (block.key === 'objection_handlers') {
+                items.forEach(item => {
+                    html += `<div class="ai-item objection-item">
+                        <div class="ai-item-label">Возражение:</div>
+                        <div class="ai-item-value">${this._escapeHtml(item.objection)}</div>
+                        <div class="ai-item-label">Ответ:</div>
+                        <div class="ai-item-value">${this._escapeHtml(item.response)}</div>
+                    </div>`;
+                });
+            } else if (block.key === 'success_kpis') {
+                items.forEach(item => {
+                    html += `<div class="ai-item kpi-item">
+                        <strong>${this._escapeHtml(item.name)}:</strong>
+                        ${this._escapeHtml(item.target)}
+                        <span class="kpi-benchmark">(benchmark: ${this._escapeHtml(item.benchmark)})</span>
+                    </div>`;
+                });
+            } else if (block.key === 'sample_dialogue') {
+                items.forEach(item => {
+                    const roleClass = item.role === 'agent' ? 'agent-msg' : 'user-msg';
+                    html += `<div class="ai-item dialogue-item ${roleClass}">
+                        <strong>${item.role}:</strong> ${this._escapeHtml(item.message)}
+                    </div>`;
+                });
+            } else {
+                // Остальные блоки - generic rendering
+                items.forEach(item => {
+                    const text = typeof item === 'string' ? item : JSON.stringify(item);
+                    html += `<div class="ai-item">${this._escapeHtml(text)}</div>`;
+                });
+            }
+
+            html += `</div></div>`;
         }
 
         const section = document.getElementById('ai-blocks-section');
         const summary = document.getElementById('ai-blocks-summary');
         if (section && summary) {
-            section.style.display = hasAny ? 'block' : 'none';
-            summary.innerHTML = html;
+            section.style.display = html ? 'block' : 'none';
+            summary.innerHTML = html || '<p class="ai-empty">AI-анализ появится после 50% заполнения анкеты</p>';
         }
     }
 

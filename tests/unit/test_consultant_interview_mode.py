@@ -394,7 +394,8 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             # Setup KB mocks to avoid StopIteration
             mock_km_inst = mock_km.return_value
@@ -453,7 +454,8 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             # Setup KB mocks to avoid StopIteration
             mock_km_inst = mock_km.return_value
@@ -499,7 +501,8 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             # Setup KB mocks to avoid StopIteration
             mock_km_inst = mock_km.return_value
@@ -598,7 +601,8 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             # Setup KB mocks to avoid StopIteration
             mock_km_inst = mock_km.return_value
@@ -648,7 +652,8 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             # Setup KB mocks to avoid StopIteration
             mock_km_inst = mock_km.return_value
@@ -671,7 +676,8 @@ class TestFinalizeAndSaveConsultationType:
 
             await _finalize_and_save(consultation, "test-001")
 
-            mock_mgr.update_anketa.assert_called_once_with(
+            # ✅ v4.4: Changed to use API update instead of direct DB write
+            mock_api_update.assert_called_once_with(
                 "test-001",
                 anketa.model_dump.return_value,
                 "# Anketa",
@@ -1432,7 +1438,9 @@ class TestInterviewModeEdgeCases:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant._try_get_redis", return_value=None):
+             patch("src.voice.consultant._try_get_redis", return_value=None), \
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             mock_mgr.get_session.return_value = db_session
             mock_extractor = AsyncMock()
@@ -1442,8 +1450,8 @@ class TestInterviewModeEdgeCases:
 
             await _extract_and_update_anketa(consultation, "test-001")
 
-            # Anketa should still be saved to DB
-            mock_mgr.update_anketa.assert_called_once()
+            # Anketa should still be saved via API (v4.4)
+            mock_api_update.assert_called_once()
 
     @pytest.mark.asyncio
     async def test_interview_mode_metadata_still_updated(self):
@@ -1458,7 +1466,9 @@ class TestInterviewModeEdgeCases:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant._try_get_redis", return_value=None):
+             patch("src.voice.consultant._try_get_redis", return_value=None), \
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_anketa_via_api", new_callable=AsyncMock, return_value=True) as mock_api_update:
 
             mock_mgr.get_session.return_value = db_session
             mock_extractor = AsyncMock()
@@ -1468,11 +1478,13 @@ class TestInterviewModeEdgeCases:
 
             await _extract_and_update_anketa(consultation, "test-001")
 
-            mock_mgr.update_metadata.assert_called_once_with(
-                "test-001",
-                company_name="TestCorp",
-                contact_name="Test User",
-            )
+            # ✅ v4.4: Metadata is now updated via API (included in anketa_data)
+            mock_api_update.assert_called_once()
+            # Check that anketa_data contains company_name and contact_name
+            call_args = mock_api_update.call_args
+            anketa_data = call_args[0][1]  # second positional arg
+            assert anketa_data["company_name"] == "TestCorp"
+            assert anketa_data["contact_name"] == "Test User"
 
     @pytest.mark.asyncio
     async def test_interview_mode_review_phase_still_triggers(self):

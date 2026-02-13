@@ -610,9 +610,9 @@ class TestHandleConversationItem:
         assert counter[0] == 1
 
     def test_handle_triggers_extraction_at_4(self):
-        """Extraction is triggered when counter reaches 4."""
+        """Extraction is triggered when counter reaches 12 (v4.4)."""
         c = _make_consultation(messages=0)
-        counter = [3]  # one more will trigger
+        counter = [11]  # one more will trigger (12 total)
 
         with patch("src.voice.consultant.asyncio") as mock_asyncio:
             event = _make_event(role="assistant", content="Response six")
@@ -622,7 +622,7 @@ class TestHandleConversationItem:
     def test_handle_resets_counter_after_extraction(self):
         """Counter resets to 0 after extraction is triggered."""
         c = _make_consultation(messages=0)
-        counter = [3]
+        counter = [11]  # v4.4: changed from 3 to 11 (trigger at 12)
 
         with patch("src.voice.consultant.asyncio") as mock_asyncio:
             event = _make_event(role="assistant", content="Response six")
@@ -1010,15 +1010,15 @@ class TestRegisterEventHandlers:
         assert c.dialogue_history[0]["content"] == "Hello from user"
 
     def test_user_input_transcribed_triggers_extraction(self):
-        """user_input_transcribed triggers extraction at message count 4."""
+        """user_input_transcribed triggers extraction at message count 12 (v4.4)."""
         session, handlers = self._capture_handlers()
         c = _make_consultation(messages=0)
 
         _register_event_handlers(session, c, "test-001", db_backed=True)
 
         with patch("src.voice.consultant.asyncio") as mock_asyncio:
-            # Send 4 final transcripts
-            for i in range(4):
+            # Send 12 final transcripts (v4.4: changed from 4 to 12)
+            for i in range(12):
                 event = MagicMock()
                 event.transcript = f"Message {i}"
                 event.is_final = True
