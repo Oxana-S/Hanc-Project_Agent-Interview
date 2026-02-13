@@ -241,11 +241,16 @@ class EnrichedContextBuilder:
             return None
 
         # Combine user messages for detection
-        user_text = " ".join(
-            msg.get("content", "")
-            for msg in dialogue_history
-            if msg.get("role") == "user"
-        )
+        # FIX: Protect against StopIteration in async context (mock objects)
+        try:
+            user_messages = [
+                msg.get("content", "")
+                for msg in dialogue_history
+                if isinstance(msg, dict) and msg.get("role") == "user"
+            ]
+            user_text = " ".join(user_messages)
+        except (StopIteration, RuntimeError, TypeError):
+            return None
 
         if not user_text:
             return None

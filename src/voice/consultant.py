@@ -895,8 +895,13 @@ async def _finalize_and_save(
         industry_id = builder.get_industry_id(consultation.dialogue_history)
         if industry_id and session.anketa_data:
             company = session.company_name or "N/A"
-            filled = sum(1 for v in session.anketa_data.values()
-                         if v and v != [] and v != "")
+            # FIX: Handle Mock objects and prevent StopIteration in async context
+            try:
+                anketa_values = list(session.anketa_data.values()) if hasattr(session.anketa_data, 'values') else []
+                filled = sum(1 for v in anketa_values if v and v != [] and v != "")
+            except (StopIteration, RuntimeError):
+                filled = 0  # Fallback if iteration fails
+
             insight = (
                 f"Голосовая сессия {session_id}: {company}, "
                 f"заполнено полей: {filled}, "

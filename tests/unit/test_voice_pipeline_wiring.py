@@ -82,13 +82,19 @@ def _make_anketa_mock(completion_rate=0.6, website=None, contact_phone=None):
     anketa.contact_name = "Иван Петров"
     anketa.industry = "logistics"
     anketa.website = website
-    anketa.contact_phone = contact_phone
+    anketa.contact_phone = contact_phone or "+1234567890"
     anketa.completion_rate.return_value = completion_rate
+    # Include all required fields for _check_required_fields()
     anketa.model_dump.return_value = {
         "company_name": "TestLogistics",
         "industry": "logistics",
-        "services": "Грузоперевозки",
-        "current_problems": "Много звонков",
+        "business_description": "Test business",
+        "services": ["Грузоперевозки"],
+        "current_problems": ["Много звонков"],
+        "agent_tasks": ["Прием звонков"],
+        "contact_name": "Иван Петров",
+        "contact_phone": contact_phone or "+1234567890",
+        "contact_email": "test@example.com",
     }
     return anketa
 

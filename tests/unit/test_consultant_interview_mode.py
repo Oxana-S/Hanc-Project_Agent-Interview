@@ -86,11 +86,19 @@ def _make_anketa_mock(completion_rate=0.3, website=None, contact_phone=None):
     anketa.contact_name = "Test User"
     anketa.industry = "IT"
     anketa.website = website
-    anketa.contact_phone = contact_phone
+    anketa.contact_phone = contact_phone or "+1234567890"
     anketa.completion_rate.return_value = completion_rate
+    # Include all required fields for _check_required_fields()
     anketa.model_dump.return_value = {
         "company_name": "TestCorp",
         "industry": "IT",
+        "business_description": "Test business",
+        "services": ["Service 1"],
+        "current_problems": ["Problem 1"],
+        "agent_tasks": ["Task 1"],
+        "contact_name": "Test User",
+        "contact_phone": contact_phone or "+1234567890",
+        "contact_email": "test@example.com",
     }
     return anketa
 
@@ -382,8 +390,20 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
+             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
+             patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
+
+            # Setup KB mocks to avoid StopIteration
+            mock_km_inst = mock_km.return_value
+            mock_ecb_inst = mock_ecb.return_value
+            mock_ecb_inst.get_industry_id.return_value = None  # No industry detected
+
+            # Setup notification mock
+            mock_notif_inst = mock_notif.return_value
+            mock_notif_inst.on_session_confirmed = AsyncMock()
 
             # finalize_consultation sets status to completed
             async def set_completed(c):
@@ -426,8 +446,20 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
+             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
+             patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
+
+            # Setup KB mocks to avoid StopIteration
+            mock_km_inst = mock_km.return_value
+            mock_ecb_inst = mock_ecb.return_value
+            mock_ecb_inst.get_industry_id.return_value = None  # No industry detected
+
+            # Setup notification mock
+            mock_notif_inst = mock_notif.return_value
+            mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
                 c.status = "completed"
@@ -460,8 +492,20 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
+             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
+             patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
+
+            # Setup KB mocks to avoid StopIteration
+            mock_km_inst = mock_km.return_value
+            mock_ecb_inst = mock_ecb.return_value
+            mock_ecb_inst.get_industry_id.return_value = None  # No industry detected
+
+            # Setup notification mock
+            mock_notif_inst = mock_notif.return_value
+            mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
                 c.status = "completed"
@@ -546,8 +590,20 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
+             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
+             patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
+
+            # Setup KB mocks to avoid StopIteration
+            mock_km_inst = mock_km.return_value
+            mock_ecb_inst = mock_ecb.return_value
+            mock_ecb_inst.get_industry_id.return_value = None  # No industry detected
+
+            # Setup notification mock
+            mock_notif_inst = mock_notif.return_value
+            mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
                 c.status = "completed"
@@ -584,8 +640,20 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
+             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
+             patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
+
+            # Setup KB mocks to avoid StopIteration
+            mock_km_inst = mock_km.return_value
+            mock_ecb_inst = mock_ecb.return_value
+            mock_ecb_inst.get_industry_id.return_value = None  # No industry detected
+
+            # Setup notification mock
+            mock_notif_inst = mock_notif.return_value
+            mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
                 c.status = "completed"

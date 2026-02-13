@@ -258,6 +258,9 @@ def test_sqlite():
 # 2. Redis — RedisStorageManager
 # ============================================================
 
+import pytest
+
+@pytest.mark.asyncio
 async def test_redis():
     section("2. Redis — RedisStorageManager")
 
@@ -406,6 +409,7 @@ async def test_redis():
 # 3. PostgreSQL — PostgreSQLStorageManager
 # ============================================================
 
+@pytest.mark.asyncio
 async def test_postgres():
     section("3. PostgreSQL — PostgreSQLStorageManager")
 
