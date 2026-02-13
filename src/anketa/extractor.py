@@ -707,6 +707,11 @@ class AnketaExtractor:
             current_problems=data.get('current_problems', []),
             business_goals=data.get('business_goals', []),
             constraints=data.get('constraints', []),
+            compliance_requirements=data.get('compliance_requirements', []),
+            call_volume=data.get('call_volume', ''),
+            budget=data.get('budget', ''),
+            timeline=data.get('timeline', ''),
+            additional_notes=data.get('additional_notes', ''),
 
             # Voice agent
             agent_name=data.get('agent_name', ''),

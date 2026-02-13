@@ -591,6 +591,21 @@ def _merge_anketa_data(user_data: dict, extracted_data: dict) -> dict:
             elif user_value is not None:
                 merged[key] = user_value
 
+    # ===== FIX #2: Sync contact fields (phone/email ↔ contact_phone/contact_email) =====
+    # phone → contact_phone
+    if merged.get('phone') and not merged.get('contact_phone'):
+        merged['contact_phone'] = merged['phone']
+    # contact_phone → phone (reverse sync)
+    if merged.get('contact_phone') and not merged.get('phone'):
+        merged['phone'] = merged['contact_phone']
+
+    # email → contact_email
+    if merged.get('email') and not merged.get('contact_email'):
+        merged['contact_email'] = merged['email']
+    # contact_email → email (reverse sync)
+    if merged.get('contact_email') and not merged.get('email'):
+        merged['email'] = merged['contact_email']
+
     return merged
 
 
@@ -641,6 +656,56 @@ def _check_required_fields(anketa_data: dict) -> bool:
     return True
 
 
+def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
+    """
+    Исключить review phase из extraction.
+
+    Review phase = когда пользователь комментирует состояние анкеты:
+    - "не заполнено", "пустое поле", "вы не спросили", "смотрю анкету"
+
+    Это НЕ бизнес-данные, это meta-feedback!
+
+    Returns:
+        Filtered dialogue без review phase messages
+    """
+    review_keywords = [
+        'не заполнен', 'не заполню', 'пуст', 'вы не спросили', 'не спрашивали',
+        'смотрю анкету', 'проверяю анкету', 'должность почему-то',
+        'требования регулятора я вижу', 'объем звонков не заполнен',
+        'поле не заполнено', 'сроки не заполнены', 'примечания не заполнены',
+        'тип бизнеса вы не заполнили', 'контактное лицо не заполнено'
+    ]
+
+    filtered = []
+    review_started = False
+
+    for msg in dialogue_history:
+        content_lower = msg.get('content', '').lower()
+
+        # Detect review phase start
+        if any(kw in content_lower for kw in review_keywords):
+            if not review_started:
+                logger.debug("review_phase_detected", message=content_lower[:100])
+            review_started = True
+            continue  # Skip this message
+
+        # If review started, skip subsequent messages until non-review message
+        if review_started:
+            # Check if message looks like normal dialogue (no review keywords)
+            if len(content_lower) > 20 and not any(kw in content_lower for kw in review_keywords):
+                # Restart normal extraction
+                review_started = False
+                filtered.append(msg)
+            continue
+
+        filtered.append(msg)
+
+    if review_started and filtered:
+        logger.info("review_phase_filtered", original_count=len(dialogue_history), filtered_count=len(filtered))
+
+    return filtered
+
+
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -667,22 +732,26 @@ async def _extract_and_update_anketa(
             )
             return
 
+        # ===== FIX #4: FILTER REVIEW PHASE =====
+        dialogue_filtered = _filter_review_phase(dialogue_history)
+
         # ===== SLIDING WINDOW OPTIMIZATION =====
         import os
         import time
 
         WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
 
-        dialogue_for_extraction = dialogue_history
+        dialogue_for_extraction = dialogue_filtered
         is_windowed = False
 
-        if len(dialogue_history) > WINDOW_SIZE:
-            dialogue_for_extraction = dialogue_history[-WINDOW_SIZE:]
+        if len(dialogue_filtered) > WINDOW_SIZE:
+            dialogue_for_extraction = dialogue_filtered[-WINDOW_SIZE:]
             is_windowed = True
             anketa_log.debug(
                 "using_sliding_window",
                 session_id=session_id,
                 total_messages=len(dialogue_history),
+                filtered_messages=len(dialogue_filtered),
                 window_size=WINDOW_SIZE,
             )
 
@@ -732,12 +801,48 @@ async def _extract_and_update_anketa(
 
         anketa_data = anketa.model_dump(mode="json")
 
-        # FIX: Сохранить ручные правки пользователя (merge с данными из БД)
-        # Если пользователь редактировал форму вручную, приоритет у его данных
+        # ===== FIX #3: ACCUMULATIVE MERGE - preserve non-empty old values =====
+        # Если новый extraction вернул пустое поле, но в БД оно заполнено → СОХРАНЯЕМ старое
         if db_session and db_session.anketa_data:
-            anketa_data = _merge_anketa_data(db_session.anketa_data, anketa_data)
+            old_anketa = db_session.anketa_data
+
+            for key, old_value in old_anketa.items():
+                new_value = anketa_data.get(key)
+
+                # Если старое значение заполнено, а новое пустое → KEEP OLD
+                old_is_filled = False
+                new_is_filled = False
+
+                # Check if old value is filled
+                if isinstance(old_value, str):
+                    old_is_filled = old_value.strip() != ''
+                elif isinstance(old_value, list):
+                    old_is_filled = len(old_value) > 0
+                elif old_value is not None and old_value != {}:
+                    old_is_filled = True
+
+                # Check if new value is filled
+                if isinstance(new_value, str):
+                    new_is_filled = new_value.strip() != ''
+                elif isinstance(new_value, list):
+                    new_is_filled = len(new_value) > 0
+                elif new_value is not None and new_value != {}:
+                    new_is_filled = True
+
+                # Preserve old if filled and new is empty
+                if old_is_filled and not new_is_filled:
+                    anketa_data[key] = old_value
+                    anketa_log.debug(
+                        "preserving_old_value",
+                        session_id=session_id,
+                        field=key,
+                        reason="new_extraction_empty",
+                    )
+
+            # После accumulative merge, применяем merge с user edits
+            anketa_data = _merge_anketa_data(old_anketa, anketa_data)
             anketa_log.debug(
-                "anketa_merged_with_manual_edits",
+                "anketa_merged_accumulative",
                 session_id=session_id,
             )
 

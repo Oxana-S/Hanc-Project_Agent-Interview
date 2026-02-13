@@ -371,19 +371,6 @@
                             <!-- Anketa Header -->
                             <div class="anketa-header">
                                 <h3>Анкета</h3>
-                                <div class="anketa-header-controls">
-                                    <button id="btn-edit-anketa" class="btn-anketa-control" type="button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                        Редактировать анкету
-                                    </button>
-                                    <button id="btn-save-anketa" class="btn-anketa-control btn-primary" type="button" style="display: none;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                                        Сохранить
-                                    </button>
-                                    <button id="copy-link-btn" class="btn btn-copy-link" type="button">
-                                        Скопировать ссылку
-                                    </button>
-                                </div>
                             </div>
 
                             <!-- Document Upload -->
@@ -579,7 +566,20 @@
                                 </fieldset>
                             </form>
 
-                            <!-- Anketa Actions: REMOVED - replaced by Level 1 controls in top bar -->
+                            <!-- Anketa Actions (moved to bottom in v4.4) -->
+                            <div class="anketa-footer-controls">
+                                <button id="btn-edit-anketa" class="btn-anketa-control" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    Редактировать анкету
+                                </button>
+                                <button id="btn-save-anketa" class="btn-anketa-control btn-primary" type="button" style="display: none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                                    Сохранить
+                                </button>
+                                <button id="copy-link-btn" class="btn btn-copy-link" type="button">
+                                    Скопировать ссылку
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

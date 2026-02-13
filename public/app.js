@@ -45,8 +45,13 @@ class Router {
             return;
         }
 
-        // / (dashboard)
-        this.app.showDashboard();
+        // / (landing or dashboard based on hasVisited)
+        if (!localStorage.getItem('hasVisited')) {
+            this.app.showScreen('landing');
+            this.app._initLandingAnimations();
+        } else {
+            this.app.showDashboard();
+        }
     }
 }
 
@@ -326,10 +331,16 @@ class VoiceInterviewerApp {
             btnGoToResults.addEventListener('click', () => this.handleGoToResults());
         }
 
-        // Anketa actions
-        this.elements.confirmAnketaBtn.addEventListener('click', () => this.confirmAnketa());
-        this.elements.saveLeaveBtn.addEventListener('click', () => this.saveAndLeave());
-        this.elements.copyLinkBtn.addEventListener('click', () => this.copySessionLink());
+        // Anketa actions (with null checks)
+        if (this.elements.confirmAnketaBtn) {
+            this.elements.confirmAnketaBtn.addEventListener('click', () => this.confirmAnketa());
+        }
+        if (this.elements.saveLeaveBtn) {
+            this.elements.saveLeaveBtn.addEventListener('click', () => this.saveAndLeave());
+        }
+        if (this.elements.copyLinkBtn) {
+            this.elements.copyLinkBtn.addEventListener('click', () => this.copySessionLink());
+        }
 
         // Anketa edit/save controls (Level 3)
         const btnEditAnketa = document.getElementById('btn-edit-anketa');
@@ -796,14 +807,6 @@ class VoiceInterviewerApp {
 
     async showDashboard() {
         this.stopAnketaPolling();
-
-        // First-time visitors see the landing page instead of the dashboard
-        if (!localStorage.getItem('hasVisited')) {
-            this.showScreen('landing');
-            this._initLandingAnimations();
-            return;
-        }
-
         this.showScreen('dashboard');
         this._updateSettingsLockState();
         await this.loadSessions(this.currentFilter);

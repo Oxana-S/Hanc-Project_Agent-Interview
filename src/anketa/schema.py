@@ -175,6 +175,12 @@ class FinalAnketa(BaseModel):
     constraints: List[str] = Field(default_factory=list, description="Constraints")
     compliance_requirements: List[str] = Field(default_factory=list, description="Compliance and regulatory requirements")
 
+    # UI Compatibility & Additional Fields
+    call_volume: str = Field(default="", description="Call volume per day/month")
+    budget: str = Field(default="", description="Project budget with currency")
+    timeline: str = Field(default="", description="Implementation timeline")
+    additional_notes: str = Field(default="", description="Additional notes or special requirements")
+
     # Voice Agent Basic
     agent_name: str = Field(default="", description="Name of the voice agent")
     agent_purpose: str = Field(default="", description="Brief description of agent's purpose")
