@@ -327,49 +327,44 @@ class FinalAnketa(BaseModel):
 
     def completion_rate(self) -> float:
         """
-        Weighted completion: основные поля 90%, дополнительные +10%.
-        Контакты (phone/email) опциональны для voice interview.
+        v5.0: Equal weight completion - все 15 полей обязательны.
 
-        v4.4: Weighted schema - required fields (9) = 90%, optional (6) = 10%.
+        Returns: float 0.0-1.0 (filled_count / 15)
         """
-        # Обязательные (9 полей) — вес 90%
         required_fields = {
+            # Блок 1: Компания (3)
             'company_name': self.company_name,
             'industry': self.industry,
             'business_description': self.business_description,
+
+            # Блок 2: Услуги (3)
             'services': self.services,
             'current_problems': self.current_problems,
             'business_goals': self.business_goals,
+
+            # Блок 3: Агент (3)
             'agent_name': self.agent_name,
             'agent_purpose': self.agent_purpose,
             'agent_functions': self.agent_functions,
-        }
 
-        # Дополнительные (6 полей) — вес 10%
-        optional_fields = {
+            # Блок 4: Контакты (3) - теперь обязательны
             'contact_name': self.contact_name,
-            'contact_phone': self.contact_phone,      # voice редко собирает
-            'contact_email': self.contact_email,      # voice редко собирает
-            'integrations': self.integrations,
-            'transfer_conditions': self.transfer_conditions,
+            'contact_phone': self.contact_phone,
+            'contact_email': self.contact_email,
+
+            # Блок 5: Дополнительно (3)
+            'voice_gender': self.voice_gender,
+            'voice_tone': self.voice_tone,
             'call_direction': self.call_direction,
         }
 
-        required_filled = sum(
+        filled_count = sum(
             1 for v in required_fields.values()
             if (isinstance(v, list) and len(v) > 0) or
                (isinstance(v, str) and v.strip()) or v
         )
-        required_rate = (required_filled / len(required_fields)) * 0.9  # макс 90%
 
-        optional_filled = sum(
-            1 for v in optional_fields.values()
-            if (isinstance(v, list) and len(v) > 0) or
-               (isinstance(v, str) and v.strip()) or v
-        )
-        optional_rate = (optional_filled / len(optional_fields)) * 0.1  # макс 10%
-
-        return min(required_rate + optional_rate, 1.0)
+        return filled_count / len(required_fields)  # 0.0-1.0
 
     def get_required_fields_status(self) -> dict:
         """Check status of required fields."""

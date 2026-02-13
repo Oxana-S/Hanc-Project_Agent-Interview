@@ -600,34 +600,11 @@ class TestHandleConversationItem:
         assert len(c.dialogue_history) == 1
         assert c.dialogue_history[0]["content"] == "12345"
 
-    def test_handle_increments_message_counter(self):
-        """Message counter increments for assistant messages."""
-        c = _make_consultation(messages=0)
-        event = _make_event(role="assistant", content="Response")
-        counter = [0]
-
-        _handle_conversation_item(event, c, "test-001", True, counter, None)
-        assert counter[0] == 1
-
-    def test_handle_triggers_extraction_at_4(self):
-        """Extraction is triggered when counter reaches 12 (v4.4)."""
-        c = _make_consultation(messages=0)
-        counter = [11]  # one more will trigger (12 total)
-
-        with patch("src.voice.consultant.asyncio") as mock_asyncio:
-            event = _make_event(role="assistant", content="Response six")
-            _handle_conversation_item(event, c, "test-001", True, counter, None)
-            mock_asyncio.create_task.assert_called_once()
-
-    def test_handle_resets_counter_after_extraction(self):
-        """Counter resets to 0 after extraction is triggered."""
-        c = _make_consultation(messages=0)
-        counter = [11]  # v4.4: changed from 3 to 11 (trigger at 12)
-
-        with patch("src.voice.consultant.asyncio") as mock_asyncio:
-            event = _make_event(role="assistant", content="Response six")
-            _handle_conversation_item(event, c, "test-001", True, counter, None)
-            assert counter[0] == 0
+    # v5.0: Removed 3 tests for old counter-based extraction logic
+    # - test_handle_increments_message_counter
+    # - test_handle_triggers_extraction_at_4
+    # - test_handle_resets_counter_after_extraction
+    # Extraction now happens in on_user_input_transcribed after EACH user message
 
     def test_handle_no_extraction_without_db(self):
         """No extraction when db_backed is False."""
@@ -1003,7 +980,9 @@ class TestRegisterEventHandlers:
         event.transcript = "Hello from user"
         event.is_final = True
 
-        handlers["user_input_transcribed"](event)
+        # v5.0: Mock asyncio.create_task since extraction now runs as background task
+        with patch("src.voice.consultant.asyncio.create_task"):
+            handlers["user_input_transcribed"](event)
 
         assert len(c.dialogue_history) == 1
         assert c.dialogue_history[0]["role"] == "user"

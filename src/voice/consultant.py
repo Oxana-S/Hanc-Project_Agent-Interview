@@ -598,25 +598,34 @@ def _check_required_fields(anketa_data: dict) -> bool:
     """
     Проверить заполнение обязательных полей для перехода в REVIEW.
 
-    Обязательные поля согласно consultant.yaml:252-260:
-    - Название компании
-    - Отрасль
-    - Описание компании (чем занимается)
-    - Услуги/продукты (минимум 1)
-    - Текущие проблемы (минимум 1)
-    - Задачи для автоматизации (минимум 1)
+    v5.0: Все поля обязательны (15 полей).
+    Contact fields теперь REQUIRED.
     """
     required = {
+        # Блок 1: Компания (3 поля)
         "company_name": anketa_data.get("company_name"),
         "industry": anketa_data.get("industry"),
-        "business_description": anketa_data.get("business_description"),  # FIXED: was company_description
+        "business_description": anketa_data.get("business_description"),
+
+        # Блок 2: Услуги (3 поля)
         "services": anketa_data.get("services"),
         "current_problems": anketa_data.get("current_problems"),
-        "agent_tasks": anketa_data.get("agent_tasks") or anketa_data.get("business_goals"),
-        # v4.3: Add contact information (CRITICAL)
+        "business_goals": anketa_data.get("business_goals"),
+
+        # Блок 3: Агент (3 поля)
+        "agent_name": anketa_data.get("agent_name"),
+        "agent_purpose": anketa_data.get("agent_purpose"),
+        "agent_functions": anketa_data.get("agent_functions"),
+
+        # Блок 4: Контакты (3 поля) - v5.0: ОБЯЗАТЕЛЬНЫ
         "contact_name": anketa_data.get("contact_name"),
         "contact_phone": anketa_data.get("contact_phone") or anketa_data.get("phone"),
         "contact_email": anketa_data.get("contact_email") or anketa_data.get("email"),
+
+        # Блок 5: Дополнительно (3 поля)
+        "voice_gender": anketa_data.get("voice_gender"),
+        "voice_tone": anketa_data.get("voice_tone"),
+        "call_direction": anketa_data.get("call_direction"),
     }
 
     for field_name, value in required.items():
@@ -639,12 +648,46 @@ async def _extract_and_update_anketa(
 ):
     """Extract anketa from current dialogue and update in DB.
 
+    v5.0: Uses sliding window for performance optimization.
+    - Early conversation (< 12 msgs): full dialogue
+    - Later (>= 12 msgs): last 12 messages only
+
     Also injects industry KB context into the voice agent on first extraction
     (when industry can be detected from dialogue).
     """
     try:
-        if len(consultation.dialogue_history) < 4:
+        dialogue_history = consultation.dialogue_history
+
+        # v5.0: КРИТИЧНО - минимум 4 сообщения для quality extraction
+        if len(dialogue_history) < 4:
+            anketa_log.debug(
+                "extraction_skipped_insufficient_messages",
+                session_id=session_id,
+                message_count=len(dialogue_history),
+            )
             return
+
+        # ===== SLIDING WINDOW OPTIMIZATION =====
+        import os
+        import time
+
+        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
+
+        dialogue_for_extraction = dialogue_history
+        is_windowed = False
+
+        if len(dialogue_history) > WINDOW_SIZE:
+            dialogue_for_extraction = dialogue_history[-WINDOW_SIZE:]
+            is_windowed = True
+            anketa_log.debug(
+                "using_sliding_window",
+                session_id=session_id,
+                total_messages=len(dialogue_history),
+                window_size=WINDOW_SIZE,
+            )
+
+        # ===== EXTRACTION =====
+        start_time = time.time()
 
         # Fetch document_context from DB if client uploaded files
         doc_context = None
@@ -668,11 +711,23 @@ async def _extract_and_update_anketa(
         llm = create_llm_client(_llm_provider)
         extractor = AnketaExtractor(llm)
 
+        # v5.0: Use sliding window dialogue instead of full history
         anketa = await extractor.extract(
-            dialogue_history=consultation.dialogue_history,
+            dialogue_history=dialogue_for_extraction,  # ← SLIDING WINDOW
             duration_seconds=consultation.get_duration_seconds(),
             document_context=doc_context,
             consultation_type=_consultation_type,
+        )
+
+        extraction_time = time.time() - start_time
+
+        anketa_log.info(
+            "extraction_completed",
+            session_id=session_id,
+            extraction_time=round(extraction_time, 2),
+            is_windowed=is_windowed,
+            message_count=len(dialogue_for_extraction),
+            total_dialogue_length=len(dialogue_history),
         )
 
         anketa_data = anketa.model_dump(mode="json")
@@ -818,10 +873,10 @@ async def _extract_and_update_anketa(
                 required_fields_filled = _check_required_fields(anketa_data)
 
                 # Переход в REVIEW только если:
-                # 1. completion_rate >= 60%
+                # 1. completion_rate >= 90% (v5.0: почти все поля заполнены = 14/15)
                 # 2. Минимум 16 сообщений
-                # 3. ВСЕ обязательные поля заполнены
-                if rate >= 0.6 and msg_count >= 16 and required_fields_filled:
+                # 3. ВСЕ обязательные поля заполнены (15 полей в v5.0, включая контакты)
+                if rate >= 0.9 and msg_count >= 16 and required_fields_filled:
                     consultation.review_started = True
                     summary = format_anketa_for_voice(anketa_data)
                     review_prompt = get_review_system_prompt(summary)
@@ -1061,9 +1116,7 @@ def _register_event_handlers(
     db_backed: bool,
 ):
     """Register LiveKit AgentSession event handlers."""
-    # При возобновлении сессии продолжаем счёт, а не начинаем с нуля
-    messages_since_last_extract = [len(consultation.dialogue_history) % 4]
-
+    # v5.0: Real-time extraction - removed message counter
     # FIX: Prevent duplicate extraction (race condition between 2 triggers)
     extraction_running = [False]  # mutable for closure
 
@@ -1096,26 +1149,23 @@ def _register_event_handlers(
         if is_final and transcript.strip():
             consultation.add_message("user", transcript.strip())
             if db_backed and session_id:
-                messages_since_last_extract[0] += 1
-                if messages_since_last_extract[0] >= 12:
-                    messages_since_last_extract[0] = 0
+                # v5.0: Real-time extraction - trigger на КАЖДОЕ user message
+                # FIX: Skip if extraction already running (prevent duplication)
+                if extraction_running[0]:
+                    logger.debug("extraction_skipped_already_running", trigger="user_input")
+                    return
 
-                    # FIX: Skip if extraction already running (prevent duplication)
-                    if extraction_running[0]:
-                        logger.debug("extraction_skipped_already_running", trigger="user_input")
-                        return
+                extraction_running[0] = True
 
-                    extraction_running[0] = True
+                async def run_extraction():
+                    try:
+                        await _extract_and_update_anketa(consultation, session_id, session)
+                    except Exception as e:
+                        logger.error("extraction_failed", error=str(e), trigger="user_input")
+                    finally:
+                        extraction_running[0] = False
 
-                    async def run_extraction():
-                        try:
-                            await _extract_and_update_anketa(consultation, session_id, session)
-                        except Exception as e:
-                            logger.error("extraction_failed", error=str(e), trigger="user_input")
-                        finally:
-                            extraction_running[0] = False
-
-                    asyncio.create_task(run_extraction())
+                asyncio.create_task(run_extraction())
 
     @session.on("user_state_changed")
     def on_user_state_changed(event):
@@ -1153,7 +1203,7 @@ def _register_event_handlers(
         event_log.info(f"CONVERSATION: role={role}, content='{display[:80]}'")
         _handle_conversation_item(
             event, consultation, session_id, db_backed,
-            messages_since_last_extract, session, extraction_running,
+            session, extraction_running,
         )
 
     # === ERROR EVENTS ===
@@ -1226,7 +1276,6 @@ def _handle_conversation_item(
     consultation: VoiceConsultationSession,
     session_id: Optional[str],
     db_backed: bool,
-    messages_since_last_extract: list,
     agent_session: Optional[AgentSession] = None,
     extraction_running: list = None,
 ):
@@ -1279,32 +1328,7 @@ def _handle_conversation_item(
 
         consultation.add_message(mapped_role, content)
 
-        if not (db_backed and session_id):
-            return
-
-        messages_since_last_extract[0] += 1
-
-        if messages_since_last_extract[0] >= 12:
-            messages_since_last_extract[0] = 0
-
-            # FIX: Skip if extraction already running (prevent duplication)
-            if extraction_running and extraction_running[0]:
-                logger.debug("extraction_skipped_already_running", trigger="conversation_item")
-                return
-
-            if extraction_running:
-                extraction_running[0] = True
-
-            async def run_extraction():
-                try:
-                    await _extract_and_update_anketa(consultation, session_id, agent_session)
-                except Exception as e:
-                    logger.error("extraction_failed", error=str(e), trigger="conversation_item")
-                finally:
-                    if extraction_running:
-                        extraction_running[0] = False
-
-            asyncio.create_task(run_extraction())
+        # v5.0: Extraction logic removed from here - only in on_user_input_transcribed now
 
     except Exception as e:
         logger.error(
