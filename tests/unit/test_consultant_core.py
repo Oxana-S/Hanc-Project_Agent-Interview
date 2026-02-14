@@ -55,6 +55,7 @@ from src.voice.consultant import (
     _get_verbosity_prompt_prefix,
     _VERBOSITY_PREFIXES,
 )
+from src.session.models import RuntimeStatus
 
 
 # ---------------------------------------------------------------------------
@@ -810,7 +811,7 @@ class TestFinalizeConsultation:
 
             await finalize_consultation(c)
 
-            assert c.status == "completed"
+            assert c.runtime_status == RuntimeStatus.COMPLETED
             mock_extractor.extract.assert_called_once()
 
     @pytest.mark.asyncio
@@ -820,7 +821,7 @@ class TestFinalizeConsultation:
 
         await finalize_consultation(c)
 
-        assert c.status == "completed"
+        assert c.runtime_status == RuntimeStatus.COMPLETED
 
     @pytest.mark.asyncio
     async def test_finalize_sets_status_completed(self):
@@ -851,7 +852,7 @@ class TestFinalizeConsultation:
 
             await finalize_consultation(c)
 
-            assert c.status == "completed"
+            assert c.runtime_status == RuntimeStatus.COMPLETED
 
     @pytest.mark.asyncio
     async def test_finalize_error_sets_status_error(self):
@@ -860,7 +861,7 @@ class TestFinalizeConsultation:
 
         with patch("src.voice.consultant.create_llm_client", side_effect=Exception("API down")):
             await finalize_consultation(c)
-            assert c.status == "error"
+            assert c.runtime_status == RuntimeStatus.ERROR
 
     @pytest.mark.asyncio
     async def test_finalize_calls_extractor(self):
@@ -1150,7 +1151,7 @@ class TestEdgeCases:
         """Finalization with 0 messages sets status to completed."""
         c = _make_consultation(messages=0)
         await finalize_consultation(c)
-        assert c.status == "completed"
+        assert c.runtime_status == RuntimeStatus.COMPLETED
 
     def test_handle_conversation_item_no_session_id_no_extraction(self):
         """No extraction when session_id is None even with db_backed=True."""

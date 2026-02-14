@@ -41,6 +41,7 @@ from src.voice.consultant import (
     get_enriched_system_prompt,
     finalize_consultation,
 )
+from src.session.models import RuntimeStatus
 
 
 # ---------------------------------------------------------------------------
@@ -715,7 +716,7 @@ class TestFinalizeAndSaveConsultationType:
 
             call_kwargs = mock_extractor.extract.call_args[1]
             assert call_kwargs["consultation_type"] == "interview"
-            assert consultation.status == "completed"
+            assert consultation.runtime_status == RuntimeStatus.COMPLETED
 
 
 # ===========================================================================
@@ -1348,7 +1349,7 @@ class TestFinalizeConsultationStandalone:
             await finalize_consultation(consultation)
 
             mock_ext_cls.assert_not_called()
-            assert consultation.status == "completed"
+            assert consultation.runtime_status == RuntimeStatus.COMPLETED
 
 
 # ===========================================================================

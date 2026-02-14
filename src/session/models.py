@@ -6,13 +6,40 @@ including dialogue history, anketa data, and session metadata.
 """
 
 from datetime import datetime
+from enum import Enum
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 
-# Valid session statuses
-VALID_STATUSES = {"active", "paused", "reviewing", "confirmed", "declined"}
+class SessionStatus(str, Enum):
+    """
+    Persistent session statuses stored in database.
+
+    These are business-level statuses visible to users and survive restarts.
+    """
+    ACTIVE = "active"          # Session is active
+    PAUSED = "paused"          # Paused, can reconnect
+    REVIEWING = "reviewing"    # Agent is finalizing anketa
+    CONFIRMED = "confirmed"    # User confirmed (terminal)
+    DECLINED = "declined"      # Declined/killed (terminal)
+
+
+class RuntimeStatus(str, Enum):
+    """
+    Runtime statuses for voice agent (in-memory only).
+
+    These are technical/temporary states that disappear on crash/restart.
+    """
+    IDLE = "idle"              # Waiting for input
+    PROCESSING = "processing"  # LLM extraction running
+    COMPLETING = "completing"  # Finalization started
+    COMPLETED = "completed"    # Successfully completed
+    ERROR = "error"            # Error occurred
+
+
+# Valid session statuses (backward compatibility - will be removed in v5.0)
+VALID_STATUSES = {s.value for s in SessionStatus}
 
 
 class ConsultationSession(BaseModel):

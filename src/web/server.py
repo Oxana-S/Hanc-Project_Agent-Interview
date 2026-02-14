@@ -53,6 +53,8 @@ from livekit.api import (
 )
 from livekit.protocol.room import UpdateRoomMetadataRequest
 from src.session.manager import SessionManager
+from src.session.models import SessionStatus
+from src.session.exceptions import InvalidTransitionError
 
 logger = structlog.get_logger("server")
 livekit_log = structlog.get_logger("livekit")
@@ -495,13 +497,17 @@ async def resume_session(session_id: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    if session.status != "paused":
+    if session.status != SessionStatus.PAUSED.value:
         raise HTTPException(status_code=400, detail="Session is not paused")
 
-    session_mgr.update_status(session_id, "active")
+    try:
+        session_mgr.update_status(session_id, SessionStatus.ACTIVE)
+    except InvalidTransitionError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
     session_log.info("session_resumed", session_id=session_id)
 
-    return {"status": "active", "message": "Session resumed"}
+    return {"status": SessionStatus.ACTIVE.value, "message": "Session resumed"}
 
 
 @app.put("/api/session/{session_id}/anketa")
@@ -524,7 +530,11 @@ async def confirm_session(session_id: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    session_mgr.update_status(session_id, "confirmed")
+    try:
+        session_mgr.update_status(session_id, SessionStatus.CONFIRMED)
+    except InvalidTransitionError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
     session_log.info("session_confirmed", session_id=session_id)
 
     # Trigger notifications in background
@@ -535,7 +545,7 @@ async def confirm_session(session_id: str):
     except Exception as e:
         logger.warning("notification_trigger_failed", error=str(e))
 
-    return {"status": "confirmed"}
+    return {"status": SessionStatus.CONFIRMED.value}
 
 
 @app.post("/api/session/{session_id}/end")
@@ -545,7 +555,10 @@ async def end_session(session_id: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    session_mgr.update_status(session_id, "paused")
+    try:
+        session_mgr.update_status(session_id, SessionStatus.PAUSED)
+    except InvalidTransitionError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     session_log.info(
         "session_ended",
         session_id=session_id,
@@ -553,7 +566,7 @@ async def end_session(session_id: str):
         messages=len(session.dialogue_history),
     )
     return {
-        "status": "paused",
+        "status": SessionStatus.PAUSED.value,
         "duration": session.duration_seconds,
         "message_count": len(session.dialogue_history),
         "unique_link": session.unique_link,
@@ -583,7 +596,12 @@ async def kill_session(session_id: str):
     except Exception as e:
         livekit_log.warning("room_delete_failed", room=room_name, error=str(e))
 
-    session_mgr.update_status(session_id, "declined")
+    try:
+        session_mgr.update_status(session_id, SessionStatus.DECLINED)
+    except InvalidTransitionError as e:
+        # Kill is admin override - use force=True
+        session_mgr.update_status(session_id, SessionStatus.DECLINED, force=True)
+
     session_log.info("session_killed", session_id=session_id, room_deleted=room_deleted)
 
     return {
@@ -603,12 +621,11 @@ async def reconnect_session(session_id: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    # Validate session can be resumed
-    # Allow 'processing' status as fallback for race condition (stop → disconnect timing)
-    if session.status not in ["paused", "active", "processing"]:
+    # Validate session can be resumed (only paused or active)
+    if session.status not in [SessionStatus.PAUSED.value, SessionStatus.ACTIVE.value]:
         raise HTTPException(
             status_code=400,
-            detail=f"Cannot reconnect: session status is '{session.status}'. Only 'paused', 'active', or 'processing' sessions can be resumed."
+            detail=f"Cannot reconnect: session status is '{session.status}'. Only 'paused' or 'active' sessions can be resumed."
         )
 
     room_name = session.room_name or f"consultation-{session_id}"

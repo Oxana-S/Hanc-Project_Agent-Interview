@@ -15,7 +15,9 @@ from typing import List, Optional
 
 import structlog
 
-from src.session.models import ConsultationSession, VALID_STATUSES
+from src.session.models import ConsultationSession, SessionStatus, VALID_STATUSES
+from src.session.status import validate_transition
+from src.session.exceptions import InvalidTransitionError
 
 logger = structlog.get_logger("session")
 
@@ -51,6 +53,9 @@ class SessionManager:
 
         # Create table if not exists
         self._create_table()
+
+        # Run database migrations
+        self._run_migrations()
 
         logger.info("session_manager_initialized", db_path=db_path)
 
@@ -92,6 +97,14 @@ class SessionManager:
             logger.info("migration_added_voice_config_column")
 
         logger.debug("sessions_table_ensured")
+
+    def _run_migrations(self):
+        """Run database migrations for status normalization and schema updates."""
+        try:
+            from migrations import run_all_migrations
+            run_all_migrations(self._conn)
+        except Exception as e:
+            logger.warning("migration_failed", error=str(e), error_type=type(e).__name__)
 
     def _session_from_row(self, row: sqlite3.Row) -> ConsultationSession:
         """
@@ -377,24 +390,55 @@ class SessionManager:
         logger.info("session_document_context_updated", session_id=session_id)
         return True
 
-    def update_status(self, session_id: str, status: str) -> bool:
+    def update_status(self, session_id: str, status: SessionStatus | str, force: bool = False) -> bool:
         """
-        Update only the status of a session.
+        Update only the status of a session with transition validation.
 
         Args:
             session_id: Short session identifier.
-            status: New status (must be one of: active, paused, reviewing, confirmed, declined).
+            status: New status (SessionStatus enum or string for backward compatibility).
+            force: If True, bypass transition validation (admin override).
 
         Returns:
             True if the session was found and updated, False otherwise.
 
         Raises:
             ValueError: If the status is not valid.
+            InvalidTransitionError: If the transition is not allowed (unless force=True).
         """
-        if status not in VALID_STATUSES:
-            raise ValueError(
-                f"Invalid status '{status}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}"
+        # Backward compatibility: accept strings but warn
+        if isinstance(status, str):
+            logger.warning(
+                "update_status: string deprecated, use SessionStatus enum",
+                status=status,
+                session_id=session_id
             )
+            try:
+                status = SessionStatus(status)
+            except ValueError:
+                raise ValueError(
+                    f"Invalid status '{status}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}"
+                )
+
+        # Get current session to validate transition
+        session = self.get_session(session_id)
+        if not session:
+            logger.warning("session_status_update_no_session", session_id=session_id)
+            return False
+
+        # Validate transition (unless force=True)
+        if not force:
+            try:
+                current_status = SessionStatus(session.status)
+                validate_transition(current_status, status)
+            except ValueError:
+                # Current status is invalid (phantom status like "processing")
+                logger.warning(
+                    "session_status_invalid_current",
+                    session_id=session_id,
+                    current=session.status,
+                    new=status.value
+                )
 
         now = datetime.now()
 
@@ -406,7 +450,7 @@ class SessionManager:
             WHERE session_id = ?
             """,
             (
-                status,
+                status.value,
                 now.isoformat(),
                 session_id,
             ),
@@ -417,7 +461,7 @@ class SessionManager:
             logger.warning("session_status_update_no_rows", session_id=session_id)
             return False
 
-        logger.info("session_status_updated", session_id=session_id, status=status)
+        logger.info("session_status_updated", session_id=session_id, status=status.value)
         return True
 
     def update_metadata(self, session_id: str, company_name: str = None, contact_name: str = None) -> bool:

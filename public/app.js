@@ -45,8 +45,9 @@ class Router {
             return;
         }
 
-        // / (landing or dashboard based on hasVisited)
-        if (!localStorage.getItem('hasVisited')) {
+        // / (landing or dashboard)
+        // Show landing only on first visit OR if explicitly requested via ?home
+        if (!localStorage.getItem('hasVisited') || window.location.search.includes('home=true')) {
             this.app.showScreen('landing');
             this.app._initLandingAnimations();
         } else {
@@ -938,8 +939,8 @@ class VoiceInterviewerApp {
                 if (e.target.closest('.session-checkbox') || e.target.closest('.td-checkbox') || e.target.closest('a') || e.target.closest('button')) return;
                 const link = row.dataset.link;
                 const status = row.dataset.status;
-                // Allow resuming sessions that are active, paused, or processing
-                if (status === 'active' || status === 'paused' || status === 'processing') {
+                // Allow resuming sessions that are active or paused
+                if (status === 'active' || status === 'paused') {
                     this.router.navigate(`/session/${link}`);
                 } else {
                     this.router.navigate(`/session/${link}/review`);
@@ -1163,8 +1164,8 @@ class VoiceInterviewerApp {
             this.startAnketaPolling();
             this._syncQuickSettings();
 
-            // ✅ FIX БАГ #3: Reconnect to LiveKit if active, paused, OR processing
-            if (sessionData.status === 'active' || sessionData.status === 'paused' || sessionData.status === 'processing') {
+            // ✅ FIX БАГ #3: Reconnect to LiveKit if active or paused
+            if (sessionData.status === 'active' || sessionData.status === 'paused') {
                 try {
                     // ✅ UX #1: Show feedback during reconnect (0-1000ms window)
                     this.elements.voiceStatus.textContent = 'Подключаемся к серверу...';
@@ -1201,7 +1202,7 @@ class VoiceInterviewerApp {
                 }
             } else {
                 // ✅ UX #2: Hide connection status ONLY for truly finished sessions
-                // For other statuses (processing, reviewing), show connection status
+                // For reviewing sessions, show connection status
                 if (sessionData.status === 'confirmed' || sessionData.status === 'declined') {
                     const status = this.elements.connectionStatus;
                     if (status) status.style.display = 'none';
@@ -1326,7 +1327,9 @@ class VoiceInterviewerApp {
         this.isConnected = false;
         this.localParticipant = null;
         document.getElementById('session-screen')?.classList.remove('voice-active');
-        this.router.navigate('/');
+        // Show dashboard directly (don't use router to avoid landing redirect)
+        this.showDashboard();
+        window.history.pushState({}, '', '/');
     }
 
     // ===== SESSION CONTROL HANDLERS (Level 1 - Global) =====
@@ -1337,7 +1340,9 @@ class VoiceInterviewerApp {
             if (!confirm(confirmMsg)) return;
             this.handleStopSession();
         }
-        this.router.navigate('/');
+        // Show dashboard directly (don't use router to avoid landing redirect)
+        this.showDashboard();
+        window.history.pushState({}, '', '/');
     }
 
     async handleStopSession() {
@@ -1348,7 +1353,7 @@ class VoiceInterviewerApp {
 
         // CRITICAL FIX: Update backend status to 'paused' FIRST (before disconnect)
         // This prevents race condition where voice agent sees 'active' status
-        // and changes it to 'processing' → 'reviewing'
+        // and changes it to 'reviewing' during finalization
         if (this.sessionId) {
             try {
                 await fetch(`/api/session/${this.sessionId}/end`, {
@@ -2276,10 +2281,14 @@ class VoiceInterviewerApp {
 
             if (data.status) {
                 this.updateAnketaStatus(data.status);
-                if (data.status === 'reviewing') {
-                    this.updateStatusTicker('AI анализирует ответы...', true);
+
+                // Check runtime_status first (agent-internal ephemeral state)
+                if (data.runtime_status === 'processing') {
+                    this.updateStatusTicker('🤖 AI извлекает данные из разговора...', true);
+                } else if (data.status === 'reviewing') {
+                    this.updateStatusTicker('✨ AI анализирует ответы...', true);
                 } else if (data.status === 'confirmed') {
-                    this.updateStatusTicker('Консультация завершена');
+                    this.updateStatusTicker('✅ Консультация завершена');
                 }
             }
 
