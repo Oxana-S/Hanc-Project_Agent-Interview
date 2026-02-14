@@ -375,7 +375,7 @@ class TestFinalizeAndSaveConsultationType:
         """When voice_config has consultation_type='interview', finalize
         passes it to extractor.extract()."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "completed"
+        consultation.runtime_status = RuntimeStatus.COMPLETED
 
         db_session_for_finalize = _make_db_session(
             voice_config={"consultation_type": "interview"},
@@ -409,7 +409,7 @@ class TestFinalizeAndSaveConsultationType:
 
             # finalize_consultation sets status to completed
             async def set_completed(c):
-                c.status = "completed"
+                c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
             # Three calls in _finalize_and_save:
@@ -437,7 +437,7 @@ class TestFinalizeAndSaveConsultationType:
         """When voice_config is None in _finalize_and_save, consultation_type
         defaults to 'consultation'."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "completed"
+        consultation.runtime_status = RuntimeStatus.COMPLETED
 
         db_session = _make_db_session(voice_config=None)
         db_session_downstream = _make_db_session(
@@ -468,7 +468,7 @@ class TestFinalizeAndSaveConsultationType:
             mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
-                c.status = "completed"
+                c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
             mock_mgr.get_session.side_effect = [db_session, db_session, db_session_downstream]
@@ -487,7 +487,7 @@ class TestFinalizeAndSaveConsultationType:
         """When voice_config is {} in _finalize_and_save, consultation_type
         defaults to 'consultation'."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "completed"
+        consultation.runtime_status = RuntimeStatus.COMPLETED
 
         db_session = _make_db_session(voice_config={})
         db_downstream = _make_db_session(voice_config={}, anketa_data={"company_name": "TestCorp"})
@@ -515,7 +515,7 @@ class TestFinalizeAndSaveConsultationType:
             mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
-                c.status = "completed"
+                c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
             mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
@@ -548,7 +548,7 @@ class TestFinalizeAndSaveConsultationType:
         """When consultation.status is not 'completed', final extraction
         is skipped in _finalize_and_save."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "error"
+        consultation.runtime_status = RuntimeStatus.ERROR
 
         db_session = _make_db_session()
         db_downstream = _make_db_session(anketa_data={"company_name": "TestCorp"})
@@ -578,7 +578,7 @@ class TestFinalizeAndSaveConsultationType:
         """Interview mode with additional voice_config settings (voice_gender,
         silence_duration_ms) still correctly routes consultation_type."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "completed"
+        consultation.runtime_status = RuntimeStatus.COMPLETED
 
         db_session = _make_db_session(
             voice_config={
@@ -615,7 +615,7 @@ class TestFinalizeAndSaveConsultationType:
             mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
-                c.status = "completed"
+                c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
             mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
@@ -633,7 +633,7 @@ class TestFinalizeAndSaveConsultationType:
     async def test_finalize_updates_anketa_in_db_for_interview(self):
         """In interview mode, anketa is still saved to DB after extraction."""
         consultation = _make_consultation(messages=6)
-        consultation.status = "completed"
+        consultation.runtime_status = RuntimeStatus.COMPLETED
 
         db_session = _make_db_session(
             voice_config={"consultation_type": "interview"},
@@ -666,7 +666,7 @@ class TestFinalizeAndSaveConsultationType:
             mock_notif_inst.on_session_confirmed = AsyncMock()
 
             async def set_completed(c):
-                c.status = "completed"
+                c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
             mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
