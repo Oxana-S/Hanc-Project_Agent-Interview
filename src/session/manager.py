@@ -272,6 +272,12 @@ class SessionManager:
         Returns:
             True if the session was found and updated, False otherwise.
         """
+        # R9-12: Lock for thread safety
+        with self._lock:
+            return self._update_session_locked(session)
+
+    def _update_session_locked(self, session: ConsultationSession) -> bool:
+        """Internal locked implementation of update_session."""
         session.updated_at = datetime.now()
 
         cursor = self._conn.execute(
@@ -422,29 +428,31 @@ class SessionManager:
         Returns:
             True if the session was found and updated, False otherwise.
         """
-        now = datetime.now()
+        # R9-12: Lock for thread safety
+        with self._lock:
+            now = datetime.now()
 
-        cursor = self._conn.execute(
-            """
-            UPDATE sessions SET
-                document_context = ?,
-                updated_at = ?
-            WHERE session_id = ?
-            """,
-            (
-                json.dumps(document_context, ensure_ascii=False),
-                now.isoformat(),
-                session_id,
-            ),
-        )
-        self._conn.commit()
+            cursor = self._conn.execute(
+                """
+                UPDATE sessions SET
+                    document_context = ?,
+                    updated_at = ?
+                WHERE session_id = ?
+                """,
+                (
+                    json.dumps(document_context, ensure_ascii=False),
+                    now.isoformat(),
+                    session_id,
+                ),
+            )
+            self._conn.commit()
 
-        if cursor.rowcount == 0:
-            logger.warning("session_document_context_update_no_rows", session_id=session_id)
-            return False
+            if cursor.rowcount == 0:
+                logger.warning("session_document_context_update_no_rows", session_id=session_id)
+                return False
 
-        logger.info("session_document_context_updated", session_id=session_id)
-        return True
+            logger.info("session_document_context_updated", session_id=session_id)
+            return True
 
     def update_status(self, session_id: str, status: SessionStatus | str, force: bool = False) -> bool:
         """
@@ -537,28 +545,32 @@ class SessionManager:
         updates.append("updated_at = ?")
         params.append(datetime.now().isoformat())
         params.append(session_id)
-        cursor = self._conn.execute(
-            f"UPDATE sessions SET {', '.join(updates)} WHERE session_id = ?",
-            params,
-        )
-        self._conn.commit()
-        return cursor.rowcount > 0
+        # R9-12: Lock for thread safety
+        with self._lock:
+            cursor = self._conn.execute(
+                f"UPDATE sessions SET {', '.join(updates)} WHERE session_id = ?",
+                params,
+            )
+            self._conn.commit()
+            return cursor.rowcount > 0
 
     def update_dialogue(self, session_id: str, dialogue_history: list, duration_seconds: float, status: str = None) -> bool:
         """Update dialogue_history, duration, and optionally status (no full session overwrite)."""
-        now = datetime.now()
-        if status:
-            cursor = self._conn.execute(
-                "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, status = ?, updated_at = ? WHERE session_id = ?",
-                (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, status, now.isoformat(), session_id),
-            )
-        else:
-            cursor = self._conn.execute(
-                "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, updated_at = ? WHERE session_id = ?",
-                (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, now.isoformat(), session_id),
-            )
-        self._conn.commit()
-        return cursor.rowcount > 0
+        # R9-12: Lock for thread safety
+        with self._lock:
+            now = datetime.now()
+            if status:
+                cursor = self._conn.execute(
+                    "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, status = ?, updated_at = ? WHERE session_id = ?",
+                    (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, status, now.isoformat(), session_id),
+                )
+            else:
+                cursor = self._conn.execute(
+                    "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, updated_at = ? WHERE session_id = ?",
+                    (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, now.isoformat(), session_id),
+                )
+            self._conn.commit()
+            return cursor.rowcount > 0
 
     def list_sessions_summary(self, status: str = None, limit: int = 50, offset: int = 0) -> tuple:
         """
@@ -620,11 +632,13 @@ class SessionManager:
         if not session_ids:
             return 0
         placeholders = ",".join("?" * len(session_ids))
-        cursor = self._conn.execute(
-            f"DELETE FROM sessions WHERE session_id IN ({placeholders})",
-            session_ids,
-        )
-        self._conn.commit()
+        # R9-12: Lock for thread safety
+        with self._lock:
+            cursor = self._conn.execute(
+                f"DELETE FROM sessions WHERE session_id IN ({placeholders})",
+                session_ids,
+            )
+            self._conn.commit()
         logger.info("sessions_deleted", count=cursor.rowcount, session_ids=session_ids)
         return cursor.rowcount
 
