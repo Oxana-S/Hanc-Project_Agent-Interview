@@ -15,7 +15,7 @@ Output Manager - управление структурой папки output/.
 import json
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -52,7 +52,7 @@ class OutputManager:
         Returns:
             Path: output/2026-02-04/glamour_v1/
         """
-        date = date or datetime.now()
+        date = date or datetime.now(timezone.utc)
         date_str = date.strftime("%Y-%m-%d")
         date_dir = self.base_dir / date_str
 
@@ -148,7 +148,7 @@ class OutputManager:
             company_name=company_name,
             client_name=client_name,
             duration_seconds=duration_seconds,
-            start_time=start_time or datetime.now()
+            start_time=start_time or datetime.now(timezone.utc)
         )
 
         dialogue_path = company_dir / "dialogue.md"

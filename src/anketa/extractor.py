@@ -12,7 +12,7 @@ v3.1 Improvements:
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
 import structlog
@@ -766,7 +766,7 @@ class AnketaExtractor:
             additional_functions=additional_functions,
 
             # Metadata
-            created_at=datetime.now(),
+            created_at=datetime.now(timezone.utc),
             consultation_duration_seconds=duration_seconds
         )
 
@@ -1136,7 +1136,7 @@ class AnketaExtractor:
             integrations=solution_data.get('integrations', []),
 
             # Metadata
-            created_at=datetime.now(),
+            created_at=datetime.now(timezone.utc),
             consultation_duration_seconds=duration_seconds
         )
 

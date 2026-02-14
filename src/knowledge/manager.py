@@ -4,7 +4,7 @@ Industry Knowledge Manager - main interface for industry knowledge base.
 v1.0: Initial implementation
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -198,13 +198,13 @@ class IndustryKnowledgeManager:
             return
 
         learning = Learning(
-            date=datetime.now().strftime("%Y-%m-%d"),
+            date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             insight=insight,
             source=source
         )
 
         profile.learnings.append(learning)
-        profile.meta.last_updated = datetime.now().strftime("%Y-%m-%d")
+        profile.meta.last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
         self.loader.save_profile(profile)
 
@@ -293,7 +293,7 @@ class IndustryKnowledgeManager:
 
         profile.meta.tests_run = new_tests
         profile.meta.avg_validation_score = round(new_avg, 3)
-        profile.meta.last_updated = datetime.now().strftime("%Y-%m-%d")
+        profile.meta.last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
         self.loader.save_profile(profile)
 

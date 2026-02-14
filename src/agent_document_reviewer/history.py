@@ -9,7 +9,7 @@ Provides:
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 from collections import deque
@@ -85,7 +85,7 @@ class VersionHistory:
         version = DocumentVersion(
             version=self.current_version + 1,
             content=content,
-            created_at=datetime.now(),
+            created_at=datetime.now(timezone.utc),
             author=author,
             comment=comment
         )

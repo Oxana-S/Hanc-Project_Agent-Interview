@@ -6,7 +6,7 @@ v2.0: Regional structure support with inheritance
 """
 
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -623,7 +623,7 @@ class IndustryProfileLoader:
 
         # Increment counters
         stats["total_tests"] = stats.get("total_tests", 0) + 1
-        stats["last_test_date"] = datetime.now().strftime("%Y-%m-%d")
+        stats["last_test_date"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
         # Increment industry-specific counter
         industry_usage = stats["industry_usage"]

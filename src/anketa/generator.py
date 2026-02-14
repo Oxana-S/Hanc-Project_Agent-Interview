@@ -7,7 +7,7 @@ Supports:
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -48,7 +48,7 @@ class AnketaGenerator:
             Path to saved file
         """
         if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             safe_name = self._safe_filename(anketa.company_name)
             filename = f"{safe_name}_{timestamp}.md"
 
@@ -73,7 +73,7 @@ class AnketaGenerator:
             Path to saved file
         """
         if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             safe_name = self._safe_filename(anketa.company_name)
             filename = f"{safe_name}_{timestamp}.json"
 

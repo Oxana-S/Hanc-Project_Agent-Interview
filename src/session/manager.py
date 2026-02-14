@@ -10,7 +10,7 @@ import json
 import sqlite3
 import threading
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -158,7 +158,7 @@ class SessionManager:
         """
         max_retries = 3
         for attempt in range(max_retries):
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
             session = ConsultationSession(
                 session_id=str(uuid.uuid4())[:8],
                 room_name=room_name,
@@ -278,7 +278,20 @@ class SessionManager:
 
     def _update_session_locked(self, session: ConsultationSession) -> bool:
         """Internal locked implementation of update_session."""
-        session.updated_at = datetime.now()
+        # R10-14: Validate status transition if status changed
+        existing = self.get_session(session.session_id)
+        if existing and existing.status != session.status:
+            try:
+                current = SessionStatus(existing.status)
+                target = SessionStatus(session.status)
+                validate_transition(current, target)
+            except (ValueError, InvalidTransitionError):
+                logger.warning("update_session_invalid_transition",
+                               session_id=session.session_id,
+                               current=existing.status, target=session.status)
+                session.status = existing.status  # Keep current status
+
+        session.updated_at = datetime.now(timezone.utc)
 
         cursor = self._conn.execute(
             """
@@ -377,7 +390,7 @@ class SessionManager:
 
         # 3. Update database with merged data
         # R4-14: Only overwrite anketa_md if a new value is provided
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         if anketa_md is not None:
             cursor = self._conn.execute(
                 """
@@ -430,7 +443,7 @@ class SessionManager:
         """
         # R9-12: Lock for thread safety
         with self._lock:
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
 
             cursor = self._conn.execute(
                 """
@@ -506,7 +519,7 @@ class SessionManager:
                         new=status.value
                     )
 
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
 
             cursor = self._conn.execute(
                 """
@@ -543,7 +556,7 @@ class SessionManager:
         if not updates:
             return False
         updates.append("updated_at = ?")
-        params.append(datetime.now().isoformat())
+        params.append(datetime.now(timezone.utc).isoformat())
         params.append(session_id)
         # R9-12: Lock for thread safety
         with self._lock:
@@ -558,7 +571,7 @@ class SessionManager:
         """Update dialogue_history, duration, and optionally status (no full session overwrite)."""
         # R9-12: Lock for thread safety
         with self._lock:
-            now = datetime.now()
+            now = datetime.now(timezone.utc)
             validated_status = None
             if status:
                 # R10-02: Validate status transition through state machine

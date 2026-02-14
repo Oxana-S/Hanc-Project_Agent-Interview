@@ -6,7 +6,7 @@ Orchestrates the interaction between ConsultantInterviewer and SimulatedClient.
 
 import asyncio
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
@@ -133,7 +133,7 @@ class ConsultationTester:
         Returns:
             TestResult with all collected data
         """
-        start_time = datetime.now()
+        start_time = datetime.now(timezone.utc)
         errors = []
         phases_completed = []
 
@@ -176,7 +176,7 @@ class ConsultationTester:
             if self.verbose:
                 console.print(f"[red]Ошибка: {e}[/red]")
 
-        duration = (datetime.now() - start_time).total_seconds()
+        duration = (datetime.now(timezone.utc) - start_time).total_seconds()
 
         # Extract final anketa
         final_anketa = None

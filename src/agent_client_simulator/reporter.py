@@ -8,7 +8,7 @@ Outputs:
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -138,7 +138,7 @@ class TestReporter:
         console.print(Panel(
             f"[bold cyan]ОТЧЁТ О ТЕСТИРОВАНИИ[/bold cyan]\n\n"
             f"Сценарий: [green]{result.scenario_name}[/green]\n"
-            f"Дата: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+            f"Дата: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}",
             border_style="cyan"
         ))
 
@@ -249,7 +249,7 @@ class TestReporter:
             Path to saved file
         """
         if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             company = self._get_company_name(result)
             filename = f"{company}_{timestamp}.json"
 
@@ -279,7 +279,7 @@ class TestReporter:
             Path to saved file
         """
         if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
             company = self._get_company_name(result)
             filename = f"{company}_{timestamp}.md"
 
@@ -298,7 +298,7 @@ class TestReporter:
         lines = [
             f"# Отчёт о тестировании: {result.scenario_name}",
             "",
-            f"**Дата:** {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+            f"**Дата:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}",
             f"**Статус:** {result.status}",
             f"**Длительность:** {result.duration_seconds:.1f} сек",
             f"**Ходов:** {result.turn_count}",

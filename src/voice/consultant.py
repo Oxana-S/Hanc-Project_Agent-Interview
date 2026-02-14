@@ -23,7 +23,7 @@ import os
 import sys
 import traceback
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import httpx
@@ -121,7 +121,7 @@ class VoiceConsultationSession:
     def __init__(self, room_name: str = ""):
         self.session_id = str(uuid.uuid4())[:8]
         self.room_name = room_name
-        self.start_time = datetime.now()
+        self.start_time = datetime.now(timezone.utc)
         self.dialogue_history: List[Dict[str, Any]] = []
         self.document_context = None  # DocumentContext from uploaded files
         self.status = SessionStatus.ACTIVE  # DB status (will be synced to SessionManager)
@@ -146,7 +146,7 @@ class VoiceConsultationSession:
         self.dialogue_history.append({
             "role": role,
             "content": content,
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "phase": self.current_phase
         })
         dialogue_log.info(
@@ -159,7 +159,7 @@ class VoiceConsultationSession:
 
     def get_duration_seconds(self) -> float:
         """Получить длительность сессии в секундах."""
-        return (datetime.now() - self.start_time).total_seconds()
+        return (datetime.now(timezone.utc) - self.start_time).total_seconds()
 
     def get_company_name(self) -> str:
         """Попытаться извлечь название компании из диалога."""
@@ -1192,7 +1192,7 @@ async def _extract_and_update_anketa(
                         "message_count": len(consultation.dialogue_history),
                         "anketa_completion": anketa.completion_rate(),
                         "industry": getattr(anketa, 'industry', None),
-                        "updated_at": datetime.now().isoformat(),
+                        "updated_at": datetime.now(timezone.utc).isoformat(),
                     }),
                 )
             except Exception as e:
@@ -1525,7 +1525,7 @@ async def _finalize_and_save(
             await pg_mgr.save_anketa(anketa_obj)
             await pg_mgr.update_interview_session(
                 session_id=session_id,
-                completed_at=datetime.now(),
+                completed_at=datetime.now(timezone.utc),
                 duration=session.duration_seconds,
                 completeness_score=anketa_obj.completion_rate() if hasattr(anketa_obj, 'completion_rate') else None,
                 status=session.status or "completed",
@@ -2236,7 +2236,7 @@ async def entrypoint(ctx: JobContext):
                         "session_id": session_id,
                         "room_name": ctx.room.name,
                         "status": "active",
-                        "started_at": datetime.now().isoformat(),
+                        "started_at": datetime.now(timezone.utc).isoformat(),
                         "message_count": 0,
                     }),
                 )
@@ -2256,7 +2256,7 @@ async def entrypoint(ctx: JobContext):
                     status="active",
                     metadata={
                         "room_name": ctx.room.name,
-                        "started_at": datetime.now().isoformat(),
+                        "started_at": datetime.now(timezone.utc).isoformat(),
                     },
                 )
                 debug_log.info(f"Session registered in PostgreSQL: {session_id}")
