@@ -135,7 +135,7 @@ class VoiceInterviewerApp {
             'services', 'client_types', 'current_problems', 'business_goals',
             'agent_name', 'agent_purpose', 'agent_tasks',
             'integrations', 'voice_gender', 'voice_tone', 'call_direction',
-            'transfer_conditions',
+            'working_hours', 'transfer_conditions',
             'constraints', 'compliance_requirements',
             'call_volume', 'budget', 'timeline', 'additional_notes'
         ];
@@ -1690,7 +1690,13 @@ class VoiceInterviewerApp {
         const infoFields = [
             { key: 'contact_name', label: 'Имя' },
             { key: 'contact_role', label: 'Роль' },
+            { key: 'contact_phone', label: 'Телефон' },
+            { key: 'contact_email', label: 'Email' },
+            { key: 'company_name', label: 'Организация' },
+            { key: 'interview_type', label: 'Тип интервью' },
             { key: 'interview_title', label: 'Тема интервью' },
+            { key: 'interviewee_industry', label: 'Отрасль' },
+            { key: 'interviewee_context', label: 'Контекст' },
         ];
         const filledInfo = infoFields.filter(f => anketa[f.key] && String(anketa[f.key]).trim());
         if (filledInfo.length > 0) {
@@ -1701,6 +1707,14 @@ class VoiceInterviewerApp {
                     <span class="review-value">${this._escapeHtml(String(anketa[f.key]))}</span>
                 </div>`;
             }
+            html += '</div>';
+        }
+
+        // Target topics
+        const targetTopics = anketa.target_topics || [];
+        if (targetTopics.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Целевые темы</div>';
+            html += `<div class="topics-list">${targetTopics.map(t => `<span class="topic-tag">${this._escapeHtml(t)}</span>`).join(' ')}</div>`;
             html += '</div>';
         }
 
@@ -1748,6 +1762,28 @@ class VoiceInterviewerApp {
                     html += `<div class="insight-item">${this._escapeHtml(insight)}</div>`;
                 }
                 html += '</div>';
+            }
+            html += '</div>';
+        }
+
+        // Unresolved topics
+        const unresolved = anketa.unresolved_topics || [];
+        if (unresolved.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">Нераскрытые темы</div>';
+            html += `<div class="topics-list">${unresolved.map(t => `<span class="topic-tag topic-unresolved">${this._escapeHtml(t)}</span>`).join(' ')}</div>`;
+            html += '</div>';
+        }
+
+        // AI Recommendations
+        const recs = anketa.ai_recommendations || [];
+        if (recs.length > 0) {
+            html += '<div class="review-section"><div class="review-section-title">AI-рекомендации</div>';
+            for (const rec of recs) {
+                const r = typeof rec === 'object' ? rec : {};
+                html += `<div class="insight-item">
+                    <strong>${this._escapeHtml(r.recommendation || String(rec))}</strong>
+                    ${r.impact ? `<br><small>${this._escapeHtml(r.impact)}</small>` : ''}
+                </div>`;
             }
             html += '</div>';
         }
@@ -2419,6 +2455,11 @@ class VoiceInterviewerApp {
                 });
             }
         }
+        if (data.working_hours && typeof data.working_hours === 'object' && !Array.isArray(data.working_hours)) {
+            normalized.working_hours = Object.entries(data.working_hours)
+                .map(([days, hours]) => `${days}: ${hours}`)
+                .join(', ');
+        }
 
         return normalized;
     }
@@ -2552,22 +2593,41 @@ class VoiceInterviewerApp {
         // Section 1: Respondent info
         const infoSection = document.createElement('div');
         infoSection.className = 'anketa-section';
-        infoSection.innerHTML = `
-            <div class="anketa-section-title">Респондент</div>
-            <div class="anketa-field">
-                <label>Имя</label>
-                <input type="text" value="${this._escapeHtml(anketaData.contact_name || '')}" readonly>
-            </div>
-            <div class="anketa-field">
-                <label>Роль</label>
-                <input type="text" value="${this._escapeHtml(anketaData.contact_role || '')}" readonly>
-            </div>
-            <div class="anketa-field">
-                <label>Тема интервью</label>
-                <input type="text" value="${this._escapeHtml(anketaData.interview_title || '')}" readonly>
-            </div>
-        `;
+        let infoHtml = '<div class="anketa-section-title">Респондент</div>';
+        const infoFields = [
+            { key: 'contact_name', label: 'Имя' },
+            { key: 'contact_role', label: 'Роль' },
+            { key: 'contact_phone', label: 'Телефон' },
+            { key: 'contact_email', label: 'Email' },
+            { key: 'company_name', label: 'Организация' },
+            { key: 'interview_type', label: 'Тип интервью' },
+            { key: 'interview_title', label: 'Тема интервью' },
+            { key: 'interviewee_industry', label: 'Отрасль' },
+            { key: 'interviewee_context', label: 'Контекст' },
+        ];
+        for (const f of infoFields) {
+            const val = anketaData[f.key];
+            if (val && String(val).trim()) {
+                infoHtml += `<div class="anketa-field">
+                    <label>${f.label}</label>
+                    <input type="text" value="${this._escapeHtml(String(val))}" readonly>
+                </div>`;
+            }
+        }
+        infoSection.innerHTML = infoHtml;
         container.appendChild(infoSection);
+
+        // Target topics (if set)
+        const targetTopics = anketaData.target_topics || [];
+        if (targetTopics.length > 0) {
+            const targetSection = document.createElement('div');
+            targetSection.className = 'anketa-section';
+            targetSection.innerHTML = `
+                <div class="anketa-section-title">Целевые темы</div>
+                <div class="topics-list">${targetTopics.map(t => `<span class="topic-tag">${this._escapeHtml(t)}</span>`).join(' ')}</div>
+            `;
+            container.appendChild(targetSection);
+        }
 
         // Section 2: Q&A Pairs
         const qaPairs = anketaData.qa_pairs || [];
@@ -2630,6 +2690,35 @@ class VoiceInterviewerApp {
             }
             aiSection.innerHTML = aiHtml;
             container.appendChild(aiSection);
+        }
+
+        // Unresolved topics
+        const unresolved = anketaData.unresolved_topics || [];
+        if (unresolved.length > 0) {
+            const unresSection = document.createElement('div');
+            unresSection.className = 'anketa-section';
+            unresSection.innerHTML = `
+                <div class="anketa-section-title">Нераскрытые темы</div>
+                <div class="topics-list">${unresolved.map(t => `<span class="topic-tag topic-unresolved">${this._escapeHtml(t)}</span>`).join(' ')}</div>
+            `;
+            container.appendChild(unresSection);
+        }
+
+        // AI Recommendations
+        const recs = anketaData.ai_recommendations || [];
+        if (recs.length > 0) {
+            const recsSection = document.createElement('div');
+            recsSection.className = 'anketa-section';
+            let recsHtml = '<div class="anketa-section-title">AI-рекомендации</div>';
+            for (const rec of recs) {
+                const r = typeof rec === 'object' ? rec : {};
+                recsHtml += `<div class="insight-item">
+                    <strong>${this._escapeHtml(r.recommendation || String(rec))}</strong>
+                    ${r.impact ? `<br><small>${this._escapeHtml(r.impact)}</small>` : ''}
+                </div>`;
+            }
+            recsSection.innerHTML = recsHtml;
+            container.appendChild(recsSection);
         }
     }
 

@@ -344,13 +344,17 @@ class AnketaExtractor:
   "website": "URL сайта или null",
   "contact_name": "имя контактного лица",
   "contact_role": "должность",
+  "contact_phone": "телефон контактного лица (в формате +XXX...)",
+  "contact_email": "email контактного лица",
 
   "business_description": "чем занимается компания (1-2 предложения, НЕ название!)",
+  "business_type": "тип бизнеса: B2B, B2C, B2B2C или другое",
   "services": ["услуга 1", "услуга 2"],
   "client_types": ["тип клиентов 1", "тип 2"],
   "current_problems": ["проблема 1", "проблема 2"],
   "business_goals": ["цель 1", "цель 2"],
   "constraints": ["ограничение 1", "ограничение 2"],
+  "compliance_requirements": ["регуляторное требование 1", "требование 2"],
 
   "agent_name": "имя агента",
   "agent_purpose": "назначение агента (1-2 предложения)",
@@ -363,10 +367,17 @@ class AnketaExtractor:
   "voice_tone": "professional, friendly, calm и т.д.",
   "language": "ru",
   "call_direction": "inbound, outbound или both",
+  "working_hours": {{"пн-пт": "9:00-18:00", "сб": "10:00-15:00"}},
+  "transfer_conditions": ["условие перевода на оператора 1", "условие 2"],
 
   "integrations": [
     {{"name": "название системы", "purpose": "для чего", "required": true/false}}
   ],
+
+  "call_volume": "объём звонков в день или месяц",
+  "budget": "бюджет проекта с валютой",
+  "timeline": "желаемые сроки внедрения",
+  "additional_notes": "дополнительные замечания или пожелания клиента",
 
   "main_function": {{"name": "...", "description": "...", "priority": "high"}},
   "additional_functions": [
@@ -718,6 +729,7 @@ class AnketaExtractor:
 
             # Business context
             business_description=data.get('business_description', ''),
+            business_type=data.get('business_type'),
             services=data.get('services', []),
             client_types=data.get('client_types', []),
             current_problems=data.get('current_problems', []),
@@ -740,6 +752,8 @@ class AnketaExtractor:
             voice_tone=data.get('voice_tone', 'professional'),
             language=data.get('language', 'ru'),
             call_direction=data.get('call_direction', 'inbound'),
+            working_hours=data.get('working_hours', {}),
+            transfer_conditions=data.get('transfer_conditions', []),
 
             # Integrations
             integrations=integrations,
@@ -1486,8 +1500,12 @@ class AnketaExtractor:
 {{
   "contact_name": "имя респондента",
   "contact_role": "роль/должность",
+  "contact_phone": "телефон респондента",
+  "contact_email": "email респондента",
   "company_name": "организация респондента",
+  "interview_type": "тип интервью: market_research, customer_discovery, hr, survey, requirements или general",
   "interview_title": "тема интервью",
+  "target_topics": ["целевая тема 1", "целевая тема 2"],
   "interviewee_context": "контекст о респонденте (опыт, бэкграунд)",
   "interviewee_industry": "отрасль респондента",
   "qa_pairs": [
@@ -1496,7 +1514,11 @@ class AnketaExtractor:
   "detected_topics": ["тема 1", "тема 2"],
   "key_quotes": ["важная цитата 1", "важная цитата 2"],
   "summary": "краткое резюме интервью (2-3 предложения)",
-  "key_insights": ["инсайт 1", "инсайт 2"]
+  "key_insights": ["инсайт 1", "инсайт 2"],
+  "unresolved_topics": ["тема которую не удалось полностью раскрыть"],
+  "ai_recommendations": [
+    {{"recommendation": "рекомендация", "impact": "ожидаемый эффект", "priority": "high/medium/low", "effort": "low/medium/high"}}
+  ]
 }}
 
 Верни ТОЛЬКО JSON:"""
@@ -1546,8 +1568,11 @@ class AnketaExtractor:
             company_name=data.get('company_name', ''),
             contact_name=data.get('contact_name', ''),
             contact_role=data.get('contact_role', ''),
+            contact_email=data.get('contact_email', ''),
+            contact_phone=data.get('contact_phone', ''),
             interview_title=data.get('interview_title', ''),
             interview_type=data.get('interview_type', 'general'),
+            target_topics=data.get('target_topics', []),
             interviewee_context=data.get('interviewee_context', ''),
             interviewee_industry=data.get('interviewee_industry', ''),
             qa_pairs=qa_pairs,
