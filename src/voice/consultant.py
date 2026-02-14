@@ -142,6 +142,7 @@ class VoiceConsultationSession:
         self.detected_industry_id = None  # Cached industry ID
         self.detected_profile = None  # Cached IndustryProfile
         self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
+        self._cached_extractor_provider = None  # R17-04: track provider to invalidate on change
 
     MAX_DIALOGUE_MESSAGES = 500  # R10-09: Prevent unbounded memory growth
 
@@ -1092,12 +1093,15 @@ async def _extract_and_update_anketa(
                 pass  # Use dict fallback — extractor handles both
 
         # R4-18: Reuse cached extractor to avoid recreating LLM client per call
-        if consultation._cached_extractor is None:
-            _llm_provider = None
-            if db_session and db_session.voice_config:
-                _llm_provider = db_session.voice_config.get("llm_provider")
+        # R17-04: Invalidate cache when llm_provider changes mid-session
+        _llm_provider = None
+        if db_session and db_session.voice_config:
+            _llm_provider = db_session.voice_config.get("llm_provider")
+        if (consultation._cached_extractor is None
+                or consultation._cached_extractor_provider != _llm_provider):
             llm = create_llm_client(_llm_provider)
             consultation._cached_extractor = AnketaExtractor(llm)
+            consultation._cached_extractor_provider = _llm_provider
         extractor = consultation._cached_extractor
 
         # v5.0: Use sliding window dialogue instead of full history
@@ -1714,6 +1718,9 @@ def _register_event_handlers(
                             timeout=_extraction_timeout,
                             session_id=session_id,
                         )
+                    except asyncio.CancelledError:
+                        # R17-03: Explicit handling — task may be cancelled on shutdown
+                        logger.info("extraction_cancelled", session_id=session_id)
                     except Exception as e:
                         logger.error("extraction_failed", error=str(e), trigger="user_input")
                     finally:
@@ -1924,8 +1931,11 @@ def _get_verbosity_prompt_prefix(verbosity: str) -> str:
     return _VERBOSITY_PREFIXES.get(verbosity, "")
 
 
-async def _apply_verbosity_update(agent_session, new_verbosity: str, log):
+async def _apply_verbosity_update(consultation, agent_session, new_verbosity: str, log):
     """Update agent instructions mid-session to reflect new verbosity setting.
+
+    R17-05/R17-06: Uses _update_instructions_safe() for buffering during speech,
+    and reads from consultation._latest_instructions for consistency.
 
     Strips the old verbosity prefix (if any) from current instructions,
     then prepends the new one. Preserves all other prompt content
@@ -1937,7 +1947,9 @@ async def _apply_verbosity_update(agent_session, new_verbosity: str, log):
             log.warning("verbosity update: no activity or update_instructions available")
             return
 
-        current = getattr(activity, 'instructions', '') or ''
+        # R17-06: Read from _latest_instructions (not stale activity.instructions)
+        current = getattr(consultation, '_latest_instructions', None) \
+            or getattr(activity, 'instructions', '') or ''
 
         # Strip old verbosity prefix if present
         for prefix in _VERBOSITY_PREFIXES.values():
@@ -1949,13 +1961,14 @@ async def _apply_verbosity_update(agent_session, new_verbosity: str, log):
         new_prefix = _get_verbosity_prompt_prefix(new_verbosity)
         new_instructions = new_prefix + current
 
-        await activity.update_instructions(new_instructions)
+        # R17-05: Use _update_instructions_safe for buffering during speech
+        await _update_instructions_safe(consultation, agent_session, new_instructions)
         log.info(f"verbosity updated mid-session: {new_verbosity}")
     except Exception as e:
         log.warning(f"verbosity mid-session update failed (non-fatal): {e}")
 
 
-def _apply_voice_config_update(realtime_model, config_state: dict, session_id: str, log, agent_session=None):
+def _apply_voice_config_update(realtime_model, config_state: dict, session_id: str, log, agent_session=None, consultation=None):
     """Re-read voice_config from DB and update RealtimeModel mid-session if changed.
 
     Called when room metadata changes (server signals reconnect) or client track is subscribed.
@@ -2030,7 +2043,7 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
             import asyncio
             try:
                 loop = asyncio.get_running_loop()
-                _track_agent_task(loop.create_task(_apply_verbosity_update(agent_session, new_verbosity, log)))  # R11-19
+                _track_agent_task(loop.create_task(_apply_verbosity_update(consultation, agent_session, new_verbosity, log)))  # R11-19
             except RuntimeError:
                 log.warning("verbosity update skipped: no running event loop")
 
@@ -2337,7 +2350,7 @@ async def entrypoint(ctx: JobContext):
         # v5.0: Re-read voice_config from DB when client reconnects (audio track re-subscribed).
         # This enables mid-session updates to speech_speed, silence_duration_ms, voice_gender, verbosity.
         if participant.identity.startswith("client-"):
-            _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session)
+            _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session, consultation=consultation)
 
     @ctx.room.on("track_published")
     def on_track_published(publication, participant):
@@ -2377,7 +2390,7 @@ async def entrypoint(ctx: JobContext):
             debug_log.warning(f"Failed to handle document notification: {e}")
 
         # Handle voice_config updates
-        _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session)
+        _apply_voice_config_update(realtime_model, _voice_config_state, session_id, debug_log, agent_session=session, consultation=consultation)
 
     # Step 5: Start agent session and trigger greeting
     try:

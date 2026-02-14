@@ -257,7 +257,8 @@ class IndustryProfileLoader:
             return self.load_profile(industry_id)
 
         # Check for inheritance
-        extends = regional_data.pop("_extends", None)
+        # R17-01: Use .get() instead of .pop() to avoid mutating parsed YAML dict
+        extends = regional_data.get("_extends")
         base_data: Dict[str, Any] = {}
 
         if extends:
@@ -270,7 +271,9 @@ class IndustryProfileLoader:
                 logger.warning("Base profile not found for inheritance", extends=extends)
 
         # Merge base + regional (regional overrides base)
-        merged_data = self._merge_profiles(base_data, regional_data)
+        # R17-01: Exclude _extends key from merge (was previously removed via pop)
+        regional_clean = {k: v for k, v in regional_data.items() if k != "_extends"}
+        merged_data = self._merge_profiles(base_data, regional_clean)
 
         # Add region/country metadata
         if "meta" not in merged_data:
@@ -468,9 +471,11 @@ class IndustryProfileLoader:
         ]
 
         # Парсим pricing_context
+        # R17-02: Copy before mutating to avoid corrupting cached YAML data
         pricing_data = data.get("pricing_context")
         pricing_context = None
         if pricing_data:
+            pricing_data = dict(pricing_data)  # shallow copy
             # Parse nested ROIExample objects
             if "roi_examples" in pricing_data:
                 pricing_data["roi_examples"] = [
@@ -483,6 +488,7 @@ class IndustryProfileLoader:
         market_data = data.get("market_context")
         market_context = None
         if market_data:
+            market_data = dict(market_data)  # shallow copy
             # Parse nested Seasonality
             if "seasonality" in market_data and isinstance(market_data["seasonality"], dict):
                 market_data["seasonality"] = Seasonality(**market_data["seasonality"])

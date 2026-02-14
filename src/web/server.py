@@ -132,21 +132,35 @@ async def _lifespan(application: FastAPI):
             await lk_api.aclose()
 
     # 3. Start runtime status cleanup loop
-    async def _cleanup_loop():
-        while True:
-            await asyncio.sleep(300)  # 5 minutes
-            now = time.time()
-            stale = [k for k, v in dict(_runtime_statuses).items() if now - v.get("updated_at", 0) > 3600]
-            for k in stale:
-                _runtime_statuses.pop(k, None)
-            if stale:
-                logger.debug("runtime_statuses_cleaned", evicted=len(stale))
+    # R17-03: Track cleanup task for graceful cancellation on shutdown
+    _cleanup_task = None
 
-    _track_task(asyncio.create_task(_cleanup_loop()))
+    async def _cleanup_loop():
+        try:
+            while True:
+                await asyncio.sleep(300)  # 5 minutes
+                now = time.time()
+                stale = [k for k, v in dict(_runtime_statuses).items() if now - v.get("updated_at", 0) > 3600]
+                for k in stale:
+                    _runtime_statuses.pop(k, None)
+                if stale:
+                    logger.debug("runtime_statuses_cleaned", evicted=len(stale))
+        except asyncio.CancelledError:
+            pass  # Graceful shutdown
+
+    _cleanup_task = asyncio.create_task(_cleanup_loop())
+    _track_task(_cleanup_task)
 
     yield  # --- App running ---
 
     # --- Shutdown ---
+    # R17-03: Cancel cleanup loop before closing other resources
+    if _cleanup_task and not _cleanup_task.done():
+        _cleanup_task.cancel()
+        try:
+            await _cleanup_task
+        except asyncio.CancelledError:
+            pass
     try:
         session_mgr.close()
         logger.info("session_manager_closed")
@@ -821,11 +835,14 @@ async def confirm_session(session_id: str):
     _runtime_statuses.pop(session_id, None)  # R4-32: cleanup on terminal state
     session_log.info("session_confirmed", session_id=session_id)
 
+    # R17-15: Re-read session after status update so notification gets fresh state
+    fresh_session = session_mgr.get_session(session_id) or session
+
     # Trigger notifications in background
     try:
         from src.notifications import NotificationManager
         notifier = NotificationManager()
-        _track_task(asyncio.create_task(notifier.on_session_confirmed(session)))
+        _track_task(asyncio.create_task(notifier.on_session_confirmed(fresh_session)))
     except Exception as e:
         logger.warning("notification_trigger_failed", error=str(e))
 

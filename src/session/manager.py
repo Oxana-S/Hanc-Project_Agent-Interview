@@ -589,7 +589,8 @@ class SessionManager:
             session = self.get_session(session_id)
             if not session:
                 return False
-            existing = session.voice_config or {}
+            # R17-05: Copy to avoid mutating in-memory session object
+            existing = dict(session.voice_config) if session.voice_config else {}
             existing.update(config_updates)
             now = datetime.now(timezone.utc)
             cursor = self._conn.execute(

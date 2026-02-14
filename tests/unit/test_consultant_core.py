@@ -1637,13 +1637,22 @@ class TestGetVerbosityPromptPrefix:
 class TestApplyVerbosityUpdate:
     """Tests for _apply_verbosity_update() async function."""
 
+    def _make_consultation(self, latest_instructions=None):
+        """Create a consultation mock with required attributes for _apply_verbosity_update."""
+        c = MagicMock()
+        c._latest_instructions = latest_instructions
+        c._agent_speaking = False
+        c._pending_instructions = None
+        return c
+
     @pytest.mark.asyncio
     async def test_no_activity_logs_warning(self):
         """If agent_session has no _activity, log warning and return."""
+        consultation = self._make_consultation()
         agent_session = MagicMock()
         agent_session._activity = None
         log = MagicMock()
-        await _apply_verbosity_update(agent_session, "concise", log)
+        await _apply_verbosity_update(consultation, agent_session, "concise", log)
         log.warning.assert_called_once()
 
     @pytest.mark.asyncio
@@ -1658,7 +1667,12 @@ class TestApplyVerbosityUpdate:
         agent_session._activity = activity
         log = MagicMock()
 
-        await _apply_verbosity_update(agent_session, "verbose", log)
+        # R17-06: _latest_instructions is the source of truth
+        consultation = self._make_consultation(
+            latest_instructions=concise_prefix + "Base system prompt here"
+        )
+
+        await _apply_verbosity_update(consultation, agent_session, "verbose", log)
 
         activity.update_instructions.assert_called_once()
         new_instructions = activity.update_instructions.call_args[0][0]
@@ -1679,7 +1693,11 @@ class TestApplyVerbosityUpdate:
         agent_session._activity = activity
         log = MagicMock()
 
-        await _apply_verbosity_update(agent_session, "normal", log)
+        consultation = self._make_consultation(
+            latest_instructions=verbose_prefix + "Base prompt"
+        )
+
+        await _apply_verbosity_update(consultation, agent_session, "normal", log)
 
         new_instructions = activity.update_instructions.call_args[0][0]
         assert new_instructions == "Base prompt"
@@ -1695,7 +1713,11 @@ class TestApplyVerbosityUpdate:
         agent_session._activity = activity
         log = MagicMock()
 
-        await _apply_verbosity_update(agent_session, "concise", log)
+        consultation = self._make_consultation(
+            latest_instructions="Base prompt without prefix"
+        )
+
+        await _apply_verbosity_update(consultation, agent_session, "concise", log)
 
         new_instructions = activity.update_instructions.call_args[0][0]
         concise_prefix = _VERBOSITY_PREFIXES["concise"]
@@ -1714,7 +1736,9 @@ class TestApplyVerbosityUpdate:
         agent_session._activity = activity
         log = MagicMock()
 
-        await _apply_verbosity_update(agent_session, "verbose", log)
+        consultation = self._make_consultation(latest_instructions=full_prompt)
+
+        await _apply_verbosity_update(consultation, agent_session, "verbose", log)
 
         new_instructions = activity.update_instructions.call_args[0][0]
         verbose_prefix = _VERBOSITY_PREFIXES["verbose"]
@@ -1733,6 +1757,30 @@ class TestApplyVerbosityUpdate:
         agent_session._activity = activity
         log = MagicMock()
 
+        consultation = self._make_consultation(latest_instructions="Base prompt")
+
         # Should not raise
-        await _apply_verbosity_update(agent_session, "concise", log)
+        await _apply_verbosity_update(consultation, agent_session, "concise", log)
         log.warning.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_buffers_when_agent_speaking(self):
+        """R17-05: When agent is speaking, instructions should be buffered."""
+        activity = MagicMock()
+        activity.instructions = "Base prompt"
+        activity.update_instructions = AsyncMock()
+
+        agent_session = MagicMock()
+        agent_session._activity = activity
+        log = MagicMock()
+
+        consultation = self._make_consultation(latest_instructions="Base prompt")
+        consultation._agent_speaking = True  # Agent is currently speaking
+
+        await _apply_verbosity_update(consultation, agent_session, "concise", log)
+
+        # Should NOT call update_instructions directly (buffered instead)
+        activity.update_instructions.assert_not_called()
+        # Should buffer instructions for later
+        concise_prefix = _VERBOSITY_PREFIXES["concise"]
+        assert consultation._pending_instructions == concise_prefix + "Base prompt"
