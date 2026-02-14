@@ -142,20 +142,22 @@ class JSONRepair:
         in_string = False
         escape_next = False
 
+        # R11-04: Fix escape handling — only process escapes inside strings
         for i, char in enumerate(text[start:], start):
             if escape_next:
                 escape_next = False
                 continue
 
-            if char == '\\':
-                escape_next = True
-                continue
-
-            if char == '"' and not escape_next:
-                in_string = not in_string
-                continue
-
             if in_string:
+                if char == '\\':
+                    escape_next = True
+                    continue
+                if char == '"':
+                    in_string = False
+                continue
+
+            if char == '"':
+                in_string = True
                 continue
 
             if char == '{':

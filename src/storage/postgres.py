@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, Column, String, DateTime, JSON, Float, Int
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.exc import SQLAlchemyError
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional, List
 import structlog
 
@@ -32,7 +32,7 @@ class AnketaDB(Base):
     anketa_id = Column(String, primary_key=True)
     interview_id = Column(String, unique=True, nullable=False, index=True)
     pattern = Column(String, nullable=False, index=True)  # 'interaction' or 'management'
-    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
     company_name = Column(String, nullable=False, index=True)
     industry = Column(String, nullable=False, index=True)
 
@@ -48,7 +48,7 @@ class InterviewSessionDB(Base):
     interview_id = Column(String, unique=True, nullable=False, index=True)
     pattern = Column(SQLEnum(InterviewPattern), nullable=False, index=True)
     
-    started_at = Column(DateTime, default=datetime.utcnow, index=True)
+    started_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
     completed_at = Column(DateTime, nullable=True, index=True)
     status = Column(String, nullable=False, index=True)
     
@@ -71,7 +71,7 @@ class LearningDB(Base):
     insight = Column(Text, nullable=False)
     source = Column(String, nullable=True, index=True)
     is_success = Column(String, default="false", index=True)
-    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), index=True)
 
 
 # ===== STORAGE MANAGER =====
@@ -94,7 +94,11 @@ class PostgreSQLStorageManager:
         # Создаём таблицы если их нет
         Base.metadata.create_all(self.engine)
         
-        logger.info("postgresql_connected", database_url=database_url)
+        # R11-07: Mask credentials in log output
+        from urllib.parse import urlparse
+        _parsed = urlparse(database_url)
+        _safe_url = f"{_parsed.scheme}://{_parsed.hostname}:{_parsed.port}/{_parsed.path.lstrip('/')}"
+        logger.info("postgresql_connected", database_url=_safe_url)
     
     def _get_session(self) -> Session:
         """Получить сессию БД"""

@@ -160,7 +160,7 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock) as mock_notify, \
-             patch("src.voice.consultant.IndustryKnowledgeManager"), \
+             patch("src.voice.consultant._get_kb_manager"), \
              patch("src.voice.consultant.EnrichedContextBuilder"), \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None), \
@@ -192,7 +192,7 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock, side_effect=Exception("SMTP down")), \
-             patch("src.voice.consultant.IndustryKnowledgeManager"), \
+             patch("src.voice.consultant._get_kb_manager"), \
              patch("src.voice.consultant.EnrichedContextBuilder"), \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None), \
@@ -370,7 +370,7 @@ class TestRecordLearningWiring:
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock), \
@@ -412,7 +412,7 @@ class TestRecordLearningWiring:
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock), \
@@ -460,7 +460,7 @@ class TestCountryDetectorWiring:
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.knowledge.country_detector.get_country_detector") as mock_cd_fn, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls:
 
             mock_mgr.get_session.return_value = _make_db_session()
@@ -507,7 +507,7 @@ class TestCountryDetectorWiring:
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.knowledge.country_detector.get_country_detector") as mock_cd_fn, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls:
 
             mock_mgr.get_session.return_value = _make_db_session()
@@ -805,7 +805,7 @@ class TestRedisWiring:
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock), \
@@ -915,7 +915,7 @@ class TestPostgreSQLWiring:
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock), \
@@ -958,7 +958,7 @@ class TestPostgreSQLWiring:
              patch("src.voice.consultant.finalize_consultation", new_callable=AsyncMock), \
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager.on_session_confirmed",
                    new_callable=AsyncMock), \

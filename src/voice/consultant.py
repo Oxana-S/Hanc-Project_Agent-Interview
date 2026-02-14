@@ -284,7 +284,7 @@ def get_enriched_system_prompt(
         return base_prompt
 
     try:
-        manager = IndustryKnowledgeManager()
+        manager = _get_kb_manager()
         builder = EnrichedContextBuilder(manager)
 
         voice_context = builder.build_for_voice_full(
@@ -415,6 +415,18 @@ def _build_resume_context(db_session) -> str:
 # ---------------------------------------------------------------------------
 
 _session_mgr = SessionManager()
+
+# R11-08: Cached IndustryKnowledgeManager singleton (avoids re-reading 968 YAML files)
+_kb_manager = None
+
+
+def _get_kb_manager():
+    """Get or create cached IndustryKnowledgeManager singleton."""
+    global _kb_manager
+    if _kb_manager is None:
+        _kb_manager = _get_kb_manager()
+    return _kb_manager
+
 
 # --- Optional Redis cache for active voice sessions ---
 _redis_mgr = None
@@ -1154,7 +1166,7 @@ async def _extract_and_update_anketa(
             consultation.research_done = True  # set early to prevent duplicates
             industry_id_for_research = None
             try:
-                mgr = IndustryKnowledgeManager()
+                mgr = _get_kb_manager()
                 user_text_r = " ".join(
                     m.get("content", "") for m in consultation.dialogue_history
                     if m.get("role") == "user"
@@ -1168,6 +1180,7 @@ async def _extract_and_update_anketa(
                 industry=industry_id_for_research,
                 company_name=anketa.company_name,
             ))
+            _track_agent_task(task)  # R11-10: Prevent GC before completion
             def _research_done(t):
                 if t.cancelled():
                     return
@@ -1210,7 +1223,7 @@ async def _extract_and_update_anketa(
                         m.get("content", "") for m in consultation.dialogue_history
                         if m.get("role") == "user"
                     )
-                    manager = IndustryKnowledgeManager()
+                    manager = _get_kb_manager()
                     industry_id = manager.detect_industry(user_text)
 
                     if industry_id:
@@ -1239,7 +1252,7 @@ async def _extract_and_update_anketa(
 
                     if new_phase != consultation.current_phase or not consultation.kb_enriched:
                         consultation.current_phase = new_phase
-                        builder = EnrichedContextBuilder(IndustryKnowledgeManager())
+                        builder = EnrichedContextBuilder(_get_kb_manager())
                         voice_context = builder.build_for_voice_full(
                             consultation.dialogue_history,
                             profile=consultation.detected_profile,
@@ -1322,7 +1335,7 @@ async def _extract_and_update_anketa(
                     if activity and hasattr(activity, 'update_instructions'):
                         base_prompt = get_system_prompt()
                         if consultation.kb_enriched and consultation.detected_profile:
-                            builder = EnrichedContextBuilder(IndustryKnowledgeManager())
+                            builder = EnrichedContextBuilder(_get_kb_manager())
                             voice_context = builder.build_for_voice_full(
                                 consultation.dialogue_history,
                                 profile=consultation.detected_profile,
@@ -1480,7 +1493,7 @@ async def _finalize_and_save(
 
     # --- Record learning for industry KB ---
     try:
-        manager = IndustryKnowledgeManager()
+        manager = _get_kb_manager()
         builder = EnrichedContextBuilder(manager)
         industry_id = builder.get_industry_id(consultation.dialogue_history)
         if industry_id and session.anketa_data:
@@ -1689,9 +1702,9 @@ def _register_event_handlers(
             if consultation._pending_instructions:
                 pending = consultation._pending_instructions
                 consultation._pending_instructions = None
-                asyncio.create_task(
+                _track_agent_task(asyncio.create_task(
                     _update_instructions_safe(consultation, session, pending)
-                )
+                ))  # R11-10: Prevent GC before completion
                 anketa_log.debug("buffered_instructions_applied")
 
     @session.on("speech_created")
@@ -1974,7 +1987,7 @@ def _apply_voice_config_update(realtime_model, config_state: dict, session_id: s
             import asyncio
             try:
                 loop = asyncio.get_running_loop()
-                loop.create_task(_apply_verbosity_update(agent_session, new_verbosity, log))
+                _track_agent_task(loop.create_task(_apply_verbosity_update(agent_session, new_verbosity, log)))  # R11-19
             except RuntimeError:
                 log.warning("verbosity update skipped: no running event loop")
 

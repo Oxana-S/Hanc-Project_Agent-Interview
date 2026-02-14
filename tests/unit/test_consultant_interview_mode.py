@@ -17,7 +17,7 @@ Patch rules: always target SOURCE modules, not consultant.
 - patch("src.voice.consultant.AnketaExtractor") for the extractor
 - patch("src.voice.consultant.AnketaGenerator") for the generator
 - patch("src.voice.consultant.get_prompt") for prompt loading
-- patch("src.voice.consultant.IndustryKnowledgeManager") for KB
+- patch("src.voice.consultant._get_kb_manager") for KB
 """
 
 import asyncio
@@ -397,7 +397,7 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -457,7 +457,7 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -504,7 +504,7 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -604,7 +604,7 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -655,7 +655,7 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb, \
              patch("src.notifications.manager.NotificationManager") as mock_notif, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
@@ -751,7 +751,7 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._get_missing_interview_fields", return_value=[]):
 
@@ -787,7 +787,7 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.voice.consultant._try_get_redis", return_value=None):
 
@@ -920,7 +920,7 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant._try_get_redis", return_value=None):
 
             mock_mgr.get_session.return_value = db_session
@@ -1025,7 +1025,7 @@ class TestResearchSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant.asyncio") as mock_asyncio:
 

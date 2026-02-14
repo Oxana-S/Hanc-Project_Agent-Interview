@@ -37,7 +37,7 @@ class ResearchResult(BaseModel):
 
     # Метаданные
     sources_used: List[str] = Field(default_factory=list)
-    research_timestamp: datetime = Field(default_factory=datetime.utcnow)
+    research_timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     confidence_score: float = 0.0
 
     def has_data(self) -> bool:

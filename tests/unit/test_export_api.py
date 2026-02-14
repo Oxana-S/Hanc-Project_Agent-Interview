@@ -285,12 +285,14 @@ class TestExportErrors:
         resp = client.get(f"/api/session/{sid}/export/csv")
         assert resp.status_code == 400
 
-    def test_unsupported_format_error_detail_mentions_format(self, client, created_session):
+    def test_unsupported_format_error_detail_does_not_reflect_input(self, client, created_session):
+        """R11-20: Error message should NOT reflect user input (XSS prevention)."""
         sid = created_session["session_id"]
         resp = client.get(f"/api/session/{sid}/export/docx")
         data = resp.json()
         assert "detail" in data
-        assert "docx" in data["detail"]
+        assert "docx" not in data["detail"]  # User input not reflected
+        assert "Unsupported" in data["detail"]
 
     def test_unsupported_format_error_lists_supported(self, client, created_session):
         """Error message should mention the supported formats: md, pdf."""

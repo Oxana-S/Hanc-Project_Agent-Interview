@@ -170,33 +170,35 @@ class SessionManager:
             )
 
             try:
-                self._conn.execute(
-                    """
-                    INSERT INTO sessions (
-                        session_id, room_name, unique_link, status,
-                        created_at, updated_at, dialogue_history,
-                        anketa_data, anketa_md, company_name, contact_name,
-                        duration_seconds, output_dir, voice_config
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """,
-                    (
-                        session.session_id,
-                        session.room_name,
-                        session.unique_link,
-                        session.status,
-                        session.created_at.isoformat(),
-                        session.updated_at.isoformat(),
-                        json.dumps(session.dialogue_history, ensure_ascii=False),
-                        None,  # anketa_data
-                        None,  # anketa_md
-                        None,  # company_name
-                        None,  # contact_name
-                        session.duration_seconds,
-                        None,  # output_dir
-                        json.dumps(voice_config, ensure_ascii=False) if voice_config else None,
-                    ),
-                )
-                self._conn.commit()
+                # R11-03: Lock for thread safety (consistent with all other write methods)
+                with self._lock:
+                    self._conn.execute(
+                        """
+                        INSERT INTO sessions (
+                            session_id, room_name, unique_link, status,
+                            created_at, updated_at, dialogue_history,
+                            anketa_data, anketa_md, company_name, contact_name,
+                            duration_seconds, output_dir, voice_config
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """,
+                        (
+                            session.session_id,
+                            session.room_name,
+                            session.unique_link,
+                            session.status,
+                            session.created_at.isoformat(),
+                            session.updated_at.isoformat(),
+                            json.dumps(session.dialogue_history, ensure_ascii=False),
+                            None,  # anketa_data
+                            None,  # anketa_md
+                            None,  # company_name
+                            None,  # contact_name
+                            session.duration_seconds,
+                            None,  # output_dir
+                            json.dumps(voice_config, ensure_ascii=False) if voice_config else None,
+                        ),
+                    )
+                    self._conn.commit()
             except sqlite3.IntegrityError:
                 if attempt < max_retries - 1:
                     logger.warning("session_id_collision", session_id=session.session_id, attempt=attempt + 1)

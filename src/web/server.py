@@ -306,6 +306,11 @@ async def list_sessions(status: str = None, limit: int = 50, offset: int = 0):
     """List all sessions (lightweight summaries for dashboard)."""
     limit = min(max(limit, 1), 200)  # R4-20: bound limit param
     offset = max(offset, 0)
+    # R11-09: Validate status parameter
+    if status is not None:
+        from src.session.models import VALID_STATUSES
+        if status not in VALID_STATUSES:
+            raise HTTPException(status_code=400, detail=f"Invalid status. Valid: {sorted(VALID_STATUSES)}")
     sessions, total_count = session_mgr.list_sessions_summary(status, limit, offset)
     return {"sessions": sessions, "total": total_count}
 
@@ -409,6 +414,7 @@ async def create_session(req: CreateSessionRequest):
         )
 
     # Step 3: Create LiveKit room
+    lk_api = None  # R11-18: Initialize before try to prevent UnboundLocalError
     try:
         lk_api = LiveKitAPI(
             url=livekit_url,
@@ -440,11 +446,12 @@ async def create_session(req: CreateSessionRequest):
             room_name=room_name,
         )
         # R9-11: Close lk_api before nullifying to prevent resource leak
-        try:
-            await lk_api.aclose()
-        except Exception:
-            pass
-        lk_api = None
+        if lk_api:
+            try:
+                await lk_api.aclose()
+            except Exception:
+                pass
+            lk_api = None
 
     # Step 4: Dispatch agent to the room
     if lk_api:
@@ -570,6 +577,9 @@ async def update_runtime_status(session_id: str, req: dict):
     valid = {"idle", "processing", "completing", "completed", "error"}
     if status not in valid:
         raise HTTPException(status_code=400, detail=f"Invalid runtime_status: {status}")
+    # R11-15: Cap cache size to prevent memory exhaustion from unauthenticated requests
+    if session_id not in _runtime_statuses and len(_runtime_statuses) > 10000:
+        raise HTTPException(status_code=503, detail="Runtime status cache full")
     _runtime_statuses[session_id] = {"runtime_status": status, "updated_at": time.time()}
     return {"ok": True}
 
@@ -970,9 +980,13 @@ async def reconnect_session_post(session_id: str):
     }
 
 
-@app.get("/api/session/{session_id}/export/{format}")
-async def export_session(session_id: str, format: str):
+@app.get("/api/session/{session_id}/export/{export_format}")
+async def export_session(session_id: str, export_format: str):
     """Export session anketa in the requested format (md or pdf/print-html)."""
+    # R11-20: Whitelist validation first (don't reflect user input in error)
+    if export_format not in ("md", "pdf"):
+        raise HTTPException(status_code=400, detail="Unsupported export format. Supported: md, pdf")
+
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -982,7 +996,7 @@ async def export_session(session_id: str, format: str):
     voice_config = session.voice_config if session.voice_config else {}
     session_type = voice_config.get("consultation_type", "consultation")
 
-    if format == "md":
+    if export_format == "md":
         from src.anketa.exporter import export_markdown
 
         content, filename = export_markdown(anketa_md or "", company_name or "")
@@ -993,7 +1007,7 @@ async def export_session(session_id: str, format: str):
             headers={"Content-Disposition": _safe_content_disposition("attachment", filename)},
         )
 
-    elif format == "pdf":
+    else:  # pdf
         from src.anketa.exporter import export_print_html
 
         content, filename = export_print_html(
@@ -1004,12 +1018,6 @@ async def export_session(session_id: str, format: str):
             content=content,
             media_type="text/html",
             headers={"Content-Disposition": _safe_content_disposition("inline", filename)},
-        )
-
-    else:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unsupported export format: {format}. Supported: md, pdf",
         )
 
 

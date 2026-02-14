@@ -540,7 +540,7 @@ class TestP2_KBReinjection:
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.knowledge.country_detector.get_country_detector") as mock_cd_fn, \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.voice.consultant.get_system_prompt", return_value="BASE PROMPT"):
 
@@ -619,7 +619,7 @@ class TestP2_KBReinjection:
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.voice.consultant.get_system_prompt", return_value="BASE"):
 
@@ -677,7 +677,7 @@ class TestP2_KBReinjection:
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km_cls, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km_cls, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb_cls, \
              patch("src.voice.consultant.get_system_prompt", return_value="BASE"):
 
@@ -717,7 +717,7 @@ class TestP2_EnrichedPromptPhase:
         dialogue = _make_dialogue(6)
 
         with patch("src.voice.consultant.get_prompt", return_value="BASE"), \
-             patch("src.voice.consultant.IndustryKnowledgeManager"), \
+             patch("src.voice.consultant._get_kb_manager"), \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb:
             mock_builder = MagicMock()
             mock_builder.build_for_voice_full.return_value = "KB DATA"
@@ -733,7 +733,7 @@ class TestP2_EnrichedPromptPhase:
 
         for phase in ["discovery", "analysis", "proposal", "refinement"]:
             with patch("src.voice.consultant.get_prompt", return_value="BASE"), \
-                 patch("src.voice.consultant.IndustryKnowledgeManager"), \
+                 patch("src.voice.consultant._get_kb_manager"), \
                  patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb:
                 mock_builder = MagicMock()
                 mock_builder.build_for_voice_full.return_value = f"Context for {phase}"

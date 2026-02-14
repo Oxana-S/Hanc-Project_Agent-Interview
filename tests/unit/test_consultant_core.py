@@ -257,8 +257,9 @@ class TestGetEnrichedSystemPrompt:
             {"role": "user", "content": "Мы логистическая компания"},
             {"role": "assistant", "content": "Расскажите подробнее"},
         ]
+        mock_km = MagicMock()
         with patch("src.voice.consultant.get_prompt", return_value="BASE PROMPT"), \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager", return_value=mock_km), \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb:
             mock_builder = MagicMock()
             mock_builder.build_for_voice_full.return_value = "Industry: logistics"
@@ -276,7 +277,7 @@ class TestGetEnrichedSystemPrompt:
             {"role": "assistant", "content": "Hello"},
         ]
         with patch("src.voice.consultant.get_prompt", return_value="BASE PROMPT"), \
-             patch("src.voice.consultant.IndustryKnowledgeManager", side_effect=Exception("KB error")):
+             patch("src.voice.consultant._get_kb_manager", side_effect=Exception("KB error")):
             result = get_enriched_system_prompt(dialogue)
             assert result == "BASE PROMPT"
 
@@ -287,7 +288,7 @@ class TestGetEnrichedSystemPrompt:
             {"role": "assistant", "content": "Hello"},
         ]
         with patch("src.voice.consultant.get_prompt", return_value="BASE PROMPT"), \
-             patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
+             patch("src.voice.consultant._get_kb_manager") as mock_km, \
              patch("src.voice.consultant.EnrichedContextBuilder") as mock_ecb:
             mock_builder = MagicMock()
             mock_builder.build_for_voice_full.return_value = None  # No context available
