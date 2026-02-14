@@ -8,6 +8,7 @@ Thread-safe with check_same_thread=False.
 
 import json
 import sqlite3
+import threading
 import uuid
 from datetime import datetime
 from pathlib import Path
@@ -44,7 +45,8 @@ class SessionManager:
         db_dir = Path(db_path).parent
         db_dir.mkdir(parents=True, exist_ok=True)
 
-        # Connect to SQLite (thread-safe)
+        # Connect to SQLite + thread lock for concurrent access safety (R5-04)
+        self._lock = threading.Lock()
         self._conn = sqlite3.connect(db_path, check_same_thread=False)
         self._conn.row_factory = sqlite3.Row
 
@@ -318,6 +320,12 @@ class SessionManager:
         Returns:
             True if the session was found and updated, False otherwise.
         """
+        # R5-04: Lock the entire read-modify-write cycle to prevent data races
+        with self._lock:
+            return self._update_anketa_locked(session_id, anketa_data, anketa_md)
+
+    def _update_anketa_locked(self, session_id: str, anketa_data: dict, anketa_md: str = None) -> bool:
+        """Internal locked implementation of update_anketa."""
         # 1. Read existing anketa to preserve LLM-extracted data
         session = self.get_session(session_id)
         if not session:

@@ -56,6 +56,18 @@ from src.session.manager import SessionManager
 from src.session.models import SessionStatus
 from src.session.exceptions import InvalidTransitionError
 
+import re as _re
+
+# R5-09: Session ID format pattern (hex UUID prefix)
+_SESSION_ID_RE = _re.compile(r'^[a-f0-9]{8}$')
+
+
+def _validate_session_id(session_id: str):
+    """Validate session_id format to prevent path traversal."""
+    if not _SESSION_ID_RE.match(session_id):
+        raise HTTPException(status_code=400, detail="Invalid session_id format")
+
+
 logger = structlog.get_logger("server")
 livekit_log = structlog.get_logger("livekit")
 session_log = structlog.get_logger("session")
@@ -106,6 +118,46 @@ async def _cleanup_stale_rooms():
     finally:
         if lk_api:
             await lk_api.aclose()
+
+
+@app.on_event("startup")
+async def _validate_config():
+    """R5-12: Validate required environment variables at startup."""
+    required = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
+    missing = [k for k in required if not os.getenv(k)]
+    if missing:
+        logger.error("missing_required_env_vars", vars=missing)
+        # Don't crash — log clearly so the operator notices
+        logger.warning("Server will start but LiveKit features will be unavailable")
+
+
+@app.on_event("shutdown")
+async def _shutdown():
+    """R5-05: Graceful shutdown — close DB and cleanup resources."""
+    try:
+        session_mgr.close()
+        logger.info("session_manager_closed")
+    except Exception as e:
+        logger.warning("shutdown_close_failed", error=str(e))
+    # Close shared httpx client if voice module loaded it
+    try:
+        from src.voice.consultant import _shared_http_client
+        if _shared_http_client and not _shared_http_client.is_closed:
+            await _shared_http_client.aclose()
+    except Exception:
+        pass
+    logger.info("server_shutdown_complete")
+
+
+# R5-20: Background task reference set (prevent GC of fire-and-forget tasks)
+_background_tasks: set = set()
+
+
+def _track_task(task):
+    """Keep a reference to a background task to prevent GC."""
+    _background_tasks.add(task)
+    task.add_done_callback(_background_tasks.discard)
+
 
 # ---------------------------------------------------------------------------
 # Pydantic request / response models
@@ -670,7 +722,7 @@ async def confirm_session(session_id: str):
     try:
         from src.notifications import NotificationManager
         notifier = NotificationManager()
-        asyncio.create_task(notifier.on_session_confirmed(session))
+        _track_task(asyncio.create_task(notifier.on_session_confirmed(session)))
     except Exception as e:
         logger.warning("notification_trigger_failed", error=str(e))
 
@@ -982,6 +1034,7 @@ async def upload_documents(
     with LLM, stores DocumentContext in the session, and triggers
     immediate anketa extraction enriched with document data.
     """
+    _validate_session_id(session_id)  # R5-09: prevent path traversal
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -1086,6 +1139,7 @@ async def upload_documents(
     task = asyncio.create_task(
         _extract_anketa_with_documents(session_id, doc_context)
     )
+    _track_task(task)
     def _log_bg_task_error(t):
         if not t.cancelled() and t.exception():
             logger.error("background_extraction_failed", error=str(t.exception()))
