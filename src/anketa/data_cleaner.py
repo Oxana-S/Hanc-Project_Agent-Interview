@@ -836,10 +836,11 @@ class AnketaPostProcessor:
         defaults_applied = []
         result = dict(data)
 
+        # Only inject defaults for technical fields that have safe defaults
+        # User-specified fields (voice_tone, agent_name) must NOT have defaults —
+        # they should be extracted from dialogue or left empty
         defaults = {
             'language': 'ru',
-            'voice_gender': 'female',
-            'voice_tone': 'professional',
             'call_direction': 'inbound',
         }
 
@@ -847,10 +848,5 @@ class AnketaPostProcessor:
             if not result.get(field):
                 result[field] = default_value
                 defaults_applied.append(f"{field} = '{default_value}'")
-
-        # Generate agent_name if missing
-        if not result.get('agent_name') and result.get('company_name'):
-            result['agent_name'] = f"Ассистент {result['company_name']}"
-            defaults_applied.append(f"agent_name = '{result['agent_name']}'")
 
         return result, defaults_applied

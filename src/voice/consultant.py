@@ -485,6 +485,69 @@ async def _update_anketa_via_api(
         return False
 
 
+async def _update_dialogue_via_api(
+    session_id: str,
+    dialogue_history: list,
+    duration_seconds: float,
+    status: str = None
+) -> bool:
+    """
+    Update dialogue history via web server API instead of direct database write.
+
+    Same pattern as _update_anketa_via_api — prevents SQLite WAL isolation issue
+    where voice agent writes are not visible to web server.
+    """
+    server_url = os.getenv("WEB_SERVER_URL", "http://localhost:8000")
+    url = f"{server_url}/api/session/{session_id}/dialogue"
+
+    payload = {
+        "dialogue_history": dialogue_history,
+        "duration_seconds": duration_seconds,
+    }
+    if status:
+        payload["status"] = status
+
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.put(url, json=payload)
+
+            if response.status_code == 200:
+                logger.info(
+                    "dialogue_updated_via_api",
+                    session_id=session_id,
+                    messages=len(dialogue_history),
+                )
+                return True
+            else:
+                logger.warning(
+                    "dialogue_api_update_failed",
+                    session_id=session_id,
+                    status_code=response.status_code,
+                    response=response.text
+                )
+                return False
+
+    except Exception as e:
+        logger.error(
+            "dialogue_api_update_error",
+            session_id=session_id,
+            error=str(e),
+        )
+        # Fallback to direct DB write
+        try:
+            _session_mgr.update_dialogue(
+                session_id,
+                dialogue_history=dialogue_history,
+                duration_seconds=duration_seconds,
+                status=status,
+            )
+            logger.info("dialogue_saved_via_direct_db_fallback", session_id=session_id)
+            return True
+        except Exception as db_err:
+            logger.error("dialogue_direct_db_fallback_failed", error=str(db_err))
+            return False
+
+
 async def _run_background_research(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -658,6 +721,155 @@ def _check_required_fields(anketa_data: dict) -> bool:
     return True
 
 
+# Human-readable labels for missing fields reminder
+_FIELD_LABELS = {
+    # Блок 1: Компания
+    "company_name": "название компании (конкретный бренд)",
+    "industry": "отрасль",
+    "specialization": "специализация",
+    "business_description": "описание деятельности",
+    "business_type": "тип бизнеса (B2B/B2C)",
+    "website": "сайт компании",
+    # Блок 2: Услуги
+    "services": "услуги/продукты",
+    "client_types": "типы клиентов",
+    "current_problems": "текущие проблемы/боли",
+    "business_goals": "цели автоматизации",
+    # Блок 3: Агент
+    "agent_name": "имя агента",
+    "agent_purpose": "назначение агента",
+    "agent_functions": "задачи для автоматизации",
+    "integrations": "интеграции с системами",
+    "voice_gender": "пол голоса агента",
+    "voice_tone": "тон голоса агента",
+    "call_direction": "направление звонков",
+    "working_hours": "часы работы",
+    "transfer_conditions": "условия перевода на оператора",
+    # Блок 4: Контакты
+    "contact_name": "имя контактного лица",
+    "contact_role": "должность",
+    "contact_phone": "телефон",
+    "contact_email": "email",
+    # Блок 5: Дополнительно
+    "constraints": "ограничения",
+    "compliance_requirements": "требования регулятора",
+    "call_volume": "объём звонков",
+    "budget": "бюджет",
+    "timeline": "сроки внедрения",
+}
+
+
+def _get_missing_fields(anketa_data: dict) -> List[str]:
+    """
+    Return list of human-readable labels for fields that are still empty.
+
+    Checks ALL discovery+agent fields (not just required 15).
+    This is used to inject a dynamic reminder into agent instructions.
+    """
+    missing = []
+    for field, label in _FIELD_LABELS.items():
+        value = anketa_data.get(field)
+        # Also check alternate names for contact fields
+        if field == "contact_phone":
+            value = value or anketa_data.get("phone")
+        elif field == "contact_email":
+            value = value or anketa_data.get("email")
+
+        is_empty = False
+        if value is None:
+            is_empty = True
+        elif isinstance(value, str) and not value.strip():
+            is_empty = True
+        elif isinstance(value, list) and (len(value) == 0 or value == [""]):
+            is_empty = True
+        elif isinstance(value, dict) and len(value) == 0:
+            is_empty = True
+
+        if is_empty:
+            missing.append(label)
+
+    return missing
+
+
+def _build_missing_fields_reminder(missing: List[str]) -> str:
+    """Build a prompt injection reminding the agent about missing fields."""
+    if not missing:
+        return ""
+
+    fields_list = "\n".join(f"  • {f}" for f in missing)
+    return f"""
+
+### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ ({len(missing)} из {len(_FIELD_LABELS)}):
+
+СТОП! Ты ещё НЕ собрал следующую информацию от клиента:
+{fields_list}
+
+ОБЯЗАТЕЛЬНО задай вопросы по этим полям ПРЕЖДЕ чем переходить к проверке анкеты!
+НЕ ПРЕДЛАГАЙ проверить анкету, пока не соберёшь хотя бы 25 из {len(_FIELD_LABELS)} полей.
+Задавай вопросы ЕСТЕСТВЕННО, по 1-2 за раз, НЕ перечисляй все сразу.
+"""
+
+
+# ---- Interview mode field labels ----
+_INTERVIEW_FIELD_LABELS = {
+    # Профиль респондента
+    "contact_name": "имя респондента",
+    "contact_role": "должность/роль",
+    "company_name": "организация респондента",
+    "contact_phone": "телефон",
+    "contact_email": "email",
+    "interviewee_industry": "отрасль респондента",
+    "interviewee_context": "контекст/бэкграунд респондента",
+    # Структура интервью
+    "interview_title": "тема интервью",
+    "interview_type": "тип интервью",
+    "target_topics": "целевые темы для обсуждения",
+    # Контент
+    "qa_pairs": "вопросы и ответы",
+    "detected_topics": "обнаруженные темы",
+    "key_quotes": "ключевые цитаты",
+}
+
+
+def _get_missing_interview_fields(anketa_data: dict) -> List[str]:
+    """Return list of human-readable labels for empty interview fields."""
+    missing = []
+    for field, label in _INTERVIEW_FIELD_LABELS.items():
+        value = anketa_data.get(field)
+
+        is_empty = False
+        if value is None:
+            is_empty = True
+        elif isinstance(value, str) and not value.strip():
+            is_empty = True
+        elif isinstance(value, list) and (len(value) == 0 or value == [""]):
+            is_empty = True
+
+        if is_empty:
+            missing.append(label)
+
+    return missing
+
+
+def _build_missing_interview_fields_reminder(missing: List[str]) -> str:
+    """Build a prompt injection reminding the interviewer about missing info."""
+    if not missing:
+        return ""
+
+    fields_list = "\n".join(f"  • {f}" for f in missing)
+    return f"""
+
+### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ ({len(missing)} из {len(_INTERVIEW_FIELD_LABELS)}):
+
+Ты ещё НЕ собрал следующую информацию от респондента:
+{fields_list}
+
+ОБЯЗАТЕЛЬНО задай вопросы по этим пунктам ПРЕЖДЕ чем переходить к резюме!
+НЕ ПРЕДЛАГАЙ подводить итоги, пока не соберёшь хотя бы 10 из {len(_INTERVIEW_FIELD_LABELS)} пунктов.
+Задавай вопросы ЕСТЕСТВЕННО, по одному за раз.
+"""
+
+
 def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
     """
     Исключить review phase из extraction.
@@ -741,7 +953,7 @@ async def _extract_and_update_anketa(
         import os
         import time
 
-        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
+        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '50'))
 
         dialogue_for_extraction = dialogue_filtered
         is_windowed = False
@@ -974,6 +1186,48 @@ async def _extract_and_update_anketa(
             except Exception as e:
                 anketa_log.warning("KB injection failed (non-fatal)", error=str(e))
 
+        # --- Missing fields reminder: inject dynamic list into agent instructions ---
+        if not consultation.review_started and agent_session is not None:
+            try:
+                if _consultation_type == "interview":
+                    # Interview mode: use interview-specific fields
+                    missing = _get_missing_interview_fields(anketa_data)
+                    if missing:
+                        reminder = _build_missing_interview_fields_reminder(missing)
+                        marker = "### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ"
+                    else:
+                        reminder = ""
+                        marker = None
+                else:
+                    # Consultation mode: use consultation-specific fields
+                    missing = _get_missing_fields(anketa_data)
+                    if missing:
+                        reminder = _build_missing_fields_reminder(missing)
+                        marker = "### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ"
+                    else:
+                        reminder = ""
+                        marker = None
+
+                if reminder:
+                    activity = getattr(agent_session, '_activity', None)
+                    if activity and hasattr(activity, 'update_instructions'):
+                        current_instructions = getattr(activity, 'instructions', '') or ''
+                        # Strip previous reminder if present (both markers)
+                        for m in ["### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ", "### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ"]:
+                            if m in current_instructions:
+                                current_instructions = current_instructions[:current_instructions.index(m)].rstrip()
+                        updated = current_instructions + reminder
+                        await activity.update_instructions(updated)
+                        anketa_log.info(
+                            "missing_fields_reminder_injected",
+                            session_id=session_id,
+                            mode=_consultation_type,
+                            missing_count=len(missing),
+                            missing_fields=missing[:5],  # Log first 5 for brevity
+                        )
+            except Exception as e:
+                anketa_log.warning("missing_fields_reminder_failed", error=str(e))
+
         # --- Review phase: switch to anketa verification when ready ---
         if not consultation.review_started and agent_session is not None:
             try:
@@ -1040,9 +1294,9 @@ async def _finalize_and_save(
     else:
         final_status = current_status
 
-    # Save dialogue + duration + status via field-specific update
-    # (no full session overwrite that could race with document_context/anketa)
-    _session_mgr.update_dialogue(
+    # Save dialogue + duration + status via HTTP API (not direct DB write)
+    # Voice agent = separate process → SQLite WAL isolates writes
+    await _update_dialogue_via_api(
         session_id,
         dialogue_history=consultation.dialogue_history,
         duration_seconds=consultation.get_duration_seconds(),
@@ -1347,23 +1601,22 @@ def _register_event_handlers(
         reason = getattr(event, 'reason', 'unknown')
         event_log.info(f"SESSION CLOSE: reason={reason}, messages={len(consultation.dialogue_history)}")
 
-        # CRITICAL FIX: Синхронное сохранение dialogue_history ПЕРЕД async finalization
-        # Агент выходит сразу после disconnect, поэтому async task может быть отменен
+        # Save dialogue BEFORE async finalization (agent may exit after disconnect)
+        # Use API to avoid SQLite WAL isolation issue (voice agent = separate process)
         if session_id and db_backed and consultation.dialogue_history:
             try:
-                # ✅ FIX БАГ #2: Read current status to preserve it (no status change here)
-                # Extraction is a background task, status stays ACTIVE until finalization
                 fresh_session = _session_mgr.get_session(session_id)
                 current_status = fresh_session.status if fresh_session else "active"
 
-                _session_mgr.update_dialogue(
+                # Schedule async API call (event loop is running in this handler)
+                asyncio.create_task(_update_dialogue_via_api(
                     session_id,
                     dialogue_history=consultation.dialogue_history,
                     duration_seconds=consultation.get_duration_seconds(),
-                    status=current_status,  # ✅ Preserve current status (no change)
-                )
+                    status=current_status,
+                ))
                 event_log.info(
-                    "dialogue_saved_sync",
+                    "dialogue_save_scheduled",
                     extra={
                         "session_id": session_id,
                         "messages": len(consultation.dialogue_history),
@@ -1371,7 +1624,7 @@ def _register_event_handlers(
                     }
                 )
             except Exception as e:
-                event_log.error(f"Failed to save dialogue_history: {e}")
+                event_log.error(f"Failed to schedule dialogue save: {e}")
 
         # Затем запускаем async финализацию (anketa extraction, file writes)
         asyncio.create_task(_finalize_and_save(consultation, session_id))

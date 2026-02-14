@@ -746,7 +746,8 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
              patch("src.voice.consultant.IndustryKnowledgeManager") as mock_km, \
-             patch("src.voice.consultant._try_get_redis", return_value=None):
+             patch("src.voice.consultant._try_get_redis", return_value=None), \
+             patch("src.voice.consultant._get_missing_interview_fields", return_value=[]):
 
             mock_mgr.get_session.return_value = db_session
             mock_extractor = AsyncMock()
@@ -761,7 +762,7 @@ class TestKBEnrichmentSkipForInterview:
             # since research is also skipped for interview mode, it should
             # not be called at all.
             # The key assertion: update_instructions should NOT be called
-            # for KB enrichment
+            # for KB enrichment (missing fields reminder also returns empty)
             agent_session._activity.update_instructions.assert_not_called()
 
     @pytest.mark.asyncio
@@ -827,7 +828,8 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant._try_get_redis", return_value=None):
+             patch("src.voice.consultant._try_get_redis", return_value=None), \
+             patch("src.voice.consultant._get_missing_interview_fields", return_value=[]):
 
             mock_mgr.get_session.return_value = db_session
             mock_extractor = AsyncMock()
@@ -838,6 +840,7 @@ class TestKBEnrichmentSkipForInterview:
             await _extract_and_update_anketa(consultation, "test-001", agent_session)
 
             # update_instructions should NOT be called — no KB injection
+            # (missing fields reminder also returns empty)
             agent_session._activity.update_instructions.assert_not_called()
             # kb_enriched should remain False
             assert consultation.kb_enriched is False
@@ -941,7 +944,8 @@ class TestKBEnrichmentSkipForInterview:
              patch("src.voice.consultant.create_llm_client"), \
              patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
              patch("src.voice.consultant.AnketaGenerator") as mock_gen, \
-             patch("src.voice.consultant._try_get_redis", return_value=None):
+             patch("src.voice.consultant._try_get_redis", return_value=None), \
+             patch("src.voice.consultant._get_missing_interview_fields", return_value=[]):
 
             mock_mgr.get_session.return_value = db_session
             mock_extractor = AsyncMock()
@@ -952,6 +956,7 @@ class TestKBEnrichmentSkipForInterview:
             await _extract_and_update_anketa(consultation, "test-001", agent_session)
 
             # Even with a detected profile, instructions should NOT be updated
+            # (missing fields reminder also returns empty)
             agent_session._activity.update_instructions.assert_not_called()
 
 

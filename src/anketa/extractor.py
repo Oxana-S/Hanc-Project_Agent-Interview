@@ -253,7 +253,7 @@ class AnketaExtractor:
         # Format dialogue
         dialogue_text = "\n".join([
             f"{msg.get('role', 'unknown').upper()}: {msg.get('content', '')}"
-            for msg in dialogue[-50:]  # Last 50 messages to fit context
+            for msg in dialogue[-100:]  # Last 100 messages to fit context
         ])
 
         # Format analysis
@@ -323,6 +323,9 @@ class AnketaExtractor:
 5. Верни ТОЛЬКО валидный JSON без комментариев и пояснений
 6. КРИТИЧНО: company_name — это БРЕНД/НАЗВАНИЕ компании (например: "АльфаСервис", "ГрузовикОнлайн"), а НЕ описание деятельности!
 7. business_description — это ЧЕМ занимается компания (например: "логистика и грузоперевозки"), а НЕ название!
+8. КРИТИЧНО: agent_name — извлеки ТОЧНОЕ имя, которое КЛИЕНТ назвал для агента (например: "Мальвина", "Анна"). Ищи фразы типа "назовём...", "пусть будет...", "имя агента...". НЕ подставляй "Hanc.AI" или название компании!
+9. КРИТИЧНО: voice_tone — извлеки тон голоса ТОЧНО как описал КЛИЕНТ (например: "дружелюбный", "тёплый", "участливый"). Ищи фразы типа "тон...", "голос должен быть...", "дружелюбный". НЕ ставь "professional" по умолчанию!
+10. client_types — опиши типы клиентов КОНКРЕТНО (например: "владельцы кошек и собак", "малый бизнес"), НЕ обобщай до одного слова
 
 ---
 
@@ -350,21 +353,21 @@ class AnketaExtractor:
   "business_description": "чем занимается компания (1-2 предложения, НЕ название!)",
   "business_type": "тип бизнеса: B2B, B2C, B2B2C или другое",
   "services": ["услуга 1", "услуга 2"],
-  "client_types": ["тип клиентов 1", "тип 2"],
+  "client_types": ["конкретный тип клиентов 1 (НЕ обобщай до одного слова!)", "тип 2"],
   "current_problems": ["проблема 1", "проблема 2"],
   "business_goals": ["цель 1", "цель 2"],
   "constraints": ["ограничение 1", "ограничение 2"],
   "compliance_requirements": ["регуляторное требование 1", "требование 2"],
 
-  "agent_name": "имя агента",
-  "agent_purpose": "назначение агента (1-2 предложения)",
+  "agent_name": "ТОЧНОЕ имя агента, которое КЛИЕНТ назвал в диалоге (НЕ Hanc.AI!)",
+  "agent_purpose": "конкретное назначение агента для ЭТОГО бизнеса (1-2 предложения)",
   "agent_functions": [
     {{"name": "название функции", "description": "описание", "priority": "high/medium/low"}}
   ],
   "typical_questions": ["вопрос 1", "вопрос 2"],
 
   "voice_gender": "female или male",
-  "voice_tone": "professional, friendly, calm и т.д.",
+  "voice_tone": "тон голоса ТОЧНО как описал КЛИЕНТ (например: дружелюбный, тёплый, участливый)",
   "language": "ru",
   "call_direction": "inbound, outbound или both",
   "working_hours": {{"пн-пт": "9:00-18:00", "сб": "10:00-15:00"}},
@@ -1479,7 +1482,7 @@ class AnketaExtractor:
         """Extract structured interview data into InterviewAnketa."""
         dialogue_text = "\n".join([
             f"{msg.get('role', 'unknown').upper()}: {msg.get('content', '')}"
-            for msg in dialogue_history[-50:]
+            for msg in dialogue_history[-100:]  # Last 100 messages to fit context
         ])
 
         prompt = f"""Ты — эксперт по извлечению данных из интервью.
@@ -1492,29 +1495,33 @@ class AnketaExtractor:
 3. Выдели ключевые цитаты респондента
 4. Заполни профиль респондента если данные есть
 5. Верни ТОЛЬКО валидный JSON
+6. КРИТИЧНО: contact_name — извлеки ТОЧНОЕ имя, которое респондент назвал. Ищи фразы типа "Меня зовут...", "Я — ..."
+7. КРИТИЧНО: contact_role — извлеки должность/роль. Ищи: "Я работаю...", "Моя должность...", "Я — директор/менеджер/..."
+8. interview_title — определи ГЛАВНУЮ тему интервью из контекста разговора
+9. interviewee_industry — определи отрасль из описания работы респондента
 
 ДИАЛОГ ИНТЕРВЬЮ:
 {dialogue_text}
 
 СХЕМА JSON:
 {{
-  "contact_name": "имя респондента",
-  "contact_role": "роль/должность",
-  "contact_phone": "телефон респондента",
-  "contact_email": "email респондента",
-  "company_name": "организация респондента",
+  "contact_name": "ТОЧНОЕ имя респондента из диалога",
+  "contact_role": "должность/роль респондента из диалога",
+  "contact_phone": "телефон (если респондент назвал)",
+  "contact_email": "email (если респондент назвал)",
+  "company_name": "организация/компания респондента",
   "interview_type": "тип интервью: market_research, customer_discovery, hr, survey, requirements или general",
-  "interview_title": "тема интервью",
+  "interview_title": "конкретная тема интервью (НЕ 'general'!)",
   "target_topics": ["целевая тема 1", "целевая тема 2"],
-  "interviewee_context": "контекст о респонденте (опыт, бэкграунд)",
+  "interviewee_context": "контекст о респонденте (опыт, бэкграунд, сколько лет в области)",
   "interviewee_industry": "отрасль респондента",
   "qa_pairs": [
     {{"question": "заданный вопрос", "answer": "ответ респондента", "topic": "тег темы"}}
   ],
   "detected_topics": ["тема 1", "тема 2"],
-  "key_quotes": ["важная цитата 1", "важная цитата 2"],
+  "key_quotes": ["важная цитата 1 (дословно из ответов респондента)", "цитата 2"],
   "summary": "краткое резюме интервью (2-3 предложения)",
-  "key_insights": ["инсайт 1", "инсайт 2"],
+  "key_insights": ["конкретный инсайт 1", "инсайт 2"],
   "unresolved_topics": ["тема которую не удалось полностью раскрыть"],
   "ai_recommendations": [
     {{"recommendation": "рекомендация", "impact": "ожидаемый эффект", "priority": "high/medium/low", "effort": "low/medium/high"}}

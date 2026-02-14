@@ -560,13 +560,13 @@ class TestExtractInterview:
         assert "USER: Ответ один." in user_prompt
 
     @pytest.mark.asyncio
-    async def test_extract_interview_truncates_to_50_messages(
+    async def test_extract_interview_truncates_to_100_messages(
         self, extractor, full_interview_llm_response
     ):
-        """Dialogue is truncated to last 50 messages."""
+        """Dialogue is truncated to last 100 messages."""
         long_dialogue = [
             {"role": "user", "content": f"Сообщение {i}"}
-            for i in range(100)
+            for i in range(200)
         ]
         extractor.llm.chat = AsyncMock(return_value=full_interview_llm_response)
 
@@ -580,9 +580,9 @@ class TestExtractInterview:
         messages = call_args[1].get("messages") or call_args[0][0] if call_args[0] else call_args[1]["messages"]
         user_prompt = messages[1]["content"]
 
-        assert "Сообщение 99" in user_prompt
-        assert "Сообщение 50" in user_prompt
-        assert "Сообщение 49" not in user_prompt
+        assert "Сообщение 199" in user_prompt
+        assert "Сообщение 100" in user_prompt
+        assert "Сообщение 99" not in user_prompt
 
     @pytest.mark.asyncio
     async def test_extract_interview_llm_error_returns_empty_anketa(

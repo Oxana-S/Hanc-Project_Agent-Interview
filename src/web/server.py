@@ -126,6 +126,13 @@ class UpdateAnketaRequest(BaseModel):
     anketa_md: Optional[str] = None
 
 
+class UpdateDialogueRequest(BaseModel):
+    """Request body for updating dialogue history from voice agent."""
+    dialogue_history: list
+    duration_seconds: float
+    status: Optional[str] = None
+
+
 # ---------------------------------------------------------------------------
 # Pages
 # ---------------------------------------------------------------------------
@@ -521,6 +528,28 @@ async def update_anketa(session_id: str, req: UpdateAnketaRequest):
         session_mgr.update_anketa(session_id, req.anketa_data, req.anketa_md)
     logger.info("anketa_updated_by_client", session_id=session_id)
     return {"status": "ok"}
+
+
+@app.put("/api/session/{session_id}/dialogue")
+async def update_dialogue(session_id: str, req: UpdateDialogueRequest):
+    """Update dialogue history from voice agent process (avoids SQLite WAL isolation)."""
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    session_mgr.update_dialogue(
+        session_id,
+        dialogue_history=req.dialogue_history,
+        duration_seconds=req.duration_seconds,
+        status=req.status,
+    )
+    logger.info(
+        "dialogue_updated_via_api",
+        session_id=session_id,
+        messages=len(req.dialogue_history),
+        duration=req.duration_seconds,
+    )
+    return {"status": "ok", "messages": len(req.dialogue_history)}
 
 
 @app.post("/api/session/{session_id}/confirm")

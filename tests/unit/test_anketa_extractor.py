@@ -276,15 +276,15 @@ class TestBuildExtractionPrompt:
         assert "Краткое резюме документов" in prompt
 
     def test_build_prompt_truncates_dialogue(self, extractor):
-        """Test that dialogue is truncated to last 50 messages."""
-        long_dialogue = [{"role": "user", "content": f"Сообщение {i}"} for i in range(100)]
+        """Test that dialogue is truncated to last 100 messages."""
+        long_dialogue = [{"role": "user", "content": f"Сообщение {i}"} for i in range(200)]
 
         prompt = extractor._build_extraction_prompt(long_dialogue, {}, {}, None)
 
-        # Should only include last 50
-        assert "Сообщение 99" in prompt
-        assert "Сообщение 50" in prompt
-        assert "Сообщение 49" not in prompt
+        # Should only include last 100
+        assert "Сообщение 199" in prompt
+        assert "Сообщение 100" in prompt
+        assert "Сообщение 99" not in prompt
 
 
 # ============================================================================

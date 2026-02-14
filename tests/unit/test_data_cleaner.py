@@ -824,22 +824,23 @@ class TestAnketaPostProcessor:
         assert len(report["warnings"]) >= 3  # All required fields empty
 
     def test_process_injects_defaults(self):
-        """Should inject default values."""
+        """Should inject default values for technical fields only."""
         processor = AnketaPostProcessor()
         data = {"company_name": "Test", "industry": "IT"}
         result, report = processor.process(data)
         assert result.get("language") == "ru"
-        assert result.get("voice_gender") == "female"
-        assert result.get("voice_tone") == "professional"
         assert result.get("call_direction") == "inbound"
+        # User-specified fields should NOT have defaults
+        assert result.get("voice_gender") is None
+        assert result.get("voice_tone") is None
         assert len(report["defaults_applied"]) > 0
 
-    def test_process_generates_agent_name(self):
-        """Should generate agent_name from company_name if missing."""
+    def test_process_does_not_generate_agent_name(self):
+        """Should NOT auto-generate agent_name — it's user-specified."""
         processor = AnketaPostProcessor()
         data = {"company_name": "TestCo", "industry": "IT"}
         result, report = processor.process(data)
-        assert result.get("agent_name") == "Ассистент TestCo"
+        assert result.get("agent_name") is None
 
     def test_process_skips_normalization_when_disabled(self):
         """Should skip normalization when disabled."""
@@ -977,33 +978,33 @@ class TestAnketaPostProcessor:
     # -------------------- _inject_defaults() method --------------------
 
     def test_inject_defaults_all_defaults(self):
-        """Should inject all default values."""
+        """Should inject only technical default values (language, call_direction)."""
         processor = AnketaPostProcessor()
         data = {}
         result, applied = processor._inject_defaults(data)
         assert result["language"] == "ru"
-        assert result["voice_gender"] == "female"
-        assert result["voice_tone"] == "professional"
         assert result["call_direction"] == "inbound"
-        assert len(applied) == 4
+        # User-specified fields should NOT have defaults
+        assert "voice_gender" not in result
+        assert "voice_tone" not in result
+        assert "agent_name" not in result
+        assert len(applied) == 2
 
     def test_inject_defaults_preserves_existing(self):
         """Should preserve existing values."""
         processor = AnketaPostProcessor()
-        data = {"language": "en", "voice_gender": "male"}
+        data = {"language": "en", "call_direction": "outbound"}
         result, applied = processor._inject_defaults(data)
         assert result["language"] == "en"
-        assert result["voice_gender"] == "male"
-        # Only voice_tone and call_direction should be applied
-        assert len(applied) == 2
+        assert result["call_direction"] == "outbound"
+        assert len(applied) == 0
 
-    def test_inject_defaults_agent_name_generated(self):
-        """Should generate agent_name from company_name."""
+    def test_inject_defaults_no_agent_name_generated(self):
+        """Should NOT auto-generate agent_name (it's user-specified)."""
         processor = AnketaPostProcessor()
         data = {"company_name": "MyCompany"}
         result, applied = processor._inject_defaults(data)
-        assert result["agent_name"] == "Ассистент MyCompany"
-        assert any("agent_name" in a for a in applied)
+        assert "agent_name" not in result or result.get("agent_name") is None
 
     def test_inject_defaults_agent_name_preserved(self):
         """Should preserve existing agent_name."""
@@ -1011,13 +1012,6 @@ class TestAnketaPostProcessor:
         data = {"company_name": "MyCompany", "agent_name": "Custom Bot"}
         result, applied = processor._inject_defaults(data)
         assert result["agent_name"] == "Custom Bot"
-
-    def test_inject_defaults_no_agent_name_without_company(self):
-        """Should not generate agent_name without company_name."""
-        processor = AnketaPostProcessor()
-        data = {}
-        result, applied = processor._inject_defaults(data)
-        assert "agent_name" not in result or result.get("agent_name") is None
 
 
 # ============================================================================

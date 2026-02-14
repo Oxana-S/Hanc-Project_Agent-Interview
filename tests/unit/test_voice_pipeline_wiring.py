@@ -157,7 +157,8 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant.IndustryKnowledgeManager"), \
              patch("src.voice.consultant.EnrichedContextBuilder"), \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_dialogue_via_api", new_callable=AsyncMock, return_value=True):
 
             mock_mgr.get_session.return_value = db_session
             mock_mgr.update_session = MagicMock()
@@ -188,11 +189,11 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant.IndustryKnowledgeManager"), \
              patch("src.voice.consultant.EnrichedContextBuilder"), \
              patch("src.voice.consultant._try_get_redis", return_value=None), \
-             patch("src.voice.consultant._try_get_postgres", return_value=None):
+             patch("src.voice.consultant._try_get_postgres", return_value=None), \
+             patch("src.voice.consultant._update_dialogue_via_api", new_callable=AsyncMock, return_value=True) as mock_dialogue_api:
 
             mock_mgr.get_session.return_value = db_session
             mock_mgr.update_session = MagicMock()
-            mock_mgr.update_dialogue = MagicMock(return_value=True)
             mock_mgr.update_anketa = MagicMock(return_value=True)
             mock_mgr.update_metadata = MagicMock(return_value=True)
 
@@ -203,7 +204,7 @@ class TestNotificationManagerWiring:
 
             # Should not raise
             await _finalize_and_save(consultation, "test-001")
-            mock_mgr.update_dialogue.assert_called()
+            mock_dialogue_api.assert_called()
 
 
 # ===========================================================================
