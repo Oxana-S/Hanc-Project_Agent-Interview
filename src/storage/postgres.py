@@ -190,8 +190,10 @@ class PostgreSQLStorageManager:
         """
         session = self._get_session()
         try:
+            # R11-01: Escape SQL LIKE wildcards in user input
+            escaped = company_name.replace("%", r"\%").replace("_", r"\_")
             anketas_db = session.query(AnketaDB).filter(
-                AnketaDB.company_name.ilike(f"%{company_name}%")
+                AnketaDB.company_name.ilike(f"%{escaped}%", escape="\\")
             ).all()
 
             anketas = [FinalAnketa(**a.anketa_json) for a in anketas_db]

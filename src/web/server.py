@@ -30,6 +30,7 @@ Endpoints:
 import asyncio
 import os
 import uuid as _uuid
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import List, Optional
 
@@ -90,7 +91,77 @@ session_log = structlog.get_logger("session")
 # App
 # ---------------------------------------------------------------------------
 
-app = FastAPI(title="Hanc.AI Voice Consultant")
+@asynccontextmanager
+async def _lifespan(application: FastAPI):
+    """Combined startup/shutdown lifecycle (replaces deprecated on_event)."""
+    import time
+
+    # --- Startup ---
+    # 1. Validate config
+    required = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
+    missing = [k for k in required if not os.getenv(k)]
+    if missing:
+        logger.error("missing_required_env_vars", vars=missing)
+        logger.warning("Server will start but LiveKit features will be unavailable")
+
+    # 2. Clean stale LiveKit rooms
+    lk_api = None
+    try:
+        lk_api = LiveKitAPI(
+            url=os.getenv("LIVEKIT_URL"),
+            api_key=os.getenv("LIVEKIT_API_KEY"),
+            api_secret=os.getenv("LIVEKIT_API_SECRET"),
+        )
+        result = await lk_api.room.list_rooms(ListRoomsRequest())
+        count = 0
+        for r in result.rooms:
+            try:
+                await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
+                count += 1
+                logger.info("startup_cleanup_room", room=r.name)
+            except Exception:
+                pass
+        if count:
+            logger.info("startup_cleanup_done", deleted=count)
+        else:
+            logger.info("startup_no_stale_rooms")
+    except Exception as exc:
+        logger.warning("startup_cleanup_failed", error=str(exc))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
+
+    # 3. Start runtime status cleanup loop
+    async def _cleanup_loop():
+        while True:
+            await asyncio.sleep(300)  # 5 minutes
+            now = time.time()
+            stale = [k for k, v in dict(_runtime_statuses).items() if now - v.get("updated_at", 0) > 3600]
+            for k in stale:
+                _runtime_statuses.pop(k, None)
+            if stale:
+                logger.debug("runtime_statuses_cleaned", evicted=len(stale))
+
+    _track_task(asyncio.create_task(_cleanup_loop()))
+
+    yield  # --- App running ---
+
+    # --- Shutdown ---
+    try:
+        session_mgr.close()
+        logger.info("session_manager_closed")
+    except Exception as e:
+        logger.warning("shutdown_close_failed", error=str(e))
+    try:
+        from src.voice.consultant import _shared_http_client
+        if _shared_http_client and not _shared_http_client.is_closed:
+            await _shared_http_client.aclose()
+    except Exception:
+        pass
+    logger.info("server_shutdown_complete")
+
+
+app = FastAPI(title="Hanc.AI Voice Consultant", lifespan=_lifespan)
 
 
 # R4-23: Request ID middleware for distributed tracing
@@ -134,87 +205,6 @@ session_mgr = SessionManager()
 # In-memory runtime status cache (ephemeral, not persisted)
 # Maps session_id -> {"runtime_status": "idle"|"processing"|"completing"|"completed"|"error", "updated_at": float}
 _runtime_statuses: dict = {}
-
-
-# ---------------------------------------------------------------------------
-# Startup: clean stale LiveKit rooms
-# ---------------------------------------------------------------------------
-
-@app.on_event("startup")
-async def _cleanup_stale_rooms():
-    """Delete old LiveKit rooms left from previous server runs."""
-    lk_api = None
-    try:
-        lk_api = LiveKitAPI(
-            url=os.getenv("LIVEKIT_URL"),
-            api_key=os.getenv("LIVEKIT_API_KEY"),
-            api_secret=os.getenv("LIVEKIT_API_SECRET"),
-        )
-        result = await lk_api.room.list_rooms(ListRoomsRequest())
-        count = 0
-        for r in result.rooms:
-            try:
-                await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
-                count += 1
-                logger.info("startup_cleanup_room", room=r.name)
-            except Exception:
-                pass
-        if count:
-            logger.info("startup_cleanup_done", deleted=count)
-        else:
-            logger.info("startup_no_stale_rooms")
-    except Exception as exc:
-        logger.warning("startup_cleanup_failed", error=str(exc))
-    finally:
-        if lk_api:
-            await lk_api.aclose()
-
-
-@app.on_event("startup")
-async def _validate_config():
-    """R5-12: Validate required environment variables at startup."""
-    required = ["LIVEKIT_URL", "LIVEKIT_API_KEY", "LIVEKIT_API_SECRET"]
-    missing = [k for k in required if not os.getenv(k)]
-    if missing:
-        logger.error("missing_required_env_vars", vars=missing)
-        # Don't crash — log clearly so the operator notices
-        logger.warning("Server will start but LiveKit features will be unavailable")
-
-
-@app.on_event("startup")
-async def _start_runtime_status_cleanup():
-    """R5-18: Periodically evict stale entries from _runtime_statuses (every 5 min)."""
-    import time
-
-    async def _cleanup_loop():
-        while True:
-            await asyncio.sleep(300)  # 5 minutes
-            now = time.time()
-            stale = [k for k, v in dict(_runtime_statuses).items() if now - v.get("updated_at", 0) > 3600]
-            for k in stale:
-                _runtime_statuses.pop(k, None)
-            if stale:
-                logger.debug("runtime_statuses_cleaned", evicted=len(stale))
-
-    _track_task(asyncio.create_task(_cleanup_loop()))
-
-
-@app.on_event("shutdown")
-async def _shutdown():
-    """R5-05: Graceful shutdown — close DB and cleanup resources."""
-    try:
-        session_mgr.close()
-        logger.info("session_manager_closed")
-    except Exception as e:
-        logger.warning("shutdown_close_failed", error=str(e))
-    # Close shared httpx client if voice module loaded it
-    try:
-        from src.voice.consultant import _shared_http_client
-        if _shared_http_client and not _shared_http_client.is_closed:
-            await _shared_http_client.aclose()
-    except Exception:
-        pass
-    logger.info("server_shutdown_complete")
 
 
 # R5-20: Background task reference set (prevent GC of fire-and-forget tasks)
