@@ -274,8 +274,8 @@ async def list_sessions(status: str = None, limit: int = 50, offset: int = 0):
     """List all sessions (lightweight summaries for dashboard)."""
     limit = min(max(limit, 1), 200)  # R4-20: bound limit param
     offset = max(offset, 0)
-    sessions = session_mgr.list_sessions_summary(status, limit, offset)
-    return {"sessions": sessions, "total": len(sessions)}
+    sessions, total_count = session_mgr.list_sessions_summary(status, limit, offset)
+    return {"sessions": sessions, "total": total_count}
 
 
 class DeleteSessionsRequest(BaseModel):

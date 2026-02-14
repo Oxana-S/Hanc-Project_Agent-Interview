@@ -365,7 +365,9 @@ class TestListSessions:
         for _ in range(3):
             client.post("/api/session/create", json={})
         resp = client.get("/api/sessions?limit=2")
-        assert resp.json()["total"] == 2
+        data = resp.json()
+        assert len(data["sessions"]) == 2  # page size limited
+        assert data["total"] == 3  # total count is full (for pagination)
 
     def test_multiple_sessions_ordered_newest_first(self, client):
         s1 = client.post("/api/session/create", json={}).json()

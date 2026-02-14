@@ -199,8 +199,9 @@ def test_sqlite():
 
         # 1.12 List summary
         try:
-            summary = mgr.list_sessions_summary()
+            summary, summary_total = mgr.list_sessions_summary()
             assert len(summary) == 2
+            assert summary_total == 2
             assert summary[0]["session_id"] in [sid, session2.session_id if session2 else ""]
             ok("LIST sessions_summary")
         except Exception as e:

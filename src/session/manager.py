@@ -552,7 +552,7 @@ class SessionManager:
         self._conn.commit()
         return cursor.rowcount > 0
 
-    def list_sessions_summary(self, status: str = None, limit: int = 50, offset: int = 0) -> list:
+    def list_sessions_summary(self, status: str = None, limit: int = 50, offset: int = 0) -> tuple:
         """
         List sessions as lightweight dicts (no dialogue_history, anketa_data, document_context).
 
@@ -562,21 +562,28 @@ class SessionManager:
             offset: Skip first N results.
 
         Returns:
-            List of dicts with summary fields.
+            Tuple of (list of dicts with summary fields, total_count).
         """
-        query = """
-            SELECT session_id, unique_link, status, created_at, updated_at,
-                   company_name, contact_name, duration_seconds, room_name,
-                   CASE WHEN document_context IS NOT NULL THEN 1 ELSE 0 END AS has_documents
-            FROM sessions
-        """
+        where_clause = ""
         params = []
 
         if status:
-            query += " WHERE status = ?"
+            where_clause = " WHERE status = ?"
             params.append(status)
 
-        query += " ORDER BY created_at DESC LIMIT ? OFFSET ?"
+        # Total count (without LIMIT/OFFSET) for pagination
+        count_row = self._conn.execute(
+            f"SELECT COUNT(*) FROM sessions{where_clause}", params
+        ).fetchone()
+        total_count = count_row[0] if count_row else 0
+
+        query = f"""
+            SELECT session_id, unique_link, status, created_at, updated_at,
+                   company_name, contact_name, duration_seconds, room_name,
+                   CASE WHEN document_context IS NOT NULL THEN 1 ELSE 0 END AS has_documents
+            FROM sessions{where_clause}
+            ORDER BY created_at DESC LIMIT ? OFFSET ?
+        """
         params.extend([limit, offset])
 
         cursor = self._conn.execute(query, params)
@@ -597,8 +604,8 @@ class SessionManager:
                 "has_documents": bool(row["has_documents"]),
             })
 
-        logger.debug("sessions_summary_listed", count=len(sessions), status_filter=status)
-        return sessions
+        logger.debug("sessions_summary_listed", count=len(sessions), total=total_count, status_filter=status)
+        return sessions, total_count
 
     def delete_sessions(self, session_ids: list) -> int:
         """Delete sessions by IDs. Returns count of deleted rows."""

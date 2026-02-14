@@ -331,9 +331,20 @@ class FinalAnketa(BaseModel):
     full_responses: Dict[str, Any] = Field(default_factory=dict, description="Raw responses from interview")
     quality_metrics: Dict[str, float] = Field(default_factory=dict, description="Quality metrics for this anketa")
 
+    # Default values that should NOT count as "filled" for completion_rate
+    _SCHEMA_DEFAULTS = {
+        'voice_gender': 'female',
+        'voice_tone': 'professional',
+        'call_direction': 'inbound',
+    }
+
     def completion_rate(self) -> float:
         """
         v5.0: Equal weight completion - все 15 полей обязательны.
+
+        Fields with unchanged schema defaults (voice_gender="female",
+        voice_tone="professional", call_direction="inbound") are NOT counted
+        as filled — only explicitly extracted values count.
 
         Returns: float 0.0-1.0 (filled_count / 15)
         """
@@ -364,11 +375,14 @@ class FinalAnketa(BaseModel):
             'call_direction': self.call_direction,
         }
 
-        filled_count = sum(
-            1 for v in required_fields.values()
-            if (isinstance(v, list) and len(v) > 0) or
-               (isinstance(v, str) and v.strip()) or v
-        )
+        filled_count = 0
+        for field_name, v in required_fields.items():
+            # Skip fields that still have their schema default
+            if field_name in self._SCHEMA_DEFAULTS and v == self._SCHEMA_DEFAULTS[field_name]:
+                continue
+            if (isinstance(v, list) and len(v) > 0) or \
+               (isinstance(v, str) and v.strip()) or v:
+                filled_count += 1
 
         return filled_count / len(required_fields)  # 0.0-1.0
 

@@ -41,14 +41,20 @@ def _track_agent_task(task):
     task.add_done_callback(_agent_bg_tasks.discard)
 
 
-def _get_http_client() -> httpx.AsyncClient:
+_http_client_lock = asyncio.Lock()
+
+
+async def _get_http_client() -> httpx.AsyncClient:
     """Get or create a shared httpx.AsyncClient with connection pooling."""
     global _shared_http_client
-    if _shared_http_client is None or _shared_http_client.is_closed:
-        _shared_http_client = httpx.AsyncClient(
-            timeout=10.0,
-            limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
-        )
+    if _shared_http_client is not None and not _shared_http_client.is_closed:
+        return _shared_http_client
+    async with _http_client_lock:
+        if _shared_http_client is None or _shared_http_client.is_closed:
+            _shared_http_client = httpx.AsyncClient(
+                timeout=10.0,
+                limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
+            )
     return _shared_http_client
 
 
@@ -483,7 +489,7 @@ async def _update_anketa_via_api(
     }
 
     try:
-        client = _get_http_client()
+        client = await _get_http_client()
         response = await client.put(url, json=payload)
 
         if response.status_code == 200:
@@ -535,7 +541,7 @@ async def _update_dialogue_via_api(
         payload["status"] = status
 
     try:
-        client = _get_http_client()
+        client = await _get_http_client()
         response = await client.put(url, json=payload)
 
         if response.status_code == 200:
@@ -672,15 +678,15 @@ def _merge_anketa_data(user_data: dict, extracted_data: dict) -> dict:
 
     for key, user_value in user_data.items():
         # Если пользователь заполнил поле вручную, сохраняем его значение
-        if user_value:
+        if user_value is not None:
             # Для строк: проверяем что не пустая
             if isinstance(user_value, str) and user_value.strip():
                 merged[key] = user_value
             # Для списков: проверяем что не пустой
             elif isinstance(user_value, list) and len(user_value) > 0:
                 merged[key] = user_value
-            # Для других типов (числа, bool, dict): если не None
-            elif user_value is not None:
+            # Для других типов (числа, bool, dict)
+            elif not isinstance(user_value, (str, list)):
                 merged[key] = user_value
 
     # ===== FIX #2: Sync contact fields (phone/email ↔ contact_phone/contact_email) =====

@@ -350,8 +350,9 @@ class TestListSessionsSummary:
 
     def test_returns_empty_list_when_no_sessions(self, manager):
         """list_sessions_summary returns [] when DB is empty."""
-        result = manager.list_sessions_summary()
+        result, total = manager.list_sessions_summary()
         assert result == []
+        assert total == 0
 
     def test_returns_correct_fields(self, manager):
         """Each summary dict has exactly the expected lightweight fields."""
@@ -360,8 +361,9 @@ class TestListSessionsSummary:
         session.contact_name = "Иван"
         manager.update_session(session)
 
-        summaries = manager.list_sessions_summary()
+        summaries, total = manager.list_sessions_summary()
         assert len(summaries) == 1
+        assert total == 1
 
         s = summaries[0]
         expected_keys = {
@@ -381,7 +383,7 @@ class TestListSessionsSummary:
         manager.update_anketa(session.session_id, {"company_name": "Heavy"})
         manager.update_session(session)
 
-        summaries = manager.list_sessions_summary()
+        summaries, _ = manager.list_sessions_summary()
         s = summaries[0]
         assert "dialogue_history" not in s
         assert "anketa_data" not in s
@@ -397,39 +399,47 @@ class TestListSessionsSummary:
         manager.update_status(s2.session_id, "confirmed")
         # s3 stays active
 
-        paused = manager.list_sessions_summary(status="paused")
+        paused, paused_total = manager.list_sessions_summary(status="paused")
         assert len(paused) == 1
+        assert paused_total == 1
         assert paused[0]["session_id"] == s1.session_id
 
-        active = manager.list_sessions_summary(status="active")
+        active, active_total = manager.list_sessions_summary(status="active")
         assert len(active) == 1
+        assert active_total == 1
         assert active[0]["session_id"] == s3.session_id
 
-        confirmed = manager.list_sessions_summary(status="confirmed")
+        confirmed, confirmed_total = manager.list_sessions_summary(status="confirmed")
         assert len(confirmed) == 1
+        assert confirmed_total == 1
 
     def test_filter_no_matches(self, manager):
         """Returns empty list when status filter has no matches."""
         manager.create_session()
-        result = manager.list_sessions_summary(status="declined")
+        result, total = manager.list_sessions_summary(status="declined")
         assert result == []
+        assert total == 0
 
     def test_limit_and_offset(self, manager):
         """Limit and offset work correctly."""
         for _ in range(5):
             manager.create_session()
 
-        all_sessions = manager.list_sessions_summary()
+        all_sessions, all_total = manager.list_sessions_summary()
         assert len(all_sessions) == 5
+        assert all_total == 5
 
-        limited = manager.list_sessions_summary(limit=2)
+        limited, limited_total = manager.list_sessions_summary(limit=2)
         assert len(limited) == 2
+        assert limited_total == 5  # total is always full count
 
-        offset_result = manager.list_sessions_summary(limit=2, offset=3)
+        offset_result, offset_total = manager.list_sessions_summary(limit=2, offset=3)
         assert len(offset_result) == 2
+        assert offset_total == 5
 
-        too_much_offset = manager.list_sessions_summary(offset=10)
+        too_much_offset, too_much_total = manager.list_sessions_summary(offset=10)
         assert len(too_much_offset) == 0
+        assert too_much_total == 5  # total count unchanged even with large offset
 
     def test_ordered_by_created_at_desc(self, manager):
         """Sessions are returned newest first."""
@@ -437,7 +447,7 @@ class TestListSessionsSummary:
         manager.create_session()
         s3 = manager.create_session()
 
-        summaries = manager.list_sessions_summary()
+        summaries, _ = manager.list_sessions_summary()
         # Newest first: s3, _, s1
         assert summaries[0]["session_id"] == s3.session_id
         assert summaries[2]["session_id"] == s1.session_id
@@ -450,8 +460,9 @@ class TestListSessionsSummary:
         manager.update_status(s1.session_id, "paused")
         manager.update_status(s2.session_id, "confirmed")
 
-        all_sessions = manager.list_sessions_summary()
+        all_sessions, total = manager.list_sessions_summary()
         assert len(all_sessions) == 3
+        assert total == 3
         statuses = {s["status"] for s in all_sessions}
         assert statuses == {"active", "paused", "confirmed"}
 
@@ -493,8 +504,9 @@ class TestDeleteSessions:
         s1 = manager.create_session()
         s2 = manager.create_session()
         manager.delete_sessions([s1.session_id])
-        summaries = manager.list_sessions_summary()
+        summaries, total = manager.list_sessions_summary()
         assert len(summaries) == 1
+        assert total == 1
         assert summaries[0]["session_id"] == s2.session_id
 
 
