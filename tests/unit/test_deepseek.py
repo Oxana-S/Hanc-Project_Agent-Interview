@@ -241,12 +241,10 @@ class TestDeepSeekClientMakeRequest:
             "choices": [{"message": {"content": "Hello"}, "finish_reason": "stop"}]
         }
         mock_response.raise_for_status = MagicMock()
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch('httpx.AsyncClient') as mock_client_class:
-            mock_client = AsyncMock()
-            mock_client.post.return_value = mock_response
-            mock_client_class.return_value.__aenter__.return_value = mock_client
-
+        with patch.object(client, '_get_http_client', return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"Authorization": "Bearer test"},
@@ -265,12 +263,10 @@ class TestDeepSeekClientMakeRequest:
             "usage": {}
         }
         mock_response.raise_for_status = MagicMock()
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch('httpx.AsyncClient') as mock_client_class:
-            mock_client = AsyncMock()
-            mock_client.post.return_value = mock_response
-            mock_client_class.return_value.__aenter__.return_value = mock_client
-
+        with patch.object(client, '_get_http_client', return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"Authorization": "Bearer test"},
@@ -289,12 +285,10 @@ class TestDeepSeekClientMakeRequest:
             "usage": {"completion_tokens": 8192}
         }
         mock_response.raise_for_status = MagicMock()
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch('httpx.AsyncClient') as mock_client_class:
-            mock_client = AsyncMock()
-            mock_client.post.return_value = mock_response
-            mock_client_class.return_value.__aenter__.return_value = mock_client
-
+        with patch.object(client, '_get_http_client', return_value=mock_http):
             # Should not raise, just log warning
             result = await client._make_request(
                 "https://api.example.com",

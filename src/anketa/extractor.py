@@ -432,9 +432,24 @@ class AnketaExtractor:
         return fixed
 
     def _find_balanced_json(self, text: str) -> str:
-        """Find the first balanced JSON object in text."""
+        """Find the first balanced JSON object in text (string-aware)."""
         brace_count = 0
+        in_string = False
+        escape_next = False
         for i, char in enumerate(text):
+            if escape_next:
+                escape_next = False
+                continue
+            if in_string:
+                if char == '\\':
+                    escape_next = True
+                    continue
+                if char == '"':
+                    in_string = False
+                continue
+            if char == '"':
+                in_string = True
+                continue
             if char == '{':
                 brace_count += 1
             elif char == '}':

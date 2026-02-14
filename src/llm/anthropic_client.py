@@ -42,6 +42,16 @@ class AnthropicClient:
         if not self.api_key:
             raise ValueError("ANTHROPIC_API_KEY not set")
 
+        self._http_client: Optional[httpx.AsyncClient] = None
+
+    def _get_http_client(self) -> httpx.AsyncClient:
+        """Get or create a reusable httpx client."""
+        if self._http_client is None or self._http_client.is_closed:
+            self._http_client = httpx.AsyncClient(
+                limits=httpx.Limits(max_connections=5, max_keepalive_connections=3),
+            )
+        return self._http_client
+
     async def chat(
         self,
         messages: List[Dict[str, str]],
@@ -145,42 +155,42 @@ class AnthropicClient:
         timeout: float,
     ) -> str:
         """Выполнить HTTP запрос к Anthropic Messages API."""
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            try:
-                response = await client.post(
-                    ANTHROPIC_API_URL, headers=headers, json=payload
+        client = self._get_http_client()
+        try:
+            response = await client.post(
+                ANTHROPIC_API_URL, headers=headers, json=payload, timeout=timeout
+            )
+            response.raise_for_status()
+
+            data = response.json()
+
+            # Anthropic ответ: {"content": [{"type": "text", "text": "..."}], "stop_reason": "..."}
+            content_blocks = data.get("content", [])
+            text_parts = [
+                block["text"]
+                for block in content_blocks
+                if block.get("type") == "text"
+            ]
+            content = "\n".join(text_parts)
+
+            stop_reason = data.get("stop_reason", "unknown")
+
+            if not content:
+                logger.warning(
+                    f"Anthropic returned empty content (stop_reason={stop_reason})"
                 )
-                response.raise_for_status()
-
-                data = response.json()
-
-                # Anthropic ответ: {"content": [{"type": "text", "text": "..."}], "stop_reason": "..."}
-                content_blocks = data.get("content", [])
-                text_parts = [
-                    block["text"]
-                    for block in content_blocks
-                    if block.get("type") == "text"
-                ]
-                content = "\n".join(text_parts)
-
-                stop_reason = data.get("stop_reason", "unknown")
-
-                if not content:
-                    logger.warning(
-                        f"Anthropic returned empty content (stop_reason={stop_reason})"
-                    )
-                elif stop_reason == "max_tokens":
-                    logger.warning(
-                        f"Anthropic response truncated (content_length={len(content)})"
-                    )
-
-                return content
-
-            except httpx.HTTPStatusError as e:
-                logger.error(
-                    f"Anthropic API error: status={e.response.status_code}, detail={e.response.text}"
+            elif stop_reason == "max_tokens":
+                logger.warning(
+                    f"Anthropic response truncated (content_length={len(content)})"
                 )
-                raise
-            except Exception as e:
-                logger.error(f"Anthropic request failed: {e}")
-                raise
+
+            return content
+
+        except httpx.HTTPStatusError as e:
+            logger.error(
+                f"Anthropic API error: status={e.response.status_code}, detail={e.response.text}"
+            )
+            raise
+        except Exception as e:
+            logger.error(f"Anthropic request failed: {e}")
+            raise

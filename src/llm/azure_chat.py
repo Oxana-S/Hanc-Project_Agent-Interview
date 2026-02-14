@@ -41,6 +41,16 @@ class AzureChatClient:
         if not self.deployment:
             raise ValueError("AZURE_CHAT_OPENAI_DEPLOYMENT_NAME not set")
 
+        self._http_client: Optional[httpx.AsyncClient] = None
+
+    def _get_http_client(self) -> httpx.AsyncClient:
+        """Get or create a reusable httpx client."""
+        if self._http_client is None or self._http_client.is_closed:
+            self._http_client = httpx.AsyncClient(
+                limits=httpx.Limits(max_connections=5, max_keepalive_connections=3),
+            )
+        return self._http_client
+
     async def chat(
         self,
         messages: List[Dict[str, str]],
@@ -105,31 +115,31 @@ class AzureChatClient:
         timeout: float
     ) -> str:
         """Выполнить HTTP запрос к Azure OpenAI API."""
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            try:
-                response = await client.post(url, headers=headers, json=payload)
-                response.raise_for_status()
+        client = self._get_http_client()
+        try:
+            response = await client.post(url, headers=headers, json=payload, timeout=timeout)
+            response.raise_for_status()
 
-                data = response.json()
+            data = response.json()
 
-                choice = data["choices"][0]
-                finish_reason = choice.get("finish_reason", "unknown")
-                content = choice["message"]["content"] or ""
+            choice = data["choices"][0]
+            finish_reason = choice.get("finish_reason", "unknown")
+            content = choice["message"]["content"] or ""
 
-                if not content:
-                    logger.warning(
-                        f"Azure returned empty content (finish_reason={finish_reason})"
-                    )
-                elif finish_reason == "length":
-                    logger.warning(
-                        f"Azure response truncated (content_length={len(content)})"
-                    )
+            if not content:
+                logger.warning(
+                    f"Azure returned empty content (finish_reason={finish_reason})"
+                )
+            elif finish_reason == "length":
+                logger.warning(
+                    f"Azure response truncated (content_length={len(content)})"
+                )
 
-                return content
+            return content
 
-            except httpx.HTTPStatusError as e:
-                logger.error(f"Azure API error: status={e.response.status_code}, detail={e.response.text}")
-                raise
-            except Exception as e:
-                logger.error(f"Azure request failed: {e}")
-                raise
+        except httpx.HTTPStatusError as e:
+            logger.error(f"Azure API error: status={e.response.status_code}, detail={e.response.text}")
+            raise
+        except Exception as e:
+            logger.error(f"Azure request failed: {e}")
+            raise

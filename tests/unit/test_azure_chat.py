@@ -250,12 +250,10 @@ class TestAzureChatClientMakeRequest:
     async def test_make_request_success(self, client):
         """_make_request returns content from a well-formed JSON response."""
         mock_response = _make_success_response("Hello world")
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.return_value = mock_response
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
-
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"api-key": "k"},
@@ -269,12 +267,10 @@ class TestAzureChatClientMakeRequest:
     async def test_make_request_empty_content_returns_empty(self, client):
         """When content is None, _make_request returns empty string."""
         mock_response = _make_success_response(content=None)
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.return_value = mock_response
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
-
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"api-key": "k"},
@@ -290,12 +286,10 @@ class TestAzureChatClientMakeRequest:
         mock_response = _make_success_response(
             content="Partial answer...", finish_reason="length"
         )
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.return_value = mock_response
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
-
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"api-key": "k"},
@@ -312,12 +306,10 @@ class TestAzureChatClientMakeRequest:
         mock_response.raise_for_status.side_effect = _make_http_status_error(
             500, "Server error"
         )
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.return_value = mock_response
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
-
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             with pytest.raises(httpx.HTTPStatusError):
                 await client._make_request(
                     "https://api.example.com",
@@ -329,11 +321,10 @@ class TestAzureChatClientMakeRequest:
     @pytest.mark.asyncio
     async def test_make_request_generic_error_raises(self, client):
         """Unexpected exceptions are re-raised by _make_request."""
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.side_effect = RuntimeError("Something broke")
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
+        mock_http = AsyncMock()
+        mock_http.post.side_effect = RuntimeError("Something broke")
 
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             with pytest.raises(RuntimeError, match="Something broke"):
                 await client._make_request(
                     "https://api.example.com",
@@ -358,12 +349,10 @@ class TestAzureChatClientMakeRequest:
             ],
             "usage": {"prompt_tokens": 5, "completion_tokens": 2},
         }
+        mock_http = AsyncMock()
+        mock_http.post.return_value = mock_response
 
-        with patch("httpx.AsyncClient") as mock_cls:
-            mock_client_inst = AsyncMock()
-            mock_client_inst.post.return_value = mock_response
-            mock_cls.return_value.__aenter__.return_value = mock_client_inst
-
+        with patch.object(client, "_get_http_client", return_value=mock_http):
             result = await client._make_request(
                 "https://api.example.com",
                 {"api-key": "k"},

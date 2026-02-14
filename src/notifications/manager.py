@@ -12,6 +12,7 @@ import asyncio
 import hashlib
 import hmac
 import json
+import os
 import smtplib
 import ssl
 from datetime import datetime, timezone
@@ -317,6 +318,7 @@ class NotificationManager:
         """Build an HTML email body with the session link for the client."""
         company = _html_escape(getattr(session, "company_name", None) or "Hanc.AI")
         unique_link = _html_escape(unique_link)
+        base_url = os.getenv("PUBLIC_URL", "https://app.hanc.ai").rstrip("/")
 
         html = f"""\
 <html>
@@ -325,7 +327,7 @@ class NotificationManager:
 <p>Спасибо за прохождение консультации!</p>
 <p>Вы можете вернуться к вашей сессии в любое время по этой ссылке:</p>
 <p style="margin:16px 0;">
-  <a href="/session/{unique_link}"
+  <a href="{base_url}/session/{unique_link}"
      style="background:#2563eb;color:#fff;padding:10px 24px;
             text-decoration:none;border-radius:6px;font-size:16px;">
     Открыть сессию
@@ -333,7 +335,7 @@ class NotificationManager:
 </p>
 <p style="font-size:13px;color:#666;">
   Если кнопка не работает, скопируйте ссылку:
-  /session/{unique_link}
+  {base_url}/session/{unique_link}
 </p>
 <hr>
 <p style="font-size:12px;color:#999;">Hanc.AI Voice Consultant</p>
