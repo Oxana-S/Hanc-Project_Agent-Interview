@@ -187,8 +187,9 @@ class AnthropicClient:
             return content
 
         except httpx.HTTPStatusError as e:
+            detail = (e.response.text or "")[:200]
             logger.error(
-                f"Anthropic API error: status={e.response.status_code}, detail={e.response.text}"
+                f"Anthropic API error: status={e.response.status_code}, detail={detail}"
             )
             raise
         except Exception as e:

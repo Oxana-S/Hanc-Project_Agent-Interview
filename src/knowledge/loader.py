@@ -226,8 +226,19 @@ class IndustryProfileLoader:
             if cache_age < self._cache_ttl:
                 return self._cache[cache_key]
 
+        # Sanitize path components to prevent directory traversal
+        for component in (region, country, industry_id):
+            if '..' in component or '/' in component or '\\' in component:
+                logger.error("path_traversal_blocked", region=region, country=country, industry_id=industry_id)
+                return self.load_profile(industry_id)
+
         # Build path to regional profile
         profile_path = self.config_dir / region / country / f"{industry_id}.yaml"
+
+        # Verify resolved path is under config_dir
+        if not str(profile_path.resolve()).startswith(str(self.config_dir.resolve())):
+            logger.error("path_traversal_blocked", resolved=str(profile_path.resolve()))
+            return self.load_profile(industry_id)
 
         if not profile_path.exists():
             logger.warning(

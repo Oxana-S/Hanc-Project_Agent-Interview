@@ -891,22 +891,27 @@ class VoiceInterviewerApp {
             const shortId = s.session_id.substring(0, 8);
             const roomName = s.room_name || '—';
 
-            return `<tr data-link="${s.unique_link}" data-status="${s.status}" data-session-id="${s.session_id}">
-                <td class="td-checkbox"><input type="checkbox" class="session-checkbox" data-id="${s.session_id}"></td>
-                <td class="td-id" title="${s.session_id}">${shortId}</td>
+            const safeLink = this._escapeHtml(s.unique_link);
+            const safeSessionId = this._escapeHtml(s.session_id);
+            const safeStatus = this._escapeHtml(s.status);
+            const safeRoom = this._escapeHtml(roomName);
+
+            return `<tr data-link="${safeLink}" data-status="${safeStatus}" data-session-id="${safeSessionId}">
+                <td class="td-checkbox"><input type="checkbox" class="session-checkbox" data-id="${safeSessionId}"></td>
+                <td class="td-id" title="${safeSessionId}">${shortId}</td>
                 <td class="td-date">${date}</td>
                 <td class="td-company">${this._escapeHtml(company)}</td>
                 <td class="td-contact">${this._escapeHtml(contact)}</td>
                 <td class="td-docs">${s.has_documents ? '<span class="doc-indicator" title="Есть документы">📎</span>' : ''}</td>
-                <td class="td-room">${roomName !== '—' ? `<a href="${LIVEKIT_CLOUD_BASE}" target="_blank" class="room-link" title="${roomName}">${roomName}</a>` : '—'}</td>
-                <td><span class="status-badge status-${s.status}">${status}</span></td>
+                <td class="td-room">${roomName !== '—' ? `<a href="${LIVEKIT_CLOUD_BASE}" target="_blank" class="room-link" title="${safeRoom}">${safeRoom}</a>` : '—'}</td>
+                <td><span class="status-badge status-${safeStatus}">${status}</span></td>
                 <td class="td-duration">${duration}</td>
                 <td class="td-actions">
                     ${isActive
-                        ? `<button class="btn-table btn-table-primary" data-action="open" data-link="${s.unique_link}">Открыть</button>`
-                        : `<button class="btn-table" data-action="review" data-link="${s.unique_link}">Просмотр</button>`
+                        ? `<button class="btn-table btn-table-primary" data-action="open" data-link="${safeLink}">Открыть</button>`
+                        : `<button class="btn-table" data-action="review" data-link="${safeLink}">Просмотр</button>`
                     }
-                    <button class="btn-table btn-table-muted" data-action="copy" data-link="${s.unique_link}" title="Копировать ссылку">🔗</button>
+                    <button class="btn-table btn-table-muted" data-action="copy" data-link="${safeLink}" title="Копировать ссылку">🔗</button>
                 </td>
             </tr>`;
         }).join('');

@@ -204,6 +204,13 @@ class IndustryKnowledgeManager:
         )
 
         profile.learnings.append(learning)
+
+        # Cap learnings to prevent unbounded YAML growth
+        max_learnings = 100
+        if len(profile.learnings) > max_learnings:
+            profile.learnings = profile.learnings[-max_learnings:]
+            logger.info("learnings_trimmed", industry_id=industry_id, kept=max_learnings)
+
         profile.meta.last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
         self.loader.save_profile(profile)

@@ -88,7 +88,15 @@ class PostgreSQLStorageManager:
                          Формат: postgresql://user:password@host:port/database
         """
         self.database_url = database_url
-        self.engine = create_engine(database_url, echo=False)
+        self.engine = create_engine(
+            database_url,
+            echo=False,
+            pool_size=10,
+            max_overflow=5,
+            pool_timeout=30,
+            pool_recycle=3600,
+            pool_pre_ping=True,
+        )
         self.SessionLocal = sessionmaker(bind=self.engine)
         
         # Создаём таблицы если их нет

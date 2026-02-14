@@ -5,13 +5,24 @@ Research Engine.
 """
 
 import asyncio
+import re
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
+from urllib.parse import urlparse
+
 from pydantic import BaseModel, Field
 
 from src.research.website_parser import WebsiteParser
 from src.research.web_search import WebSearchClient
 from src.llm.factory import create_llm_client
+
+# Block internal/private network URLs to prevent SSRF
+_BLOCKED_HOSTS = re.compile(
+    r'^(localhost|127\.\d+\.\d+\.\d+|10\.\d+\.\d+\.\d+|'
+    r'172\.(1[6-9]|2\d|3[01])\.\d+\.\d+|192\.168\.\d+\.\d+|'
+    r'169\.254\.\d+\.\d+|0\.0\.0\.0|\[::1\]|metadata\.google\.internal)$',
+    re.IGNORECASE,
+)
 
 
 class ResearchResult(BaseModel):
@@ -137,8 +148,24 @@ class ResearchEngine:
         result.research_timestamp = datetime.now(timezone.utc)
         return result
 
+    @staticmethod
+    def _is_safe_url(url: str) -> bool:
+        """Validate URL is safe for server-side fetch (no SSRF)."""
+        try:
+            parsed = urlparse(url)
+            if parsed.scheme not in ('http', 'https'):
+                return False
+            hostname = parsed.hostname or ''
+            if _BLOCKED_HOSTS.match(hostname):
+                return False
+            return True
+        except Exception:
+            return False
+
     async def _parse_website(self, url: str) -> Dict[str, Any]:
         """Парсить сайт клиента."""
+        if not self._is_safe_url(url):
+            return {"type": "website", "error": "URL blocked by security policy"}
         try:
             data = await self.website_parser.parse(url)
             return {"type": "website", "data": data}

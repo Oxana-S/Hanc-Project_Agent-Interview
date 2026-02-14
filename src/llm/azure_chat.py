@@ -138,7 +138,8 @@ class AzureChatClient:
             return content
 
         except httpx.HTTPStatusError as e:
-            logger.error(f"Azure API error: status={e.response.status_code}, detail={e.response.text}")
+            detail = (e.response.text or "")[:200]
+            logger.error(f"Azure API error: status={e.response.status_code}, detail={detail}")
             raise
         except Exception as e:
             logger.error(f"Azure request failed: {e}")

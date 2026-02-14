@@ -131,7 +131,8 @@ class OpenAICompatibleClient:
             return content
 
         except httpx.HTTPStatusError as e:
-            self._log.error(f"API error: status={e.response.status_code}, detail={e.response.text}")
+            detail = (e.response.text or "")[:200]
+            self._log.error(f"API error: status={e.response.status_code}, detail={detail}")
             raise
         except Exception as e:
             self._log.error(f"Request failed: {e}")
