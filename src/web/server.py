@@ -35,7 +35,7 @@ from typing import List, Optional
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from src.logging_config import setup_logging
 
@@ -77,6 +77,7 @@ session_mgr = SessionManager()
 @app.on_event("startup")
 async def _cleanup_stale_rooms():
     """Delete old LiveKit rooms left from previous server runs."""
+    lk_api = None
     try:
         lk_api = LiveKitAPI(
             url=os.getenv("LIVEKIT_URL"),
@@ -92,13 +93,15 @@ async def _cleanup_stale_rooms():
                 logger.info("startup_cleanup_room", room=r.name)
             except Exception:
                 pass
-        await lk_api.aclose()
         if count:
             logger.info("startup_cleanup_done", deleted=count)
         else:
             logger.info("startup_no_stale_rooms")
     except Exception as exc:
         logger.warning("startup_cleanup_failed", error=str(exc))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
 # ---------------------------------------------------------------------------
 # Pydantic request / response models
@@ -130,7 +133,7 @@ class UpdateDialogueRequest(BaseModel):
     """Request body for updating dialogue history from voice agent."""
     dialogue_history: list
     duration_seconds: float
-    status: Optional[str] = None
+    status: Optional[str] = None  # Must be a valid SessionStatus value
 
 
 # ---------------------------------------------------------------------------
@@ -174,33 +177,39 @@ async def list_sessions(status: str = None, limit: int = 50, offset: int = 0):
     return {"sessions": sessions, "total": len(sessions)}
 
 
+class DeleteSessionsRequest(BaseModel):
+    session_ids: List[str] = Field(default_factory=list, max_length=100)
+
+
 @app.post("/api/sessions/delete")
-async def delete_sessions(req: dict):
+async def delete_sessions(req: DeleteSessionsRequest):
     """Delete sessions by IDs. Also deletes associated LiveKit rooms."""
-    session_ids = req.get("session_ids", [])
-    if not session_ids:
+    if not req.session_ids:
         return {"deleted": 0}
 
     # Delete LiveKit rooms for each session
     rooms_deleted = 0
+    lk_api = None
     try:
         lk_api = LiveKitAPI(
             url=os.getenv("LIVEKIT_URL"),
             api_key=os.getenv("LIVEKIT_API_KEY"),
             api_secret=os.getenv("LIVEKIT_API_SECRET"),
         )
-        for sid in session_ids:
+        for sid in req.session_ids:
             room_name = f"consultation-{sid}"
             try:
                 await lk_api.room.delete_room(DeleteRoomRequest(room=room_name))
                 rooms_deleted += 1
             except Exception:
                 pass  # room may not exist
-        await lk_api.aclose()
     except Exception as e:
         livekit_log.warning("bulk_room_delete_failed", error=str(e))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
-    deleted = session_mgr.delete_sessions(session_ids)
+    deleted = session_mgr.delete_sessions(req.session_ids)
     session_log.info("sessions_bulk_deleted", deleted=deleted, rooms_deleted=rooms_deleted)
     return {"deleted": deleted, "rooms_deleted": rooms_deleted}
 
@@ -377,6 +386,12 @@ async def get_anketa(session_id: str):
     }
 
 
+ALLOWED_VOICE_CONFIG_KEYS = {
+    "consultation_type", "voice_gender", "voice_tone", "language",
+    "speech_speed", "silence_duration_ms", "llm_provider", "verbosity",
+}
+
+
 @app.put("/api/session/{session_id}/voice-config")
 async def update_voice_config(session_id: str, req: dict):
     """Update voice_config for an existing session (e.g. speech_speed, silence_duration_ms).
@@ -389,12 +404,15 @@ async def update_voice_config(session_id: str, req: dict):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    session.voice_config = req
+    # Filter to allowed keys only (prevent arbitrary JSON storage)
+    filtered = {k: v for k, v in req.items() if k in ALLOWED_VOICE_CONFIG_KEYS}
+    session.voice_config = filtered
     session_mgr.update_session(session)
-    session_log.info("voice_config_updated", session_id=session_id, voice_config=req)
+    session_log.info("voice_config_updated", session_id=session_id, voice_config=filtered)
 
     # Signal running agent to re-read voice_config via room metadata
     room_name = session.room_name or f"consultation-{session_id}"
+    lk_api = None
     try:
         import json, time
         lk_api = LiveKitAPI(
@@ -408,10 +426,12 @@ async def update_voice_config(session_id: str, req: dict):
                 metadata=json.dumps({"config_version": time.time()}),
             )
         )
-        await lk_api.aclose()
         livekit_log.info("voice_config_signal_sent", room=room_name)
     except Exception as e:
         livekit_log.debug("voice_config_signal_skipped", room=room_name, error=str(e))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
     return {"ok": True}
 
@@ -518,8 +538,12 @@ async def resume_session(session_id: str):
 
 
 @app.put("/api/session/{session_id}/anketa")
+@app.post("/api/session/{session_id}/anketa")  # POST for sendBeacon compatibility
 async def update_anketa(session_id: str, req: UpdateAnketaRequest):
-    """Update anketa data (client edits from the frontend)."""
+    """Update anketa data (client edits from the frontend).
+
+    Supports both PUT (normal fetch) and POST (sendBeacon on tab close).
+    """
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -537,17 +561,40 @@ async def update_dialogue(session_id: str, req: UpdateDialogueRequest):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
+    # Validate status through state machine if provided
+    validated_status = None
+    if req.status:
+        try:
+            target_status = SessionStatus(req.status)
+            current_status = SessionStatus(session.status)
+            # Only update status if it's a valid transition (or same status)
+            if target_status != current_status:
+                from src.session.status import validate_transition
+                validate_transition(current_status, target_status)
+            validated_status = target_status.value
+        except (ValueError, InvalidTransitionError) as e:
+            # Log but don't fail - dialogue save is more important than status update
+            logger.warning(
+                "dialogue_status_validation_failed",
+                session_id=session_id,
+                requested_status=req.status,
+                current_status=session.status,
+                error=str(e),
+            )
+            validated_status = None  # Skip invalid status update, save dialogue only
+
     session_mgr.update_dialogue(
         session_id,
         dialogue_history=req.dialogue_history,
         duration_seconds=req.duration_seconds,
-        status=req.status,
+        status=validated_status,
     )
     logger.info(
         "dialogue_updated_via_api",
         session_id=session_id,
         messages=len(req.dialogue_history),
         duration=req.duration_seconds,
+        status_updated=validated_status,
     )
     return {"status": "ok", "messages": len(req.dialogue_history)}
 
@@ -612,6 +659,7 @@ async def kill_session(session_id: str):
     room_name = session.room_name or f"consultation-{session_id}"
     room_deleted = False
 
+    lk_api = None
     try:
         lk_api = LiveKitAPI(
             url=os.getenv("LIVEKIT_URL"),
@@ -621,9 +669,11 @@ async def kill_session(session_id: str):
         await lk_api.room.delete_room(DeleteRoomRequest(room=room_name))
         room_deleted = True
         livekit_log.info("room_deleted", room=room_name)
-        await lk_api.aclose()
     except Exception as e:
         livekit_log.warning("room_delete_failed", room=room_name, error=str(e))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
     try:
         session_mgr.update_status(session_id, SessionStatus.DECLINED)
@@ -641,10 +691,10 @@ async def kill_session(session_id: str):
 
 
 @app.post("/api/session/{session_id}/reconnect")
-async def reconnect_session(session_id: str):
+async def reconnect_session_post(session_id: str):
     """
     Reconnect to a paused session - generates fresh LiveKit token.
-    Only works for sessions with status='paused'.
+    Only works for sessions with status='paused' or 'active'.
     """
     session = session_mgr.get_session(session_id)
     if not session:
@@ -682,8 +732,13 @@ async def reconnect_session(session_id: str):
             detail=f"Failed to generate LiveKit token: {str(exc)}"
         )
 
-    # Update session status to 'active'
-    session_mgr.update_status(session_id, "active")
+    # Update session status to 'active' via state machine
+    if session.status == SessionStatus.PAUSED.value:
+        try:
+            session_mgr.update_status(session_id, SessionStatus.ACTIVE)
+        except InvalidTransitionError as e:
+            raise HTTPException(status_code=400, detail=str(e))
+
     session_log.info(
         "session_reconnected",
         session_id=session_id,
@@ -811,8 +866,10 @@ async def list_rooms():
         api_key=os.getenv("LIVEKIT_API_KEY"),
         api_secret=os.getenv("LIVEKIT_API_SECRET"),
     )
-    result = await lk_api.room.list_rooms(ListRoomsRequest())
-    await lk_api.aclose()
+    try:
+        result = await lk_api.room.list_rooms(ListRoomsRequest())
+    finally:
+        await lk_api.aclose()
 
     rooms = [
         {
@@ -834,16 +891,18 @@ async def cleanup_all_rooms():
         api_key=os.getenv("LIVEKIT_API_KEY"),
         api_secret=os.getenv("LIVEKIT_API_SECRET"),
     )
-    result = await lk_api.room.list_rooms(ListRoomsRequest())
-    deleted = []
-    for r in result.rooms:
-        try:
-            await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
-            deleted.append(r.name)
-            livekit_log.info("room_cleanup_deleted", room=r.name)
-        except Exception as e:
-            livekit_log.warning("room_cleanup_failed", room=r.name, error=str(e))
-    await lk_api.aclose()
+    try:
+        result = await lk_api.room.list_rooms(ListRoomsRequest())
+        deleted = []
+        for r in result.rooms:
+            try:
+                await lk_api.room.delete_room(DeleteRoomRequest(room=r.name))
+                deleted.append(r.name)
+                livekit_log.info("room_cleanup_deleted", room=r.name)
+            except Exception as e:
+                livekit_log.warning("room_cleanup_failed", room=r.name, error=str(e))
+    finally:
+        await lk_api.aclose()
 
     logger.info("rooms_cleanup_done", deleted_count=len(deleted))
     return {"deleted": deleted, "count": len(deleted)}
@@ -906,10 +965,13 @@ async def upload_documents(
                 detail=f"File {file.filename} exceeds {MAX_FILE_SIZE // (1024*1024)}MB limit",
             )
 
-        # Save to disk
-        file_path = upload_dir / file.filename
+        # Save to disk (sanitize filename to prevent path traversal)
+        safe_name = Path(file.filename or "upload").name  # strips directory components
+        if not safe_name or safe_name.startswith("."):
+            safe_name = f"upload_{len(saved_files)}{ext}"
+        file_path = upload_dir / safe_name
         file_path.write_bytes(content)
-        saved_files.append(file.filename)
+        saved_files.append(safe_name)
 
         # Parse
         doc = parser.parse(file_path)

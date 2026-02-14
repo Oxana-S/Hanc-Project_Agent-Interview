@@ -96,10 +96,16 @@ def _make_anketa_mock(completion_rate=0.3, website=None, contact_phone=None):
         "business_description": "Test business",
         "services": ["Service 1"],
         "current_problems": ["Problem 1"],
-        "agent_tasks": ["Task 1"],
+        "business_goals": ["Goal 1"],
+        "agent_name": "TestAgent",
+        "agent_purpose": "Handle calls",
+        "agent_functions": [{"name": "admin", "description": "admin work"}],
         "contact_name": "Test User",
         "contact_phone": contact_phone or "+1234567890",
         "contact_email": "test@example.com",
+        "voice_gender": "female",
+        "voice_tone": "professional",
+        "call_direction": "inbound",
     }
     return anketa
 
@@ -1501,7 +1507,7 @@ class TestInterviewModeEdgeCases:
         db_session = _make_db_session(
             voice_config={"consultation_type": "interview"},
         )
-        anketa = _make_anketa_mock(completion_rate=0.7)
+        anketa = _make_anketa_mock(completion_rate=0.95)
         agent_session = _make_agent_session()
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
@@ -1520,7 +1526,7 @@ class TestInterviewModeEdgeCases:
 
             await _extract_and_update_anketa(consultation, "test-001", agent_session)
 
-            # Review phase should trigger because completion >= 0.6 and messages >= 16
+            # Review phase should trigger because completion >= 0.9 and messages >= 16
             assert consultation.review_started is True
 
     @pytest.mark.asyncio

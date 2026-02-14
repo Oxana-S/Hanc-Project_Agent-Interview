@@ -91,10 +91,16 @@ def _make_anketa_mock(completion_rate=0.6, website=None, contact_phone=None):
         "business_description": "Test business",
         "services": ["Грузоперевозки"],
         "current_problems": ["Много звонков"],
-        "agent_tasks": ["Прием звонков"],
+        "business_goals": ["Автоматизация звонков"],
+        "agent_name": "Логист-бот",
+        "agent_purpose": "Приём звонков 24/7",
+        "agent_functions": [{"name": "администратор", "description": "приём звонков"}],
         "contact_name": "Иван Петров",
         "contact_phone": contact_phone or "+1234567890",
         "contact_email": "test@example.com",
+        "voice_gender": "female",
+        "voice_tone": "professional",
+        "call_direction": "inbound",
     }
     return anketa
 
@@ -212,14 +218,14 @@ class TestNotificationManagerWiring:
 # ===========================================================================
 
 class TestReviewPhaseWiring:
-    """Review phase triggers when anketa completion >= 0.5 and messages >= 16."""
+    """Review phase triggers when anketa completion >= 0.9 and messages >= 16."""
 
     @pytest.mark.asyncio
     async def test_review_phase_triggered(self):
-        """When completion >= 0.5 and >= 16 messages, review phase starts."""
+        """When completion >= 0.9 and >= 16 messages, review phase starts."""
         consultation = _make_consultation(messages=20)
         agent_session = _make_agent_session()
-        anketa = _make_anketa_mock(completion_rate=0.6)
+        anketa = _make_anketa_mock(completion_rate=0.95)
 
         with patch("src.voice.consultant._session_mgr") as mock_mgr, \
              patch("src.voice.consultant.create_llm_client"), \
@@ -251,7 +257,7 @@ class TestReviewPhaseWiring:
 
     @pytest.mark.asyncio
     async def test_review_phase_not_triggered_low_completion(self):
-        """Review phase does NOT trigger when completion < 0.5."""
+        """Review phase does NOT trigger when completion < 0.9."""
         consultation = _make_consultation(messages=20)
         agent_session = _make_agent_session()
         anketa = _make_anketa_mock(completion_rate=0.3)

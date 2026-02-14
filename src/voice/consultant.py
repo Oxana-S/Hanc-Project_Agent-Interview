@@ -1229,43 +1229,78 @@ async def _extract_and_update_anketa(
                 anketa_log.warning("missing_fields_reminder_failed", error=str(e))
 
         # --- Review phase: switch to anketa verification when ready ---
-        if not consultation.review_started and agent_session is not None:
+        if agent_session is not None:
             try:
                 rate = anketa.completion_rate()
                 msg_count = len(consultation.dialogue_history)
 
-                # УСИЛЕННАЯ ПРОВЕРКА: требуем заполнения обязательных полей
-                required_fields_filled = _check_required_fields(anketa_data)
+                # RECOVERY: если review запущен но completion_rate упал (пользователь удалил поля)
+                # → вернуться в discovery mode
+                if consultation.review_started and rate < 0.8:
+                    consultation.review_started = False
+                    anketa_log.info(
+                        "review_phase_recovery",
+                        session_id=session_id,
+                        completion_rate=rate,
+                        reason="completion_rate dropped below 0.8",
+                    )
+                    # Re-inject base prompt with KB context
+                    activity = getattr(agent_session, '_activity', None)
+                    if activity and hasattr(activity, 'update_instructions'):
+                        base_prompt = get_system_prompt()
+                        if consultation.kb_enriched and consultation.detected_profile:
+                            builder = EnrichedContextBuilder(IndustryKnowledgeManager())
+                            voice_context = builder.build_for_voice_full(
+                                consultation.dialogue_history,
+                                profile=consultation.detected_profile,
+                                phase=consultation.current_phase,
+                            )
+                            if voice_context:
+                                base_prompt = f"{base_prompt}\n\n### Контекст отрасли ({consultation.current_phase}):\n{voice_context}"
+                        await activity.update_instructions(base_prompt)
 
                 # Переход в REVIEW только если:
                 # 1. completion_rate >= 90% (v5.0: почти все поля заполнены = 14/15)
                 # 2. Минимум 16 сообщений
                 # 3. ВСЕ обязательные поля заполнены (15 полей в v5.0, включая контакты)
-                if rate >= 0.9 and msg_count >= 16 and required_fields_filled:
-                    consultation.review_started = True
-                    summary = format_anketa_for_voice(anketa_data)
-                    review_prompt = get_review_system_prompt(summary)
-                    activity = getattr(agent_session, '_activity', None)
-                    if activity and hasattr(activity, 'update_instructions'):
-                        await activity.update_instructions(review_prompt)
-                        await agent_session.generate_reply(
-                            user_input="[Начни проверку анкеты. Зачитай первый пункт и спроси подтверждение.]"
-                        )
-                        anketa_log.info(
-                            "review_phase_started",
+                if not consultation.review_started:
+                    required_fields_filled = _check_required_fields(anketa_data)
+
+                    if rate >= 0.9 and msg_count >= 16 and required_fields_filled:
+                        consultation.review_started = True
+                        summary = format_anketa_for_voice(anketa_data)
+                        review_prompt = get_review_system_prompt(summary)
+
+                        # FIX B1: APPEND review instructions to base prompt instead of replacing
+                        # This preserves anti-hallucination rules, KB context, and platform knowledge
+                        activity = getattr(agent_session, '_activity', None)
+                        if activity and hasattr(activity, 'update_instructions'):
+                            current_instructions = getattr(activity, 'instructions', '') or get_system_prompt()
+                            # Strip any previous missing fields reminder
+                            for m in ["### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ", "### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ"]:
+                                if m in current_instructions:
+                                    current_instructions = current_instructions[:current_instructions.index(m)].rstrip()
+                            # Append review mode instructions to existing prompt
+                            combined_prompt = current_instructions + "\n\n" + review_prompt
+                            await activity.update_instructions(combined_prompt)
+                            await agent_session.generate_reply(
+                                user_input="[Начни проверку анкеты. Зачитай первый пункт и спроси подтверждение.]"
+                            )
+                            anketa_log.info(
+                                "review_phase_started",
+                                session_id=session_id,
+                                completion_rate=rate,
+                                message_count=msg_count,
+                            )
+                    elif msg_count >= 16:
+                        # Логируем почему НЕ перешли в REVIEW (для отладки)
+                        anketa_log.debug(
+                            "review_phase_not_ready",
                             session_id=session_id,
                             completion_rate=rate,
                             message_count=msg_count,
+                            required_fields_filled=required_fields_filled,
                         )
-                elif msg_count >= 16:
-                    # Логируем почему НЕ перешли в REVIEW (для отладки)
-                    anketa_log.debug(
-                        "review_phase_not_ready",
-                        session_id=session_id,
-                        completion_rate=rate,
-                        message_count=msg_count,
-                        required_fields_filled=required_fields_filled,
-                    )
             except Exception as e:
                 anketa_log.warning("review_phase_start_failed", error=str(e))
 
@@ -1485,13 +1520,14 @@ def _register_event_handlers(
     # FIX: Prevent duplicate extraction (race condition between 2 triggers)
     extraction_running = [False]  # mutable for closure
 
-    # Create file-based logger for event debugging
+    # Create file-based logger for event debugging (only add handler once)
     import logging
     event_log = logging.getLogger("agent.events")
-    fh = logging.FileHandler("/tmp/agent_entrypoint.log")
-    fh.setLevel(logging.DEBUG)
-    fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    event_log.addHandler(fh)
+    if not any(isinstance(h, logging.FileHandler) for h in event_log.handlers):
+        fh = logging.FileHandler("/tmp/agent_entrypoint.log")
+        fh.setLevel(logging.DEBUG)
+        fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        event_log.addHandler(fh)
     event_log.setLevel(logging.DEBUG)
 
     event_log.info(f"Registering event handlers for session {consultation.session_id}")
@@ -1938,13 +1974,14 @@ async def entrypoint(ctx: JobContext):
 
     Вызывается когда клиент подключается к комнате.
     """
-    # Debug logging to file (subprocess logs don't forward to parent)
+    # Debug logging to file (subprocess logs don't forward to parent, add handler once)
     import logging
     debug_log = logging.getLogger("agent.entrypoint")
-    fh = logging.FileHandler("/tmp/agent_entrypoint.log")
-    fh.setLevel(logging.DEBUG)
-    fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    debug_log.addHandler(fh)
+    if not any(isinstance(h, logging.FileHandler) for h in debug_log.handlers):
+        fh = logging.FileHandler("/tmp/agent_entrypoint.log")
+        fh.setLevel(logging.DEBUG)
+        fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        debug_log.addHandler(fh)
     debug_log.setLevel(logging.DEBUG)
 
     debug_log.info(f"=== ENTRYPOINT START === Room: {ctx.room.name}")

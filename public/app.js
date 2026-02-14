@@ -1443,7 +1443,7 @@ class VoiceInterviewerApp {
 
         // Navigate to review screen
         if (this.uniqueLink) {
-            this.router.navigate(`/review/${this.uniqueLink}`);
+            this.router.navigate(`/session/${this.uniqueLink}/review`);
         } else {
             showToast('Ссылка на результаты недоступна', 'error', 2000);
         }
@@ -1655,12 +1655,14 @@ class VoiceInterviewerApp {
             {
                 title: 'Рекомендации AI',
                 key: 'ai_recommendations',
-                render: (items) => items.map(i => `
-                    <div class="review-recommendation-item priority-${i.priority}">
+                render: (items) => items.map(i => {
+                    const safePriority = ['high', 'medium', 'low'].includes(i.priority) ? i.priority : 'medium';
+                    return `
+                    <div class="review-recommendation-item priority-${safePriority}">
                         <strong>${this._escapeHtml(i.recommendation)}</strong><br>
                         Влияние: ${this._escapeHtml(i.impact)}
                     </div>
-                `).join('')
+                `}).join('')
             },
         ];
 
