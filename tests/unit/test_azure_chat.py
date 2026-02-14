@@ -221,14 +221,29 @@ class TestAzureChatClientChat:
             assert mock_req.call_count == 2
 
     @pytest.mark.asyncio
-    async def test_chat_raises_non_429_http_error(self, client):
-        """Non-429 HTTP errors (e.g. 500) propagate immediately without retry."""
+    async def test_chat_retries_on_5xx_http_error(self, client):
+        """R21-01: 5xx errors (500, 502, 503) are retried like 429."""
         error_500 = _make_http_status_error(500, "Internal Server Error")
 
         with patch.object(
             client, "_make_request", new_callable=AsyncMock
         ) as mock_req:
             mock_req.side_effect = error_500
+
+            with pytest.raises(httpx.HTTPStatusError):
+                await client.chat(SAMPLE_MESSAGES)
+
+            assert mock_req.call_count == 3  # retried MAX_RETRIES times
+
+    @pytest.mark.asyncio
+    async def test_chat_raises_non_retryable_http_error(self, client):
+        """Non-retryable HTTP errors (e.g. 401, 403) propagate immediately."""
+        error_401 = _make_http_status_error(401, "Unauthorized")
+
+        with patch.object(
+            client, "_make_request", new_callable=AsyncMock
+        ) as mock_req:
+            mock_req.side_effect = error_401
 
             with pytest.raises(httpx.HTTPStatusError):
                 await client.chat(SAMPLE_MESSAGES)

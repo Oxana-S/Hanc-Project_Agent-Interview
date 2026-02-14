@@ -67,9 +67,18 @@ class WebsiteParser:
         if not _is_safe_url(url):
             return {"error": "URL points to a private/internal address", "url": url}
 
-        async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=True, max_redirects=5) as client:
+        # R21-18: Validate each redirect hop for SSRF (don't blindly follow_redirects)
+        async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=False) as client:
             try:
-                response = await client.get(url, headers=self.headers)
+                response = None
+                for _hop in range(5):
+                    response = await client.get(url, headers=self.headers)
+                    if response.status_code in (301, 302, 303, 307, 308):
+                        url = response.headers.get("location", "")
+                        if not _is_safe_url(url):
+                            return {"error": "Redirect to unsafe URL blocked", "url": url}
+                    else:
+                        break
                 response.raise_for_status()
                 # R9-18: Limit response size to prevent OOM
                 content_length = int(response.headers.get('content-length', 0))

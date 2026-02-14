@@ -201,14 +201,14 @@ class TestParse:
     @pytest.mark.unit
     @pytest.mark.asyncio
     async def test_parse_follows_redirects(self):
-        """Test that AsyncClient is created with follow_redirects=True."""
+        """R21-18: AsyncClient uses follow_redirects=False for SSRF-safe manual redirect handling."""
         parser = WebsiteParser()
         mock_client = _make_mock_client("<html><title>Test</title></html>")
 
         with patch("src.research.website_parser.httpx.AsyncClient", return_value=mock_client) as mock_cls:
             await parser.parse("https://example.com")
 
-        mock_cls.assert_called_once_with(timeout=30.0, follow_redirects=True, max_redirects=5)
+        mock_cls.assert_called_once_with(timeout=30.0, follow_redirects=False)
 
 
 # ============ EXTRACT TITLE TESTS ============

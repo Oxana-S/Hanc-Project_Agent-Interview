@@ -44,6 +44,12 @@ class AnthropicClient:
 
         self._http_client: Optional[httpx.AsyncClient] = None
 
+    async def aclose(self):
+        """R21-04: Close the underlying httpx client to release TCP connections."""
+        if self._http_client is not None and not self._http_client.is_closed:
+            await self._http_client.aclose()
+            self._http_client = None
+
     def _get_http_client(self) -> httpx.AsyncClient:
         """Get or create a reusable httpx client."""
         if self._http_client is None or self._http_client.is_closed:
@@ -95,17 +101,12 @@ class AnthropicClient:
             try:
                 return await self._make_request(headers, payload, timeout)
             except httpx.HTTPStatusError as e:
-                if e.response.status_code == 429:
+                # R21-03: Retry on rate limit (429), overloaded (529), AND transient server errors (5xx)
+                if e.response.status_code in (429, 500, 502, 503, 529):
                     wait_time = RETRY_DELAY * (2 ** attempt)
                     logger.warning(
-                        f"Rate limit hit, retrying (attempt {attempt + 1}, wait {wait_time}s)"
-                    )
-                    await asyncio.sleep(wait_time)
-                    last_error = e
-                elif e.response.status_code == 529:  # Anthropic overloaded
-                    wait_time = RETRY_DELAY * (2 ** attempt)
-                    logger.warning(
-                        f"Anthropic overloaded, retrying (attempt {attempt + 1}, wait {wait_time}s)"
+                        f"Server error {e.response.status_code}, retrying "
+                        f"(attempt {attempt + 1}, wait {wait_time}s)"
                     )
                     await asyncio.sleep(wait_time)
                     last_error = e

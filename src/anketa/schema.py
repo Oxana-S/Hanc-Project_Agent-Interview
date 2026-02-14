@@ -376,26 +376,36 @@ class FinalAnketa(BaseModel):
         }
 
         filled_count = 0
+        defaulted_count = 0
         for field_name, v in required_fields.items():
             # Skip fields that still have their schema default
             if field_name in self._SCHEMA_DEFAULTS and v == self._SCHEMA_DEFAULTS[field_name]:
+                defaulted_count += 1
                 continue
             if (isinstance(v, list) and len(v) > 0) or \
                (isinstance(v, str) and v.strip()) or v:
                 filled_count += 1
 
-        return filled_count / len(required_fields)  # 0.0-1.0
+        # R21-05: Denominator excludes fields with unchanged defaults
+        # so max achievable is 1.0 (not capped at 0.8 when 3 defaults unchanged)
+        effective_total = len(required_fields) - defaulted_count
+        return filled_count / max(effective_total, 1)  # 0.0-1.0
 
     def get_required_fields_status(self) -> dict:
-        """Check status of required fields."""
+        """R21-03: Check status of required fields (aligned with completion_rate)."""
         required = {
             'company_name': self.company_name,
             'industry': self.industry,
+            'business_description': self.business_description,
+            'services': self.services,
+            'current_problems': self.current_problems,
+            'business_goals': self.business_goals,
             'agent_name': self.agent_name,
             'agent_purpose': self.agent_purpose,
-            'main_function': self.main_function,
-            'faq_items': self.faq_items,
-            'ai_recommendations': self.ai_recommendations,
+            'agent_functions': self.agent_functions,
+            'contact_name': self.contact_name,
+            'contact_phone': self.contact_phone,
+            'contact_email': self.contact_email,
         }
 
         return {
