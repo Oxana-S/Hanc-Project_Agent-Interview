@@ -560,16 +560,6 @@ class TestSmartExtractor:
         result = extractor.extract_from_dialogue(dialogue)
         # May extract contact_name or contact_role depending on pattern
 
-    def test_extract_employee_count_from_dialogue(self):
-        """Should extract employee count from client messages."""
-        extractor = SmartExtractor()
-        dialogue = [
-            {"role": "user", "content": "У нас работает 50 человек"}
-        ]
-        result = extractor.extract_from_dialogue(dialogue)
-        assert "employee_count" in result
-        assert "50" in str(result["employee_count"])
-
     def test_extract_website_https_from_dialogue(self):
         """Should extract website URL from client messages."""
         extractor = SmartExtractor()
@@ -655,26 +645,6 @@ class TestSmartExtractor:
         extractor = SmartExtractor()
         long_url = "a" * 201
         assert extractor._validate_extracted_value("website", long_url) is False
-
-    def test_validate_employee_count_valid(self):
-        """Should validate valid employee count."""
-        extractor = SmartExtractor()
-        assert extractor._validate_extracted_value("employee_count", "50") is True
-
-    def test_validate_employee_count_zero(self):
-        """Should reject zero employee count."""
-        extractor = SmartExtractor()
-        assert extractor._validate_extracted_value("employee_count", "0") is False
-
-    def test_validate_employee_count_too_large(self):
-        """Should reject overly large employee count."""
-        extractor = SmartExtractor()
-        assert extractor._validate_extracted_value("employee_count", "10000000") is False
-
-    def test_validate_employee_count_non_numeric(self):
-        """Should reject non-numeric employee count."""
-        extractor = SmartExtractor()
-        assert extractor._validate_extracted_value("employee_count", "many") is False
 
     def test_validate_company_name_valid(self):
         """Should validate reasonable company name."""

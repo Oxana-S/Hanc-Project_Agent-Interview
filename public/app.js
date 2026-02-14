@@ -1331,10 +1331,10 @@ class VoiceInterviewerApp {
 
     // ===== SESSION CONTROL HANDLERS (Level 1 - Global) =====
 
-    handleAllSessions() {
+    async handleAllSessions() {
         if (this.isRecording) {
             const confirmMsg = 'Сессия активна. Остановить и вернуться к списку?';
-            if (!confirm(confirmMsg)) return;
+            if (!await this._showConfirmModal(confirmMsg)) return;
             this.handleStopSession();
         }
         // Show dashboard directly (don't use router to avoid landing redirect)
@@ -1346,7 +1346,7 @@ class VoiceInterviewerApp {
         if (!this.isRecording && !this.isConnected) return;
 
         const confirmMsg = 'Остановить текущую сессию?';
-        if (!confirm(confirmMsg)) return;
+        if (!await this._showConfirmModal(confirmMsg)) return;
 
         // CRITICAL FIX: Update backend status to 'paused' FIRST (before disconnect)
         // This prevents race condition where voice agent sees 'active' status
@@ -2218,6 +2218,11 @@ class VoiceInterviewerApp {
         const placeholder = document.getElementById('dialogue-placeholder');
         if (placeholder) placeholder.remove();
 
+        // N6: Remove thinking indicator when AI responds
+        if (author === 'ai') {
+            document.getElementById('agent-thinking')?.remove();
+        }
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${author}`;
 
@@ -2239,10 +2244,38 @@ class VoiceInterviewerApp {
         messageDiv.appendChild(timeEl);
 
         this.elements.dialogueContainer.appendChild(messageDiv);
-        this.elements.dialogueContainer.scrollTop = this.elements.dialogueContainer.scrollHeight;
+
+        // N7: Only auto-scroll if user hasn't scrolled up to read history
+        const container = this.elements.dialogueContainer;
+        const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 120;
+        if (isNearBottom) {
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // R4-10: Cap dialogue DOM nodes to prevent memory growth
+        const MAX_MESSAGES = 200;
+        const messages = this.elements.dialogueContainer.querySelectorAll('.message:not(.thinking)');
+        if (messages.length > MAX_MESSAGES) {
+            for (let i = 0; i < messages.length - MAX_MESSAGES; i++) {
+                messages[i].remove();
+            }
+        }
 
         this.messageCount++;
         this._lastMessageTimestamp = Date.now();
+
+        // N6: Show thinking indicator after user message (agent is processing)
+        if (author === 'user' && !document.getElementById('agent-thinking')) {
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.id = 'agent-thinking';
+            thinkingDiv.className = 'message ai thinking';
+            thinkingDiv.innerHTML = '<div class="author">AI-Консультант</div><div class="content typing-dots"><span>.</span><span>.</span><span>.</span></div>';
+            this.elements.dialogueContainer.appendChild(thinkingDiv);
+            const cont = this.elements.dialogueContainer;
+            if (cont.scrollHeight - cont.scrollTop - cont.clientHeight < 120) {
+                cont.scrollTop = cont.scrollHeight;
+            }
+        }
     }
 
     // ===== Anketa Polling =====
@@ -2903,6 +2936,20 @@ class VoiceInterviewerApp {
                 anketaData[fieldName] = rawValue || '';
             }
         });
+
+        // F6: Reverse field normalization — map frontend names back to backend schema
+        const reverseMap = {
+            company_description: 'business_description',
+            phone: 'contact_phone',
+            email: 'contact_email',
+            agent_tasks: 'agent_functions',
+        };
+        for (const [frontendKey, backendKey] of Object.entries(reverseMap)) {
+            if (frontendKey in anketaData) {
+                anketaData[backendKey] = anketaData[frontendKey];
+                delete anketaData[frontendKey];
+            }
+        }
 
         // Guard: do not send completely empty data (all fields blank)
         const hasAnyValue = Object.values(anketaData).some(v =>

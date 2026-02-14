@@ -8,6 +8,7 @@ All notification methods are async and designed to be fire-and-forget:
 they log success/failure but never raise exceptions to the caller.
 """
 
+import asyncio
 import hashlib
 import hmac
 import json
@@ -123,7 +124,8 @@ class NotificationManager:
             subject = email_cfg.manager_subject.format(company_name=company)
             body = self._build_manager_email_body(session)
 
-            self._send_email(
+            await asyncio.to_thread(
+                self._send_email,
                 to_address=email_cfg.manager_email,
                 subject=subject,
                 body_html=body,
@@ -154,7 +156,8 @@ class NotificationManager:
 
             body = self._build_client_email_body(session, unique_link)
 
-            self._send_email(
+            await asyncio.to_thread(
+                self._send_email,
                 to_address=email,
                 subject=subject,
                 body_html=body,

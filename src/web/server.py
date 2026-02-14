@@ -177,6 +177,8 @@ async def session_review_page(link: str):
 @app.get("/api/sessions")
 async def list_sessions(status: str = None, limit: int = 50, offset: int = 0):
     """List all sessions (lightweight summaries for dashboard)."""
+    limit = min(max(limit, 1), 200)  # R4-20: bound limit param
+    offset = max(offset, 0)
     sessions = session_mgr.list_sessions_summary(status, limit, offset)
     return {"sessions": sessions, "total": len(sessions)}
 
@@ -212,6 +214,10 @@ async def delete_sessions(req: DeleteSessionsRequest):
     finally:
         if lk_api:
             await lk_api.aclose()
+
+    # R4-32: cleanup runtime statuses for deleted sessions
+    for sid in req.session_ids:
+        _runtime_statuses.pop(sid, None)
 
     deleted = session_mgr.delete_sessions(req.session_ids)
     session_log.info("sessions_bulk_deleted", deleted=deleted, rooms_deleted=rooms_deleted)
@@ -486,6 +492,8 @@ async def reconnect_session(session_id: str):
         raise HTTPException(status_code=500, detail="Failed to generate token")
 
     # Check if room still exists; if not, recreate + dispatch agent
+    room_exists = None  # R4-06: initialize before try block
+    lk_api = None
     try:
         lk_api = LiveKitAPI(
             url=livekit_url,
@@ -519,15 +527,17 @@ async def reconnect_session(session_id: str):
             except Exception as meta_exc:
                 livekit_log.warning("reconnect_metadata_signal_failed", error=str(meta_exc))
 
-        await lk_api.aclose()
     except Exception as exc:
         livekit_log.warning("reconnect_room_check_failed", error=str(exc))
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
     session_log.info(
         "session_reconnect",
         session_id=session_id,
         room_name=room_name,
-        room_existed=room_exists if 'room_exists' in dir() else "unknown",
+        room_existed=room_exists,
     )
     return {
         "room_name": room_name,
@@ -653,6 +663,7 @@ async def confirm_session(session_id: str):
     except InvalidTransitionError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+    _runtime_statuses.pop(session_id, None)  # R4-32: cleanup on terminal state
     session_log.info("session_confirmed", session_id=session_id)
 
     # Trigger notifications in background
@@ -723,6 +734,7 @@ async def kill_session(session_id: str):
         # Kill is admin override - use force=True
         session_mgr.update_status(session_id, SessionStatus.DECLINED, force=True)
 
+    _runtime_statuses.pop(session_id, None)  # R4-32: cleanup on terminal state
     session_log.info("session_killed", session_id=session_id, room_deleted=room_deleted)
 
     return {
@@ -1046,6 +1058,7 @@ async def upload_documents(
     )
 
     # v4.3: Notify running agent via LiveKit room metadata
+    lk_api = None
     try:
         room_name = f"consultation-{session_id}"
         lk_api = LiveKitAPI(
@@ -1065,12 +1078,18 @@ async def upload_documents(
         logger.info("agent_notified_about_documents", session_id=session_id, room=room_name)
     except Exception as e:
         logger.warning("failed_to_notify_agent_about_documents", error=str(e), session_id=session_id)
+    finally:
+        if lk_api:
+            await lk_api.aclose()
 
     # Trigger immediate anketa extraction with document context
     task = asyncio.create_task(
         _extract_anketa_with_documents(session_id, doc_context)
     )
-    task.add_done_callback(lambda t: t.result() if not t.cancelled() and not t.exception() else None)
+    def _log_bg_task_error(t):
+        if not t.cancelled() and t.exception():
+            logger.error("background_extraction_failed", error=str(t.exception()))
+    task.add_done_callback(_log_bg_task_error)
 
     return {
         "status": "success",

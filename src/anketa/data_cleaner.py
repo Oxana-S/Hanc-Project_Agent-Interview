@@ -448,10 +448,6 @@ class SmartExtractor:
             r'я\s+[-–]?\s*([а-яё]+\s*(?:директор|руководитель|менеджер|владелец|основатель))',
             r'(?:должность|позиция)\s*[-:–]?\s*([А-ЯЁа-яё\w\s\-]+)',
         ],
-        'employee_count': [
-            r'(\d+)\s*(?:человек|сотрудник|работник)',
-            r'штат[еа]?\s*[-:–]?\s*(\d+)',
-        ],
         'website': [
             r'(https?://[^\s]+)',
             r'сайт\s*[-:–]?\s*([а-яёa-z0-9\-\.]+\.[a-zа-яё]{2,})',
@@ -640,14 +636,6 @@ class SmartExtractor:
             # Should look like a URL or domain
             return '.' in value and len(value) < 200
 
-        if field == 'employee_count':
-            # Should be a reasonable number
-            try:
-                num = int(re.sub(r'\D', '', value))
-                return 1 <= num <= 1000000
-            except ValueError:
-                return False
-
         if field in ('company_name', 'contact_name'):
             # Should be reasonable length, not a sentence
             return len(value) < 100 and value.count(' ') < 5
@@ -679,7 +667,7 @@ class SmartExtractor:
         # Fields where dialogue extraction is more reliable
         reliable_fields = {
             'company_name', 'contact_name', 'contact_role',
-            'website', 'employee_count', 'contact_phone', 'contact_email'
+            'website', 'contact_phone', 'contact_email'
         }
 
         for field, value in dialogue_data.items():

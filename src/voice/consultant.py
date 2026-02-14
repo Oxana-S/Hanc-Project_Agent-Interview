@@ -104,6 +104,7 @@ class VoiceConsultationSession:
         self.current_phase = "discovery"  # discovery → analysis → proposal → refinement
         self.detected_industry_id = None  # Cached industry ID
         self.detected_profile = None  # Cached IndustryProfile
+        self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
 
     def add_message(self, role: str, content: str):
         """Добавить сообщение в историю диалога."""
@@ -758,6 +759,8 @@ _FIELD_LABELS = {
     "call_volume": "объём звонков",
     "budget": "бюджет",
     "timeline": "сроки внедрения",
+    "additional_notes": "дополнительные заметки / особые требования",
+    "language": "язык общения агента",
 }
 
 
@@ -894,6 +897,7 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
 
     filtered = []
     review_started = False
+    non_review_streak = 0  # R4-31: count consecutive non-review messages
 
     for msg in dialogue_history:
         content_lower = msg.get('content', '').lower()
@@ -903,13 +907,14 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
             if not review_started:
                 logger.debug("review_phase_detected", message=content_lower[:100])
             review_started = True
+            non_review_streak = 0
             continue  # Skip this message
 
-        # If review started, skip subsequent messages until non-review message
+        # If review started, wait for 2 consecutive non-review messages to exit
         if review_started:
-            # Check if message looks like normal dialogue (no review keywords)
-            if len(content_lower) > 20 and not any(kw in content_lower for kw in review_keywords):
-                # Restart normal extraction
+            non_review_streak += 1
+            if non_review_streak >= 2:
+                # Back to normal dialogue
                 review_started = False
                 filtered.append(msg)
             continue
@@ -1006,11 +1011,14 @@ async def _extract_and_update_anketa(
             except Exception:
                 pass  # Use dict fallback — extractor handles both
 
-        _llm_provider = None
-        if db_session and db_session.voice_config:
-            _llm_provider = db_session.voice_config.get("llm_provider")
-        llm = create_llm_client(_llm_provider)
-        extractor = AnketaExtractor(llm)
+        # R4-18: Reuse cached extractor to avoid recreating LLM client per call
+        if consultation._cached_extractor is None:
+            _llm_provider = None
+            if db_session and db_session.voice_config:
+                _llm_provider = db_session.voice_config.get("llm_provider")
+            llm = create_llm_client(_llm_provider)
+            consultation._cached_extractor = AnketaExtractor(llm)
+        extractor = consultation._cached_extractor
 
         # v5.0: Use sliding window dialogue instead of full history
         anketa = await extractor.extract(
@@ -1321,7 +1329,7 @@ async def _extract_and_update_anketa(
                 anketa_log.warning("review_phase_start_failed", error=str(e))
 
     except Exception as e:
-        anketa_log.warning("periodic_anketa_extraction_failed", error=str(e))
+        anketa_log.error("periodic_anketa_extraction_failed", error=str(e), exc_info=True)
 
 
 async def _finalize_and_save(
@@ -1540,8 +1548,9 @@ def _register_event_handlers(
     # Create file-based logger for event debugging (only add handler once)
     import logging
     event_log = logging.getLogger("agent.events")
-    if not any(isinstance(h, logging.FileHandler) for h in event_log.handlers):
-        fh = logging.FileHandler("/tmp/agent_entrypoint.log")
+    from logging.handlers import RotatingFileHandler
+    if not any(isinstance(h, (logging.FileHandler, RotatingFileHandler)) for h in event_log.handlers):
+        fh = RotatingFileHandler("/tmp/agent_entrypoint.log", maxBytes=10*1024*1024, backupCount=3)
         fh.setLevel(logging.DEBUG)
         fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
         event_log.addHandler(fh)
@@ -2241,7 +2250,7 @@ async def entrypoint(ctx: JobContext):
                 if session_id:
                     fresh_session = _session_mgr.get_session(session_id)
                     if fresh_session and fresh_session.document_context:
-                        event_log.info(
+                        debug_log.info(
                             "documents_uploaded_agent_notified",
                             session_id=session_id,
                             document_count=metadata.get("document_count", 0),
