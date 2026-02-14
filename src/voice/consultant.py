@@ -143,6 +143,7 @@ class VoiceConsultationSession:
         self.detected_profile = None  # Cached IndustryProfile
         self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
         self._cached_extractor_provider = None  # R17-04: track provider to invalidate on change
+        self._last_extraction_time = 0  # R19-02: timestamp of last successful extraction
 
     MAX_DIALOGUE_MESSAGES = 500  # R10-09: Prevent unbounded memory growth
 
@@ -206,11 +207,15 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
         pass
 
     try:
-        _llm_provider = None
-        if _fin_session and _fin_session.voice_config:
-            _llm_provider = _fin_session.voice_config.get("llm_provider")
-        llm = create_llm_client(_llm_provider)
-        extractor = AnketaExtractor(llm)
+        # R19-03: Reuse cached extractor to avoid redundant LLM client creation
+        if consultation._cached_extractor:
+            extractor = consultation._cached_extractor
+        else:
+            _llm_provider = None
+            if _fin_session and _fin_session.voice_config:
+                _llm_provider = _fin_session.voice_config.get("llm_provider")
+            llm = create_llm_client(_llm_provider)
+            extractor = AnketaExtractor(llm)
 
         anketa = await extractor.extract(
             dialogue_history=consultation.dialogue_history,
@@ -423,6 +428,15 @@ def _build_resume_context(db_session) -> str:
 # ---------------------------------------------------------------------------
 
 _session_mgr = SessionManager()
+
+# R19-05: Ensure SQLite connection is closed when agent process exits
+import atexit as _atexit
+def _close_session_mgr():
+    try:
+        _session_mgr._conn.close()  # Close SQLite directly (avoid logging on closed stderr)
+    except Exception:
+        pass
+_atexit.register(_close_session_mgr)
 
 # R11-08: Cached IndustryKnowledgeManager singleton (avoids re-reading 968 YAML files)
 _kb_manager = None
@@ -645,18 +659,18 @@ async def _run_background_research(
         research_context = " | ".join(parts)
         consultation.research_done = True
 
-        # Inject into agent instructions
+        # Inject into agent instructions (R19-02: Use _update_instructions_safe for buffering)
         if agent_session is not None:
-            activity = getattr(agent_session, '_activity', None)
-            if activity and hasattr(activity, 'update_instructions'):
-                current = getattr(activity, 'instructions', get_system_prompt())
-                updated = f"{current}\n\n### Данные исследования:\n{research_context}"
-                await activity.update_instructions(updated)
-                anketa_log.info(
-                    "research_injected",
-                    session_id=session_id,
-                    sources=result.sources_used,
-                )
+            current = getattr(consultation, '_latest_instructions', None) \
+                or getattr(getattr(agent_session, '_activity', None), 'instructions', '') \
+                or get_system_prompt()
+            updated = f"{current}\n\n### Данные исследования:\n{research_context}"
+            await _update_instructions_safe(consultation, agent_session, updated)
+            anketa_log.info(
+                "research_injected",
+                session_id=session_id,
+                sources=result.sources_used,
+            )
     except Exception as e:
         anketa_log.warning("background_research_failed", error=str(e))
 
@@ -1184,6 +1198,7 @@ async def _extract_and_update_anketa(
         # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
         # SQLite WAL mode isolates writes between processes → use HTTP API
         await _update_anketa_via_api(session_id, anketa_data, anketa_md)
+        consultation._last_extraction_time = time.time()  # R19-02: Track for finalize dedup
 
         # Note: update_metadata() is redundant - company_name/contact_name
         # are already in anketa_data and will be updated via API
@@ -1466,46 +1481,57 @@ async def _finalize_and_save(
     )
 
     if consultation.runtime_status == RuntimeStatus.COMPLETED:
-        try:
-            # Fetch document_context if client uploaded files
-            doc_context = None
-            session = _session_mgr.get_session(session_id)
-            # v5.0: Determine consultation type for extraction routing
-            _fin_ct = "consultation"
-            if session and session.voice_config:
-                _fin_ct = session.voice_config.get("consultation_type", "consultation")
-            if session and session.document_context:
-                try:
-                    from src.documents import DocumentContext
-                    doc_context = DocumentContext(**session.document_context)
-                except Exception:
-                    pass
-
-            # R10-11: Reuse cached extractor if available
-            if consultation._cached_extractor:
-                extractor = consultation._cached_extractor
-            else:
-                _fin_llm_provider = None
-                if session and session.voice_config:
-                    _fin_llm_provider = session.voice_config.get("llm_provider")
-                llm = create_llm_client(_fin_llm_provider)
-                extractor = AnketaExtractor(llm)
-
-            anketa = await extractor.extract(
-                dialogue_history=consultation.dialogue_history,
-                duration_seconds=consultation.get_duration_seconds(),
-                document_context=doc_context,
-                consultation_type=_fin_ct,
+        # R19-02: Skip redundant final extraction if last real-time extraction
+        # was within 10 seconds — data is already fresh enough
+        import time as _t
+        _since_last = _t.time() - consultation._last_extraction_time
+        if _since_last < 10.0:
+            anketa_log.info(
+                "finalize_extraction_skipped_recent",
+                session_id=session_id,
+                seconds_since_last=round(_since_last, 1),
             )
+        else:
+            try:
+                # Fetch document_context if client uploaded files
+                doc_context = None
+                session = _session_mgr.get_session(session_id)
+                # v5.0: Determine consultation type for extraction routing
+                _fin_ct = "consultation"
+                if session and session.voice_config:
+                    _fin_ct = session.voice_config.get("consultation_type", "consultation")
+                if session and session.document_context:
+                    try:
+                        from src.documents import DocumentContext
+                        doc_context = DocumentContext(**session.document_context)
+                    except Exception:
+                        pass
 
-            anketa_data = anketa.model_dump(mode="json")
-            anketa_md = AnketaGenerator.render_markdown(anketa)
+                # R10-11: Reuse cached extractor if available
+                if consultation._cached_extractor:
+                    extractor = consultation._cached_extractor
+                else:
+                    _fin_llm_provider = None
+                    if session and session.voice_config:
+                        _fin_llm_provider = session.voice_config.get("llm_provider")
+                    llm = create_llm_client(_fin_llm_provider)
+                    extractor = AnketaExtractor(llm)
 
-            # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
-            await _update_anketa_via_api(session_id, anketa_data, anketa_md)
+                anketa = await extractor.extract(
+                    dialogue_history=consultation.dialogue_history,
+                    duration_seconds=consultation.get_duration_seconds(),
+                    document_context=doc_context,
+                    consultation_type=_fin_ct,
+                )
 
-        except Exception as e:
-            anketa_log.warning("final_anketa_extraction_failed", error=str(e))
+                anketa_data = anketa.model_dump(mode="json")
+                anketa_md = AnketaGenerator.render_markdown(anketa)
+
+                # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
+                await _update_anketa_via_api(session_id, anketa_data, anketa_md)
+
+            except Exception as e:
+                anketa_log.warning("final_anketa_extraction_failed", error=str(e))
 
     session_log.info(
         "session_finalized_in_db",
@@ -1519,14 +1545,17 @@ async def _finalize_and_save(
         session_log.warning("finalize_session_lost_after_update", session_id=session_id)
         return
 
-    # --- Send notifications (fire-and-forget) ---
-    try:
-        from src.notifications.manager import NotificationManager
-        notifier = NotificationManager()
-        await notifier.on_session_confirmed(session)
-        anketa_log.info("notification_sent", session_id=session_id)
-    except Exception as e:
-        anketa_log.warning("notification_failed", error=str(e))
+    # --- Send notifications only for confirmed/reviewing sessions (R19-07) ---
+    if final_status in (SessionStatus.CONFIRMED, SessionStatus.REVIEWING):
+        try:
+            from src.notifications.manager import NotificationManager
+            notifier = NotificationManager()
+            await notifier.on_session_confirmed(session)
+            anketa_log.info("notification_sent", session_id=session_id, status=final_status.value)
+        except Exception as e:
+            anketa_log.warning("notification_failed", error=str(e))
+    else:
+        anketa_log.debug("notification_skipped", session_id=session_id, status=final_status.value)
 
     # --- Record learning for industry KB ---
     try:
@@ -1578,7 +1607,7 @@ async def _finalize_and_save(
             await pg_mgr.update_interview_session(
                 session_id=session_id,
                 completed_at=datetime.now(timezone.utc),
-                duration=session.duration_seconds,
+                duration=consultation.get_duration_seconds(),  # R19-01: Use computed, not stale DB
                 completeness_score=anketa_obj.completion_rate() if hasattr(anketa_obj, 'completion_rate') else None,
                 status=final_status.value,  # R18-02: Use computed status, not stale DB read
             )

@@ -225,11 +225,13 @@ class SessionManager:
         Returns:
             ConsultationSession if found, None otherwise.
         """
-        cursor = self._conn.execute(
-            "SELECT * FROM sessions WHERE session_id = ?",
-            (session_id,),
-        )
-        row = cursor.fetchone()
+        # R19-04: Lock reads to prevent concurrent access on shared connection
+        with self._lock:
+            cursor = self._conn.execute(
+                "SELECT * FROM sessions WHERE session_id = ?",
+                (session_id,),
+            )
+            row = cursor.fetchone()
 
         if row is None:
             logger.warning("session_not_found", session_id=session_id)
@@ -249,11 +251,13 @@ class SessionManager:
         Returns:
             ConsultationSession if found, None otherwise.
         """
-        cursor = self._conn.execute(
-            "SELECT * FROM sessions WHERE unique_link = ?",
-            (unique_link,),
-        )
-        row = cursor.fetchone()
+        # R19-04: Lock reads to prevent concurrent access on shared connection
+        with self._lock:
+            cursor = self._conn.execute(
+                "SELECT * FROM sessions WHERE unique_link = ?",
+                (unique_link,),
+            )
+            row = cursor.fetchone()
 
         if row is None:
             logger.warning("session_not_found_by_link", unique_link=unique_link)
@@ -712,17 +716,19 @@ class SessionManager:
         Returns:
             List of ConsultationSession objects ordered by created_at descending.
         """
-        if status is not None:
-            cursor = self._conn.execute(
-                "SELECT * FROM sessions WHERE status = ? ORDER BY created_at DESC",
-                (status,),
-            )
-        else:
-            cursor = self._conn.execute(
-                "SELECT * FROM sessions ORDER BY created_at DESC"
-            )
+        # R19-04: Lock reads to prevent concurrent access on shared connection
+        with self._lock:
+            if status is not None:
+                cursor = self._conn.execute(
+                    "SELECT * FROM sessions WHERE status = ? ORDER BY created_at DESC",
+                    (status,),
+                )
+            else:
+                cursor = self._conn.execute(
+                    "SELECT * FROM sessions ORDER BY created_at DESC"
+                )
 
-        rows = cursor.fetchall()
+            rows = cursor.fetchall()
         sessions = [self._session_from_row(row) for row in rows]
 
         logger.debug(

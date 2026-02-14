@@ -116,7 +116,8 @@ class TestGetCompanyDir:
 
     def test_uses_current_date_by_default(self, output_manager):
         """Should use current date when not specified."""
-        today = datetime.now().strftime("%Y-%m-%d")
+        from datetime import timezone
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         company_dir = output_manager.get_company_dir("Test")
         assert today in str(company_dir)
 
@@ -456,6 +457,7 @@ class TestSaveDialogue:
 
     def test_dialogue_uses_current_time_by_default(self, output_manager, sample_dialogue_history):
         """Should use current time when start_time not specified."""
+        from datetime import timezone
         company_dir = output_manager.get_company_dir("Test")
         result = output_manager.save_dialogue(
             company_dir,
@@ -464,8 +466,8 @@ class TestSaveDialogue:
             client_name="Иван"
         )
         content = result.read_text(encoding="utf-8")
-        # Should contain today's date
-        today = datetime.now().strftime("%Y-%m-%d")
+        # Should contain today's UTC date (matches production code's timezone.utc)
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         assert today in content
 
 

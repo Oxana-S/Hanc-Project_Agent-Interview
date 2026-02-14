@@ -31,8 +31,9 @@ class JSONRepair:
         (r',\s*([}\]])', r'\1'),
         # Missing commas between array elements
         (r'"\s*\n\s*"', '",\n"'),
-        # Single quotes instead of double
-        (r"(?<![\\])'", '"'),
+        # R19-01: REMOVED naive single-quote regex — it corrupts apostrophes
+        # inside double-quoted strings (e.g., "it's" → "it"s").
+        # Context-aware replacement is done in _apply_fixes() instead.
         # Unquoted keys
         (r'(\{|\,)\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":'),
         # Python-style None/True/False
@@ -129,6 +130,11 @@ class JSONRepair:
         for pattern, replacement, *flags in cls.FIXES:
             flag = flags[0] if flags else 0
             result = re.sub(pattern, replacement, result, flags=flag)
+        # R19-01: Context-aware single-quote → double-quote replacement.
+        # Only replace single quotes acting as JSON delimiters (key/value patterns),
+        # NOT apostrophes inside already-valid double-quoted strings.
+        result = re.sub(r"'([^']*?)'\s*:", r'"\1":', result)  # keys: 'key': → "key":
+        result = re.sub(r":\s*'([^']*?)'", r': "\1"', result)  # values: : 'val' → : "val"
         return result
 
     @classmethod
