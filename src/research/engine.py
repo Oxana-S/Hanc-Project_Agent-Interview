@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 from urllib.parse import urlparse
 
 from pydantic import BaseModel, Field
+import structlog
 
 from src.research.website_parser import WebsiteParser
 from src.research.web_search import WebSearchClient
@@ -266,7 +267,10 @@ class ResearchEngine:
             result.compliance_notes = data.get("compliance_notes", [])
             result.confidence_score = 0.8
 
-        except Exception:
-            pass
+        except Exception as e:
+            # R16-10: Log synthesis failures instead of silently swallowing
+            structlog.get_logger("research").warning(
+                "research_synthesis_failed", error=str(e), industry=industry
+            )
 
         return result

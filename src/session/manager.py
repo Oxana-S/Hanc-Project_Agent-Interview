@@ -362,17 +362,20 @@ class SessionManager:
             return self._update_anketa_locked(session_id, anketa_data, anketa_md)
 
     @staticmethod
-    def _deep_merge(base: dict, override: dict) -> dict:
+    def _deep_merge(base: dict, override: dict, _depth: int = 0) -> dict:
         """Recursively merge override into base. Lists and scalars overwrite.
 
         None values are only skipped when a non-None value already exists in base
         (prevents LLM extraction from erasing user-edited fields).
+        R16-12: Depth limit prevents stack overflow from crafted payloads.
         """
+        if _depth > 20:
+            return override  # Prevent stack overflow
         for key, val in override.items():
             if val is None and key in base and base[key] is not None:
                 continue  # Don't overwrite existing data with None
             if isinstance(val, dict) and isinstance(base.get(key), dict):
-                base[key] = SessionManager._deep_merge(base[key], val)
+                base[key] = SessionManager._deep_merge(base[key], val, _depth + 1)
             else:
                 base[key] = val
         return base

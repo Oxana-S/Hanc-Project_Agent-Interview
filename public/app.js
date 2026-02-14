@@ -1329,6 +1329,7 @@ class VoiceInterviewerApp {
         }
         this.isConnected = false;
         this.localParticipant = null;
+        this.sessionId = null;  // R16-08: Clear stale session reference
         document.getElementById('session-screen')?.classList.remove('voice-active');
         // Show dashboard directly (don't use router to avoid landing redirect)
         this.showDashboard();

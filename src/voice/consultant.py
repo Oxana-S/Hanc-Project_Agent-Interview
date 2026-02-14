@@ -21,6 +21,7 @@ v1.3: Подробное логирование для диагностики.
 import asyncio
 import os
 import sys
+import threading
 import traceback
 import uuid
 from datetime import datetime, timezone
@@ -42,14 +43,18 @@ def _track_agent_task(task):
 
 
 # R15-07: Lazy lock creation — avoid binding to wrong event loop at import time
+# R16-02: Double-checked locking with threading.Lock for atomic bootstrap
 _http_client_lock: asyncio.Lock | None = None
+_http_client_lock_init = threading.Lock()
 
 
 async def _get_http_client() -> httpx.AsyncClient:
     """Get or create a shared httpx.AsyncClient with connection pooling."""
     global _shared_http_client, _http_client_lock
     if _http_client_lock is None:
-        _http_client_lock = asyncio.Lock()
+        with _http_client_lock_init:
+            if _http_client_lock is None:
+                _http_client_lock = asyncio.Lock()
     async with _http_client_lock:
         if _shared_http_client is None or _shared_http_client.is_closed:
             _shared_http_client = httpx.AsyncClient(
@@ -984,6 +989,10 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
             continue
 
         filtered.append(msg)
+
+    # R16-03: Flush buffered message if dialogue ended mid-review with only 1 non-review msg
+    if _buffered_msg is not None:
+        filtered.append(_buffered_msg)
 
     if review_started and filtered:
         logger.info("review_phase_filtered", original_count=len(dialogue_history), filtered_count=len(filtered))
@@ -2049,7 +2058,6 @@ def _create_realtime_model(voice_config: dict = None):
         deployment=azure_deployment,
         api_version=azure_api_version,
         api_key_present=bool(azure_api_key),
-        api_key_length=len(azure_api_key) if azure_api_key else 0,
     )
 
     if not all([azure_endpoint, azure_api_key]):

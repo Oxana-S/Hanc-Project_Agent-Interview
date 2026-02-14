@@ -801,7 +801,7 @@ async def update_dialogue(session_id: str, req: UpdateDialogueRequest):
         session_id=session_id,
         messages=len(req.dialogue_history),
         duration=req.duration_seconds,
-        status_updated=validated_status,
+        status_updated=req.status,
     )
     return {"status": "ok", "messages": len(req.dialogue_history)}
 

@@ -432,8 +432,12 @@ class AnketaExtractor:
         return fixed
 
     def _find_balanced_json(self, text: str) -> str:
-        """Find the first balanced JSON object in text (string-aware)."""
+        """Find the first balanced JSON object in text (string-aware).
+
+        R16-04: Track start position of first '{' to exclude any preamble text.
+        """
         brace_count = 0
+        start_pos = -1
         in_string = False
         escape_next = False
         for i, char in enumerate(text):
@@ -451,11 +455,13 @@ class AnketaExtractor:
                 in_string = True
                 continue
             if char == '{':
+                if brace_count == 0:
+                    start_pos = i
                 brace_count += 1
             elif char == '}':
                 brace_count -= 1
-                if brace_count == 0:
-                    return text[:i + 1]
+                if brace_count == 0 and start_pos >= 0:
+                    return text[start_pos:i + 1]
         return text
 
     def _parse_json_with_repair(self, response: str) -> Tuple[Dict[str, Any], bool]:
