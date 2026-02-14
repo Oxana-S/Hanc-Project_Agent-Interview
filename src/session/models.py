@@ -5,7 +5,7 @@ ConsultationSession stores the full state of a voice consultation,
 including dialogue history, anketa data, and session metadata.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
@@ -54,8 +54,8 @@ class ConsultationSession(BaseModel):
     room_name: str = Field(default="", description="LiveKit room name")
     unique_link: str = Field(..., description="Full UUID link for client to return later")
     status: str = Field(default="active", description="Session status: active, paused, reviewing, confirmed, declined")
-    created_at: datetime = Field(default_factory=datetime.now, description="Creation timestamp")
-    updated_at: datetime = Field(default_factory=datetime.now, description="Last update timestamp")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), description="Creation timestamp")
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), description="Last update timestamp")
 
     # Dialogue
     dialogue_history: List[Dict[str, Any]] = Field(

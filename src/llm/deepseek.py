@@ -73,19 +73,20 @@ class DeepSeekClient(OpenAICompatibleClient):
         )
 
         try:
+            # R12-04: Use local model override instead of mutating shared self.model
             original_model = self.model
             self.model = "deepseek-chat"
-
-            response = await self.chat(
-                [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                temperature=0.2,
-                max_tokens=2048,
-            )
-
-            self.model = original_model
+            try:
+                response = await self.chat(
+                    [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    temperature=0.2,
+                    max_tokens=2048,
+                )
+            finally:
+                self.model = original_model
 
             json_text = response.strip()
             if "```json" in json_text:

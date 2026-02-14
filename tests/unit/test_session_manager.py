@@ -185,11 +185,7 @@ class TestUpdateStatus:
         session = manager.create_session()
         sid = session.session_id
 
-        # active -> paused
-        assert manager.update_status(sid, "paused") is True
-        assert manager.get_session(sid).status == "paused"
-
-        # paused -> reviewing
+        # active -> reviewing
         assert manager.update_status(sid, "reviewing") is True
         assert manager.get_session(sid).status == "reviewing"
 
@@ -197,12 +193,34 @@ class TestUpdateStatus:
         assert manager.update_status(sid, "confirmed") is True
         assert manager.get_session(sid).status == "confirmed"
 
+    def test_valid_status_transitions_via_pause(self, manager):
+        """Paused session can be confirmed directly."""
+        session = manager.create_session()
+        sid = session.session_id
+
+        # active -> paused
+        assert manager.update_status(sid, "paused") is True
+        assert manager.get_session(sid).status == "paused"
+
+        # paused -> confirmed
+        assert manager.update_status(sid, "confirmed") is True
+        assert manager.get_session(sid).status == "confirmed"
+
     def test_all_valid_statuses_accepted(self, manager):
-        """Each status in VALID_STATUSES is accepted without error."""
-        for status in sorted(VALID_STATUSES):
+        """Each status in VALID_STATUSES can be reached via valid transitions."""
+        # R12: Test each status via valid transition path
+        transition_paths = {
+            "active": [],  # already active
+            "paused": ["paused"],
+            "reviewing": ["reviewing"],
+            "confirmed": ["reviewing", "confirmed"],
+            "declined": ["declined"],
+        }
+        for status, path in transition_paths.items():
             session = manager.create_session()
-            result = manager.update_status(session.session_id, status)
-            assert result is True
+            for step in path:
+                result = manager.update_status(session.session_id, step)
+                assert result is True
             loaded = manager.get_session(session.session_id)
             assert loaded.status == status
 

@@ -15,10 +15,12 @@ ALLOWED_TRANSITIONS: dict[SessionStatus, Set[SessionStatus]] = {
     SessionStatus.ACTIVE: {
         SessionStatus.PAUSED,
         SessionStatus.REVIEWING,
+        SessionStatus.CONFIRMED,  # R12: User can confirm directly from active
         SessionStatus.DECLINED
     },
     SessionStatus.PAUSED: {
         SessionStatus.ACTIVE,
+        SessionStatus.CONFIRMED,  # R12: User can confirm from paused
         SessionStatus.DECLINED
     },
     SessionStatus.REVIEWING: {

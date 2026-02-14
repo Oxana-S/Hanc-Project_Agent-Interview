@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 
 import pytest
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import ValidationError
 
 from src.anketa.schema import (
@@ -182,9 +182,9 @@ class TestInterviewAnketaCreation:
 
     def test_created_at_is_approximately_now(self):
         """created_at should be close to the current time."""
-        before = datetime.now()
+        before = datetime.now(timezone.utc)
         anketa = InterviewAnketa()
-        after = datetime.now()
+        after = datetime.now(timezone.utc)
         assert before <= anketa.created_at <= after
 
     def test_full_creation_with_all_fields(self):

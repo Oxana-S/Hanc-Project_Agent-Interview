@@ -3,7 +3,7 @@ Unit tests for ConsultationSession model in src/session/models.py
 """
 
 import pytest
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import ValidationError
 
 import sys
@@ -103,15 +103,15 @@ class TestDatetimeFields:
         assert isinstance(session.updated_at, datetime)
 
     def test_created_at_is_recent(self):
-        before = datetime.now()
+        before = datetime.now(timezone.utc)
         session = ConsultationSession(session_id="abcd1234", unique_link="full-uuid-link")
-        after = datetime.now()
+        after = datetime.now(timezone.utc)
         assert before <= session.created_at <= after
 
     def test_updated_at_is_recent(self):
-        before = datetime.now()
+        before = datetime.now(timezone.utc)
         session = ConsultationSession(session_id="abcd1234", unique_link="full-uuid-link")
-        after = datetime.now()
+        after = datetime.now(timezone.utc)
         assert before <= session.updated_at <= after
 
 

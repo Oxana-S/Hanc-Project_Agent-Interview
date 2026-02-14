@@ -513,13 +513,14 @@ class SessionManager:
                     current_status = SessionStatus(session.status)
                     validate_transition(current_status, status)
                 except ValueError:
-                    # Current status is invalid (phantom status like "processing")
+                    # R12-12: Invalid current status — block update instead of falling through
                     logger.warning(
                         "session_status_invalid_current",
                         session_id=session_id,
                         current=session.status,
                         new=status.value
                     )
+                    return False
 
             now = datetime.now(timezone.utc)
 
@@ -538,9 +539,10 @@ class SessionManager:
             )
             self._conn.commit()
 
-        if cursor.rowcount == 0:
-            logger.warning("session_status_update_no_rows", session_id=session_id)
-            return False
+            # R12-09: Check rowcount inside lock
+            if cursor.rowcount == 0:
+                logger.warning("session_status_update_no_rows", session_id=session_id)
+                return False
 
         logger.info("session_status_updated", session_id=session_id, status=status.value)
         return True

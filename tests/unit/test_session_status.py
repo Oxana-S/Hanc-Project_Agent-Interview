@@ -87,10 +87,13 @@ class TestStateMachine:
         with pytest.raises(InvalidTransitionError):
             validate_transition(SessionStatus.DECLINED, SessionStatus.ACTIVE)
 
-    def test_active_to_confirmed_forbidden(self):
-        """Active → Confirmed is forbidden (must go through Reviewing)."""
-        with pytest.raises(InvalidTransitionError):
-            validate_transition(SessionStatus.ACTIVE, SessionStatus.CONFIRMED)
+    def test_active_to_confirmed_allowed(self):
+        """Active → Confirmed is allowed (user can confirm directly)."""
+        validate_transition(SessionStatus.ACTIVE, SessionStatus.CONFIRMED)
+
+    def test_paused_to_confirmed_allowed(self):
+        """Paused → Confirmed is allowed (user can confirm directly)."""
+        validate_transition(SessionStatus.PAUSED, SessionStatus.CONFIRMED)
 
     def test_paused_to_reviewing_forbidden(self):
         """Paused → Reviewing is forbidden (must resume first)."""
@@ -101,11 +104,13 @@ class TestStateMachine:
         """All valid transitions from Active work."""
         validate_transition(SessionStatus.ACTIVE, SessionStatus.PAUSED)
         validate_transition(SessionStatus.ACTIVE, SessionStatus.REVIEWING)
+        validate_transition(SessionStatus.ACTIVE, SessionStatus.CONFIRMED)
         validate_transition(SessionStatus.ACTIVE, SessionStatus.DECLINED)
 
     def test_all_paused_transitions(self):
         """All valid transitions from Paused work."""
         validate_transition(SessionStatus.PAUSED, SessionStatus.ACTIVE)
+        validate_transition(SessionStatus.PAUSED, SessionStatus.CONFIRMED)
         validate_transition(SessionStatus.PAUSED, SessionStatus.DECLINED)
 
     def test_all_reviewing_transitions(self):

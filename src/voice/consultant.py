@@ -424,7 +424,7 @@ def _get_kb_manager():
     """Get or create cached IndustryKnowledgeManager singleton."""
     global _kb_manager
     if _kb_manager is None:
-        _kb_manager = _get_kb_manager()
+        _kb_manager = IndustryKnowledgeManager()
     return _kb_manager
 
 
@@ -1473,7 +1473,7 @@ async def _finalize_and_save(
     session_log.info(
         "session_finalized_in_db",
         session_id=session_id,
-        status="reviewing",
+        status=final_status.value,  # R12-13: Use actual status, not hardcoded
     )
 
     # Load fresh session for downstream pipelines (notifications, learning, PostgreSQL)

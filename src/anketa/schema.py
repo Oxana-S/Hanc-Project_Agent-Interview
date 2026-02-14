@@ -5,7 +5,7 @@ FinalAnketa v2.0 - Expert consultation deliverable.
 Contains all data needed to build a voice agent PLUS AI-generated insights.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional, Dict, Any
 from uuid import uuid4
 from pydantic import BaseModel, Field
@@ -323,7 +323,7 @@ class FinalAnketa(BaseModel):
     # METADATA
     # ============================================================
 
-    created_at: datetime = Field(default_factory=datetime.now, description="Creation timestamp")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), description="Creation timestamp")
     consultation_duration_seconds: float = Field(default=0.0, description="Duration of consultation")
     anketa_version: str = Field(default="2.0", description="Anketa schema version")
 
@@ -462,7 +462,7 @@ class InterviewAnketa(BaseModel):
     unresolved_topics: List[str] = Field(default_factory=list, description="Topics not fully covered")
 
     # Metadata
-    created_at: datetime = Field(default_factory=datetime.now, description="Creation timestamp")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), description="Creation timestamp")
     consultation_duration_seconds: float = Field(default=0.0, description="Duration")
     anketa_version: str = Field(default="2.0", description="Schema version")
 
