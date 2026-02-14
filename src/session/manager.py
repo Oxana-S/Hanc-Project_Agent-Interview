@@ -141,6 +141,7 @@ class SessionManager:
         Create a new consultation session.
 
         Generates a short session_id (uuid4[:8]) and a full UUID unique_link.
+        Retries up to 3 times on ID collision (R4-12).
 
         Args:
             room_name: LiveKit room name (optional).
@@ -149,53 +150,61 @@ class SessionManager:
         Returns:
             Newly created ConsultationSession.
         """
-        now = datetime.now()
-        session = ConsultationSession(
-            session_id=str(uuid.uuid4())[:8],
-            room_name=room_name,
-            unique_link=str(uuid.uuid4()),
-            status="active",
-            created_at=now,
-            updated_at=now,
-            voice_config=voice_config,
-        )
+        max_retries = 3
+        for attempt in range(max_retries):
+            now = datetime.now()
+            session = ConsultationSession(
+                session_id=str(uuid.uuid4())[:8],
+                room_name=room_name,
+                unique_link=str(uuid.uuid4()),
+                status="active",
+                created_at=now,
+                updated_at=now,
+                voice_config=voice_config,
+            )
 
-        self._conn.execute(
-            """
-            INSERT INTO sessions (
-                session_id, room_name, unique_link, status,
-                created_at, updated_at, dialogue_history,
-                anketa_data, anketa_md, company_name, contact_name,
-                duration_seconds, output_dir, voice_config
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                session.session_id,
-                session.room_name,
-                session.unique_link,
-                session.status,
-                session.created_at.isoformat(),
-                session.updated_at.isoformat(),
-                json.dumps(session.dialogue_history, ensure_ascii=False),
-                None,  # anketa_data
-                None,  # anketa_md
-                None,  # company_name
-                None,  # contact_name
-                session.duration_seconds,
-                None,  # output_dir
-                json.dumps(voice_config, ensure_ascii=False) if voice_config else None,
-            ),
-        )
-        self._conn.commit()
+            try:
+                self._conn.execute(
+                    """
+                    INSERT INTO sessions (
+                        session_id, room_name, unique_link, status,
+                        created_at, updated_at, dialogue_history,
+                        anketa_data, anketa_md, company_name, contact_name,
+                        duration_seconds, output_dir, voice_config
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        session.session_id,
+                        session.room_name,
+                        session.unique_link,
+                        session.status,
+                        session.created_at.isoformat(),
+                        session.updated_at.isoformat(),
+                        json.dumps(session.dialogue_history, ensure_ascii=False),
+                        None,  # anketa_data
+                        None,  # anketa_md
+                        None,  # company_name
+                        None,  # contact_name
+                        session.duration_seconds,
+                        None,  # output_dir
+                        json.dumps(voice_config, ensure_ascii=False) if voice_config else None,
+                    ),
+                )
+                self._conn.commit()
+            except sqlite3.IntegrityError:
+                if attempt < max_retries - 1:
+                    logger.warning("session_id_collision", session_id=session.session_id, attempt=attempt + 1)
+                    continue
+                raise
 
-        logger.info(
-            "session_created",
-            session_id=session.session_id,
-            room_name=room_name,
-            unique_link=session.unique_link,
-        )
+            logger.info(
+                "session_created",
+                session_id=session.session_id,
+                room_name=room_name,
+                unique_link=session.unique_link,
+            )
 
-        return session
+            return session
 
     def get_session(self, session_id: str) -> Optional[ConsultationSession]:
         """
@@ -324,6 +333,22 @@ class SessionManager:
         with self._lock:
             return self._update_anketa_locked(session_id, anketa_data, anketa_md)
 
+    @staticmethod
+    def _deep_merge(base: dict, override: dict) -> dict:
+        """Recursively merge override into base. Lists and scalars overwrite.
+
+        None values are only skipped when a non-None value already exists in base
+        (prevents LLM extraction from erasing user-edited fields).
+        """
+        for key, val in override.items():
+            if val is None and key in base and base[key] is not None:
+                continue  # Don't overwrite existing data with None
+            if isinstance(val, dict) and isinstance(base.get(key), dict):
+                base[key] = SessionManager._deep_merge(base[key], val)
+            else:
+                base[key] = val
+        return base
+
     def _update_anketa_locked(self, session_id: str, anketa_data: dict, anketa_md: str = None) -> bool:
         """Internal locked implementation of update_anketa."""
         # 1. Read existing anketa to preserve LLM-extracted data
@@ -332,10 +357,10 @@ class SessionManager:
             logger.warning("session_not_found_for_anketa_update", session_id=session_id)
             return False
 
-        # 2. Merge: new values overwrite old, but existing fields are preserved
+        # 2. Deep merge: new values overwrite old, nested dicts are merged recursively (R4-13)
         # NOTE: session.anketa_data is already a dict (deserialized in _session_from_row)
         existing_anketa = session.anketa_data if session.anketa_data else {}
-        existing_anketa.update(anketa_data)
+        self._deep_merge(existing_anketa, anketa_data)
 
         # 3. Update database with merged data
         # R4-14: Only overwrite anketa_md if a new value is provided

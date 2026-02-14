@@ -28,6 +28,7 @@ Usage:
 """
 
 import logging
+import re
 import sys
 from pathlib import Path
 
@@ -69,6 +70,23 @@ PROCESS_CATEGORIES = {
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
+
+_EMAIL_RE = re.compile(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}')
+_PHONE_RE = re.compile(r'\+?\d[\d\s\-()]{7,}\d')
+_PII_KEYS = {"email", "phone", "contact_email", "contact_phone", "to", "manager_email"}
+
+
+def _mask_pii(logger, method_name, event_dict):
+    """R4-22: Mask PII (email, phone) in structlog event dicts before rendering."""
+    for key in list(event_dict.keys()):
+        if key in _PII_KEYS and isinstance(event_dict[key], str):
+            val = event_dict[key]
+            if "@" in val:
+                event_dict[key] = _EMAIL_RE.sub(lambda m: m.group(0)[:3] + "***@***", val)
+            elif any(c.isdigit() for c in val):
+                event_dict[key] = _PHONE_RE.sub(lambda m: m.group(0)[:4] + "****", val)
+    return event_dict
+
 
 _initialized = False
 
@@ -145,6 +163,7 @@ def setup_logging(component: str = "app", level: str = "DEBUG") -> None:
             structlog.contextvars.merge_contextvars,
             structlog.stdlib.add_log_level,
             structlog.stdlib.add_logger_name,
+            _mask_pii,  # R4-22: mask email/phone before rendering
             structlog.dev.ConsoleRenderer(),
         ],
         wrapper_class=structlog.stdlib.BoundLogger,

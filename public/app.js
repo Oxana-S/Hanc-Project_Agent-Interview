@@ -97,6 +97,7 @@ class VoiceInterviewerApp {
         // Anketa state
         this.anketaPollingInterval = null;
         this.anketaSaveTimeout = null;
+        this._pollAbortController = null; // R4-07: AbortController for pending fetch
         this.focusedField = null;
         this.localEdits = {};
         this.consultationType = 'consultation'; // 'consultation' or 'interview'
@@ -2301,11 +2302,20 @@ class VoiceInterviewerApp {
             clearInterval(this.anketaPollingInterval);
             this.anketaPollingInterval = null;
         }
+        // R4-07: Abort any pending fetch request
+        if (this._pollAbortController) {
+            this._pollAbortController.abort();
+            this._pollAbortController = null;
+        }
     }
 
     _getPollingInterval() {
         // Adaptive: 2s active, 5s idle (>30s no message), 10s tab hidden
+        // R5-16: Exponential backoff on repeated failures
         if (document.hidden) return 10000;
+        const failures = this._pollingFailureCount || 0;
+        if (failures >= 5) return 30000; // 30s after 5+ failures
+        if (failures >= 3) return 10000; // 10s after 3+ failures
         const idle = Date.now() - (this._lastMessageTimestamp || Date.now());
         if (idle > 30000) return 5000;
         return 2000;
@@ -2323,7 +2333,11 @@ class VoiceInterviewerApp {
         if (!this.sessionId) return;
 
         try {
-            const response = await fetch(`/api/session/${this.sessionId}/anketa`);
+            // R4-07: Create AbortController for this fetch (cancelled on stopAnketaPolling)
+            this._pollAbortController = new AbortController();
+            const response = await fetch(`/api/session/${this.sessionId}/anketa`, {
+                signal: this._pollAbortController.signal,
+            });
             if (!response.ok) {
                 if (response.status === 404) {
                     LOG.warn(`[POLLING] Session ${this.sessionId} not found, stopping polling`);
@@ -2460,6 +2474,9 @@ class VoiceInterviewerApp {
                 this._lastPct = pct;
             }
         } catch (error) {
+            // R4-07: Ignore aborted requests (expected on navigation/cleanup)
+            if (error.name === 'AbortError') return;
+
             // SPRINT 5: Not silent anymore - log errors with failure count
             LOG.error('[POLLING] Anketa fetch failed:', error);
 
@@ -2983,8 +3000,42 @@ class VoiceInterviewerApp {
 
     // ===== Anketa Actions =====
 
+    _validateAnketaFields() {
+        /** R4-11: Basic validation of key fields before confirm. Returns array of error messages. */
+        const errors = [];
+        const emailEl = document.getElementById('anketa-email');
+        if (emailEl && emailEl.value.trim()) {
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRe.test(emailEl.value.trim())) {
+                errors.push('Email имеет неверный формат');
+                emailEl.classList.add('field-error');
+            } else {
+                emailEl.classList.remove('field-error');
+            }
+        }
+        const phoneEl = document.getElementById('anketa-phone');
+        if (phoneEl && phoneEl.value.trim()) {
+            const digits = phoneEl.value.replace(/[\s\-()]/g, '');
+            if (digits.length < 7 || !/^\+?\d+$/.test(digits)) {
+                errors.push('Телефон имеет неверный формат');
+                phoneEl.classList.add('field-error');
+            } else {
+                phoneEl.classList.remove('field-error');
+            }
+        }
+        return errors;
+    }
+
     async confirmAnketa() {
         if (!this.sessionId || this._confirmingAnketa) return;
+
+        // R4-11: Validate fields before confirming
+        const validationErrors = this._validateAnketaFields();
+        if (validationErrors.length > 0) {
+            showToast(validationErrors.join('. '), 'warning', 5000);
+            return;
+        }
+
         this._confirmingAnketa = true;
 
         if (this.anketaSaveTimeout) clearTimeout(this.anketaSaveTimeout);

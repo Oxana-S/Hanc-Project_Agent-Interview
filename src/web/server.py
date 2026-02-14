@@ -29,13 +29,15 @@ Endpoints:
 
 import asyncio
 import os
+import uuid as _uuid
 from pathlib import Path
 from typing import List, Optional
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from src.logging_config import setup_logging
 
@@ -68,6 +70,16 @@ def _validate_session_id(session_id: str):
         raise HTTPException(status_code=400, detail="Invalid session_id format")
 
 
+def _safe_content_disposition(disposition: str, filename: str) -> str:
+    """Build a Content-Disposition header safe for non-ASCII filenames (RFC 5987)."""
+    from urllib.parse import quote
+    # ASCII-only fallback: strip non-ASCII chars
+    ascii_name = filename.encode("ascii", "ignore").decode("ascii") or "export"
+    # UTF-8 encoded version for modern browsers
+    utf8_name = quote(filename, safe="")
+    return f"{disposition}; filename=\"{ascii_name}\"; filename*=UTF-8''{utf8_name}"
+
+
 logger = structlog.get_logger("server")
 livekit_log = structlog.get_logger("livekit")
 session_log = structlog.get_logger("session")
@@ -77,6 +89,18 @@ session_log = structlog.get_logger("session")
 # ---------------------------------------------------------------------------
 
 app = FastAPI(title="Hanc.AI Voice Consultant")
+
+
+# R4-23: Request ID middleware for distributed tracing
+class RequestIDMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        request_id = request.headers.get("X-Request-ID") or str(_uuid.uuid4())[:12]
+        response = await call_next(request)
+        response.headers["X-Request-ID"] = request_id
+        return response
+
+
+app.add_middleware(RequestIDMiddleware)
 
 # Singleton session manager
 session_mgr = SessionManager()
@@ -131,6 +155,24 @@ async def _validate_config():
         logger.warning("Server will start but LiveKit features will be unavailable")
 
 
+@app.on_event("startup")
+async def _start_runtime_status_cleanup():
+    """R5-18: Periodically evict stale entries from _runtime_statuses (every 5 min)."""
+    import time
+
+    async def _cleanup_loop():
+        while True:
+            await asyncio.sleep(300)  # 5 minutes
+            now = time.time()
+            stale = [k for k, v in _runtime_statuses.items() if now - v.get("updated_at", 0) > 3600]
+            for k in stale:
+                _runtime_statuses.pop(k, None)
+            if stale:
+                logger.debug("runtime_statuses_cleaned", evicted=len(stale))
+
+    _track_task(asyncio.create_task(_cleanup_loop()))
+
+
 @app.on_event("shutdown")
 async def _shutdown():
     """R5-05: Graceful shutdown — close DB and cleanup resources."""
@@ -177,6 +219,7 @@ class CreateSessionResponse(BaseModel):
     room_name: str
     livekit_url: str
     user_token: str
+    warning: Optional[str] = None  # R4-04: Non-null when LiveKit setup had issues
 
 
 class UpdateAnketaRequest(BaseModel):
@@ -379,11 +422,19 @@ async def create_session(req: CreateSessionRequest):
         finally:
             await lk_api.aclose()
 
+    # R4-04: Warn frontend if voice setup had issues
+    warning = None
+    if not user_token:
+        warning = "Voice connection unavailable: failed to generate LiveKit token"
+    elif not lk_api:
+        warning = "Voice room creation failed — agent may not connect automatically"
+
     logger.info(
         "=== SESSION CREATE DONE ===",
         session_id=session.session_id,
         room_name=room_name,
         token_ok=bool(user_token),
+        warning=warning,
     )
 
     return CreateSessionResponse(
@@ -392,6 +443,7 @@ async def create_session(req: CreateSessionRequest):
         room_name=room_name,
         livekit_url=livekit_url,
         user_token=user_token,
+        warning=warning,
     )
 
 
@@ -881,7 +933,7 @@ async def export_session(session_id: str, format: str):
         return Response(
             content=content,
             media_type="text/markdown",
-            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+            headers={"Content-Disposition": _safe_content_disposition("attachment", filename)},
         )
 
     elif format == "pdf":
@@ -894,7 +946,7 @@ async def export_session(session_id: str, format: str):
         return Response(
             content=content,
             media_type="text/html",
-            headers={"Content-Disposition": f'inline; filename="{filename}"'},
+            headers={"Content-Disposition": _safe_content_disposition("inline", filename)},
         )
 
     else:
@@ -1021,6 +1073,15 @@ async def cleanup_all_rooms():
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
 MAX_FILES_PER_SESSION = 5
 SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".xls", ".txt", ".md"}
+# R5-08: Allowed MIME types per extension (content_type validation)
+_ALLOWED_MIME_TYPES = {
+    ".pdf": {"application/pdf"},
+    ".docx": {"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+    ".xlsx": {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+    ".xls": {"application/vnd.ms-excel"},
+    ".txt": {"text/plain"},
+    ".md": {"text/plain", "text/markdown"},
+}
 
 
 @app.post("/api/session/{session_id}/documents/upload")
@@ -1063,6 +1124,16 @@ async def upload_documents(
                 status_code=400,
                 detail=f"Unsupported file type: {ext}. Supported: {', '.join(sorted(SUPPORTED_EXTENSIONS))}",
             )
+
+        # R5-08: Validate MIME content type
+        allowed_mimes = _ALLOWED_MIME_TYPES.get(ext, set())
+        if file.content_type and allowed_mimes and file.content_type not in allowed_mimes:
+            # Allow application/octet-stream as fallback (some browsers send it)
+            if file.content_type != "application/octet-stream":
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"MIME type '{file.content_type}' not allowed for {ext}",
+                )
 
         # Read and validate size
         content = await file.read()

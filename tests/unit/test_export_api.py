@@ -120,7 +120,7 @@ class TestExportMarkdown:
         resp = client.get(f"/api/session/{session_with_anketa}/export/md")
         cd = resp.headers["content-disposition"]
         assert "TestCorp" in cd
-        assert cd.endswith('.md"')
+        assert "TestCorp.md" in cd
 
     def test_md_export_content_matches_anketa(self, client, session_with_anketa):
         resp = client.get(f"/api/session/{session_with_anketa}/export/md")
@@ -177,7 +177,7 @@ class TestExportPdf:
         resp = client.get(f"/api/session/{session_with_anketa}/export/pdf")
         cd = resp.headers["content-disposition"]
         assert "TestCorp" in cd
-        assert cd.endswith('.html"')
+        assert "TestCorp.html" in cd
 
     def test_pdf_export_html_contains_company_name(self, client, session_with_anketa):
         resp = client.get(f"/api/session/{session_with_anketa}/export/pdf")
