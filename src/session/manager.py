@@ -330,22 +330,38 @@ class SessionManager:
         existing_anketa.update(anketa_data)
 
         # 3. Update database with merged data
+        # R4-14: Only overwrite anketa_md if a new value is provided
         now = datetime.now()
-        cursor = self._conn.execute(
-            """
-            UPDATE sessions SET
-                anketa_data = ?,
-                anketa_md = ?,
-                updated_at = ?
-            WHERE session_id = ?
-            """,
-            (
-                json.dumps(existing_anketa, ensure_ascii=False),
-                anketa_md,
-                now.isoformat(),
-                session_id,
-            ),
-        )
+        if anketa_md is not None:
+            cursor = self._conn.execute(
+                """
+                UPDATE sessions SET
+                    anketa_data = ?,
+                    anketa_md = ?,
+                    updated_at = ?
+                WHERE session_id = ?
+                """,
+                (
+                    json.dumps(existing_anketa, ensure_ascii=False),
+                    anketa_md,
+                    now.isoformat(),
+                    session_id,
+                ),
+            )
+        else:
+            cursor = self._conn.execute(
+                """
+                UPDATE sessions SET
+                    anketa_data = ?,
+                    updated_at = ?
+                WHERE session_id = ?
+                """,
+                (
+                    json.dumps(existing_anketa, ensure_ascii=False),
+                    now.isoformat(),
+                    session_id,
+                ),
+            )
         self._conn.commit()
 
         if cursor.rowcount == 0:

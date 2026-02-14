@@ -28,6 +28,21 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
+# R4-19: Shared httpx client with connection pooling (avoid per-request TCP overhead)
+_shared_http_client: httpx.AsyncClient | None = None
+
+
+def _get_http_client() -> httpx.AsyncClient:
+    """Get or create a shared httpx.AsyncClient with connection pooling."""
+    global _shared_http_client
+    if _shared_http_client is None or _shared_http_client.is_closed:
+        _shared_http_client = httpx.AsyncClient(
+            timeout=10.0,
+            limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
+        )
+    return _shared_http_client
+
+
 from src.logging_config import setup_logging
 
 setup_logging("agent")
@@ -459,24 +474,24 @@ async def _update_anketa_via_api(
     }
 
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.put(url, json=payload)
+        client = _get_http_client()
+        response = await client.put(url, json=payload)
 
-            if response.status_code == 200:
-                logger.info(
-                    "anketa_updated_via_api",
-                    session_id=session_id,
-                    fields_count=len(anketa_data)
-                )
-                return True
-            else:
-                logger.warning(
-                    "anketa_api_update_failed",
-                    session_id=session_id,
-                    status_code=response.status_code,
-                    response=response.text
-                )
-                return False
+        if response.status_code == 200:
+            logger.info(
+                "anketa_updated_via_api",
+                session_id=session_id,
+                fields_count=len(anketa_data)
+            )
+            return True
+        else:
+            logger.warning(
+                "anketa_api_update_failed",
+                session_id=session_id,
+                status_code=response.status_code,
+                response=response.text
+            )
+            return False
 
     except Exception as e:
         logger.error(
@@ -511,24 +526,24 @@ async def _update_dialogue_via_api(
         payload["status"] = status
 
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.put(url, json=payload)
+        client = _get_http_client()
+        response = await client.put(url, json=payload)
 
-            if response.status_code == 200:
-                logger.info(
-                    "dialogue_updated_via_api",
-                    session_id=session_id,
-                    messages=len(dialogue_history),
-                )
-                return True
-            else:
-                logger.warning(
-                    "dialogue_api_update_failed",
-                    session_id=session_id,
-                    status_code=response.status_code,
-                    response=response.text
-                )
-                return False
+        if response.status_code == 200:
+            logger.info(
+                "dialogue_updated_via_api",
+                session_id=session_id,
+                messages=len(dialogue_history),
+            )
+            return True
+        else:
+            logger.warning(
+                "dialogue_api_update_failed",
+                session_id=session_id,
+                status_code=response.status_code,
+                response=response.text
+            )
+            return False
 
     except Exception as e:
         logger.error(
