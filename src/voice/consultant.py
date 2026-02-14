@@ -31,6 +31,15 @@ import httpx
 # R4-19: Shared httpx client with connection pooling (avoid per-request TCP overhead)
 _shared_http_client: httpx.AsyncClient | None = None
 
+# R6-09: Background task reference set (prevent GC of fire-and-forget tasks in agent process)
+_agent_bg_tasks: set = set()
+
+
+def _track_agent_task(task):
+    """Keep a reference to prevent GC of fire-and-forget asyncio tasks."""
+    _agent_bg_tasks.add(task)
+    task.add_done_callback(_agent_bg_tasks.discard)
+
 
 def _get_http_client() -> httpx.AsyncClient:
     """Get or create a shared httpx.AsyncClient with connection pooling."""
@@ -1054,7 +1063,7 @@ async def _extract_and_update_anketa(
             is_windowed=is_windowed,
             message_count=len(dialogue_for_extraction),
             total_dialogue_length=len(dialogue_history),
-            model=getattr(llm, 'model', getattr(llm, 'deployment', 'unknown')),
+            model=getattr(extractor.llm, 'model', getattr(extractor.llm, 'deployment', 'unknown')),
             completion_rate=round(completion_rate, 2),
         )
 
@@ -1714,12 +1723,12 @@ def _register_event_handlers(
                 current_status = fresh_session.status if fresh_session else "active"
 
                 # B5: Shield from cancellation during agent teardown
-                asyncio.create_task(asyncio.shield(_update_dialogue_via_api(
+                _track_agent_task(asyncio.create_task(asyncio.shield(_update_dialogue_via_api(
                     session_id,
                     dialogue_history=consultation.dialogue_history,
                     duration_seconds=consultation.get_duration_seconds(),
                     status=current_status,
-                )))
+                ))))
                 event_log.info(
                     "dialogue_save_scheduled",
                     extra={
@@ -1732,7 +1741,7 @@ def _register_event_handlers(
                 event_log.error(f"Failed to schedule dialogue save: {e}")
 
         # B5: Shield finalization from cancellation during agent teardown
-        asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id)))
+        _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id))))
 
     event_log.info("All event handlers registered successfully")
 

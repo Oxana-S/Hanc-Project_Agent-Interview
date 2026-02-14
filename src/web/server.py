@@ -537,9 +537,11 @@ async def update_voice_config(session_id: str, req: dict):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    # Filter to allowed keys only (prevent arbitrary JSON storage)
+    # R6-13: Merge with existing config instead of replacing (preserves consultation_type, llm_provider)
     filtered = {k: v for k, v in req.items() if k in ALLOWED_VOICE_CONFIG_KEYS}
-    session.voice_config = filtered
+    existing_config = session.voice_config or {}
+    existing_config.update(filtered)
+    session.voice_config = existing_config
     session_mgr.update_session(session)
     session_log.info("voice_config_updated", session_id=session_id, voice_config=filtered)
 

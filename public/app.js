@@ -2556,17 +2556,19 @@ class VoiceInterviewerApp {
             const data = await response.json();
             const names = data.documents.join(', ');
             if (statusEl) {
+                // R6-05: Escape server data before innerHTML to prevent XSS
+                const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
                 statusEl.innerHTML =
-                    `<span class="upload-success">Загружено: ${names}</span>` +
+                    `<span class="upload-success">Загружено: ${esc(names)}</span>` +
                     `<span class="upload-summary">⏳ AI обрабатывает документ...</span>` +
-                    (data.summary ? `<span class="upload-summary">${data.summary}</span>` : '');
+                    (data.summary ? `<span class="upload-summary">${esc(data.summary)}</span>` : '');
             }
 
             this.addMessage('system', `Документ загружен: ${names}. Анализирую...`);
 
         } catch (error) {
             LOG.error('Document upload failed:', error);
-            if (statusEl) statusEl.innerHTML = `<span class="upload-error">${error.message}</span>`;
+            if (statusEl) statusEl.textContent = error.message;
         } finally {
             btn.disabled = false;
             btn.textContent = 'Прикрепить документ';

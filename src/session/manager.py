@@ -358,8 +358,9 @@ class SessionManager:
             return False
 
         # 2. Deep merge: new values overwrite old, nested dicts are merged recursively (R4-13)
-        # NOTE: session.anketa_data is already a dict (deserialized in _session_from_row)
-        existing_anketa = session.anketa_data if session.anketa_data else {}
+        # R6-11: Copy existing data to avoid mutating the in-memory session object
+        import copy
+        existing_anketa = copy.deepcopy(session.anketa_data) if session.anketa_data else {}
         self._deep_merge(existing_anketa, anketa_data)
 
         # 3. Update database with merged data

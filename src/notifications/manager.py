@@ -14,7 +14,7 @@ import hmac
 import json
 import smtplib
 import ssl
-from datetime import datetime
+from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -22,6 +22,8 @@ from typing import Any, Dict, Optional
 
 import structlog
 import yaml
+
+from html import escape as _html_escape
 
 from src.notifications.models import NotificationConfig
 
@@ -259,16 +261,17 @@ class NotificationManager:
 
     def _build_manager_email_body(self, session: Any) -> str:
         """Build an HTML email body with the anketa summary for the manager."""
-        session_id = getattr(session, "session_id", "N/A")
-        company = getattr(session, "company_name", None) or "Без названия"
-        contact = getattr(session, "contact_name", None) or "Не указано"
+        # R6-04: Escape all user-provided data to prevent HTML injection
+        session_id = _html_escape(str(getattr(session, "session_id", "N/A")))
+        company = _html_escape(getattr(session, "company_name", None) or "Без названия")
+        contact = _html_escape(getattr(session, "contact_name", None) or "Не указано")
         created = getattr(session, "created_at", None)
         created_str = created.strftime("%d.%m.%Y %H:%M") if isinstance(created, datetime) else "N/A"
         duration = getattr(session, "duration_seconds", 0)
         duration_min = round(duration / 60, 1) if duration else 0
 
         # Anketa markdown or fallback
-        anketa_md = getattr(session, "anketa_md", None) or ""
+        anketa_md = _html_escape(getattr(session, "anketa_md", None) or "")
         anketa_data = getattr(session, "anketa_data", None)
 
         # Build a structured text summary from anketa_data if available
@@ -277,8 +280,8 @@ class NotificationManager:
             lines = []
             for key, value in anketa_data.items():
                 if value is not None and value != "" and value != []:
-                    lines.append(f"<tr><td style='padding:4px 8px;font-weight:bold;'>{key}</td>"
-                                 f"<td style='padding:4px 8px;'>{value}</td></tr>")
+                    lines.append(f"<tr><td style='padding:4px 8px;font-weight:bold;'>{_html_escape(str(key))}</td>"
+                                 f"<td style='padding:4px 8px;'>{_html_escape(str(value))}</td></tr>")
             if lines:
                 data_summary = (
                     "<table border='1' cellpadding='0' cellspacing='0' "
@@ -312,7 +315,8 @@ class NotificationManager:
 
     def _build_client_email_body(self, session: Any, unique_link: str) -> str:
         """Build an HTML email body with the session link for the client."""
-        company = getattr(session, "company_name", None) or "Hanc.AI"
+        company = _html_escape(getattr(session, "company_name", None) or "Hanc.AI")
+        unique_link = _html_escape(unique_link)
 
         html = f"""\
 <html>
@@ -357,6 +361,6 @@ class NotificationManager:
 
         return {
             "event": event_type,
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "session": session_dict,
         }

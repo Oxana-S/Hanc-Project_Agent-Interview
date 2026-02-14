@@ -642,13 +642,13 @@ class AnketaExtractor:
 
                     # Check if agent mentioned integrations
                     integrations_mentioned = []
-                    if 'crm' in content or 'систем' in content and 'учёт' in content:
+                    if 'crm' in content or ('систем' in content and 'учёт' in content):
                         integrations_mentioned.append({
                             "name": "CRM",
                             "purpose": "интеграция с системой учёта клиентов",
                             "required": True
                         })
-                    if 'календар' in content or 'запис' in content and 'интеграц' in content:
+                    if ('календар' in content and 'интеграц' in content) or ('запис' in content and 'интеграц' in content):
                         integrations_mentioned.append({
                             "name": "Календарь",
                             "purpose": "синхронизация записей",

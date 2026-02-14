@@ -265,11 +265,12 @@ class TestTriggerWebhook:
         mgr = NotificationManager(config_path=str(cfg_file))
         session = _make_session()
 
-        # Freeze datetime.utcnow so the timestamp in the payload is deterministic
-        frozen_now = datetime(2026, 2, 1, 12, 0, 0)
+        # Freeze datetime.now(timezone.utc) so the timestamp in the payload is deterministic
+        from datetime import timezone
+        frozen_now = datetime(2026, 2, 1, 12, 0, 0, tzinfo=timezone.utc)
 
         with patch("src.notifications.manager.datetime") as mock_dt:
-            mock_dt.utcnow.return_value = frozen_now
+            mock_dt.now.return_value = frozen_now
             # Keep isinstance checks working for _build_manager_email_body
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
 
@@ -308,7 +309,7 @@ class TestTriggerWebhook:
 
         with patch.dict("sys.modules", {"aiohttp": mock_aiohttp}):
             with patch("src.notifications.manager.datetime") as mock_dt2:
-                mock_dt2.utcnow.return_value = frozen_now
+                mock_dt2.now.return_value = frozen_now
                 mock_dt2.side_effect = lambda *a, **kw: datetime(*a, **kw)
                 await mgr.trigger_webhook("on_confirm", session)
 
