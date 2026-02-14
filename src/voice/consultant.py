@@ -1006,7 +1006,7 @@ async def _extract_and_update_anketa(
         import os
         import time
 
-        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '50'))
+        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
 
         dialogue_for_extraction = dialogue_filtered
         is_windowed = False

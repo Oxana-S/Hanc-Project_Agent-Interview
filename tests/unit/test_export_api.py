@@ -252,16 +252,20 @@ class TestExportPdf:
 class TestExportErrors:
     """Tests for error handling in the export endpoint."""
 
-    def test_nonexistent_session_returns_404_md(self, client):
+    def test_invalid_format_session_returns_400_md(self, client):
         resp = client.get("/api/session/nonexistent-id/export/md")
-        assert resp.status_code == 404
+        assert resp.status_code == 400
 
-    def test_nonexistent_session_returns_404_pdf(self, client):
+    def test_invalid_format_session_returns_400_pdf(self, client):
         resp = client.get("/api/session/nonexistent-id/export/pdf")
+        assert resp.status_code == 400
+
+    def test_nonexistent_session_returns_404_md(self, client):
+        resp = client.get("/api/session/deadbeef/export/md")
         assert resp.status_code == 404
 
     def test_nonexistent_session_error_detail(self, client):
-        resp = client.get("/api/session/nonexistent-id/export/md")
+        resp = client.get("/api/session/deadbeef/export/md")
         data = resp.json()
         assert "detail" in data
         assert "not found" in data["detail"].lower()

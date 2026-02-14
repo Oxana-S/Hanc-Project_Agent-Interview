@@ -121,8 +121,12 @@ class TestGetSession:
                       "contact_name", "duration_seconds"):
             assert field in data, f"Missing expected field: {field}"
 
-    def test_get_session_invalid_id_returns_404(self, client):
+    def test_get_session_invalid_format_returns_400(self, client):
         resp = client.get("/api/session/nonexistent-id")
+        assert resp.status_code == 400
+
+    def test_get_session_nonexistent_returns_404(self, client):
+        resp = client.get("/api/session/deadbeef")
         assert resp.status_code == 404
 
 
@@ -177,8 +181,12 @@ class TestGetAnketa:
         assert data["anketa_md"] is None
         assert data["status"] == "active"
 
-    def test_get_anketa_invalid_session_returns_404(self, client):
+    def test_get_anketa_invalid_format_returns_400(self, client):
         resp = client.get("/api/session/does-not-exist/anketa")
+        assert resp.status_code == 400
+
+    def test_get_anketa_nonexistent_returns_404(self, client):
+        resp = client.get("/api/session/deadbeef/anketa")
         assert resp.status_code == 404
 
 
@@ -213,12 +221,12 @@ class TestUpdateAnketa:
         assert data["anketa_data"]["industry"] == "Finance"
         assert data["anketa_md"] == "# PersistCo\nIndustry: Finance"
 
-    def test_update_anketa_invalid_session_returns_404(self, client):
+    def test_update_anketa_invalid_format_returns_400(self, client):
         resp = client.put(
             "/api/session/no-such-id/anketa",
             json={"anketa_data": {"key": "val"}},
         )
-        assert resp.status_code == 404
+        assert resp.status_code == 400
 
     def test_update_anketa_empty_body_still_200(self, client, created_session):
         """PUT with empty body (no anketa_data) should succeed without error."""
@@ -249,8 +257,12 @@ class TestConfirmSession:
         session_data = client.get(f"/api/session/{sid}").json()
         assert session_data["status"] == "confirmed"
 
-    def test_confirm_invalid_session_returns_404(self, client):
+    def test_confirm_invalid_format_returns_400(self, client):
         resp = client.post("/api/session/invalid-id/confirm")
+        assert resp.status_code == 400
+
+    def test_confirm_nonexistent_session_returns_404(self, client):
+        resp = client.post("/api/session/deadbeef/confirm")
         assert resp.status_code == 404
 
 
@@ -294,8 +306,12 @@ class TestEndSession:
         session_data = client.get(f"/api/session/{sid}").json()
         assert session_data["status"] == "paused"
 
-    def test_end_invalid_session_returns_404(self, client):
+    def test_end_invalid_format_returns_400(self, client):
         resp = client.post("/api/session/no-session/end")
+        assert resp.status_code == 400
+
+    def test_end_nonexistent_session_returns_404(self, client):
+        resp = client.post("/api/session/deadbeef/end")
         assert resp.status_code == 404
 
 

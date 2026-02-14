@@ -85,18 +85,24 @@ class SessionManager:
         # Migration: add document_context column for existing DBs
         try:
             self._conn.execute("SELECT document_context FROM sessions LIMIT 1")
-        except sqlite3.OperationalError:
-            self._conn.execute("ALTER TABLE sessions ADD COLUMN document_context TEXT")
-            self._conn.commit()
-            logger.info("migration_added_document_context_column")
+        except sqlite3.OperationalError as e:
+            if "no such column" in str(e).lower():
+                self._conn.execute("ALTER TABLE sessions ADD COLUMN document_context TEXT")
+                self._conn.commit()
+                logger.info("migration_added_document_context_column")
+            else:
+                raise
 
         # Migration: add voice_config column for existing DBs
         try:
             self._conn.execute("SELECT voice_config FROM sessions LIMIT 1")
-        except sqlite3.OperationalError:
-            self._conn.execute("ALTER TABLE sessions ADD COLUMN voice_config TEXT")
-            self._conn.commit()
-            logger.info("migration_added_voice_config_column")
+        except sqlite3.OperationalError as e:
+            if "no such column" in str(e).lower():
+                self._conn.execute("ALTER TABLE sessions ADD COLUMN voice_config TEXT")
+                self._conn.commit()
+                logger.info("migration_added_voice_config_column")
+            else:
+                raise
 
         logger.debug("sessions_table_ensured")
 
@@ -470,42 +476,44 @@ class SessionManager:
                     f"Invalid status '{status}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}"
                 )
 
-        # Get current session to validate transition
-        session = self.get_session(session_id)
-        if not session:
-            logger.warning("session_status_update_no_session", session_id=session_id)
-            return False
+        # R7-02: Lock to prevent concurrent status updates violating state machine
+        with self._lock:
+            # Get current session to validate transition
+            session = self.get_session(session_id)
+            if not session:
+                logger.warning("session_status_update_no_session", session_id=session_id)
+                return False
 
-        # Validate transition (unless force=True)
-        if not force:
-            try:
-                current_status = SessionStatus(session.status)
-                validate_transition(current_status, status)
-            except ValueError:
-                # Current status is invalid (phantom status like "processing")
-                logger.warning(
-                    "session_status_invalid_current",
-                    session_id=session_id,
-                    current=session.status,
-                    new=status.value
-                )
+            # Validate transition (unless force=True)
+            if not force:
+                try:
+                    current_status = SessionStatus(session.status)
+                    validate_transition(current_status, status)
+                except ValueError:
+                    # Current status is invalid (phantom status like "processing")
+                    logger.warning(
+                        "session_status_invalid_current",
+                        session_id=session_id,
+                        current=session.status,
+                        new=status.value
+                    )
 
-        now = datetime.now()
+            now = datetime.now()
 
-        cursor = self._conn.execute(
-            """
-            UPDATE sessions SET
-                status = ?,
-                updated_at = ?
-            WHERE session_id = ?
-            """,
-            (
-                status.value,
-                now.isoformat(),
-                session_id,
-            ),
-        )
-        self._conn.commit()
+            cursor = self._conn.execute(
+                """
+                UPDATE sessions SET
+                    status = ?,
+                    updated_at = ?
+                WHERE session_id = ?
+                """,
+                (
+                    status.value,
+                    now.isoformat(),
+                    session_id,
+                ),
+            )
+            self._conn.commit()
 
         if cursor.rowcount == 0:
             logger.warning("session_status_update_no_rows", session_id=session_id)

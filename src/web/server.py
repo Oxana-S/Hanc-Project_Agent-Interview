@@ -100,7 +100,31 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
         return response
 
 
+_SESSION_FIXED_ROUTES = {"create", "by-link"}
+
+
+class SessionIDValidationMiddleware(BaseHTTPMiddleware):
+    """R7-01: Validate session_id in all /api/session/{id} paths."""
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+        # Match /api/session/{session_id} but not /api/sessions or fixed sub-routes
+        if path.startswith("/api/session/") and not path.startswith("/api/sessions"):
+            parts = path.split("/")
+            if len(parts) >= 4:
+                sid = parts[3]
+                # Skip fixed routes that are not session IDs
+                if sid and sid not in _SESSION_FIXED_ROUTES and not _SESSION_ID_RE.match(sid):
+                    from starlette.responses import JSONResponse
+                    return JSONResponse(
+                        status_code=400,
+                        content={"detail": "Invalid session_id format"},
+                    )
+        return await call_next(request)
+
+
 app.add_middleware(RequestIDMiddleware)
+app.add_middleware(SessionIDValidationMiddleware)
 
 # Singleton session manager
 session_mgr = SessionManager()

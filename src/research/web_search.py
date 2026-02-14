@@ -4,10 +4,13 @@ Web Search Client.
 Поиск информации в интернете через API.
 """
 
+import logging
 import os
 from typing import Any, Dict, List, Optional
 
 import httpx
+
+logger = logging.getLogger("web_search")
 
 
 class WebSearchClient:
@@ -56,15 +59,15 @@ class WebSearchClient:
         if self.tavily_api_key:
             try:
                 return await self._search_tavily(query, max_results, search_depth)
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning("tavily_search_failed: %s", exc)
 
         # Пробуем Bing
         if self.bing_api_key:
             try:
                 return await self._search_bing(query, max_results)
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning("bing_search_failed: %s", exc)
 
         # Fallback — пустой результат
         return []
