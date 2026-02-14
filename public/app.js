@@ -523,7 +523,7 @@ class VoiceInterviewerApp {
             voice_gender: document.querySelector('input[name="voice_gender"]:checked')?.value || 'neutral',
             consultation_type: this.consultationType || 'consultation',
             verbosity: document.querySelector('input[name="verbosity"]:checked')?.value || 'normal',
-            llm_provider: document.querySelector('input[name="llm_provider"]:checked')?.value || 'deepseek',
+            llm_provider: document.querySelector('input[name="llm_provider"]:checked')?.value || 'azure',
         };
 
         // Guard: if session is active, force locked settings to original values

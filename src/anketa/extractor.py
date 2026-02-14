@@ -54,7 +54,23 @@ class AnketaExtractor:
             use_smart_extraction: If True, use SmartExtractor for dialogue parsing
             max_json_retries: Number of JSON repair attempts
         """
-        self.llm = llm or create_llm_client()
+        # FAILSAFE: НИКОГДА не использовать deepseek-reasoner для extraction!
+        # deepseek-reasoner слишком медленный (180-220 sec) для real-time extraction
+        # Всегда использовать fast models: deepseek-chat (2-5 sec) или azure (3-4 sec)
+        if llm is None:
+            llm = create_llm_client()  # ← DEFAULT: uses LLM_PROVIDER from .env
+
+        # Проверить что это не deepseek-reasoner
+        if hasattr(llm, 'model') and 'reasoner' in llm.model.lower():
+            logger.warning(
+                "CRITICAL: deepseek-reasoner detected! Forcing deepseek-chat",
+                original_model=llm.model
+            )
+            # Force override to deepseek-chat (fast model)
+            from src.llm.deepseek import DeepSeekClient
+            llm = DeepSeekClient(model="deepseek-chat")
+
+        self.llm = llm
         self.strict_cleaning = strict_cleaning
         self.use_smart_extraction = use_smart_extraction
         self.max_json_retries = max_json_retries
