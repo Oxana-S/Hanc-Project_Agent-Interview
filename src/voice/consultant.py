@@ -136,8 +136,13 @@ class VoiceConsultationSession:
         self.detected_profile = None  # Cached IndustryProfile
         self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
 
+    MAX_DIALOGUE_MESSAGES = 500  # R10-09: Prevent unbounded memory growth
+
     def add_message(self, role: str, content: str):
         """Добавить сообщение в историю диалога."""
+        # R10-09: Cap dialogue history to prevent OOM
+        if len(self.dialogue_history) >= self.MAX_DIALOGUE_MESSAGES:
+            self.dialogue_history = self.dialogue_history[-(self.MAX_DIALOGUE_MESSAGES - 1):]
         self.dialogue_history.append({
             "role": role,
             "content": content,
@@ -741,7 +746,15 @@ def _check_required_fields(anketa_data: dict) -> bool:
         "call_direction": anketa_data.get("call_direction"),
     }
 
+    # R10-01: Skip schema defaults — fields with unchanged defaults are not required
+    from src.anketa.schema import FinalAnketa
+    _raw = getattr(FinalAnketa, '_SCHEMA_DEFAULTS', {})
+    schema_defaults = getattr(_raw, 'default', _raw) if not isinstance(_raw, dict) else _raw
+
     for field_name, value in required.items():
+        # Schema defaults are optional — skip them entirely
+        if field_name in schema_defaults:
+            continue
         if not value:
             return False
         # Для списков проверяем что есть хотя бы один элемент
@@ -1155,7 +1168,13 @@ async def _extract_and_update_anketa(
                 industry=industry_id_for_research,
                 company_name=anketa.company_name,
             ))
-            task.add_done_callback(lambda t: t.result() if not t.cancelled() and not t.exception() else None)
+            def _research_done(t):
+                if t.cancelled():
+                    return
+                exc = t.exception()
+                if exc:
+                    anketa_log.warning("background_research_failed", error=str(exc))
+            task.add_done_callback(_research_done)
             anketa_log.info("research_launched", website=anketa.website)
 
         # --- Update Redis hot cache ---
@@ -1412,11 +1431,15 @@ async def _finalize_and_save(
                 except Exception:
                     pass
 
-            _fin_llm_provider = None
-            if session and session.voice_config:
-                _fin_llm_provider = session.voice_config.get("llm_provider")
-            llm = create_llm_client(_fin_llm_provider)
-            extractor = AnketaExtractor(llm)
+            # R10-11: Reuse cached extractor if available
+            if consultation._cached_extractor:
+                extractor = consultation._cached_extractor
+            else:
+                _fin_llm_provider = None
+                if session and session.voice_config:
+                    _fin_llm_provider = session.voice_config.get("llm_provider")
+                llm = create_llm_client(_fin_llm_provider)
+                extractor = AnketaExtractor(llm)
 
             anketa = await extractor.extract(
                 dialogue_history=consultation.dialogue_history,

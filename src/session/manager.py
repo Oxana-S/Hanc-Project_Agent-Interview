@@ -559,10 +559,24 @@ class SessionManager:
         # R9-12: Lock for thread safety
         with self._lock:
             now = datetime.now()
+            validated_status = None
             if status:
+                # R10-02: Validate status transition through state machine
+                session = self.get_session(session_id)
+                if session:
+                    try:
+                        current = SessionStatus(session.status)
+                        target = SessionStatus(status)
+                        if target != current:
+                            validate_transition(current, target)
+                        validated_status = status
+                    except (ValueError, InvalidTransitionError):
+                        logger.warning("update_dialogue_invalid_transition",
+                                       session_id=session_id, current=session.status, target=status)
+            if validated_status:
                 cursor = self._conn.execute(
                     "UPDATE sessions SET dialogue_history = ?, duration_seconds = ?, status = ?, updated_at = ? WHERE session_id = ?",
-                    (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, status, now.isoformat(), session_id),
+                    (json.dumps(dialogue_history, ensure_ascii=False), duration_seconds, validated_status, now.isoformat(), session_id),
                 )
             else:
                 cursor = self._conn.execute(
