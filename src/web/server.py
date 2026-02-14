@@ -76,6 +76,8 @@ def _validate_session_id(session_id: str):
 def _safe_content_disposition(disposition: str, filename: str) -> str:
     """Build a Content-Disposition header safe for non-ASCII filenames (RFC 5987)."""
     from urllib.parse import quote
+    # R18-01: Sanitize CRLF to prevent header injection
+    filename = filename.replace("\r", "").replace("\n", "").replace("\x00", "")
     # ASCII-only fallback: strip non-ASCII chars
     ascii_name = filename.encode("ascii", "ignore").decode("ascii") or "export"
     # UTF-8 encoded version for modern browsers
@@ -267,7 +269,7 @@ class CreateSessionResponse(BaseModel):
 
 class UpdateAnketaRequest(BaseModel):
     """Request body for updating anketa data."""
-    anketa_data: Optional[dict] = None
+    anketa_data: Optional[dict] = Field(default=None, max_length=200)  # R18-02: Cap dict keys
     anketa_md: Optional[str] = Field(default=None, max_length=100000)
 
 

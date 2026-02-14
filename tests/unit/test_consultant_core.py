@@ -1026,7 +1026,7 @@ class TestRegisterEventHandlers:
         assert c.dialogue_history[0]["role"] == "assistant"
 
     def test_session_close_triggers_finalize(self):
-        """close handler creates finalization tasks (dialogue save + finalize)."""
+        """close handler creates finalization task (R18-03: single save, no redundant dialogue API call)."""
         session, handlers = self._capture_handlers()
         c = _make_consultation(messages=2)
 
@@ -1037,8 +1037,8 @@ class TestRegisterEventHandlers:
             event.reason = "disconnect"
             handlers["close"](event)
 
-            # Two create_task calls: dialogue save via API + finalization
-            assert mock_asyncio.create_task.call_count == 2
+            # R18-03: Only one create_task (finalize_and_save handles dialogue save)
+            assert mock_asyncio.create_task.call_count == 1
 
 
 # ===========================================================================

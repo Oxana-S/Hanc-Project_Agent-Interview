@@ -1057,7 +1057,12 @@ async def _extract_and_update_anketa(
         import os
         import time
 
-        WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
+        try:
+            WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
+            if WINDOW_SIZE < 4:
+                WINDOW_SIZE = 4  # R18-08: Minimum viable window
+        except (ValueError, TypeError):
+            WINDOW_SIZE = 12  # R18-08: Fallback on invalid env var
 
         dialogue_for_extraction = dialogue_filtered
         is_windowed = False
@@ -1537,10 +1542,12 @@ async def _finalize_and_save(
             except (StopIteration, RuntimeError):
                 filled = 0  # Fallback if iteration fails
 
+            # R18-03: Use consultation duration (accurate) instead of stale DB session.duration_seconds
+            _duration_secs = consultation.get_duration_seconds()
             insight = (
                 f"Голосовая сессия {session_id}: {company}, "
                 f"заполнено полей: {filled}, "
-                f"длительность: {round(session.duration_seconds / 60, 1)} мин"
+                f"длительность: {round(_duration_secs / 60, 1)} мин"
             )
             manager.record_learning(industry_id, insight, f"voice_{session_id}")
 
@@ -1573,7 +1580,7 @@ async def _finalize_and_save(
                 completed_at=datetime.now(timezone.utc),
                 duration=session.duration_seconds,
                 completeness_score=anketa_obj.completion_rate() if hasattr(anketa_obj, 'completion_rate') else None,
-                status=session.status or "completed",
+                status=final_status.value,  # R18-02: Use computed status, not stale DB read
             )
             anketa_log.info("postgres_saved", session_id=session_id)
         except Exception as e:
@@ -1811,33 +1818,18 @@ def _register_event_handlers(
         reason = getattr(event, 'reason', 'unknown')
         event_log.info(f"SESSION CLOSE: reason={reason}, messages={len(consultation.dialogue_history)}")
 
-        # Save dialogue BEFORE async finalization (agent may exit after disconnect)
-        # Use API to avoid SQLite WAL isolation issue (voice agent = separate process)
-        if session_id and db_backed and consultation.dialogue_history:
-            try:
-                fresh_session = _session_mgr.get_session(session_id)
-                current_status = fresh_session.status if fresh_session else "active"
-
-                # B5: Shield from cancellation during agent teardown
-                _track_agent_task(asyncio.create_task(asyncio.shield(_update_dialogue_via_api(
-                    session_id,
-                    dialogue_history=consultation.dialogue_history,
-                    duration_seconds=consultation.get_duration_seconds(),
-                    status=current_status,
-                ))))
-                event_log.info(
-                    "dialogue_save_scheduled",
-                    extra={
-                        "session_id": session_id,
-                        "messages": len(consultation.dialogue_history),
-                        "duration": consultation.get_duration_seconds()
-                    }
-                )
-            except Exception as e:
-                event_log.error(f"Failed to schedule dialogue save: {e}")
+        # R18-03/R18-04: Removed redundant _update_dialogue_via_api call.
+        # _finalize_and_save() already saves dialogue with correct final_status.
+        # The old code caused: (1) double API call, (2) status race where "active"
+        # from fresh_session could overwrite "reviewing" set by concurrent extraction.
 
         # B5: Shield finalization from cancellation during agent teardown
-        _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id))))
+        # R18-01: Only finalize for DB-backed sessions (avoid wasted LLM extraction for standalone)
+        if db_backed and session_id:
+            _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id))))
+        elif len(consultation.dialogue_history) >= 2:
+            # Standalone mode: still run finalization for local output
+            _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, None))))
 
     event_log.info("All event handlers registered successfully")
 

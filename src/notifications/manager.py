@@ -249,13 +249,13 @@ class NotificationManager:
 
         if email_cfg.use_tls:
             context = ssl.create_default_context()
-            with smtplib.SMTP(email_cfg.smtp_server, email_cfg.smtp_port) as server:
+            with smtplib.SMTP(email_cfg.smtp_server, email_cfg.smtp_port, timeout=30) as server:
                 server.starttls(context=context)
                 if email_cfg.username and email_cfg.password:
                     server.login(email_cfg.username, email_cfg.password)
                 server.sendmail(email_cfg.from_address, to_address, msg.as_string())
         else:
-            with smtplib.SMTP(email_cfg.smtp_server, email_cfg.smtp_port) as server:
+            with smtplib.SMTP(email_cfg.smtp_server, email_cfg.smtp_port, timeout=30) as server:
                 if email_cfg.username and email_cfg.password:
                     server.login(email_cfg.username, email_cfg.password)
                 server.sendmail(email_cfg.from_address, to_address, msg.as_string())
@@ -348,12 +348,23 @@ class NotificationManager:
     # ------------------------------------------------------------------
 
     def _build_webhook_payload(self, event_type: str, session: Any) -> Dict[str, Any]:
-        """Build the JSON payload for a webhook event."""
+        """Build the JSON payload for a webhook event.
+
+        R18-07: Only include essential fields (not full dialogue/voice_config).
+        """
+        # R18-07: Whitelist essential fields instead of dumping entire session
+        _WEBHOOK_FIELDS = {
+            "session_id", "status", "company_name", "session_type",
+            "anketa_data", "anketa_md", "created_at", "duration_seconds",
+            "contact_name", "contact_email", "contact_phone",
+        }
         session_dict: Dict[str, Any] = {}
         if hasattr(session, "model_dump"):
-            session_dict = session.model_dump()
+            full = session.model_dump()
+            session_dict = {k: v for k, v in full.items() if k in _WEBHOOK_FIELDS}
         elif hasattr(session, "dict"):
-            session_dict = session.dict()
+            full = session.dict()
+            session_dict = {k: v for k, v in full.items() if k in _WEBHOOK_FIELDS}
         else:
             session_dict = {
                 "session_id": getattr(session, "session_id", None),
