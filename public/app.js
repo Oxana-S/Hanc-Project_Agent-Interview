@@ -60,8 +60,12 @@ function showToast(message, type = 'info', duration = 3000) {
     const container = document.getElementById('toast-container');
     if (!container) return;
 
+    // R20-10: Whitelist toast type to prevent CSS class injection
+    const VALID_TYPES = ['info', 'success', 'error', 'warning'];
+    const safeType = VALID_TYPES.includes(type) ? type : 'info';
+
     const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
+    toast.className = `toast toast-${safeType}`;
     toast.textContent = message;
     container.appendChild(toast);
 
@@ -559,7 +563,8 @@ class VoiceInterviewerApp {
             // Restore radio buttons
             for (const name of ['voice_gender', 'verbosity', 'llm_provider']) {
                 if (saved[name]) {
-                    const radio = document.querySelector(`input[name="${name}"][value="${saved[name]}"]`);
+                    // R20-06: Use CSS.escape() to prevent selector injection from localStorage
+                    const radio = document.querySelector(`input[name="${CSS.escape(name)}"][value="${CSS.escape(saved[name])}"]`);
                     if (radio) radio.checked = true;
                 }
             }
@@ -2631,8 +2636,10 @@ class VoiceInterviewerApp {
             } else if (block.key === 'sample_dialogue') {
                 items.forEach(item => {
                     const roleClass = item.role === 'agent' ? 'agent-msg' : 'user-msg';
+                    // R20-02: Whitelist role label to prevent XSS via unescaped innerHTML
+                    const safeRoleLabel = item.role === 'agent' ? 'Агент' : 'Клиент';
                     html += `<div class="ai-item dialogue-item ${roleClass}">
-                        <strong>${item.role}:</strong> ${this._escapeHtml(item.message)}
+                        <strong>${safeRoleLabel}:</strong> ${this._escapeHtml(item.message)}
                     </div>`;
                 });
             } else {

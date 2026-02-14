@@ -85,7 +85,11 @@ class PromptLoader:
         if path in self._cache:
             return self._cache[path]
 
-        file_path = self.base_path / f"{path}.yaml"
+        file_path = (self.base_path / f"{path}.yaml").resolve()
+
+        # R20-03: Prevent path traversal - resolved path must be under base_path
+        if not str(file_path).startswith(str(self.base_path.resolve())):
+            raise ValueError(f"Path traversal detected: {path}")
 
         if not file_path.exists():
             raise FileNotFoundError(f"Prompt file not found: {file_path}")

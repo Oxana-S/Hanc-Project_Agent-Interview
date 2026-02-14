@@ -45,6 +45,7 @@ class OpenAICompatibleClient:
         max_tokens: int = 8192,
         top_p: Optional[float] = None,
         timeout: float = 180.0,
+        model: Optional[str] = None,  # R20-01: Per-call model override (avoids shared state mutation)
     ) -> str:
         """
         Отправить запрос к Chat Completions API.
@@ -59,7 +60,7 @@ class OpenAICompatibleClient:
         }
 
         payload: Dict[str, Any] = {
-            "model": self.model,
+            "model": model or self.model,  # R20-01: Use per-call model if provided
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens,
@@ -73,10 +74,12 @@ class OpenAICompatibleClient:
             try:
                 return await self._make_request(url, headers, payload, timeout)
             except httpx.HTTPStatusError as e:
-                if e.response.status_code == 429:
+                # R20-04: Retry on rate limit (429) AND transient server errors (5xx)
+                if e.response.status_code == 429 or e.response.status_code in (500, 502, 503):
                     wait_time = RETRY_DELAY * (2 ** attempt)
                     self._log.warning(
-                        f"Rate limit hit, retrying (attempt {attempt + 1}, wait {wait_time}s)"
+                        f"Server error {e.response.status_code}, retrying "
+                        f"(attempt {attempt + 1}, wait {wait_time}s)"
                     )
                     await asyncio.sleep(wait_time)
                     last_error = e
@@ -91,6 +94,12 @@ class OpenAICompatibleClient:
                 last_error = e
 
         raise last_error or Exception("All retry attempts failed")
+
+    async def aclose(self):
+        """R20-05: Close the underlying httpx client to release TCP connections."""
+        if self._http_client is not None and not self._http_client.is_closed:
+            await self._http_client.aclose()
+            self._http_client = None
 
     def _get_http_client(self) -> httpx.AsyncClient:
         """Get or create a reusable httpx client."""

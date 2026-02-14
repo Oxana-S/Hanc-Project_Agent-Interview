@@ -280,6 +280,11 @@ class UpdateDialogueRequest(BaseModel):
     status: Optional[str] = None  # Must be a valid SessionStatus value
 
 
+class UpdateRuntimeStatusRequest(BaseModel):
+    """R20-11: Request body for updating ephemeral runtime status."""
+    runtime_status: str = Field(pattern=r"^(idle|processing|completing|completed|error)$")
+
+
 # ---------------------------------------------------------------------------
 # Pages
 # ---------------------------------------------------------------------------
@@ -586,16 +591,13 @@ async def get_anketa(session_id: str):
 
 
 @app.put("/api/session/{session_id}/runtime-status")
-async def update_runtime_status(session_id: str, req: dict):
+async def update_runtime_status(session_id: str, req: UpdateRuntimeStatusRequest):
     """Update ephemeral runtime status (called by voice agent process).
 
     Valid values: idle, processing, completing, completed, error
     """
     import time
-    status = req.get("runtime_status", "idle")
-    valid = {"idle", "processing", "completing", "completed", "error"}
-    if status not in valid:
-        raise HTTPException(status_code=400, detail=f"Invalid runtime_status: {status}")
+    status = req.runtime_status  # R20-11: Validated by Pydantic model
     # R15-02: Verify session exists before caching runtime status (prevents cache pollution)
     if session_id not in _runtime_statuses:
         if not session_mgr.get_session(session_id):
@@ -612,6 +614,18 @@ ALLOWED_VOICE_CONFIG_KEYS = {
     "speech_speed", "silence_duration_ms", "llm_provider", "verbosity",
 }
 
+# R20-07: Type validators for voice_config values (prevent type confusion in downstream)
+_VOICE_CONFIG_VALIDATORS = {
+    "speech_speed": lambda v: isinstance(v, (int, float)) and 0.5 <= v <= 2.0,
+    "silence_duration_ms": lambda v: isinstance(v, (int, float)) and 300 <= v <= 10000,
+    "voice_gender": lambda v: isinstance(v, str) and v in ("male", "female", "neutral"),
+    "voice_tone": lambda v: isinstance(v, str) and len(v) <= 50,
+    "language": lambda v: isinstance(v, str) and len(v) <= 10,
+    "verbosity": lambda v: isinstance(v, str) and v in ("concise", "normal", "verbose"),
+    "llm_provider": lambda v: isinstance(v, str) and v in ("deepseek", "azure", "openai", "anthropic", "xai"),
+    "consultation_type": lambda v: isinstance(v, str) and v in ("interaction", "management", "interview"),
+}
+
 
 @app.put("/api/session/{session_id}/voice-config")
 async def update_voice_config(session_id: str, req: dict):
@@ -624,6 +638,11 @@ async def update_voice_config(session_id: str, req: dict):
     # R14-06: Use atomic update_voice_config to prevent full-session overwrite race
     # R6-13: Filter to allowed keys (preserves consultation_type, llm_provider)
     filtered = {k: v for k, v in req.items() if k in ALLOWED_VOICE_CONFIG_KEYS}
+    # R20-07: Validate value types to prevent type confusion in downstream consumers
+    for key, value in list(filtered.items()):
+        validator = _VOICE_CONFIG_VALIDATORS.get(key)
+        if validator and not validator(value):
+            raise HTTPException(status_code=400, detail=f"Invalid value for {key}")
     if not session_mgr.update_voice_config(session_id, filtered):
         raise HTTPException(status_code=404, detail="Session not found")
     session_log.info("voice_config_updated", session_id=session_id, voice_config=filtered)
