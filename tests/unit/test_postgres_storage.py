@@ -4,7 +4,7 @@ Unit tests for PostgreSQLStorageManager.
 
 import pytest
 from unittest.mock import MagicMock, patch
-from datetime import datetime
+from datetime import datetime, timezone
 
 import sys
 import os
@@ -171,7 +171,7 @@ class TestPostgreSQLStorageManagerUpdateInterviewSession:
 
         result = await mock_postgres_manager.update_interview_session(
             session_id="test-session",
-            completed_at=datetime.utcnow(),
+            completed_at=datetime.now(timezone.utc),
             duration=1800.0,
             status="completed"
         )

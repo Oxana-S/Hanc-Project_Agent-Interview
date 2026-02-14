@@ -4,11 +4,34 @@ Website Parser.
 Парсинг сайтов клиентов для извлечения информации.
 """
 
+import ipaddress
 import re
 from typing import Any, Dict, List, Optional
 from urllib.parse import urljoin, urlparse
 
 import httpx
+
+# R9-18: Maximum response size (5 MB) to prevent OOM
+_MAX_RESPONSE_SIZE = 5 * 1024 * 1024
+
+
+def _is_safe_url(url: str) -> bool:
+    """R9-03: Reject private/internal IPs and non-HTTP schemes to prevent SSRF."""
+    parsed = urlparse(url)
+    if parsed.scheme not in ('http', 'https'):
+        return False
+    hostname = parsed.hostname or ''
+    if hostname in ('localhost', '127.0.0.1', '0.0.0.0', '::1', ''):
+        return False
+    if hostname.startswith('169.254.'):
+        return False
+    try:
+        ip = ipaddress.ip_address(hostname)
+        if ip.is_private or ip.is_loopback or ip.is_link_local:
+            return False
+    except ValueError:
+        pass  # hostname is a domain name, not an IP — OK
+    return True
 
 
 class WebsiteParser:
@@ -40,11 +63,21 @@ class WebsiteParser:
         if not url.startswith(('http://', 'https://')):
             url = f"https://{url}"
 
-        async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=True) as client:
+        # R9-03: SSRF protection — reject internal/private URLs
+        if not _is_safe_url(url):
+            return {"error": "URL points to a private/internal address", "url": url}
+
+        async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=True, max_redirects=5) as client:
             try:
                 response = await client.get(url, headers=self.headers)
                 response.raise_for_status()
+                # R9-18: Limit response size to prevent OOM
+                content_length = int(response.headers.get('content-length', 0))
+                if content_length > _MAX_RESPONSE_SIZE:
+                    return {"error": "Response too large", "url": url}
                 html = response.text
+                if len(html) > _MAX_RESPONSE_SIZE:
+                    html = html[:_MAX_RESPONSE_SIZE]
             except Exception as e:
                 return {"error": str(e), "url": url}
 

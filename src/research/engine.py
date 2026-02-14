@@ -5,7 +5,7 @@ Research Engine.
 """
 
 import asyncio
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
@@ -134,7 +134,7 @@ class ResearchEngine:
         if result.has_data():
             result = await self._synthesize_insights(result, industry, additional_context)
 
-        result.research_timestamp = datetime.utcnow()
+        result.research_timestamp = datetime.now(timezone.utc)
         return result
 
     async def _parse_website(self, url: str) -> Dict[str, Any]:

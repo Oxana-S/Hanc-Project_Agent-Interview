@@ -11,7 +11,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.layout import Layout
 from rich.text import Text
-from datetime import datetime
+from datetime import datetime, timezone
 import structlog
 
 from src.models import InterviewContext, InterviewStatus, QuestionStatus
@@ -128,7 +128,7 @@ class InterviewCLI:
         footer_table.add_column(justify="left", style="cyan")
         footer_table.add_column(justify="right", style="white")
         
-        duration = (datetime.utcnow() - context.started_at).total_seconds()
+        duration = (datetime.now(timezone.utc) - context.started_at).total_seconds()
         
         footer_table.add_row("Duration:", f"{duration/60:.1f} min")
         footer_table.add_row("Clarifications:", str(context.total_clarifications_asked))

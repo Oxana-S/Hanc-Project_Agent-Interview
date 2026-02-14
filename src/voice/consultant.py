@@ -504,7 +504,7 @@ async def _update_anketa_via_api(
                 "anketa_api_update_failed",
                 session_id=session_id,
                 status_code=response.status_code,
-                response=response.text
+                response=response.text[:200]  # R9-06: Truncate to avoid logging sensitive details
             )
             return False
 
@@ -556,7 +556,7 @@ async def _update_dialogue_via_api(
                 "dialogue_api_update_failed",
                 session_id=session_id,
                 status_code=response.status_code,
-                response=response.text
+                response=response.text[:200]  # R9-06: Truncate to avoid logging sensitive details
             )
             return False
 
@@ -1290,13 +1290,13 @@ async def _extract_and_update_anketa(
 
                 # RECOVERY: если review запущен но completion_rate упал (пользователь удалил поля)
                 # → вернуться в discovery mode
-                if consultation.review_started and rate < 0.8:
+                if consultation.review_started and rate < 0.7:
                     consultation.review_started = False
                     anketa_log.info(
                         "review_phase_recovery",
                         session_id=session_id,
                         completion_rate=rate,
-                        reason="completion_rate dropped below 0.8",
+                        reason="completion_rate dropped below 0.7",
                     )
                     # Re-inject base prompt with KB context
                     activity = getattr(agent_session, '_activity', None)
@@ -1374,7 +1374,11 @@ async def _finalize_and_save(
 
     # ✅ FIX БАГ #2: Re-read session to get current status (may have been paused)
     fresh_session = _session_mgr.get_session(session_id)
-    current_status = SessionStatus(fresh_session.status) if fresh_session else SessionStatus.REVIEWING
+    if not fresh_session:
+        # R9-20: Session was deleted — don't finalize
+        session_log.warning("finalize_session_not_found", session_id=session_id)
+        return
+    current_status = SessionStatus(fresh_session.status)
 
     # Only update to "reviewing" if status is still "active"
     # Don't overwrite "paused", "confirmed", "declined"
@@ -1637,7 +1641,7 @@ def _register_event_handlers(
                     finally:
                         extraction_running[0] = False
 
-                asyncio.create_task(run_extraction())
+                _track_agent_task(asyncio.create_task(run_extraction()))
 
     @session.on("user_state_changed")
     def on_user_state_changed(event):

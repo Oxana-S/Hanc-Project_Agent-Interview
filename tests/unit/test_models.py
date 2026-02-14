@@ -3,7 +3,7 @@ Unit tests for Pydantic models in models.py
 """
 
 import pytest
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import ValidationError
 
 import sys
@@ -243,8 +243,8 @@ class TestQuestionResponse:
         response = QuestionResponse(
             question_id="1.1",
             question_text="Test?",
-            asked_at=datetime.utcnow(),
-            answered_at=datetime.utcnow()
+            asked_at=datetime.now(timezone.utc),
+            answered_at=datetime.now(timezone.utc)
         )
         assert response.asked_at is not None
         assert response.answered_at is not None

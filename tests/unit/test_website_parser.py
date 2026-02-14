@@ -208,7 +208,7 @@ class TestParse:
         with patch("src.research.website_parser.httpx.AsyncClient", return_value=mock_client) as mock_cls:
             await parser.parse("https://example.com")
 
-        mock_cls.assert_called_once_with(timeout=30.0, follow_redirects=True)
+        mock_cls.assert_called_once_with(timeout=30.0, follow_redirects=True, max_redirects=5)
 
 
 # ============ EXTRACT TITLE TESTS ============

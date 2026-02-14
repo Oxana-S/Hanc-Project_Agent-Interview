@@ -3,7 +3,7 @@ Extended tests for InterviewContext methods.
 """
 
 import pytest
-from datetime import datetime
+from datetime import datetime, timezone
 
 import sys
 import os
@@ -281,12 +281,12 @@ class TestInterviewContextConversationHistory:
         sample_interview_context.conversation_history.append({
             "role": "assistant",
             "content": "Hello, how can I help?",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         })
         sample_interview_context.conversation_history.append({
             "role": "user",
             "content": "I need to fill out a form",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         })
 
         assert len(sample_interview_context.conversation_history) == 2

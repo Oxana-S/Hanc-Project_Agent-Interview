@@ -62,6 +62,8 @@ import re as _re
 
 # R5-09: Session ID format pattern (hex UUID prefix)
 _SESSION_ID_RE = _re.compile(r'^[a-f0-9]{8}$')
+# R9-01: UUID format for unique_link parameter
+_UUID_RE = _re.compile(r'^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$')
 
 
 def _validate_session_id(session_id: str):
@@ -188,7 +190,7 @@ async def _start_runtime_status_cleanup():
         while True:
             await asyncio.sleep(300)  # 5 minutes
             now = time.time()
-            stale = [k for k, v in _runtime_statuses.items() if now - v.get("updated_at", 0) > 3600]
+            stale = [k for k, v in dict(_runtime_statuses).items() if now - v.get("updated_at", 0) > 3600]
             for k in stale:
                 _runtime_statuses.pop(k, None)
             if stale:
@@ -273,6 +275,9 @@ async def index():
 @app.get("/session/{link}")
 async def session_page(link: str):
     """Serve consultation page for returning clients."""
+    # R9-01: Validate unique_link format (UUID)
+    if not _UUID_RE.match(link):
+        raise HTTPException(status_code=400, detail="Invalid link format")
     session = session_mgr.get_session_by_link(link)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -282,6 +287,9 @@ async def session_page(link: str):
 @app.get("/session/{link}/review")
 async def session_review_page(link: str):
     """Serve review page for completed sessions (SPA handles rendering)."""
+    # R9-01: Validate unique_link format (UUID)
+    if not _UUID_RE.match(link):
+        raise HTTPException(status_code=400, detail="Invalid link format")
     session = session_mgr.get_session_by_link(link)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -312,6 +320,11 @@ async def delete_sessions(req: DeleteSessionsRequest):
     if not req.session_ids:
         return {"deleted": 0}
 
+    # R9-02: Validate each session_id format in the body
+    for sid in req.session_ids:
+        if not _SESSION_ID_RE.match(sid):
+            raise HTTPException(status_code=400, detail=f"Invalid session_id format: {sid}")
+
     # Delete LiveKit rooms for each session
     rooms_deleted = 0
     lk_api = None
@@ -337,6 +350,16 @@ async def delete_sessions(req: DeleteSessionsRequest):
     # R4-32: cleanup runtime statuses for deleted sessions
     for sid in req.session_ids:
         _runtime_statuses.pop(sid, None)
+
+    # R9-08: Cleanup uploaded files for deleted sessions
+    import shutil
+    for sid in req.session_ids:
+        upload_dir = Path("data/uploads") / sid
+        if upload_dir.exists():
+            try:
+                shutil.rmtree(upload_dir)
+            except Exception as e:
+                logger.warning("upload_cleanup_failed", session_id=sid, error=str(e))
 
     deleted = session_mgr.delete_sessions(req.session_ids)
     session_log.info("sessions_bulk_deleted", deleted=deleted, rooms_deleted=rooms_deleted)
@@ -416,6 +439,11 @@ async def create_session(req: CreateSessionRequest):
             error_type=type(exc).__name__,
             room_name=room_name,
         )
+        # R9-11: Close lk_api before nullifying to prevent resource leak
+        try:
+            await lk_api.aclose()
+        except Exception:
+            pass
         lk_api = None
 
     # Step 4: Dispatch agent to the room
@@ -474,6 +502,9 @@ async def create_session(req: CreateSessionRequest):
 @app.get("/api/session/by-link/{link}")
 async def get_session_by_link(link: str):
     """Get session data by unique link (for session resumption from URL)."""
+    # R9-01: Validate unique_link format (UUID)
+    if not _UUID_RE.match(link):
+        raise HTTPException(status_code=400, detail="Invalid link format")
     session = session_mgr.get_session_by_link(link)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
@@ -913,7 +944,7 @@ async def reconnect_session_post(session_id: str):
         )
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to generate LiveKit token: {str(exc)}"
+            detail="Failed to generate LiveKit token"  # R9-14: Don't expose internal error
         )
 
     # Update session status to 'active' via state machine
@@ -1136,6 +1167,14 @@ async def upload_documents(
     upload_dir = Path("data/uploads") / session_id
     upload_dir.mkdir(parents=True, exist_ok=True)
 
+    # R9-07: Check total accumulated files (not just current batch)
+    existing_files = list(upload_dir.glob("*"))
+    if len(existing_files) + len(files) > MAX_FILES_PER_SESSION:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Maximum {MAX_FILES_PER_SESSION} files per session (already have {len(existing_files)})",
+        )
+
     from src.documents import DocumentParser, DocumentAnalyzer
 
     parser = DocumentParser()
@@ -1173,7 +1212,16 @@ async def upload_documents(
         safe_name = Path(file.filename or "upload").name  # strips directory components
         if not safe_name or safe_name.startswith("."):
             safe_name = f"upload_{len(saved_files)}{ext}"
+        # R8-02: Deduplicate filenames to prevent race condition overwrites
         file_path = upload_dir / safe_name
+        if file_path.exists():
+            stem = Path(safe_name).stem
+            suffix = Path(safe_name).suffix
+            counter = 1
+            while file_path.exists():
+                file_path = upload_dir / f"{stem}_{counter}{suffix}"
+                counter += 1
+            safe_name = file_path.name
         file_path.write_bytes(content)
         saved_files.append(safe_name)
 
@@ -1333,6 +1381,7 @@ async def get_statistics():
 @app.get("/api/learnings")
 async def get_learnings(industry_id: Optional[str] = None, limit: int = 50):
     """Learnings по отраслям."""
+    limit = min(max(limit, 1), 200)  # R9-05: bound limit param
     pg_mgr = _try_get_postgres()
     if not pg_mgr:
         raise HTTPException(status_code=503, detail="PostgreSQL not configured")

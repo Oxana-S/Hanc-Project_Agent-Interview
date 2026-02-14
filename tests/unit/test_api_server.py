@@ -147,8 +147,14 @@ class TestGetSessionByLink:
         assert data["session_id"] == created_session["session_id"]
         assert data["unique_link"] == link
 
-    def test_get_session_by_link_invalid_returns_404(self, client):
+    def test_get_session_by_link_invalid_format_returns_400(self, client):
+        """R9-01: Invalid UUID format → 400."""
         resp = client.get("/api/session/by-link/no-such-link-uuid")
+        assert resp.status_code == 400
+
+    def test_get_session_by_link_nonexistent_returns_404(self, client):
+        """Valid UUID format but nonexistent → 404."""
+        resp = client.get("/api/session/by-link/deadbeef-dead-beef-dead-beefdeadbeef")
         assert resp.status_code == 404
 
 
@@ -415,8 +421,14 @@ class TestPageRoutes:
         resp = client.get("/")
         assert resp.status_code != 500
 
-    def test_session_page_invalid_link_returns_404(self, client):
+    def test_session_page_invalid_format_returns_400(self, client):
+        """R9-01: Invalid UUID format → 400."""
         resp = client.get("/session/nonexistent-link")
+        assert resp.status_code == 400
+
+    def test_session_page_nonexistent_returns_404(self, client):
+        """Valid UUID format but nonexistent → 404."""
+        resp = client.get("/session/deadbeef-dead-beef-dead-beefdeadbeef")
         assert resp.status_code == 404
 
     def test_session_page_valid_link_does_not_500(self, client, created_session):
@@ -425,8 +437,14 @@ class TestPageRoutes:
         # Either 200 (public/index.html exists) or non-500 error
         assert resp.status_code != 500
 
-    def test_review_page_invalid_link_returns_404(self, client):
+    def test_review_page_invalid_format_returns_400(self, client):
+        """R9-01: Invalid UUID format → 400."""
         resp = client.get("/session/nonexistent-link/review")
+        assert resp.status_code == 400
+
+    def test_review_page_nonexistent_returns_404(self, client):
+        """Valid UUID format but nonexistent → 404."""
+        resp = client.get("/session/deadbeef-dead-beef-dead-beefdeadbeef/review")
         assert resp.status_code == 404
 
     def test_review_page_valid_link_does_not_500(self, client, created_session):
@@ -470,10 +488,19 @@ class TestDeleteSessions:
         assert dashboard["total"] == 1
         assert dashboard["sessions"][0]["session_id"] == s2["session_id"]
 
-    def test_delete_nonexistent_returns_zero(self, client):
+    def test_delete_invalid_format_returns_400(self, client):
+        """R9-02: Invalid session_id format in body → 400."""
         resp = client.post(
             "/api/sessions/delete",
             json={"session_ids": ["nonexistent-id"]},
+        )
+        assert resp.status_code == 400
+
+    def test_delete_nonexistent_returns_zero(self, client):
+        """Valid format but nonexistent → 200 with deleted=0."""
+        resp = client.post(
+            "/api/sessions/delete",
+            json={"session_ids": ["deadbeef"]},
         )
         assert resp.status_code == 200
         assert resp.json()["deleted"] == 0

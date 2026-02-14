@@ -3,7 +3,7 @@
 Используем Redis для текущих сессий и PostgreSQL для долгосрочного хранения
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Optional, Any
 from enum import Enum
 from pydantic import BaseModel, Field
@@ -60,7 +60,7 @@ class AnswerAnalysis(BaseModel):
     clarification_questions: List[str] = []
     confidence: float = Field(ge=0.0, le=1.0)
     reasoning: str
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class Clarification(BaseModel):
@@ -68,7 +68,7 @@ class Clarification(BaseModel):
     clarification_id: str = Field(default_factory=lambda: str(uuid4()))
     question: str
     answer: Optional[str] = None
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     analysis: Optional[AnswerAnalysis] = None
 
 
@@ -99,8 +99,8 @@ class InterviewContext(BaseModel):
     pattern: InterviewPattern
     
     # Временные метки
-    started_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    started_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     completed_at: Optional[datetime] = None
     
     # Статус
@@ -150,13 +150,13 @@ class InterviewContext(BaseModel):
         
         # Обновляем ответ
         question_response.answer = answer
-        question_response.answered_at = datetime.utcnow()
+        question_response.answered_at = datetime.now(timezone.utc)
         question_response.audio_duration_seconds = audio_duration
         question_response.status = QuestionStatus.ANSWERED
         
         # Обновляем метрики
         self.answered_questions = sum(1 for q in self.questions if q.answer)
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now(timezone.utc)
         
         return question_response
     
@@ -178,7 +178,7 @@ class InterviewContext(BaseModel):
         
         question_response.clarifications.append(clarification)
         self.total_clarifications_asked += 1
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now(timezone.utc)
         
         return clarification
     
@@ -201,7 +201,7 @@ class InterviewContext(BaseModel):
                                  AnalysisStatus.NEEDS_EXAMPLES]:
             question_response.status = QuestionStatus.NEEDS_CLARIFICATION
         
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now(timezone.utc)
     
     def get_progress_percentage(self) -> float:
         """Получить процент заполнения"""
@@ -225,7 +225,7 @@ class InterviewContext(BaseModel):
         if question_response:
             question_response.status = QuestionStatus.COMPLETE
             self.current_question_index += 1
-            self.updated_at = datetime.utcnow()
+            self.updated_at = datetime.now(timezone.utc)
     
     def all_required_fields_filled(self) -> bool:
         """Проверить, все ли обязательные поля заполнены"""
