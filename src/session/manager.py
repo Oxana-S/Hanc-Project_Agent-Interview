@@ -46,7 +46,8 @@ class SessionManager:
         db_dir.mkdir(parents=True, exist_ok=True)
 
         # Connect to SQLite + thread lock for concurrent access safety (R5-04)
-        self._lock = threading.Lock()
+        # R15-06: RLock allows get_session() to be called from within locked contexts
+        self._lock = threading.RLock()
         self._conn = sqlite3.connect(db_path, check_same_thread=False)
         self._conn.row_factory = sqlite3.Row
 

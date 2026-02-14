@@ -134,7 +134,8 @@ class PostgreSQLStorageManager:
                 anketa_json=anketa.model_dump(mode="json")
             )
 
-            session.add(anketa_db)
+            # R15-10: Use merge for upsert semantics (safe on retry/duplicate)
+            session.merge(anketa_db)
             session.commit()
 
             logger.info("anketa_saved",

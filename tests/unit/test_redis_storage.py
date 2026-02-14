@@ -207,7 +207,7 @@ class TestRedisStorageManagerActiveSessions:
     @pytest.mark.asyncio
     async def test_get_all_active_sessions_empty(self, mock_redis_manager):
         """Test getting active sessions when none exist."""
-        mock_redis_manager.client.keys.return_value = []
+        mock_redis_manager.client.scan_iter.return_value = iter([])
 
         result = await mock_redis_manager.get_all_active_sessions()
 
@@ -216,11 +216,11 @@ class TestRedisStorageManagerActiveSessions:
     @pytest.mark.asyncio
     async def test_get_all_active_sessions_multiple(self, mock_redis_manager):
         """Test getting multiple active sessions."""
-        mock_redis_manager.client.keys.return_value = [
+        mock_redis_manager.client.scan_iter.return_value = iter([
             "interview:session:abc123",
             "interview:session:def456",
             "interview:session:ghi789"
-        ]
+        ])
 
         result = await mock_redis_manager.get_all_active_sessions()
 
@@ -232,7 +232,7 @@ class TestRedisStorageManagerActiveSessions:
     @pytest.mark.asyncio
     async def test_get_all_active_sessions_exception(self, mock_redis_manager):
         """Test handling of exception when getting sessions."""
-        mock_redis_manager.client.keys.side_effect = Exception("Redis error")
+        mock_redis_manager.client.scan_iter.side_effect = Exception("Redis error")
 
         result = await mock_redis_manager.get_all_active_sessions()
 

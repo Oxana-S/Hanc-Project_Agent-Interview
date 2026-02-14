@@ -510,8 +510,8 @@ class SmartExtractor:
             r'email[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
             r'(?:почта|мейл|имейл)[:\s]+([\w\.-]+@[\w\.-]+\.\w+)',
             # Speech-to-text with spaces: "channel . my . honey @ gmail . com"
-            # Capture everything before @ (with dots/spaces), then domain, then TLD
-            r'([a-zA-Z0-9_.\s-]+?)\s*@\s*([a-zA-Z0-9-]+)\s*\.\s*([a-zA-Z0-9-.]+)',
+            # R15-03: Bounded quantifier (max 64 chars) replaces non-greedy +? to prevent ReDoS
+            r'([a-zA-Z0-9_.][a-zA-Z0-9_.\s-]{0,63})\s*@\s*([a-zA-Z0-9-]+)\s*\.\s*([a-zA-Z0-9-.]+)',
         ],
     }
 

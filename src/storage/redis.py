@@ -205,7 +205,8 @@ class RedisStorageManager:
         """
         try:
             pattern = "interview:session:*"
-            keys = self.client.keys(pattern)
+            # R15-05: Use scan_iter instead of keys() to avoid blocking Redis (O(N))
+            keys = list(self.client.scan_iter(match=pattern, count=200))
             
             # Извлекаем session_id из ключей
             session_ids = [key.split(":")[-1] for key in keys]

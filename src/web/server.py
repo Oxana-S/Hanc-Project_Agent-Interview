@@ -199,6 +199,19 @@ class SessionIDValidationMiddleware(BaseHTTPMiddleware):
 app.add_middleware(RequestIDMiddleware)
 app.add_middleware(SessionIDValidationMiddleware)
 
+
+# R15-05: Security headers middleware (defense-in-depth)
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        response = await call_next(request)
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        return response
+
+
+app.add_middleware(SecurityHeadersMiddleware)
+
 # Singleton session manager
 session_mgr = SessionManager()
 
@@ -224,7 +237,7 @@ def _track_task(task):
 
 class CreateSessionRequest(BaseModel):
     """Request body for creating a new consultation session."""
-    pattern: str = "interaction"
+    pattern: str = Field(default="interaction", pattern=r"^(interaction|management)$")  # R15-04
     voice_settings: Optional[dict] = None  # e.g. {"silence_duration_ms": 3000}
 
 
@@ -241,13 +254,13 @@ class CreateSessionResponse(BaseModel):
 class UpdateAnketaRequest(BaseModel):
     """Request body for updating anketa data."""
     anketa_data: Optional[dict] = None
-    anketa_md: Optional[str] = None
+    anketa_md: Optional[str] = Field(default=None, max_length=100000)
 
 
 class UpdateDialogueRequest(BaseModel):
     """Request body for updating dialogue history from voice agent."""
-    dialogue_history: list
-    duration_seconds: float
+    dialogue_history: list = Field(max_length=500)  # R15-01: Cap to prevent memory exhaustion
+    duration_seconds: float = Field(ge=0, le=86400)  # Max 24 hours
     status: Optional[str] = None  # Must be a valid SessionStatus value
 
 
@@ -567,9 +580,13 @@ async def update_runtime_status(session_id: str, req: dict):
     valid = {"idle", "processing", "completing", "completed", "error"}
     if status not in valid:
         raise HTTPException(status_code=400, detail=f"Invalid runtime_status: {status}")
-    # R11-15: Cap cache size to prevent memory exhaustion from unauthenticated requests
-    if session_id not in _runtime_statuses and len(_runtime_statuses) > 10000:
-        raise HTTPException(status_code=503, detail="Runtime status cache full")
+    # R15-02: Verify session exists before caching runtime status (prevents cache pollution)
+    if session_id not in _runtime_statuses:
+        if not session_mgr.get_session(session_id):
+            raise HTTPException(status_code=404, detail="Session not found")
+        # R11-15: Cap cache size to prevent memory exhaustion
+        if len(_runtime_statuses) > 10000:
+            raise HTTPException(status_code=503, detail="Runtime status cache full")
     _runtime_statuses[session_id] = {"runtime_status": status, "updated_at": time.time()}
     return {"ok": True}
 
@@ -596,7 +613,9 @@ async def update_voice_config(session_id: str, req: dict):
     session_log.info("voice_config_updated", session_id=session_id, voice_config=filtered)
 
     # Signal running agent to re-read voice_config via room metadata
-    room_name = session.room_name or f"consultation-{session_id}"
+    # R15-BUG: Fetch session for room_name (removed by R14-06 refactor)
+    session = session_mgr.get_session(session_id)
+    room_name = (session.room_name if session else None) or f"consultation-{session_id}"
     lk_api = None
     try:
         import json, time
@@ -769,33 +788,13 @@ async def update_dialogue(session_id: str, req: UpdateDialogueRequest):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    # Validate status through state machine if provided
-    validated_status = None
-    if req.status:
-        try:
-            target_status = SessionStatus(req.status)
-            current_status = SessionStatus(session.status)
-            # Only update status if it's a valid transition (or same status)
-            if target_status != current_status:
-                from src.session.status import validate_transition
-                validate_transition(current_status, target_status)
-            validated_status = target_status.value
-        except (ValueError, InvalidTransitionError) as e:
-            # Log but don't fail - dialogue save is more important than status update
-            logger.warning(
-                "dialogue_status_validation_failed",
-                session_id=session_id,
-                requested_status=req.status,
-                current_status=session.status,
-                error=str(e),
-            )
-            validated_status = None  # Skip invalid status update, save dialogue only
-
+    # R15-12: Single authority for status validation — let manager.py handle it
+    # (removes TOCTOU gap from double validation in server + manager)
     session_mgr.update_dialogue(
         session_id,
         dialogue_history=req.dialogue_history,
         duration_seconds=req.duration_seconds,
-        status=validated_status,
+        status=req.status,
     )
     logger.info(
         "dialogue_updated_via_api",

@@ -34,13 +34,14 @@ class TestPostgreSQLStorageManagerSaveAnketa:
         assert result == True
 
     @pytest.mark.asyncio
-    async def test_save_anketa_calls_add_and_commit(self, mock_postgres_manager, sample_completed_anketa):
-        """Test save_anketa calls session.add and commit."""
+    async def test_save_anketa_calls_merge_and_commit(self, mock_postgres_manager, sample_completed_anketa):
+        """Test save_anketa calls session.merge (upsert) and commit."""
         mock_session = mock_postgres_manager._get_session()
 
         await mock_postgres_manager.save_anketa(sample_completed_anketa)
 
-        mock_session.add.assert_called_once()
+        # R15-10: Uses merge for upsert semantics (safe on retry/duplicate)
+        mock_session.merge.assert_called_once()
         mock_session.commit.assert_called_once()
 
     @pytest.mark.asyncio

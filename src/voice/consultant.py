@@ -41,12 +41,15 @@ def _track_agent_task(task):
     task.add_done_callback(_agent_bg_tasks.discard)
 
 
-_http_client_lock = asyncio.Lock()
+# R15-07: Lazy lock creation — avoid binding to wrong event loop at import time
+_http_client_lock: asyncio.Lock | None = None
 
 
 async def _get_http_client() -> httpx.AsyncClient:
     """Get or create a shared httpx.AsyncClient with connection pooling."""
-    global _shared_http_client
+    global _shared_http_client, _http_client_lock
+    if _http_client_lock is None:
+        _http_client_lock = asyncio.Lock()
     async with _http_client_lock:
         if _shared_http_client is None or _shared_http_client.is_closed:
             _shared_http_client = httpx.AsyncClient(
