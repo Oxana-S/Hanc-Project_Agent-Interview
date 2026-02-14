@@ -55,7 +55,7 @@ class DocumentParser:
         except ImportError:
             logger.warning("openpyxl not installed, XLSX parsing disabled")
 
-    MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB
+    MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB (matches API upload limit)
 
     def parse(self, file_path: Path) -> Optional[ParsedDocument]:
         """

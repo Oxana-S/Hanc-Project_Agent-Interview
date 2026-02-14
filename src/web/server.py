@@ -1190,7 +1190,11 @@ async def upload_documents(
 
     # Analyze with LLM
     analyzer = DocumentAnalyzer()
-    doc_context = await analyzer.analyze(parsed_docs)
+    try:
+        doc_context = await analyzer.analyze(parsed_docs)
+    except Exception as exc:
+        logger.error("document_analysis_failed", session_id=session_id, error=str(exc))
+        raise HTTPException(status_code=500, detail="Document analysis failed")
 
     # Store in session
     context_dict = doc_context.model_dump(mode="json")
