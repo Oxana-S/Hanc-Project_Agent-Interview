@@ -45,14 +45,9 @@ class Router {
             return;
         }
 
-        // / (landing or dashboard)
-        // Show landing only on first visit OR if explicitly requested via ?home
-        if (!localStorage.getItem('hasVisited') || window.location.search.includes('home=true')) {
-            this.app.showScreen('landing');
-            this.app._initLandingAnimations();
-        } else {
-            this.app.showDashboard();
-        }
+        // / — always show landing page
+        this.app.showScreen('landing');
+        this.app._initLandingAnimations();
     }
 }
 
