@@ -588,16 +588,11 @@ async def update_voice_config(session_id: str, req: dict):
     by updating room metadata. This avoids calling /reconnect which can
     accidentally recreate rooms and dispatch duplicate agents.
     """
-    session = session_mgr.get_session(session_id)
-    if not session:
-        raise HTTPException(status_code=404, detail="Session not found")
-
-    # R6-13: Merge with existing config instead of replacing (preserves consultation_type, llm_provider)
+    # R14-06: Use atomic update_voice_config to prevent full-session overwrite race
+    # R6-13: Filter to allowed keys (preserves consultation_type, llm_provider)
     filtered = {k: v for k, v in req.items() if k in ALLOWED_VOICE_CONFIG_KEYS}
-    existing_config = session.voice_config or {}
-    existing_config.update(filtered)
-    session.voice_config = existing_config
-    session_mgr.update_session(session)
+    if not session_mgr.update_voice_config(session_id, filtered):
+        raise HTTPException(status_code=404, detail="Session not found")
     session_log.info("voice_config_updated", session_id=session_id, voice_config=filtered)
 
     # Signal running agent to re-read voice_config via room metadata

@@ -128,6 +128,7 @@ class VoiceConsultationSession:
         self.review_started = False  # True when review phase activated
         self._agent_speaking = False  # True while agent is generating speech
         self._pending_instructions = None  # Buffered instructions to apply after speech ends
+        self._latest_instructions = None  # R14-03: Track latest desired instructions for read consistency
         self.research_done = False  # True after background research launched
         self.current_phase = "discovery"  # discovery → analysis → proposal → refinement
         self.detected_industry_id = None  # Cached industry ID
@@ -951,6 +952,7 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
     filtered = []
     review_started = False
     non_review_streak = 0  # R4-31: count consecutive non-review messages
+    _buffered_msg = None  # R14-09: buffer first non-review msg after review phase
 
     for msg in dialogue_history:
         content_lower = msg.get('content', '').lower()
@@ -964,11 +966,17 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
             continue  # Skip this message
 
         # If review started, wait for 2 consecutive non-review messages to exit
+        # R14-09: Buffer first non-review message and include it when review exits
         if review_started:
             non_review_streak += 1
+            if non_review_streak == 1:
+                _buffered_msg = msg  # Buffer first non-review message
             if non_review_streak >= 2:
-                # Back to normal dialogue
+                # Back to normal dialogue — include BOTH buffered and current messages
                 review_started = False
+                if _buffered_msg is not None:
+                    filtered.append(_buffered_msg)
+                    _buffered_msg = None
                 filtered.append(msg)
             continue
 
@@ -985,10 +993,17 @@ async def _update_instructions_safe(
     agent_session: Optional[AgentSession],
     new_instructions: str,
 ):
-    """Update agent instructions, buffering during speech to avoid interruption (P1 fix)."""
+    """Update agent instructions, buffering during speech to avoid interruption (P1 fix).
+
+    R14-03: Also stores the latest desired instructions in consultation so that
+    subsequent callers within the same extraction cycle can read the most recent
+    value instead of stale activity.instructions (which won't reflect buffered updates).
+    """
     activity = getattr(agent_session, '_activity', None)
     if not activity or not hasattr(activity, 'update_instructions'):
         return
+    # R14-03: Track the latest desired instructions regardless of buffering
+    consultation._latest_instructions = new_instructions
     if consultation._agent_speaking:
         consultation._pending_instructions = new_instructions
         anketa_log.debug("instructions_buffered_during_speech")
@@ -1295,7 +1310,10 @@ async def _extract_and_update_anketa(
                 if reminder:
                     activity = getattr(agent_session, '_activity', None)
                     if activity and hasattr(activity, 'update_instructions'):
-                        current_instructions = getattr(activity, 'instructions', '') or ''
+                        # R14-03: Use latest tracked instructions (may include buffered KB update)
+                        # instead of stale activity.instructions
+                        current_instructions = getattr(consultation, '_latest_instructions', None) \
+                            or getattr(activity, 'instructions', '') or ''
                         # Strip previous reminder if present (both markers)
                         for m in ["### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ", "### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ"]:
                             if m in current_instructions:
@@ -1665,15 +1683,30 @@ def _register_event_handlers(
                     return
 
                 extraction_running[0] = True
-                last_extraction_time[0] = _now
+                # R14-02: Set last_extraction_time AFTER extraction completes
+                # (not before) to prevent rapid-fire retries after transient failures
 
                 async def run_extraction():
                     try:
-                        await _extract_and_update_anketa(consultation, session_id, session)
+                        # R14-08: Timeout extraction to prevent indefinite blocking
+                        # when DeepSeek API is degraded (default 180s * 3 retries = 540s)
+                        _extraction_timeout = float(os.getenv('EXTRACTION_TIMEOUT', '60'))
+                        await asyncio.wait_for(
+                            _extract_and_update_anketa(consultation, session_id, session),
+                            timeout=_extraction_timeout,
+                        )
+                    except asyncio.TimeoutError:
+                        logger.warning(
+                            "extraction_timed_out",
+                            trigger="user_input",
+                            timeout=_extraction_timeout,
+                            session_id=session_id,
+                        )
                     except Exception as e:
                         logger.error("extraction_failed", error=str(e), trigger="user_input")
                     finally:
                         extraction_running[0] = False
+                        last_extraction_time[0] = _time.time()
 
                 _track_agent_task(asyncio.create_task(run_extraction()))
 
@@ -2097,10 +2130,12 @@ async def entrypoint(ctx: JobContext):
     Вызывается когда клиент подключается к комнате.
     """
     # Debug logging to file (subprocess logs don't forward to parent, add handler once)
+    # R14-05: Use RotatingFileHandler (same as agent.events) to avoid conflicts
     import logging
+    from logging.handlers import RotatingFileHandler as _RFH
     debug_log = logging.getLogger("agent.entrypoint")
-    if not any(isinstance(h, logging.FileHandler) for h in debug_log.handlers):
-        fh = logging.FileHandler("/tmp/agent_entrypoint.log")
+    if not any(isinstance(h, (logging.FileHandler, _RFH)) for h in debug_log.handlers):
+        fh = _RFH("/tmp/agent_entrypoint.log", maxBytes=10*1024*1024, backupCount=3)
         fh.setLevel(logging.DEBUG)
         fh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
         debug_log.addHandler(fh)

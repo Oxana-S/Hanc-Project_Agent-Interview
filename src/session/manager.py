@@ -571,6 +571,30 @@ class SessionManager:
             self._conn.commit()
             return cursor.rowcount > 0
 
+    def update_voice_config(self, session_id: str, config_updates: dict) -> bool:
+        """Atomically merge updates into voice_config (R14-06: no full-session overwrite).
+
+        Args:
+            session_id: Short session identifier.
+            config_updates: Dict of voice_config keys to update (merged into existing).
+
+        Returns:
+            True if the session was found and updated, False otherwise.
+        """
+        with self._lock:
+            session = self.get_session(session_id)
+            if not session:
+                return False
+            existing = session.voice_config or {}
+            existing.update(config_updates)
+            now = datetime.now(timezone.utc)
+            cursor = self._conn.execute(
+                "UPDATE sessions SET voice_config = ?, updated_at = ? WHERE session_id = ?",
+                (json.dumps(existing, ensure_ascii=False), now.isoformat(), session_id),
+            )
+            self._conn.commit()
+            return cursor.rowcount > 0
+
     def update_dialogue(self, session_id: str, dialogue_history: list, duration_seconds: float, status: str = None) -> bool:
         """Update dialogue_history, duration, and optionally status (no full session overwrite)."""
         # R9-12: Lock for thread safety

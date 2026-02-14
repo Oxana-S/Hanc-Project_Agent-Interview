@@ -1601,11 +1601,14 @@ class VoiceInterviewerApp {
             {
                 title: 'Пример диалога',
                 key: 'sample_dialogue',
-                render: (items) => items.map(i => `
-                    <div class="review-dialogue-msg ${i.role}">
-                        <strong>${i.role === 'agent' ? 'Агент' : 'Клиент'}:</strong> ${this._escapeHtml(i.message)}
+                render: (items) => items.map(i => {
+                    // R14-04: Whitelist role to prevent class attribute injection
+                    const safeRole = i.role === 'agent' ? 'agent' : 'user';
+                    return `
+                    <div class="review-dialogue-msg ${safeRole}">
+                        <strong>${safeRole === 'agent' ? 'Агент' : 'Клиент'}:</strong> ${this._escapeHtml(i.message)}
                     </div>
-                `).join('')
+                `}).join('')
             },
             {
                 title: 'Ключевые показатели (KPI)',
@@ -3385,9 +3388,10 @@ class VoiceInterviewerApp {
     }
 
     _escapeHtml(str) {
+        // R14-13: Also escape quotes for safe use in HTML attributes
         const div = document.createElement('div');
         div.textContent = str;
-        return div.innerHTML;
+        return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 }
 
