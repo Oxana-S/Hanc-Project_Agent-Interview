@@ -787,16 +787,18 @@ class VoiceInterviewerApp {
     }
 
     _initLandingAnimations() {
-        const observer = new IntersectionObserver((entries) => {
+        // R3-6: Disconnect previous observer to prevent accumulation
+        if (this._landingObserver) this._landingObserver.disconnect();
+        this._landingObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    this._landingObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.landing-animate').forEach(el => observer.observe(el));
+        document.querySelectorAll('.landing-animate').forEach(el => this._landingObserver.observe(el));
     }
 
     // ===== DASHBOARD =====
@@ -2011,6 +2013,20 @@ class VoiceInterviewerApp {
 
         // Stop mic but keep room connected
         await this.stopRecording();
+
+        // Notify backend about pause (state machine: active → paused)
+        if (this.sessionId) {
+            try {
+                const resp = await fetch(`/api/session/${this.sessionId}/pause`, { method: 'POST' });
+                if (resp.ok) {
+                    LOG.info('Session status changed to paused on backend');
+                } else {
+                    LOG.warn('Failed to pause session on backend:', await resp.text());
+                }
+            } catch (e) {
+                LOG.warn('Failed to call POST /pause:', e);
+            }
+        }
 
         // UI: pause button → resume button
         this.elements.pauseBtn.classList.add('paused');

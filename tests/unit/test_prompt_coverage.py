@@ -180,10 +180,10 @@ def test_prompt_mentions_agent_parameters():
 
 def test_transition_rule_updated():
     """
-    Проверить что правило перехода к ПРЕДЛОЖЕНИЕ обновлено с 9/12 на 20/25.
+    Проверить что правило перехода к ПРЕДЛОЖЕНИЕ обновлено (R3-7: field count harmonization).
 
-    Старое: "НЕ переходи к фазе ПРЕДЛОЖЕНИЕ пока не собрал хотя бы 9 из 12 пунктов"
-    Новое: "НЕ переходи к фазе ПРЕДЛОЖЕНИЕ пока не собрал хотя бы 20 из 25 пунктов Discovery"
+    Старое: "20 из 25 пунктов Discovery"
+    Новое: "15 из 23 пунктов Discovery"
     """
     # Загрузить prompt
     prompt_path = Path(__file__).parent.parent.parent / "prompts" / "voice" / "consultant.yaml"
@@ -195,9 +195,9 @@ def test_transition_rule_updated():
     assert "9 из 12" not in prompt_text, \
         "Old transition rule '9 из 12' should be removed"
 
-    # Проверить что новое правило присутствует
-    assert "20 из 25" in prompt_text, \
-        "New transition rule '20 из 25 пунктов Discovery' should be present"
+    # Проверить что новое правило присутствует (harmonized with extraction system)
+    assert "15 из 23" in prompt_text, \
+        "New transition rule '15 из 23 пунктов Discovery' should be present"
 
 
 if __name__ == "__main__":

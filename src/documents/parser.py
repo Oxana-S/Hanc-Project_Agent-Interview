@@ -55,6 +55,8 @@ class DocumentParser:
         except ImportError:
             logger.warning("openpyxl not installed, XLSX parsing disabled")
 
+    MAX_FILE_SIZE = 50 * 1024 * 1024  # 50 MB
+
     def parse(self, file_path: Path) -> Optional[ParsedDocument]:
         """
         Распарсить документ.
@@ -69,6 +71,21 @@ class DocumentParser:
 
         if not file_path.exists():
             logger.error("File not found", path=str(file_path))
+            return None
+
+        # R3-5: Prevent OOM from oversized uploads
+        try:
+            file_size = file_path.stat().st_size
+            if file_size > self.MAX_FILE_SIZE:
+                logger.error(
+                    "File too large",
+                    path=str(file_path),
+                    size_mb=round(file_size / (1024 * 1024), 1),
+                    max_mb=self.MAX_FILE_SIZE // (1024 * 1024),
+                )
+                return None
+        except OSError as e:
+            logger.error("Cannot stat file", path=str(file_path), error=str(e))
             return None
 
         ext = file_path.suffix.lower()

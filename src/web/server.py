@@ -69,6 +69,10 @@ app = FastAPI(title="Hanc.AI Voice Consultant")
 # Singleton session manager
 session_mgr = SessionManager()
 
+# In-memory runtime status cache (ephemeral, not persisted)
+# Maps session_id -> {"runtime_status": "idle"|"processing"|"completing"|"completed"|"error", "updated_at": float}
+_runtime_statuses: dict = {}
+
 
 # ---------------------------------------------------------------------------
 # Startup: clean stale LiveKit rooms
@@ -376,14 +380,33 @@ async def get_anketa(session_id: str):
         except Exception as e:
             logger.warning("completion_rate_calc_failed", error=str(e), session_id=session_id)
 
+    # Include ephemeral runtime_status if available
+    rt = _runtime_statuses.get(session_id, {})
+
     return {
         "anketa_data": session.anketa_data,
         "anketa_md": session.anketa_md,
         "status": session.status,
+        "runtime_status": rt.get("runtime_status", "idle"),
         "company_name": session.company_name,
         "updated_at": session.updated_at.isoformat(),
         "completion_rate": completion_rate,
     }
+
+
+@app.put("/api/session/{session_id}/runtime-status")
+async def update_runtime_status(session_id: str, req: dict):
+    """Update ephemeral runtime status (called by voice agent process).
+
+    Valid values: idle, processing, completing, completed, error
+    """
+    import time
+    status = req.get("runtime_status", "idle")
+    valid = {"idle", "processing", "completing", "completed", "error"}
+    if status not in valid:
+        raise HTTPException(status_code=400, detail=f"Invalid runtime_status: {status}")
+    _runtime_statuses[session_id] = {"runtime_status": status, "updated_at": time.time()}
+    return {"ok": True}
 
 
 ALLOWED_VOICE_CONFIG_KEYS = {
@@ -511,6 +534,25 @@ async def reconnect_session(session_id: str):
         "livekit_url": livekit_url,
         "user_token": user_token,
     }
+
+
+@app.post("/api/session/{session_id}/pause")
+async def pause_session(session_id: str):
+    """Pause an active session - changes status to 'paused'."""
+    session = session_mgr.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    if session.status != SessionStatus.ACTIVE.value:
+        raise HTTPException(status_code=400, detail="Session is not active")
+
+    try:
+        session_mgr.update_status(session_id, SessionStatus.PAUSED)
+    except InvalidTransitionError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    session_log.info("session_paused", session_id=session_id)
+    return {"status": SessionStatus.PAUSED.value, "message": "Session paused"}
 
 
 @app.post("/api/session/{session_id}/resume")

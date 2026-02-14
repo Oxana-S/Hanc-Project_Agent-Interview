@@ -696,9 +696,104 @@ const safePriority = ['high', 'medium', 'low'].includes(i.priority) ? i.priority
 | Infrastructure (Round 2) | 0 | 2 | 5 | 0 | 7 |
 | **ИТОГО** | **10** | **11** | **17** | **7** | **45** |
 
-### Статус исправлений:
-- **FIXED:** 13 проблем (все Tier 1 + 7 новых)
-- **ACKNOWLEDGED:** 8 проблем (требуют архитектурных решений)
-- **REMAINING:** 24 проблемы (Tier 2-4)
+### Статус исправлений (после Tier 2 + Round 3):
+- **FIXED:** 25 проблем (Tier 1 + Tier 2 + Round 2 security + Round 3 quick fixes)
+- **ACKNOWLEDGED:** 14 проблем (требуют архитектурных решений)
+- **REMAINING:** 18 проблем (Tier 3-4)
 
-### Тесты: 1846 passed, 0 failed (100% pass rate для unit tests)
+### Тесты: 1816 passed, 0 failed (100% pass rate для unit tests)
+
+---
+
+## ЧАСТЬ 10: TIER 2 — ВСЕ ИСПРАВЛЕНЫ
+
+| # | Проблема | Решение | Статус |
+|---|----------|---------|--------|
+| B5 | Fire-and-forget finalization | `asyncio.shield()` на dialogue save + finalization | FIXED |
+| B7 | RuntimeStatus не доступен frontend | `_runtime_statuses` dict + PUT endpoint + anketa response | FIXED |
+| F3 | pauseSession не вызывает backend | POST `/api/session/{id}/pause` + frontend fetch | FIXED |
+| P1 | update_instructions во время речи | `_update_instructions_safe()` + buffer + flush on state change | FIXED |
+| P3 | 25 extractions/17 мин | Throttle 10s (configurable via MIN_EXTRACTION_INTERVAL), bypass for first 8 msgs | FIXED |
+| P4+P5 | Агент не знает о UI + галлюцинация функций | "ПЛАТФОРМА И ИНТЕРФЕЙС" секция + явный запрет обещания действий | FIXED |
+
+---
+
+## ЧАСТЬ 11: ROUND 3 — НОВЫЕ ПРОБЛЕМЫ (Knowledge Base, Documents, Config)
+
+### R3-1. [HIGH] .env.example ships dangerous deepseek-reasoner default
+**Файл:** `.env.example` line 21
+**Фикс:** `deepseek-chat` + предупреждающий комментарий
+**Статус:** FIXED
+
+### R3-2. [MEDIUM] KBContextBuilder class-level shared mutable state
+**Файл:** `src/knowledge/context_builder.py` lines 24-26
+Class variables `_config`, `_loaded` shared across all instances. Second init with different config_path silently ignored.
+**Статус:** ACKNOWLEDGED (structural change needed)
+
+### R3-3. [MEDIUM] _merge_profiles shallow copy causes cross-contamination
+**Файл:** `src/knowledge/loader.py` lines 306-338
+`result = base.copy()` is shallow — nested dicts are shared references.
+**Статус:** ACKNOWLEDGED
+
+### R3-4. [LOW] Phone code detection ordering — shorter codes shadow longer
+**Файл:** `src/knowledge/country_detector.py` lines 186-188
+**Фикс:** Sort phone_code_map by code length (longest first) before matching.
+**Статус:** FIXED
+
+### R3-5. [HIGH] No file size limit in document parser — OOM risk
+**Файл:** `src/documents/parser.py` line 58
+**Фикс:** `MAX_FILE_SIZE = 50MB` check before parsing.
+**Статус:** FIXED
+
+### R3-6. [LOW] IntersectionObserver leak in _initLandingAnimations
+**Файл:** `public/app.js` line 789
+**Фикс:** Store as `this._landingObserver`, disconnect previous before creating new.
+**Статус:** FIXED
+
+### R3-7. [MEDIUM] Prompt references "32 fields" but extraction uses 15
+**Файл:** `prompts/voice/consultant.yaml` lines 298-302
+**Фикс:** Updated to "15 из 23" and "90%+ на экране" instead of absolute numbers.
+**Статус:** FIXED
+
+### R3-8. [MEDIUM] Integration test calls non-existent method + real LLM calls
+**Файл:** `tests/integration/test_v5_realtime_scenarios.py`
+**Статус:** ACKNOWLEDGED
+
+### R3-9. [MEDIUM] EnrichedContextBuilder singleton leaks document context across sessions
+**Файл:** `src/knowledge/enriched_builder.py` lines 384-410
+**Статус:** ACKNOWLEDGED (requires per-session context isolation)
+
+### R3-10. [LOW] _md_to_html fails on numbered lists >= 100 items
+**Файл:** `src/anketa/exporter.py` lines 125/158
+**Статус:** ACKNOWLEDGED
+
+### R3-11. [LOW] Cyrillic text always detected as Russian
+**Файл:** `src/knowledge/country_detector.py` lines 205-207
+**Статус:** ACKNOWLEDGED (needs Ukrainian/Bulgarian character detection)
+
+### R3-12. [LOW] .env.example comment recommends deprecated API version
+**Файл:** `.env.example` lines 141-142
+**Фикс:** Updated comment to recommend `2025-04-01-preview`.
+**Статус:** FIXED
+
+---
+
+## ФИНАЛЬНАЯ СВОДКА
+
+| Раунд | Найдено | FIXED | ACKNOWLEDGED |
+|-------|---------|-------|--------------|
+| Первичный анализ | 8 | 8 | 0 |
+| Глубокий анализ | 22 | 10 | 12 |
+| Round 2 (Security) | 15 | 8 | 7 |
+| Round 3 (KB/Config/Docs) | 12 | 6 | 6 |
+| **ИТОГО** | **57** | **32** | **25** |
+
+### По severity:
+| Severity | Всего | Fixed | Acknowledged |
+|----------|-------|-------|--------------|
+| CRITICAL | 10 | 9 | 1 (auth) |
+| HIGH | 13 | 11 | 2 |
+| MEDIUM | 22 | 10 | 12 |
+| LOW | 12 | 2 | 10 |
+
+### Тесты: 1816 passed, 0 failed

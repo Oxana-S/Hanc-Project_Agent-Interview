@@ -98,6 +98,8 @@ class VoiceConsultationSession:
         self.runtime_status = RuntimeStatus.IDLE  # Agent-internal status (ephemeral)
         self.kb_enriched = False  # True after industry KB context injected
         self.review_started = False  # True when review phase activated
+        self._agent_speaking = False  # True while agent is generating speech
+        self._pending_instructions = None  # Buffered instructions to apply after speech ends
         self.research_done = False  # True after background research launched
         self.current_phase = "discovery"  # discovery → analysis → proposal → refinement
         self.detected_industry_id = None  # Cached industry ID
@@ -920,6 +922,22 @@ def _filter_review_phase(dialogue_history: List[Dict]) -> List[Dict]:
     return filtered
 
 
+async def _update_instructions_safe(
+    consultation: VoiceConsultationSession,
+    agent_session: Optional[AgentSession],
+    new_instructions: str,
+):
+    """Update agent instructions, buffering during speech to avoid interruption (P1 fix)."""
+    activity = getattr(agent_session, '_activity', None)
+    if not activity or not hasattr(activity, 'update_instructions'):
+        return
+    if consultation._agent_speaking:
+        consultation._pending_instructions = new_instructions
+        anketa_log.debug("instructions_buffered_during_speech")
+    else:
+        await activity.update_instructions(new_instructions)
+
+
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -1173,16 +1191,14 @@ async def _extract_and_update_anketa(
                         if voice_context:
                             base_prompt = get_system_prompt()
                             enriched = f"{base_prompt}\n\n### Контекст отрасли ({new_phase}):\n{voice_context}"
-                            activity = getattr(agent_session, '_activity', None)
-                            if activity and hasattr(activity, 'update_instructions'):
-                                await activity.update_instructions(enriched)
-                                consultation.kb_enriched = True
-                                anketa_log.info(
-                                    "KB context injected",
-                                    session_id=session_id,
-                                    industry=consultation.detected_industry_id,
-                                    phase=new_phase,
-                                )
+                            await _update_instructions_safe(consultation, agent_session, enriched)
+                            consultation.kb_enriched = True
+                            anketa_log.info(
+                                "KB context injected",
+                                session_id=session_id,
+                                industry=consultation.detected_industry_id,
+                                phase=new_phase,
+                            )
             except Exception as e:
                 anketa_log.warning("KB injection failed (non-fatal)", error=str(e))
 
@@ -1217,7 +1233,7 @@ async def _extract_and_update_anketa(
                             if m in current_instructions:
                                 current_instructions = current_instructions[:current_instructions.index(m)].rstrip()
                         updated = current_instructions + reminder
-                        await activity.update_instructions(updated)
+                        await _update_instructions_safe(consultation, agent_session, updated)
                         anketa_log.info(
                             "missing_fields_reminder_injected",
                             session_id=session_id,
@@ -1257,7 +1273,7 @@ async def _extract_and_update_anketa(
                             )
                             if voice_context:
                                 base_prompt = f"{base_prompt}\n\n### Контекст отрасли ({consultation.current_phase}):\n{voice_context}"
-                        await activity.update_instructions(base_prompt)
+                        await _update_instructions_safe(consultation, agent_session, base_prompt)
 
                 # Переход в REVIEW только если:
                 # 1. completion_rate >= 90% (v5.0: почти все поля заполнены = 14/15)
@@ -1282,7 +1298,7 @@ async def _extract_and_update_anketa(
                                     current_instructions = current_instructions[:current_instructions.index(m)].rstrip()
                             # Append review mode instructions to existing prompt
                             combined_prompt = current_instructions + "\n\n" + review_prompt
-                            await activity.update_instructions(combined_prompt)
+                            await _update_instructions_safe(consultation, agent_session, combined_prompt)
                             await agent_session.generate_reply(
                                 user_input="[Начни проверку анкеты. Зачитай первый пункт и спроси подтверждение.]"
                             )
@@ -1519,6 +1535,7 @@ def _register_event_handlers(
     # v5.0: Real-time extraction - removed message counter
     # FIX: Prevent duplicate extraction (race condition between 2 triggers)
     extraction_running = [False]  # mutable for closure
+    last_extraction_time = [0.0]  # P3: throttle extraction interval
 
     # Create file-based logger for event debugging (only add handler once)
     import logging
@@ -1556,7 +1573,22 @@ def _register_event_handlers(
                     logger.debug("extraction_skipped_already_running", trigger="user_input")
                     return
 
+                # P3: Throttle extraction to prevent excessive API calls
+                # Skip throttle for early messages (< 8) to fill initial data quickly
+                import time as _time
+                _now = _time.time()
+                _min_interval = float(os.getenv('MIN_EXTRACTION_INTERVAL', '10'))
+                if (len(consultation.dialogue_history) >= 8
+                        and _now - last_extraction_time[0] < _min_interval):
+                    logger.debug(
+                        "extraction_throttled",
+                        trigger="user_input",
+                        seconds_since_last=round(_now - last_extraction_time[0], 1),
+                    )
+                    return
+
                 extraction_running[0] = True
+                last_extraction_time[0] = _now
 
                 async def run_extraction():
                     try:
@@ -1582,6 +1614,19 @@ def _register_event_handlers(
         old_state = getattr(event, 'old_state', 'unknown')
         new_state = getattr(event, 'new_state', 'unknown')
         event_log.info(f"AGENT STATE: {old_state} -> {new_state}")
+
+        # P1: Track speaking state for instruction buffering
+        consultation._agent_speaking = (new_state == 'speaking')
+
+        # P1: Apply buffered instructions when agent stops speaking
+        if old_state == 'speaking' and new_state != 'speaking':
+            if consultation._pending_instructions:
+                pending = consultation._pending_instructions
+                consultation._pending_instructions = None
+                asyncio.create_task(
+                    _update_instructions_safe(consultation, session, pending)
+                )
+                anketa_log.debug("buffered_instructions_applied")
 
     @session.on("speech_created")
     def on_speech_created(event):
@@ -1644,13 +1689,13 @@ def _register_event_handlers(
                 fresh_session = _session_mgr.get_session(session_id)
                 current_status = fresh_session.status if fresh_session else "active"
 
-                # Schedule async API call (event loop is running in this handler)
-                asyncio.create_task(_update_dialogue_via_api(
+                # B5: Shield from cancellation during agent teardown
+                asyncio.create_task(asyncio.shield(_update_dialogue_via_api(
                     session_id,
                     dialogue_history=consultation.dialogue_history,
                     duration_seconds=consultation.get_duration_seconds(),
                     status=current_status,
-                ))
+                )))
                 event_log.info(
                     "dialogue_save_scheduled",
                     extra={
@@ -1662,8 +1707,8 @@ def _register_event_handlers(
             except Exception as e:
                 event_log.error(f"Failed to schedule dialogue save: {e}")
 
-        # Затем запускаем async финализацию (anketa extraction, file writes)
-        asyncio.create_task(_finalize_and_save(consultation, session_id))
+        # B5: Shield finalization from cancellation during agent teardown
+        asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id)))
 
     event_log.info("All event handlers registered successfully")
 

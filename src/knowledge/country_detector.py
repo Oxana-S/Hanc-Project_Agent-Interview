@@ -182,12 +182,14 @@ class CountryDetector:
         if not phone.startswith("+"):
             phone = "+" + phone
 
+        # R3-4: Sort by code length (longest first) to prevent shorter codes shadowing longer
         # Try phone_code_map first (from YAML)
-        for code, country in self._phone_code_map.items():
+        sorted_codes = sorted(self._phone_code_map.items(), key=lambda x: len(x[0]), reverse=True)
+        for code, country in sorted_codes:
             if phone.startswith(code):
                 return country
 
-        # Fall back to built-in patterns
+        # Fall back to built-in patterns (already ordered longest-first in class definition)
         for pattern, country in self.PHONE_PATTERNS:
             if re.match(pattern, phone):
                 return country
