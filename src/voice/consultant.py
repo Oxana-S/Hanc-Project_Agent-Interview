@@ -47,15 +47,13 @@ _http_client_lock = asyncio.Lock()
 async def _get_http_client() -> httpx.AsyncClient:
     """Get or create a shared httpx.AsyncClient with connection pooling."""
     global _shared_http_client
-    if _shared_http_client is not None and not _shared_http_client.is_closed:
-        return _shared_http_client
     async with _http_client_lock:
         if _shared_http_client is None or _shared_http_client.is_closed:
             _shared_http_client = httpx.AsyncClient(
                 timeout=10.0,
                 limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
             )
-    return _shared_http_client
+        return _shared_http_client
 
 
 from src.logging_config import setup_logging

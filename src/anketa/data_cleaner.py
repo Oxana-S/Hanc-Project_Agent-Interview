@@ -172,22 +172,63 @@ class JSONRepair:
     @classmethod
     def _extract_minimal_json(cls, text: str) -> str:
         """Extract minimal valid JSON with just top-level fields."""
-        # Try to extract key-value pairs at top level
+        # Match key-value pairs: scalar values via regex, arrays/objects via balanced extraction
         pairs = []
-        pattern = r'"([^"]+)"\s*:\s*("[^"]*"|null|true|false|\d+(?:\.\d+)?|\[.*?\]|\{.*?\})'
+        # Match "key": followed by scalar value
+        scalar_pattern = r'"([^"]{1,200})"\s*:\s*("(?:[^"\\]|\\.)*"|null|true|false|-?\d+(?:\.\d+)?)'
 
-        for match in re.finditer(pattern, text, re.DOTALL):
+        for match in re.finditer(scalar_pattern, text):
             key = match.group(1)
             value = match.group(2)
-            # Validate value is parseable
             try:
                 json.loads(value)
                 pairs.append(f'"{key}": {value}')
             except json.JSONDecodeError:
-                # Try to quote as string
                 if not value.startswith('"'):
                     safe_value = json.dumps(value)
                     pairs.append(f'"{key}": {safe_value}')
+
+        # Match "key": [array] or "key": {object} via balanced extraction
+        compound_pattern = r'"([^"]{1,200})"\s*:\s*([\[{])'
+        for match in re.finditer(compound_pattern, text):
+            key = match.group(1)
+            # Skip if this key was already matched as scalar
+            if any(f'"{key}":' in p for p in pairs):
+                continue
+            opener = match.group(2)
+            closer = ']' if opener == '[' else '}'
+            start = match.start(2)
+            depth = 0
+            in_str = False
+            esc = False
+            end_pos = None
+            for i in range(start, min(start + 10000, len(text))):
+                c = text[i]
+                if esc:
+                    esc = False
+                    continue
+                if in_str:
+                    if c == '\\':
+                        esc = True
+                    elif c == '"':
+                        in_str = False
+                    continue
+                if c == '"':
+                    in_str = True
+                elif c == opener:
+                    depth += 1
+                elif c == closer:
+                    depth -= 1
+                    if depth == 0:
+                        end_pos = i
+                        break
+            if end_pos is not None:
+                value = text[start:end_pos + 1]
+                try:
+                    json.loads(value)
+                    pairs.append(f'"{key}": {value}')
+                except json.JSONDecodeError:
+                    pass
 
         if pairs:
             return '{' + ', '.join(pairs) + '}'
