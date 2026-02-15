@@ -219,6 +219,12 @@ class VoiceInterviewerApp {
             speedValueQuick: document.getElementById('speed-value-quick'),
             silenceSliderQuick: document.getElementById('silence-slider-quick'),
             silenceValueQuick: document.getElementById('silence-value-quick'),
+            // Header nav
+            navHome: document.getElementById('nav-home'),
+            headerNewSessionBtn: document.getElementById('header-new-session-btn'),
+            headerSessionContext: document.getElementById('header-session-context'),
+            headerSessionCompany: document.getElementById('header-session-company'),
+            headerContextBadge: document.getElementById('header-context-badge'),
         };
 
         // Screens
@@ -297,21 +303,47 @@ class VoiceInterviewerApp {
             }
         });
 
-        // Header — logo: always soft-navigate to home (session stays alive)
+        // Header — logo: navigate to landing (session stays alive in background)
         this.elements.logoLink.addEventListener('click', (e) => {
             e.preventDefault();
-            this.goBackToDashboard();
+            this.showScreen('landing');
+            this._initLandingAnimations();
+            window.history.pushState({}, '', '/');
         });
         // Header — nav links
-        document.getElementById('nav-about')?.addEventListener('click', (e) => {
+        this.elements.navHome?.addEventListener('click', (e) => {
             e.preventDefault();
             this.showScreen('landing');
+            this._initLandingAnimations();
+            window.history.pushState({}, '', '/');
         });
         document.getElementById('nav-sessions')?.addEventListener('click', (e) => {
             e.preventDefault();
-            this.goBackToDashboard();
+            this.showDashboard();
+            window.history.pushState({}, '', '/');
         });
-        this.elements.newSessionBtn.addEventListener('click', () => this._showPreSession(this.consultationType || 'consultation'));
+        // Header "+ Новая сессия" — navigate to landing mode selection
+        this.elements.headerNewSessionBtn?.addEventListener('click', async () => {
+            if (this.isRecording || this.isConnected) {
+                const confirmed = await this._showConfirmModal('У вас есть активная сессия. Начать новую? Текущая будет приостановлена.');
+                if (!confirmed) return;
+                this.goBackToDashboard();
+                await new Promise(r => setTimeout(r, 100));
+            }
+            this.showScreen('landing');
+            this._initLandingAnimations();
+            window.history.pushState({}, '', '/');
+            setTimeout(() => document.querySelector('.landing-mode-selection')?.scrollIntoView({ behavior: 'smooth' }), 100);
+        });
+        // Dashboard "+ Новая сессия" (kept for in-dashboard context)
+        this.elements.newSessionBtn?.addEventListener('click', () => this._showPreSession(this.consultationType || 'consultation'));
+
+        // Header session context: click to return to active session
+        this.elements.headerSessionContext?.addEventListener('click', () => {
+            if (this.uniqueLink) {
+                this.router.navigate('/session/' + this.uniqueLink);
+            }
+        });
 
         // Auth button (placeholder)
         document.getElementById('auth-btn')?.addEventListener('click', () => {
@@ -799,24 +831,39 @@ class VoiceInterviewerApp {
     }
 
     _updateHeaderContext(screenName) {
-        const navAbout = document.getElementById('nav-about');
-        const navSessions = document.getElementById('nav-sessions');
-
-        // Visibility rules per screen:
-        // Landing:   hide "О платформе" (we ARE on it), show "Мои сессии" (if returning)
-        // Dashboard: show "О платформе", hide "Мои сессии" (we ARE on it)
-        // Session:   show "О платформе", show "Мои сессии"
-        // Review:    show "О платформе", show "Мои сессии"
-        const hasVisited = !!localStorage.getItem('hasVisited');
-
-        if (navAbout) navAbout.style.display = screenName === 'landing' ? 'none' : '';
-        if (navSessions) navSessions.style.display =
-            (screenName === 'dashboard' || !hasVisited) ? 'none' : '';
-
-        // Active indicator
+        // All nav items always visible — just toggle .active class
         document.querySelectorAll('.header-nav-item').forEach(el => el.classList.remove('active'));
-        if (screenName === 'landing' && navAbout) navAbout.classList.add('active');
-        if (screenName === 'dashboard' && navSessions) navSessions.classList.add('active');
+        if (screenName === 'landing' && this.elements.navHome) {
+            this.elements.navHome.classList.add('active');
+        }
+        if (screenName === 'dashboard') {
+            document.getElementById('nav-sessions')?.classList.add('active');
+        }
+
+        // Session context: show when on session or review screen
+        const ctx = this.elements.headerSessionContext;
+        if (ctx) {
+            ctx.style.display = (screenName === 'session' || screenName === 'review') ? 'flex' : 'none';
+        }
+    }
+
+    _updateHeaderSessionContext(companyName, status) {
+        if (this.elements.headerSessionCompany) {
+            this.elements.headerSessionCompany.textContent = companyName || '';
+        }
+        this._updateHeaderContextBadge(status);
+    }
+
+    _updateHeaderContextBadge(status) {
+        const badge = this.elements.headerContextBadge;
+        if (!badge) return;
+        const labels = {
+            active: 'активна', paused: 'на паузе', reviewing: 'AI обрабатывает',
+            confirmed: 'подтверждена', declined: 'отклонена',
+        };
+        badge.textContent = labels[status] || status || '';
+        badge.className = 'anketa-status-badge header-context-badge';
+        if (status) badge.classList.add('status-' + status);
     }
 
     _initLandingAnimations() {
@@ -1122,6 +1169,7 @@ class VoiceInterviewerApp {
             // Update header
             this.elements.sessionCompany.textContent = sessionData.company_name || 'Новая сессия';
             this.updateAnketaStatus(sessionData.status || 'active');
+            this._updateHeaderSessionContext(sessionData.company_name || 'Новая сессия', sessionData.status || 'active');
 
             if (sessionData.status === 'active' || sessionData.status === 'paused') {
                 this.elements.pauseBtn.disabled = false;
@@ -1314,6 +1362,7 @@ class VoiceInterviewerApp {
             // Update UI
             this.elements.sessionCompany.textContent = 'Новая сессия';
             this.updateAnketaStatus('active');
+            this._updateHeaderSessionContext('Новая сессия', 'active');
             this.elements.pauseBtn.disabled = false;
 
             // Update URL without triggering router.resolve() → showSession().
@@ -1378,6 +1427,9 @@ class VoiceInterviewerApp {
         this.localParticipant = null;
         this.sessionId = null;  // R16-08: Clear stale session reference
         document.getElementById('session-screen')?.classList.remove('voice-active');
+        // Clear header session context
+        this._updateHeaderSessionContext('', '');
+
         // Show dashboard directly (don't use router to avoid landing redirect)
         this.showDashboard();
         window.history.pushState({}, '', '/');
@@ -1545,6 +1597,7 @@ class VoiceInterviewerApp {
 
             // Header
             document.getElementById('review-company').textContent = data.company_name || '—';
+            this._updateHeaderSessionContext(data.company_name || '—', data.status);
             const badge = document.getElementById('review-status-badge');
             const statusLabels = { active: 'активна', paused: 'на паузе', confirmed: 'подтверждена', declined: 'отклонена' };
             badge.textContent = statusLabels[data.status] || data.status;
@@ -2462,6 +2515,7 @@ class VoiceInterviewerApp {
             // Update company name in header
             if (data.company_name) {
                 this.elements.sessionCompany.textContent = data.company_name;
+                this._updateHeaderSessionContext(data.company_name, data.status);
             }
 
             // Remove skeleton on first successful poll

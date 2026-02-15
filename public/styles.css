@@ -75,6 +75,39 @@ body {
     border-bottom-color: var(--primary);
 }
 
+/* Header session context (company + status during session/review) */
+.header-session-context {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    transition: opacity 0.15s;
+}
+.header-session-context:hover { opacity: 0.75; }
+
+.header-session-separator {
+    width: 1px;
+    height: 1rem;
+    background: var(--surface-light);
+    margin: 0 0.25rem;
+}
+
+.header-session-company {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header-context-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+}
+
 .header-actions {
     flex-shrink: 0;
     display: flex;
@@ -2415,6 +2448,8 @@ body {
     .header-nav { gap: 0.75rem; }
     .header-nav-item { font-size: 0.75rem; }
     .btn-new-session { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+    .header-session-company { max-width: 100px; }
+    .header-session-separator { display: none; }
 
     /* Session control bar - icon only on mobile */
     .btn-session-control span {

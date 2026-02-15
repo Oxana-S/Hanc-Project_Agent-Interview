@@ -84,8 +84,12 @@ async function runTest() {
             localStorage.setItem('hasVisited', 'true');
         });
 
-        // Reload to show dashboard instead of landing
-        await page.reload({ waitUntil: 'networkidle2' });
+        // Navigate to dashboard programmatically (router always shows landing on /)
+        await page.evaluate(() => {
+            if (window.app && window.app.showScreen) {
+                window.app.showScreen('dashboard');
+            }
+        });
         results.push({ test: 'Page load', status: '✅' });
 
         // Verify dashboard is visible
