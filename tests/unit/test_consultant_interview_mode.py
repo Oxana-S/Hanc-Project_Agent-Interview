@@ -552,10 +552,10 @@ class TestFinalizeAndSaveConsultationType:
 
     @pytest.mark.asyncio
     async def test_finalize_not_completed_skips_extraction(self):
-        """When consultation.status is not 'completed', final extraction
-        is skipped in _finalize_and_save."""
+        """When consultation.runtime_status is idle (no finalize ran), final extraction
+        is skipped in _finalize_and_save. R24-09: ERROR status still triggers extraction."""
         consultation = _make_consultation(messages=6)
-        consultation.runtime_status = RuntimeStatus.ERROR
+        consultation.runtime_status = RuntimeStatus.IDLE
 
         db_session = _make_db_session()
         db_downstream = _make_db_session(anketa_data={"company_name": "TestCorp"})
@@ -567,17 +567,17 @@ class TestFinalizeAndSaveConsultationType:
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
 
-            # finalize_consultation keeps status as error
-            async def keep_error(c):
-                pass  # status stays "error"
-            mock_fin.side_effect = keep_error
+            # finalize_consultation keeps status as idle (no finalize ran)
+            async def keep_idle(c):
+                pass  # status stays idle
+            mock_fin.side_effect = keep_idle
 
-            # Two calls when status != "completed": lines 808 and 877 (skips 831)
+            # Two calls when status is idle: fresh_session + downstream
             mock_mgr.get_session.side_effect = [db_session, db_downstream]
 
             await _finalize_and_save(consultation, "test-001")
 
-            # Extractor should not be instantiated since status != completed
+            # Extractor should not be instantiated since status is idle (not completed/error)
             mock_ext_cls.assert_not_called()
 
     @pytest.mark.asyncio

@@ -497,6 +497,19 @@ class VoiceInterviewerApp {
                             anketaData[fieldName] = rawValue || '';
                         }
                     });
+                    // R24-03: Apply reverse field mapping (same as saveAnketa)
+                    const reverseMap = {
+                        company_description: 'business_description',
+                        phone: 'contact_phone',
+                        email: 'contact_email',
+                        agent_tasks: 'agent_functions',
+                    };
+                    for (const [fk, bk] of Object.entries(reverseMap)) {
+                        if (fk in anketaData) {
+                            anketaData[bk] = anketaData[fk];
+                            delete anketaData[fk];
+                        }
+                    }
                     const hasData = Object.values(anketaData).some(v =>
                         Array.isArray(v) ? v.length > 0 : v !== ''
                     );

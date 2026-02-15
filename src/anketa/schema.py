@@ -417,10 +417,16 @@ class FinalAnketa(BaseModel):
             'contact_email': self.contact_email,
         }
 
-        return {
-            field: bool(value) if not isinstance(value, (str, list)) else bool(value)
-            for field, value in required.items()
-        }
+        # R24-04: Use same type-specific checks as completion_rate()
+        result = {}
+        for field, value in required.items():
+            if isinstance(value, list):
+                result[field] = len(value) > 0
+            elif isinstance(value, str):
+                result[field] = bool(value.strip())
+            else:
+                result[field] = value is not None
+        return result
 
     def get_ai_generated_sections_status(self) -> dict:
         """Check which AI-generated sections are filled."""

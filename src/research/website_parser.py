@@ -6,6 +6,7 @@ Website Parser.
 
 import ipaddress
 import re
+import socket
 from typing import Any, Dict, List, Optional
 from urllib.parse import urljoin, urlparse
 
@@ -16,7 +17,11 @@ _MAX_RESPONSE_SIZE = 5 * 1024 * 1024
 
 
 def _is_safe_url(url: str) -> bool:
-    """R9-03: Reject private/internal IPs and non-HTTP schemes to prevent SSRF."""
+    """R9-03: Reject private/internal IPs and non-HTTP schemes to prevent SSRF.
+
+    R24-01: Also resolves domain names via DNS and checks resolved IPs against
+    private/loopback/link-local ranges to prevent DNS rebinding attacks.
+    """
     parsed = urlparse(url)
     if parsed.scheme not in ('http', 'https'):
         return False
@@ -30,7 +35,17 @@ def _is_safe_url(url: str) -> bool:
         if ip.is_private or ip.is_loopback or ip.is_link_local:
             return False
     except ValueError:
-        pass  # hostname is a domain name, not an IP — OK
+        # R24-01: hostname is a domain name — resolve via DNS and check IPs
+        # to prevent DNS rebinding attacks (domain resolving to 127.0.0.1 etc.)
+        try:
+            for family, _, _, _, sockaddr in socket.getaddrinfo(hostname, None, proto=socket.IPPROTO_TCP):
+                resolved_ip = ipaddress.ip_address(sockaddr[0])
+                if resolved_ip.is_private or resolved_ip.is_loopback or resolved_ip.is_link_local:
+                    return False
+        except (socket.gaierror, OSError):
+            pass  # Unresolvable hostname — let HTTP client handle DNS errors
+        except ValueError:
+            pass  # Unusual sockaddr format — allow through
     return True
 
 

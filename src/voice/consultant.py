@@ -333,14 +333,14 @@ def format_anketa_for_voice(anketa_data: dict) -> str:
         ("Название компании", anketa_data.get("company_name")),
         ("Контактное лицо", anketa_data.get("contact_name")),
         ("Должность", anketa_data.get("contact_role")),
-        ("Телефон", anketa_data.get("phone")),
-        ("Email", anketa_data.get("email")),
+        ("Телефон", anketa_data.get("phone") or anketa_data.get("contact_phone")),
+        ("Email", anketa_data.get("email") or anketa_data.get("contact_email")),
         ("Сайт", anketa_data.get("website")),
         # Секция "О бизнесе"
         ("Отрасль", anketa_data.get("industry")),
         ("Специализация", anketa_data.get("specialization")),
         ("Тип бизнеса", anketa_data.get("business_type")),
-        ("Описание компании", anketa_data.get("company_description")),
+        ("Описание компании", anketa_data.get("company_description") or anketa_data.get("business_description")),
         ("Услуги / продукты", anketa_data.get("services")),
         ("Типы клиентов", anketa_data.get("client_types")),
         ("Текущие проблемы", anketa_data.get("current_problems")),
@@ -349,7 +349,7 @@ def format_anketa_for_voice(anketa_data: dict) -> str:
         ("Имя агента", anketa_data.get("agent_name")),
         ("Направление звонков", anketa_data.get("call_direction")),
         ("Назначение агента", anketa_data.get("agent_purpose")),
-        ("Задачи агента", anketa_data.get("agent_tasks")),
+        ("Задачи агента", anketa_data.get("agent_tasks") or anketa_data.get("agent_functions")),
         ("Интеграции", anketa_data.get("integrations")),
         ("Пол голоса", anketa_data.get("voice_gender")),
         ("Тон голоса", anketa_data.get("voice_tone")),
@@ -445,18 +445,22 @@ _atexit.register(_close_session_mgr)
 
 # R11-08: Cached IndustryKnowledgeManager singleton (avoids re-reading 968 YAML files)
 _kb_manager = None
+_kb_manager_lock = threading.Lock()
 
 
 def _get_kb_manager():
     """Get or create cached IndustryKnowledgeManager singleton."""
     global _kb_manager
     if _kb_manager is None:
-        _kb_manager = IndustryKnowledgeManager()
+        with _kb_manager_lock:
+            if _kb_manager is None:
+                _kb_manager = IndustryKnowledgeManager()
     return _kb_manager
 
 
 # --- Optional Redis cache for active voice sessions ---
 _redis_mgr = None
+_redis_lock = threading.Lock()
 
 
 def _try_get_redis():
@@ -464,23 +468,27 @@ def _try_get_redis():
     global _redis_mgr
     if _redis_mgr is not None:
         return _redis_mgr
-    try:
-        from src.storage.redis import RedisStorageManager
-        mgr = RedisStorageManager(
-            host=os.getenv("REDIS_HOST", "localhost"),
-            port=int(os.getenv("REDIS_PORT", "6379")),
-            password=os.getenv("REDIS_PASSWORD"),
-        )
-        if mgr.health_check():
-            _redis_mgr = mgr
-            return mgr
-    except Exception as e:
-        logger.debug("Redis unavailable", error=str(e))
+    with _redis_lock:
+        if _redis_mgr is not None:
+            return _redis_mgr
+        try:
+            from src.storage.redis import RedisStorageManager
+            mgr = RedisStorageManager(
+                host=os.getenv("REDIS_HOST", "localhost"),
+                port=int(os.getenv("REDIS_PORT", "6379")),
+                password=os.getenv("REDIS_PASSWORD"),
+            )
+            if mgr.health_check():
+                _redis_mgr = mgr
+                return mgr
+        except Exception as e:
+            logger.debug("Redis unavailable", error=str(e))
     return None
 
 
 # --- Optional PostgreSQL for long-term anketa storage ---
 _postgres_mgr = None
+_postgres_lock = threading.Lock()
 
 
 def _try_get_postgres():
@@ -488,17 +496,20 @@ def _try_get_postgres():
     global _postgres_mgr
     if _postgres_mgr is not None:
         return _postgres_mgr
-    try:
-        from src.storage.postgres import PostgreSQLStorageManager
-        db_url = os.getenv("DATABASE_URL")
-        if not db_url:
-            return None
-        mgr = PostgreSQLStorageManager(db_url)
-        if mgr.health_check():
-            _postgres_mgr = mgr
-            return mgr
-    except Exception as e:
-        logger.debug("PostgreSQL unavailable", error=str(e))
+    with _postgres_lock:
+        if _postgres_mgr is not None:
+            return _postgres_mgr
+        try:
+            from src.storage.postgres import PostgreSQLStorageManager
+            db_url = os.getenv("DATABASE_URL")
+            if not db_url:
+                return None
+            mgr = PostgreSQLStorageManager(db_url)
+            if mgr.health_check():
+                _postgres_mgr = mgr
+                return mgr
+        except Exception as e:
+            logger.debug("PostgreSQL unavailable", error=str(e))
     return None
 
 
@@ -795,13 +806,14 @@ def _check_required_fields(anketa_data: dict) -> bool:
         # Schema defaults are optional — skip them entirely
         if field_name in schema_defaults:
             continue
-        if not value:
-            return False
-        # Для списков проверяем что есть хотя бы один элемент
-        if isinstance(value, list) and len(value) == 0:
-            return False
-        # Для строк проверяем что не пустая после strip
-        if isinstance(value, str) and not value.strip():
+        # R24-11: Explicit type checks (consistent with completion_rate)
+        if isinstance(value, list):
+            if len(value) == 0:
+                return False
+        elif isinstance(value, str):
+            if not value.strip():
+                return False
+        elif not value:
             return False
 
     return True
@@ -1558,7 +1570,8 @@ async def _finalize_and_save(
         status=final_status.value,  # ✅ Preserve paused/confirmed/declined
     )
 
-    if consultation.runtime_status == RuntimeStatus.COMPLETED:
+    # R24-09: Also attempt final extraction on error (DB-targeted extraction is independent)
+    if consultation.runtime_status in (RuntimeStatus.COMPLETED, RuntimeStatus.ERROR):
         # R19-02: Skip redundant final extraction if last real-time extraction
         # was within 10 seconds — data is already fresh enough
         import time as _t
