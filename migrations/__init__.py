@@ -18,6 +18,7 @@ def _ensure_migration_table(conn: sqlite3.Connection) -> None:
             applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
+    conn.commit()
 
 
 def run_all_migrations(conn: sqlite3.Connection) -> None:
@@ -44,6 +45,7 @@ def run_all_migrations(conn: sqlite3.Connection) -> None:
             (migration_name,)
         )
         if cursor.rowcount == 0:
+            conn.commit()  # Release any implicit transaction from INSERT OR IGNORE
             continue  # Already applied (or being applied by another process)
 
         # Load and run migration module

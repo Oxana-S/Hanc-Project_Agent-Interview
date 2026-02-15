@@ -283,6 +283,20 @@ class VoiceInterviewerApp {
     }
 
     init() {
+        // Global event delegation for data-action attributes (CSP-safe, no inline handlers)
+        document.addEventListener('click', (e) => {
+            const el = e.target.closest('[data-action]');
+            if (!el) return;
+            const action = el.dataset.action;
+            if (action === 'start-mode') {
+                this.startWithMode(el.dataset.mode);
+            } else if (action === 'start-voice') {
+                this._startVoiceFromPreSession();
+            } else if (action === 'export') {
+                this.exportAnketa(el.dataset.format);
+            }
+        });
+
         // Header — logo: always soft-navigate to home (session stays alive)
         this.elements.logoLink.addEventListener('click', (e) => {
             e.preventDefault();

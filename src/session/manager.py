@@ -48,11 +48,12 @@ class SessionManager:
         # Connect to SQLite + thread lock for concurrent access safety (R5-04)
         # R15-06: RLock allows get_session() to be called from within locked contexts
         self._lock = threading.RLock()
-        self._conn = sqlite3.connect(db_path, check_same_thread=False)
+        self._conn = sqlite3.connect(db_path, check_same_thread=False, timeout=30)
         self._conn.row_factory = sqlite3.Row
 
         # Enable WAL mode for safe multi-process access (web + agent containers)
         self._conn.execute("PRAGMA journal_mode=WAL")
+        self._conn.execute("PRAGMA busy_timeout=30000")
 
         # Create table if not exists
         self._create_table()
