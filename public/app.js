@@ -2986,6 +2986,20 @@ class VoiceInterviewerApp {
             }
         }
 
+        // R23-07: Reverse working_hours string → dict (frontend displays as string, backend expects Dict[str, str])
+        if (typeof anketaData.working_hours === 'string' && anketaData.working_hours) {
+            const parsed = {};
+            anketaData.working_hours.split(/[,\n]/).forEach(line => {
+                const idx = line.indexOf(':');
+                if (idx > 0) {
+                    const key = line.substring(0, idx).trim();
+                    const val = line.substring(idx + 1).trim();
+                    if (key) parsed[key] = val;
+                }
+            });
+            anketaData.working_hours = Object.keys(parsed).length > 0 ? parsed : {};
+        }
+
         // Guard: do not send completely empty data (all fields blank)
         const hasAnyValue = Object.values(anketaData).some(v =>
             Array.isArray(v) ? v.length > 0 : v !== ''

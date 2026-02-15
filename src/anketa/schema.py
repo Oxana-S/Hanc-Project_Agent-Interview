@@ -8,7 +8,7 @@ Contains all data needed to build a voice agent PLUS AI-generated insights.
 from datetime import datetime, timezone
 from typing import List, Optional, Dict, Any
 from uuid import uuid4
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # === BASIC MODELS ===
@@ -142,6 +142,9 @@ class FinalAnketa(BaseModel):
     v2.0 - Expert consultation deliverable.
     Contains client data PLUS AI-generated expert insights.
     """
+
+    # R23-10: Ignore extra keys from frontend normalization (phone, email, etc.)
+    model_config = ConfigDict(extra='ignore')
 
     # ============================================================
     # IDENTITY (for storage and tracking)
@@ -444,6 +447,9 @@ class InterviewAnketa(BaseModel):
     Used when consultation_type == "interview".
     Focuses on collecting respondent answers rather than business analysis.
     """
+
+    # R23-10: Ignore extra keys from frontend normalization
+    model_config = ConfigDict(extra='ignore')
 
     # Identity
     anketa_id: str = Field(default_factory=lambda: str(uuid4()), description="Unique anketa ID")
