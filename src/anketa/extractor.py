@@ -92,6 +92,7 @@ class AnketaExtractor:
         duration_seconds: float = 0.0,
         document_context: Optional[Any] = None,
         consultation_type: str = "consultation",
+        skip_expert_content: bool = False,
     ) -> Any:
         """
         Extract structured data from all sources into FinalAnketa.
@@ -101,6 +102,7 @@ class AnketaExtractor:
             business_analysis: Business analysis results (dict or model)
             proposed_solution: Proposed solution (dict or model)
             duration_seconds: Duration of consultation
+            skip_expert_content: If True, skip expensive expert content generation (P2.2)
             document_context: DocumentContext from analyzed client documents (v3.2)
 
         Returns:
@@ -181,8 +183,10 @@ class AnketaExtractor:
             # Build FinalAnketa from cleaned data
             anketa = self._build_anketa(anketa_data, duration_seconds)
 
-            # Generate AI expert content for v2.0 blocks
-            anketa = await self._generate_expert_content(anketa)
+            # P2.2: Skip expert content during real-time extraction (saves 2-5s per cycle)
+            # Expert content is only needed during finalization, not mid-conversation polling
+            if not skip_expert_content:
+                anketa = await self._generate_expert_content(anketa)
 
             # SPRINT 5: Enhanced logging with field counts
             # Count filled fields (non-empty values)
@@ -219,8 +223,8 @@ class AnketaExtractor:
                 proposed_solution,
                 duration_seconds
             )
-            # Still try to generate expert content for fallback anketa
-            anketa = await self._generate_expert_content(anketa)
+            if not skip_expert_content:
+                anketa = await self._generate_expert_content(anketa)
             return anketa
         except Exception as e:
             import traceback
@@ -237,8 +241,8 @@ class AnketaExtractor:
                 proposed_solution,
                 duration_seconds
             )
-            # Still try to generate expert content for fallback anketa
-            anketa = await self._generate_expert_content(anketa)
+            if not skip_expert_content:
+                anketa = await self._generate_expert_content(anketa)
             return anketa
 
     def _build_extraction_prompt(

@@ -35,6 +35,9 @@ _shared_http_client: httpx.AsyncClient | None = None
 # R6-09: Background task reference set (prevent GC of fire-and-forget tasks in agent process)
 _agent_bg_tasks: set = set()
 
+# P4.3: Global extraction semaphore — limits concurrent LLM calls to avoid rate limit cascading
+_extraction_semaphore: asyncio.Semaphore | None = None
+
 
 def _track_agent_task(task):
     """Keep a reference to prevent GC of fire-and-forget asyncio tasks."""
@@ -1111,6 +1114,7 @@ async def _extract_and_update_anketa(
     (when industry can be detected from dialogue).
     """
     import time
+    _semaphore_acquired = False
 
     # R23-01: Per-session circuit breaker (was global, blocked ALL sessions on single failure)
     if time.time() < consultation._extraction_backoff_until:
@@ -1160,6 +1164,14 @@ async def _extract_and_update_anketa(
             )
 
         # ===== EXTRACTION =====
+        # P4.3: Acquire semaphore to limit concurrent LLM calls
+        global _extraction_semaphore
+        if _extraction_semaphore is None:
+            _max_concurrent = int(os.getenv('MAX_CONCURRENT_EXTRACTIONS', '10'))
+            _extraction_semaphore = asyncio.Semaphore(_max_concurrent)
+
+        _semaphore_acquired = True
+        await _extraction_semaphore.acquire()
         start_time = time.time()
 
         # Fetch document_context from DB if client uploaded files
@@ -1196,6 +1208,7 @@ async def _extract_and_update_anketa(
             duration_seconds=consultation.get_duration_seconds(),
             document_context=doc_context,
             consultation_type=_consultation_type,
+            skip_expert_content=True,  # P2.2: Skip expert content in real-time (saves 2-5s)
         )
 
         # R22-07: Skip DB update if extraction returned a fallback with auto-generated values
@@ -1535,6 +1548,10 @@ async def _extract_and_update_anketa(
             backoff_seconds=backoff,
             exc_info=True,
         )
+    finally:
+        # P4.3: Release semaphore only if we acquired it
+        if _extraction_semaphore is not None and _semaphore_acquired:
+            _extraction_semaphore.release()
 
 
 async def _finalize_and_save(
@@ -1542,12 +1559,14 @@ async def _finalize_and_save(
     session_id: Optional[str],
 ):
     """Final anketa extraction, filesystem save, and DB update."""
-    # R25-01: Server-side deduplication — if session already in terminal/reviewing state,
-    # another agent instance already finalized. Skip to prevent duplicate notifications/writes.
+    # R25-01: Server-side deduplication — if session already finalized by another agent,
+    # skip to prevent duplicate notifications/writes.
+    # F7.3: Allow finalization for 'confirmed' — user may confirm mid-conversation,
+    # and we still need to run final extraction to capture last dialogue data.
     if session_id:
         pre_check = _session_mgr.get_session(session_id)
         if pre_check and pre_check.status in (
-            SessionStatus.CONFIRMED.value, SessionStatus.DECLINED.value, SessionStatus.REVIEWING.value
+            SessionStatus.DECLINED.value, SessionStatus.REVIEWING.value
         ):
             session_log.info(
                 "finalize_already_done",
@@ -1970,6 +1989,17 @@ def _register_event_handlers(
         # _finalize_and_save() already saves dialogue with correct final_status.
         # The old code caused: (1) double API call, (2) status race where "active"
         # from fresh_session could overwrite "reviewing" set by concurrent extraction.
+
+        # P7.1: Close cached extractor's LLM httpx client to prevent connection leak
+        if consultation._cached_extractor and hasattr(consultation._cached_extractor, 'llm'):
+            llm_client = consultation._cached_extractor.llm
+            if hasattr(llm_client, 'aclose'):
+                async def _close_llm():
+                    try:
+                        await llm_client.aclose()
+                    except Exception:
+                        pass
+                _track_agent_task(asyncio.create_task(_close_llm()))
 
         # B5: Shield finalization from cancellation during agent teardown
         # R18-01: Only finalize for DB-backed sessions (avoid wasted LLM extraction for standalone)
@@ -2530,8 +2560,26 @@ async def entrypoint(ctx: JobContext):
                             key_facts=metadata.get("key_facts_count", 0),
                         )
                         debug_log.info(f"Agent received document notification: {metadata}")
-                        # Optionally: trigger immediate anketa extraction
-                        # or inject document context via session.update_instructions()
+
+                        # F3.1: Inject document context into agent instructions
+                        doc_ctx = fresh_session.document_context
+                        doc_summary = None
+                        if isinstance(doc_ctx, dict):
+                            doc_summary = doc_ctx.get('summary') or doc_ctx.get('text', '')
+                        elif hasattr(doc_ctx, 'summary'):
+                            doc_summary = doc_ctx.summary
+
+                        if doc_summary and session:
+                            current_instr = getattr(consultation, '_latest_instructions', None) \
+                                or getattr(getattr(session, '_activity', None), 'instructions', None) \
+                                or ''
+                            doc_block = f"\n\n### Документы клиента:\n{str(doc_summary)[:3000]}"
+                            if "### Документы клиента:" not in current_instr:
+                                updated_instr = current_instr + doc_block
+                                _track_agent_task(asyncio.create_task(
+                                    _update_instructions_safe(consultation, session, updated_instr)
+                                ))
+                                debug_log.info("document_context_injected_into_instructions")
         except Exception as e:
             debug_log.warning(f"Failed to handle document notification: {e}")
 

@@ -1337,6 +1337,21 @@ class VoiceInterviewerApp {
 
     goBackToDashboard() {
         this.stopAnketaPolling();
+
+        // F2.2: Pause session on backend BEFORE disconnecting voice
+        // Prevents agent from transitioning to 'reviewing' on disconnect
+        if (this.sessionId && this.isRecording) {
+            try {
+                // Use sendBeacon for fire-and-forget (page may navigate away)
+                navigator.sendBeacon(
+                    `/api/session/${this.sessionId}/end`,
+                    new Blob([JSON.stringify({})], { type: 'application/json' })
+                );
+            } catch (err) {
+                console.error('Failed to pause session:', err);
+            }
+        }
+
         // Disconnect voice to avoid orphaned audio tracks
         if (this.isRecording) {
             this.stopRecording();
@@ -1360,7 +1375,7 @@ class VoiceInterviewerApp {
         if (this.isRecording) {
             const confirmMsg = 'Сессия активна. Остановить и вернуться к списку?';
             if (!await this._showConfirmModal(confirmMsg)) return;
-            this.handleStopSession();
+            await this.handleStopSession();  // F5.1: await async stop before navigation
         }
         // Show dashboard directly (don't use router to avoid landing redirect)
         this.showDashboard();
@@ -2419,6 +2434,14 @@ class VoiceInterviewerApp {
                     this.updateStatusTicker('✨ AI анализирует ответы...', true);
                 } else if (data.status === 'confirmed') {
                     this.updateStatusTicker('✅ Консультация завершена');
+                } else if (data.status === 'declined') {
+                    this.updateStatusTicker('❌ Сессия отклонена');
+                }
+
+                // F7.5: Stop polling after terminal state — no more changes expected
+                if (data.status === 'confirmed' || data.status === 'declined') {
+                    this.stopAnketaPolling();
+                    return;
                 }
             }
 

@@ -1065,32 +1065,34 @@ async def export_session(session_id: str, export_format: str):
 # ---------------------------------------------------------------------------
 
 
-def _check_agent_alive() -> tuple:
-    """Check if voice agent worker is running. Uses PID file + pgrep fallback."""
-    import subprocess
-
-    # Method 1: PID file
+async def _check_agent_alive() -> tuple:
+    """Check if voice agent worker is running. Uses PID file + async pgrep fallback."""
+    # Method 1: PID file (os.kill is non-blocking — just sends signal 0)
     _project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     pid_file = os.path.join(_project_root, ".agent.pid")
     if os.path.exists(pid_file):
         try:
             with open(pid_file) as f:
                 pid = int(f.read().strip())
+            if pid <= 0 or pid > 4194304:
+                raise ValueError("Invalid PID")
             os.kill(pid, 0)
             return True, pid
         except (OSError, ValueError):
             pass
 
-    # Method 2: pgrep fallback (PID file may not exist)
+    # Method 2: async pgrep fallback (P1.4: non-blocking subprocess)
     try:
-        result = subprocess.run(
-            ["pgrep", "-f", "run_voice_agent.py"],
-            capture_output=True, text=True, timeout=3,
+        proc = await asyncio.create_subprocess_exec(
+            "pgrep", "-f", "run_voice_agent.py",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
         )
-        if result.returncode == 0 and result.stdout.strip():
-            pid = int(result.stdout.strip().split('\n')[0])
+        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=3)
+        if proc.returncode == 0 and stdout.strip():
+            pid = int(stdout.decode().strip().split('\n')[0])
             return True, pid
-    except (subprocess.TimeoutExpired, ValueError):
+    except (asyncio.TimeoutError, ValueError):
         pass
 
     return False, None
@@ -1099,7 +1101,7 @@ def _check_agent_alive() -> tuple:
 @app.get("/api/agent/health")
 async def agent_health():
     """Check if a voice agent worker process is alive."""
-    alive, pid = _check_agent_alive()
+    alive, pid = await _check_agent_alive()
     return {"worker_alive": alive, "worker_pid": pid}
 
 
