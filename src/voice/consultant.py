@@ -144,6 +144,11 @@ class VoiceConsultationSession:
         self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
         self._cached_extractor_provider = None  # R17-04: track provider to invalidate on change
         self._last_extraction_time = 0  # R19-02: timestamp of last successful extraction
+        # R23-01: Per-session circuit breaker (was global, blocking all sessions)
+        self._extraction_consecutive_failures = 0
+        self._extraction_backoff_until = 0.0
+        # R23-08: Guard against concurrent finalization on rapid disconnect/reconnect
+        self._finalization_started = False
 
     MAX_DIALOGUE_MESSAGES = 500  # R10-09: Prevent unbounded memory growth
 
@@ -1079,11 +1084,6 @@ async def _update_instructions_safe(
         await activity.update_instructions(new_instructions)
 
 
-# R22-14: Circuit breaker for extraction failures (prevents rapid-fire attempts during outages)
-_extraction_consecutive_failures = 0
-_extraction_backoff_until = 0.0
-
-
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -1099,14 +1099,13 @@ async def _extract_and_update_anketa(
     (when industry can be detected from dialogue).
     """
     import time
-    global _extraction_consecutive_failures, _extraction_backoff_until
 
-    # R22-14: Circuit breaker — skip if in backoff period
-    if time.time() < _extraction_backoff_until:
+    # R23-01: Per-session circuit breaker (was global, blocked ALL sessions on single failure)
+    if time.time() < consultation._extraction_backoff_until:
         anketa_log.debug(
             "extraction_backoff_active",
             session_id=session_id,
-            remaining=round(_extraction_backoff_until - time.time()),
+            remaining=round(consultation._extraction_backoff_until - time.time()),
         )
         return
 
@@ -1276,8 +1275,8 @@ async def _extract_and_update_anketa(
             has_documents=doc_context is not None,
         )
 
-        # R22-14: Reset circuit breaker on success
-        _extraction_consecutive_failures = 0
+        # R23-01: Reset per-session circuit breaker on success
+        consultation._extraction_consecutive_failures = 0
 
         # --- Launch background research if website detected ---
         if not consultation.research_done and anketa.website and _consultation_type != "interview":
@@ -1512,14 +1511,14 @@ async def _extract_and_update_anketa(
                 anketa_log.warning("review_phase_start_failed", error=str(e))
 
     except Exception as e:
-        # R22-14: Exponential backoff on consecutive failures (2, 4, 8, 16, 32, 60s max)
-        _extraction_consecutive_failures += 1
-        backoff = min(60, 2 ** _extraction_consecutive_failures)
-        _extraction_backoff_until = time.time() + backoff
+        # R23-01: Per-session exponential backoff (2, 4, 8, 16, 32, 60s max)
+        consultation._extraction_consecutive_failures += 1
+        backoff = min(60, 2 ** consultation._extraction_consecutive_failures)
+        consultation._extraction_backoff_until = time.time() + backoff
         anketa_log.error(
             "periodic_anketa_extraction_failed",
             error=str(e),
-            consecutive_failures=_extraction_consecutive_failures,
+            consecutive_failures=consultation._extraction_consecutive_failures,
             backoff_seconds=backoff,
             exc_info=True,
         )
@@ -1940,6 +1939,12 @@ def _register_event_handlers(
 
         # B5: Shield finalization from cancellation during agent teardown
         # R18-01: Only finalize for DB-backed sessions (avoid wasted LLM extraction for standalone)
+        # R23-08: Guard against concurrent finalization on rapid disconnect/reconnect
+        if consultation._finalization_started:
+            event_log.info("finalization_already_started, skipping duplicate")
+            return
+        consultation._finalization_started = True
+
         if db_backed and session_id:
             _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id))))
         elif len(consultation.dialogue_history) >= 2:

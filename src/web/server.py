@@ -37,7 +37,7 @@ from typing import List, Optional
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from starlette.middleware.base import BaseHTTPMiddleware
 
 from src.logging_config import setup_logging
@@ -269,8 +269,16 @@ class CreateSessionResponse(BaseModel):
 
 class UpdateAnketaRequest(BaseModel):
     """Request body for updating anketa data."""
-    anketa_data: Optional[dict] = Field(default=None, max_length=200)  # R18-02: Cap dict keys
+    anketa_data: Optional[dict] = Field(default=None)
     anketa_md: Optional[str] = Field(default=None, max_length=100000)
+
+    @field_validator('anketa_data')
+    @classmethod
+    def cap_dict_keys(cls, v):
+        """R23-05: Pydantic v2 ignores max_length on dict; validate explicitly."""
+        if v is not None and len(v) > 200:
+            raise ValueError(f"anketa_data has {len(v)} keys, max 200")
+        return v
 
 
 class UpdateDialogueRequest(BaseModel):

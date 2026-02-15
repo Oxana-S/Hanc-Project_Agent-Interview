@@ -382,8 +382,14 @@ class FinalAnketa(BaseModel):
             if field_name in self._SCHEMA_DEFAULTS and v == self._SCHEMA_DEFAULTS[field_name]:
                 defaulted_count += 1
                 continue
-            if (isinstance(v, list) and len(v) > 0) or \
-               (isinstance(v, str) and v.strip()) or v:
+            # R23-02: Explicit type checks prevent whitespace-only strings from counting
+            if isinstance(v, list):
+                if len(v) > 0:
+                    filled_count += 1
+            elif isinstance(v, str):
+                if v.strip():
+                    filled_count += 1
+            elif v is not None:
                 filled_count += 1
 
         # R21-05: Denominator excludes fields with unchanged defaults
