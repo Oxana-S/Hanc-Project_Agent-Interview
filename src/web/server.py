@@ -1369,7 +1369,7 @@ async def _extract_anketa_with_documents(session_id: str, doc_context):
             "document_anketa_extracted",
             session_id=session_id,
             company=anketa.company_name,
-            completion=f"{anketa.completion_rate():.0f}%",
+            completion=f"{anketa.completion_rate():.0%}",
         )
     except Exception as e:
         logger.warning("document_anketa_extraction_failed", session_id=session_id, error=str(e))

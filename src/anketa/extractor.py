@@ -200,7 +200,7 @@ class AnketaExtractor:
             logger.info(
                 "Anketa extracted successfully",
                 company=anketa.company_name,
-                completion_rate=f"{anketa.completion_rate():.0f}%",
+                completion_rate=f"{anketa.completion_rate():.0%}",
                 fields_filled=filled_count,
                 total_fields=16,  # 10 strings + 6 lists
                 dialogue_turns=len(dialogue_history),

@@ -317,18 +317,18 @@ class TestValidator:
 
         # Check optional fields for completeness percentage
         completion = anketa.completion_rate()
-        if completion < 70:
+        if completion < 0.70:
             return ValidationCheck(
                 name="completeness",
                 status="warning",
-                message=f"Низкий уровень заполненности: {completion:.0f}%",
+                message=f"Низкий уровень заполненности: {completion:.0%}",
                 details={"completion_rate": completion}
             )
 
         return ValidationCheck(
             name="completeness",
             status="ok",
-            message=f"Все обязательные поля заполнены ({completion:.0f}%)",
+            message=f"Все обязательные поля заполнены ({completion:.0%})",
             details={"completion_rate": completion}
         )
 

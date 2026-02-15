@@ -971,7 +971,7 @@ class ConsultantInterviewer:
         console.print(f"\n[bold]Статистика:[/bold]")
         console.print(f"  Длительность: {duration/60:.1f} мин")
         console.print(f"  Сообщений: {len(self.dialogue_history)}")
-        console.print(f"  Заполненность: {anketa.completion_rate():.0f}%")
+        console.print(f"  Заполненность: {anketa.completion_rate():.0%}")
 
         console.print(f"\n[bold]Компания:[/bold] {anketa.company_name}")
         console.print(f"[bold]Отрасль:[/bold] {anketa.industry}")

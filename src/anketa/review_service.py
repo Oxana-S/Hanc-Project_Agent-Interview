@@ -248,7 +248,7 @@ class AnketaReviewService:
         table.add_row("Отрасль:", anketa.industry or "—")
         table.add_row("Функций агента:", str(functions_count))
         table.add_row("Интеграций:", str(integrations_count))
-        table.add_row("Заполненность:", f"{completion:.0f}%")
+        table.add_row("Заполненность:", f"{completion:.0%}")
 
         panel = Panel(
             table,

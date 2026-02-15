@@ -124,7 +124,7 @@ class AnketaGenerator:
 **Дата создания:** {anketa.created_at.strftime('%Y-%m-%d %H:%M')}
 **Версия:** {anketa.anketa_version}
 **Длительность консультации:** {duration_min:.1f} мин
-**Заполненность:** {completion_rate:.0f}%
+**Заполненность:** {completion_rate:.0%}
 
 ---
 
@@ -312,7 +312,7 @@ class AnketaGenerator:
 - **Создано:** {anketa.created_at.strftime('%Y-%m-%d %H:%M:%S')}
 - **Версия анкеты:** {anketa.anketa_version}
 - **Длительность консультации:** {anketa.consultation_duration_seconds:.0f} сек
-- **Заполненность анкеты:** {completion_rate:.0f}%
+- **Заполненность анкеты:** {completion_rate:.0%}
 
 ---
 
