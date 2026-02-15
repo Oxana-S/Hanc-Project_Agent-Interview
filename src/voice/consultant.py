@@ -782,8 +782,9 @@ def _check_required_fields(anketa_data: dict) -> bool:
 
     # R10-01: Skip schema defaults — fields with unchanged defaults are not required
     from src.anketa.schema import FinalAnketa
-    # R22-09: Direct access — will fail loudly if attribute is renamed/removed
-    schema_defaults = FinalAnketa._SCHEMA_DEFAULTS if hasattr(FinalAnketa, '_SCHEMA_DEFAULTS') else {}
+    # Pydantic v2 wraps _-prefixed attrs in ModelPrivateAttr; unwrap via .default
+    _raw = getattr(FinalAnketa, '_SCHEMA_DEFAULTS', {})
+    schema_defaults = _raw if isinstance(_raw, dict) else getattr(_raw, 'default', {})
 
     for field_name, value in required.items():
         # Schema defaults are optional — skip them entirely
