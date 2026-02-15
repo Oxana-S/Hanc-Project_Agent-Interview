@@ -185,7 +185,7 @@ class VoiceInterviewerApp {
             // Interview
             backBtn: document.getElementById('back-to-dashboard'),
             micBtn: document.getElementById('mic-btn'),
-            pauseBtn: document.getElementById('pause-btn'),
+            // pause-btn removed (L1 session pause moved to subheader)
             connectionStatus: document.getElementById('connection-status'),
             sessionCompany: document.getElementById('session-company'),
             progressFill: document.getElementById('progress-fill'),
@@ -353,30 +353,12 @@ class VoiceInterviewerApp {
         // Interview controls
         this.elements.backBtn.addEventListener('click', () => this.goBackToDashboard());
         this.elements.micBtn.addEventListener('click', () => this.toggleRecording());
-        this.elements.pauseBtn.addEventListener('click', () => this.togglePause());
 
-        // Session controls (Level 1 - Global)
-        const btnAllSessions = document.getElementById('btn-all-sessions');
-        const btnStopSession = document.getElementById('btn-stop-session');
-        const btnStartSession = document.getElementById('btn-start-session');
-        const btnRecordSession = document.getElementById('btn-record-session');
-        const btnGoToResults = document.getElementById('btn-go-to-results');
-
-        if (btnAllSessions) {
-            btnAllSessions.addEventListener('click', () => this.handleAllSessions());
-        }
-        if (btnStopSession) {
-            btnStopSession.addEventListener('click', () => this.handleStopSession());
-        }
-        if (btnStartSession) {
-            btnStartSession.addEventListener('click', () => this.handleStartSession());
-        }
-        if (btnRecordSession) {
-            btnRecordSession.addEventListener('click', () => this.handleRecordSession());
-        }
-        if (btnGoToResults) {
-            btnGoToResults.addEventListener('click', () => this.handleGoToResults());
-        }
+        // Level 1: Session lifecycle actions (in subheader)
+        document.getElementById('btn-pause-session')?.addEventListener('click', () => this._pauseSessionL1());
+        document.getElementById('btn-resume-session')?.addEventListener('click', () => this._resumeSessionL1());
+        document.getElementById('btn-end-session')?.addEventListener('click', () => this._endSessionL1());
+        document.getElementById('btn-results')?.addEventListener('click', () => this.handleGoToResults());
 
         // Anketa actions (with null checks)
         if (this.elements.confirmAnketaBtn) {
@@ -385,9 +367,7 @@ class VoiceInterviewerApp {
         if (this.elements.saveLeaveBtn) {
             this.elements.saveLeaveBtn.addEventListener('click', () => this.saveAndLeave());
         }
-        if (this.elements.copyLinkBtn) {
-            this.elements.copyLinkBtn.addEventListener('click', () => this.copySessionLink());
-        }
+        // copy-link-btn removed from session screen (Level 2b: only in review)
 
         // Anketa edit/save controls (Level 3)
         const btnEditAnketa = document.getElementById('btn-edit-anketa');
@@ -1171,9 +1151,8 @@ class VoiceInterviewerApp {
             this.updateAnketaStatus(sessionData.status || 'active');
             this._updateHeaderSessionContext(sessionData.company_name || 'Новая сессия', sessionData.status || 'active');
 
-            if (sessionData.status === 'active' || sessionData.status === 'paused') {
-                this.elements.pauseBtn.disabled = false;
-            }
+            // Update Level 1 session actions based on status
+            this._updateSessionActions(sessionData.status || 'active');
 
             // Detect consultation type from voice_config or anketa_data
             if (sessionData.voice_config && sessionData.voice_config.consultation_type) {
@@ -1198,14 +1177,12 @@ class VoiceInterviewerApp {
 
             // Restore paused UI state if session is paused
             if (sessionData.status === 'paused') {
-                this.elements.pauseBtn.classList.add('paused');
-                this.elements.pauseBtn.querySelector('.icon').textContent = '▶';
                 this.elements.micBtn.disabled = true;
+                this.elements.micBtn.classList.add('paused');
                 document.getElementById('pause-overlay')?.classList.add('visible');
             } else {
-                this.elements.pauseBtn.classList.remove('paused');
-                this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
                 this.elements.micBtn.disabled = false;
+                this.elements.micBtn.classList.remove('paused');
                 document.getElementById('pause-overlay')?.classList.remove('visible');
             }
 
@@ -1363,7 +1340,7 @@ class VoiceInterviewerApp {
             this.elements.sessionCompany.textContent = 'Новая сессия';
             this.updateAnketaStatus('active');
             this._updateHeaderSessionContext('Новая сессия', 'active');
-            this.elements.pauseBtn.disabled = false;
+            this._updateSessionActions('active');
 
             // Update URL without triggering router.resolve() → showSession().
             // showSession's quick-path calls /reconnect which can dispatch a 2nd agent
@@ -1437,58 +1414,55 @@ class VoiceInterviewerApp {
 
     // ===== SESSION CONTROL HANDLERS (Level 1 - Global) =====
 
-    async handleAllSessions() {
-        if (this.isRecording) {
-            const confirmMsg = 'Сессия активна. Остановить и вернуться к списку?';
-            if (!await this._showConfirmModal(confirmMsg)) return;
-            await this.handleStopSession();  // F5.1: await async stop before navigation
-        }
-        // Show dashboard directly (don't use router to avoid landing redirect)
-        this.showDashboard();
-        window.history.pushState({}, '', '/');
-    }
+    // ===== Level 1: Session Lifecycle (subheader buttons) =====
 
-    async handleStopSession() {
+    async _pauseSessionL1() {
         if (!this.isRecording && !this.isConnected) return;
 
-        const confirmMsg = 'Остановить текущую сессию?';
+        const confirmMsg = 'Приостановить сессию? Вы сможете вернуться позже.';
         if (!await this._showConfirmModal(confirmMsg)) return;
 
-        // CRITICAL FIX: Update backend status to 'paused' FIRST (before disconnect)
-        // This prevents race condition where voice agent sees 'active' status
-        // and changes it to 'reviewing' during finalization
+        LOG.info('=== L1 PAUSE SESSION ===');
+
+        // 1. Notify backend FIRST (prevents race condition with voice agent)
         if (this.sessionId) {
             try {
-                await fetch(`/api/session/${this.sessionId}/end`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' }
-                });
+                await fetch(`/api/session/${this.sessionId}/pause`, { method: 'POST' });
+                LOG.info('Session status changed to paused on backend');
             } catch (err) {
-                console.error('Failed to end session:', err);
+                LOG.error('Failed to pause session:', err);
             }
         }
 
-        // THEN stop recording and disconnect (in this order)
+        // 2. Stop recording and disconnect
+        this.isPaused = true;
         await this.stopRecording();
         if (this.room) {
             await this.room.disconnect();
         }
 
-        // Update UI
-        document.getElementById('btn-stop-session')?.setAttribute('disabled', 'true');
-        document.getElementById('btn-start-session')?.removeAttribute('disabled');
+        // 3. Update UI
+        this.elements.micBtn.disabled = true;
+        this.elements.micBtn.classList.add('paused');
+        document.getElementById('pause-overlay')?.classList.add('visible');
+        this.elements.voiceStatus.textContent = 'На паузе';
+        document.querySelector('.wave')?.classList.add('inactive');
+        this.updateAnketaStatus('paused');
+        this._updateSessionActions('paused');
 
         showToast('Сессия приостановлена', 'info', 2000);
     }
 
-    async handleStartSession() {
+    async _resumeSessionL1() {
         if (!this.sessionId) {
             showToast('Нет активной сессии для возобновления', 'error', 2000);
             return;
         }
 
+        LOG.info('=== L1 RESUME SESSION ===');
+
         try {
-            // Fetch fresh token from reconnect endpoint
+            // 1. Fetch fresh token from reconnect endpoint
             const resp = await fetch(`/api/session/${this.sessionId}/reconnect`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
@@ -1501,45 +1475,76 @@ class VoiceInterviewerApp {
 
             const data = await resp.json();
 
-            // Reconnect to LiveKit room with fresh token
+            // 2. Reconnect to LiveKit room with fresh token
             await this.connectToRoom(data.livekit_url, data.token, data.room_name);
 
-            // Update UI
-            document.getElementById('btn-stop-session')?.removeAttribute('disabled');
-            document.getElementById('btn-start-session')?.setAttribute('disabled', 'true');
+            // 3. Update UI
+            this.isPaused = false;
+            this.elements.micBtn.disabled = false;
+            this.elements.micBtn.classList.remove('paused');
+            document.getElementById('pause-overlay')?.classList.remove('visible');
+            this.elements.voiceStatus.textContent = 'Подключен';
+            document.querySelector('.wave')?.classList.remove('inactive');
+            this.updateAnketaStatus('active');
+            this._updateSessionActions('active');
+
+            // 4. Send updated voice settings
+            if (this.sessionId) {
+                try {
+                    await fetch(`/api/session/${this.sessionId}/voice-config`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(this.getVoiceSettings()),
+                    });
+                } catch (e) {
+                    LOG.warn('Failed to update voice config on resume:', e);
+                }
+            }
 
             showToast('Сессия возобновлена', 'success', 2000);
         } catch (err) {
-            console.error('Failed to restart session:', err);
+            LOG.error('Failed to resume session:', err);
             showToast(`Ошибка возобновления: ${err.message}`, 'error', 3000);
         }
     }
 
-    async handleRecordSession() {
-        if (!this.sessionId) {
-            showToast('Нет активной сессии для экспорта', 'error', 2000);
-            return;
+    async _endSessionL1() {
+        const confirmMsg = 'Завершить сессию? Это действие нельзя отменить.';
+        if (!await this._showConfirmModal(confirmMsg)) return;
+
+        LOG.info('=== L1 END SESSION ===');
+
+        // 1. Notify backend — end session permanently
+        if (this.sessionId) {
+            try {
+                await fetch(`/api/session/${this.sessionId}/end`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (err) {
+                LOG.error('Failed to end session:', err);
+            }
         }
 
-        try {
-            // Use existing export endpoint with markdown format
-            const resp = await fetch(`/api/session/${this.sessionId}/export/md`);
-            if (!resp.ok) throw new Error('Export failed');
+        // 2. Stop recording and disconnect
+        await this.stopRecording();
+        if (this.room) {
+            await this.room.disconnect();
+        }
+        this.isConnected = false;
 
-            const blob = await resp.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `session-${this.sessionId}-${Date.now()}.md`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+        // 3. Update UI — show Results button
+        this._updateSessionActions('reviewing');
+        this.updateAnketaStatus('reviewing');
+        document.getElementById('session-screen')?.classList.remove('voice-active');
 
-            showToast('Сессия сохранена', 'success', 2000);
-        } catch (err) {
-            console.error('Failed to export session:', err);
-            showToast('Ошибка при сохранении сессии', 'error', 2000);
+        showToast('Сессия завершена', 'info', 2000);
+
+        // 4. Navigate to review
+        if (this.uniqueLink) {
+            setTimeout(() => {
+                this.router.navigate(`/session/${this.uniqueLink}/review`);
+            }, 500);
         }
     }
 
@@ -1554,6 +1559,33 @@ class VoiceInterviewerApp {
             this.router.navigate(`/session/${this.uniqueLink}/review`);
         } else {
             showToast('Ссылка на результаты недоступна', 'error', 2000);
+        }
+    }
+
+    _updateSessionActions(state) {
+        const pause = document.getElementById('btn-pause-session');
+        const resume = document.getElementById('btn-resume-session');
+        const end = document.getElementById('btn-end-session');
+        const results = document.getElementById('btn-results');
+
+        // Hide all first
+        [pause, resume, end, results].forEach(b => { if (b) b.style.display = 'none'; });
+
+        switch (state) {
+            case 'active':
+                if (pause) pause.style.display = '';
+                if (end) end.style.display = '';
+                break;
+            case 'paused':
+                if (resume) resume.style.display = '';
+                if (end) end.style.display = '';
+                break;
+            case 'reviewing':
+            case 'confirmed':
+            case 'declined':
+                if (results) results.style.display = '';
+                break;
+            // pre-connection or unknown: all hidden (default)
         }
     }
 
@@ -1972,6 +2004,7 @@ class VoiceInterviewerApp {
             LOG.event('Connected', { roomName: this.room.name });
             this.isConnected = true;
             this.updateStatusTicker('Консультация началась');
+            this._updateSessionActions('active');
 
             // ✅ SPRINT 3: Проактивное уведомление об автозаполнении анкеты
             if (!this.isPaused && this.consultationType === 'consultation') {
@@ -2107,18 +2140,10 @@ class VoiceInterviewerApp {
         LOG.info('Connected to room:', this.room.name);
     }
 
-    // ===== Session Pause / Resume =====
-
-    togglePause() {
-        if (this.isPaused) {
-            this.resumeSession();
-        } else {
-            this.pauseSession();
-        }
-    }
+    // ===== Session Pause / Resume (internal — called by L1 or auto-pause) =====
 
     async pauseSession() {
-        LOG.info('=== PAUSE SESSION ===');
+        LOG.info('=== PAUSE SESSION (internal) ===');
         this.isPaused = true;
 
         // Stop mic but keep room connected
@@ -2138,27 +2163,25 @@ class VoiceInterviewerApp {
             }
         }
 
-        // UI: pause button → resume button
-        this.elements.pauseBtn.classList.add('paused');
-        this.elements.pauseBtn.querySelector('.icon').textContent = '▶';
+        // UI updates
         this.elements.micBtn.disabled = true;
         this.elements.micBtn.classList.remove('inactive');
         this.elements.micBtn.classList.add('paused');
         document.getElementById('pause-overlay')?.classList.add('visible');
         this.elements.voiceStatus.textContent = 'На паузе';
         document.querySelector('.wave')?.classList.add('inactive');
+        this._updateSessionActions('paused');
     }
 
     async resumeSession() {
-        LOG.info('=== RESUME SESSION ===');
+        LOG.info('=== RESUME SESSION (internal) ===');
         this.isPaused = false;
 
-        // UI: resume button → pause button
-        this.elements.pauseBtn.classList.remove('paused');
-        this.elements.pauseBtn.querySelector('.icon').textContent = '⏸';
+        // UI updates
         this.elements.micBtn.disabled = false;
         this.elements.micBtn.classList.remove('paused');
         document.getElementById('pause-overlay')?.classList.remove('visible');
+        this._updateSessionActions('active');
 
         // ✅ FIX БАГ #3: Call POST /resume to change status on backend
         if (this.sessionId) {
@@ -3243,7 +3266,6 @@ class VoiceInterviewerApp {
             showToast('Сессия сохранена. Ссылка скопирована.');
             this.updateAnketaStatus('paused');
             this.updateConnectionStatus(false);
-            this.elements.pauseBtn.disabled = true;
             this.isPaused = false;
 
             // Reset session identity so showSession() will reconnect
