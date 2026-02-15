@@ -802,6 +802,46 @@ def _check_required_fields(anketa_data: dict) -> bool:
     return True
 
 
+def _compute_completion_from_dict(anketa_data: dict) -> float:
+    """Compute completion rate from merged anketa dict (mirrors FinalAnketa.completion_rate).
+
+    Uses the same 15 required fields and schema defaults logic as the Pydantic model,
+    but works on raw dict data after accumulative merge.
+    """
+    from src.anketa.schema import FinalAnketa
+    _raw = getattr(FinalAnketa, '_SCHEMA_DEFAULTS', {})
+    schema_defaults = _raw if isinstance(_raw, dict) else getattr(_raw, 'default', {})
+
+    required_keys = [
+        "company_name", "industry", "business_description",
+        "services", "current_problems", "business_goals",
+        "agent_name", "agent_purpose", "agent_functions",
+        "contact_name", "contact_phone", "contact_email",
+        "voice_gender", "voice_tone", "call_direction",
+    ]
+
+    filled = 0
+    defaulted = 0
+    for key in required_keys:
+        v = anketa_data.get(key)
+        # Contact field aliasing
+        if key == "contact_phone" and not v:
+            v = anketa_data.get("phone")
+        if key == "contact_email" and not v:
+            v = anketa_data.get("email")
+
+        if key in schema_defaults and v == schema_defaults[key]:
+            defaulted += 1
+            continue
+        if (isinstance(v, list) and len(v) > 0) or \
+           (isinstance(v, str) and v and v.strip()) or \
+           (v is not None and not isinstance(v, (str, list))):
+            filled += 1
+
+    effective_total = max(len(required_keys) - defaulted, 1)
+    return filled / effective_total
+
+
 # Human-readable labels for missing fields reminder
 _FIELD_LABELS = {
     # Блок 1: Компания
@@ -1563,11 +1603,18 @@ async def _finalize_and_save(
                     consultation_type=_fin_ct,
                 )
 
-                anketa_data = anketa.model_dump(mode="json")
-                anketa_md = AnketaGenerator.render_markdown(anketa)
+                # R22-07: Skip DB update if extraction returned a fallback
+                if getattr(anketa, '_is_fallback', None) is True:
+                    anketa_log.warning(
+                        "finalize_extraction_fallback_skipped",
+                        session_id=session_id,
+                    )
+                else:
+                    anketa_data = anketa.model_dump(mode="json")
+                    anketa_md = AnketaGenerator.render_markdown(anketa)
 
-                # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
-                await _update_anketa_via_api(session_id, anketa_data, anketa_md)
+                    # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
+                    await _update_anketa_via_api(session_id, anketa_data, anketa_md)
 
             except Exception as e:
                 anketa_log.warning("final_anketa_extraction_failed", error=str(e))
