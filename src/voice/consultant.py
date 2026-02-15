@@ -438,7 +438,7 @@ _session_mgr = SessionManager()
 import atexit as _atexit
 def _close_session_mgr():
     try:
-        _session_mgr._conn.close()  # Close SQLite directly (avoid logging on closed stderr)
+        _session_mgr.close()  # R26-11: Use public method (respects _lock, avoids WAL corruption)
     except Exception:
         pass
 _atexit.register(_close_session_mgr)
@@ -1141,8 +1141,7 @@ async def _extract_and_update_anketa(
 
         try:
             WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
-            if WINDOW_SIZE < 4:
-                WINDOW_SIZE = 4  # R18-08: Minimum viable window
+            WINDOW_SIZE = max(4, min(WINDOW_SIZE, 100))  # R26-09: 4 <= window <= 100
         except (ValueError, TypeError):
             WINDOW_SIZE = 12  # R18-08: Fallback on invalid env var
 

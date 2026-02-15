@@ -223,6 +223,15 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        # R26-01: Content-Security-Policy to mitigate XSS and CDN compromise
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "script-src 'self' https://unpkg.com; "
+            "connect-src 'self' wss: https:; "
+            "style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data:; "
+            "frame-ancestors 'none'"
+        )
         return response
 
 
@@ -608,11 +617,11 @@ async def update_runtime_status(session_id: str, req: UpdateRuntimeStatusRequest
     status = req.runtime_status  # R20-11: Validated by Pydantic model
     # R15-02: Verify session exists before caching runtime status (prevents cache pollution)
     if session_id not in _runtime_statuses:
+        # R26-07: Check cap BEFORE DB lookup to prevent wasted queries
+        if len(_runtime_statuses) > 5000:
+            raise HTTPException(status_code=503, detail="Runtime status cache full")
         if not session_mgr.get_session(session_id):
             raise HTTPException(status_code=404, detail="Session not found")
-        # R11-15: Cap cache size to prevent memory exhaustion
-        if len(_runtime_statuses) > 10000:
-            raise HTTPException(status_code=503, detail="Runtime status cache full")
     _runtime_statuses[session_id] = {"runtime_status": status, "updated_at": time.time()}
     return {"ok": True}
 
@@ -1256,9 +1265,11 @@ async def upload_documents(
             stem = Path(safe_name).stem
             suffix = Path(safe_name).suffix
             counter = 1
-            while file_path.exists():
+            while file_path.exists() and counter < 100:
                 file_path = upload_dir / f"{stem}_{counter}{suffix}"
                 counter += 1
+            if file_path.exists():
+                raise HTTPException(status_code=409, detail="Too many filename collisions")
             safe_name = file_path.name
         file_path.write_bytes(content)
         saved_files.append(safe_name)

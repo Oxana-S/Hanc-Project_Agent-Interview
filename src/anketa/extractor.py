@@ -252,8 +252,8 @@ class AnketaExtractor:
 
         # Format dialogue
         dialogue_text = "\n".join([
-            f"{msg.get('role', 'unknown').upper()}: {msg.get('content', '')}"
-            for msg in dialogue[-100:]  # Last 100 messages to fit context
+            f"{msg.get('role', 'unknown').upper()}: {msg.get('content', '')[:2000]}"
+            for msg in dialogue[-100:]  # R26-10: Last 100 msgs, each truncated to 2000 chars
         ])
 
         # Format analysis

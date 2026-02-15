@@ -2246,18 +2246,21 @@ class VoiceInterviewerApp {
         const placeholder = document.getElementById('dialogue-placeholder');
         if (placeholder) placeholder.remove();
 
+        // R26-02: Whitelist author to prevent CSS class injection
+        const safeAuthor = ['ai', 'user', 'system'].includes(author) ? author : 'system';
+
         // N6: Remove thinking indicator when AI responds
-        if (author === 'ai') {
+        if (safeAuthor === 'ai') {
             document.getElementById('agent-thinking')?.remove();
         }
 
         const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${author}`;
+        messageDiv.className = `message ${safeAuthor}`;
 
         const authorSpan = document.createElement('div');
         authorSpan.className = 'author';
         const authorLabels = { ai: 'AI-Консультант', user: 'Вы', system: 'Система' };
-        authorSpan.textContent = authorLabels[author] || author;
+        authorSpan.textContent = authorLabels[safeAuthor] || safeAuthor;
 
         const contentDiv = document.createElement('div');
         contentDiv.className = 'content';
