@@ -1541,6 +1541,20 @@ async def _finalize_and_save(
     session_id: Optional[str],
 ):
     """Final anketa extraction, filesystem save, and DB update."""
+    # R25-01: Server-side deduplication — if session already in terminal/reviewing state,
+    # another agent instance already finalized. Skip to prevent duplicate notifications/writes.
+    if session_id:
+        pre_check = _session_mgr.get_session(session_id)
+        if pre_check and pre_check.status in (
+            SessionStatus.CONFIRMED.value, SessionStatus.DECLINED.value, SessionStatus.REVIEWING.value
+        ):
+            session_log.info(
+                "finalize_already_done",
+                session_id=session_id,
+                status=pre_check.status,
+            )
+            return
+
     await finalize_consultation(consultation)
 
     if not session_id:
@@ -1810,7 +1824,13 @@ def _register_event_handlers(
 
         # Capture final user transcripts into dialogue history
         if is_final and transcript.strip():
-            consultation.add_message("user", transcript.strip())
+            # R25-09: Skip synthetic system prompts (bracket-wrapped instructions)
+            # that leak into transcription from generate_reply() calls
+            stripped = transcript.strip()
+            if stripped.startswith('[') and stripped.endswith(']'):
+                logger.debug("skipping_synthetic_prompt", preview=stripped[:60])
+                return
+            consultation.add_message("user", stripped)
             if db_backed and session_id:
                 # v5.0: Real-time extraction - trigger на КАЖДОЕ user message
                 # FIX: Skip if extraction already running (prevent duplication)

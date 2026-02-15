@@ -2361,6 +2361,10 @@ class VoiceInterviewerApp {
 
         try {
             // R4-07: Create AbortController for this fetch (cancelled on stopAnketaPolling)
+            // R25-13: Abort previous in-flight poll before starting new one
+            if (this._pollAbortController) {
+                this._pollAbortController.abort();
+            }
             this._pollAbortController = new AbortController();
             const response = await fetch(`/api/session/${this.sessionId}/anketa`, {
                 signal: this._pollAbortController.signal,

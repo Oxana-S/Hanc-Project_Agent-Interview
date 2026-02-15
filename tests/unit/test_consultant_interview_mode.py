@@ -419,11 +419,13 @@ class TestFinalizeAndSaveConsultationType:
                 c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
-            # Three calls in _finalize_and_save:
-            # 1) Line 808: check current status
-            # 2) Line 831: get doc_context + consultation_type
-            # 3) Line 877: downstream pipelines
+            # Four calls in _finalize_and_save:
+            # 0) R25-01 pre-check: deduplication guard
+            # 1) check current status
+            # 2) get doc_context + consultation_type
+            # 3) downstream pipelines
             mock_mgr.get_session.side_effect = [
+                db_session_for_finalize,  # R25-01 pre-check
                 db_session_for_finalize,  # status check
                 db_session_for_finalize,  # extraction context
                 db_session_for_downstream,  # downstream
@@ -478,7 +480,7 @@ class TestFinalizeAndSaveConsultationType:
                 c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
-            mock_mgr.get_session.side_effect = [db_session, db_session, db_session_downstream]
+            mock_mgr.get_session.side_effect = [db_session, db_session, db_session, db_session_downstream]  # +1 for R25-01
             mock_extractor = AsyncMock()
             mock_extractor.extract = AsyncMock(return_value=anketa)
             mock_ext_cls.return_value = mock_extractor
@@ -525,7 +527,7 @@ class TestFinalizeAndSaveConsultationType:
                 c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
-            mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
+            mock_mgr.get_session.side_effect = [db_session, db_session, db_session, db_downstream]  # +1 for R25-01
             mock_extractor = AsyncMock()
             mock_extractor.extract = AsyncMock(return_value=anketa)
             mock_ext_cls.return_value = mock_extractor
@@ -572,8 +574,8 @@ class TestFinalizeAndSaveConsultationType:
                 pass  # status stays idle
             mock_fin.side_effect = keep_idle
 
-            # Two calls when status is idle: fresh_session + downstream
-            mock_mgr.get_session.side_effect = [db_session, db_downstream]
+            # R25-01 pre-check + fresh_session + downstream
+            mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
 
             await _finalize_and_save(consultation, "test-001")
 
@@ -625,7 +627,8 @@ class TestFinalizeAndSaveConsultationType:
                 c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
-            mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
+            # R25-01 pre-check + fresh_session + re-read + downstream
+            mock_mgr.get_session.side_effect = [db_session, db_session, db_session, db_downstream]
             mock_extractor = AsyncMock()
             mock_extractor.extract = AsyncMock(return_value=anketa)
             mock_ext_cls.return_value = mock_extractor
@@ -676,7 +679,8 @@ class TestFinalizeAndSaveConsultationType:
                 c.runtime_status = RuntimeStatus.COMPLETED
             mock_fin.side_effect = set_completed
 
-            mock_mgr.get_session.side_effect = [db_session, db_session, db_downstream]
+            # R25-01 pre-check + fresh_session + re-read + downstream
+            mock_mgr.get_session.side_effect = [db_session, db_session, db_session, db_downstream]
             mock_extractor = AsyncMock()
             mock_extractor.extract = AsyncMock(return_value=anketa)
             mock_ext_cls.return_value = mock_extractor

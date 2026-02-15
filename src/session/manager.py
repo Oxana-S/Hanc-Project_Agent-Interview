@@ -392,6 +392,17 @@ class SessionManager:
             logger.warning("session_not_found_for_anketa_update", session_id=session_id)
             return False
 
+        # R25-08: Normalize agent_functions strings into AgentFunction dicts
+        # Frontend sends ["task1", "task2"] but FinalAnketa expects List[AgentFunction]
+        if 'agent_functions' in anketa_data and isinstance(anketa_data['agent_functions'], list):
+            normalized = []
+            for item in anketa_data['agent_functions']:
+                if isinstance(item, str):
+                    normalized.append({"name": item, "description": "", "priority": "medium"})
+                else:
+                    normalized.append(item)
+            anketa_data['agent_functions'] = normalized
+
         # 2. Deep merge: new values overwrite old, nested dicts are merged recursively (R4-13)
         # R6-11: Copy existing data to avoid mutating the in-memory session object
         import copy

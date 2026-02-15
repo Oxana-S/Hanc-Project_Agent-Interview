@@ -166,7 +166,9 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant._try_get_postgres", return_value=None), \
              patch("src.voice.consultant._update_dialogue_via_api", new_callable=AsyncMock, return_value=True):
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
@@ -198,7 +200,9 @@ class TestNotificationManagerWiring:
              patch("src.voice.consultant._try_get_postgres", return_value=None), \
              patch("src.voice.consultant._update_dialogue_via_api", new_callable=AsyncMock, return_value=True) as mock_dialogue_api:
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
             mock_mgr.update_anketa = MagicMock(return_value=True)
             mock_mgr.update_metadata = MagicMock(return_value=True)
@@ -377,7 +381,9 @@ class TestRecordLearningWiring:
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
@@ -419,7 +425,9 @@ class TestRecordLearningWiring:
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
@@ -812,7 +820,10 @@ class TestRedisWiring:
              patch("src.voice.consultant._try_get_redis", return_value=mock_redis), \
              patch("src.voice.consultant._try_get_postgres", return_value=None):
 
-            mock_mgr.get_session.return_value = _make_db_session()
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            db_session = _make_db_session()
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
@@ -923,7 +934,9 @@ class TestPostgreSQLWiring:
              patch("src.voice.consultant._try_get_postgres", return_value=mock_pg), \
              patch("src.anketa.schema.FinalAnketa", return_value=mock_anketa_obj):
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
@@ -965,7 +978,9 @@ class TestPostgreSQLWiring:
              patch("src.voice.consultant._try_get_redis", return_value=None), \
              patch("src.voice.consultant._try_get_postgres", return_value=mock_pg):
 
-            mock_mgr.get_session.return_value = db_session
+            # R25-01: First get_session is pre-check (must be active), rest are normal
+            pre_check_session = _make_db_session(status="active")
+            mock_mgr.get_session.side_effect = [pre_check_session, db_session, db_session, db_session]
             mock_mgr.update_session = MagicMock()
 
             mock_extractor = AsyncMock()
