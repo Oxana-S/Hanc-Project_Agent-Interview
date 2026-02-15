@@ -1123,7 +1123,7 @@ class AnketaExtractor:
             functions_count=len(solution_data.get('agent_functions', []))
         )
 
-        return FinalAnketa(
+        anketa = FinalAnketa(
             # Company info
             company_name=analysis_data.get('company_name', ''),
             industry=analysis_data.get('industry', ''),
@@ -1160,6 +1160,9 @@ class AnketaExtractor:
             created_at=datetime.now(timezone.utc),
             consultation_duration_seconds=duration_seconds
         )
+        # R22-07: Mark as fallback so accumulative merge can skip auto-generated values
+        anketa._is_fallback = True
+        return anketa
 
     def _determine_call_direction(self, constraints: List[str], business_goals: List[str]) -> str:
         """Determine call direction from context."""

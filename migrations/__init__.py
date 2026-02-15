@@ -37,27 +37,31 @@ def run_all_migrations(conn: sqlite3.Connection) -> None:
     for migration_file in migration_files:
         migration_name = migration_file.stem
 
-        # R21-22: Skip already-applied migrations
-        row = conn.execute(
-            "SELECT 1 FROM schema_migrations WHERE version = ?",
+        # R22-03: Atomically claim migration via INSERT OR IGNORE to prevent
+        # TOCTOU race when multiple processes start simultaneously
+        cursor = conn.execute(
+            "INSERT OR IGNORE INTO schema_migrations (version) VALUES (?)",
             (migration_name,)
-        ).fetchone()
-        if row:
-            continue
+        )
+        if cursor.rowcount == 0:
+            continue  # Already applied (or being applied by another process)
 
-        # Load migration module dynamically
-        spec = importlib.util.spec_from_file_location(migration_name, migration_file)
-        if not spec or not spec.loader:
-            continue
+        # Load and run migration module
+        try:
+            spec = importlib.util.spec_from_file_location(migration_name, migration_file)
+            if not spec or not spec.loader:
+                conn.execute("DELETE FROM schema_migrations WHERE version = ?", (migration_name,))
+                conn.commit()
+                continue
 
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
 
-        # Run upgrade function
-        if hasattr(module, "upgrade"):
-            module.upgrade(conn)
-            conn.execute(
-                "INSERT INTO schema_migrations (version) VALUES (?)",
-                (migration_name,)
-            )
+            if hasattr(module, "upgrade"):
+                module.upgrade(conn)
             conn.commit()
+        except Exception:
+            # Rollback claim so migration can be retried
+            conn.execute("DELETE FROM schema_migrations WHERE version = ?", (migration_name,))
+            conn.commit()
+            raise

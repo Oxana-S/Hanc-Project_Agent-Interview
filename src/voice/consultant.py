@@ -782,8 +782,8 @@ def _check_required_fields(anketa_data: dict) -> bool:
 
     # R10-01: Skip schema defaults — fields with unchanged defaults are not required
     from src.anketa.schema import FinalAnketa
-    _raw = getattr(FinalAnketa, '_SCHEMA_DEFAULTS', {})
-    schema_defaults = getattr(_raw, 'default', _raw) if not isinstance(_raw, dict) else _raw
+    # R22-09: Direct access — will fail loudly if attribute is renamed/removed
+    schema_defaults = FinalAnketa._SCHEMA_DEFAULTS if hasattr(FinalAnketa, '_SCHEMA_DEFAULTS') else {}
 
     for field_name, value in required.items():
         # Schema defaults are optional — skip them entirely
@@ -1038,6 +1038,11 @@ async def _update_instructions_safe(
         await activity.update_instructions(new_instructions)
 
 
+# R22-14: Circuit breaker for extraction failures (prevents rapid-fire attempts during outages)
+_extraction_consecutive_failures = 0
+_extraction_backoff_until = 0.0
+
+
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -1052,6 +1057,18 @@ async def _extract_and_update_anketa(
     Also injects industry KB context into the voice agent on first extraction
     (when industry can be detected from dialogue).
     """
+    import time
+    global _extraction_consecutive_failures, _extraction_backoff_until
+
+    # R22-14: Circuit breaker — skip if in backoff period
+    if time.time() < _extraction_backoff_until:
+        anketa_log.debug(
+            "extraction_backoff_active",
+            session_id=session_id,
+            remaining=round(_extraction_backoff_until - time.time()),
+        )
+        return
+
     try:
         dialogue_history = consultation.dialogue_history
 
@@ -1069,7 +1086,6 @@ async def _extract_and_update_anketa(
 
         # ===== SLIDING WINDOW OPTIMIZATION =====
         import os
-        import time
 
         try:
             WINDOW_SIZE = int(os.getenv('EXTRACTION_WINDOW_SIZE', '12'))
@@ -1130,6 +1146,15 @@ async def _extract_and_update_anketa(
             document_context=doc_context,
             consultation_type=_consultation_type,
         )
+
+        # R22-07: Skip DB update if extraction returned a fallback with auto-generated values
+        if getattr(anketa, '_is_fallback', None) is True:
+            anketa_log.warning(
+                "extraction_fallback_skipped",
+                session_id=session_id,
+                reason="fallback anketa would overwrite real data with auto-generated values",
+            )
+            return
 
         extraction_time = time.time() - start_time
         completion_rate = anketa.completion_rate()
@@ -1209,6 +1234,9 @@ async def _extract_and_update_anketa(
             company=anketa.company_name,
             has_documents=doc_context is not None,
         )
+
+        # R22-14: Reset circuit breaker on success
+        _extraction_consecutive_failures = 0
 
         # --- Launch background research if website detected ---
         if not consultation.research_done and anketa.website and _consultation_type != "interview":
@@ -1443,7 +1471,17 @@ async def _extract_and_update_anketa(
                 anketa_log.warning("review_phase_start_failed", error=str(e))
 
     except Exception as e:
-        anketa_log.error("periodic_anketa_extraction_failed", error=str(e), exc_info=True)
+        # R22-14: Exponential backoff on consecutive failures (2, 4, 8, 16, 32, 60s max)
+        _extraction_consecutive_failures += 1
+        backoff = min(60, 2 ** _extraction_consecutive_failures)
+        _extraction_backoff_until = time.time() + backoff
+        anketa_log.error(
+            "periodic_anketa_extraction_failed",
+            error=str(e),
+            consecutive_failures=_extraction_consecutive_failures,
+            backoff_seconds=backoff,
+            exc_info=True,
+        )
 
 
 async def _finalize_and_save(

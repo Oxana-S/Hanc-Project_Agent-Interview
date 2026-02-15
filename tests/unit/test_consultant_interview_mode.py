@@ -42,6 +42,17 @@ from src.voice.consultant import (
     finalize_consultation,
 )
 from src.session.models import RuntimeStatus
+import src.voice.consultant as _consultant_module
+
+
+@pytest.fixture(autouse=True)
+def _reset_extraction_backoff():
+    """R22-14: Reset circuit breaker globals before each test to prevent contamination."""
+    _consultant_module._extraction_consecutive_failures = 0
+    _consultant_module._extraction_backoff_until = 0.0
+    yield
+    _consultant_module._extraction_consecutive_failures = 0
+    _consultant_module._extraction_backoff_until = 0.0
 
 
 # ---------------------------------------------------------------------------

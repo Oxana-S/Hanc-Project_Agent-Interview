@@ -74,7 +74,9 @@ class WebsiteParser:
                 for _hop in range(5):
                     response = await client.get(url, headers=self.headers)
                     if response.status_code in (301, 302, 303, 307, 308):
-                        url = response.headers.get("location", "")
+                        location = response.headers.get("location", "")
+                        # R22-02: Resolve relative URLs before SSRF check
+                        url = urljoin(url, location)
                         if not _is_safe_url(url):
                             return {"error": "Redirect to unsafe URL blocked", "url": url}
                     else:
