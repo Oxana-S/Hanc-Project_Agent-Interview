@@ -1282,6 +1282,33 @@ async def _extract_and_update_anketa(
                 session_id=session_id,
             )
 
+        # ===== FIX: Contact fallback — regex on FULL dialogue when window misses them =====
+        CONTACT_FIELDS = ('contact_name', 'contact_phone', 'contact_email')
+        missing_contacts = [
+            f for f in CONTACT_FIELDS
+            if not str(anketa_data.get(f, '')).strip()
+        ]
+        if missing_contacts and is_windowed:
+            try:
+                from src.anketa.data_cleaner import SmartExtractor
+                smart = SmartExtractor()
+                contacts = smart.extract_from_dialogue(dialogue_filtered)
+                for field in missing_contacts:
+                    if contacts.get(field):
+                        anketa_data[field] = contacts[field]
+                        anketa_log.info(
+                            "contact_fallback_recovered",
+                            session_id=session_id,
+                            field=field,
+                            value=contacts[field][:20],
+                        )
+            except Exception as e:
+                anketa_log.warning(
+                    "contact_fallback_failed",
+                    session_id=session_id,
+                    error=str(e),
+                )
+
         anketa_md = AnketaGenerator.render_markdown(anketa)
 
         # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
@@ -2554,10 +2581,10 @@ async def entrypoint(ctx: JobContext):
                     fresh_session = _session_mgr.get_session(session_id)
                     if fresh_session and fresh_session.document_context:
                         debug_log.info(
-                            "documents_uploaded_agent_notified",
-                            session_id=session_id,
-                            document_count=metadata.get("document_count", 0),
-                            key_facts=metadata.get("key_facts_count", 0),
+                            f"documents_uploaded_agent_notified "
+                            f"session_id={session_id} "
+                            f"document_count={metadata.get('document_count', 0)} "
+                            f"key_facts={metadata.get('key_facts_count', 0)}"
                         )
                         debug_log.info(f"Agent received document notification: {metadata}")
 

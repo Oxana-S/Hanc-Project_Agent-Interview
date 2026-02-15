@@ -280,11 +280,11 @@ class TestConfirmSession:
 class TestEndSession:
     """Tests for the POST /api/session/{session_id}/end endpoint."""
 
-    def test_end_session_returns_paused(self, client, created_session):
+    def test_end_session_returns_reviewing(self, client, created_session):
         sid = created_session["session_id"]
         resp = client.post(f"/api/session/{sid}/end")
         assert resp.status_code == 200
-        assert resp.json()["status"] == "paused"
+        assert resp.json()["status"] == "reviewing"
 
     def test_end_session_has_summary_fields(self, client, created_session):
         sid = created_session["session_id"]
@@ -310,7 +310,7 @@ class TestEndSession:
         client.post(f"/api/session/{sid}/end")
 
         session_data = client.get(f"/api/session/{sid}").json()
-        assert session_data["status"] == "paused"
+        assert session_data["status"] == "reviewing"
 
     def test_end_invalid_format_returns_400(self, client):
         resp = client.post("/api/session/no-session/end")
@@ -367,16 +367,16 @@ class TestListSessions:
     def test_filter_by_status(self, client):
         s1 = client.post("/api/session/create", json={}).json()
         s2 = client.post("/api/session/create", json={}).json()
-        # End s1 -> paused
+        # End s1 -> reviewing
         client.post(f"/api/session/{s1['session_id']}/end")
 
         active = client.get("/api/sessions?status=active").json()
         assert active["total"] == 1
         assert active["sessions"][0]["session_id"] == s2["session_id"]
 
-        paused = client.get("/api/sessions?status=paused").json()
-        assert paused["total"] == 1
-        assert paused["sessions"][0]["session_id"] == s1["session_id"]
+        reviewing = client.get("/api/sessions?status=reviewing").json()
+        assert reviewing["total"] == 1
+        assert reviewing["sessions"][0]["session_id"] == s1["session_id"]
 
     def test_filter_no_matches(self, client, created_session):
         resp = client.get("/api/sessions?status=confirmed")
@@ -567,7 +567,7 @@ class TestFullLifecycleFlow:
         assert final_anketa["anketa_data"]["contact_email"] == "ivan@flowcorp.ru"
 
     def test_create_update_end_flow(self, client):
-        """Variant flow: create -> update anketa -> end (pause) session."""
+        """Variant flow: create -> update anketa -> end (reviewing) session."""
         # Create
         session = client.post("/api/session/create", json={}).json()
         sid = session["session_id"]
@@ -582,17 +582,17 @@ class TestFullLifecycleFlow:
         end_resp = client.post(f"/api/session/{sid}/end")
         assert end_resp.status_code == 200
         data = end_resp.json()
-        assert data["status"] == "paused"
+        assert data["status"] == "reviewing"
         assert data["unique_link"] == session["unique_link"]
 
-        # Session should now be paused but still retrievable
+        # Session should now be reviewing but still retrievable
         final = client.get(f"/api/session/{sid}").json()
-        assert final["status"] == "paused"
+        assert final["status"] == "reviewing"
         assert final["anketa_data"]["company_name"] == "EndCo"
 
         # Session should also be retrievable by link
         by_link = client.get(f"/api/session/by-link/{session['unique_link']}").json()
-        assert by_link["status"] == "paused"
+        assert by_link["status"] == "reviewing"
 
     def test_dashboard_lifecycle_flow(self, client):
         """Dashboard flow: empty list -> create sessions -> filter -> review data.
@@ -625,21 +625,21 @@ class TestFullLifecycleFlow:
         active_only = client.get("/api/sessions?status=active").json()
         assert active_only["total"] == 2
 
-        # 5. End s1 -> paused
+        # 5. End s1 -> reviewing
         client.post(f"/api/session/{s1['session_id']}/end")
 
-        # 6. Filter: 1 active, 1 paused
+        # 6. Filter: 1 active, 1 reviewing
         active = client.get("/api/sessions?status=active").json()
         assert active["total"] == 1
         assert active["sessions"][0]["session_id"] == s2["session_id"]
 
-        paused = client.get("/api/sessions?status=paused").json()
-        assert paused["total"] == 1
-        assert paused["sessions"][0]["session_id"] == s1["session_id"]
+        reviewing = client.get("/api/sessions?status=reviewing").json()
+        assert reviewing["total"] == 1
+        assert reviewing["sessions"][0]["session_id"] == s1["session_id"]
 
         # 7. Review: session data accessible via by-link
         review = client.get(f"/api/session/by-link/{s1['unique_link']}").json()
-        assert review["status"] == "paused"
+        assert review["status"] == "reviewing"
         assert review["anketa_data"]["company_name"] == "Альфа"
         assert "dialogue_history" in review  # Full data for review screen
 

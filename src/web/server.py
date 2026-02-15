@@ -828,6 +828,11 @@ async def update_anketa(session_id: str, req: UpdateAnketaRequest):
         raise HTTPException(status_code=404, detail="Session not found")
 
     if req.anketa_data:
+        # Validate call_direction field
+        VALID_CALL_DIRECTIONS = {"inbound", "outbound", "both", ""}
+        if req.anketa_data.get("call_direction") not in VALID_CALL_DIRECTIONS:
+            req.anketa_data["call_direction"] = "inbound"
+
         session_mgr.update_anketa(session_id, req.anketa_data, req.anketa_md)
     logger.info("anketa_updated_by_client", session_id=session_id)
     return {"status": "ok"}
@@ -889,23 +894,23 @@ async def confirm_session(session_id: str):
 
 @app.post("/api/session/{session_id}/end")
 async def end_session(session_id: str):
-    """End an active session - marks it as paused."""
+    """End an active session - transitions to reviewing for agent finalization."""
     session = session_mgr.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
     try:
-        session_mgr.update_status(session_id, SessionStatus.PAUSED)
+        session_mgr.update_status(session_id, SessionStatus.REVIEWING)
     except InvalidTransitionError as e:
         raise HTTPException(status_code=400, detail=str(e))
     session_log.info(
-        "session_ended",
+        "session_ended_reviewing",
         session_id=session_id,
         duration=session.duration_seconds,
         messages=len(session.dialogue_history),
     )
     return {
-        "status": SessionStatus.PAUSED.value,
+        "status": SessionStatus.REVIEWING.value,
         "duration": session.duration_seconds,
         "message_count": len(session.dialogue_history),
         "unique_link": session.unique_link,
