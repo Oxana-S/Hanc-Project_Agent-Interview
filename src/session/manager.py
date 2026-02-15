@@ -754,5 +754,6 @@ class SessionManager:
 
     def close(self):
         """Close the SQLite connection."""
-        self._conn.close()
+        with self._lock:  # R27-02: Acquire lock to avoid racing with in-flight writes
+            self._conn.close()
         logger.info("session_manager_closed")

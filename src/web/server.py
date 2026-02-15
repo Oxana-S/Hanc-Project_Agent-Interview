@@ -640,7 +640,7 @@ _VOICE_CONFIG_VALIDATORS = {
     "language": lambda v: isinstance(v, str) and len(v) <= 10,
     "verbosity": lambda v: isinstance(v, str) and v in ("concise", "normal", "verbose"),
     "llm_provider": lambda v: isinstance(v, str) and v in ("deepseek", "azure", "openai", "anthropic", "xai"),
-    "consultation_type": lambda v: isinstance(v, str) and v in ("interaction", "management", "interview"),
+    "consultation_type": lambda v: isinstance(v, str) and v in ("consultation", "interaction", "management", "interview"),
 }
 
 

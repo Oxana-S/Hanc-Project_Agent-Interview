@@ -1492,7 +1492,9 @@ async def _extract_and_update_anketa(
                         # This preserves anti-hallucination rules, KB context, and platform knowledge
                         activity = getattr(agent_session, '_activity', None)
                         if activity and hasattr(activity, 'update_instructions'):
-                            current_instructions = getattr(activity, 'instructions', None) or get_system_prompt()
+                            # R27-03: Prefer buffered instructions over stale activity.instructions
+                            current_instructions = getattr(consultation, '_latest_instructions', None) \
+                                or getattr(activity, 'instructions', None) or get_system_prompt()
                             # Strip any previous missing fields reminder
                             for m in ["### ⚠️ НЕЗАПОЛНЕННЫЕ ПОЛЯ АНКЕТЫ", "### ⚠️ НЕСОБРАННАЯ ИНФОРМАЦИЯ"]:
                                 if m in current_instructions:
