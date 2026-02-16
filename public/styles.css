@@ -223,9 +223,10 @@ body {
     flex-direction: column;
 }
 
-/* Scrollable screens: landing and dashboard need vertical scroll */
+/* Scrollable screens: landing, dashboard, review need vertical scroll */
 #landing-screen.active,
-#dashboard-screen.active {
+#dashboard-screen.active,
+#review-screen.active {
     overflow-y: auto;
 }
 
@@ -1018,8 +1019,8 @@ body {
 }
 
 .btn-mic, .btn-pause {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1027,10 +1028,7 @@ body {
     font-size: 1.5rem;
 }
 
-/* Enhanced Microphone Indicator - Bigger & More Visible */
 .btn-mic {
-    width: 80px !important;
-    height: 80px !important;
     background: var(--primary);
     position: relative;
     overflow: visible;
@@ -1981,8 +1979,8 @@ body {
 /* ===== Quick Settings Panel ===== */
 
 .btn-quick-settings {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2891,10 +2889,10 @@ body {
 
 /* ===== Extra Small Screens (Mobile Optimization) ===== */
 @media (max-width: 400px) {
-    /* Reduce mic size to prevent overflow */
-    .btn-mic {
-        width: 70px !important;
-        height: 70px !important;
+    /* Reduce button sizes to prevent overflow */
+    .btn-mic, .btn-quick-settings {
+        width: 56px !important;
+        height: 56px !important;
     }
 
     /* Reduce gap between controls */

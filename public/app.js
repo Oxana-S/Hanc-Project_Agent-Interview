@@ -45,7 +45,14 @@ class Router {
             return;
         }
 
-        // / — always show landing page
+        // /dashboard — show sessions dashboard
+        if (path === '/dashboard') {
+            this.app.showScreen('dashboard');
+            this.app.loadSessions();
+            return;
+        }
+
+        // / — show landing page
         this.app.showScreen('landing');
         this.app._initLandingAnimations();
     }
@@ -470,7 +477,7 @@ class VoiceInterviewerApp {
         });
 
         // Review
-        this.elements.reviewBackBtn?.addEventListener('click', () => this.router.navigate('/'));
+        this.elements.reviewBackBtn?.addEventListener('click', () => this.router.navigate('/dashboard'));
         this.elements.reviewResumeBtn?.addEventListener('click', () => {
             if (this._reviewLink) this.router.navigate(`/session/${this._reviewLink}`);
         });
