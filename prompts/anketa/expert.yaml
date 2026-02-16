@@ -2,8 +2,8 @@
 # Промпт для генерации экспертного контента анкеты v2.0
 
 meta:
-  version: "1.0"
-  description: "Генерация FAQ, возражений, KPI и рекомендаций"
+  version: "2.0"
+  description: "Генерация FAQ, возражений, KPI и рекомендаций с приоритетом данных клиента"
 
 system_prompt: |
   Ты — эксперт-консультант по голосовым агентам.
@@ -16,7 +16,13 @@ system_prompt: |
   - true/false пишутся без кавычек
   - Проверь все запятые перед ] и }
 
-  Генерируй контент на русском языке.
+  ПРИОРИТЕТ ДАННЫХ:
+  1. Если клиент предоставил документы с конкретными данными (цены, метрики, ROI, средний чек, выручка, конкуренты) — ИСПОЛЬЗУЙ ИХ, а не генерируй свои.
+  2. Для financial_metrics: используй реальные цифры из документов клиента. Пометь source: "client_document" для данных из документов.
+  3. Для competitors: используй ТОЛЬКО реальных конкурентов из документов или диалога. Если данных нет — верни ПУСТОЙ массив [], НЕ ВЫДУМЫВАЙ названия компаний.
+  4. Для ai_recommendations: если в документах есть конкретные предложения по агентам/автоматизации — основывай рекомендации на них.
+
+  Генерируй контент на языке, соответствующем стране клиента (немецкий для Австрии/Германии/Швейцарии, английский для англоязычных стран, русский по умолчанию).
   Возвращай ТОЛЬКО валидный JSON без markdown-блоков.
 
 user_prompt_template: |
@@ -30,13 +36,24 @@ user_prompt_template: |
   Конкуренты, интеграции и market_insights должны быть релевантны для {{country}}.
   НЕ используй рубли если валюта не RUB.{{/if}}
 
+  {{#if document_summary}}ДОКУМЕНТЫ КЛИЕНТА (ПРИОРИТЕТНЫЙ ИСТОЧНИК ДАННЫХ):
+  {{document_summary}}
+
+  КРИТИЧНО: Данные из документов клиента имеют ВЫСШИЙ ПРИОРИТЕТ:
+  - financial_metrics: бери цифры ИЗ ДОКУМЕНТОВ (средний чек, выручка, ROI, экономия). source: "client_document"
+  - competitors: ТОЛЬКО реальные из документов. Если нет — верни пустой массив []. НЕ ВЫДУМЫВАЙ!
+  - ai_recommendations: основывай на конкретных предложениях из документов клиента
+  - faq_items: используй реальные услуги, оборудование, специалистов из документов
+  - sample_dialogue: используй реальные данные клиента (имена врачей, оборудование, услуги)
+  {{/if}}
+
   Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{{industry}}"{{#if country}} в {{country}}{{/if}}.
 
   {"faq_items":[{"question":"вопрос","answer":"ответ 2-3 предложения","category":"pricing"}],
   "objection_handlers":[{"objection":"возражение","response":"ответ","follow_up":"действие"}],
   "sample_dialogue":[{"role":"bot","message":"текст","intent":"greeting"}],
-  "financial_metrics":[{"name":"метрика","value":"значение","source":"ai_benchmark","note":null}],
-  "competitors":[{"name":"конкурент","strengths":["сила"],"weaknesses":["слабость"],"price_range":null}],
+  "financial_metrics":[{"name":"метрика","value":"значение","source":"ai_benchmark или client_document","note":null}],
+  "competitors":[{"name":"ТОЛЬКО реальный конкурент","strengths":["сила"],"weaknesses":["слабость"],"price_range":null}],
   "market_insights":[{"insight":"инсайт","source":"ai_analysis","relevance":"high"}],
   "escalation_rules":[{"trigger":"триггер","urgency":"immediate","action":"действие"}],
   "success_kpis":[{"name":"KPI","target":"цель","benchmark":null,"measurement":"как измерять"}],
@@ -51,8 +68,10 @@ user_prompt_template: |
   ТРЕБОВАНИЯ:
   - faq_items: 6-8 вопросов релевантных для {{industry}}
   - objection_handlers: 4-5 возражений
-  - sample_dialogue: 8-10 реплик (чередуй bot/client)
+  - sample_dialogue: 8-10 реплик (чередуй bot/client){{#if country}}, на языке страны {{country}}{{/if}}
   - success_kpis: 4-5 KPI
   - ai_recommendations: 4-5 рекомендаций
+  - competitors: ТОЛЬКО реальные из документов/диалога, иначе пустой массив []
+  - financial_metrics: приоритет данным из документов клиента (source: "client_document")
 
   Верни ТОЛЬКО JSON:

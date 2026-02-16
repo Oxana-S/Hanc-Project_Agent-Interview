@@ -186,7 +186,7 @@ class AnketaExtractor:
             # P2.2: Skip expert content during real-time extraction (saves 2-5s per cycle)
             # Expert content is only needed during finalization, not mid-conversation polling
             if not skip_expert_content:
-                anketa = await self._generate_expert_content(anketa)
+                anketa = await self._generate_expert_content(anketa, document_context)
 
             # SPRINT 5: Enhanced logging with field counts
             # Count filled fields (non-empty values)
@@ -224,7 +224,7 @@ class AnketaExtractor:
                 duration_seconds
             )
             if not skip_expert_content:
-                anketa = await self._generate_expert_content(anketa)
+                anketa = await self._generate_expert_content(anketa, document_context)
             return anketa
         except Exception as e:
             import traceback
@@ -242,7 +242,7 @@ class AnketaExtractor:
                 duration_seconds
             )
             if not skip_expert_content:
-                anketa = await self._generate_expert_content(anketa)
+                anketa = await self._generate_expert_content(anketa, document_context)
             return anketa
 
     def _build_extraction_prompt(
@@ -1183,18 +1183,25 @@ class AnketaExtractor:
     # V2.0: AI EXPERT CONTENT GENERATION
     # =========================================================================
 
-    async def _generate_expert_content(self, anketa: FinalAnketa) -> FinalAnketa:
+    async def _generate_expert_content(
+        self, anketa: FinalAnketa, document_context: Optional[Any] = None
+    ) -> FinalAnketa:
         """
         Generate AI expert content for v2.0 blocks.
 
         This transforms a basic anketa into a comprehensive expert consultation
         deliverable with FAQ answers, objection handling, financial model, etc.
+
+        Args:
+            anketa: FinalAnketa with extracted data
+            document_context: DocumentContext from analyzed client documents (v3.2)
         """
         logger.info("Generating expert content for anketa v2.0",
-                   company=anketa.company_name, industry=anketa.industry)
+                   company=anketa.company_name, industry=anketa.industry,
+                   has_document_context=document_context is not None)
 
         # Build context for AI generation
-        context = self._build_expert_context(anketa)
+        context = self._build_expert_context(anketa, document_context)
 
         # Generate all expert blocks in a single LLM call for efficiency
         prompt = self._build_expert_generation_prompt(context)
@@ -1227,9 +1234,16 @@ class AnketaExtractor:
 
         return anketa
 
-    def _build_expert_context(self, anketa: FinalAnketa) -> Dict[str, Any]:
-        """Build context dict for expert content generation."""
-        return {
+    def _build_expert_context(
+        self, anketa: FinalAnketa, document_context: Optional[Any] = None
+    ) -> Dict[str, Any]:
+        """Build context dict for expert content generation.
+
+        Args:
+            anketa: FinalAnketa with extracted data
+            document_context: DocumentContext from analyzed client documents
+        """
+        context = {
             "company_name": anketa.company_name,
             "industry": anketa.industry,
             "specialization": anketa.specialization,
@@ -1250,7 +1264,50 @@ class AnketaExtractor:
             "country": anketa.country or "",
             "country_name": anketa.country_name or "",
             "currency": anketa.currency or "",
+            # Document context for data-grounded expert content
+            "document_summary": "",
         }
+
+        # Extract document context summary for expert generation
+        if document_context:
+            try:
+                doc_parts = []
+                if hasattr(document_context, 'summary') and document_context.summary:
+                    doc_parts.append(document_context.summary)
+                if hasattr(document_context, 'key_facts') and document_context.key_facts:
+                    doc_parts.append("Ключевые факты: " + "; ".join(document_context.key_facts[:15]))
+                if hasattr(document_context, 'services_mentioned') and document_context.services_mentioned:
+                    doc_parts.append("Услуги из документов: " + ", ".join(document_context.services_mentioned[:15]))
+                if hasattr(document_context, 'all_contacts') and document_context.all_contacts:
+                    contacts = ", ".join(f"{k}: {v}" for k, v in document_context.all_contacts.items())
+                    doc_parts.append("Контакты: " + contacts)
+                if hasattr(document_context, 'all_prices') and document_context.all_prices:
+                    prices = "; ".join(
+                        f"{p.get('service', '?')}: {p.get('price', '?')}"
+                        for p in document_context.all_prices[:10]
+                    )
+                    doc_parts.append("Цены из документов: " + prices)
+
+                # Include raw document text snippets for richer context
+                if hasattr(document_context, 'documents') and document_context.documents:
+                    for doc in document_context.documents:
+                        if hasattr(doc, 'full_text') and doc.full_text:
+                            # Include first 3000 chars of each doc for key data
+                            snippet = doc.full_text[:3000].strip()
+                            if snippet:
+                                doc_parts.append(f"\n--- Документ: {doc.filename} ---\n{snippet}")
+
+                if doc_parts:
+                    context["document_summary"] = "\n".join(doc_parts)
+                    logger.info(
+                        "document_context_added_to_expert",
+                        summary_length=len(context["document_summary"]),
+                        doc_count=len(document_context.documents) if hasattr(document_context, 'documents') else 0,
+                    )
+            except Exception as e:
+                logger.warning("failed_to_add_document_context_to_expert", error=str(e))
+
+        return context
 
     def _build_expert_generation_prompt(self, context: Dict[str, Any]) -> str:
         """Build comprehensive prompt for expert content generation from YAML."""
@@ -1259,6 +1316,7 @@ class AnketaExtractor:
         purpose = context.get('agent_purpose', 'консультирование клиентов')
         country = context.get('country_name', '') or context.get('country', '')
         currency = context.get('currency', '')
+        document_summary = context.get('document_summary', '')
 
         return render_prompt(
             "anketa/expert", "user_prompt_template",
@@ -1267,6 +1325,7 @@ class AnketaExtractor:
             agent_purpose=purpose,
             country=country,
             currency=currency,
+            document_summary=document_summary,
         )
 
     def _merge_expert_content(self, anketa: FinalAnketa, data: Dict[str, Any]) -> FinalAnketa:

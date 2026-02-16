@@ -59,15 +59,51 @@ class DocumentAnalyzer:
         # Анализируем через LLM
         analysis = await self._llm_analyze(combined_text)
 
+        # Per-document structured extraction (services, FAQ) for ALL doc types
+        all_services = list(analysis.get("services", []))
+        all_contacts = dict(analysis.get("contacts", {}))
+        all_prices = list(analysis.get("prices", []))
+
+        for doc in documents:
+            # Regex-based contact extraction for ALL doc types (fast, no LLM)
+            if doc.full_text:
+                regex_contacts = self._extract_contacts_regex(doc.full_text)
+                for key, value in regex_contacts.items():
+                    if key not in all_contacts or not all_contacts[key]:
+                        all_contacts[key] = value
+                doc.extracted_contacts = regex_contacts
+
+            # LLM-based extraction only for docs with meaningful content (>50 words)
+            if doc.word_count < 50:
+                continue
+
+            try:
+                services = await self.extract_services(doc)
+                if services:
+                    # Merge unique services
+                    existing = set(s.lower() for s in all_services)
+                    for s in services:
+                        if s.lower() not in existing:
+                            all_services.append(s)
+                            existing.add(s.lower())
+            except Exception as e:
+                logger.warning("per_doc_service_extraction_failed", filename=doc.filename, error=str(e))
+
+            try:
+                faq = await self.extract_faq(doc)
+                # FAQ stored on doc.extracted_faq by extract_faq()
+            except Exception as e:
+                logger.warning("per_doc_faq_extraction_failed", filename=doc.filename, error=str(e))
+
         # Формируем контекст
         context = DocumentContext(
             documents=documents,
             summary=analysis.get("summary", ""),
             key_facts=analysis.get("key_facts", []),
-            services_mentioned=analysis.get("services", []),
+            services_mentioned=all_services,
             questions_to_clarify=analysis.get("questions", []),
-            all_contacts=analysis.get("contacts", {}),
-            all_prices=analysis.get("prices", []),
+            all_contacts=all_contacts,
+            all_prices=all_prices,
         )
 
         logger.info(
@@ -75,39 +111,56 @@ class DocumentAnalyzer:
             documents_count=len(documents),
             key_facts=len(context.key_facts),
             services=len(context.services_mentioned),
+            contacts=len(context.all_contacts),
         )
 
         return context
 
     def _combine_documents(self, documents: List[ParsedDocument]) -> str:
-        """Объединить текст документов с метками источников."""
+        """Объединить текст документов с метками источников.
+
+        Все документы обрабатываются равноценно — MD и TXT так же важны, как PDF.
+        Каждый документ помечен типом для LLM-контекста.
+        """
         parts = []
 
         for doc in documents:
-            parts.append(f"\n=== Документ: {doc.filename} ===\n")
-            parts.append(doc.full_text[:15000])  # Ограничиваем размер
+            doc_type_label = {
+                "pdf": "PDF",
+                "md": "Markdown",
+                "docx": "Word",
+                "xlsx": "Excel",
+                "txt": "Текст",
+            }.get(doc.doc_type, doc.doc_type.upper())
+            parts.append(f"\n=== Документ [{doc_type_label}]: {doc.filename} ===\n")
+            parts.append(doc.full_text[:20000])  # 20K per doc
 
         return "\n".join(parts)
 
     async def _llm_analyze(self, text: str) -> Dict[str, Any]:
         """Анализ текста через LLM."""
-        prompt = f"""Проанализируй документы клиента и извлеки структурированную информацию.
+        prompt = f"""Проанализируй ВСЕ документы клиента и извлеки структурированную информацию.
 
 ДОКУМЕНТЫ:
-{text[:20000]}
+{text[:30000]}
 
 Верни JSON с полями:
 {{
-    "summary": "Краткая сводка (2-3 предложения) о чём эти документы",
-    "key_facts": ["Факт 1 о бизнесе", "Факт 2", ...],
+    "summary": "Краткая сводка (3-5 предложений), покрывающая ВСЕ документы — и правовые, и бизнес-анализ, и экономику",
+    "key_facts": ["Факт 1 о бизнесе", "Факт 2 (финансовый)", "Факт 3 (правовой)", ...],
     "services": ["Услуга 1", "Услуга 2", ...],
-    "contacts": {{"телефон": "...", "email": "...", "адрес": "..."}},
+    "contacts": {{"телефон": "...", "email": "...", "адрес": "...", "сайт": "..."}},
     "prices": [{{"service": "...", "price": "..."}}],
     "questions": ["Вопрос 1 для уточнения", "Вопрос 2", ...]
 }}
 
-ВАЖНО:
-- Извлекай только явно указанную информацию
+КРИТИЧЕСКИ ВАЖНО:
+- Анализируй ВСЕ документы РАВНОЦЕННО — не игнорируй ни один тип (MD, PDF, DOCX, TXT)
+- Документы бизнес-анализа (экономика, ROI, агенты) так же важны, как правовые
+- Извлекай финансовые данные: средний чек, выручка, ROI, экономия, бюджеты
+- Извлекай данные о команде: врачи, специалисты, количество сотрудников
+- Извлекай данные о клиентопотоке: пациенты/день, звонки/день
+- Извлекай все упомянутые интеграции и системы
 - Если чего-то нет — оставь пустым
 - Вопросы — это то, что неясно из документов и стоит уточнить у клиента
 - Верни ТОЛЬКО валидный JSON без markdown"""

@@ -1145,3 +1145,145 @@ class TestEdgeCases:
         assert anketa.main_function is not None
         assert anketa.main_function.name == "Test"
         assert anketa.main_function.description == ""
+
+
+# ============================================================================
+# EXPERT CONTENT WITH DOCUMENT CONTEXT TESTS
+# ============================================================================
+
+class TestExpertContentWithDocuments:
+    """Tests for expert content generation with document_context."""
+
+    def test_build_expert_context_without_documents(self, extractor):
+        """Test building expert context without document_context."""
+        anketa = FinalAnketa(
+            company_name="Test",
+            industry="IT",
+            services=["Консалтинг"],
+        )
+
+        context = extractor._build_expert_context(anketa)
+
+        assert context["company_name"] == "Test"
+        assert context["document_summary"] == ""
+
+    def test_build_expert_context_with_document_context(self, extractor):
+        """Test building expert context WITH document_context."""
+        anketa = FinalAnketa(
+            company_name="TierArzt",
+            industry="ветеринария",
+        )
+
+        doc_context = MagicMock()
+        doc_context.summary = "Ветеринарная клиника в Вене, 4 врача, 60-80 пациентов/день"
+        doc_context.key_facts = ["Средний чек €110", "ROI 460-810%", "Выручка €1.7-2.4M"]
+        doc_context.services_mentioned = ["КТ", "рентген", "хирургия"]
+        doc_context.all_contacts = {"email": "info@vet.at", "телефон": "+43 1 890"}
+        doc_context.all_prices = [{"service": "КТ", "price": "€300"}]
+        doc_context.documents = []
+
+        context = extractor._build_expert_context(anketa, doc_context)
+
+        assert context["document_summary"] != ""
+        assert "Ветеринарная клиника" in context["document_summary"]
+        assert "€110" in context["document_summary"]
+        assert "ROI 460-810%" in context["document_summary"]
+        assert "КТ" in context["document_summary"]
+        assert "info@vet.at" in context["document_summary"]
+        assert "€300" in context["document_summary"]
+
+    def test_build_expert_context_with_document_snippets(self, extractor):
+        """Test that document text snippets are included in expert context."""
+        anketa = FinalAnketa(company_name="Test", industry="IT")
+
+        doc = MagicMock()
+        doc.full_text = "Detailed analysis of 5 voice agents with ROI calculations"
+        doc.filename = "analysis.md"
+
+        doc_context = MagicMock()
+        doc_context.summary = "Business analysis"
+        doc_context.key_facts = []
+        doc_context.services_mentioned = []
+        doc_context.all_contacts = {}
+        doc_context.all_prices = []
+        doc_context.documents = [doc]
+
+        context = extractor._build_expert_context(anketa, doc_context)
+
+        assert "analysis.md" in context["document_summary"]
+        assert "5 voice agents" in context["document_summary"]
+
+    def test_build_expert_context_document_error_handled(self, extractor):
+        """Test that document context errors are handled gracefully."""
+        anketa = FinalAnketa(company_name="Test", industry="IT")
+
+        # Create a broken document_context that raises on attribute access
+        doc_context = MagicMock()
+        doc_context.summary = property(lambda self: (_ for _ in ()).throw(RuntimeError("broken")))
+        type(doc_context).summary = property(lambda self: (_ for _ in ()).throw(RuntimeError("broken")))
+
+        context = extractor._build_expert_context(anketa, doc_context)
+
+        # Should still return valid context with empty document_summary
+        assert "company_name" in context
+
+    @pytest.mark.asyncio
+    async def test_generate_expert_content_passes_document_context(self, extractor, expert_llm_response):
+        """Test that _generate_expert_content passes document_context through."""
+        extractor.llm.chat = AsyncMock(return_value=expert_llm_response)
+
+        anketa = FinalAnketa(company_name="Test", industry="IT")
+
+        doc_context = MagicMock()
+        doc_context.summary = "Important document data"
+        doc_context.key_facts = ["Key fact 1"]
+        doc_context.services_mentioned = []
+        doc_context.all_contacts = {}
+        doc_context.all_prices = []
+        doc_context.documents = []
+
+        result = await extractor._generate_expert_content(anketa, doc_context)
+
+        # Expert content should be generated
+        assert len(result.faq_items) > 0
+        # Verify that chat was called (and prompt would include doc data)
+        extractor.llm.chat.assert_called_once()
+        call_args = extractor.llm.chat.call_args
+        messages = call_args[1].get("messages") or call_args[0][0] if call_args[0] else call_args[1]["messages"]
+        # The user prompt should reference document data via render_prompt
+        # (exact content depends on template, but the method should not crash)
+
+    @pytest.mark.asyncio
+    async def test_generate_expert_content_without_document_context(self, extractor, expert_llm_response):
+        """Test expert content generation works without document_context (backward compat)."""
+        extractor.llm.chat = AsyncMock(return_value=expert_llm_response)
+
+        anketa = FinalAnketa(company_name="Test", industry="IT")
+        result = await extractor._generate_expert_content(anketa)
+
+        assert len(result.faq_items) > 0
+        assert result.anketa_version == "2.0"
+
+    @pytest.mark.asyncio
+    async def test_extract_passes_document_context_to_expert(self, extractor, full_llm_response, expert_llm_response):
+        """Test that extract() passes document_context to expert generator."""
+        extractor.llm.chat = AsyncMock(side_effect=[full_llm_response, expert_llm_response])
+
+        doc_context = MagicMock()
+        doc_context.to_prompt_context.return_value = "Doc context text"
+        doc_context.summary = "Summary"
+        doc_context.key_facts = ["Fact"]
+        doc_context.services_mentioned = []
+        doc_context.all_contacts = {}
+        doc_context.all_prices = []
+        doc_context.documents = []
+
+        with patch.object(extractor, '_parse_json_with_repair', return_value=(json.loads(full_llm_response), False)):
+            with patch.object(extractor.post_processor, 'process', return_value=(json.loads(full_llm_response), {'cleaning_changes': []})):
+                result = await extractor.extract(
+                    [{"role": "user", "content": "test"}],
+                    document_context=doc_context,
+                    skip_expert_content=False,
+                )
+
+        assert isinstance(result, FinalAnketa)

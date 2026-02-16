@@ -889,3 +889,181 @@ Email: info@logistics.ru
         # Verify total loaded
         loaded = loader.get_loaded_files()
         assert len(loaded) == 2
+
+
+# ============ ANALYZER V2 TESTS (equal weight, per-doc extraction) ============
+
+class TestDocumentAnalyzerV2:
+    """Tests for improved document analysis — equal weight for all doc types."""
+
+    @pytest.fixture
+    def mock_llm_client(self):
+        """Create a mock LLM client."""
+        client = MagicMock()
+        client.chat = AsyncMock(return_value='{"summary": "Business analysis and legal docs", "key_facts": ["Fact 1"], "services": ["Service A"], "contacts": {"email": "test@test.com"}, "prices": [{"service": "CT scan", "price": "300 EUR"}], "questions": ["Question?"]}')
+        return client
+
+    def test_combine_documents_includes_type_label(self):
+        """Test that _combine_documents adds document type labels."""
+        analyzer = DocumentAnalyzer()
+
+        pdf_doc = ParsedDocument(
+            filename="legal.pdf", doc_type="pdf", file_path="/p/legal.pdf",
+            chunks=[DocumentChunk(content="Legal text about TAeG", doc_type="pdf")]
+        )
+        md_doc = ParsedDocument(
+            filename="analysis.md", doc_type="md", file_path="/p/analysis.md",
+            chunks=[DocumentChunk(content="Business analysis with ROI 460%", doc_type="md")]
+        )
+
+        combined = analyzer._combine_documents([pdf_doc, md_doc])
+
+        assert "[PDF]" in combined
+        assert "[Markdown]" in combined
+        assert "legal.pdf" in combined
+        assert "analysis.md" in combined
+        assert "TAeG" in combined
+        assert "ROI 460%" in combined
+
+    def test_combine_documents_20k_limit_per_doc(self):
+        """Test that each document gets up to 20K chars."""
+        analyzer = DocumentAnalyzer()
+
+        # Create a doc with >20K chars
+        long_text = "x" * 25000
+        doc = ParsedDocument(
+            filename="big.md", doc_type="md", file_path="/p/big.md",
+            chunks=[DocumentChunk(content=long_text, doc_type="md")]
+        )
+
+        combined = analyzer._combine_documents([doc])
+
+        # Should be truncated: header + 20000 chars
+        assert len(combined) < 25000
+
+    @pytest.mark.asyncio
+    async def test_analyze_calls_per_doc_extraction(self, mock_llm_client):
+        """Test that analyze() calls extract_services for each document."""
+        # Mock: first call = analyze, second = extract_services for doc1, third = extract_faq for doc1,
+        # fourth = extract_services for doc2, fifth = extract_faq for doc2
+        responses = [
+            '{"summary": "Test", "key_facts": [], "services": [], "contacts": {}, "prices": [], "questions": []}',
+            '["Service from PDF"]',  # extract_services doc1
+            '[]',  # extract_faq doc1
+            '["Service from MD", "Another MD service"]',  # extract_services doc2
+            '[{"question": "Q?", "answer": "A"}]',  # extract_faq doc2
+        ]
+        mock_llm_client.chat = AsyncMock(side_effect=responses)
+
+        analyzer = DocumentAnalyzer(llm_client=mock_llm_client)
+
+        # Docs need >50 words to trigger per-doc LLM extraction
+        long_pdf_text = " ".join(["Legal document text about veterinary regulations and compliance requirements"] * 8)
+        long_md_text = " ".join(["Business analysis document with ROI calculations and revenue projections"] * 8)
+
+        docs = [
+            ParsedDocument(
+                filename="legal.pdf", doc_type="pdf", file_path="/p",
+                chunks=[DocumentChunk(content=long_pdf_text, doc_type="pdf")]
+            ),
+            ParsedDocument(
+                filename="analysis.md", doc_type="md", file_path="/p",
+                chunks=[DocumentChunk(content=long_md_text, doc_type="md")]
+            ),
+        ]
+
+        context = await analyzer.analyze(docs)
+
+        # Services should include per-document extracted ones
+        assert "Service from PDF" in context.services_mentioned
+        assert "Service from MD" in context.services_mentioned
+        assert "Another MD service" in context.services_mentioned
+
+    @pytest.mark.asyncio
+    async def test_analyze_extracts_contacts_regex_all_docs(self, mock_llm_client):
+        """Test that regex contact extraction runs on all document types."""
+        mock_llm_client.chat = AsyncMock(return_value='{"summary": "Test", "key_facts": [], "services": [], "contacts": {}, "prices": [], "questions": []}')
+
+        analyzer = DocumentAnalyzer(llm_client=mock_llm_client)
+
+        md_doc = ParsedDocument(
+            filename="contacts.md", doc_type="md", file_path="/p",
+            chunks=[DocumentChunk(
+                content="Contact us at info@company.at or call +43 1 890 222. Visit www.company.at",
+                doc_type="md"
+            )]
+        )
+
+        context = await analyzer.analyze([md_doc])
+
+        # Regex should extract email from MD
+        assert "email" in context.all_contacts
+        assert "info@company.at" in context.all_contacts["email"]
+
+    @pytest.mark.asyncio
+    async def test_analyze_per_doc_extraction_error_handled(self, mock_llm_client):
+        """Test that per-document extraction errors don't break the pipeline."""
+        # First call succeeds (LLM analyze), then extraction calls fail
+        mock_llm_client.chat = AsyncMock(side_effect=[
+            '{"summary": "Test", "key_facts": ["Fact"], "services": ["S1"], "contacts": {}, "prices": [], "questions": []}',
+            Exception("LLM extraction error"),  # extract_services fails
+            Exception("LLM extraction error"),  # extract_faq fails
+        ])
+
+        analyzer = DocumentAnalyzer(llm_client=mock_llm_client)
+
+        doc = ParsedDocument(
+            filename="test.md", doc_type="md", file_path="/p",
+            chunks=[DocumentChunk(content="Content with enough words for extraction " * 5, doc_type="md")]
+        )
+
+        # Should not raise, should return context from main analysis
+        context = await analyzer.analyze([doc])
+
+        assert context.summary == "Test"
+        assert "Fact" in context.key_facts
+        assert "S1" in context.services_mentioned
+
+    @pytest.mark.asyncio
+    async def test_analyze_skips_short_docs(self, mock_llm_client):
+        """Test that very short documents skip per-doc extraction."""
+        mock_llm_client.chat = AsyncMock(return_value='{"summary": "Test", "key_facts": [], "services": [], "contacts": {}, "prices": [], "questions": []}')
+
+        analyzer = DocumentAnalyzer(llm_client=mock_llm_client)
+
+        short_doc = ParsedDocument(
+            filename="tiny.md", doc_type="md", file_path="/p",
+            chunks=[DocumentChunk(content="Too short", doc_type="md")]
+        )
+
+        context = await analyzer.analyze([short_doc])
+
+        # Only 1 LLM call (main analyze), not 3 (analyze + services + faq)
+        assert mock_llm_client.chat.call_count == 1
+
+    @pytest.mark.asyncio
+    async def test_analyze_deduplicates_services(self, mock_llm_client):
+        """Test that services are deduplicated (case-insensitive)."""
+        responses = [
+            '{"summary": "Test", "key_facts": [], "services": ["Delivery", "Storage"], "contacts": {}, "prices": [], "questions": []}',
+            '["delivery", "Packing"]',  # "delivery" is duplicate (different case)
+            '[]',  # faq
+        ]
+        mock_llm_client.chat = AsyncMock(side_effect=responses)
+
+        analyzer = DocumentAnalyzer(llm_client=mock_llm_client)
+
+        # Need >50 words for per-doc LLM extraction to trigger
+        long_text = " ".join(["Document about delivery storage packing and logistics services for business customers"] * 8)
+
+        doc = ParsedDocument(
+            filename="services.md", doc_type="md", file_path="/p",
+            chunks=[DocumentChunk(content=long_text, doc_type="md")]
+        )
+
+        context = await analyzer.analyze([doc])
+
+        # Should have Delivery, Storage, Packing — but NOT duplicate "delivery"
+        service_names_lower = [s.lower() for s in context.services_mentioned]
+        assert service_names_lower.count("delivery") == 1
+        assert "packing" in service_names_lower
