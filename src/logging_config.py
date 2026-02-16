@@ -88,7 +88,7 @@ def _mask_pii(logger, method_name, event_dict):
     return event_dict
 
 
-_initialized = False
+_initialized_pid = None
 
 
 def setup_logging(component: str = "app", level: str = "DEBUG") -> None:
@@ -99,10 +99,11 @@ def setup_logging(component: str = "app", level: str = "DEBUG") -> None:
                    Determines which log files are created.
         level: Minimum log level (DEBUG, INFO, WARNING, ERROR).
     """
-    global _initialized
-    if _initialized:
+    import os
+    global _initialized_pid
+    if _initialized_pid == os.getpid():
         return
-    _initialized = True
+    _initialized_pid = os.getpid()
 
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
 

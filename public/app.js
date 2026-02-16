@@ -1631,7 +1631,7 @@ class VoiceInterviewerApp {
             document.getElementById('review-company').textContent = data.company_name || '—';
             this._updateHeaderSessionContext(data.company_name || '—', data.status);
             const badge = document.getElementById('review-status-badge');
-            const statusLabels = { active: 'активна', paused: 'на паузе', confirmed: 'подтверждена', declined: 'отклонена' };
+            const statusLabels = { active: 'активна', paused: 'на паузе', reviewing: 'AI обрабатывает', confirmed: 'подтверждена', declined: 'отклонена' };
             badge.textContent = statusLabels[data.status] || data.status;
             badge.className = `anketa-status-badge status-${data.status}`;
 

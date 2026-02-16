@@ -84,7 +84,7 @@ from livekit.plugins import openai as lk_openai
 from livekit.plugins.openai.realtime.realtime_model import TurnDetection
 from openai.types.beta.realtime.session import InputAudioTranscription
 
-from src.anketa import AnketaExtractor, AnketaGenerator
+from src.anketa import AnketaExtractor, AnketaGenerator, FinalAnketa
 from src.config.prompt_loader import get_prompt
 from src.llm.factory import create_llm_client
 from src.knowledge import IndustryKnowledgeManager, EnrichedContextBuilder
@@ -1191,15 +1191,12 @@ async def _extract_and_update_anketa(
                 pass  # Use dict fallback — extractor handles both
 
         # R4-18: Reuse cached extractor to avoid recreating LLM client per call
-        # R17-04: Invalidate cache when llm_provider changes mid-session
-        _llm_provider = None
-        if db_session and db_session.voice_config:
-            _llm_provider = db_session.voice_config.get("llm_provider")
-        if (consultation._cached_extractor is None
-                or consultation._cached_extractor_provider != _llm_provider):
-            llm = create_llm_client(_llm_provider)
+        # Bug #7 fix: Always use default LLM (DeepSeek) for extraction, not voice_config's
+        # llm_provider (Azure). Azure gpt-4.1-mini takes 11-13s vs DeepSeek's 2-3s.
+        if consultation._cached_extractor is None:
+            llm = create_llm_client(None)  # default = DeepSeek
             consultation._cached_extractor = AnketaExtractor(llm)
-            consultation._cached_extractor_provider = _llm_provider
+            consultation._cached_extractor_provider = None
         extractor = consultation._cached_extractor
 
         # v5.0: Use sliding window dialogue instead of full history
@@ -1309,7 +1306,14 @@ async def _extract_and_update_anketa(
                     error=str(e),
                 )
 
-        anketa_md = AnketaGenerator.render_markdown(anketa)
+        # Bug #6 fix: Generate anketa_md from MERGED data, not raw extraction.
+        # Sliding window may return partial data (e.g. last 12 msgs are goodbyes),
+        # but anketa_data after merge contains accumulated fields from all extractions.
+        try:
+            merged_anketa = FinalAnketa(**anketa_data)
+            anketa_md = AnketaGenerator.render_markdown(merged_anketa)
+        except Exception:
+            anketa_md = AnketaGenerator.render_markdown(anketa)  # fallback to raw
 
         # CRITICAL: Use API instead of direct DB write (voice agent = separate process)
         # SQLite WAL mode isolates writes between processes → use HTTP API
@@ -1593,7 +1597,7 @@ async def _finalize_and_save(
     if session_id:
         pre_check = _session_mgr.get_session(session_id)
         if pre_check and pre_check.status in (
-            SessionStatus.DECLINED.value, SessionStatus.REVIEWING.value
+            SessionStatus.DECLINED.value, SessionStatus.CONFIRMED.value
         ):
             session_log.info(
                 "finalize_already_done",

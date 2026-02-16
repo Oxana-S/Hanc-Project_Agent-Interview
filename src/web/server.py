@@ -1035,7 +1035,17 @@ async def export_session(session_id: str, export_format: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
 
+    # Bug #9 fix: Generate fresh MD from anketa_data instead of cached anketa_md.
+    # anketa_md in DB may be stale (generated from sliding window before merge).
     anketa_md = session.anketa_md
+    if session.anketa_data:
+        try:
+            from src.anketa.schema import FinalAnketa
+            from src.anketa import AnketaGenerator
+            anketa_obj = FinalAnketa(**session.anketa_data)
+            anketa_md = AnketaGenerator.render_markdown(anketa_obj)
+        except Exception:
+            pass  # fallback to cached anketa_md
     company_name = session.company_name
     voice_config = session.voice_config if session.voice_config else {}
     session_type = voice_config.get("consultation_type", "consultation")
