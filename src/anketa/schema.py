@@ -168,6 +168,12 @@ class FinalAnketa(BaseModel):
     contact_email: str = Field(default="", description="Contact email address")
     contact_phone: str = Field(default="", description="Contact phone number")
 
+    # Geographic & Currency Context (auto-detected + extracted)
+    country: str = Field(default="", description="ISO country code (e.g. 'at', 'de', 'ru')")
+    country_name: str = Field(default="", description="Country name (e.g. 'Austria', 'Germany')")
+    region: str = Field(default="", description="Region code: eu, na, latam, mena, sea, ru")
+    currency: str = Field(default="", description="Currency code: EUR, USD, RUB, CHF")
+
     # Business Context
     business_description: str = Field(default="", description="Description of the business")
     services: List[str] = Field(default_factory=list, description="Services/products offered")

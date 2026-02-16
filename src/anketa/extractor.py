@@ -1244,6 +1244,12 @@ class AnketaExtractor:
             "additional_functions": [f.model_dump() for f in anketa.additional_functions],
             "integrations": [i.model_dump() for i in anketa.integrations],
             "call_direction": anketa.call_direction,
+            # Bug #12: Country context for region-aware expert content
+            "website": anketa.website or "",
+            "contact_phone": anketa.contact_phone or "",
+            "country": anketa.country or "",
+            "country_name": anketa.country_name or "",
+            "currency": anketa.currency or "",
         }
 
     def _build_expert_generation_prompt(self, context: Dict[str, Any]) -> str:
@@ -1251,12 +1257,16 @@ class AnketaExtractor:
         company = context.get('company_name', 'компания')
         industry = context.get('industry', 'бизнес')
         purpose = context.get('agent_purpose', 'консультирование клиентов')
+        country = context.get('country_name', '') or context.get('country', '')
+        currency = context.get('currency', '')
 
         return render_prompt(
             "anketa/expert", "user_prompt_template",
             company_name=company,
             industry=industry,
-            agent_purpose=purpose
+            agent_purpose=purpose,
+            country=country,
+            currency=currency,
         )
 
     def _merge_expert_content(self, anketa: FinalAnketa, data: Dict[str, Any]) -> FinalAnketa:

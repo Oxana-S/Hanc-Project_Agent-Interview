@@ -23,8 +23,14 @@ user_prompt_template: |
   Компания: {{company_name}}
   Отрасль: {{industry}}
   Назначение агента: {{agent_purpose}}
+  {{#if country}}Страна: {{country}}{{/if}}
+  {{#if currency}}Валюта: {{currency}}{{/if}}
 
-  Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{{industry}}".
+  {{#if currency}}КРИТИЧНО: Используй валюту {{currency}} для ВСЕХ цен, бюджетов и финансовых метрик.
+  Конкуренты, интеграции и market_insights должны быть релевантны для {{country}}.
+  НЕ используй рубли если валюта не RUB.{{/if}}
+
+  Сгенерируй JSON для голосового агента. Учитывай специфику отрасли "{{industry}}"{{#if country}} в {{country}}{{/if}}.
 
   {"faq_items":[{"question":"вопрос","answer":"ответ 2-3 предложения","category":"pricing"}],
   "objection_handlers":[{"objection":"возражение","response":"ответ","follow_up":"действие"}],

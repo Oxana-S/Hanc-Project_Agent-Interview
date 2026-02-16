@@ -144,6 +144,7 @@ class VoiceConsultationSession:
         self.current_phase = "discovery"  # discovery → analysis → proposal → refinement
         self.detected_industry_id = None  # Cached industry ID
         self.detected_profile = None  # Cached IndustryProfile
+        self._detected_phone: Optional[str] = None  # Last phone used for country detection
         self._cached_extractor = None  # R4-18: reuse AnketaExtractor across extractions
         self._cached_extractor_provider = None  # R17-04: track provider to invalidate on change
         self._last_extraction_time = 0  # R19-02: timestamp of last successful extraction
@@ -1199,6 +1200,31 @@ async def _extract_and_update_anketa(
             consultation._cached_extractor_provider = None
         extractor = consultation._cached_extractor
 
+        # Bug #12: Inject country context hint for extraction LLM
+        if consultation.detected_profile:
+            _meta = getattr(consultation.detected_profile, 'meta', None)
+            _country = getattr(_meta, 'country', None) if _meta else None
+            _currency = getattr(_meta, 'currency', None) if _meta else None
+            _country_name = getattr(_meta, 'country', _country) if _meta else None
+            # Look up human-readable name from countries meta
+            if _country:
+                try:
+                    from src.knowledge.country_detector import get_country_detector
+                    _cmeta = get_country_detector().get_country_meta(_country)
+                    if _cmeta:
+                        _country_name = _cmeta.get('name', _country_name)
+                except Exception:
+                    pass
+            if _country and _currency:
+                country_hint = {
+                    "role": "system",
+                    "content": (
+                        f"Контекст: Страна клиента — {_country_name} ({_country.upper()}). "
+                        f"Валюта: {_currency}. Используй {_currency} для budget и всех цен."
+                    )
+                }
+                dialogue_for_extraction = [country_hint] + list(dialogue_for_extraction)
+
         # v5.0: Use sliding window dialogue instead of full history
         anketa = await extractor.extract(
             dialogue_history=dialogue_for_extraction,  # ← SLIDING WINDOW
@@ -1387,8 +1413,15 @@ async def _extract_and_update_anketa(
         # v5.0: Skip KB enrichment for interview mode (interviewer should be neutral)
         if agent_session is not None and _consultation_type != "interview":
             try:
-                # Detect industry once, cache in session
-                if consultation.detected_profile is None:
+                # Detect industry and country — re-detect when phone appears or changes
+                current_phone = getattr(anketa, 'contact_phone', None) or ''
+
+                should_redetect = (
+                    consultation.detected_profile is None
+                    or (current_phone and current_phone != (consultation._detected_phone or ''))
+                )
+
+                if should_redetect:
                     from src.knowledge.country_detector import get_country_detector
 
                     user_text = " ".join(
@@ -1396,13 +1429,15 @@ async def _extract_and_update_anketa(
                         if m.get("role") == "user"
                     )
                     manager = _get_kb_manager()
-                    industry_id = manager.detect_industry(user_text)
+                    industry_id = (
+                        consultation.detected_industry_id
+                        or manager.detect_industry(user_text)
+                    )
 
                     if industry_id:
                         detector = get_country_detector()
-                        phone = getattr(anketa, 'contact_phone', None)
                         region, country = detector.detect(
-                            phone=phone,
+                            phone=current_phone or None,
                             dialogue_text=user_text,
                         )
                         if region and country:
@@ -1411,8 +1446,28 @@ async def _extract_and_update_anketa(
                             )
                         else:
                             profile = manager.get_profile(industry_id)
+
+                        # Check if country actually changed → reset KB enrichment
+                        old_profile = consultation.detected_profile
+                        if old_profile is not None:
+                            old_country = getattr(
+                                getattr(old_profile, 'meta', None), 'country', None
+                            )
+                            new_country = getattr(
+                                getattr(profile, 'meta', None), 'country', None
+                            )
+                            if old_country != new_country:
+                                consultation.kb_enriched = False
+                                anketa_log.info(
+                                    "country_redetected",
+                                    session_id=session_id,
+                                    old_country=old_country,
+                                    new_country=new_country,
+                                )
+
                         consultation.detected_profile = profile
                         consultation.detected_industry_id = industry_id
+                        consultation._detected_phone = current_phone
 
                 # Detect phase and re-inject KB on phase change
                 if consultation.detected_profile:
