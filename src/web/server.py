@@ -1312,6 +1312,10 @@ async def upload_documents(
 
     # Store in session
     context_dict = doc_context.model_dump(mode="json")
+    # B13-08: Persist word_count before removing chunks (word_count is a @property
+    # computed from chunks — once chunks are stripped, it would return 0)
+    for doc_obj, doc_data in zip(doc_context.documents, context_dict.get("documents", [])):
+        doc_data["word_count"] = doc_obj.word_count
     # Remove heavy chunks from storage (keep summary + extracted info only)
     for doc_data in context_dict.get("documents", []):
         doc_data.pop("chunks", None)
@@ -1380,10 +1384,8 @@ async def _extract_anketa_with_documents(session_id: str, doc_context):
         from src.anketa import AnketaExtractor, AnketaGenerator
         from src.llm.factory import create_llm_client
 
-        _llm_provider = None
-        if session.voice_config:
-            _llm_provider = session.voice_config.get("llm_provider")
-        extractor = AnketaExtractor(create_llm_client(_llm_provider))
+        # B13-03: Always use DeepSeek for extraction (2-3s), NOT voice_config's Azure (10-11s)
+        extractor = AnketaExtractor(create_llm_client("deepseek"))
         anketa = await extractor.extract(
             dialogue_history=session.dialogue_history or [],
             duration_seconds=session.duration_seconds,

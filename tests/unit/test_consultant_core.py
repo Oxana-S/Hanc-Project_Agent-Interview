@@ -1026,7 +1026,11 @@ class TestRegisterEventHandlers:
         assert c.dialogue_history[0]["role"] == "assistant"
 
     def test_session_close_triggers_finalize(self):
-        """close handler creates finalization task (R18-03: single save, no redundant dialogue API call)."""
+        """close handler creates finalization task (R18-03: single save, no redundant dialogue API call).
+
+        B13-01: Uses ensure_future(shield(...)) instead of create_task(shield(...))
+        for Python 3.14 compatibility.
+        """
         session, handlers = self._capture_handlers()
         c = _make_consultation(messages=2)
 
@@ -1037,8 +1041,8 @@ class TestRegisterEventHandlers:
             event.reason = "disconnect"
             handlers["close"](event)
 
-            # R18-03: Only one create_task (finalize_and_save handles dialogue save)
-            assert mock_asyncio.create_task.call_count == 1
+            # B13-01: Now uses ensure_future(shield(...)) instead of create_task
+            assert mock_asyncio.ensure_future.call_count == 1
 
 
 # ===========================================================================
@@ -1784,3 +1788,154 @@ class TestApplyVerbosityUpdate:
         # Should buffer instructions for later
         concise_prefix = _VERBOSITY_PREFIXES["concise"]
         assert consultation._pending_instructions == concise_prefix + "Base prompt"
+
+
+# ============================================================
+# B13 post-mortem regression tests
+# ============================================================
+
+
+class TestFinalizeDeepSeekEnforcement:
+    """B13-03: Extraction must always use DeepSeek, not voice_config's Azure."""
+
+    @pytest.mark.asyncio
+    async def test_finalize_uses_deepseek_not_azure(self):
+        """finalize_consultation creates LLM client with 'deepseek', not voice_config provider."""
+        c = _make_consultation(messages=4)
+
+        mock_anketa = MagicMock()
+        mock_anketa.company_name = "TestCorp"
+        mock_anketa.contact_name = "Ivan"
+        mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
+
+        with patch("src.voice.consultant.create_llm_client") as mock_create, \
+             patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
+             patch("src.voice.consultant.OutputManager") as mock_out_cls, \
+             patch("src.voice.consultant.AnketaGenerator") as mock_gen:
+
+            mock_extractor = AsyncMock()
+            mock_extractor.extract = AsyncMock(return_value=mock_anketa)
+            mock_ext_cls.return_value = mock_extractor
+
+            mock_output = MagicMock()
+            mock_output.get_company_dir.return_value = "/tmp/test"
+            mock_output.save_anketa.return_value = {"md": "/tmp/a.md", "json": "/tmp/a.json"}
+            mock_output.save_dialogue.return_value = "/tmp/d.md"
+            mock_out_cls.return_value = mock_output
+            mock_gen.render_markdown.return_value = "# Anketa"
+
+            await finalize_consultation(c)
+
+            # B13-03: Must be called with "deepseek", not None/azure
+            mock_create.assert_called_with("deepseek")
+
+    @pytest.mark.asyncio
+    async def test_finalize_uses_cached_extractor_over_new(self):
+        """If cached extractor exists, finalize reuses it (no new LLM client)."""
+        c = _make_consultation(messages=4)
+
+        mock_anketa = MagicMock()
+        mock_anketa.company_name = "TestCorp"
+        mock_anketa.contact_name = ""
+        mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
+
+        mock_cached = AsyncMock()
+        mock_cached.extract = AsyncMock(return_value=mock_anketa)
+        c._cached_extractor = mock_cached
+
+        with patch("src.voice.consultant.create_llm_client") as mock_create, \
+             patch("src.voice.consultant.OutputManager") as mock_out_cls, \
+             patch("src.voice.consultant.AnketaGenerator") as mock_gen:
+
+            mock_output = MagicMock()
+            mock_output.get_company_dir.return_value = "/tmp/test"
+            mock_output.save_anketa.return_value = {"md": "/tmp/a.md", "json": "/tmp/a.json"}
+            mock_output.save_dialogue.return_value = "/tmp/d.md"
+            mock_out_cls.return_value = mock_output
+            mock_gen.render_markdown.return_value = "# Anketa"
+
+            await finalize_consultation(c)
+
+            # Should NOT create a new LLM client — cached extractor is used
+            mock_create.assert_not_called()
+            mock_cached.extract.assert_called_once()
+
+
+class TestPeriodicExtractionDeepSeek:
+    """B13-03: Periodic extraction in _extract_and_update_anketa uses DeepSeek."""
+
+    @pytest.mark.asyncio
+    async def test_periodic_extraction_creates_deepseek_client(self):
+        """_extract_and_update_anketa initializes extractor with default (DeepSeek)."""
+        c = _make_consultation(messages=8)
+        c._cached_extractor = None
+
+        mock_anketa = MagicMock()
+        mock_anketa.company_name = "TestCorp"
+        mock_anketa.contact_name = ""
+        mock_anketa.completion_rate.return_value = 0.5
+        mock_anketa.model_dump.return_value = {"company_name": "TestCorp"}
+
+        with patch("src.voice.consultant.create_llm_client") as mock_create, \
+             patch("src.voice.consultant.AnketaExtractor") as mock_ext_cls, \
+             patch("src.voice.consultant._session_mgr") as mock_mgr, \
+             patch("src.voice.consultant.AnketaGenerator") as mock_gen:
+
+            mock_extractor = AsyncMock()
+            mock_extractor.extract = AsyncMock(return_value=mock_anketa)
+            mock_ext_cls.return_value = mock_extractor
+            mock_gen.render_markdown.return_value = "# MD"
+
+            mock_session = MagicMock()
+            mock_session.voice_config = {"llm_provider": "azure"}
+            mock_session.document_context = None
+            mock_mgr.get_session.return_value = mock_session
+            mock_mgr.update_anketa.return_value = True
+
+            await _extract_and_update_anketa(c, "test-session-id")
+
+            # B13-03: Must use None (DeepSeek default), NOT voice_config's "azure"
+            mock_create.assert_called_once_with(None)
+
+
+class TestAsyncioShieldFix:
+    """B13-01: ensure_future(shield(...)) instead of create_task(shield(...))."""
+
+    @pytest.mark.asyncio
+    async def test_ensure_future_with_shield_works(self):
+        """asyncio.ensure_future(asyncio.shield(coro)) succeeds in Python 3.14."""
+        import asyncio
+
+        call_count = 0
+
+        async def dummy_coro():
+            nonlocal call_count
+            call_count += 1
+
+        # This is the pattern we use now — must not raise TypeError
+        task = asyncio.ensure_future(asyncio.shield(dummy_coro()))
+        await task
+        assert call_count == 1
+
+    @pytest.mark.asyncio
+    async def test_ensure_future_shield_is_shielded(self):
+        """Shielded coroutine continues even if wrapping task is cancelled."""
+        import asyncio
+
+        completed = False
+
+        async def slow_coro():
+            nonlocal completed
+            await asyncio.sleep(0.05)
+            completed = True
+
+        shielded = asyncio.ensure_future(asyncio.shield(slow_coro()))
+        # Cancel the outer future — the shielded inner should still run
+        shielded.cancel()
+        try:
+            await shielded
+        except asyncio.CancelledError:
+            pass
+        # Give time for shielded inner to complete
+        await asyncio.sleep(0.1)
+        assert completed is True

@@ -370,15 +370,17 @@ class SessionManager:
     def _deep_merge(base: dict, override: dict, _depth: int = 0) -> dict:
         """Recursively merge override into base. Lists and scalars overwrite.
 
-        None values are only skipped when a non-None value already exists in base
-        (prevents LLM extraction from erasing user-edited fields).
+        B13-06: Empty/falsy values (None, "", []) never overwrite existing truthy values.
+        This prevents LLM extraction from erasing previously filled fields
+        (e.g. company_name wiped by PDF-only extraction returning "").
         R16-12: Depth limit prevents stack overflow from crafted payloads.
         """
         if _depth > 20:
             return override  # Prevent stack overflow
         for key, val in override.items():
-            if val is None and key in base and base[key] is not None:
-                continue  # Don't overwrite existing data with None
+            # B13-06: Don't overwrite existing truthy data with empty/falsy value
+            if not val and key in base and base[key]:
+                continue
             if isinstance(val, dict) and isinstance(base.get(key), dict):
                 base[key] = SessionManager._deep_merge(base[key], val, _depth + 1)
             else:
@@ -454,17 +456,30 @@ class SessionManager:
 
     def update_document_context(self, session_id: str, document_context: dict) -> bool:
         """
-        Update only the document_context field of a session.
+        Update the document_context field of a session, MERGING with existing context.
+
+        B13-02: Second upload no longer overwrites first — documents are merged by filename,
+        key_facts/services are deduplicated, contacts are merged (non-empty preserved).
 
         Args:
             session_id: Short session identifier.
-            document_context: Serialized DocumentContext dict.
+            document_context: Serialized DocumentContext dict from new upload batch.
 
         Returns:
             True if the session was found and updated, False otherwise.
         """
         # R9-12: Lock for thread safety
         with self._lock:
+            import copy
+
+            # B13-02: Read existing context and merge instead of overwriting
+            session = self.get_session(session_id)
+            if session and session.document_context:
+                existing = copy.deepcopy(session.document_context)
+                merged = self._merge_document_contexts(existing, document_context)
+            else:
+                merged = document_context
+
             now = datetime.now(timezone.utc)
 
             cursor = self._conn.execute(
@@ -475,7 +490,7 @@ class SessionManager:
                 WHERE session_id = ?
                 """,
                 (
-                    json.dumps(document_context, ensure_ascii=False),
+                    json.dumps(merged, ensure_ascii=False),
                     now.isoformat(),
                     session_id,
                 ),
@@ -488,6 +503,81 @@ class SessionManager:
 
             logger.info("session_document_context_updated", session_id=session_id)
             return True
+
+    @staticmethod
+    def _merge_document_contexts(existing: dict, new: dict) -> dict:
+        """Merge new document_context into existing, deduplicating by filename.
+
+        B13-02: Prevents second upload from overwriting first batch.
+        - documents: merged by filename (new replaces same-name, appends new)
+        - key_facts, services_mentioned: union (deduplicated, case-insensitive)
+        - all_contacts: merged (non-empty values preserved)
+        - summary, questions_to_clarify: new values appended
+        """
+        # 1. Merge documents list by filename
+        existing_docs = {d.get("filename"): d for d in existing.get("documents", [])}
+        for doc in new.get("documents", []):
+            fname = doc.get("filename")
+            if fname and fname not in existing_docs:
+                existing_docs[fname] = doc
+        merged_docs = list(existing_docs.values())
+
+        # 2. Merge key_facts (deduplicate)
+        existing_facts = existing.get("key_facts", [])
+        new_facts = new.get("key_facts", [])
+        seen = {f.lower().strip() for f in existing_facts}
+        for fact in new_facts:
+            if fact.lower().strip() not in seen:
+                existing_facts.append(fact)
+                seen.add(fact.lower().strip())
+
+        # 3. Merge services_mentioned (deduplicate)
+        existing_services = existing.get("services_mentioned", [])
+        new_services = new.get("services_mentioned", [])
+        seen_svc = {s.lower().strip() for s in existing_services}
+        for svc in new_services:
+            if svc.lower().strip() not in seen_svc:
+                existing_services.append(svc)
+                seen_svc.add(svc.lower().strip())
+
+        # 4. Merge contacts (preserve non-empty)
+        existing_contacts = existing.get("all_contacts", {})
+        new_contacts = new.get("all_contacts", {})
+        for key, val in new_contacts.items():
+            if val and (key not in existing_contacts or not existing_contacts[key]):
+                existing_contacts[key] = val
+
+        # 5. Merge summary (append if both exist)
+        existing_summary = existing.get("summary", "")
+        new_summary = new.get("summary", "")
+        if new_summary and existing_summary:
+            merged_summary = existing_summary + "\n\n" + new_summary
+        else:
+            merged_summary = new_summary or existing_summary
+
+        # 6. Merge questions_to_clarify
+        existing_q = existing.get("questions_to_clarify", [])
+        new_q = new.get("questions_to_clarify", [])
+        seen_q = {q.lower().strip() for q in existing_q}
+        for q in new_q:
+            if q.lower().strip() not in seen_q:
+                existing_q.append(q)
+                seen_q.add(q.lower().strip())
+
+        # 7. Merge prices
+        existing_prices = existing.get("all_prices", [])
+        new_prices = new.get("all_prices", [])
+        existing_prices.extend(new_prices)
+
+        return {
+            "documents": merged_docs,
+            "summary": merged_summary,
+            "key_facts": existing_facts,
+            "services_mentioned": existing_services,
+            "questions_to_clarify": existing_q,
+            "all_contacts": existing_contacts,
+            "all_prices": existing_prices,
+        }
 
     def update_status(self, session_id: str, status: SessionStatus | str, force: bool = False) -> bool:
         """

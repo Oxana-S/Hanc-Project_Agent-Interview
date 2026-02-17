@@ -217,13 +217,11 @@ async def finalize_consultation(consultation: VoiceConsultationSession):
 
     try:
         # R19-03: Reuse cached extractor to avoid redundant LLM client creation
+        # B13-03: Always use DeepSeek for extraction, NOT voice_config's Azure
         if consultation._cached_extractor:
             extractor = consultation._cached_extractor
         else:
-            _llm_provider = None
-            if _fin_session and _fin_session.voice_config:
-                _llm_provider = _fin_session.voice_config.get("llm_provider")
-            llm = create_llm_client(_llm_provider)
+            llm = create_llm_client("deepseek")
             extractor = AnketaExtractor(llm)
 
         anketa = await extractor.extract(
@@ -1719,13 +1717,11 @@ async def _finalize_and_save(
                         pass
 
                 # R10-11: Reuse cached extractor if available
+                # B13-03: Always use DeepSeek for extraction, NOT voice_config's Azure
                 if consultation._cached_extractor:
                     extractor = consultation._cached_extractor
                 else:
-                    _fin_llm_provider = None
-                    if session and session.voice_config:
-                        _fin_llm_provider = session.voice_config.get("llm_provider")
-                    llm = create_llm_client(_fin_llm_provider)
+                    llm = create_llm_client("deepseek")
                     extractor = AnketaExtractor(llm)
 
                 anketa = await extractor.extract(
@@ -2096,10 +2092,12 @@ def _register_event_handlers(
         consultation._finalization_started = True
 
         if db_backed and session_id:
-            _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, session_id))))
+            # B13-01: Python 3.14 — asyncio.shield() returns Future, not coroutine.
+            # asyncio.create_task() requires a coroutine, so use ensure_future instead.
+            _track_agent_task(asyncio.ensure_future(asyncio.shield(_finalize_and_save(consultation, session_id))))
         elif len(consultation.dialogue_history) >= 2:
             # Standalone mode: still run finalization for local output
-            _track_agent_task(asyncio.create_task(asyncio.shield(_finalize_and_save(consultation, None))))
+            _track_agent_task(asyncio.ensure_future(asyncio.shield(_finalize_and_save(consultation, None))))
 
     event_log.info("All event handlers registered successfully")
 
@@ -2503,9 +2501,21 @@ async def entrypoint(ctx: JobContext):
         await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
         debug_log.info(f"STEP 4/5: Connected to room {ctx.room.name}")
 
-        # Log remote participants and their tracks
+        # B13-04: Guard against duplicate agents — if another agent participant
+        # is already in the room, bail out to prevent double processing.
         for pid, participant in ctx.room.remote_participants.items():
             debug_log.info(f"  Remote participant: {participant.identity}")
+            if participant.identity.startswith("agent-"):
+                debug_log.warning(
+                    f"STEP 4/5: DUPLICATE AGENT detected ({participant.identity}), "
+                    f"aborting to prevent double processing"
+                )
+                logger.warning(
+                    "duplicate_agent_detected_aborting",
+                    room=ctx.room.name,
+                    existing_agent=participant.identity,
+                )
+                return  # Bail out — another agent is already handling this room
             for tid, track_pub in participant.track_publications.items():
                 debug_log.info(f"    Track: {track_pub.kind} - subscribed={track_pub.subscribed}")
     except Exception as e:

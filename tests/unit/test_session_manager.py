@@ -556,3 +556,199 @@ class TestClose:
         assert loaded is not None
         assert loaded.room_name == "persist-check"
         mgr2.close()
+
+
+# ============================================================
+# B13 post-mortem regression tests
+# ============================================================
+
+
+class TestDeepMergeProtectNonEmpty:
+    """B13-06: _deep_merge must never overwrite truthy values with falsy ones."""
+
+    def test_empty_string_does_not_overwrite(self):
+        """Empty string '' must not overwrite existing company_name."""
+        base = {"company_name": "Tierarztzentrum am Seepark", "contact_name": "Sergey"}
+        override = {"company_name": "", "contact_name": ""}
+        result = SessionManager._deep_merge(base, override)
+        assert result["company_name"] == "Tierarztzentrum am Seepark"
+        assert result["contact_name"] == "Sergey"
+
+    def test_none_does_not_overwrite(self):
+        """None must not overwrite existing value."""
+        base = {"website": "tierarztzentrum-seepark.at"}
+        override = {"website": None}
+        result = SessionManager._deep_merge(base, override)
+        assert result["website"] == "tierarztzentrum-seepark.at"
+
+    def test_empty_list_does_not_overwrite(self):
+        """Empty list must not overwrite existing services."""
+        base = {"services": ["vet care", "surgery"]}
+        override = {"services": []}
+        result = SessionManager._deep_merge(base, override)
+        assert result["services"] == ["vet care", "surgery"]
+
+    def test_truthy_value_overwrites(self):
+        """A truthy value should overwrite an existing truthy value."""
+        base = {"company_name": "Old Name"}
+        override = {"company_name": "New Name"}
+        result = SessionManager._deep_merge(base, override)
+        assert result["company_name"] == "New Name"
+
+    def test_truthy_value_fills_empty(self):
+        """A truthy value should fill an empty field."""
+        base = {"company_name": ""}
+        override = {"company_name": "New Name"}
+        result = SessionManager._deep_merge(base, override)
+        assert result["company_name"] == "New Name"
+
+    def test_new_key_added(self):
+        """New keys from override should be added even if falsy."""
+        base = {}
+        override = {"company_name": "Test Corp"}
+        result = SessionManager._deep_merge(base, override)
+        assert result["company_name"] == "Test Corp"
+
+    def test_nested_dict_merge(self):
+        """Nested dicts are merged recursively with same protection."""
+        base = {"contacts": {"phone": "+43123456", "email": ""}}
+        override = {"contacts": {"phone": "", "email": "test@test.at"}}
+        result = SessionManager._deep_merge(base, override)
+        assert result["contacts"]["phone"] == "+43123456"
+        assert result["contacts"]["email"] == "test@test.at"
+
+    def test_zero_does_not_overwrite_nonzero(self):
+        """Numeric 0 (falsy) should not overwrite a nonzero value."""
+        base = {"completion_rate": 0.87}
+        override = {"completion_rate": 0}
+        result = SessionManager._deep_merge(base, override)
+        assert result["completion_rate"] == 0.87
+
+    def test_zero_can_fill_missing(self):
+        """Numeric 0 can be added as a new key."""
+        base = {}
+        override = {"completion_rate": 0}
+        result = SessionManager._deep_merge(base, override)
+        assert result["completion_rate"] == 0
+
+
+class TestMergeDocumentContexts:
+    """B13-02: _merge_document_contexts deduplicates and merges batches."""
+
+    def test_first_upload_no_merge(self, manager):
+        """First upload stores context directly."""
+        session = manager.create_session()
+        ctx = {
+            "documents": [{"filename": "a.md", "doc_type": "md"}],
+            "key_facts": ["fact1"],
+            "services_mentioned": ["svc1"],
+            "all_contacts": {"phone": "+43"},
+            "summary": "Summary A",
+            "questions_to_clarify": [],
+            "all_prices": [],
+        }
+        assert manager.update_document_context(session.session_id, ctx)
+        loaded = manager.get_session(session.session_id)
+        assert len(loaded.document_context["documents"]) == 1
+
+    def test_second_upload_merges_documents(self, manager):
+        """Second upload merges documents by filename (no duplicates)."""
+        session = manager.create_session()
+        batch1 = {
+            "documents": [{"filename": "TaS_Analysis.md", "doc_type": "md"}],
+            "key_facts": ["clinic has 10 vets"],
+            "services_mentioned": ["surgery"],
+            "all_contacts": {"phone": "+43123456"},
+            "summary": "Business analysis",
+            "questions_to_clarify": [],
+            "all_prices": [],
+        }
+        manager.update_document_context(session.session_id, batch1)
+
+        batch2 = {
+            "documents": [{"filename": "VetLaw.pdf", "doc_type": "pdf"}],
+            "key_facts": ["legal requirement for vet license"],
+            "services_mentioned": ["regulatory compliance"],
+            "all_contacts": {"website": "ris.bka.at"},
+            "summary": "Legal framework",
+            "questions_to_clarify": [],
+            "all_prices": [],
+        }
+        manager.update_document_context(session.session_id, batch2)
+
+        loaded = manager.get_session(session.session_id)
+        ctx = loaded.document_context
+
+        # Both documents present
+        filenames = [d["filename"] for d in ctx["documents"]]
+        assert "TaS_Analysis.md" in filenames
+        assert "VetLaw.pdf" in filenames
+
+        # key_facts merged
+        assert "clinic has 10 vets" in ctx["key_facts"]
+        assert "legal requirement for vet license" in ctx["key_facts"]
+
+        # services merged
+        assert "surgery" in ctx["services_mentioned"]
+        assert "regulatory compliance" in ctx["services_mentioned"]
+
+        # contacts merged (non-empty preserved)
+        assert ctx["all_contacts"]["phone"] == "+43123456"
+        assert ctx["all_contacts"]["website"] == "ris.bka.at"
+
+        # summaries concatenated
+        assert "Business analysis" in ctx["summary"]
+        assert "Legal framework" in ctx["summary"]
+
+    def test_duplicate_filename_not_duplicated(self, manager):
+        """Re-uploading same filename does not duplicate the document entry."""
+        session = manager.create_session()
+        batch = {
+            "documents": [{"filename": "a.md", "doc_type": "md"}],
+            "key_facts": [], "services_mentioned": [],
+            "all_contacts": {}, "summary": "", "questions_to_clarify": [],
+            "all_prices": [],
+        }
+        manager.update_document_context(session.session_id, batch)
+        manager.update_document_context(session.session_id, batch)
+
+        loaded = manager.get_session(session.session_id)
+        assert len(loaded.document_context["documents"]) == 1
+
+    def test_contacts_non_empty_preserved(self, manager):
+        """Second upload with empty contact does not overwrite existing non-empty."""
+        session = manager.create_session()
+        batch1 = {
+            "documents": [], "key_facts": [], "services_mentioned": [],
+            "all_contacts": {"phone": "+43123456", "email": "info@clinic.at"},
+            "summary": "", "questions_to_clarify": [], "all_prices": [],
+        }
+        batch2 = {
+            "documents": [], "key_facts": [], "services_mentioned": [],
+            "all_contacts": {"phone": "", "website": "clinic.at"},
+            "summary": "", "questions_to_clarify": [], "all_prices": [],
+        }
+        manager.update_document_context(session.session_id, batch1)
+        manager.update_document_context(session.session_id, batch2)
+
+        loaded = manager.get_session(session.session_id)
+        contacts = loaded.document_context["all_contacts"]
+        assert contacts["phone"] == "+43123456"  # preserved
+        assert contacts["email"] == "info@clinic.at"  # preserved
+        assert contacts["website"] == "clinic.at"  # new added
+
+    def test_key_facts_case_insensitive_dedup(self):
+        """Key facts are deduplicated case-insensitively."""
+        existing = {
+            "documents": [], "key_facts": ["Clinic has 10 vets"],
+            "services_mentioned": [], "all_contacts": {},
+            "summary": "", "questions_to_clarify": [], "all_prices": [],
+        }
+        new = {
+            "documents": [], "key_facts": ["clinic has 10 vets", "New fact"],
+            "services_mentioned": [], "all_contacts": {},
+            "summary": "", "questions_to_clarify": [], "all_prices": [],
+        }
+        result = SessionManager._merge_document_contexts(existing, new)
+        assert len(result["key_facts"]) == 2
+        assert "New fact" in result["key_facts"]
