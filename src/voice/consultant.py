@@ -1192,10 +1192,11 @@ async def _extract_and_update_anketa(
         # R4-18: Reuse cached extractor to avoid recreating LLM client per call
         # Bug #7 fix: Always use default LLM (DeepSeek) for extraction, not voice_config's
         # llm_provider (Azure). Azure gpt-4.1-mini takes 11-13s vs DeepSeek's 2-3s.
+        # B14: Explicit "deepseek" — create_llm_client(None) reads LLM_PROVIDER env which may be "azure"
         if consultation._cached_extractor is None:
-            llm = create_llm_client(None)  # default = DeepSeek
+            llm = create_llm_client("deepseek")
             consultation._cached_extractor = AnketaExtractor(llm)
-            consultation._cached_extractor_provider = None
+            consultation._cached_extractor_provider = "deepseek"
         extractor = consultation._cached_extractor
 
         # Bug #12: Inject country context hint for extraction LLM
@@ -2673,17 +2674,25 @@ async def entrypoint(ctx: JobContext):
                             if summary:
                                 doc_block_parts.append(f"Сводка: {summary}")
                             if key_facts:
-                                facts_str = "\n".join(f"- {f}" for f in key_facts[:15])
+                                # B14: ALL key facts, not just 15 — agent needs full picture
+                                facts_str = "\n".join(f"- {f}" for f in key_facts)
                                 doc_block_parts.append(f"Ключевые факты:\n{facts_str}")
                             if services:
-                                doc_block_parts.append(f"Услуги: {', '.join(services[:20])}")
+                                doc_block_parts.append(f"Услуги: {', '.join(services[:30])}")
                             if contacts:
                                 c_str = ", ".join(f"{k}: {v}" for k, v in contacts.items() if v)
                                 if c_str:
                                     doc_block_parts.append(f"Контакты: {c_str}")
-                            if docs:
-                                fnames = [d.get('filename', '') for d in docs if d.get('filename')]
-                                doc_block_parts.append(f"Файлы: {', '.join(fnames)}")
+
+                            # B14: Include document text previews — agent needs actual content
+                            # to answer specific questions (e.g. "how many agents are recommended")
+                            for doc_item in docs:
+                                text_preview = doc_item.get('text_preview', '')
+                                if text_preview:
+                                    fname = doc_item.get('filename', 'документ')
+                                    doc_block_parts.append(
+                                        f"--- Содержимое {fname} ---\n{text_preview}"
+                                    )
                         elif hasattr(doc_ctx, 'to_prompt_context'):
                             doc_block_parts.append(doc_ctx.to_prompt_context())
                         elif hasattr(doc_ctx, 'summary') and doc_ctx.summary:
@@ -2694,19 +2703,25 @@ async def entrypoint(ctx: JobContext):
                                 or getattr(getattr(session, '_activity', None), 'instructions', None) \
                                 or ''
                             doc_content = "\n\n".join(doc_block_parts)
+                            # B14: 10K limit (was 3K) — agent needs enough text to answer questions
                             doc_block = (
                                 "\n\n### Документы клиента:\n"
                                 "ВАЖНО: Клиент загрузил документы, и их содержимое УЖЕ извлечено и доступно тебе ниже. "
                                 "Ты МОЖЕШЬ и ДОЛЖЕН использовать эту информацию в разговоре. "
-                                "Не говори клиенту, что ты не можешь просматривать документы — ты уже видишь их содержимое.\n\n"
-                                f"{doc_content[:3000]}"
+                                "Не говори клиенту, что ты не можешь просматривать документы — ты уже видишь их содержимое. "
+                                "Когда клиент спрашивает о деталях из документов — цитируй конкретные данные.\n\n"
+                                f"{doc_content[:10000]}"
                             )
                             if "### Документы клиента:" not in current_instr:
                                 updated_instr = current_instr + doc_block
                                 _track_agent_task(asyncio.create_task(
                                     _update_instructions_safe(consultation, session, updated_instr)
                                 ))
-                                debug_log.info("document_context_injected_into_instructions")
+                                debug_log.info(
+                                    f"document_context_injected_into_instructions "
+                                    f"block_length={len(doc_block)} "
+                                    f"docs_with_preview={sum(1 for d in docs if d.get('text_preview'))}"
+                                )
         except Exception as e:
             debug_log.warning(f"Failed to handle document notification: {e}")
 

@@ -1894,8 +1894,8 @@ class TestPeriodicExtractionDeepSeek:
 
             await _extract_and_update_anketa(c, "test-session-id")
 
-            # B13-03: Must use None (DeepSeek default), NOT voice_config's "azure"
-            mock_create.assert_called_once_with(None)
+            # B14: Must use explicit "deepseek", NOT None (which reads LLM_PROVIDER env → azure)
+            mock_create.assert_called_once_with("deepseek")
 
 
 class TestAsyncioShieldFix:
