@@ -1098,6 +1098,46 @@ async def _update_instructions_safe(
         await activity.update_instructions(new_instructions)
 
 
+async def _announce_documents_received(agent_session: AgentSession, doc_ctx: dict):
+    """BUG #1 fix: Trigger agent to proactively acknowledge document receipt.
+
+    After document injection into instructions, the agent needs a nudge
+    to announce it received the documents. Without this, the agent continues
+    its previous flow and may even say "documents not uploaded yet."
+    """
+    # Wait for instruction update to propagate
+    await asyncio.sleep(1.0)
+
+    doc_count = len(doc_ctx.get('documents', [])) if isinstance(doc_ctx, dict) else 0
+    key_facts = doc_ctx.get('key_facts', []) if isinstance(doc_ctx, dict) else []
+    services = doc_ctx.get('services_mentioned', []) if isinstance(doc_ctx, dict) else []
+
+    # Build hints for the announcement
+    hints = []
+    if key_facts:
+        hints.append(f"ключевые факты: {', '.join(key_facts[:3])}")
+    if services:
+        hints.append(f"услуги: {', '.join(services[:5])}")
+
+    hint_str = "; ".join(hints) if hints else "содержимое доступно в твоих инструкциях"
+
+    prompt = (
+        f"[Клиент только что загрузил {doc_count} документ(а/ов). "
+        f"Ты уже получил их полное содержимое в своих инструкциях. "
+        f"Краткая сводка: {hint_str}. "
+        f"Кратко подтверди получение, назови ключевые данные из документов "
+        f"(название компании, основные услуги, рекомендации) и предложи "
+        f"проверить заполненную анкету или уточнить недостающие данные. "
+        f"НЕ говори что не можешь просматривать документы — ты их УЖЕ видишь.]"
+    )
+
+    try:
+        await agent_session.generate_reply(user_input=prompt)
+        logger.info("documents_announced_to_user", doc_count=doc_count)
+    except Exception as e:
+        logger.warning("failed_to_announce_documents", error=str(e))
+
+
 async def _extract_and_update_anketa(
     consultation: VoiceConsultationSession,
     session_id: str,
@@ -1358,6 +1398,20 @@ async def _extract_and_update_anketa(
         # R23-01: Reset per-session circuit breaker on success
         consultation._extraction_consecutive_failures = 0
 
+        # BUG #2 fix: Periodic dialogue persistence — prevent data loss on crash/disconnect
+        # dialogue_history was previously saved ONLY at finalize → if session never finishes,
+        # all messages are lost. Now we save alongside each extraction cycle.
+        if len(consultation.dialogue_history) > 0:
+            try:
+                await _update_dialogue_via_api(
+                    session_id,
+                    dialogue_history=consultation.dialogue_history,
+                    duration_seconds=consultation.get_duration_seconds(),
+                    status=None,  # Don't change status
+                )
+            except Exception as e:
+                anketa_log.warning("periodic_dialogue_save_failed", error=str(e))
+
         # --- Launch background research if website detected ---
         if not consultation.research_done and anketa.website and _consultation_type != "interview":
             consultation.research_done = True  # set early to prevent duplicates
@@ -1435,8 +1489,25 @@ async def _extract_and_update_anketa(
 
                     if industry_id:
                         detector = get_country_detector()
+
+                        # BUG #3 fix: Extract phone/domain from document_context as fallback
+                        # Documents often contain +43/+49 phone numbers, .at/.de domains
+                        # that CountryDetector can use when dialogue phone is not yet known.
+                        doc_phone = None
+                        if db_session and db_session.document_context and isinstance(db_session.document_context, dict):
+                            doc_contacts = db_session.document_context.get('all_contacts', {})
+                            doc_phone = doc_contacts.get('phone', '') or doc_contacts.get('telefon', '') or ''
+                            # Also try to extract domain from email for country detection
+                            doc_email = doc_contacts.get('email', '')
+                            if doc_email and '@' in doc_email:
+                                doc_domain = doc_email.split('@')[1]
+                                # Append domain hint to user_text for detection
+                                if doc_domain:
+                                    user_text = user_text + f" website: {doc_domain}"
+
+                        effective_phone = current_phone or doc_phone
                         region, country = detector.detect(
-                            phone=current_phone or None,
+                            phone=effective_phone or None,
                             dialogue_text=user_text,
                         )
                         if region and country:
@@ -2684,6 +2755,20 @@ async def entrypoint(ctx: JobContext):
                                 if c_str:
                                     doc_block_parts.append(f"Контакты: {c_str}")
 
+                            # BUG #5 fix: Extract agent recommendations from key_facts
+                            # Documents may contain structured recommendations for multiple agents
+                            # (e.g. "5 recommended agents: Reception, Support, Sales...")
+                            _rec_keywords = ['агент', 'agent', 'рекоменд', 'recommend', 'роль', 'role', 'бот', 'bot']
+                            agent_recommendations = [
+                                f for f in key_facts
+                                if any(w in f.lower() for w in _rec_keywords)
+                            ]
+                            if agent_recommendations:
+                                rec_str = "\n".join(f"- {r}" for r in agent_recommendations)
+                                doc_block_parts.append(
+                                    f"Рекомендации по агентам из документов:\n{rec_str}"
+                                )
+
                             # B14: Include full document text — agent needs actual content
                             # to answer specific questions (e.g. "how many agents are recommended")
                             # Budget: 20K chars per doc (Azure Realtime 128K context can handle it)
@@ -2725,6 +2810,10 @@ async def entrypoint(ctx: JobContext):
                                     f"block_length={len(doc_block)} "
                                     f"docs_with_preview={sum(1 for d in docs if d.get('text_preview'))}"
                                 )
+                                # BUG #1 fix: Proactively announce document receipt
+                                _track_agent_task(asyncio.create_task(
+                                    _announce_documents_received(session, doc_ctx)
+                                ))
         except Exception as e:
             debug_log.warning(f"Failed to handle document notification: {e}")
 
