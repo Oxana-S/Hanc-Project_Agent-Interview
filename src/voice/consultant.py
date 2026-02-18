@@ -2657,19 +2657,50 @@ async def entrypoint(ctx: JobContext):
                         )
                         debug_log.info(f"Agent received document notification: {metadata}")
 
-                        # F3.1: Inject document context into agent instructions
+                        # B14: Inject comprehensive document context into agent instructions
+                        # Agent must know it HAS the data — otherwise it says "I can't view files"
                         doc_ctx = fresh_session.document_context
-                        doc_summary = None
-                        if isinstance(doc_ctx, dict):
-                            doc_summary = doc_ctx.get('summary') or doc_ctx.get('text', '')
-                        elif hasattr(doc_ctx, 'summary'):
-                            doc_summary = doc_ctx.summary
+                        doc_block_parts = []
 
-                        if doc_summary and session:
+                        if isinstance(doc_ctx, dict):
+                            # Build rich context from all available fields
+                            summary = doc_ctx.get('summary', '')
+                            key_facts = doc_ctx.get('key_facts', [])
+                            services = doc_ctx.get('services_mentioned', [])
+                            contacts = doc_ctx.get('all_contacts', {})
+                            docs = doc_ctx.get('documents', [])
+
+                            if summary:
+                                doc_block_parts.append(f"Сводка: {summary}")
+                            if key_facts:
+                                facts_str = "\n".join(f"- {f}" for f in key_facts[:15])
+                                doc_block_parts.append(f"Ключевые факты:\n{facts_str}")
+                            if services:
+                                doc_block_parts.append(f"Услуги: {', '.join(services[:20])}")
+                            if contacts:
+                                c_str = ", ".join(f"{k}: {v}" for k, v in contacts.items() if v)
+                                if c_str:
+                                    doc_block_parts.append(f"Контакты: {c_str}")
+                            if docs:
+                                fnames = [d.get('filename', '') for d in docs if d.get('filename')]
+                                doc_block_parts.append(f"Файлы: {', '.join(fnames)}")
+                        elif hasattr(doc_ctx, 'to_prompt_context'):
+                            doc_block_parts.append(doc_ctx.to_prompt_context())
+                        elif hasattr(doc_ctx, 'summary') and doc_ctx.summary:
+                            doc_block_parts.append(doc_ctx.summary)
+
+                        if doc_block_parts and session:
                             current_instr = getattr(consultation, '_latest_instructions', None) \
                                 or getattr(getattr(session, '_activity', None), 'instructions', None) \
                                 or ''
-                            doc_block = f"\n\n### Документы клиента:\n{str(doc_summary)[:3000]}"
+                            doc_content = "\n\n".join(doc_block_parts)
+                            doc_block = (
+                                "\n\n### Документы клиента:\n"
+                                "ВАЖНО: Клиент загрузил документы, и их содержимое УЖЕ извлечено и доступно тебе ниже. "
+                                "Ты МОЖЕШЬ и ДОЛЖЕН использовать эту информацию в разговоре. "
+                                "Не говори клиенту, что ты не можешь просматривать документы — ты уже видишь их содержимое.\n\n"
+                                f"{doc_content[:3000]}"
+                            )
                             if "### Документы клиента:" not in current_instr:
                                 updated_instr = current_instr + doc_block
                                 _track_agent_task(asyncio.create_task(

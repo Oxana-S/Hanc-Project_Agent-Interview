@@ -234,7 +234,7 @@ body {
 #session-screen.active {
     flex: 1;
     min-height: 0;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: contain children, inner panels scroll */
 }
 
 /* ===== Dashboard ===== */
@@ -784,7 +784,7 @@ body {
     gap: 1.5rem;
     flex: 1;
     min-height: 0;
-    overflow: visible;  /* v4.3: was hidden - blocked scrolling */
+    overflow: hidden;  /* B14: contain children, .anketa-form/.chat-messages scroll */
 }
 
 .interview-left {
@@ -792,7 +792,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: contain children, .chat-messages scrolls */
 }
 
 .interview-right {
@@ -800,7 +800,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: contain children, .anketa-form scrolls */
 }
 
 /* Progress */
@@ -1117,7 +1117,7 @@ body {
     border: 1px solid var(--surface-light);
     flex: 1;
     min-height: 0;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: contain panel, .anketa-form scrolls internally */
 }
 
 .anketa-header {
@@ -1596,8 +1596,9 @@ body {
 .upload-status {
     font-size: 0.7rem;
     line-height: 1.3;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: clip long file names */
     flex: 1;
+    min-width: 0;  /* B14: allow flex child to shrink below content */
 }
 
 .upload-success {
@@ -1610,7 +1611,7 @@ body {
     color: var(--text-muted);
     display: block;
     margin-top: 0.15rem;
-    overflow: visible;  /* v4.3: was hidden */
+    overflow: hidden;  /* B14: needed for text-overflow: ellipsis */
     text-overflow: ellipsis;
     white-space: nowrap;
 }
