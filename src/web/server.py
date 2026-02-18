@@ -1317,7 +1317,7 @@ async def upload_documents(
     # B14: Also persist text_preview — agent needs document text for answering questions
     for doc_obj, doc_data in zip(doc_context.documents, context_dict.get("documents", [])):
         doc_data["word_count"] = doc_obj.word_count
-        doc_data["text_preview"] = doc_obj.full_text[:4000]  # ~1000 words per doc
+        doc_data["text_preview"] = doc_obj.full_text[:50000]  # Full text up to ~12K words
     # Remove heavy chunks from storage (keep summary + extracted info only)
     for doc_data in context_dict.get("documents", []):
         doc_data.pop("chunks", None)

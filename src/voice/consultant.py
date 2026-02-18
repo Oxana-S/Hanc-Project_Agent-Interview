@@ -2684,14 +2684,15 @@ async def entrypoint(ctx: JobContext):
                                 if c_str:
                                     doc_block_parts.append(f"Контакты: {c_str}")
 
-                            # B14: Include document text previews — agent needs actual content
+                            # B14: Include full document text — agent needs actual content
                             # to answer specific questions (e.g. "how many agents are recommended")
+                            # Budget: 20K chars per doc (Azure Realtime 128K context can handle it)
                             for doc_item in docs:
                                 text_preview = doc_item.get('text_preview', '')
                                 if text_preview:
                                     fname = doc_item.get('filename', 'документ')
                                     doc_block_parts.append(
-                                        f"--- Содержимое {fname} ---\n{text_preview}"
+                                        f"--- Содержимое {fname} ---\n{text_preview[:20000]}"
                                     )
                         elif hasattr(doc_ctx, 'to_prompt_context'):
                             doc_block_parts.append(doc_ctx.to_prompt_context())
@@ -2703,14 +2704,16 @@ async def entrypoint(ctx: JobContext):
                                 or getattr(getattr(session, '_activity', None), 'instructions', None) \
                                 or ''
                             doc_content = "\n\n".join(doc_block_parts)
-                            # B14: 10K limit (was 3K) — agent needs enough text to answer questions
+                            # B14: 50K limit — Azure Realtime 128K context window handles this
+                            # Typical: 2-5 docs × 15-20K chars = 30-100K chars, we cap at 50K
                             doc_block = (
                                 "\n\n### Документы клиента:\n"
-                                "ВАЖНО: Клиент загрузил документы, и их содержимое УЖЕ извлечено и доступно тебе ниже. "
+                                "ВАЖНО: Клиент загрузил документы, и их ПОЛНОЕ содержимое доступно тебе ниже. "
                                 "Ты МОЖЕШЬ и ДОЛЖЕН использовать эту информацию в разговоре. "
                                 "Не говори клиенту, что ты не можешь просматривать документы — ты уже видишь их содержимое. "
-                                "Когда клиент спрашивает о деталях из документов — цитируй конкретные данные.\n\n"
-                                f"{doc_content[:10000]}"
+                                "Когда клиент спрашивает о деталях из документов — цитируй конкретные данные, "
+                                "числа, имена, рекомендации.\n\n"
+                                f"{doc_content[:50000]}"
                             )
                             if "### Документы клиента:" not in current_instr:
                                 updated_instr = current_instr + doc_block
