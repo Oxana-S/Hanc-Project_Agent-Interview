@@ -103,12 +103,12 @@ LIVEKIT_URL=wss://<ваш-проект>.livekit.cloud
 AZURE_OPENAI_API_KEY=...
 AZURE_OPENAI_ENDPOINT=https://<ресурс>.openai.azure.com/
 AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview
-AZURE_OPENAI_REALTIME_API_VERSION=2024-10-01-preview
+AZURE_OPENAI_REALTIME_API_VERSION=2025-04-01-preview
 
 # DeepSeek — анализ и анкета
 DEEPSEEK_API_KEY=...
 DEEPSEEK_API_ENDPOINT=https://api.deepseek.com/v1
-DEEPSEEK_MODEL=deepseek-reasoner
+DEEPSEEK_MODEL=deepseek-chat
 ```
 
 **Терминал 1 — веб-сервер:**
@@ -198,7 +198,8 @@ DEEPSEEK_MODEL=deepseek-reasoner
 │   │
 │   ├── session/                     # Управление сессиями
 │   │   ├── manager.py               # SessionManager (SQLite)
-│   │   └── models.py                # ConsultationSession
+│   │   ├── models.py                # SessionStatus, RuntimeStatus, ConsultationSession
+│   │   └── status.py                # State machine (ALLOWED_TRANSITIONS)
 │   │
 │   ├── llm/
 │   │   ├── deepseek.py              # DeepSeek LLM клиент
@@ -293,8 +294,8 @@ DEEPSEEK_MODEL=deepseek-reasoner
 │       ├── extract.yaml             # Извлечение данных из диалога
 │       └── expert.yaml              # Генерация FAQ, KPI, рекомендаций
 │
-├── tests/                           # Тесты (972 юнит-теста)
-│   ├── unit/                        # Юнит-тесты (9 модулей)
+├── tests/                           # Тесты (1905 юнит-тестов)
+│   ├── unit/                        # Юнит-тесты (35 модулей)
 │   └── scenarios/                   # YAML-сценарии (12 штук)
 │
 ├── input/                           # Документы клиентов (для анализа)
@@ -374,7 +375,7 @@ Redis и PostgreSQL поднимаются через `config/docker-compose.yml
 ## Тестирование
 
 ```bash
-# Юнит-тесты (972 теста)
+# Юнит-тесты (1905 тестов)
 ./venv/bin/python -m pytest tests/ -v
 
 # Тестовая симуляция
@@ -421,7 +422,7 @@ logs/
 grep -E "FAILED|ERROR|404" logs/azure.log
 
 # Частая причина: неправильная API-версия для Realtime
-# В .env должно быть: AZURE_OPENAI_REALTIME_API_VERSION=2024-10-01-preview
+# В .env должно быть: AZURE_OPENAI_REALTIME_API_VERSION=2025-04-01-preview
 ```
 
 ### Порт 8000 занят

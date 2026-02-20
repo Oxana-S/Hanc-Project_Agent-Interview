@@ -44,7 +44,9 @@ LiveKit Agent, который:
 - Подключается к комнате при появлении клиента
 - Использует Azure OpenAI Realtime API для STT/TTS/LLM
 - Ведёт диалог по заданному промпту
-- Извлекает данные в анкету (каждые 6 сообщений через DeepSeek)
+- Извлекает данные в анкету в реальном времени (после каждого сообщения, DeepSeek, sliding window 12 msgs)
+- Периодически сохраняет dialogue_history в БД (при каждом цикле extraction)
+- Проактивно объявляет о полученных документах клиента
 - Защищён от дублирования через PID-файл (`.agent.pid`)
 
 ```bash
@@ -92,7 +94,7 @@ LIVEKIT_API_SECRET=your-api-secret
 AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 AZURE_OPENAI_API_KEY=your-api-key
 AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-realtime-preview
-AZURE_OPENAI_API_VERSION=2024-12-17
+AZURE_OPENAI_API_VERSION=2025-04-01-preview
 ```
 
 ### LiveKit Cloud Setup
@@ -166,15 +168,15 @@ model = lk_openai.realtime.RealtimeModel.with_azure(
     azure_deployment="gpt-4o-realtime-preview",
     azure_endpoint="wss://...",  # Важно: wss://, не https://
     api_key="...",
-    api_version="2024-12-17",
+    api_version="2025-04-01-preview",
     voice="alloy",
     temperature=0.7,
     turn_detection=TurnDetection(
         type="server_vad",
-        threshold=0.85,        # Строгий фильтр шума (0.5=default, выше=менее чувствительный)
-        prefix_padding_ms=500,  # Буфер аудио перед началом речи
-        silence_duration_ms=2000,  # 2с тишины до окончания реплики
-        eagerness="low",        # Терпеливый: ждёт дольше перед ответом ("high"=немедленно)
+        threshold=0.9,           # v4.0: Строгий фильтр шума
+        prefix_padding_ms=500,   # Буфер аудио перед началом речи
+        silence_duration_ms=4000, # v4.0: 4с тишины до окончания реплики
+        eagerness="low",         # Терпеливый: ждёт дольше перед ответом
     ),
 )
 ```
@@ -193,10 +195,10 @@ agent = VoiceAgent(instructions=system_prompt)
 session = AgentSession(
     llm=realtime_model,
     allow_interruptions=True,
-    min_interruption_duration=1.5,   # Минимум 1.5с речи для прерывания
-    min_interruption_words=3,        # Минимум 3 слова
-    min_endpointing_delay=1.5,       # Ждать 1.5с после тишины перед ответом
-    false_interruption_timeout=2.5,  # Время на определение ложного прерывания
+    min_interruption_duration=2.0,   # v4.0: Минимум 2с речи для прерывания
+    min_interruption_words=4,        # v4.0: Минимум 4 слова
+    min_endpointing_delay=2.5,       # v4.0: Ждать 2.5с после тишины перед ответом
+    false_interruption_timeout=3.0,  # v4.0: Время на определение ложного прерывания
     resume_false_interruption=True,  # Возобновлять речь после ложного прерывания
 )
 
@@ -303,18 +305,19 @@ curl -X DELETE http://localhost:8000/api/rooms
 
 **Решение (v2.0):**
 
-Серверная сторона (TurnDetection — Azure VAD):
-- `threshold`: 0.65 → **0.85** (строже фильтрует шум)
-- `silence_duration_ms`: 1500 → **2000** (ждёт 2с тишины)
+Серверная сторона (TurnDetection — Azure VAD, v4.0):
+- `threshold`: 0.65 → **0.9** (строже фильтрует шум)
+- `silence_duration_ms`: 1500 → **4000** (ждёт 4с тишины)
 - `prefix_padding_ms`: 300 → **500** (больше контекста)
 - `eagerness`: не задан → **"low"** (терпеливый, не торопится отвечать)
 
-Клиентская сторона (AgentSession — LiveKit SDK):
-- `min_interruption_duration`: 0.8 → **1.5** (1.5с речи для прерывания)
-- `min_interruption_words`: 2 → **3** (минимум 3 слова)
-- `min_endpointing_delay`: 0.5 → **1.5** (ждать 1.5с перед ответом)
-- `false_interruption_timeout`: 1.5 → **2.5** (было ниже дефолта 2.0 — ошибка v1.5!)
+Клиентская сторона (AgentSession — LiveKit SDK, v4.0):
+- `min_interruption_duration`: 0.8 → **2.0** (2с речи для прерывания)
+- `min_interruption_words`: 2 → **4** (минимум 4 слова)
+- `min_endpointing_delay`: 0.5 → **2.5** (ждать 2.5с перед ответом)
+- `false_interruption_timeout`: 1.5 → **3.0** (3с на определение ложного прерывания)
 - `resume_false_interruption`: True (возобновлять после ложных прерываний)
+- Greeting lock: **3.0s** (игнорировать mic noise/echo во время приветствия)
 
 Также Azure OpenAI Realtime API может:
 
@@ -359,4 +362,4 @@ node tests/e2e_voice_test.js
 - LiveKit Agents SDK: >= 1.2.18
 - livekit-plugins-openai: >= 1.2.18 (TurnDetection вместо ServerVadOptions)
 - livekit-client (JS): 2.9.3
-- Azure OpenAI API: 2024-12-17
+- Azure OpenAI API: 2025-04-01-preview

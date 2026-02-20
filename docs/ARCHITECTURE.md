@@ -1,6 +1,6 @@
 # Архитектура Hanc.AI Voice Consultant
 
-Версия: 3.5 | Обновлено: 2026-02-08
+Версия: 5.1 | Обновлено: 2026-02-18
 
 ## Общая архитектура
 
@@ -108,8 +108,10 @@ Startup-событие: `_cleanup_stale_rooms()` — удаляет все LiveK
 - Подключение к LiveKit-комнате через WebRTC
 - Голосовое общение через Azure OpenAI Realtime (STT/TTS)
 - Запись диалога в VoiceConsultationSession
-- Периодическое извлечение анкеты (каждые 6 сообщений)
-- Синхронизацию состояния с SQLite (SessionManager)
+- Извлечение анкеты в реальном времени (после каждого сообщения пользователя, DeepSeek, sliding window 12 msgs)
+- Периодическое сохранение dialogue_history (при каждом цикле extraction)
+- Проактивное объявление о полученных документах (generate_reply после инъекции)
+- Синхронизацию состояния с SQLite через HTTP API (SessionManager)
 - Финализацию: полное извлечение анкеты + сохранение файлов
 - Защиту от дублирования через PID-файл (`.agent.pid`)
 
@@ -181,8 +183,9 @@ src/
 │   └── review_service.py        # AnketaReviewService (CLI preview + editor)
 │
 ├── session/                     # Управление сессиями
-│   ├── manager.py               # SessionManager (SQLite CRUD)
-│   └── models.py                # ConsultationSession (Pydantic)
+│   ├── manager.py               # SessionManager (SQLite CRUD + status validation)
+│   ├── models.py                # SessionStatus, RuntimeStatus, ConsultationSession (Pydantic)
+│   └── status.py                # State machine (ALLOWED_TRANSITIONS, validate_transition)
 │
 ├── output/                      # Сохранение результатов
 │   └── manager.py               # OutputManager (versioned output)
@@ -288,10 +291,11 @@ src/
     ├─► Каждое сообщение:
     │       ├─► consultation.add_message()
     │       ├─► _sync_to_db() → SQLite
-    │       └─► Каждые 6 сообщений:
+    │       └─► После каждого сообщения пользователя:
     │               └─► _extract_and_update_anketa()
-    │                       ├─► AnketaExtractor.extract()
-    │                       └─► SessionManager.update_anketa()
+    │                       ├─► AnketaExtractor.extract() (DeepSeek, sliding window 12 msgs)
+    │                       ├─► _update_anketa_via_api() → SQLite
+    │                       └─► _update_dialogue_via_api() → SQLite (periodic persistence)
     │
     ├─► GET /api/session/{id}/anketa (polling ~2 сек)
     │       └─► Возвращает текущую анкету из SQLite
@@ -377,12 +381,15 @@ src/
 | room_name | str | LiveKit room (consultation-{session_id}) |
 | unique_link | str | UUID для возврата клиента |
 | status | str | active / paused / reviewing / confirmed / declined |
+| runtime_status | str | idle / processing / completing / completed / error (ephemeral) |
 | dialogue_history | JSON | [{role, content, timestamp, phase}] |
 | anketa_data | JSON | FinalAnketa.model_dump() |
 | anketa_md | str | Markdown-версия анкеты |
 | company_name | str | Название компании |
 | contact_name | str | Контактное лицо |
 | duration_seconds | float | Длительность сессии |
+| document_context | JSON | Данные из загруженных документов (key_facts, services, contacts) |
+| voice_config | JSON | Конфигурация голоса (consultation_type, llm_provider, etc.) |
 | output_dir | str | Путь к output/ |
 
 ### IndustryProfile v2.0 (`src/knowledge/models.py`)
